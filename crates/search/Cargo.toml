@@ -1,0 +1,29 @@
+[package]
+name = "vlajmaji-search"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish = false
+description = "Source-preserving local lexical search prototype."
+
+[features]
+default = []
+morphology = ["dep:latkerlo-jvotci"]
+
+[[example]]
+name = "full_population_probe"
+required-features = ["morphology"]
+
+[dependencies]
+vlajmaji-lexicon.workspace = true
+vlajmaji-store.workspace = true
+bauske-phonology.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+strsim.workspace = true
+latkerlo-jvotci = { version = "=2.10.2601", optional = true }
+
+[lints]
+workspace = true
+

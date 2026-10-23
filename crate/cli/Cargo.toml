@@ -1,0 +1,21 @@
+[package]
+name = "vlajmaji-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish = false
+
+[[bin]]
+name = "relojban-search"
+path = "src/main.rs"
+
+[dependencies]
+clap.workspace = true
+vlajmaji-search = { package = "vlajmaji-search", path = "../../crates/search", features = ["morphology"] }
+serde_json.workspace = true
+
+[dev-dependencies]
+vlajmaji-lexicon.workspace = true
+
+[lints]
+workspace = true
