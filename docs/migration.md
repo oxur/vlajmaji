@@ -35,10 +35,22 @@ The corpus importer accepts a research root and output archive path:
 
     cargo +1.98.0 run --locked -p vlajmaji-lexicon --example import_corpus -- "/Users/oubiwann/Library/Application Support/ChatGPT-Profiles/personal/codex-home/.chatgpt-projects/g-p-6a8c72d334048191887d4e00472f8430/relojban-poetics" "/tmp/vlajmaji-corpus-replay.archive"
 
+Historical E02/E03 manifests and probes remain unchanged records of Arc02 runs against the original source baseline `7a05516b5d429f3184eaf6a2bde2fd9c5d12e9bf`. Replaying those historical commands requires a separate checkout of that baseline; the old source paths no longer exist in the current R checkout. The renamed V build, CLI and explicitly gated corpus command documented here are the active commands for this destination.
+
 The preserved corpus archive used for migration checks has SHA-256
 4e5c30e978bde631349e1107599f3ef9738c1f63257ba280e146d2256c7cef5a and is
 28,320,417 bytes. This identifies the replay oracle, not a copied corpus
 distribution.
+
+Current workspace commands use the renamed package names and preserved CLI binary:
+
+    cargo +1.98.0 build --locked --workspace
+    cargo +1.98.0 run --locked -p vlajmaji-cli -- build <ARCHIVE> <STORE>
+    cargo +1.98.0 run --locked -p vlajmaji-cli -- info <STORE>
+    cargo +1.98.0 run --locked -p vlajmaji-cli -- search <STORE> --query '{"operation":"exact","spelling":"farvi"}'
+
+The source-to-destination package/path map and historical replay locations are
+also recorded in R's `research/vlajmaji-migration.md` at the source checkout.
 
 The initial V README description and its existing LICENSE and .gitignore
 are preserved as starting repository materials. Only V's preexisting LICENSE

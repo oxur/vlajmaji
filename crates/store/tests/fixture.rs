@@ -5,6 +5,7 @@
 use std::{
     fs,
     path::PathBuf,
+    sync::atomic::{AtomicU64, Ordering},
     time::{SystemTime, UNIX_EPOCH},
 };
 use vlajmaji_lexicon::{Lexicon, Proposal, SourceFormat, SourceMetadata, TimePrecision};
@@ -13,14 +14,27 @@ use vlajmaji_store::{
 };
 
 fn root() -> PathBuf {
+    static SEQUENCE: AtomicU64 = AtomicU64::new(0);
     let nonce = SystemTime::now()
         .duration_since(UNIX_EPOCH)
         .unwrap()
         .as_nanos();
-    std::env::temp_dir().join(format!(
-        "relojban-store-fixture-{}-{nonce}",
-        std::process::id()
-    ))
+    for _ in 0..64 {
+        let sequence = SEQUENCE.fetch_add(1, Ordering::Relaxed);
+        let parent = std::env::temp_dir().join(format!(
+            "vlajmaji-store-fixture-{}-{nonce}-{sequence}",
+            std::process::id()
+        ));
+        match fs::create_dir(&parent) {
+            Ok(()) => return parent,
+            Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => continue,
+            Err(error) => panic!(
+                "could not reserve fixture parent {}: {error}",
+                parent.display()
+            ),
+        }
+    }
+    panic!("could not reserve a unique fixture parent after 64 attempts")
 }
 
 fn fixture() -> (Vec<u8>, Lexicon) {
