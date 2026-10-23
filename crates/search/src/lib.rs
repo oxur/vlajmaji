@@ -22,7 +22,7 @@ use std::{
     str::FromStr,
 };
 
-use relojban_phonology::{
+use bauske_phonology::{
     DistanceModel, FollowingContext, NucleusKind, Segment, StressChoice, SyllabificationMode,
     WordKind, analyze_word, assign_stress, syllabify,
 };

@@ -6,7 +6,7 @@ use std::{
     str::FromStr,
 };
 
-use relojban_phonology::{
+use bauske_phonology::{
     DistanceModel, NucleusKind, Segment, SyllabificationMode, WordKind, analyze_word, syllabify,
 };
 use serde_json::json;

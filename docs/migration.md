@@ -14,14 +14,11 @@ identities and workspace paths.
 | vlajmaji-search | crates/search |
 | vlajmaji-cli | crate/cli |
 
-The search workspace temporarily resolves relojban-phonology through the
-relative path
-../../../Library/Application Support/ChatGPT-Profiles/personal/codex-home/.chatgpt-projects/g-p-6a8c72d334048191887d4e00472f8430/relojban-poetics/crates/relojban-phonology.
-The phonology crate remains in that separate checkout; it was not copied or
-vendored. The bridge is temporary. A separate migration to the already
-selected bauske repository is queued after this checkpoint is independently
-accepted. A standalone checkout without that relative sibling is not
-currently buildable.
+The search workspace now resolves `bauske-phonology` from the sibling
+repository at `../bauske/crates/phonology`. Its package and Rust library
+identities were renamed in the Bauske migration; phonological behavior and the
+`relojban-search` executable remain unchanged. A standalone V checkout must
+have the Bauske sibling at that path to build.
 
 The source corpus and its acquisition records remain in the Relojban poetry
 research checkout. Synthetic tests run by default. The complete corpus
@@ -50,7 +47,8 @@ Current workspace commands use the renamed package names and preserved CLI binar
     cargo +1.98.0 run --locked -p vlajmaji-cli -- search <STORE> --query '{"operation":"exact","spelling":"farvi"}'
 
 The source-to-destination package/path map and historical replay locations are
-also recorded in R's `research/vlajmaji-migration.md` at the source checkout.
+recorded in R's `research/vlajmaji-migration.md`; the subsequent phonology
+namespace migration is recorded in `research/bauske-migration.md`.
 
 The initial V README description and its existing LICENSE and .gitignore
 are preserved as starting repository materials. Only V's preexisting LICENSE

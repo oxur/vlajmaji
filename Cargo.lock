@@ -62,6 +62,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "bauske-phonology"
+version = "0.1.0"
+
+[[package]]
 name = "bindgen"
 version = "0.73.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -814,10 +818,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
 
 [[package]]
-name = "relojban-phonology"
-version = "0.1.0"
-
-[[package]]
 name = "rusqlite"
 version = "0.40.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1104,8 +1104,8 @@ dependencies = [
 name = "vlajmaji-search"
 version = "0.1.0"
 dependencies = [
+ "bauske-phonology",
  "latkerlo-jvotci",
- "relojban-phonology",
  "serde",
  "serde_json",
  "sha2 0.10.9",
