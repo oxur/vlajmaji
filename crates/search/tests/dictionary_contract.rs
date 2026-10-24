@@ -337,6 +337,9 @@ fn hit_computations_follow_dictionary_metadata_order() {
     let mut computation_zero = computation_one.clone();
     computation_zero.id = EntityId::new("computation-0").unwrap();
     document.metadata.computations.push(computation_zero);
+    let mut unrelated_computation = computation_one.clone();
+    unrelated_computation.id = EntityId::new("computation-unrelated").unwrap();
+    document.metadata.computations.push(unrelated_computation);
     document.metadata.annotations.extend([
         ComputedAnnotation {
             id: EntityId::new("annotation-farvi-one").unwrap(),
@@ -369,6 +372,7 @@ fn hit_computations_follow_dictionary_metadata_order() {
         .flat_map(|group| &group.hits)
         .find(|hit| hit.assertion.id == assertion)
         .unwrap();
+    assert_eq!(hit.computations.len(), 2);
     assert_eq!(
         hit.computations
             .iter()

@@ -253,7 +253,7 @@ pub enum ReferenceStatus {
     Unverified,
     /// The catalogue release is known but no assessable payload is available.
     CatalogueOnly,
-    /// An available release has no candidates matching the supplied identities.
+    /// Known identity mismatches yield this status regardless of release availability; an available release with no candidates also yields it.
     NoMatch,
     /// The request explicitly carries an unknown target.
     Unknown,
@@ -470,7 +470,7 @@ pub struct DictionarySearchEngine {
     editorial_by_id: BTreeMap<String, EditorialSenseRecord>,
     relations_by_origin: BTreeMap<String, Vec<(usize, RelationRecord)>>,
     annotations_by_target: BTreeMap<String, Vec<(usize, ComputedAnnotation)>>,
-    computations_in_order: Vec<ComputationRecord>,
+    computations_by_id: BTreeMap<String, (usize, ComputationRecord)>,
     extensions_by_owner: BTreeMap<String, Vec<(usize, ExtensionRecord)>>,
     snapshots_by_key: BTreeMap<String, SnapshotAttribution>,
     occurrences_by_key: BTreeMap<String, OccurrenceAttribution>,
@@ -594,7 +594,14 @@ impl DictionarySearchEngine {
             indexed_group(document.metadata.annotations.iter().cloned(), |row| {
                 local_ref_key(&row.target)
             });
-        let computations_in_order = document.metadata.computations.clone();
+        let computations_by_id = document
+            .metadata
+            .computations
+            .iter()
+            .cloned()
+            .enumerate()
+            .map(|(ordinal, row)| (row.id.to_string(), (ordinal, row)))
+            .collect();
         let extensions_by_owner =
             indexed_group(document.metadata.extensions.iter().cloned(), |row| {
                 row.owner.to_string()
@@ -677,7 +684,7 @@ impl DictionarySearchEngine {
             editorial_by_id,
             relations_by_origin,
             annotations_by_target,
-            computations_in_order,
+            computations_by_id,
             extensions_by_owner,
             snapshots_by_key,
             occurrences_by_key,
@@ -1051,11 +1058,22 @@ impl DictionarySearchEngine {
             .filter_map(|row| row.computation.as_ref().map(ToString::to_string))
             .collect();
         computation_ids.extend(annotations.iter().map(|row| row.computation.to_string()));
-        let computations: Vec<_> = self
-            .computations_in_order
+        let mut selected_computations: Vec<_> = computation_ids
             .iter()
-            .filter(|row| computation_ids.contains(&row.id.to_string()))
-            .cloned()
+            .map(|id| {
+                self.computations_by_id
+                    .get(id)
+                    .ok_or_else(|| DictionaryQueryError::Integrity {
+                        detail: format!(
+                            "associated computation {id} is absent from validated dictionary"
+                        ),
+                    })
+            })
+            .collect::<Result<_, _>>()?;
+        selected_computations.sort_by_key(|(ordinal, _)| *ordinal);
+        let computations: Vec<_> = selected_computations
+            .into_iter()
+            .map(|(_, record)| record.clone())
             .collect();
         let mut owned_ids: BTreeSet<String> = [entry.id.to_string(), assertion.id.to_string()]
             .into_iter()
