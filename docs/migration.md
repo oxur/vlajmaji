@@ -12,7 +12,7 @@ identities and workspace paths.
 | vlajmaji-lexicon | crates/lexicon |
 | vlajmaji-store | crates/store |
 | vlajmaji-search | crates/search |
-| vlajmaji-cli | crate/cli |
+| vlajmaji-cli | crates/cli |
 
 The search workspace now resolves `bauske-phonology` from the sibling
 repository at `../bauske/crates/phonology`. Its package and Rust library

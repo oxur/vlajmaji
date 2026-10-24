@@ -1,6 +1,6 @@
 //! End-to-end dictionary command and structured-error wire contract.
 
-#[path = "../../../crates/lexicon/examples/support/dictionary_fixture.rs"]
+#[path = "../../lexicon/examples/support/dictionary_fixture.rs"]
 mod fixture;
 
 use std::{

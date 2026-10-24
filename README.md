@@ -38,7 +38,7 @@ attested usage, semantic equivalence, or poetic merit.
 | [`vlajmaji-lexicon`](crates/lexicon) | Source-preserving lexical data and archives |
 | [`vlajmaji-store`](crates/store) | Persistence and native indexes |
 | [`vlajmaji-search`](crates/search) | Reusable queries and computed analyses |
-| [`vlajmaji-cli`](crate/cli) | The `vlajmaji` executable |
+| [`vlajmaji-cli`](crates/cli) | The `vlajmaji` executable |
 
 ## Try it
 

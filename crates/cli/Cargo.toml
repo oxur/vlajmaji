@@ -17,7 +17,7 @@ path = "src/main.rs"
 
 [dependencies]
 clap.workspace = true
-vlajmaji-search = { package = "vlajmaji-search", path = "../../crates/search", version = "0.2.0", features = ["morphology"] }
+vlajmaji-search = { package = "vlajmaji-search", path = "../search", version = "0.2.0", features = ["morphology"] }
 serde_json.workspace = true
 
 [dev-dependencies]
