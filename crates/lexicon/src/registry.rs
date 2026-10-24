@@ -221,8 +221,42 @@ pub struct SourceLineage {
     pub evidence: Option<String>,
 }
 
+/// Strict wire shape for a snapshot identity inside the new registry format.
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct SnapshotIdentityWire {
+    namespace: String,
+    sha256: String,
+}
+
+impl From<SnapshotIdentityWire> for SnapshotIdentity {
+    fn from(wire: SnapshotIdentityWire) -> Self {
+        Self {
+            namespace: wire.namespace,
+            sha256: wire.sha256,
+        }
+    }
+}
+
+/// Strict wire shape for a record identity inside the new registry format.
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct RecordIdentityWire {
+    snapshot: SnapshotIdentityWire,
+    locator: String,
+}
+
+impl From<RecordIdentityWire> for RecordIdentity {
+    fn from(wire: RecordIdentityWire) -> Self {
+        Self {
+            snapshot: wire.snapshot.into(),
+            locator: wire.locator,
+        }
+    }
+}
+
 /// Binds one immutable capture to its asserting source and optional distributor.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct SnapshotAttribution {
     /// Exact captured snapshot identity.
@@ -233,8 +267,30 @@ pub struct SnapshotAttribution {
     pub distributor: Option<DistributorId>,
 }
 
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct SnapshotAttributionWire {
+    snapshot: SnapshotIdentityWire,
+    source: SourceId,
+    distributor: Option<DistributorId>,
+}
+
+impl<'de> Deserialize<'de> for SnapshotAttribution {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        let wire = SnapshotAttributionWire::deserialize(deserializer)?;
+        Ok(Self {
+            snapshot: wire.snapshot.into(),
+            source: wire.source,
+            distributor: wire.distributor,
+        })
+    }
+}
+
 /// Optional native identities for one immutable occurrence.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct OccurrenceAttribution {
     /// Exact captured record identity.
@@ -245,6 +301,30 @@ pub struct OccurrenceAttribution {
     pub native_entry_id: Option<String>,
     /// Source-native assertion identity; it never deduplicates occurrences.
     pub native_assertion_id: Option<String>,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct OccurrenceAttributionWire {
+    occurrence: RecordIdentityWire,
+    contributor: Option<ContributorId>,
+    native_entry_id: Option<String>,
+    native_assertion_id: Option<String>,
+}
+
+impl<'de> Deserialize<'de> for OccurrenceAttribution {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        let wire = OccurrenceAttributionWire::deserialize(deserializer)?;
+        Ok(Self {
+            occurrence: wire.occurrence.into(),
+            contributor: wire.contributor,
+            native_entry_id: wire.native_entry_id,
+            native_assertion_id: wire.native_assertion_id,
+        })
+    }
 }
 
 /// Versioned unvalidated input document for a source registry.
@@ -636,6 +716,20 @@ fn validate_document(document: &RegistryDocument) -> Result<(), RegistryError> {
         }
     }
     for alias in &document.aliases {
+        let abbreviation_owners: BTreeSet<_> = document
+            .sources
+            .iter()
+            .filter(|source| source.id != alias.source && source.abbreviation == alias.text)
+            .map(|source| source.id.clone())
+            .collect();
+        if !abbreviation_owners.is_empty() {
+            let mut ids = abbreviation_owners;
+            ids.insert(alias.source.clone());
+            return Err(RegistryError::AliasCollision {
+                alias: alias.text.clone(),
+                sources: ids.into_iter().collect(),
+            });
+        }
         if source_ids
             .iter()
             .any(|id| id.as_str() == alias.text && id != &alias.source)

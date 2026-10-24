@@ -54,12 +54,14 @@ are invalid.
 
 Call `validate_lexicon` to verify both directions: every captured snapshot has
 one registry binding and each registered snapshot or occurrence exists in the
-supplied `Lexicon`. `attribute` returns one borrowed view for a record and
-requires an explicit binding for that record's snapshot. Its record-presence
-check is guaranteed when the caller obtains the record from that `Lexicon` or
-has validated the registry against it. `attributed_records` validates the full
-relationship and walks the original record order, retaining duplicate
-observations and alternatives.
+supplied `Lexicon`. `attribute` returns one borrowed view and requires an
+explicit binding for that record's snapshot. Pass a record obtained from a
+`Lexicon` that passed `validate_lexicon`, or independently establish that the
+exact record identity belongs to the registered capture. Validation checks the
+registry bindings against the supplied `Lexicon`; it does not authenticate an
+arbitrary, separately supplied record passed to `attribute` later.
+`attributed_records` validates the full relationship and walks the original
+record order, retaining duplicate observations and alternatives.
 
 The legacy `SourceMetadata::new` API remains infallible and continues to retain
 empty values. A lexicon imported with empty metadata is still valid legacy data;

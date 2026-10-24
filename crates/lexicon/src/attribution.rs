@@ -112,8 +112,11 @@ impl SourceRegistry {
 
     /// Builds one borrowed attribution view for a captured record.
     ///
-    /// Call with a record obtained from `Lexicon`; otherwise first use
-    /// [`SourceRegistry::validate_lexicon`] to establish capture presence.
+    /// Call with a record obtained from a `Lexicon` that has passed
+    /// [`SourceRegistry::validate_lexicon`], or after independently establishing
+    /// that this exact record identity belongs to the registered capture.
+    /// `validate_lexicon` checks registry bindings against its `Lexicon`; it
+    /// cannot authenticate an arbitrary record supplied separately to this method.
     ///
     /// # Errors
     ///

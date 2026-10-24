@@ -620,6 +620,103 @@ fn document_validation_rejects_duplicate_roles_and_invalid_values() {
 }
 
 #[test]
+fn aliases_cannot_shadow_another_sources_current_abbreviation() {
+    let (_lexicon, document) = fixture();
+    let source_a = SourceId::new("src:a").unwrap();
+    let source_b = SourceId::new("src:b").unwrap();
+
+    for status in [AliasStatus::Active, AliasStatus::Retired] {
+        let mut candidate = document.clone();
+        candidate.aliases.push(SourceAlias {
+            source: source_a.clone(),
+            text: "FX-B".into(),
+            status,
+            evidence: None,
+        });
+        assert!(matches!(
+            SourceRegistry::from_document(candidate.clone()),
+            Err(RegistryError::AliasCollision { alias, sources })
+                if alias == "FX-B" && sources == [source_a.clone(), source_b.clone()]
+        ));
+        let candidate_json = serde_json::to_vec(&candidate).unwrap();
+        assert!(SourceRegistry::from_json_bytes(&candidate_json).is_err());
+        assert!(serde_json::from_slice::<SourceRegistry>(&candidate_json).is_err());
+
+        let mut registry = SourceRegistry::from_document(document.clone()).unwrap();
+        let before = registry.to_json_bytes().unwrap();
+        assert!(matches!(
+            registry.apply_document(candidate),
+            Err(RegistryError::AliasCollision { alias, sources })
+                if alias == "FX-B" && sources == [source_a.clone(), source_b.clone()]
+        ));
+        assert_eq!(registry.to_json_bytes().unwrap(), before);
+    }
+}
+
+#[test]
+fn registry_identity_wires_reject_unknown_nested_fields_without_tightening_legacy_ids() {
+    let (_lexicon, document) = fixture();
+    let registry = SourceRegistry::from_document(document).unwrap();
+    let valid = registry.to_json_bytes().unwrap();
+    let parsed: SourceRegistry = serde_json::from_slice(&valid).unwrap();
+    assert_eq!(parsed.to_json_bytes().unwrap(), valid);
+    assert_eq!(
+        SourceRegistry::from_json_bytes(&valid)
+            .unwrap()
+            .to_json_bytes()
+            .unwrap(),
+        valid
+    );
+
+    let mut legacy_snapshot =
+        serde_json::to_value(&registry.document().snapshots[0].snapshot).unwrap();
+    legacy_snapshot["future"] = true.into();
+    assert!(serde_json::from_value::<vlajmaji_lexicon::SnapshotIdentity>(legacy_snapshot).is_ok());
+
+    for injection in 0..3 {
+        let mut value: serde_json::Value = serde_json::from_slice(&valid).unwrap();
+        match injection {
+            0 => value["snapshots"][0]["snapshot"]["future"] = true.into(),
+            1 => value["occurrences"][0]["occurrence"]["future"] = true.into(),
+            2 => value["occurrences"][0]["occurrence"]["snapshot"]["future"] = true.into(),
+            _ => unreachable!(),
+        }
+        let malformed = serde_json::to_vec(&value).unwrap();
+        assert!(SourceRegistry::from_json_bytes(&malformed).is_err());
+        assert!(serde_json::from_slice::<SourceRegistry>(&malformed).is_err());
+    }
+}
+
+#[test]
+fn phantom_occurrence_binding_is_rejected_against_the_supplied_lexicon() {
+    let (lexicon, mut document) = fixture();
+    let mut phantom = serde_json::to_value(&document.occurrences[0].occurrence).unwrap();
+    phantom["locator"] = "/not-a-captured-locator".into();
+    let phantom: vlajmaji_lexicon::RecordIdentity = serde_json::from_value(phantom).unwrap();
+    let expected = format!(
+        "{}:{}:{}",
+        phantom.snapshot().namespace(),
+        phantom.snapshot().sha256(),
+        phantom.locator()
+    );
+    document.occurrences.push(OccurrenceAttribution {
+        occurrence: phantom,
+        contributor: None,
+        native_entry_id: None,
+        native_assertion_id: None,
+    });
+    let registry = SourceRegistry::from_document(document).unwrap();
+    assert!(matches!(
+        registry.validate_lexicon(&lexicon),
+        Err(RegistryError::OccurrenceNotFound(found)) if found == expected
+    ));
+    assert!(matches!(
+        registry.attributed_records(&lexicon),
+        Err(RegistryError::OccurrenceNotFound(found)) if found == expected
+    ));
+}
+
+#[test]
 fn invalid_documents_updates_and_deserialization_cannot_bypass_invariants() {
     let (_lexicon, document) = fixture();
     let registry = SourceRegistry::from_document(document.clone()).unwrap();
