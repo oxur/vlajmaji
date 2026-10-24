@@ -106,7 +106,7 @@ define execution order. Later arcs are roadmap entries, not issued assignments.
 
 | Arc | Usable capability and destination | Required inputs | Detail now |
 | --- | --- | --- | --- |
-| [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Three slices outlined; first slice planned. |
+| [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Four scope-preserving slices after S01 sizing; current detail in arc plan. |
 | 02 — Reproducible full jbotci import | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Plan after A01. |
 | 03 — Independent corpus packages | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
 | 04 — Composed SQLite lookup | Compare unified derived index, ATTACH and application fanout on the same complete contract, then implement the selected composition and availability/query-snapshot policy. | A01 queries and A03 real pack releases. | One bounded decision followed by usable integration; no topology selected now. |
@@ -123,7 +123,7 @@ before running it; the three required candidates remain in scope.
 
 | Preserved research Arc03 increment | New owner |
 | --- | --- |
-| S01 registry, thorough schema, grouped exact/count/page contract | A01 S01–S03; complete schema coverage in A01 S02 |
+| S01 registry, thorough schema, grouped exact/count/page contract | A01 S01–S04 after explicit split; complete typed/schema coverage in S02/S03 |
 | S02 raw jbotci import | A02 |
 | S03 all four upstream optional corpus collections | A03; one collection cannot stand in for the others |
 | S04 unified / ATTACH / fanout comparison and topology decision | A04, before dependent multi-store/owned integration |
@@ -240,4 +240,6 @@ Task output owner: `CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktree
 
 ## Arc01 current progress — 2026-10-24
 
-S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 readiness proceeds next, then S03 and the independent arc composition gate. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
+S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 typed-model readiness proceeds next, then S03 relational persistence, S04 grouped lookup and the independent arc composition gate. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
+
+Arc01 decomposition update (2026-10-24): original S02 now has typed-model S02 and persistence S03; original grouped S03 moves intact to S04. Root acknowledged this authorized split. Endpoint remains the full Arc01 foundation; all later arcs remain unactivated. Historical three-slice directive describes preserved capability scope, not permission to omit the fourth child introduced to retain implementation/review headroom.

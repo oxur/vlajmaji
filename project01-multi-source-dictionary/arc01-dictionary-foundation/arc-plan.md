@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc | project01-multi-source-dictionary / arc01-dictionary-foundation |
-| status | active; S01 accepted11ec701; S02 readiness next; S03 pending |
+| status | active; S01 accepted11ec701; S02 typed-model readiness active; S03 persistence/S04 grouped pending |
 | depends-on | Vlajmaji `4ee3bab`; preserved source/grouping/schema decisions and accepted PoC contracts |
 | blocks | A02 full import, A03 optional releases, A04 composition and A05 owned editing |
-| version / date | 1.2 / 2026-10-24 |
+| version / date | 1.3 / 2026-10-24 |
 
 ## Capability
 
@@ -20,7 +20,18 @@ import or a decision about one-file versus multi-file SQLite.
 Use [the project design](../design.md), [the project plan](../project-plan.md) and
 [this arc's ledger](ledger.md). Current authority is Autonomous execution through Arc01 only under `../cdc-directive01.md`. Source branch is `feature/project01-dictionary-foundation`; current contributor assignments live in the child plans.
 
-## Slice breakdown
+## Current slice breakdown — explicit split v1.3
+
+The initial three-slice breakdown below is historical. Original S02 proved too broad to hold its complete raw/typed model, relational projection, full12-area fixtures and repair headroom in one selected CC context. The approved plan already permits a scope-preserving split; root explicitly acknowledged it on2026-10-24. Current endpoint is the same complete Arc01 capability, now four useful slices.
+
+| Slice | Useful result | Preserved original owner |
+| --- | --- | --- |
+| S01 source registry and assertions | accepted11ec701 | original S01, all7 rows closed |
+| [S02 versioned dictionary model](slice02-versioned-dictionary-model/slice-plan.md) | validated raw/typed model, full12-area fixture, JSON roundtrip and exact legacy adapter | first part of original S02 |
+| S03 relational persistence | concrete keyed/FK schema, field-level persisted oracle, strict reopen/rebuild/mismatch path | remaining original S02, all12 areas persisted |
+| S04 grouped exact lookup | full Rust/CLI grouping/totals/pages/availability/links/history and complete reference | original S03 intact |
+
+## Historical initial slice breakdown (v1.0; superseded only in decomposition)
 
 | Slice | Usable result and intended files | Dependency / boundary |
 | --- | --- | --- |
@@ -121,3 +132,9 @@ their respective slice readiness; no topology decision is required for S01.
 S01 delivered registry/attribution at11ec701 after one refinement; all7 rows independently reproduced. No structural slice/architecture change is needed. S02 retains every twelve-area schema obligation, including explicit source-asserted etymology under morphology/relations; S03 retains grouped Rust/CLI/totals/pages/availability/history controls. Source-asserted structure must not be confused with computed parsing. The next fixture/persistence packet will use distinct public-caller package names after the S01 shared-target executable anomaly. Root's read-only41/41 byte/hash/size check of preserved research is preservation evidence only, not implementation acceptance.
 
 - 1.2 — 2026-10-24: S01 acceptance and retrospective completed; recorded the retired-selector/strict-wire repairs and explicit S02 carryover before next-slice preparation.
+
+## Scope-preserving split decision — 2026-10-24
+
+Original S02 → new S02/S03; original S03 → new S04. No criterion, test family, schema area, full fixture/control, public caller or independent gate is dropped. A01-02 closes only after both typed model and relational persistence; A01-03's grouped lookup owner is now S04. A01-04 composition walks all four accepted children, still demonstrating registry→persisted fixture→grouped Rust/CLI→all pages→removal/re-add/owned revision. Opaque/unsupported raw rows need a typed preservation/eligibility home before A02; the existing strict Lexicon parser remains unchanged. Missing catalogue data is explicit and cannot masquerade as available zero matches.
+
+-1.3 —2026-10-24: CDC split original S02 into model and persistence after actual source/model sizing; root acknowledged the preserved four-slice endpoint. Added explicit old/new owner map and retained historical breakdown.
