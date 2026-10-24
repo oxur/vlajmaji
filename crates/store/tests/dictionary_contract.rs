@@ -339,7 +339,7 @@ fn full_fixture_has_independent_direct_sql_value_oracles() {
     ]);
 
     let releases: Vec<ReleaseOracleRow> = db
-        .prepare("SELECT id,availability,selected,upstream_revision_state,upstream_revision_value,normalizer,normalizer_version,accounting_input_occurrences,accounting_normalized_occurrences,accounting_query_excluded_occurrences FROM releases ORDER BY ordinal")
+        .prepare("SELECT id,availability,selected,upstream_revision_state,upstream_revision_value,normalizer,normalizer_version,accounting_input_occurrences,accounting_normalized_occurrences,accounting_query_excluded_occurrences FROM releases JOIN entity_ids USING(id) ORDER BY entity_ids.ordinal")
         .unwrap()
         .query_map([], |r| Ok((r.get(0)?,r.get(1)?,r.get(2)?,r.get(3)?,r.get(4)?,r.get(5)?,r.get(6)?,r.get(7)?,r.get(8)?,r.get(9)?)))
         .unwrap().collect::<rusqlite::Result<_>>().unwrap();
@@ -410,7 +410,7 @@ fn full_fixture_has_independent_direct_sql_value_oracles() {
     );
 
     let contexts: Vec<(String, String, String, Option<String>)> = db
-        .prepare("SELECT id,kind,value_state,value_text FROM contexts ORDER BY ordinal")
+        .prepare("SELECT id,kind,value_state,value_text FROM contexts JOIN entity_ids USING(id) ORDER BY entity_ids.ordinal")
         .unwrap()
         .query_map([], |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?)))
         .unwrap()
@@ -483,7 +483,7 @@ fn full_fixture_has_independent_direct_sql_value_oracles() {
     );
 
     let forms: Vec<FormOracleRow> = db
-        .prepare("SELECT id,kind,spelling,standing_state,standing_value,computation_id FROM forms ORDER BY ordinal")
+        .prepare("SELECT id,kind,spelling,standing_state,standing_value,computation_id FROM forms JOIN entity_ids USING(id) ORDER BY entity_ids.ordinal")
         .unwrap().query_map([], |r| Ok((r.get(0)?,r.get(1)?,r.get(2)?,r.get(3)?,r.get(4)?,r.get(5)?)))
         .unwrap().collect::<rusqlite::Result<_>>().unwrap();
     assert_eq!(
@@ -595,7 +595,7 @@ fn full_fixture_has_independent_direct_sql_value_oracles() {
     );
 
     let relation_shapes: Vec<RelationOracleRow> = db
-        .prepare("SELECT id,kind,other_kind,direction,scope,target_kind,catalog_source_id,unresolved_text,editorial_revision_id FROM relations ORDER BY ordinal")
+        .prepare("SELECT id,kind,other_kind,direction,scope,target_kind,catalog_source_id,unresolved_text,editorial_revision_id FROM relations JOIN entity_ids USING(id) ORDER BY entity_ids.ordinal")
         .unwrap().query_map([], |r| Ok((r.get(0)?,r.get(1)?,r.get(2)?,r.get(3)?,r.get(4)?,r.get(5)?,r.get(6)?,r.get(7)?,r.get(8)?)))
         .unwrap().collect::<rusqlite::Result<_>>().unwrap();
     assert_eq!(
@@ -649,7 +649,7 @@ fn full_fixture_has_independent_direct_sql_value_oracles() {
     );
 
     let revisions: Vec<OwnedRevisionOracleRow> = db
-        .prepare("SELECT id,parent_id,timestamp_state,timestamp_value,rationale_state,rationale_text,time_precision,editor_id FROM owned_revisions ORDER BY ordinal")
+        .prepare("SELECT id,parent_id,timestamp_state,timestamp_value,rationale_state,rationale_text,time_precision,editor_id FROM owned_revisions JOIN entity_ids USING(id) ORDER BY entity_ids.ordinal")
         .unwrap().query_map([], |r| Ok((r.get(0)?,r.get(1)?,r.get(2)?,r.get(3)?,r.get(4)?,r.get(5)?,r.get(6)?,r.get(7)?)))
         .unwrap().collect::<rusqlite::Result<_>>().unwrap();
     assert_eq!(

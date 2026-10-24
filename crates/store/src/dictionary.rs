@@ -10,7 +10,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use rusqlite::{Connection, OpenFlags};
+use rusqlite::{Connection, OpenFlags, types::Value};
 use sha2::{Digest, Sha256};
 use vlajmaji_lexicon::{Dictionary, DictionaryError};
 
@@ -282,10 +282,31 @@ fn build(
             | OpenFlags::SQLITE_OPEN_CREATE
             | OpenFlags::SQLITE_OPEN_NO_MUTEX,
     )?;
-    conn.execute_batch("PRAGMA journal_mode=DELETE; PRAGMA foreign_keys=ON; BEGIN IMMEDIATE;")?;
-    dictionary_schema::create_schema(&conn)?;
-    conn.execute("INSERT INTO metadata(key,value) VALUES('complete','0')", [])?;
-    dictionary_schema::write_projection(&conn, dictionary, canonical)?;
+    conn.execute_batch("PRAGMA journal_mode=DELETE; PRAGMA foreign_keys=ON;")?;
+    initialize(&conn)?;
+    populate(&conn, dictionary, canonical)
+}
+
+/// Commit the durable schema and incomplete header before population begins.
+fn initialize(conn: &Connection) -> Result<(), DictionaryStoreError> {
+    conn.execute_batch("BEGIN IMMEDIATE;")?;
+    dictionary_schema::create_schema(conn)?;
+    conn.execute(
+        "INSERT INTO metadata(key,value) VALUES('format',?1),('schema_version',?2),('complete','0')",
+        (dictionary_schema::FORMAT, dictionary_schema::SCHEMA_VERSION),
+    )?;
+    conn.execute_batch("COMMIT;")?;
+    Ok(())
+}
+
+/// Populate an initialized store atomically; `complete=1` is committed last.
+fn populate(
+    conn: &Connection,
+    dictionary: &Dictionary,
+    canonical: &[u8],
+) -> Result<(), DictionaryStoreError> {
+    conn.execute_batch("BEGIN IMMEDIATE;")?;
+    dictionary_schema::write_projection(conn, dictionary, canonical)?;
     conn.execute("UPDATE metadata SET value='1' WHERE key='complete'", [])?;
     conn.execute_batch("COMMIT;")?;
     Ok(())
@@ -294,15 +315,42 @@ fn build(
 fn read_metadata(
     conn: &Connection,
 ) -> Result<std::collections::BTreeMap<String, String>, DictionaryStoreError> {
-    let mut stmt = conn
-        .prepare("SELECT key,value FROM metadata ORDER BY key")
-        .map_err(|error| invalid(DictionaryStoreInvalidity::Format, error.to_string()))?;
-    let rows = stmt
-        .query_map([], |r| Ok((r.get::<_, String>(0)?, r.get::<_, String>(1)?)))
-        .map_err(|error| invalid(DictionaryStoreInvalidity::Format, error.to_string()))?;
+    let has_table: bool = conn.query_row(
+        "SELECT EXISTS(SELECT 1 FROM sqlite_schema WHERE type='table' AND name='metadata')",
+        [],
+        |row| row.get(0),
+    )?;
+    if !has_table {
+        return Err(invalid(
+            DictionaryStoreInvalidity::Format,
+            "metadata table is missing",
+        ));
+    }
+    let mut stmt = conn.prepare("SELECT key,value FROM metadata ORDER BY key")?;
+    let rows = stmt.query_map([], |r| Ok((r.get::<_, Value>(0)?, r.get::<_, Value>(1)?)))?;
     let mut result = std::collections::BTreeMap::new();
     for row in rows {
         let (key, value) = row?;
+        let Value::Text(key) = key else {
+            return Err(invalid(
+                DictionaryStoreInvalidity::Format,
+                "metadata key is not stored as TEXT",
+            ));
+        };
+        let Value::Text(value) = value else {
+            let reason = match key.as_str() {
+                "format" => DictionaryStoreInvalidity::Format,
+                "schema_version" => DictionaryStoreInvalidity::SchemaVersion,
+                "complete" => DictionaryStoreInvalidity::Incomplete,
+                "canonical_sha256" | "dictionary_version" | "registry_version"
+                | "catalogue_revision" => DictionaryStoreInvalidity::CanonicalBytes,
+                _ => DictionaryStoreInvalidity::Format,
+            };
+            return Err(invalid(
+                reason,
+                format!("metadata value for {key} is not stored as TEXT"),
+            ));
+        };
         result.insert(key, value);
     }
     Ok(result)
@@ -359,10 +407,8 @@ fn check_schema(conn: &Connection) -> Result<(), DictionaryStoreError> {
 }
 
 fn read_canonical(conn: &Connection) -> Result<(Vec<u8>, Option<Vec<u8>>), DictionaryStoreError> {
-    let mut stmt = conn
-        .prepare("SELECT json,legacy_archive FROM canonical_document WHERE id=1")
-        .map_err(|error| invalid(DictionaryStoreInvalidity::CanonicalBytes, error.to_string()))?;
-    let rows: Vec<(Vec<u8>, Option<Vec<u8>>)> = stmt
+    let mut stmt = conn.prepare("SELECT json,legacy_archive FROM canonical_document WHERE id=1")?;
+    let rows: Vec<(Value, Value)> = stmt
         .query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?
         .collect::<Result<_, _>>()?;
     if rows.len() != 1 {
@@ -371,12 +417,29 @@ fn read_canonical(conn: &Connection) -> Result<(Vec<u8>, Option<Vec<u8>>), Dicti
             "canonical_document must contain exactly one row",
         ));
     }
-    rows.into_iter().next().ok_or_else(|| {
+    let (json, legacy) = rows.into_iter().next().ok_or_else(|| {
         invalid(
             DictionaryStoreInvalidity::CanonicalBytes,
             "canonical row disappeared during read",
         )
-    })
+    })?;
+    let Value::Blob(json) = json else {
+        return Err(invalid(
+            DictionaryStoreInvalidity::CanonicalBytes,
+            "canonical JSON is not stored as BLOB",
+        ));
+    };
+    let legacy = match legacy {
+        Value::Blob(bytes) => Some(bytes),
+        Value::Null => None,
+        _ => {
+            return Err(invalid(
+                DictionaryStoreInvalidity::CanonicalBytes,
+                "legacy archive is neither BLOB nor NULL",
+            ));
+        }
+    };
+    Ok((json, legacy))
 }
 
 fn check_foreign_keys(conn: &Connection) -> Result<(), DictionaryStoreError> {
@@ -398,4 +461,106 @@ fn check_projection(
 ) -> Result<(), DictionaryStoreError> {
     dictionary_schema::check_projection(conn, dictionary, canonical)
         .map_err(|detail| invalid(DictionaryStoreInvalidity::Projection, detail))
+}
+
+#[cfg(test)]
+mod lifecycle_tests {
+    use super::{
+        DATABASE_FILE, DictionaryStore, DictionaryStoreError, DictionaryStoreInvalidity,
+        initialize, populate,
+    };
+    use rusqlite::Connection;
+    use std::{fs, time::SystemTime};
+    use vlajmaji_lexicon::Dictionary;
+
+    #[test]
+    fn committed_incomplete_header_survives_population_failure() {
+        let nonce = SystemTime::now()
+            .duration_since(SystemTime::UNIX_EPOCH)
+            .expect("system clock is after Unix epoch")
+            .as_nanos();
+        let root = std::env::temp_dir().join(format!(
+            "vlajmaji-s03-incomplete-header-{}-{nonce}",
+            std::process::id()
+        ));
+        fs::create_dir(&root).expect("create unique test directory");
+        let database = root.join(DATABASE_FILE);
+        let dictionary = Dictionary::new();
+        let canonical = dictionary
+            .to_json_bytes()
+            .expect("serialize empty dictionary");
+        let writer = Connection::open(&database).expect("open test database");
+        writer
+            .execute_batch("PRAGMA foreign_keys=ON;")
+            .expect("enable foreign keys");
+        initialize(&writer).expect("commit initialized header");
+
+        let reader = Connection::open(&database).expect("open concurrent header reader");
+        let header: (String, String, String) = reader
+            .query_row(
+                "SELECT format.value,schema_version.value,complete.value FROM metadata AS format JOIN metadata AS schema_version ON schema_version.key='schema_version' JOIN metadata AS complete ON complete.key='complete' WHERE format.key='format'",
+                [],
+                |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)),
+            )
+            .expect("read committed header before population");
+        assert_eq!(
+            header,
+            (
+                super::dictionary_schema::FORMAT.to_owned(),
+                super::dictionary_schema::SCHEMA_VERSION.to_owned(),
+                "0".to_owned()
+            )
+        );
+        drop(reader);
+
+        writer
+            .execute_batch(
+                "CREATE TEMP TRIGGER fail_canonical BEFORE INSERT ON canonical_document BEGIN SELECT RAISE(ABORT, 'injected population failure'); END;",
+            )
+            .expect("install one-test population failure");
+        assert!(matches!(
+            populate(&writer, &dictionary, &canonical),
+            Err(DictionaryStoreError::Backend(_))
+        ));
+        drop(writer);
+
+        let reader = Connection::open(&database).expect("reopen persisted header");
+        let values: Vec<(String, String)> = {
+            let mut statement = reader
+                .prepare("SELECT key,value FROM metadata ORDER BY key")
+                .expect("prepare persisted header read");
+            statement
+                .query_map([], |row| Ok((row.get(0)?, row.get(1)?)))
+                .expect("query persisted header")
+                .collect::<Result<_, _>>()
+                .expect("collect persisted header")
+        };
+        drop(reader);
+        assert_eq!(
+            values,
+            vec![
+                ("complete".to_owned(), "0".to_owned()),
+                (
+                    "format".to_owned(),
+                    super::dictionary_schema::FORMAT.to_owned()
+                ),
+                (
+                    "schema_version".to_owned(),
+                    super::dictionary_schema::SCHEMA_VERSION.to_owned()
+                ),
+            ]
+        );
+        assert!(matches!(
+            DictionaryStore::open(&root),
+            Err(DictionaryStoreError::InvalidStore {
+                reason: DictionaryStoreInvalidity::Incomplete,
+                ..
+            })
+        ));
+        assert!(matches!(
+            DictionaryStore::create(&root, &dictionary),
+            Err(DictionaryStoreError::ExistingPath(_))
+        ));
+        fs::remove_dir_all(&root).expect("remove test-owned directory");
+    }
 }

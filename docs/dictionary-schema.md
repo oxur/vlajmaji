@@ -10,9 +10,10 @@ store compares every projected SQLite value with a freshly validated model.
 ## Field map
 
 All lexical text is stored as SQLite `TEXT COLLATE BINARY`; source bytes and
-canonical JSON use `BLOB`. The projection retains vector order in `ordinal`
-columns and preserves `Missing`, `Null`, and `Value` as a state plus nullable
-value. Present empty text remains different from absent text. Unsigned values
+canonical JSON use `BLOB`. Registry vectors and ordered child collections retain their own `ordinal`
+columns. Dictionary entity rows have no duplicate ordinal: their supplied order
+is held once in `entity_ids` and role tables join by `(id, role)`. Presence
+values preserve `Missing`, `Null`, and `Value` as a state plus nullable value. Present empty text remains different from absent text. Unsigned values
 that can exceed SQLite's signed integer range use canonical decimal text.
 
 | Dictionary area | Schema 1 tables and retained fields |
@@ -30,8 +31,9 @@ that can exceed SQLite's signed integer range use canonical decimal text.
 | Computation | `computations`, `computation_inputs`, `annotations`, and `extensions` keep tool/version/policy/profile/explanation, occurrence/entity/literal input variants, typed target, raw JSON values and optional evidence separately. Raw JSON is retained as its exact validated lexical string. |
 
 Every model entity has a role row in `entity_ids`; role-table rows reference the
-matching `(id, role)` pair. Ordered child tables have parent/ordinal keys and
-the appropriate direct foreign keys. Four indexes cover exact spelling,
+matching `(id, role)` pair and do not duplicate its ordinal. Ordered child
+collections use parent/ordinal keys; registry and capture vectors keep their own
+ordinals. All references use the appropriate direct foreign keys. Four indexes cover exact spelling,
 source/spelling, assertion entry, and reverse release assertion membership.
 The schema has no generic entity-value table. SQL enforces declared CHECK,
 UNIQUE and foreign-key constraints; the validated `Dictionary` enforces richer
@@ -44,9 +46,10 @@ shape changes that satisfy SQL constraints.
 
 `DictionaryStore::create` validates the model before reserving a new leaf under
 an existing parent. It refuses files, directories and symlinks already at that
-leaf and never replaces caller data. It writes a transaction with an incomplete
-marker, commits the exact canonical document and all typed rows, then closes
-the writer and returns only after strict reopen succeeds. A failed create can
+leaf and never replaces caller data. It first commits the exact schema with
+format/version and `complete=0`, then populates the canonical document and typed
+rows in a separate transaction, setting `complete=1` only at the successful
+end. It closes the writer and returns only after strict reopen succeeds. A failed create can
 leave a caller-owned failed directory; inspect it and choose whether to remove
 it. Open never repairs, migrates or creates files.
 
@@ -86,7 +89,7 @@ as legacy input.
 
 This concrete inventory names the schema-1 columns and reference/order contracts. The DDL in `crates/store/src/dictionary_schema.rs` is authoritative; this inventory expands presence/reference notation and records the intended SQL constraints.
 
-Notation: TEXT is exact BINARY UTF8; BLOB exact bytes; nullable columns preserve Option None versus Some(empty). All vector ordinals are checked nonnegative SQLite INTEGER, unique in their owning vector. u32 uses checked INTEGER 0..4294967295. Full u64/usize values use canonical unsigned decimal TEXT, nullable only for Option, never a lossy i64 cast. Check canonical digits/no leading zeros/range losslessly or rely on exact validated projection with a documented SQL constraint boundary; no float/coercion. Canonical projection must preserve embedded NUL as UTF8 bytes; SQL length(TEXT) is not byte-length (local reference SQLite3.39.4 gave NUL text0/blob1), so avoid invalid stronger emptiness checks or use BLOB byte length. Actual pinned rusqlite controls verify preservation.
+Notation: TEXT is exact BINARY UTF8; BLOB exact bytes; nullable columns preserve Option None versus Some(empty). Registry and child-vector ordinals are checked nonnegative SQLite INTEGER and unique in their owning vector. Dictionary entity row order is stored once in `entity_ids.ordinal`; role tables have no ordinal column. u32 uses checked INTEGER 0..4294967295. Full u64/usize values use canonical unsigned decimal TEXT, nullable only for Option, never a lossy i64 cast. Check canonical digits/no leading zeros/range losslessly or rely on exact validated projection with a documented SQL constraint boundary; no float/coercion. Canonical projection must preserve embedded NUL as UTF8 bytes; SQL length(TEXT) is not byte-length (local reference SQLite3.39.4 gave NUL text0/blob1), so avoid invalid stronger emptiness checks or use BLOB byte length. Actual pinned rusqlite controls verify preservation.
 
 `P(x)` expands `x_state TEXT NOT NULL` in missing/null/value and `x_value TEXT NULL`, requiring value non-NULL exactly at state=value, allowing empty string. For Presence<RawJson> the value is its exact raw lexical string. `TP(x)` for Presence<TextValue> expands outer x_state plus nullable x_text/x_language_state/x_language_value/x_markup_state/x_markup_value; all payload columns NULL outside outer value, within value text and both inner states required with their own P consistency. Nonoptional TextValue `TV(x)` has x_text NOT NULL plus P(x_language),P(x_markup). `PM(x)` is Presence<PosMapping>: state plus x_value/x_rule, both supplied exactly when value. No XML/rendering/linguistic inference.
 
@@ -101,11 +104,11 @@ Notation: TEXT is exact BINARY UTF8; BLOB exact bytes; nullable columns preserve
 | contributors; distributors | each id PK,ordinal UNIQUE,display_name. Native IDs never become these project IDs automatically. |
 | source_aliases | ordinal PK,source_id FK,text,status Active/Retired,evidence NULL. No global alias-text UNIQUE: historical alias reuse/ambiguity is intentional. |
 | source_lineage | ordinal PK,source_id FK,target_kind Known/Unresolved,upstream_source_id FK NULL,unresolved_text NULL,evidence NULL; exclusive target shape. |
-| capture_refs | namespace TEXT,sha256 TEXT,PK(namespace,sha256); union of loaded/registry/release/known reference identities, not fabricated payload rows. Namespace may be legacy empty. |
+| capture_refs | namespace TEXT,sha256 TEXT,PK(namespace,sha256); union of loaded/registry/release/assertion/computation/evidence/diagnostic/catalogue reference identities, not fabricated payload rows. Namespace may be legacy empty. |
 | snapshot_bindings | namespace,sha256,ordinal UNIQUE,source_id FK,distributor_id FK NULL; PK tuple and FK capture_refs. Bindings distinct from expected capture refs. |
 | occurrence_refs | id TEXT PK,namespace,sha256,locator TEXT; UNIQUE(namespace,sha256,locator),UNIQUE(id,namespace,sha256),FK capture_refs. id is existing record_id exact length-prefixed tuple-hex, NOT a hash. Includes known absent locator refs. |
 | occurrence_attributions | occurrence_id PK/FK,ordinal UNIQUE,contributor_id FK NULL,native_entry_id TEXT NULL,native_assertion_id TEXT NULL. Some(empty) stays empty; no text/native-ID deduplication. |
-| raw_captures | namespace,sha256,ordinal UNIQUE,bytes BLOB,source_name,format_label,locator,P(revision),P(captured_at),time_precision,P(notice_locator); PK tuple/FK snapshot_bindings, preserving empty metadata. |
+| raw_captures | namespace,sha256,ordinal UNIQUE,bytes BLOB,source_name,format_label,locator,P(revision),P(captured_at),time_precision,P(notice_locator); PK tuple/FK snapshot_bindings, preserving empty metadata. Ordinal follows `Dictionary.captures`, independently of registry snapshot-binding order. |
 | raw_occurrences | occurrence_id PK,namespace,sha256,ordinal,raw_line TEXT NULL; FK(occurrence_id,namespace,sha256) to occurrence_refs and FK tuple to raw_captures; UNIQUE(namespace,sha256,ordinal). Loaded subset only. |
 | native_fields | occurrence_id FK raw_occurrences,ordinal,name,encoding Json/Text,raw_value TEXT; PK(parent,ordinal). Repeated names and exact lexemes/lines retain order. |
 | collections | id+constant entity_role collection,source_id FK,display_name,TP(description). |
