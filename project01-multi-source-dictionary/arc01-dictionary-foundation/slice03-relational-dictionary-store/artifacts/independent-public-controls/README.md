@@ -17,3 +17,7 @@ The positive generator now emits eight inputs, adding legacyv1 (only envelope ve
 ## Additional pre-candidate sparse shapes
 
 The prospective generator now also prepares full usize field-index/offset endpoints on explicitly unavailable source-M evidence (known identity, unknown payload bounds) and historical alias-text reuse combined with Some(empty) catalogue-native IDs. Ten separately labelled variants are generated. They exercise already declared scalar/absence/alias contracts rather than new product capabilities. No variant has yet been run through the model/store; an invalid draft remains a specimen correction.
+
+## Prospective filesystem and snapshot controls
+
+Before freeze CDC added `filesystem.py`: public missing-path/empty-directory/malformed-backend/foreign-family typed errors; refusal of existing file/directory/valid store/valid symlink/dangling symlink; missing-parent create without recursive directory creation; unchanged target bytes. The held public opener must cause independent SQLite `BEGIN EXCLUSIVE` to report real SQLITE_BUSY while the store is alive, and permit it after drop. This observes a retained read snapshot, not merely a parsed in-memory model. The test never commits a database mutation and checks the complete valid-store file set/bytes. No execution result exists yet.
