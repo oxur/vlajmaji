@@ -967,3 +967,143 @@ fn declared_validation_categories_are_emitted_and_malformed_parent_paths_do_not_
         }
     }
 }
+
+#[test]
+fn etymology_components_accept_each_declared_local_reference_role() {
+    let base = fixture_support::complete_fixture().unwrap().document();
+    let targets = [
+        vlajmaji_lexicon::LocalRef::Entry(base.metadata.entries[0].id.clone()),
+        vlajmaji_lexicon::LocalRef::Assertion(base.metadata.assertions[0].id.clone()),
+        vlajmaji_lexicon::LocalRef::Form(base.metadata.forms[0].id.clone()),
+        vlajmaji_lexicon::LocalRef::EditorialSense(base.metadata.editorial_senses[0].id.clone()),
+    ];
+    for (order, target) in targets.into_iter().enumerate() {
+        let mut draft = base.clone();
+        draft.metadata.etymologies[0]
+            .components
+            .push(vlajmaji_lexicon::OrderedComponent {
+                order: order as u32 + 1,
+                spelling: format!("component-{order}"),
+                target: Some(target),
+            });
+        let bytes = serde_json::to_vec(&draft).unwrap();
+        assert!(Dictionary::from_document(draft).is_ok());
+        assert!(Dictionary::from_json_bytes(&bytes).is_ok());
+        assert!(serde_json::from_slice::<Dictionary>(&bytes).is_ok());
+    }
+
+    let mut wrong_role = base;
+    wrong_role.metadata.etymologies[0]
+        .components
+        .push(vlajmaji_lexicon::OrderedComponent {
+            order: 1,
+            spelling: "wrong-role".into(),
+            target: Some(vlajmaji_lexicon::LocalRef::Assertion(
+                wrong_role.metadata.entries[0].id.clone(),
+            )),
+        });
+    assert!(matches!(
+        Dictionary::from_document(wrong_role),
+        Err(DictionaryError::MissingReference(_))
+    ));
+}
+
+#[test]
+fn named_reference_and_provenance_failures_use_declared_categories() {
+    let base = fixture_support::complete_fixture().unwrap().document();
+
+    let mut form_entry = base.clone();
+    form_entry.metadata.forms[0].entry = EntityId::new("missing-entry").unwrap();
+    assert!(matches!(
+        Dictionary::from_document(form_entry),
+        Err(DictionaryError::MissingReference(_))
+    ));
+
+    let mut relation_origin = base.clone();
+    relation_origin.metadata.relations[0].origin =
+        vlajmaji_lexicon::LocalRef::Entry(EntityId::new("missing-entry").unwrap());
+    assert!(matches!(
+        Dictionary::from_document(relation_origin),
+        Err(DictionaryError::MissingReference(_))
+    ));
+
+    let mut foreign_form_evidence = base.clone();
+    let foreign = foreign_form_evidence
+        .metadata
+        .assertions
+        .iter()
+        .find(|a| a.occurrence.capture.namespace == "captured:b:d1")
+        .unwrap()
+        .occurrence
+        .clone();
+    let form = foreign_form_evidence
+        .metadata
+        .forms
+        .iter_mut()
+        .find(|f| {
+            f.evidence.is_some()
+                && foreign_form_evidence
+                    .metadata
+                    .entries
+                    .iter()
+                    .find(|entry| entry.id == f.entry)
+                    .is_some_and(|entry| entry.source.as_str() == "source-a")
+        })
+        .unwrap();
+    let evidence = form.evidence.as_mut().unwrap();
+    evidence.occurrence = foreign;
+    evidence.field_index = None;
+    evidence.offset = None;
+    let foreign_form_error = Dictionary::from_document(foreign_form_evidence);
+    assert!(
+        matches!(
+            foreign_form_error,
+            Err(DictionaryError::InvalidProvenance(_))
+        ),
+        "{foreign_form_error:?}"
+    );
+
+    let mut incomplete_computation = base.clone();
+    incomplete_computation.metadata.computations[0].tool.clear();
+    assert!(matches!(
+        Dictionary::from_document(incomplete_computation),
+        Err(DictionaryError::InvalidProvenance(_))
+    ));
+
+    let mut phantom_evidence = base.clone();
+    let loaded_capture = phantom_evidence.metadata.assertions[0]
+        .occurrence
+        .capture
+        .clone();
+    phantom_evidence.metadata.extensions[0].evidence = Some(vlajmaji_lexicon::SourceEvidence {
+        occurrence: vlajmaji_lexicon::OccurrenceRef {
+            capture: loaded_capture,
+            locator: "/missing-evidence".into(),
+        },
+        field_index: None,
+        citation: Presence::Missing,
+        offset: None,
+    });
+    assert!(matches!(
+        Dictionary::from_document(phantom_evidence),
+        Err(DictionaryError::MissingReference(_))
+    ));
+
+    let mut phantom_assertion = base.clone();
+    phantom_assertion.metadata.assertions[0].occurrence.locator = "/missing-assertion".into();
+    assert!(matches!(
+        Dictionary::from_document(phantom_assertion),
+        Err(DictionaryError::MissingReference(_))
+    ));
+
+    let mut unbound_capture = base;
+    let mut registry = unbound_capture.registry.document();
+    registry
+        .snapshots
+        .retain(|snapshot| snapshot.snapshot.namespace() != "captured:b:d1");
+    unbound_capture.registry = vlajmaji_lexicon::SourceRegistry::from_document(registry).unwrap();
+    assert!(matches!(
+        Dictionary::from_document(unbound_capture),
+        Err(DictionaryError::MissingReference(_))
+    ));
+}

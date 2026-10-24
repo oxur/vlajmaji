@@ -1188,6 +1188,11 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
     }
     let reg = doc.registry.document();
     let source_ids: BTreeSet<_> = reg.sources.iter().map(|x| x.id.clone()).collect();
+    let source_origins: BTreeMap<_, _> = reg
+        .sources
+        .iter()
+        .map(|x| (x.id.clone(), x.origin))
+        .collect();
     let contributor_ids: BTreeSet<_> = reg.contributors.iter().map(|x| x.id.clone()).collect();
     let distributor_ids: BTreeSet<_> = reg.distributors.iter().map(|x| x.id.clone()).collect();
     for attribution in &reg.occurrences {
@@ -1224,9 +1229,10 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
         .collect();
     for c in &doc.captures {
         if !bindings.contains_key(&(c.identity.namespace.clone(), c.identity.sha256.clone())) {
-            return Err(DictionaryError::InvalidDocument(
-                "capture lacks registry source binding".into(),
-            ));
+            return Err(missing(format!(
+                "capture {} lacks registry source binding",
+                c.identity.namespace
+            )));
         }
     }
     let m = &doc.metadata;
@@ -1268,6 +1274,7 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
     let comps: BTreeMap<_, _> = m.components.iter().map(|x| (x.id.clone(), x)).collect();
     let collections: BTreeMap<_, _> = m.collections.iter().map(|x| (x.id.clone(), x)).collect();
     let releases: BTreeMap<_, _> = m.releases.iter().map(|x| (x.id.clone(), x)).collect();
+    let mut release_capture_memberships = BTreeMap::<EntityId, BTreeSet<CaptureRef>>::new();
     let editorial_ids: BTreeMap<_, _> = m
         .editorial_senses
         .iter()
@@ -1353,6 +1360,7 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
                 r.id
             )));
         }
+        release_capture_memberships.insert(r.id.clone(), capture_membership.clone());
         let mut assertion_membership = BTreeSet::new();
         if r.assertions
             .iter()
@@ -1392,7 +1400,7 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
                         r.id
                     )));
                 }
-                if !r.captures.contains(&occurrence.capture) {
+                if !capture_membership.contains(&occurrence.capture) {
                     return Err(DictionaryError::MissingReference(format!(
                         "release {} diagnostic references a capture outside its release",
                         r.id
@@ -1502,7 +1510,7 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
             && (!absent_capture_sources.contains_key(&a.occurrence.capture)
                 || !catalogue_membership)
         {
-            return Err(DictionaryError::InvalidDocument(format!(
+            return Err(missing(format!(
                 "assertion {} occurrence is neither loaded nor named by an unavailable release",
                 a.id
             )));
@@ -1643,9 +1651,10 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
     }
     for f in &m.forms {
         if !entries.contains_key(&f.entry) {
-            return Err(DictionaryError::InvalidDocument(
-                "form entry missing".into(),
-            ));
+            return Err(missing(format!(
+                "form {} entry {} is absent or has the wrong role",
+                f.id, f.entry
+            )));
         }
         match f.kind {
             FormKind::ComputedStem
@@ -1677,9 +1686,10 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
                 .or_else(|| absent_capture_sources.get(&e.occurrence.capture))
                 .ok_or_else(|| missing(format!("form {} evidence has no source binding", f.id)))?;
             if source != &entries[&f.entry].source {
-                return Err(DictionaryError::InvalidDocument(
-                    "form evidence belongs to another source".into(),
-                ));
+                return Err(DictionaryError::InvalidProvenance(format!(
+                    "form {} evidence belongs to another source",
+                    f.id
+                )));
             }
         }
         if f.computation
@@ -1719,10 +1729,10 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
         }
         for component in &e.components {
             if let Some(target) = &component.target
-                && (!matches!(target, LocalRef::Entry(_)) || !local_exists(target))
+                && !local_exists(target)
             {
                 return Err(missing(format!(
-                    "etymology {} component target is absent or is not an entry",
+                    "etymology {} component target is absent or has the wrong role",
                     e.id
                 )));
             }
@@ -1745,9 +1755,10 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
         }
         if let LocalRef::Entry(id) = &r.origin {
             if !entries.contains_key(id) {
-                return Err(DictionaryError::InvalidDocument(
-                    "relation origin entry missing".into(),
-                ));
+                return Err(missing(format!(
+                    "relation {} origin entry {} is absent or has the wrong role",
+                    r.id, id
+                )));
             }
         } else if !local_exists(&r.origin) {
             return Err(missing(format!(
@@ -1827,10 +1838,11 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
                     r.id
                 )));
             }
-            if t.occurrence
-                .as_ref()
-                .is_some_and(|o| !release.captures.contains(&o.capture))
-            {
+            if t.occurrence.as_ref().is_some_and(|o| {
+                !release_capture_memberships
+                    .get(&t.release)
+                    .is_some_and(|members| members.contains(&o.capture))
+            }) {
                 return Err(missing(format!(
                     "catalogue target {} occurrence is outside its release",
                     r.id
@@ -1869,13 +1881,7 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
                 r.id, r.editor
             )));
         }
-        if !matches!(
-            reg.sources
-                .iter()
-                .find(|s| s.id == r.source)
-                .map(|s| s.origin),
-            Some(super::SourceOrigin::OwnedDraft)
-        ) {
+        if source_origins.get(&r.source) != Some(&super::SourceOrigin::OwnedDraft) {
             return Err(DictionaryError::InvalidHistory(format!(
                 "revision {} source {} is not registered as an owned draft",
                 r.id, r.source
@@ -1932,7 +1938,7 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
         for a in &r.tombstones {
             if !tombstones.insert(a.clone())
                 || !assertions.contains_key(a)
-                || r.assertions.contains(a)
+                || assertion_ids.contains(a)
                 || !ancestor_assertions.contains(a)
             {
                 return Err(DictionaryError::InvalidHistory(format!(
@@ -1978,9 +1984,10 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
     }
     for c in &m.computations {
         if c.tool.is_empty() || c.tool_version.is_empty() || c.policy.is_empty() {
-            return Err(DictionaryError::InvalidDocument(
-                "incomplete computation provenance".into(),
-            ));
+            return Err(DictionaryError::InvalidProvenance(format!(
+                "computation {} requires tool, version, and policy",
+                c.id
+            )));
         }
         for input in &c.inputs {
             match input {
@@ -2034,6 +2041,21 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
     }
     if let Some(raw) = &doc.legacy_archive {
         let lex = Lexicon::from_archive_bytes(raw)?;
+        let mut legacy_rows_by_capture: BTreeMap<_, BTreeMap<String, _>> = lex
+            .snapshots()
+            .into_iter()
+            .map(|snapshot| (CaptureRef::from(snapshot), BTreeMap::new()))
+            .collect();
+        for row in lex.records() {
+            let capture = CaptureRef::from(row.identity().snapshot());
+            let rows = legacy_rows_by_capture.get_mut(&capture).ok_or_else(|| {
+                DictionaryError::InvalidLegacy(ImportError::InvalidRecord {
+                    locator: row.identity().locator().into(),
+                    reason: "legacy record references an absent snapshot".into(),
+                })
+            })?;
+            rows.insert(row.identity().locator().to_owned(), row);
+        }
         for s in lex.snapshots() {
             let r = CaptureRef::from(s);
             let sm = lex.source_metadata(s).ok_or_else(|| {
@@ -2068,12 +2090,12 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
                     "legacy source metadata changed".into(),
                 ));
             }
-            let rows: BTreeMap<_, _> = lex
-                .records()
-                .iter()
-                .filter(|row| row.identity().snapshot() == s)
-                .map(|row| (row.identity().locator(), row))
-                .collect();
+            let rows = legacy_rows_by_capture.get(&r).ok_or_else(|| {
+                DictionaryError::InvalidLegacy(ImportError::InvalidRecord {
+                    locator: r.namespace.clone(),
+                    reason: "legacy snapshot has no indexed record group".into(),
+                })
+            })?;
             let captured_rows: BTreeMap<_, _> = cap
                 .occurrences
                 .iter()
@@ -2085,7 +2107,7 @@ fn validate(doc: &DictionaryDocument) -> Result<(), DictionaryError> {
                 ));
             }
             for (locator, row) in rows {
-                let found = captured_rows.get(locator).ok_or_else(|| {
+                let found = captured_rows.get(locator.as_str()).ok_or_else(|| {
                     DictionaryError::InvalidDocument("legacy locator changed".into())
                 })?;
                 if found.raw_line.as_deref() != row.raw_line()
@@ -2148,9 +2170,10 @@ fn validate_evidence(
     let occ = occurrence_rows.get(&e.occurrence).copied();
     let Some(occ) = occ else {
         if !absent_capture_sources.contains_key(&e.occurrence.capture) {
-            return Err(DictionaryError::InvalidDocument(
-                "evidence occurrence is neither loaded nor catalogued unavailable".into(),
-            ));
+            return Err(DictionaryError::MissingReference(format!(
+                "evidence occurrence {} is neither loaded nor catalogued unavailable",
+                e.occurrence.locator
+            )));
         }
         if e.offset
             .as_ref()
