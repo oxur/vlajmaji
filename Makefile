@@ -14,7 +14,7 @@ PROJECT_NAME := Vlajmaji
 BINARIES := vlajmaji
 RUST_TOOLCHAIN ?= 1.98.0
 CARGO ?= cargo
-PYTHON ?= python3
+BASH ?= /bin/bash
 GIT ?= git
 CRATE ?=
 TRACKED_FILES ?=
@@ -81,7 +81,7 @@ check-tools:
 	@$(CARGO) +$(RUST_TOOLCHAIN) fmt --version >/dev/null
 	@$(CARGO) +$(RUST_TOOLCHAIN) clippy --version >/dev/null
 	@command -v "$(GIT)" >/dev/null || { printf '%b✗ git not found%b\n' '$(RED)' '$(RESET)' >&2; exit 1; }
-	@command -v "$(PYTHON)" >/dev/null || { printf '%b✗ Python not found%b\n' '$(RED)' '$(RESET)' >&2; exit 1; }
+	@command -v "$(BASH)" >/dev/null || { printf '%b✗ Bash not found%b\n' '$(RED)' '$(RESET)' >&2; exit 1; }
 	@printf '%b✓ Required tools available%b\n%b→ Coverage tooling is optional%b\n' '$(GREEN)' '$(RESET)' '$(YELLOW)' '$(RESET)'
 
 build:
@@ -155,7 +155,9 @@ docs:
 
 test-tools:
 	@printf '%bRunning Make/planning helper tests...%b\n' '$(BLUE)' '$(RESET)'
-	@PYTHONDONTWRITEBYTECODE=1 $(PYTHON) -m unittest discover -s tests -p 'test_build_tools.py' -v
+	@"$(BASH)" -n scripts/planning-worktree.sh
+	@"$(BASH)" -n tests/test-build-tools.sh
+	@"$(BASH)" tests/test-build-tools.sh
 	@printf '%b✓ Tooling tests passed%b\n' '$(GREEN)' '$(RESET)'
 
 check: check-tools fmt-check lint test-default docs test-tools
@@ -177,7 +179,7 @@ tracked-files:
 
 planning:
 	@printf '%bSetting up the planning worktree...%b\n' '$(BLUE)' '$(RESET)'
-	@$(PYTHON) scripts/planning-worktree.py --remote origin --branch planning --path .worktrees/planning
+	@"$(BASH)" scripts/planning-worktree.sh --remote origin --branch planning --path .worktrees/planning
 	@printf '%b✓ Planning worktree ready%b\n' '$(GREEN)' '$(RESET)'
 
 planning-worktree: planning

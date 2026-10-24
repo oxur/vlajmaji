@@ -60,6 +60,9 @@ The latest published release is 0.1.0, whose CLI command is still `relojban-sear
 
 Run `make help` for build, test, lint, documentation, and publishing targets.
 `make check` runs the core quality gates.
+The Make helpers require Bash 3.2 or newer and Git; Python is not needed.
+`make test-tools` runs the Bash tooling suite with disposable local Git remotes
+and a Cargo stub, without building Rust or accessing the network.
 
 `make build` builds and copies `vlajmaji` to `./bin`; `make build-release` does
 the same for an optimized build. Set `INSTALL_DIR=./local-bin` to choose another
