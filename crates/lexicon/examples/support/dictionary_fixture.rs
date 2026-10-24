@@ -1,4 +1,4 @@
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 use std::error::Error;
 use vlajmaji_lexicon::{
     AbbreviationKind, AliasStatus, ArgumentFrameRecord, ArgumentSlot, AssertionRecord,
@@ -73,11 +73,11 @@ fn fixture_string(raw: &str) -> Option<String> {
 
 pub fn complete_fixture() -> Result<Dictionary, Box<dyn Error>> {
     let farvi_five = r#"{"definitionid":69002,"valsiword":"farvi","valsiid":333,"langid":2,"definition":"$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$","notes":"","etymology":null,"selmaho":null,"jargon":"","definitionnum":69002,"langrealname":"English","username":"suzil","time":1479570326,"created_at":"2016-11-19T15:45:26Z","type_name":"gismu","official_rafsi":"fav farv","experimental_rafsi":null,"rafsi":"fav farv","score":1.0,"comment_count":null,"gloss_keywords":null,"place_keywords":null,"user_vote":null,"owner_only":false,"can_edit":false,"has_image":false,"sound_url":"/api/jbovlaste/valsi/farvi/sound","embedding":null,"similarity":null}"#;
-    let farvi_four = r#"{"definitionid":333,"valsiword":"farvi","valsiid":333,"langid":2,"definition":"$x_{1}$ develops/evolves towards/into $x_{2}$ from $x_{3}$ through stages $x_{4}.","notes":"See also {pruce}, {banro}, {makcu}, {ciste}, {cupra}, {ferti}.","etymology":null,"selmaho":null,"jargon":null,"definitionnum":1,"langrealname":"English","username":"officialdata","time":1046655416,"created_at":"2003-03-03T01:36:56Z","type_name":"gismu","official_rafsi":"fav farv","experimental_rafsi":null,"rafsi":"fav farv","score":100002.0,"comment_count":null,"gloss_keywords":null,"place_keywords":null,"user_vote":null,"owner_only":true,"can_edit":false,"has_image":false,"sound_url":"/api/jbovlaste/valsi/farvi/sound","embedding":null,"similarity":null}"#;
+    let farvi_four = r#"{"definitionid":333,"valsiword":"farvi","valsiid":333,"langid":2,"definition":"$x_{1}$ develops/evolves towards/into $x_{2}$ from $x_{3}$ through stages $x_{4}$.","notes":"See also {pruce}, {banro}, {makcu}, {ciste}, {cupra}, {ferti}.","etymology":null,"selmaho":null,"jargon":null,"definitionnum":1,"langrealname":"English","username":"officialdata","time":1046655416,"created_at":"2003-03-03T01:36:56Z","type_name":"gismu","official_rafsi":"fav farv","experimental_rafsi":null,"rafsi":"fav farv","score":100002.0,"comment_count":null,"gloss_keywords":null,"place_keywords":null,"user_vote":null,"owner_only":true,"can_edit":false,"has_image":false,"sound_url":"/api/jbovlaste/valsi/farvi/sound","embedding":null,"similarity":null}"#;
     let a_d1 = format!("[{farvi_five},{farvi_five},{farvi_four}]");
     let a_d2 = format!("[{farvi_five}]");
     let b_d1 = br#"[{"word":"farvi","definition":"a competing synthetic definition","word_type":"brivla"}]"#;
-    let a_words = r#"[{"word":"si'e","definition":"cmavo, MOI","word_type":"cmavo","selmaho":"MOI","notes":"synthetic note","rafsi":["sni"],"variant":"siʼe","pronunciation":"siʔe","etymology":null,"frame":[{"order":1,"label":"x1","description":"snow"}],"unknown":{"array":[1,true,null],"huge":1234567890123456789012345678901234567890}},{"word":"sie","definition":"distinct spelling","word_type":"cmavo","etymology":""},{"word":"Si'e","definition":"case retained","word_type":"cmavo"},{"word":"si’e","definition":"curly apostrophe retained","word_type":"cmavo"},{"word":".si'e","definition":"leading dot retained","word_type":"cmavo"},{"word":"sy","definition":"y spelling retained","word_type":"cmavo"},{"word":"bai","definition":"with; by means of","word_type":"cmavo","selmaho":"BAI"},{"word":"le jaica","definition":"a multiword spelling","word_type":"cmavo"},{"word":"cpana","definition":"above","word_type":"gismu","etymology":"derived source text","rafsi":"cpan"},{"word":"snime","definition":"snow","word_type":"gismu","rafsi":["snim"]}]"#;
+    let a_words = r#"[{"word":"si'e","definition":"cmavo, MOI","word_type":"cmavo","selmaho":"MOI","notes":"synthetic note","rafsi":["sni"],"variant":"siʼe","pronunciation":"siʔe","etymology":null,"frame":[{"order":1,"label":"x1","description":"snow"}],"native_sense_id":"synthetic-sense-si-e","source_see_also":null,"source_etymology_target":{"source":"source-m","release":"release-m","native_entry_id":"native-missing","occurrence":{"capture":{"namespace":"catalogue:m:future","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"}},"unknown":{"array":[1,true,null],"huge":1234567890123456789012345678901234567890}},{"word":"sie","definition":"distinct spelling","word_type":"cmavo","etymology":""},{"word":"Si'e","definition":"case retained","word_type":"cmavo"},{"word":"si’e","definition":"curly apostrophe retained","word_type":"cmavo"},{"word":".si'e","definition":"leading dot retained","word_type":"cmavo"},{"word":"sy","definition":"y spelling retained","word_type":"cmavo"},{"word":"bai","definition":"with; by means of","word_type":"cmavo","selmaho":"BAI"},{"word":"le jaica","definition":"a multiword spelling","word_type":"cmavo"},{"word":"cpana","definition":"above","word_type":"gismu","etymology":"derived source text","rafsi":"cpan"},{"word":"snime","definition":"snow","word_type":"gismu","rafsi":["snim"]}]"#;
     let cpana_line = format!("\n{}\n", " cpana              upon                                      x1 is upon/atop/resting on/lying on [the upper surface of] x2 in frame of reference/gravity x3   1e  63    (x1 may be object or event); (cf. se vasru, jbini, zvati, nenri, vreta, ckana, diklo, jibni, lamji, zutse, punji for lay upon, sarji, zbepi)").into_bytes();
     let o1 = br#"[{"word":"farvi","definition":"owned first wording","word_type":"brivla"}]"#;
     let o2 = br#"[{"word":"farvi","definition":"owned revised wording","word_type":"brivla"}]"#;
@@ -333,8 +333,8 @@ pub fn complete_fixture() -> Result<Dictionary, Box<dyn Error>> {
         caprows.push((cref, rows));
     }
     let mut assertion_for_ref = BTreeMap::<OccurrenceRef, EntityId>::new();
-    let mut entry_ids = BTreeMap::<(String, String), EntityId>::new();
     let mut entry_rows = Vec::new();
+    let mut entry_ids = BTreeSet::<EntityId>::new();
     let mut assertion_rows = Vec::new();
     let mut ix = 0usize;
     for (cref, rows) in &caprows {
@@ -342,22 +342,37 @@ pub fn complete_fixture() -> Result<Dictionary, Box<dyn Error>> {
             let oref = OccurrenceRef::from(row.identity());
             let src = source_by_capture[cref].clone();
             let word = row.word().unwrap_or("");
-            let entry_id = if word.is_empty() {
-                eid("entry-opaque")
-            } else {
-                let key = (src.to_string(), word.to_string());
-                if let Some(id) = entry_ids.get(&key) {
-                    id.clone()
-                } else {
-                    let id = eid(&format!("entry-{}", entry_ids.len() + 1));
-                    entry_ids.insert(key, id.clone());
-                    id
+            // Fixture identity is explicitly assigned by capture namespace and locator.
+            let entry_id = match (oref.capture.namespace.as_str(), oref.locator.as_str()) {
+                ("captured:a:d1", "/0" | "/1" | "/2") | ("captured:a:d2", "/0") => {
+                    eid("entry-a-farvi")
+                }
+                ("captured:b:d1", "/0") => eid("entry-b-farvi"),
+                ("owned:o:r1" | "owned:o:r2", "/0") => eid("entry-o-farvi"),
+                ("captured:a:lexical", "/0") => eid("entry-a-si-e"),
+                ("captured:a:lexical", "/1") => eid("entry-a-sie"),
+                ("captured:a:lexical", "/2") => eid("entry-a-capital-si-e"),
+                ("captured:a:lexical", "/3") => eid("entry-a-curly-si-e"),
+                ("captured:a:lexical", "/4") => eid("entry-a-dot-si-e"),
+                ("captured:a:lexical", "/5") => eid("entry-a-sy"),
+                ("captured:a:lexical", "/6") => eid("entry-a-bai"),
+                ("captured:a:lexical", "/7") => eid("entry-a-le-jaica"),
+                ("captured:a:lexical", "/8") => eid("entry-a-cpana"),
+                ("captured:a:lexical", "/9") => eid("entry-a-snime"),
+                ("captured:a:rafsi", "1") => eid("entry-a-snime"),
+                ("captured:a:gismu", "2") => eid("entry-a-cpana"),
+                _ if word.is_empty() && oref.capture.namespace == "captured:a:opaque" => {
+                    eid("entry-opaque")
+                }
+                _ => {
+                    return Err(format!(
+                        "fixture occurrence has no explicit entry assignment: {} {}",
+                        oref.capture.namespace, oref.locator
+                    )
+                    .into());
                 }
             };
-            if !entry_rows
-                .iter()
-                .any(|e: &vlajmaji_lexicon::EntryRecord| e.id == entry_id)
-            {
+            if entry_ids.insert(entry_id.clone()) {
                 let class = row.field("word_type");
                 let class2 = row.field("type_name");
                 let native = match class {
@@ -417,16 +432,12 @@ pub fn complete_fixture() -> Result<Dictionary, Box<dyn Error>> {
                 id: aid,
                 entry: entry_id,
                 occurrence: oref,
-                native_sense_id: match row.field("definition_id") {
-                    vlajmaji_lexicon::FieldPresence::Value(v) => Some(Presence::Value(v.into())),
-                    _ => match row.field("definitionid") {
-                        vlajmaji_lexicon::FieldPresence::Value(v) => {
-                            Some(Presence::Value(v.into()))
-                        }
-                        _ => None,
-                    },
-                }
-                .unwrap_or(Presence::Missing),
+                native_sense_id: match row.field("native_sense_id") {
+                    vlajmaji_lexicon::FieldPresence::Value(raw) => fixture_string(raw)
+                        .map(Presence::Value)
+                        .unwrap_or(Presence::Missing),
+                    _ => Presence::Missing,
+                },
                 language: Presence::Value("en".into()),
                 definition: def,
                 source_score: match row.field("score") {
@@ -992,21 +1003,24 @@ pub fn complete_fixture() -> Result<Dictionary, Box<dyn Error>> {
             evidence: evidence(a.occurrence.clone(), Some(idx)),
         });
     }
-    let a_farvi = md
-        .assertions
-        .iter()
-        .find(|a| a.occurrence.capture.namespace == "captured:a:d1" && a.occurrence.locator == "/0")
-        .unwrap()
-        .clone();
     md.relations = vec![
         RelationRecord {
             id: eid("relation-see"),
-            origin: LocalRef::Assertion(a_farvi.id.clone()),
+            origin: LocalRef::Entry(si_entry.clone()),
             kind: RelationKind::SourceSeeAlso,
             direction: vlajmaji_lexicon::Direction::Forward,
-            scope: RelationScope::Assertion,
+            scope: RelationScope::Entry,
             target: RelationTarget::Unknown,
-            evidence: Some(evidence(a_farvi.occurrence.clone(), Some(0))),
+            evidence: Some(evidence(
+                target.occurrence.clone(),
+                Some(
+                    rawrow
+                        .fields()
+                        .iter()
+                        .position(|f| f.name() == "source_see_also")
+                        .unwrap(),
+                ),
+            )),
             editorial_revision: None,
         },
         RelationRecord {
@@ -1025,7 +1039,16 @@ pub fn complete_fixture() -> Result<Dictionary, Box<dyn Error>> {
                     locator: "/0".into(),
                 }),
             }),
-            evidence: Some(evidence(target.occurrence.clone(), Some(0))),
+            evidence: Some(evidence(
+                target.occurrence.clone(),
+                Some(
+                    rawrow
+                        .fields()
+                        .iter()
+                        .position(|f| f.name() == "source_etymology_target")
+                        .unwrap(),
+                ),
+            )),
             editorial_revision: None,
         },
         RelationRecord {

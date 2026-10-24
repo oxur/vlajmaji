@@ -53,7 +53,7 @@ fn complete_public_fixture_roundtrips_all_source_and_metadata_rows() {
     assert_eq!(farvi.len(), 7);
     let five_place = "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$";
     let four_place =
-        "$x_{1}$ develops/evolves towards/into $x_{2}$ from $x_{3}$ through stages $x_{4}.";
+        "$x_{1}$ develops/evolves towards/into $x_{2}$ from $x_{3}$ through stages $x_{4}$.";
     let a_d1 = d
         .captures()
         .iter()
@@ -123,7 +123,19 @@ fn complete_public_fixture_roundtrips_all_source_and_metadata_rows() {
     assert!(
         a_rows
             .iter()
-            .any(|a| a.native_sense_id == Presence::Value("333".into()))
+            .all(|a| a.native_sense_id == Presence::Missing)
+    );
+    let synthetic_sense = d
+        .metadata()
+        .assertions
+        .iter()
+        .find(|a| {
+            a.occurrence.capture.namespace == "captured:a:lexical" && a.occurrence.locator == "/0"
+        })
+        .unwrap();
+    assert_eq!(
+        synthetic_sense.native_sense_id,
+        Presence::Value("synthetic-sense-si-e".into())
     );
     assert_eq!(
         d.metadata()
@@ -524,15 +536,33 @@ fn complete_fixture_keeps_native_presence_and_release_absence_distinct() {
     assert!(
         matches!(&d.metadata().etymologies[2].statement, Presence::Value(v) if v.text == "derived source text")
     );
-    assert!(
-        d.metadata()
-            .relations
-            .iter()
-            .any(|r| r.id.as_str() == "relation-see"
-                && matches!(&r.target, vlajmaji_lexicon::RelationTarget::Unknown))
-    );
+    let relation_see = d
+        .metadata()
+        .relations
+        .iter()
+        .find(|r| r.id.as_str() == "relation-see")
+        .unwrap();
+    assert_eq!(relation_see.scope, vlajmaji_lexicon::RelationScope::Entry);
+    assert!(matches!(
+        &relation_see.target,
+        vlajmaji_lexicon::RelationTarget::Unknown
+    ));
     assert!(d.metadata().relations.iter().any(|r| r.id.as_str() == "relation-unresolved" && matches!(&r.target, vlajmaji_lexicon::RelationTarget::Unresolved(v) if v == "unresolved target")));
     assert!(d.metadata().relations.iter().any(|r| r.id.as_str() == "relation-missing-catalogue" && matches!(&r.target, vlajmaji_lexicon::RelationTarget::Catalog(t) if t.source.as_str() == "source-m" && t.release.as_str() == "release-m" && t.native_entry_id.as_deref() == Some("native-missing"))));
+    let lexical = d
+        .captures()
+        .iter()
+        .find(|c| c.identity.namespace == "captured:a:lexical")
+        .unwrap();
+    let target = lexical.occurrences[0]
+        .fields
+        .iter()
+        .find(|f| f.name == "source_etymology_target")
+        .unwrap();
+    assert_eq!(
+        target.raw_value,
+        r#"{"source":"source-m","release":"release-m","native_entry_id":"native-missing","occurrence":{"capture":{"namespace":"catalogue:m:future","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"}}"#
+    );
     assert_eq!(
         d.metadata().owned_revisions[1]
             .parent
@@ -753,6 +783,18 @@ fn direct_serde_is_strict_and_identity_adapters_are_exact() {
     );
     assert_ne!(nested, json);
     assert!(serde_json::from_str::<Dictionary>(&nested).is_err());
+    let mut enum_wire = serde_json::to_value(d.document()).unwrap();
+    let excluded = d
+        .metadata()
+        .assertions
+        .iter()
+        .position(|a| matches!(a.eligibility, Eligibility::Excluded { .. }))
+        .unwrap();
+    enum_wire["metadata"]["assertions"][excluded]["eligibility"]["Excluded"]["unexpected"] =
+        serde_json::json!(true);
+    let enum_bytes = serde_json::to_vec(&enum_wire).unwrap();
+    assert!(serde_json::from_slice::<Dictionary>(&enum_bytes).is_err());
+    assert!(Dictionary::from_json_bytes(&enum_bytes).is_err());
     let capture = &d.captures()[0].identity;
     let legacy = capture.to_snapshot_identity().unwrap();
     assert_eq!(legacy.namespace(), capture.namespace);
@@ -806,7 +848,9 @@ fn known_missing_capture_can_retain_unverifiable_projection_with_unknown_counts(
             }),
             source_score: Presence::Missing,
             timestamps: vec![],
-            eligibility: Eligibility::Lexical,
+            eligibility: Eligibility::Excluded {
+                reason: "source spelling unavailable".into(),
+            },
         });
     release.assertions.push(assertion.clone());
     d.metadata.contexts.push(vlajmaji_lexicon::ContextRecord {
@@ -827,4 +871,99 @@ fn known_missing_capture_can_retain_unverifiable_projection_with_unknown_counts(
         },
     });
     assert!(Dictionary::from_document(d).is_ok());
+}
+
+#[test]
+fn declared_validation_categories_are_emitted_and_malformed_parent_paths_do_not_panic() {
+    let original = fixture_support::complete_fixture().unwrap();
+
+    let mut d = original.document();
+    d.metadata.entries.push(d.metadata.entries[0].clone());
+    assert!(matches!(
+        Dictionary::from_document(d),
+        Err(DictionaryError::DuplicateEntity(_))
+    ));
+
+    let mut d = original.document();
+    d.metadata.contexts[0].assertion = EntityId::new("missing-assertion").unwrap();
+    assert!(matches!(
+        Dictionary::from_document(d),
+        Err(DictionaryError::MissingReference(_))
+    ));
+
+    let mut d = original.document();
+    d.metadata
+        .releases
+        .iter_mut()
+        .find(|r| r.id.as_str() == "release-a")
+        .unwrap()
+        .accounting
+        .input_occurrences = Some(999);
+    assert!(matches!(
+        Dictionary::from_document(d),
+        Err(DictionaryError::InvalidAccounting(_))
+    ));
+
+    let mut d = original.document();
+    let missing = d
+        .metadata
+        .releases
+        .iter_mut()
+        .find(|r| r.id.as_str() == "release-m")
+        .unwrap();
+    missing.availability = Availability::Available;
+    missing.accounting.input_occurrences = Some(0);
+    missing.accounting.normalized_occurrences = Some(0);
+    missing.accounting.query_excluded_occurrences = Some(0);
+    assert!(matches!(
+        Dictionary::from_document(d),
+        Err(DictionaryError::InvalidAvailability(_))
+    ));
+
+    let mut d = original.document();
+    let computation = d.metadata.computations[0].id.clone();
+    let form = d
+        .metadata
+        .forms
+        .iter_mut()
+        .find(|f| f.kind == FormKind::ComputedStem)
+        .unwrap();
+    form.evidence = Some(d.metadata.contexts[0].evidence.clone());
+    form.computation = Some(computation);
+    assert!(matches!(
+        Dictionary::from_document(d),
+        Err(DictionaryError::InvalidProvenance(_))
+    ));
+
+    let mut d = original.document();
+    d.metadata.owned_revisions[0].parent = Some(d.metadata.owned_revisions[1].id.clone());
+    assert!(matches!(
+        Dictionary::from_document(d),
+        Err(DictionaryError::InvalidHistory(_))
+    ));
+
+    for access in 0..3 {
+        let mut malformed = original.document();
+        let second = malformed.metadata.owned_revisions[1].id.clone();
+        malformed.metadata.owned_revisions[0].parent = Some(second);
+        malformed.metadata.owned_revisions[1].parent =
+            Some(EntityId::new("missing-parent").unwrap());
+        let bytes = serde_json::to_vec(&malformed).unwrap();
+        match access {
+            0 => assert!(matches!(
+                Dictionary::from_document(malformed),
+                Err(DictionaryError::MissingReference(_))
+            )),
+            1 => assert!(
+                std::panic::catch_unwind(|| Dictionary::from_json_bytes(&bytes))
+                    .unwrap()
+                    .is_err()
+            ),
+            _ => assert!(
+                std::panic::catch_unwind(|| serde_json::from_slice::<Dictionary>(&bytes))
+                    .unwrap()
+                    .is_err()
+            ),
+        }
+    }
 }
