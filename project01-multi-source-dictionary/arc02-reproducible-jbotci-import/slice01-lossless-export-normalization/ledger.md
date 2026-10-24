@@ -19,3 +19,13 @@ failed/passing populations: artifacts/cdc-review-attempt01.md plus hashed small
 artifacts/cdc-review01/. All7rows remain OPEN. Current assignment iteration02,
 first executed refinement of5. CC retains all initial attempts; CDC source/target
 review interval ends on explicit repair handover. No S02 child is issued yet.
+
+## Candidate02 review,2026-10-24
+
+Frozenbbd64595 is REPAIR REQUIRED: actual33API cases (13positive/20errors)
+complete with one float-category disagreement;36/36CLI invocations pass. Huge
+native-number lead refuted under existing arbitrary_precision. Missing exact
+regular-file io assertion remains automatic-oracle gap. See artifacts/cdc-review-attempt02.md
+and hashed artifacts/cdc-review02/. All7rows OPEN; iteration03 second executed
+refinement of5. Source/target reassessed after operator cache cleanup before any
+rebuild; no full input/Make/release build repeated on known rejected candidate.

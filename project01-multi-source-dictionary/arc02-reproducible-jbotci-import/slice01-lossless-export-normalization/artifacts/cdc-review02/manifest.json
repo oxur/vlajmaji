@@ -1,0 +1,382 @@
+[
+  {
+    "path": "api-caller/Cargo.lock",
+    "bytes": 5019,
+    "sha256": "33d5e1432a46b070f1212a5bc9885d1675f36d71b837ad78c05369ccbf406ddf"
+  },
+  {
+    "path": "api-caller/Cargo.toml",
+    "bytes": 312,
+    "sha256": "4e912a2d4a36e2d29a9a3fa04509ac92b53c46157dd4455bd92907261de06ae7"
+  },
+  {
+    "path": "api-caller/src/main.rs",
+    "bytes": 15761,
+    "sha256": "f377a3be40ecfb8134982c181b43dbd147c68a753f7fce2c16236685e02ca736"
+  },
+  {
+    "path": "api-fixtures/changed-whitespace/meta.toml",
+    "bytes": 506,
+    "sha256": "3c8f1457f374cf75f2bd55be6ce2ab4fb48393878098255d12f47079649bda5e"
+  },
+  {
+    "path": "api-fixtures/changed-whitespace/raw.json",
+    "bytes": 289,
+    "sha256": "ba9eb4fd6085482caf54a63b954fb5d38e78e490e4df7ec3334c0c902fb317e7"
+  },
+  {
+    "path": "api-fixtures/count-mismatch/meta.toml",
+    "bytes": 508,
+    "sha256": "f383aa865db0573a7bb93656652d7c6848575c78d18635b76e3be3f831ce1722"
+  },
+  {
+    "path": "api-fixtures/count-mismatch/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/definition_id-huge-exponent/meta.toml",
+    "bytes": 506,
+    "sha256": "8ab2619f8a1d1b2edc2f283d0b3e80872c5c3c56dd498caa5563efa6598406a2"
+  },
+  {
+    "path": "api-fixtures/definition_id-huge-exponent/raw.json",
+    "bytes": 166,
+    "sha256": "3f87eb4dddf380cf3045e304ba35b60bfde479e3c9275b24e15aa44f04d411e5"
+  },
+  {
+    "path": "api-fixtures/definition_id-invalid/meta.toml",
+    "bytes": 506,
+    "sha256": "6e581293eaff885ba1aeb0da17c2464008e801fdec397dffb96e0067a42781ef"
+  },
+  {
+    "path": "api-fixtures/definition_id-invalid/raw.json",
+    "bytes": 247,
+    "sha256": "9e7863b4fc0f1d448e0895bb9f0db422536a4ef59528290fd6d0869eded507e4"
+  },
+  {
+    "path": "api-fixtures/definition_id-invalid-more/meta.toml",
+    "bytes": 506,
+    "sha256": "12342f6e4e973700397a3b84681e29f5cbb0710c420611ca3631d0d0eb34b5d4"
+  },
+  {
+    "path": "api-fixtures/definition_id-invalid-more/raw.json",
+    "bytes": 196,
+    "sha256": "40915ac7c36bcbb1aa79c9891441d61a9641dd9318976b31283aafc5a6d00e0e"
+  },
+  {
+    "path": "api-fixtures/definition_id-valid/meta.toml",
+    "bytes": 506,
+    "sha256": "9e3ea97ac58d1354675d279858ffba0a6fd6522b884c1b544da1d31a778f5bb4"
+  },
+  {
+    "path": "api-fixtures/definition_id-valid/raw.json",
+    "bytes": 272,
+    "sha256": "40c5acbbb3ac2e38e2c7b0ec12659c10406b6216c29c6cfe0a461d8fbe98b719"
+  },
+  {
+    "path": "api-fixtures/definition_id-valid-more/meta.toml",
+    "bytes": 506,
+    "sha256": "df60ec15665e0c45f4f51b276dd2c65313034d9cebfb06811c0714956fac4b7a"
+  },
+  {
+    "path": "api-fixtures/definition_id-valid-more/raw.json",
+    "bytes": 584,
+    "sha256": "dc9f04cf97d29c9606543e4b57549a8a3ad22d5f28f1085af2ed5ef13059fdfd"
+  },
+  {
+    "path": "api-fixtures/duplicate-native-and-complete/meta.toml",
+    "bytes": 506,
+    "sha256": "2faa5d0043392b52ed31e2451e65887a1cefa6a695f77c4ec639cbdca10bd677"
+  },
+  {
+    "path": "api-fixtures/duplicate-native-and-complete/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/empty-export/meta.toml",
+    "bytes": 506,
+    "sha256": "11237116c37d3aff40d53d0c352a33d18c64e07273f8e627b97d1d6ef42abe38"
+  },
+  {
+    "path": "api-fixtures/empty-export/raw.json",
+    "bytes": 2,
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "path": "api-fixtures/manifest.json",
+    "bytes": 17546,
+    "sha256": "84517f0cafb0f9bdac59d98bf40901a2869077dd3b044308d3cd2eff59b174e7"
+  },
+  {
+    "path": "api-fixtures/metadata-duplicate/meta.toml",
+    "bytes": 522,
+    "sha256": "b9d564f65df23aa97e3360e839dee6a226190047cf05d4185227ad157d004854"
+  },
+  {
+    "path": "api-fixtures/metadata-duplicate/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-empty-key/meta.toml",
+    "bytes": 513,
+    "sha256": "a26c233bcb5c3ab040edda1197dab7f8f1b1fd2e020b7ba88175cccc1edaa6d7"
+  },
+  {
+    "path": "api-fixtures/metadata-empty-key/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-empty-rhs/meta.toml",
+    "bytes": 512,
+    "sha256": "8817808233f98709d22c4eed1f726442be986684134ad30e2ca7ec2af2f5d867"
+  },
+  {
+    "path": "api-fixtures/metadata-empty-rhs/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-false-junk/meta.toml",
+    "bytes": 523,
+    "sha256": "dbcf970f4e1be2cf1dfd1b76c59f7b64b6f5b8d4120c7bf7ca823c64f0f60ddc"
+  },
+  {
+    "path": "api-fixtures/metadata-false-junk/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-integer-junk/meta.toml",
+    "bytes": 520,
+    "sha256": "59f4ae6e93f24dac07624a77565990bba0f6ee06b79f5077c5abe8c950ca71e1"
+  },
+  {
+    "path": "api-fixtures/metadata-integer-junk/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-missing-key/meta.toml",
+    "bytes": 490,
+    "sha256": "730649cb53442c0c949b3701404c655117279b479d71bddd9d5425bdb74954bb"
+  },
+  {
+    "path": "api-fixtures/metadata-missing-key/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-quoted-key/meta.toml",
+    "bytes": 519,
+    "sha256": "7288aca9413fc2c555c6d02c2e1e21c723bf63cbcc71059ec1ac20a49b7bc0f1"
+  },
+  {
+    "path": "api-fixtures/metadata-quoted-key/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-raw-hash/meta.toml",
+    "bytes": 506,
+    "sha256": "652103b77f47d07d4c41645a90a02aa11bc7439dad69dd8dc109f3a56f6812b1"
+  },
+  {
+    "path": "api-fixtures/metadata-raw-hash/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-single-quote/meta.toml",
+    "bytes": 517,
+    "sha256": "52ff1657478b4a41f003785ee0652f18ec7ed60e7d25c660fa0047d977679f11"
+  },
+  {
+    "path": "api-fixtures/metadata-single-quote/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-string-junk/meta.toml",
+    "bytes": 522,
+    "sha256": "f2c733eea8aa8b0215b41116b94d84196b907fee377c2919f3f1b834a4535721"
+  },
+  {
+    "path": "api-fixtures/metadata-string-junk/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-trailing/meta.toml",
+    "bytes": 522,
+    "sha256": "21e04e7c6a9372b992f97429971b7f02f218e0dd6f1402b599c4ce59e2f77002"
+  },
+  {
+    "path": "api-fixtures/metadata-trailing/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-utf8/meta.toml",
+    "bytes": 1,
+    "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+  },
+  {
+    "path": "api-fixtures/metadata-utf8/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/metadata-valid-float-unsupported/meta.toml",
+    "bytes": 516,
+    "sha256": "c79a21ab97ae5160db869ba4ef7da66874a07f517c8f677167926e0eb13caba8"
+  },
+  {
+    "path": "api-fixtures/metadata-valid-float-unsupported/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/raw-utf8/meta.toml",
+    "bytes": 506,
+    "sha256": "f6b28c1ce4634e3a666d898ce80ee0ccce72412d734f0d61755f8228b977320c"
+  },
+  {
+    "path": "api-fixtures/raw-utf8/raw.json",
+    "bytes": 1,
+    "sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+  },
+  {
+    "path": "api-fixtures/selmaho-invalid/meta.toml",
+    "bytes": 506,
+    "sha256": "c85f88830ad441bf22223f190cfca44918e1b83bec7748619d4c5bee47578864"
+  },
+  {
+    "path": "api-fixtures/selmaho-invalid/raw.json",
+    "bytes": 271,
+    "sha256": "a9484aba6051060de760f5fb9eb4d49e9e2ec476b596c73751db71b9665a1f37"
+  },
+  {
+    "path": "api-fixtures/selmaho-invalid-more/meta.toml",
+    "bytes": 506,
+    "sha256": "87e18932d8e2e9b2e22dacece0fa7386348fe45940f9c31f6965144ad4159a33"
+  },
+  {
+    "path": "api-fixtures/selmaho-invalid-more/raw.json",
+    "bytes": 273,
+    "sha256": "1818c867560dd7d423d56fb01b0004d730af0ad2675e4fc7e5613ea686e5f0a3"
+  },
+  {
+    "path": "api-fixtures/selmaho-valid/meta.toml",
+    "bytes": 506,
+    "sha256": "a9d1107fcf46ae3082766430bcb3288a4847e2c56fe1c78d99a8ecd97aac1934"
+  },
+  {
+    "path": "api-fixtures/selmaho-valid/raw.json",
+    "bytes": 264,
+    "sha256": "060536629ec5678b330e5b75e8ab7eba60853ac00915015359e663e3936d55e0"
+  },
+  {
+    "path": "api-fixtures/selmaho-valid-more/meta.toml",
+    "bytes": 506,
+    "sha256": "8e5b5a080bbc875af3a6a9dd95109fadd613e22edd6f5dbdc29fb20bcb4029cb"
+  },
+  {
+    "path": "api-fixtures/selmaho-valid-more/raw.json",
+    "bytes": 349,
+    "sha256": "68bff9e038ebc690cd827e86608a157df8a86498bc0f71a99291a5de47cf91f3"
+  },
+  {
+    "path": "api-fixtures/syntax/meta.toml",
+    "bytes": 506,
+    "sha256": "6f701bc57c24314c8e90867f21a9fb728a59eb41522d3943e84642b55142749f"
+  },
+  {
+    "path": "api-fixtures/syntax/raw.json",
+    "bytes": 1,
+    "sha256": "245843abef9e72e7efac30138a994bf6301e7e1d7d7042a33d42e863d2638811"
+  },
+  {
+    "path": "api-fixtures/unsupported-format/meta.toml",
+    "bytes": 505,
+    "sha256": "88c95a9ffbafd85a0d5ae63471b0838f1b8c847773079d45b9fc04b4142b1524"
+  },
+  {
+    "path": "api-fixtures/unsupported-format/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/wrong-metadata-hash/meta.toml",
+    "bytes": 506,
+    "sha256": "2faa5d0043392b52ed31e2451e65887a1cefa6a695f77c4ec639cbdca10bd677"
+  },
+  {
+    "path": "api-fixtures/wrong-metadata-hash/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/wrong-options/meta.toml",
+    "bytes": 506,
+    "sha256": "2faa5d0043392b52ed31e2451e65887a1cefa6a695f77c4ec639cbdca10bd677"
+  },
+  {
+    "path": "api-fixtures/wrong-options/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/wrong-raw-hash/meta.toml",
+    "bytes": 506,
+    "sha256": "2faa5d0043392b52ed31e2451e65887a1cefa6a695f77c4ec639cbdca10bd677"
+  },
+  {
+    "path": "api-fixtures/wrong-raw-hash/raw.json",
+    "bytes": 288,
+    "sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67"
+  },
+  {
+    "path": "api-fixtures/wrong-root/meta.toml",
+    "bytes": 506,
+    "sha256": "80e6b20cee1d1ca7637c4d2b6ff676998b3ef2c9f8162186ee4e987edcfb32a8"
+  },
+  {
+    "path": "api-fixtures/wrong-root/raw.json",
+    "bytes": 2,
+    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "path": "cli-results.json",
+    "bytes": 27492,
+    "sha256": "44199695c0bd1cc2ba76d642f1f41de4c612a086c1cf055ad9ddf01e3b05f6ff"
+  },
+  {
+    "path": "cli_controls02.py",
+    "bytes": 18674,
+    "sha256": "23a7507f14b1ffeda715cae89571bc5d1a3985fc54a1343511b413983ab5b273"
+  },
+  {
+    "path": "resource-assessment.json",
+    "bytes": 2016,
+    "sha256": "60c40483f6515a7eb3789fe3059371c6109e6754d57c25d1cf1c37316fdfce42"
+  },
+  {
+    "path": "s01-api-controls-attempt02.log",
+    "bytes": 1259,
+    "sha256": "65e3f855b3d16b8a21d7ca48cddbb4b1c30f385abaeacf8a0ddc03580c337b58"
+  },
+  {
+    "path": "s01-cli-build-attempt02.log",
+    "bytes": 177,
+    "sha256": "2cb9667812df98512fb0b3d69a9ab38cf07444eb5bed8d9761ca58aecf0d72f0"
+  },
+  {
+    "path": "s01-cli-controls-attempt02.log",
+    "bytes": 112,
+    "sha256": "40892d09b51330886d5d7b06dadceec3d23f9d8d10b6ea97e35030d9b0f91da4"
+  }
+]

@@ -2,11 +2,11 @@
 
 | Field | Value |
 | --- | --- |
-| status/version | OPEN/repair required after frozen candidate01 independent review /1.2,2026-10-24 |
-| source | candidate01 23d057bf (initial d1e1c928); feature/project01-full-jbotci-import; isolated Arc02checkout |
+| status/version | OPEN/repair required after frozen candidate02 independent review /1.3,2026-10-24 |
+| source | candidate02 bbd64595 (initial d1e1c928); feature/project01-full-jbotci-import; isolated Arc02checkout |
 | depends-on | A01Dictionary/registry, current baseline and full pinned raw+metadata |
 | delivery | Public Rust importer + local CLI import/check + complete normalized JSON usable before SQLite |
-| current assignment | cc-prompt-iteration02.md (first executed refinement of5; candidate01 not accepted) |
+| current assignment | cc-prompt-iteration03.md (second executed refinement of5; candidate02 not accepted) |
 | artifact home | artifacts/; CC writes only artifacts/cc-execution.md; CDC owns canonical planning |
 
 Provide lossless fullrawexport normalization and useful Rust/CLI entrypoints.
@@ -50,7 +50,10 @@ shapes produce retained excluded assertions/diagnostics, not whole-import failur
 Metadata is the pinned supplier's12key simple assignment format, not a general
 TOMLAPI. Implement a documented deliberately bounded parser: blank/commentlines,
 unique barekeys, values JSON-compatible doublequotedstrings/booleans/nonnegative
-u64integers. Required keys are all12observedkeys; forbid duplicatekeys, malformed
+u64integers. Complete valid JSON numeric literals outside that unsigned-integer
+subset are UnsupportedMetadata; all-digit u64 overflow remains InvalidMetadata,
+as do malformed/trailing supported literals. This is not a general TOML validity
+classifier. Required keys are all12observedkeys; forbid duplicatekeys, malformed
 value/trailingjunk and unsupported required shapes. Unknown simplekeys remain
 captured and diagnosed, never silently overwritten. No section/multiline/general
 TOMLclaim; a future unsupportedsource change yields named metadataerror. Require
@@ -217,7 +220,8 @@ Consequentialdecisions not delegated toCC; localhelpermechanics remain local.
 | --- | --- | --- | --- |
 | cc-prompt.md |2026-10-24 | Initial useful full export normalizer/API/CLI from verified d1e1c928/84c1694 | superseded before dependent edits; intake retained |
 | cc-prompt-iteration01.md |2026-10-24 | Pre-edit clarification of existing revision+raw+metadata release identity; root surfaced provenance-only update interaction | superseded by iteration02 after candidate01 review; original intake/source evidence retained |
-| cc-prompt-iteration02.md |2026-10-24 | Frozen23d057bf independently reviewed: optional diagnostics, malformed metadata, duplicate-row raw extension, truthful pinned notices, useful example, CLI regression and filename corrections | current/issued; first executed refinement of5, all7rowsOPEN |
+| cc-prompt-iteration02.md |2026-10-24 | Frozen23d057bf independently reviewed: optional diagnostics, malformed metadata, duplicate-row raw extension, truthful pinned notices, useful example, CLI regression and filename corrections | superseded after candidate02 review; first executed refinement retained, all7rowsOPEN |
+| cc-prompt-iteration03.md |2026-10-24 | Candidate02 independently completed33API/36CLI; sole API float-category mismatch plus missing regular-file io assertion; huge-number lead refuted | current/issued; second executed refinement of5, all7rowsOPEN |
 
 ## Version history
 
@@ -225,3 +229,5 @@ Consequentialdecisions not delegated toCC; localhelpermechanics remain local.
 -1.1 —2026-10-24: root review highlighted explicit provenance-only update oracle; preserved iteration01 supersedes unstartedinitial assignment. Existing revision-aware release identity retained; exact raw tuples/row IDs stay stable for byte-identical distribution updates. No product defect or source change, no acceptance/scope reduction.
 
 -1.2 —2026-10-24: candidate01 proposed-done rejected at independent controls; actual passing915570 full-field checks/30CLI controls and failed cases preserved in artifacts/cdc-review-attempt01.md. Iteration02 binds repairs without reducing scope. Full raw input unchanged, no S02 implementation issued.
+
+-1.3 —2026-10-24: preserve candidate02 review/resource interruption and issue narrow numeric metadata/error-oracle correction. No dependency/feature widening; raw input and all original obligations unchanged.

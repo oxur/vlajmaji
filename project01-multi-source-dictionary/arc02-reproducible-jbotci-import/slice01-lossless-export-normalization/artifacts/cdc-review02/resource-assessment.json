@@ -1,0 +1,48 @@
+{
+  "recorded_at_utc": "2026-10-24T22:21:09.881290+00:00",
+  "operator_report": "Duncan cleaned target/debug and target/release paths across lab/oxur; may include this repository",
+  "source": "bbd6459510f7105fc6ad6b60eb8da3352ad9f874 clean",
+  "planning": "e534cbc2510ad10a65fcb22315c4a8d1fb497dc7; only cc-execution untracked",
+  "target": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+  "target_size_observed": "14GiB",
+  "release_directory_exists": false,
+  "free_observed": "190GiB",
+  "guard_sha256": "a19c3f1f83e40c97d21109f6b280969bc879c47ab587e529d1e28512b2a61430",
+  "process_snapshot": "no matching cargo/rustc/vlajmaji/make check/test-build-tools commands; no termination",
+  "snapshot_tool_outputs": [
+    "55e3d4",
+    "587b79",
+    "4fe73d"
+  ],
+  "debug_rebuilds": {
+    "outside_caller_seconds": 1.29,
+    "CLI_seconds": 0.17
+  },
+  "executables_after_rebuild": [
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "exists": true,
+      "bytes": 32030104,
+      "sha256": "8ed03c16cdad9cf757bfb8112ec62fa03e65e9bb1067bd8a557c6303efbf7b7f"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/a02_cdc_api_controls_20261024a",
+      "exists": true,
+      "bytes": 10979728,
+      "sha256": "776b6c18ad90392828f7308f0d68e0a1afb1d3ee03ccc9b49e2e7fb32ce26e4b"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/import_jbotci",
+      "exists": true,
+      "bytes": 9418784,
+      "sha256": "5f74bd8b746a793d61d21c48a52e41d303746b99b2b899d2b388592ed9f38f28"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji_p01_a02_s01_iteration02_public_caller_bin_20261024",
+      "exists": true,
+      "bytes": 9383072,
+      "sha256": "53b93dadfcfcf26cc3ba4f30832d60890d0547db7d9ef6cc9f2924eb0eb8d0f7"
+    }
+  ],
+  "no_full_import_make_or_release_build": true
+}
