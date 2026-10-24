@@ -1,7 +1,7 @@
 """Prospective independent S03 tamper/constraint controls; no candidate run at authorship.
 Each setup is committed on a fresh closed copy; failed setup is recorded separately.
 """
-import hashlib,json,pathlib,shutil,sqlite3,subprocess,sys
+import hashlib,json,pathlib,re,shutil,sqlite3,subprocess,sys
 BIN=pathlib.Path(sys.argv[1]); BASE=pathlib.Path(sys.argv[2]); ROOT=pathlib.Path(sys.argv[3]);ROOT.mkdir(exist_ok=True)
 results=[]
 def tree(p):return {str(x.relative_to(p)):hashlib.sha256(x.read_bytes()).hexdigest() for x in p.rglob('*') if x.is_file()}
@@ -33,6 +33,38 @@ check('schema-extra-view',sql('CREATE VIEW unexpected_view AS SELECT id FROM sou
 def drop_index(c):
     row=c.execute("SELECT name FROM sqlite_schema WHERE type='index' AND sql IS NOT NULL AND tbl_name='entries' ORDER BY name LIMIT 1").fetchone();assert row,'required spelling index absent';c.execute('DROP INDEX "'+row[0]+'"')
 check('schema-missing-required-index',drop_index,'ERR InvalidStore SchemaShape')
+check('schema-missing-table',sql('DROP TABLE annotations'),'ERR InvalidStore SchemaShape')
+def schema_rule(c,kind):
+    table='source_aliases' if kind=='fk' else 'entries'
+    original=c.execute("SELECT sql FROM sqlite_schema WHERE type='table' AND name=?",(table,)).fetchone()[0]
+    if kind=='fk':
+        # Remove one full table FK clause, or its inline REFERENCES clause, retaining columns.
+        tail=r'REFERENCES\s+["`\[]?sources["`\]]?\s*\([^)]*\)(?:\s+DEFERRABLE\s+INITIALLY\s+DEFERRED)?'
+        changed,n=re.subn(r',\s*FOREIGN\s+KEY\s*\([^)]*\)\s*'+tail,'',original,count=1,flags=re.I)
+        if not n:changed,n=re.subn(tail,'',original,count=1,flags=re.I)
+        assert n==1,'source alias FK clause not found'
+    else:
+        match=re.search(r'\bCHECK\s*\(',original,re.I);assert match,'entry CHECK absent'
+        start=match.start();i=match.end();depth=1;quote=None
+        while depth:
+            ch=original[i]
+            if quote:
+                if ch==quote:
+                    if i+1<len(original) and original[i+1]==quote:i+=1
+                    else:quote=None
+            elif ch in ["'",'"']:quote=ch
+            elif ch=='(':depth+=1
+            elif ch==')':depth-=1
+            i+=1
+        prefix=original[:start];suffix=original[i:]
+        if prefix.rstrip().endswith(','):prefix=prefix.rstrip()[:-1]
+        changed=prefix+suffix
+    assert changed!=original
+    c.execute('PRAGMA writable_schema=ON');c.execute("UPDATE sqlite_schema SET sql=? WHERE type='table' AND name=?",(changed,table));c.execute('PRAGMA writable_schema=OFF')
+    version=c.execute('PRAGMA schema_version').fetchone()[0];c.execute('PRAGMA schema_version='+str(version+1))
+    c.execute('SELECT count(*) FROM "'+table+'"').fetchone() # malformed schema is setup failure
+check('schema-missing-fk-only',lambda c:schema_rule(c,'fk'),'ERR InvalidStore SchemaShape')
+check('schema-missing-check-only',lambda c:schema_rule(c,'check'),'ERR InvalidStore SchemaShape')
 check('foreign-key-violation',sql("UPDATE entries SET source_id='nonexistent-source' WHERE id='entry-a-farvi'"),'ERR InvalidStore ForeignKeys')
 # Each valid-shaped scalar mutation preserves table populations, schema and canonical JSON.
 # Tables without an unconstrained textual payload use a distinct valid ordinal/nullable shape.

@@ -25,3 +25,7 @@ Before freeze CDC added `filesystem.py`: public missing-path/empty-directory/mal
 ## Pre-candidate SQL conditional-shape controls
 
 Before freeze the constraint specimen was expanded with actual extended-code checks for NULL text/tuple identity keys, nested TextValue state NULL, payload under outer Missing, optional/required LocalRef null shape, unpaired evidence range, unsupported encoding, Excluded reason NULL, doubled form provenance and unexpected local payload under an Unknown relation target. These exercise the plan's declared CHECK/FK/non-null role/presence contracts. They remain separate from same-count valid-shaped scalar edits, whose setup must succeed before open rejects Projection. No candidate result exists yet.
+
+## Pre-candidate isolated schema tampering
+
+The prospective negative matrix now includes dropping a table and separately removing one FK or one CHECK from stored schema SQL while keeping columns/data and other constraints. The helper supports inline/table FKs and balances quoted CHECK parentheses. It was calibrated against two independently synthetic in-memory Python SQLite schemas; both inline/table helper calibrations passed. Those calibrations are specimen mechanics, not pinned backend/product results. The actual candidate setup must parse successfully before the public opener is expected to reject SchemaShape. Static specimen census is94 prospective controls:21 explicit negative opens,42 same-count scalar projections and31 actual constraint-code checks. No S03 candidate matrix has been run yet.
