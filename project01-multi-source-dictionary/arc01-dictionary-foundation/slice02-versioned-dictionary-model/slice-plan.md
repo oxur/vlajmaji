@@ -97,7 +97,7 @@ CDC inspected accepted registry/attribution APIs, existing Lexicon identity/raw/
 
 Applied Rust guidance: TD-03/05/06/07 for validated IDs/private outer state/plain drafts/explicit unavailable and presence states; API-02/17 for borrowed access and fallible conversions; EH-01/04/10 for typed recoverable errors; DC-01–05 for public examples and precise validation limits. RawValue and SHA256 APIs are already present/pinned in actual source. Existing helpers and mandatory real gates are reused, not replaced by a new validator project. The packet explicitly separates raw/catalogue availability, normalized source assertion, optional editorial grouping, and computed material. Actual SQLite DDL is not part of this issued model increment; S03 readiness uses the accepted model and all12 field oracles.
 
-Current assignment: **`cc-prompt.md`**; source11ec701, initial CC `/root/cdc/p02a02_cc`, same selected OpenAI gpt-6-luna/high. The issued prompt carries full bounded intake, exact20-occurrence fixture, implementation spine and named source ownership. No refinement consumed for this new slice; cap5. Supporting `artifacts/cc-execution.md` is needed for intake, exact observations/failures and attributed per-row proposal; CDC owns canonical planning/index/close. Do not pre-create close/verification/retrospective success records.
+Initial assignment (historical): **`cc-prompt.md`**; source11ec701, initial CC `/root/cdc/p02a02_cc`, same selected OpenAI gpt-6-luna/high. The issued prompt carries full bounded intake, exact20-occurrence fixture, implementation spine and named source ownership. No refinement consumed for this new slice; cap5. Supporting `artifacts/cc-execution.md` is needed for intake, exact observations/failures and attributed per-row proposal; CDC owns canonical planning/index/close. Do not pre-create close/verification/retrospective success records.
 
 ## Version history
 
@@ -111,7 +111,7 @@ CDC resolved the interacting raw/catalogue availability and unknown-count rules,
 | --- | --- | --- | --- | --- |
 | `cc-prompt.md` | 2026-10-24 | none; accepted S01 predecessor11ec701 | Initial complete typed model/raw/adapter increment after explicit scope-preserving split | issued |
 
-Source owner is CC only for this issued interval; CDC owns planning/index and independent review. The existing support helper is actual shipped example/public-caller code, not a private test accessor. No close-set records exist before implementation/review.
+Source owner is CC only for this issued interval; CDC owns planning/index and independent review. The existing support helper is actual shipped example/public-caller code, not a private test accessor. No acceptance was implied before implementation/review; subsequent failed review and current refinement are appended below.
 
 -1.1 —2026-10-24: finished source-grounded readiness, made unknown accounting explicit as Option counts, specified exact20-row/9-loaded-capture fixture, and issued initial CC assignment.
 
@@ -122,3 +122,15 @@ CC detected that the opaque bullet did not name its source while the binding rel
 ## Additional bounded standards readiness —2026-10-24
 
 During CC implementation CDC read the property inventory of the already preserved original local normative DMLex JSON schema at R/experiments/E03-lexical-data-search/slice01/raw/standards/dmlex-1.0-JSON-schema.json; actual bytes SHA256700af3115b99fcf5910cbfeb231acb290d33a4931ea55c3356cd781cca0af86e matches the copied capture-manifest. This was a read-only property inventory query, not a complete standards semantic read or network acquisition. It confirms explicit etymology.description/etymons, etymon.when/type/note/etymonUnits, etymonUnit.langCode/reconstructed/text/partsOfSpeech/translation; relation.type/description/members and member.ref/role/obverseListingOrder. CDC supplied this bounded evidence to CC for the already-required significant-field/loss map, warning against invented exact property names for unmapped frames/notes. No conformance/export claim or additional implementation requirement.
+
+## Initial failed review and refinement01 —2026-10-24
+
+Initial CC candidate2e640de67bb13ddbe833edba0d8c9c5adb133c66 returned clean with12 scoped source paths and a complete attributed proposed close. CDC independently read the implementation, reproduced required gates and public example/outside caller, then ran the preserved public84-control specimen:61 passed/23 failed, including three caught panic paths. The exact failed-control→binding-rule table and F1–F7 source findings are in cdc-verification.md. All nine rows remain OPEN; no model acceptance. Initial source/JSON/log/specimen and author claims remain historical evidence.
+
+**Current assignment: cc-prompt-iteration01.md**, predecessor initial cc-prompt.md, source2e640de, refinement1/5, same selected reused LunaHigh CC. CDC completed source-grounded repair readiness: seven bounded groups address exact witness/native-ID/provenance fixture fidelity, typed references, safe history traversal, matchable errors, strict struct-variant wire, accurate docs/release record and shared indexes. No public shape or Operator decision changes. Only five named source paths are writable; immutable84-control specimen/expectations remain unchanged. CC owns source during the issued repair interval, CDC planning/index/independent acceptance. S03 persistence and S04 grouped Rust/CLI remain complete pending obligations.
+
+| Assignment | Date | Predecessor | Reason | Disposition |
+| --- | --- | --- | --- | --- |
+| cc-prompt-iteration01.md | 2026-10-24 | cc-prompt.md; failed2e640de |23/84 independent control failures and F1–F7 source/doc findings against existing binding contract | issued; independent acceptance pending |
+
+-1.2 —2026-10-24: preserved initial failed verdict/specimen and attributed close, reconciled current status and issued bounded refinement01 without changing model scope/fixture denominators.

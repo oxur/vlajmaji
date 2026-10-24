@@ -1,8 +1,8 @@
 # CDC verification — S02 versioned dictionary model
 
-**Current status: pre-candidate review only; no acceptance verdict. All9 ledger rows remain OPEN.**
+**Current status: initial candidate2e640de independently FAILED (84 controls:61 pass/23 fail); refinement01 issued. All9 ledger rows remain OPEN.**
 
-Reviewer is `/root/vlajmaji_p01_a01_cdc`, selected OpenAI gpt-6.1-sol/high, actual implementer `/root/cdc/p02a02_cc`, selected OpenAI gpt-6-luna/high in authorized reused context. Backend attestation is not reported. CDC has authored planning and `/tmp` verification specimens only, no product source repair. Source owner remains CC during this initial implementation interval, from accepted11ec701. Initial assignment cc-prompt.md at0b26224 and binding slice-plan.md govern; issued prompt is unchanged. These observations occurred before a frozen candidate; green CC tests are author-attested and not independent acceptance.
+Reviewer is `/root/vlajmaji_p01_a01_cdc`, selected OpenAI gpt-6.1-sol/high, actual implementer `/root/cdc/p02a02_cc`, selected OpenAI gpt-6-luna/high in authorized reused context. Backend attestation is not reported. CDC has authored planning and `/tmp` verification specimens only, no product source repair. The following pre-freeze chronology records the initial CC implementation interval from accepted11ec701; source subsequently froze at2e640de for independent review. Initial assignment cc-prompt.md at0b26224 and binding slice-plan.md govern; issued prompt is unchanged. The pre-freeze observations below are historical; the appended frozen-candidate verdict is current. Green CC tests remain author attestation, distinct from CDC acceptance.
 
 ## Pre-freeze draft observations and implementation feedback
 
@@ -26,3 +26,51 @@ Rust review preparation covered the AP01–70 applicability inventory and loaded
 CDC next inspected the actual RegistryDocument construction: the draft had only editor-1, no distributors, no occurrence attribution, no aliases/lineage, all snapshot distributor=None, and Missing collection/component under source-a. Those omit the explicitly inherited complete fixture requirements even though namespace labels suggested D1/D2. CDC directed actual distinct distributors/source bindings, known/unknown contributor/native identities (three distinct69002 occurrences and333), active/retired aliases, known/unresolved lineage and separately registered M source/collection/component/release. CC acknowledges completing these and adding assertions plus a full requirement→actual IDs/values/references inventory in cc-execution.md before freeze. Root expressly requested that inspectable inventory; it does not replace independent source/value checks.
 
 Earlier make check and a3m38s all-feature success are **historical interim author runs**, because fixture composition changed afterward. The M-source addition exposed a focused positive test still attached to A; CC reports correcting it to M. Final current-candidate gates are still pending. CDC's first process-name check was sandbox-denied; the sole permitted retry showed idle older Cargo processes and a fresh rustc but did not establish task ownership or a stall. CC's own session29332 subsequently returned terminal all-feature success; no unknown process/cache was killed, deleted or repurposed.
+
+## Initial frozen candidate — independent failed verdict
+
+Candidate `2e640de67bb13ddbe833edba0d8c9c5adb133c66`, clean, exactly12 allowlisted source paths. CDC read the complete committed dictionary.rs1915 lines, dictionary_contract.rs830, fixture helper1158, example16, all new docs and existing-file diff. lib.rs changes are additive module/explicit exports only; no parser/archive/store/search/CLI/dependency changes. No source repair was authored by CDC.
+
+Independent required runs on the **explicit command-line absolute Make target** all succeeded: make check42 Cargo test/doctest passes +19 tooling=61, one existing full-corpus ignore; no-default10; all-features44 with the same ignore; locked Rust1.98 workspace check. Logs: `/tmp/vlajmaji-p01-a01-s02-cdc-{check,no-default,all-features,workspace}-initial.log`. No full corpus/import or clean rebuild was run/claimed.
+
+Shipped example and an independently created unique outside package `dictionary-model-s02-cdc-positive` (only public lexicon path dependency, exact shipped main/helper copy) both succeeded and emitted127739-byte JSON SHA256 `6dd1b8a8e141fce2996caf61e885aa796b167395101c7d04cad20238aa87f98e`. Outputs `/tmp/vlajmaji-p01-a01-s02-cdc-{example,positive}-initial.json`; outside package `/tmp/vlajmaji-p01-a01-s02-cdc-positive/`; logs same prefixes `.log`, offline lock-generation receipt separate. These verify public composition/roundtrip at that state, not the negative invariants.
+
+The independent public-API caller `/tmp/vlajmaji-p01-a01-s02-cdc-controls/` compiled without a specimen build error and ran **84 controls,61 pass/23 fail, process exit1**. It checks constructor/helper/direct serde for applicable negatives; the indirect-parent case catches a real panic in all three paths. The unchanged specimen, expected pinned rows/line, initial fixture and full terminal output are durably preserved in `artifacts/independent-controls-initial/`. Main source SHA256 `18689c575042bc0c3aee345837b541648afe9690ee121441a03a93101758e47e`; expectations SHA256: two-row JSON `2d4cc6dc0ec620f2ae858db806a20a11b0e086a77187b20c4a5f5e35a3692c0f`, cpana raw line `a075159c8b109ddff326875ff882712f26b205806699b0e1e846a6bc81ae70c7`. Preserve this program/expectations unchanged through repair; generate a **new** corrected fixture output for the repair run. The initial JSON/log remain failed-state evidence, not the repaired input.
+
+### Every failed control → binding rule and required disposition
+
+| Frozen control | Observed / binding expectation | Finding |
+| --- | --- | --- |
+| exact_raw_four_place_witness_one_observation | Raw `/2` ends `$x_{4}.` instead of pinned `$x_{4}$.`; the author's test copied the same incorrect literal. Exact source bytes/values are binding. | F1 |
+| exact_normalized_four_witness_and_score_dates | No exact pinned four-place definition is found, so this joined exact-text/score/date oracle fails. Score/date values alone are insufficient. | F1 |
+| pinned_definition_ids_are_not_invented_native_senses | Helper copies definitionid into native_sense_id; those are native assertion IDs already in registry, not supplied sense IDs. Pinned rows must have Missing native sense. | F1 |
+| phantom_registry_attribution | Optional registry attribution for a nonexistent locator under a loaded capture is accepted; every loaded reference must resolve. | F2 |
+| unknown_owned_editor | Unregistered owned-revision editor accepted; contributor FK required. | F2 |
+| unknown_editorial_editor | Unregistered editorial editor accepted; contributor FK required. | F2 |
+| unknown_release_distributor | Unregistered release distributor accepted; distributor FK required. | F2 |
+| missing_release_wrong_role_assertion | Missing release can name a computation as assertion; typed reference checks apply even when payload unavailable. | F2 |
+| indirect_missing_owned_parent_is_typed_error_not_panic | r1→r2→missing parent panics at dictionary.rs1667 in constructor/helper/direct serde. Public malformed input must return a named error. | F3 |
+| duplicate_owned_head | Duplicate source head accepted despite one head per owned source. | F2 |
+| lexical_assertion_requires_present_spelling | Lexical assertion with Missing entry spelling accepted; present Value is required (including supplied empty; do not invent nonempty/normalization policy). | F2 |
+| unreferenced_collection_requires_known_source | Added collection with unknown source accepted; all rows need valid source roles, including unreferenced rows. | F2 |
+| unreferenced_entry_requires_known_source | Added entry with unknown source accepted; all rows need valid source roles. | F2 |
+| etymology_component_role_validates | Etymology component Assertion target can name an Entry ID. | F2 |
+| computation_occurrence_phantom | Computation input can name a phantom loaded occurrence. | F2 |
+| loaded_phantom_catalogue_target_even_when_disabled | Catalog target phantom locator accepted when target release is Disabled despite its capture being loaded. Loaded phantom rejection is independent of availability. | F2 |
+| duplicate_entity_has_named_category | Collision returns generic InvalidDocument, not declared DuplicateEntity. | F4 |
+| reference_has_named_category | Dangling typed reference returns generic InvalidDocument, not declared MissingReference. | F4 |
+| accounting_has_named_category | Incorrect available count returns generic InvalidDocument, not declared InvalidAccounting. | F4 |
+| availability_has_named_category | Available missing payload returns generic InvalidDocument, not declared InvalidAvailability. | F4 |
+| provenance_has_named_category | Source/computed crossover returns generic InvalidDocument, not declared InvalidProvenance. | F4 |
+| history_has_named_category | Revision cycle returns generic InvalidDocument, not declared InvalidHistory. | F4 |
+| strict_struct_enum_variant_wire | Extra field inside Eligibility::Excluded silently ignored by helper and direct serde. Strict new wire includes this struct variant. | F5 |
+
+F1 also has source-inspected fixture defects: entry identity is assigned by `(source,word)` equality despite the explicit supplied fixture-key mapping contract; source relations cite unrelated numeric/word fields rather than supplied relation data. Repair with explicit fixture entry mapping and explicit labelled synthetic raw relation fields/evidence; do not add an automatic linguistic relation/parser. Optional native sense is exercised only from a deliberately supplied synthetic native sense field, never native assertion IDs. Corrected synthetic/pinned payload bytes necessarily have new capture/archive hashes; retain initial bytes as history, recompute dependent refs, and preserve exact **new** archive bytes within each adapter call.
+
+F6 (source/doc review): RawCapture::new claims a validated value although it only computes SHA and returns an unvalidated public draft. Public API/error rustdoc is generic filler without the required useful failure/trust-boundary explanation. Model changelog bullet is appended under published0.1.0 rather than0.2.0 unreleased. Correct these within the authorized docs/API contract; no new API or signature change needed.
+
+F7 (source review): validation repeatedly scans raw capture rows per evidence reference and per legacy row, plus role/reference vectors per relation/form/input. This violates the binding prebuilt-map/set constraint and introduces avoidable quadratic full-population walks. Build shared typed/source/occurrence indexes once and use them throughout, including legacy subset checks. No benchmark, new validator framework or speculative optimization is required.
+
+The validator must also cover the complete typed-reference graph, not merely patch the12 failed reference examples. Release diagnostics, all available/nonavailable memberships, computation occurrence inputs, etymology component targets, optional registry attributions, source/contributor/distributor roles and unique owned heads need the same consistent helper path. A catalogue-only absent capture may be known through its non-Available release's registered source even without an optional snapshot binding; the original binding requires explicit registry bindings for **loaded** captures. If a binding is supplied it must agree. The independent specimen deliberately does not impose a stronger unbound-absent rejection. Missing unknown counts, retained unavailable projections, available empty Some0, exact legacy v1/v2 empty metadata, repeated native names, decoded UTF8 offsets and the unchanged old-parser opaque rejection all passed and remain preservation controls.
+
+**Verdict: FAIL; S02 remains open, all9 rows OPEN.** Normal green gates and a successful public fixture roundtrip do not override the23 failed controls/source findings. A numbered refinement is required; five-pass refinement cap unchanged. S01 accepted11ec701 remains accepted; S03/S04 are pending. No main/Bauske/assets or corpus changes.

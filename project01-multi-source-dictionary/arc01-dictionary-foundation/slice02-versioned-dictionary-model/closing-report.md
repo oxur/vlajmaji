@@ -1,0 +1,36 @@
+# S02 closing report — initial return failed; slice remains open
+
+CDC canonical status2026-10-24: **FAIL/open**, candidate2e640de67bb13ddbe833edba0d8c9c5adb133c66; current refinement01, not a completed slice. CC `/root/cdc/p02a02_cc` (authorized reused selected OpenAI gpt-6-luna/high) authored the complete proposed closing report in artifacts/cc-execution.md; CDC `/root/vlajmaji_p01_a01_cdc` (selected SolHigh) independently reviewed. Backend attestation unreported. No CC proposal is independent acceptance.
+
+Initial scope: version1 raw/typed dictionary model, exact legacy archive adapter, JSON, complete composed fixture, examples/docs/mapping;12 explicit committed paths: CHANGELOG.md, README.md, crates/lexicon/README.md, crates/lexicon/src/lib.rs, crates/lexicon/src/dictionary.rs, crates/lexicon/tests/dictionary_contract.rs, crates/lexicon/examples/dictionary_fixture.rs, crates/lexicon/examples/support/dictionary_fixture.rs, docs/dictionary-model.md, docs/dictionary-standards-map.md, docs/migration.md, docs/source-registry.md. No dependencies, old parser/archive/identity, store/search/CLI/main/assets/Bauske changes. CC planning touched only artifacts/cc-execution.md; CDC owns canonical records/specimen/prompt/index.
+
+CC attested focused8, Make/default/no-default/all-features and locked Rust1.98 gates, full public example and unique outside caller; terminal logs, exact attempts/corrections and inventory are retained in the attributed artifact. CDC independently reproduced Make check61 passes (42 Cargo+19 tools)/1 existing corpus ignore, no-default10, allfeatures44/1 ignore, locked check and two identical public outputs127739 bytes/SHA6dd1b8a8e141fce2996caf61e885aa796b167395101c7d04cad20238aa87f98e. Separate84-control public caller failed23/84 including panic paths; full verdict, every failed rule, exact logs and immutable artifact hashes are in cdc-verification.md and artifacts/independent-controls-initial. Green author/normal gates do not override failures.
+
+The following table is copied as **CC-attributed initial proposed dispositions**, including its boundary/carryover comparison, and is retained without converting its claims into acceptance.
+
+### Nine-row CC proposed disposition and scope comparison
+
+All rows remain **OPEN** in the canonical ledger until CDC independently reviews and reproduces. This is the CC's proposed-done attestation only.
+
+| Ledger | CC proposed disposition | Evidence / boundary |
+| --- | --- | --- |
+| S02-01 raw/opaque/legacy identity | Proposed done: ordered raw captures, occurrences and exact legacy adapter semantics are represented and composed; opaque old-parser-incompatible data remains explicit and preserved. | 9/20 complete fixture, byte/document reload, exact archive and tuple identity checks; no parser/archive rewrite. |
+| S02-02 catalogue/release/availability/terms | Proposed done: source/component/release topology, counts, diagnostics, missing-vs-empty availability, notices and redistribution are represented/validated. | A/B/O/M fixture values, empty Available success and absent-M payload rejection. |
+| S02-03 entry/assertion/context | Proposed done: source-aware alternatives, native IDs/classes, language and all context roles/presence remain separate without inferred senses/POS. | Exact 7 farvi witnesses and 14-entry/20-assertion population; field-level assertions above. |
+| S02-04 frame/form/etymology | Proposed done: structured source frame, form epistemic kinds/order, and source-asserted etymology have distinct typed homes. | One supplied si'e frame; no frame for farvi prose; seven form rows and three etymology presence states. |
+| S02-05 relation roles/targets | Proposed done: local/source/catalogue/unknown/unresolved targets and evidence roles are distinct. | Four concrete relation IDs and constructor validation tests; S03 storage remains future. |
+| S02-06 owned/editorial/computation | Proposed done: two owned revisions/head/tombstone, explicit cross-source editorial grouping and labelled computation are retained without automated editor/analysis. | `revision-r1/r2`, `editorial-farvi`, `computation-1`, `annotation-1`, extension and negative lineage/history controls. |
+| S02-07 version/serde/validation | Proposed done: constructor and direct serde share validation; strict typed DTOs and raw-JSON escape hatch preserve trust boundaries. | Focused eight-test suite covers versions, hash, global/ref/provenance/accounting/history/serde and raw JSON cases; full required workspace gates green. |
+| S02-08 public increment/docs/gates | Proposed done: API is public, rustdoc/docs/mapping/example and unique independent caller are present. | Example and outside package have equal output hash; make/default/no-default/all-features/Rust1.98 gates above. |
+| S02-09 independent disposition and carryover | Not a CC acceptance claim: CC has frozen proposed candidate and supplies complete scope carryover for CDC. | CDC owns independent reproduction, canonical closure/retrospective; S03 owns relational persistence; S04 owns grouped Rust/CLI lookup and original query contract. No query implementation, SQLite, full corpus import, editor, inference, publication, or adoption decision was added here. |
+
+The original seven-row Arc01 ownership split remains scope-complete across the four-slice plan: this new S02 delivers model/adapter only; relational persistence is new S03; the original later lookup obligation is new S04. All twelve schema areas and original query obligations remain carried forward. Independent acceptance and all future-slice implementation remain CDC-owned. Source candidate status is frozen only after the explicit source commit; it is not yet independently accepted.
+
+
+## CDC disposition and inventory
+
+All S02-01–09 remain OPEN. F1 affects raw/normalized exact fidelity and source identity/provenance; F2/F3/F4/F5 affect catalogue/typed references/history/strict validation; F6/F7 affect public trust boundary and binding index strategy. The seven repair groups and each23 failed control are preserved individually in cdc-verification.md; no earlier failure is deleted. Current cc-prompt-iteration01.md scopes five source paths and reuses the unchanged84 controls against a fresh corrected output. No closing acceptance/retrospective success is claimed yet.
+
+Artifacts: initial/numbered prompts; binding slice-plan/ledger; this canonical attributed close; cdc-verification; cc-execution (full intake, chronology, requirement/value/assertion inventory, nine proposals, source commit and gate/caller scratch paths); independent-controls-initial/{Cargo.toml,Cargo.lock,src/main.rs,expected-witnesses.json,expected-cpana.txt,initial-fixture.json,initial-run.log,README.md}. Pinned source hashes/denominators are in slice-plan and immutable expected files; these finite records are not corpus acquisition.
+
+Bubble-up: no original criterion dropped. S01 accepted11ec701 remains closed; newS02 is only model/adapter, newS03 must implement all12 areas as real relational tables/FKs/scalar queries/reopen/tamper/rebuild validation, newS04 preserves the original complete grouped Rust/CLI/availability/pagination/link/revision fixture. Arc A01-02 cannot close before S02+S03; all four children and independent composition/arc retrospective remain necessary. No Arc02 work, main integration, push/PR/publication.

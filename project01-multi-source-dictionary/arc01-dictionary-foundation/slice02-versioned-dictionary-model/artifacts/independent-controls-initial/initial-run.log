@@ -1,0 +1,99 @@
+   Compiling dictionary-model-s02-cdc-controls v0.0.0 (/tmp/vlajmaji-p01-a01-s02-cdc-controls)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.17s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/dictionary-model-s02-cdc-controls /tmp/vlajmaji-p01-a01-s02-cdc-example-initial.json`
+digit_first_entity_id=true
+unbounded_registry_grammar=true
+invalid_raw_json=true
+valid_empty_document=true
+exact_raw_five_place_witness_three_observations=true
+exact_raw_four_place_witness_one_observation=false
+exact_normalized_five_witness_and_score_dates=true
+prose_five_witness_has_no_supplied_frame=true
+exact_normalized_four_witness_and_score_dates=false
+prose_four_witness_has_no_supplied_frame=true
+pinned_definition_ids_are_not_invented_native_senses=false
+exact_pinned_cpana_raw_line=true
+every_form_kind_has_real_value=true
+assigned_sihe_targets_snime=true
+reported_cpan_targets_cpana=true
+computed_snim_has_only_computed_provenance=true
+two_actual_distributors=true
+same_source_two_bound_distributors=true
+native_id_repetition_retains_three_occurrences=true
+native_id_four_place_333=true
+known_and_unknown_authors=true
+active_and_retired_aliases=true
+known_and_unresolved_lineage=true
+distinct_catalogue_only_missing_source=true
+unsupported_version=true
+capture_hash_mismatch=true
+duplicate_capture=true
+duplicate_locator=true
+wrong_role_context_assertion=true
+wrong_role_translation=true
+loaded_phantom_assertion=true
+available_missing_payload=true
+wrong_available_accounting=true
+duplicate_release_membership=true
+context_evidence_wrong_occurrence=true
+etymology_evidence_wrong_occurrence=true
+source_computed_crossover=true
+invalid_evidence_range=true
+owned_revision_cycle=true
+owned_future_tombstone=true
+wrong_role_annotation_target=true
+phantom_registry_attribution=false
+global_cross_role_duplicate_id=true
+wrong_role_computation_input=true
+wrong_role_form_component=true
+source_form_evidence_wrong_source=true
+unknown_owned_editor=false
+unknown_editorial_editor=false
+unknown_release_distributor=false
+unknown_collection_source=true
+missing_release_wrong_role_assertion=false
+orphan_catalogue_binding=true
+
+thread 'main' (69086350) panicked at /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji/crates/lexicon/src/dictionary.rs:1667:35:
+no entry found for key
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread 'main' (69086350) panicked at /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji/crates/lexicon/src/dictionary.rs:1667:35:
+no entry found for key
+
+thread 'main' (69086350) panicked at /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji/crates/lexicon/src/dictionary.rs:1667:35:
+no entry found for key
+indirect_missing_owned_parent_is_typed_error_not_panic=false
+duplicate_owned_head=false
+lexical_assertion_requires_present_spelling=false
+unreferenced_collection_requires_known_source=false
+unreferenced_entry_requires_known_source=false
+etymology_component_role_validates=false
+computation_occurrence_phantom=false
+loaded_phantom_catalogue_target_even_when_disabled=false
+legacy_subset_metadata_source_name=true
+legacy_subset_metadata_format_label=true
+legacy_subset_metadata_locator=true
+legacy_subset_metadata_revision=true
+legacy_subset_metadata_captured_at=true
+legacy_subset_metadata_time_precision=true
+legacy_subset_metadata_notice_locator=true
+genuinely_empty_available=true
+duplicate_entity_has_named_category=false
+reference_has_named_category=false
+accounting_has_named_category=false
+availability_has_named_category=false
+provenance_has_named_category=false
+history_has_named_category=false
+strict_nested_wire=true
+strict_struct_enum_variant_wire=false
+known_missing_projection_and_evidence=true
+unavailable_range_still_ordered=true
+ordered_repeated_native_names_survive=true
+decoded_utf8_range_two_bytes=true
+decoded_utf8_split_boundary_rejects=true
+legacy_v1_all_empty_metadata_preserved=true
+legacy_v2_all_empty_metadata_preserved=true
+opaque_rejected_by_unchanged_old_parser=true
+independent_controls=84; failures=23
+Error: "failed controls: [\"exact_raw_four_place_witness_one_observation\", \"exact_normalized_four_witness_and_score_dates\", \"pinned_definition_ids_are_not_invented_native_senses\", \"phantom_registry_attribution\", \"unknown_owned_editor\", \"unknown_editorial_editor\", \"unknown_release_distributor\", \"missing_release_wrong_role_assertion\", \"indirect_missing_owned_parent_is_typed_error_not_panic\", \"duplicate_owned_head\", \"lexical_assertion_requires_present_spelling\", \"unreferenced_collection_requires_known_source\", \"unreferenced_entry_requires_known_source\", \"etymology_component_role_validates\", \"computation_occurrence_phantom\", \"loaded_phantom_catalogue_target_even_when_disabled\", \"duplicate_entity_has_named_category\", \"reference_has_named_category\", \"accounting_has_named_category\", \"availability_has_named_category\", \"provenance_has_named_category\", \"history_has_named_category\", \"strict_struct_enum_variant_wire\"]"
