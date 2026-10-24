@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | project / arc / slice | project01-multi-source-dictionary / arc01-dictionary-foundation / slice02-versioned-dictionary-model |
-| status | ready; initial CC assignment issued, implementation pending |
+| status | active; CC implementation and composed fixture/tests underway |
 | depends-on | independently accepted S01 `11ec7017a375fa62ba101cb51d85c36034621b81` |
 | blocks | new S03 relational persistence and new S04 grouped exact lookup |
 | version / date | 1.1 / 2026-10-24 |
@@ -114,3 +114,7 @@ CDC resolved the interacting raw/catalogue availability and unknown-count rules,
 Source owner is CC only for this issued interval; CDC owns planning/index and independent review. The existing support helper is actual shipped example/public-caller code, not a private test accessor. No close-set records exist before implementation/review.
 
 -1.1 —2026-10-24: finished source-grounded readiness, made unknown accounting explicit as Option counts, specified exact20-row/9-loaded-capture fixture, and issued initial CC assignment.
+
+## Fixture source clarification01 —2026-10-24
+
+CC detected that the opaque bullet did not name its source while the binding release accounting named A six captures/seventeen assertions. CDC clarified that **opaque belongs to A**: A has five legacy-readable captures containing16 rows plus one opaque capture/row; B has1 and O has2. Thus9 loaded captures/20 rows,8 legacy-readable captures/19 rows, A17/B1/O2 and exactly1 excluded row are mutually consistent. No extra row, changed denominator, new source, changed API or repair was authorized; this resolves the original per-release ownership rather than overwriting the issued prompt. CC preserves the ambiguity/clarification in its execution chronology. Initial new-model package check is green after two local compiler errors; this is author attestation, not independent acceptance.
