@@ -1,0 +1,13 @@
+# Slice01 ledger
+
+All implementation rows are open; evidence is empty until actual work is reviewed.
+
+| ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| S01-01 | Source, contributor, distributor, lineage, snapshot and occurrence roles are distinct validated public contracts. | External caller builds A/B + D1/D2 fixture and checks each attribution/unknown explicitly. | correctness-grade | User provenance / legacy S01 registry | open | | No source equivalence from spelling, name or distribution alone. |
+| S01-02 | Stable aliases support rename/retirement and reject collisions/ambiguity without changing identities. | Rename/retire/collision/unknown-source controls with exact ID expectations. | correctness-grade | User source abbreviations | open | | Label project-assigned versus verified conventional abbreviations. |
+| S01-03 | Attribution retains every assertion/duplicate occurrence and optional native/author IDs. | Complete occurrence/multiplicity comparison for competing sources and shared upstream distribution. | correctness-grade | Preserve each assertion | open | | No automatic winner, deduplication or invented sense. |
+| S01-04 | Existing raw bytes, identity encoding, exact spelling, presence and form/proposal/computed boundaries remain intact. | Before/after byte/ID/presence/role checks plus existing lexicon contracts. | correctness-grade | Accepted PoC preservation | open | | No v1/v2 archive reinterpretation. |
+| S01-05 | Registry validation/versioning is explicit and atomic, including deserialization and unresolved references. | Invalid input/version/reference/serde controls leave the existing registry unchanged. | correctness-grade | Typed source contracts | open | | Constructor invariants cannot be bypassed. |
+| S01-06 | A public caller can use the increment with shipped API docs/examples and appropriate Rust gates. | Outside-workspace caller; affected Rust1.98 format/check/test/Clippy/docs and compatibility checks. | correctness-grade | Usable increment / framework | open | | Source and exact outputs are reviewable. |
+| S01-07 | Independent review dispositions every row and records schema/query carryover for the arc. | Independent reproduction, scope diff, slice close and bubble-up after implementation. | correctness-grade | Framework independent acceptance | open | | No self-acceptance or prefilled close. |

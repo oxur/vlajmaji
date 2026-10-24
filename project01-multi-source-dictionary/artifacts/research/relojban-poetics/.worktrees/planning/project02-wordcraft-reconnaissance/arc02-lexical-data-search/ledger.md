@@ -1,0 +1,12 @@
+# Arc02 ledger
+
+| ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A02-01 | Service/standards contracts and source fidelity/losses are pinned and usable. | Slice01 gate and source witnesses. | correctness-grade | Authorized Arc02 | done | cdc-verification.md ACCEPTED; closing-report.md final CDC disposition | Four accepted child gates plus fresh composition; mechanical close/retrospective complete. |
+| A02-02 | Reusable Rust lexical/import API retains identities, competing definitions and unknowns. | Slice02 gate and public consumer/import replay. | correctness-grade | Authorized Arc02 | done | cdc-verification.md ACCEPTED; closing-report.md final CDC disposition | Four accepted child gates plus fresh composition; mechanical close/retrospective complete. |
+| A02-03 | Same-record baseline/challenger comparison supports bounded storage recommendations. | Slice03 gate, result-set comparisons and configuration evidence. | correctness-grade | Authorized Arc02 | done | cdc-verification.md ACCEPTED; closing-report.md final CDC disposition | Four accepted child gates plus fresh composition; mechanical close/retrospective complete. |
+| A02-04 | Composed search demonstrates six consumer questions with separate reasons/provenance/score policies. | Slice04 gate and full-population scan references where claimed. | correctness-grade | Authorized Arc02 | done | cdc-verification.md ACCEPTED; closing-report.md final CDC disposition | Four accepted child gates plus fresh composition; mechanical close/retrospective complete. |
+| A02-05 | Findings and architecture options reconcile with actual tested/untested source/code/data terms and remaining decisions. | Fresh independent report/composition check. | correctness-grade | Authorized Arc02 | done | cdc-verification.md ACCEPTED; closing-report.md final CDC disposition | Four accepted child gates plus fresh composition; mechanical close/retrospective complete. |
+| A02-06 | Preservation, all child/arc dispositions, retrospectives and project carryover are complete. | Hash/ref guards, archive verification and complete six-row census. | correctness-grade | Authorized Arc02 | done | cdc-verification.md ACCEPTED; closing-report.md final CDC disposition | Four accepted child gates plus fresh composition; mechanical close/retrospective complete. |
+
+Final census:6DONE/0OPEN arc rows;24DONE child rows. Source7a05516, fresh gate and mandatory arc/child retrospectives retained. Project original01–05OPEN,06–09DONE; one-arc stop.

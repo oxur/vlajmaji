@@ -1,0 +1,28 @@
+# Arc02 independent composition gate — ACCEPTED
+
+Fresh reviewer `/root/cdc/p02a02_arc_review`, 2026-10-23; requested OpenAI `gpt-6.1-sol/high`, fork-none assignment, backend identity not independently observable. This is independent review of CDC-authored assembly under the continued CDC selection, not CRC or self-acceptance.
+
+Reviewed source `7a05516b5d429f3184eaf6a2bde2fd9c5d12e9bf` on `feature/project02-lexical-search`, clean before and after. Commission `a946a9b`; actual later planning HEAD `0657707` differs only by the project dispatch receipt; accepted child checkpoint `ccdc043`. Actual received extents/hashes, fresh process receipts, retained guards and limits are in [composition evidence](artifacts/composition-evidence.md), with linked raw logs. No source repair, ledger edit or commit was made by this reviewer.
+
+| Arc row | Explicit independent disposition | Fresh versus retained basis |
+| --- | --- | --- |
+| A02-01 | ACCEPTED | Source/report contracts inspected; fresh 46-capture identity validation and full source-to-archive reconciliation. Retained accepted S01 ELEXIS failed-build and bounded standards/service evidence under unchanged identities; runtime NOT RUN remains. |
+| A02-02 | ACCEPTED | Independent 16/16 raw-body/provenance and 21,241 native-record reconciliation, exact farvi333/69002 definitions, all form-role assertions, copied public consumer in both feature modes and freshly built boundary fixture. Alternative definitions/raw states/proposals remain canonical; Hit projection limits explicit. |
+| A02-03 | ACCEPTED | Exact same archive/current native SQLite composition reproduced; accepted Graph/full61 comparison retained. Seven measurement hashes checked at accepted ac92162; arrays/medians independently recomputed, no benchmark rerun or current-changed-code timing attribution. SQLite recommendation stays bounded to that bundle/config. |
+| A02-04 | ACCEPTED | Fresh full-population 17-event batch compares complete IDs/edges, exclusions and zero/seven projections; 27 labelled fixture operations, nine extra public-control events, two copied consumer modes and 14 CLI invocations pass. Source membership/generation, sound/spelling, class/kind, unknown grouping and stress states remain separate. |
+| A02-05 | ACCEPTED | Current findings and supporting reports reconcile with actual code/evidence. DMLex language/Crosslingual, OntoLex status, ELEXIS/jbotci limits, farvi conflict, code/content terms and inspected-only PostgreSQL/SQLx remain explicit. Both diagrams are reviewable proposals; no adoption/deployment inferred. |
+| A02-06 | Preservation, all child dispositions and current carryover ACCEPTED; final mechanical closure remains CDC-owned | Fresh preservation guards pass, 24/24 child rows DONE, all four mandatory child retrospectives read and hash-guarded. This written six-row gate supplies the terminal composition disposition. CDC must now write the actual arc close/retrospective, reconcile arc rows and project08/09, and commit scoped records. That post-verdict sequence is required mechanical work, not missing implementation proof or advance success prefill. |
+
+No blocking implementation or composition finding remains. All14 prior Rust1.98 gate results are retained by exact code/ref and 44-artifact guards (86/88/10 including doctests); they were not rerun here. Fresh execution separately demonstrates the assembled source→canonical archive→native retrieval→sound/morphology→public consumer/CLI→report path. Process/event counts do not imply unique test counts.
+
+The original S03 cumulative cap compliance is unknown, reconstructed request-URL provenance remains unresolved, and one tested storage bundle does not establish engine causality or universal performance. No standard conformance, content rights, semantic winner/inferred slots, Relojban compatibility, complete morphology alternatives, perceptual/poetic score, human vocal/reader result or project completion is accepted.
+
+CDC may finish the remaining mechanical records against this accepted composition without another implementation review unless source, inputs or claims materially change. Preserve original P02-01–05 OPEN, P02-06/07 DONE and Project01 Arc02 parked; P02-08/09 become eligible only with this gate plus that mechanical close. Architecture/content/artistic decisions stay with Duncan. Stop at this authorized arc endpoint.
+
+### Post-verdict reviewer-intake annotation
+
+CDC's bounded receipt check identified a core-idioms reading omission for reviewer-authored scratch Rust. The guide was fully received after this verdict, and only that scratch control was checked; no new correctness issue arose. Its compressed formatting remains a disclosed reviewer-artifact style deviation, with executed bytes/logs preserved. See the dated late-intake annotation in [composition evidence](artifacts/composition-evidence.md) and the appended extent/hash receipt. No successful gate was rerun; acceptance is unchanged.
+
+## CDC post-verdict mechanical completion
+
+CDC /root/cdc,2026-10-23: the required post-verdict arc close/retrospective, six-row arc ledger and project08/09 carryover are now completed in this scoped planning change. See [arc closure](closing-report.md), [retrospective](cdc-retrospective.md) and [final mechanical census](artifacts/closure-reconciliation.json). All24childrows/6arcrowsDONE; originalP02-01–05OPEN/06–07DONE preserved,08/09DONE; projectOPEN and Project01Arc02parked. Source/report/input/config remain unchanged at7a05516. This completion annotation is CDC's mechanical reconciliation, not a rewritten fresh-review verdict or additional runtime execution. Authorized one-arc execution stops here.

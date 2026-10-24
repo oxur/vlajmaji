@@ -1,0 +1,749 @@
+{
+  "schema": "project02-e02-resource-manifest-v2",
+  "scope": "Only the named finite Arc01 Slice01 package/list/API families; no production use, language conformance, legal conclusion, or publication.",
+  "payloads": [
+    {
+      "path": "raw/crates/latkerlo-jvotci-2.10.2601.crate",
+      "bytes": 301452,
+      "sha256": "de7ecf93be931b624abeb0084d2a4f0ff010df3eb6d2758a89697a1531b0e491",
+      "category": "crate-archive"
+    },
+    {
+      "path": "raw/crates/latkerlo-jvotci-2.10.2601.headers.txt",
+      "bytes": 632,
+      "sha256": "ed769bdfd2c4c7d3ec4054e61b2e5ccd1a8f5327fb3b638b4f2a842aeb575dc1",
+      "category": "crate-archive"
+    },
+    {
+      "path": "raw/crates/vlazba-1.0.11.crate",
+      "bytes": 70634,
+      "sha256": "2b494f7f1f0483cd61a39a840f32cc90cbdb1180f9438277b78eecc339d112dd",
+      "category": "crate-archive"
+    },
+    {
+      "path": "raw/crates/vlazba-1.0.11.headers.txt",
+      "bytes": 631,
+      "sha256": "e7c1af5de93739b41c6ec0f1cbdc9fe8f2e0cf8f6f05e7f9bcf8eaf0060f0073",
+      "category": "crate-archive"
+    },
+    {
+      "path": "raw/lexical/jbovlaste-en-all.xml",
+      "bytes": 1312,
+      "sha256": "1400f331f8657a50cb9686df703a18ea4b9f701615124498213b6587ce38f410",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/jbovlaste-en-all.xml.headers.txt",
+      "bytes": 602,
+      "sha256": "72361f6edd0bb63ce70125711771af51d39cfdbb6f9539943e022430a82219c5",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/la-lojban-README.md",
+      "bytes": 9986,
+      "sha256": "07b2001b157511d751a3dc6d6dbb7545c7fc137c49dabc9bcd12d905ca095028",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/la-lojban-dumper.ts",
+      "bytes": 1810,
+      "sha256": "932792a37bb99fdc2bf299bc53366cc6597b473220a8b3d1f4dc15f27cdbc7d8",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/la-lojban-en.json",
+      "bytes": 7259156,
+      "sha256": "861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/la-lojban-package.json",
+      "bytes": 2457,
+      "sha256": "077de81612a09ca5052ce8b90e3cb697f4153e38ca2ee9d0d0a5cf407c629b66",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-banro.headers.txt",
+      "bytes": 945,
+      "sha256": "e961d74ba78bc4e1fcd54e9f9590c84fa9b838900d2d889335ee06c19ba8a173",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-banro.json",
+      "bytes": 11752,
+      "sha256": "fb9e1b10f21968f9dd1e4f2cf077e64d5c1f686b68521376e06236c095fd64ec",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-cached-en-json.headers.txt",
+      "bytes": 873,
+      "sha256": "34e3e4919990aedca92f9c291f1194d61493c991c2e355248653bb88872425f9",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-citno.headers.txt",
+      "bytes": 945,
+      "sha256": "80f2d9ddde8215df5daaab1e64be94ac2399462519ac5d714d896d8693fd39fc",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-citno.json",
+      "bytes": 9664,
+      "sha256": "687421dca568e88c3d036d8d6b65e8e0f7a085683c46999dfbdd31868b6946f6",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-cpana.headers.txt",
+      "bytes": 951,
+      "sha256": "1e01df33b7d7436fe054239a068bfc74d515c6d97c928b8507bbb84505bc934b",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-cpana.json",
+      "bytes": 8834,
+      "sha256": "d6ad231343510e340ee86af848d9090fec98092b04824dd080d3b12fab5dde17",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-en-json.headers.txt",
+      "bytes": 865,
+      "sha256": "f6689bba1a9601cbcd32b771f39041e7233dac811f09c4ff13a127f1c365f53d",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-en-tsv.headers.txt",
+      "bytes": 869,
+      "sha256": "ffc1e28173b9a7ec1d353581103ea97a94df0b6201e7758c18ac256db5497ad6",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-farvi.headers.txt",
+      "bytes": 945,
+      "sha256": "a89e47b974180c2f01948f1bcb428a27b72cb5a65687d5e3f1629752086040ca",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-farvi.json",
+      "bytes": 9473,
+      "sha256": "1117d272d84557d08734b9e8c6f7969f1e8d7afe586db59ead19b8ba800eea79",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-flaume.headers.txt",
+      "bytes": 955,
+      "sha256": "f437de32786b8b22b85a732c29c28c9b4a09bc4f2ebd9f0d25ed7caaf1285dd0",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-flaume.json",
+      "bytes": 1258,
+      "sha256": "c88a678508c604215c83fcb539b8e229f06445fbf7e4faa4469a8c95ba65c993",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-kalri.headers.txt",
+      "bytes": 951,
+      "sha256": "08c8eb0f87949950fc9fd54eea4c4be55162b55a8ca6ce27bc0c6c157cc6b965",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-kalri.json",
+      "bytes": 8899,
+      "sha256": "7dff4b2f0c947ce2910c9870162f9922a0aa53a8f85065864938a9fb5bb91d49",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-project02_absent_sentinel.headers.txt",
+      "bytes": 868,
+      "sha256": "33c5ecbcd0d23fed9428cc463e64e97a7b077e2c60e1bac2ef34c94871c914d9",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-project02_absent_sentinel.json",
+      "bytes": 15,
+      "sha256": "48b63fc971eee3d893658ac31918cd0b3d35d101283213bce27d409dac618753",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-ricrprunu.headers.txt",
+      "bytes": 945,
+      "sha256": "6156c5e08e523bdeaa4f8e61ec9c919a9e982680491b347c2b7dddd199a12e87",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-ricrprunu.json",
+      "bytes": 782,
+      "sha256": "2ea86024a703b9d202af887e000269b0ba40ef124adf8958f249a3cab483f099",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-rutrprunu.headers.txt",
+      "bytes": 947,
+      "sha256": "59e65a60b0d39524474e971156750def0046e467ddb97b014d8fc21f4ff2bf1b",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-rutrprunu.json",
+      "bytes": 753,
+      "sha256": "7b53392a95e09715fc4aecf29b69a94847adbae057ab87ff05e51574b8237d2e",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-slabu.headers.txt",
+      "bytes": 949,
+      "sha256": "c502f5dd9f6d42f65a68f2b6b579b2c4af529bb3bf95673a644fd490c9b53cd6",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-slabu.json",
+      "bytes": 11565,
+      "sha256": "4acce136a0b31012cb4f4d90cd07479e447fdbb9ab5e1f42cb674250afcfa911",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-snime.headers.txt",
+      "bytes": 949,
+      "sha256": "8b4afb371ec1e122c83140379db66a92f1274ba0e3e8c1f4347f50bf19b65f3f",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-snime.json",
+      "bytes": 7260,
+      "sha256": "b283ccc57c6a50616d670b23def2e0cfe6232c9bdd721ddfc99466fd43e31e2f",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-tricu.headers.txt",
+      "bytes": 951,
+      "sha256": "5eea759310d23aaa91d9dada048b1409668d7e85b6b87c826b0dbe61a0a6d505",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-tricu.json",
+      "bytes": 7771,
+      "sha256": "71ff93983d39a8dc86d0a1edcdd9bde6fe0218846cbf7e394f9eb2d84d181ed0",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-xrula.headers.txt",
+      "bytes": 943,
+      "sha256": "c0b2398ab01d264017919ebc2bad6f236624a7db92ae490fd37a8f46a0ab2ccf",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/lensisku-xrula.json",
+      "bytes": 6809,
+      "sha256": "24402336cd359c71f1528a4708e8aeed1b3ec0f005e2983d57f42a09e01c183f",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/llg-cmavo.headers.txt",
+      "bytes": 674,
+      "sha256": "851eea40c43cced678f87a0372c80ce1bfaf7ede09ca1633e3de0c8c40e73be7",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/llg-cmavo.txt",
+      "bytes": 145139,
+      "sha256": "544414d61f3ff35dd2cf4e4f79f3c86bf9bb0568eb3403f57288057e16796402",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/llg-gismu.headers.txt",
+      "bytes": 686,
+      "sha256": "5f5a6384045c81f7eb5d4958123b84cdf28af97bca6b630d73f2802ffc5683dd",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/llg-gismu.txt",
+      "bytes": 368403,
+      "sha256": "f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/llg-rafsi.headers.txt",
+      "bytes": 678,
+      "sha256": "1e898f7a36a3c4e1d063cd281b46fdfb5b0dd94d21ba016b207a53d023104aac",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/llg-rafsi.txt",
+      "bytes": 30883,
+      "sha256": "31b90a8551cb3cb9f4d0c6873867af1906e9210c398bf49f20e5c21aa02d0d24",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/llg-wordlists.headers.txt",
+      "bytes": 806,
+      "sha256": "e0853da5e40bfa5ca6e1ac6c03447333cebc02491bf40066b0e7f650710c1575",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/llg-wordlists.html",
+      "bytes": 18982,
+      "sha256": "edcb5f539a5eb2a73ea332b06363ffdc0e74b1e0cd2d111d7c8d39d1ad7385df",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/sutysisku-LICENSE",
+      "bytes": 1073,
+      "sha256": "06cad05ddb0dc549d79a823956fb9999754c58e60ffc5004b696bfbbc80b6c38",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/sutysisku-README.md",
+      "bytes": 505,
+      "sha256": "140135350645ee6ddd504e3e6d9d1b0fb5a4c7a5979bb53c0e954f1ac3ea0a0e",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/lexical/sutysisku-parsed-en.json",
+      "bytes": 4563090,
+      "sha256": "8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d",
+      "category": "lexical-capture-or-headers"
+    },
+    {
+      "path": "raw/notices/jbovlaste-export.headers.txt",
+      "bytes": 606,
+      "sha256": "72cfdf8ee2bfcd4a01e3e64464ff78b844d961a5f71d9389030254ba6a5172bf",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/jbovlaste-export.html",
+      "bytes": 9372,
+      "sha256": "2e33043c6a9590cd9907129448c84a8dbc335b89a06874fb51f07a955b22359b",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/jbovlaste-home.headers.txt",
+      "bytes": 607,
+      "sha256": "a50faf36719f5b0c46fc397810a182272825160b11f233862cd10211c8a27f33",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/jbovlaste-home.html",
+      "bytes": 6877,
+      "sha256": "9e04420ba57de25b41356bf70073a0fe5f355c7e75a8991a97093e2cfc7c13c0",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/la-lojban-README.md.headers.txt",
+      "bytes": 887,
+      "sha256": "7f564bc79a06eccd6e41eaa68a4dea9a99f7c3ffe313ea9c47a2fa67762c4636",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/la-lojban-dumper.ts.headers.txt",
+      "bytes": 887,
+      "sha256": "f97a78b863314a45881efbc5ff6b352b8037f4c979f29522673b301b8d937294",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/la-lojban-en.json.headers.txt",
+      "bytes": 892,
+      "sha256": "755c44f17d46f03cc44fa8b47198b4f58b5250dc8fef5d3382d11e0ea56268e1",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/la-lojban-package.json.headers.txt",
+      "bytes": 888,
+      "sha256": "1220b4e549434e92bb5d102ab413eded0e502e8bf68a39ac50e653ea3842f54a",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/la-lojban-tree.headers.txt",
+      "bytes": 1327,
+      "sha256": "71826b8606a3cb18d59a4dd2923c75b968611ada96905aa97997093c1cfcff41",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/la-lojban-tree.json",
+      "bytes": 18797,
+      "sha256": "1f0eacf7f04827fdb4fbcc6bbc1ecc43afe6043dcebdf14e5c212cf830f8eb87",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-README.md",
+      "bytes": 11567,
+      "sha256": "c347bc3cdb0c67a6b1be63d69ee6fb6abcb51b877fd2d43614686d0f0091ac9c",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-README.md.headers.txt",
+      "bytes": 890,
+      "sha256": "28dfde689f89bb6325b79a456bc6da7695989df6dc0e09b3067969f754365439",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-api-docs.rs",
+      "bytes": 469,
+      "sha256": "4cc85f7f9c657b59ab1ecdcfae80d638342b842e5d918f41606c4cb3c1fdbf65",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-api-docs.rs.headers.txt",
+      "bytes": 888,
+      "sha256": "da7c1e14e297f1930076acc89e4381dd8fc3437d7cb6d55fe3db0a9e06a89459",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-export-controller.rs",
+      "bytes": 8949,
+      "sha256": "ecce313ea320e7e67a8c32bd812df1cf291caacd70aff52d9282bae1fa7f3bae",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-export-controller.rs.headers.txt",
+      "bytes": 890,
+      "sha256": "6104fe6f02a547a52ad5b6bb5666d8bb342a636161a634ed0d9c08d7bbbf4678",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-export-dto.rs",
+      "bytes": 3408,
+      "sha256": "e942d88f8ba6ce7283786931a87db8194f189836cd9de7a099d7ad1c09ac01f0",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-export-dto.rs.headers.txt",
+      "bytes": 889,
+      "sha256": "bbcc03e07a7d36f4a2de5b82d95fa45fd080639c1a55e9d89f8ec0ac428a3daa",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-frontend-export.vue",
+      "bytes": 10618,
+      "sha256": "b47786b69b3d9a579f31f86e7e4dac43ebf31ce476da3a8df8cad927f1e2fe31",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-frontend-export.vue.headers.txt",
+      "bytes": 891,
+      "sha256": "baa246dc998979173ffd54d67155f6be46de0d49d4dc677911e4581954c0b987",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-home.headers.txt",
+      "bytes": 2059,
+      "sha256": "3a5f62d2bb6e2e6d64a17f83e833372efd81706efaca351ca6c0fff5d3b53075",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-home.html",
+      "bytes": 32218,
+      "sha256": "a2aa6a7466dd51db1acc123e085c81e74ecfaa442c90e2aa18aacc47c1287b40",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-jbovlaste-controller.rs",
+      "bytes": 80770,
+      "sha256": "2db842fe239e04dee9284a49c1eb4d97a003b9e57e0824599c7f29f48d951925",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-jbovlaste-controller.rs.headers.txt",
+      "bytes": 891,
+      "sha256": "22ab813c9aaf3efad00150d1249214d7ac114a786371b577d3686a439f83f825",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-jbovlaste-dto.rs",
+      "bytes": 19107,
+      "sha256": "be029e662784e8c2b748e6c88ddee93d1fe950ae877029e88916700edd14fcfb",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-jbovlaste-dto.rs.headers.txt",
+      "bytes": 891,
+      "sha256": "98428773eeceef52e0703f643b3db7bab1736fc5b533b884f79df8719f1b1a78",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-license.headers.txt",
+      "bytes": 786,
+      "sha256": "e4600904523497da7019c695af1d73611bcc6124304b94d9f82aae7e225367fd",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-readme.headers.txt",
+      "bytes": 892,
+      "sha256": "c62128da5521a79ccc8e3db0a1b6fe3bba21b8004e9ef322c79541497508abb7",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-tree.headers.txt",
+      "bytes": 1303,
+      "sha256": "c217af0eec39a57bd405d978ab22bb49f2d8df2a9007c5502db6ee47ae93d13b",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku-tree.json",
+      "bytes": 270027,
+      "sha256": "287dc86a32f712fdd39d0b18d5021dc8cb29dfd44155e53611d489c26acde043",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lensisku.ls-remote.txt",
+      "bytes": 129,
+      "sha256": "99ab9045504cc714519b7b99a704d6037deed4e02333d3d97c67089c17363c49",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/llg-gismu-format-raw.headers.txt",
+      "bytes": 836,
+      "sha256": "0d7903218c59a78d61d62e1bfba6ba6f64286e4cf85e9bfbaee07945640774c9",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/llg-gismu-format.headers.txt",
+      "bytes": 826,
+      "sha256": "fa7bf6a132eab8ea0cf0980ebb5f260b5a80abc16e07e2ac2d0cd43a256a0b24",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/llg-public-domain.headers.txt",
+      "bytes": 668,
+      "sha256": "848a0e255c7408912f826593e0960243b3bc4bb5d919fd589d66a7bddb408cd1",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/llg-public-domain.txt",
+      "bytes": 1023,
+      "sha256": "9fb2ae1345252ba30999523a0980e1ae69795f5940d2fd9cea8a56c67be18a55",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/lojban.ls-remote.txt",
+      "bytes": 133,
+      "sha256": "e74c2bc3422a22b07519414c175b49a57ca8b50bf113e6c351b84ef74874a503",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/sutysisku-LICENSE.headers.txt",
+      "bytes": 888,
+      "sha256": "0e6e39e152d209005adb3f702e5821026401c4f68f280fcc52c2a6c511ec330d",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/sutysisku-README.md.headers.txt",
+      "bytes": 888,
+      "sha256": "b16977f9000b84c3d3022101e97b901d85e0790dc65b73c9cec6557a135a5f0d",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/sutysisku-parsed-en.json.headers.txt",
+      "bytes": 891,
+      "sha256": "e5f1aeeeaa553f082dd845617b277d1e6310298327b720834a0e353d775e7533",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/sutysisku-tree.headers.txt",
+      "bytes": 1304,
+      "sha256": "9f5bc09b290138abdad8cf56660ec82539fb106e0e88483fd78460b2e6167b17",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/sutysisku-tree.json",
+      "bytes": 897223,
+      "sha256": "c99630dfd432403a9f0086f884545888670ee1e69a0c909e62cbfbd3bc489e1a",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/notices/sutysisku.ls-remote.txt",
+      "bytes": 131,
+      "sha256": "013fbad376fb1051fec8d3438e1db12d6b1a4d1b71d2a69aa392c1973e45158c",
+      "category": "source-notice-or-documentation"
+    },
+    {
+      "path": "raw/registry/latkerlo-jvotci.headers.txt",
+      "bytes": 629,
+      "sha256": "65a1c14225f0f9f644700941aaec1ae08224303d6cb57261d28932f3fe6ba616",
+      "category": "registry-index-or-headers"
+    },
+    {
+      "path": "raw/registry/latkerlo-jvotci.index.jsonl",
+      "bytes": 14144,
+      "sha256": "20cc5a2177cc52e61119a9cb354e2a1338f9a162f98c390eaf7dce271ecd1b19",
+      "category": "registry-index-or-headers"
+    },
+    {
+      "path": "raw/registry/latkerlo.headers.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "category": "registry-index-or-headers"
+    },
+    {
+      "path": "raw/registry/vlazba.headers.txt",
+      "bytes": 630,
+      "sha256": "64bcd2df088fa3e2cbf818be812daf348b4e345aeb1ae572fb8d4f9e3000c2d6",
+      "category": "registry-index-or-headers"
+    },
+    {
+      "path": "raw/registry/vlazba.index.jsonl",
+      "bytes": 43565,
+      "sha256": "c9fa8362c768b2531d448028823443e60a46cad589dabd3091a55a37f2fb02a2",
+      "category": "registry-index-or-headers"
+    }
+  ],
+  "crate_selection": {
+    "latkerlo-jvotci": {
+      "index_url": "https://index.crates.io/la/tk/latkerlo-jvotci",
+      "index_path": "raw/registry/latkerlo-jvotci.index.jsonl",
+      "archive_url": "https://static.crates.io/crates/latkerlo-jvotci/latkerlo-jvotci-2.10.2601.crate",
+      "archive_path": "raw/crates/latkerlo-jvotci-2.10.2601.crate",
+      "version": "2.10.2601",
+      "registry_sha256": "de7ecf93be931b624abeb0084d2a4f0ff010df3eb6d2758a89697a1531b0e491"
+    },
+    "vlazba": {
+      "index_url": "https://index.crates.io/vl/az/vlazba",
+      "index_path": "raw/registry/vlazba.index.jsonl",
+      "archive_url": "https://static.crates.io/crates/vlazba/vlazba-1.0.11.crate",
+      "archive_path": "raw/crates/vlazba-1.0.11.crate",
+      "version": "1.0.11",
+      "registry_sha256": "2b494f7f1f0483cd61a39a840f32cc90cbdb1180f9438277b78eecc339d112dd"
+    }
+  },
+  "pinned_git_payloads": [
+    {
+      "repository": "https://github.com/La-Lojban/lojban",
+      "revision": "de47055c68141c283841b1035cd7425bb32bf6ca",
+      "tree_path": "raw/notices/la-lojban-tree.json",
+      "repo_path": "assets/dumps/en.json",
+      "payload_path": "raw/lexical/la-lojban-en.json",
+      "git_blob_sha1": "6964a2db679ca439fd7302ac8a772316ef749988"
+    },
+    {
+      "repository": "https://github.com/La-Lojban/sutysisku",
+      "revision": "2c71205747143ea965749ffc3ac3b48ef5c0a517",
+      "branch": "asql",
+      "tree_path": "raw/notices/sutysisku-tree.json",
+      "repo_path": "data/parsed-en.json",
+      "payload_path": "raw/lexical/sutysisku-parsed-en.json",
+      "git_blob_sha1": "3b57134c98f7b7cd8b1d5856f0e550d481b14dcf"
+    }
+  ],
+  "other_primary_sources": [
+    {
+      "source": "LLG word lists page revision oldid=99470",
+      "url": "https://mw.lojban.org/papri/lojban_Wordlists",
+      "payloads": [
+        "raw/lexical/llg-wordlists.html",
+        "raw/lexical/llg-gismu.txt",
+        "raw/lexical/llg-cmavo.txt",
+        "raw/lexical/llg-rafsi.txt",
+        "raw/notices/llg-public-domain.txt"
+      ],
+      "format_reference": "https://mw.lojban.org/papri/format_of_Gismu_Lists (opened through browser; direct curl attempts returned 403; source prose and locator recorded in resource map)",
+      "source_links": {
+        "gismu": "http://www.lojban.org/publications/wordlists/gismu.txt",
+        "cmavo": "http://www.lojban.org/publications/wordlists/cmavo.txt",
+        "rafsi": "http://www.lojban.org/publications/wordlists/rafsi.txt",
+        "public_domain_notice": "http://www.lojban.org/publications/wordlists/public_domain.txt"
+      },
+      "request_final_url_precision": "Source-page links are resolvable from captured HTML; exact per-file requested/final URLs were not retained."
+    },
+    {
+      "source": "Lensisku word-definition API",
+      "url_template": "https://lensisku.lojban.org/api/jbovlaste/valsi/{word}/definitions?langid=2",
+      "payloads": "12 bounded query JSON files and headers under raw/lexical/",
+      "semantics": "langid is preferred language; all returned language rows were retained",
+      "source_revision": "1f4ca50f92d5d218e42a6e0cbd810a9f9d5f60e4",
+      "source_path": "src/jbovlaste/controller.rs; captured source path raw/notices/lensisku-jbovlaste-controller.rs",
+      "request_final_url_precision": "Canonical per-word route is given; final redirect URL was not retained."
+    },
+    {
+      "source": "Jbovlaste English XML export",
+      "url": "https://jbovlaste.lojban.org/export/xml.html?lang=en&positive_scores_only=0&all_defs=1",
+      "result": "HTTP 200 challenge HTML, not XML; retained under raw/lexical/jbovlaste-en-all.xml",
+      "final_redirect_url": "not recorded",
+      "notice_source_url": "https://jbovlaste.lojban.org/ (canonical homepage locator reconstructed from the captured original-site pages)",
+      "notice_payloads": [
+        "raw/notices/jbovlaste-home.html",
+        "raw/notices/jbovlaste-export.html"
+      ],
+      "notice_scope": "Submitted content on the original Jbovlaste site only; not generalized to Lensisku contributions or separate dumps."
+    },
+    {
+      "source": "Lensisku repository",
+      "repository": "https://github.com/lojban/lensisku",
+      "revision": "1f4ca50f92d5d218e42a6e0cbd810a9f9d5f60e4",
+      "tree": "raw/notices/lensisku-tree.json"
+    },
+    {
+      "source": "Lensisku unauthenticated export attempts",
+      "source_repository": "https://github.com/lojban/lensisku",
+      "source_revision": "1f4ca50f92d5d218e42a6e0cbd810a9f9d5f60e4",
+      "source_paths": [
+        "src/export/controller.rs",
+        "frontend/src/views/Export.vue"
+      ],
+      "route_evidence": "A06 cached export path is the recorded canonical route; A07 JSON/TSV dictionary export route URLs are reconstructions from this pinned source because exact full request URLs were not retained.",
+      "response_headers": [
+        "raw/lexical/lensisku-cached-en-json.headers.txt",
+        "raw/lexical/lensisku-en-json.headers.txt",
+        "raw/lexical/lensisku-en-tsv.headers.txt"
+      ],
+      "final_redirect_urls": "not recorded"
+    }
+  ],
+  "acquisition_day": "2026-10-23",
+  "acquisition_time_precision": "Only the acquisition day is known. Exact local request timestamps were not retained. Adjacent HTTP Date headers are response/cache metadata, not local request times.",
+  "source_locators": {
+    "llg_wordlists": {
+      "page_url": "https://mw.lojban.org/papri/lojban_Wordlists",
+      "page_revision": "oldid=99470",
+      "linked_source_urls": {
+        "gismu": "http://www.lojban.org/publications/wordlists/gismu.txt",
+        "cmavo": "http://www.lojban.org/publications/wordlists/cmavo.txt",
+        "rafsi": "http://www.lojban.org/publications/wordlists/rafsi.txt",
+        "public_domain_notice": "http://www.lojban.org/publications/wordlists/public_domain.txt"
+      },
+      "payloads": [
+        "raw/lexical/llg-wordlists.html",
+        "raw/lexical/llg-gismu.txt",
+        "raw/lexical/llg-cmavo.txt",
+        "raw/lexical/llg-rafsi.txt",
+        "raw/notices/llg-public-domain.txt"
+      ],
+      "capture_uri_note": "The source-page links are retained. Exact per-request URL and final redirect target for each downloaded linked file were not retained."
+    },
+    "llg_format_reference": {
+      "canonical_url": "https://mw.lojban.org/papri/format_of_Gismu_Lists",
+      "revision": "oldid=98834",
+      "capture_note": "Opened in browser; direct curl attempts returned 403. No final redirected URL was recorded."
+    },
+    "lensisku_word_api": {
+      "canonical_request_template": "https://lensisku.lojban.org/api/jbovlaste/valsi/{word}/definitions?langid=2",
+      "source_repo": "https://github.com/lojban/lensisku",
+      "source_revision": "1f4ca50f92d5d218e42a6e0cbd810a9f9d5f60e4",
+      "source_path": "src/jbovlaste/controller.rs (captured as raw/notices/lensisku-jbovlaste-controller.rs; endpoint declared at lines 687-709)",
+      "response_payloads": "Twelve raw/lexical/lensisku-{word}.json files and adjacent headers.",
+      "request_or_redirect_note": "The canonical route and per-word query are recorded in attempts.md. Final redirect URLs were not retained."
+    },
+    "lensisku_failed_exports": {
+      "cached_route_recorded_in_attempt": "https://lensisku.lojban.org/api/export/cached/en/json",
+      "dictionary_export_canonical_reconstruction": [
+        "https://lensisku.lojban.org/api/export/dictionary/en?format=json&positive_scores_only=false&source_lang=jbo",
+        "https://lensisku.lojban.org/api/export/dictionary/en?format=tsv&positive_scores_only=false&source_lang=jbo"
+      ],
+      "canonical_reconstruction_source": "Pinned Lensisku revision 1f4ca50f92d5d218e42a6e0cbd810a9f9d5f60e4: src/export/controller.rs and frontend/src/views/Export.vue.",
+      "request_precision": "The full JSON/TSV requested URLs were not retained; the listed dictionary export URLs are canonical reconstructions from the pinned source, not asserted request logs. Final redirect URLs are unknown.",
+      "response_headers": [
+        "raw/lexical/lensisku-cached-en-json.headers.txt",
+        "raw/lexical/lensisku-en-json.headers.txt",
+        "raw/lexical/lensisku-en-tsv.headers.txt"
+      ]
+    },
+    "jbo_vlaste": {
+      "xml_export_url": "https://jbovlaste.lojban.org/export/xml.html?lang=en&positive_scores_only=0&all_defs=1",
+      "captured_footer_source": "Original Jbovlaste homepage/export HTML under raw/notices/; footer statement is limited to content submitted on that site.",
+      "final_redirect_url": "not recorded",
+      "canonical_home_url": "https://jbovlaste.lojban.org/",
+      "captured_notice_payloads": [
+        "raw/notices/jbovlaste-home.html",
+        "raw/notices/jbovlaste-export.html"
+      ],
+      "notice_scope": "Captured original-site footer concerns submitted content on Jbovlaste; it is not extended to Lensisku contributions or separate dataset exports."
+    }
+  }
+}

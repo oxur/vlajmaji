@@ -1,0 +1,418 @@
+{
+  "schema_version": 1,
+  "recorded_scope": "Iteration02 current Slice04 source candidate, full-set replay/consumer/gate evidence, and exact cached strsim package capture; protected earlier-slice inputs remain separately guarded.",
+  "archive": {
+    "path": "/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/p02a02-s04-iteration02.Vfe5wL/corpus.archive",
+    "bytes": 28320417,
+    "sha256": "4e5c30e978bde631349e1107599f3ef9738c1f63257ba280e146d2256c7cef5a"
+  },
+  "candidate_files": [
+    {
+      "path": "Cargo.lock",
+      "bytes": 29699,
+      "sha256": "3ca15c28191e2f0fa07f3b1d68ee69705e6b52fec353acc25704c5dc8ea90cfd"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 775,
+      "sha256": "e95f40c5a33f07b8ae63bd0462053327919b1e94f799addb203bff98a2a7504e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 9409,
+      "sha256": "2965ffc7eb21500e4d84c63fd1c3ca5e551eb2e86bfbb51012328456ec104fba"
+    },
+    {
+      "path": "crates/relojban-lexicon-store/src/lib.rs",
+      "bytes": 13396,
+      "sha256": "957d876217993468abedfde6df6b410d4f50944e767d637d56167363932acdd1"
+    },
+    {
+      "path": "crates/relojban-lexicon-store/tests/public_identity.rs",
+      "bytes": 932,
+      "sha256": "a46c0ac78b3a0da5ccff7e0c9328c8605ab60ec6e3896910674ffb354dabf055"
+    },
+    {
+      "path": "crates/relojban-search-cli/Cargo.toml",
+      "bytes": 413,
+      "sha256": "73f9d45d60bfb131e3a241bceaa07dc7504d343c71fa65f25e380188a918de5f"
+    },
+    {
+      "path": "crates/relojban-search-cli/src/main.rs",
+      "bytes": 4177,
+      "sha256": "ae7d6bc32a9b34d05336852dddbc4d4052ebe482272992ac0ed7358d76d92ab8"
+    },
+    {
+      "path": "crates/relojban-search-cli/tests/cli_contract.rs",
+      "bytes": 5756,
+      "sha256": "79b0477b4957b151b7686d6868982c698feea7eec8ffdc9723e69786a6f2d9d6"
+    },
+    {
+      "path": "crates/relojban-search/Cargo.toml",
+      "bytes": 649,
+      "sha256": "6b7fbe6a47e0a352255dfe7b7d7cc1b601c7417a8dcc6db850786f6add17eb61"
+    },
+    {
+      "path": "crates/relojban-search/examples/full_population_probe.rs",
+      "bytes": 27406,
+      "sha256": "3b5d2dba3ee22cf26d36025e04d929d063f9c2954443cb97ced59ca8d7fe5688"
+    },
+    {
+      "path": "crates/relojban-search/src/lib.rs",
+      "bytes": 56146,
+      "sha256": "13ac7b133fae07b17a37db424245cbeaec72311b10741a5fb93b392ea58c101e"
+    },
+    {
+      "path": "crates/relojban-search/tests/corpus_contract.rs",
+      "bytes": 14027,
+      "sha256": "799cf3241aa413581dbdc948bf3c0b994a341d51336841c0ab4e3d9dc385a7a8"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/README.md",
+      "bytes": 7676,
+      "sha256": "455739694210ee35cdbbf1aa29f189ae9c2190117bf49a96481778aa2a2fd696"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/verify_manifest.py",
+      "bytes": 1209,
+      "sha256": "040648af159a8c0bb63de129a70172e215e30456eaabf154c68c7c2de729f585"
+    },
+    {
+      "path": "research/lexical-data-search.md",
+      "bytes": 13975,
+      "sha256": "3b88586ba1d5448faf03e94ed8319d81eecfc202724f6f03eb67fa61e6fefcc3"
+    },
+    {
+      "path": "research/lexical-model-import.md",
+      "bytes": 10551,
+      "sha256": "f1a0da56e83829174b3debe6debddfffb265019eccfb143a57829f9c2a0a96d6"
+    },
+    {
+      "path": "research/lexical-search-findings.md",
+      "bytes": 13466,
+      "sha256": "ef55da8a11c97b175d718bdfa0c1dd4b9313c735539bfe335818f5bad4368546"
+    },
+    {
+      "path": "research/lexical-storage-comparison.md",
+      "bytes": 10086,
+      "sha256": "85dcefae7ec7fd49bb8cf8444821e9c627b2167aafdde813917712c5d6891d29"
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/artifacts/cc-evidence.md",
+      "bytes": 4836,
+      "sha256": "1dc35cfa8e830b84e552d6ab87d66989cf59fc0278984c6be42cb276a717ec69"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/build-store-iteration02.json",
+      "bytes": 169,
+      "sha256": "04a9a6bdc3ee88badd6ca0365bffd93caf4eaf0a4a3b3cc09ec904783d54deeb"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/cli-doc-all-features.log",
+      "bytes": 149,
+      "sha256": "a405d501cfbbe40a4bb644b5eb863ea25996e77934af14737cc27baa0e11bae3"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/cli-doc-all-iteration02.log",
+      "bytes": 2974,
+      "sha256": "c238415eccb23df7516e6c0ad8576c8ade4d309703cf828247c394f2dc868724"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/cli-doc-default-iteration02.log",
+      "bytes": 2978,
+      "sha256": "e21a118ec19c04814a941bdd03ab04cee6a780baaf94596979b0f97e967efa9e"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/cli-doc-default.log",
+      "bytes": 150,
+      "sha256": "1e706df6c7521c32d78aa7eb40e6fcebb3141650e4fdacae72584ef1c9d2b44c"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/clippy-all-features.log",
+      "bytes": 1436,
+      "sha256": "a1c12adde78ede92d3ebf0c806141d51f73f4b3ca2c0e6b5b50a15f1d2a5abaa"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/clippy-no-default-features-final.log",
+      "bytes": 286,
+      "sha256": "897ea313ae69737d2fbe386e9fd18895c6f2861824f04e4f6aeca9cd1c97f210"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/consumer/.gitignore",
+      "bytes": 9,
+      "sha256": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/consumer/Cargo.lock",
+      "bytes": 10260,
+      "sha256": "71579b25a949d0e986c6b9a205dd9edef2db85072f0e1c47ff5ed55f85897cfb"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/consumer/Cargo.toml",
+      "bytes": 314,
+      "sha256": "baadd3ef9a7a38d6741d963a8e6d02e17afb8f9e5815fb5854151daa7f3afa0f"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/consumer/consumer-default-iteration02.log",
+      "bytes": 2576,
+      "sha256": "5e93746690c632b3556e2500b19f2dcf5d93aec9f526ced381e4438c4b7d0edc"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/consumer/consumer-default-iteration02b.log",
+      "bytes": 891,
+      "sha256": "094d03fed56a1e0c5e4ff18a9582af17aac6c8696ae16b1dc9537daccec9ac42"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/consumer/consumer-manifest-path-error-iteration02.log",
+      "bytes": 322,
+      "sha256": "67354de77cf76e91be7306088df47fbbc7a54f84448d72253c35cd30991204f9"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/consumer/consumer-morphology-iteration02.log",
+      "bytes": 2899,
+      "sha256": "85eea5c0326fdb5c617e745286eb11dc0ccbc7a5460d71528f36a133b37ba7a3"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/consumer/consumer-morphology-iteration02b.log",
+      "bytes": 893,
+      "sha256": "df3903a8e87c9492ae95175bdf7a301f3c85bd7ff06cea9ac3e6e66db9351f23"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/consumer/src/main.rs",
+      "bytes": 1870,
+      "sha256": "c59ada05cc9c51ef185b8cb8d7dd0d502b9c069214951a76b61d44fe712bd1b7"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/doc-all-features-final.log",
+      "bytes": 3542,
+      "sha256": "9e7f0b9d533c4fe9481a0f1371f81b3154cd2898f5bc94ff0d72ce58b71d6e34"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/fmt-iteration02.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-build.json",
+      "bytes": 121,
+      "sha256": "8fc6599f9c3af4604c336b06f2dca1c8e08e367c1124ea990f1f159300d4cfb4"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-build.stderr",
+      "bytes": 1015,
+      "sha256": "0914f73a511b17e24c4dfd0546051a159441fd8ade4605c008d6c54aa5bc4c2e"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-corpus-queries.jsonl",
+      "bytes": 217762,
+      "sha256": "18ab367825b503137148c289097c4cef56bd755263f1c47bf36419307404cf3f"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-class-map.jsonl",
+      "bytes": 2834,
+      "sha256": "aa6116340326faacda6e8ffc476844e509107163709d1545a780a0f4884edcee"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-class-map.stderr",
+      "bytes": 438,
+      "sha256": "303ddee0633fb9f62337ad239b71475ce4c343645362b6527cd06ab61409031a"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-final-current.log",
+      "bytes": 3318,
+      "sha256": "933354c9c0a02cd4ccade4abfa7300ae7d52b3ba67cf34f3068a31cafec76350"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-iteration02.jsonl",
+      "bytes": 53343,
+      "sha256": "34203b7d7a491c8098e9b4824ed0bd5bed3ddc4a266851b83525a49b57262f4a"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-iteration02.stderr",
+      "bytes": 534,
+      "sha256": "e21543d6c1680a857216e2cad86641586a9b938c354b1c6accb4981d483e7536"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-no-feature.attempt.md",
+      "bytes": 683,
+      "sha256": "c52555ee303d3f66a54b700fd8e21bf583ac2ee53d96ee53918c9c0aecc9a5f5"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-precompact.jsonl",
+      "bytes": 660096,
+      "sha256": "4abef90b95c77cfe0291f1488ef3299c94ee857002a001dfa517abbbd348641f"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-precompact.stderr",
+      "bytes": 438,
+      "sha256": "d645cd0ff2f8e3caf4b3ef72f5451106585db3a51e864df40503caf086c9f249"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-prior-class-map.jsonl",
+      "bytes": 2094,
+      "sha256": "df35d938c86f5b0f28855011333fad8605579ff32ffe5cb88984829bfdfa0d6e"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-prior-class-map.stderr",
+      "bytes": 438,
+      "sha256": "91202d47ff14a91735c45ac0405adba8a4dbb0b075a650c9e72600c9fb5cf9cd"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-run.jsonl",
+      "bytes": 102,
+      "sha256": "72e09304fd8de4dfdfd5423d8220f6b050314672d33c86209a61f3f73b51d6b6"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/full-population-run.stderr",
+      "bytes": 488,
+      "sha256": "b89305ffbc90dc1a43de33b2af4f33d7946da5f5a8bfb4abd17e73f5a5e1ae39"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/import-corpus-iteration02.json",
+      "bytes": 3973,
+      "sha256": "dc6bee1f15f43e77dc1223c5235cc51a7e2b514ab86880154a5a591de5c6db0e"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/search-clippy-no-default-iteration02.log",
+      "bytes": 286,
+      "sha256": "19abd5ceb8b16fba51bcfedacb33c3756e0acb35079a40cbdb1e4be11698cae3"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/search-test-no-default-final.log",
+      "bytes": 1115,
+      "sha256": "59557bbeae78379b34298115031de9ad949be555884625dc5582c5bfeb41eced"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/search-test-no-default-iteration02.log",
+      "bytes": 1602,
+      "sha256": "30abeb87c97baa59cef4b6324985ae358609011292636f60a38df6aaf748a8d8"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/test-all-features.log",
+      "bytes": 3125,
+      "sha256": "902fd614938967d244ceb31868d8f82ed187e2505fc88e506714779010c3e718"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/test-no-default-features-final.log",
+      "bytes": 1262,
+      "sha256": "1e7f79a7e54eac4abf60f6b3cc72032b15bb75d4dfb95581afda1875d2c8a82a"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-check-all-features.log",
+      "bytes": 736,
+      "sha256": "a8a560bf9cb30b0a9fb7a4a4b1cc3e0fb66f876afc00c8e9a8b581f40ceacd99"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-check-all-iteration02.log",
+      "bytes": 508,
+      "sha256": "b6b15cf1763e3fa90906c50153be3fa4a98ead8b561e2f1836fbaed6c32b8165"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-check-default-iteration02.log",
+      "bytes": 508,
+      "sha256": "b33a0cacc99fbd333f6fa9bfc9bb846923ec21404eacfc81b7fd0da2256cfe4e"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-check-default.log",
+      "bytes": 294,
+      "sha256": "bdb8b6881f7d20b8d7f8a20cb94aafb899c5f33596a15c042bedee9b35fa28c3"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-clippy-all-features.log",
+      "bytes": 280,
+      "sha256": "3ed9b40cb7799ff69dedd3b1f3a74b138b8c1068d0fca5021eb0982d0d33982f"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-clippy-all-iteration02.log",
+      "bytes": 508,
+      "sha256": "3975e8ea0463931039753294f5988534cc6c14626858aa3cccc7fe40a8825172"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-clippy-default-iteration02.log",
+      "bytes": 508,
+      "sha256": "81ac3bf7689a28415bd23d3ed303e7c34da77b92d21d5124f362062b3cdd1ca3"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-clippy-default.log",
+      "bytes": 1160,
+      "sha256": "6bc011115fe33bdd2c0a3f89b6565b7fdff582af8936912781472c911ccfc414"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-doc-all-features-excluding-cli.log",
+      "bytes": 167,
+      "sha256": "4dafe17174b5e8da34799f0a41a34660d18352562f0cc734ea4b6c8a8fdf15d9"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-doc-all-iteration02.log",
+      "bytes": 5557,
+      "sha256": "c359f69fbbdadfc482a80f3592092dc82c7cf835cc8177ca9cee880f7af0bb71"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-doc-default-excluding-cli.log",
+      "bytes": 3524,
+      "sha256": "eea439e2c669a6b8ebfd9ba033b9f1110190d7d1013cda5b002e9b73d614fb4b"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-doc-default-iteration02.log",
+      "bytes": 3526,
+      "sha256": "87544e18e7338064f161cd6ee97d364bd659dd722a1e1a374a84abf728f1ec6d"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-doc-default.log",
+      "bytes": 4554,
+      "sha256": "e3795130a895b473fbf9ed7d0165bea5c7d9b764379019d96d4fbd9f9738846b"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-test-all-features-final.log",
+      "bytes": 10380,
+      "sha256": "139472b647c065f9475fdaece63247ca5b78899c89394d7a61558ea73ff82193"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-test-all-features.log",
+      "bytes": 10816,
+      "sha256": "abc1d14a926a5af5e9a7a0e463646eaa882df646b2c1706897b3fda242d20b8d"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-test-all-iteration02.log",
+      "bytes": 11089,
+      "sha256": "05a84f107d077c612127c2bd31e603f5e71f4b2fbe2c83007705806f9eaa8710"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-test-default-final.log",
+      "bytes": 10242,
+      "sha256": "6e45f82b7e92b32304becfc1a2acb1ecfebaf13608a2ba8386d38986a21c97e9"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-test-default-iteration02.log",
+      "bytes": 10951,
+      "sha256": "8e7eb6b6f346ae30bb58ae2afae8051a3563031dd18a38bd118f673aa36a07ed"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/probes/workspace-test-default.log",
+      "bytes": 10906,
+      "sha256": "65ee99c938d5dbddfb937d86fa016ce83b8697ba77aba9c0468fc752e8fd1a39"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/raw/strsim-0.11.1/Cargo.toml",
+      "bytes": 1144,
+      "sha256": "e74cc8f9ab1f8680c26aebab519e3fbda7521eebd1e8fdcebdfc2e1bf138a875"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/raw/strsim-0.11.1/LICENSE",
+      "bytes": 1166,
+      "sha256": "1e697ce8d21401fbf1bddd9b5c3fd4c4c79ae1e3bdf51f81761c85e11d5a89cd"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/raw/strsim-0.11.1/README.md",
+      "bytes": 1100,
+      "sha256": "97f7b2d9134f97a3781ff6a3e08793b1f2d943e639d59149f7e1b7cfd0b9f9c3"
+    },
+    {
+      "path": "experiments/E03-lexical-data-search/slice04/raw/strsim-0.11.1/strsim-0.11.1.crate",
+      "bytes": 14266,
+      "sha256": "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
+    }
+  ]
+}

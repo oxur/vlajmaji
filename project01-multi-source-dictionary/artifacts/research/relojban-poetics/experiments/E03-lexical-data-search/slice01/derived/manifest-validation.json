@@ -1,0 +1,75 @@
+{
+  "positive_manifest": "pass",
+  "capture_count": 46,
+  "negative_controls": [
+    {
+      "case": "corrupted_sha256",
+      "same_validator_rejected": true
+    },
+    {
+      "case": "malformed_manifest",
+      "same_validator_rejected": true
+    },
+    {
+      "case": "well_formed_empty_capture_set",
+      "same_validator_rejected": true
+    },
+    {
+      "case": "false_resource_http_200_original_control",
+      "same_validator_rejected": true
+    },
+    {
+      "case": "dmlex_generic_marker_json_200",
+      "same_validator_rejected": true,
+      "format_rejection": [
+        "capture[46] raw/__temporary_negative__/dmlex_generic_marker_json_200.json useful-source: wrong or absent JSON Schema draft identity",
+        "capture[46] raw/__temporary_negative__/dmlex_generic_marker_json_200.json useful-source: wrong or absent DMLex schema $id",
+        "capture[46] raw/__temporary_negative__/dmlex_generic_marker_json_200.json useful-source: wrong DMLex title/type identity",
+        "capture[46] raw/__temporary_negative__/dmlex_generic_marker_json_200.json useful-source: oneOf lacks resource/entry top-level alternatives",
+        "capture[46] raw/__temporary_negative__/dmlex_generic_marker_json_200.json useful-source: missing $defs map"
+      ],
+      "other_errors": [],
+      "temporary_bytes": 840,
+      "temporary_sha256": "c560ae8e5a67637668083bceb487fc8ea2590e3c227da2ae20b28a7c3a26bbbf",
+      "http_status": 200,
+      "content_type": "application/json"
+    },
+    {
+      "case": "dmlex_empty_json_200",
+      "same_validator_rejected": true,
+      "format_rejection": [
+        "capture[46] raw/__temporary_negative__/dmlex_empty_json_200.json useful-source: body is smaller than the bounded source floor",
+        "capture[46] raw/__temporary_negative__/dmlex_empty_json_200.json useful-source: malformed DMLex schema JSON (JSONDecodeError)"
+      ],
+      "other_errors": [],
+      "temporary_bytes": 0,
+      "temporary_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "http_status": 200,
+      "content_type": "application/json"
+    },
+    {
+      "case": "dmlex_malformed_json_200",
+      "same_validator_rejected": true,
+      "format_rejection": [
+        "capture[46] raw/__temporary_negative__/dmlex_malformed_json_200.json useful-source: malformed DMLex schema JSON (JSONDecodeError)"
+      ],
+      "other_errors": [],
+      "temporary_bytes": 812,
+      "temporary_sha256": "2bf932ff9f2658d14efda16fecc6eb51510b063cf680c97921e5066293e35eba",
+      "http_status": 200,
+      "content_type": "application/json"
+    },
+    {
+      "case": "elexis_generic_marker_challenge_200",
+      "same_validator_rejected": true,
+      "format_rejection": [
+        "capture[46] raw/__temporary_negative__/elexis_generic_marker_challenge_200.html useful-source: missing ELEXIS about/list/lemma and entry-action protocol paths"
+      ],
+      "other_errors": [],
+      "temporary_bytes": 843,
+      "temporary_sha256": "31e72cb59ee36cddea54c3a8a8cf24c89893b013fced43099b7dbbbf5d59cb7f",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8"
+    }
+  ]
+}
