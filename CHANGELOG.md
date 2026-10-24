@@ -2,6 +2,8 @@
 
 ## 0.2.0 (unreleased)
 
+- Add grouped exact lookup, stable dictionary references, and the
+  `dictionary-build` / `dictionary-query` CLI commands.
 - Add a versioned raw-preserving dictionary model, explicit legacy archive adapter, fixture, and standards mapping limits.
 
 - Add a validated source/contributor/distributor registry and borrowed attribution

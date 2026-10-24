@@ -9,6 +9,10 @@ boundary for the versioned `vlajmaji-lexicon::Dictionary` model. It writes a
 concrete schema-1 projection to a fresh directory and reopens it only after
 checking canonical bytes, schema, foreign keys and every projected SQL value.
 It is separate from the existing rebuildable `SqliteStore` search index.
+Its `exact_assertion_ids` helper returns byte-exact lexical candidates in
+persisted source/spelling/occurrence order. It does not normalize spelling or
+apply catalogue selection; the grouped policy is implemented by
+`vlajmaji-search` after the candidate query.
 
 ```rust,no_run
 use vlajmaji_lexicon::Dictionary;

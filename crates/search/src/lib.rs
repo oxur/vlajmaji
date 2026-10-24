@@ -33,6 +33,16 @@ use vlajmaji_store::{
     validate_archive,
 };
 
+/// Grouped exact queries and stable dictionary reference resolution.
+pub mod dictionary;
+
+pub use dictionary::{
+    DictionaryErrorReport, DictionaryExactOptions, DictionaryExactResponse, DictionaryGroup,
+    DictionaryHit, DictionaryQueryError, DictionaryRequest, DictionarySearchEngine,
+    DictionarySourceAvailability, DictionarySourceTotal, DictionaryTotals, ReferenceAssertionView,
+    ReferenceEntity, ReferenceResolution, ReferenceStatus, SourceSelectionFailure,
+};
+
 /// Query policy identities included in every response.
 pub const SPELLING_POLICY: &str = "scalar-levenshtein-v1";
 /// Identity of the unchanged project phonology/context policy.

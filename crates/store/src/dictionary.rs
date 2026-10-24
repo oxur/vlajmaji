@@ -262,6 +262,47 @@ impl DictionaryStore {
     pub fn database_path(&self) -> PathBuf {
         self.database_path.clone()
     }
+
+    /// Return stable assertion entity IDs whose entry spelling is an exact
+    /// UTF-8 byte match and whose assertion is lexically eligible.
+    ///
+    /// Candidate order is the binary order of source ID, spelling, and the
+    /// occurrence tuple ID. The returned values are assertion IDs, not
+    /// occurrence tuple IDs. This query uses the validated snapshot held
+    /// by this store; it does not reopen the database or normalize the query.
+    ///
+    /// # Errors
+    ///
+    /// Returns the underlying SQLite error, or `InvalidStore(Projection)` if a
+    /// persisted candidate ID cannot be represented by the dictionary model.
+    pub fn exact_assertion_ids(
+        &self,
+        spelling: &str,
+    ) -> Result<Vec<vlajmaji_lexicon::EntityId>, DictionaryStoreError> {
+        let mut statement = self._connection.prepare(
+            "SELECT a.id FROM entries AS e \
+             JOIN assertions AS a ON a.entry_id = e.id \
+             WHERE e.spelling_state = 'value' \
+               AND e.spelling_value = ?1 COLLATE BINARY \
+               AND a.eligibility = 'Lexical' \
+             ORDER BY e.source_id COLLATE BINARY, \
+                      e.spelling_value COLLATE BINARY, \
+                      a.occurrence_id COLLATE BINARY",
+        )?;
+        let mut rows = statement.query([spelling])?;
+        let mut ids = Vec::new();
+        while let Some(row) = rows.next()? {
+            let raw: String = row.get(0)?;
+            let id = vlajmaji_lexicon::EntityId::new(raw).map_err(|error| {
+                invalid(
+                    DictionaryStoreInvalidity::Projection,
+                    format!("exact lexical candidate has invalid assertion ID: {error}"),
+                )
+            })?;
+            ids.push(id);
+        }
+        Ok(ids)
+    }
 }
 
 fn invalid(reason: DictionaryStoreInvalidity, detail: impl Into<String>) -> DictionaryStoreError {
