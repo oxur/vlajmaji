@@ -93,12 +93,15 @@ observed population. Both commands accept `--revision`, `--raw-sha256`, and
 `--metadata-sha256` overrides. Errors are structured JSON on stderr, with empty
 stdout and a nonzero status.
 
-For the local pinned files, the public example checks the full population and
-both exact input byte captures without writing a release:
+For the local pinned files, the public example checks both exact input byte
+captures, writes the canonical model bytes to a fresh output path, reloads the
+release, and checks the full population. The example uses exclusive create and
+does not append a line feed; the CLI's human-readable output file does append
+one final line feed, so those file byte counts differ by one:
 
 ```sh
 cargo +1.98.0 run --locked --offline -p vlajmaji-lexicon \
-  --example import_jbotci -- RAW.json METADATA.toml
+  --example import_jbotci -- RAW.json METADATA.toml /tmp/jbotci-release.json
 ```
 
 The observed pinned export contains 33,526 rows and 278,254 ordered native

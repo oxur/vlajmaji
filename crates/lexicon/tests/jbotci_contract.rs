@@ -105,6 +105,37 @@ fn revision_is_release_provenance_while_occurrence_identity_is_byte_stable() {
         first.dictionary().metadata().assertions,
         second_revision.dictionary().metadata().assertions
     );
+    let notice = "https://github.com/int19h/jbotci/blob/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/THIRD-PARTY-NOTICES.md#L242-L252";
+    let first_lineage = first.dictionary().registry().document();
+    let second_lineage = second_revision.dictionary().registry().document();
+    assert_eq!(first_lineage.lineage[0].evidence.as_deref(), Some(notice));
+    assert_eq!(second_lineage.lineage[0].evidence.as_deref(), Some(notice));
+    assert_eq!(
+        first.dictionary().captures()[0].metadata.notice_locator,
+        Presence::Value(notice.into())
+    );
+    assert_eq!(
+        second_revision.dictionary().captures()[0]
+            .metadata
+            .notice_locator,
+        Presence::Value(notice.into())
+    );
+    assert_eq!(
+        first.dictionary().metadata().releases[0].content_notices[0].locator,
+        Presence::Value(notice.into())
+    );
+    assert_eq!(
+        second_revision.dictionary().metadata().releases[0].content_notices[0].locator,
+        Presence::Value(notice.into())
+    );
+    assert_eq!(
+        first.dictionary().metadata().code_notices[0].locator,
+        Presence::Value("LICENSE".into())
+    );
+    assert_eq!(
+        second_revision.dictionary().metadata().code_notices[0].locator,
+        Presence::Value("LICENSE".into())
+    );
     assert_eq!(
         first.dictionary().metadata().contexts,
         second_revision.dictionary().metadata().contexts
@@ -160,7 +191,7 @@ fn revision_is_release_provenance_while_occurrence_identity_is_byte_stable() {
 
 #[test]
 fn duplicate_fields_nested_values_and_nonobjects_remain_raw_and_excluded() {
-    let raw = br#"[{"word":"one","word":"two","word_type":"gismu","word_type":"lujvo","definition":"a","definition":"b","unknown":{"huge":1234567890123456789012345678901234567890}}, {"word":"nested","word_type":"gismu","definition":"ok","unknown":{"x":1,"x":2}}, 17]"#;
+    let raw = br#"[{"word":"one","word":"two","word_type":"gismu","word_type":"lujvo","definition":"a","definition":"b","opaque":{"huge":1234567890123456789012345678901234567890},"opaque":[true]}, {"word":"nested","word_type":"gismu","definition":"ok","unknown":{"x":1,"x":2}}, 17]"#;
     let metadata = metadata(raw, 0);
     let opts = options(raw, &metadata, "0000000000000000000000000000000000000000");
     let imported =
@@ -169,12 +200,69 @@ fn duplicate_fields_nested_values_and_nonobjects_remain_raw_and_excluded() {
     assert_eq!(imported.report().input_rows, 3);
     assert_eq!(imported.report().normalized_assertions, 3);
     assert_eq!(imported.report().excluded_occurrences, 3);
-    assert_eq!(imported.report().diagnostics.get("duplicate_key"), Some(&4));
+    assert_eq!(imported.report().diagnostics.get("duplicate_key"), Some(&5));
+    assert_eq!(
+        imported.report().diagnostics.get("unknown_native_field"),
+        Some(&3)
+    );
     assert_eq!(imported.report().word_types.get("gismu"), Some(&2));
     assert_eq!(imported.report().word_types.get("lujvo"), Some(&1));
     assert_eq!(
         dict.captures()[0].occurrences[0].fields_named("word").len(),
         2
+    );
+    let extensions = &dict.metadata().extensions;
+    let duplicate_extensions: Vec<_> = extensions
+        .iter()
+        .filter(|extension| {
+            extension
+                .evidence
+                .as_ref()
+                .is_some_and(|e| e.occurrence.locator == "/0")
+        })
+        .collect();
+    assert_eq!(duplicate_extensions.len(), 2);
+    assert_eq!(
+        duplicate_extensions[0].name,
+        "lensisku.native_field.6.opaque"
+    );
+    assert_eq!(
+        duplicate_extensions[0].value.as_str(),
+        r#"{"huge":1234567890123456789012345678901234567890}"#
+    );
+    assert_eq!(
+        duplicate_extensions[0]
+            .evidence
+            .as_ref()
+            .unwrap()
+            .field_index,
+        Some(6)
+    );
+    assert_eq!(
+        duplicate_extensions[0].owner,
+        dict.metadata().assertions[0].id
+    );
+    assert_eq!(
+        duplicate_extensions[0]
+            .evidence
+            .as_ref()
+            .unwrap()
+            .occurrence
+            .locator,
+        "/0"
+    );
+    assert_eq!(
+        duplicate_extensions[1].name,
+        "lensisku.native_field.7.opaque"
+    );
+    assert_eq!(duplicate_extensions[1].value.as_str(), "[true]");
+    assert_eq!(
+        duplicate_extensions[1]
+            .evidence
+            .as_ref()
+            .unwrap()
+            .field_index,
+        Some(7)
     );
     assert_eq!(
         dict.captures()[0].occurrences[0]
@@ -183,7 +271,7 @@ fn duplicate_fields_nested_values_and_nonobjects_remain_raw_and_excluded() {
         2
     );
     assert_eq!(
-        dict.captures()[0].occurrences[0].fields_named("unknown")[0].raw_value,
+        dict.captures()[0].occurrences[0].fields_named("opaque")[0].raw_value,
         r#"{"huge":1234567890123456789012345678901234567890}"#
     );
     assert_eq!(dict.captures()[0].occurrences[2].fields[0].name, "$row");
@@ -277,6 +365,38 @@ fn metadata_duplicates_and_unsupported_shapes_are_typed_failures() {
         import_jbotci_export(raw, &meta, &opts),
         Err(JbotciImportError::UnsupportedMetadata(_))
     ));
+
+    for malformed in [
+        b"language_tag = true junk\n".as_slice(),
+        b"language_tag = false junk\n",
+        b"language_tag = 12 junk\n",
+        b"language_tag = \"ok\" junk\n",
+        b"language_tag = \n",
+        b"= true\n",
+        b"language_tag = 18446744073709551616\n",
+    ] {
+        let opts = options(raw, malformed, "0000000000000000000000000000000000000000");
+        assert!(
+            matches!(
+                import_jbotci_export(raw, malformed, &opts),
+                Err(JbotciImportError::InvalidMetadata(_))
+            ),
+            "{malformed:?}"
+        );
+    }
+    for unsupported in [
+        b"'quoted key' = \"value\"\n".as_slice(),
+        b"language_tag = 'en'\n",
+    ] {
+        let opts = options(raw, unsupported, "0000000000000000000000000000000000000000");
+        assert!(
+            matches!(
+                import_jbotci_export(raw, unsupported, &opts),
+                Err(JbotciImportError::UnsupportedMetadata(_))
+            ),
+            "{unsupported:?}"
+        );
+    }
 }
 
 #[test]
@@ -360,6 +480,58 @@ fn malformed_optional_shapes_are_diagnostic_without_excluding_valid_rows() {
         "false"
     );
     assert_eq!(occurrence.fields_named("future")[0].raw_value, r#"{"x":1}"#);
+}
+
+#[test]
+fn optional_selmaho_and_definition_id_shapes_are_diagnostic_without_loss() {
+    let raw = br#"[{"word":"missing","word_type":"gismu","definition":"ok"},{"word":"null","word_type":"gismu","definition":"ok","selmaho":null,"definition_id":null},{"word":"empty","word_type":"gismu","definition":"ok","selmaho":"","definition_id":""},{"word":"numeric","word_type":"gismu","definition":"ok","definition_id":123456789012345678901234567890},{"word":"bad1","word_type":"gismu","definition":"ok","selmaho":{}},{"word":"bad2","word_type":"gismu","definition":"ok","selmaho":[],"definition_id":true},{"word":"bad3","word_type":"gismu","definition":"ok","definition_id":[]} ]"#;
+    let meta = metadata(raw, 7);
+    let opts = options(raw, &meta, "0000000000000000000000000000000000000000");
+    let imported = import_jbotci_export(raw, &meta, &opts).unwrap();
+    assert_eq!(imported.report().lexical_occurrences, 7);
+    assert_eq!(imported.report().excluded_occurrences, 0);
+    assert_eq!(
+        imported.report().diagnostics.get("invalid_selmaho"),
+        Some(&2)
+    );
+    assert_eq!(
+        imported.report().diagnostics.get("invalid_definition_id"),
+        Some(&2)
+    );
+    let entries = &imported.dictionary().metadata().entries;
+    assert_eq!(entries[0].selmaho, Presence::Missing);
+    assert_eq!(entries[1].selmaho, Presence::Null);
+    assert_eq!(entries[2].selmaho, Presence::Value(String::new()));
+    assert_eq!(entries[3].selmaho, Presence::Missing);
+    assert_eq!(
+        imported.dictionary().captures()[0].occurrences[3].fields_named("definition_id")[0]
+            .raw_value,
+        "123456789012345678901234567890"
+    );
+    let registry_rows = imported.dictionary().registry().document().occurrences;
+    assert_eq!(
+        registry_rows[3].native_assertion_id.as_deref(),
+        Some("123456789012345678901234567890")
+    );
+    assert_eq!(registry_rows[4].native_assertion_id, None);
+    assert_eq!(registry_rows[5].native_assertion_id, None);
+    assert_eq!(registry_rows[6].native_assertion_id, None);
+    assert_eq!(
+        imported.dictionary().metadata().releases[0]
+            .diagnostics
+            .iter()
+            .filter(|d| d.code == "invalid_selmaho")
+            .count(),
+        2
+    );
+    assert_eq!(
+        imported.dictionary().metadata().releases[0]
+            .diagnostics
+            .iter()
+            .filter(|d| d.code == "invalid_definition_id")
+            .count(),
+        2
+    );
 }
 
 #[test]

@@ -260,7 +260,13 @@ fn parse_metadata(bytes: &[u8]) -> Result<Metadata, JbotciImportError> {
             )));
         };
         let key = key.trim();
-        if key.is_empty() || !key.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_') {
+        if key.is_empty() {
+            return Err(JbotciImportError::InvalidMetadata(format!(
+                "line {} has an empty key",
+                line_index + 1
+            )));
+        }
+        if !key.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_') {
             return Err(JbotciImportError::UnsupportedMetadata(format!(
                 "line {} has a non-bare key",
                 line_index + 1
@@ -272,6 +278,12 @@ fn parse_metadata(bytes: &[u8]) -> Result<Metadata, JbotciImportError> {
             )));
         }
         let rhs = rhs.trim();
+        if rhs.is_empty() {
+            return Err(JbotciImportError::InvalidMetadata(format!(
+                "line {} has an empty value",
+                line_index + 1
+            )));
+        }
         let value = if rhs.starts_with('"') {
             serde_json::from_str::<String>(rhs)
                 .map(MetaValue::String)
@@ -282,7 +294,16 @@ fn parse_metadata(bytes: &[u8]) -> Result<Metadata, JbotciImportError> {
             MetaValue::Boolean(true)
         } else if rhs == "false" {
             MetaValue::Boolean(false)
-        } else if !rhs.is_empty() && rhs.bytes().all(|b| b.is_ascii_digit()) {
+        } else if rhs.starts_with("true")
+            || rhs.starts_with("false")
+            || (rhs.bytes().next().is_some_and(|b| b.is_ascii_digit())
+                && !rhs.bytes().all(|b| b.is_ascii_digit()))
+        {
+            return Err(JbotciImportError::InvalidMetadata(format!(
+                "line {} has trailing or malformed literal text",
+                line_index + 1
+            )));
+        } else if rhs.bytes().all(|b| b.is_ascii_digit()) {
             MetaValue::Integer(rhs.parse().map_err(|_| {
                 JbotciImportError::InvalidMetadata(format!(
                     "line {} integer overflow",
@@ -796,10 +817,7 @@ pub fn import_jbotci_export(
     registry_doc.lineage.push(SourceLineage {
         source: source.clone(),
         upstream: LineageTarget::Unresolved("https://jbovlaste.lojban.org/".into()),
-        evidence: Some(format!(
-            "jbotci revision {} THIRD-PARTY-NOTICES.md:242-252",
-            options.revision
-        )),
+        evidence: Some(JBOTCI_NOTICE_LOCATOR.into()),
     });
     let mut contributor_ids = BTreeMap::<String, ContributorId>::new();
     for username in &users {
@@ -845,9 +863,12 @@ pub fn import_jbotci_export(
         let occurrence = occurrence_id(raw_namespace, &raw_sha256, &format!("/{index}"))?;
         let native_id = if row.duplicates.is_empty() {
             field(&row.fields, "definition_id").and_then(|f| {
-                match f.raw.trim_start().chars().next() {
-                    Some('"') | Some('-') | Some('0'..='9') => Some(f.raw.clone()),
-                    _ => None,
+                if as_json_string(&f.raw).is_some()
+                    || serde_json::from_str::<serde_json::Number>(&f.raw).is_ok()
+                {
+                    Some(f.raw.clone())
+                } else {
+                    None
                 }
             })
         } else {
@@ -916,6 +937,7 @@ const SUPPORTED_CLASSES: [&str; 16] = [
     "phrase",
     "zei-lujvo",
 ];
+const JBOTCI_NOTICE_LOCATOR: &str = "https://github.com/int19h/jbotci/blob/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/THIRD-PARTY-NOTICES.md#L242-L252";
 fn is_supported_class(value: &str) -> bool {
     SUPPORTED_CLASSES.contains(&value)
 }
@@ -983,6 +1005,34 @@ fn build_import(
                 ),
                 Some(occurrence.clone()),
             );
+        }
+        if row.is_object && row.duplicates.is_empty() {
+            for (name, code) in [
+                ("selmaho", "invalid_selmaho"),
+                ("definition_id", "invalid_definition_id"),
+            ] {
+                if let Some(i) = unique_field_index(&row.fields, name) {
+                    let raw_value = row.fields[i].raw.as_str();
+                    let valid = raw_value == "null"
+                        || if name == "selmaho" {
+                            as_json_string(raw_value).is_some()
+                        } else {
+                            as_json_string(raw_value).is_some()
+                                || serde_json::from_str::<serde_json::Number>(raw_value).is_ok()
+                        };
+                    if !valid {
+                        add_diag(
+                            &mut report_diagnostics,
+                            &mut release_diagnostics,
+                            code,
+                            format!(
+                                "row {index} {name} has an unsupported JSON shape; raw value retained"
+                            ),
+                            Some(occurrence.clone()),
+                        );
+                    }
+                }
+            }
         }
         let base = format!("jbotci-{raw_sha256}");
         let entry_id = eid(format!("{base}-entry-{index}"))?;
@@ -1152,6 +1202,47 @@ fn build_import(
         }
         entries.push(entry);
         assertions.push(assertion);
+
+        if row.is_object {
+            let known: BTreeSet<&str> = [
+                "word",
+                "word_type",
+                "definition",
+                "definition_id",
+                "score",
+                "selmaho",
+                "notes",
+                "jargon",
+                "gloss_keywords",
+                "place_keywords",
+                "rafsi",
+                "experimental_rafsi",
+                "etymology",
+                "user",
+            ]
+            .into_iter()
+            .collect();
+            for (i, f) in row.fields.iter().enumerate() {
+                if !known.contains(f.name.as_str()) {
+                    extensions.push(extension(
+                        &assertion_id,
+                        format!("lensisku.native_field.{i}.{}", f.name),
+                        &f.raw,
+                        Some(source_evidence(occurrence.clone(), Some(i))),
+                    )?);
+                    add_diag(
+                        &mut report_diagnostics,
+                        &mut release_diagnostics,
+                        "unknown_native_field",
+                        format!(
+                            "row {index} unknown field {:?} retained as an extension",
+                            f.name
+                        ),
+                        Some(occurrence.clone()),
+                    );
+                }
+            }
+        }
 
         if !row.is_object || has_duplicates {
             continue;
@@ -1364,44 +1455,6 @@ fn build_import(
                 });
             }
         }
-        let known: BTreeSet<&str> = [
-            "word",
-            "word_type",
-            "definition",
-            "definition_id",
-            "score",
-            "selmaho",
-            "notes",
-            "jargon",
-            "gloss_keywords",
-            "place_keywords",
-            "rafsi",
-            "experimental_rafsi",
-            "etymology",
-            "user",
-        ]
-        .into_iter()
-        .collect();
-        for (i, f) in row.fields.iter().enumerate() {
-            if !known.contains(f.name.as_str()) {
-                extensions.push(extension(
-                    &assertion_id,
-                    format!("lensisku.native_field.{i}.{}", f.name),
-                    &f.raw,
-                    Some(source_evidence(occurrence.clone(), Some(i))),
-                )?);
-                add_diag(
-                    &mut report_diagnostics,
-                    &mut release_diagnostics,
-                    "unknown_native_field",
-                    format!(
-                        "row {index} unknown field {:?} retained as an extension",
-                        f.name
-                    ),
-                    Some(occurrence.clone()),
-                );
-            }
-        }
     }
 
     let raw_capture = RawCapture::new(
@@ -1413,7 +1466,7 @@ fn build_import(
             revision: Presence::Value(revision.clone()),
             captured_at: Presence::Missing,
             time_precision: TimePrecision::Unknown,
-            notice_locator: Presence::Value("THIRD-PARTY-NOTICES.md:242-252".into()),
+            notice_locator: Presence::Value(JBOTCI_NOTICE_LOCATOR.into()),
         },
         raw.to_vec(),
         native_occurrences,
@@ -1450,7 +1503,7 @@ fn build_import(
     let component_id = eid("lensisku-jbotci-en-component".into())?;
     let code_notice = CodeNotice {
         text: "Apache-2.0".into(),
-        locator: Presence::Value("LICENSE-APACHE".into()),
+        locator: Presence::Value("LICENSE".into()),
         license: Presence::Value("Apache-2.0".into()),
     };
     let content_notice_text = "The jbovlaste dictionary databases are placed in the public domain. The individual definitions are contributed by the Lojban community under those public-domain terms.";
@@ -1478,7 +1531,7 @@ fn build_import(
         availability: Availability::Available,
         content_notices: vec![ContentNotice {
             text: Presence::Value(content_notice_text.into()),
-            locator: Presence::Value("THIRD-PARTY-NOTICES.md:242-252".into()),
+            locator: Presence::Value(JBOTCI_NOTICE_LOCATOR.into()),
             license: Presence::Value(
                 "supplier-claimed public domain; coverage not independently established".into(),
             ),
