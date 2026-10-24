@@ -11,16 +11,15 @@ owning scale, as Duncan specified. The selected historical research copy is
 are reference material. Their instructions, authority and status are historical,
 not current assignments. Use the current project/arc/slice plans for authority.
 
-Read `project01-multi-source-dictionary/project-plan.md` first. Duncan has now
-authorized Autonomous execution through Arc01 only, CDC GPT 6.1 Sol High and
-CC GPT 6 Luna High. The current preserved CDC assignment is
-`project01-multi-source-dictionary/cdc-directive01.md`. Assigned CDC owns planning;
-assigned CC owns the isolated feature worktree under `.worktrees/project01-arc01/`
-during each source-mutation interval. Root remains read-only after handoff.
+Read `project01-multi-source-dictionary/project-plan.md` first. On 2026-10-24 Duncan renewed Autonomous execution through Arc02, CDC GPT 6.1 Sol High and CC GPT 6 Luna High. The current preserved assignment is `project01-multi-source-dictionary/cdc-directive02.md`. Assigned CDC owns planning; assigned CC owns the isolated Arc02 feature worktree during each issued source-mutation interval. Stop before Arc03. The prior Arc01-only authority and `cdc-directive01.md` remain historical; Arc01 is closed at its original accepted source, not retroactively at current main. Root remains read-only after handoff.
 Ledger rows remain open until independently dispositioned. Do not create close/verification/retrospective records before the
 corresponding work and review occur.
 
 Implementation belongs in `/Users/oubiwann/lab/oxur/vlajmaji`, whose CLI is
-`crate/cli` (singular). Bauske is a separate sibling repository. Future substantive
+`crates/cli` (all five packages are under `crates/*`). Bauske is a separate sibling repository. Future substantive
 Autonomous implementation requires an approved endpoint and non-default source
 branch; prior maintenance on `main` is not the project execution convention.
+
+## Authority history
+
+- 2026-10-24: Arc02 renewal supersedes the previous current Arc01-only endpoint and no-new-corpus restriction within Arc02. Current source is 0.3.0 development at d1e1c928; CLI relocation and umbrella release changes are retained. No push, PR, main integration or public data redistribution is authorized. Exact original Arc01 records and preserved research remain unchanged.

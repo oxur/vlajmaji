@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 CLOSED/independently accepted; later arcs not activated |
+| status | project OPEN; Arc01 CLOSED at original accepted revision; Arc02 ACTIVE/readiness; A03–A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.6 / 2026-10-24, America/Chicago |
+| version / date | 1.7 / 2026-10-24, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -26,7 +26,7 @@ and explicit availability. Subsequent arcs make it work with full, independently
 selectable corpora and an editable dictionary of our own.
 
 The design and remaining decisions are in [design.md](design.md). Acceptance is in
-[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Later arcs remain unactivated.
+[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is now activated by the renewed authority below; A03–A06 remain unactivated.
 
 ## Decisions already made
 
@@ -107,7 +107,7 @@ define execution order. Later arcs are roadmap entries, not issued assignments.
 | Arc | Usable capability and destination | Required inputs | Detail now |
 | --- | --- | --- | --- |
 | [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Four scope-preserving slices after S01 sizing; current detail in arc plan. |
-| 02 — Reproducible full jbotci import | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Plan after A01. |
+| 02 — Reproducible full jbotci import (ACTIVE/readiness) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Detailed source-grounded planning now; see current authority. |
 | 03 — Independent corpus packages | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
 | 04 — Composed SQLite lookup | Compare unified derived index, ATTACH and application fanout on the same complete contract, then implement the selected composition and availability/query-snapshot policy. | A01 queries and A03 real pack releases. | One bounded decision followed by usable integration; no topology selected now. |
 | 05 — Owned dictionary | First-class editable source, revision/history and explicit editorial relationships, immutable export/reimport and its own optional data crate. | A01 model plus accepted A04 composition. | Model is reserved in A01; production editing belongs here. |
@@ -152,7 +152,7 @@ repeat discovery. If a required input remains unavailable, report the exact
 blocked obligation and seek an explicit amendment. Do not substitute a smaller
 corpus or weaker oracle without recording the scope change.
 
-## Authority and contributor workflow
+## Historical Arc01 authority and contributor workflow (superseded endpoint)
 
 On 2026-10-24 Duncan approved starting the first slice in Autonomous Mode and
 working straight through **Arc01 — Dictionary foundation**, explicitly selecting
@@ -195,6 +195,16 @@ Consequential architecture/scope changes remain Duncan's decision. Ordinary
 engineering choices within this contract belong to CDC; no repeated permission
 question is needed for the already approved roles or endpoint.
 
+## Current Arc02 authority and contributor workflow — 2026-10-24
+
+Duncan instructed: “okay ... I think we're ready to dive into arc02! Same Autonomous Mode, same model config/setup :-)”. This renews OpenAI GPT 6.1 Sol High CDC / GPT 6 Luna High CC for Arc02, including slice design/implementation/repairs/independent acceptance, composition, formal close/bubble-up and all retrospectives. Stop before A03. [cdc-directive02.md](cdc-directive02.md) is the preserved current assignment; directive01 and the preceding authority section are historical, not current corpus restrictions. Requested/dispatched settings are distinct from unavailable backend attestation.
+
+Assigned CDC `/root/vlajmaji_p01_a02_cdc` acknowledged; root remains read-only. CDC owns planning/source setup; CC owns isolated source mutations only during issued intervals. Fresh source branch/worktree will start from verified clean main `d1e1c928f7999f2220b046cc5a5817f0529312ca`; no main mutation, push, PR, publication, integration, Bauske mutation or later-arc work is authorized. Current source has five `crates/*` packages, `crates/cli`, umbrella crate, Rust1.98 and Bauske0.3.0 pin `c5801ae17caaf86d2651b5ce34570199e873ad0f`; source AGENTS and CI were fully read. Arc01 original acceptance remains efef9c4; later merged corrections/release changes require their own current evidence.
+
+Arc02 expressly authorizes necessary public acquisition/read of pinned jbotci raw `dictionary-en.json` plus metadata at `3d9fd41d9ed32de26311ee27ec86b6b165985aa1`; no live authenticated Lensisku, exhaustive discovery or silent repin. Full rows/fields/alternatives/native accounting, normalized output independent of SQLite, useful Rust/CLI/Bash/Make, offline replay/check/update and complete persist/reopen/grouped querying remain required. Data redistribution held; no massive raw payload in public code. Plan slices after actual source/data reconnaissance. No new dependency without demonstrated need.
+
+Preflight: planning clean5531f604/ahead54 at takeover; main clean d1e1c928, old feature clean a7c250f. Data volume2.6GiB free. Prior designated A01target10GiB and source-local68MiB are protected pending justified cache ownership/handover; no blind cleanup. Every Cargo/Make command must set a task-owned target through fixed launcher, with one writer; serialize imports/snapshots/scans. Independent callers require unique package and binary identities/offline locks. Readback follows complete required bodies and whole-population data queries; preserve failed attempts. Fresh separate SolHigh context gates assembled technical/final packet composition; no CRC inferred. Local scoped commits authorized.
+
 ## Research status and next action
 
 [Research guide and verification status](artifacts/research/README.md) distinguishes
@@ -204,7 +214,7 @@ exact original paths, revisions, SHA-256 and byte sizes for every copied file.
 Old source pins and measurements remain dated evidence, not current service or
 performance claims. No full corpus, database or Cargo build cache was copied.
 
-Next: return the completed Arc01endpoint and stop; noA02opened. All4children and technical/final packet composition are accepted at efef9c4. Planning existence/copy fidelity alone are not implementation acceptance.
+Next: complete Arc02 required intake, resource handover and current-source/raw-shape reconnaissance, then open the canonical arc/slice plan and implementation assignment. Arc01 remains closed at its original accepted source; all14projectrows remain open. Planning existence/copy fidelity alone are not implementation acceptance.
 
 ## Planning validation — initial draft checkpoint
 
@@ -258,3 +268,5 @@ Feature source efef9c4includes inspected initial logo ancestry e0630d8but exclud
 -1.5 —2026-10-24: Arc01all4children and independent technical composition delivered the full foundation; current body/registry-DDL decisions/remaining project owners/main drift reconciled from actual accepted evidence. Final packet gate pending; no later arc activated or project row closed.
 
 -1.6 —2026-10-24: separate final canonical packet gate accepted at7ddd0db; Arc01formallyclosed at sourceefef9c4, all6arcrows/33childrowsdone and all required retrospectives/bubble-up complete. Project14rowsremainOPEN, noA02or main integration/publication activated; return at authorized endpoint.
+
+- 1.7 — 2026-10-24: Duncan renewed Autonomous/Expedited execution and existing explicit model selection for Arc02. Recorded directive02, fresh current-main source baseline/five-crate CLI facts, corpus acquisition authority and held publication, resource guardrails and stop-before-A03 boundary. Previous Arc01 authority/preflight/progress are historical receipts; all14projectrows remain OPEN.
