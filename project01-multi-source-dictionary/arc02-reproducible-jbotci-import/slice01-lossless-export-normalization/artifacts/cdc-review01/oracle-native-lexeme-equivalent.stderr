@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a02-cdc/verify_normalized.py", line 177, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/tmp/vlajmaji-p01-a02-cdc/verify_normalized.py", line 113, in main
+    require(gotraw['fields']==expected,'native_fields',loc)
+  File "/tmp/vlajmaji-p01-a02-cdc/verify_normalized.py", line 13, in require
+    raise AssertionError(f'{category}: {detail}')
+AssertionError: native_fields: /0

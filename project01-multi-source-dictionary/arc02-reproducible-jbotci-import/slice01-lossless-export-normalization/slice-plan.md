@@ -2,11 +2,11 @@
 
 | Field | Value |
 | --- | --- |
-| status/version | OPEN/intake; explicit identity oracle issued before source edits /1.1,2026-10-24 |
-| source | d1e1c928; feature/project01-full-jbotci-import; isolated Arc02checkout |
+| status/version | OPEN/repair required after frozen candidate01 independent review /1.2,2026-10-24 |
+| source | candidate01 23d057bf (initial d1e1c928); feature/project01-full-jbotci-import; isolated Arc02checkout |
 | depends-on | A01Dictionary/registry, current baseline and full pinned raw+metadata |
 | delivery | Public Rust importer + local CLI import/check + complete normalized JSON usable before SQLite |
-| current assignment | cc-prompt-iteration01.md (pre-edit supersession,0executed refinements) |
+| current assignment | cc-prompt-iteration02.md (first executed refinement of5; candidate01 not accepted) |
 | artifact home | artifacts/; CC writes only artifacts/cc-execution.md; CDC owns canonical planning |
 
 Provide lossless fullrawexport normalization and useful Rust/CLI entrypoints.
@@ -86,7 +86,9 @@ originalfullcapturebytes and each field's exact rawJSONlexeme, including order,
 unknownkeys/nestednull/largeintegers/repeatedkeys. Nonobjectrow gets one NativeField
 `$row` containing exact JSONvalue and excluded assertion. Repeatedkey at anydepth
 retains rawlexemes and explicit duplicate-key diagnostic, with no ambiguous typed
-projection/lexical hit. Do not call legacy parse_object which rejects repeatedkeys.
+projection/lexical hit. Raw unknown-field extensions remain indexed evidence even
+on duplicate-key object rows; suppressing typed semantics does not suppress these
+raw extensions/diagnostics. Do not call legacy parse_object which rejects repeatedkeys.
 Rawrootnonarray/syntax/UTF8 is typedfailure; do not reinterpret syntaxfailure as a
 partial successful release. Parsing/metadata/registry/modelvalidation precede return.
 
@@ -123,7 +125,10 @@ Known field map (preserve missing/null/empty via Presence where typedhome exists
 Do not populate frames, sensegroupings, ownedrevisions, computations/annotations,
 newrelations or dates absent fromsource. All12modelhomes stay available. CodeNotice
 Apache2 describes Vlajmajicode separately. ContentNotice explicitly quotes supplier
-publicdomain claim as supplierassertion with pinnedTHIRD-PARTY-NOTICES locator;
+publicdomain claim as supplierassertion with pinnedTHIRD-PARTY-NOTICES locator
+`https://github.com/int19h/jbotci/blob/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/THIRD-PARTY-NOTICES.md#L242-L252`;
+code notice locator is actual `LICENSE`. The supplier witness remains that known
+revision even for a provenance-only options.revision change;
 license field must say supplierclaimed, redistributionHeld with explanation pending
 publicauthorization/sourcecoverage. Release sourceLensisku/distributorjbotci,
 collection/component stableIDs; releaseID revision+fullraw+metadata digest (distinctmetadata
@@ -211,10 +216,12 @@ Consequentialdecisions not delegated toCC; localhelpermechanics remain local.
 | Assignment | Date | Predecessor/reason | Disposition |
 | --- | --- | --- | --- |
 | cc-prompt.md |2026-10-24 | Initial useful full export normalizer/API/CLI from verified d1e1c928/84c1694 | superseded before dependent edits; intake retained |
-
-| cc-prompt-iteration01.md |2026-10-24 | Pre-edit clarification of existing revision+raw+metadata release identity; root surfaced provenance-only update interaction | current/issued;0executed refinements, all7rowsOPEN |
+| cc-prompt-iteration01.md |2026-10-24 | Pre-edit clarification of existing revision+raw+metadata release identity; root surfaced provenance-only update interaction | superseded by iteration02 after candidate01 review; original intake/source evidence retained |
+| cc-prompt-iteration02.md |2026-10-24 | Frozen23d057bf independently reviewed: optional diagnostics, malformed metadata, duplicate-row raw extension, truthful pinned notices, useful example, CLI regression and filename corrections | current/issued; first executed refinement of5, all7rowsOPEN |
 
 ## Version history
 
 -1.0 —2026-10-24: source-grounded full normalization API/CLI open set issued.
 -1.1 —2026-10-24: root review highlighted explicit provenance-only update oracle; preserved iteration01 supersedes unstartedinitial assignment. Existing revision-aware release identity retained; exact raw tuples/row IDs stay stable for byte-identical distribution updates. No product defect or source change, no acceptance/scope reduction.
+
+-1.2 —2026-10-24: candidate01 proposed-done rejected at independent controls; actual passing915570 full-field checks/30CLI controls and failed cases preserved in artifacts/cdc-review-attempt01.md. Iteration02 binds repairs without reducing scope. Full raw input unchanged, no S02 implementation issued.

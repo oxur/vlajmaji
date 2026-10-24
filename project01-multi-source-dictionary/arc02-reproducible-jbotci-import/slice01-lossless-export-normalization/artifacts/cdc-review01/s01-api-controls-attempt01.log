@@ -1,0 +1,19 @@
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji_a02_cdc_api_20261024a v0.0.0 (/tmp/vlajmaji-p01-a02-cdc/api-caller)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.87s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/a02_cdc_api_controls_20261024a /tmp/vlajmaji-p01-a02-cdc/api-fixtures`
+positive duplicate-native-and-complete: 2 rows
+positive changed-whitespace: 2 rows
+CONTROL_FAILED metadata-trailing: expected metadata, got unsupported_metadata (unsupported supplier metadata: line 13 uses a value outside strings/booleans/nonnegative integers)
+positive count-mismatch: 2 rows
+positive empty-export: 0 rows
+positive selmaho-valid: 2 rows
+CONTROL_FAILED selmaho-invalid /0: field selmaho expected diagnostic=true, got false
+CONTROL_FAILED selmaho-invalid /1: field selmaho expected diagnostic=true, got false
+positive selmaho-invalid: 2 rows
+positive definition_id-valid: 2 rows
+CONTROL_FAILED definition_id-invalid /0: field definition_id expected diagnostic=true, got false
+CONTROL_FAILED definition_id-invalid /1: field definition_id expected diagnostic=true, got false
+positive definition_id-invalid: 2 rows
+completed public API: 8 positives, 12 exact error-variant controls, 5 disagreements
+Error: "metadata-trailing: expected metadata, got unsupported_metadata; selmaho-invalid /0: field selmaho expected diagnostic=true, got false; selmaho-invalid /1: field selmaho expected diagnostic=true, got false; definition_id-invalid /0: field definition_id expected diagnostic=true, got false; definition_id-invalid /1: field definition_id expected diagnostic=true, got false"

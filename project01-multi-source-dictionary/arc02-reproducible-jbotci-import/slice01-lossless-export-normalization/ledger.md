@@ -11,3 +11,11 @@ All7rows OPEN; CC attestations are proposed-done until CDC reproduces.
 | A02S01-05 | Public example/docs/fieldmap accurately teach fullraw release replay, observed counts, supplierlimits and version/terms boundaries. | Run example/outsidecaller, doc/link/source/package file inspection; rawpayloadabsent. | correctness-grade | Roadmap usefulincrement | open | | Package/acquire/S02not claimed. |
 | A02S01-06 | Required format/lint/check, isolated features/allfeatures and oldarchives/Q01–Q06 remain green at currentcandidate. | ActualMake/Cargogates with fixedtarget/offline guard and nonzero populations; source preservation diff. | correctness-grade | SourceAGENTS; projectpreservation | open | | Existingresearchcorpusignore separatelyreported. |
 | A02S01-07 | Exact initial/repair history, allrow/scope accounting, independent review, bubble-up and CDC retrospective complete. | Seven-row walk/actualdiff/verifier/retro and arcplan update decision. | correctness-grade | Framework | open | | No precreatedclose/verifier/retro. |
+
+## Candidate01 review,2026-10-24
+
+Frozen23d057bf is REPAIR REQUIRED, not accepted. Independent actual review and
+failed/passing populations: artifacts/cdc-review-attempt01.md plus hashed small
+artifacts/cdc-review01/. All7rows remain OPEN. Current assignment iteration02,
+first executed refinement of5. CC retains all initial attempts; CDC source/target
+review interval ends on explicit repair handover. No S02 child is issued yet.

@@ -1,0 +1,31 @@
+{
+  "verdict": "PASS",
+  "positive_exit": 0,
+  "counterexamples": [
+    {
+      "name": "numeric-score-equivalent",
+      "expected_category": "assertion",
+      "exit": 1,
+      "counterexample_sha256": "b6031d4dd9016ddbacb3b159d81baa8f6b71412625e48c51c2c80632ae8aa0fd"
+    },
+    {
+      "name": "native-lexeme-equivalent",
+      "expected_category": "native_fields",
+      "exit": 1,
+      "counterexample_sha256": "f1bab1283b0ac34460a2a9117920514ae43c4d06b20895f876faf4fa74a33f3e"
+    },
+    {
+      "name": "wrong-source-form-role",
+      "expected_category": "form_value",
+      "exit": 1,
+      "counterexample_sha256": "e38aed9368ecbf2b01fdbdcf0476ee7dd04599271249592b221d6b0708083d7a"
+    },
+    {
+      "name": "gloss-null-to-missing",
+      "expected_category": "gloss_native_meaning",
+      "exit": 1,
+      "counterexample_sha256": "b2b12cb013fc39fca69c35071245dcc8aca2075fc2df7f8389af93811199d06d"
+    }
+  ],
+  "oracle_sha256": "7f90b4b8ed35c207cc28353bb031c29a255c21a36f296a8ee1d07c8d3d910cb7"
+}

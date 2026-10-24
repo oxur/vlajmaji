@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01 ready to issue; no child accepted |
+| status | ACTIVE; S01 candidate01 repair required/iteration02; no child accepted |
 | version/date | 1.0 / 2026-10-24 |
 | depends-on | A01 fixture contracts originally accepted efef9c4; current implementation baseline d1e1c928 including CLI relocation/umbrella0.3.0 |
 | blocks | A03 jbotci optional package and later complete-corpus integration |

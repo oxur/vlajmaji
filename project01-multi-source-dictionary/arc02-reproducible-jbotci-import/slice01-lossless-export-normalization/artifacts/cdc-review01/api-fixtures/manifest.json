@@ -1,0 +1,211 @@
+[
+  {
+    "name": "duplicate-native-and-complete",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "metadata_sha256": "2faa5d0043392b52ed31e2451e65887a1cefa6a695f77c4ec639cbdca10bd677",
+    "rows": 2,
+    "actual_raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "actual_metadata_sha256": "2faa5d0043392b52ed31e2451e65887a1cefa6a695f77c4ec639cbdca10bd677"
+  },
+  {
+    "name": "changed-whitespace",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "ba9eb4fd6085482caf54a63b954fb5d38e78e490e4df7ec3334c0c902fb317e7",
+    "metadata_sha256": "3c8f1457f374cf75f2bd55be6ce2ab4fb48393878098255d12f47079649bda5e",
+    "rows": 2,
+    "actual_raw_sha256": "ba9eb4fd6085482caf54a63b954fb5d38e78e490e4df7ec3334c0c902fb317e7",
+    "actual_metadata_sha256": "3c8f1457f374cf75f2bd55be6ce2ab4fb48393878098255d12f47079649bda5e"
+  },
+  {
+    "name": "wrong-root",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "metadata_sha256": "80e6b20cee1d1ca7637c4d2b6ff676998b3ef2c9f8162186ee4e987edcfb32a8",
+    "rows": 2,
+    "error": "json",
+    "actual_raw_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "actual_metadata_sha256": "80e6b20cee1d1ca7637c4d2b6ff676998b3ef2c9f8162186ee4e987edcfb32a8"
+  },
+  {
+    "name": "syntax",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "245843abef9e72e7efac30138a994bf6301e7e1d7d7042a33d42e863d2638811",
+    "metadata_sha256": "6f701bc57c24314c8e90867f21a9fb728a59eb41522d3943e84642b55142749f",
+    "rows": 2,
+    "error": "json",
+    "actual_raw_sha256": "245843abef9e72e7efac30138a994bf6301e7e1d7d7042a33d42e863d2638811",
+    "actual_metadata_sha256": "6f701bc57c24314c8e90867f21a9fb728a59eb41522d3943e84642b55142749f"
+  },
+  {
+    "name": "raw-utf8",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+    "metadata_sha256": "f6b28c1ce4634e3a666d898ce80ee0ccce72412d734f0d61755f8228b977320c",
+    "rows": 2,
+    "error": "utf8",
+    "actual_raw_sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+    "actual_metadata_sha256": "f6b28c1ce4634e3a666d898ce80ee0ccce72412d734f0d61755f8228b977320c"
+  },
+  {
+    "name": "metadata-utf8",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "metadata_sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+    "rows": 2,
+    "error": "utf8",
+    "actual_raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "actual_metadata_sha256": "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89"
+  },
+  {
+    "name": "wrong-options",
+    "revision": "BAD",
+    "raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "metadata_sha256": "2faa5d0043392b52ed31e2451e65887a1cefa6a695f77c4ec639cbdca10bd677",
+    "rows": 2,
+    "error": "options",
+    "actual_raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "actual_metadata_sha256": "2faa5d0043392b52ed31e2451e65887a1cefa6a695f77c4ec639cbdca10bd677"
+  },
+  {
+    "name": "wrong-raw-hash",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "metadata_sha256": "2faa5d0043392b52ed31e2451e65887a1cefa6a695f77c4ec639cbdca10bd677",
+    "rows": 2,
+    "error": "hash",
+    "actual_raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "actual_metadata_sha256": "2faa5d0043392b52ed31e2451e65887a1cefa6a695f77c4ec639cbdca10bd677"
+  },
+  {
+    "name": "wrong-metadata-hash",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "metadata_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "rows": 2,
+    "error": "hash",
+    "actual_raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "actual_metadata_sha256": "2faa5d0043392b52ed31e2451e65887a1cefa6a695f77c4ec639cbdca10bd677"
+  },
+  {
+    "name": "metadata-duplicate",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "metadata_sha256": "b9d564f65df23aa97e3360e839dee6a226190047cf05d4185227ad157d004854",
+    "rows": 2,
+    "error": "metadata",
+    "actual_raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "actual_metadata_sha256": "b9d564f65df23aa97e3360e839dee6a226190047cf05d4185227ad157d004854"
+  },
+  {
+    "name": "metadata-trailing",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "metadata_sha256": "21e04e7c6a9372b992f97429971b7f02f218e0dd6f1402b599c4ce59e2f77002",
+    "rows": 2,
+    "error": "metadata",
+    "actual_raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "actual_metadata_sha256": "21e04e7c6a9372b992f97429971b7f02f218e0dd6f1402b599c4ce59e2f77002"
+  },
+  {
+    "name": "metadata-missing-key",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "metadata_sha256": "730649cb53442c0c949b3701404c655117279b479d71bddd9d5425bdb74954bb",
+    "rows": 2,
+    "error": "metadata",
+    "actual_raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "actual_metadata_sha256": "730649cb53442c0c949b3701404c655117279b479d71bddd9d5425bdb74954bb"
+  },
+  {
+    "name": "unsupported-format",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "metadata_sha256": "88c95a9ffbafd85a0d5ae63471b0838f1b8c847773079d45b9fc04b4142b1524",
+    "rows": 2,
+    "error": "unsupported_metadata",
+    "actual_raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "actual_metadata_sha256": "88c95a9ffbafd85a0d5ae63471b0838f1b8c847773079d45b9fc04b4142b1524"
+  },
+  {
+    "name": "metadata-raw-hash",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "metadata_sha256": "652103b77f47d07d4c41645a90a02aa11bc7439dad69dd8dc109f3a56f6812b1",
+    "rows": 2,
+    "error": "metadata",
+    "actual_raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "actual_metadata_sha256": "652103b77f47d07d4c41645a90a02aa11bc7439dad69dd8dc109f3a56f6812b1"
+  },
+  {
+    "name": "count-mismatch",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "metadata_sha256": "f383aa865db0573a7bb93656652d7c6848575c78d18635b76e3be3f831ce1722",
+    "rows": 2,
+    "count_mismatch": true,
+    "actual_raw_sha256": "3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67",
+    "actual_metadata_sha256": "f383aa865db0573a7bb93656652d7c6848575c78d18635b76e3be3f831ce1722"
+  },
+  {
+    "name": "empty-export",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "metadata_sha256": "11237116c37d3aff40d53d0c352a33d18c64e07273f8e627b97d1d6ef42abe38",
+    "rows": 0,
+    "actual_raw_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "actual_metadata_sha256": "11237116c37d3aff40d53d0c352a33d18c64e07273f8e627b97d1d6ef42abe38"
+  },
+  {
+    "name": "selmaho-valid",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "060536629ec5678b330e5b75e8ab7eba60853ac00915015359e663e3936d55e0",
+    "metadata_sha256": "a9d1107fcf46ae3082766430bcb3288a4847e2c56fe1c78d99a8ecd97aac1934",
+    "actual_raw_sha256": "060536629ec5678b330e5b75e8ab7eba60853ac00915015359e663e3936d55e0",
+    "actual_metadata_sha256": "a9d1107fcf46ae3082766430bcb3288a4847e2c56fe1c78d99a8ecd97aac1934",
+    "rows": 2,
+    "check_field": "selmaho",
+    "diagnostic_expected": false
+  },
+  {
+    "name": "selmaho-invalid",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "a9484aba6051060de760f5fb9eb4d49e9e2ec476b596c73751db71b9665a1f37",
+    "metadata_sha256": "c85f88830ad441bf22223f190cfca44918e1b83bec7748619d4c5bee47578864",
+    "actual_raw_sha256": "a9484aba6051060de760f5fb9eb4d49e9e2ec476b596c73751db71b9665a1f37",
+    "actual_metadata_sha256": "c85f88830ad441bf22223f190cfca44918e1b83bec7748619d4c5bee47578864",
+    "rows": 2,
+    "check_field": "selmaho",
+    "diagnostic_expected": true
+  },
+  {
+    "name": "definition_id-valid",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "40c5acbbb3ac2e38e2c7b0ec12659c10406b6216c29c6cfe0a461d8fbe98b719",
+    "metadata_sha256": "9e3ea97ac58d1354675d279858ffba0a6fd6522b884c1b544da1d31a778f5bb4",
+    "actual_raw_sha256": "40c5acbbb3ac2e38e2c7b0ec12659c10406b6216c29c6cfe0a461d8fbe98b719",
+    "actual_metadata_sha256": "9e3ea97ac58d1354675d279858ffba0a6fd6522b884c1b544da1d31a778f5bb4",
+    "rows": 2,
+    "check_field": "definition_id",
+    "diagnostic_expected": false,
+    "expected_native_ids": [
+      "\"native-id\"",
+      "123456789012345678901234567890"
+    ]
+  },
+  {
+    "name": "definition_id-invalid",
+    "revision": "0000000000000000000000000000000000000000",
+    "raw_sha256": "9e7863b4fc0f1d448e0895bb9f0db422536a4ef59528290fd6d0869eded507e4",
+    "metadata_sha256": "6e581293eaff885ba1aeb0da17c2464008e801fdec397dffb96e0067a42781ef",
+    "actual_raw_sha256": "9e7863b4fc0f1d448e0895bb9f0db422536a4ef59528290fd6d0869eded507e4",
+    "actual_metadata_sha256": "6e581293eaff885ba1aeb0da17c2464008e801fdec397dffb96e0067a42781ef",
+    "rows": 2,
+    "check_field": "definition_id",
+    "diagnostic_expected": true,
+    "expected_native_ids": [
+      null,
+      null
+    ]
+  }
+]

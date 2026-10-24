@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a02-cdc/verify_normalized.py", line 177, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/tmp/vlajmaji-p01-a02-cdc/verify_normalized.py", line 147, in main
+    require(any(x['value']==itemraw for x in ext[g['id']]),'gloss_native_meaning',loc+' raw object/null/missing')
+  File "/tmp/vlajmaji-p01-a02-cdc/verify_normalized.py", line 13, in require
+    raise AssertionError(f'{category}: {detail}')
+AssertionError: gloss_native_meaning: /0 raw object/null/missing
