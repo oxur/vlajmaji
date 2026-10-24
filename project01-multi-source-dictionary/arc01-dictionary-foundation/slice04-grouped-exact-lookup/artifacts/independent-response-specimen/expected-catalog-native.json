@@ -1,0 +1,2757 @@
+{
+  "version": 1,
+  "target": {
+    "Catalog": {
+      "source": "source-a",
+      "release": "release-a",
+      "native_entry_id": "333",
+      "native_assertion_id": "69002",
+      "occurrence": null
+    }
+  },
+  "status": "Resolved",
+  "entity": null,
+  "confirmed": [
+    {
+      "entry": {
+        "id": "entry-a-farvi",
+        "source": "source-a",
+        "spelling": {
+          "Value": "farvi"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "gismu"
+        },
+        "selmaho": "Null",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-0",
+        "entry": "entry-a-farvi",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:d1",
+            "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+          },
+          "locator": "/0"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": {
+          "Value": "1.0"
+        },
+        "timestamps": [
+          {
+            "field": "time",
+            "value": "1479570326",
+            "precision": "Unknown"
+          },
+          {
+            "field": "created_at",
+            "value": "\"2016-11-19T15:45:26Z\"",
+            "precision": "Unknown"
+          }
+        ],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f30",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:d1",
+            "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+          },
+          "locator": "/0"
+        },
+        "contributor": "suzil",
+        "native_entry_id": "333",
+        "native_assertion_id": "69002"
+      },
+      "raw": {
+        "locator": "/0",
+        "fields": [
+          {
+            "name": "definitionid",
+            "encoding": "Json",
+            "raw_value": "69002"
+          },
+          {
+            "name": "valsiword",
+            "encoding": "Json",
+            "raw_value": "\"farvi\""
+          },
+          {
+            "name": "valsiid",
+            "encoding": "Json",
+            "raw_value": "333"
+          },
+          {
+            "name": "langid",
+            "encoding": "Json",
+            "raw_value": "2"
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$\""
+          },
+          {
+            "name": "notes",
+            "encoding": "Json",
+            "raw_value": "\"\""
+          },
+          {
+            "name": "etymology",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "selmaho",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "jargon",
+            "encoding": "Json",
+            "raw_value": "\"\""
+          },
+          {
+            "name": "definitionnum",
+            "encoding": "Json",
+            "raw_value": "69002"
+          },
+          {
+            "name": "langrealname",
+            "encoding": "Json",
+            "raw_value": "\"English\""
+          },
+          {
+            "name": "username",
+            "encoding": "Json",
+            "raw_value": "\"suzil\""
+          },
+          {
+            "name": "time",
+            "encoding": "Json",
+            "raw_value": "1479570326"
+          },
+          {
+            "name": "created_at",
+            "encoding": "Json",
+            "raw_value": "\"2016-11-19T15:45:26Z\""
+          },
+          {
+            "name": "type_name",
+            "encoding": "Json",
+            "raw_value": "\"gismu\""
+          },
+          {
+            "name": "official_rafsi",
+            "encoding": "Json",
+            "raw_value": "\"fav farv\""
+          },
+          {
+            "name": "experimental_rafsi",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "rafsi",
+            "encoding": "Json",
+            "raw_value": "\"fav farv\""
+          },
+          {
+            "name": "score",
+            "encoding": "Json",
+            "raw_value": "1.0"
+          },
+          {
+            "name": "comment_count",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "gloss_keywords",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "place_keywords",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "user_vote",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "owner_only",
+            "encoding": "Json",
+            "raw_value": "false"
+          },
+          {
+            "name": "can_edit",
+            "encoding": "Json",
+            "raw_value": "false"
+          },
+          {
+            "name": "has_image",
+            "encoding": "Json",
+            "raw_value": "false"
+          },
+          {
+            "name": "sound_url",
+            "encoding": "Json",
+            "raw_value": "\"/api/jbovlaste/valsi/farvi/sound\""
+          },
+          {
+            "name": "embedding",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "similarity",
+            "encoding": "Json",
+            "raw_value": "null"
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A dictionary v1",
+        "format_label": "LensiskuJson",
+        "locator": "memory:a:d1",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-farvi",
+        "source": "source-a",
+        "spelling": {
+          "Value": "farvi"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "gismu"
+        },
+        "selmaho": "Null",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-1",
+        "entry": "entry-a-farvi",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:d1",
+            "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+          },
+          "locator": "/1"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": {
+          "Value": "1.0"
+        },
+        "timestamps": [
+          {
+            "field": "time",
+            "value": "1479570326",
+            "precision": "Unknown"
+          },
+          {
+            "field": "created_at",
+            "value": "\"2016-11-19T15:45:26Z\"",
+            "precision": "Unknown"
+          }
+        ],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f31",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:d1",
+            "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+          },
+          "locator": "/1"
+        },
+        "contributor": "suzil",
+        "native_entry_id": "333",
+        "native_assertion_id": "69002"
+      },
+      "raw": {
+        "locator": "/1",
+        "fields": [
+          {
+            "name": "definitionid",
+            "encoding": "Json",
+            "raw_value": "69002"
+          },
+          {
+            "name": "valsiword",
+            "encoding": "Json",
+            "raw_value": "\"farvi\""
+          },
+          {
+            "name": "valsiid",
+            "encoding": "Json",
+            "raw_value": "333"
+          },
+          {
+            "name": "langid",
+            "encoding": "Json",
+            "raw_value": "2"
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$\""
+          },
+          {
+            "name": "notes",
+            "encoding": "Json",
+            "raw_value": "\"\""
+          },
+          {
+            "name": "etymology",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "selmaho",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "jargon",
+            "encoding": "Json",
+            "raw_value": "\"\""
+          },
+          {
+            "name": "definitionnum",
+            "encoding": "Json",
+            "raw_value": "69002"
+          },
+          {
+            "name": "langrealname",
+            "encoding": "Json",
+            "raw_value": "\"English\""
+          },
+          {
+            "name": "username",
+            "encoding": "Json",
+            "raw_value": "\"suzil\""
+          },
+          {
+            "name": "time",
+            "encoding": "Json",
+            "raw_value": "1479570326"
+          },
+          {
+            "name": "created_at",
+            "encoding": "Json",
+            "raw_value": "\"2016-11-19T15:45:26Z\""
+          },
+          {
+            "name": "type_name",
+            "encoding": "Json",
+            "raw_value": "\"gismu\""
+          },
+          {
+            "name": "official_rafsi",
+            "encoding": "Json",
+            "raw_value": "\"fav farv\""
+          },
+          {
+            "name": "experimental_rafsi",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "rafsi",
+            "encoding": "Json",
+            "raw_value": "\"fav farv\""
+          },
+          {
+            "name": "score",
+            "encoding": "Json",
+            "raw_value": "1.0"
+          },
+          {
+            "name": "comment_count",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "gloss_keywords",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "place_keywords",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "user_vote",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "owner_only",
+            "encoding": "Json",
+            "raw_value": "false"
+          },
+          {
+            "name": "can_edit",
+            "encoding": "Json",
+            "raw_value": "false"
+          },
+          {
+            "name": "has_image",
+            "encoding": "Json",
+            "raw_value": "false"
+          },
+          {
+            "name": "sound_url",
+            "encoding": "Json",
+            "raw_value": "\"/api/jbovlaste/valsi/farvi/sound\""
+          },
+          {
+            "name": "embedding",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "similarity",
+            "encoding": "Json",
+            "raw_value": "null"
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A dictionary v1",
+        "format_label": "LensiskuJson",
+        "locator": "memory:a:d1",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-farvi",
+        "source": "source-a",
+        "spelling": {
+          "Value": "farvi"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "gismu"
+        },
+        "selmaho": "Null",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-3",
+        "entry": "entry-a-farvi",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:d2",
+            "sha256": "e06c194377ff1c75e9ac8f06b7441873790f4a9583307917e7650b9d0a2b8458"
+          },
+          "locator": "/0"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": {
+          "Value": "1.0"
+        },
+        "timestamps": [
+          {
+            "field": "time",
+            "value": "1479570326",
+            "precision": "Unknown"
+          },
+          {
+            "field": "created_at",
+            "value": "\"2016-11-19T15:45:26Z\"",
+            "precision": "Unknown"
+          }
+        ],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000000d63617074757265643a613a643200000000000000406530366331393433373766663163373565396163386630366237343431383733373930663461393538333330373931376537363530623964306132623834353800000000000000022f30",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:d2",
+            "sha256": "e06c194377ff1c75e9ac8f06b7441873790f4a9583307917e7650b9d0a2b8458"
+          },
+          "locator": "/0"
+        },
+        "contributor": "suzil",
+        "native_entry_id": "333",
+        "native_assertion_id": "69002"
+      },
+      "raw": {
+        "locator": "/0",
+        "fields": [
+          {
+            "name": "definitionid",
+            "encoding": "Json",
+            "raw_value": "69002"
+          },
+          {
+            "name": "valsiword",
+            "encoding": "Json",
+            "raw_value": "\"farvi\""
+          },
+          {
+            "name": "valsiid",
+            "encoding": "Json",
+            "raw_value": "333"
+          },
+          {
+            "name": "langid",
+            "encoding": "Json",
+            "raw_value": "2"
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$\""
+          },
+          {
+            "name": "notes",
+            "encoding": "Json",
+            "raw_value": "\"\""
+          },
+          {
+            "name": "etymology",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "selmaho",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "jargon",
+            "encoding": "Json",
+            "raw_value": "\"\""
+          },
+          {
+            "name": "definitionnum",
+            "encoding": "Json",
+            "raw_value": "69002"
+          },
+          {
+            "name": "langrealname",
+            "encoding": "Json",
+            "raw_value": "\"English\""
+          },
+          {
+            "name": "username",
+            "encoding": "Json",
+            "raw_value": "\"suzil\""
+          },
+          {
+            "name": "time",
+            "encoding": "Json",
+            "raw_value": "1479570326"
+          },
+          {
+            "name": "created_at",
+            "encoding": "Json",
+            "raw_value": "\"2016-11-19T15:45:26Z\""
+          },
+          {
+            "name": "type_name",
+            "encoding": "Json",
+            "raw_value": "\"gismu\""
+          },
+          {
+            "name": "official_rafsi",
+            "encoding": "Json",
+            "raw_value": "\"fav farv\""
+          },
+          {
+            "name": "experimental_rafsi",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "rafsi",
+            "encoding": "Json",
+            "raw_value": "\"fav farv\""
+          },
+          {
+            "name": "score",
+            "encoding": "Json",
+            "raw_value": "1.0"
+          },
+          {
+            "name": "comment_count",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "gloss_keywords",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "place_keywords",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "user_vote",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "owner_only",
+            "encoding": "Json",
+            "raw_value": "false"
+          },
+          {
+            "name": "can_edit",
+            "encoding": "Json",
+            "raw_value": "false"
+          },
+          {
+            "name": "has_image",
+            "encoding": "Json",
+            "raw_value": "false"
+          },
+          {
+            "name": "sound_url",
+            "encoding": "Json",
+            "raw_value": "\"/api/jbovlaste/valsi/farvi/sound\""
+          },
+          {
+            "name": "embedding",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "similarity",
+            "encoding": "Json",
+            "raw_value": "null"
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A mirror",
+        "format_label": "LensiskuJson",
+        "locator": "memory:a:d2",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    }
+  ],
+  "unverified": [
+    {
+      "entry": {
+        "id": "entry-opaque",
+        "source": "source-a",
+        "spelling": "Missing",
+        "language": "Missing",
+        "script": "Missing",
+        "native_word_class": "Missing",
+        "selmaho": "Missing",
+        "mapped_pos": "Missing"
+      },
+      "assertion": {
+        "id": "assertion-19",
+        "entry": "entry-opaque",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:opaque",
+            "sha256": "dc01fd3caf3e85dd618fe7b055a913f86981c576229c4d8a18696d1f25cc0e16"
+          },
+          "locator": "row:1"
+        },
+        "native_sense_id": "Missing",
+        "language": "Missing",
+        "definition": "Missing",
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": {
+          "Excluded": {
+            "reason": "unsupported opaque nonlexical row"
+          }
+        }
+      },
+      "occurrence_id": "000000000000001163617074757265643a613a6f70617175650000000000000040646330316664336361663365383564643631386665376230353561393133663836393831633537363232396334643861313836393664316632356363306531360000000000000005726f773a31",
+      "occurrence_attribution": null,
+      "raw": {
+        "locator": "row:1",
+        "fields": [
+          {
+            "name": "source-kind",
+            "encoding": "Text",
+            "raw_value": "opaque"
+          },
+          {
+            "name": "unknown",
+            "encoding": "Json",
+            "raw_value": "{\"x\":[null,true,12345678901234567890]}"
+          }
+        ],
+        "raw_line": "opaque/nonlexical retained bytes"
+      },
+      "capture_metadata": {
+        "source_name": "A opaque capture",
+        "format_label": "opaque-fixture",
+        "locator": "memory:a:opaque",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": false,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-dot-si-e",
+        "source": "source-a",
+        "spelling": {
+          "Value": ".si'e"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "cmavo"
+        },
+        "selmaho": "Missing",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-9",
+        "entry": "entry-a-dot-si-e",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/4"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "leading dot retained",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001263617074757265643a613a6c65786963616c00000000000000403965333962376237323165306433356531643737383065373062393534383934393039643166303431396536366361343961613633343936366333386131386200000000000000022f34",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/4"
+        },
+        "contributor": null,
+        "native_entry_id": null,
+        "native_assertion_id": null
+      },
+      "raw": {
+        "locator": "/4",
+        "fields": [
+          {
+            "name": "word",
+            "encoding": "Json",
+            "raw_value": "\".si'e\""
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"leading dot retained\""
+          },
+          {
+            "name": "word_type",
+            "encoding": "Json",
+            "raw_value": "\"cmavo\""
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A lexical rows",
+        "format_label": "LaLojbanJson",
+        "locator": "memory:a:lexical",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-capital-si-e",
+        "source": "source-a",
+        "spelling": {
+          "Value": "Si'e"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "cmavo"
+        },
+        "selmaho": "Missing",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-7",
+        "entry": "entry-a-capital-si-e",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/2"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "case retained",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001263617074757265643a613a6c65786963616c00000000000000403965333962376237323165306433356531643737383065373062393534383934393039643166303431396536366361343961613633343936366333386131386200000000000000022f32",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/2"
+        },
+        "contributor": null,
+        "native_entry_id": null,
+        "native_assertion_id": null
+      },
+      "raw": {
+        "locator": "/2",
+        "fields": [
+          {
+            "name": "word",
+            "encoding": "Json",
+            "raw_value": "\"Si'e\""
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"case retained\""
+          },
+          {
+            "name": "word_type",
+            "encoding": "Json",
+            "raw_value": "\"cmavo\""
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A lexical rows",
+        "format_label": "LaLojbanJson",
+        "locator": "memory:a:lexical",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-bai",
+        "source": "source-a",
+        "spelling": {
+          "Value": "bai"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "cmavo"
+        },
+        "selmaho": {
+          "Value": "BAI"
+        },
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-11",
+        "entry": "entry-a-bai",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/6"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "with; by means of",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001263617074757265643a613a6c65786963616c00000000000000403965333962376237323165306433356531643737383065373062393534383934393039643166303431396536366361343961613633343936366333386131386200000000000000022f36",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/6"
+        },
+        "contributor": null,
+        "native_entry_id": null,
+        "native_assertion_id": null
+      },
+      "raw": {
+        "locator": "/6",
+        "fields": [
+          {
+            "name": "word",
+            "encoding": "Json",
+            "raw_value": "\"bai\""
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"with; by means of\""
+          },
+          {
+            "name": "word_type",
+            "encoding": "Json",
+            "raw_value": "\"cmavo\""
+          },
+          {
+            "name": "selmaho",
+            "encoding": "Json",
+            "raw_value": "\"BAI\""
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A lexical rows",
+        "format_label": "LaLojbanJson",
+        "locator": "memory:a:lexical",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-cpana",
+        "source": "source-a",
+        "spelling": {
+          "Value": "cpana"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "gismu"
+        },
+        "selmaho": "Missing",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-16",
+        "entry": "entry-a-cpana",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:gismu",
+            "sha256": "7dd2af0c2d5b0ceee21fd04164e3b4a50386b60c9274f52fcc6ede58fd3cba63"
+          },
+          "locator": "2"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "x1 is upon/atop/resting on/lying on [the upper surface of] x2 in frame of reference/gravity x3",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001063617074757265643a613a6769736d75000000000000004037646432616630633264356230636565653231666430343136346533623461353033383662363063393237346635326663633665646535386664336362613633000000000000000132",
+      "occurrence_attribution": null,
+      "raw": {
+        "locator": "2",
+        "fields": [
+          {
+            "name": "assigned_rafsi_cvc",
+            "encoding": "Text",
+            "raw_value": ""
+          },
+          {
+            "name": "assigned_rafsi_ccv",
+            "encoding": "Text",
+            "raw_value": ""
+          },
+          {
+            "name": "assigned_rafsi_cvv",
+            "encoding": "Text",
+            "raw_value": ""
+          },
+          {
+            "name": "word",
+            "encoding": "Text",
+            "raw_value": "cpana"
+          },
+          {
+            "name": "definition",
+            "encoding": "Text",
+            "raw_value": "x1 is upon/atop/resting on/lying on [the upper surface of] x2 in frame of reference/gravity x3"
+          }
+        ],
+        "raw_line": " cpana              upon                                      x1 is upon/atop/resting on/lying on [the upper surface of] x2 in frame of reference/gravity x3   1e  63    (x1 may be object or event); (cf. se vasru, jbini, zvati, nenri, vreta, ckana, diklo, jibni, lamji, zutse, punji for lay upon, sarji, zbepi)"
+      },
+      "capture_metadata": {
+        "source_name": "A gismu",
+        "format_label": "LlgGismuFixed",
+        "locator": "memory:a:gismu",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-cpana",
+        "source": "source-a",
+        "spelling": {
+          "Value": "cpana"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "gismu"
+        },
+        "selmaho": "Missing",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-13",
+        "entry": "entry-a-cpana",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/8"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "above",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001263617074757265643a613a6c65786963616c00000000000000403965333962376237323165306433356531643737383065373062393534383934393039643166303431396536366361343961613633343936366333386131386200000000000000022f38",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/8"
+        },
+        "contributor": null,
+        "native_entry_id": null,
+        "native_assertion_id": null
+      },
+      "raw": {
+        "locator": "/8",
+        "fields": [
+          {
+            "name": "word",
+            "encoding": "Json",
+            "raw_value": "\"cpana\""
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"above\""
+          },
+          {
+            "name": "word_type",
+            "encoding": "Json",
+            "raw_value": "\"gismu\""
+          },
+          {
+            "name": "etymology",
+            "encoding": "Json",
+            "raw_value": "\"derived source text\""
+          },
+          {
+            "name": "rafsi",
+            "encoding": "Json",
+            "raw_value": "\"cpan\""
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A lexical rows",
+        "format_label": "LaLojbanJson",
+        "locator": "memory:a:lexical",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-le-jaica",
+        "source": "source-a",
+        "spelling": {
+          "Value": "le jaica"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "cmavo"
+        },
+        "selmaho": "Missing",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-12",
+        "entry": "entry-a-le-jaica",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/7"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "a multiword spelling",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001263617074757265643a613a6c65786963616c00000000000000403965333962376237323165306433356531643737383065373062393534383934393039643166303431396536366361343961613633343936366333386131386200000000000000022f37",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/7"
+        },
+        "contributor": null,
+        "native_entry_id": null,
+        "native_assertion_id": null
+      },
+      "raw": {
+        "locator": "/7",
+        "fields": [
+          {
+            "name": "word",
+            "encoding": "Json",
+            "raw_value": "\"le jaica\""
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"a multiword spelling\""
+          },
+          {
+            "name": "word_type",
+            "encoding": "Json",
+            "raw_value": "\"cmavo\""
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A lexical rows",
+        "format_label": "LaLojbanJson",
+        "locator": "memory:a:lexical",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-si-e",
+        "source": "source-a",
+        "spelling": {
+          "Value": "si'e"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "cmavo"
+        },
+        "selmaho": {
+          "Value": "MOI"
+        },
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-5",
+        "entry": "entry-a-si-e",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/0"
+        },
+        "native_sense_id": {
+          "Value": "synthetic-sense-si-e"
+        },
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "cmavo, MOI",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001263617074757265643a613a6c65786963616c00000000000000403965333962376237323165306433356531643737383065373062393534383934393039643166303431396536366361343961613633343936366333386131386200000000000000022f30",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/0"
+        },
+        "contributor": null,
+        "native_entry_id": null,
+        "native_assertion_id": null
+      },
+      "raw": {
+        "locator": "/0",
+        "fields": [
+          {
+            "name": "word",
+            "encoding": "Json",
+            "raw_value": "\"si'e\""
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"cmavo, MOI\""
+          },
+          {
+            "name": "word_type",
+            "encoding": "Json",
+            "raw_value": "\"cmavo\""
+          },
+          {
+            "name": "selmaho",
+            "encoding": "Json",
+            "raw_value": "\"MOI\""
+          },
+          {
+            "name": "notes",
+            "encoding": "Json",
+            "raw_value": "\"synthetic note\""
+          },
+          {
+            "name": "rafsi",
+            "encoding": "Json",
+            "raw_value": "[\"sni\"]"
+          },
+          {
+            "name": "variant",
+            "encoding": "Json",
+            "raw_value": "\"siʼe\""
+          },
+          {
+            "name": "pronunciation",
+            "encoding": "Json",
+            "raw_value": "\"siʔe\""
+          },
+          {
+            "name": "etymology",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "frame",
+            "encoding": "Json",
+            "raw_value": "[{\"order\":1,\"label\":\"x1\",\"description\":\"snow\"}]"
+          },
+          {
+            "name": "native_sense_id",
+            "encoding": "Json",
+            "raw_value": "\"synthetic-sense-si-e\""
+          },
+          {
+            "name": "source_see_also",
+            "encoding": "Json",
+            "raw_value": "null"
+          },
+          {
+            "name": "source_etymology_target",
+            "encoding": "Json",
+            "raw_value": "{\"source\":\"source-m\",\"release\":\"release-m\",\"native_entry_id\":\"native-missing\",\"occurrence\":{\"capture\":{\"namespace\":\"catalogue:m:future\",\"sha256\":\"0000000000000000000000000000000000000000000000000000000000000000\"},\"locator\":\"/0\"}}"
+          },
+          {
+            "name": "unknown",
+            "encoding": "Json",
+            "raw_value": "{\"array\":[1,true,null],\"huge\":1234567890123456789012345678901234567890}"
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A lexical rows",
+        "format_label": "LaLojbanJson",
+        "locator": "memory:a:lexical",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-sie",
+        "source": "source-a",
+        "spelling": {
+          "Value": "sie"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "cmavo"
+        },
+        "selmaho": "Missing",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-6",
+        "entry": "entry-a-sie",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/1"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "distinct spelling",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001263617074757265643a613a6c65786963616c00000000000000403965333962376237323165306433356531643737383065373062393534383934393039643166303431396536366361343961613633343936366333386131386200000000000000022f31",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/1"
+        },
+        "contributor": null,
+        "native_entry_id": null,
+        "native_assertion_id": null
+      },
+      "raw": {
+        "locator": "/1",
+        "fields": [
+          {
+            "name": "word",
+            "encoding": "Json",
+            "raw_value": "\"sie\""
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"distinct spelling\""
+          },
+          {
+            "name": "word_type",
+            "encoding": "Json",
+            "raw_value": "\"cmavo\""
+          },
+          {
+            "name": "etymology",
+            "encoding": "Json",
+            "raw_value": "\"\""
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A lexical rows",
+        "format_label": "LaLojbanJson",
+        "locator": "memory:a:lexical",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-curly-si-e",
+        "source": "source-a",
+        "spelling": {
+          "Value": "si’e"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "cmavo"
+        },
+        "selmaho": "Missing",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-8",
+        "entry": "entry-a-curly-si-e",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/3"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "curly apostrophe retained",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001263617074757265643a613a6c65786963616c00000000000000403965333962376237323165306433356531643737383065373062393534383934393039643166303431396536366361343961613633343936366333386131386200000000000000022f33",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/3"
+        },
+        "contributor": null,
+        "native_entry_id": null,
+        "native_assertion_id": null
+      },
+      "raw": {
+        "locator": "/3",
+        "fields": [
+          {
+            "name": "word",
+            "encoding": "Json",
+            "raw_value": "\"si’e\""
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"curly apostrophe retained\""
+          },
+          {
+            "name": "word_type",
+            "encoding": "Json",
+            "raw_value": "\"cmavo\""
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A lexical rows",
+        "format_label": "LaLojbanJson",
+        "locator": "memory:a:lexical",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-snime",
+        "source": "source-a",
+        "spelling": {
+          "Value": "snime"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "gismu"
+        },
+        "selmaho": "Missing",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-15",
+        "entry": "entry-a-snime",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:rafsi",
+            "sha256": "87477ac20927aa3292bd58282aedcdf4293499f26aefc94a4cc40cf597da10dc"
+          },
+          "locator": "1"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": "Missing",
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001063617074757265643a613a7261667369000000000000004038373437376163323039323761613332393262643538323832616564636466343239333439396632366165666339346134636334306366353937646131306463000000000000000131",
+      "occurrence_attribution": null,
+      "raw": {
+        "locator": "1",
+        "fields": [
+          {
+            "name": "rafsi",
+            "encoding": "Text",
+            "raw_value": "si'e"
+          },
+          {
+            "name": "word",
+            "encoding": "Text",
+            "raw_value": "snime"
+          },
+          {
+            "name": "gloss",
+            "encoding": "Text",
+            "raw_value": "snow"
+          }
+        ],
+        "raw_line": "si'e snime snow"
+      },
+      "capture_metadata": {
+        "source_name": "A assigned rafsi",
+        "format_label": "LlgRafsiRows",
+        "locator": "memory:a:rafsi",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-snime",
+        "source": "source-a",
+        "spelling": {
+          "Value": "snime"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "gismu"
+        },
+        "selmaho": "Missing",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-14",
+        "entry": "entry-a-snime",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/9"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "snow",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001263617074757265643a613a6c65786963616c00000000000000403965333962376237323165306433356531643737383065373062393534383934393039643166303431396536366361343961613633343936366333386131386200000000000000022f39",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/9"
+        },
+        "contributor": null,
+        "native_entry_id": null,
+        "native_assertion_id": null
+      },
+      "raw": {
+        "locator": "/9",
+        "fields": [
+          {
+            "name": "word",
+            "encoding": "Json",
+            "raw_value": "\"snime\""
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"snow\""
+          },
+          {
+            "name": "word_type",
+            "encoding": "Json",
+            "raw_value": "\"gismu\""
+          },
+          {
+            "name": "rafsi",
+            "encoding": "Json",
+            "raw_value": "[\"snim\"]"
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A lexical rows",
+        "format_label": "LaLojbanJson",
+        "locator": "memory:a:lexical",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    },
+    {
+      "entry": {
+        "id": "entry-a-sy",
+        "source": "source-a",
+        "spelling": {
+          "Value": "sy"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": {
+          "Value": "cmavo"
+        },
+        "selmaho": "Missing",
+        "mapped_pos": {
+          "Value": {
+            "value": "part-of-speech",
+            "rule": "explicit-fixture-map-v1"
+          }
+        }
+      },
+      "assertion": {
+        "id": "assertion-10",
+        "entry": "entry-a-sy",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/5"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "y spelling retained",
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      "occurrence_id": "000000000000001263617074757265643a613a6c65786963616c00000000000000403965333962376237323165306433356531643737383065373062393534383934393039643166303431396536366361343961613633343936366333386131386200000000000000022f35",
+      "occurrence_attribution": {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "captured:a:lexical",
+            "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+          },
+          "locator": "/5"
+        },
+        "contributor": null,
+        "native_entry_id": null,
+        "native_assertion_id": null
+      },
+      "raw": {
+        "locator": "/5",
+        "fields": [
+          {
+            "name": "word",
+            "encoding": "Json",
+            "raw_value": "\"sy\""
+          },
+          {
+            "name": "definition",
+            "encoding": "Json",
+            "raw_value": "\"y spelling retained\""
+          },
+          {
+            "name": "word_type",
+            "encoding": "Json",
+            "raw_value": "\"cmavo\""
+          }
+        ],
+        "raw_line": null
+      },
+      "capture_metadata": {
+        "source_name": "A lexical rows",
+        "format_label": "LaLojbanJson",
+        "locator": "memory:a:lexical",
+        "revision": {
+          "Value": "fixture-v1"
+        },
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "payload_present": true,
+      "current_eligible": true,
+      "release_ids": [
+        "release-a"
+      ],
+      "owned_revision_ids": [],
+      "tombstoned_by": []
+    }
+  ],
+  "availability": [
+    {
+      "source": {
+        "id": "source-a",
+        "display_name": "Captured A",
+        "abbreviation": "a",
+        "abbreviation_kind": "ProjectAssigned",
+        "abbreviation_evidence": null,
+        "origin": "Upstream"
+      },
+      "aliases": [
+        {
+          "source": "source-a",
+          "text": "archive-a",
+          "status": "Active",
+          "evidence": "fixture selector alias"
+        },
+        {
+          "source": "source-a",
+          "text": "legacy-a",
+          "status": "Retired",
+          "evidence": "fixture retired alias"
+        }
+      ],
+      "lineage": [
+        {
+          "source": "source-a",
+          "upstream": {
+            "Known": "source-b"
+          },
+          "evidence": "fixture documented relationship"
+        },
+        {
+          "source": "source-a",
+          "upstream": {
+            "Unresolved": "unresolved mirror lineage"
+          },
+          "evidence": "fixture unresolved locator"
+        }
+      ],
+      "collections": [
+        {
+          "id": "collection-a",
+          "source": "source-a",
+          "display_name": "A source",
+          "description": {
+            "Value": {
+              "text": "fixture collection",
+              "language": {
+                "Value": "en"
+              },
+              "markup": "Missing"
+            }
+          }
+        }
+      ],
+      "components": [
+        {
+          "id": "component-a",
+          "collection": "collection-a",
+          "native_name": "A components",
+          "languages": [
+            "jbo",
+            "en"
+          ]
+        }
+      ],
+      "releases": [
+        {
+          "id": "release-a",
+          "component": "component-a",
+          "distributor": null,
+          "upstream_revision": {
+            "Value": "fixture-v1"
+          },
+          "distributor_revision": "Missing",
+          "captured_at": "Missing",
+          "time_precision": "Unknown",
+          "schema_version": 1,
+          "normalizer": "explicit-import",
+          "normalizer_version": "1",
+          "captures": [
+            {
+              "namespace": "captured:a:d1",
+              "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+            },
+            {
+              "namespace": "captured:a:d2",
+              "sha256": "e06c194377ff1c75e9ac8f06b7441873790f4a9583307917e7650b9d0a2b8458"
+            },
+            {
+              "namespace": "captured:a:gismu",
+              "sha256": "7dd2af0c2d5b0ceee21fd04164e3b4a50386b60c9274f52fcc6ede58fd3cba63"
+            },
+            {
+              "namespace": "captured:a:lexical",
+              "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+            },
+            {
+              "namespace": "captured:a:opaque",
+              "sha256": "dc01fd3caf3e85dd618fe7b055a913f86981c576229c4d8a18696d1f25cc0e16"
+            },
+            {
+              "namespace": "captured:a:rafsi",
+              "sha256": "87477ac20927aa3292bd58282aedcdf4293499f26aefc94a4cc40cf597da10dc"
+            }
+          ],
+          "assertions": [
+            "assertion-0",
+            "assertion-1",
+            "assertion-2",
+            "assertion-3",
+            "assertion-5",
+            "assertion-6",
+            "assertion-7",
+            "assertion-8",
+            "assertion-9",
+            "assertion-10",
+            "assertion-11",
+            "assertion-12",
+            "assertion-13",
+            "assertion-14",
+            "assertion-15",
+            "assertion-16",
+            "assertion-19"
+          ],
+          "accounting": {
+            "input_occurrences": 17,
+            "normalized_occurrences": 17,
+            "query_excluded_occurrences": 1,
+            "unit": "occurrence"
+          },
+          "diagnostics": [
+            {
+              "occurrence": {
+                "capture": {
+                  "namespace": "captured:a:opaque",
+                  "sha256": "dc01fd3caf3e85dd618fe7b055a913f86981c576229c4d8a18696d1f25cc0e16"
+                },
+                "locator": "row:1"
+              },
+              "code": "opaque-excluded",
+              "message": "retained but not lexical"
+            }
+          ],
+          "selected": true,
+          "availability": "Available",
+          "content_notices": [
+            {
+              "text": {
+                "Value": "fixture notice"
+              },
+              "locator": {
+                "Value": "fixture://notice"
+              },
+              "license": "Missing"
+            }
+          ],
+          "redistribution": "Held",
+          "redistribution_evidence": []
+        }
+      ],
+      "selected_available_release_ids": [
+        "release-a"
+      ],
+      "loaded_captures": [
+        {
+          "namespace": "captured:a:d1",
+          "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+        },
+        {
+          "namespace": "captured:a:d2",
+          "sha256": "e06c194377ff1c75e9ac8f06b7441873790f4a9583307917e7650b9d0a2b8458"
+        },
+        {
+          "namespace": "captured:a:gismu",
+          "sha256": "7dd2af0c2d5b0ceee21fd04164e3b4a50386b60c9274f52fcc6ede58fd3cba63"
+        },
+        {
+          "namespace": "captured:a:lexical",
+          "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+        },
+        {
+          "namespace": "captured:a:opaque",
+          "sha256": "dc01fd3caf3e85dd618fe7b055a913f86981c576229c4d8a18696d1f25cc0e16"
+        },
+        {
+          "namespace": "captured:a:rafsi",
+          "sha256": "87477ac20927aa3292bd58282aedcdf4293499f26aefc94a4cc40cf597da10dc"
+        }
+      ],
+      "missing_captures": [],
+      "owned_head": null,
+      "selectable": true,
+      "reason": null
+    },
+    {
+      "source": {
+        "id": "source-b",
+        "display_name": "Captured B",
+        "abbreviation": "b",
+        "abbreviation_kind": "ProjectAssigned",
+        "abbreviation_evidence": null,
+        "origin": "Upstream"
+      },
+      "aliases": [],
+      "lineage": [],
+      "collections": [
+        {
+          "id": "collection-b",
+          "source": "source-b",
+          "display_name": "B source",
+          "description": {
+            "Value": {
+              "text": "fixture collection",
+              "language": {
+                "Value": "en"
+              },
+              "markup": "Missing"
+            }
+          }
+        }
+      ],
+      "components": [
+        {
+          "id": "component-b",
+          "collection": "collection-b",
+          "native_name": "B component",
+          "languages": [
+            "jbo",
+            "en"
+          ]
+        }
+      ],
+      "releases": [
+        {
+          "id": "release-b",
+          "component": "component-b",
+          "distributor": null,
+          "upstream_revision": {
+            "Value": "fixture-v1"
+          },
+          "distributor_revision": "Missing",
+          "captured_at": "Missing",
+          "time_precision": "Unknown",
+          "schema_version": 1,
+          "normalizer": "explicit-import",
+          "normalizer_version": "1",
+          "captures": [
+            {
+              "namespace": "captured:b:d1",
+              "sha256": "75e3c5a9ccd1399b20f4e898ae3698e6dff7b5ffe316ddb7c8017f28d2c25088"
+            }
+          ],
+          "assertions": [
+            "assertion-4"
+          ],
+          "accounting": {
+            "input_occurrences": 1,
+            "normalized_occurrences": 1,
+            "query_excluded_occurrences": 0,
+            "unit": "occurrence"
+          },
+          "diagnostics": [],
+          "selected": true,
+          "availability": "Available",
+          "content_notices": [
+            {
+              "text": {
+                "Value": "fixture notice"
+              },
+              "locator": {
+                "Value": "fixture://notice"
+              },
+              "license": "Missing"
+            }
+          ],
+          "redistribution": "Unknown",
+          "redistribution_evidence": []
+        }
+      ],
+      "selected_available_release_ids": [
+        "release-b"
+      ],
+      "loaded_captures": [
+        {
+          "namespace": "captured:b:d1",
+          "sha256": "75e3c5a9ccd1399b20f4e898ae3698e6dff7b5ffe316ddb7c8017f28d2c25088"
+        }
+      ],
+      "missing_captures": [],
+      "owned_head": null,
+      "selectable": true,
+      "reason": null
+    },
+    {
+      "source": {
+        "id": "source-m",
+        "display_name": "Catalogue source M",
+        "abbreviation": "m",
+        "abbreviation_kind": "ProjectAssigned",
+        "abbreviation_evidence": null,
+        "origin": "Upstream"
+      },
+      "aliases": [],
+      "lineage": [],
+      "collections": [
+        {
+          "id": "collection-m",
+          "source": "source-m",
+          "display_name": "Missing catalogue source",
+          "description": {
+            "Value": {
+              "text": "fixture collection",
+              "language": {
+                "Value": "en"
+              },
+              "markup": "Missing"
+            }
+          }
+        }
+      ],
+      "components": [
+        {
+          "id": "component-m",
+          "collection": "collection-m",
+          "native_name": "Missing component",
+          "languages": [
+            "jbo",
+            "en"
+          ]
+        }
+      ],
+      "releases": [
+        {
+          "id": "release-m",
+          "component": "component-m",
+          "distributor": null,
+          "upstream_revision": {
+            "Value": "fixture-v1"
+          },
+          "distributor_revision": "Missing",
+          "captured_at": "Missing",
+          "time_precision": "Unknown",
+          "schema_version": 1,
+          "normalizer": "explicit-import",
+          "normalizer_version": "1",
+          "captures": [
+            {
+              "namespace": "catalogue:m:future",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          ],
+          "assertions": [],
+          "accounting": {
+            "input_occurrences": null,
+            "normalized_occurrences": null,
+            "query_excluded_occurrences": null,
+            "unit": "occurrence"
+          },
+          "diagnostics": [
+            {
+              "occurrence": null,
+              "code": "not-captured",
+              "message": "catalogue presence is not payload availability"
+            }
+          ],
+          "selected": false,
+          "availability": "Missing",
+          "content_notices": [
+            {
+              "text": {
+                "Value": "fixture notice"
+              },
+              "locator": {
+                "Value": "fixture://notice"
+              },
+              "license": "Missing"
+            }
+          ],
+          "redistribution": "Unknown",
+          "redistribution_evidence": []
+        }
+      ],
+      "selected_available_release_ids": [],
+      "loaded_captures": [],
+      "missing_captures": [
+        {
+          "namespace": "catalogue:m:future",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "owned_head": null,
+      "selectable": false,
+      "reason": "NoSelectedAvailableRelease"
+    },
+    {
+      "source": {
+        "id": "source-o",
+        "display_name": "Owned O",
+        "abbreviation": "o",
+        "abbreviation_kind": "ProjectAssigned",
+        "abbreviation_evidence": null,
+        "origin": "OwnedDraft"
+      },
+      "aliases": [],
+      "lineage": [],
+      "collections": [
+        {
+          "id": "collection-o",
+          "source": "source-o",
+          "display_name": "Owned source",
+          "description": {
+            "Value": {
+              "text": "fixture collection",
+              "language": {
+                "Value": "en"
+              },
+              "markup": "Missing"
+            }
+          }
+        }
+      ],
+      "components": [
+        {
+          "id": "component-o",
+          "collection": "collection-o",
+          "native_name": "Owned revisions",
+          "languages": [
+            "jbo",
+            "en"
+          ]
+        }
+      ],
+      "releases": [
+        {
+          "id": "release-o1",
+          "component": "component-o",
+          "distributor": null,
+          "upstream_revision": {
+            "Value": "fixture-v1"
+          },
+          "distributor_revision": "Missing",
+          "captured_at": "Missing",
+          "time_precision": "Unknown",
+          "schema_version": 1,
+          "normalizer": "explicit-import",
+          "normalizer_version": "1",
+          "captures": [
+            {
+              "namespace": "owned:o:r1",
+              "sha256": "fe4856eedac039bd69e1581439b510a87c537882ed17ed8a31cc9c42f446e0c9"
+            }
+          ],
+          "assertions": [
+            "assertion-17"
+          ],
+          "accounting": {
+            "input_occurrences": 1,
+            "normalized_occurrences": 1,
+            "query_excluded_occurrences": 0,
+            "unit": "occurrence"
+          },
+          "diagnostics": [],
+          "selected": true,
+          "availability": "Available",
+          "content_notices": [
+            {
+              "text": {
+                "Value": "fixture notice"
+              },
+              "locator": {
+                "Value": "fixture://notice"
+              },
+              "license": "Missing"
+            }
+          ],
+          "redistribution": "Permitted",
+          "redistribution_evidence": [
+            "explicit fixture permission evidence"
+          ]
+        },
+        {
+          "id": "release-o2",
+          "component": "component-o",
+          "distributor": null,
+          "upstream_revision": {
+            "Value": "fixture-v1"
+          },
+          "distributor_revision": "Missing",
+          "captured_at": "Missing",
+          "time_precision": "Unknown",
+          "schema_version": 1,
+          "normalizer": "explicit-import",
+          "normalizer_version": "1",
+          "captures": [
+            {
+              "namespace": "owned:o:r2",
+              "sha256": "3d268aa9352f0adf22809a8c1b17e54c5cb6d8c26d08c8aa8e1d454922d9ab35"
+            }
+          ],
+          "assertions": [
+            "assertion-18"
+          ],
+          "accounting": {
+            "input_occurrences": 1,
+            "normalized_occurrences": 1,
+            "query_excluded_occurrences": 0,
+            "unit": "occurrence"
+          },
+          "diagnostics": [],
+          "selected": false,
+          "availability": "Available",
+          "content_notices": [
+            {
+              "text": {
+                "Value": "fixture notice"
+              },
+              "locator": {
+                "Value": "fixture://notice"
+              },
+              "license": "Missing"
+            }
+          ],
+          "redistribution": "Permitted",
+          "redistribution_evidence": [
+            "explicit fixture permission evidence"
+          ]
+        }
+      ],
+      "selected_available_release_ids": [
+        "release-o1"
+      ],
+      "loaded_captures": [
+        {
+          "namespace": "owned:o:r1",
+          "sha256": "fe4856eedac039bd69e1581439b510a87c537882ed17ed8a31cc9c42f446e0c9"
+        },
+        {
+          "namespace": "owned:o:r2",
+          "sha256": "3d268aa9352f0adf22809a8c1b17e54c5cb6d8c26d08c8aa8e1d454922d9ab35"
+        }
+      ],
+      "missing_captures": [],
+      "owned_head": {
+        "source": "source-o",
+        "revision": "revision-r1"
+      },
+      "selectable": true,
+      "reason": null
+    }
+  ],
+  "requested_release": {
+    "id": "release-a",
+    "component": "component-a",
+    "distributor": null,
+    "upstream_revision": {
+      "Value": "fixture-v1"
+    },
+    "distributor_revision": "Missing",
+    "captured_at": "Missing",
+    "time_precision": "Unknown",
+    "schema_version": 1,
+    "normalizer": "explicit-import",
+    "normalizer_version": "1",
+    "captures": [
+      {
+        "namespace": "captured:a:d1",
+        "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+      },
+      {
+        "namespace": "captured:a:d2",
+        "sha256": "e06c194377ff1c75e9ac8f06b7441873790f4a9583307917e7650b9d0a2b8458"
+      },
+      {
+        "namespace": "captured:a:gismu",
+        "sha256": "7dd2af0c2d5b0ceee21fd04164e3b4a50386b60c9274f52fcc6ede58fd3cba63"
+      },
+      {
+        "namespace": "captured:a:lexical",
+        "sha256": "9e39b7b721e0d35e1d7780e70b954894909d1f0419e66ca49aa634966c38a18b"
+      },
+      {
+        "namespace": "captured:a:opaque",
+        "sha256": "dc01fd3caf3e85dd618fe7b055a913f86981c576229c4d8a18696d1f25cc0e16"
+      },
+      {
+        "namespace": "captured:a:rafsi",
+        "sha256": "87477ac20927aa3292bd58282aedcdf4293499f26aefc94a4cc40cf597da10dc"
+      }
+    ],
+    "assertions": [
+      "assertion-0",
+      "assertion-1",
+      "assertion-2",
+      "assertion-3",
+      "assertion-5",
+      "assertion-6",
+      "assertion-7",
+      "assertion-8",
+      "assertion-9",
+      "assertion-10",
+      "assertion-11",
+      "assertion-12",
+      "assertion-13",
+      "assertion-14",
+      "assertion-15",
+      "assertion-16",
+      "assertion-19"
+    ],
+    "accounting": {
+      "input_occurrences": 17,
+      "normalized_occurrences": 17,
+      "query_excluded_occurrences": 1,
+      "unit": "occurrence"
+    },
+    "diagnostics": [
+      {
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:a:opaque",
+            "sha256": "dc01fd3caf3e85dd618fe7b055a913f86981c576229c4d8a18696d1f25cc0e16"
+          },
+          "locator": "row:1"
+        },
+        "code": "opaque-excluded",
+        "message": "retained but not lexical"
+      }
+    ],
+    "selected": true,
+    "availability": "Available",
+    "content_notices": [
+      {
+        "text": {
+          "Value": "fixture notice"
+        },
+        "locator": {
+          "Value": "fixture://notice"
+        },
+        "license": "Missing"
+      }
+    ],
+    "redistribution": "Held",
+    "redistribution_evidence": []
+  }
+}

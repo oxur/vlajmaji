@@ -1,0 +1,3 @@
+# S04 preimplementation independent response specimen
+
+CDC authored this source-JSON oracle/public caller after initial S04 issue and before query implementation. It imports no product query/store helpers. Expected nested hits are derived from accepted c8f4cf31 fixture values, independent selected-release/head scan and exact tuple IDs; catalogue native partition is3confirmed/13unverified. This is a prospective oracle, not a product acceptance result. Main fixture is unchanged; final product/CLI and typed branches will be replayed at freeze. public-main.rs is a uniquely named outside-package caller skeleton against the binding API, not compiled yet. Authoring Python lookup/order helpers is not performance evidence.
