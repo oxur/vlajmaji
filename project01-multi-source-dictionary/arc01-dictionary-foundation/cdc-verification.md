@@ -1,4 +1,21 @@
-# Arc01 verification — separate independent composition passed; final packet gate pending
+# Arc01 CDC verification — ACCEPTED / CLOSED
+
+Current verdict2026-10-24: all6arc rows DONE at source efef9c4e661e0b90f79abf4eab41148e095a8c36. Separate independent reviewer /root/cdc accepted source composition and the complete canonical packet at planning7ddd0db31f8f75039f488ac858c6951f082f9d61, then explicitly authorized mechanical closing statuses/final scoped planning commit. CDC assembler records that attributed gate, not self-acceptance. Full actual verdict/read extents/attempts are artifacts/composition-review.md; its final SHA256 is b990aa55e9b429e41e78e41176704fa8e7722010c70fad84b1b6e146a8fcce08.
+
+Source composition final successful campaigns:265actualcommands/2227checks + supplemental6commands/62checks =271commands/2289checks. These are not Cargo test counts or275childcontrols. Current child gates retain84/1check(65Cargo+19tools),15isolatedno-default,67/1allfeatures,locked1.98/docs/example and275fullvalue+4priorcursor assertions. All33childrows and original7criteria/12areas are accounted; all14project rowsOPEN. Final source unchanged/clean, latermainb077brandingCIseparate; noA02or externalaction.
+
+Final independent packet check found no blocking inconsistency/silentdrop and verified archive1062971bytes/SHA2560ac1e43f4af3ddd3c021a09acdc971b6437a7248d0798722d6a14ea232c19ecd plus exact598original/member bytes/size/hash/set. Root separately verified the same preservation, not a second runtime acceptance. All required child/arc retrospectives and project bubble-up are complete. The historical prepared-packet phase below preserves then-open A01-06; current ledger and final disposition supersede only that pending status.
+
+| Row | Final reproduced disposition |
+| --- | --- |
+| A01-01 | done: acceptedS01+fresh assembled registry/attribution |
+| A01-02 | done: acceptedS02/S03+full canonical/model/raw/legacy composition |
+| A01-03 | done: acceptedS04+fresh Rust/actualCLI complete nested pages/references |
+| A01-04 | done: independent all-four baseline+5state demonstration |
+| A01-05 | done: exact source fidelity/current fixture/legacy/regression/feature preservation with honest corpus limits |
+| A01-06 | done: separate final packet scope/bubble-up/retrospective gate at7ddd0db; all14project remaining owners explicit |
+
+# Historical prepared-packet record — technical composition passed, final packet pending at7ddd0db
 
 CDC /root/vlajmaji_p01_a01_cdc assembles this canonical record; independent reviewer /root/cdc authored the actual report artifacts/composition-review.md under preserved artifacts/composition-assignment01.md. Reused separate Sol6.1High context authored no Arc01source/child acceptance and renewed actual-source intake; root explicitly authorized reuse. Backend attestation unreported, no new CRC workflow. CDC does not sign its own composition or packet gate.
 

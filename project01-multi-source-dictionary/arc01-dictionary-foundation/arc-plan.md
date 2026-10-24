@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc | project01-multi-source-dictionary / arc01-dictionary-foundation |
-| status | active; S01 accepted11ec701; S02 accepted37c3518; S03 accepted01a9ceb3; S04 accepted efef9c4; independent technical composition PASS; final packet gate pending |
+| status | CLOSED; all4children/33rows and independent source+final packet composition accepted at efef9c4; all6arcrowsDONE |
 | depends-on | Vlajmaji `4ee3bab`; preserved source/grouping/schema decisions and accepted PoC contracts |
 | blocks | A02 full import, A03 optional releases, A04 composition and A05 owned editing |
-| version / date | 1.15 / 2026-10-24 |
+| version / date | 1.16 / 2026-10-24 |
 
 ## Capability
 
@@ -39,7 +39,7 @@ The initial three-slice breakdown below is historical. Original S02 proved too b
 | 02 — Versioned relational schema | Concrete broad metadata tables/types, raw-preserving extension policy, standard mapping and old-archive adapter/rebuild path; a fixture can persist/reload without loss. Store/lexicon crates and shipped schema/migration docs. | Accepted S01 IDs/attribution. All twelve schema areas in design.md are accounted for; a single fixture database does not select final topology. |
 | 03 — Grouped exact lookup | Public Rust API and CLI show every fixture assertion under its registered source; exact totals, default-unpaged output, optional occurrence pages, availability and stable links. Search/CLI and user documentation. | Accepted S01 registry and S02 store. Complete reference checks before any real corpus/topology comparison. |
 
-All four children are independently accepted: S01at11ec701,S02at37c3518,S03at01a9ceb3,S04atefef9c4,33rowsdone. Separate technical composition has passed on exactefef9c4; final canonical packet consistency gate remains. Earlier prepared/awaiting-interface prose is superseded by these actual accepted interfaces and the preserved child histories.
+All four children are independently accepted: S01at11ec701,S02at37c3518,S03at01a9ceb3,S04atefef9c4,33rowsdone. Separate technical composition and final canonical packet consistency gate both passed on exactefef9c4, packet reviewed at7ddd0db. Earlier prepared/awaiting-interface prose is superseded by these actual accepted interfaces and the preserved child histories.
 If any slice exceeds one context with repair headroom, split it explicitly while
 retaining every original criterion and owner; do not reduce schema coverage.
 
@@ -113,7 +113,7 @@ research bundle. Its seven criteria are redistributed, not discarded:
 
 ## Source-readiness and next action
 
-All four accepted close sets record actual public interfaces, complete independent evidence and preserved repair histories. Query selection/cursor/reference/provenance contracts are implemented at efef9c4, not awaiting persistence design. Independent whole-path composition passed (artifacts/composition-review.md); canonical close/project bubble-up consistency gate remains before formal endpoint. No physical production topology decision was made. Next is that final independent packet gate, then stop beforeA02; no next-arc prompt is authorized.
+All four accepted close sets record actual public interfaces, complete independent evidence and preserved repair histories. Query selection/cursor/reference/provenance contracts are implemented at efef9c4, not awaiting persistence design. Independent whole-path composition and final canonical close/project bubble-up consistency both passed (artifacts/composition-review.md,packet7ddd0db). The authorized Arc01endpoint is complete; stop beforeA02. No physical production topology decision or next-arc prompt is authorized.
 
 ## Version history
 
@@ -166,3 +166,5 @@ S04accepted efef9c4after one narrow refinement; all8rows reproduced, complete275
 -1.14 —2026-10-24: recorded independent S04acceptance/close/retrospective and full scope retention; next mandatory independent composition at exact efef9c4, noA02activation.
 
 -1.15 —2026-10-24: separate-context technical composition passed at efef9c4 (265actualcommands/2227harness checks), current stale S04/interface prose reconciled with accepted capability. Final packet gate remains; closing-report/verifier/arc retrospective and full project disposition prepared. No criterion/architecture/later-arc activation changed.
+
+-1.16 —2026-10-24: final separate independent canonical packet gate ACCEPTED at7ddd0db; mechanically closed A01-06/all6rows and Arc01, completed all4child/arc retrospectives and project bubble-up. No source changes, later arc, integration or publication; all14projectrowsremainOPEN. Earlier pending entries record their actual historical phases.

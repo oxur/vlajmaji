@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | active: Arc01 authorized; later arcs not activated |
+| status | project OPEN; Arc01 CLOSED/independently accepted; later arcs not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.5 / 2026-10-24, America/Chicago |
+| version / date | 1.6 / 2026-10-24, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -26,7 +26,7 @@ and explicit availability. Subsequent arcs make it work with full, independently
 selectable corpora and an editable dictionary of our own.
 
 The design and remaining decisions are in [design.md](design.md). Acceptance is in
-[ledger.md](ledger.md). Arc01 now has four independently accepted children and a passed separate technical composition; final canonical packet gate is pending. Later arcs remain unactivated.
+[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Later arcs remain unactivated.
 
 ## Decisions already made
 
@@ -204,7 +204,7 @@ exact original paths, revisions, SHA-256 and byte sizes for every copied file.
 Old source pins and measurements remain dated evidence, not current service or
 performance claims. No full corpus, database or Cargo build cache was copied.
 
-Next: finish the independent Arc01canonical packet gate and stop at the authorized endpoint; noA02opened. All4children and technical composition are accepted at efef9c4. Planning existence/copy fidelity alone are not implementation acceptance.
+Next: return the completed Arc01endpoint and stop; noA02opened. All4children and technical/final packet composition are accepted at efef9c4. Planning existence/copy fidelity alone are not implementation acceptance.
 
 ## Planning validation — initial draft checkpoint
 
@@ -239,7 +239,7 @@ Task output owner: `CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktree
 
 ## Arc01 current progress — 2026-10-24
 
-S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 typed model/JSON/exact legacy adapter is independently accepted37c3518 after preserved initial/R1 failures and two refinements; S03 relational persistence is independently accepted01a9ceb3after two refinements; S04 grouped lookup is accepted efef9c4after one refinement and separate technical composition passed at the same exact source. Final canonical packet gate remains before Arc01formal close. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
+S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 typed model/JSON/exact legacy adapter is independently accepted37c3518 after preserved initial/R1 failures and two refinements; S03 relational persistence is independently accepted01a9ceb3after two refinements; S04 grouped lookup is accepted efef9c4after one refinement and separate technical composition passed at the same exact source. Final canonical packet gate accepted at7ddd0db; Arc01formallyCLOSED. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
 
 Arc01 decomposition update (2026-10-24): original S02 now has typed-model S02 and persistence S03; original grouped S03 moves intact to S04. Root acknowledged this authorized split. Endpoint remains the full Arc01 foundation; all later arcs remain unactivated. Historical three-slice directive describes preserved capability scope, not permission to omit the fourth child introduced to retain implementation/review headroom.
 
@@ -251,8 +251,10 @@ Arc01 decomposition update (2026-10-24): original S02 now has typed-model S02 an
 
 ## Arc01 foundation bubble-up —2026-10-24
 
-All4children deliver the roadmap's fixture foundation, all33childrowsdone, original7criteria/12schema areas retained. Separate independent composition at efef9c4passed265actualRust/CLIcommands/2227harness checks; final canonical close-packet gate remains. Project stillOPEN/all14rowsOPEN. No new arc/scope/topology/linguistic inference or corpus substitution is required. Complete remaining-owner mapping is arc01-dictionary-foundation/closing-report.md; later A02rawimport,A03alloptionalcollections,A04unified/ATTACH/fanout comparison,A05productionownededitor/export,A06fullintegration and Duncan's projectacceptance remain.
+All4children deliver the roadmap's fixture foundation, all33childrowsdone, original7criteria/12schema areas retained. Separate independent composition at efef9c4passed265actualRust/CLIcommands/2227harness checks; final canonical close-packet gate also accepted at7ddd0db. Arc01CLOSED; project stillOPEN/all14rowsOPEN. No new arc/scope/topology/linguistic inference or corpus substitution is required. Complete remaining-owner mapping is arc01-dictionary-foundation/closing-report.md; later A02rawimport,A03alloptionalcollections,A04unified/ATTACH/fanout comparison,A05productionownededitor/export,A06fullintegration and Duncan's projectacceptance remain.
 
 Feature source efef9c4includes inspected initial logo ancestry e0630d8but excludes later concurrent main ed64166README branding/b0777fcd25943d7887c40981e7f4896ec65b04ffLinux/macOSCI. Current main hasCI; no new push/workflow trigger/integration is authorized here. Main untrackedFinder files remain protected. Future integration must reconcile concurrent README/CI separately; no main/Bauske/publication action performed. Research41copybytes/hash/size remain verified as preservation evidence.
 
 -1.5 —2026-10-24: Arc01all4children and independent technical composition delivered the full foundation; current body/registry-DDL decisions/remaining project owners/main drift reconciled from actual accepted evidence. Final packet gate pending; no later arc activated or project row closed.
+
+-1.6 —2026-10-24: separate final canonical packet gate accepted at7ddd0db; Arc01formallyclosed at sourceefef9c4, all6arcrows/33childrowsdone and all required retrospectives/bubble-up complete. Project14rowsremainOPEN, noA02or main integration/publication activated; return at authorized endpoint.

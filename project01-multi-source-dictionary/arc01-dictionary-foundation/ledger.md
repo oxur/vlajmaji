@@ -1,6 +1,6 @@
 # Arc01 ledger
 
-A01-01through05DONE after accepted children and separate technical composition; A01-06OPEN until independent final close/project bubble-up packet gate. Initial open states and all failed child reviews remain preserved.
+All6arc rows DONE/reproduced. All4children/33rows, separate source composition and final independent canonical packet gate are accepted at efef9c4; project14rows remainOPEN. Historical open states/failures and all prompts remain preserved.
 
 | ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -9,4 +9,4 @@ A01-01through05DONE after accepted children and separate technical composition; 
 | A01-03 | S04 supplies independently accepted grouped exact Rust/CLI queries, totals/pages/availability and links. | S04 complete fixture reference and external consumer. | correctness-grade | Legacy grouped exact contract | done | reproduced: slice04-grouped-exact-lookup/cdc-verification.md,efef9c4 | Default all assertions; legacy limit behavior explicit. |
 | A01-04 | The four scope-preserving slices compose into one usable fixture dictionary. | Fresh registry → store → API/CLI → full page traversal, removal/re-add and owned revision demonstration. | correctness-grade | Framework composition gate | done | reproduced: artifacts/composition-review.md; accepted-composition/manifest.json,efef9c4 | Accepted children alone are insufficient. |
 | A01-05 | Source fidelity and current PoC behavior survive the foundation transition. | Raw bytes/identity/presence/form-role controls plus relevant existing regression and feature gates. | correctness-grade | Preservation / Q01–Q06 baseline | done | reproduced: composition exactraw/model/legacy/refhistory and retained child/current regression gates | No all-corpus or perceptual claim. |
-| A01-06 | Every design finding and inherited obligation has a recorded project disposition. | Scope-to-delivery row walk, bubble-up and independent composition disposition. | correctness-grade | Framework / legacy S01 seven-row contract | open | | No silent field or corpus-scope drops. |
+| A01-06 | Every design finding and inherited obligation has a recorded project disposition. | Scope-to-delivery row walk, bubble-up and independent composition disposition. | correctness-grade | Framework / legacy S01 seven-row contract | done | reproduced: artifacts/composition-review.md final packet gate at7ddd0db; cdc-verification.md | All7inheritedcriteria/12areas/4children accounted; project14rowsOPEN; stopbeforeA02. |

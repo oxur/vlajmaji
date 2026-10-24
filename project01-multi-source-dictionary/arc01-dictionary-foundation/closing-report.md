@@ -1,6 +1,6 @@
-# Arc01 closing report — composition passed, final packet gate pending
+# Arc01 closing report — CLOSED / independently accepted
 
-CDC assembled this record after all four children and the separate technical composition were independently accepted at efef9c4. The final independent packet consistency gate remains open; this current record does not self-accept that gate.
+Current verdict2026-10-24: CLOSED at source efef9c4e661e0b90f79abf4eab41148e095a8c36. All4children/33rows, separate source composition and final independent canonical packet gate are ACCEPTED. Independent reviewer /root/cdc accepted the complete frozen packet at planning7ddd0db31f8f75039f488ac858c6951f082f9d61 and explicitly authorized this mechanical close. CDC assembled the packet and did not self-gate it. All6arcrowsDONE; project14rowsremainOPEN.
 
 Arc capability: a Rust caller and the actual vlajmaji CLI register named lexical sources/distribution lineage, load the complete small broad-schema dictionary fixture, return all exact current assertions grouped by source, and traverse truthful full counts/pages/availability/stable links across removal/re-add and owned revision changes. The fixture foundation is complete; full corpus import, optional pack releases, topology choice and production owned editing remain later project arcs.
 
@@ -33,9 +33,9 @@ Reviewer /root/cdc, reused separately configured OpenAI gpt-6.1-sol/high context
 
 Fresh outside public package/bin dictionary-composition-a01-review-ybarer was independently offline-locked against public lexicon/store/search. It validated registry/raw/full model, created/dropped/read-only reopened a fresh store with complete canonical/model/legacy equality, then opened search. Actual frozen CLI independently built its own fresh fixture store. Main run265actual Rust/CLI commands and2227harness checks passed: baseline+all5changed states; full nested source-derived metadata; pages1/2/3/4/5/100concatenate to the independently enumerated ordered reference on BOTH surfaces; page0/full totals/availability; native3confirmed13unverified and historic references; original cursor stales in every changed state. Literal6farvi identities/A4B1ownedr1 were independently derived from7SQLcandidates, with repeated distributor observations preserved. Supplemental boundary checks separately pass62checks over6CLI/Rust error commands and all6fresh databases: raw bytes/canonical+legacyBLOBs/native fields/all47tables/7candidateIDs plus typed CLI streams and nested Error::source. These are separate from the265/2227main population. Exact code/input/reference/lock/log/results/command streams are hash-preserved under artifacts/accepted-composition/.
 
-Initial reviewer-only unreachable-pattern warning was removed and rebuilt; its first Python harness stopped before product requests on Missing Presence handling, then was corrected with failed code/log preserved. These are setup observations, not product failures. The reviewer corrected an initial whole-file guard and blank-line exclusion retry, retaining S03lifecycle/projection/schema proofs while freshly exercising S04's additive exact_assertion_ids. Remaining Rust-guide bodies were read after reviewer scratch caller execution; this chronology deviation is preserved and does not imply a compliant pre-read or product source edit. Source remains clean efef9c4; target ownership is handed back separately. No unresolved product defect is reported. Final canonical close/project bubble-up consistency remains subject to this same separate reviewer's read-only packet check; A01-06staysOPEN until that gate.
+Initial reviewer-only unreachable-pattern warning was removed and rebuilt; its first Python harness stopped before product requests on Missing Presence handling, then was corrected with failed code/log preserved. These are setup observations, not product failures. The reviewer corrected an initial whole-file guard and blank-line exclusion retry, retaining S03lifecycle/projection/schema proofs while freshly exercising S04's additive exact_assertion_ids. Remaining Rust-guide bodies were read after reviewer scratch caller execution; this chronology deviation is preserved and does not imply a compliant pre-read or product source edit. Source remains clean efef9c4; target ownership is handed back separately. No unresolved product defect is reported. The same separate reviewer accepted the complete canonical close/project bubble-up/retrospective packet at7ddd0db; A01-06is nowDONE. Its final append independently verifies all598archive members and compressed archive hash. Source/runtime remain unchanged; this is the explicitly authorized mechanical close.
 
-## Six-row disposition before final packet gate
+## Final six-row disposition
 
 | Arc row | Current outcome |
 | --- | --- |
@@ -44,7 +44,7 @@ Initial reviewer-only unreachable-pattern warning was removed and rebuilt; its f
 | A01-03 | done: accepted grouped Rust/CLI and fresh complete source-value/page/reference proof |
 | A01-04 | done: independent registry→model→freshstore→Rust+CLI→allpages→all5changedstates reproduced |
 | A01-05 | done: exact source/raw/identity/Presence/form roles/legacy behavior plus qualified unchanged current regression/feature evidence |
-| A01-06 | open only for separate final canonical packet/project bubble-up/retrospective consistency gate; original7criteria/all14remaining project rows explicitly mapped below |
+| A01-06 | done: separate final canonical packet/project bubble-up/retrospective consistency gate ACCEPTED at7ddd0db; original7criteria/all14remaining project rows explicitly mapped below |
 
 ## Historical criteria and accumulated changes
 
@@ -84,4 +84,4 @@ Against the roadmap, A01supplies the full useful fixture dictionary foundation; 
 | P01-13 | fixture source/code notices and redistribution states explicit; every actual release's terms/evidence and public redistribution authorization remainheld |
 | P01-14 | independently accepted foundation composition delivered; later arcs/final project composition plus Duncan's project acceptance stillpending |
 
-Endpoint is Arc01only. Arc02has not been opened, no implementation prompt issued there, no external action authorized. Final report returns exact source/planning commits and canonical close/verifier/retrospective paths after independent packet gate.
+Endpoint is Arc01only. Arc02has not been opened, no implementation prompt issued there, no external action authorized. The final handback returns exact source/final planning commits and canonical close/verifier/retrospective paths. Independent packet/source gates are complete; no required Arc01work remains.
