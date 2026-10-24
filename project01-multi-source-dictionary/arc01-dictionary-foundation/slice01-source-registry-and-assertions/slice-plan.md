@@ -120,7 +120,7 @@ API/type/serde/error/documentation guidance; resolve concrete ID/alias/error and
 serialization choices; specify observable fixture outputs; establish implementer,
 independent verifier, approved settings, source branch and authorized endpoint.
 
-Current assignment: **`cc-prompt-iteration01.md`**, following failed initial candidate review. No executed refinement pass yet. Source is the clean isolated feature branch at `e0630d8`; original `4ee3bab` code is unchanged by its logo-only fast-forward.
+Current assignment: **`cc-prompt-iteration01.md`**, following failed initial candidate review. No executed refinement pass yet. Current source baseline is the clean isolated feature branch at `40a94b4`. Initial assignment started at `e0630d8`, whose only changes from original `4ee3bab` were the user's two logo commits; the registry implementation then landed at `40a94b4`.
 
 ## Version history
 
@@ -156,3 +156,5 @@ Root established that completed `/root/cdc/p02a02_cc` was explicitly spawned in 
 Current source ownership returns to CC `/root/cdc/p02a02_cc` for iteration01 only; same approved model/settings, scope and five-refinement cap. CDC remains independent reviewer; no source repair authored by CDC. First candidate and failed controls remain in `closing-report.md`, `cdc-verification.md` and `artifacts/cc-execution.md`.
 
 - 1.2 — 2026-10-24: independent initial review failed two discriminating controls and a documentation boundary; issued preserved refinement01 without changing scope or any criterion.
+
+Metadata correction at refinement01 intake: the old current-source sentence still named the initial e0630d8 input; corrected to 40a94b4 while retaining initial baseline history. No issued prompt or source contract changed.
