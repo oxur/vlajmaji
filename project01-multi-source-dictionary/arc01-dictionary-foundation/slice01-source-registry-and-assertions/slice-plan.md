@@ -139,8 +139,14 @@ Durable supporting artifact: `artifacts/cc-execution.md` is needed for intake/re
 
 | Assignment | Date | Predecessor | Reason | Disposition |
 | --- | --- | --- | --- | --- |
-| `cc-prompt.md` | 2026-10-24 | none | Initial source registry and assertion increment after CDC readiness | issued; CC identity returned by dispatch recorded next |
+| `cc-prompt.md` | 2026-10-24 | none | Initial source registry and assertion increment after CDC readiness | issued; existing selected-model context reused after dispatch limit (see below) |
 
 CDC `/root/vlajmaji_p01_a01_cdc` independently reviews the frozen candidate; CC is explicitly dispatched OpenAI `gpt-6-luna` / high. All seven rows remain open until independently reproduced. Feature branch is the accepted local delivery destination; no main integration or publication.
 
 - 1.1 — 2026-10-24: completed engineering readiness, preserved initial assignment and coherent current authority; original baseline and carryover remain explicit.
+
+### Dispatch observations and ownership reset
+
+Fresh `spawn_agent(model=gpt-6-luna, reasoning_effort=high, fork_turns=none)` returned `agent thread limit reached`; no new CC started. A local ephemeral CLI attempt then exited 2 before any contributor started: the installed `codex` launcher requested a profile selection. No implementation occurred in either attempt. Diagnostic logs remain `/tmp/vlajmaji-p01-a01-s01-cc-{events.jsonl,stderr.log}`.
+
+Root established that completed `/root/cdc/p02a02_cc` was explicitly spawned in this conversation as OpenAI `gpt-6-luna` / high / `fork_turns:none` and instructed reuse without changing its model/settings. This is model continuity, not silent substitution; backend attestation remains unreported. It receives the preserved initial prompt with a complete current intake and explicit ownership reset. CDC `/root/vlajmaji_p01_a01_cdc` reviews independently; the former parent/root retains read-only boundaries. The context is not fresh: retain awareness of historical context load and use renewed assignment/source readings, not predecessor acceptance, for this work.
