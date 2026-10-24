@@ -1,6 +1,11 @@
 # Vlajmaji
 
-(Re)Lojban dictionaries, schemas, libraries, and command-line tools.
+[![Build Status][gh-actions-badge]][gh-actions]
+[![Tags][github-tags-badge]][github-tags]
+
+[![Project Logo][logo]][logo-large]
+
+*(Re)Lojban dictionaries, schemas, libraries, and command-line tools*
 
 Vlajmaji is a growing dictionary workbench for exploring words, their sources,
 and the possibilities of combining them. Its aim is to bring multiple
@@ -87,3 +92,19 @@ The lexicon crate also exposes an immutable validated in-memory [`Dictionary`](c
 The `vlajmaji-search` crate also provides grouped exact lookup over persisted
 dictionary stores, stable local/catalogue reference resolution, and a
 `dictionary_lookup` example. See the [query guide](docs/dictionary-query.md).
+
+## License
+
+``` text
+Apache License, Version 2.0
+```
+
+[//]: ---Named-Links---
+
+[logo]: assets/images/v1-250.png
+[logo-large]: assets/images/v1-1254.png
+[gh-actions-badge]: https://github.com/oxur/vlajmaji/actions/workflows/ci.yml/badge.svg
+[gh-actions]: https://github.com/oxur/vlajmaji/actions/workflows/ci.yml
+[version]: https://github.com/oxur/vlajmaji/blob/main/.github/workflows/ci.yml
+[github-tags]: https://github.com/oxur/vlajmaji/tags
+[github-tags-badge]: https://img.shields.io/github/tag/oxur/vlajmaji.svg
