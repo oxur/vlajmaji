@@ -2,11 +2,11 @@
 
 | Field | Value |
 | --- | --- |
-| status/version | OPEN/readiness complete, initial assignment to issue /1.0,2026-10-24 |
+| status/version | OPEN/intake; explicit identity oracle issued before source edits /1.1,2026-10-24 |
 | source | d1e1c928; feature/project01-full-jbotci-import; isolated Arc02checkout |
 | depends-on | A01Dictionary/registry, current baseline and full pinned raw+metadata |
 | delivery | Public Rust importer + local CLI import/check + complete normalized JSON usable before SQLite |
-| current assignment | cc-prompt.md (initial; issued with planning commit) |
+| current assignment | cc-prompt-iteration01.md (pre-edit supersession,0executed refinements) |
 | artifact home | artifacts/; CC writes only artifacts/cc-execution.md; CDC owns canonical planning |
 
 Provide lossless fullrawexport normalization and useful Rust/CLI entrypoints.
@@ -210,4 +210,11 @@ Consequentialdecisions not delegated toCC; localhelpermechanics remain local.
 
 | Assignment | Date | Predecessor/reason | Disposition |
 | --- | --- | --- | --- |
-| cc-prompt.md |2026-10-24 | Initial useful full export normalizer/API/CLI from verified d1e1c928 | issued with planning commit; awaiting CCintake |
+| cc-prompt.md |2026-10-24 | Initial useful full export normalizer/API/CLI from verified d1e1c928/84c1694 | superseded before dependent edits; intake retained |
+
+| cc-prompt-iteration01.md |2026-10-24 | Pre-edit clarification of existing revision+raw+metadata release identity; root surfaced provenance-only update interaction | current/issued;0executed refinements, all7rowsOPEN |
+
+## Version history
+
+-1.0 —2026-10-24: source-grounded full normalization API/CLI open set issued.
+-1.1 —2026-10-24: root review highlighted explicit provenance-only update oracle; preserved iteration01 supersedes unstartedinitial assignment. Existing revision-aware release identity retained; exact raw tuples/row IDs stay stable for byte-identical distribution updates. No product defect or source change, no acceptance/scope reduction.
