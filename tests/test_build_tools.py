@@ -72,9 +72,9 @@ class BuildToolTests(unittest.TestCase):
             root = Path(tmp)
             log = root / "cargo.log"
             fake = root / "fake-cargo"
-            fake.write_text("#!/bin/sh\nprintf '%s\\n' \"$*\" >> \"$CARGO_LOG\"\n[ \"${FAKE_FAIL:-}\" != 1 ] || exit 23\n")
+            fake.write_text("#!/bin/sh\nset -eu\nprintf '%s\\n' \"$*\" >> \"$CARGO_LOG\"\n[ \"${FAKE_FAIL:-}\" != 1 ] || exit 23\ncase \" $* \" in *' build '*) mode=debug; case \" $* \" in *' --release '*) mode=release ;; esac; mkdir -p \"$CARGO_TARGET_DIR/$mode\"; printf '%s\\n' \"$mode\" > \"$CARGO_TARGET_DIR/$mode/vlajmaji\" ;; esac\n")
             fake.chmod(0o755)
-            env = os.environ | {"CARGO_LOG": str(log), "PATH": str(root) + os.pathsep + os.environ["PATH"]}
+            env = os.environ | {"CARGO_LOG": str(log), "PATH": str(root) + os.pathsep + os.environ["PATH"], "CARGO_TARGET_DIR": str(root / "cargo artifacts")}
             for target, fragment in (("build", "build --workspace --locked"),
                                      ("build-release", "build --workspace --release --locked"),
                                      ("test-default", "test --workspace --locked"),
@@ -82,9 +82,12 @@ class BuildToolTests(unittest.TestCase):
                                      ("test-all-features", "test --workspace --all-features --locked"),
                                      ("lint", "clippy --workspace --all-targets --locked -- -D warnings"),
                                      ("docs", "doc --workspace --locked --no-deps")):
-                result = run([MAKE, "--no-print-directory", f"CARGO={fake}", "RUST_TOOLCHAIN=1.98.0", target], REPO, env=env)
+                result = run([MAKE, "--no-print-directory", f"CARGO={fake}", "RUST_TOOLCHAIN=1.98.0", f"INSTALL_DIR={root / 'installed tools'}", target], REPO, env=env)
                 self.assertEqual(result.returncode, 0)
                 self.assertIn("+1.98.0 " + fragment, log.read_text())
+                if target in ("build", "build-release"):
+                    expected = "release\n" if target == "build-release" else "debug\n"
+                    self.assertEqual((root / "installed tools" / "vlajmaji").read_text(), expected)
             before = len(log.read_text().splitlines())
             missing = run([MAKE, "--no-print-directory", f"CARGO={fake}", "publish-one"], REPO, env=env, check=False)
             self.assertNotEqual(missing.returncode, 0)
@@ -97,8 +100,36 @@ class BuildToolTests(unittest.TestCase):
                     args.append("CRATE=vlajmaji-search")
                 run(args, REPO, env=env)
                 self.assertIn("+1.98.0 " + expected, log.read_text())
-            failed = run([MAKE, "--no-print-directory", f"CARGO={fake}", "build"], REPO, env=env | {"FAKE_FAIL": "1"}, check=False)
+            failed = run([MAKE, "--no-print-directory", f"CARGO={fake}", f"INSTALL_DIR={root / 'installed tools'}", "build"], REPO, env=env | {"FAKE_FAIL": "1"}, check=False)
             self.assertNotEqual(failed.returncode, 0)
+            self.assertEqual((root / "installed tools" / "vlajmaji").read_text(), "release\n")
+            self.assertNotIn("Build complete", failed.stdout)
+
+    def test_install_copies_selected_mode_and_reports_missing_artifacts(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            shutil.copy2(REPO / "Makefile", root / "Makefile")
+            target = root / "cargo artifacts"
+            for mode in ["debug", "release"]:
+                directory = target / mode
+                directory.mkdir(parents=True)
+                binary = directory / "vlajmaji"
+                binary.write_text("#!/bin/sh\necho " + mode + "\n")
+                binary.chmod(0o755)
+            args = [MAKE, "--no-print-directory", f"CARGO_TARGET_DIR={target}"]
+            run(args + ["install"], root)
+            installed = root / "bin" / "vlajmaji"
+            self.assertEqual(run([str(installed)], root).stdout, "debug\n")
+            self.assertEqual(installed.read_bytes(), (target / "debug" / "vlajmaji").read_bytes())
+            custom = root / "custom install"
+            run(args + ["install", "MODE=release", f"INSTALL_DIR={custom}"], root)
+            self.assertEqual(run([str(custom / "vlajmaji")], root).stdout, "release\n")
+            (target / "debug" / "vlajmaji").unlink()
+            failed = run(args + ["install"], root, check=False)
+            self.assertNotEqual(failed.returncode, 0)
+            self.assertNotIn("Binaries available", failed.stdout)
+            invalid = run(args + ["build", "MODE=invalid"], root, check=False)
+            self.assertNotEqual(invalid.returncode, 0)
 
     def test_help_does_not_require_build_tools(self):
         result = run([MAKE, "--no-print-directory", "help"], REPO)

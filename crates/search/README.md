@@ -4,9 +4,12 @@ Reusable lexical queries for the [Vlajmaji](https://github.com/oxur/vlajmaji) di
 
 Queries include exact spelling, literal reverse-definition lookup, captured forms and links, spelling distance, bounded phonological contrasts, and prosodic filters. Results retain source identity and explanations. The optional `morphology` feature adds compound decomposition and generation through `latkerlo-jvotci`.
 
+The next development version is 0.2.0. Until it is published, use a local
+path dependency on this crate; the version below describes the upcoming release.
+
 ```toml
 [dependencies]
-vlajmaji-search = "0.1.0"
+vlajmaji-search = "0.2.0"
 ```
 
 Requires Rust 1.98 or newer. Computed proposals and scores do not establish attested usage, semantic equivalence, or poetic merit. Corpora are not bundled.

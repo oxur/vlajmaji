@@ -17,7 +17,7 @@ The Rust workspace already provides:
 - Exact and reverse-definition lookup, source-link traversal, spelling distance,
   and bounded phonological and prosodic filters.
 - Optional compound decomposition and generation through `latkerlo-jvotci`.
-- A JSON CLI, `relojban-search`, for building stores and running queries.
+- A JSON CLI, `vlajmaji`, for building stores and running queries.
 
 The PoC has been exercised against 21,241 records from 16 source snapshots.
 Search scores and generated compounds are experimental aids; they do not establish
@@ -28,7 +28,7 @@ attested usage, semantic equivalence, or poetic merit.
 | [`vlajmaji-lexicon`](crates/lexicon) | Source-preserving lexical data and archives |
 | [`vlajmaji-store`](crates/store) | Persistence and native indexes |
 | [`vlajmaji-search`](crates/search) | Reusable queries and computed analyses |
-| [`vlajmaji-cli`](crate/cli) | The `relojban-search` executable |
+| [`vlajmaji-cli`](crate/cli) | The `vlajmaji` executable |
 
 ## Try it
 
@@ -53,12 +53,18 @@ Next comes a richer source-grouped dictionary model, scripted imports, optional
 per-corpus data crates, and an editable dictionary of our own. The longer aim is
 a practical vocabulary laboratory connected to Bauske's linguistic tools.
 
-The 0.1.0 APIs are experimental and will evolve as the research develops.
+The workspace is on the **0.2.0 development cycle**; its APIs are experimental.
+The latest published release is 0.1.0, whose CLI command is still `relojban-search`.
 
 ## Development and releases
 
 Run `make help` for build, test, lint, documentation, and publishing targets.
 `make check` runs the core quality gates.
+
+`make build` builds and copies `vlajmaji` to `./bin`; `make build-release` does
+the same for an optimized build. Set `INSTALL_DIR=./local-bin` to choose another
+destination. To copy an existing build, run `make install` (or
+`make install MODE=release` for release artifacts).
 
 `make planning` sets up `.worktrees/planning` on the separate `planning` branch.
 It fetches an existing branch from `origin`, or creates and pushes an empty

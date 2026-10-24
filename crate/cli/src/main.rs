@@ -7,7 +7,7 @@ use vlajmaji_search::{Query, SearchEngine, SearchOptions};
 
 #[derive(Debug, Parser)]
 #[command(
-    name = "relojban-search",
+    name = "vlajmaji",
     version,
     about = "Research CLI for the source-preserving lexical search prototype"
 )]

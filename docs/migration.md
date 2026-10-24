@@ -56,3 +56,11 @@ is the destination repository notice. R has no projectwide license selection,
 and none of the moved source files is an originating Apache notice file. This
 migration does not declare the source code relicensed and adds no inferred
 Cargo license metadata.
+
+## 0.2.0 development command
+
+The migration and 0.1.0 command identities above are historical. Starting with
+the 0.2.0 development cycle, the CLI binary is `vlajmaji`. Package names and
+archive/search identities remain unchanged. `make build` installs the current
+debug binary to `./bin/vlajmaji`; the Cargo commands above also select this
+renamed binary automatically.

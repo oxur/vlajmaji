@@ -42,7 +42,7 @@ fn archive_bytes() -> Vec<u8> {
 }
 
 fn run(args: &[&str], input: Option<&str>) -> Output {
-    let mut command = Command::new(env!("CARGO_BIN_EXE_relojban-search"));
+    let mut command = Command::new(env!("CARGO_BIN_EXE_vlajmaji"));
     command.args(args);
     command
         .stdout(std::process::Stdio::piped())
@@ -65,8 +65,15 @@ fn run(args: &[&str], input: Option<&str>) -> Output {
 
 #[test]
 fn help_and_version_are_available() {
-    assert!(run(&["--help"], None).status.success());
-    assert!(run(&["--version"], None).status.success());
+    let help = run(&["--help"], None);
+    assert!(help.status.success());
+    assert!(String::from_utf8_lossy(&help.stdout).contains("Usage: vlajmaji"));
+    let version = run(&["--version"], None);
+    assert!(version.status.success());
+    assert_eq!(
+        String::from_utf8_lossy(&version.stdout).trim(),
+        format!("vlajmaji {}", env!("CARGO_PKG_VERSION"))
+    );
 }
 
 #[test]
