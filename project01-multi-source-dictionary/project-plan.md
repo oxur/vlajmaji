@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 CLOSED at original accepted revision; Arc02 ACTIVE; S01 CLOSED, S02 readiness; A03–A06 not activated |
+| status | project OPEN; Arc01 CLOSED at original accepted revision; Arc02 ACTIVE; S01 CLOSED, S02 OPEN; A03–A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
@@ -214,7 +214,7 @@ exact original paths, revisions, SHA-256 and byte sizes for every copied file.
 Old source pins and measurements remain dated evidence, not current service or
 performance claims. No full corpus, database or Cargo build cache was copied.
 
-Next: complete one bounded fresh full persistence/reopen/eight-request readiness baseline, then issue S02 pinned pipeline/persisted lookup on independently accepted S01source12fdd67. Arc01 remains closed at its original accepted source; all14projectrows remain open. Child normalization acceptance is not arc composition or project acceptance.
+Next: execute S02 pinned pipeline/full persistence with the source-guided47-table parent-first correction on accepted S01source12fdd67. The old writer attempt was bounded/stopped at600s; retained old query binary will compare8complete responses on the new schema-identical candidate store before acceptance. Arc01 remains closed at its original accepted source; all14projectrows remain open. Child normalization acceptance is not arc composition or project acceptance.
 
 ## Planning validation — initial draft checkpoint
 
@@ -278,3 +278,5 @@ Canonical arc02-reproducible-jbotci-import S01 is independently accepted at12fdd
 - 1.8 —2026-10-24: source/data reconnaissance opened canonical Arc02 with two usable slices, eight open arc rows and seven open S01 rows. Actual export shape and full counts ground S01 importer/CLI contract; pinned pipeline/full persistence belongs S02. Source/worktree/cache ownership and abandoned pre-repair process recovery are recorded in owning readiness artifact. No implementation acceptance or project-row closure.
 
 - 1.9 —2026-10-24: accepted full S01 normalization/API/CLI at12fdd67 with complete independent source-native population and current gates; child7rows closed, A02-01done,remaining7arc/14projectrowsopen. S02 actual acquisition/persisted/offline composition remains next; current resource/source ownership reconciled.
+
+- 1.10 —2026-10-24: actual bounded full-input readiness exposed alphabetical deferred-FK load scans; old create stopped at600s with native/EXPLAIN/schema evidence and untouched incomplete artifacts. Opened S02useful pinnedworkflow/fullpersistedlookup plus narrow schema-preserving load/query corrections,8open childrows. Retained old binary/common-new-store comparison replaces prohibitively slow old writer prerequisite, not actual full persistence/query acceptance. All14projectrows remainopen; no A03.

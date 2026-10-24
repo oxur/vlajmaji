@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01 CLOSED/accepted12fdd67; S02 readiness |
-| version/date | 1.1 / 2026-10-24 |
+| status | ACTIVE; S01 CLOSED/accepted12fdd67; S02 OPEN/initial assignment |
+| version/date | 1.2 / 2026-10-24 |
 | depends-on | A01 fixture contracts originally accepted efef9c4; current implementation baseline d1e1c928 including CLI relocation/umbrella0.3.0 |
 | blocks | A03 jbotci optional package and later complete-corpus integration |
 | authority | ../cdc-directive02.md; renewed Autonomous/Expedited, CDC SolHigh / CC LunaHigh, stop before A03 |
@@ -131,3 +131,5 @@ supports two usable slices, explicit export-vs-API boundary, measured complete
 33526population and protected/exclusive resource plan. No scope reduction.
 
 -1.1 —2026-10-24: S01 independently accepted12fdd67 with all7rows closed and current complete raw/API/CLI/example/gate evidence. A02-01DONE,other7arcrowsOPEN; S02 exact design follows actual full persistence/reopen/eight-request baseline. Original source/input/scope remains intact; current resource observations dated separately from opening scarcity.
+
+-1.2 —2026-10-24: actual pre-fix full writer stopped at600s with exact native/EXPLAIN/source evidence, not accepted store. S02 now includes narrow47-table parent-first ordering with unchanged schema1/FK/API and complete omission/self-reference/failure guards. Revised fair8query comparison uses retained old binary on candidate new schema-identical full store. Initial S02plan/8open rows/prompt issued; source unchanged12fdd67, all14projectrowsopen. No obligation dropped.

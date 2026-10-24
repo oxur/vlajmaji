@@ -1,0 +1,21 @@
+{
+  "label": "s02-fixture-readiness-initial",
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "argv": [
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/a02_cdc_composition_20261024b",
+    "fixture",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-fixture-baseline"
+  ],
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "head_before": "12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69",
+  "start_unix": 1792882189.9832141,
+  "log": "/private/tmp/vlajmaji-p01-a02-cdc/s02-fixture-readiness-initial.log",
+  "pid": 76396,
+  "exit": 0,
+  "elapsed_seconds": 3.28,
+  "log_bytes": 57
+}

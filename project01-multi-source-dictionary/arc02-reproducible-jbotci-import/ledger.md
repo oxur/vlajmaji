@@ -17,3 +17,7 @@ supplier's selected projection. Project acceptance and later arcs remain open.
 ## S01 bubble-up,2026-10-24
 
 S01 all7rows independently accepted12fdd67. Full normalization/raw fidelity and version/terms gates supply partial A02-03/06/07 evidence; remaining rows still require S02 and fresh independent assembled composition/final packet. No full persistence/acquisition/update/offline outside-source proof is inferred. Source/target remains CDC-owned for bounded readiness; all14projectrowsOPEN.
+
+## S02 opened after actual readiness diagnosis,2026-10-24
+
+S02slice02-pinned-pipeline-and-persisted-lookup has8OPEN rows/currentcc-prompt.md. Pre-fix full create interrupted at600s (exit-15); no completed baseline store/query claimed. Readiness artifacts preserve exact native/EXPLAIN/FK graph and failed files. Narrow parent-first load ordering preserves schema1/DDL/index/FK/API; retained old binary will supply8query baselines on the completed candidate new store. A02-01DONE/other7arcrowsOPEN; actual full candidate persistence/acquisition/offline pipeline and independent arc composition still mandatory.

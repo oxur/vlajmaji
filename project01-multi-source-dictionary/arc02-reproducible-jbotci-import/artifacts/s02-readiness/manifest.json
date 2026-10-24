@@ -1,0 +1,141 @@
+{
+  "source": "12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69",
+  "files": [
+    {
+      "path": "composition-caller/Cargo.lock",
+      "bytes": 26275,
+      "sha256": "584153fadb1d7b7ad6f8e6eef378018f04e87fc16225d73c269e5987cd557acb"
+    },
+    {
+      "path": "composition-caller/Cargo.toml",
+      "bytes": 545,
+      "sha256": "e0ba008e2fa4cb9a8dd482afd1428260f8199ebba1eca60eba26747984985a8e"
+    },
+    {
+      "path": "composition-caller/src/main.rs",
+      "bytes": 14590,
+      "sha256": "05f1a0e1e47243856bda6a05332e719d5c0db124172836112ac913999836ce05"
+    },
+    {
+      "path": "fixture-responses.json",
+      "bytes": 452618,
+      "sha256": "728bc20a837b2386bcb06182bc89a3335ecdc82489e6343808960b3232eb9954"
+    },
+    {
+      "path": "s02-composition-lock-initial.json",
+      "bytes": 762,
+      "sha256": "ba994838321c62705b1ce0a69a696295cc980c048453a47627a1ab35c1cfff49"
+    },
+    {
+      "path": "s02-composition-lock-initial.log",
+      "bytes": 275,
+      "sha256": "d2e6b6404cb4ba47690771c9622e33610d358e364dc2402460fd9644270c0e3f"
+    },
+    {
+      "path": "s02-composition-release-build-initial.json",
+      "bytes": 854,
+      "sha256": "97fe68ebc7ecc3b709f643bdfb490a49f33c1a918566563763e67ec5c7ece940"
+    },
+    {
+      "path": "s02-composition-release-build-initial.log",
+      "bytes": 2310,
+      "sha256": "40315b35bd9cda984f369269611ca0c33de0d33b0db0824adf039ecb5ea9b2a2"
+    },
+    {
+      "path": "s02-composition-release-build-retry01.json",
+      "bytes": 850,
+      "sha256": "61f53ac11595716ba1d6fec3daa6cfd900f7ddf62945aa37e50c06643f3ea84c"
+    },
+    {
+      "path": "s02-composition-release-build-retry01.log",
+      "bytes": 273,
+      "sha256": "e562afbdb60e18789b58ac491848a49985659c06177af3b7a69e92351ea474b9"
+    },
+    {
+      "path": "s02-fixture-readiness-initial.json",
+      "bytes": 766,
+      "sha256": "9e7eb9a8183f491e500fbc02baaccfa70a5d3db45f2a61a192ffb8fe8b0b833c"
+    },
+    {
+      "path": "s02-fixture-readiness-initial.log",
+      "bytes": 57,
+      "sha256": "fa84c22e9e4c98dde0f42c553876805bceaa2c476076f90c724a4fbe9a804e06"
+    },
+    {
+      "path": "s02-full-store-baseline-create.cutoff.json",
+      "bytes": 706,
+      "sha256": "1482d2b9228ea7ab5253528dc9220489935901dbc8c157e09c6cd5af55b30043"
+    },
+    {
+      "path": "s02-full-store-baseline-create.json",
+      "bytes": 837,
+      "sha256": "7fa53a8f457b71c1c71d153075016731725b97baa59333af1bfc4078c1ab1d3e"
+    },
+    {
+      "path": "s02-full-store-baseline-create.log",
+      "bytes": 14,
+      "sha256": "e08a62eb7b6bb7143b54a431c4a63c5e2d216053f520afb94dcd2b44e836b0a1"
+    },
+    {
+      "path": "s02-full-store-baseline-create.sample.json",
+      "bytes": 986,
+      "sha256": "36faa6d568720ef205e3ea70a82b4995ea861ef0496e4fe6ef7a1fbb843a5d8f"
+    },
+    {
+      "path": "s02-full-store-baseline-create.sample.txt",
+      "bytes": 11299,
+      "sha256": "16bbf6ccb058ccb59033dd137724049bd2644da34e9f74be6b320da727b02f88"
+    },
+    {
+      "path": "s02-parent-insert-explain.json",
+      "bytes": 10896,
+      "sha256": "f902a2466e044fca79dc89f9481c3b90fd75eed056607afae9a84275efb287e0"
+    },
+    {
+      "path": "s02-parent-insert-opcodes.json",
+      "bytes": 16576,
+      "sha256": "880e763db389e00ed86112bab68eeb68ce297d5d9739de1a86ad2622cb09acc2"
+    },
+    {
+      "path": "s02-prefixed-create-preservation.json",
+      "bytes": 998,
+      "sha256": "8e72340bcfb3c6989da717c2d3b873ae7d4a58d9d4c913605035564a00c63c6f"
+    },
+    {
+      "path": "s02-retained-baseline-binary.json",
+      "bytes": 1004,
+      "sha256": "46b13fc7bef974bad0bf493205d099366e51eca47986be886256ba17b2d8f5a4"
+    },
+    {
+      "path": "s02-self-reference-readiness.json",
+      "bytes": 820,
+      "sha256": "7c5208db2de00a776457b5ab39222841069091fb1ab15af8f7c55cd9ef01a146"
+    },
+    {
+      "path": "s02-self-reference-readiness.log",
+      "bytes": 247,
+      "sha256": "32ad0498d180ff9dbf23a44d8f53aff0eec4a984cfdb77e459431f0c8c2594f2"
+    },
+    {
+      "path": "s02-table-dependency-order.json",
+      "bytes": 4925,
+      "sha256": "e75e59d8555cf138c518f19d5dbe133333ed1b0b0fce5a1b8350508107d7f012"
+    },
+    {
+      "path": "self-reference-reversed.json",
+      "bytes": 132947,
+      "sha256": "756472e111db6fb8bae2da405c579e4249bed5d00ba76d80c34e9b8948d2c07a"
+    },
+    {
+      "path": "verify_finite.py",
+      "bytes": 4273,
+      "sha256": "a9c21f11c406bddfd7e7012ce076f9969624913aed59d452da6f167e4b509cc7"
+    },
+    {
+      "path": "verify_sqlite.py",
+      "bytes": 12946,
+      "sha256": "b1c895419336bc474006f39474b54b4df9c71ef03a1100da93972aa95be3f758"
+    }
+  ],
+  "large_artifacts": "original interrupted DB/journal and retained binary remain external at exact receipts; no accepted full baseline store/query claimed"
+}

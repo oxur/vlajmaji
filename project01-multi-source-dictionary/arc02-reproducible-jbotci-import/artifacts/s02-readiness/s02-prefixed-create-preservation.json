@@ -1,0 +1,22 @@
+{
+  "attempt_exit": -15,
+  "attempt_elapsed_seconds": 600.06,
+  "files_preserved_untouched_after_stop": [
+    {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-full-baseline-store/dictionary.sqlite3",
+      "bytes": 682954752,
+      "sha256": "fea301cee3e48d64f8297f08d10cb9862081a2ad75c6431bf3a43dfc9ce37e61"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-full-baseline-store/dictionary.sqlite3-journal",
+      "bytes": 329808,
+      "sha256": "447d29a91e40df7a8699f0849e28b531259046f062ed39c685f1da1b81ebb06c"
+    }
+  ],
+  "no_database_open_query_recovery_or_reuse": true,
+  "source_clean": true,
+  "source_head": "12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69",
+  "free_bytes": 446672351232,
+  "all_own_command_sessions": "exited; no further product operation before next ownership interval",
+  "next": "issue justified S02 load-order correction; fresh complete candidate store mandatory, retained old caller query-only finite8 on same new store; no pre-fix query baseline falsely claimed"
+}

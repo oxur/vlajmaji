@@ -1,0 +1,19 @@
+{
+  "pid": 76405,
+  "rechecked_exact_command": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/a02_cdc_composition_20261024b create /tmp/vlajmaji-p01-a02-cdc/s02-full-baseline-store /tmp/vlajmaji-p01-a02-cdc/s01-candidate03-full-api.json",
+  "elapsed_before_sample_s": 231.9,
+  "argv": [
+    "/usr/bin/sample",
+    "76405",
+    "1",
+    "10",
+    "-file",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-full-store-baseline-create.sample.txt"
+  ],
+  "exit": 0,
+  "stdout": "",
+  "stderr": "Sampling process 76405 for 1 second with 10 milliseconds of run time between samples\nSampling completed, processing symbols...\nSample analysis of process 76405 written to file /tmp/vlajmaji-p01-a02-cdc/s02-full-store-baseline-create.sample.txt\n",
+  "sample_path": "/tmp/vlajmaji-p01-a02-cdc/s02-full-store-baseline-create.sample.txt",
+  "sample_bytes": 11299,
+  "qualification": "one1s native sample, not product instrumentation/performance benchmark; no second store/build"
+}

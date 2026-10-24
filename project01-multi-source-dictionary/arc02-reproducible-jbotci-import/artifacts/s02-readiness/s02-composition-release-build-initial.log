@@ -1,0 +1,48 @@
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling version_check v0.9.5
+   Compiling proc-macro2 v1.0.107
+   Compiling typenum v1.20.1
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.229
+   Compiling find-msvc-tools v0.1.15
+   Compiling libc v0.2.191
+   Compiling shlex v2.0.1
+   Compiling zmij v1.0.23
+   Compiling cc v1.10.0
+   Compiling vcpkg v0.2.15
+   Compiling pkg-config v0.3.34
+   Compiling generic-array v0.14.7
+   Compiling serde_json v1.0.151
+   Compiling serde v1.0.229
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.3
+   Compiling cfg-if v1.0.5
+   Compiling fallible-iterator v0.3.0
+   Compiling smallvec v1.16.4
+   Compiling bitflags v2.13.2
+   Compiling fallible-streaming-iterator v0.1.9
+   Compiling bauske-phonology v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/bauske/crates/phonology)
+   Compiling syn v3.0.9
+   Compiling libsqlite3-sys v0.38.2
+   Compiling strsim v0.11.1
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling cpufeatures v0.2.17
+   Compiling digest v0.10.7
+   Compiling sha2 v0.10.9
+   Compiling serde_derive v1.0.229
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/crates/lexicon)
+   Compiling rusqlite v0.40.2
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/crates/search)
+   Compiling vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/crates/vlajmaji)
+   Compiling vlajmaji_a02_cdc_composition_20261024b v0.0.0 (/tmp/vlajmaji-p01-a02-cdc/composition-caller)
+error[E0609]: no field `sources` on type `SourceRegistry`
+  --> src/main.rs:81:26
+   |
+81 | ...   doc.registry.sources.push(serde_json::from_value(json!({"id":"source-empty","display_name":"Registered with no release","abbre...
+   |                    ^^^^^^^ unknown field
+
+For more information about this error, try `rustc --explain E0609`.
+error: could not compile `vlajmaji_a02_cdc_composition_20261024b` (bin "a02_cdc_composition_20261024b") due to 1 previous error

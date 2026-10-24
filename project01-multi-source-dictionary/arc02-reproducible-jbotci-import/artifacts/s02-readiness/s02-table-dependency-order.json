@@ -1,0 +1,247 @@
+{
+  "source_sha256": "cd472e28c43a44ffdf7c99d7615591548b8040655aeb742657980d0bc2193bcd",
+  "sqlite_version": "3.39.4",
+  "table_population": 47,
+  "dependencies": {
+    "annotations": [
+      "assertions",
+      "computations",
+      "editorial_senses",
+      "entity_ids",
+      "entries",
+      "forms"
+    ],
+    "argument_frames": [
+      "assertions",
+      "entity_ids",
+      "source_evidence"
+    ],
+    "argument_slots": [
+      "argument_frames"
+    ],
+    "assertion_timestamps": [
+      "assertions"
+    ],
+    "assertions": [
+      "entity_ids",
+      "entries",
+      "occurrence_refs"
+    ],
+    "canonical_document": [],
+    "capture_refs": [],
+    "code_notices": [],
+    "collections": [
+      "entity_ids",
+      "sources"
+    ],
+    "component_languages": [
+      "components"
+    ],
+    "components": [
+      "collections",
+      "entity_ids"
+    ],
+    "computation_inputs": [
+      "assertions",
+      "computations",
+      "editorial_senses",
+      "entries",
+      "forms",
+      "occurrence_refs"
+    ],
+    "computations": [
+      "entity_ids"
+    ],
+    "content_notices": [
+      "releases"
+    ],
+    "contexts": [
+      "assertions",
+      "contexts",
+      "entity_ids",
+      "source_evidence"
+    ],
+    "contributors": [],
+    "distributors": [],
+    "editorial_members": [
+      "assertions",
+      "editorial_senses"
+    ],
+    "editorial_senses": [
+      "contributors",
+      "entity_ids",
+      "owned_revisions"
+    ],
+    "entity_ids": [],
+    "entries": [
+      "entity_ids",
+      "sources"
+    ],
+    "etymologies": [
+      "assertions",
+      "entity_ids",
+      "source_evidence"
+    ],
+    "etymology_components": [
+      "assertions",
+      "editorial_senses",
+      "entries",
+      "etymologies",
+      "forms"
+    ],
+    "extensions": [
+      "entity_ids",
+      "source_evidence"
+    ],
+    "form_components": [
+      "assertions",
+      "editorial_senses",
+      "entries",
+      "forms"
+    ],
+    "forms": [
+      "computations",
+      "entity_ids",
+      "entries",
+      "source_evidence"
+    ],
+    "metadata": [],
+    "native_fields": [
+      "raw_occurrences"
+    ],
+    "occurrence_attributions": [
+      "contributors",
+      "occurrence_refs"
+    ],
+    "occurrence_refs": [
+      "capture_refs"
+    ],
+    "owned_heads": [
+      "owned_revisions",
+      "sources"
+    ],
+    "owned_revisions": [
+      "contributors",
+      "entity_ids",
+      "owned_revisions",
+      "sources"
+    ],
+    "raw_captures": [
+      "snapshot_bindings"
+    ],
+    "raw_occurrences": [
+      "occurrence_refs",
+      "raw_captures"
+    ],
+    "redistribution_evidence": [
+      "releases"
+    ],
+    "relations": [
+      "assertions",
+      "editorial_senses",
+      "entity_ids",
+      "entries",
+      "forms",
+      "occurrence_refs",
+      "owned_revisions",
+      "releases",
+      "source_evidence",
+      "sources"
+    ],
+    "release_assertions": [
+      "assertions",
+      "releases"
+    ],
+    "release_captures": [
+      "capture_refs",
+      "releases"
+    ],
+    "release_diagnostics": [
+      "occurrence_refs",
+      "releases"
+    ],
+    "releases": [
+      "components",
+      "distributors",
+      "entity_ids"
+    ],
+    "revision_assertions": [
+      "assertions",
+      "owned_revisions"
+    ],
+    "revision_tombstones": [
+      "assertions",
+      "owned_revisions"
+    ],
+    "snapshot_bindings": [
+      "capture_refs",
+      "distributors",
+      "sources"
+    ],
+    "source_aliases": [
+      "sources"
+    ],
+    "source_evidence": [
+      "occurrence_refs"
+    ],
+    "source_lineage": [
+      "sources"
+    ],
+    "sources": []
+  },
+  "self_references_retain_deferred_semantics_and_row_order": [
+    "contexts",
+    "owned_revisions"
+  ],
+  "cross_table_cycles": [],
+  "proposed_parent_before_child_order": [
+    "canonical_document",
+    "capture_refs",
+    "code_notices",
+    "contributors",
+    "distributors",
+    "entity_ids",
+    "metadata",
+    "sources",
+    "collections",
+    "computations",
+    "entries",
+    "occurrence_refs",
+    "owned_revisions",
+    "snapshot_bindings",
+    "source_aliases",
+    "source_lineage",
+    "assertions",
+    "components",
+    "editorial_senses",
+    "occurrence_attributions",
+    "owned_heads",
+    "raw_captures",
+    "source_evidence",
+    "argument_frames",
+    "assertion_timestamps",
+    "component_languages",
+    "contexts",
+    "editorial_members",
+    "etymologies",
+    "extensions",
+    "forms",
+    "raw_occurrences",
+    "releases",
+    "revision_assertions",
+    "revision_tombstones",
+    "annotations",
+    "argument_slots",
+    "computation_inputs",
+    "content_notices",
+    "etymology_components",
+    "form_components",
+    "native_fields",
+    "redistribution_evidence",
+    "relations",
+    "release_assertions",
+    "release_captures",
+    "release_diagnostics"
+  ],
+  "scope": "source-schema design query only; no product change, row insertion, corpus or second full store"
+}

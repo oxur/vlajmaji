@@ -1,0 +1,13 @@
+{
+  "cutoff_total_s": 600,
+  "selection": "chosen after observed diagnosed prolonged pre-fix write; not initially predeclared",
+  "attempt_record": "/tmp/vlajmaji-p01-a02-cdc/s02-full-store-baseline-create.json",
+  "pid": 76405,
+  "elapsed_at_check_s": 600.001,
+  "no_other_process_signaled": true,
+  "rechecked_ppid": 76403,
+  "rechecked_exact_command": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/a02_cdc_composition_20261024b create /tmp/vlajmaji-p01-a02-cdc/s02-full-baseline-store /tmp/vlajmaji-p01-a02-cdc/s01-candidate03-full-api.json",
+  "signal": "SIGTERM",
+  "action": "sent bounded SIGTERM to exact owned pre-fix caller only",
+  "elapsed_at_signal_s": 600.005
+}
