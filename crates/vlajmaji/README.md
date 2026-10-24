@@ -1,5 +1,8 @@
 # Vlajmaji
 
+This checkout is on the 0.3.0 development cycle. The dependency and installation
+examples below target the published 0.2.0 release.
+
 An umbrella library for [Vlajmaji](https://github.com/oxur/vlajmaji), a
 source-preserving (Re)Lojban dictionary workbench. It re-exports its libraries
 as `vlajmaji::lexicon`, `vlajmaji::store`, and `vlajmaji::search`.

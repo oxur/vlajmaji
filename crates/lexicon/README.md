@@ -1,5 +1,8 @@
 # vlajmaji-lexicon
 
+This checkout is on the 0.3.0 development cycle. The dependency and installation
+examples below target the published 0.2.0 release.
+
 Source-preserving lexical records and archives for [Vlajmaji](https://github.com/oxur/vlajmaji).
 
 The library retains raw source bytes, provenance, record identities, alternative assertions, and source-native form roles. It supports La-Lojban and Lensisku JSON plus LLG root, cmavo, and rafsi lists, keeping caller proposals separate from captured records.

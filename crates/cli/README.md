@@ -1,8 +1,11 @@
 # vlajmaji-cli
 
+This checkout is on the 0.3.0 development cycle. The dependency and installation
+examples below target the published 0.2.0 release.
+
 The `vlajmaji` JSON command for [Vlajmaji](https://github.com/oxur/vlajmaji)'s dictionary workbench.
 
-For a source checkout of 0.2.0, run these commands from the workspace root
+For a source checkout, run these commands from the workspace root
 with Bauske checked out alongside Vlajmaji:
 
 ```sh

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0 (unreleased)
+
+- Start the next development cycle.
+
 ## 0.2.0 (2026-10-24)
 
 - Add the `vlajmaji` umbrella library with opt-in morphology and graph features.

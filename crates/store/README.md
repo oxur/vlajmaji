@@ -1,5 +1,8 @@
 # vlajmaji-store
 
+This checkout is on the 0.3.0 development cycle. The dependency and installation
+examples below target the published 0.2.0 release.
+
 Rebuildable indexes for [Vlajmaji](https://github.com/oxur/vlajmaji)'s source-preserving lexical archives.
 
 SQLite and FTS5 provide local persistence and query indexes. The optional `graph` feature enables an Oxigraph/RocksDB backend for research comparisons and requires native C++/Clang build tooling. The lexical archive remains canonical; indexes do not merge competing source assertions.

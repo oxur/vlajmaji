@@ -10,7 +10,7 @@ original source bytes, snapshot identities, locators, competing assertions, and
 source-native form roles. Computed analyses and caller proposals remain separate
 from captured lexical material.
 
-The workspace is at version 0.2.0, uses Rust edition 2024, and
+The workspace is on the 0.3.0 development cycle, uses Rust edition 2024, and
 requires Rust 1.98 or newer. Development commands and CI select Rust 1.98.0.
 Supported platforms are macOS and Linux. Corpus data is not bundled with the
 current implementation; synthetic fixtures support ordinary offline tests.

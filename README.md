@@ -104,7 +104,8 @@ Next come reproducible full-corpus imports, independently selectable corpus
 packages, multi-store composition, and an editable dictionary of our own. The longer aim is
 a practical vocabulary laboratory connected to Bauske's linguistic tools.
 
-The current release is **0.2.0**; its APIs remain experimental.
+The workspace is on the **0.3.0 development cycle**; its APIs remain experimental.
+The latest published release is **0.2.0**.
 
 ## Development and releases
 
