@@ -1,6 +1,6 @@
 # Project01 ledger
 
-All fourteen project rows remain **open**. S01 registry/attribution is independently accepted at11ec701; its evidence is a partial contribution to P01-01/02/10/12/14, not full-project acceptance. Later corpus/topology/editor/composition obligations remain required. Initial empty fields remain preserved in Git history.
+All fourteen project rows remain **open**. S01 registry/attribution is independently accepted at11ec701 and S02 model/JSON/adapter at37c3518; their evidence is a partial contribution to P01-01/02/10/12/14, not full-project acceptance. Later corpus/topology/editor/composition obligations remain required. Initial empty fields remain preserved in Git history.
 
 | ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -1,0 +1,20 @@
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/dictionary-model-s02-cdc-r01-additional /tmp/vlajmaji-p01-a01-s02-cdc-example-r02.json`
+etymology_valid_assertion_component=true
+etymology_valid_form_component=true
+etymology_valid_editorial_component=true
+form_entry_named_reference_constructor=Err(MissingReference("form form-variant entry cdc:missing-entry is absent or has the wrong role")); helper=Err(MissingReference("form form-variant entry cdc:missing-entry is absent or has the wrong role"))
+form_entry_named_reference=true
+entry_relation_origin_named_reference_constructor=Err(MissingReference("relation relation-see origin entry cdc:missing-entry is absent or has the wrong role")); helper=Err(MissingReference("relation relation-see origin entry cdc:missing-entry is absent or has the wrong role"))
+entry_relation_origin_named_reference=true
+source_form_foreign_evidence_named_provenance_constructor=Err(InvalidProvenance("form form-variant evidence belongs to another source")); helper=Err(InvalidProvenance("form form-variant evidence belongs to another source"))
+source_form_foreign_evidence_named_provenance=true
+computation_missing_tool_named_provenance_constructor=Err(InvalidProvenance("computation computation-1 requires tool, version, and policy")); helper=Err(InvalidProvenance("computation computation-1 requires tool, version, and policy"))
+computation_missing_tool_named_provenance=true
+loaded_phantom_evidence_named_reference_constructor=Err(MissingReference("evidence occurrence /cdc-phantom is neither loaded nor catalogued unavailable")); helper=Err(MissingReference("evidence occurrence /cdc-phantom is neither loaded nor catalogued unavailable"))
+loaded_phantom_evidence_named_reference=true
+loaded_phantom_assertion_named_reference_constructor=Err(MissingReference("assertion assertion-0 occurrence is neither loaded nor named by an unavailable release")); helper=Err(MissingReference("assertion assertion-0 occurrence is neither loaded nor named by an unavailable release"))
+loaded_phantom_assertion_named_reference=true
+loaded_capture_missing_binding_named_reference_constructor=Err(MissingReference("capture captured:b:d1 lacks registry source binding")); helper=Err(MissingReference("capture captured:b:d1 lacks registry source binding"))
+loaded_capture_missing_binding_named_reference=true
+additional_controls=10 failures=0 []

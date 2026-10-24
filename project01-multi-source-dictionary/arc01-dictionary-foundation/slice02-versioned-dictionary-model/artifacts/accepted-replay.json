@@ -1,0 +1,91 @@
+{
+  "source": "37c35185cbf1262658504278af1590b50b0b098d",
+  "reviewer": "/root/vlajmaji_p01_a01_cdc",
+  "verdict": "accepted",
+  "assignment": "cc-prompt-iteration02.md",
+  "warm_target": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+  "gates": [
+    {
+      "label": "check",
+      "path": "/tmp/vlajmaji-p01-a01-s02-cdc-check-r02.log",
+      "sha256": "098a1bbd063ac40a872112f4ab42648497b3c4df543c51f224bcac9c6ee2fd70",
+      "exit": 0,
+      "cargo_passed": 45,
+      "ignored": 1,
+      "additional_tools_passed": 19
+    },
+    {
+      "label": "no-default",
+      "path": "/tmp/vlajmaji-p01-a01-s02-cdc-no-default-r02.log",
+      "sha256": "861be3e61cea5893c000d9244235af6025ffab79a93a3cd21320301b9717ba99",
+      "exit": 0,
+      "cargo_passed": 10,
+      "ignored": 0,
+      "additional_tools_passed": 0
+    },
+    {
+      "label": "all-features",
+      "path": "/tmp/vlajmaji-p01-a01-s02-cdc-all-features-r02.log",
+      "sha256": "8df69d59e3b47365bda51cd090425002f070cc22b8dc3e3c642ee30846916165",
+      "exit": 0,
+      "cargo_passed": 47,
+      "ignored": 1,
+      "additional_tools_passed": 0
+    },
+    {
+      "label": "workspace",
+      "path": "/tmp/vlajmaji-p01-a01-s02-cdc-workspace-r02.log",
+      "sha256": "a5f4c585ee974ca44916ac30a98bbc189e067a7e0a6bc6d2e8d6bc525be724af",
+      "exit": 0,
+      "cargo_passed": 0,
+      "ignored": 0,
+      "additional_tools_passed": 0
+    },
+    {
+      "label": "example",
+      "path": "/tmp/vlajmaji-p01-a01-s02-cdc-example-r02.log",
+      "sha256": "0deaa349728debe1b9859ff57a053273ae676a3f8765482c029a4a2712e5413b",
+      "exit": 0,
+      "cargo_passed": 0,
+      "ignored": 0,
+      "additional_tools_passed": 0
+    },
+    {
+      "label": "positive",
+      "path": "/tmp/vlajmaji-p01-a01-s02-cdc-positive-r02.log",
+      "sha256": "5477cd4b512b3ed1979ccd6d9fa3281bfe6e89a8265edb7bbdd4250c8b28a12c",
+      "exit": 0,
+      "cargo_passed": 0,
+      "ignored": 0,
+      "additional_tools_passed": 0
+    }
+  ],
+  "outputs": [
+    {
+      "label": "example",
+      "path": "/tmp/vlajmaji-p01-a01-s02-cdc-example-r02.json",
+      "bytes": 132946,
+      "sha256": "c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55"
+    },
+    {
+      "label": "positive",
+      "path": "/tmp/vlajmaji-p01-a01-s02-cdc-positive-r02.json",
+      "bytes": 132946,
+      "sha256": "c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55"
+    }
+  ],
+  "controls": {
+    "original": 84,
+    "reference": 23,
+    "additional": 10,
+    "pin_derived": 11
+  },
+  "specimens": {
+    "independent-controls-initial/src/main.rs": "18689c575042bc0c3aee345837b541648afe9690ee121441a03a93101758e47e",
+    "independent-controls-initial/expected-witnesses.json": "2d4cc6dc0ec620f2ae858db806a20a11b0e086a77187b20c4a5f5e35a3692c0f",
+    "independent-controls-initial/expected-cpana.txt": "a075159c8b109ddff326875ff882712f26b205806699b0e1e846a6bc81ae70c7",
+    "independent-reference-controls/src/main.rs": "8ace13c2cb583406e49ef7dbd76959d1825286b6aeffe95a357073f58cb080f4",
+    "independent-controls-refinement01/src/main.rs": "a732f938b9aa6cc684676b10d9aa877377410efc7ce2cc0dabd097de9403729b",
+    "pin-derived-fixture-check.py": "675c9d20dad0dab7baaf50070e4a2b9bb3657a67a11a348073578bdc155010ae"
+  }
+}

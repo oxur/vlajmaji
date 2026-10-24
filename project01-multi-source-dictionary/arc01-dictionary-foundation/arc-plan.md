@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc | project01-multi-source-dictionary / arc01-dictionary-foundation |
-| status | active; S01 accepted11ec701; S02 failed initial/refinement01; refinement02 active; S03 persistence/S04 grouped pending |
+| status | active; S01 accepted11ec701; S02 accepted37c3518; S03 persistence readiness/S04 grouped pending |
 | depends-on | Vlajmaji `4ee3bab`; preserved source/grouping/schema decisions and accepted PoC contracts |
 | blocks | A02 full import, A03 optional releases, A04 composition and A05 owned editing |
-| version / date | 1.5 / 2026-10-24 |
+| version / date | 1.6 / 2026-10-24 |
 
 ## Capability
 
@@ -138,3 +138,9 @@ Original S02 → new S02/S03; original S03 → new S04. No criterion, test famil
 -1.4 —2026-10-24: S02 assignment issued at0b26224; reconciled current owner/status prose and original seven-row mapping with the four-slice split. Historical initial breakdown and S01-time bubble-up remain preserved.
 
 -1.5 —2026-10-24: reconciled active status with independently failed S02 initial/refinement01 and current bounded refinement02. No criterion, architecture, decomposition or later-slice scope changed.
+
+## S02 accepted bubble-up —2026-10-24
+
+S02 broad immutable raw/metadata/JSON/exact archive adapter accepted37c3518 after preserved initial/R1 failed reviews and two refinements;9/9 child rows reproduced. Source/code/fixture/pin/error/role/history findings resolved within assigned contract. A01-02 remains OPEN until S03 concrete12-area relational persistence/strict reopen/tamper/rebuild is accepted. S04 grouped Rust/CLI/reference/pages/cursors/availability/link/owned transitions and independent all-four composition remain pending. No criterion/architecture/split changed; current S03 readiness consumes actual accepted model. See child close/verification/retrospective and artifacts/accepted-replay.json.
+
+-1.6 —2026-10-24: recorded accepted S02 and complete relational/query carryover; arc remains active and composition unaccepted.
