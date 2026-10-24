@@ -37,12 +37,15 @@ The Rust workspace already provides:
 - Optional compound decomposition and generation through `latkerlo-jvotci`.
 - A JSON CLI, `vlajmaji`, including `dictionary-build` and `dictionary-query`
   alongside the existing archive/search commands.
+- A lossless local jbotci export normalizer with `jbotci-import` and
+  read-only `jbotci-check` commands ([import guide](docs/jbotci-import.md)).
 - An umbrella library, `vlajmaji`, exposing `lexicon`, `store`, and `search`, with
   optional `morphology` and `graph` features.
 
 The earlier archive/search PoC was exercised against 21,241 records from 16
 source snapshots. The new grouped-dictionary path has a reproducible fixture
-and public API/CLI examples; complete upstream dictionary imports remain future work.
+and public API/CLI examples; the jbotci adapter has a pinned local replay.
+Other upstream dictionary imports remain future work.
 Search scores and generated compounds are experimental aids; they do not establish
 attested usage, semantic equivalence, or poetic merit.
 

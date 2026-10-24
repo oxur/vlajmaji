@@ -90,3 +90,14 @@ The old SQLite store and archive are read-only inputs to this procedure. The
 accepted legacy archive may omit model-only opaque records; such records are
 not synthesized during rebuild. See the [schema-1 field map and lifecycle
 guide](dictionary-schema.md) and the `dictionary_store` public example.
+
+## Local jbotci export normalization
+
+The S01 `import_jbotci_export` API accepts complete raw and metadata byte
+captures plus explicit expected hashes. It validates before returning a model,
+retains ordered native fields and duplicate keys, and excludes unsupported rows
+without discarding their raw source. `jbotci-import` writes a fresh canonical
+dictionary file; `jbotci-check` validates without writes and can compare a
+release. The [jbotci import guide](jbotci-import.md) documents the exact field
+map, metadata grammar, source-notice limitation, pinned hashes, and replay
+example. Data acquisition and redistribution are outside this local adapter.

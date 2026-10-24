@@ -2,7 +2,9 @@
 
 ## 0.3.0 (unreleased)
 
-- Start the next development cycle.
+- Add a lossless, hash-pinned jbotci export normalizer and `jbotci-import` /
+  `jbotci-check` CLI commands; retain content redistribution as held pending
+  source-coverage review.
 
 ## 0.2.0 (2026-10-24)
 

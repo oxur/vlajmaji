@@ -3,6 +3,10 @@
 use std::io::{self, Read, Write};
 
 use clap::{Parser, Subcommand};
+use vlajmaji_lexicon::{
+    Dictionary, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION,
+    JbotciImportError, JbotciImportOptions, import_jbotci_export,
+};
 use vlajmaji_search::{
     DictionaryErrorReport, DictionaryRequest, DictionarySearchEngine, Query, SearchEngine,
     SearchOptions,
@@ -48,6 +52,31 @@ enum Command {
         store: std::path::PathBuf,
         #[arg(long)]
         request: Option<String>,
+    },
+    /// Normalize a pinned raw jbotci export into the complete versioned dictionary document.
+    JbotciImport {
+        raw: std::path::PathBuf,
+        metadata: std::path::PathBuf,
+        output: std::path::PathBuf,
+        #[arg(long, default_value = JBOTCI_PINNED_REVISION)]
+        revision: String,
+        #[arg(long, default_value = JBOTCI_PINNED_RAW_SHA256)]
+        raw_sha256: String,
+        #[arg(long, default_value = JBOTCI_PINNED_METADATA_SHA256)]
+        metadata_sha256: String,
+    },
+    /// Validate the raw export and optionally compare it with a normalized release document.
+    JbotciCheck {
+        raw: std::path::PathBuf,
+        metadata: std::path::PathBuf,
+        #[arg(long)]
+        release: Option<std::path::PathBuf>,
+        #[arg(long, default_value = JBOTCI_PINNED_REVISION)]
+        revision: String,
+        #[arg(long, default_value = JBOTCI_PINNED_RAW_SHA256)]
+        raw_sha256: String,
+        #[arg(long, default_value = JBOTCI_PINNED_METADATA_SHA256)]
+        metadata_sha256: String,
     },
 }
 
@@ -171,8 +200,122 @@ fn execute() -> Result<serde_json::Value, CliError> {
                 .map_err(|error| structured_error("response_json", error.to_string()))?,
             }
         }
+        Command::JbotciImport {
+            raw,
+            metadata,
+            output,
+            revision,
+            raw_sha256,
+            metadata_sha256,
+        } => {
+            let normalized =
+                normalize_jbotci(&raw, &metadata, revision, raw_sha256, metadata_sha256)?;
+            let document = normalized
+                .dictionary()
+                .to_json_bytes()
+                .map_err(|error| structured_error("jbotci_dictionary", error.to_string()))?;
+            let mut file = std::fs::OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&output)
+                .map_err(|error| {
+                    structured_error(
+                        "io",
+                        format!("create {} without replacement: {error}", output.display()),
+                    )
+                })?;
+            file.write_all(&document)
+                .and_then(|()| file.write_all(b"\n"))
+                .and_then(|()| file.flush())
+                .map_err(|error| {
+                    structured_error("io", format!("write {}: {error}", output.display()))
+                })?;
+            serde_json::json!({"operation":"jbotci-import","version":1,"output":output,"report":normalized.report()})
+        }
+        Command::JbotciCheck {
+            raw,
+            metadata,
+            release,
+            revision,
+            raw_sha256,
+            metadata_sha256,
+        } => {
+            let normalized =
+                normalize_jbotci(&raw, &metadata, revision, raw_sha256, metadata_sha256)?;
+            let report = normalized.report();
+            if !report.definition_count_matches || !report.entry_count_matches {
+                return Err(structured_error(
+                    "jbotci_accounting",
+                    "supplier metadata counts do not match the observed export",
+                ));
+            }
+            let release_matches = if let Some(path) = release {
+                let bytes = std::fs::read(&path).map_err(|error| {
+                    structured_error("io", format!("read {}: {error}", path.display()))
+                })?;
+                let supplied = Dictionary::from_json_bytes(&bytes)
+                    .map_err(|error| structured_error("jbotci_dictionary", error.to_string()))?;
+                let expected = normalized
+                    .dictionary()
+                    .to_json_bytes()
+                    .map_err(|error| structured_error("jbotci_dictionary", error.to_string()))?;
+                let actual = supplied
+                    .to_json_bytes()
+                    .map_err(|error| structured_error("jbotci_dictionary", error.to_string()))?;
+                if expected != actual {
+                    return Err(structured_error(
+                        "jbotci_release_mismatch",
+                        "normalized release does not match the pinned raw export and metadata",
+                    ));
+                }
+                true
+            } else {
+                false
+            };
+            serde_json::json!({"operation":"jbotci-check","version":1,"release_checked":release_matches,"report":report})
+        }
     };
     Ok(output)
+}
+
+fn normalize_jbotci(
+    raw_path: &std::path::Path,
+    metadata_path: &std::path::Path,
+    revision: String,
+    expected_raw_sha256: String,
+    expected_metadata_sha256: String,
+) -> Result<vlajmaji_lexicon::JbotciImport, CliError> {
+    let raw = std::fs::read(raw_path)
+        .map_err(|error| structured_error("io", format!("read {}: {error}", raw_path.display())))?;
+    let metadata = std::fs::read(metadata_path).map_err(|error| {
+        structured_error("io", format!("read {}: {error}", metadata_path.display()))
+    })?;
+    import_jbotci_export(
+        &raw,
+        &metadata,
+        &JbotciImportOptions {
+            revision,
+            expected_raw_sha256,
+            expected_metadata_sha256,
+        },
+    )
+    .map_err(map_jbotci_error)
+}
+
+fn map_jbotci_error(error: JbotciImportError) -> CliError {
+    let code = match &error {
+        JbotciImportError::InvalidOptions(_) => "jbotci_options",
+        JbotciImportError::HashMismatch { .. } => "jbotci_hash_mismatch",
+        JbotciImportError::InvalidUtf8 { .. } => "jbotci_utf8",
+        JbotciImportError::InvalidJson(_) => "jbotci_json",
+        JbotciImportError::InvalidMetadata(_) | JbotciImportError::UnsupportedMetadata(_) => {
+            "jbotci_metadata"
+        }
+        JbotciImportError::Registry(_) => "jbotci_registry",
+        JbotciImportError::Dictionary(_) => "jbotci_dictionary",
+        _ => "jbotci_import",
+    };
+    structured_error(code, error.to_string())
 }
 
 fn main() -> std::process::ExitCode {

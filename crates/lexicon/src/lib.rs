@@ -38,6 +38,7 @@ use sha2::{Digest, Sha256};
 
 mod attribution;
 pub mod dictionary;
+mod jbotci;
 pub mod registry;
 
 pub use attribution::AttributedOccurrence;
@@ -51,6 +52,10 @@ pub use dictionary::{
     OwnedRevisionRecord, PosMapping, Presence, RawCapture, RawJson, RawOccurrence,
     RedistributionStatus, RelationKind, RelationRecord, RelationScope, RelationTarget,
     ReleaseAccounting, ReleaseDiagnostic, ReleaseRecord, SourceEvidence, TextRange, TextValue,
+};
+pub use jbotci::{
+    JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION, JbotciImport,
+    JbotciImportError, JbotciImportOptions, JbotciImportReport, import_jbotci_export,
 };
 pub use registry::{
     AbbreviationKind, AliasScope, AliasStatus, ContributorId, ContributorRecord, DistributorId,

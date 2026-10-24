@@ -27,4 +27,9 @@ requests on the argument or stdin. New-command runtime errors emit a structured
 JSON object to stderr, no stdout, and a nonzero exit. See the
 [grouped dictionary query guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-query.md).
 
+`jbotci-import RAW METADATA FRESH.json` locally normalizes a hash-pinned export;
+`jbotci-check RAW METADATA [--release RELEASE.json]` validates it without
+writing. See the [jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci-import.md)
+for preservation, identity, metadata, and content-notice limits.
+
 Corpus data is not bundled. See the [data and replay guide](https://github.com/oxur/vlajmaji/blob/main/docs/migration.md) for the current research-input workflow. Licensed under Apache-2.0.
