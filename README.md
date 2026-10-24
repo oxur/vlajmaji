@@ -13,6 +13,8 @@ The Rust workspace already provides:
 
 - A lexical archive that preserves source snapshots, raw records, provenance,
   and alternative assertions, keeping computed analyses and user proposals separate.
+- An additive validated source registry for exact aliases, lineage and borrowed
+  attribution of preserved occurrences ([guide](docs/source-registry.md)).
 - Rebuildable SQLite indexes and an optional Oxigraph backend for research comparisons.
 - Exact and reverse-definition lookup, source-link traversal, spelling distance,
   and bounded phonological and prosodic filters.

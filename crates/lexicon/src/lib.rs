@@ -36,6 +36,17 @@ use serde::{Deserialize, Serialize};
 use serde_json::value::RawValue;
 use sha2::{Digest, Sha256};
 
+mod attribution;
+pub mod registry;
+
+pub use attribution::AttributedOccurrence;
+pub use registry::{
+    AbbreviationKind, AliasScope, AliasStatus, ContributorId, ContributorRecord, DistributorId,
+    DistributorRecord, LineageTarget, OccurrenceAttribution, RegistryDocument, RegistryError,
+    SnapshotAttribution, SourceAlias, SourceId, SourceLineage, SourceOrigin, SourceRecord,
+    SourceRegistry,
+};
+
 /// The captured representation received from one source.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 #[non_exhaustive]
@@ -1351,7 +1362,7 @@ fn parse_object(raw: &str) -> Result<Vec<RawField>, ImportError> {
     Ok(fields)
 }
 
-fn check_duplicate_keys(raw: &str) -> Result<(), ImportError> {
+pub(crate) fn check_duplicate_keys(raw: &str) -> Result<(), ImportError> {
     struct AnyVisitor;
     impl<'de> serde::de::Visitor<'de> for AnyVisitor {
         type Value = ();
