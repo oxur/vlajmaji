@@ -1,0 +1,30 @@
+{
+  "source_binary": "initial S03 independent public caller built at629bc810; no target/source mutation",
+  "purpose": "draft transition validity readiness, not S04 query acceptance",
+  "results": [
+    {
+      "name": "disabled-a",
+      "exit": 0,
+      "stdout": "OK CREATE 132945",
+      "stderr": ""
+    },
+    {
+      "name": "removed-a",
+      "exit": 0,
+      "stdout": "ERR Backend",
+      "stderr": ""
+    },
+    {
+      "name": "owned-r2",
+      "exit": 0,
+      "stdout": "OK CREATE 132946",
+      "stderr": ""
+    },
+    {
+      "name": "renamed-paths",
+      "exit": 0,
+      "stdout": "OK CREATE 71858",
+      "stderr": ""
+    }
+  ]
+}
