@@ -6,6 +6,9 @@
 
 - Add a validated source/contributor/distributor registry and borrowed attribution
   views over immutable captured occurrences.
+- Add immutable relational `DictionaryStore` persistence with schema-1 projection
+  and strict read-only reopen validation; keep the legacy searchable `SqliteStore`
+  schema and API unchanged.
 - Rename the CLI command from `relojban-search` to `vlajmaji`.
 - Install built binaries to configurable `INSTALL_DIR` (default `./bin`).
 - Adopt Oxurack-style coloured build feedback and grouped help.

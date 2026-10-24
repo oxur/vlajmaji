@@ -12,6 +12,10 @@ use vlajmaji_lexicon::{FieldPresence, FormRole, Lexicon, RecordIdentity, SourceC
 mod sqlite;
 pub use sqlite::SqliteStore;
 
+mod dictionary;
+mod dictionary_schema;
+pub use dictionary::{DictionaryStore, DictionaryStoreError, DictionaryStoreInvalidity};
+
 #[cfg(feature = "graph")]
 mod graph;
 #[cfg(feature = "graph")]

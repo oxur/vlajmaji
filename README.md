@@ -15,6 +15,9 @@ The Rust workspace already provides:
   and alternative assertions, keeping computed analyses and user proposals separate.
 - An additive validated source registry for exact aliases, lineage and borrowed
   attribution of preserved occurrences ([guide](docs/source-registry.md)).
+- An immutable relational persistence boundary for the versioned dictionary
+  model, with strict read-only reopen validation
+  ([schema guide](docs/dictionary-schema.md)).
 - Rebuildable SQLite indexes and an optional Oxigraph backend for research comparisons.
 - Exact and reverse-definition lookup, source-link traversal, spelling distance,
   and bounded phonological and prosodic filters.
