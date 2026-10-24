@@ -127,6 +127,8 @@ fn import_check_are_pinned_non_destructive_and_structured_on_failure() {
     ]);
     assert!(!overwrite.status.success());
     assert!(overwrite.stdout.is_empty());
+    let failure: serde_json::Value = serde_json::from_slice(&overwrite.stderr).unwrap();
+    assert_eq!(failure["error"]["code"], "io");
     assert_eq!(fs::read(&release_path).unwrap(), before);
 
     #[cfg(unix)]

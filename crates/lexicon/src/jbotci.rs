@@ -294,15 +294,6 @@ fn parse_metadata(bytes: &[u8]) -> Result<Metadata, JbotciImportError> {
             MetaValue::Boolean(true)
         } else if rhs == "false" {
             MetaValue::Boolean(false)
-        } else if rhs.starts_with("true")
-            || rhs.starts_with("false")
-            || (rhs.bytes().next().is_some_and(|b| b.is_ascii_digit())
-                && !rhs.bytes().all(|b| b.is_ascii_digit()))
-        {
-            return Err(JbotciImportError::InvalidMetadata(format!(
-                "line {} has trailing or malformed literal text",
-                line_index + 1
-            )));
         } else if rhs.bytes().all(|b| b.is_ascii_digit()) {
             MetaValue::Integer(rhs.parse().map_err(|_| {
                 JbotciImportError::InvalidMetadata(format!(
@@ -310,6 +301,19 @@ fn parse_metadata(bytes: &[u8]) -> Result<Metadata, JbotciImportError> {
                     line_index + 1
                 ))
             })?)
+        } else if serde_json::from_str::<serde_json::Number>(rhs).is_ok() {
+            return Err(JbotciImportError::UnsupportedMetadata(format!(
+                "line {} uses a valid JSON number outside strings/booleans/nonnegative integers",
+                line_index + 1
+            )));
+        } else if rhs.starts_with("true")
+            || rhs.starts_with("false")
+            || rhs.bytes().next().is_some_and(|b| b.is_ascii_digit())
+        {
+            return Err(JbotciImportError::InvalidMetadata(format!(
+                "line {} has trailing or malformed literal text",
+                line_index + 1
+            )));
         } else {
             return Err(JbotciImportError::UnsupportedMetadata(format!(
                 "line {} uses a value outside strings/booleans/nonnegative integers",

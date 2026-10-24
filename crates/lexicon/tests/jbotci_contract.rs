@@ -400,6 +400,67 @@ fn metadata_duplicates_and_unsupported_shapes_are_typed_failures() {
 }
 
 #[test]
+fn metadata_numeric_values_follow_json_validity_before_subset_errors() {
+    let raw = br#"[]"#;
+    let revision = "0000000000000000000000000000000000000000";
+
+    for literal in ["1.5", "1e3", "1e9999", "-1.5"] {
+        let mut meta = metadata(raw, 0);
+        meta.extend_from_slice(format!("unknown_numeric = {literal}\n").as_bytes());
+        let opts = options(raw, &meta, revision);
+        assert!(
+            matches!(
+                import_jbotci_export(raw, &meta, &opts),
+                Err(JbotciImportError::UnsupportedMetadata(_))
+            ),
+            "{literal}"
+        );
+    }
+
+    let mut integer_meta = metadata(raw, 0);
+    integer_meta.extend_from_slice(b"unknown_integer = 12\n");
+    let integer_opts = options(raw, &integer_meta, revision);
+    let integer_import = import_jbotci_export(raw, &integer_meta, &integer_opts)
+        .expect("unknown simple unsigned integer remains supported metadata");
+    assert_eq!(
+        integer_import
+            .report()
+            .diagnostics
+            .get("metadata_unknown_key"),
+        Some(&1)
+    );
+    let metadata_capture = integer_import
+        .dictionary()
+        .captures()
+        .iter()
+        .find(|capture| capture.identity.namespace == "captured:lensisku:jbotci:en:metadata")
+        .expect("exact metadata capture");
+    assert_eq!(metadata_capture.bytes, integer_meta);
+
+    for assignment in [
+        "unknown_numeric = 12 junk\n",
+        "unknown_numeric = 1.5 junk\n",
+        "unknown_numeric = true junk\n",
+        "unknown_numeric = false junk\n",
+        "unknown_numeric = \"ok\" junk\n",
+        " = true\n",
+        "unknown_numeric = \n",
+        "unknown_numeric = 18446744073709551616\n",
+    ] {
+        let mut meta = metadata(raw, 0);
+        meta.extend_from_slice(assignment.as_bytes());
+        let opts = options(raw, &meta, revision);
+        assert!(
+            matches!(
+                import_jbotci_export(raw, &meta, &opts),
+                Err(JbotciImportError::InvalidMetadata(_))
+            ),
+            "{assignment:?}"
+        );
+    }
+}
+
+#[test]
 fn invalid_pins_utf8_and_json_root_return_typed_failures() {
     let raw = br#"[]"#;
     let meta = metadata(raw, 0);
