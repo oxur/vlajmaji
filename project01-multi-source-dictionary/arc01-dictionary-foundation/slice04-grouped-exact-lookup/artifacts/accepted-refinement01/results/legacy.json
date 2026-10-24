@@ -1,0 +1,63 @@
+{
+  "records": [
+    {
+      "name": "legacy-build",
+      "status": "PASS",
+      "details": {
+        "records": 19,
+        "snapshots": 8,
+        "source_archive_bytes": 19978,
+        "store": "/tmp/vlajmaji-p01-a01-s04-cdc-r01-legacy/legacy-store"
+      }
+    },
+    {
+      "name": "legacy-info",
+      "status": "PASS",
+      "details": {
+        "records": 19
+      }
+    },
+    {
+      "name": "legacy-search:None",
+      "status": "PASS",
+      "details": {
+        "total": 7,
+        "returned": 7
+      }
+    },
+    {
+      "name": "legacy-search:0",
+      "status": "PASS",
+      "details": {
+        "total": 7,
+        "returned": 0
+      }
+    },
+    {
+      "name": "legacy-search:1",
+      "status": "PASS",
+      "details": {
+        "total": 7,
+        "returned": 1
+      }
+    },
+    {
+      "name": "legacy-search:1001",
+      "status": "PASS",
+      "details": {
+        "total": 7,
+        "returned": 7
+      }
+    },
+    {
+      "name": "new-cli-broken-pipe",
+      "status": "PASS",
+      "details": {
+        "exit": 0
+      }
+    }
+  ],
+  "summary": {
+    "PASS": 7
+  }
+}

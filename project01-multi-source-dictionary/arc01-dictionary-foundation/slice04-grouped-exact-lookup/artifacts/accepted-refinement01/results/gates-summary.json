@@ -1,0 +1,68 @@
+{
+  "source_head": "efef9c4e661e0b90f79abf4eab41148e095a8c36",
+  "jobs": [
+    {
+      "name": "check",
+      "exit": 0,
+      "command": [
+        "make",
+        "-j1",
+        "CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+        "check"
+      ],
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-r01-check.log"
+    },
+    {
+      "name": "no-default",
+      "exit": 0,
+      "command": [
+        "make",
+        "-j1",
+        "CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+        "test-no-default"
+      ],
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-r01-no-default.log"
+    },
+    {
+      "name": "all-features",
+      "exit": 0,
+      "command": [
+        "make",
+        "-j1",
+        "CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+        "test-all-features"
+      ],
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-r01-all-features.log"
+    },
+    {
+      "name": "locked",
+      "exit": 0,
+      "command": [
+        "/tmp/vlajmaji-p01-a01-cargo",
+        "+1.98.0",
+        "check",
+        "--workspace",
+        "--locked"
+      ],
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-r01-locked.log"
+    },
+    {
+      "name": "example",
+      "exit": 0,
+      "command": [
+        "/tmp/vlajmaji-p01-a01-cargo",
+        "+1.98.0",
+        "run",
+        "--locked",
+        "-p",
+        "vlajmaji-search",
+        "--example",
+        "dictionary_lookup",
+        "--",
+        "/tmp/vlajmaji-p01-a01-s04-cdc-r01-fixture.json",
+        "/tmp/vlajmaji-p01-a01-s04-cdc-r01-example-store"
+      ],
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-r01-example.log"
+    }
+  ]
+}

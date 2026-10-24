@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc | project01-multi-source-dictionary / arc01-dictionary-foundation |
-| status | active; S01 accepted11ec701; S02 accepted37c3518; S03 accepted01a9ceb3; S04 initial independently failed narrow index/doc; refinement01active |
+| status | active; S01 accepted11ec701; S02 accepted37c3518; S03 accepted01a9ceb3; S04 accepted efef9c4; separate composition pending |
 | depends-on | Vlajmaji `4ee3bab`; preserved source/grouping/schema decisions and accepted PoC contracts |
 | blocks | A02 full import, A03 optional releases, A04 composition and A05 owned editing |
-| version / date | 1.13 / 2026-10-24 |
+| version / date | 1.14 / 2026-10-24 |
 
 ## Capability
 
@@ -158,3 +158,9 @@ S02 broad immutable raw/metadata/JSON/exact archive adapter accepted37c3518 afte
 -1.12 —2026-10-24: issued S04 concrete indexed candidate/search response/page/cursor/availability/reference/Rust+CLI contract at slice04-grouped-exact-lookup/cc-prompt.md,8open rows. Accepted S03 DDL/model/fixture and legacy query behavior unchanged. Separate all-four composition/arc close remain mandatory.
 
 -1.13 —2026-10-24: S04initial ba580d0 independently reproduces275behavior controls and84/1check,15isolatedno-default,67/1allfeatures,locked1.98/example; narrow existing association-index/doc requirement remains. Issued bounded refinement01, preserving all8rows/scope and initial evidence. Separate composition/arc close still required.
+
+## S04 accepted bubble-up —2026-10-24
+
+S04accepted efef9c4after one narrow refinement; all8rows reproduced, complete275public/CLI value controls+4prior-cursor compatibility,84/1check,15isolatedno-default,67/1allfeatures,locked1.98/example. Original groupedS03scope and all12areas retained; no structural change. All4childrenaccepted, A01-03done. A01-04separate-context composition and final preservation/scope rows remain pending; accepted children alone do not close arc.
+
+-1.14 —2026-10-24: recorded independent S04acceptance/close/retrospective and full scope retention; next mandatory independent composition at exact efef9c4, noA02activation.

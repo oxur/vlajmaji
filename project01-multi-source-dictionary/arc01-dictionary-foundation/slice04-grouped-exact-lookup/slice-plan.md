@@ -3,11 +3,11 @@
 | Field | Value |
 | --- | --- |
 | project / arc / slice | project01-multi-source-dictionary / arc01-dictionary-foundation / slice04-grouped-exact-lookup |
-| status | initial ba580d0 independently failed narrow F1index/doc requirement; refinement01active |
+| status | accepted efef9c4 after preserved initial narrow index/doc failure and refinement01 |
 | predecessor / baseline | accepted S03 source01a9ceb3bd6925d5cae583d38e2683046a3c1dea; S02 37c3518; S01 11ec701 |
 | source | feature/project01-dictionary-foundation, /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji |
 | current assignment | cc-prompt-iteration01.md, reused selected OpenAI gpt-6-luna/high CC /root/cdc/p02a02_cc |
-| version / date | 1.1 /2026-10-24 |
+| version / date | 1.2 /2026-10-24 |
 
 ## Useful capability and boundary
 
@@ -94,3 +94,5 @@ CDC owns all planning/index/acceptance; CC may append ONLY artifacts/cc-executio
 -2026-10-24 cc-prompt-iteration01.md issued from ba580d0 for ONLY crates/search/src/dictionary.rs and crates/search/tests/dictionary_contract.rs, implementing the existing keyed association constraint and truthful status doc. Recommended private representation ID→(metadata ordinal,record), keyed selected retrieval then ordinal sort; runtime output/schema/API unchanged. One of five refinements used. Complete source/gates/runtime revalidation before independent disposition; no raw-getter redesign, benchmark or other scope change.
 
 Readiness: CDC inspected full current1803-line module and402-line tests, actual source map/Vec use and all275public+realCLI outcomes/current gates. Relevant Rust collection/ownership/documentation guidance supports borrowed keyed selected retrieval, output-owned cloning and accurate status docs; source contract rather than benchmark dictates index. No external dependency/API uncertainty or Operator-reserved decision. Existing tests/ordered source-only oracle provide output positives; static source review proves the keyed mechanism, no mirror/introspection tests.
+
+-2026-10-24 refinement01independently accepted efef9c4; all8rowsdone,275controls+4cursorcompatibility and current84/1check,15isolatedno-default,67/1allfeatures/locked/example reproduced. Canonical close/retrospective complete; separate arc composition remains. No scope change.

@@ -1,0 +1,55 @@
+{
+  "records": [
+    {
+      "name": "public:exact-headers",
+      "status": "PASS"
+    },
+    {
+      "name": "public:cursor-wire-and-resize",
+      "status": "PASS"
+    },
+    {
+      "name": "public:empty-page:0",
+      "status": "PASS"
+    },
+    {
+      "name": "public:empty-page:1",
+      "status": "PASS"
+    },
+    {
+      "name": "public:empty-page:18446744073709551615",
+      "status": "PASS"
+    },
+    {
+      "name": "public:reference-headers",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:exact-headers",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:cursor-wire-and-resize",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:empty-page:0",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:empty-page:1",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:empty-page:18446744073709551615",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:reference-headers",
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "PASS": 12
+  }
+}
