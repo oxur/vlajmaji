@@ -1,0 +1,58 @@
+{
+  "source_binary": "b29ac8c R1 unique CDC public caller, unchanged during CC R2 interval",
+  "purpose": "S04 transition input/persistence readiness only, not query acceptance",
+  "rows": [
+    {
+      "name": "disabled-a",
+      "exit": 0,
+      "stdout": "OK CREATE 132945",
+      "stderr": "",
+      "sql_exit": 0,
+      "sql": {
+        "tables": 47,
+        "expected_cells": 3213,
+        "failures": 0,
+        "details": []
+      }
+    },
+    {
+      "name": "removed-a",
+      "exit": 0,
+      "stdout": "OK CREATE 40209",
+      "stderr": "",
+      "sql_exit": 0,
+      "sql": {
+        "tables": 47,
+        "expected_cells": 2184,
+        "failures": 0,
+        "details": []
+      }
+    },
+    {
+      "name": "owned-r2",
+      "exit": 0,
+      "stdout": "OK CREATE 132946",
+      "stderr": "",
+      "sql_exit": 0,
+      "sql": {
+        "tables": 47,
+        "expected_cells": 3213,
+        "failures": 0,
+        "details": []
+      }
+    },
+    {
+      "name": "renamed-paths",
+      "exit": 0,
+      "stdout": "OK CREATE 71858",
+      "stderr": "",
+      "sql_exit": 0,
+      "sql": {
+        "tables": 47,
+        "expected_cells": 3218,
+        "failures": 0,
+        "details": []
+      }
+    }
+  ]
+}
