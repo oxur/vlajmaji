@@ -26,6 +26,34 @@ def scan(d,query,selected_sources=None):
     rows.sort(key=lambda r:(r['source'].encode(),r['spelling'].encode(),r['occurrence_id'].encode()))
     ids=[r['occurrence_id'] for r in rows];assert len(ids)==len(set(ids))
     return {'query':query,'total_occurrences':len(rows),'distinct_spellings':len({r['spelling'] for r in rows}),'source_totals':dict(sorted(collections.Counter(r['source'] for r in rows).items())),'rows':rows}
+def catalogue_reference(d,target):
+    """Identity-only catalogue oracle; never substitutes text for unknown native attribution."""
+    m=d['metadata'];sources={r['id'] for r in d['registry']['sources']};releases={r['id']:r for r in m['releases']}
+    components={r['id']:r for r in m['components']};collections={r['id']:r for r in m['collections']}
+    if target['source'] not in sources:raise ValueError('unknown source')
+    if target['release'] not in releases:raise ValueError('unknown release')
+    release=releases[target['release']]
+    if collections[components[release['component']]['collection']]['source']!=target['source']:raise ValueError('release belongs to another source')
+    def key(o):
+        c=o.get('capture',o.get('snapshot'));return c['namespace'],c['sha256'],o['locator']
+    attributions={key(r['occurrence']):r for r in d['registry']['occurrences']};assertions={r['id']:r for r in m['assertions']}
+    confirmed=[];unverified=[]
+    for aid in release['assertions']:
+        a=assertions[aid];o=a['occurrence']
+        if target['occurrence'] is not None and key(o)!=key(target['occurrence']):continue
+        attribution=attributions.get(key(o),{});unknown=False;mismatch=False
+        for field in ['native_entry_id','native_assertion_id']:
+            wanted=target[field]
+            if wanted is None:continue
+            actual=attribution.get(field)
+            if actual is None:unknown=True
+            elif actual!=wanted:mismatch=True
+        if mismatch:continue
+        row={'assertion_id':aid,'occurrence_id':occurrence_id(o)}
+        (unverified if unknown else confirmed).append(row)
+    for rows in [confirmed,unverified]:rows.sort(key=lambda r:r['occurrence_id'].encode())
+    return {'source':target['source'],'release':target['release'],'availability':release['availability'],'confirmed':confirmed,'unverified':unverified}
+
 def transitions(d):
     variants={}
     x=copy.deepcopy(d);next(r for r in x['metadata']['releases'] if r['id']=='release-a')['availability']='Disabled';variants['disabled-a']=x
