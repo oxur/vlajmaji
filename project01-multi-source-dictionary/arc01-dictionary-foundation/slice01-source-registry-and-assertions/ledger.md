@@ -1,6 +1,6 @@
 # Slice01 ledger
 
-All implementation rows are open; evidence is empty until actual work is reviewed.
+Current status: all seven rows remain open after initial candidate `40a94b4` failed independent controls F1/F2. Partial default-gate reproduction and required repairs are preserved in `cdc-verification.md`; no partial evidence is represented as acceptance. Initial open/empty state remains in Git history.
 
 | ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |

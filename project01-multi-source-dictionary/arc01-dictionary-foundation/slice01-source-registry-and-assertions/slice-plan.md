@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc / slice | project01-multi-source-dictionary / arc01-dictionary-foundation / slice01-source-registry-and-assertions |
-| status | active; initial CC assignment prepared; implementation not yet attested |
+| status | active; initial candidate 40a94b4 reviewed; iteration01 active; acceptance pending |
 | depends-on | Vlajmaji `4ee3bab`; Lexicon raw/occurrence/form/proposal contracts |
 | blocks | A01 S02 schema persistence and S03 grouped queries |
-| version / date | 1.1 / 2026-10-24 |
+| version / date | 1.2 / 2026-10-24 |
 
 ## Useful result and before/after
 
@@ -120,7 +120,7 @@ API/type/serde/error/documentation guidance; resolve concrete ID/alias/error and
 serialization choices; specify observable fixture outputs; establish implementer,
 independent verifier, approved settings, source branch and authorized endpoint.
 
-Current assignment: **`cc-prompt.md`**, initial issue after readiness. No refinement pass has run. Source is the clean isolated feature branch at `e0630d8`; original `4ee3bab` code is unchanged by its logo-only fast-forward.
+Current assignment: **`cc-prompt-iteration01.md`**, following failed initial candidate review. No executed refinement pass yet. Source is the clean isolated feature branch at `e0630d8`; original `4ee3bab` code is unchanged by its logo-only fast-forward.
 
 ## Version history
 
@@ -139,7 +139,7 @@ Durable supporting artifact: `artifacts/cc-execution.md` is needed for intake/re
 
 | Assignment | Date | Predecessor | Reason | Disposition |
 | --- | --- | --- | --- | --- |
-| `cc-prompt.md` | 2026-10-24 | none | Initial source registry and assertion increment after CDC readiness | issued; existing selected-model context reused after dispatch limit (see below) |
+| `cc-prompt.md` | 2026-10-24 | none | Initial source registry and assertion increment after CDC readiness | returned; candidate 40a94b4; changes required after F1/F2/F3 review |
 
 CDC `/root/vlajmaji_p01_a01_cdc` independently reviews the frozen candidate; CC is explicitly dispatched OpenAI `gpt-6-luna` / high. All seven rows remain open until independently reproduced. Feature branch is the accepted local delivery destination; no main integration or publication.
 
@@ -150,3 +150,9 @@ CDC `/root/vlajmaji_p01_a01_cdc` independently reviews the frozen candidate; CC 
 Fresh `spawn_agent(model=gpt-6-luna, reasoning_effort=high, fork_turns=none)` returned `agent thread limit reached`; no new CC started. A local ephemeral CLI attempt then exited 2 before any contributor started: the installed `codex` launcher requested a profile selection. No implementation occurred in either attempt. Diagnostic logs remain `/tmp/vlajmaji-p01-a01-s01-cc-{events.jsonl,stderr.log}`.
 
 Root established that completed `/root/cdc/p02a02_cc` was explicitly spawned in this conversation as OpenAI `gpt-6-luna` / high / `fork_turns:none` and instructed reuse without changing its model/settings. This is model continuity, not silent substitution; backend attestation remains unreported. It receives the preserved initial prompt with a complete current intake and explicit ownership reset. CDC `/root/vlajmaji_p01_a01_cdc` reviews independently; the former parent/root retains read-only boundaries. The context is not fresh: retain awareness of historical context load and use renewed assignment/source readings, not predecessor acceptance, for this work.
+
+| `cc-prompt-iteration01.md` | 2026-10-24 | `cc-prompt.md` | Reproduced alias/strict nested wire defects and direct-attribution trust-boundary docs | issued; refinement01, source 40a94b4 |
+
+Current source ownership returns to CC `/root/cdc/p02a02_cc` for iteration01 only; same approved model/settings, scope and five-refinement cap. CDC remains independent reviewer; no source repair authored by CDC. First candidate and failed controls remain in `closing-report.md`, `cdc-verification.md` and `artifacts/cc-execution.md`.
+
+- 1.2 — 2026-10-24: independent initial review failed two discriminating controls and a documentation boundary; issued preserved refinement01 without changing scope or any criterion.
