@@ -39,4 +39,13 @@ archive=json.loads(bytes(d['legacy_archive']));empty_namespace(archive)
 a=next(a for a in archive['sources'] if a['identity']['namespace']=='')
 a['metadata'].update(source_name='',locator='',revision='',captured_at='',notice_locator='')
 d['legacy_archive']=list(json.dumps(archive,ensure_ascii=False,separators=(',',':')).encode());save('legacy-empty-metadata',d)
+# Known unavailable source evidence has order checks but no invented loaded byte/field bound.
+d=copy.deepcopy(x);m=d['metadata'];target=next(r for r in m['relations'] if r['id']=='relation-missing-catalogue')['target']['Catalog']['occurrence']
+e=copy.deepcopy(m['entries'][0]);e.update(id='entry-m-extra',source='source-m',spelling={'Value':'missing-word'});m['entries'].append(e)
+a=copy.deepcopy(m['assertions'][0]);a.update(id='assertion-m-extra',entry=e['id'],occurrence=copy.deepcopy(target),definition='Missing',source_score='Missing',timestamps=[]);m['assertions'].append(a)
+r=next(r for r in m['releases'] if r['id']=='release-m');r['assertions'].append(a['id'])
+c=copy.deepcopy(m['contexts'][0]);c.update(id='context-m-extra',assertion=a['id'],value='Missing');c['evidence'].update(occurrence=copy.deepcopy(target),field_index=2**64-1,offset={'start':2**64-1,'end':2**64-1});m['contexts'].append(c);save('unavailable-usize-extremes',d)
+# Reused historical aliases and Some(empty) catalogue-native identifiers remain representable.
+d=copy.deepcopy(x);d['registry']['aliases'].append({'source':'source-b','text':'archive-a','status':'Retired','evidence':''})
+c=next(r for r in d['metadata']['relations'] if r['id']=='relation-missing-catalogue')['target']['Catalog'];c.update(native_entry_id='',native_assertion_id='');save('alias-reuse-native-empty',d)
 print(json.dumps({'prepared_variants':sorted(p.name for p in out.glob('*.json')),'product_results':None}))
