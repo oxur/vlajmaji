@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| status/version | OPEN/initial assignment,1.0,2026-10-24 |
+| status/version | OPEN/initial assignment with count-label clarification,1.1,2026-10-24 |
 | predecessor | S01 independently accepted12fdd67; canonical close33435841 |
 | source | feature/project01-full-jbotci-import at12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69; isolated Arc02checkout |
 | authority | Project cdc-directive02.md; Autonomous/Expedited CDC SolHigh + same LunaHigh CC; no A03/push/publication |
@@ -48,3 +48,9 @@ Native CLI Rust process harness at crates/cli/tests/jbotci_pipeline.rs uses exis
 Actual named public acquire then network-denied/failing-curl offline replay/check must run on full pin. Clean outside Git archive checkout with read-only Bauske sibling and unique external package AND binary/offline lock/source hashes proves full integration, without claiming cold registry cache. Normalized output remains usable before SQLite. Canonical215412497B/API and CLI+LF identities should remain unchanged at this pin; no public held data in source/package. Full format→lint→check, workspaceallfeatures, isolatedsearchno-default/allfeatures, umbrella configurations and public callers at exact frozen candidate, all nonzero test populations/ignored cases explicit. Every task Cargo/Make has fixed target/launcher/offline+locked+1.98.0, login:false, scoped escalation; one writer. Source/main/Bauske ownership and original attempts protected.
 
 All8rows remain OPEN until CDC reproduces. CC may propose all rows but cannot self-close; preserve initial and every numbered repair up to5. Source edits only exact issued allowlist; planning CC only artifacts/cc-execution.md. Clean local commit with Codex/Billo AI trailers, exact source/lock inventories and all sessions exited before freeze. CDC verifier/close/retro/bubble-up follow actual work; separate fresh SolHigh arc technical/final canonical gate follows both children. No A03/push/PR/main integration/publication.
+
+## Current extension-count label clarification,2026-10-24
+
+The unchanged issued cc-prompt.md labels42,542 as “native extensions”; that is the39,721 per-gloss-object +2,821 place-keyword subset, not a complete extension total. Frozen accepted importer12fdd67 jbotci.rs1298–1305 also emits one lensisku.gloss_keywords.raw extension for each30,683 present whole gloss fields;1356–1361 emits per-object extensions,1377–1383 place fields,1548–1553 one release metadata extension. The14-field pin has no unknown native fields, so the source-derived expected full population is73,225 source-evidenced native extensions +1 metadata =73,226 TOTAL. Actual current full-model/SQL population measurement remains required; expected arithmetic is not an executed receipt. Preserve all whole-field and per-object representations; no importer/product change or scope reduction is authorized to force an earlier partial count.
+
+CDC corrected its prospective, previously unexecuted SQL oracle to compare the entire whole-field/per-object/place multiset plus metadata and exact by-name totals. The original prospective hash/issued prompt and accepted S01 records remain preserved. S01’s full raw-field/context/form/etymology checks and acceptance are not retroactively relabelled as a complete SQL extension-total check. This is a count-label/oracle-intake correction, not an implementation repair prompt or a consumed refinement. All8child rows remain OPEN.
