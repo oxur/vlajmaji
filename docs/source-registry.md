@@ -99,3 +99,5 @@ The small example uses synthetic labels only. It does not assert real source
 lineage or conventional abbreviations. Project persistence and grouped query
 behavior belong to later slices; this API has no SQLite schema or pagination
 contract.
+
+An alias, including a retired alias, must not shadow another source's stable ID or current abbreviation. Retired and active alias-to-alias reuse remains an explicit historical ambiguity and is handled by the caller's alias-resolution scope.

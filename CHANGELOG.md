@@ -13,3 +13,4 @@
 - Initial publication of the migrated research PoC workspace.
 - Preserve existing CLI names, source provenance, and modelling limits.
 - Add package metadata, crate READMEs, and repository development/release targets.
+- Add a versioned raw-preserving dictionary model, explicit legacy archive adapter, fixture, and standards mapping limits.

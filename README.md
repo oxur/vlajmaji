@@ -78,3 +78,5 @@ planning work is preserved.
 
 Use `make publish-dry-run` to verify the workspace packages and `make publish`
 to upload them to crates.io. Publish the Bauske dependency first. The packaged crates include their own READMEs and licenses.
+
+The lexicon crate also exposes an immutable validated in-memory [`Dictionary`](crates/lexicon/README.md) model and explicit legacy archive adapter. Its typed source, owned, editorial, and computed evidence distinctions and standards mapping limits are documented in [`docs/dictionary-model.md`](docs/dictionary-model.md) and [`docs/dictionary-standards-map.md`](docs/dictionary-standards-map.md).

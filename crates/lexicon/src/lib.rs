@@ -37,9 +37,21 @@ use serde_json::value::RawValue;
 use sha2::{Digest, Sha256};
 
 mod attribution;
+pub mod dictionary;
 pub mod registry;
 
 pub use attribution::AttributedOccurrence;
+pub use dictionary::{
+    ArgumentFrameRecord, ArgumentSlot, AssertionRecord, Availability, CaptureMetadata, CaptureRef,
+    CatalogTarget, CodeNotice, CollectionRecord, ComponentRecord, ComputationRecord,
+    ComputedAnnotation, ContentNotice, ContextKind, ContextRecord, Dictionary, DictionaryDocument,
+    DictionaryError, DictionaryMetadata, Direction, EditorialSenseRecord, Eligibility, EntityId,
+    EntryRecord, EtymologyRecord, ExtensionRecord, FormKind, FormRecord, InputRef, LocalRef,
+    NamedTimestamp, NativeEncoding, NativeField, OccurrenceRef, OrderedComponent, OwnedHead,
+    OwnedRevisionRecord, PosMapping, Presence, RawCapture, RawJson, RawOccurrence,
+    RedistributionStatus, RelationKind, RelationRecord, RelationScope, RelationTarget,
+    ReleaseAccounting, ReleaseDiagnostic, ReleaseRecord, SourceEvidence, TextRange, TextValue,
+};
 pub use registry::{
     AbbreviationKind, AliasScope, AliasStatus, ContributorId, ContributorRecord, DistributorId,
     DistributorRecord, LineageTarget, OccurrenceAttribution, RegistryDocument, RegistryError,

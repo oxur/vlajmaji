@@ -64,3 +64,7 @@ the 0.2.0 development cycle, the CLI binary is `vlajmaji`. Package names and
 archive/search identities remain unchanged. `make build` installs the current
 debug binary to `./bin/vlajmaji`; the Cargo commands above also select this
 renamed binary automatically.
+
+## Versioned in-memory dictionary model
+
+The S02 model/adapter is documented in [dictionary-model.md](dictionary-model.md), with its candidate standards correspondence and explicit gaps in [dictionary-standards-map.md](dictionary-standards-map.md). To adapt an accepted legacy archive, construct the current `SourceRegistry`, provide the source-aware `DictionaryMetadata` rather than asking the adapter to infer it, call `Dictionary::from_legacy_archive` with the exact archive bytes, and serialize/reload with `Dictionary::to_json_bytes` / `Dictionary::from_json_bytes`. The exact old archive remains attached and is validated as a subset. Persistence and grouped lookup are later slices.
