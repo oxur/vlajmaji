@@ -1,0 +1,35 @@
+{
+  "runs": 37,
+  "passed": 37,
+  "failed_runs": [],
+  "metadata_query_controls": [
+    {
+      "name": "metadata-no-value-column",
+      "sql": "ALTER TABLE metadata RENAME COLUMN value TO other_value",
+      "expected": "ERR InvalidStore Format",
+      "actual": "ERR Backend",
+      "exit": 0,
+      "unchanged": true,
+      "pass": false
+    },
+    {
+      "name": "metadata-no-key-column",
+      "sql": "ALTER TABLE metadata RENAME COLUMN key TO other_key",
+      "expected": "ERR InvalidStore Format",
+      "actual": "ERR Backend",
+      "exit": 0,
+      "unchanged": true,
+      "pass": false
+    },
+    {
+      "name": "metadata-no-table",
+      "sql": "DROP TABLE metadata",
+      "expected": "ERR InvalidStore Format",
+      "actual": "ERR InvalidStore Format",
+      "exit": 0,
+      "unchanged": true,
+      "pass": true
+    }
+  ],
+  "root": "/tmp/vlajmaji-p01-a01-s03-cdc-r01-replay"
+}

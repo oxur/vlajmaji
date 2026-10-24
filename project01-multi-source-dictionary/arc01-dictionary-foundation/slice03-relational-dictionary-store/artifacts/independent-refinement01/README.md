@@ -1,0 +1,9 @@
+# Independent S03 refinement01 — narrow failed verdict
+
+Frozen clean b29ac8c7dfcf37c8eaa69f538532a7e44c07a872. CDC rebuilt a distinct outside-workspace public package dictionary-store-s03-cdc-r01-controls from unchanged caller source, with the fixed target guard. All37 public/oracle runs pass: main create+strictSQL,94tamper/18shape/3canonical/13filesystem suites,14valid create+47-table oracles,3legacy rebuilds. Exact per-case JSON and manifest preserve these successful observations.
+
+Three additional metadata-query cases come directly from the bound missing logical metadata query→Format contract. Each ALTER/DROP setup commits successfully on a fresh closed copy; files remain unchanged after open. Missing table passes; renamed key and renamed value fail because actual Backend differs from required Format. The complete three-case oracle is additionally packaged as ../independent-public-controls/metadata-query.py without changing any earlier specimen.
+
+Source inspection also finds sql_role_presence_foreign_key_and_unique_constraints_are_real still ends its positive all4role transaction with ROLLBACK. The required committed regression was not delivered, although the separate valid model/SQLite public variants prove actual product acceptance of all4roles. These are distinct evidence claims, not a product role rejection.
+
+Author gate logs are preserved separately from CDC replays: Make check58Cargo/doctests+19tools=77pass/1ignore; standalone all-feature60pass/1ignore, no additional tooling; no-default10; locked check success. The CC return double-counted19tools under standalone all-features; direct log inspection corrects that below the preserved receipt. CDC did not repeat all full Rust gates on this already-failed candidate; final repaired current-code independent gates remain mandatory before acceptance. No DDL/model/fixture change is requested.

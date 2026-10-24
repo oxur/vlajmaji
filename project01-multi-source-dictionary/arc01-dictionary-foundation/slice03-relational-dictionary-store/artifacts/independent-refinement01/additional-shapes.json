@@ -1,0 +1,151 @@
+{
+  "controls": 18,
+  "passed": 18,
+  "relation_bound_name_present": true,
+  "results": [
+    {
+      "name": "collection-inner-null",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (description_state='value' AND description_text IS NOT NULL AND description_language_state IS NOT NULL AND description_language_state IN ('missing','null','value') AND ((description_language_state='value')=(description_language_value IS NOT NULL)) AND description_markup_state IS NOT NULL AND description_markup_state IN ('missing','null','value') AND ((description_markup_state='value')=(description_markup_value IS NOT NULL))) OR (description_state IN ('missing','null') AND description_text IS NULL AND description_language_state IS NULL AND description_language_value IS NULL AND description_markup_state IS NULL AND description_markup_value IS NULL)",
+      "sql": "UPDATE collections SET description_language_state=NULL WHERE id='collection-a'"
+    },
+    {
+      "name": "assertion-inner-null",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (definition_state='value' AND definition_text IS NOT NULL AND definition_language_state IS NOT NULL AND definition_language_state IN ('missing','null','value') AND ((definition_language_state='value')=(definition_language_value IS NOT NULL)) AND definition_markup_state IS NOT NULL AND definition_markup_state IN ('missing','null','value') AND ((definition_markup_state='value')=(definition_markup_value IS NOT NULL))) OR (definition_state IN ('missing','null') AND definition_text IS NULL AND definition_language_state IS NULL AND definition_language_value IS NULL AND definition_markup_state IS NULL AND definition_markup_value IS NULL)",
+      "sql": "UPDATE assertions SET definition_language_state=NULL WHERE id='assertion-0'"
+    },
+    {
+      "name": "form_components-null-kind-0",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (target_kind IS NULL AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Entry' AND target_entry_id IS NOT NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Assertion' AND target_entry_id IS NULL AND target_assertion_id IS NOT NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Form' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NOT NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='EditorialSense' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NOT NULL)",
+      "sql": "UPDATE form_components SET target_kind=NULL WHERE form_id='form-variant' AND ordinal=0"
+    },
+    {
+      "name": "form_components-null-kind-1",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (target_kind IS NULL AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Entry' AND target_entry_id IS NOT NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Assertion' AND target_entry_id IS NULL AND target_assertion_id IS NOT NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Form' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NOT NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='EditorialSense' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NOT NULL)",
+      "sql": "UPDATE form_components SET target_kind=NULL WHERE form_id='form-variant' AND ordinal=1"
+    },
+    {
+      "name": "form_components-null-kind-2",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (target_kind IS NULL AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Entry' AND target_entry_id IS NOT NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Assertion' AND target_entry_id IS NULL AND target_assertion_id IS NOT NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Form' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NOT NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='EditorialSense' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NOT NULL)",
+      "sql": "UPDATE form_components SET target_kind=NULL WHERE form_id='form-variant' AND ordinal=2"
+    },
+    {
+      "name": "form_components-null-kind-3",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (target_kind IS NULL AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Entry' AND target_entry_id IS NOT NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Assertion' AND target_entry_id IS NULL AND target_assertion_id IS NOT NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Form' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NOT NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='EditorialSense' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NOT NULL)",
+      "sql": "UPDATE form_components SET target_kind=NULL WHERE form_id='form-variant' AND ordinal=3"
+    },
+    {
+      "name": "etymology_components-null-kind-0",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (target_kind IS NULL AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Entry' AND target_entry_id IS NOT NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Assertion' AND target_entry_id IS NULL AND target_assertion_id IS NOT NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Form' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NOT NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='EditorialSense' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NOT NULL)",
+      "sql": "UPDATE etymology_components SET target_kind=NULL WHERE etymology_id='etymology-0' AND ordinal=0"
+    },
+    {
+      "name": "etymology_components-null-kind-1",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (target_kind IS NULL AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Entry' AND target_entry_id IS NOT NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Assertion' AND target_entry_id IS NULL AND target_assertion_id IS NOT NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Form' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NOT NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='EditorialSense' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NOT NULL)",
+      "sql": "UPDATE etymology_components SET target_kind=NULL WHERE etymology_id='etymology-0' AND ordinal=1"
+    },
+    {
+      "name": "etymology_components-null-kind-2",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (target_kind IS NULL AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Entry' AND target_entry_id IS NOT NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Assertion' AND target_entry_id IS NULL AND target_assertion_id IS NOT NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Form' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NOT NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='EditorialSense' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NOT NULL)",
+      "sql": "UPDATE etymology_components SET target_kind=NULL WHERE etymology_id='etymology-0' AND ordinal=2"
+    },
+    {
+      "name": "etymology_components-null-kind-3",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (target_kind IS NULL AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Entry' AND target_entry_id IS NOT NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Assertion' AND target_entry_id IS NULL AND target_assertion_id IS NOT NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='Form' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NOT NULL AND target_editorial_sense_id IS NULL) OR (target_kind IS NOT NULL AND target_kind='EditorialSense' AND target_entry_id IS NULL AND target_assertion_id IS NULL AND target_form_id IS NULL AND target_editorial_sense_id IS NOT NULL)",
+      "sql": "UPDATE etymology_components SET target_kind=NULL WHERE etymology_id='etymology-0' AND ordinal=3"
+    },
+    {
+      "name": "entity-input-null-kind-0",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (input_kind='Occurrence' AND occurrence_id IS NOT NULL AND entity_kind IS NULL AND entity_entry_id IS NULL AND entity_assertion_id IS NULL AND entity_form_id IS NULL AND entity_editorial_sense_id IS NULL AND literal IS NULL) OR (input_kind='Entity' AND occurrence_id IS NULL AND entity_kind IS NOT NULL AND entity_kind IN ('Entry','Assertion','Form','EditorialSense') AND literal IS NULL) OR (input_kind='Literal' AND occurrence_id IS NULL AND entity_kind IS NULL AND entity_entry_id IS NULL AND entity_assertion_id IS NULL AND entity_form_id IS NULL AND entity_editorial_sense_id IS NULL AND literal IS NOT NULL)",
+      "sql": "UPDATE computation_inputs SET entity_kind=NULL WHERE computation_id='computation-1' AND ordinal=2"
+    },
+    {
+      "name": "entity-input-null-kind-1",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (input_kind='Occurrence' AND occurrence_id IS NOT NULL AND entity_kind IS NULL AND entity_entry_id IS NULL AND entity_assertion_id IS NULL AND entity_form_id IS NULL AND entity_editorial_sense_id IS NULL AND literal IS NULL) OR (input_kind='Entity' AND occurrence_id IS NULL AND entity_kind IS NOT NULL AND entity_kind IN ('Entry','Assertion','Form','EditorialSense') AND literal IS NULL) OR (input_kind='Literal' AND occurrence_id IS NULL AND entity_kind IS NULL AND entity_entry_id IS NULL AND entity_assertion_id IS NULL AND entity_form_id IS NULL AND entity_editorial_sense_id IS NULL AND literal IS NOT NULL)",
+      "sql": "UPDATE computation_inputs SET entity_kind=NULL WHERE computation_id='computation-1' AND ordinal=3"
+    },
+    {
+      "name": "entity-input-null-kind-2",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (input_kind='Occurrence' AND occurrence_id IS NOT NULL AND entity_kind IS NULL AND entity_entry_id IS NULL AND entity_assertion_id IS NULL AND entity_form_id IS NULL AND entity_editorial_sense_id IS NULL AND literal IS NULL) OR (input_kind='Entity' AND occurrence_id IS NULL AND entity_kind IS NOT NULL AND entity_kind IN ('Entry','Assertion','Form','EditorialSense') AND literal IS NULL) OR (input_kind='Literal' AND occurrence_id IS NULL AND entity_kind IS NULL AND entity_entry_id IS NULL AND entity_assertion_id IS NULL AND entity_form_id IS NULL AND entity_editorial_sense_id IS NULL AND literal IS NOT NULL)",
+      "sql": "UPDATE computation_inputs SET entity_kind=NULL WHERE computation_id='computation-1' AND ordinal=4"
+    },
+    {
+      "name": "entity-input-null-kind-3",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (input_kind='Occurrence' AND occurrence_id IS NOT NULL AND entity_kind IS NULL AND entity_entry_id IS NULL AND entity_assertion_id IS NULL AND entity_form_id IS NULL AND entity_editorial_sense_id IS NULL AND literal IS NULL) OR (input_kind='Entity' AND occurrence_id IS NULL AND entity_kind IS NOT NULL AND entity_kind IN ('Entry','Assertion','Form','EditorialSense') AND literal IS NULL) OR (input_kind='Literal' AND occurrence_id IS NULL AND entity_kind IS NULL AND entity_entry_id IS NULL AND entity_assertion_id IS NULL AND entity_form_id IS NULL AND entity_editorial_sense_id IS NULL AND literal IS NOT NULL)",
+      "sql": "UPDATE computation_inputs SET entity_kind=NULL WHERE computation_id='computation-1' AND ordinal=5"
+    },
+    {
+      "name": "relation-null-local-kind",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (target_kind='Local' AND local_target_kind IN ('Entry','Assertion','Form','EditorialSense') AND ((local_target_kind IS NOT NULL AND local_target_kind='Entry' AND local_target_entry_id IS NOT NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NULL) OR (local_target_kind IS NOT NULL AND local_target_kind='Assertion' AND local_target_entry_id IS NULL AND local_target_assertion_id IS NOT NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NULL) OR (local_target_kind IS NOT NULL AND local_target_kind='Form' AND local_target_entry_id IS NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NOT NULL AND local_target_editorial_sense_id IS NULL) OR (local_target_kind IS NOT NULL AND local_target_kind='EditorialSense' AND local_target_entry_id IS NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NOT NULL)) AND catalog_source_id IS NULL AND catalog_release_id IS NULL AND catalog_native_entry_id IS NULL AND catalog_native_assertion_id IS NULL AND catalog_occurrence_id IS NULL AND unresolved_text IS NULL) OR (target_kind='Catalog' AND local_target_kind IS NULL AND local_target_entry_id IS NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NULL AND catalog_source_id IS NOT NULL AND catalog_release_id IS NOT NULL AND (catalog_native_entry_id IS NOT NULL OR catalog_native_assertion_id IS NOT NULL OR catalog_occurrence_id IS NOT NULL) AND unresolved_text IS NULL) OR (target_kind='Unknown' AND local_target_kind IS NULL AND local_target_entry_id IS NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NULL AND catalog_source_id IS NULL AND catalog_release_id IS NULL AND catalog_native_entry_id IS NULL AND catalog_native_assertion_id IS NULL AND catalog_occurrence_id IS NULL AND unresolved_text IS NULL) OR (target_kind='Unresolved' AND local_target_kind IS NULL AND local_target_entry_id IS NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NULL AND catalog_source_id IS NULL AND catalog_release_id IS NULL AND catalog_native_entry_id IS NULL AND catalog_native_assertion_id IS NULL AND catalog_occurrence_id IS NULL AND unresolved_text IS NOT NULL)",
+      "sql": "UPDATE relations SET local_target_kind=NULL WHERE id='relation-editorial'"
+    },
+    {
+      "name": "catalogue-empty-identity",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (target_kind='Local' AND local_target_kind IN ('Entry','Assertion','Form','EditorialSense') AND ((local_target_kind IS NOT NULL AND local_target_kind='Entry' AND local_target_entry_id IS NOT NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NULL) OR (local_target_kind IS NOT NULL AND local_target_kind='Assertion' AND local_target_entry_id IS NULL AND local_target_assertion_id IS NOT NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NULL) OR (local_target_kind IS NOT NULL AND local_target_kind='Form' AND local_target_entry_id IS NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NOT NULL AND local_target_editorial_sense_id IS NULL) OR (local_target_kind IS NOT NULL AND local_target_kind='EditorialSense' AND local_target_entry_id IS NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NOT NULL)) AND catalog_source_id IS NULL AND catalog_release_id IS NULL AND catalog_native_entry_id IS NULL AND catalog_native_assertion_id IS NULL AND catalog_occurrence_id IS NULL AND unresolved_text IS NULL) OR (target_kind='Catalog' AND local_target_kind IS NULL AND local_target_entry_id IS NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NULL AND catalog_source_id IS NOT NULL AND catalog_release_id IS NOT NULL AND (catalog_native_entry_id IS NOT NULL OR catalog_native_assertion_id IS NOT NULL OR catalog_occurrence_id IS NOT NULL) AND unresolved_text IS NULL) OR (target_kind='Unknown' AND local_target_kind IS NULL AND local_target_entry_id IS NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NULL AND catalog_source_id IS NULL AND catalog_release_id IS NULL AND catalog_native_entry_id IS NULL AND catalog_native_assertion_id IS NULL AND catalog_occurrence_id IS NULL AND unresolved_text IS NULL) OR (target_kind='Unresolved' AND local_target_kind IS NULL AND local_target_entry_id IS NULL AND local_target_assertion_id IS NULL AND local_target_form_id IS NULL AND local_target_editorial_sense_id IS NULL AND catalog_source_id IS NULL AND catalog_release_id IS NULL AND catalog_native_entry_id IS NULL AND catalog_native_assertion_id IS NULL AND catalog_occurrence_id IS NULL AND unresolved_text IS NOT NULL)",
+      "sql": "UPDATE relations SET catalog_native_entry_id=NULL,catalog_native_assertion_id=NULL,catalog_occurrence_id=NULL WHERE id='relation-missing-catalogue'"
+    },
+    {
+      "name": "other-kind-null-payload",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (kind IN ('SourceSeeAlso','SourceEtymology') AND other_kind IS NULL AND evidence_id IS NOT NULL AND editorial_revision_id IS NULL) OR (kind='EditorialLink' AND other_kind IS NULL AND evidence_id IS NULL AND editorial_revision_id IS NOT NULL) OR (kind='Other' AND other_kind IS NOT NULL AND NOT (evidence_id IS NOT NULL AND editorial_revision_id IS NOT NULL))",
+      "sql": "UPDATE relations SET other_kind=NULL WHERE id='relation-unresolved'"
+    },
+    {
+      "name": "source-kind-extra-other-payload",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (kind IN ('SourceSeeAlso','SourceEtymology') AND other_kind IS NULL AND evidence_id IS NOT NULL AND editorial_revision_id IS NULL) OR (kind='EditorialLink' AND other_kind IS NULL AND evidence_id IS NULL AND editorial_revision_id IS NOT NULL) OR (kind='Other' AND other_kind IS NOT NULL AND NOT (evidence_id IS NOT NULL AND editorial_revision_id IS NOT NULL))",
+      "sql": "UPDATE relations SET other_kind='unexpected' WHERE id='relation-see'"
+    }
+  ]
+}

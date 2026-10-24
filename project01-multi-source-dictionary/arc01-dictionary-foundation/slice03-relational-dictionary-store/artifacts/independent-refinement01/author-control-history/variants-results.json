@@ -1,0 +1,104 @@
+{
+  "count": 14,
+  "passed": 14,
+  "rows": [
+    {
+      "group": "positive",
+      "name": "alias-reuse-native-empty",
+      "status": "PASS",
+      "stdout": "OK CREATE 133035",
+      "stderr": ""
+    },
+    {
+      "group": "positive",
+      "name": "all-component-roles",
+      "status": "PASS",
+      "stdout": "OK CREATE 133480",
+      "stderr": ""
+    },
+    {
+      "group": "positive",
+      "name": "all-empty",
+      "status": "PASS",
+      "stdout": "OK CREATE 491",
+      "stderr": ""
+    },
+    {
+      "group": "positive",
+      "name": "available-empty",
+      "status": "PASS",
+      "stdout": "OK CREATE 1548",
+      "stderr": ""
+    },
+    {
+      "group": "positive",
+      "name": "legacy-empty-metadata",
+      "status": "PASS",
+      "stdout": "OK CREATE 132555",
+      "stderr": ""
+    },
+    {
+      "group": "positive",
+      "name": "legacy-v1",
+      "status": "PASS",
+      "stdout": "OK CREATE 132946",
+      "stderr": ""
+    },
+    {
+      "group": "positive",
+      "name": "text-presence-extremes",
+      "status": "PASS",
+      "stdout": "OK CREATE 132856",
+      "stderr": ""
+    },
+    {
+      "group": "positive",
+      "name": "u64-extremes",
+      "status": "PASS",
+      "stdout": "OK CREATE 133013",
+      "stderr": ""
+    },
+    {
+      "group": "positive",
+      "name": "unavailable-usize-extremes",
+      "status": "PASS",
+      "stdout": "OK CREATE 134042",
+      "stderr": ""
+    },
+    {
+      "group": "positive",
+      "name": "unbound-missing-capture",
+      "status": "PASS",
+      "stdout": "OK CREATE 132783",
+      "stderr": ""
+    },
+    {
+      "group": "reference",
+      "name": "independent-raw-capture-order",
+      "status": "PASS",
+      "stdout": "OK CREATE 132946",
+      "stderr": ""
+    },
+    {
+      "group": "reference",
+      "name": "independent-registry-order",
+      "status": "PASS",
+      "stdout": "OK CREATE 132946",
+      "stderr": ""
+    },
+    {
+      "group": "reference",
+      "name": "unavailable-assertion-only",
+      "status": "PASS",
+      "stdout": "OK CREATE 133611",
+      "stderr": ""
+    },
+    {
+      "group": "reference",
+      "name": "unavailable-computation-only",
+      "status": "PASS",
+      "stdout": "OK CREATE 133114",
+      "stderr": ""
+    }
+  ]
+}
