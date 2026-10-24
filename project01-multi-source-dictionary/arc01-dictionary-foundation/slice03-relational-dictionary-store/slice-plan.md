@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc / slice | project01-multi-source-dictionary / arc01-dictionary-foundation / slice03-relational-dictionary-store |
-| status | initial CC assignment issued; all9 rows open |
+| status | initial candidate629bc810 independently FAIL; refinement01 issued; all9 rows open |
 | predecessor | independently accepted S02 source37c35185cbf1262658504278af1590b50b0b098d; S01 accepted11ec701 |
 | source | feature/project01-dictionary-foundation in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji |
-| version / date |1.0 /2026-10-24 |
+| version / date |1.1 /2026-10-24 |
 
 ## Capability and preservation boundary
 
@@ -114,7 +114,7 @@ New public example `dictionary_store INPUT.json FRESH_DIRECTORY` loads model, cr
 
 ## Assignment and closing duties
 
-Current initial assignment: cc-prompt.md at source37c35185cbf1262658504278af1590b50b0b098d, same selected reused LunaHigh CC; no refinement consumed (cap5). CDC owns all planning/index. Supporting cc-execution.md is the only planning file delegated to CC once assigned. Source allowed paths will be fixed in that prompt. CC proposes every one of9 ledger dispositions and exact source/planning artifact inventory/scope comparison; source freezes after explicit named-file commit. CDC independently reviews/replays/SQL-inspects every row, then closes/bubbles to arc and writes retrospective. S04 original grouped Rust/CLI/pagination/availability/stable-link/revision contract and independent all-four arc composition remain pending. No accepted children alone imply arc acceptance.
+Current assignment: cc-prompt-iteration01.md at failed frozen source629bc810969a8077a9d9388ff4d762deaa4cf10a, same selected reused LunaHigh CC; first refinement issued (cap5). Initial cc-prompt.md and all initial evidence remain preserved. CDC owns all planning/index. Supporting cc-execution.md is the only planning file delegated to CC once assigned. Source allowed paths will be fixed in that prompt. CC proposes every one of9 ledger dispositions and exact source/planning artifact inventory/scope comparison; source freezes after explicit named-file commit. CDC independently reviews/replays/SQL-inspects every row, then closes/bubbles to arc and writes retrospective. S04 original grouped Rust/CLI/pagination/availability/stable-link/revision contract and independent all-four arc composition remain pending. No accepted children alone imply arc acceptance.
 
 -1.0 —2026-10-24: detailed source-grounded12-area relational design after accepted37c3518, with exact scalar/role/ordinal schema, typed lifecycle/error/snapshot and discriminating field/FK/schema/projection/rebuild oracles. Initial cc-prompt.md is issued separately with bounded intake, exact source allowlist and full gate/oracle return.
 
@@ -124,6 +124,10 @@ CDC reconciled actual accepted model/public fields, full typed validator and all
 
 | Assignment | Date | Predecessor | Reason | Disposition |
 | --- | --- | --- | --- | --- |
-| cc-prompt.md |2026-10-24 | accepted S02 source37c3518 | Initial complete concrete relational/persistence increment after four-slice split | issued; independent review pending |
+| cc-prompt.md |2026-10-24 | accepted S02 source37c3518 | Initial complete concrete relational/persistence increment after four-slice split | returned629bc810; independent FAIL, all9rows open |
+| cc-prompt-iteration01.md |2026-10-24 | frozen initial629bc810 | F1–F7 NULL shape/error/header/bound names/reference union/raw vector order/checked ordinal corrections; exact independent controls retained | issued; all9rows open |
 
 CC owns only prompt-named source files during issued interval; CDC owns planning/index/acceptance. Do not pre-create accepted close/verification/retrospective records.
+
+
+-1.1 —2026-10-24: independent initial verdict FAIL despite passing default/features/MSRV/legacy controls. Seven source-grounded findings and original/calibrated specimens are preserved in cdc-verification.md and artifacts/independent-initial; no bound schema relaxation. CDC inspected full current API/schema/tests/docs before this bounded four-path refinement. Prompt readiness: source/dependency fit confirmed; consequential error/transaction/NULL/reference/order decisions settled; Rust error/invariant guidance applied; real failure and positive SQL/public oracles executable; original inputs/prompts immutable. No Operator-reserved decision or scope change. CC implementation remains proposed-done until independent row disposition.
