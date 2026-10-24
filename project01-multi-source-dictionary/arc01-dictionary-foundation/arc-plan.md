@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc | project01-multi-source-dictionary / arc01-dictionary-foundation |
-| status | active; S01 accepted11ec701; S02 typed-model readiness active; S03 persistence/S04 grouped pending |
+| status | active; S01 accepted11ec701; S02 model assignment issued0b26224; S03 persistence/S04 grouped pending |
 | depends-on | Vlajmaji `4ee3bab`; preserved source/grouping/schema decisions and accepted PoC contracts |
 | blocks | A02 full import, A03 optional releases, A04 composition and A05 owned editing |
-| version / date | 1.3 / 2026-10-24 |
+| version / date | 1.4 / 2026-10-24 |
 
 ## Capability
 
@@ -39,7 +39,7 @@ The initial three-slice breakdown below is historical. Original S02 proved too b
 | 02 — Versioned relational schema | Concrete broad metadata tables/types, raw-preserving extension policy, standard mapping and old-archive adapter/rebuild path; a fixture can persist/reload without loss. Store/lexicon crates and shipped schema/migration docs. | Accepted S01 IDs/attribution. All twelve schema areas in design.md are accounted for; a single fixture database does not select final topology. |
 | 03 — Grouped exact lookup | Public Rust API and CLI show every fixture assertion under its registered source; exact totals, default-unpaged output, optional occurrence pages, availability and stable links. Search/CLI and user documentation. | Accepted S01 registry and S02 store. Complete reference checks before any real corpus/topology comparison. |
 
-Only S01 is detailed. Future slices are prepared after accepted prerequisites.
+S01 is accepted and S02 is detailed/issued. Future slices are prepared after accepted prerequisites.
 If any slice exceeds one context with repair headroom, split it explicitly while
 retaining every original criterion and owner; do not reduce schema coverage.
 
@@ -61,7 +61,7 @@ full-corpus acquisition. The final fixture must include:
   `sie`, dot, curly apostrophe, `y`, case and diphthong distinctions; multiword
   `le jaica` intact. Do not resolve semantics or word class by spelling alone.
 
-For S03 compare the complete ordered occurrence reference to unpaged and all
+For current S04 (original S03) compare the complete ordered occurrence reference to unpaged and all
 positive-size page concatenations, including sizes 1 and several; size 0 has real
 totals and no rows. Count occurrence multiplicity and full source groups before
 limits; disclose partial groups. Reject malformed/stale cursors and explicit
@@ -93,7 +93,7 @@ An independent reviewer verifies each implementation; the author cannot accept
 her own repair. Arc close additionally demonstrates registry → persisted fixture →
 grouped Rust/CLI lookup → all pages → removal/re-add/revision transitions, then
 walks the arc ledger and bubbles findings into the project. Do not substitute
-three child verdicts for that composition demonstration. Retrospectives apply if
+four child verdicts for that composition demonstration. Retrospectives apply if
 execution is activated in Autonomous Mode; no close records are pre-created.
 
 ## Historical first-slice criteria and their new owners
@@ -104,20 +104,16 @@ research bundle. Its seven criteria are redistributed, not discarded:
 | Historical research Arc03/S01 row | New implementation owner |
 | --- | --- |
 | S01-01 — registry, attribution, aliases | A01 S01, especially S01-01/S01-02/S01-05. |
-| S01-02 — thorough schema and raw-preserving extensions | A01 S02; all twelve design.md coverage areas. |
-| S01-03 — all-source grouped exact assertions | A01 S03, including contributor/distribution locators and owned fixture. |
-| S01-04 — filters, full counts, deterministic occurrence pages | A01 S03; full unpaged reference and stale-query controls. |
-| S01-05 — stable links/history through removal and owned fixture changes | A01 S02 catalogue/revision model plus S03 transition controls; A05 implements production editing. |
-| S01-06 — source/computed/unknown distinctions | A01 S01 preservation, S02 schema, S03 query eligibility/explanations. |
+| S01-02 — thorough schema and raw-preserving extensions | Current A01 S02 typed model + S03 relational persistence; all twelve design.md coverage areas. |
+| S01-03 — all-source grouped exact assertions | Current A01 S04 (original S03), including contributor/distribution locators and owned fixture. |
+| S01-04 — filters, full counts, deterministic occurrence pages | Current A01 S04 (original S03); full unpaged reference and stale-query controls. |
+| S01-05 — stable links/history through removal and owned fixture changes | Current A01 S02 catalogue/revision model + S03 persistence + S04 transition controls; A05 implements production editing. |
+| S01-06 — source/computed/unknown distinctions | Current A01 S01 preservation, S02/S03 model/persistence, S04 query eligibility/explanations. |
 | S01-07 — public caller, docs, Rust/schema and independent gates | Every affected slice plus A01-04's fresh composition demonstration. |
 
 ## Source-readiness and next action
 
-S01's bounded baseline inspection is recorded in its plan. Before its eventual CC
-assignment, finish the concrete API/ID/serde/error decisions, applicable Rust guide
-intake and source/test readiness. Do not delegate unresolved domain semantics to an
-implementer with a list of acceptance rows. Later DDL/query choices are owned by
-their respective slice readiness; no topology decision is required for S01.
+S01's baseline inspection and independent acceptance are recorded in its close set. S02 readiness and its issued assignment are in the current child plan and cc-prompt.md. Later DDL/query choices belong to S03/S04 readiness after accepted predecessors. Do not delegate unresolved domain semantics to an implementer with a list of acceptance rows. No physical topology decision is required for the foundation fixture.
 
 ## Version history
 
@@ -138,3 +134,5 @@ S01 delivered registry/attribution at11ec701 after one refinement; all7 rows ind
 Original S02 → new S02/S03; original S03 → new S04. No criterion, test family, schema area, full fixture/control, public caller or independent gate is dropped. A01-02 closes only after both typed model and relational persistence; A01-03's grouped lookup owner is now S04. A01-04 composition walks all four accepted children, still demonstrating registry→persisted fixture→grouped Rust/CLI→all pages→removal/re-add/owned revision. Opaque/unsupported raw rows need a typed preservation/eligibility home before A02; the existing strict Lexicon parser remains unchanged. Missing catalogue data is explicit and cannot masquerade as available zero matches.
 
 -1.3 —2026-10-24: CDC split original S02 into model and persistence after actual source/model sizing; root acknowledged the preserved four-slice endpoint. Added explicit old/new owner map and retained historical breakdown.
+
+-1.4 —2026-10-24: S02 assignment issued at0b26224; reconciled current owner/status prose and original seven-row mapping with the four-slice split. Historical initial breakdown and S01-time bubble-up remain preserved.
