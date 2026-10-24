@@ -1002,14 +1002,159 @@ fn sql_role_presence_foreign_key_and_unique_constraints_are_real() {
         conn.execute(&sql, [kind, target_id])
             .unwrap_or_else(|error| panic!("valid {kind} form target rejected: {error}"));
     }
-    conn.execute_batch("ROLLBACK;").unwrap();
+    conn.execute_batch("COMMIT;").unwrap();
+    let foreign_key_violations = conn
+        .prepare("PRAGMA foreign_key_check")
+        .unwrap()
+        .query_map([], |row| row.get::<_, String>(0))
+        .unwrap()
+        .collect::<rusqlite::Result<Vec<_>>>()
+        .unwrap();
+    assert!(
+        foreign_key_violations.is_empty(),
+        "committed role rows have foreign-key violations: {foreign_key_violations:?}"
+    );
     drop(conn);
+
+    type ComponentRow = (
+        i64,
+        i64,
+        String,
+        Option<String>,
+        Option<String>,
+        Option<String>,
+        Option<String>,
+    );
+    fn read_components(
+        db: &std::path::Path,
+        table: &str,
+        parent_column: &str,
+        parent_id: &str,
+    ) -> Vec<ComponentRow> {
+        let conn = Connection::open(db).unwrap();
+        let sql = format!(
+            "SELECT ordinal,component_order,target_kind,target_entry_id,target_assertion_id,target_form_id,target_editorial_sense_id FROM {table} WHERE {parent_column}=?1 AND ordinal BETWEEN 900 AND 903 ORDER BY ordinal"
+        );
+        conn.prepare(&sql)
+            .unwrap()
+            .query_map([parent_id], |row| {
+                Ok((
+                    row.get(0)?,
+                    row.get(1)?,
+                    row.get(2)?,
+                    row.get(3)?,
+                    row.get(4)?,
+                    row.get(5)?,
+                    row.get(6)?,
+                ))
+            })
+            .unwrap()
+            .collect::<rusqlite::Result<Vec<_>>>()
+            .unwrap()
+    }
+    let expected: Vec<ComponentRow> = vec![
+        (
+            900,
+            900,
+            "Entry".into(),
+            Some("entry-a-si-e".into()),
+            None,
+            None,
+            None,
+        ),
+        (
+            901,
+            901,
+            "Assertion".into(),
+            None,
+            Some("assertion-0".into()),
+            None,
+            None,
+        ),
+        (
+            902,
+            902,
+            "Form".into(),
+            None,
+            None,
+            Some("form-assigned".into()),
+            None,
+        ),
+        (
+            903,
+            903,
+            "EditorialSense".into(),
+            None,
+            None,
+            None,
+            Some("editorial-farvi".into()),
+        ),
+    ];
+    assert_eq!(
+        read_components(&db, "etymology_components", "etymology_id", "etymology-0"),
+        expected,
+        "committed etymology component rows retain their exact role payloads"
+    );
+    assert_eq!(
+        read_components(&db, "form_components", "form_id", "form-components"),
+        expected,
+        "committed form component rows retain their exact role payloads"
+    );
 
     let (_case, db) = fresh_db(&base, "role-negative");
     let conn = Connection::open(&db).unwrap();
     code(conn.execute("INSERT INTO form_components(form_id,ordinal,component_order,spelling,target_kind,target_entry_id) VALUES('form-assigned',900,900,'bad','Entry','form-assigned')", []).map(|_| ()), 787, "cross-role target foreign key");
     drop(conn);
 
+    fs::remove_dir_all(base).unwrap();
+}
+
+#[test]
+fn metadata_query_missing_required_columns_is_format_without_writing() {
+    let base = scratch();
+    for (name, alteration) in [
+        (
+            "missing-value-column",
+            "ALTER TABLE metadata RENAME COLUMN value TO other_value",
+        ),
+        (
+            "missing-key-column",
+            "ALTER TABLE metadata RENAME COLUMN key TO other_key",
+        ),
+        ("missing-table", "DROP TABLE metadata"),
+    ] {
+        let source = base.join(format!("source-{name}"));
+        let store = DictionaryStore::create(&source, &fixture_support::complete_fixture().unwrap())
+            .unwrap();
+        let source_db = store.database_path();
+        drop(store);
+
+        let case = base.join(format!("case-{name}"));
+        fs::create_dir(&case).unwrap();
+        let db = case.join("dictionary.sqlite3");
+        fs::copy(source_db, &db).unwrap();
+        let conn = Connection::open(&db).unwrap();
+        conn.execute_batch(alteration).unwrap();
+        drop(conn);
+        let before = fs::read(&db).unwrap();
+
+        let error = DictionaryStore::open(&case).expect_err(name);
+        assert!(
+            matches!(
+                error,
+                DictionaryStoreError::InvalidStore {
+                    reason: vlajmaji_store::DictionaryStoreInvalidity::Format,
+                    ..
+                }
+            ),
+            "{name}: expected the typed Format category, got {error:?}"
+        );
+        assert_eq!(
+            fs::read(&db).unwrap(),
+            before,
+            "{name} changed the database"
+        );
+    }
     fs::remove_dir_all(base).unwrap();
 }
 

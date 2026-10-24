@@ -326,6 +326,18 @@ fn read_metadata(
             "metadata table is missing",
         ));
     }
+    let has_required_columns = {
+        let shape = conn.prepare("SELECT * FROM metadata LIMIT 0")?;
+        let names = shape.column_names();
+        names.iter().any(|name| name.eq_ignore_ascii_case("key"))
+            && names.iter().any(|name| name.eq_ignore_ascii_case("value"))
+    };
+    if !has_required_columns {
+        return Err(invalid(
+            DictionaryStoreInvalidity::Format,
+            "metadata table is missing a required key/value column",
+        ));
+    }
     let mut stmt = conn.prepare("SELECT key,value FROM metadata ORDER BY key")?;
     let rows = stmt.query_map([], |r| Ok((r.get::<_, Value>(0)?, r.get::<_, Value>(1)?)))?;
     let mut result = std::collections::BTreeMap::new();
