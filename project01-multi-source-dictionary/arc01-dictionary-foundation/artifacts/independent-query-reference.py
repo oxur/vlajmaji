@@ -71,6 +71,16 @@ def transitions(d):
     variants['renamed-paths']=x
     return variants
 
+def transition_sequence(d):
+    """Fixture revisions distinguish reinstall state while immutable capture/occurrence IDs stay fixed."""
+    result={}
+    result['disabled-a']=transitions(d)['disabled-a'];result['disabled-a']['metadata']['catalogue_revision']=2
+    result['removed-a']=transitions(d)['removed-a'];result['removed-a']['metadata']['catalogue_revision']=3
+    result['readded-a']=copy.deepcopy(d);result['readded-a']['metadata']['catalogue_revision']=4
+    result['owned-r2']=transitions(result['readded-a'])['owned-r2'];result['owned-r2']['metadata']['catalogue_revision']=5
+    result['renamed-paths']=transitions(result['owned-r2'])['renamed-paths'];result['renamed-paths']['metadata']['catalogue_revision']=6
+    return result
+
 def main():
     d=json.loads(pathlib.Path(sys.argv[1]).read_bytes());root=pathlib.Path(sys.argv[2]);root.mkdir(exist_ok=True)
     queries=['farvi',"si'e",'sie',"Si'e",'si’e',".si'e",'sy','bai','le jaica','cpana','cpan','snime','snim','never-a-word']

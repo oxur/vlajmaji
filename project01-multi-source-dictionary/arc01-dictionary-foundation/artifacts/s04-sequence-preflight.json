@@ -1,0 +1,743 @@
+{
+  "purpose": "prepared fixture input/persistence and independent model-scan references; no query product call",
+  "source_binary": "b29ac8c unique R1 public caller",
+  "baseline_sha256": "c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55",
+  "rows": [
+    {
+      "name": "disabled-a",
+      "catalogue_revision": 2,
+      "canonical_sha256": "f9a905cde64a239844f9b8394e56113e16230a418524bc38ff7c882089f46407",
+      "persistence": "OK CREATE 132945",
+      "sql": {
+        "tables": 47,
+        "expected_cells": 3213,
+        "failures": 0,
+        "details": []
+      },
+      "prospective_farvi_reference": {
+        "query": "farvi",
+        "total_occurrences": 2,
+        "distinct_spellings": 1,
+        "source_totals": {
+          "source-b": 1,
+          "source-o": 1
+        },
+        "rows": [
+          {
+            "source": "source-b",
+            "spelling": "farvi",
+            "assertion_id": "assertion-4",
+            "occurrence_id": "000000000000000d63617074757265643a623a643100000000000000403735653363356139636364313339396232306634653839386165333639386536646666376235666665333136646462376338303137663238643263323530383800000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:b:d1",
+                "sha256": "75e3c5a9ccd1399b20f4e898ae3698e6dff7b5ffe316ddb7c8017f28d2c25088"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-b"
+            ],
+            "definition": {
+              "Value": {
+                "text": "a competing synthetic definition",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": "Missing"
+          },
+          {
+            "source": "source-o",
+            "spelling": "farvi",
+            "assertion_id": "assertion-17",
+            "occurrence_id": "000000000000000a6f776e65643a6f3a723100000000000000406665343835366565646163303339626436396531353831343339623531306138376335333738383265643137656438613331636339633432663434366530633900000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "owned:o:r1",
+                "sha256": "fe4856eedac039bd69e1581439b510a87c537882ed17ed8a31cc9c42f446e0c9"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-o1"
+            ],
+            "definition": {
+              "Value": {
+                "text": "owned first wording",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": "Missing"
+          }
+        ]
+      }
+    },
+    {
+      "name": "removed-a",
+      "catalogue_revision": 3,
+      "canonical_sha256": "f689ce88dd8dab0e6b659ad188e6c85c3c7abcbb9d77feafa455c07c3463a89a",
+      "persistence": "OK CREATE 40209",
+      "sql": {
+        "tables": 47,
+        "expected_cells": 2184,
+        "failures": 0,
+        "details": []
+      },
+      "prospective_farvi_reference": {
+        "query": "farvi",
+        "total_occurrences": 2,
+        "distinct_spellings": 1,
+        "source_totals": {
+          "source-b": 1,
+          "source-o": 1
+        },
+        "rows": [
+          {
+            "source": "source-b",
+            "spelling": "farvi",
+            "assertion_id": "assertion-4",
+            "occurrence_id": "000000000000000d63617074757265643a623a643100000000000000403735653363356139636364313339396232306634653839386165333639386536646666376235666665333136646462376338303137663238643263323530383800000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:b:d1",
+                "sha256": "75e3c5a9ccd1399b20f4e898ae3698e6dff7b5ffe316ddb7c8017f28d2c25088"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-b"
+            ],
+            "definition": {
+              "Value": {
+                "text": "a competing synthetic definition",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": "Missing"
+          },
+          {
+            "source": "source-o",
+            "spelling": "farvi",
+            "assertion_id": "assertion-17",
+            "occurrence_id": "000000000000000a6f776e65643a6f3a723100000000000000406665343835366565646163303339626436396531353831343339623531306138376335333738383265643137656438613331636339633432663434366530633900000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "owned:o:r1",
+                "sha256": "fe4856eedac039bd69e1581439b510a87c537882ed17ed8a31cc9c42f446e0c9"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-o1"
+            ],
+            "definition": {
+              "Value": {
+                "text": "owned first wording",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": "Missing"
+          }
+        ]
+      }
+    },
+    {
+      "name": "readded-a",
+      "catalogue_revision": 4,
+      "canonical_sha256": "e699bcdf212c44fe7a59ed1de4187f5d9183444cf96a4691e3f09a6f98f35128",
+      "persistence": "OK CREATE 132946",
+      "sql": {
+        "tables": 47,
+        "expected_cells": 3213,
+        "failures": 0,
+        "details": []
+      },
+      "prospective_farvi_reference": {
+        "query": "farvi",
+        "total_occurrences": 6,
+        "distinct_spellings": 1,
+        "source_totals": {
+          "source-a": 4,
+          "source-b": 1,
+          "source-o": 1
+        },
+        "rows": [
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-0",
+            "occurrence_id": "000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d1",
+                "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "1.0"
+            }
+          },
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-1",
+            "occurrence_id": "000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f31",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d1",
+                "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+              },
+              "locator": "/1"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "1.0"
+            }
+          },
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-2",
+            "occurrence_id": "000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f32",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d1",
+                "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+              },
+              "locator": "/2"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_{1}$ develops/evolves towards/into $x_{2}$ from $x_{3}$ through stages $x_{4}$.",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "100002.0"
+            }
+          },
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-3",
+            "occurrence_id": "000000000000000d63617074757265643a613a643200000000000000406530366331393433373766663163373565396163386630366237343431383733373930663461393538333330373931376537363530623964306132623834353800000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d2",
+                "sha256": "e06c194377ff1c75e9ac8f06b7441873790f4a9583307917e7650b9d0a2b8458"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "1.0"
+            }
+          },
+          {
+            "source": "source-b",
+            "spelling": "farvi",
+            "assertion_id": "assertion-4",
+            "occurrence_id": "000000000000000d63617074757265643a623a643100000000000000403735653363356139636364313339396232306634653839386165333639386536646666376235666665333136646462376338303137663238643263323530383800000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:b:d1",
+                "sha256": "75e3c5a9ccd1399b20f4e898ae3698e6dff7b5ffe316ddb7c8017f28d2c25088"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-b"
+            ],
+            "definition": {
+              "Value": {
+                "text": "a competing synthetic definition",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": "Missing"
+          },
+          {
+            "source": "source-o",
+            "spelling": "farvi",
+            "assertion_id": "assertion-17",
+            "occurrence_id": "000000000000000a6f776e65643a6f3a723100000000000000406665343835366565646163303339626436396531353831343339623531306138376335333738383265643137656438613331636339633432663434366530633900000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "owned:o:r1",
+                "sha256": "fe4856eedac039bd69e1581439b510a87c537882ed17ed8a31cc9c42f446e0c9"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-o1"
+            ],
+            "definition": {
+              "Value": {
+                "text": "owned first wording",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": "Missing"
+          }
+        ]
+      }
+    },
+    {
+      "name": "owned-r2",
+      "catalogue_revision": 5,
+      "canonical_sha256": "7f5717e49f6c4cebb15393a2022c917a569ed0b63449496a99302156ef517872",
+      "persistence": "OK CREATE 132946",
+      "sql": {
+        "tables": 47,
+        "expected_cells": 3213,
+        "failures": 0,
+        "details": []
+      },
+      "prospective_farvi_reference": {
+        "query": "farvi",
+        "total_occurrences": 6,
+        "distinct_spellings": 1,
+        "source_totals": {
+          "source-a": 4,
+          "source-b": 1,
+          "source-o": 1
+        },
+        "rows": [
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-0",
+            "occurrence_id": "000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d1",
+                "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "1.0"
+            }
+          },
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-1",
+            "occurrence_id": "000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f31",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d1",
+                "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+              },
+              "locator": "/1"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "1.0"
+            }
+          },
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-2",
+            "occurrence_id": "000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f32",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d1",
+                "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+              },
+              "locator": "/2"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_{1}$ develops/evolves towards/into $x_{2}$ from $x_{3}$ through stages $x_{4}$.",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "100002.0"
+            }
+          },
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-3",
+            "occurrence_id": "000000000000000d63617074757265643a613a643200000000000000406530366331393433373766663163373565396163386630366237343431383733373930663461393538333330373931376537363530623964306132623834353800000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d2",
+                "sha256": "e06c194377ff1c75e9ac8f06b7441873790f4a9583307917e7650b9d0a2b8458"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "1.0"
+            }
+          },
+          {
+            "source": "source-b",
+            "spelling": "farvi",
+            "assertion_id": "assertion-4",
+            "occurrence_id": "000000000000000d63617074757265643a623a643100000000000000403735653363356139636364313339396232306634653839386165333639386536646666376235666665333136646462376338303137663238643263323530383800000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:b:d1",
+                "sha256": "75e3c5a9ccd1399b20f4e898ae3698e6dff7b5ffe316ddb7c8017f28d2c25088"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-b"
+            ],
+            "definition": {
+              "Value": {
+                "text": "a competing synthetic definition",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": "Missing"
+          },
+          {
+            "source": "source-o",
+            "spelling": "farvi",
+            "assertion_id": "assertion-18",
+            "occurrence_id": "000000000000000a6f776e65643a6f3a723200000000000000403364323638616139333532663061646632323830396138633162313765353463356362366438633236643038633861613865316434353439323264396162333500000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "owned:o:r2",
+                "sha256": "3d268aa9352f0adf22809a8c1b17e54c5cb6d8c26d08c8aa8e1d454922d9ab35"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-o2"
+            ],
+            "definition": {
+              "Value": {
+                "text": "owned revised wording",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": "Missing"
+          }
+        ]
+      }
+    },
+    {
+      "name": "renamed-paths",
+      "catalogue_revision": 6,
+      "canonical_sha256": "0c6f69cf6e838b0e7b1d0d3c07816235ea2e226b779fc59662a6daa102321282",
+      "persistence": "OK CREATE 71858",
+      "sql": {
+        "tables": 47,
+        "expected_cells": 3218,
+        "failures": 0,
+        "details": []
+      },
+      "prospective_farvi_reference": {
+        "query": "farvi",
+        "total_occurrences": 6,
+        "distinct_spellings": 1,
+        "source_totals": {
+          "source-a": 4,
+          "source-b": 1,
+          "source-o": 1
+        },
+        "rows": [
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-0",
+            "occurrence_id": "000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d1",
+                "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "1.0"
+            }
+          },
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-1",
+            "occurrence_id": "000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f31",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d1",
+                "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+              },
+              "locator": "/1"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "1.0"
+            }
+          },
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-2",
+            "occurrence_id": "000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f32",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d1",
+                "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+              },
+              "locator": "/2"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_{1}$ develops/evolves towards/into $x_{2}$ from $x_{3}$ through stages $x_{4}$.",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "100002.0"
+            }
+          },
+          {
+            "source": "source-a",
+            "spelling": "farvi",
+            "assertion_id": "assertion-3",
+            "occurrence_id": "000000000000000d63617074757265643a613a643200000000000000406530366331393433373766663163373565396163386630366237343431383733373930663461393538333330373931376537363530623964306132623834353800000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:a:d2",
+                "sha256": "e06c194377ff1c75e9ac8f06b7441873790f4a9583307917e7650b9d0a2b8458"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-a"
+            ],
+            "definition": {
+              "Value": {
+                "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": {
+              "Value": "1.0"
+            }
+          },
+          {
+            "source": "source-b",
+            "spelling": "farvi",
+            "assertion_id": "assertion-4",
+            "occurrence_id": "000000000000000d63617074757265643a623a643100000000000000403735653363356139636364313339396232306634653839386165333639386536646666376235666665333136646462376338303137663238643263323530383800000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:b:d1",
+                "sha256": "75e3c5a9ccd1399b20f4e898ae3698e6dff7b5ffe316ddb7c8017f28d2c25088"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-b"
+            ],
+            "definition": {
+              "Value": {
+                "text": "a competing synthetic definition",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": "Missing"
+          },
+          {
+            "source": "source-o",
+            "spelling": "farvi",
+            "assertion_id": "assertion-18",
+            "occurrence_id": "000000000000000a6f776e65643a6f3a723200000000000000403364323638616139333532663061646632323830396138633162313765353463356362366438633236643038633861613865316434353439323264396162333500000000000000022f30",
+            "occurrence": {
+              "capture": {
+                "namespace": "owned:o:r2",
+                "sha256": "3d268aa9352f0adf22809a8c1b17e54c5cb6d8c26d08c8aa8e1d454922d9ab35"
+              },
+              "locator": "/0"
+            },
+            "releases": [
+              "release-o2"
+            ],
+            "definition": {
+              "Value": {
+                "text": "owned revised wording",
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing"
+              }
+            },
+            "native_sense_id": "Missing",
+            "source_score": "Missing"
+          }
+        ]
+      }
+    }
+  ]
+}
