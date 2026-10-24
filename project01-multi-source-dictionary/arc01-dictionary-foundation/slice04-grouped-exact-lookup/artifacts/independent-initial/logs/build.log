@@ -1,0 +1,21 @@
+Vlajmaji Arc01 Cargo target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling dictionary-lookup-s04-cdc-initial-controls v0.0.0 (/tmp/vlajmaji-p01-a01-s04-cdc-initial-public)
+warning: unreachable pattern
+  --> src/main.rs:29:3
+   |
+29 |   _=>panic!("unexpected future request")
+   |   ^ no value can reach this
+   |
+note: multiple earlier patterns match some of the same values
+  --> src/main.rs:29:3
+   |
+27 |   DictionaryRequest::Exact{spelling,options}=>serde_json::to_value(engine.exact(&spelling,options).unwrap_or_else(|e|error(e))).unwr...
+   |   ------------------------------------------ matches some of the same values
+28 |   DictionaryRequest::Resolve{target}=>serde_json::to_value(engine.resolve(&target).unwrap_or_else(|e|error(e))).unwrap(),
+   |   ---------------------------------- matches some of the same values
+29 |   _=>panic!("unexpected future request")
+   |   ^ collectively making this unreachable
+   = note: `#[warn(unreachable_patterns)]` (part of `#[warn(unused)]`) on by default
+
+warning: `dictionary-lookup-s04-cdc-initial-controls` (bin "dictionary-lookup-s04-cdc-initial-controls") generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.43s

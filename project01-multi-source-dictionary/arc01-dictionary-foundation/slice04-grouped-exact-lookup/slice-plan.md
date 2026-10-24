@@ -3,11 +3,11 @@
 | Field | Value |
 | --- | --- |
 | project / arc / slice | project01-multi-source-dictionary / arc01-dictionary-foundation / slice04-grouped-exact-lookup |
-| status | initial assignment ready; implementation and independent acceptance pending |
+| status | initial ba580d0 independently failed narrow F1index/doc requirement; refinement01active |
 | predecessor / baseline | accepted S03 source01a9ceb3bd6925d5cae583d38e2683046a3c1dea; S02 37c3518; S01 11ec701 |
 | source | feature/project01-dictionary-foundation, /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji |
-| current assignment | cc-prompt.md, reused selected OpenAI gpt-6-luna/high CC /root/cdc/p02a02_cc |
-| version / date | 1.0 /2026-10-24 |
+| current assignment | cc-prompt-iteration01.md, reused selected OpenAI gpt-6-luna/high CC /root/cdc/p02a02_cc |
+| version / date | 1.1 /2026-10-24 |
 
 ## Useful capability and boundary
 
@@ -87,3 +87,10 @@ Required final gates serialized at exact final source: focused search and CLI di
 Source allowlist13paths: crates/store/src/dictionary.rs; crates/search/src/dictionary.rs; crates/search/src/lib.rs; crates/search/tests/dictionary_contract.rs; crates/search/examples/dictionary_lookup.rs; crate/cli/src/main.rs; crate/cli/tests/dictionary_contract.rs; crates/store/README.md; crates/search/README.md; crate/cli/README.md; docs/dictionary-query.md; README.md; CHANGELOG.md (unreleased0.2 only). Only additive named store candidate API plus tests within search integration; no old tests/DDL/model/registry/helper/manifests/locks/assets/Bauske writes. Example accepts INPUT_JSON FRESH_STORE and uses public build/drop/open/exact/pages/reference APIs. Public engine summary accessors above keep CLI thin.
 
 CDC owns all planning/index/acceptance; CC may append ONLY artifacts/cc-execution.md with actual read extents/readback, complete attempts/failures/proposed8rows, exact source/planning paths, artifact/gate inventories and specified-versus-delivered/bubble-up comparison. Canonical ledgers stay OPEN until independent CDC disposition. Preserve every issued prompt, at most5repairiterations; no acceptance/close/retro records precreated. No push/PR/merge/publication/import/network/corpus/editor/package-manager/external messaging/scheduling.
+
+## Assignment history / refinement01
+
+-2026-10-24 initial cc-prompt.md issued at b726a5a on accepted01a9ceb3; returned frozen ba580d0. Independent275/275behavior+allgates pass; source F1computation association index and NoMatch doc remain open, verdict in cdc-verification.md. Initial prompt and all prospective controls unchanged.
+-2026-10-24 cc-prompt-iteration01.md issued from ba580d0 for ONLY crates/search/src/dictionary.rs and crates/search/tests/dictionary_contract.rs, implementing the existing keyed association constraint and truthful status doc. Recommended private representation ID→(metadata ordinal,record), keyed selected retrieval then ordinal sort; runtime output/schema/API unchanged. One of five refinements used. Complete source/gates/runtime revalidation before independent disposition; no raw-getter redesign, benchmark or other scope change.
+
+Readiness: CDC inspected full current1803-line module and402-line tests, actual source map/Vec use and all275public+realCLI outcomes/current gates. Relevant Rust collection/ownership/documentation guidance supports borrowed keyed selected retrieval, output-owned cloning and accurate status docs; source contract rather than benchmark dictates index. No external dependency/API uncertainty or Operator-reserved decision. Existing tests/ordered source-only oracle provide output positives; static source review proves the keyed mechanism, no mirror/introspection tests.

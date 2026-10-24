@@ -1,0 +1,47 @@
+{
+  "source": "ba580d0f0792ef38a5d1a4ab090c3925dfe7914e",
+  "query": "SELECT a.id FROM entries AS e JOIN assertions AS a ON a.entry_id = e.id WHERE e.spelling_state = 'value' AND e.spelling_value = ?1 COLLATE BINARY AND a.eligibility = 'Lexical' ORDER BY e.source_id COLLATE BINARY, e.spelling_value COLLATE BINARY, a.occurrence_id COLLATE BINARY",
+  "plan": [
+    [
+      6,
+      0,
+      0,
+      "SEARCH e USING INDEX idx_entries_spelling (spelling_value=?)"
+    ],
+    [
+      15,
+      0,
+      0,
+      "SEARCH a USING INDEX idx_assertions_entry (entry_id=?)"
+    ],
+    [
+      30,
+      0,
+      0,
+      "USE TEMP B-TREE FOR ORDER BY"
+    ]
+  ],
+  "candidates": [
+    [
+      "assertion-0"
+    ],
+    [
+      "assertion-1"
+    ],
+    [
+      "assertion-2"
+    ],
+    [
+      "assertion-3"
+    ],
+    [
+      "assertion-4"
+    ],
+    [
+      "assertion-17"
+    ],
+    [
+      "assertion-18"
+    ]
+  ]
+}

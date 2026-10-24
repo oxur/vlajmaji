@@ -1,0 +1,165 @@
+{
+  "records": [
+    {
+      "name": "public:default:alias-ambiguity",
+      "status": "PASS",
+      "details": {
+        "rows": 6
+      }
+    },
+    {
+      "name": "public:retired-collision:ActiveOnly",
+      "status": "PASS",
+      "details": {
+        "code": "unknown_source"
+      }
+    },
+    {
+      "name": "public:retired-collision:IncludeRetired",
+      "status": "PASS",
+      "details": {
+        "code": "ambiguous_alias"
+      }
+    },
+    {
+      "name": "cli:default:alias-ambiguity",
+      "status": "PASS",
+      "details": {
+        "rows": 6
+      }
+    },
+    {
+      "name": "cli:retired-collision:ActiveOnly",
+      "status": "PASS",
+      "details": {
+        "code": "unknown_source"
+      }
+    },
+    {
+      "name": "cli:retired-collision:IncludeRetired",
+      "status": "PASS",
+      "details": {
+        "code": "ambiguous_alias"
+      }
+    },
+    {
+      "name": "public:default:overlap",
+      "status": "PASS",
+      "details": {
+        "rows": 6
+      }
+    },
+    {
+      "name": "cli:default:overlap",
+      "status": "PASS",
+      "details": {
+        "rows": 6
+      }
+    },
+    {
+      "name": "public:default:mixed",
+      "status": "PASS",
+      "details": {
+        "rows": 6
+      }
+    },
+    {
+      "name": "cli:default:mixed",
+      "status": "PASS",
+      "details": {
+        "rows": 6
+      }
+    },
+    {
+      "name": "public:default:no-owned-head",
+      "status": "PASS",
+      "details": {
+        "rows": 5
+      }
+    },
+    {
+      "name": "public:nohead-unavailable",
+      "status": "PASS",
+      "details": {
+        "code": "unavailable_source",
+        "reason_expected": "NoOwnedHead"
+      }
+    },
+    {
+      "name": "cli:default:no-owned-head",
+      "status": "PASS",
+      "details": {
+        "rows": 5
+      }
+    },
+    {
+      "name": "cli:nohead-unavailable",
+      "status": "PASS",
+      "details": {
+        "code": "unavailable_source",
+        "reason_expected": "NoOwnedHead"
+      }
+    },
+    {
+      "name": "public:default:no-releases",
+      "status": "PASS",
+      "details": {
+        "rows": 6
+      }
+    },
+    {
+      "name": "public:noreleases-unavailable",
+      "status": "PASS",
+      "details": {
+        "code": "unavailable_source",
+        "reason_expected": "NoReleases"
+      }
+    },
+    {
+      "name": "cli:default:no-releases",
+      "status": "PASS",
+      "details": {
+        "rows": 6
+      }
+    },
+    {
+      "name": "cli:noreleases-unavailable",
+      "status": "PASS",
+      "details": {
+        "code": "unavailable_source",
+        "reason_expected": "NoReleases"
+      }
+    },
+    {
+      "name": "public:default:available-zero",
+      "status": "PASS",
+      "details": {
+        "rows": 6
+      }
+    },
+    {
+      "name": "public:available-zero-selected",
+      "status": "PASS",
+      "details": {
+        "empty": true
+      }
+    },
+    {
+      "name": "cli:default:available-zero",
+      "status": "PASS",
+      "details": {
+        "rows": 6
+      }
+    },
+    {
+      "name": "cli:available-zero-selected",
+      "status": "PASS",
+      "details": {
+        "empty": true
+      }
+    }
+  ],
+  "summary": {
+    "PASS": 22
+  }
+}

@@ -1,0 +1,11 @@
+[package]
+name = "dictionary-lookup-s04-cdc-initial-controls"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+vlajmaji-search = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji/crates/search" }
+serde_json = "=1.0.151"

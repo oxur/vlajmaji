@@ -1,0 +1,43 @@
+{
+  "source_head": "ba580d0f0792ef38a5d1a4ab090c3925dfe7914e",
+  "caller": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/dictionary-lookup-s04-cdc-initial-controls",
+  "cli": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+  "fixture": "/tmp/vlajmaji-p01-a01-s04-cdc-initial-fixture.json",
+  "jobs": [
+    {
+      "name": "main",
+      "exit": 0,
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-initial-main.log"
+    },
+    {
+      "name": "variants",
+      "exit": 0,
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-initial-variants.log"
+    },
+    {
+      "name": "header",
+      "exit": 0,
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-initial-header.log"
+    },
+    {
+      "name": "references",
+      "exit": 0,
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-initial-references.log"
+    },
+    {
+      "name": "legacy",
+      "exit": 0,
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-initial-legacy.log"
+    },
+    {
+      "name": "extension",
+      "exit": 0,
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-initial-extension.log"
+    },
+    {
+      "name": "ordered",
+      "exit": 0,
+      "log": "/tmp/vlajmaji-p01-a01-s04-cdc-initial-ordered.log"
+    }
+  ]
+}

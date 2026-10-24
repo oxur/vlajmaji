@@ -1,0 +1,87 @@
+{
+  "records": [
+    {
+      "name": "public:unresolved-space",
+      "status": "PASS"
+    },
+    {
+      "name": "public:unresolved-nul",
+      "status": "PASS"
+    },
+    {
+      "name": "public:opaque-entry",
+      "status": "PASS"
+    },
+    {
+      "name": "public:opaque-assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "public:rename-old-alias-active-only",
+      "status": "PASS"
+    },
+    {
+      "name": "public:rename-selector:a",
+      "status": "PASS"
+    },
+    {
+      "name": "public:rename-selector:a2",
+      "status": "PASS"
+    },
+    {
+      "name": "public:rename-selector:source-a",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:unresolved-space",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:unresolved-nul",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:opaque-entry",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:opaque-assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:rename-old-alias-active-only",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:rename-selector:a",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:rename-selector:a2",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:rename-selector:source-a",
+      "status": "PASS"
+    },
+    {
+      "name": "public:unavailable-known-mismatch:disabled-a",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:unavailable-known-mismatch:disabled-a",
+      "status": "PASS"
+    },
+    {
+      "name": "public:unavailable-known-mismatch:removed-a",
+      "status": "PASS"
+    },
+    {
+      "name": "cli:unavailable-known-mismatch:removed-a",
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "PASS": 20
+  }
+}
