@@ -9,7 +9,7 @@
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.4 / 2026-10-24, America/Chicago |
+| version / date | 1.5 / 2026-10-24, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -26,7 +26,7 @@ and explicit availability. Subsequent arcs make it work with full, independently
 selectable corpora and an editable dictionary of our own.
 
 The design and remaining decisions are in [design.md](design.md). Acceptance is in
-[ledger.md](ledger.md). Arc01 is detailed through three accepted foundation slices; its fourth query/CLI slice is next, while later arcs remain unactivated.
+[ledger.md](ledger.md). Arc01 now has four independently accepted children and a passed separate technical composition; final canonical packet gate is pending. Later arcs remain unactivated.
 
 ## Decisions already made
 
@@ -138,8 +138,8 @@ open. This plan neither completes them nor restarts the parked phonology arc.
 
 | Decision | Status / owner / gate |
 | --- | --- |
-| Concrete registry IDs, alias validation and source-lineage records | A01 S01, resolved in source-grounded readiness before a CC assignment. Existing IDs are preserved. |
-| Concrete DDL, archive/normalized version transition and standards mapping | A01 S02, CDC + Duncan for consequential choices; no incompatible silent upgrade. |
+| Concrete registry IDs, alias validation and source-lineage records | Resolved and independently accepted A01S01at11ec701; exact aliases/history/attribution compose at efef9c4. Existing IDs preserved. |
+| Concrete DDL, archive/normalized version transition and standards mapping | Resolved A01S02model37c3518+S03store01a9ceb3; explicit versions/legacy adapter/rebuild and standards loss register, independently composed. Production topology remainsA04. |
 | Full raw jbotci shape, observed counts, unknown/wiki-row eligibility | A02 importer; supplier counts are expectations to reconcile, not an oracle to force. |
 | Corpus component boundaries, common pack API and feature host | A03 before package assignments; separate source/distributor identities are already required. |
 | Unified SQLite / ATTACH / fanout, ranking policy and query consistency | A04 decision after correctness comparison, before dependent integration. No merging local FTS top-k as if ranks were global. |
@@ -158,7 +158,7 @@ On 2026-10-24 Duncan approved starting the first slice in Autonomous Mode and
 working straight through **Arc01 — Dictionary foundation**, explicitly selecting
 OpenAI **GPT 6.1 Sol High** for CDC and **GPT 6 Luna High** for CC. This supersedes
 the initial planning-only restriction for Arc01, not for the later project arcs.
-Endpoint: all three Arc01 slices, corrections, independent reviews, formal arc
+Endpoint: complete Arc01 through its four scope-preserving children (originally three), corrections, independent reviews, formal arc
 composition/close and CDC retrospectives; stop before opening Arc02.
 
 The selected workflow is CDC + CC. Root `/root` performs preflight/dispatch and
@@ -204,7 +204,7 @@ exact original paths, revisions, SHA-256 and byte sizes for every copied file.
 Old source pins and measurements remain dated evidence, not current service or
 performance claims. No full corpus, database or Cargo build cache was copied.
 
-Next: assigned CDC completes S04 grouped Rust/CLI lookup and separate independent Arc01composition/close under the recorded Autonomous authority. Planning existence and copy fidelity are not implementation acceptance.
+Next: finish the independent Arc01canonical packet gate and stop at the authorized endpoint; noA02opened. All4children and technical composition are accepted at efef9c4. Planning existence/copy fidelity alone are not implementation acceptance.
 
 ## Planning validation — initial draft checkpoint
 
@@ -239,7 +239,7 @@ Task output owner: `CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktree
 
 ## Arc01 current progress — 2026-10-24
 
-S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 typed model/JSON/exact legacy adapter is independently accepted37c3518 after preserved initial/R1 failures and two refinements; S03 relational persistence is independently accepted01a9ceb3after two refinements; S04 grouped lookup and the independent arc composition gate remain pending. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
+S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 typed model/JSON/exact legacy adapter is independently accepted37c3518 after preserved initial/R1 failures and two refinements; S03 relational persistence is independently accepted01a9ceb3after two refinements; S04 grouped lookup is accepted efef9c4after one refinement and separate technical composition passed at the same exact source. Final canonical packet gate remains before Arc01formal close. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
 
 Arc01 decomposition update (2026-10-24): original S02 now has typed-model S02 and persistence S03; original grouped S03 moves intact to S04. Root acknowledged this authorized split. Endpoint remains the full Arc01 foundation; all later arcs remain unactivated. Historical three-slice directive describes preserved capability scope, not permission to omit the fourth child introduced to retain implementation/review headroom.
 
@@ -248,3 +248,11 @@ Arc01 decomposition update (2026-10-24): original S02 now has typed-model S02 an
 -1.3 —2026-10-24: recorded independently accepted S02 model increment and retained complete Arc01 relational/query/composition endpoint; project/later-arc obligations remain open.
 
 -1.4 —2026-10-24: recorded independently accepted S03 relational persistence, all12schema areas and actual public/legacy/negative/current-gate evidence; S04 and all-four composition remain before Arc01endpoint. All14project rows/later arcs remain open.
+
+## Arc01 foundation bubble-up —2026-10-24
+
+All4children deliver the roadmap's fixture foundation, all33childrowsdone, original7criteria/12schema areas retained. Separate independent composition at efef9c4passed265actualRust/CLIcommands/2227harness checks; final canonical close-packet gate remains. Project stillOPEN/all14rowsOPEN. No new arc/scope/topology/linguistic inference or corpus substitution is required. Complete remaining-owner mapping is arc01-dictionary-foundation/closing-report.md; later A02rawimport,A03alloptionalcollections,A04unified/ATTACH/fanout comparison,A05productionownededitor/export,A06fullintegration and Duncan's projectacceptance remain.
+
+Feature source efef9c4includes inspected initial logo ancestry e0630d8but excludes later concurrent main ed64166README branding/b0777fcd25943d7887c40981e7f4896ec65b04ffLinux/macOSCI. Current main hasCI; no new push/workflow trigger/integration is authorized here. Main untrackedFinder files remain protected. Future integration must reconcile concurrent README/CI separately; no main/Bauske/publication action performed. Research41copybytes/hash/size remain verified as preservation evidence.
+
+-1.5 —2026-10-24: Arc01all4children and independent technical composition delivered the full foundation; current body/registry-DDL decisions/remaining project owners/main drift reconciled from actual accepted evidence. Final packet gate pending; no later arc activated or project row closed.

@@ -1,0 +1,3604 @@
+{
+  "source_head": "efef9c4e661e0b90f79abf4eab41148e095a8c36",
+  "reviewer": "/root/cdc",
+  "review_context": "reused independent Sol6.1High; no Arc01 authorship",
+  "files": [
+    {
+      "path": "task-records.tar.gz",
+      "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr",
+      "bytes": 1062971,
+      "sha256": "0ac1e43f4af3ddd3c021a09acdc971b6437a7248d0798722d6a14ea232c19ecd",
+      "members": [
+        {
+          "path": "000-baseline-public-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/000-baseline-public-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "000-baseline-public-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/000-baseline-public-create.stdout",
+          "bytes": 285,
+          "sha256": "48d4057297c42c8453d061ec27771bebeec397eb2c5ef852c270f67353eb731c"
+        },
+        {
+          "path": "001-baseline-cli-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/001-baseline-cli-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "001-baseline-cli-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/001-baseline-cli-create.stdout",
+          "bytes": 256,
+          "sha256": "9c300100b2a7c90f6a4c7284b5b0484973bbdb2726717a34c3d9fdc95e11d10d"
+        },
+        {
+          "path": "002-rust-baseline-002.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/002-rust-baseline-002.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "002-rust-baseline-002.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/002-rust-baseline-002.stdout",
+          "bytes": 31757,
+          "sha256": "1248ee49bd1d50775851e11fc18a872ba55db0f5fc77d11b05b678272aa8dddd"
+        },
+        {
+          "path": "003-rust-baseline-003.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/003-rust-baseline-003.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "003-rust-baseline-003.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/003-rust-baseline-003.stdout",
+          "bytes": 15777,
+          "sha256": "b9b9004f3cc3b20e26866e67f131c61899450c16837e7939600da1e99c3e19d3"
+        },
+        {
+          "path": "004-rust-baseline-004.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/004-rust-baseline-004.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "004-rust-baseline-004.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/004-rust-baseline-004.stdout",
+          "bytes": 15546,
+          "sha256": "7c3c4364bb3eac550915c360cbd7d13b8c7caf782515ca60b19240d6c18fcfd1"
+        },
+        {
+          "path": "005-rust-baseline-005.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/005-rust-baseline-005.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "005-rust-baseline-005.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/005-rust-baseline-005.stdout",
+          "bytes": 15520,
+          "sha256": "ed9f29f1cd1e4b0ae221aece5bc285a8d8e86d547fc7a75928bf8bc0ac4877bd"
+        },
+        {
+          "path": "006-rust-baseline-006.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/006-rust-baseline-006.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "006-rust-baseline-006.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/006-rust-baseline-006.stdout",
+          "bytes": 15539,
+          "sha256": "580b68819fe4f752d5600e65229e930466c33179d853616477175c09c4ffe325"
+        },
+        {
+          "path": "007-rust-baseline-007.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/007-rust-baseline-007.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "007-rust-baseline-007.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/007-rust-baseline-007.stdout",
+          "bytes": 13463,
+          "sha256": "5f4236631052b809adc4f32bdcd0f75d404f1ca2be5e5242a6390365eb5e2e01"
+        },
+        {
+          "path": "008-rust-baseline-008.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/008-rust-baseline-008.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "008-rust-baseline-008.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/008-rust-baseline-008.stdout",
+          "bytes": 12319,
+          "sha256": "0acbedd928058faa8f298f8b8f8678ceb421a4f45a9190848964f463fe63bf92"
+        },
+        {
+          "path": "009-rust-baseline-009.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/009-rust-baseline-009.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "009-rust-baseline-009.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/009-rust-baseline-009.stdout",
+          "bytes": 19953,
+          "sha256": "55cb7f75bc5736b9299db58fa4257c8faded8e9612ce9956d11b1db84ec57a32"
+        },
+        {
+          "path": "010-rust-baseline-010.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/010-rust-baseline-010.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "010-rust-baseline-010.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/010-rust-baseline-010.stdout",
+          "bytes": 19689,
+          "sha256": "2cd9362404f877f0059165473bea6cdad6d56dea4839133f92f18d5b99556e77"
+        },
+        {
+          "path": "011-rust-baseline-011.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/011-rust-baseline-011.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "011-rust-baseline-011.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/011-rust-baseline-011.stdout",
+          "bytes": 14633,
+          "sha256": "ea75fe1f02cd30afdb7c42b71d8db9e8be642ecb3fd7c3d044d69c76a20e7962"
+        },
+        {
+          "path": "012-rust-baseline-012.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/012-rust-baseline-012.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "012-rust-baseline-012.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/012-rust-baseline-012.stdout",
+          "bytes": 24103,
+          "sha256": "a4393056ad19e208e19a1272f59a4c1844b5f5da63fc4cf53b7b0e4fbfcfb508"
+        },
+        {
+          "path": "013-rust-baseline-013.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/013-rust-baseline-013.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "013-rust-baseline-013.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/013-rust-baseline-013.stdout",
+          "bytes": 19023,
+          "sha256": "b895a9d9345f86c64bf63644fc06b1634283e91c27571ae955d15bf0b177405a"
+        },
+        {
+          "path": "014-rust-baseline-014.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/014-rust-baseline-014.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "014-rust-baseline-014.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/014-rust-baseline-014.stdout",
+          "bytes": 28273,
+          "sha256": "ed39014b90b9f1c79bed3673a11027971b1ef074263c3aefbcd56025d1960774"
+        },
+        {
+          "path": "015-rust-baseline-015.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/015-rust-baseline-015.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "015-rust-baseline-015.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/015-rust-baseline-015.stdout",
+          "bytes": 14633,
+          "sha256": "ea75fe1f02cd30afdb7c42b71d8db9e8be642ecb3fd7c3d044d69c76a20e7962"
+        },
+        {
+          "path": "016-rust-baseline-016.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/016-rust-baseline-016.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "016-rust-baseline-016.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/016-rust-baseline-016.stdout",
+          "bytes": 30587,
+          "sha256": "99c58aead0d4cdb50fc382184c5c6c57e7a349ff5c7fc13287f8231774fb7915"
+        },
+        {
+          "path": "017-rust-baseline-017.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/017-rust-baseline-017.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "017-rust-baseline-017.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/017-rust-baseline-017.stdout",
+          "bytes": 12319,
+          "sha256": "0acbedd928058faa8f298f8b8f8678ceb421a4f45a9190848964f463fe63bf92"
+        },
+        {
+          "path": "018-rust-baseline-018.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/018-rust-baseline-018.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "018-rust-baseline-018.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/018-rust-baseline-018.stdout",
+          "bytes": 31757,
+          "sha256": "1248ee49bd1d50775851e11fc18a872ba55db0f5fc77d11b05b678272aa8dddd"
+        },
+        {
+          "path": "019-rust-baseline-019.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/019-rust-baseline-019.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "019-rust-baseline-019.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/019-rust-baseline-019.stdout",
+          "bytes": 10252,
+          "sha256": "3df535f907b13887ad986ea68d5653baf23a3b98bae2d4ecf2567839318312fa"
+        },
+        {
+          "path": "020-rust-baseline-020.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/020-rust-baseline-020.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "020-rust-baseline-020.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/020-rust-baseline-020.stdout",
+          "bytes": 15777,
+          "sha256": "b9b9004f3cc3b20e26866e67f131c61899450c16837e7939600da1e99c3e19d3"
+        },
+        {
+          "path": "021-rust-baseline-021.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/021-rust-baseline-021.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "021-rust-baseline-021.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/021-rust-baseline-021.stdout",
+          "bytes": 12474,
+          "sha256": "bb9c9ff39520fd9e70d21df86bbf0b9e24988b691f248aff579886668a1bb471"
+        },
+        {
+          "path": "022-rust-baseline-022.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/022-rust-baseline-022.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "022-rust-baseline-022.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/022-rust-baseline-022.stdout",
+          "bytes": 11317,
+          "sha256": "f02e9358e59a224ee489fa3ee1ca881241b41dac0a55bd69059f23230ad1780c"
+        },
+        {
+          "path": "023-rust-baseline-023.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/023-rust-baseline-023.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "023-rust-baseline-023.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/023-rust-baseline-023.stdout",
+          "bytes": 13105,
+          "sha256": "d155e6bb491672ff33538a300016791dad96171d09de67d74c032871caad60bc"
+        },
+        {
+          "path": "024-rust-baseline-024.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/024-rust-baseline-024.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "024-rust-baseline-024.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/024-rust-baseline-024.stdout",
+          "bytes": 14912,
+          "sha256": "db3c088ee7aa344645502d7347a7422e74afc17c1319e28989e4816324d23663"
+        },
+        {
+          "path": "025-rust-baseline-025.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/025-rust-baseline-025.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "025-rust-baseline-025.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/025-rust-baseline-025.stdout",
+          "bytes": 10447,
+          "sha256": "9e92bd7bd6a10c15c4503f16bc026556a585d816c39738e4e1268e78bc6efaed"
+        },
+        {
+          "path": "026-rust-baseline-026.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/026-rust-baseline-026.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "026-rust-baseline-026.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/026-rust-baseline-026.stdout",
+          "bytes": 46446,
+          "sha256": "bf1921d8b179f75f76f83dcc0a52e143d16ba82b18d309ce91a500d1c6458057"
+        },
+        {
+          "path": "027-cli-baseline-027.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/027-cli-baseline-027.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "027-cli-baseline-027.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/027-cli-baseline-027.stdout",
+          "bytes": 31757,
+          "sha256": "1248ee49bd1d50775851e11fc18a872ba55db0f5fc77d11b05b678272aa8dddd"
+        },
+        {
+          "path": "028-cli-baseline-028.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/028-cli-baseline-028.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "028-cli-baseline-028.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/028-cli-baseline-028.stdout",
+          "bytes": 15777,
+          "sha256": "b9b9004f3cc3b20e26866e67f131c61899450c16837e7939600da1e99c3e19d3"
+        },
+        {
+          "path": "029-cli-baseline-029.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/029-cli-baseline-029.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "029-cli-baseline-029.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/029-cli-baseline-029.stdout",
+          "bytes": 15546,
+          "sha256": "7c3c4364bb3eac550915c360cbd7d13b8c7caf782515ca60b19240d6c18fcfd1"
+        },
+        {
+          "path": "030-cli-baseline-030.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/030-cli-baseline-030.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "030-cli-baseline-030.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/030-cli-baseline-030.stdout",
+          "bytes": 15520,
+          "sha256": "ed9f29f1cd1e4b0ae221aece5bc285a8d8e86d547fc7a75928bf8bc0ac4877bd"
+        },
+        {
+          "path": "031-cli-baseline-031.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/031-cli-baseline-031.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "031-cli-baseline-031.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/031-cli-baseline-031.stdout",
+          "bytes": 15539,
+          "sha256": "580b68819fe4f752d5600e65229e930466c33179d853616477175c09c4ffe325"
+        },
+        {
+          "path": "032-cli-baseline-032.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/032-cli-baseline-032.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "032-cli-baseline-032.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/032-cli-baseline-032.stdout",
+          "bytes": 13463,
+          "sha256": "5f4236631052b809adc4f32bdcd0f75d404f1ca2be5e5242a6390365eb5e2e01"
+        },
+        {
+          "path": "033-cli-baseline-033.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/033-cli-baseline-033.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "033-cli-baseline-033.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/033-cli-baseline-033.stdout",
+          "bytes": 12319,
+          "sha256": "0acbedd928058faa8f298f8b8f8678ceb421a4f45a9190848964f463fe63bf92"
+        },
+        {
+          "path": "034-cli-baseline-034.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/034-cli-baseline-034.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "034-cli-baseline-034.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/034-cli-baseline-034.stdout",
+          "bytes": 19953,
+          "sha256": "55cb7f75bc5736b9299db58fa4257c8faded8e9612ce9956d11b1db84ec57a32"
+        },
+        {
+          "path": "035-cli-baseline-035.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/035-cli-baseline-035.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "035-cli-baseline-035.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/035-cli-baseline-035.stdout",
+          "bytes": 19689,
+          "sha256": "2cd9362404f877f0059165473bea6cdad6d56dea4839133f92f18d5b99556e77"
+        },
+        {
+          "path": "036-cli-baseline-036.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/036-cli-baseline-036.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "036-cli-baseline-036.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/036-cli-baseline-036.stdout",
+          "bytes": 14633,
+          "sha256": "ea75fe1f02cd30afdb7c42b71d8db9e8be642ecb3fd7c3d044d69c76a20e7962"
+        },
+        {
+          "path": "037-cli-baseline-037.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/037-cli-baseline-037.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "037-cli-baseline-037.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/037-cli-baseline-037.stdout",
+          "bytes": 24103,
+          "sha256": "a4393056ad19e208e19a1272f59a4c1844b5f5da63fc4cf53b7b0e4fbfcfb508"
+        },
+        {
+          "path": "038-cli-baseline-038.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/038-cli-baseline-038.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "038-cli-baseline-038.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/038-cli-baseline-038.stdout",
+          "bytes": 19023,
+          "sha256": "b895a9d9345f86c64bf63644fc06b1634283e91c27571ae955d15bf0b177405a"
+        },
+        {
+          "path": "039-cli-baseline-039.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/039-cli-baseline-039.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "039-cli-baseline-039.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/039-cli-baseline-039.stdout",
+          "bytes": 28273,
+          "sha256": "ed39014b90b9f1c79bed3673a11027971b1ef074263c3aefbcd56025d1960774"
+        },
+        {
+          "path": "040-cli-baseline-040.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/040-cli-baseline-040.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "040-cli-baseline-040.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/040-cli-baseline-040.stdout",
+          "bytes": 14633,
+          "sha256": "ea75fe1f02cd30afdb7c42b71d8db9e8be642ecb3fd7c3d044d69c76a20e7962"
+        },
+        {
+          "path": "041-cli-baseline-041.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/041-cli-baseline-041.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "041-cli-baseline-041.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/041-cli-baseline-041.stdout",
+          "bytes": 30587,
+          "sha256": "99c58aead0d4cdb50fc382184c5c6c57e7a349ff5c7fc13287f8231774fb7915"
+        },
+        {
+          "path": "042-cli-baseline-042.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/042-cli-baseline-042.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "042-cli-baseline-042.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/042-cli-baseline-042.stdout",
+          "bytes": 12319,
+          "sha256": "0acbedd928058faa8f298f8b8f8678ceb421a4f45a9190848964f463fe63bf92"
+        },
+        {
+          "path": "043-cli-baseline-043.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/043-cli-baseline-043.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "043-cli-baseline-043.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/043-cli-baseline-043.stdout",
+          "bytes": 31757,
+          "sha256": "1248ee49bd1d50775851e11fc18a872ba55db0f5fc77d11b05b678272aa8dddd"
+        },
+        {
+          "path": "044-cli-baseline-044.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/044-cli-baseline-044.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "044-cli-baseline-044.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/044-cli-baseline-044.stdout",
+          "bytes": 10252,
+          "sha256": "3df535f907b13887ad986ea68d5653baf23a3b98bae2d4ecf2567839318312fa"
+        },
+        {
+          "path": "045-cli-baseline-045.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/045-cli-baseline-045.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "045-cli-baseline-045.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/045-cli-baseline-045.stdout",
+          "bytes": 15777,
+          "sha256": "b9b9004f3cc3b20e26866e67f131c61899450c16837e7939600da1e99c3e19d3"
+        },
+        {
+          "path": "046-cli-baseline-046.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/046-cli-baseline-046.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "046-cli-baseline-046.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/046-cli-baseline-046.stdout",
+          "bytes": 12474,
+          "sha256": "bb9c9ff39520fd9e70d21df86bbf0b9e24988b691f248aff579886668a1bb471"
+        },
+        {
+          "path": "047-cli-baseline-047.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/047-cli-baseline-047.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "047-cli-baseline-047.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/047-cli-baseline-047.stdout",
+          "bytes": 11317,
+          "sha256": "f02e9358e59a224ee489fa3ee1ca881241b41dac0a55bd69059f23230ad1780c"
+        },
+        {
+          "path": "048-cli-baseline-048.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/048-cli-baseline-048.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "048-cli-baseline-048.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/048-cli-baseline-048.stdout",
+          "bytes": 13105,
+          "sha256": "d155e6bb491672ff33538a300016791dad96171d09de67d74c032871caad60bc"
+        },
+        {
+          "path": "049-cli-baseline-049.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/049-cli-baseline-049.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "049-cli-baseline-049.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/049-cli-baseline-049.stdout",
+          "bytes": 14912,
+          "sha256": "db3c088ee7aa344645502d7347a7422e74afc17c1319e28989e4816324d23663"
+        },
+        {
+          "path": "050-cli-baseline-050.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/050-cli-baseline-050.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "050-cli-baseline-050.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/050-cli-baseline-050.stdout",
+          "bytes": 10447,
+          "sha256": "9e92bd7bd6a10c15c4503f16bc026556a585d816c39738e4e1268e78bc6efaed"
+        },
+        {
+          "path": "051-cli-baseline-051.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/051-cli-baseline-051.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "051-cli-baseline-051.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/051-cli-baseline-051.stdout",
+          "bytes": 46446,
+          "sha256": "bf1921d8b179f75f76f83dcc0a52e143d16ba82b18d309ce91a500d1c6458057"
+        },
+        {
+          "path": "052-rust-baseline-052.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/052-rust-baseline-052.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "052-rust-baseline-052.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/052-rust-baseline-052.stdout",
+          "bytes": 20793,
+          "sha256": "5914e735ddc46f4dac0302cf93e5689b581e00dafe108c5451a7fc8561542c95"
+        },
+        {
+          "path": "053-cli-baseline-053.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/053-cli-baseline-053.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "053-cli-baseline-053.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/053-cli-baseline-053.stdout",
+          "bytes": 20793,
+          "sha256": "5914e735ddc46f4dac0302cf93e5689b581e00dafe108c5451a7fc8561542c95"
+        },
+        {
+          "path": "054-rust-baseline-054.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/054-rust-baseline-054.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "054-rust-baseline-054.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/054-rust-baseline-054.stdout",
+          "bytes": 12656,
+          "sha256": "996e02c308a289a1b88a741734a4f109597e5451a79f3e4e9d075aba32b715b3"
+        },
+        {
+          "path": "055-cli-baseline-055.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/055-cli-baseline-055.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "055-cli-baseline-055.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/055-cli-baseline-055.stdout",
+          "bytes": 12656,
+          "sha256": "996e02c308a289a1b88a741734a4f109597e5451a79f3e4e9d075aba32b715b3"
+        },
+        {
+          "path": "056-rust-baseline-056.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/056-rust-baseline-056.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "056-rust-baseline-056.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/056-rust-baseline-056.stdout",
+          "bytes": 12147,
+          "sha256": "3ab9264a8cc7b2c6c89000cdbf9a0e5943b29c009393f1c5c361c0ac0c3b8af3"
+        },
+        {
+          "path": "057-cli-baseline-057.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/057-cli-baseline-057.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "057-cli-baseline-057.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/057-cli-baseline-057.stdout",
+          "bytes": 12147,
+          "sha256": "3ab9264a8cc7b2c6c89000cdbf9a0e5943b29c009393f1c5c361c0ac0c3b8af3"
+        },
+        {
+          "path": "058-rust-baseline-058.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/058-rust-baseline-058.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "058-rust-baseline-058.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/058-rust-baseline-058.stdout",
+          "bytes": 12173,
+          "sha256": "bf61740b96089c8b0222d0ef9c11fec846f9c5352fad9ebfcac5b48c67f33f7e"
+        },
+        {
+          "path": "059-cli-baseline-059.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/059-cli-baseline-059.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "059-cli-baseline-059.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/059-cli-baseline-059.stdout",
+          "bytes": 12173,
+          "sha256": "bf61740b96089c8b0222d0ef9c11fec846f9c5352fad9ebfcac5b48c67f33f7e"
+        },
+        {
+          "path": "060-rust-baseline-060.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/060-rust-baseline-060.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "060-rust-baseline-060.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/060-rust-baseline-060.stdout",
+          "bytes": 12156,
+          "sha256": "5a4377adef876d3ec48ae977948695850569e77657a6edb3254bfc564037300d"
+        },
+        {
+          "path": "061-cli-baseline-061.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/061-cli-baseline-061.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "061-cli-baseline-061.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/061-cli-baseline-061.stdout",
+          "bytes": 12156,
+          "sha256": "5a4377adef876d3ec48ae977948695850569e77657a6edb3254bfc564037300d"
+        },
+        {
+          "path": "062-rust-baseline-062.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/062-rust-baseline-062.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "062-rust-baseline-062.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/062-rust-baseline-062.stdout",
+          "bytes": 12134,
+          "sha256": "16828204bf5673a001c3a3d3ba9ca4d1798be3b73afa83662add4338c28b4742"
+        },
+        {
+          "path": "063-cli-baseline-063.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/063-cli-baseline-063.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "063-cli-baseline-063.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/063-cli-baseline-063.stdout",
+          "bytes": 12134,
+          "sha256": "16828204bf5673a001c3a3d3ba9ca4d1798be3b73afa83662add4338c28b4742"
+        },
+        {
+          "path": "064-rust-baseline-064.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/064-rust-baseline-064.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "064-rust-baseline-064.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/064-rust-baseline-064.stdout",
+          "bytes": 12200,
+          "sha256": "05c8f018193146bfdfd9eae7f7e97cefd1d1af24a9da1aeeffcd85956bf66689"
+        },
+        {
+          "path": "065-cli-baseline-065.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/065-cli-baseline-065.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "065-cli-baseline-065.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/065-cli-baseline-065.stdout",
+          "bytes": 12200,
+          "sha256": "05c8f018193146bfdfd9eae7f7e97cefd1d1af24a9da1aeeffcd85956bf66689"
+        },
+        {
+          "path": "066-rust-baseline-066.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/066-rust-baseline-066.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "066-rust-baseline-066.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/066-rust-baseline-066.stdout",
+          "bytes": 12166,
+          "sha256": "5d894d170ac8c68650c92f037f198b24705d08e3b68ca9a1f027352a76df9927"
+        },
+        {
+          "path": "067-cli-baseline-067.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/067-cli-baseline-067.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "067-cli-baseline-067.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/067-cli-baseline-067.stdout",
+          "bytes": 12166,
+          "sha256": "5d894d170ac8c68650c92f037f198b24705d08e3b68ca9a1f027352a76df9927"
+        },
+        {
+          "path": "068-rust-baseline-068.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/068-rust-baseline-068.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "068-rust-baseline-068.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/068-rust-baseline-068.stdout",
+          "bytes": 18243,
+          "sha256": "9ea0ec118197bcc1da0faf3885d6ea7837221a410485f98794d16cba096553d2"
+        },
+        {
+          "path": "069-cli-baseline-069.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/069-cli-baseline-069.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "069-cli-baseline-069.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/069-cli-baseline-069.stdout",
+          "bytes": 18243,
+          "sha256": "9ea0ec118197bcc1da0faf3885d6ea7837221a410485f98794d16cba096553d2"
+        },
+        {
+          "path": "070-rust-baseline-070.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/070-rust-baseline-070.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "070-rust-baseline-070.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/070-rust-baseline-070.stdout",
+          "bytes": 9647,
+          "sha256": "cac8686bbbc9bfc2a0560097b88b4aa353a05887bc22504874ae28e18f79b68c"
+        },
+        {
+          "path": "071-cli-baseline-071.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/071-cli-baseline-071.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "071-cli-baseline-071.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/071-cli-baseline-071.stdout",
+          "bytes": 9647,
+          "sha256": "cac8686bbbc9bfc2a0560097b88b4aa353a05887bc22504874ae28e18f79b68c"
+        },
+        {
+          "path": "072-rust-baseline-072.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/072-rust-baseline-072.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "072-rust-baseline-072.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/072-rust-baseline-072.stdout",
+          "bytes": 16940,
+          "sha256": "117cf1be84d8b13bf6b98ce4c590941786e54af3b5ea10624be3d478819e1c7e"
+        },
+        {
+          "path": "073-cli-baseline-073.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/073-cli-baseline-073.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "073-cli-baseline-073.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/073-cli-baseline-073.stdout",
+          "bytes": 16940,
+          "sha256": "117cf1be84d8b13bf6b98ce4c590941786e54af3b5ea10624be3d478819e1c7e"
+        },
+        {
+          "path": "074-rust-baseline-074.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/074-rust-baseline-074.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "074-rust-baseline-074.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/074-rust-baseline-074.stdout",
+          "bytes": 9647,
+          "sha256": "45fc76adca66a7f10defc24c47b25f49eddf6cc51fe204ed8db01359ab745af2"
+        },
+        {
+          "path": "075-cli-baseline-075.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/075-cli-baseline-075.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "075-cli-baseline-075.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/075-cli-baseline-075.stdout",
+          "bytes": 9647,
+          "sha256": "45fc76adca66a7f10defc24c47b25f49eddf6cc51fe204ed8db01359ab745af2"
+        },
+        {
+          "path": "076-rust-baseline-076.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/076-rust-baseline-076.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "076-rust-baseline-076.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/076-rust-baseline-076.stdout",
+          "bytes": 9655,
+          "sha256": "69d0814fc99d0a8d45eac818fb1cb63500708f3b68a61081ce5dd25947e73322"
+        },
+        {
+          "path": "077-cli-baseline-077.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/077-cli-baseline-077.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "077-cli-baseline-077.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/077-cli-baseline-077.stdout",
+          "bytes": 9655,
+          "sha256": "69d0814fc99d0a8d45eac818fb1cb63500708f3b68a61081ce5dd25947e73322"
+        },
+        {
+          "path": "078-rust-baseline-078.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/078-rust-baseline-078.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "078-rust-baseline-078.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/078-rust-baseline-078.stdout",
+          "bytes": 26950,
+          "sha256": "2d526e9d2e9f12d1b65d5e5a27e17091ed2d20be6df8599168febe50b1dbb04f"
+        },
+        {
+          "path": "079-rust-baseline-079.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/079-rust-baseline-079.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "079-rust-baseline-079.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/079-rust-baseline-079.stdout",
+          "bytes": 26950,
+          "sha256": "2d526e9d2e9f12d1b65d5e5a27e17091ed2d20be6df8599168febe50b1dbb04f"
+        },
+        {
+          "path": "080-rust-baseline-080.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/080-rust-baseline-080.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "080-rust-baseline-080.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/080-rust-baseline-080.stdout",
+          "bytes": 12140,
+          "sha256": "38663655adeb25c7dcc0142ea8bc411770bd936314c6e8225e0aafe60a1576ea"
+        },
+        {
+          "path": "081-rust-baseline-081.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/081-rust-baseline-081.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "081-rust-baseline-081.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/081-rust-baseline-081.stdout",
+          "bytes": 11893,
+          "sha256": "2d2c5501d993e0c631e91c1703043513d0f1dcae34e492e6fb02331f57edd3d5"
+        },
+        {
+          "path": "082-rust-baseline-082.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/082-rust-baseline-082.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "082-rust-baseline-082.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/082-rust-baseline-082.stdout",
+          "bytes": 9625,
+          "sha256": "15f1e9a2c95d66426fed5c7ca647a3e081e51c98dcc3a90bfc3628071026cc74"
+        },
+        {
+          "path": "083-rust-baseline-083.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/083-rust-baseline-083.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "083-rust-baseline-083.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/083-rust-baseline-083.stdout",
+          "bytes": 254,
+          "sha256": "74c2a90d3e01a1fcb043154b0ba37171bd0458686241cad15d2b99c1d9f33193"
+        },
+        {
+          "path": "084-rust-baseline-084.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/084-rust-baseline-084.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "084-rust-baseline-084.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/084-rust-baseline-084.stdout",
+          "bytes": 212,
+          "sha256": "8961fe558efe2c4ae7088816d7690dd9aec1eed7e792f3214976e2583c792714"
+        },
+        {
+          "path": "085-rust-baseline-085.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/085-rust-baseline-085.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "085-rust-baseline-085.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/085-rust-baseline-085.stdout",
+          "bytes": 200,
+          "sha256": "cab70f07cd232c1d5167072dbfb9054982c25c4f548458d9c093f70309b072dc"
+        },
+        {
+          "path": "086-rust-baseline-086.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/086-rust-baseline-086.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "086-rust-baseline-086.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/086-rust-baseline-086.stdout",
+          "bytes": 26950,
+          "sha256": "2d526e9d2e9f12d1b65d5e5a27e17091ed2d20be6df8599168febe50b1dbb04f"
+        },
+        {
+          "path": "087-cli-baseline-087.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/087-cli-baseline-087.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "087-cli-baseline-087.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/087-cli-baseline-087.stdout",
+          "bytes": 26950,
+          "sha256": "2d526e9d2e9f12d1b65d5e5a27e17091ed2d20be6df8599168febe50b1dbb04f"
+        },
+        {
+          "path": "088-cli-baseline-088.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/088-cli-baseline-088.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "088-cli-baseline-088.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/088-cli-baseline-088.stdout",
+          "bytes": 26950,
+          "sha256": "2d526e9d2e9f12d1b65d5e5a27e17091ed2d20be6df8599168febe50b1dbb04f"
+        },
+        {
+          "path": "089-cli-baseline-089.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/089-cli-baseline-089.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "089-cli-baseline-089.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/089-cli-baseline-089.stdout",
+          "bytes": 12140,
+          "sha256": "38663655adeb25c7dcc0142ea8bc411770bd936314c6e8225e0aafe60a1576ea"
+        },
+        {
+          "path": "090-cli-baseline-090.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/090-cli-baseline-090.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "090-cli-baseline-090.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/090-cli-baseline-090.stdout",
+          "bytes": 11893,
+          "sha256": "2d2c5501d993e0c631e91c1703043513d0f1dcae34e492e6fb02331f57edd3d5"
+        },
+        {
+          "path": "091-cli-baseline-091.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/091-cli-baseline-091.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "091-cli-baseline-091.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/091-cli-baseline-091.stdout",
+          "bytes": 9625,
+          "sha256": "15f1e9a2c95d66426fed5c7ca647a3e081e51c98dcc3a90bfc3628071026cc74"
+        },
+        {
+          "path": "092-cli-baseline-092.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/092-cli-baseline-092.stderr",
+          "bytes": 134,
+          "sha256": "a4832e81afcb9f789d10ed2ce834f2d41953ce6698a047f16466d609fdbf7a6a"
+        },
+        {
+          "path": "092-cli-baseline-092.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/092-cli-baseline-092.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "093-cli-baseline-093.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/093-cli-baseline-093.stderr",
+          "bytes": 110,
+          "sha256": "56285f7179d63d91e25c03817a186d411166a10de8f1862fd6aca40d6e0afde2"
+        },
+        {
+          "path": "093-cli-baseline-093.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/093-cli-baseline-093.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "094-cli-baseline-094.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/094-cli-baseline-094.stderr",
+          "bytes": 106,
+          "sha256": "e648500153b75ea8a35a8d1ecd0a5fa2f2ffbc6658436061c2505e7b0f2aeb52"
+        },
+        {
+          "path": "094-cli-baseline-094.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/094-cli-baseline-094.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "095-cli-baseline-095.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/095-cli-baseline-095.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "095-cli-baseline-095.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/095-cli-baseline-095.stdout",
+          "bytes": 26950,
+          "sha256": "2d526e9d2e9f12d1b65d5e5a27e17091ed2d20be6df8599168febe50b1dbb04f"
+        },
+        {
+          "path": "096-rust-baseline-096.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/096-rust-baseline-096.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "096-rust-baseline-096.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/096-rust-baseline-096.stdout",
+          "bytes": 38920,
+          "sha256": "d2470ab45864846e03d9f0cee98396b8bc633e717921079485d580ddfa4c7b5e"
+        },
+        {
+          "path": "097-cli-baseline-097.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/097-cli-baseline-097.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "097-cli-baseline-097.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/097-cli-baseline-097.stdout",
+          "bytes": 38920,
+          "sha256": "d2470ab45864846e03d9f0cee98396b8bc633e717921079485d580ddfa4c7b5e"
+        },
+        {
+          "path": "098-legacy-cli-build.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/098-legacy-cli-build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "098-legacy-cli-build.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/098-legacy-cli-build.stdout",
+          "bytes": 131,
+          "sha256": "1f0435caaf7ef69056a336a700e38d8e26cc19969f3f97f09b62278102abe146"
+        },
+        {
+          "path": "099-legacy-cli-info.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/099-legacy-cli-info.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "099-legacy-cli-info.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/099-legacy-cli-info.stdout",
+          "bytes": 55,
+          "sha256": "588e759be26b6a065bb68d3d4a5ccb39084040d8206bde882a02fbe09fba87f8"
+        },
+        {
+          "path": "100-legacy-cli-search.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/100-legacy-cli-search.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "100-legacy-cli-search.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/100-legacy-cli-search.stdout",
+          "bytes": 6232,
+          "sha256": "2a99d72ebe1ba086758fc44e3c8972fe36df880d4828b3c12970dcdf2d45949f"
+        },
+        {
+          "path": "101-disabled-a-public-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/101-disabled-a-public-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "101-disabled-a-public-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/101-disabled-a-public-create.stdout",
+          "bytes": 285,
+          "sha256": "b9d85f6c50f4183a6112cb0a5c0c30744691b3aadb21f570fc1f81ab17c8be0f"
+        },
+        {
+          "path": "102-disabled-a-cli-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/102-disabled-a-cli-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "102-disabled-a-cli-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/102-disabled-a-cli-create.stdout",
+          "bytes": 258,
+          "sha256": "d575ef97ceb7e5a4874410ca5420a4c8f5010f7602e1440dca1d59f8f1077087"
+        },
+        {
+          "path": "103-rust-disabled-a-103.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/103-rust-disabled-a-103.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "103-rust-disabled-a-103.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/103-rust-disabled-a-103.stdout",
+          "bytes": 14433,
+          "sha256": "34212a148c3f46907089e744b819c7ffbf719b5d8546498dfc1756bb441f591f"
+        },
+        {
+          "path": "104-rust-disabled-a-104.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/104-rust-disabled-a-104.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "104-rust-disabled-a-104.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/104-rust-disabled-a-104.stdout",
+          "bytes": 13263,
+          "sha256": "b77fb8e32dde67bcf76cb37afb4fe294dc8a4d0bc0a485e5ce57d0fc1662f847"
+        },
+        {
+          "path": "105-rust-disabled-a-105.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/105-rust-disabled-a-105.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "105-rust-disabled-a-105.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/105-rust-disabled-a-105.stdout",
+          "bytes": 12119,
+          "sha256": "415decec2311fd486a2c7aa1d749a79fec9afe13bfa4eca836d7905e8664b477"
+        },
+        {
+          "path": "106-rust-disabled-a-106.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/106-rust-disabled-a-106.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "106-rust-disabled-a-106.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/106-rust-disabled-a-106.stdout",
+          "bytes": 14433,
+          "sha256": "34212a148c3f46907089e744b819c7ffbf719b5d8546498dfc1756bb441f591f"
+        },
+        {
+          "path": "107-rust-disabled-a-107.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/107-rust-disabled-a-107.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "107-rust-disabled-a-107.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/107-rust-disabled-a-107.stdout",
+          "bytes": 10052,
+          "sha256": "995ac463d56aeabee47214b599faa79f1bab257a5bbb349ba129187d768e88ea"
+        },
+        {
+          "path": "108-rust-disabled-a-108.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/108-rust-disabled-a-108.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "108-rust-disabled-a-108.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/108-rust-disabled-a-108.stdout",
+          "bytes": 153,
+          "sha256": "9f0c873c97ecea9b616b357b5e2499a525d088a5a8e02e2cc425d217e9c5dae2"
+        },
+        {
+          "path": "109-rust-disabled-a-109.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/109-rust-disabled-a-109.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "109-rust-disabled-a-109.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/109-rust-disabled-a-109.stdout",
+          "bytes": 12488,
+          "sha256": "d7b98b09c18a23fc6305941cf02f4a09de4156a43f1293f9d3d23ee3cb2931fe"
+        },
+        {
+          "path": "110-rust-disabled-a-110.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/110-rust-disabled-a-110.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "110-rust-disabled-a-110.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/110-rust-disabled-a-110.stdout",
+          "bytes": 11330,
+          "sha256": "e0f97f4e0c03ee62ae7545e465fa18210e8e32ee4e148201ff10a26d1cbc3508"
+        },
+        {
+          "path": "111-rust-disabled-a-111.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/111-rust-disabled-a-111.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "111-rust-disabled-a-111.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/111-rust-disabled-a-111.stdout",
+          "bytes": 13120,
+          "sha256": "58709e88f7e33355e48a4547829ab536e33d6971bc21bd3d8b9f7a09bbaf9f05"
+        },
+        {
+          "path": "112-rust-disabled-a-112.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/112-rust-disabled-a-112.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "112-rust-disabled-a-112.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/112-rust-disabled-a-112.stdout",
+          "bytes": 14926,
+          "sha256": "ceb9cf495677183ba38ff45c640b5f6b23ab756ed3d20c8a5a0d00f5ef438a51"
+        },
+        {
+          "path": "113-rust-disabled-a-113.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/113-rust-disabled-a-113.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "113-rust-disabled-a-113.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/113-rust-disabled-a-113.stdout",
+          "bytes": 10460,
+          "sha256": "4d5a7974155f570cc13261a621611961a416049e8d18de618ee07678afbaa4dc"
+        },
+        {
+          "path": "114-rust-disabled-a-114.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/114-rust-disabled-a-114.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "114-rust-disabled-a-114.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/114-rust-disabled-a-114.stdout",
+          "bytes": 46473,
+          "sha256": "ab920978a40578747d5c3c8a685a255717d63ac37c85db16da4d19ba97ccb32c"
+        },
+        {
+          "path": "115-rust-disabled-a-115.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/115-rust-disabled-a-115.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "115-rust-disabled-a-115.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/115-rust-disabled-a-115.stdout",
+          "bytes": 254,
+          "sha256": "949bda70a7bf9c8e6653f7395b5683fa3837c1a8210fb63644132ff9b08143ed"
+        },
+        {
+          "path": "116-cli-disabled-a-116.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/116-cli-disabled-a-116.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "116-cli-disabled-a-116.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/116-cli-disabled-a-116.stdout",
+          "bytes": 14433,
+          "sha256": "34212a148c3f46907089e744b819c7ffbf719b5d8546498dfc1756bb441f591f"
+        },
+        {
+          "path": "117-cli-disabled-a-117.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/117-cli-disabled-a-117.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "117-cli-disabled-a-117.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/117-cli-disabled-a-117.stdout",
+          "bytes": 13263,
+          "sha256": "b77fb8e32dde67bcf76cb37afb4fe294dc8a4d0bc0a485e5ce57d0fc1662f847"
+        },
+        {
+          "path": "118-cli-disabled-a-118.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/118-cli-disabled-a-118.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "118-cli-disabled-a-118.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/118-cli-disabled-a-118.stdout",
+          "bytes": 12119,
+          "sha256": "415decec2311fd486a2c7aa1d749a79fec9afe13bfa4eca836d7905e8664b477"
+        },
+        {
+          "path": "119-cli-disabled-a-119.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/119-cli-disabled-a-119.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "119-cli-disabled-a-119.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/119-cli-disabled-a-119.stdout",
+          "bytes": 14433,
+          "sha256": "34212a148c3f46907089e744b819c7ffbf719b5d8546498dfc1756bb441f591f"
+        },
+        {
+          "path": "120-cli-disabled-a-120.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/120-cli-disabled-a-120.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "120-cli-disabled-a-120.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/120-cli-disabled-a-120.stdout",
+          "bytes": 10052,
+          "sha256": "995ac463d56aeabee47214b599faa79f1bab257a5bbb349ba129187d768e88ea"
+        },
+        {
+          "path": "121-cli-disabled-a-121.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/121-cli-disabled-a-121.stderr",
+          "bytes": 110,
+          "sha256": "7f576a8352e6cff7f953b8f75fbaadb27e55f0b9ea5a52ca57c601bb9f249eb0"
+        },
+        {
+          "path": "121-cli-disabled-a-121.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/121-cli-disabled-a-121.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "122-cli-disabled-a-122.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/122-cli-disabled-a-122.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "122-cli-disabled-a-122.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/122-cli-disabled-a-122.stdout",
+          "bytes": 12488,
+          "sha256": "d7b98b09c18a23fc6305941cf02f4a09de4156a43f1293f9d3d23ee3cb2931fe"
+        },
+        {
+          "path": "123-cli-disabled-a-123.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/123-cli-disabled-a-123.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "123-cli-disabled-a-123.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/123-cli-disabled-a-123.stdout",
+          "bytes": 11330,
+          "sha256": "e0f97f4e0c03ee62ae7545e465fa18210e8e32ee4e148201ff10a26d1cbc3508"
+        },
+        {
+          "path": "124-cli-disabled-a-124.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/124-cli-disabled-a-124.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "124-cli-disabled-a-124.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/124-cli-disabled-a-124.stdout",
+          "bytes": 13120,
+          "sha256": "58709e88f7e33355e48a4547829ab536e33d6971bc21bd3d8b9f7a09bbaf9f05"
+        },
+        {
+          "path": "125-cli-disabled-a-125.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/125-cli-disabled-a-125.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "125-cli-disabled-a-125.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/125-cli-disabled-a-125.stdout",
+          "bytes": 14926,
+          "sha256": "ceb9cf495677183ba38ff45c640b5f6b23ab756ed3d20c8a5a0d00f5ef438a51"
+        },
+        {
+          "path": "126-cli-disabled-a-126.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/126-cli-disabled-a-126.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "126-cli-disabled-a-126.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/126-cli-disabled-a-126.stdout",
+          "bytes": 10460,
+          "sha256": "4d5a7974155f570cc13261a621611961a416049e8d18de618ee07678afbaa4dc"
+        },
+        {
+          "path": "127-cli-disabled-a-127.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/127-cli-disabled-a-127.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "127-cli-disabled-a-127.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/127-cli-disabled-a-127.stdout",
+          "bytes": 46473,
+          "sha256": "ab920978a40578747d5c3c8a685a255717d63ac37c85db16da4d19ba97ccb32c"
+        },
+        {
+          "path": "128-cli-disabled-a-128.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/128-cli-disabled-a-128.stderr",
+          "bytes": 134,
+          "sha256": "b98d5e3f11495933734707d41c6705ce8b1bb445efb3962ea163af78eff3b9b8"
+        },
+        {
+          "path": "128-cli-disabled-a-128.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/128-cli-disabled-a-128.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "129-removed-a-public-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/129-removed-a-public-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "129-removed-a-public-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/129-removed-a-public-create.stdout",
+          "bytes": 281,
+          "sha256": "b5f9ffdd6de6aafd4ade4886e0b0e405b2b46b28c38b26ec24020569cc106cd4"
+        },
+        {
+          "path": "130-removed-a-cli-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/130-removed-a-cli-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "130-removed-a-cli-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/130-removed-a-cli-create.stdout",
+          "bytes": 256,
+          "sha256": "1d74be22a362b6b069472edaa177eeecfd2c2e77cc7f1b09ded1cc32c3f4caed"
+        },
+        {
+          "path": "131-rust-removed-a-131.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/131-rust-removed-a-131.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "131-rust-removed-a-131.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/131-rust-removed-a-131.stdout",
+          "bytes": 14439,
+          "sha256": "5843062da3208efb3f64697877a1b833bbf707c7122916b2b59afdbe5bb49d07"
+        },
+        {
+          "path": "132-rust-removed-a-132.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/132-rust-removed-a-132.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "132-rust-removed-a-132.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/132-rust-removed-a-132.stdout",
+          "bytes": 13269,
+          "sha256": "712180d6804cf3352775af82e22e871c13da8a87d171ac95d9611eadf430451c"
+        },
+        {
+          "path": "133-rust-removed-a-133.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/133-rust-removed-a-133.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "133-rust-removed-a-133.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/133-rust-removed-a-133.stdout",
+          "bytes": 12125,
+          "sha256": "5659888a199f0c1665506ea19bc01aa451bea8f9f7617bfa95b1a8fd1174e42a"
+        },
+        {
+          "path": "134-rust-removed-a-134.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/134-rust-removed-a-134.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "134-rust-removed-a-134.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/134-rust-removed-a-134.stdout",
+          "bytes": 14439,
+          "sha256": "5843062da3208efb3f64697877a1b833bbf707c7122916b2b59afdbe5bb49d07"
+        },
+        {
+          "path": "135-rust-removed-a-135.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/135-rust-removed-a-135.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "135-rust-removed-a-135.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/135-rust-removed-a-135.stdout",
+          "bytes": 10058,
+          "sha256": "98492d51d0da7bddfb6cd988cdab2f451635152359ca2a0f780c8a2da2769747"
+        },
+        {
+          "path": "136-rust-removed-a-136.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/136-rust-removed-a-136.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "136-rust-removed-a-136.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/136-rust-removed-a-136.stdout",
+          "bytes": 153,
+          "sha256": "9f0c873c97ecea9b616b357b5e2499a525d088a5a8e02e2cc425d217e9c5dae2"
+        },
+        {
+          "path": "137-rust-removed-a-137.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/137-rust-removed-a-137.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "137-rust-removed-a-137.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/137-rust-removed-a-137.stdout",
+          "bytes": 10989,
+          "sha256": "ab8ba52b29044099ca3c3d7ba0bbd38c6b2878c3192fd94e30533b5711d58297"
+        },
+        {
+          "path": "138-rust-removed-a-138.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/138-rust-removed-a-138.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "138-rust-removed-a-138.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/138-rust-removed-a-138.stdout",
+          "bytes": 11336,
+          "sha256": "fd9b0ea4e369d722f5b33eb52a4fd6a7f1d570fe2d31e8532dd2992628fda1d1"
+        },
+        {
+          "path": "139-rust-removed-a-139.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/139-rust-removed-a-139.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "139-rust-removed-a-139.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/139-rust-removed-a-139.stdout",
+          "bytes": 12234,
+          "sha256": "e053959371e447ad9187d33b3b9920681268cf83f7ef025db07a437a5e508c3c"
+        },
+        {
+          "path": "140-rust-removed-a-140.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/140-rust-removed-a-140.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "140-rust-removed-a-140.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/140-rust-removed-a-140.stdout",
+          "bytes": 12768,
+          "sha256": "796d36481a443eb5448ac56048927abb9cdcfef02027332c24126f74b3f571ff"
+        },
+        {
+          "path": "141-rust-removed-a-141.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/141-rust-removed-a-141.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "141-rust-removed-a-141.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/141-rust-removed-a-141.stdout",
+          "bytes": 10466,
+          "sha256": "4dd4e763b0afdbdb2f365a207703a1339125b91b1a417780ba75a0727cadc65e"
+        },
+        {
+          "path": "142-rust-removed-a-142.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/142-rust-removed-a-142.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "142-rust-removed-a-142.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/142-rust-removed-a-142.stdout",
+          "bytes": 32529,
+          "sha256": "1f050446f4303ee350009a44a26d262670b65ba6938033054d81c38fcaa23558"
+        },
+        {
+          "path": "143-rust-removed-a-143.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/143-rust-removed-a-143.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "143-rust-removed-a-143.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/143-rust-removed-a-143.stdout",
+          "bytes": 254,
+          "sha256": "949bda70a7bf9c8e6653f7395b5683fa3837c1a8210fb63644132ff9b08143ed"
+        },
+        {
+          "path": "144-cli-removed-a-144.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/144-cli-removed-a-144.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "144-cli-removed-a-144.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/144-cli-removed-a-144.stdout",
+          "bytes": 14439,
+          "sha256": "5843062da3208efb3f64697877a1b833bbf707c7122916b2b59afdbe5bb49d07"
+        },
+        {
+          "path": "145-cli-removed-a-145.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/145-cli-removed-a-145.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "145-cli-removed-a-145.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/145-cli-removed-a-145.stdout",
+          "bytes": 13269,
+          "sha256": "712180d6804cf3352775af82e22e871c13da8a87d171ac95d9611eadf430451c"
+        },
+        {
+          "path": "146-cli-removed-a-146.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/146-cli-removed-a-146.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "146-cli-removed-a-146.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/146-cli-removed-a-146.stdout",
+          "bytes": 12125,
+          "sha256": "5659888a199f0c1665506ea19bc01aa451bea8f9f7617bfa95b1a8fd1174e42a"
+        },
+        {
+          "path": "147-cli-removed-a-147.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/147-cli-removed-a-147.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "147-cli-removed-a-147.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/147-cli-removed-a-147.stdout",
+          "bytes": 14439,
+          "sha256": "5843062da3208efb3f64697877a1b833bbf707c7122916b2b59afdbe5bb49d07"
+        },
+        {
+          "path": "148-cli-removed-a-148.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/148-cli-removed-a-148.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "148-cli-removed-a-148.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/148-cli-removed-a-148.stdout",
+          "bytes": 10058,
+          "sha256": "98492d51d0da7bddfb6cd988cdab2f451635152359ca2a0f780c8a2da2769747"
+        },
+        {
+          "path": "149-cli-removed-a-149.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/149-cli-removed-a-149.stderr",
+          "bytes": 110,
+          "sha256": "7f576a8352e6cff7f953b8f75fbaadb27e55f0b9ea5a52ca57c601bb9f249eb0"
+        },
+        {
+          "path": "149-cli-removed-a-149.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/149-cli-removed-a-149.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "150-cli-removed-a-150.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/150-cli-removed-a-150.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "150-cli-removed-a-150.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/150-cli-removed-a-150.stdout",
+          "bytes": 10989,
+          "sha256": "ab8ba52b29044099ca3c3d7ba0bbd38c6b2878c3192fd94e30533b5711d58297"
+        },
+        {
+          "path": "151-cli-removed-a-151.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/151-cli-removed-a-151.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "151-cli-removed-a-151.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/151-cli-removed-a-151.stdout",
+          "bytes": 11336,
+          "sha256": "fd9b0ea4e369d722f5b33eb52a4fd6a7f1d570fe2d31e8532dd2992628fda1d1"
+        },
+        {
+          "path": "152-cli-removed-a-152.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/152-cli-removed-a-152.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "152-cli-removed-a-152.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/152-cli-removed-a-152.stdout",
+          "bytes": 12234,
+          "sha256": "e053959371e447ad9187d33b3b9920681268cf83f7ef025db07a437a5e508c3c"
+        },
+        {
+          "path": "153-cli-removed-a-153.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/153-cli-removed-a-153.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "153-cli-removed-a-153.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/153-cli-removed-a-153.stdout",
+          "bytes": 12768,
+          "sha256": "796d36481a443eb5448ac56048927abb9cdcfef02027332c24126f74b3f571ff"
+        },
+        {
+          "path": "154-cli-removed-a-154.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/154-cli-removed-a-154.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "154-cli-removed-a-154.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/154-cli-removed-a-154.stdout",
+          "bytes": 10466,
+          "sha256": "4dd4e763b0afdbdb2f365a207703a1339125b91b1a417780ba75a0727cadc65e"
+        },
+        {
+          "path": "155-cli-removed-a-155.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/155-cli-removed-a-155.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "155-cli-removed-a-155.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/155-cli-removed-a-155.stdout",
+          "bytes": 32529,
+          "sha256": "1f050446f4303ee350009a44a26d262670b65ba6938033054d81c38fcaa23558"
+        },
+        {
+          "path": "156-cli-removed-a-156.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/156-cli-removed-a-156.stderr",
+          "bytes": 134,
+          "sha256": "b98d5e3f11495933734707d41c6705ce8b1bb445efb3962ea163af78eff3b9b8"
+        },
+        {
+          "path": "156-cli-removed-a-156.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/156-cli-removed-a-156.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "157-readded-a-public-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/157-readded-a-public-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "157-readded-a-public-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/157-readded-a-public-create.stdout",
+          "bytes": 285,
+          "sha256": "79523987161fb553718dc420f88a5d35143dd13a0615e683a2e949c584640c6a"
+        },
+        {
+          "path": "158-readded-a-cli-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/158-readded-a-cli-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "158-readded-a-cli-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/158-readded-a-cli-create.stdout",
+          "bytes": 257,
+          "sha256": "ab34710b895fcd4a703e44d127b626113f32b76f2cad1781212b969b22770867"
+        },
+        {
+          "path": "159-rust-readded-a-159.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/159-rust-readded-a-159.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "159-rust-readded-a-159.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/159-rust-readded-a-159.stdout",
+          "bytes": 31757,
+          "sha256": "75b2d5925de9ade785e7726ed1b8e099c60e4c03c5e2babac9f92ee239013c97"
+        },
+        {
+          "path": "160-rust-readded-a-160.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/160-rust-readded-a-160.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "160-rust-readded-a-160.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/160-rust-readded-a-160.stdout",
+          "bytes": 15777,
+          "sha256": "c30ab67b7a6d58380a9e8f998ebbe52bd0658e6065494741bbb7de2ef253a2e4"
+        },
+        {
+          "path": "161-rust-readded-a-161.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/161-rust-readded-a-161.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "161-rust-readded-a-161.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/161-rust-readded-a-161.stdout",
+          "bytes": 15546,
+          "sha256": "d96a30dbdabc0e4bbeb6db37fc7bb9ed7c077e7d8f33dc0af73a8e73782c5877"
+        },
+        {
+          "path": "162-rust-readded-a-162.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/162-rust-readded-a-162.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "162-rust-readded-a-162.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/162-rust-readded-a-162.stdout",
+          "bytes": 15520,
+          "sha256": "19a45cf40158f6145b1e61ff73064c04a03e4cfdae73af65324c689322e42819"
+        },
+        {
+          "path": "163-rust-readded-a-163.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/163-rust-readded-a-163.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "163-rust-readded-a-163.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/163-rust-readded-a-163.stdout",
+          "bytes": 15539,
+          "sha256": "72604ba3628403cab0d2c06a443fa8663b19baa8b4bb5ed4fc5d49d0c4897b23"
+        },
+        {
+          "path": "164-rust-readded-a-164.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/164-rust-readded-a-164.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "164-rust-readded-a-164.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/164-rust-readded-a-164.stdout",
+          "bytes": 13463,
+          "sha256": "e9be6bb611b9937f1c90d7f456bbe19d75f0fb9417f56e5972c6d1d00da6bf94"
+        },
+        {
+          "path": "165-rust-readded-a-165.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/165-rust-readded-a-165.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "165-rust-readded-a-165.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/165-rust-readded-a-165.stdout",
+          "bytes": 12319,
+          "sha256": "b70bd10bca18e7ff5604ce411d8b8a1d2793fdae185ebda56a5fef789e3c0323"
+        },
+        {
+          "path": "166-rust-readded-a-166.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/166-rust-readded-a-166.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "166-rust-readded-a-166.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/166-rust-readded-a-166.stdout",
+          "bytes": 28273,
+          "sha256": "4d9f212598f6685e7503f19feaee975c0b38f6dcefa28e1615e99a2119caa2c0"
+        },
+        {
+          "path": "167-rust-readded-a-167.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/167-rust-readded-a-167.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "167-rust-readded-a-167.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/167-rust-readded-a-167.stdout",
+          "bytes": 14633,
+          "sha256": "af7b60ae0db6b69a2213d3a5a89467d73cdd7293f8e40ee179cd3d7a476df729"
+        },
+        {
+          "path": "168-rust-readded-a-168.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/168-rust-readded-a-168.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "168-rust-readded-a-168.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/168-rust-readded-a-168.stdout",
+          "bytes": 10252,
+          "sha256": "279e988de109d1e1dd9b736728c588488c3b368ba176472fa07ab3c40e50897e"
+        },
+        {
+          "path": "169-rust-readded-a-169.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/169-rust-readded-a-169.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "169-rust-readded-a-169.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/169-rust-readded-a-169.stdout",
+          "bytes": 153,
+          "sha256": "9f0c873c97ecea9b616b357b5e2499a525d088a5a8e02e2cc425d217e9c5dae2"
+        },
+        {
+          "path": "170-rust-readded-a-170.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/170-rust-readded-a-170.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "170-rust-readded-a-170.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/170-rust-readded-a-170.stdout",
+          "bytes": 12474,
+          "sha256": "367690be84f07131bb634dddd919454937bbb77c30016386525bf80e96548592"
+        },
+        {
+          "path": "171-rust-readded-a-171.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/171-rust-readded-a-171.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "171-rust-readded-a-171.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/171-rust-readded-a-171.stdout",
+          "bytes": 11317,
+          "sha256": "c40be2dff0f0a1451b46957abd21d5ae37cddc87cc189182dbe1e8b9550bd078"
+        },
+        {
+          "path": "172-rust-readded-a-172.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/172-rust-readded-a-172.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "172-rust-readded-a-172.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/172-rust-readded-a-172.stdout",
+          "bytes": 13105,
+          "sha256": "dcc6d2cd89b99932177bf0c59ba1d86755ace33d982666d77bf4cc70aa5e4d32"
+        },
+        {
+          "path": "173-rust-readded-a-173.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/173-rust-readded-a-173.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "173-rust-readded-a-173.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/173-rust-readded-a-173.stdout",
+          "bytes": 14912,
+          "sha256": "b91f95c2c6ad79f013325ab527d09a1cb6825a5929372ecd573399aa22f1294c"
+        },
+        {
+          "path": "174-rust-readded-a-174.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/174-rust-readded-a-174.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "174-rust-readded-a-174.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/174-rust-readded-a-174.stdout",
+          "bytes": 10447,
+          "sha256": "9d63a5f443c8ad386b6cb20aa994aae59a9b6d50a9adb2f7ecb4def24c650903"
+        },
+        {
+          "path": "175-rust-readded-a-175.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/175-rust-readded-a-175.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "175-rust-readded-a-175.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/175-rust-readded-a-175.stdout",
+          "bytes": 46446,
+          "sha256": "3576990a658186b385d2a35e69e87c8d6551f823afe51b8f1a75d6632009d242"
+        },
+        {
+          "path": "176-cli-readded-a-176.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/176-cli-readded-a-176.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "176-cli-readded-a-176.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/176-cli-readded-a-176.stdout",
+          "bytes": 31757,
+          "sha256": "75b2d5925de9ade785e7726ed1b8e099c60e4c03c5e2babac9f92ee239013c97"
+        },
+        {
+          "path": "177-cli-readded-a-177.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/177-cli-readded-a-177.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "177-cli-readded-a-177.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/177-cli-readded-a-177.stdout",
+          "bytes": 15777,
+          "sha256": "c30ab67b7a6d58380a9e8f998ebbe52bd0658e6065494741bbb7de2ef253a2e4"
+        },
+        {
+          "path": "178-cli-readded-a-178.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/178-cli-readded-a-178.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "178-cli-readded-a-178.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/178-cli-readded-a-178.stdout",
+          "bytes": 15546,
+          "sha256": "d96a30dbdabc0e4bbeb6db37fc7bb9ed7c077e7d8f33dc0af73a8e73782c5877"
+        },
+        {
+          "path": "179-cli-readded-a-179.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/179-cli-readded-a-179.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "179-cli-readded-a-179.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/179-cli-readded-a-179.stdout",
+          "bytes": 15520,
+          "sha256": "19a45cf40158f6145b1e61ff73064c04a03e4cfdae73af65324c689322e42819"
+        },
+        {
+          "path": "180-cli-readded-a-180.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/180-cli-readded-a-180.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "180-cli-readded-a-180.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/180-cli-readded-a-180.stdout",
+          "bytes": 15539,
+          "sha256": "72604ba3628403cab0d2c06a443fa8663b19baa8b4bb5ed4fc5d49d0c4897b23"
+        },
+        {
+          "path": "181-cli-readded-a-181.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/181-cli-readded-a-181.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "181-cli-readded-a-181.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/181-cli-readded-a-181.stdout",
+          "bytes": 13463,
+          "sha256": "e9be6bb611b9937f1c90d7f456bbe19d75f0fb9417f56e5972c6d1d00da6bf94"
+        },
+        {
+          "path": "182-cli-readded-a-182.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/182-cli-readded-a-182.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "182-cli-readded-a-182.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/182-cli-readded-a-182.stdout",
+          "bytes": 12319,
+          "sha256": "b70bd10bca18e7ff5604ce411d8b8a1d2793fdae185ebda56a5fef789e3c0323"
+        },
+        {
+          "path": "183-cli-readded-a-183.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/183-cli-readded-a-183.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "183-cli-readded-a-183.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/183-cli-readded-a-183.stdout",
+          "bytes": 28273,
+          "sha256": "4d9f212598f6685e7503f19feaee975c0b38f6dcefa28e1615e99a2119caa2c0"
+        },
+        {
+          "path": "184-cli-readded-a-184.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/184-cli-readded-a-184.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "184-cli-readded-a-184.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/184-cli-readded-a-184.stdout",
+          "bytes": 14633,
+          "sha256": "af7b60ae0db6b69a2213d3a5a89467d73cdd7293f8e40ee179cd3d7a476df729"
+        },
+        {
+          "path": "185-cli-readded-a-185.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/185-cli-readded-a-185.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "185-cli-readded-a-185.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/185-cli-readded-a-185.stdout",
+          "bytes": 10252,
+          "sha256": "279e988de109d1e1dd9b736728c588488c3b368ba176472fa07ab3c40e50897e"
+        },
+        {
+          "path": "186-cli-readded-a-186.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/186-cli-readded-a-186.stderr",
+          "bytes": 110,
+          "sha256": "7f576a8352e6cff7f953b8f75fbaadb27e55f0b9ea5a52ca57c601bb9f249eb0"
+        },
+        {
+          "path": "186-cli-readded-a-186.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/186-cli-readded-a-186.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "187-cli-readded-a-187.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/187-cli-readded-a-187.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "187-cli-readded-a-187.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/187-cli-readded-a-187.stdout",
+          "bytes": 12474,
+          "sha256": "367690be84f07131bb634dddd919454937bbb77c30016386525bf80e96548592"
+        },
+        {
+          "path": "188-cli-readded-a-188.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/188-cli-readded-a-188.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "188-cli-readded-a-188.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/188-cli-readded-a-188.stdout",
+          "bytes": 11317,
+          "sha256": "c40be2dff0f0a1451b46957abd21d5ae37cddc87cc189182dbe1e8b9550bd078"
+        },
+        {
+          "path": "189-cli-readded-a-189.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/189-cli-readded-a-189.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "189-cli-readded-a-189.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/189-cli-readded-a-189.stdout",
+          "bytes": 13105,
+          "sha256": "dcc6d2cd89b99932177bf0c59ba1d86755ace33d982666d77bf4cc70aa5e4d32"
+        },
+        {
+          "path": "190-cli-readded-a-190.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/190-cli-readded-a-190.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "190-cli-readded-a-190.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/190-cli-readded-a-190.stdout",
+          "bytes": 14912,
+          "sha256": "b91f95c2c6ad79f013325ab527d09a1cb6825a5929372ecd573399aa22f1294c"
+        },
+        {
+          "path": "191-cli-readded-a-191.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/191-cli-readded-a-191.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "191-cli-readded-a-191.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/191-cli-readded-a-191.stdout",
+          "bytes": 10447,
+          "sha256": "9d63a5f443c8ad386b6cb20aa994aae59a9b6d50a9adb2f7ecb4def24c650903"
+        },
+        {
+          "path": "192-cli-readded-a-192.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/192-cli-readded-a-192.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "192-cli-readded-a-192.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/192-cli-readded-a-192.stdout",
+          "bytes": 46446,
+          "sha256": "3576990a658186b385d2a35e69e87c8d6551f823afe51b8f1a75d6632009d242"
+        },
+        {
+          "path": "193-owned-r2-public-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/193-owned-r2-public-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "193-owned-r2-public-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/193-owned-r2-public-create.stdout",
+          "bytes": 285,
+          "sha256": "87df488ab92ea84ae1bc2e705e1310deb4558c0001e2a7db4ad310627af5ab8f"
+        },
+        {
+          "path": "194-owned-r2-cli-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/194-owned-r2-cli-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "194-owned-r2-cli-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/194-owned-r2-cli-create.stdout",
+          "bytes": 256,
+          "sha256": "e9bee5f905435b5bf06d88c6065cf17b0579f46b9cb4581a402dfe8286aa6ae4"
+        },
+        {
+          "path": "195-rust-owned-r2-195.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/195-rust-owned-r2-195.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "195-rust-owned-r2-195.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/195-rust-owned-r2-195.stdout",
+          "bytes": 31748,
+          "sha256": "de1f432fb19a0a50758e9450abd0091824ffdc2afcedc189b4559fd1738d81ea"
+        },
+        {
+          "path": "196-rust-owned-r2-196.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/196-rust-owned-r2-196.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "196-rust-owned-r2-196.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/196-rust-owned-r2-196.stdout",
+          "bytes": 15777,
+          "sha256": "60e98a4f379586595969a2430900b8c6bc58d870036f0a6e0bdf70112aecf8e7"
+        },
+        {
+          "path": "197-rust-owned-r2-197.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/197-rust-owned-r2-197.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "197-rust-owned-r2-197.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/197-rust-owned-r2-197.stdout",
+          "bytes": 15546,
+          "sha256": "7a83ee938d93b75c32ffff941a34c67f8c9cde88432cda8af26b9e97376b83ad"
+        },
+        {
+          "path": "198-rust-owned-r2-198.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/198-rust-owned-r2-198.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "198-rust-owned-r2-198.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/198-rust-owned-r2-198.stdout",
+          "bytes": 15520,
+          "sha256": "8f4ef86a70b28ef74a8ca57e984d21678bb00b4870d6441fa1718b8aebdfa8d7"
+        },
+        {
+          "path": "199-rust-owned-r2-199.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/199-rust-owned-r2-199.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "199-rust-owned-r2-199.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/199-rust-owned-r2-199.stdout",
+          "bytes": 15539,
+          "sha256": "5ed540d4cff541ebcc99a1a1955e642c3dd0839235edd1573c2355dab7d2b8e9"
+        },
+        {
+          "path": "200-rust-owned-r2-200.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/200-rust-owned-r2-200.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "200-rust-owned-r2-200.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/200-rust-owned-r2-200.stdout",
+          "bytes": 13463,
+          "sha256": "73c7bbdb4e1753020219e452be16749c8bcbe404b9c2020bd006d73a62128e31"
+        },
+        {
+          "path": "201-rust-owned-r2-201.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/201-rust-owned-r2-201.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "201-rust-owned-r2-201.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/201-rust-owned-r2-201.stdout",
+          "bytes": 12310,
+          "sha256": "f0dab0bcda424a21fb819a3f78009103a8ae4bbc76fe2d37a7890d69ea0a72f8"
+        },
+        {
+          "path": "202-rust-owned-r2-202.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/202-rust-owned-r2-202.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "202-rust-owned-r2-202.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/202-rust-owned-r2-202.stdout",
+          "bytes": 28273,
+          "sha256": "5f14b8d059a84a43c3b4e6738dcf86d3e6aa327388c90641203ded9292a589c0"
+        },
+        {
+          "path": "203-rust-owned-r2-203.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/203-rust-owned-r2-203.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "203-rust-owned-r2-203.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/203-rust-owned-r2-203.stdout",
+          "bytes": 14624,
+          "sha256": "3cfa57ab552db23a04c84c957706230e0434d1f3c6a46718c7f02b67f611d06b"
+        },
+        {
+          "path": "204-rust-owned-r2-204.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/204-rust-owned-r2-204.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "204-rust-owned-r2-204.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/204-rust-owned-r2-204.stdout",
+          "bytes": 10252,
+          "sha256": "abb72e91d27bd64e0ef000a6ed9aa6e4d68a855139c49cb3ca75927af73e227a"
+        },
+        {
+          "path": "205-rust-owned-r2-205.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/205-rust-owned-r2-205.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "205-rust-owned-r2-205.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/205-rust-owned-r2-205.stdout",
+          "bytes": 153,
+          "sha256": "9f0c873c97ecea9b616b357b5e2499a525d088a5a8e02e2cc425d217e9c5dae2"
+        },
+        {
+          "path": "206-rust-owned-r2-206.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/206-rust-owned-r2-206.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "206-rust-owned-r2-206.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/206-rust-owned-r2-206.stdout",
+          "bytes": 12474,
+          "sha256": "e676cd478546b5624e61f979fdaad25a948643a636278d0bb7a9cddf3eae356f"
+        },
+        {
+          "path": "207-rust-owned-r2-207.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/207-rust-owned-r2-207.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "207-rust-owned-r2-207.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/207-rust-owned-r2-207.stdout",
+          "bytes": 11318,
+          "sha256": "0aedb14c785653910a5add35e8a675e9b522fd9d62ba0a1ac4d64ab5e09d46a4"
+        },
+        {
+          "path": "208-rust-owned-r2-208.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/208-rust-owned-r2-208.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "208-rust-owned-r2-208.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/208-rust-owned-r2-208.stdout",
+          "bytes": 13105,
+          "sha256": "7f13badc7df6ee5ae3038769a2d0d3cfe7680578e75ea1ce37326eb8452b0c5c"
+        },
+        {
+          "path": "209-rust-owned-r2-209.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/209-rust-owned-r2-209.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "209-rust-owned-r2-209.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/209-rust-owned-r2-209.stdout",
+          "bytes": 14912,
+          "sha256": "d537b4f4673b5a6da6fa0a3d9c5ca1233b69cffd4bf0be3f192c3d174c94bffa"
+        },
+        {
+          "path": "210-rust-owned-r2-210.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/210-rust-owned-r2-210.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "210-rust-owned-r2-210.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/210-rust-owned-r2-210.stdout",
+          "bytes": 10447,
+          "sha256": "3a327b1e45cd36eee1cfeab88d18d804bdd7becd70fa3095cca605f2b316b472"
+        },
+        {
+          "path": "211-rust-owned-r2-211.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/211-rust-owned-r2-211.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "211-rust-owned-r2-211.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/211-rust-owned-r2-211.stdout",
+          "bytes": 46446,
+          "sha256": "6bde36359ba72b11f22114137804ef15afefbc9190cdc3a98d24bda1e29fbfce"
+        },
+        {
+          "path": "212-cli-owned-r2-212.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/212-cli-owned-r2-212.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "212-cli-owned-r2-212.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/212-cli-owned-r2-212.stdout",
+          "bytes": 31748,
+          "sha256": "de1f432fb19a0a50758e9450abd0091824ffdc2afcedc189b4559fd1738d81ea"
+        },
+        {
+          "path": "213-cli-owned-r2-213.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/213-cli-owned-r2-213.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "213-cli-owned-r2-213.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/213-cli-owned-r2-213.stdout",
+          "bytes": 15777,
+          "sha256": "60e98a4f379586595969a2430900b8c6bc58d870036f0a6e0bdf70112aecf8e7"
+        },
+        {
+          "path": "214-cli-owned-r2-214.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/214-cli-owned-r2-214.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "214-cli-owned-r2-214.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/214-cli-owned-r2-214.stdout",
+          "bytes": 15546,
+          "sha256": "7a83ee938d93b75c32ffff941a34c67f8c9cde88432cda8af26b9e97376b83ad"
+        },
+        {
+          "path": "215-cli-owned-r2-215.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/215-cli-owned-r2-215.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "215-cli-owned-r2-215.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/215-cli-owned-r2-215.stdout",
+          "bytes": 15520,
+          "sha256": "8f4ef86a70b28ef74a8ca57e984d21678bb00b4870d6441fa1718b8aebdfa8d7"
+        },
+        {
+          "path": "216-cli-owned-r2-216.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/216-cli-owned-r2-216.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "216-cli-owned-r2-216.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/216-cli-owned-r2-216.stdout",
+          "bytes": 15539,
+          "sha256": "5ed540d4cff541ebcc99a1a1955e642c3dd0839235edd1573c2355dab7d2b8e9"
+        },
+        {
+          "path": "217-cli-owned-r2-217.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/217-cli-owned-r2-217.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "217-cli-owned-r2-217.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/217-cli-owned-r2-217.stdout",
+          "bytes": 13463,
+          "sha256": "73c7bbdb4e1753020219e452be16749c8bcbe404b9c2020bd006d73a62128e31"
+        },
+        {
+          "path": "218-cli-owned-r2-218.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/218-cli-owned-r2-218.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "218-cli-owned-r2-218.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/218-cli-owned-r2-218.stdout",
+          "bytes": 12310,
+          "sha256": "f0dab0bcda424a21fb819a3f78009103a8ae4bbc76fe2d37a7890d69ea0a72f8"
+        },
+        {
+          "path": "219-cli-owned-r2-219.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/219-cli-owned-r2-219.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "219-cli-owned-r2-219.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/219-cli-owned-r2-219.stdout",
+          "bytes": 28273,
+          "sha256": "5f14b8d059a84a43c3b4e6738dcf86d3e6aa327388c90641203ded9292a589c0"
+        },
+        {
+          "path": "220-cli-owned-r2-220.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/220-cli-owned-r2-220.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "220-cli-owned-r2-220.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/220-cli-owned-r2-220.stdout",
+          "bytes": 14624,
+          "sha256": "3cfa57ab552db23a04c84c957706230e0434d1f3c6a46718c7f02b67f611d06b"
+        },
+        {
+          "path": "221-cli-owned-r2-221.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/221-cli-owned-r2-221.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "221-cli-owned-r2-221.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/221-cli-owned-r2-221.stdout",
+          "bytes": 10252,
+          "sha256": "abb72e91d27bd64e0ef000a6ed9aa6e4d68a855139c49cb3ca75927af73e227a"
+        },
+        {
+          "path": "222-cli-owned-r2-222.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/222-cli-owned-r2-222.stderr",
+          "bytes": 110,
+          "sha256": "7f576a8352e6cff7f953b8f75fbaadb27e55f0b9ea5a52ca57c601bb9f249eb0"
+        },
+        {
+          "path": "222-cli-owned-r2-222.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/222-cli-owned-r2-222.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "223-cli-owned-r2-223.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/223-cli-owned-r2-223.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "223-cli-owned-r2-223.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/223-cli-owned-r2-223.stdout",
+          "bytes": 12474,
+          "sha256": "e676cd478546b5624e61f979fdaad25a948643a636278d0bb7a9cddf3eae356f"
+        },
+        {
+          "path": "224-cli-owned-r2-224.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/224-cli-owned-r2-224.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "224-cli-owned-r2-224.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/224-cli-owned-r2-224.stdout",
+          "bytes": 11318,
+          "sha256": "0aedb14c785653910a5add35e8a675e9b522fd9d62ba0a1ac4d64ab5e09d46a4"
+        },
+        {
+          "path": "225-cli-owned-r2-225.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/225-cli-owned-r2-225.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "225-cli-owned-r2-225.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/225-cli-owned-r2-225.stdout",
+          "bytes": 13105,
+          "sha256": "7f13badc7df6ee5ae3038769a2d0d3cfe7680578e75ea1ce37326eb8452b0c5c"
+        },
+        {
+          "path": "226-cli-owned-r2-226.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/226-cli-owned-r2-226.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "226-cli-owned-r2-226.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/226-cli-owned-r2-226.stdout",
+          "bytes": 14912,
+          "sha256": "d537b4f4673b5a6da6fa0a3d9c5ca1233b69cffd4bf0be3f192c3d174c94bffa"
+        },
+        {
+          "path": "227-cli-owned-r2-227.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/227-cli-owned-r2-227.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "227-cli-owned-r2-227.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/227-cli-owned-r2-227.stdout",
+          "bytes": 10447,
+          "sha256": "3a327b1e45cd36eee1cfeab88d18d804bdd7becd70fa3095cca605f2b316b472"
+        },
+        {
+          "path": "228-cli-owned-r2-228.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/228-cli-owned-r2-228.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "228-cli-owned-r2-228.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/228-cli-owned-r2-228.stdout",
+          "bytes": 46446,
+          "sha256": "6bde36359ba72b11f22114137804ef15afefbc9190cdc3a98d24bda1e29fbfce"
+        },
+        {
+          "path": "229-renamed-paths-public-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/229-renamed-paths-public-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "229-renamed-paths-public-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/229-renamed-paths-public-create.stdout",
+          "bytes": 282,
+          "sha256": "7d6d133592bdfa428bd251ce7af94d7b537c971b45e293273c4444cf0c218a05"
+        },
+        {
+          "path": "230-renamed-paths-cli-create.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/230-renamed-paths-cli-create.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "230-renamed-paths-cli-create.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/230-renamed-paths-cli-create.stdout",
+          "bytes": 261,
+          "sha256": "e3f59e2bb02735edb0359a9d7d614f75d6bad5be7681d230dba546bee4aa5283"
+        },
+        {
+          "path": "231-rust-renamed-paths-231.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/231-rust-renamed-paths-231.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "231-rust-renamed-paths-231.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/231-rust-renamed-paths-231.stdout",
+          "bytes": 31942,
+          "sha256": "7bf5e0c4bc8a62809e88be01bbb388c523d80255eb31c03aca894640c0be6bcd"
+        },
+        {
+          "path": "232-rust-renamed-paths-232.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/232-rust-renamed-paths-232.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "232-rust-renamed-paths-232.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/232-rust-renamed-paths-232.stdout",
+          "bytes": 15906,
+          "sha256": "6b8c7e1f169066753a6bb756ab084078783c350e83171837c51f8e59ff8c96af"
+        },
+        {
+          "path": "233-rust-renamed-paths-233.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/233-rust-renamed-paths-233.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "233-rust-renamed-paths-233.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/233-rust-renamed-paths-233.stdout",
+          "bytes": 15675,
+          "sha256": "8f709c4ad96f5339d02a808203310689d9bc175a45d5efc8d88c7a48cb17a2f2"
+        },
+        {
+          "path": "234-rust-renamed-paths-234.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/234-rust-renamed-paths-234.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "234-rust-renamed-paths-234.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/234-rust-renamed-paths-234.stdout",
+          "bytes": 15649,
+          "sha256": "4f5c2a3075030992c33edc4429c78051dbc2d35ee62e9c66c72e7e4a51c3ebc3"
+        },
+        {
+          "path": "235-rust-renamed-paths-235.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/235-rust-renamed-paths-235.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "235-rust-renamed-paths-235.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/235-rust-renamed-paths-235.stdout",
+          "bytes": 15668,
+          "sha256": "601f81beac97573443b28b348fd2469f854c34d31932081dd56e006e6458d294"
+        },
+        {
+          "path": "236-rust-renamed-paths-236.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/236-rust-renamed-paths-236.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "236-rust-renamed-paths-236.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/236-rust-renamed-paths-236.stdout",
+          "bytes": 13583,
+          "sha256": "1258f509d4d8712ac92ec1b9ae3e6cb8a28e1bbd24ad64f6fb0b35584de8c713"
+        },
+        {
+          "path": "237-rust-renamed-paths-237.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/237-rust-renamed-paths-237.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "237-rust-renamed-paths-237.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/237-rust-renamed-paths-237.stdout",
+          "bytes": 12430,
+          "sha256": "fd041d8f5dba59328e6f5527fbf6de4ef0efe1566b35802f05f3192985e50e2b"
+        },
+        {
+          "path": "238-rust-renamed-paths-238.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/238-rust-renamed-paths-238.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "238-rust-renamed-paths-238.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/238-rust-renamed-paths-238.stdout",
+          "bytes": 28441,
+          "sha256": "c1de573e5ca97fad40f74bcc092de9770a13cb34abd1734e448060d6c95aed3f"
+        },
+        {
+          "path": "239-rust-renamed-paths-239.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/239-rust-renamed-paths-239.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "239-rust-renamed-paths-239.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/239-rust-renamed-paths-239.stdout",
+          "bytes": 14757,
+          "sha256": "29f6458189e2ddabc47a068c25a438a55c99f665e5033a1430bfce47483d7c88"
+        },
+        {
+          "path": "240-rust-renamed-paths-240.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/240-rust-renamed-paths-240.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "240-rust-renamed-paths-240.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/240-rust-renamed-paths-240.stdout",
+          "bytes": 10359,
+          "sha256": "318a6609c7c0666134222cc813556f1bb1a7945aa9ac8b4e3d3f46dcfe654d6e"
+        },
+        {
+          "path": "241-rust-renamed-paths-241.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/241-rust-renamed-paths-241.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "241-rust-renamed-paths-241.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/241-rust-renamed-paths-241.stdout",
+          "bytes": 153,
+          "sha256": "9f0c873c97ecea9b616b357b5e2499a525d088a5a8e02e2cc425d217e9c5dae2"
+        },
+        {
+          "path": "242-rust-renamed-paths-242.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/242-rust-renamed-paths-242.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "242-rust-renamed-paths-242.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/242-rust-renamed-paths-242.stdout",
+          "bytes": 12585,
+          "sha256": "165dedf17fc59c2d843a23467d83b66a01cf2b778a9cf2794fabc17d7ef7adda"
+        },
+        {
+          "path": "243-rust-renamed-paths-243.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/243-rust-renamed-paths-243.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "243-rust-renamed-paths-243.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/243-rust-renamed-paths-243.stdout",
+          "bytes": 11429,
+          "sha256": "33d9d0f1cf0142dff4a80976a023dd2cf9226b389fe2139cb447afa9df16b1fa"
+        },
+        {
+          "path": "244-rust-renamed-paths-244.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/244-rust-renamed-paths-244.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "244-rust-renamed-paths-244.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/244-rust-renamed-paths-244.stdout",
+          "bytes": 13229,
+          "sha256": "e98a52b0c4cd82ea72f11d5125a57b85e357bc1d104765f83929165a9f9f689f"
+        },
+        {
+          "path": "245-rust-renamed-paths-245.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/245-rust-renamed-paths-245.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "245-rust-renamed-paths-245.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/245-rust-renamed-paths-245.stdout",
+          "bytes": 15036,
+          "sha256": "448edb28caee76fa001ecb41d16e52859bc2cc915a7890bca6c036d07bc47244"
+        },
+        {
+          "path": "246-rust-renamed-paths-246.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/246-rust-renamed-paths-246.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "246-rust-renamed-paths-246.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/246-rust-renamed-paths-246.stdout",
+          "bytes": 10545,
+          "sha256": "a38b8b44a1121daf7363b1c3c6b29b8a4f0d0e926de88c4f7413017de93277d4"
+        },
+        {
+          "path": "247-rust-renamed-paths-247.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/247-rust-renamed-paths-247.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "247-rust-renamed-paths-247.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/247-rust-renamed-paths-247.stdout",
+          "bytes": 46752,
+          "sha256": "ca25669c4a14b38dd2e537879d19e40337c96ffaf00d2789f0c54d4bcf6c2e04"
+        },
+        {
+          "path": "248-cli-renamed-paths-248.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/248-cli-renamed-paths-248.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "248-cli-renamed-paths-248.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/248-cli-renamed-paths-248.stdout",
+          "bytes": 31942,
+          "sha256": "7bf5e0c4bc8a62809e88be01bbb388c523d80255eb31c03aca894640c0be6bcd"
+        },
+        {
+          "path": "249-cli-renamed-paths-249.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/249-cli-renamed-paths-249.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "249-cli-renamed-paths-249.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/249-cli-renamed-paths-249.stdout",
+          "bytes": 15906,
+          "sha256": "6b8c7e1f169066753a6bb756ab084078783c350e83171837c51f8e59ff8c96af"
+        },
+        {
+          "path": "250-cli-renamed-paths-250.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/250-cli-renamed-paths-250.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "250-cli-renamed-paths-250.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/250-cli-renamed-paths-250.stdout",
+          "bytes": 15675,
+          "sha256": "8f709c4ad96f5339d02a808203310689d9bc175a45d5efc8d88c7a48cb17a2f2"
+        },
+        {
+          "path": "251-cli-renamed-paths-251.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/251-cli-renamed-paths-251.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "251-cli-renamed-paths-251.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/251-cli-renamed-paths-251.stdout",
+          "bytes": 15649,
+          "sha256": "4f5c2a3075030992c33edc4429c78051dbc2d35ee62e9c66c72e7e4a51c3ebc3"
+        },
+        {
+          "path": "252-cli-renamed-paths-252.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/252-cli-renamed-paths-252.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "252-cli-renamed-paths-252.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/252-cli-renamed-paths-252.stdout",
+          "bytes": 15668,
+          "sha256": "601f81beac97573443b28b348fd2469f854c34d31932081dd56e006e6458d294"
+        },
+        {
+          "path": "253-cli-renamed-paths-253.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/253-cli-renamed-paths-253.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "253-cli-renamed-paths-253.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/253-cli-renamed-paths-253.stdout",
+          "bytes": 13583,
+          "sha256": "1258f509d4d8712ac92ec1b9ae3e6cb8a28e1bbd24ad64f6fb0b35584de8c713"
+        },
+        {
+          "path": "254-cli-renamed-paths-254.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/254-cli-renamed-paths-254.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "254-cli-renamed-paths-254.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/254-cli-renamed-paths-254.stdout",
+          "bytes": 12430,
+          "sha256": "fd041d8f5dba59328e6f5527fbf6de4ef0efe1566b35802f05f3192985e50e2b"
+        },
+        {
+          "path": "255-cli-renamed-paths-255.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/255-cli-renamed-paths-255.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "255-cli-renamed-paths-255.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/255-cli-renamed-paths-255.stdout",
+          "bytes": 28441,
+          "sha256": "c1de573e5ca97fad40f74bcc092de9770a13cb34abd1734e448060d6c95aed3f"
+        },
+        {
+          "path": "256-cli-renamed-paths-256.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/256-cli-renamed-paths-256.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "256-cli-renamed-paths-256.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/256-cli-renamed-paths-256.stdout",
+          "bytes": 14757,
+          "sha256": "29f6458189e2ddabc47a068c25a438a55c99f665e5033a1430bfce47483d7c88"
+        },
+        {
+          "path": "257-cli-renamed-paths-257.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/257-cli-renamed-paths-257.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "257-cli-renamed-paths-257.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/257-cli-renamed-paths-257.stdout",
+          "bytes": 10359,
+          "sha256": "318a6609c7c0666134222cc813556f1bb1a7945aa9ac8b4e3d3f46dcfe654d6e"
+        },
+        {
+          "path": "258-cli-renamed-paths-258.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/258-cli-renamed-paths-258.stderr",
+          "bytes": 110,
+          "sha256": "7f576a8352e6cff7f953b8f75fbaadb27e55f0b9ea5a52ca57c601bb9f249eb0"
+        },
+        {
+          "path": "258-cli-renamed-paths-258.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/258-cli-renamed-paths-258.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "259-cli-renamed-paths-259.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/259-cli-renamed-paths-259.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "259-cli-renamed-paths-259.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/259-cli-renamed-paths-259.stdout",
+          "bytes": 12585,
+          "sha256": "165dedf17fc59c2d843a23467d83b66a01cf2b778a9cf2794fabc17d7ef7adda"
+        },
+        {
+          "path": "260-cli-renamed-paths-260.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/260-cli-renamed-paths-260.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "260-cli-renamed-paths-260.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/260-cli-renamed-paths-260.stdout",
+          "bytes": 11429,
+          "sha256": "33d9d0f1cf0142dff4a80976a023dd2cf9226b389fe2139cb447afa9df16b1fa"
+        },
+        {
+          "path": "261-cli-renamed-paths-261.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/261-cli-renamed-paths-261.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "261-cli-renamed-paths-261.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/261-cli-renamed-paths-261.stdout",
+          "bytes": 13229,
+          "sha256": "e98a52b0c4cd82ea72f11d5125a57b85e357bc1d104765f83929165a9f9f689f"
+        },
+        {
+          "path": "262-cli-renamed-paths-262.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/262-cli-renamed-paths-262.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "262-cli-renamed-paths-262.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/262-cli-renamed-paths-262.stdout",
+          "bytes": 15036,
+          "sha256": "448edb28caee76fa001ecb41d16e52859bc2cc915a7890bca6c036d07bc47244"
+        },
+        {
+          "path": "263-cli-renamed-paths-263.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/263-cli-renamed-paths-263.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "263-cli-renamed-paths-263.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/263-cli-renamed-paths-263.stdout",
+          "bytes": 10545,
+          "sha256": "a38b8b44a1121daf7363b1c3c6b29b8a4f0d0e926de88c4f7413017de93277d4"
+        },
+        {
+          "path": "264-cli-renamed-paths-264.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/264-cli-renamed-paths-264.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "264-cli-renamed-paths-264.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/264-cli-renamed-paths-264.stdout",
+          "bytes": 46752,
+          "sha256": "ca25669c4a14b38dd2e537879d19e40337c96ffaf00d2789f0c54d4bcf6c2e04"
+        },
+        {
+          "path": "assembled-reference.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/assembled-reference.json",
+          "bytes": 334481,
+          "sha256": "003d5390290f3510155df5e748036e0c7a09177315486e97f20710b100215be6"
+        },
+        {
+          "path": "baseline/canonical.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/baseline/canonical.json",
+          "bytes": 132946,
+          "sha256": "c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55"
+        },
+        {
+          "path": "baseline/cli-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/baseline/cli-store/dictionary.sqlite3",
+          "bytes": 901120,
+          "sha256": "4e4c6b62ae22868478bd8bfe74960c42a38b4060d279b673801e27ed98208682"
+        },
+        {
+          "path": "baseline/input.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/baseline/input.json",
+          "bytes": 132946,
+          "sha256": "c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55"
+        },
+        {
+          "path": "baseline/legacy-store/index.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/baseline/legacy-store/index.sqlite3",
+          "bytes": 245760,
+          "sha256": "a1bf46c4f9d87afcfd557a258463d09f7bc91bdc3043f8b6ab0cee6394244148"
+        },
+        {
+          "path": "baseline/legacy.archive",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/baseline/legacy.archive",
+          "bytes": 19978,
+          "sha256": "ae8f12d7e601fc0301c06ffd5ffd4e2478344f57ba66e5b60e1ec094ffca5f60"
+        },
+        {
+          "path": "baseline/rust-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/baseline/rust-store/dictionary.sqlite3",
+          "bytes": 901120,
+          "sha256": "4e4c6b62ae22868478bd8bfe74960c42a38b4060d279b673801e27ed98208682"
+        },
+        {
+          "path": "caller/Cargo.lock",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/caller/Cargo.lock",
+          "bytes": 8008,
+          "sha256": "a12d708461830002a2996331d4f1eec81e3d6daea777a45f583cfd1a5da1586d"
+        },
+        {
+          "path": "caller/Cargo.toml",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/caller/Cargo.toml",
+          "bytes": 592,
+          "sha256": "6ec60ea697c6c5bce03fd32c9c3002697e2c29b2e7174742a10276df39f5210d"
+        },
+        {
+          "path": "caller/src/main-initial.rs.evidence",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/caller/src/main-initial.rs.evidence",
+          "bytes": 3918,
+          "sha256": "93af3afeeacc8ae8fa37b4eddcfa420eafd883c70aa29fcdec39ef99fe3d768e"
+        },
+        {
+          "path": "caller/src/main.rs",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/caller/src/main.rs",
+          "bytes": 3863,
+          "sha256": "85c3e56639d3b173eb1ee7c955bbc3507d18f4f0645f2ab003acda98f980fe15"
+        },
+        {
+          "path": "caller-build.log",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/caller-build.log",
+          "bytes": 1264,
+          "sha256": "92b1a6f50c61efb35e8cb873e5ffb83ce81799fbdfd563bb960d87480c5b52ac"
+        },
+        {
+          "path": "caller-build02.log",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/caller-build02.log",
+          "bytes": 288,
+          "sha256": "32d4c5945a48f15efc91f988d56709251caeca9922fa6fd4966fb318d18a90a9"
+        },
+        {
+          "path": "cli-build.log",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/cli-build.log",
+          "bytes": 169,
+          "sha256": "d23d590aa7b19fe068f3eddecb0cbb4950bbd73a29eb1613a5a0d82f218f19bf"
+        },
+        {
+          "path": "commands.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/commands.json",
+          "bytes": 217102,
+          "sha256": "8538f5d95b9bb79da4af8428fb2c4664ea1a6b7034b329bb3c21784041eb3dbc"
+        },
+        {
+          "path": "composition-attempt01.py",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/composition-attempt01.py",
+          "bytes": 15556,
+          "sha256": "a5bf05bc0fea379dd202185ee788d94b49abbc758643e2d976f06a5e160129da"
+        },
+        {
+          "path": "composition-run01.log",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/composition-run01.log",
+          "bytes": 919,
+          "sha256": "97156cb1d64ddbd5391f2a97971ead06f136d55a9d7a0cb31aeef9184896cc8f"
+        },
+        {
+          "path": "composition-run02.log",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/composition-run02.log",
+          "bytes": 1880,
+          "sha256": "e42f652ecc5189bc6c5b1099c5c6f08d21b4489ebfe53b87fb1cee79b225530f"
+        },
+        {
+          "path": "composition.py",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/composition.py",
+          "bytes": 15648,
+          "sha256": "cd893d00984f7ce44cd01f710e2b4467485ffe628f34eab0b4ec8b5138107515"
+        },
+        {
+          "path": "disabled-a/canonical.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/disabled-a/canonical.json",
+          "bytes": 132945,
+          "sha256": "f9a905cde64a239844f9b8394e56113e16230a418524bc38ff7c882089f46407"
+        },
+        {
+          "path": "disabled-a/cli-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/disabled-a/cli-store/dictionary.sqlite3",
+          "bytes": 901120,
+          "sha256": "54515e8ae4fb69fc63c537876917de7b47b4bf614989784be69b62d67a970704"
+        },
+        {
+          "path": "disabled-a/input.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/disabled-a/input.json",
+          "bytes": 132945,
+          "sha256": "f9a905cde64a239844f9b8394e56113e16230a418524bc38ff7c882089f46407"
+        },
+        {
+          "path": "disabled-a/legacy.archive",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/disabled-a/legacy.archive",
+          "bytes": 19978,
+          "sha256": "ae8f12d7e601fc0301c06ffd5ffd4e2478344f57ba66e5b60e1ec094ffca5f60"
+        },
+        {
+          "path": "disabled-a/rust-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/disabled-a/rust-store/dictionary.sqlite3",
+          "bytes": 901120,
+          "sha256": "54515e8ae4fb69fc63c537876917de7b47b4bf614989784be69b62d67a970704"
+        },
+        {
+          "path": "final-controls-attempt01.log",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/final-controls-attempt01.log",
+          "bytes": 424,
+          "sha256": "013cdefdc4f4ca3aa200acf4afc0dc6c24ebd4f8b60477cba4135925c381bf4d"
+        },
+        {
+          "path": "final-controls-results.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/final-controls-results.json",
+          "bytes": 4944,
+          "sha256": "6cfebf9fed81e955504ba9d20016f4755d69c3ca90717ae9a027541ddb8adce2"
+        },
+        {
+          "path": "final-controls.log",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/final-controls.log",
+          "bytes": 424,
+          "sha256": "013cdefdc4f4ca3aa200acf4afc0dc6c24ebd4f8b60477cba4135925c381bf4d"
+        },
+        {
+          "path": "final-controls02.log",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/final-controls02.log",
+          "bytes": 102,
+          "sha256": "6e8db9c901bd023ffa14aaec15ff03975212c6066fc817fd0e23f68c1259eed9"
+        },
+        {
+          "path": "final_controls-attempt01.py",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/final_controls-attempt01.py",
+          "bytes": 5717,
+          "sha256": "56640f96f75847f21d2b8cd6496a4b90d2136f4913836c9d028791a5178c39ed"
+        },
+        {
+          "path": "final_controls.py",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/final_controls.py",
+          "bytes": 5719,
+          "sha256": "0c04865670042ceef42b34029ed3aee7b35dbda693387e44e261303126f63069"
+        },
+        {
+          "path": "fixture.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/fixture.json",
+          "bytes": 132946,
+          "sha256": "c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55"
+        },
+        {
+          "path": "legacy-invalid-query.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/legacy-invalid-query.stderr",
+          "bytes": 66,
+          "sha256": "14f297ece4a187f2a245a5d93a8f457ced89af3af1684a48a6beac0f1f2f97e6"
+        },
+        {
+          "path": "legacy-invalid-query.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/legacy-invalid-query.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "lock.log",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/lock.log",
+          "bytes": 217,
+          "sha256": "815d257a534fbec4629958ce70e0d197bf8b808780182e506ab82f617d43beec"
+        },
+        {
+          "path": "nested-registry-error.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/nested-registry-error.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "nested-registry-error.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/nested-registry-error.stdout",
+          "bytes": 218,
+          "sha256": "5b252571aef98010be5e2e911ba9e3b78125dfd1ae531fd7a1e3d01672b7cad4"
+        },
+        {
+          "path": "owned-r2/canonical.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/owned-r2/canonical.json",
+          "bytes": 132946,
+          "sha256": "7f5717e49f6c4cebb15393a2022c917a569ed0b63449496a99302156ef517872"
+        },
+        {
+          "path": "owned-r2/cli-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/owned-r2/cli-store/dictionary.sqlite3",
+          "bytes": 901120,
+          "sha256": "655f427889acc5d4591ea5bd80e4d519e09cf094477fc52ac9b5187257117bb1"
+        },
+        {
+          "path": "owned-r2/input.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/owned-r2/input.json",
+          "bytes": 132946,
+          "sha256": "7f5717e49f6c4cebb15393a2022c917a569ed0b63449496a99302156ef517872"
+        },
+        {
+          "path": "owned-r2/legacy.archive",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/owned-r2/legacy.archive",
+          "bytes": 19978,
+          "sha256": "ae8f12d7e601fc0301c06ffd5ffd4e2478344f57ba66e5b60e1ec094ffca5f60"
+        },
+        {
+          "path": "owned-r2/rust-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/owned-r2/rust-store/dictionary.sqlite3",
+          "bytes": 901120,
+          "sha256": "655f427889acc5d4591ea5bd80e4d519e09cf094477fc52ac9b5187257117bb1"
+        },
+        {
+          "path": "readded-a/canonical.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/readded-a/canonical.json",
+          "bytes": 132946,
+          "sha256": "e699bcdf212c44fe7a59ed1de4187f5d9183444cf96a4691e3f09a6f98f35128"
+        },
+        {
+          "path": "readded-a/cli-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/readded-a/cli-store/dictionary.sqlite3",
+          "bytes": 901120,
+          "sha256": "c9870fcab9218141741adc08d427fe247c4cc370763bbc20d901d34e3c219253"
+        },
+        {
+          "path": "readded-a/input.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/readded-a/input.json",
+          "bytes": 132946,
+          "sha256": "e699bcdf212c44fe7a59ed1de4187f5d9183444cf96a4691e3f09a6f98f35128"
+        },
+        {
+          "path": "readded-a/legacy.archive",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/readded-a/legacy.archive",
+          "bytes": 19978,
+          "sha256": "ae8f12d7e601fc0301c06ffd5ffd4e2478344f57ba66e5b60e1ec094ffca5f60"
+        },
+        {
+          "path": "readded-a/rust-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/readded-a/rust-store/dictionary.sqlite3",
+          "bytes": 901120,
+          "sha256": "c9870fcab9218141741adc08d427fe247c4cc370763bbc20d901d34e3c219253"
+        },
+        {
+          "path": "removed-a/canonical.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/removed-a/canonical.json",
+          "bytes": 40209,
+          "sha256": "f689ce88dd8dab0e6b659ad188e6c85c3c7abcbb9d77feafa455c07c3463a89a"
+        },
+        {
+          "path": "removed-a/cli-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/removed-a/cli-store/dictionary.sqlite3",
+          "bytes": 663552,
+          "sha256": "6ab3d72cb0b697b8b897e2d91eb3545ea813c27e630e0300c3f73468d7020302"
+        },
+        {
+          "path": "removed-a/input.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/removed-a/input.json",
+          "bytes": 40209,
+          "sha256": "f689ce88dd8dab0e6b659ad188e6c85c3c7abcbb9d77feafa455c07c3463a89a"
+        },
+        {
+          "path": "removed-a/rust-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/removed-a/rust-store/dictionary.sqlite3",
+          "bytes": 663552,
+          "sha256": "6ab3d72cb0b697b8b897e2d91eb3545ea813c27e630e0300c3f73468d7020302"
+        },
+        {
+          "path": "renamed-paths/canonical.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/renamed-paths/canonical.json",
+          "bytes": 71858,
+          "sha256": "0c6f69cf6e838b0e7b1d0d3c07816235ea2e226b779fc59662a6daa102321282"
+        },
+        {
+          "path": "renamed-paths/cli-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/renamed-paths/cli-store/dictionary.sqlite3",
+          "bytes": 819200,
+          "sha256": "a41ff0d5793256eeff8292a6c4cb6af8a7dd9c4bd3b44e218965bef170f2d1fa"
+        },
+        {
+          "path": "renamed-paths/input.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/renamed-paths/input.json",
+          "bytes": 71858,
+          "sha256": "0c6f69cf6e838b0e7b1d0d3c07816235ea2e226b779fc59662a6daa102321282"
+        },
+        {
+          "path": "renamed-paths/rust-store/dictionary.sqlite3",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/renamed-paths/rust-store/dictionary.sqlite3",
+          "bytes": 819200,
+          "sha256": "a41ff0d5793256eeff8292a6c4cb6af8a7dd9c4bd3b44e218965bef170f2d1fa"
+        },
+        {
+          "path": "results.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/results.json",
+          "bytes": 79888,
+          "sha256": "00345871a9b5d9d4aa5fb1acffbfe0d478f3d7ca20edfd034d3321cd58aa7e32"
+        },
+        {
+          "path": "retained_input_reference.py",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/retained_input_reference.py",
+          "bytes": 7381,
+          "sha256": "a9f31769100fd10c116a5f9ea00eff3a2c9a80b18071f10e4093242d5dcb21bf"
+        },
+        {
+          "path": "retained_response_oracle.py",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/retained_response_oracle.py",
+          "bytes": 8197,
+          "sha256": "b88752cb9629dca7257c51c7daf7fb6a95885afab8bb0c5ec645b62ac376a95f"
+        },
+        {
+          "path": "review-evidence-index.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/review-evidence-index.json",
+          "bytes": 4321,
+          "sha256": "704003a08730fb68069ac44b87b8368f13a306dc88cb4fd0ab79bec940821dc4"
+        },
+        {
+          "path": "source-guards.json",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/source-guards.json",
+          "bytes": 1504,
+          "sha256": "2c993cb5bb8407e61a2f4b9b925b4615a7391ad80ee5f9bb8713e4cc6e105ad3"
+        },
+        {
+          "path": "store-s04-addition.diff",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/store-s04-addition.diff",
+          "bytes": 2252,
+          "sha256": "ff83fb5217d4684ecf35044ec9e548d1993ee3ff67dbdbb9485b8c4b82f168d3"
+        },
+        {
+          "path": "transport-malformed-cursor.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/transport-malformed-cursor.stderr",
+          "bytes": 137,
+          "sha256": "b192fc026e60e50d38165fd720f19ef3a0a0ce2b982318419692e27d4c5f7855"
+        },
+        {
+          "path": "transport-malformed-cursor.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/transport-malformed-cursor.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "transport-malformed-json.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/transport-malformed-json.stderr",
+          "bytes": 133,
+          "sha256": "f9d9185de53b94f825d85aa6d392403f485dac11d3f343f7788321fd990dfb4c"
+        },
+        {
+          "path": "transport-malformed-json.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/transport-malformed-json.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "transport-unknown-request-field.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/transport-unknown-request-field.stderr",
+          "bytes": 145,
+          "sha256": "579c341c424f9034744815e5066658bbe30b4beef3163d578d7b2b6767e20025"
+        },
+        {
+          "path": "transport-unknown-request-field.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/transport-unknown-request-field.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "transport-wrong-local-role.stderr",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/transport-wrong-local-role.stderr",
+          "bytes": 145,
+          "sha256": "6eef4051dd1c8372e60eea58d3bc9cf596fdd7b30748f06819e353f74eddb881"
+        },
+        {
+          "path": "transport-wrong-local-role.stdout",
+          "original_path": "/tmp/vlajmaji-p01-a01-composition-yBAREr/transport-wrong-local-role.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  ],
+  "source_composition_report_at_capture_sha256": "ab37d7f9ad786b94d2f2352a6f1759ce32d04e2795e29c8b9d3766afab2c6fb7"
+}

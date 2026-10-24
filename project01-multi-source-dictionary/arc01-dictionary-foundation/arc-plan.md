@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc | project01-multi-source-dictionary / arc01-dictionary-foundation |
-| status | active; S01 accepted11ec701; S02 accepted37c3518; S03 accepted01a9ceb3; S04 accepted efef9c4; separate composition pending |
+| status | active; S01 accepted11ec701; S02 accepted37c3518; S03 accepted01a9ceb3; S04 accepted efef9c4; independent technical composition PASS; final packet gate pending |
 | depends-on | Vlajmaji `4ee3bab`; preserved source/grouping/schema decisions and accepted PoC contracts |
 | blocks | A02 full import, A03 optional releases, A04 composition and A05 owned editing |
-| version / date | 1.14 / 2026-10-24 |
+| version / date | 1.15 / 2026-10-24 |
 
 ## Capability
 
@@ -39,7 +39,7 @@ The initial three-slice breakdown below is historical. Original S02 proved too b
 | 02 — Versioned relational schema | Concrete broad metadata tables/types, raw-preserving extension policy, standard mapping and old-archive adapter/rebuild path; a fixture can persist/reload without loss. Store/lexicon crates and shipped schema/migration docs. | Accepted S01 IDs/attribution. All twelve schema areas in design.md are accounted for; a single fixture database does not select final topology. |
 | 03 — Grouped exact lookup | Public Rust API and CLI show every fixture assertion under its registered source; exact totals, default-unpaged output, optional occurrence pages, availability and stable links. Search/CLI and user documentation. | Accepted S01 registry and S02 store. Complete reference checks before any real corpus/topology comparison. |
 
-S01 and S02 are independently accepted. S03 persistence is independently accepted01a9ceb3after two preserved failed candidates and refinement02, all9rowsdone; S04 is prepared after accepted S03 interfaces and evidence.
+All four children are independently accepted: S01at11ec701,S02at37c3518,S03at01a9ceb3,S04atefef9c4,33rowsdone. Separate technical composition has passed on exactefef9c4; final canonical packet consistency gate remains. Earlier prepared/awaiting-interface prose is superseded by these actual accepted interfaces and the preserved child histories.
 If any slice exceeds one context with repair headroom, split it explicitly while
 retaining every original criterion and owner; do not reduce schema coverage.
 
@@ -113,7 +113,7 @@ research bundle. Its seven criteria are redistributed, not discarded:
 
 ## Source-readiness and next action
 
-S01, S02 and S03 independent acceptance are recorded in their close sets. S02 initial/refinement01 failed verdicts, repaired refinement02 acceptance and all issued prompts remain preserved in its child plan/verification/artifacts. S03's concrete DDL/lifecycle/integrity choices now bind its issued slice plan and cc-prompt.md; S04 query choices await actual accepted persistence interfaces. Do not delegate unresolved domain semantics to an implementer with a list of acceptance rows. No physical topology decision is required for the foundation fixture.
+All four accepted close sets record actual public interfaces, complete independent evidence and preserved repair histories. Query selection/cursor/reference/provenance contracts are implemented at efef9c4, not awaiting persistence design. Independent whole-path composition passed (artifacts/composition-review.md); canonical close/project bubble-up consistency gate remains before formal endpoint. No physical production topology decision was made. Next is that final independent packet gate, then stop beforeA02; no next-arc prompt is authorized.
 
 ## Version history
 
@@ -164,3 +164,5 @@ S02 broad immutable raw/metadata/JSON/exact archive adapter accepted37c3518 afte
 S04accepted efef9c4after one narrow refinement; all8rows reproduced, complete275public/CLI value controls+4prior-cursor compatibility,84/1check,15isolatedno-default,67/1allfeatures,locked1.98/example. Original groupedS03scope and all12areas retained; no structural change. All4childrenaccepted, A01-03done. A01-04separate-context composition and final preservation/scope rows remain pending; accepted children alone do not close arc.
 
 -1.14 —2026-10-24: recorded independent S04acceptance/close/retrospective and full scope retention; next mandatory independent composition at exact efef9c4, noA02activation.
+
+-1.15 —2026-10-24: separate-context technical composition passed at efef9c4 (265actualcommands/2227harness checks), current stale S04/interface prose reconciled with accepted capability. Final packet gate remains; closing-report/verifier/arc retrospective and full project disposition prepared. No criterion/architecture/later-arc activation changed.
