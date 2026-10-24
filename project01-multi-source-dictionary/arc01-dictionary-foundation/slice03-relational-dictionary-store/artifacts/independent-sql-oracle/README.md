@@ -1,0 +1,11 @@
+# Prospective independent SQL field oracle
+
+CDC authored this public-JSON-to-explicit-SQL-row mapping after S03 issue and before CC implementation/freeze. It imports no production projection helper and has not yet been run against any S03 product. Preparation only is not an acceptance verdict.
+
+Input is the unchanged accepted S02 canonical fixture (132,946 bytes, SHA256 `c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55`). The specimen expands all 47 plan tables and every scalar/Presence/role/vector mapping. It derives exact existing record IDs independently using big-endian eight-byte UTF8 length prefixes and lowercase hex. Evidence surrogates are compared through full dereferenced evidence fields rather than prescribed integer allocation. Its initial expected evidence multiplicity is one row per supplied evidence appearance; allocation/deduplication is not bound by the plan and must be calibrated openly if the implementation uses equivalent sharing.
+
+Preparation invocation with JSON only builds expected rows (no database opened); it reports 10 capture refs, 10 bindings, 21 occurrence refs, 20 loaded occurrences, 181 native fields, and all 47 expected tables. The 21st occurrence is the known absent source-M catalogue target. These preparation counts come from the fixture and are not product results. A later second argument reads a database using SQLite read-only mode and compares all table rows/cells with typed values, including raw blobs and dereferenced evidence. Python SQLite is an independent observer, not a substitute for the pinned rusqlite public lifecycle/constraint controls.
+
+The main fixture has no etymology component rows and does not populate every valid optional shape; separate valid sparse/extreme/all-role variants and independent mutation controls remain mandatory. The expected-value script itself may require schema-name or specimen calibration. Preserve each such correction and distinguish it from actual product failures; do not silently change model witnesses or binding field expectations.
+
+Initial specimen SHA256: `fc518ca566f05c0f750de674cc083e5ef1b0809bb3d2b6bf1cef00d8a5b2bbba`. No candidate result exists at this checkpoint.
