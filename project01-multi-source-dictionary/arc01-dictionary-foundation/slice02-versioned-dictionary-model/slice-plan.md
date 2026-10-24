@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc / slice | project01-multi-source-dictionary / arc01-dictionary-foundation / slice02-versioned-dictionary-model |
-| status | active; CC implementation and composed fixture/tests underway |
+| status | open after failed initial/refinement01 review; refinement02 issued |
 | depends-on | independently accepted S01 `11ec7017a375fa62ba101cb51d85c36034621b81` |
 | blocks | new S03 relational persistence and new S04 grouped exact lookup |
-| version / date | 1.1 / 2026-10-24 |
+| version / date | 1.3 / 2026-10-24 |
 
 ## Capability and preserved decomposition
 
@@ -127,10 +127,22 @@ During CC implementation CDC read the property inventory of the already preserve
 
 Initial CC candidate2e640de67bb13ddbe833edba0d8c9c5adb133c66 returned clean with12 scoped source paths and a complete attributed proposed close. CDC independently read the implementation, reproduced required gates and public example/outside caller, then ran the preserved public84-control specimen:61 passed/23 failed, including three caught panic paths. The exact failed-control→binding-rule table and F1–F7 source findings are in cdc-verification.md. All nine rows remain OPEN; no model acceptance. Initial source/JSON/log/specimen and author claims remain historical evidence.
 
-**Current assignment: cc-prompt-iteration01.md**, predecessor initial cc-prompt.md, source2e640de, refinement1/5, same selected reused LunaHigh CC. CDC completed source-grounded repair readiness: seven bounded groups address exact witness/native-ID/provenance fixture fidelity, typed references, safe history traversal, matchable errors, strict struct-variant wire, accurate docs/release record and shared indexes. No public shape or Operator decision changes. Only five named source paths are writable; immutable84-control specimen/expectations remain unchanged. CC owns source during the issued repair interval, CDC planning/index/independent acceptance. S03 persistence and S04 grouped Rust/CLI remain complete pending obligations.
+**Historical issued refinement01: cc-prompt-iteration01.md**, predecessor initial cc-prompt.md, source2e640de, refinement1/5, same selected reused LunaHigh CC. CDC completed source-grounded repair readiness: seven bounded groups address exact witness/native-ID/provenance fixture fidelity, typed references, safe history traversal, matchable errors, strict struct-variant wire, accurate docs/release record and shared indexes. No public shape or Operator decision changes. Only five named source paths are writable; immutable84-control specimen/expectations remain unchanged. CC owns source during the issued repair interval, CDC planning/index/independent acceptance. S03 persistence and S04 grouped Rust/CLI remain complete pending obligations.
 
 | Assignment | Date | Predecessor | Reason | Disposition |
 | --- | --- | --- | --- | --- |
 | cc-prompt-iteration01.md | 2026-10-24 | cc-prompt.md; failed2e640de |23/84 independent control failures and F1–F7 source/doc findings against existing binding contract | issued; independent acceptance pending |
 
 -1.2 —2026-10-24: preserved initial failed verdict/specimen and attributed close, reconciled current status and issued bounded refinement01 without changing model scope/fixture denominators.
+
+## Refinement01 failed; refinement02 issued —2026-10-24
+
+Frozen b310d5d independently passed normal current gates, unchanged84/84, supplementary23/23 and full pin11/11, with byte-equal correct public fixture. Complete current model-source review and ten additional actual public controls proved3 valid LocalRef roles overrestricted plus7 generic reference/provenance errors (0/10 pass). F7 still has validator per-snapshot full-record scans and avoidable role/membership scans. Exact source evidence/control table and unchanged oracle are preserved in cdc-verification.md/artifacts/independent-controls-refinement01. All nine rows remain OPEN.
+
+**Current assignment: cc-prompt-iteration02.md**, predecessor iteration01, sourceb310d5de1361ac1d8ad2f3d4c15d6de9d940aaf5, refinement2/5. Only dictionary.rs and dictionary_contract.rs are writable by same selected reused LunaHigh CC; correct fixture/helper/data and all specimens remain unchanged. CDC resolved exact allowed LocalRef shape/named category branches/shared-index strategy against actual source/Rust error guidance; no Operator decision or architecture change. CC owns two source paths only during issued interval, CDC planning/index/acceptance.
+
+| Assignment | Date | Predecessor | Reason | Disposition |
+| --- | --- | --- | --- | --- |
+| cc-prompt-iteration02.md |2026-10-24 | cc-prompt-iteration01.md; failedb310d5d |3 valid role positives+7 category failures and concrete remaining F7 scans | issued; independent review pending |
+
+-1.3 —2026-10-24: preserved independently failed refinement01 and ten unchanged direct controls; issued bounded two-path refinement02 with passing fixture/pin/reference evidence retained.

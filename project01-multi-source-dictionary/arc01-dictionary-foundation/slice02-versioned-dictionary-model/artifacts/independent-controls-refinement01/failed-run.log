@@ -1,0 +1,22 @@
+   Compiling dictionary-model-s02-cdc-r01-additional v0.0.0 (/tmp/vlajmaji-p01-a01-s02-cdc-r01-additional)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.36s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/dictionary-model-s02-cdc-r01-additional /tmp/vlajmaji-p01-a01-s02-cdc-example-r01.json`
+etymology_valid_assertion_component=false
+etymology_valid_form_component=false
+etymology_valid_editorial_component=false
+form_entry_named_reference_constructor=Err(InvalidDocument("form entry missing")); helper=Err(InvalidDocument("form entry missing"))
+form_entry_named_reference=false
+entry_relation_origin_named_reference_constructor=Err(InvalidDocument("relation origin entry missing")); helper=Err(InvalidDocument("relation origin entry missing"))
+entry_relation_origin_named_reference=false
+source_form_foreign_evidence_named_provenance_constructor=Err(InvalidDocument("form evidence belongs to another source")); helper=Err(InvalidDocument("form evidence belongs to another source"))
+source_form_foreign_evidence_named_provenance=false
+computation_missing_tool_named_provenance_constructor=Err(InvalidDocument("incomplete computation provenance")); helper=Err(InvalidDocument("incomplete computation provenance"))
+computation_missing_tool_named_provenance=false
+loaded_phantom_evidence_named_reference_constructor=Err(InvalidDocument("evidence occurrence is neither loaded nor catalogued unavailable")); helper=Err(InvalidDocument("evidence occurrence is neither loaded nor catalogued unavailable"))
+loaded_phantom_evidence_named_reference=false
+loaded_phantom_assertion_named_reference_constructor=Err(InvalidDocument("assertion assertion-0 occurrence is neither loaded nor named by an unavailable release")); helper=Err(InvalidDocument("assertion assertion-0 occurrence is neither loaded nor named by an unavailable release"))
+loaded_phantom_assertion_named_reference=false
+loaded_capture_missing_binding_named_reference_constructor=Err(InvalidDocument("capture lacks registry source binding")); helper=Err(InvalidDocument("capture lacks registry source binding"))
+loaded_capture_missing_binding_named_reference=false
+additional_controls=10 failures=10 ["etymology_valid_assertion_component", "etymology_valid_form_component", "etymology_valid_editorial_component", "form_entry_named_reference", "entry_relation_origin_named_reference", "source_form_foreign_evidence_named_provenance", "computation_missing_tool_named_provenance", "loaded_phantom_evidence_named_reference", "loaded_phantom_assertion_named_reference", "loaded_capture_missing_binding_named_reference"]
+Error: "additional controls failed"

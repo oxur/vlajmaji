@@ -9,7 +9,7 @@
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.1 / 2026-10-24, America/Chicago |
+| version / date | 1.2 / 2026-10-24, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -240,6 +240,8 @@ Task output owner: `CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktree
 
 ## Arc01 current progress — 2026-10-24
 
-S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 typed-model readiness proceeds next, then S03 relational persistence, S04 grouped lookup and the independent arc composition gate. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
+S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 typed model has independently failed initial/refinement01 candidates and current bounded refinement02; S03 relational persistence, S04 grouped lookup and the independent arc composition gate remain pending. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
 
 Arc01 decomposition update (2026-10-24): original S02 now has typed-model S02 and persistence S03; original grouped S03 moves intact to S04. Root acknowledged this authorized split. Endpoint remains the full Arc01 foundation; all later arcs remain unactivated. Historical three-slice directive describes preserved capability scope, not permission to omit the fourth child introduced to retain implementation/review headroom.
+
+-1.2 —2026-10-24: reconciled current Arc01 progress with S02 failed candidates/refinement02 and preserved scope-complete four-slice endpoint; all later arcs remain unactivated.

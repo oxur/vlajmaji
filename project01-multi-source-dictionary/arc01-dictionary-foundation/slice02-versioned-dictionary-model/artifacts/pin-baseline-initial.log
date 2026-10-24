@@ -1,0 +1,20 @@
+{
+  "pin": "b9b76edaa206b2c89f0436059354c2943be7b6da",
+  "source_rows": 13,
+  "cpana_line": 226,
+  "checks": {
+    "d1_first_five_full_object": true,
+    "d1_duplicate_five_full_object": true,
+    "d1_four_full_object": false,
+    "d2_same_five_full_object": true,
+    "all_raw_payload_sha256": true,
+    "exact_cpana_raw_line": true,
+    "loaded_capture_denominator": true,
+    "raw_occurrence_denominator": true,
+    "source_partition": true,
+    "normalized_population": true,
+    "pinned_native_sense_absent": false
+  },
+  "passed": 9,
+  "total": 11
+}

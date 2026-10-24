@@ -1,6 +1,6 @@
 # Slice02 ledger
 
-All9 rows remain OPEN after independently failed initial candidate2e640de (84 controls:61 pass/23 fail). CC proposed-done is preserved in closing-report.md; CDC findings and exact controls are in cdc-verification.md. Current refinement01 is issued; no model, relational or query acceptance.
+All9 rows remain OPEN after independently failed initial candidate2e640de (84 controls:61 pass/23 fail). CC proposed-done is preserved in closing-report.md; CDC findings and exact controls are in cdc-verification.md. Refinement01 also independently failed10 additional controls despite84/23/11 preservation passes; current refinement02 is issued; no model, relational or query acceptance.
 
 | ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |

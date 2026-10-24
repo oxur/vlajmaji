@@ -1,0 +1,7 @@
+# Refinement01 source-derived controls — immutable ten-case oracle
+
+Assessed frozen b310d5de1361ac1d8ad2f3d4c15d6de9d940aaf5 after complete model-source read. First compile succeeded; ten controls ran,0 passed/10 failed, process exit1. Three positive OrderedComponent LocalRef roles fail constructor/helper/direct serde. Seven ordinary typed-reference/provenance paths produce generic InvalidDocument through constructor/helper. The exact case→binding-rule table and static F7 evidence are in ../../cdc-verification.md. Original84 and supplementary23 remain untouched and passed; all11 pin/data controls passed.
+
+Actual caller /tmp/vlajmaji-p01-a01-s02-cdc-r01-additional, unique package/bin dictionary-model-s02-cdc-r01-additional, only public lexicon+serde_json. Program SHA256a732f938b9aa6cc684676b10d9aa877377410efc7ce2cc0dabd097de9403729b. Cargo files/source/log and132946-byte fixture JSON are preserved here. Keep this program, its ten expectations and earlier specimens unchanged in refinement02; generate a fresh public example and require exact equality with this now-correct fixture (SHA c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55). The fixture is valid; failures concern rejected valid role types/error routing, not witness fidelity.
+
+Command uses designated CARGO_TARGET_DIR and cargo +1.98.0 run --locked --offline --manifest-path /tmp/vlajmaji-p01-a01-s02-cdc-r01-additional/Cargo.toml -- NEW-FIXTURE.json. Expected repaired10/10, exit0. No specimen build error occurred. Preserve initial failed-run.log and fixture.json unchanged.

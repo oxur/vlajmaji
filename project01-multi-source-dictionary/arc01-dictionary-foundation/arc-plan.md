@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc | project01-multi-source-dictionary / arc01-dictionary-foundation |
-| status | active; S01 accepted11ec701; S02 model assignment issued0b26224; S03 persistence/S04 grouped pending |
+| status | active; S01 accepted11ec701; S02 failed initial/refinement01; refinement02 active; S03 persistence/S04 grouped pending |
 | depends-on | Vlajmaji `4ee3bab`; preserved source/grouping/schema decisions and accepted PoC contracts |
 | blocks | A02 full import, A03 optional releases, A04 composition and A05 owned editing |
-| version / date | 1.4 / 2026-10-24 |
+| version / date | 1.5 / 2026-10-24 |
 
 ## Capability
 
@@ -113,7 +113,7 @@ research bundle. Its seven criteria are redistributed, not discarded:
 
 ## Source-readiness and next action
 
-S01's baseline inspection and independent acceptance are recorded in its close set. S02 readiness and its issued assignment are in the current child plan and cc-prompt.md. Later DDL/query choices belong to S03/S04 readiness after accepted predecessors. Do not delegate unresolved domain semantics to an implementer with a list of acceptance rows. No physical topology decision is required for the foundation fixture.
+S01's baseline inspection and independent acceptance are recorded in its close set. S02 initial/refinement01 failed verdicts and current refinement02 assignment are in its child plan, cdc-verification.md and cc-prompt-iteration02.md; all issued prompts remain preserved. Later DDL/query choices belong to S03/S04 readiness after accepted predecessors. Do not delegate unresolved domain semantics to an implementer with a list of acceptance rows. No physical topology decision is required for the foundation fixture.
 
 ## Version history
 
@@ -136,3 +136,5 @@ Original S02 → new S02/S03; original S03 → new S04. No criterion, test famil
 -1.3 —2026-10-24: CDC split original S02 into model and persistence after actual source/model sizing; root acknowledged the preserved four-slice endpoint. Added explicit old/new owner map and retained historical breakdown.
 
 -1.4 —2026-10-24: S02 assignment issued at0b26224; reconciled current owner/status prose and original seven-row mapping with the four-slice split. Historical initial breakdown and S01-time bubble-up remain preserved.
+
+-1.5 —2026-10-24: reconciled active status with independently failed S02 initial/refinement01 and current bounded refinement02. No criterion, architecture, decomposition or later-slice scope changed.
