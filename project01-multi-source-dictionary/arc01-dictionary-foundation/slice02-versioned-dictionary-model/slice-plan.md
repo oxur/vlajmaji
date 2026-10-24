@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc / slice | project01-multi-source-dictionary / arc01-dictionary-foundation / slice02-versioned-dictionary-model |
-| status | active author readiness; implementation not yet issued |
+| status | ready; initial CC assignment issued, implementation pending |
 | depends-on | independently accepted S01 `11ec7017a375fa62ba101cb51d85c36034621b81` |
 | blocks | new S03 relational persistence and new S04 grouped exact lookup |
-| version / date | 1.0 / 2026-10-24 |
+| version / date | 1.1 / 2026-10-24 |
 
 ## Capability and preserved decomposition
 
@@ -33,11 +33,11 @@ Add `crates/lexicon/src/dictionary.rs`, reexporting the public model from lib.rs
 - `CollectionRecord { id:EntityId, source:SourceId, display_name:String, description:Presence<TextValue> }`.
 - `ComponentRecord { id, collection:EntityId, native_name:String, languages:Vec<String> }`; LLG roots/cmavo/rafsi may be separate components. No names establish source identity.
 - `Availability { Available, Disabled, Missing, Removed }`.
-- `ReleaseAccounting { input_occurrences:u64, normalized_occurrences:u64, query_excluded_occurrences:u64, unit:String }` and `ReleaseDiagnostic { occurrence:Option<OccurrenceRef>, code:String, message:String }`.
+- `ReleaseAccounting { input_occurrences:Option<u64>, normalized_occurrences:Option<u64>, query_excluded_occurrences:Option<u64>, unit:String }` and `ReleaseDiagnostic { occurrence:Option<OccurrenceRef>, code:String, message:String }`.
 - `RedistributionStatus { Unknown, Held, Permitted }`; `ContentNotice { text:Presence<String>, locator:Presence<String>, license:Presence<String> }`; `CodeNotice { text:String, locator:Presence<String>, license:Presence<String> }`.
 - `ReleaseRecord { id, component:EntityId, distributor:Option<DistributorId>, upstream_revision:Presence<String>, distributor_revision:Presence<String>, captured_at:Presence<String>, time_precision:TimePrecision, schema_version:u32, normalizer:String, normalizer_version:String, captures:Vec<CaptureRef>, assertions:Vec<EntityId>, accounting:ReleaseAccounting, diagnostics:Vec<ReleaseDiagnostic>, selected:bool, availability:Availability, content_notices:Vec<ContentNotice>, redistribution:RedistributionStatus, redistribution_evidence:Vec<String> }`.
 
-Source is obtained via component→collection; capture registry bindings must agree. Available releases require all listed captures/occurrences and complete unique assertion membership: every raw occurrence in their captures maps to exactly one assertion, each assertion belongs to that source, and accounting equals actual retained rows/exclusions. Raw repeated observations remain distinct. Multiple releases may refer to the same exact occurrence/assertion; this is membership, not a second observation. Permitted redistribution requires nonempty supplied evidence; Unknown/Held remain valid explicit states, not permission to publish. Code notices are a separate metadata vector.
+Source is obtained via component→collection; capture registry bindings must agree. Available releases require all listed captures/occurrences and complete unique assertion membership: every raw occurrence in their captures maps to exactly one assertion, each assertion belongs to that source, and accounting is Some(actual retained rows/exclusions). Unknown counts are None only for non-Available catalogue data; do not invent zero from absent payloads. Raw repeated observations remain distinct. Multiple releases may refer to the same exact occurrence/assertion; this is membership, not a second observation. Permitted redistribution requires nonempty supplied evidence; Unknown/Held remain valid explicit states, not permission to publish. Code notices are a separate metadata vector.
 
 **Catalogue versus payload:** registry snapshot bindings/release capture refs may outlive loaded raw payloads only when their owning release is explicitly non-Available. Every loaded RawCapture must have a registry binding. A missing raw capture must be named by a non-Available release; it cannot disappear into a successful Available empty result. Assertions/evidence can retain known identities/projections for such a capture, but their raw rows cannot be authenticated while absent; this limit is explicit. A phantom locator under a loaded capture is always an error. This does not change S01 `validate_lexicon`, which retains its complete Lexicon-specific contract. Missing releases may have empty membership and diagnostics; no row count is inferred from unavailable bytes. Every available captured occurrence still has one normalized assertion, including excluded/form-only rows.
 
@@ -97,8 +97,20 @@ CDC inspected accepted registry/attribution APIs, existing Lexicon identity/raw/
 
 Applied Rust guidance: TD-03/05/06/07 for validated IDs/private outer state/plain drafts/explicit unavailable and presence states; API-02/17 for borrowed access and fallible conversions; EH-01/04/10 for typed recoverable errors; DC-01–05 for public examples and precise validation limits. RawValue and SHA256 APIs are already present/pinned in actual source. Existing helpers and mandatory real gates are reused, not replaced by a new validator project. The packet explicitly separates raw/catalogue availability, normalized source assertion, optional editorial grouping, and computed material. Actual SQLite DDL is not part of this issued model increment; S03 readiness uses the accepted model and all12 field oracles.
 
-Current assignment: **none issued yet**; `cc-prompt.md` will carry the bounded complete intake, implementation spine and exact source allowlist before CC ownership begins. No refinement consumed for this new slice; cap5. Supporting `artifacts/cc-execution.md` is needed for intake, exact observations/failures and attributed per-row proposal; CDC owns canonical planning/index/close. Do not pre-create close/verification/retrospective success records.
+Current assignment: **`cc-prompt.md`**; source11ec701, initial CC `/root/cdc/p02a02_cc`, same selected OpenAI gpt-6-luna/high. The issued prompt carries full bounded intake, exact20-occurrence fixture, implementation spine and named source ownership. No refinement consumed for this new slice; cap5. Supporting `artifacts/cc-execution.md` is needed for intake, exact observations/failures and attributed per-row proposal; CDC owns canonical planning/index/close. Do not pre-create close/verification/retrospective success records.
 
 ## Version history
 
 -1.0 —2026-10-24: detailed the first part of original S02 after accepted S01; retained full typed raw/metadata/availability/legacy obligations and assigned relational persistence to new S03, grouped lookup to new S04.
+
+## Completed author readiness and assignment history
+
+CDC resolved the interacting raw/catalogue availability and unknown-count rules, exact legacy-subset adapter, typed source/computed/owned/editorial provenance and all9 acceptance oracles. Source inspected at11ec701 remains clean. The full type design above and exact implementation/20-occurrence fixture in cc-prompt.md are executable; actual RawValue/SHA256/Lexicon getter APIs exist in the pinned crate. No Operator-reserved decision remains. Packet is bounded to current source/contracts and two finite witnesses; historical bundle is reference-only. Separate normalized model, relational persistence and grouped lookup leave implementation/repair headroom without dropping any original obligation.
+
+| Assignment | Date | Predecessor | Reason | Disposition |
+| --- | --- | --- | --- | --- |
+| `cc-prompt.md` | 2026-10-24 | none; accepted S01 predecessor11ec701 | Initial complete typed model/raw/adapter increment after explicit scope-preserving split | issued |
+
+Source owner is CC only for this issued interval; CDC owns planning/index and independent review. The existing support helper is actual shipped example/public-caller code, not a private test accessor. No close-set records exist before implementation/review.
+
+-1.1 —2026-10-24: finished source-grounded readiness, made unknown accounting explicit as Option counts, specified exact20-row/9-loaded-capture fixture, and issued initial CC assignment.
