@@ -3,8 +3,14 @@ name = "vlajmaji-store"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
-publish = false
-description = "Native rebuildable persistence and exact query indexes for Relojban lexical archives."
+publish.workspace = true
+license.workspace = true
+repository.workspace = true
+readme = "README.md"
+description = "Rebuildable SQLite and optional Oxigraph indexes for source-preserving lexical archives."
+keywords = ["lojban", "dictionary", "sqlite", "lexicon"]
+categories = ["database", "text-processing"]
+documentation = "https://docs.rs/vlajmaji-store"
 
 [features]
 default = []

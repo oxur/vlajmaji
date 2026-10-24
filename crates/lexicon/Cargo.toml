@@ -3,8 +3,14 @@ name = "vlajmaji-lexicon"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
-publish = false
-description = "Source-preserving local lexical corpus envelope for Relojban research."
+publish.workspace = true
+license.workspace = true
+repository.workspace = true
+readme = "README.md"
+description = "Source-preserving lexical records, provenance, and archives for (Re)Lojban dictionaries."
+keywords = ["lojban", "relojban", "dictionary", "lexicon"]
+categories = ["text-processing", "data-structures"]
+documentation = "https://docs.rs/vlajmaji-lexicon"
 
 [dependencies]
 serde.workspace = true

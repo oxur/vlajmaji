@@ -3,8 +3,14 @@ name = "vlajmaji-search"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
-publish = false
-description = "Source-preserving local lexical search prototype."
+publish.workspace = true
+license.workspace = true
+repository.workspace = true
+readme = "README.md"
+description = "Source-preserving lexical search with spelling, phonology, prosody, and compound queries."
+keywords = ["lojban", "relojban", "dictionary", "search", "phonology"]
+categories = ["text-processing", "science"]
+documentation = "https://docs.rs/vlajmaji-search"
 
 [features]
 default = []
