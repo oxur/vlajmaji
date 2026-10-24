@@ -21,4 +21,22 @@ for key in d['metadata']:d['metadata'][key]=0 if key=='catalogue_revision' else 
 d['metadata']['collections']=[copy.deepcopy(x['metadata']['collections'][0])];d['metadata']['components']=[copy.deepcopy(x['metadata']['components'][0])]
 r=copy.deepcopy(x['metadata']['releases'][0]);r.update(captures=[],assertions=[],diagnostics=[],accounting={'input_occurrences':0,'normalized_occurrences':0,'query_excluded_occurrences':0,'unit':'occurrence'});d['metadata']['releases']=[r];save('available-empty',d)
 d=copy.deepcopy(d);d['registry']['sources']=[];d['metadata']['collections']=[];d['metadata']['components']=[];d['metadata']['releases']=[];save('all-empty',d)
+# Legacy v1 changes only the accepted archive envelope version; no proposals exist.
+d=copy.deepcopy(x);archive=json.loads(bytes(d['legacy_archive']));assert not archive['proposals'];archive['version']=1
+d['legacy_archive']=list(json.dumps(archive,ensure_ascii=False,separators=(',',':')).encode());save('legacy-v1',d)
+# Legacy identity and metadata fields deliberately permit empty strings; raw bytes/hashes stay exact.
+d=copy.deepcopy(x)
+def empty_namespace(v):
+ if isinstance(v,dict):
+  if v.get('namespace')=='captured:a:d1':v['namespace']=''
+  for z in v.values():empty_namespace(z)
+ elif isinstance(v,list):
+  for z in v:empty_namespace(z)
+empty_namespace(d)
+c=next(c for c in d['captures'] if c['identity']['namespace']=='')
+c['metadata'].update(source_name='',locator='',revision={'Value':''},captured_at={'Value':''},notice_locator={'Value':''})
+archive=json.loads(bytes(d['legacy_archive']));empty_namespace(archive)
+a=next(a for a in archive['sources'] if a['identity']['namespace']=='')
+a['metadata'].update(source_name='',locator='',revision='',captured_at='',notice_locator='')
+d['legacy_archive']=list(json.dumps(archive,ensure_ascii=False,separators=(',',':')).encode());save('legacy-empty-metadata',d)
 print(json.dumps({'prepared_variants':sorted(p.name for p in out.glob('*.json')),'product_results':None}))
