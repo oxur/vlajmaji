@@ -1,0 +1,8 @@
+[package]
+name = "dictionary-store-s03-cdc-independent-controls"
+version = "0.0.0"
+edition = "2024"
+
+[dependencies]
+vlajmaji-store = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji/crates/store" }
+vlajmaji-lexicon = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji/crates/lexicon" }

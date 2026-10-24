@@ -1,0 +1,9 @@
+# S03 environment interruption and bounded recovery
+
+After initial assignment/readback but before source implementation, a small CDC `/tmp` positive-variant write failed with `No space left on device`; the file was not created. CC independently reported the first `dictionary_schema.rs` save failed before writing. Accepted source37c3518 remained clean. Both agents stopped source builds and retained existing evidence.
+
+Read-only `df -h` showed Data volume100% with about175–176MiB reported free. Known designated parent Cargo target was7.6GiB; the documented mistaken S02 worktree-local target was5.5GiB. `git status --ignored -- target` marked it ignored; it was an ordinary directory containing only Cargo cachedir tag, rustc/rustdoc fingerprints, debug/doc/tmp. S02 CC history had explicitly recorded default relative-target runs and later corrected explicit-parent-target gates. Both agents had no active build; root independently confirmed the same scope and remained read-only.
+
+Under existing Autonomous authority CDC removed only `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji/target`. The first conservative pre-delete assertion stopped because its allowlist omitted Cargo `.rustdoc_fingerprint.json`; no deletion occurred on that attempt. CDC inspected the actual names and fingerprint JSON, included that known Cargo artifact, then retried the guarded removal. The second operation completed exit0. Designated parent target, all source/planning/logs/specimens and main remained intact. Disk free space then reported5.5GiB; source remained clean37c3518 and local target absent.
+
+CC was notified to resume the same initial issued scope with explicit designated parent target; no refinement/model/scope change was consumed. CDC successfully rewrote the formerly absent prospective variant generator after recovery. This is an environment/interruption receipt, not a source acceptance gate.

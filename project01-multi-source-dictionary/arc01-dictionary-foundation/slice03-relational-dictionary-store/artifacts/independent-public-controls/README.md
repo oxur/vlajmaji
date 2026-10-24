@@ -1,0 +1,9 @@
+# Prospective independent public persistence controls
+
+CDC authored these controls before S03 candidate freeze. No S03 source build, product execution or verdict exists at this preservation checkpoint. Public caller package/binary `dictionary-store-s03-cdc-independent-controls` is unique and depends only on public store/model path crates. Create compares full validated document/canonical bytes, drops and reopens; open reports actual typed store reasons; hold retains the store for an independent read-snapshot observation.
+
+`tamper.py` uses a fresh closed copy for each committed mutation, checks setup selected rows, preserves counts for scalar edits, invokes the public opener, and checks exact expected category plus unchanged on-disk files. SQL constraint controls use actual extended constraint codes instead of any-error acceptance. Python SQLite is an independent observer and does not replace pinned rusqlite backend controls. Neither specimen imports the production projection builder.
+
+`variants.py` generates six separately labelled positive model variants: full u64 catalogue/unavailable counts, valid empty/NUL/Unicode strings and nested Presence, all four LocalRef roles in both component families, unbound catalogue-only capture, valid-empty Available with Some0, and an entirely empty document. The immutable main fixture is not edited. Every variant first passes the accepted model via the public caller. A model-invalid variant is a specimen calibration failure, not evidence against the store. Later candidate runs must preserve any compiler, field-name, constraint-code or setup calibration correction and all product failures without overwriting this initial checkpoint.
+
+These prospective controls complement the complete independent SQL mapping oracle and full source/legacy/schema review. Counts and a green author suite do not independently establish persistence fidelity.
