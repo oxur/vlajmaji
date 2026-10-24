@@ -1,0 +1,26 @@
+{
+  "controls": 3,
+  "rows": [
+    {
+      "name": "json-text",
+      "expected": "ERR InvalidStore CanonicalBytes",
+      "actual": "ERR Backend",
+      "exit": 0,
+      "unchanged": true
+    },
+    {
+      "name": "legacy-text",
+      "expected": "ERR InvalidStore CanonicalBytes",
+      "actual": "ERR Backend",
+      "exit": 0,
+      "unchanged": true
+    },
+    {
+      "name": "hash-blob",
+      "expected": "ERR InvalidStore CanonicalBytes",
+      "actual": "ERR Backend",
+      "exit": 0,
+      "unchanged": true
+    }
+  ]
+}

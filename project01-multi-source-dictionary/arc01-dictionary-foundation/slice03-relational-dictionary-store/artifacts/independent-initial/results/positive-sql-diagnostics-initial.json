@@ -1,0 +1,85 @@
+{
+  "diagnostic_variants": 10,
+  "rows": [
+    {
+      "name": "all-component-roles",
+      "tables": 47,
+      "cells": 3360,
+      "failures": 0,
+      "tables_failed": [],
+      "acceptance_eligible": false
+    },
+    {
+      "name": "all-empty",
+      "tables": 47,
+      "cells": 17,
+      "failures": 0,
+      "tables_failed": [],
+      "acceptance_eligible": false
+    },
+    {
+      "name": "available-empty",
+      "tables": 47,
+      "cells": 85,
+      "failures": 0,
+      "tables_failed": [],
+      "acceptance_eligible": false
+    },
+    {
+      "name": "legacy-empty-metadata",
+      "tables": 47,
+      "cells": 3288,
+      "failures": 0,
+      "tables_failed": [],
+      "acceptance_eligible": false
+    },
+    {
+      "name": "legacy-v1",
+      "tables": 47,
+      "cells": 3288,
+      "failures": 0,
+      "tables_failed": [],
+      "acceptance_eligible": false
+    },
+    {
+      "name": "u64-extremes",
+      "tables": 47,
+      "cells": 3288,
+      "failures": 0,
+      "tables_failed": [],
+      "acceptance_eligible": false
+    },
+    {
+      "name": "unavailable-usize-extremes",
+      "tables": 47,
+      "cells": 3355,
+      "failures": 0,
+      "tables_failed": [],
+      "acceptance_eligible": false
+    },
+    {
+      "name": "unbound-missing-capture",
+      "tables": 47,
+      "cells": 3283,
+      "failures": 0,
+      "tables_failed": [],
+      "acceptance_eligible": false
+    },
+    {
+      "name": "alias-reuse-native-empty",
+      "tables": 47,
+      "cells": 3293,
+      "failures": 0,
+      "tables_failed": [],
+      "acceptance_eligible": false
+    },
+    {
+      "name": "text-presence-extremes",
+      "tables": 47,
+      "cells": 3288,
+      "failures": 0,
+      "tables_failed": [],
+      "acceptance_eligible": false
+    }
+  ]
+}

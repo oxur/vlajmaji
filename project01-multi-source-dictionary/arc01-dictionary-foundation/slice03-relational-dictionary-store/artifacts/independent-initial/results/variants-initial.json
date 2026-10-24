@@ -1,0 +1,66 @@
+{
+  "variants": 10,
+  "created": 8,
+  "rows": [
+    {
+      "variant": "alias-reuse-native-empty.json",
+      "exit": 0,
+      "stdout": "MODELERR InvalidJson(\"invalid alias evidence value \\\"\\\" at line 1 column 67617\")",
+      "stderr": ""
+    },
+    {
+      "variant": "all-component-roles.json",
+      "exit": 0,
+      "stdout": "OK CREATE 133480",
+      "stderr": ""
+    },
+    {
+      "variant": "all-empty.json",
+      "exit": 0,
+      "stdout": "OK CREATE 491",
+      "stderr": ""
+    },
+    {
+      "variant": "available-empty.json",
+      "exit": 0,
+      "stdout": "OK CREATE 1548",
+      "stderr": ""
+    },
+    {
+      "variant": "legacy-empty-metadata.json",
+      "exit": 0,
+      "stdout": "OK CREATE 132555",
+      "stderr": ""
+    },
+    {
+      "variant": "legacy-v1.json",
+      "exit": 0,
+      "stdout": "OK CREATE 132946",
+      "stderr": ""
+    },
+    {
+      "variant": "text-presence-extremes.json",
+      "exit": 0,
+      "stdout": "MODELERR InvalidJson(\"invalid source display name value \\\"\\\\0雪λ\\\" at line 1 column 67542\")",
+      "stderr": ""
+    },
+    {
+      "variant": "u64-extremes.json",
+      "exit": 0,
+      "stdout": "OK CREATE 133013",
+      "stderr": ""
+    },
+    {
+      "variant": "unavailable-usize-extremes.json",
+      "exit": 0,
+      "stdout": "OK CREATE 134042",
+      "stderr": ""
+    },
+    {
+      "variant": "unbound-missing-capture.json",
+      "exit": 0,
+      "stdout": "OK CREATE 132783",
+      "stderr": ""
+    }
+  ]
+}

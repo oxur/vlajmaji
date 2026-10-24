@@ -1,5 +1,7 @@
 # Prospective independent public persistence controls
 
+Current status: initial candidate629bc810 was independently reviewed and failed. See ../../cdc-verification.md and ../independent-initial/README.md for actual results/calibration; the prospective chronology below is historical and does not describe the current gate state. Operational oracle.py accepts only the explicitly permitted complete0/1/evidence-surrogate representation choices; bound names/order/values remain exact.
+
 CDC authored these controls before S03 candidate freeze. No S03 source build, product execution or verdict exists at this preservation checkpoint. Public caller package/binary `dictionary-store-s03-cdc-independent-controls` is unique and depends only on public store/model path crates. Create compares full validated document/canonical bytes, drops and reopens; open reports actual typed store reasons; hold retains the store for an independent read-snapshot observation.
 
 `tamper.py` uses a fresh closed copy for each committed mutation, checks setup selected rows, preserves counts for scalar edits, invokes the public opener, and checks exact expected category plus unchanged on-disk files. SQL constraint controls use actual extended constraint codes instead of any-error acceptance. Python SQLite is an independent observer and does not replace pinned rusqlite backend controls. Neither specimen imports the production projection builder.

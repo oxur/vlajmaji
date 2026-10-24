@@ -40,7 +40,7 @@ def build(d,raw):
         row={'occurrence_id':rid(v['occurrence']),'field_index':uint(v['field_index']),**p('citation',v['citation']),'offset_start':uint(off['start']) if off else None,'offset_end':uint(off['end']) if off else None}
         rows['source_evidence'].append(row)
         return row
-    for k,v in {'format':'vlajmaji-dictionary','schema_version':'1','complete':'true','canonical_sha256':hashlib.sha256(raw).hexdigest(),'dictionary_version':str(d['version']),'registry_version':str(r['version']),'catalogue_revision':str(m['catalogue_revision'])}.items():add('metadata',key=k,value=v)
+    for k,v in {'format':'vlajmaji-dictionary','schema_version':'1','complete':'1','canonical_sha256':hashlib.sha256(raw).hexdigest(),'dictionary_version':str(d['version']),'registry_version':str(r['version']),'catalogue_revision':str(m['catalogue_revision'])}.items():add('metadata',key=k,value=v)
     add('canonical_document',id=1,json=raw,legacy_archive=bytes(d['legacy_archive']) if d['legacy_archive'] is not None else None)
     roles={'collections':'collection','components':'component','releases':'release','entries':'entry','assertions':'assertion','contexts':'context','frames':'frame','forms':'form','etymologies':'etymology','relations':'relation','owned_revisions':'owned_revision','editorial_senses':'editorial_sense','computations':'computation','annotations':'annotation'}
     for key,role in roles.items():
@@ -127,7 +127,7 @@ def main():
         print(json.dumps({'prepared_tables':len(expected),'expected_rows':{k:len(v) for k,v in expected.items()},'fixture_sha256':hashlib.sha256(raw).hexdigest()},indent=2));return
     db=sqlite3.connect(pathlib.Path(sys.argv[2]).resolve().as_uri()+'?mode=ro',uri=True);db.row_factory=sqlite3.Row
     evidence={x['evidence_id']:{k:x[k] for k in x.keys() if k!='evidence_id'} for x in db.execute('SELECT * FROM source_evidence')}
-    failures=[];cells=0
+    failures=[];cells=0;used_evidence=set()
     actual_tables={x[0] for x in db.execute("SELECT name FROM sqlite_schema WHERE type='table' AND name NOT LIKE 'sqlite_%'")}
     if actual_tables!=set(TABLES):failures.append(('table_set',sorted(actual_tables^set(TABLES))))
     for table,want in expected.items():
@@ -135,11 +135,16 @@ def main():
             got=[dict(x) for x in db.execute('SELECT * FROM "'+table+'"')]
             if table=='source_evidence':
                 for row in got:row.pop('evidence_id')
+                got=list({freeze(row):row for row in got}.values())
+                want=list({freeze(row):row for row in want}.values())
             else:
                 for row in got:
-                    if 'evidence_id' in row:row['evidence_id']=evidence[row['evidence_id']] if row['evidence_id'] is not None else None
+                    if 'evidence_id' in row:
+                        if row['evidence_id'] is not None:used_evidence.add(row['evidence_id'])
+                        row['evidence_id']=evidence[row['evidence_id']] if row['evidence_id'] is not None else None
             a=collections.Counter(map(freeze,got));b=collections.Counter(map(freeze,want));cells+=sum(len(x) for x in want)
             if a!=b:failures.append((table,{'actual_rows':len(got),'expected_rows':len(want),'missing':list((b-a).elements())[:2],'unexpected':list((a-b).elements())[:2]}))
         except Exception as e:failures.append((table,repr(e)))
+    if used_evidence!=set(evidence):failures.append(('evidence_reference_coverage',{'unreferenced':sorted(set(evidence)-used_evidence),'missing':sorted(used_evidence-set(evidence))}))
     print(json.dumps({'tables':len(expected),'expected_cells':cells,'failures':len(failures),'details':failures},ensure_ascii=False,indent=2));sys.exit(bool(failures))
 if __name__=='__main__':main()

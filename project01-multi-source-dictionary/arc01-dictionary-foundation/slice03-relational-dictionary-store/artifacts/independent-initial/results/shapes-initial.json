@@ -1,0 +1,115 @@
+{
+  "controls": 18,
+  "passed": 0,
+  "relation_bound_name_present": false,
+  "results": [
+    {
+      "name": "collection-inner-null",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE collections SET description_language_state=NULL WHERE id='collection-a'"
+    },
+    {
+      "name": "assertion-inner-null",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE assertions SET definition_language_state=NULL WHERE id='assertion-0'"
+    },
+    {
+      "name": "form_components-null-kind-0",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE form_components SET target_kind=NULL WHERE form_id='form-variant' AND ordinal=0"
+    },
+    {
+      "name": "form_components-null-kind-1",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE form_components SET target_kind=NULL WHERE form_id='form-variant' AND ordinal=1"
+    },
+    {
+      "name": "form_components-null-kind-2",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE form_components SET target_kind=NULL WHERE form_id='form-variant' AND ordinal=2"
+    },
+    {
+      "name": "form_components-null-kind-3",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE form_components SET target_kind=NULL WHERE form_id='form-variant' AND ordinal=3"
+    },
+    {
+      "name": "etymology_components-null-kind-0",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE etymology_components SET target_kind=NULL WHERE etymology_id='etymology-0' AND ordinal=0"
+    },
+    {
+      "name": "etymology_components-null-kind-1",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE etymology_components SET target_kind=NULL WHERE etymology_id='etymology-0' AND ordinal=1"
+    },
+    {
+      "name": "etymology_components-null-kind-2",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE etymology_components SET target_kind=NULL WHERE etymology_id='etymology-0' AND ordinal=2"
+    },
+    {
+      "name": "etymology_components-null-kind-3",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE etymology_components SET target_kind=NULL WHERE etymology_id='etymology-0' AND ordinal=3"
+    },
+    {
+      "name": "entity-input-null-kind-0",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE computation_inputs SET entity_kind=NULL WHERE computation_id='computation-1' AND ordinal=2"
+    },
+    {
+      "name": "entity-input-null-kind-1",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE computation_inputs SET entity_kind=NULL WHERE computation_id='computation-1' AND ordinal=3"
+    },
+    {
+      "name": "entity-input-null-kind-2",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE computation_inputs SET entity_kind=NULL WHERE computation_id='computation-1' AND ordinal=4"
+    },
+    {
+      "name": "entity-input-null-kind-3",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE computation_inputs SET entity_kind=NULL WHERE computation_id='computation-1' AND ordinal=5"
+    },
+    {
+      "name": "relation-null-local-kind",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE relations SET local_kind=NULL WHERE id='relation-editorial'"
+    },
+    {
+      "name": "catalogue-empty-identity",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE relations SET catalog_native_entry_id=NULL,catalog_native_assertion_id=NULL,catalog_occurrence_id=NULL WHERE id='relation-missing-catalogue'"
+    },
+    {
+      "name": "other-kind-null-payload",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE relations SET other_kind=NULL WHERE id='relation-unresolved'"
+    },
+    {
+      "name": "source-kind-extra-other-payload",
+      "status": "FAIL",
+      "actual": "invalid shape accepted",
+      "sql": "UPDATE relations SET other_kind='unexpected' WHERE id='relation-see'"
+    }
+  ]
+}

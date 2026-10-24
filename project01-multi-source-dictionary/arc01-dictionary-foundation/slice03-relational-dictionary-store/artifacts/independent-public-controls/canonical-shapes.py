@@ -1,0 +1,6 @@
+"""Canonical SQL storage-class negatives, initially executed inline; fresh copies per case."""
+import json,pathlib,shutil,sqlite3,subprocess,sys
+binary=pathlib.Path(sys.argv[1]);source=pathlib.Path(sys.argv[2]);root=pathlib.Path(sys.argv[3]);root.mkdir();rows=[]
+for name,sql,value in [('json-text','UPDATE canonical_document SET json=? WHERE id=1','{}'),('legacy-text','UPDATE canonical_document SET legacy_archive=? WHERE id=1','{}'),('hash-blob',"UPDATE metadata SET value=? WHERE key='canonical_sha256'",sqlite3.Binary(b'0'*64))]:
+ dest=root/name;shutil.copytree(source,dest);db=dest/'dictionary.sqlite3';c=sqlite3.connect(db);c.execute('PRAGMA ignore_check_constraints=ON');cur=c.execute(sql,(value,));assert cur.rowcount==1;c.commit();c.close();before=db.read_bytes();p=subprocess.run([str(binary),'open',str(dest)],capture_output=True,text=True);actual=p.stdout.strip();rows.append({'name':name,'expected':'ERR InvalidStore CanonicalBytes','actual':actual,'exit':p.returncode,'unchanged':db.read_bytes()==before,'status':'PASS' if p.returncode==0 and actual=='ERR InvalidStore CanonicalBytes' and db.read_bytes()==before else 'FAIL'})
+print(json.dumps({'controls':len(rows),'passed':sum(r['status']=='PASS' for r in rows),'rows':rows},indent=2));sys.exit(any(r['status']!='PASS' for r in rows))

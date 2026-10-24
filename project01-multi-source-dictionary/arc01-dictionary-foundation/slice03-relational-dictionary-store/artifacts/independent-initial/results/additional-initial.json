@@ -1,0 +1,30 @@
+{
+  "variants": 4,
+  "created": 2,
+  "rows": [
+    {
+      "variant": "independent-raw-capture-order.json",
+      "exit": 0,
+      "stdout": "OK CREATE 132946",
+      "stderr": ""
+    },
+    {
+      "variant": "independent-registry-order.json",
+      "exit": 0,
+      "stdout": "OK CREATE 132946",
+      "stderr": ""
+    },
+    {
+      "variant": "unavailable-assertion-only.json",
+      "exit": 0,
+      "stdout": "ERR Backend",
+      "stderr": ""
+    },
+    {
+      "variant": "unavailable-computation-only.json",
+      "exit": 0,
+      "stdout": "ERR Backend",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+# S03 CDC independent verification
+
+## Initial candidate — FAIL / all nine rows remain open
+
+Source629bc810969a8077a9d9388ff4d762deaa4cf10a was frozen clean after the ten allowed paths. CDC independently inspected the complete two production modules, complete1424-line integration suite, public example, schema document and all existing-path diffs. No CDC source edits occurred. Attributed CC intake, proposed dispositions and corrected terminal gate populations remain in artifacts/cc-execution.md; those are separate from this independent verdict. Initial cc-prompt.md remains unchanged. S01/S02 acceptance and immutable S02 fixture are preserved; S04/composition have not been implemented.
+
+All initial independent scripts, original/calibrated inputs, logs and individual results are preserved under [independent-initial](artifacts/independent-initial/README.md), with byte/SHA256 manifest. Operational public/tamper/shape/filesystem/variant specimens live in artifacts/independent-public-controls; the strict47-table oracle lives in artifacts/independent-sql-oracle/oracle.py. Individual failed controls are in the JSON result files, not collapsed into one pass count.
+
+### Evidence and limits
+
+| Independent check | Actual terminal outcome | Interpretation |
+| --- | --- | --- |
+| Public unique outside package create/drop/read-only open, exact borrowed accessor types and wrapped Error::source | pass; full132946-byte model/raw/archive/canonical equality, SHA c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55 | Usable positive main fixture, not complete schema acceptance. |
+| Make check |56Cargo/doctest +19tooling =75passed,1existing full-corpus ignore; fmt/Clippy/docs pass | Independent initial current-code gate. |
+| Serialized no-default/all-features; locked Rust1.98 workspace check |10passed;58passed/1existing ignore; locked check succeeds | Compatibility gates pass. |
+| Initial strict SQL oracle |47tables;17table differences | Two differences are permitted representation choices below;15bound table differences remain. |
+| Representation-calibrated strict SQL oracle |47tables,3213expected cells,15table differences | FAIL:14redundant role ordinals and raw occurrence name; relation local prefix is also wrong within its role table. |
+| Supplemental scalar diagnostic |47tables/3288cells/zero differences, explicitly acceptance_eligible=false | Shims bound structural errors solely to inspect remaining exact values. Never acceptance. |
+| Frozen94-control matrix |92PASS,1FAIL accepted invalid optional-local shape,1SETUP_FAILED required local_target column absent | Failed setup is not a rejection proof.42same-count controls included, but one name-dependent setup is incomplete. |
+| Supplemental SQL shape controls |18/18invalid mutations commit successfully;0expected CHECK275 rejections | FAIL; exact SQL per individual row preserved. |
+| Canonical SQL storage-class errors |3/3successful mutations return Backend; expected CanonicalBytes; all files unchanged | FAIL. Initial inline results and same-case repeated scripted results retained. |
+| Filesystem/error/snapshot suite |12/13pass; malformed SQLite file misclassified Format rather than Backend | Snapshot lock pins while held and releases after drop; path/no-write controls pass. |
+| Original ten prospective positive drafts |8valid create/reopen pass;2fail accepted SourceRegistry before store | Two setup defects: forbidden NUL source display_name and empty alias evidence. Original drafts retained. |
+| Calibrated positives |2corrected setups pass, yielding10valid lifecycle variants; all47table scalar diagnostics equal | Only invalid setup fields changed. Structural diagnostic remains ineligible. |
+| Four additional model-valid variants |2create/reopen pass but raw capture order wrong in SQL;2fail create Backend | Assertion-only and computation-only unavailable occurrence refs missing. Both independently permuted vectors expose wrong owning ordinal. |
+| Independent schema1→explicit adapter→new store rebuilds |3/3pass: archivev2,archivev1,all-empty legacy SourceMetadata;8captures/19assertions | Original old database/archive bytes remain unchanged. New full20 fixture separately passes. |
+
+Metadata complete0/1 is an allowed logical false/true representation. Deterministic source-evidence deduplication by the entire serialized evidence value is also allowed; integer IDs are private surrogates. The calibrated oracle compares every full evidence tuple and dereferenced parent field and requires every actual surrogate row to be referenced. Those calibrations do not waive explicit field names, ordinal ownership, NULL shape, data/reference or lifecycle contracts. The original prospective oracle/results remain preserved. No benchmark/adversarial/corpus claim follows from these finite controls.
+
+### Reproduced findings and binding repairs
+
+| Finding | Frozen-source cause / evidence | Binding correction and discriminating proof | Rows |
+| --- | --- | --- | --- |
+| F1 SQL NULL/union shape | dictionary_schema.rs DDL collections/assertions TP inner states lack IS NOT NULL; optional LocalRef equality against NULL yields UNKNOWN; relations Catalog lacks native/occ identity requirement and Other payload discrimination. Initial optional-local accepts; supplemental18all commit invalid rows. | Explicit two-valued predicates for both inner TextValue states, all4 optional local roles, entity inputs, relationLocal/Catalog/Other. Every exact18mutation must fail CHECK275; all4positive role rows must actually COMMIT with FK check. |01,03–07 |
+| F2 typed error routing | dictionary.rs read_metadata maps prepare failures indiscriminately to Format; read_canonical typed getters and hash typed getter propagate logical storage-class errors as Backend. | Genuine malformed/corrupt backend failures retain Backend and source; missing family/table/query maps Format; wrong canonical json/legacy/hash storage class maps CanonicalBytes. Reproduce13filesystem+3storage-class controls and existing named error cases without writes. |01,07,08 |
+| F3 durable incomplete header | dictionary.rs build begins population transaction before create_schema and complete0 insert; format/schema headers also populated inside it. Failure rolls back all markers. Direct inspected source proves wrong ordering; no injected failure run claimed. | Commit schema+format/schema_version/complete0 before population transaction; failure retains visible header and open returns Incomplete. Add private common-path forced real SQLite population failure and independently inspect retained header; no public test accessor. Complete1 commits only with all rows. |01,07 |
+| F4 bound schema vocabulary | raw_occurrences.id/native_fields FK target differs occurrence_id; relations.local_* differs local_target_*;14role tables redundantly store ordinal despite entity_ids owning it. Plan explicitly binds names and no necessary conflict was raised. | Conform DDL/projection/tests/docs; strict47-table oracle must pass without structural shims. Keep entity_ids role/ordinal and child vectors. Initial missing-column setup must execute then reject intended CHECK. |02,04–07,08 |
+| F5 known absent occurrence refs | project gathers loaded/registry/diagnostic/evidence/catalogue refs but not assertions-only or computation-input-only absent refs; each valid input fails actual creation FK. | Gather union of every typed occurrence path and capture before insertion, including assertions and computation inputs. Both valid unavailable variants create/drop/reopen and exact SQL rows pass without fabricated binding/payload/counts. |02,03,04,06,07 |
+| F6 owning vector order | raw_captures ordinal uses snapshot_ord.get rather than doc.captures enumeration. Registry order/raw capture order are independent. | Raw capture ordinal equals its own vector index; independently reversed registry or raw vectors both retain exact corresponding SQL order. Binding ordinals remain registry-owned. |02,07 |
+| F7 checked integer ordinals | project/add_model_rows repeatedly n/ord/f as i64; evidence len as i64+1; docs claim checked ordinals. | Central fallible checked usize→i64 ordinal conversion and checked positive evidence allocation; propagate recoverable error, no saturation/wrap. Boundary helper tests on representable platform, full-u64 decimal controls unchanged. |02–08 |
+
+No source-derived finding requires model, fixture, registry, legacy backend or scope changes. The candidate's passing source/reference/legacy controls are useful preserved evidence; every affected projection/DDL/lifecycle/error path must run on repaired current code. Stronger store-only string restrictions and rewriting the binding plan to match implementation are unauthorized.
+
+### Row dispositions and continuation
+
+S03-01 remains OPEN(F1/F2/F3);02 OPEN(F4/F5/F6/F7);03 OPEN(F1/F5/F7);04 OPEN(F1/F4/F5/F7);05 OPEN(F1/F4/F7);06 OPEN(F1/F4/F5/F7);07 OPEN(all);08 OPEN(current repair/review/doc gates);09 OPEN(independent acceptance/close/retro). None is independently accepted yet. The initial returned source is failed, not superseded evidence erased by the next attempt. Refinement01 is the first of at most five refinements; the current assignment is recorded in slice-plan.md. S04 full Rust/CLI grouping/pages/availability/reference/history and separate all-four arc composition remain required.
+
+Preservation-helper chronology: the first named-file commit helper had a Python comprehension syntax error and stopped before staging/commit; the corrected explicit-path helper verified all65copied payload hashes before committing. This was tooling setup, not a product gate failure.
+The next whitespace gate flagged a verbatim captured check log trailing blank line; the log is retained byte-exact and checked by manifest rather than rewritten. Authored Markdown/code uses git diff --check; no product/control input changed.

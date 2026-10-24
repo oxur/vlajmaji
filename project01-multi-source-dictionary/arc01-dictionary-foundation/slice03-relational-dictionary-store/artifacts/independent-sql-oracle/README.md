@@ -1,5 +1,7 @@
 # Prospective independent SQL field oracle
 
+Current status: initial candidate629bc810 was independently reviewed and failed. See ../../cdc-verification.md and ../independent-initial/README.md for actual results/calibration; the prospective chronology below is historical and does not describe the current gate state. Operational oracle.py accepts only the explicitly permitted complete0/1/evidence-surrogate representation choices; bound names/order/values remain exact.
+
 CDC authored this public-JSON-to-explicit-SQL-row mapping after S03 issue and before CC implementation/freeze. It imports no production projection helper and has not yet been run against any S03 product. Preparation only is not an acceptance verdict.
 
 Input is the unchanged accepted S02 canonical fixture (132,946 bytes, SHA256 `c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55`). The specimen expands all 47 plan tables and every scalar/Presence/role/vector mapping. It derives exact existing record IDs independently using big-endian eight-byte UTF8 length prefixes and lowercase hex. Evidence surrogates are compared through full dereferenced evidence fields rather than prescribed integer allocation. Its initial expected evidence multiplicity is one row per supplied evidence appearance; allocation/deduplication is not bound by the plan and must be calibrated openly if the implementation uses equivalent sharing.

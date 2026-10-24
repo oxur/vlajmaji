@@ -1,0 +1,786 @@
+{
+  "controls": 94,
+  "passed": 92,
+  "results": [
+    {
+      "name": "wrong-family",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Format",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Format",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "wrong-version",
+      "status": "PASS",
+      "expected": "ERR InvalidStore SchemaVersion",
+      "exit": 0,
+      "stdout": "ERR InvalidStore SchemaVersion",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "incomplete",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Incomplete",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Incomplete",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "missing-family",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Format",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Format",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "wrong-canonical-hash",
+      "status": "PASS",
+      "expected": "ERR InvalidStore CanonicalBytes",
+      "exit": 0,
+      "stdout": "ERR InvalidStore CanonicalBytes",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "no-canonical-row",
+      "status": "PASS",
+      "expected": "ERR InvalidStore CanonicalBytes",
+      "exit": 0,
+      "stdout": "ERR InvalidStore CanonicalBytes",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "malformed-canonical-model",
+      "status": "PASS",
+      "expected": "ERR InvalidDictionary",
+      "exit": 0,
+      "stdout": "ERR InvalidDictionary",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "valid-canonical-stale-projection",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "schema-extra-table",
+      "status": "PASS",
+      "expected": "ERR InvalidStore SchemaShape",
+      "exit": 0,
+      "stdout": "ERR InvalidStore SchemaShape",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "schema-extra-column",
+      "status": "PASS",
+      "expected": "ERR InvalidStore SchemaShape",
+      "exit": 0,
+      "stdout": "ERR InvalidStore SchemaShape",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "schema-extra-index",
+      "status": "PASS",
+      "expected": "ERR InvalidStore SchemaShape",
+      "exit": 0,
+      "stdout": "ERR InvalidStore SchemaShape",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "schema-extra-trigger",
+      "status": "PASS",
+      "expected": "ERR InvalidStore SchemaShape",
+      "exit": 0,
+      "stdout": "ERR InvalidStore SchemaShape",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "schema-extra-view",
+      "status": "PASS",
+      "expected": "ERR InvalidStore SchemaShape",
+      "exit": 0,
+      "stdout": "ERR InvalidStore SchemaShape",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "schema-missing-required-index",
+      "status": "PASS",
+      "expected": "ERR InvalidStore SchemaShape",
+      "exit": 0,
+      "stdout": "ERR InvalidStore SchemaShape",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "schema-missing-table",
+      "status": "PASS",
+      "expected": "ERR InvalidStore SchemaShape",
+      "exit": 0,
+      "stdout": "ERR InvalidStore SchemaShape",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "schema-missing-fk-only",
+      "status": "PASS",
+      "expected": "ERR InvalidStore SchemaShape",
+      "exit": 0,
+      "stdout": "ERR InvalidStore SchemaShape",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "schema-missing-check-only",
+      "status": "PASS",
+      "expected": "ERR InvalidStore SchemaShape",
+      "exit": 0,
+      "stdout": "ERR InvalidStore SchemaShape",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "foreign-key-violation",
+      "status": "PASS",
+      "expected": "ERR InvalidStore ForeignKeys",
+      "exit": 0,
+      "stdout": "ERR InvalidStore ForeignKeys",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-entity_ids",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-sources",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-contributors",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-distributors",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-source_aliases",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-source_lineage",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-snapshot_bindings",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-occurrence_attributions",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-raw_captures",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-raw_occurrences",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-native_fields",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-collections",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-components",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-component_languages",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-releases",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-release_captures",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-release_assertions",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-release_diagnostics",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-code_notices",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-content_notices",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-redistribution_evidence",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-entries",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-assertions",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-assertion_timestamps",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-source_evidence",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-contexts",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-argument_frames",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-argument_slots",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-forms",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-form_components",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-etymologies",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-relations",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-owned_revisions",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-revision_assertions",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-revision_tombstones",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-owned_heads",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-editorial_senses",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-editorial_members",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-computations",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-computation_inputs",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-annotations",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-extensions",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-extra-source",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-delete-attribution",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "projection-extra-capture-ref",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Projection",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Projection",
+      "stderr": "",
+      "disk_unchanged": true
+    },
+    {
+      "name": "constraint-null-text-primary-key",
+      "status": "PASS",
+      "expected_sqlite_code": 1299,
+      "actual_sqlite_code": 1299,
+      "detail": "NOT NULL constraint failed: contributors.id"
+    },
+    {
+      "name": "constraint-null-capture-tuple-key",
+      "status": "PASS",
+      "expected_sqlite_code": 1299,
+      "actual_sqlite_code": 1299,
+      "detail": "NOT NULL constraint failed: capture_refs.namespace"
+    },
+    {
+      "name": "constraint-nested-text-presence-null-state",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (value_state IN ('missing','null') AND value_text IS NULL AND value_language_state IS NULL AND value_language_value IS NULL AND value_markup_state IS NULL AND value_markup_value IS NULL) OR (value_state='value' AND value_text IS NOT NULL AND value_language_state IS NOT NULL AND value_language_state IN ('missing','null','value') AND ((value_language_state='value' AND value_language_value IS NOT NULL) OR (value_language_state IN ('missing','null') AND value_language_value IS NULL)) AND value_markup_state IS NOT NULL AND value_markup_state IN ('missing','null','value') AND ((value_markup_state='value' AND value_markup_value IS NOT NULL) OR (value_markup_state IN ('missing','null') AND value_markup_value IS NULL)))"
+    },
+    {
+      "name": "constraint-outer-missing-extra-text",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: pronunciation_state IN ('missing','null','value') AND ((pronunciation_state IN ('missing','null') AND pronunciation_text IS NULL AND pronunciation_language_state IS NULL AND pronunciation_language_value IS NULL AND pronunciation_markup_state IS NULL AND pronunciation_markup_value IS NULL) OR (pronunciation_state='value' AND pronunciation_text IS NOT NULL AND pronunciation_language_state IS NOT NULL AND pronunciation_language_state IN ('missing','null','value') AND ((pronunciation_language_state='value' AND pronunciation_language_value IS NOT NULL) OR (pronunciation_language_state IN ('missing','null') AND pronunciation_language_value IS NULL)) AND pronunciation_markup_state IS NOT NULL AND pronunciation_markup_state IN ('missing','null','value') AND ((pronunciation_markup_state='value' AND pronunciation_markup_value IS NOT NULL) OR (pronunciation_markup_state IN ('missing','null') AND pronunciation_markup_value IS NULL))))"
+    },
+    {
+      "name": "constraint-optional-local-extra-payload",
+      "status": "FAIL",
+      "detail": "mutation accepted"
+    },
+    {
+      "name": "constraint-required-local-null-kind",
+      "status": "PASS",
+      "expected_sqlite_code": 1299,
+      "actual_sqlite_code": 1299,
+      "detail": "NOT NULL constraint failed: relations.origin_kind"
+    },
+    {
+      "name": "constraint-evidence-unpaired-range",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (offset_start IS NULL)=(offset_end IS NULL)"
+    },
+    {
+      "name": "constraint-unknown-native-encoding",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: encoding IN ('Json','Text')"
+    },
+    {
+      "name": "constraint-excluded-null-reason",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (eligibility='Excluded' AND exclusion_reason IS NOT NULL) OR (eligibility='Lexical' AND exclusion_reason IS NULL)"
+    },
+    {
+      "name": "constraint-form-double-provenance",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (kind IN ('SourceVariant','SourcePronunciation','SourceReportedForm','AssignedRafsi') AND evidence_id IS NOT NULL AND computation_id IS NULL) OR (kind IN ('ComputedStem','ComputedComponents','GeneratedCandidate') AND evidence_id IS NULL AND computation_id IS NOT NULL)"
+    },
+    {
+      "name": "constraint-relation-unexpected-local-target",
+      "status": "SETUP_FAILED",
+      "detail": "OperationalError('no such column: local_target_kind')"
+    },
+    {
+      "name": "constraint-source-fk",
+      "status": "PASS",
+      "expected_sqlite_code": 787,
+      "actual_sqlite_code": 787,
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "name": "constraint-contributor-fk",
+      "status": "PASS",
+      "expected_sqlite_code": 787,
+      "actual_sqlite_code": 787,
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "name": "constraint-distributor-fk",
+      "status": "PASS",
+      "expected_sqlite_code": 787,
+      "actual_sqlite_code": 787,
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "name": "constraint-capture-fk",
+      "status": "PASS",
+      "expected_sqlite_code": 787,
+      "actual_sqlite_code": 787,
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "name": "constraint-occurrence-fk",
+      "status": "PASS",
+      "expected_sqlite_code": 787,
+      "actual_sqlite_code": 787,
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "name": "constraint-parent-fk",
+      "status": "PASS",
+      "expected_sqlite_code": 787,
+      "actual_sqlite_code": 787,
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "name": "constraint-member-fk",
+      "status": "PASS",
+      "expected_sqlite_code": 787,
+      "actual_sqlite_code": 787,
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "name": "constraint-computation-fk",
+      "status": "PASS",
+      "expected_sqlite_code": 787,
+      "actual_sqlite_code": 787,
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "name": "constraint-evidence-fk",
+      "status": "PASS",
+      "expected_sqlite_code": 787,
+      "actual_sqlite_code": 787,
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "name": "constraint-entry-role-fk",
+      "status": "PASS",
+      "expected_sqlite_code": 787,
+      "actual_sqlite_code": 787,
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "name": "constraint-local-role-fk",
+      "status": "PASS",
+      "expected_sqlite_code": 787,
+      "actual_sqlite_code": 787,
+      "detail": "FOREIGN KEY constraint failed"
+    },
+    {
+      "name": "constraint-local-null-shape",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (origin_kind='Entry' AND origin_entry_id IS NOT NULL AND origin_assertion_id IS NULL AND origin_form_id IS NULL AND origin_editorial_sense_id IS NULL) OR (origin_kind='Assertion' AND origin_entry_id IS NULL AND origin_assertion_id IS NOT NULL AND origin_form_id IS NULL AND origin_editorial_sense_id IS NULL) OR (origin_kind='Form' AND origin_entry_id IS NULL AND origin_assertion_id IS NULL AND origin_form_id IS NOT NULL AND origin_editorial_sense_id IS NULL) OR (origin_kind='EditorialSense' AND origin_entry_id IS NULL AND origin_assertion_id IS NULL AND origin_form_id IS NULL AND origin_editorial_sense_id IS NOT NULL)"
+    },
+    {
+      "name": "constraint-presence-null-shape",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (spelling_state='value')=(spelling_value IS NOT NULL)"
+    },
+    {
+      "name": "constraint-presence-extra-payload",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (script_state='value')=(script_value IS NOT NULL)"
+    },
+    {
+      "name": "constraint-role-constant",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: entity_role='entry'"
+    },
+    {
+      "name": "constraint-duplicate-source-ordinal",
+      "status": "PASS",
+      "expected_sqlite_code": 2067,
+      "actual_sqlite_code": 2067,
+      "detail": "UNIQUE constraint failed: sources.ordinal"
+    },
+    {
+      "name": "constraint-duplicate-native-field-ordinal",
+      "status": "PASS",
+      "expected_sqlite_code": 1555,
+      "actual_sqlite_code": 1555,
+      "detail": "UNIQUE constraint failed: native_fields.occurrence_id, native_fields.ordinal"
+    },
+    {
+      "name": "constraint-negative-vector-ordinal",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: ordinal>=0"
+    },
+    {
+      "name": "constraint-u32-overflow",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: schema_version BETWEEN 0 AND 4294967295"
+    },
+    {
+      "name": "constraint-target-exclusive-shape",
+      "status": "PASS",
+      "expected_sqlite_code": 275,
+      "actual_sqlite_code": 275,
+      "detail": "CHECK constraint failed: (target_kind='Local' AND local_kind IN ('Entry','Assertion','Form','EditorialSense') AND ((local_kind='Entry' AND local_entry_id IS NOT NULL AND local_assertion_id IS NULL AND local_form_id IS NULL AND local_editorial_sense_id IS NULL) OR (local_kind='Assertion' AND local_entry_id IS NULL AND local_assertion_id IS NOT NULL AND local_form_id IS NULL AND local_editorial_sense_id IS NULL) OR (local_kind='Form' AND local_entry_id IS NULL AND local_assertion_id IS NULL AND local_form_id IS NOT NULL AND local_editorial_sense_id IS NULL) OR (local_kind='EditorialSense' AND local_entry_id IS NULL AND local_assertion_id IS NULL AND local_form_id IS NULL AND local_editorial_sense_id IS NOT NULL)) AND catalog_source_id IS NULL AND catalog_release_id IS NULL AND catalog_native_entry_id IS NULL AND catalog_native_assertion_id IS NULL AND catalog_occurrence_id IS NULL AND unresolved_text IS NULL) OR (target_kind='Catalog' AND local_kind IS NULL AND local_entry_id IS NULL AND local_assertion_id IS NULL AND local_form_id IS NULL AND local_editorial_sense_id IS NULL AND catalog_source_id IS NOT NULL AND catalog_release_id IS NOT NULL AND unresolved_text IS NULL) OR (target_kind='Unknown' AND local_kind IS NULL AND local_entry_id IS NULL AND local_assertion_id IS NULL AND local_form_id IS NULL AND local_editorial_sense_id IS NULL AND catalog_source_id IS NULL AND catalog_release_id IS NULL AND catalog_native_entry_id IS NULL AND catalog_native_assertion_id IS NULL AND catalog_occurrence_id IS NULL AND unresolved_text IS NULL) OR (target_kind='Unresolved' AND local_kind IS NULL AND local_entry_id IS NULL AND local_assertion_id IS NULL AND local_form_id IS NULL AND local_editorial_sense_id IS NULL AND catalog_source_id IS NULL AND catalog_release_id IS NULL AND catalog_native_entry_id IS NULL AND catalog_native_assertion_id IS NULL AND catalog_occurrence_id IS NULL AND unresolved_text IS NOT NULL)"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "controls": 13,
+  "passed": 12,
+  "results": [
+    {
+      "name": "missing-open",
+      "status": "PASS",
+      "expected": "ERR InvalidStore MissingDatabase",
+      "exit": 0,
+      "stdout": "ERR InvalidStore MissingDatabase",
+      "stderr": "",
+      "unchanged": true
+    },
+    {
+      "name": "empty-directory-open",
+      "status": "PASS",
+      "expected": "ERR InvalidStore MissingDatabase",
+      "exit": 0,
+      "stdout": "ERR InvalidStore MissingDatabase",
+      "stderr": "",
+      "unchanged": true
+    },
+    {
+      "name": "existing-file-create",
+      "status": "PASS",
+      "expected": "ERR ExistingPath",
+      "exit": 0,
+      "stdout": "ERR ExistingPath",
+      "stderr": "",
+      "unchanged": true
+    },
+    {
+      "name": "existing-directory-create",
+      "status": "PASS",
+      "expected": "ERR ExistingPath",
+      "exit": 0,
+      "stdout": "ERR ExistingPath",
+      "stderr": "",
+      "unchanged": true
+    },
+    {
+      "name": "dangling-link-create",
+      "status": "PASS",
+      "expected": "ERR ExistingPath",
+      "exit": 0,
+      "stdout": "ERR ExistingPath",
+      "stderr": "",
+      "unchanged": true
+    },
+    {
+      "name": "existing-link-create",
+      "status": "PASS",
+      "expected": "ERR ExistingPath",
+      "exit": 0,
+      "stdout": "ERR ExistingPath",
+      "stderr": "",
+      "unchanged": true
+    },
+    {
+      "name": "existing-valid-store-create",
+      "status": "PASS",
+      "expected": "ERR ExistingPath",
+      "exit": 0,
+      "stdout": "ERR ExistingPath",
+      "stderr": "",
+      "unchanged": true
+    },
+    {
+      "name": "missing-parent-create",
+      "status": "PASS",
+      "expected": "ERR Io",
+      "exit": 0,
+      "stdout": "ERR Io",
+      "stderr": "",
+      "unchanged": true
+    },
+    {
+      "name": "malformed-database-open",
+      "status": "FAIL",
+      "expected": "ERR Backend",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Format",
+      "stderr": "",
+      "unchanged": true
+    },
+    {
+      "name": "foreign-family-open",
+      "status": "PASS",
+      "expected": "ERR InvalidStore Format",
+      "exit": 0,
+      "stdout": "ERR InvalidStore Format",
+      "stderr": "",
+      "unchanged": true
+    },
+    {
+      "name": "retained-read-snapshot",
+      "status": "PASS",
+      "ready": "OK HOLD 132946",
+      "exclusive_busy": true,
+      "detail": "database is locked",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "drop-releases-read-snapshot",
+      "status": "PASS"
+    },
+    {
+      "name": "all-filesystem-controls-preserve-valid-store",
+      "status": "PASS"
+    }
+  ]
+}
