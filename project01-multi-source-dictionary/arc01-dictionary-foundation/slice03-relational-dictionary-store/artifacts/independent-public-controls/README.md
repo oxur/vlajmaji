@@ -21,3 +21,7 @@ The prospective generator now also prepares full usize field-index/offset endpoi
 ## Prospective filesystem and snapshot controls
 
 Before freeze CDC added `filesystem.py`: public missing-path/empty-directory/malformed-backend/foreign-family typed errors; refusal of existing file/directory/valid store/valid symlink/dangling symlink; missing-parent create without recursive directory creation; unchanged target bytes. The held public opener must cause independent SQLite `BEGIN EXCLUSIVE` to report real SQLITE_BUSY while the store is alive, and permit it after drop. This observes a retained read snapshot, not merely a parsed in-memory model. The test never commits a database mutation and checks the complete valid-store file set/bytes. No execution result exists yet.
+
+## Pre-candidate SQL conditional-shape controls
+
+Before freeze the constraint specimen was expanded with actual extended-code checks for NULL text/tuple identity keys, nested TextValue state NULL, payload under outer Missing, optional/required LocalRef null shape, unpaired evidence range, unsupported encoding, Excluded reason NULL, doubled form provenance and unexpected local payload under an Unknown relation target. These exercise the plan's declared CHECK/FK/non-null role/presence contracts. They remain separate from same-count valid-shaped scalar edits, whose setup must succeed before open rejects Projection. No candidate result exists yet.

@@ -92,6 +92,17 @@ check('projection-delete-attribution',sql('DELETE FROM occurrence_attributions W
 check('projection-extra-capture-ref',sql("INSERT INTO capture_refs(namespace,sha256) VALUES('catalogue-extra',?)",('1'*64,)),'ERR InvalidStore Projection')
 # Genuine SQL constraint controls are independent from open failures. Fresh copy, foreign_keys ON.
 constraints={
+ 'null-text-primary-key':("INSERT INTO contributors(id,ordinal,display_name) VALUES(NULL,999,'null-key')",1299),
+ 'null-capture-tuple-key':("INSERT INTO capture_refs(namespace,sha256) VALUES(NULL,'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff')",1299),
+ 'nested-text-presence-null-state':("UPDATE contexts SET value_language_state=NULL WHERE id='context-0'",275),
+ 'outer-missing-extra-text':("UPDATE forms SET pronunciation_text='unexpected' WHERE id='form-variant'",275),
+ 'optional-local-extra-payload':("UPDATE form_components SET target_kind=NULL WHERE form_id='form-components' AND ordinal=0",275),
+ 'required-local-null-kind':("UPDATE relations SET origin_kind=NULL WHERE id='relation-see'",1299),
+ 'evidence-unpaired-range':("UPDATE source_evidence SET offset_start='0',offset_end=NULL WHERE evidence_id=(SELECT min(evidence_id) FROM source_evidence)",275),
+ 'unknown-native-encoding':("UPDATE native_fields SET encoding='Xml' WHERE ordinal=0",275),
+ 'excluded-null-reason':("UPDATE assertions SET exclusion_reason=NULL WHERE id='assertion-19'",275),
+ 'form-double-provenance':("UPDATE forms SET computation_id='computation-1' WHERE id='form-variant'",275),
+ 'relation-unexpected-local-target':("UPDATE relations SET local_target_kind='Entry',local_target_entry_id='entry-a-si-e' WHERE id='relation-see'",275),
  'source-fk':("UPDATE entries SET source_id='nonexistent-source' WHERE id='entry-a-farvi'",787),
  'contributor-fk':("UPDATE occurrence_attributions SET contributor_id='nonexistent-contributor' WHERE ordinal=0",787),
  'distributor-fk':("UPDATE snapshot_bindings SET distributor_id='nonexistent-distributor' WHERE ordinal=0",787),
