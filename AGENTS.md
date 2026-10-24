@@ -47,9 +47,9 @@ repository, instructions, and commits.
 | `vlajmaji-lexicon` | `crates/lexicon` | Canonical source records, raw bytes, provenance, occurrence identities, proposals, imports, and lexical archives. |
 | `vlajmaji-store` | `crates/store` | Rebuildable SQLite/FTS5 indexes and an optional Oxigraph/RocksDB backend. |
 | `vlajmaji-search` | `crates/search` | Source-preserving queries, spelling distance, phonological/prosodic filters, and optional compound analysis. |
-| `vlajmaji-cli` | `crate/cli` | The `vlajmaji` JSON binary, command parsing, store creation/info, and query input/output. |
+| `vlajmaji-cli` | `crates/cli` | The `vlajmaji` JSON binary, command parsing, store creation/info, and query input/output. |
 
-The CLI directory is `crate/cli` (singular); the libraries use `crates/`.
+All workspace packages, including the CLI, live under `crates/`.
 Keep reusable data, persistence, and query behavior in the libraries.
 `vlajmaji-search` uses the sibling Bauske phonology library; its optional
 `morphology` feature enables `latkerlo-jvotci`. The CLI enables that feature.

@@ -20,6 +20,11 @@ The Rust workspace already provides:
 
 - A lexical archive that preserves source snapshots, raw records, provenance,
   and alternative assertions, keeping computed analyses and user proposals separate.
+- An additive validated source registry for exact aliases, lineage and borrowed
+  attribution of preserved occurrences ([guide](docs/source-registry.md)).
+- An immutable relational persistence boundary for the versioned dictionary
+  model, with strict read-only reopen validation
+  ([schema guide](docs/dictionary-schema.md)).
 - Rebuildable SQLite indexes and an optional Oxigraph backend for research comparisons.
 - Exact and reverse-definition lookup, source-link traversal, spelling distance,
   and bounded phonological and prosodic filters.
@@ -35,7 +40,7 @@ attested usage, semantic equivalence, or poetic merit.
 | [`vlajmaji-lexicon`](crates/lexicon) | Source-preserving lexical data and archives |
 | [`vlajmaji-store`](crates/store) | Persistence and native indexes |
 | [`vlajmaji-search`](crates/search) | Reusable queries and computed analyses |
-| [`vlajmaji-cli`](crate/cli) | The `vlajmaji` executable |
+| [`vlajmaji-cli`](crates/cli) | The `vlajmaji` executable |
 
 ## Try it
 
@@ -83,6 +88,12 @@ planning work is preserved.
 
 Use `make publish-dry-run` to verify the workspace packages and `make publish`
 to upload them to crates.io. Publish the Bauske dependency first. The packaged crates include their own READMEs and licenses.
+
+The lexicon crate also exposes an immutable validated in-memory [`Dictionary`](crates/lexicon/README.md) model and explicit legacy archive adapter. Its typed source, owned, editorial, and computed evidence distinctions and standards mapping limits are documented in [`docs/dictionary-model.md`](docs/dictionary-model.md) and [`docs/dictionary-standards-map.md`](docs/dictionary-standards-map.md).
+
+The `vlajmaji-search` crate also provides grouped exact lookup over persisted
+dictionary stores, stable local/catalogue reference resolution, and a
+`dictionary_lookup` example. See the [query guide](docs/dictionary-query.md).
 
 ## License
 

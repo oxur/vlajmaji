@@ -12,7 +12,7 @@ identities and workspace paths.
 | vlajmaji-lexicon | crates/lexicon |
 | vlajmaji-store | crates/store |
 | vlajmaji-search | crates/search |
-| vlajmaji-cli | crate/cli |
+| vlajmaji-cli | crates/cli |
 
 The search workspace now resolves `bauske-phonology` from the sibling
 repository at `../bauske/crates/phonology`. Its package and Rust library
@@ -64,3 +64,29 @@ the 0.2.0 development cycle, the CLI binary is `vlajmaji`. Package names and
 archive/search identities remain unchanged. `make build` installs the current
 debug binary to `./bin/vlajmaji`; the Cargo commands above also select this
 renamed binary automatically.
+
+## Versioned in-memory dictionary model
+
+The S02 model/adapter is documented in [dictionary-model.md](dictionary-model.md), with its candidate standards correspondence and explicit gaps in [dictionary-standards-map.md](dictionary-standards-map.md). To adapt an accepted legacy archive, construct the current `SourceRegistry`, provide the source-aware `DictionaryMetadata` rather than asking the adapter to infer it, call `Dictionary::from_legacy_archive` with the exact archive bytes, and serialize/reload with `Dictionary::to_json_bytes` / `Dictionary::from_json_bytes`. The exact old archive remains attached and is validated as a subset. Relational persistence is documented below; grouped lookup is a later slice.
+
+## Relational dictionary store
+
+The S03 `DictionaryStore` is a distinct immutable persistence format; it does
+not replace or migrate the searchable schema-1 `SqliteStore`. To rebuild from
+an existing legacy search store, keep its directory intact and use a different
+fresh destination:
+
+1. Open the old store with `SqliteStore::open` and obtain its exact
+   `archive_bytes()`.
+2. Construct the validated `SourceRegistry` and `DictionaryMetadata` explicitly
+   from the source-aware records already accepted by the model. The adapter
+   does not assign missing lexical identities or infer source claims.
+3. Call `Dictionary::from_legacy_archive(&archive, registry, metadata)`, then
+   `DictionaryStore::create("new-dictionary-store", &dictionary)`.
+4. Drop the returned store and use `DictionaryStore::open` to validate the new
+   read-only snapshot and complete relational projection.
+
+The old SQLite store and archive are read-only inputs to this procedure. The
+accepted legacy archive may omit model-only opaque records; such records are
+not synthesized during rebuild. See the [schema-1 field map and lifecycle
+guide](dictionary-schema.md) and the `dictionary_store` public example.

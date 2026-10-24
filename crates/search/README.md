@@ -7,6 +7,14 @@ Queries include exact spelling, literal reverse-definition lookup, captured form
 The next development version is 0.2.0. Until it is published, use a local
 path dependency on this crate; the version below describes the upcoming release.
 
+The grouped dictionary API builds or reopens a validated `DictionaryStore`,
+performs byte-exact source-grouped spelling lookup with complete pre-page
+counts, and resolves typed local/catalogue references. Its responses retain
+source, release, occurrence, editorial, and computed evidence as separate
+fields. See the [grouped lookup guide](../../docs/dictionary-query.md) and run
+`cargo run --example dictionary_lookup -- INPUT_JSON FRESH_STORE` for a public
+API walkthrough.
+
 ```toml
 [dependencies]
 vlajmaji-search = "0.2.0"

@@ -2,6 +2,16 @@
 
 ## 0.2.0 (unreleased)
 
+- Move the CLI package into `crates/cli` alongside the library crates.
+- Add grouped exact lookup, stable dictionary references, and the
+  `dictionary-build` / `dictionary-query` CLI commands.
+- Add a versioned raw-preserving dictionary model, explicit legacy archive adapter, fixture, and standards mapping limits.
+
+- Add a validated source/contributor/distributor registry and borrowed attribution
+  views over immutable captured occurrences.
+- Add immutable relational `DictionaryStore` persistence with schema-1 projection
+  and strict read-only reopen validation; keep the legacy searchable `SqliteStore`
+  schema and API unchanged.
 - Rename the CLI command from `relojban-search` to `vlajmaji`.
 - Install built binaries to configurable `INSTALL_DIR` (default `./bin`).
 - Adopt Oxurack-style coloured build feedback and grouped help.
