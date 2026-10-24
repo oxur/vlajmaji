@@ -2,6 +2,8 @@
 
 [![Build Status][gh-actions-badge]][gh-actions]
 [![Tags][github-tags-badge]][github-tags]
+[![][crate-badge]][crate]
+[![][docs-badge]][docs]
 
 [![Project Logo][logo]][logo-large]
 
@@ -97,3 +99,7 @@ Apache License, Version 2.0
 [version]: https://github.com/oxur/vlajmaji/blob/main/.github/workflows/ci.yml
 [github-tags]: https://github.com/oxur/vlajmaji/tags
 [github-tags-badge]: https://img.shields.io/github/tag/oxur/vlajmaji.svg
+[crate]: https://crates.io/crates/vlajmaji
+[crate-badge]: https://img.shields.io/crates/v/vlajmaji.svg
+[docs]: https://docs.rs/vlajmaji/
+[docs-badge]: https://img.shields.io/badge/rust-documentation-blue.svg
