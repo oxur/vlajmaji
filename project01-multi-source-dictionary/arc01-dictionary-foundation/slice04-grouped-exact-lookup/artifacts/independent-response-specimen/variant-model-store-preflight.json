@@ -1,0 +1,47 @@
+{
+  "role": "readiness-only accepted S03 public model/store, no S04 query result",
+  "records": [
+    {
+      "name": "alias-ambiguity",
+      "exit": 0,
+      "stdout": "OK CREATE 133166\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "name": "overlap",
+      "exit": 0,
+      "stdout": "OK CREATE 134706\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "name": "mixed",
+      "exit": 0,
+      "stdout": "OK CREATE 134706\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "name": "no-owned-head",
+      "exit": 0,
+      "stdout": "OK CREATE 132900\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "name": "no-releases",
+      "exit": 0,
+      "stdout": "OK CREATE 133107\n",
+      "stderr": "",
+      "passed": true
+    },
+    {
+      "name": "available-zero",
+      "exit": 0,
+      "stdout": "OK CREATE 134023\n",
+      "stderr": "",
+      "passed": true
+    }
+  ]
+}
