@@ -1,0 +1,36 @@
+Vlajmaji Arc01 Cargo target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.2.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.03s
+     Running tests/dictionary_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_contract-4ea77186415732a9)
+
+running 12 tests
+test fresh_path_lifecycle_refuses_existing_leafs_and_missing_parents ... ok
+test empty_valid_dictionary_has_a_real_empty_projection ... ok
+test empty_source_metadata_values_survive_actual_sql_projection ... ok
+test empty_available_release_keeps_explicit_zero_counts ... ok
+test full_unsigned_text_empty_and_nul_values_survive_sql_and_reopen ... ok
+test full_fixture_has_independent_direct_sql_value_oracles ... ok
+test complete_dictionary_creates_typed_projection_and_reopens_read_only ... ok
+test legacy_archive_rebuild_is_explicit_separate_and_byte_preserving ... ok
+test metadata_query_missing_required_columns_is_format_without_writing ... ok
+test sql_role_presence_foreign_key_and_unique_constraints_are_real ... FAILED
+test open_rejects_same_count_scalar_edits_in_each_relational_family_without_repair ... ok
+test integrity_failures_are_classified_without_mutating_the_database ... ok
+
+failures:
+
+---- sql_role_presence_foreign_key_and_unique_constraints_are_real stdout ----
+
+thread 'sql_role_presence_foreign_key_and_unique_constraints_are_real' (69460745) panicked at crates/store/tests/dictionary_contract.rs:1098:5:
+assertion `left == right` failed: committed form component rows retain their exact role payloads
+  left: [(0, 1, "Entry", Some("entry-a-cpana"), None, None, None), (900, 900, "Entry", Some("entry-a-si-e"), None, None, None), (901, 901, "Assertion", None, Some("assertion-0"), None, None), (902, 902, "Form", None, None, Some("form-assigned"), None), (903, 903, "EditorialSense", None, None, None, Some("editorial-farvi"))]
+ right: [(900, 900, "Entry", Some("entry-a-si-e"), None, None, None), (901, 901, "Assertion", None, Some("assertion-0"), None, None), (902, 902, "Form", None, None, Some("form-assigned"), None), (903, 903, "EditorialSense", None, None, None, Some("editorial-farvi"))]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    sql_role_presence_foreign_key_and_unique_constraints_are_real
+
+test result: FAILED. 11 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.36s
+
+error: test failed, to rerun pass `-p vlajmaji-store --test dictionary_contract`

@@ -1,0 +1,34 @@
+[1;34mRunning isolated search tests without default features...[0m
+Vlajmaji Arc01 Cargo target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.2.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.38s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-4f971e7c62a4791b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/corpus_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/corpus_contract-ea675151970361d0)
+
+running 9 tests
+test disabled_morphology_is_a_typed_error_not_empty_success ... ok
+test compose_kind_is_validated_with_empty_and_nonempty_candidate_sets ... ok
+test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok
+test contrast_exposes_p01_coordinate_explanations_without_word_total ... ok
+test search_engine_has_safe_summary_debug_output ... ok
+test scalar_spelling_distance_scans_and_preserves_record_multiplicity ... ok
+test exact_proposal_option_is_separate_complete_and_limited_after_combination ... ok
+test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok
+test native_candidate_counts_are_stage_labelled ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+   Doc-tests vlajmaji_search
+
+running 1 test
+test crates/search/src/lib.rs - (line 7) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.55s; merged doctests compilation took 0.41s
+[1;32m✓ No-default-feature tests passed[0m

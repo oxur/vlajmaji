@@ -9,7 +9,7 @@
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.3 / 2026-10-24, America/Chicago |
+| version / date | 1.4 / 2026-10-24, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -26,7 +26,7 @@ and explicit availability. Subsequent arcs make it work with full, independently
 selectable corpora and an editable dictionary of our own.
 
 The design and remaining decisions are in [design.md](design.md). Acceptance is in
-[ledger.md](ledger.md). Only the first arc and its first slice are detailed now.
+[ledger.md](ledger.md). Arc01 is detailed through three accepted foundation slices; its fourth query/CLI slice is next, while later arcs remain unactivated.
 
 ## Decisions already made
 
@@ -204,8 +204,7 @@ exact original paths, revisions, SHA-256 and byte sizes for every copied file.
 Old source pins and measurements remain dated evidence, not current service or
 performance claims. No full corpus, database or Cargo build cache was copied.
 
-Next: assigned CDC prepares and executes the first slice, then advances through
-Arc01 under the recorded Autonomous authority. Planning existence and copy fidelity are not implementation acceptance.
+Next: assigned CDC completes S04 grouped Rust/CLI lookup and separate independent Arc01composition/close under the recorded Autonomous authority. Planning existence and copy fidelity are not implementation acceptance.
 
 ## Planning validation — initial draft checkpoint
 
@@ -240,10 +239,12 @@ Task output owner: `CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktree
 
 ## Arc01 current progress — 2026-10-24
 
-S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 typed model/JSON/exact legacy adapter is independently accepted37c3518 after preserved initial/R1 failures and two refinements; S03 relational persistence, S04 grouped lookup and the independent arc composition gate remain pending. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
+S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 typed model/JSON/exact legacy adapter is independently accepted37c3518 after preserved initial/R1 failures and two refinements; S03 relational persistence is independently accepted01a9ceb3after two refinements; S04 grouped lookup and the independent arc composition gate remain pending. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
 
 Arc01 decomposition update (2026-10-24): original S02 now has typed-model S02 and persistence S03; original grouped S03 moves intact to S04. Root acknowledged this authorized split. Endpoint remains the full Arc01 foundation; all later arcs remain unactivated. Historical three-slice directive describes preserved capability scope, not permission to omit the fourth child introduced to retain implementation/review headroom.
 
 -1.2 —2026-10-24: reconciled current Arc01 progress with S02 failed candidates/refinement02 and preserved scope-complete four-slice endpoint; all later arcs remain unactivated.
 
 -1.3 —2026-10-24: recorded independently accepted S02 model increment and retained complete Arc01 relational/query/composition endpoint; project/later-arc obligations remain open.
+
+-1.4 —2026-10-24: recorded independently accepted S03 relational persistence, all12schema areas and actual public/legacy/negative/current-gate evidence; S04 and all-four composition remain before Arc01endpoint. All14project rows/later arcs remain open.

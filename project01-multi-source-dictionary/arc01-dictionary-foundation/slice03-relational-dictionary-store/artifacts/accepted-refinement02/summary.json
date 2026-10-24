@@ -1,0 +1,256 @@
+{
+  "source": "01a9ceb3bd6925d5cae583d38e2683046a3c1dea",
+  "runs": [
+    {
+      "name": "main-create",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 132946"
+    },
+    {
+      "name": "main-sql",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "tamper",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "filesystem",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "canonical-shapes",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-alias-reuse-native-empty",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 133035"
+    },
+    {
+      "name": "sql-alias-reuse-native-empty",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-all-component-roles",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 133480"
+    },
+    {
+      "name": "sql-all-component-roles",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-all-empty",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 491"
+    },
+    {
+      "name": "sql-all-empty",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-available-empty",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 1548"
+    },
+    {
+      "name": "sql-available-empty",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-legacy-empty-metadata",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 132555"
+    },
+    {
+      "name": "sql-legacy-empty-metadata",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-legacy-v1",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 132946"
+    },
+    {
+      "name": "sql-legacy-v1",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-text-presence-extremes",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 132856"
+    },
+    {
+      "name": "sql-text-presence-extremes",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-u64-extremes",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 133013"
+    },
+    {
+      "name": "sql-u64-extremes",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-unavailable-usize-extremes",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 134042"
+    },
+    {
+      "name": "sql-unavailable-usize-extremes",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-unbound-missing-capture",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 132783"
+    },
+    {
+      "name": "sql-unbound-missing-capture",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-independent-raw-capture-order",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 132946"
+    },
+    {
+      "name": "sql-independent-raw-capture-order",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-independent-registry-order",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 132946"
+    },
+    {
+      "name": "sql-independent-registry-order",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-unavailable-assertion-only",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 133611"
+    },
+    {
+      "name": "sql-unavailable-assertion-only",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "variant-unavailable-computation-only",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK CREATE 133114"
+    },
+    {
+      "name": "sql-unavailable-computation-only",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "additional-shapes",
+      "exit": 0,
+      "pass": true,
+      "stdout": null
+    },
+    {
+      "name": "legacy-v2",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK LEGACY 8 captures 19 assertions unchanged schema1/archive"
+    },
+    {
+      "name": "legacy-v1",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK LEGACY 8 captures 19 assertions unchanged schema1/archive"
+    },
+    {
+      "name": "legacy-empty-metadata",
+      "exit": 0,
+      "pass": true,
+      "stdout": "OK LEGACY 8 captures 19 assertions unchanged schema1/archive"
+    }
+  ],
+  "additional_metadata_query_controls": [
+    {
+      "name": "metadata-no-value-column",
+      "sql": "ALTER TABLE metadata RENAME COLUMN value TO other_value",
+      "expected": "ERR InvalidStore Format",
+      "actual": "ERR InvalidStore Format",
+      "exit": 0,
+      "unchanged": true,
+      "pass": true
+    },
+    {
+      "name": "metadata-no-key-column",
+      "sql": "ALTER TABLE metadata RENAME COLUMN key TO other_key",
+      "expected": "ERR InvalidStore Format",
+      "actual": "ERR InvalidStore Format",
+      "exit": 0,
+      "unchanged": true,
+      "pass": true
+    },
+    {
+      "name": "metadata-no-table",
+      "sql": "DROP TABLE metadata",
+      "expected": "ERR InvalidStore Format",
+      "actual": "ERR InvalidStore Format",
+      "exit": 0,
+      "unchanged": true,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+Vlajmaji Arc01 Cargo target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji/crates/store/tests/dictionary_contract.rs:1124:
+         ("missing-table", "DROP TABLE metadata"),
+     ] {
+         let source = base.join(format!("source-{name}"));
+-        let store = DictionaryStore::create(
+-            &source,
+-            &fixture_support::complete_fixture().unwrap(),
+-        )
+-        .unwrap();
++        let store = DictionaryStore::create(&source, &fixture_support::complete_fixture().unwrap())
++            .unwrap();
+         let source_db = store.database_path();
+         drop(store);
+ 
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/vlajmaji/crates/store/tests/dictionary_contract.rs:1152:
+             ),
+             "{name}: expected the typed Format category, got {error:?}"
+         );
+-        assert_eq!(fs::read(&db).unwrap(), before, "{name} changed the database");
++        assert_eq!(
++            fs::read(&db).unwrap(),
++            before,
++            "{name} changed the database"
++        );
+     }
+     fs::remove_dir_all(base).unwrap();
+ }

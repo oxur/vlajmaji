@@ -1,0 +1,33 @@
+{
+  "controls": 3,
+  "passed": 3,
+  "rows": [
+    {
+      "name": "metadata-no-value-column",
+      "sql": "ALTER TABLE metadata RENAME COLUMN value TO other_value",
+      "expected": "ERR InvalidStore Format",
+      "actual": "ERR InvalidStore Format",
+      "exit": 0,
+      "unchanged": true,
+      "pass": true
+    },
+    {
+      "name": "metadata-no-key-column",
+      "sql": "ALTER TABLE metadata RENAME COLUMN key TO other_key",
+      "expected": "ERR InvalidStore Format",
+      "actual": "ERR InvalidStore Format",
+      "exit": 0,
+      "unchanged": true,
+      "pass": true
+    },
+    {
+      "name": "metadata-no-table",
+      "sql": "DROP TABLE metadata",
+      "expected": "ERR InvalidStore Format",
+      "actual": "ERR InvalidStore Format",
+      "exit": 0,
+      "unchanged": true,
+      "pass": true
+    }
+  ]
+}

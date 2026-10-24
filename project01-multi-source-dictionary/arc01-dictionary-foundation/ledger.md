@@ -1,11 +1,11 @@
 # Arc01 ledger
 
-Current status: A01-01 done after S01 independent acceptance; the other five rows remain open. Child acceptance and arc composition are separate gates. Initial all-open state is preserved in history.
+Current status: A01-01done after S01and A01-02done after S02/S03 independent acceptance; the other four rows remain open. Child acceptance and arc composition are separate gates. Initial all-open state is preserved in history.
 
 | ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | A01-01 | S01 supplies independently accepted source/alias/lineage and assertion attribution contracts. | S01 row walk, public caller and independent verification. | correctness-grade | Legacy A03-01 / new foundation split | done | reproduced: `slice01-source-registry-and-assertions/cdc-verification.md`,11ec701 | No new source equivalence inferred. |
-| A01-02 | S02/S03 supply independently accepted broad model and relational schema, standard mapping, extensions and old-archive/rebuild handling. | S02 typed model plus S03 all twelve persisted schema areas, persistence roundtrip and negative schema controls. | correctness-grade | Legacy schema coverage | open | partial reproduced: slice02-versioned-dictionary-model/cdc-verification.md,37c3518; S03 pending | Preserve raw fields, roles, native IDs and unknowns. |
+| A01-02 | S02/S03 supply independently accepted broad model and relational schema, standard mapping, extensions and old-archive/rebuild handling. | S02 typed model plus S03 all twelve persisted schema areas, persistence roundtrip and negative schema controls. | correctness-grade | Legacy schema coverage | done | reproduced: S02cdc-verification.md37c3518 + S03cdc-verification.md01a9ceb3, all12persistedareas | Preserve raw fields, roles, native IDs and unknowns. |
 | A01-03 | S04 supplies independently accepted grouped exact Rust/CLI queries, totals/pages/availability and links. | S04 complete fixture reference and external consumer. | correctness-grade | Legacy grouped exact contract | open | | Default all assertions; legacy limit behavior explicit. |
 | A01-04 | The four scope-preserving slices compose into one usable fixture dictionary. | Fresh registry → store → API/CLI → full page traversal, removal/re-add and owned revision demonstration. | correctness-grade | Framework composition gate | open | | Accepted children alone are insufficient. |
 | A01-05 | Source fidelity and current PoC behavior survive the foundation transition. | Raw bytes/identity/presence/form-role controls plus relevant existing regression and feature gates. | correctness-grade | Preservation / Q01–Q06 baseline | open | | No all-corpus or perceptual claim. |

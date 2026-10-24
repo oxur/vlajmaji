@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc | project01-multi-source-dictionary / arc01-dictionary-foundation |
-| status | active; S01 accepted11ec701; S02 accepted37c3518; S03 initial/R1 FAIL; refinement02 issued; S04 grouped pending |
+| status | active; S01 accepted11ec701; S02 accepted37c3518; S03 accepted01a9ceb3; S04 grouped readiness pending |
 | depends-on | Vlajmaji `4ee3bab`; preserved source/grouping/schema decisions and accepted PoC contracts |
 | blocks | A02 full import, A03 optional releases, A04 composition and A05 owned editing |
-| version / date | 1.10 / 2026-10-24 |
+| version / date | 1.11 / 2026-10-24 |
 
 ## Capability
 
@@ -39,7 +39,7 @@ The initial three-slice breakdown below is historical. Original S02 proved too b
 | 02 — Versioned relational schema | Concrete broad metadata tables/types, raw-preserving extension policy, standard mapping and old-archive adapter/rebuild path; a fixture can persist/reload without loss. Store/lexicon crates and shipped schema/migration docs. | Accepted S01 IDs/attribution. All twelve schema areas in design.md are accounted for; a single fixture database does not select final topology. |
 | 03 — Grouped exact lookup | Public Rust API and CLI show every fixture assertion under its registered source; exact totals, default-unpaged output, optional occurrence pages, availability and stable links. Search/CLI and user documentation. | Accepted S01 registry and S02 store. Complete reference checks before any real corpus/topology comparison. |
 
-S01 and S02 are independently accepted. S03 persistence initial629bc810 and refinement01b29ac8c failed independent review; refinement02 is issued with all9 rows open; S04 is prepared after accepted S03 interfaces and evidence.
+S01 and S02 are independently accepted. S03 persistence is independently accepted01a9ceb3after two preserved failed candidates and refinement02, all9rowsdone; S04 is prepared after accepted S03 interfaces and evidence.
 If any slice exceeds one context with repair headroom, split it explicitly while
 retaining every original criterion and owner; do not reduce schema coverage.
 
@@ -113,7 +113,7 @@ research bundle. Its seven criteria are redistributed, not discarded:
 
 ## Source-readiness and next action
 
-S01 and S02 independent acceptance are recorded in their close sets. S02 initial/refinement01 failed verdicts, repaired refinement02 acceptance and all issued prompts remain preserved in its child plan/verification/artifacts. S03's concrete DDL/lifecycle/integrity choices now bind its issued slice plan and cc-prompt.md; S04 query choices await actual accepted persistence interfaces. Do not delegate unresolved domain semantics to an implementer with a list of acceptance rows. No physical topology decision is required for the foundation fixture.
+S01, S02 and S03 independent acceptance are recorded in their close sets. S02 initial/refinement01 failed verdicts, repaired refinement02 acceptance and all issued prompts remain preserved in its child plan/verification/artifacts. S03's concrete DDL/lifecycle/integrity choices now bind its issued slice plan and cc-prompt.md; S04 query choices await actual accepted persistence interfaces. Do not delegate unresolved domain semantics to an implementer with a list of acceptance rows. No physical topology decision is required for the foundation fixture.
 
 ## Version history
 
@@ -152,3 +152,5 @@ S02 broad immutable raw/metadata/JSON/exact archive adapter accepted37c3518 afte
 -1.9 —2026-10-24: S03 independent initial source/gates/47-table/negative/positive/legacy review retained; F1–F7 bounded four-path repair issued. All9S03rows stay open; S04 and all-four composition/arc close remain pending.
 
 -1.10 —2026-10-24: S03 R1 strict field/14positive/94+18+3+13negative/3legacy controls pass independently; two metadata query category checks and committed role regression remain open for bounded R2 API/tests repair. DDL/model/fixture preserved; no S04 or arc acceptance.
+
+-1.11 —2026-10-24: S03 all9rows independently accepted01a9ceb3after final78/1check,10no-default,61/1all-feature,locked1.98and37public/SQL/legacy+metadata3proofs. A01-02closes with S02 model/S03 store. No structural scope change; S04 full query/CLI/reference transitions and separate composition remain pending.

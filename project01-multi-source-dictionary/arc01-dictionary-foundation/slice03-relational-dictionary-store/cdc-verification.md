@@ -1,5 +1,7 @@
 # S03 CDC independent verification
 
+Current verdict2026-10-24: **ACCEPTED** at01a9ceb3bd6925d5cae583d38e2683046a3c1dea after refinement02. All9rows DONE. Initial629bc810 and refinement01b29ac8c failed sections remain historical evidence; S04/all-four composition still pending.
+
 ## Initial candidate — FAIL / all nine rows remain open
 
 Source629bc810969a8077a9d9388ff4d762deaa4cf10a was frozen clean after the ten allowed paths. CDC independently inspected the complete two production modules, complete1424-line integration suite, public example, schema document and all existing-path diffs. No CDC source edits occurred. Attributed CC intake, proposed dispositions and corrected terminal gate populations remain in artifacts/cc-execution.md; those are separate from this independent verdict. Initial cc-prompt.md remains unchanged. S01/S02 acceptance and immutable S02 fixture are preserved; S04/composition have not been implemented.
@@ -63,3 +65,37 @@ Remaining test gap under F1: existing integration positive all-four-role SQL tra
 CC logs inspected independently: Make check58Cargo/doctests+19tools=77pass/1ignore; standalone all-features60Cargo/doctests/1ignore and no tooling; no-default10; locked workspace check success. The attributed CC receipt incorrectly adds19tools again to standalone all-features. Its earlier statement remains historical and must be corrected by append. CDC has not rerun full Rust gates on this failed candidate; final repaired current-code independent Make/features/locked execution remains mandatory.
 
 Disposition: all9rows remain OPEN pending the narrow API/test refinement and current independent final gates. F3–F7 implementation and all passed public/SQL/legacy controls remain useful pinned evidence, with model/fixture/DDL/input bytes preserved. First refinement is not accepted; no close/retrospective record exists yet. Refinement02 is second of cap5, with only dictionary.rs/tests reopened. S04 plus independent all-four composition/arc close remain required.
+
+Final-close helper chronology: its first evidence-directory setup omitted a parent mkdir and stopped before copying records or changing canonical status; corrected parent creation then resumed the same independently passed acceptance.
+
+## Refinement02 final independent acceptance
+
+Current assignment cc-prompt-iteration02.md; frozen clean source01a9ceb3bd6925d5cae583d38e2683046a3c1dea, exactly dictionary.rs/tests changed from R1. CDC inspected every changed source/test line and verified the unchanged schema/model/fixture boundary against prior complete initial and R1 source review. Metadata checks use actual prepared column names, no message substring or blanket engine remap; malformed SQLite stays Backend. The positive SQL test actually COMMITs, checks FK integrity and reopens direct SQLite to compare all8inserted roles/ordinals/NULL payloads. New metadata alterations commit then public open emits Format without writes. No reviewer source repair occurred.
+
+Independent actual current outcomes: unique outside caller exact132946bytes/SHA c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55;9captures/20occurrences/14entries/20assertions. All37public/oracle runs pass: main full equality+47tables/3213cells;14valid create/reopen+each complete47-table mapping;94/94tamper/constraint;18/18SQL shapes;3/3canonical storage classes;13/13filesystem/error/held snapshot;3/3legacy8/19rebuilds. Additional metadata3/3passes, repairing both R1 failures. All previous controls/input bytes are unchanged; no structural shim or invalid draft counts.
+
+CDC independently ran Make check with Rust1.98 and explicit target:59Cargo/unit/integration/doctests+19tools=78pass/1pre-existing corpus ignore, formatting/Clippy/docs green. Serialized no-default10pass; standalone all-features61pass/1ignore; locked workspace check success. Store permanent contract12/12 and lib unit3/3 are inside those measured populations, not additional totals. Shipped example independently create/drop/reopened full9/20/14/20. Every gate is terminal at the same source; no later source edits. Exact logs/results/public package/manifest in artifacts/accepted-refinement02. Only one existing corpus test is ignored; no corpus import/benchmark/standards-conformance claim.
+
+The initialized-header production control flow and file-backed abort unit now prove a committed format/version/complete0 header is externally visible before population and survives a population abort/connection drop; strict open→Incomplete and create→ExistingPath are real. Complete1 commits with population. Rich Dictionary semantics remain model-validated; SQL CHECK/FK contracts and exact all-cell reopen are distinguished. The source/evidence0/1 calibration remains legitimate, while explicit field names/ordinal ownership/NULL cases all meet binding requirements.
+
+### Nine-row independent walk
+
+| Row | Disposition | Independent evidence |
+| --- | --- | --- |
+| S03-01 | done / reproduced | fresh public API/default/empty/existing/missing/symlink lifecycle; retained read snapshot13/13; typed metadata3/3/canonical3/3 and real-abort header unit; source/Error::source review |
+| S03-02 | done / reproduced | strict47-table main3213cell mapping; exact registry/raw/native values; all14positive model+SQL variants, including both capture/binding orders and unavailable reference inputs; full raw/archive equality |
+| S03-03 | done / reproduced | catalogue A/B/O/M counts/presence/normalizer/terms actual SQL; Available0/MissingNone/full-u64/sparse-usize valid variants and strict mapped cells |
+| S03-04 | done / reproduced | exact c8 fixture definitions/score/timestamp lexemes/classes/POS/gloss/context/frame SQL, typed full model reopen,12permanent integration tests |
+| S03-05 | done / reproduced | all7form kinds and exact rafsi targets,3etymology states/all4component roles, relation shape/provenance;18CHECK controls and actual committed-role/FK/retained8row test |
+| S03-06 | done / reproduced | full mapped history/head/tombstones/editorial/computation/input/annotation/extension exact cells and positive variants; native/source/computed authority remains separate |
+| S03-07 | done / reproduced | 94/94tamper/constraint +18/18shape +3/3canonical +3/3metadata; no-write bytes; exactDDL/FK/all-cell source review and same-count12-area edits |
+| S03-08 | done / reproduced | 3/3old-schema1 archivev2/v1/empty-metadata explicit8capture/19assertion rebuilds, original bytes unchanged; unique outside caller/full20example; current78/1check,10no-default,61/1all-feature,locked1.98/docs |
+| S03-09 | done / reproduced | CDC independent source/current gates/37public runs/metadata3 walk; attributed CC proposal complete, explicit scope/inventory/bubble-up and retrospective; S04/composition retained |
+
+### Verified bubble-up and inventory
+
+S03 delivers the remaining original S02 persistence portion of Arc01, all12areas, at the local feature ref above. Accepted model37c3518 and registry11ec701 remain unchanged dependencies. Scope-as-specified versus delivered has no drop: no criterion is deferred inside S03; grouped lookup/CLI/totals/pages/cursors/availability/stable-reference/history transitions remain assigned S04, separate all-four composition/arc close/retrospective still required. This is not Arc01 acceptance. No topology decision/full corpus/optional package/editor/inference/standard adoption/publication work was added.
+
+Canonical attributed closing-report.md transfers CC proposals from artifacts/cc-execution.md; CDC separately dispositions every row here. First-class plan/ledger/initial+2issued prompts/verification/close/retrospective stay in slice root. Supporting inventory is artifacts/cc-execution.md, s03-disk-recovery.md, cargo-target-guard.bash, independent-sql-oracle/, independent-public-controls/, independent-initial/, independent-refinement01/, accepted-refinement02/ (recursive exact manifests/records). Every issued prompt/failure/setup correction is retained. Source union is the initial10allowlisted paths, R1foursubset, R2twosubset, no unauthorized source path. Parent artifacts hold explicitly labelled future S04 reference/input readiness, not hidden slice delivery.
+
+Arc-plan change decision: no additional slice/architecture/scope change was revealed; update status/evidence and A01-02 to accepted S02+S03 now. Preserve original four-slice breakdown and S04/composition owners. Project ledger remains all14open with this additional foundation contribution. Retrospective completed at cdc-retrospective.md. Source/target remain frozen pending next explicit S04 assignment; root stays read-only, no A02/main integration/push/PR/merge/publication.
