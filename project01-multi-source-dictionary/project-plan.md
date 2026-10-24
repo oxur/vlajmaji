@@ -9,7 +9,7 @@
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.7 / 2026-10-24, America/Chicago |
+| version / date | 1.8 / 2026-10-24, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -107,7 +107,7 @@ define execution order. Later arcs are roadmap entries, not issued assignments.
 | Arc | Usable capability and destination | Required inputs | Detail now |
 | --- | --- | --- | --- |
 | [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Four scope-preserving slices after S01 sizing; current detail in arc plan. |
-| 02 — Reproducible full jbotci import (ACTIVE/readiness) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Detailed source-grounded planning now; see current authority. |
+| [02 — Reproducible full jbotci import](arc02-reproducible-jbotci-import/arc-plan.md) (ACTIVE) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Two useful slices: lossless Rust/CLI normalization, then pinned pipeline/full persistence composition. |
 | 03 — Independent corpus packages | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
 | 04 — Composed SQLite lookup | Compare unified derived index, ATTACH and application fanout on the same complete contract, then implement the selected composition and availability/query-snapshot policy. | A01 queries and A03 real pack releases. | One bounded decision followed by usable integration; no topology selected now. |
 | 05 — Owned dictionary | First-class editable source, revision/history and explicit editorial relationships, immutable export/reimport and its own optional data crate. | A01 model plus accepted A04 composition. | Model is reserved in A01; production editing belongs here. |
@@ -270,3 +270,9 @@ Feature source efef9c4includes inspected initial logo ancestry e0630d8but exclud
 -1.6 —2026-10-24: separate final canonical packet gate accepted at7ddd0db; Arc01formallyclosed at sourceefef9c4, all6arcrows/33childrowsdone and all required retrospectives/bubble-up complete. Project14rowsremainOPEN, noA02or main integration/publication activated; return at authorized endpoint.
 
 - 1.7 — 2026-10-24: Duncan renewed Autonomous/Expedited execution and existing explicit model selection for Arc02. Recorded directive02, fresh current-main source baseline/five-crate CLI facts, corpus acquisition authority and held publication, resource guardrails and stop-before-A03 boundary. Previous Arc01 authority/preflight/progress are historical receipts; all14projectrows remain OPEN.
+
+## Arc02 current readiness —2026-10-24
+
+Canonical arc02-reproducible-jbotci-import and7rowS01open set now prepared after fullsource/rawshape reconnaissance. Source isolated clean d1e1c928; data pin exact17,163,482B/33526rows and278254fields,9empty+1wiki retainedexcluded by declaredquerypolicy; supplierselected31248 separate. All8arcrows/7S01rowsOPEN. Readiness/resource/recovery/census evidence lives in the arc artifacts. FixedofflineA02Cargo guard exclusively reuses ownedretainedA01target after bounded abandonedpre-repairprocess recovery; no cachedeletion. Current detailed API/map and preserved prompt are S01; S02will detail pinnedpipeline/fullstore/groupedcomposition on acceptedS01. No sourceimplementation or acceptance yet; all14projectrowsOPEN.
+
+- 1.8 —2026-10-24: source/data reconnaissance opened canonical Arc02 with two usable slices, eight open arc rows and seven open S01 rows. Actual export shape and full counts ground S01 importer/CLI contract; pinned pipeline/full persistence belongs S02. Source/worktree/cache ownership and abandoned pre-repair process recovery are recorded in owning readiness artifact. No implementation acceptance or project-row closure.

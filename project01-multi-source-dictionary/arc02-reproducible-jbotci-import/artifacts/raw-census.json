@@ -1,0 +1,166 @@
+{
+  "method": "CDC Python json whole-list census from immutable raw bytes; not importer acceptance",
+  "revision": "3d9fd41d9ed32de26311ee27ec86b6b165985aa1",
+  "raw": {
+    "bytes": 17163482,
+    "sha256": "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde",
+    "rows": 33526,
+    "object_rows": 33526,
+    "fields": {
+      "definition": {
+        "str": 33526
+      },
+      "definition_id": {
+        "int": 33526
+      },
+      "etymology": {
+        "str": 2085
+      },
+      "experimental_rafsi": {
+        "str": 769
+      },
+      "gloss_keywords": {
+        "list": 30683
+      },
+      "jargon": {
+        "str": 8356
+      },
+      "notes": {
+        "str": 28280
+      },
+      "place_keywords": {
+        "list": 2821
+      },
+      "rafsi": {
+        "str": 1565
+      },
+      "score": {
+        "float": 33526
+      },
+      "selmaho": {
+        "str": 2539
+      },
+      "user": {
+        "dict": 33526
+      },
+      "word": {
+        "str": 33526
+      },
+      "word_type": {
+        "str": 33526
+      }
+    },
+    "native_field_occurrences": 278254,
+    "word_types": {
+      "bu-letteral": 63,
+      "cmavo": 634,
+      "cmavo-compound": 764,
+      "cmevla": 568,
+      "experimental cmavo": 1144,
+      "experimental gismu": 793,
+      "fu'ivla": 12964,
+      "gismu": 1465,
+      "lujvo": 14515,
+      "nalvla": 1,
+      "obsolete cmavo": 3,
+      "obsolete cmevla": 34,
+      "obsolete fu'ivla": 379,
+      "obsolete zei-lujvo": 4,
+      "phrase": 30,
+      "wiki": 1,
+      "zei-lujvo": 164
+    },
+    "identical_complete_row_duplicates": 0,
+    "native_definition_id_duplicates": 0,
+    "usernames": 238,
+    "empty_definitions": 9,
+    "wiki_rows": 1,
+    "eligible_occurrences": 33516,
+    "exact_eligible_spellings": 31248,
+    "all_exact_spellings": 31256,
+    "nested": {
+      "gloss_keywords": {
+        "objects": 39721,
+        "fields": {
+          "word": {
+            "str": 39721
+          },
+          "meaning": {
+            "str": 19854,
+            "NoneType": 19867
+          }
+        }
+      },
+      "place_keywords": {
+        "objects": 5193,
+        "fields": {
+          "word": {
+            "str": 5193
+          },
+          "meaning": {
+            "str": 2020,
+            "NoneType": 3173
+          }
+        }
+      },
+      "user": {
+        "objects": 33526,
+        "fields": {
+          "username": {
+            "str": 33526
+          },
+          "realname": {
+            "str": 33464
+          }
+        }
+      }
+    }
+  },
+  "metadata": {
+    "bytes": 514,
+    "sha256": "fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98",
+    "supplier_definition_count": 33526,
+    "supplier_selected_entry_count": 31248
+  },
+  "witnesses": {
+    "farvi": [
+      {
+        "index": 13306,
+        "definition_id": 333,
+        "row_sha256": "3fe25f882c806b7c4435297dddd9bd2474d3d54fca14bf9aa91f84f26f27f909"
+      },
+      {
+        "index": 13307,
+        "definition_id": 69002,
+        "row_sha256": "6d3ec9b75340cfc2ee7fc3b5eaab28a3128a91be0cb85a5615a42241eb279f69"
+      }
+    ],
+    "cpana": [
+      {
+        "index": 11305,
+        "definition_id": 207,
+        "row_sha256": "308cd55cad618459e7f578b166d1f90c8ebefd10b644d69d001a7bbc196eeee8"
+      }
+    ],
+    "si'e": [
+      {
+        "index": 26576,
+        "definition_id": 2171,
+        "row_sha256": "31b53bbad00fa4b51ab6c7a75500f13c3ba103eedf8deae94511959b9a77ad26"
+      }
+    ],
+    "ma": [
+      {
+        "index": 18910,
+        "definition_id": 88840,
+        "row_sha256": "b816ae0a77373207387f87901a2ec05a9611ce32f2e35d2e70b6cbab06b4d9f0"
+      },
+      {
+        "index": 18911,
+        "definition_id": 1791,
+        "row_sha256": "6b5ca25e3c52294e2f2f06178b77194c18b599e518899f6de83476cb7b0be935"
+      }
+    ]
+  },
+  "reviewer_setup_error": "Initial API-key census used valsiword/type_name; empty witness/wiki outputs were query errors. Correct word/word_type queries follow; no corpus absence inferred."
+}

@@ -1,0 +1,13 @@
+# Arc02 S01 ledger
+
+All7rows OPEN; CC attestations are proposed-done until CDC reproduces.
+
+| ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A02S01-01 | Public pure Rust importer/options/report/errors creates validated release independently of SQLite with pinned exact input verification and deterministic output. | Unique outside Rustcaller, valid/invalid options/metadata/hash/root controls, actual fullimport/reload. | correctness-grade | A02-01/03/06 | open | | No network or new dependency. |
+| A02S01-02 | Every rawrow/field/lexeme/order/alternative/capture is retained; duplicate and unsupported rows remain individually addressable with balanced diagnostics/eligibility. | Full33526/278254 independent rawlexeme/native reference plus syntheticduplicate/unknown/nonobject/repeatedkey controls. | correctness-grade | P01-03; designrawboundary | open | | Supplierselected31248 is not assertionpopulation. |
+| A02S01-03 | Source/contributor/distributor/lineage/native identity/metadata/terms remain explicit; all12homes and native source/computed distinctions are correct. | Full raw-derived fieldmap/attribution/forms/contexts/etymology and notices; exactknownwitnesses/negative+valid counterparts. | correctness-grade | P01-01/12/13;12areas | open | | No inferredsenses/frames/POS/dates; redistributionHeld. |
+| A02S01-04 | CLI import/check is useful, deterministic, nonoverwriting and offline; structured failures and check no-write/full-release comparison work. | ActualCLI success+hash/options/count/release/occupiedoutput controls, pathspaces, stdinlegacy preservation. | correctness-grade | A02-01; usability | open | | Partialnewfile onwritefailure documented, never callerreplacement. |
+| A02S01-05 | Public example/docs/fieldmap accurately teach fullraw release replay, observed counts, supplierlimits and version/terms boundaries. | Run example/outsidecaller, doc/link/source/package file inspection; rawpayloadabsent. | correctness-grade | Roadmap usefulincrement | open | | Package/acquire/S02not claimed. |
+| A02S01-06 | Required format/lint/check, isolated features/allfeatures and oldarchives/Q01–Q06 remain green at currentcandidate. | ActualMake/Cargogates with fixedtarget/offline guard and nonzero populations; source preservation diff. | correctness-grade | SourceAGENTS; projectpreservation | open | | Existingresearchcorpusignore separatelyreported. |
+| A02S01-07 | Exact initial/repair history, allrow/scope accounting, independent review, bubble-up and CDC retrospective complete. | Seven-row walk/actualdiff/verifier/retro and arcplan update decision. | correctness-grade | Framework | open | | No precreatedclose/verifier/retro. |

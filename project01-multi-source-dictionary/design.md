@@ -1,8 +1,6 @@
 # Design — A dictionary of attributable assertions
 
-**Status:** proposed implementation design, 2026-10-24. SQLite and source-preserving
-semantics are adopted user decisions; physical topology and concrete new DDL are
-not selected here. See [project-plan.md](project-plan.md) for authority and scope.
+**Status:** A01 foundation implemented and independently accepted at efef9c4; A02 active as authorized 2026-10-24. SQLite and source-preserving semantics are adopted; A01 concrete model/store DDL is implemented. Physical multi-corpus topology remains A04. The original substrate observations below are historical at 4ee3bab; current source is0.3.0/d1e1c928 with all5packages under crates/* and CLI crates/cli. See [project-plan.md](project-plan.md) for authority and scope.
 
 ## Current substrate and the gap
 
@@ -191,3 +189,7 @@ prompt-authoring and relevant Rust guidance. This design is not an executable
 assignment. Every slice needs independent disposition; arc/project composition
 must demonstrate raw → normalized release → optional selection → SQLite lookup →
 owned revision/export → Rust/CLI behavior. No public release is authorized here.
+
+## Arc02 implementation boundary update —2026-10-24
+
+The full pinned raw export was actually inspected:17,163,482B/33526rows, native word/word_type/definition_id keys differ from API captures. New explicit export adapter must preserve the existing legacyparser/archivecontract. Detailed current fieldmap/eligibility/API/metadata and two-slice delivery is [Arc02](arc02-reproducible-jbotci-import/arc-plan.md), with initial full normalization [S01](arc02-reproducible-jbotci-import/slice01-lossless-export-normalization/slice-plan.md). Historical current-substrate crate/cli,0.2.0/schema1-only statements are retained as provenance, superseded by acceptedA01 and inspectedcurrentbaseline. All12homes/terms/source distinctions remain. No A03package/topology/editor scope is activated.
