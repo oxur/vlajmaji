@@ -1,0 +1,82 @@
+[
+  {
+    "gate": "s01-make-format03",
+    "exit": 0,
+    "elapsed_seconds": 0.688,
+    "result_lines": 0,
+    "passed": 0,
+    "failed": 0,
+    "ignored": 0,
+    "log_sha256": "91daf8b66de275ca7d9fb4c4c1ac7632f0099a9c21d29867ba0e63058e6265ec"
+  },
+  {
+    "gate": "s01-make-lint03",
+    "exit": 0,
+    "elapsed_seconds": 0.397,
+    "result_lines": 0,
+    "passed": 0,
+    "failed": 0,
+    "ignored": 0,
+    "log_sha256": "169a146156725a1d0ff81e2cc47316e12e1f44ac8f8969fafb3d4f93da93473c"
+  },
+  {
+    "gate": "s01-make-check03",
+    "exit": 0,
+    "elapsed_seconds": 26.881,
+    "result_lines": 21,
+    "passed": 79,
+    "failed": 0,
+    "ignored": 1,
+    "log_sha256": "374c159f21ad50f7c6ba61f00458ad9e63aed8ce7339a161cd6f1cdbe129481b"
+  },
+  {
+    "gate": "s01-workspace-allfeatures03",
+    "exit": 0,
+    "elapsed_seconds": 12.277,
+    "result_lines": 21,
+    "passed": 81,
+    "failed": 0,
+    "ignored": 1,
+    "log_sha256": "bac757eff695f088e63c07821a02a49576982116fe03da70b8cadb01dd7a4de4"
+  },
+  {
+    "gate": "s01-search-nodefault03",
+    "exit": 0,
+    "elapsed_seconds": 2.287,
+    "result_lines": 4,
+    "passed": 15,
+    "failed": 0,
+    "ignored": 0,
+    "log_sha256": "bad0277c63f8d81835b4bdac56006e8fc2c301f17d0136515d7143b6b81e00ff"
+  },
+  {
+    "gate": "s01-search-allfeatures03",
+    "exit": 0,
+    "elapsed_seconds": 1.92,
+    "result_lines": 4,
+    "passed": 15,
+    "failed": 0,
+    "ignored": 0,
+    "log_sha256": "4122a1421fdfe40fdf529e6285369d7afde66449f827dadb870d8a9d920008a5"
+  },
+  {
+    "gate": "s01-umbrella-nodefault03",
+    "exit": 0,
+    "elapsed_seconds": 0.953,
+    "result_lines": 2,
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "log_sha256": "8f81016c9956d7a2d3c2ba4cf55e0d9f9266861d844b4be86dad43f3a29d004f"
+  },
+  {
+    "gate": "s01-umbrella-allfeatures03",
+    "exit": 0,
+    "elapsed_seconds": 1.267,
+    "result_lines": 2,
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0,
+    "log_sha256": "9b8607ed1767905a703b6de638433efa46c7a1c82158ab1aa0f9278fbf0bbd1b"
+  }
+]

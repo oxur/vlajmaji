@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01 candidate02 repair required/iteration03; no child accepted |
-| version/date | 1.0 / 2026-10-24 |
+| status | ACTIVE; S01 CLOSED/accepted12fdd67; S02 readiness |
+| version/date | 1.1 / 2026-10-24 |
 | depends-on | A01 fixture contracts originally accepted efef9c4; current implementation baseline d1e1c928 including CLI relocation/umbrella0.3.0 |
 | blocks | A03 jbotci optional package and later complete-corpus integration |
 | authority | ../cdc-directive02.md; renewed Autonomous/Expedited, CDC SolHigh / CC LunaHigh, stop before A03 |
@@ -79,8 +79,9 @@ exclusively handed to Arc02 after exact abandoned process recovery. Launcher
 `/tmp/vlajmaji-p01-a02-cargo` exports it plus CARGO_NET_OFFLINE=true; every Cargo
 and Make invocation explicitly sets this CARGO_TARGET_DIR and uses that launcher
 (CARGO=... for Make). Source/SQLite inputs frozen during scans. No cache deletion;
-old source-local68MiB target remains untouched. Initialfree2.6GiB/current2.5GiB
-after baseline check. Keep one full normalized release and one full derived store
+old source-local68MiB target remains untouched. Opening free2.6GiB/2.5GiB after baseline check are historical. After operator
+cache cleanup, current S01 review confirmed14GiB retained target/debug, no release
+directory and449265967104B free (S01artifacts/cdc-accepted/resource-assessment03.json). Keep one full normalized release and one full derived store
 per active caller; after consumed proof, only explicitly task-owned derived
 outputs may be removed with receipt/hash retained when space requires. Avoid
 duplicate native graph builds; reuse retained dependencies. Recheck free space
@@ -128,3 +129,5 @@ five-iteration history. No close/verifier/retro records precreated.
 -1.0 —2026-10-24: activated full A02under directive02; source/data reconnaissance
 supports two usable slices, explicit export-vs-API boundary, measured complete
 33526population and protected/exclusive resource plan. No scope reduction.
+
+-1.1 —2026-10-24: S01 independently accepted12fdd67 with all7rows closed and current complete raw/API/CLI/example/gate evidence. A02-01DONE,other7arcrowsOPEN; S02 exact design follows actual full persistence/reopen/eight-request baseline. Original source/input/scope remains intact; current resource observations dated separately from opening scarcity.

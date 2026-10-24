@@ -2,11 +2,11 @@
 
 | Field | Value |
 | --- | --- |
-| status/version | OPEN/repair required after frozen candidate02 independent review /1.3,2026-10-24 |
-| source | candidate02 bbd64595 (initial d1e1c928); feature/project01-full-jbotci-import; isolated Arc02checkout |
+| status/version | CLOSED/independently accepted /1.4,2026-10-24 |
+| source | accepted12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69 (initial d1e1c928); feature/project01-full-jbotci-import; isolated Arc02checkout |
 | depends-on | A01Dictionary/registry, current baseline and full pinned raw+metadata |
 | delivery | Public Rust importer + local CLI import/check + complete normalized JSON usable before SQLite |
-| current assignment | cc-prompt-iteration03.md (second executed refinement of5; candidate02 not accepted) |
+| current assignment | cc-prompt-iteration03.md completed; second executed refinement of5, independently accepted |
 | artifact home | artifacts/; CC writes only artifacts/cc-execution.md; CDC owns canonical planning |
 
 Provide lossless fullrawexport normalization and useful Rust/CLI entrypoints.
@@ -231,3 +231,5 @@ Consequentialdecisions not delegated toCC; localhelpermechanics remain local.
 -1.2 —2026-10-24: candidate01 proposed-done rejected at independent controls; actual passing915570 full-field checks/30CLI controls and failed cases preserved in artifacts/cdc-review-attempt01.md. Iteration02 binds repairs without reducing scope. Full raw input unchanged, no S02 implementation issued.
 
 -1.3 —2026-10-24: preserve candidate02 review/resource interruption and issue narrow numeric metadata/error-oracle correction. No dependency/feature widening; raw input and all original obligations unchanged.
+
+-1.4 —2026-10-24: independent current41API/36CLI/full915570source checks, example/fullCLI and all mandatory gates accepted12fdd67; all7rows closed with exact source/scope/attempts/retro/bubble-up. S02 readiness/pipeline/persistence remains next; no later arc activated.

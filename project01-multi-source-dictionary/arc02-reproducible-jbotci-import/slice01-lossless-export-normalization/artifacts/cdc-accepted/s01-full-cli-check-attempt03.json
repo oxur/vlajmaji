@@ -1,0 +1,24 @@
+{
+  "label": "s01-full-cli-check-attempt03",
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "argv": [
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+    "jbotci-check",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/data/jbotci/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/dictionary-en.json",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/data/jbotci/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/dictionary-en.metadata.toml",
+    "--release",
+    "/tmp/vlajmaji-p01-a02-cdc/s01 cli candidate03.json"
+  ],
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "head_before": "12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69",
+  "start_unix": 1792881651.676812,
+  "log": "/private/tmp/vlajmaji-p01-a02-cdc/s01-full-cli-check-attempt03.log",
+  "pid": 70844,
+  "exit": 0,
+  "elapsed_seconds": 50.768,
+  "log_bytes": 1294
+}

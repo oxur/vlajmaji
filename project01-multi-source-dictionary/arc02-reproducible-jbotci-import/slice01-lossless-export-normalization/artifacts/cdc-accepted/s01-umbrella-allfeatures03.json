@@ -1,0 +1,26 @@
+{
+  "label": "s01-umbrella-allfeatures03",
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "argv": [
+    "/tmp/vlajmaji-p01-a02-cargo",
+    "+1.98.0",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "vlajmaji",
+    "--all-features"
+  ],
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "head_before": "12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69",
+  "start_unix": 1792881796.7943711,
+  "log": "/private/tmp/vlajmaji-p01-a02-cdc/s01-umbrella-allfeatures03.log",
+  "pid": 75902,
+  "exit": 0,
+  "elapsed_seconds": 1.267,
+  "log_bytes": 699
+}

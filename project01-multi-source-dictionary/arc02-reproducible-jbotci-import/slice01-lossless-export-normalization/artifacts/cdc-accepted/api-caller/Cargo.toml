@@ -1,0 +1,12 @@
+[package]
+name = "vlajmaji_a02_cdc_api_20261024a"
+version = "0.0.0"
+edition = "2024"
+
+[[bin]]
+name = "a02_cdc_api_controls_20261024a"
+path = "src/main.rs"
+
+[dependencies]
+vlajmaji-lexicon = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/crates/lexicon" }
+serde_json = "=1.0.151"

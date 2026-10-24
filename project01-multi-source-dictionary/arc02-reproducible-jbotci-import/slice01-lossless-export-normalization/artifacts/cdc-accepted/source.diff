@@ -1,0 +1,3105 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index f321928..04d5c54 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -2,7 +2,9 @@
+ 
+ ## 0.3.0 (unreleased)
+ 
+-- Start the next development cycle.
++- Add a lossless, hash-pinned jbotci export normalizer and `jbotci-import` /
++  `jbotci-check` CLI commands; retain content redistribution as held pending
++  source-coverage review.
+ 
+ ## 0.2.0 (2026-10-24)
+ 
+diff --git a/README.md b/README.md
+index d21d60b..a1e566e 100644
+--- a/README.md
++++ b/README.md
+@@ -37,12 +37,15 @@ The Rust workspace already provides:
+ - Optional compound decomposition and generation through `latkerlo-jvotci`.
+ - A JSON CLI, `vlajmaji`, including `dictionary-build` and `dictionary-query`
+   alongside the existing archive/search commands.
++- A lossless local jbotci export normalizer with `jbotci-import` and
++  read-only `jbotci-check` commands ([import guide](docs/jbotci-import.md)).
+ - An umbrella library, `vlajmaji`, exposing `lexicon`, `store`, and `search`, with
+   optional `morphology` and `graph` features.
+ 
+ The earlier archive/search PoC was exercised against 21,241 records from 16
+ source snapshots. The new grouped-dictionary path has a reproducible fixture
+-and public API/CLI examples; complete upstream dictionary imports remain future work.
++and public API/CLI examples; the jbotci adapter has a pinned local replay.
++Other upstream dictionary imports remain future work.
+ Search scores and generated compounds are experimental aids; they do not establish
+ attested usage, semantic equivalence, or poetic merit.
+ 
+diff --git a/crates/cli/Cargo.toml b/crates/cli/Cargo.toml
+index 1512612..243be71 100644
+--- a/crates/cli/Cargo.toml
++++ b/crates/cli/Cargo.toml
+@@ -19,10 +19,8 @@ doc = false
+ [dependencies]
+ clap.workspace = true
+ vlajmaji-search = { package = "vlajmaji-search", path = "../search", version = "0.3.0", features = ["morphology"] }
+-serde_json.workspace = true
+-
+-[dev-dependencies]
+ vlajmaji-lexicon.workspace = true
++serde_json.workspace = true
+ 
+ [lints]
+ workspace = true
+diff --git a/crates/cli/README.md b/crates/cli/README.md
+index 136212c..e9f21e3 100644
+--- a/crates/cli/README.md
++++ b/crates/cli/README.md
+@@ -27,4 +27,9 @@ requests on the argument or stdin. New-command runtime errors emit a structured
+ JSON object to stderr, no stdout, and a nonzero exit. See the
+ [grouped dictionary query guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-query.md).
+ 
++`jbotci-import RAW METADATA FRESH.json` locally normalizes a hash-pinned export;
++`jbotci-check RAW METADATA [--release RELEASE.json]` validates it without
++writing. See the [jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci-import.md)
++for preservation, identity, metadata, and content-notice limits.
++
+ Corpus data is not bundled. See the [data and replay guide](https://github.com/oxur/vlajmaji/blob/main/docs/migration.md) for the current research-input workflow. Licensed under Apache-2.0.
+diff --git a/crates/cli/src/main.rs b/crates/cli/src/main.rs
+index 3001dab..d98f3e8 100644
+--- a/crates/cli/src/main.rs
++++ b/crates/cli/src/main.rs
+@@ -3,6 +3,10 @@
+ use std::io::{self, Read, Write};
+ 
+ use clap::{Parser, Subcommand};
++use vlajmaji_lexicon::{
++    Dictionary, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION,
++    JbotciImportError, JbotciImportOptions, import_jbotci_export,
++};
+ use vlajmaji_search::{
+     DictionaryErrorReport, DictionaryRequest, DictionarySearchEngine, Query, SearchEngine,
+     SearchOptions,
+@@ -49,6 +53,31 @@ enum Command {
+         #[arg(long)]
+         request: Option<String>,
+     },
++    /// Normalize a pinned raw jbotci export into the complete versioned dictionary document.
++    JbotciImport {
++        raw: std::path::PathBuf,
++        metadata: std::path::PathBuf,
++        output: std::path::PathBuf,
++        #[arg(long, default_value = JBOTCI_PINNED_REVISION)]
++        revision: String,
++        #[arg(long, default_value = JBOTCI_PINNED_RAW_SHA256)]
++        raw_sha256: String,
++        #[arg(long, default_value = JBOTCI_PINNED_METADATA_SHA256)]
++        metadata_sha256: String,
++    },
++    /// Validate the raw export and optionally compare it with a normalized release document.
++    JbotciCheck {
++        raw: std::path::PathBuf,
++        metadata: std::path::PathBuf,
++        #[arg(long)]
++        release: Option<std::path::PathBuf>,
++        #[arg(long, default_value = JBOTCI_PINNED_REVISION)]
++        revision: String,
++        #[arg(long, default_value = JBOTCI_PINNED_RAW_SHA256)]
++        raw_sha256: String,
++        #[arg(long, default_value = JBOTCI_PINNED_METADATA_SHA256)]
++        metadata_sha256: String,
++    },
+ }
+ 
+ #[derive(Debug)]
+@@ -171,10 +200,124 @@ fn execute() -> Result<serde_json::Value, CliError> {
+                 .map_err(|error| structured_error("response_json", error.to_string()))?,
+             }
+         }
++        Command::JbotciImport {
++            raw,
++            metadata,
++            output,
++            revision,
++            raw_sha256,
++            metadata_sha256,
++        } => {
++            let normalized =
++                normalize_jbotci(&raw, &metadata, revision, raw_sha256, metadata_sha256)?;
++            let document = normalized
++                .dictionary()
++                .to_json_bytes()
++                .map_err(|error| structured_error("jbotci_dictionary", error.to_string()))?;
++            let mut file = std::fs::OpenOptions::new()
++                .write(true)
++                .create_new(true)
++                .open(&output)
++                .map_err(|error| {
++                    structured_error(
++                        "io",
++                        format!("create {} without replacement: {error}", output.display()),
++                    )
++                })?;
++            file.write_all(&document)
++                .and_then(|()| file.write_all(b"\n"))
++                .and_then(|()| file.flush())
++                .map_err(|error| {
++                    structured_error("io", format!("write {}: {error}", output.display()))
++                })?;
++            serde_json::json!({"operation":"jbotci-import","version":1,"output":output,"report":normalized.report()})
++        }
++        Command::JbotciCheck {
++            raw,
++            metadata,
++            release,
++            revision,
++            raw_sha256,
++            metadata_sha256,
++        } => {
++            let normalized =
++                normalize_jbotci(&raw, &metadata, revision, raw_sha256, metadata_sha256)?;
++            let report = normalized.report();
++            if !report.definition_count_matches || !report.entry_count_matches {
++                return Err(structured_error(
++                    "jbotci_accounting",
++                    "supplier metadata counts do not match the observed export",
++                ));
++            }
++            let release_matches = if let Some(path) = release {
++                let bytes = std::fs::read(&path).map_err(|error| {
++                    structured_error("io", format!("read {}: {error}", path.display()))
++                })?;
++                let supplied = Dictionary::from_json_bytes(&bytes)
++                    .map_err(|error| structured_error("jbotci_dictionary", error.to_string()))?;
++                let expected = normalized
++                    .dictionary()
++                    .to_json_bytes()
++                    .map_err(|error| structured_error("jbotci_dictionary", error.to_string()))?;
++                let actual = supplied
++                    .to_json_bytes()
++                    .map_err(|error| structured_error("jbotci_dictionary", error.to_string()))?;
++                if expected != actual {
++                    return Err(structured_error(
++                        "jbotci_release_mismatch",
++                        "normalized release does not match the pinned raw export and metadata",
++                    ));
++                }
++                true
++            } else {
++                false
++            };
++            serde_json::json!({"operation":"jbotci-check","version":1,"release_checked":release_matches,"report":report})
++        }
+     };
+     Ok(output)
+ }
+ 
++fn normalize_jbotci(
++    raw_path: &std::path::Path,
++    metadata_path: &std::path::Path,
++    revision: String,
++    expected_raw_sha256: String,
++    expected_metadata_sha256: String,
++) -> Result<vlajmaji_lexicon::JbotciImport, CliError> {
++    let raw = std::fs::read(raw_path)
++        .map_err(|error| structured_error("io", format!("read {}: {error}", raw_path.display())))?;
++    let metadata = std::fs::read(metadata_path).map_err(|error| {
++        structured_error("io", format!("read {}: {error}", metadata_path.display()))
++    })?;
++    import_jbotci_export(
++        &raw,
++        &metadata,
++        &JbotciImportOptions {
++            revision,
++            expected_raw_sha256,
++            expected_metadata_sha256,
++        },
++    )
++    .map_err(map_jbotci_error)
++}
++
++fn map_jbotci_error(error: JbotciImportError) -> CliError {
++    let code = match &error {
++        JbotciImportError::InvalidOptions(_) => "jbotci_options",
++        JbotciImportError::HashMismatch { .. } => "jbotci_hash_mismatch",
++        JbotciImportError::InvalidUtf8 { .. } => "jbotci_utf8",
++        JbotciImportError::InvalidJson(_) => "jbotci_json",
++        JbotciImportError::InvalidMetadata(_) | JbotciImportError::UnsupportedMetadata(_) => {
++            "jbotci_metadata"
++        }
++        JbotciImportError::Registry(_) => "jbotci_registry",
++        JbotciImportError::Dictionary(_) => "jbotci_dictionary",
++        _ => "jbotci_import",
++    };
++    structured_error(code, error.to_string())
++}
++
+ fn main() -> std::process::ExitCode {
+     let output = match execute() {
+         Ok(value) => value,
+diff --git a/crates/cli/tests/jbotci_contract.rs b/crates/cli/tests/jbotci_contract.rs
+new file mode 100644
+index 0000000..c05a043
+--- /dev/null
++++ b/crates/cli/tests/jbotci_contract.rs
+@@ -0,0 +1,295 @@
++//! Process-level checks for the jbotci import and check commands.
++
++use std::fs;
++use std::process::Command;
++
++fn scratch() -> std::path::PathBuf {
++    let path = std::env::temp_dir().join(format!(
++        "vlajmaji jbotci cli-{}-{}",
++        std::process::id(),
++        std::time::SystemTime::now()
++            .duration_since(std::time::UNIX_EPOCH)
++            .unwrap()
++            .as_nanos()
++    ));
++    fs::create_dir(&path).unwrap();
++    path
++}
++
++fn metadata(definitions: u64, entries: u64) -> Vec<u8> {
++    format!(
++        "language_tag = \"en\"\nlanguage_realname = \"English\"\nsource_language_tag = \"jbo\"\nformat = \"json\"\npositive_scores_only = false\nfilename = \"dictionary-en.json\"\nmetadata_url = \"https://example.invalid/languages\"\ndownload_url = \"https://example.invalid/export\"\nlensisku_created_at = \"2026-10-04T03:07:08Z\"\nsha256 = \"{}\"\ndefinition_count = {}\nentry_count = {}\n",
++        "934149f29768993404fcd6529cb7d3dac697d7df8bce55e5a4b694d6987bdee8",
++        definitions,
++        entries
++    )
++    .into_bytes()
++}
++
++fn metadata_for(raw_sha256: &str, definitions: u64, entries: u64) -> Vec<u8> {
++    format!(
++        "language_tag = \"en\"\nlanguage_realname = \"English\"\nsource_language_tag = \"jbo\"\nformat = \"json\"\npositive_scores_only = false\nfilename = \"dictionary-en.json\"\nmetadata_url = \"https://example.invalid/languages\"\ndownload_url = \"https://example.invalid/export\"\nlensisku_created_at = \"2026-10-04T03:07:08Z\"\nsha256 = \"{}\"\ndefinition_count = {}\nentry_count = {}\n",
++        raw_sha256, definitions, entries
++    ).into_bytes()
++}
++
++fn invoke(args: &[&str]) -> std::process::Output {
++    Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
++        .args(args)
++        .output()
++        .unwrap()
++}
++
++#[test]
++fn import_check_are_pinned_non_destructive_and_structured_on_failure() {
++    let dir = scratch();
++    let raw = br#"[{"word":"farvi","word_type":"gismu","definition":"to vary","score":-1}]"#;
++    let metadata_bytes = metadata(1, 1);
++    let raw_path = dir.join("raw.json");
++    let meta_path = dir.join("metadata.ini");
++    let release_path = dir.join("release.json");
++    fs::write(&raw_path, raw).unwrap();
++    fs::write(&meta_path, &metadata_bytes).unwrap();
++
++    let imported = invoke(&[
++        "jbotci-import",
++        raw_path.to_str().unwrap(),
++        meta_path.to_str().unwrap(),
++        release_path.to_str().unwrap(),
++        "--revision",
++        "0000000000000000000000000000000000000000",
++        "--raw-sha256",
++        "934149f29768993404fcd6529cb7d3dac697d7df8bce55e5a4b694d6987bdee8",
++        "--metadata-sha256",
++        "60285fe479cadba56ac987a9e1b6645ed788f1212442e4d23f2a8a947a40f9ec",
++    ]);
++    assert!(
++        imported.status.success(),
++        "{}",
++        String::from_utf8_lossy(&imported.stderr)
++    );
++    let summary: serde_json::Value = serde_json::from_slice(&imported.stdout).unwrap();
++    assert_eq!(summary["report"]["input_rows"], 1);
++    assert_eq!(summary["report"]["lexical_occurrences"], 1);
++    assert!(release_path.exists());
++
++    let check = invoke(&[
++        "jbotci-check",
++        raw_path.to_str().unwrap(),
++        meta_path.to_str().unwrap(),
++        "--release",
++        release_path.to_str().unwrap(),
++        "--revision",
++        "0000000000000000000000000000000000000000",
++        "--raw-sha256",
++        "934149f29768993404fcd6529cb7d3dac697d7df8bce55e5a4b694d6987bdee8",
++        "--metadata-sha256",
++        "60285fe479cadba56ac987a9e1b6645ed788f1212442e4d23f2a8a947a40f9ec",
++    ]);
++    assert!(
++        check.status.success(),
++        "{}",
++        String::from_utf8_lossy(&check.stderr)
++    );
++    let checked: serde_json::Value = serde_json::from_slice(&check.stdout).unwrap();
++    assert_eq!(checked["release_checked"], true);
++
++    let changed_revision = invoke(&[
++        "jbotci-check",
++        raw_path.to_str().unwrap(),
++        meta_path.to_str().unwrap(),
++        "--release",
++        release_path.to_str().unwrap(),
++        "--revision",
++        "1111111111111111111111111111111111111111",
++        "--raw-sha256",
++        "934149f29768993404fcd6529cb7d3dac697d7df8bce55e5a4b694d6987bdee8",
++        "--metadata-sha256",
++        "60285fe479cadba56ac987a9e1b6645ed788f1212442e4d23f2a8a947a40f9ec",
++    ]);
++    assert!(!changed_revision.status.success());
++    assert!(changed_revision.stdout.is_empty());
++    let failure: serde_json::Value = serde_json::from_slice(&changed_revision.stderr).unwrap();
++    assert_eq!(failure["error"]["code"], "jbotci_release_mismatch");
++
++    let before = fs::read(&release_path).unwrap();
++    let overwrite = invoke(&[
++        "jbotci-import",
++        raw_path.to_str().unwrap(),
++        meta_path.to_str().unwrap(),
++        release_path.to_str().unwrap(),
++        "--revision",
++        "0000000000000000000000000000000000000000",
++        "--raw-sha256",
++        "934149f29768993404fcd6529cb7d3dac697d7df8bce55e5a4b694d6987bdee8",
++        "--metadata-sha256",
++        "60285fe479cadba56ac987a9e1b6645ed788f1212442e4d23f2a8a947a40f9ec",
++    ]);
++    assert!(!overwrite.status.success());
++    assert!(overwrite.stdout.is_empty());
++    let failure: serde_json::Value = serde_json::from_slice(&overwrite.stderr).unwrap();
++    assert_eq!(failure["error"]["code"], "io");
++    assert_eq!(fs::read(&release_path).unwrap(), before);
++
++    #[cfg(unix)]
++    {
++        use std::os::unix::fs::symlink;
++        let referent = dir.join("referent.json");
++        let link = dir.join("occupied-link.json");
++        fs::write(&referent, b"preserve me").unwrap();
++        symlink(&referent, &link).unwrap();
++        let occupied_link = invoke(&[
++            "jbotci-import",
++            raw_path.to_str().unwrap(),
++            meta_path.to_str().unwrap(),
++            link.to_str().unwrap(),
++            "--revision",
++            "0000000000000000000000000000000000000000",
++            "--raw-sha256",
++            "934149f29768993404fcd6529cb7d3dac697d7df8bce55e5a4b694d6987bdee8",
++            "--metadata-sha256",
++            "60285fe479cadba56ac987a9e1b6645ed788f1212442e4d23f2a8a947a40f9ec",
++        ]);
++        assert!(!occupied_link.status.success());
++        assert!(occupied_link.stdout.is_empty());
++        let failure: serde_json::Value = serde_json::from_slice(&occupied_link.stderr).unwrap();
++        assert_eq!(failure["error"]["code"], "io");
++        assert!(
++            fs::symlink_metadata(&link)
++                .unwrap()
++                .file_type()
++                .is_symlink()
++        );
++        assert_eq!(fs::read(&referent).unwrap(), b"preserve me");
++    }
++    let occupied_dir = dir.join("occupied-directory");
++    fs::create_dir(&occupied_dir).unwrap();
++    let directory_output = invoke(&[
++        "jbotci-import",
++        raw_path.to_str().unwrap(),
++        meta_path.to_str().unwrap(),
++        occupied_dir.to_str().unwrap(),
++        "--revision",
++        "0000000000000000000000000000000000000000",
++        "--raw-sha256",
++        "934149f29768993404fcd6529cb7d3dac697d7df8bce55e5a4b694d6987bdee8",
++        "--metadata-sha256",
++        "60285fe479cadba56ac987a9e1b6645ed788f1212442e4d23f2a8a947a40f9ec",
++    ]);
++    assert!(!directory_output.status.success());
++    assert!(directory_output.stdout.is_empty());
++    let failure: serde_json::Value = serde_json::from_slice(&directory_output.stderr).unwrap();
++    assert_eq!(failure["error"]["code"], "io");
++    assert!(occupied_dir.is_dir());
++    assert_eq!(fs::read_dir(&occupied_dir).unwrap().count(), 0);
++
++    let shape_raw = br#"[{"word":"one","word_type":"gismu","definition":"ok","selmaho":true,"definition_id":{}},{"word":"two","word_type":"gismu","definition":"ok","selmaho":{},"definition_id":123456789012345678901234567890}]"#;
++    let shape_meta = metadata_for(
++        "6d90a0fc2127488101718837a89362f3549765f381fb89f3c0c2bfb35787fa0d",
++        2,
++        2,
++    );
++    let shape_raw_path = dir.join("shape-raw.json");
++    let shape_meta_path = dir.join("shape-metadata.toml");
++    let shape_release_path = dir.join("shape-release.json");
++    fs::write(&shape_raw_path, shape_raw).unwrap();
++    fs::write(&shape_meta_path, &shape_meta).unwrap();
++    let shapes = invoke(&[
++        "jbotci-import",
++        shape_raw_path.to_str().unwrap(),
++        shape_meta_path.to_str().unwrap(),
++        shape_release_path.to_str().unwrap(),
++        "--revision",
++        "0000000000000000000000000000000000000000",
++        "--raw-sha256",
++        "6d90a0fc2127488101718837a89362f3549765f381fb89f3c0c2bfb35787fa0d",
++        "--metadata-sha256",
++        "5236d70066884f1b76faea95a33bc42ac668f5fa5a30efadf235e22cba87830d",
++    ]);
++    assert!(
++        shapes.status.success(),
++        "{}",
++        String::from_utf8_lossy(&shapes.stderr)
++    );
++    let summary: serde_json::Value = serde_json::from_slice(&shapes.stdout).unwrap();
++    assert_eq!(summary["report"]["lexical_occurrences"], 2);
++    assert_eq!(summary["report"]["diagnostics"]["invalid_selmaho"], 2);
++    assert_eq!(summary["report"]["diagnostics"]["invalid_definition_id"], 1);
++
++    let malformed_metadata = b"format = true junk\n";
++    let malformed_path = dir.join("malformed-metadata.toml");
++    let malformed_output = dir.join("must-not-exist.json");
++    fs::write(&malformed_path, malformed_metadata).unwrap();
++    let malformed = invoke(&[
++        "jbotci-import",
++        raw_path.to_str().unwrap(),
++        malformed_path.to_str().unwrap(),
++        malformed_output.to_str().unwrap(),
++        "--revision",
++        "0000000000000000000000000000000000000000",
++        "--raw-sha256",
++        "934149f29768993404fcd6529cb7d3dac697d7df8bce55e5a4b694d6987bdee8",
++        "--metadata-sha256",
++        "5e536af8f9bf5dd10831a8eead4a69696c9f9c8c05b1e747a133eed1d738a172",
++    ]);
++    assert!(!malformed.status.success());
++    assert!(malformed.stdout.is_empty());
++    let failure: serde_json::Value = serde_json::from_slice(&malformed.stderr).unwrap();
++    assert_eq!(failure["error"]["code"], "jbotci_metadata");
++    assert!(!malformed_output.exists());
++
++    let bad_pin = invoke(&[
++        "jbotci-check",
++        raw_path.to_str().unwrap(),
++        meta_path.to_str().unwrap(),
++        "--raw-sha256",
++        &"0".repeat(64),
++        "--metadata-sha256",
++        "60285fe479cadba56ac987a9e1b6645ed788f1212442e4d23f2a8a947a40f9ec",
++    ]);
++    assert!(!bad_pin.status.success());
++    assert!(bad_pin.stdout.is_empty());
++    let failure: serde_json::Value = serde_json::from_slice(&bad_pin.stderr).unwrap();
++    assert_eq!(failure["error"]["code"], "jbotci_hash_mismatch");
++
++    let bad_options = invoke(&[
++        "jbotci-check",
++        raw_path.to_str().unwrap(),
++        meta_path.to_str().unwrap(),
++        "--revision",
++        "not-a-40-character-revision",
++    ]);
++    assert!(!bad_options.status.success());
++    assert!(bad_options.stdout.is_empty());
++    let failure: serde_json::Value = serde_json::from_slice(&bad_options.stderr).unwrap();
++    assert_eq!(failure["error"]["code"], "jbotci_options");
++
++    let wrong_counts = metadata(0, 0);
++    fs::write(&meta_path, &wrong_counts).unwrap();
++    let count_check = invoke(&[
++        "jbotci-check",
++        raw_path.to_str().unwrap(),
++        meta_path.to_str().unwrap(),
++        "--raw-sha256",
++        "934149f29768993404fcd6529cb7d3dac697d7df8bce55e5a4b694d6987bdee8",
++        "--metadata-sha256",
++        "b0ef63d37a42ddee7d1553514a17f1ddee18ee41eadcfc9567b376e2799de1cf",
++    ]);
++    assert!(!count_check.status.success());
++    assert!(count_check.stdout.is_empty());
++    let failure: serde_json::Value = serde_json::from_slice(&count_check.stderr).unwrap();
++    assert_eq!(failure["error"]["code"], "jbotci_accounting");
++    assert_eq!(fs::read(&release_path).unwrap(), before);
++
++    let missing = invoke(&[
++        "jbotci-check",
++        dir.join("missing raw.json").to_str().unwrap(),
++        meta_path.to_str().unwrap(),
++    ]);
++    assert!(!missing.status.success());
++    assert!(missing.stdout.is_empty());
++    let failure: serde_json::Value = serde_json::from_slice(&missing.stderr).unwrap();
++    assert_eq!(failure["error"]["code"], "io");
++    assert_eq!(fs::read(&release_path).unwrap(), before);
++    fs::remove_dir_all(dir).unwrap();
++}
+diff --git a/crates/lexicon/README.md b/crates/lexicon/README.md
+index 7786a15..019fcc6 100644
+--- a/crates/lexicon/README.md
++++ b/crates/lexicon/README.md
+@@ -29,3 +29,8 @@ unchanged.
+ ## Versioned dictionary model
+ 
+ The additive `Dictionary` API stores exact raw captures and explicit typed metadata, validates the complete versioned JSON document, and adapts legacy archives without rewriting them. The adapter requires callers to provide the source registry and normalized metadata; it does not infer entries, senses, morphology, frames, etymology, or POS. Read the [dictionary model guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-model.md) and [standards mapping limits](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-standards-map.md). Run `cargo +1.98.0 run --locked -p vlajmaji-lexicon --example dictionary_fixture -- /tmp/dictionary-fixture.json` to write and reload the complete synthetic fixture at a fresh path.
++
++The pure `import_jbotci_export` adapter retains both pinned captures and ordered
++native fields while exposing a conservative typed projection. Its bounded
++metadata grammar, field map, identity rules, and local replay example are in the
++[jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci-import.md).
+diff --git a/crates/lexicon/examples/import_jbotci.rs b/crates/lexicon/examples/import_jbotci.rs
+new file mode 100644
+index 0000000..3352761
+--- /dev/null
++++ b/crates/lexicon/examples/import_jbotci.rs
+@@ -0,0 +1,69 @@
++//! Normalize and reload a raw jbotci export into a fresh release file.
++//!
++//! Usage: `cargo run -p vlajmaji-lexicon --example import_jbotci -- RAW METADATA FRESH_OUTPUT`.
++
++use std::{fs, fs::OpenOptions, io::Write};
++
++use vlajmaji_lexicon::{JBOTCI_PINNED_RAW_SHA256, JbotciImportOptions, import_jbotci_export};
++
++fn main() -> Result<(), Box<dyn std::error::Error>> {
++    let mut args = std::env::args_os().skip(1);
++    let raw_path = args.next().ok_or("missing RAW path")?;
++    let metadata_path = args.next().ok_or("missing METADATA path")?;
++    let output_path = args.next().ok_or("missing FRESH_OUTPUT path")?;
++    if args.next().is_some() {
++        return Err("expected RAW, METADATA, and FRESH_OUTPUT paths".into());
++    }
++    let raw = fs::read(raw_path)?;
++    let metadata = fs::read(metadata_path)?;
++    let imported = import_jbotci_export(&raw, &metadata, &JbotciImportOptions::default())?;
++
++    let captures = imported.dictionary().captures();
++    assert_eq!(captures.len(), 2, "raw and metadata byte captures");
++    assert!(captures.iter().any(|capture| capture.bytes == raw));
++    assert!(captures.iter().any(|capture| capture.bytes == metadata));
++    let native_fields: u64 = captures
++        .iter()
++        .flat_map(|capture| &capture.occurrences)
++        .map(|occurrence| occurrence.fields.len() as u64)
++        .sum();
++    assert_eq!(native_fields, imported.report().native_fields);
++
++    if imported.report().raw_sha256 == JBOTCI_PINNED_RAW_SHA256 {
++        assert_eq!(imported.report().input_rows, 33_526);
++        assert_eq!(imported.report().native_fields, 278_254);
++        assert_eq!(imported.report().normalized_assertions, 33_526);
++        assert_eq!(imported.report().lexical_occurrences, 33_516);
++        assert_eq!(imported.report().excluded_occurrences, 10);
++    }
++    let canonical = imported.dictionary().to_json_bytes()?;
++    let mut output = OpenOptions::new()
++        .write(true)
++        .create_new(true)
++        .open(&output_path)?;
++    output.write_all(&canonical)?;
++    output.sync_all()?;
++    drop(output);
++    let reloaded = vlajmaji_lexicon::Dictionary::from_json_bytes(&fs::read(output_path)?)?;
++    assert_eq!(
++        reloaded.to_json_bytes()?,
++        canonical,
++        "canonical release round-trip"
++    );
++    let reloaded_captures = reloaded.captures();
++    assert_eq!(reloaded_captures.len(), 2);
++    assert!(reloaded_captures.iter().any(|capture| capture.bytes == raw));
++    assert!(
++        reloaded_captures
++            .iter()
++            .any(|capture| capture.bytes == metadata)
++    );
++    let reloaded_native_fields: u64 = reloaded_captures
++        .iter()
++        .flat_map(|c| &c.occurrences)
++        .map(|occurrence| occurrence.fields.len() as u64)
++        .sum();
++    assert_eq!(reloaded_native_fields, imported.report().native_fields);
++    println!("{}", serde_json::to_string_pretty(imported.report())?);
++    Ok(())
++}
+diff --git a/crates/lexicon/src/jbotci.rs b/crates/lexicon/src/jbotci.rs
+new file mode 100644
+index 0000000..4c5d434
+--- /dev/null
++++ b/crates/lexicon/src/jbotci.rs
+@@ -0,0 +1,1616 @@
++//! Lossless adapter for the pinned jbotci Lensisku export.
++//!
++//! The adapter keeps the caller's byte snapshots and per-row native lexemes as
++//! the authority. Typed records are a conservative, rebuildable projection.
++
++use std::collections::{BTreeMap, BTreeSet};
++use std::fmt;
++
++use serde::de::{Deserializer as _, Error as _, MapAccess, SeqAccess, Visitor};
++use serde::{Deserialize, Serialize};
++use serde_json::value::RawValue;
++
++use crate::dictionary::{
++    AssertionRecord, Availability, CaptureMetadata, CaptureRef, CodeNotice, CollectionRecord,
++    ComponentRecord, ContentNotice, ContextKind, ContextRecord, Dictionary, DictionaryDocument,
++    DictionaryError, DictionaryMetadata, Eligibility, EntityId, EntryRecord, EtymologyRecord,
++    ExtensionRecord, FormKind, FormRecord, NativeEncoding, NativeField, OccurrenceRef, Presence,
++    RawCapture, RawJson, RawOccurrence, RedistributionStatus, ReleaseAccounting, ReleaseDiagnostic,
++    ReleaseRecord, SourceEvidence, TextValue,
++};
++use crate::registry::{
++    AbbreviationKind, ContributorId, ContributorRecord, DistributorId, DistributorRecord,
++    LineageTarget, OccurrenceAttribution, RegistryDocument, RegistryError, SnapshotAttribution,
++    SourceId, SourceLineage, SourceOrigin, SourceRecord, SourceRegistry,
++};
++use crate::{SnapshotIdentity, TimePrecision};
++
++/// Supplier repository revision for the local export being normalized.
++pub const JBOTCI_PINNED_REVISION: &str = "3d9fd41d9ed32de26311ee27ec86b6b165985aa1";
++/// SHA-256 of the complete pinned Lensisku JSON export.
++pub const JBOTCI_PINNED_RAW_SHA256: &str =
++    "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde";
++/// SHA-256 of the complete pinned supplier metadata file.
++pub const JBOTCI_PINNED_METADATA_SHA256: &str =
++    "fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98";
++
++/// Caller-supplied pins for one import. Defaults name the committed local snapshot.
++#[derive(Debug, Clone, PartialEq, Eq)]
++pub struct JbotciImportOptions {
++    /// Exact forty-character distributor Git revision.
++    pub revision: String,
++    /// Expected full raw-export SHA-256.
++    pub expected_raw_sha256: String,
++    /// Expected full metadata SHA-256.
++    pub expected_metadata_sha256: String,
++}
++impl Default for JbotciImportOptions {
++    fn default() -> Self {
++        Self {
++            revision: JBOTCI_PINNED_REVISION.into(),
++            expected_raw_sha256: JBOTCI_PINNED_RAW_SHA256.into(),
++            expected_metadata_sha256: JBOTCI_PINNED_METADATA_SHA256.into(),
++        }
++    }
++}
++
++/// Stable public summary of an import, separate from the complete dictionary.
++#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct JbotciImportReport {
++    /// Report schema version.
++    pub version: u32,
++    /// Distributor revision used for this normalized release.
++    pub revision: String,
++    /// Full raw-export digest.
++    pub raw_sha256: String,
++    /// Full supplier-metadata digest.
++    pub metadata_sha256: String,
++    /// Exact input byte counts.
++    pub raw_bytes: u64,
++    /// Exact metadata byte count.
++    pub metadata_bytes: u64,
++    /// Number of raw source-array rows.
++    pub input_rows: u64,
++    /// Number of ordered top-level native fields.
++    pub native_fields: u64,
++    /// Number of normalized assertion rows (one per raw row).
++    pub normalized_assertions: u64,
++    /// Number of rows eligible for the lexical projection.
++    pub lexical_occurrences: u64,
++    /// Number of excluded rows retained in the release.
++    pub excluded_occurrences: u64,
++    /// Number of distinct exact spellings among eligible rows.
++    pub eligible_spellings: u64,
++    /// Number of distinct string spellings among all rows, including empty.
++    pub all_spellings: u64,
++    /// Number of distinct source-scoped contributors.
++    pub contributors: u64,
++    /// Supplier metadata definition count.
++    pub supplier_definition_count: u64,
++    /// Supplier metadata selected entry count.
++    pub supplier_entry_count: u64,
++    /// Counts of each valid raw word_type string.
++    pub word_types: BTreeMap<String, u64>,
++    /// Counts of each top-level native field name.
++    pub field_counts: BTreeMap<String, u64>,
++    /// Per-code diagnostic counts, not excluded-row counts.
++    pub diagnostics: BTreeMap<String, u64>,
++    /// Whether the supplier definition count equals the observed raw-row count.
++    pub definition_count_matches: bool,
++    /// Whether the supplier entry count equals observed distinct eligible spellings.
++    pub entry_count_matches: bool,
++}
++
++/// Immutable import result; callers can inspect or consume the validated model.
++#[derive(Debug, Clone)]
++pub struct JbotciImport {
++    dictionary: Dictionary,
++    report: JbotciImportReport,
++}
++impl JbotciImport {
++    /// Borrow the fully validated dictionary.
++    pub fn dictionary(&self) -> &Dictionary {
++        &self.dictionary
++    }
++    /// Borrow the deterministic population and diagnostic report.
++    pub fn report(&self) -> &JbotciImportReport {
++        &self.report
++    }
++    /// Consume the result and return its validated dictionary.
++    pub fn into_dictionary(self) -> Dictionary {
++        self.dictionary
++    }
++}
++
++/// Typed failures at the raw-input, metadata, registry, or model boundary.
++#[derive(Debug)]
++#[non_exhaustive]
++pub enum JbotciImportError {
++    /// A revision or expected digest did not follow its exact grammar.
++    InvalidOptions(String),
++    /// An input digest did not match its caller-supplied pin.
++    HashMismatch {
++        /// Name of the mismatched input (`raw` or `metadata`).
++        input: String,
++        /// Expected SHA-256 supplied by the caller.
++        expected: String,
++        /// SHA-256 computed over the complete supplied bytes.
++        actual: String,
++    },
++    /// An input was not UTF-8.
++    InvalidUtf8 {
++        /// Name of the invalid input (`raw` or `metadata`).
++        input: String,
++    },
++    /// Raw JSON syntax or root shape was invalid.
++    InvalidJson(String),
++    /// Supplier metadata was malformed, incomplete, or duplicated.
++    InvalidMetadata(String),
++    /// Supplier metadata was valid but outside the supported bounded format.
++    UnsupportedMetadata(String),
++    /// The source registry rejected a constructed attribution graph.
++    Registry(RegistryError),
++    /// The normalized model rejected the candidate graph.
++    Dictionary(DictionaryError),
++}
++impl fmt::Display for JbotciImportError {
++    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
++        match self {
++            Self::InvalidOptions(s) => write!(f, "invalid import options: {s}"),
++            Self::HashMismatch {
++                input,
++                expected,
++                actual,
++            } => write!(
++                f,
++                "{input} SHA-256 mismatch: expected {expected}, got {actual}"
++            ),
++            Self::InvalidUtf8 { input } => write!(f, "{input} input is not UTF-8"),
++            Self::InvalidJson(s) => write!(f, "invalid raw JSON: {s}"),
++            Self::InvalidMetadata(s) => write!(f, "invalid supplier metadata: {s}"),
++            Self::UnsupportedMetadata(s) => write!(f, "unsupported supplier metadata: {s}"),
++            Self::Registry(e) => write!(f, "invalid source registry: {e}"),
++            Self::Dictionary(e) => write!(f, "invalid dictionary: {e}"),
++        }
++    }
++}
++impl std::error::Error for JbotciImportError {
++    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
++        match self {
++            Self::Registry(e) => Some(e),
++            Self::Dictionary(e) => Some(e),
++            _ => None,
++        }
++    }
++}
++impl From<RegistryError> for JbotciImportError {
++    fn from(value: RegistryError) -> Self {
++        Self::Registry(value)
++    }
++}
++impl From<DictionaryError> for JbotciImportError {
++    fn from(value: DictionaryError) -> Self {
++        Self::Dictionary(value)
++    }
++}
++
++#[derive(Debug, Clone, PartialEq, Eq)]
++enum MetaValue {
++    String(String),
++    Boolean(bool),
++    Integer(u64),
++}
++#[derive(Debug, Clone)]
++struct Metadata {
++    values: BTreeMap<String, MetaValue>,
++    unknown_keys: Vec<String>,
++}
++impl Metadata {
++    fn string(&self, key: &str) -> Result<&str, JbotciImportError> {
++        match self.values.get(key) {
++            Some(MetaValue::String(v)) => Ok(v),
++            Some(_) => Err(JbotciImportError::InvalidMetadata(format!(
++                "{key} must be a string"
++            ))),
++            None => Err(JbotciImportError::InvalidMetadata(format!(
++                "missing required key {key}"
++            ))),
++        }
++    }
++    fn integer(&self, key: &str) -> Result<u64, JbotciImportError> {
++        match self.values.get(key) {
++            Some(MetaValue::Integer(v)) => Ok(*v),
++            Some(_) => Err(JbotciImportError::InvalidMetadata(format!(
++                "{key} must be a nonnegative integer"
++            ))),
++            None => Err(JbotciImportError::InvalidMetadata(format!(
++                "missing required key {key}"
++            ))),
++        }
++    }
++    fn boolean(&self, key: &str) -> Result<bool, JbotciImportError> {
++        match self.values.get(key) {
++            Some(MetaValue::Boolean(v)) => Ok(*v),
++            Some(_) => Err(JbotciImportError::InvalidMetadata(format!(
++                "{key} must be a boolean"
++            ))),
++            None => Err(JbotciImportError::InvalidMetadata(format!(
++                "missing required key {key}"
++            ))),
++        }
++    }
++}
++
++fn parse_metadata(bytes: &[u8]) -> Result<Metadata, JbotciImportError> {
++    let text = std::str::from_utf8(bytes).map_err(|_| JbotciImportError::InvalidUtf8 {
++        input: "metadata".into(),
++    })?;
++    let mut values = BTreeMap::new();
++    let mut unknown_keys = Vec::new();
++    for (line_index, original) in text.lines().enumerate() {
++        let line = original.trim();
++        if line.is_empty() || line.starts_with('#') {
++            continue;
++        }
++        let Some((key, rhs)) = line.split_once('=') else {
++            return Err(JbotciImportError::InvalidMetadata(format!(
++                "line {} lacks '='",
++                line_index + 1
++            )));
++        };
++        let key = key.trim();
++        if key.is_empty() {
++            return Err(JbotciImportError::InvalidMetadata(format!(
++                "line {} has an empty key",
++                line_index + 1
++            )));
++        }
++        if !key.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_') {
++            return Err(JbotciImportError::UnsupportedMetadata(format!(
++                "line {} has a non-bare key",
++                line_index + 1
++            )));
++        }
++        if values.contains_key(key) {
++            return Err(JbotciImportError::InvalidMetadata(format!(
++                "duplicate key {key}"
++            )));
++        }
++        let rhs = rhs.trim();
++        if rhs.is_empty() {
++            return Err(JbotciImportError::InvalidMetadata(format!(
++                "line {} has an empty value",
++                line_index + 1
++            )));
++        }
++        let value = if rhs.starts_with('"') {
++            serde_json::from_str::<String>(rhs)
++                .map(MetaValue::String)
++                .map_err(|e| {
++                    JbotciImportError::InvalidMetadata(format!("line {}: {e}", line_index + 1))
++                })?
++        } else if rhs == "true" {
++            MetaValue::Boolean(true)
++        } else if rhs == "false" {
++            MetaValue::Boolean(false)
++        } else if rhs.bytes().all(|b| b.is_ascii_digit()) {
++            MetaValue::Integer(rhs.parse().map_err(|_| {
++                JbotciImportError::InvalidMetadata(format!(
++                    "line {} integer overflow",
++                    line_index + 1
++                ))
++            })?)
++        } else if serde_json::from_str::<serde_json::Number>(rhs).is_ok() {
++            return Err(JbotciImportError::UnsupportedMetadata(format!(
++                "line {} uses a valid JSON number outside strings/booleans/nonnegative integers",
++                line_index + 1
++            )));
++        } else if rhs.starts_with("true")
++            || rhs.starts_with("false")
++            || rhs.bytes().next().is_some_and(|b| b.is_ascii_digit())
++        {
++            return Err(JbotciImportError::InvalidMetadata(format!(
++                "line {} has trailing or malformed literal text",
++                line_index + 1
++            )));
++        } else {
++            return Err(JbotciImportError::UnsupportedMetadata(format!(
++                "line {} uses a value outside strings/booleans/nonnegative integers",
++                line_index + 1
++            )));
++        };
++        if !matches!(
++            key,
++            "language_tag"
++                | "language_realname"
++                | "source_language_tag"
++                | "format"
++                | "positive_scores_only"
++                | "filename"
++                | "metadata_url"
++                | "download_url"
++                | "lensisku_created_at"
++                | "sha256"
++                | "definition_count"
++                | "entry_count"
++        ) {
++            unknown_keys.push(key.to_owned());
++        }
++        values.insert(key.to_owned(), value);
++    }
++    let parsed = Metadata {
++        values,
++        unknown_keys,
++    };
++    for key in [
++        "language_tag",
++        "language_realname",
++        "source_language_tag",
++        "format",
++        "filename",
++        "metadata_url",
++        "download_url",
++        "lensisku_created_at",
++        "sha256",
++    ] {
++        parsed.string(key)?;
++    }
++    for key in ["definition_count", "entry_count"] {
++        parsed.integer(key)?;
++    }
++    parsed.boolean("positive_scores_only")?;
++    for (key, want) in [
++        ("language_tag", "en"),
++        ("source_language_tag", "jbo"),
++        ("format", "json"),
++        ("filename", "dictionary-en.json"),
++    ] {
++        if parsed.string(key)? != want {
++            return Err(JbotciImportError::UnsupportedMetadata(format!(
++                "{key} must be {want:?}"
++            )));
++        }
++    }
++    if parsed.boolean("positive_scores_only")? {
++        return Err(JbotciImportError::UnsupportedMetadata(
++            "positive_scores_only must be false".into(),
++        ));
++    }
++    Ok(parsed)
++}
++
++fn valid_hex(value: &str, length: usize) -> bool {
++    value.len() == length
++        && value
++            .bytes()
++            .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
++}
++fn sha256(bytes: &[u8]) -> String {
++    use sha2::{Digest, Sha256};
++    let digest = Sha256::digest(bytes);
++    let mut out = String::with_capacity(64);
++    for byte in digest {
++        use fmt::Write as _;
++        let _ = write!(out, "{byte:02x}");
++    }
++    out
++}
++
++#[derive(Debug, Clone)]
++struct Field {
++    name: String,
++    raw: String,
++}
++struct FieldVisitor;
++impl<'de> Visitor<'de> for FieldVisitor {
++    type Value = Vec<Field>;
++    fn expecting(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
++        f.write_str("a JSON object")
++    }
++    fn visit_map<M: MapAccess<'de>>(self, mut map: M) -> Result<Self::Value, M::Error> {
++        let mut fields = Vec::new();
++        while let Some(name) = map.next_key::<String>()? {
++            let raw = map.next_value::<Box<RawValue>>()?;
++            fields.push(Field {
++                name,
++                raw: raw.get().to_owned(),
++            });
++        }
++        Ok(fields)
++    }
++}
++fn parse_fields(raw: &str) -> Result<Vec<Field>, String> {
++    let mut de = serde_json::Deserializer::from_str(raw);
++    let fields = de
++        .deserialize_map(FieldVisitor)
++        .map_err(|e| e.to_string())?;
++    de.end().map_err(|e| e.to_string())?;
++    Ok(fields)
++}
++struct DuplicateVisitor;
++impl<'de> Visitor<'de> for DuplicateVisitor {
++    type Value = Vec<String>;
++    fn expecting(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
++        f.write_str("a JSON object or array")
++    }
++    fn visit_map<M: MapAccess<'de>>(self, mut map: M) -> Result<Self::Value, M::Error> {
++        let mut seen = BTreeSet::new();
++        let mut duplicates = Vec::new();
++        while let Some(key) = map.next_key::<String>()? {
++            if !seen.insert(key.clone()) {
++                duplicates.push(key.clone());
++            }
++            let value = map.next_value::<Box<RawValue>>()?;
++            duplicates.extend(scan_nested_duplicates(value.get()).map_err(M::Error::custom)?);
++        }
++        Ok(duplicates)
++    }
++    fn visit_seq<S: SeqAccess<'de>>(self, mut seq: S) -> Result<Self::Value, S::Error> {
++        let mut duplicates = Vec::new();
++        while let Some(value) = seq.next_element::<Box<RawValue>>()? {
++            duplicates.extend(scan_nested_duplicates(value.get()).map_err(S::Error::custom)?);
++        }
++        Ok(duplicates)
++    }
++}
++fn scan_nested_duplicates(raw: &str) -> Result<Vec<String>, String> {
++    match raw.trim_start().chars().next() {
++        Some('{') => {
++            let mut de = serde_json::Deserializer::from_str(raw);
++            let found = de
++                .deserialize_map(DuplicateVisitor)
++                .map_err(|e| e.to_string())?;
++            de.end().map_err(|e| e.to_string())?;
++            Ok(found)
++        }
++        Some('[') => {
++            let mut de = serde_json::Deserializer::from_str(raw);
++            let found = de
++                .deserialize_seq(DuplicateVisitor)
++                .map_err(|e| e.to_string())?;
++            de.end().map_err(|e| e.to_string())?;
++            Ok(found)
++        }
++        _ => Ok(Vec::new()),
++    }
++}
++fn as_json_string(raw: &str) -> Option<String> {
++    serde_json::from_str(raw).ok()
++}
++fn occurrence_id(
++    namespace: &str,
++    digest: &str,
++    locator: &str,
++) -> Result<crate::RecordIdentity, JbotciImportError> {
++    let wire =
++        serde_json::json!({"snapshot":{"namespace":namespace,"sha256":digest},"locator":locator});
++    serde_json::from_value(wire)
++        .map_err(|e| JbotciImportError::InvalidJson(format!("internal occurrence identity: {e}")))
++}
++fn snapshot_id(namespace: &str, digest: &str) -> Result<SnapshotIdentity, JbotciImportError> {
++    let wire = serde_json::json!({"namespace":namespace,"sha256":digest});
++    serde_json::from_value(wire)
++        .map_err(|e| JbotciImportError::InvalidJson(format!("internal capture identity: {e}")))
++}
++fn eid(value: String) -> Result<EntityId, JbotciImportError> {
++    EntityId::new(value)
++        .map_err(|e| JbotciImportError::Dictionary(DictionaryError::InvalidId(e.to_string())))
++}
++fn source_id(value: &str) -> Result<SourceId, JbotciImportError> {
++    SourceId::new(value).map_err(JbotciImportError::Registry)
++}
++fn text_value(text: String, language: &str) -> TextValue {
++    TextValue {
++        text,
++        language: Presence::Value(language.into()),
++        markup: Presence::Missing,
++    }
++}
++fn source_evidence(occurrence: OccurrenceRef, field_index: Option<usize>) -> SourceEvidence {
++    SourceEvidence {
++        occurrence,
++        field_index,
++        citation: Presence::Missing,
++        offset: None,
++    }
++}
++
++#[derive(Debug)]
++struct Row {
++    fields: Vec<Field>,
++    duplicates: Vec<String>,
++    is_object: bool,
++}
++fn field_index(fields: &[Field], name: &str) -> Option<usize> {
++    fields.iter().position(|f| f.name == name)
++}
++fn field<'a>(fields: &'a [Field], name: &str) -> Option<&'a Field> {
++    field_index(fields, name).and_then(|i| fields.get(i))
++}
++fn presence_string(fields: &[Field], name: &str) -> Presence<String> {
++    match field(fields, name) {
++        None => Presence::Missing,
++        Some(f) if f.raw == "null" => Presence::Null,
++        Some(f) => as_json_string(&f.raw).map_or(Presence::Missing, Presence::Value),
++    }
++}
++fn presence_raw(fields: &[Field], name: &str) -> Result<Presence<RawJson>, JbotciImportError> {
++    match field(fields, name) {
++        None => Ok(Presence::Missing),
++        Some(f) if f.raw == "null" => Ok(Presence::Null),
++        Some(f) => RawJson::new(f.raw.clone())
++            .map(Presence::Value)
++            .map_err(JbotciImportError::Dictionary),
++    }
++}
++fn unique_field_index(fields: &[Field], name: &str) -> Option<usize> {
++    let mut found = None;
++    for (index, f) in fields.iter().enumerate() {
++        if f.name == name {
++            if found.is_some() {
++                return None;
++            }
++            found = Some(index);
++        }
++    }
++    found
++}
++fn add_diag(
++    report: &mut BTreeMap<String, u64>,
++    rows: &mut Vec<ReleaseDiagnostic>,
++    code: &str,
++    message: String,
++    occurrence: Option<OccurrenceRef>,
++) {
++    *report.entry(code.to_owned()).or_default() += 1;
++    rows.push(ReleaseDiagnostic {
++        occurrence,
++        code: code.to_owned(),
++        message,
++    });
++}
++fn raw_array(raw: &str) -> Option<Vec<Box<RawValue>>> {
++    serde_json::from_str(raw).ok()
++}
++fn user_name(fields: &[Field]) -> Option<String> {
++    let user = field(fields, "user")?;
++    let nested = parse_fields(&user.raw).ok()?;
++    if nested.iter().filter(|f| f.name == "username").count() != 1 {
++        return None;
++    }
++    as_json_string(&field(&nested, "username")?.raw)
++}
++fn contributor_key(username: &str) -> String {
++    format!("lensisku-user-{}", sha256(username.as_bytes()))
++}
++fn json_array_of_strings(raw: &str) -> Option<Vec<String>> {
++    serde_json::from_str::<Vec<String>>(raw).ok()
++}
++fn forms_from_field(raw: &str) -> Option<Vec<String>> {
++    if let Some(s) = as_json_string(raw) {
++        Some(s.split_whitespace().map(str::to_owned).collect())
++    } else {
++        json_array_of_strings(raw)
++    }
++}
++fn extension(
++    owner: &EntityId,
++    name: String,
++    raw: &str,
++    evidence: Option<SourceEvidence>,
++) -> Result<ExtensionRecord, JbotciImportError> {
++    Ok(ExtensionRecord {
++        owner: owner.clone(),
++        name,
++        value: RawJson::new(raw.to_owned())?,
++        evidence,
++    })
++}
++fn context(
++    id: EntityId,
++    assertion: &EntityId,
++    kind: ContextKind,
++    value: Presence<TextValue>,
++    occurrence: &OccurrenceRef,
++    field_index: usize,
++) -> ContextRecord {
++    ContextRecord {
++        id,
++        assertion: assertion.clone(),
++        kind,
++        value,
++        translated_from: None,
++        evidence: source_evidence(occurrence.clone(), Some(field_index)),
++    }
++}
++
++/// Normalize a pinned Lensisku export without opening files or changing caller state.
++///
++/// The full original bytes and ordered native fields are retained in the returned
++/// dictionary. Malformed JSON or metadata is rejected before a result is created;
++/// valid unsupported rows remain as excluded occurrences with diagnostics.
++///
++/// # Errors
++///
++/// Returns a typed error when pins/options, UTF-8, JSON, metadata, registry
++/// attribution, or the complete dictionary model is invalid.
++pub fn import_jbotci_export(
++    raw: &[u8],
++    metadata_bytes: &[u8],
++    options: &JbotciImportOptions,
++) -> Result<JbotciImport, JbotciImportError> {
++    if !valid_hex(&options.revision, 40) {
++        return Err(JbotciImportError::InvalidOptions(
++            "revision must be 40 lowercase hexadecimal characters".into(),
++        ));
++    }
++    if !valid_hex(&options.expected_raw_sha256, 64) {
++        return Err(JbotciImportError::InvalidOptions(
++            "expected raw SHA-256 must be 64 lowercase hexadecimal characters".into(),
++        ));
++    }
++    if !valid_hex(&options.expected_metadata_sha256, 64) {
++        return Err(JbotciImportError::InvalidOptions(
++            "expected metadata SHA-256 must be 64 lowercase hexadecimal characters".into(),
++        ));
++    }
++    let raw_sha256 = sha256(raw);
++    if raw_sha256 != options.expected_raw_sha256 {
++        return Err(JbotciImportError::HashMismatch {
++            input: "raw".into(),
++            expected: options.expected_raw_sha256.clone(),
++            actual: raw_sha256,
++        });
++    }
++    let metadata_sha256 = sha256(metadata_bytes);
++    if metadata_sha256 != options.expected_metadata_sha256 {
++        return Err(JbotciImportError::HashMismatch {
++            input: "metadata".into(),
++            expected: options.expected_metadata_sha256.clone(),
++            actual: metadata_sha256,
++        });
++    }
++    let metadata = parse_metadata(metadata_bytes)?;
++    if metadata.string("sha256")? != options.expected_raw_sha256 {
++        return Err(JbotciImportError::InvalidMetadata(
++            "sha256 must equal the pinned raw-export digest".into(),
++        ));
++    }
++    let raw_text = std::str::from_utf8(raw).map_err(|_| JbotciImportError::InvalidUtf8 {
++        input: "raw".into(),
++    })?;
++    let raw_rows: Vec<Box<RawValue>> = serde_json::from_str(raw_text)
++        .map_err(|e| JbotciImportError::InvalidJson(e.to_string()))?;
++
++    let mut rows = Vec::with_capacity(raw_rows.len());
++    let mut field_counts = BTreeMap::<String, u64>::new();
++    let mut word_types = BTreeMap::<String, u64>::new();
++    let mut all_spellings = BTreeSet::new();
++    let mut eligible_spellings = BTreeSet::new();
++    let mut users = BTreeSet::new();
++    let mut native_fields = 0_u64;
++    let mut nested_duplicate_rows = 0_u64;
++    for raw_row in &raw_rows {
++        let text = raw_row.get();
++        let is_object = text.trim_start().starts_with('{');
++        let (fields, duplicates) = if is_object {
++            let fields = parse_fields(text).map_err(JbotciImportError::InvalidJson)?;
++            let duplicates =
++                scan_nested_duplicates(text).map_err(JbotciImportError::InvalidJson)?;
++            (fields, duplicates)
++        } else {
++            (
++                vec![Field {
++                    name: "$row".into(),
++                    raw: text.to_owned(),
++                }],
++                Vec::new(),
++            )
++        };
++        native_fields += fields.len() as u64;
++        for f in &fields {
++            *field_counts.entry(f.name.clone()).or_default() += 1;
++        }
++        if !duplicates.is_empty() {
++            nested_duplicate_rows += 1;
++        }
++        for value in fields
++            .iter()
++            .filter(|f| f.name == "word_type")
++            .filter_map(|f| as_json_string(&f.raw))
++        {
++            *word_types.entry(value).or_default() += 1;
++        }
++        for value in fields
++            .iter()
++            .filter(|f| f.name == "word")
++            .filter_map(|f| as_json_string(&f.raw))
++        {
++            all_spellings.insert(value);
++        }
++        if duplicates.is_empty()
++            && let (Some(word), Some(class), Some(definition)) = (
++                field(&fields, "word").and_then(|f| as_json_string(&f.raw)),
++                field(&fields, "word_type").and_then(|f| as_json_string(&f.raw)),
++                field(&fields, "definition").and_then(|f| as_json_string(&f.raw)),
++            )
++            && is_supported_class(&class)
++            && !word.is_empty()
++            && !definition.trim().is_empty()
++        {
++            eligible_spellings.insert(word);
++        }
++        if duplicates.is_empty()
++            && let Some(username) = user_name(&fields)
++        {
++            users.insert(username);
++        }
++        rows.push(Row {
++            fields,
++            duplicates,
++            is_object,
++        });
++    }
++
++    let mut report_diagnostics = BTreeMap::<String, u64>::new();
++    let mut release_diagnostics = Vec::<ReleaseDiagnostic>::new();
++    for unknown in &metadata.unknown_keys {
++        add_diag(
++            &mut report_diagnostics,
++            &mut release_diagnostics,
++            "metadata_unknown_key",
++            format!("unsupported metadata key {unknown:?} retained"),
++            None,
++        );
++    }
++    let supplier_definition_count = metadata.integer("definition_count")?;
++    let supplier_entry_count = metadata.integer("entry_count")?;
++    let definition_count_matches = supplier_definition_count == rows.len() as u64;
++    let entry_count_matches = supplier_entry_count == eligible_spellings.len() as u64;
++    if !definition_count_matches {
++        add_diag(
++            &mut report_diagnostics,
++            &mut release_diagnostics,
++            "definition_count_mismatch",
++            format!(
++                "supplier definition_count {supplier_definition_count} differs from {} raw rows",
++                rows.len()
++            ),
++            None,
++        );
++    }
++    if !entry_count_matches {
++        add_diag(
++            &mut report_diagnostics,
++            &mut release_diagnostics,
++            "entry_count_mismatch",
++            format!(
++                "supplier entry_count {supplier_entry_count} differs from {} exact eligible spellings",
++                eligible_spellings.len()
++            ),
++            None,
++        );
++    }
++
++    let raw_namespace = "captured:lensisku:jbotci:en";
++    let metadata_namespace = "captured:lensisku:jbotci:en:metadata";
++    let source = source_id("lensisku")?;
++    let distributor = DistributorId::new("jbotci").map_err(JbotciImportError::Registry)?;
++    let raw_capture_ref = CaptureRef {
++        namespace: raw_namespace.into(),
++        sha256: raw_sha256.clone(),
++    };
++    let metadata_capture_ref = CaptureRef {
++        namespace: metadata_namespace.into(),
++        sha256: metadata_sha256.clone(),
++    };
++    let mut registry_doc = RegistryDocument::default();
++    registry_doc.sources.push(SourceRecord {
++        id: source.clone(),
++        display_name: "Lensisku".into(),
++        abbreviation: "LSK".into(),
++        abbreviation_kind: AbbreviationKind::ProjectAssigned,
++        abbreviation_evidence: None,
++        origin: SourceOrigin::Upstream,
++    });
++    registry_doc.distributors.push(DistributorRecord {
++        id: distributor.clone(),
++        display_name: "jbotci".into(),
++    });
++    registry_doc.lineage.push(SourceLineage {
++        source: source.clone(),
++        upstream: LineageTarget::Unresolved("https://jbovlaste.lojban.org/".into()),
++        evidence: Some(JBOTCI_NOTICE_LOCATOR.into()),
++    });
++    let mut contributor_ids = BTreeMap::<String, ContributorId>::new();
++    for username in &users {
++        let id_text = contributor_key(username);
++        let id = ContributorId::new(id_text).map_err(JbotciImportError::Registry)?;
++        let display_valid = username.trim() == username
++            && !username.is_empty()
++            && !username.chars().any(char::is_control);
++        let display_name = if display_valid {
++            username.clone()
++        } else {
++            add_diag(
++                &mut report_diagnostics,
++                &mut release_diagnostics,
++                "contributor_display_fallback",
++                format!(
++                    "username {:?} is not a registry display value; retained under its source-scoped hash identity",
++                    username
++                ),
++                None,
++            );
++            format!(
++                "Lensisku contributor {}",
++                &sha256(username.as_bytes())[..16]
++            )
++        };
++        registry_doc.contributors.push(ContributorRecord {
++            id: id.clone(),
++            display_name,
++        });
++        contributor_ids.insert(username.clone(), id);
++    }
++    let raw_snapshot = snapshot_id(raw_namespace, &raw_sha256)?;
++    let meta_snapshot = snapshot_id(metadata_namespace, &metadata_sha256)?;
++    for snapshot in [&raw_snapshot, &meta_snapshot] {
++        registry_doc.snapshots.push(SnapshotAttribution {
++            snapshot: snapshot.clone(),
++            source: source.clone(),
++            distributor: Some(distributor.clone()),
++        });
++    }
++    for (index, row) in rows.iter().enumerate() {
++        let occurrence = occurrence_id(raw_namespace, &raw_sha256, &format!("/{index}"))?;
++        let native_id = if row.duplicates.is_empty() {
++            field(&row.fields, "definition_id").and_then(|f| {
++                if as_json_string(&f.raw).is_some()
++                    || serde_json::from_str::<serde_json::Number>(&f.raw).is_ok()
++                {
++                    Some(f.raw.clone())
++                } else {
++                    None
++                }
++            })
++        } else {
++            None
++        };
++        let contributor = if row.duplicates.is_empty() {
++            user_name(&row.fields).and_then(|n| contributor_ids.get(&n).cloned())
++        } else {
++            None
++        };
++        registry_doc.occurrences.push(OccurrenceAttribution {
++            occurrence,
++            contributor,
++            native_entry_id: None,
++            native_assertion_id: native_id,
++        });
++    }
++    let registry = SourceRegistry::from_document(registry_doc)?;
++
++    build_import(
++        raw,
++        metadata_bytes,
++        raw_sha256,
++        metadata_sha256,
++        raw_namespace,
++        metadata_namespace,
++        raw_capture_ref,
++        metadata_capture_ref,
++        source,
++        distributor,
++        registry,
++        metadata,
++        options.revision.clone(),
++        rows,
++        users.len() as u64,
++        native_fields,
++        field_counts,
++        word_types,
++        all_spellings.len() as u64,
++        eligible_spellings.len() as u64,
++        definition_count_matches,
++        entry_count_matches,
++        supplier_definition_count,
++        supplier_entry_count,
++        report_diagnostics,
++        release_diagnostics,
++        nested_duplicate_rows,
++    )
++}
++
++const SUPPORTED_CLASSES: [&str; 16] = [
++    "bu-letteral",
++    "cmavo",
++    "cmavo-compound",
++    "cmevla",
++    "experimental cmavo",
++    "experimental gismu",
++    "fu'ivla",
++    "gismu",
++    "lujvo",
++    "nalvla",
++    "obsolete cmavo",
++    "obsolete cmevla",
++    "obsolete fu'ivla",
++    "obsolete zei-lujvo",
++    "phrase",
++    "zei-lujvo",
++];
++const JBOTCI_NOTICE_LOCATOR: &str = "https://github.com/int19h/jbotci/blob/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/THIRD-PARTY-NOTICES.md#L242-L252";
++fn is_supported_class(value: &str) -> bool {
++    SUPPORTED_CLASSES.contains(&value)
++}
++
++#[allow(clippy::too_many_arguments)]
++fn build_import(
++    raw: &[u8],
++    metadata_bytes: &[u8],
++    raw_sha256: String,
++    metadata_sha256: String,
++    raw_namespace: &str,
++    metadata_namespace: &str,
++    raw_capture_ref: CaptureRef,
++    metadata_capture_ref: CaptureRef,
++    source: SourceId,
++    distributor: DistributorId,
++    registry: SourceRegistry,
++    metadata: Metadata,
++    revision: String,
++    rows: Vec<Row>,
++    contributors: u64,
++    native_fields: u64,
++    field_counts: BTreeMap<String, u64>,
++    word_types: BTreeMap<String, u64>,
++    all_spellings: u64,
++    eligible_spellings: u64,
++    definition_count_matches: bool,
++    entry_count_matches: bool,
++    supplier_definition_count: u64,
++    supplier_entry_count: u64,
++    mut report_diagnostics: BTreeMap<String, u64>,
++    mut release_diagnostics: Vec<ReleaseDiagnostic>,
++    nested_duplicate_rows: u64,
++) -> Result<JbotciImport, JbotciImportError> {
++    let language = metadata.string("language_tag")?.to_owned();
++    let source_language = metadata.string("source_language_tag")?.to_owned();
++    let mut native_occurrences = Vec::with_capacity(rows.len());
++    let mut entries = Vec::with_capacity(rows.len());
++    let mut assertions = Vec::with_capacity(rows.len());
++    let mut contexts = Vec::new();
++    let mut etymologies = Vec::new();
++    let mut forms = Vec::new();
++    let mut extensions = Vec::new();
++    let mut assertion_ids = Vec::with_capacity(rows.len());
++    let mut eligible_count = 0_u64;
++    let mut excluded_count = 0_u64;
++    let mut context_counts = BTreeMap::<String, u64>::new();
++
++    for (index, row) in rows.iter().enumerate() {
++        let locator = format!("/{index}");
++        let occurrence = OccurrenceRef {
++            capture: raw_capture_ref.clone(),
++            locator: locator.clone(),
++        };
++        if row.duplicates.is_empty()
++            && unique_field_index(&row.fields, "user").is_some()
++            && user_name(&row.fields).is_none()
++        {
++            add_diag(
++                &mut report_diagnostics,
++                &mut release_diagnostics,
++                "invalid_user",
++                format!(
++                    "row {index} user is not an object with one string username; raw value retained"
++                ),
++                Some(occurrence.clone()),
++            );
++        }
++        if row.is_object && row.duplicates.is_empty() {
++            for (name, code) in [
++                ("selmaho", "invalid_selmaho"),
++                ("definition_id", "invalid_definition_id"),
++            ] {
++                if let Some(i) = unique_field_index(&row.fields, name) {
++                    let raw_value = row.fields[i].raw.as_str();
++                    let valid = raw_value == "null"
++                        || if name == "selmaho" {
++                            as_json_string(raw_value).is_some()
++                        } else {
++                            as_json_string(raw_value).is_some()
++                                || serde_json::from_str::<serde_json::Number>(raw_value).is_ok()
++                        };
++                    if !valid {
++                        add_diag(
++                            &mut report_diagnostics,
++                            &mut release_diagnostics,
++                            code,
++                            format!(
++                                "row {index} {name} has an unsupported JSON shape; raw value retained"
++                            ),
++                            Some(occurrence.clone()),
++                        );
++                    }
++                }
++            }
++        }
++        let base = format!("jbotci-{raw_sha256}");
++        let entry_id = eid(format!("{base}-entry-{index}"))?;
++        let assertion_id = eid(format!("{base}-assertion-{index}"))?;
++        assertion_ids.push(assertion_id.clone());
++        native_occurrences.push(RawOccurrence {
++            locator: locator.clone(),
++            fields: row
++                .fields
++                .iter()
++                .map(|f| NativeField {
++                    name: f.name.clone(),
++                    encoding: NativeEncoding::Json,
++                    raw_value: f.raw.clone(),
++                })
++                .collect(),
++            raw_line: None,
++        });
++
++        let has_duplicates = !row.duplicates.is_empty();
++        if !row.is_object {
++            add_diag(
++                &mut report_diagnostics,
++                &mut release_diagnostics,
++                "non_object_row",
++                format!("row {index} is not an object; retained under $row"),
++                Some(occurrence.clone()),
++            );
++        }
++        for key in &row.duplicates {
++            add_diag(
++                &mut report_diagnostics,
++                &mut release_diagnostics,
++                "duplicate_key",
++                format!(
++                    "row {index} contains repeated JSON key {key:?}; typed projection suppressed"
++                ),
++                Some(occurrence.clone()),
++            );
++        }
++        if has_duplicates {
++            excluded_count += 1;
++        }
++
++        let typed_fields = if row.is_object && !has_duplicates {
++            row.fields.as_slice()
++        } else {
++            &[]
++        };
++        let word = field(typed_fields, "word").and_then(|f| as_json_string(&f.raw));
++        let class = field(typed_fields, "word_type").and_then(|f| as_json_string(&f.raw));
++        let definition = field(typed_fields, "definition").and_then(|f| as_json_string(&f.raw));
++        let word_valid = word.as_ref().is_some_and(|s| !s.is_empty());
++        let class_valid = class.as_deref().is_some_and(is_supported_class);
++        let definition_valid = definition.as_deref().is_some_and(|s| !s.trim().is_empty());
++        let mut reasons = Vec::new();
++        if !row.is_object {
++            reasons.push("non-object-row".to_owned());
++        }
++        if has_duplicates {
++            reasons.push("duplicate-json-key".to_owned());
++        }
++        if !word_valid {
++            reasons.push("missing-null-wrong-type-or-empty-word".to_owned());
++            add_diag(
++                &mut report_diagnostics,
++                &mut release_diagnostics,
++                "invalid_word",
++                format!("row {index} has no nonempty string word"),
++                Some(occurrence.clone()),
++            );
++        }
++        if class.is_none() {
++            reasons.push("missing-null-or-wrong-type-word_type".to_owned());
++            add_diag(
++                &mut report_diagnostics,
++                &mut release_diagnostics,
++                "invalid_word_type",
++                format!("row {index} has no string word_type"),
++                Some(occurrence.clone()),
++            );
++        } else if !class_valid {
++            reasons.push("unsupported-word_type".to_owned());
++            add_diag(
++                &mut report_diagnostics,
++                &mut release_diagnostics,
++                "unsupported_word_type",
++                format!(
++                    "row {index} has unsupported word_type {:?}",
++                    class.as_deref().unwrap_or_default()
++                ),
++                Some(occurrence.clone()),
++            );
++        }
++        if !definition_valid {
++            reasons.push("missing-null-wrong-type-or-empty-definition".to_owned());
++            add_diag(
++                &mut report_diagnostics,
++                &mut release_diagnostics,
++                "invalid_definition",
++                format!("row {index} has no non-whitespace string definition"),
++                Some(occurrence.clone()),
++            );
++        }
++        let eligible = reasons.is_empty();
++        if eligible {
++            eligible_count += 1;
++        } else if !has_duplicates {
++            excluded_count += 1;
++        }
++        let eligibility = if eligible {
++            Eligibility::Lexical
++        } else {
++            Eligibility::Excluded {
++                reason: reasons.join(";"),
++            }
++        };
++
++        let mut entry = EntryRecord {
++            id: entry_id.clone(),
++            source: source.clone(),
++            spelling: if word_valid {
++                Presence::Value(word.clone().unwrap_or_default())
++            } else {
++                presence_string(typed_fields, "word")
++            },
++            language: Presence::Value(source_language.clone()),
++            script: Presence::Missing,
++            native_word_class: if class.is_some() {
++                Presence::Value(class.clone().unwrap_or_default())
++            } else {
++                presence_string(typed_fields, "word_type")
++            },
++            selmaho: presence_string(typed_fields, "selmaho"),
++            mapped_pos: Presence::Missing,
++        };
++        if has_duplicates {
++            entry.spelling = Presence::Missing;
++            entry.native_word_class = Presence::Missing;
++            entry.selmaho = Presence::Missing;
++        }
++        let definition_presence = match field(typed_fields, "definition") {
++            None => Presence::Missing,
++            Some(f) if f.raw == "null" => Presence::Null,
++            Some(_) if definition.is_some() => Presence::Value(text_value(
++                definition.clone().unwrap_or_default(),
++                &language,
++            )),
++            Some(_) => Presence::Missing,
++        };
++        let source_score = presence_raw(typed_fields, "score")?;
++        let mut assertion = AssertionRecord {
++            id: assertion_id.clone(),
++            entry: entry_id.clone(),
++            occurrence: occurrence.clone(),
++            native_sense_id: Presence::Missing,
++            language: Presence::Value(language.clone()),
++            definition: definition_presence,
++            source_score,
++            timestamps: Vec::new(),
++            eligibility,
++        };
++        if has_duplicates {
++            assertion.native_sense_id = Presence::Missing;
++            assertion.definition = Presence::Missing;
++            assertion.source_score = Presence::Missing;
++        }
++        entries.push(entry);
++        assertions.push(assertion);
++
++        if row.is_object {
++            let known: BTreeSet<&str> = [
++                "word",
++                "word_type",
++                "definition",
++                "definition_id",
++                "score",
++                "selmaho",
++                "notes",
++                "jargon",
++                "gloss_keywords",
++                "place_keywords",
++                "rafsi",
++                "experimental_rafsi",
++                "etymology",
++                "user",
++            ]
++            .into_iter()
++            .collect();
++            for (i, f) in row.fields.iter().enumerate() {
++                if !known.contains(f.name.as_str()) {
++                    extensions.push(extension(
++                        &assertion_id,
++                        format!("lensisku.native_field.{i}.{}", f.name),
++                        &f.raw,
++                        Some(source_evidence(occurrence.clone(), Some(i))),
++                    )?);
++                    add_diag(
++                        &mut report_diagnostics,
++                        &mut release_diagnostics,
++                        "unknown_native_field",
++                        format!(
++                            "row {index} unknown field {:?} retained as an extension",
++                            f.name
++                        ),
++                        Some(occurrence.clone()),
++                    );
++                }
++            }
++        }
++
++        if !row.is_object || has_duplicates {
++            continue;
++        }
++
++        // Optional scalar fields are projected only in their advertised source shape.
++        for (name, kind, diagnostic) in [
++            ("notes", ContextKind::Note, "invalid_notes"),
++            ("jargon", ContextKind::Domain, "invalid_jargon"),
++        ] {
++            if let Some(i) = unique_field_index(&row.fields, name) {
++                let f = &row.fields[i];
++                match as_json_string(&f.raw) {
++                    Some(value) => {
++                        let id = eid(format!("{base}-context-{index}-{name}"))?;
++                        contexts.push(context(
++                            id,
++                            &assertion_id,
++                            kind,
++                            Presence::Value(text_value(value, &language)),
++                            &occurrence,
++                            i,
++                        ));
++                        *context_counts.entry(name.into()).or_default() += 1;
++                    }
++                    None if f.raw == "null" => {
++                        let id = eid(format!("{base}-context-{index}-{name}"))?;
++                        contexts.push(context(
++                            id,
++                            &assertion_id,
++                            kind,
++                            Presence::Null,
++                            &occurrence,
++                            i,
++                        ));
++                        *context_counts.entry(name.into()).or_default() += 1;
++                    }
++                    None => add_diag(
++                        &mut report_diagnostics,
++                        &mut release_diagnostics,
++                        diagnostic,
++                        format!("row {index} {name} is not a string or null; raw value retained"),
++                        Some(occurrence.clone()),
++                    ),
++                }
++            }
++        }
++
++        if let Some(i) = unique_field_index(&row.fields, "gloss_keywords") {
++            let f = &row.fields[i];
++            extensions.push(extension(
++                &assertion_id,
++                "lensisku.gloss_keywords.raw".into(),
++                &f.raw,
++                Some(source_evidence(occurrence.clone(), Some(i))),
++            )?);
++            if f.raw != "null" {
++                if let Some(items) = raw_array(&f.raw) {
++                    for (item_index, item) in items.iter().enumerate() {
++                        let item_raw = item.get();
++                        let nested_dup = scan_nested_duplicates(item_raw)
++                            .map_err(JbotciImportError::InvalidJson)?;
++                        if !item_raw.trim_start().starts_with('{') || !nested_dup.is_empty() {
++                            add_diag(
++                                &mut report_diagnostics,
++                                &mut release_diagnostics,
++                                "invalid_gloss_object",
++                                format!(
++                                    "row {index} gloss item {item_index} is not a unique-key object; whole field retained"
++                                ),
++                                Some(occurrence.clone()),
++                            );
++                            continue;
++                        }
++                        let object =
++                            parse_fields(item_raw).map_err(JbotciImportError::InvalidJson)?;
++                        let Some(word_field) = field(&object, "word") else {
++                            add_diag(
++                                &mut report_diagnostics,
++                                &mut release_diagnostics,
++                                "invalid_gloss_object",
++                                format!("row {index} gloss item {item_index} lacks word"),
++                                Some(occurrence.clone()),
++                            );
++                            continue;
++                        };
++                        let Some(gloss) = as_json_string(&word_field.raw) else {
++                            add_diag(
++                                &mut report_diagnostics,
++                                &mut release_diagnostics,
++                                "invalid_gloss_object",
++                                format!("row {index} gloss item {item_index} word is not a string"),
++                                Some(occurrence.clone()),
++                            );
++                            continue;
++                        };
++                        let id = eid(format!("{base}-context-gloss-{index}-{item_index}"))?;
++                        let ctx = context(
++                            id.clone(),
++                            &assertion_id,
++                            ContextKind::Gloss,
++                            Presence::Value(text_value(gloss, &language)),
++                            &occurrence,
++                            i,
++                        );
++                        contexts.push(ctx);
++                        extensions.push(extension(
++                            &id,
++                            "lensisku.gloss_keywords.object".into(),
++                            item_raw,
++                            Some(source_evidence(occurrence.clone(), Some(i))),
++                        )?);
++                        *context_counts.entry("gloss_keywords".into()).or_default() += 1;
++                    }
++                } else {
++                    add_diag(
++                        &mut report_diagnostics,
++                        &mut release_diagnostics,
++                        "invalid_gloss_keywords",
++                        format!(
++                            "row {index} gloss_keywords is not an array or null; raw value retained"
++                        ),
++                        Some(occurrence.clone()),
++                    );
++                }
++            }
++        }
++        if let Some(i) = unique_field_index(&row.fields, "place_keywords") {
++            let raw_value = &row.fields[i].raw;
++            extensions.push(extension(
++                &assertion_id,
++                "lensisku.place_keywords".into(),
++                raw_value,
++                Some(source_evidence(occurrence.clone(), Some(i))),
++            )?);
++            if raw_value != "null" && raw_array(raw_value).is_none() {
++                add_diag(
++                    &mut report_diagnostics,
++                    &mut release_diagnostics,
++                    "invalid_place_keywords",
++                    format!("row {index} place_keywords is not an array; raw value retained"),
++                    Some(occurrence.clone()),
++                );
++            }
++        }
++        for name in ["rafsi", "experimental_rafsi"] {
++            if let Some(i) = unique_field_index(&row.fields, name) {
++                let f = &row.fields[i];
++                if f.raw == "null" {
++                    continue;
++                }
++                if let Some(tokens) = forms_from_field(&f.raw) {
++                    for (form_index, spelling) in tokens.into_iter().enumerate() {
++                        let id = eid(format!("{base}-form-{index}-{name}-{form_index}"))?;
++                        forms.push(FormRecord {
++                            id,
++                            entry: entry_id.clone(),
++                            spelling,
++                            language: Presence::Value(source_language.clone()),
++                            script: Presence::Missing,
++                            pronunciation: Presence::Missing,
++                            kind: FormKind::SourceReportedForm,
++                            standing: Presence::Value(name.into()),
++                            components: Vec::new(),
++                            evidence: Some(source_evidence(occurrence.clone(), Some(i))),
++                            computation: None,
++                        });
++                    }
++                } else {
++                    add_diag(
++                        &mut report_diagnostics,
++                        &mut release_diagnostics,
++                        "invalid_reported_form",
++                        format!(
++                            "row {index} {name} is neither a string nor a string array; raw value retained"
++                        ),
++                        Some(occurrence.clone()),
++                    );
++                }
++            }
++        }
++        if let Some(i) = unique_field_index(&row.fields, "etymology") {
++            let f = &row.fields[i];
++            let statement = match f.raw.as_str() {
++                "null" => Presence::Null,
++                _ => match as_json_string(&f.raw) {
++                    Some(value) => Presence::Value(text_value(value, &language)),
++                    None => {
++                        add_diag(
++                            &mut report_diagnostics,
++                            &mut release_diagnostics,
++                            "invalid_etymology",
++                            format!(
++                                "row {index} etymology is not a string or null; raw value retained"
++                            ),
++                            Some(occurrence.clone()),
++                        );
++                        Presence::Missing
++                    }
++                },
++            };
++            if !matches!(statement, Presence::Missing) {
++                etymologies.push(EtymologyRecord {
++                    id: eid(format!("{base}-etymology-{index}"))?,
++                    assertion: assertion_id.clone(),
++                    statement,
++                    native_kind: Presence::Missing,
++                    components: Vec::new(),
++                    evidence: source_evidence(occurrence.clone(), Some(i)),
++                });
++            }
++        }
++    }
++
++    let raw_capture = RawCapture::new(
++        raw_namespace,
++        CaptureMetadata {
++            source_name: "Lensisku English dictionary export".into(),
++            format_label: "jbotci-export-v1".into(),
++            locator: metadata.string("download_url")?.into(),
++            revision: Presence::Value(revision.clone()),
++            captured_at: Presence::Missing,
++            time_precision: TimePrecision::Unknown,
++            notice_locator: Presence::Value(JBOTCI_NOTICE_LOCATOR.into()),
++        },
++        raw.to_vec(),
++        native_occurrences,
++    );
++    let metadata_capture = RawCapture::new(
++        metadata_namespace,
++        CaptureMetadata {
++            source_name: "jbotci supplier metadata".into(),
++            format_label: "jbotci-metadata-v1".into(),
++            locator: "crates/jbotci-dictionary-data/data/dictionary-en.metadata.toml".into(),
++            revision: Presence::Value(revision.clone()),
++            captured_at: Presence::Missing,
++            time_precision: TimePrecision::Unknown,
++            notice_locator: Presence::Missing,
++        },
++        metadata_bytes.to_vec(),
++        Vec::new(),
++    );
++    let metadata_json =
++        serde_json::to_string(std::str::from_utf8(metadata_bytes).map_err(|_| {
++            JbotciImportError::InvalidUtf8 {
++                input: "metadata".into(),
++            }
++        })?)
++        .map_err(|e| JbotciImportError::InvalidMetadata(e.to_string()))?;
++    let release_id = eid(format!(
++        "jbotci-release-{}",
++        sha256(
++            format!("vlajmaji-jbotci-release-v1\0{revision}\0{raw_sha256}\0{metadata_sha256}")
++                .as_bytes()
++        ),
++    ))?;
++    let collection_id = eid("lensisku-jbotci-en-collection".into())?;
++    let component_id = eid("lensisku-jbotci-en-component".into())?;
++    let code_notice = CodeNotice {
++        text: "Apache-2.0".into(),
++        locator: Presence::Value("LICENSE".into()),
++        license: Presence::Value("Apache-2.0".into()),
++    };
++    let content_notice_text = "The jbovlaste dictionary databases are placed in the public domain. The individual definitions are contributed by the Lojban community under those public-domain terms.";
++    let release = ReleaseRecord {
++        id: release_id.clone(),
++        component: component_id.clone(),
++        distributor: Some(distributor),
++        upstream_revision: Presence::Missing,
++        distributor_revision: Presence::Value(revision.clone()),
++        captured_at: Presence::Missing,
++        time_precision: TimePrecision::Unknown,
++        schema_version: 1,
++        normalizer: "vlajmaji-jbotci-export".into(),
++        normalizer_version: "1".into(),
++        captures: vec![raw_capture_ref.clone(), metadata_capture_ref.clone()],
++        assertions: assertion_ids,
++        accounting: ReleaseAccounting {
++            input_occurrences: Some(rows.len() as u64),
++            normalized_occurrences: Some(rows.len() as u64),
++            query_excluded_occurrences: Some(excluded_count),
++            unit: "source-array-row".into(),
++        },
++        diagnostics: release_diagnostics,
++        selected: true,
++        availability: Availability::Available,
++        content_notices: vec![ContentNotice {
++            text: Presence::Value(content_notice_text.into()),
++            locator: Presence::Value(JBOTCI_NOTICE_LOCATOR.into()),
++            license: Presence::Value(
++                "supplier-claimed public domain; coverage not independently established".into(),
++            ),
++        }],
++        redistribution: RedistributionStatus::Held,
++        redistribution_evidence: vec![
++            "Supplier notice is a claim; upstream source coverage remains unverified.".into(),
++        ],
++    };
++    extensions.push(extension(
++        &release_id,
++        "jbotci.metadata.raw_text".into(),
++        &metadata_json,
++        None,
++    )?);
++    let dictionary = Dictionary::from_document(DictionaryDocument {
++        version: 1,
++        legacy_archive: None,
++        registry,
++        captures: vec![raw_capture, metadata_capture],
++        metadata: DictionaryMetadata {
++            catalogue_revision: 0,
++            code_notices: vec![code_notice],
++            collections: vec![CollectionRecord {
++                id: collection_id.clone(),
++                source: source.clone(),
++                display_name: "Lensisku English lexical export".into(),
++                description: Presence::Missing,
++            }],
++            components: vec![ComponentRecord {
++                id: component_id.clone(),
++                collection: collection_id,
++                native_name: "dictionary-en.json".into(),
++                languages: vec![source_language],
++            }],
++            releases: vec![release],
++            entries,
++            assertions,
++            contexts,
++            frames: Vec::new(),
++            forms,
++            etymologies,
++            relations: Vec::new(),
++            owned_revisions: Vec::new(),
++            owned_heads: Vec::new(),
++            editorial_senses: Vec::new(),
++            computations: Vec::new(),
++            annotations: Vec::new(),
++            extensions,
++        },
++    })?;
++    let report = JbotciImportReport {
++        version: 1,
++        revision,
++        raw_sha256,
++        metadata_sha256,
++        raw_bytes: raw.len() as u64,
++        metadata_bytes: metadata_bytes.len() as u64,
++        input_rows: rows.len() as u64,
++        native_fields,
++        normalized_assertions: rows.len() as u64,
++        lexical_occurrences: eligible_count,
++        excluded_occurrences: excluded_count,
++        eligible_spellings,
++        all_spellings,
++        contributors,
++        supplier_definition_count,
++        supplier_entry_count,
++        word_types,
++        field_counts,
++        diagnostics: report_diagnostics,
++        definition_count_matches,
++        entry_count_matches,
++    };
++    let _ = nested_duplicate_rows;
++    let _ = context_counts;
++    Ok(JbotciImport { dictionary, report })
++}
+diff --git a/crates/lexicon/src/lib.rs b/crates/lexicon/src/lib.rs
+index 87c4025..a4035dd 100644
+--- a/crates/lexicon/src/lib.rs
++++ b/crates/lexicon/src/lib.rs
+@@ -38,6 +38,7 @@ use sha2::{Digest, Sha256};
+ 
+ mod attribution;
+ pub mod dictionary;
++mod jbotci;
+ pub mod registry;
+ 
+ pub use attribution::AttributedOccurrence;
+@@ -52,6 +53,10 @@ pub use dictionary::{
+     RedistributionStatus, RelationKind, RelationRecord, RelationScope, RelationTarget,
+     ReleaseAccounting, ReleaseDiagnostic, ReleaseRecord, SourceEvidence, TextRange, TextValue,
+ };
++pub use jbotci::{
++    JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION, JbotciImport,
++    JbotciImportError, JbotciImportOptions, JbotciImportReport, import_jbotci_export,
++};
+ pub use registry::{
+     AbbreviationKind, AliasScope, AliasStatus, ContributorId, ContributorRecord, DistributorId,
+     DistributorRecord, LineageTarget, OccurrenceAttribution, RegistryDocument, RegistryError,
+diff --git a/crates/lexicon/tests/jbotci_contract.rs b/crates/lexicon/tests/jbotci_contract.rs
+new file mode 100644
+index 0000000..d1a4b11
+--- /dev/null
++++ b/crates/lexicon/tests/jbotci_contract.rs
+@@ -0,0 +1,690 @@
++//! Public contract checks for the pinned jbotci adapter.
++
++use vlajmaji_lexicon::{
++    Eligibility, JbotciImportError, JbotciImportOptions, Presence, import_jbotci_export,
++};
++
++fn digest(bytes: &[u8]) -> String {
++    use sha2::{Digest, Sha256};
++    let mut out = String::new();
++    for byte in Sha256::digest(bytes) {
++        use std::fmt::Write as _;
++        let _ = write!(out, "{byte:02x}");
++    }
++    out
++}
++
++fn metadata(raw: &[u8], entry_count: u64) -> Vec<u8> {
++    metadata_with_row_count(raw, count_rows(raw), entry_count)
++}
++
++fn metadata_with_row_count(raw: &[u8], row_count: u64, entry_count: u64) -> Vec<u8> {
++    format!(
++        "language_tag = \"en\"\nlanguage_realname = \"English\"\nsource_language_tag = \"jbo\"\nformat = \"json\"\npositive_scores_only = false\nfilename = \"dictionary-en.json\"\nmetadata_url = \"https://example.invalid/languages\"\ndownload_url = \"https://example.invalid/export\"\nlensisku_created_at = \"2026-10-04T03:07:08Z\"\nsha256 = \"{}\"\ndefinition_count = {}\nentry_count = {}\n",
++        digest(raw), row_count, entry_count,
++    )
++    .into_bytes()
++}
++
++fn count_rows(raw: &[u8]) -> u64 {
++    serde_json::from_slice::<Vec<serde_json::Value>>(raw)
++        .expect("test raw rows")
++        .len() as u64
++}
++
++fn options(raw: &[u8], metadata: &[u8], revision: &str) -> JbotciImportOptions {
++    JbotciImportOptions {
++        revision: revision.into(),
++        expected_raw_sha256: digest(raw),
++        expected_metadata_sha256: digest(metadata),
++    }
++}
++
++#[test]
++fn revision_is_release_provenance_while_occurrence_identity_is_byte_stable() {
++    let raw = br#"[{"word":"same","word_type":"gismu","definition":"first","definition_id":7,"score":-1.25,"rafsi":"sma sma","notes":"note"}]"#;
++    let metadata = metadata(raw, 1);
++    let first_options = options(raw, &metadata, "0000000000000000000000000000000000000000");
++    let second_options = options(raw, &metadata, "1111111111111111111111111111111111111111");
++
++    let first = import_jbotci_export(raw, &metadata, &first_options).expect("valid first import");
++    let repeated =
++        import_jbotci_export(raw, &metadata, &first_options).expect("valid repeated import");
++    let second_revision = import_jbotci_export(raw, &metadata, &second_options)
++        .expect("valid provenance counterpart");
++
++    assert_eq!(first.report(), repeated.report());
++    assert_eq!(
++        first.dictionary().to_json_bytes().unwrap(),
++        repeated.dictionary().to_json_bytes().unwrap()
++    );
++    assert_ne!(
++        first.dictionary().metadata().releases[0].id,
++        second_revision.dictionary().metadata().releases[0].id
++    );
++    assert_ne!(
++        first.dictionary().to_json_bytes().unwrap(),
++        second_revision.dictionary().to_json_bytes().unwrap()
++    );
++    assert_eq!(second_revision.report().revision, second_options.revision);
++    assert_eq!(
++        second_revision.dictionary().metadata().releases[0].distributor_revision,
++        Presence::Value(second_options.revision.clone())
++    );
++    assert_eq!(
++        first.dictionary().captures()[0].metadata.revision,
++        Presence::Value(first_options.revision.clone())
++    );
++    assert_eq!(
++        second_revision.dictionary().captures()[0].metadata.revision,
++        Presence::Value(second_options.revision.clone())
++    );
++    assert_eq!(
++        second_revision.dictionary().metadata().releases[0].accounting,
++        first.dictionary().metadata().releases[0].accounting
++    );
++    assert_eq!(
++        first
++            .dictionary()
++            .captures()
++            .iter()
++            .map(|c| c.identity.clone())
++            .collect::<Vec<_>>(),
++        second_revision
++            .dictionary()
++            .captures()
++            .iter()
++            .map(|c| c.identity.clone())
++            .collect::<Vec<_>>()
++    );
++    assert_eq!(
++        first.dictionary().metadata().entries,
++        second_revision.dictionary().metadata().entries
++    );
++    assert_eq!(
++        first.dictionary().metadata().assertions,
++        second_revision.dictionary().metadata().assertions
++    );
++    let notice = "https://github.com/int19h/jbotci/blob/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/THIRD-PARTY-NOTICES.md#L242-L252";
++    let first_lineage = first.dictionary().registry().document();
++    let second_lineage = second_revision.dictionary().registry().document();
++    assert_eq!(first_lineage.lineage[0].evidence.as_deref(), Some(notice));
++    assert_eq!(second_lineage.lineage[0].evidence.as_deref(), Some(notice));
++    assert_eq!(
++        first.dictionary().captures()[0].metadata.notice_locator,
++        Presence::Value(notice.into())
++    );
++    assert_eq!(
++        second_revision.dictionary().captures()[0]
++            .metadata
++            .notice_locator,
++        Presence::Value(notice.into())
++    );
++    assert_eq!(
++        first.dictionary().metadata().releases[0].content_notices[0].locator,
++        Presence::Value(notice.into())
++    );
++    assert_eq!(
++        second_revision.dictionary().metadata().releases[0].content_notices[0].locator,
++        Presence::Value(notice.into())
++    );
++    assert_eq!(
++        first.dictionary().metadata().code_notices[0].locator,
++        Presence::Value("LICENSE".into())
++    );
++    assert_eq!(
++        second_revision.dictionary().metadata().code_notices[0].locator,
++        Presence::Value("LICENSE".into())
++    );
++    assert_eq!(
++        first.dictionary().metadata().contexts,
++        second_revision.dictionary().metadata().contexts
++    );
++    assert_eq!(
++        first.dictionary().metadata().forms,
++        second_revision.dictionary().metadata().forms
++    );
++    assert_eq!(
++        first.dictionary().metadata().extensions[0].name,
++        second_revision.dictionary().metadata().extensions[0].name
++    );
++    assert_eq!(
++        first.dictionary().metadata().extensions[0].value,
++        second_revision.dictionary().metadata().extensions[0].value
++    );
++    let first_registry = first.dictionary().registry().document();
++    let second_registry = second_revision.dictionary().registry().document();
++    assert_eq!(first_registry.occurrences, second_registry.occurrences);
++    assert_eq!(first_registry.snapshots, second_registry.snapshots);
++    assert_eq!(first_registry.contributors, second_registry.contributors);
++    let release = &first.dictionary().metadata().releases[0];
++    assert_eq!(release.upstream_revision, Presence::Missing);
++    assert_eq!(
++        release.redistribution,
++        vlajmaji_lexicon::RedistributionStatus::Held
++    );
++    assert!(matches!(
++        &release.content_notices[0].license,
++        Presence::Value(value) if value.contains("supplier-claimed")
++    ));
++    assert_eq!(
++        first.dictionary().metadata().code_notices[0].license,
++        Presence::Value("Apache-2.0".into())
++    );
++    assert!(first.dictionary().metadata().frames.is_empty());
++    assert!(first.dictionary().metadata().relations.is_empty());
++    assert!(first.dictionary().metadata().owned_revisions.is_empty());
++    assert!(first.dictionary().metadata().owned_heads.is_empty());
++    assert!(first.dictionary().metadata().editorial_senses.is_empty());
++    assert!(first.dictionary().metadata().computations.is_empty());
++    assert!(first.dictionary().metadata().annotations.is_empty());
++    assert_eq!(first.report().input_rows, 1);
++    assert_eq!(first.report().normalized_assertions, 1);
++    assert_eq!(first.report().lexical_occurrences, 1);
++    assert_eq!(first.report().excluded_occurrences, 0);
++    assert_eq!(first.report().eligible_spellings, 1);
++    assert_eq!(
++        first.dictionary().metadata().entries[0].id.as_str(),
++        format!("jbotci-{}-entry-0", digest(raw))
++    );
++}
++
++#[test]
++fn duplicate_fields_nested_values_and_nonobjects_remain_raw_and_excluded() {
++    let raw = br#"[{"word":"one","word":"two","word_type":"gismu","word_type":"lujvo","definition":"a","definition":"b","opaque":{"huge":1234567890123456789012345678901234567890},"opaque":[true]}, {"word":"nested","word_type":"gismu","definition":"ok","unknown":{"x":1,"x":2}}, 17]"#;
++    let metadata = metadata(raw, 0);
++    let opts = options(raw, &metadata, "0000000000000000000000000000000000000000");
++    let imported =
++        import_jbotci_export(raw, &metadata, &opts).expect("valid JSON remains importable");
++    let dict = imported.dictionary();
++    assert_eq!(imported.report().input_rows, 3);
++    assert_eq!(imported.report().normalized_assertions, 3);
++    assert_eq!(imported.report().excluded_occurrences, 3);
++    assert_eq!(imported.report().diagnostics.get("duplicate_key"), Some(&5));
++    assert_eq!(
++        imported.report().diagnostics.get("unknown_native_field"),
++        Some(&3)
++    );
++    assert_eq!(imported.report().word_types.get("gismu"), Some(&2));
++    assert_eq!(imported.report().word_types.get("lujvo"), Some(&1));
++    assert_eq!(
++        dict.captures()[0].occurrences[0].fields_named("word").len(),
++        2
++    );
++    let extensions = &dict.metadata().extensions;
++    let duplicate_extensions: Vec<_> = extensions
++        .iter()
++        .filter(|extension| {
++            extension
++                .evidence
++                .as_ref()
++                .is_some_and(|e| e.occurrence.locator == "/0")
++        })
++        .collect();
++    assert_eq!(duplicate_extensions.len(), 2);
++    assert_eq!(
++        duplicate_extensions[0].name,
++        "lensisku.native_field.6.opaque"
++    );
++    assert_eq!(
++        duplicate_extensions[0].value.as_str(),
++        r#"{"huge":1234567890123456789012345678901234567890}"#
++    );
++    assert_eq!(
++        duplicate_extensions[0]
++            .evidence
++            .as_ref()
++            .unwrap()
++            .field_index,
++        Some(6)
++    );
++    assert_eq!(
++        duplicate_extensions[0].owner,
++        dict.metadata().assertions[0].id
++    );
++    assert_eq!(
++        duplicate_extensions[0]
++            .evidence
++            .as_ref()
++            .unwrap()
++            .occurrence
++            .locator,
++        "/0"
++    );
++    assert_eq!(
++        duplicate_extensions[1].name,
++        "lensisku.native_field.7.opaque"
++    );
++    assert_eq!(duplicate_extensions[1].value.as_str(), "[true]");
++    assert_eq!(
++        duplicate_extensions[1]
++            .evidence
++            .as_ref()
++            .unwrap()
++            .field_index,
++        Some(7)
++    );
++    assert_eq!(
++        dict.captures()[0].occurrences[0]
++            .fields_named("definition")
++            .len(),
++        2
++    );
++    assert_eq!(
++        dict.captures()[0].occurrences[0].fields_named("opaque")[0].raw_value,
++        r#"{"huge":1234567890123456789012345678901234567890}"#
++    );
++    assert_eq!(dict.captures()[0].occurrences[2].fields[0].name, "$row");
++    assert!(matches!(
++        dict.metadata().assertions[0].eligibility,
++        Eligibility::Excluded { .. }
++    ));
++    assert_eq!(dict.metadata().entries[0].spelling, Presence::Missing);
++}
++
++#[test]
++fn repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters() {
++    let raw = br#"[{"word":"same","word_type":"gismu","definition":"one","definition_id":9,"score":-2.0},{"word":"same","word_type":"gismu","definition":"two","definition_id":9,"score":-9.5}]"#;
++    let metadata = metadata(raw, 1);
++    let opts = options(raw, &metadata, "0000000000000000000000000000000000000000");
++    let imported = import_jbotci_export(raw, &metadata, &opts).expect("valid repeated source IDs");
++    assert_eq!(imported.report().input_rows, 2);
++    assert_eq!(imported.report().lexical_occurrences, 2);
++    assert_eq!(imported.report().eligible_spellings, 1);
++    assert_eq!(
++        imported.report().diagnostics.get("entry_count_mismatch"),
++        None
++    );
++    let assertions = &imported.dictionary().metadata().assertions;
++    assert_ne!(assertions[0].id, assertions[1].id);
++    assert_ne!(assertions[0].occurrence, assertions[1].occurrence);
++    assert_eq!(
++        assertions[0].source_score,
++        Presence::Value(vlajmaji_lexicon::RawJson::new("-2.0").unwrap())
++    );
++    assert_eq!(
++        assertions[1].source_score,
++        Presence::Value(vlajmaji_lexicon::RawJson::new("-9.5").unwrap())
++    );
++}
++
++#[test]
++fn changed_pinned_raw_bytes_change_capture_and_row_ids_and_wrong_hash_fails() {
++    let raw_a = br#"[{"word":"a","word_type":"gismu","definition":"one"}]"#;
++    let raw_b = br#"[{"word":"a","word_type":"gismu","definition":"two"}]"#;
++    let metadata_a = metadata(raw_a, 1);
++    let metadata_b = metadata(raw_b, 1);
++    let opts_a = options(
++        raw_a,
++        &metadata_a,
++        "0000000000000000000000000000000000000000",
++    );
++    let opts_b = options(
++        raw_b,
++        &metadata_b,
++        "0000000000000000000000000000000000000000",
++    );
++    let a = import_jbotci_export(raw_a, &metadata_a, &opts_a).unwrap();
++    let b = import_jbotci_export(raw_b, &metadata_b, &opts_b).unwrap();
++    assert_ne!(
++        a.dictionary().captures()[0].identity,
++        b.dictionary().captures()[0].identity
++    );
++    assert_ne!(
++        a.dictionary().metadata().entries[0].id,
++        b.dictionary().metadata().entries[0].id
++    );
++    assert_ne!(
++        a.dictionary().metadata().assertions[0].id,
++        b.dictionary().metadata().assertions[0].id
++    );
++
++    let bad = JbotciImportOptions {
++        expected_raw_sha256: "0".repeat(64),
++        ..opts_a
++    };
++    assert!(
++        matches!(import_jbotci_export(raw_a, &metadata_a, &bad), Err(JbotciImportError::HashMismatch { input, .. }) if input == "raw")
++    );
++}
++
++#[test]
++fn metadata_duplicates_and_unsupported_shapes_are_typed_failures() {
++    let raw = br#"[]"#;
++    let mut meta = metadata(raw, 0);
++    meta.extend_from_slice(b"entry_count = 0\n");
++    let opts = options(raw, &meta, "0000000000000000000000000000000000000000");
++    assert!(matches!(
++        import_jbotci_export(raw, &meta, &opts),
++        Err(JbotciImportError::InvalidMetadata(_))
++    ));
++
++    let meta = b"language_tag = 'en'\n".to_vec();
++    let opts = options(raw, &meta, "0000000000000000000000000000000000000000");
++    assert!(matches!(
++        import_jbotci_export(raw, &meta, &opts),
++        Err(JbotciImportError::UnsupportedMetadata(_))
++    ));
++
++    for malformed in [
++        b"language_tag = true junk\n".as_slice(),
++        b"language_tag = false junk\n",
++        b"language_tag = 12 junk\n",
++        b"language_tag = \"ok\" junk\n",
++        b"language_tag = \n",
++        b"= true\n",
++        b"language_tag = 18446744073709551616\n",
++    ] {
++        let opts = options(raw, malformed, "0000000000000000000000000000000000000000");
++        assert!(
++            matches!(
++                import_jbotci_export(raw, malformed, &opts),
++                Err(JbotciImportError::InvalidMetadata(_))
++            ),
++            "{malformed:?}"
++        );
++    }
++    for unsupported in [
++        b"'quoted key' = \"value\"\n".as_slice(),
++        b"language_tag = 'en'\n",
++    ] {
++        let opts = options(raw, unsupported, "0000000000000000000000000000000000000000");
++        assert!(
++            matches!(
++                import_jbotci_export(raw, unsupported, &opts),
++                Err(JbotciImportError::UnsupportedMetadata(_))
++            ),
++            "{unsupported:?}"
++        );
++    }
++}
++
++#[test]
++fn metadata_numeric_values_follow_json_validity_before_subset_errors() {
++    let raw = br#"[]"#;
++    let revision = "0000000000000000000000000000000000000000";
++
++    for literal in ["1.5", "1e3", "1e9999", "-1.5"] {
++        let mut meta = metadata(raw, 0);
++        meta.extend_from_slice(format!("unknown_numeric = {literal}\n").as_bytes());
++        let opts = options(raw, &meta, revision);
++        assert!(
++            matches!(
++                import_jbotci_export(raw, &meta, &opts),
++                Err(JbotciImportError::UnsupportedMetadata(_))
++            ),
++            "{literal}"
++        );
++    }
++
++    let mut integer_meta = metadata(raw, 0);
++    integer_meta.extend_from_slice(b"unknown_integer = 12\n");
++    let integer_opts = options(raw, &integer_meta, revision);
++    let integer_import = import_jbotci_export(raw, &integer_meta, &integer_opts)
++        .expect("unknown simple unsigned integer remains supported metadata");
++    assert_eq!(
++        integer_import
++            .report()
++            .diagnostics
++            .get("metadata_unknown_key"),
++        Some(&1)
++    );
++    let metadata_capture = integer_import
++        .dictionary()
++        .captures()
++        .iter()
++        .find(|capture| capture.identity.namespace == "captured:lensisku:jbotci:en:metadata")
++        .expect("exact metadata capture");
++    assert_eq!(metadata_capture.bytes, integer_meta);
++
++    for assignment in [
++        "unknown_numeric = 12 junk\n",
++        "unknown_numeric = 1.5 junk\n",
++        "unknown_numeric = true junk\n",
++        "unknown_numeric = false junk\n",
++        "unknown_numeric = \"ok\" junk\n",
++        " = true\n",
++        "unknown_numeric = \n",
++        "unknown_numeric = 18446744073709551616\n",
++    ] {
++        let mut meta = metadata(raw, 0);
++        meta.extend_from_slice(assignment.as_bytes());
++        let opts = options(raw, &meta, revision);
++        assert!(
++            matches!(
++                import_jbotci_export(raw, &meta, &opts),
++                Err(JbotciImportError::InvalidMetadata(_))
++            ),
++            "{assignment:?}"
++        );
++    }
++}
++
++#[test]
++fn invalid_pins_utf8_and_json_root_return_typed_failures() {
++    let raw = br#"[]"#;
++    let meta = metadata(raw, 0);
++    let mut opts = options(raw, &meta, "0000000000000000000000000000000000000000");
++    opts.revision = "bad".into();
++    assert!(matches!(
++        import_jbotci_export(raw, &meta, &opts),
++        Err(JbotciImportError::InvalidOptions(_))
++    ));
++
++    let invalid_utf8 = [0xff];
++    let meta = metadata_with_row_count(&invalid_utf8, 0, 0);
++    let opts = options(
++        &invalid_utf8,
++        &meta,
++        "0000000000000000000000000000000000000000",
++    );
++    assert!(matches!(
++        import_jbotci_export(&invalid_utf8, &meta, &opts),
++        Err(JbotciImportError::InvalidUtf8 { input }) if input == "raw"
++    ));
++
++    let raw = br#"{"not":"array"}"#;
++    let meta = metadata_with_row_count(raw, 0, 0);
++    let opts = options(raw, &meta, "0000000000000000000000000000000000000000");
++    assert!(matches!(
++        import_jbotci_export(raw, &meta, &opts),
++        Err(JbotciImportError::InvalidJson(_))
++    ));
++}
++
++#[test]
++fn missing_null_and_empty_critical_values_remain_distinguishable() {
++    let raw = br#"[{"word":null,"word_type":"gismu","definition":null},{"word":"","word_type":"gismu","definition":""},{"word":"present","word_type":"gismu"}]"#;
++    let meta = metadata(raw, 0);
++    let opts = options(raw, &meta, "0000000000000000000000000000000000000000");
++    let imported = import_jbotci_export(raw, &meta, &opts).unwrap();
++    let entries = &imported.dictionary().metadata().entries;
++    let assertions = &imported.dictionary().metadata().assertions;
++    assert_eq!(entries[0].spelling, Presence::Null);
++    assert_eq!(entries[1].spelling, Presence::Value(String::new()));
++    assert_eq!(entries[2].spelling, Presence::Value("present".into()));
++    assert_eq!(assertions[0].definition, Presence::Null);
++    assert!(matches!(&assertions[1].definition, Presence::Value(value) if value.text.is_empty()));
++    assert_eq!(assertions[2].definition, Presence::Missing);
++    assert_eq!(imported.report().lexical_occurrences, 0);
++    assert_eq!(imported.report().excluded_occurrences, 3);
++}
++
++#[test]
++fn malformed_optional_shapes_are_diagnostic_without_excluding_valid_rows() {
++    let raw = br#"[{"word":"ok","word_type":"gismu","definition":"valid","notes":7,"jargon":true,"gloss_keywords":[{"word":7},null],"place_keywords":false,"rafsi":17,"experimental_rafsi":["ab","four"],"etymology":{},"user":{"username":9},"future":{"x":1}}]"#;
++    let meta = metadata(raw, 1);
++    let opts = options(raw, &meta, "0000000000000000000000000000000000000000");
++    let imported = import_jbotci_export(raw, &meta, &opts).unwrap();
++    assert_eq!(imported.report().lexical_occurrences, 1);
++    assert_eq!(imported.report().excluded_occurrences, 0);
++    for key in [
++        "invalid_notes",
++        "invalid_jargon",
++        "invalid_gloss_object",
++        "invalid_place_keywords",
++        "invalid_reported_form",
++        "invalid_etymology",
++        "invalid_user",
++        "unknown_native_field",
++    ] {
++        let expected = if key == "invalid_gloss_object" { 2 } else { 1 };
++        assert_eq!(
++            imported.report().diagnostics.get(key),
++            Some(&expected),
++            "{key}"
++        );
++    }
++    let occurrence = &imported.dictionary().captures()[0].occurrences[0];
++    assert_eq!(
++        occurrence.fields_named("place_keywords")[0].raw_value,
++        "false"
++    );
++    assert_eq!(occurrence.fields_named("future")[0].raw_value, r#"{"x":1}"#);
++}
++
++#[test]
++fn optional_selmaho_and_definition_id_shapes_are_diagnostic_without_loss() {
++    let raw = br#"[{"word":"missing","word_type":"gismu","definition":"ok"},{"word":"null","word_type":"gismu","definition":"ok","selmaho":null,"definition_id":null},{"word":"empty","word_type":"gismu","definition":"ok","selmaho":"","definition_id":""},{"word":"numeric","word_type":"gismu","definition":"ok","definition_id":123456789012345678901234567890},{"word":"bad1","word_type":"gismu","definition":"ok","selmaho":{}},{"word":"bad2","word_type":"gismu","definition":"ok","selmaho":[],"definition_id":true},{"word":"bad3","word_type":"gismu","definition":"ok","definition_id":[]} ]"#;
++    let meta = metadata(raw, 7);
++    let opts = options(raw, &meta, "0000000000000000000000000000000000000000");
++    let imported = import_jbotci_export(raw, &meta, &opts).unwrap();
++    assert_eq!(imported.report().lexical_occurrences, 7);
++    assert_eq!(imported.report().excluded_occurrences, 0);
++    assert_eq!(
++        imported.report().diagnostics.get("invalid_selmaho"),
++        Some(&2)
++    );
++    assert_eq!(
++        imported.report().diagnostics.get("invalid_definition_id"),
++        Some(&2)
++    );
++    let entries = &imported.dictionary().metadata().entries;
++    assert_eq!(entries[0].selmaho, Presence::Missing);
++    assert_eq!(entries[1].selmaho, Presence::Null);
++    assert_eq!(entries[2].selmaho, Presence::Value(String::new()));
++    assert_eq!(entries[3].selmaho, Presence::Missing);
++    assert_eq!(
++        imported.dictionary().captures()[0].occurrences[3].fields_named("definition_id")[0]
++            .raw_value,
++        "123456789012345678901234567890"
++    );
++    let registry_rows = imported.dictionary().registry().document().occurrences;
++    assert_eq!(
++        registry_rows[3].native_assertion_id.as_deref(),
++        Some("123456789012345678901234567890")
++    );
++    assert_eq!(registry_rows[4].native_assertion_id, None);
++    assert_eq!(registry_rows[5].native_assertion_id, None);
++    assert_eq!(registry_rows[6].native_assertion_id, None);
++    assert_eq!(
++        imported.dictionary().metadata().releases[0]
++            .diagnostics
++            .iter()
++            .filter(|d| d.code == "invalid_selmaho")
++            .count(),
++        2
++    );
++    assert_eq!(
++        imported.dictionary().metadata().releases[0]
++            .diagnostics
++            .iter()
++            .filter(|d| d.code == "invalid_definition_id")
++            .count(),
++        2
++    );
++}
++
++#[test]
++fn non_display_username_keeps_hashed_attribution_with_a_diagnostic() {
++    let raw =
++        br#"[{"word":"ok","word_type":"gismu","definition":"valid","user":{"username":" bad "}}]"#;
++    let meta = metadata(raw, 1);
++    let opts = options(raw, &meta, "0000000000000000000000000000000000000000");
++    let imported = import_jbotci_export(raw, &meta, &opts).unwrap();
++    assert_eq!(imported.report().contributors, 1);
++    assert_eq!(
++        imported
++            .report()
++            .diagnostics
++            .get("contributor_display_fallback"),
++        Some(&1)
++    );
++    let occurrence = &imported.dictionary().captures()[0].occurrences[0];
++    assert_eq!(
++        occurrence.fields_named("user")[0].raw_value,
++        r#"{"username":" bad "}"#
++    );
++}
++
++#[test]
++fn all_supported_classes_and_cross_column_forms_remain_distinct() {
++    let classes = [
++        "bu-letteral",
++        "cmavo",
++        "cmavo-compound",
++        "cmevla",
++        "experimental cmavo",
++        "experimental gismu",
++        "fu'ivla",
++        "gismu",
++        "lujvo",
++        "nalvla",
++        "obsolete cmavo",
++        "obsolete cmevla",
++        "obsolete fu'ivla",
++        "obsolete zei-lujvo",
++        "phrase",
++        "zei-lujvo",
++    ];
++    let mut rows = Vec::new();
++    for (index, class) in classes.iter().enumerate() {
++        let mut row = serde_json::json!({
++            "word": format!("word-{index}"),
++            "word_type": class,
++            "definition": format!("definition {index}"),
++        });
++        if index == 0 {
++            row["rafsi"] = serde_json::json!(["x", "", "four", "four"]);
++            row["experimental_rafsi"] = serde_json::json!("four extra");
++        }
++        rows.push(row);
++    }
++    rows.push(serde_json::json!({
++        "word":"wikiword", "word_type":"wiki", "definition":"wiki body",
++        "selmaho":"KOhA", "rafsi":"wik"
++    }));
++    rows.push(serde_json::json!({
++        "word":"unknownword", "word_type":"future class", "definition":"future body"
++    }));
++    let raw = serde_json::to_vec(&rows).unwrap();
++    let meta = metadata(&raw, 16);
++    let opts = options(&raw, &meta, "0000000000000000000000000000000000000000");
++    let imported = import_jbotci_export(&raw, &meta, &opts).unwrap();
++    assert_eq!(imported.report().input_rows, 18);
++    assert_eq!(imported.report().lexical_occurrences, 16);
++    assert_eq!(imported.report().excluded_occurrences, 2);
++    assert_eq!(imported.report().eligible_spellings, 16);
++    let forms = &imported.dictionary().metadata().forms;
++    let repeated_four = forms
++        .iter()
++        .filter(|form| form.spelling == "four")
++        .collect::<Vec<_>>();
++    assert_eq!(repeated_four.len(), 3);
++    assert_eq!(repeated_four[0].standing, Presence::Value("rafsi".into()));
++    assert_eq!(repeated_four[1].standing, Presence::Value("rafsi".into()));
++    assert_eq!(
++        repeated_four[2].standing,
++        Presence::Value("experimental_rafsi".into())
++    );
++    assert_eq!(forms[0].spelling, "x");
++    assert!(forms.iter().any(|form| form.spelling.is_empty()));
++    let wiki = &imported.dictionary().metadata().assertions[16];
++    assert!(matches!(wiki.eligibility, Eligibility::Excluded { .. }));
++    let wiki_entry = &imported.dictionary().metadata().entries[16];
++    assert_eq!(wiki_entry.native_word_class, Presence::Value("wiki".into()));
++    assert_eq!(
++        imported.dictionary().captures()[0].occurrences[16].fields_named("rafsi")[0].raw_value,
++        "\"wik\""
++    );
++}
+diff --git a/docs/jbotci-import.md b/docs/jbotci-import.md
+new file mode 100644
+index 0000000..97eac7f
+--- /dev/null
++++ b/docs/jbotci-import.md
+@@ -0,0 +1,112 @@
++# jbotci export import
++
++`vlajmaji-lexicon` exposes `import_jbotci_export(raw, metadata, options)`. It is
++a pure, bounded normalizer for the pinned Lensisku English export distributed
++by jbotci. It opens no files and performs no network access. The input slices
++remain the authority: both complete byte captures and each ordered top-level
++native field lexeme are retained in the returned validated `Dictionary`.
++Repeated JSON object keys, nested repeated keys, repeated definition IDs, and
++repeated spellings are never collapsed. A duplicate-key row has no ambiguous
++typed projection and remains an excluded raw occurrence. Non-object JSON rows
++are represented by a `$row` native field and excluded.
++
++## Pins and identity
++
++Default `JbotciImportOptions` pins the local source revision
++`3d9fd41d9ed32de26311ee27ec86b6b165985aa1`, raw-export SHA-256
++`12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde`, and
++metadata SHA-256
++`fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98`.
++Options can name another exact revision and supply its two expected hashes.
++The embedded metadata `sha256` must equal the expected raw digest. Raw capture
++identity is namespace plus complete-byte digest; occurrence identity is that
++capture plus the array index. Release identity includes distributor revision,
++raw digest, and metadata digest. Thus identical bytes attributed to a different
++revision have a distinct release, while capture, occurrence, assertion, and
++entry identities remain stable. `CaptureMetadata.revision` truthfully records
++the selected distributor revision. Entry and assertion IDs include the raw
++digest, role, and row index (for example, `jbotci-<sha>-entry-0`), so repeated
++native IDs and spellings retain separate row identities.
++
++Input and metadata SHA mismatches are errors. Raw syntax, invalid UTF-8, invalid
++options, malformed metadata, unsupported metadata values, registry failures,
++and model validation failures are returned as typed errors. Metadata accepts a
++bounded assignment format: blank lines and `#` comments, unique bare keys,
++JSON-quoted strings, booleans, and nonnegative `u64` integers. The required
++keys are `language_tag`, `language_realname`, `source_language_tag`, `format`,
++`positive_scores_only`, `filename`, `metadata_url`, `download_url`,
++`lensisku_created_at`, `sha256`, `definition_count`, and `entry_count`.
++Unknown well-formed keys are retained as diagnostics; this parser does not
++claim general TOML compatibility.
++
++## Row projection
++
++Each input row yields one assertion and one raw occurrence, whether eligible or
++excluded. Eligibility requires an object, no duplicate key at any nesting
++level, a nonempty string `word`, a supported string `word_type`, and a
++non-whitespace string `definition`. The 16 supported classes are `bu-letteral`,
++`cmavo`, `cmavo-compound`, `cmevla`, `experimental cmavo`, `experimental gismu`,
++`fu'ivla`, `gismu`, `lujvo`, `nalvla`, `obsolete cmavo`, `obsolete cmevla`,
++`obsolete fu'ivla`, `obsolete zei-lujvo`, `phrase`, and `zei-lujvo`. `wiki`,
++unknown classes, invalid critical values, and non-object rows are retained with
++exclusions and diagnostics. A low or negative score does not affect eligibility.
++Supplier count mismatches are reported; they do not discard rows.
++
++| Export field | Normalized projection |
++| --- | --- |
++| `word` | Exact entry spelling, source language `jbo`; no script or POS inference |
++| `word_type`, `selmaho` | Exact native word class and selma'o presence |
++| `definition` | Assertion text in `en`; markup remains missing rather than inferred |
++| `definition_id` | Registry native assertion ID; never re-labelled as a sense ID |
++| `score` | Raw JSON assertion score; never used to choose a winner |
++| `notes`, `jargon` | Note/domain contexts with exact value and native field-index evidence |
++| `gloss_keywords` | Ordered gloss contexts from objects' `word` values; each original object is also retained as an extension |
++| `place_keywords` | Exact whole-field assertion extension; no argument frames or place parsing |
++| `rafsi`, `experimental_rafsi` | Ordered source-reported forms, preserving order, duplicates, empties, and source-column standing |
++| `etymology` | Etymology statement only; no inferred components |
++| `user` | Source-scoped contributor attribution; no real-name merging |
++| Unknown fields | Exact native field plus an assertion extension and diagnostic |
++
++Missing, null, and empty values remain distinct where the model has a typed
++home. Unsupported optional shapes stay in the raw capture and receive a
++diagnostic without excluding an otherwise eligible row. The adapter does not
++derive frames, relations, sense groupings, owned revisions, dates, morphology,
++or computed annotations.
++
++The source tree's `THIRD-PARTY-NOTICES.md` says the jbovlaste databases are
++placed in the public domain and individual definitions are contributed under
++those terms. This remains a supplier claim: content redistribution is marked
++held pending verification of source coverage and authorization. The adapter
++does not copy or publish corpus data. Its Apache-2.0 code notice is recorded
++separately from the content notice.
++
++## CLI and local proof
++
++`vlajmaji jbotci-import RAW METADATA FRESH.json` validates the complete import,
++serializes it, and creates the output with create-new semantics. It never
++replaces an existing path. A write failure can leave a newly created partial
++file; the command reports the error and does not remove caller paths.
++`vlajmaji jbotci-check RAW METADATA [--release RELEASE.json]` validates without
++writing. `--release` checks canonical validated dictionary equality, and check
++fails if supplier definition or selected-entry counts disagree with the
++observed population. Both commands accept `--revision`, `--raw-sha256`, and
++`--metadata-sha256` overrides. Errors are structured JSON on stderr, with empty
++stdout and a nonzero status.
++
++For the local pinned files, the public example checks both exact input byte
++captures, writes the canonical model bytes to a fresh output path, reloads the
++release, and checks the full population. The example uses exclusive create and
++does not append a line feed; the CLI's human-readable output file does append
++one final line feed, so those file byte counts differ by one:
++
++```sh
++cargo +1.98.0 run --locked --offline -p vlajmaji-lexicon \
++  --example import_jbotci -- RAW.json METADATA.toml /tmp/jbotci-release.json
++```
++
++The observed pinned export contains 33,526 rows and 278,254 ordered native
++fields. It produces 33,516 lexical occurrences, 10 excluded occurrences,
++31,248 distinct eligible spellings, and 238 contributors. The raw capture is
++17,163,482 bytes and metadata is 514 bytes. These are replay observations,
++not claims about other revisions or a redistributable data package. Keep raw
++and metadata files local; acquisition and packaging are separate work.
+diff --git a/docs/migration.md b/docs/migration.md
+index 4301cae..93a0413 100644
+--- a/docs/migration.md
++++ b/docs/migration.md
+@@ -90,3 +90,14 @@ The old SQLite store and archive are read-only inputs to this procedure. The
+ accepted legacy archive may omit model-only opaque records; such records are
+ not synthesized during rebuild. See the [schema-1 field map and lifecycle
+ guide](dictionary-schema.md) and the `dictionary_store` public example.
++
++## Local jbotci export normalization
++
++The S01 `import_jbotci_export` API accepts complete raw and metadata byte
++captures plus explicit expected hashes. It validates before returning a model,
++retains ordered native fields and duplicate keys, and excludes unsupported rows
++without discarding their raw source. `jbotci-import` writes a fresh canonical
++dictionary file; `jbotci-check` validates without writes and can compare a
++release. The [jbotci import guide](jbotci-import.md) documents the exact field
++map, metadata grammar, source-notice limitation, pinned hashes, and replay
++example. Data acquisition and redistribution are outside this local adapter.

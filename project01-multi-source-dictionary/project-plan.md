@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 CLOSED at original accepted revision; Arc02 ACTIVE/readiness; A03–A06 not activated |
+| status | project OPEN; Arc01 CLOSED at original accepted revision; Arc02 ACTIVE; S01 CLOSED, S02 readiness; A03–A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
@@ -199,7 +199,7 @@ question is needed for the already approved roles or endpoint.
 
 Duncan instructed: “okay ... I think we're ready to dive into arc02! Same Autonomous Mode, same model config/setup :-)”. This renews OpenAI GPT 6.1 Sol High CDC / GPT 6 Luna High CC for Arc02, including slice design/implementation/repairs/independent acceptance, composition, formal close/bubble-up and all retrospectives. Stop before A03. [cdc-directive02.md](cdc-directive02.md) is the preserved current assignment; directive01 and the preceding authority section are historical, not current corpus restrictions. Requested/dispatched settings are distinct from unavailable backend attestation.
 
-Assigned CDC `/root/vlajmaji_p01_a02_cdc` acknowledged; root remains read-only. CDC owns planning/source setup; CC owns isolated source mutations only during issued intervals. Fresh source branch/worktree will start from verified clean main `d1e1c928f7999f2220b046cc5a5817f0529312ca`; no main mutation, push, PR, publication, integration, Bauske mutation or later-arc work is authorized. Current source has five `crates/*` packages, `crates/cli`, umbrella crate, Rust1.98 and Bauske0.3.0 pin `c5801ae17caaf86d2651b5ce34570199e873ad0f`; source AGENTS and CI were fully read. Arc01 original acceptance remains efef9c4; later merged corrections/release changes require their own current evidence.
+Assigned CDC `/root/vlajmaji_p01_a02_cdc` acknowledged; root remains read-only. CDC owns planning/source setup; CC owns isolated source mutations only during issued intervals. Fresh source branch/worktree was created from verified clean main `d1e1c928f7999f2220b046cc5a5817f0529312ca`; no main mutation, push, PR, publication, integration, Bauske mutation or later-arc work is authorized. Current source has five `crates/*` packages, `crates/cli`, umbrella crate, Rust1.98 and Bauske0.3.0 pin `c5801ae17caaf86d2651b5ce34570199e873ad0f`; source AGENTS and CI were fully read. Arc01 original acceptance remains efef9c4; later merged corrections/release changes require their own current evidence.
 
 Arc02 expressly authorizes necessary public acquisition/read of pinned jbotci raw `dictionary-en.json` plus metadata at `3d9fd41d9ed32de26311ee27ec86b6b165985aa1`; no live authenticated Lensisku, exhaustive discovery or silent repin. Full rows/fields/alternatives/native accounting, normalized output independent of SQLite, useful Rust/CLI/Bash/Make, offline replay/check/update and complete persist/reopen/grouped querying remain required. Data redistribution held; no massive raw payload in public code. Plan slices after actual source/data reconnaissance. No new dependency without demonstrated need.
 
@@ -214,7 +214,7 @@ exact original paths, revisions, SHA-256 and byte sizes for every copied file.
 Old source pins and measurements remain dated evidence, not current service or
 performance claims. No full corpus, database or Cargo build cache was copied.
 
-Next: complete Arc02 required intake, resource handover and current-source/raw-shape reconnaissance, then open the canonical arc/slice plan and implementation assignment. Arc01 remains closed at its original accepted source; all14projectrows remain open. Planning existence/copy fidelity alone are not implementation acceptance.
+Next: complete one bounded fresh full persistence/reopen/eight-request readiness baseline, then issue S02 pinned pipeline/persisted lookup on independently accepted S01source12fdd67. Arc01 remains closed at its original accepted source; all14projectrows remain open. Child normalization acceptance is not arc composition or project acceptance.
 
 ## Planning validation — initial draft checkpoint
 
@@ -273,6 +273,8 @@ Feature source efef9c4includes inspected initial logo ancestry e0630d8but exclud
 
 ## Arc02 current readiness —2026-10-24
 
-Canonical arc02-reproducible-jbotci-import and7rowS01open set now prepared after fullsource/rawshape reconnaissance. Source isolated clean d1e1c928; data pin exact17,163,482B/33526rows and278254fields,9empty+1wiki retainedexcluded by declaredquerypolicy; supplierselected31248 separate. All8arcrows/7S01rowsOPEN. Readiness/resource/recovery/census evidence lives in the arc artifacts. FixedofflineA02Cargo guard exclusively reuses ownedretainedA01target after bounded abandonedpre-repairprocess recovery; no cachedeletion. Current detailed API/map and preserved prompt are S01; S02will detail pinnedpipeline/fullstore/groupedcomposition on acceptedS01. No sourceimplementation or acceptance yet; all14projectrowsOPEN.
+Canonical arc02-reproducible-jbotci-import S01 is independently accepted at12fdd67 with all7rows closed after two executed refinements. Complete41API/36CLI/915570source checks, full shipped example+negative counterparts/fullCLI and current mandatory gates are in the child verifier/close/retro and hashed accepted artifacts. A02-01DONE/other7arcrowsOPEN; all14projectrowsOPEN. Complete raw33526rows/278254fields and every alternative remain, with33516eligible/31248spellings and10explicitexclusions. S02 must still deliver actual pinned acquisition/replay/check/update, fresh fullstore/reopen/groupedqueries and outside offline composition. CDC owns finite source-grounded readiness and target; CC idle. Main/Bauske clean and protected. Operator cache cleanup was assessed before rebuild: retained target14GiB/debug intact/release absent,449265967104B free at current handover. No cache deletion by contributors, push/publication, A03 or project acceptance.
 
 - 1.8 —2026-10-24: source/data reconnaissance opened canonical Arc02 with two usable slices, eight open arc rows and seven open S01 rows. Actual export shape and full counts ground S01 importer/CLI contract; pinned pipeline/full persistence belongs S02. Source/worktree/cache ownership and abandoned pre-repair process recovery are recorded in owning readiness artifact. No implementation acceptance or project-row closure.
+
+- 1.9 —2026-10-24: accepted full S01 normalization/API/CLI at12fdd67 with complete independent source-native population and current gates; child7rows closed, A02-01done,remaining7arc/14projectrowsopen. S02 actual acquisition/persisted/offline composition remains next; current resource/source ownership reconciled.

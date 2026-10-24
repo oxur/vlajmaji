@@ -1,0 +1,20 @@
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji_a02_cdc_api_20261024a v0.0.0 (/tmp/vlajmaji-p01-a02-cdc/api-caller)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.24s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/a02_cdc_api_controls_20261024a /tmp/vlajmaji-p01-a02-cdc/api-fixtures03`
+positive duplicate-native-and-complete: 2 rows
+positive changed-whitespace: 2 rows
+positive count-mismatch: 2 rows
+positive empty-export: 0 rows
+positive selmaho-valid: 2 rows
+positive selmaho-invalid: 2 rows
+positive definition_id-valid: 2 rows
+positive definition_id-invalid: 2 rows
+positive selmaho-invalid-more: 3 rows
+positive selmaho-valid-more: 4 rows
+positive definition_id-invalid-more: 2 rows
+positive definition_id-valid-more: 6 rows
+positive definition_id-huge-exponent: 2 rows
+positive metadata-unknown-integer-valid: 2 rows
+completed public API: 14 positives, 27 exact error-variant controls, 0 disagreements
+PASS public API controls

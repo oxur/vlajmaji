@@ -1,0 +1,25 @@
+{
+  "label": "s01-full-oracle-attempt03b",
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "argv": [
+    "python3",
+    "-B",
+    "/tmp/vlajmaji-p01-a02-cdc/verify_normalized.py",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/data/jbotci/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/dictionary-en.json",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/data/jbotci/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/dictionary-en.metadata.toml",
+    "/tmp/vlajmaji-p01-a02-cdc/s01-candidate03-full-api.json",
+    "/tmp/vlajmaji-p01-a02-cdc/s01-candidate03-full-report.json"
+  ],
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "head_before": "12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69",
+  "start_unix": 1792881497.6890419,
+  "log": "/private/tmp/vlajmaji-p01-a02-cdc/s01-full-oracle-attempt03b.log",
+  "pid": 70721,
+  "exit": 0,
+  "elapsed_seconds": 5.143,
+  "log_bytes": 1487
+}

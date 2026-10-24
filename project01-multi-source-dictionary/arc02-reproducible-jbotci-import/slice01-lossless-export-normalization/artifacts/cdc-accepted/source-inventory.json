@@ -1,0 +1,73 @@
+{
+  "baseline": "d1e1c928f7999f2220b046cc5a5817f0529312ca",
+  "accepted_source": "12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69",
+  "paths": [
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 1455,
+      "sha256": "d5ccd485c5c1222a552b97a55de1ad216113c41e3cea4aed8b90f8024bfe16a0"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6970,
+      "sha256": "326baefa6679a8b28c6aea5357a74ffd2caedc037a167c677e897b0fc67af9b2"
+    },
+    {
+      "path": "crates/cli/Cargo.toml",
+      "bytes": 731,
+      "sha256": "bc2abab084570f93596a94ea5e38dac447a2f6517fd5c6ecb570b537cf0b080b"
+    },
+    {
+      "path": "crates/cli/README.md",
+      "bytes": 1886,
+      "sha256": "b62eb6660f254e209a16d974a68aa863169b1e7fdad5adaf089d2baaaf83ce90"
+    },
+    {
+      "path": "crates/cli/src/main.rs",
+      "bytes": 13961,
+      "sha256": "e65c00ec676a53fd613cd9b256add9b8ad1c8b02a222e7fa78cda6b7d0efc662"
+    },
+    {
+      "path": "crates/cli/tests/jbotci_contract.rs",
+      "bytes": 12105,
+      "sha256": "0e8886f58036f44d4a332eb66eec8cfd8f9114070a62024e2b6a437c6eb7e540"
+    },
+    {
+      "path": "crates/lexicon/README.md",
+      "bytes": 2477,
+      "sha256": "f0eef77faa05c813c44da4b8eedb9037bb0ab23a84faa0a3f9568a4adbc620b6"
+    },
+    {
+      "path": "crates/lexicon/examples/import_jbotci.rs",
+      "bytes": 2884,
+      "sha256": "32c2ebed6bd03352758abb89a703426db834ce3ed1b5f0b014dd61c77f836392"
+    },
+    {
+      "path": "crates/lexicon/src/jbotci.rs",
+      "bytes": 60694,
+      "sha256": "1dfc5cbd3aec867575df86b0e747f15fbbc83fd22022c9ebcb6c1ce74fa937c9"
+    },
+    {
+      "path": "crates/lexicon/src/lib.rs",
+      "bytes": 51223,
+      "sha256": "a87f12687dfc1dfd7571f805de04662dea929f985a0e5105a79548f5e8649e08"
+    },
+    {
+      "path": "crates/lexicon/tests/jbotci_contract.rs",
+      "bytes": 26606,
+      "sha256": "493f9f14e0f9d09f8e2d1933376df47c2d2d9df6a496507e3dcfb9ac9f3f56f0"
+    },
+    {
+      "path": "docs/jbotci-import.md",
+      "bytes": 6857,
+      "sha256": "205fc9f1d5e6636f0929f1e4762b26d9503f24bf13a9123cf76152da76bde11c"
+    },
+    {
+      "path": "docs/migration.md",
+      "bytes": 6489,
+      "sha256": "2ff95263fb4d9939b0d931eb27b7955ecf6030e0a59367f9c972c86ba3f0e186"
+    }
+  ],
+  "lock_sha256": "b2f09b4cac55033cba2399a85354005bee05cd75ebc87e94147c6415d134cf7f",
+  "source_clean": true
+}

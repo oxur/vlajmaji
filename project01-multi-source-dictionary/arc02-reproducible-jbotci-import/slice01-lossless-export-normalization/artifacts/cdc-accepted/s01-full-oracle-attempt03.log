@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a02-cdc/verify_normalized.py", line 177, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/tmp/vlajmaji-p01-a02-cdc/verify_normalized.py", line 52, in main
+    rawpath,metapath,releasepath,reportpath=sys.argv[1:5]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 4, got 2)

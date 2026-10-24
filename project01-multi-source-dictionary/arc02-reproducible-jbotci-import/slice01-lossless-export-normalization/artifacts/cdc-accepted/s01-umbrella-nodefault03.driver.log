@@ -1,0 +1,44 @@
+{"started": "s01-umbrella-nodefault03", "pid": 75871, "log": "/private/tmp/vlajmaji-p01-a02-cdc/s01-umbrella-nodefault03.log"}
+{
+  "label": "s01-umbrella-nodefault03",
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "argv": [
+    "/tmp/vlajmaji-p01-a02-cargo",
+    "+1.98.0",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "vlajmaji",
+    "--no-default-features"
+  ],
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "head_before": "12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69",
+  "start_unix": 1792881795.8114638,
+  "log": "/private/tmp/vlajmaji-p01-a02-cdc/s01-umbrella-nodefault03.log",
+  "pid": 75871,
+  "exit": 0,
+  "elapsed_seconds": 0.953,
+  "log_bytes": 699
+}
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji-1b07c5e3a0396bc4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests vlajmaji
+
+running 1 test
+test crates/vlajmaji/src/../README.md - (line 36) - compile ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.62s; merged doctests compilation took 0.46s
+

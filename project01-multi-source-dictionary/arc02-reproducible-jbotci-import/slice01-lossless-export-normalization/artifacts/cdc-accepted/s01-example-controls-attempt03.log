@@ -1,0 +1,39 @@
+{
+  "verdict": "PASS",
+  "positive": "full shipped example run/reload previously exit0",
+  "negative_controls": [
+    {
+      "name": "occupied",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/import_jbotci",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/data/jbotci/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/dictionary-en.json",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/data/jbotci/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/dictionary-en.metadata.toml",
+        "/tmp/vlajmaji-p01-a02-cdc/s01 example candidate03.json"
+      ],
+      "exit": 1,
+      "expected_stderr_category": "AlreadyExists",
+      "existing_bytes_preserved": true,
+      "new_output_absent": false
+    },
+    {
+      "name": "invalid-pin",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/import_jbotci",
+        "/tmp/vlajmaji-p01-a02-cdc/api-fixtures03/duplicate-native-and-complete/raw.json",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/data/jbotci/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/dictionary-en.metadata.toml",
+        "/tmp/vlajmaji-p01-a02-cdc/example-invalid-pin03.json"
+      ],
+      "exit": 1,
+      "expected_stderr_category": "HashMismatch",
+      "existing_bytes_preserved": false,
+      "new_output_absent": true
+    }
+  ],
+  "canonical_bytes": 215412497,
+  "canonical_sha256": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460",
+  "example_exact_canonical": true,
+  "cli_exact_canonical_plus_one_lf": true,
+  "cli_bytes": 215412498,
+  "cli_sha256": "b1d86163a02cdbbde30637406df59d5391a033ee3d878f48e24925bc4bbc0c84",
+  "example_binary_sha256": "1d3e5c5a165f853a305dce98ffaded92bf50603791aa3fa57fff64cae7ee2c5b"
+}
