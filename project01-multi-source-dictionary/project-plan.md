@@ -219,7 +219,7 @@ Original research and its planning worktree stayed clean at the recorded HEADs.
 Vlajmaji's tracked source/index and HEAD stayed unchanged at `4ee3bab`. An unrelated
 untracked `assets/` directory appeared in the source checkout during planning;
 it is outside this writer's ownership and was left untouched. The new documents
-exist only in the separate planning worktree and are uncommitted review candidates.
+were preserved as approved review candidates, then committed at `35e368f` before execution readiness.
 
 ## Version history
 
@@ -229,3 +229,11 @@ exist only in the separate planning worktree and are uncommitted review candidat
   project-level artifacts. All implementation rows remain open.
 
 - 1.1 — 2026-10-24: Duncan approved Autonomous execution through Arc01 and explicitly selected CDC GPT 6.1 Sol High / CC GPT 6 Luna High. Recorded isolated feature worktree, stable ownership and one-arc endpoint; later arcs remain unactivated.
+
+## Active CDC preflight — 2026-10-24
+
+Assigned CDC `/root/vlajmaji_p01_a01_cdc` acknowledged `cdc-directive01.md`. Requested OpenAI `gpt-6.1-sol` / high; tool-dispatched configuration is distinct from unknown backend attestation. Planning owner is CDC; source owner passes to the assigned CC only during issued intervals. Root remains read-only. Approved substrate commit: `35e368f`.
+
+Original source baseline remains `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`. During readiness Duncan's separate logo work advanced main through `08c6bdb` to `e0630d8279b9ea48ce5892e201a5c50c52c3a469`. CDC inspected the exact two commits: only `assets/images/v1-250.png` and `assets/images/v1-1254.png` changed. On root's explicit instruction the clean isolated feature branch was fast-forwarded to `e0630d8`; no main or asset mutation occurred. Main's untracked Emacs README buffers are protected. Source APIs remain the inspected `4ee3bab` code.
+
+Task output owner: `CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target`; serialize checks. Source integration destination is the local feature branch, independently accepted at slice and arc scale; main integration remains a later separately authorized action. Next current assignment is recorded at slice scale. No A02 activation or external action is authorized.

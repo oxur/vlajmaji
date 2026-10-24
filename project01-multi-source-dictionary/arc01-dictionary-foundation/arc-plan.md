@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc | project01-multi-source-dictionary / arc01-dictionary-foundation |
-| status | planned candidate; implementation rows open; no assignment issued |
+| status | active; S01 readiness complete; implementation rows open |
 | depends-on | Vlajmaji `4ee3bab`; preserved source/grouping/schema decisions and accepted PoC contracts |
 | blocks | A02 full import, A03 optional releases, A04 composition and A05 owned editing |
-| version / date | 1.0 / 2026-10-24 |
+| version / date | 1.1 / 2026-10-24 |
 
 ## Capability
 
@@ -18,8 +18,7 @@ lookup by arc close. This is a useful dictionary foundation, not a full-corpus
 import or a decision about one-file versus multi-file SQLite.
 
 Use [the project design](../design.md), [the project plan](../project-plan.md) and
-[this arc's ledger](ledger.md). Current authority is planning only. No source
-branch or contributor implementation assignment exists.
+[this arc's ledger](ledger.md). Current authority is Autonomous execution through Arc01 only under `../cdc-directive01.md`. Source branch is `feature/project01-dictionary-foundation`; current contributor assignments live in the child plans.
 
 ## Slice breakdown
 
@@ -114,3 +113,5 @@ their respective slice readiness; no topology decision is required for S01.
 - 1.0 — 2026-10-24: split the historical broad first schema increment into registry,
   persistence/schema and grouped-query slices, retaining all coverage and fixture
   oracles. No implementation or acceptance claimed.
+
+- 1.1 — 2026-10-24: activated the already approved Arc01 authority; reconciled current metadata with the later authorization and source logo-only fast-forward. Scope and every ledger row unchanged.

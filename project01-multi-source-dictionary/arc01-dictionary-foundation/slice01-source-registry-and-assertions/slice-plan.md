@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc / slice | project01-multi-source-dictionary / arc01-dictionary-foundation / slice01-source-registry-and-assertions |
-| status | planned draft; no CC assignment or implementation |
+| status | active; initial CC assignment prepared; implementation not yet attested |
 | depends-on | Vlajmaji `4ee3bab`; Lexicon raw/occurrence/form/proposal contracts |
 | blocks | A01 S02 schema persistence and S03 grouped queries |
-| version / date | 1.0 / 2026-10-24 |
+| version / date | 1.1 / 2026-10-24 |
 
 ## Useful result and before/after
 
@@ -120,10 +120,27 @@ API/type/serde/error/documentation guidance; resolve concrete ID/alias/error and
 serialization choices; specify observable fixture outputs; establish implementer,
 independent verifier, approved settings, source branch and authorized endpoint.
 
-Current assignment: **none**. No `cc-prompt.md` has been issued, no refinement pass
-has run, and no source writer has been dispatched. The source is unchanged on main.
+Current assignment: **`cc-prompt.md`**, initial issue after readiness. No refinement pass has run. Source is the clean isolated feature branch at `e0630d8`; original `4ee3bab` code is unchanged by its logo-only fast-forward.
 
 ## Version history
 
 - 1.0 — 2026-10-24: first planned usable registry/attribution slice, split from
   the preserved broad schema increment without accepting or erasing its criteria.
+
+## Completed author readiness — 2026-10-24
+
+CDC inspected lexicon `lib.rs` lines 1–885 (identity, capture, forms, import, access and archive), complete `tests/contract.rs` (466 lines), workspace/lexicon manifests, Makefile, store identity encoding, and existing crate layout. Original parser details remain untouched in S01. Loaded framework project-management wayfinder/scales/layout/top-down, methodology role and Autonomous sections, full prompt-authoring guide, work-verification ledger/row/independence contracts; Rust scoped API/type/error/doc/anti-pattern/core sections underpin the decisions in the prompt. No runtime baseline success is claimed.
+
+Readiness is source-grounded, design-complete for S01, executable and falsifiable: separate validated ID newtypes; explicit exact alias/retirement/ambiguity policy; versioned registry with constructor-equivalent deserialization; atomic document validation with preserved alias/binding history; attribution borrows preserved captures and errors on missing provenance. Full signatures, wire shapes, tests and applied guide rationale are in `cc-prompt.md`. No SQLite or archive change is authorized. Schema and grouped query obligations remain S02/S03. Packet is bounded to approximately 12–18k tokens of mandatory text and code before implementation, leaving repair headroom; no historical corpus scan is required.
+
+Durable supporting artifact: `artifacts/cc-execution.md` is needed for intake/readback, exact gate observations and CC per-row proposal without giving CC planning/index ownership. CDC incorporates its attestation into canonical close records only after review. An outside-workspace caller under task-owned `/tmp` is retained by exact path in that log.
+
+## Assignment history
+
+| Assignment | Date | Predecessor | Reason | Disposition |
+| --- | --- | --- | --- | --- |
+| `cc-prompt.md` | 2026-10-24 | none | Initial source registry and assertion increment after CDC readiness | issued; CC identity returned by dispatch recorded next |
+
+CDC `/root/vlajmaji_p01_a01_cdc` independently reviews the frozen candidate; CC is explicitly dispatched OpenAI `gpt-6-luna` / high. All seven rows remain open until independently reproduced. Feature branch is the accepted local delivery destination; no main integration or publication.
+
+- 1.1 — 2026-10-24: completed engineering readiness, preserved initial assignment and coherent current authority; original baseline and carryover remain explicit.
