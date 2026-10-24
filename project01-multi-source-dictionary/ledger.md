@@ -1,7 +1,6 @@
 # Project01 ledger
 
-All rows are **open**. They describe future implementation/composition, not the
-completion of this planning pass. Evidence fields are intentionally empty.
+All fourteen project rows remain **open**. S01 registry/attribution is independently accepted at11ec701; its evidence is a partial contribution to P01-01/02/10/12/14, not full-project acceptance. Later corpus/topology/editor/composition obligations remain required. Initial empty fields remain preserved in Git history.
 
 | ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |

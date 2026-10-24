@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc / slice | project01-multi-source-dictionary / arc01-dictionary-foundation / slice01-source-registry-and-assertions |
-| status | active; initial candidate 40a94b4 reviewed; iteration01 active; acceptance pending |
+| status | closed; independently accepted 11ec701; retrospective complete |
 | depends-on | Vlajmaji `4ee3bab`; Lexicon raw/occurrence/form/proposal contracts |
 | blocks | A01 S02 schema persistence and S03 grouped queries |
-| version / date | 1.2 / 2026-10-24 |
+| version / date | 1.3 / 2026-10-24 |
 
 ## Useful result and before/after
 
@@ -120,7 +120,7 @@ API/type/serde/error/documentation guidance; resolve concrete ID/alias/error and
 serialization choices; specify observable fixture outputs; establish implementer,
 independent verifier, approved settings, source branch and authorized endpoint.
 
-Current assignment: **`cc-prompt-iteration01.md`**, following failed initial candidate review. No executed refinement pass yet. Current source baseline is the clean isolated feature branch at `40a94b4`. Initial assignment started at `e0630d8`, whose only changes from original `4ee3bab` were the user's two logo commits; the registry implementation then landed at `40a94b4`.
+Current assignment: **none active; `cc-prompt-iteration01.md` accepted**. One executed refinement. Current accepted source is the clean isolated feature branch at `11ec701`. Initial assignment started at `e0630d8`, whose only changes from original `4ee3bab` were the user's two logo commits; the registry implementation then landed at `40a94b4`.
 
 ## Version history
 
@@ -151,10 +151,16 @@ Fresh `spawn_agent(model=gpt-6-luna, reasoning_effort=high, fork_turns=none)` re
 
 Root established that completed `/root/cdc/p02a02_cc` was explicitly spawned in this conversation as OpenAI `gpt-6-luna` / high / `fork_turns:none` and instructed reuse without changing its model/settings. This is model continuity, not silent substitution; backend attestation remains unreported. It receives the preserved initial prompt with a complete current intake and explicit ownership reset. CDC `/root/vlajmaji_p01_a01_cdc` reviews independently; the former parent/root retains read-only boundaries. The context is not fresh: retain awareness of historical context load and use renewed assignment/source readings, not predecessor acceptance, for this work.
 
-| `cc-prompt-iteration01.md` | 2026-10-24 | `cc-prompt.md` | Reproduced alias/strict nested wire defects and direct-attribution trust-boundary docs | issued; refinement01, source 40a94b4 |
+| `cc-prompt-iteration01.md` | 2026-10-24 | `cc-prompt.md` | Reproduced alias/strict nested wire defects and direct-attribution trust-boundary docs | accepted; refinement01, candidate11ec701; independent gates complete |
 
 Current source ownership returns to CC `/root/cdc/p02a02_cc` for iteration01 only; same approved model/settings, scope and five-refinement cap. CDC remains independent reviewer; no source repair authored by CDC. First candidate and failed controls remain in `closing-report.md`, `cdc-verification.md` and `artifacts/cc-execution.md`.
 
 - 1.2 — 2026-10-24: independent initial review failed two discriminating controls and a documentation boundary; issued preserved refinement01 without changing scope or any criterion.
 
 Metadata correction at refinement01 intake: the old current-source sentence still named the initial e0630d8 input; corrected to 40a94b4 while retaining initial baseline history. No issued prompt or source contract changed.
+
+## Final state
+
+S01 independently accepted at11ec701; all7 rows done. Source is frozen between assignments; no CC source ownership continues without the next preserved prompt. `closing-report.md`, `cdc-verification.md` and `cdc-retrospective.md` complete the close. Full S02/S03 obligations remain as planned.
+
+- 1.3 — 2026-10-24: accepted refinement01 after fresh full independent gates and public controls; closed seven rows and completed retrospective/bubble-up.

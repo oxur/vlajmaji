@@ -1,10 +1,10 @@
 # Arc01 ledger
 
-All rows start open. Child acceptance and arc composition are separate gates.
+Current status: A01-01 done after S01 independent acceptance; the other five rows remain open. Child acceptance and arc composition are separate gates. Initial all-open state is preserved in history.
 
 | ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| A01-01 | S01 supplies independently accepted source/alias/lineage and assertion attribution contracts. | S01 row walk, public caller and independent verification. | correctness-grade | Legacy A03-01 / new foundation split | open | | No new source equivalence inferred. |
+| A01-01 | S01 supplies independently accepted source/alias/lineage and assertion attribution contracts. | S01 row walk, public caller and independent verification. | correctness-grade | Legacy A03-01 / new foundation split | done | reproduced: `slice01-source-registry-and-assertions/cdc-verification.md`,11ec701 | No new source equivalence inferred. |
 | A01-02 | S02 supplies independently accepted broad schema, standard mapping, extensions and old-archive/rebuild handling. | S02 all twelve schema areas, persistence roundtrip and negative schema controls. | correctness-grade | Legacy schema coverage | open | | Preserve raw fields, roles, native IDs and unknowns. |
 | A01-03 | S03 supplies independently accepted grouped exact Rust/CLI queries, totals/pages/availability and links. | S03 complete fixture reference and external consumer. | correctness-grade | Legacy grouped exact contract | open | | Default all assertions; legacy limit behavior explicit. |
 | A01-04 | The three slices compose into one usable fixture dictionary. | Fresh registry → store → API/CLI → full page traversal, removal/re-add and owned revision demonstration. | correctness-grade | Framework composition gate | open | | Accepted children alone are insufficient. |

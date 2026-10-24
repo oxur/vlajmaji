@@ -3,10 +3,10 @@
 | Field | Value |
 | --- | --- |
 | project / arc | project01-multi-source-dictionary / arc01-dictionary-foundation |
-| status | active; S01 readiness complete; implementation rows open |
+| status | active; S01 accepted11ec701; S02 readiness next; S03 pending |
 | depends-on | Vlajmaji `4ee3bab`; preserved source/grouping/schema decisions and accepted PoC contracts |
 | blocks | A02 full import, A03 optional releases, A04 composition and A05 owned editing |
-| version / date | 1.1 / 2026-10-24 |
+| version / date | 1.2 / 2026-10-24 |
 
 ## Capability
 
@@ -115,3 +115,9 @@ their respective slice readiness; no topology decision is required for S01.
   oracles. No implementation or acceptance claimed.
 
 - 1.1 — 2026-10-24: activated the already approved Arc01 authority; reconciled current metadata with the later authorization and source logo-only fast-forward. Scope and every ledger row unchanged.
+
+## S01 close bubble-up — 2026-10-24
+
+S01 delivered registry/attribution at11ec701 after one refinement; all7 rows independently reproduced. No structural slice/architecture change is needed. S02 retains every twelve-area schema obligation, including explicit source-asserted etymology under morphology/relations; S03 retains grouped Rust/CLI/totals/pages/availability/history controls. Source-asserted structure must not be confused with computed parsing. The next fixture/persistence packet will use distinct public-caller package names after the S01 shared-target executable anomaly. Root's read-only41/41 byte/hash/size check of preserved research is preservation evidence only, not implementation acceptance.
+
+- 1.2 — 2026-10-24: S01 acceptance and retrospective completed; recorded the retired-selector/strict-wire repairs and explicit S02 carryover before next-slice preparation.

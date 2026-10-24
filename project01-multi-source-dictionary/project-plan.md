@@ -237,3 +237,7 @@ Assigned CDC `/root/vlajmaji_p01_a01_cdc` acknowledged `cdc-directive01.md`. Req
 Original source baseline remains `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`. During readiness Duncan's separate logo work advanced main through `08c6bdb` to `e0630d8279b9ea48ce5892e201a5c50c52c3a469`. CDC inspected the exact two commits: only `assets/images/v1-250.png` and `assets/images/v1-1254.png` changed. On root's explicit instruction the clean isolated feature branch was fast-forwarded to `e0630d8`; no main or asset mutation occurred. Main's untracked Emacs README buffers are protected. Source APIs remain the inspected `4ee3bab` code.
 
 Task output owner: `CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target`; serialize checks. Source integration destination is the local feature branch, independently accepted at slice and arc scale; main integration remains a later separately authorized action. Next current assignment is recorded at slice scale. No A02 activation or external action is authorized.
+
+## Arc01 current progress — 2026-10-24
+
+S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 readiness proceeds next, then S03 and the independent arc composition gate. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
