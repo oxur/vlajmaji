@@ -14,29 +14,41 @@ and the possibilities of combining them. Its aim is to bring multiple
 lexicons together without losing who said what, then make that material useful
 for language study, word creation, poetry, and song.
 
-## Current proof of concept
+## What 0.2.0 provides
 
 The Rust workspace already provides:
 
 - A lexical archive that preserves source snapshots, raw records, provenance,
   and alternative assertions, keeping computed analyses and user proposals separate.
-- An additive validated source registry for exact aliases, lineage and borrowed
+- A validated source registry for exact aliases, lineage, contributors, and
   attribution of preserved occurrences ([guide](docs/source-registry.md)).
-- An immutable relational persistence boundary for the versioned dictionary
-  model, with strict read-only reopen validation
-  ([schema guide](docs/dictionary-schema.md)).
+- An immutable, versioned dictionary model with explicit source, owned,
+  editorial, and computed evidence, plus an explicit legacy archive adapter
+  ([model guide](docs/dictionary-model.md),
+  [standards mapping limits](docs/dictionary-standards-map.md)).
+- SQLite persistence for that dictionary model, with strict read-only reopen
+  validation ([schema guide](docs/dictionary-schema.md)).
+- Source-grouped exact lookup with source selection, complete pre-page totals,
+  occurrence-based paging, and stable local/catalogue reference resolution
+  ([query guide](docs/dictionary-query.md)).
 - Rebuildable SQLite indexes and an optional Oxigraph backend for research comparisons.
 - Exact and reverse-definition lookup, source-link traversal, spelling distance,
   and bounded phonological and prosodic filters.
 - Optional compound decomposition and generation through `latkerlo-jvotci`.
-- A JSON CLI, `vlajmaji`, for building stores and running queries.
+- A JSON CLI, `vlajmaji`, including `dictionary-build` and `dictionary-query`
+  alongside the existing archive/search commands.
+- An umbrella library, `vlajmaji`, exposing `lexicon`, `store`, and `search`, with
+  optional `morphology` and `graph` features.
 
-The PoC has been exercised against 21,241 records from 16 source snapshots.
+The earlier archive/search PoC was exercised against 21,241 records from 16
+source snapshots. The new grouped-dictionary path has a reproducible fixture
+and public API/CLI examples; complete upstream dictionary imports remain future work.
 Search scores and generated compounds are experimental aids; they do not establish
 attested usage, semantic equivalence, or poetic merit.
 
 | Package | Role |
 | --- | --- |
+| [`vlajmaji`](crates/vlajmaji) | Umbrella library re-exporting lexicon, store, and search, with opt-in morphology and graph features |
 | [`vlajmaji-lexicon`](crates/lexicon) | Source-preserving lexical data and archives |
 | [`vlajmaji-store`](crates/store) | Persistence and native indexes |
 | [`vlajmaji-search`](crates/search) | Reusable queries and computed analyses |
@@ -44,7 +56,19 @@ attested usage, semantic equivalence, or poetic merit.
 
 ## Try it
 
-Use Rust 1.98.0 or newer. Check out [Bauske](https://github.com/oxur/bauske)
+Use Rust 1.98.0 or newer. Install the published CLI with:
+
+```sh
+cargo +1.98.0 install vlajmaji-cli --version 0.2.0 --locked
+vlajmaji --help
+```
+
+For a Rust library, add `vlajmaji = "0.2.0"` to your dependencies and use
+`vlajmaji::{lexicon, store, search}`. The
+[umbrella crate README](crates/vlajmaji/README.md) links the component crates and
+describes the opt-in features.
+
+For a source checkout, place [Bauske](https://github.com/oxur/bauske)
 alongside this repository: phonology currently resolves through
 `../bauske/crates/phonology`.
 
@@ -55,18 +79,32 @@ cargo +1.98.0 test --locked --workspace
 cargo +1.98.0 run --locked -p vlajmaji-cli -- --help
 ```
 
+Try the grouped-dictionary commands with a fresh fixture and store:
+
+```sh
+run_dir=$(mktemp -d)
+cargo +1.98.0 run --locked -p vlajmaji-lexicon --example dictionary_fixture -- "$run_dir/dictionary.json"
+cargo +1.98.0 run --locked -p vlajmaji-cli -- dictionary-build "$run_dir/dictionary.json" "$run_dir/store"
+cargo +1.98.0 run --locked -p vlajmaji-cli -- dictionary-query "$run_dir/store" \
+  --request '{"operation":"exact","spelling":"farvi","options":{"page_size":2}}'
+```
+
+The response keeps competing definitions under their named sources, reports
+complete totals before paging, and returns a continuation cursor when needed.
+The [query guide](docs/dictionary-query.md) covers source filters, paging,
+availability, stable references, and structured errors.
+
 Corpus data is not bundled. The [migration and replay guide](docs/migration.md)
 describes importing research inputs, building a store, querying it, and running
 the separately gated full-corpus test.
 
 ## Where this is going
 
-Next comes a richer source-grouped dictionary model, scripted imports, optional
-per-corpus data crates, and an editable dictionary of our own. The longer aim is
+Next come reproducible full-corpus imports, independently selectable corpus
+packages, multi-store composition, and an editable dictionary of our own. The longer aim is
 a practical vocabulary laboratory connected to Bauske's linguistic tools.
 
-The workspace is on the **0.2.0 development cycle**; its APIs are experimental.
-The latest published release is 0.1.0, whose CLI command is still `relojban-search`.
+The current release is **0.2.0**; its APIs remain experimental.
 
 ## Development and releases
 
@@ -88,12 +126,6 @@ planning work is preserved.
 
 Use `make publish-dry-run` to verify the workspace packages and `make publish`
 to upload them to crates.io. Publish the Bauske dependency first. The packaged crates include their own READMEs and licenses.
-
-The lexicon crate also exposes an immutable validated in-memory [`Dictionary`](crates/lexicon/README.md) model and explicit legacy archive adapter. Its typed source, owned, editorial, and computed evidence distinctions and standards mapping limits are documented in [`docs/dictionary-model.md`](docs/dictionary-model.md) and [`docs/dictionary-standards-map.md`](docs/dictionary-standards-map.md).
-
-The `vlajmaji-search` crate also provides grouped exact lookup over persisted
-dictionary stores, stable local/catalogue reference resolution, and a
-`dictionary_lookup` example. See the [query guide](docs/dictionary-query.md).
 
 ## License
 

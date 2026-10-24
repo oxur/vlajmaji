@@ -1,7 +1,9 @@
 # Changelog
 
-## 0.2.0 (unreleased)
+## 0.2.0 (2026-10-24)
 
+- Add the `vlajmaji` umbrella library with opt-in morphology and graph features.
+- Add Linux/macOS CI, dependency caching, and build-helper checks.
 - Move the CLI package into `crates/cli` alongside the library crates.
 - Add grouped exact lookup, stable dictionary references, and the
   `dictionary-build` / `dictionary-query` CLI commands.

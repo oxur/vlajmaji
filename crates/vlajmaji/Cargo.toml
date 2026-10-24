@@ -1,0 +1,27 @@
+[package]
+name = "vlajmaji"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+license.workspace = true
+repository.workspace = true
+readme = "README.md"
+description = "Umbrella crate for source-preserving (Re)Lojban dictionaries, storage, and search."
+keywords = ["lojban", "relojban", "dictionary", "search", "lexicon"]
+categories = ["text-processing", "science"]
+documentation = "https://docs.rs/vlajmaji"
+include = ["Cargo.toml", "README.md", "LICENSE", "src/**"]
+
+[features]
+default = []
+morphology = ["vlajmaji-search/morphology"]
+graph = ["vlajmaji-store/graph"]
+
+[dependencies]
+vlajmaji-lexicon.workspace = true
+vlajmaji-store.workspace = true
+vlajmaji-search.workspace = true
+
+[lints]
+workspace = true

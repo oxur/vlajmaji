@@ -10,7 +10,7 @@ original source bytes, snapshot identities, locators, competing assertions, and
 source-native form roles. Computed analyses and caller proposals remain separate
 from captured lexical material.
 
-The workspace is on the 0.2.0 development cycle, uses Rust edition 2024, and
+The workspace is at version 0.2.0, uses Rust edition 2024, and
 requires Rust 1.98 or newer. Development commands and CI select Rust 1.98.0.
 Supported platforms are macOS and Linux. Corpus data is not bundled with the
 current implementation; synthetic fixtures support ordinary offline tests.
@@ -44,6 +44,7 @@ repository, instructions, and commits.
 
 | Package | Path | Responsibility |
 | --- | --- | --- |
+| `vlajmaji` | `crates/vlajmaji` | Umbrella library re-exporting `lexicon`, `store`, and `search`, with opt-in `morphology` and `graph` features; its README also supplies its rustdoc landing page. |
 | `vlajmaji-lexicon` | `crates/lexicon` | Canonical source records, raw bytes, provenance, occurrence identities, proposals, imports, and lexical archives. |
 | `vlajmaji-store` | `crates/store` | Rebuildable SQLite/FTS5 indexes and an optional Oxigraph/RocksDB backend. |
 | `vlajmaji-search` | `crates/search` | Source-preserving queries, spelling distance, phonological/prosodic filters, and optional compound analysis. |
@@ -55,6 +56,11 @@ Keep reusable data, persistence, and query behavior in the libraries.
 `morphology` feature enables `latkerlo-jvotci`. The CLI enables that feature.
 `vlajmaji-store` has no default features; `graph` enables Oxigraph/RocksDB and
 requires native C++ and Clang/libclang tooling.
+
+Use absolute crates.io, docs.rs, and repository links in the umbrella README so
+they work in the packaged README and generated rustdoc. The CLI binary has
+`doc = false` to avoid overwriting the umbrella library's `vlajmaji` docs; link
+to its package and CLI guide instead of expecting a library API page.
 
 Integration tests live in each package's `tests/` directory. The repository-level
 `tests/test-build-tools.sh` exercises Make and the planning helper with disposable

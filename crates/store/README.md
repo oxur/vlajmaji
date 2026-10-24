@@ -28,11 +28,8 @@ assert_eq!(reopened.dictionary().document(), dictionary.document());
 
 The destination leaf must be fresh and its parent must already exist. Open is
 read-only and never migrates or repairs. See the
-[schema and trust-boundary guide](../../docs/dictionary-schema.md) and the
+[schema and trust-boundary guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-schema.md) and the
 `dictionary_store` example.
-
-The next development version is 0.2.0. Until it is published, use a local
-path dependency on this crate; the version below describes the upcoming release.
 
 ```toml
 [dependencies]
