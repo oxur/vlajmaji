@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    # The orphan planning branch contains documents, not the Rust workspace.
+    branches-ignore: [planning]
+  pull_request:
+    branches-ignore: [planning]
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: 1
+
+defaults:
+  run:
+    working-directory: vlajmaji
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: vlajmaji
+      # Cargo.toml resolves phonology through ../bauske/crates/phonology.
+      - uses: actions/checkout@v4
+        with:
+          repository: oxur/bauske
+          ref: ccacb4076a99afa5acf1363a4139295576fe8517 # Compatible 0.2.0 development revision.
+          path: bauske
+      - uses: dtolnay/rust-toolchain@1.98.0
+        with:
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: vlajmaji -> target
+      - run: cargo check --workspace --locked
+      - run: cargo fmt --all -- --check
+      - run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - run: cargo doc --workspace --locked --no-deps
+      - run: make test-tools
+
+  test:
+    name: Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: vlajmaji
+      - uses: actions/checkout@v4
+        with:
+          repository: oxur/bauske
+          ref: ccacb4076a99afa5acf1363a4139295576fe8517 # Keep in sync with the check job.
+          path: bauske
+      - uses: dtolnay/rust-toolchain@1.98.0
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: vlajmaji -> target
+      - run: cargo test --workspace --locked
+      # Isolate search so the CLI cannot enable morphology through feature unification.
+      - if: runner.os == 'Linux'
+        run: cargo test --locked -p vlajmaji-search --no-default-features
+      - name: Install graph backend build dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y clang libclang-dev
+      - if: runner.os == 'Linux'
+        run: cargo test --workspace --all-features --locked
