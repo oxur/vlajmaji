@@ -1,6 +1,11 @@
 # Vlajmaji
 
-(Re)Lojban dictionaries, schemas, libraries, and command-line tools.
+[![Build Status][gh-actions-badge]][gh-actions]
+[![Tags][github-tags-badge]][github-tags]
+
+[![Project Logo][logo]][logo-large]
+
+*(Re)Lojban dictionaries, schemas, libraries, and command-line tools*
 
 Vlajmaji is a growing dictionary workbench for exploring words, their sources,
 and the possibilities of combining them. Its aim is to bring multiple
@@ -76,3 +81,19 @@ planning work is preserved.
 
 Use `make publish-dry-run` to verify the workspace packages and `make publish`
 to upload them to crates.io. Publish the Bauske dependency first. The packaged crates include their own READMEs and licenses.
+
+## License
+
+``` text
+Apache License, Version 2.0
+```
+
+[//]: ---Named-Links---
+
+[logo]: assets/images/v1-250.png
+[logo-large]: assets/images/v1-1254.png
+[gh-actions-badge]: https://github.com/oxur/vlajmaji/actions/workflows/ci.yml/badge.svg
+[gh-actions]: https://github.com/oxur/vlajmaji/actions/workflows/ci.yml
+[version]: https://github.com/oxur/vlajmaji/blob/main/.github/workflows/ci.yml
+[github-tags]: https://github.com/oxur/vlajmaji/tags
+[github-tags-badge]: https://img.shields.io/github/tag/oxur/vlajmaji.svg
