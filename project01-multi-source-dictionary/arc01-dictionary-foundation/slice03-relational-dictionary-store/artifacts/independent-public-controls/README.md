@@ -29,3 +29,5 @@ Before freeze the constraint specimen was expanded with actual extended-code che
 ## Pre-candidate isolated schema tampering
 
 The prospective negative matrix now includes dropping a table and separately removing one FK or one CHECK from stored schema SQL while keeping columns/data and other constraints. The helper supports inline/table FKs and balances quoted CHECK parentheses. It was calibrated against two independently synthetic in-memory Python SQLite schemas; both inline/table helper calibrations passed. Those calibrations are specimen mechanics, not pinned backend/product results. The actual candidate setup must parse successfully before the public opener is expected to reject SchemaShape. Static specimen census is94 prospective controls:21 explicit negative opens,42 same-count scalar projections and31 actual constraint-code checks. No S03 candidate matrix has been run yet.
+
+Before frozen return, the public caller additionally compiles exact borrowed API return types and asserts Error::source preserves each wrapped model/backend/IO cause whenever those negative paths execute. No product build/run preceded this specimen update.

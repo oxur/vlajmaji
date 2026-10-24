@@ -2,10 +2,24 @@ use std::{env, fs, io, path::Path};
 use vlajmaji_lexicon::{Dictionary, SourceRegistry};
 use vlajmaji_store::{DictionaryStore, DictionaryStoreError, LexicalStore, SqliteStore};
 
+fn require_api_types(store: &DictionaryStore) {
+    let _: &Dictionary = store.dictionary();
+    let _: &[u8] = store.canonical_bytes();
+    let _: &Path = store.path();
+    let _: std::path::PathBuf = store.database_path();
+}
+
 fn outcome<T>(r: Result<T, DictionaryStoreError>) -> Option<T> {
     match r {
         Ok(v) => Some(v),
         Err(e) => {
+            use std::error::Error;
+            match &e {
+                DictionaryStoreError::InvalidDictionary(inner) => assert_eq!(e.source().unwrap().to_string(), inner.to_string()),
+                DictionaryStoreError::Backend(inner) => assert_eq!(e.source().unwrap().to_string(), inner.to_string()),
+                DictionaryStoreError::Io(inner) => assert_eq!(e.source().unwrap().to_string(), inner.to_string()),
+                _ => {},
+            }
             match &e {
                 DictionaryStoreError::ExistingPath(_) => println!("ERR ExistingPath"),
                 DictionaryStoreError::InvalidDictionary(_) => println!("ERR InvalidDictionary"),
@@ -27,6 +41,7 @@ fn main() {
                 Ok(v)=>v, Err(e)=>{println!("MODELERR {e:?}");return;}
             };
             let Some(store)=outcome(DictionaryStore::create(&args[3], &dictionary)) else {return;};
+            require_api_types(&store);
             assert_eq!(store.dictionary().document(),dictionary.document());
             assert_eq!(store.canonical_bytes(),dictionary.to_json_bytes().unwrap());
             assert_eq!(store.path(),Path::new(&args[3]));
