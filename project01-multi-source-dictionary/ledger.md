@@ -64,3 +64,7 @@ Exact Operator approval and concrete provider/measurement recipe are recorded in
 Arc04 protocol1.3 records actual out-of-order comparator readiness, two retained completed stores and no query/timing/selection. Further Full operations are held until the specific Operator response to a concrete reuse-two/finish-three proposal. This adds no runtime acceptance or project closure; all fourteen row contracts/statuses/owners unchanged.
 
 Protocol1.4 supersedes interim reuse advice with a proposed clean re-entry and explicit total-store count amendment; no new acceptance or project-row/status/owner change.
+
+## S01 count answer recorded — 2026-10-25
+
+Duncan explicitly approved seven TOTAL candidate stores: retain the two historical/unaccepted stores and create five clean comparison stores only after the remaining prerequisites. Protocol 1.5 records the exact answer and timestamp semantics. Same seven working hours including preparation, 12 GiB including the retained two, 600-second bounds and three balanced rounds; no reset. COUNT gate cleared only. Full operations remain HOLD until CDC reviews the complete comparator/prefix/source/gates, batch/reference/page and Value-serialization harness, frozen category config, binaries and expanded argv. No topology decision or acceptance is implied; all rows remain OPEN. All fourteen project criteria, statuses and owners remain unchanged.

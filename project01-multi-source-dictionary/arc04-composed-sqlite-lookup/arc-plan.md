@@ -2,9 +2,9 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01 Full operations HOLD under protocol1.3 after prerequisite violation; bounded readiness repair only, no acceptance |
-| version / date | 1.4 / 2026-10-25, America/Chicago |
-| authority | Latest 2026-10-25: Duncan explicitly approved protocol 1.1 — “this looks good! Approved, and engage!” Autonomous THROUGH ARC04 ONLY; unchanged Sol6.1/high CDC and Luna/high CC. Concrete S01 recipe issued. Prior planning-only/HOLD checkpoints remain historical. |
+| status | ACTIVE; protocol 1.5 count amendment approved; S01 Full operations HOLD at remaining readiness prerequisites, no acceptance |
+| version / date | 1.5 / 2026-10-25, America/Chicago |
+| authority | Latest 2026-10-25: Duncan explicitly approved seven TOTAL stores in protocol 1.5, retaining the historical two plus clean fresh five after remaining prerequisites. Original protocol 1.1 approval and Autonomous THROUGH ARC04 ONLY persist; unchanged Sol6.1/high CDC and Luna/high CC. No Full launch before CDC readiness clearance. Prior checkpoints remain historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Arc01–03; current isolated source7b1c565, protected main52fd3c4/Bauskec5801ae; actual four Full packs and source/native/reference evidence |
 | integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; created clean fromaccepted7b, no product changes/builds |
@@ -87,3 +87,7 @@ Charge 30 minutes preparation and at most 60 further freeze minutes from 22:06:1
 Protocol1.3 records the actual pre-create comparator-gate violation: Jbotci/LLG completed, La load interrupted before create, two of five slots consumed, no query/timing round. General Arc04 approval persists; remaining Full create/query/timing requires the specific explicit Operator exception after concrete controls/validation/tiny-tested resume proposal. No deletion/recreation/reset or retrospective before-create claim. All ten arc rows and fourteen project rows OPEN, no selected topology or dependent S02 issue.
 
 Version1.4 current re-entry proposal: preserve early two as historical/unaccepted; recommend clean five-store rerun with total count five→seven ONLY if Duncan explicitly approves. Same time/disk/stage/trial caps. No bespoke resume or extra old-store Full validation now; cheap comparator and tiny RSS/timeout wrapper/proposal work only. See protocol1.4; prior reuse recommendation is superseded.
+
+## Version 1.5 — count amendment and prerequisite boundary
+
+Duncan explicitly approved seven TOTAL candidate stores: retain the two historical/unaccepted stores and create five clean comparison stores only after the remaining prerequisites. Protocol 1.5 records the exact answer and timestamp semantics. Same seven working hours including preparation, 12 GiB including the retained two, 600-second bounds and three balanced rounds; no reset. COUNT gate cleared only. Full operations remain HOLD until CDC reviews the complete comparator/prefix/source/gates, batch/reference/page and Value-serialization harness, frozen category config, binaries and expanded argv. No topology decision or acceptance is implied; all rows remain OPEN.

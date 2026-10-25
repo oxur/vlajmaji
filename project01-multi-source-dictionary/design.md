@@ -227,3 +227,7 @@ The explicit Operator approval in protocol 1.2 supersedes the prior HOLD checkpo
 Current execution constraint, 2026-10-25: protocol1.3 specifically HOLDS further S01 Full create/query/timing after a pre-create comparator prerequisite violation. Concrete provider design is unchanged; retained-two/finish-three exception requires explicit Operator response. No comparison result or topology selection exists.
 
 The newer protocol1.4 recommendation is clean re-entry (retained two plus fresh five), not a bespoke resume. Count amendment remains an explicit Operator decision; no topology/data/API scope change.
+
+## Current count amendment and unchanged design — 2026-10-25
+
+Duncan explicitly approved seven TOTAL candidate stores: retain the two historical/unaccepted stores and create five clean comparison stores only after the remaining prerequisites. Protocol 1.5 records the exact answer and timestamp semantics. Same seven working hours including preparation, 12 GiB including the retained two, 600-second bounds and three balanced rounds; no reset. COUNT gate cleared only. Full operations remain HOLD until CDC reviews the complete comparator/prefix/source/gates, batch/reference/page and Value-serialization harness, frozen category config, binaries and expanded argv. No topology decision or acceptance is implied; all rows remain OPEN.

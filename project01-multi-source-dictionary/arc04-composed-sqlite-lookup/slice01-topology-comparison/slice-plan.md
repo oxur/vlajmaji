@@ -2,7 +2,7 @@
 
 | Field | Current state |
 | --- | --- |
-| status | ISSUED; Full operations HOLD after existing pre-create gate violation (protocol1.3); bounded comparator/RSS-wrapper/fresh-reentry proposal only; all six rows OPEN |
+| status | ISSUED; protocol 1.5 count amendment approved; Full operations HOLD at remaining harness/control/gate/freeze prerequisites; all six rows OPEN |
 | authority | Duncan: “this looks good! Approved, and engage!” Protocol 1.1 inquiry, effort and numeric limits explicitly approved via root; applicability/accounting in protocol 1.2. Autonomous THROUGH ARC04 ONLY. |
 | roles | Requested/configured Sol6.1/high CDC, retained Luna/high CC; backend attestation unavailable. CDC design/planning/independent acceptance; CC source/index/target during issued interval; root read-only. |
 | source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; starts clean 7b1c565ebf6c8a423e04211b599006b8c21d65d9 |
@@ -76,7 +76,7 @@ Public controls include within-input duplicates and unequal cross-input source/m
 
 Protocol 1.2 charges 30 minutes preparation and at most 60 further freeze minutes from retained 2026-10-25 22:06:10 UTC; accounting allocation, not fabricated elapsed measurement. Seven working hours TOTAL including prep; adapter allocation three hours, Full stage 90 minutes, analysis 60 minutes are not reset on handoff. Record actual working checkpoints. Cap exhaustion yields incomplete/inconclusive rows OPEN, never shortcuts.
 
-At most FIVE new Full stores: one U plus SAME four shared A/F, at most 12 GiB new data/scratch, 600 seconds per create/verify. No copying old/default stores, no duplicate cache. CC runs ONE timing round U/A/F at stable source; CDC reserves A/F/U and F/U/A on SAME frozen binaries/stores. Maximum three balanced rounds. Independent tiny stores are separate. Record actual Rust/SQLite/options/runtime attachment limit, source/input/binary/profile, raw wall/RSS/disk/connections/bytes/exit; unavailable evidence stays unresolved. No cache purge/disk-cold claims.
+At most SEVEN TOTAL Full stores under protocol 1.5: retain the two early historical/unaccepted stores, then one clean U plus the SAME clean four shared A/F after prerequisites. At most 12 GiB new data/scratch INCLUDING the retained two, 600 seconds per create/verify. No copying old/default stores, no duplicate cache. CC runs ONE timing round U/A/F at stable source; CDC reserves A/F/U and F/U/A on SAME frozen binaries/stores. Maximum three balanced rounds. Independent tiny stores are separate. Record actual Rust/SQLite/options/runtime attachment limit, source/input/binary/profile, raw wall/RSS/disk/connections/bytes/exit; unavailable evidence stays unresolved. No cache purge/disk-cold claims.
 
 Every Cargo/Make: login:false, explicit ENV CARGO_TARGET_DIR at retained target, CARGO_NET_OFFLINE=true, fixed A04 guard +1.98.0, locked/offline after initial offline lock creation. Target assignments must not leak through command-line MAKEFLAGS. One writer/scanner. Unique outside package AND binary names; scratch Python -B only for orchestration/reference, no shipped runtime requirement.
 
@@ -92,3 +92,7 @@ Current full durable logs: make format → lint → check, actual populations; a
 - 1.2, 2026-10-25: protocol1.3 records actual pre-create comparator violation, two retained completed stores and specific Operator exception gate. Current CC interval continues only bounded comparator/tiny resume/gates and allowed read-only validation; no remaining Full create/query/timing until explicit response. Initial issued prompts preserved, no cap/reset/acceptance.
 
 - 1.3, 2026-10-25: protocol1.4 supersedes interim reuse advice. Current recommendation is clean five-store rerun with retained two historical stores, proposed total cap seven; NOT approved. No bespoke resume/extra old-store Full validation now. Tiny-tested RSS/timeout wrapper and exact resource/time proposal precede root’s one Operator choice.
+
+## Version 1.4 — count answer and remaining execution gate
+
+Duncan explicitly approved seven TOTAL candidate stores: retain the two historical/unaccepted stores and create five clean comparison stores only after the remaining prerequisites. Protocol 1.5 records the exact answer and timestamp semantics. Same seven working hours including preparation, 12 GiB including the retained two, 600-second bounds and three balanced rounds; no reset. COUNT gate cleared only. Full operations remain HOLD until CDC reviews the complete comparator/prefix/source/gates, batch/reference/page and Value-serialization harness, frozen category config, binaries and expanded argv. No topology decision or acceptance is implied; all rows remain OPEN.

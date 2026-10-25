@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 CLOSED; all14projectrowsOPEN; A04 active; S01 Full operations HOLD at specific prerequisite-exception gate; A05/A06 not activated |
+| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 CLOSED; all14projectrowsOPEN; A04 active; S01 count amendment approved; Full operations HOLD at remaining readiness prerequisites; A05/A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.20 / 2026-10-25, America/Chicago |
+| version / date | 1.21 / 2026-10-25, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -358,3 +358,7 @@ See Arc04 protocol1.3: the required pre-create comparator gate was violated befo
 - 1.20 — 2026-10-25: actual prerequisite deviation and specific HOLD recorded without rewriting history, accepting a topology, resetting limits or changing project contracts.
 
 Current re-entry recommendation update: protocol1.4 proposes preserving early two as historical and a clean fresh five-store run, requiring explicit count five→seven amendment. Other caps unchanged; no further Full operation or bespoke resume until response. This supersedes the interim reuse proposal, without changing its recorded chronology.
+
+## Version 1.21 — S01 count amendment approved, remaining readiness HOLD
+
+Duncan explicitly approved seven TOTAL candidate stores: retain the two historical/unaccepted stores and create five clean comparison stores only after the remaining prerequisites. Protocol 1.5 records the exact answer and timestamp semantics. Same seven working hours including preparation, 12 GiB including the retained two, 600-second bounds and three balanced rounds; no reset. COUNT gate cleared only. Full operations remain HOLD until CDC reviews the complete comparator/prefix/source/gates, batch/reference/page and Value-serialization harness, frozen category config, binaries and expanded argv. No topology decision or acceptance is implied; all rows remain OPEN.
