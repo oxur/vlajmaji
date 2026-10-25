@@ -1,0 +1,16 @@
+[1;34mRunning Clippy...[0m
+cargo_pid=512
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/crates/cli)
+error: the borrowed expression implements the required traits
+    --> crates/cli/tests/jbotci_pipeline.rs:1220:35
+     |
+1220 |     assert_eq!(fs::read_to_string(&root.join("curl count")).unwrap(), "2\n");
+     |                                   ^^^^^^^^^^^^^^^^^^^^^^^^ help: change this to: `root.join("curl count")`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#needless_borrows_for_generic_args
+     = note: `-D clippy::needless-borrows-for-generic-args` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::needless_borrows_for_generic_args)]`
+
+error: could not compile `vlajmaji-cli` (test "jbotci_pipeline") due to 1 previous error
+make: *** [lint] Error 101

@@ -1,0 +1,3 @@
+#!/bin/bash
+printf 'cargo_pid=%s\n' "$$"
+exec /tmp/vlajmaji-p01-a02-cargo "$@"

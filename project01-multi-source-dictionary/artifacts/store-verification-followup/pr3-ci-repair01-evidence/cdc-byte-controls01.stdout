@@ -1,0 +1,12 @@
+{
+  "verdict": "PASS",
+  "source": "c49b3c6bbfd892714bcb73b38a485c0b585c6614",
+  "script_sha256": "519287da608ec8613015f261e3d4947936af64ed64dc635159b355a375574875",
+  "bash": "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)",
+  "original_invalid": 8,
+  "added_forbidden": 6,
+  "valid_printable_lf_eof": 3,
+  "failed_filters": 2,
+  "cases": 19,
+  "limits": "Synthetic transport/CLI stubs exercise byte-preflight and no-sideeffect process boundary only; native cargo pipeline tests exercise real tiny importer. BSDmac Bash3.2 local proof, no GNU/Linux equivalence claim; hosted LinuxCI remains final platform proof."
+}

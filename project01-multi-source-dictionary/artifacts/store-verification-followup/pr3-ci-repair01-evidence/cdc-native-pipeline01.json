@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a02-cargo",
+    "+1.98.0",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "vlajmaji-cli",
+    "--test",
+    "jbotci_pipeline"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji",
+  "pid": 15091,
+  "exit": 0,
+  "elapsed_s": 2.109764374792576,
+  "source_head": "c49b3c6bbfd892714bcb73b38a485c0b585c6614",
+  "source_status_before": "",
+  "source_head_after": "c49b3c6bbfd892714bcb73b38a485c0b585c6614",
+  "target": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+  "offline": true,
+  "profile": "command-specific",
+  "streams": {
+    "stdout": {
+      "bytes": 647,
+      "sha256": "246bc8af14ddacdbd7c9049c6d1d7634c6cf10d90a5c2ee1a891e21623382bdb"
+    },
+    "stderr": {
+      "bytes": 330,
+      "sha256": "4d2b1f43a98ddcb68c7f225eecb93318916f635a74455f133a5b8ca1ae87ea8b"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+cargo_pid=587
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.83s
+     Running tests/jbotci_pipeline.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/jbotci_pipeline-2ecd9825a6dab10a)
+
+running 7 tests
+test concurrent_scratch_allocations_are_distinct_and_joined ... ok
+test scratch_retries_occupied_candidates_without_touching_them ... ok
+test malformed_manifest_and_download_failure_leave_no_completion_marker ... ok
+test make_forwards_metacharacter_paths_and_requires_explicit_cargo_target ... ok
+test pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows ... ok
+test report_creation_races_preserve_caller_bytes_and_skip_importer ... ok
+test test_pin_manifest_byte_policy_counts_forbidden_bytes_and_fails_closed ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.94s
+

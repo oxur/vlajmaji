@@ -1,0 +1,413 @@
+{
+  "verdict": "PASS",
+  "source": "c49b3c6bbfd892714bcb73b38a485c0b585c6614",
+  "script_sha256": "519287da608ec8613015f261e3d4947936af64ed64dc635159b355a375574875",
+  "bash": "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)",
+  "original_invalid": 8,
+  "added_forbidden": 6,
+  "valid_printable_lf_eof": 3,
+  "failed_filters": 2,
+  "cases": 19,
+  "records": [
+    {
+      "name": "original-0-unknown",
+      "manifest_hex": "76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a756e6b6e6f776e3d780a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-0-unknown/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-0-unknown/cache"
+      ],
+      "pid": 14920,
+      "exit": 2,
+      "elapsed_s": 0.010801041964441538,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "98c341e12b20c89466e43702e32683f26093d8485380b8be5a3b7e3e961c2726",
+      "stderr": "jbotci pipeline: unknown pin key: unknown\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "original-1-missing",
+      "manifest_hex": "76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-1-missing/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-1-missing/cache"
+      ],
+      "pid": 14927,
+      "exit": 2,
+      "elapsed_s": 0.010309957899153233,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "90d1d1b126db76695bb0d69478ac43009c4c704c0438c884fcc3ee69ff1d070d",
+      "stderr": "jbotci pipeline: pin manifest is missing a required key\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "original-2-uppercase",
+      "manifest_hex": "76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141414141410a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-2-uppercase/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-2-uppercase/cache"
+      ],
+      "pid": 14934,
+      "exit": 2,
+      "elapsed_s": 0.009642541874200106,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "d5430fa60c8e0fc052a1ebf683fc0b5eda738e73c0d2b86755e3b11c47f47827",
+      "stderr": "jbotci pipeline: raw_sha256 must be 64 lowercase hexadecimal characters\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "original-3-crlf",
+      "manifest_hex": "76657273696f6e3d310d0a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-3-crlf/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-3-crlf/cache"
+      ],
+      "pid": 14941,
+      "exit": 2,
+      "elapsed_s": 0.008975917007774115,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2712deb524a36da8b8d3831c2853dfad161e85af0728593913d6b2eede056b25",
+      "stderr": "jbotci pipeline: pin manifest must contain only printable ASCII and LF\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "original-4-trailing",
+      "manifest_hex": "76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a747261696c696e67203d206a756e6b0a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-4-trailing/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-4-trailing/cache"
+      ],
+      "pid": 14948,
+      "exit": 2,
+      "elapsed_s": 0.009660667274147272,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bc96c2e7e06d1c01c03d3cb745ea4c880532b8ab1cb1061f231ba86d8246c303",
+      "stderr": "jbotci pipeline: invalid pin assignment value for trailing \n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "original-5-indent",
+      "manifest_hex": "76657273696f6e3d310a207265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-5-indent/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-5-indent/cache"
+      ],
+      "pid": 14955,
+      "exit": 2,
+      "elapsed_s": 0.009138540830463171,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1e572dd521709ff6c743478c5a7b253789f4c836d285bb32a9fed3dcc4163a5a",
+      "stderr": "jbotci pipeline: pin assignments must not be indented\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "original-6-nul",
+      "manifest_hex": "76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a000a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-6-nul/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-6-nul/cache"
+      ],
+      "pid": 14962,
+      "exit": 2,
+      "elapsed_s": 0.008511834312230349,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2712deb524a36da8b8d3831c2853dfad161e85af0728593913d6b2eede056b25",
+      "stderr": "jbotci pipeline: pin manifest must contain only printable ASCII and LF\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "original-7-nonascii",
+      "manifest_hex": "76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a2320736e6f776d616e3a20e298830a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-7-nonascii/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/original-7-nonascii/cache"
+      ],
+      "pid": 14969,
+      "exit": 2,
+      "elapsed_s": 0.009069874882698059,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2712deb524a36da8b8d3831c2853dfad161e85af0728593913d6b2eede056b25",
+      "stderr": "jbotci pipeline: pin manifest must contain only printable ASCII and LF\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "byte-tab",
+      "manifest_hex": "2320636f6d6d656e74090a76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-tab/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-tab/cache"
+      ],
+      "pid": 14976,
+      "exit": 2,
+      "elapsed_s": 0.008431666996330023,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2712deb524a36da8b8d3831c2853dfad161e85af0728593913d6b2eede056b25",
+      "stderr": "jbotci pipeline: pin manifest must contain only printable ASCII and LF\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "byte-escape",
+      "manifest_hex": "2320636f6d6d656e741b0a76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-escape/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-escape/cache"
+      ],
+      "pid": 14983,
+      "exit": 2,
+      "elapsed_s": 0.010200667195022106,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2712deb524a36da8b8d3831c2853dfad161e85af0728593913d6b2eede056b25",
+      "stderr": "jbotci pipeline: pin manifest must contain only printable ASCII and LF\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "byte-del",
+      "manifest_hex": "2320636f6d6d656e747f0a76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-del/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-del/cache"
+      ],
+      "pid": 14990,
+      "exit": 2,
+      "elapsed_s": 0.00945349968969822,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2712deb524a36da8b8d3831c2853dfad161e85af0728593913d6b2eede056b25",
+      "stderr": "jbotci pipeline: pin manifest must contain only printable ASCII and LF\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "byte-high80",
+      "manifest_hex": "2320636f6d6d656e74800a76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-high80/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-high80/cache"
+      ],
+      "pid": 14997,
+      "exit": 2,
+      "elapsed_s": 0.008286207914352417,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2712deb524a36da8b8d3831c2853dfad161e85af0728593913d6b2eede056b25",
+      "stderr": "jbotci pipeline: pin manifest must contain only printable ASCII and LF\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "byte-highff",
+      "manifest_hex": "2320636f6d6d656e74ff0a76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-highff/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-highff/cache"
+      ],
+      "pid": 15004,
+      "exit": 2,
+      "elapsed_s": 0.008006375283002853,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2712deb524a36da8b8d3831c2853dfad161e85af0728593913d6b2eede056b25",
+      "stderr": "jbotci pipeline: pin manifest must contain only printable ASCII and LF\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "byte-embedded-nul",
+      "manifest_hex": "2320636f6d6d656e74000a76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-embedded-nul/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/byte-embedded-nul/cache"
+      ],
+      "pid": 15011,
+      "exit": 2,
+      "elapsed_s": 0.009116250090301037,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "2712deb524a36da8b8d3831c2853dfad161e85af0728593913d6b2eede056b25",
+      "stderr": "jbotci pipeline: pin manifest must contain only printable ASCII and LF\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "valid-ascii-lf",
+      "manifest_hex": "2320202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e0a76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/valid-ascii-lf/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/valid-ascii-lf/cache"
+      ],
+      "pid": 15018,
+      "exit": 0,
+      "elapsed_s": 0.6990663749165833,
+      "expected_valid": true,
+      "stdout_sha256": "e5f1eb4d806641698a35efe20e098efd20d7d57a9b90ee69079d5bb650920726",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "cache_exists": true,
+      "transport_calls": 2,
+      "cli_calls": 1
+    },
+    {
+      "name": "valid-ascii-unterminated",
+      "manifest_hex": "2320202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e0a76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d62626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/valid-ascii-unterminated/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/valid-ascii-unterminated/cache"
+      ],
+      "pid": 15036,
+      "exit": 0,
+      "elapsed_s": 0.34954133396968246,
+      "expected_valid": true,
+      "stdout_sha256": "e5f1eb4d806641698a35efe20e098efd20d7d57a9b90ee69079d5bb650920726",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "cache_exists": true,
+      "transport_calls": 2,
+      "cli_calls": 1
+    },
+    {
+      "name": "valid-lf-empty-comments",
+      "manifest_hex": "0a20202320626c616e6b2f636f6d6d656e7420636f6e74726f6c0a76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/valid-lf-empty-comments/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/valid-lf-empty-comments/cache"
+      ],
+      "pid": 15053,
+      "exit": 0,
+      "elapsed_s": 0.36873329104855657,
+      "expected_valid": true,
+      "stdout_sha256": "e5f1eb4d806641698a35efe20e098efd20d7d57a9b90ee69079d5bb650920726",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "cache_exists": true,
+      "transport_calls": 2,
+      "cli_calls": 1
+    },
+    {
+      "name": "failed-tr",
+      "manifest_hex": "76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/failed-tr/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/failed-tr/cache"
+      ],
+      "pid": 15070,
+      "exit": 2,
+      "elapsed_s": 0.21771516604349017,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e4ba005e7f4ffec31ebb938a9feded07f3dc28ea0bc0ac865a608ca69c5472b0",
+      "stderr": "CDC_tr_FAIL\njbotci pipeline: could not inspect pin manifest bytes\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    },
+    {
+      "name": "failed-wc",
+      "manifest_hex": "76657273696f6e3d310a7265766973696f6e3d303030303030303030303030303030303030303030303030303030303030303030303030303030300a7261775f7368613235363d616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161610a6d657461646174615f7368613235363d626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262620a",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/failed-wc/pins.env",
+        "/tmp/vlajmaji-pr3-byte-cdc01/cases/failed-wc/cache"
+      ],
+      "pid": 15077,
+      "exit": 2,
+      "elapsed_s": 0.1555661247111857,
+      "expected_valid": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "4ce6b67f4c3afd1c555eea80315e113b1f21a793af69992c67efcd1117a04ac2",
+      "stderr": "CDC_wc_FAIL\njbotci pipeline: could not inspect pin manifest bytes\n",
+      "cache_exists": false,
+      "transport_calls": 0,
+      "cli_calls": 0
+    }
+  ],
+  "limits": "Synthetic transport/CLI stubs exercise byte-preflight and no-sideeffect process boundary only; native cargo pipeline tests exercise real tiny importer. BSDmac Bash3.2 local proof, no GNU/Linux equivalence claim; hosted LinuxCI remains final platform proof."
+}
