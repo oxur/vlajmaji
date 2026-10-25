@@ -64,6 +64,10 @@ The umbrella library enables no optional features by default.
 - `data-llg` selects the unpublished optional embedded gismu/cmavo/assigned
   rafsi pack crate. It forwards that crate's `embedded` feature and requires a
   caller-prepared local payload; no dictionary data is included by default.
+- `data-la-lojban` selects the unpublished optional La-Lojban English
+  Lensisku pack crate. It forwards `embedded` and requires local payload
+  preparation; no dictionary data is included by default and redistribution is
+  held pending verified content terms.
 
 These features can be enabled independently or together. The CLI package enables
 morphology separately; that does not change this library's defaults for callers
@@ -80,6 +84,12 @@ materialize explicit pinned local inputs with
 `data-pack materialize llg GISMU CMAVO RAFSI NOTICE OUTPUT` before enabling
 `data-llg`. The public source notice is retained as source evidence; public
 redistribution remains Held.
+
+For La-Lojban, prepare a Synthetic local payload with
+`data-pack fixture la-lojban OUTPUT` or materialize the locally pinned export
+with `data-pack materialize la-lojban RAW_JSON OUTPUT` before enabling
+`data-la-lojban`. Its seal records local integrity and inventory; it does not
+establish permission to redistribute the dictionary content.
 
 Requires Rust 1.98 or newer. Licensed under Apache-2.0;
 corpus content terms remain separate from the code license.

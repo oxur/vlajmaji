@@ -1085,6 +1085,7 @@ checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
 name = "vlajmaji"
 version = "0.3.0"
 dependencies = [
+ "vlajmaji-data-la-lojban",
  "vlajmaji-data-lensisku-jbotci",
  "vlajmaji-data-llg",
  "vlajmaji-lexicon",
@@ -1102,6 +1103,13 @@ dependencies = [
  "vlajmaji-lexicon",
  "vlajmaji-search",
  "vlajmaji-store",
+]
+
+[[package]]
+name = "vlajmaji-data-la-lojban"
+version = "0.3.0"
+dependencies = [
+ "vlajmaji-lexicon",
 ]
 
 [[package]]

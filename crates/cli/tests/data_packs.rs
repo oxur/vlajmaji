@@ -19,6 +19,14 @@ fn cli() -> Command {
     Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
 }
 
+fn sha256(bytes: &[u8]) -> String {
+    use sha2::{Digest, Sha256};
+    Sha256::digest(bytes)
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
+        .collect()
+}
+
 #[test]
 fn test_synthetic_fixture_uses_the_importer_and_emits_a_loadable_pack() {
     let root = scratch("fixture");
@@ -157,5 +165,154 @@ fn test_llg_synthetic_fixture_uses_importer_and_refuses_occupied_output() {
     let error: serde_json::Value = serde_json::from_slice(&invalid.stderr).unwrap();
     assert_eq!(error["error"]["code"], "llg_hash_mismatch");
     assert!(!bad.exists());
+    std::fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_la_lojban_synthetic_fixture_loads_and_bad_pin_leaves_no_output() {
+    let root = scratch("la-lojban-fixture");
+    let output = root.join("pack");
+    let result = cli()
+        .args(["data-pack", "fixture", "la-lojban"])
+        .arg(&output)
+        .output()
+        .expect("run La-Lojban fixture materializer");
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    let response: serde_json::Value = serde_json::from_slice(&result.stdout).unwrap();
+    assert_eq!(response["operation"], "data-pack-materialize");
+    assert_eq!(response["pack_id"], "la-lojban");
+    assert_eq!(response["payload_kind"], "synthetic");
+    assert_eq!(response["report"]["input_rows"], 3);
+    assert_eq!(response["report"]["normalized_assertions"], 3);
+    assert_eq!(response["report"]["lexical_occurrences"], 2);
+    assert_eq!(response["report"]["excluded_occurrences"], 1);
+    assert_eq!(response["report"]["eligible_spellings"], 1);
+    let release = std::fs::read(output.join("release.json")).unwrap();
+    let seal = std::fs::read(output.join("seal.json")).unwrap();
+    assert!(output.join("report.json").is_file());
+    let loaded = load_sealed_release(PackId::LaLojban, &release, &seal).unwrap();
+    assert_eq!(loaded.captures().len(), 1);
+    assert_eq!(loaded.metadata().assertions.len(), 3);
+
+    let raw = root.join("wrong-pin.json");
+    std::fs::write(&raw, b"[]").unwrap();
+    let bad = root.join("must-not-exist");
+    let invalid = cli()
+        .args(["data-pack", "materialize", "la-lojban"])
+        .arg(&raw)
+        .arg(&bad)
+        .output()
+        .unwrap();
+    assert!(!invalid.status.success());
+    let error: serde_json::Value = serde_json::from_slice(&invalid.stderr).unwrap();
+    assert_eq!(error["error"]["code"], "la_lojban_hash_mismatch");
+    assert!(!bad.exists());
+    std::fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_la_materializer_rejects_invalid_inputs_and_preserves_occupied_outputs() {
+    let root = scratch("la-negative-controls");
+
+    let missing_raw = root.join("missing.json");
+    let missing_output = root.join("missing-output");
+    let missing = cli()
+        .args(["data-pack", "materialize", "la-lojban"])
+        .arg(&missing_raw)
+        .arg(&missing_output)
+        .output()
+        .unwrap();
+    assert!(!missing.status.success());
+    assert_eq!(
+        serde_json::from_slice::<serde_json::Value>(&missing.stderr).unwrap()["error"]["code"],
+        "io"
+    );
+    assert!(!missing_output.exists());
+
+    let raw = root.join("raw.json");
+    std::fs::write(&raw, b"[]").unwrap();
+    let invalid_options_output = root.join("invalid-options");
+    let invalid_options = cli()
+        .args(["data-pack", "materialize", "la-lojban"])
+        .arg(&raw)
+        .arg(&invalid_options_output)
+        .args([
+            "--revision",
+            "not-a-revision",
+            "--raw-sha256",
+            &sha256(b"[]"),
+        ])
+        .output()
+        .unwrap();
+    assert!(!invalid_options.status.success());
+    assert_eq!(
+        serde_json::from_slice::<serde_json::Value>(&invalid_options.stderr).unwrap()["error"]["code"],
+        "la_lojban_options"
+    );
+    assert!(!invalid_options_output.exists());
+
+    let malformed_raw = root.join("malformed.json");
+    std::fs::write(&malformed_raw, b"{").unwrap();
+    let malformed_output = root.join("malformed-output");
+    let malformed = cli()
+        .args(["data-pack", "materialize", "la-lojban"])
+        .arg(&malformed_raw)
+        .arg(&malformed_output)
+        .args(["--raw-sha256", &sha256(b"{")])
+        .output()
+        .unwrap();
+    assert!(!malformed.status.success());
+    assert_eq!(
+        serde_json::from_slice::<serde_json::Value>(&malformed.stderr).unwrap()["error"]["code"],
+        "la_lojban_json"
+    );
+    assert!(!malformed_output.exists());
+
+    let occupied_dir = root.join("occupied-dir");
+    std::fs::create_dir(&occupied_dir).unwrap();
+    let sentinel = occupied_dir.join("keep.txt");
+    std::fs::write(&sentinel, b"untouched").unwrap();
+    let occupied_directory = cli()
+        .args(["data-pack", "fixture", "la-lojban"])
+        .arg(&occupied_dir)
+        .output()
+        .unwrap();
+    assert!(!occupied_directory.status.success());
+    assert_eq!(std::fs::read(&sentinel).unwrap(), b"untouched");
+
+    let occupied_file = root.join("occupied-file");
+    std::fs::write(&occupied_file, b"file sentinel").unwrap();
+    let occupied_regular_file = cli()
+        .args(["data-pack", "fixture", "la-lojban"])
+        .arg(&occupied_file)
+        .output()
+        .unwrap();
+    assert!(!occupied_regular_file.status.success());
+    assert_eq!(std::fs::read(&occupied_file).unwrap(), b"file sentinel");
+
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::symlink;
+        let link = root.join("occupied-link");
+        symlink(&occupied_dir, &link).unwrap();
+        let occupied_symlink = cli()
+            .args(["data-pack", "fixture", "la-lojban"])
+            .arg(&link)
+            .output()
+            .unwrap();
+        assert!(!occupied_symlink.status.success());
+        assert!(
+            std::fs::symlink_metadata(&link)
+                .unwrap()
+                .file_type()
+                .is_symlink()
+        );
+        assert_eq!(std::fs::read(&sentinel).unwrap(), b"untouched");
+    }
+
     std::fs::remove_dir_all(root).unwrap();
 }

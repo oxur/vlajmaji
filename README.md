@@ -59,6 +59,12 @@ The Rust workspace already provides:
   `data-pack materialize llg GISMU CMAVO RAFSI NOTICE OUTPUT` normalizes
   caller-supplied local bytes against pinned hashes. No command fetches or
   redistributes source data automatically; terms remain Held.
+- A lossless adapter for the pinned La-Lojban English Lensisku export, plus an
+  optional unpublished embedded package. `data-pack fixture la-lojban OUTPUT`
+  prepares Synthetic CI/local bytes; `data-pack materialize la-lojban RAW_JSON
+  OUTPUT` validates the local full-byte pin and writes a Full pack. The package
+  is absent from default builds, and content redistribution remains Held
+  because software licensing does not establish data rights.
 - An umbrella library, `vlajmaji`, exposing `lexicon`, `store`, and `search`, with
   optional `morphology` and `graph` features.
 
@@ -76,6 +82,7 @@ attested usage, semantic equivalence, or poetic merit.
 | [`vlajmaji-store`](crates/store) | Persistence and native indexes |
 | [`vlajmaji-search`](crates/search) | Reusable queries and computed analyses |
 | [`vlajmaji-data-llg`](crates/data-llg) | Optional unpublished LLG embedded data package (local payload only) |
+| [`vlajmaji-data-la-lojban`](crates/data-la-lojban) | Optional unpublished La-Lojban embedded data package (local payload only) |
 | [`vlajmaji-cli`](crates/cli) | The `vlajmaji` executable |
 
 ## Published 0.2.0 packages

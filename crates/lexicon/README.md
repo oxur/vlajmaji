@@ -51,3 +51,13 @@ validators. `compose_dictionaries` consumes validated models, preserving
 first-seen record order, deduplicating exact equal identities, and rejecting
 conflicts rather than choosing a semantic winner. Seals are local integrity
 records, not publisher authentication or redistribution permission.
+
+The development checkout also exposes `import_la_lojban_export` for the pinned
+La-Lojban English Lensisku JSON export. It retains the complete byte snapshot,
+ordered native fields, source-row occurrences, and native assertion-ID lexemes
+while sharing the conservative Lensisku projection with jbotci. Its report
+contains observed counts only; no upstream count is inferred. The La-Lojban
+distributor is recorded separately from Lensisku, and content redistribution
+remains held because the software license does not establish dataset terms.
+This API is not part of the published 0.2.0 package; see the current source
+module [`la_lojban.rs`](src/la_lojban.rs).

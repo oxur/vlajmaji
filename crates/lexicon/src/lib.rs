@@ -39,6 +39,8 @@ use sha2::{Digest, Sha256};
 mod attribution;
 pub mod dictionary;
 mod jbotci;
+mod la_lojban;
+mod lensisku;
 pub mod llg;
 pub mod pack;
 pub mod registry;
@@ -59,6 +61,10 @@ pub use dictionary::{
 pub use jbotci::{
     JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION, JbotciImport,
     JbotciImportError, JbotciImportOptions, JbotciImportReport, import_jbotci_export,
+};
+pub use la_lojban::{
+    LA_LOJBAN_PINNED_RAW_SHA256, LA_LOJBAN_PINNED_REVISION, LaLojbanImport, LaLojbanImportError,
+    LaLojbanImportOptions, LaLojbanImportReport, import_la_lojban_export,
 };
 pub use llg::{
     LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256, LLG_NOTICE_SHA256, LLG_RAFSI_SHA256,

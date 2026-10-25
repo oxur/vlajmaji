@@ -6,9 +6,10 @@ use std::path::{Path, PathBuf};
 use clap::{Parser, Subcommand, ValueEnum};
 use vlajmaji_lexicon::{
     Dictionary, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION,
-    JbotciImportError, JbotciImportOptions, LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256,
-    LLG_NOTICE_SHA256, LLG_RAFSI_SHA256, LlgImportError, LlgImportOptions, PackId, PackPayloadKind,
-    import_jbotci_export, import_llg_lists, seal_release,
+    JbotciImportError, JbotciImportOptions, LA_LOJBAN_PINNED_RAW_SHA256, LA_LOJBAN_PINNED_REVISION,
+    LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256, LLG_NOTICE_SHA256, LLG_RAFSI_SHA256,
+    LaLojbanImportError, LaLojbanImportOptions, LlgImportError, LlgImportOptions, PackId,
+    PackPayloadKind, import_jbotci_export, import_la_lojban_export, import_llg_lists, seal_release,
 };
 use vlajmaji_search::{
     DictionaryErrorReport, DictionaryRequest, DictionarySearchEngine, Query, SearchEngine,
@@ -157,6 +158,19 @@ enum MaterializePack {
         #[arg(long, default_value = LLG_BASE_LOCATOR)]
         base_locator: String,
     },
+    /// Import the pinned La-Lojban English Lensisku export.
+    LaLojban {
+        raw: PathBuf,
+        output: PathBuf,
+        #[arg(long, default_value = LA_LOJBAN_PINNED_REVISION)]
+        revision: String,
+        #[arg(long, default_value = LA_LOJBAN_PINNED_RAW_SHA256)]
+        raw_sha256: String,
+        #[arg(long)]
+        raw_locator: Option<String>,
+        #[arg(long)]
+        notice_locator: Option<String>,
+    },
 }
 
 #[derive(Debug, Subcommand)]
@@ -165,6 +179,8 @@ enum FixturePack {
     Jbotci { output: PathBuf },
     /// Build a small synthetic gismu/cmavo/rafsi fixture through the real importer.
     Llg { output: PathBuf },
+    /// Build a small synthetic La-Lojban fixture through the real importer.
+    LaLojban { output: PathBuf },
 }
 
 #[derive(Debug, Clone, Copy, ValueEnum)]
@@ -474,6 +490,29 @@ fn execute() -> Result<serde_json::Value, CliError> {
                         PackPayloadKind::Full,
                     )?
                 }
+                MaterializePack::LaLojban {
+                    raw,
+                    output,
+                    revision,
+                    raw_sha256,
+                    raw_locator,
+                    notice_locator,
+                } => {
+                    let raw_bytes = std::fs::read(&raw).map_err(|error| {
+                        structured_error("io", format!("read {}: {error}", raw.display()))
+                    })?;
+                    materialize_la_lojban_bytes(
+                        &raw_bytes,
+                        &output,
+                        LaLojbanImportOptions {
+                            revision,
+                            expected_raw_sha256: raw_sha256,
+                            raw_locator,
+                            notice_locator,
+                        },
+                        PackPayloadKind::Full,
+                    )?
+                }
             },
             DataPackCommand::Fixture {
                 pack: FixturePack::Jbotci { output },
@@ -506,6 +545,22 @@ fn execute() -> Result<serde_json::Value, CliError> {
                         expected_rafsi_sha256: sha256(&rafsi),
                         expected_notice_sha256: sha256(&notice),
                         base_locator: "https://example.invalid/llg".into(),
+                    },
+                    PackPayloadKind::Synthetic,
+                )?
+            }
+            DataPackCommand::Fixture {
+                pack: FixturePack::LaLojban { output },
+            } => {
+                let raw = br#"[{"word":"farvi","word_type":"gismu","definition":"to grow","definition_id":7},{"word":"farvi","word_type":"gismu","definition":"to develop","definition_id":8},{"word":"farvi","word_type":"wiki","definition":"community note"}]"#;
+                materialize_la_lojban_bytes(
+                    raw,
+                    &output,
+                    LaLojbanImportOptions {
+                        revision: "0000000000000000000000000000000000000000".into(),
+                        expected_raw_sha256: sha256(raw),
+                        raw_locator: Some("https://example.invalid/la-lojban.json".into()),
+                        notice_locator: Some("https://example.invalid/README.md".into()),
                     },
                     PackPayloadKind::Synthetic,
                 )?
@@ -786,6 +841,45 @@ fn materialize_llg_bytes(
     }))
 }
 
+fn materialize_la_lojban_bytes(
+    raw: &[u8],
+    output_path: &Path,
+    options: LaLojbanImportOptions,
+    payload_kind: PackPayloadKind,
+) -> Result<serde_json::Value, CliError> {
+    let normalized = import_la_lojban_export(raw, &options).map_err(map_la_lojban_error)?;
+    let report = normalized.report();
+    let sealed = seal_release(PackId::LaLojban, payload_kind, normalized.dictionary())
+        .map_err(|error| structured_error("pack", error.to_string()))?;
+    let report_bytes = serde_json::to_vec_pretty(report)
+        .map_err(|error| structured_error("report_json", error.to_string()))?;
+    std::fs::create_dir(output_path).map_err(|error| {
+        structured_error(
+            "io",
+            format!(
+                "create fresh pack directory {}: {error}",
+                output_path.display()
+            ),
+        )
+    })?;
+    write_new(&output_path.join("release.json"), &sealed.release)?;
+    write_new(&output_path.join("report.json"), &report_bytes)?;
+    // A seal is the completion marker and is written only after release/report.
+    write_new(&output_path.join("seal.json"), &sealed.seal)?;
+    let payload = match payload_kind {
+        PackPayloadKind::Synthetic => "synthetic",
+        PackPayloadKind::Full => "full",
+    };
+    Ok(serde_json::json!({
+        "operation":"data-pack-materialize",
+        "version":1,
+        "pack_id":PackId::LaLojban.as_str(),
+        "payload_kind":payload,
+        "release_sha256":sha256(&sealed.release),
+        "report":report
+    }))
+}
+
 fn llg_fixture() -> (Vec<u8>, Vec<u8>, Vec<u8>, Vec<u8>) {
     let mut gismu = b"00001 Lojban synthetic gismu list\r\n".to_vec();
     let mut row = vec![b' '; 158];
@@ -859,6 +953,19 @@ fn map_jbotci_error(error: JbotciImportError) -> CliError {
         JbotciImportError::Registry(_) => "jbotci_registry",
         JbotciImportError::Dictionary(_) => "jbotci_dictionary",
         _ => "jbotci_import",
+    };
+    structured_error(code, error.to_string())
+}
+
+fn map_la_lojban_error(error: LaLojbanImportError) -> CliError {
+    let code = match &error {
+        LaLojbanImportError::InvalidOptions(_) => "la_lojban_options",
+        LaLojbanImportError::HashMismatch { .. } => "la_lojban_hash_mismatch",
+        LaLojbanImportError::InvalidUtf8 => "la_lojban_utf8",
+        LaLojbanImportError::InvalidJson(_) => "la_lojban_json",
+        LaLojbanImportError::Registry(_) => "la_lojban_registry",
+        LaLojbanImportError::Dictionary(_) => "la_lojban_dictionary",
+        _ => "la_lojban_import",
     };
     structured_error(code, error.to_string())
 }

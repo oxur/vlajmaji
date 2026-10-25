@@ -72,3 +72,11 @@ explicitly identified input set. The command never downloads files, replaces
 an existing output directory, or writes a dictionary store. The full LLG
 payload is not committed or published; its notice and redistribution status
 remain separate from the Apache-2.0 code license.
+
+The optional La-Lojban pack uses the same local-only workflow:
+`data-pack fixture la-lojban OUTPUT` prepares a clearly Synthetic example, and
+`data-pack materialize la-lojban RAW_JSON OUTPUT` checks the pinned complete
+input before writing a Full local release, report, and seal. `--revision`,
+`--raw-sha256`, `--raw-locator`, and `--notice-locator` identify the input and
+its provenance. The new data package is unpublished, has no default payload,
+and keeps content redistribution Held until its terms are verified.

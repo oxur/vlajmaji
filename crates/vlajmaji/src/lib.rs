@@ -9,6 +9,9 @@ pub use vlajmaji_lexicon as lexicon;
 #[doc(inline)]
 pub use vlajmaji_search as search;
 
+/// Optional embedded La-Lojban English dictionary pack.
+#[cfg(feature = "data-la-lojban")]
+pub use vlajmaji_data_la_lojban as data_la_lojban;
 /// Optional embedded full Lensisku pack distributed through jbotci.
 #[cfg(feature = "data-lensisku-jbotci")]
 pub use vlajmaji_data_lensisku_jbotci as data_lensisku_jbotci;
