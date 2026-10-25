@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-cli-default-store-cdc/verify_cli.py", line 60, in <module>
+    Path(native).mkdir()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py", line 1116, in mkdir
+    os.mkdir(self, mode)
+OSError: [Errno 92] Illegal byte sequence: '/tmp/vlajmaji-cli-default-store-cdc/controls01/native-\udcff'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-cli-default-store-cdc/verify_cli.py", line 66, in <module>
+    error(run('native-default-info-fs-boundary',['info'],xdg=native,code=1),'io')
+  File "/tmp/vlajmaji-cli-default-store-cdc/verify_cli.py", line 27, in error
+    def error(b,c):need(obj(b)['error']['code']==c,('error',c,b))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/vlajmaji-cli-default-store-cdc/verify_cli.py", line 9, in need
+    if not c:raise AssertionError(label)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('error', 'io', b'{"error":{"code":"store","message":"default store does not exist: /tmp/vlajmaji-cli-default-store-cdc/controls01/native-\xef\xbf\xbd/vlajmaji/stores/default","sources":[]}}\n')

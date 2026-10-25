@@ -39,3 +39,7 @@ No material design uncertainty remains; routine private mechanics CCdiscretion. 
 ## Amendment01 —2026-10-24
 
 The first locked focused build correctly refused the newly direct internal dependency before compilation. The no-lock assumption in the original packet was wrong. Root authorized ONLY one Cargo.lock vlajmaji-cli dependency-array edge to existing vlajmaji-store; all external packages/versions/checksums and laterlockedgates unchanged. assignment-amendment01.md preserves exact additional allowlist and existing corrupt-default-legacy structured-error/missing-store code/no-unreachable/markererror counterparts. No product refinement consumed, no accepted Arc02 record changed.
+
+## Candidate01 review/refinement01 —2026-10-24
+
+Frozen6097901passes45independentruntimecalls/159checks after a preserved reviewer-native-stat error expectation correction. SourceF03/F04notaccepted: explicitmarkerIO=>false, optionalstore prose, sevennewtestnames. iteration01-cc-prompt.md binds threesourcepathrepair and actualmarkererrorpositive/negativepredicatecontrols; preserveotherwiseworkingbehavior and completecurrentgate logs. AllfivefollowuprowsremainOPEN pending repair/currentindependentacceptance/actualinstallation. No Arc02/A03change.

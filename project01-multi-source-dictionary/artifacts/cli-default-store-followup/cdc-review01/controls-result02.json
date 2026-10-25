@@ -1,0 +1,878 @@
+{
+  "verdict": "PASS",
+  "source": "609790132a5a512aa693e96de4dbe161bd98a1d6",
+  "binary_sha256": "0ce19bb60508af09a587f0b4b9673e878804714ce850f1932195406ae8e69011",
+  "calls": 45,
+  "checks": 159,
+  "records": [
+    {
+      "label": "xdg-build",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e"
+      ],
+      "HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/ignored-home",
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/xdg space $quote",
+      "pid": 92186,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.03218637499958277,
+      "stdout_sha256": "fe3feba32be49272e1ace2e23a55c0bc128998a063b7a9caf081bc9cd295c367",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "xdg-query",
+      "argv": [
+        "dictionary-query",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d7175657279",
+        "2d2d72657175657374",
+        "7b226f7065726174696f6e223a226578616374222c227370656c6c696e67223a226661727669227d"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/xdg space $quote",
+      "pid": 92187,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.01200912520289421,
+      "stdout_sha256": "b61c671d9ab6392f94b86c553719c3537d2b1ecfba5e8cc9c7f0d428d87ea279",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "stdin-query",
+      "argv": [
+        "dictionary-query"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d7175657279"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/xdg space $quote",
+      "pid": 92188,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.011322124861180782,
+      "stdout_sha256": "b61c671d9ab6392f94b86c553719c3537d2b1ecfba5e8cc9c7f0d428d87ea279",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "explicit-query",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/xdg space $quote/vlajmaji/stores/default",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d7175657279",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f786467207370616365202471756f74652f766c616a6d616a692f73746f7265732f64656661756c74",
+        "2d2d72657175657374",
+        "7b226f7065726174696f6e223a226578616374222c227370656c6c696e67223a226661727669227d"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92189,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.011107167229056358,
+      "stdout_sha256": "b61c671d9ab6392f94b86c553719c3537d2b1ecfba5e8cc9c7f0d428d87ea279",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "default-info",
+      "argv": [
+        "info"
+      ],
+      "argv_native_hex": [
+        "696e666f"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/xdg space $quote",
+      "pid": 92190,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.010225167032331228,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "explicit-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/xdg space $quote/vlajmaji/stores/default"
+      ],
+      "argv_native_hex": [
+        "696e666f",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f786467207370616365202471756f74652f766c616a6d616a692f73746f7265732f64656661756c74"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92191,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.010499957948923111,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "unset-fallback-build",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e"
+      ],
+      "HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/home-unset",
+      "XDG_DATA_HOME": null,
+      "pid": 92192,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.01830129139125347,
+      "stdout_sha256": "1266412e99ee6486e4f70d584c1b7768ba9aa93e224a4c43b6187705bd616ca6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "unset-fallback-info",
+      "argv": [
+        "info"
+      ],
+      "argv_native_hex": [
+        "696e666f"
+      ],
+      "HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/home-unset",
+      "XDG_DATA_HOME": null,
+      "pid": 92193,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.010337958112359047,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "empty-fallback-build",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e"
+      ],
+      "HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/home-empty",
+      "XDG_DATA_HOME": "",
+      "pid": 92194,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.018990874756127596,
+      "stdout_sha256": "9cbdb77e05d8b435e3cfabacc7bda10a15d035fead9f9be75bdebe2bb52c3928",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "empty-fallback-info",
+      "argv": [
+        "info"
+      ],
+      "argv_native_hex": [
+        "696e666f"
+      ],
+      "HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/home-empty",
+      "XDG_DATA_HOME": "",
+      "pid": 92195,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.010196208022534847,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "relative-fallback-build",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e"
+      ],
+      "HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/home-relative",
+      "XDG_DATA_HOME": "relative/should-not-exist",
+      "pid": 92196,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.019237875007092953,
+      "stdout_sha256": "e49d26a8124c03ee36520e4cd0d2dd4a1e2ed6e3c7376233bf594e80f2e7a884",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "relative-fallback-info",
+      "argv": [
+        "info"
+      ],
+      "argv_native_hex": [
+        "696e666f"
+      ],
+      "HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/home-relative",
+      "XDG_DATA_HOME": "relative/should-not-exist",
+      "pid": 92197,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.010575290769338608,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "explicit-build",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/explicit"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f6578706c69636974"
+      ],
+      "HOME": "relative",
+      "XDG_DATA_HOME": "also-relative",
+      "pid": 92198,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.018909582868218422,
+      "stdout_sha256": "055d2827528d1011521208e4a5334399630b9437a3743e42b851184844cc74de",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "explicit-invalid-env-query",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/explicit",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d7175657279",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f6578706c69636974",
+        "2d2d72657175657374",
+        "7b226f7065726174696f6e223a226578616374222c227370656c6c696e67223a226661727669227d"
+      ],
+      "HOME": "relative",
+      "XDG_DATA_HOME": "also-relative",
+      "pid": 92199,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.011471458245068789,
+      "stdout_sha256": "b61c671d9ab6392f94b86c553719c3537d2b1ecfba5e8cc9c7f0d428d87ea279",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "missing-home-query",
+      "argv": [
+        "dictionary-query",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d7175657279",
+        "2d2d72657175657374",
+        "7b226f7065726174696f6e223a226578616374222c227370656c6c696e67223a226661727669227d"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92200,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.004021541215479374,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "181c36441cdcac284eb7e6d262837bd0a632f2e3232fdaa1180ea499e868ca70"
+    },
+    {
+      "label": "relative-home-info",
+      "argv": [
+        "info"
+      ],
+      "argv_native_hex": [
+        "696e666f"
+      ],
+      "HOME": "relative",
+      "XDG_DATA_HOME": "relative",
+      "pid": 92201,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.003990666940808296,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "181c36441cdcac284eb7e6d262837bd0a632f2e3232fdaa1180ea499e868ca70"
+    },
+    {
+      "label": "missing-default-query",
+      "argv": [
+        "dictionary-query",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d7175657279",
+        "2d2d72657175657374",
+        "7b226f7065726174696f6e223a226578616374222c227370656c6c696e67223a226661727669227d"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/missing-default",
+      "pid": 92202,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.0036229160614311695,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "79d65a2c32331d5fbe6f818fbff7e290217cd531134a1ca758a380a0fd70c40a"
+    },
+    {
+      "label": "missing-default-info",
+      "argv": [
+        "info"
+      ],
+      "argv_native_hex": [
+        "696e666f"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/missing-default",
+      "pid": 92203,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.0033969590440392494,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "9cbf1ce7ea07c816a3140710c556be0253ef71f5e27ea6906da4ec2473ef0004"
+    },
+    {
+      "label": "missing-input-build",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/absent.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f616273656e742e6a736f6e"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/missing-input-default",
+      "pid": 92204,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.003675375133752823,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "661e97d1ab1d32723dbd96bc86ab67d1fb9b5bead436f29162520beecfd5304b"
+    },
+    {
+      "label": "invalid-json-build",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/invalid.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f696e76616c69642e6a736f6e"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/invalid-default",
+      "pid": 92205,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.003283875063061714,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "0f9c2ad1e57985df98b48b604c40f5afb9e48f3e2338ca4a95139add0da50431"
+    },
+    {
+      "label": "explicit-parent-missing",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/absent-parent/store"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f616273656e742d706172656e742f73746f7265"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92206,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.004246999975293875,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "303c80036cd12520563b92f537509e29c085e4d224647b8fd1a1abf8dc69c387"
+    },
+    {
+      "label": "occupied-default-dir",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/xdg space $quote",
+      "pid": 92207,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.003823458682745695,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "df1fee9f73fc42e5ec56a99bc2b69d17090d753db3f96bf8fee7fd53498e8b06"
+    },
+    {
+      "label": "occupied-default-file",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/occupied-file",
+      "pid": 92208,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.004350875038653612,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "58e9c42cea01af3c3c757b0a0e65deba6262a9d282f303ca8a33be79be4eb1b5"
+    },
+    {
+      "label": "occupied-default-symlink",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/occupied-symlink",
+      "pid": 92209,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.003618291113525629,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "0e9170f5d097c10162aac6574474b2f1b9bebf126b0ba2deadc461c4e2e501e5"
+    },
+    {
+      "label": "blocked-parent",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/blocked",
+      "pid": 92210,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.00319975009188056,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3b640d22073ec0f646fd7ea2279e86b1cca494dffe4fffca3e2408e153deee78"
+    },
+    {
+      "label": "existing-parent-mode",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/existing-mode",
+      "pid": 92211,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.017262334004044533,
+      "stdout_sha256": "35a0df50ef8fea92469b66ee233e3ec801a5f43f1b654e086a57f948b3f937b4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "native-default-query-fs-boundary",
+      "argv": [
+        "dictionary-query",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d7175657279",
+        "2d2d72657175657374",
+        "7b226f7065726174696f6e223a226578616374222c227370656c6c696e67223a226661727669227d"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/native-\udcff",
+      "pid": 92212,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.003696416039019823,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "beaf29fe5f59d88c052e841fedef553a10dae0f8eca29beb8bf76b6e2524a3e4"
+    },
+    {
+      "label": "native-default-info-fs-boundary",
+      "argv": [
+        "info"
+      ],
+      "argv_native_hex": [
+        "696e666f"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/native-\udcff",
+      "pid": 92213,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.003262832760810852,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "b882aca7f334e736a9853df42506f212039468e6b7ea47d0abdc2da233caeb33"
+    },
+    {
+      "label": "lossy-spelling-valid-counterpart",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/native-\ufffd/vlajmaji/stores/default",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d7175657279",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f6e61746976652defbfbd2f766c616a6d616a692f73746f7265732f64656661756c74",
+        "2d2d72657175657374",
+        "7b226f7065726174696f6e223a226578616374222c227370656c6c696e67223a226661727669227d"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92214,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.010441832710057497,
+      "stdout_sha256": "b61c671d9ab6392f94b86c553719c3537d2b1ecfba5e8cc9c7f0d428d87ea279",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "native-build-json-error",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f74696e792d72656c656173652e6a736f6e"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/build-\udcfe",
+      "pid": 92215,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.003760833293199539,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ed7bbdfc18fd191c63e4fdce98631e95922e5429a4b135ec8843b874df599737"
+    },
+    {
+      "label": "utf8-override-native-env",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/explicit",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d7175657279",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f6578706c69636974",
+        "2d2d72657175657374",
+        "7b226f7065726174696f6e223a226578616374222c227370656c6c696e67223a226661727669227d"
+      ],
+      "HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/native-\udcff",
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/build-\udcfe",
+      "pid": 92216,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.011002082843333483,
+      "stdout_sha256": "b61c671d9ab6392f94b86c553719c3537d2b1ecfba5e8cc9c7f0d428d87ea279",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "baseline-legacy-build",
+      "argv": [
+        "build",
+        "/tmp/vlajmaji-cli-default-store-cdc/legacy-empty-v2.json",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/legacy"
+      ],
+      "argv_native_hex": [
+        "6275696c64",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f6c65676163792d656d7074792d76322e6a736f6e",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f6c6567616379"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92217,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.23334475001320243,
+      "stdout_sha256": "fc9e1d222d46ef66eb8aedc2560c80dd20bbc3c35786b93e974ab7a30767f370",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "baseline-legacy-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/legacy"
+      ],
+      "argv_native_hex": [
+        "696e666f",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f6c6567616379"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92226,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.004994375165551901,
+      "stdout_sha256": "762b0c0d6cfe77ce969aeefa6c6ec1227c74074bb53eb8665cbbdbfddc77b005",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "candidate-legacy-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/legacy"
+      ],
+      "argv_native_hex": [
+        "696e666f",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f6c6567616379"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92227,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.005000208038836718,
+      "stdout_sha256": "762b0c0d6cfe77ce969aeefa6c6ec1227c74074bb53eb8665cbbdbfddc77b005",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "legacy-build-still-required",
+      "argv": [
+        "build"
+      ],
+      "argv_native_hex": [
+        "6275696c64"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92228,
+      "exit": 2,
+      "expected": 2,
+      "elapsed_s": 0.003922334406524897,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "d9b02764456278803b627a88044597222861923840615e33a64fa9c9585f6b2b"
+    },
+    {
+      "label": "legacy-search-still-required",
+      "argv": [
+        "search"
+      ],
+      "argv_native_hex": [
+        "736561726368"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92229,
+      "exit": 2,
+      "expected": 2,
+      "elapsed_s": 0.00366508262231946,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "393eb818804533bf43345090b6a67a7fc8c90c75190f19b979f40d9b14d117e1"
+    },
+    {
+      "label": "corrupt-grouped-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/corrupt"
+      ],
+      "argv_native_hex": [
+        "696e666f",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f636f7272757074"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92230,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.004038874991238117,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e0b3c3b370a9b9a7f089b0974e85005ac1e83af2be1da65a6abe8f3afc5afa45"
+    },
+    {
+      "label": "ambiguous-format-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/corrupt"
+      ],
+      "argv_native_hex": [
+        "696e666f",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f636f7272757074"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92231,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.005441208835691214,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "a706f6bbfe32ed56411ea262ce37d6e91eef6a30adf1b4dabaddd13a9f503f34"
+    },
+    {
+      "label": "default-legacy-corrupt-info",
+      "argv": [
+        "info"
+      ],
+      "argv_native_hex": [
+        "696e666f"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-cli-default-store-cdc/controls02/default-legacy-corrupt",
+      "pid": 92232,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.003974541090428829,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "3cc52fa19f71cf593ed0426d803738596a8fad6320c20d0da9695e480343f8a6"
+    },
+    {
+      "label": "baseline-explicit-legacy-corrupt-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/default-legacy-corrupt/vlajmaji/stores/default"
+      ],
+      "argv_native_hex": [
+        "696e666f",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f64656661756c742d6c65676163792d636f72727570742f766c616a6d616a692f73746f7265732f64656661756c74"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92233,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.0043907081708312035,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bada194e16f9f43c780e187208ed51d646119bde4be4b6c4be36d895b5b6ad65"
+    },
+    {
+      "label": "explicit-legacy-corrupt-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-cli-default-store-cdc/controls02/default-legacy-corrupt/vlajmaji/stores/default"
+      ],
+      "argv_native_hex": [
+        "696e666f",
+        "2f746d702f766c616a6d616a692d636c692d64656661756c742d73746f72652d6364632f636f6e74726f6c7330322f64656661756c742d6c65676163792d636f72727570742f766c616a6d616a692f73746f7265732f64656661756c74"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92234,
+      "exit": 1,
+      "expected": 1,
+      "elapsed_s": 0.004054457880556583,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "bada194e16f9f43c780e187208ed51d646119bde4be4b6c4be36d895b5b6ad65"
+    },
+    {
+      "label": "help-None",
+      "argv": [
+        "--help"
+      ],
+      "argv_native_hex": [
+        "2d2d68656c70"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92235,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.003896125126630068,
+      "stdout_sha256": "664839035c5c04b5e117f36a1f9ae234527cd828bf2eb5fa50736268114de9e0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "help-dictionary-build",
+      "argv": [
+        "dictionary-build",
+        "--help"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d6275696c64",
+        "2d2d68656c70"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92236,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.004255499690771103,
+      "stdout_sha256": "44a816fc52ca075914e3fded786ba4a65d57e70a7d68b57a475ea4f7bfaab61f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "help-dictionary-query",
+      "argv": [
+        "dictionary-query",
+        "--help"
+      ],
+      "argv_native_hex": [
+        "64696374696f6e6172792d7175657279",
+        "2d2d68656c70"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92237,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.0038042920641601086,
+      "stdout_sha256": "2a99d77617cbbba179aa2979f534d3b9e0a98d542dfc2a7f0ad2a8ba1f23232d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "help-info",
+      "argv": [
+        "info",
+        "--help"
+      ],
+      "argv_native_hex": [
+        "696e666f",
+        "2d2d68656c70"
+      ],
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "pid": 92238,
+      "exit": 0,
+      "expected": 0,
+      "elapsed_s": 0.004062874708324671,
+      "stdout_sha256": "d047b3e0450811fb399c3d229539d11ad628afa313f4f54bbd459510c19daa13",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "tiny_release_sha256": "fc20e6bf9e6629ec190c5ec0e8e24d6fce30ceed5b3ca4c4a35db4fb07c28787",
+  "legacy_archive_sha256": "0d48c82a380ee765555379c624b4a7d0c829c69858cb5399a084b2656a73c187",
+  "default_store_sha256": "5455611ed2ad50803dde148ab3c13527103f05a2b57c5ef18c5b98678b35035e",
+  "native_filesystem": {
+    "supports_non_utf8_component": false,
+    "errno": 92,
+    "error": "[Errno 92] Illegal byte sequence: '/tmp/vlajmaji-cli-default-store-cdc/controls02/native-\\udcff'"
+  }
+}
