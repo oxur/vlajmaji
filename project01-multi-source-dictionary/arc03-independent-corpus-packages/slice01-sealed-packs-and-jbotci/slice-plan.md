@@ -27,3 +27,7 @@ Source allowlist: .gitignore,Cargo.toml,Cargo.lock,.github/workflows/ci.yml,READ
 ## Author readiness
 
 Actual source APIs support borrowed data, strict serialization, public vector drafts and validated final constructors. New API sketches above are binding shape, not claimed compiled. Cargo additive optional features + synthetic preparation avoid clean-CI/all-features failure while real data acceptance remains mandatory. Root concurred internal unpublished pathway and safe composition. Resource budget ample, one target writer. No consequential S01 design question remains; local helper naming/layout within allowlist is CC discretion. Source-grounded readback and exact original pins in ../artifacts/source-readiness.md. Later adapters remain CDC design work before later issue, not outsourced in this assignment.
+
+## Issued ownership amendment —2026-10-25
+
+Preserved cc-prompt-iteration01.md adds crates/cli/Cargo.toml for existing sha2.workspace=true only and the necessary already-allowlisted lock edge. Initial source allowlist omission is retained as history; CC edit preceded amendment, no source commit/acceptance then. No external package/version/checksum change, no new feature/scope or proof reduction. All six rows OPEN; same CC/source/target interval.
