@@ -51,3 +51,13 @@ the [jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci
 for pins, preservation, identity, metadata, and content-notice limits.
 
 Corpus data is not bundled. See the [data and replay guide](https://github.com/oxur/vlajmaji/blob/main/docs/migration.md) for the current research-input workflow. Licensed under Apache-2.0.
+
+`data-pack fixture jbotci OUTPUT` prepares an explicitly synthetic three-row
+pack through the real importer for local feature checks and CI.
+`data-pack materialize jbotci RAW METADATA OUTPUT` verifies caller-supplied
+pins and supplier accounting, then writes canonical release, seal, and report
+files into a fresh directory. It only reads the paths supplied by the caller;
+it does not fetch data, overwrite an output, or build a store. The `embedded`
+data crate has no default payload and is unpublished; its ignored local data
+must be prepared before selecting that feature. A synthetic fixture is not the
+full source distribution.

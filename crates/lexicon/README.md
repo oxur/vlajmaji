@@ -34,3 +34,10 @@ The pure `import_jbotci_export` adapter retains both pinned captures and ordered
 native fields while exposing a conservative typed projection. Its bounded
 metadata grammar, field map, identity rules, and local replay example are in the
 [jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci-import.md).
+
+The `pack` module seals canonical dictionary bytes with a strict versioned
+integrity inventory and loads them only through the normal registry and model
+validators. `compose_dictionaries` consumes validated models, preserving
+first-seen record order, deduplicating exact equal identities, and rejecting
+conflicts rather than choosing a semantic winner. Seals are local integrity
+records, not publisher authentication or redistribution permission.

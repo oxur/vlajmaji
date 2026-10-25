@@ -46,6 +46,13 @@ The Rust workspace already provides:
 - A lossless local jbotci export normalizer with `jbotci-import` and
   read-only `jbotci-check` commands and an explicit pinned acquire/replay/check/
   update workflow ([import guide](docs/jbotci-import.md)).
+- An optional unpublished Lensisku/jbotci data package with strict local seals
+  and consuming pure composition. `data-pack fixture jbotci OUTPUT` prepares
+  synthetic CI/local data; `data-pack materialize jbotci RAW METADATA OUTPUT`
+  prepares a full local pack from caller-provided pinned inputs. Neither command
+  fetches data or writes a default store. The optional pack is absent from
+  default builds, and its seal is an integrity inventory rather than publisher
+  authentication or licensing evidence.
 - An umbrella library, `vlajmaji`, exposing `lexicon`, `store`, and `search`, with
   optional `morphology` and `graph` features.
 

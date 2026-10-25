@@ -6,7 +6,8 @@ use std::path::{Path, PathBuf};
 use clap::{Parser, Subcommand, ValueEnum};
 use vlajmaji_lexicon::{
     Dictionary, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION,
-    JbotciImportError, JbotciImportOptions, import_jbotci_export,
+    JbotciImportError, JbotciImportOptions, PackId, PackPayloadKind, import_jbotci_export,
+    seal_release,
 };
 use vlajmaji_search::{
     DictionaryErrorReport, DictionaryRequest, DictionarySearchEngine, Query, SearchEngine,
@@ -102,6 +103,47 @@ enum Command {
         #[arg(long, default_value = JBOTCI_PINNED_METADATA_SHA256)]
         metadata_sha256: String,
     },
+    /// Prepare an ignored local pack payload without opening a dictionary store.
+    DataPack {
+        #[command(subcommand)]
+        command: DataPackCommand,
+    },
+}
+
+#[derive(Debug, Subcommand)]
+enum DataPackCommand {
+    /// Materialize a selected pack from local inputs.
+    Materialize {
+        #[command(subcommand)]
+        pack: MaterializePack,
+    },
+    /// Prepare a small synthetic pack for CI and local feature checks.
+    Fixture {
+        #[command(subcommand)]
+        pack: FixturePack,
+    },
+}
+
+#[derive(Debug, Subcommand)]
+enum MaterializePack {
+    /// Import the exact local jbotci raw export and supplier metadata.
+    Jbotci {
+        raw: PathBuf,
+        metadata: PathBuf,
+        output: PathBuf,
+        #[arg(long, default_value = JBOTCI_PINNED_REVISION)]
+        revision: String,
+        #[arg(long, default_value = JBOTCI_PINNED_RAW_SHA256)]
+        raw_sha256: String,
+        #[arg(long, default_value = JBOTCI_PINNED_METADATA_SHA256)]
+        metadata_sha256: String,
+    },
+}
+
+#[derive(Debug, Subcommand)]
+enum FixturePack {
+    /// Build a synthetic three-row Lensisku fixture through the real importer.
+    Jbotci { output: PathBuf },
 }
 
 #[derive(Debug, Clone, Copy, ValueEnum)]
@@ -345,6 +387,50 @@ fn execute() -> Result<serde_json::Value, CliError> {
             };
             serde_json::json!({"operation":"jbotci-check","version":1,"release_checked":release_matches,"report":report})
         }
+        Command::DataPack { command } => match command {
+            DataPackCommand::Materialize {
+                pack:
+                    MaterializePack::Jbotci {
+                        raw,
+                        metadata,
+                        output,
+                        revision,
+                        raw_sha256,
+                        metadata_sha256,
+                    },
+            } => {
+                let raw_bytes = std::fs::read(&raw).map_err(|error| {
+                    structured_error("io", format!("read {}: {error}", raw.display()))
+                })?;
+                let metadata_bytes = std::fs::read(&metadata).map_err(|error| {
+                    structured_error("io", format!("read {}: {error}", metadata.display()))
+                })?;
+                materialize_jbotci_bytes(
+                    &raw_bytes,
+                    &metadata_bytes,
+                    &output,
+                    revision,
+                    raw_sha256,
+                    metadata_sha256,
+                    PackPayloadKind::Full,
+                )?
+            }
+            DataPackCommand::Fixture {
+                pack: FixturePack::Jbotci { output },
+            } => {
+                let raw = br#"[{"word":"farvi","word_type":"gismu","definition":"to grow","definition_id":7},{"word":"farvi","word_type":"gismu","definition":"to develop","definition_id":8},{"word":"farvi","word_type":"wiki","definition":"community note"}]"#;
+                let metadata = jbotci_fixture_metadata(raw);
+                materialize_jbotci_bytes(
+                    raw,
+                    &metadata,
+                    &output,
+                    "0000000000000000000000000000000000000000".into(),
+                    sha256(raw),
+                    sha256(&metadata),
+                    PackPayloadKind::Synthetic,
+                )?
+            }
+        },
     };
     Ok(output)
 }
@@ -510,6 +596,103 @@ fn normalize_jbotci(
         },
     )
     .map_err(map_jbotci_error)
+}
+
+fn materialize_jbotci_bytes(
+    raw: &[u8],
+    metadata: &[u8],
+    output_path: &Path,
+    revision: String,
+    expected_raw_sha256: String,
+    expected_metadata_sha256: String,
+    payload_kind: PackPayloadKind,
+) -> Result<serde_json::Value, CliError> {
+    let normalized = import_jbotci_export(
+        raw,
+        metadata,
+        &JbotciImportOptions {
+            revision,
+            expected_raw_sha256,
+            expected_metadata_sha256,
+        },
+    )
+    .map_err(map_jbotci_error)?;
+    let report = normalized.report();
+    if !report.definition_count_matches || !report.entry_count_matches {
+        return Err(structured_error(
+            "jbotci_accounting",
+            "supplier metadata counts do not match observed raw rows and eligible spellings",
+        ));
+    }
+    let sealed = seal_release(
+        PackId::LensiskuJbotci,
+        payload_kind,
+        normalized.dictionary(),
+    )
+    .map_err(|error| structured_error("pack", error.to_string()))?;
+    let report_bytes = serde_json::to_vec_pretty(report)
+        .map_err(|error| structured_error("report_json", error.to_string()))?;
+
+    std::fs::create_dir(output_path).map_err(|error| {
+        structured_error(
+            "io",
+            format!(
+                "create fresh pack directory {}: {error}",
+                output_path.display()
+            ),
+        )
+    })?;
+    write_new(&output_path.join("release.json"), &sealed.release)?;
+    write_new(&output_path.join("report.json"), &report_bytes)?;
+    // The seal is the completion marker: publish it only after all pack data
+    // has been written successfully. A seal-write failure can still leave the
+    // release and report files behind, but the failed command never reports a
+    // completed pack.
+    write_new(&output_path.join("seal.json"), &sealed.seal)?;
+    let payload = match payload_kind {
+        PackPayloadKind::Synthetic => "synthetic",
+        PackPayloadKind::Full => "full",
+    };
+    Ok(serde_json::json!({
+        "operation":"data-pack-materialize",
+        "version":1,
+        "pack_id":PackId::LensiskuJbotci.as_str(),
+        "payload_kind":payload,
+        "release_sha256":sha256(&sealed.release),
+        "report":report
+    }))
+}
+
+fn jbotci_fixture_metadata(raw: &[u8]) -> Vec<u8> {
+    format!(
+        "language_tag = \"en\"\nlanguage_realname = \"English\"\nsource_language_tag = \"jbo\"\nformat = \"json\"\npositive_scores_only = false\nfilename = \"dictionary-en.json\"\nmetadata_url = \"https://example.invalid/languages\"\ndownload_url = \"https://example.invalid/synthetic-export\"\nlensisku_created_at = \"2026-10-04T03:07:08Z\"\nsha256 = \"{}\"\ndefinition_count = 3\nentry_count = 1\n",
+        sha256(raw)
+    )
+    .into_bytes()
+}
+
+fn write_new(path: &Path, bytes: &[u8]) -> Result<(), CliError> {
+    let mut file = std::fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(path)
+        .map_err(|error| {
+            structured_error(
+                "io",
+                format!("create {} without replacement: {error}", path.display()),
+            )
+        })?;
+    file.write_all(bytes)
+        .and_then(|()| file.flush())
+        .map_err(|error| structured_error("io", format!("write {}: {error}", path.display())))
+}
+
+fn sha256(bytes: &[u8]) -> String {
+    use sha2::{Digest, Sha256};
+    Sha256::digest(bytes)
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
+        .collect()
 }
 
 fn map_jbotci_error(error: JbotciImportError) -> CliError {

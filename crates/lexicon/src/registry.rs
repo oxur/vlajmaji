@@ -604,6 +604,18 @@ impl SourceRegistry {
         self.document.clone()
     }
 
+    /// Borrow the complete registry document without cloning its rows.
+    #[must_use]
+    pub fn as_document(&self) -> &RegistryDocument {
+        &self.document
+    }
+
+    /// Consume this validated registry and move out its complete document.
+    #[must_use]
+    pub fn into_document(self) -> RegistryDocument {
+        self.document
+    }
+
     /// Validates and applies a complete replacement while preserving prior history.
     ///
     /// No state is changed unless the candidate and all history checks succeed.

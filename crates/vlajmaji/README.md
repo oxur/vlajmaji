@@ -58,10 +58,19 @@ The umbrella library enables no optional features by default.
   `vlajmaji-search` and `latkerlo-jvotci`.
 - `graph` enables the Oxigraph/RocksDB backend through `vlajmaji-store`. It
   requires native C++ and Clang/libclang build tooling.
+- `data-lensisku-jbotci` selects the unpublished optional embedded pack crate.
+  It forwards its `embedded` feature and requires local pack preparation first;
+  no dictionary data is included by default.
 
 These features can be enabled independently or together. The CLI package enables
 morphology separately; that does not change this library's defaults for callers
 that depend only on `vlajmaji`.
+
+Prepare a synthetic local payload with the CLI's `data-pack fixture jbotci`
+command before building the feature. Full pinned local materialization uses
+`data-pack materialize jbotci RAW METADATA OUTPUT`. The optional data package
+is unpublished, and its local seal records integrity and inventory rather than
+publisher authorization or content licensing.
 
 Requires Rust 1.98 or newer. Licensed under Apache-2.0;
 corpus content terms remain separate from the code license.

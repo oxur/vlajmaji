@@ -1031,6 +1031,11 @@ impl Dictionary {
     pub fn document(&self) -> DictionaryDocument {
         self.0.clone()
     }
+    /// Consume this validated dictionary and move out its complete document.
+    #[must_use]
+    pub fn into_document(self) -> DictionaryDocument {
+        self.0
+    }
     /// Borrow the source registry.
     pub fn registry(&self) -> &SourceRegistry {
         &self.0.registry

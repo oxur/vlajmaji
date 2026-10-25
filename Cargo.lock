@@ -1085,6 +1085,7 @@ checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
 name = "vlajmaji"
 version = "0.3.0"
 dependencies = [
+ "vlajmaji-data-lensisku-jbotci",
  "vlajmaji-lexicon",
  "vlajmaji-search",
  "vlajmaji-store",
@@ -1096,9 +1097,17 @@ version = "0.3.0"
 dependencies = [
  "clap",
  "serde_json",
+ "sha2 0.10.9",
  "vlajmaji-lexicon",
  "vlajmaji-search",
  "vlajmaji-store",
+]
+
+[[package]]
+name = "vlajmaji-data-lensisku-jbotci"
+version = "0.3.0"
+dependencies = [
+ "vlajmaji-lexicon",
 ]
 
 [[package]]

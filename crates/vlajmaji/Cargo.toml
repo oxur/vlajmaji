@@ -17,11 +17,13 @@ include = ["Cargo.toml", "README.md", "LICENSE", "src/**"]
 default = []
 morphology = ["vlajmaji-search/morphology"]
 graph = ["vlajmaji-store/graph"]
+data-lensisku-jbotci = ["dep:vlajmaji-data-lensisku-jbotci", "vlajmaji-data-lensisku-jbotci/embedded"]
 
 [dependencies]
 vlajmaji-lexicon.workspace = true
 vlajmaji-store.workspace = true
 vlajmaji-search.workspace = true
+vlajmaji-data-lensisku-jbotci = { path = "../data-lensisku-jbotci", version = "0.3.0", optional = true }
 
 [lints]
 workspace = true
