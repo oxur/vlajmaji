@@ -2,7 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | OPEN; authorized 2026-10-25, stop before A04 |
+| status | technical composition ACCEPTED7b1c565; final canonical review pending, all8rowsOPEN; stop before A04 |
+| version / date | 1.1 / 2026-10-25 |
 | authority | ../cdc-directive03.md; Duncan Autonomous Mode, unchanged Sol6.1/high CDC and Luna/high CC |
 | baseline | main52fd3c40a781d6945cfc74a2e79fa66b249e2a5d; clean dedicated feature/project01-independent-corpus-packages |
 | source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji |
@@ -24,7 +25,7 @@ CDC owns this plan, source-grounded design and independent acceptance. CC owns s
 | slice03-la-lojban-distribution | Full La-Lojban release, truthful shared Lensisku authority and distinct distribution/capture identities | shared pack contract; pinned native dump + supplier provenance |
 | slice04-sutysisku-projection | Full compact Sutysisku projection, all native keys/fields and unknowns, four-pack feature/composition delivery | prior packages; pinned compact object + supplier code/terms |
 
-Initially only S01 was detailed/issued. S01 and S02 are now independently accepted; S03 is independently accepted; S04 is the current detailed issued child. CDC resolves actual adapter semantics and exact APIs before each dependent prompt; later child planning must preserve this scope. Every slice includes independent review/repairs and retrospective, not an evidence-only staging increment. Maximum five refinements per slice, preserve every prompt. Advance immediately after accepted close.
+Initially only S01 was detailed/issued. S01 and S02 are now independently accepted; S03 is independently accepted; S04 is now independently accepted at7b1c565; all4children/24rowsDONE. Fresh technical assembly is accepted; actual final canonical packet is pending. CDC resolves actual adapter semantics and exact APIs before each dependent prompt; later child planning must preserve this scope. Every slice includes independent review/repairs and retrospective, not an evidence-only staging increment. Maximum five refinements per slice, preserve every prompt. Advance immediately after accepted close.
 
 ## Binding package and composition design
 
@@ -49,3 +50,7 @@ Every source commit: actual make format then lint then check, complete logs; exp
 All eight arc rows remain OPEN until independent evidence, child disposition and fresh assembled technical composition plus final canonical packet verdict. CDC writes close/verifier/retro only after work occurs, reconciles project ledger partial contributions (all14 remain OPEN), and stops before A04. Content/publication/operational limits retain named owners. No premature close records.
 
 2026-10-25 allocation: S04 independently proves actualfour-pack normalized composition plus tinySQL; fresh separate arc technical reviewer owns the single new fullfour-pack store/strictverify/reopen/raw-SQL/group/page/reference gate. No protected store copy/default change/topology decision.
+
+## Current technical/bubble-up checkpoint and version history
+
+1.1 —2026-10-25: S04closed all4children/24rows at7b1c565. Planned single fresh fullstore allocation executed by author-independent reviewer: complete raw/typedSQL/model/source/query/CLI composition accepted. No new child, scope reduction or topology required. Earlier current-child/conditional fullstore wording is historical; assigned fullstore gate has occurred. All8arcrows stayOPEN until actual finalpacket verdict. Four upstream optional dependencies/internal materialization delivered; publicdata distribution Held/ownedpackageA05 remain explicit project carryovers. Canonical closing-report/verifier/retro and project partial update now proposed for same-context independent review.

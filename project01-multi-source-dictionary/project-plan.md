@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 OPEN/authorized; all14projectrowsOPEN; A04–A06 not activated |
+| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 technical accepted/canonical review pending; all14projectrowsOPEN; A04–A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.14 / 2026-10-25, America/Chicago |
+| version / date | 1.15 / 2026-10-25, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -26,7 +26,7 @@ and explicit availability. Subsequent arcs make it work with full, independently
 selectable corpora and an editable dictionary of our own.
 
 The design and remaining decisions are in [design.md](design.md). Acceptance is in
-[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is CLOSED after both accepted children and separate fresh technical/finalcanonical review. Arc03 is now authorized/open; A04–A06 remain unactivated.
+[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is CLOSED after both accepted children and separate fresh technical/finalcanonical review. Arc03 all4children and fresh assembled technical composition are accepted at7b1c565; actual canonical packet awaits independent final review. A04–A06 remain unactivated.
 
 ## Decisions already made
 
@@ -108,7 +108,7 @@ define execution order. Later arcs are roadmap entries, not issued assignments.
 | --- | --- | --- | --- |
 | [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Four scope-preserving slices after S01 sizing; current detail in arc plan. |
 | [02 — Reproducible full jbotci import](arc02-reproducible-jbotci-import/arc-plan.md) (CLOSED at4e37016) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Two useful slices: lossless Rust/CLI normalization, then pinned pipeline/full persistence composition. |
-| 03 — Independent corpus packages | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
+| [03 — Independent corpus packages](arc03-independent-corpus-packages/arc-plan.md) (technical accepted7b1c565; canonical pending) | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
 | 04 — Composed SQLite lookup | Compare unified derived index, ATTACH and application fanout on the same complete contract, then implement the selected composition and availability/query-snapshot policy. | A01 queries and A03 real pack releases. | One bounded decision followed by usable integration; no topology selected now. |
 | 05 — Owned dictionary | First-class editable source, revision/history and explicit editorial relationships, immutable export/reimport and its own optional data crate. | A01 model plus accepted A04 composition. | Model is reserved in A01; production editing belongs here. |
 | 06 — Integrated dictionary workbench | Rust/CLI source selection and grouped output across all packs and owned revisions; old query-family regression, removal/reload, paging, documentation and clean offline replay compose end to end. | Accepted predecessors. | Final integration adds remaining behavior; it must not postpone A01's usable lookup. |
@@ -141,7 +141,7 @@ open. This plan neither completes them nor restarts the parked phonology arc.
 | Concrete registry IDs, alias validation and source-lineage records | Resolved and independently accepted A01S01at11ec701; exact aliases/history/attribution compose at efef9c4. Existing IDs preserved. |
 | Concrete DDL, archive/normalized version transition and standards mapping | Resolved A01S02model37c3518+S03store01a9ceb3; explicit versions/legacy adapter/rebuild and standards loss register, independently composed. Production topology remainsA04. |
 | Full raw jbotci shape, observed counts, unknown/wiki-row eligibility | Resolved A02at4e37016:33526raw/278254fields/33516eligible/31248spellings; every row retained,9blank+1wiki explicitly excluded. Supplier counts reconciled separately; independent finalcanonicalpacket accepted5456b54. |
-| Corpus component boundaries, common pack API and feature host | A03 before package assignments; separate source/distributor identities are already required. |
+| Corpus component boundaries, common pack API and feature host | Resolved A03: common seal1/strict load/consuming composition,4unpublished optional embedded crates and umbrella features, exact component/provenance/held terms. All4children and fresh technical assembly accepted7b1c565; final packet pending. |
 | Unified SQLite / ATTACH / fanout, ranking policy and query consistency | A04 decision after correctness comparison, before dependent integration. No merging local FTS top-k as if ranks were global. |
 | Owned editor conflict/revision semantics | A05 before production editing; preserve prior assertion references. |
 | Public redistribution for each release | Source/release-specific evidence and notices; public publication held until resolved. Current code remains Apache-2.0. |
@@ -195,7 +195,7 @@ Consequential architecture/scope changes remain Duncan's decision. Ordinary
 engineering choices within this contract belong to CDC; no repeated permission
 question is needed for the already approved roles or endpoint.
 
-## Current Arc02 authority and contributor workflow — 2026-10-24
+## Historical Arc02 authority and contributor workflow — 2026-10-24 (superseded endpoint)
 
 Duncan instructed: “okay ... I think we're ready to dive into arc02! Same Autonomous Mode, same model config/setup :-)”. This renews OpenAI GPT 6.1 Sol High CDC / GPT 6 Luna High CC for Arc02, including slice design/implementation/repairs/independent acceptance, composition, formal close/bubble-up and all retrospectives. Stop before A03. [cdc-directive02.md](cdc-directive02.md) is the preserved current assignment; directive01 and the preceding authority section are historical, not current corpus restrictions. Requested/dispatched settings are distinct from unavailable backend attestation.
 
@@ -205,7 +205,7 @@ Arc02 expressly authorizes necessary public acquisition/read of pinned jbotci ra
 
 Preflight: planning clean5531f604/ahead54 at takeover; main clean d1e1c928, old feature clean a7c250f. Data volume2.6GiB free. Prior designated A01target10GiB and source-local68MiB are protected pending justified cache ownership/handover; no blind cleanup. Every Cargo/Make command must set a task-owned target through fixed launcher, with one writer; serialize imports/snapshots/scans. Independent callers require unique package and binary identities/offline locks. Readback follows complete required bodies and whole-population data queries; preserve failed attempts. Fresh separate SolHigh context gates assembled technical/final packet composition; no CRC inferred. Local scoped commits authorized.
 
-## Research status and next action
+## Historical Arc02 research status and endpoint (superseded by current Arc03 checkpoint)
 
 [Research guide and verification status](artifacts/research/README.md) distinguishes
 preserved authored reports, source captures, authoritative historical gates and
@@ -239,7 +239,7 @@ were preserved as approved review candidates, then committed at `35e368f` before
 
 - 1.1 — 2026-10-24: Duncan approved Autonomous execution through Arc01 and explicitly selected CDC GPT 6.1 Sol High / CC GPT 6 Luna High. Recorded isolated feature worktree, stable ownership and one-arc endpoint; later arcs remain unactivated.
 
-## Active CDC preflight — 2026-10-24
+## Historical CDC preflight — 2026-10-24
 
 Assigned CDC `/root/vlajmaji_p01_a01_cdc` acknowledged `cdc-directive01.md`. Requested OpenAI `gpt-6.1-sol` / high; tool-dispatched configuration is distinct from unknown backend attestation. Planning owner is CDC; source owner passes to the assigned CC only during issued intervals. Root remains read-only. Approved substrate commit: `35e368f`.
 
@@ -247,7 +247,7 @@ Original source baseline remains `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`. Dur
 
 Task output owner: `CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target`; serialize checks. Source integration destination is the local feature branch, independently accepted at slice and arc scale; main integration remains a later separately authorized action. Next current assignment is recorded at slice scale. No A02 activation or external action is authorized.
 
-## Arc01 current progress — 2026-10-24
+## Historical Arc01 progress — 2026-10-24
 
 S01 is independently accepted at11ec701 (registry and borrowed attribution, one repair); its seven-row close/verification/retrospective are complete. S02 typed model/JSON/exact legacy adapter is independently accepted37c3518 after preserved initial/R1 failures and two refinements; S03 relational persistence is independently accepted01a9ceb3after two refinements; S04 grouped lookup is accepted efef9c4after one refinement and separate technical composition passed at the same exact source. Final canonical packet gate accepted at7ddd0db; Arc01formallyCLOSED. All project rows remain open: this first increment does not supply full corpora, final topology, production editor or project acceptance.
 
@@ -304,3 +304,17 @@ Fresh technical and actual finalcanonicalpacket accepted at4e37016/5456b54; both
 Duncan explicitly authorized all Arc03 in Autonomous Mode; unchanged requested Sol6.1/high CDC and Luna/high CC. [cdc-directive03.md](cdc-directive03.md) is preserved authority; [arc03-independent-corpus-packages/arc-plan.md](arc03-independent-corpus-packages/arc-plan.md) owns the current eight-row open set and four useful corpus increments. Source is isolated feature/project01-independent-corpus-packages from clean main52fd3c4, all five original crates retained; Bauske main/default installed store are protected. No push/PR/publication or A04 activation.
 
 Common seal/load and consuming pure composition plus dedicated optional internal data crates are resolved in the arc/S01 plan: actual full normalized bytes embedded only after explicit offline local materialization, default core has no payload, Synthetic CI preparation retains clean all-features coverage. Held real data stays excluded from Git/package/upload. Internal path-dependency delivery is not public crates.io readiness; unpublished optional dependencies keep umbrella public release gated by later distribution work. All14projectrows remain OPEN. Historical accepted Arc02 and bounded follow-up endpoints above remain historical; PR3 was subsequently merged at current52fd3c4, not retroactive reacceptance of those snapshots.
+
+## Arc03 technical delivery and proposed project bubble-up —2026-10-25
+
+All4roadmap collections are actual complete internal offline Rust dependencies: jbotci/Lensisku, The Logical Language Group gismu/cmavo/rafsi family, La-Lojban distribution, Sutysisku projection. Child24rows accepted at04289ae/0d70c9f/62b27db/7b1c565; fresh author-independent actual assembly/store/nativeSQL/publicRust+releaseCLI technical review accepted current7b1c565. Actual canonical packet remains pending same-context final verdict; all8arcrows stayOPEN until it. No runtime delivery deferred from A03.
+
+Pure normalized composition works before SQLite. Four locally materialized Full packages retain78361received assertions/76722entries,76803lexical/1558excluded,31375eligible spellings,566367native fields including23705Sutkeys,3sources/2distributors/4collections/6components/6releases/8captures. Shared Lensisku authority and La distribution copies stay distinct from independent attestations. Content notices/unknown lineage remain explicit; all releases Held. Internal include_bytes consumption is delivered, public crates.io-ready redistribution is not. Core/default builds need no payload; selected missing data fails compilation; explicit offline Synthetic preparation supports clean allfeatures without pretending to be Full.
+
+Fresh reviewer created ONE independent full schema1 store from435519540B canonical/SHA d9d73cbb49cc5a9ddb0ec16cb6dbb4bb7260ad49f4f8f54c6e6d21f0779b7b19, dropped/reopened, passed all6explicit checks and375794raw-derived native/typedSQL controls. All47table inventories and complete eligible tuples match. Fullfarvi5occurrences/3groups with aliases/pages/references and actual releaseCLI equality compose. Evidence: arc03-independent-corpus-packages/artifacts/composition-review.md. Protected provisionalLensisku-only installeddefault remains unchanged; assembled review store is a separate owned witness, not a default replacement/topology decision.
+
+Current operational framing supersedes only the present-tense historical strictopen carryover: mergedPR3 already moved comprehensive validation to explicit verify, ordinary open is minimum-header, info uses SQL, query decodes typed model and builds local safety/setup indexes. Historical A02~25s strict-open timings remain dated evidence. Current four-pack farvi wire is7160366B for5hits, canonical JSON excludingLF7160365B; releaseCLI singlequery3.027s is one local process observation, not a benchmark/cold-disk/general latency claim. Combined-stream capture/source-renderer inference is stated by reviewer. Payload/setup costs remain P01-08/A04 and P01-11/12/A06; no new threshold/optimization/topology is chosen.
+
+All14projectrows remainOPEN. A04 owns fair unified/ATTACH/fanout comparison and selected integration; A05 owns production edits/history/conflicts/sealedownedpackage; A06 owns remaining all-pack+owned/removal/reload/query-family/end-to-end work and Duncan final project acceptance. Each release's public redistribution remains a separate Operator/source-rights gate. StopbeforeA04/no push/PR/publication/main integration.
+
+-1.15 —2026-10-25: A03all4children/24rows and fresh actual full assembled technical composition deliver all4internal dependencies. Current package/identity/feature boundaries and project partial contributions reconciled; current startup language updated to mergedPR3 while preserving historical timings. Canonical final gate pending; all14projectrowsOPEN, unchanged A04–A06/Operator owners.

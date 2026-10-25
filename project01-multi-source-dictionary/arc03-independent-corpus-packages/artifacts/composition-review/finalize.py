@@ -1,0 +1,23 @@
+from pathlib import Path
+import json,hashlib,subprocess,re
+R=Path('/tmp/vlajmaji-p01-a03-arc-review');S=Path('/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji');A=Path('/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc03-independent-corpus-packages');sha=lambda b:hashlib.sha256(b).hexdigest()
+def identity(p):
+ p=Path(p);h=hashlib.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(1048576),b''):h.update(b)
+ return {'path':str(p),'bytes':p.stat().st_size,'sha256':h.hexdigest()}
+wire=identity(R/'logs/cli-query01.log');rust=identity(R/'farvi-rust.json');corr={'supersedes_labels_only':'cli-compare01.json cli_stdout_wire_* labels are overprecise; original record preserved','observed_capture':'CLI stdout and stderr combined by run.py redirection; contains exactly one valid complete JSON response','captured_combined_stream':wire,'rust_saved_response':rust,'observed_combined_bytes_equal_rust_saved':wire['sha256']==rust['sha256'] and wire['bytes']==rust['bytes'],'parsed_values_equal':json.loads((R/'logs/cli-query01.log').read_bytes())==json.loads((R/'farvi-rust.json').read_bytes()),'stdout_attribution':'Source-supported inference from cli/src/main.rs1107-1115 success renderer, not separately instrumented stdout/stderr','separate_stderr_measurement':'unavailable; no second CLI run','canonical_value_bytes':7160365,'canonical_value_sha256':'4ec70533851dcb1eab6ee98774467df2e2bdf8e28f9457ef0d4addd35ef9d420'};(R/'cli-output-clarification01.json').write_text(json.dumps(corr,indent=2)+'\n')
+refs={}
+for name,p in [('source',S),('main',Path('/Users/oubiwann/lab/oxur/vlajmaji')),('bauske',Path('/Users/oubiwann/lab/oxur/bauske'))]:
+ refs[name]={'path':str(p),'head':subprocess.check_output(['git','-C',str(p),'rev-parse','HEAD'],text=True).strip(),'status':subprocess.check_output(['git','-C',str(p),'status','--porcelain'],text=True)}
+assert refs['source']['head']=='7b1c565ebf6c8a423e04211b599006b8c21d65d9' and not refs['source']['status'];assert refs['main']['head']=='52fd3c40a781d6945cfc74a2e79fa66b249e2a5d';assert refs['bauske']['head']=='c5801ae17caaf86d2651b5ce34570199e873ad0f'
+db=identity(R/'full-four-pack-store01/dictionary.sqlite3');assert db['sha256']=='b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725'
+small=[p for p in R.glob('*.py')]+[p for p in R.glob('*.json')]+[R/'caller/Cargo.toml',R/'caller/Cargo.lock',R/'caller/src/main.rs',R/'caller-attempt01.rs']+[p for p in (R/'logs').glob('*.log') if p.name!='cli-query01.log'];files={str(p.relative_to(R)):identity(p) for p in small}
+# Actual frozen7b author logs and unchanged source-isolated matrix are retained, not rerun.
+f=A/'slice04-sutysisku-projection/artifacts';m=json.loads((f/'refinement01-hashes.json').read_text());retained={}
+for name,v in m['gate_logs'].items():
+ b=(f/name).read_bytes();assert sha(b)==v['sha256'];retained[name]=identity(f/name)
+ if name.endswith('make-check.log'):
+  rs=re.findall(r'test result: \w+\. (\d+) passed; (\d+) failed; (\d+) ignored',b.decode());tot=[sum(int(x[i]) for x in rs) for i in range(3)];assert len(rs)==38 and tot==[141,0,1];retained['make_check_population']={'rust_result_rows':38,'totals':tot,'tool_results_in_log':'19 passed; complete shell helper suite'}
+for name in ['search-isolated-no-default01.log','search-isolated-all-features01.log','umbrella-isolated-data-la-lojban-01.log','umbrella-isolated-data-lensisku-jbotci-01.log','umbrella-isolated-data-llg-01.log','umbrella-isolated-data-sutysisku-01.log']:retained[name]=identity(f/name)
+manifest={'status':'TECHNICAL ACCEPTED; final canonical packet remains pending','date':'2026-10-25','requested_reviewer':'gpt-6.1-sol/high; actual author-independent context /root/vlajmaji_p01_a02_cdc/arc03_independent_composition; no backend attestation','refs':refs,'fresh_db_after_cli':db,'binaries':{n:identity(Path('/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release')/n) for n in ['a03_arc_review_20261025h','vlajmaji']},'small_evidence':files,'bulk_local_only':{n:identity(R/n) for n in ['farvi-rust.json','farvi-expected.json','logs/cli-query01.log']},'retained_author_gates':retained,'all_sessions_ended':True,'target_handoff':'Returned to CDC after all named subprocesses exited; no further product/build/DB run required','protected_default':'not accessed'};(R/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n');print(json.dumps({'status':'PASS','final_db':db,'source_status':refs['source']['status'],'main_status':refs['main']['status'],'bauske_status':refs['bauske']['status'],'small_files':len(files),'binaries':manifest['binaries']},indent=2))

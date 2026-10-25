@@ -1,0 +1,20 @@
+{
+  "supersedes_labels_only": "cli-compare01.json cli_stdout_wire_* labels are overprecise; original record preserved",
+  "observed_capture": "CLI stdout and stderr combined by run.py redirection; contains exactly one valid complete JSON response",
+  "captured_combined_stream": {
+    "path": "/tmp/vlajmaji-p01-a03-arc-review/logs/cli-query01.log",
+    "bytes": 7160366,
+    "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+  },
+  "rust_saved_response": {
+    "path": "/tmp/vlajmaji-p01-a03-arc-review/farvi-rust.json",
+    "bytes": 7160366,
+    "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+  },
+  "observed_combined_bytes_equal_rust_saved": true,
+  "parsed_values_equal": true,
+  "stdout_attribution": "Source-supported inference from cli/src/main.rs1107-1115 success renderer, not separately instrumented stdout/stderr",
+  "separate_stderr_measurement": "unavailable; no second CLI run",
+  "canonical_value_bytes": 7160365,
+  "canonical_value_sha256": "4ec70533851dcb1eab6ee98774467df2e2bdf8e28f9457ef0d4addd35ef9d420"
+}

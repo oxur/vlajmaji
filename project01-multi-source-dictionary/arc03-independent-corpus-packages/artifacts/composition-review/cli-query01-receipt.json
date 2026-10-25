@@ -1,0 +1,26 @@
+{
+  "name": "cli-query01",
+  "cmd": [
+    "env",
+    "-u",
+    "HOME",
+    "-u",
+    "XDG_DATA_HOME",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/vlajmaji",
+    "dictionary-query",
+    "/tmp/vlajmaji-p01-a03-arc-review/full-four-pack-store01",
+    "--request",
+    "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+  ],
+  "pid": 21709,
+  "profile": "release",
+  "stage": "process_start",
+  "exit": 0,
+  "elapsed_s": 3.026905625127256,
+  "log_sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556",
+  "log_bytes": 7160366,
+  "env": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  }
+}

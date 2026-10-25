@@ -1,0 +1,280 @@
+{
+  "status": "TECHNICAL ACCEPTED; final canonical packet remains pending",
+  "date": "2026-10-25",
+  "requested_reviewer": "gpt-6.1-sol/high; actual author-independent context /root/vlajmaji_p01_a02_cdc/arc03_independent_composition; no backend attestation",
+  "refs": {
+    "source": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji",
+      "head": "7b1c565ebf6c8a423e04211b599006b8c21d65d9",
+      "status": ""
+    },
+    "main": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji",
+      "head": "52fd3c40a781d6945cfc74a2e79fa66b249e2a5d",
+      "status": ""
+    },
+    "bauske": {
+      "path": "/Users/oubiwann/lab/oxur/bauske",
+      "head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+      "status": ""
+    }
+  },
+  "fresh_db_after_cli": {
+    "path": "/tmp/vlajmaji-p01-a03-arc-review/full-four-pack-store01/dictionary.sqlite3",
+    "bytes": 1487691776,
+    "sha256": "b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725"
+  },
+  "binaries": {
+    "a03_arc_review_20261025h": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/a03_arc_review_20261025h",
+      "bytes": 444988608,
+      "sha256": "72af87352202e1f6287b8313b4bbdba17cb4a75ad9e494cf33ddb9ea8d8d4797"
+    },
+    "vlajmaji": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/vlajmaji",
+      "bytes": 9631216,
+      "sha256": "4c2a13cc1c9bb6a4448bbf910ce23b36de95cce65e45dfe2b0bdcd572317c975"
+    }
+  },
+  "small_evidence": {
+    "run.py": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/run.py",
+      "bytes": 1687,
+      "sha256": "830b1895093e8ac5830967e1b3a626cd5574d7a9b3d7af8dbd8bd0e783319683"
+    },
+    "raw_reference.py": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/raw_reference.py",
+      "bytes": 3999,
+      "sha256": "265dd5df9f0de36b87e9f595c370d0a84eace96f74b0db47c1fd7397dec38cc1"
+    },
+    "distribution_census.py": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/distribution_census.py",
+      "bytes": 4297,
+      "sha256": "1173bfe4a7899bb8c5e6b14b03c403fe78eb62ae29b2c9e7361590a2b0ccebaa"
+    },
+    "finalize.py": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/finalize.py",
+      "bytes": 4661,
+      "sha256": "e3bd19b9d4b6521f415ef59f0d4c97e591469fd7720593de56a7f9b7a6789152"
+    },
+    "native_sql.py": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/native_sql.py",
+      "bytes": 13675,
+      "sha256": "61d15bb8c346e2e438583481d73051d283408207462e8e21d2900c80aa659920"
+    },
+    "verify_llg_recipe.py": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/verify_llg_recipe.py",
+      "bytes": 8747,
+      "sha256": "bc741c440bdfb6b6a5e47e535c6870ed87c26d7e5ab944062a70463d319dc2d3"
+    },
+    "preflight.py": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/preflight.py",
+      "bytes": 3283,
+      "sha256": "09c23219ba04414442426454529ffa3ce0dc32187d07719accd995a77e7361a6"
+    },
+    "full01-receipt.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/full01-receipt.json",
+      "bytes": 518,
+      "sha256": "8929fb460f56cbc0bce6a542f9eb6ee456ddd34e2f58cb0f8396725b288239b3"
+    },
+    "cli-query01-receipt.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/cli-query01-receipt.json",
+      "bytes": 725,
+      "sha256": "553b3b7728653d99c419525411f54e28acec01f5ce2c01a417aa09e5ecac003f"
+    },
+    "retained-matrix01.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/retained-matrix01.json",
+      "bytes": 2405,
+      "sha256": "e6d336cd346904a595eab928edf04ccef3b4d8f76323488fb3d9ef1602bf6ca7"
+    },
+    "runtime-summary.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/runtime-summary.json",
+      "bytes": 504,
+      "sha256": "a7e024a34006380d0cc84158d33162562614f9ce63a587d83dde3fe40198e15a"
+    },
+    "cli-build01-receipt.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/cli-build01-receipt.json",
+      "bytes": 660,
+      "sha256": "4287d4b9e1fc5cd612c5ca66adf91a3475e5b1b086cbc39e7bbd51170061adf5"
+    },
+    "store-summary.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/store-summary.json",
+      "bytes": 559,
+      "sha256": "46946b415076da5e48c2763862e32e35d169a3ef185433c7dcacf5711a1553bd"
+    },
+    "build01-receipt.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/build01-receipt.json",
+      "bytes": 599,
+      "sha256": "e73a00c7a222f85b2faedbaacd49f888515e16c53a83b86cecda25cb50cd587f"
+    },
+    "cli-compare01.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/cli-compare01.json",
+      "bytes": 689,
+      "sha256": "ec505410ece07769b353182a2ab2575ac56431a29242e52f6593ac700777613d"
+    },
+    "build02-receipt.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/build02-receipt.json",
+      "bytes": 595,
+      "sha256": "8219e1ecea69c345fd74928fb44295eb799886ebc8c8dc63b679d6925fe1c474"
+    },
+    "cli-output-clarification01.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/cli-output-clarification01.json",
+      "bytes": 1084,
+      "sha256": "8af035173ccee7ea6eebaabea06efa3389c2a8dd5f4e772e8f0eaa7768c3ede0"
+    },
+    "preflight01.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/preflight01.json",
+      "bytes": 7292,
+      "sha256": "0f8d3bc071088fb2dc8ad518bdb67a19be096128ca5541fe50e76fa5cd088adb"
+    },
+    "native-sql01.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/native-sql01.json",
+      "bytes": 4510,
+      "sha256": "154e17b5bc1a87c29f04d48f418c37e94e65b4103d4e2294f47a3dcde19269c3"
+    },
+    "native-sql01-receipt.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/native-sql01-receipt.json",
+      "bytes": 487,
+      "sha256": "1cc21bc6c9d4e39319246f73ab7322d6c6645ae8d3a1a64dce2d1082db63d742"
+    },
+    "lock01-receipt.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/lock01-receipt.json",
+      "bytes": 573,
+      "sha256": "adf93dca1e03b414c87178c3cb4b8b1609ad41802653cdf34e53c4d925c28d15"
+    },
+    "verify-all.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/verify-all.json",
+      "bytes": 690,
+      "sha256": "a123115492225047f3ea3c6a28f8a72d5a52d2ea9a3e5f642006c89cd32e3828"
+    },
+    "caller/Cargo.toml": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/caller/Cargo.toml",
+      "bytes": 1089,
+      "sha256": "36de27300cecd68444692ca955f829fbb2049bc665eaef3eccc9c5f97153dfbc"
+    },
+    "caller/Cargo.lock": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/caller/Cargo.lock",
+      "bytes": 8731,
+      "sha256": "6e94902de065097d46068017906b8cdf4f998e79468799e72d4223135a4a1d88"
+    },
+    "caller/src/main.rs": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/caller/src/main.rs",
+      "bytes": 13124,
+      "sha256": "3fb00e8d76dfe1775a10dd75bb7c92100ae21b5516bcb8dc8dad075bf03c06b1"
+    },
+    "caller-attempt01.rs": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/caller-attempt01.rs",
+      "bytes": 13024,
+      "sha256": "487ce3a44f69b5ce2549b6b3884e0e220476927e5cbf42251a8d7777dfc148fe"
+    },
+    "logs/native-sql01.log": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/logs/native-sql01.log",
+      "bytes": 4510,
+      "sha256": "154e17b5bc1a87c29f04d48f418c37e94e65b4103d4e2294f47a3dcde19269c3"
+    },
+    "logs/build02.log": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/logs/build02.log",
+      "bytes": 263,
+      "sha256": "253900006455cf4039d54cd5eaf34398908e31671d73419c654add072d55372c"
+    },
+    "logs/build01.log": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/logs/build01.log",
+      "bytes": 3014,
+      "sha256": "fb6ee32647d9ffb55128304bd161f772b85a545ba75d135f839f726b44b92f7b"
+    },
+    "logs/cli-build01.log": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/logs/cli-build01.log",
+      "bytes": 650,
+      "sha256": "54ddad9ee9a02051e6deab491713dfe15cdbd154ca919a3a31bc7980bc846fc3"
+    },
+    "logs/lock01.log": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/logs/lock01.log",
+      "bytes": 274,
+      "sha256": "8c78abcfd25b87f3bfb2bb022b4fceadbbecb80ba875bd187053dd0abb51359a"
+    },
+    "logs/full01.log": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/logs/full01.log",
+      "bytes": 2230,
+      "sha256": "1a306bbbeb596b93d6ae4501207408612177abcafe91913af7b610265ea4f8bd"
+    }
+  },
+  "bulk_local_only": {
+    "farvi-rust.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/farvi-rust.json",
+      "bytes": 7160366,
+      "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+    },
+    "farvi-expected.json": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/farvi-expected.json",
+      "bytes": 7160366,
+      "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+    },
+    "logs/cli-query01.log": {
+      "path": "/tmp/vlajmaji-p01-a03-arc-review/logs/cli-query01.log",
+      "bytes": 7160366,
+      "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+    }
+  },
+  "retained_author_gates": {
+    "refinement01-make-format.log": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc03-independent-corpus-packages/slice04-sutysisku-projection/artifacts/refinement01-make-format.log",
+      "bytes": 170,
+      "sha256": "2afdddc94e9b66eb18a7d0a4083ca60a21a0ccc41647d0ba52e0fe2ad91fd7c5"
+    },
+    "refinement01-make-lint.log": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc03-independent-corpus-packages/slice04-sutysisku-projection/artifacts/refinement01-make-lint.log",
+      "bytes": 352,
+      "sha256": "550fc7d3de7e5622c2a7cd1e337aaffc2c914af559b872d1341737911aaa37c5"
+    },
+    "refinement01-make-check.log": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc03-independent-corpus-packages/slice04-sutysisku-projection/artifacts/refinement01-make-check.log",
+      "bytes": 23324,
+      "sha256": "68af56887994ab8ec059f5673f0548d635d6568168e9b993f2f794bc3f3e7f48"
+    },
+    "make_check_population": {
+      "rust_result_rows": 38,
+      "totals": [
+        141,
+        0,
+        1
+      ],
+      "tool_results_in_log": "19 passed; complete shell helper suite"
+    },
+    "search-isolated-no-default01.log": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc03-independent-corpus-packages/slice04-sutysisku-projection/artifacts/search-isolated-no-default01.log",
+      "bytes": 2740,
+      "sha256": "7fd8b20c7d4f4591b03c7175c3aa68d30a7ac7ec65616f24c39e3df02661fed1"
+    },
+    "search-isolated-all-features01.log": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc03-independent-corpus-packages/slice04-sutysisku-projection/artifacts/search-isolated-all-features01.log",
+      "bytes": 2638,
+      "sha256": "4c50aeb60498d8c61cde1faf131c02d0d61d3d8f0957322b8b5cf047341881b0"
+    },
+    "umbrella-isolated-data-la-lojban-01.log": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc03-independent-corpus-packages/slice04-sutysisku-projection/artifacts/umbrella-isolated-data-la-lojban-01.log",
+      "bytes": 994,
+      "sha256": "f3fead4df08d008cc8c72076bafcdc64399f001f723f2ff293b1e2e64031f824"
+    },
+    "umbrella-isolated-data-lensisku-jbotci-01.log": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc03-independent-corpus-packages/slice04-sutysisku-projection/artifacts/umbrella-isolated-data-lensisku-jbotci-01.log",
+      "bytes": 1148,
+      "sha256": "3e98bbcc1abe8b6acca5addae473eb69793317489e9652b18759cf11431b6b01"
+    },
+    "umbrella-isolated-data-llg-01.log": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc03-independent-corpus-packages/slice04-sutysisku-projection/artifacts/umbrella-isolated-data-llg-01.log",
+      "bytes": 982,
+      "sha256": "b8d91485511a8712985eb7303bf27431e30cc20f1e0cb5eb3d24ea7f68091bf8"
+    },
+    "umbrella-isolated-data-sutysisku-01.log": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc03-independent-corpus-packages/slice04-sutysisku-projection/artifacts/umbrella-isolated-data-sutysisku-01.log",
+      "bytes": 836,
+      "sha256": "22a9fd9ab0e2fb66950bb44f6480fcf1fedf9f1b6d5bc74c5d94f9b06c67f4e8"
+    }
+  },
+  "all_sessions_ended": true,
+  "target_handoff": "Returned to CDC after all named subprocesses exited; no further product/build/DB run required",
+  "protected_default": "not accessed",
+  "report_sha256": "2664bfdf3016e3f891d73580bfa7350c56327154656f69ceaf15c083f8afe319",
+  "durable_evidence_home": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc03-independent-corpus-packages/artifacts/composition-review",
+  "inventory_classification": "Full farvi expected/Rust/CLI query payloads remain local bulk only; no corpus/model/query payload copied."
+}

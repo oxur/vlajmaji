@@ -15,8 +15,8 @@ Read `project01-multi-source-dictionary/project-plan.md` first. On 2026-10-25 Du
 Ledger rows remain open until independently dispositioned. Do not create close/verification/retrospective records before the
 corresponding work and review occur.
 
-Implementation belongs in `/Users/oubiwann/lab/oxur/vlajmaji`, whose CLI is
-`crates/cli` (all five packages are under `crates/*`). Bauske is a separate sibling repository. Future substantive
+Implementation belongs in the isolated source worktree named by current authority; the repository is `/Users/oubiwann/lab/oxur/vlajmaji`, whose CLI is
+`crates/cli`. Arc03 adds four internal optional data packages to the five original packages, all under `crates/*`. Bauske is a separate sibling repository. Future substantive
 Autonomous implementation requires an approved endpoint and non-default source
 branch; prior maintenance on `main` is not the project execution convention.
 
@@ -51,3 +51,7 @@ All6supplemental rows independently accepted at source53f9eac on unpublished fea
 ## Current Arc03 authority —2026-10-25
 
 Dedicated source feature/project01-independent-corpus-packages at main52fd3c4, .worktrees/project01-arc03/vlajmaji, Bauske read-only sibling. All four full corpus packages remain mandatory; explicit sealed offline materialization/internal embedded consumption with separate Synthetic CI preparation. Root directive03 and arc plan govern. No push/PR/publication/main/default-store mutation, no A04. Earlier records/accepted snapshots retained; all14projectrowsOPEN.
+
+## Current Arc03 technical/proposed closing checkpoint —2026-10-25
+
+All4children/24rows independently accepted through source7b1c565. Fresh author-independent Sol6.1/high actual four-pack release/store/nativeSQL/publicRust+CLI technical composition ACCEPTED; actual canonical packet now awaits same-context final review. Eight arc rows stayOPEN until that verdict and mechanical close; all14projectrowsOPEN. Source/index remain clean and protected, no active implementation interval; reviewer returned target after sessions ended. All4internal data dependencies delivered; redistribution Held, no push/publication/default change/A04. Earlier endpoint statements are historical, superseded only within directive03.

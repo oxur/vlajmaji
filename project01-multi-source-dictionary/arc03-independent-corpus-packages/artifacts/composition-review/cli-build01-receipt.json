@@ -1,0 +1,26 @@
+{
+  "name": "cli-build01",
+  "cmd": [
+    "/tmp/vlajmaji-p01-a03-cargo",
+    "+1.98.0",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/Cargo.toml",
+    "-p",
+    "vlajmaji-cli"
+  ],
+  "pid": 21654,
+  "profile": "release",
+  "stage": "process_start",
+  "exit": 0,
+  "elapsed_s": 18.145082250237465,
+  "log_sha256": "54ddad9ee9a02051e6deab491713dfe15cdbd154ca919a3a31bc7980bc846fc3",
+  "log_bytes": 650,
+  "env": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  }
+}

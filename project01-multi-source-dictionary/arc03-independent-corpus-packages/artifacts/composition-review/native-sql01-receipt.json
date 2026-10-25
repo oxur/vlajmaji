@@ -1,0 +1,19 @@
+{
+  "name": "native-sql01",
+  "cmd": [
+    "python3",
+    "-B",
+    "/tmp/vlajmaji-p01-a03-arc-review/native_sql.py"
+  ],
+  "pid": 21633,
+  "profile": "release",
+  "stage": "process_start",
+  "exit": 0,
+  "elapsed_s": 11.077081833034754,
+  "log_sha256": "154e17b5bc1a87c29f04d48f418c37e94e65b4103d4e2294f47a3dcde19269c3",
+  "log_bytes": 4510,
+  "env": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  }
+}

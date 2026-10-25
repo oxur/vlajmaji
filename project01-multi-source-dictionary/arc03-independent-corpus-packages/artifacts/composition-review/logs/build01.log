@@ -1,0 +1,42 @@
+Vlajmaji Arc03 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling bauske-phonology v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/bauske/crates/phonology)
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon)
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/store)
+   Compiling vlajmaji-data-llg v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-llg)
+   Compiling vlajmaji-data-la-lojban v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-la-lojban)
+   Compiling vlajmaji-data-lensisku-jbotci v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-lensisku-jbotci)
+   Compiling vlajmaji-data-sutysisku v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-sutysisku)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/search)
+   Compiling vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/vlajmaji)
+   Compiling vlajmaji-a03-arc-review-20261025h v0.0.0 (/tmp/vlajmaji-p01-a03-arc-review/caller)
+error[E0277]: the trait bound `DictionaryStoreSummary: serde::Serialize` is not satisfied
+   --> src/main.rs:21:176
+    |
+ 21 | ...(&store,&d).unwrap();let summary=serde_json::to_value(created.summary().unwrap()).unwrap();save("store-summary.json",&summary);d...
+    |                                     -------------------- ^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `serde_core::ser::Serialize` is not implemented for `DictionaryStoreSummary`
+    |                                     |
+    |                                     required by a bound introduced by this call
+    |
+    = note: for local types consider adding `#[derive(serde::Serialize)]` to your `DictionaryStoreSummary` type
+    = note: for types from other crates check whether the crate offers a `serde` feature flag
+    = help: the following other types implement trait `serde_core::ser::Serialize`:
+              &'a T
+              &'a mut T
+              ()
+              (T,)
+              (T0, T1)
+              (T0, T1, T2)
+              (T0, T1, T2, T3)
+              (T0, T1, T2, T3, T4)
+            and 252 others
+note: required by a bound in `to_value`
+   --> /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/value/mod.rs:997:8
+    |
+995 | pub fn to_value<T>(value: T) -> Result<Value, Error>
+    |        -------- required by a bound in this function
+996 | where
+997 |     T: Serialize,
+    |        ^^^^^^^^^ required by this bound in `to_value`
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `vlajmaji-a03-arc-review-20261025h` (bin "a03_arc_review_20261025h") due to 1 previous error

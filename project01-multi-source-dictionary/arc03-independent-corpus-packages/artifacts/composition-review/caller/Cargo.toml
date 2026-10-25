@@ -1,0 +1,15 @@
+[package]
+name = "vlajmaji-a03-arc-review-20261025h"
+version = "0.0.0"
+edition = "2024"
+[[bin]]
+name = "a03_arc_review_20261025h"
+path = "src/main.rs"
+[dependencies]
+vlajmaji = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/vlajmaji", features = ["data-lensisku-jbotci", "data-llg", "data-la-lojban", "data-sutysisku"] }
+vlajmaji-data-lensisku-jbotci = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-lensisku-jbotci", features = ["embedded"] }
+vlajmaji-data-llg = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-llg", features = ["embedded"] }
+vlajmaji-data-la-lojban = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-la-lojban", features = ["embedded"] }
+vlajmaji-data-sutysisku = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-sutysisku", features = ["embedded"] }
+serde_json = { version = "=1.0.151", features = ["raw_value", "arbitrary_precision"] }
+sha2 = "=0.10.9"

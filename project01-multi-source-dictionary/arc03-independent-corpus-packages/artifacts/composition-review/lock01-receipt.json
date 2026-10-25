@@ -1,0 +1,22 @@
+{
+  "name": "lock01",
+  "cmd": [
+    "/tmp/vlajmaji-p01-a03-cargo",
+    "+1.98.0",
+    "generate-lockfile",
+    "--offline",
+    "--manifest-path",
+    "/tmp/vlajmaji-p01-a03-arc-review/caller/Cargo.toml"
+  ],
+  "pid": 21418,
+  "profile": "release",
+  "stage": "process_start",
+  "exit": 0,
+  "elapsed_s": 1.010528584010899,
+  "log_sha256": "8c78abcfd25b87f3bfb2bb022b4fceadbbecb80ba875bd187053dd0abb51359a",
+  "log_bytes": 274,
+  "env": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  }
+}

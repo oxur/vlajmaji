@@ -1,0 +1,81 @@
+{
+  "retained_only": true,
+  "receipts": [
+    {
+      "name": "clean-no-data-default01",
+      "exit": 0,
+      "log_sha256": "3074bd59013a25a6ac094b28332dbd63de9bbeae72fb44a2bec63297bb6e4402"
+    },
+    {
+      "name": "clean-selected-missing01",
+      "exit": 101,
+      "log_sha256": "7703db54835dbbae6fbc5f3342439f215386d1573d9fa2d9484d768f081c9809"
+    },
+    {
+      "name": "clean-ci-synthetic-prep01",
+      "exit": 0,
+      "log_sha256": "ca6cfa5bfe18d05f43426920b8a2a7e5a7fbf40ae82e26bef1bb00153e37d47b"
+    },
+    {
+      "name": "clean-ci-llg-synthetic-prep01",
+      "exit": 0,
+      "log_sha256": "046370ff1f333f8f92fa0254f6e75ca8fcbe89b33eb47312d1fd25800521306a"
+    },
+    {
+      "name": "clean-ci-la-synthetic-prep01",
+      "exit": 0,
+      "log_sha256": "8c9c5e7d0b98c1b6b449c99bd44b9b2aa2b8e296c8071e0e96177b3a613253c2"
+    },
+    {
+      "name": "clean-ci-sut-synthetic-prep01",
+      "exit": 0,
+      "log_sha256": "cdb3bcd3842ea69523450c9644b7bbd733ee90662440a31a62a68872219fbc62"
+    },
+    {
+      "name": "clean-ci-all-features01",
+      "exit": 0,
+      "log_sha256": "41543cc98c94cba5ae2b46c4f4d59b928925b14aa9721ffebfd1a13136ec1aa8",
+      "result_rows": 38,
+      "totals": [
+        143,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "package-vlajmaji-cli01",
+      "exit": 0,
+      "log_sha256": "89414f60235d9a4aea2cb3421fe65f8f4d46ecbb68328a76f2501921cbb77b41"
+    },
+    {
+      "name": "package-vlajmaji-lexicon01",
+      "exit": 0,
+      "log_sha256": "55bb5be87052ad934c1952ea93ace7241f11f609b596ce928e78fe3fe7e2423b"
+    },
+    {
+      "name": "package-vlajmaji01",
+      "exit": 0,
+      "log_sha256": "83eb5c82b86bef9688d7ba6bdaac6d3fae72482f044010d5da9fbd4631ec6d81"
+    },
+    {
+      "name": "package-vlajmaji-data-lensisku-jbotci01",
+      "exit": 0,
+      "log_sha256": "3d42c5c965d6538c09e6c8042c512f6c0ec4e34c7386a6e4c364d2b5dfed7bb0"
+    },
+    {
+      "name": "package-vlajmaji-data-llg01",
+      "exit": 0,
+      "log_sha256": "3d42c5c965d6538c09e6c8042c512f6c0ec4e34c7386a6e4c364d2b5dfed7bb0"
+    },
+    {
+      "name": "package-vlajmaji-data-la-lojban01",
+      "exit": 0,
+      "log_sha256": "3d42c5c965d6538c09e6c8042c512f6c0ec4e34c7386a6e4c364d2b5dfed7bb0"
+    },
+    {
+      "name": "package-vlajmaji-data-sutysisku01",
+      "exit": 0,
+      "log_sha256": "3d42c5c965d6538c09e6c8042c512f6c0ec4e34c7386a6e4c364d2b5dfed7bb0"
+    }
+  ]
+}
