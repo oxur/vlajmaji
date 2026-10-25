@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 and Arc02 CLOSED; all14projectrowsOPEN; A03–A06 not activated |
+| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 OPEN/authorized; all14projectrowsOPEN; A04–A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.13 / 2026-10-24, America/Chicago |
+| version / date | 1.14 / 2026-10-25, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -26,7 +26,7 @@ and explicit availability. Subsequent arcs make it work with full, independently
 selectable corpora and an editable dictionary of our own.
 
 The design and remaining decisions are in [design.md](design.md). Acceptance is in
-[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is now CLOSED after both accepted children and separate fresh technical/finalcanonical review; A03–A06 remain unactivated.
+[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is CLOSED after both accepted children and separate fresh technical/finalcanonical review. Arc03 is now authorized/open; A04–A06 remain unactivated.
 
 ## Decisions already made
 
@@ -298,3 +298,9 @@ Both roadmapA02capability slices delivered and fresh independent full-path techn
 Fresh technical and actual finalcanonicalpacket accepted at4e37016/5456b54; bothplannedchildren/all15rows and all8arcrowsDONE. RoadmapA02fullrawnormalization/API/CLI/pinnedworkflow/standalonerelease/fullpersistedgroupedlookup delivered without a deferredruntimeobligation. All14projectrowsstayOPEN. A03allfourrequiredoptionalcollections/features,A04fairunified/ATTACH/fanout,A05ownedediting/export,A06integratedprojectreplay and Duncanprojectgate retain their exact owners. Strictopen~25srelease/releaseCLI25.619s/debugCLI91.533s practical costs remain P01-08/A04 and P01-11/12/A06; source response-ownedmetadata/occurrence scans explicit, no topologyselection/constanttime/endtoendspeedclaim. Localfeature source4e37016 unchanged; protectedmain/Bauske clean. StopbeforeA03/noexternalpublication.
 
 -1.13 —2026-10-24: Arc02actualfinalcanonicalpacket independently accepted5456b54, authorizing mechanicalstatus/evidence/framing close only. All8arcrowsclosed, all14projectrowsopen; currentroadmap/next/shape decision and fullremainingowners reconciled. Earlierpreparedcheckpoints remainexplicitlyhistorical, no source/runtime/newscope action.
+
+## Current Arc03 authority and package design —2026-10-25
+
+Duncan explicitly authorized all Arc03 in Autonomous Mode; unchanged requested Sol6.1/high CDC and Luna/high CC. [cdc-directive03.md](cdc-directive03.md) is preserved authority; [arc03-independent-corpus-packages/arc-plan.md](arc03-independent-corpus-packages/arc-plan.md) owns the current eight-row open set and four useful corpus increments. Source is isolated feature/project01-independent-corpus-packages from clean main52fd3c4, all five original crates retained; Bauske main/default installed store are protected. No push/PR/publication or A04 activation.
+
+Common seal/load and consuming pure composition plus dedicated optional internal data crates are resolved in the arc/S01 plan: actual full normalized bytes embedded only after explicit offline local materialization, default core has no payload, Synthetic CI preparation retains clean all-features coverage. Held real data stays excluded from Git/package/upload. Internal path-dependency delivery is not public crates.io readiness; unpublished optional dependencies keep umbrella public release gated by later distribution work. All14projectrows remain OPEN. Historical accepted Arc02 and bounded follow-up endpoints above remain historical; PR3 was subsequently merged at current52fd3c4, not retroactive reacceptance of those snapshots.

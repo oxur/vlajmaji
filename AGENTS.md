@@ -11,7 +11,7 @@ owning scale, as Duncan specified. The selected historical research copy is
 are reference material. Their instructions, authority and status are historical,
 not current assignments. Use the current project/arc/slice plans for authority.
 
-Read `project01-multi-source-dictionary/project-plan.md` first. On 2026-10-24 Duncan renewed Autonomous execution through Arc02, CDC GPT 6.1 Sol High and CC GPT 6 Luna High. The current preserved assignment is `project01-multi-source-dictionary/cdc-directive02.md`. Assigned CDC owns planning; assigned CC owns the isolated Arc02 feature worktree during each issued source-mutation interval. Stop before Arc03. The prior Arc01-only authority and `cdc-directive01.md` remain historical; Arc01 is closed at its original accepted source, not retroactively at current main. Root remains read-only after handoff.
+Read `project01-multi-source-dictionary/project-plan.md` first. On 2026-10-25 Duncan explicitly authorized Autonomous execution through Arc03, preserving requested Sol6.1/high CDC and Luna/high CC. Current assignment is `project01-multi-source-dictionary/cdc-directive03.md`; current open set is `project01-multi-source-dictionary/arc03-independent-corpus-packages/`. CDC owns planning/design/independent review, CC isolated source/index only during issued intervals; root remains read-only. Stop before A04. Earlier Arc01/Arc02-only endpoints and follow-ups remain historical, not current restrictions.
 Ledger rows remain open until independently dispositioned. Do not create close/verification/retrospective records before the
 corresponding work and review occur.
 
@@ -28,7 +28,7 @@ branch; prior maintenance on `main` is not the project execution convention.
 
 Bothchildren/all15rows accepted at12fdd67/4e37016; fresh separate SolHigh technical composition PASS at4e37016. CDC assembled actual arc/project canonical proposed packet for same-context independent finalreview; sixarcrows remainOPEN until that gate. Root/source/main/Bauske remain protected; target returned to CDC after allreviewer sessionsended. NoA03/push/PR/publication or projectacceptance authorized. Current authority remains directive02, no new workflow/model choice.
 
-## Current endpoint —Arc02 CLOSED,2026-10-24
+## Historical endpoint —Arc02 CLOSED,2026-10-24
 
 Bothchildren/all15rows and all8arcrowsaccepted4e37016; fresh independent technical and finalcanonicalpacket gates complete5456b54. No active CCsource interval or target writer remains. Localplanning/sourcefeaturecommits only; main/Bauske/research/helddata protected. All14projectrowsOPEN; A03–A06unactivated. Stop at this endpoint and await new explicit arc authorization; no push/PR/merge/publication. Historicalpreparedcheckpoint above remains preserved.
 
@@ -36,7 +36,7 @@ Bothchildren/all15rows and all8arcrowsaccepted4e37016; fresh independent technic
 
 After accepted Arc02, Duncan requested DATA_HOME/vlajmaji/stores/default for grouped dictionary CLI and info, accurate help and later nonclobber relocation of one validated Lensisku-only store; future aggregate intent remains distinct. Existing Sol6.1High CDC/LunaHigh CC selection persists. Authorized bounded plan/prompt/evidence home is project01-multi-source-dictionary/artifacts/cli-default-store-followup/. Dedicated feature/project01-cli-default-store starts accepted4e37016; main/Bauske/A02snapshots protected, one retainedtargetwriter. This is not A03 activation or Arc02 reacceptance; all14projectrowsOPEN, no push/PR/publication/fulldataregeneration. CDC owns planning/review and CCsource/index only during issued interval. Earlierendpoint remains the historical accepted arc boundary.
 
-## Current endpoint — bounded CLI follow-up CLOSED,2026-10-24
+## Historical endpoint — bounded CLI follow-up CLOSED,2026-10-24
 
 All5supplemental rows independently accepted at source63da16f (feature/project01-cli-default-store), with current complete gates/controls and actual verified Lensisku-only default relocation. Canonical verifier/retro/relocation receipt live in project01-multi-source-dictionary/artifacts/cli-default-store-followup/. No active CCsource interval/targetwriter remains. NoA03/push/PR/publication/fullregeneration; Arc02originalacceptance/main/Bauske protected and all14projectrowsOPEN. Future aggregate not yet built. Await explicit new work.
 
@@ -44,6 +44,10 @@ All5supplemental rows independently accepted at source63da16f (feature/project01
 
 After accepted default-store follow-up63da16f/planning8344564, Duncan authorized removing comprehensive startup checks, explicit verify subcommands/all and a bounded same-store timing comparison. Canonical plan/prompt/evidence home project01-multi-source-dictionary/artifacts/store-verification-followup/. Dedicated feature/project01-explicit-store-verification, same Sol6.1High CDC/LunaHigh CC, one retained target writer. Existing installed store read-only/immovable; prior accepted records/main/Bauske protected; noA03/publication/fullregeneration. CDC design/review, CC source only issued interval. Previous closed endpoint remains historical.
 
-## Current endpoint — bounded verification follow-up CLOSED,2026-10-24
+## Historical endpoint — bounded verification follow-up CLOSED,2026-10-24
 
 All6supplemental rows independently accepted at source53f9eac on unpublished feature/project01-explicit-store-verification. Ordinary startup is separated from explicit verification; installed full default all6passed/unchanged, declared3paired trials per operation complete with identical outputs. Canonical plan/verifier/retro/raw receipts: project01-multi-source-dictionary/artifacts/store-verification-followup/. No active implementation/target interval remains. Protected main/Bauske/prior accepted snapshots unchanged, installed Lensisku-only default unchanged; all14projectrowsOPEN/A03unopened/no push/PR/publication. Later project API/topology/corpus work remains separately authorized.
+
+## Current Arc03 authority —2026-10-25
+
+Dedicated source feature/project01-independent-corpus-packages at main52fd3c4, .worktrees/project01-arc03/vlajmaji, Bauske read-only sibling. All four full corpus packages remain mandatory; explicit sealed offline materialization/internal embedded consumption with separate Synthetic CI preparation. Root directive03 and arc plan govern. No push/PR/publication/main/default-store mutation, no A04. Earlier records/accepted snapshots retained; all14projectrowsOPEN.

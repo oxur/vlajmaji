@@ -34,3 +34,7 @@ Independent own-full-store/rawnative/publicRust+CLI/offline technical compositio
 ## Arc02 final accepted partial contribution —2026-10-24
 
 All8arcrows/15childrowsDONE, fresh technical and actual finalcanonicalpacket accepted4e37016/5456b54. Current projectpartialcontributions above include this completeA02delivery; all14projectrowsremainOPEN with unchanged remainingowners/Operatorgate. Earlierpendingsections are historical checkpoints. NoA03/publication/projectacceptance.
+
+## Arc03 authorization/open set —2026-10-25
+
+Arc03 is explicitly authorized/open under directive03, with all four required collections and the common internal sealed pack/feature/composition contract owned by arc03-independent-corpus-packages/arc-plan.md and eight-row ledger. No implementation acceptance is implied by readiness; all14projectrows remain OPEN. Source baseline main52fd3c4 includes subsequently merged PR3, preserving accepted historical snapshots. Remaining topology A04/editor A05/final A06/Operator and public redistribution gates unchanged.

@@ -1,6 +1,6 @@
 # Design — A dictionary of attributable assertions
 
-**Status:** A01 foundation implemented and independently accepted at efef9c4; A02 active as authorized 2026-10-24. SQLite and source-preserving semantics are adopted; A01 concrete model/store DDL is implemented. Physical multi-corpus topology remains A04. The original substrate observations below are historical at 4ee3bab; current source is0.3.0/d1e1c928 with all5packages under crates/* and CLI crates/cli. See [project-plan.md](project-plan.md) for authority and scope.
+**Status:** A01/A02 and bounded CLI/startup follow-ups accepted historically; Arc03 authorized/open2026-10-25 at main52fd3c4 (0.3.0 development, five original crates under crates/*). Current package/seal/composition design is [Arc03 plan](arc03-independent-corpus-packages/arc-plan.md) and its S01 plan. Physical multi-corpus topology remains A04. Original substrate observations below are historical at4ee3bab, not current claims. See project-plan.md/directive03 for current authority.
 
 ## Current substrate and the gap
 
