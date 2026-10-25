@@ -14,7 +14,10 @@ and the possibilities of combining them. Its aim is to bring multiple
 lexicons together without losing who said what, then make that material useful
 for language study, word creation, poetry, and song.
 
-## What 0.2.0 provides
+## Current 0.3 development checkout
+
+The capabilities below describe the current workspace checkout, not the published
+0.2.0 packages. The latest published release is 0.2.0.
 
 The Rust workspace already provides:
 
@@ -61,19 +64,21 @@ attested usage, semantic equivalence, or poetic merit.
 | [`vlajmaji-search`](crates/search) | Reusable queries and computed analyses |
 | [`vlajmaji-cli`](crates/cli) | The `vlajmaji` executable |
 
-## Try it
+## Published 0.2.0 packages
 
-Use Rust 1.98.0 or newer. Install the published CLI with:
+Use Rust 1.98.0 or newer. Install the published 0.2.0 CLI with:
 
 ```sh
 cargo +1.98.0 install vlajmaji-cli --version 0.2.0 --locked
 vlajmaji --help
 ```
 
-For a Rust library, add `vlajmaji = "0.2.0"` to your dependencies and use
-`vlajmaji::{lexicon, store, search}`. The
+For a Rust library using the published release, add `vlajmaji = "0.2.0"` to
+your dependencies and use `vlajmaji::{lexicon, store, search}`. The
 [umbrella crate README](crates/vlajmaji/README.md) links the component crates and
 describes the opt-in features.
+
+## Build and try the current development checkout
 
 For a source checkout, place [Bauske](https://github.com/oxur/bauske)
 alongside this repository: phonology currently resolves through
@@ -86,27 +91,42 @@ cargo +1.98.0 test --locked --workspace
 cargo +1.98.0 run --locked -p vlajmaji-cli -- --help
 ```
 
-Try the grouped-dictionary commands with a fresh fixture and store:
+Try the grouped-dictionary commands with a fresh fixture and store. The
+subshell keeps the temporary data-home setting local to this example:
 
 ```sh
-run_dir=$(mktemp -d)
-export XDG_DATA_HOME="$run_dir/data"
-cargo +1.98.0 run --locked -p vlajmaji-lexicon --example dictionary_fixture -- "$run_dir/dictionary.json"
-cargo +1.98.0 run --locked -p vlajmaji-cli -- dictionary-build "$run_dir/dictionary.json"
-cargo +1.98.0 run --locked -p vlajmaji-cli -- dictionary-query \
-  --request '{"operation":"exact","spelling":"farvi","options":{"page_size":2}}'
-cargo +1.98.0 run --locked -p vlajmaji-cli -- info
+(
+  set -eu
+  run_dir=$(mktemp -d)
+  export XDG_DATA_HOME="$run_dir/data"
+  cargo +1.98.0 run --locked -p vlajmaji-lexicon --example dictionary_fixture -- "$run_dir/dictionary.json"
+  cargo +1.98.0 run --locked -p vlajmaji-cli -- dictionary-build "$run_dir/dictionary.json"
+  cargo +1.98.0 run --locked -p vlajmaji-cli -- dictionary-query \
+    --request '{"operation":"exact","spelling":"farvi","options":{"page_size":2}}'
+  cargo +1.98.0 run --locked -p vlajmaji-cli -- info
+  cargo +1.98.0 run --locked -p vlajmaji-cli -- verify all
+)
 ```
 
-Grouped build, query, and info use `$XDG_DATA_HOME/vlajmaji/stores/default`
-when `XDG_DATA_HOME` is an absolute nonempty path. Otherwise they fall back to
-`$HOME/.local/share/vlajmaji/stores/default`. Pass an explicit store to select
-another location. This location is intended for a future
-dictionary-of-dictionaries; the initial Lensisku-only store is provisional.
-Build creates missing default parent directories and refuses to replace an
-existing store. Query and info never create or download one. The [query
-guide](docs/dictionary-query.md) documents
-path resolution, info formats, and errors.
+Grouped build, query, info, and verify share the optional explicit `STORE` or
+default resolution: `$XDG_DATA_HOME/vlajmaji/stores/default` when
+`XDG_DATA_HOME` is an absolute nonempty path, otherwise
+`$HOME/.local/share/vlajmaji/stores/default`. This location is intended for a
+future dictionary-of-dictionaries; the initial Lensisku-only store is
+provisional. Build creates missing default parent directories and refuses to
+replace an existing store. Query, info, and verify open only an existing store;
+they never create or download one. Store creation completes full verification
+before returning, while ordinary store open checks only the minimum readable
+header. `info` reads counts and source summaries from SQL; query still decodes the
+complete typed dictionary and builds its search indexes.
+
+`verify` accepts six selective checks—`schema`, `metadata`, `hashes`, `model`,
+`fks`, and `projection`—or `all` to attempt every check. The [schema
+guide](docs/dictionary-schema.md) and [query guide](docs/dictionary-query.md)
+cover the persisted structure, lookup behavior, default resolution, and errors.
+The debug commands above demonstrate the fixture workflow; use the optimized
+release CLI for representative runtime measurements, for example
+`cargo +1.98.0 build --release --locked -p vlajmaji-cli`.
 
 The response keeps competing definitions under their named sources, reports
 complete totals before paging, and returns a continuation cursor when needed.
@@ -124,7 +144,6 @@ and an editable dictionary of our own. The longer aim is a practical vocabulary
 laboratory connected to Bauske's linguistic tools.
 
 The workspace is on the **0.3.0 development cycle**; its APIs remain experimental.
-The latest published release is **0.2.0**.
 
 ## Development and releases
 
