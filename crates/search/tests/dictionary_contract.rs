@@ -6,7 +6,7 @@ mod fixture;
 use std::path::PathBuf;
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::time::{SystemTime, UNIX_EPOCH};
-use std::{fs, process::Command};
+use std::{fs, io::Write, process::Command};
 
 use sha2::{Digest, Sha256};
 use vlajmaji_lexicon::{
@@ -60,7 +60,11 @@ fn farvi_rows(
         .collect()
 }
 
-fn replace_canonical_draft(root: &std::path::Path, mutate: impl FnOnce(&mut serde_json::Value)) {
+fn replace_canonical_draft(
+    root: &std::path::Path,
+    name: &str,
+    mutate: impl FnOnce(&mut serde_json::Value),
+) {
     let store = root.join("index");
     let dictionary = fixture::complete_fixture().unwrap();
     let canonical = dictionary.to_json_bytes().unwrap();
@@ -75,9 +79,23 @@ fn replace_canonical_draft(root: &std::path::Path, mutate: impl FnOnce(&mut serd
     let sql = format!(
         "UPDATE canonical_document SET json=X'{encoded}' WHERE id=1; UPDATE metadata SET value='{digest}' WHERE key='canonical_sha256';"
     );
+    let sql_path = root.join(format!("canonical-draft-{name}.sql"));
+    let mut sql_file = fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(&sql_path)
+        .unwrap();
+    sql_file.write_all(sql.as_bytes()).unwrap();
+    drop(sql_file);
+    eprintln!(
+        "duplicate_identity_sql name={name} canonical_bytes={} sql_bytes={}",
+        canonical.len(),
+        sql.len()
+    );
+    let sql_file = fs::File::open(&sql_path).unwrap();
     let output = Command::new("sqlite3")
         .arg(store.join("dictionary.sqlite3"))
-        .arg(sql)
+        .stdin(sql_file)
         .output()
         .unwrap();
     assert!(
@@ -423,7 +441,7 @@ fn test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids(
         let dictionary = fixture::complete_fixture().unwrap();
         let bytes = dictionary.to_json_bytes().unwrap();
         DictionarySearchEngine::build(root.join("index"), &bytes).unwrap();
-        replace_canonical_draft(&root, |document| match mutate {
+        replace_canonical_draft(&root, name, |document| match mutate {
             0 => {
                 let entries = document["metadata"]["entries"].as_array_mut().unwrap();
                 entries.push(entries[0].clone());
