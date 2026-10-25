@@ -1,0 +1,11 @@
+# S01 direction 01 — exact runtime attachment-limit observation
+
+2026-10-25, after initial issue cec5f7b and before any Cargo manifest mutation. Preserve the initial prompt. This is a narrow scope amendment during initial implementation, not a rejected candidate or a reset of any budget/iteration.
+
+The binding protocol requires the actual runtime attachment limit, not an inference from compile-time MAX_ATTACHED. CDC inspected pinned rusqlite 0.40.2: Cargo.toml:120 declares `limits = []`; src/lib.rs:137–138 gates the module behind that feature; src/limits.rs:53–63 provides the safe read-only `Connection::limit(Limit::SQLITE_LIMIT_ATTACHED)`. This accessor reads sqlite3_limit with new value -1; it does not change a limit. Existing workspace Cargo.toml:22 enables bundled only.
+
+Add ONE source path to the initial fourteen: root `Cargo.toml`, ONLY enabling existing rusqlite feature `limits` beside `bundled`. No new external crate, package/version/checksum/lock/DDL movement, unsafe code, feature framework or limit setting. CC authors this change; CDC remains reviewer. Existing source Cargo/lock restrictions otherwise stand. This concrete diagnostic requirement justifies the existing-dependency feature; report its actual diff and current gates.
+
+Expose the actual read-only runtime attachment-limit observation in snapshot/probe diagnostics, alongside SQLite version/compile options, actual attached schemas and connection/handle counts. Do not call compile options the runtime value. Do not probe to exhaustion, exceed the five-handle cap, or set limits. Missing/failed observation is an error/unresolved evidence, never zero/pass. The safe public accessor avoids unsupported SQL pragmas or new FFI. Exact diagnostic field names are private/probe representation details; existing query response wire stays unchanged.
+
+The prior advisory option to retain unknown exact limit is superseded by this source-backed implementation decision. All other API/trust/full-output/provenance/generation/native-path/measurement and resource contracts stay unchanged. No new Full store/trial or target writer is authorized. Both established trailers and exact named-path source commit discipline apply to the fifteen-path allowed set.
