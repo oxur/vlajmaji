@@ -32,27 +32,36 @@ fail() {
     exit 2
 }
 
+attempt_failed() {
+    local status=$1 operation=$2 leaf=$3 release=${4-} store=${5-}
+    printf 'jbotci pipeline: %s failed; cache_leaf=%s' "$operation" "$leaf" >&2
+    if [[ -n $release ]]; then
+        printf ' release=%s report=%s.report.json' "$release" "$release" >&2
+    fi
+    if [[ -n $store ]]; then printf ' store=%s' "$store" >&2; fi
+    printf '\n' >&2
+    return "$status"
+}
+
 path_absent() {
     [[ ! -e $1 && ! -L $1 ]]
 }
 
 load_pins() {
-    local file=$1 line key value last_byte
+    local file=$1 line key value
     version= revision= raw_sha256= metadata_sha256=
     local have_version=0 have_revision=0 have_raw=0 have_metadata=0
-    [[ -f $file && ! -L $file ]] || fail "pin manifest must be a regular non-symlink file: $file"
-    last_byte=$(tail -c 1 "$file" | od -An -tu1 | tr -d '[:space:]')
-    [[ $last_byte == 10 ]] || fail 'pin manifest must end with LF'
+    [[ -f $file && -r $file ]] || fail "pin manifest must be a readable regular file: $file"
     if LC_ALL=C tr -d '\12\40-\176' < "$file" | grep . >/dev/null 2>&1; then
         fail 'pin manifest must contain only printable ASCII and LF'
     fi
     while IFS= read -r line || [[ -n $line ]]; do
         case $line in
             ''|\#*) continue ;;
-            ' '*|$'\t'*)
+            ' '*)
                 line=${line#"${line%%[! ]*}"}
                 case $line in ''|\#*) continue ;; esac
-                ;;
+                fail 'pin assignments must not be indented' ;;
         esac
         case $line in
             *=*) key=${line%%=*}; value=${line#*=} ;;
@@ -100,7 +109,7 @@ check_cli() {
 
 run_cli() {
     if [[ -n ${VLAJMAJI_BIN:-} ]]; then
-        [[ -n $VLAJMAJI_BIN && -f $VLAJMAJI_BIN && -x $VLAJMAJI_BIN && ! -L $VLAJMAJI_BIN ]] || fail 'VLAJMAJI_BIN must name one executable regular file'
+        [[ -n $VLAJMAJI_BIN && -f $VLAJMAJI_BIN && -x $VLAJMAJI_BIN ]] || fail 'VLAJMAJI_BIN must name one executable regular file'
         "$VLAJMAJI_BIN" "$@"
     else
         [[ ${CARGO_TARGET_DIR+x} && -n $CARGO_TARGET_DIR ]] || fail 'set CARGO_TARGET_DIR explicitly when VLAJMAJI_BIN is not supplied'
@@ -131,22 +140,34 @@ cache_state() {
 cache_root_preflight() {
     local root=$1
     if ! path_absent "$root"; then
-        [[ -d $root && ! -L $root ]] || fail "cache root must be a real directory: $root"
+        [[ -d $root ]] || fail "cache root must be a directory: $root"
     else
         [[ $allow_create == 1 ]] || fail "cache root does not exist: $root"
         local parent
         parent=$(dirname "$root")
-        [[ -d $parent && ! -L $parent ]] || fail "cache root parent must exist and be a real directory: $parent"
+        [[ -d $parent ]] || fail "cache root parent must exist and be a directory: $parent"
     fi
 }
 
 download_inputs() {
-    local leaf=$1 curl_command=${CURL:-curl}
+    local leaf=$1 operation=$2 release=${3-} store=${4-} curl_command=${CURL:-curl} status
     local url=$base_url/$revision/crates/jbotci-dictionary-data/data
-    "$curl_command" --fail --location --silent --show-error \
-        --output "$leaf/$raw_name" "$url/$raw_name"
-    "$curl_command" --fail --location --silent --show-error \
-        --output "$leaf/$metadata_name" "$url/$metadata_name"
+    if "$curl_command" --fail --location --silent --show-error \
+        --output "$leaf/$raw_name" "$url/$raw_name"; then
+        :
+    else
+        status=$?
+        attempt_failed "$status" "$operation" "$leaf" "$release" "$store"
+        return $?
+    fi
+    if "$curl_command" --fail --location --silent --show-error \
+        --output "$leaf/$metadata_name" "$url/$metadata_name"; then
+        :
+    else
+        status=$?
+        attempt_failed "$status" "$operation" "$leaf" "$release" "$store"
+        return $?
+    fi
 }
 
 write_marker() {
@@ -167,36 +188,78 @@ fresh_outputs_preflight() {
 }
 
 replay_leaf() {
-    local leaf=$1 release=$2 store=${3-} report=$2.report.json
-    check_cli "$leaf" >/dev/null
-    (set -C; run_cli jbotci-import "$leaf/$raw_name" "$leaf/$metadata_name" "$release" \
-        --revision "$revision" --raw-sha256 "$raw_sha256" \
-        --metadata-sha256 "$metadata_sha256") > "$report"
-    check_cli "$leaf" "$release" >/dev/null
-    if [[ -n $store ]]; then
-        run_cli dictionary-build "$release" "$store" >&2
+    local leaf=$1 release=$2 store=${3-} operation=$4 report=$2.report.json status
+    if check_cli "$leaf" >/dev/null; then :; else
+        status=$?
+        attempt_failed "$status" "$operation cache validation" "$leaf" "$release" "$store"
+        return $?
     fi
-    cat "$report"
+    if (set -C; run_cli jbotci-import "$leaf/$raw_name" "$leaf/$metadata_name" "$release" \
+        --revision "$revision" --raw-sha256 "$raw_sha256" \
+        --metadata-sha256 "$metadata_sha256" > "$report"); then :; else
+        status=$?
+        attempt_failed "$status" "$operation import" "$leaf" "$release" "$store"
+        return $?
+    fi
+    if check_cli "$leaf" "$release" >/dev/null; then :; else
+        status=$?
+        attempt_failed "$status" "$operation release check" "$leaf" "$release" "$store"
+        return $?
+    fi
+    if [[ -n $store ]]; then
+        if run_cli dictionary-build "$release" "$store" >&2; then :; else
+            status=$?
+            attempt_failed "$status" "$operation store build" "$leaf" "$release" "$store"
+            return $?
+        fi
+    fi
+    if cat "$report"; then :; else
+        status=$?
+        attempt_failed "$status" "$operation report read" "$leaf" "$release" "$store"
+        return $?
+    fi
 }
 
 acquire() {
     local pins=$1 root=$2
     load_pins "$pins"
-    local leaf state
+    local leaf state status
     leaf=$(leaf_for "$revision" "$root")
     allow_create=1
     cache_root_preflight "$root"
     state=$(cache_state "$leaf")
     if [[ $state == complete ]]; then
-        check_cli "$leaf"
+        if check_cli "$leaf"; then :; else
+            status=$?
+            attempt_failed "$status" 'acquire cache validation' "$leaf"
+            return $?
+        fi
         return
     fi
     [[ $state == absent ]] || fail "unexpected cache state: $state"
-    if path_absent "$root"; then mkdir -p "$root"; fi
-    mkdir "$leaf" || fail "could not exclusively create cache leaf: $leaf"
-    download_inputs "$leaf"
-    output=$(check_cli "$leaf")
-    write_marker "$leaf"
+    if path_absent "$root"; then
+        if mkdir -p "$root"; then :; else
+            status=$?
+            attempt_failed "$status" acquire "$leaf"
+            return $?
+        fi
+    fi
+    if mkdir "$leaf"; then :; else
+        status=$?
+        attempt_failed "$status" acquire "$leaf"
+        return $?
+    fi
+    download_inputs "$leaf" acquire || return $?
+    if output=$(check_cli "$leaf"); then :; else
+        status=$?
+        attempt_failed "$status" 'acquire cache validation' "$leaf"
+        return $?
+    fi
+    if write_marker "$leaf"; then :; else
+        status=$?
+        attempt_failed "$status" 'acquire marker creation' "$leaf"
+        return $?
+    fi
     printf '%s\n' "$output"
 }
 
@@ -210,7 +273,7 @@ replay() {
     cache_root_preflight "$root"
     state=$(cache_state "$leaf")
     [[ $state == complete ]] || fail "pinned cache leaf is absent: $leaf"
-    replay_leaf "$leaf" "$release" "$store"
+    replay_leaf "$leaf" "$release" "$store" replay
 }
 
 check() {
@@ -222,33 +285,78 @@ check() {
     cache_root_preflight "$root"
     state=$(cache_state "$leaf")
     [[ $state == complete ]] || fail "pinned cache leaf is absent: $leaf"
-    check_cli "$leaf" ${release:+"$release"}
+    local status
+    if [[ -n $release ]]; then
+        if check_cli "$leaf" "$release"; then :; else
+            status=$?
+            attempt_failed "$status" check "$leaf" "$release"
+            return $?
+        fi
+    else
+        if check_cli "$leaf"; then :; else
+            status=$?
+            attempt_failed "$status" check "$leaf"
+            return $?
+        fi
+    fi
 }
 
 update() {
     local pins=$1 root=$2 release=$3 store=${4-}
     load_pins "$pins"
     fresh_outputs_preflight "$release" "$store"
-    local leaf state output
+    local leaf state output status
     leaf=$(leaf_for "$revision" "$root")
     allow_create=1
     cache_root_preflight "$root"
     state=$(cache_state "$leaf")
     if [[ $state == complete ]]; then
-        replay_leaf "$leaf" "$release" "$store"
+        replay_leaf "$leaf" "$release" "$store" update
         return
     fi
     [[ $state == absent ]] || fail "unexpected cache state: $state"
-    if path_absent "$root"; then mkdir -p "$root"; fi
-    mkdir "$leaf" || fail "could not exclusively create candidate cache leaf: $leaf"
-    download_inputs "$leaf"
-    (set -C; run_cli jbotci-import "$leaf/$raw_name" "$leaf/$metadata_name" "$release" \
+    if path_absent "$root"; then
+        if mkdir -p "$root"; then :; else
+            status=$?
+            attempt_failed "$status" update "$leaf" "$release" "$store"
+            return $?
+        fi
+    fi
+    if mkdir "$leaf"; then :; else
+        status=$?
+        attempt_failed "$status" update "$leaf" "$release" "$store"
+        return $?
+    fi
+    download_inputs "$leaf" update "$release" "$store" || return $?
+    if (set -C; run_cli jbotci-import "$leaf/$raw_name" "$leaf/$metadata_name" "$release" \
         --revision "$revision" --raw-sha256 "$raw_sha256" \
-        --metadata-sha256 "$metadata_sha256") > "$release.report.json"
-    check_cli "$leaf" "$release" >/dev/null
-    write_marker "$leaf"
-    if [[ -n $store ]]; then run_cli dictionary-build "$release" "$store" >&2; fi
-    cat "$release.report.json"
+        --metadata-sha256 "$metadata_sha256" > "$release.report.json"); then :; else
+        status=$?
+        attempt_failed "$status" 'update import' "$leaf" "$release" "$store"
+        return $?
+    fi
+    if check_cli "$leaf" "$release" >/dev/null; then :; else
+        status=$?
+        attempt_failed "$status" 'update release check' "$leaf" "$release" "$store"
+        return $?
+    fi
+    if write_marker "$leaf"; then :; else
+        status=$?
+        attempt_failed "$status" 'update marker creation' "$leaf" "$release" "$store"
+        return $?
+    fi
+    if [[ -n $store ]]; then
+        if run_cli dictionary-build "$release" "$store" >&2; then :; else
+            status=$?
+            attempt_failed "$status" 'update store build' "$leaf" "$release" "$store"
+            return $?
+        fi
+    fi
+    if cat "$release.report.json"; then :; else
+        status=$?
+        attempt_failed "$status" 'update report read' "$leaf" "$release" "$store"
+        return $?
+    fi
 }
 
 main() {

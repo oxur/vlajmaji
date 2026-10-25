@@ -102,6 +102,9 @@ make jbotci-replay JBOTCI_CACHE=/tmp/vlajmaji-jbotci-cache \
   JBOTCI_STORE=/tmp/vlajmaji-store
 make jbotci-check JBOTCI_CACHE=/tmp/vlajmaji-jbotci-cache \
   JBOTCI_RELEASE=/tmp/vlajmaji-release.json
+make jbotci-update JBOTCI_NEW_PINS=/tmp/vlajmaji-new-pins.env \
+  JBOTCI_CACHE=/tmp/vlajmaji-new-cache JBOTCI_RELEASE=/tmp/vlajmaji-new-release.json \
+  JBOTCI_STORE=/tmp/vlajmaji-new-store
 ```
 
 `acquire` downloads only the two fixed files at the manifest's commit and runs

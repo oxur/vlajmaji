@@ -291,6 +291,94 @@ fn complete_dictionary_creates_typed_projection_and_reopens_read_only() {
 }
 
 #[test]
+fn reversed_self_reference_rows_persist_and_reopen_in_model_order() {
+    let parent = scratch();
+    let fixture = fixture_support::complete_fixture().unwrap();
+    let mut document = fixture.document();
+    document.metadata.contexts.reverse();
+    document.metadata.owned_revisions.reverse();
+
+    let context_six = document
+        .metadata
+        .contexts
+        .iter()
+        .find(|row| row.id.as_str() == "context-6")
+        .unwrap();
+    assert_eq!(context_six.kind, vlajmaji_lexicon::ContextKind::Translation);
+    assert_eq!(
+        context_six.translated_from.as_ref().unwrap().as_str(),
+        "context-4"
+    );
+    let revision_two = document
+        .metadata
+        .owned_revisions
+        .iter()
+        .find(|row| row.id.as_str() == "revision-r2")
+        .unwrap();
+    assert_eq!(
+        revision_two.parent.as_ref().unwrap().as_str(),
+        "revision-r1"
+    );
+
+    let dictionary = Dictionary::from_document(document).unwrap();
+    let expected_document = dictionary.document();
+    let canonical = dictionary.to_json_bytes().unwrap();
+    let path = parent.join("reversed-self-references");
+    let store = DictionaryStore::create(&path, &dictionary).unwrap();
+    assert_eq!(store.canonical_bytes(), canonical);
+    assert_eq!(store.dictionary().document(), expected_document);
+    drop(store);
+
+    let reopened = DictionaryStore::open(&path).unwrap();
+    assert_eq!(reopened.canonical_bytes(), canonical);
+    assert_eq!(reopened.dictionary().document(), expected_document);
+    assert_eq!(
+        reopened.dictionary().document().metadata.contexts,
+        expected_document.metadata.contexts
+    );
+    assert_eq!(
+        reopened.dictionary().document().metadata.owned_revisions,
+        expected_document.metadata.owned_revisions
+    );
+
+    let db = Connection::open(reopened.database_path()).unwrap();
+    let contexts: Vec<(String, i64, Option<String>)> = db
+        .prepare(
+            "SELECT contexts.id,entity_ids.ordinal,contexts.translated_from              FROM contexts JOIN entity_ids USING(id)              WHERE contexts.id IN ('context-6','context-4')              ORDER BY entity_ids.ordinal",
+        )
+        .unwrap()
+        .query_map([], |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)))
+        .unwrap()
+        .collect::<rusqlite::Result<_>>()
+        .unwrap();
+    assert_eq!(
+        contexts,
+        vec![
+            ("context-6".into(), 1, Some("context-4".into())),
+            ("context-4".into(), 3, None),
+        ]
+    );
+    let revisions: Vec<(String, i64, Option<String>)> = db
+        .prepare(
+            "SELECT owned_revisions.id,entity_ids.ordinal,owned_revisions.parent_id              FROM owned_revisions JOIN entity_ids USING(id)              ORDER BY entity_ids.ordinal",
+        )
+        .unwrap()
+        .query_map([], |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)))
+        .unwrap()
+        .collect::<rusqlite::Result<_>>()
+        .unwrap();
+    assert_eq!(
+        revisions,
+        vec![
+            ("revision-r2".into(), 0, Some("revision-r1".into())),
+            ("revision-r1".into(), 1, None),
+        ]
+    );
+    drop(reopened);
+    fs::remove_dir_all(parent).unwrap();
+}
+
+#[test]
 fn full_fixture_has_independent_direct_sql_value_oracles() {
     let parent = scratch();
     let dictionary = fixture_support::complete_fixture().unwrap();
