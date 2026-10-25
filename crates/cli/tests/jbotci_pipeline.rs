@@ -4,6 +4,8 @@ use std::{
     fs,
     path::{Path, PathBuf},
     process::{Command, Output},
+    sync::atomic::{AtomicU64, Ordering},
+    thread,
     time::{SystemTime, UNIX_EPOCH},
 };
 
@@ -18,17 +20,119 @@ const RAW: &[u8] = br#"[{"word":"farvi","word_type":"gismu","definition":"to var
 const GOOD_METADATA: &str = "language_tag = \"en\"\nlanguage_realname = \"English\"\nsource_language_tag = \"jbo\"\nformat = \"json\"\npositive_scores_only = false\nfilename = \"dictionary-en.json\"\nmetadata_url = \"https://example.invalid/languages\"\ndownload_url = \"https://example.invalid/export\"\nlensisku_created_at = \"2026-10-04T03:07:08Z\"\nsha256 = \"a0e15949bdcfaeeba24007350d5dae0c8e39c991476ebdd0d4d06739ccac1805\"\ndefinition_count = 2\nentry_count = 1\n";
 const BAD_METADATA: &str = "language_tag = \"en\"\nlanguage_realname = \"English\"\nsource_language_tag = \"jbo\"\nformat = \"json\"\npositive_scores_only = false\nfilename = \"dictionary-en.json\"\nmetadata_url = \"https://example.invalid/languages\"\ndownload_url = \"https://example.invalid/export\"\nlensisku_created_at = \"2026-10-04T03:07:08Z\"\nsha256 = \"a0e15949bdcfaeeba24007350d5dae0c8e39c991476ebdd0d4d06739ccac1805\"\ndefinition_count = 1\nentry_count = 1\n";
 
+static SCRATCH_SEQUENCE: AtomicU64 = AtomicU64::new(0);
+
+fn create_scratch_with(mut candidate: impl FnMut(usize) -> PathBuf) -> PathBuf {
+    const MAX_ATTEMPTS: usize = 256;
+
+    for attempt in 0..MAX_ATTEMPTS {
+        let path = candidate(attempt);
+        match fs::create_dir(&path) {
+            Ok(()) => return path,
+            Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => continue,
+            Err(error) => panic!(
+                "could not exclusively create test scratch directory {}: {error}",
+                path.display()
+            ),
+        }
+    }
+
+    panic!(
+        "could not exclusively allocate a test scratch directory after {MAX_ATTEMPTS} candidates"
+    );
+}
+
 fn scratch() -> PathBuf {
-    let path = std::env::temp_dir().join(format!(
-        "vlajmaji s02 pinned pipeline {} {}",
-        std::process::id(),
-        SystemTime::now()
-            .duration_since(UNIX_EPOCH)
-            .unwrap()
-            .as_nanos()
-    ));
-    fs::create_dir_all(&path).unwrap();
-    path
+    let temp = std::env::temp_dir();
+    let pid = std::process::id();
+    let nanos = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .expect("system clock is before the Unix epoch")
+        .as_nanos();
+    let sequence = SCRATCH_SEQUENCE.fetch_add(1, Ordering::Relaxed);
+
+    create_scratch_with(|attempt| {
+        temp.join(format!(
+            "vlajmaji s02 pinned pipeline {pid} {nanos} {sequence} {attempt}"
+        ))
+    })
+}
+
+#[test]
+fn scratch_retries_occupied_candidates_without_touching_them() {
+    let root = scratch();
+    let occupied_directory = root.join("occupied directory");
+    let directory_sentinel = occupied_directory.join("caller sentinel");
+    fs::create_dir(&occupied_directory).unwrap();
+    fs::write(&directory_sentinel, b"preserve occupied directory\n").unwrap();
+
+    let occupied_file = root.join("occupied file");
+    fs::write(&occupied_file, b"preserve occupied file\n").unwrap();
+
+    let link_target = root.join("occupied link target");
+    let occupied_link = root.join("occupied link");
+    fs::write(&link_target, b"preserve occupied link target\n").unwrap();
+    std::os::unix::fs::symlink(&link_target, &occupied_link).unwrap();
+
+    let fresh = root.join("fresh owned candidate");
+    let candidates = [
+        occupied_directory.clone(),
+        occupied_file.clone(),
+        occupied_link.clone(),
+        fresh.clone(),
+    ];
+    let allocated = create_scratch_with(|attempt| candidates[attempt].clone());
+
+    assert_eq!(allocated, fresh);
+    assert!(allocated.is_dir());
+    assert_eq!(
+        fs::read(&directory_sentinel).unwrap(),
+        b"preserve occupied directory\n"
+    );
+    assert_eq!(
+        fs::read(&occupied_file).unwrap(),
+        b"preserve occupied file\n"
+    );
+    assert!(occupied_link.is_symlink());
+    assert_eq!(
+        fs::read(&link_target).unwrap(),
+        b"preserve occupied link target\n"
+    );
+    fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn concurrent_scratch_allocations_are_distinct_and_joined() {
+    const WORKERS: usize = 8;
+
+    let results = thread::scope(|scope| {
+        let handles: Vec<_> = (0..WORKERS).map(|_| scope.spawn(scratch)).collect();
+        handles
+            .into_iter()
+            .map(|handle| handle.join())
+            .collect::<Vec<_>>()
+    });
+
+    let mut paths = Vec::with_capacity(WORKERS);
+    let mut panicked = false;
+    for result in results {
+        match result {
+            Ok(path) => paths.push(path),
+            Err(_) => panicked = true,
+        }
+    }
+
+    if !panicked {
+        let mut sorted = paths.clone();
+        sorted.sort();
+        sorted.dedup();
+        assert_eq!(sorted.len(), WORKERS, "scratch paths must be unique");
+        assert!(paths.iter().all(|path| path.is_dir()));
+    }
+    for path in paths {
+        fs::remove_dir_all(path).unwrap();
+    }
+    assert!(!panicked, "a scratch allocation worker panicked");
 }
 
 fn script() -> PathBuf {
