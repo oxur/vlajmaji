@@ -58,3 +58,9 @@ GeneralAutonomousArc04renewed; concrete S01inquiry/effort/numericanswer pending 
 ## Arc04 inquiry approval and S01 issue — 2026-10-25
 
 Exact Operator approval and concrete provider/measurement recipe are recorded in Arc04 protocol 1.2 and S01 initial assignment. All fourteen project rows remain OPEN with unchanged contracts/owners; no runtime evidence or topology decision is added by this planning transition. Prior planning-only/HOLD checkpoints remain dated history. A05/A06 and publication/default boundaries remain.
+
+## S01 prerequisite exception pending — 2026-10-25
+
+Arc04 protocol1.3 records actual out-of-order comparator readiness, two retained completed stores and no query/timing/selection. Further Full operations are held until the specific Operator response to a concrete reuse-two/finish-three proposal. This adds no runtime acceptance or project closure; all fourteen row contracts/statuses/owners unchanged.
+
+Protocol1.4 supersedes interim reuse advice with a proposed clean re-entry and explicit total-store count amendment; no new acceptance or project-row/status/owner change.

@@ -223,3 +223,7 @@ GeneralAutonomousArc04 renewed after plan02c8063; currentS01specificinquiry/budg
 ## Arc04 S01 resolved provider design — 2026-10-25
 
 The explicit Operator approval in protocol 1.2 supersedes the prior HOLD checkpoint. The issued S01 plan owns concrete closed snapshot APIs, typed-unverified composition, frozen generation/selection and read-only ATTACH limitations. Each topology loads its own full state and candidate IDs before common exact/reference/page policy; composition/hash/index setup and full hydration/serialization remain measured costs. Existing standalone full wire/cursor behavior stays compatible. No physical winner is presumed, no validated model is forged and no compact pass is claimed. All fourteen project rows remain OPEN; S05 output and A05/A06 owners unchanged.
+
+Current execution constraint, 2026-10-25: protocol1.3 specifically HOLDS further S01 Full create/query/timing after a pre-create comparator prerequisite violation. Concrete provider design is unchanged; retained-two/finish-three exception requires explicit Operator response. No comparison result or topology selection exists.
+
+The newer protocol1.4 recommendation is clean re-entry (retained two plus fresh five), not a bespoke resume. Count amendment remains an explicit Operator decision; no topology/data/API scope change.

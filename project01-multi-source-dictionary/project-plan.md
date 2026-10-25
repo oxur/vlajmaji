@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 CLOSED; all14projectrowsOPEN; A04 active; S01 approved and issued, no acceptance yet; A05/A06 not activated |
+| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 CLOSED; all14projectrowsOPEN; A04 active; S01 Full operations HOLD at specific prerequisite-exception gate; A05/A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.19 / 2026-10-25, America/Chicago |
+| version / date | 1.20 / 2026-10-25, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -350,3 +350,11 @@ Duncan explicitly approved the exact proposed inquiry, effort, workload and nume
 Conservative accounting charges 30 minutes preparation and at most 60 further freeze minutes from retained 22:06:10 UTC; total seven working hours, five new Full stores, 12 GiB new scratch and three balanced timing rounds are binding. The isolated codex source starts at protected 7b; root is read-only, CC source/index/target only issued intervals. No actual user default/main/Bauske/accepted record mutation, push/publication or A05 authority.
 
 - 1.19 — 2026-10-25: explicit inquiry approval and resolved source-guided S01 recipe; initial assignment issued with all child/arc/project rows still OPEN. Earlier HOLD checkpoints preserved. No runtime result claimed.
+
+## Current S01 bounded repair / specific HOLD — 2026-10-25
+
+See Arc04 protocol1.3: the required pre-create comparator gate was violated before two retained store creates. No comparison/selection/acceptance. Remaining Full create/query/timing is held for an explicit Operator exception after a concrete tested reuse-two/finish-three proposal. General Arc04 authority persists for bounded readiness repair; all project rows OPEN, A05/A06 unactivated.
+
+- 1.20 — 2026-10-25: actual prerequisite deviation and specific HOLD recorded without rewriting history, accepting a topology, resetting limits or changing project contracts.
+
+Current re-entry recommendation update: protocol1.4 proposes preserving early two as historical and a clean fresh five-store run, requiring explicit count five→seven amendment. Other caps unchanged; no further Full operation or bespoke resume until response. This supersedes the interim reuse proposal, without changing its recorded chronology.

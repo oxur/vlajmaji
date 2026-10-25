@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE — S01 exact inquiry limits approved and initial assignment issued; no acceptance yet |
-| version / date | 1.2 / 2026-10-25, America/Chicago |
+| status | ACTIVE; S01 Full operations HOLD under protocol1.3 after prerequisite violation; bounded readiness repair only, no acceptance |
+| version / date | 1.4 / 2026-10-25, America/Chicago |
 | authority | Latest 2026-10-25: Duncan explicitly approved protocol 1.1 — “this looks good! Approved, and engage!” Autonomous THROUGH ARC04 ONLY; unchanged Sol6.1/high CDC and Luna/high CC. Concrete S01 recipe issued. Prior planning-only/HOLD checkpoints remain historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Arc01–03; current isolated source7b1c565, protected main52fd3c4/Bauskec5801ae; actual four Full packs and source/native/reference evidence |
@@ -81,3 +81,9 @@ Authority history clarification: former1.0authority was Duncan’s agreement to 
 Duncan approved the exact numerical/effort/workload proposal: “this looks good! Approved, and engage!” Protocol 1.2 preserves its applicability/accounting; prior pending/planning-only statements above are history. S01 plan/ledger/prompt now issue the closed own-state U/A/F providers, shared typed-unverified composition/common query policy, generation/selection binding and actual same-call stage instrumentation. A/F have no unified metadata sidecar. UTF8-only ATTACH URI support is a typed limitation; U/F native paths retain existing support. Source starts clean 7b, no observation/selection/acceptance inferred.
 
 Charge 30 minutes preparation and at most 60 further freeze minutes from 22:06:10 UTC, not a fresh allowance at CC handoff. Total seven working hours/five new Full stores/12 GiB/600-second create-verify/three balanced rounds remain binding. S01 uses existing FULL representation; S05 retains compact/readable numerical obligations. All ten arc and fourteen project rows OPEN; no correct selected topology means S01/A04-01 stay OPEN and dependent S02 unissued. A05 and protected user default/main/Bauske/accepted records remain outside authority.
+
+## Version 1.3 — specific S01 Full HOLD, 2026-10-25
+
+Protocol1.3 records the actual pre-create comparator-gate violation: Jbotci/LLG completed, La load interrupted before create, two of five slots consumed, no query/timing round. General Arc04 approval persists; remaining Full create/query/timing requires the specific explicit Operator exception after concrete controls/validation/tiny-tested resume proposal. No deletion/recreation/reset or retrospective before-create claim. All ten arc rows and fourteen project rows OPEN, no selected topology or dependent S02 issue.
+
+Version1.4 current re-entry proposal: preserve early two as historical/unaccepted; recommend clean five-store rerun with total count five→seven ONLY if Duncan explicitly approves. Same time/disk/stage/trial caps. No bespoke resume or extra old-store Full validation now; cheap comparator and tiny RSS/timeout wrapper/proposal work only. See protocol1.4; prior reuse recommendation is superseded.

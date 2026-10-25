@@ -2,7 +2,7 @@
 
 | Field | Current state |
 | --- | --- |
-| status | ISSUED, 2026-10-25; current direction cc-prompt-iteration01.md supplements preserved initial prompt; all six acceptance rows OPEN |
+| status | ISSUED; Full operations HOLD after existing pre-create gate violation (protocol1.3); bounded comparator/RSS-wrapper/fresh-reentry proposal only; all six rows OPEN |
 | authority | Duncan: “this looks good! Approved, and engage!” Protocol 1.1 inquiry, effort and numeric limits explicitly approved via root; applicability/accounting in protocol 1.2. Autonomous THROUGH ARC04 ONLY. |
 | roles | Requested/configured Sol6.1/high CDC, retained Luna/high CC; backend attestation unavailable. CDC design/planning/independent acceptance; CC source/index/target during issued interval; root read-only. |
 | source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; starts clean 7b1c565ebf6c8a423e04211b599006b8c21d65d9 |
@@ -88,3 +88,7 @@ Current full durable logs: make format → lint → check, actual populations; a
 - 1.0, 2026-10-25: exact approval in protocol1.2 and source-guided recipe resolved; initial assignment issued. No result inferred. First planning-write setup attempt failed Python syntax before any file write; corrected direct scoped write, no product execution.
 
 - 1.1, 2026-10-25: issued cc-prompt-iteration01.md adds only crates/store/Cargo.toml as fifteenth path and existing rusqlite limits feature for actual read-only runtime-limit observation. Initial prompt preserved bytewise. Unissued direction01 global-feature proposal is superseded; no source edit under it. No cap/reset/new store or trial.
+
+- 1.2, 2026-10-25: protocol1.3 records actual pre-create comparator violation, two retained completed stores and specific Operator exception gate. Current CC interval continues only bounded comparator/tiny resume/gates and allowed read-only validation; no remaining Full create/query/timing until explicit response. Initial issued prompts preserved, no cap/reset/acceptance.
+
+- 1.3, 2026-10-25: protocol1.4 supersedes interim reuse advice. Current recommendation is clean five-store rerun with retained two historical stores, proposed total cap seven; NOT approved. No bespoke resume/extra old-store Full validation now. Tiny-tested RSS/timeout wrapper and exact resource/time proposal precede root’s one Operator choice.
