@@ -24,7 +24,7 @@ CDC owns this plan, source-grounded design and independent acceptance. CC owns s
 | slice03-la-lojban-distribution | Full La-Lojban release, truthful shared Lensisku authority and distinct distribution/capture identities | shared pack contract; pinned native dump + supplier provenance |
 | slice04-sutysisku-projection | Full compact Sutysisku projection, all native keys/fields and unknowns, four-pack feature/composition delivery | prior packages; pinned compact object + supplier code/terms |
 
-Only S01 is detailed/issued initially. CDC resolves actual adapter semantics and exact APIs before each dependent prompt; later child planning must preserve this scope. Every slice includes independent review/repairs and retrospective, not an evidence-only staging increment. Maximum five refinements per slice, preserve every prompt. Advance immediately after accepted close.
+Initially only S01 was detailed/issued. S01 and S02 are now independently accepted; S03 is the current detailed issued child. CDC resolves actual adapter semantics and exact APIs before each dependent prompt; later child planning must preserve this scope. Every slice includes independent review/repairs and retrospective, not an evidence-only staging increment. Maximum five refinements per slice, preserve every prompt. Advance immediately after accepted close.
 
 ## Binding package and composition design
 
