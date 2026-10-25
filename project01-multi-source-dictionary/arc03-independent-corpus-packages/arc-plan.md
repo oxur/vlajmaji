@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | technical composition ACCEPTED7b1c565; final canonical review pending, all8rowsOPEN; stop before A04 |
-| version / date | 1.1 / 2026-10-25 |
+| status | CLOSED at source7b1c565/proposal a5226ee; fresh technical and actual final canonical ACCEPTED, all8rowsDONE; stop before A04 |
+| version / date | 1.2 / 2026-10-25 |
 | authority | ../cdc-directive03.md; Duncan Autonomous Mode, unchanged Sol6.1/high CDC and Luna/high CC |
 | baseline | main52fd3c40a781d6945cfc74a2e79fa66b249e2a5d; clean dedicated feature/project01-independent-corpus-packages |
 | source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji |
@@ -25,7 +25,7 @@ CDC owns this plan, source-grounded design and independent acceptance. CC owns s
 | slice03-la-lojban-distribution | Full La-Lojban release, truthful shared Lensisku authority and distinct distribution/capture identities | shared pack contract; pinned native dump + supplier provenance |
 | slice04-sutysisku-projection | Full compact Sutysisku projection, all native keys/fields and unknowns, four-pack feature/composition delivery | prior packages; pinned compact object + supplier code/terms |
 
-Initially only S01 was detailed/issued. S01 and S02 are now independently accepted; S03 is independently accepted; S04 is now independently accepted at7b1c565; all4children/24rowsDONE. Fresh technical assembly is accepted; actual final canonical packet is pending. CDC resolves actual adapter semantics and exact APIs before each dependent prompt; later child planning must preserve this scope. Every slice includes independent review/repairs and retrospective, not an evidence-only staging increment. Maximum five refinements per slice, preserve every prompt. Advance immediately after accepted close.
+Initially only S01 was detailed/issued. S01 and S02 are now independently accepted; S03 is independently accepted; S04 is now independently accepted at7b1c565; all4children/24rowsDONE. Fresh technical assembly is accepted; actual final canonical packet is independently accepted. CDC resolves actual adapter semantics and exact APIs before each dependent prompt; later child planning must preserve this scope. Every slice includes independent review/repairs and retrospective, not an evidence-only staging increment. Maximum five refinements per slice, preserve every prompt. Advance immediately after accepted close.
 
 ## Binding package and composition design
 
@@ -54,3 +54,5 @@ All eight arc rows remain OPEN until independent evidence, child disposition and
 ## Current technical/bubble-up checkpoint and version history
 
 1.1 —2026-10-25: S04closed all4children/24rows at7b1c565. Planned single fresh fullstore allocation executed by author-independent reviewer: complete raw/typedSQL/model/source/query/CLI composition accepted. No new child, scope reduction or topology required. Earlier current-child/conditional fullstore wording is historical; assigned fullstore gate has occurred. All8arcrows stayOPEN until actual finalpacket verdict. Four upstream optional dependencies/internal materialization delivered; publicdata distribution Held/ownedpackageA05 remain explicit project carryovers. Canonical closing-report/verifier/retro and project partial update now proposed for same-context independent review.
+
+1.2 —2026-10-25: fresh final nine-body review independently ACCEPTED; mechanical8row/currentstatus/evidence close only. S04 completed the original4child sequence, no new scope/topology. Previous1.1pending checkpoint is historical. All14projectrowsOPEN; endpoint beforeA04.

@@ -11,7 +11,7 @@ owning scale, as Duncan specified. The selected historical research copy is
 are reference material. Their instructions, authority and status are historical,
 not current assignments. Use the current project/arc/slice plans for authority.
 
-Read `project01-multi-source-dictionary/project-plan.md` first. On 2026-10-25 Duncan explicitly authorized Autonomous execution through Arc03, preserving requested Sol6.1/high CDC and Luna/high CC. Current assignment is `project01-multi-source-dictionary/cdc-directive03.md`; current open set is `project01-multi-source-dictionary/arc03-independent-corpus-packages/`. CDC owns planning/design/independent review, CC isolated source/index only during issued intervals; root remains read-only. Stop before A04. Earlier Arc01/Arc02-only endpoints and follow-ups remain historical, not current restrictions.
+Read `project01-multi-source-dictionary/project-plan.md` first. On 2026-10-25 Duncan explicitly authorized Autonomous execution through Arc03, preserving requested Sol6.1/high CDC and Luna/high CC. Recorded assignment is `project01-multi-source-dictionary/cdc-directive03.md`; Arc03 is now CLOSED at source7b1c565 after independent technical and actual final canonical acceptance. CDC owns planning/design/independent review, CC isolated source/index only during issued intervals; root remains read-only. Stop before A04. Earlier Arc01/Arc02-only endpoints and follow-ups remain historical, not current restrictions.
 Ledger rows remain open until independently dispositioned. Do not create close/verification/retrospective records before the
 corresponding work and review occur.
 
@@ -48,10 +48,14 @@ After accepted default-store follow-up63da16f/planning8344564, Duncan authorized
 
 All6supplemental rows independently accepted at source53f9eac on unpublished feature/project01-explicit-store-verification. Ordinary startup is separated from explicit verification; installed full default all6passed/unchanged, declared3paired trials per operation complete with identical outputs. Canonical plan/verifier/retro/raw receipts: project01-multi-source-dictionary/artifacts/store-verification-followup/. No active implementation/target interval remains. Protected main/Bauske/prior accepted snapshots unchanged, installed Lensisku-only default unchanged; all14projectrowsOPEN/A03unopened/no push/PR/publication. Later project API/topology/corpus work remains separately authorized.
 
-## Current Arc03 authority —2026-10-25
+## Arc03 recorded authority —2026-10-25
 
 Dedicated source feature/project01-independent-corpus-packages at main52fd3c4, .worktrees/project01-arc03/vlajmaji, Bauske read-only sibling. All four full corpus packages remain mandatory; explicit sealed offline materialization/internal embedded consumption with separate Synthetic CI preparation. Root directive03 and arc plan govern. No push/PR/publication/main/default-store mutation, no A04. Earlier records/accepted snapshots retained; all14projectrowsOPEN.
 
-## Current Arc03 technical/proposed closing checkpoint —2026-10-25
+## Historical Arc03 technical/proposed closing checkpoint —2026-10-25
 
 All4children/24rows independently accepted through source7b1c565. Fresh author-independent Sol6.1/high actual four-pack release/store/nativeSQL/publicRust+CLI technical composition ACCEPTED; actual canonical packet now awaits same-context final review. Eight arc rows stayOPEN until that verdict and mechanical close; all14projectrowsOPEN. Source/index remain clean and protected, no active implementation interval; reviewer returned target after sessions ended. All4internal data dependencies delivered; redistribution Held, no push/publication/default change/A04. Earlier endpoint statements are historical, superseded only within directive03.
+
+## Current endpoint — Arc03 CLOSED,2026-10-25
+
+All4children/24rows and8arcrowsDONE at source7b1c565 after fresh author-independent actual full composition and final nine-body canonical acceptance (proposala5226ee). Final verdict project01-multi-source-dictionary/arc03-independent-corpus-packages/artifacts/composition-review/final-canonical-review.md. All14projectrowsOPEN, A04–A06unactivated. No active source/index/target writer or sessions; source/localplanning commits only, protected main/Bauske/research/default unchanged. StopbeforeA04/no push/PR/publication. New substantive work needs explicit renewed authority; earlier pending checkpoints remain historical.

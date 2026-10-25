@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 technical accepted/canonical review pending; all14projectrowsOPEN; A04–A06 not activated |
+| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 CLOSED; all14projectrowsOPEN; A04–A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.15 / 2026-10-25, America/Chicago |
+| version / date | 1.16 / 2026-10-25, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -26,7 +26,7 @@ and explicit availability. Subsequent arcs make it work with full, independently
 selectable corpora and an editable dictionary of our own.
 
 The design and remaining decisions are in [design.md](design.md). Acceptance is in
-[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is CLOSED after both accepted children and separate fresh technical/finalcanonical review. Arc03 all4children and fresh assembled technical composition are accepted at7b1c565; actual canonical packet awaits independent final review. A04–A06 remain unactivated.
+[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is CLOSED after both accepted children and separate fresh technical/finalcanonical review. Arc03 all4children and fresh assembled technical composition are accepted at7b1c565; actual canonical packet is independently accepted at proposal a5226ee. A04–A06 remain unactivated.
 
 ## Decisions already made
 
@@ -108,7 +108,7 @@ define execution order. Later arcs are roadmap entries, not issued assignments.
 | --- | --- | --- | --- |
 | [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Four scope-preserving slices after S01 sizing; current detail in arc plan. |
 | [02 — Reproducible full jbotci import](arc02-reproducible-jbotci-import/arc-plan.md) (CLOSED at4e37016) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Two useful slices: lossless Rust/CLI normalization, then pinned pipeline/full persistence composition. |
-| [03 — Independent corpus packages](arc03-independent-corpus-packages/arc-plan.md) (technical accepted7b1c565; canonical pending) | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
+| [03 — Independent corpus packages](arc03-independent-corpus-packages/arc-plan.md) (CLOSED at7b1c565; final canonical accepted) | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
 | 04 — Composed SQLite lookup | Compare unified derived index, ATTACH and application fanout on the same complete contract, then implement the selected composition and availability/query-snapshot policy. | A01 queries and A03 real pack releases. | One bounded decision followed by usable integration; no topology selected now. |
 | 05 — Owned dictionary | First-class editable source, revision/history and explicit editorial relationships, immutable export/reimport and its own optional data crate. | A01 model plus accepted A04 composition. | Model is reserved in A01; production editing belongs here. |
 | 06 — Integrated dictionary workbench | Rust/CLI source selection and grouped output across all packs and owned revisions; old query-family regression, removal/reload, paging, documentation and clean offline replay compose end to end. | Accepted predecessors. | Final integration adds remaining behavior; it must not postpone A01's usable lookup. |
@@ -141,7 +141,7 @@ open. This plan neither completes them nor restarts the parked phonology arc.
 | Concrete registry IDs, alias validation and source-lineage records | Resolved and independently accepted A01S01at11ec701; exact aliases/history/attribution compose at efef9c4. Existing IDs preserved. |
 | Concrete DDL, archive/normalized version transition and standards mapping | Resolved A01S02model37c3518+S03store01a9ceb3; explicit versions/legacy adapter/rebuild and standards loss register, independently composed. Production topology remainsA04. |
 | Full raw jbotci shape, observed counts, unknown/wiki-row eligibility | Resolved A02at4e37016:33526raw/278254fields/33516eligible/31248spellings; every row retained,9blank+1wiki explicitly excluded. Supplier counts reconciled separately; independent finalcanonicalpacket accepted5456b54. |
-| Corpus component boundaries, common pack API and feature host | Resolved A03: common seal1/strict load/consuming composition,4unpublished optional embedded crates and umbrella features, exact component/provenance/held terms. All4children and fresh technical assembly accepted7b1c565; final packet pending. |
+| Corpus component boundaries, common pack API and feature host | Resolved A03: common seal1/strict load/consuming composition,4unpublished optional embedded crates and umbrella features, exact component/provenance/held terms. All4children and fresh technical assembly accepted7b1c565; final packet accepted. |
 | Unified SQLite / ATTACH / fanout, ranking policy and query consistency | A04 decision after correctness comparison, before dependent integration. No merging local FTS top-k as if ranks were global. |
 | Owned editor conflict/revision semantics | A05 before production editing; preserve prior assertion references. |
 | Public redistribution for each release | Source/release-specific evidence and notices; public publication held until resolved. Current code remains Apache-2.0. |
@@ -305,7 +305,7 @@ Duncan explicitly authorized all Arc03 in Autonomous Mode; unchanged requested S
 
 Common seal/load and consuming pure composition plus dedicated optional internal data crates are resolved in the arc/S01 plan: actual full normalized bytes embedded only after explicit offline local materialization, default core has no payload, Synthetic CI preparation retains clean all-features coverage. Held real data stays excluded from Git/package/upload. Internal path-dependency delivery is not public crates.io readiness; unpublished optional dependencies keep umbrella public release gated by later distribution work. All14projectrows remain OPEN. Historical accepted Arc02 and bounded follow-up endpoints above remain historical; PR3 was subsequently merged at current52fd3c4, not retroactive reacceptance of those snapshots.
 
-## Arc03 technical delivery and proposed project bubble-up —2026-10-25
+## Historical Arc03 technical/proposed bubble-up checkpoint —2026-10-25
 
 All4roadmap collections are actual complete internal offline Rust dependencies: jbotci/Lensisku, The Logical Language Group gismu/cmavo/rafsi family, La-Lojban distribution, Sutysisku projection. Child24rows accepted at04289ae/0d70c9f/62b27db/7b1c565; fresh author-independent actual assembly/store/nativeSQL/publicRust+releaseCLI technical review accepted current7b1c565. Actual canonical packet remains pending same-context final verdict; all8arcrows stayOPEN until it. No runtime delivery deferred from A03.
 
@@ -318,3 +318,9 @@ Current operational framing supersedes only the present-tense historical stricto
 All14projectrows remainOPEN. A04 owns fair unified/ATTACH/fanout comparison and selected integration; A05 owns production edits/history/conflicts/sealedownedpackage; A06 owns remaining all-pack+owned/removal/reload/query-family/end-to-end work and Duncan final project acceptance. Each release's public redistribution remains a separate Operator/source-rights gate. StopbeforeA04/no push/PR/publication/main integration.
 
 -1.15 —2026-10-25: A03all4children/24rows and fresh actual full assembled technical composition deliver all4internal dependencies. Current package/identity/feature boundaries and project partial contributions reconciled; current startup language updated to mergedPR3 while preserving historical timings. Canonical final gate pending; all14projectrowsOPEN, unchanged A04–A06/Operator owners.
+
+## Current endpoint — Arc03 CLOSED,2026-10-25
+
+Fresh technical and actual nine-body final canonical review independently ACCEPTED source7b1c565/proposala5226ee; all4children/24rows and all8arcrowsDONE. Final verdict arc03-independent-corpus-packages/artifacts/composition-review/final-canonical-review.md. Current packet retains all4internal dependencies, complete native/provenance/terms/query/feature proofs and all14projectrowsOPEN. Historical proposed/pending checkpoints above remain dated history. No A04 activation, publicdata publication, push/PR/main/default-store change. Return at authorized Arc03 endpoint; next substantive arc requires Duncan's explicit instruction.
+
+-1.16 —2026-10-25: actual finalcanonical review independently accepted; mechanical8row/currentstatus/evidence/framing close only. No new capability/scope/terms/topology change or runtime rerun. RemainingA04/A05/A06/Operator/rights owners unchanged, project14OPEN.

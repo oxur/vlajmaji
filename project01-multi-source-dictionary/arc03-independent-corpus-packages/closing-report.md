@@ -1,6 +1,6 @@
-# Arc03 closing report — proposed canonical packet
+# Arc03 closing report — CLOSED
 
-Technical capability ACCEPTED at clean7b1c565ebf6c8a423e04211b599006b8c21d65d9; actual final canonical review pending. CDC assembled this packet after fresh independent execution; all8arcrows remainOPEN until that verdict. Authority directive03, requested Sol6.1/high CDC/Luna/high CC, fresh Sol6.1/high author-independent arc reviewer; backend attestation unavailable. No CRC workflow selected.
+Technical capability and actual final canonical packet ACCEPTED at clean7b1c565ebf6c8a423e04211b599006b8c21d65d9/proposal a5226ee. CDC assembled this packet after fresh independent execution; all8arcrows are nowDONE under the independent final verdict. Authority directive03, requested Sol6.1/high CDC/Luna/high CC, fresh Sol6.1/high author-independent arc reviewer; backend attestation unavailable. No CRC workflow selected.
 
 ## Capability and child walk
 
@@ -21,7 +21,7 @@ Fresh separate reviewer strict-loaded actual4Fullembedded releases, consuming-co
 
 Fullfarvi5occurrences/3sources preserves jbotci333/69002, La333, LLGphysical357 and Sut/11309. Sharedupstream copies are separate received occurrences, not4independentauthorities. Complete expected/publicRust/releaseCLI values and captured wire match; sourceID/aliases, zeropage realtotals, complete pages1/2/3/8, local/unknown/unresolved/wrong-role/missing/excludedSutrefs and release-scoped333 pass. Native/semantic counts mean different things:76722entries vs78361assertions;542662all-pack row/child fields excludes23705Sutkeycarriers.
 
-Exact current clean7ballfeatures143passed/0failed/1existingresearchignore over38Rustrows with4explicitSynthetic preparations; current author orderedformat/lint/check141/0/1+19tools/docs;7packageinventories exclude data, isolatedfeatures/backend proofs retained by exact unchanged code scope. RealFull consumers/nativeproofs are separate from SyntheticCI. Report/evidence: artifacts/composition-review.md and artifacts/composition-review/; technical assembly and allrowproposed dispositions are independently reproduced, actual finalpacket stillpending.
+Exact current clean7ballfeatures143passed/0failed/1existingresearchignore over38Rustrows with4explicitSynthetic preparations; current author orderedformat/lint/check141/0/1+19tools/docs;7packageinventories exclude data, isolatedfeatures/backend proofs retained by exact unchanged code scope. RealFull consumers/nativeproofs are separate from SyntheticCI. Report/evidence: artifacts/composition-review.md and artifacts/composition-review/; technical assembly and allrowproposed dispositions are independently reproduced, actual finalpacket independently ACCEPTED.
 
 ## Scope diff, limits and project bubble-up
 
@@ -33,4 +33,8 @@ All14projectrowsOPEN: P01–03/04–06 provenance/fullcorpora gain scopedA03cont
 
 ## Plan changes, artifacts and retrospective
 
-Four useful slices matched originalarcsequence. Additive registryaccessors and privateLensisku seam resolved source-guided APIs; sparse extensioncount repair and orderedLLGheaderclaim repair preserved capability scope. S04doc-only descendant completed already-allowlisted umbrella guide; sourcecode/data unchanged. No promised collection or gate silently dropped. Arcplan1.1 records actual completion/allocation, no topology choice. Child24rows close countmatchesopen; arc8pendingactualfinalgate; project14OPEN. Supporting artifacts live under eachchild/artifacts and arc/artifacts; full helddata/DBs/binaries/80MBfailedreviewlog staylocal with hashreceipts. Arc analysis is cdc-retrospective.md; acceptance record cdc-verification.md.
+Four useful slices matched originalarcsequence. Additive registryaccessors and privateLensisku seam resolved source-guided APIs; sparse extensioncount repair and orderedLLGheaderclaim repair preserved capability scope. S04doc-only descendant completed already-allowlisted umbrella guide; sourcecode/data unchanged. No promised collection or gate silently dropped. Arcplan1.1 records actual completion/allocation, no topology choice. Child24rows close countmatchesopen; arc8DONE after actual finalgate; project14OPEN. Supporting artifacts live under eachchild/artifacts and arc/artifacts; full helddata/DBs/binaries/80MBfailedreviewlog staylocal with hashreceipts. Arc analysis is cdc-retrospective.md; acceptance record cdc-verification.md.
+
+## Final independent gate and endpoint
+
+artifacts/composition-review/final-canonical-review.md (proposal a5226ee, SHA df82be470476f7ac5be09b88cfcdb9b5837e299fe56c3c777f377adf703ac769) independently accepts the actual nine-body packet. All8arcrows/24childrowsDONE, all14projectrowsOPEN. CDC performed only authorized mechanical status/evidence/framing closure after that verdict; no new runtime/source change. All sessions ended/target returned. Source stays local unpushed feature/project01-independent-corpus-packages at7b1c565; main/Bauske/default protected. Stop at Arc03, before A04.
