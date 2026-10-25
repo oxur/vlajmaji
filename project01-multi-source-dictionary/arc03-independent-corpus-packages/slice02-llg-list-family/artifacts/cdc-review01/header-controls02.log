@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a03-cdc/s02/header_controls02.py", line 16, in <module>
+    model=json.loads((d/'output/release.json').read_text());diags=model['metadata']['diagnostics'];m=[x for x in diags if x['code']=='header_count_mismatch'];assert [x['occurrence']['locator'] for x in m]==[str(i+1) for i,n in enumerate(counts) if n!=1],m
+                                                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'diagnostics'

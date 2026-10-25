@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a03-cdc/s02/header_controls03.py", line 9, in <module>
+    if oldcase.exists():raw=(oldcase/'gismu.txt').read_bytes()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/vlajmaji-p01-a03-cdc/s02/header-controls01/gismu.txt'

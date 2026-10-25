@@ -1,0 +1,13 @@
+[package]
+name="vlajmaji-a03-s02-cdc-public-20261025d"
+version="0.0.0"
+edition="2024"
+rust-version="1.98"
+[[bin]]
+name="a03_s02_cdc_public_20261025d"
+path="src/main.rs"
+[dependencies]
+vlajmaji={path="/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/vlajmaji",default-features=false,features=["data-llg"]}
+vlajmaji-data-llg={path="/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-llg",features=["embedded"]}
+sha2="=0.10.9"
+serde_json="=1.0.151"

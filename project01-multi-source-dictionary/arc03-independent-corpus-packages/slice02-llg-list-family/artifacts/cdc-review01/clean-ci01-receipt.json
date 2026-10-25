@@ -1,0 +1,169 @@
+[
+  {
+    "name": "clean-no-data-default01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "check",
+      "--workspace",
+      "--locked",
+      "--offline"
+    ],
+    "exit": 0,
+    "elapsed": 5.201980958227068,
+    "log_sha256": "6c776a1385214acfa9a47d4389cf637f129b476053649dfc872824c3c062ee4a"
+  },
+  {
+    "name": "clean-selected-missing01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "check",
+      "-p",
+      "vlajmaji",
+      "--features",
+      "data-llg",
+      "--locked",
+      "--offline"
+    ],
+    "exit": 101,
+    "elapsed": 2.8784782090224326,
+    "log_sha256": "cca8d50c302ff0b4bfeb6c94ca4eaccc8c94009c282beb859fbd572cb13c7b1e"
+  },
+  {
+    "name": "clean-ci-synthetic-prep01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "run",
+      "--locked",
+      "--offline",
+      "-p",
+      "vlajmaji-cli",
+      "--",
+      "data-pack",
+      "fixture",
+      "jbotci",
+      "crates/data-lensisku-jbotci/data"
+    ],
+    "exit": 0,
+    "elapsed": 9.319658124819398,
+    "log_sha256": "63bb350c16a3f6ba6c5446e75410fa2e1d577346fe74fd745f9af8e16f9a6e82"
+  },
+  {
+    "name": "clean-ci-llg-synthetic-prep01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "run",
+      "--locked",
+      "--offline",
+      "-p",
+      "vlajmaji-cli",
+      "--",
+      "data-pack",
+      "fixture",
+      "llg",
+      "crates/data-llg/data"
+    ],
+    "exit": 0,
+    "elapsed": 0.5179546666331589,
+    "log_sha256": "d0f7fb84e556b9a7919622043df4e661bde73fe9793f9590265739ec3390a4f2"
+  },
+  {
+    "name": "clean-ci-all-features01",
+    "argv": [
+      "make",
+      "test-all-features",
+      "CARGO=/tmp/vlajmaji-p01-a03-cargo"
+    ],
+    "exit": 0,
+    "elapsed": 50.80174124985933,
+    "log_sha256": "a3a04bd8a2341cc03e5c33501ff45f849a4af435ded8796aea9634445d987522"
+  },
+  {
+    "name": "package-vlajmaji-cli01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "package",
+      "--list",
+      "--locked",
+      "--offline",
+      "--allow-dirty",
+      "-p",
+      "vlajmaji-cli"
+    ],
+    "exit": 0,
+    "elapsed": 0.10537295788526535,
+    "log_sha256": "89414f60235d9a4aea2cb3421fe65f8f4d46ecbb68328a76f2501921cbb77b41"
+  },
+  {
+    "name": "package-vlajmaji-lexicon01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "package",
+      "--list",
+      "--locked",
+      "--offline",
+      "--allow-dirty",
+      "-p",
+      "vlajmaji-lexicon"
+    ],
+    "exit": 0,
+    "elapsed": 0.05818095803260803,
+    "log_sha256": "0fa7ec0cd4a91abe1b740367d295e96d7d7a6760885a3bb8a47d7d1ee452e09f"
+  },
+  {
+    "name": "package-vlajmaji01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "package",
+      "--list",
+      "--locked",
+      "--offline",
+      "--allow-dirty",
+      "-p",
+      "vlajmaji"
+    ],
+    "exit": 0,
+    "elapsed": 0.05881408369168639,
+    "log_sha256": "83eb5c82b86bef9688d7ba6bdaac6d3fae72482f044010d5da9fbd4631ec6d81"
+  },
+  {
+    "name": "package-vlajmaji-data-lensisku-jbotci01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "package",
+      "--list",
+      "--locked",
+      "--offline",
+      "--allow-dirty",
+      "-p",
+      "vlajmaji-data-lensisku-jbotci"
+    ],
+    "exit": 0,
+    "elapsed": 0.056796499993652105,
+    "log_sha256": "3d42c5c965d6538c09e6c8042c512f6c0ec4e34c7386a6e4c364d2b5dfed7bb0"
+  },
+  {
+    "name": "package-vlajmaji-data-llg01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "package",
+      "--list",
+      "--locked",
+      "--offline",
+      "--allow-dirty",
+      "-p",
+      "vlajmaji-data-llg"
+    ],
+    "exit": 0,
+    "elapsed": 0.05968087539076805,
+    "log_sha256": "3d42c5c965d6538c09e6c8042c512f6c0ec4e34c7386a6e4c364d2b5dfed7bb0"
+  }
+]

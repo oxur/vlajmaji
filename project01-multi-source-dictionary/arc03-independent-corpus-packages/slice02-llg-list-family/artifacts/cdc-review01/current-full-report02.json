@@ -1,0 +1,108 @@
+{
+  "all_spellings": 2433,
+  "assigned_forms": 3091,
+  "captures": 4,
+  "components": [
+    {
+      "assigned_forms": 1546,
+      "component": "gismu",
+      "contexts": 3168,
+      "declared_body_count": 1436,
+      "declared_count_matches": true,
+      "diagnostics": {
+        "source_header": 1
+      },
+      "excluded_assertions": 1,
+      "form_only_assertions": 0,
+      "header_claims": [
+        {
+          "count_matches": true,
+          "declared_body_count": 1436,
+          "occurrence": {
+            "capture": {
+              "namespace": "captured:llg:gismu",
+              "sha256": "f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7"
+            },
+            "locator": "1"
+          }
+        }
+      ],
+      "headers": 1,
+      "input_bytes": 368403,
+      "input_lines": 1437,
+      "input_sha256": "f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7",
+      "lexical_assertions": 1436,
+      "native_fields": 14298,
+      "observed_body_count": 1436,
+      "unsupported_rows": 0
+    },
+    {
+      "assigned_forms": 0,
+      "component": "cmavo",
+      "contexts": 1091,
+      "declared_body_count": 1090,
+      "declared_count_matches": false,
+      "diagnostics": {
+        "header_count_mismatch": 1,
+        "source_header": 1
+      },
+      "excluded_assertions": 1,
+      "form_only_assertions": 0,
+      "header_claims": [
+        {
+          "count_matches": false,
+          "declared_body_count": 1090,
+          "occurrence": {
+            "capture": {
+              "namespace": "captured:llg:cmavo",
+              "sha256": "544414d61f3ff35dd2cf4e4f79f3c86bf9bb0568eb3403f57288057e16796402"
+            },
+            "locator": "1"
+          }
+        }
+      ],
+      "headers": 1,
+      "input_bytes": 145139,
+      "input_lines": 1092,
+      "input_sha256": "544414d61f3ff35dd2cf4e4f79f3c86bf9bb0568eb3403f57288057e16796402",
+      "lexical_assertions": 1091,
+      "native_fields": 4365,
+      "observed_body_count": 1091,
+      "unsupported_rows": 0
+    },
+    {
+      "assigned_forms": 1545,
+      "component": "rafsi",
+      "contexts": 1545,
+      "declared_body_count": null,
+      "declared_count_matches": null,
+      "diagnostics": {},
+      "excluded_assertions": 1545,
+      "form_only_assertions": 1545,
+      "header_claims": [],
+      "headers": 0,
+      "input_bytes": 30883,
+      "input_lines": 1545,
+      "input_sha256": "31b90a8551cb3cb9f4d0c6873867af1906e9210c398bf49f20e5c21aa02d0d24",
+      "lexical_assertions": 0,
+      "native_fields": 4635,
+      "observed_body_count": 1545,
+      "unsupported_rows": 0
+    }
+  ],
+  "contexts": 5804,
+  "diagnostics": {
+    "header_count_mismatch": 1,
+    "source_header": 2
+  },
+  "eligible_spellings": 2433,
+  "entries": 2435,
+  "excluded_assertions": 1547,
+  "extensions": 2865,
+  "frequency_extensions": 1430,
+  "lexical_assertions": 2527,
+  "native_fields": 23298,
+  "occurrences": 4074,
+  "teaching_code_extensions": 1435,
+  "version": 1
+}

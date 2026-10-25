@@ -1,0 +1,195 @@
+[
+  {
+    "name": "fixture",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/fixture"
+    ],
+    "exit": 0,
+    "elapsed": 0.42817941680550575,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"llg\",\"payload_kind\":\"synthetic\",\"release_sha256\":\"467b390d8d237482259e160659a0561c979578b0d99f3c44b2b72209732f9f83\",\"report\":{\"all_spellings\":2,\"assigned_forms\":3,\"captures\":4,\"components\":[{\"assigned_forms\":2,\"component\":\"gismu\",\"contexts\":2,\"declared_body_count\":1,\"declared_count_matches\":true,\"diagnostics\":{\"source_header\":1},\"excluded_assertions\":1,\"form_only_assertions\":0,\"headers\":1,\"input_bytes\":195,\"input_lines\":2,\"input_sha256\":\"30af4ce20e2309a04cac0b6a8a4f8af05046940e3fcef7bc2d8bd1b4522773be\",\"lexical_assertions\":1,\"native_fields\":8,\"observed_body_count\":1,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"cmavo\",\"contexts\":1,\"declared_body_count\":1,\"declared_count_matches\":true,\"diagnostics\":{\"source_header\":1},\"excluded_assertions\":1,\"form_only_assertions\":0,\"headers\":1,\"input_bytes\":113,\"input_lines\":2,\"input_sha256\":\"b913f30055f7299d64129c2da46f504c89f37ef5208f254389af60b37d3a7261\",\"lexical_assertions\":1,\"native_fields\":5,\"observed_body_count\":1,\"unsupported_rows\":0},{\"assigned_forms\":1,\"component\":\"rafsi\",\"contexts\":1,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":1,\"form_only_assertions\":1,\"headers\":0,\"input_bytes\":18,\"input_lines\":1,\"input_sha256\":\"1fe380c73539440359596ae97e48a1b3b62b1460bf7319e4252ac39d87bb1c79\",\"lexical_assertions\":0,\"native_fields\":3,\"observed_body_count\":1,\"unsupported_rows\":0}],\"contexts\":4,\"diagnostics\":{\"source_header\":2},\"eligible_spellings\":2,\"entries\":4,\"excluded_assertions\":3,\"extensions\":0,\"frequency_extensions\":0,\"lexical_assertions\":2,\"native_fields\":16,\"occurrences\":5,\"teaching_code_extensions\":0,\"version\":1},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "name": "occupied-directory",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/occupied-directory"
+    ],
+    "exit": 1,
+    "elapsed": 0.008425250183790922,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/occupied-directory: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "occupied-file",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/occupied-file"
+    ],
+    "exit": 1,
+    "elapsed": 0.008193542249500751,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/occupied-file: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "occupied-symlink",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/occupied-symlink"
+    ],
+    "exit": 1,
+    "elapsed": 0.00770225003361702,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/occupied-symlink: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "valid-custom-full",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/valid-custom-full-gismu.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/valid-custom-full-cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/valid-custom-full-rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/valid-custom-full-notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/valid-custom-full-output",
+      "--gismu-sha256",
+      "2576e66b2c109baf47f1fb663f1daa615617867f9deaefbbe1606b58127d9973",
+      "--cmavo-sha256",
+      "f044f452892d5886985949bb66417239858dd5dfb67ca5eb686f3fb60ac31d51",
+      "--rafsi-sha256",
+      "14b4728fe0831b8eda210b1587fe4f20c259ae2aa5eee55ebbe59d92006a6c3d",
+      "--notice-sha256",
+      "0274a155d665b2805b7c69645d88095afdc2bfe13ff3e4859b5389b85f6daa80",
+      "--base-locator",
+      "https://example.invalid/synthetic"
+    ],
+    "exit": 0,
+    "elapsed": 0.008897167164832354,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"llg\",\"payload_kind\":\"full\",\"release_sha256\":\"6f7048612e1b54055334b044bf785d873aec75c4a245232498981e3c4e69fb4d\",\"report\":{\"all_spellings\":2,\"assigned_forms\":2,\"captures\":4,\"components\":[{\"assigned_forms\":1,\"component\":\"gismu\",\"contexts\":1,\"declared_body_count\":99,\"declared_count_matches\":false,\"diagnostics\":{\"header_count_mismatch\":1,\"source_header\":1},\"excluded_assertions\":1,\"form_only_assertions\":0,\"headers\":1,\"input_bytes\":182,\"input_lines\":2,\"input_sha256\":\"2576e66b2c109baf47f1fb663f1daa615617867f9deaefbbe1606b58127d9973\",\"lexical_assertions\":1,\"native_fields\":8,\"observed_body_count\":1,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"cmavo\",\"contexts\":1,\"declared_body_count\":1,\"declared_count_matches\":true,\"diagnostics\":{\"source_header\":1},\"excluded_assertions\":1,\"form_only_assertions\":0,\"headers\":1,\"input_bytes\":101,\"input_lines\":2,\"input_sha256\":\"f044f452892d5886985949bb66417239858dd5dfb67ca5eb686f3fb60ac31d51\",\"lexical_assertions\":1,\"native_fields\":5,\"observed_body_count\":1,\"unsupported_rows\":0},{\"assigned_forms\":1,\"component\":\"rafsi\",\"contexts\":1,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":1,\"form_only_assertions\":1,\"headers\":0,\"input_bytes\":17,\"input_lines\":1,\"input_sha256\":\"14b4728fe0831b8eda210b1587fe4f20c259ae2aa5eee55ebbe59d92006a6c3d\",\"lexical_assertions\":0,\"native_fields\":3,\"observed_body_count\":1,\"unsupported_rows\":0}],\"contexts\":3,\"diagnostics\":{\"header_count_mismatch\":1,\"source_header\":2},\"eligible_spellings\":2,\"entries\":4,\"excluded_assertions\":3,\"extensions\":0,\"frequency_extensions\":0,\"lexical_assertions\":2,\"native_fields\":16,\"occurrences\":5,\"teaching_code_extensions\":0,\"version\":1},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "name": "bad-pin",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/gismu.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/bad-pin-output"
+    ],
+    "exit": 1,
+    "elapsed": 0.005299790762364864,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"llg_hash_mismatch\",\"message\":\"gismu SHA-256 mismatch: expected f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7, got 2576e66b2c109baf47f1fb663f1daa615617867f9deaefbbe1606b58127d9973\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "invalid-utf8",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/invalid-utf8-gismu.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/invalid-utf8-cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/invalid-utf8-rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/invalid-utf8-notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/invalid-utf8-output",
+      "--gismu-sha256",
+      "2576e66b2c109baf47f1fb663f1daa615617867f9deaefbbe1606b58127d9973",
+      "--cmavo-sha256",
+      "f044f452892d5886985949bb66417239858dd5dfb67ca5eb686f3fb60ac31d51",
+      "--rafsi-sha256",
+      "14b4728fe0831b8eda210b1587fe4f20c259ae2aa5eee55ebbe59d92006a6c3d",
+      "--notice-sha256",
+      "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+      "--base-locator",
+      "https://example.invalid/synthetic"
+    ],
+    "exit": 1,
+    "elapsed": 0.00570879178121686,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"llg_utf8\",\"message\":\"notice input is not UTF-8\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "bad-options",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/gismu.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/bad-options-output",
+      "--gismu-sha256",
+      "2576e66b2c109baf47f1fb663f1daa615617867f9deaefbbe1606b58127d9973",
+      "--cmavo-sha256",
+      "f044f452892d5886985949bb66417239858dd5dfb67ca5eb686f3fb60ac31d51",
+      "--rafsi-sha256",
+      "14b4728fe0831b8eda210b1587fe4f20c259ae2aa5eee55ebbe59d92006a6c3d",
+      "--notice-sha256",
+      "0274a155d665b2805b7c69645d88095afdc2bfe13ff3e4859b5389b85f6daa80",
+      "--base-locator",
+      ""
+    ],
+    "exit": 1,
+    "elapsed": 0.005121417343616486,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"llg_options\",\"message\":\"invalid LLG import options: base_locator must be nonempty and contain no control characters\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "missing-input",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/absent",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/absent-output"
+    ],
+    "exit": 1,
+    "elapsed": 0.004931749776005745,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"read /tmp/vlajmaji-p01-a03-cdc/s02/cli-controls01/absent: No such file or directory (os error 2)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "material-help",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "llg",
+      "--help"
+    ],
+    "exit": 0,
+    "elapsed": 0.004879707936197519,
+    "stdout": "Import the three local LLG lists and their shared notice\n\nUsage: candidate-b36-cli data-pack materialize llg [OPTIONS] <GISMU> <CMAVO> <RAFSI> <NOTICE> <OUTPUT>\n\nArguments:\n  <GISMU>   \n  <CMAVO>   \n  <RAFSI>   \n  <NOTICE>  \n  <OUTPUT>  \n\nOptions:\n      --gismu-sha256 <GISMU_SHA256>    [default: f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7]\n      --cmavo-sha256 <CMAVO_SHA256>    [default: 544414d61f3ff35dd2cf4e4f79f3c86bf9bb0568eb3403f57288057e16796402]\n      --rafsi-sha256 <RAFSI_SHA256>    [default: 31b90a8551cb3cb9f4d0c6873867af1906e9210c398bf49f20e5c21aa02d0d24]\n      --notice-sha256 <NOTICE_SHA256>  [default: 9fb2ae1345252ba30999523a0980e1ae69795f5940d2fd9cea8a56c67be18a55]\n      --base-locator <BASE_LOCATOR>    [default: https://www.lojban.org/publications/wordlists]\n  -h, --help                           Print help\n",
+    "stderr": ""
+  },
+  {
+    "name": "fixture-help",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "llg",
+      "--help"
+    ],
+    "exit": 0,
+    "elapsed": 0.004932416137307882,
+    "stdout": "Build a small synthetic gismu/cmavo/rafsi fixture through the real importer\n\nUsage: candidate-b36-cli data-pack fixture llg <OUTPUT>\n\nArguments:\n  <OUTPUT>  \n\nOptions:\n  -h, --help  Print help\n",
+    "stderr": ""
+  }
+]

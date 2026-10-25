@@ -1,0 +1,11 @@
+# S02 CDC retrospective
+
+The full LLG list family is now a useful offline embedded dependency with exact physical/native accounting and source-standing forms. CDC acceptance is0d70, not the rejected b36 proposal. The actual notice corrected our initial informal organization name; official source labels must come directly from primary evidence before identity freezes.
+
+The functional rework concerned competing source claims: a scalar last-header-wins report erased the typed disagreement even while raw bytes survived. Independent0→1 and1→0 controls exposed both suppression and wrong-origin behavior; same-count duplicates were the valid counterpart. Ordered claims plus agreed-only summary solve that local issue, retaining the original single-header diagnostic and canonical output. This reinforces that raw retention alone is insufficient when a public summary implies stronger agreement.
+
+Literal fixture denominators still caused avoidable author retries (headers, assigned slots and notice-only capture). CDC also guessed one form count incorrectly. Source census prevented any full-corpus scope reduction, but fixture authors must enumerate literal rows/slots before expected totals. The notice has bytes but zero lexical occurrences; a list row is not automatically a new entry. Next La prompt carries separate input rows, entries, eligibility, spellings and extension categories derived from the source scanner.
+
+An unnecessary duplicate materialization came from mistaken chronology; identical outputs are preserved and the mistake admitted. Current header repair uses one in-memory canonical comparison, retaining prior complete native/embedded/query evidence because model bytes and packaging behavior are unchanged. Reviewer wrapper mistakes are retained without escalating into product rework. Adopt this bounded evidence allocation for subsequent slices; no general framework change or measured process-effectiveness claim.
+
+S03 proceeds immediately with shared private Lensisku extraction and truthful La distribution provenance. Both distribution occurrences survive under one upstream authority; software terms remain separate from content permission. No topology or public-data decision is inferred.

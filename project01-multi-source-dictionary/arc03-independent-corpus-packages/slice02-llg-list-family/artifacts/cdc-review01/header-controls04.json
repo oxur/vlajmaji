@@ -1,0 +1,207 @@
+[
+  {
+    "counts": [
+      0,
+      1
+    ],
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cdc/s02/candidate-0d70-cli",
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0then1/gismu.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0then1/cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0then1/rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0then1/notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0then1/output",
+      "--gismu-sha256",
+      "f8a3f6023f75513a79e445e4351e274c6d958f2a405e5e8532e4b0f38e27a47b",
+      "--cmavo-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--rafsi-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--notice-sha256",
+      "236f3352ef20da55d4fed7766dfc8e13af9756fa51e622657026f9074c2f7010",
+      "--base-locator",
+      "https://example.invalid/header-control"
+    ],
+    "exit": 0,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"llg\",\"payload_kind\":\"full\",\"release_sha256\":\"9b6312dd4085aeabe9fc1979c0e77bd094e3f25a79fb21cd079b2ce522930c92\",\"report\":{\"all_spellings\":1,\"assigned_forms\":1,\"captures\":4,\"components\":[{\"assigned_forms\":1,\"component\":\"gismu\",\"contexts\":1,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{\"conflicting_header_counts\":1,\"header_count_mismatch\":1,\"source_header\":2},\"excluded_assertions\":2,\"form_only_assertions\":0,\"header_claims\":[{\"count_matches\":false,\"declared_body_count\":0,\"occurrence\":{\"capture\":{\"namespace\":\"captured:llg:gismu\",\"sha256\":\"f8a3f6023f75513a79e445e4351e274c6d958f2a405e5e8532e4b0f38e27a47b\"},\"locator\":\"1\"}},{\"count_matches\":true,\"declared_body_count\":1,\"occurrence\":{\"capture\":{\"namespace\":\"captured:llg:gismu\",\"sha256\":\"f8a3f6023f75513a79e445e4351e274c6d958f2a405e5e8532e4b0f38e27a47b\"},\"locator\":\"2\"}}],\"headers\":2,\"input_bytes\":198,\"input_lines\":3,\"input_sha256\":\"f8a3f6023f75513a79e445e4351e274c6d958f2a405e5e8532e4b0f38e27a47b\",\"lexical_assertions\":1,\"native_fields\":9,\"observed_body_count\":1,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"cmavo\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"rafsi\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0}],\"contexts\":1,\"diagnostics\":{\"conflicting_header_counts\":1,\"header_count_mismatch\":1,\"source_header\":2},\"eligible_spellings\":1,\"entries\":3,\"excluded_assertions\":2,\"extensions\":0,\"frequency_extensions\":0,\"lexical_assertions\":1,\"native_fields\":9,\"occurrences\":3,\"teaching_code_extensions\":0,\"version\":1},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "counts": [
+      1,
+      0
+    ],
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cdc/s02/candidate-0d70-cli",
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1then0/gismu.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1then0/cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1then0/rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1then0/notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1then0/output",
+      "--gismu-sha256",
+      "67e4c51c672fc41f0928f7a40ba88c95d07e105472cd9c3faaf502d8afc922f8",
+      "--cmavo-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--rafsi-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--notice-sha256",
+      "236f3352ef20da55d4fed7766dfc8e13af9756fa51e622657026f9074c2f7010",
+      "--base-locator",
+      "https://example.invalid/header-control"
+    ],
+    "exit": 0,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"llg\",\"payload_kind\":\"full\",\"release_sha256\":\"402ad224a149b8dfc90701794ea9fd38054e5aa1f6dbc31d438ff362a8e92f1e\",\"report\":{\"all_spellings\":1,\"assigned_forms\":1,\"captures\":4,\"components\":[{\"assigned_forms\":1,\"component\":\"gismu\",\"contexts\":1,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{\"conflicting_header_counts\":1,\"header_count_mismatch\":1,\"source_header\":2},\"excluded_assertions\":2,\"form_only_assertions\":0,\"header_claims\":[{\"count_matches\":true,\"declared_body_count\":1,\"occurrence\":{\"capture\":{\"namespace\":\"captured:llg:gismu\",\"sha256\":\"67e4c51c672fc41f0928f7a40ba88c95d07e105472cd9c3faaf502d8afc922f8\"},\"locator\":\"1\"}},{\"count_matches\":false,\"declared_body_count\":0,\"occurrence\":{\"capture\":{\"namespace\":\"captured:llg:gismu\",\"sha256\":\"67e4c51c672fc41f0928f7a40ba88c95d07e105472cd9c3faaf502d8afc922f8\"},\"locator\":\"2\"}}],\"headers\":2,\"input_bytes\":198,\"input_lines\":3,\"input_sha256\":\"67e4c51c672fc41f0928f7a40ba88c95d07e105472cd9c3faaf502d8afc922f8\",\"lexical_assertions\":1,\"native_fields\":9,\"observed_body_count\":1,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"cmavo\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"rafsi\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0}],\"contexts\":1,\"diagnostics\":{\"conflicting_header_counts\":1,\"header_count_mismatch\":1,\"source_header\":2},\"eligible_spellings\":1,\"entries\":3,\"excluded_assertions\":2,\"extensions\":0,\"frequency_extensions\":0,\"lexical_assertions\":1,\"native_fields\":9,\"occurrences\":3,\"teaching_code_extensions\":0,\"version\":1},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "counts": [
+      1,
+      1
+    ],
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cdc/s02/candidate-0d70-cli",
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1then1/gismu.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1then1/cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1then1/rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1then1/notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1then1/output",
+      "--gismu-sha256",
+      "ba4f0a6ebfbcf2137aeace436546fec34759ea34f63916c453176ad8b6135b9a",
+      "--cmavo-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--rafsi-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--notice-sha256",
+      "236f3352ef20da55d4fed7766dfc8e13af9756fa51e622657026f9074c2f7010",
+      "--base-locator",
+      "https://example.invalid/header-control"
+    ],
+    "exit": 0,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"llg\",\"payload_kind\":\"full\",\"release_sha256\":\"f264e88a5a18221b5783c1914422cd0ffbf611c237b79f26fc7fb88d0e8d1360\",\"report\":{\"all_spellings\":1,\"assigned_forms\":1,\"captures\":4,\"components\":[{\"assigned_forms\":1,\"component\":\"gismu\",\"contexts\":1,\"declared_body_count\":1,\"declared_count_matches\":true,\"diagnostics\":{\"source_header\":2},\"excluded_assertions\":2,\"form_only_assertions\":0,\"header_claims\":[{\"count_matches\":true,\"declared_body_count\":1,\"occurrence\":{\"capture\":{\"namespace\":\"captured:llg:gismu\",\"sha256\":\"ba4f0a6ebfbcf2137aeace436546fec34759ea34f63916c453176ad8b6135b9a\"},\"locator\":\"1\"}},{\"count_matches\":true,\"declared_body_count\":1,\"occurrence\":{\"capture\":{\"namespace\":\"captured:llg:gismu\",\"sha256\":\"ba4f0a6ebfbcf2137aeace436546fec34759ea34f63916c453176ad8b6135b9a\"},\"locator\":\"2\"}}],\"headers\":2,\"input_bytes\":198,\"input_lines\":3,\"input_sha256\":\"ba4f0a6ebfbcf2137aeace436546fec34759ea34f63916c453176ad8b6135b9a\",\"lexical_assertions\":1,\"native_fields\":9,\"observed_body_count\":1,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"cmavo\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"rafsi\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0}],\"contexts\":1,\"diagnostics\":{\"source_header\":2},\"eligible_spellings\":1,\"entries\":3,\"excluded_assertions\":2,\"extensions\":0,\"frequency_extensions\":0,\"lexical_assertions\":1,\"native_fields\":9,\"occurrences\":3,\"teaching_code_extensions\":0,\"version\":1},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "counts": [
+      0,
+      0
+    ],
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cdc/s02/candidate-0d70-cli",
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0then0/gismu.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0then0/cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0then0/rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0then0/notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0then0/output",
+      "--gismu-sha256",
+      "7c4d1a32c1dd57a310efcda9aaf0a8cabaf065c710c11eaa811d9e36789c4583",
+      "--cmavo-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--rafsi-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--notice-sha256",
+      "236f3352ef20da55d4fed7766dfc8e13af9756fa51e622657026f9074c2f7010",
+      "--base-locator",
+      "https://example.invalid/header-control"
+    ],
+    "exit": 0,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"llg\",\"payload_kind\":\"full\",\"release_sha256\":\"e5e9f7d51ffb5a16e9f8ce6938567272e354b0a1e70a427d940defa5344ac46b\",\"report\":{\"all_spellings\":1,\"assigned_forms\":1,\"captures\":4,\"components\":[{\"assigned_forms\":1,\"component\":\"gismu\",\"contexts\":1,\"declared_body_count\":0,\"declared_count_matches\":false,\"diagnostics\":{\"header_count_mismatch\":2,\"source_header\":2},\"excluded_assertions\":2,\"form_only_assertions\":0,\"header_claims\":[{\"count_matches\":false,\"declared_body_count\":0,\"occurrence\":{\"capture\":{\"namespace\":\"captured:llg:gismu\",\"sha256\":\"7c4d1a32c1dd57a310efcda9aaf0a8cabaf065c710c11eaa811d9e36789c4583\"},\"locator\":\"1\"}},{\"count_matches\":false,\"declared_body_count\":0,\"occurrence\":{\"capture\":{\"namespace\":\"captured:llg:gismu\",\"sha256\":\"7c4d1a32c1dd57a310efcda9aaf0a8cabaf065c710c11eaa811d9e36789c4583\"},\"locator\":\"2\"}}],\"headers\":2,\"input_bytes\":205,\"input_lines\":3,\"input_sha256\":\"7c4d1a32c1dd57a310efcda9aaf0a8cabaf065c710c11eaa811d9e36789c4583\",\"lexical_assertions\":1,\"native_fields\":9,\"observed_body_count\":1,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"cmavo\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"rafsi\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0}],\"contexts\":1,\"diagnostics\":{\"header_count_mismatch\":2,\"source_header\":2},\"eligible_spellings\":1,\"entries\":3,\"excluded_assertions\":2,\"extensions\":0,\"frequency_extensions\":0,\"lexical_assertions\":1,\"native_fields\":9,\"occurrences\":3,\"teaching_code_extensions\":0,\"version\":1},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "counts": [],
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cdc/s02/candidate-0d70-cli",
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/absent/gismu.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/absent/cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/absent/rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/absent/notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/absent/output",
+      "--gismu-sha256",
+      "f1733155a614461ab9eaf31c0b7587cfc5b64c335be402db746f1531f4cde4b3",
+      "--cmavo-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--rafsi-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--notice-sha256",
+      "236f3352ef20da55d4fed7766dfc8e13af9756fa51e622657026f9074c2f7010",
+      "--base-locator",
+      "https://example.invalid/header-control"
+    ],
+    "exit": 0,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"llg\",\"payload_kind\":\"full\",\"release_sha256\":\"ede2ea11f2f4435c0cb56182fd9ca2fd31fe1b4cf838d5d690d97e60e20dc3c1\",\"report\":{\"all_spellings\":1,\"assigned_forms\":1,\"captures\":4,\"components\":[{\"assigned_forms\":1,\"component\":\"gismu\",\"contexts\":1,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":159,\"input_lines\":1,\"input_sha256\":\"f1733155a614461ab9eaf31c0b7587cfc5b64c335be402db746f1531f4cde4b3\",\"lexical_assertions\":1,\"native_fields\":7,\"observed_body_count\":1,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"cmavo\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"rafsi\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0}],\"contexts\":1,\"diagnostics\":{},\"eligible_spellings\":1,\"entries\":1,\"excluded_assertions\":0,\"extensions\":0,\"frequency_extensions\":0,\"lexical_assertions\":1,\"native_fields\":7,\"occurrences\":1,\"teaching_code_extensions\":0,\"version\":1},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "counts": [
+      1
+    ],
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cdc/s02/candidate-0d70-cli",
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1/gismu.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1/cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1/rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1/notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/1/output",
+      "--gismu-sha256",
+      "32d90744891ebe28233a088c681b1e679e05a2fe3ee2833a3682f6f60629b13e",
+      "--cmavo-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--rafsi-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--notice-sha256",
+      "236f3352ef20da55d4fed7766dfc8e13af9756fa51e622657026f9074c2f7010",
+      "--base-locator",
+      "https://example.invalid/header-control"
+    ],
+    "exit": 0,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"llg\",\"payload_kind\":\"full\",\"release_sha256\":\"55ec3794e5a38293e8206351032fa004a5276adc2b7331c733b226186af7ffd6\",\"report\":{\"all_spellings\":1,\"assigned_forms\":1,\"captures\":4,\"components\":[{\"assigned_forms\":1,\"component\":\"gismu\",\"contexts\":1,\"declared_body_count\":1,\"declared_count_matches\":true,\"diagnostics\":{\"source_header\":1},\"excluded_assertions\":1,\"form_only_assertions\":0,\"header_claims\":[{\"count_matches\":true,\"declared_body_count\":1,\"occurrence\":{\"capture\":{\"namespace\":\"captured:llg:gismu\",\"sha256\":\"32d90744891ebe28233a088c681b1e679e05a2fe3ee2833a3682f6f60629b13e\"},\"locator\":\"1\"}}],\"headers\":1,\"input_bytes\":182,\"input_lines\":2,\"input_sha256\":\"32d90744891ebe28233a088c681b1e679e05a2fe3ee2833a3682f6f60629b13e\",\"lexical_assertions\":1,\"native_fields\":8,\"observed_body_count\":1,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"cmavo\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"rafsi\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0}],\"contexts\":1,\"diagnostics\":{\"source_header\":1},\"eligible_spellings\":1,\"entries\":2,\"excluded_assertions\":1,\"extensions\":0,\"frequency_extensions\":0,\"lexical_assertions\":1,\"native_fields\":8,\"occurrences\":2,\"teaching_code_extensions\":0,\"version\":1},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "counts": [
+      0
+    ],
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cdc/s02/candidate-0d70-cli",
+      "data-pack",
+      "materialize",
+      "llg",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0/gismu.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0/cmavo.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0/rafsi.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0/notice.txt",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/header-controls04/0/output",
+      "--gismu-sha256",
+      "468b83d100979023ff3f84ee8a7d402f17fc935e8fca532140c75f93a907d80a",
+      "--cmavo-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--rafsi-sha256",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "--notice-sha256",
+      "236f3352ef20da55d4fed7766dfc8e13af9756fa51e622657026f9074c2f7010",
+      "--base-locator",
+      "https://example.invalid/header-control"
+    ],
+    "exit": 0,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"llg\",\"payload_kind\":\"full\",\"release_sha256\":\"431a55a2ad3e16b2313051447c32d370a853842addef22c1936509b4bc6d72e7\",\"report\":{\"all_spellings\":1,\"assigned_forms\":1,\"captures\":4,\"components\":[{\"assigned_forms\":1,\"component\":\"gismu\",\"contexts\":1,\"declared_body_count\":0,\"declared_count_matches\":false,\"diagnostics\":{\"header_count_mismatch\":1,\"source_header\":1},\"excluded_assertions\":1,\"form_only_assertions\":0,\"header_claims\":[{\"count_matches\":false,\"declared_body_count\":0,\"occurrence\":{\"capture\":{\"namespace\":\"captured:llg:gismu\",\"sha256\":\"468b83d100979023ff3f84ee8a7d402f17fc935e8fca532140c75f93a907d80a\"},\"locator\":\"1\"}}],\"headers\":1,\"input_bytes\":182,\"input_lines\":2,\"input_sha256\":\"468b83d100979023ff3f84ee8a7d402f17fc935e8fca532140c75f93a907d80a\",\"lexical_assertions\":1,\"native_fields\":8,\"observed_body_count\":1,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"cmavo\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0},{\"assigned_forms\":0,\"component\":\"rafsi\",\"contexts\":0,\"declared_body_count\":null,\"declared_count_matches\":null,\"diagnostics\":{},\"excluded_assertions\":0,\"form_only_assertions\":0,\"header_claims\":[],\"headers\":0,\"input_bytes\":0,\"input_lines\":0,\"input_sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"lexical_assertions\":0,\"native_fields\":0,\"observed_body_count\":0,\"unsupported_rows\":0}],\"contexts\":1,\"diagnostics\":{\"header_count_mismatch\":1,\"source_header\":1},\"eligible_spellings\":1,\"entries\":2,\"excluded_assertions\":1,\"extensions\":0,\"frequency_extensions\":0,\"lexical_assertions\":1,\"native_fields\":8,\"occurrences\":2,\"teaching_code_extensions\":0,\"version\":1},\"version\":1}\n",
+    "stderr": ""
+  }
+]

@@ -12,3 +12,5 @@
 | A03-08 | Accepted children actually compose; canonical close and carryovers independently checked | separate fresh technical run+final packet verdict, row walk, CDC retrospectives/project bubble-up | open | CDC + fresh reviewer, no A04 |
 
 2026-10-25: S01 six rows independently accepted at source04289ae; see slice01-sealed-packs-and-jbotci/cdc-verification.md and retrospective. Arc rows remain open until all required packages and assembled gates; no project row closes.
+
+2026-10-25: S02 all6 independently accepted at0d70c9f; fullLLG4074rows/23298fields and actual optional consumption/query boundary complete. Arc rows stay open for La/Sut and fresh assembled acceptance; no project row closes.

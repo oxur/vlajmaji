@@ -1,0 +1,17 @@
+Vlajmaji Arc03 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.96s
+     Running tests/llg_import.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/llg_import-48554dcf5e7d93b7)
+
+running 8 tests
+test test_import_llg_lists_rejects_bad_pins_and_invalid_utf8 ... ok
+test test_import_llg_lists_absent_header_has_no_claim_or_conflict ... ok
+test test_import_llg_lists_preserves_captures_rows_and_evidence ... ok
+test test_import_llg_lists_excludes_malformed_rows_and_keeps_optional_tail_absent ... ok
+test test_import_llg_lists_keeps_duplicate_rows_and_excludes_conflicting_classes ... ok
+test test_import_llg_lists_reports_count_mismatch_without_dropping_rows ... ok
+test test_import_llg_lists_retains_unsupported_rows_and_terminal_cr ... ok
+test test_import_llg_lists_preserves_each_header_claim_and_mismatch_occurrence ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

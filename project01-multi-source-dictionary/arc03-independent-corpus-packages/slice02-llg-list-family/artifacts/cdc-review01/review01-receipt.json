@@ -1,0 +1,52 @@
+[
+  {
+    "name": "full-native01",
+    "argv": [
+      "python3",
+      "-B",
+      "/tmp/vlajmaji-p01-a03-cdc/readiness/verify_llg.py",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-llg/data"
+    ],
+    "exit": 0,
+    "elapsed": 0.7288963748142123,
+    "log_sha256": "090ae26b775dcad5286b86bf143a5947872ba75e6d1745ac7ca12f7d35c8d494"
+  },
+  {
+    "name": "public-lock01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "generate-lockfile",
+      "--manifest-path",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/public-caller/Cargo.toml",
+      "--offline"
+    ],
+    "exit": 0,
+    "elapsed": 0.1801044587045908,
+    "log_sha256": "870caaab6841c35ea46836af67f6b750d983fd0895f560736434181be352667a"
+  },
+  {
+    "name": "public-build01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "build",
+      "--manifest-path",
+      "/tmp/vlajmaji-p01-a03-cdc/s02/public-caller/Cargo.toml",
+      "--offline",
+      "--locked"
+    ],
+    "exit": 0,
+    "elapsed": 4.3502200418151915,
+    "log_sha256": "eb57a6021f41cdac4b7ea275d11e0caf6ad58787b5ba2c82f17e8f82da51da22"
+  },
+  {
+    "name": "public-runtime01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cdc/s02/public-candidate-b36"
+    ],
+    "exit": 0,
+    "elapsed": 20.446172207593918,
+    "log_sha256": "976a86cd755c31faff08ef5b1ee33d02cd42ee94514927b3567510cf007643b9"
+  }
+]
