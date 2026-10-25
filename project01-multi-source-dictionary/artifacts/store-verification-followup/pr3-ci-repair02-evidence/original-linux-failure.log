@@ -1,0 +1,225 @@
+Test (ubuntu-latest)	Run cargo test --workspace --locked	﻿2026-10-25T04:58:27.5675523Z ##[group]Run cargo test --workspace --locked
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:27.5676191Z [36;1mcargo test --workspace --locked[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:27.5736936Z shell: /usr/bin/bash -e {0}
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:27.5737206Z env:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:27.5737412Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:27.5737666Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:27.5737890Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:27.5738154Z   CARGO_INCREMENTAL: 0
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:27.5738379Z   CACHE_ON_FAILURE: false
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:27.5738619Z ##[endgroup]
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:27.6186719Z [1m[92m    Updating[0m crates.io index
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:29.7349003Z [1m[92m   Compiling[0m vlajmaji-lexicon v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:29.7374312Z [1m[92m   Compiling[0m bauske-phonology v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/bauske/crates/phonology)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:32.4137519Z [1m[92m   Compiling[0m vlajmaji-store v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:33.6804698Z [1m[92m   Compiling[0m vlajmaji-search v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:35.7938007Z [1m[92m   Compiling[0m vlajmaji v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:40.3194774Z [1m[92m   Compiling[0m vlajmaji-cli v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.3735196Z [1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 19.78s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4662310Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji-951702dc34268ffd)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4675109Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4675368Z running 0 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4675875Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4676425Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4677035Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4679677Z [1m[92m     Running[0m unittests src/main.rs (target/debug/deps/vlajmaji-40a53a32f58922d7)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4689714Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4689908Z running 2 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4702066Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4703376Z [1m[92m     Running[0m tests/cli_contract.rs (target/debug/deps/cli_contract-c1431108f3e40914)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4704086Z test default_path_tests::test_marker_exists_distinguishes_absence_and_propagates_metadata_errors ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4704508Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4704762Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4705111Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4710786Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4710977Z running 2 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.4760673Z test help_and_version_are_available ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.5126864Z test valid_json_limit_zero_and_failures_are_inspectable ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.5127695Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.5128404Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.5129211Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.5130169Z [1m[92m     Running[0m tests/default_store.rs (target/debug/deps/default_store-fbee2ea336fd46f4)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.5142167Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.5142497Z running 6 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.5244826Z test test_default_info_detects_ambiguous_and_corrupt_grouped_markers_without_fallback ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.5535002Z test test_optional_store_positionals_are_visible_in_help_and_legacy_info_stays_legacy ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.9444796Z test test_default_build_input_errors_and_occupied_leaves_have_bounded_side_effects ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:47.9645105Z test test_home_fallback_explicit_override_and_missing_default_are_truthful ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.2326399Z test test_non_utf8_environment_is_preserved_and_build_fails_before_mutation ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.3142506Z test test_xdg_default_build_query_stdin_and_info_match_explicit_store ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.3143410Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.3143878Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.80s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.3145334Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.3150203Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-d74ebad6c5830515)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.3160976Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.3161127Z running 1 test
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.6625473Z test dictionary_commands_work_and_structured_errors_use_the_envelope ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.6626145Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.6626595Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.35s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.6627197Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.6629696Z [1m[92m     Running[0m tests/jbotci_contract.rs (target/debug/deps/jbotci_contract-70f32014de52c893)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.6640935Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.6641287Z running 1 test
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.7035265Z test import_check_are_pinned_non_destructive_and_structured_on_failure ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.7035994Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.7036372Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.7036787Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.7037929Z [1m[92m     Running[0m tests/jbotci_pipeline.rs (target/debug/deps/jbotci_pipeline-0f4f4466ec643d96)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.7048560Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.7048873Z running 7 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.7085108Z test concurrent_scratch_allocations_are_distinct_and_joined ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.8857785Z test report_creation_races_preserve_caller_bytes_and_skip_importer ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:48.8874548Z test scratch_retries_occupied_candidates_without_touching_them ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.0010150Z test make_forwards_metacharacter_paths_and_requires_explicit_cargo_target ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.0539030Z test test_pin_manifest_byte_policy_counts_forbidden_bytes_and_fails_closed ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.0737896Z test malformed_manifest_and_download_failure_leave_no_completion_marker ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.1741513Z test pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.1742156Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.1742505Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.47s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.1743328Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.1745258Z [1m[92m     Running[0m tests/verify_contract.rs (target/debug/deps/verify_contract-14510b6a66f8e3f9)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.1758100Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.1758310Z running 2 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.4199216Z test test_verify_cli_explicit_path_overrides_invalid_default_environment ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6555512Z test test_verify_cli_success_failure_envelope_default_help_and_no_create ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6556134Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6556446Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.48s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6556884Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6560278Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_lexicon-0c2cf91e661010ee)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6569978Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6570163Z running 0 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6570403Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6570865Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6571471Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6573489Z [1m[92m     Running[0m tests/contract.rs (target/debug/deps/contract-d0ec19958a7d4c08)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6583409Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6583718Z running 8 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6586620Z test full_corpus_import_reconciles_all_input_populations ... ignored, requires RELOJBAN_RESEARCH_ROOT pointing at the preserved research checkout
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6594570Z test corpus_sources_preserve_form_roles ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6598927Z test exact_queries_keep_source_rows_and_proposals_separate ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6599736Z test import_is_atomic_and_source_identity_is_byte_exact ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6600580Z test proposals_borrowed_view_exposes_all_entries_without_captured_lookup ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6601496Z test see_also_parser_uses_explicit_marker_and_excludes_tex_math ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6602349Z test proposal_identity_is_unambiguous_and_archive_validation_is_typed ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6608057Z test archive_roundtrip_preserves_raw_presence_unknowns_and_large_numbers ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6608674Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6609156Z test result: ok. 7 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6609775Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6611110Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-6c94171481668b2c)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6622032Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.6622213Z running 11 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.7113803Z test complete_fixture_keeps_native_presence_and_release_absence_distinct ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.7183918Z test constructor_rejects_raw_reference_accounting_and_provenance_failures ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.7230108Z test available_empty_release_is_distinct_from_unavailable_catalogue_and_bad_refs_reject ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.7293414Z test empty_document_is_valid_and_serde_revalidates ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.7873999Z test complete_public_fixture_roundtrips_all_source_and_metadata_rows ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.8464091Z test known_missing_capture_can_retain_unverifiable_projection_with_unknown_counts ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.8611918Z test declared_validation_categories_are_emitted_and_malformed_parent_paths_do_not_panic ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.8633691Z test raw_values_ids_and_duplicate_envelope_keys_are_checked ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.8814001Z test direct_serde_is_strict_and_identity_adapters_are_exact ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:49.8867947Z test named_reference_and_provenance_failures_use_declared_categories ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.0968158Z test etymology_components_accept_each_declared_local_reference_role ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.0969000Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.0969568Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.43s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.0970433Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.0976469Z [1m[92m     Running[0m tests/jbotci_contract.rs (target/debug/deps/jbotci_contract-83c60443b0aeb75c)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.0989403Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.0989599Z running 12 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1020892Z test invalid_pins_utf8_and_json_root_return_typed_failures ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1021872Z test duplicate_fields_nested_values_and_nonobjects_remain_raw_and_excluded ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1023147Z test changed_pinned_raw_bytes_change_capture_and_row_ids_and_wrong_hash_fails ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1024199Z test malformed_optional_shapes_are_diagnostic_without_excluding_valid_rows ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1025242Z test metadata_duplicates_and_unsupported_shapes_are_typed_failures ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1031763Z test missing_null_and_empty_critical_values_remain_distinguishable ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1033144Z test all_supported_classes_and_cross_column_forms_remain_distinct ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1044560Z test non_display_username_keeps_hashed_attribution_with_a_diagnostic ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1045552Z test metadata_numeric_values_follow_json_validity_before_subset_errors ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1054184Z test repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1056410Z test optional_selmaho_and_definition_id_shapes_are_diagnostic_without_loss ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1083930Z test revision_is_release_provenance_while_occurrence_identity_is_byte_stable ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1084572Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1085010Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1085655Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1088220Z [1m[92m     Running[0m tests/registry_contract.rs (target/debug/deps/registry_contract-0948456a23b1b463)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1099927Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1100095Z running 10 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1120043Z test attribution_requires_explicit_legacy_binding_but_keeps_empty_metadata ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1132079Z test document_validation_rejects_duplicate_roles_and_invalid_values ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1144354Z test aliases_cannot_shadow_another_sources_current_abbreviation ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1146222Z test aliases_rename_retire_and_reuse_without_losing_history ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1159977Z test phantom_occurrence_binding_is_rejected_against_the_supplied_lexicon ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1173846Z test attribution_preserves_five_occurrences_roles_raw_bytes_and_archive ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1174406Z test ids_and_registry_document_are_validated_and_role_distinct ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1174919Z test test_unverified_registry_selector_rejects_duplicate_source_identity ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1175563Z test invalid_documents_updates_and_deserialization_cannot_bypass_invariants ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1193108Z test registry_identity_wires_reject_unknown_nested_fields_without_tightening_legacy_ids ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1193833Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1194213Z test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1194904Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1208489Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_search-eab6d3f565d0ba85)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1210755Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1211585Z [1m[92m     Running[0m tests/corpus_contract.rs (target/debug/deps/corpus_contract-a6a53b7a89bb78e0)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1212398Z running 2 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1213386Z test component_semantics::component_membership_is_an_exact_ordered_subsequence_with_multiplicity ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1214609Z test dictionary::unverified_index_tests::test_required_lookup_indexes_keep_unique_ids_and_reject_duplicates ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1215186Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1215554Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1216011Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1226213Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1226524Z running 8 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1343958Z test contrast_exposes_p01_coordinate_explanations_without_word_total ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1363864Z test exact_proposal_option_is_separate_complete_and_limited_after_combination ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1365162Z test compose_kind_is_validated_with_empty_and_nonempty_candidate_sets ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1366277Z test native_candidate_counts_are_stage_labelled ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1392628Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1455652Z test search_engine_has_safe_summary_debug_output ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1457065Z test scalar_spelling_distance_scans_and_preserves_record_multiplicity ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1469241Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1469594Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1469863Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1470221Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1474470Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-20962b2d3837ab9c)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1489272Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.1489452Z running 6 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.6294930Z test pages_zero_totals_cursor_binding_and_stale_cursor_are_explicit ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.6313774Z test hit_computations_follow_dictionary_metadata_order ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.6373671Z test exact_farvi_matches_the_complete_occurrence_reference_after_reopen ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.6775394Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:50.9240150Z test repeated_editorial_membership_is_preserved_but_hit_views_are_unique ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0018205Z test test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids ... FAILED
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0018757Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0018856Z failures:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0018999Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0019351Z ---- test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids stdout ----
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0019818Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0020455Z thread 'test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids' (4291) panicked at crates/search/tests/dictionary_contract.rs:82:10:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0022169Z called `Result::unwrap()` on an `Err` value: Os { code: 7, kind: ArgumentListTooLong, message: "Argument list too long" }
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0023115Z stack backtrace:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0023448Z    0: __rustc::rust_begin_unwind
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0023995Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/panicking.rs:679:5
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0024572Z    1: core::panicking::panic_fmt
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0025094Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/panicking.rs:80:14
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0025659Z    2: core::result::unwrap_failed
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0026163Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/result.rs:1870:5
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0026856Z    3: <core::result::Result<std::process::Output, core::io::error::Error>>::unwrap
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0027539Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/result.rs:1231:23
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0028642Z    4: dictionary_contract::replace_canonical_draft::<dictionary_contract::test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids::{closure#0}>
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0029462Z              at ./tests/dictionary_contract.rs:82:10
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0029987Z    5: dictionary_contract::test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0030504Z              at ./tests/dictionary_contract.rs:426:9
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0031052Z    6: dictionary_contract::test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids::{closure#0}
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0031604Z              at ./tests/dictionary_contract.rs:415:82
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0032295Z    7: <dictionary_contract::test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0033453Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/ops/function.rs:250:5
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0034189Z    8: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0034878Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/ops/function.rs:250:5
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0035476Z note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0035808Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0035813Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0035889Z failures:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0036229Z     test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0036539Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0036800Z test result: FAILED. 5 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.85s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0037152Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0052924Z [1m[91merror[0m: test failed, to rerun pass `-p vlajmaji-search --test dictionary_contract`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-25T04:58:51.0104071Z ##[error]Process completed with exit code 101.
