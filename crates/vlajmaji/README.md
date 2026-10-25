@@ -68,6 +68,11 @@ The umbrella library enables no optional features by default.
   Lensisku pack crate. It forwards `embedded` and requires local payload
   preparation; no dictionary data is included by default and redistribution is
   held pending verified content terms.
+- `data-sutysisku` selects the unpublished optional Sutysisku English
+  projection pack crate and re-exports it as `vlajmaji::data_sutysisku`. It
+  forwards `embedded` and requires local payload preparation; no dictionary
+  data is included by default, and redistribution remains Held while upstream
+  lexical lineage and content terms are unverified.
 
 These features can be enabled independently or together. The CLI package enables
 morphology separately; that does not change this library's defaults for callers
@@ -90,6 +95,15 @@ For La-Lojban, prepare a Synthetic local payload with
 with `data-pack materialize la-lojban RAW_JSON OUTPUT` before enabling
 `data-la-lojban`. Its seal records local integrity and inventory; it does not
 establish permission to redistribute the dictionary content.
+
+For Sutysisku, prepare a Synthetic local payload with
+`data-pack fixture sutysisku OUTPUT` for an offline feature build, or
+materialize caller-provided pinned bytes with
+`data-pack materialize sutysisku RAW_JSON OUTPUT` for a Full local payload
+before enabling `data-sutysisku`. The command reads only the supplied path and
+does not fetch data or create a default store. The package is unpublished, and
+content redistribution remains Held pending verified terms and upstream
+lexical lineage.
 
 Requires Rust 1.98 or newer. Licensed under Apache-2.0;
 corpus content terms remain separate from the code license.
