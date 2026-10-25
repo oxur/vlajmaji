@@ -1,0 +1,11 @@
+[package]
+name="vlajmaji-a03-sut-rawkey-prototype-20261025e"
+version="0.0.0"
+edition="2024"
+rust-version="1.98"
+[[bin]]
+name="a03_sut_rawkey_prototype_20261025e"
+path="src/main.rs"
+[dependencies]
+serde="=1.0.229"
+serde_json={version="=1.0.151",features=["raw_value","arbitrary_precision"]}

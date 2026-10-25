@@ -24,7 +24,7 @@ CDC owns this plan, source-grounded design and independent acceptance. CC owns s
 | slice03-la-lojban-distribution | Full La-Lojban release, truthful shared Lensisku authority and distinct distribution/capture identities | shared pack contract; pinned native dump + supplier provenance |
 | slice04-sutysisku-projection | Full compact Sutysisku projection, all native keys/fields and unknowns, four-pack feature/composition delivery | prior packages; pinned compact object + supplier code/terms |
 
-Initially only S01 was detailed/issued. S01 and S02 are now independently accepted; S03 is the current detailed issued child. CDC resolves actual adapter semantics and exact APIs before each dependent prompt; later child planning must preserve this scope. Every slice includes independent review/repairs and retrospective, not an evidence-only staging increment. Maximum five refinements per slice, preserve every prompt. Advance immediately after accepted close.
+Initially only S01 was detailed/issued. S01 and S02 are now independently accepted; S03 is independently accepted; S04 is the current detailed issued child. CDC resolves actual adapter semantics and exact APIs before each dependent prompt; later child planning must preserve this scope. Every slice includes independent review/repairs and retrospective, not an evidence-only staging increment. Maximum five refinements per slice, preserve every prompt. Advance immediately after accepted close.
 
 ## Binding package and composition design
 
@@ -47,3 +47,5 @@ Every source commit: actual make format then lint then check, complete logs; exp
 ## Acceptance and closure
 
 All eight arc rows remain OPEN until independent evidence, child disposition and fresh assembled technical composition plus final canonical packet verdict. CDC writes close/verifier/retro only after work occurs, reconciles project ledger partial contributions (all14 remain OPEN), and stops before A04. Content/publication/operational limits retain named owners. No premature close records.
+
+2026-10-25 allocation: S04 independently proves actualfour-pack normalized composition plus tinySQL; fresh separate arc technical reviewer owns the single new fullfour-pack store/strictverify/reopen/raw-SQL/group/page/reference gate. No protected store copy/default change/topology decision.

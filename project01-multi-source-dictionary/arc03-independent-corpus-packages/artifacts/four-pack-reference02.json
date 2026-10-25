@@ -1,0 +1,113 @@
+{
+  "kind": "source-derived policy reference, not product acceptance",
+  "raw_pins": {
+    "jbotci": "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde",
+    "la-lojban": "861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35",
+    "sutysisku": "8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d"
+  },
+  "eligible_words_per_pack": {
+    "jbotci": 31248,
+    "la-lojban": 17056,
+    "sutysisku": 23704,
+    "llg": 2433
+  },
+  "eligible_words_la_plus_jbotci": 31250,
+  "eligible_words_four_pack_union": 31375,
+  "eligible_word_union_sha256": "8be3bdddb9c965b5993a979265f1f805cf1eb85d159a9b57c932fa92e681e8f5",
+  "jbotci_contributors": 238,
+  "la_contributors": 211,
+  "shared_contributors": 211,
+  "la_contributors_subset": true,
+  "farvi_eligible_occurrences": [
+    {
+      "pack": "jbotci",
+      "locator": "/13306",
+      "native_assertion_id": "333"
+    },
+    {
+      "pack": "jbotci",
+      "locator": "/13307",
+      "native_assertion_id": "69002"
+    },
+    {
+      "pack": "la-lojban",
+      "locator": "/4095",
+      "native_assertion_id": "333"
+    },
+    {
+      "pack": "llg",
+      "component": "gismu",
+      "locator": "357"
+    },
+    {
+      "pack": "sutysisku",
+      "locator": "/11309",
+      "native_entry_id": "farvi"
+    }
+  ],
+  "farvi_total_occurrences": 5,
+  "farvi_source_groups": 3,
+  "per_pack_source_policy_counts": {
+    "jbotci": {
+      "assertions": 33526,
+      "entries": 33526,
+      "lexical_assertions": 33516,
+      "excluded_assertions": 10,
+      "native_fields_with_sut_keys": 278254,
+      "contexts": 76357,
+      "forms": 4008,
+      "etymologies": 2085,
+      "extensions": 73226
+    },
+    "la-lojban": {
+      "assertions": 17056,
+      "entries": 17056,
+      "lexical_assertions": 17056,
+      "excluded_assertions": 0,
+      "native_fields_with_sut_keys": 149596,
+      "contexts": 47557,
+      "forms": 1548,
+      "etymologies": 1428,
+      "extensions": 39974
+    },
+    "sutysisku": {
+      "assertions": 23705,
+      "entries": 23705,
+      "lexical_assertions": 23704,
+      "excluded_assertions": 1,
+      "native_fields_with_sut_keys": 115219,
+      "contexts": 47492,
+      "forms": 2951,
+      "etymologies": 0,
+      "extensions": 22042
+    },
+    "llg": {
+      "assertions": 4074,
+      "entries": 2435,
+      "lexical_assertions": 2527,
+      "excluded_assertions": 1547,
+      "native_fields_with_sut_keys": 23298,
+      "contexts": 5804,
+      "forms": 3091,
+      "etymologies": 0,
+      "extensions": 2865
+    }
+  },
+  "four_pack_expected": {
+    "assertions": 78361,
+    "entries": 76722,
+    "lexical_assertions": 76803,
+    "excluded_assertions": 1558,
+    "native_fields_with_sut_keys": 566367,
+    "contexts": 177210,
+    "forms": 11598,
+    "etymologies": 3513,
+    "extensions": 138107,
+    "sources": 3,
+    "distributors": 2,
+    "collections": 4,
+    "components": 6,
+    "releases": 6,
+    "captures": 8
+  }
+}
