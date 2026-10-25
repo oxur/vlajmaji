@@ -1,0 +1,18 @@
+Vlajmaji Arc03 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-lexicon v0.3.0 (/private/tmp/vlajmaji-p01-a03-cdc/s04/clean-ci-7b1c565e-01/vlajmaji/crates/lexicon)
+    Checking vlajmaji-store v0.3.0 (/private/tmp/vlajmaji-p01-a03-cdc/s04/clean-ci-7b1c565e-01/vlajmaji/crates/store)
+    Checking vlajmaji-data-sutysisku v0.3.0 (/private/tmp/vlajmaji-p01-a03-cdc/s04/clean-ci-7b1c565e-01/vlajmaji/crates/data-sutysisku)
+error: couldn't read `crates/data-sutysisku/src/../data/release.json`: No such file or directory (os error 2)
+  --> crates/data-sutysisku/src/lib.rs:18:5
+   |
+18 |     include_bytes!("../data/release.json")
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `crates/data-sutysisku/src/../data/seal.json`: No such file or directory (os error 2)
+  --> crates/data-sutysisku/src/lib.rs:25:5
+   |
+25 |     include_bytes!("../data/seal.json")
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not compile `vlajmaji-data-sutysisku` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

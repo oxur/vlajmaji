@@ -1,0 +1,24 @@
+Command: CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target CARGO_NET_OFFLINE=true /tmp/vlajmaji-p01-a03-cargo +1.98.0 test --locked --offline -p vlajmaji-lexicon --test sutysisku_import
+Working directory: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji
+Exit: 0
+Session: completed in 12.5s
+
+Vlajmaji Arc03 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon)
+warning: function `field` is never used
+   --> crates/lexicon/src/sutysisku.rs:258:4
+    |
+258 | fn field<'a>(fields: &'a [Field], name: &str) -> Option<&'a Field> {
+    |    ^^^^^
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `vlajmaji-lexicon` (lib) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 8.86s
+     Running tests/sutysisku_import.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/sutysisku_import-3a7ebc66ec770447)
+
+running 3 tests
+test test_import_sutysisku_export_invalid_pin_and_root_inputs_return_typed_errors ... ok
+test test_import_sutysisku_export_literal_census_and_raw_projection_are_preserved ... ok
+test test_import_sutysisku_export_revision_changes_provenance_not_capture_identity ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

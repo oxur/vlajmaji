@@ -1,0 +1,265 @@
+{
+  "kind": "mechanical fixture-source census; expected values are not product output",
+  "source_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon/tests/sutysisku_import.rs",
+  "source_sha256": "b7d0c3d8a6ed8d384c26916e4c7d75e2598bf502ed3ba3a4eec761d08762daf6",
+  "literal_raw_bytes_sha256": "ce34c65145d205ec5ffdc451e9c1663139a449b1ad1158e75013e79c967d954e",
+  "literal_raw_bytes": 688,
+  "fixture_rows": 8,
+  "root_key_occurrences": 8,
+  "root_key_field_count": 8,
+  "ordered_root_occurrences": [
+    {
+      "ordinal": 0,
+      "key": "farvi"
+    },
+    {
+      "ordinal": 1,
+      "key": "farvi"
+    },
+    {
+      "ordinal": 2,
+      "key": "nested"
+    },
+    {
+      "ordinal": 3,
+      "key": "scalar"
+    },
+    {
+      "ordinal": 4,
+      "key": "empty"
+    },
+    {
+      "ordinal": 5,
+      "key": "unknown-class"
+    },
+    {
+      "ordinal": 6,
+      "key": "nullable"
+    },
+    {
+      "ordinal": 7,
+      "key": "wrong-shapes"
+    }
+  ],
+  "root_key_occurrence_counts": {
+    "empty": 1,
+    "farvi": 2,
+    "nested": 1,
+    "nullable": 1,
+    "scalar": 1,
+    "unknown-class": 1,
+    "wrong-shapes": 1
+  },
+  "duplicate_root_groups": {
+    "farvi": [
+      0,
+      1
+    ]
+  },
+  "child_object_fields": 37,
+  "non_object_rows": 1,
+  "native_field_counts_including_key_or_row_carriers": {
+    "$key": 8,
+    "$row": 1,
+    "b": 4,
+    "d": 7,
+    "g": 7,
+    "n": 3,
+    "nested": 1,
+    "r": 4,
+    "s": 3,
+    "t": 7,
+    "x/y~z": 1
+  },
+  "native_fields_total": 46,
+  "string_word_types": {
+    "cmavo": 2,
+    "gismu": 4,
+    "wiki": 1
+  },
+  "all_spellings": 7,
+  "eligible_spellings_by_declared_policy": 3,
+  "eligible_rows_by_declared_policy": 4,
+  "excluded_rows_by_declared_policy": 4,
+  "contexts_by_declared_policy": 4,
+  "source_reported_forms_by_declared_policy": 3,
+  "raw_extensions_by_declared_policy": 13,
+  "unknown_field_names": {
+    "nested": 1,
+    "x/y~z": 1
+  },
+  "per_row": [
+    {
+      "ordinal": 0,
+      "decoded_root_key": "farvi",
+      "root_value_kind": "object",
+      "ordered_child_keys": [
+        "d",
+        "t",
+        "s",
+        "g",
+        "n",
+        "r",
+        "b",
+        "x/y~z"
+      ],
+      "child_field_count": 8,
+      "nested_duplicate_paths": [],
+      "root_duplicate_group_ordinals_so_far": [
+        0,
+        1
+      ],
+      "policy_eligible": true,
+      "typed_contexts_by_declared_policy": 1,
+      "reported_forms_by_declared_policy": 2,
+      "raw_extensions_by_declared_policy": 3
+    },
+    {
+      "ordinal": 1,
+      "decoded_root_key": "farvi",
+      "root_value_kind": "object",
+      "ordered_child_keys": [
+        "d",
+        "t",
+        "g",
+        "r",
+        "b"
+      ],
+      "child_field_count": 5,
+      "nested_duplicate_paths": [],
+      "root_duplicate_group_ordinals_so_far": [
+        0,
+        1
+      ],
+      "policy_eligible": true,
+      "typed_contexts_by_declared_policy": 1,
+      "reported_forms_by_declared_policy": 1,
+      "raw_extensions_by_declared_policy": 2
+    },
+    {
+      "ordinal": 2,
+      "decoded_root_key": "nested",
+      "root_value_kind": "object",
+      "ordered_child_keys": [
+        "nested",
+        "d",
+        "t",
+        "g"
+      ],
+      "child_field_count": 4,
+      "nested_duplicate_paths": [
+        [
+          "nested",
+          "nested",
+          "dup"
+        ]
+      ],
+      "root_duplicate_group_ordinals_so_far": [
+        2
+      ],
+      "policy_eligible": false,
+      "typed_contexts_by_declared_policy": 0,
+      "reported_forms_by_declared_policy": 0,
+      "raw_extensions_by_declared_policy": 2
+    },
+    {
+      "ordinal": 3,
+      "decoded_root_key": "scalar",
+      "root_value_kind": "bool",
+      "ordered_child_keys": [],
+      "child_field_count": 0,
+      "nested_duplicate_paths": [],
+      "root_duplicate_group_ordinals_so_far": [
+        3
+      ],
+      "policy_eligible": false,
+      "typed_contexts_by_declared_policy": 0,
+      "reported_forms_by_declared_policy": 0,
+      "raw_extensions_by_declared_policy": 0
+    },
+    {
+      "ordinal": 4,
+      "decoded_root_key": "empty",
+      "root_value_kind": "object",
+      "ordered_child_keys": [
+        "d",
+        "t",
+        "g"
+      ],
+      "child_field_count": 3,
+      "nested_duplicate_paths": [],
+      "root_duplicate_group_ordinals_so_far": [
+        4
+      ],
+      "policy_eligible": false,
+      "typed_contexts_by_declared_policy": 1,
+      "reported_forms_by_declared_policy": 0,
+      "raw_extensions_by_declared_policy": 1
+    },
+    {
+      "ordinal": 5,
+      "decoded_root_key": "unknown-class",
+      "root_value_kind": "object",
+      "ordered_child_keys": [
+        "d",
+        "t",
+        "g"
+      ],
+      "child_field_count": 3,
+      "nested_duplicate_paths": [],
+      "root_duplicate_group_ordinals_so_far": [
+        5
+      ],
+      "policy_eligible": false,
+      "typed_contexts_by_declared_policy": 0,
+      "reported_forms_by_declared_policy": 0,
+      "raw_extensions_by_declared_policy": 1
+    },
+    {
+      "ordinal": 6,
+      "decoded_root_key": "nullable",
+      "root_value_kind": "object",
+      "ordered_child_keys": [
+        "d",
+        "t",
+        "s",
+        "g",
+        "n",
+        "r",
+        "b"
+      ],
+      "child_field_count": 7,
+      "nested_duplicate_paths": [],
+      "root_duplicate_group_ordinals_so_far": [
+        6
+      ],
+      "policy_eligible": true,
+      "typed_contexts_by_declared_policy": 1,
+      "reported_forms_by_declared_policy": 0,
+      "raw_extensions_by_declared_policy": 2
+    },
+    {
+      "ordinal": 7,
+      "decoded_root_key": "wrong-shapes",
+      "root_value_kind": "object",
+      "ordered_child_keys": [
+        "d",
+        "t",
+        "s",
+        "g",
+        "n",
+        "r",
+        "b"
+      ],
+      "child_field_count": 7,
+      "nested_duplicate_paths": [],
+      "root_duplicate_group_ordinals_so_far": [
+        7
+      ],
+      "policy_eligible": true,
+      "typed_contexts_by_declared_policy": 0,
+      "reported_forms_by_declared_policy": 0,
+      "raw_extensions_by_declared_policy": 2
+    }
+  ]
+}

@@ -16,3 +16,5 @@
 2026-10-25: S02 all6 independently accepted at0d70c9f; fullLLG4074rows/23298fields and actual optional consumption/query boundary complete. Arc rows stay open for La/Sut and fresh assembled acceptance; no project row closes.
 
 2026-10-25: S03 six rows accepted at62b27db; completeLa17056rows/149596fields, actual shared-Lensisku50582received assertions/31250eligible words. Sut/four-pack/fresh assembled gates remain; all8arcrows and14projectrows OPEN.
+
+2026-10-25: S04 six rows accepted at7b1c565 (5335product plus README-only descendant); all4children now24DONE. Independent complete normalized all4record inventories/31375eligible words and tinySQL accepted; all8arcrows remainOPEN for single fresh full-store composition and final canonical review. All14projectrowsOPEN.

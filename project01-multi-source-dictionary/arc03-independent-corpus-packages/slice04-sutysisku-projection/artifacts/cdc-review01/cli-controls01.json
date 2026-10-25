@@ -1,0 +1,72 @@
+[
+  {
+    "name": "synthetic",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls01/synthetic"
+    ],
+    "exit": 0,
+    "elapsed": 0.4155351254157722,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"sutysisku\",\"payload_kind\":\"synthetic\",\"release_sha256\":\"c3ce069c8fe8a4a3447bff95576ffb1150c00c7afc1537633907d7b3213fe150\",\"report\":{\"all_spellings\":2,\"contexts\":1,\"diagnostics\":{\"invalid_definition\":1,\"unsupported_word_type\":1},\"eligible_spellings\":1,\"excluded_occurrences\":1,\"extensions\":0,\"field_counts\":{\"$key\":2,\"d\":2,\"n\":1,\"r\":1,\"t\":2},\"input_rows\":2,\"lexical_occurrences\":1,\"native_child_fields\":6,\"native_fields\":8,\"non_object_rows\":0,\"normalized_assertions\":2,\"raw_bytes\":92,\"raw_sha256\":\"2bdbae0112fe7d54bc97f13ca7feadceaec76d17780c73cbc493c5aaf953f4a7\",\"reported_forms\":2,\"revision\":\"0000000000000000000000000000000000000000\",\"root_keys\":2,\"version\":1,\"word_types\":{\"gismu\":1,\"wiki\":1}},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "name": "occupied-directory",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls01/occupied-directory"
+    ],
+    "exit": 1,
+    "elapsed": 0.006860334426164627,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s04/cli-controls01/occupied-directory: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "occupied-file",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls01/occupied-file"
+    ],
+    "exit": 1,
+    "elapsed": 0.005856124684214592,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s04/cli-controls01/occupied-file: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "occupied-symlink",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls01/occupied-symlink"
+    ],
+    "exit": 1,
+    "elapsed": 0.007249833084642887,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s04/cli-controls01/occupied-symlink: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "valid-full-native-path",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls01/valid-full-native-path.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls01/native-\udcff-output",
+      "--raw-sha256",
+      "3462d773fef4b837d908a367c76c955e53f855b7a2244da2809353a29caf8b1b",
+      "--revision",
+      "1111111111111111111111111111111111111111"
+    ],
+    "exit": 1,
+    "elapsed": 0.0073112500831484795,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s04/cli-controls01/native-\ufffd-output: Illegal byte sequence (os error 92)\",\"sources\":[]}}\n"
+  }
+]

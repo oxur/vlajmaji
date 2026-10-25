@@ -1,0 +1,53 @@
+{
+  "parent_commit": "5335e3baa435dfe12dadfc3e5bdb35705371f525",
+  "source_commit": "7b1c565ebf6c8a423e04211b599006b8c21d65d9",
+  "changed_source_paths": [
+    "crates/vlajmaji/README.md"
+  ],
+  "file_hashes": {
+    "crates/vlajmaji/README.md": {
+      "sha256": "68477c78363d71e2ab5f556e6aa123a18121ec46a0a55b2488532f0825c4d306",
+      "bytes": 5850
+    },
+    "crates/lexicon/src/sutysisku.rs": {
+      "sha256": "f4e6eccb98b8af3612478755262be1a86017997f8a4e08d170d8e27097a5cd56",
+      "bytes": 37342
+    },
+    "crates/cli/src/main.rs": {
+      "sha256": "a5c1d6d45b6fa144687b7162390fa5d09f6110634f0eaa9b882b7ce4c20b6aec",
+      "bytes": 47515
+    },
+    "crates/data-sutysisku/src/lib.rs": {
+      "sha256": "0f3c25acce265812d620a446e1525050ea5055debf6fae0cb4fc37f49230abfa",
+      "bytes": 1326
+    }
+  },
+  "owned_full_data": {
+    "release.json": {
+      "sha256": "67499447426d34c269577eb6947d7c7b22b71090e5a30fd653375819d590ffa2",
+      "bytes": 94511884
+    },
+    "seal.json": {
+      "sha256": "7d0720dc62d1b997a265f1e585be664ac86a8a461ca6ee5915af0b72c34f4fc5",
+      "bytes": 472
+    },
+    "report.json": {
+      "sha256": "aedbd327ecfcd51291e83204c06569b9e92295b6cfd41f66a6fb45bda5dcabc8",
+      "bytes": 1099
+    }
+  },
+  "gate_logs": {
+    "refinement01-make-format.log": {
+      "sha256": "2afdddc94e9b66eb18a7d0a4083ca60a21a0ccc41647d0ba52e0fe2ad91fd7c5",
+      "bytes": 170
+    },
+    "refinement01-make-lint.log": {
+      "sha256": "550fc7d3de7e5622c2a7cd1e337aaffc2c914af559b872d1341737911aaa37c5",
+      "bytes": 352
+    },
+    "refinement01-make-check.log": {
+      "sha256": "68af56887994ab8ec059f5673f0548d635d6568168e9b993f2f794bc3f3e7f48",
+      "bytes": 23324
+    }
+  }
+}

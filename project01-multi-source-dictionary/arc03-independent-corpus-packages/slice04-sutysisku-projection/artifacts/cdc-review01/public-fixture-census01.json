@@ -1,0 +1,114 @@
+{
+  "kind": "independent raw-literal census BEFORE numeric tuples and first product execution",
+  "fixture_sha256": "3462d773fef4b837d908a367c76c955e53f855b7a2244da2809353a29caf8b1b",
+  "bytes": 395,
+  "root_members": 6,
+  "native_child_fields": 22,
+  "raw_key_carriers": 6,
+  "raw_nonobject_carriers": 1,
+  "model_native_fields": 29,
+  "field_counts": {
+    "d": 6,
+    "t": 5,
+    "s": 1,
+    "g": 3,
+    "n": 1,
+    "r": 1,
+    "b": 3,
+    "unknown": 1,
+    "u/a~": 1
+  },
+  "duplicate_decoded_root_groups": {
+    "farvi": 2
+  },
+  "declared_policy_populations": {
+    "lexical": 2,
+    "contexts": 3,
+    "forms": 2,
+    "extensions": 8,
+    "excluded": 4
+  },
+  "rows": [
+    {
+      "ordinal": 0,
+      "decoded_key": "farvi",
+      "child_fields": [
+        "d",
+        "t",
+        "s",
+        "g",
+        "n",
+        "r",
+        "b",
+        "unknown"
+      ],
+      "child_field_count": 8,
+      "duplicate_inside_row": false,
+      "eligible": true,
+      "nonobject": false
+    },
+    {
+      "ordinal": 1,
+      "decoded_key": "farvi",
+      "child_fields": [
+        "d",
+        "t",
+        "g",
+        "b"
+      ],
+      "child_field_count": 4,
+      "duplicate_inside_row": false,
+      "eligible": true,
+      "nonobject": false
+    },
+    {
+      "ordinal": 2,
+      "decoded_key": "zoizoizoi",
+      "child_fields": [
+        "d",
+        "t"
+      ],
+      "child_field_count": 2,
+      "duplicate_inside_row": false,
+      "eligible": false,
+      "nonobject": false
+    },
+    {
+      "ordinal": 3,
+      "decoded_key": "empty",
+      "child_fields": [],
+      "child_field_count": 0,
+      "duplicate_inside_row": false,
+      "eligible": false,
+      "nonobject": true
+    },
+    {
+      "ordinal": 4,
+      "decoded_key": "dups",
+      "child_fields": [
+        "d",
+        "d",
+        "t",
+        "g",
+        "b"
+      ],
+      "child_field_count": 5,
+      "duplicate_inside_row": true,
+      "eligible": false,
+      "nonobject": false
+    },
+    {
+      "ordinal": 5,
+      "decoded_key": "esc/a~",
+      "child_fields": [
+        "d",
+        "t",
+        "u/a~"
+      ],
+      "child_field_count": 3,
+      "duplicate_inside_row": true,
+      "eligible": false,
+      "nonobject": false
+    }
+  ]
+}

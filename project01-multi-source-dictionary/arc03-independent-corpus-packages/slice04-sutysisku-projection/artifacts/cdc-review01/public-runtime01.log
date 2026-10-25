@@ -1,0 +1,6 @@
+
+thread 'main' (74128825) panicked at src/main.rs:52:75:
+assertion `left == right` failed
+  left: (4, 2, 1)
+ right: (5, 3, 1)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

@@ -1,0 +1,33 @@
+[
+  {
+    "name": "public-lock01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "generate-lockfile",
+      "--manifest-path",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/public-caller/Cargo.toml",
+      "--offline"
+    ],
+    "exit": 0,
+    "elapsed": 0.20170891704037786,
+    "log_sha256": "ee4b4744b9b096765022e6ba724c0339941fea0b82a80e0bed7e8dbf588c39ed"
+  },
+  {
+    "name": "public-build01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "build",
+      "--manifest-path",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/public-caller/Cargo.toml",
+      "--bin",
+      "a03_s04_cdc_public_20261025g",
+      "--locked",
+      "--offline"
+    ],
+    "exit": 0,
+    "elapsed": 9.89008824992925,
+    "log_sha256": "9e89483aa613a3e8ee31d6826f279d1e1edbe613fa8ffb5fee106c4b754c1de6"
+  }
+]

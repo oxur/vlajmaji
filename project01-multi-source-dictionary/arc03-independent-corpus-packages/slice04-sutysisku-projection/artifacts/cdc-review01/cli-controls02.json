@@ -1,0 +1,218 @@
+[
+  {
+    "name": "synthetic",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/synthetic"
+    ],
+    "exit": 0,
+    "elapsed": 0.007881250232458115,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"sutysisku\",\"payload_kind\":\"synthetic\",\"release_sha256\":\"c3ce069c8fe8a4a3447bff95576ffb1150c00c7afc1537633907d7b3213fe150\",\"report\":{\"all_spellings\":2,\"contexts\":1,\"diagnostics\":{\"invalid_definition\":1,\"unsupported_word_type\":1},\"eligible_spellings\":1,\"excluded_occurrences\":1,\"extensions\":0,\"field_counts\":{\"$key\":2,\"d\":2,\"n\":1,\"r\":1,\"t\":2},\"input_rows\":2,\"lexical_occurrences\":1,\"native_child_fields\":6,\"native_fields\":8,\"non_object_rows\":0,\"normalized_assertions\":2,\"raw_bytes\":92,\"raw_sha256\":\"2bdbae0112fe7d54bc97f13ca7feadceaec76d17780c73cbc493c5aaf953f4a7\",\"reported_forms\":2,\"revision\":\"0000000000000000000000000000000000000000\",\"root_keys\":2,\"version\":1,\"word_types\":{\"gismu\":1,\"wiki\":1}},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "name": "occupied-directory",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/occupied-directory"
+    ],
+    "exit": 1,
+    "elapsed": 0.007799999788403511,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/occupied-directory: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "occupied-file",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/occupied-file"
+    ],
+    "exit": 1,
+    "elapsed": 0.007237291894853115,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/occupied-file: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "occupied-symlink",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/occupied-symlink"
+    ],
+    "exit": 1,
+    "elapsed": 0.006422416307032108,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/occupied-symlink: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "invalid-native-byte-path",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/invalid-native-byte-path.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/native-\udcff-output",
+      "--raw-sha256",
+      "3462d773fef4b837d908a367c76c955e53f855b7a2244da2809353a29caf8b1b",
+      "--revision",
+      "1111111111111111111111111111111111111111"
+    ],
+    "exit": 1,
+    "elapsed": 0.008107167202979326,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/native-\ufffd-output: Illegal byte sequence (os error 92)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "valid-full-native-path",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/valid-full-native-path.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/native-\ufffd-output",
+      "--raw-sha256",
+      "3462d773fef4b837d908a367c76c955e53f855b7a2244da2809353a29caf8b1b",
+      "--revision",
+      "1111111111111111111111111111111111111111"
+    ],
+    "exit": 0,
+    "elapsed": 0.008893666788935661,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"sutysisku\",\"payload_kind\":\"full\",\"release_sha256\":\"7018ba03836400f582b96ecfc13bac1a5426efe069655bb3cab317378b1a40f0\",\"report\":{\"all_spellings\":5,\"contexts\":3,\"diagnostics\":{\"duplicate_key\":3,\"duplicate_root_key\":2,\"invalid_definition\":1,\"non_object_row\":1,\"unknown_native_field\":2},\"eligible_spellings\":1,\"excluded_occurrences\":4,\"extensions\":8,\"field_counts\":{\"$key\":6,\"$row\":1,\"b\":3,\"d\":6,\"g\":3,\"n\":1,\"r\":1,\"s\":1,\"t\":5,\"u/a~\":1,\"unknown\":1},\"input_rows\":6,\"lexical_occurrences\":2,\"native_child_fields\":22,\"native_fields\":29,\"non_object_rows\":1,\"normalized_assertions\":6,\"raw_bytes\":395,\"raw_sha256\":\"3462d773fef4b837d908a367c76c955e53f855b7a2244da2809353a29caf8b1b\",\"reported_forms\":2,\"revision\":\"1111111111111111111111111111111111111111\",\"root_keys\":6,\"version\":1,\"word_types\":{\"cmevla\":1,\"gismu\":4}},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "name": "wrong-pin",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/valid-full-native-path.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/wrong-pin-output"
+    ],
+    "exit": 1,
+    "elapsed": 0.005066208075731993,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"sutysisku_hash_mismatch\",\"message\":\"raw SHA-256 mismatch: expected 8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d, got 3462d773fef4b837d908a367c76c955e53f855b7a2244da2809353a29caf8b1b\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "invalid-json",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/invalid-json.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/invalid-json-output",
+      "--raw-sha256",
+      "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "--revision",
+      "1111111111111111111111111111111111111111"
+    ],
+    "exit": 1,
+    "elapsed": 0.0049760001711547375,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"sutysisku_json\",\"message\":\"invalid raw JSON: invalid type: sequence, expected a JSON root object at line 1 column 0\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "invalid-utf8",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/invalid-utf8.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/invalid-utf8-output",
+      "--raw-sha256",
+      "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+      "--revision",
+      "1111111111111111111111111111111111111111"
+    ],
+    "exit": 1,
+    "elapsed": 0.005440500099211931,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"sutysisku_utf8\",\"message\":\"raw input is not UTF-8\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "invalid-revision",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/valid-full-native-path.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/invalid-revision-output",
+      "--raw-sha256",
+      "3462d773fef4b837d908a367c76c955e53f855b7a2244da2809353a29caf8b1b",
+      "--revision",
+      "bad"
+    ],
+    "exit": 1,
+    "elapsed": 0.004703500308096409,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"sutysisku_options\",\"message\":\"invalid Sutysisku import options: revision must be 40 lowercase hexadecimal characters\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "invalid-locator",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/invalid-locator.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/invalid-locator-output",
+      "--raw-sha256",
+      "3462d773fef4b837d908a367c76c955e53f855b7a2244da2809353a29caf8b1b",
+      "--revision",
+      "1111111111111111111111111111111111111111",
+      "--notice-locator",
+      ""
+    ],
+    "exit": 1,
+    "elapsed": 0.003947790712118149,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"sutysisku_options\",\"message\":\"invalid Sutysisku import options: notice locator must be nonempty, trimmed, and control-free\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "missing-input",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "sutysisku",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/missing",
+      "/tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/missing-output"
+    ],
+    "exit": 1,
+    "elapsed": 0.003934917040169239,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"read /tmp/vlajmaji-p01-a03-cdc/s04/cli-controls02/missing: No such file or directory (os error 2)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "material-help",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "sutysisku",
+      "--help"
+    ],
+    "exit": 0,
+    "elapsed": 0.004568499978631735,
+    "stdout": "Import the pinned Sutysisku English JSON projection\n\nUsage: candidate-cli data-pack materialize sutysisku [OPTIONS] <RAW> <OUTPUT>\n\nArguments:\n  <RAW>     \n  <OUTPUT>  \n\nOptions:\n      --revision <REVISION>\n          [default: 2c71205747143ea965749ffc3ac3b48ef5c0a517]\n      --raw-sha256 <RAW_SHA256>\n          [default: 8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d]\n      --raw-locator <RAW_LOCATOR>\n          \n      --notice-locator <NOTICE_LOCATOR>\n          \n  -h, --help\n          Print help\n",
+    "stderr": ""
+  },
+  {
+    "name": "fixture-help",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "sutysisku",
+      "--help"
+    ],
+    "exit": 0,
+    "elapsed": 0.004549292381852865,
+    "stdout": "Build a tiny synthetic Sutysisku pack through the real importer\n\nUsage: candidate-cli data-pack fixture sutysisku <OUTPUT>\n\nArguments:\n  <OUTPUT>  \n\nOptions:\n  -h, --help  Print help\n",
+    "stderr": ""
+  }
+]

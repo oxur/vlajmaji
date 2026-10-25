@@ -1,0 +1,19 @@
+[package]
+name = "vlajmaji_s04_four_full_consumer_20261025"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[[bin]]
+name = "vlajmaji-s04-four-full-consumer-20261025"
+path = "src/main.rs"
+
+[dependencies]
+vlajmaji-lexicon = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon" }
+vlajmaji-data-lensisku-jbotci = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-lensisku-jbotci", features = ["embedded"] }
+vlajmaji-data-llg = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-llg", features = ["embedded"] }
+vlajmaji-data-la-lojban = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-la-lojban", features = ["embedded"] }
+vlajmaji-data-sutysisku = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-sutysisku", features = ["embedded"] }
+vlajmaji = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/vlajmaji", features = ["data-lensisku-jbotci", "data-llg", "data-la-lojban", "data-sutysisku"] }
+
+[workspace]

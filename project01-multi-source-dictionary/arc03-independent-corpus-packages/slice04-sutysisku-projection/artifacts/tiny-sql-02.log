@@ -1,0 +1,26 @@
+Vlajmaji Arc03 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.33s
+     Running tests/data_packs.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/data_packs-456c0001a7c80022)
+
+running 7 tests
+test test_occupied_destination_is_preserved_and_bad_pins_create_no_output ... ok
+test test_synthetic_fixture_uses_the_importer_and_emits_a_loadable_pack ... ok
+test test_sutysisku_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+test test_la_lojban_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+test test_llg_synthetic_fixture_uses_importer_and_refuses_occupied_output ... ok
+test test_la_materializer_rejects_invalid_inputs_and_preserves_occupied_outputs ... ok
+
+thread 'test_four_synthetic_packs_compose_for_sql_selection_pages_and_references' (74036681) panicked at crates/cli/tests/data_packs.rs:448:14:
+called `Result::unwrap()` on an `Err` value: InvalidReference { detail: "LocalRef does not exist in its specific role table" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_four_synthetic_packs_compose_for_sql_selection_pages_and_references ... FAILED
+
+failures:
+
+failures:
+    test_four_synthetic_packs_compose_for_sql_selection_pages_and_references
+
+test result: FAILED. 6 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.52s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test data_packs`

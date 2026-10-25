@@ -1,0 +1,39 @@
+{
+  "kind": "independent literal/source-policy census BEFORE revised fixture run; initial missing-keyword failure retained",
+  "failed_public_source_sha256": "1cd37843fe46ca8be5a2429cfa1e8a5761ec77c3edb357945e17b55c2938f0f3",
+  "llg_counterparts": [
+    {
+      "name": "missing-keyword",
+      "sha256": "e29d358f24dd85a34d49a56e12dbdee3fdbdc7f5d68bc83db05157257e9ab72b",
+      "bytes": 158,
+      "columns": {
+        "word": "farvi",
+        "keyword": "",
+        "definition": "d"
+      },
+      "eligible": 0,
+      "excluded": 1
+    },
+    {
+      "name": "valid",
+      "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735",
+      "bytes": 158,
+      "columns": {
+        "word": "farvi",
+        "keyword": "grow",
+        "definition": "d"
+      },
+      "eligible": 1,
+      "excluded": 0
+    }
+  ],
+  "lensisku_literal_sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429",
+  "lensisku_per_distribution_eligible": 1,
+  "sut_eligible": 2,
+  "combined_eligible_with_valid_llg": 5,
+  "source_set_from_adapter_contracts": [
+    "lensisku",
+    "llg",
+    "sutysisku"
+  ]
+}

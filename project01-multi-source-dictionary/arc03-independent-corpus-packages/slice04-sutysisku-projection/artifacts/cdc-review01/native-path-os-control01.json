@@ -1,0 +1,13 @@
+{
+  "invalid_bytes_os_mkdir": {
+    "accepted": false,
+    "errno": 92,
+    "message": "[Errno 92] Illegal byte sequence: b'/tmp/vlajmaji-p01-a03-cdc/s04/native-path-os-control01/native-\\xff-output'"
+  },
+  "replacement_utf8_os_mkdir": {
+    "accepted": true,
+    "exact_encoded_name_hex": "6e61746976652defbfbd2d6f7574707574"
+  },
+  "invalid_requested_bytes_hex": "2f746d702f766c616a6d616a692d7030312d6130332d6364632f7330342f6e61746976652d706174682d6f732d636f6e74726f6c30312f6e61746976652dff2d6f7574707574",
+  "utf8_requested_bytes_hex": "2f746d702f766c616a6d616a692d7030312d6130332d6364632f7330342f6e61746976652d706174682d6f732d636f6e74726f6c30312f6e61746976652defbfbd2d6f7574707574"
+}

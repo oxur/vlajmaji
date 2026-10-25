@@ -1,0 +1,233 @@
+{
+  "source_commit_before_freeze": "62b27db8b58f66d351550445d7312cfe10385a9c",
+  "source_files": {
+    ".github/workflows/ci.yml": {
+      "sha256": "f107c2eda59e28b79d22708c7958d7b8107df610c01a9bcc4a0d29915d36eed4",
+      "bytes": 3099
+    },
+    ".gitignore": {
+      "sha256": "b1b29b5ee9d781778cb313a5c9ce8d6b939bcdaa438f3f5808073c968393d27c",
+      "bytes": 1018
+    },
+    "Cargo.lock": {
+      "sha256": "3b9a64a22a32f38a881d275863eeece2096bc98fc8a5326f51f0c18607f00711",
+      "bytes": 30259
+    },
+    "README.md": {
+      "sha256": "a1b5b5d6bc0086be7e44638a2d1615a75e81e40b902fd6dc576c978facdd082a",
+      "bytes": 11504
+    },
+    "crates/cli/README.md": {
+      "sha256": "3a268ac439c578b93046254a48a94cee88b761c312e023b6592492754c660b9b",
+      "bytes": 5538
+    },
+    "crates/cli/src/main.rs": {
+      "sha256": "a5c1d6d45b6fa144687b7162390fa5d09f6110634f0eaa9b882b7ce4c20b6aec",
+      "bytes": 47515
+    },
+    "crates/cli/tests/data_packs.rs": {
+      "sha256": "2f8c380877128fb3706eb4a7df4a277678e8b764296d54bc15b2db35a664684f",
+      "bytes": 16929
+    },
+    "crates/lexicon/README.md": {
+      "sha256": "3695a8ec55311a071c7dfbc2e709c1fe434e98cc03e719fe93c6059ebd6eb034",
+      "bytes": 4867
+    },
+    "crates/lexicon/src/lensisku.rs": {
+      "sha256": "74eb0c9545331d4c272a31955ed8807d6fd7dcdab56f3974d9a1ec69ba341504",
+      "bytes": 35243
+    },
+    "crates/lexicon/src/lib.rs": {
+      "sha256": "d97b24ae722fc2e919f814635dc469566d7a71bafdb9f97172c194ebc6464815",
+      "bytes": 52104
+    },
+    "crates/lexicon/src/sutysisku.rs": {
+      "sha256": "f4e6eccb98b8af3612478755262be1a86017997f8a4e08d170d8e27097a5cd56",
+      "bytes": 37342
+    },
+    "crates/lexicon/tests/sutysisku_import.rs": {
+      "sha256": "61857afe060239951a238406e1d86496d1f7171f7a5e170f437b4c4a8ec2d2e8",
+      "bytes": 10398
+    },
+    "crates/data-sutysisku/Cargo.toml": {
+      "sha256": "3f02e047bb423192e0bc6b2b9960e76dc0199acc2c0b36cf3e1c179042bccbcd",
+      "bytes": 425
+    },
+    "crates/data-sutysisku/README.md": {
+      "sha256": "754559a53eb96e12ebf7991e6fd6d4fa1b61a1739727e45c915edc8588c0cc53",
+      "bytes": 1151
+    },
+    "crates/data-sutysisku/src/lib.rs": {
+      "sha256": "0f3c25acce265812d620a446e1525050ea5055debf6fae0cb4fc37f49230abfa",
+      "bytes": 1326
+    },
+    "crates/vlajmaji/Cargo.toml": {
+      "sha256": "60d91c166d6db626d4d809ddedf53f56bd84e010be2bae1df37ff73eb8a7f4c2",
+      "bytes": 1476
+    },
+    "crates/vlajmaji/README.md": {
+      "sha256": "85e74e6ef838c2ef9fcdf248d2bbf9742cc1d2a7b4aec7016c69f530206bf099",
+      "bytes": 5005
+    },
+    "crates/vlajmaji/src/lib.rs": {
+      "sha256": "5254e082c9ce73ec41743e92f08fd55555b694b4f7c235578117197b11d25f2b",
+      "bytes": 1003
+    }
+  },
+  "full_sut_payload": {
+    "release.json": {
+      "sha256": "67499447426d34c269577eb6947d7c7b22b71090e5a30fd653375819d590ffa2",
+      "bytes": 94511884
+    },
+    "seal.json": {
+      "sha256": "7d0720dc62d1b997a265f1e585be664ac86a8a461ca6ee5915af0b72c34f4fc5",
+      "bytes": 472
+    },
+    "report.json": {
+      "sha256": "aedbd327ecfcd51291e83204c06569b9e92295b6cfd41f66a6fb45bda5dcabc8",
+      "bytes": 1099
+    }
+  },
+  "logs": {
+    "clean-all-features-synthetic01.log": {
+      "sha256": "da832eb62a98e5e284f8548b84162437015e5e3efa6c7b55c8f209d532401a43",
+      "bytes": 22104
+    },
+    "clean-default-no-data01.log": {
+      "sha256": "800dbac3ec21d57eee791cb2a60e71546f050f134ee1dbadf8b538a4747d4e2a",
+      "bytes": 21966
+    },
+    "clean-sut-selected-missing01.log": {
+      "sha256": "96ece3f6588ebcddd02570c27208327a12e384f53fe5bd0b5f397add0d0b4183",
+      "bytes": 1051
+    },
+    "clean-synthetic-jbotci-01.log": {
+      "sha256": "a8d37fb0eabd533f914c308067022855d3921589e9cf53d1f6b4d2782a700d06",
+      "bytes": 481
+    },
+    "clean-synthetic-jbotci-02.log": {
+      "sha256": "f1871e74cfc2fe7cfaa1017f11517abb99b95bfd557b7bfae5f69e6a5cc422da",
+      "bytes": 1247
+    },
+    "clean-synthetic-la-lojban-02.log": {
+      "sha256": "23d259432e006c49b413331bcbdf65a3dce01216d4652fdeede08800a7adaa56",
+      "bytes": 1018
+    },
+    "clean-synthetic-llg-02.log": {
+      "sha256": "4bd7be479922e6da29d75be767519091ff730d8b5a551a0090e53408f5e5c15c",
+      "bytes": 2481
+    },
+    "clean-synthetic-sutysisku-02.log": {
+      "sha256": "83eea8f8a179892be8f166e3fed6368d641ad5c225d11dae1bc0fae8e8d9ac61",
+      "bytes": 1104
+    },
+    "data-sutysisku-embedded01.log": {
+      "sha256": "1260cc6079f9879a62f168175ef91a77eb29f76fddd6fa211e3bfd1f9223d870",
+      "bytes": 755
+    },
+    "data-sutysisku-no-default01.log": {
+      "sha256": "512b6381defc3b7de60abbb383db55da301c1086d294a81a86711ef094d53beb",
+      "bytes": 755
+    },
+    "data-sutysisku-package-list01.log": {
+      "sha256": "fdf5f30a668cbc7dfcbec6b4ce253adfdf61b0a8f3262431af0bd21c265496d8",
+      "bytes": 185
+    },
+    "focused-02.log": {
+      "sha256": "02463c5aa2446817e01b47669cbd0e0a41fb858089d7fccf63fdc8c455ab715f",
+      "bytes": 2868
+    },
+    "focused-lexicon01.log": {
+      "sha256": "f77ccd1477153aa857dfe065f0b764cfa85913705a0329ad9749a70219b1d003",
+      "bytes": 1494
+    },
+    "full-consumer-hidden01.log": {
+      "sha256": "000db9bc2de3f6fdccbc8f645793942cda7a938da9f892f9da0989374075cebe",
+      "bytes": 923
+    },
+    "full-four-consumer01.log": {
+      "sha256": "d8f41e0c9aeca15ced2290de6eec69d78edc5f706fd461d46d803c8e2e61802d",
+      "bytes": 1898
+    },
+    "full-materialize01.log": {
+      "sha256": "003601b5e883e00e26b472f8493604e83b774916d87a6c08cf508ea32731b671",
+      "bytes": 1620
+    },
+    "make-check-final01.log": {
+      "sha256": "ac6d57b9b88ed7ab2d2f87f9b84a73f4946c5a84b56b57a8365ea0baf1df823b",
+      "bytes": 24491
+    },
+    "make-check-final02.log": {
+      "sha256": "053f36947bf80a05b3344f1afd4b14554caec93ce965b19e88fa45e72609cb06",
+      "bytes": 23090
+    },
+    "make-format-final01.log": {
+      "sha256": "2afdddc94e9b66eb18a7d0a4083ca60a21a0ccc41647d0ba52e0fe2ad91fd7c5",
+      "bytes": 170
+    },
+    "make-format-final02.log": {
+      "sha256": "2afdddc94e9b66eb18a7d0a4083ca60a21a0ccc41647d0ba52e0fe2ad91fd7c5",
+      "bytes": 170
+    },
+    "make-format-preliminary01.log": {
+      "sha256": "2afdddc94e9b66eb18a7d0a4083ca60a21a0ccc41647d0ba52e0fe2ad91fd7c5",
+      "bytes": 170
+    },
+    "make-lint-final01.log": {
+      "sha256": "bec75fc084d2277555932aaf486c3fc2d30260176d1d84a9709cfe6551122a3f",
+      "bytes": 1387
+    },
+    "make-lint-final02.log": {
+      "sha256": "917b91a80adeb7de6d28b788398deba1be8bfd2c19b3001cabfaa3fe6889f489",
+      "bytes": 235
+    },
+    "search-isolated-all-features01.log": {
+      "sha256": "4c50aeb60498d8c61cde1faf131c02d0d61d3d8f0957322b8b5cf047341881b0",
+      "bytes": 2638
+    },
+    "search-isolated-no-default01.log": {
+      "sha256": "7fd8b20c7d4f4591b03c7175c3aa68d30a7ac7ec65616f24c39e3df02661fed1",
+      "bytes": 2740
+    },
+    "tiny-sql-01.log": {
+      "sha256": "cf942b5a1e6d6e98d802cbffb5ee7cbd0ca08fa5b0ba19f29f06d20616c6edbd",
+      "bytes": 1574
+    },
+    "tiny-sql-02.log": {
+      "sha256": "02efba16686ed42816cb4a333d7f6485a6ed4a55706fc2474000c4bde9b6de89",
+      "bytes": 1649
+    },
+    "tiny-sql-03.log": {
+      "sha256": "68f2ef15b03c55ac6ef7bed2325f0e2fcbb38f6b96daaaf054f4c8e85f18372a",
+      "bytes": 1122
+    },
+    "umbrella-isolated-data-la-lojban-01.log": {
+      "sha256": "f3fead4df08d008cc8c72076bafcdc64399f001f723f2ff293b1e2e64031f824",
+      "bytes": 994
+    },
+    "umbrella-isolated-data-lensisku-jbotci-01.log": {
+      "sha256": "3e98bbcc1abe8b6acca5addae473eb69793317489e9652b18759cf11431b6b01",
+      "bytes": 1148
+    },
+    "umbrella-isolated-data-llg-01.log": {
+      "sha256": "b8d91485511a8712985eb7303bf27431e30cc20f1e0cb5eb3d24ea7f68091bf8",
+      "bytes": 982
+    },
+    "umbrella-isolated-data-sutysisku-01.log": {
+      "sha256": "22a9fd9ab0e2fb66950bb44f6480fcf1fedf9f1b6d5bc74c5d94f9b06c67f4e8",
+      "bytes": 836
+    },
+    "vlajmaji-data-la-lojban-package-list01.log": {
+      "sha256": "fdf5f30a668cbc7dfcbec6b4ce253adfdf61b0a8f3262431af0bd21c265496d8",
+      "bytes": 185
+    },
+    "vlajmaji-data-lensisku-jbotci-package-list01.log": {
+      "sha256": "fdf5f30a668cbc7dfcbec6b4ce253adfdf61b0a8f3262431af0bd21c265496d8",
+      "bytes": 185
+    },
+    "vlajmaji-data-llg-package-list01.log": {
+      "sha256": "fdf5f30a668cbc7dfcbec6b4ce253adfdf61b0a8f3262431af0bd21c265496d8",
+      "bytes": 185
+    }
+  }
+}

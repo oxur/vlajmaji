@@ -1,0 +1,42 @@
+Vlajmaji Arc03 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon)
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/search)
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 10.36s
+     Running tests/data_packs.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/data_packs-456c0001a7c80022)
+
+running 6 tests
+test test_occupied_destination_is_preserved_and_bad_pins_create_no_output ... ok
+test test_synthetic_fixture_uses_the_importer_and_emits_a_loadable_pack ... ok
+test test_la_lojban_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+test test_sutysisku_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+test test_llg_synthetic_fixture_uses_importer_and_refuses_occupied_output ... ok
+test test_la_materializer_rejects_invalid_inputs_and_preserves_occupied_outputs ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.43s
+
+     Running tests/data_packs.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/data_packs-3986f32441af03af)
+
+running 8 tests
+test empty_composition_is_the_empty_validated_dictionary ... ok
+test composition_rejects_conflicting_source_and_release_identities ... ok
+test composition_rejects_conflicting_capture_contributor_and_assertion_bodies ... ok
+test composition_preserves_distinct_distributions_and_exact_dedup ... ok
+test seal_roundtrip_is_strict_and_inventory_ordered ... ok
+test seal_rejects_wrong_pack_length_hash_version_inventory_and_bad_wire ... ok
+test composition_preserves_ordered_extension_max_multiplicities ... ok
+test complete_typed_model_composes_without_dropping_any_metadata_class ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/sutysisku_import.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/sutysisku_import-791ed14a1a6d0211)
+
+running 4 tests
+test test_import_sutysisku_export_invalid_pin_and_root_inputs_return_typed_errors ... ok
+test test_import_sutysisku_export_preserves_repeated_and_long_source_reported_forms ... ok
+test test_import_sutysisku_export_literal_census_and_raw_projection_are_preserved ... ok
+test test_import_sutysisku_export_revision_changes_provenance_not_capture_identity ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
