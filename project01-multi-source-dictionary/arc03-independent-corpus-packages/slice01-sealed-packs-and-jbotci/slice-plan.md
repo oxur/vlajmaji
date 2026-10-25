@@ -31,3 +31,7 @@ Actual source APIs support borrowed data, strict serialization, public vector dr
 ## Issued ownership amendment —2026-10-25
 
 Preserved cc-prompt-iteration01.md adds crates/cli/Cargo.toml for existing sha2.workspace=true only and the necessary already-allowlisted lock edge. Initial source allowlist omission is retained as history; CC edit preceded amendment, no source commit/acceptance then. No external package/version/checksum change, no new feature/scope or proof reduction. All six rows OPEN; same CC/source/target interval.
+
+## Issued extension preservation correction —2026-10-25
+
+cc-prompt-iteration02.md resolves the unkeyed ExtensionRecord boundary before freeze: owner/name is not identity; complete-equal-row ordered multiset max preserves within-input repetition, self-composition idempotence and distinct alternatives/evidence. All ID-bearing collision rules remain. This corrects in-flight interpretation of full-vector preservation, not model schema or source authority. Explicit public controls and full73226extension preservation required. Initial and iteration01 assignments remain unchanged.
