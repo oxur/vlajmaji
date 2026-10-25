@@ -1,0 +1,29 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "/tmp/vlajmaji-cli-default-store-cdc/verify_cli03.py",
+    "/tmp/vlajmaji-cli-default-store-cdc/candidate02-release-cli",
+    "63da16f482de48632053d9892e58bd72de400255"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-cli-default-store/vlajmaji",
+  "pid": 99875,
+  "exit": 0,
+  "elapsed_s": 0.7184625840745866,
+  "source_head": "63da16f482de48632053d9892e58bd72de400255",
+  "source_status_before": "",
+  "source_head_after": "63da16f482de48632053d9892e58bd72de400255",
+  "target": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+  "offline": true,
+  "profile": "command-specific",
+  "streams": {
+    "stdout": {
+      "bytes": 683,
+      "sha256": "d674121123b744e3ff406547f2c5c34517b6283c8c11db1260e14ca49a552be0"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

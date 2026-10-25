@@ -1,0 +1,15 @@
+{
+  "verdict": "PASS",
+  "source": "63da16f482de48632053d9892e58bd72de400255",
+  "binary_sha256": "68250cb649464eecd299efef2eb70d23b6827e5d8c40355eebdd1a4ce8bb5675",
+  "calls": 45,
+  "checks": 159,
+  "tiny_release_sha256": "fc20e6bf9e6629ec190c5ec0e8e24d6fce30ceed5b3ca4c4a35db4fb07c28787",
+  "legacy_archive_sha256": "0d48c82a380ee765555379c624b4a7d0c829c69858cb5399a084b2656a73c187",
+  "default_store_sha256": "5455611ed2ad50803dde148ab3c13527103f05a2b57c5ef18c5b98678b35035e",
+  "native_filesystem": {
+    "supports_non_utf8_component": false,
+    "errno": 92,
+    "error": "[Errno 92] Illegal byte sequence: '/tmp/vlajmaji-cli-default-store-cdc/controls03/native-\\udcff'"
+  }
+}

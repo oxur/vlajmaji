@@ -1,0 +1,30 @@
+{
+  "phase": "exclusive-link-created-original-retained-pending-validation",
+  "old_directory": "/tmp/vlajmaji-p01-a02-cdc/s02-full-store03",
+  "new_directory": "/Users/oubiwann/.local/share/vlajmaji/stores/default",
+  "method": "same-filesystem exclusive hardlink, then validation before selected original removal",
+  "XDG_DATA_HOME": null,
+  "HOME": "/Users/oubiwann",
+  "created_parent_directories": [
+    {
+      "path": "/Users/oubiwann/.local/share/vlajmaji",
+      "mode": "0o700"
+    },
+    {
+      "path": "/Users/oubiwann/.local/share/vlajmaji/stores",
+      "mode": "0o700"
+    }
+  ],
+  "existing_ancestor": {
+    "path": "/Users/oubiwann/.local/share",
+    "mode": "0o700"
+  },
+  "new_leaf_mode": "0o700",
+  "sha256": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+  "db_bytes": 698281984,
+  "device": 16777233,
+  "inode": 631095896,
+  "nlink": 2,
+  "lsof_exit": 1,
+  "time": 1792895642.731911
+}

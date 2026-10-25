@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "make",
+    "lint",
+    "CARGO=/tmp/vlajmaji-p01-a02-cargo",
+    "RUST_TOOLCHAIN=1.98.0"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-cli-default-store/vlajmaji",
+  "pid": 177,
+  "exit": 0,
+  "elapsed_s": 0.2922228332608938,
+  "source_head": "63da16f482de48632053d9892e58bd72de400255",
+  "source_status_before": "",
+  "source_head_after": "63da16f482de48632053d9892e58bd72de400255",
+  "target": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+  "offline": true,
+  "profile": "command-specific",
+  "streams": {
+    "stdout": {
+      "bytes": 58,
+      "sha256": "f8be08c709435ad9113fb1fd12ad8c147131ce44ece13eaf21fa11ce5d9f50e8"
+    },
+    "stderr": {
+      "bytes": 177,
+      "sha256": "3f8ee50f976ced026700146e49035a5802d9a44b672a2d9f033621a4bd5c0f06"
+    }
+  }
+}

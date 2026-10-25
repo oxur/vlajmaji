@@ -1,0 +1,251 @@
+[1;34mChecking for required tools...[0m
+[1;32m✓ Required tools available[0m
+[1;33m→ Coverage tooling is optional[0m
+[1;34mChecking code formatting...[0m
+[1;32m✓ Format check passed[0m
+[1;34mRunning Clippy...[0m
+[1;32m✓ Clippy passed[0m
+[1;34mRunning default-feature workspace tests...[0m
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 2 tests
+test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok
+test default_path_tests::test_marker_exists_distinguishes_absence_and_propagates_metadata_errors ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 2 tests
+test help_and_version_are_available ... ok
+test valid_json_limit_zero_and_failures_are_inspectable ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.43s
+
+
+running 6 tests
+test test_default_info_detects_ambiguous_and_corrupt_grouped_markers_without_fallback ... ok
+test test_optional_store_positionals_are_visible_in_help_and_legacy_info_stays_legacy ... ok
+test test_default_build_input_errors_and_occupied_leaves_have_bounded_side_effects ... ok
+test test_home_fallback_explicit_override_and_missing_default_are_truthful ... ok
+test test_non_utf8_environment_is_preserved_and_build_fails_before_mutation ... ok
+test test_xdg_default_build_query_stdin_and_info_match_explicit_store ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.69s
+
+
+running 1 test
+test dictionary_commands_work_and_structured_errors_use_the_envelope ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.51s
+
+
+running 1 test
+test import_check_are_pinned_non_destructive_and_structured_on_failure ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+
+running 6 tests
+test concurrent_scratch_allocations_are_distinct_and_joined ... ok
+test scratch_retries_occupied_candidates_without_touching_them ... ok
+test pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows ... ok
+test make_forwards_metacharacter_paths_and_requires_explicit_cargo_target ... ok
+test malformed_manifest_and_download_failure_leave_no_completion_marker ... ok
+test report_creation_races_preserve_caller_bytes_and_skip_importer ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.68s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 8 tests
+test full_corpus_import_reconciles_all_input_populations ... ignored, requires RELOJBAN_RESEARCH_ROOT pointing at the preserved research checkout
+test proposals_borrowed_view_exposes_all_entries_without_captured_lookup ... ok
+test corpus_sources_preserve_form_roles ... ok
+test exact_queries_keep_source_rows_and_proposals_separate ... ok
+test see_also_parser_uses_explicit_marker_and_excludes_tex_math ... ok
+test proposal_identity_is_unambiguous_and_archive_validation_is_typed ... ok
+test import_is_atomic_and_source_identity_is_byte_exact ... ok
+test archive_roundtrip_preserves_raw_presence_unknowns_and_large_numbers ... ok
+
+test result: ok. 7 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 11 tests
+test empty_document_is_valid_and_serde_revalidates ... ok
+test raw_values_ids_and_duplicate_envelope_keys_are_checked ... ok
+test complete_fixture_keeps_native_presence_and_release_absence_distinct ... ok
+test known_missing_capture_can_retain_unverifiable_projection_with_unknown_counts ... ok
+test available_empty_release_is_distinct_from_unavailable_catalogue_and_bad_refs_reject ... ok
+test named_reference_and_provenance_failures_use_declared_categories ... ok
+test constructor_rejects_raw_reference_accounting_and_provenance_failures ... ok
+test complete_public_fixture_roundtrips_all_source_and_metadata_rows ... ok
+test declared_validation_categories_are_emitted_and_malformed_parent_paths_do_not_panic ... ok
+test direct_serde_is_strict_and_identity_adapters_are_exact ... ok
+test etymology_components_accept_each_declared_local_reference_role ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.23s
+
+
+running 12 tests
+test invalid_pins_utf8_and_json_root_return_typed_failures ... ok
+test metadata_duplicates_and_unsupported_shapes_are_typed_failures ... ok
+test missing_null_and_empty_critical_values_remain_distinguishable ... ok
+test malformed_optional_shapes_are_diagnostic_without_excluding_valid_rows ... ok
+test non_display_username_keeps_hashed_attribution_with_a_diagnostic ... ok
+test optional_selmaho_and_definition_id_shapes_are_diagnostic_without_loss ... ok
+test changed_pinned_raw_bytes_change_capture_and_row_ids_and_wrong_hash_fails ... ok
+test repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters ... ok
+test duplicate_fields_nested_values_and_nonobjects_remain_raw_and_excluded ... ok
+test all_supported_classes_and_cross_column_forms_remain_distinct ... ok
+test metadata_numeric_values_follow_json_validity_before_subset_errors ... ok
+test revision_is_release_provenance_while_occurrence_identity_is_byte_stable ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+running 9 tests
+test attribution_requires_explicit_legacy_binding_but_keeps_empty_metadata ... ok
+test phantom_occurrence_binding_is_rejected_against_the_supplied_lexicon ... ok
+test document_validation_rejects_duplicate_roles_and_invalid_values ... ok
+test ids_and_registry_document_are_validated_and_role_distinct ... ok
+test aliases_rename_retire_and_reuse_without_losing_history ... ok
+test invalid_documents_updates_and_deserialization_cannot_bypass_invariants ... ok
+test aliases_cannot_shadow_another_sources_current_abbreviation ... ok
+test attribution_preserves_five_occurrences_roles_raw_bytes_and_archive ... ok
+test registry_identity_wires_reject_unknown_nested_fields_without_tightening_legacy_ids ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+running 1 test
+test component_semantics::component_membership_is_an_exact_ordered_subsequence_with_multiplicity ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 8 tests
+test search_engine_has_safe_summary_debug_output ... ok
+test scalar_spelling_distance_scans_and_preserves_record_multiplicity ... ok
+test compose_kind_is_validated_with_empty_and_nonempty_candidate_sets ... ok
+test contrast_exposes_p01_coordinate_explanations_without_word_total ... ok
+test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok
+test exact_proposal_option_is_separate_complete_and_limited_after_combination ... ok
+test native_candidate_counts_are_stage_labelled ... ok
+test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+
+running 5 tests
+test pages_zero_totals_cursor_binding_and_stale_cursor_are_explicit ... ok
+test repeated_editorial_membership_is_preserved_but_hit_views_are_unique ... ok
+test hit_computations_follow_dictionary_metadata_order ... ok
+test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok
+test exact_farvi_matches_the_complete_occurrence_reference_after_reopen ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.45s
+
+
+running 5 tests
+test dictionary_schema::checked_integer_tests::sqlite_integer_conversion_and_evidence_increment_are_checked ... ok
+test dictionary_schema::tests::projection_orders_present_tables_and_rejects_unknown_tables ... ok
+test dictionary_schema::tests::insertion_order_covers_schema_and_places_foreign_key_parents_first ... ok
+test identity_tests::tuple_identity_is_length_prefixed_and_byte_exact ... ok
+test dictionary::lifecycle_tests::committed_incomplete_header_survives_population_failure ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+
+running 13 tests
+test fresh_path_lifecycle_refuses_existing_leafs_and_missing_parents ... ok
+test empty_valid_dictionary_has_a_real_empty_projection ... ok
+test empty_source_metadata_values_survive_actual_sql_projection ... ok
+test full_fixture_has_independent_direct_sql_value_oracles ... ok
+test empty_available_release_keeps_explicit_zero_counts ... ok
+test complete_dictionary_creates_typed_projection_and_reopens_read_only ... ok
+test full_unsigned_text_empty_and_nul_values_survive_sql_and_reopen ... ok
+test reversed_self_reference_rows_persist_and_reopen_in_model_order ... ok
+test legacy_archive_rebuild_is_explicit_separate_and_byte_preserving ... ok
+test metadata_query_missing_required_columns_is_format_without_writing ... ok
+test sql_role_presence_foreign_key_and_unique_constraints_are_real ... ok
+test open_rejects_same_count_scalar_edits_in_each_relational_family_without_repair ... ok
+test integrity_failures_are_classified_without_mutating_the_database ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.27s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test external_consumer_can_hydrate_the_published_record_identity ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 1 test
+test crates/vlajmaji/src/../README.md - (line 36) - compile ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.64s; merged doctests compilation took 0.48s
+
+running 4 tests
+test crates/lexicon/src/lib.rs - SourceMetadata::new (line 117) ... ok
+test crates/lexicon/src/lib.rs - Proposal::new (line 488) ... ok
+test crates/lexicon/src/lib.rs - Lexicon::import_source (line 683) ... ok
+test crates/lexicon/src/lib.rs - (line 8) ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.62s; merged doctests compilation took 0.45s
+
+running 1 test
+test crates/search/src/lib.rs - (line 7) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.57s; merged doctests compilation took 0.42s
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1;32m✓ All tests passed[0m
+[1;34mGenerating API documentation...[0m
+[1;32m✓ Documentation generated[0m
+[1;34mRunning Make/planning helper tests...[0m
+ok - make_targets_forward_toolchain_and_failures
+ok - install_copies_selected_mode_and_reports_missing_artifacts
+ok - help_does_not_require_build_tools
+ok - create_empty_root_push_idempotence_and_preserve_source
+ok - remote_branch_without_local_branch_attaches
+ok - remote_update_fast_forwards_clean_planning_worktree
+ok - local_ahead_preserved_without_push
+ok - existing_local_branch_without_remote_is_attached_and_pushed
+ok - dirty_planning_refused_without_data_loss
+ok - true_divergence_refused
+ok - path_collision_and_wrong_branch_refused
+ok - unreachable_origin_is_not_treated_as_missing_branch
+ok - implementation_dirty_state_is_preserved
+ok - branch_checked_out_elsewhere_is_refused
+ok - push_rejection_preserves_empty_local_root_and_worktree
+ok - symlink_path_is_refused
+ok - local_branch_behind_remote_without_worktree_fast_forwards_once
+ok - helper_can_be_invoked_from_repository_subdirectory
+ok - git_administration_path_is_refused
+19 passed; 0 failed (19 total)
+[1;32m✓ Tooling tests passed[0m
+
+[1;32m✓ All checks passed (tools + format + lint + tests + docs)[0m
+

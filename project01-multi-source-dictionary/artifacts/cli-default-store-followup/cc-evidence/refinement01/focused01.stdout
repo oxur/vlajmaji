@@ -1,0 +1,18 @@
+
+running 2 tests
+test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok
+test default_path_tests::test_marker_exists_distinguishes_absence_and_propagates_metadata_errors ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 6 tests
+test test_default_info_detects_ambiguous_and_corrupt_grouped_markers_without_fallback ... ok
+test test_optional_store_positionals_are_visible_in_help_and_legacy_info_stays_legacy ... ok
+test test_default_build_input_errors_and_occupied_leaves_have_bounded_side_effects ... ok
+test test_home_fallback_explicit_override_and_missing_default_are_truthful ... ok
+test test_non_utf8_environment_is_preserved_and_build_fails_before_mutation ... ok
+test test_xdg_default_build_query_stdin_and_info_match_explicit_store ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.01s
+

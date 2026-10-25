@@ -1,0 +1,66 @@
+{
+  "verdict": "PASS",
+  "source": "63da16f482de48632053d9892e58bd72de400255",
+  "binary_sha256": "68250cb649464eecd299efef2eb70d23b6827e5d8c40355eebdd1a4ce8bb5675",
+  "profile": "release",
+  "old_directory": "/tmp/vlajmaji-p01-a02-cdc/s02-full-store03",
+  "new_directory": "/Users/oubiwann/.local/share/vlajmaji/stores/default",
+  "old_file_absent": true,
+  "old_directory_absent": true,
+  "new_file_exists": true,
+  "new_file_set": [
+    "dictionary.sqlite3"
+  ],
+  "method": "same-filesystem exclusive hardlink, then validation before selected original removal",
+  "db_bytes": 698281984,
+  "db_sha256_before_after": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+  "canonical_sha256_before_after": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460",
+  "schema_version": "1",
+  "complete": "1",
+  "device": 16777233,
+  "inode": 631095896,
+  "nlink_final": 1,
+  "default_info": {
+    "assertions": 33526,
+    "captures": 2,
+    "entries": 33526,
+    "format": "dictionary",
+    "occurrences": 33526,
+    "operation": "info",
+    "source_count": 1,
+    "sources": [
+      {
+        "abbreviation": "LSK",
+        "abbreviation_evidence": null,
+        "abbreviation_kind": "ProjectAssigned",
+        "display_name": "Lensisku",
+        "id": "lensisku",
+        "origin": "Upstream"
+      }
+    ],
+    "version": 1
+  },
+  "whole_farvi_response_bytes": 3028230,
+  "whole_farvi_response_sha256": "4a0c902b350162d7932169428713b53970d8aaba235c94da3cff313aa981054e",
+  "farvi_occurrences": 2,
+  "old_explicit_vs_new_noarg_info_bytes_equal": true,
+  "read_only_lsof_no_open_handles": true,
+  "protected_arc02_tree_before_after": "9b7aedfbfb5e5a21e6020d0237ae3a7d6afbef2a",
+  "original_manifests_unchanged": true,
+  "created_parent_directories": [
+    {
+      "path": "/Users/oubiwann/.local/share/vlajmaji",
+      "mode": "0o700"
+    },
+    {
+      "path": "/Users/oubiwann/.local/share/vlajmaji/stores",
+      "mode": "0o700"
+    }
+  ],
+  "existing_ancestor": {
+    "path": "/Users/oubiwann/.local/share",
+    "mode": "0o700"
+  },
+  "final_time": 1792895732.846853,
+  "limits": "Single-source Lensisku provisional default; future aggregate not built. Other accepted stores/raw/releases retained. Full response stays local; receipt carries exact hash."
+}

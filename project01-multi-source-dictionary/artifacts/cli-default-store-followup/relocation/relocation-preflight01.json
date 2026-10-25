@@ -1,0 +1,45 @@
+{
+  "source": "63da16f482de48632053d9892e58bd72de400255",
+  "XDG_DATA_HOME": null,
+  "HOME": "/Users/oubiwann",
+  "destination": "/Users/oubiwann/.local/share/vlajmaji/stores/default",
+  "destination_absent": true,
+  "old_directory": "/tmp/vlajmaji-p01-a02-cdc/s02-full-store03",
+  "old_file_set": [
+    "dictionary.sqlite3"
+  ],
+  "db_bytes": 698281984,
+  "sha256": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+  "canonical_sha256": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460",
+  "metadata": {
+    "format": "vlajmaji-dictionary",
+    "schema_version": "1",
+    "complete": "1",
+    "canonical_sha256": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460",
+    "dictionary_version": "1",
+    "registry_version": "1",
+    "catalogue_revision": "0"
+  },
+  "counts": {
+    "sources": 1,
+    "snapshot_bindings": 2,
+    "occurrence_refs": 33526,
+    "entries": 33526,
+    "assertions": 33526
+  },
+  "old_device": 16777233,
+  "old_inode": 631095896,
+  "old_nlink": 1,
+  "lsof": {
+    "argv": [
+      "/usr/sbin/lsof",
+      "-F",
+      "pcfn",
+      "/tmp/vlajmaji-p01-a02-cdc/s02-full-store03/dictionary.sqlite3"
+    ],
+    "exit": 1,
+    "stdout_bytes": 0,
+    "stderr_bytes": 0
+  },
+  "preflight_time": 1792895580.3743548
+}

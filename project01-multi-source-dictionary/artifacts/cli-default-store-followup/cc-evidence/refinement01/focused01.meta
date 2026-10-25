@@ -1,0 +1,21 @@
+attempt=focused01
+started_utc=2026-10-25T02:28:29Z
+cwd=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-cli-default-store/vlajmaji
+command=CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target CARGO_NET_OFFLINE=true /tmp/vlajmaji-p01-a02-cargo +1.98.0 test --locked --offline -p vlajmaji-cli --bin vlajmaji --test default_store
+source_head=609790132a5a512aa693e96de4dbe161bd98a1d6
+a19c3f1f83e40c97d21109f6b280969bc879c47ab587e529d1e28512b2a61430  /tmp/vlajmaji-p01-a02-cargo
+540f65289cf1bad29bc8fbb46b24d378d8c3edd1fbf9bcfcf7b236e0f98fea12  crates/cli/src/main.rs
+32b026657f486b809ce269bef058efff740bd2d71ca15e49a5fe48932f35e194  crates/cli/tests/default_store.rs
+f9d06fe81e1de128af32502b0d8c68076e5d89827359588e8037006820e7f243  docs/jbotci-import.md
+target=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+network=offline
+locked=true
+profile=debug test binaries
+rustc=rustc 1.98.0 (88d9e12ae 2026-08-18)
+pid=93804
+exit=0
+finished_utc=2026-10-25T02:28:32Z
+cli_binary_sha256=8f745ec6c898a7a546a115dcd8e1d6e8655e2b616a78ecf59c629a4fef1ca74f
+integration_harness_sha256=fe81b38ba904aa34811c28459a949a10677f3bec2a5652e4ad0dbd974548a7db
+binary_unit_harness_sha256=0a301eb7db5f97131cfa4a77dce04aa933e9cf3bc9f120351ffc58cb731376b6
+note=All test results exited 0. The trailing printf label emitted a benign capture-shell diagnostic retained in stderr; no Cargo output was lost.
