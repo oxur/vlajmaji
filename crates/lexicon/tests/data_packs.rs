@@ -4,9 +4,11 @@
 mod fixture_support;
 
 use vlajmaji_lexicon::{
-    Dictionary, ExtensionRecord, JbotciImportOptions, PackError, PackId, PackPayloadKind, PackSeal,
-    Presence, RawJson, RegistryDocument, SourceRegistry, compose_dictionaries,
-    import_jbotci_export, load_sealed_release, seal_release,
+    AbbreviationKind, AliasStatus, Dictionary, DictionaryDocument, ExtensionRecord,
+    JbotciImportOptions, LineageTarget, PackError, PackId, PackPayloadKind, PackSeal, Presence,
+    RawJson, RegistryDocument, RegistryError, SourceAlias, SourceId, SourceLineage, SourceOrigin,
+    SourceRecord, SourceRegistry, UnverifiedDictionaryDocument, compose_dictionaries,
+    compose_unverified_documents, import_jbotci_export, load_sealed_release, seal_release,
 };
 
 fn digest(bytes: &[u8]) -> String {
@@ -190,6 +192,143 @@ fn composition_preserves_distinct_distributions_and_exact_dedup() {
     let repeated = compose_dictionaries(vec![first.clone(), first.clone()])
         .expect("exact repeated model deduplicates");
     assert_eq!(repeated, first);
+}
+
+#[test]
+fn test_unverified_composition_keeps_graph_validation_explicit_and_deduplicates_inputs() {
+    fn draft(dictionary: Dictionary) -> UnverifiedDictionaryDocument {
+        let doc = dictionary.into_document();
+        DictionaryDocument {
+            version: doc.version,
+            legacy_archive: doc.legacy_archive,
+            registry: doc.registry.into_document(),
+            captures: doc.captures,
+            metadata: doc.metadata,
+        }
+    }
+    let first = imported(RAW_A, REVISION_A);
+    let expected = compose_dictionaries(vec![first.clone()])
+        .unwrap()
+        .to_json_bytes()
+        .unwrap();
+    let composed = compose_unverified_documents(vec![draft(first.clone()), draft(first)]).unwrap();
+    assert_eq!(serde_json::to_vec(&composed).unwrap(), expected);
+    let mut duplicate = draft(imported(RAW_A, REVISION_A));
+    duplicate
+        .metadata
+        .entries
+        .push(duplicate.metadata.entries[0].clone());
+    assert!(matches!(
+        compose_unverified_documents(vec![duplicate]),
+        Err(PackError::Conflict {
+            category: "entry",
+            ..
+        })
+    ));
+
+    let broken = imported(RAW_A, REVISION_A).into_document();
+    let mut registry = broken.registry.into_document();
+    registry.lineage.push(SourceLineage {
+        source: registry.sources[0].id.clone(),
+        upstream: LineageTarget::Known(SourceId::new("unknown-upstream").unwrap()),
+        evidence: Some("tiny graph-only regression fixture".into()),
+    });
+    let broken = UnverifiedDictionaryDocument {
+        version: broken.version,
+        legacy_archive: broken.legacy_archive,
+        registry,
+        captures: broken.captures,
+        metadata: broken.metadata,
+    };
+    let composed = compose_unverified_documents(vec![broken])
+        .expect("unverified composition defers cross-record graph validation");
+    assert!(SourceRegistry::from_document(composed.registry).is_err());
+}
+
+#[test]
+fn test_unverified_composition_rejects_conflicting_alias_identity_and_deduplicates_equal_alias() {
+    fn draft(dictionary: Dictionary) -> UnverifiedDictionaryDocument {
+        let doc = dictionary.into_document();
+        DictionaryDocument {
+            version: doc.version,
+            legacy_archive: doc.legacy_archive,
+            registry: doc.registry.into_document(),
+            captures: doc.captures,
+            metadata: doc.metadata,
+        }
+    }
+    let base = imported(RAW_A, REVISION_A);
+    let source = base.registry().as_document().sources[0].id.clone();
+    let with_alias = |evidence: &str| {
+        let mut doc = draft(base.clone());
+        doc.registry.aliases.push(SourceAlias {
+            source: source.clone(),
+            text: "shared selector".into(),
+            status: AliasStatus::Active,
+            evidence: Some(evidence.into()),
+        });
+        doc
+    };
+    let composed = compose_unverified_documents(vec![with_alias("same"), with_alias("same")])
+        .expect("an exactly repeated alias identity and body is deduplicated");
+    assert_eq!(composed.registry.aliases.len(), 1);
+    assert!(matches!(
+        compose_unverified_documents(vec![
+            with_alias("first evidence"),
+            with_alias("other evidence")
+        ]),
+        Err(PackError::Conflict {
+            category: "alias",
+            ..
+        })
+    ));
+}
+
+#[test]
+fn test_unverified_composition_rejects_merged_active_selector_collision() {
+    fn draft(dictionary: Dictionary) -> UnverifiedDictionaryDocument {
+        let doc = dictionary.into_document();
+        DictionaryDocument {
+            version: doc.version,
+            legacy_archive: doc.legacy_archive,
+            registry: doc.registry.into_document(),
+            captures: doc.captures,
+            metadata: doc.metadata,
+        }
+    }
+    let base = imported(RAW_A, REVISION_A);
+    let first_source = base.registry().as_document().sources[0].id.clone();
+    let second_source = SourceId::new("second-source").unwrap();
+    let make_pair = |status| {
+        let mut first = draft(base.clone());
+        first.registry.aliases.push(SourceAlias {
+            source: first_source.clone(),
+            text: "shared selector".into(),
+            status,
+            evidence: Some("source-bounded evidence".into()),
+        });
+        let mut second = draft(Dictionary::new());
+        second.registry.sources.push(SourceRecord {
+            id: second_source.clone(),
+            display_name: "Second source".into(),
+            abbreviation: "SECOND".into(),
+            abbreviation_kind: AbbreviationKind::ProjectAssigned,
+            abbreviation_evidence: None,
+            origin: SourceOrigin::Upstream,
+        });
+        second.registry.aliases.push(SourceAlias {
+            source: second_source.clone(),
+            text: "shared selector".into(),
+            status,
+            evidence: Some("source-bounded evidence".into()),
+        });
+        vec![first, second]
+    };
+    assert!(matches!(
+        compose_unverified_documents(make_pair(AliasStatus::Active)),
+        Err(PackError::Registry(RegistryError::AliasCollision { .. }))
+    ));
+    assert!(compose_unverified_documents(make_pair(AliasStatus::Retired)).is_ok());
 }
 
 #[test]

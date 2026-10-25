@@ -37,10 +37,11 @@ use vlajmaji_store::{
 pub mod dictionary;
 
 pub use dictionary::{
-    DictionaryErrorReport, DictionaryExactOptions, DictionaryExactResponse, DictionaryGroup,
-    DictionaryHit, DictionaryQueryError, DictionaryRequest, DictionarySearchEngine,
-    DictionarySourceAvailability, DictionarySourceTotal, DictionaryTotals, ReferenceAssertionView,
-    ReferenceEntity, ReferenceResolution, ReferenceStatus, SourceSelectionFailure,
+    DictionaryErrorReport, DictionaryExactOptions, DictionaryExactProfile, DictionaryExactResponse,
+    DictionaryGroup, DictionaryHit, DictionaryQueryError, DictionaryRequest,
+    DictionarySearchEngine, DictionarySnapshotOpenProfile, DictionarySourceAvailability,
+    DictionarySourceTotal, DictionaryTotals, ReferenceAssertionView, ReferenceEntity,
+    ReferenceResolution, ReferenceStatus, SourceSelectionFailure,
 };
 
 /// Query policy identities included in every response.

@@ -6,8 +6,8 @@ use std::fmt;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 
-use crate::dictionary::DictionaryDocument;
-use crate::registry::{RegistryDocument, SourceRegistry};
+use crate::dictionary::{DictionaryDocument, UnverifiedDictionaryDocument};
+use crate::registry::{RegistryDocument, SourceRegistry, validate_identity_prefix};
 use crate::{
     CaptureRef, Dictionary, DictionaryError, DictionaryMetadata, EntityId, RegistryError, SourceId,
 };
@@ -386,10 +386,47 @@ pub fn load_sealed_release(
 /// Returns a typed identity conflict, unsupported legacy archive, registry
 /// error, or final dictionary validation error.
 pub fn compose_dictionaries(inputs: Vec<Dictionary>) -> Result<Dictionary, PackError> {
+    let documents = inputs
+        .into_iter()
+        .map(|input| {
+            let document = input.into_document();
+            DictionaryDocument {
+                version: document.version,
+                legacy_archive: document.legacy_archive,
+                registry: document.registry.into_document(),
+                captures: document.captures,
+                metadata: document.metadata,
+            }
+        })
+        .collect();
+    let document = compose_unverified_documents(documents)?;
+    let registry = SourceRegistry::from_document(document.registry)?;
+    let validated = DictionaryDocument {
+        version: document.version,
+        legacy_archive: document.legacy_archive,
+        registry,
+        captures: document.captures,
+        metadata: document.metadata,
+    };
+    Dictionary::from_document(validated).map_err(PackError::Dictionary)
+}
+
+/// Compose typed, unverified dictionary documents without claiming that the
+/// complete model graph has been validated.
+///
+/// This operation checks only format/version and merge identity invariants.
+/// Call `Dictionary::from_document` when full graph validation is required.
+///
+/// # Errors
+///
+/// Returns an unsupported legacy/version or conflicting identity error.
+pub fn compose_unverified_documents(
+    inputs: Vec<UnverifiedDictionaryDocument>,
+) -> Result<UnverifiedDictionaryDocument, PackError> {
     let mut output = DictionaryDocument {
         version: 1,
         legacy_archive: None,
-        registry: SourceRegistry::new(),
+        registry: RegistryDocument::default(),
         captures: Vec::new(),
         metadata: DictionaryMetadata::default(),
     };
@@ -400,20 +437,48 @@ pub fn compose_dictionaries(inputs: Vec<Dictionary>) -> Result<Dictionary, PackE
     let mut source_index = BTreeMap::new();
     let mut contributor_index = BTreeMap::new();
     let mut distributor_index = BTreeMap::new();
+    let mut alias_index = BTreeMap::new();
     let mut snapshot_index = BTreeMap::new();
     let mut occurrence_index = BTreeMap::new();
     let mut extension_buckets = BTreeMap::<(EntityId, String), Vec<usize>>::new();
     let mut extension_multiplicities = BTreeMap::<usize, usize>::new();
 
-    for input in inputs {
-        let document = input.into_document();
+    for document in inputs {
         if document.legacy_archive.is_some() {
             return Err(PackError::LegacyArchiveUnsupported);
+        }
+        if document.version != 1 {
+            return Err(PackError::UnsupportedVersion {
+                kind: "dictionary",
+                version: document.version,
+            });
         }
         metadata_output.catalogue_revision = metadata_output
             .catalogue_revision
             .max(document.metadata.catalogue_revision);
-        let registry_doc = document.registry.into_document();
+        let registry_doc = document.registry;
+        if registry_doc.version != 1 {
+            return Err(PackError::UnsupportedVersion {
+                kind: "registry",
+                version: registry_doc.version,
+            });
+        }
+        ensure_unique(&registry_doc.sources, "source", |row| row.id.to_string())?;
+        ensure_unique(&registry_doc.contributors, "contributor", |row| {
+            row.id.to_string()
+        })?;
+        ensure_unique(&registry_doc.distributors, "distributor", |row| {
+            row.id.to_string()
+        })?;
+        ensure_unique(&registry_doc.aliases, "alias", |row| {
+            composite_key([row.source.as_str(), row.text.as_str()])
+        })?;
+        ensure_unique(&registry_doc.snapshots, "snapshot", |row| {
+            composite_key([row.snapshot.namespace(), row.snapshot.sha256()])
+        })?;
+        ensure_unique(&registry_doc.occurrences, "occurrence attribution", |row| {
+            occurrence_key(&row.occurrence)
+        })?;
         for row in registry_doc.sources {
             push_keyed(
                 &mut registry.sources,
@@ -441,7 +506,15 @@ pub fn compose_dictionaries(inputs: Vec<Dictionary>) -> Result<Dictionary, PackE
                 "distributor",
             )?;
         }
-        extend_exact(&mut registry.aliases, registry_doc.aliases);
+        for row in registry_doc.aliases {
+            push_keyed(
+                &mut registry.aliases,
+                &mut alias_index,
+                row,
+                |row| composite_key([row.source.as_str(), row.text.as_str()]),
+                "alias",
+            )?;
+        }
         extend_exact(&mut registry.lineage, registry_doc.lineage);
         for row in registry_doc.snapshots {
             push_keyed(
@@ -461,6 +534,12 @@ pub fn compose_dictionaries(inputs: Vec<Dictionary>) -> Result<Dictionary, PackE
                 "occurrence attribution",
             )?;
         }
+        ensure_unique(&document.captures, "capture", |row| {
+            composite_key([
+                row.identity.namespace.as_str(),
+                row.identity.sha256.as_str(),
+            ])
+        })?;
         for capture in document.captures {
             push_keyed(
                 &mut output.captures,
@@ -476,6 +555,11 @@ pub fn compose_dictionaries(inputs: Vec<Dictionary>) -> Result<Dictionary, PackE
             )?;
         }
         let metadata = document.metadata;
+        macro_rules! unique_ids { ($($field:ident => $category:literal),+ $(,)?) => { $(ensure_unique(&metadata.$field, $category, |row| row.id.to_string())?;)+ }; }
+        unique_ids!(collections=>"collection",components=>"component",releases=>"release",entries=>"entry",assertions=>"assertion",contexts=>"context",frames=>"frame",forms=>"form",etymologies=>"etymology",relations=>"relation",owned_revisions=>"owned revision",editorial_senses=>"editorial sense",computations=>"computation",annotations=>"annotation");
+        ensure_unique(&metadata.owned_heads, "owned head", |row| {
+            row.source.to_string()
+        })?;
         extend_exact(&mut metadata_output.code_notices, metadata.code_notices);
         merge_rows!(metadata, metadata_output, meta_indexes,
             collections, "collection";
@@ -526,9 +610,10 @@ pub fn compose_dictionaries(inputs: Vec<Dictionary>) -> Result<Dictionary, PackE
             }
         }
     }
+    validate_identity_prefix(&registry).map_err(PackError::Registry)?;
     output.metadata = metadata_output;
-    output.registry = SourceRegistry::from_document(registry)?;
-    Dictionary::from_document(output).map_err(PackError::Dictionary)
+    output.registry = registry;
+    Ok(output)
 }
 
 #[derive(Default)]
@@ -573,6 +658,23 @@ where
     }
     indexes.insert(identity, rows.len());
     rows.push(row);
+    Ok(())
+}
+
+fn ensure_unique<T, F>(rows: &[T], category: &'static str, mut key: F) -> Result<(), PackError>
+where
+    F: FnMut(&T) -> String,
+{
+    let mut seen = std::collections::BTreeSet::new();
+    for row in rows {
+        let identity = key(row);
+        if !seen.insert(identity.clone()) {
+            return Err(PackError::Conflict {
+                category,
+                key: identity,
+            });
+        }
+    }
     Ok(())
 }
 

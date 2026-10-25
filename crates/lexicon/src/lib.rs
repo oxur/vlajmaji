@@ -74,7 +74,7 @@ pub use llg::{
 };
 pub use pack::{
     PackError, PackId, PackPayloadKind, PackSeal, SealedRelease, compose_dictionaries,
-    load_sealed_release, seal_release,
+    compose_unverified_documents, load_sealed_release, seal_release,
 };
 pub use registry::{
     AbbreviationKind, AliasScope, AliasStatus, ContributorId, ContributorRecord, DistributorId,

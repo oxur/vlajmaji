@@ -14,9 +14,14 @@ pub use sqlite::SqliteStore;
 
 mod dictionary;
 mod dictionary_schema;
+mod dictionary_snapshot;
 mod dictionary_verification;
 pub use dictionary::{
     DictionaryStore, DictionaryStoreError, DictionaryStoreInvalidity, DictionaryStoreSummary,
+};
+pub use dictionary_snapshot::{
+    DictionaryReadSnapshot, DictionaryReadTopology, DictionarySnapshotError,
+    DictionarySnapshotManifest, DictionarySnapshotMember,
 };
 pub use dictionary_verification::{
     DictionaryStoreCheckStatus, DictionaryStoreVerification, DictionaryStoreVerificationCheck,
