@@ -3,11 +3,12 @@
 #[path = "../../lexicon/examples/support/dictionary_fixture.rs"]
 mod fixture;
 
-use std::fs;
 use std::path::PathBuf;
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::time::{SystemTime, UNIX_EPOCH};
+use std::{fs, process::Command};
 
+use sha2::{Digest, Sha256};
 use vlajmaji_lexicon::{
     CaptureRef, CatalogTarget, ComputedAnnotation, Dictionary, EntityId, LocalRef, OccurrenceRef,
     RawJson, RelationTarget,
@@ -57,6 +58,33 @@ fn farvi_rows(
             })
         })
         .collect()
+}
+
+fn replace_canonical_draft(root: &std::path::Path, mutate: impl FnOnce(&mut serde_json::Value)) {
+    let store = root.join("index");
+    let dictionary = fixture::complete_fixture().unwrap();
+    let canonical = dictionary.to_json_bytes().unwrap();
+    let mut value: serde_json::Value = serde_json::from_slice(&canonical).unwrap();
+    mutate(&mut value);
+    let bytes = serde_json::to_vec(&value).unwrap();
+    let digest = format!("{:x}", Sha256::digest(&bytes));
+    let encoded = bytes
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
+        .collect::<String>();
+    let sql = format!(
+        "UPDATE canonical_document SET json=X'{encoded}' WHERE id=1; UPDATE metadata SET value='{digest}' WHERE key='canonical_sha256';"
+    );
+    let output = Command::new("sqlite3")
+        .arg(store.join("dictionary.sqlite3"))
+        .arg(sql)
+        .output()
+        .unwrap();
+    assert!(
+        output.status.success(),
+        "sqlite3 draft mutation failed: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
 }
 
 #[test]
@@ -381,6 +409,50 @@ fn hit_computations_follow_dictionary_metadata_order() {
         vec!["computation-1", "computation-0"]
     );
     fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids() {
+    for (name, mutate) in [
+        ("entry", 0usize),
+        ("capture", 1usize),
+        ("occurrence", 2usize),
+        ("owned revision", 3usize),
+    ] {
+        let root = scratch();
+        let dictionary = fixture::complete_fixture().unwrap();
+        let bytes = dictionary.to_json_bytes().unwrap();
+        DictionarySearchEngine::build(root.join("index"), &bytes).unwrap();
+        replace_canonical_draft(&root, |document| match mutate {
+            0 => {
+                let entries = document["metadata"]["entries"].as_array_mut().unwrap();
+                entries.push(entries[0].clone());
+            }
+            1 => {
+                let captures = document["captures"].as_array_mut().unwrap();
+                captures.push(captures[0].clone());
+            }
+            2 => {
+                let occurrences = document["captures"][0]["occurrences"]
+                    .as_array_mut()
+                    .unwrap();
+                occurrences.push(occurrences[0].clone());
+            }
+            _ => {
+                let revisions = document["metadata"]["owned_revisions"]
+                    .as_array_mut()
+                    .unwrap();
+                revisions.push(revisions[0].clone());
+            }
+        });
+        let error = DictionarySearchEngine::open(root.join("index"))
+            .expect_err("ambiguous persisted identity must not select an arbitrary row");
+        assert!(
+            matches!(error, DictionaryQueryError::Integrity { .. }),
+            "{name}: {error}"
+        );
+        fs::remove_dir_all(root).unwrap();
+    }
 }
 
 fn decode_hex(input: &str) -> Vec<u8> {

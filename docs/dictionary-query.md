@@ -1,8 +1,10 @@
 # Grouped exact dictionary lookup
 
-`vlajmaji-search` exposes a grouped lookup API over a validated, persisted
-`vlajmaji-lexicon::Dictionary`. The dictionary JSON remains the canonical
-source record; SQLite is a rebuildable candidate index and checked projection.
+`vlajmaji-search` exposes grouped lookup over a typed draft read from a persisted
+`vlajmaji-lexicon::Dictionary` store. A newly built store receives all explicit
+verification checks; opening an existing store checks only its minimum header.
+The dictionary JSON remains the canonical source record; SQLite is a rebuildable
+candidate index and declared projection, not a substitute for explicit audit.
 The lookup returns source assertions and their provenance without merging
 competing definitions or interpreting frame prose.
 
@@ -43,16 +45,18 @@ when a filter or page is used.
 With no page size, `exact` returns every selected occurrence. A page size of
 zero returns no groups but retains the real complete totals. Positive page
 sizes count occurrences, not source groups. The opaque cursor binds the exact
-spelling, resolved source set, alias policy, schema, and canonical store state.
-It is a corruption-detection token, not an authentication credential. Malformed
+spelling, resolved source set, alias policy, schema, and recorded canonical
+digest from the store header. Fast open does not authenticate that digest;
+request the `hashes` check or `all` before treating it as verified. The cursor
+is a corruption-detection token, not an authentication credential. Malformed
 encoding/checksum, a cursor for another query or store state, and a valid cursor
 position that is not a result produce distinct typed errors. Page size may
 change while continuing a traversal.
 
 ## Stable references
 
-`DictionarySearchEngine::resolve` checks a `RelationTarget` against the
-validated registry and typed graph. Local `Entry`, `Assertion`, `Form`, and
+`DictionarySearchEngine::resolve` checks a `RelationTarget` against the typed
+registry draft and graph. Local `Entry`, `Assertion`, `Form`, and
 `EditorialSense` targets return only the corresponding entity type. Catalogue
 targets keep their requested source/release/native identities and report
 confirmed versus unverified assertion candidates; unavailable or missing
@@ -89,6 +93,7 @@ printf '%s\n' '{"operation":"exact","spelling":"farvi","options":{"page_size":2}
 vlajmaji dictionary-query \
   --request '{"operation":"exact","spelling":"farvi"}'
 vlajmaji info
+vlajmaji verify all
 ```
 
 When `STORE` is omitted from `dictionary-build`, `dictionary-query`, or `info`,
@@ -121,6 +126,14 @@ object shaped as `{"error":{"code":"...","message":"...","sources":[]}}`
 to stderr. Existing `build` and `search` commands stay explicit and retain their
 legacy archive behavior; explicit legacy `info STORE` retains its previous
 response.
+
+`verify CHECK [STORE]` performs an explicit audit on a separate read-only
+snapshot. Select one of `schema`, `metadata`, `hashes`, `model`, `fks`, or
+`projection`, or request `all` for six fixed-order rows. Selective reports
+contain only the requested row. Each row is `passed`, `failed`, or `blocked`
+when a necessary prerequisite could not be read. A failed verification exits
+nonzero, keeps stdout empty, and writes the complete report with the structured
+`verification_failed` error to stderr. Verification does not repair the store.
 
 The source model and its distinctions are described in the
 [`dictionary model`](dictionary-model.md); query SQL projection details are in

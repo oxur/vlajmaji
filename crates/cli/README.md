@@ -35,6 +35,13 @@ not create or download a store. New-command runtime errors emit a structured
 JSON object to stderr, no stdout, and a nonzero exit. See the
 [grouped dictionary query guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-query.md).
 
+`verify CHECK [STORE]` runs one explicit read-only store check (`schema`,
+`metadata`, `hashes`, `model`, `fks`, `projection`, or `all`). Ordinary open,
+query, and info check only the minimum header; they do not establish full store
+integrity. `all` reports six ordered result rows. A failed check exits nonzero,
+leaves stdout empty, and writes both its structured error and complete report
+to stderr.
+
 `jbotci-import RAW METADATA FRESH.json` locally normalizes a hash-pinned export;
 `jbotci-check RAW METADATA [--release RELEASE.json]` validates it without
 writing. `make jbotci-acquire`, `jbotci-replay`, `jbotci-check`, and

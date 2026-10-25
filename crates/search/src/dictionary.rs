@@ -1,4 +1,4 @@
-//! Grouped exact queries over a validated, persisted source dictionary.
+//! Grouped exact queries over typed drafts from persisted source dictionaries.
 //!
 //! This module keeps source identity, native occurrences, editorial material,
 //! and computed annotations separate. Exact lookup is byte-exact and uses the
@@ -17,10 +17,11 @@ use vlajmaji_lexicon as lexicon;
 use vlajmaji_lexicon::{
     AliasScope, Availability, CaptureMetadata, CaptureRef, CatalogTarget, CodeNotice,
     CollectionRecord, ComponentRecord, ComputationRecord, ComputedAnnotation, ContextRecord,
-    Dictionary, DictionaryError, DistributorRecord, EditorialSenseRecord, Eligibility, EntityId,
-    EntryRecord, EtymologyRecord, ExtensionRecord, FormRecord, LocalRef, OccurrenceAttribution,
-    OccurrenceRef, OwnedHead, RawOccurrence, RegistryError, RelationRecord, RelationTarget,
-    ReleaseRecord, SnapshotAttribution, SourceAlias, SourceId, SourceLineage, SourceRecord,
+    Dictionary, DictionaryDocument, DictionaryError, DistributorRecord, EditorialSenseRecord,
+    Eligibility, EntityId, EntryRecord, EtymologyRecord, ExtensionRecord, FormRecord, LocalRef,
+    OccurrenceAttribution, OccurrenceRef, OwnedHead, RawOccurrence, RegistryError, RelationRecord,
+    RelationTarget, ReleaseRecord, SnapshotAttribution, SourceAlias, SourceId, SourceLineage,
+    SourceRecord,
 };
 use vlajmaji_store::{DictionaryStore, DictionaryStoreError};
 
@@ -222,7 +223,7 @@ pub struct DictionaryExactResponse {
     pub store_schema_version: u32,
     /// Catalogue revision from canonical model metadata.
     pub catalogue_revision: u64,
-    /// SHA-256 of the exact retained canonical JSON bytes.
+    /// Recorded canonical SHA-256 from the store header; not checked during fast open.
     pub state_sha256: String,
     /// Exact query spelling.
     pub spelling: String,
@@ -302,19 +303,19 @@ pub struct ReferenceAssertionView {
     pub tombstoned_by: Vec<EntityId>,
 }
 
-/// Stable, validated resolution of a requested relation target.
+/// Stable typed resolution of a requested relation target against a loaded draft.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct ReferenceResolution {
     /// Response contract version.
     pub version: u32,
-    /// SHA-256 of the retained canonical state.
+    /// Recorded canonical SHA-256 from the store header; not checked during fast open.
     pub state_sha256: String,
     /// Exact requested target.
     pub target: RelationTarget,
     /// Resolution classification.
     pub status: ReferenceStatus,
-    /// Corresponding validated local entity, if this was a LocalRef.
+    /// Corresponding typed local entity, if this was a LocalRef.
     pub entity: Option<ReferenceEntity>,
     /// Assertions confirmed against every supplied catalogue identity.
     pub confirmed: Vec<ReferenceAssertionView>,
@@ -369,7 +370,7 @@ pub enum DictionaryQueryError {
         /// Failed direct-reference validation boundary.
         detail: String,
     },
-    /// A validated store/model projection cannot be reconciled.
+    /// A loaded query index or required reference cannot be reconciled.
     Integrity {
         /// Store/model inconsistency that prevented a reliable result.
         detail: String,
@@ -451,11 +452,13 @@ impl DictionaryQueryError {
     }
 }
 
-/// A public exact-query engine retaining a validated immutable SQLite snapshot.
+/// A public exact-query engine retaining a typed draft from a read-only SQLite snapshot.
 pub struct DictionarySearchEngine {
     store: DictionaryStore,
-    dictionary: Dictionary,
+    dictionary: DictionaryDocument<lexicon::RegistryDocument>,
     state_sha256: String,
+    capture_index: BTreeMap<CaptureRef, usize>,
+    occurrence_index: BTreeMap<(CaptureRef, String), (usize, usize)>,
     entries: BTreeMap<String, EntryRecord>,
     assertions: BTreeMap<String, lexicon::AssertionRecord>,
     sources: BTreeMap<SourceId, SourceRecord>,
@@ -504,7 +507,7 @@ impl DictionarySearchEngine {
         Self::from_store(store)
     }
 
-    /// Open an existing validated immutable dictionary store.
+    /// Open a minimally checked store and retain its typed, unverified document.
     ///
     /// # Errors
     ///
@@ -514,32 +517,62 @@ impl DictionarySearchEngine {
     }
 
     fn from_store(store: DictionaryStore) -> Result<Self, DictionaryQueryError> {
-        let dictionary = store.dictionary().clone();
-        let document = dictionary.document();
-        let state_sha256 = format!("{:x}", Sha256::digest(store.canonical_bytes()));
-        let entries = document
-            .metadata
-            .entries
-            .iter()
-            .cloned()
-            .map(|row| (row.id.to_string(), row))
-            .collect();
-        let assertions = document
-            .metadata
-            .assertions
-            .iter()
-            .cloned()
-            .map(|row| (row.id.to_string(), row))
-            .collect();
-        let registry = dictionary.registry().document();
-        let sources = registry
-            .sources
-            .iter()
-            .cloned()
-            .map(|row| (row.id.clone(), row))
-            .collect();
+        let document = store.unverified_document()?;
+        let state_sha256 = store.recorded_state_sha256().to_owned();
+        let capture_index = unique_map(
+            document
+                .captures
+                .iter()
+                .enumerate()
+                .map(|(index, capture)| (capture.identity.clone(), index)),
+            "capture",
+        )?;
+        let occurrence_index = unique_map(
+            document
+                .captures
+                .iter()
+                .enumerate()
+                .flat_map(|(capture_index, capture)| {
+                    capture.occurrences.iter().enumerate().map(
+                        move |(occurrence_index, occurrence)| {
+                            (
+                                (capture.identity.clone(), occurrence.locator.clone()),
+                                (capture_index, occurrence_index),
+                            )
+                        },
+                    )
+                }),
+            "capture occurrence",
+        )?;
+        let entries = unique_map(
+            document
+                .metadata
+                .entries
+                .iter()
+                .cloned()
+                .map(|row| (row.id.to_string(), row)),
+            "entry",
+        )?;
+        let assertions = unique_map(
+            document
+                .metadata
+                .assertions
+                .iter()
+                .cloned()
+                .map(|row| (row.id.to_string(), row)),
+            "assertion",
+        )?;
+        let registry = document.registry.clone();
+        let sources = unique_map(
+            registry
+                .sources
+                .iter()
+                .cloned()
+                .map(|row| (row.id.clone(), row)),
+            "source",
+        )?;
         let availability = build_availability(&registry, &document);
-        let selected_assertions = build_selected_assertions(&document, &availability);
+        let selected_assertions = build_selected_assertions(&document, &availability)?;
         let contexts_by_assertion = group_by(document.metadata.contexts.iter().cloned(), |row| {
             row.assertion.to_string()
         });
@@ -549,13 +582,15 @@ impl DictionarySearchEngine {
         let forms_by_entry = group_by(document.metadata.forms.iter().cloned(), |row| {
             row.entry.to_string()
         });
-        let forms_by_id = document
-            .metadata
-            .forms
-            .iter()
-            .cloned()
-            .map(|row| (row.id.to_string(), row))
-            .collect();
+        let forms_by_id = unique_map(
+            document
+                .metadata
+                .forms
+                .iter()
+                .cloned()
+                .map(|row| (row.id.to_string(), row)),
+            "form",
+        )?;
         let etymologies_by_assertion =
             group_by(document.metadata.etymologies.iter().cloned(), |row| {
                 row.assertion.to_string()
@@ -579,13 +614,15 @@ impl DictionarySearchEngine {
                     map
                 },
             );
-        let editorial_by_id = document
-            .metadata
-            .editorial_senses
-            .iter()
-            .cloned()
-            .map(|row| (row.id.to_string(), row))
-            .collect();
+        let editorial_by_id = unique_map(
+            document
+                .metadata
+                .editorial_senses
+                .iter()
+                .cloned()
+                .map(|row| (row.id.to_string(), row)),
+            "editorial sense",
+        )?;
         let relations_by_origin =
             indexed_group(document.metadata.relations.iter().cloned(), |row| {
                 local_ref_key(&row.origin)
@@ -594,42 +631,52 @@ impl DictionarySearchEngine {
             indexed_group(document.metadata.annotations.iter().cloned(), |row| {
                 local_ref_key(&row.target)
             });
-        let computations_by_id = document
-            .metadata
-            .computations
-            .iter()
-            .cloned()
-            .enumerate()
-            .map(|(ordinal, row)| (row.id.to_string(), (ordinal, row)))
-            .collect();
+        let computations_by_id = unique_map(
+            document
+                .metadata
+                .computations
+                .iter()
+                .cloned()
+                .enumerate()
+                .map(|(ordinal, row)| (row.id.to_string(), (ordinal, row))),
+            "computation",
+        )?;
         let extensions_by_owner =
             indexed_group(document.metadata.extensions.iter().cloned(), |row| {
                 row.owner.to_string()
             });
-        let snapshots_by_key = registry
-            .snapshots
-            .iter()
-            .cloned()
-            .map(|row| (snapshot_key(&row), row))
-            .collect();
-        let occurrences_by_key = registry
-            .occurrences
-            .iter()
-            .cloned()
-            .map(|row| (record_key(&row.occurrence), row))
-            .collect();
-        let contributors_by_id = registry
-            .contributors
-            .iter()
-            .cloned()
-            .map(|row| (row.id.to_string(), row))
-            .collect();
-        let distributors_by_id = registry
-            .distributors
-            .iter()
-            .cloned()
-            .map(|row| (row.id.to_string(), row))
-            .collect();
+        let snapshots_by_key = unique_map(
+            registry
+                .snapshots
+                .iter()
+                .cloned()
+                .map(|row| (snapshot_key(&row), row)),
+            "snapshot attribution",
+        )?;
+        let occurrences_by_key = unique_map(
+            registry
+                .occurrences
+                .iter()
+                .cloned()
+                .map(|row| (record_key(&row.occurrence), row)),
+            "occurrence attribution",
+        )?;
+        let contributors_by_id = unique_map(
+            registry
+                .contributors
+                .iter()
+                .cloned()
+                .map(|row| (row.id.to_string(), row)),
+            "contributor",
+        )?;
+        let distributors_by_id = unique_map(
+            registry
+                .distributors
+                .iter()
+                .cloned()
+                .map(|row| (row.id.to_string(), row)),
+            "distributor",
+        )?;
         let mut revisions_by_assertion = BTreeMap::<String, Vec<EntityId>>::new();
         let mut tombstones_by_assertion = BTreeMap::<String, Vec<EntityId>>::new();
         for revision in &document.metadata.owned_revisions {
@@ -668,8 +715,10 @@ impl DictionarySearchEngine {
             );
         Ok(Self {
             store,
-            dictionary,
+            dictionary: document,
             state_sha256,
+            capture_index,
+            occurrence_index,
             entries,
             assertions,
             sources,
@@ -697,16 +746,33 @@ impl DictionarySearchEngine {
         })
     }
 
-    /// Return the SHA-256 of the exact canonical model bytes retained by the store.
+    /// Return the recorded header digest; it is not authenticated by fast open.
     #[must_use]
     pub fn state_sha256(&self) -> &str {
         &self.state_sha256
     }
 
+    fn capture(&self, reference: &CaptureRef) -> Option<&lexicon::RawCapture> {
+        self.capture_index
+            .get(reference)
+            .and_then(|index| self.dictionary.captures.get(*index))
+    }
+
+    fn occurrence(&self, reference: &OccurrenceRef) -> Option<&RawOccurrence> {
+        let (capture_index, occurrence_index) = self
+            .occurrence_index
+            .get(&(reference.capture.clone(), reference.locator.clone()))?;
+        self.dictionary
+            .captures
+            .get(*capture_index)?
+            .occurrences
+            .get(*occurrence_index)
+    }
+
     /// Return canonical fixture population counts for the additive build CLI.
     #[must_use]
     pub fn dictionary_counts(&self) -> (usize, usize, usize, usize) {
-        let document = self.dictionary.document();
+        let document = &self.dictionary;
         (
             document.captures.len(),
             document
@@ -748,7 +814,7 @@ impl DictionarySearchEngine {
             let assertion = self.assertions.get(assertion_id).ok_or_else(|| {
                 DictionaryQueryError::Integrity {
                     detail: format!(
-                        "SQL candidate {assertion_id} is absent from validated dictionary"
+                        "SQL candidate {assertion_id} is absent from the loaded dictionary draft"
                     ),
                 }
             })?;
@@ -831,7 +897,7 @@ impl DictionarySearchEngine {
             group.returned_count = group.hits.len();
             group.partial = group.returned_count < group.full_count;
         }
-        let metadata = self.dictionary.metadata();
+        let metadata = &self.dictionary.metadata;
         Ok(DictionaryExactResponse {
             version: 1,
             policy: EXACT_POLICY.into(),
@@ -860,7 +926,7 @@ impl DictionarySearchEngine {
         &self,
         target: &RelationTarget,
     ) -> Result<ReferenceResolution, DictionaryQueryError> {
-        let metadata = self.dictionary.metadata();
+        let metadata = &self.dictionary.metadata;
         let availability = self.availability.clone();
         match target {
             RelationTarget::Unknown => Ok(ReferenceResolution {
@@ -932,7 +998,7 @@ impl DictionarySearchEngine {
             for selector in &options.sources {
                 let source = self
                     .dictionary
-                    .registry()
+                    .registry
                     .resolve_source(selector, options.alias_scope)?;
                 let state = availability
                     .iter()
@@ -963,14 +1029,12 @@ impl DictionarySearchEngine {
             .ok_or_else(|| DictionaryQueryError::Integrity {
                 detail: format!("assertion {} references missing entry", assertion.id),
             })?;
-        let capture = self
-            .dictionary
-            .capture(&assertion.occurrence.capture)
-            .ok_or_else(|| DictionaryQueryError::Integrity {
+        let capture = self.capture(&assertion.occurrence.capture).ok_or_else(|| {
+            DictionaryQueryError::Integrity {
                 detail: format!("selected occurrence {} has no capture", assertion.id),
-            })?;
+            }
+        })?;
         let raw = self
-            .dictionary
             .occurrence(&assertion.occurrence)
             .ok_or_else(|| DictionaryQueryError::Integrity {
                 detail: format!("selected occurrence {} has no raw row", assertion.id),
@@ -1067,7 +1131,7 @@ impl DictionarySearchEngine {
                     .get(id)
                     .ok_or_else(|| DictionaryQueryError::Integrity {
                         detail: format!(
-                            "associated computation {id} is absent from validated dictionary"
+                            "associated computation {id} is absent from the loaded dictionary draft"
                         ),
                     })
             })
@@ -1281,8 +1345,7 @@ impl DictionarySearchEngine {
                     "catalogue occurrence capture is not in the requested release",
                 ));
             }
-            if self.dictionary.capture(&occurrence.capture).is_some()
-                && self.dictionary.occurrence(occurrence).is_none()
+            if self.capture(&occurrence.capture).is_some() && self.occurrence(occurrence).is_none()
             {
                 return Err(invalid_ref(
                     "loaded capture does not contain requested locator",
@@ -1389,8 +1452,8 @@ impl DictionarySearchEngine {
                 continue;
             };
             let occurrence_id = tuple_hex(&assertion.occurrence);
-            let capture = self.dictionary.capture(&assertion.occurrence.capture);
-            let raw = self.dictionary.occurrence(&assertion.occurrence).cloned();
+            let capture = self.capture(&assertion.occurrence.capture);
+            let raw = self.occurrence(&assertion.occurrence).cloned();
             let attr = self
                 .occurrences_by_key
                 .get(&tuple_hex(&assertion.occurrence))
@@ -1424,7 +1487,7 @@ impl DictionarySearchEngine {
                 raw,
                 capture_metadata,
                 payload_present: capture.is_some()
-                    && self.dictionary.occurrence(&assertion.occurrence).is_some(),
+                    && self.occurrence(&assertion.occurrence).is_some(),
                 current_eligible,
                 release_ids: releases,
                 owned_revision_ids,
@@ -1458,6 +1521,46 @@ fn group_by<T>(
     grouped
 }
 
+fn unique_map<K: Ord, V>(
+    rows: impl IntoIterator<Item = (K, V)>,
+    role: &str,
+) -> Result<BTreeMap<K, V>, DictionaryQueryError> {
+    let mut indexed = BTreeMap::new();
+    for (key, row) in rows {
+        if indexed.insert(key, row).is_some() {
+            return Err(DictionaryQueryError::Integrity {
+                detail: format!("duplicate {role} identity in query index"),
+            });
+        }
+    }
+    Ok(indexed)
+}
+
+#[cfg(test)]
+mod unverified_index_tests {
+    use super::unique_map;
+
+    #[test]
+    fn test_required_lookup_indexes_keep_unique_ids_and_reject_duplicates() {
+        let valid = unique_map([(String::from("entry-a"), 1usize)], "entry")
+            .expect("one required lookup identity is valid");
+        assert_eq!(valid.get("entry-a"), Some(&1));
+
+        let duplicate = unique_map(
+            [
+                (String::from("entry-a"), 1usize),
+                (String::from("entry-a"), 2usize),
+            ],
+            "entry",
+        )
+        .expect_err("duplicate IDs must not silently overwrite an earlier row");
+        assert!(matches!(
+            duplicate,
+            super::DictionaryQueryError::Integrity { .. }
+        ));
+    }
+}
+
 fn indexed_group<T>(
     rows: impl Iterator<Item = T>,
     key: impl Fn(&T) -> String,
@@ -1484,7 +1587,7 @@ fn collect_indexed<T: Clone>(
 
 fn build_availability(
     registry: &lexicon::RegistryDocument,
-    document: &lexicon::DictionaryDocument,
+    document: &lexicon::UnverifiedDictionaryDocument,
 ) -> Vec<DictionarySourceAvailability> {
     let mut sources = registry.sources.clone();
     sources.sort_by(|a, b| a.id.cmp(&b.id));
@@ -1566,15 +1669,17 @@ fn build_availability(
 }
 
 fn build_selected_assertions(
-    document: &lexicon::DictionaryDocument,
+    document: &lexicon::UnverifiedDictionaryDocument,
     availability: &[DictionarySourceAvailability],
-) -> BTreeMap<SourceId, BTreeSet<String>> {
-    let revisions: BTreeMap<_, _> = document
-        .metadata
-        .owned_revisions
-        .iter()
-        .map(|row| (row.id.clone(), row))
-        .collect();
+) -> Result<BTreeMap<SourceId, BTreeSet<String>>, DictionaryQueryError> {
+    let revisions = unique_map(
+        document
+            .metadata
+            .owned_revisions
+            .iter()
+            .map(|row| (row.id.clone(), row)),
+        "owned revision",
+    )?;
     let mut selected = BTreeMap::new();
     for source in availability {
         let release_ids: BTreeSet<_> = source
@@ -1611,7 +1716,7 @@ fn build_selected_assertions(
         };
         selected.insert(source.source.id.clone(), ids);
     }
-    selected
+    Ok(selected)
 }
 
 fn local_ref_key(reference: &LocalRef) -> String {

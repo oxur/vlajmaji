@@ -52,6 +52,7 @@ pub use dictionary::{
     OwnedRevisionRecord, PosMapping, Presence, RawCapture, RawJson, RawOccurrence,
     RedistributionStatus, RelationKind, RelationRecord, RelationScope, RelationTarget,
     ReleaseAccounting, ReleaseDiagnostic, ReleaseRecord, SourceEvidence, TextRange, TextValue,
+    UnverifiedDictionaryDocument,
 };
 pub use jbotci::{
     JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION, JbotciImport,

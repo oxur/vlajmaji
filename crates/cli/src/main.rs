@@ -3,7 +3,7 @@
 use std::io::{self, Read, Write};
 use std::path::{Path, PathBuf};
 
-use clap::{Parser, Subcommand};
+use clap::{Parser, Subcommand, ValueEnum};
 use vlajmaji_lexicon::{
     Dictionary, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION,
     JbotciImportError, JbotciImportOptions, import_jbotci_export,
@@ -11,6 +11,10 @@ use vlajmaji_lexicon::{
 use vlajmaji_search::{
     DictionaryErrorReport, DictionaryRequest, DictionarySearchEngine, Query, SearchEngine,
     SearchOptions,
+};
+use vlajmaji_store::{
+    DictionaryStoreVerification, DictionaryStoreVerificationCheck,
+    DictionaryStoreVerificationReport,
 };
 
 #[derive(Debug, Parser)]
@@ -64,6 +68,15 @@ enum Command {
         #[arg(long)]
         request: Option<String>,
     },
+    /// Explicitly audit one or all integrity boundaries of an existing grouped store.
+    #[command(
+        after_help = "STORE defaults to XDG_DATA_HOME/vlajmaji/stores/default, falling back to HOME/.local/share/vlajmaji/stores/default. An explicit STORE overrides the environment. Verify only opens an existing store and never creates or downloads it. A named check certifies only that scope; `all` attempts every check. The default location is intended for a future dictionary-of-dictionaries; the initial Lensisku-only store is provisional."
+    )]
+    Verify {
+        #[arg(value_enum)]
+        check: VerifyCheck,
+        store: Option<PathBuf>,
+    },
     /// Normalize a pinned raw jbotci export into the complete versioned dictionary document.
     JbotciImport {
         raw: std::path::PathBuf,
@@ -91,10 +104,36 @@ enum Command {
     },
 }
 
+#[derive(Debug, Clone, Copy, ValueEnum)]
+enum VerifyCheck {
+    Schema,
+    Metadata,
+    Hashes,
+    Model,
+    Fks,
+    Projection,
+    All,
+}
+
+impl From<VerifyCheck> for DictionaryStoreVerificationCheck {
+    fn from(value: VerifyCheck) -> Self {
+        match value {
+            VerifyCheck::Schema => Self::Schema,
+            VerifyCheck::Metadata => Self::Metadata,
+            VerifyCheck::Hashes => Self::Hashes,
+            VerifyCheck::Model => Self::Model,
+            VerifyCheck::Fks => Self::Fks,
+            VerifyCheck::Projection => Self::Projection,
+            VerifyCheck::All => Self::All,
+        }
+    }
+}
+
 #[derive(Debug)]
 enum CliError {
     Legacy(String),
     Structured(DictionaryErrorReport),
+    Verification(DictionaryStoreVerificationReport),
 }
 
 fn structured_error(code: &str, message: impl Into<String>) -> CliError {
@@ -221,6 +260,16 @@ fn execute() -> Result<serde_json::Value, CliError> {
                 )
                 .map_err(|error| structured_error("response_json", error.to_string()))?,
             }
+        }
+        Command::Verify { check, store } => {
+            let selected = resolve_store(store)?;
+            let report = DictionaryStoreVerification::verify(&selected.path, check.into())
+                .map_err(|error| structured_error("store", error.to_string()))?;
+            if !report.ok {
+                return Err(CliError::Verification(report));
+            }
+            serde_json::to_value(report)
+                .map_err(|error| structured_error("verification_json", error.to_string()))?
         }
         Command::JbotciImport {
             raw,
@@ -377,23 +426,19 @@ fn info(explicit: Option<PathBuf>) -> Result<serde_json::Value, CliError> {
     if grouped_marker {
         let store = vlajmaji_store::DictionaryStore::open(&selected.path)
             .map_err(|error| structured_error("store", error.to_string()))?;
-        let dictionary = store.dictionary();
-        let source_records = dictionary.registry().document().sources;
-        let occurrences = dictionary
-            .captures()
-            .iter()
-            .map(|capture| capture.occurrences.len())
-            .sum::<usize>();
+        let summary = store
+            .summary()
+            .map_err(|error| structured_error("store", error.to_string()))?;
         return Ok(serde_json::json!({
             "operation":"info",
             "version":1,
             "format":"dictionary",
-            "captures":dictionary.captures().len(),
-            "occurrences":occurrences,
-            "entries":dictionary.metadata().entries.len(),
-            "assertions":dictionary.metadata().assertions.len(),
-            "source_count":source_records.len(),
-            "sources":source_records
+            "captures":summary.captures,
+            "occurrences":summary.occurrences,
+            "entries":summary.entries,
+            "assertions":summary.assertions,
+            "source_count":summary.sources.len(),
+            "sources":summary.sources
         }));
     }
     if selected.is_default && !legacy_marker {
@@ -493,6 +538,17 @@ fn main() -> std::process::ExitCode {
         Err(CliError::Structured(report)) => {
             let mut stderr = io::stderr().lock();
             if serde_json::to_writer(&mut stderr, &serde_json::json!({"error": report})).is_ok() {
+                let _ = stderr.write_all(b"\n");
+            }
+            return std::process::ExitCode::FAILURE;
+        }
+        Err(CliError::Verification(report)) => {
+            let mut stderr = io::stderr().lock();
+            let envelope = serde_json::json!({
+                "error":{"code":"verification_failed","message":"one or more verification checks failed or were blocked","sources":[]},
+                "verification":report
+            });
+            if serde_json::to_writer(&mut stderr, &envelope).is_ok() {
                 let _ = stderr.write_all(b"\n");
             }
             return std::process::ExitCode::FAILURE;

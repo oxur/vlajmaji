@@ -1,8 +1,9 @@
-//! Immutable validated persistence for the versioned [`Dictionary`](vlajmaji_lexicon::Dictionary).
+//! Read-only persistence for the versioned [`Dictionary`](vlajmaji_lexicon::Dictionary),
+//! with explicit verification of persisted integrity boundaries.
 //!
-//! A store owns a read-only SQLite connection and the snapshot whose canonical
-//! bytes, model, schema, foreign keys, and complete relational projection passed
-//! validation when it was opened. It does not migrate or repair files.
+//! A store owns a read-only SQLite connection and a minimally checked header.
+//! Comprehensive schema, byte, model, foreign-key, and projection checks run
+//! only when explicitly requested. It does not migrate or repair files.
 
 use std::{
     error::Error,
@@ -11,12 +12,13 @@ use std::{
 };
 
 use rusqlite::{Connection, OpenFlags, types::Value};
-use sha2::{Digest, Sha256};
-use vlajmaji_lexicon::{Dictionary, DictionaryError};
+use vlajmaji_lexicon::{
+    Dictionary, DictionaryDocument, DictionaryError, RegistryDocument, SourceRecord,
+};
 
 use crate::dictionary_schema::{self, DATABASE_FILE};
 
-/// A typed reason that an existing dictionary store is not acceptable.
+/// A typed reason that an existing dictionary store failed a specific boundary.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[non_exhaustive]
 pub enum DictionaryStoreInvalidity {
@@ -38,7 +40,7 @@ pub enum DictionaryStoreInvalidity {
     Projection,
 }
 
-/// Failure to create or strictly open an immutable dictionary store.
+/// Failure to create, minimally open, or explicitly read/verify a dictionary store.
 #[derive(Debug)]
 #[non_exhaustive]
 pub enum DictionaryStoreError {
@@ -105,13 +107,27 @@ impl From<io::Error> for DictionaryStoreError {
     }
 }
 
-/// A complete dictionary store held on one validated read-only SQLite snapshot.
+/// A read-only dictionary store held on one minimally checked SQLite snapshot.
 pub struct DictionaryStore {
     path: PathBuf,
     database_path: PathBuf,
     _connection: Connection,
-    dictionary: Dictionary,
-    canonical_bytes: Vec<u8>,
+    metadata: std::collections::BTreeMap<String, String>,
+}
+
+/// SQL-derived counts and source rows from the store snapshot.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct DictionaryStoreSummary {
+    /// Number of persisted captures.
+    pub captures: usize,
+    /// Number of persisted raw occurrences.
+    pub occurrences: usize,
+    /// Number of persisted dictionary entries.
+    pub entries: usize,
+    /// Number of persisted assertions.
+    pub assertions: usize,
+    /// Source rows in their persisted ordinal order.
+    pub sources: Vec<SourceRecord>,
 }
 
 impl fmt::Debug for DictionaryStore {
@@ -124,8 +140,8 @@ impl fmt::Debug for DictionaryStore {
 }
 
 impl DictionaryStore {
-    /// Validate a dictionary, build a fresh store under an existing parent, then
-    /// reopen and return the complete read-only validated snapshot.
+    /// Validate a dictionary, build a fresh store under an existing parent, run
+    /// every verification check, then return its read-only snapshot.
     ///
     /// The destination leaf must not exist, even as a dangling symlink. Creation
     /// never merges, replaces, repairs, or deletes caller-owned paths. A failed
@@ -177,18 +193,30 @@ impl DictionaryStore {
         let database_path = path.join(DATABASE_FILE);
         let result = build(&database_path, dictionary, &canonical);
         result?;
-        Self::open(path)
+        let store = Self::open(&path)?;
+        let report = crate::DictionaryStoreVerification::verify(
+            &path,
+            crate::DictionaryStoreVerificationCheck::All,
+        )?;
+        if !report.ok {
+            return Err(invalid(
+                DictionaryStoreInvalidity::Projection,
+                "newly created dictionary store failed complete verification",
+            ));
+        }
+        Ok(store)
     }
 
-    /// Open an existing dictionary store without creating, migrating, or writing it.
+    /// Open an existing dictionary store after checking its minimum readable header.
     ///
     /// The returned borrow and SQL state refer to the read transaction pinned by
     /// the first metadata read; dropping the store releases that snapshot.
     ///
     /// # Errors
     ///
-    /// Returns a typed family/version/completeness/schema/canonical/FK/projection
-    /// reason or the underlying SQLite/filesystem diagnostic.
+    /// This does not verify the schema, canonical bytes, model, hashes, foreign
+    /// keys, or relational projection. Use [`crate::DictionaryStoreVerification`]
+    /// for those explicit checks.
     pub fn open(path: impl AsRef<Path>) -> Result<Self, DictionaryStoreError> {
         let path = path.as_ref().to_path_buf();
         let database_path = path.join(DATABASE_FILE);
@@ -204,51 +232,125 @@ impl DictionaryStore {
         )?;
         connection.execute_batch("PRAGMA foreign_keys=ON; BEGIN DEFERRED;")?;
         let metadata = read_metadata(&connection)?;
-        check_metadata(&metadata)?;
-        check_schema(&connection)?;
-        let (canonical_bytes, legacy_bytes) = read_canonical(&connection)?;
-        let expected_hash = metadata.get("canonical_sha256").ok_or_else(|| {
-            invalid(
-                DictionaryStoreInvalidity::CanonicalBytes,
-                "canonical hash metadata is missing",
-            )
-        })?;
-        let actual_hash = format!("{:x}", Sha256::digest(&canonical_bytes));
-        if &actual_hash != expected_hash {
-            return Err(invalid(
-                DictionaryStoreInvalidity::CanonicalBytes,
-                "canonical document digest does not match metadata",
-            ));
-        }
-        let dictionary = Dictionary::from_json_bytes(&canonical_bytes)
-            .map_err(DictionaryStoreError::InvalidDictionary)?;
-        if dictionary.document().legacy_archive.as_deref() != legacy_bytes.as_deref() {
-            return Err(invalid(
-                DictionaryStoreInvalidity::CanonicalBytes,
-                "canonical document legacy archive column differs from the document",
-            ));
-        }
-        check_foreign_keys(&connection)?;
-        check_projection(&connection, &dictionary, &canonical_bytes)?;
+        check_minimal_metadata(&metadata)?;
         Ok(Self {
             path,
             database_path,
             _connection: connection,
-            dictionary,
-            canonical_bytes,
+            metadata,
         })
     }
 
-    /// Borrow the complete validated model represented by this snapshot.
-    #[must_use]
-    pub fn dictionary(&self) -> &Dictionary {
-        &self.dictionary
+    /// Load and strictly validate the canonical model on explicit request.
+    ///
+    /// This validates the model graph but does not certify the store hashes,
+    /// schema, foreign keys, or relational projection.
+    ///
+    /// # Errors
+    ///
+    /// Returns a backend or canonical-model validation error.
+    pub fn dictionary(&self) -> Result<Dictionary, DictionaryStoreError> {
+        let (bytes, _) = read_canonical(&self._connection)?;
+        Dictionary::from_json_bytes(&bytes).map_err(DictionaryStoreError::InvalidDictionary)
     }
 
-    /// Borrow the deterministic canonical JSON bytes used to build this store.
-    #[must_use]
-    pub fn canonical_bytes(&self) -> &[u8] {
-        &self.canonical_bytes
+    /// Read the canonical JSON bytes on explicit request.
+    ///
+    /// Reading these bytes does not validate their hash or model.
+    ///
+    /// # Errors
+    ///
+    /// Returns a backend or malformed/missing canonical-row error.
+    pub fn canonical_bytes(&self) -> Result<Vec<u8>, DictionaryStoreError> {
+        read_canonical(&self._connection).map(|(bytes, _)| bytes)
+    }
+
+    /// Load the typed canonical draft without claiming whole-model validation.
+    ///
+    /// # Errors
+    ///
+    /// Returns a backend, missing-row, or typed-document parsing error.
+    pub fn unverified_document(
+        &self,
+    ) -> Result<DictionaryDocument<RegistryDocument>, DictionaryStoreError> {
+        let (bytes, _) = read_canonical(&self._connection)?;
+        DictionaryDocument::from_unverified_json_bytes(&bytes)
+            .map_err(DictionaryStoreError::InvalidDictionary)
+    }
+
+    /// Return the recorded canonical digest from the minimally checked header.
+    /// This value is not authenticated until the `hashes` check passes.
+    pub fn recorded_state_sha256(&self) -> &str {
+        self.metadata
+            .get("canonical_sha256")
+            .map(String::as_str)
+            .unwrap_or_default()
+    }
+
+    /// Return persisted summary values without loading the canonical model.
+    ///
+    /// # Errors
+    ///
+    /// Returns a backend error or a projection error for malformed source rows.
+    pub fn summary(&self) -> Result<DictionaryStoreSummary, DictionaryStoreError> {
+        let count = |table: &str| -> Result<usize, DictionaryStoreError> {
+            let sql = format!("SELECT count(*) FROM {table}");
+            let count: i64 = self._connection.query_row(&sql, [], |row| row.get(0))?;
+            usize::try_from(count)
+                .map_err(|error| DictionaryStoreError::Io(io::Error::other(error.to_string())))
+        };
+        let mut statement = self._connection.prepare(
+            "SELECT id,display_name,abbreviation,abbreviation_kind,abbreviation_evidence,origin FROM sources ORDER BY ordinal",
+        )?;
+        let rows = statement.query_map([], |row| {
+            Ok((
+                row.get::<_, String>(0)?,
+                row.get::<_, String>(1)?,
+                row.get::<_, String>(2)?,
+                row.get::<_, String>(3)?,
+                row.get::<_, Option<String>>(4)?,
+                row.get::<_, String>(5)?,
+            ))
+        })?;
+        let mut sources = Vec::new();
+        for row in rows {
+            let (id, display_name, abbreviation, kind, evidence, origin) = row?;
+            sources.push(SourceRecord {
+                id: vlajmaji_lexicon::SourceId::new(id).map_err(|error| {
+                    invalid(DictionaryStoreInvalidity::Projection, error.to_string())
+                })?,
+                display_name,
+                abbreviation,
+                abbreviation_kind: match kind.as_str() {
+                    "Conventional" => vlajmaji_lexicon::AbbreviationKind::Conventional,
+                    "ProjectAssigned" => vlajmaji_lexicon::AbbreviationKind::ProjectAssigned,
+                    _ => {
+                        return Err(invalid(
+                            DictionaryStoreInvalidity::Projection,
+                            "unknown source abbreviation kind",
+                        ));
+                    }
+                },
+                abbreviation_evidence: evidence,
+                origin: match origin.as_str() {
+                    "Upstream" => vlajmaji_lexicon::SourceOrigin::Upstream,
+                    "OwnedDraft" => vlajmaji_lexicon::SourceOrigin::OwnedDraft,
+                    _ => {
+                        return Err(invalid(
+                            DictionaryStoreInvalidity::Projection,
+                            "unknown source origin",
+                        ));
+                    }
+                },
+            });
+        }
+        Ok(DictionaryStoreSummary {
+            captures: count("raw_captures")?,
+            occurrences: count("raw_occurrences")?,
+            entries: count("entries")?,
+            assertions: count("assertions")?,
+            sources,
+        })
     }
 
     /// Return the caller-owned store directory.
@@ -312,6 +414,60 @@ fn invalid(reason: DictionaryStoreInvalidity, detail: impl Into<String>) -> Dict
     }
 }
 
+fn check_minimal_metadata(
+    metadata: &std::collections::BTreeMap<String, String>,
+) -> Result<(), DictionaryStoreError> {
+    check_metadata(metadata)?;
+    let digest = metadata
+        .get("canonical_sha256")
+        .map(String::as_str)
+        .unwrap_or("");
+    if digest.len() != 64
+        || !digest
+            .bytes()
+            .all(|byte| byte.is_ascii_hexdigit() && !byte.is_ascii_uppercase())
+    {
+        return Err(invalid(
+            DictionaryStoreInvalidity::CanonicalBytes,
+            "canonical_sha256 must be 64 lowercase hexadecimal characters",
+        ));
+    }
+    let dictionary_version = metadata
+        .get("dictionary_version")
+        .and_then(|value| value.parse::<u32>().ok())
+        .ok_or_else(|| {
+            invalid(
+                DictionaryStoreInvalidity::CanonicalBytes,
+                "dictionary_version is not an unsigned integer",
+            )
+        })?;
+    let registry_version = metadata
+        .get("registry_version")
+        .and_then(|value| value.parse::<u32>().ok())
+        .ok_or_else(|| {
+            invalid(
+                DictionaryStoreInvalidity::CanonicalBytes,
+                "registry_version is not an unsigned integer",
+            )
+        })?;
+    if dictionary_version != 1 || registry_version != 1 {
+        return Err(invalid(
+            DictionaryStoreInvalidity::CanonicalBytes,
+            "dictionary or registry version is unsupported",
+        ));
+    }
+    metadata
+        .get("catalogue_revision")
+        .and_then(|value| value.parse::<u64>().ok())
+        .ok_or_else(|| {
+            invalid(
+                DictionaryStoreInvalidity::CanonicalBytes,
+                "catalogue_revision is not an unsigned integer",
+            )
+        })?;
+    Ok(())
+}
+
 fn build(
     path: &Path,
     dictionary: &Dictionary,
@@ -353,7 +509,7 @@ fn populate(
     Ok(())
 }
 
-fn read_metadata(
+pub(crate) fn read_metadata(
     conn: &Connection,
 ) -> Result<std::collections::BTreeMap<String, String>, DictionaryStoreError> {
     let has_table: bool = conn.query_row(
@@ -404,12 +560,17 @@ fn read_metadata(
                 format!("metadata value for {key} is not stored as TEXT"),
             ));
         };
-        result.insert(key, value);
+        if result.insert(key.clone(), value).is_some() {
+            return Err(invalid(
+                DictionaryStoreInvalidity::Format,
+                format!("metadata key {key:?} is repeated"),
+            ));
+        }
     }
     Ok(result)
 }
 
-fn check_metadata(
+pub(crate) fn check_metadata(
     metadata: &std::collections::BTreeMap<String, String>,
 ) -> Result<(), DictionaryStoreError> {
     if metadata.get("format").map(String::as_str) != Some(dictionary_schema::FORMAT) {
@@ -447,7 +608,7 @@ fn check_metadata(
     Ok(())
 }
 
-fn check_schema(conn: &Connection) -> Result<(), DictionaryStoreError> {
+pub(crate) fn check_schema(conn: &Connection) -> Result<(), DictionaryStoreError> {
     let expected = Connection::open_in_memory()?;
     dictionary_schema::create_schema(&expected)?;
     if dictionary_schema::schema_sql(conn)? != dictionary_schema::schema_sql(&expected)? {
@@ -459,7 +620,9 @@ fn check_schema(conn: &Connection) -> Result<(), DictionaryStoreError> {
     Ok(())
 }
 
-fn read_canonical(conn: &Connection) -> Result<(Vec<u8>, Option<Vec<u8>>), DictionaryStoreError> {
+pub(crate) fn read_canonical(
+    conn: &Connection,
+) -> Result<(Vec<u8>, Option<Vec<u8>>), DictionaryStoreError> {
     let mut stmt = conn.prepare("SELECT json,legacy_archive FROM canonical_document WHERE id=1")?;
     let rows: Vec<(Value, Value)> = stmt
         .query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?
@@ -495,7 +658,7 @@ fn read_canonical(conn: &Connection) -> Result<(Vec<u8>, Option<Vec<u8>>), Dicti
     Ok((json, legacy))
 }
 
-fn check_foreign_keys(conn: &Connection) -> Result<(), DictionaryStoreError> {
+pub(crate) fn check_foreign_keys(conn: &Connection) -> Result<(), DictionaryStoreError> {
     let mut stmt = conn.prepare("PRAGMA foreign_key_check")?;
     let mut rows = stmt.query([])?;
     if rows.next()?.is_some() {
@@ -507,7 +670,7 @@ fn check_foreign_keys(conn: &Connection) -> Result<(), DictionaryStoreError> {
     Ok(())
 }
 
-fn check_projection(
+pub(crate) fn check_projection(
     conn: &Connection,
     dictionary: &Dictionary,
     canonical: &[u8],

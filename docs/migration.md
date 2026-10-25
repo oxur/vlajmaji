@@ -83,8 +83,9 @@ fresh destination:
    does not assign missing lexical identities or infer source claims.
 3. Call `Dictionary::from_legacy_archive(&archive, registry, metadata)`, then
    `DictionaryStore::create("new-dictionary-store", &dictionary)`.
-4. Drop the returned store and use `DictionaryStore::open` to validate the new
-   read-only snapshot and complete relational projection.
+4. Drop the returned store, reopen it with `DictionaryStore::open`, and request
+   `DictionaryStoreVerificationCheck::All` to validate the read-only snapshot
+   and complete relational projection.
 
 The old SQLite store and archive are read-only inputs to this procedure. The
 accepted legacy archive may omit model-only opaque records; such records are

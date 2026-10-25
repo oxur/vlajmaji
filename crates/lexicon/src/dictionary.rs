@@ -941,18 +941,24 @@ pub struct DictionaryMetadata {
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 /// Versioned dictionary data type `DictionaryDocument`; see the crate documentation for preservation rules.
-pub struct DictionaryDocument {
+pub struct DictionaryDocument<R = SourceRegistry> {
     /// Value retained for `version` without implicit normalization.
     pub version: u32,
     /// Value retained for `legacy_archive` without implicit normalization.
     pub legacy_archive: Option<Vec<u8>>,
     /// Value retained for `registry` without implicit normalization.
-    pub registry: SourceRegistry,
+    pub registry: R,
     /// Value retained for `captures` without implicit normalization.
     pub captures: Vec<RawCapture>,
     /// Capture-time source description and temporal precision.
     pub metadata: DictionaryMetadata,
 }
+
+/// A typed dictionary draft whose registry and complete graph have not been validated.
+///
+/// This is suitable for reading persisted data before an explicit verification
+/// operation. It must not be treated as a [`Dictionary`].
+pub type UnverifiedDictionaryDocument = DictionaryDocument<crate::RegistryDocument>;
 impl Default for DictionaryDocument {
     fn default() -> Self {
         Self {
@@ -962,6 +968,30 @@ impl Default for DictionaryDocument {
             captures: Vec::new(),
             metadata: DictionaryMetadata::default(),
         }
+    }
+}
+
+impl DictionaryDocument<crate::RegistryDocument> {
+    /// Parse a typed draft without validating graph relationships or duplicate
+    /// JSON object keys. Call [`Dictionary::from_document`] after converting and
+    /// validating its registry before treating the data as a model.
+    pub fn from_unverified_json_bytes(
+        bytes: &[u8],
+    ) -> Result<UnverifiedDictionaryDocument, DictionaryError> {
+        let text = std::str::from_utf8(bytes)
+            .map_err(|error| DictionaryError::InvalidJson(error.to_string()))?;
+        let document: UnverifiedDictionaryDocument = serde_json::from_str(text)
+            .map_err(|error| DictionaryError::InvalidJson(error.to_string()))?;
+        if document.version != 1 {
+            return Err(DictionaryError::UnsupportedVersion(document.version));
+        }
+        if document.registry.version != 1 {
+            return Err(DictionaryError::InvalidJson(format!(
+                "unsupported registry document version {}",
+                document.registry.version
+            )));
+        }
+        Ok(document)
     }
 }
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Default)]

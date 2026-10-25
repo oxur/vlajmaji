@@ -349,6 +349,65 @@ pub struct RegistryDocument {
     pub occurrences: Vec<OccurrenceAttribution>,
 }
 
+impl RegistryDocument {
+    /// Resolve an exact source ID, current abbreviation, or eligible alias
+    /// without claiming that this draft registry is globally valid.
+    pub fn resolve_source(
+        &self,
+        selector: &str,
+        scope: AliasScope,
+    ) -> Result<&SourceRecord, RegistryError> {
+        let exact_id = SourceId::new(selector.to_owned());
+        if let Ok(exact_id) = exact_id
+            && let Some(source) = self.unique_source_by_id(&exact_id)?
+        {
+            return Ok(source);
+        }
+        let mut matches = BTreeMap::<SourceId, &SourceRecord>::new();
+        for source in &self.sources {
+            if source.abbreviation == selector {
+                let source = self
+                    .unique_source_by_id(&source.id)?
+                    .ok_or_else(|| RegistryError::UnknownSource(selector.to_owned()))?;
+                matches.insert(source.id.clone(), source);
+            }
+        }
+        for alias in &self.aliases {
+            if alias.text == selector
+                && (alias.status == AliasStatus::Active || scope == AliasScope::IncludeRetired)
+                && let Some(source) = self.unique_source_by_id(&alias.source)?
+            {
+                matches.insert(source.id.clone(), source);
+            }
+        }
+        match matches.len() {
+            0 => Err(RegistryError::UnknownSource(selector.to_owned())),
+            1 => matches
+                .into_values()
+                .next()
+                .ok_or_else(|| RegistryError::UnknownSource(selector.to_owned())),
+            _ => Err(RegistryError::AmbiguousAlias {
+                alias: selector.to_owned(),
+                sources: matches.into_keys().collect(),
+            }),
+        }
+    }
+
+    fn unique_source_by_id(&self, id: &SourceId) -> Result<Option<&SourceRecord>, RegistryError> {
+        let mut sources = self.sources.iter().filter(|source| &source.id == id);
+        let Some(source) = sources.next() else {
+            return Ok(None);
+        };
+        if sources.next().is_some() {
+            return Err(RegistryError::DuplicateEntity {
+                role: "source",
+                id: id.to_string(),
+            });
+        }
+        Ok(Some(source))
+    }
+}
+
 impl Default for RegistryDocument {
     fn default() -> Self {
         Self {
@@ -596,43 +655,7 @@ impl SourceRegistry {
         selector: &str,
         scope: AliasScope,
     ) -> Result<&SourceRecord, RegistryError> {
-        if let Some(source) = self
-            .document
-            .sources
-            .iter()
-            .find(|source| source.id.as_str() == selector)
-        {
-            return Ok(source);
-        }
-        let mut matches = BTreeMap::<SourceId, &SourceRecord>::new();
-        for source in &self.document.sources {
-            if source.abbreviation == selector {
-                matches.insert(source.id.clone(), source);
-            }
-        }
-        for alias in &self.document.aliases {
-            if alias.text == selector
-                && (alias.status == AliasStatus::Active || scope == AliasScope::IncludeRetired)
-                && let Some(source) = self
-                    .document
-                    .sources
-                    .iter()
-                    .find(|source| source.id == alias.source)
-            {
-                matches.insert(source.id.clone(), source);
-            }
-        }
-        match matches.len() {
-            0 => Err(RegistryError::UnknownSource(selector.to_owned())),
-            1 => matches
-                .into_values()
-                .next()
-                .ok_or_else(|| RegistryError::UnknownSource(selector.to_owned())),
-            _ => Err(RegistryError::AmbiguousAlias {
-                alias: selector.to_owned(),
-                sources: matches.into_keys().collect(),
-            }),
-        }
+        self.document.resolve_source(selector, scope)
     }
 
     pub(crate) fn registry_document(&self) -> &RegistryDocument {

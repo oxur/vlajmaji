@@ -26,8 +26,9 @@ The Rust workspace already provides:
   editorial, and computed evidence, plus an explicit legacy archive adapter
   ([model guide](docs/dictionary-model.md),
   [standards mapping limits](docs/dictionary-standards-map.md)).
-- SQLite persistence for that dictionary model, with strict read-only reopen
-  validation ([schema guide](docs/dictionary-schema.md)).
+- SQLite persistence for that dictionary model, with a minimum-header read-only
+  open and separately requested schema, metadata, hash, model, foreign-key, and
+  projection verification ([schema guide](docs/dictionary-schema.md)).
 - Source-grouped exact lookup with source selection, complete pre-page totals,
   occurrence-based paging, and stable local/catalogue reference resolution
   ([query guide](docs/dictionary-query.md)).

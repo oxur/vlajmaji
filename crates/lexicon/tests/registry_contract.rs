@@ -372,6 +372,17 @@ fn attribution_preserves_five_occurrences_roles_raw_bytes_and_archive() {
 }
 
 #[test]
+fn test_unverified_registry_selector_rejects_duplicate_source_identity() {
+    let (_, mut document) = fixture();
+    let duplicate = document.sources[0].clone();
+    document.sources.push(duplicate);
+    assert!(matches!(
+        document.resolve_source("src:a", AliasScope::ActiveOnly),
+        Err(RegistryError::DuplicateEntity { role: "source", id }) if id == "src:a"
+    ));
+}
+
+#[test]
 fn aliases_rename_retire_and_reuse_without_losing_history() {
     let (_lexicon, document) = fixture();
     let mut registry = SourceRegistry::from_document(document).unwrap();

@@ -4,8 +4,9 @@
 `vlajmaji_lexicon::Dictionary` in a fresh directory containing
 `dictionary.sqlite3`. Schema 1 is an explicit relational projection. The
 `canonical_document` JSON BLOB and optional exact `legacy_archive` BLOB are
-rebuild inputs, not a substitute for querying the typed tables. Opening a
-store compares every projected SQLite value with a freshly validated model.
+rebuild inputs, not a substitute for querying the typed tables. Ordinary open
+checks only the minimum readable header. Explicit verification compares the
+selected invariants with persisted metadata, bytes, model, and relational rows.
 
 ## Field map
 
@@ -38,9 +39,9 @@ source/spelling, assertion entry, and reverse release assertion membership.
 The schema has no generic entity-value table. SQL enforces declared CHECK,
 UNIQUE and foreign-key constraints; the validated `Dictionary` enforces richer
 cross-row rules such as capture hash identity, source membership, evidence
-ranges, owned ancestry, release accounting and availability. Reopen additionally
-checks the exact schema catalog and the complete projection, catching valid
-shape changes that satisfy SQL constraints.
+ranges, owned ancestry, release accounting and availability. The explicit
+`model` and `projection` checks apply those rules and compare every projected
+value; `schema` separately compares the exact DDL catalog.
 
 ## Lifecycle and trust boundary
 
@@ -49,29 +50,41 @@ an existing parent. It refuses files, directories and symlinks already at that
 leaf and never replaces caller data. It first commits the exact schema with
 format/version and `complete=0`, then populates the canonical document and typed
 rows in a separate transaction, setting `complete=1` only at the successful
-end. It closes the writer and returns only after strict reopen succeeds. A failed create can
+end. It closes the writer and returns only after all six explicit verification
+checks succeed. A failed create can
 leave a caller-owned failed directory; inspect it and choose whether to remove
 it. Open never repairs, migrates or creates files.
 
 `DictionaryStore::open` opens SQLite read-only and pins a deferred read snapshot
-before reading metadata. It checks format/version/completion, exact DDL,
-canonical bytes/hash/model, foreign keys, and all rows and cells in every table.
-It returns no partial model on failure. The successful store retains that
-read-only connection/snapshot until drop. This lifecycle is an integrity check
-for accidental or invalid changes, not an adversarial-file security boundary.
+before reading metadata. It checks the format, schema version, completion
+marker, required metadata keys, and supported dictionary/registry versions.
+It does not inspect the schema shape, canonical bytes, model validity, hashes,
+foreign keys, or relational projection. Use
+`DictionaryStoreVerification::verify(path, check)` to request `schema`,
+`metadata`, `hashes`, `model`, `fks`, `projection`, or `all`. A selective report
+contains only its requested row; `all` returns six rows in that order. A row
+can be `passed`, `failed`, or `blocked` when a required prerequisite cannot be
+read. Verification opens its own read-only snapshot and never repairs files.
+The `dictionary()` and `canonical_bytes()` accessors perform explicit fallible
+reads; the former validates the model, but neither certifies every store
+invariant.
 
 To persist a model loaded from the accepted versioned JSON:
 
 ```rust,no_run
 use std::path::Path;
 use vlajmaji_lexicon::Dictionary;
-use vlajmaji_store::DictionaryStore;
+use vlajmaji_store::{DictionaryStore, DictionaryStoreVerification, DictionaryStoreVerificationCheck};
 
 let dictionary = Dictionary::from_json_bytes(&std::fs::read("dictionary.json")?)?;
 let store = DictionaryStore::create(Path::new("data/dictionary"), &dictionary)?;
 drop(store);
 let reopened = DictionaryStore::open("data/dictionary")?;
-assert_eq!(reopened.dictionary().document(), dictionary.document());
+let report = DictionaryStoreVerification::verify(
+    "data/dictionary", DictionaryStoreVerificationCheck::All,
+)?;
+assert!(report.ok);
+assert_eq!(reopened.dictionary()?.document(), dictionary.document());
 # Ok::<(), Box<dyn std::error::Error>>(())
 ```
 
@@ -142,4 +155,3 @@ Notation: TEXT is exact BINARY UTF8; BLOB exact bytes; nullable columns preserve
 | computation_inputs | computation_id FK,ordinal,input_kind Occurrence/Entity/Literal,occurrence_id FK NULL,T(entity) optional,literal TEXT NULL; PK(parent,ordinal), exclusive shape. |
 | annotations | id+role annotation,computation_id FK,T(target) required,kind,value TEXT exact RawJson,TP(explanation). |
 | extensions | ordinal PK,owner_id FK entity_ids,name,value TEXT exact RawJson,E(evidence) optional. Owner can be any metadata entity, not just LocalRef roles. |
-
