@@ -107,8 +107,10 @@ make jbotci-update JBOTCI_NEW_PINS=/tmp/vlajmaji-new-pins.env \
   JBOTCI_STORE=/tmp/vlajmaji-new-store
 ```
 
-The replay and update workflows continue to require caller-chosen fresh release
-and store paths; they do not install data into the CLI's default store. After a
+Fresh replay and update workflows require caller-chosen release paths. They
+require a caller-chosen store path only when `JBOTCI_STORE` is supplied; with
+that variable omitted, each workflow remains release-only and does not install
+data into the CLI's default store. After a
 separate local build, `vlajmaji dictionary-query` and `vlajmaji info` can omit
 the store argument and resolve `$XDG_DATA_HOME/vlajmaji/stores/default`, or
 `$HOME/.local/share/vlajmaji/stores/default` when XDG data home is unset, empty,

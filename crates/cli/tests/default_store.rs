@@ -86,7 +86,7 @@ fn error_json(output: &Output, code: &str) -> Value {
 }
 
 #[test]
-fn xdg_default_build_query_stdin_and_info_match_explicit_store() {
+fn test_xdg_default_build_query_stdin_and_info_match_explicit_store() {
     let root = scratch();
     let xdg = root.join("data root");
     let home = root.join("other-home");
@@ -228,7 +228,7 @@ fn xdg_default_build_query_stdin_and_info_match_explicit_store() {
 }
 
 #[test]
-fn home_fallback_explicit_override_and_missing_default_are_truthful() {
+fn test_home_fallback_explicit_override_and_missing_default_are_truthful() {
     let root = scratch();
     let home = root.join("home");
     std::fs::create_dir(&home).unwrap();
@@ -299,7 +299,7 @@ fn home_fallback_explicit_override_and_missing_default_are_truthful() {
 }
 
 #[test]
-fn default_build_input_errors_and_occupied_leaves_have_bounded_side_effects() {
+fn test_default_build_input_errors_and_occupied_leaves_have_bounded_side_effects() {
     let root = scratch();
     let xdg = root.join("xdg");
     let missing_input = root.join("missing.json");
@@ -382,7 +382,7 @@ fn default_build_input_errors_and_occupied_leaves_have_bounded_side_effects() {
 }
 
 #[test]
-fn default_info_detects_ambiguous_and_corrupt_grouped_markers_without_fallback() {
+fn test_default_info_detects_ambiguous_and_corrupt_grouped_markers_without_fallback() {
     let root = scratch();
     let xdg = root.join("xdg");
     let store = xdg.join("vlajmaji/stores/default");
@@ -410,7 +410,7 @@ fn default_info_detects_ambiguous_and_corrupt_grouped_markers_without_fallback()
 
 #[cfg(unix)]
 #[test]
-fn non_utf8_environment_is_preserved_and_build_fails_before_mutation() {
+fn test_non_utf8_environment_is_preserved_and_build_fails_before_mutation() {
     use std::os::unix::ffi::OsStringExt;
 
     let root = scratch();
@@ -517,7 +517,7 @@ fn non_utf8_environment_is_preserved_and_build_fails_before_mutation() {
 }
 
 #[test]
-fn optional_store_positionals_are_visible_in_help_and_legacy_info_stays_legacy() {
+fn test_optional_store_positionals_are_visible_in_help_and_legacy_info_stays_legacy() {
     let root = scratch();
     let assert_path_help = |output: &Output| {
         assert!(output.status.success());

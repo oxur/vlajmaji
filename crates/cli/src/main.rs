@@ -428,11 +428,18 @@ fn marker_exists(path: &Path, is_default: bool) -> Result<bool, CliError> {
     match std::fs::symlink_metadata(path) {
         Ok(_) => Ok(true),
         Err(error) if error.kind() == io::ErrorKind::NotFound => Ok(false),
-        Err(_error) if !is_default => Ok(false),
-        Err(error) => Err(structured_error(
-            "io",
-            format!("inspect default store marker {}: {error}", path.display()),
-        )),
+        Err(error) => {
+            let message = format!(
+                "inspect {} store marker {}: {error}",
+                if is_default { "default" } else { "explicit" },
+                path.display()
+            );
+            if is_default {
+                Err(structured_error("io", message))
+            } else {
+                Err(CliError::Legacy(message))
+            }
+        }
     }
 }
 
@@ -511,15 +518,55 @@ fn main() -> std::process::ExitCode {
 
 #[cfg(test)]
 mod default_path_tests {
-    use super::default_store_path;
+    use super::{CliError, default_store_path, marker_exists};
+
+    fn test_scratch() -> std::path::PathBuf {
+        let path =
+            std::env::temp_dir().join(format!("vlajmaji-cli-marker-unit-{}", std::process::id()));
+        std::fs::create_dir(&path).expect("create marker-test scratch directory");
+        path
+    }
 
     #[cfg(unix)]
     #[test]
-    fn default_path_keeps_native_non_utf8_bytes() {
+    fn test_default_path_preserves_native_non_utf8_bytes() {
         use std::{ffi::OsString, os::unix::ffi::OsStringExt, path::PathBuf};
 
         let xdg = OsString::from_vec(b"/tmp/vlajmaji-xdg-\xff".to_vec());
         let expected = PathBuf::from(&xdg).join("vlajmaji/stores/default");
         assert_eq!(default_store_path(Some(xdg), None).unwrap(), expected);
+    }
+
+    #[test]
+    fn test_marker_exists_distinguishes_absence_and_propagates_metadata_errors() {
+        let root = test_scratch();
+        let marker = root.join("dictionary.sqlite3");
+        std::fs::write(&marker, b"marker").expect("write marker");
+        assert!(marker_exists(&marker, true).unwrap());
+
+        let missing = root.join("missing.sqlite3");
+        assert!(!marker_exists(&missing, true).unwrap());
+        assert!(!marker_exists(&missing, false).unwrap());
+
+        let ancestor = root.join("not-a-directory");
+        std::fs::write(&ancestor, b"file").expect("write non-directory ancestor");
+        let inaccessible_marker = ancestor.join("dictionary.sqlite3");
+        let default_error = marker_exists(&inaccessible_marker, true)
+            .expect_err("default marker inspection error propagates");
+        let CliError::Structured(report) = default_error else {
+            panic!("default marker error should remain structured");
+        };
+        assert_eq!(report.code, "io");
+        assert!(report.message.contains("inspect default store marker"));
+
+        let explicit_error = marker_exists(&inaccessible_marker, false)
+            .expect_err("explicit marker inspection error propagates");
+        let CliError::Legacy(message) = explicit_error else {
+            panic!("explicit legacy marker error should preserve plaintext shape");
+        };
+        assert!(message.contains("inspect explicit store marker"));
+        assert!(message.contains(&inaccessible_marker.display().to_string()));
+
+        std::fs::remove_dir_all(root).expect("remove marker-test scratch directory");
     }
 }
