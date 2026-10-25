@@ -1,0 +1,72 @@
+pair1-info-old 25.746116 s PASS
+pair1-info-new 0.019005625 s PASS
+pair1-farvi-old 27.059609792 s PASS
+pair1-farvi-new 1.158711916 s PASS
+pair2-info-new 0.010029583 s PASS
+pair2-info-old 24.658641 s PASS
+pair2-farvi-new 1.194966708 s PASS
+pair2-farvi-old 26.692359416 s PASS
+pair3-info-old 25.233912958 s PASS
+pair3-info-new 0.021010875 s PASS
+pair3-farvi-old 26.535502625 s PASS
+pair3-farvi-new 1.138650542 s PASS
+{
+  "info": {
+    "old_s": [
+      25.746116,
+      24.658641,
+      25.233912958
+    ],
+    "new_s": [
+      0.019005625,
+      0.010029583,
+      0.021010875
+    ],
+    "old_median_s": 25.233912958,
+    "new_median_s": 0.019005625,
+    "old_range_s": [
+      24.658641,
+      25.746116
+    ],
+    "new_range_s": [
+      0.010029583,
+      0.021010875
+    ],
+    "paired_old_over_new": [
+      1354.657686869019,
+      2458.5908506864143,
+      1200.9929599790587
+    ],
+    "median_old_over_new": 1327.7076106678944,
+    "all_whole_outputs_identical": true
+  },
+  "farvi": {
+    "old_s": [
+      27.059609792,
+      26.692359416,
+      26.535502625
+    ],
+    "new_s": [
+      1.158711916,
+      1.194966708,
+      1.138650542
+    ],
+    "old_median_s": 26.692359416,
+    "new_median_s": 1.158711916,
+    "old_range_s": [
+      26.535502625,
+      27.059609792
+    ],
+    "new_range_s": [
+      1.138650542,
+      1.194966708
+    ],
+    "paired_old_over_new": [
+      23.353181596175112,
+      22.337324744950134,
+      23.304342856932482
+    ],
+    "median_old_over_new": 23.03623450093181,
+    "all_whole_outputs_identical": true
+  }
+}

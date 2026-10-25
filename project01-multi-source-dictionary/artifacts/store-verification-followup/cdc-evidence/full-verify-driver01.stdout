@@ -1,0 +1,95 @@
+{
+  "verdict": "PASS",
+  "source": "53f9eacece01bb5f31ff4b3c2bcf270d7c4162e6",
+  "binary_sha256": "58a5a336dfe107fbf071bff5ca98c4cb3478676754e22c59f217ecc2a373d16a",
+  "argv": [
+    "/tmp/vlajmaji-store-verification-cdc/candidate01-release-cli",
+    "verify",
+    "all"
+  ],
+  "pid": 77201,
+  "exit": 0,
+  "elapsed_s": 26.021399917081,
+  "before": {
+    "sha256": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+    "bytes": 698281984,
+    "inode": 631095896,
+    "device": 16777233,
+    "nlink": 1,
+    "canonical_bytes": 215412497,
+    "canonical_sha256": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460",
+    "metadata": {
+      "format": "vlajmaji-dictionary",
+      "schema_version": "1",
+      "complete": "1",
+      "canonical_sha256": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460",
+      "dictionary_version": "1",
+      "registry_version": "1",
+      "catalogue_revision": "0"
+    },
+    "directory_entries": [
+      "dictionary.sqlite3"
+    ]
+  },
+  "after": {
+    "sha256": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+    "bytes": 698281984,
+    "inode": 631095896,
+    "device": 16777233,
+    "nlink": 1,
+    "canonical_bytes": 215412497,
+    "canonical_sha256": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460",
+    "metadata": {
+      "format": "vlajmaji-dictionary",
+      "schema_version": "1",
+      "complete": "1",
+      "canonical_sha256": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460",
+      "dictionary_version": "1",
+      "registry_version": "1",
+      "catalogue_revision": "0"
+    },
+    "directory_entries": [
+      "dictionary.sqlite3"
+    ]
+  },
+  "report": {
+    "checks": [
+      {
+        "check": "schema",
+        "diagnostic": "exact schema catalog matches",
+        "status": "passed"
+      },
+      {
+        "check": "metadata",
+        "diagnostic": "metadata shape, versions, and canonical header agreement passed",
+        "status": "passed"
+      },
+      {
+        "check": "hashes",
+        "diagnostic": "canonical digest, 2 capture digests, and legacy archive column passed",
+        "status": "passed"
+      },
+      {
+        "check": "model",
+        "diagnostic": "strict dictionary model validation passed",
+        "status": "passed"
+      },
+      {
+        "check": "fks",
+        "diagnostic": "foreign_key_check returned no violations",
+        "status": "passed"
+      },
+      {
+        "check": "projection",
+        "diagnostic": "all persisted rows and cells match the canonical model",
+        "status": "passed"
+      }
+    ],
+    "ok": true,
+    "operation": "verify",
+    "prerequisites": [],
+    "version": 1
+  },
+  "stdout_sha256": "a5d8dd75ee3831d326b6a092b105c2e07b90d4e956f9d9f13f4a8b31f61744c4",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

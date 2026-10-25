@@ -1,0 +1,15 @@
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.44s
+     Running tests/dictionary_verification.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_verification-8048f0dfb4e93933)
+
+running 6 tests
+test test_duplicate_json_keys_remain_a_strict_model_failure_and_block_draft_dependents ... ok
+test test_selected_schema_and_fks_run_without_canonical_prerequisites ... ok
+test test_unparseable_canonical_blocks_dependent_checks_but_model_fails ... ok
+test test_all_reports_independent_simultaneous_schema_metadata_and_fk_failures ... ok
+test test_valid_store_passes_all_scopes_and_selective_reports_have_one_row ... ok
+test test_unsupported_header_versions_fail_before_unparseable_canonical_blocks ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.69s
+

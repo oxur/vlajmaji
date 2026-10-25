@@ -1,0 +1,18 @@
+{
+  "verdict": "PASS",
+  "source": "53f9eacece01bb5f31ff4b3c2bcf270d7c4162e6",
+  "binary_sha256": "58a5a336dfe107fbf071bff5ca98c4cb3478676754e22c59f217ecc2a373d16a",
+  "baseline_binary_sha256": "68250cb649464eecd299efef2eb70d23b6827e5d8c40355eebdd1a4ce8bb5675",
+  "calls": 95,
+  "checks": 627,
+  "tamper_cases": 25,
+  "valid_check_names": [
+    "schema",
+    "metadata",
+    "hashes",
+    "model",
+    "fks",
+    "projection"
+  ],
+  "base_db_sha256_before_after": "5455611ed2ad50803dde148ab3c13527103f05a2b57c5ef18c5b98678b35035e"
+}

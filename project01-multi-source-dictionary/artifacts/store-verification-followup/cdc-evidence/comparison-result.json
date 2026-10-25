@@ -1,0 +1,309 @@
+{
+  "verdict": "PASS",
+  "identity": {
+    "old_source": "63da16f482de48632053d9892e58bd72de400255",
+    "new_source": "53f9eacece01bb5f31ff4b3c2bcf270d7c4162e6",
+    "old_binary": "/tmp/vlajmaji-cli-default-store-cdc/candidate02-release-cli",
+    "new_binary": "/tmp/vlajmaji-store-verification-cdc/candidate01-release-cli",
+    "old_binary_sha256": "68250cb649464eecd299efef2eb70d23b6827e5d8c40355eebdd1a4ce8bb5675",
+    "new_binary_sha256": "58a5a336dfe107fbf071bff5ca98c4cb3478676754e22c59f217ecc2a373d16a",
+    "profile": "release",
+    "host": {
+      "system": "Darwin",
+      "node": "lappy.local",
+      "release": "24.6.0",
+      "version": "Darwin Kernel Version 24.6.0: Tue Jul 21 20:51:05 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_ARM64_T6000",
+      "machine": "arm64",
+      "processor": "arm"
+    },
+    "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji",
+    "HOME": "/Users/oubiwann",
+    "XDG_DATA_HOME": null,
+    "database": "/Users/oubiwann/.local/share/vlajmaji/stores/default/dictionary.sqlite3",
+    "db_bytes": 698281984,
+    "db_sha256_before": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+    "db_device": 16777233,
+    "db_inode": 631095896,
+    "protocol": "3pairs per operation old-new,new-old,old-new;12process calls. No cache purge; hashes/full verification warm filesystem caches; fresh processes only. Same stdout file capture for both conditions. Other host activity not controlled."
+  },
+  "records": [
+    {
+      "pair": 1,
+      "operation": "info",
+      "condition": "old",
+      "label": "pair1-info-old",
+      "argv": [
+        "/tmp/vlajmaji-cli-default-store-cdc/candidate02-release-cli",
+        "info"
+      ],
+      "pid": 77376,
+      "exit": 0,
+      "elapsed_s": 25.746116,
+      "stdout_bytes": 304,
+      "stdout_sha256": "7ce64667b5a14bb0df0c24071371e6c8ceb054015fb76ad8a693e9cd30813ed3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pair": 1,
+      "operation": "info",
+      "condition": "new",
+      "label": "pair1-info-new",
+      "argv": [
+        "/tmp/vlajmaji-store-verification-cdc/candidate01-release-cli",
+        "info"
+      ],
+      "pid": 77471,
+      "exit": 0,
+      "elapsed_s": 0.019005625,
+      "stdout_bytes": 304,
+      "stdout_sha256": "7ce64667b5a14bb0df0c24071371e6c8ceb054015fb76ad8a693e9cd30813ed3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pair": 1,
+      "operation": "farvi",
+      "condition": "old",
+      "label": "pair1-farvi-old",
+      "argv": [
+        "/tmp/vlajmaji-cli-default-store-cdc/candidate02-release-cli",
+        "dictionary-query",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 77472,
+      "exit": 0,
+      "elapsed_s": 27.059609792,
+      "stdout_bytes": 3028230,
+      "stdout_sha256": "4a0c902b350162d7932169428713b53970d8aaba235c94da3cff313aa981054e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pair": 1,
+      "operation": "farvi",
+      "condition": "new",
+      "label": "pair1-farvi-new",
+      "argv": [
+        "/tmp/vlajmaji-store-verification-cdc/candidate01-release-cli",
+        "dictionary-query",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 77680,
+      "exit": 0,
+      "elapsed_s": 1.158711916,
+      "stdout_bytes": 3028230,
+      "stdout_sha256": "4a0c902b350162d7932169428713b53970d8aaba235c94da3cff313aa981054e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pair": 2,
+      "operation": "info",
+      "condition": "new",
+      "label": "pair2-info-new",
+      "argv": [
+        "/tmp/vlajmaji-store-verification-cdc/candidate01-release-cli",
+        "info"
+      ],
+      "pid": 77685,
+      "exit": 0,
+      "elapsed_s": 0.010029583,
+      "stdout_bytes": 304,
+      "stdout_sha256": "7ce64667b5a14bb0df0c24071371e6c8ceb054015fb76ad8a693e9cd30813ed3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pair": 2,
+      "operation": "info",
+      "condition": "old",
+      "label": "pair2-info-old",
+      "argv": [
+        "/tmp/vlajmaji-cli-default-store-cdc/candidate02-release-cli",
+        "info"
+      ],
+      "pid": 77686,
+      "exit": 0,
+      "elapsed_s": 24.658641,
+      "stdout_bytes": 304,
+      "stdout_sha256": "7ce64667b5a14bb0df0c24071371e6c8ceb054015fb76ad8a693e9cd30813ed3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pair": 2,
+      "operation": "farvi",
+      "condition": "new",
+      "label": "pair2-farvi-new",
+      "argv": [
+        "/tmp/vlajmaji-store-verification-cdc/candidate01-release-cli",
+        "dictionary-query",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 77810,
+      "exit": 0,
+      "elapsed_s": 1.194966708,
+      "stdout_bytes": 3028230,
+      "stdout_sha256": "4a0c902b350162d7932169428713b53970d8aaba235c94da3cff313aa981054e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pair": 2,
+      "operation": "farvi",
+      "condition": "old",
+      "label": "pair2-farvi-old",
+      "argv": [
+        "/tmp/vlajmaji-cli-default-store-cdc/candidate02-release-cli",
+        "dictionary-query",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 77811,
+      "exit": 0,
+      "elapsed_s": 26.692359416,
+      "stdout_bytes": 3028230,
+      "stdout_sha256": "4a0c902b350162d7932169428713b53970d8aaba235c94da3cff313aa981054e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pair": 3,
+      "operation": "info",
+      "condition": "old",
+      "label": "pair3-info-old",
+      "argv": [
+        "/tmp/vlajmaji-cli-default-store-cdc/candidate02-release-cli",
+        "info"
+      ],
+      "pid": 77942,
+      "exit": 0,
+      "elapsed_s": 25.233912958,
+      "stdout_bytes": 304,
+      "stdout_sha256": "7ce64667b5a14bb0df0c24071371e6c8ceb054015fb76ad8a693e9cd30813ed3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pair": 3,
+      "operation": "info",
+      "condition": "new",
+      "label": "pair3-info-new",
+      "argv": [
+        "/tmp/vlajmaji-store-verification-cdc/candidate01-release-cli",
+        "info"
+      ],
+      "pid": 77989,
+      "exit": 0,
+      "elapsed_s": 0.021010875,
+      "stdout_bytes": 304,
+      "stdout_sha256": "7ce64667b5a14bb0df0c24071371e6c8ceb054015fb76ad8a693e9cd30813ed3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pair": 3,
+      "operation": "farvi",
+      "condition": "old",
+      "label": "pair3-farvi-old",
+      "argv": [
+        "/tmp/vlajmaji-cli-default-store-cdc/candidate02-release-cli",
+        "dictionary-query",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 77990,
+      "exit": 0,
+      "elapsed_s": 26.535502625,
+      "stdout_bytes": 3028230,
+      "stdout_sha256": "4a0c902b350162d7932169428713b53970d8aaba235c94da3cff313aa981054e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "pair": 3,
+      "operation": "farvi",
+      "condition": "new",
+      "label": "pair3-farvi-new",
+      "argv": [
+        "/tmp/vlajmaji-store-verification-cdc/candidate01-release-cli",
+        "dictionary-query",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 78191,
+      "exit": 0,
+      "elapsed_s": 1.138650542,
+      "stdout_bytes": 3028230,
+      "stdout_sha256": "4a0c902b350162d7932169428713b53970d8aaba235c94da3cff313aa981054e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "summary": {
+    "info": {
+      "old_s": [
+        25.746116,
+        24.658641,
+        25.233912958
+      ],
+      "new_s": [
+        0.019005625,
+        0.010029583,
+        0.021010875
+      ],
+      "old_median_s": 25.233912958,
+      "new_median_s": 0.019005625,
+      "old_range_s": [
+        24.658641,
+        25.746116
+      ],
+      "new_range_s": [
+        0.010029583,
+        0.021010875
+      ],
+      "paired_old_over_new": [
+        1354.657686869019,
+        2458.5908506864143,
+        1200.9929599790587
+      ],
+      "median_old_over_new": 1327.7076106678944,
+      "all_whole_outputs_identical": true
+    },
+    "farvi": {
+      "old_s": [
+        27.059609792,
+        26.692359416,
+        26.535502625
+      ],
+      "new_s": [
+        1.158711916,
+        1.194966708,
+        1.138650542
+      ],
+      "old_median_s": 26.692359416,
+      "new_median_s": 1.158711916,
+      "old_range_s": [
+        26.535502625,
+        27.059609792
+      ],
+      "new_range_s": [
+        1.138650542,
+        1.194966708
+      ],
+      "paired_old_over_new": [
+        23.353181596175112,
+        22.337324744950134,
+        23.304342856932482
+      ],
+      "median_old_over_new": 23.03623450093181,
+      "all_whole_outputs_identical": true
+    }
+  },
+  "db_sha256_after": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+  "limitation": "Local finite same-input process-startup evidence, not disk-cold, constant-time, subsecond guarantee or population benchmark."
+}

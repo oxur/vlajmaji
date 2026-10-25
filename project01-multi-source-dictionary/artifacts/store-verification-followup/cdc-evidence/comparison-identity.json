@@ -1,0 +1,26 @@
+{
+  "old_source": "63da16f482de48632053d9892e58bd72de400255",
+  "new_source": "53f9eacece01bb5f31ff4b3c2bcf270d7c4162e6",
+  "old_binary": "/tmp/vlajmaji-cli-default-store-cdc/candidate02-release-cli",
+  "new_binary": "/tmp/vlajmaji-store-verification-cdc/candidate01-release-cli",
+  "old_binary_sha256": "68250cb649464eecd299efef2eb70d23b6827e5d8c40355eebdd1a4ce8bb5675",
+  "new_binary_sha256": "58a5a336dfe107fbf071bff5ca98c4cb3478676754e22c59f217ecc2a373d16a",
+  "profile": "release",
+  "host": {
+    "system": "Darwin",
+    "node": "lappy.local",
+    "release": "24.6.0",
+    "version": "Darwin Kernel Version 24.6.0: Tue Jul 21 20:51:05 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_ARM64_T6000",
+    "machine": "arm64",
+    "processor": "arm"
+  },
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji",
+  "HOME": "/Users/oubiwann",
+  "XDG_DATA_HOME": null,
+  "database": "/Users/oubiwann/.local/share/vlajmaji/stores/default/dictionary.sqlite3",
+  "db_bytes": 698281984,
+  "db_sha256_before": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+  "db_device": 16777233,
+  "db_inode": 631095896,
+  "protocol": "3pairs per operation old-new,new-old,old-new;12process calls. No cache purge; hashes/full verification warm filesystem caches; fresh processes only. Same stdout file capture for both conditions. Other host activity not controlled."
+}

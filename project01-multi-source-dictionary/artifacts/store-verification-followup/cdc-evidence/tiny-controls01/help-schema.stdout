@@ -1,0 +1,12 @@
+Explicitly audit one or all integrity boundaries of an existing grouped store
+
+Usage: candidate01-release-cli verify <CHECK> [STORE]
+
+Arguments:
+  <CHECK>  [possible values: schema, metadata, hashes, model, fks, projection, all]
+  [STORE]  
+
+Options:
+  -h, --help  Print help
+
+STORE defaults to XDG_DATA_HOME/vlajmaji/stores/default, falling back to HOME/.local/share/vlajmaji/stores/default. An explicit STORE overrides the environment. Verify only opens an existing store and never creates or downloads it. A named check certifies only that scope; `all` attempts every check. The default location is intended for a future dictionary-of-dictionaries; the initial Lensisku-only store is provisional.

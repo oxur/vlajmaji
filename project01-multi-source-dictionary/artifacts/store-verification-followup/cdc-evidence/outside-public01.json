@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a02-cargo",
+    "+1.98.0",
+    "run",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "/tmp/vlajmaji-store-verification-cdc/outside-caller01/Cargo.toml",
+    "--bin",
+    "vlajmaji-p01-verify-cdc-01",
+    "--",
+    "/tmp/vlajmaji-store-verification-cdc/outside-empty-store01"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji",
+  "pid": 77124,
+  "exit": 0,
+  "elapsed_s": 6.085240040905774,
+  "source_head": "53f9eacece01bb5f31ff4b3c2bcf270d7c4162e6",
+  "source_status_before": "",
+  "source_head_after": "53f9eacece01bb5f31ff4b3c2bcf270d7c4162e6",
+  "target": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+  "offline": true,
+  "profile": "command-specific",
+  "streams": {
+    "stdout": {
+      "bytes": 140,
+      "sha256": "98e1821d5d40303f2e8e4606b96ee741e6ee16edd722241debbcae539eb355e7"
+    },
+    "stderr": {
+      "bytes": 785,
+      "sha256": "c4d310eb6379b2ad6c431c220f0ca9b5930a862dd68dc5f982023d98740d6619"
+    }
+  }
+}

@@ -1,0 +1,1714 @@
+{
+  "verdict": "PASS",
+  "source": "53f9eacece01bb5f31ff4b3c2bcf270d7c4162e6",
+  "binary_sha256": "58a5a336dfe107fbf071bff5ca98c4cb3478676754e22c59f217ecc2a373d16a",
+  "baseline_binary_sha256": "68250cb649464eecd299efef2eb70d23b6827e5d8c40355eebdd1a4ce8bb5675",
+  "calls": 95,
+  "checks": 627,
+  "tamper_cases": 25,
+  "valid_check_names": [
+    "schema",
+    "metadata",
+    "hashes",
+    "model",
+    "fks",
+    "projection"
+  ],
+  "base_db_sha256_before_after": "5455611ed2ad50803dde148ab3c13527103f05a2b57c5ef18c5b98678b35035e",
+  "records": [
+    {
+      "label": "build",
+      "argv": [
+        "dictionary-build",
+        "/tmp/vlajmaji-cli-default-store-cdc/tiny-release.json",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base"
+      ],
+      "pid": 70531,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.33095137495547533,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 251,
+      "stdout_sha256": "c732ff74de1cc9963b86f6dba424631f6a4b0d7ea9733a0effe108b37800be63",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "valid-schema",
+      "argv": [
+        "verify",
+        "schema",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base"
+      ],
+      "pid": 70532,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.009432374965399504,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 156,
+      "stdout_sha256": "b4cb895fc8fc96e5d3d86d2a2383051adbe2cf39117eeb328b45fba51985340c",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "valid-metadata",
+      "argv": [
+        "verify",
+        "metadata",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base"
+      ],
+      "pid": 70533,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.00592849962413311,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 193,
+      "stdout_sha256": "4fb15691089a894b60c3373ba5580ba8abfe7e87ed3e72a57b8f5576ba307d77",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "valid-hashes",
+      "argv": [
+        "verify",
+        "hashes",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base"
+      ],
+      "pid": 70534,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.005987291689962149,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 197,
+      "stdout_sha256": "5be771c2aa148f2108bf9796b99e9c8622b50463b7770f1abf047693f8f4657e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "valid-model",
+      "argv": [
+        "verify",
+        "model",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base"
+      ],
+      "pid": 70535,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.00653750030323863,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 168,
+      "stdout_sha256": "01b1639383759c66b9cb6b78f9a791d911ef3e50b622e45b4e46d58930803a11",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "valid-fks",
+      "argv": [
+        "verify",
+        "fks",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base"
+      ],
+      "pid": 70536,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.005919207818806171,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 165,
+      "stdout_sha256": "65c5a2d0d0f20451075f07ccbb909dcc2d82b920540bf42b75e524a937a4852d",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "valid-projection",
+      "argv": [
+        "verify",
+        "projection",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base"
+      ],
+      "pid": 70537,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.0072707501240074635,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 186,
+      "stdout_sha256": "d2e8c02449df390d25b3b40ab125cc64704463693b46727c88bb4c288e679e90",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "valid-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base"
+      ],
+      "pid": 70538,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.01081320783123374,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 690,
+      "stdout_sha256": "a5d8dd75ee3831d326b6a092b105c2e07b90d4e956f9d9f13f4a8b31f61744c4",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "valid-query",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 70539,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.006690666079521179,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 18787,
+      "stdout_sha256": "b61c671d9ab6392f94b86c553719c3537d2b1ecfba5e8cc9c7f0d428d87ea279",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "old-query",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 70540,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.030362625140696764,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 18787,
+      "stdout_sha256": "b61c671d9ab6392f94b86c553719c3537d2b1ecfba5e8cc9c7f0d428d87ea279",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "valid-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base"
+      ],
+      "pid": 70541,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.005561999976634979,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "old-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base"
+      ],
+      "pid": 70542,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.010218000039458275,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "schema-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/schema"
+      ],
+      "pid": 70543,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.006553082726895809,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "schema-selective",
+      "argv": [
+        "verify",
+        "schema",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/schema"
+      ],
+      "pid": 70544,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.009363916236907244,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 356,
+      "stderr_sha256": "27f1cd93d489da0d0717aabd8123708a2fe238adedc1d4267c9ce848c3711ee5"
+    },
+    {
+      "label": "schema-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/schema"
+      ],
+      "pid": 70545,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.010868040844798088,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 890,
+      "stderr_sha256": "ff9d7d5ac489b428b070cfd21cb566dc0c1c5629f70ec150b4f51922bb04a970"
+    },
+    {
+      "label": "metadata-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/metadata"
+      ],
+      "pid": 70546,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.006820958107709885,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 129,
+      "stderr_sha256": "58b0c895e02b94592a2bc0b1d05cd91834388fe601958bab85bd2ac7d0d313d8"
+    },
+    {
+      "label": "metadata-selective",
+      "argv": [
+        "verify",
+        "metadata",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/metadata"
+      ],
+      "pid": 70547,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.006094667129218578,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 343,
+      "stderr_sha256": "919295e6aa1396805e9a9b71c7143ba15bd4b85f3e57220004c996069a1806c0"
+    },
+    {
+      "label": "metadata-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/metadata"
+      ],
+      "pid": 70548,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.011016458738595247,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 882,
+      "stderr_sha256": "bd4846aef5288be2b06caaf83b651ac33edd27b020595d04b6aeec17a281a2ba"
+    },
+    {
+      "label": "unsupported-dictionary-version-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/unsupported-dictionary-version"
+      ],
+      "pid": 70549,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.005806792061775923,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 141,
+      "stderr_sha256": "bb0ba1626ec8d070799d4dd4ae97927b0d9f47e12d16c48cea8ab6e6d5b91922"
+    },
+    {
+      "label": "unsupported-dictionary-version-selective",
+      "argv": [
+        "verify",
+        "metadata",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/unsupported-dictionary-version"
+      ],
+      "pid": 70550,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.006059916689991951,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 315,
+      "stderr_sha256": "88c2414ebd4c98b5d71c0337de745e12f6b3f97ac177438b2214caf37d10285d"
+    },
+    {
+      "label": "unsupported-dictionary-version-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/unsupported-dictionary-version"
+      ],
+      "pid": 70551,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.01108816685155034,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 854,
+      "stderr_sha256": "c8c982003faef9ebaafadcd19259821099751eed50c785d65235237c4e1522d7"
+    },
+    {
+      "label": "unsupported-registry-version-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/unsupported-registry-version"
+      ],
+      "pid": 70552,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.00557658402249217,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 141,
+      "stderr_sha256": "bb0ba1626ec8d070799d4dd4ae97927b0d9f47e12d16c48cea8ab6e6d5b91922"
+    },
+    {
+      "label": "unsupported-registry-version-selective",
+      "argv": [
+        "verify",
+        "metadata",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/unsupported-registry-version"
+      ],
+      "pid": 70553,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.0059437076561152935,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 313,
+      "stderr_sha256": "75031ac38ba6bd116fc9cab71d143728ed9bc07c8ff3b7afae150ac0d2a12b9d"
+    },
+    {
+      "label": "unsupported-registry-version-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/unsupported-registry-version"
+      ],
+      "pid": 70554,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.011262833140790462,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 852,
+      "stderr_sha256": "1c8ca2cf94de477a420e65c520a3583df3613f0a3e3d5163c84333286846e7bd"
+    },
+    {
+      "label": "hashes-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/hashes"
+      ],
+      "pid": 70555,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.0060117500834167,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "hashes-selective",
+      "argv": [
+        "verify",
+        "hashes",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/hashes"
+      ],
+      "pid": 70556,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.006188625004142523,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 312,
+      "stderr_sha256": "41011792057757f2f7b7f7d47c1669581140855c15be977d096c3aa581fe97bf"
+    },
+    {
+      "label": "hashes-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/hashes"
+      ],
+      "pid": 70557,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.011378791648894548,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 847,
+      "stderr_sha256": "94b830873cb2a21a3518c585f25ba0acbf1ef883b24750817f56632d9897d845"
+    },
+    {
+      "label": "fks-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/fks"
+      ],
+      "pid": 70558,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.006302415858954191,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "fks-selective",
+      "argv": [
+        "verify",
+        "fks",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/fks"
+      ],
+      "pid": 70559,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.0060084168799221516,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 340,
+      "stderr_sha256": "0e117ab1e4680b6a99ea995f9be4a81365e1d5d09ff17f4d0ea43c8c5a5f71c2"
+    },
+    {
+      "label": "fks-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/fks"
+      ],
+      "pid": 70560,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.011340791825205088,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 913,
+      "stderr_sha256": "04cb6740a57080170227ee234151402cdf9c89b64a0306b514e7ea671be4a7f8"
+    },
+    {
+      "label": "projection-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/projection"
+      ],
+      "pid": 70561,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.006275583058595657,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "projection-selective",
+      "argv": [
+        "verify",
+        "projection",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/projection"
+      ],
+      "pid": 70562,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.007408957928419113,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 364,
+      "stderr_sha256": "818240744ad039a460124ada0d898a4fe65bb448ce071044e089a6ffca8adb48"
+    },
+    {
+      "label": "projection-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/projection"
+      ],
+      "pid": 70563,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.010575249791145325,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 868,
+      "stderr_sha256": "5ebb2cc0c7a2713042beff7760fcaea5cb22fd5c0403830910f6ba76152d4368"
+    },
+    {
+      "label": "model-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/model"
+      ],
+      "pid": 70564,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.005956833250820637,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "model-fast-query-runtime",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/model",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 70565,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.006751166190952063,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 203,
+      "stderr_sha256": "9c7047026cd665315e68e960551ce2268c38c68b4893f33df720036a06ff319b"
+    },
+    {
+      "label": "model-selective",
+      "argv": [
+        "verify",
+        "model",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/model"
+      ],
+      "pid": 70566,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.005891624838113785,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 480,
+      "stderr_sha256": "ff500e141d1cc18278eaff879956e3debb86cb3b2a017ed119da14e3d054af98"
+    },
+    {
+      "label": "model-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/model"
+      ],
+      "pid": 70567,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.009495208971202374,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1299,
+      "stderr_sha256": "26c4c95b360ec12cefd176fc8c2745b9a03920debddbd1ca3713e807e3c573be"
+    },
+    {
+      "label": "registry-model-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/registry-model"
+      ],
+      "pid": 70568,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.005813042167574167,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "registry-model-fast-query-unverified",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/registry-model",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 70569,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.0066074589267373085,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 18778,
+      "stdout_sha256": "04e61fa9d09776266f8e463ba74de519ecc29f7f747f31ab4a93e4930e80312f",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "registry-model-selective",
+      "argv": [
+        "verify",
+        "model",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/registry-model"
+      ],
+      "pid": 70570,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.005998792126774788,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 360,
+      "stderr_sha256": "e1f0fa14e915ed6c71a5eaca07d3816202691cc02c913c1f91ccbe40e9836eac"
+    },
+    {
+      "label": "registry-model-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/registry-model"
+      ],
+      "pid": 70571,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.009835041128098965,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1059,
+      "stderr_sha256": "1df82ca9f84616960812d6169648e7de7b70d60a0d6ab2292a47f2da33559308"
+    },
+    {
+      "label": "capture-hash-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/capture-hash"
+      ],
+      "pid": 70572,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.006162375211715698,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "capture-hash-fast-query-unverified",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/capture-hash",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 70573,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.006406083703041077,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 18787,
+      "stdout_sha256": "513c4f8d6fc80aacfd36155302fefb1493ed7ce6f5c6362bd08e0c5e07270a3a",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "capture-hash-selective",
+      "argv": [
+        "verify",
+        "hashes",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/capture-hash"
+      ],
+      "pid": 70574,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.006012999918311834,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 320,
+      "stderr_sha256": "8ca7aef08a507872692f0637a22c990ada141c0b65580289180e3eead602b264"
+    },
+    {
+      "label": "capture-hash-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/capture-hash"
+      ],
+      "pid": 70575,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.009794958867132664,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1301,
+      "stderr_sha256": "c22367097794afeae0c23344651f415d8d5f8b6165108d4cf6fe49bc932bbd61"
+    },
+    {
+      "label": "duplicate-entry-id-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-entry-id"
+      ],
+      "pid": 70576,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.006008125375956297,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "duplicate-entry-id-fast-query-ambiguity",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-entry-id",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 70577,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.006332207936793566,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 124,
+      "stderr_sha256": "781d5a8f238550219128f57cdb2f4e11f1c1de0ed36eb0d98d1bb6ea522ab729"
+    },
+    {
+      "label": "duplicate-entry-id-selective",
+      "argv": [
+        "verify",
+        "model",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-entry-id"
+      ],
+      "pid": 70578,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.005855250172317028,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 411,
+      "stderr_sha256": "67d408113187aff47f47b655831fad8f794a6f013f4cc325b676289dfd3307bc"
+    },
+    {
+      "label": "duplicate-entry-id-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-entry-id"
+      ],
+      "pid": 70579,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.009559666737914085,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1161,
+      "stderr_sha256": "a4f0130d9f1d164d18ff1d176195cfa606e4508b58835d520215312ace0d3cbf"
+    },
+    {
+      "label": "duplicate-assertion-id-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-assertion-id"
+      ],
+      "pid": 70580,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.0069602918811142445,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "duplicate-assertion-id-fast-query-ambiguity",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-assertion-id",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 70581,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.0055677923373878,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 128,
+      "stderr_sha256": "f9161aad5e6cdfaee0153d73081e5478165fc70850587666dd7f0dcfe0433bfe"
+    },
+    {
+      "label": "duplicate-assertion-id-selective",
+      "argv": [
+        "verify",
+        "model",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-assertion-id"
+      ],
+      "pid": 70582,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.005849749781191349,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 415,
+      "stderr_sha256": "b440cdff3fdbac4b101c81cf2b5851ce4c1b764250503da771609154224ff548"
+    },
+    {
+      "label": "duplicate-assertion-id-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-assertion-id"
+      ],
+      "pid": 70583,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.010169540997594595,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1169,
+      "stderr_sha256": "84994f616ed311e8055f0e91b172e9b8ef555469719f1476b568b3817b601894"
+    },
+    {
+      "label": "duplicate-source-id-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-source-id"
+      ],
+      "pid": 70584,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.00614012498408556,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "duplicate-source-id-fast-query-ambiguity",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-source-id",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 70585,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.005651416722685099,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 125,
+      "stderr_sha256": "8dba6078bd3e19aaef7050c1f7f9dcfab2ae3d306582dc900652a4f29200c338"
+    },
+    {
+      "label": "duplicate-source-id-selective",
+      "argv": [
+        "verify",
+        "model",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-source-id"
+      ],
+      "pid": 70586,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.005944749806076288,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 339,
+      "stderr_sha256": "694d30634cd35c3074e3970eaf625f05ed669334a67a8bdda2eb5e5dcd4d96cb"
+    },
+    {
+      "label": "duplicate-source-id-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-source-id"
+      ],
+      "pid": 70587,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.010286792181432247,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1017,
+      "stderr_sha256": "7440ac82479c2e326ee3fd40b54001c9a3c6cab5741147021d9a373abbfa8caa"
+    },
+    {
+      "label": "duplicate-capture-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-capture"
+      ],
+      "pid": 70588,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.0061085419729352,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "duplicate-capture-fast-query-ambiguity",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-capture",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 70589,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.005970917176455259,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 126,
+      "stderr_sha256": "839b649f6cd54674a543b26cb7193202ac964db8cb67068a83b626faa2b28935"
+    },
+    {
+      "label": "duplicate-capture-selective",
+      "argv": [
+        "verify",
+        "model",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-capture"
+      ],
+      "pid": 70590,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.006427541375160217,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 313,
+      "stderr_sha256": "f7df2d0f27c9a097b8bce08f1708a98778f1143358fcb959456c7195590fd58c"
+    },
+    {
+      "label": "duplicate-capture-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-capture"
+      ],
+      "pid": 70591,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.009904957842081785,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 965,
+      "stderr_sha256": "d17a3c512389272402afc9f3276b3d28555ca7391e6efa36cb2d914d0cc80825"
+    },
+    {
+      "label": "duplicate-occurrence-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-occurrence"
+      ],
+      "pid": 70592,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.006014250218868256,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "duplicate-occurrence-fast-query-ambiguity",
+      "argv": [
+        "dictionary-query",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-occurrence",
+        "--request",
+        "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+      ],
+      "pid": 70593,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.005272958427667618,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 137,
+      "stderr_sha256": "4d1befeb0e35df05c11d331c19ecc25f0597c1eb70ec2228618ecaccd8da633b"
+    },
+    {
+      "label": "duplicate-occurrence-selective",
+      "argv": [
+        "verify",
+        "model",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-occurrence"
+      ],
+      "pid": 70594,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.006068458314985037,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 291,
+      "stderr_sha256": "d57509bb534b24fcc504d2d714f51729f217fa2bdacfd3c9b36754517a3a8afb"
+    },
+    {
+      "label": "duplicate-occurrence-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-occurrence"
+      ],
+      "pid": 70595,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.011240582913160324,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 921,
+      "stderr_sha256": "f252ce6d95301b7b376052101bf52175ed701f1538bb93d775c2ded442d0441c"
+    },
+    {
+      "label": "native-duplicate-preserved-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/native-duplicate-preserved"
+      ],
+      "pid": 70596,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.005781999789178371,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "native-duplicate-preserved-selective",
+      "argv": [
+        "verify",
+        "projection",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/native-duplicate-preserved"
+      ],
+      "pid": 70598,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.007199709303677082,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 367,
+      "stderr_sha256": "a1c7fd035d021bc4ba22183fdc0547a0c85eb580f6cfe4f348313e61e11669dd"
+    },
+    {
+      "label": "native-duplicate-preserved-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/native-duplicate-preserved"
+      ],
+      "pid": 70599,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.011150124948471785,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 871,
+      "stderr_sha256": "6022c449a918ce271cf2dcad255cb0d4658c115a930313c651f83fa3d5ba53cd"
+    },
+    {
+      "label": "legacy-column-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/legacy-column"
+      ],
+      "pid": 70600,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.005824583116918802,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "legacy-column-selective",
+      "argv": [
+        "verify",
+        "hashes",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/legacy-column"
+      ],
+      "pid": 70601,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.006010916084051132,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 318,
+      "stderr_sha256": "99d3482203861baa2c37c61e3acee7711c49069df546fc7d45d64d9d08f72032"
+    },
+    {
+      "label": "legacy-column-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/legacy-column"
+      ],
+      "pid": 70602,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.011083750054240227,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 863,
+      "stderr_sha256": "6b7cca44bc73c5b3ef60077cfdeb7eb32bea6b6c0fc7db9c266d4c39beb4a254"
+    },
+    {
+      "label": "missing-metadata-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/missing-metadata"
+      ],
+      "pid": 70603,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.006803624797612429,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 113,
+      "stderr_sha256": "24f03ed92f1fe1dce4731565ccb5861c6211110432b4158dc66b7cec89b58d94"
+    },
+    {
+      "label": "missing-metadata-selective",
+      "argv": [
+        "verify",
+        "schema",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/missing-metadata"
+      ],
+      "pid": 70604,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.009583499748259783,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 356,
+      "stderr_sha256": "27f1cd93d489da0d0717aabd8123708a2fe238adedc1d4267c9ce848c3711ee5"
+    },
+    {
+      "label": "missing-metadata-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/missing-metadata"
+      ],
+      "pid": 70605,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.011601082980632782,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 878,
+      "stderr_sha256": "7f32d0829c63a3713b960cbc4f3bca64cab572a40b4312b0a35ee5069abfe03b"
+    },
+    {
+      "label": "duplicate-envelope-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-envelope"
+      ],
+      "pid": 70606,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.006178499665111303,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "duplicate-envelope-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/duplicate-envelope"
+      ],
+      "pid": 70607,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.009938917122781277,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1281,
+      "stderr_sha256": "d10e60a9f56eb252a477ebe649a0329eea05f360ed3218f721ec536708887a31"
+    },
+    {
+      "label": "malformed-fast-info",
+      "argv": [
+        "info",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/malformed-canonical"
+      ],
+      "pid": 70608,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.006143167149275541,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 292,
+      "stdout_sha256": "bea9f0e3aa6884608801f3f88001a289dff6c0321a80918b555c32c22faa3553",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "malformed-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/malformed-canonical"
+      ],
+      "pid": 70609,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.010024582967162132,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1261,
+      "stderr_sha256": "e7e5f23ab4499e3e3aae0a5eb138d5d72c0a046a61a440a34117990610e5ae0c"
+    },
+    {
+      "label": "broken-draft-bad-header-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/broken-draft-bad-header"
+      ],
+      "pid": 70610,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.011335417162626982,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1158,
+      "stderr_sha256": "c178d1a917b5097310e068cd40736267685452cf36aca4ff9e947e13e1b4f418"
+    },
+    {
+      "label": "broken-draft-bad-hash-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/broken-draft-bad-hash"
+      ],
+      "pid": 70611,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.010874417144805193,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1129,
+      "stderr_sha256": "666752aadab2839ac627659bfb13e49e48e8bdbb6680778f059b9e58344ab737"
+    },
+    {
+      "label": "broken-draft-unsupported-dictionary-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/broken-draft-unsupported-dictionary"
+      ],
+      "pid": 70612,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.01003995817154646,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1130,
+      "stderr_sha256": "bb0505eccfb6f57eb3dda22ed7b33ae507c86f6c4767bbbda7d0f9790f519782"
+    },
+    {
+      "label": "broken-draft-unsupported-registry-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/broken-draft-unsupported-registry"
+      ],
+      "pid": 70613,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.011273249983787537,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1128,
+      "stderr_sha256": "685358d78f62bf5fe72741c904e4b05937c3f85070259fd683b606456fd85524"
+    },
+    {
+      "label": "simultaneous-all",
+      "argv": [
+        "verify",
+        "all",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/simultaneous"
+      ],
+      "pid": 70614,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.011079167015850544,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 1400,
+      "stderr_sha256": "bbcc0e4c7d4083f626e3e94abbe5ad48dd497a7bec41ea7fee472c9fe6c74f1b"
+    },
+    {
+      "label": "default-all",
+      "argv": [
+        "verify",
+        "all"
+      ],
+      "pid": 70615,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.014417333994060755,
+      "HOME": "relative",
+      "XDG_DATA_HOME": "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/xdg",
+      "stdout_bytes": 690,
+      "stdout_sha256": "a5d8dd75ee3831d326b6a092b105c2e07b90d4e956f9d9f13f4a8b31f61744c4",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "explicit-no-home",
+      "argv": [
+        "verify",
+        "schema",
+        "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/base"
+      ],
+      "pid": 70616,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.009332000277936459,
+      "HOME": "relative",
+      "XDG_DATA_HOME": "relative",
+      "stdout_bytes": 156,
+      "stdout_sha256": "b4cb895fc8fc96e5d3d86d2a2383051adbe2cf39117eeb328b45fba51985340c",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "missing-default",
+      "argv": [
+        "verify",
+        "all"
+      ],
+      "pid": 70617,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.005203249864280224,
+      "HOME": null,
+      "XDG_DATA_HOME": "/tmp/vlajmaji-store-verification-cdc/tiny-controls01/absent-default",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 207,
+      "stderr_sha256": "7119ec5d753883e0df06b46aa7dae7f09787d55a2f8153976b3a6b73261412b9"
+    },
+    {
+      "label": "missing-base",
+      "argv": [
+        "verify",
+        "schema"
+      ],
+      "pid": 70618,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.0053893751464784145,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 118,
+      "stderr_sha256": "181c36441cdcac284eb7e6d262837bd0a632f2e3232fdaa1180ea499e868ca70"
+    },
+    {
+      "label": "help-None",
+      "argv": [
+        "verify",
+        "--help"
+      ],
+      "pid": 70619,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.0067012496292591095,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 700,
+      "stdout_sha256": "eb159348effcb28cb17b9b8c72cd99e4b287996d7911b80d4179c5afee184e07",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "help-schema",
+      "argv": [
+        "verify",
+        "schema",
+        "--help"
+      ],
+      "pid": 70620,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.004822124727070332,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 700,
+      "stdout_sha256": "eb159348effcb28cb17b9b8c72cd99e4b287996d7911b80d4179c5afee184e07",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "help-metadata",
+      "argv": [
+        "verify",
+        "metadata",
+        "--help"
+      ],
+      "pid": 70621,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.004657583311200142,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 700,
+      "stdout_sha256": "eb159348effcb28cb17b9b8c72cd99e4b287996d7911b80d4179c5afee184e07",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "help-hashes",
+      "argv": [
+        "verify",
+        "hashes",
+        "--help"
+      ],
+      "pid": 70622,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.004783458076417446,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 700,
+      "stdout_sha256": "eb159348effcb28cb17b9b8c72cd99e4b287996d7911b80d4179c5afee184e07",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "help-model",
+      "argv": [
+        "verify",
+        "model",
+        "--help"
+      ],
+      "pid": 70623,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.004593458957970142,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 700,
+      "stdout_sha256": "eb159348effcb28cb17b9b8c72cd99e4b287996d7911b80d4179c5afee184e07",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "help-fks",
+      "argv": [
+        "verify",
+        "fks",
+        "--help"
+      ],
+      "pid": 70624,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.004340416751801968,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 700,
+      "stdout_sha256": "eb159348effcb28cb17b9b8c72cd99e4b287996d7911b80d4179c5afee184e07",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "help-projection",
+      "argv": [
+        "verify",
+        "projection",
+        "--help"
+      ],
+      "pid": 70625,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.005365250166505575,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 700,
+      "stdout_sha256": "eb159348effcb28cb17b9b8c72cd99e4b287996d7911b80d4179c5afee184e07",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "help-all",
+      "argv": [
+        "verify",
+        "all",
+        "--help"
+      ],
+      "pid": 70626,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.004814332816749811,
+      "HOME": null,
+      "XDG_DATA_HOME": null,
+      "stdout_bytes": 700,
+      "stdout_sha256": "eb159348effcb28cb17b9b8c72cd99e4b287996d7911b80d4179c5afee184e07",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/crates/lexicon)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.43s
+     Running tests/registry_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/registry_contract-b5fcf8ba5ae411b0)
+
+running 10 tests
+test attribution_requires_explicit_legacy_binding_but_keeps_empty_metadata ... ok
+test test_unverified_registry_selector_rejects_duplicate_source_identity ... ok
+test phantom_occurrence_binding_is_rejected_against_the_supplied_lexicon ... ok
+test document_validation_rejects_duplicate_roles_and_invalid_values ... ok
+test ids_and_registry_document_are_validated_and_role_distinct ... ok
+test invalid_documents_updates_and_deserialization_cannot_bypass_invariants ... ok
+test aliases_rename_retire_and_reuse_without_losing_history ... ok
+test attribution_preserves_five_occurrences_roles_raw_bytes_and_archive ... ok
+test aliases_cannot_shadow_another_sources_current_abbreviation ... ok
+test registry_identity_wires_reject_unknown_nested_fields_without_tightening_legacy_ids ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

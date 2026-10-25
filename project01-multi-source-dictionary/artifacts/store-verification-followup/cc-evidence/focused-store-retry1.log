@@ -1,0 +1,33 @@
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.84s
+     Running tests/dictionary_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_contract-96425bcf1fde3cf4)
+
+running 13 tests
+test fresh_path_lifecycle_refuses_existing_leafs_and_missing_parents ... ok
+test empty_valid_dictionary_has_a_real_empty_projection ... ok
+test empty_source_metadata_values_survive_actual_sql_projection ... ok
+test full_fixture_has_independent_direct_sql_value_oracles ... ok
+test full_unsigned_text_empty_and_nul_values_survive_sql_and_reopen ... ok
+test complete_dictionary_creates_typed_projection_and_reopens_read_only ... ok
+test empty_available_release_keeps_explicit_zero_counts ... ok
+test reversed_self_reference_rows_persist_and_reopen_in_model_order ... ok
+test legacy_archive_rebuild_is_explicit_separate_and_byte_preserving ... ok
+test metadata_query_missing_required_columns_is_format_without_writing ... ok
+test explicit_projection_verification_rejects_same_count_scalar_edits_without_repair ... ok
+test sql_role_presence_foreign_key_and_unique_constraints_are_real ... ok
+test integrity_failures_are_classified_without_mutating_the_database ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.62s
+
+     Running tests/dictionary_verification.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_verification-7987235f09e6834d)
+
+running 5 tests
+test test_duplicate_json_keys_remain_a_strict_model_failure_and_block_draft_dependents ... ok
+test test_unparseable_canonical_blocks_dependent_checks_but_model_fails ... ok
+test test_selected_schema_and_fks_run_without_canonical_prerequisites ... ok
+test test_all_reports_independent_simultaneous_schema_metadata_and_fk_failures ... ok
+test test_valid_store_passes_all_scopes_and_selective_reports_have_one_row ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.55s
+

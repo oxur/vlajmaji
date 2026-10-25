@@ -40,6 +40,10 @@ After accepted Arc02, Duncan requested DATA_HOME/vlajmaji/stores/default for gro
 
 All5supplemental rows independently accepted at source63da16f (feature/project01-cli-default-store), with current complete gates/controls and actual verified Lensisku-only default relocation. Canonical verifier/retro/relocation receipt live in project01-multi-source-dictionary/artifacts/cli-default-store-followup/. No active CCsource interval/targetwriter remains. NoA03/push/PR/publication/fullregeneration; Arc02originalacceptance/main/Bauske protected and all14projectrowsOPEN. Future aggregate not yet built. Await explicit new work.
 
-## Current bounded verification follow-up —2026-10-24
+## Historical bounded verification follow-up authority —2026-10-24
 
 After accepted default-store follow-up63da16f/planning8344564, Duncan authorized removing comprehensive startup checks, explicit verify subcommands/all and a bounded same-store timing comparison. Canonical plan/prompt/evidence home project01-multi-source-dictionary/artifacts/store-verification-followup/. Dedicated feature/project01-explicit-store-verification, same Sol6.1High CDC/LunaHigh CC, one retained target writer. Existing installed store read-only/immovable; prior accepted records/main/Bauske protected; noA03/publication/fullregeneration. CDC design/review, CC source only issued interval. Previous closed endpoint remains historical.
+
+## Current endpoint — bounded verification follow-up CLOSED,2026-10-24
+
+All6supplemental rows independently accepted at source53f9eac on unpublished feature/project01-explicit-store-verification. Ordinary startup is separated from explicit verification; installed full default all6passed/unchanged, declared3paired trials per operation complete with identical outputs. Canonical plan/verifier/retro/raw receipts: project01-multi-source-dictionary/artifacts/store-verification-followup/. No active implementation/target interval remains. Protected main/Bauske/prior accepted snapshots unchanged, installed Lensisku-only default unchanged; all14projectrowsOPEN/A03unopened/no push/PR/publication. Later project API/topology/corpus work remains separately authorized.

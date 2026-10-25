@@ -1,6 +1,6 @@
 # Bounded explicit store-verification follow-up
 
-Status OPEN —2026-10-24. New user-authorized maintenance after accepted source63da16f/planning8344564: remove comprehensive verification from ordinary startup, add `verify schema|metadata|hashes|model|fks|projection|all [STORE]`, then measure. Existing Sol6.1High CDC/LunaHigh CC selection and Autonomous roles persist (requested/configured, no backend attestation). Root read-only, CDC design/independent review, CC source author. Not A03 or reopening either accepted follow-up/Arc02; all14project rows remainOPEN. No push/PR/publication/main/Bauske mutation/full corpus acquisition/regeneration/installed-store relocation.
+Status CLOSED —2026-10-24; six of six rows independently accepted at53f9eac. Initial authority and proof protocol below remain preserved.  New user-authorized maintenance after accepted source63da16f/planning8344564: remove comprehensive verification from ordinary startup, add `verify schema|metadata|hashes|model|fks|projection|all [STORE]`, then measure. Existing Sol6.1High CDC/LunaHigh CC selection and Autonomous roles persist (requested/configured, no backend attestation). Root read-only, CDC design/independent review, CC source author. Not A03 or reopening either accepted follow-up/Arc02; all14project rows remainOPEN. No push/PR/publication/main/Bauske mutation/full corpus acquisition/regeneration/installed-store relocation.
 
 ## Readiness and exact ownership
 
@@ -44,12 +44,12 @@ Required CC/current CDC gates: actual make format→lint→check with complete r
 
 | ID | Criterion | Status | Evidence |
 | --- | --- | --- | --- |
-| V01 | Ordinary store/info truly skip comprehensive checks/canonical model load; minimum safe header and read errors remain; no false validation claim. | open | |
-| V02 | Explicit six independent checks/all cover every old strict check with shared readonly snapshot and truthful failures/blocked prerequisites; create remains fully verified. | open | |
-| V03 | Strict model/registry constructors remain strict; unverified draft boundary/explicit Result API migration and safe query runtime preserve valid response/selector/page/cursor/reference behavior. | open | |
-| V04 | Useful verify CLI/default/help/structured reports, unchanged legacy/default/native-path/no-create contracts and truthful docs. | open | |
-| V05 | Meaningful valid+negative tests, strict old populations retained under new explicit boundary, current complete gates/affected features and independent frozen review. | open | |
-| V06 | Actual installed readonly verifyall/unchanged hashes plus bounded three-pair same-input release timing/equality, complete verifier/retro/clean scoped local refs. | open | |
+| V01 | Ordinary store/info truly skip comprehensive checks/canonical model load; minimum safe header and read errors remain; no false validation claim. | done | cdc-verification.md V01; cdc-evidence/actual receipts. |
+| V02 | Explicit six independent checks/all cover every old strict check with shared readonly snapshot and truthful failures/blocked prerequisites; create remains fully verified. | done | cdc-verification.md V02; cdc-evidence/actual receipts. |
+| V03 | Strict model/registry constructors remain strict; unverified draft boundary/explicit Result API migration and safe query runtime preserve valid response/selector/page/cursor/reference behavior. | done | cdc-verification.md V03; cdc-evidence/actual receipts. |
+| V04 | Useful verify CLI/default/help/structured reports, unchanged legacy/default/native-path/no-create contracts and truthful docs. | done | cdc-verification.md V04; cdc-evidence/actual receipts. |
+| V05 | Meaningful valid+negative tests, strict old populations retained under new explicit boundary, current complete gates/affected features and independent frozen review. | done | cdc-verification.md V05; cdc-evidence/actual receipts. |
+| V06 | Actual installed readonly verifyall/unchanged hashes plus bounded three-pair same-input release timing/equality, complete verifier/retro/clean scoped local refs. | done | cdc-verification.md V06; cdc-evidence/actual receipts. |
 
 No closing/verifier/retro precreated. Up to5numbered repairs, initial/repair prompts and failed attempts preserved. CC writes only source allowlist plus append-only cc-execution/small cc-evidence, no planning index. CDC alone closes rows after independent execution, no extra review context absent actual authorship conflict. Stop after this follow-up; project14OPEN/Arc02accepted/noA03/publication.
 
@@ -60,3 +60,7 @@ After removing the validated wrapper, safe raw capture/occurrence routing requir
 ## Scope amendment before final staging —2026-10-24
 
 Root's read-only in-flight review observed a necessary5-line correction in docs/migration.md replacing the stale claim that ordinary open validates projection with the new explicit verifyall boundary. This doc path was NOT in the initial issued allowlist; root explicitly authorized adding this single owning-document path after observation and before final staging/acceptance. CC records that actual chronology, without rewriting the original prompt or treating this as original authorization. No additional product/API/dependency/data scope is added; all other path boundaries remain.
+
+## Accepted endpoint —2026-10-24
+
+All6supplemental rows independently DONE at53f9eac. Ordinary startup/audit split, readonly full default6/6 and all12 declared same-store release comparisons completed; exact outcomes/limits in cdc-verification.md and retrospective. Source/index/retained target idle at handoff; no further execution requested. Existing installed Lensisku-only store unchanged; all14projectrowsOPEN, Arc02/defaultfollowup histories preserved, A03unopened. No push/PR/publication/main/Bauske change.

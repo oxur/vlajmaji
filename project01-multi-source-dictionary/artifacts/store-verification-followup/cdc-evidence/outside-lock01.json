@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a02-cargo",
+    "+1.98.0",
+    "generate-lockfile",
+    "--offline",
+    "--manifest-path",
+    "/tmp/vlajmaji-store-verification-cdc/outside-caller01/Cargo.toml"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji",
+  "pid": 77106,
+  "exit": 0,
+  "elapsed_s": 0.1304138326086104,
+  "source_head": "53f9eacece01bb5f31ff4b3c2bcf270d7c4162e6",
+  "source_status_before": "",
+  "source_head_after": "53f9eacece01bb5f31ff4b3c2bcf270d7c4162e6",
+  "target": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+  "offline": true,
+  "profile": "command-specific",
+  "streams": {
+    "stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "bytes": 225,
+      "sha256": "b0c40f41922da5bf89878cc840775497c5b305fcbe64b59f0199b399ce4ff9fc"
+    }
+  }
+}
