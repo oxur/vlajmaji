@@ -29,3 +29,8 @@ unchanged.
 ## Versioned dictionary model
 
 The additive `Dictionary` API stores exact raw captures and explicit typed metadata, validates the complete versioned JSON document, and adapts legacy archives without rewriting them. The adapter requires callers to provide the source registry and normalized metadata; it does not infer entries, senses, morphology, frames, etymology, or POS. Read the [dictionary model guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-model.md) and [standards mapping limits](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-standards-map.md). Run `cargo +1.98.0 run --locked -p vlajmaji-lexicon --example dictionary_fixture -- /tmp/dictionary-fixture.json` to write and reload the complete synthetic fixture at a fresh path.
+
+The pure `import_jbotci_export` adapter retains both pinned captures and ordered
+native fields while exposing a conservative typed projection. Its bounded
+metadata grammar, field map, identity rules, and local replay example are in the
+[jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci-import.md).

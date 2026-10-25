@@ -83,10 +83,22 @@ fresh destination:
    does not assign missing lexical identities or infer source claims.
 3. Call `Dictionary::from_legacy_archive(&archive, registry, metadata)`, then
    `DictionaryStore::create("new-dictionary-store", &dictionary)`.
-4. Drop the returned store and use `DictionaryStore::open` to validate the new
-   read-only snapshot and complete relational projection.
+4. Drop the returned store, reopen it with `DictionaryStore::open`, and request
+   `DictionaryStoreVerificationCheck::All` to validate the read-only snapshot
+   and complete relational projection.
 
 The old SQLite store and archive are read-only inputs to this procedure. The
 accepted legacy archive may omit model-only opaque records; such records are
 not synthesized during rebuild. See the [schema-1 field map and lifecycle
 guide](dictionary-schema.md) and the `dictionary_store` public example.
+
+## Local jbotci export normalization
+
+The S01 `import_jbotci_export` API accepts complete raw and metadata byte
+captures plus explicit expected hashes. It validates before returning a model,
+retains ordered native fields and duplicate keys, and excludes unsupported rows
+without discarding their raw source. `jbotci-import` writes a fresh canonical
+dictionary file; `jbotci-check` validates without writes and can compare a
+release. The [jbotci import guide](jbotci-import.md) documents the exact field
+map, metadata grammar, source-notice limitation, pinned hashes, and replay
+example. Data acquisition and redistribution are outside this local adapter.

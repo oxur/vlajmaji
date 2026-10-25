@@ -18,12 +18,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let expected = dictionary.to_json_bytes()?;
     let destination = std::path::PathBuf::from(destination);
     let store = DictionaryStore::create(&destination, &dictionary)?;
-    assert_eq!(store.canonical_bytes(), expected);
+    assert_eq!(store.canonical_bytes().unwrap(), expected);
     drop(store);
     let reopened = DictionaryStore::open(&destination)?;
-    assert_eq!(reopened.canonical_bytes(), expected);
-    assert_eq!(reopened.dictionary().document(), expected_document);
-    let model = reopened.dictionary();
+    assert_eq!(reopened.canonical_bytes().unwrap(), expected);
+    assert_eq!(reopened.dictionary().unwrap().document(), expected_document);
+    let model = reopened.dictionary().unwrap();
     println!(
         "validated {} captures, {} occurrences, {} entries, {} assertions: {}",
         model.captures().len(),

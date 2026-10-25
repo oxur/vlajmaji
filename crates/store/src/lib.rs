@@ -14,7 +14,14 @@ pub use sqlite::SqliteStore;
 
 mod dictionary;
 mod dictionary_schema;
-pub use dictionary::{DictionaryStore, DictionaryStoreError, DictionaryStoreInvalidity};
+mod dictionary_verification;
+pub use dictionary::{
+    DictionaryStore, DictionaryStoreError, DictionaryStoreInvalidity, DictionaryStoreSummary,
+};
+pub use dictionary_verification::{
+    DictionaryStoreCheckStatus, DictionaryStoreVerification, DictionaryStoreVerificationCheck,
+    DictionaryStoreVerificationReport, DictionaryStoreVerificationResult,
+};
 
 #[cfg(feature = "graph")]
 mod graph;

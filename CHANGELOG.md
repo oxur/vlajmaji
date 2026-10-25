@@ -2,7 +2,19 @@
 
 ## 0.3.0 (unreleased)
 
-- Start the next development cycle.
+- Add a lossless, hash-pinned jbotci export normalizer and `jbotci-import` /
+  `jbotci-check` CLI commands; retain content redistribution as held pending
+  source-coverage review.
+- Add the explicit pinned Bash/Make acquire, replay, check, and update workflow;
+  preserve attempt outputs and verify the normalized release before persistence.
+- Insert persisted dictionary tables in schema-derived parent-first order while
+  retaining schema-1 identities, and reuse per-source selection sets in exact
+  lookup without cloning the complete document.
+- Add XDG/HOME default-store resolution to grouped CLI build/query and info,
+  with read-only default queries and grouped-store counts in `info`.
+- Make ordinary grouped-store open read a minimal header and add explicit,
+  scope-selective read-only verification for schema, metadata, hashes, model,
+  foreign keys, and relational projection.
 
 ## 0.2.0 (2026-10-24)
 

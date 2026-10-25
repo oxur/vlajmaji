@@ -23,6 +23,24 @@ INSTALL_DIR ?= ./bin
 CARGO_TARGET_DIR ?= target
 export CARGO_TARGET_DIR
 TARGET_DIR = $(CARGO_TARGET_DIR)/$(MODE)
+JBOTCI_PINS ?= scripts/jbotci-pinned.env
+JBOTCI_NEW_PINS ?=
+JBOTCI_CACHE ?=
+JBOTCI_RELEASE ?=
+JBOTCI_STORE ?=
+VLAJMAJI_BIN ?=
+CURL ?=
+# Stop GNU Make's automatic export of recursive command-line values; freeze
+# each value once so `$` and shell syntax remain data in the child environment.
+unexport JBOTCI_PINS JBOTCI_NEW_PINS JBOTCI_CACHE JBOTCI_RELEASE JBOTCI_STORE VLAJMAJI_BIN CURL
+override JBOTCI_PINS := $(value JBOTCI_PINS)
+override JBOTCI_NEW_PINS := $(value JBOTCI_NEW_PINS)
+override JBOTCI_CACHE := $(value JBOTCI_CACHE)
+override JBOTCI_RELEASE := $(value JBOTCI_RELEASE)
+override JBOTCI_STORE := $(value JBOTCI_STORE)
+override VLAJMAJI_BIN := $(value VLAJMAJI_BIN)
+override CURL := $(value CURL)
+export JBOTCI_PINS JBOTCI_NEW_PINS JBOTCI_CACHE JBOTCI_RELEASE JBOTCI_STORE VLAJMAJI_BIN CURL
 GIT_COMMIT = $(shell $(GIT) rev-parse --short HEAD 2>/dev/null || echo unknown)
 GIT_BRANCH = $(shell $(GIT) rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)
 BUILD_TIME = $(shell date -u '+%Y-%m-%dT%H:%M:%SZ')
@@ -32,7 +50,7 @@ _empty :=
 _space := $(_empty) $(_empty)
 INSTALL_DIR_TARGET := $(subst $(_space),\ ,$(INSTALL_DIR))
 
-.PHONY: help info check-tools build build-debug build-release install test test-default test-no-default test-all-features fmt format fmt-check lint docs check coverage clean tracked-files planning planning-worktree publish publish-dry-run publish-one test-tools
+.PHONY: help info check-tools build build-debug build-release install test test-default test-no-default test-all-features fmt format fmt-check lint docs check coverage clean tracked-files planning planning-worktree publish publish-dry-run publish-one test-tools jbotci-help jbotci-acquire jbotci-replay jbotci-check jbotci-update jbotci-cli-ready
 
 help:
 	@printf '\n%b╔══════════════════════════════════════════════════════════╗%b\n' '$(CYAN)' '$(RESET)'
@@ -61,6 +79,12 @@ help:
 	@printf '  %bmake publish%b           - Publish workspace crates to crates.io\n' '$(YELLOW)' '$(RESET)'
 	@printf '  %bmake publish-one%b       - Publish one package (CRATE=package-name)\n' '$(YELLOW)' '$(RESET)'
 	@printf '  %bmake tracked-files%b     - List files or write to TRACKED_FILES\n\n' '$(YELLOW)' '$(RESET)'
+	@printf '%bPinned jbotci:%b\n' '$(GREEN)' '$(RESET)'
+	@printf '  %bmake jbotci-help%b       - Show pinned import workflow usage\n' '$(YELLOW)' '$(RESET)'
+	@printf '  %bmake jbotci-acquire%b    - Acquire and verify the explicit pin (JBOTCI_CACHE=...)\n' '$(YELLOW)' '$(RESET)'
+	@printf '  %bmake jbotci-replay%b     - Create a fresh release/store from the pin\n' '$(YELLOW)' '$(RESET)'
+	@printf '  %bmake jbotci-check%b      - Recheck the cached pin without writing\n' '$(YELLOW)' '$(RESET)'
+	@printf '  %bmake jbotci-update%b     - Validate a new explicit pin before caching it\n\n' '$(YELLOW)' '$(RESET)'
 	@printf '%bInformation:%b\n' '$(GREEN)' '$(RESET)'
 	@printf '  %bmake info%b              - Show build information\n' '$(YELLOW)' '$(RESET)'
 	@printf '  %bmake check-tools%b       - Check required tools\n\n' '$(YELLOW)' '$(RESET)'
@@ -156,9 +180,39 @@ docs:
 test-tools:
 	@printf '%bRunning Make/planning helper tests...%b\n' '$(BLUE)' '$(RESET)'
 	@"$(BASH)" -n scripts/planning-worktree.sh
+	@"$(BASH)" -n scripts/jbotci-import.sh
 	@"$(BASH)" -n tests/test-build-tools.sh
 	@"$(BASH)" tests/test-build-tools.sh
 	@printf '%b✓ Tooling tests passed%b\n' '$(GREEN)' '$(RESET)'
+
+jbotci-help:
+	@"$(BASH)" scripts/jbotci-import.sh help
+
+jbotci-cli-ready:
+	@if [ -z "$${VLAJMAJI_BIN:-}" ]; then \
+		case '$(origin CARGO_TARGET_DIR)' in environment|command\ line) ;; \
+		*) printf 'jbotci Make targets require explicit CARGO_TARGET_DIR when VLAJMAJI_BIN is unset\n' >&2; exit 2 ;; esac; \
+	fi
+
+jbotci-acquire: jbotci-cli-ready
+	@test -n "$${JBOTCI_CACHE:-}" || { printf 'Set JBOTCI_CACHE to an explicit cache root\n' >&2; exit 2; }
+	@"$(BASH)" scripts/jbotci-import.sh acquire "$${JBOTCI_PINS}" "$${JBOTCI_CACHE}"
+
+jbotci-replay: jbotci-cli-ready
+	@test -n "$${JBOTCI_CACHE:-}" && test -n "$${JBOTCI_RELEASE:-}" || { printf 'Set JBOTCI_CACHE and JBOTCI_RELEASE\n' >&2; exit 2; }
+	@"$(BASH)" scripts/jbotci-import.sh replay "$${JBOTCI_PINS}" "$${JBOTCI_CACHE}" "$${JBOTCI_RELEASE}" "$${JBOTCI_STORE}"
+
+jbotci-check: jbotci-cli-ready
+	@test -n "$${JBOTCI_CACHE:-}" || { printf 'Set JBOTCI_CACHE to an explicit cache root\n' >&2; exit 2; }
+	@if [ -n "$${JBOTCI_RELEASE:-}" ]; then \
+		"$(BASH)" scripts/jbotci-import.sh check "$${JBOTCI_PINS}" "$${JBOTCI_CACHE}" "$${JBOTCI_RELEASE}"; \
+	else \
+		"$(BASH)" scripts/jbotci-import.sh check "$${JBOTCI_PINS}" "$${JBOTCI_CACHE}"; \
+	fi
+
+jbotci-update: jbotci-cli-ready
+	@test -n "$${JBOTCI_NEW_PINS:-}" && test -n "$${JBOTCI_CACHE:-}" && test -n "$${JBOTCI_RELEASE:-}" || { printf 'Set JBOTCI_NEW_PINS, JBOTCI_CACHE and JBOTCI_RELEASE\n' >&2; exit 2; }
+	@"$(BASH)" scripts/jbotci-import.sh update "$${JBOTCI_NEW_PINS}" "$${JBOTCI_CACHE}" "$${JBOTCI_RELEASE}" "$${JBOTCI_STORE}"
 
 check: check-tools fmt-check lint test-default docs test-tools
 	@printf '\n%b✓ All checks passed (tools + format + lint + tests + docs)%b\n\n' '$(GREEN)' '$(RESET)'

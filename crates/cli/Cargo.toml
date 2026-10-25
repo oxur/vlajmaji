@@ -19,10 +19,9 @@ doc = false
 [dependencies]
 clap.workspace = true
 vlajmaji-search = { package = "vlajmaji-search", path = "../search", version = "0.3.0", features = ["morphology"] }
-serde_json.workspace = true
-
-[dev-dependencies]
 vlajmaji-lexicon.workspace = true
+vlajmaji-store.workspace = true
+serde_json.workspace = true
 
 [lints]
 workspace = true

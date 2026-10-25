@@ -11,6 +11,58 @@ pub(crate) const FORMAT: &str = "vlajmaji-dictionary";
 pub(crate) const SCHEMA_VERSION: &str = "1";
 pub(crate) const DATABASE_FILE: &str = "dictionary.sqlite3";
 
+// Parent rows must be inserted before rows that reference them. Keep each
+// table's own row order unchanged; deferred self references remain in place.
+const TABLE_INSERT_ORDER: [&str; 47] = [
+    "canonical_document",
+    "capture_refs",
+    "code_notices",
+    "contributors",
+    "distributors",
+    "entity_ids",
+    "metadata",
+    "sources",
+    "collections",
+    "computations",
+    "entries",
+    "occurrence_refs",
+    "owned_revisions",
+    "snapshot_bindings",
+    "source_aliases",
+    "source_lineage",
+    "assertions",
+    "components",
+    "editorial_senses",
+    "occurrence_attributions",
+    "owned_heads",
+    "raw_captures",
+    "source_evidence",
+    "argument_frames",
+    "assertion_timestamps",
+    "component_languages",
+    "contexts",
+    "editorial_members",
+    "etymologies",
+    "extensions",
+    "forms",
+    "raw_occurrences",
+    "releases",
+    "revision_assertions",
+    "revision_tombstones",
+    "annotations",
+    "argument_slots",
+    "computation_inputs",
+    "content_notices",
+    "etymology_components",
+    "form_components",
+    "native_fields",
+    "redistribution_evidence",
+    "relations",
+    "release_assertions",
+    "release_captures",
+    "release_diagnostics",
+];
+
 // The schema intentionally has typed role tables and ordered child tables.
 // Raw native/extension values and the complete canonical envelope are the only
 // opaque payloads; typed metadata is never hidden in JSON/EAV rows.
@@ -69,6 +121,7 @@ CREATE INDEX idx_release_assertions_assertion ON release_assertions(assertion_id
 "#;
 
 pub(crate) type Rows = BTreeMap<&'static str, Vec<Vec<Value>>>;
+type OrderedRows = Vec<(&'static str, Vec<Vec<Value>>)>;
 type SchemaObject = (String, String, String, Option<String>);
 
 pub(crate) fn create_schema(conn: &Connection) -> Result<()> {
@@ -1237,7 +1290,7 @@ pub(crate) fn write_projection(
     dictionary: &Dictionary,
     canonical: &[u8],
 ) -> Result<()> {
-    let rows = project(dictionary, canonical)?;
+    let rows = ordered_projection(project(dictionary, canonical)?)?;
     for (table, table_rows) in rows {
         if table_rows.is_empty() {
             continue;
@@ -1281,6 +1334,21 @@ pub(crate) fn write_projection(
         }
     }
     Ok(())
+}
+
+fn ordered_projection(mut rows: Rows) -> Result<OrderedRows> {
+    let mut ordered = Vec::with_capacity(TABLE_INSERT_ORDER.len());
+    for table in TABLE_INSERT_ORDER {
+        if let Some(table_rows) = rows.remove(table) {
+            ordered.push((table, table_rows));
+        }
+    }
+    if let Some(table) = rows.keys().next() {
+        return Err(rusqlite::Error::ToSqlConversionFailure(Box::new(
+            std::io::Error::other(format!("projection contains unknown table {table}")),
+        )));
+    }
+    Ok(ordered)
 }
 
 pub(crate) fn check_projection(
@@ -1329,6 +1397,79 @@ pub(crate) fn check_projection(
         }
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{DDL, Rows, TABLE_INSERT_ORDER, ordered_projection};
+
+    #[test]
+    fn insertion_order_covers_schema_and_places_foreign_key_parents_first() {
+        let mut schema_tables = Vec::new();
+        let mut references = Vec::new();
+        for statement in DDL.lines().map(str::trim) {
+            let Some(create) = statement.strip_prefix("CREATE TABLE ") else {
+                continue;
+            };
+            let (table, rest) = create.split_once('(').expect("table declaration");
+            schema_tables.push(table);
+            let mut tail = rest;
+            while let Some(index) = tail.find("REFERENCES ") {
+                tail = &tail[index + "REFERENCES ".len()..];
+                let parent = tail
+                    .split(|character: char| character == '(' || character.is_whitespace())
+                    .next()
+                    .expect("referenced table");
+                references.push((table, parent));
+                tail = &tail[parent.len()..];
+            }
+        }
+
+        assert_eq!(schema_tables.len(), TABLE_INSERT_ORDER.len());
+        assert_eq!(
+            schema_tables
+                .iter()
+                .copied()
+                .collect::<std::collections::BTreeSet<_>>(),
+            TABLE_INSERT_ORDER
+                .iter()
+                .copied()
+                .collect::<std::collections::BTreeSet<_>>()
+        );
+        for (child, parent) in references {
+            if child != parent {
+                let parent_position = TABLE_INSERT_ORDER
+                    .iter()
+                    .position(|table| *table == parent)
+                    .unwrap_or_else(|| panic!("missing FK parent {parent}"));
+                let child_position = TABLE_INSERT_ORDER
+                    .iter()
+                    .position(|table| *table == child)
+                    .unwrap_or_else(|| panic!("missing FK child {child}"));
+                assert!(parent_position < child_position, "{parent} before {child}");
+            }
+        }
+    }
+
+    #[test]
+    fn projection_orders_present_tables_and_rejects_unknown_tables() {
+        let sparse: Rows = ["release_diagnostics", "sources", "source_evidence"]
+            .iter()
+            .map(|table| (*table, Vec::new()))
+            .collect();
+        let ordered = ordered_projection(sparse).unwrap();
+        assert_eq!(
+            ordered.iter().map(|(table, _)| *table).collect::<Vec<_>>(),
+            ["sources", "source_evidence", "release_diagnostics"]
+        );
+
+        let mut unknown: Rows = ["sources"]
+            .iter()
+            .map(|table| (*table, Vec::new()))
+            .collect();
+        unknown.insert("unplanned_table", Vec::new());
+        assert!(ordered_projection(unknown).is_err());
+    }
 }
 
 #[cfg(test)]

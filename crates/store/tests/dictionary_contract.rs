@@ -76,11 +76,17 @@ fn complete_dictionary_creates_typed_projection_and_reopens_read_only() {
     let canonical = dictionary.to_json_bytes().unwrap();
     let path = parent.join("candidate");
     let store = DictionaryStore::create(&path, &dictionary).unwrap();
-    assert_eq!(store.canonical_bytes(), canonical);
-    assert_eq!(store.dictionary().document(), dictionary.document());
+    assert_eq!(store.canonical_bytes().unwrap(), canonical);
+    assert_eq!(
+        store.dictionary().unwrap().document(),
+        dictionary.document()
+    );
     drop(store);
     let reopened = DictionaryStore::open(&path).unwrap();
-    assert_eq!(reopened.dictionary().document(), dictionary.document());
+    assert_eq!(
+        reopened.dictionary().unwrap().document(),
+        dictionary.document()
+    );
     let db = Connection::open(reopened.database_path()).unwrap();
     for (table, count) in [
         ("capture_refs", 10),
@@ -286,6 +292,99 @@ fn complete_dictionary_creates_typed_projection_and_reopens_read_only() {
         DictionaryStore::create(&path, &dictionary),
         Err(DictionaryStoreError::ExistingPath(_))
     ));
+    drop(reopened);
+    fs::remove_dir_all(parent).unwrap();
+}
+
+#[test]
+fn reversed_self_reference_rows_persist_and_reopen_in_model_order() {
+    let parent = scratch();
+    let fixture = fixture_support::complete_fixture().unwrap();
+    let mut document = fixture.document();
+    document.metadata.contexts.reverse();
+    document.metadata.owned_revisions.reverse();
+
+    let context_six = document
+        .metadata
+        .contexts
+        .iter()
+        .find(|row| row.id.as_str() == "context-6")
+        .unwrap();
+    assert_eq!(context_six.kind, vlajmaji_lexicon::ContextKind::Translation);
+    assert_eq!(
+        context_six.translated_from.as_ref().unwrap().as_str(),
+        "context-4"
+    );
+    let revision_two = document
+        .metadata
+        .owned_revisions
+        .iter()
+        .find(|row| row.id.as_str() == "revision-r2")
+        .unwrap();
+    assert_eq!(
+        revision_two.parent.as_ref().unwrap().as_str(),
+        "revision-r1"
+    );
+
+    let dictionary = Dictionary::from_document(document).unwrap();
+    let expected_document = dictionary.document();
+    let canonical = dictionary.to_json_bytes().unwrap();
+    let path = parent.join("reversed-self-references");
+    let store = DictionaryStore::create(&path, &dictionary).unwrap();
+    assert_eq!(store.canonical_bytes().unwrap(), canonical);
+    assert_eq!(store.dictionary().unwrap().document(), expected_document);
+    drop(store);
+
+    let reopened = DictionaryStore::open(&path).unwrap();
+    assert_eq!(reopened.canonical_bytes().unwrap(), canonical);
+    assert_eq!(reopened.dictionary().unwrap().document(), expected_document);
+    assert_eq!(
+        reopened.dictionary().unwrap().document().metadata.contexts,
+        expected_document.metadata.contexts
+    );
+    assert_eq!(
+        reopened
+            .dictionary()
+            .unwrap()
+            .document()
+            .metadata
+            .owned_revisions,
+        expected_document.metadata.owned_revisions
+    );
+
+    let db = Connection::open(reopened.database_path()).unwrap();
+    let contexts: Vec<(String, i64, Option<String>)> = db
+        .prepare(
+            "SELECT contexts.id,entity_ids.ordinal,contexts.translated_from              FROM contexts JOIN entity_ids USING(id)              WHERE contexts.id IN ('context-6','context-4')              ORDER BY entity_ids.ordinal",
+        )
+        .unwrap()
+        .query_map([], |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)))
+        .unwrap()
+        .collect::<rusqlite::Result<_>>()
+        .unwrap();
+    assert_eq!(
+        contexts,
+        vec![
+            ("context-6".into(), 1, Some("context-4".into())),
+            ("context-4".into(), 3, None),
+        ]
+    );
+    let revisions: Vec<(String, i64, Option<String>)> = db
+        .prepare(
+            "SELECT owned_revisions.id,entity_ids.ordinal,owned_revisions.parent_id              FROM owned_revisions JOIN entity_ids USING(id)              ORDER BY entity_ids.ordinal",
+        )
+        .unwrap()
+        .query_map([], |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)))
+        .unwrap()
+        .collect::<rusqlite::Result<_>>()
+        .unwrap();
+    assert_eq!(
+        revisions,
+        vec![
+            ("revision-r2".into(), 0, Some("revision-r1".into())),
+            ("revision-r1".into(), 1, None),
+        ]
+    );
     drop(reopened);
     fs::remove_dir_all(parent).unwrap();
 }
@@ -738,13 +837,13 @@ fn full_fixture_has_independent_direct_sql_value_oracles() {
     drop(db);
     drop(store);
     let reopened = DictionaryStore::open(&path).unwrap();
-    assert_eq!(reopened.dictionary(), &dictionary);
+    assert_eq!(reopened.dictionary().unwrap(), dictionary);
     drop(reopened);
     fs::remove_dir_all(parent).unwrap();
 }
 
 #[test]
-fn open_rejects_same_count_scalar_edits_in_each_relational_family_without_repair() {
+fn explicit_projection_verification_rejects_same_count_scalar_edits_without_repair() {
     let base = scratch();
     let dict = fixture_support::complete_fixture().unwrap();
     let source = base.join("source");
@@ -819,16 +918,28 @@ fn open_rejects_same_count_scalar_edits_in_each_relational_family_without_repair
         assert_eq!(changed, 1, "tamper setup for {name}");
         drop(conn);
         let before = fs::read(&dbpath).unwrap();
-        let error = DictionaryStore::open(&case).unwrap_err();
-        assert!(
-            matches!(
-                error,
-                DictionaryStoreError::InvalidStore {
-                    reason: vlajmaji_store::DictionaryStoreInvalidity::Projection,
-                    ..
-                }
-            ),
-            "{name}: {error}"
+        let opened = DictionaryStore::open(&case).unwrap_or_else(|error| {
+            panic!("minimal open should accept persisted {name} scalar edit: {error}")
+        });
+        drop(opened);
+        let report = vlajmaji_store::DictionaryStoreVerification::verify(
+            &case,
+            vlajmaji_store::DictionaryStoreVerificationCheck::Projection,
+        )
+        .unwrap_or_else(|error| {
+            panic!("projection verification invocation failed for {name}: {error}")
+        });
+        assert_eq!(
+            report.checks.len(),
+            1,
+            "selective verification emits only its requested row"
+        );
+        assert_eq!(report.checks[0].check, "projection");
+        assert_eq!(
+            report.checks[0].status,
+            vlajmaji_store::DictionaryStoreCheckStatus::Failed,
+            "{name}: {:?}",
+            report.checks[0]
         );
         assert_eq!(
             fs::read(&dbpath).unwrap(),
@@ -845,10 +956,10 @@ fn empty_valid_dictionary_has_a_real_empty_projection() {
     let path = parent.join("empty");
     let dictionary = Dictionary::new();
     let store = DictionaryStore::create(&path, &dictionary).unwrap();
-    assert_eq!(store.dictionary(), &dictionary);
+    assert_eq!(store.dictionary().unwrap(), dictionary);
     drop(store);
     let reopened = DictionaryStore::open(&path).unwrap();
-    assert_eq!(reopened.dictionary(), &dictionary);
+    assert_eq!(reopened.dictionary().unwrap(), dictionary);
     drop(reopened);
     fs::remove_dir_all(parent).unwrap();
 }
@@ -1205,7 +1316,7 @@ fn full_unsigned_text_empty_and_nul_values_survive_sql_and_reopen() {
     drop(db);
     drop(store);
     let reopened = DictionaryStore::open(&path).unwrap();
-    assert_eq!(reopened.dictionary(), &dictionary);
+    assert_eq!(reopened.dictionary().unwrap(), dictionary);
     drop(reopened);
     fs::remove_dir_all(base).unwrap();
 }
@@ -1281,12 +1392,17 @@ fn legacy_archive_rebuild_is_explicit_separate_and_byte_preserving() {
     let new_path = base.join("new-dictionary");
     let store = DictionaryStore::create(&new_path, &rebuilt).unwrap();
     assert_ne!(store.path(), old_path.as_path());
-    assert_eq!(store.dictionary(), &rebuilt);
+    assert_eq!(store.dictionary().unwrap(), rebuilt);
     drop(store);
     let reopened = DictionaryStore::open(&new_path).unwrap();
-    assert_eq!(reopened.dictionary(), &rebuilt);
+    assert_eq!(reopened.dictionary().unwrap(), rebuilt);
     assert_eq!(
-        reopened.dictionary().document().legacy_archive.as_deref(),
+        reopened
+            .dictionary()
+            .unwrap()
+            .document()
+            .legacy_archive
+            .as_deref(),
         Some(archive.as_slice())
     );
     assert_eq!(
@@ -1307,11 +1423,14 @@ fn legacy_archive_rebuild_is_explicit_separate_and_byte_preserving() {
     let rebuilt_v1 = Dictionary::from_legacy_archive(&legacy_v1, registry, metadata).unwrap();
     let new_v1_path = base.join("new-dictionary-v1");
     let store_v1 = DictionaryStore::create(&new_v1_path, &rebuilt_v1).unwrap();
-    assert_eq!(store_v1.dictionary(), &rebuilt_v1);
+    assert_eq!(store_v1.dictionary().unwrap(), rebuilt_v1);
     drop(store_v1);
     assert_eq!(
-        DictionaryStore::open(&new_v1_path).unwrap().dictionary(),
-        &rebuilt_v1
+        DictionaryStore::open(&new_v1_path)
+            .unwrap()
+            .dictionary()
+            .unwrap(),
+        rebuilt_v1
     );
     fs::remove_dir_all(base).unwrap();
 }
@@ -1396,17 +1515,61 @@ fn integrity_failures_are_classified_without_mutating_the_database() {
         }
         drop(conn);
         let before = fs::read(&dbpath).unwrap();
-        let error = DictionaryStore::open(&path).unwrap_err();
-        if let Some(reason) = wanted {
-            assert!(
-                matches!(error, DictionaryStoreError::InvalidStore { reason: actual, .. } if actual == reason),
-                "{name}: {error}"
-            );
-        } else {
-            assert!(
-                matches!(error, DictionaryStoreError::InvalidDictionary(_)),
-                "{name}: {error}"
-            );
+        let report = vlajmaji_store::DictionaryStoreVerification::verify(
+            &path,
+            vlajmaji_store::DictionaryStoreVerificationCheck::All,
+        )
+        .unwrap_or_else(|error| panic!("all-verification invocation failed for {name}: {error}"));
+        assert_eq!(
+            report.checks.len(),
+            6,
+            "{name}: all must report all six checks"
+        );
+        let (row, expected_category) = match wanted {
+            Some(Invalidity::Format) => (&report.checks[1], "Format"),
+            Some(Invalidity::SchemaVersion) => (&report.checks[1], "SchemaVersion"),
+            Some(Invalidity::Incomplete) => (&report.checks[1], "Incomplete"),
+            Some(Invalidity::CanonicalBytes) => (&report.checks[2], "CanonicalBytes"),
+            Some(Invalidity::SchemaShape) => (&report.checks[0], "SchemaShape"),
+            Some(Invalidity::ForeignKeys) => (&report.checks[4], "ForeignKeys"),
+            Some(Invalidity::Projection) => (&report.checks[5], "Projection"),
+            None => (&report.checks[3], "InvalidDictionary"),
+            Some(other) => panic!("unexpected prior strict category {other:?}"),
+        };
+        assert_eq!(
+            row.status,
+            vlajmaji_store::DictionaryStoreCheckStatus::Failed,
+            "{name}: {row:?}"
+        );
+        match name {
+            "bad-hash" => assert_eq!(
+                row.diagnostic,
+                "canonical document digest differs from metadata"
+            ),
+            "malformed-canonical" => assert!(
+                row.diagnostic.starts_with("InvalidJson(")
+                    && row.diagnostic.contains("EOF while parsing an object"),
+                "malformed canonical data must fail strict model parsing: {row:?}"
+            ),
+            _ => assert!(
+                row.diagnostic.contains(expected_category),
+                "{name}: expected prior category {expected_category}, got {row:?}"
+            ),
+        }
+        match name {
+            "family" | "version" | "incomplete" => {
+                let error = DictionaryStore::open(&path).unwrap_err();
+                let Some(reason) = wanted else { unreachable!() };
+                assert!(
+                    matches!(error, DictionaryStoreError::InvalidStore { reason: actual, .. } if actual == reason),
+                    "{name}: {error}"
+                );
+            }
+            _ => {
+                let opened = DictionaryStore::open(&path)
+                    .unwrap_or_else(|error| panic!("minimum header should open {name}: {error}"));
+                drop(opened);
+            }
         }
         assert_eq!(
             fs::read(&dbpath).unwrap(),
@@ -1438,19 +1601,59 @@ fn integrity_failures_are_classified_without_mutating_the_database() {
     .unwrap();
     drop(conn);
     let before = fs::read(&dbpath).unwrap();
-    let error = DictionaryStore::open(&path).unwrap_err();
-    assert!(
-        matches!(
-            error,
-            DictionaryStoreError::InvalidStore {
-                reason: Invalidity::Projection,
-                ..
-            }
-        ),
-        "{error}"
+    let opened = DictionaryStore::open(&path).expect("minimal header remains readable");
+    drop(opened);
+    let report = vlajmaji_store::DictionaryStoreVerification::verify(
+        &path,
+        vlajmaji_store::DictionaryStoreVerificationCheck::Projection,
+    )
+    .unwrap();
+    assert_eq!(
+        report.checks[0].status,
+        vlajmaji_store::DictionaryStoreCheckStatus::Failed
     );
     assert_eq!(fs::read(&dbpath).unwrap(), before);
 
+    fs::remove_dir_all(base).unwrap();
+}
+
+#[test]
+fn test_minimal_open_rejects_unsupported_dictionary_and_registry_versions() {
+    use vlajmaji_store::DictionaryStoreInvalidity as Invalidity;
+
+    let base = scratch();
+    let fixture = fixture_support::complete_fixture().unwrap();
+    for (key, value) in [("dictionary_version", "2"), ("registry_version", "2")] {
+        let original = base.join(format!("origin-{key}"));
+        let store = DictionaryStore::create(&original, &fixture).unwrap();
+        let source_db = store.database_path();
+        drop(store);
+        let path = base.join(format!("case-{key}"));
+        fs::create_dir(&path).unwrap();
+        let dbpath = path.join("dictionary.sqlite3");
+        fs::copy(source_db, &dbpath).unwrap();
+        let connection = Connection::open(&dbpath).unwrap();
+        connection
+            .execute("UPDATE metadata SET value=?1 WHERE key=?2", (value, key))
+            .unwrap();
+        drop(connection);
+        let before = fs::read(&dbpath).unwrap();
+        assert!(
+            matches!(
+                DictionaryStore::open(&path),
+                Err(DictionaryStoreError::InvalidStore {
+                    reason: Invalidity::CanonicalBytes,
+                    ..
+                })
+            ),
+            "unsupported {key} must be rejected by minimum open"
+        );
+        assert_eq!(
+            fs::read(&dbpath).unwrap(),
+            before,
+            "open must not repair unsupported {key}"
+        );
+    }
     fs::remove_dir_all(base).unwrap();
 }
 
@@ -1479,7 +1682,7 @@ fn empty_available_release_keeps_explicit_zero_counts() {
     drop(db);
     drop(store);
     let reopened = DictionaryStore::open(&path).unwrap();
-    assert_eq!(reopened.dictionary(), &dictionary);
+    assert_eq!(reopened.dictionary().unwrap(), dictionary);
     drop(reopened);
     fs::remove_dir_all(base).unwrap();
 }
@@ -1563,7 +1766,7 @@ fn empty_source_metadata_values_survive_actual_sql_projection() {
     drop(db);
     drop(store);
     let reopened = DictionaryStore::open(&path).unwrap();
-    assert_eq!(reopened.dictionary(), &dictionary);
+    assert_eq!(reopened.dictionary().unwrap(), dictionary);
     drop(reopened);
     fs::remove_dir_all(base).unwrap();
 }

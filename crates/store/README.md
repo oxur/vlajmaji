@@ -9,8 +9,10 @@ SQLite and FTS5 provide local persistence and query indexes. The optional `graph
 
 This crate also exposes `DictionaryStore`, the immutable SQLite persistence
 boundary for the versioned `vlajmaji-lexicon::Dictionary` model. It writes a
-concrete schema-1 projection to a fresh directory and reopens it only after
-checking canonical bytes, schema, foreign keys and every projected SQL value.
+concrete schema-1 projection to a fresh directory and returns it only after
+explicitly checking canonical bytes, schema, foreign keys and every projected
+SQL value. Later ordinary `open` checks only a minimally readable header; it
+does not repeat that comprehensive audit.
 It is separate from the existing rebuildable `SqliteStore` search index.
 Its `exact_assertion_ids` helper returns byte-exact lexical candidates in
 persisted source/spelling/occurrence order. It does not normalize spelling or
@@ -25,12 +27,22 @@ let dictionary = Dictionary::from_json_bytes(&std::fs::read("dictionary.json")?)
 let store = DictionaryStore::create("data/dictionary", &dictionary)?;
 drop(store);
 let reopened = DictionaryStore::open("data/dictionary")?;
-assert_eq!(reopened.dictionary().document(), dictionary.document());
+let report = vlajmaji_store::DictionaryStoreVerification::verify(
+    "data/dictionary", vlajmaji_store::DictionaryStoreVerificationCheck::All,
+)?;
+assert!(report.ok);
+assert_eq!(reopened.dictionary()?.document(), dictionary.document());
 # Ok::<(), Box<dyn std::error::Error>>(())
 ```
 
 The destination leaf must be fresh and its parent must already exist. Open is
-read-only and never migrates or repairs. See the
+read-only, does not migrate or repair, and makes no claim about hashes,
+canonical model validity, foreign keys, or full projection. `summary()` reads
+persisted counts and source records without loading canonical JSON;
+`dictionary()` and `canonical_bytes()` are explicit fallible reads.
+`DictionaryStoreVerification::verify(path, check)` performs one selected
+read-only audit (`schema`, `metadata`, `hashes`, `model`, `fks`, `projection`,
+or `all`). See the
 [schema and trust-boundary guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-schema.md) and the
 `dictionary_store` example.
 

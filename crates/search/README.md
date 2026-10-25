@@ -7,7 +7,10 @@ Reusable lexical queries for the [Vlajmaji](https://github.com/oxur/vlajmaji) di
 
 Queries include exact spelling, literal reverse-definition lookup, captured forms and links, spelling distance, bounded phonological contrasts, and prosodic filters. Results retain source identity and explanations. The optional `morphology` feature adds compound decomposition and generation through `latkerlo-jvotci`.
 
-The grouped dictionary API builds or reopens a validated `DictionaryStore`,
+The grouped dictionary API builds a fully verified `DictionaryStore` or opens
+its typed draft without claiming full-store verification. Query construction
+checks lookup identities needed by the query engine but does not replace the
+explicit store verification API,
 performs byte-exact source-grouped spelling lookup with complete pre-page
 counts, and resolves typed local/catalogue references. Its responses retain
 source, release, occurrence, editorial, and computed evidence as separate
