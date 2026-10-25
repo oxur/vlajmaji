@@ -1,0 +1,5 @@
+{
+  "attempt": "gate_matrix_s02_candidate03.py",
+  "failure": "Reviewer overbroad label substitution changed arc02 cwd and launcher string to arc03; cwd absent prevented Popen before any product command. No Arc03 directory, branch, plan or source created.",
+  "repair": "New driver changes only eight quoted gate labels using bounded regex; preserves exact source Arc02 cwd, A02 launcher and Rust1.98.0. Original driver/log retained."
+}

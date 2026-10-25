@@ -1,0 +1,38 @@
+{
+  "label": "s02-package-list-vlajmaji-cli-03",
+  "argv": [
+    "/tmp/vlajmaji-p01-a02-cargo",
+    "+1.98.0",
+    "package",
+    "--locked",
+    "--offline",
+    "--list",
+    "-p",
+    "vlajmaji-cli"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "start_utc": "2026-10-25T00:58:24.696827+00:00",
+  "head_before": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  },
+  "state": "completed",
+  "pid": 52733,
+  "returncode": 0,
+  "elapsed_seconds": 0.05617191595956683,
+  "end_utc": "2026-10-25T00:58:24.768783+00:00",
+  "head_after": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "streams": {
+    "stdout": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-package-list-vlajmaji-cli-03.stdout",
+      "bytes": 190,
+      "sha256": "b2986d47ac1b117de203727ce96823255f559db9e71188fe01871d5389a99a4a"
+    },
+    "stderr": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-package-list-vlajmaji-cli-03.stderr",
+      "bytes": 105,
+      "sha256": "8b973e3412694df853a7df436c2ad6b270a4d50396501ee1df63581467161dc9"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "label": "s02-full-cli-query03",
+  "argv": [
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+    "dictionary-query",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-full-store03",
+    "--request",
+    "{\"operation\": \"exact\", \"spelling\": \"farvi\"}"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "start_utc": "2026-10-25T00:54:18.617871+00:00",
+  "head_before": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  },
+  "state": "completed",
+  "pid": 50151,
+  "returncode": 0,
+  "elapsed_seconds": 91.53267783392221,
+  "end_utc": "2026-10-25T00:55:50.166860+00:00",
+  "head_after": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "streams": {
+    "stdout": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-full-cli-query03.stdout",
+      "bytes": 3028230,
+      "sha256": "4a0c902b350162d7932169428713b53970d8aaba235c94da3cff313aa981054e"
+    },
+    "stderr": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-full-cli-query03.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

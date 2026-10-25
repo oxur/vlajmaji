@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 CLOSED at original accepted revision; Arc02 ACTIVE; S01 CLOSED, S02 OPEN; A03–A06 not activated |
+| status | project OPEN; Arc01 CLOSED at original accepted revision; Arc02 ACTIVE; S01/S02 CLOSED; independent arc gates pending; A03–A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.8 / 2026-10-24, America/Chicago |
+| version / date | 1.11 / 2026-10-24, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -214,7 +214,7 @@ exact original paths, revisions, SHA-256 and byte sizes for every copied file.
 Old source pins and measurements remain dated evidence, not current service or
 performance claims. No full corpus, database or Cargo build cache was copied.
 
-Next: execute S02 pinned pipeline/full persistence with the source-guided47-table parent-first correction on accepted S01source12fdd67. The old writer attempt was bounded/stopped at600s; retained old query binary will compare8complete responses on the new schema-identical candidate store before acceptance. Arc01 remains closed at its original accepted source; all14projectrows remain open. Child normalization acceptance is not arc composition or project acceptance.
+Current next: fresh separate SolHigh assembled full-input technical composition and final canonical-packet review. S02 pinned pipeline/full persistence is independently accepted4e37016; old writer600s remains incomplete historical evidence, retained old/new8complete responses on same new store are byte-equal. Both children are closed; arc/project acceptance is not inferred. All14projectrows remainOPEN; noA03.
 
 ## Planning validation — initial draft checkpoint
 
@@ -271,7 +271,7 @@ Feature source efef9c4includes inspected initial logo ancestry e0630d8but exclud
 
 - 1.7 — 2026-10-24: Duncan renewed Autonomous/Expedited execution and existing explicit model selection for Arc02. Recorded directive02, fresh current-main source baseline/five-crate CLI facts, corpus acquisition authority and held publication, resource guardrails and stop-before-A03 boundary. Previous Arc01 authority/preflight/progress are historical receipts; all14projectrows remain OPEN.
 
-## Arc02 current readiness —2026-10-24
+## Arc02 S01-to-S02 readiness —2026-10-24 (historical; superseded by current S02 close below)
 
 Canonical arc02-reproducible-jbotci-import S01 is independently accepted at12fdd67 with all7rows closed after two executed refinements. Complete41API/36CLI/915570source checks, full shipped example+negative counterparts/fullCLI and current mandatory gates are in the child verifier/close/retro and hashed accepted artifacts. A02-01DONE/other7arcrowsOPEN; all14projectrowsOPEN. Complete raw33526rows/278254fields and every alternative remain, with33516eligible/31248spellings and10explicitexclusions. S02 must still deliver actual pinned acquisition/replay/check/update, fresh fullstore/reopen/groupedqueries and outside offline composition. CDC owns finite source-grounded readiness and target; CC idle. Main/Bauske clean and protected. Operator cache cleanup was assessed before rebuild: retained target14GiB/debug intact/release absent,449265967104B free at current handover. No cache deletion by contributors, push/publication, A03 or project acceptance.
 
@@ -280,3 +280,9 @@ Canonical arc02-reproducible-jbotci-import S01 is independently accepted at12fdd
 - 1.9 —2026-10-24: accepted full S01 normalization/API/CLI at12fdd67 with complete independent source-native population and current gates; child7rows closed, A02-01done,remaining7arc/14projectrowsopen. S02 actual acquisition/persisted/offline composition remains next; current resource/source ownership reconciled.
 
 - 1.10 —2026-10-24: actual bounded full-input readiness exposed alphabetical deferred-FK load scans; old create stopped at600s with native/EXPLAIN/schema evidence and untouched incomplete artifacts. Opened S02useful pinnedworkflow/fullpersistedlookup plus narrow schema-preserving load/query corrections,8open childrows. Retained old binary/common-new-store comparison replaces prohibitively slow old writer prerequisite, not actual full persistence/query acceptance. All14projectrows remainopen; no A03.
+
+## Arc02 current S02 close and remaining gate,2026-10-24
+
+Both children accepted: S01at12fdd67/all7rows, S02at4e37016/all8rows. Full raw33526rows/278254fields,33516eligibleoccurrences/31248spellings,73226extensions compose with explicit pinned acquisition/offline replay/check/update and fresh complete relational/query/publicoutside behavior; current gates88/90Rust+19tools/onehistoricalresearchignore pass. A02-01/02DONE/6arcOPEN awaiting fresh independent technical/finalcanonical composition;14projectrowsOPEN. Freshengine strictopen25.059srelease (outside26.383s) and one-shotdebugCLI91.533s are practical costs owned P01-08/A04 operational comparison and P01-11/12/A06 integrated API/rebuild work. Long-lived engine amortization/response-ownedmetadata/occurrence scans remain explicit; noconstanttime/endtoendCLIratio/heapbyteclaim/newtopologydecision. Source/main/Bauske remain protected/frozen; noA03/push/publication.
+
+-1.11 —2026-10-24: S02 supplied full useful pipeline/persistedlookup and all8independent rows, current nextstep is fresh separate assembled arc review. Updated currentstatus/latency carryovers while preserving historical readiness/attempts; header previouslystill1.8 despite historythrough1.10, nowreconciled. No structural roadmap/scope reduction or project-row closure.

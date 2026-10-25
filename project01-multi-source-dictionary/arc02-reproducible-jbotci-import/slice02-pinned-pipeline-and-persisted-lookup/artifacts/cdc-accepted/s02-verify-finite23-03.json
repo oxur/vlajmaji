@@ -1,0 +1,35 @@
+{
+  "label": "s02-verify-finite23-03",
+  "argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "-B",
+    "/tmp/vlajmaji-p01-a02-cdc/verify_finite.py",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-full-cache02/3d9fd41d9ed32de26311ee27ec86b6b165985aa1-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98/dictionary-en.json",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-new-finite23-03-results"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "start_utc": "2026-10-25T00:52:36.681772+00:00",
+  "head_before": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  },
+  "state": "completed",
+  "pid": 49976,
+  "returncode": 0,
+  "elapsed_seconds": 0.4933421667665243,
+  "end_utc": "2026-10-25T00:52:37.192041+00:00",
+  "head_after": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "streams": {
+    "stdout": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-verify-finite23-03.stdout",
+      "bytes": 276,
+      "sha256": "560e13dc3d8a947838e4fe1e73a2742cbc5aff3e76fcd373ef95df3abb4416c4"
+    },
+    "stderr": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-verify-finite23-03.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

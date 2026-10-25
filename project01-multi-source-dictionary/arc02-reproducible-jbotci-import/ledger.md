@@ -1,12 +1,12 @@
 # Arc02 ledger
 
-1of8rows DONE/reproduced (A02-01);7OPEN. Child/arc evidence must cover the full pinned input, not the
+2of8rows DONE/reproduced (A02-01/02);6OPEN. Child/arc evidence must cover the full pinned input, not the
 supplier's selected projection. Project acceptance and later arcs remain open.
 
 | ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | A02-01 | S01 full lossless importer/API/CLI independently accepted. | S01 all-row verifier and actual fullraw/native controls. | correctness-grade | Roadmap A02; P01-03 | done/reproduced | slice01-lossless-export-normalization/cdc-verification.md,12fdd67 | All7childrows closed; full33526/278254 source reference/current41API/36CLI/gates. |
-| A02-02 | S02 pinned pipeline/full persisted lookup independently accepted. | S02 all-row verifier; real acquire/replay/check/update+store/caller. | correctness-grade | Roadmap A02 | open | | No child accepted. |
+| A02-02 | S02 pinned pipeline/full persisted lookup independently accepted. | S02 all-row verifier; real acquire/replay/check/update+store/caller. | correctness-grade | Roadmap A02 | done/reproduced | slice02-pinned-pipeline-and-persisted-lookup/cdc-verification.md,4e37016 | All8childrows closed; fresh full store/native/queries/offline outside/current gates. |
 | A02-03 | Exact full raw+metadata→normalized release accounts for every row/field/alternative/diagnostic and declared eligibility. | Fresh independent whole-population lexical/native reference, raw bytes/hash/reload; syntheticduplicate/unknown controls. | correctness-grade | Design import; P01-03 | open | |33526raw assertions, supplier counts measured separately. |
 | A02-04 | Explicit public pinned acquisition, offline replay/check and deliberate update preserve inputs/releases/history and reject drift without ordinary network. | Fresh outside replay and positive/negative operation controls; no write on check; old pins/release bytes unchanged. | correctness-grade | User automation/offline decision | open | | No authenticated Lensisku or scheduler. |
 | A02-05 | Complete release works before SQLite, then fresh persist/drop/reopen composes with source-grouped exact totals/pages and full raw-derived results. | Fresh independent external Rust/actual CLI composition over full population, row/SQL/native oracles, selected negative/valid counterparts. | correctness-grade | A01→A02 composition; P01-02/11/12 | open | | Child pointers alone insufficient. |
@@ -33,3 +33,7 @@ Independent13cheap controls at8da776b yield4pass/9contract disagreements, includ
 ## S02 candidate02 gate disposition,2026-10-24
 
 Source3b45dda passes13+47independent process controls and fresh full pinned acquire/offline replay, but required workspaceallfeatures native test gate failed. New exact two-thread scratch collision is reproduced in artifacts/cdc-review02 (slice-owned); original root names were not logged. Iteration02 is one-file exclusive scratch allocation repair, second of5. No full persistence/SQL/old-new acceptance inferred; all prior open rows remainOPEN.
+
+## S02 bubble-up,2026-10-24
+
+All8S02rows independently accepted4e37016, with full pinned acquisition/offline pipeline,698MBfreshpublicstore,335308rawSQLchecks including73226totalextensions,old/new8completebyteequality,23real/12fixturecases,actualCLI and exact clean outsidefullreplay/publicconsumer/current88/90+19gates. Parent A02-01/02DONE/6OPEN; child pointers do not replace fresh assembled technical/finalpacket gate. Practical freshengine strictopen~25srelease/debugCLI91.533s remains owned P01-08/A04+P01-11/12/A06; noS02optimization/topologydecision.14projectrowsOPEN/noA03.

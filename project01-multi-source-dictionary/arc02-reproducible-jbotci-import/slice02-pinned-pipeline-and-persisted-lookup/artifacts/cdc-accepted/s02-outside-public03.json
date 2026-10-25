@@ -1,0 +1,36 @@
+{
+  "label": "s02-outside-public03",
+  "argv": [
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/a02_cdc_composition_20261024d",
+    "outside",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-full-store03",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-full-cache02/3d9fd41d9ed32de26311ee27ec86b6b165985aa1-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98/dictionary-en.json",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-full-cache02/3d9fd41d9ed32de26311ee27ec86b6b165985aa1-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98/dictionary-en.metadata.toml",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-full-canonical02.json"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "start_utc": "2026-10-25T00:57:29.483803+00:00",
+  "head_before": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  },
+  "state": "completed",
+  "pid": 52634,
+  "returncode": 0,
+  "elapsed_seconds": 54.91484454181045,
+  "end_utc": "2026-10-25T00:58:24.414227+00:00",
+  "head_after": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "streams": {
+    "stdout": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-outside-public03.stdout",
+      "bytes": 150,
+      "sha256": "292a83cace4ce56a6194bd9e9825780f4ea7d2dd51e464526da9c48c0a676e10"
+    },
+    "stderr": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-outside-public03.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

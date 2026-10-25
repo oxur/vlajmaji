@@ -1,0 +1,40 @@
+{
+  "label": "s02-outside-build03",
+  "argv": [
+    "/tmp/vlajmaji-p01-a02-cargo",
+    "+1.98.0",
+    "build",
+    "--locked",
+    "--offline",
+    "--release",
+    "--manifest-path",
+    "/tmp/vlajmaji-p01-a02-cdc/outside-caller-candidate02/Cargo.toml",
+    "--bin",
+    "a02_cdc_composition_20261024d"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "start_utc": "2026-10-25T00:57:16.998822+00:00",
+  "head_before": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  },
+  "state": "completed",
+  "pid": 52600,
+  "returncode": 0,
+  "elapsed_seconds": 12.409018291626126,
+  "end_utc": "2026-10-25T00:57:29.424314+00:00",
+  "head_after": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "streams": {
+    "stdout": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-outside-build03.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-outside-build03.stderr",
+      "bytes": 794,
+      "sha256": "1f190f89e81cb15bb54dd7ab44dbc0e74418ad353a7c2ff9d499f83b6517c7fb"
+    }
+  }
+}

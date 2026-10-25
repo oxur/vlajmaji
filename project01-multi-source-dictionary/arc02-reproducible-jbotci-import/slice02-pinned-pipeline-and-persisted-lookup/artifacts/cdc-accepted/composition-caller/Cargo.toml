@@ -1,0 +1,16 @@
+[package]
+name = "vlajmaji_a02_cdc_composition_20261024b"
+version = "0.0.0"
+edition = "2024"
+
+[[bin]]
+name = "a02_cdc_composition_20261024b"
+path = "src/main.rs"
+
+[features]
+all = ["vlajmaji/graph", "vlajmaji/morphology"]
+
+[dependencies]
+vlajmaji = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/crates/vlajmaji", default-features = false }
+serde_json = "=1.0.151"
+vlajmaji_lexicon = { package = "vlajmaji-lexicon", path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/crates/lexicon" }

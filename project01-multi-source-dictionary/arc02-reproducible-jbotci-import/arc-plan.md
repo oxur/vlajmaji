@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01 CLOSED/accepted12fdd67; S02 OPEN/initial assignment |
-| version/date | 1.2 / 2026-10-24 |
+| status | ACTIVE; both children CLOSED/accepted12fdd67 and4e37016; fresh technical/finalpacket gates pending |
+| version/date | 1.3 / 2026-10-24 |
 | depends-on | A01 fixture contracts originally accepted efef9c4; current implementation baseline d1e1c928 including CLI relocation/umbrella0.3.0 |
 | blocks | A03 jbotci optional package and later complete-corpus integration |
 | authority | ../cdc-directive02.md; renewed Autonomous/Expedited, CDC SolHigh / CC LunaHigh, stop before A03 |
@@ -61,8 +61,7 @@ S01 combines the coherent normalization/API/CLI contract with its tests and
 full input. S02 is the externally usable acquisition/update/replay workflow and
 its actual persistence integration, not evidence-only work. No final-integration
 arc postpones first usable entrypoints. Each is sized with source/guide/query
-intake and repair headroom; maximum5refinements per slice. Plan S02's exact open
-set against S01 rather than inventing all detail now. All inherited obligations
+intake and repair headroom; maximum5refinements per slice. At opening, S02's exact open set was planned against accepted S01; current S02 is now independently closed at4e37016. All inherited obligations
 remain in the two capability slices and arc composition, not hidden deferrals.
 
 ## Ownership, resources, checks and limits
@@ -133,3 +132,5 @@ supports two usable slices, explicit export-vs-API boundary, measured complete
 -1.1 —2026-10-24: S01 independently accepted12fdd67 with all7rows closed and current complete raw/API/CLI/example/gate evidence. A02-01DONE,other7arcrowsOPEN; S02 exact design follows actual full persistence/reopen/eight-request baseline. Original source/input/scope remains intact; current resource observations dated separately from opening scarcity.
 
 -1.2 —2026-10-24: actual pre-fix full writer stopped at600s with exact native/EXPLAIN/source evidence, not accepted store. S02 now includes narrow47-table parent-first ordering with unchanged schema1/FK/API and complete omission/self-reference/failure guards. Revised fair8query comparison uses retained old binary on candidate new schema-identical full store. Initial S02plan/8open rows/prompt issued; source unchanged12fdd67, all14projectrowsopen. No obligation dropped.
+
+-1.3 —2026-10-24: S02 all8rows accepted4e37016 after two bounded refinements. Both useful children delivered, no structural slice/scope change. Actual335308nativeSQLchecks/old-new8/23/12/fullCLI/outside/currentgates retained; fresh SolHigh technical and finalpacket gates remain mandatory before arc close. Source-guided repairs preserve DDL/FK/API and allraw fields. New practical freshengine strictopen~25srelease/debugCLI91.533s is carried to P01-08/A04 operational comparison and P01-11/12/A06 integration, not silently optimized/dropped here. All14projectrowsOPEN; noA03.

@@ -1,0 +1,96 @@
+[
+  {
+    "case": "page-first",
+    "elapsed_us": 4894,
+    "request": {
+      "operation": "exact",
+      "options": {
+        "page_size": 1
+      },
+      "spelling": "farvi"
+    },
+    "success": true
+  },
+  {
+    "case": "farvi-default",
+    "elapsed_us": 3995,
+    "request": {
+      "operation": "exact",
+      "spelling": "farvi"
+    },
+    "success": true
+  },
+  {
+    "case": "farvi-abbreviation",
+    "elapsed_us": 3673,
+    "request": {
+      "operation": "exact",
+      "options": {
+        "sources": [
+          "LSK"
+        ]
+      },
+      "spelling": "farvi"
+    },
+    "success": true
+  },
+  {
+    "case": "ma",
+    "elapsed_us": 4349,
+    "request": {
+      "operation": "exact",
+      "spelling": "ma"
+    },
+    "success": true
+  },
+  {
+    "case": "wiki-excluded",
+    "elapsed_us": 4138,
+    "request": {
+      "operation": "exact",
+      "spelling": "Periodic-table gismu assignment algorithm"
+    },
+    "success": true
+  },
+  {
+    "case": "resolve-local",
+    "elapsed_us": 3875,
+    "request": {
+      "operation": "resolve",
+      "target": {
+        "Local": {
+          "Assertion": "jbotci-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-assertion-13306"
+        }
+      }
+    },
+    "success": true
+  },
+  {
+    "case": "catalog-native",
+    "elapsed_us": 55181,
+    "request": {
+      "operation": "resolve",
+      "target": {
+        "Catalog": {
+          "native_assertion_id": "333",
+          "release": "jbotci-release-34c2919a00a7bd68e07efb3e0fdd8dae02e9f48f82c006415a62dd634acf973a",
+          "source": "lensisku"
+        }
+      }
+    },
+    "success": true
+  },
+  {
+    "case": "page-next",
+    "elapsed_us": 4064,
+    "request": {
+      "operation": "exact",
+      "options": {
+        "cursor": "7b22626f6479223a7b2276657273696f6e223a312c2262696e64696e67223a2262613633346639386564336262383630333330646632613763626439393735326535313964333335663363643739623263636336656533366264626563303939222c226c617374223a7b22736f75726365223a226c656e7369736b75222c227370656c6c696e67223a226661727669222c226f6363757272656e63655f6964223a223030303030303030303030303030316236333631373037343735373236353634336136633635366537333639373336623735336136613632366637343633363933613635366530303030303030303030303030303430333133323635333833323336333733353331363333333635333533303633333133303634363433383634363633313631363436313636363233353636333936353632333333323633363436363335333433323632333233323633333433323334333436363332333833343632333533393634333333383332333436343634363530303030303030303030303030303036326633313333333333303336227d7d2c22636865636b73756d223a2234643066363164663635356235303231653065636639306333306264346331326661316531663264323339363034646363343465393035396339363931333638227d",
+        "page_size": 1
+      },
+      "spelling": "farvi"
+    },
+    "success": true
+  }
+]

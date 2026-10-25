@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status/version | OPEN/candidate02 gate rejected, iteration02 issued,1.3,2026-10-24 |
+| status/version | CLOSED/independently accepted4e37016,1.4,2026-10-24 |
 | predecessor | S01 independently accepted12fdd67; canonical close33435841 |
-| source | feature/project01-full-jbotci-import at12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69; isolated Arc02checkout |
+| source | feature/project01-full-jbotci-import; opening baseline12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69, accepted4e3701606be7d9a24a863468ea4fdbd7c1b369ab; isolated Arc02checkout |
 | authority | Project cdc-directive02.md; Autonomous/Expedited CDC SolHigh + same LunaHigh CC; no A03/push/publication |
 | deliverable | Explicit pinned Bash3.2/Make acquire/replay/check/update + actual full release/store/grouped lookup, with narrow diagnosed load/query integration corrections |
-| current assignment | iteration02/cc-prompt.md; second bounded repair issued; up to5 |
+| current assignment | iteration02/cc-prompt.md completed; two executed refinements of5; canonical close accepted4e37016 |
 | evidence | ../artifacts/s02-readiness.md and its hashed directory; artifacts/cc-execution.md solely CC-owned during interval |
 
 ## Fixed source/pins and limits
@@ -62,3 +62,7 @@ Candidate8da776b remains clean/rejected after13actual cheap controls (4pass/9con
 ## Candidate02 required gate and iteration02,2026-10-24
 
 Independent13+47process controls and actual fresh public acquire/offline full replay pass at3b45dda; product/script source hashes retained. Defaultcheckpasses, but workspaceallfeatures3native fixture failures block acceptance. First bounded traced counterpart proves report/malformed tests share exact PID33807/nanotime1792888774133276000 root; original panic omitted roots and remains limited. See artifacts/cdc-review02/review.md. Iteration02 fixes ONLY native test scratch ownership with atomic unique candidates/exclusive create/retry plus deterministic occupied/parallel controls and current parallel gates. No repeated full acquisition/normalization/store by CC; CDC full persistence/SQL/old-new/outside remainspending. All8rowsOPEN/arc1DONE7OPEN/project14OPEN.
+
+## Version1.4 / final independent close,2026-10-24
+
+Was1.3OPEN/secondrepair. Current source4e37016 is independently accepted across all8originalrows; CC closingreport/cdc-verification/cdc-retrospective and118acceptedhashedpayloads preserve actual current proof, old/rejected attempts and byte-bound retained controls. No runtime scope deferred. 11of12allowedpaths changed; unchanged searchtests remain covered by existing5tests plus complete12/23/8public controls. Freshengine release strictopen~25s and debugCLI91.533s remain practical limits owned P01-08/A04 and P01-11/12/A06, no newoptimization. Arc independent composition/finalpacket gate stillpending; noA03/push/publication.

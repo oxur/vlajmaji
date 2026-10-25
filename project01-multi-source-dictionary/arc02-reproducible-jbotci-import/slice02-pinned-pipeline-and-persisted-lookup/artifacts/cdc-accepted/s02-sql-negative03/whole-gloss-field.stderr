@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a02-cdc/verify_sqlite.py", line 116, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/tmp/vlajmaji-p01-a02-cdc/verify_sqlite.py", line 75, in main
+    need(collections.Counter(actual_extensions)==collections.Counter(expected_extensions),'native_extensions','all exact gloss objects including null/missing meaning, place fields, owner roles and field evidence')
+  File "/tmp/vlajmaji-p01-a02-cdc/verify_sqlite.py", line 11, in need
+    if not condition:raise AssertionError(f'{kind}: {where}')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: native_extensions: all exact gloss objects including null/missing meaning, place fields, owner roles and field evidence

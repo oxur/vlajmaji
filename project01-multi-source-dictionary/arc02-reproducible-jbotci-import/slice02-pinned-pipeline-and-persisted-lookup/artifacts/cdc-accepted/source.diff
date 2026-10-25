@@ -1,0 +1,2133 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 04d5c54..73371b1 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -5,6 +5,11 @@
+ - Add a lossless, hash-pinned jbotci export normalizer and `jbotci-import` /
+   `jbotci-check` CLI commands; retain content redistribution as held pending
+   source-coverage review.
++- Add the explicit pinned Bash/Make acquire, replay, check, and update workflow;
++  preserve attempt outputs and verify the normalized release before persistence.
++- Insert persisted dictionary tables in schema-derived parent-first order while
++  retaining schema-1 identities, and reuse per-source selection sets in exact
++  lookup without cloning the complete document.
+ 
+ ## 0.2.0 (2026-10-24)
+ 
+diff --git a/Makefile b/Makefile
+index 709f8b7..b866395 100644
+--- a/Makefile
++++ b/Makefile
+@@ -23,6 +23,24 @@ INSTALL_DIR ?= ./bin
+ CARGO_TARGET_DIR ?= target
+ export CARGO_TARGET_DIR
+ TARGET_DIR = $(CARGO_TARGET_DIR)/$(MODE)
++JBOTCI_PINS ?= scripts/jbotci-pinned.env
++JBOTCI_NEW_PINS ?=
++JBOTCI_CACHE ?=
++JBOTCI_RELEASE ?=
++JBOTCI_STORE ?=
++VLAJMAJI_BIN ?=
++CURL ?=
++# Stop GNU Make's automatic export of recursive command-line values; freeze
++# each value once so `$` and shell syntax remain data in the child environment.
++unexport JBOTCI_PINS JBOTCI_NEW_PINS JBOTCI_CACHE JBOTCI_RELEASE JBOTCI_STORE VLAJMAJI_BIN CURL
++override JBOTCI_PINS := $(value JBOTCI_PINS)
++override JBOTCI_NEW_PINS := $(value JBOTCI_NEW_PINS)
++override JBOTCI_CACHE := $(value JBOTCI_CACHE)
++override JBOTCI_RELEASE := $(value JBOTCI_RELEASE)
++override JBOTCI_STORE := $(value JBOTCI_STORE)
++override VLAJMAJI_BIN := $(value VLAJMAJI_BIN)
++override CURL := $(value CURL)
++export JBOTCI_PINS JBOTCI_NEW_PINS JBOTCI_CACHE JBOTCI_RELEASE JBOTCI_STORE VLAJMAJI_BIN CURL
+ GIT_COMMIT = $(shell $(GIT) rev-parse --short HEAD 2>/dev/null || echo unknown)
+ GIT_BRANCH = $(shell $(GIT) rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)
+ BUILD_TIME = $(shell date -u '+%Y-%m-%dT%H:%M:%SZ')
+@@ -32,7 +50,7 @@ _empty :=
+ _space := $(_empty) $(_empty)
+ INSTALL_DIR_TARGET := $(subst $(_space),\ ,$(INSTALL_DIR))
+ 
+-.PHONY: help info check-tools build build-debug build-release install test test-default test-no-default test-all-features fmt format fmt-check lint docs check coverage clean tracked-files planning planning-worktree publish publish-dry-run publish-one test-tools
++.PHONY: help info check-tools build build-debug build-release install test test-default test-no-default test-all-features fmt format fmt-check lint docs check coverage clean tracked-files planning planning-worktree publish publish-dry-run publish-one test-tools jbotci-help jbotci-acquire jbotci-replay jbotci-check jbotci-update jbotci-cli-ready
+ 
+ help:
+ 	@printf '\n%b╔══════════════════════════════════════════════════════════╗%b\n' '$(CYAN)' '$(RESET)'
+@@ -61,6 +79,12 @@ help:
+ 	@printf '  %bmake publish%b           - Publish workspace crates to crates.io\n' '$(YELLOW)' '$(RESET)'
+ 	@printf '  %bmake publish-one%b       - Publish one package (CRATE=package-name)\n' '$(YELLOW)' '$(RESET)'
+ 	@printf '  %bmake tracked-files%b     - List files or write to TRACKED_FILES\n\n' '$(YELLOW)' '$(RESET)'
++	@printf '%bPinned jbotci:%b\n' '$(GREEN)' '$(RESET)'
++	@printf '  %bmake jbotci-help%b       - Show pinned import workflow usage\n' '$(YELLOW)' '$(RESET)'
++	@printf '  %bmake jbotci-acquire%b    - Acquire and verify the explicit pin (JBOTCI_CACHE=...)\n' '$(YELLOW)' '$(RESET)'
++	@printf '  %bmake jbotci-replay%b     - Create a fresh release/store from the pin\n' '$(YELLOW)' '$(RESET)'
++	@printf '  %bmake jbotci-check%b      - Recheck the cached pin without writing\n' '$(YELLOW)' '$(RESET)'
++	@printf '  %bmake jbotci-update%b     - Validate a new explicit pin before caching it\n\n' '$(YELLOW)' '$(RESET)'
+ 	@printf '%bInformation:%b\n' '$(GREEN)' '$(RESET)'
+ 	@printf '  %bmake info%b              - Show build information\n' '$(YELLOW)' '$(RESET)'
+ 	@printf '  %bmake check-tools%b       - Check required tools\n\n' '$(YELLOW)' '$(RESET)'
+@@ -156,10 +180,40 @@ docs:
+ test-tools:
+ 	@printf '%bRunning Make/planning helper tests...%b\n' '$(BLUE)' '$(RESET)'
+ 	@"$(BASH)" -n scripts/planning-worktree.sh
++	@"$(BASH)" -n scripts/jbotci-import.sh
+ 	@"$(BASH)" -n tests/test-build-tools.sh
+ 	@"$(BASH)" tests/test-build-tools.sh
+ 	@printf '%b✓ Tooling tests passed%b\n' '$(GREEN)' '$(RESET)'
+ 
++jbotci-help:
++	@"$(BASH)" scripts/jbotci-import.sh help
++
++jbotci-cli-ready:
++	@if [ -z "$${VLAJMAJI_BIN:-}" ]; then \
++		case '$(origin CARGO_TARGET_DIR)' in environment|command\ line) ;; \
++		*) printf 'jbotci Make targets require explicit CARGO_TARGET_DIR when VLAJMAJI_BIN is unset\n' >&2; exit 2 ;; esac; \
++	fi
++
++jbotci-acquire: jbotci-cli-ready
++	@test -n "$${JBOTCI_CACHE:-}" || { printf 'Set JBOTCI_CACHE to an explicit cache root\n' >&2; exit 2; }
++	@"$(BASH)" scripts/jbotci-import.sh acquire "$${JBOTCI_PINS}" "$${JBOTCI_CACHE}"
++
++jbotci-replay: jbotci-cli-ready
++	@test -n "$${JBOTCI_CACHE:-}" && test -n "$${JBOTCI_RELEASE:-}" || { printf 'Set JBOTCI_CACHE and JBOTCI_RELEASE\n' >&2; exit 2; }
++	@"$(BASH)" scripts/jbotci-import.sh replay "$${JBOTCI_PINS}" "$${JBOTCI_CACHE}" "$${JBOTCI_RELEASE}" "$${JBOTCI_STORE}"
++
++jbotci-check: jbotci-cli-ready
++	@test -n "$${JBOTCI_CACHE:-}" || { printf 'Set JBOTCI_CACHE to an explicit cache root\n' >&2; exit 2; }
++	@if [ -n "$${JBOTCI_RELEASE:-}" ]; then \
++		"$(BASH)" scripts/jbotci-import.sh check "$${JBOTCI_PINS}" "$${JBOTCI_CACHE}" "$${JBOTCI_RELEASE}"; \
++	else \
++		"$(BASH)" scripts/jbotci-import.sh check "$${JBOTCI_PINS}" "$${JBOTCI_CACHE}"; \
++	fi
++
++jbotci-update: jbotci-cli-ready
++	@test -n "$${JBOTCI_NEW_PINS:-}" && test -n "$${JBOTCI_CACHE:-}" && test -n "$${JBOTCI_RELEASE:-}" || { printf 'Set JBOTCI_NEW_PINS, JBOTCI_CACHE and JBOTCI_RELEASE\n' >&2; exit 2; }
++	@"$(BASH)" scripts/jbotci-import.sh update "$${JBOTCI_NEW_PINS}" "$${JBOTCI_CACHE}" "$${JBOTCI_RELEASE}" "$${JBOTCI_STORE}"
++
+ check: check-tools fmt-check lint test-default docs test-tools
+ 	@printf '\n%b✓ All checks passed (tools + format + lint + tests + docs)%b\n\n' '$(GREEN)' '$(RESET)'
+ 
+diff --git a/README.md b/README.md
+index a1e566e..8bf4682 100644
+--- a/README.md
++++ b/README.md
+@@ -38,7 +38,8 @@ The Rust workspace already provides:
+ - A JSON CLI, `vlajmaji`, including `dictionary-build` and `dictionary-query`
+   alongside the existing archive/search commands.
+ - A lossless local jbotci export normalizer with `jbotci-import` and
+-  read-only `jbotci-check` commands ([import guide](docs/jbotci-import.md)).
++  read-only `jbotci-check` commands and an explicit pinned acquire/replay/check/
++  update workflow ([import guide](docs/jbotci-import.md)).
+ - An umbrella library, `vlajmaji`, exposing `lexicon`, `store`, and `search`, with
+   optional `morphology` and `graph` features.
+ 
+@@ -103,9 +104,9 @@ the separately gated full-corpus test.
+ 
+ ## Where this is going
+ 
+-Next come reproducible full-corpus imports, independently selectable corpus
+-packages, multi-store composition, and an editable dictionary of our own. The longer aim is
+-a practical vocabulary laboratory connected to Bauske's linguistic tools.
++Next come independently selectable corpus packages, multi-store composition,
++and an editable dictionary of our own. The longer aim is a practical vocabulary
++laboratory connected to Bauske's linguistic tools.
+ 
+ The workspace is on the **0.3.0 development cycle**; its APIs remain experimental.
+ The latest published release is **0.2.0**.
+diff --git a/crates/cli/README.md b/crates/cli/README.md
+index e9f21e3..0bdc7c7 100644
+--- a/crates/cli/README.md
++++ b/crates/cli/README.md
+@@ -29,7 +29,10 @@ JSON object to stderr, no stdout, and a nonzero exit. See the
+ 
+ `jbotci-import RAW METADATA FRESH.json` locally normalizes a hash-pinned export;
+ `jbotci-check RAW METADATA [--release RELEASE.json]` validates it without
+-writing. See the [jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci-import.md)
+-for preservation, identity, metadata, and content-notice limits.
++writing. `make jbotci-acquire`, `jbotci-replay`, `jbotci-check`, and
++`jbotci-update` provide the explicit pinned local workflow; each requires a
++caller-chosen cache root and fresh release/store paths where applicable. See
++the [jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci-import.md)
++for pins, preservation, identity, metadata, and content-notice limits.
+ 
+ Corpus data is not bundled. See the [data and replay guide](https://github.com/oxur/vlajmaji/blob/main/docs/migration.md) for the current research-input workflow. Licensed under Apache-2.0.
+diff --git a/crates/cli/tests/jbotci_pipeline.rs b/crates/cli/tests/jbotci_pipeline.rs
+new file mode 100644
+index 0000000..6349622
+--- /dev/null
++++ b/crates/cli/tests/jbotci_pipeline.rs
+@@ -0,0 +1,1095 @@
++//! Real Bash and CLI controls for the pinned local jbotci workflow.
++
++use std::{
++    fs,
++    path::{Path, PathBuf},
++    process::{Command, Output},
++    sync::atomic::{AtomicU64, Ordering},
++    thread,
++    time::{SystemTime, UNIX_EPOCH},
++};
++
++use serde_json::Value;
++
++const RAW_SHA: &str = "a0e15949bdcfaeeba24007350d5dae0c8e39c991476ebdd0d4d06739ccac1805";
++const GOOD_META_SHA: &str = "12d026b5f9afa397135d952c516868d619eb5ffaa47d06b129661cf74e5bf388";
++const BAD_META_SHA: &str = "362cdcb137405de0048a6cbabd09afdc13d149b5e0325a475a6c72e48fd9bcbe";
++const REVISION_A: &str = "0000000000000000000000000000000000000000";
++const REVISION_B: &str = "1111111111111111111111111111111111111111";
++const RAW: &[u8] = br#"[{"word":"farvi","word_type":"gismu","definition":"to vary","score":-1},{"word":"farvi","word_type":"gismu","definition":"to vary","score":-1}]"#;
++const GOOD_METADATA: &str = "language_tag = \"en\"\nlanguage_realname = \"English\"\nsource_language_tag = \"jbo\"\nformat = \"json\"\npositive_scores_only = false\nfilename = \"dictionary-en.json\"\nmetadata_url = \"https://example.invalid/languages\"\ndownload_url = \"https://example.invalid/export\"\nlensisku_created_at = \"2026-10-04T03:07:08Z\"\nsha256 = \"a0e15949bdcfaeeba24007350d5dae0c8e39c991476ebdd0d4d06739ccac1805\"\ndefinition_count = 2\nentry_count = 1\n";
++const BAD_METADATA: &str = "language_tag = \"en\"\nlanguage_realname = \"English\"\nsource_language_tag = \"jbo\"\nformat = \"json\"\npositive_scores_only = false\nfilename = \"dictionary-en.json\"\nmetadata_url = \"https://example.invalid/languages\"\ndownload_url = \"https://example.invalid/export\"\nlensisku_created_at = \"2026-10-04T03:07:08Z\"\nsha256 = \"a0e15949bdcfaeeba24007350d5dae0c8e39c991476ebdd0d4d06739ccac1805\"\ndefinition_count = 1\nentry_count = 1\n";
++
++static SCRATCH_SEQUENCE: AtomicU64 = AtomicU64::new(0);
++
++fn create_scratch_with(mut candidate: impl FnMut(usize) -> PathBuf) -> PathBuf {
++    const MAX_ATTEMPTS: usize = 256;
++
++    for attempt in 0..MAX_ATTEMPTS {
++        let path = candidate(attempt);
++        match fs::create_dir(&path) {
++            Ok(()) => return path,
++            Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => continue,
++            Err(error) => panic!(
++                "could not exclusively create test scratch directory {}: {error}",
++                path.display()
++            ),
++        }
++    }
++
++    panic!(
++        "could not exclusively allocate a test scratch directory after {MAX_ATTEMPTS} candidates"
++    );
++}
++
++fn scratch() -> PathBuf {
++    let temp = std::env::temp_dir();
++    let pid = std::process::id();
++    let nanos = SystemTime::now()
++        .duration_since(UNIX_EPOCH)
++        .expect("system clock is before the Unix epoch")
++        .as_nanos();
++    let sequence = SCRATCH_SEQUENCE.fetch_add(1, Ordering::Relaxed);
++
++    create_scratch_with(|attempt| {
++        temp.join(format!(
++            "vlajmaji s02 pinned pipeline {pid} {nanos} {sequence} {attempt}"
++        ))
++    })
++}
++
++#[test]
++fn scratch_retries_occupied_candidates_without_touching_them() {
++    let root = scratch();
++    let occupied_directory = root.join("occupied directory");
++    let directory_sentinel = occupied_directory.join("caller sentinel");
++    fs::create_dir(&occupied_directory).unwrap();
++    fs::write(&directory_sentinel, b"preserve occupied directory\n").unwrap();
++
++    let occupied_file = root.join("occupied file");
++    fs::write(&occupied_file, b"preserve occupied file\n").unwrap();
++
++    let link_target = root.join("occupied link target");
++    let occupied_link = root.join("occupied link");
++    fs::write(&link_target, b"preserve occupied link target\n").unwrap();
++    std::os::unix::fs::symlink(&link_target, &occupied_link).unwrap();
++
++    let fresh = root.join("fresh owned candidate");
++    let candidates = [
++        occupied_directory.clone(),
++        occupied_file.clone(),
++        occupied_link.clone(),
++        fresh.clone(),
++    ];
++    let allocated = create_scratch_with(|attempt| candidates[attempt].clone());
++
++    assert_eq!(allocated, fresh);
++    assert!(allocated.is_dir());
++    assert_eq!(
++        fs::read(&directory_sentinel).unwrap(),
++        b"preserve occupied directory\n"
++    );
++    assert_eq!(
++        fs::read(&occupied_file).unwrap(),
++        b"preserve occupied file\n"
++    );
++    assert!(occupied_link.is_symlink());
++    assert_eq!(
++        fs::read(&link_target).unwrap(),
++        b"preserve occupied link target\n"
++    );
++    fs::remove_dir_all(root).unwrap();
++}
++
++#[test]
++fn concurrent_scratch_allocations_are_distinct_and_joined() {
++    const WORKERS: usize = 8;
++
++    let results = thread::scope(|scope| {
++        let handles: Vec<_> = (0..WORKERS).map(|_| scope.spawn(scratch)).collect();
++        handles
++            .into_iter()
++            .map(|handle| handle.join())
++            .collect::<Vec<_>>()
++    });
++
++    let mut paths = Vec::with_capacity(WORKERS);
++    let mut panicked = false;
++    for result in results {
++        match result {
++            Ok(path) => paths.push(path),
++            Err(_) => panicked = true,
++        }
++    }
++
++    if !panicked {
++        let mut sorted = paths.clone();
++        sorted.sort();
++        sorted.dedup();
++        assert_eq!(sorted.len(), WORKERS, "scratch paths must be unique");
++        assert!(paths.iter().all(|path| path.is_dir()));
++    }
++    for path in paths {
++        fs::remove_dir_all(path).unwrap();
++    }
++    assert!(!panicked, "a scratch allocation worker panicked");
++}
++
++fn script() -> PathBuf {
++    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../scripts/jbotci-import.sh")
++}
++
++fn pins(path: &Path, revision: &str, metadata_sha: &str) {
++    fs::write(
++        path,
++        format!(
++            "  # exact local pin\n\nversion=1\nrevision={revision}\nraw_sha256={RAW_SHA}\nmetadata_sha256={metadata_sha}\n"
++        ),
++    )
++    .unwrap();
++}
++
++fn invoke_pipeline(args: &[&str], fake_curl: Option<&Path>) -> Output {
++    let mut command = Command::new("/bin/bash");
++    command
++        .arg(script())
++        .args(args)
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"));
++    command.env_remove("CARGO_TARGET_DIR");
++    if let Some(curl) = fake_curl {
++        command.env("CURL", curl);
++    }
++    command.output().unwrap()
++}
++
++fn json_output(output: &Output) -> Value {
++    serde_json::from_slice(&output.stdout).unwrap_or_else(|error| {
++        panic!(
++            "stdout was not JSON ({error}); status={}; stderr={}",
++            output.status,
++            String::from_utf8_lossy(&output.stderr)
++        )
++    })
++}
++
++fn fake_curl(root: &Path) -> PathBuf {
++    let script = root.join("curl transport with spaces");
++    fs::write(
++        &script,
++        r##"#!/bin/bash
++set -eu
++[ "$1" = --fail ] && [ "$2" = --location ] && [ "$3" = --silent ] && [ "$4" = --show-error ] && [ "$5" = --output ]
++output=$6
++url=$7
++count=0
++if [ -f "$FAKE_CURL_COUNT" ]; then count=$(cat "$FAKE_CURL_COUNT"); fi
++count=$((count + 1))
++printf '%s\n' "$count" > "$FAKE_CURL_COUNT"
++printf '%s\n' "$url" >> "$FAKE_URL_LOG"
++if [ "${FAKE_CURL_FAIL_AT:-}" = "$count" ]; then exit 23; fi
++case "$url" in
++    */dictionary-en.json) cp "$FAKE_RAW_SOURCE" "$output" ;;
++    */dictionary-en.metadata.toml)
++        cp "$FAKE_META_SOURCE" "$output"
++        if [ -n "${FAKE_CURL_CREATE_REPORT:-}" ]; then
++            (set -C; printf 'report race sentinel\n' > "$FAKE_CURL_CREATE_REPORT")
++        fi
++        ;;
++    *) exit 24 ;;
++esac
++"##,
++    )
++    .unwrap();
++    #[cfg(unix)]
++    {
++        use std::os::unix::fs::PermissionsExt;
++        fs::set_permissions(&script, fs::Permissions::from_mode(0o755)).unwrap();
++    }
++    script
++}
++
++fn set_fake_inputs(command: &mut Command, root: &Path, meta: &Path, urls: &Path) {
++    command
++        .env("FAKE_RAW_SOURCE", root.join("raw fixture.json"))
++        .env("FAKE_META_SOURCE", meta)
++        .env("FAKE_CURL_COUNT", root.join("curl count"))
++        .env("FAKE_URL_LOG", urls);
++}
++
++fn copy_tree(source: &Path, destination: &Path) {
++    fs::create_dir_all(destination).unwrap();
++    for entry in fs::read_dir(source).unwrap() {
++        let entry = entry.unwrap();
++        let target = destination.join(entry.file_name());
++        if entry.file_type().unwrap().is_dir() {
++            copy_tree(&entry.path(), &target);
++        } else {
++            fs::copy(entry.path(), target).unwrap();
++        }
++    }
++}
++
++fn cache_leaf(root: &Path, revision: &str, metadata_sha: &str) -> PathBuf {
++    root.join(format!("{revision}-{RAW_SHA}-{metadata_sha}"))
++}
++
++#[test]
++fn pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows() {
++    let root = scratch();
++    let raw = root.join("raw fixture.json");
++    let metadata = root.join("metadata fixture.toml");
++    let bad_metadata = root.join("bad metadata fixture.toml");
++    fs::write(&raw, RAW).unwrap();
++    fs::write(&metadata, GOOD_METADATA).unwrap();
++    fs::write(&bad_metadata, BAD_METADATA).unwrap();
++
++    let pins_a = root.join("pins A.env");
++    pins(&pins_a, REVISION_A, GOOD_META_SHA);
++    let pins_b = root.join("pins B.env");
++    pins(&pins_b, REVISION_B, GOOD_META_SHA);
++    let pins_bad = root.join("pins bad.env");
++    pins(&pins_bad, REVISION_B, BAD_META_SHA);
++
++    let cache = root.join("cache $dollar `tick'quote; semi");
++    let curl = fake_curl(&root);
++    let urls = root.join("requested URLs.log");
++    let leaf_a = cache_leaf(&cache, REVISION_A, GOOD_META_SHA);
++    let mut acquire = Command::new("/bin/bash");
++    acquire
++        .arg(script())
++        .args(["acquire", pins_a.to_str().unwrap(), cache.to_str().unwrap()]);
++    acquire
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env_remove("CARGO_TARGET_DIR")
++        .env("CURL", &curl);
++    set_fake_inputs(&mut acquire, &root, &metadata, &urls);
++    let acquired = acquire.output().unwrap();
++    assert!(
++        acquired.status.success(),
++        "{}",
++        String::from_utf8_lossy(&acquired.stderr)
++    );
++    let acquired_json = json_output(&acquired);
++    assert_eq!(acquired_json["operation"], "jbotci-check");
++    assert_eq!(acquired_json["report"]["input_rows"], 2);
++    assert!(leaf_a.join("complete").is_file());
++    assert_eq!(fs::read(leaf_a.join("dictionary-en.json")).unwrap(), RAW);
++    assert_eq!(
++        fs::read(leaf_a.join("dictionary-en.metadata.toml")).unwrap(),
++        GOOD_METADATA.as_bytes()
++    );
++    assert_eq!(fs::read_to_string(&urls).unwrap().lines().count(), 2);
++
++    let before_raw = fs::read(leaf_a.join("dictionary-en.json")).unwrap();
++    let before_meta = fs::read(leaf_a.join("dictionary-en.metadata.toml")).unwrap();
++    let before_marker = fs::read(leaf_a.join("complete")).unwrap();
++    let checked = invoke_pipeline(
++        &["check", pins_a.to_str().unwrap(), cache.to_str().unwrap()],
++        None,
++    );
++    assert!(
++        checked.status.success(),
++        "{}",
++        String::from_utf8_lossy(&checked.stderr)
++    );
++    assert_eq!(json_output(&checked)["report"]["input_rows"], 2);
++    assert_eq!(
++        fs::read(leaf_a.join("dictionary-en.json")).unwrap(),
++        before_raw
++    );
++    assert_eq!(
++        fs::read(leaf_a.join("dictionary-en.metadata.toml")).unwrap(),
++        before_meta
++    );
++    assert_eq!(fs::read(leaf_a.join("complete")).unwrap(), before_marker);
++    let cached_acquire = invoke_pipeline(
++        &["acquire", pins_a.to_str().unwrap(), cache.to_str().unwrap()],
++        None,
++    );
++    assert!(cached_acquire.status.success());
++    assert_eq!(fs::read_to_string(&urls).unwrap().lines().count(), 2);
++
++    let release = root.join("release output.json");
++    let store = root.join("new store");
++    let replay = invoke_pipeline(
++        &[
++            "replay",
++            pins_a.to_str().unwrap(),
++            cache.to_str().unwrap(),
++            release.to_str().unwrap(),
++            store.to_str().unwrap(),
++        ],
++        None,
++    );
++    assert!(
++        replay.status.success(),
++        "{}",
++        String::from_utf8_lossy(&replay.stderr)
++    );
++    let report_bytes = fs::read(root.join("release output.json.report.json")).unwrap();
++    assert_eq!(report_bytes.last(), Some(&b'\n'));
++    let report: Value = serde_json::from_slice(&report_bytes).unwrap();
++    assert_eq!(report["report"]["input_rows"], 2);
++    assert_eq!(json_output(&replay)["report"]["input_rows"], 2);
++    let request = r#"{"operation":"exact","spelling":"farvi"}"#;
++    let queried = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
++        .args([
++            "dictionary-query",
++            store.to_str().unwrap(),
++            "--request",
++            request,
++        ])
++        .output()
++        .unwrap();
++    assert!(
++        queried.status.success(),
++        "{}",
++        String::from_utf8_lossy(&queried.stderr)
++    );
++    let response: Value = serde_json::from_slice(&queried.stdout).unwrap();
++    assert_eq!(response["totals"]["occurrences"], 2);
++    assert_eq!(response["totals"]["distinct_spellings"], 1);
++
++    let occupied_release = root.join("occupied release.json");
++    let occupied_report = root.join("occupied release.json.report.json");
++    fs::write(&occupied_report, b"report sentinel\n").unwrap();
++    let refused_sidecar = invoke_pipeline(
++        &[
++            "replay",
++            pins_a.to_str().unwrap(),
++            cache.to_str().unwrap(),
++            occupied_release.to_str().unwrap(),
++        ],
++        None,
++    );
++    assert!(!refused_sidecar.status.success());
++    assert!(!occupied_release.exists());
++    assert_eq!(fs::read(&occupied_report).unwrap(), b"report sentinel\n");
++
++    let occupied_link_release = root.join("occupied link release.json");
++    let occupied_link_report = root.join("occupied link release.json.report.json");
++    let occupied_link_target = root.join("occupied link target");
++    fs::write(&occupied_link_target, b"link target sentinel\n").unwrap();
++    std::os::unix::fs::symlink(&occupied_link_target, &occupied_link_report).unwrap();
++    let refused_link = invoke_pipeline(
++        &[
++            "replay",
++            pins_a.to_str().unwrap(),
++            cache.to_str().unwrap(),
++            occupied_link_release.to_str().unwrap(),
++        ],
++        None,
++    );
++    assert!(!refused_link.status.success());
++    assert!(!occupied_link_release.exists());
++    assert!(occupied_link_report.is_symlink());
++    assert_eq!(
++        fs::read(&occupied_link_target).unwrap(),
++        b"link target sentinel\n"
++    );
++
++    let occupied_dir_release = root.join("occupied directory release.json");
++    let occupied_dir_report = root.join("occupied directory release.json.report.json");
++    fs::create_dir(&occupied_dir_report).unwrap();
++    let refused_directory = invoke_pipeline(
++        &[
++            "replay",
++            pins_a.to_str().unwrap(),
++            cache.to_str().unwrap(),
++            occupied_dir_release.to_str().unwrap(),
++        ],
++        None,
++    );
++    assert!(!refused_directory.status.success());
++    assert!(!occupied_dir_release.exists());
++    assert_eq!(fs::read_dir(&occupied_dir_report).unwrap().count(), 0);
++
++    let dangling_release = root.join("dangling report release.json");
++    let dangling_report = root.join("dangling report release.json.report.json");
++    let dangling_target = root.join("dangling report target");
++    std::os::unix::fs::symlink(&dangling_target, &dangling_report).unwrap();
++    let refused_dangling = invoke_pipeline(
++        &[
++            "replay",
++            pins_a.to_str().unwrap(),
++            cache.to_str().unwrap(),
++            dangling_release.to_str().unwrap(),
++        ],
++        None,
++    );
++    assert!(!refused_dangling.status.success());
++    assert!(!dangling_release.exists());
++    assert!(dangling_report.is_symlink());
++    assert!(!dangling_target.exists());
++
++    let occupied_store_release = root.join("occupied store release.json");
++    let occupied_store = root.join("occupied store");
++    fs::create_dir(&occupied_store).unwrap();
++    let refused_store = invoke_pipeline(
++        &[
++            "replay",
++            pins_a.to_str().unwrap(),
++            cache.to_str().unwrap(),
++            occupied_store_release.to_str().unwrap(),
++            occupied_store.to_str().unwrap(),
++        ],
++        None,
++    );
++    assert!(!refused_store.status.success());
++    assert!(!occupied_store_release.exists());
++    assert_eq!(fs::read_dir(&occupied_store).unwrap().count(), 0);
++
++    let release_before_reject = fs::read(&release).unwrap();
++    let replay_again = invoke_pipeline(
++        &[
++            "replay",
++            pins_a.to_str().unwrap(),
++            cache.to_str().unwrap(),
++            release.to_str().unwrap(),
++        ],
++        None,
++    );
++    assert!(!replay_again.status.success());
++    assert_eq!(fs::read(&release).unwrap(), release_before_reject);
++
++    let old_tuple = (
++        fs::read(leaf_a.join("dictionary-en.json")).unwrap(),
++        fs::read(leaf_a.join("dictionary-en.metadata.toml")).unwrap(),
++        fs::read(leaf_a.join("complete")).unwrap(),
++    );
++    let mismatch_cache = root.join("mismatch cache");
++    let mismatch_leaf = cache_leaf(&mismatch_cache, REVISION_B, BAD_META_SHA);
++    let mismatch_release = root.join("mismatch candidate.json");
++    let mismatch_store = root.join("must not build store");
++    let bad_curl = fake_curl(&root);
++    let mut update_bad = Command::new("/bin/bash");
++    update_bad.arg(script()).args([
++        "update",
++        pins_bad.to_str().unwrap(),
++        mismatch_cache.to_str().unwrap(),
++        mismatch_release.to_str().unwrap(),
++        mismatch_store.to_str().unwrap(),
++    ]);
++    update_bad
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env_remove("CARGO_TARGET_DIR")
++        .env("CURL", &bad_curl);
++    set_fake_inputs(
++        &mut update_bad,
++        &root,
++        &bad_metadata,
++        &root.join("bad URLs.log"),
++    );
++    let updated_bad = update_bad.output().unwrap();
++    assert!(!updated_bad.status.success());
++    assert!(mismatch_release.is_file());
++    let mismatch_report = root.join("mismatch candidate.json.report.json");
++    let report: Value = serde_json::from_slice(&fs::read(&mismatch_report).unwrap()).unwrap();
++    assert_eq!(report["report"]["definition_count_matches"], false);
++    assert!(!mismatch_leaf.join("complete").exists());
++    assert!(!mismatch_store.exists());
++    let mismatch_stderr = String::from_utf8_lossy(&updated_bad.stderr);
++    for path in [
++        &mismatch_leaf,
++        &mismatch_release,
++        &mismatch_report,
++        &mismatch_store,
++    ] {
++        assert!(
++            mismatch_stderr.contains(path.to_str().unwrap()),
++            "{mismatch_stderr}"
++        );
++    }
++    assert!(
++        updated_bad.stdout.is_empty(),
++        "a rejected update must not look successful on stdout"
++    );
++    assert_eq!(
++        old_tuple,
++        (
++            fs::read(leaf_a.join("dictionary-en.json")).unwrap(),
++            fs::read(leaf_a.join("dictionary-en.metadata.toml")).unwrap(),
++            fs::read(leaf_a.join("complete")).unwrap(),
++        )
++    );
++
++    let good_cache_b = root.join("valid update cache");
++    let good_leaf_b = cache_leaf(&good_cache_b, REVISION_B, GOOD_META_SHA);
++    let release_b = root.join("revision B release.json");
++    let mut update_good = Command::new("/bin/bash");
++    update_good.arg(script()).args([
++        "update",
++        pins_b.to_str().unwrap(),
++        good_cache_b.to_str().unwrap(),
++        release_b.to_str().unwrap(),
++    ]);
++    update_good
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env_remove("CARGO_TARGET_DIR")
++        .env("CURL", &curl);
++    set_fake_inputs(
++        &mut update_good,
++        &root,
++        &metadata,
++        &root.join("good update URLs.log"),
++    );
++    let updated_good = update_good.output().unwrap();
++    assert!(
++        updated_good.status.success(),
++        "{}",
++        String::from_utf8_lossy(&updated_good.stderr)
++    );
++    assert!(good_leaf_b.join("complete").is_file());
++    let release_a: Value = serde_json::from_slice(&fs::read(release).unwrap()).unwrap();
++    let release_b_json: Value = serde_json::from_slice(&fs::read(&release_b).unwrap()).unwrap();
++    assert_ne!(
++        release_a["metadata"]["releases"][0]["id"],
++        release_b_json["metadata"]["releases"][0]["id"]
++    );
++    assert_eq!(
++        release_a["captures"][0]["identity"],
++        release_b_json["captures"][0]["identity"]
++    );
++    fs::remove_dir_all(root).unwrap();
++}
++
++fn race_cli_wrapper(root: &Path) -> (PathBuf, PathBuf) {
++    let wrapper = root.join("CLI race wrapper");
++    let calls = root.join("CLI calls.log");
++    fs::write(
++        &wrapper,
++        r#"#!/bin/bash
++set -eu
++printf '%s\n' "$*" >> "$CLI_CALL_LOG"
++"$REAL_CLI" "$@"
++if [ "$1" = jbotci-check ] && [ -n "${CLI_RACE_REPORT:-}" ]; then
++    case " $* " in
++        *' --release '*) ;;
++        *) (set -C; printf 'report race sentinel\n' > "$CLI_RACE_REPORT") ;;
++    esac
++fi
++"#,
++    )
++    .unwrap();
++    #[cfg(unix)]
++    {
++        use std::os::unix::fs::PermissionsExt;
++        fs::set_permissions(&wrapper, fs::Permissions::from_mode(0o755)).unwrap();
++    }
++    (wrapper, calls)
++}
++
++#[test]
++fn report_creation_races_preserve_caller_bytes_and_skip_importer() {
++    let root = scratch();
++    let raw = root.join("raw fixture.json");
++    let metadata = root.join("meta fixture.toml");
++    fs::write(&raw, RAW).unwrap();
++    fs::write(&metadata, GOOD_METADATA).unwrap();
++    let pins_path = root.join("pins.env");
++    pins(&pins_path, REVISION_A, GOOD_META_SHA);
++    let curl = fake_curl(&root);
++    let cache = root.join("cache");
++    let mut acquire = Command::new("/bin/bash");
++    acquire.arg(script()).args([
++        "acquire",
++        pins_path.to_str().unwrap(),
++        cache.to_str().unwrap(),
++    ]);
++    acquire
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env("CURL", &curl);
++    set_fake_inputs(&mut acquire, &root, &metadata, &root.join("acquire URLs"));
++    let acquired = acquire.output().unwrap();
++    assert!(
++        acquired.status.success(),
++        "{}",
++        String::from_utf8_lossy(&acquired.stderr)
++    );
++    let leaf = cache_leaf(&cache, REVISION_A, GOOD_META_SHA);
++    let marker_before = fs::read(leaf.join("complete")).unwrap();
++
++    let (wrapper, replay_calls) = race_cli_wrapper(&root);
++    let replay_release = root.join("replay race release.json");
++    let replay_report = root.join("replay race release.json.report.json");
++    let replay_store = root.join("replay race store");
++    let replay = Command::new("/bin/bash")
++        .arg(script())
++        .args([
++            "replay",
++            pins_path.to_str().unwrap(),
++            cache.to_str().unwrap(),
++            replay_release.to_str().unwrap(),
++            replay_store.to_str().unwrap(),
++        ])
++        .env("VLAJMAJI_BIN", &wrapper)
++        .env("REAL_CLI", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env("CLI_CALL_LOG", &replay_calls)
++        .env("CLI_RACE_REPORT", &replay_report)
++        .output()
++        .unwrap();
++    assert_eq!(replay.status.code(), Some(1));
++    assert!(replay.stdout.is_empty());
++    assert_eq!(fs::read(&replay_report).unwrap(), b"report race sentinel\n");
++    assert!(!replay_release.exists());
++    assert!(!replay_store.exists());
++    let replay_call_text = fs::read_to_string(&replay_calls).unwrap();
++    assert_eq!(replay_call_text.lines().count(), 1);
++    assert!(replay_call_text.contains("jbotci-check"));
++    let replay_stderr = String::from_utf8_lossy(&replay.stderr);
++    for path in [&leaf, &replay_release, &replay_report, &replay_store] {
++        assert!(
++            replay_stderr.contains(path.to_str().unwrap()),
++            "{replay_stderr}"
++        );
++    }
++    assert_eq!(fs::read(leaf.join("complete")).unwrap(), marker_before);
++
++    let update_cache = root.join("update cache");
++    let update_release = root.join("update race release.json");
++    let update_report = root.join("update race release.json.report.json");
++    let update_store = root.join("update race store");
++    let update_calls = root.join("update CLI calls.log");
++    let mut update = Command::new("/bin/bash");
++    update
++        .arg(script())
++        .args([
++            "update",
++            pins_path.to_str().unwrap(),
++            update_cache.to_str().unwrap(),
++            update_release.to_str().unwrap(),
++            update_store.to_str().unwrap(),
++        ])
++        .env("VLAJMAJI_BIN", &wrapper)
++        .env("REAL_CLI", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env("CLI_CALL_LOG", &update_calls)
++        .env("CURL", &curl)
++        .env("FAKE_CURL_CREATE_REPORT", &update_report);
++    set_fake_inputs(&mut update, &root, &metadata, &root.join("update URLs"));
++    let updated = update.output().unwrap();
++    assert_eq!(updated.status.code(), Some(1));
++    assert!(updated.stdout.is_empty());
++    assert_eq!(fs::read(&update_report).unwrap(), b"report race sentinel\n");
++    assert!(!update_release.exists());
++    assert!(!update_store.exists());
++    assert!(
++        !update_calls.exists(),
++        "importer wrapper ran after report reservation failed"
++    );
++    let update_leaf = cache_leaf(&update_cache, REVISION_A, GOOD_META_SHA);
++    assert!(update_leaf.join("dictionary-en.json").is_file());
++    assert!(update_leaf.join("dictionary-en.metadata.toml").is_file());
++    assert!(!update_leaf.join("complete").exists());
++    let update_stderr = String::from_utf8_lossy(&updated.stderr);
++    for path in [&update_leaf, &update_release, &update_report, &update_store] {
++        assert!(
++            update_stderr.contains(path.to_str().unwrap()),
++            "{update_stderr}"
++        );
++    }
++    fs::remove_dir_all(root).unwrap();
++}
++
++#[test]
++fn malformed_manifest_and_download_failure_leave_no_completion_marker() {
++    let root = scratch();
++    let raw = root.join("raw fixture.json");
++    let meta = root.join("meta fixture.toml");
++    fs::write(&raw, RAW).unwrap();
++    fs::write(&meta, GOOD_METADATA).unwrap();
++    let curl = fake_curl(&root);
++    let urls = root.join("manifest URLs.log");
++    let valid_text = format!(
++        "version=1\nrevision={REVISION_A}\nraw_sha256={RAW_SHA}\nmetadata_sha256={GOOD_META_SHA}\n"
++    );
++    let invalid_bodies: Vec<Vec<u8>> = vec![
++        format!("{valid_text}unknown=x\n").into_bytes(),
++        format!("version=1\nrevision={REVISION_A}\nraw_sha256={RAW_SHA}\n").into_bytes(),
++        format!("version=1\nrevision={REVISION_A}\nraw_sha256={}\nmetadata_sha256={GOOD_META_SHA}\n", RAW_SHA.to_ascii_uppercase()).into_bytes(),
++        format!("version=1\r\nrevision={REVISION_A}\nraw_sha256={RAW_SHA}\nmetadata_sha256={GOOD_META_SHA}\n").into_bytes(),
++        format!("{valid_text}trailing = junk\n").into_bytes(),
++        format!("version=1\n revision={REVISION_A}\nraw_sha256={RAW_SHA}\nmetadata_sha256={GOOD_META_SHA}\n").into_bytes(),
++        format!("{valid_text}\0\n").into_bytes(),
++        format!("{valid_text}# snowman: ☃\n").into_bytes(),
++    ];
++    for (index, body) in invalid_bodies.iter().enumerate() {
++        let path = root.join(format!("invalid variant {index}.env"));
++        fs::write(&path, body).unwrap();
++        let output_root = root.join(format!("invalid output {index}"));
++        let mut command = Command::new("/bin/bash");
++        command
++            .arg(script())
++            .args([
++                "acquire",
++                path.to_str().unwrap(),
++                output_root.to_str().unwrap(),
++            ])
++            .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++            .env("CURL", &curl);
++        set_fake_inputs(&mut command, &root, &meta, &urls);
++        let rejected = command.output().unwrap();
++        assert!(
++            !rejected.status.success(),
++            "invalid manifest variant {index} passed"
++        );
++        assert!(
++            !output_root.exists(),
++            "invalid manifest variant {index} mutated cache root"
++        );
++        assert!(
++            !root.join("curl count").exists(),
++            "invalid manifest variant {index} reached transport"
++        );
++    }
++
++    let pins_path = root.join("valid no-final-LF.env");
++    fs::write(&pins_path, valid_text.trim_end_matches('\n')).unwrap();
++    let eof_cache = root.join("cache from final unterminated assignment");
++    let mut eof_acquire = Command::new("/bin/bash");
++    eof_acquire
++        .arg(script())
++        .args([
++            "acquire",
++            pins_path.to_str().unwrap(),
++            eof_cache.to_str().unwrap(),
++        ])
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env("CURL", &curl);
++    set_fake_inputs(&mut eof_acquire, &root, &meta, &urls);
++    let eof_valid = eof_acquire.output().unwrap();
++    assert!(
++        eof_valid.status.success(),
++        "{}",
++        String::from_utf8_lossy(&eof_valid.stderr)
++    );
++    assert!(
++        cache_leaf(&eof_cache, REVISION_A, GOOD_META_SHA)
++            .join("complete")
++            .is_file()
++    );
++    assert_eq!(fs::read_to_string(&urls).unwrap().lines().count(), 2);
++
++    fs::remove_file(root.join("curl count")).unwrap();
++    let first_failure_cache = root.join("first download failure cache");
++    let first_failure_leaf = cache_leaf(&first_failure_cache, REVISION_A, GOOD_META_SHA);
++    let first_urls = root.join("first failure URLs.log");
++    let mut first_failure = Command::new("/bin/bash");
++    first_failure
++        .arg(script())
++        .args([
++            "acquire",
++            pins_path.to_str().unwrap(),
++            first_failure_cache.to_str().unwrap(),
++        ])
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env("CURL", &curl)
++        .env("FAKE_CURL_FAIL_AT", "1");
++    set_fake_inputs(&mut first_failure, &root, &meta, &first_urls);
++    let first_failed = first_failure.output().unwrap();
++    assert_eq!(first_failed.status.code(), Some(23));
++    assert!(first_failed.stdout.is_empty());
++    assert!(
++        String::from_utf8_lossy(&first_failed.stderr)
++            .contains(first_failure_leaf.to_str().unwrap())
++    );
++    assert!(first_failure_leaf.is_dir());
++    assert!(!first_failure_leaf.join("dictionary-en.json").exists());
++    assert!(
++        !first_failure_leaf
++            .join("dictionary-en.metadata.toml")
++            .exists()
++    );
++    assert!(!first_failure_leaf.join("complete").exists());
++    assert_eq!(fs::read_to_string(root.join("curl count")).unwrap(), "1\n");
++    assert_eq!(fs::read_to_string(first_urls).unwrap().lines().count(), 1);
++
++    fs::remove_file(root.join("curl count")).unwrap();
++    let second_failure_cache = root.join("second download failure cache");
++    let second_failure_leaf = cache_leaf(&second_failure_cache, REVISION_A, GOOD_META_SHA);
++    let second_urls = root.join("second failure URLs.log");
++    let mut second_failure = Command::new("/bin/bash");
++    second_failure
++        .arg(script())
++        .args([
++            "acquire",
++            pins_path.to_str().unwrap(),
++            second_failure_cache.to_str().unwrap(),
++        ])
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env("CURL", &curl)
++        .env("FAKE_CURL_FAIL_AT", "2");
++    set_fake_inputs(&mut second_failure, &root, &meta, &second_urls);
++    let second_failed = second_failure.output().unwrap();
++    assert_eq!(second_failed.status.code(), Some(23));
++    assert!(second_failure_leaf.join("dictionary-en.json").is_file());
++    assert!(
++        !second_failure_leaf
++            .join("dictionary-en.metadata.toml")
++            .exists()
++    );
++    assert!(!second_failure_leaf.join("complete").exists());
++    assert_eq!(fs::read_to_string(root.join("curl count")).unwrap(), "2\n");
++    assert_eq!(fs::read_to_string(second_urls).unwrap().lines().count(), 2);
++    let retry = invoke_pipeline(
++        &[
++            "acquire",
++            pins_path.to_str().unwrap(),
++            second_failure_cache.to_str().unwrap(),
++        ],
++        None,
++    );
++    assert!(
++        !retry.status.success(),
++        "an incomplete leaf must not be resumed or replaced"
++    );
++
++    fs::remove_file(root.join("curl count")).unwrap();
++    let corrupt_cache = root.join("corrupt completed cache");
++    let mut valid_acquire = Command::new("/bin/bash");
++    valid_acquire
++        .arg(script())
++        .args([
++            "acquire",
++            pins_path.to_str().unwrap(),
++            corrupt_cache.to_str().unwrap(),
++        ])
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env("CURL", &curl);
++    set_fake_inputs(
++        &mut valid_acquire,
++        &root,
++        &meta,
++        &root.join("corrupt cache URLs.log"),
++    );
++    assert!(valid_acquire.output().unwrap().status.success());
++    let corrupt_leaf = cache_leaf(&corrupt_cache, REVISION_A, GOOD_META_SHA);
++    fs::write(
++        corrupt_leaf.join("dictionary-en.json"),
++        b"corrupted pinned bytes",
++    )
++    .unwrap();
++    let release = root.join("corrupt replay release.json");
++    let report = root.join("corrupt replay release.json.report.json");
++    let store = root.join("corrupt replay store");
++    let rejected = invoke_pipeline(
++        &[
++            "replay",
++            pins_path.to_str().unwrap(),
++            corrupt_cache.to_str().unwrap(),
++            release.to_str().unwrap(),
++            store.to_str().unwrap(),
++        ],
++        None,
++    );
++    assert!(!rejected.status.success());
++    for path in [&corrupt_leaf, &release, &report, &store] {
++        assert!(String::from_utf8_lossy(&rejected.stderr).contains(path.to_str().unwrap()));
++    }
++    assert_eq!(
++        fs::read(corrupt_leaf.join("dictionary-en.json")).unwrap(),
++        b"corrupted pinned bytes"
++    );
++    assert_eq!(
++        fs::read(corrupt_leaf.join("complete")).unwrap(),
++        b"vlajmaji-jbotci-cache-v1\n"
++    );
++    assert!(!release.exists());
++    assert!(!report.exists());
++    assert!(!store.exists());
++    fs::remove_dir_all(root).unwrap();
++}
++
++#[test]
++fn make_forwards_metacharacter_paths_and_requires_explicit_cargo_target() {
++    let root = scratch();
++    let raw = root.join("raw.json");
++    let metadata = root.join("meta.toml");
++    fs::write(&raw, RAW).unwrap();
++    fs::write(&metadata, GOOD_METADATA).unwrap();
++    let pins_path = root.join("pins.env");
++    pins(&pins_path, REVISION_A, GOOD_META_SHA);
++    let cache = root.join("cache $cash `ticks' quote; semi");
++    let curl = fake_curl(&root);
++    let urls = root.join("urls.log");
++    let mut acquire = Command::new("/bin/bash");
++    acquire.arg(script()).args([
++        "acquire",
++        pins_path.to_str().unwrap(),
++        cache.to_str().unwrap(),
++    ]);
++    acquire
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env("CURL", &curl)
++        .env("FAKE_RAW_SOURCE", &raw)
++        .env("FAKE_META_SOURCE", &metadata)
++        .env("FAKE_CURL_COUNT", root.join("count"))
++        .env("FAKE_URL_LOG", urls);
++    let acquired = acquire.output().unwrap();
++    assert!(
++        acquired.status.success(),
++        "{}",
++        String::from_utf8_lossy(&acquired.stderr)
++    );
++
++    let cargo_probe = root.join("cargo must not run");
++    let cargo_called = root.join("cargo was called");
++    fs::write(
++        &cargo_probe,
++        format!(
++            "#!/bin/bash\nprintf called > '{}'\nexit 90\n",
++            cargo_called.display()
++        ),
++    )
++    .unwrap();
++    #[cfg(unix)]
++    {
++        use std::os::unix::fs::PermissionsExt;
++        fs::set_permissions(&cargo_probe, fs::Permissions::from_mode(0o755)).unwrap();
++    }
++    let missing_target = Command::new("make")
++        .current_dir(Path::new(env!("CARGO_MANIFEST_DIR")).join("../.."))
++        .arg("jbotci-check")
++        .env("JBOTCI_PINS", &pins_path)
++        .env("JBOTCI_CACHE", &cache)
++        .env_remove("VLAJMAJI_BIN")
++        .env_remove("CARGO_TARGET_DIR")
++        .env("CARGO", &cargo_probe)
++        .output()
++        .unwrap();
++    assert!(!missing_target.status.success());
++    assert!(String::from_utf8_lossy(&missing_target.stderr).contains("explicit CARGO_TARGET_DIR"));
++    assert!(
++        !cargo_called.exists(),
++        "missing-target preflight invoked Cargo"
++    );
++
++    let make_check = Command::new("make")
++        .current_dir(Path::new(env!("CARGO_MANIFEST_DIR")).join("../.."))
++        .arg("jbotci-check")
++        .env("JBOTCI_PINS", &pins_path)
++        .env("JBOTCI_CACHE", &cache)
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env_remove("CARGO_TARGET_DIR")
++        .output()
++        .unwrap();
++    assert!(
++        make_check.status.success(),
++        "{}",
++        String::from_utf8_lossy(&make_check.stderr)
++    );
++    assert_eq!(json_output(&make_check)["report"]["input_rows"], 2);
++
++    let sentinel = root.join("make-evaluated-command-line-path");
++    let unrelated = root.join("unrelated caller file");
++    fs::write(&unrelated, b"preserve caller data\n").unwrap();
++    let pin_alias = root.join("pins symlink");
++    std::os::unix::fs::symlink(&pins_path, &pin_alias).unwrap();
++    let pin_alias_check = invoke_pipeline(
++        &[
++            "check",
++            pin_alias.to_str().unwrap(),
++            cache.to_str().unwrap(),
++        ],
++        None,
++    );
++    assert!(
++        pin_alias_check.status.success(),
++        "{}",
++        String::from_utf8_lossy(&pin_alias_check.stderr)
++    );
++    let cache_alias = root.join("cache root symlink");
++    std::os::unix::fs::symlink(&cache, &cache_alias).unwrap();
++    let cache_alias_check = invoke_pipeline(
++        &[
++            "check",
++            pins_path.to_str().unwrap(),
++            cache_alias.to_str().unwrap(),
++        ],
++        None,
++    );
++    assert!(
++        cache_alias_check.status.success(),
++        "{}",
++        String::from_utf8_lossy(&cache_alias_check.stderr)
++    );
++    let bin_alias = root.join("CLI symlink");
++    std::os::unix::fs::symlink(env!("CARGO_BIN_EXE_vlajmaji"), &bin_alias).unwrap();
++    fs::copy(&raw, root.join("raw fixture.json")).unwrap();
++    let tmp_cache = Path::new("/tmp").join(format!(
++        "vlajmaji-s02-tmp-alias-{}-{}",
++        std::process::id(),
++        SystemTime::now()
++            .duration_since(UNIX_EPOCH)
++            .unwrap()
++            .as_nanos()
++    ));
++    assert!(!tmp_cache.exists());
++    let mut tmp_acquire = Command::new("/bin/bash");
++    tmp_acquire
++        .arg(script())
++        .args([
++            "acquire",
++            pin_alias.to_str().unwrap(),
++            tmp_cache.to_str().unwrap(),
++        ])
++        .env("VLAJMAJI_BIN", env!("CARGO_BIN_EXE_vlajmaji"))
++        .env("CURL", &curl);
++    set_fake_inputs(
++        &mut tmp_acquire,
++        &root,
++        &metadata,
++        &root.join("tmp alias URLs"),
++    );
++    let tmp_acquired = tmp_acquire.output().unwrap();
++    assert!(
++        tmp_acquired.status.success(),
++        "{}",
++        String::from_utf8_lossy(&tmp_acquired.stderr)
++    );
++    fs::remove_dir_all(&tmp_cache).unwrap();
++
++    let bin_check = Command::new("/bin/bash")
++        .arg(script())
++        .args([
++            "check",
++            pins_path.to_str().unwrap(),
++            cache.to_str().unwrap(),
++        ])
++        .env("VLAJMAJI_BIN", &bin_alias)
++        .output()
++        .unwrap();
++    assert!(
++        bin_check.status.success(),
++        "{}",
++        String::from_utf8_lossy(&bin_check.stderr)
++    );
++
++    let literal_cache = root.join(format!(
++        "cache $(shell touch '{}') $cash {}ticks' quote; semi",
++        sentinel.display(),
++        char::from(96)
++    ));
++    copy_tree(&cache, &literal_cache);
++    let make_command_line = Command::new("make")
++        .current_dir(Path::new(env!("CARGO_MANIFEST_DIR")).join("../.."))
++        .arg("jbotci-check")
++        .arg(format!("JBOTCI_PINS={}", pins_path.display()))
++        .arg(format!("JBOTCI_CACHE={}", literal_cache.display()))
++        .arg(format!("VLAJMAJI_BIN={}", env!("CARGO_BIN_EXE_vlajmaji")))
++        .env_remove("CARGO_TARGET_DIR")
++        .env_remove("MAKEFLAGS")
++        .output()
++        .unwrap();
++    assert!(
++        make_command_line.status.success(),
++        "{}",
++        String::from_utf8_lossy(&make_command_line.stderr)
++    );
++    assert_eq!(json_output(&make_command_line)["report"]["input_rows"], 2);
++    assert!(
++        !sentinel.exists(),
++        "GNU Make evaluated command-line path data"
++    );
++    assert_eq!(fs::read(&unrelated).unwrap(), b"preserve caller data\n");
++    fs::remove_dir_all(root).unwrap();
++}
+diff --git a/crates/search/src/dictionary.rs b/crates/search/src/dictionary.rs
+index 6c9ad76..ce773d3 100644
+--- a/crates/search/src/dictionary.rs
++++ b/crates/search/src/dictionary.rs
+@@ -730,20 +730,21 @@ impl DictionarySearchEngine {
+         spelling: &str,
+         options: DictionaryExactOptions,
+     ) -> Result<DictionaryExactResponse, DictionaryQueryError> {
+-        let document = self.dictionary.document();
+         let availability = self.availability.clone();
+         let resolved_sources = self.resolve_sources(&options, &availability)?;
+-        let source_set: BTreeSet<_> = resolved_sources.iter().cloned().collect();
+         let candidate_ids = self.store.exact_assertion_ids(spelling)?;
+         let native_candidate_occurrences = candidate_ids.len();
+         let candidate_set: BTreeSet<_> = candidate_ids.iter().map(ToString::to_string).collect();
+-        let selected_assertions: BTreeSet<String> = source_set
+-            .iter()
+-            .filter_map(|source| self.selected_assertions.get(source))
+-            .flat_map(|ids| ids.iter().cloned())
+-            .collect();
+         let mut hits = Vec::new();
+-        for assertion_id in candidate_set.intersection(&selected_assertions) {
++        for assertion_id in &candidate_set {
++            let selected_for_source = resolved_sources.iter().any(|source| {
++                self.selected_assertions
++                    .get(source)
++                    .is_some_and(|assertions| assertions.contains(assertion_id))
++            });
++            if !selected_for_source {
++                continue;
++            }
+             let assertion = self.assertions.get(assertion_id).ok_or_else(|| {
+                 DictionaryQueryError::Integrity {
+                     detail: format!(
+@@ -830,11 +831,12 @@ impl DictionarySearchEngine {
+             group.returned_count = group.hits.len();
+             group.partial = group.returned_count < group.full_count;
+         }
++        let metadata = self.dictionary.metadata();
+         Ok(DictionaryExactResponse {
+             version: 1,
+             policy: EXACT_POLICY.into(),
+             store_schema_version: 1,
+-            catalogue_revision: document.metadata.catalogue_revision,
++            catalogue_revision: metadata.catalogue_revision,
+             state_sha256: self.state_sha256.clone(),
+             spelling: spelling.to_owned(),
+             resolved_sources,
+@@ -844,7 +846,7 @@ impl DictionarySearchEngine {
+             availability,
+             groups,
+             next_cursor,
+-            code_notices: document.metadata.code_notices,
++            code_notices: metadata.code_notices.clone(),
+         })
+     }
+ 
+@@ -858,7 +860,7 @@ impl DictionarySearchEngine {
+         &self,
+         target: &RelationTarget,
+     ) -> Result<ReferenceResolution, DictionaryQueryError> {
+-        let document = self.dictionary.document();
++        let metadata = self.dictionary.metadata();
+         let availability = self.availability.clone();
+         match target {
+             RelationTarget::Unknown => Ok(ReferenceResolution {
+@@ -911,7 +913,7 @@ impl DictionarySearchEngine {
+                 })
+             }
+             RelationTarget::Catalog(catalog) => {
+-                self.resolve_catalog(target, catalog, &document, availability)
++                self.resolve_catalog(target, catalog, metadata, availability)
+             }
+         }
+     }
+@@ -1238,24 +1240,21 @@ impl DictionarySearchEngine {
+         &self,
+         target: &RelationTarget,
+         catalog: &CatalogTarget,
+-        document: &lexicon::DictionaryDocument,
++        metadata: &lexicon::DictionaryMetadata,
+         availability: Vec<DictionarySourceAvailability>,
+     ) -> Result<ReferenceResolution, DictionaryQueryError> {
+-        let release = document
+-            .metadata
++        let release = metadata
+             .releases
+             .iter()
+             .find(|row| row.id == catalog.release)
+             .cloned()
+             .ok_or_else(|| invalid_ref("catalogue release does not exist"))?;
+-        let component = document
+-            .metadata
++        let component = metadata
+             .components
+             .iter()
+             .find(|row| row.id == release.component)
+             .ok_or_else(|| invalid_ref("catalogue release has no component"))?;
+-        let collection = document
+-            .metadata
++        let collection = metadata
+             .collections
+             .iter()
+             .find(|row| row.id == component.collection)
+diff --git a/crates/store/src/dictionary_schema.rs b/crates/store/src/dictionary_schema.rs
+index fd55a0d..67dbe7d 100644
+--- a/crates/store/src/dictionary_schema.rs
++++ b/crates/store/src/dictionary_schema.rs
+@@ -11,6 +11,58 @@ pub(crate) const FORMAT: &str = "vlajmaji-dictionary";
+ pub(crate) const SCHEMA_VERSION: &str = "1";
+ pub(crate) const DATABASE_FILE: &str = "dictionary.sqlite3";
+ 
++// Parent rows must be inserted before rows that reference them. Keep each
++// table's own row order unchanged; deferred self references remain in place.
++const TABLE_INSERT_ORDER: [&str; 47] = [
++    "canonical_document",
++    "capture_refs",
++    "code_notices",
++    "contributors",
++    "distributors",
++    "entity_ids",
++    "metadata",
++    "sources",
++    "collections",
++    "computations",
++    "entries",
++    "occurrence_refs",
++    "owned_revisions",
++    "snapshot_bindings",
++    "source_aliases",
++    "source_lineage",
++    "assertions",
++    "components",
++    "editorial_senses",
++    "occurrence_attributions",
++    "owned_heads",
++    "raw_captures",
++    "source_evidence",
++    "argument_frames",
++    "assertion_timestamps",
++    "component_languages",
++    "contexts",
++    "editorial_members",
++    "etymologies",
++    "extensions",
++    "forms",
++    "raw_occurrences",
++    "releases",
++    "revision_assertions",
++    "revision_tombstones",
++    "annotations",
++    "argument_slots",
++    "computation_inputs",
++    "content_notices",
++    "etymology_components",
++    "form_components",
++    "native_fields",
++    "redistribution_evidence",
++    "relations",
++    "release_assertions",
++    "release_captures",
++    "release_diagnostics",
++];
++
+ // The schema intentionally has typed role tables and ordered child tables.
+ // Raw native/extension values and the complete canonical envelope are the only
+ // opaque payloads; typed metadata is never hidden in JSON/EAV rows.
+@@ -69,6 +121,7 @@ CREATE INDEX idx_release_assertions_assertion ON release_assertions(assertion_id
+ "#;
+ 
+ pub(crate) type Rows = BTreeMap<&'static str, Vec<Vec<Value>>>;
++type OrderedRows = Vec<(&'static str, Vec<Vec<Value>>)>;
+ type SchemaObject = (String, String, String, Option<String>);
+ 
+ pub(crate) fn create_schema(conn: &Connection) -> Result<()> {
+@@ -1237,7 +1290,7 @@ pub(crate) fn write_projection(
+     dictionary: &Dictionary,
+     canonical: &[u8],
+ ) -> Result<()> {
+-    let rows = project(dictionary, canonical)?;
++    let rows = ordered_projection(project(dictionary, canonical)?)?;
+     for (table, table_rows) in rows {
+         if table_rows.is_empty() {
+             continue;
+@@ -1283,6 +1336,21 @@ pub(crate) fn write_projection(
+     Ok(())
+ }
+ 
++fn ordered_projection(mut rows: Rows) -> Result<OrderedRows> {
++    let mut ordered = Vec::with_capacity(TABLE_INSERT_ORDER.len());
++    for table in TABLE_INSERT_ORDER {
++        if let Some(table_rows) = rows.remove(table) {
++            ordered.push((table, table_rows));
++        }
++    }
++    if let Some(table) = rows.keys().next() {
++        return Err(rusqlite::Error::ToSqlConversionFailure(Box::new(
++            std::io::Error::other(format!("projection contains unknown table {table}")),
++        )));
++    }
++    Ok(ordered)
++}
++
+ pub(crate) fn check_projection(
+     conn: &Connection,
+     dictionary: &Dictionary,
+@@ -1331,6 +1399,79 @@ pub(crate) fn check_projection(
+     Ok(())
+ }
+ 
++#[cfg(test)]
++mod tests {
++    use super::{DDL, Rows, TABLE_INSERT_ORDER, ordered_projection};
++
++    #[test]
++    fn insertion_order_covers_schema_and_places_foreign_key_parents_first() {
++        let mut schema_tables = Vec::new();
++        let mut references = Vec::new();
++        for statement in DDL.lines().map(str::trim) {
++            let Some(create) = statement.strip_prefix("CREATE TABLE ") else {
++                continue;
++            };
++            let (table, rest) = create.split_once('(').expect("table declaration");
++            schema_tables.push(table);
++            let mut tail = rest;
++            while let Some(index) = tail.find("REFERENCES ") {
++                tail = &tail[index + "REFERENCES ".len()..];
++                let parent = tail
++                    .split(|character: char| character == '(' || character.is_whitespace())
++                    .next()
++                    .expect("referenced table");
++                references.push((table, parent));
++                tail = &tail[parent.len()..];
++            }
++        }
++
++        assert_eq!(schema_tables.len(), TABLE_INSERT_ORDER.len());
++        assert_eq!(
++            schema_tables
++                .iter()
++                .copied()
++                .collect::<std::collections::BTreeSet<_>>(),
++            TABLE_INSERT_ORDER
++                .iter()
++                .copied()
++                .collect::<std::collections::BTreeSet<_>>()
++        );
++        for (child, parent) in references {
++            if child != parent {
++                let parent_position = TABLE_INSERT_ORDER
++                    .iter()
++                    .position(|table| *table == parent)
++                    .unwrap_or_else(|| panic!("missing FK parent {parent}"));
++                let child_position = TABLE_INSERT_ORDER
++                    .iter()
++                    .position(|table| *table == child)
++                    .unwrap_or_else(|| panic!("missing FK child {child}"));
++                assert!(parent_position < child_position, "{parent} before {child}");
++            }
++        }
++    }
++
++    #[test]
++    fn projection_orders_present_tables_and_rejects_unknown_tables() {
++        let sparse: Rows = ["release_diagnostics", "sources", "source_evidence"]
++            .iter()
++            .map(|table| (*table, Vec::new()))
++            .collect();
++        let ordered = ordered_projection(sparse).unwrap();
++        assert_eq!(
++            ordered.iter().map(|(table, _)| *table).collect::<Vec<_>>(),
++            ["sources", "source_evidence", "release_diagnostics"]
++        );
++
++        let mut unknown: Rows = ["sources"]
++            .iter()
++            .map(|table| (*table, Vec::new()))
++            .collect();
++        unknown.insert("unplanned_table", Vec::new());
++        assert!(ordered_projection(unknown).is_err());
++    }
++}
++
+ #[cfg(test)]
+ mod checked_integer_tests {
+     use super::{checked_i64, next_evidence_id};
+diff --git a/crates/store/tests/dictionary_contract.rs b/crates/store/tests/dictionary_contract.rs
+index caaff24..46dd15b 100644
+--- a/crates/store/tests/dictionary_contract.rs
++++ b/crates/store/tests/dictionary_contract.rs
+@@ -290,6 +290,94 @@ fn complete_dictionary_creates_typed_projection_and_reopens_read_only() {
+     fs::remove_dir_all(parent).unwrap();
+ }
+ 
++#[test]
++fn reversed_self_reference_rows_persist_and_reopen_in_model_order() {
++    let parent = scratch();
++    let fixture = fixture_support::complete_fixture().unwrap();
++    let mut document = fixture.document();
++    document.metadata.contexts.reverse();
++    document.metadata.owned_revisions.reverse();
++
++    let context_six = document
++        .metadata
++        .contexts
++        .iter()
++        .find(|row| row.id.as_str() == "context-6")
++        .unwrap();
++    assert_eq!(context_six.kind, vlajmaji_lexicon::ContextKind::Translation);
++    assert_eq!(
++        context_six.translated_from.as_ref().unwrap().as_str(),
++        "context-4"
++    );
++    let revision_two = document
++        .metadata
++        .owned_revisions
++        .iter()
++        .find(|row| row.id.as_str() == "revision-r2")
++        .unwrap();
++    assert_eq!(
++        revision_two.parent.as_ref().unwrap().as_str(),
++        "revision-r1"
++    );
++
++    let dictionary = Dictionary::from_document(document).unwrap();
++    let expected_document = dictionary.document();
++    let canonical = dictionary.to_json_bytes().unwrap();
++    let path = parent.join("reversed-self-references");
++    let store = DictionaryStore::create(&path, &dictionary).unwrap();
++    assert_eq!(store.canonical_bytes(), canonical);
++    assert_eq!(store.dictionary().document(), expected_document);
++    drop(store);
++
++    let reopened = DictionaryStore::open(&path).unwrap();
++    assert_eq!(reopened.canonical_bytes(), canonical);
++    assert_eq!(reopened.dictionary().document(), expected_document);
++    assert_eq!(
++        reopened.dictionary().document().metadata.contexts,
++        expected_document.metadata.contexts
++    );
++    assert_eq!(
++        reopened.dictionary().document().metadata.owned_revisions,
++        expected_document.metadata.owned_revisions
++    );
++
++    let db = Connection::open(reopened.database_path()).unwrap();
++    let contexts: Vec<(String, i64, Option<String>)> = db
++        .prepare(
++            "SELECT contexts.id,entity_ids.ordinal,contexts.translated_from              FROM contexts JOIN entity_ids USING(id)              WHERE contexts.id IN ('context-6','context-4')              ORDER BY entity_ids.ordinal",
++        )
++        .unwrap()
++        .query_map([], |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)))
++        .unwrap()
++        .collect::<rusqlite::Result<_>>()
++        .unwrap();
++    assert_eq!(
++        contexts,
++        vec![
++            ("context-6".into(), 1, Some("context-4".into())),
++            ("context-4".into(), 3, None),
++        ]
++    );
++    let revisions: Vec<(String, i64, Option<String>)> = db
++        .prepare(
++            "SELECT owned_revisions.id,entity_ids.ordinal,owned_revisions.parent_id              FROM owned_revisions JOIN entity_ids USING(id)              ORDER BY entity_ids.ordinal",
++        )
++        .unwrap()
++        .query_map([], |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)))
++        .unwrap()
++        .collect::<rusqlite::Result<_>>()
++        .unwrap();
++    assert_eq!(
++        revisions,
++        vec![
++            ("revision-r2".into(), 0, Some("revision-r1".into())),
++            ("revision-r1".into(), 1, None),
++        ]
++    );
++    drop(reopened);
++    fs::remove_dir_all(parent).unwrap();
++}
++
+ #[test]
+ fn full_fixture_has_independent_direct_sql_value_oracles() {
+     let parent = scratch();
+diff --git a/docs/jbotci-import.md b/docs/jbotci-import.md
+index 97eac7f..4f7abbf 100644
+--- a/docs/jbotci-import.md
++++ b/docs/jbotci-import.md
+@@ -80,7 +80,51 @@ held pending verification of source coverage and authorization. The adapter
+ does not copy or publish corpus data. Its Apache-2.0 code notice is recorded
+ separately from the content notice.
+ 
+-## CLI and local proof
++## Pinned local workflow
++
++The repository ships a strict four-key manifest at
++`scripts/jbotci-pinned.env`. It is data, never shell code: the workflow accepts
++only `version`, `revision`, `raw_sha256`, and `metadata_sha256` assignments.
++The default is an exact source commit and two exact digests; it never follows a
++branch or chooses a newer revision automatically. `acquire`, `replay`, `check`,
++and `update` are explicit operations. Cache directories are keyed by the full
++revision/raw/metadata tuple and use a versioned `complete` marker. Existing,
++partial, symlinked, or occupied outputs are preserved and rejected; all
++successful output files and stores are create-new.
++
++For a local run, choose fresh paths and an explicit cache root:
++
++```sh
++export CARGO_TARGET_DIR=/tmp/vlajmaji-target
++make jbotci-acquire JBOTCI_CACHE=/tmp/vlajmaji-jbotci-cache
++make jbotci-replay JBOTCI_CACHE=/tmp/vlajmaji-jbotci-cache \
++  JBOTCI_RELEASE=/tmp/vlajmaji-release.json \
++  JBOTCI_STORE=/tmp/vlajmaji-store
++make jbotci-check JBOTCI_CACHE=/tmp/vlajmaji-jbotci-cache \
++  JBOTCI_RELEASE=/tmp/vlajmaji-release.json
++make jbotci-update JBOTCI_NEW_PINS=/tmp/vlajmaji-new-pins.env \
++  JBOTCI_CACHE=/tmp/vlajmaji-new-cache JBOTCI_RELEASE=/tmp/vlajmaji-new-release.json \
++  JBOTCI_STORE=/tmp/vlajmaji-new-store
++```
++
++`acquire` downloads only the two fixed files at the manifest's commit and runs
++the real Rust check before creating the completion marker. Repeating it against
++an already complete cache verifies it offline. `replay` rechecks that cache,
++creates the normalized release and an exact stdout report sidecar, checks the
++release against the pinned bytes, and can optionally build a fresh grouped
++dictionary store. `check` is read-only. `update` requires a separate explicit
++manifest and fresh outputs; it preserves prior pins and releases. A candidate
++with valid structure but supplier count mismatches retains its input files,
++release and report, exits nonzero, and receives neither a completion marker nor
++the requested store. Correcting or retrying that candidate requires a fresh
++cache/output path; the pipeline does not remove or adopt an incomplete attempt.
++The `CURL` override accepts one executable path and is intended for local
++transport tests. Normal acquisition uses curl. Set `VLAJMAJI_BIN` to one
++existing executable to bypass Cargo; otherwise the script requires an explicit
++`CARGO_TARGET_DIR` and runs the locked Rust 1.98 CLI offline.
++
++The public `jbotci-import` and `jbotci-check` commands remain useful on local
++files:
+ 
+ `vlajmaji jbotci-import RAW METADATA FRESH.json` validates the complete import,
+ serializes it, and creates the output with create-new semantics. It never
+@@ -93,11 +137,13 @@ observed population. Both commands accept `--revision`, `--raw-sha256`, and
+ `--metadata-sha256` overrides. Errors are structured JSON on stderr, with empty
+ stdout and a nonzero status.
+ 
+-For the local pinned files, the public example checks both exact input byte
+-captures, writes the canonical model bytes to a fresh output path, reloads the
+-release, and checks the full population. The example uses exclusive create and
+-does not append a line feed; the CLI's human-readable output file does append
+-one final line feed, so those file byte counts differ by one:
++For the pinned input, the public example checks both exact input byte captures,
++writes the canonical model bytes to a fresh output path, reloads the release,
++and checks the full population. The example does not append a line feed; the
++CLI output file does append one. The measured API canonical document is
++215,412,497 bytes; the CLI release file is 215,412,498 bytes. These are two
++representations of the same validated model, not interchangeable byte
++identities. The example uses exclusive create:
+ 
+ ```sh
+ cargo +1.98.0 run --locked --offline -p vlajmaji-lexicon \
+@@ -106,7 +152,15 @@ cargo +1.98.0 run --locked --offline -p vlajmaji-lexicon \
+ 
+ The observed pinned export contains 33,526 rows and 278,254 ordered native
+ fields. It produces 33,516 lexical occurrences, 10 excluded occurrences,
+-31,248 distinct eligible spellings, and 238 contributors. The raw capture is
++31,248 distinct eligible spellings and 238 contributors. The persisted
++projection contains 73,226 extension rows: 39,721 per-gloss-object records,
++30,683 whole-field gloss records, 2,821 place-field records, and one raw
++metadata-text record. The raw capture is
+ 17,163,482 bytes and metadata is 514 bytes. These are replay observations,
+-not claims about other revisions or a redistributable data package. Keep raw
+-and metadata files local; acquisition and packaging are separate work.
++not claims about other revisions or a redistributable data package. The
++normalized model and persisted projection preserve each raw field, including
++repeated object keys, nested keys, unknown values, and source order. Duplicate
++native values are not deduplicated into editorial claims. Keep raw and metadata
++files local. The `Held` content-redistribution status, the supplier's public
++domain statement, and the Apache-2.0 code notice are distinct: no permission to
++redistribute the corpus is inferred from the supplier notice or code license.
+diff --git a/scripts/jbotci-import.sh b/scripts/jbotci-import.sh
+new file mode 100755
+index 0000000..4009c9c
+--- /dev/null
++++ b/scripts/jbotci-import.sh
+@@ -0,0 +1,384 @@
++#!/bin/bash
++# Reproducible local acquisition and replay for one explicit jbotci revision.
++set -euo pipefail
++export LC_ALL=C
++
++version=
++revision=
++raw_sha256=
++metadata_sha256=
++repo=$(cd "$(dirname "$0")/.." && pwd -P)
++raw_name=dictionary-en.json
++metadata_name=dictionary-en.metadata.toml
++marker_name=complete
++marker_value=vlajmaji-jbotci-cache-v1
++base_url=https://raw.githubusercontent.com/int19h/jbotci
++
++usage() {
++    cat <<'USAGE'
++Usage:
++  scripts/jbotci-import.sh acquire PINS CACHE_ROOT
++  scripts/jbotci-import.sh replay PINS CACHE_ROOT FRESH_RELEASE [FRESH_STORE]
++  scripts/jbotci-import.sh check PINS CACHE_ROOT [RELEASE]
++  scripts/jbotci-import.sh update NEW_PINS CACHE_ROOT FRESH_RELEASE [FRESH_STORE]
++  scripts/jbotci-import.sh help
++
++PINS defaults are in scripts/jbotci-pinned.env. Outputs are create-new only.
++USAGE
++}
++
++fail() {
++    printf 'jbotci pipeline: %s\n' "$*" >&2
++    exit 2
++}
++
++attempt_failed() {
++    local status=$1 operation=$2 leaf=$3 release=${4-} store=${5-}
++    printf 'jbotci pipeline: %s failed; cache_leaf=%s' "$operation" "$leaf" >&2
++    if [[ -n $release ]]; then
++        printf ' release=%s report=%s.report.json' "$release" "$release" >&2
++    fi
++    if [[ -n $store ]]; then printf ' store=%s' "$store" >&2; fi
++    printf '\n' >&2
++    return "$status"
++}
++
++path_absent() {
++    [[ ! -e $1 && ! -L $1 ]]
++}
++
++load_pins() {
++    local file=$1 line key value
++    version= revision= raw_sha256= metadata_sha256=
++    local have_version=0 have_revision=0 have_raw=0 have_metadata=0
++    [[ -f $file && -r $file ]] || fail "pin manifest must be a readable regular file: $file"
++    if LC_ALL=C tr -d '\12\40-\176' < "$file" | grep . >/dev/null 2>&1; then
++        fail 'pin manifest must contain only printable ASCII and LF'
++    fi
++    while IFS= read -r line || [[ -n $line ]]; do
++        case $line in
++            ''|\#*) continue ;;
++            ' '*)
++                line=${line#"${line%%[! ]*}"}
++                case $line in ''|\#*) continue ;; esac
++                fail 'pin assignments must not be indented' ;;
++        esac
++        case $line in
++            *=*) key=${line%%=*}; value=${line#*=} ;;
++            *) fail "malformed pin assignment: $line" ;;
++        esac
++        [[ -n $value && $value != *[!A-Za-z0-9_-]* ]] || fail "invalid pin assignment value for $key"
++        case $key in
++            version)
++                [[ $have_version == 0 ]] || fail 'duplicate version key'
++                version=$value; have_version=1 ;;
++            revision)
++                [[ $have_revision == 0 ]] || fail 'duplicate revision key'
++                revision=$value; have_revision=1 ;;
++            raw_sha256)
++                [[ $have_raw == 0 ]] || fail 'duplicate raw_sha256 key'
++                raw_sha256=$value; have_raw=1 ;;
++            metadata_sha256)
++                [[ $have_metadata == 0 ]] || fail 'duplicate metadata_sha256 key'
++                metadata_sha256=$value; have_metadata=1 ;;
++            *) fail "unknown pin key: $key" ;;
++        esac
++    done < "$file"
++    [[ $have_version == 1 && $have_revision == 1 && $have_raw == 1 && $have_metadata == 1 ]] || fail 'pin manifest is missing a required key'
++    [[ $version == 1 ]] || fail 'pin manifest version must be 1'
++    [[ $revision =~ ^[0-9a-f]{40}$ ]] || fail 'revision must be 40 lowercase hexadecimal characters'
++    [[ $raw_sha256 =~ ^[0-9a-f]{64}$ ]] || fail 'raw_sha256 must be 64 lowercase hexadecimal characters'
++    [[ $metadata_sha256 =~ ^[0-9a-f]{64}$ ]] || fail 'metadata_sha256 must be 64 lowercase hexadecimal characters'
++}
++
++leaf_for() {
++    printf '%s/%s-%s-%s' "$2" "$revision" "$raw_sha256" "$metadata_sha256"
++}
++
++check_cli() {
++    if [[ $# == 2 ]]; then
++        run_cli jbotci-check "$1/$raw_name" "$1/$metadata_name" \
++            --release "$2" --revision "$revision" --raw-sha256 "$raw_sha256" \
++            --metadata-sha256 "$metadata_sha256"
++    else
++        run_cli jbotci-check "$1/$raw_name" "$1/$metadata_name" \
++            --revision "$revision" --raw-sha256 "$raw_sha256" \
++            --metadata-sha256 "$metadata_sha256"
++    fi
++}
++
++run_cli() {
++    if [[ -n ${VLAJMAJI_BIN:-} ]]; then
++        [[ -n $VLAJMAJI_BIN && -f $VLAJMAJI_BIN && -x $VLAJMAJI_BIN ]] || fail 'VLAJMAJI_BIN must name one executable regular file'
++        "$VLAJMAJI_BIN" "$@"
++    else
++        [[ ${CARGO_TARGET_DIR+x} && -n $CARGO_TARGET_DIR ]] || fail 'set CARGO_TARGET_DIR explicitly when VLAJMAJI_BIN is not supplied'
++        local cargo_command=${CARGO:-cargo}
++        "$cargo_command" +1.98.0 run --locked --offline --manifest-path "$repo/Cargo.toml" \
++            -p vlajmaji-cli --bin vlajmaji -- "$@"
++    fi
++}
++
++cache_state() {
++    local leaf=$1 marker=$1/$marker_name
++    if path_absent "$leaf"; then
++        printf absent
++        return
++    fi
++    [[ -d $leaf && ! -L $leaf ]] || fail "cache leaf is occupied or not a real directory: $leaf"
++    [[ -f $marker && ! -L $marker ]] || fail "cache leaf is incomplete and preserved: $leaf"
++    [[ -f $leaf/$raw_name && ! -L $leaf/$raw_name ]] || fail "cached raw input is absent or invalid: $leaf"
++    [[ -f $leaf/$metadata_name && ! -L $leaf/$metadata_name ]] || fail "cached metadata is absent or invalid: $leaf"
++    local actual actual_size expected_size
++    actual=$(cat "$marker")
++    actual_size=$(wc -c < "$marker" | tr -d '[:space:]')
++    expected_size=$((${#marker_value} + 1))
++    [[ $actual == "$marker_value" && $actual_size == "$expected_size" ]] || fail "cache marker does not match format version 1: $leaf"
++    printf complete
++}
++
++cache_root_preflight() {
++    local root=$1
++    if ! path_absent "$root"; then
++        [[ -d $root ]] || fail "cache root must be a directory: $root"
++    else
++        [[ $allow_create == 1 ]] || fail "cache root does not exist: $root"
++        local parent
++        parent=$(dirname "$root")
++        [[ -d $parent ]] || fail "cache root parent must exist and be a directory: $parent"
++    fi
++}
++
++download_inputs() {
++    local leaf=$1 operation=$2 release=${3-} store=${4-} curl_command=${CURL:-curl} status
++    local url=$base_url/$revision/crates/jbotci-dictionary-data/data
++    if "$curl_command" --fail --location --silent --show-error \
++        --output "$leaf/$raw_name" "$url/$raw_name"; then
++        :
++    else
++        status=$?
++        attempt_failed "$status" "$operation" "$leaf" "$release" "$store"
++        return $?
++    fi
++    if "$curl_command" --fail --location --silent --show-error \
++        --output "$leaf/$metadata_name" "$url/$metadata_name"; then
++        :
++    else
++        status=$?
++        attempt_failed "$status" "$operation" "$leaf" "$release" "$store"
++        return $?
++    fi
++}
++
++write_marker() {
++    local leaf=$1
++    (set -C; printf '%s\n' "$marker_value" > "$leaf/$marker_name")
++}
++
++fresh_outputs_preflight() {
++    local release=$1 store=${2-} report=$1.report.json
++    path_absent "$release" || fail "release output already exists: $release"
++    path_absent "$report" || fail "report output already exists: $report"
++    [[ -d $(dirname "$release") ]] || fail "release parent must exist: $(dirname "$release")"
++    [[ -d $(dirname "$report") ]] || fail "report parent must exist: $(dirname "$report")"
++    if [[ -n $store ]]; then
++        path_absent "$store" || fail "store output already exists: $store"
++        [[ -d $(dirname "$store") ]] || fail "store parent must exist: $(dirname "$store")"
++    fi
++}
++
++replay_leaf() {
++    local leaf=$1 release=$2 store=${3-} operation=$4 report=$2.report.json status
++    if check_cli "$leaf" >/dev/null; then :; else
++        status=$?
++        attempt_failed "$status" "$operation cache validation" "$leaf" "$release" "$store"
++        return $?
++    fi
++    if (set -C; run_cli jbotci-import "$leaf/$raw_name" "$leaf/$metadata_name" "$release" \
++        --revision "$revision" --raw-sha256 "$raw_sha256" \
++        --metadata-sha256 "$metadata_sha256" > "$report"); then :; else
++        status=$?
++        attempt_failed "$status" "$operation import" "$leaf" "$release" "$store"
++        return $?
++    fi
++    if check_cli "$leaf" "$release" >/dev/null; then :; else
++        status=$?
++        attempt_failed "$status" "$operation release check" "$leaf" "$release" "$store"
++        return $?
++    fi
++    if [[ -n $store ]]; then
++        if run_cli dictionary-build "$release" "$store" >&2; then :; else
++            status=$?
++            attempt_failed "$status" "$operation store build" "$leaf" "$release" "$store"
++            return $?
++        fi
++    fi
++    if cat "$report"; then :; else
++        status=$?
++        attempt_failed "$status" "$operation report read" "$leaf" "$release" "$store"
++        return $?
++    fi
++}
++
++acquire() {
++    local pins=$1 root=$2
++    load_pins "$pins"
++    local leaf state status
++    leaf=$(leaf_for "$revision" "$root")
++    allow_create=1
++    cache_root_preflight "$root"
++    state=$(cache_state "$leaf")
++    if [[ $state == complete ]]; then
++        if check_cli "$leaf"; then :; else
++            status=$?
++            attempt_failed "$status" 'acquire cache validation' "$leaf"
++            return $?
++        fi
++        return
++    fi
++    [[ $state == absent ]] || fail "unexpected cache state: $state"
++    if path_absent "$root"; then
++        if mkdir -p "$root"; then :; else
++            status=$?
++            attempt_failed "$status" acquire "$leaf"
++            return $?
++        fi
++    fi
++    if mkdir "$leaf"; then :; else
++        status=$?
++        attempt_failed "$status" acquire "$leaf"
++        return $?
++    fi
++    download_inputs "$leaf" acquire || return $?
++    if output=$(check_cli "$leaf"); then :; else
++        status=$?
++        attempt_failed "$status" 'acquire cache validation' "$leaf"
++        return $?
++    fi
++    if write_marker "$leaf"; then :; else
++        status=$?
++        attempt_failed "$status" 'acquire marker creation' "$leaf"
++        return $?
++    fi
++    printf '%s\n' "$output"
++}
++
++replay() {
++    local pins=$1 root=$2 release=$3 store=${4-}
++    load_pins "$pins"
++    fresh_outputs_preflight "$release" "$store"
++    local leaf state
++    leaf=$(leaf_for "$revision" "$root")
++    allow_create=0
++    cache_root_preflight "$root"
++    state=$(cache_state "$leaf")
++    [[ $state == complete ]] || fail "pinned cache leaf is absent: $leaf"
++    replay_leaf "$leaf" "$release" "$store" replay
++}
++
++check() {
++    local pins=$1 root=$2 release=${3-}
++    load_pins "$pins"
++    local leaf state
++    leaf=$(leaf_for "$revision" "$root")
++    allow_create=0
++    cache_root_preflight "$root"
++    state=$(cache_state "$leaf")
++    [[ $state == complete ]] || fail "pinned cache leaf is absent: $leaf"
++    local status
++    if [[ -n $release ]]; then
++        if check_cli "$leaf" "$release"; then :; else
++            status=$?
++            attempt_failed "$status" check "$leaf" "$release"
++            return $?
++        fi
++    else
++        if check_cli "$leaf"; then :; else
++            status=$?
++            attempt_failed "$status" check "$leaf"
++            return $?
++        fi
++    fi
++}
++
++update() {
++    local pins=$1 root=$2 release=$3 store=${4-}
++    load_pins "$pins"
++    fresh_outputs_preflight "$release" "$store"
++    local leaf state output status
++    leaf=$(leaf_for "$revision" "$root")
++    allow_create=1
++    cache_root_preflight "$root"
++    state=$(cache_state "$leaf")
++    if [[ $state == complete ]]; then
++        replay_leaf "$leaf" "$release" "$store" update
++        return
++    fi
++    [[ $state == absent ]] || fail "unexpected cache state: $state"
++    if path_absent "$root"; then
++        if mkdir -p "$root"; then :; else
++            status=$?
++            attempt_failed "$status" update "$leaf" "$release" "$store"
++            return $?
++        fi
++    fi
++    if mkdir "$leaf"; then :; else
++        status=$?
++        attempt_failed "$status" update "$leaf" "$release" "$store"
++        return $?
++    fi
++    download_inputs "$leaf" update "$release" "$store" || return $?
++    if (set -C; run_cli jbotci-import "$leaf/$raw_name" "$leaf/$metadata_name" "$release" \
++        --revision "$revision" --raw-sha256 "$raw_sha256" \
++        --metadata-sha256 "$metadata_sha256" > "$release.report.json"); then :; else
++        status=$?
++        attempt_failed "$status" 'update import' "$leaf" "$release" "$store"
++        return $?
++    fi
++    if check_cli "$leaf" "$release" >/dev/null; then :; else
++        status=$?
++        attempt_failed "$status" 'update release check' "$leaf" "$release" "$store"
++        return $?
++    fi
++    if write_marker "$leaf"; then :; else
++        status=$?
++        attempt_failed "$status" 'update marker creation' "$leaf" "$release" "$store"
++        return $?
++    fi
++    if [[ -n $store ]]; then
++        if run_cli dictionary-build "$release" "$store" >&2; then :; else
++            status=$?
++            attempt_failed "$status" 'update store build' "$leaf" "$release" "$store"
++            return $?
++        fi
++    fi
++    if cat "$release.report.json"; then :; else
++        status=$?
++        attempt_failed "$status" 'update report read' "$leaf" "$release" "$store"
++        return $?
++    fi
++}
++
++main() {
++    local operation=${1-}
++    [[ -n $operation ]] || { usage >&2; exit 2; }
++    shift
++    case $operation in
++        help|-h|--help) usage ;;
++        acquire)
++            [[ $# == 2 ]] || fail 'acquire expects PINS CACHE_ROOT'
++            acquire "$1" "$2" ;;
++        replay)
++            [[ $# == 3 || $# == 4 ]] || fail 'replay expects PINS CACHE_ROOT FRESH_RELEASE [FRESH_STORE]'
++            replay "$1" "$2" "$3" "${4-}" ;;
++        check)
++            [[ $# == 2 || $# == 3 ]] || fail 'check expects PINS CACHE_ROOT [RELEASE]'
++            check "$1" "$2" "${3-}" ;;
++        update)
++            [[ $# == 3 || $# == 4 ]] || fail 'update expects NEW_PINS CACHE_ROOT FRESH_RELEASE [FRESH_STORE]'
++            update "$1" "$2" "$3" "${4-}" ;;
++        *) fail "unknown operation: $operation" ;;
++    esac
++}
++
++main "$@"
+diff --git a/scripts/jbotci-pinned.env b/scripts/jbotci-pinned.env
+new file mode 100644
+index 0000000..9f4aa0d
+--- /dev/null
++++ b/scripts/jbotci-pinned.env
+@@ -0,0 +1,4 @@
++version=1
++revision=3d9fd41d9ed32de26311ee27ec86b6b165985aa1
++raw_sha256=12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde
++metadata_sha256=fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98

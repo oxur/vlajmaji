@@ -1,0 +1,33 @@
+{
+  "label": "s02-new-fixture12-03",
+  "argv": [
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/a02_cdc_composition_20261024c",
+    "fixture",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-fixture-candidate03"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "start_utc": "2026-10-25T00:52:37.239961+00:00",
+  "head_before": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  },
+  "state": "completed",
+  "pid": 49980,
+  "returncode": 0,
+  "elapsed_seconds": 0.12499599996954203,
+  "end_utc": "2026-10-25T00:52:37.381798+00:00",
+  "head_after": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "streams": {
+    "stdout": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-new-fixture12-03.stdout",
+      "bytes": 57,
+      "sha256": "fa84c22e9e4c98dde0f42c553876805bceaa2c476076f90c724a4fbe9a804e06"
+    },
+    "stderr": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-new-fixture12-03.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

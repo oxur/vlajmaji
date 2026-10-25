@@ -1,0 +1,55 @@
+{
+  "verdict": "PASS",
+  "negative_controls": 2,
+  "cases": [
+    {
+      "case": "whole-gloss-field",
+      "intentional_mutation": {
+        "table": "extensions",
+        "ordinal": 0,
+        "owner_id": "jbotci-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-assertion-0",
+        "name": "lensisku.gloss_keywords.raw",
+        "before": "[\n      {\n        \"word\": \"and/or\",\n        \"meaning\": \"inclusive or\"\n      },\n      {\n        \"word\": \"or\",\n        \"meaning\": \"inclusive or\"\n      },\n      {\n        \"word\": \"sumti or\",\n        \"meaning\": null\n      }\n    ]",
+        "after": "[]",
+        "evidence_id": 2
+      },
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "-B",
+        "/tmp/vlajmaji-p01-a02-cdc/verify_sqlite.py",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-full-cache02/3d9fd41d9ed32de26311ee27ec86b6b165985aa1-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98/dictionary-en.json",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-full-cache02/3d9fd41d9ed32de26311ee27ec86b6b165985aa1-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98/dictionary-en.metadata.toml",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-sql-negative03/whole-gloss-field.sqlite3"
+      ],
+      "returncode": 1,
+      "expected_failure_category": "native_extensions",
+      "original_sha256": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+      "mutated_copy_sha256": "3c4f1340f09ef2b95621b044b940ffe94b7d8ad8a41a242980ba15754467ff0d",
+      "original_unchanged": true
+    },
+    {
+      "case": "native-score-lexeme",
+      "intentional_mutation": {
+        "table": "native_fields",
+        "occurrence_id": "000000000000001b63617074757265643a6c656e7369736b753a6a626f7463693a656e00000000000000403132653832363735316333653530633130646438646631616461666235663965623332636466353432623232633432343466323834623539643338323464646500000000000000022f30",
+        "ordinal": 6,
+        "locator": "/0",
+        "before": "100003.0",
+        "after": "99999999999999"
+      },
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "-B",
+        "/tmp/vlajmaji-p01-a02-cdc/verify_sqlite.py",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-full-cache02/3d9fd41d9ed32de26311ee27ec86b6b165985aa1-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98/dictionary-en.json",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-full-cache02/3d9fd41d9ed32de26311ee27ec86b6b165985aa1-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98/dictionary-en.metadata.toml",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-sql-negative03/native-score-lexeme.sqlite3"
+      ],
+      "returncode": 1,
+      "expected_failure_category": "all_native_fields",
+      "original_sha256": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+      "mutated_copy_sha256": "9f06fb328cfced19f67796c6b7dbb2a8132bce3666238d4e43ffe0e476b01426",
+      "original_unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{"started": "s02-make-check03", "pid": 43221, "log": "/private/tmp/vlajmaji-p01-a02-cdc/s02-make-check03.log"}
+{
+  "label": "s02-make-check03",
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "argv": [
+    "make",
+    "--no-print-directory",
+    "CARGO=/tmp/vlajmaji-p01-a02-cargo",
+    "RUST_TOOLCHAIN=1.98.0",
+    "check"
+  ],
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "head_before": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "start_unix": 1792889301.846103,
+  "log": "/private/tmp/vlajmaji-p01-a02-cdc/s02-make-check03.log",
+  "pid": 43221,
+  "exit": 0,
+  "elapsed_seconds": 29.487,
+  "log_bytes": 14945
+}
+ ... ok
+test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok
+test search_engine_has_safe_summary_debug_output ... ok
+test compose_kind_is_validated_with_empty_and_nonempty_candidate_sets ... ok
+test contrast_exposes_p01_coordinate_explanations_without_word_total ... ok
+test exact_proposal_option_is_separate_complete_and_limited_after_combination ... ok
+test native_candidate_counts_are_stage_labelled ... ok
+test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+     Running tests/dictionary_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_contract-a9d0d201489d4d3c)
+
+running 5 tests
+test hit_computations_follow_dictionary_metadata_order ... ok
+test repeated_editorial_membership_is_preserved_but_hit_views_are_unique ... ok
+test pages_zero_totals_cursor_binding_and_stale_cursor_are_explicit ... ok
+test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok
+test exact_farvi_matches_the_complete_occurrence_reference_after_reopen ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.48s
+
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-6e85a363fccc8e3a)
+
+running 5 tests
+test dictionary_schema::checked_integer_tests::sqlite_integer_conversion_and_evidence_increment_are_checked ... ok
+test dictionary_schema::tests::projection_orders_present_tables_and_rejects_unknown_tables ... ok
+test dictionary_schema::tests::insertion_order_covers_schema_and_places_foreign_key_parents_first ... ok
+test identity_tests::tuple_identity_is_length_prefixed_and_byte_exact ... ok
+test dictionary::lifecycle_tests::committed_incomplete_header_survives_population_failure ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/dictionary_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_contract-d67c2a2704bbca1d)
+
+running 13 tests
+test fresh_path_lifecycle_refuses_existing_leafs_and_missing_parents ... ok
+test empty_valid_dictionary_has_a_real_empty_projection ... ok
+test empty_source_metadata_values_survive_actual_sql_projection ... ok
+test complete_dictionary_creates_typed_projection_and_reopens_read_only ... ok
+test full_unsigned_text_empty_and_nul_values_survive_sql_and_reopen ... ok
+test full_fixture_has_independent_direct_sql_value_oracles ... ok
+test empty_available_release_keeps_explicit_zero_counts ... ok
+test reversed_self_reference_rows_persist_and_reopen_in_model_order ... ok
+test legacy_archive_rebuild_is_explicit_separate_and_byte_preserving ... ok
+test metadata_query_missing_required_columns_is_format_without_writing ... ok
+test sql_role_presence_foreign_key_and_unique_constraints_are_real ... ok
+test open_rejects_same_count_scalar_edits_in_each_relational_family_without_repair ... ok
+test integrity_failures_are_classified_without_mutating_the_database ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.23s
+
+     Running tests/fixture.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/fixture-151611856c208644)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/public_identity.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/public_identity-444732b1ccf024e4)
+
+running 1 test
+test external_consumer_can_hydrate_the_published_record_identity ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests vlajmaji
+
+running 1 test
+test crates/vlajmaji/src/../README.md - (line 36) - compile ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 1.45s; merged doctests compilation took 1.29s
+   Doc-tests vlajmaji_lexicon
+
+running 4 tests
+test crates/lexicon/src/lib.rs - Proposal::new (line 488) ... ok
+test crates/lexicon/src/lib.rs - SourceMetadata::new (line 117) ... ok
+test crates/lexicon/src/lib.rs - (line 8) ... ok
+test crates/lexicon/src/lib.rs - Lexicon::import_source (line 683) ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.70s; merged doctests compilation took 0.53s
+   Doc-tests vlajmaji_search
+
+running 1 test
+test crates/search/src/lib.rs - (line 7) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.78s; merged doctests compilation took 0.55s
+   Doc-tests vlajmaji_store
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[1;32m✓ All tests passed[0m
+[1;34mGenerating API documentation...[0m
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.11s
+   Generated /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/doc/vlajmaji/index.html and 3 other files
+[1;32m✓ Documentation generated[0m
+[1;34mRunning Make/planning helper tests...[0m
+ok - make_targets_forward_toolchain_and_failures
+ok - install_copies_selected_mode_and_reports_missing_artifacts
+ok - help_does_not_require_build_tools
+ok - create_empty_root_push_idempotence_and_preserve_source
+ok - remote_branch_without_local_branch_attaches
+ok - remote_update_fast_forwards_clean_planning_worktree
+ok - local_ahead_preserved_without_push
+ok - existing_local_branch_without_remote_is_attached_and_pushed
+ok - dirty_planning_refused_without_data_loss
+ok - true_divergence_refused
+ok - path_collision_and_wrong_branch_refused
+ok - unreachable_origin_is_not_treated_as_missing_branch
+ok - implementation_dirty_state_is_preserved
+ok - branch_checked_out_elsewhere_is_refused
+ok - push_rejection_preserves_empty_local_root_and_worktree
+ok - symlink_path_is_refused
+ok - local_branch_behind_remote_without_worktree_fast_forwards_once
+ok - helper_can_be_invoked_from_repository_subdirectory
+ok - git_administration_path_is_refused
+19 passed; 0 failed (19 total)
+[1;32m✓ Tooling tests passed[0m
+
+[1;32m✓ All checks passed (tools + format + lint + tests + docs)[0m
+
+

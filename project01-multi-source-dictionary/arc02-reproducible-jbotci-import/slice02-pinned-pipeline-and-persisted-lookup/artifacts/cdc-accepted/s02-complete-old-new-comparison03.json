@@ -1,0 +1,20 @@
+{
+  "verdict": "PASS",
+  "cases": 8,
+  "complete_json_byte_hashes": {
+    "wiki-excluded.json": "2f3f18402c0612356caba48af23f9602f7a7cd576d57f27ebbe281f8ec17b096",
+    "resolve-local.json": "3843331707aabb1cc7cf28401ee5499be8d63178aa81032793bf8c261fe2eff4",
+    "farvi-default.json": "7cee1d0e8ed141c1e8c94f2b096c1283e2a49cfd1781c5416af9228de3f27507",
+    "ma.json": "e2b447d17021004a4cd5ff5e6ee22c6f56032b4794492f2fb845e792c03828db",
+    "page-first.json": "362ff833a7c55aea306e476651078267f2a125c545e73f38047ceed3348ca0e9",
+    "page-next.json": "8a78765a6dd4bfb596c2af6ee27a99b103abe292afdacfc3e783dc0f32f5dfbc",
+    "catalog-native.json": "d438140582ec016efaac1db923de72d449897909090249da4afb4e973d94f791",
+    "farvi-abbreviation.json": "7cee1d0e8ed141c1e8c94f2b096c1283e2a49cfd1781c5416af9228de3f27507"
+  },
+  "same_store": "/tmp/vlajmaji-p01-a02-cdc/s02-full-store03",
+  "old_binary_sha256": "f09ace6cb568613155739307908f0c68eb4492eb02585efe682e6ec27db95058",
+  "new_binary_sha256": "5613dc6b30cf1901830130da333afd34dfe785690cc35064b382c88674cddb22",
+  "old_then_new": true,
+  "profile": "release,Rust1.98.0,default_features_false,samecallerSource05f1a0e,lockpackageonlyrename",
+  "timing_limit": "One local observation, old-before-new cache/order/load confounds; no universal ratio/constant-time/heap-byte claim."
+}

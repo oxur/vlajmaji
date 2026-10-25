@@ -1,0 +1,70 @@
+{"started": "s02-search-allfeatures03", "pid": 49319, "log": "/private/tmp/vlajmaji-p01-a02-cdc/s02-search-allfeatures03.log"}
+{
+  "label": "s02-search-allfeatures03",
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "argv": [
+    "/tmp/vlajmaji-p01-a02-cargo",
+    "+1.98.0",
+    "test",
+    "--locked",
+    "--offline",
+    "-p",
+    "vlajmaji-search",
+    "--all-features"
+  ],
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "head_before": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+  "start_unix": 1792889350.0135522,
+  "log": "/private/tmp/vlajmaji-p01-a02-cdc/s02-search-allfeatures03.log",
+  "pid": 49319,
+  "exit": 0,
+  "elapsed_seconds": 2.235,
+  "log_bytes": 2291
+}
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-7cd416cbc718f2c3)
+
+running 1 test
+test component_semantics::component_membership_is_an_exact_ordered_subsequence_with_multiplicity ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/corpus_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/corpus_contract-bf85b8804c24372e)
+
+running 8 tests
+test scalar_spelling_distance_scans_and_preserves_record_multiplicity ... ok
+test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok
+test compose_kind_is_validated_with_empty_and_nonempty_candidate_sets ... ok
+test contrast_exposes_p01_coordinate_explanations_without_word_total ... ok
+test search_engine_has_safe_summary_debug_output ... ok
+test exact_proposal_option_is_separate_complete_and_limited_after_combination ... ok
+test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok
+test native_candidate_counts_are_stage_labelled ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/dictionary_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_contract-cd24f15380ff1613)
+
+running 5 tests
+test hit_computations_follow_dictionary_metadata_order ... ok
+test repeated_editorial_membership_is_preserved_but_hit_views_are_unique ... ok
+test pages_zero_totals_cursor_binding_and_stale_cursor_are_explicit ... ok
+test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok
+test exact_farvi_matches_the_complete_occurrence_reference_after_reopen ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.47s
+
+   Doc-tests vlajmaji_search
+
+running 1 test
+test crates/search/src/lib.rs - (line 7) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 0.80s; merged doctests compilation took 0.63s
+
