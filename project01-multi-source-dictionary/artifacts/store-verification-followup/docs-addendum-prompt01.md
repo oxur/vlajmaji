@@ -1,0 +1,23 @@
+# README-only addendum assignment —2026-10-24
+
+User-authorized docs-only follow-up before any push. Existing six-row verification follow-up remains accepted at source53f9eac/planningf42b767; this does not reopen it or activate A03. Same requested/configured Sol6.1High CDC and LunaHigh CC, no backend attestation. Root read-only; CDC owns design/independent docs acceptance, CC authors exactly README.md on existing feature/project01-explicit-store-verification. No push/publication/product/DB/data changes.
+
+Source /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji, clean53f9eacece01bb5f31ff4b3c2bcf270d7c4162e6. Planning /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning, cleanf42b767de0a61f1f7af11a7946f14f73a0a38d4a before this prompt. Protected main/Bauske/earlier source trees and existing installed Lensisku default unchanged. Reliable prior full applicable guides/AGENTS/engineering prompt-authoring intake retained; no repeated corpus/long intake machinery.
+
+## Exact change and independent oracle
+
+CDC read the complete current README. Its heading `What 0.2.0 provides` incorrectly labels current development features (import/grouped default/explicit verify) as published0.2 behavior. Keep pinned0.2 CLI/library installation examples, but clearly separate those from the current0.3development checkout capabilities/commands; don't imply new commands shipped in0.2. Keep existing examples otherwise recognizable.
+
+Add `verify all` to the development source fixture quickstart. A small subshell around the scratch run/export is appropriate so XDG_DATA_HOME does not change the reader's later default. Explain that verify shares optional explicit STORE/default resolution with grouped build/query/info, that query/info/verify never create/download, creation performs full verification, and ordinary open checks the minimum header. Name the six selective checks readably and link existing schema/query guides for details. State SQL-only info versus remaining full typed-document decoding/index setup for query; no constant-time/subsecond claim. Make optimized/release CLI advice for actual runtime clear. No benchmark table/numbers/hardware result in README, no full guide duplication or future aggregate claim.
+
+Use existing verified CLI syntax: `cargo +1.98.0 run --locked -p vlajmaji-cli -- verify all` (add --release before `--` where appropriate). Preserve JSON request spelling/options. Check every changed/new relative link exists; validate command syntax against current CLI enum/accepted help/source rather than rerunning fixtures/full data/timings.
+
+## Ownership, gates and freeze
+
+CC exclusively owns README.md/index and retained target until exact clean freeze; CDC/root no target commands during that interval. CC may append only docs-addendum-cc.md plus small docs-addendum-evidence/ complete raw logs here; do not edit/stage planning index or previous evidence. No other source path authorized, no manifests/lock/schema/new dependencies/tests/other READMEs. If an actual necessary scope gap appears, report it before writing outside README.
+
+All real source/planning writes/builds use exec_command require_escalated, login:false. Every Cargo/Make uses explicit ENV CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target and CARGO_NET_OFFLINE=true, guard /tmp/vlajmaji-p01-a02-cargo (SHAa19c3f1f83e40c97d21109f6b280969bc879c47ab587e529d1e28512b2a61430), Rust1.98.0/locked/offline. Target must be ENV, not a Make command-line variable, to preserve the existing MAKEFLAGS negative test. Serialize all commands; no release build/install/data/fullDB/benchmark/externalcaller/feature-matrix campaign.
+
+Required actual ordered gates before commit: make format, make lint CARGO=/tmp/vlajmaji-p01-a02-cargo RUST_TOOLCHAIN=1.98.0, make check with same variables. Retain complete commands/source hashes/PIDs/exits/raw stdout+stderr/current test populations/all attempts. No broad reruns beyond these README-required gates. Format must not leave any other source edit; report unexpected drift rather than stage it.
+
+Commit only README.md with git commit --only and both trailers Co-authored-by: Codex <noreply@openai.com> and Co-authored-by: Billo AI <ai-engineering@billo.systems>. Return exact commit, clean status, changed-path/hash/link/syntax/gate evidence, no active writer; source/index/target handed back to CDC. Proposed done is not acceptance. CDC independently reads exact README-only diff and verifies logs/links/syntax; no duplicate product/data/gate campaign absent actual failure. Preserve all earlier acceptance/measurement history. Stop after this addendum; no push inferred from 'before we push'.
