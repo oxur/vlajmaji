@@ -1,0 +1,29 @@
+{
+  "scope": "CDC metadata/binary/config checks only; no database open/hash, Full payload scan or product execution",
+  "old2_file_bytes": {
+    "jbotci": 698281984,
+    "llg": 58327040
+  },
+  "input_release_file_bytes": {
+    "lensisku-jbotci": 215412497,
+    "llg": 14433039,
+    "la-lojban": 111187880,
+    "sutysisku": 94511884
+  },
+  "original_probe_path": "/tmp/vlajmaji-p01-a04-s01-cc/topology_probe-initial-preserved",
+  "original_probe_sha256": "f9a8eefcc1949b32af6128e167063ce7d5923d75c0ef01c34c23aaefd99f080e",
+  "original_prepare_config_sha256_current_file": "e940fc673e4b577d0467dc786892b3c9d68aea3709a11a4a1bd703c41d15689f",
+  "fresh_destination": "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02",
+  "fresh_destination_absent": true,
+  "old_other_candidate_leaves_absent": {
+    "la": true,
+    "la-lojban": true,
+    "sut": true,
+    "sutysisku": true,
+    "unified": true
+  },
+  "forecast_formula": "10 * (sum four release JSON bytes +435519540 unified JSON bytes) +old2 SQLite file bytes +1GiB other scratch",
+  "forecast_bytes": 10540999248,
+  "cap_bytes": 12884901888,
+  "forecast_note": "conservative estimate, not an observed guarantee; new actual sizes/RSS/time must be recorded"
+}
