@@ -8,3 +8,5 @@
 | A03-S02-04 | Explicit materialization and Synthetic CI | full real success/header advisory; fixture/negative nooverwrite; clean allfeatures allprepared | open | |
 | A03-S02-05 | Composition and public grouped query boundary | same-source IDs preserved, LLG+jbotci source selection/page/reference/totals, no topology | open | |
 | A03-S02-06 | Current gates/package/docs/independent close | format→lint→check rawlogs, relevantfeature/package inventories, CDC review/retro | open | |
+
+2026-10-25: b36 rejected:2 header-report counterexamples,1 agreeing counterpart. Full native49197checks, public integration and clean allfeatures129/0/1 exit0 otherwise pass; iteration02 owns bounded claims/locator repair.
