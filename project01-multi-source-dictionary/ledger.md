@@ -54,3 +54,7 @@ Duncan authorized updating records and writing A04plan after agreeing explicit l
 ## Arc04 execution renewal / held first increment —2026-10-25
 
 GeneralAutonomousArc04renewed; concrete S01inquiry/effort/numericanswer pending and providerdesign HOLD. All10arc/6draftchild/14projectrowsOPEN. Newisolatedcodexsource only, no CC/trial/store/build/installation or newacceptance. Priorplanning-onlycheckpoint is historical; currentauthority/holds are arcplan/protocol/S01DRAFTset.
+
+## Arc04 inquiry approval and S01 issue — 2026-10-25
+
+Exact Operator approval and concrete provider/measurement recipe are recorded in Arc04 protocol 1.2 and S01 initial assignment. All fourteen project rows remain OPEN with unchanged contracts/owners; no runtime evidence or topology decision is added by this planning transition. Prior planning-only/HOLD checkpoints remain dated history. A05/A06 and publication/default boundaries remain.

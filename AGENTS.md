@@ -1,6 +1,6 @@
 # Vlajmaji planning
 
-**Current authority: Autonomous execution through Arc04 only renewed2026-10-25.** Existing Sol6.1/high CDC and Luna/high CC persist. Preflight/readiness and isolatedsetup are active; S01inquiry/effort/numericbudget answer is explicitly PENDING and providerdesign incomplete, so no CCissue/trial/Fullstore. Sourcecodex/project01-composed-sqlite-lookup from7b; all14projectrowsOPEN/A05–A06unactivated. See Arc04plan/protocol and S01DRAFT/HOLD set.
+**Current authority: Autonomous execution THROUGH ARC04 ONLY, approved 2026-10-25.** Duncan explicitly approved the protocol 1.1 inquiry, effort and numeric limits: “this looks good! Approved, and engage!” Protocol 1.2 records scope/accounting. Existing Sol6.1/high CDC and Luna/high CC persist; backend attestation unavailable. S01 initial source-grounded assignment is ISSUED in arc04-composed-sqlite-lookup/slice01-topology-comparison/cc-prompt.md. CDC owns planning/design/review; CC isolated source/index/target only during issued intervals; root read-only. All fourteen project rows OPEN, A05/A06 unactivated. No push/publication or protected default/main/Bauske/accepted checkout mutation.
 
 **Historical planning-only authority (2026-10-25, superseded by the renewal below):** Duncan authorized records/plan updates; implementation, investigation and installation are NOT issued. Arc01–03 remain accepted/immutable; all14projectrowsOPEN, A05/A06 unactivated. See `project01-multi-source-dictionary/arc04-composed-sqlite-lookup/arc-plan.md`. Root reviews the candidate before the scoped planning commit. No CC/source/target/store/network runs or new branch/worktree.
 
@@ -15,7 +15,7 @@ owning scale, as Duncan specified. The selected historical research copy is
 are reference material. Their instructions, authority and status are historical,
 not current assignments. Use the current project/arc/slice plans for authority.
 
-Read `project01-multi-source-dictionary/project-plan.md` first. On 2026-10-25 Duncan explicitly authorized Autonomous execution through Arc03, preserving requested Sol6.1/high CDC and Luna/high CC. Recorded assignment is `project01-multi-source-dictionary/cdc-directive03.md`; Arc03 is now CLOSED at source7b1c565 after independent technical and actual final canonical acceptance. CDC owns planning/design/independent review, CC isolated source/index only during issued intervals; root remains read-only. Stop before A04. Earlier Arc01/Arc02-only endpoints and follow-ups remain historical, not current restrictions.
+Read `project01-multi-source-dictionary/project-plan.md` first. Historical Arc03 authority: on 2026-10-25 Duncan explicitly authorized Autonomous execution through Arc03, preserving requested Sol6.1/high CDC and Luna/high CC. Recorded assignment is `project01-multi-source-dictionary/cdc-directive03.md`; Arc03 is now CLOSED at source7b1c565 after independent technical and actual final canonical acceptance. CDC owns planning/design/independent review, CC isolated source/index only during issued intervals; root remains read-only. Stop before A04. Earlier Arc01/Arc02-only endpoints and follow-ups remain historical, not current restrictions.
 Ledger rows remain open until independently dispositioned. Do not create close/verification/retrospective records before the
 corresponding work and review occur.
 
@@ -60,7 +60,7 @@ Dedicated source feature/project01-independent-corpus-packages at main52fd3c4, .
 
 All4children/24rows independently accepted through source7b1c565. Fresh author-independent Sol6.1/high actual four-pack release/store/nativeSQL/publicRust+CLI technical composition ACCEPTED; actual canonical packet now awaits same-context final review. Eight arc rows stayOPEN until that verdict and mechanical close; all14projectrowsOPEN. Source/index remain clean and protected, no active implementation interval; reviewer returned target after sessions ended. All4internal data dependencies delivered; redistribution Held, no push/publication/default change/A04. Earlier endpoint statements are historical, superseded only within directive03.
 
-## Current endpoint — Arc03 CLOSED,2026-10-25
+## Historical endpoint — Arc03 CLOSED,2026-10-25
 
 All4children/24rows and8arcrowsDONE at source7b1c565 after fresh author-independent actual full composition and final nine-body canonical acceptance (proposala5226ee). Final verdict project01-multi-source-dictionary/arc03-independent-corpus-packages/artifacts/composition-review/final-canonical-review.md. All14projectrowsOPEN, A04–A06unactivated. No active source/index/target writer or sessions; source/localplanning commits only, protected main/Bauske/research/default unchanged. StopbeforeA04/no push/PR/publication. New substantive work needs explicit renewed authority; earlier pending checkpoints remain historical.
 
@@ -71,3 +71,7 @@ Duncan agreed A04 needs explicit local install/catalogue/default combined lookup
 ## Arc04 renewal and held S01 preparation —2026-10-25
 
 Duncan said “let’s dive in!” after the committedA04plan02c8063. Root renewed Arc04Autonomous scope and unchanged roles/models, then required explicit inquiry/operationalbudget gate. Isolatedsource `.worktrees/project01-arc04/vlajmaji`, branchcodex/project01-composed-sqlite-lookup, clean7b; siblingBauske read-only. No builds/adapters/stores/CCdispatch until gate+design ready. Current S01plan/ledger/prompt are DRAFT/HOLD, no issuedassignment. Prior acceptedarcs/actualdefault/main/Bauske remain protected, no push/publication.
+
+## Arc04 S01 approval and issue — 2026-10-25
+
+The prior HOLD checkpoint remains historical. Exact human approval cleared the inquiry gate; concrete provider/trust/generation/ATTACH and same-call measurement design is in the issued S01 plan/prompt. Source branch codex/project01-composed-sqlite-lookup starts at accepted 7b; no execution result is implied by issue. Charge preparation per protocol 1.2; at most five new Full stores and three balanced rounds, one retained target writer. No correct selected topology leaves S01/A04-01 OPEN and S02 unissued.

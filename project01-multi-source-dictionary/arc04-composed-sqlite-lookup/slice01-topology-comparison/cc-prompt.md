@@ -1,30 +1,64 @@
-# DRAFT / HOLD — S01 topology comparison — NOT ISSUED
+# CC assignment — Arc04 S01 finite topology comparison
 
-**No execution authority is conveyed by this file. Do not dispatch/run it.** Root is awaiting Duncan's explicit inquiry/effort/numeric-budget response. CDC author readiness is also incomplete for the named provider/trust/generation/ATTACH inputs in slice-plan.md. This is a durable draft requested during bounded preparation, not an issued CC assignment or a completed source recipe. No CC source/index/target interval exists.
+ISSUED 2026-10-25. Replaces unissued DRAFT/HOLD at planning45eaa07, preserved in Git. Duncan explicitly approved protocol1.1: “this looks good! Approved, and engage!” Protocol1.2 records applicability/accounting. No repeated model/budget question.
 
-## Intended contributor and stable baseline
+You are retained CC requested/configured gpt-6-luna/high, CDC gpt-6.1-sol/high; backend attestation unavailable. Continue existing context. Read this full prompt, slice-plan.md, six-row ledger and FULL protocol including1.2. Give short source-cited readback and exact ownership/source/limits acknowledgment BEFORE edits. CDC owns planning/design/independent acceptance; root read-only. Implement the concrete recipe, not a different architecture; do not self-accept.
 
-Retained CC: requested gpt-6-luna/high, unchanged prior explicitselection; CDC gpt-6.1-sol/high independent design/review, backend attestation unavailable. After a future documented issue only, CC would own exact named source/index/target interval in `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji` on `codex/project01-composed-sqlite-lookup`, currently clean7b1c565ebf6c8a423e04211b599006b8c21d65d9. No changes to acceptedArc03checkout/main52fd/Bauskec580/default/research/oldstores. No push/PR/publication/A05. Worktree setup is actual; adapters/trials are not.
+## Exact ownership and mutation scope
 
-## Intended useful output / preserved scope
+Exclusive source/index/retained target interval starts on dispatched acknowledgment. Source /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji, branch codex/project01-composed-sqlite-lookup, starts clean7b1c565ebf6c8a423e04211b599006b8c21d65d9; verify first. Bauske sibling read-only. Protected main52fd3c4/Bauskec580/acceptedArc03checkout/earlier records/research/default/old stores. No push/PR/publication/network/acquisition/A05 or real user config/default action.
 
-A finite fair3way comparison and justified correct selected topology for S02, with reusable harness/reproduction instructions and completecontract evidence. Read the full slice plan/6rowledger and arc protocol. All3must own their load/composition/exactIDs/state then reuse common setup/hit/ref/page policy. Uunified; AoneATTACH/Ffourconnections reuse SAME4sealedstores. A/F must not borrow unifiedmetadata/result as uncharged sidecar/oracle. Shared canonical setup/aggregation/validation costs remain real. Fullresponse/data/provenance/presence/refs/globalpages/generation behavior, not SQLIDs-only, determines comparability.
+Allowed source paths —14 ONLY, amendment before any other mutation:
 
-The source spine and candidate-development sequence are in slice-plan.md. They are a scoped engineering recommendation with explicit unresolved API/trust/generation/attachment choices; they are NOT a tested drop-in implementation or permission for CC to choose unresolved architecture. A blocked/incomparable/no-selection result is retained honest evidence with rowsOPEN, not winner or completion.
+1. crates/lexicon/src/pack.rs
+2. crates/lexicon/src/registry.rs
+3. crates/lexicon/src/lib.rs
+4. crates/lexicon/tests/data_packs.rs
+5. crates/store/src/dictionary.rs
+6. crates/store/src/dictionary_snapshot.rs (new)
+7. crates/store/src/lib.rs
+8. crates/store/tests/dictionary_snapshot.rs (new)
+9. crates/search/src/dictionary.rs
+10. crates/search/src/lib.rs
+11. crates/search/tests/dictionary_topology.rs (new)
+12. crates/search/examples/topology_probe.rs (new)
+13. crates/search/README.md
+14. crates/store/README.md
 
-## Unresolved before this can become an issued prompt
+No Cargo manifest/lock/dependency, schema/DDL/version, existing CLI/default or pack/payload mutation. You may write execution.md, actual proposed closing-report.md and small scripts/receipts under this slice's artifacts/ as work occurs; CDC owns canonical plans/ledgers/prompts/verifier/retro. Bulk data/DB/binary/responses remain local with hashes. Owned scratch /tmp/vlajmaji-p01-a04-s01-cc: inspect ownership and use fresh children, no unknown overwrite. Commit source/planning separately with named paths.
 
-1. Exact returned Operator approval/amendment of protocol1.1 inquiry/effort/numeric sheet, timestamp/remainingpreflight accounting.
-2. CDC concrete provider load/composition+exactIDs/state Rust signatures, ordinary-open trust guarantees, generation/profile/availability/cursor policy and full result construction point; no forced validatedDictionary or rewritten immutable flags.
-3. Verified pinnedrusqlite read-only ATTACH/native-path parameter behavior and exact SQL/merge/error recipe.
-4. Exact allowed paths, integration API/docs/harness, requiredreading/data query manifest and chosen relevant Rust/source gates, source readiness/recipe recheck; no new public API/framework/dependency by implication.
+## Bounded actual intake
 
-When resolved, CDC revises this unissued draft coherently and records an explicit issue transition before CC dispatch. Already approved stable context/role configuration does not require a repeated model question. No investigation budget is inferred from Autonomous Mode alone.
+Retain reliable unchanged full guides; no repeat corpus/guide campaign. Read source AGENTS and applicable CI steps; full this prompt, plan, ledger, protocol. Inspect affected source bodies named in plan: pack composition/helpers, registry identity prefix/strict continuation, dictionary unverified/version boundary, store minimum/canonical/exact helpers, engine setup/exact/binding/availability/reference. Recover truncated required text. Data queries need whole-population coverage independently.
 
-## Required intake skeleton (must be finalized before issue)
+Apply collaboration framework Autonomous roles, engineering-methods implementation-prompt intake, PM README/canonical/topdown/plan-change, work-verification row/evidence/silent-drop/independence, testing/scientific inquiry/measures/comparison and Rust API/ownership/errors/docs/serde/workspace/performance/anti-patterns. Targeted refresh only where prior body unavailable. Short readback must identify actual guarantees, required gates/fixture populations and any remaining uncertainty. Reading is not acceptance; keep intake proportional in execution.md.
 
-Required-full on future issue: actual issuedprompt, slice-plan/ledger, bindingcurrentprotocol+Operatoranswer. Requiredsections: currentarcplan outcome/authority/contracts; sourceAGENTS/CI and actualprovider/store/search/wire surfaces at the finalsource revision; engineering roles/Autonomous/prompt-author intake, applicable PM/workverification/testing/scientific and Rust API/ownership/errors/data/performance guidance. Exact extents and required-data queries/pins/oracles are currently in the slice plan and acceptedArc03records; CDC must budget/finalize them, not delegate an unbounded source archaeology packet. Recover truncations, retain actual extents and source-cited contractreadback before dependent edits. Prior unchanged guides may be retained only when reliably available; hashes/anothercontext's receipt are not reading.
+## Binding implementation recipe
 
-## Future resource/return boundary
+Implement the COMPLETE source-guided API/trust/generation/instrumentation recipe in slice-plan.md; private helper layout may vary while its public signatures/semantics stay concrete:
 
-Unused guard `/tmp/vlajmaji-p01-a04-cargo` SHA20fe7ba73311aa503870923af09f33f3b53262742ca4eeea2972092924cf5de8; futureCargo/Make explicit CARGO_TARGET_DIR ENV at retainedA01target, CARGO_NET_OFFLINE=true,+1.98.0,locked/offline after anyinitialoffline lockcreation, login:false. No Cargo/build/Fullinputscan/store/trial command has run during preparation. One writer; unique outsidepackage/bin when actuallyassigned. Maximumproposed5Fullstores/12GiBnewdata/600s percreateverify and7workinghours are awaiting approval; preparation already spent cannot be reset. Futureactualevidence goes sliceartifacts/, bulkheldcorpus/DB/binaries staylocal withhashes, allfailures/exits preserved. Bothsourcecommittrailers/explicitnamedpaths/nativeformat→lint→check apply afteractualassignment. No closing/verifier/retro precreated. Return any unresolved gate rather than executing from this HOLDdraft.
+- Closed DictionaryReadSnapshot and manifest freeze before reads; U one store, A one read-only attached connection, F own connections to SAME four stores. Each loads/composes its OWN full document/state and SQL IDs; no unified sidecar/oracle supplying A/F metadata/results. Generation/selection binding topology-neutral; old standalone open/build/cursor/full wire unchanged.
+- ATTACH fixed internal schemas, bound mode=ro UTF8 URI, read-only flags/query_only/is_readonly/read transaction; no immutable=1/cross-file atomicity fiction. Typed unsupported non-UTF8 PathBuf, U/F native behavior preserved. Qualified minimum readers share existing error semantics without full audit.
+- Shared compose_unverified_documents core: supported versions/legacy gates, within-input keyed-duplicate rejection, equal complete cross-input idempotence/unequal conflict, exact aliases/provenance/presence/maximum extension multiplicity. Existing strict constructors stay strict. No forged validated Dictionary.
+- Common engine with additive open_snapshot/open_snapshot_profiled/exact_profiled; immutable release flags unchanged by runtime selected-release overlay. Logical assertion IDs deduplicated BEFORE public native candidate count; distinct received assertions stay distinct.
+- SAME-call std::time::Instant actual hydration blocks plus conservative lookup/paging residual; actual serialization and provider composition/hash/setup charged. No SQL-ID/full-result false comparison, response metrics, logger/dependency, premature compact or page-zero optimization.
+- Executable topology_probe prepare/run/batch with argv/request manifest frozen BEFORE use, exclusive fresh outputs, stage markers, full existing JSON+LF stdout/diagnostics separate. Four exact protected sealed Full inputs and complete native/typed/farvi oracles are in plan. Probe input is not persistent user configuration.
+
+If a consequential source conflict appears, report exact evidence promptly; proceed on unaffected allowed work. Missing/unimplemented/incomparable candidates are not measured losers or winners.
+
+## Gates and finite execution
+
+Mechanically census EVERY fixture literal/category/source set/prerequisite before expected tuples. SAME comparator cheap valid empty/nonempty/reordered and count/category mutation negatives before Full. Public plan-listed controls cover all identity/version/legacy/presence/extensions, same-ID versus distinct attestation SQL counts, sources/pages/refs/selection/generation, readonly/native paths and scoped corruption. Do not replace public tests with private helper mirrors; retain mistakes and failures.
+
+TOTAL S01 seven working hours INCLUDING prep. Charge30minutes previous prep plus elapsed from22:06:10UTC against90minute freeze; only60further freeze minutes allocated then, not reset at dispatch. Adapter3hours/Full90minutes/analysis60minutes bounded within total. Actual checkpoints required. At most FIVE new Full stores (1U+SAME4A/F),12GiB new data/scratch,600seconds each create/verify. No old/default copy, no regeneration/import campaign. Task-owned bounded monitoring/timeouts preserve interrupted attempts, no unknown processes/cache deletion.
+
+CC runs ONE stable release timing round U/A/F. CDC reserves A/F/U and F/U/A on same frozen artifacts/binary, total at most three. Other correctness probes are not extra benchmark rounds. Exact approved numerical thresholds/tie rule apply. Compact/readable numeric targets remain S05, neither implemented nor passed here. Record raw wall/RSS/disk/connections/SQLite limits/stages/bytes/exits/source/input/binary/profile; absent measure is unresolved, no cold-disk claim/cache purge.
+
+Every Cargo/Make uses login:false, explicit ENV CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target and CARGO_NET_OFFLINE=true; launcher /tmp/vlajmaji-p01-a04-cargo +1.98.0, locked/offline after initial offline lock creation. Use ENV target, not Make command-line MAKEFLAGS. Single writer; unique outside package AND binary identities; scratch Python -B only for orchestration/oracle, not shipped tools.
+
+Current complete durable logs: make format → lint → check, actual populations; affected store/search/lexicon public/no-default, clean all-features using explicit four-Synthetic preparation as CI, relevant package/offline public caller. No silent feature exclusion or protected Full payload CI shortcut. Broaden only for actual changes/failure/concern. Scoped source commits only, trailers:
+
+Co-authored-by: Codex <noreply@openai.com>
+Co-authored-by: Billo AI <ai-engineering@billo.systems>
+
+Freeze clean exact candidate, end writer sessions and return source commit, artifacts, current ownership/remaining budget. Proposed report separates correctness/costs/missing data/hypothesis/inference/candidate dispositions and scope-to-delivery diff. No S02 or canonical closing/verifier/retro by CC. No correct chosen topology leaves S01/A04-01 OPEN. CDC independently reproduces; keep material milestones/failures visible.
