@@ -65,13 +65,22 @@ The Rust workspace already provides:
   OUTPUT` validates the local full-byte pin and writes a Full pack. The package
   is absent from default builds, and content redistribution remains Held
   because software licensing does not establish data rights.
+- A lossless adapter for the pinned Sutysisku English JSON projection and an
+  optional unpublished embedded package. `data-pack fixture sutysisku OUTPUT`
+  prepares Synthetic CI/local bytes; `data-pack materialize sutysisku RAW_JSON
+  OUTPUT` verifies the complete caller-provided pin and writes a Full pack.
+  The package is absent from default builds, and content redistribution remains
+  Held pending verified terms and lexical lineage.
+- All four local packs share the normalized model and strict seal, enabling
+  pure consuming composition before a SQLite store is built.
 - An umbrella library, `vlajmaji`, exposing `lexicon`, `store`, and `search`, with
   optional `morphology` and `graph` features.
 
 The earlier archive/search PoC was exercised against 21,241 records from 16
 source snapshots. The new grouped-dictionary path has a reproducible fixture
-and public API/CLI examples; the jbotci adapter has a pinned local replay.
-Other upstream dictionary imports remain future work.
+and public API/CLI examples. Four pinned local adapters now cover Lensisku/
+jbotci, LLG, La-Lojban, and Sutysisku; adapters for other sources remain future
+work.
 Search scores and generated compounds are experimental aids; they do not establish
 attested usage, semantic equivalence, or poetic merit.
 
@@ -81,8 +90,10 @@ attested usage, semantic equivalence, or poetic merit.
 | [`vlajmaji-lexicon`](crates/lexicon) | Source-preserving lexical data and archives |
 | [`vlajmaji-store`](crates/store) | Persistence and native indexes |
 | [`vlajmaji-search`](crates/search) | Reusable queries and computed analyses |
+| [`vlajmaji-data-lensisku-jbotci`](crates/data-lensisku-jbotci) | Optional unpublished Lensisku/jbotci embedded data package (local payload only) |
 | [`vlajmaji-data-llg`](crates/data-llg) | Optional unpublished LLG embedded data package (local payload only) |
 | [`vlajmaji-data-la-lojban`](crates/data-la-lojban) | Optional unpublished La-Lojban embedded data package (local payload only) |
+| [`vlajmaji-data-sutysisku`](crates/data-sutysisku) | Optional unpublished Sutysisku embedded data package (local payload only) |
 | [`vlajmaji-cli`](crates/cli) | The `vlajmaji` executable |
 
 ## Published 0.2.0 packages

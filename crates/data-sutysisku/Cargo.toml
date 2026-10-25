@@ -1,0 +1,21 @@
+[package]
+name = "vlajmaji-data-sutysisku"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish = false
+license.workspace = true
+repository.workspace = true
+readme = "README.md"
+description = "Optional local embedded Sutysisku English projection pack."
+exclude = ["data/**"]
+
+[features]
+default = []
+embedded = []
+
+[dependencies]
+vlajmaji-lexicon.workspace = true
+
+[lints]
+workspace = true

@@ -80,5 +80,8 @@ jobs:
       - name: Prepare synthetic La-Lojban data for all-feature tests
         if: runner.os == 'Linux'
         run: cargo run --locked --offline -p vlajmaji-cli -- data-pack fixture la-lojban crates/data-la-lojban/data
+      - name: Prepare synthetic Sutysisku data for all-feature tests
+        if: runner.os == 'Linux'
+        run: cargo run --locked --offline -p vlajmaji-cli -- data-pack fixture sutysisku crates/data-sutysisku/data
       - if: runner.os == 'Linux'
         run: cargo test --workspace --all-features --locked

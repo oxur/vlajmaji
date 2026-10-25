@@ -2,7 +2,11 @@
 
 use std::process::Command;
 
-use vlajmaji_lexicon::{PackId, load_sealed_release};
+use vlajmaji_lexicon::{
+    Dictionary, EntityId, LocalRef, PackId, RelationTarget, compose_dictionaries,
+    load_sealed_release,
+};
+use vlajmaji_search::{DictionaryExactOptions, DictionaryQueryError, DictionarySearchEngine};
 
 fn scratch(name: &str) -> std::path::PathBuf {
     static NEXT: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
@@ -314,5 +318,142 @@ fn test_la_materializer_rejects_invalid_inputs_and_preserves_occupied_outputs() 
         assert_eq!(std::fs::read(&sentinel).unwrap(), b"untouched");
     }
 
+    std::fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_sutysisku_synthetic_fixture_loads_and_bad_pin_leaves_no_output() {
+    let root = scratch("sutysisku-fixture");
+    let output = root.join("pack");
+    let result = cli()
+        .args(["data-pack", "fixture", "sutysisku"])
+        .arg(&output)
+        .output()
+        .expect("run Sutysisku fixture materializer");
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    let response: serde_json::Value = serde_json::from_slice(&result.stdout).unwrap();
+    assert_eq!(response["operation"], "data-pack-materialize");
+    assert_eq!(response["pack_id"], "sutysisku");
+    assert_eq!(response["payload_kind"], "synthetic");
+    assert_eq!(response["report"]["input_rows"], 2);
+    assert_eq!(response["report"]["normalized_assertions"], 2);
+    assert_eq!(response["report"]["lexical_occurrences"], 1);
+    assert_eq!(response["report"]["excluded_occurrences"], 1);
+    assert_eq!(response["report"]["reported_forms"], 2);
+    let release = std::fs::read(output.join("release.json")).unwrap();
+    let seal = std::fs::read(output.join("seal.json")).unwrap();
+    assert!(output.join("report.json").is_file());
+    let loaded = load_sealed_release(PackId::Sutysisku, &release, &seal).unwrap();
+    assert_eq!(loaded.captures().len(), 1);
+    assert_eq!(loaded.metadata().assertions.len(), 2);
+    assert_eq!(loaded.metadata().forms.len(), 2);
+
+    let raw = root.join("wrong-pin.json");
+    std::fs::write(&raw, b"[]").unwrap();
+    let bad = root.join("must-not-exist");
+    let invalid = cli()
+        .args(["data-pack", "materialize", "sutysisku"])
+        .arg(&raw)
+        .arg(&bad)
+        .output()
+        .unwrap();
+    assert!(!invalid.status.success());
+    let error: serde_json::Value = serde_json::from_slice(&invalid.stderr).unwrap();
+    assert_eq!(error["error"]["code"], "sutysisku_hash_mismatch");
+    assert!(!bad.exists());
+    std::fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_four_synthetic_packs_compose_for_sql_selection_pages_and_references() {
+    let root = scratch("four-pack-sql");
+    let mut dictionaries = Vec::new();
+    for pack in ["jbotci", "llg", "la-lojban", "sutysisku"] {
+        let output = root.join(format!("{pack}-pack"));
+        let result = cli()
+            .args(["data-pack", "fixture", pack])
+            .arg(&output)
+            .output()
+            .unwrap();
+        assert!(
+            result.status.success(),
+            "{}",
+            String::from_utf8_lossy(&result.stderr)
+        );
+        let release = std::fs::read(output.join("release.json")).unwrap();
+        let seal = std::fs::read(output.join("seal.json")).unwrap();
+        let id = match pack {
+            "jbotci" => PackId::LensiskuJbotci,
+            "llg" => PackId::Llg,
+            "la-lojban" => PackId::LaLojban,
+            "sutysisku" => PackId::Sutysisku,
+            _ => unreachable!(),
+        };
+        dictionaries.push(load_sealed_release(id, &release, &seal).unwrap());
+    }
+    let composed = compose_dictionaries(dictionaries).unwrap();
+    let entry_id = composed
+        .metadata()
+        .assertions
+        .iter()
+        .find(|assertion| assertion.eligibility == vlajmaji_lexicon::Eligibility::Lexical)
+        .unwrap()
+        .entry
+        .clone();
+    let canonical = composed.to_json_bytes().unwrap();
+    let engine = DictionarySearchEngine::build(root.join("store"), &canonical).unwrap();
+    let first = engine
+        .exact(
+            "farvi",
+            DictionaryExactOptions {
+                page_size: Some(2),
+                ..Default::default()
+            },
+        )
+        .unwrap();
+    assert_eq!(first.totals.occurrences, 6);
+    // jbotci and La-Lojban both preserve the shared Lensisku source identity.
+    assert_eq!(first.totals.source_groups, 3);
+    assert!(first.next_cursor.is_some());
+    let next = engine
+        .exact(
+            "farvi",
+            DictionaryExactOptions {
+                page_size: Some(2),
+                cursor: first.next_cursor,
+                ..Default::default()
+            },
+        )
+        .unwrap();
+    assert_eq!(next.totals.occurrences, 6);
+    assert!(!next.groups.is_empty());
+    let sutysisku_only = engine
+        .exact(
+            "farvi",
+            DictionaryExactOptions {
+                sources: vec!["sutysisku".into()],
+                ..Default::default()
+            },
+        )
+        .unwrap();
+    assert_eq!(sutysisku_only.totals.occurrences, 1);
+    assert_eq!(
+        engine
+            .resolve(&RelationTarget::Local(LocalRef::Entry(entry_id)))
+            .unwrap()
+            .status,
+        vlajmaji_search::ReferenceStatus::Resolved
+    );
+    assert!(matches!(
+        engine.resolve(&RelationTarget::Local(LocalRef::Entry(
+            EntityId::new("missing-entry").unwrap(),
+        ))),
+        Err(DictionaryQueryError::InvalidReference { .. })
+    ));
+    assert!(Dictionary::from_json_bytes(&canonical).is_ok());
     std::fs::remove_dir_all(root).unwrap();
 }

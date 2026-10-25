@@ -61,3 +61,12 @@ distributor is recorded separately from Lensisku, and content redistribution
 remains held because the software license does not establish dataset terms.
 This API is not part of the published 0.2.0 package; see the current source
 module [`la_lojban.rs`](src/la_lojban.rs).
+
+The development checkout also exposes `import_sutysisku_export` for the pinned
+Sutysisku English projection. It retains ordered root keys and values, including
+repeated decoded keys and native child lexemes, while recording a conservative
+typed projection and source-reported forms. The importer is local-only and
+requires caller-provided bytes and full-byte SHA-256 pin; it does not fetch
+inputs. Its source lineage and content redistribution terms remain unresolved,
+so the release records redistribution as held. This API is not in the
+published 0.2.0 package; see [`sutysisku.rs`](src/sutysisku.rs).

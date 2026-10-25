@@ -44,6 +44,7 @@ mod lensisku;
 pub mod llg;
 pub mod pack;
 pub mod registry;
+mod sutysisku;
 
 pub use attribution::AttributedOccurrence;
 pub use dictionary::{
@@ -80,6 +81,10 @@ pub use registry::{
     DistributorRecord, LineageTarget, OccurrenceAttribution, RegistryDocument, RegistryError,
     SnapshotAttribution, SourceAlias, SourceId, SourceLineage, SourceOrigin, SourceRecord,
     SourceRegistry,
+};
+pub use sutysisku::{
+    SUTYSISKU_PINNED_RAW_SHA256, SUTYSISKU_PINNED_REVISION, SutysiskuImport, SutysiskuImportError,
+    SutysiskuImportOptions, SutysiskuImportReport, import_sutysisku_export,
 };
 
 /// The captured representation received from one source.

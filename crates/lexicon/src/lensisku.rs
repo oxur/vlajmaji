@@ -39,7 +39,7 @@ impl<'de> Visitor<'de> for FieldVisitor {
         Ok(fields)
     }
 }
-fn parse_fields(raw: &str) -> Result<Vec<Field>, String> {
+pub(crate) fn parse_fields(raw: &str) -> Result<Vec<Field>, String> {
     let mut de = serde_json::Deserializer::from_str(raw);
     let fields = de
         .deserialize_map(FieldVisitor)
@@ -49,9 +49,9 @@ fn parse_fields(raw: &str) -> Result<Vec<Field>, String> {
 }
 
 #[derive(Debug, Default)]
-struct DuplicateScan {
-    keys: Vec<String>,
-    paths: Vec<Vec<String>>,
+pub(crate) struct DuplicateScan {
+    pub(crate) keys: Vec<String>,
+    pub(crate) paths: Vec<Vec<String>>,
 }
 struct DuplicateVisitor {
     path: Vec<String>,
@@ -92,7 +92,7 @@ impl<'de> Visitor<'de> for DuplicateVisitor {
         Ok(duplicates)
     }
 }
-fn scan_nested_duplicates(raw: &str) -> Result<DuplicateScan, String> {
+pub(crate) fn scan_nested_duplicates(raw: &str) -> Result<DuplicateScan, String> {
     scan_nested_duplicates_at(raw, Vec::new())
 }
 fn scan_nested_duplicates_at(raw: &str, path: Vec<String>) -> Result<DuplicateScan, String> {

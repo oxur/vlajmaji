@@ -80,3 +80,12 @@ input before writing a Full local release, report, and seal. `--revision`,
 `--raw-sha256`, `--raw-locator`, and `--notice-locator` identify the input and
 its provenance. The new data package is unpublished, has no default payload,
 and keeps content redistribution Held until its terms are verified.
+
+The optional Sutysisku projection pack is prepared the same way:
+`data-pack fixture sutysisku OUTPUT` creates a Synthetic example, while
+`data-pack materialize sutysisku RAW_JSON OUTPUT` checks the caller-provided
+complete-byte pin before writing a Full local release, report, and seal.
+`--revision`, `--raw-sha256`, `--raw-locator`, and `--notice-locator` identify
+the input and its provenance. The package is unpublished and has no default
+payload; content redistribution remains Held because the upstream lexical
+lineage and data terms are unresolved.

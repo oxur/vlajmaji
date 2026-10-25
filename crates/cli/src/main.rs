@@ -9,7 +9,9 @@ use vlajmaji_lexicon::{
     JbotciImportError, JbotciImportOptions, LA_LOJBAN_PINNED_RAW_SHA256, LA_LOJBAN_PINNED_REVISION,
     LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256, LLG_NOTICE_SHA256, LLG_RAFSI_SHA256,
     LaLojbanImportError, LaLojbanImportOptions, LlgImportError, LlgImportOptions, PackId,
-    PackPayloadKind, import_jbotci_export, import_la_lojban_export, import_llg_lists, seal_release,
+    PackPayloadKind, SUTYSISKU_PINNED_RAW_SHA256, SUTYSISKU_PINNED_REVISION, SutysiskuImportError,
+    SutysiskuImportOptions, import_jbotci_export, import_la_lojban_export, import_llg_lists,
+    import_sutysisku_export, seal_release,
 };
 use vlajmaji_search::{
     DictionaryErrorReport, DictionaryRequest, DictionarySearchEngine, Query, SearchEngine,
@@ -171,6 +173,19 @@ enum MaterializePack {
         #[arg(long)]
         notice_locator: Option<String>,
     },
+    /// Import the pinned Sutysisku English JSON projection.
+    Sutysisku {
+        raw: PathBuf,
+        output: PathBuf,
+        #[arg(long, default_value = SUTYSISKU_PINNED_REVISION)]
+        revision: String,
+        #[arg(long, default_value = SUTYSISKU_PINNED_RAW_SHA256)]
+        raw_sha256: String,
+        #[arg(long)]
+        raw_locator: Option<String>,
+        #[arg(long)]
+        notice_locator: Option<String>,
+    },
 }
 
 #[derive(Debug, Subcommand)]
@@ -181,6 +196,8 @@ enum FixturePack {
     Llg { output: PathBuf },
     /// Build a small synthetic La-Lojban fixture through the real importer.
     LaLojban { output: PathBuf },
+    /// Build a tiny synthetic Sutysisku pack through the real importer.
+    Sutysisku { output: PathBuf },
 }
 
 #[derive(Debug, Clone, Copy, ValueEnum)]
@@ -513,6 +530,29 @@ fn execute() -> Result<serde_json::Value, CliError> {
                         PackPayloadKind::Full,
                     )?
                 }
+                MaterializePack::Sutysisku {
+                    raw,
+                    output,
+                    revision,
+                    raw_sha256,
+                    raw_locator,
+                    notice_locator,
+                } => {
+                    let raw_bytes = std::fs::read(&raw).map_err(|error| {
+                        structured_error("io", format!("read {}: {error}", raw.display()))
+                    })?;
+                    materialize_sutysisku_bytes(
+                        &raw_bytes,
+                        &output,
+                        SutysiskuImportOptions {
+                            revision,
+                            expected_raw_sha256: raw_sha256,
+                            raw_locator,
+                            notice_locator,
+                        },
+                        PackPayloadKind::Full,
+                    )?
+                }
             },
             DataPackCommand::Fixture {
                 pack: FixturePack::Jbotci { output },
@@ -560,6 +600,22 @@ fn execute() -> Result<serde_json::Value, CliError> {
                         revision: "0000000000000000000000000000000000000000".into(),
                         expected_raw_sha256: sha256(raw),
                         raw_locator: Some("https://example.invalid/la-lojban.json".into()),
+                        notice_locator: Some("https://example.invalid/README.md".into()),
+                    },
+                    PackPayloadKind::Synthetic,
+                )?
+            }
+            DataPackCommand::Fixture {
+                pack: FixturePack::Sutysisku { output },
+            } => {
+                let raw = br#"{"farvi":{"d":"to grow","t":"gismu","r":["far","fari"]},"note":{"d":"","t":"wiki","n":null}}"#;
+                materialize_sutysisku_bytes(
+                    raw,
+                    &output,
+                    SutysiskuImportOptions {
+                        revision: "0000000000000000000000000000000000000000".into(),
+                        expected_raw_sha256: sha256(raw),
+                        raw_locator: Some("https://example.invalid/sutysisku.json".into()),
                         notice_locator: Some("https://example.invalid/README.md".into()),
                     },
                     PackPayloadKind::Synthetic,
@@ -880,6 +936,44 @@ fn materialize_la_lojban_bytes(
     }))
 }
 
+fn materialize_sutysisku_bytes(
+    raw: &[u8],
+    output_path: &Path,
+    options: SutysiskuImportOptions,
+    payload_kind: PackPayloadKind,
+) -> Result<serde_json::Value, CliError> {
+    let normalized = import_sutysisku_export(raw, &options).map_err(map_sutysisku_error)?;
+    let report = normalized.report();
+    let sealed = seal_release(PackId::Sutysisku, payload_kind, normalized.dictionary())
+        .map_err(|error| structured_error("pack", error.to_string()))?;
+    let report_bytes = serde_json::to_vec_pretty(report)
+        .map_err(|error| structured_error("report_json", error.to_string()))?;
+    std::fs::create_dir(output_path).map_err(|error| {
+        structured_error(
+            "io",
+            format!(
+                "create fresh pack directory {}: {error}",
+                output_path.display()
+            ),
+        )
+    })?;
+    write_new(&output_path.join("release.json"), &sealed.release)?;
+    write_new(&output_path.join("report.json"), &report_bytes)?;
+    write_new(&output_path.join("seal.json"), &sealed.seal)?;
+    let payload = match payload_kind {
+        PackPayloadKind::Synthetic => "synthetic",
+        PackPayloadKind::Full => "full",
+    };
+    Ok(serde_json::json!({
+        "operation":"data-pack-materialize",
+        "version":1,
+        "pack_id":PackId::Sutysisku.as_str(),
+        "payload_kind":payload,
+        "release_sha256":sha256(&sealed.release),
+        "report":report
+    }))
+}
+
 fn llg_fixture() -> (Vec<u8>, Vec<u8>, Vec<u8>, Vec<u8>) {
     let mut gismu = b"00001 Lojban synthetic gismu list\r\n".to_vec();
     let mut row = vec![b' '; 158];
@@ -966,6 +1060,19 @@ fn map_la_lojban_error(error: LaLojbanImportError) -> CliError {
         LaLojbanImportError::Registry(_) => "la_lojban_registry",
         LaLojbanImportError::Dictionary(_) => "la_lojban_dictionary",
         _ => "la_lojban_import",
+    };
+    structured_error(code, error.to_string())
+}
+
+fn map_sutysisku_error(error: SutysiskuImportError) -> CliError {
+    let code = match &error {
+        SutysiskuImportError::InvalidOptions(_) => "sutysisku_options",
+        SutysiskuImportError::HashMismatch { .. } => "sutysisku_hash_mismatch",
+        SutysiskuImportError::InvalidUtf8 => "sutysisku_utf8",
+        SutysiskuImportError::InvalidJson(_) => "sutysisku_json",
+        SutysiskuImportError::Registry(_) => "sutysisku_registry",
+        SutysiskuImportError::Dictionary(_) => "sutysisku_dictionary",
+        _ => "sutysisku_import",
     };
     structured_error(code, error.to_string())
 }
