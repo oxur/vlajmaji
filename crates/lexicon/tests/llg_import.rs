@@ -2,8 +2,8 @@
 
 use sha2::{Digest, Sha256};
 use vlajmaji_lexicon::{
-    ContextKind, Eligibility, FormKind, LlgImportError, LlgImportOptions, Presence,
-    import_llg_lists,
+    ContextKind, Eligibility, FormKind, LlgImport, LlgImportError, LlgImportOptions, OccurrenceRef,
+    Presence, import_llg_lists,
 };
 
 fn digest(bytes: &[u8]) -> String {
@@ -60,6 +60,110 @@ fn lines(lines: &[Vec<u8>], ending: &[u8], terminal: bool) -> Vec<u8> {
     output
 }
 
+fn import_with_header_counts(counts: &[u64]) -> LlgImport {
+    let mut rows = counts
+        .iter()
+        .enumerate()
+        .map(|(index, count)| format!("{count:05} Lojban header {index}").into_bytes())
+        .collect::<Vec<_>>();
+    rows.push(gismu_row("farvi", false));
+    let gismu = lines(&rows, b"\n", true);
+    let cmavo = Vec::new();
+    let rafsi = Vec::new();
+    let notice = b"notice".to_vec();
+    import_llg_lists(
+        &gismu,
+        &cmavo,
+        &rafsi,
+        &notice,
+        &options(&gismu, &cmavo, &rafsi, &notice),
+    )
+    .unwrap()
+}
+
+fn assert_header_rows(result: &LlgImport, expected_locators: &[&str]) {
+    let capture = result
+        .dictionary()
+        .captures()
+        .iter()
+        .find(|capture| capture.identity.namespace == "captured:llg:gismu")
+        .unwrap();
+    let claims = &result.report().components[0].header_claims;
+    let expected_occurrences = expected_locators
+        .iter()
+        .map(|locator| OccurrenceRef {
+            capture: capture.identity.clone(),
+            locator: (*locator).into(),
+        })
+        .collect::<Vec<_>>();
+    assert_eq!(
+        claims
+            .iter()
+            .map(|claim| claim.occurrence.clone())
+            .collect::<Vec<_>>(),
+        expected_occurrences
+    );
+
+    let raw_headers = capture
+        .occurrences
+        .iter()
+        .filter(|row| expected_locators.contains(&row.locator.as_str()))
+        .collect::<Vec<_>>();
+    assert_eq!(
+        raw_headers
+            .iter()
+            .map(|row| row.locator.as_str())
+            .collect::<Vec<_>>(),
+        expected_locators
+    );
+    assert!(raw_headers.iter().all(|row| {
+        row.raw_line.as_deref().is_some_and(|line| {
+            let bytes = line.as_bytes();
+            bytes
+                .get(..5)
+                .is_some_and(|digits| digits.iter().all(u8::is_ascii_digit))
+                && bytes
+                    .get(5..)
+                    .is_some_and(|tail| tail.starts_with(b" Lojban "))
+        })
+    }));
+
+    let assertions = result
+        .dictionary()
+        .metadata()
+        .assertions
+        .iter()
+        .filter(|assertion| {
+            assertion.occurrence.capture == capture.identity
+                && matches!(
+                    &assertion.eligibility,
+                    Eligibility::Excluded { reason } if reason == "source_header"
+                )
+        })
+        .collect::<Vec<_>>();
+    assert_eq!(
+        assertions
+            .iter()
+            .map(|assertion| assertion.occurrence.locator.as_str())
+            .collect::<Vec<_>>(),
+        expected_locators
+    );
+    let ids = assertions
+        .iter()
+        .map(|assertion| assertion.id.as_str())
+        .collect::<std::collections::BTreeSet<_>>();
+    assert_eq!(ids.len(), assertions.len());
+}
+
+fn mismatch_locators(result: &LlgImport) -> Vec<String> {
+    result.dictionary().metadata().releases[0]
+        .diagnostics
+        .iter()
+        .filter(|diagnostic| diagnostic.code == "header_count_mismatch")
+        .map(|diagnostic| diagnostic.occurrence.as_ref().unwrap().locator.clone())
+        .collect()
+}
+
 #[test]
 fn test_import_llg_lists_preserves_captures_rows_and_evidence() {
     let gismu = lines(
@@ -91,6 +195,16 @@ fn test_import_llg_lists_preserves_captures_rows_and_evidence() {
     assert_eq!(report.extensions, 2);
     assert_eq!(report.teaching_code_extensions, 1);
     assert_eq!(report.frequency_extensions, 1);
+    assert_eq!(report.components[0].declared_body_count, Some(1));
+    assert_eq!(report.components[0].declared_count_matches, Some(true));
+    assert_eq!(report.components[0].header_claims.len(), 1);
+    assert_eq!(report.components[0].header_claims[0].declared_body_count, 1);
+    assert!(report.components[0].header_claims[0].count_matches);
+    assert_eq!(report.components[1].declared_body_count, Some(1));
+    assert_eq!(report.components[1].declared_count_matches, Some(true));
+    assert_eq!(report.components[1].header_claims.len(), 1);
+    assert!(report.components[1].header_claims[0].count_matches);
+    assert!(report.components[2].header_claims.is_empty());
     assert_eq!(report.components[0].native_fields, 11);
     assert_eq!(report.components[1].native_fields, 5);
     assert_eq!(report.components[2].native_fields, 6);
@@ -172,16 +286,118 @@ fn test_import_llg_lists_reports_count_mismatch_without_dropping_rows() {
         Some(false)
     );
     assert_eq!(result.report().occurrences, 5);
+    assert_eq!(result.report().components[0].header_claims.len(), 1);
+    assert_eq!(
+        result.report().components[0].header_claims[0].declared_body_count,
+        99
+    );
+    assert!(!result.report().components[0].header_claims[0].count_matches);
+    assert_header_rows(&result, &["1"]);
     assert_eq!(
         result.dictionary().metadata().releases[0].diagnostics[0].code,
         "source_header"
     );
-    assert!(
-        result.dictionary().metadata().releases[0]
-            .diagnostics
-            .iter()
-            .any(|row| row.code == "header_count_mismatch")
+    let mismatch = result.dictionary().metadata().releases[0]
+        .diagnostics
+        .iter()
+        .find(|row| row.code == "header_count_mismatch")
+        .unwrap();
+    assert_eq!(mismatch.occurrence.as_ref().unwrap().locator, "1");
+    assert_eq!(
+        mismatch.message,
+        "header declares 99 body rows but observed 1; source bytes are retained"
     );
+}
+
+#[test]
+fn test_import_llg_lists_preserves_each_header_claim_and_mismatch_occurrence() {
+    let zero_then_one = import_with_header_counts(&[0, 1]);
+    let component = &zero_then_one.report().components[0];
+    assert_header_rows(&zero_then_one, &["1", "2"]);
+    assert_eq!(
+        component
+            .header_claims
+            .iter()
+            .map(|claim| (claim.declared_body_count, claim.count_matches))
+            .collect::<Vec<_>>(),
+        vec![(0, false), (1, true)]
+    );
+    assert_eq!(component.declared_body_count, None);
+    assert_eq!(component.declared_count_matches, None);
+    assert_eq!(component.diagnostics["source_header"], 2);
+    assert_eq!(component.diagnostics["conflicting_header_counts"], 1);
+    assert_eq!(component.diagnostics["header_count_mismatch"], 1);
+    assert_eq!(mismatch_locators(&zero_then_one), ["1"]);
+    let conflict = zero_then_one.dictionary().metadata().releases[0]
+        .diagnostics
+        .iter()
+        .find(|diagnostic| diagnostic.code == "conflicting_header_counts")
+        .unwrap();
+    assert!(conflict.occurrence.is_none());
+    assert!(conflict.message.contains("0 at locator 1, 1 at locator 2"));
+
+    let one_then_zero = import_with_header_counts(&[1, 0]);
+    let component = &one_then_zero.report().components[0];
+    assert_header_rows(&one_then_zero, &["1", "2"]);
+    assert_eq!(
+        component
+            .header_claims
+            .iter()
+            .map(|claim| (claim.declared_body_count, claim.count_matches))
+            .collect::<Vec<_>>(),
+        vec![(1, true), (0, false)]
+    );
+    assert_eq!(component.declared_body_count, None);
+    assert_eq!(component.declared_count_matches, None);
+    assert_eq!(mismatch_locators(&one_then_zero), ["2"]);
+    let conflict = one_then_zero.dictionary().metadata().releases[0]
+        .diagnostics
+        .iter()
+        .find(|diagnostic| diagnostic.code == "conflicting_header_counts")
+        .unwrap();
+    assert!(conflict.message.contains("1 at locator 1, 0 at locator 2"));
+
+    let one_then_one = import_with_header_counts(&[1, 1]);
+    let component = &one_then_one.report().components[0];
+    assert_header_rows(&one_then_one, &["1", "2"]);
+    assert_eq!(component.declared_body_count, Some(1));
+    assert_eq!(component.declared_count_matches, Some(true));
+    assert_eq!(component.diagnostics["source_header"], 2);
+    assert!(
+        !component
+            .diagnostics
+            .contains_key("conflicting_header_counts")
+    );
+    assert!(!component.diagnostics.contains_key("header_count_mismatch"));
+    assert!(mismatch_locators(&one_then_one).is_empty());
+
+    let zero_then_zero = import_with_header_counts(&[0, 0]);
+    let component = &zero_then_zero.report().components[0];
+    assert_header_rows(&zero_then_zero, &["1", "2"]);
+    assert_eq!(component.declared_body_count, Some(0));
+    assert_eq!(component.declared_count_matches, Some(false));
+    assert!(
+        !component
+            .diagnostics
+            .contains_key("conflicting_header_counts")
+    );
+    assert_eq!(component.diagnostics["header_count_mismatch"], 2);
+    assert_eq!(mismatch_locators(&zero_then_zero), ["1", "2"]);
+}
+
+#[test]
+fn test_import_llg_lists_absent_header_has_no_claim_or_conflict() {
+    let result = import_with_header_counts(&[]);
+    let component = &result.report().components[0];
+    assert!(component.header_claims.is_empty());
+    assert_eq!(component.declared_body_count, None);
+    assert_eq!(component.declared_count_matches, None);
+    assert!(
+        !component
+            .diagnostics
+            .contains_key("conflicting_header_counts")
+    );
+    assert!(mismatch_locators(&result).is_empty());
 }
 
 #[test]

@@ -66,6 +66,18 @@ impl Default for LlgImportOptions {
     }
 }
 
+/// A source-declared row count retained from one physical component header.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct LlgHeaderClaim {
+    /// Exact source occurrence for this header row.
+    pub occurrence: OccurrenceRef,
+    /// Body row count declared by this header.
+    pub declared_body_count: u64,
+    /// Whether this claim matches the observed number of body rows.
+    pub count_matches: bool,
+}
+
 /// Per-component source and projection accounting.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -90,11 +102,13 @@ pub struct LlgComponentReport {
     pub headers: u64,
     /// Unsupported, malformed, blank, separator, or non-ASCII rows.
     pub unsupported_rows: u64,
-    /// Source-declared body row count, when the component has a header.
+    /// All source header claims in physical order.
+    pub header_claims: Vec<LlgHeaderClaim>,
+    /// Agreed source-declared body row count, or `None` when absent/conflicting.
     pub declared_body_count: Option<u64>,
-    /// Actual number of body rows after the header.
+    /// Number of physical non-header rows; headers may occur anywhere.
     pub observed_body_count: u64,
-    /// Whether a source-declared count matches the observed body count.
+    /// Whether agreed source claims match the body count; `None` if absent or conflicting.
     pub declared_count_matches: Option<bool>,
     /// Number of assigned-rafsi form assertions supported by this component.
     pub assigned_forms: u64,
@@ -786,6 +800,7 @@ fn build_model(
             excluded_assertions: 0,
             headers: 0,
             unsupported_rows: 0,
+            header_claims: Vec::new(),
             declared_body_count: None,
             observed_body_count: 0,
             declared_count_matches: None,
@@ -793,6 +808,11 @@ fn build_model(
             contexts: 0,
             diagnostics: BTreeMap::new(),
         };
+        let header_count = parsed[index]
+            .iter()
+            .filter(|row| matches!(row.kind, ParsedKind::Header(_)))
+            .count() as u64;
+        component_report.observed_body_count = component_report.input_lines - header_count;
         total_fields += component_report.native_fields;
         let mut ids = Vec::new();
         let mut diags = Vec::new();
@@ -815,7 +835,11 @@ fn build_model(
                 ParsedKind::Header(count) => {
                     component_report.headers += 1;
                     component_report.excluded_assertions += 1;
-                    component_report.declared_body_count = Some(*count);
+                    component_report.header_claims.push(LlgHeaderClaim {
+                        occurrence: occurrence.clone(),
+                        declared_body_count: *count,
+                        count_matches: *count == component_report.observed_body_count,
+                    });
                     *component_report
                         .diagnostics
                         .entry("source_header".into())
@@ -897,8 +921,6 @@ fn build_model(
                     )
                 }
             };
-            component_report.observed_body_count =
-                component_report.input_lines - component_report.headers;
             metadata.assertions.push(AssertionRecord {
                 id: assertion.clone(),
                 entry: entry_id,
@@ -948,29 +970,58 @@ fn build_model(
                 component_report.contexts += 1;
             }
         }
-        component_report.declared_count_matches = component_report
-            .declared_body_count
-            .map(|declared| declared == component_report.observed_body_count);
-        if component_report.declared_count_matches == Some(false) {
+        if let Some(first_claim) = component_report.header_claims.first() {
+            let claims_agree = component_report
+                .header_claims
+                .iter()
+                .all(|claim| claim.declared_body_count == first_claim.declared_body_count);
+            if claims_agree {
+                component_report.declared_body_count = Some(first_claim.declared_body_count);
+                component_report.declared_count_matches =
+                    Some(first_claim.declared_body_count == component_report.observed_body_count);
+            } else {
+                let code = "conflicting_header_counts".to_owned();
+                *component_report
+                    .diagnostics
+                    .entry(code.clone())
+                    .or_default() += 1;
+                *diagnostics_total.entry(code.clone()).or_default() += 1;
+                let claims = component_report
+                    .header_claims
+                    .iter()
+                    .map(|claim| {
+                        format!(
+                            "{} at locator {}",
+                            claim.declared_body_count, claim.occurrence.locator
+                        )
+                    })
+                    .collect::<Vec<_>>()
+                    .join(", ");
+                diags.push(ReleaseDiagnostic {
+                    occurrence: None,
+                    code,
+                    message: format!(
+                        "headers declare conflicting body row counts ({claims}); source bytes are retained"
+                    ),
+                });
+            }
+        }
+        for claim in &component_report.header_claims {
+            if claim.count_matches {
+                continue;
+            }
             let code = "header_count_mismatch".to_owned();
             *component_report
                 .diagnostics
                 .entry(code.clone())
                 .or_default() += 1;
             *diagnostics_total.entry(code.clone()).or_default() += 1;
-            let header_occurrence = parsed[index].iter().find_map(|row| {
-                matches!(row.kind, ParsedKind::Header(_)).then(|| OccurrenceRef {
-                    capture: capture.clone(),
-                    locator: row.locator.clone(),
-                })
-            });
             diags.push(ReleaseDiagnostic {
-                occurrence: header_occurrence,
+                occurrence: Some(claim.occurrence.clone()),
                 code,
                 message: format!(
                     "header declares {} body rows but observed {}; source bytes are retained",
-                    component_report.declared_body_count.unwrap_or_default(),
-                    component_report.observed_body_count
+                    claim.declared_body_count, component_report.observed_body_count
                 ),
             });
         }

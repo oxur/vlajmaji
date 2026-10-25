@@ -62,8 +62,8 @@ pub use jbotci::{
 };
 pub use llg::{
     LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256, LLG_NOTICE_SHA256, LLG_RAFSI_SHA256,
-    LlgComponentReport, LlgImport, LlgImportError, LlgImportOptions, LlgImportReport,
-    import_llg_lists,
+    LlgComponentReport, LlgHeaderClaim, LlgImport, LlgImportError, LlgImportOptions,
+    LlgImportReport, import_llg_lists,
 };
 pub use pack::{
     PackError, PackId, PackPayloadKind, PackSeal, SealedRelease, compose_dictionaries,
