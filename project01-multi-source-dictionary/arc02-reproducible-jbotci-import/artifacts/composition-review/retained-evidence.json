@@ -1,0 +1,61 @@
+{
+  "cdc-accepted": {
+    "manifest_sha256": "1f2a081b4a4832acb8fb8644567fc5e7e81302b2c58214cea721c70014552646",
+    "payloads": 118,
+    "mismatches": []
+  },
+  "cdc-review02": {
+    "manifest_sha256": "c755b514e90d6f40514276c71f0286a93f28c7ff3d29cfa187a8627ed5fbc719",
+    "payloads": 276,
+    "mismatches": []
+  },
+  "s02-make-check03": {
+    "lines": 22,
+    "passed": 88,
+    "failed": 0,
+    "ignored": 1
+  },
+  "s02-workspace-allfeatures03": {
+    "lines": 22,
+    "passed": 90,
+    "failed": 0,
+    "ignored": 1
+  },
+  "s02-search-nodefault03": {
+    "lines": 4,
+    "passed": 15,
+    "failed": 0,
+    "ignored": 0
+  },
+  "s02-search-allfeatures03": {
+    "lines": 4,
+    "passed": 15,
+    "failed": 0,
+    "ignored": 0
+  },
+  "s02-umbrella-nodefault03": {
+    "lines": 2,
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0
+  },
+  "s02-umbrella-allfeatures03": {
+    "lines": 2,
+    "passed": 1,
+    "failed": 0,
+    "ignored": 0
+  },
+  "current_product_unchanged_since_process_controls": [
+    "crates/cli/tests/jbotci_pipeline.rs"
+  ],
+  "importer_unchanged_since_s01": [],
+  "current_source_sha256": {
+    "scripts/jbotci-import.sh": "27f369427424e6e8dca52190580b6195d69339b0886621b39ae6f150f25a3056",
+    "scripts/jbotci-pinned.env": "ce9079c030c73795c81d5beede0f3428b118f051f651b07a1310fa8e551a9f4a",
+    "Cargo.lock": "b2f09b4cac55033cba2399a85354005bee05cd75ebc87e94147c6415d134cf7f",
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "crates/lexicon/src/jbotci.rs": "1dfc5cbd3aec867575df86b0e747f15fbbc83fd22022c9ebcb6c1ce74fa937c9",
+    "crates/store/src/dictionary_schema.rs": "684d1df53453a0a8341335c3c35fb3065db10eeec77b3afed4d4e8f978cef0d5",
+    "crates/search/src/dictionary.rs": "1348991c60d4f1d07d7316431a6b937eba5f91147d69b2b80d733b1283ca03f2"
+  }
+}

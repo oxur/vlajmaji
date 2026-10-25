@@ -1,0 +1,337 @@
+{
+  "s02-alias02.stdout": {
+    "bytes": 1616,
+    "sha256": "9c732e96e9652a5bf2ca5e46b2c6a00acdc8a4087973971a0baaa4f6e4829843",
+    "cases": [
+      {
+        "case": "standard-macos-tmp-parent",
+        "returncode": 0,
+        "expected_success": true,
+        "contract_pass": true
+      },
+      {
+        "case": "real-private-tmp-counterpart",
+        "returncode": 0,
+        "expected_success": true,
+        "contract_pass": true
+      },
+      {
+        "case": "explicit-cache-root-alias",
+        "returncode": 0,
+        "expected_success": true,
+        "contract_pass": true
+      }
+    ]
+  },
+  "s02-boundary02.stdout": {
+    "bytes": 5875,
+    "sha256": "4c516d900481cc0198193f86a2935281ca12e210cf8ffe16b0ad0c4c54a19b5b",
+    "cases": [
+      {
+        "case": "valid-regular-counterpart",
+        "returncode": 0,
+        "contract_pass": true
+      },
+      {
+        "case": "nul-forbidden",
+        "returncode": 2,
+        "expected_success": false,
+        "contract_pass": true
+      },
+      {
+        "case": "indented-assignment",
+        "returncode": 2,
+        "expected_success": false,
+        "contract_pass": true
+      },
+      {
+        "case": "no-final-lf",
+        "returncode": 0,
+        "expected_success": true,
+        "contract_pass": true
+      },
+      {
+        "case": "executable-symlink",
+        "returncode": 0,
+        "expected_success": true,
+        "contract_pass": true
+      },
+      {
+        "case": "pin-symlink",
+        "returncode": 0,
+        "expected_success": true,
+        "contract_pass": true
+      },
+      {
+        "case": "exclusive-replay-report",
+        "returncode": 1,
+        "expected_success": false,
+        "contract_pass": true
+      },
+      {
+        "case": "exclusive-update-report",
+        "returncode": 1,
+        "expected_success": false,
+        "contract_pass": true
+      }
+    ]
+  },
+  "s02-failure-paths02.stdout": {
+    "bytes": 1988,
+    "sha256": "82afce83c1ac918d86ee6d33db544f9d9d382a42f4a45fa16f5f03f38f92da00",
+    "cases": [
+      {
+        "case": "mismatch",
+        "returncode": 1,
+        "expected_success": false,
+        "contract_pass": true
+      },
+      {
+        "case": "valid",
+        "returncode": 0,
+        "expected_success": true,
+        "contract_pass": true
+      }
+    ]
+  },
+  "s02-pipeline03.stdout": {
+    "bytes": 23671,
+    "sha256": "c6c891cdd036d17f2f9f26ecf90fa4aaca718f179aba66e44e42b33f217933fa",
+    "cases": [
+      {
+        "case": "help-no-build",
+        "returncode": 0
+      },
+      {
+        "case": "manifest-unknown-key",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-duplicate-key",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-missing-key",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-bad-version",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-uppercase-revision",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-short-digest",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-quoted-value",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-space-assignment",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-trailing-text",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-cr",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-tab",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-nul",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-nonascii",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "manifest-command-substitution",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "acquire-false-raw_sha256",
+        "returncode": 1,
+        "expected_success": false
+      },
+      {
+        "case": "acquire-false-metadata_sha256",
+        "returncode": 1,
+        "expected_success": false
+      },
+      {
+        "case": "acquire-valid",
+        "returncode": 0,
+        "expected_success": true
+      },
+      {
+        "case": "acquire-reuse-offline",
+        "returncode": 0,
+        "expected_success": true
+      },
+      {
+        "case": "manifest-valid-comments-and-blanks",
+        "returncode": 0,
+        "expected_success": true
+      },
+      {
+        "case": "manifest-valid-no-final-lf",
+        "returncode": 0,
+        "expected_success": true
+      },
+      {
+        "case": "replay-valid",
+        "returncode": 0,
+        "expected_success": true
+      },
+      {
+        "case": "duplicate-query",
+        "returncode": 0
+      },
+      {
+        "case": "check-valid",
+        "returncode": 0,
+        "expected_success": true
+      },
+      {
+        "case": "check-report-not-authority",
+        "returncode": 0,
+        "expected_success": true
+      },
+      {
+        "case": "check-missing-cache",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "occupied-file",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "occupied-directory",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "occupied-symlink",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "occupied-report",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "occupied-store",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "acquire-first-download-only-failure",
+        "returncode": 95,
+        "expected_success": false
+      },
+      {
+        "case": "acquire-partial",
+        "returncode": 93,
+        "expected_success": false
+      },
+      {
+        "case": "partial-retry-rejected",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "cache-marker",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "cache-raw",
+        "returncode": 1,
+        "expected_success": false
+      },
+      {
+        "case": "replay-corrupt-cache-no-output",
+        "returncode": 1,
+        "expected_success": false
+      },
+      {
+        "case": "cache-raw-link",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "cache-marker-link",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "cache-leaf-link",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "update-count-mismatch",
+        "returncode": 1,
+        "expected_success": false
+      },
+      {
+        "case": "update-valid",
+        "returncode": 0,
+        "expected_success": true
+      },
+      {
+        "case": "update-provenance-only",
+        "returncode": 0,
+        "expected_success": true
+      },
+      {
+        "case": "make-literal-acquire",
+        "returncode": 0,
+        "expected_success": true
+      },
+      {
+        "case": "make-commandline-literal-acquire",
+        "returncode": 0,
+        "expected_success": true
+      },
+      {
+        "case": "make-missing-target",
+        "returncode": 2,
+        "expected_success": false
+      },
+      {
+        "case": "make-child-failure",
+        "returncode": 2,
+        "expected_success": false
+      }
+    ]
+  },
+  "total_current_retained_controls": 60
+}

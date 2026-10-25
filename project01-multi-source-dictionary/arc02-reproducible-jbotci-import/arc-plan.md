@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; both children CLOSED/accepted12fdd67 and4e37016; fresh technical/finalpacket gates pending |
-| version/date | 1.3 / 2026-10-24 |
+| status | ACTIVE; both children CLOSED; fresh technical composition PASS4e37016; final canonical packet pending |
+| version/date | 1.4 / 2026-10-24 |
 | depends-on | A01 fixture contracts originally accepted efef9c4; current implementation baseline d1e1c928 including CLI relocation/umbrella0.3.0 |
 | blocks | A03 jbotci optional package and later complete-corpus integration |
 | authority | ../cdc-directive02.md; renewed Autonomous/Expedited, CDC SolHigh / CC LunaHigh, stop before A03 |
@@ -134,3 +134,5 @@ supports two usable slices, explicit export-vs-API boundary, measured complete
 -1.2 —2026-10-24: actual pre-fix full writer stopped at600s with exact native/EXPLAIN/source evidence, not accepted store. S02 now includes narrow47-table parent-first ordering with unchanged schema1/FK/API and complete omission/self-reference/failure guards. Revised fair8query comparison uses retained old binary on candidate new schema-identical full store. Initial S02plan/8open rows/prompt issued; source unchanged12fdd67, all14projectrowsopen. No obligation dropped.
 
 -1.3 —2026-10-24: S02 all8rows accepted4e37016 after two bounded refinements. Both useful children delivered, no structural slice/scope change. Actual335308nativeSQLchecks/old-new8/23/12/fullCLI/outside/currentgates retained; fresh SolHigh technical and finalpacket gates remain mandatory before arc close. Source-guided repairs preserve DDL/FK/API and allraw fields. New practical freshengine strictopen~25srelease/debugCLI91.533s is carried to P01-08/A04 operational comparison and P01-11/12/A06 integration, not silently optimized/dropped here. All14projectrowsOPEN; noA03.
+
+-1.4 —2026-10-24: fresh authorship-independent SolHigh technical composition PASS at4e37016, own full import/freshstore/drop/reopen/335308+207393source predicates/20publicinvocations/actualreleaseCLI/offlinecontrols. Canonical close/verification/retrospective/project partial contributions assembled for same-context final packet gate;2arcrowsDONE/6OPEN and14projectrowsOPEN. No source/scope/topology/publication/A03 change.

@@ -1,0 +1,203 @@
+{
+  "raw_sha256": "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde",
+  "rows": 33526,
+  "fields": 278254,
+  "field_counts": {
+    "word": 33526,
+    "word_type": 33526,
+    "selmaho": 2539,
+    "definition": 33526,
+    "definition_id": 33526,
+    "notes": 28280,
+    "score": 33526,
+    "gloss_keywords": 30683,
+    "user": 33526,
+    "etymology": 2085,
+    "jargon": 8356,
+    "place_keywords": 2821,
+    "experimental_rafsi": 769,
+    "rafsi": 1565
+  },
+  "classes": {
+    "cmavo": 634,
+    "fu'ivla": 12964,
+    "cmavo-compound": 764,
+    "experimental cmavo": 1144,
+    "cmevla": 568,
+    "obsolete fu'ivla": 379,
+    "lujvo": 14515,
+    "bu-letteral": 63,
+    "zei-lujvo": 164,
+    "obsolete cmevla": 34,
+    "phrase": 30,
+    "experimental gismu": 793,
+    "gismu": 1465,
+    "obsolete cmavo": 3,
+    "nalvla": 1,
+    "obsolete zei-lujvo": 4,
+    "wiki": 1
+  },
+  "all_words": 31256,
+  "eligible_occurrences": 33516,
+  "eligible_words": 31248,
+  "distinct_native_ids": 33526,
+  "repeated_native_ids": {},
+  "duplicate_full_rows": 0,
+  "excluded": [
+    {
+      "row": 7913,
+      "word": "baupli",
+      "class": "lujvo",
+      "native_id": 74013,
+      "empty_definition": true
+    },
+    {
+      "row": 15328,
+      "word": ".iu'a",
+      "class": "experimental cmavo",
+      "native_id": 72720,
+      "empty_definition": true
+    },
+    {
+      "row": 22040,
+      "word": "Periodic-table gismu assignment algorithm",
+      "class": "wiki",
+      "native_id": 88416,
+      "empty_definition": false
+    },
+    {
+      "row": 24571,
+      "word": "sekoi'ai",
+      "class": "cmavo-compound",
+      "native_id": 73901,
+      "empty_definition": true
+    },
+    {
+      "row": 27039,
+      "word": "smuki'irxu'a",
+      "class": "lujvo",
+      "native_id": 73986,
+      "empty_definition": true
+    },
+    {
+      "row": 29940,
+      "word": "tisnbei",
+      "class": "fu'ivla",
+      "native_id": 74041,
+      "empty_definition": true
+    },
+    {
+      "row": 30033,
+      "word": "toirsti",
+      "class": "lujvo",
+      "native_id": 73998,
+      "empty_definition": true
+    },
+    {
+      "row": 32548,
+      "word": "xo'oi",
+      "class": "experimental cmavo",
+      "native_id": 20346,
+      "empty_definition": true
+    },
+    {
+      "row": 33337,
+      "word": "zmanonpukfri",
+      "class": "lujvo",
+      "native_id": 74004,
+      "empty_definition": true
+    },
+    {
+      "row": 33387,
+      "word": "zoizoizoi",
+      "class": "cmavo-compound",
+      "native_id": 69430,
+      "empty_definition": true
+    }
+  ],
+  "excluded_only_words": [
+    ".iu'a",
+    "Periodic-table gismu assignment algorithm",
+    "sekoi'ai",
+    "smuki'irxu'a",
+    "tisnbei",
+    "toirsti",
+    "zmanonpukfri",
+    "zoizoizoi"
+  ],
+  "optional_populations": {
+    "selmaho": {
+      "nonempty": 2426,
+      "missing": 30987,
+      "empty": 113
+    },
+    "notes": {
+      "empty": 5739,
+      "nonempty": 22541,
+      "missing": 5246
+    },
+    "jargon": {
+      "missing": 25170,
+      "empty": 7800,
+      "nonempty": 556
+    },
+    "gloss_keywords": {
+      "nonempty": 30683,
+      "missing": 2843
+    },
+    "place_keywords": {
+      "missing": 30705,
+      "nonempty": 2821
+    },
+    "rafsi": {
+      "missing": 31961,
+      "nonempty": 1565
+    },
+    "experimental_rafsi": {
+      "missing": 32757,
+      "nonempty": 769
+    },
+    "etymology": {
+      "missing": 31441,
+      "nonempty": 2073,
+      "empty": 12
+    }
+  },
+  "witnesses": {
+    "farvi": [
+      {
+        "row": 13306,
+        "native_id": 333,
+        "definition_bytes": 82,
+        "definition_sha256": "2ed2184d018dd705453eafeb62ca29cb7e47a772032338a3a89756abeda7fcae"
+      },
+      {
+        "row": 13307,
+        "native_id": 69002,
+        "definition_bytes": 140,
+        "definition_sha256": "657fddbaa01a3dc2d73f136b8e28b339c9a52b6244756090a318ec51d33f2462"
+      }
+    ],
+    "ma": [
+      {
+        "row": 18910,
+        "native_id": 88840,
+        "definition_bytes": 48,
+        "definition_sha256": "fc9abcfeaee68be6cd2f80a08c6d30f0877dc53a023ca2d4e7a199b5d3fb9784"
+      },
+      {
+        "row": 18911,
+        "native_id": 1791,
+        "definition_bytes": 85,
+        "definition_sha256": "9ceb6ff6b623afe66f00092df88c9d31e4ca33853e8cc961a8d05a6e06a2d096"
+      }
+    ],
+    "wiki": []
+  },
+  "contexts": 76357,
+  "gloss_objects": 39721,
+  "forms": 4008,
+  "etymologies": 2085,
+  "extensions": 73226,
+  "original_local_census_sha256": "d7088ccbd14116a6e3d683cd13e5140160ef441d5c37f05eff599b7f386c3019"
+}

@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "make",
+    "-C",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+    "jbotci-check",
+    "CARGO=/tmp/vlajmaji-p01-a02-cargo"
+  ],
+  "cwd": "/Users/oubiwann/Documents/ChatGPT/Relojban",
+  "start_utc": "2026-10-25T01:21:43.670466+00:00",
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "CURL": "/bin/false",
+    "VLAJMAJI_BIN": "/tmp/vlajmaji-p01-a02-arc-review/f20261024/vlajmaji-release-cli"
+  },
+  "pid": 59404,
+  "exit": 0,
+  "elapsed_s": 5.5983593333512545,
+  "end_utc": "2026-10-25T01:21:49.268787+00:00",
+  "streams": {
+    "stdout": {
+      "bytes": 1294,
+      "sha256": "c5eb63fa6f7e7e90bac6ca5f28084f02ed8298df88566bdfadbd335ea43661a2"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

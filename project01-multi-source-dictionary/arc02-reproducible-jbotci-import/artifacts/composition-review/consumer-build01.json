@@ -1,0 +1,34 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a02-cargo",
+    "+1.98.0",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "/tmp/vlajmaji-p01-a02-arc-review/f20261024/consumer/Cargo.toml",
+    "--bin",
+    "a02_arc_composition_review_20261024f"
+  ],
+  "cwd": "/Users/oubiwann/Documents/ChatGPT/Relojban",
+  "start_utc": "2026-10-25T01:17:03.311950+00:00",
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  },
+  "pid": 58139,
+  "exit": 0,
+  "elapsed_s": 2.470364292152226,
+  "end_utc": "2026-10-25T01:17:05.782290+00:00",
+  "streams": {
+    "stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "bytes": 287,
+      "sha256": "a05764ad5f50fcc66797900258045987044f93ca83824a8e6c2cbb9fa1f0e00e"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "verdict": "PASS",
+  "external_invocations": 5,
+  "records": [
+    {
+      "name": "update-mismatch",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "update",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/mismatch.env",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/mismatch-cache",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/mismatch-release.json",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/mismatch-store"
+      ],
+      "pid": 59330,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.19913399964571,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "195c268cd712be6784a6ee3c8c03b08e25103a6c19f02f252c8270ed2c89ec71"
+    },
+    {
+      "name": "update-valid",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "update",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/valid.env",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/valid-cache",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/valid-release.json",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/valid-store"
+      ],
+      "pid": 59351,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.05946720764040947,
+      "stdout_sha256": "523c3575fbab0e7b4cd362fa51dcb096554aede753730c6fef3aed02a3b7df08",
+      "stderr_sha256": "b92d5064c040c9b5e898d6886d6129e612873b86c5aa76cd9d64896363d7fb64"
+    },
+    {
+      "name": "check-no-write",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "check",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/valid.env",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/valid-cache",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/valid-release.json"
+      ],
+      "pid": 59375,
+      "exit": 0,
+      "expected_exit": 0,
+      "elapsed_s": 0.017958959098905325,
+      "stdout_sha256": "5b4a5c2457deed4688b018203346bdc18442f13501e57a2f87cf9b1ebd84b39d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "occupied-valid-pin-replay",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "replay",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/valid.env",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/valid-cache",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/valid-release.json"
+      ],
+      "pid": 59389,
+      "exit": 2,
+      "expected_exit": 2,
+      "elapsed_s": 0.009900750126689672,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "94371a8a05a2ce8490915ddbb6064fd8782ce88494dcbeeec373ad5115df0787"
+    },
+    {
+      "name": "actual-cli-valid-structure-bad-raw-pin",
+      "argv": [
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/vlajmaji-release-cli",
+        "jbotci-import",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/raw",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/valid.meta",
+        "/tmp/vlajmaji-p01-a02-arc-review/f20261024/pipeline-tiny/hash-failure.json",
+        "--raw-sha256",
+        "0000000000000000000000000000000000000000000000000000000000000000",
+        "--metadata-sha256",
+        "2644f33626b994fc36eb37d4b9e2d75e8af79fb986da8f0b1579b7e46e61b9d2"
+      ],
+      "pid": 59395,
+      "exit": 1,
+      "expected_exit": 1,
+      "elapsed_s": 0.004144791979342699,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "f90bd218ee72598f13447354fc6c0627a4b541d1e329935d3dd1d70a7c660e1a"
+    }
+  ],
+  "mismatch_retained_candidate_no_marker_no_store": true,
+  "prior_history_unchanged": true,
+  "check_no_mutation": true,
+  "occupied_output_preserved": true,
+  "exact_hash_error_no_output": true,
+  "valid_counterpart": true
+}

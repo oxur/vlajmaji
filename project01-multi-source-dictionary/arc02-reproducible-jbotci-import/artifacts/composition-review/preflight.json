@@ -1,0 +1,47 @@
+{
+  "pid": 57544,
+  "repos": {
+    "source": {
+      "head": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+      "branch": "feature/project01-full-jbotci-import",
+      "status": ""
+    },
+    "main": {
+      "head": "d1e1c928f7999f2220b046cc5a5817f0529312ca",
+      "branch": "main",
+      "status": ""
+    },
+    "bauske": {
+      "head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+      "branch": "main",
+      "status": ""
+    },
+    "planning": {
+      "head": "4323c304d3fb32d2251ca0562527795ac86005d8",
+      "branch": "planning",
+      "status": ""
+    }
+  },
+  "free_bytes": 440179892224,
+  "guard_sha256": "a19c3f1f83e40c97d21109f6b280969bc879c47ab587e529d1e28512b2a61430",
+  "input_leaf": "/tmp/vlajmaji-p01-a02-cdc/s02-full-cache02/3d9fd41d9ed32de26311ee27ec86b6b165985aa1-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98",
+  "inputs": {
+    "dictionary-en.json": {
+      "bytes": 17163482,
+      "sha256": "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde"
+    },
+    "dictionary-en.metadata.toml": {
+      "bytes": 514,
+      "sha256": "fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98"
+    },
+    "complete": {
+      "bytes": 25,
+      "sha256": "c27db854336fc1acbd6c680f58ff5bf89f52cbcb83ddbdbad46fd2b250eabbce"
+    }
+  },
+  "matching_active_task_processes": [],
+  "original_local_receipt": {
+    "path": "/tmp/vlajmaji-p01-a02-arc-review/f20261024/preflight.json",
+    "sha256": "eb9fcd4c07755e28cb41569d13ea5301af310e7d2dbd087e2c80184e66cf539d"
+  }
+}

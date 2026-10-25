@@ -1,0 +1,73 @@
+{
+  "pid": 59948,
+  "repos": {
+    "source": {
+      "head": "4e3701606be7d9a24a863468ea4fdbd7c1b369ab",
+      "status": "",
+      "index": ""
+    },
+    "main": {
+      "head": "d1e1c928f7999f2220b046cc5a5817f0529312ca",
+      "status": "",
+      "index": ""
+    },
+    "bauske": {
+      "head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+      "status": "",
+      "index": ""
+    },
+    "planning": {
+      "head": "4323c304d3fb32d2251ca0562527795ac86005d8",
+      "status": "?? project01-multi-source-dictionary/arc02-reproducible-jbotci-import/artifacts/composition-review/",
+      "index": ""
+    }
+  },
+  "free_bytes": 439032090624,
+  "active_task_processes": [],
+  "files": {
+    "canonical.json": {
+      "bytes": 215412497,
+      "sha256": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460"
+    },
+    "fresh-full-store/dictionary.sqlite3": {
+      "bytes": 698281984,
+      "sha256": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d"
+    },
+    "farvi-public-full.json": {
+      "bytes": 3028229,
+      "sha256": "449f0862c6b21608d94c46fb6e9596d9173f52d34506056fd415c0c64fc311e6"
+    },
+    "actual-cli-farvi01.stdout": {
+      "bytes": 3028230,
+      "sha256": "4a0c902b350162d7932169428713b53970d8aaba235c94da3cff313aa981054e"
+    },
+    "vlajmaji-release-cli": {
+      "bytes": 9285312,
+      "sha256": "e7e215a6a70cf3b905600995aeaec8c9b5560326baa93fdc628acb69ace2f1c8"
+    }
+  },
+  "source_increment_paths": [
+    "CHANGELOG.md",
+    "Makefile",
+    "README.md",
+    "crates/cli/Cargo.toml",
+    "crates/cli/README.md",
+    "crates/cli/src/main.rs",
+    "crates/cli/tests/jbotci_contract.rs",
+    "crates/cli/tests/jbotci_pipeline.rs",
+    "crates/lexicon/README.md",
+    "crates/lexicon/examples/import_jbotci.rs",
+    "crates/lexicon/src/jbotci.rs",
+    "crates/lexicon/src/lib.rs",
+    "crates/lexicon/tests/jbotci_contract.rs",
+    "crates/search/src/dictionary.rs",
+    "crates/store/src/dictionary_schema.rs",
+    "crates/store/tests/dictionary_contract.rs",
+    "docs/jbotci-import.md",
+    "docs/migration.md",
+    "scripts/jbotci-import.sh",
+    "scripts/jbotci-pinned.env"
+  ],
+  "retained_old_binary_sha256": "f09ace6cb568613155739307908f0c68eb4492eb02585efe682e6ec27db95058",
+  "fixed_guard_sha256": "a19c3f1f83e40c97d21109f6b280969bc879c47ab587e529d1e28512b2a61430"
+}

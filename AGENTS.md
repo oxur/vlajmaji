@@ -23,3 +23,7 @@ branch; prior maintenance on `main` is not the project execution convention.
 ## Authority history
 
 - 2026-10-24: Arc02 renewal supersedes the previous current Arc01-only endpoint and no-new-corpus restriction within Arc02. Current source is 0.3.0 development at d1e1c928; CLI relocation and umbrella release changes are retained. No push, PR, main integration or public data redistribution is authorized. Exact original Arc01 records and preserved research remain unchanged.
+
+## Current Arc02 closing checkpoint —2026-10-24
+
+Bothchildren/all15rows accepted at12fdd67/4e37016; fresh separate SolHigh technical composition PASS at4e37016. CDC assembled actual arc/project canonical proposed packet for same-context independent finalreview; sixarcrows remainOPEN until that gate. Root/source/main/Bauske remain protected; target returned to CDC after allreviewer sessionsended. NoA03/push/PR/publication or projectacceptance authorized. Current authority remains directive02, no new workflow/model choice.
