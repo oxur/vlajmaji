@@ -1,0 +1,12 @@
+[package]
+name = "vlajmaji-a03-s01-cdc-extension-repro-20261025a"
+version = "0.0.0"
+edition = "2024"
+
+[[bin]]
+name = "a03_s01_cdc_extension_repro_20261025a"
+path = "src/main.rs"
+
+[dependencies]
+vlajmaji-lexicon = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon" }
+sha2 = "=0.10.9"

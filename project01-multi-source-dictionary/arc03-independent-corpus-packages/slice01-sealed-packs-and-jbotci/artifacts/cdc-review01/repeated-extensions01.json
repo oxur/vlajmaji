@@ -1,0 +1,35 @@
+{
+  "source": "b74e7151497249457ebb711d9b52f5d2992b4c60",
+  "argv": [
+    "/tmp/vlajmaji-p01-a03-cargo",
+    "+1.98.0",
+    "run",
+    "--manifest-path",
+    "/tmp/vlajmaji-p01-a03-cdc/s01/panic-caller/Cargo.toml",
+    "--offline",
+    "--locked",
+    "--",
+    "expect-panic"
+  ],
+  "exit": 0,
+  "elapsed_seconds": 6.229161791969091,
+  "profile": "debug",
+  "files": {
+    "panic-caller/Cargo.toml": {
+      "bytes": 328,
+      "sha256": "65f01789623a5211bef00ca35d3a59481c77e14023c8c214f12828ce8812e722"
+    },
+    "panic-caller/Cargo.lock": {
+      "bytes": 5029,
+      "sha256": "6635515f1b6bb08177808aa316174a7f8ee6b4cb1b6a48e5c1ff461230ad89b9"
+    },
+    "panic-caller/src/main.rs": {
+      "bytes": 2314,
+      "sha256": "7b59c7fdd10f5dfb31732bc57d938eea2609997d1b46e6846cda8d4fcc9d7d19"
+    },
+    "panic-reproduction01.log": {
+      "bytes": 6234,
+      "sha256": "92a95132f8ad0f159cd99d72224a0b5b9893387cb0bdf9c8cac9d5947deb0359"
+    }
+  }
+}

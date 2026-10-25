@@ -35,3 +35,7 @@ Preserved cc-prompt-iteration01.md adds crates/cli/Cargo.toml for existing sha2.
 ## Issued extension preservation correction —2026-10-25
 
 cc-prompt-iteration02.md resolves the unkeyed ExtensionRecord boundary before freeze: owner/name is not identity; complete-equal-row ordered multiset max preserves within-input repetition, self-composition idempotence and distinct alternatives/evidence. All ID-bearing collision rules remain. This corrects in-flight interpretation of full-vector preservation, not model schema or source authority. Explicit public controls and full73226extension preservation required. Initial and iteration01 assignments remain unchanged.
+
+## Reproduced bookkeeping rejection —2026-10-25
+
+b74e715 remains unaccepted: public valid [A,A,B,B] and [A,A,B] self-composition independently expose representative-output-index/dense-count-vector mismatch at pack.rs513. Two positive counterparts pass. Preserved iteration03 owns the two-path count/doc repair and discriminating exact-vector controls; refinement03/5. Prior full source/import/embedding evidence remains exact historical proof; changed composition must pass current independent controls/full acceptance. All six rows OPEN.

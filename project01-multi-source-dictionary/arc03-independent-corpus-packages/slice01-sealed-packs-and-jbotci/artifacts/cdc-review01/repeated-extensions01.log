@@ -1,0 +1,75 @@
+Vlajmaji Arc03 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon)
+   Compiling vlajmaji-a03-s01-cdc-extension-repro-20261025a v0.0.0 (/tmp/vlajmaji-p01-a03-cdc/s01/panic-caller)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.93s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/a03_s01_cdc_extension_repro_20261025a expect-panic`
+distinct: VALID_INPUT_COMPOSED_EXACTLY
+one-repeat: VALID_INPUT_COMPOSED_EXACTLY
+
+thread 'main' (73369166) panicked at /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon/src/pack.rs:513:52:
+index out of bounds: the len is 2 but the index is 2
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/panicking.rs:679:5
+   1: core::panicking::panic_fmt
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/panicking.rs:80:14
+   2: core::panicking::panic_bounds_check
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/panicking.rs:271:5
+   3: <usize as core::slice::index::SliceIndex<[usize]>>::index
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/slice/index.rs:238:10
+   4: <[usize] as core::ops::index::Index<usize>>::index
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/slice/index.rs:19:15
+   5: <alloc::vec::Vec<usize> as core::ops::index::Index<usize>>::index
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/alloc/src/vec/mod.rs:3879:9
+   6: vlajmaji_lexicon::pack::compose_dictionaries
+             at /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon/src/pack.rs:513:52
+   7: a03_s01_cdc_extension_repro_20261025a::main::{closure#0}
+             at /private/tmp/vlajmaji-p01-a03-cdc/s01/panic-caller/src/main.rs:17:36
+   8: std::panicking::catch_unwind::do_call::<a03_s01_cdc_extension_repro_20261025a::main::{closure#0}, core::result::Result<vlajmaji_lexicon::dictionary::Dictionary, vlajmaji_lexicon::pack::PackError>>
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/panicking.rs:576:43
+   9: ___rust_try
+  10: std::panicking::catch_unwind::<core::result::Result<vlajmaji_lexicon::dictionary::Dictionary, vlajmaji_lexicon::pack::PackError>, a03_s01_cdc_extension_repro_20261025a::main::{closure#0}>
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/panicking.rs:544:19
+  11: std::panic::catch_unwind::<a03_s01_cdc_extension_repro_20261025a::main::{closure#0}, core::result::Result<vlajmaji_lexicon::dictionary::Dictionary, vlajmaji_lexicon::pack::PackError>>
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/panic.rs:359:14
+  12: a03_s01_cdc_extension_repro_20261025a::main
+             at /private/tmp/vlajmaji-p01-a03-cdc/s01/panic-caller/src/main.rs:17:9
+  13: <fn() as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+repeat-before-new-repeat: PANIC_ON_VALID_INPUT
+
+thread 'main' (73369166) panicked at /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon/src/pack.rs:513:52:
+index out of bounds: the len is 2 but the index is 2
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/panicking.rs:679:5
+   1: core::panicking::panic_fmt
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/panicking.rs:80:14
+   2: core::panicking::panic_bounds_check
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/panicking.rs:271:5
+   3: <usize as core::slice::index::SliceIndex<[usize]>>::index
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/slice/index.rs:238:10
+   4: <[usize] as core::ops::index::Index<usize>>::index
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/slice/index.rs:19:15
+   5: <alloc::vec::Vec<usize> as core::ops::index::Index<usize>>::index
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/alloc/src/vec/mod.rs:3879:9
+   6: vlajmaji_lexicon::pack::compose_dictionaries
+             at /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon/src/pack.rs:513:52
+   7: a03_s01_cdc_extension_repro_20261025a::main::{closure#0}
+             at /private/tmp/vlajmaji-p01-a03-cdc/s01/panic-caller/src/main.rs:17:36
+   8: std::panicking::catch_unwind::do_call::<a03_s01_cdc_extension_repro_20261025a::main::{closure#0}, core::result::Result<vlajmaji_lexicon::dictionary::Dictionary, vlajmaji_lexicon::pack::PackError>>
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/panicking.rs:576:43
+   9: ___rust_try
+  10: std::panicking::catch_unwind::<core::result::Result<vlajmaji_lexicon::dictionary::Dictionary, vlajmaji_lexicon::pack::PackError>, a03_s01_cdc_extension_repro_20261025a::main::{closure#0}>
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/panicking.rs:544:19
+  11: std::panic::catch_unwind::<a03_s01_cdc_extension_repro_20261025a::main::{closure#0}, core::result::Result<vlajmaji_lexicon::dictionary::Dictionary, vlajmaji_lexicon::pack::PackError>>
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/panic.rs:359:14
+  12: a03_s01_cdc_extension_repro_20261025a::main
+             at /private/tmp/vlajmaji-p01-a03-cdc/s01/panic-caller/src/main.rs:17:9
+  13: <fn() as core::ops::function::FnOnce<()>>::call_once
+             at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/ops/function.rs:250:5
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+repeat-before-new-self: PANIC_ON_VALID_INPUT
+passed=2 panics=2 unexpected_errors=0
+candidate_verdict=REJECTED
