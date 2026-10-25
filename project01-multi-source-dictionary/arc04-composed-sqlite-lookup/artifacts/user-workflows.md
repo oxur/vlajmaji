@@ -1,6 +1,6 @@
 # Arc04 user workflows and state contract
 
-Planning specification1.0,2026-10-25. **Mandatory outcomes; command names/flags below are conceptual, not implemented CLI syntax.** A04 is PLANNED only. Source7b1c565 currently offers explicit JSON dictionary-build/query/info/verify plus local pack materializers; this document does not change published/current behavior or authorize installation.
+Planning specification1.0,2026-10-25. **Mandatory outcomes; command names/flags below are conceptual, not implemented CLI syntax.** A04 was PLANNED only at this1.0checkpoint; currentgeneralrenewal/readiness and specificbudget/designHOLD are in arc-plan.md/protocol1.1. Source7b1c565 currently offers explicit JSON dictionary-build/query/info/verify plus local pack materializers; this document does not change published/current behavior or authorize installation.
 
 | Workflow | User's journey / required result | Delivery and acceptance |
 | --- | --- | --- |

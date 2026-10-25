@@ -1,6 +1,8 @@
 # Vlajmaji planning
 
-**Current authority (2026-10-25): Arc04 planning only.** Duncan authorized records/plan updates; implementation, investigation and installation are NOT issued. Arc01–03 remain accepted/immutable; all14projectrowsOPEN, A05/A06 unactivated. See `project01-multi-source-dictionary/arc04-composed-sqlite-lookup/arc-plan.md`. Root reviews the candidate before the scoped planning commit. No CC/source/target/store/network runs or new branch/worktree.
+**Current authority: Autonomous execution through Arc04 only renewed2026-10-25.** Existing Sol6.1/high CDC and Luna/high CC persist. Preflight/readiness and isolatedsetup are active; S01inquiry/effort/numericbudget answer is explicitly PENDING and providerdesign incomplete, so no CCissue/trial/Fullstore. Sourcecodex/project01-composed-sqlite-lookup from7b; all14projectrowsOPEN/A05–A06unactivated. See Arc04plan/protocol and S01DRAFT/HOLD set.
+
+**Historical planning-only authority (2026-10-25, superseded by the renewal below):** Duncan authorized records/plan updates; implementation, investigation and installation are NOT issued. Arc01–03 remain accepted/immutable; all14projectrowsOPEN, A05/A06 unactivated. See `project01-multi-source-dictionary/arc04-composed-sqlite-lookup/arc-plan.md`. Root reviews the candidate before the scoped planning commit. No CC/source/target/store/network runs or new branch/worktree.
 
 Planning artifacts live on orphan branch `planning`, worktree
 `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning`, under
@@ -65,3 +67,7 @@ All4children/24rows and8arcrowsDONE at source7b1c565 after fresh author-independ
 ## Arc04 planning-only follow-up —2026-10-25
 
 Duncan agreed A04 needs explicit local install/catalogue/default combined lookup/lifecycle/readable+compact workflows in addition to its three-way topology decision and selected integration, then requested the planning work. CDC owns only AGENTS/project-plan/design/projectledger and the four named Arc04plan/ledger/workflow/protocol paths. No slice trees/prompts/closing/verifier/retro or execution authority. Topology inquiry effort/operational budgets are proposed/held for later agreement, not run. Source7b/main52fd/Bauskec580/default/Arc01–03 immutable; no push. This supersedes only the earlier request-to-plan endpoint, not accepted history or execution gates.
+
+## Arc04 renewal and held S01 preparation —2026-10-25
+
+Duncan said “let’s dive in!” after the committedA04plan02c8063. Root renewed Arc04Autonomous scope and unchanged roles/models, then required explicit inquiry/operationalbudget gate. Isolatedsource `.worktrees/project01-arc04/vlajmaji`, branchcodex/project01-composed-sqlite-lookup, clean7b; siblingBauske read-only. No builds/adapters/stores/CCdispatch until gate+design ready. Current S01plan/ledger/prompt are DRAFT/HOLD, no issuedassignment. Prior acceptedarcs/actualdefault/main/Bauske remain protected, no push/publication.

@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 CLOSED; all14projectrowsOPEN; A04 PLANNED (planning only); A05/A06 not activated |
+| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 CLOSED; all14projectrowsOPEN; A04 authorized/readiness HOLD at inquiry budget gate; A05/A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.17 / 2026-10-25, America/Chicago |
+| version / date | 1.18 / 2026-10-25, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -109,7 +109,7 @@ define execution order. Later arcs are roadmap entries, not issued assignments.
 | [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Four scope-preserving slices after S01 sizing; current detail in arc plan. |
 | [02 — Reproducible full jbotci import](arc02-reproducible-jbotci-import/arc-plan.md) (CLOSED at4e37016) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Two useful slices: lossless Rust/CLI normalization, then pinned pipeline/full persistence composition. |
 | [03 — Independent corpus packages](arc03-independent-corpus-packages/arc-plan.md) (CLOSED at7b1c565; final canonical accepted) | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
-| [04 — Composed SQLite lookup](arc04-composed-sqlite-lookup/arc-plan.md) (PLANNED; planning only) | Fair unified/ATTACH/fanout decision and selected integration **plus** local selected/all4 install, catalogue/list/inspect, configured/default one-command exact/ref, lifecycle/recovery and readable/compact/full-detail output. | Accepted A01–03 contracts and exact four Full packs; execution/inquiry budget authorization pending. | Five useful increments; no implementation, investigation, topology selection or installation issued. |
+| [04 — Composed SQLite lookup](arc04-composed-sqlite-lookup/arc-plan.md) (authorized/readiness HOLD) | Fair unified/ATTACH/fanout decision and selected integration **plus** local selected/all4 install, catalogue/list/inspect, configured/default one-command exact/ref, lifecycle/recovery and readable/compact/full-detail output. | Accepted A01–03 contracts and exact four Full packs; generalArc04renewal authorized, specificS01inquiry/budget and providerdesign held. | Five useful increments; source setup/readiness only so far, no CC/trial/topology selection/installation issued. |
 | 05 — Owned dictionary | First-class editable source, revision/history and explicit editorial relationships, immutable export/reimport and its own optional data crate. | A01 model plus accepted A04 composition. | Model is reserved in A01; production editing belongs here. |
 | 06 — Integrated dictionary workbench | Rust/CLI source selection and grouped output across all packs and owned revisions; old query-family regression, removal/reload, paging, documentation and clean offline replay compose end to end. | Accepted predecessors. | Final integration adds remaining behavior; it must not postpone A01's usable lookup. |
 
@@ -325,7 +325,7 @@ Fresh technical and actual nine-body final canonical review independently ACCEPT
 
 -1.16 —2026-10-25: actual finalcanonical review independently accepted; mechanical8row/currentstatus/evidence/framing close only. No new capability/scope/terms/topology change or runtime rerun. RemainingA04/A05/A06/Operator/rights owners unchanged, project14OPEN.
 
-## Current Arc04 planning-only follow-up —2026-10-25
+## Historical Arc04 planning-only follow-up —2026-10-25
 
 Duncan agreed to expand the formerly topology-focused A04 roadmap into explicit user workflow deliveries and asked for the planning work now. Root bounded the request to records+A04plan, stopping before implementation. Arc04 is PLANNED, not active/issued; A05/A06 remain unactivated and all14projectrowsOPEN. Earlier stop-beforeA04 statements are accepted historical execution endpoints; this instruction authorizes planning only. Source7b/main52fd/Bauskec580/default/Arc01–03 records remain immutable. No CC/source/target/store/network/benchmark/installation or new branch/worktree.
 
@@ -334,3 +334,11 @@ The mandatory expansion (was: three-way topology comparison+selected integration
 Names, flags and catalogue/config/migration/projection schemas remain design decisions before owning prompts. Current full JSON and explicitSTORE compatibility are retained. Actual userdefault must not be switched by implementation/review; isolated scratch/XDG fixtures prove install/migration. Public redistribution Held does not block authorized internal local installation; no automatic network. Comparison [protocol](arc04-composed-sqlite-lookup/artifacts/topology-comparison-protocol.md) gives a concrete proposed7hour/5store/12GiB/600s-stage envelope and correctness-first criteria; neither investigation nor that budget is approved. Numeric latency/bytes/setup budgets require explicit resolution before affected trials/code, without invented subsecond claims. Root consistency review precedes scoped planning commit; no execution prompt exists.
 
 -1.17 —2026-10-25: after Arc03 closure exposed the remaining provisioning/default/output gap and Duncan explicitly agreed, added A04's five user workflows to roadmap/plan/ledger; retained three-candidate comparison and all A05/A06/Operator/rights owners. Planning-only authorization, no investigation/implementation or new acceptance claims.
+
+## Current Arc04 renewal / S01 HOLD —2026-10-25
+
+Duncan's “let’s dive in!” renews Autonomous execution THROUGHARC04ONLY with unchanged Sol6.1/highCDC/Luna/highCC. Existing plan02c8063 remains preserved. General source setup/design/readiness is authorized; explicit proposed inquiry/effort/operationalbudget question is pending asynchronously via root, not approved by silence. No CCissue/trial/newFullstore before returned answer and concrete source recipe. S01DRAFT/HOLD open set: arc04-composed-sqlite-lookup/slice01-topology-comparison/.
+
+Actual cleanisolated source fromaccepted7b: `.worktrees/project01-arc04/vlajmaji`, branch `codex/project01-composed-sqlite-lookup`, read-only Bauske sibling; unusedA04guard points to retainedtarget, no builds. Provider/API/trust/generation and exactread-onlyATTACH recipe holds are explicit in S01plan; source-guided coupling is identified, not falsely declared implementation-ready. All14projectrowsOPEN/A05–A06unactivated, acceptedArc01–03/source7b/main/default immutable, no push/publication.
+
+-1.18 —2026-10-25: recorded explicitArc04executionrenewal after planningcommit, pending inquiry/numericanswer, isolatedcodexsetup and honestunissuedS01HOLD open set. No runtime observation/decision or scope reduction; already-spent preparation counts toward proposedfreezeallowance rather than restarting it.

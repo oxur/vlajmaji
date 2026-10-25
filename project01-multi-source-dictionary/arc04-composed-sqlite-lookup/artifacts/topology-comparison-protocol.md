@@ -1,5 +1,7 @@
 # Proposed finite topology comparison protocol
 
+**Current version1.1 / 2026-10-25:** Duncan renewed Autonomous execution through Arc04 (“let’s dive in!”), unchanged CDC Sol6.1/high and CC Luna/high. General preflight/readiness/isolated setup is authorized; the concrete inquiry/effort/operational-budget agreement remains PENDING. No CC issue, adapter trial or new Full store before root relays Duncan’s response. The dated1.0 planning-only checkpoint below is historical.
+
 Version1.0,2026-10-25. **PROPOSED / NOT AGREED / NOT RUN.** This is scientific-methods planning for future S01. Duncan has authorized writing the plan only. No trial/prototype/store/benchmark is issued; separate agreement on usefulness, exact workload, operational budgets and effort below is required before execution.
 
 ## Decision and falsifiable question
@@ -59,3 +61,30 @@ No result exists now. Preserve exact source/pin/adapter/binary/lock/profile/vers
 ## Product integration and next owner
 
 After an authorized completed comparison, CDC records selected topology/reasons/limitations in the arc plan before S02 design/prompts. Library/CLI provisioning/catalogue/default/lifecycle/output work must use that decision and deliver allW1–W5. Failure to choose a correct bounded candidate blocks dependent implementation; it does not authorize a convenient one-file/per-pack default, automatic network or a reduced corpus. Owned mutable topology stays A05; broader workbench remains A06. All14projectrows remainOPEN.
+
+## Version1.1 — proposed operational sheet for explicit Operator response,2026-10-25
+
+CDC returned this proposal promptly; root accepted it **for presentation only**, not as trial authority. Every value below is an engineering proposal, not an observed guarantee. Keep fixed exact4pins, release profile, same host and maximum3balanced/alternating trials. No new runtime observation has been made. Scope is the frozen full-four-pack farvi5hit/3source workload and finite exact/reference controls, not arbitrary unbounded query sizes.
+
+| Measure boundary | Proposed median ceiling | Proposed maximum observed trial ceiling |
+| --- | ---: | ---: |
+| Fresh query-process typed startup/setup (before query/projection/output) | 5s | 8s |
+| Fresh fullfarvi end to end (process start through captured output) | 6s | 10s |
+| Fresh compact end to end, when that representation is implemented | 5.5s | 9s |
+| Warm exact/reference lookup+merge, excluding projection/serialization | 250ms | 750ms |
+| Fullfarvi hydration+serialization | 500ms | 1s |
+| Compact/readable projection+serialization | 50ms | 150ms |
+
+Compact five-hit UTF8JSON proposal: at most64KiB includingLF, no unrelated whole-release assertion inventories. Readable output for the same5hits: at most128KiB, no silent truncation. FullJSON remains complete/compatible; historical7,160,366B wire is not relabeled compact. Legitimate content/provenance cannot be dropped to meet a cap; an unsatisfied cap requires explicit budget/scope resolution. Numeric compact budgets apply at the affected output stage; absent/unimplemented compact is not a passing S01 measurement. Freeze representation fields/detail-reference semantics before using the sheet.
+
+Proposed peakRSS ceilings:8GiB for the entire read/query process including fanout;12GiB for create/verify. At most12GiB **new** data/scratch, excluding the retained shared build cache but recording cache delta. At most5SQLite connections and5logical database handles (catalogue+4packs); record actual attachment/runtime limits, including auxiliary-file/FD observations separately. No implicit multiplication of the RSS/connection cap by each fanout worker. Unavailable measurements are unresolved evidence, not passes.
+
+Existing effort proposal remains unapproved:7working hours total, at most5new Full stores (1unified + the SAME4shared by ATTACH/fanout),600s per individual create/verify stage, single writer/retained target. Correctness, identities, global pages/references and existing full compatibility remain hard gates with no speed trade-off.
+
+Proposed tie rule: call a latency advantage material only when it is greater than10% **and** greater than250ms fresh or25ms warm in at least2of3paired trials. Otherwise treat performance as tied and prefer demonstrably simpler lifecycle/recovery/migration. Conflicting material advantages or unsatisfied budgets return an explicit unresolved decision; do not manufacture a winner. No correct selected topology means A04-01 staysOPEN and dependent delivery remains unissued.
+
+Proposal basis only: accepted source7b1c565's one local fullCLI query3.027s,7.16MBwire and184.292s complete load/compose/create/reopen/verify/query run. These do not establish a timing distribution, peakRSS or compact result. Current shared typed startup/map cloning, complete availability/release cloning and pre-page hit hydration must be measured separately from topology. In particular page0 currently does hydration; SQL IDs-only ATTACH/fanout cannot fairly be compared with full unified responses. If a prototype uses a common canonical compositor, expose its complete setup/hydration and integration burden rather than assume it away, and independently exercise each candidate's selection/globalpages/references/generation failures. An unimplemented or incomparable adapter is not a measured losing candidate. Capture stdout/stderr separately in the future trials; preserve existing historical merged-stream limitation.
+
+Decision status: **awaiting Duncan’s explicit approval/amendment via root** for this sheet and the effort/inquiry envelope. Root is presenting the proposal asynchronously. CDC may continue bounded source/CI/ownership readiness and isolated nondefault branch setup; no inquiry execution or CC issue yet.
+
+Pending-question checkpoint recorded from clock2026-10-25 21:03:07UTC: root reports the full numeric proposal is now awaiting Duncan asynchronously. This is the CDC status-record timestamp, not a separately observed UI submission time; that exact submission timestamp is unavailable. Elapsed time/no reply is not consent. Only an explicit returned answer clears or amends the gate.

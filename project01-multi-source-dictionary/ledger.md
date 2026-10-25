@@ -50,3 +50,7 @@ All4children24rows and8arcrowsDONE after actual fresh technical/finalcanonical a
 ## Arc04 planning-only scope clarification —2026-10-25
 
 Duncan authorized updating records and writing A04plan after agreeing explicit local install/catalogue/defaultcombinedlookup/lifecycle/readable+compact workflows belong to A04 in addition to the three-way topology decision+selected integration. Arc04PLANNED/all10arcrowsOPEN, all14projectrowsOPEN; no implementation/investigation/install/benchmark issued. Existing projectcriteria/statuses/owners and Arc01–03 accepted evidence unchanged. A04 owns these five usable workflows; A05ownedpackage/editor and A06broaderQ01–Q06+owned final integration/Operator/rights gates remain. CurrentfullJSON/explicitSTORE/default preservation and pre-hydrationcompact projection are binding future acceptance boundaries; numeric budgets remain explicitly held before affected work.
+
+## Arc04 execution renewal / held first increment —2026-10-25
+
+GeneralAutonomousArc04renewed; concrete S01inquiry/effort/numericanswer pending and providerdesign HOLD. All10arc/6draftchild/14projectrowsOPEN. Newisolatedcodexsource only, no CC/trial/store/build/installation or newacceptance. Priorplanning-onlycheckpoint is historical; currentauthority/holds are arcplan/protocol/S01DRAFTset.

@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | PLANNED — planning authorized 2026-10-25; implementation and investigation NOT issued |
-| version / date | 1.0 / 2026-10-25, America/Chicago |
-| authority | Duncan agreed to expand the roadmap into explicit user workflows and asked “Can you do that work now?” Root bounded this instruction to updating records and writing this plan, stopping before implementation. |
+| status | AUTHORIZED — Autonomous Arc04 renewal2026-10-25; readiness active, S01inquiry/budget gate and author design HOLD; no CC/trial issued |
+| version / date | 1.1 / 2026-10-25, America/Chicago |
+| authority | Latest2026-10-25: Duncan renewed Autonomous execution THROUGHARC04ONLY (“let’s dive in!”), unchanged Sol6.1/highCDC/Luna/highCC. General readiness/setup authorized; specific S01inquiry/effort/numericbudget answer PENDING and author design HOLD, no CCissue/trial. Former planning-only instruction is retained in history. |
 | planning owner | Existing Sol6.1/high CDC; root consistency review before scoped planning commit. No CC assigned. |
 | accepted inputs | Arc01–03; current isolated source7b1c565, protected main52fd3c4/Bauskec5801ae; actual four Full packs and source/native/reference evidence |
-| integration destination | Future dedicated source branch/worktree chosen only after execution authorization and revalidation; none created for this plan |
+| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; created clean fromaccepted7b, no product changes/builds |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -65,3 +65,13 @@ This packet uses the current accepted project records and source7b1c565 text onl
 ## Version history
 
 - 1.0 —2026-10-25: planning-only Operator follow-up after accepted Arc03 explicitly expands A04 from topology selection/integration into five user workflows. Preserves the three-way comparison, complete data/contracts and A05/A06 ownership. No implementation or inquiry issued.
+
+## Current renewal / held source-guided first increment
+
+Duncan renewed AutonomousArc04 (“let’s dive in!”), unchanged explicitCDC/CCselection. This supersedes the originalplanning-only endpoint for generalexecution, but the S01specificinquiry/effort/numericsheet remains pending, as recorded in protocol1.1. General source setup/readiness is authorized; no CCissue/adapters/trials/Fullstore. Historical1.0no-slice/no-branch statements describe the prior planningcheckpoint; new S01plan/ledger/HOLDprompt are unissued readiness, not execution authority. Rootreviews currentcandidate before scopedplanningcommit.
+
+S01readiness identifies the concrete DictionaryStore/DictionarySearchEngine coupling and requires each U/A/Fprovider to load/compose its OWNcomplete document/state/exactIDs before SAMEtypedsetup/hit/ref/pagepolicy. A/F cannot borrow unifiedmetadata sidecar/results. Source API/trust/generation/ATTACH decisions are explicitly incomplete, not handed toCC. Preserve all sharedsetup/hydration costs, originalfullresponse and honestincomparableoutcome. Already-spent preparation is retained/charged, never reset to a fresh90minfreeze phase. A04-01requires a correct selectedtopology; no-selection leavesOPEN/dependentdeliveryunissued.
+
+-1.1 —2026-10-25: recorded Arc04renewal with separatependingbudgetgate, actualisolatedcodexworktree/unusedguard and source-guidedS01DRAFT/HOLD. No adapter/Fullstore/codechange or new runtime claim.
+
+Authority history clarification: former1.0authority was Duncan’s agreement to expand user workflows and “Can you do that work now?”, explicitly bounded by root to records/A04planning only. The later “let’s dive in!” renewal supersedes that current endpoint only as recorded above; it does not clear the specific inquiry/budget/design holds.
