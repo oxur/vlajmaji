@@ -31,3 +31,7 @@ Bothchildren/all15rows accepted at12fdd67/4e37016; fresh separate SolHigh techni
 ## Current endpoint —Arc02 CLOSED,2026-10-24
 
 Bothchildren/all15rows and all8arcrowsaccepted4e37016; fresh independent technical and finalcanonicalpacket gates complete5456b54. No active CCsource interval or target writer remains. Localplanning/sourcefeaturecommits only; main/Bauske/research/helddata protected. All14projectrowsOPEN; A03–A06unactivated. Stop at this endpoint and await new explicit arc authorization; no push/PR/merge/publication. Historicalpreparedcheckpoint above remains preserved.
+
+## Current bounded CLI follow-up —2026-10-24
+
+After accepted Arc02, Duncan requested DATA_HOME/vlajmaji/stores/default for grouped dictionary CLI and info, accurate help and later nonclobber relocation of one validated Lensisku-only store; future aggregate intent remains distinct. Existing Sol6.1High CDC/LunaHigh CC selection persists. Authorized bounded plan/prompt/evidence home is project01-multi-source-dictionary/artifacts/cli-default-store-followup/. Dedicated feature/project01-cli-default-store starts accepted4e37016; main/Bauske/A02snapshots protected, one retainedtargetwriter. This is not A03 activation or Arc02 reacceptance; all14projectrowsOPEN, no push/PR/publication/fulldataregeneration. CDC owns planning/review and CCsource/index only during issued interval. Earlierendpoint remains the historical accepted arc boundary.
