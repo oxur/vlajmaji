@@ -1,0 +1,9 @@
+# CDC prerequisite evidence at source 6fc740e
+
+Actual independent release caller: build exit 0; 18 composition and 40 snapshot/query controls PASS, including source-literal populations, all providers, references/pages, distinct-path generations, explicit corruption boundaries and live SQLite diagnostics. Actual frozen probe: four sealed Synthetic inputs → five tiny stores → U/A/F fresh run and two-prime/seventeen-response batch, all values and raw full tiny wire equal; all five database hashes unchanged. These are semantic and operational qualification, not Full corpus or topology selection.
+
+The source-input census reads the four accepted Arc03 canonical releases/seals, verifies exact pins and freezes every population category before any fresh Full create. It is a normalized input/count oracle, not native tuple proof. The expected unified digest comes from accepted Arc03, never candidate query output. Frozen Full workload has 24 primes plus 24 measured cases and source-derived reference targets.
+
+The first candidate's exact total stops inside the inner function and omits cleanup. Iteration02 at planning dd37b08 corrects that boundary before Full observations; the old timing field is not accepted as whole-call cost. Retain the actual semantic/builder receipts with this limit. No fresh Full candidate store or timing round has run. The approved cap is seven total, including two historical stores retained unchanged; all six slice rows remain OPEN.
+
+manifest01.json gives exact copied source/log/config hashes and original local paths. Raw full payloads, binaries, databases and bulk responses remain local. No accepted Arc01–03 record, user default, main or Bauske was changed. The separate cdc-wrapper-controls01.json retains the independent process-wrapper controls and initial sandbox setup failure.

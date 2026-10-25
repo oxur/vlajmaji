@@ -1,0 +1,175 @@
+{
+  "status": "PASS",
+  "scope": "independent actual Synthetic prepare-five-stores/run/batch qualification; not Full corpus, topology timing or selection",
+  "probe_sha256": "06ac76fd68c6df0e75089ecf193403307eb6dd2bc94c6461905aecc98ff813e4",
+  "script_sha256": "4eca4451f640e362c72dadeabe83e4395682173d70dd687a9c420911a4f682a1",
+  "config_sha256": "424266de410897c1ac96b8d536fabd45df6f496889ebf0fc94888b4bab77a7d9",
+  "requests_sha256": "58325d2025d4d8317396310aada39ab998547f843cebdf8c84901f6240259dc3",
+  "predeclared_category_count": 26,
+  "request_count": 19,
+  "priming_count": 2,
+  "providers": {
+    "unified": {
+      "responses": 17,
+      "full_wire_bytes": 30595,
+      "full_wire_sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6"
+    },
+    "attached": {
+      "responses": 17,
+      "full_wire_bytes": 30595,
+      "full_wire_sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6"
+    },
+    "fanout": {
+      "responses": 17,
+      "full_wire_bytes": 30595,
+      "full_wire_sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6"
+    }
+  },
+  "db_before": {
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/la-lojban/dictionary.sqlite3": "3fdb4a963d27dc4768cb3e6fb4962ca6b85407c6403c7f293c903c80313446a3",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/lensisku-jbotci/dictionary.sqlite3": "7829001dc7f2aa7c942d3685f5470d9115499532abcc5f526bcafd24498fce82",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/llg/dictionary.sqlite3": "56b05fa113fba8a32a1e1c1a5a696d3dd8c40ae5aa2e7b6b8024591f471cdc3f",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/sutysisku/dictionary.sqlite3": "1efdb4cfd0c2b10ce613e1b3afd7fbb401fabe11c54298f2d1e5f594707f5567",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/unified/dictionary.sqlite3": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+  },
+  "db_after": {
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/la-lojban/dictionary.sqlite3": "3fdb4a963d27dc4768cb3e6fb4962ca6b85407c6403c7f293c903c80313446a3",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/lensisku-jbotci/dictionary.sqlite3": "7829001dc7f2aa7c942d3685f5470d9115499532abcc5f526bcafd24498fce82",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/llg/dictionary.sqlite3": "56b05fa113fba8a32a1e1c1a5a696d3dd8c40ae5aa2e7b6b8024591f471cdc3f",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/sutysisku/dictionary.sqlite3": "1efdb4cfd0c2b10ce613e1b3afd7fbb401fabe11c54298f2d1e5f594707f5567",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/unified/dictionary.sqlite3": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+  },
+  "db_unchanged": true,
+  "attempts": [
+    {
+      "label": "prepare",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "-B",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/wrapper-controls02/stage_guard_time.py",
+        "--timeout",
+        "60",
+        "--max-rss-bytes",
+        "1073741824",
+        "--log",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/prepare-child.log",
+        "--",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "prepare",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/prepare.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "d09ebdd344ae0e6f9e973306f6608b64f3c72d79b0b795bde73322fa85e3588a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "unified-run",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "run",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "unified",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/requests.json",
+        "--request",
+        "full"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6",
+      "stderr_sha256": "ef8b0e2c537893a40e18afa1b40ff22803910e87448a34382ff201ac63e008bb"
+    },
+    {
+      "label": "unified-batch",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "batch",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "unified",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/requests.json",
+        "--output-dir",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/unified-batch"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "4802f41270d215202342f01e5c7a10f184c243d4156f4f5ed47c9dcc5550d88e",
+      "stderr_sha256": "93ee242cab941e487801342bd59f473ba6f2c69fb1ed16e006427b68a4dc2fcf"
+    },
+    {
+      "label": "attached-run",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "run",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "attached",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/requests.json",
+        "--request",
+        "full"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6",
+      "stderr_sha256": "7a0e226ab82d17a344b9c49067fb8e7434ed52ea6b402a2070d8a7b7c50be084"
+    },
+    {
+      "label": "attached-batch",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "batch",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "attached",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/requests.json",
+        "--output-dir",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/attached-batch"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "67d39a73c548d5437a8fe6ef6044b694d563d2ee6dfbb06b6012e98483f7c12a",
+      "stderr_sha256": "9faa656d75536be4315b8632824d0f21844ed778454ae21aaed6812a4961a172"
+    },
+    {
+      "label": "fanout-run",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "run",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "fanout",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/requests.json",
+        "--request",
+        "full"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6",
+      "stderr_sha256": "0058de129231cb6508ddb41d776762abc37c7a906e54406aa76ff9d072931ab4"
+    },
+    {
+      "label": "fanout-batch",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "batch",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "fanout",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/requests.json",
+        "--output-dir",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/fanout-batch"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "8b82c6e8024d535ffaa4d6fca3aa4f6e1677cbea013ee92afdc6a3662004f708",
+      "stderr_sha256": "8e0861ed5f70f8aa12fc82830fc29c52aa9488c2e70f8bbb36cb10e0d68344a2"
+    }
+  ]
+}

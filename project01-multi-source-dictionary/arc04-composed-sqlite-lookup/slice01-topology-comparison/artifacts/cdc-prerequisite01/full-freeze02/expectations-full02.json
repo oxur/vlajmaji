@@ -1,0 +1,63 @@
+{
+  "scope": "predeclared from accepted Arc03 raw/reference receipts and unchanged resolver source; not candidate output",
+  "full_wire": {
+    "legacy_unpaged_full_bytes": 7160366,
+    "legacy_unpaged_full_sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+  },
+  "farvi": {
+    "all": 5,
+    "groups": 3,
+    "LSK": 3,
+    "LLG": 1,
+    "SUT": 1,
+    "native_candidate_occurrences_before_filter": 5
+  },
+  "absent": {
+    "spelling": "xoprsnqv",
+    "occurrences": 0,
+    "native_candidate_occurrences": 0
+  },
+  "excluded-sut": {
+    "spelling": "zoizoizoi",
+    "sources": [
+      "SUT"
+    ],
+    "occurrences": 0,
+    "note": "retained raw-positive; do not force global native count from a source-filtered negative"
+  },
+  "references": {
+    "jbotci-local": "Resolved",
+    "jbotci-catalogue-native333": "Resolved",
+    "la-catalogue-native333": "Resolved",
+    "llg-component": "Resolved",
+    "sut-native-entry": "Resolved",
+    "unknown": "Unknown",
+    "unresolved": "Unresolved",
+    "wrong-role": "invalid_reference error",
+    "missing": "NoMatch"
+  },
+  "pages": {
+    "sizes": [
+      0,
+      1,
+      2,
+      3,
+      8
+    ],
+    "full_totals": 5,
+    "source_groups": 3,
+    "concat": [
+      "page-1",
+      "page-concat-2",
+      "page-concat-3",
+      "page-concat-4",
+      "page-concat-5"
+    ]
+  },
+  "warm_request_count": 24,
+  "warm_prime_count": 24,
+  "ordering": "U/A/F author round, A/F/U then F/U/A independent rounds; at most3rounds",
+  "source_manifest_sha256": "d2cebaf40686db8f5194fc76b498bf3828e53f5457ba94758c650a3935d6db71",
+  "requests_sha256": "9cc8a4cda7d0711531657541abc00dd4cf3b75913e90b624c7b754a2f548d9e4",
+  "source_resolver": "unchanged resolve_catalog, search/dictionary.rs1544-1678 at6fc740e: unmatched supplied native ID => NoMatch; unknown local-role entity => InvalidReference"
+}

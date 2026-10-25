@@ -1,0 +1,7 @@
+stage=open topology=unified start
+stage=open topology=unified elapsed_ms=1 profile=DictionarySnapshotOpenProfile { provider_open: 1.10225ms, document_load_and_composition: 157.208µs, common_index_setup: 268.375µs, total: 1.527875ms }
+stage=open topology=unified profile=DictionarySnapshotOpenProfile { provider_open: 1.10225ms, document_load_and_composition: 157.208µs, common_index_setup: 268.375µs, total: 1.527875ms }
+stage=exact request=full profile=DictionaryExactProfile { total: 141.833µs, candidate_sql: 48.125µs, hydration: 68.125µs, lookup_order_paging: 25.583µs }
+stage=value request=full elapsed_us=167
+stage=serialize request=full elapsed_us=42 bytes=30595 sha256=368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6
+stage=run-total elapsed_us=2300

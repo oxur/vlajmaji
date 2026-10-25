@@ -1,0 +1,162 @@
+[
+  {
+    "id": "prime-exact",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": null,
+    "prime": true
+  },
+  {
+    "id": "prime-reference",
+    "operation": "reference",
+    "target": {
+      "Local": {
+        "Assertion": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+      }
+    },
+    "page_size": null,
+    "prime": true
+  },
+  {
+    "id": "full",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": null
+  },
+  {
+    "id": "page0",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 0
+  },
+  {
+    "id": "page1",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1
+  },
+  {
+    "id": "page2",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "page1"
+  },
+  {
+    "id": "page3",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "page2"
+  },
+  {
+    "id": "page4",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "page3"
+  },
+  {
+    "id": "page5",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "page4"
+  },
+  {
+    "id": "LSK",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [
+      "LSK"
+    ],
+    "page_size": null
+  },
+  {
+    "id": "LLG",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [
+      "LLG"
+    ],
+    "page_size": null
+  },
+  {
+    "id": "SUT",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [
+      "SUT"
+    ],
+    "page_size": null
+  },
+  {
+    "id": "absent",
+    "operation": "exact",
+    "spelling": "no-such-tiny-spelling",
+    "sources": [],
+    "page_size": null
+  },
+  {
+    "id": "excluded",
+    "operation": "exact",
+    "spelling": "zoizoizoi",
+    "sources": [
+      "SUT"
+    ],
+    "page_size": null
+  },
+  {
+    "id": "valid-ref",
+    "operation": "reference",
+    "target": {
+      "Local": {
+        "Assertion": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+      }
+    },
+    "page_size": null
+  },
+  {
+    "id": "wrong-role",
+    "operation": "reference",
+    "target": {
+      "Local": {
+        "Entry": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+      }
+    },
+    "page_size": null,
+    "expected_error": "invalid_reference"
+  },
+  {
+    "id": "following-ref",
+    "operation": "reference",
+    "target": {
+      "Local": {
+        "Assertion": "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+      }
+    },
+    "page_size": null
+  },
+  {
+    "id": "unknown",
+    "operation": "reference",
+    "target": "Unknown",
+    "page_size": null
+  },
+  {
+    "id": "unresolved",
+    "operation": "reference",
+    "target": {
+      "Unresolved": "explicit tiny unresolved reference"
+    },
+    "page_size": null
+  }
+]

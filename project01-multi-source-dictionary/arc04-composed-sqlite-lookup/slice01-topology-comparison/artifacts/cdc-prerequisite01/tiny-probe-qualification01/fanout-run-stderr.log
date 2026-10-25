@@ -1,0 +1,7 @@
+stage=open topology=fanout start
+stage=open topology=fanout elapsed_ms=4 profile=DictionarySnapshotOpenProfile { provider_open: 3.557375ms, document_load_and_composition: 418.792µs, common_index_setup: 110.625µs, total: 4.087042ms }
+stage=open topology=fanout profile=DictionarySnapshotOpenProfile { provider_open: 3.557375ms, document_load_and_composition: 418.792µs, common_index_setup: 110.625µs, total: 4.087042ms }
+stage=exact request=full profile=DictionaryExactProfile { total: 265.875µs, candidate_sql: 94.375µs, hydration: 151.707µs, lookup_order_paging: 19.793µs }
+stage=value request=full elapsed_us=154
+stage=serialize request=full elapsed_us=44 bytes=30595 sha256=368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6
+stage=run-total elapsed_us=4894

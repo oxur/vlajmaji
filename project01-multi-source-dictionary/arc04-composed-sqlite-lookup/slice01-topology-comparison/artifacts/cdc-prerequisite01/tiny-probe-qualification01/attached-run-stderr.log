@@ -1,0 +1,7 @@
+stage=open topology=attached start
+stage=open topology=attached elapsed_ms=4 profile=DictionarySnapshotOpenProfile { provider_open: 4.403333ms, document_load_and_composition: 457.75µs, common_index_setup: 98.834µs, total: 4.960041ms }
+stage=open topology=attached profile=DictionarySnapshotOpenProfile { provider_open: 4.403333ms, document_load_and_composition: 457.75µs, common_index_setup: 98.834µs, total: 4.960041ms }
+stage=exact request=full profile=DictionaryExactProfile { total: 228.917µs, candidate_sql: 126.875µs, hydration: 82.583µs, lookup_order_paging: 19.459µs }
+stage=value request=full elapsed_us=144
+stage=serialize request=full elapsed_us=41 bytes=30595 sha256=368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6
+stage=run-total elapsed_us=5748
