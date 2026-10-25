@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 CLOSED; Arc02 technical composition PASS, final canonical packet pending; A03–A06 not activated |
+| status | project OPEN; Arc01 and Arc02 CLOSED; all14projectrowsOPEN; A03–A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.12 / 2026-10-24, America/Chicago |
+| version / date | 1.13 / 2026-10-24, America/Chicago |
 
 ## Purpose and first useful result
 
@@ -26,7 +26,7 @@ and explicit availability. Subsequent arcs make it work with full, independently
 selectable corpora and an editable dictionary of our own.
 
 The design and remaining decisions are in [design.md](design.md). Acceptance is in
-[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is now activated by the renewed authority below; A03–A06 remain unactivated.
+[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is now CLOSED after both accepted children and separate fresh technical/finalcanonical review; A03–A06 remain unactivated.
 
 ## Decisions already made
 
@@ -107,7 +107,7 @@ define execution order. Later arcs are roadmap entries, not issued assignments.
 | Arc | Usable capability and destination | Required inputs | Detail now |
 | --- | --- | --- | --- |
 | [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Four scope-preserving slices after S01 sizing; current detail in arc plan. |
-| [02 — Reproducible full jbotci import](arc02-reproducible-jbotci-import/arc-plan.md) (technical PASS; final packet pending) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Two useful slices: lossless Rust/CLI normalization, then pinned pipeline/full persistence composition. |
+| [02 — Reproducible full jbotci import](arc02-reproducible-jbotci-import/arc-plan.md) (CLOSED at4e37016) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Two useful slices: lossless Rust/CLI normalization, then pinned pipeline/full persistence composition. |
 | 03 — Independent corpus packages | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
 | 04 — Composed SQLite lookup | Compare unified derived index, ATTACH and application fanout on the same complete contract, then implement the selected composition and availability/query-snapshot policy. | A01 queries and A03 real pack releases. | One bounded decision followed by usable integration; no topology selected now. |
 | 05 — Owned dictionary | First-class editable source, revision/history and explicit editorial relationships, immutable export/reimport and its own optional data crate. | A01 model plus accepted A04 composition. | Model is reserved in A01; production editing belongs here. |
@@ -140,7 +140,7 @@ open. This plan neither completes them nor restarts the parked phonology arc.
 | --- | --- |
 | Concrete registry IDs, alias validation and source-lineage records | Resolved and independently accepted A01S01at11ec701; exact aliases/history/attribution compose at efef9c4. Existing IDs preserved. |
 | Concrete DDL, archive/normalized version transition and standards mapping | Resolved A01S02model37c3518+S03store01a9ceb3; explicit versions/legacy adapter/rebuild and standards loss register, independently composed. Production topology remainsA04. |
-| Full raw jbotci shape, observed counts, unknown/wiki-row eligibility | Resolved A02at4e37016:33526raw/278254fields/33516eligible/31248spellings; every row retained,9blank+1wiki explicitly excluded. Supplier counts reconciled separately; final canonical packet pending. |
+| Full raw jbotci shape, observed counts, unknown/wiki-row eligibility | Resolved A02at4e37016:33526raw/278254fields/33516eligible/31248spellings; every row retained,9blank+1wiki explicitly excluded. Supplier counts reconciled separately; independent finalcanonicalpacket accepted5456b54. |
 | Corpus component boundaries, common pack API and feature host | A03 before package assignments; separate source/distributor identities are already required. |
 | Unified SQLite / ATTACH / fanout, ranking policy and query consistency | A04 decision after correctness comparison, before dependent integration. No merging local FTS top-k as if ranks were global. |
 | Owned editor conflict/revision semantics | A05 before production editing; preserve prior assertion references. |
@@ -214,7 +214,7 @@ exact original paths, revisions, SHA-256 and byte sizes for every copied file.
 Old source pins and measurements remain dated evidence, not current service or
 performance claims. No full corpus, database or Cargo build cache was copied.
 
-Current next: same fresh independent SolHigh context reviews the actual canonical Arc02 close/verification/retrospective/plan/ledger/project bubble-up packet. Its technical composition PASS at4e37016 freshly imported full raw, created/dropped/strictly reopened its own complete store, reconciled335308+207393predicates and consumed20publicinvocations/actualreleaseCLI/offlinecontrols. Both children remainclosed; finalarcpacket/project acceptance is not inferred. Oldwriter600s remains incomplete history. All14projectrows remainOPEN; A03–A06unactivated.
+Current endpoint: Arc02 is CLOSED at4e37016 after independent child/technical/finalcanonical acceptance5456b54. Actual full import→standalonecanonical→ownfreshstore/drop/strictreopen→sourcegroupedRust+actualCLI/offlinecontrols composes; all8arcrows/15childrowsDONE. Oldwriter600s remains incomplete history. Return at this authorized endpoint; A03–A06remainunactivated and require a new explicit arc instruction. All14projectrowsremainOPEN; no push/PR/mainintegration/publication or project/Operator acceptance.
 
 ## Planning validation — initial draft checkpoint
 
@@ -281,14 +281,20 @@ Canonical arc02-reproducible-jbotci-import S01 is independently accepted at12fdd
 
 - 1.10 —2026-10-24: actual bounded full-input readiness exposed alphabetical deferred-FK load scans; old create stopped at600s with native/EXPLAIN/schema evidence and untouched incomplete artifacts. Opened S02useful pinnedworkflow/fullpersistedlookup plus narrow schema-preserving load/query corrections,8open childrows. Retained old binary/common-new-store comparison replaces prohibitively slow old writer prerequisite, not actual full persistence/query acceptance. All14projectrows remainopen; no A03.
 
-## Arc02 current S02 close and remaining gate,2026-10-24
+## Arc02 historical S02-close checkpoint,2026-10-24
 
 Both children accepted: S01at12fdd67/all7rows, S02at4e37016/all8rows. Full raw33526rows/278254fields,33516eligibleoccurrences/31248spellings,73226extensions compose with explicit pinned acquisition/offline replay/check/update and fresh complete relational/query/publicoutside behavior; current gates88/90Rust+19tools/onehistoricalresearchignore pass. A02-01/02DONE/6arcOPEN awaiting fresh independent technical/finalcanonical composition;14projectrowsOPEN. Freshengine strictopen25.059srelease (outside26.383s) and one-shotdebugCLI91.533s are practical costs owned P01-08/A04 operational comparison and P01-11/12/A06 integrated API/rebuild work. Long-lived engine amortization/response-ownedmetadata/occurrence scans remain explicit; noconstanttime/endtoendCLIratio/heapbyteclaim/newtopologydecision. Source/main/Bauske remain protected/frozen; noA03/push/publication.
 
 -1.11 —2026-10-24: S02 supplied full useful pipeline/persistedlookup and all8independent rows, current nextstep is fresh separate assembled arc review. Updated currentstatus/latency carryovers while preserving historical readiness/attempts; header previouslystill1.8 despite historythrough1.10, nowreconciled. No structural roadmap/scope reduction or project-row closure.
 
-## Arc02 fresh technical composition and proposed bubble-up,2026-10-24
+## Arc02 historical technical/proposed-packet checkpoint,2026-10-24
 
 Both roadmapA02capability slices delivered and fresh independent full-path technical composition PASS4e37016; actual canonical proposal is arc02-reproducible-jbotci-import/closing-report.md with CDCverification/retrospective. No promised A02runtime obligation deferred or dropped; detailed all14remaining-owner mapping is there. A03allfouroptionalcollections/features,A04unified/ATTACH/fanout,A05ownedediting/export,A06integratedworkbench and Duncanprojectgate remain. Cold strictopen~25srelease/actualreleaseCLI25.619s plus retaineddebug91.533s are practical carryovers to P01-08/A04 and P01-11/12/A06, no topology or newoptimization choice. Same-context finalcanonicalgate is stillpending; all14projectrowsOPEN/noA03.
 
 -1.12 —2026-10-24: A02fresh full independent technical composition succeeded after bothchildcloses. Updated current shape/count decision and roadmap/currentnext with actual result; assembled canonical bubble-up/retro pending independent finalpacket. Original scope/decomposition retained; no projectrow closed or laterarc activated.
+
+## Arc02 CLOSED and current project carryover —2026-10-24
+
+Fresh technical and actual finalcanonicalpacket accepted at4e37016/5456b54; bothplannedchildren/all15rows and all8arcrowsDONE. RoadmapA02fullrawnormalization/API/CLI/pinnedworkflow/standalonerelease/fullpersistedgroupedlookup delivered without a deferredruntimeobligation. All14projectrowsstayOPEN. A03allfourrequiredoptionalcollections/features,A04fairunified/ATTACH/fanout,A05ownedediting/export,A06integratedprojectreplay and Duncanprojectgate retain their exact owners. Strictopen~25srelease/releaseCLI25.619s/debugCLI91.533s practical costs remain P01-08/A04 and P01-11/12/A06; source response-ownedmetadata/occurrence scans explicit, no topologyselection/constanttime/endtoendspeedclaim. Localfeature source4e37016 unchanged; protectedmain/Bauske clean. StopbeforeA03/noexternalpublication.
+
+-1.13 —2026-10-24: Arc02actualfinalcanonicalpacket independently accepted5456b54, authorizing mechanicalstatus/evidence/framing close only. All8arcrowsclosed, all14projectrowsopen; currentroadmap/next/shape decision and fullremainingowners reconciled. Earlierpreparedcheckpoints remainexplicitlyhistorical, no source/runtime/newscope action.
