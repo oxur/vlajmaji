@@ -29,7 +29,10 @@ JSON object to stderr, no stdout, and a nonzero exit. See the
 
 `jbotci-import RAW METADATA FRESH.json` locally normalizes a hash-pinned export;
 `jbotci-check RAW METADATA [--release RELEASE.json]` validates it without
-writing. See the [jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci-import.md)
-for preservation, identity, metadata, and content-notice limits.
+writing. `make jbotci-acquire`, `jbotci-replay`, `jbotci-check`, and
+`jbotci-update` provide the explicit pinned local workflow; each requires a
+caller-chosen cache root and fresh release/store paths where applicable. See
+the [jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci-import.md)
+for pins, preservation, identity, metadata, and content-notice limits.
 
 Corpus data is not bundled. See the [data and replay guide](https://github.com/oxur/vlajmaji/blob/main/docs/migration.md) for the current research-input workflow. Licensed under Apache-2.0.

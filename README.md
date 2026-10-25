@@ -38,7 +38,8 @@ The Rust workspace already provides:
 - A JSON CLI, `vlajmaji`, including `dictionary-build` and `dictionary-query`
   alongside the existing archive/search commands.
 - A lossless local jbotci export normalizer with `jbotci-import` and
-  read-only `jbotci-check` commands ([import guide](docs/jbotci-import.md)).
+  read-only `jbotci-check` commands and an explicit pinned acquire/replay/check/
+  update workflow ([import guide](docs/jbotci-import.md)).
 - An umbrella library, `vlajmaji`, exposing `lexicon`, `store`, and `search`, with
   optional `morphology` and `graph` features.
 
@@ -103,9 +104,9 @@ the separately gated full-corpus test.
 
 ## Where this is going
 
-Next come reproducible full-corpus imports, independently selectable corpus
-packages, multi-store composition, and an editable dictionary of our own. The longer aim is
-a practical vocabulary laboratory connected to Bauske's linguistic tools.
+Next come independently selectable corpus packages, multi-store composition,
+and an editable dictionary of our own. The longer aim is a practical vocabulary
+laboratory connected to Bauske's linguistic tools.
 
 The workspace is on the **0.3.0 development cycle**; its APIs remain experimental.
 The latest published release is **0.2.0**.

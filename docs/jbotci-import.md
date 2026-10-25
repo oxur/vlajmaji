@@ -80,7 +80,48 @@ held pending verification of source coverage and authorization. The adapter
 does not copy or publish corpus data. Its Apache-2.0 code notice is recorded
 separately from the content notice.
 
-## CLI and local proof
+## Pinned local workflow
+
+The repository ships a strict four-key manifest at
+`scripts/jbotci-pinned.env`. It is data, never shell code: the workflow accepts
+only `version`, `revision`, `raw_sha256`, and `metadata_sha256` assignments.
+The default is an exact source commit and two exact digests; it never follows a
+branch or chooses a newer revision automatically. `acquire`, `replay`, `check`,
+and `update` are explicit operations. Cache directories are keyed by the full
+revision/raw/metadata tuple and use a versioned `complete` marker. Existing,
+partial, symlinked, or occupied outputs are preserved and rejected; all
+successful output files and stores are create-new.
+
+For a local run, choose fresh paths and an explicit cache root:
+
+```sh
+export CARGO_TARGET_DIR=/tmp/vlajmaji-target
+make jbotci-acquire JBOTCI_CACHE=/tmp/vlajmaji-jbotci-cache
+make jbotci-replay JBOTCI_CACHE=/tmp/vlajmaji-jbotci-cache \
+  JBOTCI_RELEASE=/tmp/vlajmaji-release.json \
+  JBOTCI_STORE=/tmp/vlajmaji-store
+make jbotci-check JBOTCI_CACHE=/tmp/vlajmaji-jbotci-cache \
+  JBOTCI_RELEASE=/tmp/vlajmaji-release.json
+```
+
+`acquire` downloads only the two fixed files at the manifest's commit and runs
+the real Rust check before creating the completion marker. Repeating it against
+an already complete cache verifies it offline. `replay` rechecks that cache,
+creates the normalized release and an exact stdout report sidecar, checks the
+release against the pinned bytes, and can optionally build a fresh grouped
+dictionary store. `check` is read-only. `update` requires a separate explicit
+manifest and fresh outputs; it preserves prior pins and releases. A candidate
+with valid structure but supplier count mismatches retains its input files,
+release and report, exits nonzero, and receives neither a completion marker nor
+the requested store. Correcting or retrying that candidate requires a fresh
+cache/output path; the pipeline does not remove or adopt an incomplete attempt.
+The `CURL` override accepts one executable path and is intended for local
+transport tests. Normal acquisition uses curl. Set `VLAJMAJI_BIN` to one
+existing executable to bypass Cargo; otherwise the script requires an explicit
+`CARGO_TARGET_DIR` and runs the locked Rust 1.98 CLI offline.
+
+The public `jbotci-import` and `jbotci-check` commands remain useful on local
+files:
 
 `vlajmaji jbotci-import RAW METADATA FRESH.json` validates the complete import,
 serializes it, and creates the output with create-new semantics. It never
@@ -93,11 +134,13 @@ observed population. Both commands accept `--revision`, `--raw-sha256`, and
 `--metadata-sha256` overrides. Errors are structured JSON on stderr, with empty
 stdout and a nonzero status.
 
-For the local pinned files, the public example checks both exact input byte
-captures, writes the canonical model bytes to a fresh output path, reloads the
-release, and checks the full population. The example uses exclusive create and
-does not append a line feed; the CLI's human-readable output file does append
-one final line feed, so those file byte counts differ by one:
+For the pinned input, the public example checks both exact input byte captures,
+writes the canonical model bytes to a fresh output path, reloads the release,
+and checks the full population. The example does not append a line feed; the
+CLI output file does append one. The measured API canonical document is
+215,412,497 bytes; the CLI release file is 215,412,498 bytes. These are two
+representations of the same validated model, not interchangeable byte
+identities. The example uses exclusive create:
 
 ```sh
 cargo +1.98.0 run --locked --offline -p vlajmaji-lexicon \
@@ -106,7 +149,15 @@ cargo +1.98.0 run --locked --offline -p vlajmaji-lexicon \
 
 The observed pinned export contains 33,526 rows and 278,254 ordered native
 fields. It produces 33,516 lexical occurrences, 10 excluded occurrences,
-31,248 distinct eligible spellings, and 238 contributors. The raw capture is
+31,248 distinct eligible spellings and 238 contributors. The persisted
+projection contains 73,226 extension rows: 39,721 per-gloss-object records,
+30,683 whole-field gloss records, 2,821 place-field records, and one raw
+metadata-text record. The raw capture is
 17,163,482 bytes and metadata is 514 bytes. These are replay observations,
-not claims about other revisions or a redistributable data package. Keep raw
-and metadata files local; acquisition and packaging are separate work.
+not claims about other revisions or a redistributable data package. The
+normalized model and persisted projection preserve each raw field, including
+repeated object keys, nested keys, unknown values, and source order. Duplicate
+native values are not deduplicated into editorial claims. Keep raw and metadata
+files local. The `Held` content-redistribution status, the supplier's public
+domain statement, and the Apache-2.0 code notice are distinct: no permission to
+redistribute the corpus is inferred from the supplier notice or code license.

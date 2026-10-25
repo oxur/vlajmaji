@@ -730,20 +730,21 @@ impl DictionarySearchEngine {
         spelling: &str,
         options: DictionaryExactOptions,
     ) -> Result<DictionaryExactResponse, DictionaryQueryError> {
-        let document = self.dictionary.document();
         let availability = self.availability.clone();
         let resolved_sources = self.resolve_sources(&options, &availability)?;
-        let source_set: BTreeSet<_> = resolved_sources.iter().cloned().collect();
         let candidate_ids = self.store.exact_assertion_ids(spelling)?;
         let native_candidate_occurrences = candidate_ids.len();
         let candidate_set: BTreeSet<_> = candidate_ids.iter().map(ToString::to_string).collect();
-        let selected_assertions: BTreeSet<String> = source_set
-            .iter()
-            .filter_map(|source| self.selected_assertions.get(source))
-            .flat_map(|ids| ids.iter().cloned())
-            .collect();
         let mut hits = Vec::new();
-        for assertion_id in candidate_set.intersection(&selected_assertions) {
+        for assertion_id in &candidate_set {
+            let selected_for_source = resolved_sources.iter().any(|source| {
+                self.selected_assertions
+                    .get(source)
+                    .is_some_and(|assertions| assertions.contains(assertion_id))
+            });
+            if !selected_for_source {
+                continue;
+            }
             let assertion = self.assertions.get(assertion_id).ok_or_else(|| {
                 DictionaryQueryError::Integrity {
                     detail: format!(
@@ -830,11 +831,12 @@ impl DictionarySearchEngine {
             group.returned_count = group.hits.len();
             group.partial = group.returned_count < group.full_count;
         }
+        let metadata = self.dictionary.metadata();
         Ok(DictionaryExactResponse {
             version: 1,
             policy: EXACT_POLICY.into(),
             store_schema_version: 1,
-            catalogue_revision: document.metadata.catalogue_revision,
+            catalogue_revision: metadata.catalogue_revision,
             state_sha256: self.state_sha256.clone(),
             spelling: spelling.to_owned(),
             resolved_sources,
@@ -844,7 +846,7 @@ impl DictionarySearchEngine {
             availability,
             groups,
             next_cursor,
-            code_notices: document.metadata.code_notices,
+            code_notices: metadata.code_notices.clone(),
         })
     }
 
@@ -858,7 +860,7 @@ impl DictionarySearchEngine {
         &self,
         target: &RelationTarget,
     ) -> Result<ReferenceResolution, DictionaryQueryError> {
-        let document = self.dictionary.document();
+        let metadata = self.dictionary.metadata();
         let availability = self.availability.clone();
         match target {
             RelationTarget::Unknown => Ok(ReferenceResolution {
@@ -911,7 +913,7 @@ impl DictionarySearchEngine {
                 })
             }
             RelationTarget::Catalog(catalog) => {
-                self.resolve_catalog(target, catalog, &document, availability)
+                self.resolve_catalog(target, catalog, metadata, availability)
             }
         }
     }
@@ -1238,24 +1240,21 @@ impl DictionarySearchEngine {
         &self,
         target: &RelationTarget,
         catalog: &CatalogTarget,
-        document: &lexicon::DictionaryDocument,
+        metadata: &lexicon::DictionaryMetadata,
         availability: Vec<DictionarySourceAvailability>,
     ) -> Result<ReferenceResolution, DictionaryQueryError> {
-        let release = document
-            .metadata
+        let release = metadata
             .releases
             .iter()
             .find(|row| row.id == catalog.release)
             .cloned()
             .ok_or_else(|| invalid_ref("catalogue release does not exist"))?;
-        let component = document
-            .metadata
+        let component = metadata
             .components
             .iter()
             .find(|row| row.id == release.component)
             .ok_or_else(|| invalid_ref("catalogue release has no component"))?;
-        let collection = document
-            .metadata
+        let collection = metadata
             .collections
             .iter()
             .find(|row| row.id == component.collection)
