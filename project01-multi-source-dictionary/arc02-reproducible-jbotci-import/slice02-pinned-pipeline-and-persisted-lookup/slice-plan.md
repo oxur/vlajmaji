@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status/version | OPEN/initial assignment with count-label clarification,1.1,2026-10-24 |
+| status/version | OPEN/candidate01 rejected, iteration01 issued,1.2,2026-10-24 |
 | predecessor | S01 independently accepted12fdd67; canonical close33435841 |
 | source | feature/project01-full-jbotci-import at12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69; isolated Arc02checkout |
 | authority | Project cdc-directive02.md; Autonomous/Expedited CDC SolHigh + same LunaHigh CC; no A03/push/publication |
 | deliverable | Explicit pinned Bash3.2/Make acquire/replay/check/update + actual full release/store/grouped lookup, with narrow diagnosed load/query integration corrections |
-| current assignment | cc-prompt.md; up to5numbered refinements, none executed |
+| current assignment | iteration01/cc-prompt.md; first repair issued, execution pending acknowledgment; up to5 |
 | evidence | ../artifacts/s02-readiness.md and its hashed directory; artifacts/cc-execution.md solely CC-owned during interval |
 
 ## Fixed source/pins and limits
@@ -54,3 +54,7 @@ All8rows remain OPEN until CDC reproduces. CC may propose all rows but cannot se
 The unchanged issued cc-prompt.md labels42,542 as “native extensions”; that is the39,721 per-gloss-object +2,821 place-keyword subset, not a complete extension total. Frozen accepted importer12fdd67 jbotci.rs1298–1305 also emits one lensisku.gloss_keywords.raw extension for each30,683 present whole gloss fields;1356–1361 emits per-object extensions,1377–1383 place fields,1548–1553 one release metadata extension. The14-field pin has no unknown native fields, so the source-derived expected full population is73,225 source-evidenced native extensions +1 metadata =73,226 TOTAL. Actual current full-model/SQL population measurement remains required; expected arithmetic is not an executed receipt. Preserve all whole-field and per-object representations; no importer/product change or scope reduction is authorized to force an earlier partial count.
 
 CDC corrected its prospective, previously unexecuted SQL oracle to compare the entire whole-field/per-object/place multiset plus metadata and exact by-name totals. The original prospective hash/issued prompt and accepted S01 records remain preserved. S01’s full raw-field/context/form/etymology checks and acceptance are not retroactively relabelled as a complete SQL extension-total check. This is a count-label/oracle-intake correction, not an implementation repair prompt or a consumed refinement. All8child rows remain OPEN.
+
+## Candidate01 independent disposition and iteration01,2026-10-24
+
+Candidate8da776b remains clean/rejected after13actual cheap controls (4pass/9contract disagreements) and full changed-source/test/prose review; artifacts/cdc-review01/review.md owns exact evidence/disposition. Refuted NUL hypothesis stays passed. First bounded repair corrects report exclusive-open, exact pin grammar, caller-selected aliases including standardMac/tmp, late-failure path context, missing source-level reversed-self-reference guard, and scoped Make sentinel. Four-path repair allowlist/preserved core Rust source is in iteration01/cc-prompt.md. Make update-only JBOTCI_NEW_PINS is explicitly accepted as a deliberate-manifest interface; document its actual example. All8rowsOPEN, A02-01only arcDONE, project14OPEN; full independent composition/gates remain pending.

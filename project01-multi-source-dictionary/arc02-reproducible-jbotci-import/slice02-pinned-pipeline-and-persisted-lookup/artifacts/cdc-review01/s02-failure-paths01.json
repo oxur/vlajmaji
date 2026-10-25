@@ -1,0 +1,36 @@
+{
+  "label": "s02-failure-paths01",
+  "argv": [
+    "python3",
+    "-B",
+    "/tmp/vlajmaji-p01-a02-cdc/s02_failure_paths01.py",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths01-cases"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "start_utc": "2026-10-25T00:10:51.286373+00:00",
+  "head_before": "8da776bc1db0098aa981db6780b85cee3f09d429",
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  },
+  "state": "completed",
+  "pid": 10908,
+  "returncode": 0,
+  "elapsed_seconds": 0.1897469167597592,
+  "end_utc": "2026-10-25T00:10:51.492429+00:00",
+  "head_after": "8da776bc1db0098aa981db6780b85cee3f09d429",
+  "streams": {
+    "stdout": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths01.stdout",
+      "bytes": 2011,
+      "sha256": "931804e4fc9e070ea668712371318e624598131b83d6dd5df938a5c214bfa7db"
+    },
+    "stderr": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths01.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

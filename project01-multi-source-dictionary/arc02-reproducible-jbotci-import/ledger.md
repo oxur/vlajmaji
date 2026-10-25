@@ -25,3 +25,7 @@ S02slice02-pinned-pipeline-and-persisted-lookup has8OPEN rows/currentcc-prompt.m
 ## S02 count-label reconciliation,2026-10-24
 
 Current S02plan1.1/readiness correct the issued prompt’s42,542partial object/place-extension label. Source-derived expected complete population is73,225native (including30,683whole gloss fields) +1metadata =73,226total; actual full-model/SQL measurement remains required. CDC corrected its never-executed prospective oracle before candidate execution. No importer/accepted S01 history was changed, no refinement consumed, and statuses remain1of8arcDONE/7OPEN,8of8S02OPEN,14projectOPEN.
+
+## S02 candidate01 rejected,2026-10-24
+
+Independent13cheap controls at8da776b yield4pass/9contract disagreements, including decisive `/tmp`↔`/private/tmp` pair and two report overwrite races. NUL hypothesis refuted. S02iteration01 owns bounded repair/currentplan1.2; full independent source/raw/SQL/old-new composition remains pending. A02-01DONE/7arcOPEN, all8S02OPEN, project14OPEN, noA03.

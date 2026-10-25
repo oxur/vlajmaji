@@ -1,0 +1,34 @@
+{
+  "prepared_at": "2026-10-24T23:28:57.277943+00:00",
+  "state": "prospective; no S02 candidate execution; CC owns source/target",
+  "files": {
+    "pipeline_controls.py": {
+      "bytes": 13979,
+      "sha256": "cce7f42019783ec6969dd2b03ff66e1258fb971c1554620d950064784ea6f33a"
+    },
+    "verify_sqlite.py": {
+      "bytes": 12946,
+      "sha256": "b1c895419336bc474006f39474b54b4df9c71ef03a1100da93972aa95be3f758"
+    },
+    "verify_finite.py": {
+      "bytes": 6233,
+      "sha256": "30c1ba63334a25209ea622530e7c3e323d95b2b780caedea38c7d3b7967132b5"
+    },
+    "composition-caller-candidate/src/main.rs": {
+      "bytes": 14590,
+      "sha256": "05f1a0e1e47243856bda6a05332e719d5c0db124172836112ac913999836ce05"
+    },
+    "composition-caller-candidate/Cargo.toml": {
+      "bytes": 545,
+      "sha256": "bc7477160f124413934e7c365e22cfdc523037332e8f855e1b081b0fb0c0ba41"
+    },
+    "composition-caller-candidate/Cargo.lock": {
+      "bytes": 26275,
+      "sha256": "b36402ff6e44a76d00574b873ea77080025e0188cc2e74f105d252266cb3d46d"
+    },
+    "s02-bash-runtime-version.txt": {
+      "bytes": 109,
+      "sha256": "c88869c8cc06c4173d23a07807307d46ee0a83ad4aa3ab6a346c483f2856f5d2"
+    }
+  }
+}

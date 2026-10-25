@@ -1,0 +1,53 @@
+{
+  "source_head": "8da776bc1db0098aa981db6780b85cee3f09d429",
+  "tmp_link": "private/tmp",
+  "controls": 3,
+  "cases": [
+    {
+      "case": "standard-macos-tmp-parent",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-alias01-cases/valid.env",
+        "/tmp/vlajmaji-p01-a02-cdc-parent-alias01"
+      ],
+      "returncode": 2,
+      "elapsed_seconds": 0.01644174987450242,
+      "expected_success": true,
+      "contract_pass": false
+    },
+    {
+      "case": "real-private-tmp-counterpart",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-alias01-cases/valid.env",
+        "/private/tmp/vlajmaji-p01-a02-cdc-parent-alias01"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.052397582679986954,
+      "expected_success": true,
+      "contract_pass": true
+    },
+    {
+      "case": "explicit-cache-root-alias",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "check",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-alias01-cases/valid.env",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-alias01-cases/cache-root-link"
+      ],
+      "returncode": 2,
+      "elapsed_seconds": 0.012459083925932646,
+      "expected_success": true,
+      "contract_pass": false
+    }
+  ],
+  "disagreements": [
+    "standard-macos-tmp-parent",
+    "explicit-cache-root-alias"
+  ]
+}

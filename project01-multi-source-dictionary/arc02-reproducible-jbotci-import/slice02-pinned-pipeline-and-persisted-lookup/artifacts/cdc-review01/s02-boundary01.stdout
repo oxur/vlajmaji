@@ -1,0 +1,156 @@
+{
+  "source_head": "8da776bc1db0098aa981db6780b85cee3f09d429",
+  "script_sha256": "53b5b0f56db0a934d63d93693d9d7c4d33604f3d3966c495031587d7e6e38879",
+  "cli_sha256": "107b49e535eeffa4f763d6dafbb88c6b8a616c3833ee49155bc1dfa03710c6e2",
+  "bash": "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)\nCopyright (C) 2007 Free Software Foundation, Inc.\n",
+  "cases": [
+    {
+      "case": "valid-regular-counterpart",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/valid.env",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/valid-cache"
+      ],
+      "environment_overrides": {},
+      "returncode": 0,
+      "elapsed_seconds": 0.3193010832183063,
+      "contract_pass": true
+    },
+    {
+      "case": "nul-forbidden",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/nul-forbidden.env",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/nul-forbidden-cache"
+      ],
+      "environment_overrides": {},
+      "returncode": 2,
+      "elapsed_seconds": 0.012261209078133106,
+      "expected_success": false,
+      "cache_created": false,
+      "transport_bytes_added": 0,
+      "contract_pass": true
+    },
+    {
+      "case": "indented-assignment",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/indented-assignment.env",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/indented-assignment-cache"
+      ],
+      "environment_overrides": {},
+      "returncode": 0,
+      "elapsed_seconds": 0.03112016711384058,
+      "expected_success": false,
+      "cache_created": true,
+      "transport_bytes_added": 928,
+      "contract_pass": false
+    },
+    {
+      "case": "no-final-lf",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "acquire",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/no-final-lf.env",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/valid-cache"
+      ],
+      "environment_overrides": {},
+      "returncode": 2,
+      "elapsed_seconds": 0.008394250180572271,
+      "expected_success": true,
+      "cache_created": true,
+      "transport_bytes_added": 0,
+      "contract_pass": false
+    },
+    {
+      "case": "executable-symlink",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "check",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/valid.env",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/valid-cache"
+      ],
+      "environment_overrides": {
+        "VLAJMAJI_BIN": "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/executable-link"
+      },
+      "returncode": 2,
+      "elapsed_seconds": 0.016434417106211185,
+      "expected_success": true,
+      "contract_pass": false
+    },
+    {
+      "case": "pin-symlink",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "check",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/pin-link",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/valid-cache"
+      ],
+      "environment_overrides": {},
+      "returncode": 2,
+      "elapsed_seconds": 0.005945499986410141,
+      "expected_success": true,
+      "contract_pass": false
+    },
+    {
+      "case": "exclusive-replay-report",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "replay",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/valid.env",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/valid-cache",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/replay.json"
+      ],
+      "environment_overrides": {
+        "VLAJMAJI_BIN": "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/real-cli-wrapper",
+        "CDC_CHECK_REPORT": "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/replay.json.report.json"
+      },
+      "returncode": 0,
+      "elapsed_seconds": 0.2035591248422861,
+      "expected_success": false,
+      "report_preserved": false,
+      "release_exists": true,
+      "contract_pass": false
+    },
+    {
+      "case": "exclusive-update-report",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "update",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/valid.env",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/update-cache",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/update.json"
+      ],
+      "environment_overrides": {
+        "CDC_DOWNLOAD_REPORT": "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases/update.json.report.json"
+      },
+      "returncode": 0,
+      "elapsed_seconds": 0.04928858298808336,
+      "expected_success": false,
+      "report_preserved": false,
+      "release_exists": true,
+      "contract_pass": false
+    }
+  ],
+  "controls": 8,
+  "disagreements": [
+    "indented-assignment",
+    "no-final-lf",
+    "executable-symlink",
+    "pin-symlink",
+    "exclusive-replay-report",
+    "exclusive-update-report"
+  ],
+  "note": "Real Rust validation/import/check throughout; fake curl only transports exact synthetic bytes and creates one caller-owned competing report at the prescribed boundary. Wrapper delegates actual CLI and creates a report only after successful raw validation."
+}

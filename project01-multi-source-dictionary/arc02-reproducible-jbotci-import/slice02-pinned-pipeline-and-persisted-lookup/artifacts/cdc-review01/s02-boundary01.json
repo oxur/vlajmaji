@@ -1,0 +1,36 @@
+{
+  "label": "s02-boundary01",
+  "argv": [
+    "python3",
+    "-B",
+    "/tmp/vlajmaji-p01-a02-cdc/s02_boundary_controls01.py",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01-cases"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "start_utc": "2026-10-25T00:04:53.635040+00:00",
+  "head_before": "8da776bc1db0098aa981db6780b85cee3f09d429",
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  },
+  "state": "completed",
+  "pid": 9266,
+  "returncode": 0,
+  "elapsed_seconds": 0.7778137922286987,
+  "end_utc": "2026-10-25T00:04:54.430992+00:00",
+  "head_after": "8da776bc1db0098aa981db6780b85cee3f09d429",
+  "streams": {
+    "stdout": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01.stdout",
+      "bytes": 5896,
+      "sha256": "94aecd3a366386c528aceb1281c0f999725ed7b060b4601f1c7df75fb02742ed"
+    },
+    "stderr": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-boundary01.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

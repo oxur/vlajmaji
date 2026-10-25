@@ -1,0 +1,60 @@
+{
+  "time": "2026-10-25T00:03:30.652213+00:00",
+  "source_head": "8da776bc1db0098aa981db6780b85cee3f09d429",
+  "source_status": "",
+  "diff_paths": [
+    "CHANGELOG.md",
+    "Makefile",
+    "README.md",
+    "crates/cli/README.md",
+    "crates/cli/tests/jbotci_pipeline.rs",
+    "crates/search/src/dictionary.rs",
+    "crates/store/src/dictionary_schema.rs",
+    "docs/jbotci-import.md",
+    "scripts/jbotci-import.sh",
+    "scripts/jbotci-pinned.env"
+  ],
+  "protected": {
+    "main": {
+      "head": "d1e1c928f7999f2220b046cc5a5817f0529312ca",
+      "status": ""
+    },
+    "bauske": {
+      "head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+      "status": ""
+    }
+  },
+  "hashes": {
+    "Makefile": "fbf5af53bcc41350e2376c79a0d552c81bc4053efae4b32f661a50544ede4ace",
+    "scripts/jbotci-import.sh": "53b5b0f56db0a934d63d93693d9d7c4d33604f3d3966c495031587d7e6e38879",
+    "scripts/jbotci-pinned.env": "ce9079c030c73795c81d5beede0f3428b118f051f651b07a1310fa8e551a9f4a",
+    "crates/store/src/dictionary_schema.rs": "684d1df53453a0a8341335c3c35fb3065db10eeec77b3afed4d4e8f978cef0d5",
+    "crates/store/tests/dictionary_contract.rs": "8ff94ef4129ad40feaa33871d68146c54a350eadd816fa53f5ad62c7dccb2a44",
+    "crates/search/src/dictionary.rs": "1348991c60d4f1d07d7316431a6b937eba5f91147d69b2b80d733b1283ca03f2",
+    "crates/search/tests/dictionary_contract.rs": "a97bc79752bcea2ce95b7e10478fc3127dac26e2d56b68b8c130b860359cad4e",
+    "crates/cli/tests/jbotci_pipeline.rs": "d1e2846a3572ce62ac8f8dbe5f026ef277bf6ac6a09e439e64c50c19cf4d2a31",
+    "docs/jbotci-import.md": "3d1dcf93083c499d2740838b76f89a22ed5c9af662c189a4f16665c11105983c",
+    "README.md": "49cc446959ad0e94ff114a56ba4b9e2bf6c909cc7b779562bb62392bba6ced41",
+    "crates/cli/README.md": "89d954e7e5e8e533442ee14f9d4c88c302fbcab01200643d1f0a4f91f9678498",
+    "CHANGELOG.md": "a6834983aec22ea6ea3c9869b162154f7a8699260e0b141661e08d0cf22d76c8"
+  },
+  "launcher": {
+    "path": "/tmp/vlajmaji-p01-a02-cargo",
+    "bytes": 324,
+    "sha256": "a19c3f1f83e40c97d21109f6b280969bc879c47ab587e529d1e28512b2a61430",
+    "body": "#!/usr/bin/env bash\n# Arc02 exclusively owns this retained task cache; no concurrent writer.\nset -euo pipefail\nexport CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target\nexport CARGO_NET_OFFLINE=true\nprintf 'Vlajmaji Arc02 retained task target: %s\\n' \"$CARGO_TARGET_DIR\" >&2\nexec cargo \"$@\"\n"
+  },
+  "retained_old_binary": {
+    "path": "/tmp/vlajmaji-p01-a02-cdc/retained-baseline-binary/a02_cdc_composition_20261024b",
+    "bytes": 6348912,
+    "sha256": "f09ace6cb568613155739307908f0c68eb4492eb02585efe682e6ec27db95058"
+  },
+  "cli": {
+    "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+    "bytes": 32057512,
+    "sha256": "107b49e535eeffa4f763d6dafbb88c6b8a616c3833ee49155bc1dfa03710c6e2"
+  },
+  "bash": "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)\nCopyright (C) 2007 Free Software Foundation, Inc.\n",
+  "filesystem": "Filesystem   1024-blocks       Used Available Capacity iused      ifree %iused  Mounted on\n/dev/disk3s5  1948455240 1471534472 434956788    78% 9178171 4349567880    0%   /System/Volumes/Data\n",
+  "matching_processes": []
+}
