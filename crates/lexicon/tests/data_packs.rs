@@ -39,6 +39,25 @@ const RAW_A: &[u8] = br#"[{"word":"farvi","word_type":"gismu","definition":"to g
 const RAW_B: &[u8] =
     br#"[{"word":"farvi","word_type":"gismu","definition":"to grow and develop"}]"#;
 
+fn extension_fixture(values: &[&str]) -> (Dictionary, Vec<ExtensionRecord>) {
+    let mut document = imported(RAW_A, REVISION_A).into_document();
+    let owner = document.metadata.assertions[0].id.clone();
+    let extensions: Vec<_> = values
+        .iter()
+        .map(|value| ExtensionRecord {
+            owner: owner.clone(),
+            name: "same-native-field".into(),
+            value: RawJson::new((*value).to_owned()).expect("literal JSON value is valid"),
+            evidence: None,
+        })
+        .collect();
+    document.metadata.extensions = extensions.clone();
+    (
+        Dictionary::from_document(document).expect("literal extension fixture is valid"),
+        extensions,
+    )
+}
+
 #[test]
 fn seal_roundtrip_is_strict_and_inventory_ordered() {
     let dictionary = imported(RAW_A, REVISION_A);
@@ -171,6 +190,87 @@ fn composition_preserves_distinct_distributions_and_exact_dedup() {
     let repeated = compose_dictionaries(vec![first.clone(), first.clone()])
         .expect("exact repeated model deduplicates");
     assert_eq!(repeated, first);
+}
+
+#[test]
+fn composition_preserves_ordered_extension_max_multiplicities() {
+    let (distinct, distinct_rows) = extension_fixture(&["1", "2"]);
+    assert_eq!(
+        compose_dictionaries(vec![distinct.clone()])
+            .unwrap()
+            .metadata()
+            .extensions,
+        distinct_rows
+    );
+    assert_eq!(
+        compose_dictionaries(vec![distinct.clone(), distinct])
+            .unwrap()
+            .metadata()
+            .extensions,
+        distinct_rows
+    );
+
+    let (one_repeat, one_repeat_rows) = extension_fixture(&["1", "1"]);
+    assert_eq!(
+        compose_dictionaries(vec![one_repeat.clone()])
+            .unwrap()
+            .metadata()
+            .extensions,
+        one_repeat_rows
+    );
+    assert_eq!(
+        compose_dictionaries(vec![one_repeat.clone(), one_repeat])
+            .unwrap()
+            .metadata()
+            .extensions,
+        one_repeat_rows
+    );
+
+    let (repeat_before_new_repeat, repeated_rows) = extension_fixture(&["1", "1", "2", "2"]);
+    assert_eq!(
+        compose_dictionaries(vec![repeat_before_new_repeat.clone()])
+            .unwrap()
+            .metadata()
+            .extensions,
+        repeated_rows
+    );
+    assert_eq!(
+        compose_dictionaries(vec![
+            repeat_before_new_repeat.clone(),
+            repeat_before_new_repeat
+        ])
+        .unwrap()
+        .metadata()
+        .extensions,
+        repeated_rows
+    );
+
+    let (repeat_before_new_self, self_rows) = extension_fixture(&["1", "1", "2"]);
+    assert_eq!(
+        compose_dictionaries(vec![repeat_before_new_self.clone(), repeat_before_new_self])
+            .unwrap()
+            .metadata()
+            .extensions,
+        self_rows
+    );
+
+    let (first, first_rows) = extension_fixture(&["1", "1", "2"]);
+    let (second, second_rows) = extension_fixture(&["1", "1", "1", "2", "2", "2"]);
+    let expected_maxima = vec![
+        first_rows[0].clone(),
+        first_rows[1].clone(),
+        first_rows[2].clone(),
+        second_rows[2].clone(),
+        second_rows[4].clone(),
+        second_rows[5].clone(),
+    ];
+    assert_eq!(
+        compose_dictionaries(vec![first, second])
+            .unwrap()
+            .metadata()
+            .extensions,
+        expected_maxima
+    );
 }
 
 #[test]

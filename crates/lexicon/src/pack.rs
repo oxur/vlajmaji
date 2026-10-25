@@ -375,8 +375,11 @@ pub fn load_sealed_release(
 
 /// Consumes validated dictionaries into one strictly validated dictionary.
 ///
-/// Exact repeated rows with the same identity are retained once in first-seen
-/// order. Same-key rows with unequal bodies are conflicts; no winner is chosen.
+/// ID-bearing rows are exact-row deduplicated by identity in first-seen order;
+/// same-key rows with unequal bodies are conflicts, and no winner is chosen.
+/// Unkeyed extension rows instead use an ordered maximum-multiplicity union:
+/// repetitions within an input are preserved, while combining inputs adds only
+/// copies beyond the greatest multiplicity observed in any one input.
 ///
 /// # Errors
 ///
@@ -400,7 +403,7 @@ pub fn compose_dictionaries(inputs: Vec<Dictionary>) -> Result<Dictionary, PackE
     let mut snapshot_index = BTreeMap::new();
     let mut occurrence_index = BTreeMap::new();
     let mut extension_buckets = BTreeMap::<(EntityId, String), Vec<usize>>::new();
-    let mut extension_multiplicities = Vec::<usize>::new();
+    let mut extension_multiplicities = BTreeMap::<usize, usize>::new();
 
     for input in inputs {
         let document = input.into_document();
@@ -510,15 +513,15 @@ pub fn compose_dictionaries(inputs: Vec<Dictionary>) -> Result<Dictionary, PackE
             if let Some(index) = existing {
                 let seen = input_extension_multiplicities.entry(index).or_default();
                 *seen += 1;
-                if *seen > extension_multiplicities[index] {
+                if *seen > extension_multiplicities[&index] {
                     metadata_output.extensions.push(row);
-                    extension_multiplicities[index] = *seen;
+                    extension_multiplicities.insert(index, *seen);
                 }
             } else {
                 let index = metadata_output.extensions.len();
                 metadata_output.extensions.push(row);
                 extension_buckets.entry(bucket).or_default().push(index);
-                extension_multiplicities.push(1);
+                extension_multiplicities.insert(index, 1);
                 input_extension_multiplicities.insert(index, 1);
             }
         }
