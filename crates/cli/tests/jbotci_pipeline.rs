@@ -208,6 +208,41 @@ esac
     script
 }
 
+fn fake_cli(root: &Path) -> PathBuf {
+    let cli = root.join("fake CLI with spaces");
+    fs::write(
+        &cli,
+        r##"#!/bin/bash
+set -eu
+printf '%s\n' "$*" >> "$FAKE_CLI_COUNT"
+"##,
+    )
+    .unwrap();
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::PermissionsExt;
+        fs::set_permissions(&cli, fs::Permissions::from_mode(0o755)).unwrap();
+    }
+    cli
+}
+
+fn failing_byte_tool(root: &Path, tool: &str, status: i32) -> PathBuf {
+    let bin = root.join(format!("failing {tool} bin"));
+    fs::create_dir_all(&bin).unwrap();
+    let executable = bin.join(tool);
+    fs::write(
+        &executable,
+        format!("#!/bin/bash\nprintf '%s\\n' '{tool}' >> \"$BYTE_TOOL_CALLS\"\nexit {status}\n"),
+    )
+    .unwrap();
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::PermissionsExt;
+        fs::set_permissions(&executable, fs::Permissions::from_mode(0o755)).unwrap();
+    }
+    executable
+}
+
 fn set_fake_inputs(command: &mut Command, root: &Path, meta: &Path, urls: &Path) {
     command
         .env("FAKE_RAW_SOURCE", root.join("raw fixture.json"))
@@ -1091,5 +1126,157 @@ fn make_forwards_metacharacter_paths_and_requires_explicit_cargo_target() {
         "GNU Make evaluated command-line path data"
     );
     assert_eq!(fs::read(&unrelated).unwrap(), b"preserve caller data\n");
+    fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_pin_manifest_byte_policy_counts_forbidden_bytes_and_fails_closed() {
+    let root = scratch();
+    let raw = root.join("raw fixture.json");
+    let meta = root.join("meta fixture.toml");
+    fs::write(&raw, RAW).unwrap();
+    fs::write(&meta, GOOD_METADATA).unwrap();
+    let curl = fake_curl(&root);
+    let cli = fake_cli(&root);
+    let urls = root.join("manifest byte-policy URLs.log");
+    let valid_text = format!(
+        "version=1\nrevision={REVISION_A}\nraw_sha256={RAW_SHA}\nmetadata_sha256={GOOD_META_SHA}\n"
+    );
+
+    for (name, byte) in [
+        ("nul", 0),
+        ("tab", b'\t'),
+        ("escape", 0x1b),
+        ("del", 0x7f),
+        ("nonascii-80", 0x80),
+        ("nonascii-ff", 0xff),
+    ] {
+        let pins_path = root.join(format!("invalid byte {name}.env"));
+        let mut body = valid_text.as_bytes().to_vec();
+        body.push(byte);
+        body.push(b'\n');
+        fs::write(&pins_path, body).unwrap();
+        let output_root = root.join(format!("invalid byte cache {name}"));
+        let cli_calls = root.join(format!("invalid byte CLI calls {name}"));
+        let mut command = Command::new("/bin/bash");
+        command
+            .arg(script())
+            .args([
+                "acquire",
+                pins_path.to_str().unwrap(),
+                output_root.to_str().unwrap(),
+            ])
+            .env("VLAJMAJI_BIN", &cli)
+            .env("FAKE_CLI_COUNT", &cli_calls)
+            .env("CURL", &curl);
+        set_fake_inputs(&mut command, &root, &meta, &urls);
+        let rejected = command.output().unwrap();
+        assert!(!rejected.status.success(), "{name} unexpectedly passed");
+        assert!(rejected.stdout.is_empty(), "{name} wrote stdout");
+        assert!(
+            String::from_utf8_lossy(&rejected.stderr)
+                .contains("pin manifest must contain only printable ASCII and LF"),
+            "{name} failed for the wrong reason: {}",
+            String::from_utf8_lossy(&rejected.stderr)
+        );
+        assert!(!output_root.exists(), "{name} created a cache root");
+        assert!(
+            !cache_leaf(&output_root, REVISION_A, GOOD_META_SHA)
+                .join("complete")
+                .exists(),
+            "{name} wrote a completion marker"
+        );
+        assert!(
+            !root.join("curl count").exists(),
+            "{name} invoked transport"
+        );
+        assert!(!cli_calls.exists(), "{name} invoked the CLI");
+    }
+
+    let ascii_pins = root.join("all printable ASCII comment.env");
+    let mut ascii_body = valid_text.as_bytes().to_vec();
+    ascii_body.extend_from_slice(b"# ");
+    ascii_body.extend(32_u8..=126);
+    ascii_body.push(b'\n');
+    fs::write(&ascii_pins, ascii_body).unwrap();
+    let ascii_cache = root.join("all printable ASCII comment cache");
+    let ascii_cli_calls = root.join("all printable ASCII comment CLI calls");
+    let mut ascii_acquire = Command::new("/bin/bash");
+    ascii_acquire
+        .arg(script())
+        .args([
+            "acquire",
+            ascii_pins.to_str().unwrap(),
+            ascii_cache.to_str().unwrap(),
+        ])
+        .env("VLAJMAJI_BIN", &cli)
+        .env("FAKE_CLI_COUNT", &ascii_cli_calls)
+        .env("CURL", &curl);
+    set_fake_inputs(&mut ascii_acquire, &root, &meta, &urls);
+    let ascii_valid = ascii_acquire.output().unwrap();
+    assert!(
+        ascii_valid.status.success(),
+        "{}",
+        String::from_utf8_lossy(&ascii_valid.stderr)
+    );
+    assert!(
+        cache_leaf(&ascii_cache, REVISION_A, GOOD_META_SHA)
+            .join("complete")
+            .is_file()
+    );
+    assert_eq!(fs::read_to_string(root.join("curl count")).unwrap(), "2\n");
+    assert_eq!(
+        fs::read_to_string(&ascii_cli_calls)
+            .unwrap()
+            .lines()
+            .count(),
+        1
+    );
+
+    fs::remove_file(root.join("curl count")).unwrap();
+    for (tool, status) in [("tr", 41), ("wc", 42)] {
+        let cli_calls = root.join(format!("{tool} failure CLI calls"));
+        let tool_calls = root.join(format!("{tool} failure calls"));
+        let executable = failing_byte_tool(&root, tool, status);
+        let tool_path = executable.parent().unwrap();
+        let output_root = root.join(format!("{tool} failure cache"));
+        let mut command = Command::new("/bin/bash");
+        command
+            .arg(script())
+            .args([
+                "acquire",
+                ascii_pins.to_str().unwrap(),
+                output_root.to_str().unwrap(),
+            ])
+            .env("PATH", format!("{}:/usr/bin:/bin", tool_path.display()))
+            .env("BYTE_TOOL_CALLS", &tool_calls)
+            .env("VLAJMAJI_BIN", &cli)
+            .env("FAKE_CLI_COUNT", &cli_calls)
+            .env("CURL", &curl);
+        set_fake_inputs(&mut command, &root, &meta, &urls);
+        let failed = command.output().unwrap();
+        assert_eq!(failed.status.code(), Some(2), "{tool}: {:?}", failed);
+        assert!(failed.stdout.is_empty(), "{tool} failure wrote stdout");
+        assert!(
+            String::from_utf8_lossy(&failed.stderr)
+                .contains("could not inspect pin manifest bytes"),
+            "{tool}: {}",
+            String::from_utf8_lossy(&failed.stderr)
+        );
+        assert_eq!(fs::read_to_string(&tool_calls).unwrap().trim(), tool);
+        assert!(!output_root.exists(), "{tool} failure created a cache root");
+        assert!(
+            !cache_leaf(&output_root, REVISION_A, GOOD_META_SHA)
+                .join("complete")
+                .exists(),
+            "{tool} failure wrote a completion marker"
+        );
+        assert!(
+            !root.join("curl count").exists(),
+            "{tool} failure invoked transport"
+        );
+        assert!(!cli_calls.exists(), "{tool} failure invoked the CLI");
+    }
+
     fs::remove_dir_all(root).unwrap();
 }

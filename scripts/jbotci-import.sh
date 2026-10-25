@@ -48,13 +48,16 @@ path_absent() {
 }
 
 load_pins() {
-    local file=$1 line key value
+    local file=$1 line key value forbidden_bytes
     version= revision= raw_sha256= metadata_sha256=
     local have_version=0 have_revision=0 have_raw=0 have_metadata=0
     [[ -f $file && -r $file ]] || fail "pin manifest must be a readable regular file: $file"
-    if LC_ALL=C tr -d '\12\40-\176' < "$file" | grep . >/dev/null 2>&1; then
-        fail 'pin manifest must contain only printable ASCII and LF'
+    if ! forbidden_bytes=$(LC_ALL=C tr -d '\12\40-\176' < "$file" | wc -c); then
+        fail 'could not inspect pin manifest bytes'
     fi
+    forbidden_bytes=${forbidden_bytes//[[:space:]]/}
+    [[ $forbidden_bytes =~ ^[0-9]+$ ]] || fail 'could not determine forbidden-byte count in pin manifest'
+    [[ $forbidden_bytes == 0 ]] || fail 'pin manifest must contain only printable ASCII and LF'
     while IFS= read -r line || [[ -n $line ]]; do
         case $line in
             ''|\#*) continue ;;
