@@ -1,0 +1,50 @@
+{
+  "controls": 2,
+  "cases": [
+    {
+      "case": "mismatch",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "update",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/mismatch.env",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/mismatch-cache",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/mismatch.json",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/mismatch-store"
+      ],
+      "returncode": 1,
+      "expected_success": false,
+      "release": true,
+      "report": true,
+      "store": false,
+      "complete": false,
+      "attempt_paths_in_stderr": {
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/mismatch-cache/0000000000000000000000000000000000000000-3c82a3eeb44577df4154902d45549042011bfb0939f14a653465ed6a3cb49f67-f383aa865db0573a7bb93656652d7c6848575c78d18635b76e3be3f831ce1722": true,
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/mismatch.json": true,
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/mismatch.json.report.json": true,
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/mismatch-store": true
+      },
+      "contract_pass": true
+    },
+    {
+      "case": "valid",
+      "argv": [
+        "/bin/bash",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+        "update",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/valid.env",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/valid-cache",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/valid.json",
+        "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases/valid-store"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "release": true,
+      "report": true,
+      "store": true,
+      "complete": true,
+      "contract_pass": true
+    }
+  ],
+  "disagreements": []
+}

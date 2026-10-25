@@ -1,0 +1,15 @@
+{
+  "source": "3b45ddade89ad27a70cca0a7d2d0011ed793c41a",
+  "tar_sha256": "12e60d96f9737cbb0b889d22d07883c6273e6c8d3fe3866d6b5b94bb0c6f635f",
+  "tar_bytes": 4413440,
+  "source_files": 73,
+  "archive_root": "/tmp/vlajmaji-p01-a02-cdc/s02-clean-source-candidate02",
+  "contains_git": false,
+  "bauske_link": "/Users/oubiwann/lab/oxur/bauske",
+  "source_cargo_lock_sha256": "b2f09b4cac55033cba2399a85354005bee05cd75ebc87e94147c6415d134cf7f",
+  "archive_cargo_lock_sha256": "b2f09b4cac55033cba2399a85354005bee05cd75ebc87e94147c6415d134cf7f",
+  "prior_setup_attempt": {
+    "error": "TypeError: TarFile.extractall() got an unexpected keyword argument 'filter'",
+    "disposition": "Reviewer Python3.11 extraction setup; tar retained, verified empty destination and all bounded archive members relative/no parent/no links before retry; no product command ran."
+  }
+}

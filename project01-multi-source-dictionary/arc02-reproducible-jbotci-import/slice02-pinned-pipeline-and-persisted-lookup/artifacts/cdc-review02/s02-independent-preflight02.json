@@ -1,0 +1,66 @@
+{
+  "time": "2026-10-25T00:33:43.515644+00:00",
+  "source_head": "3b45ddade89ad27a70cca0a7d2d0011ed793c41a",
+  "source_status": "",
+  "diff_paths": [
+    "CHANGELOG.md",
+    "Makefile",
+    "README.md",
+    "crates/cli/README.md",
+    "crates/cli/tests/jbotci_pipeline.rs",
+    "crates/search/src/dictionary.rs",
+    "crates/store/src/dictionary_schema.rs",
+    "crates/store/tests/dictionary_contract.rs",
+    "docs/jbotci-import.md",
+    "scripts/jbotci-import.sh",
+    "scripts/jbotci-pinned.env"
+  ],
+  "repair_diff_paths": [
+    "crates/cli/tests/jbotci_pipeline.rs",
+    "crates/store/tests/dictionary_contract.rs",
+    "docs/jbotci-import.md",
+    "scripts/jbotci-import.sh"
+  ],
+  "protected": {
+    "main": {
+      "head": "d1e1c928f7999f2220b046cc5a5817f0529312ca",
+      "status": ""
+    },
+    "bauske": {
+      "head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+      "status": ""
+    }
+  },
+  "hashes": {
+    "Makefile": "fbf5af53bcc41350e2376c79a0d552c81bc4053efae4b32f661a50544ede4ace",
+    "scripts/jbotci-import.sh": "27f369427424e6e8dca52190580b6195d69339b0886621b39ae6f150f25a3056",
+    "scripts/jbotci-pinned.env": "ce9079c030c73795c81d5beede0f3428b118f051f651b07a1310fa8e551a9f4a",
+    "crates/store/src/dictionary_schema.rs": "684d1df53453a0a8341335c3c35fb3065db10eeec77b3afed4d4e8f978cef0d5",
+    "crates/store/tests/dictionary_contract.rs": "7febd2ad50c53058e159c35e39ba79be79219110a0422c2d7bc52dbd994e4daf",
+    "crates/search/src/dictionary.rs": "1348991c60d4f1d07d7316431a6b937eba5f91147d69b2b80d733b1283ca03f2",
+    "crates/search/tests/dictionary_contract.rs": "a97bc79752bcea2ce95b7e10478fc3127dac26e2d56b68b8c130b860359cad4e",
+    "crates/cli/tests/jbotci_pipeline.rs": "e8e2c18214cfce8171b0953049a39f75bb6779cb108e0e9fd54e9b1a20593a97",
+    "docs/jbotci-import.md": "21b30a1c695f43352b49e413846c7f6d8b051266b39d765243775a4709f23450",
+    "README.md": "49cc446959ad0e94ff114a56ba4b9e2bf6c909cc7b779562bb62392bba6ced41",
+    "crates/cli/README.md": "89d954e7e5e8e533442ee14f9d4c88c302fbcab01200643d1f0a4f91f9678498",
+    "CHANGELOG.md": "a6834983aec22ea6ea3c9869b162154f7a8699260e0b141661e08d0cf22d76c8"
+  },
+  "launcher": {
+    "path": "/tmp/vlajmaji-p01-a02-cargo",
+    "bytes": 324,
+    "sha256": "a19c3f1f83e40c97d21109f6b280969bc879c47ab587e529d1e28512b2a61430"
+  },
+  "retained_old_binary": {
+    "path": "/tmp/vlajmaji-p01-a02-cdc/retained-baseline-binary/a02_cdc_composition_20261024b",
+    "bytes": 6348912,
+    "sha256": "f09ace6cb568613155739307908f0c68eb4492eb02585efe682e6ec27db95058"
+  },
+  "cli": {
+    "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+    "bytes": 58313176,
+    "sha256": "761169f41046ff1e435582285da081b1cec23cb3feda85b68413b732f765561b"
+  },
+  "bash": "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin24)\nCopyright (C) 2007 Free Software Foundation, Inc.",
+  "filesystem": "Filesystem   1024-blocks       Used Available Capacity iused      ifree %iused  Mounted on\n/dev/disk3s5  1948455240 1472813800 433677460    78% 9184020 4336774600    0%   /System/Volumes/Data",
+  "matching_processes": []
+}

@@ -1,0 +1,8 @@
+Usage:
+  scripts/jbotci-import.sh acquire PINS CACHE_ROOT
+  scripts/jbotci-import.sh replay PINS CACHE_ROOT FRESH_RELEASE [FRESH_STORE]
+  scripts/jbotci-import.sh check PINS CACHE_ROOT [RELEASE]
+  scripts/jbotci-import.sh update NEW_PINS CACHE_ROOT FRESH_RELEASE [FRESH_STORE]
+  scripts/jbotci-import.sh help
+
+PINS defaults are in scripts/jbotci-pinned.env. Outputs are create-new only.

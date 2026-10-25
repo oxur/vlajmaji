@@ -1,0 +1,7 @@
+{
+  "original_source_sha256": "e8e2c18214cfce8171b0953049a39f75bb6779cb108e0e9fd54e9b1a20593a97",
+  "trace_source_sha256": "0ba88c662748acdafcd21b19aed20ad8612de62b7f4630cc9c41fb455d4979ac",
+  "changes": "One eprintln of actual thread name/scratch path immediately before unchanged create_dir_all; source-root location constants replace external CARGO_MANIFEST_DIR solely to execute unchanged source pipeline/Make. No original source mutation.",
+  "original_failure_limit": "Original test omitted scratch paths; post-failure PID31957 leftover one CLI log alone cannot prove all failed roots.",
+  "trace_attempt_limit": 5
+}

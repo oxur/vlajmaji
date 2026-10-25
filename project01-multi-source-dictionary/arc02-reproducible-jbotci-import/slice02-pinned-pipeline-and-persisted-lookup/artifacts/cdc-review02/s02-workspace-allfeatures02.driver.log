@@ -1,0 +1,98 @@
+{"started": "s02-workspace-allfeatures02", "pid": 31897, "log": "/private/tmp/vlajmaji-p01-a02-cdc/s02-workspace-allfeatures02.log"}
+{
+  "label": "s02-workspace-allfeatures02",
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "argv": [
+    "make",
+    "--no-print-directory",
+    "CARGO=/tmp/vlajmaji-p01-a02-cargo",
+    "RUST_TOOLCHAIN=1.98.0",
+    "test-all-features"
+  ],
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "head_before": "3b45ddade89ad27a70cca0a7d2d0011ed793c41a",
+  "start_unix": 1792888656.9312909,
+  "log": "/private/tmp/vlajmaji-p01-a02-cdc/s02-workspace-allfeatures02.log",
+  "pid": 31897,
+  "exit": 2,
+  "elapsed_seconds": 2.552,
+  "log_bytes": 3841
+}
+[1;34mRunning all-feature workspace tests...[0m
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.14s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji-453c72ca74e71af2)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji-c3fbeb1cbeb4adbe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/cli_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/cli_contract-819228fa90cccba6)
+
+running 2 tests
+test help_and_version_are_available ... ok
+test valid_json_limit_zero_and_failures_are_inspectable ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.93s
+
+     Running tests/dictionary_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_contract-b457d17a0ee2a4a4)
+
+running 1 test
+test dictionary_commands_work_and_structured_errors_use_the_envelope ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.62s
+
+     Running tests/jbotci_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/jbotci_contract-226035f9eb5593e8)
+
+running 1 test
+test import_check_are_pinned_non_destructive_and_structured_on_failure ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s
+
+     Running tests/jbotci_pipeline.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/jbotci_pipeline-8f58e088c31d01a3)
+
+running 4 tests
+test malformed_manifest_and_download_failure_leave_no_completion_marker ... FAILED
+test report_creation_races_preserve_caller_bytes_and_skip_importer ... FAILED
+test make_forwards_metacharacter_paths_and_requires_explicit_cargo_target ... ok
+test pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows ... FAILED
+
+failures:
+
+---- malformed_manifest_and_download_failure_leave_no_completion_marker stdout ----
+
+thread 'malformed_manifest_and_download_failure_leave_no_completion_marker' (70783355) panicked at crates/cli/tests/jbotci_pipeline.rs:795:30:
+called `Result::unwrap()` on an `Err` value: Os { code: 66, kind: DirectoryNotEmpty, message: "Directory not empty" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- report_creation_races_preserve_caller_bytes_and_skip_importer stdout ----
+
+thread 'report_creation_races_preserve_caller_bytes_and_skip_importer' (70783357) panicked at crates/cli/tests/jbotci_pipeline.rs:529:41:
+called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+---- pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows stdout ----
+
+thread 'pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows' (70783356) panicked at crates/cli/tests/jbotci_pipeline.rs:336:46:
+called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+
+failures:
+    malformed_manifest_and_download_failure_leave_no_completion_marker
+    pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows
+    report_creation_races_preserve_caller_bytes_and_skip_importer
+
+test result: FAILED. 1 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.49s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test jbotci_pipeline`
+make: *** [test-all-features] Error 101
+

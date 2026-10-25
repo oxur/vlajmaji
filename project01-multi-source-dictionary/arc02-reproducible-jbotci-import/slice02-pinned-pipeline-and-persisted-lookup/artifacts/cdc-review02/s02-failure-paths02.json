@@ -1,0 +1,36 @@
+{
+  "label": "s02-failure-paths02",
+  "argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "-B",
+    "/tmp/vlajmaji-p01-a02-cdc/s02_failure_paths02.py",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+    "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02-cases"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "start_utc": "2026-10-25T00:34:04.169235+00:00",
+  "head_before": "3b45ddade89ad27a70cca0a7d2d0011ed793c41a",
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  },
+  "state": "completed",
+  "pid": 24558,
+  "returncode": 0,
+  "elapsed_seconds": 0.2552454578690231,
+  "end_utc": "2026-10-25T00:34:04.440452+00:00",
+  "head_after": "3b45ddade89ad27a70cca0a7d2d0011ed793c41a",
+  "streams": {
+    "stdout": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02.stdout",
+      "bytes": 1988,
+      "sha256": "82afce83c1ac918d86ee6d33db544f9d9d382a42f4a45fa16f5f03f38f92da00"
+    },
+    "stderr": {
+      "path": "/tmp/vlajmaji-p01-a02-cdc/s02-failure-paths02.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

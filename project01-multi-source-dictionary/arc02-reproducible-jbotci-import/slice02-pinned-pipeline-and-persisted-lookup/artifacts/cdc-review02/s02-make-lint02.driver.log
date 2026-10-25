@@ -1,0 +1,29 @@
+{"started": "s02-make-lint02", "pid": 26527, "log": "/private/tmp/vlajmaji-p01-a02-cdc/s02-make-lint02.log"}
+{
+  "label": "s02-make-lint02",
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "argv": [
+    "make",
+    "--no-print-directory",
+    "CARGO=/tmp/vlajmaji-p01-a02-cargo",
+    "RUST_TOOLCHAIN=1.98.0",
+    "lint"
+  ],
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "head_before": "3b45ddade89ad27a70cca0a7d2d0011ed793c41a",
+  "start_unix": 1792888632.553594,
+  "log": "/private/tmp/vlajmaji-p01-a02-cdc/s02-make-lint02.log",
+  "pid": 26527,
+  "exit": 0,
+  "elapsed_seconds": 0.326,
+  "log_bytes": 235
+}
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.22s
+[1;32m✓ Clippy passed[0m
+

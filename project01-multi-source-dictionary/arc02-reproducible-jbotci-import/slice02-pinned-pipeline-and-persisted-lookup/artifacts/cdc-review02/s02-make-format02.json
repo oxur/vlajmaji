@@ -1,0 +1,23 @@
+{
+  "label": "s02-make-format02",
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+  "argv": [
+    "make",
+    "--no-print-directory",
+    "CARGO=/tmp/vlajmaji-p01-a02-cargo",
+    "RUST_TOOLCHAIN=1.98.0",
+    "format"
+  ],
+  "environment": {
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "head_before": "3b45ddade89ad27a70cca0a7d2d0011ed793c41a",
+  "start_unix": 1792888631.914559,
+  "log": "/private/tmp/vlajmaji-p01-a02-cdc/s02-make-format02.log",
+  "pid": 26480,
+  "exit": 0,
+  "elapsed_seconds": 0.61,
+  "log_bytes": 170
+}

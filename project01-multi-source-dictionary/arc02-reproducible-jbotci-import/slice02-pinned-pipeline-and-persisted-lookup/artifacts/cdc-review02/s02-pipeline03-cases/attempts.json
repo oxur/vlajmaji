@@ -1,0 +1,614 @@
+[
+  {
+    "case": "help-no-build",
+    "returncode": 0,
+    "elapsed_seconds": 0.010907541960477829
+  },
+  {
+    "case": "manifest-unknown-key",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/unknown-key.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/unknown-key cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.00955575006082654,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-duplicate-key",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/duplicate-key.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/duplicate-key cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.008867666125297546,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-missing-key",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/missing-key.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/missing-key cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.008559125009924173,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-bad-version",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/bad-version.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/bad-version cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.009017542004585266,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-uppercase-revision",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/uppercase-revision.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/uppercase-revision cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.00894554192200303,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-short-digest",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/short-digest.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/short-digest cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.008282624650746584,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-quoted-value",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/quoted-value.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/quoted-value cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.007629625033587217,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-space-assignment",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/space-assignment.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/space-assignment cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.008339209016412497,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-trailing-text",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/trailing-text.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/trailing-text cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.008344207890331745,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-cr",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/cr.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/cr cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.007876624818891287,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-tab",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/tab.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/tab cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.00793829234316945,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-nul",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/nul.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/nul cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.007703375071287155,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-nonascii",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/nonascii.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/nonascii cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.007991000078618526,
+    "expected_success": false
+  },
+  {
+    "case": "manifest-command-substitution",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/command-substitution.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/command-substitution cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.007521290797740221,
+    "expected_success": false
+  },
+  {
+    "case": "acquire-false-raw_sha256",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/false-raw_sha256.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/false-raw_sha256 cache"
+    ],
+    "returncode": 1,
+    "elapsed_seconds": 0.22926108306273818,
+    "expected_success": false
+  },
+  {
+    "case": "acquire-false-metadata_sha256",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/false-metadata_sha256.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/false-metadata_sha256 cache"
+    ],
+    "returncode": 1,
+    "elapsed_seconds": 0.04736375017091632,
+    "expected_success": false
+  },
+  {
+    "case": "acquire-valid",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 0.048950625117868185,
+    "expected_success": true
+  },
+  {
+    "case": "acquire-reuse-offline",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 0.03590041724964976,
+    "expected_success": true
+  },
+  {
+    "case": "manifest-valid-comments-and-blanks",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/comments-and-blanks.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 0.0348424999974668,
+    "expected_success": true
+  },
+  {
+    "case": "manifest-valid-no-final-lf",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/no-final-lf.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 0.0355356247164309,
+    "expected_success": true
+  },
+  {
+    "case": "replay-valid",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "replay",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/release.json",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/store"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 0.14966245787218213,
+    "expected_success": true
+  },
+  {
+    "case": "duplicate-query",
+    "returncode": 0,
+    "elapsed_seconds": 0.036884499713778496
+  },
+  {
+    "case": "check-valid",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "check",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/release.json"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 0.03969475021585822,
+    "expected_success": true
+  },
+  {
+    "case": "check-report-not-authority",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "check",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/release.json"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 0.04042487498372793,
+    "expected_success": true
+  },
+  {
+    "case": "check-missing-cache",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "check",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/missing cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.009892667178064585,
+    "expected_success": false
+  },
+  {
+    "case": "occupied-file",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "replay",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/occupied-file"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.009758291766047478,
+    "expected_success": false
+  },
+  {
+    "case": "occupied-directory",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "replay",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/occupied-directory"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.009785249829292297,
+    "expected_success": false
+  },
+  {
+    "case": "occupied-symlink",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "replay",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/occupied-symlink"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.009101290721446276,
+    "expected_success": false
+  },
+  {
+    "case": "occupied-report",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "replay",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/blocked-report release.json"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.00936762522906065,
+    "expected_success": false
+  },
+  {
+    "case": "occupied-store",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "replay",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/blocked-store release.json",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/blocked store"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.012973417062312365,
+    "expected_success": false
+  },
+  {
+    "case": "acquire-first-download-only-failure",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/first-download failure cache"
+    ],
+    "returncode": 95,
+    "elapsed_seconds": 0.01679245801642537,
+    "expected_success": false
+  },
+  {
+    "case": "acquire-partial",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/partial cache"
+    ],
+    "returncode": 93,
+    "elapsed_seconds": 0.02466091699898243,
+    "expected_success": false
+  },
+  {
+    "case": "partial-retry-rejected",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "acquire",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/partial cache"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.010280458256602287,
+    "expected_success": false
+  },
+  {
+    "case": "cache-marker",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "check",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/corrupt-marker"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.014050583820790052,
+    "expected_success": false
+  },
+  {
+    "case": "cache-raw",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "check",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/corrupt-raw"
+    ],
+    "returncode": 1,
+    "elapsed_seconds": 0.03331083292141557,
+    "expected_success": false
+  },
+  {
+    "case": "replay-corrupt-cache-no-output",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "replay",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/corrupt-raw",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/corrupt-cache replay.json"
+    ],
+    "returncode": 1,
+    "elapsed_seconds": 0.03890179097652435,
+    "expected_success": false
+  },
+  {
+    "case": "cache-raw-link",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "check",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/corrupt-raw-link"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.011500291060656309,
+    "expected_success": false
+  },
+  {
+    "case": "cache-marker-link",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "check",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/corrupt-marker-link"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.010805332567542791,
+    "expected_success": false
+  },
+  {
+    "case": "cache-leaf-link",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "check",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/corrupt-leaf-link"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.01090899994596839,
+    "expected_success": false
+  },
+  {
+    "case": "update-count-mismatch",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "update",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/mismatch pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/mismatch release.json",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/mismatch store"
+    ],
+    "returncode": 1,
+    "elapsed_seconds": 0.07285841694101691,
+    "expected_success": false
+  },
+  {
+    "case": "update-valid",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "update",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid update.json"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 0.09063258301466703,
+    "expected_success": true
+  },
+  {
+    "case": "update-provenance-only",
+    "argv": [
+      "/bin/bash",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji/scripts/jbotci-import.sh",
+      "update",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/new revision pins.env",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid cache",
+      "/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/new revision release.json"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 0.0798743749037385,
+    "expected_success": true
+  },
+  {
+    "case": "make-literal-acquire",
+    "argv": [
+      "make",
+      "--no-print-directory",
+      "-C",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+      "jbotci-acquire"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 0.06834224984049797,
+    "expected_success": true
+  },
+  {
+    "case": "make-commandline-literal-acquire",
+    "argv": [
+      "make",
+      "--no-print-directory",
+      "-C",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+      "jbotci-acquire",
+      "JBOTCI_PINS=/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/valid pins.env",
+      "JBOTCI_CACHE=/private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/commandline $(shell touch /private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/SHOULD_NOT_EXIST) `touch /private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline03-cases/SHOULD_NOT_EXIST` ; ' \" $ cache"
+    ],
+    "returncode": 0,
+    "elapsed_seconds": 0.06516625033691525,
+    "expected_success": true
+  },
+  {
+    "case": "make-missing-target",
+    "argv": [
+      "make",
+      "--no-print-directory",
+      "-C",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+      "jbotci-check"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.012214041780680418,
+    "expected_success": false
+  },
+  {
+    "case": "make-child-failure",
+    "argv": [
+      "make",
+      "--no-print-directory",
+      "-C",
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/vlajmaji",
+      "jbotci-check"
+    ],
+    "returncode": 2,
+    "elapsed_seconds": 0.029198416974395514,
+    "expected_success": false
+  }
+]

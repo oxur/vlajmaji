@@ -1,0 +1,17 @@
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling serde_core v1.0.229
+   Compiling serde_json v1.0.151
+   Compiling vlajmaji_a02_cdc_pipeline_trace_20261024e v0.0.0 (/tmp/vlajmaji-p01-a02-cdc/pipeline-trace-caller02)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.40s
+     Running tests/pipeline_trace.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/a02_cdc_pipeline_trace_e-bc52aa0b3c89d2b4)
+CDC_TRACE thread=Some("make_forwards_metacharacter_paths_and_requires_explicit_cargo_target") scratch="/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji s02 pinned pipeline 33807 1792888774133181000"
+CDC_TRACE thread=Some("pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows") scratch="/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji s02 pinned pipeline 33807 1792888774133275000"
+CDC_TRACE thread=Some("report_creation_races_preserve_caller_bytes_and_skip_importer") scratch="/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji s02 pinned pipeline 33807 1792888774133276000"
+CDC_TRACE thread=Some("malformed_manifest_and_download_failure_leave_no_completion_marker") scratch="/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji s02 pinned pipeline 33807 1792888774133276000"
+
+thread 'report_creation_races_preserve_caller_bytes_and_skip_importer' (70792255) panicked at tests/pipeline_trace.rs:528:5:
+assertion `left == right` failed
+  left: Some(127)
+ right: Some(1)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+error: test failed, to rerun pass `--test a02_cdc_pipeline_trace_e`

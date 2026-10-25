@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a02-cdc/pipeline_controls02.py", line 155, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/tmp/vlajmaji-p01-a02-cdc/pipeline_controls02.py", line 145, in main
+    run('make-literal-acquire',['jbotci-acquire'],extra={'JBOTCI_PINS':str(pins),'JBOTCI_CACHE':str(literal)},make=True);assert leaf(literal).is_dir() and not sentinel.exists() 
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/vlajmaji-p01-a02-cdc/pipeline_controls02.py", line 48, in run
+    assert (p.returncode==0)==ok,(name,p.returncode,p.stderr.decode(errors='replace'))
+           ^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('make-literal-acquire', 2, 'jbotci pipeline: cache root parent must exist and be a directory: /private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline02-cases/literal $(shell touch /private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline02-cases/SHOULD_NOT_EXIST) `touch /private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline02-cases\nmake: *** [jbotci-acquire] Error 2\n')

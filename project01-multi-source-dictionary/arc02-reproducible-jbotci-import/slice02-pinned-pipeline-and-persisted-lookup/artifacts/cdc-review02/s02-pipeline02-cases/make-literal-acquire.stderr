@@ -1,0 +1,2 @@
+jbotci pipeline: cache root parent must exist and be a directory: /private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline02-cases/literal $(shell touch /private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline02-cases/SHOULD_NOT_EXIST) `touch /private/tmp/vlajmaji-p01-a02-cdc/s02-pipeline02-cases
+make: *** [jbotci-acquire] Error 2

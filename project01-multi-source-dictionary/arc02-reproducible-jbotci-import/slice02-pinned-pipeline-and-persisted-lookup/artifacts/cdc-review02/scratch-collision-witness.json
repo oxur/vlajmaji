@@ -1,0 +1,30 @@
+{
+  "attempt": 1,
+  "limit": 5,
+  "stopped_after_first_reproduction": true,
+  "all_roots": [
+    [
+      "make_forwards_metacharacter_paths_and_requires_explicit_cargo_target",
+      "/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji s02 pinned pipeline 33807 1792888774133181000"
+    ],
+    [
+      "pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows",
+      "/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji s02 pinned pipeline 33807 1792888774133275000"
+    ],
+    [
+      "report_creation_races_preserve_caller_bytes_and_skip_importer",
+      "/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji s02 pinned pipeline 33807 1792888774133276000"
+    ],
+    [
+      "malformed_manifest_and_download_failure_leave_no_completion_marker",
+      "/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji s02 pinned pipeline 33807 1792888774133276000"
+    ]
+  ],
+  "collisions": {
+    "/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji s02 pinned pipeline 33807 1792888774133276000": [
+      "report_creation_races_preserve_caller_bytes_and_skip_importer",
+      "malformed_manifest_and_download_failure_leave_no_completion_marker"
+    ]
+  },
+  "original_gate_paths_unlogged": true
+}

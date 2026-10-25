@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status/version | OPEN/candidate01 rejected, iteration01 issued,1.2,2026-10-24 |
+| status/version | OPEN/candidate02 gate rejected, iteration02 issued,1.3,2026-10-24 |
 | predecessor | S01 independently accepted12fdd67; canonical close33435841 |
 | source | feature/project01-full-jbotci-import at12fdd67b1bd2c023fe1c3a84b15159dc0bf87a69; isolated Arc02checkout |
 | authority | Project cdc-directive02.md; Autonomous/Expedited CDC SolHigh + same LunaHigh CC; no A03/push/publication |
 | deliverable | Explicit pinned Bash3.2/Make acquire/replay/check/update + actual full release/store/grouped lookup, with narrow diagnosed load/query integration corrections |
-| current assignment | iteration01/cc-prompt.md; first repair issued, execution pending acknowledgment; up to5 |
+| current assignment | iteration02/cc-prompt.md; second bounded repair issued; up to5 |
 | evidence | ../artifacts/s02-readiness.md and its hashed directory; artifacts/cc-execution.md solely CC-owned during interval |
 
 ## Fixed source/pins and limits
@@ -58,3 +58,7 @@ CDC corrected its prospective, previously unexecuted SQL oracle to compare the e
 ## Candidate01 independent disposition and iteration01,2026-10-24
 
 Candidate8da776b remains clean/rejected after13actual cheap controls (4pass/9contract disagreements) and full changed-source/test/prose review; artifacts/cdc-review01/review.md owns exact evidence/disposition. Refuted NUL hypothesis stays passed. First bounded repair corrects report exclusive-open, exact pin grammar, caller-selected aliases including standardMac/tmp, late-failure path context, missing source-level reversed-self-reference guard, and scoped Make sentinel. Four-path repair allowlist/preserved core Rust source is in iteration01/cc-prompt.md. Make update-only JBOTCI_NEW_PINS is explicitly accepted as a deliberate-manifest interface; document its actual example. All8rowsOPEN, A02-01only arcDONE, project14OPEN; full independent composition/gates remain pending.
+
+## Candidate02 required gate and iteration02,2026-10-24
+
+Independent13+47process controls and actual fresh public acquire/offline full replay pass at3b45dda; product/script source hashes retained. Defaultcheckpasses, but workspaceallfeatures3native fixture failures block acceptance. First bounded traced counterpart proves report/malformed tests share exact PID33807/nanotime1792888774133276000 root; original panic omitted roots and remains limited. See artifacts/cdc-review02/review.md. Iteration02 fixes ONLY native test scratch ownership with atomic unique candidates/exclusive create/retry plus deterministic occupied/parallel controls and current parallel gates. No repeated full acquisition/normalization/store by CC; CDC full persistence/SQL/old-new/outside remainspending. All8rowsOPEN/arc1DONE7OPEN/project14OPEN.

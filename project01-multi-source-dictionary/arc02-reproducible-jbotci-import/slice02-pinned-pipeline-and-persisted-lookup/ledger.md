@@ -16,3 +16,7 @@ All8rows OPEN. CC gates/proposals are not CDC acceptance; original pre-fix full 
 ## Candidate01 rejected / iteration01 issued,2026-10-24
 
 Source8da776b CC gates/full data are proposed historical evidence, not acceptance. CDC independently executed13cheap process controls:4pass/9disagreements, with exact actual Bash3.2/source/bin pins. Report races overwrite caller files; parser/alias/path-diagnostic boundaries fail. NUL rejection is a passed refutation. Full source review also requires missing self-reference regression and safely scoped native sentinel. See artifacts/cdc-review01/review.md and first bounded iteration01/cc-prompt.md; original prompt/CC receipt/history preserved. All8rowsremainOPEN; no full regeneration on this rejected candidate.
+
+## S02 candidate02 gate disposition,2026-10-24
+
+Source3b45dda passes13+47independent process controls and fresh full pinned acquire/offline replay, but required workspaceallfeatures native test gate failed. New exact two-thread scratch collision is reproduced in artifacts/cdc-review02 (slice-owned); original root names were not logged. Iteration02 is one-file exclusive scratch allocation repair, second of5. No full persistence/SQL/old-new acceptance inferred; all prior open rows remainOPEN.

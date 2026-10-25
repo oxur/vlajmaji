@@ -1,0 +1,9 @@
+[package]
+name="vlajmaji_a02_cdc_pipeline_trace_20261024e"
+version="0.0.0"
+edition="2024"
+[[test]]
+name="a02_cdc_pipeline_trace_e"
+path="tests/pipeline_trace.rs"
+[dependencies]
+serde_json="=1.0.151"

@@ -1,0 +1,14 @@
+
+running 4 tests
+test malformed_manifest_and_download_failure_leave_no_completion_marker ... ok
+test pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows ... ok
+test report_creation_races_preserve_caller_bytes_and_skip_importer ... FAILED
+test make_forwards_metacharacter_paths_and_requires_explicit_cargo_target ... ok
+
+failures:
+
+failures:
+    report_creation_races_preserve_caller_bytes_and_skip_importer
+
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.60s
+
