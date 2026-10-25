@@ -1,0 +1,13 @@
+[package]
+name="vlajmaji-a03-s01-cdc-api-controls-20261025c"
+version="0.0.0"
+edition="2024"
+[[bin]]
+name="a03_s01_cdc_api_controls_20261025c"
+path="src/main.rs"
+[dependencies]
+vlajmaji-lexicon={path="/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon"}
+vlajmaji-store={path="/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/store"}
+vlajmaji-search={path="/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/search"}
+sha2="=0.10.9"
+serde_json="=1.0.151"

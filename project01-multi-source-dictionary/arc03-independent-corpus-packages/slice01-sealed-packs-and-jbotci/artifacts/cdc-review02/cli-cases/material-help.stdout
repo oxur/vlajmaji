@@ -1,0 +1,18 @@
+Import the exact local jbotci raw export and supplier metadata
+
+Usage: candidate042-cli data-pack materialize jbotci [OPTIONS] <RAW> <METADATA> <OUTPUT>
+
+Arguments:
+  <RAW>       
+  <METADATA>  
+  <OUTPUT>    
+
+Options:
+      --revision <REVISION>
+          [default: 3d9fd41d9ed32de26311ee27ec86b6b165985aa1]
+      --raw-sha256 <RAW_SHA256>
+          [default: 12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde]
+      --metadata-sha256 <METADATA_SHA256>
+          [default: fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98]
+  -h, --help
+          Print help

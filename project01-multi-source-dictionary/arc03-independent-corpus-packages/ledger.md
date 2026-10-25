@@ -10,3 +10,5 @@
 | A03-06 | All selected packs compose without invented attestations or silent collisions | consuming pure composition, exact same-ID positive/conflict negatives, complete native oracles, actual public grouped witnesses/pages/references | open | S01 contract, S04 integration, fresh reviewer |
 | A03-07 | Offline feature/package/legacy/query compatibility and leakage discipline | format→lint→check, isolated features/all-features/backend, no corpus package leakage, outside callers, negative controls | open | every affected child, fresh reviewer |
 | A03-08 | Accepted children actually compose; canonical close and carryovers independently checked | separate fresh technical run+final packet verdict, row walk, CDC retrospectives/project bubble-up | open | CDC + fresh reviewer, no A04 |
+
+2026-10-25: S01 six rows independently accepted at source04289ae; see slice01-sealed-packs-and-jbotci/cdc-verification.md and retrospective. Arc rows remain open until all required packages and assembled gates; no project row closes.

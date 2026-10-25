@@ -1,0 +1,61 @@
+{
+  "source": "04289ae65d3529c1c52141c1c9b207fee63a8f28",
+  "binary_sha256": "4cb1597cced60cd242253e0da6c0ea5d238deb9346151bf019f86500a7ae6d3e",
+  "environment_home_and_xdg_absent": true,
+  "contract_cases_passed": 14,
+  "native_path_counterpart": {
+    "status": "platform_unsupported",
+    "os_mkdir_errno": 92,
+    "cli_error": {
+      "error": {
+        "code": "io",
+        "message": "create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s01/cli-controls01/native-\ufffd: Illegal byte sequence (os error 92)",
+        "sources": []
+      }
+    },
+    "no_panic": true
+  },
+  "setup_attempt": "first script expected OS to accept nonUTF8 filename, failed; identical direct os.mkdir reports92; no product defect",
+  "files_sha256": {
+    "accounting-mismatch.toml": "93525ec470930fdf6b17a10bcf53bebb085a164e39bfc404746bbe7b7bb0417c",
+    "valid-full.toml": "86cd28b5211e830a1f5bad4ab116948a8fc22949ec81c11ab13fd9dc10c304e3",
+    "bad-json.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "occupied-directory.stderr": "8d8ccc653eefa769c1002cf119ae71a1707ddb084d5a769298fa33e461d90a86",
+    "pack-help.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "occupied-symlink.stderr": "0ad2b6b32f373ae33b9fe069f1bfd669148eb22894ac578eb89c6e4a03db11e4",
+    "valid-full.stdout": "2f93dd23a0961c9cdcb8aa7fff44975a3bd6871ee79381415957472d29d61931",
+    "occupied-file.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "root-help.stdout": "a52cbb5d0adff53ccacac130da90c0bfa49f349e24e3ae9c1cbf0b1b99ad0201",
+    "bad-metadata.raw": "dabc01fa0d9fb82e7cb1d56b6b1073098840d42167519a5f5f507edb27e359ac",
+    "root-help.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "occupied-file.stderr": "f11c3d897abf545673de00e65247cac96925a72fd559b0b96abd113a397eb1a0",
+    "valid-full.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "occupied-symlink.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pack-help.stdout": "06617fa1dea052f351b7ba6164a6c55b68d5c29d60a92c6aa5b6e862ff2789ee",
+    "bad-json.stderr": "dd8c086f6aafd21323a63134b5b3849a37e48ea01033d33fcc3f1c0c48fdd4d5",
+    "occupied-directory.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bad-json.raw": "245843abef9e72e7efac30138a994bf6301e7e1d7d7042a33d42e863d2638811",
+    "bad-raw-pin.toml": "86cd28b5211e830a1f5bad4ab116948a8fc22949ec81c11ab13fd9dc10c304e3",
+    "missing-input.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bad-raw-pin.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-path.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "valid-full.raw": "dabc01fa0d9fb82e7cb1d56b6b1073098840d42167519a5f5f507edb27e359ac",
+    "fixture-help.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "accounting-mismatch.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bad-metadata.stderr": "63bae80d722f4a95366667f79fb361f056be564d8000fe76f54ad129f73fe3ee",
+    "bad-json.toml": "bcb954b2aab7f5c597db71c1bb4b89172880a3f01f0a9275fd15e5dcf4e696ad",
+    "fixture.stdout": "a07c3a9636cfc993c5acd05fa89fb678f77027198d261c1d56bfd95bf3e5a262",
+    "material-help.stdout": "b1ded68bca94f72323aa2a9952ae24d6f93a4b9a3a47abfce95e4affab2bf305",
+    "fixture.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "material-help.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bad-raw-pin.raw": "dabc01fa0d9fb82e7cb1d56b6b1073098840d42167519a5f5f507edb27e359ac",
+    "fixture-help.stdout": "b072bf42cffa876fb3f0d4c0b246a271b04303f24097d35c4da88d1052421279",
+    "accounting-mismatch.stderr": "d8d934d1d3808be0ceb3c68d5b70eab7ba3f122f28a6576302200124ab603ac0",
+    "bad-metadata.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bad-metadata.toml": "3bad0f08e630eabf82e3e1ecb9cc9ac9b2e90ed69deec8fd37d4291ac59a9ca7",
+    "native-path.stderr": "290e6a9a8b2cb2504d40fe11c595d605e07c816f9042b16fe0f47aada7542b92",
+    "bad-raw-pin.stderr": "6c70e7cd62d40ff0e34e5b0b4d68daaa145a266c4dbd5c5c478a3b84f91f15ad",
+    "accounting-mismatch.raw": "dabc01fa0d9fb82e7cb1d56b6b1073098840d42167519a5f5f507edb27e359ac",
+    "missing-input.stderr": "4fdbf2019549dcf4363c80a0320ff05d732ab4f14f806d1105a58feeb1a054af"
+  }
+}

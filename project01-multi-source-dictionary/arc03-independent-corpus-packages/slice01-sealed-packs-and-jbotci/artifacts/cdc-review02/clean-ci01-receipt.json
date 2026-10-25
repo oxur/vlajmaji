@@ -1,0 +1,132 @@
+[
+  {
+    "name": "clean-no-data-default01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "check",
+      "--workspace",
+      "--locked",
+      "--offline"
+    ],
+    "exit": 0,
+    "elapsed": 5.811917500104755,
+    "log_sha256": "a43e1e4fc55fada5dfb2e41f6a4ac167f9ba3d03b3e154d49ecdd242c9678f76"
+  },
+  {
+    "name": "clean-selected-missing01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "check",
+      "-p",
+      "vlajmaji",
+      "--features",
+      "data-lensisku-jbotci",
+      "--locked",
+      "--offline"
+    ],
+    "exit": 101,
+    "elapsed": 2.814241665881127,
+    "log_sha256": "63181d87d84225691c1b2015876179f4c6d3cffd517c439589457e5494a7aa7a"
+  },
+  {
+    "name": "clean-ci-synthetic-prep01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "run",
+      "--locked",
+      "--offline",
+      "-p",
+      "vlajmaji-cli",
+      "--",
+      "data-pack",
+      "fixture",
+      "jbotci",
+      "crates/data-lensisku-jbotci/data"
+    ],
+    "exit": 0,
+    "elapsed": 9.161964499857277,
+    "log_sha256": "dd9d38c06db3ee3db28c5493464658e636d2888134e9584fb644b70b1b7de9f9"
+  },
+  {
+    "name": "clean-ci-all-features01",
+    "argv": [
+      "make",
+      "test-all-features",
+      "CARGO=/tmp/vlajmaji-p01-a03-cargo"
+    ],
+    "exit": 0,
+    "elapsed": 48.64449062477797,
+    "log_sha256": "e1d66290d4f2b1485f8e01a6f666e8c194fbcdb59f28950ab66004d03bf406ef"
+  },
+  {
+    "name": "package-vlajmaji-cli01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "package",
+      "--list",
+      "--locked",
+      "--offline",
+      "--allow-dirty",
+      "-p",
+      "vlajmaji-cli"
+    ],
+    "exit": 0,
+    "elapsed": 0.10838670935481787,
+    "log_sha256": "89414f60235d9a4aea2cb3421fe65f8f4d46ecbb68328a76f2501921cbb77b41"
+  },
+  {
+    "name": "package-vlajmaji-lexicon01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "package",
+      "--list",
+      "--locked",
+      "--offline",
+      "--allow-dirty",
+      "-p",
+      "vlajmaji-lexicon"
+    ],
+    "exit": 0,
+    "elapsed": 0.056883290875703096,
+    "log_sha256": "7d9cdda7b1174fd1f6d5788b541e4e3b3fbc871ad4a33821297e0ac31ff3e246"
+  },
+  {
+    "name": "package-vlajmaji01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "package",
+      "--list",
+      "--locked",
+      "--offline",
+      "--allow-dirty",
+      "-p",
+      "vlajmaji"
+    ],
+    "exit": 0,
+    "elapsed": 0.06307204207405448,
+    "log_sha256": "83eb5c82b86bef9688d7ba6bdaac6d3fae72482f044010d5da9fbd4631ec6d81"
+  },
+  {
+    "name": "package-vlajmaji-data-lensisku-jbotci01",
+    "argv": [
+      "/tmp/vlajmaji-p01-a03-cargo",
+      "+1.98.0",
+      "package",
+      "--list",
+      "--locked",
+      "--offline",
+      "--allow-dirty",
+      "-p",
+      "vlajmaji-data-lensisku-jbotci"
+    ],
+    "exit": 0,
+    "elapsed": 0.05477137491106987,
+    "log_sha256": "3d42c5c965d6538c09e6c8042c512f6c0ec4e34c7386a6e4c364d2b5dfed7bb0"
+  }
+]

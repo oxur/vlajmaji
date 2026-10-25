@@ -1,0 +1,12 @@
+[package]
+name = "vlajmaji-a03-s01-cdc-full-consumer-20261025b"
+version = "0.0.0"
+edition = "2024"
+[[bin]]
+name = "a03_s01_cdc_full_consumer_20261025b"
+path = "src/main.rs"
+[dependencies]
+vlajmaji = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/vlajmaji", default-features = false, features = ["data-lensisku-jbotci"] }
+vlajmaji-data-lensisku-jbotci = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-lensisku-jbotci", features = ["embedded"] }
+sha2 = "=0.10.9"
+serde_json = "=1.0.151"

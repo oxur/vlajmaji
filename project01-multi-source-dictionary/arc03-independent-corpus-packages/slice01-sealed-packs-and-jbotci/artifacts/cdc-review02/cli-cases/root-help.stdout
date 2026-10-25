@@ -1,0 +1,21 @@
+Research CLI for the source-preserving lexical search prototype
+
+Usage: candidate042-cli <COMMAND>
+
+Commands:
+  build             Build a new SQLite index from an accepted archive; the destination must not exist
+  search            Read a JSON Query from stdin or --query and emit one JSON response
+  info              Emit counts for the grouped dictionary or legacy archive store
+  dictionary-build  Build a fresh grouped-dictionary store (default: XDG/HOME grouped store)
+  dictionary-query  Query the grouped store (default: XDG/HOME path); reads --request or stdin
+  verify            Explicitly audit one or all integrity boundaries of an existing grouped store
+  jbotci-import     Normalize a pinned raw jbotci export into the complete versioned dictionary document
+  jbotci-check      Validate the raw export and optionally compare it with a normalized release document
+  data-pack         Prepare an ignored local pack payload without opening a dictionary store
+  help              Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+
+Grouped dictionary commands use an explicit STORE when supplied; otherwise they use XDG_DATA_HOME/vlajmaji/stores/default, falling back to HOME/.local/share/vlajmaji/stores/default. Query and info never create or download a store. This default location is intended for a future dictionary-of-dictionaries; the initial Lensisku-only store is provisional.

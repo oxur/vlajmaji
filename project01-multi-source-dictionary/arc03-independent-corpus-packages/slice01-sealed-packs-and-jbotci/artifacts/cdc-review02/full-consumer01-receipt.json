@@ -1,0 +1,35 @@
+{
+  "source": "04289ae65d3529c1c52141c1c9b207fee63a8f28",
+  "build_argv": [
+    "/tmp/vlajmaji-p01-a03-cargo",
+    "+1.98.0",
+    "build",
+    "--manifest-path",
+    "/tmp/vlajmaji-p01-a03-cdc/s01/full-consumer/Cargo.toml",
+    "--offline",
+    "--locked"
+  ],
+  "build_exit": 0,
+  "build_elapsed": 6.371927166823298,
+  "before": {
+    "release.json": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460",
+    "seal.json": "8562580939685e8828a899a54f373388c9b2f3cacdbbe305662ab32ac05aa02e",
+    "report.json": "574634b4f6999355c899c560a9cfd1b163df5b302e03a86cde4684e5287893e8"
+  },
+  "binary_sha256": "893c9be129097d9fb88e6caac02ae39f515e6d6ae52caae65d7dc11c3b9fe1bf",
+  "runtime_exit": 0,
+  "runtime_elapsed": 61.769152249675244,
+  "embedding_path_absent_during_execution": true,
+  "empty_cwd": "/tmp/vlajmaji-p01-a03-cdc/s01/empty-runtime01",
+  "after": {
+    "release.json": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460",
+    "seal.json": "8562580939685e8828a899a54f373388c9b2f3cacdbbe305662ab32ac05aa02e",
+    "report.json": "574634b4f6999355c899c560a9cfd1b163df5b302e03a86cde4684e5287893e8"
+  },
+  "restored_hashes_equal": true,
+  "full-consumer/Cargo.toml_sha256": "0724259634c2a5f50acd3513618ceca8df459339e426c2c5db9c96b11d66f7e8",
+  "full-consumer/Cargo.lock_sha256": "942fd0dbaf02a0ccbcc99baa8603c349f9479f09156e62102eee95ec3f8dacb3",
+  "full-consumer/src/main.rs_sha256": "429d17a8e623833498ed1120c557f18b13bbd8e4cb95865a362013482de24a35",
+  "full-consumer-build01.log_sha256": "3a5f177a90cf9c4abf9d3ce225e1d01d0e95fc41963775d7c5afa9e30ce6d7c8",
+  "full-consumer-runtime01.log_sha256": "ea668ffd5d7a5dd79eca15ee82ab42f24af118419de6b5f834e6cda9157c724d"
+}

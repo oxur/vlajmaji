@@ -1,0 +1,8 @@
+Vlajmaji Arc03 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-a03-s01-cdc-api-controls-20261025c v0.0.0 (/tmp/vlajmaji-p01-a03-cdc/s01/api-controls)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.09s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/a03_s01_cdc_api_controls_20261025c`
+
+thread 'main' (73450268) panicked at src/main.rs:15:65:
+called `Result::unwrap()` on an `Err` value: Conflict { category: "capture", key: "27:captured:lensisku:jbotci:en64:af4b36038f031f7c95d61dcafc0bd5dd0d32165d9bc4cbae990ae50d39e205f7" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
