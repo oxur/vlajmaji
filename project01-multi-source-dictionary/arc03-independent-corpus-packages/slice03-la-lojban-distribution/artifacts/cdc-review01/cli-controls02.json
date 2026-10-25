@@ -1,0 +1,200 @@
+[
+  {
+    "name": "synthetic",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "la-lojban",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/synthetic"
+    ],
+    "exit": 0,
+    "elapsed": 0.024810833856463432,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"la-lojban\",\"payload_kind\":\"synthetic\",\"release_sha256\":\"d950b071757ba099a8fb88c4dd8e61cbca269d9042354963b141d3430988c25b\",\"report\":{\"all_spellings\":1,\"contributors\":0,\"diagnostics\":{\"unsupported_word_type\":1},\"eligible_spellings\":1,\"excluded_occurrences\":1,\"field_counts\":{\"definition\":3,\"definition_id\":2,\"word\":3,\"word_type\":3},\"input_rows\":3,\"lexical_occurrences\":2,\"native_fields\":11,\"normalized_assertions\":3,\"raw_bytes\":226,\"raw_sha256\":\"242e838f4390bf394e10f0c1459d2bac8c6a01c072b753ce9fea33ee1209a360\",\"revision\":\"0000000000000000000000000000000000000000\",\"version\":1,\"word_types\":{\"gismu\":2,\"wiki\":1}},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "name": "occupied-directory",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "la-lojban",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/occupied-directory"
+    ],
+    "exit": 1,
+    "elapsed": 0.006534333806484938,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/occupied-directory: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "occupied-file",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "la-lojban",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/occupied-file"
+    ],
+    "exit": 1,
+    "elapsed": 0.006585333030670881,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/occupied-file: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "occupied-symlink",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "la-lojban",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/occupied-symlink"
+    ],
+    "exit": 1,
+    "elapsed": 0.005961208138614893,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"create fresh pack directory /tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/occupied-symlink: File exists (os error 17)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "valid-full",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "la-lojban",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/valid-full.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/valid-full-output",
+      "--raw-sha256",
+      "c646550552a7d74053fff284b36d271a2993fd67aca9a625f9cd4295858f4f30",
+      "--revision",
+      "1111111111111111111111111111111111111111"
+    ],
+    "exit": 0,
+    "elapsed": 0.007039625197649002,
+    "stdout": "{\"operation\":\"data-pack-materialize\",\"pack_id\":\"la-lojban\",\"payload_kind\":\"full\",\"release_sha256\":\"b0134b6770352ad1b8d46ebd306b39557e97436d1831df3dcc9f13ead0489f8d\",\"report\":{\"all_spellings\":1,\"contributors\":0,\"diagnostics\":{},\"eligible_spellings\":1,\"excluded_occurrences\":0,\"field_counts\":{\"definition\":1,\"definition_id\":1,\"rafsi\":1,\"score\":1,\"word\":1,\"word_type\":1},\"input_rows\":1,\"lexical_occurrences\":1,\"native_fields\":6,\"normalized_assertions\":1,\"raw_bytes\":144,\"raw_sha256\":\"c646550552a7d74053fff284b36d271a2993fd67aca9a625f9cd4295858f4f30\",\"revision\":\"1111111111111111111111111111111111111111\",\"version\":1,\"word_types\":{\"gismu\":1}},\"version\":1}\n",
+    "stderr": ""
+  },
+  {
+    "name": "wrong-pin",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "la-lojban",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/custom.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/wrong-pin-output"
+    ],
+    "exit": 1,
+    "elapsed": 0.0053472500294446945,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"la_lojban_hash_mismatch\",\"message\":\"raw SHA-256 mismatch: expected 861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35, got c646550552a7d74053fff284b36d271a2993fd67aca9a625f9cd4295858f4f30\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "invalid-json",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "la-lojban",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/invalid-json.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/invalid-json-output",
+      "--raw-sha256",
+      "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "--revision",
+      "1111111111111111111111111111111111111111"
+    ],
+    "exit": 1,
+    "elapsed": 0.004971917252987623,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"la_lojban_json\",\"message\":\"invalid raw JSON: invalid type: map, expected a sequence at line 1 column 0\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "invalid-utf8",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "la-lojban",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/invalid-utf8.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/invalid-utf8-output",
+      "--raw-sha256",
+      "a8100ae6aa1940d0b663bb31cd466142ebbdbd5187131b92d93818987832eb89",
+      "--revision",
+      "1111111111111111111111111111111111111111"
+    ],
+    "exit": 1,
+    "elapsed": 0.005437000188976526,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"la_lojban_utf8\",\"message\":\"raw input is not UTF-8\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "invalid-revision",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "la-lojban",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/custom.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/invalid-revision-output",
+      "--raw-sha256",
+      "c646550552a7d74053fff284b36d271a2993fd67aca9a625f9cd4295858f4f30",
+      "--revision",
+      "bad"
+    ],
+    "exit": 1,
+    "elapsed": 0.005020915996283293,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"la_lojban_options\",\"message\":\"invalid La-Lojban import options: revision must be 40 lowercase hexadecimal characters\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "invalid-locator",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "la-lojban",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/invalid-locator.json",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/invalid-locator-output",
+      "--raw-sha256",
+      "c646550552a7d74053fff284b36d271a2993fd67aca9a625f9cd4295858f4f30",
+      "--revision",
+      "1111111111111111111111111111111111111111",
+      "--notice-locator",
+      ""
+    ],
+    "exit": 1,
+    "elapsed": 0.005111666861921549,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"la_lojban_options\",\"message\":\"invalid La-Lojban import options: notice locator must be nonempty, trimmed, and control-free\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "missing-input",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "la-lojban",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/missing",
+      "/tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/missing-output"
+    ],
+    "exit": 1,
+    "elapsed": 0.00468783313408494,
+    "stdout": "",
+    "stderr": "{\"error\":{\"code\":\"io\",\"message\":\"read /tmp/vlajmaji-p01-a03-cdc/s03/cli-controls02/missing: No such file or directory (os error 2)\",\"sources\":[]}}\n"
+  },
+  {
+    "name": "material-help",
+    "argv": [
+      "data-pack",
+      "materialize",
+      "la-lojban",
+      "--help"
+    ],
+    "exit": 0,
+    "elapsed": 0.005082791671156883,
+    "stdout": "Import the pinned La-Lojban English Lensisku export\n\nUsage: candidate-cli data-pack materialize la-lojban [OPTIONS] <RAW> <OUTPUT>\n\nArguments:\n  <RAW>     \n  <OUTPUT>  \n\nOptions:\n      --revision <REVISION>\n          [default: de47055c68141c283841b1035cd7425bb32bf6ca]\n      --raw-sha256 <RAW_SHA256>\n          [default: 861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35]\n      --raw-locator <RAW_LOCATOR>\n          \n      --notice-locator <NOTICE_LOCATOR>\n          \n  -h, --help\n          Print help\n",
+    "stderr": ""
+  },
+  {
+    "name": "fixture-help",
+    "argv": [
+      "data-pack",
+      "fixture",
+      "la-lojban",
+      "--help"
+    ],
+    "exit": 0,
+    "elapsed": 0.00426808325573802,
+    "stdout": "Build a small synthetic La-Lojban fixture through the real importer\n\nUsage: candidate-cli data-pack fixture la-lojban <OUTPUT>\n\nArguments:\n  <OUTPUT>  \n\nOptions:\n  -h, --help  Print help\n",
+    "stderr": ""
+  }
+]

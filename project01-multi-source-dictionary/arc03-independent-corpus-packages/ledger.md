@@ -14,3 +14,5 @@
 2026-10-25: S01 six rows independently accepted at source04289ae; see slice01-sealed-packs-and-jbotci/cdc-verification.md and retrospective. Arc rows remain open until all required packages and assembled gates; no project row closes.
 
 2026-10-25: S02 all6 independently accepted at0d70c9f; fullLLG4074rows/23298fields and actual optional consumption/query boundary complete. Arc rows stay open for La/Sut and fresh assembled acceptance; no project row closes.
+
+2026-10-25: S03 six rows accepted at62b27db; completeLa17056rows/149596fields, actual shared-Lensisku50582received assertions/31250eligible words. Sut/four-pack/fresh assembled gates remain; all8arcrows and14projectrows OPEN.

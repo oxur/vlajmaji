@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a03-cdc/s03/verify_la_native.py", line 96, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/tmp/vlajmaji-p01-a03-cdc/s03/verify_la_native.py", line 31, in main
+    need(attr['occurrence']==assertion['occurrence'] and assertion['occurrence']['capture']==caps[0]['identity'],'complete_occurrence_reference')
+  File "/tmp/vlajmaji-p01-a03-cdc/s03/verify_la_native.py", line 13, in need
+    if not condition:raise AssertionError(label)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: complete_occurrence_reference

@@ -1,0 +1,44 @@
+Vlajmaji Arc03 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/lexicon)
+warning: missing documentation for a struct field
+   --> crates/lexicon/src/la_lojban.rs:114:20
+    |
+114 |     HashMismatch { expected: String, actual: String },
+    |                    ^^^^^^^^^^^^^^^^
+    |
+note: the lint level is defined here
+   --> crates/lexicon/src/lib.rs:28:9
+    |
+ 28 | #![warn(missing_docs)]
+    |         ^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/lexicon/src/la_lojban.rs:114:38
+    |
+114 |     HashMismatch { expected: String, actual: String },
+    |                                      ^^^^^^^^^^^^^^
+
+warning: `vlajmaji-lexicon` (lib) generated 2 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.17s
+     Running tests/la_lojban_import.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/la_lojban_import-2c789f87f4051623)
+
+running 4 tests
+test test_la_import_rejects_mismatched_hash_and_invalid_options ... ok
+test test_la_import_rejects_invalid_utf8_and_malformed_json ... ok
+
+thread 'test_la_import_preserves_rows_fields_attribution_and_exclusions' (73759351) panicked at crates/lexicon/tests/la_lojban_import.rs:45:5:
+assertion `left == right` failed
+  left: 20
+ right: 25
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_la_import_preserves_rows_fields_attribution_and_exclusions ... FAILED
+test test_la_import_revision_changes_release_but_not_capture_or_occurrence_identity ... ok
+
+failures:
+
+failures:
+    test_la_import_preserves_rows_fields_attribution_and_exclusions
+
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p vlajmaji-lexicon --test la_lojban_import`

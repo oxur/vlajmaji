@@ -1,0 +1,18 @@
+Vlajmaji Arc03 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-lexicon v0.3.0 (/private/tmp/vlajmaji-p01-a03-cdc/s03/clean-ci-62b27db8-01/vlajmaji/crates/lexicon)
+    Checking vlajmaji-store v0.3.0 (/private/tmp/vlajmaji-p01-a03-cdc/s03/clean-ci-62b27db8-01/vlajmaji/crates/store)
+    Checking vlajmaji-data-la-lojban v0.3.0 (/private/tmp/vlajmaji-p01-a03-cdc/s03/clean-ci-62b27db8-01/vlajmaji/crates/data-la-lojban)
+error: couldn't read `crates/data-la-lojban/src/../data/release.json`: No such file or directory (os error 2)
+  --> crates/data-la-lojban/src/lib.rs:18:5
+   |
+18 |     include_bytes!("../data/release.json")
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `crates/data-la-lojban/src/../data/seal.json`: No such file or directory (os error 2)
+  --> crates/data-la-lojban/src/lib.rs:25:5
+   |
+25 |     include_bytes!("../data/seal.json")
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not compile `vlajmaji-data-la-lojban` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
