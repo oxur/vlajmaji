@@ -1,5 +1,7 @@
 # Vlajmaji planning
 
+**Current authority (2026-10-25): Arc04 planning only.** Duncan authorized records/plan updates; implementation, investigation and installation are NOT issued. Arc01–03 remain accepted/immutable; all14projectrowsOPEN, A05/A06 unactivated. See `project01-multi-source-dictionary/arc04-composed-sqlite-lookup/arc-plan.md`. Root reviews the candidate before the scoped planning commit. No CC/source/target/store/network runs or new branch/worktree.
+
 Planning artifacts live on orphan branch `planning`, worktree
 `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning`, under
 `project01-multi-source-dictionary/`, following collaboration-framework's
@@ -59,3 +61,7 @@ All4children/24rows independently accepted through source7b1c565. Fresh author-i
 ## Current endpoint — Arc03 CLOSED,2026-10-25
 
 All4children/24rows and8arcrowsDONE at source7b1c565 after fresh author-independent actual full composition and final nine-body canonical acceptance (proposala5226ee). Final verdict project01-multi-source-dictionary/arc03-independent-corpus-packages/artifacts/composition-review/final-canonical-review.md. All14projectrowsOPEN, A04–A06unactivated. No active source/index/target writer or sessions; source/localplanning commits only, protected main/Bauske/research/default unchanged. StopbeforeA04/no push/PR/publication. New substantive work needs explicit renewed authority; earlier pending checkpoints remain historical.
+
+## Arc04 planning-only follow-up —2026-10-25
+
+Duncan agreed A04 needs explicit local install/catalogue/default combined lookup/lifecycle/readable+compact workflows in addition to its three-way topology decision and selected integration, then requested the planning work. CDC owns only AGENTS/project-plan/design/projectledger and the four named Arc04plan/ledger/workflow/protocol paths. No slice trees/prompts/closing/verifier/retro or execution authority. Topology inquiry effort/operational budgets are proposed/held for later agreement, not run. Source7b/main52fd/Bauskec580/default/Arc01–03 immutable; no push. This supersedes only the earlier request-to-plan endpoint, not accepted history or execution gates.
