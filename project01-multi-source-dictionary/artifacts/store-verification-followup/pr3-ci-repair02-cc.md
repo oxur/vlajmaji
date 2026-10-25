@@ -1,0 +1,33 @@
+# PR3 repair02 — CC execution
+
+## Intake and source readback — 2026-10-25
+
+Read the complete durable `pr3-ci-repair02-prompt.md`. Source is clean at `c49b3c6bbfd892714bcb73b38a485c0b585c6614`, branch `feature/project01-explicit-store-verification`. This repair owns only `crates/search/tests/dictionary_contract.rs`; root retains push/hosted-CI ownership. The only allowed planning additions are this execution record and small raw evidence files under `pr3-ci-repair02-evidence/`.
+
+Read the affected `replace_canonical_draft` helper and complete four-case duplicate identity test. The helper serializes the unchanged complete fixture, mutates one identity collection, serializes and hashes the mutated canonical draft, hex-encodes it into a two-statement SQL update, and currently passes the entire SQL text as a single `sqlite3` argument. The four cases are `entry`, `capture`, `occurrence`, and `owned revision`; each expects `DictionarySearchEngine::open` to return `DictionaryQueryError::Integrity`. All four mutations and assertions will remain unchanged. The preserved Ubuntu Actions failure reproduces `Os { code: 7, kind: ArgumentListTooLong }` at `Command::output()` because the SQL is one argument. Original CI log: `pr3-ci-repair02-evidence/original-linux-failure.log`, SHA-256 `e19ff5a9e511487967d03cfa1997eae10b242e5f5d87a13044639724beb24758`.
+
+Bounded repair: write the complete SQL bytes to a unique `create_new` file under that mutation's already-owned scratch root, close it, reopen from the start, and pass the file as sqlite3 stdin. Keep the database path as the only sqlite3 argument, use no shell, and retain captured stdout/stderr/status diagnostics. Log the actual canonical byte count and SQL byte count for each of the four mutations so the focused `--nocapture` run proves large inputs are transported without an argv payload. No fixture/data/model/runtime/schema/dependency change is in scope.
+
+Initial source test hash: `crates/search/tests/dictionary_contract.rs` SHA-256 `6fee7469a2f0e047bd09ff52fd6e7a3e5e73f8f3231d5e85db98513a6742257d`; unchanged `Cargo.lock` SHA-256 `50556892b4e2a80c1115e277c35b0ab1c27553245194d711463da0f046ac7d84`. Assigned Cargo guard `/tmp/vlajmaji-p01-a02-cargo` SHA-256 `a19c3f1f83e40c97d21109f6b280969bc879c47ab587e529d1e28512b2a61430`; fixed target is `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target`, offline, locked, Rust 1.98.0. Target volume had 390 GiB available at intake.
+
+## Focused and final gate receipts
+
+Pending. Retain exact invocations, Cargo PIDs, byte measurements, complete logs and hashes, all exits, focused six-test population, repeated four-mutation population, then the required final `make format` → `make lint` → `make check` sequence. Do not edit source after the final green sequence absent a gate failure.
+
+## Commit and freeze handoff
+
+Pending exact one-path commit, trailers, clean status/process check, and source/index/target return to CDC.
+
+The final helper creates `canonical-draft-{case}.sql` with `OpenOptions::create_new(true)`, writes the complete update, closes the writer, opens a fresh reader, and sends that `File` through `Command::stdin`; only the database pathname remains in sqlite3 argv. The unchanged scratch-root cleanup removes the staged SQL. Full canonical JSON serialization is 132,946 bytes in each case. The measured complete SQL input sizes were: entry 266,577 bytes; capture 294,231 bytes; occurrence 270,015 bytes; owned revision 266,649 bytes.
+
+Focused command, fixed target/offline/guard: `/tmp/vlajmaji-p01-a02-cargo +1.98.0 test -p vlajmaji-search --test dictionary_contract --locked --offline -- --nocapture`. Exit 0; all six tests passed, zero failed/ignored. The four unchanged duplicate cases each ran and emitted the byte counts above. Full log `pr3-ci-repair02-evidence/focused-dictionary-contract.log`, SHA-256 `d64414bd64d47298d29841b891cbd40788e78d3e322deb86c6cbc8e5567d36b7`. The one bounded repeat filtered to `test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids` also exited 0: one test passed (five filtered), exercising all four full SQL mutations again. Log `repeated-duplicate-identities.log`, SHA-256 `622fec0446b6c7e70ab3252c3d36dd5134fa3a5d96edbbf24a9dc498a7435c3c`.
+
+Final required ordered Make gates, each with `CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target`, `CARGO_NET_OFFLINE=true`, `CARGO=/tmp/vlajmaji-pr3-cargo-pid-pass`, and `RUST_TOOLCHAIN=1.98.0` (the pass-through delegates to the assignment guard above): `make format` passed at Cargo PID 19350; `make lint` passed at PID 19445; `make check` passed at check runner session 41430. Within that check: format-check PID 19614; Clippy PID 19658; workspace tests PID 19699; docs PID 20798. Complete logs: `make-format.log` SHA-256 `8e9c201897ce539117e04e7714f0dd2abdc911c4286b6e5929cc0ce95805adfb`; `make-lint.log` SHA-256 `3a91e3b957cb84956766da064e31dc861a1cbefbc71aa1d1a9d5891b2ce441fc`; `make-check.log` SHA-256 `25fc34db17cd9adaf24936654bd0cc7c465e6a2b725d67724245052d4a6a08b9`. The complete workspace log has 25 Rust `test result` lines totaling 109 passed, 0 failed, 1 ignored; the search `dictionary_contract` integration suite is 6/6; all 19 Make/tooling tests passed. The command exited 0 and reports all checks passed.
+
+`git diff --check` passed. The only changed source path is the authorized `crates/search/tests/dictionary_contract.rs`; Cargo.lock is unchanged. Final source hash is `8812533d8cde4744c810ad8bea696c506b3c70f734935449555746755cf32652`; Cargo.lock remains `50556892b4e2a80c1115e277c35b0ab1c27553245194d711463da0f046ac7d84`. No Cargo/rustc process was active at the pre-commit process check. Original Ubuntu E2BIG failure remains preserved and unchanged in `original-linux-failure.log` with the intake SHA above.
+
+Focused `dictionary_contract` test executable hash: `0b0ca7e74b02ff08116f0610fa8b81e654cfcf95482a5e3ae08d0ce13351583d` at the fixed target's `debug/deps/dictionary_contract-72631f4af06e3a58`.
+
+## Commit and ownership handoff
+
+Commit `f3551bc1a1e6be3d27f992f158310f8c7b3db4d3` (`test(search): feed duplicate draft SQL through stdin`) contains exactly `crates/search/tests/dictionary_contract.rs`, with both required co-author trailers. Post-commit source status is clean; branch remains `feature/project01-explicit-store-verification`; no Cargo/rustc process remains active. Source, index, and retained-target ownership are returned to CDC for independent review. This is CC-proposed completion only; hosted Linux CI acceptance remains pending and root alone owns push/follow-up.

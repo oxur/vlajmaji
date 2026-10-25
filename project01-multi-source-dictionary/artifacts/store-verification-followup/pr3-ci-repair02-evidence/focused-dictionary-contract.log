@@ -1,0 +1,19 @@
+Vlajmaji Arc02 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-store-verification/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.76s
+     Running tests/dictionary_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_contract-72631f4af06e3a58)
+
+running 6 tests
+test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok
+test pages_zero_totals_cursor_binding_and_stale_cursor_are_explicit ... ok
+duplicate_identity_sql name=entry canonical_bytes=132946 sql_bytes=266577
+test hit_computations_follow_dictionary_metadata_order ... ok
+test repeated_editorial_membership_is_preserved_but_hit_views_are_unique ... ok
+test exact_farvi_matches_the_complete_occurrence_reference_after_reopen ... ok
+duplicate_identity_sql name=capture canonical_bytes=132946 sql_bytes=294231
+duplicate_identity_sql name=occurrence canonical_bytes=132946 sql_bytes=270015
+duplicate_identity_sql name=owned revision canonical_bytes=132946 sql_bytes=266649
+test test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.16s
+
