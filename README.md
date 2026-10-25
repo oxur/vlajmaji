@@ -53,6 +53,12 @@ The Rust workspace already provides:
   fetches data or writes a default store. The optional pack is absent from
   default builds, and its seal is an integrity inventory rather than publisher
   authentication or licensing evidence.
+- A lossless adapter for the complete LLG gismu, cmavo, and assigned rafsi
+  lists, plus an optional unpublished `vlajmaji-data-llg` embedded package.
+  `data-pack fixture llg OUTPUT` prepares a Synthetic payload;
+  `data-pack materialize llg GISMU CMAVO RAFSI NOTICE OUTPUT` normalizes
+  caller-supplied local bytes against pinned hashes. No command fetches or
+  redistributes source data automatically; terms remain Held.
 - An umbrella library, `vlajmaji`, exposing `lexicon`, `store`, and `search`, with
   optional `morphology` and `graph` features.
 
@@ -69,6 +75,7 @@ attested usage, semantic equivalence, or poetic merit.
 | [`vlajmaji-lexicon`](crates/lexicon) | Source-preserving lexical data and archives |
 | [`vlajmaji-store`](crates/store) | Persistence and native indexes |
 | [`vlajmaji-search`](crates/search) | Reusable queries and computed analyses |
+| [`vlajmaji-data-llg`](crates/data-llg) | Optional unpublished LLG embedded data package (local payload only) |
 | [`vlajmaji-cli`](crates/cli) | The `vlajmaji` executable |
 
 ## Published 0.2.0 packages

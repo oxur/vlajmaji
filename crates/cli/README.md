@@ -61,3 +61,14 @@ it does not fetch data, overwrite an output, or build a store. The `embedded`
 data crate has no default payload and is unpublished; its ignored local data
 must be prepared before selecting that feature. A synthetic fixture is not the
 full source distribution.
+
+The optional LLG list-family package uses the same local-only workflow:
+`data-pack fixture llg OUTPUT` creates a Synthetic fixed-column example, while
+`data-pack materialize llg GISMU CMAVO RAFSI NOTICE OUTPUT` reads four files
+supplied by the caller and verifies their complete bytes against the default
+published-pin hashes. `--gismu-sha256`, `--cmavo-sha256`, `--rafsi-sha256`,
+`--notice-sha256`, and `--base-locator` override those defaults for a different
+explicitly identified input set. The command never downloads files, replaces
+an existing output directory, or writes a dictionary store. The full LLG
+payload is not committed or published; its notice and redistribution status
+remain separate from the Apache-2.0 code license.

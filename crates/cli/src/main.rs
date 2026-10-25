@@ -6,8 +6,9 @@ use std::path::{Path, PathBuf};
 use clap::{Parser, Subcommand, ValueEnum};
 use vlajmaji_lexicon::{
     Dictionary, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION,
-    JbotciImportError, JbotciImportOptions, PackId, PackPayloadKind, import_jbotci_export,
-    seal_release,
+    JbotciImportError, JbotciImportOptions, LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256,
+    LLG_NOTICE_SHA256, LLG_RAFSI_SHA256, LlgImportError, LlgImportOptions, PackId, PackPayloadKind,
+    import_jbotci_export, import_llg_lists, seal_release,
 };
 use vlajmaji_search::{
     DictionaryErrorReport, DictionaryRequest, DictionarySearchEngine, Query, SearchEngine,
@@ -115,7 +116,7 @@ enum DataPackCommand {
     /// Materialize a selected pack from local inputs.
     Materialize {
         #[command(subcommand)]
-        pack: MaterializePack,
+        pack: Box<MaterializePack>,
     },
     /// Prepare a small synthetic pack for CI and local feature checks.
     Fixture {
@@ -138,12 +139,32 @@ enum MaterializePack {
         #[arg(long, default_value = JBOTCI_PINNED_METADATA_SHA256)]
         metadata_sha256: String,
     },
+    /// Import the three local LLG lists and their shared notice.
+    Llg {
+        gismu: PathBuf,
+        cmavo: PathBuf,
+        rafsi: PathBuf,
+        notice: PathBuf,
+        output: PathBuf,
+        #[arg(long, default_value = LLG_GISMU_SHA256)]
+        gismu_sha256: String,
+        #[arg(long, default_value = LLG_CMAVO_SHA256)]
+        cmavo_sha256: String,
+        #[arg(long, default_value = LLG_RAFSI_SHA256)]
+        rafsi_sha256: String,
+        #[arg(long, default_value = LLG_NOTICE_SHA256)]
+        notice_sha256: String,
+        #[arg(long, default_value = LLG_BASE_LOCATOR)]
+        base_locator: String,
+    },
 }
 
 #[derive(Debug, Subcommand)]
 enum FixturePack {
     /// Build a synthetic three-row Lensisku fixture through the real importer.
     Jbotci { output: PathBuf },
+    /// Build a small synthetic gismu/cmavo/rafsi fixture through the real importer.
+    Llg { output: PathBuf },
 }
 
 #[derive(Debug, Clone, Copy, ValueEnum)]
@@ -388,33 +409,72 @@ fn execute() -> Result<serde_json::Value, CliError> {
             serde_json::json!({"operation":"jbotci-check","version":1,"release_checked":release_matches,"report":report})
         }
         Command::DataPack { command } => match command {
-            DataPackCommand::Materialize {
-                pack:
-                    MaterializePack::Jbotci {
-                        raw,
-                        metadata,
-                        output,
-                        revision,
-                        raw_sha256,
-                        metadata_sha256,
-                    },
-            } => {
-                let raw_bytes = std::fs::read(&raw).map_err(|error| {
-                    structured_error("io", format!("read {}: {error}", raw.display()))
-                })?;
-                let metadata_bytes = std::fs::read(&metadata).map_err(|error| {
-                    structured_error("io", format!("read {}: {error}", metadata.display()))
-                })?;
-                materialize_jbotci_bytes(
-                    &raw_bytes,
-                    &metadata_bytes,
-                    &output,
+            DataPackCommand::Materialize { pack } => match *pack {
+                MaterializePack::Jbotci {
+                    raw,
+                    metadata,
+                    output,
                     revision,
                     raw_sha256,
                     metadata_sha256,
-                    PackPayloadKind::Full,
-                )?
-            }
+                } => {
+                    let raw_bytes = std::fs::read(&raw).map_err(|error| {
+                        structured_error("io", format!("read {}: {error}", raw.display()))
+                    })?;
+                    let metadata_bytes = std::fs::read(&metadata).map_err(|error| {
+                        structured_error("io", format!("read {}: {error}", metadata.display()))
+                    })?;
+                    materialize_jbotci_bytes(
+                        &raw_bytes,
+                        &metadata_bytes,
+                        &output,
+                        revision,
+                        raw_sha256,
+                        metadata_sha256,
+                        PackPayloadKind::Full,
+                    )?
+                }
+                MaterializePack::Llg {
+                    gismu,
+                    cmavo,
+                    rafsi,
+                    notice,
+                    output,
+                    gismu_sha256,
+                    cmavo_sha256,
+                    rafsi_sha256,
+                    notice_sha256,
+                    base_locator,
+                } => {
+                    let gismu_bytes = std::fs::read(&gismu).map_err(|error| {
+                        structured_error("io", format!("read {}: {error}", gismu.display()))
+                    })?;
+                    let cmavo_bytes = std::fs::read(&cmavo).map_err(|error| {
+                        structured_error("io", format!("read {}: {error}", cmavo.display()))
+                    })?;
+                    let rafsi_bytes = std::fs::read(&rafsi).map_err(|error| {
+                        structured_error("io", format!("read {}: {error}", rafsi.display()))
+                    })?;
+                    let notice_bytes = std::fs::read(&notice).map_err(|error| {
+                        structured_error("io", format!("read {}: {error}", notice.display()))
+                    })?;
+                    materialize_llg_bytes(
+                        &gismu_bytes,
+                        &cmavo_bytes,
+                        &rafsi_bytes,
+                        &notice_bytes,
+                        &output,
+                        LlgImportOptions {
+                            expected_gismu_sha256: gismu_sha256,
+                            expected_cmavo_sha256: cmavo_sha256,
+                            expected_rafsi_sha256: rafsi_sha256,
+                            expected_notice_sha256: notice_sha256,
+                            base_locator,
+                        },
+                        PackPayloadKind::Full,
+                    )?
+                }
+            },
             DataPackCommand::Fixture {
                 pack: FixturePack::Jbotci { output },
             } => {
@@ -427,6 +487,26 @@ fn execute() -> Result<serde_json::Value, CliError> {
                     "0000000000000000000000000000000000000000".into(),
                     sha256(raw),
                     sha256(&metadata),
+                    PackPayloadKind::Synthetic,
+                )?
+            }
+            DataPackCommand::Fixture {
+                pack: FixturePack::Llg { output },
+            } => {
+                let (gismu, cmavo, rafsi, notice) = llg_fixture();
+                materialize_llg_bytes(
+                    &gismu,
+                    &cmavo,
+                    &rafsi,
+                    &notice,
+                    &output,
+                    LlgImportOptions {
+                        expected_gismu_sha256: sha256(&gismu),
+                        expected_cmavo_sha256: sha256(&cmavo),
+                        expected_rafsi_sha256: sha256(&rafsi),
+                        expected_notice_sha256: sha256(&notice),
+                        base_locator: "https://example.invalid/llg".into(),
+                    },
                     PackPayloadKind::Synthetic,
                 )?
             }
@@ -661,6 +741,78 @@ fn materialize_jbotci_bytes(
         "release_sha256":sha256(&sealed.release),
         "report":report
     }))
+}
+
+fn materialize_llg_bytes(
+    gismu: &[u8],
+    cmavo: &[u8],
+    rafsi: &[u8],
+    notice: &[u8],
+    output_path: &Path,
+    options: LlgImportOptions,
+    payload_kind: PackPayloadKind,
+) -> Result<serde_json::Value, CliError> {
+    let normalized =
+        import_llg_lists(gismu, cmavo, rafsi, notice, &options).map_err(map_llg_error)?;
+    let report = normalized.report();
+    let sealed = seal_release(PackId::Llg, payload_kind, normalized.dictionary())
+        .map_err(|error| structured_error("pack", error.to_string()))?;
+    let report_bytes = serde_json::to_vec_pretty(report)
+        .map_err(|error| structured_error("report_json", error.to_string()))?;
+
+    std::fs::create_dir(output_path).map_err(|error| {
+        structured_error(
+            "io",
+            format!(
+                "create fresh pack directory {}: {error}",
+                output_path.display()
+            ),
+        )
+    })?;
+    write_new(&output_path.join("release.json"), &sealed.release)?;
+    write_new(&output_path.join("report.json"), &report_bytes)?;
+    write_new(&output_path.join("seal.json"), &sealed.seal)?;
+    let payload = match payload_kind {
+        PackPayloadKind::Synthetic => "synthetic",
+        PackPayloadKind::Full => "full",
+    };
+    Ok(serde_json::json!({
+        "operation":"data-pack-materialize",
+        "version":1,
+        "pack_id":PackId::Llg.as_str(),
+        "payload_kind":payload,
+        "release_sha256":sha256(&sealed.release),
+        "report":report
+    }))
+}
+
+fn llg_fixture() -> (Vec<u8>, Vec<u8>, Vec<u8>, Vec<u8>) {
+    let mut gismu = b"00001 Lojban synthetic gismu list\r\n".to_vec();
+    let mut row = vec![b' '; 158];
+    row[1..6].copy_from_slice(b"farvi");
+    row[7..10].copy_from_slice(b"far");
+    row[11..14].copy_from_slice(b"fav");
+    row[20..24].copy_from_slice(b"grow");
+    row[41..47].copy_from_slice(b"growth");
+    row[62..69].copy_from_slice(b"to grow");
+    gismu.extend_from_slice(&row);
+    gismu.extend_from_slice(b"\r\n");
+    let cmavo = b"00001 Lojban synthetic cmavo list\r\ndo        BAI       because                                 because it is so\r\n".to_vec();
+    let rafsi = b"far farvi growth\r\n".to_vec();
+    let notice = b"Synthetic LLG notice; no redistribution claim.\r\n".to_vec();
+    (gismu, cmavo, rafsi, notice)
+}
+
+fn map_llg_error(error: LlgImportError) -> CliError {
+    let code = match &error {
+        LlgImportError::InvalidOptions(_) => "llg_options",
+        LlgImportError::HashMismatch { .. } => "llg_hash_mismatch",
+        LlgImportError::InvalidUtf8 { .. } => "llg_utf8",
+        LlgImportError::Registry(_) => "llg_registry",
+        LlgImportError::Dictionary(_) => "llg_dictionary",
+        _ => "llg_import",
+    };
+    structured_error(code, error.to_string())
 }
 
 fn jbotci_fixture_metadata(raw: &[u8]) -> Vec<u8> {

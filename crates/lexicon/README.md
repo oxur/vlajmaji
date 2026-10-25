@@ -35,6 +35,16 @@ native fields while exposing a conservative typed projection. Its bounded
 metadata grammar, field map, identity rules, and local replay example are in the
 [jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci-import.md).
 
+The additive `import_llg_lists` adapter accepts the complete gismu, cmavo,
+assigned rafsi, and notice byte inputs with caller-supplied SHA-256 pins. It
+preserves each physical list line as an occurrence and every padded source
+field while projecting only supplied keywords, hints, definitions, and forms.
+It does not infer part of speech or linguistic structure, and hash checks do
+not authenticate a publisher. This is a 0.3.0 development-checkout API; it is
+not present in the published 0.2.0 package. See the [current source module](src/llg.rs)
+and the [CLI guide](https://github.com/oxur/vlajmaji/tree/main/crates/cli) for
+the local fixture and materialization commands.
+
 The `pack` module seals canonical dictionary bytes with a strict versioned
 integrity inventory and loads them only through the normal registry and model
 validators. `compose_dictionaries` consumes validated models, preserving

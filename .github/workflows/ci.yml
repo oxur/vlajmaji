@@ -74,5 +74,8 @@ jobs:
       - name: Prepare synthetic embedded data for all-feature tests
         if: runner.os == 'Linux'
         run: cargo run --locked --offline -p vlajmaji-cli -- data-pack fixture jbotci crates/data-lensisku-jbotci/data
+      - name: Prepare synthetic LLG data for all-feature tests
+        if: runner.os == 'Linux'
+        run: cargo run --locked --offline -p vlajmaji-cli -- data-pack fixture llg crates/data-llg/data
       - if: runner.os == 'Linux'
         run: cargo test --workspace --all-features --locked

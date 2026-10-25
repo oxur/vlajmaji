@@ -18,12 +18,14 @@ default = []
 morphology = ["vlajmaji-search/morphology"]
 graph = ["vlajmaji-store/graph"]
 data-lensisku-jbotci = ["dep:vlajmaji-data-lensisku-jbotci", "vlajmaji-data-lensisku-jbotci/embedded"]
+data-llg = ["dep:vlajmaji-data-llg", "vlajmaji-data-llg/embedded"]
 
 [dependencies]
 vlajmaji-lexicon.workspace = true
 vlajmaji-store.workspace = true
 vlajmaji-search.workspace = true
 vlajmaji-data-lensisku-jbotci = { path = "../data-lensisku-jbotci", version = "0.3.0", optional = true }
+vlajmaji-data-llg = { path = "../data-llg", version = "0.3.0", optional = true }
 
 [lints]
 workspace = true

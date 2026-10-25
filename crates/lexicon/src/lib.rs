@@ -39,6 +39,7 @@ use sha2::{Digest, Sha256};
 mod attribution;
 pub mod dictionary;
 mod jbotci;
+pub mod llg;
 pub mod pack;
 pub mod registry;
 
@@ -58,6 +59,11 @@ pub use dictionary::{
 pub use jbotci::{
     JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION, JbotciImport,
     JbotciImportError, JbotciImportOptions, JbotciImportReport, import_jbotci_export,
+};
+pub use llg::{
+    LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256, LLG_NOTICE_SHA256, LLG_RAFSI_SHA256,
+    LlgComponentReport, LlgImport, LlgImportError, LlgImportOptions, LlgImportReport,
+    import_llg_lists,
 };
 pub use pack::{
     PackError, PackId, PackPayloadKind, PackSeal, SealedRelease, compose_dictionaries,
