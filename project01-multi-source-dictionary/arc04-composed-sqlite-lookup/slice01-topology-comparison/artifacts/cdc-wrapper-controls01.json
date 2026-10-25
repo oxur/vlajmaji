@@ -1,0 +1,149 @@
+{
+  "status": "PASS",
+  "wrapper_sha256": "55cdca8ba3396d7912b3a3f22240940e2d5b7f04e01613124c029e807e3bb31a",
+  "scope": "independent method controls only; no product/Cargo/dictionary data/store operations",
+  "controls": [
+    {
+      "case": "normal",
+      "wrapper_returncode": 0,
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "-B",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/wrapper-controls02/stage_guard_time.py",
+        "--timeout",
+        "2",
+        "--max-rss-bytes",
+        "12884901888",
+        "--log",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/wrapper-controls02/normal-child.log",
+        "--",
+        "/bin/sh",
+        "-c",
+        "printf independent-wrapper-positive"
+      ],
+      "result": {
+        "argv": [
+          "/bin/sh",
+          "-c",
+          "printf independent-wrapper-positive"
+        ],
+        "decision": "passed",
+        "elapsed_seconds": 0.054427958093583584,
+        "exit_code": 0,
+        "log": "/tmp/vlajmaji-p01-a04-s01-cdc/wrapper-controls02/normal-child.log",
+        "maximum_resident_set_size_bytes": 1671168,
+        "pid": 46413,
+        "rss_parse_ok": true,
+        "rss_source": "/usr/bin/time -l maximum resident set size",
+        "timed_out": false
+      },
+      "raw_child_log": "independent-wrapper-positive        0.00 real         0.00 user         0.00 sys\n             1671168  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n                 391  page reclaims\n                  21  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                   3  voluntary context switches\n                   8  involuntary context switches\n            23846313  instructions retired\n            14864734  cycles elapsed\n             1049216  peak memory footprint\n",
+      "raw_child_log_sha256": "868f4a2dd981e06006e09a17ca29510712e6d94f5ac611356c3e04d58965d1f5"
+    },
+    {
+      "case": "timeout",
+      "wrapper_returncode": 124,
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "-B",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/wrapper-controls02/stage_guard_time.py",
+        "--timeout",
+        "0.2",
+        "--max-rss-bytes",
+        "12884901888",
+        "--log",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/wrapper-controls02/timeout-child.log",
+        "--",
+        "/bin/sleep",
+        "5"
+      ],
+      "result": {
+        "argv": [
+          "/bin/sleep",
+          "5"
+        ],
+        "decision": "rejected elapsed limit",
+        "elapsed_seconds": 0.21752924984320998,
+        "exit_code": -15,
+        "log": "/tmp/vlajmaji-p01-a04-s01-cdc/wrapper-controls02/timeout-child.log",
+        "maximum_resident_set_size_bytes": null,
+        "pid": 46416,
+        "rss_parse_ok": false,
+        "rss_source": "/usr/bin/time -l maximum resident set size",
+        "timed_out": true
+      },
+      "raw_child_log": "",
+      "raw_child_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "rss",
+      "wrapper_returncode": 126,
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "-B",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/wrapper-controls02/stage_guard_time.py",
+        "--timeout",
+        "2",
+        "--max-rss-bytes",
+        "1",
+        "--log",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/wrapper-controls02/rss-child.log",
+        "--",
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "-B",
+        "-c",
+        "x=bytearray(32*1024*1024);print(len(x))"
+      ],
+      "result": {
+        "argv": [
+          "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+          "-B",
+          "-c",
+          "x=bytearray(32*1024*1024);print(len(x))"
+        ],
+        "decision": "rejected RSS limit",
+        "elapsed_seconds": 0.05259187472984195,
+        "exit_code": 0,
+        "log": "/tmp/vlajmaji-p01-a04-s01-cdc/wrapper-controls02/rss-child.log",
+        "maximum_resident_set_size_bytes": 43073536,
+        "pid": 46419,
+        "rss_parse_ok": true,
+        "rss_source": "/usr/bin/time -l maximum resident set size",
+        "timed_out": false
+      },
+      "raw_child_log": "33554432\n        0.02 real         0.01 user         0.00 sys\n            43073536  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n                3430  page reclaims\n                   0  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                   0  voluntary context switches\n                  17  involuntary context switches\n           130106165  instructions retired\n            65220061  cycles elapsed\n            39257152  peak memory footprint\n",
+      "raw_child_log_sha256": "d188230c45f748b3f797059a9465cf0cdd4c76b2ab759784aab05bcb0dbe6c9e"
+    }
+  ],
+  "first_attempt": {
+    "status": "SETUP FAILURE",
+    "actual_cases_executed": [
+      "normal"
+    ],
+    "remaining_not_run": [
+      "timeout",
+      "rss"
+    ],
+    "reason": "sandbox denied time sysctl kern.clockrate; wrapper correctly rejected missing RSS; no product or dictionary run",
+    "normal_result": {
+      "argv": [
+        "/bin/sh",
+        "-c",
+        "printf independent-wrapper-positive"
+      ],
+      "decision": "rejected missing/zero/unparseable RSS receipt",
+      "elapsed_seconds": 0.05785679072141647,
+      "exit_code": 1,
+      "log": "/tmp/vlajmaji-p01-a04-s01-cdc/wrapper-controls01/normal-child.log",
+      "maximum_resident_set_size_bytes": null,
+      "pid": 46330,
+      "rss_parse_ok": false,
+      "rss_source": "/usr/bin/time -l maximum resident set size",
+      "timed_out": false
+    },
+    "raw_child_log": "independent-wrapper-positive        0.00 real         0.00 user         0.00 sys\ntime: sysctl kern.clockrate: Operation not permitted\n"
+  },
+  "record_date": "2026-10-25",
+  "independence": "CDC executed byte-identical copied wrapper; CC retains source/index/Cargo target. No product, Cargo, dictionary input or database operation.",
+  "root_parser_reproduction": "Separate root actual-AST parser controls 5/5 on same55cdca8 wrapper: positive, missing, zero, malformed, final valid line. Method only; root ran no child."
+}
