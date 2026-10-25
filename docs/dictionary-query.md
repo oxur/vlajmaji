@@ -83,19 +83,44 @@ Build a fresh store from versioned dictionary JSON and query it with JSON on
 stdin or via `--request`:
 
 ```sh
-vlajmaji dictionary-build dictionary.json data/dictionary
+vlajmaji dictionary-build dictionary.json
 printf '%s\n' '{"operation":"exact","spelling":"farvi","options":{"page_size":2}}' \
-  | vlajmaji dictionary-query data/dictionary
-vlajmaji dictionary-query data/dictionary \
+  | vlajmaji dictionary-query
+vlajmaji dictionary-query \
   --request '{"operation":"exact","spelling":"farvi"}'
+vlajmaji info
 ```
 
-Successful build emits the dictionary state hash and capture, occurrence,
-entry, and assertion counts. Query emits the exact/reference response directly.
+When `STORE` is omitted from `dictionary-build`, `dictionary-query`, or `info`,
+the CLI uses `$XDG_DATA_HOME/vlajmaji/stores/default`. If `XDG_DATA_HOME` is
+unset, empty, or relative, it uses
+`$HOME/.local/share/vlajmaji/stores/default`. Both variables must supply an
+absolute path; if neither provides a usable base, the command reports a
+structured `store_path` error. A positional store overrides this resolution.
+The default location is intended for a future dictionary-of-dictionaries; the
+initial Lensisku-only store is provisional. No merging or download happens
+automatically.
+
+Successful build emits the dictionary state hash, the selected store path, and
+capture, occurrence, entry, and assertion counts. Default build creates missing
+parent directories after reading the input, with private permissions, and
+retains the store's exclusive create behavior. A missing input creates no
+parents; invalid dictionary JSON can leave empty parent directories but never a
+store leaf. It does not replace an existing file, directory, or symlink. Since
+the build response includes the store path as a JSON string, a selected
+non-UTF-8 build path returns a structured `store_path` error before filesystem
+mutation; queries and info retain native platform path handling.
+Query and info only open existing stores; they never create a directory or
+store. Query emits the exact/reference response directly. `info` reports grouped
+dictionary counts and source records for a grouped store, while preserving the
+legacy counts response for an archive store. If both store-format markers are
+present, info reports an ambiguity; a corrupt grouped marker is never treated
+as a legacy store. The grouped info response omits the local filesystem path.
 New-command runtime errors exit nonzero, leave stdout empty, and write one JSON
 object shaped as `{"error":{"code":"...","message":"...","sources":[]}}`
-to stderr. Existing `build`, `search`, and `info` commands retain their legacy
-wire behavior.
+to stderr. Existing `build` and `search` commands stay explicit and retain their
+legacy archive behavior; explicit legacy `info STORE` retains its previous
+response.
 
 The source model and its distinctions are described in the
 [`dictionary model`](dictionary-model.md); query SQL projection details are in

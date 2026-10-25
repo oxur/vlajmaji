@@ -107,6 +107,14 @@ make jbotci-update JBOTCI_NEW_PINS=/tmp/vlajmaji-new-pins.env \
   JBOTCI_STORE=/tmp/vlajmaji-new-store
 ```
 
+The replay and update workflows continue to require caller-chosen fresh release
+and store paths; they do not install data into the CLI's default store. After a
+separate local build, `vlajmaji dictionary-query` and `vlajmaji info` can omit
+the store argument and resolve `$XDG_DATA_HOME/vlajmaji/stores/default`, or
+`$HOME/.local/share/vlajmaji/stores/default` when XDG data home is unset, empty,
+or relative. An explicit command-line store takes precedence over those
+environment values. Query and info only open a store that already exists.
+
 `acquire` downloads only the two fixed files at the manifest's commit and runs
 the real Rust check before creating the completion marker. Repeating it against
 an already complete cache verifies it offline. `replay` rechecks that cache,

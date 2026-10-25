@@ -36,7 +36,9 @@ The Rust workspace already provides:
   and bounded phonological and prosodic filters.
 - Optional compound decomposition and generation through `latkerlo-jvotci`.
 - A JSON CLI, `vlajmaji`, including `dictionary-build` and `dictionary-query`
-  alongside the existing archive/search commands.
+  alongside the existing archive/search commands. Grouped commands can use a
+  default store under XDG data home or the standard HOME data directory, while
+  the legacy archive commands remain explicit.
 - A lossless local jbotci export normalizer with `jbotci-import` and
   read-only `jbotci-check` commands and an explicit pinned acquire/replay/check/
   update workflow ([import guide](docs/jbotci-import.md)).
@@ -87,11 +89,23 @@ Try the grouped-dictionary commands with a fresh fixture and store:
 
 ```sh
 run_dir=$(mktemp -d)
+export XDG_DATA_HOME="$run_dir/data"
 cargo +1.98.0 run --locked -p vlajmaji-lexicon --example dictionary_fixture -- "$run_dir/dictionary.json"
-cargo +1.98.0 run --locked -p vlajmaji-cli -- dictionary-build "$run_dir/dictionary.json" "$run_dir/store"
-cargo +1.98.0 run --locked -p vlajmaji-cli -- dictionary-query "$run_dir/store" \
+cargo +1.98.0 run --locked -p vlajmaji-cli -- dictionary-build "$run_dir/dictionary.json"
+cargo +1.98.0 run --locked -p vlajmaji-cli -- dictionary-query \
   --request '{"operation":"exact","spelling":"farvi","options":{"page_size":2}}'
+cargo +1.98.0 run --locked -p vlajmaji-cli -- info
 ```
+
+Grouped build, query, and info use `$XDG_DATA_HOME/vlajmaji/stores/default`
+when `XDG_DATA_HOME` is an absolute nonempty path. Otherwise they fall back to
+`$HOME/.local/share/vlajmaji/stores/default`. Pass an explicit store to select
+another location. This location is intended for a future
+dictionary-of-dictionaries; the initial Lensisku-only store is provisional.
+Build creates missing default parent directories and refuses to replace an
+existing store. Query and info never create or download one. The [query
+guide](docs/dictionary-query.md) documents
+path resolution, info formats, and errors.
 
 The response keeps competing definitions under their named sources, reports
 complete totals before paging, and returns a continuation cursor when needed.

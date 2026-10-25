@@ -1,6 +1,7 @@
 //! JSON command-line interface for the research lexical-search prototype.
 
 use std::io::{self, Read, Write};
+use std::path::{Path, PathBuf};
 
 use clap::{Parser, Subcommand};
 use vlajmaji_lexicon::{
@@ -16,7 +17,8 @@ use vlajmaji_search::{
 #[command(
     name = "vlajmaji",
     version,
-    about = "Research CLI for the source-preserving lexical search prototype"
+    about = "Research CLI for the source-preserving lexical search prototype",
+    after_help = "Grouped dictionary commands use an explicit STORE when supplied; otherwise they use XDG_DATA_HOME/vlajmaji/stores/default, falling back to HOME/.local/share/vlajmaji/stores/default. Query and info never create or download a store. This default location is intended for a future dictionary-of-dictionaries; the initial Lensisku-only store is provisional."
 )]
 struct Args {
     #[command(subcommand)]
@@ -40,16 +42,25 @@ enum Command {
         #[arg(long)]
         include_proposals: bool,
     },
-    /// Emit the current corpus record and snapshot counts.
-    Info { store: std::path::PathBuf },
-    /// Build a fresh grouped-dictionary store from versioned dictionary JSON.
+    /// Emit counts for the grouped dictionary or legacy archive store.
+    #[command(
+        after_help = "STORE defaults to XDG_DATA_HOME/vlajmaji/stores/default, falling back to HOME/.local/share/vlajmaji/stores/default when XDG_DATA_HOME is unset, empty, or relative. Info only opens an existing store and never creates or downloads it. The default location is intended for a future dictionary-of-dictionaries; the initial Lensisku-only store is provisional."
+    )]
+    Info { store: Option<PathBuf> },
+    /// Build a fresh grouped-dictionary store (default: XDG/HOME grouped store).
+    #[command(
+        after_help = "STORE defaults to XDG_DATA_HOME/vlajmaji/stores/default, falling back to HOME/.local/share/vlajmaji/stores/default when XDG_DATA_HOME is unset, empty, or relative. An explicit STORE overrides the environment. Build creates missing default parent directories but never replaces an existing store. The default location is intended for a future dictionary-of-dictionaries; the initial Lensisku-only store is provisional."
+    )]
     DictionaryBuild {
         input_json: std::path::PathBuf,
-        store: std::path::PathBuf,
+        store: Option<PathBuf>,
     },
-    /// Execute a grouped exact or stable-reference request from --request or stdin.
+    /// Query the grouped store (default: XDG/HOME path); reads --request or stdin.
+    #[command(
+        after_help = "STORE defaults to XDG_DATA_HOME/vlajmaji/stores/default, falling back to HOME/.local/share/vlajmaji/stores/default when XDG_DATA_HOME is unset, empty, or relative. Query only opens an existing store and never creates or downloads it. The default location is intended for a future dictionary-of-dictionaries; the initial Lensisku-only store is provisional."
+    )]
     DictionaryQuery {
-        store: std::path::PathBuf,
+        store: Option<PathBuf>,
         #[arg(long)]
         request: Option<String>,
     },
@@ -138,12 +149,7 @@ fn execute() -> Result<serde_json::Value, CliError> {
             serde_json::to_value(response)
                 .map_err(|e| CliError::Legacy(format!("encode response JSON: {e}")))?
         }
-        Command::Info { store } => {
-            let engine = SearchEngine::open(&store)
-                .map_err(|e| CliError::Legacy(format!("open store {}: {e}", store.display())))?;
-            let (records, snapshots) = engine.corpus_counts();
-            serde_json::json!({"records":records,"snapshots":snapshots,"morphology_enabled":vlajmaji_search::morphology_enabled()})
-        }
+        Command::Info { store } => info(store)?,
         Command::DictionaryBuild { input_json, store } => {
             let bytes = std::fs::read(&input_json).map_err(|error| {
                 structured_error(
@@ -151,14 +157,29 @@ fn execute() -> Result<serde_json::Value, CliError> {
                     format!("read dictionary JSON {}: {error}", input_json.display()),
                 )
             })?;
-            let engine = DictionarySearchEngine::build(&store, &bytes)
+            let selected = resolve_store(store)?;
+            let store_text = selected.path.to_str().ok_or_else(|| {
+                structured_error(
+                    "store_path",
+                    "dictionary-build requires a UTF-8 store path for its JSON response",
+                )
+            })?;
+            if selected.is_default {
+                create_store_parents(&selected.path).map_err(|error| {
+                    structured_error(
+                        "io",
+                        format!("create default store parent directories: {error}"),
+                    )
+                })?;
+            }
+            let engine = DictionarySearchEngine::build(&selected.path, &bytes)
                 .map_err(|error| CliError::Structured(error.report()))?;
             let (captures, occurrences, entries, assertions) = engine.dictionary_counts();
             serde_json::json!({
                 "operation":"dictionary-build",
                 "version":1,
                 "state_sha256":engine.state_sha256(),
-                "store":store,
+                "store":store_text,
                 "captures":captures,
                 "occurrences":occurrences,
                 "entries":entries,
@@ -183,7 +204,8 @@ fn execute() -> Result<serde_json::Value, CliError> {
                         format!("decode dictionary request: {error}"),
                     )
                 })?;
-            let engine = DictionarySearchEngine::open(&store)
+            let selected = resolve_store(store)?;
+            let engine = DictionarySearchEngine::open(&selected.path)
                 .map_err(|error| CliError::Structured(error.report()))?;
             match request {
                 DictionaryRequest::Exact { spelling, options } => serde_json::to_value(
@@ -278,6 +300,142 @@ fn execute() -> Result<serde_json::Value, CliError> {
     Ok(output)
 }
 
+#[derive(Debug)]
+struct ResolvedStore {
+    path: PathBuf,
+    is_default: bool,
+}
+
+fn resolve_store(explicit: Option<PathBuf>) -> Result<ResolvedStore, CliError> {
+    if let Some(path) = explicit {
+        return Ok(ResolvedStore {
+            path,
+            is_default: false,
+        });
+    }
+
+    let path = default_store_path(std::env::var_os("XDG_DATA_HOME"), std::env::var_os("HOME"))?;
+    Ok(ResolvedStore {
+        path,
+        is_default: true,
+    })
+}
+
+fn default_store_path(
+    xdg: Option<std::ffi::OsString>,
+    home: Option<std::ffi::OsString>,
+) -> Result<PathBuf, CliError> {
+    let xdg = xdg.filter(|value| !value.is_empty());
+    let base = xdg
+        .map(PathBuf::from)
+        .filter(|path| path.is_absolute())
+        .or_else(|| {
+            home.filter(|value| !value.is_empty())
+                .map(PathBuf::from)
+                .filter(|path| path.is_absolute())
+                .map(|home| home.join(".local").join("share"))
+        })
+        .ok_or_else(|| {
+            structured_error(
+                "store_path",
+                "no default store path: set an absolute XDG_DATA_HOME or HOME",
+            )
+        })?;
+
+    Ok(base.join("vlajmaji").join("stores").join("default"))
+}
+
+fn create_store_parents(store: &Path) -> io::Result<()> {
+    let parent = store
+        .parent()
+        .filter(|path| !path.as_os_str().is_empty())
+        .unwrap_or_else(|| Path::new("."));
+    let mut builder = std::fs::DirBuilder::new();
+    builder.recursive(true);
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::DirBuilderExt;
+        builder.mode(0o700);
+    }
+    builder.create(parent)
+}
+
+fn info(explicit: Option<PathBuf>) -> Result<serde_json::Value, CliError> {
+    let selected = resolve_store(explicit)?;
+    let grouped_marker = marker_exists(
+        &selected.path.join("dictionary.sqlite3"),
+        selected.is_default,
+    )?;
+    let legacy_marker = marker_exists(&selected.path.join("index.sqlite3"), selected.is_default)?;
+
+    if grouped_marker && legacy_marker {
+        return Err(structured_error(
+            "store_format",
+            "store path contains both grouped-dictionary and legacy archive markers",
+        ));
+    }
+    if grouped_marker {
+        let store = vlajmaji_store::DictionaryStore::open(&selected.path)
+            .map_err(|error| structured_error("store", error.to_string()))?;
+        let dictionary = store.dictionary();
+        let source_records = dictionary.registry().document().sources;
+        let occurrences = dictionary
+            .captures()
+            .iter()
+            .map(|capture| capture.occurrences.len())
+            .sum::<usize>();
+        return Ok(serde_json::json!({
+            "operation":"info",
+            "version":1,
+            "format":"dictionary",
+            "captures":dictionary.captures().len(),
+            "occurrences":occurrences,
+            "entries":dictionary.metadata().entries.len(),
+            "assertions":dictionary.metadata().assertions.len(),
+            "source_count":source_records.len(),
+            "sources":source_records
+        }));
+    }
+    if selected.is_default && !legacy_marker {
+        return Err(structured_error(
+            "store",
+            format!("default store does not exist: {}", selected.path.display()),
+        ));
+    }
+    if legacy_marker || !selected.is_default {
+        let engine = SearchEngine::open(&selected.path).map_err(|error| {
+            let message = format!("open store {}: {error}", selected.path.display());
+            if selected.is_default {
+                structured_error("store", message)
+            } else {
+                CliError::Legacy(message)
+            }
+        })?;
+        let (records, snapshots) = engine.corpus_counts();
+        return Ok(serde_json::json!({
+            "records":records,
+            "snapshots":snapshots,
+            "morphology_enabled":vlajmaji_search::morphology_enabled()
+        }));
+    }
+    Err(structured_error(
+        "store",
+        format!("default store does not exist: {}", selected.path.display()),
+    ))
+}
+
+fn marker_exists(path: &Path, is_default: bool) -> Result<bool, CliError> {
+    match std::fs::symlink_metadata(path) {
+        Ok(_) => Ok(true),
+        Err(error) if error.kind() == io::ErrorKind::NotFound => Ok(false),
+        Err(_error) if !is_default => Ok(false),
+        Err(error) => Err(structured_error(
+            "io",
+            format!("inspect default store marker {}: {error}", path.display()),
+        )),
+    }
+}
+
 fn normalize_jbotci(
     raw_path: &std::path::Path,
     metadata_path: &std::path::Path,
@@ -349,4 +507,19 @@ fn main() -> std::process::ExitCode {
         return std::process::ExitCode::FAILURE;
     }
     std::process::ExitCode::SUCCESS
+}
+
+#[cfg(test)]
+mod default_path_tests {
+    use super::default_store_path;
+
+    #[cfg(unix)]
+    #[test]
+    fn default_path_keeps_native_non_utf8_bytes() {
+        use std::{ffi::OsString, os::unix::ffi::OsStringExt, path::PathBuf};
+
+        let xdg = OsString::from_vec(b"/tmp/vlajmaji-xdg-\xff".to_vec());
+        let expected = PathBuf::from(&xdg).join("vlajmaji/stores/default");
+        assert_eq!(default_store_path(Some(xdg), None).unwrap(), expected);
+    }
 }

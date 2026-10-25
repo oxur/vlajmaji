@@ -10,6 +10,8 @@
 - Insert persisted dictionary tables in schema-derived parent-first order while
   retaining schema-1 identities, and reuse per-source selection sets in exact
   lookup without cloning the complete document.
+- Add XDG/HOME default-store resolution to grouped CLI build/query and info,
+  with read-only default queries and grouped-store counts in `info`.
 
 ## 0.2.0 (2026-10-24)
 
