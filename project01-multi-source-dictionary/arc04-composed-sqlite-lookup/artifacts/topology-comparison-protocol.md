@@ -1,6 +1,12 @@
-# Proposed finite topology comparison protocol
+# Finite topology comparison protocol
+
+**CURRENT version 1.5 / 2026-10-25:** Original inquiry/effort/numeric limits are explicitly approved; Duncan also approved SEVEN TOTAL stores (two historical retained plus five clean comparison stores). Same seven hours, 12 GiB including old two, 600-second bounds and three balanced rounds; no reset. Source work is issued. Full candidate create/verify/query/timing remains HOLD at the remaining complete-harness/control/gate/config/source/binary/argv prerequisites, until CDC review. The count gate is cleared; no repeated count/model/general-budget question. See the exact answer and timestamp in version 1.5 below.
+
+### Historical version 1.1 authority checkpoint (text retained)
 
 **Current version1.1 / 2026-10-25:** Duncan renewed Autonomous execution through Arc04 (“let’s dive in!”), unchanged CDC Sol6.1/high and CC Luna/high. General preflight/readiness/isolated setup is authorized; the concrete inquiry/effort/operational-budget agreement remains PENDING. No CC issue, adapter trial or new Full store before root relays Duncan’s response. The dated1.0 planning-only checkpoint below is historical.
+
+### Historical version 1.0 planning checkpoint (text retained)
 
 Version1.0,2026-10-25. **PROPOSED / NOT AGREED / NOT RUN.** This is scientific-methods planning for future S01. Duncan has authorized writing the plan only. No trial/prototype/store/benchmark is issued; separate agreement on usefulness, exact workload, operational budgets and effort below is required before execution.
 
