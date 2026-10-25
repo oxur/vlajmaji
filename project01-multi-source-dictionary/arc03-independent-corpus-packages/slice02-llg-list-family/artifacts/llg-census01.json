@@ -1,0 +1,94 @@
+{
+  "gismu": {
+    "bytes": 368403,
+    "sha256": "f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7",
+    "physical_lines": 1437,
+    "body_rows": 1436,
+    "distinct_heads": 1436,
+    "fields": {
+      "$line": 1,
+      "word": 1436,
+      "assigned_rafsi_cvc": 1436,
+      "assigned_rafsi_ccv": 1436,
+      "assigned_rafsi_cvv": 1436,
+      "keyword": 1436,
+      "hint": 1436,
+      "definition": 1436,
+      "teaching_code": 1435,
+      "frequency_1993": 1430,
+      "notes": 1380
+    },
+    "native_fields": 14298,
+    "contexts": {
+      "keyword": 1436,
+      "hint": 356,
+      "notes": 1376
+    },
+    "context_total": 3168,
+    "assigned_forms": 1546,
+    "identical_complete_rows": 0,
+    "minimum_line_bytes": 159,
+    "maximum_line_bytes": 991,
+    "all_terminal_crlf": true,
+    "header_claimed_count": 1436
+  },
+  "cmavo": {
+    "bytes": 145139,
+    "sha256": "544414d61f3ff35dd2cf4e4f79f3c86bf9bb0568eb3403f57288057e16796402",
+    "physical_lines": 1092,
+    "body_rows": 1091,
+    "distinct_heads": 1091,
+    "fields": {
+      "$line": 1,
+      "word": 1091,
+      "selmaho": 1091,
+      "keyword": 1091,
+      "definition": 1091
+    },
+    "native_fields": 4365,
+    "contexts": {
+      "keyword": 1091
+    },
+    "context_total": 1091,
+    "assigned_forms": 0,
+    "identical_complete_rows": 0,
+    "minimum_line_bytes": 76,
+    "maximum_line_bytes": 231,
+    "all_terminal_crlf": true,
+    "header_claimed_count": 1090
+  },
+  "rafsi": {
+    "bytes": 30883,
+    "sha256": "31b90a8551cb3cb9f4d0c6873867af1906e9210c398bf49f20e5c21aa02d0d24",
+    "physical_lines": 1545,
+    "body_rows": 1545,
+    "distinct_heads": 1196,
+    "fields": {
+      "rafsi": 1545,
+      "word": 1545,
+      "gloss": 1545
+    },
+    "native_fields": 4635,
+    "contexts": {
+      "gloss": 1545
+    },
+    "context_total": 1545,
+    "assigned_forms": 1545,
+    "identical_complete_rows": 0,
+    "minimum_line_bytes": 13,
+    "maximum_line_bytes": 31,
+    "all_terminal_crlf": true,
+    "header_claimed_count": null
+  },
+  "totals": {
+    "physical_lines": 4074,
+    "native_fields": 23298,
+    "contexts": 5804,
+    "assigned_forms": 3091,
+    "distinct_all_heads": 2433,
+    "distinct_eligible_heads": 2433,
+    "definition_assertions": 2527,
+    "excluded_assertions": 1547,
+    "entries_with_header_placeholders": 2435
+  }
+}
