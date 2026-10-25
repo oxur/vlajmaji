@@ -1,0 +1,93 @@
+{
+  "verdict": "ACCEPTED",
+  "source": "d1887d0e5cc5f63eedbc6a3d2981cfaa2f65b786",
+  "baseline": "53f9eacece01bb5f31ff4b3c2bcf270d7c4162e6",
+  "changed_paths": [
+    "README.md"
+  ],
+  "README_sha256": "f63b5dd8f3dfa73017322af637820e9460e9f0fbcb6d5d083180bf48cc11d4ee",
+  "relative_links_checked": 18,
+  "relative_links": [
+    "docs/source-registry.md",
+    "docs/dictionary-model.md",
+    "docs/dictionary-standards-map.md",
+    "docs/dictionary-schema.md",
+    "docs/dictionary-query.md",
+    "docs/jbotci-import.md",
+    "crates/vlajmaji",
+    "crates/lexicon",
+    "crates/store",
+    "crates/search",
+    "crates/cli",
+    "crates/vlajmaji/README.md",
+    "docs/dictionary-schema.md",
+    "docs/dictionary-query.md",
+    "docs/dictionary-query.md",
+    "docs/migration.md",
+    "assets/images/v1-250.png",
+    "assets/images/v1-1254.png"
+  ],
+  "shell_syntax_only": [
+    {
+      "block": 1,
+      "exit": 0,
+      "sha256": "9860c896b0473e9ced0409ad98c381c875e166e47ffa136c93e3a70443a5efeb"
+    },
+    {
+      "block": 2,
+      "exit": 0,
+      "sha256": "2a467650da07f5c8cfd83a5aac605e7973c33c282d25a94dbdfccefe328c2507"
+    },
+    {
+      "block": 3,
+      "exit": 0,
+      "sha256": "d86fa423465b9120ef288e90263bed97d79294d16dcb29494591a031ce434f87"
+    }
+  ],
+  "cli_syntax_source_unchanged": true,
+  "rust_population": {
+    "result_lines": 25,
+    "passed": 108,
+    "failed": 0,
+    "ignored": 1
+  },
+  "tooling_passed": 19,
+  "logs": [
+    {
+      "path": "check.log",
+      "bytes": 17492,
+      "sha256": "5e852fabdf664f497073bfec13e7268598a8bbbe3e0b794d122f4019795ecc91"
+    },
+    {
+      "path": "format.log",
+      "bytes": 65,
+      "sha256": "d2f59f0a0c9f691f9087fd244498a34b7e99d9b35b99c29368cc35f75a496a95"
+    },
+    {
+      "path": "links-final.log",
+      "bytes": 33,
+      "sha256": "25eea0bd5b0e7df1136e56527ae1f416d79ea75cf0c1b5b76e5c9e7b90c7fb91"
+    },
+    {
+      "path": "links-first-attempt.log",
+      "bytes": 411,
+      "sha256": "1acf53c51dcc987fd92d261ed69d5984a63d291806e7d4d1e38f75cdf861d95d"
+    },
+    {
+      "path": "lint.log",
+      "bytes": 235,
+      "sha256": "169a146156725a1d0ff81e2cc47316e12e1f44ac8f8969fafb3d4f93da93473c"
+    },
+    {
+      "path": "process-check-final.log",
+      "bytes": 32,
+      "sha256": "362ee204f46df7f9855a9233ce3eb451413822ab83d63a4873656144ad5ccb47"
+    },
+    {
+      "path": "verify-help.log",
+      "bytes": 974,
+      "sha256": "4668d62efb3c09026351ea9509bd855d5446a08d7d094ecb8a8c76a8a0ac87a4"
+    }
+  ],
+  "limitations": "CDC reviewed complete current diff and full gate logs; did not repeat product/gates/fullDB/timings. Per-gate OS PIDs not retained by CC; makecheck session91582 retained. Authorized Cargo/Make may write target/cache artifacts; no source/default-store data mutation or cleanup claimed."
+}

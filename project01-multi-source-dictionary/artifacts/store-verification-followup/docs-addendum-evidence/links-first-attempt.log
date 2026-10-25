@@ -1,0 +1,6 @@
+checker command: initial README relative-link parser; full stdout/stderr not separately redirected during that attempt
+observed result:
+local_links_checked=19 missing=1
+MISSING ---Named-Links---
+exit status: 1
+Disposition: false positive because the parser interpreted the Markdown comment divider ` [//]: ---Named-Links---` as a reference definition. Corrected parser skipped the divider; see links-final.log.
