@@ -2,7 +2,7 @@
 
 | Field | Current state |
 | --- | --- |
-| status | ISSUED, 2026-10-25; all six acceptance rows OPEN |
+| status | ISSUED, 2026-10-25; current direction cc-prompt-iteration01.md supplements preserved initial prompt; all six acceptance rows OPEN |
 | authority | Duncan: “this looks good! Approved, and engage!” Protocol 1.1 inquiry, effort and numeric limits explicitly approved via root; applicability/accounting in protocol 1.2. Autonomous THROUGH ARC04 ONLY. |
 | roles | Requested/configured Sol6.1/high CDC, retained Luna/high CC; backend attestation unavailable. CDC design/planning/independent acceptance; CC source/index/target during issued interval; root read-only. |
 | source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; starts clean 7b1c565ebf6c8a423e04211b599006b8c21d65d9 |
@@ -27,7 +27,7 @@ DictionaryReadSnapshot::open(topology, manifest) returns Result. A compatibility
 
 U owns one minimally opened DictionaryStore. F owns its own vector of minimally opened stores. A owns ONE read-only connection on its first member and attaches remaining members under fixed internal names pack1/pack2/pack3. Use bound mode=ro UTF8 URI paths, URI/read-only flags, query_only and is_readonly assertions for EVERY schema; no immutable=1 and no input-derived identifiers. Canonicalize UTF8 paths and percent-encode URI bytes including percent/question/hash. Invalid native UTF8 ATTACH paths return the typed unsupported error without lossy routing. Preserve U/F native paths. Share schema-qualified minimum metadata/canonical helpers restricted to fixed names, with original main readers delegating unchanged. Pin read transactions, but do not claim cross-file ATTACH atomic publication.
 
-Pinned support: rusqlite 0.40.2 lib.rs:338–349 native Unix OsStr bytes; is_readonly:1074–1077. libsqlite3-sys 0.38.2 sqlite3.c:4170–4298 specifies URI mode=ro/percent decoding and undefined results for invalid decoded UTF8. No new dependency or feature is needed.
+Pinned support: rusqlite 0.40.2 lib.rs:338–349 native Unix OsStr bytes; is_readonly:1074–1077. libsqlite3-sys 0.38.2 sqlite3.c:4170–4298 specifies URI mode=ro/percent decoding and undefined results for invalid decoded UTF8. No new dependency is needed. Iteration01 enables only the existing rusqlite limits feature in crates/store/Cargo.toml for the required safe runtime-limit read.
 
 A/F load and decode THEIR OWN canonical documents, compose them, then serialize/hash the resulting unverified logical document on actual startup. Compare it with manifest logical SHA; charge read/decode/composition/canonical serialization/hash. U checks its expected/logical recorded header state with minimum-open trust. A header reread is NOT authentication; a composed hash does not establish graph validity or native-index agreement. Full verification remains explicit and required on new builds. Do not restore comprehensive startup auditing or forge validated Dictionary.
 
@@ -86,3 +86,5 @@ Current full durable logs: make format → lint → check, actual populations; a
 
 - 0.1 at planning45eaa07: honest DRAFT/HOLD with budget and provider/trust/generation design incomplete, no execution.
 - 1.0, 2026-10-25: exact approval in protocol1.2 and source-guided recipe resolved; initial assignment issued. No result inferred. First planning-write setup attempt failed Python syntax before any file write; corrected direct scoped write, no product execution.
+
+- 1.1, 2026-10-25: issued cc-prompt-iteration01.md adds only crates/store/Cargo.toml as fifteenth path and existing rusqlite limits feature for actual read-only runtime-limit observation. Initial prompt preserved bytewise. Unissued direction01 global-feature proposal is superseded; no source edit under it. No cap/reset/new store or trial.
