@@ -1,0 +1,15 @@
+{
+  "candidate": "dcdf216ea5805b20f374ce74c302e42bef12c158",
+  "parent": "45f21dc3d81d8b248d801104274fa799a1ff8608",
+  "clean": true,
+  "sole_path": "crates/store/tests/collection_profiles_contract.rs",
+  "only_cfg_attribute_added": true,
+  "old_test_sha256": "81f670e66087c7674be7a9ab33fd44ea6cf4dac7a37bd8505f7757710da8b5b8",
+  "new_test_sha256": "97fabbc83c264f9c4d755db496b2bc3a97072164fba15fe5a6288edacde1c96f",
+  "runtime_and_all_other_tree_paths_unchanged": true,
+  "parsed_trailers": [
+    "Co-authored-by: Codex <noreply@openai.com>",
+    "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+  ],
+  "diff": "diff --git a/crates/store/tests/collection_profiles_contract.rs b/crates/store/tests/collection_profiles_contract.rs\nindex 70e8085..9db7f41 100644\n--- a/crates/store/tests/collection_profiles_contract.rs\n+++ b/crates/store/tests/collection_profiles_contract.rs\n@@ -512,6 +512,7 @@ fn test_configure_preserves_native_config_path_when_platform_allows() {\n     );\n     let configured = match configured {\n         Ok(report) => report,\n+        #[cfg(not(target_os = \"linux\"))]\n         Err(CollectionProfileError::Io { path, source }) => {\n             // Some macOS volumes reject non-UTF-8 path components before\n             // creating the lock. Compare the product result to the direct\n"
+}

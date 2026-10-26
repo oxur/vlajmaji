@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "scope": "reviewed one-test-file validation correction; source/runtime retention and actual author gates; forced positive Linux pending",
+  "source": "dcdf216ea5805b20f374ce74c302e42bef12c158",
+  "files": {
+    "independent-boundary-dcdf01.json": {
+      "bytes": 1226,
+      "sha256": "cf7b8a522c8df21d7ec4a685155fb443bd18a53c89ba422279c34474563a7480"
+    },
+    "runtime-retention45f201.json": {
+      "bytes": 2314,
+      "sha256": "1b001c6b419c8a3a97d4588787fd81a4e07d0b19672a3e9a9b1f35f4b6f3bffe"
+    },
+    "root-validation-correction-dcdf01.json": {
+      "bytes": 1329,
+      "sha256": "e6ca261a2545457766df8f81e8a8166b744972a1cced8b5c6b74d0a0975a7b37"
+    },
+    "author-format01.log": {
+      "bytes": 170,
+      "sha256": "baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4"
+    },
+    "author-check01.log": {
+      "bytes": 33674,
+      "sha256": "d81056567a2987f9fc08560f0147055774a70b31fdb3c282850be05d5153ea84"
+    },
+    "author-format02.log": {
+      "bytes": 170,
+      "sha256": "baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4"
+    },
+    "author-lint01.log": {
+      "bytes": 355,
+      "sha256": "7ebae4e283ece97ef57794d52f626d3e926934800f514755b0e75b15f57fb6fa"
+    },
+    "iteration03-draft.md": {
+      "bytes": 4334,
+      "sha256": "e1bbf31d96fc8b660ccc2b6df9c2ab2c637201d39afeb0d90b891423db03c8ec"
+    }
+  },
+  "payload_count": 8,
+  "payload_bytes": 43572,
+  "first_format_exit": "unavailable; output-only; actual format02 used"
+}

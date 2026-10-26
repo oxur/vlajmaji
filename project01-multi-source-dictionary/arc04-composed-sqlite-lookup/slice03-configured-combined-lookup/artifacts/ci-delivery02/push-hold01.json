@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "recorded_at_utc": "2026-10-26T14:18:33.959774+00:00",
+  "candidate": "dcdf216ea5805b20f374ce74c302e42bef12c158",
+  "parent": "45f21dc3d81d8b248d801104274fa799a1ff8608",
+  "state": "HOLD; separate exact-candidate push approval pending",
+  "automatic_approval_review": "rejected before command execution",
+  "command_executed": false,
+  "command_exit_code": null,
+  "push_log": null,
+  "raw_tool_rejection_text": "not yet supplied to CDC; exact root notification retained separately, no fabricated raw quote",
+  "root_reported_reason": "user's approval explicitly covered45f21dc3 and a later commit needs separate push authorization",
+  "response": "no retry/bypass/indirect push; root has presented one async explicit user question",
+  "initial_hosted_run": {
+    "id": 40336154928,
+    "head": "45f21dc3d81d8b248d801104274fa799a1ff8608",
+    "terminal": "SUCCESS"
+  },
+  "all_six_S03_rows": "OPEN",
+  "no_S04_source_target_or_runtime_work": true
+}

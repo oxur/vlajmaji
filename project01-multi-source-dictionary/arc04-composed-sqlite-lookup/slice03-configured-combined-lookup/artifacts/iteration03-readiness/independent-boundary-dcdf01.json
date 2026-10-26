@@ -1,0 +1,28 @@
+{
+  "candidate": "dcdf216ea5805b20f374ce74c302e42bef12c158",
+  "parent": "45f21dc3d81d8b248d801104274fa799a1ff8608",
+  "tree": "34b5f811fe1b45fe32e243107215e14d6c205075",
+  "status_clean": true,
+  "exact_one_test_path": [
+    "crates/store/tests/collection_profiles_contract.rs"
+  ],
+  "sole_diff": "one cfg(not(linux)) attribute; removing it restores exact prior file bytes",
+  "test_sha256": "97fabbc83c264f9c4d755db496b2bc3a97072164fba15fe5a6288edacde1c96f",
+  "unchanged_retention_files": 15,
+  "runtime_and_lock_unchanged": true,
+  "parsed_trailers": [
+    "Co-authored-by: Codex <noreply@openai.com>",
+    "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+  ],
+  "current_check_raw_sha256": "d81056567a2987f9fc08560f0147055774a70b31fdb3c282850be05d5153ea84",
+  "Rust_result_rows": 45,
+  "Rust_totals": [
+    236,
+    0,
+    1
+  ],
+  "tooling": "19 passed/0 failed in current raw log; author actual exit0",
+  "retained_evidence": "45f2 independent6/5/48/44 and one readonly Full campaign retained by exact runtime equality; not repeated atdcdf",
+  "forced_positive_Linux": "pending actual new-head hosted test; no current Linux pass inferred",
+  "source_index_target_owner": "returned toCDC; no active process"
+}

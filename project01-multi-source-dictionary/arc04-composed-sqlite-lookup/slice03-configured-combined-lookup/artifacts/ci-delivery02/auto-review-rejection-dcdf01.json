@@ -1,0 +1,9 @@
+{
+  "kind": "Root preservation of tool-displayed automatic-review wording; not a raw structured backend payload",
+  "candidate": "dcdf216ea5805b20f374ce74c302e42bef12c158",
+  "attempted_action": "normal push to origin codex/project01-composed-sqlite-lookup",
+  "command_executed": false,
+  "push_log_exists": false,
+  "review_text": "This action was rejected due to unacceptable risk.\nReason: This pushes a new commit differing from the explicitly approved `45f21dc3`; the user authorized that checkpoint’s push, not this later validation-correction commit, so separate push authorization is required.\nDo not bypass this rejection through a workaround or indirect execution. Continue with a safer alternative, or carry out checks to prove that the action is authorized or low risk before trying again. Complete unaffected work without asking for confirmation. Report anything that remains blocked, clarify why it was blocked by auto-review, inform the user of the risk and ask for approval.",
+  "disposition": "No retry or bypass; candidate-specific user approval pending; initial45f2 CI remains success."
+}
