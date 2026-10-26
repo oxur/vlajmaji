@@ -4,7 +4,7 @@
 | --- | --- |
 | Status | ISSUED after root canonical readiness PASS, 2026-10-26 UTC. Six rows OPEN; no product acceptance. |
 | Authority | Autonomous THROUGH ARC04; unchanged requested Sol6.1/high CDC, Luna/high CC. No new model/budget question. S02 CLOSED atce1bd238 / planning36e7fc9. |
-| Source / ownership | Isolated codex/project01-composed-sqlite-lookup atce1bd238; CDC owns source/index/retained target, no CC interval until issue/readback. Main52fd, Arc03/accepted7b, Bauskec580, actual user default and all retained stores protected. |
+| Source / ownership | Baseline ce1bd238 on isolated codex/project01-composed-sqlite-lookup; retained CC acknowledged issued 359a3b7 and currently owns source/index/retained target exclusively during implementation. CDC owns planning/review and remains product/target read-only until explicit handback. Main52fd, Arc03/accepted7b, Bauskec580, actual user default and all retained stores protected. |
 | Useful result | Configure selected/all installed collections and issue one combined exact/reference command with pack selection, source filters, coherent pages and truthful operational availability. |
 | Exclusions | No new topology/adapter, full import/store creation, automatic migration/download/default switch, lifecycle delete/update commands, compact/readable implementation or owned editor. No push/PR/publication. |
 
@@ -139,3 +139,18 @@ One operation captures cwd at most once, only if explicit config FILE or direct 
 Root canonical readiness PASS covers this exact18-path/six-row contract and actual offline prerequisite. Registered-only packs have historical registrations but no invented selected release head: report installed_release:null and ordered registered release metadata; exact is unavailable, Catalog targets select their explicit model release and ambiguous historical LocalRefs fail rather than retarget.
 
 Initial assignment is cc-prompt.md; current sourcece1bd238 is clean. Issued planning commit is the scoped commit containing this checkpoint, identity returned in dispatch. CDC owns source/index/target until retained CC gives explicit current-task acknowledgment; then CC alone owns the issued source/index/target interval. All protected/default/Full-store/no-push boundaries remain. Prior unissued draft history is retained, not an earlier implementation attempt.
+
+## Assignment history and membership amendment — 2026-10-26 UTC
+
+Current active assignment is cc-prompt-iteration01.md, ISSUED after root concrete packet PASS on 2026-10-26 UTC. CC must acknowledge the numbered assignment before dependent membership-API edits; its current exclusive interval continues. This is an in-flight author-recipe correction before a candidate freeze, not a rejected candidate or acceptance. Initial cc-prompt.md bytes remain unchanged; its unaffected requirements continue to govern.
+
+| Assignment | Predecessor / reason | Disposition |
+| --- | --- | --- |
+| cc-prompt.md, issued 359a3b7 on 2026-10-26 UTC | Initial source-guided 18-path/six-row implementation | Superseded only for this membership amendment; all unaffected obligations retained |
+| cc-prompt-iteration01.md, issued 2026-10-26 UTC | cc-prompt.md; preserve independent disabled policy when CLI changes membership | Active; root concrete packet PASS, CC acknowledgment required |
+
+Binding design cleared by root concrete packet review: keep explicit CollectionProfileWriteRequest/configure authoritative. Add CollectionProfileMembershipWriteRequest {name,root,packs,make_default} and configure_membership returning the existing write report/error. CLI uses membership-only behavior: select existing target disabled IDs only after the existing writer lock/strict old read; new profile empty. Revalidate preserved IDs against the captured new ROOT registrations under lock; unknown IDs reject with old bytes intact. Pre-lock catalogue observations do not pretend to validate a not-yet-read policy. Both routes share one writer and all native/cwd/mode/no-op/error/durability controls. No new path/dependency/schema/criterion/resource authority; all original pending controls/gates remain.
+
+Issue identity is the scoped planning commit containing this assignment update; actual hash is returned at dispatch. Root reviewed draft SHA-256 3bd2e6982403ab2a2b5246a4b56233f25f528ea0f385f9ddb906c8d2e9459262 and independently verified formatting-only draft7fe007bf78deb97ef2f352e79b8539888db650cb66bfebd9948a747f683bd4b2 by reversing two spacing edits. A first issue script stopped at its draft-SHA assertion before any write; the corrected guard verifies both hashes. No product test/gate failed or was repeated for that record correction. Root verified all six original criterion/proof/owner/status cells unchanged. No source freeze or implementation acceptance is implied.
+
+A second static issue attempt updated the draft/history to issued, then stopped before staging/commit because an earlier spacing tidy had also reformatted the A04-S03-06 proof cell. The exact original proof-cell bytes were restored; all six criterion/proof/owner/status tuples now match issue359a3b7. This was planning-checker/formatting recovery, not product execution or a scope change.
