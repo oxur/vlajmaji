@@ -1,0 +1,12 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-a04-s03-cdc-full-01 v0.0.0 (/tmp/vlajmaji-p01-a04-s03-cdc/full-caller01)
+    Finished `release` profile [optimized] target(s) in 1.95s
+     Running unittests src/main.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/deps/vlajmaji_a04_s03_cdc_full_01-9e9391f13e902998)
+
+running 3 tests
+test tests::test_cli_inner_wire_complete_value_presence_extra_and_arbitrary_precision ... ok
+test tests::test_expected_witnesses_positive_and_changed_reference_presence_pack_reject ... ok
+test tests::test_cli_jb_projection_positive_changed_body_attribution_release_missing_and_duplicate_reject ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

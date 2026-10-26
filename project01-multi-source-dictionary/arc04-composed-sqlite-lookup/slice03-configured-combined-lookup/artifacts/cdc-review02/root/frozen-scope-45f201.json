@@ -1,0 +1,209 @@
+{
+  "kind": "read-only frozen-source boundary; not functional acceptance",
+  "baseline": "ce1bd238d4529f5f5b27877569e4b44fa39fe12f",
+  "candidate": "45f21dc3d81d8b248d801104274fa799a1ff8608",
+  "actual_head": "45f21dc3d81d8b248d801104274fa799a1ff8608",
+  "branch": "codex/project01-composed-sqlite-lookup",
+  "status": "",
+  "changed_paths": [
+    "AGENTS.md",
+    "Cargo.lock",
+    "Cargo.toml",
+    "crates/cli/README.md",
+    "crates/cli/src/main.rs",
+    "crates/cli/tests/collection_query_contract.rs",
+    "crates/search/README.md",
+    "crates/search/src/collection_query.rs",
+    "crates/search/src/lib.rs",
+    "crates/search/tests/collection_query_contract.rs",
+    "crates/store/Cargo.toml",
+    "crates/store/src/collection_profiles.rs",
+    "crates/store/src/collections.rs",
+    "crates/store/src/lib.rs",
+    "crates/store/tests/collection_profiles_contract.rs",
+    "docs/collections.md"
+  ],
+  "outside_allowlist": [],
+  "allowed_unchanged_paths": [
+    "README.md",
+    "crates/store/README.md"
+  ],
+  "old_lock_packages": 134,
+  "new_lock_packages": 142,
+  "lock_removed": [],
+  "lock_changed_registry": [],
+  "lock_added": [
+    {
+      "id": [
+        "confyg",
+        "0.3.0",
+        "registry+https://github.com/rust-lang/crates.io-index"
+      ],
+      "checksum": "5fd67258e2f622d7bca18991588cc77a1fd067c72e43bdeec5f5f31740cda8da"
+    },
+    {
+      "id": [
+        "serde_spanned",
+        "1.1.1",
+        "registry+https://github.com/rust-lang/crates.io-index"
+      ],
+      "checksum": "6662b5879511e06e8999a8a235d848113e942c9124f211511b16466ee2995f26"
+    },
+    {
+      "id": [
+        "toml",
+        "0.9.12+spec-1.1.0",
+        "registry+https://github.com/rust-lang/crates.io-index"
+      ],
+      "checksum": "cf92845e79fc2e2def6a5d828f0801e29a2f8acc037becc5ab08595c7d5e9863"
+    },
+    {
+      "id": [
+        "toml_datetime",
+        "0.7.5+spec-1.1.0",
+        "registry+https://github.com/rust-lang/crates.io-index"
+      ],
+      "checksum": "92e1cfed4a3038bc5a127e35a2d360f145e1f4b971b551a2ba5fd7aedf7e1347"
+    },
+    {
+      "id": [
+        "toml_parser",
+        "1.1.5+spec-1.1.0",
+        "registry+https://github.com/rust-lang/crates.io-index"
+      ],
+      "checksum": "baa693a8032d7e1cada7d0041e96126df243179ff061456783ac7f12bda4744c"
+    },
+    {
+      "id": [
+        "toml_writer",
+        "1.1.2+spec-1.1.0",
+        "registry+https://github.com/rust-lang/crates.io-index"
+      ],
+      "checksum": "7d56353a2a665ad0f41a421187180aab746c8c325620617ad883a99a1cbe66d2"
+    },
+    {
+      "id": [
+        "winnow",
+        "0.7.15",
+        "registry+https://github.com/rust-lang/crates.io-index"
+      ],
+      "checksum": "df79d97927682d2fd8adb29682d1140b343be4ac0f08fd68b7765d9c059d3945"
+    },
+    {
+      "id": [
+        "winnow",
+        "1.0.4",
+        "registry+https://github.com/rust-lang/crates.io-index"
+      ],
+      "checksum": "23b97319f7b8343df12cc98938e5c3eb436064524c8d2b4e30a1d3a36eecdf81"
+    }
+  ],
+  "lock_changed_path_records": [
+    {
+      "id": [
+        "vlajmaji-store",
+        "0.3.0",
+        "path"
+      ],
+      "old": {
+        "name": "vlajmaji-store",
+        "version": "0.3.0",
+        "dependencies": [
+          "oxigraph",
+          "rusqlite",
+          "serde",
+          "serde_json",
+          "sha2 0.10.9",
+          "sha2 0.11.0",
+          "vlajmaji-lexicon"
+        ]
+      },
+      "new": {
+        "name": "vlajmaji-store",
+        "version": "0.3.0",
+        "dependencies": [
+          "confyg",
+          "oxigraph",
+          "rusqlite",
+          "serde",
+          "serde_json",
+          "sha2 0.10.9",
+          "sha2 0.11.0",
+          "toml",
+          "vlajmaji-lexicon"
+        ]
+      }
+    }
+  ],
+  "parsed_trailers": [
+    "Co-authored-by: Codex <noreply@openai.com>",
+    "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+  ],
+  "required_trailers_present": true,
+  "files": {
+    "AGENTS.md": {
+      "bytes": 8404,
+      "sha256": "3775aeaad14a5c1eca7edc52d061f39130b1f24ba9fd6dc9f4f537a7282914d7"
+    },
+    "Cargo.lock": {
+      "bytes": 32156,
+      "sha256": "65cd7f39a88bdd2a3dab1fcd14e9055ff7b77cb22ec3af8c309ce49dbea78700"
+    },
+    "Cargo.toml": {
+      "bytes": 961,
+      "sha256": "256e08fe4e4da6c867edc5aaed4fb20726efd48143c6029e103966b6e6192aa4"
+    },
+    "crates/cli/README.md": {
+      "bytes": 7176,
+      "sha256": "5ba1b0b6a8400d46a9aa0bb2220f1b319be745c77f6d94fb8f93251272816da4"
+    },
+    "crates/cli/src/main.rs": {
+      "bytes": 89465,
+      "sha256": "5b33e2997a0eacda3b9f1f41021bf7b71299241b8962ae3d73cd36c7540062da"
+    },
+    "crates/cli/tests/collection_query_contract.rs": {
+      "bytes": 46165,
+      "sha256": "11f6b717524e988c9a9bfee140fc1af8ec1ba5bb2727c553834579b15e4a5ed7"
+    },
+    "crates/search/README.md": {
+      "bytes": 4891,
+      "sha256": "26d1f99d28ce167987cf96c44424c6b82204352af5a6a8d921f9e84165920b5a"
+    },
+    "crates/search/src/collection_query.rs": {
+      "bytes": 72494,
+      "sha256": "2b884ef5640cb8f00299d790435c8f14180e9b014e48dccd263d054603430e31"
+    },
+    "crates/search/src/lib.rs": {
+      "bytes": 56980,
+      "sha256": "c37944f584fc84e3f4dabc864c46b0317ae750d6f8ee1dbb20423b89ac61cd26"
+    },
+    "crates/search/tests/collection_query_contract.rs": {
+      "bytes": 60221,
+      "sha256": "8952adbba701c75cc8936538590963077526601293f30c8230302624eba60665"
+    },
+    "crates/store/Cargo.toml": {
+      "bytes": 969,
+      "sha256": "46ceb62bf0093fee753416b980d022dfd82dcf3e361bd55d3e48368055452a39"
+    },
+    "crates/store/src/collection_profiles.rs": {
+      "bytes": 56087,
+      "sha256": "2e439fbab3332bb3fe2a0203dd86b90f7c5d8e1206ddb37c66f26f5c0918a495"
+    },
+    "crates/store/src/collections.rs": {
+      "bytes": 160450,
+      "sha256": "25907c934f4c89f826528fbffd95b6bc9517f36a254cf86b4f6787f0a49b6290"
+    },
+    "crates/store/src/lib.rs": {
+      "bytes": 15074,
+      "sha256": "7a6e2920b1d5622f0270d8dd956ee15026ec0c0882c87f04c1aadd88bc226cd9"
+    },
+    "crates/store/tests/collection_profiles_contract.rs": {
+      "bytes": 20504,
+      "sha256": "81f670e66087c7674be7a9ab33fd44ea6cf4dac7a37bd8505f7757710da8b5b8"
+    },
+    "docs/collections.md": {
+      "bytes": 7244,
+      "sha256": "73cb8d3164d8da7ff20fbe8469fdf90c0acf3d7f3ca1c26da887ecd4ee5bd6fe"
+    }
+  }
+}

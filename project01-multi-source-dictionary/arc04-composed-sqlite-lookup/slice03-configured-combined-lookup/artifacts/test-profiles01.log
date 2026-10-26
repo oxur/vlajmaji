@@ -1,0 +1,97 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling serde_json v1.0.151
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon)
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:139:10
+    |
+139 |     Io { path: PathBuf, source: io::Error },
+    |          ^^^^^^^^^^^^^
+    |
+    = note: requested on the command line with `-W missing-docs`
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:139:25
+    |
+139 |     Io { path: PathBuf, source: io::Error },
+    |                         ^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:141:12
+    |
+141 |     Utf8 { path: PathBuf, source: std::string::FromUtf8Error },
+    |            ^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:141:27
+    |
+141 |     Utf8 { path: PathBuf, source: std::string::FromUtf8Error },
+    |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:143:15
+    |
+143 |     Invalid { path: PathBuf, detail: String },
+    |               ^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:143:30
+    |
+143 |     Invalid { path: PathBuf, detail: String },
+    |                              ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:149:21
+    |
+149 |     Indeterminate { path: PathBuf, detail: String, source: io::Error },
+    |                     ^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:149:36
+    |
+149 |     Indeterminate { path: PathBuf, detail: String, source: io::Error },
+    |                                    ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:149:52
+    |
+149 |     Indeterminate { path: PathBuf, detail: String, source: io::Error },
+    |                                                    ^^^^^^^^^^^^^^^^^
+
+warning: `vlajmaji-store` (lib) generated 9 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 9.36s
+     Running tests/collection_profiles_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collection_profiles_contract-d3a4892e30fd46c8)
+
+running 4 tests
+test test_profile_read_preserves_false_zero_empty_and_short_lists ... FAILED
+test test_profile_rejects_unknown_duplicate_and_incomplete_shapes ... ok
+test test_configure_requires_registered_pack_and_keeps_old_bytes ... FAILED
+test test_configure_is_idempotent_and_keeps_unrelated_profiles ... FAILED
+
+failures:
+
+---- test_profile_read_preserves_false_zero_empty_and_short_lists stdout ----
+
+thread 'test_profile_read_preserves_false_zero_empty_and_short_lists' (75516078) panicked at crates/store/tests/collection_profiles_contract.rs:40:39:
+called `Result::unwrap()` on an `Err` value: Invalid { path: "/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-profile-literal-69623-1792990953649094000/config.toml", detail: "no default profile is configured" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- test_configure_requires_registered_pack_and_keeps_old_bytes stdout ----
+
+thread 'test_configure_requires_registered_pack_and_keeps_old_bytes' (75516077) panicked at crates/store/tests/collection_profiles_contract.rs:30:50:
+called `Result::unwrap()` on an `Err` value: MutationContext { source: OccupiedDestination("/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-profile-missing-pack-69623-1792990953649095000/catalogue"), attempt_id: None, prior_local_revision: None, proposed_generation: None, observed_generation: None, inputs: [CollectionInputDisposition { pack_id: "llg", disposition: "validated", payload_kind: Some("synthetic"), release_sha256: Some("b9acbdcfc9905d11533b7666fe1413fca5a997b695e4ec03c5cd81136395eedf"), report: None }] }
+
+---- test_configure_is_idempotent_and_keeps_unrelated_profiles stdout ----
+
+thread 'test_configure_is_idempotent_and_keeps_unrelated_profiles' (75516076) panicked at crates/store/tests/collection_profiles_contract.rs:30:50:
+called `Result::unwrap()` on an `Err` value: MutationContext { source: OccupiedDestination("/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-profile-configure-69623-1792990953649065000/catalogue"), attempt_id: None, prior_local_revision: None, proposed_generation: None, observed_generation: None, inputs: [CollectionInputDisposition { pack_id: "llg", disposition: "validated", payload_kind: Some("synthetic"), release_sha256: Some("b9acbdcfc9905d11533b7666fe1413fca5a997b695e4ec03c5cd81136395eedf"), report: None }] }
+
+
+failures:
+    test_configure_is_idempotent_and_keeps_unrelated_profiles
+    test_configure_requires_registered_pack_and_keeps_old_bytes
+    test_profile_read_preserves_false_zero_empty_and_short_lists
+
+test result: FAILED. 1 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p vlajmaji-store --test collection_profiles_contract`

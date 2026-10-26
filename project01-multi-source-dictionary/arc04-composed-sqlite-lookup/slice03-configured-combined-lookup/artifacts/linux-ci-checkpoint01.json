@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "status": "LOCAL_REVIEW_READY; actual Linux OPEN; push not authorized",
+  "recorded_at_utc": "2026-10-26T07:47:48.917761+00:00",
+  "candidate": "45f21dc3d81d8b248d801104274fa799a1ff8608",
+  "branch": "codex/project01-composed-sqlite-lookup",
+  "parent": "d843948d6f69188f974276276e5c17b7e2c88f9f",
+  "tree": "9e9551401919ef5f39afc0ef9936a08d1e563a9a",
+  "source_status": "",
+  "prior_delivered_head_local_remote_ref": "ce1bd238d4529f5f5b27877569e4b44fa39fe12f",
+  "network_refresh_performed": false,
+  "cumulative_s03_paths": [
+    "AGENTS.md",
+    "Cargo.lock",
+    "Cargo.toml",
+    "crates/cli/README.md",
+    "crates/cli/src/main.rs",
+    "crates/cli/tests/collection_query_contract.rs",
+    "crates/search/README.md",
+    "crates/search/src/collection_query.rs",
+    "crates/search/src/lib.rs",
+    "crates/search/tests/collection_query_contract.rs",
+    "crates/store/Cargo.toml",
+    "crates/store/src/collection_profiles.rs",
+    "crates/store/src/collections.rs",
+    "crates/store/src/lib.rs",
+    "crates/store/tests/collection_profiles_contract.rs",
+    "docs/collections.md"
+  ],
+  "cumulative_s03_diffstat": "16 files,8123 insertions,38 deletions",
+  "repair_paths": [
+    "crates/cli/src/main.rs",
+    "crates/cli/tests/collection_query_contract.rs",
+    "crates/search/src/collection_query.rs",
+    "crates/search/tests/collection_query_contract.rs",
+    "crates/store/src/collection_profiles.rs",
+    "docs/collections.md"
+  ],
+  "lock_sha256": "65cd7f39a88bdd2a3dab1fcd14e9055ff7b77cb22ec3af8c309ce49dbea78700",
+  "lock_byte_identical_to_rejected_d843": true,
+  "protected_clean_git_heads": {
+    "main": "52fd3c40a781d6945cfc74a2e79fa66b249e2a5d",
+    "accepted_arc03": "7b1c565ebf6c8a423e04211b599006b8c21d65d9",
+    "Bauske": "c5801ae17caaf86d2651b5ce34570199e873ad0f"
+  },
+  "actual_default": "not accessed",
+  "local_current_gates": {
+    "check": {
+      "rust_passed": 236,
+      "failed": 0,
+      "ignored": 1,
+      "tooling_passed": 19
+    },
+    "isolated_search": {
+      "passed": 38,
+      "failed": 0,
+      "ignored": 0
+    },
+    "synthetic_all_features": {
+      "passed": 238,
+      "failed": 0,
+      "ignored": 1
+    },
+    "format": "author exit0",
+    "lint": "author exit0"
+  },
+  "independent_current": {
+    "shared_assertion": 6,
+    "shared_entry": 5,
+    "general_public": 48,
+    "cli_child_processes": 44,
+    "full_campaign": "one reviewed read-only retained-store campaign, four stages+two checkers;actual runner exit0;hashes unchanged"
+  },
+  "workflow": {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "f107c2eda59e28b79d22708c7958d7b8107df610c01a9bcc4a0d29915d36eed4",
+    "trigger": "normal non-planning branch push",
+    "effects": "Ubuntu Check; Ubuntu/macOS tests; existing Linux package setup and Synthetic four-pack preparation",
+    "permissions": "contents:read",
+    "no_steps_for": [
+      "publication",
+      "deployment",
+      "tagging",
+      "merging"
+    ]
+  },
+  "linux_remaining": [
+    "actual native CONFIG-path/readback control and Linux-only existing invalid-byte installed ROOT configure/profiles/lookup control",
+    "actual /dev/full managed read output failure not_applicable and configure output failure committed with retained state",
+    "current head complete Check and Linux/macOS tests incl existing isolated and Synthetic all-features gates"
+  ],
+  "requested_next_action": "Root may present exact candidate-specific normal branch push and existing CI watch for explicit Operator permission; no PR/merge/publication/default switch. No source or target session remains.",
+  "six_s03_rows": "OPEN",
+  "parent_and_project": "no completion bubble-up;all14projectOPEN",
+  "retention": "all seven S01 comparison roots, one S02 operational ROOT, original d843/failures/binaries/logs remain retained;no new Full create/import/timing"
+}

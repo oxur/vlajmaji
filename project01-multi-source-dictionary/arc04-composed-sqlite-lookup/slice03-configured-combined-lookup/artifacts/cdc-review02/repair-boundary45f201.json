@@ -1,0 +1,24 @@
+{
+  "candidate": "45f21dc3d81d8b248d801104274fa799a1ff8608",
+  "parent": "d843948d6f69188f974276276e5c17b7e2c88f9f",
+  "tree": "9e9551401919ef5f39afc0ef9936a08d1e563a9a",
+  "paths": [
+    "crates/cli/src/main.rs",
+    "crates/cli/tests/collection_query_contract.rs",
+    "crates/search/src/collection_query.rs",
+    "crates/search/tests/collection_query_contract.rs",
+    "crates/store/src/collection_profiles.rs",
+    "docs/collections.md"
+  ],
+  "lock_unchanged": true,
+  "runtime_store_profile_docs_only": true,
+  "functional": "independent shared Assertion6/6, shared Entry5/5, general48 passed; CLI/Full/Linux pending",
+  "files": {
+    "crates/cli/src/main.rs": "5b33e2997a0eacda3b9f1f41021bf7b71299241b8962ae3d73cd36c7540062da",
+    "crates/cli/tests/collection_query_contract.rs": "11f6b717524e988c9a9bfee140fc1af8ec1ba5bb2727c553834579b15e4a5ed7",
+    "crates/search/src/collection_query.rs": "2b884ef5640cb8f00299d790435c8f14180e9b014e48dccd263d054603430e31",
+    "crates/search/tests/collection_query_contract.rs": "8952adbba701c75cc8936538590963077526601293f30c8230302624eba60665",
+    "crates/store/src/collection_profiles.rs": "2e439fbab3332bb3fe2a0203dd86b90f7c5d8e1206ddb37c66f26f5c0918a495",
+    "docs/collections.md": "73cb8d3164d8da7ff20fbe8469fdf90c0acf3d7f3ca1c26da887ecd4ee5bd6fe"
+  }
+}

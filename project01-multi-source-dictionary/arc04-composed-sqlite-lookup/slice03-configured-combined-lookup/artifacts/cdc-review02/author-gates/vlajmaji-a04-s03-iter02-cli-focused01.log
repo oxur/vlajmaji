@@ -1,0 +1,29 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.07s
+     Running tests/collection_query_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collection_query_contract-853058964e001746)
+
+running 16 tests
+test test_collections_help_distinguishes_explicit_root_from_config_home_resolution ... ok
+test test_configure_invalid_pack_keeps_known_context_without_creating_files ... ok
+test test_configure_failure_reports_known_file_root_profile_and_requested_packs ... ok
+test test_lookup_request_parse_precedes_missing_config_and_uses_managed_error_envelope ... ok
+test test_all_managed_commands_report_config_path_for_unusable_home_fallback ... ok
+test test_absolute_config_and_root_work_without_child_cwd_but_relative_config_fails_typed ... ok
+test test_configure_relative_file_and_root_share_child_cwd ... ok
+test test_configure_profiles_selection_and_lookup_use_explicit_config_and_root ... ok
+test test_configure_commits_when_stdout_reader_closes_early ... ok
+test test_cli_configure_preserves_hand_authored_disabled_policy_and_noop_bytes ... ok
+test test_lookup_profile_and_disabled_selection_fail_with_typed_context ... ok
+test test_configure_reports_exact_native_root_path_and_keeps_ascii_root_working ... ok
+test test_profiles_reports_not_applicable_context_when_stdout_file_limit_fails ... ok
+test test_profiles_reports_exact_native_config_io_and_keeps_ascii_counterpart_working ... ok
+test test_all_four_fixture_packs_keep_source_attribution_in_configured_lookup ... ok
+test test_lookup_resolves_absolute_xdg_config_and_rejects_direct_override_of_request ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.31s
+
+
+process_exit=0

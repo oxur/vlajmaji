@@ -2,9 +2,9 @@
 
 | Field | Binding current value |
 | --- | --- |
-| Status | Iteration02 ISSUED after root concrete readiness PASS, 2026-10-26 UTC. Frozen d843 rejected; six rows OPEN, no product acceptance. |
+| Status | Iteration02 author handback at45f21dc3, 2026-10-26 UTC. Independent tiny/shared/CLI and the single reviewed readonly Full campaign pass; actual Linux remains OPEN. All six rows OPEN, no slice acceptance. |
 | Authority | Autonomous THROUGH ARC04; unchanged requested Sol6.1/high CDC, Luna/high CC. No new model/budget question. S02 CLOSED atce1bd238 / planning36e7fc9. |
-| Source / ownership | Rejected frozen d843948 (parent ce1bd238); CDC completed bounded tiny diagnostics and owns source/index/retained target until CC acknowledges issued iteration02, then CC exclusively owns the repair interval. All protected/default/Full-store/no-push boundaries remain. |
+| Source / ownership | Clean45f21dc3, parent rejected d843948, cumulative baseline ce1bd238. CC explicitly returned source/index/retained target with no active command; CDC owns independent verification. All protected/default/Full-store/no-push boundaries remain. |
 | Useful result | Configure selected/all installed collections and issue one combined exact/reference command with pack selection, source filters, coherent pages and truthful operational availability. |
 | Exclusions | No new topology/adapter, full import/store creation, automatic migration/download/default switch, lifecycle delete/update commands, compact/readable implementation or owned editor. No push/PR/publication. |
 

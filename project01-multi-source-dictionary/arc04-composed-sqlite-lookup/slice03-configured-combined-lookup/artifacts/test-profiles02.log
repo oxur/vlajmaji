@@ -1,0 +1,70 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:139:10
+    |
+139 |     Io { path: PathBuf, source: io::Error },
+    |          ^^^^^^^^^^^^^
+    |
+    = note: requested on the command line with `-W missing-docs`
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:139:25
+    |
+139 |     Io { path: PathBuf, source: io::Error },
+    |                         ^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:141:12
+    |
+141 |     Utf8 { path: PathBuf, source: std::string::FromUtf8Error },
+    |            ^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:141:27
+    |
+141 |     Utf8 { path: PathBuf, source: std::string::FromUtf8Error },
+    |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:143:15
+    |
+143 |     Invalid { path: PathBuf, detail: String },
+    |               ^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:143:30
+    |
+143 |     Invalid { path: PathBuf, detail: String },
+    |                              ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:149:21
+    |
+149 |     Indeterminate { path: PathBuf, detail: String, source: io::Error },
+    |                     ^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:149:36
+    |
+149 |     Indeterminate { path: PathBuf, detail: String, source: io::Error },
+    |                                    ^^^^^^^^^^^^^^
+
+warning: missing documentation for a struct field
+   --> crates/store/src/collection_profiles.rs:149:52
+    |
+149 |     Indeterminate { path: PathBuf, detail: String, source: io::Error },
+    |                                                    ^^^^^^^^^^^^^^^^^
+
+warning: `vlajmaji-store` (lib) generated 9 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.32s
+     Running tests/collection_profiles_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collection_profiles_contract-d3a4892e30fd46c8)
+
+running 4 tests
+test test_profile_read_preserves_false_zero_empty_and_short_lists ... ok
+test test_profile_rejects_unknown_duplicate_and_incomplete_shapes ... ok
+test test_configure_requires_registered_pack_and_keeps_old_bytes ... ok
+test test_configure_is_idempotent_and_keeps_unrelated_profiles ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+

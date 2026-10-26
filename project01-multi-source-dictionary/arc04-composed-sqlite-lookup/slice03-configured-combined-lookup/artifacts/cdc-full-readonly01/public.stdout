@@ -1,0 +1,5 @@
+PASS accepted complete inner Value+LF wire, exact five frozen identities and 3/1/1 source totals
+PASS Lensisku alias and complete size 0/1/2/3 page chains/full totals/order
+PASS five exact prior-input reference witnesses including separate JB/La native333
+PASS JB-only/La-only pack selections retain separate received identities within Lensisku
+{"expected_source_sha256":"7f332ad5f3e58f0d4a99cf3c12e82400e85923840430db76291c54951ccef867","farvi_occurrences":5,"inner_wire_bytes":7160366,"inner_wire_sha256":"144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556","ok":true,"pack_selections":[["lensisku-jbotci",2],["la-lojban",1]],"positive_page_sizes":[1,2,3],"reference_witnesses":5,"scope":"readonly Full functional proof, not timing","source_totals":{"lensisku":3,"llg":1,"sutysisku":1},"zero_page_size":0}

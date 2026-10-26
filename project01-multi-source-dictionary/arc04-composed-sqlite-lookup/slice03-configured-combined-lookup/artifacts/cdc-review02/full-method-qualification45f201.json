@@ -1,0 +1,24 @@
+{
+  "candidate": "45f21dc3d81d8b248d801104274fa799a1ff8608",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s03-cdc/full-caller-45f201",
+    "--qualify-expectations",
+    "/tmp/vlajmaji-p01-a04-s03-cdc/full-caller01/expected-from-s02.json"
+  ],
+  "exit_code": 0,
+  "binary_sha256": "635832ca1e24a9f925576c3df3ee12feab78fc93bc6b3eecd12f3bd7afdc0038",
+  "source_sha256": "08cb2cca0ea6c88034265d681c1221c049292289a5c6550c7b7334a396c6a9d2",
+  "lock_sha256": "d0320a10bbb5f5ee00b40ac6ecf46ac455bef54cb5d687939a2f978a8f5d5854",
+  "method_tests": "full-caller-method-tests45f202.log",
+  "method_test_sha256": "18b183fe8fa918843b62366d32acf4ace1454147943747a0b1d17d15c7a0dff6",
+  "method_tests_result": "3 passed/0 failed/0 ignored; witness positive+4 negatives, Value representation/presence/extra, JB selected-field positive+5 negatives",
+  "failed_method_tests": "full-caller-method-tests45f201.log",
+  "failed_method_tests_sha256": "3f6fc9bf05637d163b05dc10b31e6267f57588b9c4009b37e8b11c24976710d3",
+  "failure_disposition": "caller expected exponent bytes corrected; original exact source retained; product unchanged; no Full access",
+  "witness_qualification": {
+    "expected_source_sha256": "7f332ad5f3e58f0d4a99cf3c12e82400e85923840430db76291c54951ccef867",
+    "ok": true,
+    "scope": "expected-witness typed parse only; no store access",
+    "witnesses": 5
+  }
+}

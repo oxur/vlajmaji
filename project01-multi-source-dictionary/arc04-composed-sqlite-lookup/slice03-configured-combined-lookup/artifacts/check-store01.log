@@ -1,0 +1,88 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error[E0369]: binary operation `==` cannot be applied to type `BTreeMap<std::string::String, ProfileWire>`
+   --> crates/store/src/collection_profiles.rs:183:5
+    |
+176 | #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+    |                        --------- in this derive macro expansion
+...
+183 |     profiles: BTreeMap<String, ProfileWire>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+note: an implementation of `PartialEq` might be missing for `ProfileWire`
+   --> crates/store/src/collection_profiles.rs:188:1
+    |
+188 | struct ProfileWire {
+    | ^^^^^^^^^^^^^^^^^^ must implement `PartialEq`
+help: consider annotating `ProfileWire` with `#[derive(PartialEq)]`
+    |
+188 + #[derive(PartialEq)]
+189 | struct ProfileWire {
+    |
+
+error[E0277]: the trait bound `ProfileWire: Eq` is not satisfied
+   --> crates/store/src/collection_profiles.rs:183:5
+    |
+176 | #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+    |                                   -- in this derive macro expansion
+...
+183 |     profiles: BTreeMap<String, ProfileWire>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unsatisfied trait bound
+    |
+help: the trait `Eq` is not implemented for `ProfileWire`
+   --> crates/store/src/collection_profiles.rs:188:1
+    |
+188 | struct ProfileWire {
+    | ^^^^^^^^^^^^^^^^^^
+help: the trait `Eq` is conditionally implemented for `BTreeMap<K, V, A>`
+   --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/alloc/src/collections/btree/map.rs:2613:15
+    |
+    = note: unsatisfied requirement introduced here: `ProfileWire: Eq`
+    = note: required for `BTreeMap<std::string::String, ProfileWire>` to implement `Eq`
+note: required by a bound in `std::cmp::AssertParamIsEq`
+   --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/cmp.rs:380:0
+
+error[E0599]: no method named `local_revision` found for struct `CollectionCatalogue` in the current scope
+    --> crates/store/src/collection_profiles.rs:316:43
+     |
+ 316 | ...   let observed_revision = catalogue.local_revision().map_err(|error| invalid(&path, format!("catalogue revision unavailable: {...
+     |                                         ^^^^^^^^^^^^^^ method not found in `CollectionCatalogue`
+     |
+    ::: crates/store/src/collections.rs:1055:1
+     |
+1055 | pub struct CollectionCatalogue {
+     | ------------------------------ method `local_revision` not found for this struct
+
+error[E0369]: binary operation `==` cannot be applied to type `std::option::Option<&ProfileWire>`
+   --> crates/store/src/collection_profiles.rs:324:66
+    |
+324 |         let unchanged_profile = wire.profiles.get(&request.name) == Some(&profile_wire)
+    |                                 -------------------------------- ^^ ------------------- std::option::Option<&ProfileWire>
+    |                                 |
+    |                                 std::option::Option<&ProfileWire>
+    |
+note: an implementation of `PartialEq` might be missing for `ProfileWire`
+   --> crates/store/src/collection_profiles.rs:188:1
+    |
+188 | struct ProfileWire {
+    | ^^^^^^^^^^^^^^^^^^ must implement `PartialEq`
+help: consider annotating `ProfileWire` with `#[derive(PartialEq)]`
+    |
+188 + #[derive(PartialEq)]
+189 | struct ProfileWire {
+    |
+
+error[E0596]: cannot borrow `builder` as mutable, as it is not declared as mutable
+   --> crates/store/src/collection_profiles.rs:368:33
+    |
+368 |             .and_then(|builder| builder.add_str(&text))
+    |                                 ^^^^^^^ cannot borrow as mutable
+    |
+help: consider changing this to be mutable
+    |
+368 |             .and_then(|mut builder| builder.add_str(&text))
+    |                        +++
+
+Some errors have detailed explanations: E0277, E0369, E0596, E0599.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `vlajmaji-store` (lib) due to 5 previous errors

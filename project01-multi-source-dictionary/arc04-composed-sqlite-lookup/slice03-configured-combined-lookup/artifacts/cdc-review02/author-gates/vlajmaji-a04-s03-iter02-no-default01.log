@@ -1,0 +1,82 @@
+[1;34mRunning isolated search tests without default features...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.15s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-110b24dce5a274d9)
+
+running 6 tests
+test collection_query::cursor_tests::test_managed_cursor_rejects_malformed_unicode_hex_without_panicking ... ok
+test dictionary::unverified_index_tests::test_sql_candidate_must_exist_before_source_selection_can_skip_it ... ok
+test dictionary::unverified_index_tests::test_required_lookup_indexes_keep_unique_ids_and_reject_duplicates ... ok
+test collection_query::cursor_tests::test_indeterminate_config_report_retains_prior_proposed_and_observed_revisions ... ok
+test collection_query::cursor_tests::test_managed_cursor_roundtrip_and_snapshot_binding ... ok
+test collection_query::cursor_tests::test_managed_cursor_rejects_malformed_envelopes_and_wire_shapes ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/collection_query_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collection_query_contract-83c68aa660b5ead7)
+
+running 15 tests
+test test_public_profile_lookup_errors_keep_typed_categories_and_context ... ok
+test test_metadata_only_unknown_and_unresolved_do_not_require_payload ... ok
+test test_selected_installed_catalog_reference_reports_typed_payload_failure ... ok
+test test_selected_corrupt_derived_store_is_not_reported_as_catalogue_only ... ok
+test test_missing_installed_copy_is_advisory_and_accessor_stays_metadata_only ... ok
+test test_resolve_uses_selected_payload_when_an_unrelated_pack_is_registered_only ... ok
+test test_missing_derived_state_stales_cursor_and_exact_restore_accepts_it ... ok
+test test_config_change_stales_cursor_before_disabled_selection_admission ... ok
+test test_managed_exact_matches_existing_unpaged_wire_and_wraps_page_cursor ... ok
+test test_readiness_four_source_literals_keep_independent_exact_counts ... ok
+test test_equal_local_contributors_admit_selected_enabled_pack_payload ... ok
+test test_selected_unsupported_derived_version_is_typed_for_exact_and_resolve ... ok
+test test_stale_reference_snapshot_wins_before_corrupt_heavy_metadata ... ok
+test test_historical_local_identity_deduplicates_equal_body_and_rejects_conflict ... ok
+test test_shared_entry_retains_each_selected_contributor_release_scope ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.18s
+
+     Running tests/corpus_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/corpus_contract-9503ec9aab7a3c27)
+
+running 9 tests
+test disabled_morphology_is_a_typed_error_not_empty_success ... ok
+test search_engine_has_safe_summary_debug_output ... ok
+test compose_kind_is_validated_with_empty_and_nonempty_candidate_sets ... ok
+test contrast_exposes_p01_coordinate_explanations_without_word_total ... ok
+test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok
+test exact_proposal_option_is_separate_complete_and_limited_after_combination ... ok
+test scalar_spelling_distance_scans_and_preserves_record_multiplicity ... ok
+test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok
+test native_candidate_counts_are_stage_labelled ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/dictionary_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_contract-039c742b1c2a5b9a)
+
+running 6 tests
+test pages_zero_totals_cursor_binding_and_stale_cursor_are_explicit ... ok
+test exact_farvi_matches_the_complete_occurrence_reference_after_reopen ... ok
+test hit_computations_follow_dictionary_metadata_order ... ok
+test repeated_editorial_membership_is_preserved_but_hit_views_are_unique ... ok
+test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok
+test test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.19s
+
+     Running tests/dictionary_topology.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_topology-a74b0f28149209a4)
+
+running 1 test
+test test_exact_profiled_matches_unprofiled_for_each_topology ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+   Doc-tests vlajmaji_search
+
+running 1 test
+test crates/search/src/lib.rs - (line 7) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 1.61s; merged doctests compilation took 1.46s
+[1;32m✓ No-default-feature tests passed[0m
+
+process_exit=0

@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "status": "PROSPECTIVE/HOLD; no execution-ready claim",
+  "authority": "original Arc04 S03 bounded read-only Full reuse; prerequisite/local repaired freeze and root preflight read pending",
+  "candidate_source": null,
+  "release_cli": null,
+  "release_cli_sha256": null,
+  "full_caller_binary": null,
+  "full_caller_sha256": null,
+  "guard": "/tmp/vlajmaji-p01-a04-s03-cdc/stage_guard_split01.py",
+  "guard_sha256": "8b78f747fe7977ea9aad67a2a26472261d76f2047e5a30e3c06aee47b655c859",
+  "full_root": "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01",
+  "store": "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01/generations/4ff079565e33ef4b56902fc9e9a34147/store",
+  "database": "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01/generations/4ff079565e33ef4b56902fc9e9a34147/store/dictionary.sqlite3",
+  "catalogue": "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01/catalogue.sqlite3",
+  "expected_existing_database_sha256": "b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725",
+  "expected_existing_catalogue_sha256": "8baadd5eaf5c07eb071c5aaad325af0601dc560b39a5100ba334b72e1bd79aa3",
+  "expected_canonical_bytes": 435519540,
+  "expected_canonical_sha256": "d9d73cbb49cc5a9ddb0ec16cb6dbb4bb7260ad49f4f8f54c6e6d21f0779b7b19",
+  "expected_witness": "/tmp/vlajmaji-p01-a04-s03-cdc/full-caller01/expected-from-s02.json",
+  "expected_witness_sha256": "7f332ad5f3e58f0d4a99cf3c12e82400e85923840430db76291c54951ccef867",
+  "fresh_campaign": "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01",
+  "fresh_explicit_config": "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/profiles.toml",
+  "environment": {
+    "PATH": "/usr/bin:/bin",
+    "LC_ALL": "C"
+  },
+  "limits": {
+    "timeout_seconds_per_stage": 600,
+    "max_rss_bytes_postcompletion": 8589934592,
+    "campaign_output_bytes_postinventory_ceiling": 134217728,
+    "new_full_stores": 0,
+    "new_imports": 0,
+    "timing_rounds": 0,
+    "notes": "timeout actively bounds owned process group; RSS and byte totals are acceptance checks after completion, not live enforced caps; no performance comparison or cold-disk claim"
+  },
+  "prerequisites": [
+    "repaired clean candidate and exact changed-scope review",
+    "all required current author gates and actual independent tiny/shared-Assertion/shared-Entry/strict CLI cases pass",
+    "actual Full caller pure witness and CLI-wire methods qualified before Full access",
+    "release CLI/full caller/source/guard hashes frozen",
+    "current free-space and retained target-cache baseline recorded without cleanup",
+    "fresh campaign absent and all commands expanded; no overwrite/retry",
+    "root reviewed final concrete preflight; actual Linux remains separate pending gate"
+  ],
+  "stages": [
+    {
+      "name": "before",
+      "action": "exactly one SHA observation each over DB and catalogue; compare accepted S02 hashes; no verification rerun"
+    },
+    {
+      "name": "configure",
+      "argv": [
+        "<frozen release CLI>",
+        "collections",
+        "configure",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01",
+        "--profile",
+        "local",
+        "--all",
+        "--make-default",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/profiles.toml"
+      ],
+      "effect": "new scratch policy only; no global/default store change"
+    },
+    {
+      "name": "public",
+      "argv": [
+        "<frozen full caller>",
+        "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/profiles.toml",
+        "/tmp/vlajmaji-p01-a04-s03-cdc/full-caller01/expected-from-s02.json",
+        "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/public"
+      ],
+      "coverage": "one cached all-pack engine: accepted full inner wire, source LSK, sizes0/1/2/3, five input-frozen refs/wrong-role; explicit drop then JB-only2/La-only1 engines, each dropped"
+    },
+    {
+      "name": "cli-all",
+      "argv": [
+        "<frozen release CLI>",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/profiles.toml"
+      ],
+      "wire": "unmodified actual stdout separate from time stderr; Rust --check-cli qualifier compares complete inner Value+LF with accepted7160366B/SHA144b...73556"
+    },
+    {
+      "name": "cli-jb",
+      "argv": [
+        "<frozen release CLI>",
+        "lookup",
+        "farvi",
+        "--pack",
+        "lensisku-jbotci",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/profiles.toml"
+      ],
+      "coverage": "exact two pre-input Jbotci assertion IDs AND bodies/native attributions, Lensisku occurrences2/source groups1, expected release memberships; no complete response-body equality claim",
+      "checker_argv": [
+        "<frozen full caller>",
+        "--check-cli-jb",
+        "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/cli-jb.stdout",
+        "/tmp/vlajmaji-p01-a04-s03-cdc/full-caller01/expected-from-s02.json"
+      ],
+      "checker_source": "full-caller01/src/main.rs::check_cli_jb; pure positive + changed body/attribution/release/missing field/duplicate negatives must pass before Full"
+    },
+    {
+      "name": "after",
+      "action": "exactly one SHA observation each over same DB and catalogue for whole campaign; compare before; postinventory output bytes"
+    }
+  ],
+  "stop_policy": "first failure stops new functional stages; retain raw outputs/receipts and perform bounded final hash observations when safe; no automatic second Full campaign, creation or regeneration",
+  "boundaries": [
+    "no actual user default access",
+    "no existing input/store movement or overwrite",
+    "no source/index/target activity during Full stages",
+    "no OS cache purge/network/push/CI/PR/publication",
+    "accepted S01 seven comparison stores and S02 operational root retained"
+  ],
+  "catalogue_filename_source": "crates/store/src/collections_schema.rs:13 CATALOGUE_FILE (unchanged S02 schema)",
+  "prospective_full_caller_source_sha256": "89373e88afcef6f9dd0a0ac535dbd5ae3d356e53451beffa7387f6dc5127a78e"
+}

@@ -1,0 +1,39 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0282]: type annotations needed
+   --> crates/search/src/collection_query.rs:502:9
+    |
+502 |         Ok(((high << 4) | low) as u8)
+    |         ^^ cannot infer type of the type parameter `E` declared on the enum `Result`
+    |
+help: consider specifying the generic arguments
+    |
+502 |         Ok::<u8, E>(((high << 4) | low) as u8)
+    |           +++++++++
+
+error[E0283]: type annotations needed
+   --> crates/search/src/collection_query.rs:502:9
+    |
+502 |         Ok(((high << 4) | low) as u8)
+    |         ^^ cannot infer type of the type parameter `E` declared on the enum `Result`
+503 |     }).collect::<Result<_,_>>()?;
+    |                                - type must be known at this point
+    |
+note: multiple `impl`s satisfying `CollectionQueryError: From<_>` found
+   --> crates/search/src/collection_query.rs:249:1
+    |
+249 | impl From<CollectionProfileError> for CollectionQueryError { fn from(error: CollectionProfileError) -> Self { Self::Profile(error) } }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+250 | impl From<CollectionError> for CollectionQueryError { fn from(error: CollectionError) -> Self { Self::Catalogue(error) } }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+251 | impl From<DictionaryQueryError> for CollectionQueryError { fn from(error: DictionaryQueryError) -> Self { Self::Query(error) } }
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: and another `impl` found in the `core` crate: `impl<T> From<T> for T;`
+help: consider specifying the generic arguments
+    |
+502 |         Ok::<u8, E>(((high << 4) | low) as u8)
+    |           +++++++++
+
+Some errors have detailed explanations: E0282, E0283.
+For more information about an error, try `rustc --explain E0282`.
+error: could not compile `vlajmaji-search` (lib) due to 2 previous errors

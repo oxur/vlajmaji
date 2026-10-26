@@ -1,0 +1,13 @@
+version = 1
+revision = 1
+default_profile = "local"
+
+[profiles.local]
+root = "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01"
+packs = [
+    "lensisku-jbotci",
+    "llg",
+    "la-lojban",
+    "sutysisku",
+]
+disabled = []

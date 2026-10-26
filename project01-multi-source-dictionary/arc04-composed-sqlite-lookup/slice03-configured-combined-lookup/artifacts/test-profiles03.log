@@ -1,0 +1,23 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error[E0027]: pattern does not mention fields `prior_revision`, `proposed_revision`, `prior_sha256`, `proposed_sha256`, `observed_sha256`
+   --> crates/store/src/collection_profiles.rs:197:13
+    |
+197 |             Self::Indeterminate { path, detail, source } => write!(f, "profile write outcome is indeterminate at {}: {detail}: {sou...
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ missing fields `prior_revision`, `proposed_revision`, `prior_sha256`, `proposed_sha256`, `observed_sha256`
+    |
+help: include the missing fields in the pattern
+    |
+197 |             Self::Indeterminate { path, detail, source, prior_revision, proposed_revision, prior_sha256, proposed_sha256, observed_sha256 } => write!(f, "profile write outcome is indeterminate at {}: {detail}: {source}", path.display()),
+    |                                                       +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+help: if you don't care about these missing fields, you can explicitly ignore them
+    |
+197 |             Self::Indeterminate { path, detail, source, prior_revision: _, proposed_revision: _, prior_sha256: _, proposed_sha256: _, observed_sha256: _ } => write!(f, "profile write outcome is indeterminate at {}: {detail}: {source}", path.display()),
+    |                                                       ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+help: or always ignore missing fields here
+    |
+197 |             Self::Indeterminate { path, detail, source, .. } => write!(f, "profile write outcome is indeterminate at {}: {detail}: {source}", path.display()),
+    |                                                       ++++
+
+For more information about this error, try `rustc --explain E0027`.
+error: could not compile `vlajmaji-store` (lib) due to 1 previous error

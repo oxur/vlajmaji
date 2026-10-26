@@ -1,0 +1,38 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling syn v3.0.9
+   Compiling smallvec v1.16.4
+   Compiling rusqlite v0.40.2
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling thiserror v2.0.21
+   Compiling serde v1.0.229
+   Compiling confyg v0.3.0
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon)
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+   Compiling vlajmaji-a04-s03-cdc-full-01 v0.0.0 (/tmp/vlajmaji-p01-a04-s03-cdc/full-caller01)
+    Finished `release` profile [optimized] target(s) in 20.40s
+     Running unittests src/main.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/deps/vlajmaji_a04_s03_cdc_full_01-9e9391f13e902998)
+
+running 3 tests
+test tests::test_cli_inner_wire_complete_value_and_presence_extra_number_lexeme ... FAILED
+test tests::test_expected_witnesses_positive_and_changed_reference_presence_pack_reject ... ok
+test tests::test_cli_jb_projection_positive_changed_body_attribution_release_missing_and_duplicate_reject ... ok
+
+failures:
+
+---- tests::test_cli_inner_wire_complete_value_and_presence_extra_number_lexeme stdout ----
+
+thread 'tests::test_cli_inner_wire_complete_value_and_presence_extra_number_lexeme' (75892222) panicked at src/main.rs:230:9:
+assertion `left == right` failed
+  left: [123, 34, 110, 117, 109, 98, 101, 114, 34, 58, 49, 101, 43, 57, 57, 57, 57, 44, 34, 111, 112, 116, 105, 111, 110, 97, 108, 34, 58, 110, 117, 108, 108, 125, 10]
+ right: [123, 34, 110, 117, 109, 98, 101, 114, 34, 58, 49, 101, 57, 57, 57, 57, 44, 34, 111, 112, 116, 105, 111, 110, 97, 108, 34, 58, 110, 117, 108, 108, 125, 10]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests::test_cli_inner_wire_complete_value_and_presence_extra_number_lexeme
+
+test result: FAILED. 2 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--bin vlajmaji-a04-s03-cdc-full-01`

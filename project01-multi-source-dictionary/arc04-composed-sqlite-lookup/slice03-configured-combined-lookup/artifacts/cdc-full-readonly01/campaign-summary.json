@@ -1,0 +1,227 @@
+{
+  "ok": true,
+  "candidate": "45f21dc3d81d8b248d801104274fa799a1ff8608",
+  "error": null,
+  "stages": [
+    {
+      "name": "configure",
+      "wrapper_exit_code": 0,
+      "receipt": {
+        "argv": [
+          "/tmp/vlajmaji-p01-a04-s03-cdc/cli-45f2-release01",
+          "collections",
+          "configure",
+          "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01",
+          "--profile",
+          "local",
+          "--all",
+          "--make-default",
+          "--config",
+          "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/profiles.toml"
+        ],
+        "decision": "passed",
+        "elapsed_seconds": 0.121107416,
+        "exit_code": 0,
+        "log": "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/configure.time.stderr",
+        "maximum_resident_set_size_bytes": 9928704,
+        "pid": 28830,
+        "rss_parse_ok": true,
+        "rss_source": "/usr/bin/time -l maximum resident set size",
+        "stdout_path": "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/configure.stdout",
+        "timed_out": false
+      }
+    },
+    {
+      "name": "public",
+      "wrapper_exit_code": 0,
+      "receipt": {
+        "argv": [
+          "/tmp/vlajmaji-p01-a04-s03-cdc/full-caller-45f201",
+          "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/profiles.toml",
+          "/tmp/vlajmaji-p01-a04-s03-cdc/full-caller01/expected-from-s02.json",
+          "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/public"
+        ],
+        "decision": "passed",
+        "elapsed_seconds": 35.8185975,
+        "exit_code": 0,
+        "log": "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/public.time.stderr",
+        "maximum_resident_set_size_bytes": 3057680384,
+        "pid": 28833,
+        "rss_parse_ok": true,
+        "rss_source": "/usr/bin/time -l maximum resident set size",
+        "stdout_path": "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/public.stdout",
+        "timed_out": false
+      }
+    },
+    {
+      "name": "cli-all",
+      "wrapper_exit_code": 0,
+      "receipt": {
+        "argv": [
+          "/tmp/vlajmaji-p01-a04-s03-cdc/cli-45f2-release01",
+          "lookup",
+          "farvi",
+          "--config",
+          "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/profiles.toml"
+        ],
+        "decision": "passed",
+        "elapsed_seconds": 2.4281555829999997,
+        "exit_code": 0,
+        "log": "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/cli-all.time.stderr",
+        "maximum_resident_set_size_bytes": 2267168768,
+        "pid": 28863,
+        "rss_parse_ok": true,
+        "rss_source": "/usr/bin/time -l maximum resident set size",
+        "stdout_path": "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/cli-all.stdout",
+        "timed_out": false
+      }
+    },
+    {
+      "name": "cli-jb",
+      "wrapper_exit_code": 0,
+      "receipt": {
+        "argv": [
+          "/tmp/vlajmaji-p01-a04-s03-cdc/cli-45f2-release01",
+          "lookup",
+          "farvi",
+          "--pack",
+          "lensisku-jbotci",
+          "--config",
+          "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/profiles.toml"
+        ],
+        "decision": "passed",
+        "elapsed_seconds": 2.062681125,
+        "exit_code": 0,
+        "log": "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/cli-jb.time.stderr",
+        "maximum_resident_set_size_bytes": 2242592768,
+        "pid": 28869,
+        "rss_parse_ok": true,
+        "rss_source": "/usr/bin/time -l maximum resident set size",
+        "stdout_path": "/tmp/vlajmaji-p01-a04-s03-cdc/full-readonly01/cli-jb.stdout",
+        "timed_out": false
+      }
+    }
+  ],
+  "before": {
+    "database": "b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725",
+    "catalogue": "8baadd5eaf5c07eb071c5aaad325af0601dc560b39a5100ba334b72e1bd79aa3"
+  },
+  "after": {
+    "database": "b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725",
+    "catalogue": "8baadd5eaf5c07eb071c5aaad325af0601dc560b39a5100ba334b72e1bd79aa3"
+  },
+  "database_and_catalogue_unchanged": true,
+  "output_bytes_before_summary": 21477736,
+  "files": {
+    "before.json": {
+      "bytes": 168,
+      "sha256": "4deb22d9ba7a9def9a4c70cbdfbdf1e5fb9e095f874762a6df82e3bd74cbe687"
+    },
+    "configure.stdout": {
+      "bytes": 552,
+      "sha256": "cbd75c4615a5858af2e3a322d62c3b6e9dafad2a70cb7cf31b77c4f277cc4db9"
+    },
+    "cli-all.check.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "configure.wrapper.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "configure.time.stderr": {
+      "bytes": 777,
+      "sha256": "48813dddd8e825cdd935d5343fc9b07249f691b607c352f2787be6c0b561e3d5"
+    },
+    "configure.receipt.json": {
+      "bytes": 656,
+      "sha256": "431cd33520ebbb22d9ea1c08fa4b5dff812f9a8ee0fc3980e49e335a6203641e"
+    },
+    "cli-jb.wrapper.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "public.stdout": {
+      "bytes": 822,
+      "sha256": "1557200a0598ca1f224f9de3c1117d543ffe61edc905d0eb6d02cfa9b9a7662c"
+    },
+    "public.time.stderr": {
+      "bytes": 777,
+      "sha256": "5c60ea97ca9c4e650493aa10b988e220c7633526bf6e35cd1908975e49df0791"
+    },
+    "cli-jb.receipt.json": {
+      "bytes": 572,
+      "sha256": "38e96a765fa19e049c7d3fd9a2bd8eeda2017966e203f4ba08ba083830128d25"
+    },
+    "cli-all.stdout": {
+      "bytes": 7164883,
+      "sha256": "b03ee0ba53b43ae6cfdc6193872bb2c6c1e32643a052085864b8f1e16cc2e197"
+    },
+    "after.json": {
+      "bytes": 168,
+      "sha256": "4deb22d9ba7a9def9a4c70cbdfbdf1e5fb9e095f874762a6df82e3bd74cbe687"
+    },
+    "cli-all.check.stdout": {
+      "bytes": 310,
+      "sha256": "84f438f7e562d4bcb586ae3d5206e816f91f225533998e400dd018f613506906"
+    },
+    "public.wrapper.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cli-all.wrapper.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cli-jb.time.stderr": {
+      "bytes": 777,
+      "sha256": "c676b89a6fada1b5edec8e3aabc5878a85823d12d28a3b5396b995e567ca908d"
+    },
+    "cli-all.time.stderr": {
+      "bytes": 777,
+      "sha256": "7a2552e35d10dea55efc194148b6edc20a09e5277b6a07d9ac69aa8d3e984a7c"
+    },
+    "cli-all.receipt.json": {
+      "bytes": 552,
+      "sha256": "18df55ffa4b9d05a16eb532fda74bd987feac586ba4ac285dc907793e63b6831"
+    },
+    "cli-jb.check.stdout": {
+      "bytes": 339,
+      "sha256": "96886cfae3d1f7acd46a694fbf9b40faeeec39d9ac9ec21e2d9ef7b481a745c4"
+    },
+    "public.receipt.json": {
+      "bytes": 637,
+      "sha256": "3ee5dc4fbdf9734a5c768e64028cc47ef81209945744ed955d9c23ffd0a57a29"
+    },
+    "cli-jb.stdout": {
+      "bytes": 7143771,
+      "sha256": "f368d385226b97547d768790f1a41d1e9bfe076ffb4de6fdf974c52caaadda41"
+    },
+    "cli-jb.check.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "profiles.toml": {
+      "bytes": 221,
+      "sha256": "2a33386c76649e8fd2c5269b06ff488f92fb03a90ad4fe07a4927fc28db71900"
+    },
+    "public/summary.json": {
+      "bytes": 611,
+      "sha256": "79cb1787e13ae483f229cfe2aa0a6b4a34fefbd89b6b40dc7e88dcb2d989ae16"
+    },
+    "public/full-inner-wire.json": {
+      "bytes": 7160366,
+      "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+    }
+  },
+  "limits": {
+    "timeout_seconds_per_stage": 600,
+    "max_rss_bytes_postcompletion": 8589934592,
+    "campaign_output_bytes_postinventory_ceiling": 134217728,
+    "new_full_stores": 0,
+    "new_imports": 0,
+    "timing_rounds": 0,
+    "notes": "timeout actively bounds owned process group; RSS and byte totals are acceptance checks after completion, not live enforced caps; no performance comparison or cold-disk claim"
+  },
+  "scope": "functional read-only reuse; no performance trial"
+}
