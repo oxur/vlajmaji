@@ -2,9 +2,9 @@
 
 | Field | Binding current value |
 | --- | --- |
-| Status | Iteration02 author handback at45f21dc3, 2026-10-26 UTC. Independent tiny/shared/CLI and the single reviewed readonly Full campaign pass; actual Linux remains OPEN. All six rows OPEN, no slice acceptance. |
+| Status | Iteration03 test-only validation correction ISSUED after root readiness PASS, 2026-10-26 UTC. Initial45f2 local/Full/hosted gates pass, but forced native CONFIG-positive remains unmet. All six rows OPEN. |
 | Authority | Autonomous THROUGH ARC04; unchanged requested Sol6.1/high CDC, Luna/high CC. No new model/budget question. S02 CLOSED atce1bd238 / planning36e7fc9. |
-| Source / ownership | Clean45f21dc3, parent rejected d843948, cumulative baseline ce1bd238. CC explicitly returned source/index/retained target with no active command; CDC owns independent verification. All protected/default/Full-store/no-push boundaries remain. |
+| Source / ownership | Clean45f21dc3, parent rejected d843948, cumulative baseline ce1bd238. CDC owns source/index/target until retained CC acknowledges issued iteration03, then CC alone owns the one-test-file interval. Root alone owns approved bounded S03 delivery; protected/default/Full-store boundaries remain. |
 | Useful result | Configure selected/all installed collections and issue one combined exact/reference command with pack selection, source filters, coherent pages and truthful operational availability. |
 | Exclusions | No new topology/adapter, full import/store creation, automatic migration/download/default switch, lifecycle delete/update commands, compact/readable implementation or owned editor. No push/PR/publication. |
 
@@ -169,3 +169,16 @@ Independent diagnostics: shared-body02 4 PASS/2 FAIL; shared-entry02 2 PASS/3 FA
 +
 +The six-path correction fixes all-contributor Local admission/filtering, config-location diagnostics and writer limitations documentation. Rejected d843 source/tree, independent failures and successful scoped controls remain immutable records. All original unaffected obligations/gates persist. Source/index/retained target transfer only after explicit CC acknowledgment; CDC has no active process, no Full access occurred, and actual Linux remains pending. No future push authority is inferred. Issue identity is the scoped planning commit containing this checkpoint, returned with actual source ownership acknowledgment.
 +
+
+## Iteration03 validation correction — DRAFT/HOLD, 2026-10-26 UTC
+
+Root's source/evidence review identifies one unresolved original native-positive obligation: the generic Unix CONFIG test can take its IO-qualified early return on Linux without reporting that branch. A green test name plus forced native ROOT success is not direct observed CONFIG success. Proposed iteration03 changes only the owning store profile contract test: exclude its IO-qualified match arm on Linux so any Linux error hits the existing panic and exact CONFIG readback becomes mandatory; Mac behavior remains unchanged. This is a validation correction, not a reproduced product failure, and no source edit/CC transfer has occurred.
+
+The DRAFT `cc-prompt-iteration03.md` and `artifacts/iteration03-readiness/runtime-retention45f201.json` preserve exact baseline45f2 and runtime/source hashes. After review/issue and explicit CC acknowledgment, run required current format→lint→check, one-path commit and real current-head Linux CI; retain the prior6/5/48/44/Full proof only under exact unchanged-runtime/one-test-file evidence. No new Full run or feature campaign, no criteria/owner/status change. Root owns delivery under the approved S03 CI correction boundary; no automatic future-feature push. All six rows stay OPEN; S04 not issued.
+
+
+## Iteration03 issue checkpoint — 2026-10-26 UTC
+
+Root read full draft SHA256`e1bbf31d96fc8b660ccc2b6df9c2ab2c637201d39afeb0d90b891423db03c8ec`, verified all fifteen retention hashes and unchanged six contracts, and cleared this one-test-file correction. Exact draft bytes remain in `artifacts/iteration03-readiness/iteration03-draft.md`. Current active assignment is `cc-prompt-iteration03.md`; initial/iteration01/iteration02 bytes and earlier draft text remain history. Issue commit is the scoped planning commit containing this checkpoint, returned at dispatch.
+
+After exact CC readback, ownership transfers only for the existing cfg-controlled CONFIG test and required current gates. Initial hosted45f2 success and all runtime/Full evidence remain retained at their actual identities. The corrected Linux positive must execute at the new frozen head before final acceptance. No new product change, Full run, fixture, feature matrix, source scope or future-feature push authority.

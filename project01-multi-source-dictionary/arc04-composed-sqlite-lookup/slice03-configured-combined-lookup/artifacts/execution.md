@@ -213,3 +213,13 @@ Independent current tiny execution after handback has passed the identical six s
 ### CDC repaired local campaign — Linux still OPEN
 
 Current independent45f2 shared Assertion6/6, shared Entry5/5, general48 and strict44-process CLI controls exited0. Pure Full methods corrected one caller-only exponent serialization expectation;2PASS/1FAIL original and exact source retained, then3/3 passed before any Full access. Root reviewed the frozen69-payload prerequisite bundle. Exactly one retained-store campaign then exited0: all four stages/two CLI checkers passed; one DB/catalogue before/after pair is equal. Canonical25 small Full files/16,796B and local-held bulk hashes are at `cdc-full-readonly01/manifest.json`; no retry/create/import/timing. Full inner7160366B hash144b…73556 unchanged; managed outer7164883B remains a concrete S05 payload cost. See `local-readiness-and-linux-checkpoint.md` and `linux-ci-checkpoint01.json`. All six rows OPEN; actual Linux/candidate-specific delivery still pending, no active source/target sessions or push.
+
+
+### Candidate-specific S03 delivery authorized — CI pending
+
+Duncan explicitly approved: “yes please! Go ahead and push :-)”. Root completed a normal, non-force push of `ce1bd238`→`45f21dc3` to `codex/project01-composed-sqlite-lookup` with actual exit0; raw push bytes and authorization/run binding are preserved in `ci-delivery01/push45f201.log` and `push-and-run01.json`. Hosted push run [40336154928](https://github.com/oxur/vlajmaji/actions/runs/40336154928) has exact head45f21dc3 confirmed by root. Root owns watch session70821 and all network delivery reads; CDC performs no parallel watch/push or source/target work. Terminal results and actual candidate-specific Linux are still pending, all six rows OPEN. No S04 issue, later push, PR, merge, publication or actual default mutation is authorized by this delivery.
+
+
+### Initial S03 hosted success and remaining forced-positive gap
+
+Run40336154928 at exact45f2 completed SUCCESS in Check121618160877, macOS121618161367 and Linux121618161449; root watch actualexit0. CDC independently parsed the complete locally preserved job logs by exact step: Linux default238/0/1 over45 result rows, isolated38/0/0 over6, Synthetic all-features240/0/1 over45; macOS236/0/1 over45. Strict Linux native ROOT and `/dev/full` each passed default/all-features. The generic Unix CONFIG test also passed twice but can take its qualified IO arm; green name alone does not prove its success branch. Thus the original forced CONFIG-positive remains unmet; no product bug or full S03 acceptance is inferred. `ci-delivery01/manifest.json` preserves all initial delivery bytes, exact head/terminal summary and independent census.

@@ -1,0 +1,69 @@
+{
+  "check": {
+    "bytes": 78631,
+    "sha256": "cb1cb69ff4e8b71ef87ed0fab775727faf2146cbad26c4136448f82f6d4a018d",
+    "test_groups": {},
+    "named_controls": {
+      "test_non_utf8_installed_root_roundtrips_through_profile_and_lookup": [],
+      "test_managed_stdout_full_reports_read_and_committed_write_failures": [],
+      "test_configure_preserves_native_config_path_when_platform_allows": []
+    }
+  },
+  "macos": {
+    "bytes": 148913,
+    "sha256": "fc541b843a7f8dfd99bf4e3d788fd9fe9f0a6508e02f20341edb36eec1154da7",
+    "test_groups": {
+      "Run cargo test --workspace --locked": {
+        "rows": 45,
+        "passed": 236,
+        "failed": 0,
+        "ignored": 1
+      }
+    },
+    "named_controls": {
+      "test_non_utf8_installed_root_roundtrips_through_profile_and_lookup": [],
+      "test_managed_stdout_full_reports_read_and_committed_write_failures": [],
+      "test_configure_preserves_native_config_path_when_platform_allows": [
+        "Test (macos-latest)\tRun cargo test --workspace --locked\t2026-10-26T14:05:24.2401300Z test test_configure_preserves_native_config_path_when_platform_allows ... ok"
+      ]
+    }
+  },
+  "linux": {
+    "bytes": 277420,
+    "sha256": "63f197898e9e5b2ec54f416886c662b229a24c6817d00c8c7c1f4ebacb27457e",
+    "test_groups": {
+      "Run cargo test --workspace --locked": {
+        "rows": 45,
+        "passed": 238,
+        "failed": 0,
+        "ignored": 1
+      },
+      "Run cargo test --locked -p vlajmaji-search --no-default-features": {
+        "rows": 6,
+        "passed": 38,
+        "failed": 0,
+        "ignored": 0
+      },
+      "Run cargo test --workspace --all-features --locked": {
+        "rows": 45,
+        "passed": 240,
+        "failed": 0,
+        "ignored": 1
+      }
+    },
+    "named_controls": {
+      "test_non_utf8_installed_root_roundtrips_through_profile_and_lookup": [
+        "Test (ubuntu-latest)\tRun cargo test --workspace --locked\t2026-10-26T14:04:58.1360872Z test test_non_utf8_installed_root_roundtrips_through_profile_and_lookup ... ok",
+        "Test (ubuntu-latest)\tRun cargo test --workspace --all-features --locked\t2026-10-26T14:06:35.5420578Z test test_non_utf8_installed_root_roundtrips_through_profile_and_lookup ... ok"
+      ],
+      "test_managed_stdout_full_reports_read_and_committed_write_failures": [
+        "Test (ubuntu-latest)\tRun cargo test --workspace --locked\t2026-10-26T14:04:58.0403293Z test test_managed_stdout_full_reports_read_and_committed_write_failures ... ok",
+        "Test (ubuntu-latest)\tRun cargo test --workspace --all-features --locked\t2026-10-26T14:06:35.4136439Z test test_managed_stdout_full_reports_read_and_committed_write_failures ... ok"
+      ],
+      "test_configure_preserves_native_config_path_when_platform_allows": [
+        "Test (ubuntu-latest)\tRun cargo test --workspace --locked\t2026-10-26T14:05:06.1521855Z test test_configure_preserves_native_config_path_when_platform_allows ... ok",
+        "Test (ubuntu-latest)\tRun cargo test --workspace --all-features --locked\t2026-10-26T14:06:43.9967436Z test test_configure_preserves_native_config_path_when_platform_allows ... ok"
+      ]
+    }
+  }
+}

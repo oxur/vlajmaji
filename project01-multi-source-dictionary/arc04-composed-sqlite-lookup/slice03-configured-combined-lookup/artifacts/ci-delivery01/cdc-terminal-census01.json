@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "run": 40336154928,
+  "url": "https://github.com/oxur/vlajmaji/actions/runs/40336154928",
+  "head": "45f21dc3d81d8b248d801104274fa799a1ff8608",
+  "terminal": "SUCCESS all3jobs",
+  "root_watch_actual_exit": 0,
+  "CDC_network_calls": 0,
+  "independent_CDC_log_population_recount": {
+    "check": {
+      "bytes": 78631,
+      "sha256": "cb1cb69ff4e8b71ef87ed0fab775727faf2146cbad26c4136448f82f6d4a018d",
+      "stages": {},
+      "named_success_observations": {}
+    },
+    "linux": {
+      "bytes": 277420,
+      "sha256": "63f197898e9e5b2ec54f416886c662b229a24c6817d00c8c7c1f4ebacb27457e",
+      "stages": {
+        "Run cargo test --workspace --locked": {
+          "rows": 45,
+          "totals": [
+            238,
+            0,
+            1
+          ]
+        },
+        "Run cargo test --locked -p vlajmaji-search --no-default-features": {
+          "rows": 6,
+          "totals": [
+            38,
+            0,
+            0
+          ]
+        },
+        "Run cargo test --workspace --all-features --locked": {
+          "rows": 45,
+          "totals": [
+            240,
+            0,
+            1
+          ]
+        }
+      },
+      "named_success_observations": {
+        "test_managed_stdout_full_reports_read_and_committed_write_failures": [
+          "Run cargo test --workspace --locked",
+          "Run cargo test --workspace --all-features --locked"
+        ],
+        "test_non_utf8_installed_root_roundtrips_through_profile_and_lookup": [
+          "Run cargo test --workspace --locked",
+          "Run cargo test --workspace --all-features --locked"
+        ],
+        "test_configure_preserves_native_config_path_when_platform_allows": [
+          "Run cargo test --workspace --locked",
+          "Run cargo test --workspace --all-features --locked"
+        ]
+      }
+    },
+    "macos": {
+      "bytes": 148913,
+      "sha256": "fc541b843a7f8dfd99bf4e3d788fd9fe9f0a6508e02f20341edb36eec1154da7",
+      "stages": {
+        "Run cargo test --workspace --locked": {
+          "rows": 45,
+          "totals": [
+            236,
+            0,
+            1
+          ]
+        }
+      },
+      "named_success_observations": {
+        "test_configure_preserves_native_config_path_when_platform_allows": [
+          "Run cargo test --workspace --locked"
+        ]
+      }
+    }
+  },
+  "scope": "nativeROOT and /dev/full are actual two-pass Linux observations; CONFIG test passed twice but branch was conditional/unreported at45f2, so forced positive remains unmet; no acceptance inferred",
+  "jobs": [
+    {
+      "databaseId": 121618160877,
+      "name": "Check",
+      "conclusion": "success",
+      "url": "https://github.com/oxur/vlajmaji/actions/runs/40336154928/job/121618160877"
+    },
+    {
+      "databaseId": 121618161367,
+      "name": "Test (macos-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/oxur/vlajmaji/actions/runs/40336154928/job/121618161367"
+    },
+    {
+      "databaseId": 121618161449,
+      "name": "Test (ubuntu-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/oxur/vlajmaji/actions/runs/40336154928/job/121618161449"
+    }
+  ]
+}
