@@ -1,5 +1,7 @@
 # Project01 ledger
 
+**Current partial checkpoint, 2026-10-26 UTC:** A04 S01 accepted comparison and S02 technically accepted provisioning/catalogue/Full grouped-query evidence are additional partial contributions only; all fourteen rows below remain OPEN with their exact criterion, status, significance and origin columns preserved. S02 canonical close is accepted/mechanical; A04-02 DONE, eight remaining arc rows OPEN. Earlier per-row planning-only/runtime notes describe their dated checkpoint; current A04 evidence is the S02 CDC verifier, with S03–S05/A05/A06/Operator obligations retained.
+
 All fourteen project rows remain **open**. Arc01all4children and independent technical composition at efef9c4supply the complete fixture foundation; final canonical packet gate accepted at7ddd0db and Arc01CLOSED. A03all4children and fresh assembled technical composition are accepted; actual canonical gate independently accepted. Remaining topology/editor/final project and Operator gates remain. Arc02completefullraw/pipeline/persistedlookup and fresh technical/finalcanonical gates are also accepted at4e37016/5456b54. Partial contributions are explicit below; none is full-project acceptance.
 
 | ID | Criterion | Verify | Significance | Origin | Status | Evidence | Notes |

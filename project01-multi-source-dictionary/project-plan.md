@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 CLOSED; all14projectrowsOPEN; A04 active; S01 CLOSED/Unified selected; S02 design-before-issue; A05/A06 not activated |
+| status | project OPEN; Arc01–03 CLOSED; all fourteen project rows OPEN. A04 S01 CLOSED/Unified selected; S02 CLOSED/current CI green and canonical accepted. S03–S05 remain; A05/A06 unactivated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.21 / 2026-10-25, America/Chicago |
+| version / date | 1.23 / 2026-10-26 UTC |
 
 ## Purpose and first useful result
 
@@ -31,8 +31,8 @@ The design and remaining decisions are in [design.md](design.md). Acceptance is 
 ## Decisions already made
 
 - SQLite is the relational storage direction. Keep the canonical raw/normalized
-  source material and make indexes rebuildable. The physical composition strategy
-  is still open.
+  source material and make indexes rebuildable. Accepted A04 S01 selects Unified
+  for the scoped own-state/full-typed comparison; A05 owned writable topology remains reserved.
 - Preserve each source assertion and occurrence. Default dictionary display groups
   definitions by named source and a stable abbreviation; it selects no winner.
 - Separate authors, asserting dictionaries, upstream lineage, distributors,
@@ -109,7 +109,7 @@ define execution order. Later arcs are roadmap entries, not issued assignments.
 | [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Four scope-preserving slices after S01 sizing; current detail in arc plan. |
 | [02 — Reproducible full jbotci import](arc02-reproducible-jbotci-import/arc-plan.md) (CLOSED at4e37016) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Two useful slices: lossless Rust/CLI normalization, then pinned pipeline/full persistence composition. |
 | [03 — Independent corpus packages](arc03-independent-corpus-packages/arc-plan.md) (CLOSED at7b1c565; final canonical accepted) | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
-| [04 — Composed SQLite lookup](arc04-composed-sqlite-lookup/arc-plan.md) (active; S01 CLOSED/Unified selected) | Fair unified/ATTACH/fanout decision and selected integration **plus** local selected/all4 install, catalogue/list/inspect, configured/default one-command exact/ref, lifecycle/recovery and readable/compact/full-detail output. | Accepted A01–03 contracts and exact four Full packs; exact inquiry/effort/numeric approval and concrete S01 provider design recorded. | Five useful increments; S01 accepted at source4b4158c, selecting Unified for the frozen workload. S02 provisioning/catalogue preparation next; no install/default/lifecycle/output acceptance yet. |
+| [04 — Composed SQLite lookup](arc04-composed-sqlite-lookup/arc-plan.md) (active; S01 CLOSED/Unified selected) | Fair unified/ATTACH/fanout decision and selected integration **plus** local selected/all4 install, catalogue/list/inspect, configured/default one-command exact/ref, lifecycle/recovery and readable/compact/full-detail output. | Accepted A01–03 contracts and exact four Full packs; exact inquiry/effort/numeric approval and concrete S01 provider design recorded. | Five useful increments; S01 accepted at source4b4158c, selecting Unified for the frozen workload. S02 local selected/all provisioning/catalogue CLOSED atce1bd238 with current Linux/macOS CI and canonical acceptance. Configured/default lookup, lifecycle and output remain S03–S05. |
 | 05 — Owned dictionary | First-class editable source, revision/history and explicit editorial relationships, immutable export/reimport and its own optional data crate. | A01 model plus accepted A04 composition. | Model is reserved in A01; production editing belongs here. |
 | 06 — Integrated dictionary workbench | Rust/CLI source selection and grouped output across all packs and owned revisions; old query-family regression, removal/reload, paging, documentation and clean offline replay compose end to end. | Accepted predecessors. | Final integration adds remaining behavior; it must not postpone A01's usable lookup. |
 
@@ -366,3 +366,13 @@ Duncan explicitly approved seven TOTAL candidate stores: retain the two historic
 ## Version 1.22 — accepted Arc04 S01, 2026-10-26 UTC
 
 S01 is CLOSED at source4b4158c; Unified selected through the complete finite three-candidate comparison and independent acceptance. See Arc04/S01 decision, verifier and retrospective. A04-01 DONE; nine arc rows and all fourteen project rows OPEN. This is a partial P01-08 contribution, not completed production integration. S02 retains local selected/all installation, catalogue/ownership and native-path design before issue; S03–S05 retain configured/default combined lookup, lifecycle and representation delivery. All prior authority/history checkpoints remain preserved.
+
+## Version 1.23 — S02 technical acceptance / proposed canonical close
+
+S02 delivers local selected/all four-pack installation, metadata-only registration and truthful light catalogue inspection with explicit heavy reference metadata. See Arc04/S02 closing report, CDC verification and retrospective. A04-02 is proposed DONE after canonical review; A04-03 stays OPEN for configured/enabled/default state and later lifecycle. All fourteen project criteria/status/origin columns remain unchanged OPEN. This is a partial contribution to source/provenance, installed grouped exact/reference use, offline features and operational evidence, not final project/Operator acceptance. Existing full JSON/default behavior stays intact; actual user default/main/Bauske/accepted records remain protected. The specifically authorized source push/repair/watch completed atce1 with hosted40268360507 all SUCCESS; no future push is assumed.
+
+Historical prior current header: | status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 CLOSED; all14projectrowsOPEN; A04 active; S01 CLOSED/Unified selected; S02 design-before-issue; A05/A06 not activated |
+
+### Actual S02 endpoint — 2026-10-26 UTC
+
+S02 six rows/A04-02 DONE after root canonical consistency PASS; A04-01 already DONE, eight other arc and all fourteen project rows OPEN. Earlier proposed checkpoints remain history. Next CDC readiness is S03 configuration/default combined exact/reference and coherent operational snapshots, not A05 or final project acceptance. No runtime rerun accompanied mechanical close.

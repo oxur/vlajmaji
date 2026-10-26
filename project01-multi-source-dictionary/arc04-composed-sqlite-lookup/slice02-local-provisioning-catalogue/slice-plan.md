@@ -2,7 +2,7 @@
 
 | Field | Current value |
 | --- | --- |
-| Status / version | Clean iteration02 2366ae2 handed back; current independent macOS gates/provider and retained repaired runtime controls pass. Local Full proof PASS. Original hosted tests pass; Check lint corrected by equivalent one-line ce1bd238. Replacement run40268360507 pending; six rows OPEN. |
+| Status / version | CLOSED: all six rows independently accepted atce1bd238; current hosted40268360507 all jobs SUCCESS; root canonical consistency PASS. S03 not issued. |
 | Authority | Duncan's Autonomous THROUGH ARC04 approval; unchanged requested Sol6.1/high CDC and Luna/high CC. S01 selected Unified, independently accepted at source 4b4158c and planning ba1faf0. Arc04 execution remains authorized. Duncan explicitly approved the exact2366 source-branch push and existing hosted CI; root reports normal push success and owns run40267522889. No broader delivery authority. |
 | Source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; current frozence1bd238d4529f5f5b27877569e4b44fa39fe12f; b38,8f,2366 and unpublished6ed histories retained below. |
 | Ownership | Current: CDC source/index/target after explicit2366 freeze/handback; all author/build sessions ended. CDC design/planning/independent acceptance; root read-only. |
@@ -209,3 +209,13 @@ Actual Ubuntu Check job121393052855 at run40267522889 fails bool_assert_comparis
 ## Current corrected-head hosted checkpoint — 2026-10-26 UTC
 
 Original2366 hosted Test jobs both succeeded; complete Linux workspace189/0/1, search19, allfeatures191/0/1 and three actual native-path controls twice each are independently bound in artifacts/cdc-review01/hosted-run01. Check style failure is corrected by sourcece1bd238 with exact one-line test delta and unchanged runtime/lock. Unpublished6ed raw object/diff preserved; root-approved attribution-only amend retains exact tree/parent and both actual parsed trailers. Author current ordered gates187/0/1+19tooling pass. Root independently verified, normally pushed ce1 and owns replacement run40268360507. All six rows/current-head CI remain OPEN; no S03 or new Full work. CDC source/index/target idle and frozen.
+
+## Current technical acceptance / canonical proposal — 2026-10-26 UTC
+
+See closing-report.md, cdc-verification.md, cdc-retrospective.md and artifacts/scope-inventory01.json. Exact runtime/lock byte invariance retains independently executed8f/2366 controls; current-head hosted Linux/macOS evidence closes the platform gap technically. Root performed only the explicitly authorized source pushes/CI watch; no future push is assumed. All six ledger contracts remain unchanged; row statuses await canonical review.
+
+Historical superseded status: | Status / version | Clean iteration02 2366ae2 handed back; current independent macOS gates/provider and retained repaired runtime controls pass. Local Full proof PASS. Original hosted tests pass; Check lint corrected by equivalent one-line ce1bd238. Replacement run40268360507 pending; six rows OPEN. |
+
+## Accepted endpoint — 2026-10-26 UTC
+
+Root canonical consistency PASS; six child rows DONE, A04-02 DONE only. Current sourcece1bd238 and retained local Full/runtime evidence are unchanged. All other incomplete arc obligations and fourteen project rows remain OPEN. Next owner CDC: S03 source-guided policy/configuration/cursor design before issue. No further push or Full campaign is inferred.

@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01 CLOSED with six accepted rows; Unified selected; S02 concrete initial assignment ISSUED after root readiness PASS; six rows OPEN |
-| version / date | 1.7 / 2026-10-26 UTC |
+| status | ACTIVE; S01–S02 CLOSED, twelve child rows/A04-01–02 DONE; other eight arc rows OPEN. S03–S05 not issued |
+| version / date | 1.8 / 2026-10-26 UTC |
 | authority | Latest 2026-10-25: Duncan explicitly approved seven TOTAL stores in protocol 1.5, retaining the historical two plus clean fresh five after remaining prerequisites. Original protocol 1.1 approval and Autonomous THROUGH ARC04 ONLY persist; unchanged Sol6.1/high CDC and Luna/high CC. CDC readiness clearance is now recorded in protocol 1.6 and slice artifacts/cdc-prerequisite02. Prior checkpoints remain historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
-| accepted inputs | Arc01–03; accepted isolated baseline7b1c565; current source4b4158c, protected main52fd3c4/Bauskec5801ae; actual four Full packs and source/native/reference evidence |
-| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; created from accepted 7b; current source 4b4158c after scoped S01 implementation and current gates |
+| accepted inputs | Arc01–03/source7b retained; current sourcece1bd238, protected main52fd/Bauskec580. S01 decision4b and S02 technical evidence are current; actual user default unchanged |
+| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; current ce1bd238 clean and explicitly authorized push/hosted CI complete |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -18,7 +18,7 @@ The prior roadmap promised a fair unified/ATTACH/application-fanout comparison a
 
 Historical version 1.0 planning-only boundary (superseded by version 1.2 below): only the eight named planning paths were authorized then. No source/target/store/default/catalogue writes, new branch/worktree, CC prompt, investigation, benchmark, network, installation or migration runs. The protocol's effort proposal and numeric operational budgets are not approved. A04 stays PLANNED; A05/A06 unactivated. Existing published CLI is unchanged, and source7b1c565 is an accepted local unpushed feature, not a published A04 implementation. Arc01–03 accepted records, main, Bauske, original research and installed provisional Lensisku default remain immutable.
 
-## Five useful increments (S01 closed; S02 issued; later increments design before issue)
+## Five useful increments (S01–S02 closed; later increments design before issue)
 
 | Increment | Useful delivery, including API / CLI / docs / gates | Depends on / readiness decision |
 | --- | --- | --- |
@@ -103,3 +103,13 @@ S01 independently CLOSED at source4b4158c after current qualification, clean fiv
 ## S02 readiness and issue — 2026-10-26 UTC
 
 Concrete local provisioning/catalogue open set: slice02-local-provisioning-catalogue/{slice-plan.md,ledger.md,cc-prompt.md}. Ten source paths, six OPEN rows; root completed concrete consistency review and approved initial issue. Additive Unified generations, native BLOB metadata paths, strict explicit-local selected/all inputs and retained reference metadata are resolved. CC tiny implementation/gates precede CDC's exactly one Full operational install; S01 comparison records/caps remain closed and retained. No S02 source/build/catalogue/Full write had occurred at issue. All nine remaining arc and fourteen project rows remain OPEN.
+
+## Version 1.8 — S02 technical acceptance and preserved remaining workflow
+
+S02 supplies the assigned W1 local selected/all four-pack installation and W2 registration/inspection foundation atce1bd238. Local Full/native/typed/reference evidence is retained by exact runtime/lock identity; current hosted40268360507 all three jobs pass, including actual Linux native transport. Root canonical review remains before six-row mechanical close/A04-02 completion. A04-03 retains S03/S04 configuration/disabled/default-state obligations; every other incomplete parent row and all fourteen project rows remain OPEN. No structural scope or sequencing change is required: S03 must now settle policy persistence, explicit state table and profile/catalogue/generation cursor binding before issue; S04 owns lifecycle, S05 output projection, arc close fresh independent assembled workflow. No actual default switch, extra Full run, A05 activation or future push is authorized by these records.
+
+Historical pre-close header: | status | ACTIVE; S01 CLOSED with six accepted rows; Unified selected; S02 concrete initial assignment ISSUED after root readiness PASS; six rows OPEN |
+
+### Actual S02 canonical close
+
+Root canonical consistency PASS cleared six child rows DONE and A04-02 DONE; A04-03 remains OPEN with its partial S02 contribution. No arc contract/verification/owner changed. S03 source-guided readiness proceeds under existing Arc04 authority after this endpoint; future source delivery is not inferred from the completed S02 CI authorization.

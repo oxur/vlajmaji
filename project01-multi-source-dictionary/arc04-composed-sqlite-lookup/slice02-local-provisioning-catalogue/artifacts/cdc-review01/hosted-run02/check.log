@@ -1,0 +1,658 @@
+﻿2026-10-26T04:18:10.9804232Z Current runner version: '2.338.0'
+2026-10-26T04:18:10.9822577Z ##[group]Runner Image Provisioner
+2026-10-26T04:18:10.9823278Z Hosted Compute Agent
+2026-10-26T04:18:10.9823634Z Version: 20261021.618
+2026-10-26T04:18:10.9824074Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-26T04:18:10.9824517Z Build Date: 2026-10-21T00:45:21Z
+2026-10-26T04:18:10.9824963Z Worker ID: {98f51c61-2846-42ec-b4df-c255e9c465bf}
+2026-10-26T04:18:10.9825467Z Region: southcentralus
+2026-10-26T04:18:10.9825833Z Cloud: Azure
+2026-10-26T04:18:10.9826233Z ##[endgroup]
+2026-10-26T04:18:10.9827020Z ##[group]Operating System
+2026-10-26T04:18:10.9827455Z Ubuntu
+2026-10-26T04:18:10.9827791Z 26.04.1
+2026-10-26T04:18:10.9828117Z LTS
+2026-10-26T04:18:10.9828477Z ##[endgroup]
+2026-10-26T04:18:10.9828818Z ##[group]Runner Image
+2026-10-26T04:18:10.9829537Z Image: ubuntu-26.04
+2026-10-26T04:18:10.9829938Z Version: 20261012.163.1
+2026-10-26T04:18:10.9830758Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261012.163/images/ubuntu/Ubuntu2604-Readme.md
+2026-10-26T04:18:10.9831697Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261012.163
+2026-10-26T04:18:10.9832291Z ##[endgroup]
+2026-10-26T04:18:10.9833182Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T04:18:10.9834408Z Contents: read
+2026-10-26T04:18:10.9834859Z Metadata: read
+2026-10-26T04:18:10.9835239Z ##[endgroup]
+2026-10-26T04:18:10.9836735Z Secret source: Actions
+2026-10-26T04:18:10.9837284Z Cache mode: write
+2026-10-26T04:18:10.9837744Z Prepare workflow directory
+2026-10-26T04:18:11.0140051Z Prepare all required actions
+2026-10-26T04:18:11.0173810Z Getting action download info
+2026-10-26T04:18:11.2611118Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-26T04:18:11.3543472Z Download action repository 'dtolnay/rust-toolchain@1.98.0' (SHA:5059963b1731bf1580991b5f3b1eecfb5da406c0)
+2026-10-26T04:18:11.5487662Z Download action repository 'Swatinem/rust-cache@v2' (SHA:d1527c8f67ef9af357290475d4af4b0fab8f12e0)
+2026-10-26T04:18:12.1328561Z Complete job name: Check
+2026-10-26T04:18:12.1835664Z ##[group]Run actions/checkout@v4
+2026-10-26T04:18:12.1836113Z with:
+2026-10-26T04:18:12.1836354Z   path: vlajmaji
+2026-10-26T04:18:12.1836609Z   repository: oxur/vlajmaji
+2026-10-26T04:18:12.1838698Z   token: ***
+2026-10-26T04:18:12.1838946Z   ssh-strict: true
+2026-10-26T04:18:12.1839198Z   ssh-user: git
+2026-10-26T04:18:12.1839450Z   persist-credentials: true
+2026-10-26T04:18:12.1839721Z   clean: true
+2026-10-26T04:18:12.1839978Z   sparse-checkout-cone-mode: true
+2026-10-26T04:18:12.1840274Z   fetch-depth: 1
+2026-10-26T04:18:12.1840515Z   fetch-tags: false
+2026-10-26T04:18:12.1840772Z   show-progress: true
+2026-10-26T04:18:12.1841032Z   lfs: false
+2026-10-26T04:18:12.1841267Z   submodules: false
+2026-10-26T04:18:12.1841526Z   set-safe-directory: true
+2026-10-26T04:18:12.1841814Z   allow-unsafe-pr-checkout: false
+2026-10-26T04:18:12.1842171Z env:
+2026-10-26T04:18:12.1842403Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:12.1842689Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:12.1843065Z ##[endgroup]
+2026-10-26T04:18:12.2572465Z Syncing repository: oxur/vlajmaji
+2026-10-26T04:18:12.2574269Z ##[group]Getting Git version info
+2026-10-26T04:18:12.2574945Z Working directory is '/home/runner/work/vlajmaji/vlajmaji/vlajmaji'
+2026-10-26T04:18:12.2575954Z [command]/usr/bin/git version
+2026-10-26T04:18:12.2576407Z git version 2.55.0
+2026-10-26T04:18:12.2586752Z ##[endgroup]
+2026-10-26T04:18:12.2595722Z Temporarily overriding HOME='/home/runner/work/_temp/c75730f8-446c-4c61-b78e-1abe58f63efe' before making global git config changes
+2026-10-26T04:18:12.2596589Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T04:18:12.2599746Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+2026-10-26T04:18:12.2650917Z ##[group]Initializing the repository
+2026-10-26T04:18:12.2654358Z [command]/usr/bin/git init /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+2026-10-26T04:18:12.2750794Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-26T04:18:12.2751931Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-26T04:18:12.2753076Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-26T04:18:12.2753826Z hint: call:
+2026-10-26T04:18:12.2754264Z hint:
+2026-10-26T04:18:12.2754770Z hint: 	git config --global init.defaultBranch <name>
+2026-10-26T04:18:12.2755449Z hint:
+2026-10-26T04:18:12.2756009Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-26T04:18:12.2756926Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-26T04:18:12.2757418Z hint:
+2026-10-26T04:18:12.2757705Z hint: 	git branch -m <name>
+2026-10-26T04:18:12.2758058Z hint:
+2026-10-26T04:18:12.2758499Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-26T04:18:12.2759212Z Initialized empty Git repository in /home/runner/work/vlajmaji/vlajmaji/vlajmaji/.git/
+2026-10-26T04:18:12.2761606Z [command]/usr/bin/git remote add origin https://github.com/oxur/vlajmaji
+2026-10-26T04:18:12.2805508Z ##[endgroup]
+2026-10-26T04:18:12.2806120Z ##[group]Disabling automatic garbage collection
+2026-10-26T04:18:12.2808470Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-26T04:18:12.2859551Z ##[endgroup]
+2026-10-26T04:18:12.2860337Z ##[group]Setting up auth
+2026-10-26T04:18:12.2865749Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T04:18:12.2899855Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T04:18:12.3278149Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T04:18:12.3308383Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T04:18:12.3536815Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T04:18:12.3567837Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T04:18:12.3804403Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-26T04:18:12.3886884Z ##[endgroup]
+2026-10-26T04:18:12.3887716Z ##[group]Fetching the repository
+2026-10-26T04:18:12.3895686Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ce1bd238d4529f5f5b27877569e4b44fa39fe12f:refs/remotes/origin/codex/project01-composed-sqlite-lookup
+2026-10-26T04:18:13.4424047Z From https://github.com/oxur/vlajmaji
+2026-10-26T04:18:13.4425986Z  * [new ref]         ce1bd238d4529f5f5b27877569e4b44fa39fe12f -> origin/codex/project01-composed-sqlite-lookup
+2026-10-26T04:18:13.4429879Z ##[endgroup]
+2026-10-26T04:18:13.4431235Z ##[group]Determining the checkout info
+2026-10-26T04:18:13.4432803Z ##[endgroup]
+2026-10-26T04:18:13.4435937Z [command]/usr/bin/git sparse-checkout disable
+2026-10-26T04:18:13.4560272Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-26T04:18:13.4595411Z ##[group]Checking out the ref
+2026-10-26T04:18:13.4597714Z [command]/usr/bin/git checkout --progress --force -B codex/project01-composed-sqlite-lookup refs/remotes/origin/codex/project01-composed-sqlite-lookup
+2026-10-26T04:18:13.4853509Z Switched to a new branch 'codex/project01-composed-sqlite-lookup'
+2026-10-26T04:18:13.4855041Z branch 'codex/project01-composed-sqlite-lookup' set up to track 'origin/codex/project01-composed-sqlite-lookup'.
+2026-10-26T04:18:13.4863167Z ##[endgroup]
+2026-10-26T04:18:13.4908199Z [command]/usr/bin/git log -1 --format=%H
+2026-10-26T04:18:13.4931131Z ce1bd238d4529f5f5b27877569e4b44fa39fe12f
+2026-10-26T04:18:13.5171590Z ##[group]Run actions/checkout@v4
+2026-10-26T04:18:13.5172060Z with:
+2026-10-26T04:18:13.5172465Z   repository: oxur/bauske
+2026-10-26T04:18:13.5172929Z   ref: c5801ae17caaf86d2651b5ce34570199e873ad0f
+2026-10-26T04:18:13.5173571Z   path: bauske
+2026-10-26T04:18:13.5175578Z   token: ***
+2026-10-26T04:18:13.5175976Z   ssh-strict: true
+2026-10-26T04:18:13.5176378Z   ssh-user: git
+2026-10-26T04:18:13.5176787Z   persist-credentials: true
+2026-10-26T04:18:13.5177214Z   clean: true
+2026-10-26T04:18:13.5177641Z   sparse-checkout-cone-mode: true
+2026-10-26T04:18:13.5178090Z   fetch-depth: 1
+2026-10-26T04:18:13.5178486Z   fetch-tags: false
+2026-10-26T04:18:13.5178892Z   show-progress: true
+2026-10-26T04:18:13.5179304Z   lfs: false
+2026-10-26T04:18:13.5179712Z   submodules: false
+2026-10-26T04:18:13.5180149Z   set-safe-directory: true
+2026-10-26T04:18:13.5180598Z   allow-unsafe-pr-checkout: false
+2026-10-26T04:18:13.5181043Z env:
+2026-10-26T04:18:13.5181430Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:13.5181900Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:13.5182296Z ##[endgroup]
+2026-10-26T04:18:13.5768349Z Syncing repository: oxur/bauske
+2026-10-26T04:18:13.5769985Z ##[group]Getting Git version info
+2026-10-26T04:18:13.5771046Z Working directory is '/home/runner/work/vlajmaji/vlajmaji/bauske'
+2026-10-26T04:18:13.5790291Z [command]/usr/bin/git version
+2026-10-26T04:18:13.5826856Z git version 2.55.0
+2026-10-26T04:18:13.5846286Z ##[endgroup]
+2026-10-26T04:18:13.5850293Z Temporarily overriding HOME='/home/runner/work/_temp/972960ed-316a-450e-afb3-a84a7e820b0b' before making global git config changes
+2026-10-26T04:18:13.5851254Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T04:18:13.5854659Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/bauske
+2026-10-26T04:18:13.5974237Z ##[group]Initializing the repository
+2026-10-26T04:18:13.5975217Z [command]/usr/bin/git init /home/runner/work/vlajmaji/vlajmaji/bauske
+2026-10-26T04:18:13.6265268Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-26T04:18:13.6267024Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-26T04:18:13.6268118Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-26T04:18:13.6268861Z hint: call:
+2026-10-26T04:18:13.6269436Z hint:
+2026-10-26T04:18:13.6270082Z hint: 	git config --global init.defaultBranch <name>
+2026-10-26T04:18:13.6270738Z hint:
+2026-10-26T04:18:13.6271415Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-26T04:18:13.6272271Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-26T04:18:13.6273256Z hint:
+2026-10-26T04:18:13.6273981Z hint: 	git branch -m <name>
+2026-10-26T04:18:13.6274635Z hint:
+2026-10-26T04:18:13.6275425Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-26T04:18:13.6276476Z Initialized empty Git repository in /home/runner/work/vlajmaji/vlajmaji/bauske/.git/
+2026-10-26T04:18:13.6278242Z [command]/usr/bin/git remote add origin https://github.com/oxur/bauske
+2026-10-26T04:18:13.6557971Z ##[endgroup]
+2026-10-26T04:18:13.6558778Z ##[group]Disabling automatic garbage collection
+2026-10-26T04:18:13.6561049Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-26T04:18:13.6650365Z ##[endgroup]
+2026-10-26T04:18:13.6651359Z ##[group]Setting up auth
+2026-10-26T04:18:13.6656214Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T04:18:13.6687702Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T04:18:13.6930142Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T04:18:13.6960505Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T04:18:13.7202250Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T04:18:13.7224911Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T04:18:13.7451664Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-26T04:18:13.7861195Z ##[endgroup]
+2026-10-26T04:18:13.7861817Z ##[group]Fetching the repository
+2026-10-26T04:18:13.7866024Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin c5801ae17caaf86d2651b5ce34570199e873ad0f
+2026-10-26T04:18:14.4534452Z From https://github.com/oxur/bauske
+2026-10-26T04:18:14.4535439Z  * branch            c5801ae17caaf86d2651b5ce34570199e873ad0f -> FETCH_HEAD
+2026-10-26T04:18:14.4537764Z ##[endgroup]
+2026-10-26T04:18:14.4538202Z ##[group]Determining the checkout info
+2026-10-26T04:18:14.4539665Z ##[endgroup]
+2026-10-26T04:18:14.4544146Z [command]/usr/bin/git sparse-checkout disable
+2026-10-26T04:18:14.4865562Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-26T04:18:14.5862140Z ##[group]Checking out the ref
+2026-10-26T04:18:14.5866988Z [command]/usr/bin/git checkout --progress --force c5801ae17caaf86d2651b5ce34570199e873ad0f
+2026-10-26T04:18:14.6154581Z Note: switching to 'c5801ae17caaf86d2651b5ce34570199e873ad0f'.
+2026-10-26T04:18:14.6155289Z 
+2026-10-26T04:18:14.6155765Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-26T04:18:14.6156635Z changes and commit them, and you can discard any commits you make in this
+2026-10-26T04:18:14.6157337Z state without impacting any branches by switching back to a branch.
+2026-10-26T04:18:14.6157759Z 
+2026-10-26T04:18:14.6158129Z If you want to create a new branch to retain commits you create, you may
+2026-10-26T04:18:14.6158860Z do so (now or later) by using -c with the switch command. Example:
+2026-10-26T04:18:14.6159293Z 
+2026-10-26T04:18:14.6159579Z   git switch -c <new-branch-name>
+2026-10-26T04:18:14.6159928Z 
+2026-10-26T04:18:14.6160239Z Or undo this operation with:
+2026-10-26T04:18:14.6160612Z 
+2026-10-26T04:18:14.6160888Z   git switch -
+2026-10-26T04:18:14.6161386Z 
+2026-10-26T04:18:14.6161806Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-26T04:18:14.6162278Z 
+2026-10-26T04:18:14.6162633Z HEAD is now at c5801ae chore: start 0.3.0 development cycle
+2026-10-26T04:18:14.6164610Z ##[endgroup]
+2026-10-26T04:18:14.6196873Z [command]/usr/bin/git log -1 --format=%H
+2026-10-26T04:18:14.6219380Z c5801ae17caaf86d2651b5ce34570199e873ad0f
+2026-10-26T04:18:14.6454751Z ##[group]Run dtolnay/rust-toolchain@1.98.0
+2026-10-26T04:18:14.6454969Z with:
+2026-10-26T04:18:14.6455128Z   components: clippy, rustfmt
+2026-10-26T04:18:14.6455307Z env:
+2026-10-26T04:18:14.6455471Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:14.6455633Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:14.6455785Z ##[endgroup]
+2026-10-26T04:18:14.6499611Z ##[start-action display=Parse toolchain version;id=__dtolnay_rust-toolchain.parse]
+2026-10-26T04:18:14.6671858Z ##[group]Run if [[ -z $toolchain ]]; then
+2026-10-26T04:18:14.6672214Z [36;1mif [[ -z $toolchain ]]; then[0m
+2026-10-26T04:18:14.6672585Z [36;1m  # GitHub does not enforce `required: true` inputs itself. https://github.com/actions/runner/issues/1070[0m
+2026-10-26T04:18:14.6672932Z [36;1m  echo "'toolchain' is a required input" >&2[0m
+2026-10-26T04:18:14.6673380Z [36;1m  exit 1[0m
+2026-10-26T04:18:14.6673608Z [36;1melif [[ $toolchain =~ ^stable' '[0-9]+' '(year|month|week|day)s?' 'ago$ ]]; then[0m
+2026-10-26T04:18:14.6673932Z [36;1m  if [[ Linux == macOS ]]; then[0m
+2026-10-26T04:18:14.6674269Z [36;1m    echo "toolchain=1.$((($(date -v-$(sed 's/stable \([0-9]*\) \(.\).*/\1\2/' <<< $toolchain) +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:14.6674775Z [36;1m  else[0m
+2026-10-26T04:18:14.6675088Z [36;1m    echo "toolchain=1.$((($(date --date "${toolchain#stable }" +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:14.6675462Z [36;1m  fi[0m
+2026-10-26T04:18:14.6675670Z [36;1melif [[ $toolchain =~ ^stable' 'minus' '[0-9]+' 'releases?$ ]]; then[0m
+2026-10-26T04:18:14.6676000Z [36;1m  echo "toolchain=1.$((($(date +%s)/60/60/24-16569)/7/6-${toolchain//[^0-9]/}))" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:14.6676293Z [36;1melif [[ $toolchain =~ ^1\.[0-9]+$ ]]; then[0m
+2026-10-26T04:18:14.6676620Z [36;1m  echo "toolchain=1.$((i=${toolchain#1.}, c=($(date +%s)/60/60/24-16569)/7/6, i+9*i*(10*i<=c)+90*i*(100*i<=c)))" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:14.6677004Z [36;1melse[0m
+2026-10-26T04:18:14.6677230Z [36;1m  delimiter=EOF[0m
+2026-10-26T04:18:14.6677520Z [36;1m  while [[ $toolchain == *$delimiter* ]]; do delimiter+=_; done[0m
+2026-10-26T04:18:14.6677843Z [36;1m  printf 'toolchain<<%s\n%s\n%s\n' "$delimiter" "$toolchain" "$delimiter" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:14.6678113Z [36;1mfi[0m
+2026-10-26T04:18:14.6815473Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:14.6815716Z env:
+2026-10-26T04:18:14.6815888Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:14.6816051Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:14.6816204Z   toolchain: 1.98.0
+2026-10-26T04:18:14.6816353Z ##[endgroup]
+2026-10-26T04:18:14.6997372Z ##[end-action id=__dtolnay_rust-toolchain.parse;outcome=success;conclusion=success;duration_ms=49]
+2026-10-26T04:18:14.7001140Z ##[start-action display=Set $CARGO_HOME;id=__dtolnay_rust-toolchain.__run]
+2026-10-26T04:18:14.7059587Z ##[group]Run echo CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV
+2026-10-26T04:18:14.7059931Z [36;1mecho CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV[0m
+2026-10-26T04:18:14.7110266Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:14.7110494Z env:
+2026-10-26T04:18:14.7110647Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:14.7110825Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:14.7110972Z ##[endgroup]
+2026-10-26T04:18:14.7274009Z ##[end-action id=__dtolnay_rust-toolchain.__run;outcome=success;conclusion=success;duration_ms=27]
+2026-10-26T04:18:14.7276150Z ##[start-action display=Install rustup if needed;id=__dtolnay_rust-toolchain.__run_2]
+2026-10-26T04:18:14.7447508Z ##[group]Run if ! command -v rustup &>/dev/null; then
+2026-10-26T04:18:14.7447786Z [36;1mif ! command -v rustup &>/dev/null; then[0m
+2026-10-26T04:18:14.7448263Z [36;1m  curl --proto '=https' --tlsv1.2 --retry 10 --retry-connrefused --location --silent --show-error --fail https://sh.rustup.rs | sh -s -- --default-toolchain none -y[0m
+2026-10-26T04:18:14.7448703Z [36;1m  echo "$CARGO_HOME/bin" >> $GITHUB_PATH[0m
+2026-10-26T04:18:14.7449072Z [36;1mfi[0m
+2026-10-26T04:18:14.7503130Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:14.7503383Z env:
+2026-10-26T04:18:14.7503535Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:14.7503723Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:14.7503880Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:14.7504057Z ##[endgroup]
+2026-10-26T04:18:14.7695781Z ##[end-action id=__dtolnay_rust-toolchain.__run_2;outcome=success;conclusion=success;duration_ms=41]
+2026-10-26T04:18:14.7698042Z ##[start-action display=Install rustup if needed on windows;id=__dtolnay_rust-toolchain.__run_3]
+2026-10-26T04:18:14.7705743Z ##[end-action id=__dtolnay_rust-toolchain.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-26T04:18:14.7717480Z ##[start-action display=rustup toolchain install 1.98.0;id=__dtolnay_rust-toolchain.__run_4]
+2026-10-26T04:18:14.7748568Z ##[group]Run set -f  # split targets and components on commas and whitespace, without glob expansion
+2026-10-26T04:18:14.7749024Z [36;1mset -f  # split targets and components on commas and whitespace, without glob expansion[0m
+2026-10-26T04:18:14.7749302Z [36;1mflags=()[0m
+2026-10-26T04:18:14.7749494Z [36;1mfor t in ${targets//,/ }; do flags+=(--target "$t"); done[0m
+2026-10-26T04:18:14.7749882Z [36;1mfor c in ${components//,/ }; do flags+=(--component "$c"); done[0m
+2026-10-26T04:18:14.7750197Z [36;1mif [[ $toolchain == nightly && -n $components ]]; then flags+=(--allow-downgrade); fi[0m
+2026-10-26T04:18:14.7750467Z [36;1mlog=$(mktemp)[0m
+2026-10-26T04:18:14.7750638Z [36;1mtrap 'rm -f "$log"' EXIT[0m
+2026-10-26T04:18:14.7750818Z [36;1mfor attempt in 1 2 3 4 5; do[0m
+2026-10-26T04:18:14.7751170Z [36;1m  if rustup toolchain install "$toolchain" "${flags[@]}" --profile minimal --no-self-update --force-non-host 2>&1 | tee "$log"; then[0m
+2026-10-26T04:18:14.7751513Z [36;1m    break[0m
+2026-10-26T04:18:14.7751664Z [36;1m  else[0m
+2026-10-26T04:18:14.7751810Z [36;1m    status=$?[0m
+2026-10-26T04:18:14.7751966Z [36;1m  fi[0m
+2026-10-26T04:18:14.7752169Z [36;1m  if [[ $attempt == 5 ]] || ! grep -Fq 'checksum failed for ' "$log" \[0m
+2026-10-26T04:18:14.7752509Z [36;1m      || ! grep -Fq 'this is likely due to an ongoing update of the official release server' "$log"; then[0m
+2026-10-26T04:18:14.7752801Z [36;1m    exit "$status"[0m
+2026-10-26T04:18:14.7753072Z [36;1m  fi[0m
+2026-10-26T04:18:14.7753307Z [36;1m  echo "Retrying rustup toolchain install in 30 seconds (retry $attempt of 4)" >&2[0m
+2026-10-26T04:18:14.7753569Z [36;1m  sleep 30[0m
+2026-10-26T04:18:14.7753721Z [36;1mdone[0m
+2026-10-26T04:18:14.7808140Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:14.7808361Z env:
+2026-10-26T04:18:14.7808515Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:14.7808680Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:14.7808840Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:14.7809017Z   toolchain: 1.98.0
+2026-10-26T04:18:14.7809165Z   targets: 
+2026-10-26T04:18:14.7809339Z   components: clippy, rustfmt
+2026-10-26T04:18:14.7809514Z   RUSTUP_PERMIT_COPY_RENAME: 1
+2026-10-26T04:18:14.7809682Z ##[endgroup]
+2026-10-26T04:18:14.8703468Z info: syncing channel updates for 1.98.0-x86_64-unknown-linux-gnu
+2026-10-26T04:18:15.3387812Z info: latest update on 2026-08-20 for version 1.98.0 (88d9e12ae 2026-08-18)
+2026-10-26T04:18:15.3388440Z info: downloading 5 components
+2026-10-26T04:18:22.8525421Z 
+2026-10-26T04:18:22.8589114Z   1.98.0-x86_64-unknown-linux-gnu installed - rustc 1.98.0 (88d9e12ae 2026-08-18)
+2026-10-26T04:18:22.8589389Z 
+2026-10-26T04:18:22.8749537Z ##[end-action id=__dtolnay_rust-toolchain.__run_4;outcome=success;conclusion=success;duration_ms=8103]
+2026-10-26T04:18:22.8757272Z ##[start-action display=rustup default 1.98.0;id=__dtolnay_rust-toolchain.__run_5]
+2026-10-26T04:18:22.8771428Z ##[group]Run rustup default "$toolchain" --force-non-host
+2026-10-26T04:18:22.8771681Z [36;1mrustup default "$toolchain" --force-non-host[0m
+2026-10-26T04:18:22.8825776Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:22.8825975Z env:
+2026-10-26T04:18:22.8826100Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:22.8826237Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:22.8826374Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:22.8826532Z   toolchain: 1.98.0
+2026-10-26T04:18:22.8826656Z ##[endgroup]
+2026-10-26T04:18:22.8936414Z info: using existing install for 1.98.0-x86_64-unknown-linux-gnu
+2026-10-26T04:18:22.8942775Z info: default toolchain set to 1.98.0-x86_64-unknown-linux-gnu
+2026-10-26T04:18:22.8942928Z 
+2026-10-26T04:18:22.9003731Z   1.98.0-x86_64-unknown-linux-gnu unchanged - rustc 1.98.0 (88d9e12ae 2026-08-18)
+2026-10-26T04:18:22.9004002Z 
+2026-10-26T04:18:22.9020828Z ##[end-action id=__dtolnay_rust-toolchain.__run_5;outcome=success;conclusion=success;duration_ms=26]
+2026-10-26T04:18:22.9024344Z ##[start-action display=Create cachekey;id=__dtolnay_rust-toolchain.rustc-version]
+2026-10-26T04:18:22.9037993Z ##[group]Run DATE=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')
+2026-10-26T04:18:22.9038507Z [36;1mDATE=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')[0m
+2026-10-26T04:18:22.9039024Z [36;1mHASH=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-hash: //p')[0m
+2026-10-26T04:18:22.9039322Z [36;1mecho "cachekey=$(echo $DATE$HASH | head -c12)" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:22.9092922Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:22.9093241Z env:
+2026-10-26T04:18:22.9093366Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:22.9093507Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:22.9093639Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:22.9093789Z   toolchain: 1.98.0
+2026-10-26T04:18:22.9093911Z ##[endgroup]
+2026-10-26T04:18:22.9405664Z ##[end-action id=__dtolnay_rust-toolchain.rustc-version;outcome=success;conclusion=success;duration_ms=38]
+2026-10-26T04:18:22.9407700Z ##[start-action display=Disable incremental compilation;id=__dtolnay_rust-toolchain.__run_6]
+2026-10-26T04:18:22.9421135Z ##[group]Run if [ -z "${CARGO_INCREMENTAL+set}" ]; then
+2026-10-26T04:18:22.9421367Z [36;1mif [ -z "${CARGO_INCREMENTAL+set}" ]; then[0m
+2026-10-26T04:18:22.9421572Z [36;1m  echo CARGO_INCREMENTAL=0 >> $GITHUB_ENV[0m
+2026-10-26T04:18:22.9421740Z [36;1mfi[0m
+2026-10-26T04:18:22.9476873Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:22.9477068Z env:
+2026-10-26T04:18:22.9477190Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:22.9477329Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:22.9477460Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:22.9477608Z ##[endgroup]
+2026-10-26T04:18:22.9545247Z ##[end-action id=__dtolnay_rust-toolchain.__run_6;outcome=success;conclusion=success;duration_ms=13]
+2026-10-26T04:18:22.9546631Z ##[start-action display=Enable colors in Cargo output;id=__dtolnay_rust-toolchain.__run_7]
+2026-10-26T04:18:22.9558588Z ##[group]Run if [ -z "${CARGO_TERM_COLOR+set}" ]; then
+2026-10-26T04:18:22.9558821Z [36;1mif [ -z "${CARGO_TERM_COLOR+set}" ]; then[0m
+2026-10-26T04:18:22.9559015Z [36;1m  echo CARGO_TERM_COLOR=always >> $GITHUB_ENV[0m
+2026-10-26T04:18:22.9559196Z [36;1mfi[0m
+2026-10-26T04:18:22.9604163Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:22.9604359Z env:
+2026-10-26T04:18:22.9604480Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:22.9604617Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:22.9604747Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:22.9604895Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:22.9605023Z ##[endgroup]
+2026-10-26T04:18:22.9670410Z ##[end-action id=__dtolnay_rust-toolchain.__run_7;outcome=success;conclusion=success;duration_ms=12]
+2026-10-26T04:18:22.9672852Z ##[start-action display=Enable Cargo sparse registry;id=__dtolnay_rust-toolchain.__run_8]
+2026-10-26T04:18:22.9685372Z ##[group]Run # implemented in 1.66, stabilized in 1.68, made default in 1.70
+2026-10-26T04:18:22.9685838Z [36;1m# implemented in 1.66, stabilized in 1.68, made default in 1.70[0m
+2026-10-26T04:18:22.9686235Z [36;1mif [ -z "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL+set}" -o -f "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol ]; then[0m
+2026-10-26T04:18:22.9686653Z [36;1m  if rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.6[89]\.'; then[0m
+2026-10-26T04:18:22.9686980Z [36;1m    touch "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+2026-10-26T04:18:22.9687280Z [36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse >> $GITHUB_ENV[0m
+2026-10-26T04:18:22.9687570Z [36;1m  elif rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.6[67]\.'; then[0m
+2026-10-26T04:18:22.9687889Z [36;1m    touch "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+2026-10-26T04:18:22.9688179Z [36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git >> $GITHUB_ENV[0m
+2026-10-26T04:18:22.9688374Z [36;1m  fi[0m
+2026-10-26T04:18:22.9688524Z [36;1mfi[0m
+2026-10-26T04:18:22.9735593Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:22.9735786Z env:
+2026-10-26T04:18:22.9735908Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:22.9736166Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:22.9736320Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:22.9736471Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:22.9736599Z   toolchain: 1.98.0
+2026-10-26T04:18:22.9736721Z ##[endgroup]
+2026-10-26T04:18:23.0002882Z ##[end-action id=__dtolnay_rust-toolchain.__run_8;outcome=success;conclusion=success;duration_ms=32]
+2026-10-26T04:18:23.0006684Z ##[start-action display=Work around spurious network errors in curl 8.0;id=__dtolnay_rust-toolchain.__run_9]
+2026-10-26T04:18:23.0021142Z ##[group]Run # https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation
+2026-10-26T04:18:23.0021594Z [36;1m# https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation[0m
+2026-10-26T04:18:23.0021973Z [36;1mif rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.7[01]\.'; then[0m
+2026-10-26T04:18:23.0022249Z [36;1m  echo CARGO_HTTP_MULTIPLEXING=false >> $GITHUB_ENV[0m
+2026-10-26T04:18:23.0022427Z [36;1mfi[0m
+2026-10-26T04:18:23.0078384Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:23.0078589Z env:
+2026-10-26T04:18:23.0078719Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:23.0078857Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:23.0078986Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:23.0079130Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:23.0079259Z   toolchain: 1.98.0
+2026-10-26T04:18:23.0079382Z ##[endgroup]
+2026-10-26T04:18:23.0261521Z ##[end-action id=__dtolnay_rust-toolchain.__run_9;outcome=success;conclusion=success;duration_ms=25]
+2026-10-26T04:18:23.0266052Z ##[start-action display=rustc +1.98.0 --version --verbose;id=__dtolnay_rust-toolchain.__run_10]
+2026-10-26T04:18:23.0279252Z ##[group]Run rustc +"$toolchain" --version --verbose
+2026-10-26T04:18:23.0279492Z [36;1mrustc +"$toolchain" --version --verbose[0m
+2026-10-26T04:18:23.0336305Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:23.0336495Z env:
+2026-10-26T04:18:23.0336618Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:23.0336763Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:23.0336900Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:23.0337047Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:23.0337178Z   toolchain: 1.98.0
+2026-10-26T04:18:23.0337300Z ##[endgroup]
+2026-10-26T04:18:23.0491622Z rustc 1.98.0 (88d9e12ae 2026-08-18)
+2026-10-26T04:18:23.0491888Z binary: rustc
+2026-10-26T04:18:23.0492123Z commit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea
+2026-10-26T04:18:23.0492442Z commit-date: 2026-08-18
+2026-10-26T04:18:23.0492723Z host: x86_64-unknown-linux-gnu
+2026-10-26T04:18:23.0493155Z release: 1.98.0
+2026-10-26T04:18:23.0493473Z LLVM version: 22.1.8
+2026-10-26T04:18:23.0506778Z ##[end-action id=__dtolnay_rust-toolchain.__run_10;outcome=success;conclusion=success;duration_ms=24]
+2026-10-26T04:18:23.0583750Z ##[group]Run Swatinem/rust-cache@v2
+2026-10-26T04:18:23.0583920Z with:
+2026-10-26T04:18:23.0584053Z   workspaces: vlajmaji -> target
+2026-10-26T04:18:23.0584206Z   prefix-key: v0-rust
+2026-10-26T04:18:23.0584354Z   add-job-id-key: true
+2026-10-26T04:18:23.0584497Z   add-rust-environment-hash-key: true
+2026-10-26T04:18:23.0584655Z   cache-targets: true
+2026-10-26T04:18:23.0584786Z   cache-all-crates: false
+2026-10-26T04:18:23.0584934Z   cache-workspace-crates: false
+2026-10-26T04:18:23.0585079Z   save-if: true
+2026-10-26T04:18:23.0585200Z   cache-provider: github
+2026-10-26T04:18:23.0585331Z   cache-bin: true
+2026-10-26T04:18:23.0585454Z   lookup-only: false
+2026-10-26T04:18:23.0585580Z   cmd-format: {0}
+2026-10-26T04:18:23.0585699Z env:
+2026-10-26T04:18:23.0585818Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:23.0585950Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:23.0586076Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:23.0586221Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:23.0586376Z ##[endgroup]
+2026-10-26T04:18:23.3973726Z ##[group]Cache Configuration
+2026-10-26T04:18:23.3974039Z Cache Provider:
+2026-10-26T04:18:23.3974226Z     github
+2026-10-26T04:18:23.3974404Z Workspaces:
+2026-10-26T04:18:23.3974621Z     /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+2026-10-26T04:18:23.3975307Z Cache Paths:
+2026-10-26T04:18:23.3975502Z     /home/runner/.cargo/bin
+2026-10-26T04:18:23.3975740Z     /home/runner/.cargo/.crates.toml
+2026-10-26T04:18:23.3975988Z     /home/runner/.cargo/.crates2.json
+2026-10-26T04:18:23.3976237Z     /home/runner/.cargo/registry
+2026-10-26T04:18:23.3976677Z     /home/runner/.cargo/git
+2026-10-26T04:18:23.3976977Z     /home/runner/work/vlajmaji/vlajmaji/vlajmaji/target
+2026-10-26T04:18:23.3977308Z Restore Key:
+2026-10-26T04:18:23.3977511Z     v0-rust-check-Linux-x64-ba5291ee
+2026-10-26T04:18:23.3977802Z Cache Key:
+2026-10-26T04:18:23.3978008Z     v0-rust-check-Linux-x64-ba5291ee-f26e0c17
+2026-10-26T04:18:23.3978296Z .. Prefix:
+2026-10-26T04:18:23.3978671Z   - v0-rust-check-Linux-x64
+2026-10-26T04:18:23.3978950Z .. Environment considered:
+2026-10-26T04:18:23.3979178Z   - Rust Versions:
+2026-10-26T04:18:23.3979536Z     - 1.98.0 x86_64-unknown-linux-gnu 88d9e12ae178fab0fb5cc050a94da85685d449ea
+2026-10-26T04:18:23.3980057Z     - 1.99.0 x86_64-unknown-linux-gnu b940084d7eb6a299eb4bfeb8e34901bc051e7ac4
+2026-10-26T04:18:23.3980438Z   - CARGO_HOME
+2026-10-26T04:18:23.3980624Z   - CARGO_INCREMENTAL
+2026-10-26T04:18:23.3980859Z   - CARGO_TERM_COLOR
+2026-10-26T04:18:23.3981057Z   - RUST_BACKTRACE
+2026-10-26T04:18:23.3981288Z .. Lockfiles considered:
+2026-10-26T04:18:23.3981563Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/Cargo.lock
+2026-10-26T04:18:23.3981987Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli/Cargo.toml
+2026-10-26T04:18:23.3982492Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban/Cargo.toml
+2026-10-26T04:18:23.3983221Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci/Cargo.toml
+2026-10-26T04:18:23.3983742Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg/Cargo.toml
+2026-10-26T04:18:23.3984189Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku/Cargo.toml
+2026-10-26T04:18:23.3984678Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon/Cargo.toml
+2026-10-26T04:18:23.3985111Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search/Cargo.toml
+2026-10-26T04:18:23.3985562Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store/Cargo.toml
+2026-10-26T04:18:23.3985968Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji/Cargo.toml
+2026-10-26T04:18:23.3986464Z ##[endgroup]
+2026-10-26T04:18:23.3986571Z 
+2026-10-26T04:18:23.3986647Z ... Restoring cache ...
+2026-10-26T04:18:23.5523324Z Cache hit for restore-key: v0-rust-check-Linux-x64-ba5291ee-20d4a8a6
+2026-10-26T04:18:24.4125098Z Received 66155524 of 66155524 (100.0%), 88.1 MBs/sec
+2026-10-26T04:18:24.4125486Z Cache Size: ~63 MB (66155524 B)
+2026-10-26T04:18:24.4146885Z [command]/usr/bin/tar -xf /home/runner/work/_temp/501ee086-92a3-44ae-adf2-5b8c5bc581f1/cache.tzst -P -C /home/runner/work/vlajmaji/vlajmaji --use-compress-program unzstd
+2026-10-26T04:18:24.6936343Z Cache restored successfully
+2026-10-26T04:18:24.7009273Z Restored from cache key "v0-rust-check-Linux-x64-ba5291ee-20d4a8a6" full match: false.
+2026-10-26T04:18:24.7873585Z ##[group]Run cargo check --workspace --locked
+2026-10-26T04:18:24.7873845Z [36;1mcargo check --workspace --locked[0m
+2026-10-26T04:18:24.7924985Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:18:24.7925136Z env:
+2026-10-26T04:18:24.7925260Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:24.7925395Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:24.7925527Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:24.7925686Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:24.7925814Z   CACHE_ON_FAILURE: false
+2026-10-26T04:18:24.7925949Z ##[endgroup]
+2026-10-26T04:18:24.8270759Z [1m[92m    Updating[0m crates.io index
+2026-10-26T04:18:25.2236734Z [1m[92m    Checking[0m vlajmaji-lexicon v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+2026-10-26T04:18:25.2253692Z [1m[92m    Checking[0m rusqlite v0.40.2
+2026-10-26T04:18:25.2274040Z [1m[92m    Checking[0m bauske-phonology v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/bauske/crates/phonology)
+2026-10-26T04:18:26.8212146Z [1m[92m    Checking[0m vlajmaji-store v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+2026-10-26T04:18:26.8213118Z [1m[92m    Checking[0m vlajmaji-data-llg v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg)
+2026-10-26T04:18:26.8213849Z [1m[92m    Checking[0m vlajmaji-data-sutysisku v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku)
+2026-10-26T04:18:26.8214676Z [1m[92m    Checking[0m vlajmaji-data-lensisku-jbotci v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci)
+2026-10-26T04:18:26.8435612Z [1m[92m    Checking[0m vlajmaji-data-la-lojban v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban)
+2026-10-26T04:18:27.7816801Z [1m[92m    Checking[0m vlajmaji-search v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+2026-10-26T04:18:28.4297652Z [1m[92m    Checking[0m vlajmaji v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji)
+2026-10-26T04:18:28.4298170Z [1m[92m    Checking[0m vlajmaji-cli v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli)
+2026-10-26T04:18:28.6607243Z [1m[92m    Finished[0m `dev` profile [unoptimized + debuginfo] target(s) in 3.85s
+2026-10-26T04:18:28.6712226Z ##[group]Run cargo fmt --all -- --check
+2026-10-26T04:18:28.6712452Z [36;1mcargo fmt --all -- --check[0m
+2026-10-26T04:18:28.6764956Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:18:28.6765178Z env:
+2026-10-26T04:18:28.6765361Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:28.6765576Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:28.6765774Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:28.6766004Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:28.6766203Z   CACHE_ON_FAILURE: false
+2026-10-26T04:18:28.6766414Z ##[endgroup]
+2026-10-26T04:18:29.1322214Z ##[group]Run cargo clippy --workspace --all-targets --locked -- -D warnings
+2026-10-26T04:18:29.1322546Z [36;1mcargo clippy --workspace --all-targets --locked -- -D warnings[0m
+2026-10-26T04:18:29.1373625Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:18:29.1373779Z env:
+2026-10-26T04:18:29.1373904Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:29.1374041Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:29.1374177Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:29.1374330Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:29.1374463Z   CACHE_ON_FAILURE: false
+2026-10-26T04:18:29.1374598Z ##[endgroup]
+2026-10-26T04:18:29.2272626Z [1m[92m    Checking[0m vlajmaji-lexicon v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+2026-10-26T04:18:31.0246352Z [1m[92m    Checking[0m vlajmaji-store v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+2026-10-26T04:18:31.0247433Z [1m[92m    Checking[0m vlajmaji-data-la-lojban v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban)
+2026-10-26T04:18:31.0248565Z [1m[92m    Checking[0m vlajmaji-data-lensisku-jbotci v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci)
+2026-10-26T04:18:31.0498706Z [1m[92m    Checking[0m vlajmaji-data-llg v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg)
+2026-10-26T04:18:31.1574856Z [1m[92m    Checking[0m vlajmaji-data-sutysisku v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku)
+2026-10-26T04:18:32.3847315Z [1m[92m    Checking[0m vlajmaji-search v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+2026-10-26T04:18:33.3590061Z [1m[92m    Checking[0m vlajmaji-cli v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli)
+2026-10-26T04:18:33.8005862Z [1m[92m    Checking[0m vlajmaji v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji)
+2026-10-26T04:18:34.0600825Z [1m[92m    Finished[0m `dev` profile [unoptimized + debuginfo] target(s) in 4.89s
+2026-10-26T04:18:34.2258686Z ##[group]Run cargo doc --workspace --locked --no-deps
+2026-10-26T04:18:34.2259070Z [36;1mcargo doc --workspace --locked --no-deps[0m
+2026-10-26T04:18:34.2316846Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:18:34.2317198Z env:
+2026-10-26T04:18:34.2317325Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:34.2317471Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:34.2317608Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:34.2317771Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:34.2317904Z   CACHE_ON_FAILURE: false
+2026-10-26T04:18:34.2318042Z ##[endgroup]
+2026-10-26T04:18:34.4766551Z [1m[92m Documenting[0m vlajmaji-search v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+2026-10-26T04:18:34.4767486Z [1m[92m Documenting[0m vlajmaji-store v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+2026-10-26T04:18:34.4768407Z [1m[92m Documenting[0m vlajmaji-data-sutysisku v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku)
+2026-10-26T04:18:34.4769241Z [1m[92m Documenting[0m vlajmaji v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji)
+2026-10-26T04:18:34.8952192Z [1m[92m Documenting[0m vlajmaji-data-llg v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg)
+2026-10-26T04:18:35.4183665Z [1m[92m Documenting[0m vlajmaji-data-lensisku-jbotci v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci)
+2026-10-26T04:18:35.4835142Z [1m[92m Documenting[0m vlajmaji-data-la-lojban v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban)
+2026-10-26T04:18:35.5034553Z [1m[92m Documenting[0m vlajmaji-lexicon v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+2026-10-26T04:18:36.7185266Z [1m[92m    Finished[0m `dev` profile [unoptimized + debuginfo] target(s) in 2.35s
+2026-10-26T04:18:36.8164551Z [1m[92m   Generated[0m /home/runner/work/vlajmaji/vlajmaji/vlajmaji/target/doc/vlajmaji/index.html and 7 other files
+2026-10-26T04:18:36.8221649Z ##[group]Run make test-tools
+2026-10-26T04:18:36.8221836Z [36;1mmake test-tools[0m
+2026-10-26T04:18:36.8274234Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:18:36.8274381Z env:
+2026-10-26T04:18:36.8274503Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:36.8274657Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:36.8274793Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:36.8274955Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:36.8275086Z   CACHE_ON_FAILURE: false
+2026-10-26T04:18:36.8275224Z ##[endgroup]
+2026-10-26T04:18:36.8396667Z [1;34mRunning Make/planning helper tests...[0m
+2026-10-26T04:18:37.0021528Z ok - make_targets_forward_toolchain_and_failures
+2026-10-26T04:18:37.0541762Z ok - install_copies_selected_mode_and_reports_missing_artifacts
+2026-10-26T04:18:37.1298585Z ok - help_does_not_require_build_tools
+2026-10-26T04:18:37.3192315Z ok - create_empty_root_push_idempotence_and_preserve_source
+2026-10-26T04:18:37.4528782Z ok - remote_branch_without_local_branch_attaches
+2026-10-26T04:18:37.6764764Z ok - remote_update_fast_forwards_clean_planning_worktree
+2026-10-26T04:18:37.8613172Z ok - local_ahead_preserved_without_push
+2026-10-26T04:18:37.9739704Z ok - existing_local_branch_without_remote_is_attached_and_pushed
+2026-10-26T04:18:38.1406280Z ok - dirty_planning_refused_without_data_loss
+2026-10-26T04:18:38.3446040Z ok - true_divergence_refused
+2026-10-26T04:18:38.5063355Z ok - path_collision_and_wrong_branch_refused
+2026-10-26T04:18:38.5879689Z ok - unreachable_origin_is_not_treated_as_missing_branch
+2026-10-26T04:18:38.7117592Z ok - implementation_dirty_state_is_preserved
+2026-10-26T04:18:38.7953925Z ok - branch_checked_out_elsewhere_is_refused
+2026-10-26T04:18:38.9168037Z ok - push_rejection_preserves_empty_local_root_and_worktree
+2026-10-26T04:18:39.0675034Z ok - symlink_path_is_refused
+2026-10-26T04:18:39.2864987Z ok - local_branch_behind_remote_without_worktree_fast_forwards_once
+2026-10-26T04:18:39.3986094Z ok - helper_can_be_invoked_from_repository_subdirectory
+2026-10-26T04:18:39.4781502Z ok - git_administration_path_is_refused
+2026-10-26T04:18:39.4781795Z 19 passed; 0 failed (19 total)
+2026-10-26T04:18:39.4981435Z [1;32m✓ Tooling tests passed[0m
+2026-10-26T04:18:39.5063189Z Post job cleanup.
+2026-10-26T04:18:39.5900789Z ##[group]Cache Configuration
+2026-10-26T04:18:39.5901139Z Cache Provider:
+2026-10-26T04:18:39.5901345Z     github
+2026-10-26T04:18:39.5901532Z Workspaces:
+2026-10-26T04:18:39.5901775Z     /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+2026-10-26T04:18:39.5902072Z Cache Paths:
+2026-10-26T04:18:39.5902202Z     /home/runner/.cargo/bin
+2026-10-26T04:18:39.5902352Z     /home/runner/.cargo/.crates.toml
+2026-10-26T04:18:39.5902521Z     /home/runner/.cargo/.crates2.json
+2026-10-26T04:18:39.5903615Z     /home/runner/.cargo/registry
+2026-10-26T04:18:39.5903851Z     /home/runner/.cargo/git
+2026-10-26T04:18:39.5904116Z     /home/runner/work/vlajmaji/vlajmaji/vlajmaji/target
+2026-10-26T04:18:39.5904395Z Restore Key:
+2026-10-26T04:18:39.5904544Z     v0-rust-check-Linux-x64-ba5291ee
+2026-10-26T04:18:39.5904699Z Cache Key:
+2026-10-26T04:18:39.5904840Z     v0-rust-check-Linux-x64-ba5291ee-f26e0c17
+2026-10-26T04:18:39.5905012Z .. Prefix:
+2026-10-26T04:18:39.5905216Z   - v0-rust-check-Linux-x64
+2026-10-26T04:18:39.5905370Z .. Environment considered:
+2026-10-26T04:18:39.5905524Z   - Rust Versions:
+2026-10-26T04:18:39.5905730Z     - 1.98.0 x86_64-unknown-linux-gnu 88d9e12ae178fab0fb5cc050a94da85685d449ea
+2026-10-26T04:18:39.5906018Z     - 1.99.0 x86_64-unknown-linux-gnu b940084d7eb6a299eb4bfeb8e34901bc051e7ac4
+2026-10-26T04:18:39.5906230Z   - CARGO_HOME
+2026-10-26T04:18:39.5906350Z   - CARGO_INCREMENTAL
+2026-10-26T04:18:39.5906488Z   - CARGO_TERM_COLOR
+2026-10-26T04:18:39.5906616Z   - RUST_BACKTRACE
+2026-10-26T04:18:39.5906744Z .. Lockfiles considered:
+2026-10-26T04:18:39.5906919Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/Cargo.lock
+2026-10-26T04:18:39.5907169Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli/Cargo.toml
+2026-10-26T04:18:39.5907456Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban/Cargo.toml
+2026-10-26T04:18:39.5907774Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci/Cargo.toml
+2026-10-26T04:18:39.5908081Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg/Cargo.toml
+2026-10-26T04:18:39.5908384Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku/Cargo.toml
+2026-10-26T04:18:39.5908670Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon/Cargo.toml
+2026-10-26T04:18:39.5908944Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search/Cargo.toml
+2026-10-26T04:18:39.5909212Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store/Cargo.toml
+2026-10-26T04:18:39.5909485Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji/Cargo.toml
+2026-10-26T04:18:39.5909862Z ##[endgroup]
+2026-10-26T04:18:39.5909943Z 
+2026-10-26T04:18:39.8723573Z ... Cleaning /home/runner/work/vlajmaji/vlajmaji/vlajmaji/target ...
+2026-10-26T04:18:39.9913729Z ... Cleaning cargo registry (cache-all-crates: false) ...
+2026-10-26T04:18:40.1250428Z ... Cleaning cargo/bin ...
+2026-10-26T04:18:40.1276814Z ... Cleaning cargo git cache ...
+2026-10-26T04:18:40.1279939Z ... Saving cache ...
+2026-10-26T04:18:40.1395721Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/vlajmaji/vlajmaji --files-from manifest.txt --use-compress-program zstdmt
+2026-10-26T04:18:41.6217546Z Sent 66529366 of 66529366 (100.0%), 63.4 MBs/sec
+2026-10-26T04:18:41.9775266Z Post job cleanup.
+2026-10-26T04:18:42.0410333Z [command]/usr/bin/git version
+2026-10-26T04:18:42.0446061Z git version 2.55.0
+2026-10-26T04:18:42.0476284Z Temporarily overriding HOME='/home/runner/work/_temp/24eb30b4-7396-46aa-b926-d941044f72dd' before making global git config changes
+2026-10-26T04:18:42.0477321Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T04:18:42.0478187Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/bauske
+2026-10-26T04:18:42.0571156Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T04:18:42.0606678Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T04:18:42.0900107Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T04:18:42.0934291Z http.https://github.com/.extraheader
+2026-10-26T04:18:42.0944145Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-26T04:18:42.1895363Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T04:18:42.2129242Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T04:18:42.2157301Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T04:18:42.2986612Z Post job cleanup.
+2026-10-26T04:18:42.3586201Z [command]/usr/bin/git version
+2026-10-26T04:18:42.3624065Z git version 2.55.0
+2026-10-26T04:18:42.3650359Z Temporarily overriding HOME='/home/runner/work/_temp/b02b185c-2e2b-4ad0-98cb-88cbafeea7c0' before making global git config changes
+2026-10-26T04:18:42.3651265Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T04:18:42.3654603Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+2026-10-26T04:18:42.4091277Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T04:18:42.4145161Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T04:18:42.4400925Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T04:18:42.4425041Z http.https://github.com/.extraheader
+2026-10-26T04:18:42.4433212Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-26T04:18:42.5178690Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T04:18:42.5419852Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T04:18:42.5449748Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T04:18:42.5807156Z Cleaning up orphan processes
+2026-10-26T04:18:42.6028909Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

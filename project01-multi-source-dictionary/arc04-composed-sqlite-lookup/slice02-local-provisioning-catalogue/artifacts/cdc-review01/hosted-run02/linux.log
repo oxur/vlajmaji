@@ -1,0 +1,1653 @@
+﻿2026-10-26T04:18:11.0266483Z Current runner version: '2.338.0'
+2026-10-26T04:18:11.0302420Z ##[group]Runner Image Provisioner
+2026-10-26T04:18:11.0303882Z Hosted Compute Agent
+2026-10-26T04:18:11.0304786Z Version: 20261021.618
+2026-10-26T04:18:11.0305851Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-26T04:18:11.0307500Z Build Date: 2026-10-21T00:45:21Z
+2026-10-26T04:18:11.0308516Z Worker ID: {6f318c06-7a70-4310-9a80-ce7bfdb66101}
+2026-10-26T04:18:11.0309622Z Region: eastus
+2026-10-26T04:18:11.0310467Z Cloud: Azure
+2026-10-26T04:18:11.0311349Z ##[endgroup]
+2026-10-26T04:18:11.0313343Z ##[group]Operating System
+2026-10-26T04:18:11.0314372Z Ubuntu
+2026-10-26T04:18:11.0315149Z 26.04.1
+2026-10-26T04:18:11.0316141Z LTS
+2026-10-26T04:18:11.0316988Z ##[endgroup]
+2026-10-26T04:18:11.0317792Z ##[group]Runner Image
+2026-10-26T04:18:11.0318737Z Image: ubuntu-26.04
+2026-10-26T04:18:11.0319589Z Version: 20261012.163.1
+2026-10-26T04:18:11.0321629Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261012.163/images/ubuntu/Ubuntu2604-Readme.md
+2026-10-26T04:18:11.0324002Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261012.163
+2026-10-26T04:18:11.0325568Z ##[endgroup]
+2026-10-26T04:18:11.0327508Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T04:18:11.0330388Z Contents: read
+2026-10-26T04:18:11.0331232Z Metadata: read
+2026-10-26T04:18:11.0332135Z ##[endgroup]
+2026-10-26T04:18:11.0335245Z Secret source: Actions
+2026-10-26T04:18:11.0336838Z Cache mode: write
+2026-10-26T04:18:11.0338127Z Prepare workflow directory
+2026-10-26T04:18:11.0899353Z Prepare all required actions
+2026-10-26T04:18:11.0967682Z Getting action download info
+2026-10-26T04:18:11.2729948Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-26T04:18:11.3956231Z Download action repository 'dtolnay/rust-toolchain@1.98.0' (SHA:5059963b1731bf1580991b5f3b1eecfb5da406c0)
+2026-10-26T04:18:11.4819690Z Download action repository 'Swatinem/rust-cache@v2' (SHA:d1527c8f67ef9af357290475d4af4b0fab8f12e0)
+2026-10-26T04:18:11.8130849Z Complete job name: Test (ubuntu-latest)
+2026-10-26T04:18:11.8898476Z ##[group]Run actions/checkout@v4
+2026-10-26T04:18:11.8899316Z with:
+2026-10-26T04:18:11.8899729Z   path: vlajmaji
+2026-10-26T04:18:11.8900167Z   repository: oxur/vlajmaji
+2026-10-26T04:18:11.8904167Z   token: ***
+2026-10-26T04:18:11.8904591Z   ssh-strict: true
+2026-10-26T04:18:11.8905073Z   ssh-user: git
+2026-10-26T04:18:11.8905502Z   persist-credentials: true
+2026-10-26T04:18:11.8906115Z   clean: true
+2026-10-26T04:18:11.8906554Z   sparse-checkout-cone-mode: true
+2026-10-26T04:18:11.8907063Z   fetch-depth: 1
+2026-10-26T04:18:11.8907478Z   fetch-tags: false
+2026-10-26T04:18:11.8907911Z   show-progress: true
+2026-10-26T04:18:11.8908344Z   lfs: false
+2026-10-26T04:18:11.8908738Z   submodules: false
+2026-10-26T04:18:11.8909169Z   set-safe-directory: true
+2026-10-26T04:18:11.8909662Z   allow-unsafe-pr-checkout: false
+2026-10-26T04:18:11.8910376Z env:
+2026-10-26T04:18:11.8910770Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:11.8911251Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:11.8911709Z ##[endgroup]
+2026-10-26T04:18:11.9987851Z Syncing repository: oxur/vlajmaji
+2026-10-26T04:18:11.9990646Z ##[group]Getting Git version info
+2026-10-26T04:18:11.9991933Z Working directory is '/home/runner/work/vlajmaji/vlajmaji/vlajmaji'
+2026-10-26T04:18:11.9993521Z [command]/usr/bin/git version
+2026-10-26T04:18:12.0013614Z git version 2.55.0
+2026-10-26T04:18:12.0038181Z ##[endgroup]
+2026-10-26T04:18:12.0055022Z Temporarily overriding HOME='/home/runner/work/_temp/0360a7d4-c98a-4e7d-b52e-839e910be634' before making global git config changes
+2026-10-26T04:18:12.0056969Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T04:18:12.0061109Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+2026-10-26T04:18:12.0125378Z ##[group]Initializing the repository
+2026-10-26T04:18:12.0131614Z [command]/usr/bin/git init /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+2026-10-26T04:18:12.0227904Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-26T04:18:12.0229676Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-26T04:18:12.0261676Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-26T04:18:12.0263314Z hint: call:
+2026-10-26T04:18:12.0284182Z hint:
+2026-10-26T04:18:12.0285072Z hint: 	git config --global init.defaultBranch <name>
+2026-10-26T04:18:12.0286406Z hint:
+2026-10-26T04:18:12.0287492Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-26T04:18:12.0289040Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-26T04:18:12.0290134Z hint:
+2026-10-26T04:18:12.0290872Z hint: 	git branch -m <name>
+2026-10-26T04:18:12.0291577Z hint:
+2026-10-26T04:18:12.0292714Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-26T04:18:12.0294564Z Initialized empty Git repository in /home/runner/work/vlajmaji/vlajmaji/vlajmaji/.git/
+2026-10-26T04:18:12.0297729Z [command]/usr/bin/git remote add origin https://github.com/oxur/vlajmaji
+2026-10-26T04:18:12.0304844Z ##[endgroup]
+2026-10-26T04:18:12.0305892Z ##[group]Disabling automatic garbage collection
+2026-10-26T04:18:12.0311024Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-26T04:18:12.0351755Z ##[endgroup]
+2026-10-26T04:18:12.0353089Z ##[group]Setting up auth
+2026-10-26T04:18:12.0359704Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T04:18:12.0402216Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T04:18:12.0968422Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T04:18:12.1007329Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T04:18:12.1319252Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T04:18:12.1358421Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T04:18:12.1675109Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-26T04:18:12.1725365Z ##[endgroup]
+2026-10-26T04:18:12.1726937Z ##[group]Fetching the repository
+2026-10-26T04:18:12.1738511Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ce1bd238d4529f5f5b27877569e4b44fa39fe12f:refs/remotes/origin/codex/project01-composed-sqlite-lookup
+2026-10-26T04:18:12.5270282Z From https://github.com/oxur/vlajmaji
+2026-10-26T04:18:12.5271803Z  * [new ref]         ce1bd238d4529f5f5b27877569e4b44fa39fe12f -> origin/codex/project01-composed-sqlite-lookup
+2026-10-26T04:18:12.5275476Z ##[endgroup]
+2026-10-26T04:18:12.5276942Z ##[group]Determining the checkout info
+2026-10-26T04:18:12.5278434Z ##[endgroup]
+2026-10-26T04:18:12.5283521Z [command]/usr/bin/git sparse-checkout disable
+2026-10-26T04:18:12.5338666Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-26T04:18:12.5372849Z ##[group]Checking out the ref
+2026-10-26T04:18:12.5377247Z [command]/usr/bin/git checkout --progress --force -B codex/project01-composed-sqlite-lookup refs/remotes/origin/codex/project01-composed-sqlite-lookup
+2026-10-26T04:18:12.5721489Z Switched to a new branch 'codex/project01-composed-sqlite-lookup'
+2026-10-26T04:18:12.5724675Z branch 'codex/project01-composed-sqlite-lookup' set up to track 'origin/codex/project01-composed-sqlite-lookup'.
+2026-10-26T04:18:12.5730319Z ##[endgroup]
+2026-10-26T04:18:12.5782219Z [command]/usr/bin/git log -1 --format=%H
+2026-10-26T04:18:12.5809477Z ce1bd238d4529f5f5b27877569e4b44fa39fe12f
+2026-10-26T04:18:12.6217469Z ##[group]Run actions/checkout@v4
+2026-10-26T04:18:12.6218623Z with:
+2026-10-26T04:18:12.6219488Z   repository: oxur/bauske
+2026-10-26T04:18:12.6220610Z   ref: c5801ae17caaf86d2651b5ce34570199e873ad0f
+2026-10-26T04:18:12.6221882Z   path: bauske
+2026-10-26T04:18:12.6231589Z   token: ***
+2026-10-26T04:18:12.6232494Z   ssh-strict: true
+2026-10-26T04:18:12.6233415Z   ssh-user: git
+2026-10-26T04:18:12.6234358Z   persist-credentials: true
+2026-10-26T04:18:12.6235396Z   clean: true
+2026-10-26T04:18:12.6236434Z   sparse-checkout-cone-mode: true
+2026-10-26T04:18:12.6237550Z   fetch-depth: 1
+2026-10-26T04:18:12.6238453Z   fetch-tags: false
+2026-10-26T04:18:12.6239380Z   show-progress: true
+2026-10-26T04:18:12.6240313Z   lfs: false
+2026-10-26T04:18:12.6241194Z   submodules: false
+2026-10-26T04:18:12.6242168Z   set-safe-directory: true
+2026-10-26T04:18:12.6243240Z   allow-unsafe-pr-checkout: false
+2026-10-26T04:18:12.6244294Z env:
+2026-10-26T04:18:12.6245148Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:12.6246274Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:12.6247162Z ##[endgroup]
+2026-10-26T04:18:12.7108425Z Syncing repository: oxur/bauske
+2026-10-26T04:18:12.7117946Z ##[group]Getting Git version info
+2026-10-26T04:18:12.7141761Z Working directory is '/home/runner/work/vlajmaji/vlajmaji/bauske'
+2026-10-26T04:18:12.7155033Z [command]/usr/bin/git version
+2026-10-26T04:18:12.7201549Z git version 2.55.0
+2026-10-26T04:18:12.7224099Z ##[endgroup]
+2026-10-26T04:18:12.7239572Z Temporarily overriding HOME='/home/runner/work/_temp/811351d4-9bf8-4559-ae14-5b45296a87fc' before making global git config changes
+2026-10-26T04:18:12.7243149Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T04:18:12.7246936Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/bauske
+2026-10-26T04:18:12.7282874Z ##[group]Initializing the repository
+2026-10-26T04:18:12.7287819Z [command]/usr/bin/git init /home/runner/work/vlajmaji/vlajmaji/bauske
+2026-10-26T04:18:12.7338118Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-26T04:18:12.7341623Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-26T04:18:12.7344354Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-26T04:18:12.7346520Z hint: call:
+2026-10-26T04:18:12.7347850Z hint:
+2026-10-26T04:18:12.7349800Z hint: 	git config --global init.defaultBranch <name>
+2026-10-26T04:18:12.7351401Z hint:
+2026-10-26T04:18:12.7353720Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-26T04:18:12.7356527Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-26T04:18:12.7359280Z hint:
+2026-10-26T04:18:12.7360879Z hint: 	git branch -m <name>
+2026-10-26T04:18:12.7362571Z hint:
+2026-10-26T04:18:12.7364850Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-26T04:18:12.7369234Z Initialized empty Git repository in /home/runner/work/vlajmaji/vlajmaji/bauske/.git/
+2026-10-26T04:18:12.7375258Z [command]/usr/bin/git remote add origin https://github.com/oxur/bauske
+2026-10-26T04:18:12.7405247Z ##[endgroup]
+2026-10-26T04:18:12.7410424Z ##[group]Disabling automatic garbage collection
+2026-10-26T04:18:12.7411914Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-26T04:18:12.7446763Z ##[endgroup]
+2026-10-26T04:18:12.7448283Z ##[group]Setting up auth
+2026-10-26T04:18:12.7454947Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T04:18:12.7502441Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T04:18:12.7820703Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T04:18:12.7865958Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T04:18:12.8178037Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T04:18:12.8215339Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T04:18:12.8499994Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-26T04:18:12.8541713Z ##[endgroup]
+2026-10-26T04:18:12.8544132Z ##[group]Fetching the repository
+2026-10-26T04:18:12.8553648Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin c5801ae17caaf86d2651b5ce34570199e873ad0f
+2026-10-26T04:18:13.2425954Z From https://github.com/oxur/bauske
+2026-10-26T04:18:13.2426803Z  * branch            c5801ae17caaf86d2651b5ce34570199e873ad0f -> FETCH_HEAD
+2026-10-26T04:18:13.2433076Z ##[endgroup]
+2026-10-26T04:18:13.2433784Z ##[group]Determining the checkout info
+2026-10-26T04:18:13.2436323Z ##[endgroup]
+2026-10-26T04:18:13.2444450Z [command]/usr/bin/git sparse-checkout disable
+2026-10-26T04:18:13.2502617Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-26T04:18:13.2536406Z ##[group]Checking out the ref
+2026-10-26T04:18:13.2541982Z [command]/usr/bin/git checkout --progress --force c5801ae17caaf86d2651b5ce34570199e873ad0f
+2026-10-26T04:18:13.2859133Z Note: switching to 'c5801ae17caaf86d2651b5ce34570199e873ad0f'.
+2026-10-26T04:18:13.2859705Z 
+2026-10-26T04:18:13.2860090Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-26T04:18:13.2861176Z changes and commit them, and you can discard any commits you make in this
+2026-10-26T04:18:13.2862096Z state without impacting any branches by switching back to a branch.
+2026-10-26T04:18:13.2862568Z 
+2026-10-26T04:18:13.2863005Z If you want to create a new branch to retain commits you create, you may
+2026-10-26T04:18:13.2863782Z do so (now or later) by using -c with the switch command. Example:
+2026-10-26T04:18:13.2864168Z 
+2026-10-26T04:18:13.2864508Z   git switch -c <new-branch-name>
+2026-10-26T04:18:13.2864712Z 
+2026-10-26T04:18:13.2864838Z Or undo this operation with:
+2026-10-26T04:18:13.2865059Z 
+2026-10-26T04:18:13.2865171Z   git switch -
+2026-10-26T04:18:13.2865333Z 
+2026-10-26T04:18:13.2865570Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-26T04:18:13.2866271Z 
+2026-10-26T04:18:13.2866584Z HEAD is now at c5801ae chore: start 0.3.0 development cycle
+2026-10-26T04:18:13.2874730Z ##[endgroup]
+2026-10-26T04:18:13.2914996Z [command]/usr/bin/git log -1 --format=%H
+2026-10-26T04:18:13.2941361Z c5801ae17caaf86d2651b5ce34570199e873ad0f
+2026-10-26T04:18:13.3253825Z ##[group]Run dtolnay/rust-toolchain@1.98.0
+2026-10-26T04:18:13.3254210Z with:
+2026-10-26T04:18:13.3254453Z env:
+2026-10-26T04:18:13.3254719Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:13.3255040Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:13.3255304Z ##[endgroup]
+2026-10-26T04:18:13.3321911Z ##[start-action display=Parse toolchain version;id=__dtolnay_rust-toolchain.parse]
+2026-10-26T04:18:13.3381986Z ##[group]Run if [[ -z $toolchain ]]; then
+2026-10-26T04:18:13.3382462Z [36;1mif [[ -z $toolchain ]]; then[0m
+2026-10-26T04:18:13.3383037Z [36;1m  # GitHub does not enforce `required: true` inputs itself. https://github.com/actions/runner/issues/1070[0m
+2026-10-26T04:18:13.3383630Z [36;1m  echo "'toolchain' is a required input" >&2[0m
+2026-10-26T04:18:13.3383961Z [36;1m  exit 1[0m
+2026-10-26T04:18:13.3384348Z [36;1melif [[ $toolchain =~ ^stable' '[0-9]+' '(year|month|week|day)s?' 'ago$ ]]; then[0m
+2026-10-26T04:18:13.3384790Z [36;1m  if [[ Linux == macOS ]]; then[0m
+2026-10-26T04:18:13.3385400Z [36;1m    echo "toolchain=1.$((($(date -v-$(sed 's/stable \([0-9]*\) \(.\).*/\1\2/' <<< $toolchain) +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:13.3386189Z [36;1m  else[0m
+2026-10-26T04:18:13.3386858Z [36;1m    echo "toolchain=1.$((($(date --date "${toolchain#stable }" +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:13.3387340Z [36;1m  fi[0m
+2026-10-26T04:18:13.3387687Z [36;1melif [[ $toolchain =~ ^stable' 'minus' '[0-9]+' 'releases?$ ]]; then[0m
+2026-10-26T04:18:13.3388242Z [36;1m  echo "toolchain=1.$((($(date +%s)/60/60/24-16569)/7/6-${toolchain//[^0-9]/}))" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:13.3388747Z [36;1melif [[ $toolchain =~ ^1\.[0-9]+$ ]]; then[0m
+2026-10-26T04:18:13.3389322Z [36;1m  echo "toolchain=1.$((i=${toolchain#1.}, c=($(date +%s)/60/60/24-16569)/7/6, i+9*i*(10*i<=c)+90*i*(100*i<=c)))" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:13.3389841Z [36;1melse[0m
+2026-10-26T04:18:13.3390095Z [36;1m  delimiter=EOF[0m
+2026-10-26T04:18:13.3390452Z [36;1m  while [[ $toolchain == *$delimiter* ]]; do delimiter+=_; done[0m
+2026-10-26T04:18:13.3390986Z [36;1m  printf 'toolchain<<%s\n%s\n%s\n' "$delimiter" "$toolchain" "$delimiter" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:13.3391436Z [36;1mfi[0m
+2026-10-26T04:18:13.3547226Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:13.3547657Z env:
+2026-10-26T04:18:13.3547940Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:13.3548234Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:13.3548518Z   toolchain: 1.98.0
+2026-10-26T04:18:13.3548784Z ##[endgroup]
+2026-10-26T04:18:13.3706169Z ##[end-action id=__dtolnay_rust-toolchain.parse;outcome=success;conclusion=success;duration_ms=38]
+2026-10-26T04:18:13.3711901Z ##[start-action display=Set $CARGO_HOME;id=__dtolnay_rust-toolchain.__run]
+2026-10-26T04:18:13.3751196Z ##[group]Run echo CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV
+2026-10-26T04:18:13.3751755Z [36;1mecho CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV[0m
+2026-10-26T04:18:13.3821968Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:13.3822368Z env:
+2026-10-26T04:18:13.3822620Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:13.3822931Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:13.3823193Z ##[endgroup]
+2026-10-26T04:18:13.3923284Z ##[end-action id=__dtolnay_rust-toolchain.__run;outcome=success;conclusion=success;duration_ms=21]
+2026-10-26T04:18:13.3926154Z ##[start-action display=Install rustup if needed;id=__dtolnay_rust-toolchain.__run_2]
+2026-10-26T04:18:13.3980523Z ##[group]Run if ! command -v rustup &>/dev/null; then
+2026-10-26T04:18:13.3981052Z [36;1mif ! command -v rustup &>/dev/null; then[0m
+2026-10-26T04:18:13.3981890Z [36;1m  curl --proto '=https' --tlsv1.2 --retry 10 --retry-connrefused --location --silent --show-error --fail https://sh.rustup.rs | sh -s -- --default-toolchain none -y[0m
+2026-10-26T04:18:13.3982662Z [36;1m  echo "$CARGO_HOME/bin" >> $GITHUB_PATH[0m
+2026-10-26T04:18:13.3983010Z [36;1mfi[0m
+2026-10-26T04:18:13.4048513Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:13.4048932Z env:
+2026-10-26T04:18:13.4049198Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:13.4049511Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:13.4049802Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:13.4050099Z ##[endgroup]
+2026-10-26T04:18:13.4144272Z ##[end-action id=__dtolnay_rust-toolchain.__run_2;outcome=success;conclusion=success;duration_ms=21]
+2026-10-26T04:18:13.4147244Z ##[start-action display=Install rustup if needed on windows;id=__dtolnay_rust-toolchain.__run_3]
+2026-10-26T04:18:13.4155579Z ##[end-action id=__dtolnay_rust-toolchain.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+2026-10-26T04:18:13.4171104Z ##[start-action display=rustup toolchain install 1.98.0;id=__dtolnay_rust-toolchain.__run_4]
+2026-10-26T04:18:13.4194690Z ##[group]Run set -f  # split targets and components on commas and whitespace, without glob expansion
+2026-10-26T04:18:13.4195435Z [36;1mset -f  # split targets and components on commas and whitespace, without glob expansion[0m
+2026-10-26T04:18:13.4196160Z [36;1mflags=()[0m
+2026-10-26T04:18:13.4196490Z [36;1mfor t in ${targets//,/ }; do flags+=(--target "$t"); done[0m
+2026-10-26T04:18:13.4197156Z [36;1mfor c in ${components//,/ }; do flags+=(--component "$c"); done[0m
+2026-10-26T04:18:13.4197717Z [36;1mif [[ $toolchain == nightly && -n $components ]]; then flags+=(--allow-downgrade); fi[0m
+2026-10-26T04:18:13.4198179Z [36;1mlog=$(mktemp)[0m
+2026-10-26T04:18:13.4198475Z [36;1mtrap 'rm -f "$log"' EXIT[0m
+2026-10-26T04:18:13.4198788Z [36;1mfor attempt in 1 2 3 4 5; do[0m
+2026-10-26T04:18:13.4199392Z [36;1m  if rustup toolchain install "$toolchain" "${flags[@]}" --profile minimal --no-self-update --force-non-host 2>&1 | tee "$log"; then[0m
+2026-10-26T04:18:13.4199980Z [36;1m    break[0m
+2026-10-26T04:18:13.4200234Z [36;1m  else[0m
+2026-10-26T04:18:13.4200481Z [36;1m    status=$?[0m
+2026-10-26T04:18:13.4200744Z [36;1m  fi[0m
+2026-10-26T04:18:13.4201095Z [36;1m  if [[ $attempt == 5 ]] || ! grep -Fq 'checksum failed for ' "$log" \[0m
+2026-10-26T04:18:13.4201683Z [36;1m      || ! grep -Fq 'this is likely due to an ongoing update of the official release server' "$log"; then[0m
+2026-10-26T04:18:13.4202194Z [36;1m    exit "$status"[0m
+2026-10-26T04:18:13.4202470Z [36;1m  fi[0m
+2026-10-26T04:18:13.4202865Z [36;1m  echo "Retrying rustup toolchain install in 30 seconds (retry $attempt of 4)" >&2[0m
+2026-10-26T04:18:13.4203347Z [36;1m  sleep 30[0m
+2026-10-26T04:18:13.4203614Z [36;1mdone[0m
+2026-10-26T04:18:13.4266706Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:13.4267111Z env:
+2026-10-26T04:18:13.4267372Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:13.4267658Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:13.4267945Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:13.4268239Z   toolchain: 1.98.0
+2026-10-26T04:18:13.4268493Z   targets: 
+2026-10-26T04:18:13.4268734Z   components: 
+2026-10-26T04:18:13.4269016Z   RUSTUP_PERMIT_COPY_RENAME: 1
+2026-10-26T04:18:13.4269315Z ##[endgroup]
+2026-10-26T04:18:13.4891852Z info: syncing channel updates for 1.98.0-x86_64-unknown-linux-gnu
+2026-10-26T04:18:13.5984947Z info: latest update on 2026-08-20 for version 1.98.0 (88d9e12ae 2026-08-18)
+2026-10-26T04:18:13.5986075Z info: downloading 3 components
+2026-10-26T04:18:21.7155097Z 
+2026-10-26T04:18:21.7234090Z   1.98.0-x86_64-unknown-linux-gnu installed - rustc 1.98.0 (88d9e12ae 2026-08-18)
+2026-10-26T04:18:21.7234664Z 
+2026-10-26T04:18:21.7524232Z ##[end-action id=__dtolnay_rust-toolchain.__run_4;outcome=success;conclusion=success;duration_ms=8335]
+2026-10-26T04:18:21.7533162Z ##[start-action display=rustup default 1.98.0;id=__dtolnay_rust-toolchain.__run_5]
+2026-10-26T04:18:21.7554694Z ##[group]Run rustup default "$toolchain" --force-non-host
+2026-10-26T04:18:21.7555099Z [36;1mrustup default "$toolchain" --force-non-host[0m
+2026-10-26T04:18:21.7626476Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:21.7626840Z env:
+2026-10-26T04:18:21.7627284Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:21.7627536Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:21.7627780Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:21.7628026Z   toolchain: 1.98.0
+2026-10-26T04:18:21.7628250Z ##[endgroup]
+2026-10-26T04:18:21.7772654Z info: using existing install for 1.98.0-x86_64-unknown-linux-gnu
+2026-10-26T04:18:21.7784122Z info: default toolchain set to 1.98.0-x86_64-unknown-linux-gnu
+2026-10-26T04:18:21.7784406Z 
+2026-10-26T04:18:21.7863950Z   1.98.0-x86_64-unknown-linux-gnu unchanged - rustc 1.98.0 (88d9e12ae 2026-08-18)
+2026-10-26T04:18:21.7864288Z 
+2026-10-26T04:18:21.7887021Z ##[end-action id=__dtolnay_rust-toolchain.__run_5;outcome=success;conclusion=success;duration_ms=35]
+2026-10-26T04:18:21.7891359Z ##[start-action display=Create cachekey;id=__dtolnay_rust-toolchain.rustc-version]
+2026-10-26T04:18:21.7911249Z ##[group]Run DATE=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')
+2026-10-26T04:18:21.7912090Z [36;1mDATE=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')[0m
+2026-10-26T04:18:21.7912765Z [36;1mHASH=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-hash: //p')[0m
+2026-10-26T04:18:21.7913467Z [36;1mecho "cachekey=$(echo $DATE$HASH | head -c12)" >> $GITHUB_OUTPUT[0m
+2026-10-26T04:18:21.7986123Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:21.7986468Z env:
+2026-10-26T04:18:21.7986673Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:21.7986903Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:21.7987125Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:21.7987370Z   toolchain: 1.98.0
+2026-10-26T04:18:21.7987579Z ##[endgroup]
+2026-10-26T04:18:21.8393967Z ##[end-action id=__dtolnay_rust-toolchain.rustc-version;outcome=success;conclusion=success;duration_ms=50]
+2026-10-26T04:18:21.8397119Z ##[start-action display=Disable incremental compilation;id=__dtolnay_rust-toolchain.__run_6]
+2026-10-26T04:18:21.8416328Z ##[group]Run if [ -z "${CARGO_INCREMENTAL+set}" ]; then
+2026-10-26T04:18:21.8416694Z [36;1mif [ -z "${CARGO_INCREMENTAL+set}" ]; then[0m
+2026-10-26T04:18:21.8417029Z [36;1m  echo CARGO_INCREMENTAL=0 >> $GITHUB_ENV[0m
+2026-10-26T04:18:21.8417311Z [36;1mfi[0m
+2026-10-26T04:18:21.8488969Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:21.8489313Z env:
+2026-10-26T04:18:21.8489546Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:21.8489808Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:21.8490050Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:21.8490308Z ##[endgroup]
+2026-10-26T04:18:21.8585125Z ##[end-action id=__dtolnay_rust-toolchain.__run_6;outcome=success;conclusion=success;duration_ms=18]
+2026-10-26T04:18:21.8587654Z ##[start-action display=Enable colors in Cargo output;id=__dtolnay_rust-toolchain.__run_7]
+2026-10-26T04:18:21.8605895Z ##[group]Run if [ -z "${CARGO_TERM_COLOR+set}" ]; then
+2026-10-26T04:18:21.8606304Z [36;1mif [ -z "${CARGO_TERM_COLOR+set}" ]; then[0m
+2026-10-26T04:18:21.8606640Z [36;1m  echo CARGO_TERM_COLOR=always >> $GITHUB_ENV[0m
+2026-10-26T04:18:21.8606930Z [36;1mfi[0m
+2026-10-26T04:18:21.8667661Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:21.8668000Z env:
+2026-10-26T04:18:21.8668196Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:21.8668425Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:21.8668638Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:21.8668873Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:21.8669078Z ##[endgroup]
+2026-10-26T04:18:21.8755004Z ##[end-action id=__dtolnay_rust-toolchain.__run_7;outcome=success;conclusion=success;duration_ms=16]
+2026-10-26T04:18:21.8758573Z ##[start-action display=Enable Cargo sparse registry;id=__dtolnay_rust-toolchain.__run_8]
+2026-10-26T04:18:21.8776078Z ##[group]Run # implemented in 1.66, stabilized in 1.68, made default in 1.70
+2026-10-26T04:18:21.8776590Z [36;1m# implemented in 1.66, stabilized in 1.68, made default in 1.70[0m
+2026-10-26T04:18:21.8777479Z [36;1mif [ -z "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL+set}" -o -f "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol ]; then[0m
+2026-10-26T04:18:21.8778189Z [36;1m  if rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.6[89]\.'; then[0m
+2026-10-26T04:18:21.8778736Z [36;1m    touch "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+2026-10-26T04:18:21.8779226Z [36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse >> $GITHUB_ENV[0m
+2026-10-26T04:18:21.8779695Z [36;1m  elif rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.6[67]\.'; then[0m
+2026-10-26T04:18:21.8780209Z [36;1m    touch "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+2026-10-26T04:18:21.8780679Z [36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git >> $GITHUB_ENV[0m
+2026-10-26T04:18:21.8781010Z [36;1m  fi[0m
+2026-10-26T04:18:21.8781203Z [36;1mfi[0m
+2026-10-26T04:18:21.8840481Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:21.8840822Z env:
+2026-10-26T04:18:21.8841021Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:21.8841242Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:21.8841452Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:21.8841873Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:21.8842082Z   toolchain: 1.98.0
+2026-10-26T04:18:21.8842273Z ##[endgroup]
+2026-10-26T04:18:21.9170929Z ##[end-action id=__dtolnay_rust-toolchain.__run_8;outcome=success;conclusion=success;duration_ms=41]
+2026-10-26T04:18:21.9175021Z ##[start-action display=Work around spurious network errors in curl 8.0;id=__dtolnay_rust-toolchain.__run_9]
+2026-10-26T04:18:21.9193697Z ##[group]Run # https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation
+2026-10-26T04:18:21.9194465Z [36;1m# https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation[0m
+2026-10-26T04:18:21.9195079Z [36;1mif rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.7[01]\.'; then[0m
+2026-10-26T04:18:21.9195537Z [36;1m  echo CARGO_HTTP_MULTIPLEXING=false >> $GITHUB_ENV[0m
+2026-10-26T04:18:21.9196095Z [36;1mfi[0m
+2026-10-26T04:18:21.9266179Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:21.9266518Z env:
+2026-10-26T04:18:21.9266721Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:21.9266945Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:21.9267158Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:21.9267400Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:21.9267602Z   toolchain: 1.98.0
+2026-10-26T04:18:21.9267804Z ##[endgroup]
+2026-10-26T04:18:21.9478666Z ##[end-action id=__dtolnay_rust-toolchain.__run_9;outcome=success;conclusion=success;duration_ms=30]
+2026-10-26T04:18:21.9483459Z ##[start-action display=rustc +1.98.0 --version --verbose;id=__dtolnay_rust-toolchain.__run_10]
+2026-10-26T04:18:21.9501124Z ##[group]Run rustc +"$toolchain" --version --verbose
+2026-10-26T04:18:21.9501483Z [36;1mrustc +"$toolchain" --version --verbose[0m
+2026-10-26T04:18:21.9566676Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T04:18:21.9567022Z env:
+2026-10-26T04:18:21.9567229Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:21.9567484Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:21.9567736Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:21.9568216Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:21.9568542Z   toolchain: 1.98.0
+2026-10-26T04:18:21.9568946Z ##[endgroup]
+2026-10-26T04:18:21.9771572Z rustc 1.98.0 (88d9e12ae 2026-08-18)
+2026-10-26T04:18:21.9771977Z binary: rustc
+2026-10-26T04:18:21.9772325Z commit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea
+2026-10-26T04:18:21.9772751Z commit-date: 2026-08-18
+2026-10-26T04:18:21.9773090Z host: x86_64-unknown-linux-gnu
+2026-10-26T04:18:21.9773437Z release: 1.98.0
+2026-10-26T04:18:21.9773881Z LLVM version: 22.1.8
+2026-10-26T04:18:21.9789983Z ##[end-action id=__dtolnay_rust-toolchain.__run_10;outcome=success;conclusion=success;duration_ms=30]
+2026-10-26T04:18:21.9877241Z ##[group]Run Swatinem/rust-cache@v2
+2026-10-26T04:18:21.9877531Z with:
+2026-10-26T04:18:21.9877750Z   workspaces: vlajmaji -> target
+2026-10-26T04:18:21.9878005Z   prefix-key: v0-rust
+2026-10-26T04:18:21.9878233Z   add-job-id-key: true
+2026-10-26T04:18:21.9878472Z   add-rust-environment-hash-key: true
+2026-10-26T04:18:21.9878760Z   cache-targets: true
+2026-10-26T04:18:21.9878986Z   cache-all-crates: false
+2026-10-26T04:18:21.9879237Z   cache-workspace-crates: false
+2026-10-26T04:18:21.9879473Z   save-if: true
+2026-10-26T04:18:21.9879678Z   cache-provider: github
+2026-10-26T04:18:21.9879898Z   cache-bin: true
+2026-10-26T04:18:21.9880104Z   lookup-only: false
+2026-10-26T04:18:21.9880317Z   cmd-format: {0}
+2026-10-26T04:18:21.9880514Z env:
+2026-10-26T04:18:21.9880703Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:21.9880927Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:21.9881141Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:21.9881394Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:21.9881648Z ##[endgroup]
+2026-10-26T04:18:22.4010785Z ##[group]Cache Configuration
+2026-10-26T04:18:22.4011982Z Cache Provider:
+2026-10-26T04:18:22.4012634Z     github
+2026-10-26T04:18:22.4013128Z Workspaces:
+2026-10-26T04:18:22.4013676Z     /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+2026-10-26T04:18:22.4014794Z Cache Paths:
+2026-10-26T04:18:22.4015325Z     /home/runner/.cargo/bin
+2026-10-26T04:18:22.4016103Z     /home/runner/.cargo/.crates.toml
+2026-10-26T04:18:22.4016712Z     /home/runner/.cargo/.crates2.json
+2026-10-26T04:18:22.4017304Z     /home/runner/.cargo/registry
+2026-10-26T04:18:22.4017865Z     /home/runner/.cargo/git
+2026-10-26T04:18:22.4018481Z     /home/runner/work/vlajmaji/vlajmaji/vlajmaji/target
+2026-10-26T04:18:22.4019138Z Restore Key:
+2026-10-26T04:18:22.4019660Z     v0-rust-test-Linux-x64-ba5291ee
+2026-10-26T04:18:22.4020258Z Cache Key:
+2026-10-26T04:18:22.4020786Z     v0-rust-test-Linux-x64-ba5291ee-f26e0c17
+2026-10-26T04:18:22.4021410Z .. Prefix:
+2026-10-26T04:18:22.4021980Z   - v0-rust-test-Linux-x64
+2026-10-26T04:18:22.4022580Z .. Environment considered:
+2026-10-26T04:18:22.4023112Z   - Rust Versions:
+2026-10-26T04:18:22.4023810Z     - 1.98.0 x86_64-unknown-linux-gnu 88d9e12ae178fab0fb5cc050a94da85685d449ea
+2026-10-26T04:18:22.4024924Z     - 1.99.0 x86_64-unknown-linux-gnu b940084d7eb6a299eb4bfeb8e34901bc051e7ac4
+2026-10-26T04:18:22.4025918Z   - CARGO_HOME
+2026-10-26T04:18:22.4026434Z   - CARGO_INCREMENTAL
+2026-10-26T04:18:22.4026947Z   - CARGO_TERM_COLOR
+2026-10-26T04:18:22.4027461Z   - RUST_BACKTRACE
+2026-10-26T04:18:22.4027977Z .. Lockfiles considered:
+2026-10-26T04:18:22.4028629Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/Cargo.lock
+2026-10-26T04:18:22.4029504Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli/Cargo.toml
+2026-10-26T04:18:22.4030858Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban/Cargo.toml
+2026-10-26T04:18:22.4031974Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci/Cargo.toml
+2026-10-26T04:18:22.4033062Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg/Cargo.toml
+2026-10-26T04:18:22.4034158Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku/Cargo.toml
+2026-10-26T04:18:22.4035202Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon/Cargo.toml
+2026-10-26T04:18:22.4036447Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search/Cargo.toml
+2026-10-26T04:18:22.4037410Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store/Cargo.toml
+2026-10-26T04:18:22.4038382Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji/Cargo.toml
+2026-10-26T04:18:22.4039570Z ##[endgroup]
+2026-10-26T04:18:22.4040029Z 
+2026-10-26T04:18:22.4040351Z ... Restoring cache ...
+2026-10-26T04:18:22.4616050Z Cache hit for: v0-rust-test-Linux-x64-ba5291ee-f26e0c17
+2026-10-26T04:18:23.5089822Z Received 268435456 of 782108957 (34.3%), 256.0 MBs/sec
+2026-10-26T04:18:24.5167736Z Received 549453824 of 782108957 (70.3%), 261.3 MBs/sec
+2026-10-26T04:18:25.2503402Z Received 782108957 of 782108957 (100.0%), 272.1 MBs/sec
+2026-10-26T04:18:25.2504324Z Cache Size: ~746 MB (782108957 B)
+2026-10-26T04:18:25.2613517Z [command]/usr/bin/tar -xf /home/runner/work/_temp/2e1687e0-3d5c-4d1c-a264-4c062729d05b/cache.tzst -P -C /home/runner/work/vlajmaji/vlajmaji --use-compress-program unzstd
+2026-10-26T04:18:38.6150837Z Cache restored successfully
+2026-10-26T04:18:38.9766735Z Restored from cache key "v0-rust-test-Linux-x64-ba5291ee-f26e0c17" full match: true.
+2026-10-26T04:18:39.0688649Z ##[group]Run cargo test --workspace --locked
+2026-10-26T04:18:39.0689235Z [36;1mcargo test --workspace --locked[0m
+2026-10-26T04:18:39.0766835Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:18:39.0767174Z env:
+2026-10-26T04:18:39.0767422Z   CARGO_TERM_COLOR: always
+2026-10-26T04:18:39.0767700Z   RUST_BACKTRACE: 1
+2026-10-26T04:18:39.0767951Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:18:39.0768246Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:18:39.0768479Z   CACHE_ON_FAILURE: false
+2026-10-26T04:18:39.0768719Z ##[endgroup]
+2026-10-26T04:18:39.2011209Z [1m[92m    Updating[0m crates.io index
+2026-10-26T04:18:40.9900704Z [1m[92m   Compiling[0m vlajmaji-lexicon v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+2026-10-26T04:18:40.9924884Z [1m[92m   Compiling[0m bauske-phonology v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/bauske/crates/phonology)
+2026-10-26T04:18:44.4532845Z [1m[92m   Compiling[0m vlajmaji-store v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+2026-10-26T04:18:44.4537240Z [1m[92m   Compiling[0m vlajmaji-data-sutysisku v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku)
+2026-10-26T04:18:44.4538551Z [1m[92m   Compiling[0m vlajmaji-data-llg v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg)
+2026-10-26T04:18:44.4919137Z [1m[92m   Compiling[0m vlajmaji-data-lensisku-jbotci v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci)
+2026-10-26T04:18:44.4944321Z [1m[92m   Compiling[0m vlajmaji-data-la-lojban v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban)
+2026-10-26T04:18:47.1597821Z [1m[92m   Compiling[0m vlajmaji-search v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+2026-10-26T04:18:49.4239006Z [1m[92m   Compiling[0m vlajmaji v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji)
+2026-10-26T04:18:53.8038152Z [1m[92m   Compiling[0m vlajmaji-cli v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli)
+2026-10-26T04:19:06.1358748Z [1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 26.96s
+2026-10-26T04:19:06.2084786Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji-fc3577e6ddc33c4a)
+2026-10-26T04:19:06.2097802Z 
+2026-10-26T04:19:06.2098008Z running 0 tests
+2026-10-26T04:19:06.2098243Z 
+2026-10-26T04:19:06.2098962Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:06.2099565Z 
+2026-10-26T04:19:06.2101021Z [1m[92m     Running[0m unittests src/main.rs (target/debug/deps/vlajmaji-b99d7a2a3a0963f9)
+2026-10-26T04:19:06.2112143Z 
+2026-10-26T04:19:06.2112391Z running 4 tests
+2026-10-26T04:19:06.2126970Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok
+2026-10-26T04:19:06.2127675Z test collection_manifest_tests::test_manifest_validation_freezes_relative_paths_without_reading_them ... ok
+2026-10-26T04:19:06.2128497Z [1m[92m     Running[0m tests/cli_contract.rs (target/debug/deps/cli_contract-bd381f89d7ff5242)
+2026-10-26T04:19:06.2129181Z test collection_manifest_tests::test_manifest_duplicate_keys_rejects_escaped_equivalents_recursively ... ok
+2026-10-26T04:19:06.2129904Z test default_path_tests::test_marker_exists_distinguishes_absence_and_propagates_metadata_errors ... ok
+2026-10-26T04:19:06.2130290Z 
+2026-10-26T04:19:06.2130549Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:06.2130877Z 
+2026-10-26T04:19:06.2132062Z 
+2026-10-26T04:19:06.2132186Z running 2 tests
+2026-10-26T04:19:06.2193919Z test help_and_version_are_available ... ok
+2026-10-26T04:19:06.2615595Z test valid_json_limit_zero_and_failures_are_inspectable ... ok
+2026-10-26T04:19:06.2616250Z 
+2026-10-26T04:19:06.2616599Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+2026-10-26T04:19:06.2617162Z 
+2026-10-26T04:19:06.2619657Z [1m[92m     Running[0m tests/collections_contract.rs (target/debug/deps/collections_contract-e8fac5411c2241b2)
+2026-10-26T04:19:06.2633931Z 
+2026-10-26T04:19:06.2634129Z running 11 tests
+2026-10-26T04:19:06.2680735Z test test_collections_cli_install_help_explains_selection_and_update_boundary ... ok
+2026-10-26T04:19:06.2707855Z test test_collections_cli_list_absent_catalogue_expect_typed_error ... ok
+2026-10-26T04:19:06.2758124Z test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok
+2026-10-26T04:19:06.2854481Z test test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly ... ok
+2026-10-26T04:19:06.3796781Z test test_collections_cli_lost_install_response_expect_committed_generation_and_query ... ok
+2026-10-26T04:19:06.3957941Z test test_collections_cli_register_install_list_inspect_expect_structured_reports ... ok
+2026-10-26T04:19:06.4147545Z test test_collections_cli_runtime_validation_expect_versioned_report_and_clap_boundary ... ok
+2026-10-26T04:19:06.5517726Z test test_collections_cli_relative_paths_are_frozen_across_working_directories ... ok
+2026-10-26T04:19:06.5830935Z test test_collections_cli_tampered_repeat_expect_prior_generation_unchanged ... ok
+2026-10-26T04:19:06.6861224Z test test_collections_cli_all_raw_inputs_expect_four_pack_install ... ok
+2026-10-26T04:19:06.8664061Z test test_collections_cli_opposite_pack_orders_expect_same_content_and_distinct_generations ... ok
+2026-10-26T04:19:06.8664571Z 
+2026-10-26T04:19:06.8664850Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.60s
+2026-10-26T04:19:06.8668539Z [1m[92m     Running[0m tests/data_packs.rs (target/debug/deps/data_packs-317836a5c6a41ce5)
+2026-10-26T04:19:06.8668907Z 
+2026-10-26T04:19:06.8684636Z 
+2026-10-26T04:19:06.8684766Z running 7 tests
+2026-10-26T04:19:06.8833181Z test test_la_lojban_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+2026-10-26T04:19:06.8973232Z test test_occupied_destination_is_preserved_and_bad_pins_create_no_output ... ok
+2026-10-26T04:19:06.8991406Z test test_la_materializer_rejects_invalid_inputs_and_preserves_occupied_outputs ... ok
+2026-10-26T04:19:06.8993211Z test test_llg_synthetic_fixture_uses_importer_and_refuses_occupied_output ... ok
+2026-10-26T04:19:06.9092573Z test test_synthetic_fixture_uses_the_importer_and_emits_a_loadable_pack ... ok
+2026-10-26T04:19:06.9096945Z test test_sutysisku_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+2026-10-26T04:19:07.0137967Z test test_four_synthetic_packs_compose_for_sql_selection_pages_and_references ... ok
+2026-10-26T04:19:07.0138468Z 
+2026-10-26T04:19:07.0138931Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+2026-10-26T04:19:07.0139267Z 
+2026-10-26T04:19:07.0142477Z [1m[92m     Running[0m tests/default_store.rs (target/debug/deps/default_store-bdf914fbe0a6ce58)
+2026-10-26T04:19:07.0159515Z 
+2026-10-26T04:19:07.0159813Z running 6 tests
+2026-10-26T04:19:07.0307507Z test test_default_info_detects_ambiguous_and_corrupt_grouped_markers_without_fallback ... ok
+2026-10-26T04:19:07.0607170Z test test_optional_store_positionals_are_visible_in_help_and_legacy_info_stays_legacy ... ok
+2026-10-26T04:19:07.4413841Z test test_default_build_input_errors_and_occupied_leaves_have_bounded_side_effects ... ok
+2026-10-26T04:19:07.4572018Z test test_home_fallback_explicit_override_and_missing_default_are_truthful ... ok
+2026-10-26T04:19:07.7218145Z test test_non_utf8_environment_is_preserved_and_build_fails_before_mutation ... ok
+2026-10-26T04:19:07.8362871Z test test_xdg_default_build_query_stdin_and_info_match_explicit_store ... ok
+2026-10-26T04:19:07.8363433Z 
+2026-10-26T04:19:07.8363827Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.82s
+2026-10-26T04:19:07.8364364Z 
+2026-10-26T04:19:07.8369711Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-65845f2d0ed3dfcf)
+2026-10-26T04:19:07.8381259Z 
+2026-10-26T04:19:07.8381393Z running 1 test
+2026-10-26T04:19:08.1964856Z test dictionary_commands_work_and_structured_errors_use_the_envelope ... ok
+2026-10-26T04:19:08.1965269Z 
+2026-10-26T04:19:08.1965520Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.36s
+2026-10-26T04:19:08.1966025Z 
+2026-10-26T04:19:08.1968877Z [1m[92m     Running[0m tests/jbotci_contract.rs (target/debug/deps/jbotci_contract-e85da319fd79ebfe)
+2026-10-26T04:19:08.1979571Z 
+2026-10-26T04:19:08.1979735Z running 1 test
+2026-10-26T04:19:08.2426708Z test import_check_are_pinned_non_destructive_and_structured_on_failure ... ok
+2026-10-26T04:19:08.2427226Z 
+2026-10-26T04:19:08.2427484Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+2026-10-26T04:19:08.2427816Z 
+2026-10-26T04:19:08.2429359Z [1m[92m     Running[0m tests/jbotci_pipeline.rs (target/debug/deps/jbotci_pipeline-1046b55993d48361)
+2026-10-26T04:19:08.2440079Z 
+2026-10-26T04:19:08.2440226Z running 7 tests
+2026-10-26T04:19:08.2477319Z test concurrent_scratch_allocations_are_distinct_and_joined ... ok
+2026-10-26T04:19:08.4914774Z test report_creation_races_preserve_caller_bytes_and_skip_importer ... ok
+2026-10-26T04:19:08.4917183Z test scratch_retries_occupied_candidates_without_touching_them ... ok
+2026-10-26T04:19:08.6338227Z test make_forwards_metacharacter_paths_and_requires_explicit_cargo_target ... ok
+2026-10-26T04:19:08.6700148Z test test_pin_manifest_byte_policy_counts_forbidden_bytes_and_fails_closed ... ok
+2026-10-26T04:19:08.6961329Z test malformed_manifest_and_download_failure_leave_no_completion_marker ... ok
+2026-10-26T04:19:08.8121130Z test pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows ... ok
+2026-10-26T04:19:08.8121546Z 
+2026-10-26T04:19:08.8121810Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.57s
+2026-10-26T04:19:08.8122183Z 
+2026-10-26T04:19:08.8125063Z [1m[92m     Running[0m tests/verify_contract.rs (target/debug/deps/verify_contract-355b4efc9cee3de5)
+2026-10-26T04:19:08.8139464Z 
+2026-10-26T04:19:08.8139651Z running 2 tests
+2026-10-26T04:19:09.0779734Z test test_verify_cli_explicit_path_overrides_invalid_default_environment ... ok
+2026-10-26T04:19:09.4277340Z test test_verify_cli_success_failure_envelope_default_help_and_no_create ... ok
+2026-10-26T04:19:09.4277942Z 
+2026-10-26T04:19:09.4278347Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.61s
+2026-10-26T04:19:09.4278876Z 
+2026-10-26T04:19:09.4282723Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_la_lojban-f5b3a51c12c8d125)
+2026-10-26T04:19:09.4293063Z 
+2026-10-26T04:19:09.4293204Z running 0 tests
+2026-10-26T04:19:09.4293443Z 
+2026-10-26T04:19:09.4293714Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:09.4294066Z 
+2026-10-26T04:19:09.4296433Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_lensisku_jbotci-31df067ad1f3f05d)
+2026-10-26T04:19:09.4306456Z 
+2026-10-26T04:19:09.4306620Z running 0 tests
+2026-10-26T04:19:09.4306859Z 
+2026-10-26T04:19:09.4307124Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:09.4307473Z 
+2026-10-26T04:19:09.4309583Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_llg-c440464bade85b3c)
+2026-10-26T04:19:09.4319593Z 
+2026-10-26T04:19:09.4319744Z running 0 tests
+2026-10-26T04:19:09.4319954Z 
+2026-10-26T04:19:09.4320236Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:09.4320578Z 
+2026-10-26T04:19:09.4322756Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_sutysisku-817d27e288581181)
+2026-10-26T04:19:09.4333089Z 
+2026-10-26T04:19:09.4333298Z running 0 tests
+2026-10-26T04:19:09.4333520Z 
+2026-10-26T04:19:09.4333944Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:09.4334528Z 
+2026-10-26T04:19:09.4336619Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_lexicon-0c2cf91e661010ee)
+2026-10-26T04:19:09.4346752Z 
+2026-10-26T04:19:09.4346913Z running 1 test
+2026-10-26T04:19:09.4349303Z test pack::tests::composite_identity_key_is_unambiguous_when_parts_contain_delimiters ... ok
+2026-10-26T04:19:09.4349682Z 
+2026-10-26T04:19:09.4349936Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:09.4350283Z 
+2026-10-26T04:19:09.4351461Z [1m[92m     Running[0m tests/contract.rs (target/debug/deps/contract-d0ec19958a7d4c08)
+2026-10-26T04:19:09.4361847Z 
+2026-10-26T04:19:09.4361989Z running 8 tests
+2026-10-26T04:19:09.4364338Z test full_corpus_import_reconciles_all_input_populations ... ignored, requires RELOJBAN_RESEARCH_ROOT pointing at the preserved research checkout
+2026-10-26T04:19:09.4371002Z test corpus_sources_preserve_form_roles ... ok
+2026-10-26T04:19:09.4374707Z test exact_queries_keep_source_rows_and_proposals_separate ... ok
+2026-10-26T04:19:09.4375458Z test import_is_atomic_and_source_identity_is_byte_exact ... ok
+2026-10-26T04:19:09.4376728Z test proposals_borrowed_view_exposes_all_entries_without_captured_lookup ... ok
+2026-10-26T04:19:09.4377666Z test see_also_parser_uses_explicit_marker_and_excludes_tex_math ... ok
+2026-10-26T04:19:09.4378513Z test proposal_identity_is_unambiguous_and_archive_validation_is_typed ... ok
+2026-10-26T04:19:09.4386033Z test archive_roundtrip_preserves_raw_presence_unknowns_and_large_numbers ... ok
+2026-10-26T04:19:09.4386564Z 
+2026-10-26T04:19:09.4386948Z test result: ok. 7 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:09.4387474Z 
+2026-10-26T04:19:09.4388436Z [1m[92m     Running[0m tests/data_packs.rs (target/debug/deps/data_packs-f2473f103570bb8b)
+2026-10-26T04:19:09.4399724Z 
+2026-10-26T04:19:09.4399953Z running 11 tests
+2026-10-26T04:19:09.4456964Z test composition_rejects_conflicting_capture_contributor_and_assertion_bodies ... ok
+2026-10-26T04:19:09.4457918Z test composition_preserves_distinct_distributions_and_exact_dedup ... ok
+2026-10-26T04:19:09.4458683Z test empty_composition_is_the_empty_validated_dictionary ... ok
+2026-10-26T04:19:09.4459409Z test composition_rejects_conflicting_source_and_release_identities ... ok
+2026-10-26T04:19:09.4479040Z test composition_preserves_ordered_extension_max_multiplicities ... ok
+2026-10-26T04:19:09.4538544Z test seal_rejects_wrong_pack_length_hash_version_inventory_and_bad_wire ... ok
+2026-10-26T04:19:09.4539598Z test test_unverified_composition_keeps_graph_validation_explicit_and_deduplicates_inputs ... ok
+2026-10-26T04:19:09.4540619Z test test_unverified_composition_rejects_merged_active_selector_collision ... ok
+2026-10-26T04:19:09.4541442Z test seal_roundtrip_is_strict_and_inventory_ordered ... ok
+2026-10-26T04:19:09.4542369Z test test_unverified_composition_rejects_conflicting_alias_identity_and_deduplicates_equal_alias ... ok
+2026-10-26T04:19:09.4810598Z test complete_typed_model_composes_without_dropping_any_metadata_class ... ok
+2026-10-26T04:19:09.4811166Z 
+2026-10-26T04:19:09.4811453Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+2026-10-26T04:19:09.4811807Z 
+2026-10-26T04:19:09.4815496Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-6c94171481668b2c)
+2026-10-26T04:19:09.4829865Z 
+2026-10-26T04:19:09.4830010Z running 11 tests
+2026-10-26T04:19:09.5281731Z test complete_fixture_keeps_native_presence_and_release_absence_distinct ... ok
+2026-10-26T04:19:09.5397008Z test constructor_rejects_raw_reference_accounting_and_provenance_failures ... ok
+2026-10-26T04:19:09.5423009Z test available_empty_release_is_distinct_from_unavailable_catalogue_and_bad_refs_reject ... ok
+2026-10-26T04:19:09.5446859Z test empty_document_is_valid_and_serde_revalidates ... ok
+2026-10-26T04:19:09.6009043Z test complete_public_fixture_roundtrips_all_source_and_metadata_rows ... ok
+2026-10-26T04:19:09.6607655Z test known_missing_capture_can_retain_unverifiable_projection_with_unknown_counts ... ok
+2026-10-26T04:19:09.6786938Z test declared_validation_categories_are_emitted_and_malformed_parent_paths_do_not_panic ... ok
+2026-10-26T04:19:09.6816175Z test raw_values_ids_and_duplicate_envelope_keys_are_checked ... ok
+2026-10-26T04:19:09.6955397Z test direct_serde_is_strict_and_identity_adapters_are_exact ... ok
+2026-10-26T04:19:09.7054721Z test named_reference_and_provenance_failures_use_declared_categories ... ok
+2026-10-26T04:19:09.9208155Z test etymology_components_accept_each_declared_local_reference_role ... ok
+2026-10-26T04:19:09.9208534Z 
+2026-10-26T04:19:09.9208784Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.44s
+2026-10-26T04:19:09.9209108Z 
+2026-10-26T04:19:09.9214894Z [1m[92m     Running[0m tests/jbotci_contract.rs (target/debug/deps/jbotci_contract-83c60443b0aeb75c)
+2026-10-26T04:19:09.9229530Z 
+2026-10-26T04:19:09.9229744Z running 12 tests
+2026-10-26T04:19:09.9244659Z test invalid_pins_utf8_and_json_root_return_typed_failures ... ok
+2026-10-26T04:19:09.9249307Z test duplicate_fields_nested_values_and_nonobjects_remain_raw_and_excluded ... ok
+2026-10-26T04:19:09.9250492Z test malformed_optional_shapes_are_diagnostic_without_excluding_valid_rows ... ok
+2026-10-26T04:19:09.9251676Z test changed_pinned_raw_bytes_change_capture_and_row_ids_and_wrong_hash_fails ... ok
+2026-10-26T04:19:09.9260075Z test metadata_duplicates_and_unsupported_shapes_are_typed_failures ... ok
+2026-10-26T04:19:09.9267262Z test missing_null_and_empty_critical_values_remain_distinguishable ... ok
+2026-10-26T04:19:09.9268106Z test all_supported_classes_and_cross_column_forms_remain_distinct ... ok
+2026-10-26T04:19:09.9268879Z test non_display_username_keeps_hashed_attribution_with_a_diagnostic ... ok
+2026-10-26T04:19:09.9278936Z test metadata_numeric_values_follow_json_validity_before_subset_errors ... ok
+2026-10-26T04:19:09.9286599Z test optional_selmaho_and_definition_id_shapes_are_diagnostic_without_loss ... ok
+2026-10-26T04:19:09.9287664Z test repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters ... ok
+2026-10-26T04:19:09.9315833Z test revision_is_release_provenance_while_occurrence_identity_is_byte_stable ... ok
+2026-10-26T04:19:09.9316219Z 
+2026-10-26T04:19:09.9316479Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-10-26T04:19:09.9316811Z 
+2026-10-26T04:19:09.9320090Z [1m[92m     Running[0m tests/la_lojban_import.rs (target/debug/deps/la_lojban_import-9c4e1ffdbdce5cf7)
+2026-10-26T04:19:09.9332770Z 
+2026-10-26T04:19:09.9332923Z running 4 tests
+2026-10-26T04:19:09.9340272Z test test_la_import_rejects_invalid_utf8_and_malformed_json ... ok
+2026-10-26T04:19:09.9346882Z test test_la_import_rejects_mismatched_hash_and_invalid_options ... ok
+2026-10-26T04:19:09.9347858Z test test_la_import_preserves_rows_fields_attribution_and_exclusions ... ok
+2026-10-26T04:19:09.9355100Z test test_la_import_revision_changes_release_but_not_capture_or_occurrence_identity ... ok
+2026-10-26T04:19:09.9355813Z 
+2026-10-26T04:19:09.9356157Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:09.9356533Z 
+2026-10-26T04:19:09.9358719Z [1m[92m     Running[0m tests/llg_import.rs (target/debug/deps/llg_import-0263019435f3fbe9)
+2026-10-26T04:19:09.9370363Z 
+2026-10-26T04:19:09.9370492Z running 8 tests
+2026-10-26T04:19:09.9396566Z test test_import_llg_lists_absent_header_has_no_claim_or_conflict ... ok
+2026-10-26T04:19:09.9397809Z test test_import_llg_lists_excludes_malformed_rows_and_keeps_optional_tail_absent ... ok
+2026-10-26T04:19:09.9398901Z test test_import_llg_lists_preserves_captures_rows_and_evidence ... ok
+2026-10-26T04:19:09.9399911Z test test_import_llg_lists_keeps_duplicate_rows_and_excludes_conflicting_classes ... ok
+2026-10-26T04:19:09.9400933Z test test_import_llg_lists_rejects_bad_pins_and_invalid_utf8 ... ok
+2026-10-26T04:19:09.9406885Z test test_import_llg_lists_reports_count_mismatch_without_dropping_rows ... ok
+2026-10-26T04:19:09.9416033Z test test_import_llg_lists_retains_unsupported_rows_and_terminal_cr ... ok
+2026-10-26T04:19:09.9425646Z test test_import_llg_lists_preserves_each_header_claim_and_mismatch_occurrence ... ok
+2026-10-26T04:19:09.9426354Z 
+2026-10-26T04:19:09.9426745Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-10-26T04:19:09.9427323Z 
+2026-10-26T04:19:09.9429849Z [1m[92m     Running[0m tests/registry_contract.rs (target/debug/deps/registry_contract-0948456a23b1b463)
+2026-10-26T04:19:09.9440698Z 
+2026-10-26T04:19:09.9440845Z running 10 tests
+2026-10-26T04:19:09.9453977Z test attribution_requires_explicit_legacy_binding_but_keeps_empty_metadata ... ok
+2026-10-26T04:19:09.9476526Z test document_validation_rejects_duplicate_roles_and_invalid_values ... ok
+2026-10-26T04:19:09.9483290Z test aliases_cannot_shadow_another_sources_current_abbreviation ... ok
+2026-10-26T04:19:09.9484969Z test ids_and_registry_document_are_validated_and_role_distinct ... ok
+2026-10-26T04:19:09.9485926Z test aliases_rename_retire_and_reuse_without_losing_history ... ok
+2026-10-26T04:19:09.9501629Z test attribution_preserves_five_occurrences_roles_raw_bytes_and_archive ... ok
+2026-10-26T04:19:09.9502857Z test phantom_occurrence_binding_is_rejected_against_the_supplied_lexicon ... ok
+2026-10-26T04:19:09.9512777Z test test_unverified_registry_selector_rejects_duplicate_source_identity ... ok
+2026-10-26T04:19:09.9513970Z test invalid_documents_updates_and_deserialization_cannot_bypass_invariants ... ok
+2026-10-26T04:19:09.9533222Z test registry_identity_wires_reject_unknown_nested_fields_without_tightening_legacy_ids ... ok
+2026-10-26T04:19:09.9533825Z 
+2026-10-26T04:19:09.9534175Z test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-10-26T04:19:09.9534534Z 
+2026-10-26T04:19:09.9536888Z [1m[92m     Running[0m tests/sutysisku_import.rs (target/debug/deps/sutysisku_import-0e7d911e214a9de4)
+2026-10-26T04:19:09.9548396Z 
+2026-10-26T04:19:09.9548595Z running 4 tests
+2026-10-26T04:19:09.9556881Z test test_import_sutysisku_export_invalid_pin_and_root_inputs_return_typed_errors ... ok
+2026-10-26T04:19:09.9562124Z test test_import_sutysisku_export_preserves_repeated_and_long_source_reported_forms ... ok
+2026-10-26T04:19:09.9564894Z test test_import_sutysisku_export_literal_census_and_raw_projection_are_preserved ... ok
+2026-10-26T04:19:09.9587503Z test test_import_sutysisku_export_revision_changes_provenance_not_capture_identity ... ok
+2026-10-26T04:19:09.9588098Z 
+2026-10-26T04:19:09.9588517Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:09.9589047Z 
+2026-10-26T04:19:09.9590565Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_search-4346511482f84446)
+2026-10-26T04:19:09.9601781Z 
+2026-10-26T04:19:09.9601955Z running 3 tests
+2026-10-26T04:19:09.9604804Z test component_semantics::component_membership_is_an_exact_ordered_subsequence_with_multiplicity ... ok
+2026-10-26T04:19:09.9608032Z test dictionary::unverified_index_tests::test_sql_candidate_must_exist_before_source_selection_can_skip_it ... ok
+2026-10-26T04:19:09.9609067Z test dictionary::unverified_index_tests::test_required_lookup_indexes_keep_unique_ids_and_reject_duplicates ... ok
+2026-10-26T04:19:09.9609494Z 
+2026-10-26T04:19:09.9609760Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:09.9610103Z 
+2026-10-26T04:19:09.9611639Z [1m[92m     Running[0m tests/corpus_contract.rs (target/debug/deps/corpus_contract-23a9bd9f989db3e8)
+2026-10-26T04:19:09.9627339Z 
+2026-10-26T04:19:09.9627488Z running 8 tests
+2026-10-26T04:19:09.9734174Z test compose_kind_is_validated_with_empty_and_nonempty_candidate_sets ... ok
+2026-10-26T04:19:09.9737477Z test exact_proposal_option_is_separate_complete_and_limited_after_combination ... ok
+2026-10-26T04:19:09.9738850Z test contrast_exposes_p01_coordinate_explanations_without_word_total ... ok
+2026-10-26T04:19:09.9740394Z test native_candidate_counts_are_stage_labelled ... ok
+2026-10-26T04:19:09.9817695Z test search_engine_has_safe_summary_debug_output ... ok
+2026-10-26T04:19:09.9818913Z test scalar_spelling_distance_scans_and_preserves_record_multiplicity ... ok
+2026-10-26T04:19:09.9819726Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok
+2026-10-26T04:19:09.9836640Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok
+2026-10-26T04:19:09.9837024Z 
+2026-10-26T04:19:09.9837278Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+2026-10-26T04:19:09.9837627Z 
+2026-10-26T04:19:09.9842360Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-2fc421b56ad93b2d)
+2026-10-26T04:19:09.9859330Z 
+2026-10-26T04:19:09.9859487Z running 6 tests
+2026-10-26T04:19:10.4557293Z test exact_farvi_matches_the_complete_occurrence_reference_after_reopen ... ok
+2026-10-26T04:19:10.4577487Z test hit_computations_follow_dictionary_metadata_order ... ok
+2026-10-26T04:19:10.4616566Z test pages_zero_totals_cursor_binding_and_stale_cursor_are_explicit ... ok
+2026-10-26T04:19:10.4722030Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok
+2026-10-26T04:19:10.7651204Z test repeated_editorial_membership_is_preserved_but_hit_views_are_unique ... ok
+2026-10-26T04:19:11.9445034Z test test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids ... ok
+2026-10-26T04:19:11.9448499Z 
+2026-10-26T04:19:11.9449165Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.96s
+2026-10-26T04:19:11.9449557Z 
+2026-10-26T04:19:11.9459959Z [1m[92m     Running[0m tests/dictionary_topology.rs (target/debug/deps/dictionary_topology-365bea0d50a43c2e)
+2026-10-26T04:19:11.9477178Z 
+2026-10-26T04:19:11.9477407Z running 1 test
+2026-10-26T04:19:12.0954776Z test test_exact_profiled_matches_unprofiled_for_each_topology ... ok
+2026-10-26T04:19:12.0955306Z 
+2026-10-26T04:19:12.0955860Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+2026-10-26T04:19:12.0956356Z 
+2026-10-26T04:19:12.0962459Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_store-2248552b6478e60c)
+2026-10-26T04:19:12.0980358Z 
+2026-10-26T04:19:12.0980615Z running 14 tests
+2026-10-26T04:19:12.0989475Z test collections::manifest_tests::test_allocate_stage_retries_occupied_candidate_without_overwriting_it ... ok
+2026-10-26T04:19:12.0991828Z test collections::manifest_tests::test_manifest_direct_api_rejects_duplicate_and_escaped_duplicate_keys ... ok
+2026-10-26T04:19:12.0993282Z test collections::manifest_tests::test_batch_failure_reports_validated_failed_unprocessed_and_skipped_inputs ... ok
+2026-10-26T04:19:12.0995382Z test collections::manifest_tests::test_manifest_locator_absence_and_null_are_none_and_strings_are_retained ... ok
+2026-10-26T04:19:12.0996736Z test collections::manifest_tests::test_manifest_locator_wrong_type_is_rejected ... ok
+2026-10-26T04:19:12.0997771Z test collections::manifest_tests::test_sutysisku_manifest_optional_locators_accept_omission_and_null ... ok
+2026-10-26T04:19:12.1012819Z test collections::manifest_tests::test_selection_skips_unselected_missing_native_path_and_all_reports_failure ... ok
+2026-10-26T04:19:12.1016776Z test dictionary_schema::checked_integer_tests::sqlite_integer_conversion_and_evidence_increment_are_checked ... ok
+2026-10-26T04:19:12.1021808Z test dictionary_schema::tests::insertion_order_covers_schema_and_places_foreign_key_parents_first ... ok
+2026-10-26T04:19:12.1023033Z test dictionary_schema::tests::projection_orders_present_tables_and_rejects_unknown_tables ... ok
+2026-10-26T04:19:12.1037263Z test identity_tests::tuple_identity_is_length_prefixed_and_byte_exact ... ok
+2026-10-26T04:19:12.1041131Z test collections::manifest_tests::test_injected_rollback_failure_retains_initiating_and_rollback_causes ... ok
+2026-10-26T04:19:12.1390571Z test dictionary::lifecycle_tests::committed_incomplete_header_survives_population_failure ... ok
+2026-10-26T04:19:12.2209777Z test collections::manifest_tests::test_interruption_after_stage_allocation_retains_prior_generation_and_allows_retry ... ok
+2026-10-26T04:19:12.2210297Z 
+2026-10-26T04:19:12.2210582Z test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+2026-10-26T04:19:12.2210937Z 
+2026-10-26T04:19:12.2216339Z [1m[92m     Running[0m tests/collections_contract.rs (target/debug/deps/collections_contract-f937b99c4d0b31b4)
+2026-10-26T04:19:12.2233691Z 
+2026-10-26T04:19:12.2233818Z running 19 tests
+2026-10-26T04:19:12.2303177Z test test_catalogue_root_symlink_is_not_followed_for_read_or_write ... ok
+2026-10-26T04:19:12.2326624Z test test_catalogue_file_and_database_symlink_are_refused_without_modification ... ok
+2026-10-26T04:19:12.2336916Z test test_empty_existing_roots_register_install_expect_occupied_with_validated_input ... ok
+2026-10-26T04:19:12.2368265Z test test_catalogue_unsupported_schema_version_is_read_only ... ok
+2026-10-26T04:19:12.4185979Z test test_begin_busy_register_install_expect_validated_context_and_retry ... ok
+2026-10-26T04:19:12.4344260Z test test_exact_repeat_rejects_corrupt_owned_store_without_activating_changes ... ok
+2026-10-26T04:19:12.4427017Z test test_install_revision_overflow_is_known_precommit_failure ... ok
+2026-10-26T04:19:12.5390775Z test test_catalogue_register_then_install_and_repeat_keeps_generation ... ok
+2026-10-26T04:19:12.5411893Z test test_malformed_seal_and_release_mismatch_expect_typed_pack_errors ... ok
+2026-10-26T04:19:12.6095634Z test test_list_uses_compact_registration_summary_without_decoding_descriptor ... ok
+2026-10-26T04:19:12.6156443Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok
+2026-10-26T04:19:12.6871292Z test test_missing_sealed_input_expect_known_pack_and_typed_io_cause ... ok
+2026-10-26T04:19:12.7408508Z test test_install_commit_busy_rolls_back_catalogue_and_retains_staged_attempt ... ok
+2026-10-26T04:19:12.7410611Z test test_request_all_missing_pack_is_rejected ... ok
+2026-10-26T04:19:12.7493263Z test test_sealed_input_native_non_utf8_path_is_preserved_in_inspection ... ok
+2026-10-26T04:19:12.7498274Z test test_sealed_pack_mismatch_is_rejected_before_catalogue_creation ... ok
+2026-10-26T04:19:12.8047953Z test test_install_conflicting_shared_source_is_typed_and_valid_counterpart_composes_once ... ok
+2026-10-26T04:19:12.8461327Z test test_reference_metadata_preserves_nonempty_form_and_editorial_link_sets ... ok
+2026-10-26T04:19:12.9829132Z test test_new_release_registration_stays_uninstalled_and_install_requires_later_update_flow ... ok
+2026-10-26T04:19:12.9829783Z 
+2026-10-26T04:19:12.9830138Z test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.76s
+2026-10-26T04:19:12.9830639Z 
+2026-10-26T04:19:12.9836532Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-62ef8bd964a17fab)
+2026-10-26T04:19:12.9852782Z 
+2026-10-26T04:19:12.9852952Z running 14 tests
+2026-10-26T04:19:13.0557802Z test empty_valid_dictionary_has_a_real_empty_projection ... ok
+2026-10-26T04:19:13.0662203Z test empty_source_metadata_values_survive_actual_sql_projection ... ok
+2026-10-26T04:19:13.0686695Z test fresh_path_lifecycle_refuses_existing_leafs_and_missing_parents ... ok
+2026-10-26T04:19:13.4271050Z test empty_available_release_keeps_explicit_zero_counts ... ok
+2026-10-26T04:19:13.4627258Z test complete_dictionary_creates_typed_projection_and_reopens_read_only ... ok
+2026-10-26T04:19:13.4887102Z test full_fixture_has_independent_direct_sql_value_oracles ... ok
+2026-10-26T04:19:13.8707301Z test full_unsigned_text_empty_and_nul_values_survive_sql_and_reopen ... ok
+2026-10-26T04:19:14.5527342Z test legacy_archive_rebuild_is_explicit_separate_and_byte_preserving ... ok
+2026-10-26T04:19:14.9195425Z test explicit_projection_verification_rejects_same_count_scalar_edits_without_repair ... ok
+2026-10-26T04:19:14.9361521Z test metadata_query_missing_required_columns_is_format_without_writing ... ok
+2026-10-26T04:19:15.1607075Z test reversed_self_reference_rows_persist_and_reopen_in_model_order ... ok
+2026-10-26T04:19:15.5580515Z test test_minimal_open_rejects_unsupported_dictionary_and_registry_versions ... ok
+2026-10-26T04:19:16.3686825Z test sql_role_presence_foreign_key_and_unique_constraints_are_real ... ok
+2026-10-26T04:19:16.9799495Z test integrity_failures_are_classified_without_mutating_the_database ... ok
+2026-10-26T04:19:16.9800049Z 
+2026-10-26T04:19:16.9800576Z test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.99s
+2026-10-26T04:19:16.9801118Z 
+2026-10-26T04:19:16.9813787Z [1m[92m     Running[0m tests/dictionary_snapshot.rs (target/debug/deps/dictionary_snapshot-ba50c001aaf0295e)
+2026-10-26T04:19:16.9831132Z 
+2026-10-26T04:19:16.9831318Z running 2 tests
+2026-10-26T04:19:16.9836355Z test test_attached_rejects_non_utf8_native_path_without_lossy_routing_or_creation ... ok
+2026-10-26T04:19:17.0914701Z test test_snapshot_topologies_open_read_only_and_deduplicate_same_logical_ids ... ok
+2026-10-26T04:19:17.0915289Z 
+2026-10-26T04:19:17.0915970Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+2026-10-26T04:19:17.0916489Z 
+2026-10-26T04:19:17.0920187Z [1m[92m     Running[0m tests/dictionary_verification.rs (target/debug/deps/dictionary_verification-f7d72aa108d9961a)
+2026-10-26T04:19:17.0937166Z 
+2026-10-26T04:19:17.0937327Z running 6 tests
+2026-10-26T04:19:17.5564589Z test test_unparseable_canonical_blocks_dependent_checks_but_model_fails ... ok
+2026-10-26T04:19:17.5747425Z test test_duplicate_json_keys_remain_a_strict_model_failure_and_block_draft_dependents ... ok
+2026-10-26T04:19:17.5866424Z test test_selected_schema_and_fks_run_without_canonical_prerequisites ... ok
+2026-10-26T04:19:17.6234494Z test test_all_reports_independent_simultaneous_schema_metadata_and_fk_failures ... ok
+2026-10-26T04:19:18.0686361Z test test_unsupported_header_versions_fail_before_unparseable_canonical_blocks ... ok
+2026-10-26T04:19:18.0831072Z test test_valid_store_passes_all_scopes_and_selective_reports_have_one_row ... ok
+2026-10-26T04:19:18.0831458Z 
+2026-10-26T04:19:18.0831739Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.99s
+2026-10-26T04:19:18.0832114Z 
+2026-10-26T04:19:18.0842226Z [1m[92m     Running[0m tests/fixture.rs (target/debug/deps/fixture-53607a2e087be1da)
+2026-10-26T04:19:18.0855922Z 
+2026-10-26T04:19:18.0856057Z running 0 tests
+2026-10-26T04:19:18.0858284Z 
+2026-10-26T04:19:18.0858681Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:18.0859214Z 
+2026-10-26T04:19:18.0859697Z [1m[92m     Running[0m tests/public_identity.rs (target/debug/deps/public_identity-d725478b3dc5b088)
+2026-10-26T04:19:18.0870562Z 
+2026-10-26T04:19:18.0870732Z running 1 test
+2026-10-26T04:19:18.0875080Z test external_consumer_can_hydrate_the_published_record_identity ... ok
+2026-10-26T04:19:18.0875476Z 
+2026-10-26T04:19:18.0875979Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:18.0876330Z 
+2026-10-26T04:19:18.0877350Z [1m[92m   Doc-tests[0m vlajmaji
+2026-10-26T04:19:18.4340321Z 
+2026-10-26T04:19:18.4340992Z running 1 test
+2026-10-26T04:19:18.4341872Z test crates/vlajmaji/src/../README.md - (line 36) - compile ... ok
+2026-10-26T04:19:18.4342345Z 
+2026-10-26T04:19:18.4342744Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:18.4343278Z 
+2026-10-26T04:19:18.4452873Z all doctests ran in 0.34s; merged doctests compilation took 0.33s
+2026-10-26T04:19:18.4468929Z [1m[92m   Doc-tests[0m vlajmaji_data_la_lojban
+2026-10-26T04:19:18.4640183Z 
+2026-10-26T04:19:18.4640590Z running 0 tests
+2026-10-26T04:19:18.4640789Z 
+2026-10-26T04:19:18.4641076Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:18.4641472Z 
+2026-10-26T04:19:18.4656184Z [1m[92m   Doc-tests[0m vlajmaji_data_lensisku_jbotci
+2026-10-26T04:19:18.4821382Z 
+2026-10-26T04:19:18.4821848Z running 0 tests
+2026-10-26T04:19:18.4822051Z 
+2026-10-26T04:19:18.4822355Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:18.4822707Z 
+2026-10-26T04:19:18.4833063Z [1m[92m   Doc-tests[0m vlajmaji_data_llg
+2026-10-26T04:19:18.4991755Z 
+2026-10-26T04:19:18.4992119Z running 0 tests
+2026-10-26T04:19:18.4992359Z 
+2026-10-26T04:19:18.4992764Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:18.4993299Z 
+2026-10-26T04:19:18.5003206Z [1m[92m   Doc-tests[0m vlajmaji_data_sutysisku
+2026-10-26T04:19:18.5155162Z 
+2026-10-26T04:19:18.5155527Z running 0 tests
+2026-10-26T04:19:18.5155946Z 
+2026-10-26T04:19:18.5156339Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:18.5157126Z 
+2026-10-26T04:19:18.5167096Z [1m[92m   Doc-tests[0m vlajmaji_lexicon
+2026-10-26T04:19:19.2190016Z 
+2026-10-26T04:19:19.2190623Z running 4 tests
+2026-10-26T04:19:19.2208424Z test crates/lexicon/src/lib.rs - Proposal::new (line 511) ... ok
+2026-10-26T04:19:19.2211706Z test crates/lexicon/src/lib.rs - SourceMetadata::new (line 140) ... ok
+2026-10-26T04:19:19.2212548Z test crates/lexicon/src/lib.rs - (line 8) ... ok
+2026-10-26T04:19:19.2213361Z test crates/lexicon/src/lib.rs - Lexicon::import_source (line 706) ... ok
+2026-10-26T04:19:19.2213846Z 
+2026-10-26T04:19:19.2214245Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:19.2214775Z 
+2026-10-26T04:19:19.2279261Z all doctests ran in 0.26s; merged doctests compilation took 0.25s
+2026-10-26T04:19:19.2295509Z [1m[92m   Doc-tests[0m vlajmaji_search
+2026-10-26T04:19:19.7141838Z 
+2026-10-26T04:19:19.7142448Z running 1 test
+2026-10-26T04:19:19.7155255Z test crates/search/src/lib.rs - (line 7) ... ok
+2026-10-26T04:19:19.7155646Z 
+2026-10-26T04:19:19.7156245Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:19.7156818Z 
+2026-10-26T04:19:19.7254924Z all doctests ran in 0.32s; merged doctests compilation took 0.30s
+2026-10-26T04:19:19.7270615Z [1m[92m   Doc-tests[0m vlajmaji_store
+2026-10-26T04:19:19.9593322Z 
+2026-10-26T04:19:19.9594047Z running 0 tests
+2026-10-26T04:19:19.9594355Z 
+2026-10-26T04:19:19.9594739Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:19.9595107Z 
+2026-10-26T04:19:19.9719176Z ##[group]Run cargo test --locked -p vlajmaji-search --no-default-features
+2026-10-26T04:19:19.9719747Z [36;1mcargo test --locked -p vlajmaji-search --no-default-features[0m
+2026-10-26T04:19:19.9788936Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:19:19.9789216Z env:
+2026-10-26T04:19:19.9789468Z   CARGO_TERM_COLOR: always
+2026-10-26T04:19:19.9789721Z   RUST_BACKTRACE: 1
+2026-10-26T04:19:19.9789961Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:19:19.9790235Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:19:19.9790469Z   CACHE_ON_FAILURE: false
+2026-10-26T04:19:19.9790713Z ##[endgroup]
+2026-10-26T04:19:20.0386658Z [1m[92m   Compiling[0m vlajmaji-lexicon v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+2026-10-26T04:19:23.1574031Z [1m[92m   Compiling[0m vlajmaji-store v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+2026-10-26T04:19:25.8298033Z [1m[92m   Compiling[0m vlajmaji-search v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+2026-10-26T04:19:31.5243697Z [1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 11.52s
+2026-10-26T04:19:31.5281012Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_search-65031480cc7128ae)
+2026-10-26T04:19:31.5294774Z 
+2026-10-26T04:19:31.5294915Z running 2 tests
+2026-10-26T04:19:31.5298341Z test dictionary::unverified_index_tests::test_required_lookup_indexes_keep_unique_ids_and_reject_duplicates ... ok
+2026-10-26T04:19:31.5299472Z test dictionary::unverified_index_tests::test_sql_candidate_must_exist_before_source_selection_can_skip_it ... ok
+2026-10-26T04:19:31.5300032Z 
+2026-10-26T04:19:31.5300394Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:31.5300914Z 
+2026-10-26T04:19:31.5301618Z [1m[92m     Running[0m tests/corpus_contract.rs (target/debug/deps/corpus_contract-8df2f7aae631ccab)
+2026-10-26T04:19:31.5316691Z 
+2026-10-26T04:19:31.5316887Z running 9 tests
+2026-10-26T04:19:31.5423901Z test disabled_morphology_is_a_typed_error_not_empty_success ... ok
+2026-10-26T04:19:31.5425011Z test compose_kind_is_validated_with_empty_and_nonempty_candidate_sets ... ok
+2026-10-26T04:19:31.5426470Z test contrast_exposes_p01_coordinate_explanations_without_word_total ... ok
+2026-10-26T04:19:31.5427399Z test exact_proposal_option_is_separate_complete_and_limited_after_combination ... ok
+2026-10-26T04:19:31.5493262Z test native_candidate_counts_are_stage_labelled ... ok
+2026-10-26T04:19:31.5513871Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok
+2026-10-26T04:19:31.5527385Z test scalar_spelling_distance_scans_and_preserves_record_multiplicity ... ok
+2026-10-26T04:19:31.5528150Z test search_engine_has_safe_summary_debug_output ... ok
+2026-10-26T04:19:31.5561268Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok
+2026-10-26T04:19:31.5561649Z 
+2026-10-26T04:19:31.5561937Z test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+2026-10-26T04:19:31.5562282Z 
+2026-10-26T04:19:31.5567715Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-e733a578f71d1618)
+2026-10-26T04:19:31.5584744Z 
+2026-10-26T04:19:31.5584902Z running 6 tests
+2026-10-26T04:19:32.0387403Z test hit_computations_follow_dictionary_metadata_order ... ok
+2026-10-26T04:19:32.0437250Z test pages_zero_totals_cursor_binding_and_stale_cursor_are_explicit ... ok
+2026-10-26T04:19:32.0517042Z test exact_farvi_matches_the_complete_occurrence_reference_after_reopen ... ok
+2026-10-26T04:19:32.0791158Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok
+2026-10-26T04:19:32.3500786Z test repeated_editorial_membership_is_preserved_but_hit_views_are_unique ... ok
+2026-10-26T04:19:33.5454499Z test test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids ... ok
+2026-10-26T04:19:33.5454907Z 
+2026-10-26T04:19:33.5455610Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.99s
+2026-10-26T04:19:33.5456149Z 
+2026-10-26T04:19:33.5462677Z [1m[92m     Running[0m tests/dictionary_topology.rs (target/debug/deps/dictionary_topology-862fe17814c8957d)
+2026-10-26T04:19:33.5479100Z 
+2026-10-26T04:19:33.5479256Z running 1 test
+2026-10-26T04:19:33.6949760Z test test_exact_profiled_matches_unprofiled_for_each_topology ... ok
+2026-10-26T04:19:33.6950300Z 
+2026-10-26T04:19:33.6950714Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+2026-10-26T04:19:33.6951260Z 
+2026-10-26T04:19:33.6956042Z [1m[92m   Doc-tests[0m vlajmaji_search
+2026-10-26T04:19:34.1351881Z 
+2026-10-26T04:19:34.1352388Z running 1 test
+2026-10-26T04:19:34.1364031Z test crates/search/src/lib.rs - (line 7) ... ok
+2026-10-26T04:19:34.1364475Z 
+2026-10-26T04:19:34.1364755Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:19:34.1365150Z 
+2026-10-26T04:19:34.1444739Z all doctests ran in 0.27s; merged doctests compilation took 0.26s
+2026-10-26T04:19:34.1526091Z ##[group]Run sudo apt-get update && sudo apt-get install -y clang libclang-dev
+2026-10-26T04:19:34.1526680Z [36;1msudo apt-get update && sudo apt-get install -y clang libclang-dev[0m
+2026-10-26T04:19:34.1592439Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:19:34.1592740Z env:
+2026-10-26T04:19:34.1592953Z   CARGO_TERM_COLOR: always
+2026-10-26T04:19:34.1593204Z   RUST_BACKTRACE: 1
+2026-10-26T04:19:34.1593449Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:19:34.1593708Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:19:34.1593935Z   CACHE_ON_FAILURE: false
+2026-10-26T04:19:34.1594170Z ##[endgroup]
+2026-10-26T04:19:34.2387339Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-26T04:19:34.2596352Z Get:6 https://packages.microsoft.com/ubuntu/26.04/prod resolute InRelease [3964 B]
+2026-10-26T04:19:34.3240630Z Get:7 https://packages.microsoft.com/ubuntu/26.04/prod resolute/main arm64 Packages [114 kB]
+2026-10-26T04:19:34.3414383Z Get:8 https://packages.microsoft.com/ubuntu/26.04/prod resolute/main armhf Packages [967 B]
+2026-10-26T04:19:34.3457282Z Get:9 https://packages.microsoft.com/ubuntu/26.04/prod resolute/main amd64 Packages [125 kB]
+2026-10-26T04:19:34.3489674Z Hit:2 http://azure.archive.ubuntu.com/ubuntu resolute InRelease
+2026-10-26T04:19:34.3521071Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+2026-10-26T04:19:34.3620048Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+2026-10-26T04:19:34.3701496Z Get:5 http://azure.archive.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+2026-10-26T04:19:34.3935322Z Get:10 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 Packages [746 kB]
+2026-10-26T04:19:34.3989321Z Get:11 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [176 kB]
+2026-10-26T04:19:34.4057762Z Get:12 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe amd64v3 Packages [334 kB]
+2026-10-26T04:19:34.4058922Z Get:13 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [110 kB]
+2026-10-26T04:19:34.4217345Z Get:14 http://azure.archive.ubuntu.com/ubuntu resolute-security/main amd64v3 Packages [607 kB]
+2026-10-26T04:19:34.4250285Z Get:15 http://azure.archive.ubuntu.com/ubuntu resolute-security/main Translation-en [141 kB]
+2026-10-26T04:19:34.4259457Z Get:16 http://azure.archive.ubuntu.com/ubuntu resolute-security/universe amd64v3 Packages [206 kB]
+2026-10-26T04:19:34.4294249Z Get:17 http://azure.archive.ubuntu.com/ubuntu resolute-security/universe Translation-en [67.7 kB]
+2026-10-26T04:19:40.5440438Z Fetched 3044 kB in 0s (8915 kB/s)
+2026-10-26T04:19:41.3249216Z Reading package lists...
+2026-10-26T04:19:41.3624167Z Reading package lists...
+2026-10-26T04:19:41.5787188Z Building dependency tree...
+2026-10-26T04:19:41.5794968Z Reading state information...
+2026-10-26T04:19:41.6950102Z Solving dependencies...
+2026-10-26T04:19:41.8391967Z The following additional packages will be installed:
+2026-10-26T04:19:41.8406369Z   libclang-21-dev
+2026-10-26T04:19:41.8664793Z The following NEW packages will be installed:
+2026-10-26T04:19:41.8677917Z   clang libclang-21-dev libclang-dev
+2026-10-26T04:19:41.8942414Z 0 upgraded, 3 newly installed, 0 to remove and 85 not upgraded.
+2026-10-26T04:19:41.8942863Z Need to get 30.4 MB of archives.
+2026-10-26T04:19:41.8943265Z After this operation, 300 MB of additional disk space will be used.
+2026-10-26T04:19:41.8943687Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-26T04:19:41.9318446Z Get:2 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 clang amd64 1:21.1.6-71 [3904 B]
+2026-10-26T04:19:41.9472967Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 libclang-21-dev amd64 1:21.1.8-6ubuntu1 [30.4 MB]
+2026-10-26T04:19:42.2420464Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 libclang-dev amd64 1:21.1.6-71 [3448 B]
+2026-10-26T04:19:42.5940172Z Fetched 30.4 MB in 0s (84.1 MB/s)
+2026-10-26T04:19:42.6203190Z Selecting previously unselected package clang.
+2026-10-26T04:19:42.6445010Z (Reading database ... 
+2026-10-26T04:19:42.6445435Z (Reading database ... 5%
+2026-10-26T04:19:42.6445963Z (Reading database ... 10%
+2026-10-26T04:19:42.6446476Z (Reading database ... 15%
+2026-10-26T04:19:42.6446760Z (Reading database ... 20%
+2026-10-26T04:19:42.6447100Z (Reading database ... 25%
+2026-10-26T04:19:42.6447601Z (Reading database ... 30%
+2026-10-26T04:19:42.6447912Z (Reading database ... 35%
+2026-10-26T04:19:42.6448190Z (Reading database ... 40%
+2026-10-26T04:19:42.6448473Z (Reading database ... 45%
+2026-10-26T04:19:42.6448868Z (Reading database ... 50%
+2026-10-26T04:19:42.6929539Z (Reading database ... 55%
+2026-10-26T04:19:42.7535235Z (Reading database ... 60%
+2026-10-26T04:19:42.7918630Z (Reading database ... 65%
+2026-10-26T04:19:42.8797306Z (Reading database ... 70%
+2026-10-26T04:19:42.9047127Z (Reading database ... 75%
+2026-10-26T04:19:42.9961286Z (Reading database ... 80%
+2026-10-26T04:19:43.1332279Z (Reading database ... 85%
+2026-10-26T04:19:43.3002796Z (Reading database ... 90%
+2026-10-26T04:19:43.4465317Z (Reading database ... 95%
+2026-10-26T04:19:43.4465874Z (Reading database ... 100%
+2026-10-26T04:19:43.4466324Z (Reading database ... 211065 files and directories currently installed.)
+2026-10-26T04:19:43.4525603Z Preparing to unpack .../clang_1%3a21.1.6-71_amd64v3.deb ...
+2026-10-26T04:19:43.5799430Z Unpacking clang (1:21.1.6-71) ...
+2026-10-26T04:19:44.1683224Z Selecting previously unselected package libclang-21-dev.
+2026-10-26T04:19:44.1843901Z Preparing to unpack .../libclang-21-dev_1%3a21.1.8-6ubuntu1_amd64v3.deb ...
+2026-10-26T04:19:44.2820421Z Unpacking libclang-21-dev (1:21.1.8-6ubuntu1) ...
+2026-10-26T04:19:46.1501014Z Selecting previously unselected package libclang-dev.
+2026-10-26T04:19:46.1661590Z Preparing to unpack .../libclang-dev_1%3a21.1.6-71_amd64v3.deb ...
+2026-10-26T04:19:46.2116381Z Unpacking libclang-dev (1:21.1.6-71) ...
+2026-10-26T04:19:46.2694719Z Setting up libclang-21-dev (1:21.1.8-6ubuntu1) ...
+2026-10-26T04:19:46.2716383Z Setting up clang (1:21.1.6-71) ...
+2026-10-26T04:19:46.3683888Z Setting up libclang-dev (1:21.1.6-71) ...
+2026-10-26T04:19:46.3710367Z Processing triggers for man-db (2.13.1-1build1) ...
+2026-10-26T04:19:46.3736209Z Not building database; man-db/auto-update is not 'true'.
+2026-10-26T04:19:47.3700462Z 
+2026-10-26T04:19:47.3701197Z Running kernel seems to be up-to-date.
+2026-10-26T04:19:47.3701501Z 
+2026-10-26T04:19:47.3701625Z Restarting services...
+2026-10-26T04:19:47.3812922Z 
+2026-10-26T04:19:47.3813591Z Service restarts being deferred:
+2026-10-26T04:19:47.3816597Z  systemctl restart hosted-compute-agent.service
+2026-10-26T04:19:47.3816994Z 
+2026-10-26T04:19:47.3818269Z No containers need to be restarted.
+2026-10-26T04:19:47.3818580Z 
+2026-10-26T04:19:47.3818906Z No user sessions are running outdated binaries.
+2026-10-26T04:19:47.3819293Z 
+2026-10-26T04:19:47.3819703Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-26T04:19:48.7548972Z ##[group]Run cargo run --locked --offline -p vlajmaji-cli -- data-pack fixture jbotci crates/data-lensisku-jbotci/data
+2026-10-26T04:19:48.7549819Z [36;1mcargo run --locked --offline -p vlajmaji-cli -- data-pack fixture jbotci crates/data-lensisku-jbotci/data[0m
+2026-10-26T04:19:48.7617989Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:19:48.7618313Z env:
+2026-10-26T04:19:48.7618543Z   CARGO_TERM_COLOR: always
+2026-10-26T04:19:48.7618809Z   RUST_BACKTRACE: 1
+2026-10-26T04:19:48.7619046Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:19:48.7619311Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:19:48.7619538Z   CACHE_ON_FAILURE: false
+2026-10-26T04:19:48.7619788Z ##[endgroup]
+2026-10-26T04:19:48.8344141Z [1m[92m    Finished[0m `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+2026-10-26T04:19:48.8373183Z [1m[92m     Running[0m `target/debug/vlajmaji data-pack fixture jbotci crates/data-lensisku-jbotci/data`
+2026-10-26T04:19:48.8456799Z {"operation":"data-pack-materialize","pack_id":"lensisku-jbotci","payload_kind":"synthetic","release_sha256":"d8e9dbdaeddf3a619a27ca77426e69e6bb79e864dc63c47794fcba892ec6f9ef","report":{"all_spellings":1,"contributors":0,"definition_count_matches":true,"diagnostics":{"unsupported_word_type":1},"eligible_spellings":1,"entry_count_matches":true,"excluded_occurrences":1,"field_counts":{"definition":3,"definition_id":2,"word":3,"word_type":3},"input_rows":3,"lexical_occurrences":2,"metadata_bytes":422,"metadata_sha256":"7f1483ceaee445ee0f7e0b0fc83cbaa2f5d13c6f7e4624f3b03eb57c1e631b8b","native_fields":11,"normalized_assertions":3,"raw_bytes":226,"raw_sha256":"242e838f4390bf394e10f0c1459d2bac8c6a01c072b753ce9fea33ee1209a360","revision":"0000000000000000000000000000000000000000","supplier_definition_count":3,"supplier_entry_count":1,"version":1,"word_types":{"gismu":2,"wiki":1}},"version":1}
+2026-10-26T04:19:48.8496040Z ##[group]Run cargo run --locked --offline -p vlajmaji-cli -- data-pack fixture llg crates/data-llg/data
+2026-10-26T04:19:48.8496761Z [36;1mcargo run --locked --offline -p vlajmaji-cli -- data-pack fixture llg crates/data-llg/data[0m
+2026-10-26T04:19:48.8564000Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:19:48.8564299Z env:
+2026-10-26T04:19:48.8564532Z   CARGO_TERM_COLOR: always
+2026-10-26T04:19:48.8564782Z   RUST_BACKTRACE: 1
+2026-10-26T04:19:48.8565012Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:19:48.8565536Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:19:48.8565890Z   CACHE_ON_FAILURE: false
+2026-10-26T04:19:48.8566125Z ##[endgroup]
+2026-10-26T04:19:48.9283731Z [1m[92m    Finished[0m `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+2026-10-26T04:19:48.9311221Z [1m[92m     Running[0m `target/debug/vlajmaji data-pack fixture llg crates/data-llg/data`
+2026-10-26T04:19:48.9417545Z {"operation":"data-pack-materialize","pack_id":"llg","payload_kind":"synthetic","release_sha256":"467b390d8d237482259e160659a0561c979578b0d99f3c44b2b72209732f9f83","report":{"all_spellings":2,"assigned_forms":3,"captures":4,"components":[{"assigned_forms":2,"component":"gismu","contexts":2,"declared_body_count":1,"declared_count_matches":true,"diagnostics":{"source_header":1},"excluded_assertions":1,"form_only_assertions":0,"header_claims":[{"count_matches":true,"declared_body_count":1,"occurrence":{"capture":{"namespace":"captured:llg:gismu","sha256":"30af4ce20e2309a04cac0b6a8a4f8af05046940e3fcef7bc2d8bd1b4522773be"},"locator":"1"}}],"headers":1,"input_bytes":195,"input_lines":2,"input_sha256":"30af4ce20e2309a04cac0b6a8a4f8af05046940e3fcef7bc2d8bd1b4522773be","lexical_assertions":1,"native_fields":8,"observed_body_count":1,"unsupported_rows":0},{"assigned_forms":0,"component":"cmavo","contexts":1,"declared_body_count":1,"declared_count_matches":true,"diagnostics":{"source_header":1},"excluded_assertions":1,"form_only_assertions":0,"header_claims":[{"count_matches":true,"declared_body_count":1,"occurrence":{"capture":{"namespace":"captured:llg:cmavo","sha256":"b913f30055f7299d64129c2da46f504c89f37ef5208f254389af60b37d3a7261"},"locator":"1"}}],"headers":1,"input_bytes":113,"input_lines":2,"input_sha256":"b913f30055f7299d64129c2da46f504c89f37ef5208f254389af60b37d3a7261","lexical_assertions":1,"native_fields":5,"observed_body_count":1,"unsupported_rows":0},{"assigned_forms":1,"component":"rafsi","contexts":1,"declared_body_count":null,"declared_count_matches":null,"diagnostics":{},"excluded_assertions":1,"form_only_assertions":1,"header_claims":[],"headers":0,"input_bytes":18,"input_lines":1,"input_sha256":"1fe380c73539440359596ae97e48a1b3b62b1460bf7319e4252ac39d87bb1c79","lexical_assertions":0,"native_fields":3,"observed_body_count":1,"unsupported_rows":0}],"contexts":4,"diagnostics":{"source_header":2},"eligible_spellings":2,"entries":4,"excluded_assertions":3,"extensions":0,"frequency_extensions":0,"lexical_assertions":2,"native_fields":16,"occurrences":5,"teaching_code_extensions":0,"version":1},"version":1}
+2026-10-26T04:19:48.9459219Z ##[group]Run cargo run --locked --offline -p vlajmaji-cli -- data-pack fixture la-lojban crates/data-la-lojban/data
+2026-10-26T04:19:48.9460027Z [36;1mcargo run --locked --offline -p vlajmaji-cli -- data-pack fixture la-lojban crates/data-la-lojban/data[0m
+2026-10-26T04:19:48.9538246Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:19:48.9538609Z env:
+2026-10-26T04:19:48.9538842Z   CARGO_TERM_COLOR: always
+2026-10-26T04:19:48.9539098Z   RUST_BACKTRACE: 1
+2026-10-26T04:19:48.9539370Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:19:48.9539638Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:19:48.9539865Z   CACHE_ON_FAILURE: false
+2026-10-26T04:19:48.9540114Z ##[endgroup]
+2026-10-26T04:19:49.0275965Z [1m[92m    Finished[0m `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+2026-10-26T04:19:49.0307092Z [1m[92m     Running[0m `target/debug/vlajmaji data-pack fixture la-lojban crates/data-la-lojban/data`
+2026-10-26T04:19:49.0391605Z {"operation":"data-pack-materialize","pack_id":"la-lojban","payload_kind":"synthetic","release_sha256":"d950b071757ba099a8fb88c4dd8e61cbca269d9042354963b141d3430988c25b","report":{"all_spellings":1,"contributors":0,"diagnostics":{"unsupported_word_type":1},"eligible_spellings":1,"excluded_occurrences":1,"field_counts":{"definition":3,"definition_id":2,"word":3,"word_type":3},"input_rows":3,"lexical_occurrences":2,"native_fields":11,"normalized_assertions":3,"raw_bytes":226,"raw_sha256":"242e838f4390bf394e10f0c1459d2bac8c6a01c072b753ce9fea33ee1209a360","revision":"0000000000000000000000000000000000000000","version":1,"word_types":{"gismu":2,"wiki":1}},"version":1}
+2026-10-26T04:19:49.0431644Z ##[group]Run cargo run --locked --offline -p vlajmaji-cli -- data-pack fixture sutysisku crates/data-sutysisku/data
+2026-10-26T04:19:49.0432420Z [36;1mcargo run --locked --offline -p vlajmaji-cli -- data-pack fixture sutysisku crates/data-sutysisku/data[0m
+2026-10-26T04:19:49.0498713Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:19:49.0498986Z env:
+2026-10-26T04:19:49.0499215Z   CARGO_TERM_COLOR: always
+2026-10-26T04:19:49.0499466Z   RUST_BACKTRACE: 1
+2026-10-26T04:19:49.0499706Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:19:49.0499972Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:19:49.0500209Z   CACHE_ON_FAILURE: false
+2026-10-26T04:19:49.0500452Z ##[endgroup]
+2026-10-26T04:19:49.1208557Z [1m[92m    Finished[0m `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+2026-10-26T04:19:49.1238780Z [1m[92m     Running[0m `target/debug/vlajmaji data-pack fixture sutysisku crates/data-sutysisku/data`
+2026-10-26T04:19:49.1309650Z {"operation":"data-pack-materialize","pack_id":"sutysisku","payload_kind":"synthetic","release_sha256":"c3ce069c8fe8a4a3447bff95576ffb1150c00c7afc1537633907d7b3213fe150","report":{"all_spellings":2,"contexts":1,"diagnostics":{"invalid_definition":1,"unsupported_word_type":1},"eligible_spellings":1,"excluded_occurrences":1,"extensions":0,"field_counts":{"$key":2,"d":2,"n":1,"r":1,"t":2},"input_rows":2,"lexical_occurrences":1,"native_child_fields":6,"native_fields":8,"non_object_rows":0,"normalized_assertions":2,"raw_bytes":92,"raw_sha256":"2bdbae0112fe7d54bc97f13ca7feadceaec76d17780c73cbc493c5aaf953f4a7","reported_forms":2,"revision":"0000000000000000000000000000000000000000","root_keys":2,"version":1,"word_types":{"gismu":1,"wiki":1}},"version":1}
+2026-10-26T04:19:49.1348005Z ##[group]Run cargo test --workspace --all-features --locked
+2026-10-26T04:19:49.1348448Z [36;1mcargo test --workspace --all-features --locked[0m
+2026-10-26T04:19:49.1419030Z shell: /usr/bin/bash -e {0}
+2026-10-26T04:19:49.1419378Z env:
+2026-10-26T04:19:49.1419697Z   CARGO_TERM_COLOR: always
+2026-10-26T04:19:49.1420053Z   RUST_BACKTRACE: 1
+2026-10-26T04:19:49.1420371Z   CARGO_HOME: /home/runner/.cargo
+2026-10-26T04:19:49.1420743Z   CARGO_INCREMENTAL: 0
+2026-10-26T04:19:49.1421056Z   CACHE_ON_FAILURE: false
+2026-10-26T04:19:49.1421372Z ##[endgroup]
+2026-10-26T04:19:49.4606115Z [1m[92m   Compiling[0m vlajmaji-lexicon v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+2026-10-26T04:19:53.1089388Z [1m[92m   Compiling[0m vlajmaji-store v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+2026-10-26T04:19:53.1091215Z [1m[92m   Compiling[0m vlajmaji-data-sutysisku v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku)
+2026-10-26T04:19:53.1092776Z [1m[92m   Compiling[0m vlajmaji-data-la-lojban v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban)
+2026-10-26T04:19:53.1568955Z [1m[92m   Compiling[0m vlajmaji-data-lensisku-jbotci v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci)
+2026-10-26T04:19:53.1638053Z [1m[92m   Compiling[0m vlajmaji-data-llg v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg)
+2026-10-26T04:19:56.1928190Z [1m[92m   Compiling[0m vlajmaji-search v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+2026-10-26T04:19:59.9406519Z [1m[92m   Compiling[0m vlajmaji v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji)
+2026-10-26T04:20:03.9807973Z [1m[92m   Compiling[0m vlajmaji-cli v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli)
+2026-10-26T04:20:36.4395844Z [1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 47.27s
+2026-10-26T04:20:36.5488032Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji-36f3bae367192ac8)
+2026-10-26T04:20:36.5501457Z 
+2026-10-26T04:20:36.5501658Z running 0 tests
+2026-10-26T04:20:36.5501858Z 
+2026-10-26T04:20:36.5502546Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:36.5502919Z 
+2026-10-26T04:20:36.5504982Z [1m[92m     Running[0m unittests src/main.rs (target/debug/deps/vlajmaji-703f0ee71acaeba1)
+2026-10-26T04:20:36.6572945Z 
+2026-10-26T04:20:36.6573602Z running 4 tests
+2026-10-26T04:20:36.6577821Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok
+2026-10-26T04:20:36.6579194Z test collection_manifest_tests::test_manifest_validation_freezes_relative_paths_without_reading_them ... ok
+2026-10-26T04:20:36.6580555Z test default_path_tests::test_marker_exists_distinguishes_absence_and_propagates_metadata_errors ... ok
+2026-10-26T04:20:36.6581965Z test collection_manifest_tests::test_manifest_duplicate_keys_rejects_escaped_equivalents_recursively ... ok
+2026-10-26T04:20:36.6582771Z 
+2026-10-26T04:20:36.6583310Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:36.6584005Z 
+2026-10-26T04:20:36.6592201Z [1m[92m     Running[0m tests/cli_contract.rs (target/debug/deps/cli_contract-c910d4e8ff792621)
+2026-10-26T04:20:36.6604987Z 
+2026-10-26T04:20:36.6605135Z running 2 tests
+2026-10-26T04:20:36.6747386Z test help_and_version_are_available ... ok
+2026-10-26T04:20:36.7524799Z test valid_json_limit_zero_and_failures_are_inspectable ... ok
+2026-10-26T04:20:36.7525254Z 
+2026-10-26T04:20:36.7527753Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+2026-10-26T04:20:36.7528365Z 
+2026-10-26T04:20:36.7529434Z [1m[92m     Running[0m tests/collections_contract.rs (target/debug/deps/collections_contract-28ba916d90fd1ef1)
+2026-10-26T04:20:36.7573307Z 
+2026-10-26T04:20:36.7573481Z running 11 tests
+2026-10-26T04:20:36.7664979Z test test_collections_cli_install_help_explains_selection_and_update_boundary ... ok
+2026-10-26T04:20:36.7668945Z test test_collections_cli_list_absent_catalogue_expect_typed_error ... ok
+2026-10-26T04:20:36.7759999Z test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok
+2026-10-26T04:20:36.7907246Z test test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly ... ok
+2026-10-26T04:20:36.8847520Z test test_collections_cli_lost_install_response_expect_committed_generation_and_query ... ok
+2026-10-26T04:20:36.9247520Z test test_collections_cli_register_install_list_inspect_expect_structured_reports ... ok
+2026-10-26T04:20:36.9587475Z test test_collections_cli_runtime_validation_expect_versioned_report_and_clap_boundary ... ok
+2026-10-26T04:20:37.0593361Z test test_collections_cli_relative_paths_are_frozen_across_working_directories ... ok
+2026-10-26T04:20:37.1287250Z test test_collections_cli_tampered_repeat_expect_prior_generation_unchanged ... ok
+2026-10-26T04:20:37.1946512Z test test_collections_cli_all_raw_inputs_expect_four_pack_install ... ok
+2026-10-26T04:20:37.3914985Z test test_collections_cli_opposite_pack_orders_expect_same_content_and_distinct_generations ... ok
+2026-10-26T04:20:37.3915639Z 
+2026-10-26T04:20:37.3916173Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.63s
+2026-10-26T04:20:37.3916653Z 
+2026-10-26T04:20:37.3932321Z [1m[92m     Running[0m tests/data_packs.rs (target/debug/deps/data_packs-1d266137ad472a2c)
+2026-10-26T04:20:37.3974841Z 
+2026-10-26T04:20:37.3975031Z running 7 tests
+2026-10-26T04:20:37.4207600Z test test_la_lojban_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+2026-10-26T04:20:37.4415845Z test test_llg_synthetic_fixture_uses_importer_and_refuses_occupied_output ... ok
+2026-10-26T04:20:37.4427031Z test test_occupied_destination_is_preserved_and_bad_pins_create_no_output ... ok
+2026-10-26T04:20:37.4486371Z test test_la_materializer_rejects_invalid_inputs_and_preserves_occupied_outputs ... ok
+2026-10-26T04:20:37.4557648Z test test_synthetic_fixture_uses_the_importer_and_emits_a_loadable_pack ... ok
+2026-10-26T04:20:37.4612586Z test test_sutysisku_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+2026-10-26T04:20:37.5580570Z test test_four_synthetic_packs_compose_for_sql_selection_pages_and_references ... ok
+2026-10-26T04:20:37.5581172Z 
+2026-10-26T04:20:37.5581561Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+2026-10-26T04:20:37.5582087Z 
+2026-10-26T04:20:37.5594693Z [1m[92m     Running[0m tests/default_store.rs (target/debug/deps/default_store-bd0e04f7c1a42e67)
+2026-10-26T04:20:37.5640159Z 
+2026-10-26T04:20:37.5640315Z running 6 tests
+2026-10-26T04:20:37.5917577Z test test_default_info_detects_ambiguous_and_corrupt_grouped_markers_without_fallback ... ok
+2026-10-26T04:20:37.6487239Z test test_optional_store_positionals_are_visible_in_help_and_legacy_info_stays_legacy ... ok
+2026-10-26T04:20:38.0138395Z test test_default_build_input_errors_and_occupied_leaves_have_bounded_side_effects ... ok
+2026-10-26T04:20:38.0277519Z test test_home_fallback_explicit_override_and_missing_default_are_truthful ... ok
+2026-10-26T04:20:38.2866387Z test test_non_utf8_environment_is_preserved_and_build_fails_before_mutation ... ok
+2026-10-26T04:20:38.4290047Z test test_xdg_default_build_query_stdin_and_info_match_explicit_store ... ok
+2026-10-26T04:20:38.4290613Z 
+2026-10-26T04:20:38.4291026Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.86s
+2026-10-26T04:20:38.4291555Z 
+2026-10-26T04:20:38.4312588Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-67e7ff02c4a4a889)
+2026-10-26T04:20:38.4326541Z 
+2026-10-26T04:20:38.4326708Z running 1 test
+2026-10-26T04:20:38.8130562Z test dictionary_commands_work_and_structured_errors_use_the_envelope ... ok
+2026-10-26T04:20:38.8131087Z 
+2026-10-26T04:20:38.8131818Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.38s
+2026-10-26T04:20:38.8132353Z 
+2026-10-26T04:20:38.8136183Z [1m[92m     Running[0m tests/jbotci_contract.rs (target/debug/deps/jbotci_contract-1813130953b3e4a2)
+2026-10-26T04:20:38.8147067Z 
+2026-10-26T04:20:38.8147212Z running 1 test
+2026-10-26T04:20:38.8922616Z test import_check_are_pinned_non_destructive_and_structured_on_failure ... ok
+2026-10-26T04:20:38.8923080Z 
+2026-10-26T04:20:38.8923456Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+2026-10-26T04:20:38.8923922Z 
+2026-10-26T04:20:38.8925085Z [1m[92m     Running[0m tests/jbotci_pipeline.rs (target/debug/deps/jbotci_pipeline-9627d82a5b97c7b2)
+2026-10-26T04:20:38.8935916Z 
+2026-10-26T04:20:38.8936086Z running 7 tests
+2026-10-26T04:20:38.8986706Z test concurrent_scratch_allocations_are_distinct_and_joined ... ok
+2026-10-26T04:20:39.0818264Z test report_creation_races_preserve_caller_bytes_and_skip_importer ... ok
+2026-10-26T04:20:39.0843375Z test scratch_retries_occupied_candidates_without_touching_them ... ok
+2026-10-26T04:20:39.2652109Z test make_forwards_metacharacter_paths_and_requires_explicit_cargo_target ... ok
+2026-10-26T04:20:39.2702503Z test test_pin_manifest_byte_policy_counts_forbidden_bytes_and_fails_closed ... ok
+2026-10-26T04:20:39.2816577Z test malformed_manifest_and_download_failure_leave_no_completion_marker ... ok
+2026-10-26T04:20:39.4325073Z test pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows ... ok
+2026-10-26T04:20:39.4325840Z 
+2026-10-26T04:20:39.4326164Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.54s
+2026-10-26T04:20:39.4326492Z 
+2026-10-26T04:20:39.4329194Z [1m[92m     Running[0m tests/verify_contract.rs (target/debug/deps/verify_contract-6dbd88afe917ea6c)
+2026-10-26T04:20:39.4369954Z 
+2026-10-26T04:20:39.4370194Z running 2 tests
+2026-10-26T04:20:39.6914487Z test test_verify_cli_explicit_path_overrides_invalid_default_environment ... ok
+2026-10-26T04:20:40.0306544Z test test_verify_cli_success_failure_envelope_default_help_and_no_create ... ok
+2026-10-26T04:20:40.0307269Z 
+2026-10-26T04:20:40.0307655Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.59s
+2026-10-26T04:20:40.0308666Z 
+2026-10-26T04:20:40.0323123Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_la_lojban-8020c9d670e66f63)
+2026-10-26T04:20:40.0333856Z 
+2026-10-26T04:20:40.0333991Z running 0 tests
+2026-10-26T04:20:40.0334210Z 
+2026-10-26T04:20:40.0334574Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:40.0334911Z 
+2026-10-26T04:20:40.0337316Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_lensisku_jbotci-4bebc94b44e2245c)
+2026-10-26T04:20:40.0347599Z 
+2026-10-26T04:20:40.0347745Z running 0 tests
+2026-10-26T04:20:40.0347948Z 
+2026-10-26T04:20:40.0348468Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:40.0349026Z 
+2026-10-26T04:20:40.0350450Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_llg-77d7290c0389449e)
+2026-10-26T04:20:40.0360301Z 
+2026-10-26T04:20:40.0360452Z running 0 tests
+2026-10-26T04:20:40.0360862Z 
+2026-10-26T04:20:40.0361271Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:40.0361795Z 
+2026-10-26T04:20:40.0363142Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_sutysisku-e55fb771270ae316)
+2026-10-26T04:20:40.0372848Z 
+2026-10-26T04:20:40.0372994Z running 0 tests
+2026-10-26T04:20:40.0373194Z 
+2026-10-26T04:20:40.0373589Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:40.0374088Z 
+2026-10-26T04:20:40.0375426Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_lexicon-e4ee6be92873f70a)
+2026-10-26T04:20:40.0385051Z 
+2026-10-26T04:20:40.0385190Z running 1 test
+2026-10-26T04:20:40.0388180Z test pack::tests::composite_identity_key_is_unambiguous_when_parts_contain_delimiters ... ok
+2026-10-26T04:20:40.0388572Z 
+2026-10-26T04:20:40.0388824Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:40.0389348Z 
+2026-10-26T04:20:40.0390129Z [1m[92m     Running[0m tests/contract.rs (target/debug/deps/contract-b5d8b78ef0955b98)
+2026-10-26T04:20:40.0401433Z 
+2026-10-26T04:20:40.0401700Z running 8 tests
+2026-10-26T04:20:40.0414851Z test full_corpus_import_reconciles_all_input_populations ... ignored, requires RELOJBAN_RESEARCH_ROOT pointing at the preserved research checkout
+2026-10-26T04:20:40.0415657Z test corpus_sources_preserve_form_roles ... ok
+2026-10-26T04:20:40.0416384Z test exact_queries_keep_source_rows_and_proposals_separate ... ok
+2026-10-26T04:20:40.0416864Z test proposals_borrowed_view_exposes_all_entries_without_captured_lookup ... ok
+2026-10-26T04:20:40.0417346Z test import_is_atomic_and_source_identity_is_byte_exact ... ok
+2026-10-26T04:20:40.0417798Z test see_also_parser_uses_explicit_marker_and_excludes_tex_math ... ok
+2026-10-26T04:20:40.0418265Z test proposal_identity_is_unambiguous_and_archive_validation_is_typed ... ok
+2026-10-26T04:20:40.0423160Z test archive_roundtrip_preserves_raw_presence_unknowns_and_large_numbers ... ok
+2026-10-26T04:20:40.0423525Z 
+2026-10-26T04:20:40.0423785Z test result: ok. 7 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:40.0424145Z 
+2026-10-26T04:20:40.0426063Z [1m[92m     Running[0m tests/data_packs.rs (target/debug/deps/data_packs-3f9419ac99a248e7)
+2026-10-26T04:20:40.0437870Z 
+2026-10-26T04:20:40.0438013Z running 11 tests
+2026-10-26T04:20:40.0471272Z test composition_rejects_conflicting_capture_contributor_and_assertion_bodies ... ok
+2026-10-26T04:20:40.0482497Z test composition_preserves_distinct_distributions_and_exact_dedup ... ok
+2026-10-26T04:20:40.0483656Z test composition_rejects_conflicting_source_and_release_identities ... ok
+2026-10-26T04:20:40.0484868Z test empty_composition_is_the_empty_validated_dictionary ... ok
+2026-10-26T04:20:40.0517095Z test composition_preserves_ordered_extension_max_multiplicities ... ok
+2026-10-26T04:20:40.0548687Z test seal_rejects_wrong_pack_length_hash_version_inventory_and_bad_wire ... ok
+2026-10-26T04:20:40.0557049Z test seal_roundtrip_is_strict_and_inventory_ordered ... ok
+2026-10-26T04:20:40.0558681Z test test_unverified_composition_rejects_conflicting_alias_identity_and_deduplicates_equal_alias ... ok
+2026-10-26T04:20:40.0559937Z test test_unverified_composition_rejects_merged_active_selector_collision ... ok
+2026-10-26T04:20:40.0567144Z test test_unverified_composition_keeps_graph_validation_explicit_and_deduplicates_inputs ... ok
+2026-10-26T04:20:40.0834799Z test complete_typed_model_composes_without_dropping_any_metadata_class ... ok
+2026-10-26T04:20:40.0835315Z 
+2026-10-26T04:20:40.0835829Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+2026-10-26T04:20:40.0836412Z 
+2026-10-26T04:20:40.0840496Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-861c3c76fe5588f1)
+2026-10-26T04:20:40.0854466Z 
+2026-10-26T04:20:40.0854628Z running 11 tests
+2026-10-26T04:20:40.1317245Z test complete_fixture_keeps_native_presence_and_release_absence_distinct ... ok
+2026-10-26T04:20:40.1426814Z test constructor_rejects_raw_reference_accounting_and_provenance_failures ... ok
+2026-10-26T04:20:40.1456739Z test available_empty_release_is_distinct_from_unavailable_catalogue_and_bad_refs_reject ... ok
+2026-10-26T04:20:40.1486205Z test empty_document_is_valid_and_serde_revalidates ... ok
+2026-10-26T04:20:40.2067185Z test complete_public_fixture_roundtrips_all_source_and_metadata_rows ... ok
+2026-10-26T04:20:40.2637366Z test known_missing_capture_can_retain_unverifiable_projection_with_unknown_counts ... ok
+2026-10-26T04:20:40.2897451Z test declared_validation_categories_are_emitted_and_malformed_parent_paths_do_not_panic ... ok
+2026-10-26T04:20:40.2899428Z test raw_values_ids_and_duplicate_envelope_keys_are_checked ... ok
+2026-10-26T04:20:40.2974127Z test direct_serde_is_strict_and_identity_adapters_are_exact ... ok
+2026-10-26T04:20:40.3084185Z test named_reference_and_provenance_failures_use_declared_categories ... ok
+2026-10-26T04:20:40.5184307Z test etymology_components_accept_each_declared_local_reference_role ... ok
+2026-10-26T04:20:40.5184891Z 
+2026-10-26T04:20:40.5185281Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.43s
+2026-10-26T04:20:40.5186022Z 
+2026-10-26T04:20:40.5191948Z [1m[92m     Running[0m tests/jbotci_contract.rs (target/debug/deps/jbotci_contract-886abfbeae440c6a)
+2026-10-26T04:20:40.5207046Z 
+2026-10-26T04:20:40.5207214Z running 12 tests
+2026-10-26T04:20:40.5230900Z test changed_pinned_raw_bytes_change_capture_and_row_ids_and_wrong_hash_fails ... ok
+2026-10-26T04:20:40.5231904Z test invalid_pins_utf8_and_json_root_return_typed_failures ... ok
+2026-10-26T04:20:40.5236456Z test malformed_optional_shapes_are_diagnostic_without_excluding_valid_rows ... ok
+2026-10-26T04:20:40.5237572Z test duplicate_fields_nested_values_and_nonobjects_remain_raw_and_excluded ... ok
+2026-10-26T04:20:40.5259239Z test metadata_duplicates_and_unsupported_shapes_are_typed_failures ... ok
+2026-10-26T04:20:40.5260685Z test all_supported_classes_and_cross_column_forms_remain_distinct ... ok
+2026-10-26T04:20:40.5261531Z test missing_null_and_empty_critical_values_remain_distinguishable ... ok
+2026-10-26T04:20:40.5262449Z test repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters ... ok
+2026-10-26T04:20:40.5263398Z test metadata_numeric_values_follow_json_validity_before_subset_errors ... ok
+2026-10-26T04:20:40.5264294Z test optional_selmaho_and_definition_id_shapes_are_diagnostic_without_loss ... ok
+2026-10-26T04:20:40.5265141Z test non_display_username_keeps_hashed_attribution_with_a_diagnostic ... ok
+2026-10-26T04:20:40.5296916Z test revision_is_release_provenance_while_occurrence_identity_is_byte_stable ... ok
+2026-10-26T04:20:40.5297495Z 
+2026-10-26T04:20:40.5297904Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-10-26T04:20:40.5298893Z 
+2026-10-26T04:20:40.5301183Z [1m[92m     Running[0m tests/la_lojban_import.rs (target/debug/deps/la_lojban_import-065940ced5904b02)
+2026-10-26T04:20:40.5314897Z 
+2026-10-26T04:20:40.5315082Z running 4 tests
+2026-10-26T04:20:40.5326983Z test test_la_import_rejects_invalid_utf8_and_malformed_json ... ok
+2026-10-26T04:20:40.5327749Z test test_la_import_rejects_mismatched_hash_and_invalid_options ... ok
+2026-10-26T04:20:40.5330345Z test test_la_import_preserves_rows_fields_attribution_and_exclusions ... ok
+2026-10-26T04:20:40.5336937Z test test_la_import_revision_changes_release_but_not_capture_or_occurrence_identity ... ok
+2026-10-26T04:20:40.5337520Z 
+2026-10-26T04:20:40.5337832Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:40.5338213Z 
+2026-10-26T04:20:40.5340343Z [1m[92m     Running[0m tests/llg_import.rs (target/debug/deps/llg_import-b0c950df304e58ef)
+2026-10-26T04:20:40.5351887Z 
+2026-10-26T04:20:40.5352013Z running 8 tests
+2026-10-26T04:20:40.5373166Z test test_import_llg_lists_absent_header_has_no_claim_or_conflict ... ok
+2026-10-26T04:20:40.5374330Z test test_import_llg_lists_excludes_malformed_rows_and_keeps_optional_tail_absent ... ok
+2026-10-26T04:20:40.5375227Z test test_import_llg_lists_preserves_captures_rows_and_evidence ... ok
+2026-10-26T04:20:40.5381319Z test test_import_llg_lists_keeps_duplicate_rows_and_excludes_conflicting_classes ... ok
+2026-10-26T04:20:40.5382381Z test test_import_llg_lists_rejects_bad_pins_and_invalid_utf8 ... ok
+2026-10-26T04:20:40.5390292Z test test_import_llg_lists_reports_count_mismatch_without_dropping_rows ... ok
+2026-10-26T04:20:40.5403162Z test test_import_llg_lists_retains_unsupported_rows_and_terminal_cr ... ok
+2026-10-26T04:20:40.5411252Z test test_import_llg_lists_preserves_each_header_claim_and_mismatch_occurrence ... ok
+2026-10-26T04:20:40.5411618Z 
+2026-10-26T04:20:40.5411868Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-10-26T04:20:40.5412213Z 
+2026-10-26T04:20:40.5414623Z [1m[92m     Running[0m tests/registry_contract.rs (target/debug/deps/registry_contract-5ed21b50f1e62ffc)
+2026-10-26T04:20:40.5426208Z 
+2026-10-26T04:20:40.5426390Z running 10 tests
+2026-10-26T04:20:40.5456675Z test attribution_requires_explicit_legacy_binding_but_keeps_empty_metadata ... ok
+2026-10-26T04:20:40.5457611Z test document_validation_rejects_duplicate_roles_and_invalid_values ... ok
+2026-10-26T04:20:40.5476111Z test aliases_rename_retire_and_reuse_without_losing_history ... ok
+2026-10-26T04:20:40.5477420Z test aliases_cannot_shadow_another_sources_current_abbreviation ... ok
+2026-10-26T04:20:40.5478347Z test ids_and_registry_document_are_validated_and_role_distinct ... ok
+2026-10-26T04:20:40.5479344Z test attribution_preserves_five_occurrences_roles_raw_bytes_and_archive ... ok
+2026-10-26T04:20:40.5480345Z test phantom_occurrence_binding_is_rejected_against_the_supplied_lexicon ... ok
+2026-10-26T04:20:40.5485250Z test test_unverified_registry_selector_rejects_duplicate_source_identity ... ok
+2026-10-26T04:20:40.5491001Z test invalid_documents_updates_and_deserialization_cannot_bypass_invariants ... ok
+2026-10-26T04:20:40.5516378Z test registry_identity_wires_reject_unknown_nested_fields_without_tightening_legacy_ids ... ok
+2026-10-26T04:20:40.5516766Z 
+2026-10-26T04:20:40.5517028Z test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+2026-10-26T04:20:40.5517392Z 
+2026-10-26T04:20:40.5519792Z [1m[92m     Running[0m tests/sutysisku_import.rs (target/debug/deps/sutysisku_import-874c96dff44b68e9)
+2026-10-26T04:20:40.5531272Z 
+2026-10-26T04:20:40.5531431Z running 4 tests
+2026-10-26T04:20:40.5538850Z test test_import_sutysisku_export_invalid_pin_and_root_inputs_return_typed_errors ... ok
+2026-10-26T04:20:40.5542559Z test test_import_sutysisku_export_preserves_repeated_and_long_source_reported_forms ... ok
+2026-10-26T04:20:40.5547681Z test test_import_sutysisku_export_literal_census_and_raw_projection_are_preserved ... ok
+2026-10-26T04:20:40.5571267Z test test_import_sutysisku_export_revision_changes_provenance_not_capture_identity ... ok
+2026-10-26T04:20:40.5571676Z 
+2026-10-26T04:20:40.5571937Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:40.5572288Z 
+2026-10-26T04:20:40.5574742Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_search-21909d2948d49345)
+2026-10-26T04:20:40.5615605Z 
+2026-10-26T04:20:40.5615902Z running 3 tests
+2026-10-26T04:20:40.5619149Z test component_semantics::component_membership_is_an_exact_ordered_subsequence_with_multiplicity ... ok
+2026-10-26T04:20:40.5620366Z test dictionary::unverified_index_tests::test_required_lookup_indexes_keep_unique_ids_and_reject_duplicates ... ok
+2026-10-26T04:20:40.5621426Z test dictionary::unverified_index_tests::test_sql_candidate_must_exist_before_source_selection_can_skip_it ... ok
+2026-10-26T04:20:40.5621834Z 
+2026-10-26T04:20:40.5622105Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:40.5622457Z 
+2026-10-26T04:20:40.5630991Z [1m[92m     Running[0m tests/corpus_contract.rs (target/debug/deps/corpus_contract-d7c8fadfe7e3f2b4)
+2026-10-26T04:20:40.5675106Z 
+2026-10-26T04:20:40.5675281Z running 8 tests
+2026-10-26T04:20:40.5778347Z test compose_kind_is_validated_with_empty_and_nonempty_candidate_sets ... ok
+2026-10-26T04:20:40.5782008Z test contrast_exposes_p01_coordinate_explanations_without_word_total ... ok
+2026-10-26T04:20:40.5806410Z test native_candidate_counts_are_stage_labelled ... ok
+2026-10-26T04:20:40.5820735Z test exact_proposal_option_is_separate_complete_and_limited_after_combination ... ok
+2026-10-26T04:20:40.5866543Z test search_engine_has_safe_summary_debug_output ... ok
+2026-10-26T04:20:40.5883893Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok
+2026-10-26T04:20:40.5895997Z test scalar_spelling_distance_scans_and_preserves_record_multiplicity ... ok
+2026-10-26T04:20:40.5898518Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok
+2026-10-26T04:20:40.5898999Z 
+2026-10-26T04:20:40.5899366Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+2026-10-26T04:20:40.5899873Z 
+2026-10-26T04:20:40.5911125Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-ceeb3647979b248b)
+2026-10-26T04:20:40.5972192Z 
+2026-10-26T04:20:40.5972471Z running 6 tests
+2026-10-26T04:20:41.0277367Z test exact_farvi_matches_the_complete_occurrence_reference_after_reopen ... ok
+2026-10-26T04:20:41.0687521Z test hit_computations_follow_dictionary_metadata_order ... ok
+2026-10-26T04:20:41.0737411Z test pages_zero_totals_cursor_binding_and_stale_cursor_are_explicit ... ok
+2026-10-26T04:20:41.0958212Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok
+2026-10-26T04:20:41.3393734Z test repeated_editorial_membership_is_preserved_but_hit_views_are_unique ... ok
+2026-10-26T04:20:42.5506759Z test test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids ... ok
+2026-10-26T04:20:42.5508655Z 
+2026-10-26T04:20:42.5508973Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.95s
+2026-10-26T04:20:42.5536884Z [1m[92m     Running[0m tests/dictionary_topology.rs (target/debug/deps/dictionary_topology-2e0b8156cdd7d186)
+2026-10-26T04:20:42.5537365Z 
+2026-10-26T04:20:42.5597495Z 
+2026-10-26T04:20:42.5597675Z running 1 test
+2026-10-26T04:20:42.7087426Z test test_exact_profiled_matches_unprofiled_for_each_topology ... ok
+2026-10-26T04:20:42.7088476Z 
+2026-10-26T04:20:42.7088959Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+2026-10-26T04:20:42.7089505Z 
+2026-10-26T04:20:42.7107495Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_store-8067d04ef5a7d60f)
+2026-10-26T04:20:42.7155496Z 
+2026-10-26T04:20:42.7156008Z running 14 tests
+2026-10-26T04:20:42.7170948Z test collections::manifest_tests::test_allocate_stage_retries_occupied_candidate_without_overwriting_it ... ok
+2026-10-26T04:20:42.7173364Z test collections::manifest_tests::test_batch_failure_reports_validated_failed_unprocessed_and_skipped_inputs ... ok
+2026-10-26T04:20:42.7187214Z test collections::manifest_tests::test_manifest_direct_api_rejects_duplicate_and_escaped_duplicate_keys ... ok
+2026-10-26T04:20:42.7188550Z test collections::manifest_tests::test_manifest_locator_absence_and_null_are_none_and_strings_are_retained ... ok
+2026-10-26T04:20:42.7189694Z test collections::manifest_tests::test_manifest_locator_wrong_type_is_rejected ... ok
+2026-10-26T04:20:42.7190813Z test collections::manifest_tests::test_sutysisku_manifest_optional_locators_accept_omission_and_null ... ok
+2026-10-26T04:20:42.7192114Z test collections::manifest_tests::test_selection_skips_unselected_missing_native_path_and_all_reports_failure ... ok
+2026-10-26T04:20:42.7200907Z test dictionary_schema::checked_integer_tests::sqlite_integer_conversion_and_evidence_increment_are_checked ... ok
+2026-10-26T04:20:42.7218924Z test dictionary_schema::tests::insertion_order_covers_schema_and_places_foreign_key_parents_first ... ok
+2026-10-26T04:20:42.7225088Z test collections::manifest_tests::test_injected_rollback_failure_retains_initiating_and_rollback_causes ... ok
+2026-10-26T04:20:42.7234010Z test identity_tests::tuple_identity_is_length_prefixed_and_byte_exact ... ok
+2026-10-26T04:20:42.7235325Z test dictionary_schema::tests::projection_orders_present_tables_and_rejects_unknown_tables ... ok
+2026-10-26T04:20:42.7662205Z test dictionary::lifecycle_tests::committed_incomplete_header_survives_population_failure ... ok
+2026-10-26T04:20:42.8479863Z test collections::manifest_tests::test_interruption_after_stage_allocation_retains_prior_generation_and_allows_retry ... ok
+2026-10-26T04:20:42.8480581Z 
+2026-10-26T04:20:42.8480943Z test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+2026-10-26T04:20:42.8481413Z 
+2026-10-26T04:20:42.8497160Z [1m[92m     Running[0m tests/collections_contract.rs (target/debug/deps/collections_contract-2c3bfa6cfc0b8978)
+2026-10-26T04:20:42.8554220Z 
+2026-10-26T04:20:42.8554407Z running 19 tests
+2026-10-26T04:20:42.8616205Z test test_catalogue_file_and_database_symlink_are_refused_without_modification ... ok
+2026-10-26T04:20:42.8646556Z test test_catalogue_root_symlink_is_not_followed_for_read_or_write ... ok
+2026-10-26T04:20:42.8650826Z test test_empty_existing_roots_register_install_expect_occupied_with_validated_input ... ok
+2026-10-26T04:20:42.8681229Z test test_catalogue_unsupported_schema_version_is_read_only ... ok
+2026-10-26T04:20:43.0381163Z test test_begin_busy_register_install_expect_validated_context_and_retry ... ok
+2026-10-26T04:20:43.0942596Z test test_exact_repeat_rejects_corrupt_owned_store_without_activating_changes ... ok
+2026-10-26T04:20:43.1027697Z test test_install_revision_overflow_is_known_precommit_failure ... ok
+2026-10-26T04:20:43.1518108Z test test_catalogue_register_then_install_and_repeat_keeps_generation ... ok
+2026-10-26T04:20:43.1542899Z test test_malformed_seal_and_release_mismatch_expect_typed_pack_errors ... ok
+2026-10-26T04:20:43.2541436Z test test_missing_sealed_input_expect_known_pack_and_typed_io_cause ... ok
+2026-10-26T04:20:43.2601144Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok
+2026-10-26T04:20:43.2656328Z test test_list_uses_compact_registration_summary_without_decoding_descriptor ... ok
+2026-10-26T04:20:43.3698071Z test test_install_commit_busy_rolls_back_catalogue_and_retains_staged_attempt ... ok
+2026-10-26T04:20:43.3764791Z test test_request_all_missing_pack_is_rejected ... ok
+2026-10-26T04:20:43.3876139Z test test_sealed_input_native_non_utf8_path_is_preserved_in_inspection ... ok
+2026-10-26T04:20:43.3877118Z test test_sealed_pack_mismatch_is_rejected_before_catalogue_creation ... ok
+2026-10-26T04:20:43.4347627Z test test_reference_metadata_preserves_nonempty_form_and_editorial_link_sets ... ok
+2026-10-26T04:20:43.4759438Z test test_install_conflicting_shared_source_is_typed_and_valid_counterpart_composes_once ... ok
+2026-10-26T04:20:43.6264347Z test test_new_release_registration_stays_uninstalled_and_install_requires_later_update_flow ... ok
+2026-10-26T04:20:43.6264915Z 
+2026-10-26T04:20:43.6265172Z test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.77s
+2026-10-26T04:20:43.6265510Z 
+2026-10-26T04:20:43.6283480Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-64296706e2fd28ed)
+2026-10-26T04:20:43.6331901Z 
+2026-10-26T04:20:43.6332141Z running 14 tests
+2026-10-26T04:20:43.7207491Z test empty_valid_dictionary_has_a_real_empty_projection ... ok
+2026-10-26T04:20:43.7497163Z test empty_source_metadata_values_survive_actual_sql_projection ... ok
+2026-10-26T04:20:43.7502644Z test fresh_path_lifecycle_refuses_existing_leafs_and_missing_parents ... ok
+2026-10-26T04:20:44.2167220Z test empty_available_release_keeps_explicit_zero_counts ... ok
+2026-10-26T04:20:44.2677386Z test complete_dictionary_creates_typed_projection_and_reopens_read_only ... ok
+2026-10-26T04:20:44.3967102Z test full_fixture_has_independent_direct_sql_value_oracles ... ok
+2026-10-26T04:20:44.8216494Z test full_unsigned_text_empty_and_nul_values_survive_sql_and_reopen ... ok
+2026-10-26T04:20:45.6626700Z test legacy_archive_rebuild_is_explicit_separate_and_byte_preserving ... ok
+2026-10-26T04:20:46.0667757Z test metadata_query_missing_required_columns_is_format_without_writing ... ok
+2026-10-26T04:20:46.1867477Z test explicit_projection_verification_rejects_same_count_scalar_edits_without_repair ... ok
+2026-10-26T04:20:46.5206980Z test reversed_self_reference_rows_persist_and_reopen_in_model_order ... ok
+2026-10-26T04:20:46.9251229Z test test_minimal_open_rejects_unsupported_dictionary_and_registry_versions ... ok
+2026-10-26T04:20:47.8984569Z test sql_role_presence_foreign_key_and_unique_constraints_are_real ... ok
+2026-10-26T04:20:48.3835374Z test integrity_failures_are_classified_without_mutating_the_database ... ok
+2026-10-26T04:20:48.3836085Z 
+2026-10-26T04:20:48.3836608Z test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.75s
+2026-10-26T04:20:48.3837102Z 
+2026-10-26T04:20:48.3857594Z [1m[92m     Running[0m tests/dictionary_snapshot.rs (target/debug/deps/dictionary_snapshot-8ba11c57474d8058)
+2026-10-26T04:20:48.3905117Z 
+2026-10-26T04:20:48.3905551Z running 2 tests
+2026-10-26T04:20:48.3909559Z test test_attached_rejects_non_utf8_native_path_without_lossy_routing_or_creation ... ok
+2026-10-26T04:20:48.4987482Z test test_snapshot_topologies_open_read_only_and_deduplicate_same_logical_ids ... ok
+2026-10-26T04:20:48.4988144Z 
+2026-10-26T04:20:48.4988659Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+2026-10-26T04:20:48.4989145Z 
+2026-10-26T04:20:48.5003260Z [1m[92m     Running[0m tests/dictionary_verification.rs (target/debug/deps/dictionary_verification-01a1f532ca4a061c)
+2026-10-26T04:20:48.5050230Z 
+2026-10-26T04:20:48.5050508Z running 6 tests
+2026-10-26T04:20:48.9577269Z test test_selected_schema_and_fks_run_without_canonical_prerequisites ... ok
+2026-10-26T04:20:49.0247356Z test test_unparseable_canonical_blocks_dependent_checks_but_model_fails ... ok
+2026-10-26T04:20:49.0647398Z test test_duplicate_json_keys_remain_a_strict_model_failure_and_block_draft_dependents ... ok
+2026-10-26T04:20:49.0697164Z test test_all_reports_independent_simultaneous_schema_metadata_and_fk_failures ... ok
+2026-10-26T04:20:49.5556218Z test test_unsupported_header_versions_fail_before_unparseable_canonical_blocks ... ok
+2026-10-26T04:20:49.6407152Z test test_valid_store_passes_all_scopes_and_selective_reports_have_one_row ... ok
+2026-10-26T04:20:49.6407770Z 
+2026-10-26T04:20:49.6408256Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.14s
+2026-10-26T04:20:49.6408712Z 
+2026-10-26T04:20:49.6432998Z [1m[92m     Running[0m tests/fixture.rs (target/debug/deps/fixture-512b845478a5190b)
+2026-10-26T04:20:49.6502670Z 
+2026-10-26T04:20:49.6502969Z running 2 tests
+2026-10-26T04:20:49.7367913Z test traversal_retains_cycle_closing_and_unresolved_edges ... ok
+2026-10-26T04:20:49.8721409Z test fixture_preserves_exact_literals_presence_roles_and_proposal ... ok
+2026-10-26T04:20:49.8722065Z 
+2026-10-26T04:20:49.8722523Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+2026-10-26T04:20:49.8723110Z 
+2026-10-26T04:20:49.8745383Z [1m[92m     Running[0m tests/public_identity.rs (target/debug/deps/public_identity-5c36950cb2053270)
+2026-10-26T04:20:49.8791501Z 
+2026-10-26T04:20:49.8791920Z running 1 test
+2026-10-26T04:20:49.8796019Z test external_consumer_can_hydrate_the_published_record_identity ... ok
+2026-10-26T04:20:49.8796543Z 
+2026-10-26T04:20:49.8796943Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:49.8797279Z 
+2026-10-26T04:20:49.8807139Z [1m[92m   Doc-tests[0m vlajmaji
+2026-10-26T04:20:51.2863199Z 
+2026-10-26T04:20:51.2863947Z running 1 test
+2026-10-26T04:20:51.2864823Z test crates/vlajmaji/src/../README.md - (line 36) - compile ... ok
+2026-10-26T04:20:51.2865328Z 
+2026-10-26T04:20:51.2865874Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:51.2866431Z 
+2026-10-26T04:20:51.3346013Z all doctests ran in 1.43s; merged doctests compilation took 1.38s
+2026-10-26T04:20:51.3365480Z [1m[92m   Doc-tests[0m vlajmaji_data_la_lojban
+2026-10-26T04:20:51.3547815Z 
+2026-10-26T04:20:51.3548255Z running 0 tests
+2026-10-26T04:20:51.3548598Z 
+2026-10-26T04:20:51.3549214Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:51.3549734Z 
+2026-10-26T04:20:51.3564646Z [1m[92m   Doc-tests[0m vlajmaji_data_lensisku_jbotci
+2026-10-26T04:20:51.3740043Z 
+2026-10-26T04:20:51.3740546Z running 0 tests
+2026-10-26T04:20:51.3740882Z 
+2026-10-26T04:20:51.3741476Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:51.3742047Z 
+2026-10-26T04:20:51.3755578Z [1m[92m   Doc-tests[0m vlajmaji_data_llg
+2026-10-26T04:20:51.3924771Z 
+2026-10-26T04:20:51.3925127Z running 0 tests
+2026-10-26T04:20:51.3925457Z 
+2026-10-26T04:20:51.3926227Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:51.3926748Z 
+2026-10-26T04:20:51.3940140Z [1m[92m   Doc-tests[0m vlajmaji_data_sutysisku
+2026-10-26T04:20:51.4103559Z 
+2026-10-26T04:20:51.4103957Z running 0 tests
+2026-10-26T04:20:51.4104286Z 
+2026-10-26T04:20:51.4104891Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:51.4105409Z 
+2026-10-26T04:20:51.4119121Z [1m[92m   Doc-tests[0m vlajmaji_lexicon
+2026-10-26T04:20:52.0983377Z 
+2026-10-26T04:20:52.0984019Z running 4 tests
+2026-10-26T04:20:52.1002349Z test crates/lexicon/src/lib.rs - (line 8) ... ok
+2026-10-26T04:20:52.1008688Z test crates/lexicon/src/lib.rs - Proposal::new (line 511) ... ok
+2026-10-26T04:20:52.1011724Z test crates/lexicon/src/lib.rs - Lexicon::import_source (line 706) ... ok
+2026-10-26T04:20:52.1015332Z test crates/lexicon/src/lib.rs - SourceMetadata::new (line 140) ... ok
+2026-10-26T04:20:52.1015628Z 
+2026-10-26T04:20:52.1016321Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:52.1016921Z 
+2026-10-26T04:20:52.1074607Z all doctests ran in 0.27s; merged doctests compilation took 0.26s
+2026-10-26T04:20:52.1090325Z [1m[92m   Doc-tests[0m vlajmaji_search
+2026-10-26T04:20:53.6291036Z 
+2026-10-26T04:20:53.6292130Z running 1 test
+2026-10-26T04:20:53.6339931Z test crates/search/src/lib.rs - (line 7) ... ok
+2026-10-26T04:20:53.6340319Z 
+2026-10-26T04:20:53.6340779Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:53.6341317Z 
+2026-10-26T04:20:53.6828775Z all doctests ran in 1.39s; merged doctests compilation took 1.34s
+2026-10-26T04:20:53.6847487Z [1m[92m   Doc-tests[0m vlajmaji_store
+2026-10-26T04:20:53.9300071Z 
+2026-10-26T04:20:53.9300739Z running 0 tests
+2026-10-26T04:20:53.9314389Z 
+2026-10-26T04:20:53.9314847Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-26T04:20:53.9315400Z 
+2026-10-26T04:20:53.9471529Z Post job cleanup.
+2026-10-26T04:20:54.0906973Z Cache up-to-date.
+2026-10-26T04:20:54.1062494Z Post job cleanup.
+2026-10-26T04:20:54.1972361Z [command]/usr/bin/git version
+2026-10-26T04:20:54.2019029Z git version 2.55.0
+2026-10-26T04:20:54.2060951Z Temporarily overriding HOME='/home/runner/work/_temp/9623db8a-52da-4786-9de3-5b9a2c3a0080' before making global git config changes
+2026-10-26T04:20:54.2061861Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T04:20:54.2067318Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/bauske
+2026-10-26T04:20:54.2114054Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T04:20:54.2151156Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T04:20:54.2483627Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T04:20:54.2527191Z http.https://github.com/.extraheader
+2026-10-26T04:20:54.2542418Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-26T04:20:54.2589344Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T04:20:54.2976144Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T04:20:54.3018049Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T04:20:54.3524246Z Post job cleanup.
+2026-10-26T04:20:54.4355329Z [command]/usr/bin/git version
+2026-10-26T04:20:54.4405012Z git version 2.55.0
+2026-10-26T04:20:54.4446914Z Temporarily overriding HOME='/home/runner/work/_temp/6d1f2eb3-30ab-40ba-9e54-55490c9597b3' before making global git config changes
+2026-10-26T04:20:54.4448157Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T04:20:54.4453875Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+2026-10-26T04:20:54.4503102Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T04:20:54.4563425Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T04:20:54.4893936Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T04:20:54.4925095Z http.https://github.com/.extraheader
+2026-10-26T04:20:54.4938092Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-26T04:20:54.4993016Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T04:20:54.5326073Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T04:20:54.5364927Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T04:20:54.5854030Z Cleaning up orphan processes
+2026-10-26T04:20:54.6219605Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
