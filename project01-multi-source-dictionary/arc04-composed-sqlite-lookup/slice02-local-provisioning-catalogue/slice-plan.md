@@ -3,7 +3,7 @@
 | Field | Current value |
 | --- | --- |
 | Status / version | Clean iteration02 2366ae2 handed back; current independent macOS gates/provider and retained repaired runtime controls pass. One Full operational install and serialized local independent proof PASS; actual Linux pending. Six rows OPEN. |
-| Authority | Duncan's Autonomous THROUGH ARC04 approval; unchanged requested Sol6.1/high CDC and Luna/high CC. S01 selected Unified, independently accepted at source 4b4158c and planning ba1faf0. Arc04 execution remains authorized; the explicit no-push boundary requires a separate decision for the proposed hosted Linux route. |
+| Authority | Duncan's Autonomous THROUGH ARC04 approval; unchanged requested Sol6.1/high CDC and Luna/high CC. S01 selected Unified, independently accepted at source 4b4158c and planning ba1faf0. Arc04 execution remains authorized. Duncan explicitly approved the exact2366 source-branch push and existing hosted CI; root reports normal push success and owns run40267522889. No broader delivery authority. |
 | Source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; current frozen2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a; b38 and8f candidates/history retained below. |
 | Ownership | Current: CDC source/index/target after explicit2366 freeze/handback; all author/build sessions ended. CDC design/planning/independent acceptance; root read-only. |
 | Useful delivery | One local command installs selected/all four packs into an additive verified Unified generation; reusable Rust APIs register, install, list and inspect a truthful persistent collection catalogue. |
@@ -197,3 +197,7 @@ Clean2366 test-only descendant preserves five runtime/lock hashes from8f. CDC cu
 ## Current local Full / Linux checkpoint — 2026-10-26 UTC
 
 After root read-through, exactly one Full install passed187.198s/OSmaxRSS8398831616B;2094051725B artifacts/private modes. Accepted435519540B/d9d73c…b7b19 canonical state, explicitAll6/6, complete raw-native multisets/47tables/15empty, four descriptor blocks and public21 groups, plus six actual CLI processes pass; dictionary/CLI catalogue hashes and original pins unchanged. Bounded records/manifest are in artifacts/cdc-review01/full-execution01/local-review-and-linux-checkpoint.md. RSS/data thresholds are post-completion acceptance checks;600s timeout active. Actual Linux remains an acceptance gate; proposed existing-CI exact-head source push has NOT been authorized or executed. All six rows remain OPEN; S03 not issued.
+
+## Current hosted Linux checkpoint — 2026-10-26 04:08:59 UTC
+
+Duncan explicitly approved the reviewed source push/watch. Root reports exact2366 normal push success to origin/codex/project01-composed-sqlite-lookup and queued existing CI run40267522889. The source/index/target remain frozen; root owns remote delivery/reads, CDC records the parent attestation without duplicating network actions. Prior no-push checkpoints are historical; no PR/merge/release/VM/new Full or S03 authority is added. Actual Linux result and all six rows remain OPEN. Exact authorization and run URL are appended to artifacts/execution.md.

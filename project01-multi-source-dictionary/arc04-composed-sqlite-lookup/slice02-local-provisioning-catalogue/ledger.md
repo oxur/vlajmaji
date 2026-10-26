@@ -1,6 +1,6 @@
 # Arc04 S02 ledger
 
-Current 2026-10-26 UTC: all six rows OPEN. Clean2366 local independent gates and53/7/17 retained-runtime scopes remain exact. One Full operational install, complete accepted canonical identity, All6/6, raw-native47table/15empty proof, four complete metadata descriptor projections/public21 groups and six actual CLI processes now PASS. Dictionary/CLI catalogue hashes and original input pins unchanged. Actual Linux remains OPEN; no push/CI/VM action authorized. Current owner CDC; source/target sessions ended. Full execution manifest and concrete Linux checkpoint under artifacts/cdc-review01/full-execution01.
+Current 2026-10-26 UTC: all six rows OPEN. Clean2366 local independent gates and53/7/17 retained-runtime scopes remain exact. One Full operational install, complete accepted canonical identity, All6/6, raw-native47table/15empty proof, four complete metadata descriptor projections/public21 groups and six actual CLI processes now PASS. Dictionary/CLI catalogue hashes and original input pins unchanged. Actual Linux remains OPEN. Duncan authorized the exact2366 source push/watch; root reports normal push success and queued run40267522889, and owns hosted reads. No VM, further push, S03 or Full action is issued. Current source/index/target frozen; sessions ended. Full execution manifest and concrete Linux checkpoint under artifacts/cdc-review01/full-execution01.
 
 | ID | Criterion | Concrete proof / denominator | Owner / parent | Status | Current disposition |
 | --- | --- | --- | --- | --- | --- |
