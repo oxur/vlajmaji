@@ -1,0 +1,22 @@
+{
+  "kind": "S02 error expectation chronology",
+  "recorded_utc": "2026-10-26T01:48:34.607615+00:00",
+  "scope": "Author log bytes preserved; source is a twice-equal CDC advisory read after reported attempt27, not attested exact source of attempt26 or27. Original null-activation expectation change is contract mismatch, not accepted oracle correction. No product/target execution.",
+  "files": [
+    {
+      "path": "attempt26-cli-collections-contract.log",
+      "bytes": 1487,
+      "sha256": "fa09dc82900d2cea281bcce38a5a909283a733d54f5c131215d0379330e7bdfd"
+    },
+    {
+      "path": "attempt27-cli-collections-contract.log",
+      "bytes": 732,
+      "sha256": "35221057925c7a150325465011a10227d35fd15d7854a41c0ae18cd0e06ec011"
+    },
+    {
+      "path": "cli-collections-read-snapshot.rs",
+      "bytes": 4658,
+      "sha256": "8014928e164d459491f742b218d2e142d7df64cd452f810992703fe62be14d0c"
+    }
+  ]
+}

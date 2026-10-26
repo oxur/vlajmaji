@@ -1,0 +1,73 @@
+{
+  "recorded_utc": "2026-10-26T01:10:14.201419+00:00",
+  "source_baseline": "4b4158c8a8a489ead639b73706b01061de17cfe1",
+  "kind": "CC no-store tiny model/comparator prerequisite; not independent product acceptance",
+  "final_attempt": "05",
+  "final_predicates": [
+    "strict-unverified parity",
+    "complete25-family inventory equality",
+    "reordered inventory equality",
+    "missing-empty-category rejection",
+    "multiplicity-change rejection",
+    "Value-to-Missing rejection"
+  ],
+  "count_note": "Attempt04 printed5; CC reports it already executed the same6 assertions. Final05 source independently read by CDC/root has6 assertions and reports6. Pre04 source bytes are not part of this copy, so no independently reconstructed old-source or historical preservation claim.",
+  "exit_scope": "CC tool-attested final exit0; raw combined Cargo stdout/stderr retained. Earlier sandbox denial and harness compile failures are setup attempts, not product failures.",
+  "no_s02_catalogue_or_full_store_by_this_prerequisite": true,
+  "files": [
+    {
+      "path": "src/main.rs",
+      "source": "/tmp/vlajmaji-p01-a04-s02-cc/census01/src/main.rs",
+      "bytes": 8989,
+      "sha256": "83b642e617f36056287ab72f6d25df2de21b9bbb40961f6140caebe79a142452"
+    },
+    {
+      "path": "Cargo.toml",
+      "source": "/tmp/vlajmaji-p01-a04-s02-cc/census01/Cargo.toml",
+      "bytes": 323,
+      "sha256": "caa9fb669618dbcf9c16cfc4b13327c6bd6e90742f9ea2fdb0953fc95509e814"
+    },
+    {
+      "path": "Cargo.lock",
+      "source": "/tmp/vlajmaji-p01-a04-s02-cc/census01/Cargo.lock",
+      "bytes": 5019,
+      "sha256": "0ea13e4839750677d06298a36fb9bdb8e5fe5a216789a16ed4130e40810c9af9"
+    },
+    {
+      "path": "logs/attempt01-census.log",
+      "source": "/tmp/vlajmaji-p01-a04-s02-cc/census01/logs/attempt01-census.log",
+      "bytes": 271,
+      "sha256": "b4019bc4341702b013643293fa4e6b2ddcb9ac25efc275221246c513ba2810d8"
+    },
+    {
+      "path": "logs/attempt02-census.log",
+      "source": "/tmp/vlajmaji-p01-a04-s02-cc/census01/logs/attempt02-census.log",
+      "bytes": 2241,
+      "sha256": "da29618b8a9154627a2321f8adb4d8991596d82e51459827cbd86a93cb011bdf"
+    },
+    {
+      "path": "logs/attempt03-census.log",
+      "source": "/tmp/vlajmaji-p01-a04-s02-cc/census01/logs/attempt03-census.log",
+      "bytes": 2054,
+      "sha256": "0bb94f29afda9a6a2d4a82b2ddaf75207059289f719b0fdfbb3584c45991725e"
+    },
+    {
+      "path": "logs/attempt04-census.log",
+      "source": "/tmp/vlajmaji-p01-a04-s02-cc/census01/logs/attempt04-census.log",
+      "bytes": 5822,
+      "sha256": "a39f19903cdf13a85bcd8e99f048b8b26a1c7fc6dd50668cc81263117b773fe5"
+    },
+    {
+      "path": "logs/attempt05-census.log",
+      "source": "/tmp/vlajmaji-p01-a04-s02-cc/census01/logs/attempt05-census.log",
+      "bytes": 5822,
+      "sha256": "d0ee8d056f1d85c1b3c8ccc3acd263b2915c41410672b99254a62bb55f631251"
+    },
+    {
+      "path": "logs/attempt05-census.json",
+      "source": "/tmp/vlajmaji-p01-a04-s02-cc/census01/logs/attempt05-census.json",
+      "bytes": 5265,
+      "sha256": "108f16b9b45a31b02b1621cac26b6da492bda2bf480ef712d22ad20959bf42af"
+    }
+  ]
+}

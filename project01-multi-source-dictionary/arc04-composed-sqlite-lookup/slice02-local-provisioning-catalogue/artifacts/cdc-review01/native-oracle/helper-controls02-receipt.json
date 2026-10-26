@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-26T01:21:34.843197+00:00",
+  "argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "-B",
+    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice02-local-provisioning-catalogue/artifacts/cdc-review01/native-oracle/qualify_helpers01.py"
+  ],
+  "exit": 0,
+  "scope": "same helper functions/control AST only; no corpus/module import, store, product or target operation",
+  "qualifier_sha256": "5d980ca539153cfdfb7baf974f684f5d414a61d2740a6b8456c5e1c7cf617ffa",
+  "native_oracle_sha256": "23fe1d157715bbf274380920ead96efff7376e1f663679e9dcb5913292920de8",
+  "stdout_sha256": "5dd2961c6ad4d7feafb86761639297849abcf286d34aecbdef6c2a0a9a795975",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "first_attempt_note": "First combined shell invocation printed PASS but did not separately record the qualifier step exit; original stdout retained in CDC scratch. This capture records actual child exit directly."
+}

@@ -157,3 +157,15 @@ This supplies a literal viable path and counterexample; required all-four/raw/op
 ## Assignment issue — 2026-10-26 UTC
 
 Root's concrete readiness PASS authorizes the scoped local planning commit and retained CC dispatch. The worked recipe now requires its exact accepted caller model/inventory ranges and both literal fixtures as read/reference-only; no historical writer execution. Ten source paths, six OPEN rows, the one-Full-store division and every preservation boundary remain binding. Refinement1.1 is part of this INITIAL issued packet, not a post-issue repair.
+
+## Current author checkpoint — 2026-10-26 UTC
+
+Initial types/normalization/schema/readers/register/install and typed reference descriptors compile under the assigned target. The author focused register→install→All→repeat/missing-input/pack-mismatch sequence passes3/3 at tiny scope; final mutation/inspection/orphan/CLI and discriminating controls remain in progress. CDC independently qualified only the unchanged native-oracle comparator9/context4 AST controls (actual exit0), retained under artifacts/cdc-review01; this does not release Full prerequisites or accept product rows. No Full operational store exists. All six rows remain OPEN and CC keeps source/index/target until explicit freeze/handback.
+
+## Current manifest and metadata checkpoint — 2026-10-26 UTC
+
+Author receipts under `/tmp/vlajmaji-p01-a04-s02-cc/logs/`: attempt14-collections-contract.log passes 4/4 test functions (three scaffold contracts and nonempty complete-fixture reference metadata), attempt15-manifest-store.log passes 2/2 locator-policy tests, and attempt18-cli-manifest-tests.log passes 2/2 parser tests. The direct public manifest API now owns strict DTO conversion. These author tests do not yet demonstrate nonempty additive installation or the complete failure/transaction/disposition contract. Setup and compiler attempts 09–18 remain retained; no Full installation, independent product acceptance or row closure is implied. CC retains source/index/target.
+
+## Error-contract correction checkpoint — 2026-10-26 UTC
+
+Current author receipts: attempt28 manifest/batch units 5/5, attempt29 public store contracts 4/4, attempt30 CLI subprocess controls 2/2. The CLI subprocesses use an empty Synthetic model; they establish command flow and read-only missing-catalogue behavior, not nonempty additive or lifecycle completion. The attempt26/27 change to accept null activation contradicted the issued contract; the corrected report/test restores explicit `activation: not_applicable` for read-only failure and separate nullable `observed_generation`. Earlier logs and a calibrated later source snapshot are retained in artifacts/cdc-review01/error-expectation-history01; the snapshot is not represented as exact source of either earlier attempt. Broader history/transaction failure, exact context/disposition reports, docs and final gates remain pending. All six rows are OPEN; no Full store has been created.

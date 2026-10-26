@@ -1,0 +1,27 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.00s
+     Running tests/collections_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collections_contract-cbf20e99af02028d)
+
+running 2 tests
+
+thread 'test_collections_cli_list_absent_catalogue_expect_typed_error' (75068207) panicked at crates/cli/tests/collections_contract.rs:100:5:
+assertion `left == right` failed
+  left: Null
+ right: "not_applicable"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_collections_cli_list_absent_catalogue_expect_typed_error ... FAILED
+
+thread 'test_collections_cli_register_install_list_inspect_expect_structured_reports' (75068208) panicked at crates/cli/tests/collections_contract.rs:70:78:
+called `Option::unwrap()` on a `None` value
+test test_collections_cli_register_install_list_inspect_expect_structured_reports ... FAILED
+
+failures:
+
+failures:
+    test_collections_cli_list_absent_catalogue_expect_typed_error
+    test_collections_cli_register_install_list_inspect_expect_structured_reports
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.57s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test collections_contract`
