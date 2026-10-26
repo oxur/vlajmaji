@@ -1,5 +1,9 @@
 # Finite topology comparison protocol
 
+**CURRENT version 1.6 / 2026-10-26:** The approved seven-total-store inquiry limits are unchanged. CDC completed and durably reviewed the remaining prerequisites at planning 158a3cb, source 4b4158c and probe e12ddf64. Clean five-store prepare is now running under the 600-second/12-GiB wrapper; the historical two remain retained. Corrected workload has 27 prime plus 27 measured requests and all positive page chains. Three balanced rounds remain unused. See slice artifacts/cdc-prerequisite02 for exact qualification, source/binary/config/argv and accounting. No topology selection or acceptance is implied.
+
+### Historical version 1.5 prerequisite hold (superseded only by actual current qualification)
+
 **CURRENT version 1.5 / 2026-10-25:** Original inquiry/effort/numeric limits are explicitly approved; Duncan also approved SEVEN TOTAL stores (two historical retained plus five clean comparison stores). Same seven hours, 12 GiB including old two, 600-second bounds and three balanced rounds; no reset. Source work is issued. Full candidate create/verify/query/timing remains HOLD at the remaining complete-harness/control/gate/config/source/binary/argv prerequisites, until CDC review. The count gate is cleared; no repeated count/model/general-budget question. See the exact answer and timestamp in version 1.5 below.
 
 ### Historical version 1.1 authority checkpoint (text retained)
@@ -142,3 +146,7 @@ The binding store limit is now **SEVEN TOTAL = the two early historical/unaccept
 Approval clears the COUNT gate ONLY. The Full hold remains until the actual same-comparator controls, shared identity-prefix safety, complete batch/reference/page and same-call Value construction/serialization harness, current gates, full category config, source/binary/wrapper hashes, expanded argv and fresh destination checks are complete and reviewed by CDC. Only then may ordinary Autonomous execution run the clean prepare and observations within these amended limits, without a further general budget/model question. No extra old-store Full validation, implicit resume, protected-default change, publication or A05 authority follows.
 
 Current method/proposal evidence is in [cdc-reentry-proposal01.md](../slice01-topology-comparison/artifacts/cdc-reentry-proposal01.md) and [cdc-reentry-facts01.json](../slice01-topology-comparison/artifacts/cdc-reentry-facts01.json) (planning bea639f). Those files preserve their pre-answer PROPOSED state; this version records the subsequent answer. A conservative whole-prepare 600-second wrapper is stronger than each-stage 600 seconds and must be reported as such; missing/zero/malformed RSS never passes a memory cap. All six slice, ten arc and fourteen project rows remain OPEN.
+
+## Version 1.6 — actual prerequisite clearance, 2026-10-26
+
+This is CDC internal readiness clearance under the existing Operator approvals, not a new budget or changed correctness contract. Exact current qualification and Full launch are retained in slice artifacts/cdc-prerequisite02. The earlier two stores and all failed/retried attempts remain historical evidence. Full native correctness, actual cost observations and a justified decision remain pending.

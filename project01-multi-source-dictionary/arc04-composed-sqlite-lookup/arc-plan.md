@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; protocol 1.5 count amendment approved; S01 Full operations HOLD at remaining readiness prerequisites, no acceptance |
+| status | ACTIVE; protocol 1.5 approved limits unchanged; protocol 1.6 records actual CDC prerequisite clearance and clean Full prepare, no acceptance |
 | version / date | 1.5 / 2026-10-25, America/Chicago |
-| authority | Latest 2026-10-25: Duncan explicitly approved seven TOTAL stores in protocol 1.5, retaining the historical two plus clean fresh five after remaining prerequisites. Original protocol 1.1 approval and Autonomous THROUGH ARC04 ONLY persist; unchanged Sol6.1/high CDC and Luna/high CC. No Full launch before CDC readiness clearance. Prior checkpoints remain historical. |
+| authority | Latest 2026-10-25: Duncan explicitly approved seven TOTAL stores in protocol 1.5, retaining the historical two plus clean fresh five after remaining prerequisites. Original protocol 1.1 approval and Autonomous THROUGH ARC04 ONLY persist; unchanged Sol6.1/high CDC and Luna/high CC. CDC readiness clearance is now recorded in protocol 1.6 and slice artifacts/cdc-prerequisite02. Prior checkpoints remain historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Arc01–03; current isolated source7b1c565, protected main52fd3c4/Bauskec5801ae; actual four Full packs and source/native/reference evidence |
-| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; created clean fromaccepted7b, no product changes/builds |
+| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; created from accepted 7b; current source 4b4158c after scoped S01 implementation and current gates |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -91,3 +91,7 @@ Version1.4 current re-entry proposal: preserve early two as historical/unaccepte
 ## Version 1.5 — count amendment and prerequisite boundary
 
 Duncan explicitly approved seven TOTAL candidate stores: retain the two historical/unaccepted stores and create five clean comparison stores only after the remaining prerequisites. Protocol 1.5 records the exact answer and timestamp semantics. Same seven working hours including preparation, 12 GiB including the retained two, 600-second bounds and three balanced rounds; no reset. COUNT gate cleared only. Full operations remain HOLD until CDC reviews the complete comparator/prefix/source/gates, batch/reference/page and Value-serialization harness, frozen category config, binaries and expanded argv. No topology decision or acceptance is implied; all rows remain OPEN.
+
+## Version 1.6 — current execution checkpoint
+
+CDC prerequisite clearance is actual and archived at planning 158a3cb. Source 4b4158c is frozen; CDC owns the source/index/target interval. The clean five-store prepare is running; historical two remain retained. No timing round or selected topology yet. All arc/project rows remain OPEN.

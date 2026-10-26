@@ -2,10 +2,10 @@
 
 | Field | Current state |
 | --- | --- |
-| status | ISSUED; protocol 1.5 count amendment approved; Full operations HOLD at remaining harness/control/gate/freeze prerequisites; all six rows OPEN |
+| status | ISSUED; source 4b4158c frozen and CDC prerequisites cleared; clean five-store Full prepare running; all six rows OPEN |
 | authority | Duncan: “this looks good! Approved, and engage!” Protocol 1.1 inquiry, effort and numeric limits explicitly approved via root; applicability/accounting in protocol 1.2. Autonomous THROUGH ARC04 ONLY. |
 | roles | Requested/configured Sol6.1/high CDC, retained Luna/high CC; backend attestation unavailable. CDC design/planning/independent acceptance; CC source/index/target during issued interval; root read-only. |
-| current prompt | [cc-prompt-iteration02.md](cc-prompt-iteration02.md), bounded post-freeze whole-call profiler and README correction; source parent 6fc740e |
+| current prompt | [cc-prompt-iteration02.md](cc-prompt-iteration02.md), bounded post-freeze whole-call profiler and README correction completed at 4b4158c; source parent 6fc740e; target returned to CDC |
 | source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; starts clean 7b1c565ebf6c8a423e04211b599006b8c21d65d9 |
 | target | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target; guard /tmp/vlajmaji-p01-a04-cargo SHA 20fe7ba73311aa503870923af09f33f3b53262742ca4eeea2972092924cf5de8 |
 | boundaries | No push/PR/publication/A05, main/Bauske/default/accepted checkout/old-store mutation. No correct selected topology means S01/A04-01 stay OPEN and S02 unissued. |
@@ -101,3 +101,7 @@ Duncan explicitly approved seven TOTAL candidate stores: retain the two historic
 ## Version 1.5 — whole-call profiling correction before Full observations
 
 Root identified that frozen 6fc740e assigns exact total inside the inner function, before its large locals are dropped. Iteration02 moves the whole-call timer/residual to the outer profiled API after inner return and clarifies U header trust versus A/F computed digest in the search README. No Full store has been created under the amended clean plan; no timing round ran. Prior 18+40 independent semantic controls and actual tiny prepare/run/batch remain valid at their stated scope, not proof of complete-call timing. Full source-input census and pins are unchanged; corrected binary and read-only tiny parity are prerequisites before Full release. All rows remain OPEN; no count/time reset.
+
+## Current prerequisite release — 2026-10-26
+
+See artifacts/cdc-prerequisite02/receipt.md and manifest at planning 158a3cb. Current source/binary, corrected 54-request graph, actual tiny process controls, timing wrappers and stage parsing are qualified before clean Full execution. No Full native result or comparison round is yet claimed. Protocol 1.6 supersedes the preceding historical readiness HOLD without resetting any budget or attempt.
