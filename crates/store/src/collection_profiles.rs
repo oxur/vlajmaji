@@ -87,7 +87,7 @@ pub struct CollectionProfilesReport {
     pub profiles: Vec<CollectionProfileSummary>,
 }
 
-/// Successful configure result; no-op writes preserve original bytes/revision.
+/// Successful configure result; semantic no-op writes preserve original bytes/revision.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct CollectionProfileWriteReport {
@@ -489,6 +489,13 @@ impl CollectionProfiles {
     }
 
     /// Atomically writes one profile in an explicit configuration file.
+    ///
+    /// A semantic no-op preserves the existing file bytes, comments, formatting,
+    /// and revision. A real change serializes the parsed TOML again and may not
+    /// preserve comments or formatting. The sibling lock serializes cooperating
+    /// writers. Before rename, the writer checks that the destination still has
+    /// the bytes it read (or remains absent for initial creation); a
+    /// non-cooperating editor can still race between that check and rename.
     ///
     /// # Errors
     /// Returns typed policy, IO, busy, or indeterminate publication failures.

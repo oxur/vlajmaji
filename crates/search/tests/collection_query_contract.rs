@@ -14,9 +14,10 @@ use std::{
 use sha2::{Digest, Sha256};
 use vlajmaji_lexicon::{
     CaptureRef, CatalogTarget, Dictionary, JbotciImportOptions, LaLojbanImportOptions,
-    LlgImportOptions, LocalRef, OccurrenceRef, PackId, PackPayloadKind, RelationTarget, SourceId,
-    SutysiskuImportOptions, import_jbotci_export, import_la_lojban_export, import_llg_lists,
-    import_sutysisku_export, seal_release,
+    LlgImportOptions, LocalRef, OccurrenceRef, PackId, PackPayloadKind, Presence, RawCapture,
+    RelationTarget, SnapshotAttribution, SourceId, SourceRegistry, SutysiskuImportOptions,
+    import_jbotci_export, import_la_lojban_export, import_llg_lists, import_sutysisku_export,
+    seal_release,
 };
 use vlajmaji_search::{
     CollectionQueryError, CollectionQueryResult, CollectionQuerySelection, CollectionSearchEngine,
@@ -60,6 +61,38 @@ fn install_fixture(root: &std::path::Path) -> vlajmaji_store::CollectionGenerati
         .unwrap()
         .generation
         .unwrap()
+}
+
+fn seal_input(pack_id: PackId, dictionary: &Dictionary) -> (Vec<u8>, Vec<u8>) {
+    let sealed = seal_release(pack_id, PackPayloadKind::Synthetic, dictionary).unwrap();
+    (sealed.release, sealed.seal)
+}
+
+fn install_sealed_pair(
+    root: &std::path::Path,
+    first: (PackId, &Dictionary),
+    second: (PackId, &Dictionary),
+) {
+    let (first_release, first_seal) = seal_input(first.0, first.1);
+    let (second_release, second_seal) = seal_input(second.0, second.1);
+    let request = CollectionRequest::new(
+        vec![
+            CollectionInput::SealedBytes {
+                pack_id: first.0,
+                release: Cow::Owned(first_release),
+                seal: Cow::Owned(first_seal),
+            },
+            CollectionInput::SealedBytes {
+                pack_id: second.0,
+                release: Cow::Owned(second_release),
+                seal: Cow::Owned(second_seal),
+            },
+        ],
+        CollectionSelection::Packs(vec![first.0, second.0]),
+        true,
+    )
+    .unwrap();
+    CollectionCatalogue::install(root, request).unwrap();
 }
 
 fn register_pack(root: &std::path::Path, pack_id: PackId) {
@@ -309,6 +342,274 @@ fn test_historical_local_identity_deduplicates_equal_body_and_rejects_conflict()
     assert!(matches!(error, CollectionQueryError::AmbiguousReference));
     assert_eq!(error.report_for("resolve").category, "ambiguous_reference");
     fs::remove_dir_all(conflict_root).unwrap();
+}
+
+#[test]
+fn test_equal_local_contributors_admit_selected_enabled_pack_payload() {
+    let mut document = fixture::complete_fixture().unwrap().into_document();
+    document.legacy_archive = None;
+    let assertion_id = document.metadata.assertions[0].id.clone();
+    let dictionary = Dictionary::from_document(document).unwrap();
+    let root = fresh_root("equal-local-contributors");
+    install_sealed_pair(
+        &root,
+        (PackId::LaLojban, &dictionary),
+        (PackId::Llg, &dictionary),
+    );
+
+    let cases = [
+        (vec![PackId::LaLojban, PackId::Llg], vec![], true),
+        (vec![PackId::LaLojban], vec![], true),
+        (vec![PackId::Llg], vec![], true),
+        (
+            vec![PackId::LaLojban, PackId::Llg],
+            vec![PackId::LaLojban],
+            true,
+        ),
+        (vec![PackId::LaLojban, PackId::Llg], vec![PackId::Llg], true),
+        (
+            vec![PackId::LaLojban, PackId::Llg],
+            vec![PackId::LaLojban, PackId::Llg],
+            false,
+        ),
+    ];
+    for (packs, disabled, should_admit) in cases {
+        let query_selection = CollectionQuerySelection {
+            packs,
+            disabled,
+            profile: None,
+        };
+        let mut engine = CollectionSearchEngine::open(&root, query_selection).unwrap();
+        let result = engine
+            .execute(DictionaryRequest::Resolve {
+                target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
+            })
+            .unwrap();
+        let CollectionQueryResult::Resolve(response) = result.result else {
+            panic!("expected a resolve response");
+        };
+        assert_eq!(response.payload.is_some(), should_admit);
+        assert_eq!(response.catalogue_matches.len(), 1);
+        assert_eq!(
+            response.catalogue_matches[0].contributing_pack_ids,
+            ["la-lojban", "llg"]
+        );
+    }
+    fs::remove_dir_all(root).unwrap();
+}
+
+fn dictionary_with_scoped_assertion() -> (Dictionary, vlajmaji_lexicon::EntityId) {
+    let mut document = fixture::complete_fixture().unwrap().into_document();
+    document.legacy_archive = None;
+    let source_assertion = document
+        .metadata
+        .assertions
+        .iter()
+        .find(|assertion| {
+            matches!(
+                assertion.eligibility,
+                vlajmaji_lexicon::Eligibility::Lexical
+            )
+        })
+        .unwrap()
+        .clone();
+    let source_release = document
+        .metadata
+        .releases
+        .iter()
+        .find(|release| release.assertions.contains(&source_assertion.id))
+        .unwrap()
+        .clone();
+    let source_capture = document
+        .captures
+        .iter()
+        .find(|capture| capture.identity == source_assertion.occurrence.capture)
+        .unwrap()
+        .clone();
+    let occurrence = source_capture
+        .occurrences
+        .iter()
+        .find(|occurrence| occurrence.locator == source_assertion.occurrence.locator)
+        .unwrap()
+        .clone();
+    let new_capture = RawCapture::new(
+        format!("{}:contributor-two", source_capture.identity.namespace),
+        source_capture.metadata.clone(),
+        source_capture.bytes.clone(),
+        vec![occurrence],
+    );
+    let new_capture_ref = new_capture.identity.clone();
+    let new_assertion_id = vlajmaji_lexicon::EntityId::new("assertion-contributor-two").unwrap();
+    let mut new_assertion = source_assertion;
+    new_assertion.id = new_assertion_id.clone();
+    new_assertion.occurrence.capture = new_capture_ref.clone();
+    new_assertion.native_sense_id = Presence::Value("contributor-two-sense".into());
+
+    let mut new_release = source_release;
+    new_release.id = vlajmaji_lexicon::EntityId::new("release-contributor-two").unwrap();
+    new_release.captures = vec![new_capture_ref.clone()];
+    new_release.assertions = vec![new_assertion_id.clone()];
+    new_release.accounting.input_occurrences = Some(1);
+    new_release.accounting.normalized_occurrences = Some(1);
+    new_release.accounting.query_excluded_occurrences = Some(0);
+    new_release.diagnostics.clear();
+
+    let mut registry = document.registry.document();
+    let source_binding = registry
+        .snapshots
+        .iter()
+        .find(|binding| {
+            binding.snapshot.namespace() == source_capture.identity.namespace
+                && binding.snapshot.sha256() == source_capture.identity.sha256
+        })
+        .unwrap()
+        .clone();
+    registry.snapshots.push(SnapshotAttribution {
+        snapshot: new_capture_ref.to_snapshot_identity().unwrap(),
+        source: source_binding.source,
+        distributor: source_binding.distributor,
+    });
+    document.registry = SourceRegistry::from_document(registry).unwrap();
+    document.captures.push(new_capture);
+    document.metadata.assertions.push(new_assertion);
+    document.metadata.releases.push(new_release);
+    (
+        Dictionary::from_document(document).unwrap(),
+        new_assertion_id,
+    )
+}
+
+#[test]
+fn test_shared_entry_retains_each_selected_contributor_release_scope() {
+    let mut first_document = fixture::complete_fixture().unwrap().into_document();
+    first_document.legacy_archive = None;
+    let first_dictionary = Dictionary::from_document(first_document).unwrap();
+    let (second_dictionary, contributor_assertion) = dictionary_with_scoped_assertion();
+    let entry_id = first_dictionary
+        .document()
+        .metadata
+        .assertions
+        .iter()
+        .find(|assertion| {
+            matches!(
+                assertion.eligibility,
+                vlajmaji_lexicon::Eligibility::Lexical
+            )
+        })
+        .unwrap()
+        .entry
+        .clone();
+    let selected_assertions_for = |dictionary: &Dictionary| {
+        let document = dictionary.document();
+        document
+            .metadata
+            .assertions
+            .iter()
+            .filter(|assertion| {
+                assertion.entry == entry_id
+                    && matches!(
+                        assertion.eligibility,
+                        vlajmaji_lexicon::Eligibility::Lexical
+                    )
+                    && document.metadata.releases.iter().any(|release| {
+                        release.selected
+                            && release.availability == vlajmaji_lexicon::Availability::Available
+                            && release.assertions.contains(&assertion.id)
+                    })
+            })
+            .map(|assertion| assertion.id.to_string())
+            .collect::<std::collections::BTreeSet<_>>()
+    };
+    let first_expected = selected_assertions_for(&first_dictionary);
+    let second_expected = selected_assertions_for(&second_dictionary);
+    let union_expected = first_expected
+        .union(&second_expected)
+        .cloned()
+        .collect::<std::collections::BTreeSet<_>>();
+    let root = fresh_root("shared-entry-release-scopes");
+    install_sealed_pair(
+        &root,
+        (PackId::LaLojban, &first_dictionary),
+        (PackId::Llg, &second_dictionary),
+    );
+
+    let cases = [
+        (
+            vec![PackId::LaLojban, PackId::Llg],
+            vec![],
+            true,
+            Some(union_expected),
+        ),
+        (
+            vec![PackId::LaLojban],
+            vec![],
+            false,
+            Some(first_expected.clone()),
+        ),
+        (
+            vec![PackId::Llg],
+            vec![],
+            true,
+            Some(second_expected.clone()),
+        ),
+        (
+            vec![PackId::LaLojban, PackId::Llg],
+            vec![PackId::LaLojban],
+            true,
+            Some(second_expected.clone()),
+        ),
+        (
+            vec![PackId::LaLojban, PackId::Llg],
+            vec![PackId::Llg],
+            false,
+            Some(first_expected),
+        ),
+        (
+            vec![PackId::LaLojban, PackId::Llg],
+            vec![PackId::LaLojban, PackId::Llg],
+            false,
+            None,
+        ),
+    ];
+    for (packs, disabled, include_second_contributor, expected_ids) in cases {
+        let mut engine = CollectionSearchEngine::open(
+            &root,
+            CollectionQuerySelection {
+                packs,
+                disabled,
+                profile: None,
+            },
+        )
+        .unwrap();
+        let result = engine
+            .execute(DictionaryRequest::Resolve {
+                target: RelationTarget::Local(LocalRef::Entry(entry_id.clone())),
+            })
+            .unwrap();
+        let CollectionQueryResult::Resolve(response) = result.result else {
+            panic!("expected a resolve response");
+        };
+        assert_eq!(response.payload.is_some(), expected_ids.is_some());
+        if let Some(expected_ids) = expected_ids {
+            let payload = response.payload.expect("selected contributor has payload");
+            let actual_ids = payload
+                .confirmed
+                .iter()
+                .map(|assertion| assertion.assertion.id.to_string())
+                .collect::<std::collections::BTreeSet<_>>();
+            assert_eq!(actual_ids, expected_ids);
+            assert_eq!(
+                actual_ids.contains(contributor_assertion.as_str()),
+                include_second_contributor
+            );
+        }
+        assert_eq!(response.catalogue_matches.len(), 1);
+        assert_eq!(
+            response.catalogue_matches[0].contributing_pack_ids,
+            ["la-lojban", "llg"]
+        );
+    }
+    fs::remove_dir_all(root).unwrap();
 }
 
 #[test]

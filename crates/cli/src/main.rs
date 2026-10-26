@@ -1,5 +1,6 @@
 //! JSON command-line interface for the research lexical-search prototype.
 
+use std::ffi::OsString;
 use std::io::{self, Read, Write};
 use std::path::{Path, PathBuf};
 
@@ -903,8 +904,13 @@ fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliErr
                     )
                 })?
             };
-            let config_path = resolve_config_path(config.as_deref())
-                .map_err(|detail| managed_cli_error("config_path", detail, "lookup"))?;
+            let location_packs = pack
+                .iter()
+                .filter_map(|value| parse_collection_pack(value).ok())
+                .collect::<Vec<_>>();
+            let config_path = resolve_config_path(config.as_deref()).map_err(|error| {
+                config_location_error(error, "lookup", None, profile.as_deref(), &location_packs)
+            })?;
             let profiles = CollectionProfiles::read(config_path.clone()).map_err(|error| {
                 with_managed_context(
                     managed_error_for(CollectionQueryError::Profile(error), "lookup"),
@@ -1055,8 +1061,27 @@ fn collections_command(
             make_default,
             config,
         } => {
-            let path = resolve_config_path(config.as_deref())
-                .map_err(|detail| managed_cli_error("config_path", detail, "configure"))?;
+            let location_packs = if all {
+                vec![
+                    PackId::LensiskuJbotci,
+                    PackId::Llg,
+                    PackId::LaLojban,
+                    PackId::Sutysisku,
+                ]
+            } else {
+                pack.iter()
+                    .filter_map(|value| parse_collection_pack(value).ok())
+                    .collect()
+            };
+            let path = resolve_config_path(config.as_deref()).map_err(|error| {
+                config_location_error(
+                    error,
+                    "configure",
+                    Some(&root),
+                    Some(&profile),
+                    &location_packs,
+                )
+            })?;
             let packs = if all {
                 vec![
                     PackId::LensiskuJbotci,
@@ -1125,9 +1150,8 @@ fn collections_command(
             })
         }
         CollectionsCommand::Profiles { config } => {
-            let path = resolve_config_path(config.as_deref()).map_err(|detail| {
-                managed_error_for(CollectionQueryError::InvalidSelection(detail), "profiles")
-            })?;
+            let path = resolve_config_path(config.as_deref())
+                .map_err(|error| config_location_error(error, "profiles", None, None, &[]))?;
             let profiles = CollectionProfiles::read(path.clone()).map_err(|error| {
                 with_managed_context(
                     managed_error_for(CollectionQueryError::Profile(error), "profiles"),
@@ -1147,8 +1171,18 @@ fn collections_command(
             profile,
             pack,
         } => {
-            let path = resolve_config_path(config.as_deref()).map_err(|detail| {
-                managed_error_for(CollectionQueryError::InvalidSelection(detail), "selection")
+            let location_packs = pack
+                .iter()
+                .filter_map(|value| parse_collection_pack(value).ok())
+                .collect::<Vec<_>>();
+            let path = resolve_config_path(config.as_deref()).map_err(|error| {
+                config_location_error(
+                    error,
+                    "selection",
+                    None,
+                    profile.as_deref(),
+                    &location_packs,
+                )
             })?;
             let profiles = CollectionProfiles::read(path.clone()).map_err(|error| {
                 with_managed_context(
@@ -1274,7 +1308,46 @@ fn managed_cli_error(category: &str, detail: impl Into<String>, operation: &str)
     }))
 }
 
-fn resolve_config_path(explicit: Option<&Path>) -> Result<PathBuf, String> {
+#[derive(Debug)]
+enum ConfigLocationError {
+    HomeUnavailable,
+    HomeNotAbsolute(OsString),
+}
+
+impl ConfigLocationError {
+    fn detail(&self) -> String {
+        match self {
+            Self::HomeUnavailable => {
+                "HOME is unavailable and XDG_CONFIG_HOME is not an absolute nonempty path".into()
+            }
+            Self::HomeNotAbsolute(home) => format!(
+                "HOME must be an absolute native path when XDG_CONFIG_HOME is unusable (got {home:?})"
+            ),
+        }
+    }
+}
+
+fn config_location_error(
+    error: ConfigLocationError,
+    operation: &str,
+    root: Option<&Path>,
+    requested_profile: Option<&str>,
+    known_pack_ids: &[PackId],
+) -> CliError {
+    let mut report = match managed_cli_error("config_path", error.detail(), operation) {
+        CliError::Managed(report) => report,
+        _ => unreachable!("managed_cli_error always returns its managed envelope"),
+    };
+    report.root_path = root.map(vlajmaji_store::native_path_report);
+    report.requested_profile = requested_profile.map(str::to_owned);
+    report.known_pack_ids = known_pack_ids.iter().map(ToString::to_string).collect();
+    if operation == "configure" {
+        report.outcome = "unchanged".into();
+    }
+    CliError::Managed(report)
+}
+
+fn resolve_config_path(explicit: Option<&Path>) -> Result<PathBuf, ConfigLocationError> {
     if let Some(path) = explicit {
         return Ok(path.to_path_buf());
     }
@@ -1284,12 +1357,10 @@ fn resolve_config_path(explicit: Option<&Path>) -> Result<PathBuf, String> {
             return Ok(path.join("vlajmaji/config.toml"));
         }
     }
-    let home = std::env::var_os("HOME").ok_or_else(|| {
-        "HOME is unavailable and XDG_CONFIG_HOME is not an absolute nonempty path".to_owned()
-    })?;
+    let home = std::env::var_os("HOME").ok_or(ConfigLocationError::HomeUnavailable)?;
     let home = PathBuf::from(home);
     if !home.is_absolute() {
-        return Err("HOME must be an absolute native path when XDG_CONFIG_HOME is unusable".into());
+        return Err(ConfigLocationError::HomeNotAbsolute(home.into_os_string()));
     }
     Ok(home.join(".config/vlajmaji/config.toml"))
 }

@@ -624,6 +624,87 @@ fn test_lookup_request_parse_precedes_missing_config_and_uses_managed_error_enve
 }
 
 #[test]
+fn test_all_managed_commands_report_config_path_for_unusable_home_fallback() {
+    let cwd = fresh_root("config-location-errors");
+    let missing_root = cwd.join("must-not-be-created");
+    let cases: [(Option<&Path>, Option<&Path>); 3] = [
+        (None, None),
+        (Some(Path::new("")), Some(Path::new(""))),
+        (
+            Some(Path::new("relative-home")),
+            Some(Path::new("relative-xdg")),
+        ),
+    ];
+    for (home, xdg) in cases {
+        let mut variables = Vec::new();
+        if let Some(value) = home {
+            variables.push(("HOME", value));
+        }
+        if let Some(value) = xdg {
+            variables.push(("XDG_CONFIG_HOME", value));
+        }
+        let commands: Vec<Vec<&Path>> = vec![
+            vec![
+                Path::new("collections"),
+                Path::new("configure"),
+                &missing_root,
+                Path::new("--profile"),
+                Path::new("research"),
+                Path::new("--pack"),
+                Path::new("llg"),
+            ],
+            vec![Path::new("collections"), Path::new("profiles")],
+            vec![
+                Path::new("collections"),
+                Path::new("selection"),
+                Path::new("--profile"),
+                Path::new("research"),
+                Path::new("--pack"),
+                Path::new("llg"),
+            ],
+            vec![
+                Path::new("lookup"),
+                Path::new("farvi"),
+                Path::new("--profile"),
+                Path::new("research"),
+                Path::new("--pack"),
+                Path::new("llg"),
+            ],
+        ];
+        for (index, args) in commands.iter().enumerate() {
+            let output = cli(&cwd, args, &variables);
+            assert!(!output.status.success());
+            let envelope: Value = serde_json::from_slice(&output.stderr).unwrap();
+            let report = &envelope["error"];
+            let operation = ["configure", "profiles", "selection", "lookup"][index];
+            assert_eq!(report["version"], 1);
+            assert_eq!(report["ok"], false);
+            assert_eq!(report["category"], "config_path");
+            assert_eq!(report["operation"], operation);
+            assert_eq!(report["config_path"], Value::Null);
+            assert_eq!(
+                report["outcome"],
+                if operation == "configure" {
+                    "unchanged"
+                } else {
+                    "not_applicable"
+                }
+            );
+            if operation == "configure" {
+                assert_eq!(report["root_path"]["utf8"], missing_root.to_str().unwrap());
+                assert_eq!(report["requested_profile"], "research");
+                assert_eq!(report["known_pack_ids"], serde_json::json!(["llg"]));
+            } else if operation == "selection" || operation == "lookup" {
+                assert_eq!(report["requested_profile"], "research");
+                assert_eq!(report["known_pack_ids"], serde_json::json!(["llg"]));
+            }
+        }
+    }
+    assert!(!missing_root.exists());
+    std::fs::remove_dir_all(cwd).unwrap();
+}
+
+#[test]
 fn test_configure_failure_reports_known_file_root_profile_and_requested_packs() {
     let parent = fresh_root("configure-error-context");
     let config = parent.join("profiles.toml");

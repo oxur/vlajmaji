@@ -127,6 +127,14 @@ disabled packs. The library's explicit `CollectionProfiles::configure`
 request remains authoritative for callers that deliberately replace that
 list.
 
+A semantic no-op keeps the existing configuration bytes, comments, formatting,
+and revision. A real change serializes TOML again and may lose comments or
+formatting. The sibling lock coordinates cooperating writers. Immediately
+before atomic rename, the writer checks that the file still matches the bytes
+it read, or is still absent for initial publication. A non-cooperating editor
+can race in the check-to-rename gap; this is not a universal compare-and-swap
+guarantee for either creation or replacement.
+
 ```sh
 vlajmaji collections configure ./local-catalogue \
   --profile research --pack llg --pack sutysisku --make-default

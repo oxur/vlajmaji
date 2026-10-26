@@ -127,6 +127,14 @@ pub struct CollectionReferenceMatch {
     pub contributing_pack_ids: Vec<String>,
 }
 
+/// Publicly deduplicated matches plus the registration scopes used for admission.
+/// Equal public bodies may belong to several packs and releases, so those scopes
+/// must survive until selection and release filtering are complete.
+struct MetadataMatches {
+    public: Vec<CollectionReferenceMatch>,
+    admission: Vec<CollectionReferenceMatch>,
+}
+
 /// Managed wrapper around an existing full resolution or a metadata-only match.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -821,7 +829,8 @@ impl CollectionSearchEngine {
             _ => {}
         }
         let matches = self.metadata_matches(&target)?;
-        if let Some((pack, release)) = self.selected_payload_for_target(&target, &matches) {
+        if let Some((pack, release)) = self.selected_payload_for_target(&target, &matches.admission)
+        {
             let _ = (pack, release);
             self.ensure_payload()?;
             let engine = self.payload.as_ref().ok_or_else(|| {
@@ -832,6 +841,7 @@ impl CollectionSearchEngine {
             let mut payload = engine.resolve(&target)?;
             if matches!(target, RelationTarget::Local(_)) {
                 let admitted: BTreeSet<String> = matches
+                    .admission
                     .iter()
                     .filter(|matched| {
                         self.selection
@@ -874,6 +884,7 @@ impl CollectionSearchEngine {
             }
             let requested_release = match &target {
                 RelationTarget::Catalog(catalog) => match matches
+                    .public
                     .iter()
                     .find(|matched| matched.model_release_id == catalog.release.as_str())
                 {
@@ -891,12 +902,13 @@ impl CollectionSearchEngine {
                 status: payload.status,
                 operational_reason: None,
                 payload: Some(payload),
-                catalogue_matches: matches,
+                catalogue_matches: matches.public,
                 requested_release,
             });
         }
         let requested_release = if let RelationTarget::Catalog(catalog) = &target {
             match matches
+                .public
                 .iter()
                 .find(|matched| matched.model_release_id == catalog.release.as_str())
             {
@@ -911,13 +923,14 @@ impl CollectionSearchEngine {
             None
         };
         let reason = matches
+            .public
             .iter()
             .find_map(|matched| self.operational_reason(&matched.pack_id, &matched.release_sha256))
             .unwrap_or_else(|| "registered_only".into());
-        let status = if matches.is_empty() {
+        let status = if matches.public.is_empty() {
             ReferenceStatus::NoMatch
         } else if let RelationTarget::Catalog(catalog) = &target {
-            let unknown = matches.iter().any(|matched| {
+            let unknown = matches.public.iter().any(|matched| {
                 catalog
                     .native_entry_id
                     .as_ref()
@@ -940,9 +953,9 @@ impl CollectionSearchEngine {
         Ok(CollectionReferenceResponse {
             target,
             status,
-            operational_reason: (!matches.is_empty()).then_some(reason),
+            operational_reason: (!matches.public.is_empty()).then_some(reason),
             payload: None,
-            catalogue_matches: matches,
+            catalogue_matches: matches.public,
             requested_release,
         })
     }
@@ -950,7 +963,7 @@ impl CollectionSearchEngine {
     fn metadata_matches(
         &self,
         target: &RelationTarget,
-    ) -> Result<Vec<CollectionReferenceMatch>, CollectionQueryError> {
+    ) -> Result<MetadataMatches, CollectionQueryError> {
         let catalogue = CollectionCatalogue::open(&self.root)?;
         if catalogue.local_revision()? != self.snapshot.local_revision {
             return Err(CollectionQueryError::Catalogue(
@@ -1183,30 +1196,50 @@ impl CollectionSearchEngine {
                             return Err(CollectionQueryError::AmbiguousReference);
                         }
                     }
-                    let representative = results
-                        .iter()
-                        .find(|row| {
-                            self.generation.as_ref().is_some_and(|generation| {
-                                generation.members.iter().any(|member| {
-                                    member.pack_id == row.pack_id
-                                        && member.release_sha256 == row.release_sha256
-                                })
-                            })
-                        })
-                        .unwrap_or(first);
-                    let mut shared = representative.clone();
-                    shared.contributing_pack_ids = results
-                        .iter()
-                        .map(|row| row.pack_id.clone())
-                        .collect::<BTreeSet<_>>()
-                        .into_iter()
-                        .collect();
-                    results = vec![shared];
                 }
             }
             _ => {}
         }
-        Ok(results)
+        let admission = results.clone();
+        let public = if matches!(target, RelationTarget::Local(_)) {
+            let mut deduplicated: Vec<CollectionReferenceMatch> = Vec::new();
+            for row in &results {
+                let same_public_identity = |existing: &CollectionReferenceMatch| {
+                    existing.source_id == row.source_id
+                        && existing.role == row.role
+                        && existing.entity_id == row.entity_id
+                        && existing.occurrence == row.occurrence
+                        && existing.capture == row.capture
+                        && existing.native_entry_id == row.native_entry_id
+                        && existing.native_assertion_id == row.native_assertion_id
+                };
+                if let Some(existing) = deduplicated
+                    .iter_mut()
+                    .find(|row| same_public_identity(row))
+                {
+                    if !existing.contributing_pack_ids.contains(&row.pack_id) {
+                        existing.contributing_pack_ids.push(row.pack_id.clone());
+                        existing.contributing_pack_ids.sort();
+                    }
+                    let row_is_current = self.generation.as_ref().is_some_and(|generation| {
+                        generation.members.iter().any(|member| {
+                            member.pack_id == row.pack_id
+                                && member.release_sha256 == row.release_sha256
+                        })
+                    });
+                    if row_is_current {
+                        existing.pack_id = row.pack_id.clone();
+                        existing.release_sha256 = row.release_sha256.clone();
+                    }
+                } else {
+                    deduplicated.push(row.clone());
+                }
+            }
+            deduplicated
+        } else {
+            results
+        };
+        Ok(MetadataMatches { public, admission })
     }
 
     fn selected_payload_for_target(
