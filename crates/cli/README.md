@@ -51,6 +51,21 @@ the existing pack adapters. Synthetic packs require `--allow-synthetic`.
 See the [collection guide](../../docs/collections.md) for commands, strict
 manifest fields, state semantics, and structured failures.
 
+`collections configure`, `collections profiles`, and `collections selection`
+manage a separate versioned user configuration. They accept `--config`; when
+omitted, the CLI resolves `XDG_CONFIG_HOME/vlajmaji/config.toml`, falling back
+to `HOME/.config/vlajmaji/config.toml`. A profile stores one catalogue ROOT,
+ordered default pack membership, and independent disabled packs. `lookup WORD`
+uses that profile and accepts `--source`, `--page-size`, and `--cursor`; a full
+typed request can instead be supplied with `--request` or stdin. The managed
+cursor binds the observed profile/catalogue/generation/selection snapshot.
+`collections configure` updates membership while preserving a profile's
+existing disabled packs; newly created profiles start with none. Explicit
+library profile requests can deliberately replace the disabled list.
+This layer does not alter `dictionary-query STORE` or the global default-store
+route, and a selected installed payload that fails its minimum open is reported
+as an error rather than as metadata-only availability.
+
 `jbotci-import RAW METADATA FRESH.json` locally normalizes a hash-pinned export;
 `jbotci-check RAW METADATA [--release RELEASE.json]` validates it without
 writing. `make jbotci-acquire`, `jbotci-replay`, `jbotci-check`, and

@@ -922,6 +922,26 @@ pub struct CollectionGenerationMember {
     pub payload_kind: String,
 }
 
+/// Native paths for the currently installed pack copies and derived store.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct CollectionInstalledArtifactLocations {
+    /// Stable pack identifier.
+    pub pack_id: String,
+    /// Sealed release identity.
+    pub release_sha256: String,
+    /// Tool-owned canonical release file.
+    pub release_path: PathBuf,
+    /// Tool-owned seal file.
+    pub seal_path: PathBuf,
+    /// Optional importer report file.
+    pub report_path: Option<PathBuf>,
+    /// Tool-owned derived-store directory.
+    pub store_path: PathBuf,
+    /// Tool-owned SQLite file within the derived store.
+    pub database_path: PathBuf,
+}
+
 impl CollectionGeneration {
     /// Builds a Unified manifest without certifying current bytes.
     #[must_use]
@@ -1076,6 +1096,63 @@ impl CollectionCatalogue {
         let root = absolute_path(root.as_ref())?;
         let connection = crate::collections_schema::open_readonly(&root)?;
         Ok(Self { root, connection })
+    }
+
+    /// Returns the current catalogue-local registration/generation revision.
+    ///
+    /// This is a light catalogue observation and does not audit installed payloads.
+    ///
+    /// # Errors
+    /// Returns a typed catalogue error when the revision cannot be read.
+    pub fn local_revision(&self) -> Result<u64, CollectionError> {
+        crate::collections_schema::local_revision(&self.connection, &self.root)
+    }
+
+    /// Returns exact current tool-owned artifact paths for an installed pack.
+    ///
+    /// This decodes catalogue path metadata only; it does not test file
+    /// existence, hash bytes, or open the derived store. Registered-only packs
+    /// return `Ok(None)`.
+    ///
+    /// # Errors
+    /// Returns a typed catalogue error for an unknown pack or malformed metadata.
+    pub fn installed_artifact_locations(
+        &self,
+        pack: PackId,
+    ) -> Result<Option<CollectionInstalledArtifactLocations>, CollectionError> {
+        let registered: bool = self
+            .connection
+            .query_row(
+                "SELECT EXISTS(SELECT 1 FROM registrations WHERE pack_id=?1)",
+                [pack.as_str()],
+                |row| row.get(0),
+            )
+            .map_err(|error| db_error(&self.root, error))?;
+        if !registered {
+            return Err(CollectionError::InvalidRequest(format!(
+                "pack {} is not registered",
+                pack.as_str()
+            )));
+        }
+        let Some(generation) = read_generation(&self.connection, &self.root)? else {
+            return Ok(None);
+        };
+        let Some(member) = current_members(&self.connection, &self.root)?
+            .into_iter()
+            .find(|member| member.pack_id == pack.as_str())
+        else {
+            return Ok(None);
+        };
+        let database_path = generation.store_path.join("dictionary.sqlite3");
+        Ok(Some(CollectionInstalledArtifactLocations {
+            pack_id: pack.as_str().to_owned(),
+            release_sha256: member.release_sha256,
+            release_path: self.root.join(member.release_path),
+            seal_path: self.root.join(member.seal_path),
+            report_path: member.report_path.map(|path| self.root.join(path)),
+            store_path: generation.store_path,
+            database_path,
+        }))
     }
 
     /// Returns the catalogue's local revision and pack summaries.

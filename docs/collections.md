@@ -1,9 +1,12 @@
 # Local collection registration and installation
 
 The collection catalogue records local source-pack ownership separately from
-the installed dictionary and from any future user selection. It is explicit:
-these commands do not consult HOME or XDG, alter the default store, download
-inputs, or enable a source.
+the installed dictionary and from user selection. Register, install, list, and
+inspect use an explicit ROOT and do not alter the default store, download
+inputs, or enable a source. The separate configure, profiles, selection, and
+lookup commands use an explicit config path or resolve configuration from
+`XDG_CONFIG_HOME/vlajmaji/config.toml`, falling back to
+`HOME/.config/vlajmaji/config.toml`.
 
 Prepare source packs locally with the existing `data-pack fixture` or
 `data-pack materialize` commands. A manifest can select a sealed pack:
@@ -110,3 +113,35 @@ The catalogue records source rights and notices as supplied by each pack. It
 does not grant redistribution permission; held or unknown data terms remain
 held or unknown. See the [store guide](../crates/store/README.md) for the
 underlying immutable dictionary store and its verification boundary.
+
+## Configured selection and combined lookup
+
+Configuration is a separate strict version-1 TOML file. Each named profile
+stores one catalogue ROOT, ordered default pack membership, and a separate
+disabled-pack list. Empty membership means no selected packs; `--all` is an
+explicit request for all four registered pack records. Configuration changes
+never install data or update the existing global default store.
+The CLI `collections configure` command changes profile membership while
+preserving that profile's disabled-pack list; a new profile starts with no
+disabled packs. The library's explicit `CollectionProfiles::configure`
+request remains authoritative for callers that deliberately replace that
+list.
+
+```sh
+vlajmaji collections configure ./local-catalogue \
+  --profile research --pack llg --pack sutysisku --make-default
+vlajmaji collections profiles
+vlajmaji collections selection --profile research
+vlajmaji lookup farvi --profile research --source llg
+```
+
+`lookup` accepts a word with source/page/cursor flags, or a complete typed
+request from `--request` or standard input. Its snapshot reports default
+membership, request selection, disabled state, producer eligibility, minimum
+derived-store state, and advisory owned-copy presence. The outer versioned
+cursor binds the captured profile/catalogue/generation and selection policy;
+copy-maintenance warnings do not change that binding. Exact lookup hydrates the
+complete typed dictionary and builds its search indexes. A selected installed
+payload whose minimum store cannot be opened returns a typed payload error;
+registered-only, disabled, or unselected references can be reported from
+retained catalogue metadata without claiming the payload exists.

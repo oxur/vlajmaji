@@ -119,8 +119,8 @@ release request; publish the Bauske dependency first when releasing these crates
   semantic equivalence, or poetic merit.
 - Keep ordinary builds and loads offline. Corpus content terms and redistribution
   decisions remain separate from the code's Apache-2.0 license.
-- Logging via the `twyg` crate, config via the `confyg` crate when those
-  capabilities are introduced; neither is currently a workspace dependency.
+- Configuration for single-source collection profiles uses the `confyg` crate.
+  `twyg` logging remains deferred and is not a workspace dependency.
 - Keep shell helpers compatible with Bash 3.2 and test failures as well as success.
 - Keep changes scoped to the task and preserve unrelated working-tree changes.
 

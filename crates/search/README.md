@@ -10,11 +10,10 @@ Queries include exact spelling, literal reverse-definition lookup, captured form
 The grouped dictionary API builds a fully verified `DictionaryStore` or opens
 its typed draft without claiming full-store verification. Query construction
 checks lookup identities needed by the query engine but does not replace the
-explicit store verification API,
-performs byte-exact source-grouped spelling lookup with complete pre-page
-counts, and resolves typed local/catalogue references. Its responses retain
-source, release, occurrence, editorial, and computed evidence as separate
-fields. See the [grouped lookup guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-query.md) and run
+explicit store verification API. It performs byte-exact source-grouped spelling
+lookup with complete pre-page counts and resolves typed local/catalogue
+references. Its responses retain source, release, occurrence, editorial, and
+computed evidence as separate fields. See the [grouped lookup guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-query.md) and run
 `cargo run --example dictionary_lookup -- INPUT_JSON FRESH_STORE` for a public
 API walkthrough.
 
@@ -42,6 +41,18 @@ hit hydration; remaining same-call time is a conservative lookup/order/page
 residual. Serialization is outside the query call and must be added when
 assessing complete response cost. A/F startup includes reading, composing,
 serializing, and hashing its own logical document; those costs remain visible.
+
+The configured collection layer is additive: `CollectionSearchEngine` captures
+one explicit catalogue and profile selection, then wraps the existing exact
+and reference query behavior. It reports registered, installed, selected,
+disabled, producer-eligible, and minimum-store states separately. The managed
+outer cursor binds the observed config/catalogue/generation/selection snapshot;
+it does not authenticate ordinary-open payload bytes. Exact lookup still
+hydrates the complete typed dictionary and builds its search indexes.
+Unknown/unresolved and valid metadata-only references can return from the
+retained catalogue view without opening a payload; selected installed
+references surface a typed error if their derived database cannot be opened.
+Only the CLI resolves config from XDG/HOME; library APIs take explicit paths.
 
 The `topology_probe` example is a local comparison harness, not user
 configuration or an installer. `prepare --manifest FILE` strictly loads four
