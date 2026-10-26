@@ -2,7 +2,7 @@
 
 | Field | Current value |
 | --- | --- |
-| Status / version | Clean iteration02 2366ae2 handed back; current independent macOS gates/provider and retained repaired runtime controls pass. One Full operational install and serialized local independent proof PASS; actual Linux pending. Six rows OPEN. |
+| Status / version | Clean iteration02 2366ae2 handed back; current independent macOS gates/provider and retained repaired runtime controls pass. Local Full proof PASS; hosted Linux Check fails boolean assertion lint. Iteration03 ISSUED: one test-only line; other hosted jobs pending. Six rows OPEN. |
 | Authority | Duncan's Autonomous THROUGH ARC04 approval; unchanged requested Sol6.1/high CDC and Luna/high CC. S01 selected Unified, independently accepted at source 4b4158c and planning ba1faf0. Arc04 execution remains authorized. Duncan explicitly approved the exact2366 source-branch push and existing hosted CI; root reports normal push success and owns run40267522889. No broader delivery authority. |
 | Source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; current frozen2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a; b38 and8f candidates/history retained below. |
 | Ownership | Current: CDC source/index/target after explicit2366 freeze/handback; all author/build sessions ended. CDC design/planning/independent acceptance; root read-only. |
@@ -201,3 +201,7 @@ After root read-through, exactly one Full install passed187.198s/OSmaxRSS8398831
 ## Current hosted Linux checkpoint — 2026-10-26 04:08:59 UTC
 
 Duncan explicitly approved the reviewed source push/watch. Root reports exact2366 normal push success to origin/codex/project01-composed-sqlite-lookup and queued existing CI run40267522889. The source/index/target remain frozen; root owns remote delivery/reads, CDC records the parent attestation without duplicating network actions. Prior no-push checkpoints are historical; no PR/merge/release/VM/new Full or S03 authority is added. Actual Linux result and all six rows remain OPEN. Exact authorization and run URL are appended to artifacts/execution.md.
+
+## Current hosted correction issue — 2026-10-26 UTC
+
+Actual Ubuntu Check job121393052855 at run40267522889 fails bool_assert_comparison in the Linux-only sealed-native-input test, source2366 line1406. Root supplied full successful API log separately from its in-progress run-log failure; exact bytes/diagnostic extent retained under artifacts/cdc-review01/hosted-correction01. Active bounded assignment cc-prompt-iteration03.md changes only the equivalent boolean assertion in that one test file, with current ordered macOS gates and no Full rerun. Source/index/target transfers on explicit retained CC acknowledgment; root alone pushes after independent handback review. All six rows/Linux acceptance OPEN; no S03 issue.

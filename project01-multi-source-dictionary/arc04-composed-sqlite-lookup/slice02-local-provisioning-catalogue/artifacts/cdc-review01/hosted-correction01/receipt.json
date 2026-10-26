@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "recorded_utc": "2026-10-26T04:11:40Z",
+  "source": "2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a",
+  "run_id": 40267522889,
+  "job_id": 121393052855,
+  "run_url": "https://github.com/oxur/vlajmaji/actions/runs/40267522889",
+  "job_url": "https://github.com/oxur/vlajmaji/actions/runs/40267522889/job/121393052855",
+  "job_conclusion": "failure",
+  "diagnostic": "Clippy bool_assert_comparison at crates/store/tests/collections_contract.rs:1406",
+  "log_bytes": 46034,
+  "log_sha256": "6607c749d101d1b62bb7d2dde97b25331b7221667cb5dbadd8e6668098024410",
+  "retrieval": "Root gh api job-log request exit0; root gh run log request exit1 because overall run in progress. Distinct attempts, not corrupted/missing API log.",
+  "cdc_read_extent": "Exact owning source1355-1420 and complete diagnostic log528-545; full575-line log preserved byte-for-byte, not claimed full-read.",
+  "other_jobs": "still running at root report; no conclusion inferred",
+  "linux_acceptance": "OPEN"
+}
