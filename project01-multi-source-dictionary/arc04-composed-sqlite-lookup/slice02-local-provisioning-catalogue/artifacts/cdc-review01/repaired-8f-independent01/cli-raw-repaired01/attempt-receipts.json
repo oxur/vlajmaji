@@ -1,0 +1,233 @@
+[
+  {
+    "label": "install-all",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "install",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/all-four",
+      "--manifest",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/local inputs \u03bb ; literal/batch.json",
+      "--all",
+      "--allow-synthetic"
+    ],
+    "exit": 0,
+    "stdout_sha256": "0a9a783047c326a8143daca1f13e462c55e9f7b933155b881f296754116a442d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "farvi-all",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "dictionary-query",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/all-four/generations/6e46d7bc383556d9bedc6aa20c645169/store",
+      "--request",
+      "{\"operation\": \"exact\", \"spelling\": \"farvi\"}"
+    ],
+    "exit": 0,
+    "stdout_sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "raw-inventory",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller-8f0ab27-debug01",
+      "--inspect-raw-catalogue",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/all-four"
+    ],
+    "exit": 0,
+    "stdout_sha256": "0dc73ee03eeba54c13c1b727567ff4805aac76781cc7dcc5cedd586732adbc18",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "supplier-count",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "install",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/all-four",
+      "--manifest",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/local inputs \u03bb ; literal/supplier-count.json",
+      "--all",
+      "--allow-synthetic"
+    ],
+    "exit": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "8bfa2bcd62678481cd799b29c249328bea4e202dfd74a91771bbc57827533bcd"
+  },
+  {
+    "label": "supplier-count-retained",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "list",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/all-four"
+    ],
+    "exit": 0,
+    "stdout_sha256": "95de434f9e35ff76aafda92ed144c39585b922f6d06946851e41b6e6e9101957",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "list",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "list",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/all-four"
+    ],
+    "exit": 0,
+    "stdout_sha256": "95de434f9e35ff76aafda92ed144c39585b922f6d06946851e41b6e6e9101957",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "inspect-lensisku-jbotci",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "inspect",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/all-four",
+      "lensisku-jbotci"
+    ],
+    "exit": 0,
+    "stdout_sha256": "d9fa5f46825591b58523364f703395af9605e74f67296af8b238e1f0232b59f6",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "inspect-llg",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "inspect",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/all-four",
+      "llg"
+    ],
+    "exit": 0,
+    "stdout_sha256": "751a07a83e6eca4acf127c7070894ee715f0afc17dd5b1b0389085dc6735685c",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "inspect-la-lojban",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "inspect",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/all-four",
+      "la-lojban"
+    ],
+    "exit": 0,
+    "stdout_sha256": "f003d3299e992e134fea6b9fee1e764464abbc098772962f1ed4d245370edc6d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "inspect-sutysisku",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "inspect",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/all-four",
+      "sutysisku"
+    ],
+    "exit": 0,
+    "stdout_sha256": "1b6035ae203a1b73c9e3d7c7617527f2e9889fd31c71426cfcda0d80915e6ccd",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "selected-no-io",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "install",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/selected-only",
+      "--manifest",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/local inputs \u03bb ; literal/selected-only.json",
+      "--pack",
+      "lensisku-jbotci",
+      "--allow-synthetic"
+    ],
+    "exit": 0,
+    "stdout_sha256": "db388c025255b3be53f6466435706cb4ba4f62f24b313898f145ebf5be07fe14",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "all-selected-missing",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "install",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/selected-only",
+      "--manifest",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/local inputs \u03bb ; literal/selected-only.json",
+      "--all",
+      "--allow-synthetic"
+    ],
+    "exit": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "3be0bc8034e5728d4906c80e106751c756414f9e4e93c493e85136e1d991acfa"
+  },
+  {
+    "label": "selected-still-one",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "list",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/selected-only"
+    ],
+    "exit": 0,
+    "stdout_sha256": "dc534cd561ebdead5cfeade0bf8aa0bb80ef0d318f69becd81a1312b986c7f4f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "lost-output-install",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "install",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/lost-output-catalogue",
+      "--manifest",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/local inputs \u03bb ; literal/batch.json",
+      "--pack",
+      "llg",
+      "--allow-synthetic"
+    ],
+    "exit": 0,
+    "stdout_read_end_closed": true,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "lost-output-committed",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "list",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/lost-output-catalogue"
+    ],
+    "exit": 0,
+    "stdout_sha256": "0f199a1f94998b8736b120edebfad3bb93ac2b69f92793fbccfe75ad1f17bb96",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "lost-output-query",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "dictionary-query",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/lost-output-catalogue/generations/3c0f1c330da638ca34f2ee3c8732d053/store",
+      "--request",
+      "{\"operation\": \"exact\", \"spelling\": \"farvi\"}"
+    ],
+    "exit": 0,
+    "stdout_sha256": "dddf2ae4ef8eb971ca3e2eb17060332aa5318f54d7282a42712121b3c699503e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "missing-read-only",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+      "collections",
+      "list",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01/not-created"
+    ],
+    "exit": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "82518d86ef37794ea61b0610ff5866a762ae672e80b2867164b88e0553f4725d"
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "source_commit": "8f0ab277ffd0b79b2fe02f70af9cf93596ceab91",
+  "records": [
+    {
+      "label": "repaired-cli-errors01",
+      "argv": [
+        "python3",
+        "-B",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/cli_error_controls01.py",
+        "--binary",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+        "--scratch",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.336593999993056,
+      "log_sha256": "ea15a75388bbd7dfec654d361ce61a0ce06d521fd428938acaf186adc658969f"
+    },
+    {
+      "label": "repaired-cli-raw01",
+      "argv": [
+        "python3",
+        "-B",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/cli_controls01.py",
+        "--binary",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01",
+        "--inventory-binary",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller-8f0ab27-debug01",
+        "--scratch",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/cli-raw-repaired01"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.760968083050102,
+      "log_sha256": "c817a16fdee23c547a2fc81ca2190379e44c2a2d1c5ff00a6a3715520227c035"
+    }
+  ]
+}

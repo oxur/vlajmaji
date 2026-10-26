@@ -1,0 +1,51 @@
+{
+  "source_commit": "8f0ab277ffd0b79b2fe02f70af9cf93596ceab91",
+  "records": [
+    {
+      "label": "repaired-public-build01",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-cargo",
+        "+1.98.0",
+        "build",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller01/Cargo.toml",
+        "--bin",
+        "a04_s02_cdc_public_20261026a"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 4.535604959353805,
+      "log_sha256": "b3330db607e4cb8e9a72834c09d778d8e7ea680b1c29e6f22ca267058b52181e",
+      "binary_sha256": "e75d7b92cf4d6bef7d25f4f9ca3c3e4410e695c6c3a672458d9510ffa6c0da2b"
+    },
+    {
+      "label": "repaired-public-runtime01",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller-8f0ab27-debug01",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/public-runtime-repaired01"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.8722589169628918,
+      "log_sha256": "d4938a0e8a3784e232bfc680f7f9eec9074bad71e2d945c0f769281e3a50a686"
+    },
+    {
+      "label": "repaired-cli-build01",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-cargo",
+        "+1.98.0",
+        "build",
+        "--locked",
+        "--offline",
+        "-p",
+        "vlajmaji-cli",
+        "--bin",
+        "vlajmaji"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.14357441710308194,
+      "log_sha256": "0d1c4df8151dae5c4b48631fa73e23c7d640436499d8def3ec3e0127ca62691b",
+      "binary_sha256": "b337ac558e4d7835d82c9712644c29fc5d7770a5a935bad613a2f76edb109045"
+    }
+  ]
+}

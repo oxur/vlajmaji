@@ -1,0 +1,237 @@
+[
+  {
+    "label": "missing-unicode-manifest",
+    "argv_native": [
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d386630616232372d64656275673031",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01"
+      },
+      {
+        "hex": "636f6c6c656374696f6e73",
+        "utf8": "collections"
+      },
+      {
+        "hex": "696e7374616c6c",
+        "utf8": "install"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f6e6f2d636174616c6f677565",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01/no-catalogue"
+      },
+      {
+        "hex": "2d2d6d616e6966657374",
+        "utf8": "--manifest"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f616273656e7420cebb203b206c69746572616c2e6a736f6e",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01/absent \u03bb ; literal.json"
+      },
+      {
+        "hex": "2d2d616c6c",
+        "utf8": "--all"
+      }
+    ],
+    "exit": 1,
+    "elapsed_seconds": 1.2070085001178086,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "9b80bd28673a787591e75103bc3295da749d1232deff1eaa46f5a4eabb59fc0f"
+  },
+  {
+    "label": "missing-native-manifest",
+    "argv_native": [
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d386630616232372d64656275673031",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01"
+      },
+      {
+        "hex": "636f6c6c656374696f6e73",
+        "utf8": "collections"
+      },
+      {
+        "hex": "7265676973746572",
+        "utf8": "register"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f6e6f2d636174616c6f677565",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01/no-catalogue"
+      },
+      {
+        "hex": "2d2d6d616e6966657374",
+        "utf8": "--manifest"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f6d697373696e672dff2e6a736f6e",
+        "utf8": null
+      },
+      {
+        "hex": "2d2d616c6c",
+        "utf8": "--all"
+      }
+    ],
+    "exit": 1,
+    "elapsed_seconds": 0.006533959414809942,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "80abeb6db8db7fe859e6cd1e70cf6cbc99e96c687ad5e52f2b5dcac5ba975788"
+  },
+  {
+    "label": "manifest-no-selector",
+    "argv_native": [
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d386630616232372d64656275673031",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01"
+      },
+      {
+        "hex": "636f6c6c656374696f6e73",
+        "utf8": "collections"
+      },
+      {
+        "hex": "696e7374616c6c",
+        "utf8": "install"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f6e6f2d636174616c6f677565",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01/no-catalogue"
+      },
+      {
+        "hex": "2d2d6d616e6966657374",
+        "utf8": "--manifest"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f616273656e7420cebb203b206c69746572616c2e6a736f6e",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01/absent \u03bb ; literal.json"
+      }
+    ],
+    "exit": 1,
+    "elapsed_seconds": 0.006358624901622534,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "29483cd11d3a5edab59d622d1564b12f0851f99200ae3c84b31a2447208b3669"
+  },
+  {
+    "label": "direct-no-files",
+    "argv_native": [
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d386630616232372d64656275673031",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01"
+      },
+      {
+        "hex": "636f6c6c656374696f6e73",
+        "utf8": "collections"
+      },
+      {
+        "hex": "7265676973746572",
+        "utf8": "register"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f6e6f2d636174616c6f677565",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01/no-catalogue"
+      },
+      {
+        "hex": "2d2d7061636b",
+        "utf8": "--pack"
+      },
+      {
+        "hex": "6c6c67",
+        "utf8": "llg"
+      }
+    ],
+    "exit": 1,
+    "elapsed_seconds": 0.006212125066667795,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "fea137734598d2101607cc8a34efecfa23c3c0a5df7237d15706f035da519e7e"
+  },
+  {
+    "label": "unknown-pack",
+    "argv_native": [
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d386630616232372d64656275673031",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01"
+      },
+      {
+        "hex": "636f6c6c656374696f6e73",
+        "utf8": "collections"
+      },
+      {
+        "hex": "696e7370656374",
+        "utf8": "inspect"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f6e6f2d636174616c6f677565",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01/no-catalogue"
+      },
+      {
+        "hex": "756e6b6e6f776e2d7061636b",
+        "utf8": "unknown-pack"
+      }
+    ],
+    "exit": 1,
+    "elapsed_seconds": 0.005809041205793619,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "6aa2207683e333b05776f467564b219d970d4c84cb550d2b1e8ccb8e5d053292"
+  },
+  {
+    "label": "missing-reader",
+    "argv_native": [
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d386630616232372d64656275673031",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01"
+      },
+      {
+        "hex": "636f6c6c656374696f6e73",
+        "utf8": "collections"
+      },
+      {
+        "hex": "6c697374",
+        "utf8": "list"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f6e6f2d636174616c6f677565",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01/no-catalogue"
+      }
+    ],
+    "exit": 1,
+    "elapsed_seconds": 0.004653708077967167,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "fd2baa2c6fff114557b0f6837136dc7f3e9be31cb876767fb018794e78ccd368"
+  },
+  {
+    "label": "clap-conflict",
+    "argv_native": [
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d386630616232372d64656275673031",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-8f0ab27-debug01"
+      },
+      {
+        "hex": "636f6c6c656374696f6e73",
+        "utf8": "collections"
+      },
+      {
+        "hex": "696e7374616c6c",
+        "utf8": "install"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f6e6f2d636174616c6f677565",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01/no-catalogue"
+      },
+      {
+        "hex": "2d2d6d616e6966657374",
+        "utf8": "--manifest"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f616273656e7420cebb203b206c69746572616c2e6a736f6e",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01/absent \u03bb ; literal.json"
+      },
+      {
+        "hex": "2d2d72656c65617365",
+        "utf8": "--release"
+      },
+      {
+        "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6572726f72732d726570616972656430312f756e75736564",
+        "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-errors-repaired01/unused"
+      }
+    ],
+    "exit": 2,
+    "elapsed_seconds": 0.004694083705544472,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "53bfa6eb88894a9eaf7e3b827e75ea54c8658116004da888c52f8bbb102b3983"
+  }
+]

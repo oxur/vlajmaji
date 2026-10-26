@@ -2,10 +2,10 @@
 
 | Field | Current value |
 | --- | --- |
-| Status / version | Corrective iteration01 ISSUED after root readiness PASS; b38 candidate rejected, six rows OPEN. Initial issue/version1.1 preserved. |
+| Status / version | Iteration01 frozen8f; independent tiny runtime controls pass, platform test completion HOLD. Iteration02 ISSUED after root readiness PASS; six rows OPEN. |
 | Authority | Duncan's Autonomous THROUGH ARC04 approval; unchanged requested Sol6.1/high CDC and Luna/high CC. S01 selected Unified, independently accepted at source 4b4158c and planning ba1faf0. No new inquiry or Operator gate. |
 | Source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; current frozen b38bdfe5d2a59ab430539021382225f256b619b3; original issue baseline4b4158c preserved below. |
-| Ownership | Current: CDC source/index/target after b38 handback; design/planning/independent acceptance. Numbered repair transfers only on explicit dispatch and CC acknowledgment. Root read-only. |
+| Ownership | Current: CDC source/index/target after explicit8f freeze/handback. Iteration02 transfers only on dispatch/acknowledgment. CDC design/planning/independent acceptance; root read-only. |
 | Useful delivery | One local command installs selected/all four packs into an additive verified Unified generation; reusable Rust APIs register, install, list and inspect a truthful persistent collection catalogue. |
 | Exclusions | S03 configuration/default selection and combined command; S04 update/removal/recovery commands; S05 output projection; A05 owned editor. No actual user default, protected main/Bauske/accepted stores, acquisition, push, publication or comparison rerun. |
 
@@ -177,3 +177,15 @@ CC froze clean b38bdfe after actual ordered/feature gates and explicitly returne
 ## Corrective issue — 2026-10-26 03:11 UTC
 
 Root fully reviewed the preserved iteration01 and rejected-candidate record, independently rehashed all35 small bundle payloads, and approved scoped issue/retained Luna dispatch. This is readiness/evidence consistency, not product acceptance. Active assignment is cc-prompt-iteration01.md; four-path subset only. Source/index/target transfers on explicit dispatch/CC acknowledgment, then returns at clean freeze. Prior NOT DISPATCHED checkpoint above is historical. Linux05 and Full remain OPEN.
+
+## Iteration01 author checkpoint — 2026-10-26 UTC
+
+Retained CC acknowledged and owns source/index/target. Author attempt98 compiled no tests (two new assertion type errors); attempt99 ran18 with14PASS/4FAIL, including old outer-variant assertions versus the prescribed context wrapper and missing-input cleanup ENOENT after its product checks. Attempt100 ran17/18 with one wrong DB-symlink path expectation. Attempt101 passed18/18; exact same missing-Sut-path valid retry was then added and attempt102 focused1/1 passed. These are author observations at their exact moving source state, not independent repaired acceptance. CLI/current ordered and feature gates still pending. No Full or Linux run.
+
+## Iteration01 independent runtime / platform checkpoint — 2026-10-26 UTC
+
+Source8f0ab277 is clean and returned to CDC. Independent actual runtime controls pass53 public predicates,7 error/native/Clap processes and17 raw CLI processes; complete25-category body inventories and four canonical release hashes agree with pinned literal adapters, including explicit empty families. All parent exits0, expected negative children1/Clap2. Exact logs/scripts/receipts/runtime hashes are in artifacts/cdc-review01/repaired-8f-independent01. Full and Linux remain unexecuted. Exact final source review found the previously directed macOS-only local/helper cfg-scoping omitted, and identified the need for real existing-byte Linux CLI positive under the initial native routing contract. Root agreed precisely two-test-file iteration02; draft ready, no ownership transfer yet. Runtime observations may be retained only on byte-identical runtime/lock descendant, not retroactively called Linux proof.
+
+## Iteration02 issue — 2026-10-26 UTC
+
+Root read the complete two-test-file prompt/helpers/cfg boundary, independently matched41 canonical small files and five runtime/lock hashes, and approved scoped issue/retained Luna dispatch. Active assignment cc-prompt-iteration02.md; source8f remains frozen until explicit dispatch/acknowledgment. This readiness and runtime-proof retention is not Linux or Full acceptance. Prior DRAFT/HOLD statements above describe historical checkpoints.
