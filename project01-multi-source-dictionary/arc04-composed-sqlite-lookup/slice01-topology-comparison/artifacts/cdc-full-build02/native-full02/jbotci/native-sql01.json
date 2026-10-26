@@ -1,0 +1,129 @@
+{
+  "selected_packs": [
+    "lensisku-jbotci"
+  ],
+  "database": "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/jbotci/dictionary.sqlite3",
+  "verdict": "PASS",
+  "checks": {
+    "unique_sql_occurrence": 33526,
+    "exact_occurrence_tuple_ordinal_line": 33526,
+    "all_native_field_ordinals_names_encodings_lexemes": 33526,
+    "complete_native_assertion_entry_attribution_policy": 33526,
+    "independent_exact_gloss_object": 39721,
+    "complete_all_occurrences_no_omissions": 1,
+    "complete_all_native_fields_no_omissions": 1,
+    "complete_capture_identity_multiset": 1,
+    "all_eight_exact_capture_bytes": 2,
+    "complete_context_owner_value_evidence_multiset": 1,
+    "complete_form_owner_standing_value_evidence_multiset": 1,
+    "complete_etymology_owner_value_evidence_multiset": 1,
+    "complete_extension_owner_exact_lexeme_evidence_multiset": 1,
+    "complete_eligible_source_spelling_occurrence_assertion_tuples": 1,
+    "source_derived_complete_word_union": 1,
+    "exact_47_table_name_set_including_empty_categories": 1,
+    "explicit_empty_category_argument_frames": 1,
+    "explicit_empty_category_argument_slots": 1,
+    "explicit_empty_category_etymology_components": 1,
+    "explicit_empty_category_form_components": 1,
+    "explicit_empty_category_relations": 1,
+    "explicit_empty_category_owned_revisions": 1,
+    "explicit_empty_category_revision_assertions": 1,
+    "explicit_empty_category_revision_tombstones": 1,
+    "explicit_empty_category_owned_heads": 1,
+    "explicit_empty_category_editorial_senses": 1,
+    "explicit_empty_category_editorial_members": 1,
+    "explicit_empty_category_computations": 1,
+    "explicit_empty_category_computation_inputs": 1,
+    "explicit_empty_category_annotations": 1,
+    "explicit_empty_category_assertion_timestamps": 1,
+    "readonly_db_hash_unchanged": 1
+  },
+  "total_checks": 173853,
+  "source_policy_per_pack": {
+    "lensisku-jbotci": {
+      "occurrences": 33526,
+      "native_fields": 278254,
+      "lexical": 33516
+    }
+  },
+  "native_fields": 278254,
+  "occurrences": 33526,
+  "typed_multiset_comparisons": {
+    "contexts": {
+      "rows": 76357,
+      "sha256": "9128dfa9043d519368d01124a54df04c07e996d2c3193104c630f9f7250d8b69"
+    },
+    "forms": {
+      "rows": 4008,
+      "sha256": "76c220aa4107b96e4a332fc3d52faf0f5776fa38d0b2c608214e64263b1d10ea"
+    },
+    "etymologies": {
+      "rows": 2085,
+      "sha256": "93d7739794f8aee0ef57052273a50dc1192b0257f4110583def1fdbb94deee86"
+    },
+    "extensions": {
+      "rows": 73226,
+      "sha256": "157fd2adc34a8edfd7b628e2b561c75d2ea127132282816965ee5fa330faa276"
+    },
+    "eligible": {
+      "rows": 33516,
+      "sha256": "3657fd3b92527bf7056eaab464e9bd5fdc09313bb2d07f7607c9a8cfe6c7ffc5"
+    }
+  },
+  "eligible_words": 31248,
+  "eligible_word_union_sha256": "bad0b9a25d03230fd2491aff300f9d4443ee05ae3d5857ebfb54709535eb0fe1",
+  "eligible_by_source": {
+    "lensisku": 33516
+  },
+  "table_inventory_all47": {
+    "annotations": 0,
+    "argument_frames": 0,
+    "argument_slots": 0,
+    "assertion_timestamps": 0,
+    "assertions": 33526,
+    "canonical_document": 1,
+    "capture_refs": 2,
+    "code_notices": 1,
+    "collections": 1,
+    "component_languages": 1,
+    "components": 1,
+    "computation_inputs": 0,
+    "computations": 0,
+    "content_notices": 1,
+    "contexts": 76357,
+    "contributors": 238,
+    "distributors": 1,
+    "editorial_members": 0,
+    "editorial_senses": 0,
+    "entity_ids": 149505,
+    "entries": 33526,
+    "etymologies": 2085,
+    "etymology_components": 0,
+    "extensions": 73226,
+    "form_components": 0,
+    "forms": 4008,
+    "metadata": 7,
+    "native_fields": 278254,
+    "occurrence_attributions": 33526,
+    "occurrence_refs": 33526,
+    "owned_heads": 0,
+    "owned_revisions": 0,
+    "raw_captures": 2,
+    "raw_occurrences": 33526,
+    "redistribution_evidence": 1,
+    "relations": 0,
+    "release_assertions": 33526,
+    "release_captures": 2,
+    "release_diagnostics": 10,
+    "releases": 1,
+    "revision_assertions": 0,
+    "revision_tombstones": 0,
+    "snapshot_bindings": 2,
+    "source_aliases": 0,
+    "source_evidence": 74559,
+    "source_lineage": 1,
+    "sources": 1
+  },
+  "db_pre_sha256": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+  "db_post_sha256": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d"
+}

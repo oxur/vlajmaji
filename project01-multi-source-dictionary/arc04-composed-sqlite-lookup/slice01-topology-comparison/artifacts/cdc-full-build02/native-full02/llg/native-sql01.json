@@ -1,0 +1,128 @@
+{
+  "selected_packs": [
+    "llg"
+  ],
+  "database": "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/llg/dictionary.sqlite3",
+  "verdict": "PASS",
+  "checks": {
+    "unique_sql_occurrence": 4074,
+    "exact_occurrence_tuple_ordinal_line": 4074,
+    "all_native_field_ordinals_names_encodings_lexemes": 4074,
+    "complete_native_assertion_entry_attribution_policy": 4074,
+    "complete_all_occurrences_no_omissions": 1,
+    "complete_all_native_fields_no_omissions": 1,
+    "complete_capture_identity_multiset": 1,
+    "all_eight_exact_capture_bytes": 4,
+    "complete_context_owner_value_evidence_multiset": 1,
+    "complete_form_owner_standing_value_evidence_multiset": 1,
+    "complete_etymology_owner_value_evidence_multiset": 1,
+    "complete_extension_owner_exact_lexeme_evidence_multiset": 1,
+    "complete_eligible_source_spelling_occurrence_assertion_tuples": 1,
+    "source_derived_complete_word_union": 1,
+    "exact_47_table_name_set_including_empty_categories": 1,
+    "explicit_empty_category_argument_frames": 1,
+    "explicit_empty_category_argument_slots": 1,
+    "explicit_empty_category_etymology_components": 1,
+    "explicit_empty_category_form_components": 1,
+    "explicit_empty_category_relations": 1,
+    "explicit_empty_category_owned_revisions": 1,
+    "explicit_empty_category_revision_assertions": 1,
+    "explicit_empty_category_revision_tombstones": 1,
+    "explicit_empty_category_owned_heads": 1,
+    "explicit_empty_category_editorial_senses": 1,
+    "explicit_empty_category_editorial_members": 1,
+    "explicit_empty_category_computations": 1,
+    "explicit_empty_category_computation_inputs": 1,
+    "explicit_empty_category_annotations": 1,
+    "explicit_empty_category_assertion_timestamps": 1,
+    "readonly_db_hash_unchanged": 1
+  },
+  "total_checks": 16326,
+  "source_policy_per_pack": {
+    "llg": {
+      "occurrences": 4074,
+      "native_fields": 23298,
+      "lexical": 2527
+    }
+  },
+  "native_fields": 23298,
+  "occurrences": 4074,
+  "typed_multiset_comparisons": {
+    "contexts": {
+      "rows": 5804,
+      "sha256": "cd6b1a1f02200c97160cd7f53873e4e3162a05bfa5b59b2237805340bdf1a5d4"
+    },
+    "forms": {
+      "rows": 3091,
+      "sha256": "29f7fe0412ee463f55723681317a2a58e8822fb60a2d9668a100a551e7aac8a7"
+    },
+    "etymologies": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "extensions": {
+      "rows": 2865,
+      "sha256": "b0fb36ef093cc8ef3c4d823aee9a305a8737b59c3436d8fcf30d896585554cc0"
+    },
+    "eligible": {
+      "rows": 2527,
+      "sha256": "fd5172340474a3110f50ef9158dd8c0e4b1802fc9e2b88d2709a8ebe90fd6476"
+    }
+  },
+  "eligible_words": 2433,
+  "eligible_word_union_sha256": "9d86fc2e82894403629f7ef4cc3613fd2b0fa38e10a369382b8fc9a694ce685e",
+  "eligible_by_source": {
+    "llg": 2527
+  },
+  "table_inventory_all47": {
+    "annotations": 0,
+    "argument_frames": 0,
+    "argument_slots": 0,
+    "assertion_timestamps": 0,
+    "assertions": 4074,
+    "canonical_document": 1,
+    "capture_refs": 4,
+    "code_notices": 1,
+    "collections": 1,
+    "component_languages": 3,
+    "components": 3,
+    "computation_inputs": 0,
+    "computations": 0,
+    "content_notices": 3,
+    "contexts": 5804,
+    "contributors": 0,
+    "distributors": 0,
+    "editorial_members": 0,
+    "editorial_senses": 0,
+    "entity_ids": 15411,
+    "entries": 2435,
+    "etymologies": 0,
+    "etymology_components": 0,
+    "extensions": 2865,
+    "form_components": 0,
+    "forms": 3091,
+    "metadata": 7,
+    "native_fields": 23298,
+    "occurrence_attributions": 4074,
+    "occurrence_refs": 4074,
+    "owned_heads": 0,
+    "owned_revisions": 0,
+    "raw_captures": 4,
+    "raw_occurrences": 4074,
+    "redistribution_evidence": 3,
+    "relations": 0,
+    "release_assertions": 4074,
+    "release_captures": 6,
+    "release_diagnostics": 3,
+    "releases": 3,
+    "revision_assertions": 0,
+    "revision_tombstones": 0,
+    "snapshot_bindings": 4,
+    "source_aliases": 0,
+    "source_evidence": 11760,
+    "source_lineage": 0,
+    "sources": 1
+  },
+  "db_pre_sha256": "e008de033436d9f496f9e710a2fc7f520b0d990d436874ee98a4ea5c77bf5191",
+  "db_post_sha256": "e008de033436d9f496f9e710a2fc7f520b0d990d436874ee98a4ea5c77bf5191"
+}

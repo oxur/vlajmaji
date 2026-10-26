@@ -1,0 +1,128 @@
+{
+  "selected_packs": [
+    "sutysisku"
+  ],
+  "database": "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/sut/dictionary.sqlite3",
+  "verdict": "PASS",
+  "checks": {
+    "unique_sql_occurrence": 23705,
+    "exact_occurrence_tuple_ordinal_line": 23705,
+    "all_native_field_ordinals_names_encodings_lexemes": 23705,
+    "complete_native_assertion_entry_attribution_policy": 23705,
+    "complete_all_occurrences_no_omissions": 1,
+    "complete_all_native_fields_no_omissions": 1,
+    "complete_capture_identity_multiset": 1,
+    "all_eight_exact_capture_bytes": 1,
+    "complete_context_owner_value_evidence_multiset": 1,
+    "complete_form_owner_standing_value_evidence_multiset": 1,
+    "complete_etymology_owner_value_evidence_multiset": 1,
+    "complete_extension_owner_exact_lexeme_evidence_multiset": 1,
+    "complete_eligible_source_spelling_occurrence_assertion_tuples": 1,
+    "source_derived_complete_word_union": 1,
+    "exact_47_table_name_set_including_empty_categories": 1,
+    "explicit_empty_category_argument_frames": 1,
+    "explicit_empty_category_argument_slots": 1,
+    "explicit_empty_category_etymology_components": 1,
+    "explicit_empty_category_form_components": 1,
+    "explicit_empty_category_relations": 1,
+    "explicit_empty_category_owned_revisions": 1,
+    "explicit_empty_category_revision_assertions": 1,
+    "explicit_empty_category_revision_tombstones": 1,
+    "explicit_empty_category_owned_heads": 1,
+    "explicit_empty_category_editorial_senses": 1,
+    "explicit_empty_category_editorial_members": 1,
+    "explicit_empty_category_computations": 1,
+    "explicit_empty_category_computation_inputs": 1,
+    "explicit_empty_category_annotations": 1,
+    "explicit_empty_category_assertion_timestamps": 1,
+    "readonly_db_hash_unchanged": 1
+  },
+  "total_checks": 94847,
+  "source_policy_per_pack": {
+    "sutysisku": {
+      "occurrences": 23705,
+      "native_fields": 115219,
+      "lexical": 23704
+    }
+  },
+  "native_fields": 115219,
+  "occurrences": 23705,
+  "typed_multiset_comparisons": {
+    "contexts": {
+      "rows": 47492,
+      "sha256": "c909d8c538dc021e9304d489fdd5f9b8cd3b05103c306d06700532f09055476c"
+    },
+    "forms": {
+      "rows": 2951,
+      "sha256": "83f3d7026a126e62e2a3572a28eacf908c3b438d551e396778ffadacbb13b057"
+    },
+    "etymologies": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "extensions": {
+      "rows": 22042,
+      "sha256": "9935602ccae6014e2edde506be7d6a5ef987416f82d40722c11278fe1692e930"
+    },
+    "eligible": {
+      "rows": 23704,
+      "sha256": "331725b0e45d90d711a4d1b035a2d36cee26bd7128e18462f32649e1bea88efd"
+    }
+  },
+  "eligible_words": 23704,
+  "eligible_word_union_sha256": "1eabebadfec1ddc20777e5797297fd94d9d1295e1bf4dfeccd3b6da8c94df052",
+  "eligible_by_source": {
+    "sutysisku": 23704
+  },
+  "table_inventory_all47": {
+    "annotations": 0,
+    "argument_frames": 0,
+    "argument_slots": 0,
+    "assertion_timestamps": 0,
+    "assertions": 23705,
+    "canonical_document": 1,
+    "capture_refs": 1,
+    "code_notices": 1,
+    "collections": 1,
+    "component_languages": 1,
+    "components": 1,
+    "computation_inputs": 0,
+    "computations": 0,
+    "content_notices": 1,
+    "contexts": 47492,
+    "contributors": 0,
+    "distributors": 1,
+    "editorial_members": 0,
+    "editorial_senses": 0,
+    "entity_ids": 97856,
+    "entries": 23705,
+    "etymologies": 0,
+    "etymology_components": 0,
+    "extensions": 22042,
+    "form_components": 0,
+    "forms": 2951,
+    "metadata": 7,
+    "native_fields": 115219,
+    "occurrence_attributions": 23705,
+    "occurrence_refs": 23705,
+    "owned_heads": 0,
+    "owned_revisions": 0,
+    "raw_captures": 1,
+    "raw_occurrences": 23705,
+    "redistribution_evidence": 2,
+    "relations": 0,
+    "release_assertions": 23705,
+    "release_captures": 1,
+    "release_diagnostics": 1,
+    "releases": 1,
+    "revision_assertions": 0,
+    "revision_tombstones": 0,
+    "snapshot_bindings": 1,
+    "source_aliases": 0,
+    "source_evidence": 42058,
+    "source_lineage": 1,
+    "sources": 1
+  },
+  "db_pre_sha256": "5a5e4acaeee77954326db9c191cfb6455cd8dddaa425651f6237011300b8980f",
+  "db_post_sha256": "5a5e4acaeee77954326db9c191cfb6455cd8dddaa425651f6237011300b8980f"
+}

@@ -1,0 +1,34 @@
+stage=load-pack id=lensisku-jbotci start
+stage=store id=lensisku-jbotci path=/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/jbotci start
+stage=store id=lensisku-jbotci elapsed_ms=39927 state_sha256=0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460
+stage=load-pack id=llg start
+stage=store id=llg path=/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/llg start
+stage=store id=llg elapsed_ms=3326 state_sha256=d8c8be02b9888c1eee3d3daa053746e483aec995935c4d225234479d4215ce12
+stage=load-pack id=la-lojban start
+stage=store id=la-lojban path=/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/la start
+stage=store id=la-lojban elapsed_ms=20921 state_sha256=e66951094935bd910c6a9ad12fa1bbb51f0578b53d44f22a73056811fe2bc64e
+stage=load-pack id=sutysisku start
+stage=store id=sutysisku path=/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/sut start
+stage=store id=sutysisku elapsed_ms=17401 state_sha256=67499447426d34c269577eb6947d7c7b22b71090e5a30fd653375819d590ffa2
+stage=compose-unified start
+stage=unified path=/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/unified start
+stage=unified elapsed_ms=99526 state_sha256=d9d73cbb49cc5a9ddb0ec16cb6dbb4bb7260ad49f4f8f54c6e6d21f0779b7b19
+stage=prepare-complete unified=/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/unified members=4
+      194.86 real       167.80 user        14.60 sys
+          7908016128  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             2618798  page reclaims
+                   2  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+               54401  voluntary context switches
+              300234  involuntary context switches
+       2545941718789  instructions retired
+        566289937815  cycles elapsed
+          8872171264  peak memory footprint

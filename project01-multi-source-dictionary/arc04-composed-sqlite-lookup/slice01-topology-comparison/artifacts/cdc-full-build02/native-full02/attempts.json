@@ -1,0 +1,67 @@
+[
+  {
+    "store": "jbotci",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+      "-B",
+      "/tmp/vlajmaji-p01-a04-s01-cdc/oracle/native_topology.py",
+      "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/jbotci/dictionary.sqlite3",
+      "/tmp/vlajmaji-p01-a04-s01-cdc/native-full02/jbotci",
+      "lensisku-jbotci"
+    ],
+    "exit": 0,
+    "wall_seconds": 5.4219757919199765
+  },
+  {
+    "store": "llg",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+      "-B",
+      "/tmp/vlajmaji-p01-a04-s01-cdc/oracle/native_topology.py",
+      "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/llg/dictionary.sqlite3",
+      "/tmp/vlajmaji-p01-a04-s01-cdc/native-full02/llg",
+      "llg"
+    ],
+    "exit": 0,
+    "wall_seconds": 0.4124745833687484
+  },
+  {
+    "store": "la",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+      "-B",
+      "/tmp/vlajmaji-p01-a04-s01-cdc/oracle/native_topology.py",
+      "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/la/dictionary.sqlite3",
+      "/tmp/vlajmaji-p01-a04-s01-cdc/native-full02/la",
+      "la-lojban"
+    ],
+    "exit": 0,
+    "wall_seconds": 2.9553063325583935
+  },
+  {
+    "store": "sut",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+      "-B",
+      "/tmp/vlajmaji-p01-a04-s01-cdc/oracle/native_topology.py",
+      "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/sut/dictionary.sqlite3",
+      "/tmp/vlajmaji-p01-a04-s01-cdc/native-full02/sut",
+      "sutysisku"
+    ],
+    "exit": 0,
+    "wall_seconds": 2.2760323751717806
+  },
+  {
+    "store": "unified",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+      "-B",
+      "/tmp/vlajmaji-p01-a04-s01-cdc/oracle/native_topology.py",
+      "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/unified/dictionary.sqlite3",
+      "/tmp/vlajmaji-p01-a04-s01-cdc/native-full02/unified",
+      "lensisku-jbotci,llg,la-lojban,sutysisku"
+    ],
+    "exit": 0,
+    "wall_seconds": 12.131384000182152
+  }
+]
