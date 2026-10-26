@@ -1,0 +1,4 @@
+
+thread 'main' (75809222) panicked at src/shared_body_checks.rs:20:49:
+called `Result::unwrap()` on an `Err` value: MutationContext { source: Pack(LegacyArchiveUnsupported), attempt_id: Some("9db106c8b89f32f1b7519f61cf6b25f6"), prior_local_revision: Some(0), proposed_generation: Some("480ede69a37d13cca4d9c3ac6447ca2a-9db106c8b89f32f1b7519f61cf6b25f6"), observed_generation: None, inputs: [CollectionInputDisposition { pack_id: "la-lojban", disposition: "validated", payload_kind: Some("synthetic"), release_sha256: Some("c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55"), report: None }, CollectionInputDisposition { pack_id: "llg", disposition: "validated", payload_kind: Some("synthetic"), release_sha256: Some("c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55"), report: None }] }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

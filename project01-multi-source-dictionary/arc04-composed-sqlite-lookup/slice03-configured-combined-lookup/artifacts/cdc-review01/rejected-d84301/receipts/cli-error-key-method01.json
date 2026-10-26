@@ -1,0 +1,28 @@
+{
+  "scope": "method only: actual AST ERROR_KEYS and validate_error; no CLI/product execution",
+  "source_sha256": "9103d4789db3cd5249d39fd85e2409ea516f42d5876619cf5a7d916a5aa65480",
+  "cases": [
+    {
+      "case": "complete_nullable_keys",
+      "passed": true
+    },
+    {
+      "case": "missing_config_path",
+      "passed": true
+    },
+    {
+      "case": "missing_root_path",
+      "passed": true
+    },
+    {
+      "case": "missing_profile",
+      "passed": true
+    },
+    {
+      "case": "missing_snapshot",
+      "passed": true
+    }
+  ],
+  "passed": 5,
+  "failed": 0
+}

@@ -1,0 +1,36 @@
+PASS pre-install complete inventory and four discriminating comparator negatives
+PASS tiny installation agrees with independently frozen complete body
+PASS initial explicit profile roundtrip and default selection
+PASS semantic no-op preserves changed formatting and exact bytes
+PASS resolved-relative and omitted-default semantic no-op
+PASS strict config unknown field rejection and exact valid counterpart
+PASS strict config duplicate field rejection and exact valid counterpart
+PASS strict config unsupported version rejection and exact valid counterpart
+PASS strict config unknown default rejection and exact valid counterpart
+PASS strict config negative revision rejection and exact valid counterpart
+PASS strict config invalid profile name rejection and exact valid counterpart
+PASS strict config duplicate pack rejection and exact valid counterpart
+PASS native ROOT strict wire cases, exact byte roundtrip and unchanged directory entries; unselected-root read boundary also needs source inspection
+PASS explicit profile works with no implicit default
+PASS unselected root receives no creation and empty membership stays empty
+PASS changed policy increments revision and preserves existing mode
+PASS occupied lock preserves sentinel and exact same request succeeds after release
+PASS revision overflow preserves bytes and ordinary changed revision succeeds
+PASS config-leaf symlink rejected without target mutation and absent-leaf counterpart succeeds
+PASS benign ancestor alias and private newly-created parent/file modes
+PASS membership-only preserves independent disable policy/no-op; explicit writer deliberately clears it
+PASS new membership profile starts enabled and preserves unrelated target semantics
+PASS incompatible root preserves exact old file; identical request succeeds after required registration exists
+PASS isolated absolute missing-cwd subprocess
+PASS isolated relative missing-cwd subprocess
+PASS complete unpaged old-route compatibility and literal source-attributed totals
+PASS page size 0 complete totals and fresh-engine ordered continuation
+PASS page size 1 complete totals and fresh-engine ordered continuation
+PASS page size 2 complete totals and fresh-engine ordered continuation
+PASS page size 3 complete totals and fresh-engine ordered continuation
+PASS shared source alias and independently selectable JB versus La receipts
+PASS unchanged configured cursor accepted by fresh engine
+PASS disabled defaults report, explicit override rejects, stale wins before unavailable, old snapshot finishes
+PASS non-ASCII and wrong-magic cursors are typed malformed before no-enabled admission
+PASS independent wrapper positive, version/binding/inner/extra-key negatives, typed stale and unchanged legacy cursor route
+PASS missing owned copy warns without changing binding or invalidating continuation

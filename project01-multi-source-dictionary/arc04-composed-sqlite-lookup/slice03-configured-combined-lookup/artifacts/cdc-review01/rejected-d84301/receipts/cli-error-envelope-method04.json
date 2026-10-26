@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "scope": "actual AST error envelope qualifier only; no product child",
+  "source_sha256": "c810af004f0881716920256e5bccebed452fc6cfe9063f17791c4f556a4c8747",
+  "cases": [
+    "complete positive",
+    "unwrapped report rejected",
+    "missing error rejected",
+    "extra outer rejected",
+    "missing writer rejected"
+  ]
+}

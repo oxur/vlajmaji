@@ -2,9 +2,9 @@
 
 | Field | Binding current value |
 | --- | --- |
-| Status | ISSUED after root canonical readiness PASS, 2026-10-26 UTC. Six rows OPEN; no product acceptance. |
+| Status | Iteration02 ISSUED after root concrete readiness PASS, 2026-10-26 UTC. Frozen d843 rejected; six rows OPEN, no product acceptance. |
 | Authority | Autonomous THROUGH ARC04; unchanged requested Sol6.1/high CDC, Luna/high CC. No new model/budget question. S02 CLOSED atce1bd238 / planning36e7fc9. |
-| Source / ownership | Baseline ce1bd238 on isolated codex/project01-composed-sqlite-lookup; retained CC acknowledged issued 359a3b7 and currently owns source/index/retained target exclusively during implementation. CDC owns planning/review and remains product/target read-only until explicit handback. Main52fd, Arc03/accepted7b, Bauskec580, actual user default and all retained stores protected. |
+| Source / ownership | Rejected frozen d843948 (parent ce1bd238); CDC completed bounded tiny diagnostics and owns source/index/retained target until CC acknowledges issued iteration02, then CC exclusively owns the repair interval. All protected/default/Full-store/no-push boundaries remain. |
 | Useful result | Configure selected/all installed collections and issue one combined exact/reference command with pack selection, source filters, coherent pages and truthful operational availability. |
 | Exclusions | No new topology/adapter, full import/store creation, automatic migration/download/default switch, lifecycle delete/update commands, compact/readable implementation or owned editor. No push/PR/publication. |
 
@@ -142,7 +142,7 @@ Initial assignment is cc-prompt.md; current sourcece1bd238 is clean. Issued plan
 
 ## Assignment history and membership amendment — 2026-10-26 UTC
 
-Current active assignment is cc-prompt-iteration01.md, ISSUED after root concrete packet PASS on 2026-10-26 UTC. CC must acknowledge the numbered assignment before dependent membership-API edits; its current exclusive interval continues. This is an in-flight author-recipe correction before a candidate freeze, not a rejected candidate or acceptance. Initial cc-prompt.md bytes remain unchanged; its unaffected requirements continue to govern.
+Historical assignment at this checkpoint was cc-prompt-iteration01.md, ISSUED after root concrete packet PASS on 2026-10-26 UTC. CC must acknowledge the numbered assignment before dependent membership-API edits; its current exclusive interval continues. This is an in-flight author-recipe correction before a candidate freeze, not a rejected candidate or acceptance. Initial cc-prompt.md bytes remain unchanged; its unaffected requirements continue to govern.
 
 | Assignment | Predecessor / reason | Disposition |
 | --- | --- | --- |
@@ -154,3 +154,18 @@ Binding design cleared by root concrete packet review: keep explicit CollectionP
 Issue identity is the scoped planning commit containing this assignment update; actual hash is returned at dispatch. Root reviewed draft SHA-256 3bd2e6982403ab2a2b5246a4b56233f25f528ea0f385f9ddb906c8d2e9459262 and independently verified formatting-only draft7fe007bf78deb97ef2f352e79b8539888db650cb66bfebd9948a747f683bd4b2 by reversing two spacing edits. A first issue script stopped at its draft-SHA assertion before any write; the corrected guard verifies both hashes. No product test/gate failed or was repeated for that record correction. Root verified all six original criterion/proof/owner/status cells unchanged. No source freeze or implementation acceptance is implied.
 
 A second static issue attempt updated the draft/history to issued, then stopped before staging/commit because an earlier spacing tidy had also reformatted the A04-S03-06 proof cell. The exact original proof-cell bytes were restored; all six criterion/proof/owner/status tuples now match issue359a3b7. This was planning-checker/formatting recovery, not product execution or a scope change.
+
+
+## Iteration02 draft after independent rejection — 2026-10-26 UTC
+
+Frozen d843948 is REJECTED for the reproduced shared Local contributor collapse and config-location diagnostic conflation; writer documentation also omits the declared formatting/concurrency limitations. Current `cc-prompt-iteration02.md` is DRAFT/HOLD pending root readiness review, not issued. Original six criteria/proof/owners/status remain unchanged and OPEN. Initial and iteration01 prompt bytes are preserved. Proposed exact six-path subset and all original gates/boundaries are in the draft; no new public schema, dependency, provider or Full campaign.
+
+Independent diagnostics: shared-body02 4 PASS/2 FAIL; shared-entry02 2 PASS/3 FAIL with both strict models and pure strict composition qualified before install; general public02 exit0/48 PASS groups; CLI04 completed32 children, one retained expected-category failure, child harness exit1. These are rejected-candidate diagnostic scopes, not S03 acceptance. All source/fixture setup and method corrections remain explicitly distinguished in review and retained receipt bundle. `Error::source` stops at the inherited Snapshot wrapper, whose public enum still retains concrete Store cause; no out-of-scope inherited API expansion is needed. Full and actual Linux remain held/pending.
+
++
++## Current iteration02 issue checkpoint — 2026-10-26 UTC
++
++Current active assignment is cc-prompt-iteration02.md, ISSUED after root concrete readiness PASS. Draft SHA2565b7f7f3cd73d9ce4d2599852301cb751c316f1efd53bf230d82284410c5c3ddd is byte-preserved at artifacts/cdc-review01/iteration02-draft.md. Root independently verified all83 rejected-bundle payloads/389977B and all six criterion/proof/owner/status cells unchanged. Earlier DRAFT/HOLD text immediately above is historical and superseded only by this issue; no acceptance or gate waiver occurred. Initial and iteration01 prompt bytes remain unchanged.
++
++The six-path correction fixes all-contributor Local admission/filtering, config-location diagnostics and writer limitations documentation. Rejected d843 source/tree, independent failures and successful scoped controls remain immutable records. All original unaffected obligations/gates persist. Source/index/retained target transfer only after explicit CC acknowledgment; CDC has no active process, no Full access occurred, and actual Linux remains pending. No future push authority is inferred. Issue identity is the scoped planning commit containing this checkpoint, returned with actual source ownership acknowledgment.
++

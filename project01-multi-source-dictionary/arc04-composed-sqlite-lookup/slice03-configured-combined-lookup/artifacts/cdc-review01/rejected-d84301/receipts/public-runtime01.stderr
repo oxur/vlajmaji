@@ -1,0 +1,4 @@
+
+thread 'main' (75811635) panicked at src/query_checks.rs:133:5:
+missing derived lost typed invalid:MissingDatabase: Query(Snapshot(Store(InvalidStore { reason: MissingDatabase, detail: "expected /tmp/vlajmaji-p01-a04-s03-cdc/public-runtime01/R/generations/cd4ed0536dbb152bf1ee33c2e1e2153b/store/dictionary.sqlite3" })))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

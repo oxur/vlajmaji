@@ -1,0 +1,234 @@
+{
+  "baseline_status": "Resolved",
+  "cases": [
+    {
+      "actual_status": "Resolved",
+      "body_matches": true,
+      "disabled": [],
+      "expected_status": "Resolved",
+      "label": "all-selected",
+      "matches": [
+        {
+          "capture": {
+            "namespace": "captured:a:d1",
+            "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+          },
+          "contributing_pack_ids": [
+            "la-lojban",
+            "llg"
+          ],
+          "entity_id": "assertion-0",
+          "model_release_id": "",
+          "native_assertion_id": null,
+          "native_entry_id": null,
+          "occurrence": "/0",
+          "pack_id": "la-lojban",
+          "release_sha256": "b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3",
+          "role": "assertion",
+          "source_id": "source-a"
+        }
+      ],
+      "operational_reason": null,
+      "pass": true,
+      "payload_present": true,
+      "selected": [
+        "la-lojban",
+        "llg"
+      ]
+    },
+    {
+      "actual_status": "Resolved",
+      "body_matches": true,
+      "disabled": [],
+      "expected_status": "Resolved",
+      "label": "first-selected",
+      "matches": [
+        {
+          "capture": {
+            "namespace": "captured:a:d1",
+            "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+          },
+          "contributing_pack_ids": [
+            "la-lojban",
+            "llg"
+          ],
+          "entity_id": "assertion-0",
+          "model_release_id": "",
+          "native_assertion_id": null,
+          "native_entry_id": null,
+          "occurrence": "/0",
+          "pack_id": "la-lojban",
+          "release_sha256": "b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3",
+          "role": "assertion",
+          "source_id": "source-a"
+        }
+      ],
+      "operational_reason": null,
+      "pass": true,
+      "payload_present": true,
+      "selected": [
+        "la-lojban"
+      ]
+    },
+    {
+      "actual_status": "CatalogueOnly",
+      "body_matches": false,
+      "disabled": [],
+      "expected_status": "Resolved",
+      "label": "second-selected",
+      "matches": [
+        {
+          "capture": {
+            "namespace": "captured:a:d1",
+            "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+          },
+          "contributing_pack_ids": [
+            "la-lojban",
+            "llg"
+          ],
+          "entity_id": "assertion-0",
+          "model_release_id": "",
+          "native_assertion_id": null,
+          "native_entry_id": null,
+          "occurrence": "/0",
+          "pack_id": "la-lojban",
+          "release_sha256": "b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3",
+          "role": "assertion",
+          "source_id": "source-a"
+        }
+      ],
+      "operational_reason": "not_selected",
+      "pass": false,
+      "payload_present": false,
+      "selected": [
+        "llg"
+      ]
+    },
+    {
+      "actual_status": "CatalogueOnly",
+      "body_matches": false,
+      "disabled": [
+        "la-lojban"
+      ],
+      "expected_status": "Resolved",
+      "label": "first-disabled-second-selected",
+      "matches": [
+        {
+          "capture": {
+            "namespace": "captured:a:d1",
+            "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+          },
+          "contributing_pack_ids": [
+            "la-lojban",
+            "llg"
+          ],
+          "entity_id": "assertion-0",
+          "model_release_id": "",
+          "native_assertion_id": null,
+          "native_entry_id": null,
+          "occurrence": "/0",
+          "pack_id": "la-lojban",
+          "release_sha256": "b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3",
+          "role": "assertion",
+          "source_id": "source-a"
+        }
+      ],
+      "operational_reason": "disabled",
+      "pass": false,
+      "payload_present": false,
+      "selected": [
+        "la-lojban",
+        "llg"
+      ]
+    },
+    {
+      "actual_status": "Resolved",
+      "body_matches": true,
+      "disabled": [
+        "llg"
+      ],
+      "expected_status": "Resolved",
+      "label": "second-disabled-first-selected",
+      "matches": [
+        {
+          "capture": {
+            "namespace": "captured:a:d1",
+            "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+          },
+          "contributing_pack_ids": [
+            "la-lojban",
+            "llg"
+          ],
+          "entity_id": "assertion-0",
+          "model_release_id": "",
+          "native_assertion_id": null,
+          "native_entry_id": null,
+          "occurrence": "/0",
+          "pack_id": "la-lojban",
+          "release_sha256": "b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3",
+          "role": "assertion",
+          "source_id": "source-a"
+        }
+      ],
+      "operational_reason": null,
+      "pass": true,
+      "payload_present": true,
+      "selected": [
+        "la-lojban",
+        "llg"
+      ]
+    },
+    {
+      "actual_status": "CatalogueOnly",
+      "body_matches": true,
+      "disabled": [
+        "la-lojban",
+        "llg"
+      ],
+      "expected_status": "CatalogueOnly",
+      "label": "all-disabled",
+      "matches": [
+        {
+          "capture": {
+            "namespace": "captured:a:d1",
+            "sha256": "0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"
+          },
+          "contributing_pack_ids": [
+            "la-lojban",
+            "llg"
+          ],
+          "entity_id": "assertion-0",
+          "model_release_id": "",
+          "native_assertion_id": null,
+          "native_entry_id": null,
+          "occurrence": "/0",
+          "pack_id": "la-lojban",
+          "release_sha256": "b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3",
+          "role": "assertion",
+          "source_id": "source-a"
+        }
+      ],
+      "operational_reason": "disabled",
+      "pass": true,
+      "payload_present": false,
+      "selected": [
+        "la-lojban",
+        "llg"
+      ]
+    }
+  ],
+  "catalogue_order": [
+    "la-lojban",
+    "llg"
+  ],
+  "failed": 2,
+  "ok": false,
+  "passed": 4,
+  "scope": "same strict Synthetic model installed under two packs; LocalRef selected contributor regression",
+  "setup_install_succeeded": true,
+  "target": {
+    "Local": {
+      "Assertion": "assertion-0"
+    }
+  }
+}

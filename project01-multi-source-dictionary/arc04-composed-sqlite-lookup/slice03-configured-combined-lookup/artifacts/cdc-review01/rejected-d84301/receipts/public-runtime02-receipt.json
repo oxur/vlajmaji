@@ -1,0 +1,22 @@
+{
+  "candidate": "d843948d6f69188f974276276e5c17b7e2c88f9f",
+  "scope": "diagnostic original planned independent tiny controls against rejected candidate; no Full access",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s03-cdc/public-d84303",
+    "/tmp/vlajmaji-p01-a04-s03-cdc/public-runtime02"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 1.9805594170466065,
+  "binary_sha256": "cdf2bc233c8d93bb9f443a9cf94c3f1d38b4ee254bf22b8c6fd19c25d48621c6",
+  "sources": {
+    "reference_checks.rs": "b7e3f64e52d9d3c26bbc6b7784f18bdb2283f142069bcbd905d957c7e08fb55d",
+    "helpers.rs": "b0d29b14379a7156ee005f93bec5cd927e48d4e058a698cd441194c53dfb9e81",
+    "main.rs": "ae5694a378a3135fd2255de990db29952ac0df717072bcfcc1ec094f15dbcec0",
+    "query_checks.rs": "d69ef7d5e98cdaa709138f82d6beb1966bc9094d9a7c1f6544a9beeadf0155f7",
+    "shared_body_checks.rs": "0862e6a23d80d6136f03a5ff3c8d8b01fab0e6c791d7ef9df95ee1c6e2f93385",
+    "profile_checks.rs": "1311499604b8dbb3fafdcde16384ee1c896862ba646dbfe563145e2feec7fef3"
+  },
+  "stdout_sha256": "dd4b957fbdc7923bfdbfda0f9602b0cb0e02f678859fa3c114f959237b2622b4",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "pass_lines": 48
+}

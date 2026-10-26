@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "scope": "actual current Python AST error-key method only; no child or product execution",
+  "source_sha256": "cfb1a1a23b140cbbb267ad9bc1c9a23a4897a88305e6f74e1925f38bd61778ae",
+  "exact_keys": [
+    "category",
+    "config_path",
+    "detail",
+    "known_pack_ids",
+    "ok",
+    "operation",
+    "outcome",
+    "profile",
+    "requested_profile",
+    "root_path",
+    "snapshot",
+    "version",
+    "writer"
+  ],
+  "cases": [
+    {
+      "case": "complete null-field positive",
+      "accepted": true
+    },
+    {
+      "case": "missing config_path",
+      "accepted": false
+    },
+    {
+      "case": "missing root_path",
+      "accepted": false
+    },
+    {
+      "case": "missing profile",
+      "accepted": false
+    },
+    {
+      "case": "missing requested_profile",
+      "accepted": false
+    },
+    {
+      "case": "missing snapshot",
+      "accepted": false
+    },
+    {
+      "case": "missing writer",
+      "accepted": false
+    },
+    {
+      "case": "unexpected key",
+      "accepted": false
+    }
+  ]
+}

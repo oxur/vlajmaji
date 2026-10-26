@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a04-s03-cdc/cli_controls01.py", line 118, in <module>
+    unknown = child("unknown-profile", ["lookup", "farvi", "--config", CONFIG,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/vlajmaji-p01-a04-s03-cdc/cli_controls01.py", line 76, in child
+    validate_error(error)
+  File "/tmp/vlajmaji-p01-a04-s03-cdc/cli_controls01.py", line 26, in validate_error
+    assert ERROR_KEYS == set(error), (ERROR_KEYS - set(error), set(error) - ERROR_KEYS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ({'operation', 'outcome', 'ok', 'profile', 'config_path', 'known_pack_ids', 'category', 'root_path', 'version', 'detail', 'requested_profile', 'writer', 'snapshot'}, {'error'})

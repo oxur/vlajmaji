@@ -1,0 +1,61 @@
+[
+  {
+    "label": "explicit-profiles-no-home",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "636f6c6c656374696f6e73",
+      "70726f66696c6573",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f7075626c69632d72756e74696d6530322f70726f66696c65732e746f6d6c"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 0,
+    "stdout_bytes": 678,
+    "stdout_sha256": "e62c5fffeb96af03def10dbf9ed3b6b43b651b7ebc4f16981abc9d49e98d7403",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "explicit-selection-no-home",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "636f6c6c656374696f6e73",
+      "73656c656374696f6e",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f7075626c69632d72756e74696d6530322f70726f66696c65732e746f6d6c"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 0,
+    "stdout_bytes": 2989,
+    "stdout_sha256": "823222cd9df4cad35d9d92056d9206cc1d098c1926240fc57492ac372650b29f",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "unknown-profile",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "6c6f6f6b7570",
+      "6661727669",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f7075626c69632d72756e74696d6530322f70726f66696c65732e746f6d6c",
+      "2d2d70726f66696c65",
+      "756e6b6e6f776e2d70726f66696c65"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 1,
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 602,
+    "stderr_sha256": "b5ec4a9dcc588534154e0835b79ece2d68cc54b20475c775653663ccd9677b86"
+  }
+]

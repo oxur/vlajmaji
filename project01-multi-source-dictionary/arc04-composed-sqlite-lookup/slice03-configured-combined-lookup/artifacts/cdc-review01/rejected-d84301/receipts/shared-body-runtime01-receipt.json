@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s03-cdc/public-d84301",
+    "--shared-body",
+    "/tmp/vlajmaji-p01-a04-s03-cdc/shared-body-runtime01"
+  ],
+  "exit_code": 101,
+  "elapsed_seconds": 0.7237299168482423,
+  "candidate": "d843948d6f69188f974276276e5c17b7e2c88f9f",
+  "binary_sha256": "d37d6ef75b9f5a6d7f758fe3169a048ec28a290e1703a6a79e9358583900513e",
+  "source_files": {
+    "src/helpers.rs": "b0d29b14379a7156ee005f93bec5cd927e48d4e058a698cd441194c53dfb9e81",
+    "src/main.rs": "fa9e22cd0c09747a090159f3ca0ced7f36c6e3dcf754d7f6c350e7f1a4d03799",
+    "src/profile_checks.rs": "1311499604b8dbb3fafdcde16384ee1c896862ba646dbfe563145e2feec7fef3",
+    "src/query_checks.rs": "d69ef7d5e98cdaa709138f82d6beb1966bc9094d9a7c1f6544a9beeadf0155f7",
+    "src/reference_checks.rs": "ce09ec71264cc5781965b8f4a2e5922badc94f0f7d639f20835af28b9382507a",
+    "src/shared_body_checks.rs": "a1578e6c581e2729b8d0d478d6d8fad5eaa0dcd1ee670f3660f423022ccc68a1"
+  },
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "f2f0ee8ed89e0a5b10638a3d9b39303e66f2e3260941badbbdddad275f1bd989"
+}

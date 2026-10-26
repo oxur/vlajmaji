@@ -1,0 +1,217 @@
+[
+  {
+    "label": "explicit-profiles-no-home",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "636f6c6c656374696f6e73",
+      "70726f66696c6573",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f7075626c69632d72756e74696d6530322f70726f66696c65732e746f6d6c"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 0,
+    "stdout_bytes": 678,
+    "stdout_sha256": "e62c5fffeb96af03def10dbf9ed3b6b43b651b7ebc4f16981abc9d49e98d7403",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "explicit-selection-no-home",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "636f6c6c656374696f6e73",
+      "73656c656374696f6e",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f7075626c69632d72756e74696d6530322f70726f66696c65732e746f6d6c"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 0,
+    "stdout_bytes": 2989,
+    "stdout_sha256": "823222cd9df4cad35d9d92056d9206cc1d098c1926240fc57492ac372650b29f",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "unknown-profile",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "6c6f6f6b7570",
+      "6661727669",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f7075626c69632d72756e74696d6530322f70726f66696c65732e746f6d6c",
+      "2d2d70726f66696c65",
+      "756e6b6e6f776e2d70726f66696c65"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 1,
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 602,
+    "stderr_sha256": "b5ec4a9dcc588534154e0835b79ece2d68cc54b20475c775653663ccd9677b86"
+  },
+  {
+    "label": "known-profile-counterpart",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "6c6f6f6b7570",
+      "6661727669",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f7075626c69632d72756e74696d6530322f70726f66696c65732e746f6d6c",
+      "2d2d70726f66696c65",
+      "6c6f63616c"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 0,
+    "stdout_bytes": 35115,
+    "stdout_sha256": "f0375fd78a4c37e2f5b80c371f6cb322ec2d22fa72bb3e8d726d3a46051326f5",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "known-disabled-override",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "6c6f6f6b7570",
+      "6661727669",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d72756e74696d6530322f64697361626c65642d70726f66696c652e746f6d6c",
+      "2d2d7061636b",
+      "6c656e7369736b752d6a626f746369"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 1,
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 1112,
+    "stderr_sha256": "a19524377028da76364242785b5f9776b53b3c2170da9f73d5ba4cbfb1ee81c7"
+  },
+  {
+    "label": "enabled-override-counterpart",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "6c6f6f6b7570",
+      "6661727669",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d72756e74696d6530322f64697361626c65642d70726f66696c652e746f6d6c",
+      "2d2d7061636b",
+      "6c612d6c6f6a62616e"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 0,
+    "stdout_bytes": 20348,
+    "stdout_sha256": "1a90b60480b97d9a998f47f74801449334eb7b648ee1b035ce8bc229e6265ddc",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "word-all",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "6c6f6f6b7570",
+      "6661727669",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f7075626c69632d72756e74696d6530322f70726f66696c65732e746f6d6c"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 0,
+    "stdout_bytes": 35115,
+    "stdout_sha256": "f0375fd78a4c37e2f5b80c371f6cb322ec2d22fa72bb3e8d726d3a46051326f5",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "stdin-all",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "6c6f6f6b7570",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f7075626c69632d72756e74696d6530322f70726f66696c65732e746f6d6c"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 0,
+    "stdout_bytes": 35115,
+    "stdout_sha256": "f0375fd78a4c37e2f5b80c371f6cb322ec2d22fa72bb3e8d726d3a46051326f5",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "parse-before-config",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "6c6f6f6b7570",
+      "2d2d72657175657374",
+      "7b",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d72756e74696d6530322f6d7573742d6e6f742d6372656174652f616273656e742e746f6d6c"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 1,
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 323,
+    "stderr_sha256": "b5c1ee88dba5020d06c3e2a6b35da9cc828e29f7a89dd0df9ed7a0e9b0277ea6"
+  },
+  {
+    "label": "missing-config",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "636f6c6c656374696f6e73",
+      "70726f66696c6573",
+      "2d2d636f6e666967",
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d72756e74696d6530322f6d7573742d6e6f742d6372656174652f616273656e742e746f6d6c"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 1,
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 648,
+    "stderr_sha256": "fe03ed498111e508ac51dbf7fd07a80fa6902ed4fc259b2a2fddc4307b01360a"
+  },
+  {
+    "label": "missing-home",
+    "argv_hex": [
+      "2f746d702f766c616a6d616a692d7030312d6130342d7330332d6364632f636c692d643834332d64656275673031",
+      "636f6c6c656374696f6e73",
+      "70726f66696c6573"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LC_ALL": "C"
+    },
+    "exit_code": 1,
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 356,
+    "stderr_sha256": "325a08aac81ede56c8bb378558ae6de77ed6859fa40ab3a4b6309060d0336445"
+  }
+]

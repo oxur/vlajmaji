@@ -1,0 +1,4 @@
+
+thread 'main' (75821013) panicked at src/shared_body_checks.rs:86:73:
+called `Result::unwrap()` on an `Err` value: MutationContext { source: Pack(Dictionary(DuplicateOccurrence("captured:llg:gismu:1 has multiple normalized assertions"))), attempt_id: Some("aa8d96f13a6d4f7eb1bdc5ab099e42ae"), prior_local_revision: Some(0), proposed_generation: Some("413ca5ed3dd9096baac97103e8bd9c65-aa8d96f13a6d4f7eb1bdc5ab099e42ae"), observed_generation: None, inputs: [CollectionInputDisposition { pack_id: "la-lojban", disposition: "validated", payload_kind: Some("synthetic"), release_sha256: Some("231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146"), report: None }, CollectionInputDisposition { pack_id: "llg", disposition: "validated", payload_kind: Some("synthetic"), release_sha256: Some("314497b5b7498521c79626c85d50329c5f9c7d6a0cc2e13c73482bc651e4d2a5"), report: None }] }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
