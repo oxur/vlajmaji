@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "scope": "pre-observation workload graph qualification; no product or Full data/store operation",
+  "positive": "all positive page sizes have exactly ceil(5/page_size) requests in both priming and measured phases",
+  "page_chains": {
+    "1": [
+      "page-1",
+      "page-concat-2",
+      "page-concat-3",
+      "page-concat-4",
+      "page-concat-5"
+    ],
+    "2": [
+      "page-2",
+      "page2-concat-2",
+      "page2-concat-3"
+    ],
+    "3": [
+      "page-3",
+      "page3-concat-2"
+    ],
+    "8": [
+      "page-8"
+    ]
+  },
+  "negative_controls": [
+    {
+      "control": "old48case missing page2/3 continuations rejected",
+      "result": "PASS",
+      "diagnostic": "(2, 'missing or forked continuation', 'page-2')"
+    },
+    {
+      "control": "remove required page2 tail",
+      "result": "PASS",
+      "diagnostic": "(2, 'missing or forked continuation', 'page2-concat-2')"
+    },
+    {
+      "control": "duplicate/fork continuation",
+      "result": "PASS",
+      "diagnostic": "(2, 'missing or forked continuation', 'page-2')"
+    }
+  ],
+  "request_count": 54,
+  "priming_count": 27,
+  "measured_count": 27,
+  "prior_sha256": "9cc8a4cda7d0711531657541abc00dd4cf3b75913e90b624c7b754a2f548d9e4",
+  "current_sha256": "6fe407b2411263370524a44bd101c271fa17a3c3f4e92ee65425025f76d24c21",
+  "refuted_static_lead": "6fc740e Request.spelling already has serde(default); actual19case tiny whole-array run/batch passed with omitted reference spelling. Explicit empty spelling is clarity, not a deserialization repair."
+}

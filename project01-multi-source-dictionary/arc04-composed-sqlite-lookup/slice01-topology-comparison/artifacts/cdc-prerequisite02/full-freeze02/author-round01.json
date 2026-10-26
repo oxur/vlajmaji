@@ -1,0 +1,95 @@
+{
+  "version": 2,
+  "probe_sha256": "e12ddf648d40f385a021591745b19c3e8b3ab8341ca88b780108bb83dbe1a215",
+  "requests_sha256": "6fe407b2411263370524a44bd101c271fa17a3c3f4e92ee65425025f76d24c21",
+  "rounds": [
+    {
+      "number": 1,
+      "order": [
+        "unified",
+        "attached",
+        "fanout"
+      ],
+      "commands": [
+        {
+          "fresh": [
+            "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+            "run",
+            "--manifest",
+            "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+            "--topology",
+            "unified",
+            "--requests",
+            "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+            "--request",
+            "farvi-all"
+          ],
+          "warm": [
+            "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+            "batch",
+            "--manifest",
+            "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+            "--topology",
+            "unified",
+            "--requests",
+            "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+            "--output-dir",
+            "/tmp/vlajmaji-p01-a04-s01-cc/full-responses02/round1-unified"
+          ]
+        },
+        {
+          "fresh": [
+            "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+            "run",
+            "--manifest",
+            "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+            "--topology",
+            "attached",
+            "--requests",
+            "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+            "--request",
+            "farvi-all"
+          ],
+          "warm": [
+            "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+            "batch",
+            "--manifest",
+            "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+            "--topology",
+            "attached",
+            "--requests",
+            "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+            "--output-dir",
+            "/tmp/vlajmaji-p01-a04-s01-cc/full-responses02/round1-attached"
+          ]
+        },
+        {
+          "fresh": [
+            "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+            "run",
+            "--manifest",
+            "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+            "--topology",
+            "fanout",
+            "--requests",
+            "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+            "--request",
+            "farvi-all"
+          ],
+          "warm": [
+            "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+            "batch",
+            "--manifest",
+            "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+            "--topology",
+            "fanout",
+            "--requests",
+            "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+            "--output-dir",
+            "/tmp/vlajmaji-p01-a04-s01-cc/full-responses02/round1-fanout"
+          ]
+        }
+      ]
+    }
+  ]
+}

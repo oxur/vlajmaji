@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "process_controls": [
+    {
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "-B",
+        "-c",
+        "print(\"ok\")"
+      ],
+      "pid": 82814,
+      "exit": 0,
+      "timed_out": false,
+      "outer_wall_seconds": 0.024497625,
+      "stdout_bytes": 3,
+      "stdout_sha256": "dc51b8c96c2d745df3bd5590d990230a482fd247123599548e0632fdbf97fc22",
+      "stderr_sha256": "f1f54fc3500677eded51538043fcd77bab8722b23ee1b9581241807018be4fa5",
+      "maximum_rss_bytes": 9404416,
+      "rss_source": "macOS /usr/bin/time -l (bytes)",
+      "stdout_path": "/tmp/vlajmaji-p01-a04-s01-cdc/runner-controls02/positive.stdout",
+      "stderr_path": "/tmp/vlajmaji-p01-a04-s01-cdc/runner-controls02/positive.stderr",
+      "decision": "passed"
+    },
+    {
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "-B",
+        "-c",
+        "import time;time.sleep(2)"
+      ],
+      "pid": 82816,
+      "exit": -15,
+      "timed_out": true,
+      "outer_wall_seconds": 0.204755875,
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "maximum_rss_bytes": null,
+      "rss_source": "macOS /usr/bin/time -l (bytes)",
+      "stdout_path": "/tmp/vlajmaji-p01-a04-s01-cdc/runner-controls02/timeout.stdout",
+      "stderr_path": "/tmp/vlajmaji-p01-a04-s01-cdc/runner-controls02/timeout.stderr",
+      "decision": "rejected: timeout"
+    },
+    {
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "-B",
+        "-c",
+        "x=bytearray(32*1024*1024);print(len(x))"
+      ],
+      "pid": 82818,
+      "exit": 0,
+      "timed_out": false,
+      "outer_wall_seconds": 0.044424667,
+      "stdout_bytes": 9,
+      "stdout_sha256": "58a256fb0325d6a3a3c006fc9f2a504ae85cefeeb8f7cf622948f5833df0ac49",
+      "stderr_sha256": "96fff6d6657b8ad367ae40a36f5df8cb50f69470602bbba1731d13952c390893",
+      "maximum_rss_bytes": 42909696,
+      "rss_source": "macOS /usr/bin/time -l (bytes)",
+      "stdout_path": "/tmp/vlajmaji-p01-a04-s01-cdc/runner-controls02/rss.stdout",
+      "stderr_path": "/tmp/vlajmaji-p01-a04-s01-cdc/runner-controls02/rss.stderr",
+      "decision": "rejected: RSS cap"
+    }
+  ],
+  "parser_controls": 5
+}

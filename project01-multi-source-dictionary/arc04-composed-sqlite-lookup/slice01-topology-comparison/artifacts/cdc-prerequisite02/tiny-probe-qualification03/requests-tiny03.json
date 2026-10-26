@@ -1,0 +1,599 @@
+[
+  {
+    "id": "prime--farvi-all",
+    "spelling": "farvi",
+    "sources": [],
+    "operation": "exact",
+    "page_size": null,
+    "prime": true
+  },
+  {
+    "id": "prime--farvi-lsk",
+    "spelling": "farvi",
+    "sources": [
+      "LSK"
+    ],
+    "operation": "exact",
+    "page_size": null,
+    "prime": true
+  },
+  {
+    "id": "prime--farvi-llg",
+    "spelling": "farvi",
+    "sources": [
+      "LLG"
+    ],
+    "operation": "exact",
+    "page_size": null,
+    "prime": true
+  },
+  {
+    "id": "prime--farvi-sut",
+    "spelling": "farvi",
+    "sources": [
+      "SUT"
+    ],
+    "operation": "exact",
+    "page_size": null,
+    "prime": true
+  },
+  {
+    "id": "prime--absent",
+    "spelling": "xoprsnqv",
+    "sources": [],
+    "operation": "exact",
+    "page_size": null,
+    "prime": true
+  },
+  {
+    "id": "prime--excluded-sut",
+    "spelling": "zoizoizoi",
+    "sources": [
+      "SUT"
+    ],
+    "operation": "exact",
+    "page_size": null,
+    "prime": true
+  },
+  {
+    "id": "prime--page-0",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 0,
+    "prime": true
+  },
+  {
+    "id": "prime--page-1",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "prime": true
+  },
+  {
+    "id": "prime--page-2",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 2,
+    "prime": true
+  },
+  {
+    "id": "prime--page-3",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 3,
+    "prime": true
+  },
+  {
+    "id": "prime--page-8",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 8,
+    "prime": true
+  },
+  {
+    "id": "prime--page-concat-2",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "prime--page-1",
+    "prime": true
+  },
+  {
+    "id": "prime--page-concat-3",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "prime--page-concat-2",
+    "prime": true
+  },
+  {
+    "id": "prime--page-concat-4",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "prime--page-concat-3",
+    "prime": true
+  },
+  {
+    "id": "prime--page-concat-5",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "prime--page-concat-4",
+    "prime": true
+  },
+  {
+    "id": "prime--page2-concat-2",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 2,
+    "cursor_from": "prime--page-2",
+    "prime": true
+  },
+  {
+    "id": "prime--page2-concat-3",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 2,
+    "cursor_from": "prime--page2-concat-2",
+    "prime": true
+  },
+  {
+    "id": "prime--page3-concat-2",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 3,
+    "cursor_from": "prime--page-3",
+    "prime": true
+  },
+  {
+    "id": "prime--jbotci-local",
+    "operation": "reference",
+    "target": {
+      "Local": {
+        "Assertion": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+      }
+    },
+    "page_size": null,
+    "spelling": "",
+    "prime": true
+  },
+  {
+    "id": "prime--jbotci-catalogue-native333",
+    "operation": "reference",
+    "target": {
+      "Catalog": {
+        "source": "lensisku",
+        "release": "jbotci-release-99e795a97ffe04574ddfd9acc3095a0e2c0e362d578c20c6cb7b609d5c39d6ab",
+        "native_entry_id": null,
+        "native_assertion_id": "333",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:lensisku:jbotci:en",
+            "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+          },
+          "locator": "/0"
+        }
+      }
+    },
+    "page_size": null,
+    "spelling": "",
+    "prime": true
+  },
+  {
+    "id": "prime--la-catalogue-native333",
+    "operation": "reference",
+    "target": {
+      "Catalog": {
+        "source": "lensisku",
+        "release": "la-lojban-release-abf263510936f872e7346957374af1bc9b726c9d2e1ee2fab96f3969ec629951",
+        "native_entry_id": null,
+        "native_assertion_id": "333",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:lensisku:la-lojban:en",
+            "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+          },
+          "locator": "/0"
+        }
+      }
+    },
+    "page_size": null,
+    "spelling": "",
+    "prime": true
+  },
+  {
+    "id": "prime--llg-component",
+    "operation": "reference",
+    "target": {
+      "Catalog": {
+        "source": "llg",
+        "release": "llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb",
+        "native_entry_id": "farvi",
+        "native_assertion_id": null,
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:llg:gismu",
+            "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+          },
+          "locator": "1"
+        }
+      }
+    },
+    "page_size": null,
+    "spelling": "",
+    "prime": true
+  },
+  {
+    "id": "prime--sut-native-entry",
+    "operation": "reference",
+    "target": {
+      "Catalog": {
+        "source": "sutysisku",
+        "release": "sutysisku-release-70c62273e362222e3d1bebd904e537e3a615c233ac2d01140c2757573a7c21f5",
+        "native_entry_id": "farvi",
+        "native_assertion_id": null,
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:sutysisku:parsed-en",
+            "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
+          },
+          "locator": "/0"
+        }
+      }
+    },
+    "page_size": null,
+    "spelling": "",
+    "prime": true
+  },
+  {
+    "id": "prime--unknown",
+    "operation": "reference",
+    "target": "Unknown",
+    "page_size": null,
+    "spelling": "",
+    "prime": true
+  },
+  {
+    "id": "prime--unresolved",
+    "operation": "reference",
+    "target": {
+      "Unresolved": "pre-frozen unresolved witness"
+    },
+    "page_size": null,
+    "spelling": "",
+    "prime": true
+  },
+  {
+    "id": "prime--wrong-role",
+    "operation": "reference",
+    "target": {
+      "Local": {
+        "Entry": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+      }
+    },
+    "page_size": null,
+    "expected_error": "invalid_reference",
+    "spelling": "",
+    "prime": true
+  },
+  {
+    "id": "prime--missing",
+    "operation": "reference",
+    "target": {
+      "Catalog": {
+        "source": "lensisku",
+        "release": "jbotci-release-99e795a97ffe04574ddfd9acc3095a0e2c0e362d578c20c6cb7b609d5c39d6ab",
+        "native_entry_id": null,
+        "native_assertion_id": "missing-native-assertion",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:lensisku:jbotci:en",
+            "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+          },
+          "locator": "/0"
+        }
+      }
+    },
+    "page_size": null,
+    "spelling": "",
+    "prime": true
+  },
+  {
+    "id": "farvi-all",
+    "spelling": "farvi",
+    "sources": [],
+    "operation": "exact",
+    "page_size": null
+  },
+  {
+    "id": "farvi-lsk",
+    "spelling": "farvi",
+    "sources": [
+      "LSK"
+    ],
+    "operation": "exact",
+    "page_size": null
+  },
+  {
+    "id": "farvi-llg",
+    "spelling": "farvi",
+    "sources": [
+      "LLG"
+    ],
+    "operation": "exact",
+    "page_size": null
+  },
+  {
+    "id": "farvi-sut",
+    "spelling": "farvi",
+    "sources": [
+      "SUT"
+    ],
+    "operation": "exact",
+    "page_size": null
+  },
+  {
+    "id": "absent",
+    "spelling": "xoprsnqv",
+    "sources": [],
+    "operation": "exact",
+    "page_size": null
+  },
+  {
+    "id": "excluded-sut",
+    "spelling": "zoizoizoi",
+    "sources": [
+      "SUT"
+    ],
+    "operation": "exact",
+    "page_size": null
+  },
+  {
+    "id": "page-0",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 0
+  },
+  {
+    "id": "page-1",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1
+  },
+  {
+    "id": "page-2",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 2
+  },
+  {
+    "id": "page-3",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 3
+  },
+  {
+    "id": "page-8",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 8
+  },
+  {
+    "id": "page-concat-2",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "page-1"
+  },
+  {
+    "id": "page-concat-3",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "page-concat-2"
+  },
+  {
+    "id": "page-concat-4",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "page-concat-3"
+  },
+  {
+    "id": "page-concat-5",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 1,
+    "cursor_from": "page-concat-4"
+  },
+  {
+    "id": "page2-concat-2",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 2,
+    "cursor_from": "page-2"
+  },
+  {
+    "id": "page2-concat-3",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 2,
+    "cursor_from": "page2-concat-2"
+  },
+  {
+    "id": "page3-concat-2",
+    "operation": "exact",
+    "spelling": "farvi",
+    "sources": [],
+    "page_size": 3,
+    "cursor_from": "page-3"
+  },
+  {
+    "id": "jbotci-local",
+    "operation": "reference",
+    "target": {
+      "Local": {
+        "Assertion": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+      }
+    },
+    "page_size": null,
+    "spelling": ""
+  },
+  {
+    "id": "jbotci-catalogue-native333",
+    "operation": "reference",
+    "target": {
+      "Catalog": {
+        "source": "lensisku",
+        "release": "jbotci-release-99e795a97ffe04574ddfd9acc3095a0e2c0e362d578c20c6cb7b609d5c39d6ab",
+        "native_entry_id": null,
+        "native_assertion_id": "333",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:lensisku:jbotci:en",
+            "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+          },
+          "locator": "/0"
+        }
+      }
+    },
+    "page_size": null,
+    "spelling": ""
+  },
+  {
+    "id": "la-catalogue-native333",
+    "operation": "reference",
+    "target": {
+      "Catalog": {
+        "source": "lensisku",
+        "release": "la-lojban-release-abf263510936f872e7346957374af1bc9b726c9d2e1ee2fab96f3969ec629951",
+        "native_entry_id": null,
+        "native_assertion_id": "333",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:lensisku:la-lojban:en",
+            "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+          },
+          "locator": "/0"
+        }
+      }
+    },
+    "page_size": null,
+    "spelling": ""
+  },
+  {
+    "id": "llg-component",
+    "operation": "reference",
+    "target": {
+      "Catalog": {
+        "source": "llg",
+        "release": "llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb",
+        "native_entry_id": "farvi",
+        "native_assertion_id": null,
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:llg:gismu",
+            "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+          },
+          "locator": "1"
+        }
+      }
+    },
+    "page_size": null,
+    "spelling": ""
+  },
+  {
+    "id": "sut-native-entry",
+    "operation": "reference",
+    "target": {
+      "Catalog": {
+        "source": "sutysisku",
+        "release": "sutysisku-release-70c62273e362222e3d1bebd904e537e3a615c233ac2d01140c2757573a7c21f5",
+        "native_entry_id": "farvi",
+        "native_assertion_id": null,
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:sutysisku:parsed-en",
+            "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
+          },
+          "locator": "/0"
+        }
+      }
+    },
+    "page_size": null,
+    "spelling": ""
+  },
+  {
+    "id": "unknown",
+    "operation": "reference",
+    "target": "Unknown",
+    "page_size": null,
+    "spelling": ""
+  },
+  {
+    "id": "unresolved",
+    "operation": "reference",
+    "target": {
+      "Unresolved": "pre-frozen unresolved witness"
+    },
+    "page_size": null,
+    "spelling": ""
+  },
+  {
+    "id": "wrong-role",
+    "operation": "reference",
+    "target": {
+      "Local": {
+        "Entry": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+      }
+    },
+    "page_size": null,
+    "expected_error": "invalid_reference",
+    "spelling": ""
+  },
+  {
+    "id": "missing",
+    "operation": "reference",
+    "target": {
+      "Catalog": {
+        "source": "lensisku",
+        "release": "jbotci-release-99e795a97ffe04574ddfd9acc3095a0e2c0e362d578c20c6cb7b609d5c39d6ab",
+        "native_entry_id": null,
+        "native_assertion_id": "missing-native-assertion",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:lensisku:jbotci:en",
+            "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+          },
+          "locator": "/0"
+        }
+      }
+    },
+    "page_size": null,
+    "spelling": ""
+  }
+]

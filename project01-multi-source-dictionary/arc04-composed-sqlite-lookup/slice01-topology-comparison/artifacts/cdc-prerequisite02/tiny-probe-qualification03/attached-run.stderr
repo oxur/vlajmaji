@@ -1,0 +1,7 @@
+stage=open topology=attached start
+stage=open topology=attached elapsed_ms=4 profile=DictionarySnapshotOpenProfile { provider_open: 3.968542ms, document_load_and_composition: 614.75µs, common_index_setup: 105.959µs, total: 4.689417ms }
+stage=open topology=attached profile=DictionarySnapshotOpenProfile { provider_open: 3.968542ms, document_load_and_composition: 614.75µs, common_index_setup: 105.959µs, total: 4.689417ms }
+stage=exact request=farvi-all profile=DictionaryExactProfile { total: 215.083µs, candidate_sql: 103.667µs, hydration: 75.541µs, lookup_order_paging: 35.875µs }
+stage=value request=farvi-all elapsed_us=163
+stage=serialize request=farvi-all elapsed_us=46 bytes=30595 sha256=368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6
+stage=run-total elapsed_us=5447

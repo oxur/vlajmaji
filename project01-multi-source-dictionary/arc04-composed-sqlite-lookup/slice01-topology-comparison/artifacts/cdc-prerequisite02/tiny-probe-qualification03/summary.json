@@ -1,0 +1,157 @@
+{
+  "status": "PASS",
+  "scope": "current corrected profiler and full54 workload adapted to literal tiny inputs; no Full store operation or comparison round",
+  "source": "4b4158c8a8a489ead639b73706b01061de17cfe1",
+  "probe_sha256": "e12ddf648d40f385a021591745b19c3e8b3ab8341ca88b780108bb83dbe1a215",
+  "requests_sha256": "e756d5fa27d681edc6f1443cba3e991daab39276ee552cbbbf2436b26d76f4d6",
+  "script_sha256": "765556f1e1cb578ba5b2eb91eb84ff18e24951345eeb954e5e2d44e2d2b3203f",
+  "requests": 54,
+  "prime": 27,
+  "measured": 27,
+  "providers": 3,
+  "positive_page_sizes": [
+    1,
+    2,
+    3,
+    8
+  ],
+  "full_wire_bytes": 30595,
+  "full_wire_sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6",
+  "db_before": {
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/la-lojban/dictionary.sqlite3": "3fdb4a963d27dc4768cb3e6fb4962ca6b85407c6403c7f293c903c80313446a3",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/lensisku-jbotci/dictionary.sqlite3": "7829001dc7f2aa7c942d3685f5470d9115499532abcc5f526bcafd24498fce82",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/llg/dictionary.sqlite3": "56b05fa113fba8a32a1e1c1a5a696d3dd8c40ae5aa2e7b6b8024591f471cdc3f",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/sutysisku/dictionary.sqlite3": "1efdb4cfd0c2b10ce613e1b3afd7fbb401fabe11c54298f2d1e5f594707f5567",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/unified/dictionary.sqlite3": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+  },
+  "db_after": {
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/la-lojban/dictionary.sqlite3": "3fdb4a963d27dc4768cb3e6fb4962ca6b85407c6403c7f293c903c80313446a3",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/lensisku-jbotci/dictionary.sqlite3": "7829001dc7f2aa7c942d3685f5470d9115499532abcc5f526bcafd24498fce82",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/llg/dictionary.sqlite3": "56b05fa113fba8a32a1e1c1a5a696d3dd8c40ae5aa2e7b6b8024591f471cdc3f",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/sutysisku/dictionary.sqlite3": "1efdb4cfd0c2b10ce613e1b3afd7fbb401fabe11c54298f2d1e5f594707f5567",
+    "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/unified/dictionary.sqlite3": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+  },
+  "db_unchanged": true,
+  "attempts": [
+    {
+      "topology": "unified",
+      "mode": "run",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "run",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "unified",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification03/requests-tiny03.json",
+        "--request",
+        "farvi-all"
+      ],
+      "exit": 0,
+      "outer_ns": 220644334,
+      "stdout_sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6",
+      "stderr_sha256": "3f20cf41f7dc56faa03ac22aafb102150de6bb051eab0741cf7e5c07994c8521"
+    },
+    {
+      "topology": "unified",
+      "mode": "batch",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "batch",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "unified",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification03/requests-tiny03.json",
+        "--output-dir",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification03/unified-batch"
+      ],
+      "exit": 0,
+      "outer_ns": 23256541,
+      "stdout_sha256": "b12ea531d114de809eb862a3a51f3aebc8d3a1f095b6040cfab528dcab2d56d4",
+      "stderr_sha256": "556482dec3f327508ed8c2ba16f21989303927cf7712f2d46d7aff89e2e7dd7f"
+    },
+    {
+      "topology": "attached",
+      "mode": "run",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "run",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "attached",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification03/requests-tiny03.json",
+        "--request",
+        "farvi-all"
+      ],
+      "exit": 0,
+      "outer_ns": 10223959,
+      "stdout_sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6",
+      "stderr_sha256": "f9eb7b7d0f9eb9f7654cd4e863c2103c32986b0833b1e48389260ec2d9165f76"
+    },
+    {
+      "topology": "attached",
+      "mode": "batch",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "batch",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "attached",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification03/requests-tiny03.json",
+        "--output-dir",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification03/attached-batch"
+      ],
+      "exit": 0,
+      "outer_ns": 27487750,
+      "stdout_sha256": "af249256004a8a3294424b22629d954f1e95eed38e67d44b4a1f4e9e47d093aa",
+      "stderr_sha256": "4b9afa8b6ec7577f1aae2c9bf96aa63cb4335d5f952f79c246a0019233ef9973"
+    },
+    {
+      "topology": "fanout",
+      "mode": "run",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "run",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "fanout",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification03/requests-tiny03.json",
+        "--request",
+        "farvi-all"
+      ],
+      "exit": 0,
+      "outer_ns": 11358000,
+      "stdout_sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6",
+      "stderr_sha256": "2cd190d13d90b65cd9d60450b383ad180d65af2fc463725c2fa247f5e2740de2"
+    },
+    {
+      "topology": "fanout",
+      "mode": "batch",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "batch",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification01/stores/run-manifest.json",
+        "--topology",
+        "fanout",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification03/requests-tiny03.json",
+        "--output-dir",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/tiny-probe-qualification03/fanout-batch"
+      ],
+      "exit": 0,
+      "outer_ns": 30777917,
+      "stdout_sha256": "ef89c886a4ff863c797f71c376de9cb306e933db1f31d49a919e7b74670e23de",
+      "stderr_sha256": "49d4f213990628bdf6046887040a7d15192c0663e9f7dcc906e254cb088ee272"
+    }
+  ]
+}
