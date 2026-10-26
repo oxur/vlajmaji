@@ -49,6 +49,29 @@ fn json(output: &Output) -> Value {
     serde_json::from_slice(&output.stdout).expect("CLI JSON stdout")
 }
 
+fn collection_failure(output: &Output, category: &str, operation: &str) -> Value {
+    assert!(!output.status.success());
+    assert!(output.stdout.is_empty());
+    let envelope: Value = serde_json::from_slice(&output.stderr).expect("collection error JSON");
+    let report = envelope.get("error").expect("error envelope");
+    assert_eq!(report["version"], 1);
+    assert_eq!(report["ok"], false);
+    assert_eq!(report["category"], category);
+    assert_eq!(report["operation"], operation);
+    assert_eq!(report["activation"], "not_activated");
+    for field in [
+        "pack_id",
+        "attempt_id",
+        "prior_local_revision",
+        "proposed_generation",
+        "observed_generation",
+    ] {
+        assert!(report[field].is_null(), "{field} must be explicit null");
+    }
+    assert_eq!(report["inputs"], serde_json::json!([]));
+    report.clone()
+}
+
 fn sha256(bytes: &[u8]) -> String {
     format!("{:x}", Sha256::digest(bytes))
 }
@@ -330,6 +353,137 @@ fn test_collections_cli_list_absent_catalogue_expect_typed_error() {
     assert_eq!(error["error"]["inputs"], serde_json::json!([]));
     assert!(error["error"]["observed_generation"].is_null());
     assert!(!absent.exists());
+    let _ = std::fs::remove_dir_all(parent);
+}
+
+#[test]
+fn test_collections_cli_runtime_validation_expect_versioned_report_and_clap_boundary() {
+    let parent = fresh_root("runtime-errors");
+
+    let manifest_root = parent.join("manifest-no-selector-root");
+    let manifest = parent.join("unused manifest.json");
+    let no_selector = run(&[
+        Path::new("collections"),
+        Path::new("install"),
+        &manifest_root,
+        Path::new("--manifest"),
+        &manifest,
+    ]);
+    let report = collection_failure(&no_selector, "invalid_request", "install");
+    assert!(
+        report["detail"]
+            .as_str()
+            .unwrap()
+            .contains("requires --all")
+    );
+    assert!(report["path"].is_null());
+    assert!(!manifest_root.exists());
+
+    let direct_root = parent.join("direct-no-files-root");
+    let no_files = run(&[
+        Path::new("collections"),
+        Path::new("register"),
+        &direct_root,
+        Path::new("--pack"),
+        Path::new("llg"),
+    ]);
+    let report = collection_failure(&no_files, "invalid_request", "register");
+    assert!(report["detail"].as_str().unwrap().contains("requires both"));
+    assert!(report["path"].is_null());
+    assert!(!direct_root.exists());
+
+    let missing_root = parent.join("missing-manifest-root");
+    let missing_manifest = parent.join("missing manifest 'λ'.json");
+    let direct_error = std::fs::read(&missing_manifest).unwrap_err();
+    let missing = run(&[
+        Path::new("collections"),
+        Path::new("install"),
+        &missing_root,
+        Path::new("--manifest"),
+        &missing_manifest,
+        Path::new("--all"),
+    ]);
+    let report = collection_failure(&missing, "input_io", "install");
+    assert!(
+        report["detail"]
+            .as_str()
+            .unwrap()
+            .contains(&direct_error.to_string())
+    );
+    assert_eq!(report["path"]["utf8"], missing_manifest.to_str().unwrap());
+    #[cfg(unix)]
+    {
+        use std::os::unix::ffi::OsStrExt;
+        let expected = missing_manifest
+            .as_os_str()
+            .as_bytes()
+            .iter()
+            .map(|byte| format!("{byte:02x}"))
+            .collect::<String>();
+        assert_eq!(report["path"]["hex"], expected);
+    }
+    assert!(!missing_root.exists());
+
+    // These conflicting flags are rejected by Clap before collection runtime
+    // conversion and intentionally retain their plain parser diagnostics.
+    let conflict_root = parent.join("clap-conflict-root");
+    let conflict = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
+        .args([
+            "collections",
+            "install",
+            conflict_root.to_str().unwrap(),
+            "--manifest",
+            manifest.to_str().unwrap(),
+            "--release",
+            "release.json",
+        ])
+        .env_clear()
+        .output()
+        .unwrap();
+    assert!(!conflict.status.success());
+    assert!(conflict.stdout.is_empty());
+    assert!(serde_json::from_slice::<Value>(&conflict.stderr).is_err());
+    assert!(!conflict_root.exists());
+
+    let _ = std::fs::remove_dir_all(parent);
+}
+
+#[cfg(unix)]
+#[test]
+fn test_collections_cli_native_missing_manifest_expect_exact_path_report() {
+    use std::os::unix::ffi::{OsStrExt, OsStringExt};
+
+    let parent = fresh_root("native-manifest-error");
+    let mut native = parent.as_os_str().as_bytes().to_vec();
+    native.extend_from_slice(b"/missing-\xff-manifest.json");
+    let manifest = PathBuf::from(std::ffi::OsString::from_vec(native));
+    let root = parent.join("catalogue-not-created");
+    let direct_error = std::fs::read(&manifest).unwrap_err();
+    let output = run(&[
+        Path::new("collections"),
+        Path::new("install"),
+        &root,
+        Path::new("--manifest"),
+        &manifest,
+        Path::new("--all"),
+    ]);
+    let report = collection_failure(&output, "input_io", "install");
+    assert!(
+        report["detail"]
+            .as_str()
+            .unwrap()
+            .contains(&direct_error.to_string())
+    );
+    let expected = manifest
+        .as_os_str()
+        .as_bytes()
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
+        .collect::<String>();
+    assert_eq!(report["path"]["encoding"], "unix-bytes");
+    assert_eq!(report["path"]["hex"], expected);
+    assert!(report["path"]["utf8"].is_null());
+    assert!(!root.exists());
     let _ = std::fs::remove_dir_all(parent);
 }
 

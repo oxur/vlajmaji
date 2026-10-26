@@ -431,13 +431,251 @@ fn test_sealed_pack_mismatch_is_rejected_before_catalogue_creation() {
     .unwrap();
     let error = CollectionCatalogue::register(&root, request).unwrap_err();
     assert!(
-        matches!(&error, CollectionError::Batch { source, .. } if matches!(source.as_ref(), CollectionError::InputInvalid { .. }))
+        matches!(&error, CollectionError::Batch { source, .. } if matches!(source.as_ref(), CollectionError::InputInvalidSource { .. }))
     );
     let failure = error.report("register");
     assert_eq!(failure.category, "input_invalid");
+    assert_eq!(failure.pack_id.as_deref(), Some("la-lojban"));
     assert_eq!(failure.activation.as_deref(), Some("not_activated"));
     assert_eq!(failure.inputs.len(), 1);
     assert_eq!(failure.inputs[0].disposition, "failed");
+    assert!(error_chain_contains_pack_error(&error));
+    assert!(!root.exists());
+}
+
+fn error_chain_contains_pack_error(error: &(dyn std::error::Error + 'static)) -> bool {
+    let mut current = error;
+    loop {
+        if current
+            .downcast_ref::<vlajmaji_lexicon::PackError>()
+            .is_some()
+        {
+            return true;
+        }
+        let Some(source) = current.source() else {
+            return false;
+        };
+        current = source;
+    }
+}
+
+#[test]
+fn test_empty_existing_roots_register_install_expect_occupied_with_validated_input() {
+    for operation in ["register", "install"] {
+        let root = fresh_root(&format!("occupied-empty-{operation}"));
+        fs::create_dir(&root).unwrap();
+        let (release, seal) = sealed(PackId::Llg);
+        let expected_release_sha256 = format!("{:x}", sha2::Sha256::digest(&release));
+        let request = CollectionRequest::new(
+            vec![sealed_input(PackId::Llg, &release, &seal)],
+            CollectionSelection::Packs(vec![PackId::Llg]),
+            true,
+        )
+        .unwrap();
+        let error = if operation == "register" {
+            CollectionCatalogue::register(&root, request).unwrap_err()
+        } else {
+            CollectionCatalogue::install(&root, request).unwrap_err()
+        };
+        let report = error.report(operation);
+        assert_eq!(
+            error.category(),
+            vlajmaji_store::CollectionErrorCategory::OccupiedDestination
+        );
+        assert_eq!(report.category, "occupied_destination");
+        assert_eq!(report.activation.as_deref(), Some("not_activated"));
+        assert_eq!(report.path.as_ref().unwrap().utf8.as_deref(), root.to_str());
+        assert_eq!(report.inputs.len(), 1);
+        assert_eq!(report.inputs[0].pack_id, "llg");
+        assert_eq!(report.inputs[0].disposition, "validated");
+        assert_eq!(report.inputs[0].payload_kind.as_deref(), Some("synthetic"));
+        assert_eq!(
+            report.inputs[0].release_sha256.as_deref(),
+            Some(expected_release_sha256.as_str())
+        );
+        assert!(report.attempt_id.is_none());
+        assert!(report.prior_local_revision.is_none());
+        assert!(report.proposed_generation.is_none());
+        assert_eq!(fs::read_dir(&root).unwrap().count(), 0);
+        fs::remove_dir_all(root).unwrap();
+    }
+}
+
+#[test]
+fn test_begin_busy_register_install_expect_validated_context_and_retry() {
+    for operation in ["register", "install"] {
+        let root = fresh_root(&format!("begin-busy-{operation}"));
+        let (existing_release, existing_seal) = sealed(PackId::Llg);
+        let existing = CollectionRequest::new(
+            vec![sealed_input(PackId::Llg, &existing_release, &existing_seal)],
+            CollectionSelection::Packs(vec![PackId::Llg]),
+            true,
+        )
+        .unwrap();
+        CollectionCatalogue::register(&root, existing).unwrap();
+
+        let (release, seal) = sealed(PackId::LensiskuJbotci);
+        let expected_release_sha256 = format!("{:x}", sha2::Sha256::digest(&release));
+        let make_request = || {
+            CollectionRequest::new(
+                vec![sealed_input(PackId::LensiskuJbotci, &release, &seal)],
+                CollectionSelection::Packs(vec![PackId::LensiskuJbotci]),
+                true,
+            )
+            .unwrap()
+        };
+        let blocker = Connection::open(root.join("catalogue.sqlite3")).unwrap();
+        blocker.execute_batch("BEGIN IMMEDIATE").unwrap();
+        let error = if operation == "register" {
+            CollectionCatalogue::register(&root, make_request()).unwrap_err()
+        } else {
+            CollectionCatalogue::install(&root, make_request()).unwrap_err()
+        };
+        let report = error.report(operation);
+        assert_eq!(
+            error.category(),
+            vlajmaji_store::CollectionErrorCategory::Busy
+        );
+        assert_eq!(report.category, "busy");
+        assert_eq!(report.activation.as_deref(), Some("not_activated"));
+        assert_eq!(report.inputs.len(), 1);
+        assert_eq!(report.inputs[0].pack_id, "lensisku-jbotci");
+        assert_eq!(report.inputs[0].disposition, "validated");
+        assert_eq!(report.inputs[0].payload_kind.as_deref(), Some("synthetic"));
+        assert_eq!(
+            report.inputs[0].release_sha256.as_deref(),
+            Some(expected_release_sha256.as_str())
+        );
+        assert!(report.attempt_id.is_none());
+        assert!(report.prior_local_revision.is_none());
+        assert!(report.proposed_generation.is_none());
+        assert!(report.observed_generation.is_none());
+        blocker.execute_batch("ROLLBACK").unwrap();
+        drop(blocker);
+        let retry = if operation == "register" {
+            CollectionCatalogue::register(&root, make_request()).unwrap()
+        } else {
+            CollectionCatalogue::install(&root, make_request()).unwrap()
+        };
+        assert_eq!(retry.local_revision, 2);
+        fs::remove_dir_all(root).unwrap();
+    }
+}
+
+#[test]
+fn test_missing_sealed_input_expect_known_pack_and_typed_io_cause() {
+    let root = fresh_root("missing-selected-pack");
+    fs::create_dir(&root).unwrap();
+    let missing = root.join("missing sutysisku release.json");
+    let seal_path = root.join("missing sutysisku seal.json");
+    let request = || {
+        CollectionRequest::new(
+            vec![CollectionInput::SealedFiles {
+                pack_id: PackId::Sutysisku,
+                release: missing.clone(),
+                seal: seal_path.clone(),
+            }],
+            CollectionSelection::Packs(vec![PackId::Sutysisku]),
+            true,
+        )
+        .unwrap()
+    };
+    let catalogue = root.join("catalogue");
+    let error = CollectionCatalogue::install(&catalogue, request()).unwrap_err();
+    let report = error.report("install");
+    assert_eq!(
+        error.category(),
+        vlajmaji_store::CollectionErrorCategory::InputIo
+    );
+    assert_eq!(report.category, "input_io");
+    assert_eq!(report.pack_id.as_deref(), Some("sutysisku"));
+    assert_eq!(
+        report.path.as_ref().unwrap().utf8.as_deref(),
+        missing.to_str()
+    );
+    assert_eq!(report.inputs.len(), 1);
+    assert_eq!(report.inputs[0].pack_id, "sutysisku");
+    assert_eq!(report.inputs[0].disposition, "failed");
+    assert!(error_chain_contains_io_error(&error));
+    assert!(!catalogue.exists());
+    let (release, seal) = sealed(PackId::Sutysisku);
+    fs::write(&missing, release).unwrap();
+    fs::write(&seal_path, seal).unwrap();
+    let retry = CollectionCatalogue::install(&catalogue, request()).unwrap();
+    assert_eq!(retry.outcome, "installed");
+    assert_eq!(retry.local_revision, 1);
+    if root.exists() {
+        fs::remove_dir_all(root).unwrap();
+    }
+}
+
+fn error_chain_contains_io_error(error: &(dyn std::error::Error + 'static)) -> bool {
+    let mut current = error;
+    loop {
+        if current.downcast_ref::<std::io::Error>().is_some() {
+            return true;
+        }
+        let Some(source) = current.source() else {
+            return false;
+        };
+        current = source;
+    }
+}
+
+fn error_chain_raw_os_error(error: &(dyn std::error::Error + 'static)) -> Option<i32> {
+    let mut current = error;
+    loop {
+        if let Some(io_error) = current.downcast_ref::<std::io::Error>() {
+            return io_error.raw_os_error();
+        }
+        current = current.source()?;
+    }
+}
+
+#[test]
+fn test_malformed_seal_and_release_mismatch_expect_typed_pack_errors() {
+    let root = fresh_root("sealed-pack-causes");
+    let malformed = CollectionRequest::new(
+        vec![CollectionInput::SealedBytes {
+            pack_id: PackId::Llg,
+            release: Cow::Borrowed(b"{}"),
+            seal: Cow::Borrowed(b"{not json"),
+        }],
+        CollectionSelection::Packs(vec![PackId::Llg]),
+        true,
+    )
+    .unwrap();
+    let malformed_error = CollectionCatalogue::install(&root, malformed).unwrap_err();
+    assert_eq!(
+        malformed_error.category(),
+        vlajmaji_store::CollectionErrorCategory::InputInvalid
+    );
+    assert_eq!(
+        malformed_error.report("install").pack_id.as_deref(),
+        Some("llg")
+    );
+    assert!(error_chain_contains_pack_error(&malformed_error));
+    assert!(!root.exists());
+
+    let (release, seal) = sealed(PackId::Llg);
+    let mut changed_release = release.clone();
+    changed_release[0] ^= 1;
+    let mismatch = CollectionRequest::new(
+        vec![sealed_input(PackId::Llg, &changed_release, &seal)],
+        CollectionSelection::Packs(vec![PackId::Llg]),
+        true,
+    )
+    .unwrap();
+    let mismatch_error = CollectionCatalogue::install(&root, mismatch).unwrap_err();
+    assert_eq!(
+        mismatch_error.category(),
+        vlajmaji_store::CollectionErrorCategory::InputInvalid
+    );
+    assert_eq!(
+        mismatch_error.report("install").pack_id.as_deref(),
+        Some("llg")
+    );
+    assert!(error_chain_contains_pack_error(&mismatch_error));
     assert!(!root.exists());
 }
 
@@ -932,10 +1170,15 @@ fn test_catalogue_root_symlink_is_not_followed_for_read_or_write() {
         CollectionCatalogue::open(&alias),
         Err(CollectionError::MissingCatalogue(_))
     ));
-    assert!(matches!(
-        CollectionCatalogue::register(&alias, request()),
-        Err(CollectionError::OccupiedDestination(_))
-    ));
+    let error = CollectionCatalogue::register(&alias, request()).unwrap_err();
+    assert_eq!(
+        error.category(),
+        vlajmaji_store::CollectionErrorCategory::OccupiedDestination
+    );
+    assert_eq!(
+        error.report("register").path.unwrap().utf8.as_deref(),
+        alias.to_str()
+    );
     assert_eq!(fs::read(root.join("catalogue.sqlite3")).unwrap(), before);
     assert!(
         fs::symlink_metadata(&alias)
@@ -966,10 +1209,15 @@ fn test_catalogue_file_and_database_symlink_are_refused_without_modification() {
         true,
     )
     .unwrap();
-    assert!(matches!(
-        CollectionCatalogue::register(&file_root, file_request),
-        Err(CollectionError::OccupiedDestination(_))
-    ));
+    let error = CollectionCatalogue::register(&file_root, file_request).unwrap_err();
+    assert_eq!(
+        error.category(),
+        vlajmaji_store::CollectionErrorCategory::OccupiedDestination
+    );
+    assert_eq!(
+        error.report("register").path.unwrap().utf8.as_deref(),
+        file_root.to_str()
+    );
     assert_eq!(fs::read(&file_root).unwrap(), file_before);
 
     let root = fresh_root("database-symlink");
@@ -995,10 +1243,15 @@ fn test_catalogue_file_and_database_symlink_are_refused_without_modification() {
         true,
     )
     .unwrap();
-    assert!(matches!(
-        CollectionCatalogue::register(&root, write_request),
-        Err(CollectionError::OccupiedDestination(_))
-    ));
+    let error = CollectionCatalogue::register(&root, write_request).unwrap_err();
+    assert_eq!(
+        error.category(),
+        vlajmaji_store::CollectionErrorCategory::OccupiedDestination
+    );
+    assert_eq!(
+        error.report("register").path.unwrap().utf8.as_deref(),
+        db.to_str()
+    );
     assert_eq!(fs::read(&moved_db).unwrap(), target_bytes);
     assert!(fs::symlink_metadata(&db).unwrap().file_type().is_symlink());
     let _ = fs::remove_file(&db);
@@ -1080,9 +1333,9 @@ fn test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io() {
             report.path.as_ref().map(|path| path.hex.as_str()),
             Some(expected_hex.as_str())
         );
-        assert!(
-            matches!(error, CollectionError::ArtifactIoSource { source, .. }
-            if source.downcast_ref::<std::io::Error>().and_then(std::io::Error::raw_os_error) == Some(direct_error.raw_os_error().unwrap()))
+        assert_eq!(
+            error_chain_raw_os_error(&error),
+            direct_error.raw_os_error()
         );
         assert!(!root.exists());
         let entries_after = fs::read_dir(&parent)

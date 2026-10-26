@@ -468,6 +468,15 @@ pub enum CollectionError {
         /// Concise validation diagnostic.
         detail: String,
     },
+    /// A sealed input failed validation and its typed PackError is retained.
+    InputInvalidSource {
+        /// Pack whose input was invalid, when known.
+        pack: Option<PackId>,
+        /// Concise validation context for the failure.
+        detail: String,
+        /// Original typed seal or release validation error.
+        source: Box<dyn Error + Send + Sync>,
+    },
     /// Existing source adapter rejected its selected raw input.
     Adapter {
         /// Pack whose adapter failed.
@@ -567,9 +576,10 @@ impl CollectionError {
             Self::MissingCatalogue(_) => CollectionErrorCategory::MissingCatalogue,
             Self::OccupiedDestination(_) => CollectionErrorCategory::OccupiedDestination,
             Self::InputIo { .. } => CollectionErrorCategory::InputIo,
-            Self::InputInvalid { .. } | Self::Adapter { .. } | Self::Pack(_) => {
-                CollectionErrorCategory::InputInvalid
-            }
+            Self::InputInvalid { .. }
+            | Self::InputInvalidSource { .. }
+            | Self::Adapter { .. }
+            | Self::Pack(_) => CollectionErrorCategory::InputInvalid,
             Self::IdentityConflict { .. } | Self::PackConflict { .. } => {
                 CollectionErrorCategory::IdentityConflict
             }
@@ -610,6 +620,14 @@ impl CollectionError {
             }
             return report;
         }
+        let batch_pack_id = match self {
+            Self::Batch { inputs, .. } => {
+                let mut failed = inputs.iter().filter(|item| item.disposition == "failed");
+                let only = failed.next().map(|item| item.pack_id.clone());
+                if failed.next().is_none() { only } else { None }
+            }
+            _ => None,
+        };
         let source = match self {
             Self::Batch { source, .. } => source.as_ref(),
             other => other,
@@ -621,19 +639,33 @@ impl CollectionError {
             Self::ArtifactIo { path, .. } | Self::ArtifactIoSource { path, .. } => {
                 (path.as_deref().map(native_path_report), None)
             }
-            Self::InputInvalid { pack, .. } => (None, pack.map(|id| id.as_str().to_owned())),
+            Self::InputInvalid { pack, .. } | Self::InputInvalidSource { pack, .. } => {
+                (None, pack.map(|id| id.as_str().to_owned()))
+            }
             Self::PackConflict { .. } => (None, None),
             Self::Adapter { pack, .. } | Self::UpdateRequired(pack) => {
                 (None, Some(pack.as_str().to_owned()))
             }
             _ => (None, None),
         };
+        let pack_id = pack_id.or(batch_pack_id);
+        let detail = match source {
+            Self::InputInvalidSource {
+                pack,
+                detail,
+                source,
+            } => format!(
+                "invalid {} input: {detail}: {source}",
+                pack.map_or("collection pack".into(), |id| id.to_string())
+            ),
+            _ => self.to_string(),
+        };
         CollectionFailureReport {
             version: 1,
             ok: false,
             operation: operation.to_owned(),
             category: category_name(self.category()).into(),
-            detail: self.to_string(),
+            detail,
             path,
             pack_id,
             attempt_id: None,
@@ -694,6 +726,11 @@ impl fmt::Display for CollectionError {
                 write!(f, "read collection input {}: {source}", path.display())
             }
             Self::InputInvalid { pack, detail } => write!(
+                f,
+                "invalid {} input: {detail}",
+                pack.map_or("collection pack".into(), |id| id.to_string())
+            ),
+            Self::InputInvalidSource { pack, detail, .. } => write!(
                 f,
                 "invalid {} input: {detail}",
                 pack.map_or("collection pack".into(), |id| id.to_string())
@@ -774,6 +811,7 @@ impl Error for CollectionError {
     fn source(&self) -> Option<&(dyn Error + 'static)> {
         match self {
             Self::InputIo { source, .. } => Some(source),
+            Self::InputInvalidSource { source, .. } => Some(source.as_ref()),
             Self::Adapter { source, .. } => Some(source.as_ref()),
             Self::Pack(source) => Some(source.as_ref()),
             Self::BusySource(source) => Some(source),
@@ -1398,16 +1436,20 @@ fn mutate_register(
     let input_ids = request.inputs.iter().map(input_pack_id).collect::<Vec<_>>();
     let selected_ids = selected_pack_ids(&request.inputs, &request.selection);
     let normalized = normalize_selected(request, cwd.as_deref())?;
-    let (connection, newly_created) = writer_connection(&root)?;
-    if newly_created {
-        create_private_dir(&root.join("generations"))?;
-        crate::collections_schema::sync_dir(&root)?;
-    }
-    let mut transaction = TransactionGuard::begin(&connection, &root)?;
     let mut error_context = MutationErrorContext {
         inputs: input_dispositions(&input_ids, &selected_ids, &normalized),
         ..MutationErrorContext::default()
     };
+    let (connection, newly_created) =
+        writer_connection(&root).map_err(|error| mutation_context(error, error_context.clone()))?;
+    if newly_created {
+        create_private_dir(&root.join("generations"))
+            .map_err(|error| mutation_context(error, error_context.clone()))?;
+        crate::collections_schema::sync_dir(&root)
+            .map_err(|error| mutation_context(error, error_context.clone()))?;
+    }
+    let mut transaction = TransactionGuard::begin(&connection, &root)
+        .map_err(|error| mutation_context(error, error_context.clone()))?;
     let result = (|| -> Result<CollectionMutationReport, CollectionError> {
         let prior_revision = crate::collections_schema::local_revision(&connection, &root)?;
         error_context.prior_local_revision = Some(prior_revision);
@@ -1534,16 +1576,20 @@ fn mutate_install(
     let input_ids = request.inputs.iter().map(input_pack_id).collect::<Vec<_>>();
     let selected_ids = selected_pack_ids(&request.inputs, &request.selection);
     let normalized = normalize_selected(request, cwd.as_deref())?;
-    let (connection, newly_created) = writer_connection(&root)?;
-    if newly_created {
-        create_private_dir(&root.join("generations"))?;
-        crate::collections_schema::sync_dir(&root)?;
-    }
-    let mut transaction = TransactionGuard::begin(&connection, &root)?;
     let mut error_context = MutationErrorContext {
         inputs: input_dispositions(&input_ids, &selected_ids, &normalized),
         ..MutationErrorContext::default()
     };
+    let (connection, newly_created) =
+        writer_connection(&root).map_err(|error| mutation_context(error, error_context.clone()))?;
+    if newly_created {
+        create_private_dir(&root.join("generations"))
+            .map_err(|error| mutation_context(error, error_context.clone()))?;
+        crate::collections_schema::sync_dir(&root)
+            .map_err(|error| mutation_context(error, error_context.clone()))?;
+    }
+    let mut transaction = TransactionGuard::begin(&connection, &root)
+        .map_err(|error| mutation_context(error, error_context.clone()))?;
     let result = (|| -> Result<CollectionMutationReport, CollectionError> {
         let prior_revision = crate::collections_schema::local_revision(&connection, &root)?;
         error_context.prior_local_revision = Some(prior_revision);
@@ -1934,7 +1980,13 @@ fn writer_connection(root: &Path) -> Result<(Connection, bool), CollectionError>
             Ok((crate::collections_schema::initialize_exclusive(root)?, true))
         }
         Err(error) => Err(artifact_error(root.to_path_buf(), error)),
-        Ok(_) => Ok((crate::collections_schema::open_writable(root)?, false)),
+        Ok(_) => match crate::collections_schema::open_writable(root) {
+            Ok(connection) => Ok((connection, false)),
+            Err(CollectionError::MissingCatalogue(_)) => {
+                Err(CollectionError::OccupiedDestination(root.to_path_buf()))
+            }
+            Err(error) => Err(error),
+        },
     }
 }
 
@@ -3385,20 +3437,23 @@ fn normalize_sealed(
     paths: Vec<PathBuf>,
     allow_synthetic: bool,
 ) -> Result<NormalizedPack, CollectionError> {
-    let seal =
-        PackSeal::from_json_bytes(&seal_bytes).map_err(|error| CollectionError::InputInvalid {
+    let seal = PackSeal::from_json_bytes(&seal_bytes).map_err(|source| {
+        CollectionError::InputInvalidSource {
             pack: Some(pack_id),
-            detail: error.to_string(),
-        })?;
+            detail: "pack seal failed strict parsing".into(),
+            source: Box::new(source),
+        }
+    })?;
     if seal.payload_kind == PackPayloadKind::Synthetic && !allow_synthetic {
         return Err(CollectionError::InvalidRequest(
             "synthetic inputs require explicit allow_synthetic opt-in".into(),
         ));
     }
-    let dictionary = load_sealed_release(pack_id, &release, &seal_bytes).map_err(|error| {
-        CollectionError::InputInvalid {
+    let dictionary = load_sealed_release(pack_id, &release, &seal_bytes).map_err(|source| {
+        CollectionError::InputInvalidSource {
             pack: Some(pack_id),
-            detail: error.to_string(),
+            detail: "sealed release failed validation".into(),
+            source: Box::new(source),
         }
     })?;
     Ok(NormalizedPack {

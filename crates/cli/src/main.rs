@@ -719,23 +719,23 @@ fn collection_mutation(
 ) -> Result<serde_json::Value, CliError> {
     let request = if let Some(manifest) = args.manifest.as_ref() {
         if args.release.is_some() || args.seal.is_some() {
-            return Err(structured_error(
-                "collections_request",
+            return Err(collection_request_error(
                 "manifest mode cannot be combined with release or seal",
+                operation,
             ));
         }
         let selection = if args.all {
             if !args.pack.is_empty() {
-                return Err(structured_error(
-                    "collections_request",
+                return Err(collection_request_error(
                     "--all cannot be combined with --pack",
+                    operation,
                 ));
             }
             CollectionSelection::All
         } else if args.pack.is_empty() {
-            return Err(structured_error(
-                "collections_request",
+            return Err(collection_request_error(
                 "manifest mode requires --all or one or more --pack",
+                operation,
             ));
         } else {
             CollectionSelection::Packs(
@@ -749,9 +749,9 @@ fn collection_mutation(
         read_collection_manifest(manifest, selection, args.allow_synthetic, operation)?
     } else {
         if args.all || args.pack.len() != 1 {
-            return Err(structured_error(
-                "collections_request",
+            return Err(collection_request_error(
                 "direct sealed mode requires exactly one --pack and does not accept --all",
+                operation,
             ));
         }
         let pack = parse_collection_pack(&args.pack[0])
@@ -759,9 +759,9 @@ fn collection_mutation(
         let (release, seal) = match (args.release.clone(), args.seal.clone()) {
             (Some(release), Some(seal)) => (release, seal),
             _ => {
-                return Err(structured_error(
-                    "collections_request",
+                return Err(collection_request_error(
                     "direct sealed mode requires both --release and --seal",
+                    operation,
                 ));
             }
         };
@@ -808,16 +808,23 @@ fn collection_cli_error(error: CollectionError, operation: &str) -> CliError {
     CliError::CollectionFailure(Box::new(error.report(operation)))
 }
 
+fn collection_request_error(detail: impl Into<String>, operation: &str) -> CliError {
+    collection_cli_error(CollectionError::InvalidRequest(detail.into()), operation)
+}
+
 fn read_collection_manifest(
     path: &Path,
     selection: CollectionSelection,
     allow_synthetic: bool,
     operation: &str,
 ) -> Result<CollectionRequest<'static>, CliError> {
-    let bytes = std::fs::read(path).map_err(|error| {
-        structured_error(
-            "io",
-            format!("read collection manifest {}: {error}", path.display()),
+    let bytes = std::fs::read(path).map_err(|source| {
+        collection_cli_error(
+            CollectionError::InputIo {
+                path: path.to_path_buf(),
+                source,
+            },
+            operation,
         )
     })?;
     CollectionRequest::from_manifest(&bytes, path, selection, allow_synthetic)
@@ -1384,16 +1391,48 @@ mod default_path_tests {
 #[cfg(test)]
 mod collection_manifest_tests {
     use super::read_collection_manifest;
+    use std::{
+        fs,
+        path::{Path, PathBuf},
+        sync::atomic::{AtomicUsize, Ordering},
+    };
     use vlajmaji_store::CollectionSelection;
+
+    struct OwnedScratch(PathBuf);
+
+    impl OwnedScratch {
+        fn create(label: &str) -> Self {
+            static NEXT_ID: AtomicUsize = AtomicUsize::new(0);
+            for _ in 0..128 {
+                let id = NEXT_ID.fetch_add(1, Ordering::Relaxed);
+                let path = std::env::temp_dir().join(format!(
+                    "vlajmaji-manifest-{label}-{}-{id}",
+                    std::process::id()
+                ));
+                match fs::create_dir(&path) {
+                    Ok(()) => return Self(path),
+                    Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => continue,
+                    Err(error) => panic!("create exclusively owned manifest scratch: {error}"),
+                }
+            }
+            panic!("could not allocate a fresh manifest scratch directory after 128 attempts");
+        }
+
+        fn path(&self) -> &Path {
+            &self.0
+        }
+    }
+
+    impl Drop for OwnedScratch {
+        fn drop(&mut self) {
+            let _ = fs::remove_dir_all(&self.0);
+        }
+    }
 
     #[test]
     fn test_manifest_duplicate_keys_rejects_escaped_equivalents_recursively() {
-        let root = std::env::temp_dir().join(format!(
-            "vlajmaji-manifest-duplicate-{}",
-            std::process::id()
-        ));
-        std::fs::create_dir(&root).unwrap();
-        let manifest = root.join("batch.json");
+        let root = OwnedScratch::create("duplicate");
+        let manifest = root.path().join("batch.json");
         for bytes in [
             br#"{"version":1,"version":1,"inputs":[]}"#.as_slice(),
             br#"{"version":1,"inputs":[{"kind":"la-lojban","pack_id":"la-lojban","payload_kind":"synthetic","raw":"raw","options":{"revision":"a","revis\u0069on":"b","expected_raw_sha256":"hash"}}]}"#.as_slice(),
@@ -1411,15 +1450,12 @@ mod collection_manifest_tests {
             )
             .is_ok()
         );
-        std::fs::remove_dir_all(root).unwrap();
     }
 
     #[test]
     fn test_manifest_validation_freezes_relative_paths_without_reading_them() {
-        let root =
-            std::env::temp_dir().join(format!("vlajmaji-manifest-unit-{}", std::process::id()));
-        std::fs::create_dir_all(&root).unwrap();
-        let manifest = root.join("batch.json");
+        let root = OwnedScratch::create("relative-path");
+        let manifest = root.path().join("batch.json");
         std::fs::write(&manifest, br#"{"version":1,"inputs":[{"kind":"sealed","pack_id":"llg","release":"missing release.json","seal":"missing seal.json"}]}"#).unwrap();
         let _request = read_collection_manifest(
             &manifest,
@@ -1428,7 +1464,6 @@ mod collection_manifest_tests {
             "register",
         )
         .unwrap();
-        assert!(!root.join("missing release.json").exists());
-        std::fs::remove_dir_all(root).unwrap();
+        assert!(!root.path().join("missing release.json").exists());
     }
 }
