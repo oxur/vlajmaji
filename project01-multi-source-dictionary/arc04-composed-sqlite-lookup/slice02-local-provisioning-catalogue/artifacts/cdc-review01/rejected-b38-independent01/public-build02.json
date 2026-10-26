@@ -1,0 +1,23 @@
+{
+  "source_commit": "b38bdfe5d2a59ab430539021382225f256b619b3",
+  "setup_correction": "scratch comparison converts OccurrenceRef to RecordIdentity; unused import removed, previous exact files retained",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-cargo",
+    "+1.98.0",
+    "build",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller01/Cargo.toml",
+    "--bin",
+    "a04_s02_cdc_public_20261026a"
+  ],
+  "exit": 0,
+  "elapsed_seconds": 1.4422281668521464,
+  "log_sha256": "f0f81d171308caba0197762e9f31f453c321947655e710e01520dcbc5fbbb4ae",
+  "source_hashes": {
+    "src/main.rs": "bc4ff57f5a2df527ca94470a608c008bbe43a9aa7921abe2fa5fff6fa012a39b",
+    "src/helpers.rs": "b0d29b14379a7156ee005f93bec5cd927e48d4e058a698cd441194c53dfb9e81",
+    "Cargo.lock": "f12c7b9833fef7ed37ff398d9bec7dcf122ec9bbeebb14fd6669b0f17b919a02"
+  }
+}

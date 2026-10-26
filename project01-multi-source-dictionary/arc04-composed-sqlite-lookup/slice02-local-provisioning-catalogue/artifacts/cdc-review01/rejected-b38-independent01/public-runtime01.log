@@ -1,0 +1,11 @@
+PASS all 25 categories match max-multiset recipe including empty categories
+PASS comparator rejects missing empty category
+PASS comparator rejects unexpected empty category
+PASS comparator rejects changed multiplicity
+PASS comparator rejects value versus missing
+PASS literal assertions and eligibility census
+PASS missing reader creates nothing
+
+thread 'main' (75236910) panicked at src/main.rs:44:5:
+preexisting empty directory is occupied and unchanged
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

@@ -1,0 +1,198 @@
+{
+  "source_commit": "b38bdfe5d2a59ab430539021382225f256b619b3",
+  "binary_sha256": "36669d50a27167e82ef954671017871f979d11c57e7f04dba6b5b82191d1e151",
+  "records": [
+    {
+      "label": "manifest-no-selector",
+      "argv_native": [
+        {
+          "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d623338626466652d64656275673031",
+          "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-b38bdfe-debug01"
+        },
+        {
+          "hex": "636f6c6c656374696f6e73",
+          "utf8": "collections"
+        },
+        {
+          "hex": "696e7374616c6c",
+          "utf8": "install"
+        },
+        {
+          "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6e6567617469766530322f6e6f2d73656c6563746f72",
+          "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-negative02/no-selector"
+        },
+        {
+          "hex": "2d2d6d616e6966657374",
+          "utf8": "--manifest"
+        },
+        {
+          "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6e6567617469766530322f616273656e742e6a736f6e",
+          "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-negative02/absent.json"
+        }
+      ],
+      "exit": 1,
+      "elapsed_seconds": 0.007857291027903557,
+      "stdout_bytes": 0,
+      "stderr_sha256": "f1b8d0d0e62100879090f06f778bccc43e31feaa36c0568c291bd6ceeda8937a",
+      "error": {
+        "error": {
+          "code": "collections_request",
+          "message": "manifest mode requires --all or one or more --pack",
+          "sources": []
+        }
+      },
+      "destinations_created": []
+    },
+    {
+      "label": "direct-no-files",
+      "argv_native": [
+        {
+          "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d623338626466652d64656275673031",
+          "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-b38bdfe-debug01"
+        },
+        {
+          "hex": "636f6c6c656374696f6e73",
+          "utf8": "collections"
+        },
+        {
+          "hex": "7265676973746572",
+          "utf8": "register"
+        },
+        {
+          "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6e6567617469766530322f6e6f2d66696c6573",
+          "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-negative02/no-files"
+        },
+        {
+          "hex": "2d2d7061636b",
+          "utf8": "--pack"
+        },
+        {
+          "hex": "6c6c67",
+          "utf8": "llg"
+        }
+      ],
+      "exit": 1,
+      "elapsed_seconds": 0.005579583812505007,
+      "stdout_bytes": 0,
+      "stderr_sha256": "91381cf5b64315179511041c7b17bca9c6c9207faf10fa295145e081bc8446dd",
+      "error": {
+        "error": {
+          "code": "collections_request",
+          "message": "direct sealed mode requires both --release and --seal",
+          "sources": []
+        }
+      },
+      "destinations_created": []
+    },
+    {
+      "label": "native-missing-manifest",
+      "argv_native": [
+        {
+          "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d623338626466652d64656275673031",
+          "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-b38bdfe-debug01"
+        },
+        {
+          "hex": "636f6c6c656374696f6e73",
+          "utf8": "collections"
+        },
+        {
+          "hex": "696e7374616c6c",
+          "utf8": "install"
+        },
+        {
+          "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6e6567617469766530322f6e61746976652d726f6f74",
+          "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-negative02/native-root"
+        },
+        {
+          "hex": "2d2d6d616e6966657374",
+          "utf8": "--manifest"
+        },
+        {
+          "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6e6567617469766530322f6d697373696e672dff2e6a736f6e",
+          "utf8": null
+        },
+        {
+          "hex": "2d2d616c6c",
+          "utf8": "--all"
+        }
+      ],
+      "exit": 1,
+      "elapsed_seconds": 0.005817624740302563,
+      "stdout_bytes": 0,
+      "stderr_sha256": "9da2a822ab47a535d974265769f3a1d1030bbf5762fb11a8e9e82b436e095ba5",
+      "error": {
+        "error": {
+          "code": "io",
+          "message": "read collection manifest /tmp/vlajmaji-p01-a04-s02-cdc/cli-negative02/missing-\ufffd.json: No such file or directory (os error 2)",
+          "sources": []
+        }
+      },
+      "destinations_created": []
+    },
+    {
+      "label": "unknown-pack",
+      "argv_native": [
+        {
+          "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d623338626466652d64656275673031",
+          "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-b38bdfe-debug01"
+        },
+        {
+          "hex": "636f6c6c656374696f6e73",
+          "utf8": "collections"
+        },
+        {
+          "hex": "696e7370656374",
+          "utf8": "inspect"
+        },
+        {
+          "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f636c692d6e6567617469766530322f756e6b6e6f776e2d726f6f74",
+          "utf8": "/tmp/vlajmaji-p01-a04-s02-cdc/cli-negative02/unknown-root"
+        },
+        {
+          "hex": "756e6b6e6f776e",
+          "utf8": "unknown"
+        }
+      ],
+      "exit": 1,
+      "elapsed_seconds": 0.006588916759938002,
+      "stdout_bytes": 0,
+      "stderr_sha256": "01235f9a08f8f8666fa51f6599fa6417a4b0d613de8a76e72dc465b0f4f23169",
+      "error": {
+        "error": {
+          "activation": "not_applicable",
+          "attempt_id": null,
+          "category": "invalid_request",
+          "detail": "invalid collection request: unknown pack id \"unknown\"",
+          "inputs": [],
+          "observed_generation": null,
+          "ok": false,
+          "operation": "inspect",
+          "pack_id": null,
+          "path": null,
+          "prior_local_revision": null,
+          "proposed_generation": null,
+          "version": 1
+        }
+      },
+      "destinations_created": []
+    }
+  ],
+  "public_runtime02": {
+    "log_sha256": "452e0a785bb80f4e4184f1b897296ba6e2c1da2d7b50e97bb93e9168e107b2ce",
+    "summary": {
+      "all_category_count": 25,
+      "base": "/tmp/vlajmaji-p01-a04-s02-cdc/public-runtime02",
+      "failed": [
+        "preexisting empty directory is occupied and unchanged",
+        "occupied root failure retains validated requested input digest",
+        "BEGIN busy retains every validated input digest"
+      ],
+      "ok": false,
+      "passed": 43,
+      "scope": "independent tiny S02 outside caller"
+    },
+    "numeric_child_exit_not_retained_due_to_later_wrapper_JSON_error": true,
+    "empty_root_children": []
+  },
+  "previous_wrapper_failure": "invalid-mode01 was a valid Clap rejection (not JSON); first wrapper assumed JSON and stopped after preserving raw stderr. Remaining cases were not executed there."
+}

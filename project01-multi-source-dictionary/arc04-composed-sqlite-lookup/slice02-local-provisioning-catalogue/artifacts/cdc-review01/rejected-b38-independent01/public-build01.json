@@ -1,0 +1,53 @@
+{
+  "source_commit": "b38bdfe5d2a59ab430539021382225f256b619b3",
+  "records": [
+    {
+      "label": "public-lock01",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-cargo",
+        "+1.98.0",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller01/Cargo.toml"
+      ],
+      "cwd": "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller01",
+      "env": {
+        "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+        "CARGO_NET_OFFLINE": "true"
+      },
+      "exit": 0,
+      "elapsed_seconds": 0.23541929200291634,
+      "log": "/tmp/vlajmaji-p01-a04-s02-cdc/cdc-logs/public-lock01.log",
+      "log_sha256": "3418e1ba74e0548493e17463a6ab7129cf8ec7130b5fb8b1f331c4df35b6f041"
+    },
+    {
+      "label": "public-build01",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-cargo",
+        "+1.98.0",
+        "build",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller01/Cargo.toml",
+        "--bin",
+        "a04_s02_cdc_public_20261026a"
+      ],
+      "cwd": "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller01",
+      "env": {
+        "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+        "CARGO_NET_OFFLINE": "true"
+      },
+      "exit": 101,
+      "elapsed_seconds": 6.661380166653544,
+      "log": "/tmp/vlajmaji-p01-a04-s02-cdc/cdc-logs/public-build01.log",
+      "log_sha256": "19ed433af8f2a816aefb6d53c387aea816061cfed863ec7a477f3ece69ea5400"
+    }
+  ],
+  "source_hashes": {
+    "Cargo.toml": "4c581d435bcf8365f5e974db3d83f066c92b2bce0f28563f29cac2bac9d1da12",
+    "src/main.rs": "8eeb84b44be1409985113300ce4891d68615997c18279b63eacc2875708bd4a4",
+    "src/helpers.rs": "147f830779f4f2b92e2c5da3ac6b73255364e26a6c17cd7644f39cbd092bf071"
+  }
+}

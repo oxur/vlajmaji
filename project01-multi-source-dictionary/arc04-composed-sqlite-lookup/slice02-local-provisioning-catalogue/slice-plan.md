@@ -2,10 +2,10 @@
 
 | Field | Current value |
 | --- | --- |
-| Status / version | ISSUED; 1.1, 2026-10-26 UTC; root readiness PASS, no implementation result implied |
+| Status / version | Corrective iteration01 ISSUED after root readiness PASS; b38 candidate rejected, six rows OPEN. Initial issue/version1.1 preserved. |
 | Authority | Duncan's Autonomous THROUGH ARC04 approval; unchanged requested Sol6.1/high CDC and Luna/high CC. S01 selected Unified, independently accepted at source 4b4158c and planning ba1faf0. No new inquiry or Operator gate. |
-| Source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; clean 4b4158c8a8a489ead639b73706b01061de17cfe1 |
-| Ownership | CDC design/planning/independent acceptance. Retained CC source/index/target only after issue and acknowledgment. Root read-only. |
+| Source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; current frozen b38bdfe5d2a59ab430539021382225f256b619b3; original issue baseline4b4158c preserved below. |
+| Ownership | Current: CDC source/index/target after b38 handback; design/planning/independent acceptance. Numbered repair transfers only on explicit dispatch and CC acknowledgment. Root read-only. |
 | Useful delivery | One local command installs selected/all four packs into an additive verified Unified generation; reusable Rust APIs register, install, list and inspect a truthful persistent collection catalogue. |
 | Exclusions | S03 configuration/default selection and combined command; S04 update/removal/recovery commands; S05 output projection; A05 owned editor. No actual user default, protected main/Bauske/accepted stores, acquisition, push, publication or comparison rerun. |
 
@@ -169,3 +169,11 @@ Author receipts under `/tmp/vlajmaji-p01-a04-s02-cc/logs/`: attempt14-collection
 ## Error-contract correction checkpoint — 2026-10-26 UTC
 
 Current author receipts: attempt28 manifest/batch units 5/5, attempt29 public store contracts 4/4, attempt30 CLI subprocess controls 2/2. The CLI subprocesses use an empty Synthetic model; they establish command flow and read-only missing-catalogue behavior, not nonempty additive or lifecycle completion. The attempt26/27 change to accept null activation contradicted the issued contract; the corrected report/test restores explicit `activation: not_applicable` for read-only failure and separate nullable `observed_generation`. Earlier logs and a calibrated later source snapshot are retained in artifacts/cdc-review01/error-expectation-history01; the snapshot is not represented as exact source of either earlier attempt. Broader history/transaction failure, exact context/disposition reports, docs and final gates remain pending. All six rows are OPEN; no Full store has been created.
+
+## Independent frozen-candidate checkpoint — 2026-10-26 UTC
+
+CC froze clean b38bdfe after actual ordered/feature gates and explicitly returned source/index/target. CDC independently executed the retained tiny outside caller: runtime03 build0/run1,44 passing and5 failing predicates; prior fail-fast and diagnostic attempts remain unchanged in artifacts/cdc-review01/rejected-b38-independent01. Separate CLI runtime negatives reproduce old report schema/native descriptor omissions. A PID-only manifest unit fixture ownership gap is static only. No Full store or Linux run occurred. Current proposed correction is cc-prompt-iteration01.md, four-path subset; NOT dispatched until root read-through and explicit source/index/target transfer. Source identity/normalization/history/default behavior remain binding. All six rows OPEN; Linux and one Full install remain later prerequisites.
+
+## Corrective issue — 2026-10-26 03:11 UTC
+
+Root fully reviewed the preserved iteration01 and rejected-candidate record, independently rehashed all35 small bundle payloads, and approved scoped issue/retained Luna dispatch. This is readiness/evidence consistency, not product acceptance. Active assignment is cc-prompt-iteration01.md; four-path subset only. Source/index/target transfers on explicit dispatch/CC acknowledgment, then returns at clean freeze. Prior NOT DISPATCHED checkpoint above is historical. Linux05 and Full remain OPEN.

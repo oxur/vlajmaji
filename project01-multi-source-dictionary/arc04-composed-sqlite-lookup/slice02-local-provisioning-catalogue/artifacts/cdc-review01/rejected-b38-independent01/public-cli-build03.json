@@ -1,0 +1,43 @@
+{
+  "source_commit": "b38bdfe5d2a59ab430539021382225f256b619b3",
+  "records": [
+    {
+      "label": "public-build03",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-cargo",
+        "+1.98.0",
+        "build",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller01/Cargo.toml",
+        "--bin",
+        "a04_s02_cdc_public_20261026a"
+      ],
+      "cwd": "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller01",
+      "exit": 0,
+      "elapsed_seconds": 2.26681362465024,
+      "log_sha256": "8b36bb77ee42fb93861332143bcd2a8d93bb1fc36c01860f5fcb080951e6a07c"
+    },
+    {
+      "label": "cli-debug-build01",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-cargo",
+        "+1.98.0",
+        "build",
+        "--locked",
+        "--offline",
+        "-p",
+        "vlajmaji-cli",
+        "--bin",
+        "vlajmaji"
+      ],
+      "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+      "exit": 0,
+      "elapsed_seconds": 0.17633737483993173,
+      "log_sha256": "6f8abd4a9c9159fecd28740eb7455a2ca363e2650961f25d028736a6bc3af525"
+    }
+  ],
+  "caller_sha256": "9219d35f612f40a7bf134d024780f5308835facfe2e96bb66d6d5487a7fbfe2e",
+  "note": "Failure accumulation preserves every predicate and returns failure if any fail; diagnostic reports isolate original combined failure."
+}

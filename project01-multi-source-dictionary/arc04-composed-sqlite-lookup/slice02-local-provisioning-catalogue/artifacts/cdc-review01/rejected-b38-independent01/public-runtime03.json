@@ -1,0 +1,35 @@
+{
+  "source_commit": "b38bdfe5d2a59ab430539021382225f256b619b3",
+  "records": [
+    {
+      "label": "build04",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-cargo",
+        "+1.98.0",
+        "build",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller01/Cargo.toml",
+        "--bin",
+        "a04_s02_cdc_public_20261026a"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 2.911767709068954,
+      "log_sha256": "f9324fbfda06a2a48f3656abf5478bf78981605d105829500bd4f24a055ad747"
+    },
+    {
+      "label": "runtime03",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s02-cdc/public-caller-b38bdfe-debug03",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/public-runtime03"
+      ],
+      "exit": 1,
+      "elapsed_seconds": 1.999580250121653,
+      "log_sha256": "ef275720483f80cc9d31de01ac43e14107946f450106dfb76ca06c6d6d23037a",
+      "binary_sha256": "eb49e33eb8070536f252592946d3506cd15df795449afbc1ff1824d529528c50"
+    }
+  ],
+  "caller_source_sha256": "1578974c422371bfae6c73267cf5a932beb339c59501c1f5e2345d95585ee892",
+  "scope": "independent tiny error-cause and known-pack controls; all failures remain binding; no Full"
+}

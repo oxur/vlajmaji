@@ -1,0 +1,49 @@
+PASS all 25 categories match max-multiset recipe including empty categories
+PASS comparator rejects missing empty category
+PASS comparator rejects unexpected empty category
+PASS comparator rejects changed multiplicity
+PASS comparator rejects value versus missing
+PASS literal assertions and eligibility census
+PASS missing reader creates nothing
+EMPTY_ROOT_ERROR {"version":1,"ok":false,"operation":"register","category":"missing_catalogue","detail":"collection catalogue is missing: /tmp/vlajmaji-p01-a04-s02-cdc/public-runtime02/occupied-empty","path":{"encoding":"unix-bytes","hex":"2f746d702f766c616a6d616a692d7030312d6130342d7330322d6364632f7075626c69632d72756e74696d6530322f6f636375706965642d656d707479","utf8":"/tmp/vlajmaji-p01-a04-s02-cdc/public-runtime02/occupied-empty"},"pack_id":null,"attempt_id":null,"prior_local_revision":null,"proposed_generation":null,"observed_generation":null,"activation":"not_activated","inputs":[]}
+FAIL preexisting empty directory is occupied and unchanged
+FAIL occupied root failure retains validated requested input digest
+PASS preexisting file is occupied with exact original bytes
+PASS unknown catalogue version rejected by readers and mutations without changing bytes
+BEGIN_BUSY_ERROR {"version":1,"ok":false,"operation":"install","category":"busy","detail":"collection catalogue is busy: database is locked","path":null,"pack_id":null,"attempt_id":null,"prior_local_revision":null,"proposed_generation":null,"observed_generation":null,"activation":"not_activated","inputs":[]}
+FAIL BEGIN busy retains every validated input digest
+PASS released writer lock valid counterpart installs
+PASS register only revision one no active generation
+PASS metadata descriptor preserves exact registry and immutable release metadata
+PASS descriptor capture identity metadata lengths retained without payload
+PASS native 333 has assertion role not entry role
+PASS registration does not retain fixture lexical definition or copy normalized payload files
+PASS exact register repeat keeps revision and no attempt
+PASS install LLG preserves earlier JB registration
+PASS bad seal payload fails without changing prior generation bytes
+PASS additive install advances one revision and retains two members
+PASS exact install repeat preserves content physical IDs revision and DB bytes
+PASS opposite order gives same content canonical but distinct physical generation
+PASS earlier immutable generation remains retained
+PASS two-pack query has two occurrences two independent source groups
+PASS both source filters preserve one received assertion
+PASS global pages concatenate exact full assertion order
+PASS local assertion positive and typed wrong-role controls both sources
+PASS local mutation revision does not replace upstream query catalogue revision
+PASS all seven nonempty forms retain exact entry source and evidence links
+PASS editorial descriptor retains multi-source links and repeated assertion memberships
+PASS owned head body digest uses source identity key
+PASS historical different release may register without replacing installed head
+PASS different installed revision is update_required and leaves head unchanged
+PASS co-active unequal shared source is typed conflict without activation
+PASS co-active unequal same-ID collection is typed conflict without activation
+PASS equal shared Lensisku source composes received assertions without new authority
+PASS same native333 preserves independent JB and La release capture and assertion scope
+PASS already pinned engine remains on prior immutable installed generation
+PASS pinned public catalogue reader forces known commit nonactivation with context
+PASS commit error retains typed SQLite cause through context wrappers
+PASS failed commit retains revision old generation and exact original DB bytes
+PASS reader-release counterpart installs complete four-pack canonical content
+PASS actual installed four-pack model matches all predeclared category multisets
+PASS four received packs retain three authorities and five eligible farvi occurrences
+{"all_category_count":25,"base":"/tmp/vlajmaji-p01-a04-s02-cdc/public-runtime02","failed":["preexisting empty directory is occupied and unchanged","occupied root failure retains validated requested input digest","BEGIN busy retains every validated input digest"],"ok":false,"passed":43,"scope":"independent tiny S02 outside caller"}
