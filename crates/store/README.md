@@ -19,6 +19,14 @@ persisted source/spelling/occurrence order. It does not normalize spelling or
 apply catalogue selection; the grouped policy is implemented by
 `vlajmaji-search` after the candidate query.
 
+`CollectionCatalogue` is a separate local provisioning record. `register`
+retains source/reference and ownership metadata without copying pack payloads;
+`install` creates a verified Unified generation and publishes it transactionally.
+Catalogue `list`/`inspect` are read-only minimum-format summaries, not payload
+integrity checks. Use the explicit verification API for that boundary. The
+[collection guide](../../docs/collections.md) describes manifests, local paths,
+registration, installation, history, and error reports.
+
 ```rust,no_run
 use vlajmaji_lexicon::Dictionary;
 use vlajmaji_store::DictionaryStore;

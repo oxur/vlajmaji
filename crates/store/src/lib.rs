@@ -12,10 +12,22 @@ use vlajmaji_lexicon::{FieldPresence, FormRole, Lexicon, RecordIdentity, SourceC
 mod sqlite;
 pub use sqlite::SqliteStore;
 
+mod collections;
+mod collections_schema;
 mod dictionary;
 mod dictionary_schema;
 mod dictionary_snapshot;
 mod dictionary_verification;
+pub use collections::{
+    CollectionCaptureReference, CollectionCaptureSummary, CollectionCatalogue,
+    CollectionCategoryCounts, CollectionDerivedStoreMinimum, CollectionEntityReference,
+    CollectionError, CollectionErrorCategory, CollectionFailureReport, CollectionGeneration,
+    CollectionGenerationMember, CollectionInput, CollectionInputDisposition, CollectionInspection,
+    CollectionInstalledHistory, CollectionListReport, CollectionMutationReport,
+    CollectionReferenceMetadata, CollectionRegistrationSummary, CollectionReleaseSummary,
+    CollectionRequest, CollectionSelection, CollectionSourceMetadata, CollectionTermsSummary,
+    NativePathReport, native_path_report,
+};
 pub use dictionary::{
     DictionaryStore, DictionaryStoreError, DictionaryStoreInvalidity, DictionaryStoreSummary,
 };

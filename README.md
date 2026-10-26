@@ -43,6 +43,10 @@ The Rust workspace already provides:
   alongside the existing archive/search commands. Grouped commands can use a
   default store under XDG data home or the standard HOME data directory, while
   the legacy archive commands remain explicit.
+- An explicit local collection catalogue: `collections register` records
+  source/reference metadata, while `collections install` builds one verified
+  Unified generation. These commands do not configure the default store or
+  select sources ([collection guide](docs/collections.md)).
 - A lossless local jbotci export normalizer with `jbotci-import` and
   read-only `jbotci-check` commands and an explicit pinned acquire/replay/check/
   update workflow ([import guide](docs/jbotci-import.md)).

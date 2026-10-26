@@ -3,7 +3,7 @@
 use std::io::{self, Read, Write};
 use std::path::{Path, PathBuf};
 
-use clap::{Parser, Subcommand, ValueEnum};
+use clap::{Args as ClapArgs, Parser, Subcommand, ValueEnum};
 use vlajmaji_lexicon::{
     Dictionary, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION,
     JbotciImportError, JbotciImportOptions, LA_LOJBAN_PINNED_RAW_SHA256, LA_LOJBAN_PINNED_REVISION,
@@ -18,6 +18,7 @@ use vlajmaji_search::{
     SearchOptions,
 };
 use vlajmaji_store::{
+    CollectionCatalogue, CollectionError, CollectionInput, CollectionRequest, CollectionSelection,
     DictionaryStoreVerification, DictionaryStoreVerificationCheck,
     DictionaryStoreVerificationReport,
 };
@@ -112,6 +113,61 @@ enum Command {
         #[command(subcommand)]
         command: DataPackCommand,
     },
+    /// Register or install explicitly selected local source packs.
+    #[command(
+        after_help = "Collection commands use only their explicit ROOT; they do not resolve or modify HOME/XDG defaults, select sources, or download data. Register records metadata only. Install creates and verifies a new Unified generation. Manifest paths are relative to the manifest's parent; Synthetic inputs require --allow-synthetic."
+    )]
+    Collections {
+        #[command(subcommand)]
+        command: CollectionsCommand,
+    },
+}
+
+#[derive(Debug, Subcommand)]
+enum CollectionsCommand {
+    /// Retain strict source/reference metadata without copying release payloads.
+    #[command(
+        after_help = "Use --manifest with --pack ID (repeatable) or --all. --all requires all four pack records. Registration copies no raw/release payload and does not install a generation."
+    )]
+    Register(CollectionMutationArgs),
+    /// Add selected source packs into one verified Unified store generation.
+    #[command(
+        after_help = "Use --manifest with --pack ID (repeatable) or --all. --all requires all four pack records. A different installed release reports update_required; this command does not alter source selection or the user's default store."
+    )]
+    Install(CollectionMutationArgs),
+    /// List registrations and the current installed generation.
+    #[command(
+        after_help = "Read-only summary of an existing explicit catalogue. This does not create a catalogue or rehash pack/store payloads."
+    )]
+    List { root: PathBuf },
+    /// Inspect one source pack's registration, terms and reference summary.
+    #[command(
+        after_help = "Read-only minimum-format and file-presence summary. Use the explicit dictionary verify command for a full store audit."
+    )]
+    Inspect { root: PathBuf, pack: String },
+}
+
+#[derive(Debug, ClapArgs)]
+struct CollectionMutationArgs {
+    root: PathBuf,
+    /// Strict batch manifest; relative paths resolve beside this file.
+    #[arg(long, conflicts_with_all = ["release", "seal"])]
+    manifest: Option<PathBuf>,
+    /// Select all four pack IDs from a manifest.
+    #[arg(long, requires = "manifest", conflicts_with = "pack")]
+    all: bool,
+    /// Select a pack ID from a manifest, repeatable.
+    #[arg(long)]
+    pack: Vec<String>,
+    /// One directly supplied sealed release (direct mode only).
+    #[arg(long, requires = "seal")]
+    release: Option<PathBuf>,
+    /// One directly supplied parsed seal (direct mode only).
+    #[arg(long, requires = "release")]
+    seal: Option<PathBuf>,
+    /// Explicitly permit Synthetic payload declarations.
+    #[arg(long)]
+    allow_synthetic: bool,
 }
 
 #[derive(Debug, Subcommand)]
@@ -230,6 +286,7 @@ enum CliError {
     Legacy(String),
     Structured(DictionaryErrorReport),
     Verification(DictionaryStoreVerificationReport),
+    CollectionFailure(Box<vlajmaji_store::CollectionFailureReport>),
 }
 
 fn structured_error(code: &str, message: impl Into<String>) -> CliError {
@@ -622,8 +679,149 @@ fn execute() -> Result<serde_json::Value, CliError> {
                 )?
             }
         },
+        Command::Collections { command } => collections_command(command)?,
     };
     Ok(output)
+}
+
+fn collections_command(command: CollectionsCommand) -> Result<serde_json::Value, CliError> {
+    match command {
+        CollectionsCommand::Register(args) => collection_mutation(args, "register"),
+        CollectionsCommand::Install(args) => collection_mutation(args, "install"),
+        CollectionsCommand::List { root } => {
+            let catalogue = CollectionCatalogue::open(&root)
+                .map_err(|error| collection_cli_error(error, "list"))?;
+            serde_json::to_value(
+                catalogue
+                    .list()
+                    .map_err(|error| collection_cli_error(error, "list"))?,
+            )
+            .map_err(|error| structured_error("collections_json", error.to_string()))
+        }
+        CollectionsCommand::Inspect { root, pack } => {
+            let pack = parse_collection_pack(&pack)
+                .map_err(|error| collection_cli_error(error, "inspect"))?;
+            let catalogue = CollectionCatalogue::open(&root)
+                .map_err(|error| collection_cli_error(error, "inspect"))?;
+            serde_json::to_value(
+                catalogue
+                    .inspect(pack)
+                    .map_err(|error| collection_cli_error(error, "inspect"))?,
+            )
+            .map_err(|error| structured_error("collections_json", error.to_string()))
+        }
+    }
+}
+
+fn collection_mutation(
+    args: CollectionMutationArgs,
+    operation: &str,
+) -> Result<serde_json::Value, CliError> {
+    let request = if let Some(manifest) = args.manifest.as_ref() {
+        if args.release.is_some() || args.seal.is_some() {
+            return Err(structured_error(
+                "collections_request",
+                "manifest mode cannot be combined with release or seal",
+            ));
+        }
+        let selection = if args.all {
+            if !args.pack.is_empty() {
+                return Err(structured_error(
+                    "collections_request",
+                    "--all cannot be combined with --pack",
+                ));
+            }
+            CollectionSelection::All
+        } else if args.pack.is_empty() {
+            return Err(structured_error(
+                "collections_request",
+                "manifest mode requires --all or one or more --pack",
+            ));
+        } else {
+            CollectionSelection::Packs(
+                args.pack
+                    .iter()
+                    .map(|pack| parse_collection_pack(pack))
+                    .collect::<Result<_, _>>()
+                    .map_err(|error| collection_cli_error(error, operation))?,
+            )
+        };
+        read_collection_manifest(manifest, selection, args.allow_synthetic, operation)?
+    } else {
+        if args.all || args.pack.len() != 1 {
+            return Err(structured_error(
+                "collections_request",
+                "direct sealed mode requires exactly one --pack and does not accept --all",
+            ));
+        }
+        let pack = parse_collection_pack(&args.pack[0])
+            .map_err(|error| collection_cli_error(error, operation))?;
+        let (release, seal) = match (args.release.clone(), args.seal.clone()) {
+            (Some(release), Some(seal)) => (release, seal),
+            _ => {
+                return Err(structured_error(
+                    "collections_request",
+                    "direct sealed mode requires both --release and --seal",
+                ));
+            }
+        };
+        CollectionRequest::new(
+            vec![CollectionInput::SealedFiles {
+                pack_id: pack,
+                release,
+                seal,
+            }],
+            CollectionSelection::Packs(vec![pack]),
+            args.allow_synthetic,
+        )
+        .map_err(|error| collection_cli_error(error, operation))?
+    };
+    let report = match operation {
+        "register" => CollectionCatalogue::register(&args.root, request)
+            .map_err(|error| collection_cli_error(error, operation))?,
+        "install" => CollectionCatalogue::install(&args.root, request)
+            .map_err(|error| collection_cli_error(error, operation))?,
+        _ => {
+            return Err(structured_error(
+                "collections_operation",
+                "unsupported collection mutation",
+            ));
+        }
+    };
+    serde_json::to_value(report)
+        .map_err(|error| structured_error("collections_json", error.to_string()))
+}
+
+fn parse_collection_pack(value: &str) -> Result<PackId, CollectionError> {
+    match value {
+        "lensisku-jbotci" => Ok(PackId::LensiskuJbotci),
+        "llg" => Ok(PackId::Llg),
+        "la-lojban" => Ok(PackId::LaLojban),
+        "sutysisku" => Ok(PackId::Sutysisku),
+        _ => Err(CollectionError::InvalidRequest(format!(
+            "unknown pack id {value:?}"
+        ))),
+    }
+}
+
+fn collection_cli_error(error: CollectionError, operation: &str) -> CliError {
+    CliError::CollectionFailure(Box::new(error.report(operation)))
+}
+
+fn read_collection_manifest(
+    path: &Path,
+    selection: CollectionSelection,
+    allow_synthetic: bool,
+    operation: &str,
+) -> Result<CollectionRequest<'static>, CliError> {
+    let bytes = std::fs::read(path).map_err(|error| {
+        structured_error(
+            "io",
+            format!("read collection manifest {}: {error}", path.display()),
+        )
+    })?;
+    CollectionRequest::from_manifest(&bytes, path, selection, allow_synthetic)
+        .map_err(|error| collection_cli_error(error, operation))
 }
 
 #[derive(Debug)]
@@ -1091,6 +1289,13 @@ fn main() -> std::process::ExitCode {
             }
             return std::process::ExitCode::FAILURE;
         }
+        Err(CliError::CollectionFailure(report)) => {
+            let mut stderr = io::stderr().lock();
+            if serde_json::to_writer(&mut stderr, &serde_json::json!({"error": report})).is_ok() {
+                let _ = stderr.write_all(b"\n");
+            }
+            return std::process::ExitCode::FAILURE;
+        }
         Err(CliError::Verification(report)) => {
             let mut stderr = io::stderr().lock();
             let envelope = serde_json::json!({
@@ -1173,5 +1378,57 @@ mod default_path_tests {
         assert!(message.contains(&inaccessible_marker.display().to_string()));
 
         std::fs::remove_dir_all(root).expect("remove marker-test scratch directory");
+    }
+}
+
+#[cfg(test)]
+mod collection_manifest_tests {
+    use super::read_collection_manifest;
+    use vlajmaji_store::CollectionSelection;
+
+    #[test]
+    fn test_manifest_duplicate_keys_rejects_escaped_equivalents_recursively() {
+        let root = std::env::temp_dir().join(format!(
+            "vlajmaji-manifest-duplicate-{}",
+            std::process::id()
+        ));
+        std::fs::create_dir(&root).unwrap();
+        let manifest = root.join("batch.json");
+        for bytes in [
+            br#"{"version":1,"version":1,"inputs":[]}"#.as_slice(),
+            br#"{"version":1,"inputs":[{"kind":"la-lojban","pack_id":"la-lojban","payload_kind":"synthetic","raw":"raw","options":{"revision":"a","revis\u0069on":"b","expected_raw_sha256":"hash"}}]}"#.as_slice(),
+        ] {
+            std::fs::write(&manifest, bytes).unwrap();
+            assert!(read_collection_manifest(&manifest, CollectionSelection::Packs(vec![vlajmaji_lexicon::PackId::LaLojban]), true, "register").is_err());
+        }
+        std::fs::write(&manifest, r#"{"version":1,"inputs":[{"kind":"la-lojban","pack_id":"la-lojban","payload_kind":"synthetic","raw":"λ","options":{"revision":"a","expected_raw_sha256":"hash"}}]}"#).unwrap();
+        assert!(
+            read_collection_manifest(
+                &manifest,
+                CollectionSelection::Packs(vec![vlajmaji_lexicon::PackId::LaLojban]),
+                true,
+                "register"
+            )
+            .is_ok()
+        );
+        std::fs::remove_dir_all(root).unwrap();
+    }
+
+    #[test]
+    fn test_manifest_validation_freezes_relative_paths_without_reading_them() {
+        let root =
+            std::env::temp_dir().join(format!("vlajmaji-manifest-unit-{}", std::process::id()));
+        std::fs::create_dir_all(&root).unwrap();
+        let manifest = root.join("batch.json");
+        std::fs::write(&manifest, br#"{"version":1,"inputs":[{"kind":"sealed","pack_id":"llg","release":"missing release.json","seal":"missing seal.json"}]}"#).unwrap();
+        let _request = read_collection_manifest(
+            &manifest,
+            CollectionSelection::Packs(vec![vlajmaji_lexicon::PackId::Llg]),
+            true,
+            "register",
+        )
+        .unwrap();
+        assert!(!root.join("missing release.json").exists());
+        std::fs::remove_dir_all(root).unwrap();
     }
 }

@@ -42,6 +42,15 @@ integrity. `all` reports six ordered result rows. A failed check exits nonzero,
 leaves stdout empty, and writes both its structured error and complete report
 to stderr.
 
+`collections register|install|list|inspect ROOT` manages an explicit local
+source catalogue. Registration stores typed source and reference metadata
+without copying release payloads. Installation creates one verified Unified
+generation; it never changes the default store or source selection. Manifest
+paths resolve beside the manifest, and selected inputs are read locally with
+the existing pack adapters. Synthetic packs require `--allow-synthetic`.
+See the [collection guide](../../docs/collections.md) for commands, strict
+manifest fields, state semantics, and structured failures.
+
 `jbotci-import RAW METADATA FRESH.json` locally normalizes a hash-pinned export;
 `jbotci-check RAW METADATA [--release RELEASE.json]` validates it without
 writing. `make jbotci-acquire`, `jbotci-replay`, `jbotci-check`, and
