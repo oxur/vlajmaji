@@ -4,7 +4,7 @@ use std::{
     fs,
     path::PathBuf,
     sync::atomic::{AtomicU64, Ordering},
-    time::{SystemTime, UNIX_EPOCH},
+    time::{Instant, SystemTime, UNIX_EPOCH},
 };
 use vlajmaji_lexicon::{Dictionary, JbotciImportOptions, import_jbotci_export};
 use vlajmaji_search::{DictionaryExactOptions, DictionarySearchEngine};
@@ -107,6 +107,14 @@ fn test_exact_profiled_matches_unprofiled_for_each_topology() {
     let baseline = unified.exact("farvi", first_options.clone()).unwrap();
     assert_eq!(baseline.totals.occurrences, 2);
     let cursor = baseline.next_cursor.clone().unwrap();
+    let started = Instant::now();
+    let (unified_profiled, unified_profile) = unified
+        .exact_profiled("farvi", first_options.clone())
+        .unwrap();
+    let unified_elapsed = started.elapsed();
+    assert_eq!(unified_profiled, baseline);
+    assert!(unified_profile.candidate_sql + unified_profile.hydration <= unified_profile.total);
+    assert!(unified_profile.total <= unified_elapsed);
     for engine in [&fanout, &attached] {
         assert_eq!(
             engine.exact("farvi", first_options.clone()).unwrap(),
@@ -119,9 +127,12 @@ fn test_exact_profiled_matches_unprofiled_for_each_topology() {
         };
         let next_response = engine.exact("farvi", next.clone()).unwrap();
         assert_eq!(next_response.totals, baseline.totals);
+        let started = Instant::now();
         let (profiled, profile) = engine.exact_profiled("farvi", next).unwrap();
+        let elapsed = started.elapsed();
         assert_eq!(profiled, next_response);
-        assert!(profile.total >= profile.candidate_sql);
+        assert!(profile.candidate_sql + profile.hydration <= profile.total);
+        assert!(profile.total <= elapsed);
     }
     let changed = DictionarySearchEngine::open_snapshot(
         DictionaryReadTopology::Unified,

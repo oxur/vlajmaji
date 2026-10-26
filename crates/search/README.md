@@ -23,10 +23,13 @@ a `DictionaryReadTopology` and a frozen `DictionarySnapshotManifest` from
 `vlajmaji-store`. The same engine can read one unified store, fan out across
 member stores, or use read-only SQLite `ATTACH`; each topology loads its own
 typed document and performs its own candidate queries. Snapshot opening checks
-member headers and expected recorded states, then checks the composed logical
-digest. That typed draft is intentionally unverified: ordinary open does not
-audit every projected SQL value. Use the store's explicit `All` verification
-before relying on full persisted projection integrity. The attach topology
+member headers and expected recorded states. Unified compares the manifest
+logical digest with the member's recorded canonical header digest; that recorded
+digest is unauthenticated until explicit verification. Attached and Fanout read
+each canonical document, compose them, and compute the canonical logical digest.
+That typed draft is intentionally unverified: ordinary open does not audit every
+projected SQL value. Use the store's explicit `All` verification before relying
+on full persisted projection integrity. The attach topology
 requires UTF-8 paths and reports unsupported native paths as an error; separate
 attached files do not gain atomic-publication semantics.
 

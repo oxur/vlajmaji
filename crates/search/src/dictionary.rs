@@ -971,8 +971,14 @@ impl DictionarySearchEngine {
         spelling: &str,
         options: DictionaryExactOptions,
     ) -> Result<(DictionaryExactResponse, DictionaryExactProfile), DictionaryQueryError> {
+        let total_started = Instant::now();
         let mut profile = DictionaryExactProfile::default();
         let response = self.exact_inner(spelling, options, Some(&mut profile))?;
+        profile.total = total_started.elapsed();
+        profile.lookup_order_paging = profile
+            .total
+            .saturating_sub(profile.hydration)
+            .saturating_sub(profile.candidate_sql);
         Ok((response, profile))
     }
 
@@ -982,7 +988,6 @@ impl DictionarySearchEngine {
         options: DictionaryExactOptions,
         mut profile: Option<&mut DictionaryExactProfile>,
     ) -> Result<DictionaryExactResponse, DictionaryQueryError> {
-        let total_started = Instant::now();
         let hydration_started = Instant::now();
         let availability = self.availability.clone();
         if let Some(profile) = profile.as_mut() {
@@ -1092,7 +1097,7 @@ impl DictionarySearchEngine {
             group.returned_count = group.hits.len();
             group.partial = group.returned_count < group.full_count;
         }
-        if let Some(profile) = profile.as_deref_mut() {
+        if let Some(profile) = profile {
             profile.hydration += group_hydration_started.elapsed();
         }
         let metadata = &self.dictionary.metadata;
@@ -1112,13 +1117,6 @@ impl DictionarySearchEngine {
             next_cursor,
             code_notices: metadata.code_notices.clone(),
         };
-        if let Some(profile) = profile {
-            profile.total = total_started.elapsed();
-            profile.lookup_order_paging = profile
-                .total
-                .saturating_sub(profile.hydration)
-                .saturating_sub(profile.candidate_sql);
-        }
         Ok(response)
     }
 
