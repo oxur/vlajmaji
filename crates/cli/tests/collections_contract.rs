@@ -487,6 +487,112 @@ fn test_collections_cli_native_missing_manifest_expect_exact_path_report() {
     let _ = std::fs::remove_dir_all(parent);
 }
 
+#[cfg(target_os = "linux")]
+#[test]
+fn test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly() {
+    use std::os::unix::ffi::{OsStrExt, OsStringExt};
+
+    let parent = fresh_root("native-existing-inputs");
+    let mut release_name = b"release-".to_vec();
+    release_name.push(0xff);
+    release_name.extend_from_slice(b".json");
+    let release = parent.join(std::ffi::OsString::from_vec(release_name));
+
+    let mut seal_name = b"seal-".to_vec();
+    seal_name.push(0xfe);
+    seal_name.extend_from_slice(b".json");
+    let seal = parent.join(std::ffi::OsString::from_vec(seal_name));
+
+    let catalogue = parent.join(std::ffi::OsString::from_vec(b"catalogue-\xfd".to_vec()));
+    let dictionary = Dictionary::from_document(Default::default()).unwrap();
+    let sealed = seal_release(PackId::Llg, PackPayloadKind::Synthetic, &dictionary).unwrap();
+    std::fs::write(&release, &sealed.release).unwrap();
+    std::fs::write(&seal, &sealed.seal).unwrap();
+    let release_before = std::fs::read(&release).unwrap();
+    let seal_before = std::fs::read(&seal).unwrap();
+
+    let register = run(&[
+        Path::new("collections"),
+        Path::new("register"),
+        catalogue.as_path(),
+        Path::new("--pack"),
+        Path::new("llg"),
+        Path::new("--release"),
+        release.as_path(),
+        Path::new("--seal"),
+        seal.as_path(),
+        Path::new("--allow-synthetic"),
+    ]);
+    assert!(
+        register.status.success(),
+        "{}",
+        String::from_utf8_lossy(&register.stderr)
+    );
+    let registered = json(&register);
+    assert_eq!(registered["version"], 1);
+    assert_eq!(registered["operation"], "register");
+    assert_eq!(registered["outcome"], "registered");
+    assert_eq!(registered["local_revision"], 1);
+    assert!(registered["generation"].is_null());
+    assert!(std::fs::symlink_metadata(&catalogue).unwrap().is_dir());
+    assert!(catalogue.join("catalogue.sqlite3").is_file());
+
+    let inspect = run(&[
+        Path::new("collections"),
+        Path::new("inspect"),
+        catalogue.as_path(),
+        Path::new("llg"),
+    ]);
+    assert!(
+        inspect.status.success(),
+        "{}",
+        String::from_utf8_lossy(&inspect.stderr)
+    );
+    let inspected = json(&inspect);
+    assert_eq!(inspected["version"], 1);
+    assert_eq!(inspected["pack_id"], "llg");
+    let registration = &inspected["registrations"][0];
+    assert_eq!(registration["inputs_present"], true);
+    assert_eq!(registration["input_ownership"], "caller_managed");
+    let input_paths = registration["inputs"].as_array().unwrap();
+    assert_eq!(input_paths.len(), 2);
+    let mut actual_hex = input_paths
+        .iter()
+        .map(|path| {
+            assert_eq!(path["encoding"], "unix-bytes");
+            assert!(path["utf8"].is_null());
+            path["hex"].as_str().unwrap().to_owned()
+        })
+        .collect::<Vec<_>>();
+    actual_hex.sort();
+    let mut expected_hex = [&release, &seal]
+        .into_iter()
+        .map(|path| {
+            path.as_os_str()
+                .as_bytes()
+                .iter()
+                .map(|byte| format!("{byte:02x}"))
+                .collect::<String>()
+        })
+        .collect::<Vec<_>>();
+    expected_hex.sort();
+    assert_eq!(actual_hex, expected_hex);
+
+    assert_eq!(std::fs::read(&release).unwrap(), release_before);
+    assert_eq!(std::fs::read(&seal).unwrap(), seal_before);
+
+    // These lossy replacement paths are only negative witnesses; all actual
+    // file creation and CLI arguments above use the original native Paths.
+    let replacement_path = |path: &Path| {
+        PathBuf::from(String::from_utf8_lossy(path.as_os_str().as_bytes()).into_owned())
+    };
+    assert!(!replacement_path(&release).exists());
+    assert!(!replacement_path(&seal).exists());
+    assert!(!replacement_path(&catalogue).exists());
+
+    let _ = std::fs::remove_dir_all(parent);
+}
+
 #[test]
 fn test_collections_cli_relative_paths_are_frozen_across_working_directories() {
     let scratch = fresh_root("relative-paths");

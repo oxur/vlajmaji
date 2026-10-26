@@ -622,6 +622,7 @@ fn error_chain_contains_io_error(error: &(dyn std::error::Error + 'static)) -> b
     }
 }
 
+#[cfg(target_os = "macos")]
 fn error_chain_raw_os_error(error: &(dyn std::error::Error + 'static)) -> Option<i32> {
     let mut current = error;
     loop {
@@ -1309,6 +1310,7 @@ fn test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io() {
     assert_eq!(report.encoding, "unix-bytes");
     assert_eq!(report.hex, expected_hex);
     assert!(report.utf8.is_none());
+    #[cfg(target_os = "macos")]
     let entries_before = fs::read_dir(&parent)
         .unwrap()
         .map(|entry| entry.unwrap().file_name())
