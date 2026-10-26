@@ -1403,6 +1403,6 @@ fn test_sealed_input_native_non_utf8_path_is_preserved_in_inspection() {
         .collect::<String>();
     assert_eq!(recorded.encoding, "unix-bytes");
     assert_eq!(recorded.hex, expected_hex);
-    assert_eq!(inspection.registrations[0].inputs_present, true);
+    assert!(inspection.registrations[0].inputs_present);
     let _ = fs::remove_dir_all(scratch);
 }
