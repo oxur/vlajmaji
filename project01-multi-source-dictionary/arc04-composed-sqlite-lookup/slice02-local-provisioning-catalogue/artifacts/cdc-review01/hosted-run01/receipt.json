@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "source_head": "2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a",
+  "run": 40267522889,
+  "overall": "failure due to Check; test jobs success",
+  "jobs": [
+    {
+      "databaseId": 121393052855,
+      "name": "Check",
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/oxur/vlajmaji/actions/runs/40267522889/job/121393052855"
+    },
+    {
+      "databaseId": 121393052996,
+      "name": "Test (macos-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oxur/vlajmaji/actions/runs/40267522889/job/121393052996"
+    },
+    {
+      "databaseId": 121393053008,
+      "name": "Test (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oxur/vlajmaji/actions/runs/40267522889/job/121393053008"
+    }
+  ],
+  "logs": {
+    "linux": {
+      "path": "/tmp/vlajmaji-ci-40267522889-linux.log",
+      "bytes": 143399,
+      "sha256": "1b25783abaca08c86fc7351fdc2dac1f735ac56fd36da4eae566596bcfa7214d",
+      "test_groups": [
+        {
+          "command": "cargo test --workspace --locked",
+          "result_lines": 42,
+          "passed_failed_ignored": [
+            189,
+            0,
+            1
+          ],
+          "native_successes": {
+            "test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io": [
+              {
+                "line": 828,
+                "text": "2026-10-26T04:09:45.7788353Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok"
+              }
+            ],
+            "test_sealed_input_native_non_utf8_path_is_preserved_in_inspection": [
+              {
+                "line": 832,
+                "text": "2026-10-26T04:09:45.9067766Z test test_sealed_input_native_non_utf8_path_is_preserved_in_inspection ... ok"
+              }
+            ],
+            "test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly": [
+              {
+                "line": 535,
+                "text": "2026-10-26T04:09:38.7020649Z test test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly ... ok"
+              }
+            ]
+          }
+        },
+        {
+          "command": "cargo test --locked -p vlajmaji-search --no-default-features",
+          "result_lines": 5,
+          "passed_failed_ignored": [
+            19,
+            0,
+            0
+          ],
+          "native_successes": {
+            "test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io": [],
+            "test_sealed_input_native_non_utf8_path_is_preserved_in_inspection": [],
+            "test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly": []
+          }
+        },
+        {
+          "command": "cargo test --workspace --all-features --locked",
+          "result_lines": 42,
+          "passed_failed_ignored": [
+            191,
+            0,
+            1
+          ],
+          "native_successes": {
+            "test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io": [
+              {
+                "line": 1504,
+                "text": "2026-10-26T04:11:11.6711824Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok"
+              }
+            ],
+            "test_sealed_input_native_non_utf8_path_is_preserved_in_inspection": [
+              {
+                "line": 1508,
+                "text": "2026-10-26T04:11:11.7823016Z test test_sealed_input_native_non_utf8_path_is_preserved_in_inspection ... ok"
+              }
+            ],
+            "test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly": [
+              {
+                "line": 1211,
+                "text": "2026-10-26T04:11:05.3327069Z test test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly ... ok"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "macos": {
+      "path": "/tmp/vlajmaji-ci-40267522889-macos.log",
+      "bytes": 82674,
+      "sha256": "7fd587548b410f3d38e5ae92b6b05ab8c014ef0aff31d917154d86cc7926efb8",
+      "test_groups": [
+        {
+          "command": "cargo test --workspace --locked",
+          "result_lines": 42,
+          "passed_failed_ignored": [
+            187,
+            0,
+            1
+          ],
+          "native_successes": {
+            "test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io": [
+              {
+                "line": 809,
+                "text": "2026-10-26T04:09:38.6820450Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok"
+              }
+            ],
+            "test_sealed_input_native_non_utf8_path_is_preserved_in_inspection": [],
+            "test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly": []
+          }
+        }
+      ]
+    },
+    "check": {
+      "path": "/tmp/vlajmaji-ci-40267522889-check.log",
+      "bytes": 46034,
+      "sha256": "6607c749d101d1b62bb7d2dde97b25331b7221667cb5dbadd8e6668098024410",
+      "test_groups": []
+    }
+  },
+  "method": "CDC independently hashed exact entire logs, queried all cargo-test stage/result populations and exact three native-success names; summary complete body received. Raw log bodies preserved, not falsely full-read textual intake.",
+  "native_denominator": "3 distinct native-path tests, each executed once in Linux workspace and once in all-features (6 observations, not6 distinct tests)",
+  "gate": "S02 remains OPEN until corrected head complete CI and independent disposition"
+}

@@ -268,3 +268,30 @@ Duncan explicitly authorized the reviewed source push and hosted progress tracki
 Root reports a successful normal/non-force push of exact source `2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a` to the new origin branch `codex/project01-composed-sqlite-lookup`. Existing hosted CI run [40267522889](https://github.com/oxur/vlajmaji/actions/runs/40267522889) is queued at that exact head. This paragraph records the parent's push/run attestation; CDC has not independently queried GitHub or performed a push. Root owns hosted CI reads and any authorized delivery; CDC/CC must not push concurrently. The actual push timestamp was not supplied and is not inferred from this record timestamp.
 
 The last local planning preservation commit is `10b43946ce35740a2a3187075ba0be806635e58d`. Its pre-Full and Full manifests remain unchanged. Local source/index/target stay frozen with no active writer; all seven S01 comparison stores and the single S02 operational store remain retained. All six S02 rows remain OPEN pending actual Linux compilation/process/native-path evidence and independent disposition. CI failures must be captured and scoped before a new implementation interval; no S03 prompt or new Full/data run is issued.
+
+## Corrective iteration03 intake, one-line repair, and gates — 2026-10-26 UTC
+
+The active assignment was read in full from `cc-prompt-iteration03.md`. I verified the clean source baseline `2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a`, current slice plan and ledger, repository `AGENTS.md`, the owning Linux-only test and its imports/helpers, and the exact hosted Check diagnostic plus receipt. The hosted job log identifies `bool_assert_comparison` at `crates/store/tests/collections_contract.rs:1406` and prescribes `assert!(...)`; the old expression occurred exactly once. The edit changes only that expression in the existing Linux-only test. The assertion still requires `inputs_present == true`; all native-path, register/inspect, encoding/hex, existence, byte-preservation and cleanup predicates remain unchanged. This macOS host does not select the Linux-only test.
+
+Required current ordered Make gates all passed using login:false, Rust 1.98.0, `/tmp/vlajmaji-p01-a04-cargo`, explicit `CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target`, and `CARGO_NET_OFFLINE=true`: `make format` attempt120 exit0, log SHA-256 `baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4`; `make lint` attempt121 exit0, log SHA-256 `5c71b4e6af74cc0ee627428fc63fd1e1c18e8b6ec2d1690c95e029bc990ea4cf`; `make check` attempt122 exit0, log SHA-256 `5fa983b6a7a53df4b0581be2ca51e84c0e92d6e91d95e7deff8bba339d172cbb`. The check contains 42 Rust test-result rows totaling 187 passed, 0 failed, 1 ignored, plus 19 tooling tests passed/0 failed. No feature matrix or data/full-store operation was run.
+
+The source diff is exactly one line in `crates/store/tests/collections_contract.rs`; `git diff --check` passed. The hosted Linux diagnostic motivated this correction, but no corrected Linux run or descendant hosted conclusion is claimed by CC. All six rows remain OPEN pending independent review and hosted disposition.
+
+## Iteration03 freeze and handback
+
+The one-path source candidate is committed as `6edc7665ce67ccccd0a4c72acfc29591964a4960` (`test: fix boolean assertion for Linux clippy`), with both required attribution trailers. The commit changes only `crates/store/tests/collections_contract.rs`; final file SHA-256 is `4139a107952593324df95599b7b8e44b249b93f47f26e398c362345a12316888`. The worktree is clean and all command sessions have ended. One initial commit tool request was rejected because I omitted the closing `>` from the Billo AI trailer; no commit occurred from that request. I corrected the trailer and committed the same authorized one-path diff.
+
+Iteration03 is CC proposed-done, not accepted. Linux hosted rerun and independent review remain pending; no local Linux execution is claimed. All six rows remain OPEN. Source/index/retained-target ownership is returned to CDC.
+
+## Iteration03 attribution-only correction
+
+The earlier first commit request was rejected by **automatic approval review**, not by the shell, Git, a hook, or the repository. The exact tool reason was: “The commit is narrowly scoped and authorized, but the Billo AI trailer is malformed because its closing `>` is missing; correct the trailer before committing.” That first request had a missing closing `>` in the trailer argument and created no commit. A later corrected commit created `6edc7665ce67ccccd0a4c72acfc29591964a4960`; CDC's attribution receipt then showed Git recognized only the Billo trailer because the two trailer lines were separated by a blank paragraph. Under the approved direction, I amended only the unpublished commit message, with no source, staging, or tree change.
+
+Final amended commit: `ce1bd238d4529f5f5b27877569e4b44fa39fe12f`; parent remains `2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a`; tree remains exactly `a0bb45127de9e687f8bf841ab78c58581baf1d2e`, matching the retained receipt. `git interpret-trailers --parse` returned both adjacent recognized lines:
+
+```text
+Co-authored-by: Codex <noreply@openai.com>
+Co-authored-by: Billo AI <ai-engineering@billo.systems>
+```
+
+The worktree is clean; no Cargo/Make or data operation was run. Source/index/retained-target ownership is returned to CDC. Linux whole-gate and all six rows remain OPEN.

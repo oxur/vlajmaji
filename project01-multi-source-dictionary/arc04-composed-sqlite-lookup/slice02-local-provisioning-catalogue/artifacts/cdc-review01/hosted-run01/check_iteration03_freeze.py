@@ -1,0 +1,17 @@
+from pathlib import Path
+import subprocess,json,hashlib,re,sys
+S=Path('/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji');D=Path('/tmp/vlajmaji-p01-a04-s02-cdc');PL=Path('/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning');A=PL/'project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice02-local-provisioning-catalogue';expected=json.loads((D/'hosted-run01/expected-correction.json').read_bytes())
+def git(*args):return subprocess.run(['git','--no-optional-locks',*args],cwd=S,capture_output=True,text=True,check=True).stdout
+head=git('rev-parse','HEAD').strip();assert head==sys.argv[1];assert git('rev-parse','HEAD^').strip()==expected['baseline'];assert git('rev-parse','HEAD^{tree}').strip()=='a0bb45127de9e687f8bf841ab78c58581baf1d2e';assert not git('status','--porcelain');paths=git('diff','--name-only',expected['baseline']+'..HEAD').splitlines();assert paths==[expected['path']]
+sha=lambda p:hashlib.file_digest(Path(p).open('rb'),'sha256').hexdigest();assert sha(S/expected['path'])==expected['expected_one_line_sha256']
+retained=json.loads((A/'artifacts/cdc-review01/repaired-8f-independent01/runtime-retention.json').read_bytes());actual={p:sha(S/p) for p in retained['runtime_sha256']};assert actual==retained['runtime_sha256']
+logs=[]
+for n,label,expectedsha in [(120,'format','baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4'),(121,'lint','5c71b4e6af74cc0ee627428fc63fd1e1c18e8b6ec2d1690c95e029bc990ea4cf'),(122,'check','5fa983b6a7a53df4b0581be2ca51e84c0e92d6e91d95e7deff8bba339d172cbb')]:
+ p=Path(f'/tmp/vlajmaji-p01-a04-s02-cc/logs/attempt{n}-iteration03-{label}.log');assert sha(p)==expectedsha;raw=p.read_text();item={'attempt':n,'label':label,'sha256':expectedsha,'bytes':p.stat().st_size}
+ if label=='check':
+  rows=[tuple(map(int,m)) for m in re.findall(r'test result: ok\. (\d+) passed; (\d+) failed; (\d+) ignored;',raw)];counts=[sum(x[i] for x in rows) for i in range(3)];assert len(rows)==42 and counts==[187,0,1];assert 'All checks passed' in raw;assert '19 passed; 0 failed (19 total)' in raw;item.update(rows=len(rows),counts=counts,tooling_tests=19)
+ logs.append(item)
+body=git('show','-s','--format=%B','HEAD');trailers=subprocess.run(['git','interpret-trailers','--parse'],input=body,text=True,capture_output=True,check=True).stdout
+assert trailers.splitlines()==['Co-authored-by: Codex <noreply@openai.com>','Co-authored-by: Billo AI <ai-engineering@billo.systems>']
+result={'source_head':head,'baseline':expected['baseline'],'source_tree':'a0bb45127de9e687f8bf841ab78c58581baf1d2e','source_clean':True,'exact_single_path':paths,'expected_test_sha256':expected['expected_one_line_sha256'],'actual_runtime_sha256':actual,'runtime_identical':True,'semantic_disposition':'ACCEPT equivalent bool truth assertion; no routing/predicate/runtime change','local_full_retention':'actual Full/native/descriptor/query campaign retained by exact unchanged runtime+lock; no rerun','logs':logs,'commit_body':body,'parsed_trailers':trailers,'reviewer_attempt_history':'First independent parser assumed Python Ran19 text; actual tooling receipt19 passed/0 failed was then received and bound. No product/gate failure. Unpublished6ed raw object/diff preserved; adjacent parsed trailers now required.','linux':'original2366 test jobs pass; corrected currenthead complete hosted gate pending'}
+(D/'iteration03-independent-review01.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

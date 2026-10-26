@@ -2,12 +2,12 @@
 
 | Field | Current value |
 | --- | --- |
-| Status / version | Clean iteration02 2366ae2 handed back; current independent macOS gates/provider and retained repaired runtime controls pass. Local Full proof PASS; hosted Linux Check fails boolean assertion lint. Iteration03 ISSUED: one test-only line; other hosted jobs pending. Six rows OPEN. |
+| Status / version | Clean iteration02 2366ae2 handed back; current independent macOS gates/provider and retained repaired runtime controls pass. Local Full proof PASS. Original hosted tests pass; Check lint corrected by equivalent one-line ce1bd238. Replacement run40268360507 pending; six rows OPEN. |
 | Authority | Duncan's Autonomous THROUGH ARC04 approval; unchanged requested Sol6.1/high CDC and Luna/high CC. S01 selected Unified, independently accepted at source 4b4158c and planning ba1faf0. Arc04 execution remains authorized. Duncan explicitly approved the exact2366 source-branch push and existing hosted CI; root reports normal push success and owns run40267522889. No broader delivery authority. |
-| Source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; current frozen2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a; b38 and8f candidates/history retained below. |
+| Source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; current frozence1bd238d4529f5f5b27877569e4b44fa39fe12f; b38,8f,2366 and unpublished6ed histories retained below. |
 | Ownership | Current: CDC source/index/target after explicit2366 freeze/handback; all author/build sessions ended. CDC design/planning/independent acceptance; root read-only. |
 | Useful delivery | One local command installs selected/all four packs into an additive verified Unified generation; reusable Rust APIs register, install, list and inspect a truthful persistent collection catalogue. |
-| Exclusions | S03 configuration/default selection and combined command; S04 update/removal/recovery commands; S05 output projection; A05 owned editor. No actual user default, protected main/Bauske/accepted stores, acquisition, push, publication or comparison rerun. |
+| Exclusions | S03 configuration/default selection and combined command; S04 update/removal/recovery commands; S05 output projection; A05 owned editor. No actual user default, protected main/Bauske/accepted stores, acquisition, publication or comparison rerun. Only the explicitly authorized root-owned source push/CI route is permitted; CDC/CC do not push. |
 
 ## Source-grounded readback and applied guidance
 
@@ -205,3 +205,7 @@ Duncan explicitly approved the reviewed source push/watch. Root reports exact236
 ## Current hosted correction issue — 2026-10-26 UTC
 
 Actual Ubuntu Check job121393052855 at run40267522889 fails bool_assert_comparison in the Linux-only sealed-native-input test, source2366 line1406. Root supplied full successful API log separately from its in-progress run-log failure; exact bytes/diagnostic extent retained under artifacts/cdc-review01/hosted-correction01. Active bounded assignment cc-prompt-iteration03.md changes only the equivalent boolean assertion in that one test file, with current ordered macOS gates and no Full rerun. Source/index/target transfers on explicit retained CC acknowledgment; root alone pushes after independent handback review. All six rows/Linux acceptance OPEN; no S03 issue.
+
+## Current corrected-head hosted checkpoint — 2026-10-26 UTC
+
+Original2366 hosted Test jobs both succeeded; complete Linux workspace189/0/1, search19, allfeatures191/0/1 and three actual native-path controls twice each are independently bound in artifacts/cdc-review01/hosted-run01. Check style failure is corrected by sourcece1bd238 with exact one-line test delta and unchanged runtime/lock. Unpublished6ed raw object/diff preserved; root-approved attribution-only amend retains exact tree/parent and both actual parsed trailers. Author current ordered gates187/0/1+19tooling pass. Root independently verified, normally pushed ce1 and owns replacement run40268360507. All six rows/current-head CI remain OPEN; no S03 or new Full work. CDC source/index/target idle and frozen.

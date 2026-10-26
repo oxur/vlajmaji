@@ -1,0 +1,12 @@
+tree a0bb45127de9e687f8bf841ab78c58581baf1d2e
+parent 2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a
+author Duncan McGreggor <oubiwann@gmail.com> 1792988071 -0500
+committer Duncan McGreggor <oubiwann@gmail.com> 1792988071 -0500
+
+test: fix boolean assertion for Linux clippy
+
+Use assert! for the native-input presence predicate to satisfy Linux Clippy without changing test semantics.
+
+Co-authored-by: Codex <noreply@openai.com>
+
+Co-authored-by: Billo AI <ai-engineering@billo.systems>

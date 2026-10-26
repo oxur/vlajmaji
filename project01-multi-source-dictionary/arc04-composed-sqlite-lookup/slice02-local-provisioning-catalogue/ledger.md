@@ -1,6 +1,6 @@
 # Arc04 S02 ledger
 
-Current 2026-10-26 UTC: all six rows OPEN. Local Full/native/descriptor/query proof remains retained. Hosted Ubuntu Check job121393052855 fails boolean assertion lint at exact2366; other jobs were still running at report. One-line test-only iteration03 is ISSUED; root owns future push/CI, retained CC source/index/target transfer on acknowledgment. No new Full or S03 action.
+Current 2026-10-26 UTC: all six rows OPEN. Local Full proof retained. Original2366 Ubuntu/macOS Test jobs succeeded including actual Linux native controls; Check style failure corrected by equivalent one-line ce1bd238, parent2366/same preserved6ed tree/all5 runtime-lock hashes. Author current gates187/0/1+19tooling and independent byte/equivalence review pass. Root verified/pushed ce1 and owns queued replacement run40268360507; complete-current-head CI remains pending. Source/index/target frozen; no S03 or new Full action.
 
 | ID | Criterion | Concrete proof / denominator | Owner / parent | Status | Current disposition |
 | --- | --- | --- | --- | --- | --- |

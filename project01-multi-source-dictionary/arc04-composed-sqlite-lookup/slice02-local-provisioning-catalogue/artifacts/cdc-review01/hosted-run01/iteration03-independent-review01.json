@@ -1,0 +1,51 @@
+{
+  "source_head": "ce1bd238d4529f5f5b27877569e4b44fa39fe12f",
+  "baseline": "2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a",
+  "source_tree": "a0bb45127de9e687f8bf841ab78c58581baf1d2e",
+  "source_clean": true,
+  "exact_single_path": [
+    "crates/store/tests/collections_contract.rs"
+  ],
+  "expected_test_sha256": "4139a107952593324df95599b7b8e44b249b93f47f26e398c362345a12316888",
+  "actual_runtime_sha256": {
+    "crates/store/src/collections.rs": "26e3f7647c21b0c8d25a062a22e16a3c95639c9d3cbfea57942023af879d7e1a",
+    "crates/store/src/collections_schema.rs": "1225f4040722ae5355df834a820458c6a9aabb1bc4e0b9e13eb49733f4a15931",
+    "crates/store/src/lib.rs": "fb321eca81875461fe6e410b0e63fb762f9423072e92ec21599f2eb633acdbc8",
+    "crates/cli/src/main.rs": "789cfcaef2014cd9f9ef3c37ce7b7aa377aed6f659e24e63180d09403bef5cc9",
+    "Cargo.lock": "3b9a64a22a32f38a881d275863eeece2096bc98fc8a5326f51f0c18607f00711"
+  },
+  "runtime_identical": true,
+  "semantic_disposition": "ACCEPT equivalent bool truth assertion; no routing/predicate/runtime change",
+  "local_full_retention": "actual Full/native/descriptor/query campaign retained by exact unchanged runtime+lock; no rerun",
+  "logs": [
+    {
+      "attempt": 120,
+      "label": "format",
+      "sha256": "baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4",
+      "bytes": 170
+    },
+    {
+      "attempt": 121,
+      "label": "lint",
+      "sha256": "5c71b4e6af74cc0ee627428fc63fd1e1c18e8b6ec2d1690c95e029bc990ea4cf",
+      "bytes": 355
+    },
+    {
+      "attempt": 122,
+      "label": "check",
+      "sha256": "5fa983b6a7a53df4b0581be2ca51e84c0e92d6e91d95e7deff8bba339d172cbb",
+      "bytes": 28588,
+      "rows": 42,
+      "counts": [
+        187,
+        0,
+        1
+      ],
+      "tooling_tests": 19
+    }
+  ],
+  "commit_body": "test: fix boolean assertion for Linux clippy\n\nUse assert! for the native-input presence predicate to satisfy Linux Clippy without changing test semantics.\n\nCo-authored-by: Codex <noreply@openai.com>\nCo-authored-by: Billo AI <ai-engineering@billo.systems>\n\n",
+  "parsed_trailers": "Co-authored-by: Codex <noreply@openai.com>\nCo-authored-by: Billo AI <ai-engineering@billo.systems>\n",
+  "reviewer_attempt_history": "First independent parser assumed Python Ran19 text; actual tooling receipt19 passed/0 failed was then received and bound. No product/gate failure. Unpublished6ed raw object/diff preserved; adjacent parsed trailers now required.",
+  "linux": "original2366 test jobs pass; corrected currenthead complete hosted gate pending"
+}
