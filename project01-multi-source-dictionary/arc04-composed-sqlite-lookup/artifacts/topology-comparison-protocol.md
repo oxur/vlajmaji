@@ -1,5 +1,9 @@
 # Finite topology comparison protocol
 
+**CURRENT version 1.7 / 2026-10-26 UTC:** S01 is independently ACCEPTED and mechanically CLOSED at source4b4158c. Exactly seven total stores remain (historical two plus clean five) and exactly three balanced rounds/eighteen processes were used. All hard correctness/numeric gates passed; Unified is selected for the frozen own-state/full-typed workload. AuxiliaryFD/cache-delta remain explicitly unknown, not passed. See the S01 decision/verifier/raw manifests. No further comparison execution is issued by this close.
+
+### Historical version 1.6 prerequisite-clearance checkpoint
+
 **CURRENT version 1.6 / 2026-10-26:** The approved seven-total-store inquiry limits are unchanged. CDC completed and durably reviewed the remaining prerequisites at planning 158a3cb, source 4b4158c and probe e12ddf64. Clean five-store prepare is now running under the 600-second/12-GiB wrapper; the historical two remain retained. Corrected workload has 27 prime plus 27 measured requests and all positive page chains. Three balanced rounds remain unused. See slice artifacts/cdc-prerequisite02 for exact qualification, source/binary/config/argv and accounting. No topology selection or acceptance is implied.
 
 ### Historical version 1.5 prerequisite hold (superseded only by actual current qualification)
@@ -150,3 +154,7 @@ Current method/proposal evidence is in [cdc-reentry-proposal01.md](../slice01-to
 ## Version 1.6 — actual prerequisite clearance, 2026-10-26
 
 This is CDC internal readiness clearance under the existing Operator approvals, not a new budget or changed correctness contract. Exact current qualification and Full launch are retained in slice artifacts/cdc-prerequisite02. The earlier two stores and all failed/retried attempts remain historical evidence. Full native correctness, actual cost observations and a justified decision remain pending.
+
+## Version 1.7 — decision and stopping point
+
+The actual comparison is complete and has stopped within the approved limits; no fourth round or eighth comparison store. S01 decision/verification/retrospective preserve all records, count amendment and ancillary limits. Unified is selected for S02 integration, with remaining W1–W5 and S05 representation budgets unchanged. No A05/publication/default mutation.

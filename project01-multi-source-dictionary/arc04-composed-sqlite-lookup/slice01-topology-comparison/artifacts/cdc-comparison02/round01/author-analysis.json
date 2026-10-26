@@ -1,0 +1,413 @@
+{
+  "plan_sha256": "887a18af2199e19be998fd544cefa0956085daf2908c3cec2351dd3bc0ee96f7",
+  "requests_sha256": "6fe407b2411263370524a44bd101c271fa17a3c3f4e92ee65425025f76d24c21",
+  "expectations_sha256": "a6ca6361e4d2af0c9fc6aa3a4d69a4653954e3b2953edc3c12a9008b717a2981",
+  "observations": [
+    {
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "run",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+        "--topology",
+        "unified",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+        "--request",
+        "farvi-all"
+      ],
+      "pid": 88730,
+      "exit": 0,
+      "timed_out": false,
+      "outer_wall_seconds": 2.708080292,
+      "stdout_bytes": 7160366,
+      "stdout_sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556",
+      "stderr_sha256": "e10658da3fe65b39879c7503b457946c91619eb9f25b0e78608781022bf7c39c",
+      "maximum_rss_bytes": 1838383104,
+      "rss_source": "macOS /usr/bin/time -l (bytes)",
+      "stdout_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-unified-fresh.stdout",
+      "stderr_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-unified-fresh.stderr",
+      "decision": "passed",
+      "round": 1,
+      "topology": "unified",
+      "workload": "fresh"
+    },
+    {
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "batch",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+        "--topology",
+        "unified",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+        "--output-dir",
+        "/tmp/vlajmaji-p01-a04-s01-cc/full-responses02/round1-unified"
+      ],
+      "pid": 88732,
+      "exit": 0,
+      "timed_out": false,
+      "outer_wall_seconds": 4.044075375,
+      "stdout_bytes": 5445,
+      "stdout_sha256": "f60ccb6e0fc0c248bf86ac5f0e6c4c5f87481cf1cc3119e3c3e81a4361aceefd",
+      "stderr_sha256": "e7b9dfee89234cced7e79626d7c17478250ebb537fc909fddf2f8dbcafa03e58",
+      "maximum_rss_bytes": 2397503488,
+      "rss_source": "macOS /usr/bin/time -l (bytes)",
+      "stdout_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-unified-warm.stdout",
+      "stderr_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-unified-warm.stderr",
+      "decision": "passed",
+      "round": 1,
+      "topology": "unified",
+      "workload": "warm"
+    },
+    {
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "run",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+        "--topology",
+        "attached",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+        "--request",
+        "farvi-all"
+      ],
+      "pid": 88738,
+      "exit": 0,
+      "timed_out": false,
+      "outer_wall_seconds": 4.913007375,
+      "stdout_bytes": 7160366,
+      "stdout_sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556",
+      "stderr_sha256": "c1d561346bfbcd2730187ff917f11a4e0f08edce5105082ecdb465382aacd565",
+      "maximum_rss_bytes": 2029535232,
+      "rss_source": "macOS /usr/bin/time -l (bytes)",
+      "stdout_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-attached-fresh.stdout",
+      "stderr_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-attached-fresh.stderr",
+      "decision": "passed",
+      "round": 1,
+      "topology": "attached",
+      "workload": "fresh"
+    },
+    {
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "batch",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+        "--topology",
+        "attached",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+        "--output-dir",
+        "/tmp/vlajmaji-p01-a04-s01-cc/full-responses02/round1-attached"
+      ],
+      "pid": 88747,
+      "exit": 0,
+      "timed_out": false,
+      "outer_wall_seconds": 6.306438292,
+      "stdout_bytes": 5472,
+      "stdout_sha256": "aa9a7049ba103fabd35325ceae692de7072ddc33603e3876dc07e6826908d409",
+      "stderr_sha256": "6a125a8ca59513b794cc3a21cc65ed977eae610c94e269f821ed51ef93de6efb",
+      "maximum_rss_bytes": 2166374400,
+      "rss_source": "macOS /usr/bin/time -l (bytes)",
+      "stdout_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-attached-warm.stdout",
+      "stderr_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-attached-warm.stderr",
+      "decision": "passed",
+      "round": 1,
+      "topology": "attached",
+      "workload": "warm"
+    },
+    {
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "run",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+        "--topology",
+        "fanout",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+        "--request",
+        "farvi-all"
+      ],
+      "pid": 88789,
+      "exit": 0,
+      "timed_out": false,
+      "outer_wall_seconds": 4.738327292,
+      "stdout_bytes": 7160366,
+      "stdout_sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556",
+      "stderr_sha256": "e3af868f835be4f2bd53e25bd6e5ac6ef020870562ee5c64ea964cd157cd7b00",
+      "maximum_rss_bytes": 2033123328,
+      "rss_source": "macOS /usr/bin/time -l (bytes)",
+      "stdout_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-fanout-fresh.stdout",
+      "stderr_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-fanout-fresh.stderr",
+      "decision": "passed",
+      "round": 1,
+      "topology": "fanout",
+      "workload": "fresh"
+    },
+    {
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/examples/topology_probe",
+        "batch",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/run-manifest.json",
+        "--topology",
+        "fanout",
+        "--requests",
+        "/tmp/vlajmaji-p01-a04-s01-cdc/full-freeze02/requests-full03.json",
+        "--output-dir",
+        "/tmp/vlajmaji-p01-a04-s01-cc/full-responses02/round1-fanout"
+      ],
+      "pid": 88793,
+      "exit": 0,
+      "timed_out": false,
+      "outer_wall_seconds": 6.276999625,
+      "stdout_bytes": 5418,
+      "stdout_sha256": "ca953b3b9364b65beda95abb17bf8499d39d911d076a8e9f4b1e73f3768988d0",
+      "stderr_sha256": "ef800f627dab2bf7b2e8bbf2863b7d9f67c646601e998de14ac5f0b26c5d2b4b",
+      "maximum_rss_bytes": 2153201664,
+      "rss_source": "macOS /usr/bin/time -l (bytes)",
+      "stdout_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-fanout-warm.stdout",
+      "stderr_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-fanout-warm.stderr",
+      "decision": "passed",
+      "round": 1,
+      "topology": "fanout",
+      "workload": "warm"
+    }
+  ],
+  "providers": {
+    "unified": {
+      "measured_stage_rows": 27,
+      "exact_rows": 18,
+      "reference_rows": 9,
+      "stage_parser": "metrics02 all accounting assertions passed",
+      "startup_open_ns": 1900087583,
+      "fresh_end_to_end_s": 2.708080292,
+      "warm_batch_outer_s": 4.044075375,
+      "max_process_rss_bytes": 2397503488,
+      "warm_lookup_us_min_median_max": [
+        71,
+        157,
+        11578
+      ],
+      "full_farvi_hydration_value_serialize_us": 13233,
+      "full_farvi_profile_total_ns": 2643916,
+      "all_exact_hydration_value_serialize_us_min_median_max": [
+        11612,
+        12793.0,
+        17790
+      ],
+      "open_profile_lines": [
+        "stage=open topology=unified start",
+        "stage=open topology=unified elapsed_ms=1900 profile=DictionarySnapshotOpenProfile { provider_open: 2.023792ms, document_load_and_composition: 1.351381125s, common_index_setup: 546.682542ms, total: 1.900087583s }",
+        "stage=open topology=unified profile=DictionarySnapshotOpenProfile { provider_open: 2.023792ms, document_load_and_composition: 1.351381125s, common_index_setup: 546.682542ms, total: 1.900087583s }"
+      ],
+      "fresh_run_total_lines": [
+        "stage=run-total elapsed_us=1941765"
+      ],
+      "profile_stdout_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-unified-warm.stderr",
+      "full_stage_rows_sha256": "e7b9dfee89234cced7e79626d7c17478250ebb537fc909fddf2f8dbcafa03e58"
+    },
+    "attached": {
+      "measured_stage_rows": 27,
+      "exact_rows": 18,
+      "reference_rows": 9,
+      "stage_parser": "metrics02 all accounting assertions passed",
+      "startup_open_ns": 4094664542,
+      "fresh_end_to_end_s": 4.913007375,
+      "warm_batch_outer_s": 6.306438292,
+      "max_process_rss_bytes": 2166374400,
+      "warm_lookup_us_min_median_max": [
+        111,
+        220,
+        10639
+      ],
+      "full_farvi_hydration_value_serialize_us": 12886,
+      "full_farvi_profile_total_ns": 2499041,
+      "all_exact_hydration_value_serialize_us_min_median_max": [
+        11579,
+        12688.0,
+        14069
+      ],
+      "open_profile_lines": [
+        "stage=open topology=attached start",
+        "stage=open topology=attached elapsed_ms=4094 profile=DictionarySnapshotOpenProfile { provider_open: 8.513833ms, document_load_and_composition: 3.583574166s, common_index_setup: 502.57625ms, total: 4.094664542s }",
+        "stage=open topology=attached profile=DictionarySnapshotOpenProfile { provider_open: 8.513833ms, document_load_and_composition: 3.583574166s, common_index_setup: 502.57625ms, total: 4.094664542s }"
+      ],
+      "fresh_run_total_lines": [
+        "stage=run-total elapsed_us=4139171"
+      ],
+      "profile_stdout_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-attached-warm.stderr",
+      "full_stage_rows_sha256": "6a125a8ca59513b794cc3a21cc65ed977eae610c94e269f821ed51ef93de6efb"
+    },
+    "fanout": {
+      "measured_stage_rows": 27,
+      "exact_rows": 18,
+      "reference_rows": 9,
+      "stage_parser": "metrics02 all accounting assertions passed",
+      "startup_open_ns": 4005206166,
+      "fresh_end_to_end_s": 4.738327292,
+      "warm_batch_outer_s": 6.276999625,
+      "max_process_rss_bytes": 2153201664,
+      "warm_lookup_us_min_median_max": [
+        114,
+        200,
+        10342
+      ],
+      "full_farvi_hydration_value_serialize_us": 12542,
+      "full_farvi_profile_total_ns": 2564500,
+      "all_exact_hydration_value_serialize_us_min_median_max": [
+        11622,
+        12840.0,
+        13775
+      ],
+      "open_profile_lines": [
+        "stage=open topology=fanout start",
+        "stage=open topology=fanout elapsed_ms=4005 profile=DictionarySnapshotOpenProfile { provider_open: 8.539708ms, document_load_and_composition: 3.516446292s, common_index_setup: 480.22ms, total: 4.005206166s }",
+        "stage=open topology=fanout profile=DictionarySnapshotOpenProfile { provider_open: 8.539708ms, document_load_and_composition: 3.516446292s, common_index_setup: 480.22ms, total: 4.005206166s }"
+      ],
+      "fresh_run_total_lines": [
+        "stage=run-total elapsed_us=4052884"
+      ],
+      "profile_stdout_path": "/tmp/vlajmaji-p01-a04-s01-cc/full-round01/round1-fanout-warm.stderr",
+      "full_stage_rows_sha256": "ef800f627dab2bf7b2e8bbf2863b7d9f67c646601e998de14ac5f0b26c5d2b4b"
+    }
+  },
+  "fresh_wire": [
+    {
+      "topology": "unified",
+      "bytes": 7160366,
+      "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+    },
+    {
+      "topology": "attached",
+      "bytes": 7160366,
+      "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+    },
+    {
+      "topology": "fanout",
+      "bytes": 7160366,
+      "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+    }
+  ],
+  "all_27_complete_values_equal": true,
+  "page_chains": {
+    "unified": {
+      "1": {
+        "pages": 5,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      },
+      "2": {
+        "pages": 3,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      },
+      "3": {
+        "pages": 2,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      },
+      "8": {
+        "pages": 1,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      }
+    },
+    "attached": {
+      "1": {
+        "pages": 5,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      },
+      "2": {
+        "pages": 3,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      },
+      "3": {
+        "pages": 2,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      },
+      "8": {
+        "pages": 1,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      }
+    },
+    "fanout": {
+      "1": {
+        "pages": 5,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      },
+      "2": {
+        "pages": 3,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      },
+      "3": {
+        "pages": 2,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      },
+      "8": {
+        "pages": 1,
+        "ordered_hits": 5,
+        "matches_page8": true,
+        "final_cursor_null": true
+      }
+    }
+  },
+  "reference_statuses": {
+    "unified": {
+      "jbotci-local": "Resolved",
+      "jbotci-catalogue-native333": "Resolved",
+      "la-catalogue-native333": "Resolved",
+      "llg-component": "Resolved",
+      "sut-native-entry": "Resolved",
+      "unknown": "Unknown",
+      "unresolved": "Unresolved",
+      "missing": "NoMatch",
+      "wrong-role": "invalid_reference"
+    },
+    "attached": {
+      "jbotci-local": "Resolved",
+      "jbotci-catalogue-native333": "Resolved",
+      "la-catalogue-native333": "Resolved",
+      "llg-component": "Resolved",
+      "sut-native-entry": "Resolved",
+      "unknown": "Unknown",
+      "unresolved": "Unresolved",
+      "missing": "NoMatch",
+      "wrong-role": "invalid_reference"
+    },
+    "fanout": {
+      "jbotci-local": "Resolved",
+      "jbotci-catalogue-native333": "Resolved",
+      "la-catalogue-native333": "Resolved",
+      "llg-component": "Resolved",
+      "sut-native-entry": "Resolved",
+      "unknown": "Unknown",
+      "unresolved": "Unresolved",
+      "missing": "NoMatch",
+      "wrong-role": "invalid_reference"
+    }
+  },
+  "audit_note": "First author-side summarizer assertion guessed 19 exact/8 reference rows; it stopped on the frozen request-derived actual 18/9 denominator before writing any result. Corrected analysis used the immutable request list and metrics02; no runner process was repeated."
+}

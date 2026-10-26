@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "source_baseline": "7b1c565ebf6c8a423e04211b599006b8c21d65d9",
+  "full_inputs": [
+    {"id":"lensisku-jbotci","canonical_sha256":"0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460","bytes":215412497},
+    {"id":"llg","canonical_sha256":"d8c8be02b9888c1eee3d3daa053746e483aec995935c4d225234479d4215ce12","bytes":14433039},
+    {"id":"la-lojban","canonical_sha256":"e66951094935bd910c6a9ad12fa1bbb51f0578b53d44f22a73056811fe2bc64e","bytes":111187880},
+    {"id":"sutysisku","canonical_sha256":"67499447426d34c269577eb6947d7c7b22b71090e5a30fd653375819d590ffa2","bytes":94511884}
+  ],
+  "providers": ["unified", "attached", "fanout"],
+  "candidate_stores": {"unified":1,"shared_per_pack":4,"attached_uses_shared_per_pack":true,"fanout_uses_shared_per_pack":true},
+  "requests": [
+    {"id":"farvi-all","spelling":"farvi","sources":[]},
+    {"id":"farvi-lsk","spelling":"farvi","sources":["LSK"]},
+    {"id":"farvi-llg","spelling":"farvi","sources":["LLG"]},
+    {"id":"farvi-sut","spelling":"farvi","sources":["SUT"]},
+    {"id":"absent","spelling":"xoprsnqv","sources":[]},
+    {"id":"excluded-sut","spelling":"zoizoizoi","sources":["SUT"]}
+  ],
+  "page_sizes":[0,1,2,3,8],
+  "references":["jbotci-local","jbotci-catalogue-native333","la-catalogue-native333","llg-component","sut-native-entry","unknown","unresolved","wrong-role","missing"],
+  "reference_targets": {
+    "jbotci-local": {"kind":"Local","role":"Assertion","id":"jbotci-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-assertion-13306"},
+    "jbotci-catalogue-native333": {"kind":"Catalog","source":"lensisku","release":"jbotci-release-34c2919a00a7bd68e07efb3e0fdd8dae02e9f48f82c006415a62dd634acf973a","native_entry_id":null,"native_assertion_id":"333","occurrence":{"capture":{"namespace":"captured:lensisku:jbotci:en","sha256":"12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde"},"locator":"/13306"}},
+    "la-catalogue-native333": {"kind":"Catalog","source":"lensisku","release":"la-lojban-release-1c22018f4e91c09f3df4177d6f449559e138d6be2d6f45a52d1bac92500a5137","native_entry_id":null,"native_assertion_id":"333","occurrence":{"capture":{"namespace":"captured:lensisku:la-lojban:en","sha256":"861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35"},"locator":"/4095"}},
+    "llg-component": {"kind":"Catalog","source":"llg","release":"llg-release-f1c254f1e4b7943e039b55ec28a6fcd901c0249c4e4da964ebdc53e1a7e92105","native_entry_id":null,"native_assertion_id":"llg-assertion-664c45855ea2ec025117a37c107ba557c65a80524a4a5e01009316cd07c84605","occurrence":{"capture":{"namespace":"captured:llg:gismu","sha256":"f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7"},"locator":"357"}},
+    "sut-native-entry": {"kind":"Catalog","source":"sutysisku","release":"sutysisku-release-274d43472b636b9fb653c7022c02298de5fd675aab9209c6cbf3131e081fa02e","native_entry_id":"farvi","native_assertion_id":null,"occurrence":{"capture":{"namespace":"captured:sutysisku:parsed-en","sha256":"8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d"},"locator":"/11309"}},
+    "unknown": {"kind":"Unknown"},
+    "unresolved": {"kind":"Unresolved","value":"pre-frozen unresolved witness"},
+    "wrong-role": {"kind":"Local","role":"Entry","id":"jbotci-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-assertion-13306"},
+    "missing": {"kind":"Catalog","source":"lensisku","release":"jbotci-release-34c2919a00a7bd68e07efb3e0fdd8dae02e9f48f82c006415a62dd634acf973a","native_entry_id":null,"native_assertion_id":"missing-native-assertion","occurrence":{"capture":{"namespace":"captured:lensisku:jbotci:en","sha256":"12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde"},"locator":"/13306"}}
+  },
+  "reference_target_sources": {
+    "accepted_witness": "Arc03 artifacts/composition-review/preflight01.json and artifacts/four-pack-reference02.json; release IDs, capture pins, locators and source-scoped native IDs occur in these accepted reference receipts.",
+    "derivation": "jbotci and La assertion identity uses importer prefix + pinned raw SHA + ordinal; Sut entry identity uses raw SHA + ordinal. LLG gismu assertion ID uses its length-prefixed llg-assertion-v1 formula for pinned capture SHA, gismu and physical locator 357. Wrong-role supplies the known jbotci assertion EntityId in the LocalRef::Entry role. Missing uses a nonmatching native ID with a valid known release/capture/locator.",
+    "wire": "Serialize the full-farvi response through the same serde_json::Value CLI serialization and append LF; compare the exact response_oracle byte count and SHA-256."
+  },
+  "transitions":["disabled","uninstalled","corrupt","unsupported-version","member-state-mismatch","old-reader-new-generation","selection-change-stale-cursor"],
+  "response_oracle":{"legacy_unpaged_full_bytes":7160366,"legacy_unpaged_full_sha256":"144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"},
+  "one_cc_round_order":["unified","attached","fanout"],
+  "per_provider_measurement_sequence":{"fresh_process":"one run of farvi-all, full legacy JSON plus LF; fresh elapsed includes process start through captured output","warm_batch":{"prime":["farvi-all","farvi-lsk","farvi-llg","farvi-sut","absent","excluded-sut","references","pages-0-1-2-3-8"],"measure":"one measured pass over the same finite request set in a long-lived provider; report same-call exact profile, whole reference elapsed, and serialization separately"}},
+  "notes":"This freezes requested cases and pin identities, not adapter output or derived numeric tuples. Synthetic fixture expected tuples are recorded only after literal census in execution.md. The fresh request is never silently primed; the separate long-lived batch is the warm workload."
+}

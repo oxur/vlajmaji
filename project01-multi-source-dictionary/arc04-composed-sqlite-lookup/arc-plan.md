@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; protocol 1.5 approved limits unchanged; protocol 1.6 records actual CDC prerequisite clearance and clean Full prepare, no acceptance |
-| version / date | 1.5 / 2026-10-25, America/Chicago |
+| status | ACTIVE; S01 CLOSED with six accepted rows; Unified selected; S02 preparation not yet issued |
+| version / date | 1.7 / 2026-10-26 UTC |
 | authority | Latest 2026-10-25: Duncan explicitly approved seven TOTAL stores in protocol 1.5, retaining the historical two plus clean fresh five after remaining prerequisites. Original protocol 1.1 approval and Autonomous THROUGH ARC04 ONLY persist; unchanged Sol6.1/high CDC and Luna/high CC. CDC readiness clearance is now recorded in protocol 1.6 and slice artifacts/cdc-prerequisite02. Prior checkpoints remain historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Arc01–03; current isolated source7b1c565, protected main52fd3c4/Bauskec5801ae; actual four Full packs and source/native/reference evidence |
@@ -95,3 +95,7 @@ Duncan explicitly approved seven TOTAL candidate stores: retain the two historic
 ## Version 1.6 — current execution checkpoint
 
 CDC prerequisite clearance is actual and archived at planning 158a3cb. Source 4b4158c is frozen; CDC owns the source/index/target interval. The clean five-store prepare is running; historical two remain retained. No timing round or selected topology yet. All arc/project rows remain OPEN.
+
+## Version 1.7 — accepted S01 decision
+
+S01 independently CLOSED at source4b4158c after current qualification, clean five-store native proof and all three balanced rounds. Root approved the canonical packet and mechanical close. Select Unified derived SQLite for the exact current own-state/full-typed prototypes and frozen four-pack workload; see slice01-topology-comparison/artifacts/topology-decision.md. This does not rank all conceivable A/F designs. Source packs/provenance remain independent. A04-01 DONE; the other nine arc and all fourteen project rows OPEN. S02 must now freeze explicit local provisioning/catalogue/ownership/native-path/idempotence/failed-batch semantics before issue. No installer or actual default activation has occurred.

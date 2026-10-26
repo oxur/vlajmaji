@@ -1,0 +1,188 @@
+{
+  "status": "PASS all finite semantic/budget checks; CDC decision recorded separately",
+  "processes": 18,
+  "measured_stage_rows": 243,
+  "source": "4b4158c8a8a489ead639b73706b01061de17cfe1",
+  "probe_sha256": "e12ddf648d40f385a021591745b19c3e8b3ab8341ca88b780108bb83dbe1a215",
+  "providers": {
+    "unified": {
+      "fresh_seconds": [
+        2.708080292,
+        2.538473833,
+        2.578746958
+      ],
+      "fresh_median_seconds": 2.578746958,
+      "startup_seconds": [
+        1.900087583,
+        1.733423041,
+        1.779048875
+      ],
+      "startup_median_seconds": 1.779048875,
+      "peak_rss_bytes": 2427322368,
+      "worst_warm_us": 11578
+    },
+    "attached": {
+      "fresh_seconds": [
+        4.913007375,
+        5.172507208,
+        4.8547965
+      ],
+      "fresh_median_seconds": 4.913007375,
+      "startup_seconds": [
+        4.094664542,
+        4.359918,
+        4.071376916
+      ],
+      "startup_median_seconds": 4.094664542,
+      "peak_rss_bytes": 2166374400,
+      "worst_warm_us": 10639
+    },
+    "fanout": {
+      "fresh_seconds": [
+        4.738327292,
+        4.90318625,
+        4.822363
+      ],
+      "fresh_median_seconds": 4.822363,
+      "startup_seconds": [
+        4.005206166,
+        4.106953583,
+        4.029668125
+      ],
+      "startup_median_seconds": 4.029668125,
+      "peak_rss_bytes": 2170798080,
+      "worst_warm_us": 10342
+    }
+  },
+  "budget_failures": [],
+  "complete_per_request_wire_parity": true,
+  "resources": {
+    "task_roots": [
+      {
+        "root": "/tmp/vlajmaji-p01-a04-s01-cc",
+        "file_bytes": 5528552706,
+        "regular_files": 391,
+        "symlinks": []
+      },
+      {
+        "root": "/tmp/vlajmaji-p01-a04-s01-cdc",
+        "file_bytes": 54234526,
+        "regular_files": 321,
+        "symlinks": []
+      }
+    ],
+    "comparison_databases": {
+      "jbotci": {
+        "path": "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/jbotci/dictionary.sqlite3",
+        "bytes": 698281984,
+        "before_sha256": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+        "after_sha256": "fe684fd52ef09aea9cba41bbdc97e57529199d66fdd4c04932bbe05e7131bf7d",
+        "unchanged": true
+      },
+      "llg": {
+        "path": "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/llg/dictionary.sqlite3",
+        "bytes": 58327040,
+        "before_sha256": "e008de033436d9f496f9e710a2fc7f520b0d990d436874ee98a4ea5c77bf5191",
+        "after_sha256": "e008de033436d9f496f9e710a2fc7f520b0d990d436874ee98a4ea5c77bf5191",
+        "unchanged": true
+      },
+      "la": {
+        "path": "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/la/dictionary.sqlite3",
+        "bytes": 374018048,
+        "before_sha256": "664e556023d87f019fb45037fa070cf35ebf2c2228e86d401adf63df4482231b",
+        "after_sha256": "664e556023d87f019fb45037fa070cf35ebf2c2228e86d401adf63df4482231b",
+        "unchanged": true
+      },
+      "sut": {
+        "path": "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/sut/dictionary.sqlite3",
+        "bytes": 360820736,
+        "before_sha256": "5a5e4acaeee77954326db9c191cfb6455cd8dddaa425651f6237011300b8980f",
+        "after_sha256": "5a5e4acaeee77954326db9c191cfb6455cd8dddaa425651f6237011300b8980f",
+        "unchanged": true
+      },
+      "unified": {
+        "path": "/tmp/vlajmaji-p01-a04-s01-cc/full-comparison02/unified/dictionary.sqlite3",
+        "bytes": 1487691776,
+        "before_sha256": "b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725",
+        "after_sha256": "b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725",
+        "unchanged": true
+      }
+    },
+    "known_new_data_and_scratch_cap": 12884901888,
+    "shared_build_cache_excluded": true,
+    "cache_delta": "unavailable: pre-inquiry byte baseline was not captured; no new cache was created and no cleanup occurred",
+    "connection_bound": {
+      "unified_connections": 1,
+      "unified_database_handles": 1,
+      "attached_connections": 1,
+      "attached_database_handles": 4,
+      "fanout_connections": 4,
+      "fanout_database_handles": 4,
+      "method": "closed concrete OwnedStores variants and fixed runtime manifest, one SQLite connection per DictionaryStore; actual same-linked SQLite limit10 controls retained",
+      "auxiliary_os_fd_sample": "not captured; not inferred from logical connection count"
+    },
+    "task_root_file_bytes_total": 5582787232
+  },
+  "predeclared_tie_evaluation": [
+    {
+      "comparison": "unified versus attached",
+      "pairs": [
+        {
+          "round": 1,
+          "unified_seconds": 2.708080292,
+          "other_seconds": 4.913007375,
+          "difference_seconds": 2.2049270830000003,
+          "relative_difference": 0.44879376616038563,
+          "material": true
+        },
+        {
+          "round": 2,
+          "unified_seconds": 2.538473833,
+          "other_seconds": 5.172507208,
+          "difference_seconds": 2.634033375,
+          "relative_difference": 0.5092372555665272,
+          "material": true
+        },
+        {
+          "round": 3,
+          "unified_seconds": 2.578746958,
+          "other_seconds": 4.8547965,
+          "difference_seconds": 2.276049542,
+          "relative_difference": 0.468824912022574,
+          "material": true
+        }
+      ],
+      "material_fresh_advantage": true
+    },
+    {
+      "comparison": "unified versus fanout",
+      "pairs": [
+        {
+          "round": 1,
+          "unified_seconds": 2.708080292,
+          "other_seconds": 4.738327292,
+          "difference_seconds": 2.030247,
+          "relative_difference": 0.42847335671129916,
+          "material": true
+        },
+        {
+          "round": 2,
+          "unified_seconds": 2.538473833,
+          "other_seconds": 4.90318625,
+          "difference_seconds": 2.3647124170000002,
+          "relative_difference": 0.48228076528808184,
+          "material": true
+        },
+        {
+          "round": 3,
+          "unified_seconds": 2.578746958,
+          "other_seconds": 4.822363,
+          "difference_seconds": 2.243616042,
+          "relative_difference": 0.46525241712413606,
+          "material": true
+        }
+      ],
+      "material_fresh_advantage": true
+    }
+  ]
+}

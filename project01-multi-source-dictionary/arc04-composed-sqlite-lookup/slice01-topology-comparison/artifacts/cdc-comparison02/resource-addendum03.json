@@ -1,0 +1,25 @@
+{
+  "status": "within hard12GiB data/scratch ceiling",
+  "task_roots_file_bytes": 5582787232,
+  "additional_conservative_trees": [
+    {
+      "root": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+      "regular_file_bytes": 4835933,
+      "regular_files": 116,
+      "scope": "entire current owning subtree counted conservatively, no symlink following"
+    },
+    {
+      "root": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc04-composed-sqlite-lookup",
+      "regular_file_bytes": 1110727,
+      "regular_files": 150,
+      "scope": "entire current owning subtree counted conservatively, no symlink following"
+    }
+  ],
+  "total_regular_file_bytes": 5588733892,
+  "ceiling_bytes": 12884901888,
+  "shared_build_cache_current_allocated_kib": 44810960,
+  "shared_build_cache_delta": null,
+  "cache_delta_status": "not captured; no pre-inquiry baseline, explicitly unknown/excluded from data cap",
+  "auxiliary_os_fd_counts": null,
+  "auxiliary_fd_status": "not sampled; not passed; numerical logical connection/DB bounds are structural proofs, see decision"
+}

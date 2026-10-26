@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 CLOSED; all14projectrowsOPEN; A04 active; S01 count amendment approved; Full operations HOLD at remaining readiness prerequisites; A05/A06 not activated |
+| status | project OPEN; Arc01 and Arc02 CLOSED; Arc03 CLOSED; all14projectrowsOPEN; A04 active; S01 CLOSED/Unified selected; S02 design-before-issue; A05/A06 not activated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
@@ -109,7 +109,7 @@ define execution order. Later arcs are roadmap entries, not issued assignments.
 | [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Four scope-preserving slices after S01 sizing; current detail in arc plan. |
 | [02 — Reproducible full jbotci import](arc02-reproducible-jbotci-import/arc-plan.md) (CLOSED at4e37016) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Two useful slices: lossless Rust/CLI normalization, then pinned pipeline/full persistence composition. |
 | [03 — Independent corpus packages](arc03-independent-corpus-packages/arc-plan.md) (CLOSED at7b1c565; final canonical accepted) | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
-| [04 — Composed SQLite lookup](arc04-composed-sqlite-lookup/arc-plan.md) (active; S01 issued) | Fair unified/ATTACH/fanout decision and selected integration **plus** local selected/all4 install, catalogue/list/inspect, configured/default one-command exact/ref, lifecycle/recovery and readable/compact/full-detail output. | Accepted A01–03 contracts and exact four Full packs; exact inquiry/effort/numeric approval and concrete S01 provider design recorded. | Five useful increments; S01 initial assignment issued. No result/topology selection/installation acceptance yet. |
+| [04 — Composed SQLite lookup](arc04-composed-sqlite-lookup/arc-plan.md) (active; S01 CLOSED/Unified selected) | Fair unified/ATTACH/fanout decision and selected integration **plus** local selected/all4 install, catalogue/list/inspect, configured/default one-command exact/ref, lifecycle/recovery and readable/compact/full-detail output. | Accepted A01–03 contracts and exact four Full packs; exact inquiry/effort/numeric approval and concrete S01 provider design recorded. | Five useful increments; S01 accepted at source4b4158c, selecting Unified for the frozen workload. S02 provisioning/catalogue preparation next; no install/default/lifecycle/output acceptance yet. |
 | 05 — Owned dictionary | First-class editable source, revision/history and explicit editorial relationships, immutable export/reimport and its own optional data crate. | A01 model plus accepted A04 composition. | Model is reserved in A01; production editing belongs here. |
 | 06 — Integrated dictionary workbench | Rust/CLI source selection and grouped output across all packs and owned revisions; old query-family regression, removal/reload, paging, documentation and clean offline replay compose end to end. | Accepted predecessors. | Final integration adds remaining behavior; it must not postpone A01's usable lookup. |
 
@@ -343,7 +343,7 @@ Actual cleanisolated source fromaccepted7b: `.worktrees/project01-arc04/vlajmaji
 
 -1.18 —2026-10-25: recorded explicitArc04executionrenewal after planningcommit, pending inquiry/numericanswer, isolatedcodexsetup and honestunissuedS01HOLD open set. No runtime observation/decision or scope reduction; already-spent preparation counts toward proposedfreezeallowance rather than restarting it.
 
-## Current Arc04 S01 approval and issue — 2026-10-25
+## Historical Arc04 S01 approval and issue — 2026-10-25
 
 Duncan explicitly approved the exact proposed inquiry, effort, workload and numeric sheet: “this looks good! Approved, and engage!” See protocol 1.2 and the issued S01 plan/ledger/prompt. Existing Sol6.1/high CDC and Luna/high CC remain; Autonomous endpoint is Arc04 only. All fourteen project rows remain OPEN. S01 compares independently loaded U/A/F state with common full semantics and actual setup/hydration costs; no unified metadata sidecar for A/F. Selected topology remains unresolved until actual correctness/budget evidence and independent acceptance. Compact/readable budgets apply to S05, not a premature S01 implementation.
 
@@ -351,7 +351,7 @@ Conservative accounting charges 30 minutes preparation and at most 60 further fr
 
 - 1.19 — 2026-10-25: explicit inquiry approval and resolved source-guided S01 recipe; initial assignment issued with all child/arc/project rows still OPEN. Earlier HOLD checkpoints preserved. No runtime result claimed.
 
-## Current S01 bounded repair / specific HOLD — 2026-10-25
+## Historical S01 bounded repair / specific HOLD — 2026-10-25
 
 See Arc04 protocol1.3: the required pre-create comparator gate was violated before two retained store creates. No comparison/selection/acceptance. Remaining Full create/query/timing is held for an explicit Operator exception after a concrete tested reuse-two/finish-three proposal. General Arc04 authority persists for bounded readiness repair; all project rows OPEN, A05/A06 unactivated.
 
@@ -362,3 +362,7 @@ Current re-entry recommendation update: protocol1.4 proposes preserving early tw
 ## Version 1.21 — S01 count amendment approved, remaining readiness HOLD
 
 Duncan explicitly approved seven TOTAL candidate stores: retain the two historical/unaccepted stores and create five clean comparison stores only after the remaining prerequisites. Protocol 1.5 records the exact answer and timestamp semantics. Same seven working hours including preparation, 12 GiB including the retained two, 600-second bounds and three balanced rounds; no reset. COUNT gate cleared only. Full operations remain HOLD until CDC reviews the complete comparator/prefix/source/gates, batch/reference/page and Value-serialization harness, frozen category config, binaries and expanded argv. No topology decision or acceptance is implied; all rows remain OPEN.
+
+## Version 1.22 — accepted Arc04 S01, 2026-10-26 UTC
+
+S01 is CLOSED at source4b4158c; Unified selected through the complete finite three-candidate comparison and independent acceptance. See Arc04/S01 decision, verifier and retrospective. A04-01 DONE; nine arc rows and all fourteen project rows OPEN. This is a partial P01-08 contribution, not completed production integration. S02 retains local selected/all installation, catalogue/ownership and native-path design before issue; S03–S05 retain configured/default combined lookup, lifecycle and representation delivery. All prior authority/history checkpoints remain preserved.

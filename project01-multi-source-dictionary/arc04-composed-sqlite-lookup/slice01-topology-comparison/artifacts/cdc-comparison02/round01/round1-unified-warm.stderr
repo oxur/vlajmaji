@@ -1,0 +1,76 @@
+stage=open topology=unified start
+stage=open topology=unified elapsed_ms=1718 profile=DictionarySnapshotOpenProfile { provider_open: 1.080292ms, document_load_and_composition: 1.173789459s, common_index_setup: 543.560709ms, total: 1.718430792s }
+stage=batch-open profile=DictionarySnapshotOpenProfile { provider_open: 1.080292ms, document_load_and_composition: 1.173789459s, common_index_setup: 543.560709ms, total: 1.718430792s }
+stage=prime request=prime--farvi-all profile=DictionaryExactProfile { total: 4.366084ms, candidate_sql: 189.708µs, hydration: 3.936666ms, lookup_order_paging: 239.71µs }
+stage=prime request=prime--farvi-lsk profile=DictionaryExactProfile { total: 2.456ms, candidate_sql: 106.75µs, hydration: 2.272958ms, lookup_order_paging: 76.292µs }
+stage=prime request=prime--farvi-llg profile=DictionaryExactProfile { total: 2.7125ms, candidate_sql: 79.584µs, hydration: 2.598916ms, lookup_order_paging: 34µs }
+stage=prime request=prime--farvi-sut profile=DictionaryExactProfile { total: 2.320459ms, candidate_sql: 91.5µs, hydration: 2.186709ms, lookup_order_paging: 42.25µs }
+stage=prime request=prime--absent profile=DictionaryExactProfile { total: 2.861458ms, candidate_sql: 67.791µs, hydration: 2.780499ms, lookup_order_paging: 13.168µs }
+stage=prime request=prime--excluded-sut profile=DictionaryExactProfile { total: 2.509709ms, candidate_sql: 90.875µs, hydration: 2.405375ms, lookup_order_paging: 13.459µs }
+stage=prime request=prime--page-0 profile=DictionaryExactProfile { total: 2.725667ms, candidate_sql: 84.625µs, hydration: 2.570208ms, lookup_order_paging: 70.834µs }
+stage=prime request=prime--page-1 profile=DictionaryExactProfile { total: 2.375333ms, candidate_sql: 72.375µs, hydration: 2.238666ms, lookup_order_paging: 64.292µs }
+stage=prime request=prime--page-2 profile=DictionaryExactProfile { total: 3.0215ms, candidate_sql: 109.25µs, hydration: 2.836376ms, lookup_order_paging: 75.874µs }
+stage=prime request=prime--page-3 profile=DictionaryExactProfile { total: 2.428084ms, candidate_sql: 74.209µs, hydration: 2.293334ms, lookup_order_paging: 60.541µs }
+stage=prime request=prime--page-8 profile=DictionaryExactProfile { total: 2.397917ms, candidate_sql: 80.042µs, hydration: 2.26075ms, lookup_order_paging: 57.125µs }
+stage=prime request=prime--page-concat-2 profile=DictionaryExactProfile { total: 2.44975ms, candidate_sql: 79.084µs, hydration: 2.277251ms, lookup_order_paging: 93.415µs }
+stage=prime request=prime--page-concat-3 profile=DictionaryExactProfile { total: 2.576542ms, candidate_sql: 111.791µs, hydration: 2.3715ms, lookup_order_paging: 93.251µs }
+stage=prime request=prime--page-concat-4 profile=DictionaryExactProfile { total: 2.671833ms, candidate_sql: 91µs, hydration: 2.497126ms, lookup_order_paging: 83.707µs }
+stage=prime request=prime--page-concat-5 profile=DictionaryExactProfile { total: 2.768ms, candidate_sql: 110.459µs, hydration: 2.565875ms, lookup_order_paging: 91.666µs }
+stage=prime request=prime--page2-concat-2 profile=DictionaryExactProfile { total: 2.455375ms, candidate_sql: 78.167µs, hydration: 2.302499ms, lookup_order_paging: 74.709µs }
+stage=prime request=prime--page2-concat-3 profile=DictionaryExactProfile { total: 2.600417ms, candidate_sql: 81.166µs, hydration: 2.453ms, lookup_order_paging: 66.251µs }
+stage=prime request=prime--page3-concat-2 profile=DictionaryExactProfile { total: 3.611959ms, candidate_sql: 104.125µs, hydration: 3.432874ms, lookup_order_paging: 74.96µs }
+stage=prime-reference request=prime--jbotci-local elapsed_us=2082
+stage=prime-reference request=prime--jbotci-catalogue-native333 elapsed_us=13807
+stage=prime-reference request=prime--la-catalogue-native333 elapsed_us=7466
+stage=prime-reference request=prime--llg-component elapsed_us=2858
+stage=prime-reference request=prime--sut-native-entry elapsed_us=9836
+stage=prime-reference request=prime--unknown elapsed_us=2229
+stage=prime-reference request=prime--unresolved elapsed_us=2125
+stage=prime-reference request=prime--wrong-role elapsed_us=5641
+stage=prime-reference request=prime--missing elapsed_us=9801
+stage=measure request=farvi-all profile=DictionaryExactProfile { total: 2.643916ms, candidate_sql: 132.041µs, hydration: 2.439792ms, lookup_order_paging: 72.083µs } warm_lookup_us=204 hydration_value_serialization_us=13233 value_us=6774 serialize_us=4020 write_us=969 bytes=7160366 sha256=144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556
+stage=measure request=farvi-lsk profile=DictionaryExactProfile { total: 2.313167ms, candidate_sql: 88.709µs, hydration: 2.177001ms, lookup_order_paging: 47.457µs } warm_lookup_us=135 hydration_value_serialization_us=12462 value_us=5877 serialize_us=4408 write_us=1069 bytes=7147019 sha256=bc059a97818f03f5b00a2408ab3890a559e6333e76cb15b4d794810f49378a85
+stage=measure request=farvi-llg profile=DictionaryExactProfile { total: 2.542458ms, candidate_sql: 91.959µs, hydration: 2.415709ms, lookup_order_paging: 34.79µs } warm_lookup_us=125 hydration_value_serialization_us=12096 value_us=5902 serialize_us=3779 write_us=1387 bytes=7130829 sha256=395c8395ed3603fb4b9ebd52f967668598e6fc76bfda002a7cb299ca1747ca40
+stage=measure request=farvi-sut profile=DictionaryExactProfile { total: 2.362542ms, candidate_sql: 85.834µs, hydration: 2.243458ms, lookup_order_paging: 33.25µs } warm_lookup_us=118 hydration_value_serialization_us=14590 value_us=6962 serialize_us=5385 write_us=979 bytes=7129914 sha256=55cbef8fc1175cc4af182e794b158af6fc909d63b0bb24ff004531bcde8cd3f6
+stage=measure request=absent profile=DictionaryExactProfile { total: 2.192708ms, candidate_sql: 60.584µs, hydration: 2.120582ms, lookup_order_paging: 11.542µs } warm_lookup_us=71 hydration_value_serialization_us=13669 value_us=6307 serialize_us=5242 write_us=1026 bytes=7123732 sha256=7ebecc5d0600db7efb1dd528b517120f3c2b61afc4466f37bed3926628e5b5ee
+stage=measure request=excluded-sut profile=DictionaryExactProfile { total: 2.313084ms, candidate_sql: 91.917µs, hydration: 2.203041ms, lookup_order_paging: 18.126µs } warm_lookup_us=109 hydration_value_serialization_us=12744 value_us=5934 serialize_us=4607 write_us=3954 bytes=7123716 sha256=fc247f45bd24b83197702d5642ee95e1ae19b3cea801b06479691260459069c7
+stage=measure request=page-0 profile=DictionaryExactProfile { total: 2.419458ms, candidate_sql: 87.625µs, hydration: 2.273292ms, lookup_order_paging: 58.541µs } warm_lookup_us=145 hydration_value_serialization_us=12191 value_us=6263 serialize_us=3655 write_us=1105 bytes=7124355 sha256=14e54e63f6baf8a2c95db7117216e8786b37820c1948571a581860c9af84e0a5
+stage=measure request=page-1 profile=DictionaryExactProfile { total: 2.381166ms, candidate_sql: 83.5µs, hydration: 2.236083ms, lookup_order_paging: 61.583µs } warm_lookup_us=144 hydration_value_serialization_us=11756 value_us=5460 serialize_us=4060 write_us=1319 bytes=7133210 sha256=5999df3d4218eaf15d3a8a37b5fc2934adaee842ed922c78081b432fc145fca5
+stage=measure request=page-2 profile=DictionaryExactProfile { total: 2.590708ms, candidate_sql: 120µs, hydration: 2.402626ms, lookup_order_paging: 68.082µs } warm_lookup_us=188 hydration_value_serialization_us=12842 value_us=5998 serialize_us=4442 write_us=960 bytes=7141488 sha256=b06dacf8540433534b29b6cd0e88f83af829e341f808f2ccbbd7114fcaf5c387
+stage=measure request=page-3 profile=DictionaryExactProfile { total: 2.637792ms, candidate_sql: 91.167µs, hydration: 2.481666ms, lookup_order_paging: 64.959µs } warm_lookup_us=155 hydration_value_serialization_us=13519 value_us=6459 serialize_us=4579 write_us=797 bytes=7148440 sha256=136e1dadad91f1785f5ca218e583ac75eb6da11766e7e19044f2854e9e89ad9a
+stage=measure request=page-8 profile=DictionaryExactProfile { total: 2.384625ms, candidate_sql: 84.625µs, hydration: 2.242209ms, lookup_order_paging: 57.791µs } warm_lookup_us=141 hydration_value_serialization_us=12526 value_us=5427 serialize_us=4857 write_us=2406 bytes=7160366 sha256=144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556
+stage=measure request=page-concat-2 profile=DictionaryExactProfile { total: 2.406834ms, candidate_sql: 85.917µs, hydration: 2.248835ms, lookup_order_paging: 72.082µs } warm_lookup_us=157 hydration_value_serialization_us=12525 value_us=5747 serialize_us=4530 write_us=960 bytes=7133823 sha256=87d47ee3a743241eef39c6fa2547bb9df6327f916b889f5fd397ef4a3dc24a3a
+stage=measure request=page-concat-3 profile=DictionaryExactProfile { total: 2.492625ms, candidate_sql: 78.583µs, hydration: 2.347416ms, lookup_order_paging: 66.626µs } warm_lookup_us=144 hydration_value_serialization_us=17790 value_us=6355 serialize_us=9088 write_us=1008 bytes=7132496 sha256=d61fc9665e505b1bccef15f387aa7f6fdb5a2b1667c2c1736bae7145a6b8eb1b
+stage=measure request=page-concat-4 profile=DictionaryExactProfile { total: 2.418708ms, candidate_sql: 84.584µs, hydration: 2.263334ms, lookup_order_paging: 70.79µs } warm_lookup_us=154 hydration_value_serialization_us=11612 value_us=5904 serialize_us=3445 write_us=1031 bytes=7132170 sha256=4691498fd345b4e7a124eeb113e221bcd860691ce27da671e6c8f1c4b4c0ae5c
+stage=measure request=page-concat-5 profile=DictionaryExactProfile { total: 2.7425ms, candidate_sql: 82.458µs, hydration: 2.596833ms, lookup_order_paging: 63.209µs } warm_lookup_us=145 hydration_value_serialization_us=12271 value_us=6140 serialize_us=3535 write_us=1127 bytes=7130354 sha256=90e265018207fd2705a346fdd6e9b93ca41eaa0c04648cab638cbcf1795d8bf3
+stage=measure request=page2-concat-2 profile=DictionaryExactProfile { total: 2.62575ms, candidate_sql: 91.167µs, hydration: 2.459666ms, lookup_order_paging: 74.917µs } warm_lookup_us=165 hydration_value_serialization_us=13909 value_us=6239 serialize_us=5211 write_us=961 bytes=7139334 sha256=b47d3796b9646a9f935e10fdca710ebfa05cda558ba3e5dfa53f108c6fe2cd0a
+stage=measure request=page2-concat-3 profile=DictionaryExactProfile { total: 2.448541ms, candidate_sql: 85.583µs, hydration: 2.294042ms, lookup_order_paging: 68.916µs } warm_lookup_us=153 hydration_value_serialization_us=13442 value_us=6861 serialize_us=4287 write_us=1145 bytes=7130354 sha256=90e265018207fd2705a346fdd6e9b93ca41eaa0c04648cab638cbcf1795d8bf3
+stage=measure request=page3-concat-2 profile=DictionaryExactProfile { total: 3.17725ms, candidate_sql: 99.959µs, hydration: 2.989291ms, lookup_order_paging: 88µs } warm_lookup_us=187 hydration_value_serialization_us=14022 value_us=6695 serialize_us=4338 write_us=1069 bytes=7137258 sha256=54b14abac7eebe1efbb366050446eac403b4efff60453ffca548625b03b28419
+stage=measure-reference request=jbotci-local lookup_resolve_us=2500 value_us=6215 serialize_us=4700 write_us=885 bytes=7127323 sha256=78511247a0376954d58c780042c1b993963313a0c2225bab758049238a281a2c
+stage=measure-reference request=jbotci-catalogue-native333 lookup_resolve_us=9962 value_us=8976 serialize_us=10768 write_us=3576 bytes=10137098 sha256=b636d9d0a1da0583a0d201dbad4d03a1cc40d8fe8877820ff73c9301d6dd3c39
+stage=measure-reference request=la-catalogue-native333 lookup_resolve_us=6155 value_us=8480 serialize_us=5067 write_us=6219 bytes=8702977 sha256=3ee6636d87be85fb357873353cf6d49ed1c17443c385a8c435cd3e64bd352b4d
+stage=measure-reference request=llg-component lookup_resolve_us=2813 value_us=6153 serialize_us=3442 write_us=917 bytes=7245550 sha256=4ba7e864eeac1b17cc11691d79bfef1b402d6903cd49835e9c43b04ef28bfa75
+stage=measure-reference request=sut-native-entry lookup_resolve_us=7944 value_us=7130 serialize_us=10039 write_us=2199 bytes=9321314 sha256=ba44f8d3b7bb75a1160da1f8d12bfebdfec4f61b92a043c7fa5882f37d4fae58
+stage=measure-reference request=unknown lookup_resolve_us=2120 value_us=5972 serialize_us=3625 write_us=2667 bytes=7123441 sha256=c2cba464498b577c7d5828ffab59787f5acde5be657b6614c5b958cbd991845c
+stage=measure-reference request=unresolved lookup_resolve_us=2059 value_us=5189 serialize_us=4434 write_us=909 bytes=7123481 sha256=6798aa96ce78fbe056c0883d41ea3448b511a3a2eb13560aa14980a0149cce93
+stage=measure-reference request=wrong-role lookup_resolve_us=6251 value_us=8 serialize_us=3 write_us=222 bytes=167 sha256=6b07285fec2fcfecf332de49a6c68c0ff4f63423de154a337dbecab29d47d715
+stage=measure-reference request=missing lookup_resolve_us=11578 value_us=10433 serialize_us=6018 write_us=2117 bytes=10133997 sha256=ac3f163b280870c0232d53be0c6ce0750ae58d54f6e81a93084ec4795838403a
+stage=measured-pass requests=27 elapsed_us=1158715
+        3.99 real         3.20 user         0.65 sys
+          2397503488  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              151809  page reclaims
+                  16  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                  52  voluntary context switches
+                6122  involuntary context switches
+         47093604855  instructions retired
+         11962243293  cycles elapsed
+          1430705728  peak memory footprint

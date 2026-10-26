@@ -1,0 +1,25 @@
+stage=open topology=fanout start
+stage=open topology=fanout elapsed_ms=4005 profile=DictionarySnapshotOpenProfile { provider_open: 8.539708ms, document_load_and_composition: 3.516446292s, common_index_setup: 480.22ms, total: 4.005206166s }
+stage=open topology=fanout profile=DictionarySnapshotOpenProfile { provider_open: 8.539708ms, document_load_and_composition: 3.516446292s, common_index_setup: 480.22ms, total: 4.005206166s }
+stage=exact request=farvi-all profile=DictionaryExactProfile { total: 8.282792ms, candidate_sql: 4.984542ms, hydration: 3.166749ms, lookup_order_paging: 131.501µs }
+stage=value request=farvi-all elapsed_us=9116
+stage=serialize request=farvi-all elapsed_us=5427 bytes=7160366 sha256=144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556
+stage=run-total elapsed_us=4052884
+        4.73 real         4.02 user         0.59 sys
+          2033123328  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              172126  page reclaims
+                  16  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                  57  voluntary context switches
+                7028  involuntary context switches
+         56245587297  instructions retired
+         14404776295  cycles elapsed
+          1368839040  peak memory footprint

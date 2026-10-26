@@ -2,7 +2,7 @@
 
 | Field | Current state |
 | --- | --- |
-| status | ISSUED; source 4b4158c frozen and CDC prerequisites cleared; clean five-store Full prepare running; all six rows OPEN |
+| status | CLOSED; source 4b4158c independently accepted; all six rows DONE; Unified selected |
 | authority | Duncan: “this looks good! Approved, and engage!” Protocol 1.1 inquiry, effort and numeric limits explicitly approved via root; applicability/accounting in protocol 1.2. Autonomous THROUGH ARC04 ONLY. |
 | roles | Requested/configured Sol6.1/high CDC, retained Luna/high CC; backend attestation unavailable. CDC design/planning/independent acceptance; CC source/index/target during issued interval; root read-only. |
 | current prompt | [cc-prompt-iteration02.md](cc-prompt-iteration02.md), bounded post-freeze whole-call profiler and README correction completed at 4b4158c; source parent 6fc740e; target returned to CDC |
@@ -105,3 +105,7 @@ Root identified that frozen 6fc740e assigns exact total inside the inner functio
 ## Current prerequisite release — 2026-10-26
 
 See artifacts/cdc-prerequisite02/receipt.md and manifest at planning 158a3cb. Current source/binary, corrected 54-request graph, actual tiny process controls, timing wrappers and stage parsing are qualified before clean Full execution. No Full native result or comparison round is yet claimed. Protocol 1.6 supersedes the preceding historical readiness HOLD without resetting any budget or attempt.
+
+## S01 accepted endpoint — 2026-10-26 UTC
+
+See closing-report.md, cdc-verification.md, cdc-retrospective.md and artifacts/topology-decision.md. Three rounds/eighteen processes and all hard correctness/numeric budgets passed; ancillary cache-delta/auxiliary-FD unknowns remain explicit. Root approved canonical consistency before mechanical close. S02 now owns selected Unified provisioning/catalogue design; no S02 prompt or actual default activation is issued by this close.
