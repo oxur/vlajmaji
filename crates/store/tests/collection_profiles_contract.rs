@@ -512,6 +512,7 @@ fn test_configure_preserves_native_config_path_when_platform_allows() {
     );
     let configured = match configured {
         Ok(report) => report,
+        #[cfg(not(target_os = "linux"))]
         Err(CollectionProfileError::Io { path, source }) => {
             // Some macOS volumes reject non-UTF-8 path components before
             // creating the lock. Compare the product result to the direct
