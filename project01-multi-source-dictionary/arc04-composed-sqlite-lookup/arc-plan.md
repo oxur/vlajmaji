@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S02 CLOSED, twelve child rows/A04-01–02 DONE; other eight arc rows OPEN. S03–S05 not issued |
+| status | ACTIVE; S01–S02 CLOSED, twelve child rows/A04-01–02 DONE; other eight arc rows OPEN. S03 ISSUED after root readiness PASS; S04/S05 not issued |
 | version / date | 1.8 / 2026-10-26 UTC |
 | authority | Latest 2026-10-25: Duncan explicitly approved seven TOTAL stores in protocol 1.5, retaining the historical two plus clean fresh five after remaining prerequisites. Original protocol 1.1 approval and Autonomous THROUGH ARC04 ONLY persist; unchanged Sol6.1/high CDC and Luna/high CC. CDC readiness clearance is now recorded in protocol 1.6 and slice artifacts/cdc-prerequisite02. Prior checkpoints remain historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
@@ -113,3 +113,7 @@ Historical pre-close header: | status | ACTIVE; S01 CLOSED with six accepted row
 ### Actual S02 canonical close
 
 Root canonical consistency PASS cleared six child rows DONE and A04-02 DONE; A04-03 remains OPEN with its partial S02 contribution. No arc contract/verification/owner changed. S03 source-guided readiness proceeds under existing Arc04 authority after this endpoint; future source delivery is not inferred from the completed S02 CI authorization.
+
+## S03 readiness and issue — 2026-10-26 UTC
+
+Source-guided configured combined lookup packet: slice03-configured-combined-lookup/{slice-plan.md,ledger.md,cc-prompt.md}, exact18 source paths/six OPEN rows. Separate explicit TOML policy preserves catalogue schema1 and old STORE route; managed outer cursor rejects changed operational snapshots before unavailable admission. Actual offline confyg single-source/serializer proof and source-literal census precede implementation. Root canonical readiness PASS; issue does not accept runtime or authorize another Full create/push/default switch. S04 lifecycle/S05 projection and fresh arc workflow composition remain.

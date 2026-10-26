@@ -1,0 +1,8 @@
+[package]
+name = "vlajmaji-a04-s03-confyg-readiness-01"
+version = "0.0.0"
+edition = "2024"
+[dependencies]
+confyg = "=0.3.0"
+serde = { version = "=1.0.229", features = ["derive"] }
+toml = "=0.9.12"
