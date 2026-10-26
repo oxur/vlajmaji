@@ -1,0 +1,167 @@
+{
+  "selected_packs": [
+    "la-lojban",
+    "lensisku-jbotci",
+    "llg",
+    "sutysisku"
+  ],
+  "database": "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01/generations/4ff079565e33ef4b56902fc9e9a34147/store/dictionary.sqlite3",
+  "verdict": "PASS",
+  "checks": {
+    "unique_sql_occurrence": 78361,
+    "exact_occurrence_tuple_ordinal_line": 78361,
+    "all_native_field_ordinals_names_encodings_lexemes": 78361,
+    "complete_native_assertion_entry_attribution_policy": 78361,
+    "independent_exact_gloss_object": 62317,
+    "complete_all_occurrences_no_omissions": 1,
+    "complete_all_native_fields_no_omissions": 1,
+    "complete_capture_identity_multiset": 1,
+    "all_eight_exact_capture_bytes": 8,
+    "complete_context_owner_value_evidence_multiset": 1,
+    "complete_form_owner_standing_value_evidence_multiset": 1,
+    "complete_etymology_owner_value_evidence_multiset": 1,
+    "complete_extension_owner_exact_lexeme_evidence_multiset": 1,
+    "complete_eligible_source_spelling_occurrence_assertion_tuples": 1,
+    "source_derived_complete_word_union": 1,
+    "exact_47_table_name_set_including_empty_categories": 1,
+    "explicit_empty_category_argument_frames": 1,
+    "explicit_empty_category_argument_slots": 1,
+    "explicit_empty_category_etymology_components": 1,
+    "explicit_empty_category_form_components": 1,
+    "explicit_empty_category_relations": 1,
+    "explicit_empty_category_owned_revisions": 1,
+    "explicit_empty_category_revision_assertions": 1,
+    "explicit_empty_category_revision_tombstones": 1,
+    "explicit_empty_category_owned_heads": 1,
+    "explicit_empty_category_editorial_senses": 1,
+    "explicit_empty_category_editorial_members": 1,
+    "explicit_empty_category_computations": 1,
+    "explicit_empty_category_computation_inputs": 1,
+    "explicit_empty_category_annotations": 1,
+    "explicit_empty_category_assertion_timestamps": 1,
+    "readonly_db_hash_unchanged": 1
+  },
+  "total_checks": 375795,
+  "source_policy_per_pack": {
+    "lensisku-jbotci": {
+      "occurrences": 33526,
+      "native_fields": 278254,
+      "lexical": 33516
+    },
+    "la-lojban": {
+      "occurrences": 17056,
+      "native_fields": 149596,
+      "lexical": 17056
+    },
+    "sutysisku": {
+      "occurrences": 23705,
+      "native_fields": 115219,
+      "lexical": 23704
+    },
+    "llg": {
+      "occurrences": 4074,
+      "native_fields": 23298,
+      "lexical": 2527
+    }
+  },
+  "native_fields": 566367,
+  "occurrences": 78361,
+  "typed_multiset_comparisons": {
+    "contexts": {
+      "rows": 177210,
+      "sha256": "1fb4aa884e8f2fd018256aa955cdc88fb399695b3f13900890ac9ef291b822da"
+    },
+    "forms": {
+      "rows": 11598,
+      "sha256": "2c4e46610da4b28ba498fff20b5aea927943294630d928b1b1cd9e0131cdc4d2"
+    },
+    "etymologies": {
+      "rows": 3513,
+      "sha256": "6e27866b0348f13ef8989e2ec07a1cb5e107b9c59d7a876cc8527e856ad72907"
+    },
+    "extensions": {
+      "rows": 138107,
+      "sha256": "6a19151cea3ecfbdb51ee347859a1c33c926ff7b6f76253751cb6211fe5196c2"
+    },
+    "eligible": {
+      "rows": 76803,
+      "sha256": "58aeec43ee95237960fe9e1fdadd369d168684226884f124af3dfe9c3fb96eb4"
+    }
+  },
+  "eligible_words": 31375,
+  "eligible_word_union_sha256": "8be3bdddb9c965b5993a979265f1f805cf1eb85d159a9b57c932fa92e681e8f5",
+  "eligible_by_source": {
+    "lensisku": 50572,
+    "sutysisku": 23704,
+    "llg": 2527
+  },
+  "table_inventory_all47": {
+    "annotations": 0,
+    "argument_frames": 0,
+    "argument_slots": 0,
+    "assertion_timestamps": 0,
+    "assertions": 78361,
+    "canonical_document": 1,
+    "capture_refs": 8,
+    "code_notices": 1,
+    "collections": 4,
+    "component_languages": 6,
+    "components": 6,
+    "computation_inputs": 0,
+    "computations": 0,
+    "content_notices": 6,
+    "contexts": 177210,
+    "contributors": 238,
+    "distributors": 2,
+    "editorial_members": 0,
+    "editorial_senses": 0,
+    "entity_ids": 347420,
+    "entries": 76722,
+    "etymologies": 3513,
+    "etymology_components": 0,
+    "extensions": 138107,
+    "form_components": 0,
+    "forms": 11598,
+    "metadata": 7,
+    "native_fields": 566367,
+    "occurrence_attributions": 78361,
+    "occurrence_refs": 78361,
+    "owned_heads": 0,
+    "owned_revisions": 0,
+    "raw_captures": 8,
+    "raw_occurrences": 78361,
+    "redistribution_evidence": 7,
+    "relations": 0,
+    "release_assertions": 78361,
+    "release_captures": 10,
+    "release_diagnostics": 14,
+    "releases": 6,
+    "revision_assertions": 0,
+    "revision_tombstones": 0,
+    "snapshot_bindings": 8,
+    "source_aliases": 0,
+    "source_evidence": 173343,
+    "source_lineage": 2,
+    "sources": 3
+  },
+  "db_pre_sha256": "b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725",
+  "db_post_sha256": "b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725"
+}
+       10.35 real         8.92 user         1.16 sys
+          2931228672  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              287218  page reclaims
+                  54  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                  40  voluntary context switches
+               19917  involuntary context switches
+        100627223636  instructions retired
+         32003092892  cycles elapsed
+          2485787072  peak memory footprint

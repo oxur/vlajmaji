@@ -2,10 +2,10 @@
 
 | Field | Current value |
 | --- | --- |
-| Status / version | Iteration01 frozen8f; independent tiny runtime controls pass, platform test completion HOLD. Iteration02 ISSUED after root readiness PASS; six rows OPEN. |
-| Authority | Duncan's Autonomous THROUGH ARC04 approval; unchanged requested Sol6.1/high CDC and Luna/high CC. S01 selected Unified, independently accepted at source 4b4158c and planning ba1faf0. No new inquiry or Operator gate. |
-| Source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; current frozen b38bdfe5d2a59ab430539021382225f256b619b3; original issue baseline4b4158c preserved below. |
-| Ownership | Current: CDC source/index/target after explicit8f freeze/handback. Iteration02 transfers only on dispatch/acknowledgment. CDC design/planning/independent acceptance; root read-only. |
+| Status / version | Clean iteration02 2366ae2 handed back; current independent macOS gates/provider and retained repaired runtime controls pass. One Full operational install and serialized local independent proof PASS; actual Linux pending. Six rows OPEN. |
+| Authority | Duncan's Autonomous THROUGH ARC04 approval; unchanged requested Sol6.1/high CDC and Luna/high CC. S01 selected Unified, independently accepted at source 4b4158c and planning ba1faf0. Arc04 execution remains authorized; the explicit no-push boundary requires a separate decision for the proposed hosted Linux route. |
+| Source | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; current frozen2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a; b38 and8f candidates/history retained below. |
+| Ownership | Current: CDC source/index/target after explicit2366 freeze/handback; all author/build sessions ended. CDC design/planning/independent acceptance; root read-only. |
 | Useful delivery | One local command installs selected/all four packs into an additive verified Unified generation; reusable Rust APIs register, install, list and inspect a truthful persistent collection catalogue. |
 | Exclusions | S03 configuration/default selection and combined command; S04 update/removal/recovery commands; S05 output projection; A05 owned editor. No actual user default, protected main/Bauske/accepted stores, acquisition, push, publication or comparison rerun. |
 
@@ -189,3 +189,11 @@ Source8f0ab277 is clean and returned to CDC. Independent actual runtime controls
 ## Iteration02 issue — 2026-10-26 UTC
 
 Root read the complete two-test-file prompt/helpers/cfg boundary, independently matched41 canonical small files and five runtime/lock hashes, and approved scoped issue/retained Luna dispatch. Active assignment cc-prompt-iteration02.md; source8f remains frozen until explicit dispatch/acknowledgment. This readiness and runtime-proof retention is not Linux or Full acceptance. Prior DRAFT/HOLD statements above describe historical checkpoints.
+
+## Current pre-Full checkpoint — 2026-10-26 UTC
+
+Clean2366 test-only descendant preserves five runtime/lock hashes from8f. CDC current ordered gates pass187/0/1 plus19tooling, actual four embedded provider consumer passes full25-family/canonical comparison, and six supplementary tiny policy/model/write controls pass after two preserved reviewer-oracle failures. New descriptor comparator5/5 is qualified before accepted-input expectation capture. Exact request/pins/binaries/argv/resources and complete control census are in artifacts/cdc-review01/pre-full-freeze01/coverage-and-freeze.md. Root read-through precedes one operational Full install; no Full generation has yet been created. Actual Linux remains OPEN and no push is authorized. All six rows OPEN; no closure implied.
+
+## Current local Full / Linux checkpoint — 2026-10-26 UTC
+
+After root read-through, exactly one Full install passed187.198s/OSmaxRSS8398831616B;2094051725B artifacts/private modes. Accepted435519540B/d9d73c…b7b19 canonical state, explicitAll6/6, complete raw-native multisets/47tables/15empty, four descriptor blocks and public21 groups, plus six actual CLI processes pass; dictionary/CLI catalogue hashes and original pins unchanged. Bounded records/manifest are in artifacts/cdc-review01/full-execution01/local-review-and-linux-checkpoint.md. RSS/data thresholds are post-completion acceptance checks;600s timeout active. Actual Linux remains an acceptance gate; proposed existing-CI exact-head source push has NOT been authorized or executed. All six rows remain OPEN; S03 not issued.

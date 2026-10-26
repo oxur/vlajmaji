@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-26T03:58:31Z",
+  "task_pid_chain": [
+    "54573 54570 01:23   0:00.07   5456 /Library/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python -B /tmp/vlajmaji-p01-a04-s02-cdc/stage_guard_time.py --timeout 600 --max-rss-bytes 12884901888 --log /tmp/vlajmaji-p01-a04-s02-cdc/cdc-logs/full-install01.log -- /tmp/vlajmaji-p01-a04-s02-cdc/cli-2366ae-release01 collections install /tmp/vlajmaji-p01-a04-s02-cdc/full-operational01 --manifest /tmp/vlajmaji-p01-a04-s02-cdc/full-freeze01/batch.json --all",
+    "54576 54573 01:23   0:00.00    432 /usr/bin/time -l /tmp/vlajmaji-p01-a04-s02-cdc/cli-2366ae-release01 collections install /tmp/vlajmaji-p01-a04-s02-cdc/full-operational01 --manifest /tmp/vlajmaji-p01-a04-s02-cdc/full-freeze01/batch.json --all",
+    "54577 54576 01:23   1:19.16 6941200 /tmp/vlajmaji-p01-a04-s02-cdc/cli-2366ae-release01 collections install /tmp/vlajmaji-p01-a04-s02-cdc/full-operational01 --manifest /tmp/vlajmaji-p01-a04-s02-cdc/full-freeze01/batch.json --all"
+  ],
+  "rss_units": "ps current KiB, not peak",
+  "scope": "bounded known wrapper descendants only",
+  "prior_attempt": "sandbox denied ps before any process snapshot"
+}

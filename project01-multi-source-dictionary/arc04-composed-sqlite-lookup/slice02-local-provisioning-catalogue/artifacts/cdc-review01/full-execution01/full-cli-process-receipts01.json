@@ -1,0 +1,97 @@
+[
+  {
+    "label": "list",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-2366ae-release01",
+      "collections",
+      "list",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 0.0774488328024745,
+    "stdout_bytes": 25891,
+    "stdout_sha256": "58f8d9447b14d231b1eab606dab09eb46ebd15f3f7f31dd4f52b54f0fc5bbb73",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "inspect-lensisku-jbotci",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-2366ae-release01",
+      "collections",
+      "inspect",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01",
+      "lensisku-jbotci"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 0.03666512481868267,
+    "stdout_bytes": 5579,
+    "stdout_sha256": "026aa73eab7ec98a2e885695fe1166509cb32b0a7745585e0129ca8cada6719a",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "inspect-llg",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-2366ae-release01",
+      "collections",
+      "inspect",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01",
+      "llg"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 0.010621082969009876,
+    "stdout_bytes": 9201,
+    "stdout_sha256": "46a67e62e48ebaf776a1bc5f25fee563977d5a59d401020ce07465381f6cd76e",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "inspect-la-lojban",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-2366ae-release01",
+      "collections",
+      "inspect",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01",
+      "la-lojban"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 0.019531208090484142,
+    "stdout_bytes": 4708,
+    "stdout_sha256": "48f9dc9a58f0e53b28f8e21073d7aa60016ff34a26409b9bd79de783644e9f56",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "inspect-sutysisku",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-2366ae-release01",
+      "collections",
+      "inspect",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01",
+      "sutysisku"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 0.02036470826715231,
+    "stdout_bytes": 5193,
+    "stdout_sha256": "0f204f179d8903392367cc03b77cb757ec60445b0f1ddca6f1ae9d0111af1daa",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "farvi",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s02-cdc/cli-2366ae-release01",
+      "dictionary-query",
+      "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01/generations/4ff079565e33ef4b56902fc9e9a34147/store",
+      "--request",
+      "{\"operation\":\"exact\",\"spelling\":\"farvi\"}"
+    ],
+    "exit": 0,
+    "elapsed_seconds": 2.419834959320724,
+    "stdout_bytes": 7160366,
+    "stdout_sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

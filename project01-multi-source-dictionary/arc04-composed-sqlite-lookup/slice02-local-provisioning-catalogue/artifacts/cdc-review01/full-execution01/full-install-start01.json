@@ -1,0 +1,26 @@
+{
+  "utc": "2026-10-26T03:57:08Z",
+  "argv": [
+    "python3",
+    "-B",
+    "/tmp/vlajmaji-p01-a04-s02-cdc/stage_guard_time.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "12884901888",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s02-cdc/cdc-logs/full-install01.log",
+    "--",
+    "/tmp/vlajmaji-p01-a04-s02-cdc/cli-2366ae-release01",
+    "collections",
+    "install",
+    "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01",
+    "--manifest",
+    "/tmp/vlajmaji-p01-a04-s02-cdc/full-freeze01/batch.json",
+    "--all"
+  ],
+  "source": "2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a",
+  "status": "launching exactly one Full operational install",
+  "root_clearance": "parent concrete read-through PASS; no second create/retry",
+  "rss_and_data_thresholds": "post-completion acceptance thresholds, not live memory/disk enforcement; timeout600 is active"
+}

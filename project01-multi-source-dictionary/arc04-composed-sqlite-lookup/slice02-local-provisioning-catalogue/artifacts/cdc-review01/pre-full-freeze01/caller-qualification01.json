@@ -1,0 +1,31 @@
+{
+  "source": "2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a",
+  "binary_sha256": "015a123d077007a7138fa24aa102c045e8ebc1ca8f18320763a41e0fff35ef3c",
+  "main_sha256": "767528a1418931377603c379e76b56eba5ba7ad58a8eec48ec4272edb75c5769",
+  "records": [
+    {
+      "label": "descriptor-tiny-freeze01",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s02-cdc/full-caller-2366ae-release01",
+        "freeze",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/full-freeze01/tiny-batch.json",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/full-freeze01/tiny-expected01.json"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.2854842501692474,
+      "log_sha256": "0e07ac94055bc7cf6bc3db5e8844068927598e9d33c85a79e7cec01cbf17d393"
+    },
+    {
+      "label": "descriptor-tiny-check01",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s02-cdc/full-caller-2366ae-release01",
+        "check-descriptors",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/embedded-runtime01",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/full-freeze01/tiny-expected01.json"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.01868516718968749,
+      "log_sha256": "dcbc0f32c92cae1d6fd41ae70994f6c1bc405651214ad8fea51edabd15f9acc1"
+    }
+  ]
+}

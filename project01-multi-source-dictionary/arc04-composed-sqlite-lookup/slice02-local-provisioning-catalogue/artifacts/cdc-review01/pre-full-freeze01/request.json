@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "status": "FROZEN FOR ROOT READ-THROUGH; NOT EXECUTED",
+  "source_commit": "2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a",
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "install_argv": [
+    "python3",
+    "-B",
+    "/tmp/vlajmaji-p01-a04-s02-cdc/stage_guard_time.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "12884901888",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s02-cdc/cdc-logs/full-install01.log",
+    "--",
+    "/tmp/vlajmaji-p01-a04-s02-cdc/cli-2366ae-release01",
+    "collections",
+    "install",
+    "/tmp/vlajmaji-p01-a04-s02-cdc/full-operational01",
+    "--manifest",
+    "/tmp/vlajmaji-p01-a04-s02-cdc/full-freeze01/batch.json",
+    "--all"
+  ],
+  "stdout_receipt": "/tmp/vlajmaji-p01-a04-s02-cdc/full-freeze01/install-process-receipt01.json",
+  "required_execution": "scoped escalation for macOS time(1) sysctl; login:false",
+  "creates_permitted": 1,
+  "install_timeout_seconds": 600,
+  "create_rss_safety_bytes": 12884901888,
+  "new_operational_artifact_allowance_bytes": 2300000000,
+  "no_implicit_retry": true,
+  "required_before_launch": [
+    "root concrete packet read-through",
+    "source/binary/manifest/input pins unchanged",
+    "Full ROOT still absent",
+    "all sessions ended; CDC one writer"
+  ],
+  "after_install": [
+    "require wrapper exit0/passed and actual v1 mutation report ok:true/installed/local_revision1/all4 Full members/all input dispositions",
+    "freeze returned generation native path/physical ID/content ID; count actual artifacts/modes and stop if >2.3GB",
+    "read-only verify all on returned store",
+    "independent canonical_document blob length435519540/SHA d9d73cbb49cc5a9ddb0ec16cb6dbb4bb7260ad49f4f8f54c6e6d21f0779b7b19",
+    "qualified native_topology.py on returned store: all47tables/15empty + native/typed tuple multisets",
+    "full-caller-2366ae-release02 check-full ROOT expected-descriptors-and-refs02.json",
+    "actual release CLI list+inspect all4 and exact farvi using explicit returned store; full Value/byte scope distinguished",
+    "DB before/after SHA plus original accepted input hashes unchanged; no actual user default access"
+  ],
+  "on_failure": "Stop at the current attempt, retain root/stages/logs/receipt/binary/manifests. Reconcile activation read-only where possible. Do not delete, reinstall, create a second Full generation or infer timeout means rollback. Report exact cause and required repair/reentry.",
+  "Linux": "OPEN: not executed. This pre-Full macOS gate does not close S02-05 or authorize push/CI."
+}

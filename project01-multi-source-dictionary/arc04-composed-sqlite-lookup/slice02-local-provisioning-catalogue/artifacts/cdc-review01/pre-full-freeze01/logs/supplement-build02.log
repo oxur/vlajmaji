@@ -1,0 +1,18 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-a04-s02-cdc-supplement-20261026d v0.0.0 (/tmp/vlajmaji-p01-a04-s02-cdc/supplement-caller01)
+warning: function `draft` is never used
+  --> src/helpers.rs:19:4
+   |
+19 | fn draft(d: Dictionary) -> UnverifiedDictionaryDocument {
+   |    ^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `inventory` is never used
+  --> src/helpers.rs:23:4
+   |
+23 | fn inventory(d:&UnverifiedDictionaryDocument)->BTreeMap<&'static str,BTreeMap<String,usize>> {
+   |    ^^^^^^^^^
+
+warning: `vlajmaji-a04-s02-cdc-supplement-20261026d` (bin "a04_s02_cdc_supplement_20261026d") generated 2 warnings
+    Finished `release` profile [optimized] target(s) in 1.21s

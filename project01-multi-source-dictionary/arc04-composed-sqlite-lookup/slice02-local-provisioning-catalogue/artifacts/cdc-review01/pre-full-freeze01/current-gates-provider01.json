@@ -1,0 +1,77 @@
+{
+  "source_commit": "2366ae2d5b3e57dc5eefa5b611cdc4e6150f277a",
+  "records": [
+    {
+      "label": "cdc-current-format01",
+      "argv": [
+        "make",
+        "format"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.9342749998904765,
+      "log_sha256": "baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4"
+    },
+    {
+      "label": "cdc-current-lint01",
+      "argv": [
+        "make",
+        "lint"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.35300062503665686,
+      "log_sha256": "b08eaa14a3b4087d35a0e8d1e0648089ab32d112939f22823fa2a809b660678c"
+    },
+    {
+      "label": "cdc-current-check01",
+      "argv": [
+        "make",
+        "check"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 33.61230833409354,
+      "log_sha256": "31e85ee1041d79d13cab5d3da81966380b48d0492ba14058c9cdaa8f57f319a6"
+    },
+    {
+      "label": "embedded-lock01",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-cargo",
+        "+1.98.0",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/embedded-caller01/Cargo.toml"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.14179337490350008,
+      "log_sha256": "9e1d7f83936be8010149d31a1df25b8a72315e7e96c129c06bfb83a4f778a36d"
+    },
+    {
+      "label": "embedded-build01",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-cargo",
+        "+1.98.0",
+        "build",
+        "--offline",
+        "--locked",
+        "--manifest-path",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/embedded-caller01/Cargo.toml",
+        "--bin",
+        "a04_s02_cdc_embedded_20261026b"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.4984841248951852,
+      "log_sha256": "a2341e031e5ba61be52876c78ceb67932f90241cb6ce3d4a7195ee4fdbbd56e7",
+      "binary_sha256": "28bd4f6b232d4109b48ee08f5cfbf5a98431711d001e95edcc4cbe537351a8bb"
+    },
+    {
+      "label": "embedded-runtime01",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s02-cdc/embedded-caller-2366ae-debug01",
+        "/tmp/vlajmaji-p01-a04-s02-cdc/embedded-runtime01"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.6333765406161547,
+      "log_sha256": "c6d13a4018247899efabd84649cdae93732f9122284fdfb86988efb13548d4f1"
+    }
+  ]
+}

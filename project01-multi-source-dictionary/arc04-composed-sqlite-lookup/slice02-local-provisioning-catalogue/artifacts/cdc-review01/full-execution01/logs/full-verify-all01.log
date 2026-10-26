@@ -1,0 +1,19 @@
+{"checks":[{"check":"schema","diagnostic":"exact schema catalog matches","status":"passed"},{"check":"metadata","diagnostic":"metadata shape, versions, and canonical header agreement passed","status":"passed"},{"check":"hashes","diagnostic":"canonical digest, 8 capture digests, and legacy archive column passed","status":"passed"},{"check":"model","diagnostic":"strict dictionary model validation passed","status":"passed"},{"check":"fks","diagnostic":"foreign_key_check returned no violations","status":"passed"},{"check":"projection","diagnostic":"all persisted rows and cells match the canonical model","status":"passed"}],"ok":true,"operation":"verify","prerequisites":[],"version":1}
+       64.04 real        55.74 user         3.91 sys
+          6998032384  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              775294  page reclaims
+                 265  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+               80379  voluntary context switches
+              130921  involuntary context switches
+        897600058024  instructions retired
+        188730445567  cycles elapsed
+          7360331648  peak memory footprint

@@ -1,0 +1,17 @@
+[package]
+name = "vlajmaji-a04-s02-cdc-full-20261026c"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.98"
+[[bin]]
+name = "a04_s02_cdc_full_20261026c"
+path = "src/main.rs"
+[dependencies]
+vlajmaji-lexicon = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon" }
+vlajmaji-store = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store", default-features = false }
+vlajmaji-search = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search", default-features = false }
+sha2 = "=0.10.9"
+serde = "=1.0.229"
+serde_json = "=1.0.151"
+rusqlite = { version = "=0.40.2", default-features = false, features = ["bundled", "limits"] }
+
