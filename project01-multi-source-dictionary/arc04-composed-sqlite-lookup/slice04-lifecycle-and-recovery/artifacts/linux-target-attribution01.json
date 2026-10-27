@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "scope": "existing hosted-output target attribution correction only; no runtime/CI/Full operation",
+  "source": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "ci_run": 40515705170,
+  "raw_log_sha256": "e43c93c13854e6cdfbb1b2476060d355e6dbb737872bb88b92bb567a5a4da659",
+  "original_census": "cdc-linux-final01/ci-40515705170-cdc-census01.json retained unchanged: nine passing names/populations correct, all target:null; original target-scoped wording overstated parser output",
+  "method": "strip ANSI control sequences; track Running header independently per(job,step); bind each exact ok line to latest header",
+  "witnesses": [
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "target": "tests/collections_lifecycle_contract.rs",
+      "test_binary": "target/debug/deps/collections_lifecycle_contract-34c05a4aef095d74",
+      "header_line": 1184,
+      "test": "test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes",
+      "ok_line": 1187
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "target": "tests/collections_maintenance_contract.rs",
+      "test_binary": "target/debug/deps/collections_maintenance_contract-910fd08b76a6a1f8",
+      "header_line": 1193,
+      "test": "test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes",
+      "ok_line": 1198
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "target": "tests/collections_maintenance_contract.rs",
+      "test_binary": "target/debug/deps/collections_maintenance_contract-910fd08b76a6a1f8",
+      "header_line": 1193,
+      "test": "test_linux_native_root_and_config_roundtrip_through_cli",
+      "ok_line": 1200
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "target": "tests/collections_maintenance_contract.rs",
+      "test_binary": "target/debug/deps/collections_maintenance_contract-b839042349ddb4f9",
+      "header_line": 1588,
+      "test": "test_reconcile_committed_stage_markers_and_unknown_operation",
+      "ok_line": 1594
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --all-features --locked",
+      "target": "tests/collections_lifecycle_contract.rs",
+      "test_binary": "target/debug/deps/collections_lifecycle_contract-b4dbe72c66feabb0",
+      "header_line": 2044,
+      "test": "test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes",
+      "ok_line": 2047
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --all-features --locked",
+      "target": "tests/collections_maintenance_contract.rs",
+      "test_binary": "target/debug/deps/collections_maintenance_contract-cf0e7c991cbac65e",
+      "header_line": 2053,
+      "test": "test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes",
+      "ok_line": 2058
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --all-features --locked",
+      "target": "tests/collections_maintenance_contract.rs",
+      "test_binary": "target/debug/deps/collections_maintenance_contract-cf0e7c991cbac65e",
+      "header_line": 2053,
+      "test": "test_linux_native_root_and_config_roundtrip_through_cli",
+      "ok_line": 2061
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --all-features --locked",
+      "target": "tests/collections_maintenance_contract.rs",
+      "test_binary": "target/debug/deps/collections_maintenance_contract-48fa26a482a2fb95",
+      "header_line": 2448,
+      "test": "test_reconcile_committed_stage_markers_and_unknown_operation",
+      "ok_line": 2454
+    },
+    {
+      "job": "Test (macos-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "target": "tests/collections_maintenance_contract.rs",
+      "test_binary": "target/debug/deps/collections_maintenance_contract-57a2f4c7d3c67cd8",
+      "header_line": 3559,
+      "test": "test_reconcile_committed_stage_markers_and_unknown_operation",
+      "ok_line": 3563
+    }
+  ],
+  "ok": true
+}
