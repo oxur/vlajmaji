@@ -845,44 +845,112 @@ fn test_remove_registered_only_pack_keeps_active_generation() {
 #[test]
 fn test_reconcile_committed_stage_markers_and_unknown_operation() {
     let root = fresh_root("committed-stage-marker-operations");
-    let (release, seal, release_sha256) = sealed_llg();
-    let installed = CollectionCatalogue::install(&root, request(&release, &seal)).unwrap();
+    let (llg_release, llg_seal, llg_release_sha256) = sealed_llg();
+    let (jbotci_release, jbotci_seal, _) = sealed_pack(PackId::LensiskuJbotci);
+    let installed = CollectionCatalogue::install(
+        &root,
+        two_pack_request(&llg_release, &llg_seal, &jbotci_release, &jbotci_seal),
+    )
+    .unwrap();
     assert_eq!(installed.local_revision, 1);
+    assert_eq!(installed.generation.as_ref().unwrap().members.len(), 2);
+    let initial_install_attempt = installed.attempt_id.clone().unwrap();
+    let after_install = CollectionCatalogue::reconcile(&root).unwrap();
+    assert_eq!(after_install.local_revision, 1);
+    assert_eq!(after_install.retained_generation_count, 1);
+    assert!(after_install.staged_attempts.is_empty());
+    assert!(!after_install.attention_required);
+
     let removed = CollectionCatalogue::remove(&root, &[PackId::Llg], 1).unwrap();
     assert_eq!(removed.local_revision, 2);
-    assert!(removed.generation.is_none());
-    let reinstalled =
-        CollectionCatalogue::reinstall(&root, request(&release, &seal), &release_sha256, 2)
-            .unwrap();
+    let survivor = removed.generation.as_ref().expect("JB survives removal");
+    assert_eq!(survivor.members.len(), 1);
+    assert_eq!(survivor.members[0].pack_id, PackId::LensiskuJbotci.as_str());
+    assert_ne!(
+        survivor.generation_id,
+        installed.generation.as_ref().unwrap().generation_id
+    );
+    let remove_attempt = removed.attempt_id.clone().unwrap();
+    let remove_marker_path = root
+        .join("generations")
+        .join(&remove_attempt)
+        .join("attempt.json");
+    let remove_marker: serde_json::Value =
+        serde_json::from_slice(&fs::read(&remove_marker_path).unwrap()).unwrap();
+    assert_eq!(remove_marker["version"], 1);
+    assert_eq!(remove_marker["attempt_id"], remove_attempt);
+    assert_eq!(remove_marker["operation"], "remove");
+
+    let after_remove = CollectionCatalogue::reconcile(&root).unwrap();
+    assert_eq!(after_remove.local_revision, 2);
+    assert_eq!(after_remove.retained_generation_count, 2);
+    assert_eq!(
+        after_remove.active_generation.as_deref(),
+        Some(survivor.generation_id.as_str())
+    );
+    assert!(after_remove.staged_attempts.is_empty());
+    assert!(!after_remove.attention_required);
+
+    let reinstalled = CollectionCatalogue::reinstall(
+        &root,
+        request(&llg_release, &llg_seal),
+        &llg_release_sha256,
+        2,
+    )
+    .unwrap();
     assert_eq!(reinstalled.local_revision, 3);
-    let active_generation = reinstalled.generation.unwrap().generation_id;
+    let active_generation = reinstalled.generation.as_ref().unwrap();
+    assert_eq!(active_generation.members.len(), 2);
+    assert_ne!(active_generation.generation_id, survivor.generation_id);
+    let reinstall_attempt = reinstalled.attempt_id.clone().unwrap();
+    let reinstall_marker_path = root
+        .join("generations")
+        .join(&reinstall_attempt)
+        .join("attempt.json");
+    let reinstall_marker: serde_json::Value =
+        serde_json::from_slice(&fs::read(&reinstall_marker_path).unwrap()).unwrap();
+    assert_eq!(reinstall_marker["version"], 1);
+    assert_eq!(reinstall_marker["attempt_id"], reinstall_attempt);
+    assert_eq!(reinstall_marker["operation"], "reinstall");
 
     let clean = CollectionCatalogue::reconcile(&root).unwrap();
     assert_eq!(clean.local_revision, 3);
+    assert_eq!(clean.retained_generation_count, 3);
     assert_eq!(
         clean.active_generation.as_deref(),
-        Some(active_generation.as_str())
+        Some(active_generation.generation_id.as_str())
     );
     assert!(clean.staged_attempts.is_empty());
+    assert!(!clean.attention_required);
     let committed_install = clean
         .attempts
         .iter()
-        .find(|attempt| attempt.operation == "install")
-        .expect("install attempt is retained")
+        .find(|attempt| attempt.attempt_id == initial_install_attempt)
+        .expect("initial install attempt is retained")
         .attempt_id
         .clone();
-    assert!(
-        clean
+    for (operation, attempt_id) in [
+        ("install", committed_install.as_str()),
+        ("remove", remove_attempt.as_str()),
+        ("reinstall", reinstall_attempt.as_str()),
+    ] {
+        let attempt = clean
             .attempts
             .iter()
-            .any(|attempt| { attempt.operation == "remove" && attempt.status == "committed" })
-    );
-    assert!(
-        clean
-            .attempts
-            .iter()
-            .any(|attempt| { attempt.operation == "reinstall" && attempt.status == "committed" })
-    );
+            .find(|attempt| attempt.attempt_id == attempt_id)
+            .expect("committed operation is retained");
+        assert_eq!(attempt.operation, operation);
+        assert_eq!(attempt.status, "committed");
+        let marker_path = root
+            .join("generations")
+            .join(attempt_id)
+            .join("attempt.json");
+        let marker: serde_json::Value =
+            serde_json::from_slice(&fs::read(marker_path).unwrap()).unwrap();
+        assert_eq!(marker["version"], 1);
+        assert_eq!(marker["attempt_id"], attempt_id);
+        assert_eq!(marker["operation"], operation);
+    }
 
     let generation_root = root.join("generations");
     let orphan_id = "ffffffffffffffffffffffffffffffff";
