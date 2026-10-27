@@ -126,6 +126,37 @@ fn test_collections_remove_reinstall_reconcile_cli_preserves_explicit_state() {
     assert_eq!(failure["error"]["operation"], "install");
     assert_eq!(failure["error"]["activation"], "not_activated");
 
+    let unknown_release = "0".repeat(64);
+    let unknown_reinstall = run(&[
+        "collections".as_ref(),
+        "reinstall".as_ref(),
+        catalogue.as_os_str(),
+        "--pack".as_ref(),
+        "llg".as_ref(),
+        "--release".as_ref(),
+        release_path.as_os_str(),
+        "--seal".as_ref(),
+        seal_path.as_os_str(),
+        "--allow-synthetic".as_ref(),
+        "--release-sha256".as_ref(),
+        unknown_release.as_str().as_ref(),
+        "--expected-revision".as_ref(),
+        "2".as_ref(),
+    ]);
+    assert!(!unknown_reinstall.status.success());
+    let unknown_report: Value = serde_json::from_slice(&unknown_reinstall.stderr).unwrap();
+    let unknown_report = &unknown_report["error"];
+    assert_eq!(unknown_report["operation"], "reinstall");
+    assert_eq!(unknown_report["category"], "unknown_registered_release");
+    assert_eq!(unknown_report["pack_id"], "llg");
+    assert_eq!(unknown_report["prior_local_revision"], 2);
+    assert!(unknown_report["attempt_id"].is_null());
+    assert!(unknown_report["proposed_generation"].is_null());
+    assert!(unknown_report["observed_generation"].is_null());
+    assert_eq!(unknown_report["activation"], "not_activated");
+    assert_eq!(unknown_report["inputs"].as_array().unwrap().len(), 1);
+    assert_eq!(unknown_report["inputs"][0]["disposition"], "validated");
+
     let reinstalled = json(&run(&[
         "collections".as_ref(),
         "reinstall".as_ref(),

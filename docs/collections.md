@@ -131,6 +131,11 @@ result. `reconcile` reports retained lifecycle attempts and minimum store
 observations without activating a generation, migrating the catalogue, or
 performing a full integrity audit.
 
+Configured lookup reports a selected pack with a committed removal as
+`removed`; a pack that was only registered remains `registered_only`. The
+selection-policy marker distinguishes this lifecycle-aware state interpretation
+from earlier snapshots.
+
 `list` and `inspect` are read-only. They report the minimum readable format
 boundary, current owned-file presence, registration inputs, terms, attribution,
 and the recorded verification scope. They do not rehash all release bytes or

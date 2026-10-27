@@ -2,7 +2,10 @@
 
 use super::*;
 use rusqlite::params;
-use std::{fs, path::Path};
+use std::{
+    fs,
+    path::{Path, PathBuf},
+};
 
 const PACK_ORDER: [&str; 4] = ["lensisku-jbotci", "llg", "la-lojban", "sutysisku"];
 type RegisteredReleaseMap =
@@ -167,7 +170,13 @@ pub(super) fn remove(
             "remove pack IDs must be unique".into(),
         ));
     }
-    remove_or_reinstall(root, selected, expected_local_revision, None)
+    remove_or_reinstall(
+        root,
+        selected,
+        expected_local_revision,
+        None,
+        MutationErrorContext::default(),
+    )
 }
 
 pub(super) fn reinstall(
@@ -207,11 +216,16 @@ pub(super) fn reinstall(
             "reinstall input pack differs from the selected pack".into(),
         ));
     }
+    let error_context = MutationErrorContext {
+        inputs: dispositions.clone(),
+        ..MutationErrorContext::default()
+    };
     remove_or_reinstall(
         &absolute_root,
         vec![pack],
         expected_local_revision,
         Some((input, registered_release_sha256.to_owned(), dispositions)),
+        error_context,
     )
 }
 
@@ -220,15 +234,20 @@ fn remove_or_reinstall(
     packs: Vec<PackId>,
     expected_revision: u64,
     reinstall: Option<(NormalizedPack, String, Vec<CollectionInputDisposition>)>,
+    mut error_context: MutationErrorContext,
 ) -> Result<CollectionMutationReport, CollectionError> {
-    let root = absolute_path(root)?;
-    let connection = crate::collections_schema::open_writable(&root)?;
-    let mut transaction = TransactionGuard::begin(&connection, &root)?;
+    let root =
+        absolute_path(root).map_err(|error| mutation_context(error, error_context.clone()))?;
+    let connection = crate::collections_schema::open_writable(&root)
+        .map_err(|error| mutation_context(error, error_context.clone()))?;
+    let mut transaction = TransactionGuard::begin(&connection, &root)
+        .map_err(|error| mutation_context(error, error_context.clone()))?;
     let mut reinstall = reinstall;
     let result = (|| {
         let tables = crate::collections_schema::tables_for(&connection, &root)?;
         require_v2(&connection, &root, tables)?;
         let prior_revision = crate::collections_schema::local_revision(&connection, &root)?;
+        error_context.prior_local_revision = Some(prior_revision);
         if prior_revision != expected_revision {
             return Err(CollectionError::RevisionConflict {
                 expected: expected_revision,
@@ -246,6 +265,9 @@ fn remove_or_reinstall(
         })?;
         let active = current_members(&connection, &root)?;
         let prior_generation = read_generation(&connection, &root)?;
+        error_context.observed_generation = prior_generation
+            .as_ref()
+            .map(|generation| generation.generation_id.clone());
         let registrations = registered_releases(&connection, &root, tables)?;
         if let Some((input, digest, _)) = &reinstall {
             if !registrations.contains_key(&(input.pack_id.as_str().to_owned(), digest.clone())) {
@@ -387,6 +409,7 @@ fn remove_or_reinstall(
             .map_or_else(Vec::new, |(_, _, inputs)| inputs.clone());
         let operation = if reinstalling { "reinstall" } else { "remove" };
         let mut attempt = attempt_id(&root, operation, revision);
+        error_context.attempt_id = Some(attempt.clone());
         let generation = if next == active {
             prior_generation.clone()
         } else if next.is_empty() {
@@ -402,6 +425,7 @@ fn remove_or_reinstall(
                     revision,
                     operation,
                     initial_attempt: &attempt,
+                    error_context: &mut error_context,
                 },
             )?;
             attempt = used_attempt;
@@ -450,21 +474,39 @@ fn remove_or_reinstall(
         })
     })();
     match result {
-        Ok(report) if report.outcome == "idempotent" => {
-            transaction.rollback()?;
-            Ok(report)
-        }
-        Ok(report) => {
-            transaction.commit()?;
-            Ok(report)
-        }
+        Ok(report) if report.outcome == "idempotent" => match transaction.rollback() {
+            Ok(()) => Ok(report),
+            Err(error) => {
+                error_context.observed_generation = None;
+                Err(mutation_context(error, error_context))
+            }
+        },
+        Ok(report) => match transaction.commit() {
+            Ok(()) => Ok(report),
+            Err(error) => {
+                if matches!(
+                    error,
+                    CollectionError::Indeterminate(_)
+                        | CollectionError::IndeterminateSources { .. }
+                ) {
+                    error_context.observed_generation = None;
+                }
+                Err(mutation_context(error, error_context))
+            }
+        },
         Err(error) => match transaction.rollback() {
-            Ok(()) => Err(error),
-            Err(rollback) => Err(CollectionError::IndeterminateSources {
-                detail: "lifecycle operation failed and rollback is uncertain".into(),
-                source: Some(Box::new(error)),
-                rollback_source: Some(Box::new(rollback)),
-            }),
+            Ok(()) => Err(mutation_context(error, error_context)),
+            Err(rollback) => {
+                error_context.observed_generation = None;
+                Err(mutation_context(
+                    CollectionError::IndeterminateSources {
+                        detail: "lifecycle operation failed and rollback is uncertain".into(),
+                        source: Some(Box::new(error)),
+                        rollback_source: Some(Box::new(rollback)),
+                    },
+                    error_context,
+                ))
+            }
         },
     }
 }
@@ -577,6 +619,7 @@ struct GenerationPublication<'a> {
     revision: u64,
     operation: &'a str,
     initial_attempt: &'a str,
+    error_context: &'a mut MutationErrorContext,
 }
 
 fn publish_generation(
@@ -591,6 +634,7 @@ fn publish_generation(
         revision,
         operation,
         initial_attempt,
+        error_context,
     } = publication;
     let catalogue_id = crate::collections_schema::catalogue_identity(connection, tables)
         .map_err(|error| db_error(root, error))?;
@@ -614,6 +658,8 @@ fn publish_generation(
     let (attempt, stage) =
         allocated.ok_or_else(|| CollectionError::OccupiedDestination(generations.clone()))?;
     let generation_id = format!("{catalogue_id}-{attempt}");
+    error_context.attempt_id = Some(attempt.clone());
+    error_context.proposed_generation = Some(generation_id.clone());
     let marker = StageMarker {
         version: 1,
         attempt_id: attempt.clone(),
@@ -699,9 +745,10 @@ fn publish_generation(
 
 pub(super) fn reconcile(root: &Path) -> Result<CollectionReconciliationReport, CollectionError> {
     let root = absolute_path(root)?;
-    let before = journal_observation(&root);
+    let before = journal_observation(&root)?;
     let connection = crate::collections_schema::open_writable(&root)?;
     let mut transaction = TransactionGuard::begin(&connection, &root)?;
+    let mut error_context = MutationErrorContext::default();
     let result = (|| {
         let schema = crate::collections_schema::schema_version(
             &connection,
@@ -709,7 +756,10 @@ pub(super) fn reconcile(root: &Path) -> Result<CollectionReconciliationReport, C
         )?;
         let tables = crate::collections_schema::tables_for(&connection, &root)?;
         let revision = crate::collections_schema::local_revision(&connection, &root)?;
+        error_context.prior_local_revision = Some(revision);
         let generation = read_generation(&connection, &root)?;
+        error_context.observed_generation =
+            generation.as_ref().map(|value| value.generation_id.clone());
         let mut attempts = Vec::new();
         let mut statement = connection
             .prepare(&format!(
@@ -779,7 +829,8 @@ pub(super) fn reconcile(root: &Path) -> Result<CollectionReconciliationReport, C
             attempts,
             staged_attempts,
             journal_before: before.clone(),
-            journal_after: journal_observation(&root),
+            // Replaced only after the explicit read-transaction rollback succeeds.
+            journal_after: before.clone(),
             sqlite_recovery: "writable_open_completed".into(),
             verification_scope: "minimum_header_only".into(),
             active_store_minimum: minimum,
@@ -788,43 +839,204 @@ pub(super) fn reconcile(root: &Path) -> Result<CollectionReconciliationReport, C
         })
     })();
     match result {
-        Ok(report) => {
-            transaction.rollback()?;
+        Ok(mut report) => {
+            if let Err(error) = transaction.rollback() {
+                error_context.observed_generation = None;
+                return Err(mutation_context(error, error_context));
+            }
+            report.journal_after = journal_observation(&root)
+                .map_err(|error| mutation_context(error, error_context.clone()))?;
             Ok(report)
         }
         Err(error) => match transaction.rollback() {
-            Ok(()) => Err(error),
-            Err(rollback) => Err(CollectionError::IndeterminateSources {
-                detail: "reconcile read transaction rollback is uncertain".into(),
-                source: Some(Box::new(error)),
-                rollback_source: Some(Box::new(rollback)),
-            }),
+            Ok(()) => Err(mutation_context(error, error_context)),
+            Err(rollback) => {
+                error_context.observed_generation = None;
+                Err(mutation_context(
+                    CollectionError::IndeterminateSources {
+                        detail: "reconcile read transaction rollback is uncertain".into(),
+                        source: Some(Box::new(error)),
+                        rollback_source: Some(Box::new(rollback)),
+                    },
+                    error_context,
+                ))
+            }
         },
     }
 }
 
-fn journal_observation(root: &Path) -> CollectionJournalObservation {
-    let path = Path::new(&format!(
-        "{}-journal",
-        crate::collections_schema::database_path(root).display()
-    ))
-    .to_path_buf();
-    match std::fs::metadata(path) {
-        Ok(metadata) => CollectionJournalObservation {
+fn journal_observation(root: &Path) -> Result<CollectionJournalObservation, CollectionError> {
+    let path = journal_path(root);
+    match fs::symlink_metadata(&path) {
+        Ok(metadata) if metadata.file_type().is_file() => Ok(CollectionJournalObservation {
             present: true,
             byte_length: Some(metadata.len()),
-        },
-        Err(_) => CollectionJournalObservation {
-            present: false,
-            byte_length: None,
-        },
+        }),
+        Ok(_) => Err(CollectionError::OccupiedDestination(path)),
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => {
+            Ok(CollectionJournalObservation {
+                present: false,
+                byte_length: None,
+            })
+        }
+        Err(error) => Err(artifact_error(path, error)),
     }
+}
+
+fn journal_path(root: &Path) -> PathBuf {
+    let mut native_path = crate::collections_schema::database_path(root).into_os_string();
+    native_path.push("-journal");
+    PathBuf::from(native_path)
 }
 
 #[cfg(test)]
 mod tests {
-    use super::validate_event;
+    use super::{journal_observation, journal_path, validate_event};
+    use crate::{CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection};
     use serde_json::{Value, json};
+    use std::{
+        borrow::Cow,
+        fs,
+        path::PathBuf,
+        time::{SystemTime, UNIX_EPOCH},
+    };
+    use vlajmaji_lexicon::{Dictionary, PackId, PackPayloadKind, seal_release};
+
+    fn fresh_root() -> PathBuf {
+        let stamp = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        std::env::temp_dir().join(format!(
+            "vlajmaji-journal-test-{}-{stamp}",
+            std::process::id()
+        ))
+    }
+
+    fn install_tiny_llg(root: &std::path::Path) {
+        let dictionary = Dictionary::from_document(Default::default()).unwrap();
+        let sealed = seal_release(PackId::Llg, PackPayloadKind::Synthetic, &dictionary).unwrap();
+        let request = CollectionRequest::new(
+            vec![CollectionInput::SealedBytes {
+                pack_id: PackId::Llg,
+                release: Cow::Borrowed(&sealed.release),
+                seal: Cow::Borrowed(&sealed.seal),
+            }],
+            CollectionSelection::Packs(vec![PackId::Llg]),
+            true,
+        )
+        .unwrap();
+        CollectionCatalogue::install(root, request).unwrap();
+    }
+
+    #[test]
+    fn test_lifecycle_rollback_uncertainty_keeps_both_causes_and_reconcile_is_not_applicable() {
+        let root = fresh_root();
+        install_tiny_llg(&root);
+
+        super::super::TEST_FAIL_NEXT_ROLLBACK.with(|fail| fail.set(true));
+        let error = CollectionCatalogue::remove(&root, &[PackId::LaLojban], 1).unwrap_err();
+        assert_eq!(
+            error.category(),
+            crate::CollectionErrorCategory::Indeterminate
+        );
+        let report = error.report("remove");
+        assert_eq!(report.activation.as_deref(), Some("indeterminate"));
+        assert_eq!(report.prior_local_revision, Some(1));
+        assert!(report.observed_generation.is_none());
+        assert!(report.attempt_id.is_none());
+        assert!(report.proposed_generation.is_none());
+        let crate::CollectionError::MutationContext { source, .. } = error else {
+            panic!("mutation error omitted its known context wrapper");
+        };
+        let crate::CollectionError::IndeterminateSources {
+            source: Some(cause),
+            rollback_source: Some(rollback),
+            ..
+        } = source.as_ref()
+        else {
+            panic!("uncertain failure did not preserve both causes");
+        };
+        assert!(matches!(
+            cause.downcast_ref::<crate::CollectionError>(),
+            Some(crate::CollectionError::InvalidRequest(_))
+        ));
+        assert!(matches!(
+            rollback.downcast_ref::<crate::CollectionError>(),
+            Some(crate::CollectionError::IndeterminateSources {
+                source: Some(io), ..
+            }) if io.to_string().contains("injected rollback cause")
+        ));
+
+        super::super::TEST_FAIL_NEXT_ROLLBACK.with(|fail| fail.set(true));
+        let reconcile_error = CollectionCatalogue::reconcile(&root).unwrap_err();
+        assert_eq!(
+            reconcile_error.category(),
+            crate::CollectionErrorCategory::Indeterminate
+        );
+        let reconcile_report = reconcile_error.report("reconcile");
+        assert_eq!(
+            reconcile_report.activation.as_deref(),
+            Some("not_applicable")
+        );
+        assert_eq!(reconcile_report.prior_local_revision, Some(1));
+        assert!(reconcile_report.observed_generation.is_none());
+        assert!(reconcile_report.attempt_id.is_none());
+        assert!(reconcile_report.proposed_generation.is_none());
+
+        let reconciled = CollectionCatalogue::reconcile(&root).unwrap();
+        assert!(!reconciled.journal_after.present);
+        fs::remove_dir_all(root).unwrap();
+    }
+
+    #[test]
+    fn test_journal_observation_reports_regular_file_and_rejects_non_files() {
+        let root = fresh_root();
+        fs::create_dir(&root).unwrap();
+        let journal = root.join("catalogue.sqlite3-journal");
+        fs::write(&journal, b"journal").unwrap();
+        assert_eq!(journal_observation(&root).unwrap().byte_length, Some(7));
+        fs::remove_file(&journal).unwrap();
+        assert!(!journal_observation(&root).unwrap().present);
+
+        fs::create_dir(&journal).unwrap();
+        assert!(
+            matches!(journal_observation(&root), Err(crate::CollectionError::OccupiedDestination(path)) if path == journal)
+        );
+        fs::remove_dir(&journal).unwrap();
+
+        #[cfg(unix)]
+        {
+            std::os::unix::fs::symlink(root.join("absent"), &journal).unwrap();
+            assert!(
+                matches!(journal_observation(&root), Err(crate::CollectionError::OccupiedDestination(path)) if path == journal)
+            );
+            fs::remove_file(&journal).unwrap();
+        }
+        fs::remove_dir_all(root).unwrap();
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn test_journal_path_suffix_preserves_native_database_bytes() {
+        use std::os::unix::ffi::{OsStrExt, OsStringExt};
+
+        let root = PathBuf::from(std::ffi::OsString::from_vec(b"/tmp/vlajmaji-\xff".to_vec()));
+        let expected = journal_path(&root);
+        assert!(
+            expected
+                .as_os_str()
+                .as_bytes()
+                .ends_with(b"/catalogue.sqlite3-journal")
+        );
+        assert!(
+            expected
+                .as_os_str()
+                .as_bytes()
+                .windows(1)
+                .any(|byte| byte == b"\xff")
+        );
+    }
 
     fn remove_event(prior_state: &str, digest: Option<&str>, generation: Option<&str>) -> Value {
         json!({

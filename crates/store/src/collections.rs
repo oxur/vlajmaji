@@ -695,6 +695,7 @@ impl CollectionError {
             Self::Adapter { pack, .. }
             | Self::UpdateRequired(pack)
             | Self::ReinstallRequired { pack } => (None, Some(pack.as_str().to_owned())),
+            Self::UnknownRegisteredRelease { pack, .. } => (None, Some(pack.as_str().to_owned())),
             Self::NotInstalled { pack: Some(pack) } => (None, Some(pack.as_str().to_owned())),
             _ => (None, None),
         };
@@ -722,7 +723,9 @@ impl CollectionError {
             prior_local_revision: None,
             proposed_generation: None,
             observed_generation: None,
-            activation: if matches!(
+            activation: if operation == "reconcile" {
+                Some("not_applicable".into())
+            } else if matches!(
                 source,
                 Self::Indeterminate(_) | Self::IndeterminateSources { .. }
             ) {

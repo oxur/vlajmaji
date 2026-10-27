@@ -605,6 +605,18 @@ fn test_reinstall_digest_mismatch_preserves_removed_state() {
         unknown.category(),
         CollectionErrorCategory::UnknownRegisteredRelease
     );
+    let unknown_report = unknown.report("reinstall");
+    assert_eq!(unknown_report.pack_id.as_deref(), Some("llg"));
+    assert_eq!(unknown_report.prior_local_revision, Some(2));
+    assert!(unknown_report.attempt_id.is_none());
+    assert!(unknown_report.proposed_generation.is_none());
+    assert!(unknown_report.observed_generation.is_none());
+    assert_eq!(unknown_report.inputs.len(), 1);
+    assert_eq!(unknown_report.inputs[0].disposition, "validated");
+    assert_eq!(
+        unknown_report.inputs[0].release_sha256.as_deref(),
+        Some(other_sha256.as_str())
+    );
     let error = CollectionCatalogue::reinstall(
         &root,
         request(&other_release, &other_seal),
@@ -628,6 +640,86 @@ fn test_reinstall_digest_mismatch_preserves_removed_state() {
         CollectionInstallationState::Removed
     );
     drop(catalogue);
+    fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_reinstall_open_and_begin_busy_keep_validated_input_context() {
+    let root = fresh_root("reinstall-open-busy-context");
+    let (release, seal, digest) = sealed_pack(PackId::Llg);
+    let (jb_release, jb_seal, _) = sealed_pack(PackId::LensiskuJbotci);
+    let missing = CollectionCatalogue::reinstall(
+        &root,
+        request_for(PackId::Llg, &release, &seal),
+        &digest,
+        1,
+    )
+    .unwrap_err();
+    assert_eq!(
+        missing.category(),
+        CollectionErrorCategory::MissingCatalogue
+    );
+    let missing_report = missing.report("reinstall");
+    assert_eq!(missing_report.activation.as_deref(), Some("not_activated"));
+    assert!(missing_report.prior_local_revision.is_none());
+    assert_eq!(missing_report.inputs.len(), 1);
+    assert_eq!(missing_report.inputs[0].disposition, "validated");
+
+    let installed = CollectionCatalogue::install(
+        &root,
+        two_pack_request(&release, &seal, &jb_release, &jb_seal),
+    )
+    .unwrap();
+    let original_generation = installed.generation.unwrap().generation_id;
+    let writer = rusqlite::Connection::open(root.join("catalogue.sqlite3")).unwrap();
+    writer.execute_batch("BEGIN IMMEDIATE").unwrap();
+    let begin_busy = CollectionCatalogue::reinstall(
+        &root,
+        request_for(PackId::Llg, &release, &seal),
+        &digest,
+        1,
+    )
+    .unwrap_err();
+    assert_eq!(begin_busy.category(), CollectionErrorCategory::Busy);
+    let begin_report = begin_busy.report("reinstall");
+    assert_eq!(begin_report.activation.as_deref(), Some("not_activated"));
+    assert!(begin_report.prior_local_revision.is_none());
+    assert!(begin_report.observed_generation.is_none());
+    assert!(begin_report.attempt_id.is_none());
+    assert!(begin_report.proposed_generation.is_none());
+    assert_eq!(begin_report.inputs.len(), 1);
+    assert_eq!(begin_report.inputs[0].disposition, "validated");
+    writer.execute_batch("ROLLBACK").unwrap();
+    drop(writer);
+
+    let held_reader = rusqlite::Connection::open(root.join("catalogue.sqlite3")).unwrap();
+    held_reader.execute_batch("BEGIN DEFERRED").unwrap();
+    let _: String = held_reader
+        .query_row(
+            "SELECT value FROM catalogue_meta_v2 WHERE key='local_revision'",
+            [],
+            |row| row.get(0),
+        )
+        .unwrap();
+    let commit_busy = CollectionCatalogue::remove(&root, &[PackId::Llg], 1).unwrap_err();
+    assert_eq!(commit_busy.category(), CollectionErrorCategory::Busy);
+    let commit_report = commit_busy.report("remove");
+    assert_eq!(commit_report.activation.as_deref(), Some("not_activated"));
+    assert_eq!(commit_report.prior_local_revision, Some(1));
+    assert_eq!(
+        commit_report.observed_generation.as_deref(),
+        Some(original_generation.as_str())
+    );
+    assert!(commit_report.attempt_id.is_some());
+    assert!(commit_report.proposed_generation.is_some());
+    assert!(commit_report.inputs.is_empty());
+    held_reader.execute_batch("ROLLBACK").unwrap();
+    drop(held_reader);
+
+    let retry = CollectionCatalogue::remove(&root, &[PackId::Llg], 1).unwrap();
+    assert_eq!(retry.outcome, "removed");
+    assert_eq!(retry.local_revision, 2);
+    assert_ne!(retry.generation.unwrap().generation_id, original_generation);
     fs::remove_dir_all(root).unwrap();
 }
 
