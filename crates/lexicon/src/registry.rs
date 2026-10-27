@@ -604,6 +604,18 @@ impl SourceRegistry {
         self.document.clone()
     }
 
+    /// Borrow the complete registry document without cloning its rows.
+    #[must_use]
+    pub fn as_document(&self) -> &RegistryDocument {
+        &self.document
+    }
+
+    /// Consume this validated registry and move out its complete document.
+    #[must_use]
+    pub fn into_document(self) -> RegistryDocument {
+        self.document
+    }
+
     /// Validates and applies a complete replacement while preserving prior history.
     ///
     /// No state is changed unless the candidate and all history checks succeed.
@@ -663,7 +675,16 @@ impl SourceRegistry {
     }
 }
 
-fn validate_document(document: &RegistryDocument) -> Result<(), RegistryError> {
+/// Validates entity identities and selector uniqueness without traversing registry graph edges.
+pub(crate) struct RegistryIdentityPrefix {
+    pub(crate) source_ids: BTreeSet<SourceId>,
+    pub(crate) contributor_ids: BTreeSet<ContributorId>,
+    pub(crate) distributor_ids: BTreeSet<DistributorId>,
+}
+
+pub(crate) fn validate_identity_prefix(
+    document: &RegistryDocument,
+) -> Result<RegistryIdentityPrefix, RegistryError> {
     if document.version != 1 {
         return Err(RegistryError::UnsupportedVersion(document.version));
     }
@@ -795,6 +816,18 @@ fn validate_document(document: &RegistryDocument) -> Result<(), RegistryError> {
             });
         }
     }
+    Ok(RegistryIdentityPrefix {
+        source_ids,
+        contributor_ids,
+        distributor_ids,
+    })
+}
+
+fn validate_document(document: &RegistryDocument) -> Result<(), RegistryError> {
+    let prefix = validate_identity_prefix(document)?;
+    let source_ids = prefix.source_ids;
+    let contributor_ids = prefix.contributor_ids;
+    let distributor_ids = prefix.distributor_ids;
     for row in &document.lineage {
         if !source_ids.contains(&row.source) {
             return Err(RegistryError::UnknownSource(row.source.to_string()));

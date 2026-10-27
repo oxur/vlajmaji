@@ -19,6 +19,14 @@ persisted source/spelling/occurrence order. It does not normalize spelling or
 apply catalogue selection; the grouped policy is implemented by
 `vlajmaji-search` after the candidate query.
 
+`CollectionCatalogue` is a separate local provisioning record. `register`
+retains source/reference and ownership metadata without copying pack payloads;
+`install` creates a verified Unified generation and publishes it transactionally.
+Catalogue `list`/`inspect` are read-only minimum-format summaries, not payload
+integrity checks. Use the explicit verification API for that boundary. The
+[collection guide](../../docs/collections.md) describes manifests, local paths,
+registration, installation, history, and error reports.
+
 ```rust,no_run
 use vlajmaji_lexicon::Dictionary;
 use vlajmaji_store::DictionaryStore;
@@ -45,6 +53,27 @@ read-only audit (`schema`, `metadata`, `hashes`, `model`, `fks`, `projection`,
 or `all`). See the
 [schema and trust-boundary guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-schema.md) and the
 `dictionary_store` example.
+
+`DictionaryReadSnapshot` is the separate read-only provider for an explicit
+composed view. Its versioned manifest freezes a generation, logical state
+digest, member IDs and paths, each member's expected persisted-state digest,
+and an optional selected-release set before opening the provider. `Unified`
+uses one store, `Fanout` reads one to four stores independently, and `Attached`
+uses one primary SQLite connection with fixed internal names for additional
+read-only databases. Attached paths must be UTF-8; a native path that cannot be
+represented safely returns a typed unsupported-path error instead of being
+lossily rewritten. The attached connections are read-only and pinned for the
+snapshot lifetime. SQLite ATTACH does not promise atomic publication across
+separate files.
+
+Opening a snapshot checks the member headers and expected recorded state. The
+explicit `load_document()` result is an **unverified** logical document: for
+fanout and attach, it reads and composes the member documents and checks the
+resulting logical digest, but it does not audit every SQL projection row or
+prove the databases were published together. Call
+`DictionaryStoreVerification::verify(..., All)` when full persisted-store
+verification is required. Snapshot generation and selected releases are
+runtime view identity, not edits to stored release-selection history.
 
 ```toml
 [dependencies]

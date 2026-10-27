@@ -43,16 +43,48 @@ The Rust workspace already provides:
   alongside the existing archive/search commands. Grouped commands can use a
   default store under XDG data home or the standard HOME data directory, while
   the legacy archive commands remain explicit.
+- An explicit local collection catalogue: `collections register` records
+  source/reference metadata, while `collections install` builds one verified
+  Unified generation. These commands do not configure the default store or
+  select sources ([collection guide](docs/collections.md)).
 - A lossless local jbotci export normalizer with `jbotci-import` and
   read-only `jbotci-check` commands and an explicit pinned acquire/replay/check/
   update workflow ([import guide](docs/jbotci-import.md)).
+- An optional unpublished Lensisku/jbotci data package with strict local seals
+  and consuming pure composition. `data-pack fixture jbotci OUTPUT` prepares
+  synthetic CI/local data; `data-pack materialize jbotci RAW METADATA OUTPUT`
+  prepares a full local pack from caller-provided pinned inputs. Neither command
+  fetches data or writes a default store. The optional pack is absent from
+  default builds, and its seal is an integrity inventory rather than publisher
+  authentication or licensing evidence.
+- A lossless adapter for the complete LLG gismu, cmavo, and assigned rafsi
+  lists, plus an optional unpublished `vlajmaji-data-llg` embedded package.
+  `data-pack fixture llg OUTPUT` prepares a Synthetic payload;
+  `data-pack materialize llg GISMU CMAVO RAFSI NOTICE OUTPUT` normalizes
+  caller-supplied local bytes against pinned hashes. No command fetches or
+  redistributes source data automatically; terms remain Held.
+- A lossless adapter for the pinned La-Lojban English Lensisku export, plus an
+  optional unpublished embedded package. `data-pack fixture la-lojban OUTPUT`
+  prepares Synthetic CI/local bytes; `data-pack materialize la-lojban RAW_JSON
+  OUTPUT` validates the local full-byte pin and writes a Full pack. The package
+  is absent from default builds, and content redistribution remains Held
+  because software licensing does not establish data rights.
+- A lossless adapter for the pinned Sutysisku English JSON projection and an
+  optional unpublished embedded package. `data-pack fixture sutysisku OUTPUT`
+  prepares Synthetic CI/local bytes; `data-pack materialize sutysisku RAW_JSON
+  OUTPUT` verifies the complete caller-provided pin and writes a Full pack.
+  The package is absent from default builds, and content redistribution remains
+  Held pending verified terms and lexical lineage.
+- All four local packs share the normalized model and strict seal, enabling
+  pure consuming composition before a SQLite store is built.
 - An umbrella library, `vlajmaji`, exposing `lexicon`, `store`, and `search`, with
   optional `morphology` and `graph` features.
 
 The earlier archive/search PoC was exercised against 21,241 records from 16
 source snapshots. The new grouped-dictionary path has a reproducible fixture
-and public API/CLI examples; the jbotci adapter has a pinned local replay.
-Other upstream dictionary imports remain future work.
+and public API/CLI examples. Four pinned local adapters now cover Lensisku/
+jbotci, LLG, La-Lojban, and Sutysisku; adapters for other sources remain future
+work.
 Search scores and generated compounds are experimental aids; they do not establish
 attested usage, semantic equivalence, or poetic merit.
 
@@ -62,6 +94,10 @@ attested usage, semantic equivalence, or poetic merit.
 | [`vlajmaji-lexicon`](crates/lexicon) | Source-preserving lexical data and archives |
 | [`vlajmaji-store`](crates/store) | Persistence and native indexes |
 | [`vlajmaji-search`](crates/search) | Reusable queries and computed analyses |
+| [`vlajmaji-data-lensisku-jbotci`](crates/data-lensisku-jbotci) | Optional unpublished Lensisku/jbotci embedded data package (local payload only) |
+| [`vlajmaji-data-llg`](crates/data-llg) | Optional unpublished LLG embedded data package (local payload only) |
+| [`vlajmaji-data-la-lojban`](crates/data-la-lojban) | Optional unpublished La-Lojban embedded data package (local payload only) |
+| [`vlajmaji-data-sutysisku`](crates/data-sutysisku) | Optional unpublished Sutysisku embedded data package (local payload only) |
 | [`vlajmaji-cli`](crates/cli) | The `vlajmaji` executable |
 
 ## Published 0.2.0 packages

@@ -33,14 +33,22 @@ use vlajmaji_store::{
     validate_archive,
 };
 
+pub mod collection_query;
 /// Grouped exact queries and stable dictionary reference resolution.
 pub mod dictionary;
 
+pub use collection_query::{
+    CollectionPackAvailability, CollectionQueryError, CollectionQueryErrorReport,
+    CollectionQueryResponse, CollectionQueryResult, CollectionQuerySelection,
+    CollectionReferenceMatch, CollectionReferenceResponse, CollectionSearchEngine,
+    CollectionSelectionSnapshot,
+};
 pub use dictionary::{
-    DictionaryErrorReport, DictionaryExactOptions, DictionaryExactResponse, DictionaryGroup,
-    DictionaryHit, DictionaryQueryError, DictionaryRequest, DictionarySearchEngine,
-    DictionarySourceAvailability, DictionarySourceTotal, DictionaryTotals, ReferenceAssertionView,
-    ReferenceEntity, ReferenceResolution, ReferenceStatus, SourceSelectionFailure,
+    DictionaryErrorReport, DictionaryExactOptions, DictionaryExactProfile, DictionaryExactResponse,
+    DictionaryGroup, DictionaryHit, DictionaryQueryError, DictionaryRequest,
+    DictionarySearchEngine, DictionarySnapshotOpenProfile, DictionarySourceAvailability,
+    DictionarySourceTotal, DictionaryTotals, ReferenceAssertionView, ReferenceEntity,
+    ReferenceResolution, ReferenceStatus, SourceSelectionFailure,
 };
 
 /// Query policy identities included in every response.

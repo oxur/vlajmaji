@@ -42,6 +42,30 @@ integrity. `all` reports six ordered result rows. A failed check exits nonzero,
 leaves stdout empty, and writes both its structured error and complete report
 to stderr.
 
+`collections register|install|list|inspect ROOT` manages an explicit local
+source catalogue. Registration stores typed source and reference metadata
+without copying release payloads. Installation creates one verified Unified
+generation; it never changes the default store or source selection. Manifest
+paths resolve beside the manifest, and selected inputs are read locally with
+the existing pack adapters. Synthetic packs require `--allow-synthetic`.
+See the [collection guide](../../docs/collections.md) for commands, strict
+manifest fields, state semantics, and structured failures.
+
+`collections configure`, `collections profiles`, and `collections selection`
+manage a separate versioned user configuration. They accept `--config`; when
+omitted, the CLI resolves `XDG_CONFIG_HOME/vlajmaji/config.toml`, falling back
+to `HOME/.config/vlajmaji/config.toml`. A profile stores one catalogue ROOT,
+ordered default pack membership, and independent disabled packs. `lookup WORD`
+uses that profile and accepts `--source`, `--page-size`, and `--cursor`; a full
+typed request can instead be supplied with `--request` or stdin. The managed
+cursor binds the observed profile/catalogue/generation/selection snapshot.
+`collections configure` updates membership while preserving a profile's
+existing disabled packs; newly created profiles start with none. Explicit
+library profile requests can deliberately replace the disabled list.
+This layer does not alter `dictionary-query STORE` or the global default-store
+route, and a selected installed payload that fails its minimum open is reported
+as an error rather than as metadata-only availability.
+
 `jbotci-import RAW METADATA FRESH.json` locally normalizes a hash-pinned export;
 `jbotci-check RAW METADATA [--release RELEASE.json]` validates it without
 writing. `make jbotci-acquire`, `jbotci-replay`, `jbotci-check`, and
@@ -51,3 +75,41 @@ the [jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci
 for pins, preservation, identity, metadata, and content-notice limits.
 
 Corpus data is not bundled. See the [data and replay guide](https://github.com/oxur/vlajmaji/blob/main/docs/migration.md) for the current research-input workflow. Licensed under Apache-2.0.
+
+`data-pack fixture jbotci OUTPUT` prepares an explicitly synthetic three-row
+pack through the real importer for local feature checks and CI.
+`data-pack materialize jbotci RAW METADATA OUTPUT` verifies caller-supplied
+pins and supplier accounting, then writes canonical release, seal, and report
+files into a fresh directory. It only reads the paths supplied by the caller;
+it does not fetch data, overwrite an output, or build a store. The `embedded`
+data crate has no default payload and is unpublished; its ignored local data
+must be prepared before selecting that feature. A synthetic fixture is not the
+full source distribution.
+
+The optional LLG list-family package uses the same local-only workflow:
+`data-pack fixture llg OUTPUT` creates a Synthetic fixed-column example, while
+`data-pack materialize llg GISMU CMAVO RAFSI NOTICE OUTPUT` reads four files
+supplied by the caller and verifies their complete bytes against the default
+published-pin hashes. `--gismu-sha256`, `--cmavo-sha256`, `--rafsi-sha256`,
+`--notice-sha256`, and `--base-locator` override those defaults for a different
+explicitly identified input set. The command never downloads files, replaces
+an existing output directory, or writes a dictionary store. The full LLG
+payload is not committed or published; its notice and redistribution status
+remain separate from the Apache-2.0 code license.
+
+The optional La-Lojban pack uses the same local-only workflow:
+`data-pack fixture la-lojban OUTPUT` prepares a clearly Synthetic example, and
+`data-pack materialize la-lojban RAW_JSON OUTPUT` checks the pinned complete
+input before writing a Full local release, report, and seal. `--revision`,
+`--raw-sha256`, `--raw-locator`, and `--notice-locator` identify the input and
+its provenance. The new data package is unpublished, has no default payload,
+and keeps content redistribution Held until its terms are verified.
+
+The optional Sutysisku projection pack is prepared the same way:
+`data-pack fixture sutysisku OUTPUT` creates a Synthetic example, while
+`data-pack materialize sutysisku RAW_JSON OUTPUT` checks the caller-provided
+complete-byte pin before writing a Full local release, report, and seal.
+`--revision`, `--raw-sha256`, `--raw-locator`, and `--notice-locator` identify
+the input and its provenance. The package is unpublished and has no default
+payload; content redistribution remains Held because the upstream lexical
+lineage and data terms are unresolved.

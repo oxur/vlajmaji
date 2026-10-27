@@ -3,25 +3,25 @@
 //! The adapter keeps the caller's byte snapshots and per-row native lexemes as
 //! the authority. Typed records are a conservative, rebuildable projection.
 
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::BTreeMap;
 use std::fmt;
 
-use serde::de::{Deserializer as _, Error as _, MapAccess, SeqAccess, Visitor};
 use serde::{Deserialize, Serialize};
-use serde_json::value::RawValue;
 
 use crate::dictionary::{
-    AssertionRecord, Availability, CaptureMetadata, CaptureRef, CodeNotice, CollectionRecord,
-    ComponentRecord, ContentNotice, ContextKind, ContextRecord, Dictionary, DictionaryDocument,
-    DictionaryError, DictionaryMetadata, Eligibility, EntityId, EntryRecord, EtymologyRecord,
-    ExtensionRecord, FormKind, FormRecord, NativeEncoding, NativeField, OccurrenceRef, Presence,
-    RawCapture, RawJson, RawOccurrence, RedistributionStatus, ReleaseAccounting, ReleaseDiagnostic,
-    ReleaseRecord, SourceEvidence, TextValue,
+    Availability, CaptureMetadata, CaptureRef, CodeNotice, CollectionRecord, ComponentRecord,
+    ContentNotice, Dictionary, DictionaryDocument, DictionaryError, DictionaryMetadata, EntityId,
+    Presence, RawCapture, RedistributionStatus, ReleaseAccounting, ReleaseDiagnostic,
+    ReleaseRecord,
+};
+use crate::lensisku::{
+    ProjectionContext, Row, add_diag, as_json_string, contributors, decode_export, field,
+    native_extension, project_rows, sha256, user_name, valid_hex,
 };
 use crate::registry::{
-    AbbreviationKind, ContributorId, ContributorRecord, DistributorId, DistributorRecord,
-    LineageTarget, OccurrenceAttribution, RegistryDocument, RegistryError, SnapshotAttribution,
-    SourceId, SourceLineage, SourceOrigin, SourceRecord, SourceRegistry,
+    AbbreviationKind, DistributorId, DistributorRecord, LineageTarget, OccurrenceAttribution,
+    RegistryDocument, RegistryError, SnapshotAttribution, SourceId, SourceLineage, SourceOrigin,
+    SourceRecord, SourceRegistry,
 };
 use crate::{SnapshotIdentity, TimePrecision};
 
@@ -380,104 +380,6 @@ fn parse_metadata(bytes: &[u8]) -> Result<Metadata, JbotciImportError> {
     Ok(parsed)
 }
 
-fn valid_hex(value: &str, length: usize) -> bool {
-    value.len() == length
-        && value
-            .bytes()
-            .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
-}
-fn sha256(bytes: &[u8]) -> String {
-    use sha2::{Digest, Sha256};
-    let digest = Sha256::digest(bytes);
-    let mut out = String::with_capacity(64);
-    for byte in digest {
-        use fmt::Write as _;
-        let _ = write!(out, "{byte:02x}");
-    }
-    out
-}
-
-#[derive(Debug, Clone)]
-struct Field {
-    name: String,
-    raw: String,
-}
-struct FieldVisitor;
-impl<'de> Visitor<'de> for FieldVisitor {
-    type Value = Vec<Field>;
-    fn expecting(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str("a JSON object")
-    }
-    fn visit_map<M: MapAccess<'de>>(self, mut map: M) -> Result<Self::Value, M::Error> {
-        let mut fields = Vec::new();
-        while let Some(name) = map.next_key::<String>()? {
-            let raw = map.next_value::<Box<RawValue>>()?;
-            fields.push(Field {
-                name,
-                raw: raw.get().to_owned(),
-            });
-        }
-        Ok(fields)
-    }
-}
-fn parse_fields(raw: &str) -> Result<Vec<Field>, String> {
-    let mut de = serde_json::Deserializer::from_str(raw);
-    let fields = de
-        .deserialize_map(FieldVisitor)
-        .map_err(|e| e.to_string())?;
-    de.end().map_err(|e| e.to_string())?;
-    Ok(fields)
-}
-struct DuplicateVisitor;
-impl<'de> Visitor<'de> for DuplicateVisitor {
-    type Value = Vec<String>;
-    fn expecting(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.write_str("a JSON object or array")
-    }
-    fn visit_map<M: MapAccess<'de>>(self, mut map: M) -> Result<Self::Value, M::Error> {
-        let mut seen = BTreeSet::new();
-        let mut duplicates = Vec::new();
-        while let Some(key) = map.next_key::<String>()? {
-            if !seen.insert(key.clone()) {
-                duplicates.push(key.clone());
-            }
-            let value = map.next_value::<Box<RawValue>>()?;
-            duplicates.extend(scan_nested_duplicates(value.get()).map_err(M::Error::custom)?);
-        }
-        Ok(duplicates)
-    }
-    fn visit_seq<S: SeqAccess<'de>>(self, mut seq: S) -> Result<Self::Value, S::Error> {
-        let mut duplicates = Vec::new();
-        while let Some(value) = seq.next_element::<Box<RawValue>>()? {
-            duplicates.extend(scan_nested_duplicates(value.get()).map_err(S::Error::custom)?);
-        }
-        Ok(duplicates)
-    }
-}
-fn scan_nested_duplicates(raw: &str) -> Result<Vec<String>, String> {
-    match raw.trim_start().chars().next() {
-        Some('{') => {
-            let mut de = serde_json::Deserializer::from_str(raw);
-            let found = de
-                .deserialize_map(DuplicateVisitor)
-                .map_err(|e| e.to_string())?;
-            de.end().map_err(|e| e.to_string())?;
-            Ok(found)
-        }
-        Some('[') => {
-            let mut de = serde_json::Deserializer::from_str(raw);
-            let found = de
-                .deserialize_seq(DuplicateVisitor)
-                .map_err(|e| e.to_string())?;
-            de.end().map_err(|e| e.to_string())?;
-            Ok(found)
-        }
-        _ => Ok(Vec::new()),
-    }
-}
-fn as_json_string(raw: &str) -> Option<String> {
-    serde_json::from_str(raw).ok()
-}
 fn occurrence_id(
     namespace: &str,
     digest: &str,
@@ -499,130 +401,6 @@ fn eid(value: String) -> Result<EntityId, JbotciImportError> {
 }
 fn source_id(value: &str) -> Result<SourceId, JbotciImportError> {
     SourceId::new(value).map_err(JbotciImportError::Registry)
-}
-fn text_value(text: String, language: &str) -> TextValue {
-    TextValue {
-        text,
-        language: Presence::Value(language.into()),
-        markup: Presence::Missing,
-    }
-}
-fn source_evidence(occurrence: OccurrenceRef, field_index: Option<usize>) -> SourceEvidence {
-    SourceEvidence {
-        occurrence,
-        field_index,
-        citation: Presence::Missing,
-        offset: None,
-    }
-}
-
-#[derive(Debug)]
-struct Row {
-    fields: Vec<Field>,
-    duplicates: Vec<String>,
-    is_object: bool,
-}
-fn field_index(fields: &[Field], name: &str) -> Option<usize> {
-    fields.iter().position(|f| f.name == name)
-}
-fn field<'a>(fields: &'a [Field], name: &str) -> Option<&'a Field> {
-    field_index(fields, name).and_then(|i| fields.get(i))
-}
-fn presence_string(fields: &[Field], name: &str) -> Presence<String> {
-    match field(fields, name) {
-        None => Presence::Missing,
-        Some(f) if f.raw == "null" => Presence::Null,
-        Some(f) => as_json_string(&f.raw).map_or(Presence::Missing, Presence::Value),
-    }
-}
-fn presence_raw(fields: &[Field], name: &str) -> Result<Presence<RawJson>, JbotciImportError> {
-    match field(fields, name) {
-        None => Ok(Presence::Missing),
-        Some(f) if f.raw == "null" => Ok(Presence::Null),
-        Some(f) => RawJson::new(f.raw.clone())
-            .map(Presence::Value)
-            .map_err(JbotciImportError::Dictionary),
-    }
-}
-fn unique_field_index(fields: &[Field], name: &str) -> Option<usize> {
-    let mut found = None;
-    for (index, f) in fields.iter().enumerate() {
-        if f.name == name {
-            if found.is_some() {
-                return None;
-            }
-            found = Some(index);
-        }
-    }
-    found
-}
-fn add_diag(
-    report: &mut BTreeMap<String, u64>,
-    rows: &mut Vec<ReleaseDiagnostic>,
-    code: &str,
-    message: String,
-    occurrence: Option<OccurrenceRef>,
-) {
-    *report.entry(code.to_owned()).or_default() += 1;
-    rows.push(ReleaseDiagnostic {
-        occurrence,
-        code: code.to_owned(),
-        message,
-    });
-}
-fn raw_array(raw: &str) -> Option<Vec<Box<RawValue>>> {
-    serde_json::from_str(raw).ok()
-}
-fn user_name(fields: &[Field]) -> Option<String> {
-    let user = field(fields, "user")?;
-    let nested = parse_fields(&user.raw).ok()?;
-    if nested.iter().filter(|f| f.name == "username").count() != 1 {
-        return None;
-    }
-    as_json_string(&field(&nested, "username")?.raw)
-}
-fn contributor_key(username: &str) -> String {
-    format!("lensisku-user-{}", sha256(username.as_bytes()))
-}
-fn json_array_of_strings(raw: &str) -> Option<Vec<String>> {
-    serde_json::from_str::<Vec<String>>(raw).ok()
-}
-fn forms_from_field(raw: &str) -> Option<Vec<String>> {
-    if let Some(s) = as_json_string(raw) {
-        Some(s.split_whitespace().map(str::to_owned).collect())
-    } else {
-        json_array_of_strings(raw)
-    }
-}
-fn extension(
-    owner: &EntityId,
-    name: String,
-    raw: &str,
-    evidence: Option<SourceEvidence>,
-) -> Result<ExtensionRecord, JbotciImportError> {
-    Ok(ExtensionRecord {
-        owner: owner.clone(),
-        name,
-        value: RawJson::new(raw.to_owned())?,
-        evidence,
-    })
-}
-fn context(
-    id: EntityId,
-    assertion: &EntityId,
-    kind: ContextKind,
-    value: Presence<TextValue>,
-    occurrence: &OccurrenceRef,
-    field_index: usize,
-) -> ContextRecord {
-    ContextRecord {
-        id,
-        assertion: assertion.clone(),
-        kind,
-        value,
-        translated_from: None,
-        evidence: source_evidence(occurrence.clone(), Some(field_index)),
-    }
 }
 
 /// Normalize a pinned Lensisku export without opening files or changing caller state.
@@ -680,78 +458,15 @@ pub fn import_jbotci_export(
     let raw_text = std::str::from_utf8(raw).map_err(|_| JbotciImportError::InvalidUtf8 {
         input: "raw".into(),
     })?;
-    let raw_rows: Vec<Box<RawValue>> = serde_json::from_str(raw_text)
-        .map_err(|e| JbotciImportError::InvalidJson(e.to_string()))?;
-
-    let mut rows = Vec::with_capacity(raw_rows.len());
-    let mut field_counts = BTreeMap::<String, u64>::new();
-    let mut word_types = BTreeMap::<String, u64>::new();
-    let mut all_spellings = BTreeSet::new();
-    let mut eligible_spellings = BTreeSet::new();
-    let mut users = BTreeSet::new();
-    let mut native_fields = 0_u64;
-    let mut nested_duplicate_rows = 0_u64;
-    for raw_row in &raw_rows {
-        let text = raw_row.get();
-        let is_object = text.trim_start().starts_with('{');
-        let (fields, duplicates) = if is_object {
-            let fields = parse_fields(text).map_err(JbotciImportError::InvalidJson)?;
-            let duplicates =
-                scan_nested_duplicates(text).map_err(JbotciImportError::InvalidJson)?;
-            (fields, duplicates)
-        } else {
-            (
-                vec![Field {
-                    name: "$row".into(),
-                    raw: text.to_owned(),
-                }],
-                Vec::new(),
-            )
-        };
-        native_fields += fields.len() as u64;
-        for f in &fields {
-            *field_counts.entry(f.name.clone()).or_default() += 1;
-        }
-        if !duplicates.is_empty() {
-            nested_duplicate_rows += 1;
-        }
-        for value in fields
-            .iter()
-            .filter(|f| f.name == "word_type")
-            .filter_map(|f| as_json_string(&f.raw))
-        {
-            *word_types.entry(value).or_default() += 1;
-        }
-        for value in fields
-            .iter()
-            .filter(|f| f.name == "word")
-            .filter_map(|f| as_json_string(&f.raw))
-        {
-            all_spellings.insert(value);
-        }
-        if duplicates.is_empty()
-            && let (Some(word), Some(class), Some(definition)) = (
-                field(&fields, "word").and_then(|f| as_json_string(&f.raw)),
-                field(&fields, "word_type").and_then(|f| as_json_string(&f.raw)),
-                field(&fields, "definition").and_then(|f| as_json_string(&f.raw)),
-            )
-            && is_supported_class(&class)
-            && !word.is_empty()
-            && !definition.trim().is_empty()
-        {
-            eligible_spellings.insert(word);
-        }
-        if duplicates.is_empty()
-            && let Some(username) = user_name(&fields)
-        {
-            users.insert(username);
-        }
-        rows.push(Row {
-            fields,
-            duplicates,
-            is_object,
-        });
-    }
+    let decoded = decode_export(raw_text).map_err(JbotciImportError::InvalidJson)?;
+    let native_fields = decoded.native_fields;
+    let field_counts = decoded.field_counts;
+    let word_types = decoded.word_types;
+    let all_spellings = decoded.all_spellings;
+    let eligible_spellings = decoded.eligible_spellings;
+    let nested_duplicate_rows = decoded.nested_duplicate_rows;
+    let contributors_count = decoded.users.len() as u64;
+    let rows = decoded.rows;
 
     let mut report_diagnostics = BTreeMap::<String, u64>::new();
     let mut release_diagnostics = Vec::<ReleaseDiagnostic>::new();
@@ -767,7 +482,7 @@ pub fn import_jbotci_export(
     let supplier_definition_count = metadata.integer("definition_count")?;
     let supplier_entry_count = metadata.integer("entry_count")?;
     let definition_count_matches = supplier_definition_count == rows.len() as u64;
-    let entry_count_matches = supplier_entry_count == eligible_spellings.len() as u64;
+    let entry_count_matches = supplier_entry_count == eligible_spellings;
     if !definition_count_matches {
         add_diag(
             &mut report_diagnostics,
@@ -787,7 +502,7 @@ pub fn import_jbotci_export(
             "entry_count_mismatch",
             format!(
                 "supplier entry_count {supplier_entry_count} differs from {} exact eligible spellings",
-                eligible_spellings.len()
+                eligible_spellings
             ),
             None,
         );
@@ -823,37 +538,21 @@ pub fn import_jbotci_export(
         upstream: LineageTarget::Unresolved("https://jbovlaste.lojban.org/".into()),
         evidence: Some(JBOTCI_NOTICE_LOCATOR.into()),
     });
-    let mut contributor_ids = BTreeMap::<String, ContributorId>::new();
-    for username in &users {
-        let id_text = contributor_key(username);
-        let id = ContributorId::new(id_text).map_err(JbotciImportError::Registry)?;
-        let display_valid = username.trim() == username
-            && !username.is_empty()
-            && !username.chars().any(char::is_control);
-        let display_name = if display_valid {
-            username.clone()
-        } else {
-            add_diag(
-                &mut report_diagnostics,
-                &mut release_diagnostics,
-                "contributor_display_fallback",
-                format!(
-                    "username {:?} is not a registry display value; retained under its source-scoped hash identity",
-                    username
-                ),
-                None,
-            );
-            format!(
-                "Lensisku contributor {}",
-                &sha256(username.as_bytes())[..16]
-            )
-        };
-        registry_doc.contributors.push(ContributorRecord {
-            id: id.clone(),
-            display_name,
+    let contributor_set = contributors(&decoded.users).map_err(JbotciImportError::Registry)?;
+    for username in &contributor_set.fallback_usernames {
+        let code = "contributor_display_fallback";
+        *report_diagnostics.entry(code.to_owned()).or_default() += 1;
+        release_diagnostics.push(ReleaseDiagnostic {
+            occurrence: None,
+            code: code.to_owned(),
+            message: format!(
+                "username {:?} is not a registry display value; retained under its source-scoped hash identity",
+                username
+            ),
         });
-        contributor_ids.insert(username.clone(), id);
     }
+    registry_doc.contributors.extend(contributor_set.records);
+    let contributor_ids = contributor_set.ids;
     let raw_snapshot = snapshot_id(raw_namespace, &raw_sha256)?;
     let meta_snapshot = snapshot_id(metadata_namespace, &metadata_sha256)?;
     for snapshot in [&raw_snapshot, &meta_snapshot] {
@@ -907,12 +606,12 @@ pub fn import_jbotci_export(
         metadata,
         options.revision.clone(),
         rows,
-        users.len() as u64,
+        contributors_count,
         native_fields,
         field_counts,
         word_types,
-        all_spellings.len() as u64,
-        eligible_spellings.len() as u64,
+        all_spellings,
+        eligible_spellings,
         definition_count_matches,
         entry_count_matches,
         supplier_definition_count,
@@ -923,28 +622,7 @@ pub fn import_jbotci_export(
     )
 }
 
-const SUPPORTED_CLASSES: [&str; 16] = [
-    "bu-letteral",
-    "cmavo",
-    "cmavo-compound",
-    "cmevla",
-    "experimental cmavo",
-    "experimental gismu",
-    "fu'ivla",
-    "gismu",
-    "lujvo",
-    "nalvla",
-    "obsolete cmavo",
-    "obsolete cmevla",
-    "obsolete fu'ivla",
-    "obsolete zei-lujvo",
-    "phrase",
-    "zei-lujvo",
-];
 const JBOTCI_NOTICE_LOCATOR: &str = "https://github.com/int19h/jbotci/blob/3d9fd41d9ed32de26311ee27ec86b6b165985aa1/THIRD-PARTY-NOTICES.md#L242-L252";
-fn is_supported_class(value: &str) -> bool {
-    SUPPORTED_CLASSES.contains(&value)
-}
 
 #[allow(clippy::too_many_arguments)]
 fn build_import(
@@ -978,488 +656,32 @@ fn build_import(
 ) -> Result<JbotciImport, JbotciImportError> {
     let language = metadata.string("language_tag")?.to_owned();
     let source_language = metadata.string("source_language_tag")?.to_owned();
-    let mut native_occurrences = Vec::with_capacity(rows.len());
-    let mut entries = Vec::with_capacity(rows.len());
-    let mut assertions = Vec::with_capacity(rows.len());
-    let mut contexts = Vec::new();
-    let mut etymologies = Vec::new();
-    let mut forms = Vec::new();
-    let mut extensions = Vec::new();
-    let mut assertion_ids = Vec::with_capacity(rows.len());
-    let mut eligible_count = 0_u64;
-    let mut excluded_count = 0_u64;
-    let mut context_counts = BTreeMap::<String, u64>::new();
-
-    for (index, row) in rows.iter().enumerate() {
-        let locator = format!("/{index}");
-        let occurrence = OccurrenceRef {
-            capture: raw_capture_ref.clone(),
-            locator: locator.clone(),
-        };
-        if row.duplicates.is_empty()
-            && unique_field_index(&row.fields, "user").is_some()
-            && user_name(&row.fields).is_none()
-        {
-            add_diag(
-                &mut report_diagnostics,
-                &mut release_diagnostics,
-                "invalid_user",
-                format!(
-                    "row {index} user is not an object with one string username; raw value retained"
-                ),
-                Some(occurrence.clone()),
-            );
-        }
-        if row.is_object && row.duplicates.is_empty() {
-            for (name, code) in [
-                ("selmaho", "invalid_selmaho"),
-                ("definition_id", "invalid_definition_id"),
-            ] {
-                if let Some(i) = unique_field_index(&row.fields, name) {
-                    let raw_value = row.fields[i].raw.as_str();
-                    let valid = raw_value == "null"
-                        || if name == "selmaho" {
-                            as_json_string(raw_value).is_some()
-                        } else {
-                            as_json_string(raw_value).is_some()
-                                || serde_json::from_str::<serde_json::Number>(raw_value).is_ok()
-                        };
-                    if !valid {
-                        add_diag(
-                            &mut report_diagnostics,
-                            &mut release_diagnostics,
-                            code,
-                            format!(
-                                "row {index} {name} has an unsupported JSON shape; raw value retained"
-                            ),
-                            Some(occurrence.clone()),
-                        );
-                    }
-                }
-            }
-        }
-        let base = format!("jbotci-{raw_sha256}");
-        let entry_id = eid(format!("{base}-entry-{index}"))?;
-        let assertion_id = eid(format!("{base}-assertion-{index}"))?;
-        assertion_ids.push(assertion_id.clone());
-        native_occurrences.push(RawOccurrence {
-            locator: locator.clone(),
-            fields: row
-                .fields
-                .iter()
-                .map(|f| NativeField {
-                    name: f.name.clone(),
-                    encoding: NativeEncoding::Json,
-                    raw_value: f.raw.clone(),
-                })
-                .collect(),
-            raw_line: None,
-        });
-
-        let has_duplicates = !row.duplicates.is_empty();
-        if !row.is_object {
-            add_diag(
-                &mut report_diagnostics,
-                &mut release_diagnostics,
-                "non_object_row",
-                format!("row {index} is not an object; retained under $row"),
-                Some(occurrence.clone()),
-            );
-        }
-        for key in &row.duplicates {
-            add_diag(
-                &mut report_diagnostics,
-                &mut release_diagnostics,
-                "duplicate_key",
-                format!(
-                    "row {index} contains repeated JSON key {key:?}; typed projection suppressed"
-                ),
-                Some(occurrence.clone()),
-            );
-        }
-        if has_duplicates {
-            excluded_count += 1;
-        }
-
-        let typed_fields = if row.is_object && !has_duplicates {
-            row.fields.as_slice()
-        } else {
-            &[]
-        };
-        let word = field(typed_fields, "word").and_then(|f| as_json_string(&f.raw));
-        let class = field(typed_fields, "word_type").and_then(|f| as_json_string(&f.raw));
-        let definition = field(typed_fields, "definition").and_then(|f| as_json_string(&f.raw));
-        let word_valid = word.as_ref().is_some_and(|s| !s.is_empty());
-        let class_valid = class.as_deref().is_some_and(is_supported_class);
-        let definition_valid = definition.as_deref().is_some_and(|s| !s.trim().is_empty());
-        let mut reasons = Vec::new();
-        if !row.is_object {
-            reasons.push("non-object-row".to_owned());
-        }
-        if has_duplicates {
-            reasons.push("duplicate-json-key".to_owned());
-        }
-        if !word_valid {
-            reasons.push("missing-null-wrong-type-or-empty-word".to_owned());
-            add_diag(
-                &mut report_diagnostics,
-                &mut release_diagnostics,
-                "invalid_word",
-                format!("row {index} has no nonempty string word"),
-                Some(occurrence.clone()),
-            );
-        }
-        if class.is_none() {
-            reasons.push("missing-null-or-wrong-type-word_type".to_owned());
-            add_diag(
-                &mut report_diagnostics,
-                &mut release_diagnostics,
-                "invalid_word_type",
-                format!("row {index} has no string word_type"),
-                Some(occurrence.clone()),
-            );
-        } else if !class_valid {
-            reasons.push("unsupported-word_type".to_owned());
-            add_diag(
-                &mut report_diagnostics,
-                &mut release_diagnostics,
-                "unsupported_word_type",
-                format!(
-                    "row {index} has unsupported word_type {:?}",
-                    class.as_deref().unwrap_or_default()
-                ),
-                Some(occurrence.clone()),
-            );
-        }
-        if !definition_valid {
-            reasons.push("missing-null-wrong-type-or-empty-definition".to_owned());
-            add_diag(
-                &mut report_diagnostics,
-                &mut release_diagnostics,
-                "invalid_definition",
-                format!("row {index} has no non-whitespace string definition"),
-                Some(occurrence.clone()),
-            );
-        }
-        let eligible = reasons.is_empty();
-        if eligible {
-            eligible_count += 1;
-        } else if !has_duplicates {
-            excluded_count += 1;
-        }
-        let eligibility = if eligible {
-            Eligibility::Lexical
-        } else {
-            Eligibility::Excluded {
-                reason: reasons.join(";"),
-            }
-        };
-
-        let mut entry = EntryRecord {
-            id: entry_id.clone(),
-            source: source.clone(),
-            spelling: if word_valid {
-                Presence::Value(word.clone().unwrap_or_default())
-            } else {
-                presence_string(typed_fields, "word")
-            },
-            language: Presence::Value(source_language.clone()),
-            script: Presence::Missing,
-            native_word_class: if class.is_some() {
-                Presence::Value(class.clone().unwrap_or_default())
-            } else {
-                presence_string(typed_fields, "word_type")
-            },
-            selmaho: presence_string(typed_fields, "selmaho"),
-            mapped_pos: Presence::Missing,
-        };
-        if has_duplicates {
-            entry.spelling = Presence::Missing;
-            entry.native_word_class = Presence::Missing;
-            entry.selmaho = Presence::Missing;
-        }
-        let definition_presence = match field(typed_fields, "definition") {
-            None => Presence::Missing,
-            Some(f) if f.raw == "null" => Presence::Null,
-            Some(_) if definition.is_some() => Presence::Value(text_value(
-                definition.clone().unwrap_or_default(),
-                &language,
-            )),
-            Some(_) => Presence::Missing,
-        };
-        let source_score = presence_raw(typed_fields, "score")?;
-        let mut assertion = AssertionRecord {
-            id: assertion_id.clone(),
-            entry: entry_id.clone(),
-            occurrence: occurrence.clone(),
-            native_sense_id: Presence::Missing,
-            language: Presence::Value(language.clone()),
-            definition: definition_presence,
-            source_score,
-            timestamps: Vec::new(),
-            eligibility,
-        };
-        if has_duplicates {
-            assertion.native_sense_id = Presence::Missing;
-            assertion.definition = Presence::Missing;
-            assertion.source_score = Presence::Missing;
-        }
-        entries.push(entry);
-        assertions.push(assertion);
-
-        if row.is_object {
-            let known: BTreeSet<&str> = [
-                "word",
-                "word_type",
-                "definition",
-                "definition_id",
-                "score",
-                "selmaho",
-                "notes",
-                "jargon",
-                "gloss_keywords",
-                "place_keywords",
-                "rafsi",
-                "experimental_rafsi",
-                "etymology",
-                "user",
-            ]
-            .into_iter()
-            .collect();
-            for (i, f) in row.fields.iter().enumerate() {
-                if !known.contains(f.name.as_str()) {
-                    extensions.push(extension(
-                        &assertion_id,
-                        format!("lensisku.native_field.{i}.{}", f.name),
-                        &f.raw,
-                        Some(source_evidence(occurrence.clone(), Some(i))),
-                    )?);
-                    add_diag(
-                        &mut report_diagnostics,
-                        &mut release_diagnostics,
-                        "unknown_native_field",
-                        format!(
-                            "row {index} unknown field {:?} retained as an extension",
-                            f.name
-                        ),
-                        Some(occurrence.clone()),
-                    );
-                }
-            }
-        }
-
-        if !row.is_object || has_duplicates {
-            continue;
-        }
-
-        // Optional scalar fields are projected only in their advertised source shape.
-        for (name, kind, diagnostic) in [
-            ("notes", ContextKind::Note, "invalid_notes"),
-            ("jargon", ContextKind::Domain, "invalid_jargon"),
-        ] {
-            if let Some(i) = unique_field_index(&row.fields, name) {
-                let f = &row.fields[i];
-                match as_json_string(&f.raw) {
-                    Some(value) => {
-                        let id = eid(format!("{base}-context-{index}-{name}"))?;
-                        contexts.push(context(
-                            id,
-                            &assertion_id,
-                            kind,
-                            Presence::Value(text_value(value, &language)),
-                            &occurrence,
-                            i,
-                        ));
-                        *context_counts.entry(name.into()).or_default() += 1;
-                    }
-                    None if f.raw == "null" => {
-                        let id = eid(format!("{base}-context-{index}-{name}"))?;
-                        contexts.push(context(
-                            id,
-                            &assertion_id,
-                            kind,
-                            Presence::Null,
-                            &occurrence,
-                            i,
-                        ));
-                        *context_counts.entry(name.into()).or_default() += 1;
-                    }
-                    None => add_diag(
-                        &mut report_diagnostics,
-                        &mut release_diagnostics,
-                        diagnostic,
-                        format!("row {index} {name} is not a string or null; raw value retained"),
-                        Some(occurrence.clone()),
-                    ),
-                }
-            }
-        }
-
-        if let Some(i) = unique_field_index(&row.fields, "gloss_keywords") {
-            let f = &row.fields[i];
-            extensions.push(extension(
-                &assertion_id,
-                "lensisku.gloss_keywords.raw".into(),
-                &f.raw,
-                Some(source_evidence(occurrence.clone(), Some(i))),
-            )?);
-            if f.raw != "null" {
-                if let Some(items) = raw_array(&f.raw) {
-                    for (item_index, item) in items.iter().enumerate() {
-                        let item_raw = item.get();
-                        let nested_dup = scan_nested_duplicates(item_raw)
-                            .map_err(JbotciImportError::InvalidJson)?;
-                        if !item_raw.trim_start().starts_with('{') || !nested_dup.is_empty() {
-                            add_diag(
-                                &mut report_diagnostics,
-                                &mut release_diagnostics,
-                                "invalid_gloss_object",
-                                format!(
-                                    "row {index} gloss item {item_index} is not a unique-key object; whole field retained"
-                                ),
-                                Some(occurrence.clone()),
-                            );
-                            continue;
-                        }
-                        let object =
-                            parse_fields(item_raw).map_err(JbotciImportError::InvalidJson)?;
-                        let Some(word_field) = field(&object, "word") else {
-                            add_diag(
-                                &mut report_diagnostics,
-                                &mut release_diagnostics,
-                                "invalid_gloss_object",
-                                format!("row {index} gloss item {item_index} lacks word"),
-                                Some(occurrence.clone()),
-                            );
-                            continue;
-                        };
-                        let Some(gloss) = as_json_string(&word_field.raw) else {
-                            add_diag(
-                                &mut report_diagnostics,
-                                &mut release_diagnostics,
-                                "invalid_gloss_object",
-                                format!("row {index} gloss item {item_index} word is not a string"),
-                                Some(occurrence.clone()),
-                            );
-                            continue;
-                        };
-                        let id = eid(format!("{base}-context-gloss-{index}-{item_index}"))?;
-                        let ctx = context(
-                            id.clone(),
-                            &assertion_id,
-                            ContextKind::Gloss,
-                            Presence::Value(text_value(gloss, &language)),
-                            &occurrence,
-                            i,
-                        );
-                        contexts.push(ctx);
-                        extensions.push(extension(
-                            &id,
-                            "lensisku.gloss_keywords.object".into(),
-                            item_raw,
-                            Some(source_evidence(occurrence.clone(), Some(i))),
-                        )?);
-                        *context_counts.entry("gloss_keywords".into()).or_default() += 1;
-                    }
-                } else {
-                    add_diag(
-                        &mut report_diagnostics,
-                        &mut release_diagnostics,
-                        "invalid_gloss_keywords",
-                        format!(
-                            "row {index} gloss_keywords is not an array or null; raw value retained"
-                        ),
-                        Some(occurrence.clone()),
-                    );
-                }
-            }
-        }
-        if let Some(i) = unique_field_index(&row.fields, "place_keywords") {
-            let raw_value = &row.fields[i].raw;
-            extensions.push(extension(
-                &assertion_id,
-                "lensisku.place_keywords".into(),
-                raw_value,
-                Some(source_evidence(occurrence.clone(), Some(i))),
-            )?);
-            if raw_value != "null" && raw_array(raw_value).is_none() {
-                add_diag(
-                    &mut report_diagnostics,
-                    &mut release_diagnostics,
-                    "invalid_place_keywords",
-                    format!("row {index} place_keywords is not an array; raw value retained"),
-                    Some(occurrence.clone()),
-                );
-            }
-        }
-        for name in ["rafsi", "experimental_rafsi"] {
-            if let Some(i) = unique_field_index(&row.fields, name) {
-                let f = &row.fields[i];
-                if f.raw == "null" {
-                    continue;
-                }
-                if let Some(tokens) = forms_from_field(&f.raw) {
-                    for (form_index, spelling) in tokens.into_iter().enumerate() {
-                        let id = eid(format!("{base}-form-{index}-{name}-{form_index}"))?;
-                        forms.push(FormRecord {
-                            id,
-                            entry: entry_id.clone(),
-                            spelling,
-                            language: Presence::Value(source_language.clone()),
-                            script: Presence::Missing,
-                            pronunciation: Presence::Missing,
-                            kind: FormKind::SourceReportedForm,
-                            standing: Presence::Value(name.into()),
-                            components: Vec::new(),
-                            evidence: Some(source_evidence(occurrence.clone(), Some(i))),
-                            computation: None,
-                        });
-                    }
-                } else {
-                    add_diag(
-                        &mut report_diagnostics,
-                        &mut release_diagnostics,
-                        "invalid_reported_form",
-                        format!(
-                            "row {index} {name} is neither a string nor a string array; raw value retained"
-                        ),
-                        Some(occurrence.clone()),
-                    );
-                }
-            }
-        }
-        if let Some(i) = unique_field_index(&row.fields, "etymology") {
-            let f = &row.fields[i];
-            let statement = match f.raw.as_str() {
-                "null" => Presence::Null,
-                _ => match as_json_string(&f.raw) {
-                    Some(value) => Presence::Value(text_value(value, &language)),
-                    None => {
-                        add_diag(
-                            &mut report_diagnostics,
-                            &mut release_diagnostics,
-                            "invalid_etymology",
-                            format!(
-                                "row {index} etymology is not a string or null; raw value retained"
-                            ),
-                            Some(occurrence.clone()),
-                        );
-                        Presence::Missing
-                    }
-                },
-            };
-            if !matches!(statement, Presence::Missing) {
-                etymologies.push(EtymologyRecord {
-                    id: eid(format!("{base}-etymology-{index}"))?,
-                    assertion: assertion_id.clone(),
-                    statement,
-                    native_kind: Presence::Missing,
-                    components: Vec::new(),
-                    evidence: source_evidence(occurrence.clone(), Some(i)),
-                });
-            }
-        }
-    }
+    let projection = project_rows(
+        &rows,
+        ProjectionContext {
+            entity_prefix: "jbotci",
+            raw_sha256: &raw_sha256,
+            raw_capture_ref: &raw_capture_ref,
+            source: &source,
+            language: &language,
+            source_language: &source_language,
+        },
+        &mut report_diagnostics,
+        &mut release_diagnostics,
+    )
+    .map_err(JbotciImportError::Dictionary)?;
+    let crate::lensisku::ProjectionOutput {
+        native_occurrences,
+        entries,
+        assertions,
+        contexts,
+        etymologies,
+        forms,
+        mut extensions,
+        assertion_ids,
+        eligible_count,
+        excluded_count,
+    } = projection;
 
     let raw_capture = RawCapture::new(
         raw_namespace,
@@ -1545,7 +767,7 @@ fn build_import(
             "Supplier notice is a claim; upstream source coverage remains unverified.".into(),
         ],
     };
-    extensions.push(extension(
+    extensions.push(native_extension(
         &release_id,
         "jbotci.metadata.raw_text".into(),
         &metadata_json,
@@ -1611,6 +833,5 @@ fn build_import(
         entry_count_matches,
     };
     let _ = nested_duplicate_rows;
-    let _ = context_counts;
     Ok(JbotciImport { dictionary, report })
 }

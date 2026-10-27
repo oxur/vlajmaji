@@ -10,13 +10,60 @@ Queries include exact spelling, literal reverse-definition lookup, captured form
 The grouped dictionary API builds a fully verified `DictionaryStore` or opens
 its typed draft without claiming full-store verification. Query construction
 checks lookup identities needed by the query engine but does not replace the
-explicit store verification API,
-performs byte-exact source-grouped spelling lookup with complete pre-page
-counts, and resolves typed local/catalogue references. Its responses retain
-source, release, occurrence, editorial, and computed evidence as separate
-fields. See the [grouped lookup guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-query.md) and run
+explicit store verification API. It performs byte-exact source-grouped spelling
+lookup with complete pre-page counts and resolves typed local/catalogue
+references. Its responses retain source, release, occurrence, editorial, and
+computed evidence as separate fields. See the [grouped lookup guide](https://github.com/oxur/vlajmaji/blob/main/docs/dictionary-query.md) and run
 `cargo run --example dictionary_lookup -- INPUT_JSON FRESH_STORE` for a public
 API walkthrough.
+
+For an explicit composed view, `DictionarySearchEngine::open_snapshot` accepts
+a `DictionaryReadTopology` and a frozen `DictionarySnapshotManifest` from
+`vlajmaji-store`. The same engine can read one unified store, fan out across
+member stores, or use read-only SQLite `ATTACH`; each topology loads its own
+typed document and performs its own candidate queries. Snapshot opening checks
+member headers and expected recorded states. Unified compares the manifest
+logical digest with the member's recorded canonical header digest; that recorded
+digest is unauthenticated until explicit verification. Attached and Fanout read
+each canonical document, compose them, and compute the canonical logical digest.
+That typed draft is intentionally unverified: ordinary open does not audit every
+projected SQL value. Use the store's explicit `All` verification before relying
+on full persisted projection integrity. The attach topology
+requires UTF-8 paths and reports unsupported native paths as an error; separate
+attached files do not gain atomic-publication semantics.
+
+The manifest's generation and optional selected-release IDs bind runtime
+selection and cursors without changing immutable release history. A changed
+generation or selection represents a different query view. Profiled opening
+separates provider setup, document load/composition/digest, and common search
+index construction. Exact-query profiling measures SQL candidates and actual
+hit hydration; remaining same-call time is a conservative lookup/order/page
+residual. Serialization is outside the query call and must be added when
+assessing complete response cost. A/F startup includes reading, composing,
+serializing, and hashing its own logical document; those costs remain visible.
+
+The configured collection layer is additive: `CollectionSearchEngine` captures
+one explicit catalogue and profile selection, then wraps the existing exact
+and reference query behavior. It reports registered, installed, selected,
+disabled, producer-eligible, and minimum-store states separately. The managed
+outer cursor binds the observed config/catalogue/generation/selection snapshot;
+it does not authenticate ordinary-open payload bytes. Exact lookup still
+hydrates the complete typed dictionary and builds its search indexes.
+Unknown/unresolved and valid metadata-only references can return from the
+retained catalogue view without opening a payload; selected installed
+references surface a typed error if their derived database cannot be opened.
+Only the CLI resolves config from XDG/HOME; library APIs take explicit paths.
+
+The `topology_probe` example is a local comparison harness, not user
+configuration or an installer. `prepare --manifest FILE` strictly loads four
+explicitly pinned sealed inputs and exclusively creates one unified and four
+member stores under a fresh output root. `run` opens one declared topology and
+emits one full response with a trailing newline. `batch` primes the same
+long-lived provider, then measures a frozen request list, including exact
+cursor pages and typed reference outcomes; each response is written to a fresh
+file and reported with its byte count and SHA-256. Its manifest and request
+files must be retained with the results so startup, query, hydration,
+serialization, and write stages can be interpreted separately.
 
 ```toml
 [dependencies]

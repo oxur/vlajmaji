@@ -1,0 +1,21 @@
+[package]
+name = "vlajmaji-data-lensisku-jbotci"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish = false
+license.workspace = true
+repository.workspace = true
+readme = "README.md"
+description = "Optional local embedded Lensisku pack normalized from jbotci source bytes."
+exclude = ["data/**"]
+
+[features]
+default = []
+embedded = []
+
+[dependencies]
+vlajmaji-lexicon.workspace = true
+
+[lints]
+workspace = true

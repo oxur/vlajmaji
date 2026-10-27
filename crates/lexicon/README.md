@@ -34,3 +34,39 @@ The pure `import_jbotci_export` adapter retains both pinned captures and ordered
 native fields while exposing a conservative typed projection. Its bounded
 metadata grammar, field map, identity rules, and local replay example are in the
 [jbotci import guide](https://github.com/oxur/vlajmaji/blob/main/docs/jbotci-import.md).
+
+The additive `import_llg_lists` adapter accepts the complete gismu, cmavo,
+assigned rafsi, and notice byte inputs with caller-supplied SHA-256 pins. It
+preserves each physical list line as an occurrence and every padded source
+field while projecting only supplied keywords, hints, definitions, and forms.
+It does not infer part of speech or linguistic structure, and hash checks do
+not authenticate a publisher. This is a 0.3.0 development-checkout API; it is
+not present in the published 0.2.0 package. See the [current source module](src/llg.rs)
+and the [CLI guide](https://github.com/oxur/vlajmaji/tree/main/crates/cli) for
+the local fixture and materialization commands.
+
+The `pack` module seals canonical dictionary bytes with a strict versioned
+integrity inventory and loads them only through the normal registry and model
+validators. `compose_dictionaries` consumes validated models, preserving
+first-seen record order, deduplicating exact equal identities, and rejecting
+conflicts rather than choosing a semantic winner. Seals are local integrity
+records, not publisher authentication or redistribution permission.
+
+The development checkout also exposes `import_la_lojban_export` for the pinned
+La-Lojban English Lensisku JSON export. It retains the complete byte snapshot,
+ordered native fields, source-row occurrences, and native assertion-ID lexemes
+while sharing the conservative Lensisku projection with jbotci. Its report
+contains observed counts only; no upstream count is inferred. The La-Lojban
+distributor is recorded separately from Lensisku, and content redistribution
+remains held because the software license does not establish dataset terms.
+This API is not part of the published 0.2.0 package; see the current source
+module [`la_lojban.rs`](src/la_lojban.rs).
+
+The development checkout also exposes `import_sutysisku_export` for the pinned
+Sutysisku English projection. It retains ordered root keys and values, including
+repeated decoded keys and native child lexemes, while recording a conservative
+typed projection and source-reported forms. The importer is local-only and
+requires caller-provided bytes and full-byte SHA-256 pin; it does not fetch
+inputs. Its source lineage and content redistribution terms remain unresolved,
+so the release records redistribution as held. This API is not in the
+published 0.2.0 package; see [`sutysisku.rs`](src/sutysisku.rs).

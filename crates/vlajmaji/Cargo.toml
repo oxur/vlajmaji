@@ -17,11 +17,19 @@ include = ["Cargo.toml", "README.md", "LICENSE", "src/**"]
 default = []
 morphology = ["vlajmaji-search/morphology"]
 graph = ["vlajmaji-store/graph"]
+data-lensisku-jbotci = ["dep:vlajmaji-data-lensisku-jbotci", "vlajmaji-data-lensisku-jbotci/embedded"]
+data-llg = ["dep:vlajmaji-data-llg", "vlajmaji-data-llg/embedded"]
+data-la-lojban = ["dep:vlajmaji-data-la-lojban", "vlajmaji-data-la-lojban/embedded"]
+data-sutysisku = ["dep:vlajmaji-data-sutysisku", "vlajmaji-data-sutysisku/embedded"]
 
 [dependencies]
 vlajmaji-lexicon.workspace = true
 vlajmaji-store.workspace = true
 vlajmaji-search.workspace = true
+vlajmaji-data-lensisku-jbotci = { path = "../data-lensisku-jbotci", version = "0.3.0", optional = true }
+vlajmaji-data-llg = { path = "../data-llg", version = "0.3.0", optional = true }
+vlajmaji-data-la-lojban = { path = "../data-la-lojban", version = "0.3.0", optional = true }
+vlajmaji-data-sutysisku = { path = "../data-sutysisku", version = "0.3.0", optional = true }
 
 [lints]
 workspace = true

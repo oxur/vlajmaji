@@ -9,6 +9,7 @@ use std::{
     error::Error,
     fmt,
     path::Path,
+    time::{Duration, Instant},
 };
 
 use serde::{Deserialize, Serialize};
@@ -23,7 +24,10 @@ use vlajmaji_lexicon::{
     RelationTarget, ReleaseRecord, SnapshotAttribution, SourceAlias, SourceId, SourceLineage,
     SourceRecord,
 };
-use vlajmaji_store::{DictionaryStore, DictionaryStoreError};
+use vlajmaji_store::{
+    DictionaryReadSnapshot, DictionaryReadTopology, DictionarySnapshotError,
+    DictionarySnapshotManifest, DictionaryStore, DictionaryStoreError,
+};
 
 /// Exact lookup policy included in every result and cursor binding.
 pub const EXACT_POLICY: &str = "exact-entry-v1";
@@ -345,6 +349,8 @@ pub struct DictionaryErrorReport {
 pub enum DictionaryQueryError {
     /// A persisted store failed to open, create, or query.
     Store(DictionaryStoreError),
+    /// A composed read snapshot failed to open or match its frozen identity.
+    Snapshot(DictionarySnapshotError),
     /// Input dictionary JSON or validation failed.
     Dictionary(DictionaryError),
     /// Source alias resolution failed.
@@ -381,6 +387,7 @@ impl fmt::Display for DictionaryQueryError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::Store(error) => write!(f, "dictionary store: {error}"),
+            Self::Snapshot(error) => write!(f, "dictionary snapshot: {error}"),
             Self::Dictionary(error) => write!(f, "dictionary input: {error}"),
             Self::Registry(error) => write!(f, "source registry: {error}"),
             Self::UnavailableSource { source, reason } => {
@@ -403,6 +410,7 @@ impl Error for DictionaryQueryError {
     fn source(&self) -> Option<&(dyn Error + 'static)> {
         match self {
             Self::Store(e) => Some(e),
+            Self::Snapshot(e) => Some(e),
             Self::Dictionary(e) => Some(e),
             Self::Registry(e) => Some(e),
             _ => None,
@@ -412,6 +420,11 @@ impl Error for DictionaryQueryError {
 impl From<DictionaryStoreError> for DictionaryQueryError {
     fn from(value: DictionaryStoreError) -> Self {
         Self::Store(value)
+    }
+}
+impl From<DictionarySnapshotError> for DictionaryQueryError {
+    fn from(value: DictionarySnapshotError) -> Self {
+        Self::Snapshot(value)
     }
 }
 impl From<DictionaryError> for DictionaryQueryError {
@@ -431,6 +444,7 @@ impl DictionaryQueryError {
     pub fn report(&self) -> DictionaryErrorReport {
         let (code, sources) = match self {
             Self::Store(_) => ("store", Vec::new()),
+            Self::Snapshot(_) => ("snapshot", Vec::new()),
             Self::Dictionary(_) => ("invalid_dictionary", Vec::new()),
             Self::Registry(RegistryError::UnknownSource(_)) => ("unknown_source", Vec::new()),
             Self::Registry(RegistryError::AmbiguousAlias { sources, .. }) => {
@@ -454,7 +468,7 @@ impl DictionaryQueryError {
 
 /// A public exact-query engine retaining a typed draft from a read-only SQLite snapshot.
 pub struct DictionarySearchEngine {
-    store: DictionaryStore,
+    provider: DictionaryQueryProvider,
     dictionary: DictionaryDocument<lexicon::RegistryDocument>,
     state_sha256: String,
     capture_index: BTreeMap<CaptureRef, usize>,
@@ -483,12 +497,74 @@ pub struct DictionarySearchEngine {
     tombstones_by_assertion: BTreeMap<String, Vec<EntityId>>,
     assertions_by_entry: BTreeMap<String, Vec<lexicon::AssertionRecord>>,
     release_ids_by_assertion: BTreeMap<String, Vec<EntityId>>,
+    generation: Option<String>,
+    selected_release_ids: Option<Vec<EntityId>>,
+}
+
+#[derive(Debug)]
+enum DictionaryQueryProvider {
+    Store(DictionaryStore),
+    Snapshot(DictionaryReadSnapshot),
+}
+impl DictionaryQueryProvider {
+    fn state_sha256(&self) -> &str {
+        match self {
+            Self::Store(store) => store.recorded_state_sha256(),
+            Self::Snapshot(snapshot) => snapshot.logical_state_sha256(),
+        }
+    }
+    fn exact_assertion_ids(&self, spelling: &str) -> Result<Vec<EntityId>, DictionaryQueryError> {
+        match self {
+            Self::Store(store) => store.exact_assertion_ids(spelling).map_err(Into::into),
+            Self::Snapshot(snapshot) => snapshot
+                .exact_assertion_ids(spelling)
+                .map_err(DictionaryQueryError::Snapshot),
+        }
+    }
+    fn generation(&self) -> Option<&str> {
+        match self {
+            Self::Store(_) => None,
+            Self::Snapshot(snapshot) => Some(snapshot.generation()),
+        }
+    }
+    fn selected_release_ids(&self) -> Option<Vec<EntityId>> {
+        match self {
+            Self::Store(_) => None,
+            Self::Snapshot(snapshot) => snapshot.selected_release_ids().map(<[EntityId]>::to_vec),
+        }
+    }
+}
+
+/// Time spent opening and indexing a dictionary snapshot.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct DictionarySnapshotOpenProfile {
+    /// Minimum-header connection/open and attachment setup.
+    pub provider_open: Duration,
+    /// Canonical reads, typed parsing, A/F composition, canonical serialization and digest.
+    pub document_load_and_composition: Duration,
+    /// Common typed query-index setup.
+    pub common_index_setup: Duration,
+    /// Total of the complete open operation.
+    pub total: Duration,
+}
+
+/// Same-call exact-query timing boundaries.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub struct DictionaryExactProfile {
+    /// Whole exact call.
+    pub total: Duration,
+    /// SQL candidate lookup.
+    pub candidate_sql: Duration,
+    /// Availability and returned-hit hydration/cloning.
+    pub hydration: Duration,
+    /// Conservative remaining lookup/selection/order/paging time.
+    pub lookup_order_paging: Duration,
 }
 
 impl fmt::Debug for DictionarySearchEngine {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("DictionarySearchEngine")
-            .field("store", &self.store)
+            .field("provider", &self.provider)
             .field("state_sha256", &self.state_sha256)
             .finish_non_exhaustive()
     }
@@ -516,9 +592,62 @@ impl DictionarySearchEngine {
         Self::from_store(DictionaryStore::open(path)?)
     }
 
+    /// Open an explicit composed snapshot provider.
+    ///
+    /// # Errors
+    ///
+    /// Returns typed manifest, store, composition, or state-identity failures.
+    pub fn open_snapshot(
+        topology: DictionaryReadTopology,
+        manifest: DictionarySnapshotManifest,
+    ) -> Result<Self, DictionaryQueryError> {
+        let mut snapshot = DictionaryReadSnapshot::open(topology, manifest)?;
+        let document = snapshot.load_document()?;
+        Self::from_provider(DictionaryQueryProvider::Snapshot(snapshot), document)
+    }
+
+    /// Open a snapshot and report provider load plus common index setup time.
+    ///
+    /// # Errors
+    ///
+    /// Returns the same failures as [`Self::open_snapshot`].
+    pub fn open_snapshot_profiled(
+        topology: DictionaryReadTopology,
+        manifest: DictionarySnapshotManifest,
+    ) -> Result<(Self, DictionarySnapshotOpenProfile), DictionaryQueryError> {
+        let total_started = Instant::now();
+        let stage = Instant::now();
+        let mut snapshot = DictionaryReadSnapshot::open(topology, manifest)?;
+        let provider_open = stage.elapsed();
+        let stage = Instant::now();
+        let document = snapshot.load_document()?;
+        let document_load_and_composition = stage.elapsed();
+        let stage = Instant::now();
+        let engine = Self::from_provider(DictionaryQueryProvider::Snapshot(snapshot), document)?;
+        let common_index_setup = stage.elapsed();
+        Ok((
+            engine,
+            DictionarySnapshotOpenProfile {
+                provider_open,
+                document_load_and_composition,
+                common_index_setup,
+                total: total_started.elapsed(),
+            },
+        ))
+    }
+
     fn from_store(store: DictionaryStore) -> Result<Self, DictionaryQueryError> {
         let document = store.unverified_document()?;
-        let state_sha256 = store.recorded_state_sha256().to_owned();
+        Self::from_provider(DictionaryQueryProvider::Store(store), document)
+    }
+
+    fn from_provider(
+        provider: DictionaryQueryProvider,
+        document: lexicon::UnverifiedDictionaryDocument,
+    ) -> Result<Self, DictionaryQueryError> {
+        let state_sha256 = provider.state_sha256().to_owned();
+        let generation = provider.generation().map(str::to_owned);
+        let selected_release_ids = provider.selected_release_ids();
         let capture_index = unique_map(
             document
                 .captures
@@ -571,7 +700,38 @@ impl DictionarySearchEngine {
                 .map(|row| (row.id.clone(), row)),
             "source",
         )?;
-        let availability = build_availability(&registry, &document);
+        let mut availability = build_availability(&registry, &document);
+        if let Some(selected) = &selected_release_ids {
+            let known: BTreeSet<_> = document
+                .metadata
+                .releases
+                .iter()
+                .map(|release| release.id.clone())
+                .collect();
+            if let Some(unknown) = selected.iter().find(|id| !known.contains(*id)) {
+                return Err(DictionaryQueryError::Integrity {
+                    detail: format!("snapshot selected unknown release {unknown}"),
+                });
+            }
+            for source in &mut availability {
+                source
+                    .selected_available_release_ids
+                    .retain(|id| selected.contains(id));
+                let reason = if source.releases.is_empty() {
+                    Some(SourceSelectionFailure::NoReleases)
+                } else if source.selected_available_release_ids.is_empty() {
+                    Some(SourceSelectionFailure::NoSelectedAvailableRelease)
+                } else if source.source.origin == lexicon::SourceOrigin::OwnedDraft
+                    && source.owned_head.is_none()
+                {
+                    Some(SourceSelectionFailure::NoOwnedHead)
+                } else {
+                    None
+                };
+                source.selectable = reason.is_none();
+                source.reason = reason;
+            }
+        }
         let selected_assertions = build_selected_assertions(&document, &availability)?;
         let contexts_by_assertion = group_by(document.metadata.contexts.iter().cloned(), |row| {
             row.assertion.to_string()
@@ -714,7 +874,7 @@ impl DictionarySearchEngine {
                 },
             );
         Ok(Self {
-            store,
+            provider,
             dictionary: document,
             state_sha256,
             capture_index,
@@ -743,6 +903,8 @@ impl DictionarySearchEngine {
             tombstones_by_assertion,
             assertions_by_entry,
             release_ids_by_assertion,
+            generation,
+            selected_release_ids,
         })
     }
 
@@ -796,13 +958,53 @@ impl DictionarySearchEngine {
         spelling: &str,
         options: DictionaryExactOptions,
     ) -> Result<DictionaryExactResponse, DictionaryQueryError> {
+        self.exact_inner(spelling, options, None)
+    }
+
+    /// Execute the exact query and measure the actual same-call lookup and hydration.
+    ///
+    /// # Errors
+    ///
+    /// Returns the same errors as [`Self::exact`].
+    pub fn exact_profiled(
+        &self,
+        spelling: &str,
+        options: DictionaryExactOptions,
+    ) -> Result<(DictionaryExactResponse, DictionaryExactProfile), DictionaryQueryError> {
+        let total_started = Instant::now();
+        let mut profile = DictionaryExactProfile::default();
+        let response = self.exact_inner(spelling, options, Some(&mut profile))?;
+        profile.total = total_started.elapsed();
+        profile.lookup_order_paging = profile
+            .total
+            .saturating_sub(profile.hydration)
+            .saturating_sub(profile.candidate_sql);
+        Ok((response, profile))
+    }
+
+    fn exact_inner(
+        &self,
+        spelling: &str,
+        options: DictionaryExactOptions,
+        mut profile: Option<&mut DictionaryExactProfile>,
+    ) -> Result<DictionaryExactResponse, DictionaryQueryError> {
+        let hydration_started = Instant::now();
         let availability = self.availability.clone();
+        if let Some(profile) = profile.as_mut() {
+            profile.hydration += hydration_started.elapsed();
+        }
         let resolved_sources = self.resolve_sources(&options, &availability)?;
-        let candidate_ids = self.store.exact_assertion_ids(spelling)?;
+        let sql_started = Instant::now();
+        let candidate_ids = self.provider.exact_assertion_ids(spelling)?;
+        let candidate_sql = sql_started.elapsed();
+        if let Some(profile) = profile.as_mut() {
+            profile.candidate_sql = candidate_sql;
+        }
         let native_candidate_occurrences = candidate_ids.len();
         let candidate_set: BTreeSet<_> = candidate_ids.iter().map(ToString::to_string).collect();
         let mut hits = Vec::new();
         for assertion_id in &candidate_set {
+            let assertion = require_candidate(&self.assertions, assertion_id)?;
             let selected_for_source = resolved_sources.iter().any(|source| {
                 self.selected_assertions
                     .get(source)
@@ -811,17 +1013,14 @@ impl DictionarySearchEngine {
             if !selected_for_source {
                 continue;
             }
-            let assertion = self.assertions.get(assertion_id).ok_or_else(|| {
-                DictionaryQueryError::Integrity {
-                    detail: format!(
-                        "SQL candidate {assertion_id} is absent from the loaded dictionary draft"
-                    ),
-                }
-            })?;
             if !matches!(assertion.eligibility, Eligibility::Lexical) {
                 continue;
             }
+            let started = Instant::now();
             hits.push(self.make_hit(assertion)?);
+            if let Some(profile) = profile.as_deref_mut() {
+                profile.hydration += started.elapsed();
+            }
         }
         hits.sort_by_key(hit_key);
         let mut by_source: BTreeMap<SourceId, Vec<DictionaryHit>> = BTreeMap::new();
@@ -879,6 +1078,7 @@ impl DictionarySearchEngine {
                 m
             });
         let mut groups: Vec<DictionaryGroup> = Vec::new();
+        let group_hydration_started = Instant::now();
         for hit in page {
             let source = hit.entry.source.clone();
             if let Some(last) = groups.last_mut().filter(|g| g.source.id == source) {
@@ -897,8 +1097,11 @@ impl DictionarySearchEngine {
             group.returned_count = group.hits.len();
             group.partial = group.returned_count < group.full_count;
         }
+        if let Some(profile) = profile {
+            profile.hydration += group_hydration_started.elapsed();
+        }
         let metadata = &self.dictionary.metadata;
-        Ok(DictionaryExactResponse {
+        let response = DictionaryExactResponse {
             version: 1,
             policy: EXACT_POLICY.into(),
             store_schema_version: 1,
@@ -913,7 +1116,8 @@ impl DictionarySearchEngine {
             groups,
             next_cursor,
             code_notices: metadata.code_notices.clone(),
-        })
+        };
+        Ok(response)
     }
 
     /// Resolve a stable source-local or catalogue target without spelling inference.
@@ -1224,7 +1428,7 @@ impl DictionarySearchEngine {
             alias_scope: AliasScope,
             selection_policy: &'a str,
         }
-        let bytes = serde_json::to_vec(&Binding {
+        let old_binding = Binding {
             version: 1,
             policy: EXACT_POLICY,
             store_schema_version: 1,
@@ -1233,7 +1437,36 @@ impl DictionarySearchEngine {
             resolved_sources: sources,
             alias_scope,
             selection_policy: SELECTION_POLICY,
-        })
+        };
+        let bytes = if let Some(generation) = &self.generation {
+            #[derive(Serialize)]
+            struct SnapshotBinding<'a> {
+                version: u32,
+                policy: &'a str,
+                store_schema_version: u32,
+                state_sha256: &'a str,
+                spelling: &'a str,
+                resolved_sources: &'a [SourceId],
+                alias_scope: AliasScope,
+                selection_policy: &'a str,
+                generation: &'a str,
+                selected_release_ids: &'a Option<Vec<EntityId>>,
+            }
+            serde_json::to_vec(&SnapshotBinding {
+                version: old_binding.version,
+                policy: old_binding.policy,
+                store_schema_version: old_binding.store_schema_version,
+                state_sha256: old_binding.state_sha256,
+                spelling: old_binding.spelling,
+                resolved_sources: old_binding.resolved_sources,
+                alias_scope: old_binding.alias_scope,
+                selection_policy: old_binding.selection_policy,
+                generation,
+                selected_release_ids: &self.selected_release_ids,
+            })
+        } else {
+            serde_json::to_vec(&old_binding)
+        }
         .map_err(|e| DictionaryQueryError::Integrity {
             detail: e.to_string(),
         })?;
@@ -1536,9 +1769,23 @@ fn unique_map<K: Ord, V>(
     Ok(indexed)
 }
 
+fn require_candidate<'a, T>(
+    assertions: &'a BTreeMap<String, T>,
+    assertion_id: &str,
+) -> Result<&'a T, DictionaryQueryError> {
+    assertions
+        .get(assertion_id)
+        .ok_or_else(|| DictionaryQueryError::Integrity {
+            detail: format!(
+                "SQL candidate {assertion_id} is absent from the loaded dictionary draft"
+            ),
+        })
+}
+
 #[cfg(test)]
 mod unverified_index_tests {
-    use super::unique_map;
+    use super::{DictionaryQueryError, require_candidate, unique_map};
+    use std::collections::BTreeMap;
 
     #[test]
     fn test_required_lookup_indexes_keep_unique_ids_and_reject_duplicates() {
@@ -1557,6 +1804,19 @@ mod unverified_index_tests {
         assert!(matches!(
             duplicate,
             super::DictionaryQueryError::Integrity { .. }
+        ));
+    }
+
+    #[test]
+    fn test_sql_candidate_must_exist_before_source_selection_can_skip_it() {
+        let assertions = BTreeMap::from([(String::from("known-assertion"), 17usize)]);
+        assert_eq!(
+            *require_candidate(&assertions, "known-assertion").unwrap(),
+            17
+        );
+        assert!(matches!(
+            require_candidate(&assertions, "corrupt-sql-assertion"),
+            Err(DictionaryQueryError::Integrity { .. })
         ));
     }
 }

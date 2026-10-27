@@ -1,0 +1,459 @@
+//! Process-level contract tests for local pack materialization.
+
+use std::process::Command;
+
+use vlajmaji_lexicon::{
+    Dictionary, EntityId, LocalRef, PackId, RelationTarget, compose_dictionaries,
+    load_sealed_release,
+};
+use vlajmaji_search::{DictionaryExactOptions, DictionaryQueryError, DictionarySearchEngine};
+
+fn scratch(name: &str) -> std::path::PathBuf {
+    static NEXT: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
+    let path = std::env::temp_dir().join(format!(
+        "vlajmaji-data-pack-{name}-{}-{}",
+        std::process::id(),
+        NEXT.fetch_add(1, std::sync::atomic::Ordering::Relaxed)
+    ));
+    std::fs::create_dir(&path).expect("create test scratch");
+    path
+}
+
+fn cli() -> Command {
+    Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
+}
+
+fn sha256(bytes: &[u8]) -> String {
+    use sha2::{Digest, Sha256};
+    Sha256::digest(bytes)
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
+        .collect()
+}
+
+#[test]
+fn test_synthetic_fixture_uses_the_importer_and_emits_a_loadable_pack() {
+    let root = scratch("fixture");
+    let output = root.join("pack");
+    let result = cli()
+        .args(["data-pack", "fixture", "jbotci"])
+        .arg(&output)
+        .output()
+        .expect("run fixture materializer");
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    let response: serde_json::Value = serde_json::from_slice(&result.stdout).unwrap();
+    assert_eq!(response["operation"], "data-pack-materialize");
+    assert_eq!(response["payload_kind"], "synthetic");
+    assert_eq!(response["report"]["input_rows"], 3);
+    assert_eq!(response["report"]["normalized_assertions"], 3);
+    assert_eq!(response["report"]["lexical_occurrences"], 2);
+    assert_eq!(response["report"]["excluded_occurrences"], 1);
+    assert_eq!(response["report"]["eligible_spellings"], 1);
+    let release = std::fs::read(output.join("release.json")).unwrap();
+    let seal = std::fs::read(output.join("seal.json")).unwrap();
+    assert!(output.join("report.json").is_file());
+    assert_eq!(
+        load_sealed_release(PackId::LensiskuJbotci, &release, &seal)
+            .unwrap()
+            .metadata()
+            .assertions
+            .len(),
+        3
+    );
+    std::fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_occupied_destination_is_preserved_and_bad_pins_create_no_output() {
+    let root = scratch("negative");
+    let occupied = root.join("occupied");
+    std::fs::create_dir(&occupied).unwrap();
+    let sentinel = occupied.join("keep.txt");
+    std::fs::write(&sentinel, b"untouched").unwrap();
+    let occupied_result = cli()
+        .args(["data-pack", "fixture", "jbotci"])
+        .arg(&occupied)
+        .output()
+        .unwrap();
+    assert!(!occupied_result.status.success());
+    let error: serde_json::Value = serde_json::from_slice(&occupied_result.stderr).unwrap();
+    assert_eq!(error["error"]["code"], "io");
+    assert_eq!(std::fs::read(&sentinel).unwrap(), b"untouched");
+
+    let raw = root.join("wrong-raw.json");
+    let metadata = root.join("metadata.toml");
+    std::fs::write(&raw, b"[]").unwrap();
+    std::fs::write(&metadata, b"not used after raw digest failure").unwrap();
+    let missing_output = root.join("must-not-exist");
+    let invalid = cli()
+        .args(["data-pack", "materialize", "jbotci"])
+        .arg(&raw)
+        .arg(&metadata)
+        .arg(&missing_output)
+        .output()
+        .unwrap();
+    assert!(!invalid.status.success());
+    let error: serde_json::Value = serde_json::from_slice(&invalid.stderr).unwrap();
+    assert_eq!(error["error"]["code"], "jbotci_hash_mismatch");
+    assert!(!missing_output.exists());
+    std::fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_llg_synthetic_fixture_uses_importer_and_refuses_occupied_output() {
+    let root = scratch("llg-fixture");
+    let output = root.join("pack");
+    let result = cli()
+        .args(["data-pack", "fixture", "llg"])
+        .arg(&output)
+        .output()
+        .expect("run LLG fixture materializer");
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    let response: serde_json::Value = serde_json::from_slice(&result.stdout).unwrap();
+    assert_eq!(response["operation"], "data-pack-materialize");
+    assert_eq!(response["pack_id"], "llg");
+    assert_eq!(response["payload_kind"], "synthetic");
+    assert_eq!(response["report"]["occurrences"], 5);
+    assert_eq!(response["report"]["lexical_assertions"], 2);
+    assert_eq!(response["report"]["excluded_assertions"], 3);
+    assert_eq!(response["report"]["entries"], 4);
+    assert_eq!(response["report"]["assigned_forms"], 3);
+    let release = std::fs::read(output.join("release.json")).unwrap();
+    let seal = std::fs::read(output.join("seal.json")).unwrap();
+    assert!(output.join("report.json").is_file());
+    let loaded = load_sealed_release(PackId::Llg, &release, &seal).unwrap();
+    assert_eq!(loaded.captures().len(), 4);
+    assert_eq!(loaded.metadata().assertions.len(), 5);
+    assert_eq!(loaded.metadata().entries.len(), 4);
+    assert_eq!(loaded.metadata().forms.len(), 3);
+    assert_eq!(loaded.metadata().releases.len(), 3);
+
+    let occupied = root.join("occupied");
+    std::fs::create_dir(&occupied).unwrap();
+    let sentinel = occupied.join("keep.txt");
+    std::fs::write(&sentinel, b"untouched").unwrap();
+    let refused = cli()
+        .args(["data-pack", "fixture", "llg"])
+        .arg(&occupied)
+        .output()
+        .unwrap();
+    assert!(!refused.status.success());
+    assert_eq!(std::fs::read(&sentinel).unwrap(), b"untouched");
+
+    let bad = root.join("bad-pin-output");
+    let gismu = root.join("gismu.txt");
+    let cmavo = root.join("cmavo.txt");
+    let rafsi = root.join("rafsi.txt");
+    let notice = root.join("notice.txt");
+    for path in [&gismu, &cmavo, &rafsi, &notice] {
+        std::fs::write(path, b"bytes").unwrap();
+    }
+    let invalid = cli()
+        .args(["data-pack", "materialize", "llg"])
+        .arg(&gismu)
+        .arg(&cmavo)
+        .arg(&rafsi)
+        .arg(&notice)
+        .arg(&bad)
+        .output()
+        .unwrap();
+    assert!(!invalid.status.success());
+    let error: serde_json::Value = serde_json::from_slice(&invalid.stderr).unwrap();
+    assert_eq!(error["error"]["code"], "llg_hash_mismatch");
+    assert!(!bad.exists());
+    std::fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_la_lojban_synthetic_fixture_loads_and_bad_pin_leaves_no_output() {
+    let root = scratch("la-lojban-fixture");
+    let output = root.join("pack");
+    let result = cli()
+        .args(["data-pack", "fixture", "la-lojban"])
+        .arg(&output)
+        .output()
+        .expect("run La-Lojban fixture materializer");
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    let response: serde_json::Value = serde_json::from_slice(&result.stdout).unwrap();
+    assert_eq!(response["operation"], "data-pack-materialize");
+    assert_eq!(response["pack_id"], "la-lojban");
+    assert_eq!(response["payload_kind"], "synthetic");
+    assert_eq!(response["report"]["input_rows"], 3);
+    assert_eq!(response["report"]["normalized_assertions"], 3);
+    assert_eq!(response["report"]["lexical_occurrences"], 2);
+    assert_eq!(response["report"]["excluded_occurrences"], 1);
+    assert_eq!(response["report"]["eligible_spellings"], 1);
+    let release = std::fs::read(output.join("release.json")).unwrap();
+    let seal = std::fs::read(output.join("seal.json")).unwrap();
+    assert!(output.join("report.json").is_file());
+    let loaded = load_sealed_release(PackId::LaLojban, &release, &seal).unwrap();
+    assert_eq!(loaded.captures().len(), 1);
+    assert_eq!(loaded.metadata().assertions.len(), 3);
+
+    let raw = root.join("wrong-pin.json");
+    std::fs::write(&raw, b"[]").unwrap();
+    let bad = root.join("must-not-exist");
+    let invalid = cli()
+        .args(["data-pack", "materialize", "la-lojban"])
+        .arg(&raw)
+        .arg(&bad)
+        .output()
+        .unwrap();
+    assert!(!invalid.status.success());
+    let error: serde_json::Value = serde_json::from_slice(&invalid.stderr).unwrap();
+    assert_eq!(error["error"]["code"], "la_lojban_hash_mismatch");
+    assert!(!bad.exists());
+    std::fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_la_materializer_rejects_invalid_inputs_and_preserves_occupied_outputs() {
+    let root = scratch("la-negative-controls");
+
+    let missing_raw = root.join("missing.json");
+    let missing_output = root.join("missing-output");
+    let missing = cli()
+        .args(["data-pack", "materialize", "la-lojban"])
+        .arg(&missing_raw)
+        .arg(&missing_output)
+        .output()
+        .unwrap();
+    assert!(!missing.status.success());
+    assert_eq!(
+        serde_json::from_slice::<serde_json::Value>(&missing.stderr).unwrap()["error"]["code"],
+        "io"
+    );
+    assert!(!missing_output.exists());
+
+    let raw = root.join("raw.json");
+    std::fs::write(&raw, b"[]").unwrap();
+    let invalid_options_output = root.join("invalid-options");
+    let invalid_options = cli()
+        .args(["data-pack", "materialize", "la-lojban"])
+        .arg(&raw)
+        .arg(&invalid_options_output)
+        .args([
+            "--revision",
+            "not-a-revision",
+            "--raw-sha256",
+            &sha256(b"[]"),
+        ])
+        .output()
+        .unwrap();
+    assert!(!invalid_options.status.success());
+    assert_eq!(
+        serde_json::from_slice::<serde_json::Value>(&invalid_options.stderr).unwrap()["error"]["code"],
+        "la_lojban_options"
+    );
+    assert!(!invalid_options_output.exists());
+
+    let malformed_raw = root.join("malformed.json");
+    std::fs::write(&malformed_raw, b"{").unwrap();
+    let malformed_output = root.join("malformed-output");
+    let malformed = cli()
+        .args(["data-pack", "materialize", "la-lojban"])
+        .arg(&malformed_raw)
+        .arg(&malformed_output)
+        .args(["--raw-sha256", &sha256(b"{")])
+        .output()
+        .unwrap();
+    assert!(!malformed.status.success());
+    assert_eq!(
+        serde_json::from_slice::<serde_json::Value>(&malformed.stderr).unwrap()["error"]["code"],
+        "la_lojban_json"
+    );
+    assert!(!malformed_output.exists());
+
+    let occupied_dir = root.join("occupied-dir");
+    std::fs::create_dir(&occupied_dir).unwrap();
+    let sentinel = occupied_dir.join("keep.txt");
+    std::fs::write(&sentinel, b"untouched").unwrap();
+    let occupied_directory = cli()
+        .args(["data-pack", "fixture", "la-lojban"])
+        .arg(&occupied_dir)
+        .output()
+        .unwrap();
+    assert!(!occupied_directory.status.success());
+    assert_eq!(std::fs::read(&sentinel).unwrap(), b"untouched");
+
+    let occupied_file = root.join("occupied-file");
+    std::fs::write(&occupied_file, b"file sentinel").unwrap();
+    let occupied_regular_file = cli()
+        .args(["data-pack", "fixture", "la-lojban"])
+        .arg(&occupied_file)
+        .output()
+        .unwrap();
+    assert!(!occupied_regular_file.status.success());
+    assert_eq!(std::fs::read(&occupied_file).unwrap(), b"file sentinel");
+
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::symlink;
+        let link = root.join("occupied-link");
+        symlink(&occupied_dir, &link).unwrap();
+        let occupied_symlink = cli()
+            .args(["data-pack", "fixture", "la-lojban"])
+            .arg(&link)
+            .output()
+            .unwrap();
+        assert!(!occupied_symlink.status.success());
+        assert!(
+            std::fs::symlink_metadata(&link)
+                .unwrap()
+                .file_type()
+                .is_symlink()
+        );
+        assert_eq!(std::fs::read(&sentinel).unwrap(), b"untouched");
+    }
+
+    std::fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_sutysisku_synthetic_fixture_loads_and_bad_pin_leaves_no_output() {
+    let root = scratch("sutysisku-fixture");
+    let output = root.join("pack");
+    let result = cli()
+        .args(["data-pack", "fixture", "sutysisku"])
+        .arg(&output)
+        .output()
+        .expect("run Sutysisku fixture materializer");
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    let response: serde_json::Value = serde_json::from_slice(&result.stdout).unwrap();
+    assert_eq!(response["operation"], "data-pack-materialize");
+    assert_eq!(response["pack_id"], "sutysisku");
+    assert_eq!(response["payload_kind"], "synthetic");
+    assert_eq!(response["report"]["input_rows"], 2);
+    assert_eq!(response["report"]["normalized_assertions"], 2);
+    assert_eq!(response["report"]["lexical_occurrences"], 1);
+    assert_eq!(response["report"]["excluded_occurrences"], 1);
+    assert_eq!(response["report"]["reported_forms"], 2);
+    let release = std::fs::read(output.join("release.json")).unwrap();
+    let seal = std::fs::read(output.join("seal.json")).unwrap();
+    assert!(output.join("report.json").is_file());
+    let loaded = load_sealed_release(PackId::Sutysisku, &release, &seal).unwrap();
+    assert_eq!(loaded.captures().len(), 1);
+    assert_eq!(loaded.metadata().assertions.len(), 2);
+    assert_eq!(loaded.metadata().forms.len(), 2);
+
+    let raw = root.join("wrong-pin.json");
+    std::fs::write(&raw, b"[]").unwrap();
+    let bad = root.join("must-not-exist");
+    let invalid = cli()
+        .args(["data-pack", "materialize", "sutysisku"])
+        .arg(&raw)
+        .arg(&bad)
+        .output()
+        .unwrap();
+    assert!(!invalid.status.success());
+    let error: serde_json::Value = serde_json::from_slice(&invalid.stderr).unwrap();
+    assert_eq!(error["error"]["code"], "sutysisku_hash_mismatch");
+    assert!(!bad.exists());
+    std::fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_four_synthetic_packs_compose_for_sql_selection_pages_and_references() {
+    let root = scratch("four-pack-sql");
+    let mut dictionaries = Vec::new();
+    for pack in ["jbotci", "llg", "la-lojban", "sutysisku"] {
+        let output = root.join(format!("{pack}-pack"));
+        let result = cli()
+            .args(["data-pack", "fixture", pack])
+            .arg(&output)
+            .output()
+            .unwrap();
+        assert!(
+            result.status.success(),
+            "{}",
+            String::from_utf8_lossy(&result.stderr)
+        );
+        let release = std::fs::read(output.join("release.json")).unwrap();
+        let seal = std::fs::read(output.join("seal.json")).unwrap();
+        let id = match pack {
+            "jbotci" => PackId::LensiskuJbotci,
+            "llg" => PackId::Llg,
+            "la-lojban" => PackId::LaLojban,
+            "sutysisku" => PackId::Sutysisku,
+            _ => unreachable!(),
+        };
+        dictionaries.push(load_sealed_release(id, &release, &seal).unwrap());
+    }
+    let composed = compose_dictionaries(dictionaries).unwrap();
+    let entry_id = composed
+        .metadata()
+        .assertions
+        .iter()
+        .find(|assertion| assertion.eligibility == vlajmaji_lexicon::Eligibility::Lexical)
+        .unwrap()
+        .entry
+        .clone();
+    let canonical = composed.to_json_bytes().unwrap();
+    let engine = DictionarySearchEngine::build(root.join("store"), &canonical).unwrap();
+    let first = engine
+        .exact(
+            "farvi",
+            DictionaryExactOptions {
+                page_size: Some(2),
+                ..Default::default()
+            },
+        )
+        .unwrap();
+    assert_eq!(first.totals.occurrences, 6);
+    // jbotci and La-Lojban both preserve the shared Lensisku source identity.
+    assert_eq!(first.totals.source_groups, 3);
+    assert!(first.next_cursor.is_some());
+    let next = engine
+        .exact(
+            "farvi",
+            DictionaryExactOptions {
+                page_size: Some(2),
+                cursor: first.next_cursor,
+                ..Default::default()
+            },
+        )
+        .unwrap();
+    assert_eq!(next.totals.occurrences, 6);
+    assert!(!next.groups.is_empty());
+    let sutysisku_only = engine
+        .exact(
+            "farvi",
+            DictionaryExactOptions {
+                sources: vec!["sutysisku".into()],
+                ..Default::default()
+            },
+        )
+        .unwrap();
+    assert_eq!(sutysisku_only.totals.occurrences, 1);
+    assert_eq!(
+        engine
+            .resolve(&RelationTarget::Local(LocalRef::Entry(entry_id)))
+            .unwrap()
+            .status,
+        vlajmaji_search::ReferenceStatus::Resolved
+    );
+    assert!(matches!(
+        engine.resolve(&RelationTarget::Local(LocalRef::Entry(
+            EntityId::new("missing-entry").unwrap(),
+        ))),
+        Err(DictionaryQueryError::InvalidReference { .. })
+    ));
+    assert!(Dictionary::from_json_bytes(&canonical).is_ok());
+    std::fs::remove_dir_all(root).unwrap();
+}

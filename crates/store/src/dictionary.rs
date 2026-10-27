@@ -140,6 +140,11 @@ impl fmt::Debug for DictionaryStore {
 }
 
 impl DictionaryStore {
+    pub(crate) fn runtime_attached_limit(&self) -> Result<i32, rusqlite::Error> {
+        self._connection
+            .limit(rusqlite::limits::Limit::SQLITE_LIMIT_ATTACHED)
+    }
+
     /// Validate a dictionary, build a fresh store under an existing parent, run
     /// every verification check, then return its read-only snapshot.
     ///
@@ -278,6 +283,18 @@ impl DictionaryStore {
             .map_err(DictionaryStoreError::InvalidDictionary)
     }
 
+    pub(crate) fn unverified_document_with_legacy_archive(
+        &self,
+    ) -> Result<(Option<DictionaryDocument<RegistryDocument>>, bool), DictionaryStoreError> {
+        let (bytes, legacy) = read_canonical(&self._connection)?;
+        if legacy.is_some() {
+            return Ok((None, true));
+        }
+        let document = DictionaryDocument::from_unverified_json_bytes(&bytes)
+            .map_err(DictionaryStoreError::InvalidDictionary)?;
+        Ok((Some(document), false))
+    }
+
     /// Return the recorded canonical digest from the minimally checked header.
     /// This value is not authenticated until the `hashes` check passes.
     pub fn recorded_state_sha256(&self) -> &str {
@@ -414,7 +431,7 @@ fn invalid(reason: DictionaryStoreInvalidity, detail: impl Into<String>) -> Dict
     }
 }
 
-fn check_minimal_metadata(
+pub(crate) fn check_minimal_metadata(
     metadata: &std::collections::BTreeMap<String, String>,
 ) -> Result<(), DictionaryStoreError> {
     check_metadata(metadata)?;
@@ -512,8 +529,20 @@ fn populate(
 pub(crate) fn read_metadata(
     conn: &Connection,
 ) -> Result<std::collections::BTreeMap<String, String>, DictionaryStoreError> {
+    read_metadata_from(conn, "main")
+}
+
+pub(crate) fn read_metadata_from(
+    conn: &Connection,
+    schema: &str,
+) -> Result<std::collections::BTreeMap<String, String>, DictionaryStoreError> {
+    // `schema` is supplied only by the closed snapshot provider (`main` or
+    // `pack1`..`pack3`), never from caller-controlled input.
+    let schema_catalog = format!("{schema}.sqlite_schema");
     let has_table: bool = conn.query_row(
-        "SELECT EXISTS(SELECT 1 FROM sqlite_schema WHERE type='table' AND name='metadata')",
+        &format!(
+            "SELECT EXISTS(SELECT 1 FROM {schema_catalog} WHERE type='table' AND name='metadata')"
+        ),
         [],
         |row| row.get(0),
     )?;
@@ -524,7 +553,7 @@ pub(crate) fn read_metadata(
         ));
     }
     let has_required_columns = {
-        let shape = conn.prepare("SELECT * FROM metadata LIMIT 0")?;
+        let shape = conn.prepare(&format!("SELECT * FROM {schema}.metadata LIMIT 0"))?;
         let names = shape.column_names();
         names.iter().any(|name| name.eq_ignore_ascii_case("key"))
             && names.iter().any(|name| name.eq_ignore_ascii_case("value"))
@@ -535,7 +564,9 @@ pub(crate) fn read_metadata(
             "metadata table is missing a required key/value column",
         ));
     }
-    let mut stmt = conn.prepare("SELECT key,value FROM metadata ORDER BY key")?;
+    let mut stmt = conn.prepare(&format!(
+        "SELECT key,value FROM {schema}.metadata ORDER BY key"
+    ))?;
     let rows = stmt.query_map([], |r| Ok((r.get::<_, Value>(0)?, r.get::<_, Value>(1)?)))?;
     let mut result = std::collections::BTreeMap::new();
     for row in rows {
@@ -623,7 +654,17 @@ pub(crate) fn check_schema(conn: &Connection) -> Result<(), DictionaryStoreError
 pub(crate) fn read_canonical(
     conn: &Connection,
 ) -> Result<(Vec<u8>, Option<Vec<u8>>), DictionaryStoreError> {
-    let mut stmt = conn.prepare("SELECT json,legacy_archive FROM canonical_document WHERE id=1")?;
+    read_canonical_from(conn, "main")
+}
+
+pub(crate) fn read_canonical_from(
+    conn: &Connection,
+    schema: &str,
+) -> Result<(Vec<u8>, Option<Vec<u8>>), DictionaryStoreError> {
+    // `schema` is supplied only by the closed snapshot provider.
+    let mut stmt = conn.prepare(&format!(
+        "SELECT json,legacy_archive FROM {schema}.canonical_document WHERE id=1"
+    ))?;
     let rows: Vec<(Value, Value)> = stmt
         .query_map([], |r| Ok((r.get(0)?, r.get(1)?)))?
         .collect::<Result<_, _>>()?;

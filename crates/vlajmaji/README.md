@@ -58,10 +58,52 @@ The umbrella library enables no optional features by default.
   `vlajmaji-search` and `latkerlo-jvotci`.
 - `graph` enables the Oxigraph/RocksDB backend through `vlajmaji-store`. It
   requires native C++ and Clang/libclang build tooling.
+- `data-lensisku-jbotci` selects the unpublished optional embedded pack crate.
+  It forwards its `embedded` feature and requires local pack preparation first;
+  no dictionary data is included by default.
+- `data-llg` selects the unpublished optional embedded gismu/cmavo/assigned
+  rafsi pack crate. It forwards that crate's `embedded` feature and requires a
+  caller-prepared local payload; no dictionary data is included by default.
+- `data-la-lojban` selects the unpublished optional La-Lojban English
+  Lensisku pack crate. It forwards `embedded` and requires local payload
+  preparation; no dictionary data is included by default and redistribution is
+  held pending verified content terms.
+- `data-sutysisku` selects the unpublished optional Sutysisku English
+  projection pack crate and re-exports it as `vlajmaji::data_sutysisku`. It
+  forwards `embedded` and requires local payload preparation; no dictionary
+  data is included by default, and redistribution remains Held while upstream
+  lexical lineage and content terms are unverified.
 
 These features can be enabled independently or together. The CLI package enables
 morphology separately; that does not change this library's defaults for callers
 that depend only on `vlajmaji`.
+
+Prepare a synthetic local payload with the CLI's `data-pack fixture jbotci`
+command before building the feature. Full pinned local materialization uses
+`data-pack materialize jbotci RAW METADATA OUTPUT`. The optional data package
+is unpublished, and its local seal records integrity and inventory rather than
+publisher authorization or content licensing.
+
+For LLG, prepare a synthetic payload with `data-pack fixture llg OUTPUT` or
+materialize explicit pinned local inputs with
+`data-pack materialize llg GISMU CMAVO RAFSI NOTICE OUTPUT` before enabling
+`data-llg`. The public source notice is retained as source evidence; public
+redistribution remains Held.
+
+For La-Lojban, prepare a Synthetic local payload with
+`data-pack fixture la-lojban OUTPUT` or materialize the locally pinned export
+with `data-pack materialize la-lojban RAW_JSON OUTPUT` before enabling
+`data-la-lojban`. Its seal records local integrity and inventory; it does not
+establish permission to redistribute the dictionary content.
+
+For Sutysisku, prepare a Synthetic local payload with
+`data-pack fixture sutysisku OUTPUT` for an offline feature build, or
+materialize caller-provided pinned bytes with
+`data-pack materialize sutysisku RAW_JSON OUTPUT` for a Full local payload
+before enabling `data-sutysisku`. The command reads only the supplied path and
+does not fetch data or create a default store. The package is unpublished, and
+content redistribution remains Held pending verified terms and upstream
+lexical lineage.
 
 Requires Rust 1.98 or newer. Licensed under Apache-2.0;
 corpus content terms remain separate from the code license.

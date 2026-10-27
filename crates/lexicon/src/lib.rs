@@ -39,7 +39,12 @@ use sha2::{Digest, Sha256};
 mod attribution;
 pub mod dictionary;
 mod jbotci;
+mod la_lojban;
+mod lensisku;
+pub mod llg;
+pub mod pack;
 pub mod registry;
+mod sutysisku;
 
 pub use attribution::AttributedOccurrence;
 pub use dictionary::{
@@ -58,11 +63,28 @@ pub use jbotci::{
     JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION, JbotciImport,
     JbotciImportError, JbotciImportOptions, JbotciImportReport, import_jbotci_export,
 };
+pub use la_lojban::{
+    LA_LOJBAN_PINNED_RAW_SHA256, LA_LOJBAN_PINNED_REVISION, LaLojbanImport, LaLojbanImportError,
+    LaLojbanImportOptions, LaLojbanImportReport, import_la_lojban_export,
+};
+pub use llg::{
+    LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256, LLG_NOTICE_SHA256, LLG_RAFSI_SHA256,
+    LlgComponentReport, LlgHeaderClaim, LlgImport, LlgImportError, LlgImportOptions,
+    LlgImportReport, import_llg_lists,
+};
+pub use pack::{
+    PackError, PackId, PackPayloadKind, PackSeal, SealedRelease, compose_dictionaries,
+    compose_unverified_documents, load_sealed_release, seal_release,
+};
 pub use registry::{
     AbbreviationKind, AliasScope, AliasStatus, ContributorId, ContributorRecord, DistributorId,
     DistributorRecord, LineageTarget, OccurrenceAttribution, RegistryDocument, RegistryError,
     SnapshotAttribution, SourceAlias, SourceId, SourceLineage, SourceOrigin, SourceRecord,
     SourceRegistry,
+};
+pub use sutysisku::{
+    SUTYSISKU_PINNED_RAW_SHA256, SUTYSISKU_PINNED_REVISION, SutysiskuImport, SutysiskuImportError,
+    SutysiskuImportOptions, SutysiskuImportReport, import_sutysisku_export,
 };
 
 /// The captured representation received from one source.

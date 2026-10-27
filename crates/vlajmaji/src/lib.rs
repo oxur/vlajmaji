@@ -9,6 +9,18 @@ pub use vlajmaji_lexicon as lexicon;
 #[doc(inline)]
 pub use vlajmaji_search as search;
 
+/// Optional embedded La-Lojban English dictionary pack.
+#[cfg(feature = "data-la-lojban")]
+pub use vlajmaji_data_la_lojban as data_la_lojban;
+/// Optional embedded full Lensisku pack distributed through jbotci.
+#[cfg(feature = "data-lensisku-jbotci")]
+pub use vlajmaji_data_lensisku_jbotci as data_lensisku_jbotci;
+/// Optional embedded LLG list-family pack.
+#[cfg(feature = "data-llg")]
+pub use vlajmaji_data_llg as data_llg;
+/// Optional embedded Sutysisku English projection pack.
+#[cfg(feature = "data-sutysisku")]
+pub use vlajmaji_data_sutysisku as data_sutysisku;
 /// Rebuildable SQLite indexes and the optional graph backend.
 #[doc(inline)]
 pub use vlajmaji_store as store;
