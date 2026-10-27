@@ -1,6 +1,6 @@
 # Arc04 ledger
 
-Arc04 active, 2026-10-27 UTC. S01–S03 CLOSED/eighteen child rows DONE; A04-01, A04-02 and A04-04 DONE, seven other arc obligations OPEN. Current S03dcdf216/hosted40424262199 and PR4 integration CI40425105325 green; root canonical consistency PASS. All fourteen project rows OPEN; S04/S05 unissued, S04 issue waits final root reconciliation of the user-attributed PR4 merge/main CI.
+Arc04 active, 2026-10-27 UTC. S01–S03 CLOSED/eighteen child rows DONE; A04-01, A04-02 and A04-04 DONE, seven other arc obligations OPEN. Current S03dcdf216/hosted40424262199 and PR4 integration CI40425105325 green; root canonical consistency PASS. All fourteen project rows OPEN; S04 initial format/migrate/update/rebuild assignment ISSUED after root readiness PASS and final S03/main reconciliation; S05 unissued. All six S04 child rows remain OPEN through mandatory follow-up.
 
 | ID | Criterion | Verify at execution | Owner / workflow | Status | Evidence / notes |
 | --- | --- | --- | --- | --- | --- |
@@ -36,3 +36,7 @@ A04-02 DONE; A04-03 remains OPEN with S02 contribution and S03/S04 operational-p
 ## S03 accepted partial bubble-up — 2026-10-27 UTC
 
 A04-04 DONE; A04-03/05/06/07/08/09/10 stay OPEN, all fourteen project rows OPEN. Eighteen child rows accepted across S01–S03. Source dcdf216 is current reviewed delivery; Duncan personally completed the authorized PR4 preserving-history merge as main b0106b; its tree equals accepted dcdf. Root owns final CI reconciliation. Seven comparison stores and the operational S02 ROOT remain retained. S04 issue awaits final root main-CI reconciliation; no new runtime/Full campaign or A05 activation.
+
+## S04 initial assignment checkpoint — 2026-10-27 UTC
+
+Initial source-guided catalogue2/migrate/update/rebuild increment is ISSUED after root concrete readiness PASS. No S04 or additional arc row closes at issue; remove/reinstall/recovery/policy/default migration follow-up remains mandatory. User-attributed PR4 merge/main terminal CI is reconciled; no future feature push/Full budget is inferred.

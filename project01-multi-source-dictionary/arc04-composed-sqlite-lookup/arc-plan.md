@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S03 CLOSED, eighteen child rows/A04-01,02,04 DONE; seven arc rows OPEN. S04/S05 not issued; S04 waits final root reconciliation of user-merged PR4/main CI |
+| status | ACTIVE; S01–S03 CLOSED, eighteen child rows/A04-01,02,04 DONE; seven arc rows OPEN. S04 initial iteration ISSUED after root readiness PASS; six lifecycle rows OPEN, S05 unissued |
 | version / date | 1.9 / 2026-10-27 UTC |
 | authority | Latest 2026-10-25: Duncan explicitly approved seven TOTAL stores in protocol 1.5, retaining the historical two plus clean fresh five after remaining prerequisites. Original protocol 1.1 approval and Autonomous THROUGH ARC04 ONLY persist; unchanged Sol6.1/high CDC and Luna/high CC. CDC readiness clearance is now recorded in protocol 1.6 and slice artifacts/cdc-prerequisite02. Prior checkpoints remain historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
@@ -122,3 +122,9 @@ Source-guided configured combined lookup packet: slice03-configured-combined-loo
 ## Version 1.9 — S03 accepted, reviewed integration authorized
 
 2026-10-27 UTC: six S03 rows accepted atdcdf216 after independent retained Full/literal/public/CLI proof and actual forced Linux CONFIG/native ROOT/dev-full; root canonical scope/evidence consistency PASS. Newly A04-04 DONE only; A04-03/05/06/07/08/09/10 remain OPEN/all fourteen project rows OPEN. S04 lifecycle/version fence/migration and S05 projection/whole-workflow composition remain mandatory. Latest user explicitly requests PR/main merge of current reviewed delivery; PR4 includes accepted Arc03 plus A04S01–S03 (not only S03). Root owns preserving-commit integration; S04 issue waits actual merge/tree/CI reconciliation, no future push/publication inferred. Prior no-main statements are historical scope.
+
+## S04 initial issue — 2026-10-27 UTC
+
+S03 closed in planning b436e2c; Duncan merged PR4 into main b0106b with exact reviewed tree and terminal green main CI. Root final reconciliation PASS. S04 is sized as two reviewable implementation iterations: first explicit catalogue2/table-namespace write fence, migration, update/rebuild API+CLI+docs; then removal/exact reinstall/reconcile/policy commands and reversible scratch default migration. All six new child rows and seven outstanding arc rows remain OPEN; no S05 deferral or new investigation. The initial twelve-path prompt is ISSUED after root readiness PASS, ownership only after retained CC acknowledgment. No Full/new cache/dependency/network/future push or protected-store action.
+
+- 1.10 — 2026-10-27: S03 actual user merge/main CI reconciled; initial S04 useful lifecycle increment issued under unchanged Autonomous roles. All remaining W4 and W5/arc composition obligations preserved.
