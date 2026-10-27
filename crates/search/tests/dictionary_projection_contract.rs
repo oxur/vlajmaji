@@ -867,6 +867,271 @@ fn compact_detail_snapshot_tracks_legitimate_attached_context_changes() {
 }
 
 #[test]
+fn test_compact_detail_changed_assertion_body_expect_no_retarget() {
+    let base = scratch();
+    let before_root = base.join("before.sqlite3");
+    let after_root = base.join("after.sqlite3");
+
+    let before_dictionary = fixture::complete_fixture().unwrap();
+    let before_document = before_dictionary.document();
+    let before_assertion = before_document
+        .metadata
+        .assertions
+        .iter()
+        .find(|assertion| {
+            assertion.eligibility == vlajmaji_lexicon::Eligibility::Lexical
+                && before_document.metadata.entries.iter().any(|entry| {
+                    entry.id == assertion.entry
+                        && matches!(
+                            &entry.spelling,
+                            vlajmaji_lexicon::Presence::Value(spelling)
+                                if spelling == "farvi"
+                        )
+                })
+        })
+        .expect("complete fixture has a lexical farvi assertion")
+        .clone();
+
+    let mut after_document = before_dictionary.clone().into_document();
+    let after_assertion = after_document
+        .metadata
+        .assertions
+        .iter_mut()
+        .find(|assertion| assertion.id == before_assertion.id)
+        .unwrap();
+    after_assertion.native_sense_id =
+        vlajmaji_lexicon::Presence::Value("changed-valid-native-sense".into());
+    let after_assertion = after_assertion.clone();
+    let after_dictionary = Dictionary::from_document(after_document).unwrap();
+
+    // The stable identity/occurrence stays fixed while the complete typed
+    // assertion record changes in a valid newly constructed dictionary.
+    assert_eq!(before_assertion.id, after_assertion.id);
+    assert_eq!(before_assertion.entry, after_assertion.entry);
+    assert_eq!(before_assertion.occurrence, after_assertion.occurrence);
+    assert_ne!(before_assertion, after_assertion);
+    let before_entry = before_document
+        .metadata
+        .entries
+        .iter()
+        .find(|entry| entry.id == before_assertion.entry)
+        .unwrap();
+    let after_document = after_dictionary.document();
+    let after_entry = after_document
+        .metadata
+        .entries
+        .iter()
+        .find(|entry| entry.id == after_assertion.entry)
+        .unwrap();
+    assert_eq!(before_entry, after_entry);
+
+    DictionaryStore::create(&before_root, &before_dictionary).unwrap();
+    DictionaryStore::create(&after_root, &after_dictionary).unwrap();
+    let before = DictionaryCompactSearchEngine::open(&before_root).unwrap();
+    let after = DictionaryCompactSearchEngine::open(&after_root).unwrap();
+    let before_result = before
+        .exact("farvi", DictionaryExactOptions::default())
+        .unwrap();
+    let before_hit = before_result
+        .groups
+        .iter()
+        .flat_map(|group| &group.hits)
+        .find(|hit| hit.assertion.id == before_assertion.id)
+        .expect("the pre-change assertion is a compact hit");
+    let old_key = before_hit.detail_ref.clone();
+
+    let after_result = after
+        .exact("farvi", DictionaryExactOptions::default())
+        .unwrap();
+    let after_hit = after_result
+        .groups
+        .iter()
+        .flat_map(|group| &group.hits)
+        .find(|hit| hit.assertion.id == after_assertion.id)
+        .expect("the changed assertion remains a compact hit");
+    assert_eq!(after_hit.entry, *before_entry);
+    assert_eq!(after_hit.assertion, after_assertion);
+    assert_eq!(old_key.source, after_hit.detail_ref.source);
+    assert_eq!(old_key.entry_id, after_hit.detail_ref.entry_id);
+    assert_eq!(old_key.assertion_id, after_hit.detail_ref.assertion_id);
+    assert_eq!(old_key.occurrence, after_hit.detail_ref.occurrence);
+    assert_eq!(old_key.entry_sha256, after_hit.detail_ref.entry_sha256);
+    assert_ne!(
+        old_key.assertion_sha256,
+        after_hit.detail_ref.assertion_sha256
+    );
+
+    let old_key_result = after.detail(&old_key, None).unwrap();
+    assert_eq!(
+        old_key_result.status,
+        vlajmaji_search::ReferenceStatus::NoMatch
+    );
+    assert!(old_key_result.hit.is_none());
+    assert!(old_key_result.current_eligible.is_none());
+    let new_key_result = after.detail(&after_hit.detail_ref, None).unwrap();
+    assert_eq!(
+        new_key_result.status,
+        vlajmaji_search::ReferenceStatus::Resolved
+    );
+    assert_eq!(
+        new_key_result.hit.as_ref().map(|hit| &hit.assertion),
+        Some(&after_assertion)
+    );
+
+    let before_managed_root = base.join("before-managed");
+    let after_managed_root = base.join("after-managed");
+    let mut before_managed_document = before_dictionary.clone().into_document();
+    before_managed_document.legacy_archive = None;
+    let before_managed_dictionary = Dictionary::from_document(before_managed_document).unwrap();
+    let mut after_managed_document = after_dictionary.clone().into_document();
+    after_managed_document.legacy_archive = None;
+    let after_managed_dictionary = Dictionary::from_document(after_managed_document).unwrap();
+    for (root, dictionary) in [
+        (&before_managed_root, &before_managed_dictionary),
+        (&after_managed_root, &after_managed_dictionary),
+    ] {
+        let sealed = seal_release(PackId::Llg, PackPayloadKind::Synthetic, dictionary).unwrap();
+        let request = CollectionRequest::new(
+            vec![CollectionInput::SealedBytes {
+                pack_id: PackId::Llg,
+                release: std::borrow::Cow::Borrowed(sealed.release.as_slice()),
+                seal: std::borrow::Cow::Borrowed(sealed.seal.as_slice()),
+            }],
+            CollectionSelection::Packs(vec![PackId::Llg]),
+            true,
+        )
+        .unwrap();
+        CollectionCatalogue::install(root, request).unwrap();
+    }
+    let mut before_managed = CollectionCompactSearchEngine::open(
+        &before_managed_root,
+        CollectionQuerySelection {
+            packs: vec![PackId::Llg],
+            disabled: vec![],
+            profile: None,
+        },
+    )
+    .unwrap();
+    let managed_exact = before_managed
+        .execute(DictionaryRequest::Exact {
+            spelling: "farvi".into(),
+            options: DictionaryExactOptions::default(),
+        })
+        .unwrap();
+    let CollectionCompactQueryResult::Exact(managed_exact) = managed_exact.result else {
+        panic!("expected managed compact exact response");
+    };
+    let managed_old_key = managed_exact.groups[0].hits[0].detail_ref.clone();
+    let mut after_managed = CollectionCompactSearchEngine::open(
+        &after_managed_root,
+        CollectionQuerySelection {
+            packs: vec![PackId::Llg],
+            disabled: vec![],
+            profile: None,
+        },
+    )
+    .unwrap();
+    let managed_old = after_managed.detail(&managed_old_key, None).unwrap();
+    assert_eq!(
+        managed_old.response.status,
+        vlajmaji_search::ReferenceStatus::NoMatch
+    );
+    assert!(managed_old.response.hit.is_none());
+    assert!(managed_old.response.current_eligible.is_none());
+    assert!(managed_old.catalogue_matches.is_empty());
+    let managed_new = after_managed.detail(&after_hit.detail_ref, None).unwrap();
+    assert_eq!(
+        managed_new.response.status,
+        vlajmaji_search::ReferenceStatus::Resolved
+    );
+    assert_eq!(
+        managed_new.response.hit.as_ref().map(|hit| &hit.assertion),
+        Some(&after_assertion)
+    );
+
+    fs::remove_dir_all(base).unwrap();
+}
+
+#[test]
+fn test_compact_detail_identity_conflicts_are_typed_and_absent_values_are_no_match() {
+    let root = scratch();
+    let dictionary = fixture::complete_fixture().unwrap();
+    DictionaryStore::create(root.join("dictionary.sqlite3"), &dictionary).unwrap();
+    let engine = DictionaryCompactSearchEngine::open(root.join("dictionary.sqlite3")).unwrap();
+    let exact = engine
+        .exact("farvi", DictionaryExactOptions::default())
+        .unwrap();
+    let valid = exact.groups[0].hits[0].detail_ref.clone();
+    assert_eq!(
+        engine.detail(&valid, None).unwrap().status,
+        vlajmaji_search::ReferenceStatus::Resolved
+    );
+
+    let invalid_reference = |result: Result<_, DictionaryProjectionError>| {
+        matches!(
+            result,
+            Err(DictionaryProjectionError::Query(error))
+                if matches!(*error, DictionaryQueryError::InvalidReference { .. })
+        )
+    };
+
+    let mut absent = valid.clone();
+    absent.assertion_id = vlajmaji_lexicon::EntityId::new("absent-assertion").unwrap();
+    let absent = engine.detail(&absent, None).unwrap();
+    assert_eq!(absent.status, vlajmaji_search::ReferenceStatus::NoMatch);
+    assert!(absent.hit.is_none());
+    assert!(absent.current_eligible.is_none());
+
+    let mut unknown_digest = valid.clone();
+    unknown_digest.assertion_sha256 = "f".repeat(64);
+    let unknown_digest = engine.detail(&unknown_digest, None).unwrap();
+    assert_eq!(
+        unknown_digest.status,
+        vlajmaji_search::ReferenceStatus::NoMatch
+    );
+    assert!(unknown_digest.hit.is_none());
+
+    let mut wrong_source = valid.clone();
+    wrong_source.source = vlajmaji_lexicon::SourceId::new("source-b").unwrap();
+    assert!(invalid_reference(engine.detail(&wrong_source, None)));
+
+    let mut wrong_entry = valid.clone();
+    wrong_entry.entry_id = vlajmaji_lexicon::EntityId::new("entry-b-farvi").unwrap();
+    assert!(invalid_reference(engine.detail(&wrong_entry, None)));
+
+    let mut wrong_occurrence = valid.clone();
+    wrong_occurrence.occurrence.locator.push_str("-other");
+    assert!(invalid_reference(engine.detail(&wrong_occurrence, None)));
+
+    let mut wrong_capture_owner = valid.clone();
+    wrong_capture_owner
+        .occurrence
+        .capture
+        .namespace
+        .push_str("-other");
+    assert!(invalid_reference(engine.detail(&wrong_capture_owner, None)));
+
+    let mut wrong_native_role = valid.clone();
+    if let Some(native_assertion) = valid.native_assertion_id.as_ref() {
+        wrong_native_role.native_entry_id = Some(native_assertion.clone());
+        assert!(invalid_reference(engine.detail(&wrong_native_role, None)));
+    } else {
+        panic!("selected fixture hit has native assertion attribution");
+    }
+
+    let mut unknown_native_value = valid;
+    unknown_native_value.native_entry_id = Some("unknown-native-entry".into());
+    let unknown_native_value = engine.detail(&unknown_native_value, None).unwrap();
+    assert_eq!(
+        unknown_native_value.status,
+        vlajmaji_search::ReferenceStatus::NoMatch
+    );
+    assert!(unknown_native_value.hit.is_none());
+
+    fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
 fn compact_local_reference_keeps_linked_assertions_and_status() {
     let root = scratch();
     let store = root.join("dictionary.sqlite3");
@@ -2072,6 +2337,23 @@ fn compact_four_literal_install_matches_preinput_typed_family_union() {
         .iter()
         .map(|(_, dictionary)| dictionary_inventory(&unverified_document(dictionary)))
         .collect::<Vec<_>>();
+    let mut expected_hit_records = BTreeMap::new();
+    for (_, dictionary) in &dictionaries {
+        let document = unverified_document(dictionary);
+        for assertion in &document.metadata.assertions {
+            let entry = document
+                .metadata
+                .entries
+                .iter()
+                .find(|entry| entry.id == assertion.entry)
+                .expect("every pre-input assertion has its linked Entry");
+            let key = (entry.id.to_string(), assertion.id.to_string());
+            let records = (entry.clone(), assertion.clone());
+            if let Some(existing) = expected_hit_records.insert(key, records.clone()) {
+                assert_eq!(existing, records, "duplicate input identity has one body");
+            }
+        }
+    }
     let mut expected = BTreeMap::<String, BTreeMap<String, usize>>::new();
     for inventory in &per_pack {
         for (category, rows) in inventory {
@@ -2240,6 +2522,30 @@ fn compact_four_literal_install_matches_preinput_typed_family_union() {
             .flat_map(|group| &group.hits)
             .find(|hit| hit.occurrence_id == compact_hit.occurrence_id)
             .expect("each compact literal occurrence has a full hit");
+        let (expected_entry, expected_assertion) = expected_hit_records
+            .get(&(
+                compact_hit.entry.id.to_string(),
+                compact_hit.assertion.id.to_string(),
+            ))
+            .expect("every compact literal identity is present in the original inputs");
+        assert_eq!(&compact_hit.entry, expected_entry);
+        assert_eq!(&compact_hit.assertion, expected_assertion);
+        assert_eq!(compact_hit.detail_ref.role, "assertion");
+        assert_eq!(compact_hit.detail_ref.source, expected_entry.source);
+        assert_eq!(compact_hit.detail_ref.entry_id, expected_entry.id);
+        assert_eq!(compact_hit.detail_ref.assertion_id, expected_assertion.id);
+        assert_eq!(
+            compact_hit.detail_ref.occurrence,
+            expected_assertion.occurrence
+        );
+        assert_eq!(
+            compact_hit.detail_ref.entry_sha256,
+            sha256(&serde_json::to_vec(expected_entry).unwrap())
+        );
+        assert_eq!(
+            compact_hit.detail_ref.assertion_sha256,
+            sha256(&serde_json::to_vec(expected_assertion).unwrap())
+        );
         assert_eq!(compact_hit.entry, full_hit.entry);
         assert_eq!(compact_hit.assertion, full_hit.assertion);
         assert_eq!(compact_hit.capture, full_hit.capture);
