@@ -3,11 +3,11 @@
 | Field | Value |
 | --- | --- |
 | status | ACTIVE; S01–S03 CLOSED, eighteen child rows/A04-01,02,04 DONE; seven arc rows OPEN. S04 initial iteration ISSUED after root readiness PASS; six lifecycle rows OPEN, S05 unissued |
-| version / date | 1.9 / 2026-10-27 UTC |
-| authority | Latest 2026-10-25: Duncan explicitly approved seven TOTAL stores in protocol 1.5, retaining the historical two plus clean fresh five after remaining prerequisites. Original protocol 1.1 approval and Autonomous THROUGH ARC04 ONLY persist; unchanged Sol6.1/high CDC and Luna/high CC. CDC readiness clearance is now recorded in protocol 1.6 and slice artifacts/cdc-prerequisite02. Prior checkpoints remain historical. |
+| version / date | 1.10 / 2026-10-27 UTC |
+| authority | Latest 2026-10-27: Duncan directed “when you've finished up, go ahead and dive into the next slice”. Autonomous THROUGH ARC04 ONLY and unchanged Sol6.1/high CDC/Luna/high CC persist. S03/user merge/main CI reconciled; root approved S04 initial readiness. S01 numerical/count agreements remain accepted historical comparison authority, not new S04 Full/push authority. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
-| accepted inputs | Arc01–03/source7b retained; current reviewed sourcedcdf216, S03 accepted; prior main52fd/Bauskec580 preservation is dated execution evidence. Root owns newly authorized PR4 main integration; actual user default unchanged |
-| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; reviewed dcdf216 clean; current push and PR4 integration CI green; Duncan merged PR4 as main b0106b with identical accepted tree; root reports main CI watch exit 0, terminal-summary reconciliation pending |
+| accepted inputs | Accepted Arc01–03 and S01–S03 contracts, reviewed source dcdf216; Duncan merged PR4 as main b0106b with identical tree and all three main CI jobs SUCCESS. Bauske c580/accepted data/default remain protected. |
+| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; reviewed dcdf216 clean; current push and PR4 integration CI green; Duncan merged PR4 as main b0106b with identical accepted tree; main CI40425580977 terminal SUCCESS, all three jobs; root final reconciliation PASS |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
