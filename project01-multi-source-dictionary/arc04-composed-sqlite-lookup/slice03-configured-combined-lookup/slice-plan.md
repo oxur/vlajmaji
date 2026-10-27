@@ -2,9 +2,9 @@
 
 | Field | Binding current value |
 | --- | --- |
-| Status | Test-only correction frozen atdcdf216, local ordered gates passed. Initial45f2 hosted CI green; corrected-head push rejected before execution by automatic review, separate exact-candidate user approval pending. Forced CONFIG-positive and all six rows remain OPEN. |
+| Status | Test-only correction frozen atdcdf216, local ordered gates passed. Initial45f2 hosted CI green; separate exact-candidate approval now clears the prior rejection. Root normal push completed; currentdcdf run40424262199 in progress. Forced CONFIG-positive and all six rows remain OPEN. |
 | Authority | Autonomous THROUGH ARC04; unchanged requested Sol6.1/high CDC, Luna/high CC. No new model/budget question. S02 CLOSED atce1bd238 / planning36e7fc9. |
-| Source / ownership | Clean dcdf216, parent45f21dc3, cumulative baseline ce1bd238. CC returned source/index/target; no active command. Root alone owns any separately approved exact-candidate delivery. No retry/bypass while authorization pending; protected/default/Full-store boundaries remain. |
+| Source / ownership | Clean dcdf216, parent45f21dc3, cumulative baseline ce1bd238. CC returned source/index/target; no active command. Root alone owns the explicitly approved dcdf delivery/watch, with no future push authority inferred; protected/default/Full-store boundaries remain. |
 | Useful result | Configure selected/all installed collections and issue one combined exact/reference command with pack selection, source filters, coherent pages and truthful operational availability. |
 | Exclusions | No new topology/adapter, full import/store creation, automatic migration/download/default switch, lifecycle delete/update commands, compact/readable implementation or owned editor. No push/PR/publication. |
 

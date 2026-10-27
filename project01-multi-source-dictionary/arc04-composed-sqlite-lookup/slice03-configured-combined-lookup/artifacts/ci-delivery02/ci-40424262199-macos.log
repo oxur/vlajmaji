@@ -1,0 +1,1028 @@
+Test (macos-latest)	Set up job	﻿2026-10-27T00:06:48.9255490Z Current runner version: '2.338.0'
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9270680Z ##[group]Runner Image Provisioner
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9271160Z Hosted Compute Agent
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9271540Z Version: 20261012.601
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9271960Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9272390Z Build Date: 2026-10-12T17:48:21Z
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9272800Z Worker ID: {077f4e1c-ab90-4242-95d2-a94b21c00704}
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9273220Z Region: westus
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9273540Z Cloud: MacCloud
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9315870Z ##[endgroup]
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9317550Z ##[group]Operating System
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9317980Z macOS
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9318280Z 26.6.2
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9318570Z 25G83
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9318880Z ##[endgroup]
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9319190Z ##[group]Runner Image
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9319530Z Image: macos-26-arm64
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9319860Z Version: 20261013.0424.1
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9320520Z Included Software: https://github.com/actions/runner-images/blob/macos-26-arm64/20261013.0424/images/macos/macos-26-arm64-Readme.md
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9321540Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-26-arm64%2F20261013.0424
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9322130Z ##[endgroup]
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9322790Z ##[group]GITHUB_TOKEN Permissions
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9323960Z Contents: read
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9324300Z Metadata: read
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9324620Z ##[endgroup]
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9325970Z Secret source: Actions
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9326610Z Cache mode: write
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9327000Z Prepare workflow directory
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9651110Z Prepare all required actions
+Test (macos-latest)	Set up job	2026-10-27T00:06:48.9688990Z Getting action download info
+Test (macos-latest)	Set up job	2026-10-27T00:06:49.1403120Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+Test (macos-latest)	Set up job	2026-10-27T00:06:49.3775730Z Download action repository 'dtolnay/rust-toolchain@1.98.0' (SHA:5059963b1731bf1580991b5f3b1eecfb5da406c0)
+Test (macos-latest)	Set up job	2026-10-27T00:06:49.7443370Z Download action repository 'Swatinem/rust-cache@v2' (SHA:d1527c8f67ef9af357290475d4af4b0fab8f12e0)
+Test (macos-latest)	Set up job	2026-10-27T00:06:50.5698460Z Complete job name: Test (macos-latest)
+Test (macos-latest)	Run actions/checkout@v4	﻿2026-10-27T00:06:50.6197110Z ##[group]Run actions/checkout@v4
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6197830Z with:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6198130Z   path: vlajmaji
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6198450Z   repository: oxur/vlajmaji
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6201940Z   token: ***
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6202330Z   ssh-strict: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6202750Z   ssh-user: git
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6203140Z   persist-credentials: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6203490Z   clean: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6203880Z   sparse-checkout-cone-mode: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6204440Z   fetch-depth: 1
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6204900Z   fetch-tags: false
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6205640Z   show-progress: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6206010Z   lfs: false
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6206360Z   submodules: false
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6206800Z   set-safe-directory: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6207250Z   allow-unsafe-pr-checkout: false
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6215340Z env:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6215670Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6216110Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.6216440Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.7785970Z Syncing repository: oxur/vlajmaji
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.7787450Z ##[group]Getting Git version info
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.7788140Z Working directory is '/Users/runner/work/vlajmaji/vlajmaji/vlajmaji'
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.7788920Z [command]/opt/homebrew/bin/git version
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8061460Z git version 2.56.0
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8071740Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8078130Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/e00dff5d-51c4-42eb-ace7-c16eda214e60/.gitconfig'
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8088200Z Temporarily overriding HOME='/Users/runner/work/_temp/e00dff5d-51c4-42eb-ace7-c16eda214e60' before making global git config changes
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8089370Z Adding repository directory to the temporary git global config as a safe directory
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8094070Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/vlajmaji/vlajmaji/vlajmaji
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8199040Z ##[group]Initializing the repository
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8206260Z [command]/opt/homebrew/bin/git init /Users/runner/work/vlajmaji/vlajmaji/vlajmaji
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8444970Z hint: Using 'master' as the name for the initial branch. This default branch name
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8446120Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8446950Z hint: to use in all of your new repositories, which will suppress this warning,
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8447610Z hint: call:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8447920Z hint:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8448300Z hint: 	git config --global init.defaultBranch <name>
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8448790Z hint:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8449300Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8449960Z hint: 'development'. The just-created branch can be renamed via this command:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8450640Z hint:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8451020Z hint: 	git branch -m <name>
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8460650Z hint:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8461170Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8461940Z Initialized empty Git repository in /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/.git/
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8463390Z [command]/opt/homebrew/bin/git remote add origin https://github.com/oxur/vlajmaji
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8537960Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8538670Z ##[group]Disabling automatic garbage collection
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8540190Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8605000Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8605610Z ##[group]Setting up auth
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8608890Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.8676380Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.9581260Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:50.9649660Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:51.0523590Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:51.0586580Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:51.1482460Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:51.1553870Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:51.1554550Z ##[group]Fetching the repository
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:51.1565230Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +dcdf216ea5805b20f374ce74c302e42bef12c158:refs/remotes/origin/codex/project01-composed-sqlite-lookup
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.0782790Z From https://github.com/oxur/vlajmaji
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.0784330Z  * [new ref]         dcdf216ea5805b20f374ce74c302e42bef12c158 -> origin/codex/project01-composed-sqlite-lookup
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.0786620Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.0787320Z ##[group]Determining the checkout info
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.0797130Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.0797610Z [command]/opt/homebrew/bin/git sparse-checkout disable
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.0870590Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.0934870Z ##[group]Checking out the ref
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.0942620Z [command]/opt/homebrew/bin/git checkout --progress --force -B codex/project01-composed-sqlite-lookup refs/remotes/origin/codex/project01-composed-sqlite-lookup
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.1553340Z Switched to a new branch 'codex/project01-composed-sqlite-lookup'
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.1658870Z branch 'codex/project01-composed-sqlite-lookup' set up to track 'origin/codex/project01-composed-sqlite-lookup'.
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.1965280Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2266800Z [command]/opt/homebrew/bin/git log -1 --format=%H
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2368850Z dcdf216ea5805b20f374ce74c302e42bef12c158
+Test (macos-latest)	Run actions/checkout@v4	﻿2026-10-27T00:06:52.2790580Z ##[group]Run actions/checkout@v4
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2791450Z with:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2791970Z   repository: oxur/bauske
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2792660Z   ref: c5801ae17caaf86d2651b5ce34570199e873ad0f
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2793430Z   path: bauske
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2800550Z   token: ***
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2801270Z   ssh-strict: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2801930Z   ssh-user: git
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2802640Z   persist-credentials: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2803380Z   clean: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2803980Z   sparse-checkout-cone-mode: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2804820Z   fetch-depth: 1
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2805360Z   fetch-tags: false
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2806070Z   show-progress: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2806660Z   lfs: false
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2807190Z   submodules: false
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2807800Z   set-safe-directory: true
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2808450Z   allow-unsafe-pr-checkout: false
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2809120Z env:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2809620Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2810220Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.2810800Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.3983710Z Syncing repository: oxur/bauske
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.3984840Z ##[group]Getting Git version info
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.3985810Z Working directory is '/Users/runner/work/vlajmaji/vlajmaji/bauske'
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4016800Z [command]/opt/homebrew/bin/git version
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4105230Z git version 2.56.0
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4117150Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4122960Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/94edd596-92ef-4696-925a-8540689abf3e/.gitconfig'
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4131150Z Temporarily overriding HOME='/Users/runner/work/_temp/94edd596-92ef-4696-925a-8540689abf3e' before making global git config changes
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4133580Z Adding repository directory to the temporary git global config as a safe directory
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4135520Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/vlajmaji/vlajmaji/bauske
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4216090Z ##[group]Initializing the repository
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4223290Z [command]/opt/homebrew/bin/git init /Users/runner/work/vlajmaji/vlajmaji/bauske
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4350070Z hint: Using 'master' as the name for the initial branch. This default branch name
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4351910Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4353350Z hint: to use in all of your new repositories, which will suppress this warning,
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4354570Z hint: call:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4355160Z hint:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4355920Z hint: 	git config --global init.defaultBranch <name>
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4356940Z hint:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4357710Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4358970Z hint: 'development'. The just-created branch can be renamed via this command:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4359910Z hint:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4360550Z hint: 	git branch -m <name>
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4361370Z hint:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4362240Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4363750Z Initialized empty Git repository in /Users/runner/work/vlajmaji/vlajmaji/bauske/.git/
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4367130Z [command]/opt/homebrew/bin/git remote add origin https://github.com/oxur/bauske
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4441310Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4442380Z ##[group]Disabling automatic garbage collection
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4443480Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4513700Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4514660Z ##[group]Setting up auth
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4515730Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.4580990Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.5412410Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.5472160Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.6330970Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.6387660Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.7202440Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.7263120Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.7263600Z ##[group]Fetching the repository
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:52.7268230Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin c5801ae17caaf86d2651b5ce34570199e873ad0f
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.6998140Z From https://github.com/oxur/bauske
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.6998980Z  * branch            c5801ae17caaf86d2651b5ce34570199e873ad0f -> FETCH_HEAD
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.7007240Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.7007490Z ##[group]Determining the checkout info
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.7007850Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.7012500Z [command]/opt/homebrew/bin/git sparse-checkout disable
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.7087030Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.7158230Z ##[group]Checking out the ref
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.7161790Z [command]/opt/homebrew/bin/git checkout --progress --force c5801ae17caaf86d2651b5ce34570199e873ad0f
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.7460320Z HEAD is now at c5801ae chore: start 0.3.0 development cycle
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.7468730Z ##[endgroup]
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.7596340Z [command]/opt/homebrew/bin/git log -1 --format=%H
+Test (macos-latest)	Run actions/checkout@v4	2026-10-27T00:06:53.7659030Z c5801ae17caaf86d2651b5ce34570199e873ad0f
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	﻿2026-10-27T00:06:53.7931610Z ##[group]Run dtolnay/rust-toolchain@1.98.0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.7931830Z with:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.7931940Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.7932050Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.7932200Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.7932330Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.7983310Z ##[start-action display=Parse toolchain version;id=__dtolnay_rust-toolchain.parse]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8031170Z ##[group]Run if [[ -z $toolchain ]]; then
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8031450Z [36;1mif [[ -z $toolchain ]]; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8031840Z [36;1m  # GitHub does not enforce `required: true` inputs itself. https://github.com/actions/runner/issues/1070[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8032270Z [36;1m  echo "'toolchain' is a required input" >&2[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8032470Z [36;1m  exit 1[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8032710Z [36;1melif [[ $toolchain =~ ^stable' '[0-9]+' '(year|month|week|day)s?' 'ago$ ]]; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8033020Z [36;1m  if [[ macOS == macOS ]]; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8033420Z [36;1m    echo "toolchain=1.$((($(date -v-$(sed 's/stable \([0-9]*\) \(.\).*/\1\2/' <<< $toolchain) +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8033850Z [36;1m  else[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8034140Z [36;1m    echo "toolchain=1.$((($(date --date "${toolchain#stable }" +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8034480Z [36;1m  fi[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8034710Z [36;1melif [[ $toolchain =~ ^stable' 'minus' '[0-9]+' 'releases?$ ]]; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8035210Z [36;1m  echo "toolchain=1.$((($(date +%s)/60/60/24-16569)/7/6-${toolchain//[^0-9]/}))" >> $GITHUB_OUTPUT[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8035900Z [36;1melif [[ $toolchain =~ ^1\.[0-9]+$ ]]; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8036310Z [36;1m  echo "toolchain=1.$((i=${toolchain#1.}, c=($(date +%s)/60/60/24-16569)/7/6, i+9*i*(10*i<=c)+90*i*(100*i<=c)))" >> $GITHUB_OUTPUT[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8036690Z [36;1melse[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8036820Z [36;1m  delimiter=EOF[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8037040Z [36;1m  while [[ $toolchain == *$delimiter* ]]; do delimiter+=_; done[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8037430Z [36;1m  printf 'toolchain<<%s\n%s\n%s\n' "$delimiter" "$toolchain" "$delimiter" >> $GITHUB_OUTPUT[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8037750Z [36;1mfi[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8081460Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8081730Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8081860Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8082020Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8082150Z   toolchain: 1.98.0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8082270Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8408830Z ##[end-action id=__dtolnay_rust-toolchain.parse;outcome=success;conclusion=success;duration_ms=42]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8412240Z ##[start-action display=Set $CARGO_HOME;id=__dtolnay_rust-toolchain.__run]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8438060Z ##[group]Run echo CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8438510Z [36;1mecho CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8490250Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8490910Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8491250Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8491620Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8491970Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8858090Z ##[end-action id=__dtolnay_rust-toolchain.__run;outcome=success;conclusion=success;duration_ms=44]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8860390Z ##[start-action display=Install rustup if needed;id=__dtolnay_rust-toolchain.__run_2]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8891840Z ##[group]Run if ! command -v rustup &>/dev/null; then
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8892130Z [36;1mif ! command -v rustup &>/dev/null; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8892780Z [36;1m  curl --proto '=https' --tlsv1.2 --retry 10 --retry-connrefused --location --silent --show-error --fail https://sh.rustup.rs | sh -s -- --default-toolchain none -y[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8893350Z [36;1m  echo "$CARGO_HOME/bin" >> $GITHUB_PATH[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8893540Z [36;1mfi[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8925330Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8925910Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8926050Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8926200Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8926440Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.8926670Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9189860Z ##[end-action id=__dtolnay_rust-toolchain.__run_2;outcome=success;conclusion=success;duration_ms=32]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9194590Z ##[start-action display=Install rustup if needed on windows;id=__dtolnay_rust-toolchain.__run_3]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9209360Z ##[end-action id=__dtolnay_rust-toolchain.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9231130Z ##[start-action display=rustup toolchain install 1.98.0;id=__dtolnay_rust-toolchain.__run_4]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9269830Z ##[group]Run set -f  # split targets and components on commas and whitespace, without glob expansion
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9270420Z [36;1mset -f  # split targets and components on commas and whitespace, without glob expansion[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9270760Z [36;1mflags=()[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9270960Z [36;1mfor t in ${targets//,/ }; do flags+=(--target "$t"); done[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9271350Z [36;1mfor c in ${components//,/ }; do flags+=(--component "$c"); done[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9271780Z [36;1mif [[ $toolchain == nightly && -n $components ]]; then flags+=(--allow-downgrade); fi[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9272250Z [36;1mlog=$(mktemp)[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9272500Z [36;1mtrap 'rm -f "$log"' EXIT[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9272680Z [36;1mfor attempt in 1 2 3 4 5; do[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9273210Z [36;1m  if rustup toolchain install "$toolchain" "${flags[@]}" --profile minimal --no-self-update --force-non-host 2>&1 | tee "$log"; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9273980Z [36;1m    break[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9274110Z [36;1m  else[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9274230Z [36;1m    status=$?[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9274400Z [36;1m  fi[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9274620Z [36;1m  if [[ $attempt == 5 ]] || ! grep -Fq 'checksum failed for ' "$log" \[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9275090Z [36;1m      || ! grep -Fq 'this is likely due to an ongoing update of the official release server' "$log"; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9275560Z [36;1m    exit "$status"[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9275710Z [36;1m  fi[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9275960Z [36;1m  echo "Retrying rustup toolchain install in 30 seconds (retry $attempt of 4)" >&2[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9276260Z [36;1m  sleep 30[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9276400Z [36;1mdone[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9309080Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9309300Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9309440Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9309590Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9309730Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9309890Z   toolchain: 1.98.0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9310010Z   targets: 
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9310130Z   components: 
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9310260Z   RUSTUP_PERMIT_COPY_RENAME: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:53.9310410Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:54.0112150Z info: syncing channel updates for 1.98.0-aarch64-apple-darwin
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:54.1989580Z info: latest update on 2026-08-20 for version 1.98.0 (88d9e12ae 2026-08-18)
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:54.2000470Z info: downloading 3 components
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.5845880Z 
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6238280Z   1.98.0-aarch64-apple-darwin installed - rustc 1.98.0 (88d9e12ae 2026-08-18)
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6239300Z 
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6239640Z info: self-update is disabled for this build of rustup
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6240640Z info: any updates to rustup will need to be fetched with your system package manager
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6339830Z ##[end-action id=__dtolnay_rust-toolchain.__run_4;outcome=success;conclusion=success;duration_ms=5707]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6347400Z ##[start-action display=rustup default 1.98.0;id=__dtolnay_rust-toolchain.__run_5]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6566800Z ##[group]Run rustup default "$toolchain" --force-non-host
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6567210Z [36;1mrustup default "$toolchain" --force-non-host[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6599100Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6599360Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6599490Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6599640Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6599770Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6599930Z   toolchain: 1.98.0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6600100Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6970100Z info: using existing install for 1.98.0-aarch64-apple-darwin
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6992790Z info: default toolchain set to 1.98.0-aarch64-apple-darwin
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.6993040Z 
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7171350Z   1.98.0-aarch64-apple-darwin unchanged - rustc 1.98.0 (88d9e12ae 2026-08-18)
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7171760Z 
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7179410Z ##[end-action id=__dtolnay_rust-toolchain.__run_5;outcome=success;conclusion=success;duration_ms=83]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7182150Z ##[start-action display=Create cachekey;id=__dtolnay_rust-toolchain.rustc-version]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7196930Z ##[group]Run DATE=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7197690Z [36;1mDATE=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7198230Z [36;1mHASH=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-hash: //p')[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7198620Z [36;1mecho "cachekey=$(echo $DATE$HASH | head -c12)" >> $GITHUB_OUTPUT[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7226400Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7226870Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7226990Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7227160Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7227310Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7227480Z   toolchain: 1.98.0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.7227610Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8123900Z ##[end-action id=__dtolnay_rust-toolchain.rustc-version;outcome=success;conclusion=success;duration_ms=94]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8132820Z ##[start-action display=Disable incremental compilation;id=__dtolnay_rust-toolchain.__run_6]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8147940Z ##[group]Run if [ -z "${CARGO_INCREMENTAL+set}" ]; then
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8148290Z [36;1mif [ -z "${CARGO_INCREMENTAL+set}" ]; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8148580Z [36;1m  echo CARGO_INCREMENTAL=0 >> $GITHUB_ENV[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8148810Z [36;1mfi[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8180190Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8180460Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8180590Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8180810Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8180960Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8181130Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8416910Z ##[end-action id=__dtolnay_rust-toolchain.__run_6;outcome=success;conclusion=success;duration_ms=28]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8418820Z ##[start-action display=Enable colors in Cargo output;id=__dtolnay_rust-toolchain.__run_7]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8442410Z ##[group]Run if [ -z "${CARGO_TERM_COLOR+set}" ]; then
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8442770Z [36;1mif [ -z "${CARGO_TERM_COLOR+set}" ]; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8443060Z [36;1m  echo CARGO_TERM_COLOR=always >> $GITHUB_ENV[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8443320Z [36;1mfi[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8474420Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8474730Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8474870Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8475040Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8475200Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8475380Z   CARGO_INCREMENTAL: 0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8475570Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8714200Z ##[end-action id=__dtolnay_rust-toolchain.__run_7;outcome=success;conclusion=success;duration_ms=29]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8717340Z ##[start-action display=Enable Cargo sparse registry;id=__dtolnay_rust-toolchain.__run_8]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8742280Z ##[group]Run # implemented in 1.66, stabilized in 1.68, made default in 1.70
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8743070Z [36;1m# implemented in 1.66, stabilized in 1.68, made default in 1.70[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8743790Z [36;1mif [ -z "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL+set}" -o -f "/Users/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol ]; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8744420Z [36;1m  if rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.6[89]\.'; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8744890Z [36;1m    touch "/Users/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8745310Z [36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse >> $GITHUB_ENV[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8745720Z [36;1m  elif rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.6[67]\.'; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8746310Z [36;1m    touch "/Users/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8746720Z [36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git >> $GITHUB_ENV[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8747060Z [36;1m  fi[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8747220Z [36;1mfi[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8779580Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8779830Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8779960Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8780120Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8780290Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8780530Z   CARGO_INCREMENTAL: 0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8780720Z   toolchain: 1.98.0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.8780880Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9533090Z ##[end-action id=__dtolnay_rust-toolchain.__run_8;outcome=success;conclusion=success;duration_ms=81]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9537120Z ##[start-action display=Work around spurious network errors in curl 8.0;id=__dtolnay_rust-toolchain.__run_9]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9554320Z ##[group]Run # https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9562990Z [36;1m# https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9563610Z [36;1mif rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.7[01]\.'; then[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9564070Z [36;1m  echo CARGO_HTTP_MULTIPLEXING=false >> $GITHUB_ENV[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9564350Z [36;1mfi[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9603430Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9603710Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9603870Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9604060Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9604250Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9604470Z   CARGO_INCREMENTAL: 0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9604660Z   toolchain: 1.98.0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:06:59.9604790Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0271750Z ##[end-action id=__dtolnay_rust-toolchain.__run_9;outcome=success;conclusion=success;duration_ms=73]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0276040Z ##[start-action display=rustc +1.98.0 --version --verbose;id=__dtolnay_rust-toolchain.__run_10]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0292350Z ##[group]Run rustc +"$toolchain" --version --verbose
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0292700Z [36;1mrustc +"$toolchain" --version --verbose[0m
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0327490Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0327780Z env:
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0327980Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0328140Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0328330Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0337510Z   CARGO_INCREMENTAL: 0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0337760Z   toolchain: 1.98.0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0337920Z ##[endgroup]
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0977190Z rustc 1.98.0 (88d9e12ae 2026-08-18)
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0981760Z binary: rustc
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0986170Z commit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0988510Z commit-date: 2026-08-18
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0989430Z host: aarch64-apple-darwin
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0989760Z release: 1.98.0
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0990080Z LLVM version: 22.1.8
+Test (macos-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-10-27T00:07:00.0995630Z ##[end-action id=__dtolnay_rust-toolchain.__run_10;outcome=success;conclusion=success;duration_ms=71]
+Test (macos-latest)	Run Swatinem/rust-cache@v2	﻿2026-10-27T00:07:00.1072160Z ##[group]Run Swatinem/rust-cache@v2
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1072350Z with:
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1072480Z   workspaces: vlajmaji -> target
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1072640Z   prefix-key: v0-rust
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1072790Z   add-job-id-key: true
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1072950Z   add-rust-environment-hash-key: true
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1073140Z   cache-targets: true
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1073280Z   cache-all-crates: false
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1073440Z   cache-workspace-crates: false
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1073600Z   save-if: true
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1073730Z   cache-provider: github
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1073880Z   cache-bin: true
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1074010Z   lookup-only: false
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1074140Z   cmd-format: {0}
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1074260Z env:
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1074380Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1074530Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1074670Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1074830Z   CARGO_INCREMENTAL: 0
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.1074960Z ##[endgroup]
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6789930Z ##[group]Cache Configuration
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6790790Z Cache Provider:
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6791510Z     github
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6792320Z Workspaces:
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6792950Z     /Users/runner/work/vlajmaji/vlajmaji/vlajmaji
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6793840Z Cache Paths:
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6794500Z     /Users/runner/.cargo/bin
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6795210Z     /Users/runner/.cargo/.crates.toml
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6795530Z     /Users/runner/.cargo/.crates2.json
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6795740Z     /Users/runner/.cargo/registry
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6795940Z     /Users/runner/.cargo/git
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6796690Z     /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/target
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6796940Z Restore Key:
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6797100Z     v0-rust-test-Darwin-arm64-da015d9e
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6797310Z Cache Key:
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6797470Z     v0-rust-test-Darwin-arm64-da015d9e-fe99e015
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6797710Z .. Prefix:
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6797850Z   - v0-rust-test-Darwin-arm64
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6798080Z .. Environment considered:
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6798240Z   - Rust Versions:
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6798480Z     - 1.98.0 aarch64-apple-darwin 88d9e12ae178fab0fb5cc050a94da85685d449ea
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6798820Z     - 1.99.0 aarch64-apple-darwin b940084d7eb6a299eb4bfeb8e34901bc051e7ac4
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6799100Z   - CARGO_HOME
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6799240Z   - CARGO_INCREMENTAL
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6799370Z   - CARGO_TERM_COLOR
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6799520Z   - RUST_BACKTRACE
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6799670Z .. Lockfiles considered:
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6799890Z   - /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/Cargo.lock
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6800230Z   - /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli/Cargo.toml
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6800600Z   - /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban/Cargo.toml
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6801030Z   - /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci/Cargo.toml
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6801430Z   - /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg/Cargo.toml
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6801840Z   - /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku/Cargo.toml
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6802230Z   - /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon/Cargo.toml
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6802600Z   - /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search/Cargo.toml
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6802950Z   - /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store/Cargo.toml
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6803320Z   - /Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji/Cargo.toml
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6803790Z ##[endgroup]
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6803870Z 
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.6803950Z ... Restoring cache ...
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:00.7751820Z Cache hit for: v0-rust-test-Darwin-arm64-da015d9e-fe99e015
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:01.3779250Z Received 104308184 of 104308184 (100.0%), 179.9 MBs/sec
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:01.3880770Z Cache Size: ~99 MB (104308184 B)
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:01.3945060Z [command]/opt/homebrew/bin/gtar -xf /Users/runner/work/_temp/f8734b4f-bbd7-4245-b929-5273e404a0ba/cache.tzst -P -C /Users/runner/work/vlajmaji/vlajmaji --delay-directory-restore --use-compress-program unzstd
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:02.3276460Z Cache restored successfully
+Test (macos-latest)	Run Swatinem/rust-cache@v2	2026-10-27T00:07:02.3297740Z Restored from cache key "v0-rust-test-Darwin-arm64-da015d9e-fe99e015" full match: true.
+Test (macos-latest)	Run cargo test --workspace --locked	﻿2026-10-27T00:07:02.3395370Z ##[group]Run cargo test --workspace --locked
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:02.3395650Z [36;1mcargo test --workspace --locked[0m
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:02.3432180Z shell: /bin/bash -e {0}
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:02.3432350Z env:
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:02.3432500Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:02.3432650Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:02.3432800Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:02.3433020Z   CARGO_INCREMENTAL: 0
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:02.3433170Z   CACHE_ON_FAILURE: false
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:02.3433320Z ##[endgroup]
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:02.4587490Z [1m[92m    Updating[0m crates.io index
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:03.1745630Z [1m[92m   Compiling[0m vlajmaji-lexicon v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:03.1786310Z [1m[92m   Compiling[0m bauske-phonology v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/bauske/crates/phonology)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:05.7872430Z [1m[92m   Compiling[0m vlajmaji-store v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:05.7888700Z [1m[92m   Compiling[0m vlajmaji-data-sutysisku v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:05.7891600Z [1m[92m   Compiling[0m vlajmaji-data-la-lojban v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:05.8348200Z [1m[92m   Compiling[0m vlajmaji-data-lensisku-jbotci v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:05.8407110Z [1m[92m   Compiling[0m vlajmaji-data-llg v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:07.7685990Z [1m[92m   Compiling[0m vlajmaji-search v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:09.3435060Z [1m[92m   Compiling[0m vlajmaji v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:12.2362730Z [1m[92m   Compiling[0m vlajmaji-cli v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7021710Z [1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 15.29s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7149270Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji-d15d6ac3a6cf85c2)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7208960Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7210550Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7210760Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7211270Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7212010Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7214140Z [1m[92m     Running[0m unittests src/main.rs (target/debug/deps/vlajmaji-88839ecc0d7761be)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7260020Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7262520Z running 5 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7272280Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7272900Z test managed_output_tests::test_emit_managed_response_io_failure_reports_committed_context ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7276140Z test default_path_tests::test_marker_exists_distinguishes_absence_and_propagates_metadata_errors ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7278280Z test collection_manifest_tests::test_manifest_validation_freezes_relative_paths_without_reading_them ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7287150Z test collection_manifest_tests::test_manifest_duplicate_keys_rejects_escaped_equivalents_recursively ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7287590Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7287820Z test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7288180Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7289540Z [1m[92m     Running[0m tests/cli_contract.rs (target/debug/deps/cli_contract-0a8c760244099121)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7319390Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7319840Z running 2 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.7487200Z test help_and_version_are_available ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.8111560Z test valid_json_limit_zero_and_failures_are_inspectable ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.8111860Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.8112100Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.8113010Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.8114300Z [1m[92m     Running[0m tests/collection_query_contract.rs (target/debug/deps/collection_query_contract-a4bb78ff8945be25)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.8144510Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.8152050Z running 16 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.8213340Z test test_collections_help_distinguishes_explicit_root_from_config_home_resolution ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.8575580Z test test_all_managed_commands_report_config_path_for_unusable_home_fallback ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.8624600Z test test_configure_failure_reports_known_file_root_profile_and_requested_packs ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:17.8687950Z test test_configure_invalid_pack_keeps_known_context_without_creating_files ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:18.2664700Z test test_all_four_fixture_packs_keep_source_attribution_in_configured_lookup ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:18.2754680Z test test_absolute_config_and_root_work_without_child_cwd_but_relative_config_fails_typed ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:18.3057170Z test test_cli_configure_preserves_hand_authored_disabled_policy_and_noop_bytes ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:18.3159020Z test test_configure_commits_when_stdout_reader_closes_early ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:18.3259230Z test test_lookup_request_parse_precedes_missing_config_and_uses_managed_error_envelope ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:18.3365210Z test test_configure_profiles_selection_and_lookup_use_explicit_config_and_root ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:18.7891520Z test test_configure_relative_file_and_root_share_child_cwd ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:18.7991910Z test test_configure_reports_exact_native_root_path_and_keeps_ascii_root_working ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:18.8197940Z test test_lookup_profile_and_disabled_selection_fail_with_typed_context ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:18.8444460Z test test_profiles_reports_exact_native_config_io_and_keeps_ascii_counterpart_working ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:18.8547660Z test test_lookup_resolves_absolute_xdg_config_and_rejects_direct_override_of_request ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.0234420Z test test_profiles_reports_not_applicable_context_when_stdout_file_limit_fails ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.0234840Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.0235050Z test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.21s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.0235320Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.0238440Z [1m[92m     Running[0m tests/collections_contract.rs (target/debug/deps/collections_contract-af839ba8715a40a1)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.0266930Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.0267310Z running 10 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.0313550Z test test_collections_cli_list_absent_catalogue_expect_typed_error ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.0315320Z test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.0338880Z test test_collections_cli_install_help_explains_selection_and_update_boundary ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.1227000Z test test_collections_cli_register_install_list_inspect_expect_structured_reports ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.1276630Z test test_collections_cli_lost_install_response_expect_committed_generation_and_query ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.1392620Z test test_collections_cli_runtime_validation_expect_versioned_report_and_clap_boundary ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.1708400Z test test_collections_cli_relative_paths_are_frozen_across_working_directories ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.2706300Z test test_collections_cli_tampered_repeat_expect_prior_generation_unchanged ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.3372290Z test test_collections_cli_all_raw_inputs_expect_four_pack_install ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5006300Z test test_collections_cli_opposite_pack_orders_expect_same_content_and_distinct_generations ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5006670Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5006890Z test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.47s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5007160Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5009960Z [1m[92m     Running[0m tests/data_packs.rs (target/debug/deps/data_packs-7e5bb47cdeb6d089)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5042300Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5047090Z running 7 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5182800Z test test_occupied_destination_is_preserved_and_bad_pins_create_no_output ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5279080Z test test_la_lojban_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5280750Z test test_synthetic_fixture_uses_the_importer_and_emits_a_loadable_pack ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5281390Z test test_sutysisku_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5293150Z test test_llg_synthetic_fixture_uses_importer_and_refuses_occupied_output ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.5323140Z test test_la_materializer_rejects_invalid_inputs_and_preserves_occupied_outputs ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.6116530Z test test_four_synthetic_packs_compose_for_sql_selection_pages_and_references ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.6116940Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.6122320Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.6122690Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.6123050Z [1m[92m     Running[0m tests/default_store.rs (target/debug/deps/default_store-ccb3e7cdb8c85bfb)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.6150100Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.6150440Z running 6 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.6267750Z test test_default_info_detects_ambiguous_and_corrupt_grouped_markers_without_fallback ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.6488300Z test test_optional_store_positionals_are_visible_in_help_and_legacy_info_stays_legacy ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.8072700Z test test_default_build_input_errors_and_occupied_leaves_have_bounded_side_effects ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.8466440Z test test_home_fallback_explicit_override_and_missing_default_are_truthful ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:19.9938020Z test test_non_utf8_environment_is_preserved_and_build_fails_before_mutation ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.0622780Z test test_xdg_default_build_query_stdin_and_info_match_explicit_store ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.0623260Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.0624030Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.45s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.0624680Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.0626840Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-0864f781269ddbae)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.0656470Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.0656980Z running 1 test
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3080140Z test dictionary_commands_work_and_structured_errors_use_the_envelope ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3080500Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3080680Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3080970Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3082480Z [1m[92m     Running[0m tests/jbotci_contract.rs (target/debug/deps/jbotci_contract-ad0ead3c68fd0cb5)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3106270Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3107080Z running 1 test
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3526800Z test import_check_are_pinned_non_destructive_and_structured_on_failure ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3527100Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3527280Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3527600Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3529000Z [1m[92m     Running[0m tests/jbotci_pipeline.rs (target/debug/deps/jbotci_pipeline-7395fc9ee6c79254)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3558370Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3613630Z running 7 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3618440Z test concurrent_scratch_allocations_are_distinct_and_joined ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.3621320Z test scratch_retries_occupied_candidates_without_touching_them ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.5255300Z test report_creation_races_preserve_caller_bytes_and_skip_importer ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.5267010Z test test_pin_manifest_byte_policy_counts_forbidden_bytes_and_fails_closed ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.6577140Z test malformed_manifest_and_download_failure_leave_no_completion_marker ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:20.7613990Z test pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.1956730Z test make_forwards_metacharacter_paths_and_requires_explicit_cargo_target ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.1957060Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.1957280Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.84s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.1957620Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.1958460Z [1m[92m     Running[0m tests/verify_contract.rs (target/debug/deps/verify_contract-29ac97928e8640c1)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.1985270Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.1985940Z running 2 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.4047180Z test test_verify_cli_explicit_path_overrides_invalid_default_environment ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7237200Z test test_verify_cli_success_failure_envelope_default_help_and_no_create ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7237510Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7237700Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.52s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7237950Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7240890Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_la_lojban-b3d1ca5d28196b05)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7260940Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7261060Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7261180Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7261400Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7261660Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7262770Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_lensisku_jbotci-b8756046a045c2c2)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7281890Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7282140Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7282750Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7284540Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7284930Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7285250Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_llg-92fa79cb062e4340)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7303970Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7304190Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7304320Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7304540Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7304810Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7306450Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_data_sutysisku-891786a7f288a35b)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7325260Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7325450Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7325750Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7326580Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7327200Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7327840Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_lexicon-11fefea8c3e88dc7)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7349210Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7349510Z running 1 test
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7350770Z test pack::tests::composite_identity_key_is_unambiguous_when_parts_contain_delimiters ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7351060Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7351250Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7351510Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7352790Z [1m[92m     Running[0m tests/contract.rs (target/debug/deps/contract-c4513e2e292433cc)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7373370Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7375560Z running 8 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7376750Z test full_corpus_import_reconciles_all_input_populations ... ignored, requires RELOJBAN_RESEARCH_ROOT pointing at the preserved research checkout
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7381970Z test corpus_sources_preserve_form_roles ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7382930Z test exact_queries_keep_source_rows_and_proposals_separate ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7383390Z test proposals_borrowed_view_exposes_all_entries_without_captured_lookup ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7384490Z test see_also_parser_uses_explicit_marker_and_excludes_tex_math ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7387030Z test proposal_identity_is_unambiguous_and_archive_validation_is_typed ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7388350Z test import_is_atomic_and_source_identity_is_byte_exact ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7392880Z test archive_roundtrip_preserves_raw_presence_unknowns_and_large_numbers ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7393130Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7393310Z test result: ok. 7 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7393560Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7394190Z [1m[92m     Running[0m tests/data_packs.rs (target/debug/deps/data_packs-3b5039b32d44b8c9)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7417760Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7418960Z running 11 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7490170Z test composition_rejects_conflicting_source_and_release_identities ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7490840Z test empty_composition_is_the_empty_validated_dictionary ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7491470Z test composition_rejects_conflicting_capture_contributor_and_assertion_bodies ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7491950Z test composition_preserves_distinct_distributions_and_exact_dedup ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7492410Z test seal_rejects_wrong_pack_length_hash_version_inventory_and_bad_wire ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7492840Z test seal_roundtrip_is_strict_and_inventory_ordered ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7498870Z test test_unverified_composition_rejects_merged_active_selector_collision ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7499990Z test test_unverified_composition_rejects_conflicting_alias_identity_and_deduplicates_equal_alias ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7510170Z test composition_preserves_ordered_extension_max_multiplicities ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7515000Z test test_unverified_composition_keeps_graph_validation_explicit_and_deduplicates_inputs ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7668700Z test complete_typed_model_composes_without_dropping_any_metadata_class ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7668940Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7669720Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7670040Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7671230Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-200ae241f8455a2a)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7697120Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.7697300Z running 11 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.8029290Z test constructor_rejects_raw_reference_accounting_and_provenance_failures ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.8130140Z test complete_fixture_keeps_native_presence_and_release_absence_distinct ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.8230920Z test available_empty_release_is_distinct_from_unavailable_catalogue_and_bad_refs_reject ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.8332330Z test empty_document_is_valid_and_serde_revalidates ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.8366440Z test known_missing_capture_can_retain_unverifiable_projection_with_unknown_counts ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.8367100Z test complete_public_fixture_roundtrips_all_source_and_metadata_rows ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.8367570Z test raw_values_ids_and_duplicate_envelope_keys_are_checked ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.8501620Z test declared_validation_categories_are_emitted_and_malformed_parent_paths_do_not_panic ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.8541630Z test named_reference_and_provenance_failures_use_declared_categories ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:21.8623780Z test direct_serde_is_strict_and_identity_adapters_are_exact ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0126080Z test etymology_components_accept_each_declared_local_reference_role ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0126410Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0126600Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0126880Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0130020Z [1m[92m     Running[0m tests/jbotci_contract.rs (target/debug/deps/jbotci_contract-d4a31cc82589629a)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0156910Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0157270Z running 12 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0192060Z test invalid_pins_utf8_and_json_root_return_typed_failures ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0192740Z test malformed_optional_shapes_are_diagnostic_without_excluding_valid_rows ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0193300Z test duplicate_fields_nested_values_and_nonobjects_remain_raw_and_excluded ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0194100Z test changed_pinned_raw_bytes_change_capture_and_row_ids_and_wrong_hash_fails ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0194500Z test missing_null_and_empty_critical_values_remain_distinguishable ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0194980Z test non_display_username_keeps_hashed_attribution_with_a_diagnostic ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0195340Z test metadata_duplicates_and_unsupported_shapes_are_typed_failures ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0195870Z test repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0196310Z test optional_selmaho_and_definition_id_shapes_are_diagnostic_without_loss ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0197230Z test metadata_numeric_values_follow_json_validity_before_subset_errors ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0204870Z test all_supported_classes_and_cross_column_forms_remain_distinct ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0222260Z test revision_is_release_provenance_while_occurrence_identity_is_byte_stable ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0222590Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0223440Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0223760Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0224340Z [1m[92m     Running[0m tests/la_lojban_import.rs (target/debug/deps/la_lojban_import-1f9527818eac8d45)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0248200Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0248320Z running 4 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0256620Z test test_la_import_rejects_invalid_utf8_and_malformed_json ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0259770Z test test_la_import_rejects_mismatched_hash_and_invalid_options ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0267950Z test test_la_import_preserves_rows_fields_attribution_and_exclusions ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0272320Z test test_la_import_revision_changes_release_but_not_capture_or_occurrence_identity ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0272600Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0273060Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0273390Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0273690Z [1m[92m     Running[0m tests/llg_import.rs (target/debug/deps/llg_import-c053523365b504ce)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0296230Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0297760Z running 8 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0326740Z test test_import_llg_lists_excludes_malformed_rows_and_keeps_optional_tail_absent ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0328060Z test test_import_llg_lists_preserves_captures_rows_and_evidence ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0329000Z test test_import_llg_lists_rejects_bad_pins_and_invalid_utf8 ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0329900Z test test_import_llg_lists_absent_header_has_no_claim_or_conflict ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0331570Z test test_import_llg_lists_reports_count_mismatch_without_dropping_rows ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0338480Z test test_import_llg_lists_preserves_each_header_claim_and_mismatch_occurrence ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0339020Z test test_import_llg_lists_keeps_duplicate_rows_and_excludes_conflicting_classes ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0339550Z test test_import_llg_lists_retains_unsupported_rows_and_terminal_cr ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0339830Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0340070Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0340320Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0343280Z [1m[92m     Running[0m tests/registry_contract.rs (target/debug/deps/registry_contract-a34b752f20af754a)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0365530Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0365740Z running 10 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0398160Z test attribution_requires_explicit_legacy_binding_but_keeps_empty_metadata ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0403070Z test ids_and_registry_document_are_validated_and_role_distinct ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0403600Z test document_validation_rejects_duplicate_roles_and_invalid_values ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0404060Z test attribution_preserves_five_occurrences_roles_raw_bytes_and_archive ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0404510Z test aliases_cannot_shadow_another_sources_current_abbreviation ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0405790Z test test_unverified_registry_selector_rejects_duplicate_source_identity ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0406720Z test phantom_occurrence_binding_is_rejected_against_the_supplied_lexicon ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0407530Z test invalid_documents_updates_and_deserialization_cannot_bypass_invariants ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0411410Z test aliases_rename_retire_and_reuse_without_losing_history ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0424750Z test registry_identity_wires_reject_unknown_nested_fields_without_tightening_legacy_ids ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0425130Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0425340Z test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0425590Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0426420Z [1m[92m     Running[0m tests/sutysisku_import.rs (target/debug/deps/sutysisku_import-8c1610c5136e4b58)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0449890Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0450260Z running 4 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0458790Z test test_import_sutysisku_export_invalid_pin_and_root_inputs_return_typed_errors ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0468740Z test test_import_sutysisku_export_preserves_repeated_and_long_source_reported_forms ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0472190Z test test_import_sutysisku_export_literal_census_and_raw_projection_are_preserved ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0485060Z test test_import_sutysisku_export_revision_changes_provenance_not_capture_identity ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0485400Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0485640Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0485900Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0491570Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_search-04f0ea903d337b74)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0509450Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0509770Z running 7 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0514240Z test component_semantics::component_membership_is_an_exact_ordered_subsequence_with_multiplicity ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0514910Z test collection_query::cursor_tests::test_managed_cursor_rejects_malformed_unicode_hex_without_panicking ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0515670Z test dictionary::unverified_index_tests::test_sql_candidate_must_exist_before_source_selection_can_skip_it ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0516310Z test dictionary::unverified_index_tests::test_required_lookup_indexes_keep_unique_ids_and_reject_duplicates ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0517040Z test collection_query::cursor_tests::test_indeterminate_config_report_retains_prior_proposed_and_observed_revisions ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0517690Z test collection_query::cursor_tests::test_managed_cursor_roundtrip_and_snapshot_binding ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0518720Z test collection_query::cursor_tests::test_managed_cursor_rejects_malformed_envelopes_and_wire_shapes ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0519070Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0519250Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0519500Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0520340Z [1m[92m     Running[0m tests/collection_query_contract.rs (target/debug/deps/collection_query_contract-3e50d34ab9cbafeb)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0550260Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.0551040Z running 15 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.1527340Z test test_metadata_only_unknown_and_unresolved_do_not_require_payload ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:22.9587790Z test test_config_change_stales_cursor_before_disabled_selection_admission ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:23.0412170Z test test_missing_derived_state_stales_cursor_and_exact_restore_accepts_it ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:23.0552240Z test test_managed_exact_matches_existing_unpaged_wire_and_wraps_page_cursor ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:23.0664780Z test test_public_profile_lookup_errors_keep_typed_categories_and_context ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:23.2798530Z test test_equal_local_contributors_admit_selected_enabled_pack_payload ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:23.6499760Z test test_missing_installed_copy_is_advisory_and_accessor_stays_metadata_only ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:23.8336730Z test test_historical_local_identity_deduplicates_equal_body_and_rejects_conflict ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:23.9017820Z test test_resolve_uses_selected_payload_when_an_unrelated_pack_is_registered_only ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:23.9426750Z test test_selected_corrupt_derived_store_is_not_reported_as_catalogue_only ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.0028660Z test test_readiness_four_source_literals_keep_independent_exact_counts ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.0768220Z test test_selected_installed_catalog_reference_reports_typed_payload_failure ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.2370440Z test test_selected_unsupported_derived_version_is_typed_for_exact_and_resolve ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.3354290Z test test_stale_reference_snapshot_wins_before_corrupt_heavy_metadata ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4547160Z test test_shared_entry_retains_each_selected_contributor_release_scope ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4549740Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4552990Z [1m[92m     Running[0m tests/corpus_contract.rs (target/debug/deps/corpus_contract-b1d1540ac1f1afd5)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4554450Z test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.40s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4572830Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4593640Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4595700Z running 8 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4790830Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4791510Z test compose_kind_is_validated_with_empty_and_nonempty_candidate_sets ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4795640Z test contrast_exposes_p01_coordinate_explanations_without_word_total ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4796130Z test native_candidate_counts_are_stage_labelled ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4803690Z test exact_proposal_option_is_separate_complete_and_limited_after_combination ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4870440Z test scalar_spelling_distance_scans_and_preserves_record_multiplicity ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4891620Z test search_engine_has_safe_summary_debug_output ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4907670Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4912490Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-121324bd6757d738)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4913200Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4932150Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4940560Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4969090Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.4971650Z running 6 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.8573840Z test pages_zero_totals_cursor_binding_and_stale_cursor_are_explicit ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.8726710Z test exact_farvi_matches_the_complete_occurrence_reference_after_reopen ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.8986050Z test hit_computations_follow_dictionary_metadata_order ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.9085680Z test repeated_editorial_membership_is_preserved_but_hit_views_are_unique ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:24.9285540Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:25.9572490Z test test_query_open_rejects_ambiguous_persisted_entry_capture_and_occurrence_ids ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:25.9572900Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:25.9573090Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.46s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:25.9573480Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:25.9578000Z [1m[92m     Running[0m tests/dictionary_topology.rs (target/debug/deps/dictionary_topology-41c7f0ca0108f7e2)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:25.9622420Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:25.9622850Z running 1 test
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0772830Z test test_exact_profiled_matches_unprofiled_for_each_topology ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0773200Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0773440Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0773720Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0776400Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji_store-f8a62b4bace1fb53)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0837400Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0839210Z running 16 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0863820Z test collections::manifest_tests::test_allocate_stage_retries_occupied_candidate_without_overwriting_it ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0882010Z test collections::manifest_tests::test_batch_failure_reports_validated_failed_unprocessed_and_skipped_inputs ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0886620Z test collections::manifest_tests::test_manifest_direct_api_rejects_duplicate_and_escaped_duplicate_keys ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0888210Z test collections::manifest_tests::test_manifest_locator_absence_and_null_are_none_and_strings_are_retained ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0889450Z test collections::manifest_tests::test_manifest_locator_wrong_type_is_rejected ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0903120Z test collections::manifest_tests::test_selection_skips_unselected_missing_native_path_and_all_reports_failure ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.0904270Z test collections::manifest_tests::test_sutysisku_manifest_optional_locators_accept_omission_and_null ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.1086340Z test collections::manifest_tests::test_injected_rollback_failure_retains_initiating_and_rollback_causes ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.1090590Z test dictionary_schema::checked_integer_tests::sqlite_integer_conversion_and_evidence_increment_are_checked ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.1093610Z test dictionary_schema::tests::insertion_order_covers_schema_and_places_foreign_key_parents_first ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.1094830Z test dictionary_schema::tests::projection_orders_present_tables_and_rejects_unknown_tables ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.1095860Z test identity_tests::tuple_identity_is_length_prefixed_and_byte_exact ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.1222770Z test collection_profiles::tests::test_configure_membership_reads_latest_policy_after_lock ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.1313720Z test collection_profiles::tests::test_configure_writer_phases_preserve_precommit_and_report_uncertainty ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.1340930Z test dictionary::lifecycle_tests::committed_incomplete_header_survives_population_failure ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2001400Z test collections::manifest_tests::test_interruption_after_stage_allocation_retains_prior_generation_and_allows_retry ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2002430Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2002620Z test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2002880Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2005200Z [1m[92m     Running[0m tests/collection_profiles_contract.rs (target/debug/deps/collection_profiles_contract-2bb0fabee9cc250c)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2039940Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2043190Z running 11 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2288750Z test test_configure_requires_registered_pack_and_keeps_old_bytes ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2325350Z test test_configure_preserves_native_config_path_when_platform_allows ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2325830Z test test_configure_busy_sibling_preserves_foreign_file_and_writes_nothing ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2450850Z test test_configure_is_idempotent_and_keeps_unrelated_profiles ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2477220Z test test_profile_read_preserves_false_zero_empty_and_short_lists ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2499880Z test test_profile_rejects_unknown_duplicate_and_incomplete_shapes ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2504100Z test test_configure_revision_overflow_preserves_existing_bytes ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2534310Z test test_root_native_roundtrips_exact_bytes_and_rejects_malformed_descriptors ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2583180Z test test_configure_creates_private_directories_and_preserves_existing_file_mode ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2672530Z test test_membership_writer_preserves_disabled_policy_and_explicit_writer_can_clear_it ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2731990Z test test_membership_writer_new_profile_starts_empty_and_incompatible_root_preserves_old_file ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2735870Z [1m[92m     Running[0m tests/collections_contract.rs (target/debug/deps/collections_contract-91bb7b59ae6cf838)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2736190Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2737530Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2744510Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2774820Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.2780580Z running 18 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.3030290Z test test_catalogue_root_symlink_is_not_followed_for_read_or_write ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.3053930Z test test_empty_existing_roots_register_install_expect_occupied_with_validated_input ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.3089120Z test test_catalogue_unsupported_schema_version_is_read_only ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.3090370Z test test_catalogue_file_and_database_symlink_are_refused_without_modification ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.7913020Z test test_begin_busy_register_install_expect_validated_context_and_retry ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.8156570Z test test_install_revision_overflow_is_known_precommit_failure ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.8322610Z test test_exact_repeat_rejects_corrupt_owned_store_without_activating_changes ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.8324260Z test test_malformed_seal_and_release_mismatch_expect_typed_pack_errors ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.9458540Z test test_catalogue_register_then_install_and_repeat_keeps_generation ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.9469460Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:26.9643510Z test test_list_uses_compact_registration_summary_without_decoding_descriptor ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.0879740Z test test_reference_metadata_preserves_nonempty_form_and_editorial_link_sets ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.0881360Z test test_request_all_missing_pack_is_rejected ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.0884350Z test test_sealed_pack_mismatch_is_rejected_before_catalogue_creation ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.1430420Z test test_missing_sealed_input_expect_known_pack_and_typed_io_cause ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.2647970Z test test_install_commit_busy_rolls_back_catalogue_and_retains_staged_attempt ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.2714740Z test test_install_conflicting_shared_source_is_typed_and_valid_counterpart_composes_once ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.3526970Z test test_new_release_registration_stays_uninstalled_and_install_requires_later_update_flow ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.3527370Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.3527570Z test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.07s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.3528080Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.3530500Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-49254c5b74d38535)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.3563480Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.3563610Z running 14 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.4873590Z test empty_valid_dictionary_has_a_real_empty_projection ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.4882970Z test fresh_path_lifecycle_refuses_existing_leafs_and_missing_parents ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.5342740Z test empty_source_metadata_values_survive_actual_sql_projection ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.8368690Z test empty_available_release_keeps_explicit_zero_counts ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.8671270Z test full_fixture_has_independent_direct_sql_value_oracles ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.8771720Z test complete_dictionary_creates_typed_projection_and_reopens_read_only ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:27.9173610Z test full_unsigned_text_empty_and_nul_values_survive_sql_and_reopen ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:28.3562970Z test reversed_self_reference_rows_persist_and_reopen_in_model_order ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:28.7567200Z test legacy_archive_rebuild_is_explicit_separate_and_byte_preserving ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:28.9326140Z test metadata_query_missing_required_columns_is_format_without_writing ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:29.3049540Z test test_minimal_open_rejects_unsupported_dictionary_and_registry_versions ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:29.3101810Z test explicit_projection_verification_rejects_same_count_scalar_edits_without_repair ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:29.7937700Z test sql_role_presence_foreign_key_and_unique_constraints_are_real ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.4608880Z test integrity_failures_are_classified_without_mutating_the_database ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.4609240Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.4609430Z test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.10s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.4609720Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.4614320Z [1m[92m     Running[0m tests/dictionary_snapshot.rs (target/debug/deps/dictionary_snapshot-83860cdd01c57651)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.4646960Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.4647720Z running 2 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.4660240Z test test_attached_rejects_non_utf8_native_path_without_lossy_routing_or_creation ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.5298120Z test test_snapshot_topologies_open_read_only_and_deduplicate_same_logical_ids ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.5299010Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.5299290Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.5299600Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.5300390Z [1m[92m     Running[0m tests/dictionary_verification.rs (target/debug/deps/dictionary_verification-6095013dee461c4c)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.5333870Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:30.5336550Z running 6 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.0015120Z test test_unparseable_canonical_blocks_dependent_checks_but_model_fails ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.0644410Z test test_selected_schema_and_fks_run_without_canonical_prerequisites ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.0686750Z test test_duplicate_json_keys_remain_a_strict_model_failure_and_block_draft_dependents ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.0698130Z test test_all_reports_independent_simultaneous_schema_metadata_and_fk_failures ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.2284540Z test test_unsupported_header_versions_fail_before_unparseable_canonical_blocks ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3789030Z test test_valid_store_passes_all_scopes_and_selective_reports_have_one_row ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3789350Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3789540Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.85s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3789790Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3794110Z [1m[92m     Running[0m tests/fixture.rs (target/debug/deps/fixture-c2e4b02e5ed53ae8)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3821410Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3821630Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3822180Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3822920Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3823600Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3824340Z [1m[92m     Running[0m tests/public_identity.rs (target/debug/deps/public_identity-b594bd5c39c20a68)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3849730Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3849880Z running 1 test
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3854290Z test external_consumer_can_hydrate_the_published_record_identity ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3854550Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3854740Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3855010Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.3856110Z [1m[92m   Doc-tests[0m vlajmaji
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6271190Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6271520Z running 1 test
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6271860Z test crates/vlajmaji/src/../README.md - (line 36) - compile ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6272090Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6272300Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6272590Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6277350Z all doctests ran in 0.21s; merged doctests compilation took 0.21s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6286790Z [1m[92m   Doc-tests[0m vlajmaji_data_la_lojban
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6558120Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6558500Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6558640Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6558830Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6559100Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6568120Z [1m[92m   Doc-tests[0m vlajmaji_data_lensisku_jbotci
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6833090Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6833600Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6833720Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6833910Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6834220Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.6841700Z [1m[92m   Doc-tests[0m vlajmaji_data_llg
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7098930Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7100070Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7100390Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7100820Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7101470Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7115150Z [1m[92m   Doc-tests[0m vlajmaji_data_sutysisku
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7375750Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7377080Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7377420Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7377830Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7378420Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:31.7386180Z [1m[92m   Doc-tests[0m vlajmaji_lexicon
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.1976600Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.1977090Z running 4 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.2005680Z test crates/lexicon/src/lib.rs - SourceMetadata::new (line 140) ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.2006910Z test crates/lexicon/src/lib.rs - Proposal::new (line 511) ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.2007790Z test crates/lexicon/src/lib.rs - Lexicon::import_source (line 706) ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.2017280Z test crates/lexicon/src/lib.rs - (line 8) ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.2017710Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.2018120Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.2019610Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.2021420Z all doctests ran in 0.20s; merged doctests compilation took 0.20s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.2031520Z [1m[92m   Doc-tests[0m vlajmaji_search
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.5831540Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.5831910Z running 1 test
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.5857970Z test crates/search/src/lib.rs - (line 7) ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.5858220Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.5858420Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.5858690Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.5862940Z all doctests ran in 0.22s; merged doctests compilation took 0.21s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.5873370Z [1m[92m   Doc-tests[0m vlajmaji_store
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.7748590Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.7749460Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.7749670Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.7749880Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-27T00:07:32.7750200Z 
+Test (macos-latest)	Post Run Swatinem/rust-cache@v2	﻿2026-10-27T00:07:32.7900270Z Post job cleanup.
+Test (macos-latest)	Post Run Swatinem/rust-cache@v2	2026-10-27T00:07:32.8943050Z Cache up-to-date.
+Test (macos-latest)	Post Run actions/checkout@v4	﻿2026-10-27T00:07:32.9034010Z Post job cleanup.
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:32.9800980Z [command]/opt/homebrew/bin/git version
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:32.9860040Z git version 2.56.0
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:32.9878030Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/ff2d58a3-d806-4bf0-b670-1395989a6b9f/.gitconfig'
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:32.9890770Z Temporarily overriding HOME='/Users/runner/work/_temp/ff2d58a3-d806-4bf0-b670-1395989a6b9f' before making global git config changes
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:32.9891360Z Adding repository directory to the temporary git global config as a safe directory
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:32.9895050Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/vlajmaji/vlajmaji/bauske
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:32.9966010Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.0019590Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.0735680Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.0780760Z http.https://github.com/.extraheader
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.0788440Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.0840090Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.1488240Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.1544580Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test (macos-latest)	Post Run actions/checkout@v4	﻿2026-10-27T00:07:33.2277080Z Post job cleanup.
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.3043930Z [command]/opt/homebrew/bin/git version
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.3100440Z git version 2.56.0
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.3116910Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/a82008c2-c692-4405-a357-b20a30830483/.gitconfig'
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.3124810Z Temporarily overriding HOME='/Users/runner/work/_temp/a82008c2-c692-4405-a357-b20a30830483' before making global git config changes
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.3125510Z Adding repository directory to the temporary git global config as a safe directory
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.3126840Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/vlajmaji/vlajmaji/vlajmaji
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.3180700Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.3230800Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.3929910Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.3984370Z http.https://github.com/.extraheader
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.3998560Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.4062590Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.4798460Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test (macos-latest)	Post Run actions/checkout@v4	2026-10-27T00:07:33.4853640Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test (macos-latest)	Complete job	﻿2026-10-27T00:07:33.5667900Z Cleaning up orphan processes
+Test (macos-latest)	Complete job	2026-10-27T00:07:33.9251920Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

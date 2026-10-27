@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "recorded_at_utc": "2026-10-27T00:11:46.336447+00:00",
+  "run": 40424262199,
+  "url": "https://github.com/oxur/vlajmaji/actions/runs/40424262199",
+  "candidate": "dcdf216ea5805b20f374ce74c302e42bef12c158",
+  "all3jobs": "completed success",
+  "root_watch_actual_exit": 0,
+  "CDC_network_calls": 0,
+  "independent_actual_complete_log_recount": {
+    "check": {
+      "bytes": 70661,
+      "sha256": "e2eb92bf20347f45759992534c0e93356a512b7d34a2a9e50b4b4765cb7b5433",
+      "stages": {},
+      "named_pass_steps": {}
+    },
+    "linux": {
+      "bytes": 267558,
+      "sha256": "a8ae79a92a46d96d6b7a0a8f610364b3dbd92b0b24bc1df67e50b15ca391963b",
+      "stages": {
+        "Run cargo test --workspace --locked": {
+          "rows": 45,
+          "totals": [
+            238,
+            0,
+            1
+          ]
+        },
+        "Run cargo test --locked -p vlajmaji-search --no-default-features": {
+          "rows": 6,
+          "totals": [
+            38,
+            0,
+            0
+          ]
+        },
+        "Run cargo test --workspace --all-features --locked": {
+          "rows": 45,
+          "totals": [
+            240,
+            0,
+            1
+          ]
+        }
+      },
+      "named_pass_steps": {
+        "test_managed_stdout_full_reports_read_and_committed_write_failures": [
+          "Run cargo test --workspace --locked",
+          "Run cargo test --workspace --all-features --locked"
+        ],
+        "test_non_utf8_installed_root_roundtrips_through_profile_and_lookup": [
+          "Run cargo test --workspace --locked",
+          "Run cargo test --workspace --all-features --locked"
+        ],
+        "test_configure_preserves_native_config_path_when_platform_allows": [
+          "Run cargo test --workspace --locked",
+          "Run cargo test --workspace --all-features --locked"
+        ]
+      }
+    },
+    "macos": {
+      "bytes": 139682,
+      "sha256": "a755689394f0ccf8a1d30a7bb395a9e55144ea21c113e47092a01f1e48f3bb39",
+      "stages": {
+        "Run cargo test --workspace --locked": {
+          "rows": 45,
+          "totals": [
+            236,
+            0,
+            1
+          ]
+        }
+      },
+      "named_pass_steps": {
+        "test_configure_preserves_native_config_path_when_platform_allows": [
+          "Run cargo test --workspace --locked"
+        ]
+      }
+    }
+  },
+  "forced_CONFIG_positive": "PROVED: exactdcdf test excludes Io-qualified arm on Linux; both real Linux passes must reach exact native encoding/hex/utf8:null and real revision1 readback",
+  "distinct_native_output_controls": 3,
+  "Linux_named_observations": 6,
+  "root_protected_check": "root reports current main52fd/Arc03 7b1c/Bauske c580/source dcdf clean after approval gap, default not opened",
+  "technical_rowwalk": "prerequisites discharged; canonical report/verifier/retro and root review still pending; ledger sixOPEN until mechanical close",
+  "no_extra_runtime_or_Full": true
+}
