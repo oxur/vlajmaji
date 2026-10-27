@@ -1,0 +1,57 @@
+{
+  "status": "LOCAL_FULL_PASS_PENDING_CURRENT_HEAD_LINUX_AND_PUSH_AUTHORIZATION",
+  "candidate_head": "e4e8bfc55c5071d9144fa72e7360525efa43fd56",
+  "branch": "codex/project01-composed-sqlite-lookup",
+  "accepted_s03_baseline": "dcdf216ea5805b20f374ce74c302e42bef12c158",
+  "exact_changed_paths": [
+    "crates/cli/README.md",
+    "crates/cli/src/main.rs",
+    "crates/cli/tests/collections_lifecycle_contract.rs",
+    "crates/cli/tests/collections_maintenance_contract.rs",
+    "crates/search/src/collection_query.rs",
+    "crates/search/tests/collection_lifecycle_contract.rs",
+    "crates/search/tests/collection_query_contract.rs",
+    "crates/store/README.md",
+    "crates/store/src/collection_profiles.rs",
+    "crates/store/src/collection_profiles/policy.rs",
+    "crates/store/src/collections.rs",
+    "crates/store/src/collections/lifecycle.rs",
+    "crates/store/src/collections/maintenance.rs",
+    "crates/store/src/collections_schema.rs",
+    "crates/store/src/lib.rs",
+    "crates/store/tests/collection_policy_contract.rs",
+    "crates/store/tests/collections_contract.rs",
+    "crates/store/tests/collections_lifecycle_contract.rs",
+    "crates/store/tests/collections_maintenance_contract.rs",
+    "docs/collections.md"
+  ],
+  "diffstat": " crates/cli/README.md                               |   31 +-\n crates/cli/src/main.rs                             |  861 +++++++++++-\n crates/cli/tests/collections_lifecycle_contract.rs |  658 +++++++++\n .../cli/tests/collections_maintenance_contract.rs  | 1209 ++++++++++++++++\n crates/search/src/collection_query.rs              |   25 +-\n .../search/tests/collection_lifecycle_contract.rs  |  236 ++++\n crates/search/tests/collection_query_contract.rs   |    2 +-\n crates/store/README.md                             |   15 +\n crates/store/src/collection_profiles.rs            |  392 ++++--\n crates/store/src/collection_profiles/policy.rs     |  697 ++++++++++\n crates/store/src/collections.rs                    |  925 ++++++-------\n crates/store/src/collections/lifecycle.rs          | 1438 ++++++++++++++++++++\n crates/store/src/collections/maintenance.rs        | 1132 +++++++++++++++\n crates/store/src/collections_schema.rs             |  143 +-\n crates/store/src/lib.rs                            |   24 +-\n crates/store/tests/collection_policy_contract.rs   |  166 +++\n crates/store/tests/collections_contract.rs         |    6 +-\n .../store/tests/collections_lifecycle_contract.rs  | 1214 +++++++++++++++++\n .../tests/collections_maintenance_contract.rs      | 1013 ++++++++++++++\n docs/collections.md                                |   62 +-\n 20 files changed, 9575 insertions(+), 674 deletions(-)\n",
+  "current_local_gates": "e4 workspace277/0/1+19; revised exact REMOVE-stage regression1/1; target inventory8",
+  "retained_prior_source_gates": "a7 no-default39/0/0,allfeatures279/0/1; runtime public zero failures/CLI29/three stage counterparts; production byte-identical e4; revised body not yet allfeatures/Linux",
+  "current_method": "observer15,pure78,actual original four-pack Tiny37stages passed; two failed expectation attempts retained",
+  "full": "one reviewed campaign actualexit0,39stages expectedexits,4publications/G4active,analysis and resource scopes retained; no retry",
+  "remaining_linux": {
+    "strict_native": "test_linux_native_root_and_config_roundtrip_through_cli",
+    "output_lifecycle": "collections_lifecycle_contract::test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes",
+    "output_maintenance": "collections_maintenance_contract::test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes",
+    "persistent_remove": "test_reconcile_committed_stage_markers_and_unknown_operation must run actual current-head default/allfeatures"
+  },
+  "workflow": {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "f107c2eda59e28b79d22708c7958d7b8107df610c01a9bcc4a0d29915d36eed4",
+    "triggers": "nonplanning push and pull_request",
+    "jobs": "Ubuntu Check; Ubuntu/macOS Test; Linux isolated search and four Synthetic preparations/allfeatures",
+    "effects": "GitHub cache plus Linux apt clang/libclang install in hosted runner; repository contents:read; no publication/deploy/tag/merge steps"
+  },
+  "proposed_delivery": "normal nonforce existing source branch push of exact reviewed e4 after Full success/local readiness; root refresh remote/HEAD before execution; watch exact-head CI to terminal, preserve all logs/repair scope; separate human push permission required",
+  "excluded": "no PR/merge/main/local default/publish/nextfeature authority inferred",
+  "all_six_s04_rows": "OPEN pending actual current-head Linux/platform/fullfeature,independent final rowwalk/canonical closure",
+  "candidate_parent": "a7b9baf67a6eea784cb90a2f388bf5e2537cbc72",
+  "candidate_tree": "a5e9a73a82ac7ecfcffa516fa138d07e7ee6f2d5",
+  "full_receipts": [
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-run-terminal01.json",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-output-analysis01.json",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-output-files01.json",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-post-scratch-inventory01.json"
+  ]
+}

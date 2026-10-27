@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/observer",
+    "observe",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/pre-input-expected.json",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-caller01/accepted-descriptors-and-refs02.json",
+    "all",
+    "2",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/G2-inner.json"
+  ],
+  "decision": "passed",
+  "elapsed_seconds": 74.79013520944864,
+  "exit_code": 0,
+  "log": "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/G2-public.stderr",
+  "maximum_resident_set_size_bytes": 2629828608,
+  "pid": 81737,
+  "rss_parse_ok": true,
+  "rss_source": "/usr/bin/time -l maximum resident set size",
+  "stdout_path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/G2-public.stdout",
+  "timed_out": false,
+  "guard_exit": 0,
+  "expected_child_exit": 0,
+  "outer_elapsed_s": 74.8483897075057
+}

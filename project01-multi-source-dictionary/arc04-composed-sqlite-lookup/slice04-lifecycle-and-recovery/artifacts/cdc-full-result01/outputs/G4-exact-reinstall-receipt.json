@@ -1,0 +1,29 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+    "collections",
+    "reinstall",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+    "--manifest",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-batch-proposed01.json",
+    "--pack",
+    "llg",
+    "--release-sha256",
+    "d8c8be02b9888c1eee3d3daa053746e483aec995935c4d225234479d4215ce12",
+    "--expected-revision",
+    "3"
+  ],
+  "decision": "passed",
+  "elapsed_seconds": 151.05103870853782,
+  "exit_code": 0,
+  "log": "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/G4-exact-reinstall.stderr",
+  "maximum_resident_set_size_bytes": 7948402688,
+  "pid": 81927,
+  "rss_parse_ok": true,
+  "rss_source": "/usr/bin/time -l maximum resident set size",
+  "stdout_path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/G4-exact-reinstall.stdout",
+  "timed_out": false,
+  "guard_exit": 0,
+  "expected_child_exit": 0,
+  "outer_elapsed_s": 151.09878512471914
+}

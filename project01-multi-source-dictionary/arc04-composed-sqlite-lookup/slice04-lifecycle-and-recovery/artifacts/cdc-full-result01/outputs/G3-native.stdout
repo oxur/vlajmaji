@@ -1,0 +1,142 @@
+{
+  "selected_packs": [
+    "la-lojban",
+    "lensisku-jbotci",
+    "sutysisku"
+  ],
+  "database": "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/5c8063b514a0cea1a45b9b1f019c5562/store/dictionary.sqlite3",
+  "verdict": "PASS",
+  "checks": {
+    "unique_sql_occurrence": 74287,
+    "exact_occurrence_tuple_ordinal_line": 74287,
+    "all_native_field_ordinals_names_encodings_lexemes": 74287,
+    "complete_native_assertion_entry_attribution_policy": 74287,
+    "independent_exact_gloss_object": 62317,
+    "complete_all_occurrences_no_omissions": 1,
+    "complete_all_native_fields_no_omissions": 1,
+    "complete_capture_identity_multiset": 1,
+    "all_eight_exact_capture_bytes": 4,
+    "complete_context_owner_value_evidence_multiset": 1,
+    "complete_form_owner_standing_value_evidence_multiset": 1,
+    "complete_etymology_owner_value_evidence_multiset": 1,
+    "complete_extension_owner_exact_lexeme_evidence_multiset": 1,
+    "complete_eligible_source_spelling_occurrence_assertion_tuples": 1,
+    "source_derived_complete_word_union": 1,
+    "exact_47_table_name_set_including_empty_categories": 1,
+    "explicit_empty_category_argument_frames": 1,
+    "explicit_empty_category_argument_slots": 1,
+    "explicit_empty_category_etymology_components": 1,
+    "explicit_empty_category_form_components": 1,
+    "explicit_empty_category_relations": 1,
+    "explicit_empty_category_owned_revisions": 1,
+    "explicit_empty_category_revision_assertions": 1,
+    "explicit_empty_category_revision_tombstones": 1,
+    "explicit_empty_category_owned_heads": 1,
+    "explicit_empty_category_editorial_senses": 1,
+    "explicit_empty_category_editorial_members": 1,
+    "explicit_empty_category_computations": 1,
+    "explicit_empty_category_computation_inputs": 1,
+    "explicit_empty_category_annotations": 1,
+    "explicit_empty_category_assertion_timestamps": 1,
+    "readonly_db_hash_unchanged": 1
+  },
+  "total_checks": 359495,
+  "source_policy_per_pack": {
+    "lensisku-jbotci": {
+      "occurrences": 33526,
+      "native_fields": 278254,
+      "lexical": 33516
+    },
+    "la-lojban": {
+      "occurrences": 17056,
+      "native_fields": 149596,
+      "lexical": 17056
+    },
+    "sutysisku": {
+      "occurrences": 23705,
+      "native_fields": 115219,
+      "lexical": 23704
+    }
+  },
+  "native_fields": 543069,
+  "occurrences": 74287,
+  "typed_multiset_comparisons": {
+    "contexts": {
+      "rows": 171406,
+      "sha256": "548a4b7c7e9568179860068638cf8a62d526250880d2b5f0533c59667123d29a"
+    },
+    "forms": {
+      "rows": 8507,
+      "sha256": "a5f2851ba7d212c1d6f2ff447547a079f692dd25c1f694db6a45fd80be70d1cb"
+    },
+    "etymologies": {
+      "rows": 3513,
+      "sha256": "6e27866b0348f13ef8989e2ec07a1cb5e107b9c59d7a876cc8527e856ad72907"
+    },
+    "extensions": {
+      "rows": 135242,
+      "sha256": "d9e0f3511cd900a594f83350e2a8cc4610f5b6d816bf6395adb37f71a80c522b"
+    },
+    "eligible": {
+      "rows": 74276,
+      "sha256": "5af6ea971e0e16bc8f1b10cdc66a093edc98eb23ce02025c6b5c18a9380c7f67"
+    }
+  },
+  "eligible_words": 31250,
+  "eligible_word_union_sha256": "fe03cfdaf3b3766693e447da3dde7f3ddf9ad05f6fc91f7c245a44c0109eb05c",
+  "eligible_by_source": {
+    "lensisku": 50572,
+    "sutysisku": 23704
+  },
+  "table_inventory_all47": {
+    "annotations": 0,
+    "argument_frames": 0,
+    "argument_slots": 0,
+    "assertion_timestamps": 0,
+    "assertions": 74287,
+    "canonical_document": 1,
+    "capture_refs": 4,
+    "code_notices": 1,
+    "collections": 3,
+    "component_languages": 3,
+    "components": 3,
+    "computation_inputs": 0,
+    "computations": 0,
+    "content_notices": 3,
+    "contexts": 171406,
+    "contributors": 238,
+    "distributors": 2,
+    "editorial_members": 0,
+    "editorial_senses": 0,
+    "entity_ids": 332009,
+    "entries": 74287,
+    "etymologies": 3513,
+    "etymology_components": 0,
+    "extensions": 135242,
+    "form_components": 0,
+    "forms": 8507,
+    "metadata": 7,
+    "native_fields": 543069,
+    "occurrence_attributions": 74287,
+    "occurrence_refs": 74287,
+    "owned_heads": 0,
+    "owned_revisions": 0,
+    "raw_captures": 4,
+    "raw_occurrences": 74287,
+    "redistribution_evidence": 4,
+    "relations": 0,
+    "release_assertions": 74287,
+    "release_captures": 4,
+    "release_diagnostics": 11,
+    "releases": 3,
+    "revision_assertions": 0,
+    "revision_tombstones": 0,
+    "snapshot_bindings": 4,
+    "source_aliases": 0,
+    "source_evidence": 161583,
+    "source_lineage": 2,
+    "sources": 2
+  },
+  "db_pre_sha256": "4d64411dc141a58906c0c31ebb77e1d456ba1bd2d79f5ae6cae61c15d7d459db",
+  "db_post_sha256": "4d64411dc141a58906c0c31ebb77e1d456ba1bd2d79f5ae6cae61c15d7d459db"
+}

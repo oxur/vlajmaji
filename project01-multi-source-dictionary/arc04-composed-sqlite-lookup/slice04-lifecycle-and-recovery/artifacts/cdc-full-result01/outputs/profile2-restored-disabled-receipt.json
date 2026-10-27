@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+    "lookup",
+    "farvi",
+    "--config",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+  ],
+  "decision": "passed",
+  "elapsed_seconds": 2.1887423750013113,
+  "exit_code": 0,
+  "log": "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/profile2-restored-disabled.stderr",
+  "maximum_resident_set_size_bytes": 2311585792,
+  "pid": 82053,
+  "rss_parse_ok": true,
+  "rss_source": "/usr/bin/time -l maximum resident set size",
+  "stdout_path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/profile2-restored-disabled.stdout",
+  "timed_out": false,
+  "guard_exit": 0,
+  "expected_child_exit": 0,
+  "outer_elapsed_s": 2.2308161668479443
+}

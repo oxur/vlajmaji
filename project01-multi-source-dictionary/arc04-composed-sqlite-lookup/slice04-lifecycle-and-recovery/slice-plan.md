@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | Final/fifth test-only04 frozen clean e4e8bfc55c5071d9144fa72e7360525efa43fd56. Revised real REMOVE-stage regression1/1,current277/0/1+19 and maintenance inventory8 pass; production byte-identical a7 independent proof retained. Actual observer/Tiny runner qualification passes after retained caller expectation corrections. Six rows OPEN; finite Full/current-head Linux/final acceptance pending. |
+| Status | Final/fifth pass e4 frozen; current277/0/1+19/revised1/1 and retained a7 production scopes pass. Single reviewed Full campaign LOCAL PASS:39expected exits,4publications,G4active/catalogue4/profile5,clean reconcile and scoped complete proofs/resources. Root local review PASS. Six rows OPEN; actual current-head Linux/CI and final acceptance pending; separate push authorization question pending. |
 | Authority | Duncan: “when you've finished up, go ahead and dive into the next slice”; original Autonomous THROUGH ARC04, Sol6.1/high CDC and retained Luna/high CC. S03 closed in planning b436e2c; Duncan merged PR4 as main b0106b, tree equal accepted dcdf; main CI40425580977 terminal SUCCESS. |
 | Source | CURRENT clean e4e8bfc55c5071d9144fa72e7360525efa43fd56, parenta7/treea5e9a73a, same codex branch; exactly ONE test-path delta, all production/runtime/lock/workflow bytes unchanged. Earlier source/evidence and protected primary52fd/remote-mainb010 distinction retained. |
 | Ownership | CC explicitly returned sole test-path/index/retained target after e4 freeze and all sessions terminal; CDC now owns these. Root remains read-only. CDC planning ownership; CC execution attestation retained. |

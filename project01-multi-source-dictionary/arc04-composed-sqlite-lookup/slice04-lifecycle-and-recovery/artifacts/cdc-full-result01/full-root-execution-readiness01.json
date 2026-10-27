@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-27T06:02:14Z",
+  "reviewer": "root independent",
+  "decision": "PASS exact execution readiness",
+  "planning_commit": "af46d0268ebb0fc5ebf34e3049f1fed159993e0a",
+  "manifest_sha256": "1ed961c3c394a59916393e929d8a48a12d33302d70de8297dd633204c0183c9f",
+  "scope": "exact runner05/preflight02 launch; one campaign/four publication attempts maximum; first failure stop; no retry/reset/fifth",
+  "all_six_rows": "OPEN",
+  "limits": "active per-stage600s; OSRSS/data/output post-completion thresholds; not live enforcement",
+  "source": "e4e8bfc55c5071d9144fa72e7360525efa43fd56",
+  "source_index_target_owner": "CDC; root read-only"
+}

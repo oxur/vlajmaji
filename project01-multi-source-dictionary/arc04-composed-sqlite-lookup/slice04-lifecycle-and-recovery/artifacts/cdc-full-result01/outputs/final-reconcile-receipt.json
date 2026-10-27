@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+    "collections",
+    "reconcile",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01"
+  ],
+  "decision": "passed",
+  "elapsed_seconds": 0.059495291672647,
+  "exit_code": 0,
+  "log": "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/final-reconcile.stderr",
+  "maximum_resident_set_size_bytes": 6340608,
+  "pid": 82091,
+  "rss_parse_ok": true,
+  "rss_source": "/usr/bin/time -l maximum resident set size",
+  "stdout_path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/final-reconcile.stdout",
+  "timed_out": false,
+  "guard_exit": 0,
+  "expected_child_exit": 0,
+  "outer_elapsed_s": 0.10192766785621643
+}

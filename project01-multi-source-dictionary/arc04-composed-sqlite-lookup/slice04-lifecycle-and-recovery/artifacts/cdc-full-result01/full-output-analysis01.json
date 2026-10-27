@@ -1,0 +1,357 @@
+{
+  "ok": true,
+  "utc": "2026-10-27T06:23:54Z",
+  "source_commit": "e4e8bfc55c5071d9144fa72e7360525efa43fd56",
+  "scope": "Existing outputs only; no DB reopen/query or additional Full operation",
+  "stages": [
+    {
+      "stage": "P0-input-expectations",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 8.707975707948208,
+      "maximum_resident_set_size_bytes": 1207484416,
+      "receipt_sha256": "e1c37b7dc95f36c10a48ed0fc0f1879f88cf076746a07d4ab1db56177f449c24"
+    },
+    {
+      "stage": "G1-install",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 172.82527537457645,
+      "maximum_resident_set_size_bytes": 7447019520,
+      "receipt_sha256": "a6a670149abf3d3b7246a283bba9f89d8714e47a391504b63ab800f44830c491"
+    },
+    {
+      "stage": "G1-All",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 54.07559495884925,
+      "maximum_resident_set_size_bytes": 6498385920,
+      "receipt_sha256": "28e2f89ad5abb1d3d7ba766e74322e1798098aff938faff93d2ef3dab064be9c"
+    },
+    {
+      "stage": "G1-public",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 42.69845712464303,
+      "maximum_resident_set_size_bytes": 3116924928,
+      "receipt_sha256": "3467918fdce3054aeee2caf009765b1786d08d895cf141a747e7a689dade74dd"
+    },
+    {
+      "stage": "G1-native",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 12.675475084222853,
+      "maximum_resident_set_size_bytes": 2494758912,
+      "receipt_sha256": "26ed318ddcf741bcca700fb73619cb06d370494bfcdbcb77d905f318627f6bbe"
+    },
+    {
+      "stage": "profile1-configure",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 0.11698208376765251,
+      "maximum_resident_set_size_bytes": 9338880,
+      "receipt_sha256": "333551e4c5e427d8c41eca61f074a5b677c77a855e38d5c69aa48fb6c47c0e9e"
+    },
+    {
+      "stage": "profile1-lookup",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 2.305127499625087,
+      "maximum_resident_set_size_bytes": 2299723776,
+      "receipt_sha256": "471e0a54b558b457ecc2b4ca7381f3e7a5fca34e8c532966ba2a72cbc83e4a96"
+    },
+    {
+      "stage": "G1-cursor-origin",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 2.1389591256156564,
+      "maximum_resident_set_size_bytes": 2279292928,
+      "receipt_sha256": "951f54b79cf37216b3960fd45aedc260d4f53e9fec93c2e5195b8d3d726ca15d"
+    },
+    {
+      "stage": "update-identical",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 81.85737849958241,
+      "maximum_resident_set_size_bytes": 6630817792,
+      "receipt_sha256": "ac6b52e86141d222e05ceb99d3e92a587f642b0c7ff28a7e8a4da00e541dfa41"
+    },
+    {
+      "stage": "U1-cursor-fresh-process-valid",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 2.0473598754033446,
+      "maximum_resident_set_size_bytes": 2247573504,
+      "receipt_sha256": "0b565107d760cb04612c60476d900d8dc83f3da88c2b32ae45cdc44eb245d105"
+    },
+    {
+      "stage": "G2-rebuild",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 171.28187720943242,
+      "maximum_resident_set_size_bytes": 7971405824,
+      "receipt_sha256": "8a670e556fd03921147dac40bb5bd024271ae38d78732a94accc69de1ca08af4"
+    },
+    {
+      "stage": "G2-All",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 54.679303500801325,
+      "maximum_resident_set_size_bytes": 6698287104,
+      "receipt_sha256": "317e2584bbf06737c5c26e51677a69de3f2b6fb0c9c60b2c41bad83abc946599"
+    },
+    {
+      "stage": "G2-public",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 74.79013520944864,
+      "maximum_resident_set_size_bytes": 2629828608,
+      "receipt_sha256": "083dc567c8f1af448eff7c4026f77980f59d4f41c06eb4cd806852c6bca585c1"
+    },
+    {
+      "stage": "G2-prior-cursor-stale",
+      "exit_code": 1,
+      "expected_exit": 1,
+      "elapsed_seconds": 0.12174499966204166,
+      "maximum_resident_set_size_bytes": 10993664,
+      "receipt_sha256": "e9b3f470314593fe7c69e74cb377d4569204871d6f4cf8a388ad705b66b48058"
+    },
+    {
+      "stage": "G2-fresh-oldG1-explicit-store",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 2.31482045724988,
+      "maximum_resident_set_size_bytes": 1522188288,
+      "receipt_sha256": "8835be24c705ef83319beff254f6067120594f9f44eca4ef55079e628b6b56e6"
+    },
+    {
+      "stage": "G2-current-cursor-before-remove",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 2.2495099995285273,
+      "maximum_resident_set_size_bytes": 2253537280,
+      "receipt_sha256": "f2d1ee1e79819034fd68a1f7bce5526de5be31180d581a1ba5eedfa78afca0ac"
+    },
+    {
+      "stage": "G3-remove-llg",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 143.6526387091726,
+      "maximum_resident_set_size_bytes": 7192428544,
+      "receipt_sha256": "9eae0a05d90e016d154150f005fe3399818838ad5f87f6e3e04b95f480d42aec"
+    },
+    {
+      "stage": "G3-All",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 49.60189195908606,
+      "maximum_resident_set_size_bytes": 6231080960,
+      "receipt_sha256": "09003f2e5e497a9fb1796e0957b0463be187ee4719bd2a76f25cd08b40c0ebbf"
+    },
+    {
+      "stage": "G3-public",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 75.05304079223424,
+      "maximum_resident_set_size_bytes": 2625421312,
+      "receipt_sha256": "f7c7784da5c2345cf4e80856175f9faee9f97d57e9ac22a589c47df32be3cd6a"
+    },
+    {
+      "stage": "G3-native",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 12.068507375195622,
+      "maximum_resident_set_size_bytes": 2850537472,
+      "receipt_sha256": "d3cba0c475ebe7d00a29a010c8d92224e14fc8634d9f6411fa86a47c5dd43607"
+    },
+    {
+      "stage": "G3-immediately-prior-cursor-stale-before-unavailable",
+      "exit_code": 1,
+      "expected_exit": 1,
+      "elapsed_seconds": 0.11705033294856548,
+      "maximum_resident_set_size_bytes": 10485760,
+      "receipt_sha256": "8a29d973a7d150b2b14328e050a32cabee7ccbcee0293e319ed172d770603207"
+    },
+    {
+      "stage": "profile1-removed-unavailable",
+      "exit_code": 1,
+      "expected_exit": 1,
+      "elapsed_seconds": 0.11701637506484985,
+      "maximum_resident_set_size_bytes": 10354688,
+      "receipt_sha256": "111f276f42729953e21b64945eb828ff195282a8f65ab3b8be2a163d4e70c5e2"
+    },
+    {
+      "stage": "profile2-disable",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 0.11265787482261658,
+      "maximum_resident_set_size_bytes": 10141696,
+      "receipt_sha256": "14e7212fc2958112991f51c0522187f5d00ae3de7979f2eaa9c3fd3fc4a5e53c"
+    },
+    {
+      "stage": "profile2-subset",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 2.079463000409305,
+      "maximum_resident_set_size_bytes": 2153562112,
+      "receipt_sha256": "315417641072261ca8cd9d08e58c14d3c291be2333494058375b380da70a9a37"
+    },
+    {
+      "stage": "G3-profile2-current-cursor-before-restore",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 2.0644211657345295,
+      "maximum_resident_set_size_bytes": 2178252800,
+      "receipt_sha256": "ece1f202edbdd2721c01d301faa5069dbccb0777acda36f52aaac1d00fd5eafe"
+    },
+    {
+      "stage": "G4-exact-reinstall",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 151.05103870853782,
+      "maximum_resident_set_size_bytes": 7948402688,
+      "receipt_sha256": "76893f31cc443ac49b81afa1dd20ef665a686dbb9a27b37b912527acdcb69563"
+    },
+    {
+      "stage": "G4-All",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 53.65336287487298,
+      "maximum_resident_set_size_bytes": 6512148480,
+      "receipt_sha256": "4aef5d31e71a7989f81cee7b82d78fb54db55cab4248079857e61f86ebad587e"
+    },
+    {
+      "stage": "G4-public",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 74.6774289580062,
+      "maximum_resident_set_size_bytes": 3453452288,
+      "receipt_sha256": "bfaf119af4ead1bac1b4d3afb5338fb59dd039b30cb66f18f4caf47307e702ea"
+    },
+    {
+      "stage": "G4-immediately-prior-cursor-stale",
+      "exit_code": 1,
+      "expected_exit": 1,
+      "elapsed_seconds": 0.11744125001132488,
+      "maximum_resident_set_size_bytes": 10862592,
+      "receipt_sha256": "8f4e0a8c1085e265ae0c0c47b28ea5f2e52f3502e30bd0f8cac6acf645011707"
+    },
+    {
+      "stage": "profile2-restored-disabled",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 2.1887423750013113,
+      "maximum_resident_set_size_bytes": 2311585792,
+      "receipt_sha256": "6731b40c1ca88ed63b85318c9293f608d6b73890cacce7e215d315f58a2ffdb2"
+    },
+    {
+      "stage": "G4-profile2-current-cursor-before-enable",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 2.153182292357087,
+      "maximum_resident_set_size_bytes": 2261237760,
+      "receipt_sha256": "9cbe9d1f747e2d156cf7f631416b0111c50ba8c4a0d0acf2955e4fdfe80a0c5d"
+    },
+    {
+      "stage": "profile3-enable",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 0.11326983291655779,
+      "maximum_resident_set_size_bytes": 10272768,
+      "receipt_sha256": "bcf9f455fafeabb3714456a09896ceb5045dc3f1ae18dbc8b0d8a3fa103bc493"
+    },
+    {
+      "stage": "profile3-prior-disabled-cursor-stale",
+      "exit_code": 1,
+      "expected_exit": 1,
+      "elapsed_seconds": 0.06183845829218626,
+      "maximum_resident_set_size_bytes": 11190272,
+      "receipt_sha256": "ff3f7e08b1fc2a927e637b16331ad5c5cf1da7e9f280b843d68a02c56a1d2416"
+    },
+    {
+      "stage": "profile3-all",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 2.1034140000119805,
+      "maximum_resident_set_size_bytes": 2253684736,
+      "receipt_sha256": "54cbb7b76de6e9fed69aca3a03c73c6a492becc129179696f2d5f36b57ad20f3"
+    },
+    {
+      "stage": "profile4-clear",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 0.06200604233890772,
+      "maximum_resident_set_size_bytes": 4292608,
+      "receipt_sha256": "a5851f983d975d88c16d124bf522c6ed59b50519795b0f7cece117c2e3b2aeaf"
+    },
+    {
+      "stage": "profile4-no-default",
+      "exit_code": 1,
+      "expected_exit": 1,
+      "elapsed_seconds": 0.06107933446764946,
+      "maximum_resident_set_size_bytes": 3932160,
+      "receipt_sha256": "78ba5a19d9c45a7d6319d39d543d9d921e03ff449f1dad7c1285528e5790e15c"
+    },
+    {
+      "stage": "profile5-restore",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 0.11826583370566368,
+      "maximum_resident_set_size_bytes": 9797632,
+      "receipt_sha256": "a2e682dbaff54512a89866091a2c33facb2b2fcbb22b39c1ba837ea853164371"
+    },
+    {
+      "stage": "profile5-all",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 2.115052707493305,
+      "maximum_resident_set_size_bytes": 2242527232,
+      "receipt_sha256": "82dce801aa2a4984829a1f2e6b1709ac64a4bc4153a30d871566b0c701219898"
+    },
+    {
+      "stage": "final-reconcile",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "elapsed_seconds": 0.059495291672647,
+      "maximum_resident_set_size_bytes": 6340608,
+      "receipt_sha256": "5bc815f59953110fa9be0d00b63c6326aedf31c6669789d3f537ea17fa459db0"
+    }
+  ],
+  "expected_negative_child_count": 6,
+  "full_wire": [
+    {
+      "stage": "G1",
+      "bytes": 7160366,
+      "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+    },
+    {
+      "stage": "G2",
+      "bytes": 7160366,
+      "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+    },
+    {
+      "stage": "G3",
+      "bytes": 6814063,
+      "sha256": "1e4eabb6c658db6a259c18ffb8b5e5b0c7b5f6bd68d9f6d5543c80628b7e2c32"
+    },
+    {
+      "stage": "G4",
+      "bytes": 7160366,
+      "sha256": "144b8b09b6e378243b36c8e01ab06353c3d573459668c8c158a86aebbea73556"
+    }
+  ],
+  "active_final": "d5611a9d0c983b65aae0a0e10dcc4d6c-22138258fb19a4b58ae1bb67d230a49e",
+  "catalogue_revision": 4,
+  "profile_revision": 5,
+  "new_data_bytes": {
+    "operational_settled_including_inventory": 7134324837,
+    "preserved_binary_readiness_overhead": 21411724,
+    "combined_observed": 7155736561,
+    "threshold": 12884901888,
+    "scope": "One campaign root/output/config/sidecars plus named frozen binary/readiness files. Excludes preexisting accepted inputs/target/historical roots; later small analysis/canonical records separately disclosed."
+  },
+  "limits": "timeout active; RSS/output/data acceptance thresholds post-completion; no live cap claim",
+  "full_coverage": "all/subset pre-input25-family + every retained descriptor, All each4stores, native47table/15empty+declaredtuples G1/G3, complete accepted wire G1/G2/G4,5refs incl removed, pages0/1/2/3, immediate cursor transitions, oldG1 explicit query, U1 no new path/rev, policy1..5, final clean4stages",
+  "not_claimed": "Full remove-all/changed release/crash/held-reader scale; actual Linux/current-head allfeatures; no all47native rows reconstructed",
+  "all_six_rows": "OPEN"
+}

@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+    "collections",
+    "update",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+    "--manifest",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-batch-proposed01.json",
+    "--all",
+    "--expected-revision",
+    "1"
+  ],
+  "decision": "passed",
+  "elapsed_seconds": 81.85737849958241,
+  "exit_code": 0,
+  "log": "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/update-identical.stderr",
+  "maximum_resident_set_size_bytes": 6630817792,
+  "pid": 81493,
+  "rss_parse_ok": true,
+  "rss_source": "/usr/bin/time -l maximum resident set size",
+  "stdout_path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/update-identical.stdout",
+  "timed_out": false,
+  "guard_exit": 0,
+  "expected_child_exit": 0,
+  "outer_elapsed_s": 81.90085895732045
+}
