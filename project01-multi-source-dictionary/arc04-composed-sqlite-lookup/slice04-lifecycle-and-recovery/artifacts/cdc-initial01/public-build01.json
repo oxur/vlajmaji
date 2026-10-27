@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-cargo",
+    "+1.98.0",
+    "build",
+    "--offline",
+    "--manifest-path",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/public-caller01/Cargo.toml"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "source_commit": "8b5df7b3ebc06d14b880af59f223355736706260",
+  "caller_sources_before": {
+    "public-caller01/Cargo.toml": "fb6480d8bfb7cd3199e651ad5af10ecea5f3f9142423427ffadc720139de6c27",
+    "public-caller01/fixtures/lensisku.json": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429",
+    "public-caller01/fixtures/llg-valid-row.txt": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735",
+    "public-caller01/fixtures/sutysisku.json": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03",
+    "public-caller01/src/helpers.rs": "b0d29b14379a7156ee005f93bec5cd927e48d4e058a698cd441194c53dfb9e81",
+    "public-caller01/src/main.rs": "11a44606c88026cae60ca0d8132bb55c98c691da9a3a7a670e049bd6edf6d182"
+  },
+  "exit_code": 101,
+  "timed_out": false,
+  "elapsed_s": 0.32069579139351845,
+  "log_bytes": 440,
+  "log_sha256": "ec63581775a06e21ccc61a0fa3b582e45a8a9c4bb54b23a84b11c7c20e6b295a"
+}

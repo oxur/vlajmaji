@@ -1,0 +1,19 @@
+{
+  "roots": {
+    "/tmp/vlajmaji-p01-a04-s04-cdc/public-runtime01-roots": {
+      "files": 35,
+      "file_bytes": 1489233
+    },
+    "/tmp/vlajmaji-p01-a04-s04-cdc/public-runtime02-roots": {
+      "files": 50,
+      "file_bytes": 2265103
+    },
+    "/tmp/vlajmaji-p01-a04-s04-cdc/public-runtime03-roots": {
+      "files": 71,
+      "file_bytes": 3739359
+    }
+  },
+  "total_file_bytes": 7493695,
+  "scope": "CDC current retained runtime01/02/03 fixture files only, not historical cumulative allocation or peak; failed roots retained",
+  "threshold_bytes": 209715200
+}

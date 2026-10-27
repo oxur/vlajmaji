@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S03 CLOSED, eighteen child rows/A04-01,02,04 DONE; seven arc rows OPEN. S04 initial iteration ISSUED after root readiness PASS; six lifecycle rows OPEN, S05 unissued |
-| version / date | 1.10 / 2026-10-27 UTC |
+| status | ACTIVE; S01–S03 CLOSED, eighteen child rows/A04-01,02,04 DONE; seven arc rows OPEN. S04 initial increment independently accepted locally at 8b5df7b3; numbered phase2 readiness next, six lifecycle rows OPEN, S05 unissued |
+| version / date | 1.11 / 2026-10-27 UTC |
 | authority | Latest 2026-10-27: Duncan directed “when you've finished up, go ahead and dive into the next slice”. Autonomous THROUGH ARC04 ONLY and unchanged Sol6.1/high CDC/Luna/high CC persist. S03/user merge/main CI reconciled; root approved S04 initial readiness. S01 numerical/count agreements remain accepted historical comparison authority, not new S04 Full/push authority. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S03 contracts, reviewed source dcdf216; Duncan merged PR4 as main b0106b with identical tree and all three main CI jobs SUCCESS. Bauske c580/accepted data/default remain protected. |
@@ -128,3 +128,7 @@ Source-guided configured combined lookup packet: slice03-configured-combined-loo
 S03 closed in planning b436e2c; Duncan merged PR4 into main b0106b with exact reviewed tree and terminal green main CI. Root final reconciliation PASS. S04 is sized as two reviewable implementation iterations: first explicit catalogue2/table-namespace write fence, migration, update/rebuild API+CLI+docs; then removal/exact reinstall/reconcile/policy commands and reversible scratch default migration. All six new child rows and seven outstanding arc rows remain OPEN; no S05 deferral or new investigation. The initial twelve-path prompt is ISSUED after root readiness PASS, ownership only after retained CC acknowledgment. No Full/new cache/dependency/network/future push or protected-store action.
 
 - 1.10 — 2026-10-27: S03 actual user merge/main CI reconciled; initial S04 useful lifecycle increment issued under unchanged Autonomous roles. All remaining W4 and W5/arc composition obligations preserved.
+
+## Version1.11 initial lifecycle disposition — 2026-10-27 UTC
+
+Initial S04 source8b5df7b3 and bounded independent packet are accepted for catalogue2/migrate/update/rebuild only; see slice04-lifecycle-and-recovery/artifacts/review-initial01.md. All six S04 and seven remaining arc/all fourteen project rows stay OPEN. No later Full/Linux/phase2 result is inferred. CDC owns the returned quiet source/index/target interval and prepares numbered phase2 for root readiness review before issue; no future push/publication/default authority.

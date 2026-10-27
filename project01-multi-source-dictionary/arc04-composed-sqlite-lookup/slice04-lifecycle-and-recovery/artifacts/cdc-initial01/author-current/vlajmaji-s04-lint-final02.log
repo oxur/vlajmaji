@@ -1,0 +1,9 @@
+[1;34mRunning Clippy...[0m
+error: failed to acquire package cache lock
+
+Caused by:
+  failed to open: /tmp/vlajmaji-p01-a04-cargo/.package-cache
+
+Caused by:
+  Not a directory (os error 20)
+make: *** [lint] Error 101

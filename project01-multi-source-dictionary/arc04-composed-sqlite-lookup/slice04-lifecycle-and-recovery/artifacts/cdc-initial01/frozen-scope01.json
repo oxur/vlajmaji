@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "head": "8b5df7b3ebc06d14b880af59f223355736706260",
+  "parent": "dcdf216ea5805b20f374ce74c302e42bef12c158",
+  "tree": "5045a94e3b722c106aecf1fc008b20e368fc9aa5",
+  "clean": true,
+  "source_paths": {
+    "crates/cli/README.md": "17c6660a0b912d5a46b034ec1e8e1ee0e06b981f4047e36e132d78de2c8d94f8",
+    "crates/cli/src/main.rs": "d6016ad0ab1b449c1ff870a4903d82221c27a913d7c5acc90271d79b1f86eb55",
+    "crates/cli/tests/collections_lifecycle_contract.rs": "793ee4107dffbe0341fddafceb67fc4170050b8ea37348f767d2bc00375c52df",
+    "crates/search/tests/collection_query_contract.rs": "ffe07048e3f197cf2018b9026bfa032a1728fdca452a4dbdc5273cbee5dff482",
+    "crates/store/README.md": "9f4e224b44fa7c10e5fe57a7860c589f73e8c9a9abb01e0ed5374790f056c06d",
+    "crates/store/src/collections.rs": "762fe6f462294bd7f286d700e2e145a8dae416f17f0ca7df9e95f24d37956642",
+    "crates/store/src/collections/lifecycle.rs": "da98a1214a277e64411bed5d2e9e8230e8207802e8698dffaa9f6d063c6bc8ae",
+    "crates/store/src/collections_schema.rs": "59608b90dbef6cdbb4b096337e4103ab22bf9feb5787220a260906491b91037c",
+    "crates/store/src/lib.rs": "3120cf5df3651a95ccd2b5022204752e493311cda03088711d3b7c2e0e59b5e2",
+    "crates/store/tests/collections_contract.rs": "98b80f5f71fe177e58c60a2c2d16f67f40d185a365c5c26d171c76c13e3f7f6c",
+    "crates/store/tests/collections_lifecycle_contract.rs": "a823be2544ef88d0e59e6d6ae2b18a5f5f28dd686457b31a11c0354c6fbc723d",
+    "docs/collections.md": "f0fbaf2a86006bc8db704832d939e07a22b9e462d0cbd4161ea4847f8ba05e9c"
+  },
+  "trailers": [
+    "Co-authored-by: Codex <noreply@openai.com>",
+    "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+  ],
+  "lock_sha256": "65cd7f39a88bdd2a3dab1fcd14e9055ff7b77cb22ec3af8c309ce49dbea78700",
+  "lock_unchanged": true,
+  "authority": "Initial S04 only; no closure, Full or Linux pass"
+}

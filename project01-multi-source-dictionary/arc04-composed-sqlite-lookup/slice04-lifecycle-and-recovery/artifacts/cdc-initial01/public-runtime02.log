@@ -1,0 +1,17 @@
+PASS source-derived 25-family inventory with reorder positive and four distinct comparator negatives BEFORE installs
+PASS exact six physical tables/single view/FKs and eighteen old-name write refusals plus two no-op reads; unchanged catalogue bytes
+PASS fresh catalogue2 full inventory and exact intentionally additive list field shape
+PASS actual isolated child: all-absolute migrate/update/rebuild succeed with deleted cwd and no HOME
+METHOD invalid-byte ROOT: direct mkdir=Os { code: 92, kind: Uncategorized, message: "Illegal byte sequence" }; equivalent direct symlink_metadata=Os { code: 2, kind: NotFound, message: "No such file or directory" }
+PASS platform-qualified invalid-native ROOT errors: exact native report and equivalent metadata outcome; no invalid-byte physical-success claim on this host
+PASS platform-qualified native sealed-input read: exact bytes/report/direct IO cause; no physical-success claim
+PASS actual valid sealed-files update counterpart; no byte change
+PASS captured old binary produces v1 readable by new API; ordinary v1 write rejects without byte changes
+PASS independent migration metadata negative seal-pack; unchanged rejected bytes and exact restored valid counterpart
+PASS independent migration metadata negative seal-digest; unchanged rejected bytes and exact restored valid counterpart
+PASS independent migration metadata negative unregistered-member; unchanged rejected bytes and exact restored valid counterpart
+PASS independent migration metadata negative duplicate-member; unchanged rejected bytes and exact restored valid counterpart
+
+thread 'main' (77130200) panicked at src/main.rs:716:5:
+assertion failed: preopened.prepare("SELECT members_json FROM generations ORDER BY local_revision DESC LIMIT 1").is_err()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

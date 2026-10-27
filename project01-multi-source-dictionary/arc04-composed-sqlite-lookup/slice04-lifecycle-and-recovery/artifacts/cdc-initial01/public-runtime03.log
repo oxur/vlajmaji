@@ -1,0 +1,21 @@
+PASS source-derived 25-family inventory with reorder positive and four distinct comparator negatives BEFORE installs
+PASS exact six physical tables/single view/FKs and eighteen old-name write refusals plus two no-op reads; unchanged catalogue bytes
+PASS fresh catalogue2 full inventory and exact intentionally additive list field shape
+PASS actual isolated child: all-absolute migrate/update/rebuild succeed with deleted cwd and no HOME
+METHOD invalid-byte ROOT: direct mkdir=Os { code: 92, kind: Uncategorized, message: "Illegal byte sequence" }; equivalent direct symlink_metadata=Os { code: 2, kind: NotFound, message: "No such file or directory" }
+PASS platform-qualified invalid-native ROOT errors: exact native report and equivalent metadata outcome; no invalid-byte physical-success claim on this host
+PASS platform-qualified native sealed-input read: exact bytes/report/direct IO cause; no physical-success claim
+PASS actual valid sealed-files update counterpart; no byte change
+PASS captured old binary produces v1 readable by new API; ordinary v1 write rejects without byte changes
+PASS independent migration metadata negative seal-pack; unchanged rejected bytes and exact restored valid counterpart
+PASS independent migration metadata negative seal-digest; unchanged rejected bytes and exact restored valid counterpart
+PASS independent migration metadata negative unregistered-member; unchanged rejected bytes and exact restored valid counterpart
+PASS independent migration metadata negative duplicate-member; unchanged rejected bytes and exact restored valid counterpart
+PASS exact six physical tables/single view/FKs and eighteen old-name write refusals plus two no-op reads; unchanged catalogue bytes
+PASS migrated v1 keeps exact generation/store; captured old binary rejects v2; modeled preopened old no-op reads reject
+PASS same-seal verified update and repeat migration retain revision/bytes/generation and fresh-engine cursor
+PASS stale revision rejects, strict new release updates full independent inventory, retains old bytes/ref identity, and invalidates prior cursor
+PASS forced rebuild creates new physical generation with exact logical body/content and immutable prior bytes
+PASS actual pinned-reader migration Busy/rollback/prior1 and released-reader registered-only successful counterpart
+PASS registered-only rebuild fails explicitly without activation/byte change
+{"base":"/tmp/vlajmaji-p01-a04-s04-cdc/public-runtime03-roots","ok":true,"scope":"independent S04 initial tiny fixture/version/update/rebuild/ref controls; not Full or complete S04"}
