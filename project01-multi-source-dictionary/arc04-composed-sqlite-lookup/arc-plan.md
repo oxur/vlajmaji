@@ -166,3 +166,7 @@ S04 canonical close be873/metadata7b329 accepted; root opened requested PR5 (no 
 ### S05 initial issue after final readiness
 
 Root accepted complete concrete19path compact/detail increment, exact public/wire/error/cursor/metadata/protocol contracts, sixOPEN and unchanged remaining arc/project cells. INITIAL prompt now issued status-only; reviewed draft retained, exact CC intake and transfer pending. This is pass1of5normalS05, readable01 next ONLY at reviewed actual source; source432/PR5dependency preserved, no Full/runtime/external/acceptance inferred.
+
+### S05 actual intake and initial author interval
+
+CC complete source-cited readback accepted and fresh source432/tree/branch/lock/guard verified. Metadata commit and explicit CDC transfer start exclusive19path/source-index/ONE retainedtarget ownership; root/CDC readonly. Six S05/remaining arc/project obligations unchanged OPEN; initial/readable scope and normal five-total persist. No runtime evidence/Full/external authority at handoff.

@@ -2,7 +2,7 @@
 
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Requested Sol6.1/high CDC and retained Luna/high CC unchanged. Duncan requested next slice and separate S05 branch. S04 CLOSED at432; requested PR5 is OPEN/attached/current432 with PR CI40518812275 terminal SUCCESS. No merge/publication/future S05 push authority inferred. All14projectrows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
-**Current Arc04 checkpoint, 2026-10-27:** S01–S04 CLOSED/twenty-four child rows DONE; A04-01/02/03/04/05 DONE, fiveotherarc/all14project OPEN. Root created codex/project01-readable-compact-output at clean432/tree dd2f378 in the SAME isolated Arc04 worktree after opening PR5; old S04 branch remains432, remote main b010 distinct from protected primary52fd. CDC owns QUIET source/index/retained target pending exact S05 CC intake/transfer; CC owns none until reviewed issue/exact intake/explicit transfer. Canonical slice05-readable-compact-output INITIAL is ISSUED after root final concrete readiness PASS; exact retained CC intake/readback and explicit19path transfer pending. No S05 source edits/builds/Full trials or extra stores at issue. No S04 source pass/reopen.
+**Current Arc04 checkpoint, 2026-10-27:** S01–S04 CLOSED/twenty-four child rows DONE; A04-01/02/03/04/05 DONE, fiveotherarc/all14project OPEN. Root created codex/project01-readable-compact-output at clean432/tree dd2f378 in the SAME isolated Arc04 worktree after opening PR5; old S04 branch remains432, remote main b010 distinct from protected primary52fd. Complete S05 CC intake/readback is accepted with fresh clean432/lock/guard checks. Retained Luna/high CC has exclusive19sourcepaths/index/ONE retainedtarget effective on explicit CDC transfer after metadata commit; CDC/root source/index/target readonly until frozen handback. Canonical slice05-readable-compact-output INITIAL is ISSUED after root final concrete readiness PASS; exact retained CC intake/readback accepted; explicit19path transfer follows scoped metadata commit. No S05 source edits/builds/Full trials or extra stores at issue. No S04 source pass/reopen.
 
 ## Historical pre-S04-close current headers (superseded)
 
@@ -119,3 +119,7 @@ Retained Luna/high CC acknowledged issued planning23f6240/prompt079cbf4e…32934
 ## S05 initial issue —2026-10-27 UTC
 
 Root concrete readiness PASS accepted19initialpaths/21plannedunion, sixOPEN and unchanged parent obligations at clean432/new S05branch. Reviewed draft promptfe0d6d27…4316 is byte-preserved; initial current prompt status-only ISSUED. Source/index/retainedtarget remain CDC-owned until retained Luna/high completes exact intake/readback and CDC fresh identity/explicit transfer. Root readonly, no Full/default/cache/network/future delivery/readable01/arcclose authority. Earlier S04 assignment ownership paragraphs are historical only.
+
+### S05 actual initial intake / source ownership
+
+CDC accepted complete source-cited intake (artifacts/execution.md, original8890ff2a…08a15), reverified clean432/newbranch/oldS04refs/lock/guard, and records explicit sole19path/index/retainedtarget transfer to retained Luna/high CC after this metadata commit. CDC/root then source/index/target readonly; planning remains CDC except CC append-only execution. No new Full/default/cache/network/delivery/readable01 permission, no test/acceptance yet.

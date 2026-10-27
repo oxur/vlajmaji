@@ -1,6 +1,6 @@
 # S05 ledger — Readable and compact output
 
-ISSUED INITIAL, 2026-10-27 UTC. All six rows OPEN. S04 accepted432/PR5 dependency, new separate S05 branch clean. Initial compact/detail and readable numbered01 are TWO planned usable passes of normal FIVE TOTAL; root final readiness PASS; exact CC intake/explicit source transfer pending. Full/numeric/current Linux/fresh assembled ARC acceptance remains pending and is not inferred from predecessor CI. Criteria/proof/owner cells freeze at issue; later status/evidence updates preserve this contract.
+ISSUED INITIAL, 2026-10-27 UTC. All six rows OPEN. S04 accepted432/PR5 dependency, new separate S05 branch clean. Initial compact/detail and readable numbered01 are TWO planned usable passes of normal FIVE TOTAL; root final readiness PASS; complete CC intake accepted, exclusive19path transfer effective on explicit CDC message after metadata commit. Full/numeric/current Linux/fresh assembled ARC acceptance remains pending and is not inferred from predecessor CI. Criteria/proof/owner cells freeze at issue; later status/evidence updates preserve this contract.
 
 | ID | Criterion | Verify at execution | Owner / workflow | Status | Evidence / notes |
 | --- | --- | --- | --- | --- | --- |
@@ -14,3 +14,7 @@ ISSUED INITIAL, 2026-10-27 UTC. All six rows OPEN. S04 accepted432/PR5 dependenc
 ## Initial assignment history
 
 Root final readiness PASS accepted original six binding criteria and exact19sourcepaths at432; prompt issued status-only from reviewed fe0d6d27…4316, original bytes retained separately. Initial pass1of5; planned readable pass2 remains unissued. CDC quiet source/index/target ownership until exact retained CC intake/readback accepted and explicit transfer. No implementation/test result or row acceptance at issue.
+
+### Initial intake accepted / transfer
+
+Actual source-cited CC intake and CDC fresh identity check are in artifacts/execution.md. No product test/implementation acceptance; reading coverage is author attestation. CC sole19path/index/retainedtarget author after explicit transfer; six rows OPEN.
