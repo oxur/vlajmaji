@@ -1,6 +1,6 @@
 # S05 ledger — Readable and compact output
 
-ISSUED CORRECTION ITERATION01 / intake pending, 2026-10-27 UTC. All six original rows OPEN. Original frozen INITIAL5bf is NOT ACCEPTED. Root final readiness PASS at draft55ad497b; exact nine-path pass2of5 correction issued after evidence closure963payloads/2,987,932B. CDC source/index/target remains quiet until retained CC exact-packet readback is accepted and explicit transfer occurs. Readable moves to numbered02/plannedpass3; no Full/Linux/ARC acceptance or external action inferred. Original criterion/proof/owner/status cells unchanged.
+ISSUED CORRECTION ITERATION01 / intake accepted; explicit transfer follows metadata commit, 2026-10-27 UTC. All six original rows OPEN. Original frozen INITIAL5bf is NOT ACCEPTED. Root final readiness PASS at draft55ad497b; exact nine-path pass2of5 correction issued after evidence closure963payloads/2,987,932B. CDC accepted retained CC exact-packet readback and freshly rechecked clean baseline5bf; sole nine-path/index/target transfer follows by explicit dispatch, then CDC/root read-only until frozen handback. Readable moves to numbered02/plannedpass3; no Full/Linux/ARC acceptance or external action inferred. Original criterion/proof/owner/status cells unchanged.
 
 | ID | Criterion | Verify at execution | Owner / workflow | Status | Evidence / notes |
 | --- | --- | --- | --- | --- | --- |

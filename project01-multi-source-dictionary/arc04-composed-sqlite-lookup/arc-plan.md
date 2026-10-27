@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S04 user-MERGED/main32e99 CIgreen. S05 INITIAL5bf NOT ACCEPTED; correction iteration01 ISSUED/rootreadinessPASS, exact9paths/pass2of5/intake+transfer pending. Six S05OPEN; readable/numeric/fresharc follow. |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S04 user-MERGED/main32e99 CIgreen. S05 INITIAL5bf NOT ACCEPTED; correction iteration01 ISSUED/rootreadinessPASS, exact9paths/pass2of5/intake accepted; explicit CC transfer follows metadata commit. Six S05OPEN; readable/numeric/fresharc follow. |
 | version / date | 1.17 / 2026-10-27 UTC |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-readable-compact-output current clean5bf/tree7e78, metadata-rebased onto32e99/main with old9eb chain preserved; same retained target. Old S04 local/origin branch remains432. CDC independent ownership, CC/root read-only. Actual primary checkout52fd remains distinct. |
+| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-readable-compact-output correction baseline5bf/tree7e78, metadata-rebased onto32e99/main with old9eb chain preserved; same retained target. Old S04 local/origin branch remains432. CC sole nine-path/index/retained-target implementation ownership effective on explicit CDC dispatch after intake metadata commit; CDC/root then read-only. Actual primary checkout52fd remains distinct. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
