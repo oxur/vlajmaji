@@ -2,13 +2,13 @@
 
 | Field | Value |
 | --- | --- |
-| Status | Initial8b accepted only for its bounded increment. Iteration02 frozen a9eeb440 repairs F01–F03 at independent finite scope; one remaining committed-stage classification defect blocks complete S04. Iteration03 is ISSUED after root concrete readiness PASS; exact intake/transfer pending. Six original rows remain OPEN. |
+| Status | Production at frozen a7b9baf6 passes current finite independent runtime proof. Persistent author03 regression misses real subset-REMOVE stage; iteration04 ONE-test-path is ISSUED to complete it after root readiness; intake/transfer pending. Fifth/final implementation pass; six original rows remain OPEN, Full/Linux pending. |
 | Authority | Duncan: “when you've finished up, go ahead and dive into the next slice”; original Autonomous THROUGH ARC04, Sol6.1/high CDC and retained Luna/high CC. S03 closed in planning b436e2c; Duncan merged PR4 as main b0106b, tree equal accepted dcdf; main CI40425580977 terminal SUCCESS. |
-| Source | CURRENT clean a9eeb440b029a4466f265cfc4eaf3e15fb773b31, parent024de816/treec245b562, same isolated codex branch. Initial8b/rejected024 and accepted dcdf/main-merge history retained; protected primary checkout52fd remains distinct from remote merged mainb010. |
-| Ownership | Iteration03 exact issued intake/readback accepted at clean a9eeb440. At2026-10-27 05:25:05 UTC CDC explicitly transferred ONLY two issued source paths/index/retained target to retained CC; CC sole writer through frozen handback, CDC/root read-only. CDC planning except CC append-only execution attestation. |
+| Source | CURRENT clean a7b9baf67a6eea784cb90a2f388bf5e2537cbc72, parenta9eeb440/tree7dcc6aa6, same codex branch. Earlier source/evidence and protected primary52fd/remote-mainb010 distinction retained. |
+| Ownership | CC03 returned source/index/retained target at clean a7 with all sessions ended. CDC owns them for independent proof; root read-only. No04 transfer before concrete readiness/issue/intake. |
 | Artifact home | This slice's artifacts/. Raw failed attempts retained; bulk/Held inputs and databases remain local. No new historical close documents before completion. |
 | Deliverable | Explicit local update, enable/disable, remove/reinstall, rebuild/reconcile and reversible legacy/default migration recipes; library APIs, CLI, docs and actual positive/negative controls. No physical purge, automatic downloads, owned editor, new output mode or real default switch. |
-| Sizing | Two usable implementation increments, initial migration/update/rebuild and phase2 lifecycle/policy, plus current bounded iteration02 correction of three connected findings. No first-increment or author gate alone closes S04. |
+| Sizing | Two usable increments plus bounded02/03 corrections and current04 test-only completion. Initial+01+02+03+04 exhaust five implementation passes; no automatic05/reset. Complete S04 still requires actual platform/scale/fresh composition proof. |
 
 ## Source findings and preservation
 
@@ -296,3 +296,15 @@ Root read complete reviewed8042B draftfb44b53b…012bc, review/design and indepe
 ### Iteration03 exact intake and transfer — 2026-10-27 05:25:05 UTC
 
 Retained Luna/high CC acknowledged exact issued planning88f5075/prompt2caca137…343cd5, current full plan/ledger/review/canonical marker evidence and named source/guides. Its readback correctly names exactly five generation operations, no register, operation validation BEFORE committed-ID trust, committed clean/genuine orphan/unknown-operation-with-actually-committed-ID contrasts, current gates/retention and no Full/default/network/delivery. CC attests source-cited reading; CDC checks the concrete contract and independently revalidates clean a9/correct branch and no active CDC process, then accepts intake. Only two source paths/index/retained target explicitly transfer; CDC/root become read-only there. CC records its detailed intake in existing execution before edits. All six rows OPEN, no runtime result inferred.
+
+## Numbered iteration04 readiness — persistent REMOVE-stage regression completion
+
+Production a7 exact five-name recognition independently passes original public/CLI29 and three actual stage-reconcile counterparts (including genuine committed subset REMOVE). The author03 saved test used only LLG/remove-all, so never created a remove generation/marker and omitted explicit clean attention:false/count3 assertions; its attestation overstates that narrow scope. Preserve this author test-coverage shortfall and a7 passes, not a runtime defect. See artifacts/review-i03-a7b01.md and immutable cdc-i03-a7b01/manifest.json (100payloads/433342B, SHA3c545c17852ff8bb58ac05a3284f30226eadbe3ab613ae24a0b4979a84b8fe37).
+
+Root requires exact originally issued persistent regression, not replacement with independent runtime proof. DRAFT iteration04 changes ONLY existing crates/store/tests/collections_maintenance_contract.rs: two_pack_request with JB survivor, exact actual remove marker/clean false-attention/generation count1→2→3, retain current genuine orphan and unknown-op-with-committed-ID negatives. No production or other tracked-byte change. This is FIFTH final implementation pass (initial+01+02+03+04), no reset/same03 disguise or new model/human budget question before exhaustion. A further substantive correction after04 must surface the exhausted envelope.
+
+Current format→lint→actual revised named test1/1→stable workspace check and store inventory are proportionate. Exact one-test-path delta allows scoped retention of proven a7 production/independent runtime/no-default/other-feature evidence; revised test body is not falsely called Linux/all-features executed. Mandatory later current-head platform/feature CI, separately qualified runner Tiny, finite Full/fresh arc remain OPEN. CDC ownership continues pending root readiness/issue/intake/explicit transfer.
+
+### Iteration04 actual issue — 2026-10-27 05:42:16 UTC
+
+Root read complete8033B/94b2c830…82a6 draft,3962B review/design, independently rehashed100payloads/433342B and six unchanged binding rows/four predecessor prompts. Concrete readiness PASS for exact two-pack/JB-survivor persistent regression, no production delta; current targeted/check gates and precise retained-feature applicability approved, current-head Linux/allfeatures later mandatory. Status-only ISSUED SHA 19ee8caba4e58c69a6eeff9d2ba3545cadbd8184b07ac87f3e80e10489013880; original reviewed draft byte-preserved in artifacts/cc-prompt-iteration04-reviewed-draft01.md. Current04 is FIFTH final pass, not same03; no automatic05. CDC retains source/index/target until exact readback/transfer; six OPEN, no Full/delivery or slice acceptance.

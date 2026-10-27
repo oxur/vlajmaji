@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "scope": "three actual public CLI reconciliations on same original four-pack Tiny journey: committed remove/reinstall clean, supported genuine orphan attention, unknown operation with actually committed ID unreadable; no Full/cleanup/activation/schema mutation",
+  "processes": [
+    {
+      "name": "committed-clean",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+        "collections",
+        "reconcile",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/i03-cli-runtime01/cli lifecycle \u03bb $()"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.007120249792933464,
+      "stdout_sha256": "c49f5242a3a4f45f780c141f1c50e1fdd104361d967d528ed6f0d346ebbb0bd8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "supported-genuine-orphan",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+        "collections",
+        "reconcile",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/i03-cli-runtime01/cli lifecycle \u03bb $()"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.0076239584013819695,
+      "stdout_sha256": "1e81240e702f01dc21aac4dbc16dfa44b5d358657846dd37898188dc9e593e30",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unknown-operation-actually-committed-id",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+        "collections",
+        "reconcile",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/i03-cli-runtime01/cli lifecycle \u03bb $()"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 0.0078028347343206406,
+      "stdout_sha256": "2428572145e9d31f6d641e077ad6cb52b99bf15a4c5a5ea882ce8e8010aa6464",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "cli_sha256": "f5d23af9902307255ed45c3b486b2eea9ed08d57f140e77285216eb9b3d8132e",
+  "script_sha256": "76cb7877db83bcfe344c832f7d3e85b92ec63dbbcde945fb7574996e4732e073",
+  "root": "/tmp/vlajmaji-p01-a04-s04-cdc/i03-cli-runtime01/cli lifecycle \u03bb $()",
+  "database_before_after": "6c89f4349dda0cc9a7708d58ee262f3a06eef60a42843b31945b6ba7721f0ba0",
+  "owned_original_markers_before_after": {
+    "/tmp/vlajmaji-p01-a04-s04-cdc/i03-cli-runtime01/cli lifecycle \u03bb $()/generations/97fafec4d93aa5c422a8d39d510f3d20/attempt.json": "a8c02c4baef7607395c57212c3771382d9afb1dc2aec21deade2f12f58c237c9",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/i03-cli-runtime01/cli lifecycle \u03bb $()/generations/d4969f85d026f013304f648d1faaecc1/attempt.json": "41843a164ac62997dc73691608c1ea5c5e1c446206739c8bd5b35b26e258524f",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/i03-cli-runtime01/cli lifecycle \u03bb $()/generations/f464dc6d59a4ce4ba7148f6b586fdd26/attempt.json": "1c1d0d4f78fa70602e475f514f79e5d0ea6c3a528c937d79b333626e30754507"
+  },
+  "retained_controlled_stages": [
+    "cdc-uncommitted-supported-remove",
+    "cdc-unknown-operation-committed-id"
+  ],
+  "observed_retained_generation_count": 3,
+  "actual_physical_stage_directories": 5
+}

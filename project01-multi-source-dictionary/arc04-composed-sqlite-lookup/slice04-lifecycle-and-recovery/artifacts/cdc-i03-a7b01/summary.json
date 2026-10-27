@@ -1,0 +1,14 @@
+{
+  "source_commit": "a7b9baf67a6eea784cb90a2f388bf5e2537cbc72",
+  "parent": "a9eeb440b029a4466f265cfc4eaf3e15fb773b31",
+  "tree": "7dcc6aa68b07abb90fea30b64d64d3dac2b4ab81",
+  "production_verdict": "finite independent runtime PASS, no known current runtime defect",
+  "persistent_test_verdict": "NOT_COMPLETE: author used one pack/remove-all, omitting actual committed REMOVE stage and required clean false-attention/three-generation assertions",
+  "author": "277/0/1 +19; no-default39/0/0; all-features279/0/1; store98 list, actual a7 source",
+  "independent_public": "exit0, zero diagnostic failures",
+  "independent_cli": "29 processes exit0",
+  "independent_classifier": "3 real reconcile subprocesses pass, actual three committed generations including remove, genuine orphan and unknown-op-with-committed-ID counterpart; stages retained",
+  "unchanged_caller_source": "exact copies in ../cdc-i02-a9e01; current receipt hashes agree",
+  "remaining": "numbered04 one-test-path completion (fifth final implementation pass), Tiny runner qualification, reviewed finite Full, actual Linux, final S04/fresh arc review; six rows OPEN",
+  "retention": "no runtime/Full repetition solely for bookkeeping; all failed attempts and narrower scopes preserved"
+}
