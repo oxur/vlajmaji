@@ -2,10 +2,10 @@
 
 | Field | Value |
 | --- | --- |
-| Status / version | ISSUED INITIAL / 1.0 / 2026-10-27 UTC. Root final concrete readiness PASS; six rows OPEN, CC intake/transfer pending; no implementation or acceptance yet. |
+| Status / version | ISSUED INITIAL / 1.1 / 2026-10-27 UTC. Root readiness and complete CC intake accepted; exclusive19path author implementation ACTIVE after explicit transfer at metadata cae2b76d. Six rows OPEN; WIP author evidence is not frozen or independently accepted. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
 | Source / dependency | Clean `432d6321e3b2431e7fe2cc5f60e9317780e984b8`, tree `dd2f378be98b6fe9c62d5f45055a70a351971bb1`, branch `codex/project01-readable-compact-output`, same isolated Arc04 worktree. Depends on accepted S04, OPEN PR5 https://github.com/oxur/vlajmaji/pull/5; old S04 branch remains432. Remote main b0106b is distinct from protected primary checkout52fd. |
-| Ownership | CC intake accepted after complete source-cited readback and fresh clean432/lock/guard check. Exclusive19path/source-index/ONE retained-target ownership transfers to retained Luna/high on explicit CDC message after scoped metadata commit; CDC/root readonly until frozen handback. CDC retains planning except CC execution attestation. |
+| Ownership | CC intake accepted after complete source-cited readback and fresh clean432/lock/guard check. Explicit CDC transfer after metadata cae2b76d is effective: retained Luna/high CC exclusively owns19sourcepaths/index/ONE retained target; CDC/root readonly until frozen handback. CDC owns planning except CC append-only execution attestation. |
 | Delivery | Additive compact Exact/Resolve and complete occurrence detail, then source-grouped readable Exact/Resolve/detail. Full default JSON stays compatible. Public libraries, CLI, documentation and actual five-workflow composition accompany output, not verification alone. |
 | Sizing | TWO planned usable implementation passes inside the normal FIVE TOTAL S05 pass limit: initial compact/detail; numbered01 readable/final delivery. Corrections consume remaining passes; neither increment closes S05 alone. S04's six-pass history is closed and unchanged. |
 | Limits | No dependency/lock/schema/importer/model/workflow changes, topology redo, new Full store/generation, cleanup/cache reset, actual-default access, S04 branch writes, A05 activation, network/push/PR/merge/publication. Later finite retained-G4 trial needs exact executable root readiness. |
@@ -485,3 +485,7 @@ Root FINAL S05 INITIAL READINESS PASS: complete plan69700B/767d64fc…6ad28, pro
 ### Actual initial intake/transfer checkpoint
 
 Complete CC intake recorded at artifacts/execution.md, original SHA8890ff2a…08a15; CDC read/accepted it and fresh-rechecked source432/tree dd2/newbranch/oldS04refs/lock/guard. Parser correction retained, reading attestation not product verification. Scoped metadata commit precedes explicit19path/index/target transfer message; CC then sole author, CDC/root readonly. No required input truncation or consequential mismatch reported; sixOPEN and all future gates persist.
+
+## Current author-state clarification —2026-10-27 UTC
+
+The issue-time1.0 status at949dde and intake transfer atcae2b76d remain historical provenance. The source/dependency432 identity above is the accepted BASELINE, not the uncommitted WIP tree. Earlier author receipts include the four-literal installed25-family result (test15) and initial CLI scaffold (test04); later source edits mean neither is an independent current-source gate. The original finite control census is active, including the newly reported compact page0 empty-group repair. No scope/API/criterion/proof/owner/status change, broad final gate, frozen handback, Full execution, Linux result, readable assignment or acceptance follows.
