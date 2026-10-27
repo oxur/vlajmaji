@@ -35,8 +35,12 @@ at an expected revision; `rebuild` reconstructs the current generation from its
 retained sealed inputs and publishes a new generation identity. Neither
 operation changes user selection or the global default store. A stale revision,
 missing installed pack, or invalid retained input is reported without silently
-falling back to an older generation. Removal, reinstall, and recovery remain
-separate future lifecycle operations.
+falling back to an older generation. `remove` changes active membership without
+deleting registrations, sealed inputs, or historical generations;
+`reinstall` requires the exact retained release digest and complete declaration.
+`reconcile` explicitly opens an existing catalogue for SQLite recovery and
+reports retained attempts and minimum derived-store observations; it does not
+activate, migrate, delete, or claim a full integrity audit.
 
 ```rust,no_run
 use vlajmaji_lexicon::Dictionary;

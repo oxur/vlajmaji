@@ -18,6 +18,9 @@ use vlajmaji_lexicon::PackId;
 
 use crate::{CollectionCatalogue, NativePathReport, native_path_report};
 
+mod policy;
+use policy::DisabledPolicy;
+
 const CONFIG_VERSION: u32 = 1;
 
 /// Caller-owned policy values for one named collection selection.
@@ -154,10 +157,65 @@ pub struct CollectionProfileMembershipWriteRequest {
     pub make_default: bool,
 }
 
-#[derive(Debug, Clone, Copy)]
-enum DisabledPolicy {
-    Explicit,
-    PreserveLatest,
+/// Choose all current profile members or a unique explicit subset for a
+/// partial enablement-policy change.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum CollectionPolicySelection {
+    /// Select every pack currently present in the latest profile snapshot.
+    All,
+    /// Select a nonempty unique subset of current profile membership.
+    Packs(Vec<PackId>),
+}
+
+/// Change enabled state for a current profile member or explicit subset.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct CollectionProfileEnablementRequest {
+    /// Profile name, or `None` to select the latest configured default.
+    pub profile: Option<String>,
+    /// Current members whose enabled state should change.
+    pub selection: CollectionPolicySelection,
+    /// `true` enables; `false` disables.
+    pub enabled: bool,
+}
+
+/// Versioned report for an atomic partial profile-policy change.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct CollectionProfilePolicyReport {
+    /// Report schema version.
+    pub version: u32,
+    /// Whether the operation completed.
+    pub ok: bool,
+    /// `enable`, `disable`, `set_default`, or `clear_default`.
+    pub operation: String,
+    /// `committed` or `unchanged`.
+    pub outcome: String,
+    /// Native configuration file path.
+    pub path: NativePathReport,
+    /// Target profile, absent for clear-default.
+    pub profile: Option<String>,
+    /// Target profile's native root, absent for clear-default.
+    pub root: Option<NativePathReport>,
+    /// Target profile's ordered membership.
+    pub packs: Vec<PackId>,
+    /// Target profile's ordered disabled IDs.
+    pub disabled: Vec<PackId>,
+    /// Only IDs whose enablement bit changed, in membership order.
+    pub affected_pack_ids: Vec<PackId>,
+    /// Resulting default profile.
+    pub default_profile: Option<String>,
+    /// Prior configuration revision.
+    pub prior_revision: u64,
+    /// Resulting configuration revision.
+    pub revision: u64,
+    /// Prior exact file hash.
+    pub prior_sha256: String,
+    /// Resulting exact file hash.
+    pub sha256: String,
+    /// Latest target catalogue revision, absent for clear-default.
+    pub observed_catalogue_revision: Option<u64>,
+    /// Latest target availability observation, absent for clear-default.
+    pub observed_availability: Option<String>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -241,6 +299,15 @@ pub enum CollectionProfileError {
         /// Requested profile name.
         name: String,
     },
+    /// An explicit pack is not a member of the selected profile.
+    NotProfileMember {
+        /// Native config path inspected for the profile.
+        path: PathBuf,
+        /// Selected profile name.
+        profile: String,
+        /// Explicit pack outside current membership.
+        pack: PackId,
+    },
     /// Replacement may have happened but durable status could not be proven.
     Indeterminate {
         /// Native configuration path whose publication durability is uncertain.
@@ -299,6 +366,15 @@ impl fmt::Display for CollectionProfileError {
             Self::UnknownProfile { path, name } => {
                 write!(f, "unknown profile {name:?} in {}", path.display())
             }
+            Self::NotProfileMember {
+                path,
+                profile,
+                pack,
+            } => write!(
+                f,
+                "pack {pack} is not a member of profile {profile:?} in {}",
+                path.display()
+            ),
             Self::Indeterminate {
                 path,
                 detail,
@@ -530,6 +606,23 @@ impl CollectionProfiles {
         )
     }
 
+    /// Changes the enabled state of current profile members without replacing
+    /// unrelated profile policy dimensions.
+    pub fn set_enabled(
+        path: impl AsRef<Path>,
+        request: CollectionProfileEnablementRequest,
+    ) -> Result<CollectionProfilePolicyReport, CollectionProfileError> {
+        policy::set_enabled(path, request)
+    }
+
+    /// Sets or explicitly clears the default profile in the latest config.
+    pub fn set_default(
+        path: impl AsRef<Path>,
+        profile: Option<&str>,
+    ) -> Result<CollectionProfilePolicyReport, CollectionProfileError> {
+        policy::set_default(path, profile)
+    }
+
     fn configure_with_policy(
         path: impl AsRef<Path>,
         request: CollectionProfileWriteRequest,
@@ -688,15 +781,15 @@ impl CollectionProfiles {
                 None,
             )
         };
-        let disabled = match disabled_policy {
-            DisabledPolicy::Explicit => request.disabled.clone(),
-            DisabledPolicy::PreserveLatest => prior
+        let disabled = policy::resolve_disabled(
+            disabled_policy,
+            &request.disabled,
+            prior
                 .as_ref()
                 .and_then(|snapshot| snapshot.wire.profiles.get(&request.name))
-                .map(|profile| parse_ids(&path, &profile.disabled, "disabled"))
-                .transpose()?
-                .unwrap_or_default(),
-        };
+                .map(|profile| profile.disabled.as_slice()),
+            &path,
+        )?;
         validate_ids(&disabled, "disabled", &path)?;
         for id in &disabled {
             if !known.contains_key(id.as_str()) {
@@ -740,132 +833,14 @@ impl CollectionProfiles {
                 observed_availability: availability.into(),
             });
         }
-        let next_revision = wire
-            .revision
-            .checked_add(1)
-            .filter(|value| *value <= i64::MAX as u64)
-            .ok_or_else(|| invalid(&path, "profile revision overflow"))?;
-        wire.revision = next_revision;
         wire.profiles.insert(request.name.clone(), profile_wire);
         if request.make_default {
             wire.default_profile = Some(request.name.clone());
         }
-        validate_wire(&path, &wire)?;
-        let text = toml::to_string_pretty(&wire).map_err(|source| {
-            CollectionProfileError::TomlSerialize {
-                path: path.clone(),
-                source,
-            }
-        })?;
-        let bytes = text.into_bytes();
-        let new_hash = hex(&Sha256::digest(&bytes));
-        if let Some(prior) = prior.as_ref() {
-            let now = fs::read(&path).map_err(|source| CollectionProfileError::Io {
-                path: path.clone(),
-                source,
+        let publication =
+            publish_config_wire(&path, parent, prior.as_ref(), &mut wire, |phase, stage| {
+                phase_hook(phase, stage)
             })?;
-            if now != prior.bytes {
-                return Err(invalid(
-                    &path,
-                    "configuration changed while writer lock was held",
-                ));
-            }
-        }
-        let stage = sibling(
-            &path,
-            &format!(".stage-{}-{}", std::process::id(), unique_nonce()),
-        );
-        let mut options = OpenOptions::new();
-        options.write(true).create_new(true);
-        #[cfg(unix)]
-        {
-            use std::os::unix::fs::OpenOptionsExt;
-            options.mode(if prior.is_some() {
-                existing_mode(&path).unwrap_or(0o600)
-            } else {
-                0o600
-            });
-        }
-        let mut file = options
-            .open(&stage)
-            .map_err(|source| CollectionProfileError::Io {
-                path: stage.clone(),
-                source,
-            })?;
-        let stage_guard = OwnedSibling::new(stage.clone(), &file).map_err(|source| {
-            CollectionProfileError::Io {
-                path: stage.clone(),
-                source,
-            }
-        })?;
-        file.write_all(&bytes)
-            .and_then(|_| file.sync_all())
-            .map_err(|source| CollectionProfileError::Io {
-                path: stage.clone(),
-                source,
-            })?;
-        drop(file);
-        phase_hook(WriterPhase::StageCreated, &stage).map_err(|source| {
-            CollectionProfileError::Io {
-                path: stage.clone(),
-                source,
-            }
-        })?;
-        if prior.is_some() {
-            preserve_existing_mode(&path, &stage).map_err(|source| CollectionProfileError::Io {
-                path: path.clone(),
-                source,
-            })?;
-            fs::File::open(&stage)
-                .and_then(|file| file.sync_all())
-                .map_err(|source| CollectionProfileError::Io {
-                    path: stage.clone(),
-                    source,
-                })?;
-        }
-        phase_hook(WriterPhase::BeforeReplace, &stage).map_err(|source| {
-            CollectionProfileError::Io {
-                path: stage.clone(),
-                source,
-            }
-        })?;
-        let current = read_optional_config(&path)?;
-        let unchanged = match (&prior, &current) {
-            (Some(before), Some(now)) => before.bytes == now.bytes,
-            (None, None) => true,
-            _ => false,
-        };
-        if !unchanged {
-            return Err(invalid(
-                &path,
-                "configuration changed while staged replacement was being written",
-            ));
-        }
-        fs::rename(&stage, &path).map_err(|source| CollectionProfileError::Io {
-            path: path.clone(),
-            source,
-        })?;
-        stage_guard.disarm();
-        if let Err(source) =
-            phase_hook(WriterPhase::AfterReplace, &path).and_then(|()| sync_parent(parent))
-        {
-            let observed = fs::read(&path).ok();
-            let observed_sha256 = observed.as_ref().map(|bytes| hex(&Sha256::digest(bytes)));
-            let observed_revision = observed
-                .and_then(|bytes| Self::from_bytes(path.clone(), bytes).ok())
-                .map(|profiles| profiles.wire.revision);
-            return Err(CollectionProfileError::Indeterminate {
-                path: path.clone(),
-                detail: "directory entry sync failed after replacement".into(),
-                prior_revision,
-                proposed_revision: next_revision,
-                prior_sha256: prior_hash.map(Box::new),
-                proposed_sha256: Box::new(new_hash),
-                observed_sha256: observed_sha256.map(Box::new),
-                observed_revision,
-                source,
-            });
-        }
         drop(lock);
         Ok(CollectionProfileWriteReport {
             version: 1,
@@ -875,10 +850,10 @@ impl CollectionProfiles {
             path: native_path_report(&path),
             profile: request.name,
             default_profile: wire.default_profile,
-            prior_revision,
-            revision: next_revision,
-            prior_sha256: prior_hash,
-            sha256: new_hash,
+            prior_revision: publication.prior_revision,
+            revision: publication.revision,
+            prior_sha256: publication.prior_sha256,
+            sha256: publication.sha256,
             observed_catalogue_revision: observed_revision,
             observed_availability: availability.into(),
         })
@@ -1187,6 +1162,151 @@ struct OwnedSibling {
     path: PathBuf,
     identity: FileIdentity,
     active: bool,
+}
+
+struct PublishedConfig {
+    revision: u64,
+    prior_revision: Option<u64>,
+    prior_sha256: Option<String>,
+    sha256: String,
+}
+
+fn publish_config_wire<H>(
+    path: &Path,
+    parent: &Path,
+    prior: Option<&CollectionProfiles>,
+    wire: &mut ConfigWire,
+    mut phase_hook: H,
+) -> Result<PublishedConfig, CollectionProfileError>
+where
+    H: FnMut(WriterPhase, &Path) -> io::Result<()>,
+{
+    let prior_revision = prior.map(|snapshot| snapshot.wire.revision);
+    let prior_sha256 = prior.map(|snapshot| snapshot.sha256.clone());
+    let next_revision = wire
+        .revision
+        .checked_add(1)
+        .filter(|value| *value <= i64::MAX as u64)
+        .ok_or_else(|| invalid(path, "profile revision overflow"))?;
+    wire.revision = next_revision;
+    validate_wire(path, wire)?;
+    let text =
+        toml::to_string_pretty(wire).map_err(|source| CollectionProfileError::TomlSerialize {
+            path: path.to_path_buf(),
+            source,
+        })?;
+    let bytes = text.into_bytes();
+    let new_hash = hex(&Sha256::digest(&bytes));
+    let now = read_optional_config(path)?;
+    let same_as_prior = match (prior, now.as_ref()) {
+        (Some(snapshot), Some(current)) => snapshot.bytes == current.bytes,
+        (None, None) => true,
+        _ => false,
+    };
+    if !same_as_prior {
+        return Err(invalid(
+            path,
+            "configuration changed while writer lock was held",
+        ));
+    }
+    let stage = sibling(
+        path,
+        &format!(".stage-{}-{}", std::process::id(), unique_nonce()),
+    );
+    let mut options = OpenOptions::new();
+    options.write(true).create_new(true);
+    #[cfg(unix)]
+    {
+        use std::os::unix::fs::OpenOptionsExt;
+        options.mode(if prior.is_some() {
+            existing_mode(path).unwrap_or(0o600)
+        } else {
+            0o600
+        });
+    }
+    let mut file = options
+        .open(&stage)
+        .map_err(|source| CollectionProfileError::Io {
+            path: stage.clone(),
+            source,
+        })?;
+    let stage_guard =
+        OwnedSibling::new(stage.clone(), &file).map_err(|source| CollectionProfileError::Io {
+            path: stage.clone(),
+            source,
+        })?;
+    file.write_all(&bytes)
+        .and_then(|_| file.sync_all())
+        .map_err(|source| CollectionProfileError::Io {
+            path: stage.clone(),
+            source,
+        })?;
+    drop(file);
+    phase_hook(WriterPhase::StageCreated, &stage).map_err(|source| CollectionProfileError::Io {
+        path: stage.clone(),
+        source,
+    })?;
+    if prior.is_some() {
+        preserve_existing_mode(path, &stage).map_err(|source| CollectionProfileError::Io {
+            path: path.to_path_buf(),
+            source,
+        })?;
+        fs::File::open(&stage)
+            .and_then(|file| file.sync_all())
+            .map_err(|source| CollectionProfileError::Io {
+                path: stage.clone(),
+                source,
+            })?;
+    }
+    phase_hook(WriterPhase::BeforeReplace, &stage).map_err(|source| {
+        CollectionProfileError::Io {
+            path: stage.clone(),
+            source,
+        }
+    })?;
+    let current = read_optional_config(path)?;
+    let unchanged = match (prior, current.as_ref()) {
+        (Some(before), Some(now)) => before.bytes == now.bytes,
+        (None, None) => true,
+        _ => false,
+    };
+    if !unchanged {
+        return Err(invalid(
+            path,
+            "configuration changed while staged replacement was being written",
+        ));
+    }
+    fs::rename(&stage, path).map_err(|source| CollectionProfileError::Io {
+        path: path.to_path_buf(),
+        source,
+    })?;
+    stage_guard.disarm();
+    if let Err(source) =
+        phase_hook(WriterPhase::AfterReplace, path).and_then(|()| sync_parent(parent))
+    {
+        let observed = fs::read(path).ok();
+        let observed_sha256 = observed.as_ref().map(|bytes| hex(&Sha256::digest(bytes)));
+        let observed_revision = observed
+            .and_then(|bytes| CollectionProfiles::from_bytes(path.to_path_buf(), bytes).ok())
+            .map(|profiles| profiles.wire.revision);
+        return Err(CollectionProfileError::Indeterminate {
+            path: path.to_path_buf(),
+            detail: "directory entry sync failed after replacement".into(),
+            prior_revision,
+            proposed_revision: next_revision,
+            prior_sha256: prior_sha256.clone().map(Box::new),
+            proposed_sha256: Box::new(new_hash),
+            observed_sha256: observed_sha256.map(Box::new),
+            observed_revision,
+            source,
+        });
+    }
+    Ok(PublishedConfig {
+        revision: next_revision,
+        prior_revision,
+        prior_sha256,
+        sha256: new_hash,
+    })
 }
 #[derive(Clone, Copy)]
 struct FileIdentity {

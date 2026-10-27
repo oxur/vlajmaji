@@ -19,8 +19,10 @@ pub(super) enum InstallMode {
 enum LifecycleFailurePoint {
     MigrateBeforeDdl,
     MigrateAfterDdl,
+    MigrateExitAfterDdl,
     UpdateBeforeCommit,
     RebuildBeforeCommit,
+    RebuildExitBeforeCommit,
 }
 
 #[cfg(test)]
@@ -33,14 +35,23 @@ fn maybe_inject_lifecycle_failure(
     point: LifecycleFailurePoint,
     root: &Path,
 ) -> Result<(), CollectionError> {
-    if TEST_LIFECYCLE_FAILURE_POINT.with(|selected| {
-        if selected.get() == Some(point) {
+    let selected_point = TEST_LIFECYCLE_FAILURE_POINT.with(|selected| {
+        let current = selected.get();
+        let process_exit = point == LifecycleFailurePoint::RebuildBeforeCommit
+            && current == Some(LifecycleFailurePoint::RebuildExitBeforeCommit);
+        let migration_exit = point == LifecycleFailurePoint::MigrateAfterDdl
+            && current == Some(LifecycleFailurePoint::MigrateExitAfterDdl);
+        if current == Some(point) || process_exit || migration_exit {
             selected.set(None);
-            true
+            Some(process_exit || migration_exit)
         } else {
-            false
+            None
         }
-    }) {
+    });
+    if let Some(process_exit) = selected_point {
+        if process_exit {
+            std::process::exit(73);
+        }
         return Err(CollectionError::ArtifactIoSource {
             path: Some(root.join("injected-lifecycle-phase")),
             source: Box::new(std::io::Error::other("injected returned phase failure")),
@@ -585,6 +596,22 @@ pub(super) fn mutate_install_mode(
         let previous_generation = current_members(&connection, &root)?;
         error_context.observed_generation =
             read_generation(&connection, &root)?.map(|item| item.generation_id);
+        if matches!(mode, InstallMode::Install) {
+            for pack in &normalized {
+                let active = previous_generation
+                    .iter()
+                    .any(|member| member.pack_id == pack.pack_id.as_str());
+                if maintenance::installation_state(
+                    &connection,
+                    &root,
+                    pack.pack_id.as_str(),
+                    active,
+                )? == CollectionInstallationState::Removed
+                {
+                    return Err(CollectionError::ReinstallRequired { pack: pack.pack_id });
+                }
+            }
+        }
         let mut members = if matches!(mode, InstallMode::Rebuild(_)) {
             Vec::new()
         } else {
@@ -670,6 +697,8 @@ pub(super) fn mutate_install_mode(
                     "existing generation canonical digest changed".into(),
                 ));
             }
+            drop(canonical);
+            drop(composed);
             let opened = crate::DictionaryStore::open(&store_path).map_err(verification_error)?;
             if opened.recorded_state_sha256()
                 != generation
@@ -807,65 +836,10 @@ pub(super) fn mutate_install_mode(
         // Inputs have been sealed and copied into the owned stage. Release the
         // adapter's typed models before loading the complete composing set.
         drop(new_packs);
-        let mut dictionaries = Vec::new();
-        for member in &members {
-            let release_path = root.join(&member.release_path);
-            let seal_path = root.join(&member.seal_path);
-            let release = fs::read(&release_path)
-                .map_err(|error| artifact_error(release_path.clone(), error))?;
-            let seal =
-                fs::read(&seal_path).map_err(|error| artifact_error(seal_path.clone(), error))?;
-            dictionaries.push(
-                load_sealed_release(parse_pack_id(&member.pack_id)?, &release, &seal)
-                    .map_err(verification_error)?,
-            );
-        }
-        let composed =
-            vlajmaji_lexicon::compose_dictionaries(dictionaries).map_err(composition_error)?;
-        let canonical =
-            composed
-                .to_json_bytes()
-                .map_err(|error| CollectionError::InputInvalid {
-                    pack: None,
-                    detail: error.to_string(),
-                })?;
-        let canonical_sha256 = release_sha256(&canonical);
-        let content_id = content_identity(&members)?;
-        let store_path = stage.join("store");
-        let created_store =
-            crate::DictionaryStore::create(&store_path, &composed).map_err(verification_error)?;
-        if created_store.recorded_state_sha256() != canonical_sha256 {
-            drop(created_store);
-            return Err(CollectionError::VerificationFailed(
-                "created Unified store digest differs from composed release".into(),
-            ));
-        }
-        drop(created_store);
-        set_private_file(&store_path.join("dictionary.sqlite3"))?;
-        set_private_directory(&store_path)?;
-        crate::collections_schema::sync_file(&store_path.join("dictionary.sqlite3"))?;
-        crate::collections_schema::sync_dir(&store_path)?;
-        let verification = crate::DictionaryStoreVerification::verify(
-            &store_path,
-            crate::DictionaryStoreVerificationCheck::All,
-        )
-        .map_err(verification_error)?;
-        if !verification.ok {
-            return Err(CollectionError::VerificationFailed(
-                "new Unified store did not pass All verification".into(),
-            ));
-        }
-        write_new_file(
-            &stage.join("verified.json"),
-            &serde_json::to_vec(&verification).map_err(|error| {
-                CollectionError::ArtifactIoSource {
-                    path: Some(stage.join("verified.json")),
-                    source: Box::new(error),
-                }
-            })?,
-        )?;
-        crate::collections_schema::sync_dir(&stage.join("inputs"))?;
-        crate::collections_schema::sync_dir(&stage)?;
+        let built = build_unified_generation(&root, &stage, &members)?;
+        let content_id = built.content_id;
+        let canonical_sha256 = built.canonical_sha256;
+        let store_path = built.store_path;
         let members_bytes =
             serde_json::to_vec(&members).map_err(|error| CollectionError::ArtifactIoSource {
                 path: None,
@@ -984,6 +958,83 @@ pub(super) fn mutate_install_mode(
             )),
         },
     }
+}
+
+/// Metadata-only result from constructing and fully checking a complete member set.
+pub(super) struct BuiltUnifiedGeneration {
+    pub(super) content_id: String,
+    pub(super) canonical_sha256: String,
+    pub(super) store_path: PathBuf,
+}
+
+/// Builds one complete Unified store from retained owned member inputs.
+///
+/// The returned value contains no Dictionary, canonical buffer, or live Store.
+pub(super) fn build_unified_generation(
+    root: &Path,
+    stage: &Path,
+    members: &[InstalledMember],
+) -> Result<BuiltUnifiedGeneration, CollectionError> {
+    let mut dictionaries = Vec::with_capacity(members.len());
+    for member in members {
+        let release_path = root.join(&member.release_path);
+        let seal_path = root.join(&member.seal_path);
+        let release =
+            fs::read(&release_path).map_err(|error| artifact_error(release_path.clone(), error))?;
+        let seal =
+            fs::read(&seal_path).map_err(|error| artifact_error(seal_path.clone(), error))?;
+        dictionaries.push(
+            load_sealed_release(parse_pack_id(&member.pack_id)?, &release, &seal)
+                .map_err(verification_error)?,
+        );
+    }
+    let composed =
+        vlajmaji_lexicon::compose_dictionaries(dictionaries).map_err(composition_error)?;
+    let canonical = composed.to_json_bytes().map_err(verification_error)?;
+    let canonical_sha256 = release_sha256(&canonical);
+    drop(canonical);
+    let content_id = content_identity(members)?;
+    let store_path = stage.join("store");
+    let created_store =
+        crate::DictionaryStore::create(&store_path, &composed).map_err(verification_error)?;
+    let recorded_digest = created_store.recorded_state_sha256().to_owned();
+    drop(created_store);
+    drop(composed);
+    if recorded_digest != canonical_sha256 {
+        return Err(CollectionError::VerificationFailed(
+            "created Unified store digest differs from composed release".into(),
+        ));
+    }
+    set_private_file(&store_path.join("dictionary.sqlite3"))?;
+    set_private_directory(&store_path)?;
+    crate::collections_schema::sync_file(&store_path.join("dictionary.sqlite3"))?;
+    crate::collections_schema::sync_dir(&store_path)?;
+    let verification = crate::DictionaryStoreVerification::verify(
+        &store_path,
+        crate::DictionaryStoreVerificationCheck::All,
+    )
+    .map_err(verification_error)?;
+    if !verification.ok {
+        return Err(CollectionError::VerificationFailed(
+            "new Unified store did not pass All verification".into(),
+        ));
+    }
+    write_new_file(
+        &stage.join("verified.json"),
+        &serde_json::to_vec(&verification).map_err(|error| CollectionError::ArtifactIoSource {
+            path: Some(stage.join("verified.json")),
+            source: Box::new(error),
+        })?,
+    )?;
+    if stage.join("inputs").is_dir() {
+        crate::collections_schema::sync_dir(&stage.join("inputs"))?;
+    }
+    crate::collections_schema::sync_dir(stage)?;
+    Ok(BuiltUnifiedGeneration {
+        content_id,
+        canonical_sha256,
+        store_path,
+    })
 }
 
 #[cfg(test)]
@@ -1146,6 +1197,28 @@ mod tests {
     }
 
     #[test]
+    fn test_reconcile_v1_is_read_only_and_does_not_migrate() {
+        let root = tiny_root("reconcile-v1-read-only");
+        let (revision, _) = migrate_to_v1(&root);
+        let database = crate::collections_schema::database_path(&root);
+        let before = fs::read(&database).unwrap();
+
+        let report = CollectionCatalogue::reconcile(&root).unwrap();
+        assert_eq!(report.catalogue_schema_version, 1);
+        assert_eq!(report.local_revision, revision);
+        assert!(report.migration_required_for_mutation);
+        assert_eq!(fs::read(&database).unwrap(), before);
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        assert_eq!(catalogue.schema_version().unwrap(), 1);
+        drop(catalogue);
+
+        let migrated = CollectionCatalogue::migrate(&root, revision).unwrap();
+        assert_eq!(migrated.schema_version, 2);
+        assert_eq!(migrated.local_revision, revision + 1);
+        let _ = fs::remove_dir_all(root);
+    }
+
+    #[test]
     fn test_update_returned_fault_rolls_back_and_dual_fault_retains_both_causes() {
         for inject_rollback_failure in [false, true] {
             let root = tiny_root("update-returned-fault");
@@ -1250,6 +1323,115 @@ mod tests {
         assert_eq!(
             catalogue.generation().unwrap().unwrap().generation_id,
             prior_generation
+        );
+        let _ = fs::remove_dir_all(root);
+    }
+
+    #[test]
+    fn test_catalogue_child_exit_before_commit_reconciles_to_prior_generation() {
+        const ROOT_ENV: &str = "VLAJMAJI_S04_CATALOGUE_EXIT_ROOT";
+        if let Some(root) = std::env::var_os(ROOT_ENV) {
+            let root = PathBuf::from(root);
+            TEST_LIFECYCLE_FAILURE_POINT.with(|selected| {
+                selected.set(Some(LifecycleFailurePoint::RebuildExitBeforeCommit))
+            });
+            let revision = CollectionCatalogue::open(&root)
+                .unwrap()
+                .local_revision()
+                .unwrap();
+            let _ = CollectionCatalogue::rebuild(&root, revision);
+            panic!("test-only child exit hook did not terminate rebuild");
+        }
+
+        let root = tiny_root("catalogue-child-exit");
+        let request = tiny_request(0);
+        CollectionCatalogue::register(&root, request.clone()).unwrap();
+        let installed = CollectionCatalogue::install(&root, request).unwrap();
+        let prior_revision = installed.local_revision;
+        let prior_generation = installed.generation.unwrap().generation_id;
+        let database = crate::collections_schema::database_path(&root);
+        let before = fs::read(&database).unwrap();
+        let output = std::process::Command::new(std::env::current_exe().unwrap())
+            .arg("--exact")
+            .arg("collections::lifecycle::tests::test_catalogue_child_exit_before_commit_reconciles_to_prior_generation")
+            .arg("--nocapture")
+            .env(ROOT_ENV, &root)
+            .output()
+            .unwrap();
+        assert_eq!(
+            output.status.code(),
+            Some(73),
+            "child stdout={} stderr={}",
+            String::from_utf8_lossy(&output.stdout),
+            String::from_utf8_lossy(&output.stderr)
+        );
+
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        assert_eq!(catalogue.local_revision().unwrap(), prior_revision);
+        assert_eq!(
+            catalogue.generation().unwrap().unwrap().generation_id,
+            prior_generation
+        );
+        let report = CollectionCatalogue::reconcile(&root).unwrap();
+        assert_eq!(report.local_revision, prior_revision);
+        assert_eq!(
+            report.active_generation.as_deref(),
+            Some(prior_generation.as_str())
+        );
+        assert!(report.attention_required);
+        assert!(!report.staged_attempts.is_empty());
+        assert_eq!(fs::read(&database).unwrap(), before);
+        let _ = fs::remove_dir_all(root);
+    }
+
+    #[test]
+    fn test_migration_child_exit_after_ddl_reconciles_as_v1_then_migrates() {
+        const ROOT_ENV: &str = "VLAJMAJI_S04_MIGRATE_EXIT_ROOT";
+        const REVISION_ENV: &str = "VLAJMAJI_S04_MIGRATE_EXIT_REVISION";
+        if let Some(root) = std::env::var_os(ROOT_ENV) {
+            let root = PathBuf::from(root);
+            let revision = std::env::var(REVISION_ENV).unwrap().parse().unwrap();
+            TEST_LIFECYCLE_FAILURE_POINT
+                .with(|selected| selected.set(Some(LifecycleFailurePoint::MigrateExitAfterDdl)));
+            let _ = CollectionCatalogue::migrate(&root, revision);
+            panic!("test-only child exit hook did not terminate migration");
+        }
+
+        let root = tiny_root("migration-child-exit-after-ddl");
+        let (revision, generation) = migrate_to_v1(&root);
+        let database = crate::collections_schema::database_path(&root);
+        let before = fs::read(&database).unwrap();
+        let output = std::process::Command::new(std::env::current_exe().unwrap())
+            .arg("--exact")
+            .arg("collections::lifecycle::tests::test_migration_child_exit_after_ddl_reconciles_as_v1_then_migrates")
+            .arg("--nocapture")
+            .env(ROOT_ENV, &root)
+            .env(REVISION_ENV, revision.to_string())
+            .output()
+            .unwrap();
+        assert_eq!(
+            output.status.code(),
+            Some(73),
+            "child stdout={} stderr={}",
+            String::from_utf8_lossy(&output.stdout),
+            String::from_utf8_lossy(&output.stderr)
+        );
+
+        let report = CollectionCatalogue::reconcile(&root).unwrap();
+        assert_eq!(report.catalogue_schema_version, 1);
+        assert_eq!(report.local_revision, revision);
+        assert!(report.migration_required_for_mutation);
+        assert_eq!(
+            report.active_generation.as_deref(),
+            Some(generation.as_str())
+        );
+        assert_eq!(fs::read(&database).unwrap(), before);
+        let migrated = CollectionCatalogue::migrate(&root, revision).unwrap();
+        assert_eq!(migrated.schema_version, 2);
+        assert_eq!(migrated.local_revision, revision + 1);
+        assert_eq!(
+            migrated.active_generation.as_deref(),
+            Some(generation.as_str())
         );
         let _ = fs::remove_dir_all(root);
     }

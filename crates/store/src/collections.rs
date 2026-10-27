@@ -15,6 +15,7 @@ use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::BTreeMap;
 mod lifecycle;
+mod maintenance;
 
 use vlajmaji_lexicon::{
     Availability, CaptureMetadata, CaptureRef, CodeNotice, CollectionRecord, ComponentRecord,
@@ -440,6 +441,10 @@ pub enum CollectionErrorCategory {
     IdentityConflict,
     /// Replacing an installed pack is reserved for a later lifecycle operation.
     UpdateRequired,
+    /// An explicitly removed pack must be restored with exact reinstall.
+    ReinstallRequired,
+    /// The requested release identity is not retained for this pack.
+    UnknownRegisteredRelease,
     /// The catalogue writer is busy.
     Busy,
     /// An owned artifact or catalogue write failed.
@@ -527,6 +532,18 @@ pub enum CollectionError {
     },
     /// A different release is already installed and updates belong to S04.
     UpdateRequired(PackId),
+    /// The pack was explicitly removed and must be restored with exact reinstall.
+    ReinstallRequired {
+        /// Pack that must be restored through the exact reinstall operation.
+        pack: PackId,
+    },
+    /// The requested release is not retained for this pack.
+    UnknownRegisteredRelease {
+        /// Stable pack identity.
+        pack: PackId,
+        /// Exact release digest requested by the caller.
+        release_sha256: String,
+    },
     /// Catalogue writer could not obtain its immediate transaction.
     Busy(String),
     /// Busy SQLite operation with its original database error retained.
@@ -612,6 +629,10 @@ impl CollectionError {
                 CollectionErrorCategory::IdentityConflict
             }
             Self::UpdateRequired(_) => CollectionErrorCategory::UpdateRequired,
+            Self::ReinstallRequired { .. } => CollectionErrorCategory::ReinstallRequired,
+            Self::UnknownRegisteredRelease { .. } => {
+                CollectionErrorCategory::UnknownRegisteredRelease
+            }
             Self::Busy(_) | Self::BusySource(_) => CollectionErrorCategory::Busy,
             Self::ArtifactIo { .. } | Self::ArtifactIoSource { .. } => {
                 CollectionErrorCategory::ArtifactIo
@@ -671,9 +692,9 @@ impl CollectionError {
                 (None, pack.map(|id| id.as_str().to_owned()))
             }
             Self::PackConflict { .. } => (None, None),
-            Self::Adapter { pack, .. } | Self::UpdateRequired(pack) => {
-                (None, Some(pack.as_str().to_owned()))
-            }
+            Self::Adapter { pack, .. }
+            | Self::UpdateRequired(pack)
+            | Self::ReinstallRequired { pack } => (None, Some(pack.as_str().to_owned())),
             Self::NotInstalled { pack: Some(pack) } => (None, Some(pack.as_str().to_owned())),
             _ => (None, None),
         };
@@ -708,7 +729,7 @@ impl CollectionError {
                 Some("indeterminate".into())
             } else if matches!(
                 operation,
-                "register" | "install" | "migrate" | "update" | "rebuild"
+                "register" | "install" | "migrate" | "update" | "rebuild" | "remove" | "reinstall"
             ) {
                 Some("not_activated".into())
             } else {
@@ -735,6 +756,8 @@ fn category_name(category: CollectionErrorCategory) -> &'static str {
         CollectionErrorCategory::InputInvalid => "input_invalid",
         CollectionErrorCategory::IdentityConflict => "identity_conflict",
         CollectionErrorCategory::UpdateRequired => "update_required",
+        CollectionErrorCategory::ReinstallRequired => "reinstall_required",
+        CollectionErrorCategory::UnknownRegisteredRelease => "unknown_registered_release",
         CollectionErrorCategory::Busy => "busy",
         CollectionErrorCategory::ArtifactIo => "artifact_io",
         CollectionErrorCategory::VerificationFailed => "verification_failed",
@@ -797,8 +820,17 @@ impl fmt::Display for CollectionError {
             } => write!(f, "conflicting {category} identity {key}: {source}"),
             Self::UpdateRequired(pack) => write!(
                 f,
-                "updating installed pack {pack} is reserved for a later lifecycle operation"
+                "pack {pack} is installed at another release; use an explicit revision-checked update"
             ),
+            Self::ReinstallRequired { pack } => {
+                write!(f, "pack {pack} was removed; use exact reinstall")
+            }
+            Self::UnknownRegisteredRelease {
+                pack,
+                release_sha256,
+            } => {
+                write!(f, "release {release_sha256} is not registered for {pack}")
+            }
             Self::Busy(detail) => write!(f, "collection catalogue is busy: {detail}"),
             Self::BusySource(source) => write!(f, "collection catalogue is busy: {source}"),
             Self::ArtifactIo {
@@ -1414,9 +1446,16 @@ impl CollectionCatalogue {
         }
         let has_installation = installed_member.is_some();
         let installed_history = self.installed_history(pack_id)?;
+        let installation_state = maintenance::installation_state(
+            &self.connection,
+            &self.root,
+            pack_id,
+            has_installation,
+        )?;
         Ok(CollectionInspection {
             version: 1,
             pack_id: pack_id.into(),
+            installation_state,
             installed_release_sha256: installed,
             installed_history,
             registrations,
@@ -1609,9 +1648,49 @@ impl CollectionCatalogue {
             lifecycle::InstallMode::Rebuild(expected_local_revision),
         )
     }
+
+    /// Removes registered packs from the active set without deleting their retained data.
+    ///
+    /// # Errors
+    /// Returns typed request, revision, state, verification, or transaction errors.
+    pub fn remove(
+        root: impl AsRef<Path>,
+        packs: &[PackId],
+        expected_local_revision: u64,
+    ) -> Result<CollectionMutationReport, CollectionError> {
+        maintenance::remove(root.as_ref(), packs, expected_local_revision)
+    }
+
+    /// Restores one exact retained release after an explicit removal.
+    ///
+    /// # Errors
+    /// Returns typed selection, revision, registration, identity, verification, or transaction errors.
+    pub fn reinstall(
+        root: impl AsRef<Path>,
+        request: CollectionRequest<'_>,
+        registered_release_sha256: &str,
+        expected_local_revision: u64,
+    ) -> Result<CollectionMutationReport, CollectionError> {
+        maintenance::reinstall(
+            root.as_ref(),
+            request,
+            registered_release_sha256,
+            expected_local_revision,
+        )
+    }
+
+    /// Observes and explicitly reconciles SQLite physical recovery without logical activation.
+    ///
+    /// # Errors
+    /// Returns typed native-path, catalogue, metadata, or rollback uncertainty errors.
+    pub fn reconcile(
+        root: impl AsRef<Path>,
+    ) -> Result<CollectionReconciliationReport, CollectionError> {
+        maintenance::reconcile(root.as_ref())
+    }
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 struct InstalledMember {
     pack_id: String,
@@ -2796,6 +2875,8 @@ pub struct CollectionInspection {
     pub version: u32,
     /// Stable pack ID.
     pub pack_id: String,
+    /// Explicit active/removal state for this registered pack.
+    pub installation_state: CollectionInstallationState,
     /// Current installed release digest, if installed.
     pub installed_release_sha256: Option<String>,
     /// Immutable generations that contained this pack, newest first.
@@ -2810,6 +2891,81 @@ pub struct CollectionInspection {
     pub derived_store_minimum: Option<CollectionDerivedStoreMinimum>,
     /// User selection is not configured by S02.
     pub policy_state: String,
+}
+
+/// Current logical state of one registered pack.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum CollectionInstallationState {
+    /// The pack is a member of the active generation.
+    Installed,
+    /// The pack has a registration but has never been installed or removed.
+    RegisteredOnly,
+    /// A committed remove event explicitly made the pack inactive.
+    Removed,
+}
+
+/// Small retained attempt observation emitted by explicit reconciliation.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct CollectionReconciliationAttempt {
+    /// Stable attempt identity.
+    pub attempt_id: String,
+    /// Operation token.
+    pub operation: String,
+    /// Stored attempt status.
+    pub status: String,
+    /// Previous catalogue revision.
+    pub prior_revision: u64,
+    /// Bounded operation detail.
+    pub detail: String,
+}
+
+/// Physical SQLite journal presence observation; it is not a hot-journal verdict.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct CollectionJournalObservation {
+    /// Whether the journal path exists.
+    pub present: bool,
+    /// Journal file length when present and readable.
+    pub byte_length: Option<u64>,
+}
+
+/// Versioned observation returned by explicit physical recovery inspection.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct CollectionReconciliationReport {
+    /// Report schema version.
+    pub version: u32,
+    /// Whether the observation completed.
+    pub ok: bool,
+    /// Operation token.
+    pub operation: String,
+    /// Exact native catalogue root.
+    pub root_path: NativePathReport,
+    /// Current physical catalogue schema.
+    pub catalogue_schema_version: u32,
+    /// Current logical catalogue revision.
+    pub local_revision: u64,
+    /// Explicit active generation, without historical fallback.
+    pub active_generation: Option<String>,
+    /// Number of retained physical generation rows.
+    pub retained_generation_count: usize,
+    /// Small attempt summaries.
+    pub attempts: Vec<CollectionReconciliationAttempt>,
+    /// Controlled, uncommitted or unmarked stage observations.
+    pub staged_attempts: Vec<String>,
+    /// Journal observation before the read transaction.
+    pub journal_before: CollectionJournalObservation,
+    /// Journal observation after the read transaction is rolled back.
+    pub journal_after: CollectionJournalObservation,
+    /// Whether the explicit writable open completed SQLite recovery handling.
+    pub sqlite_recovery: String,
+    /// Deliberately limited verification scope.
+    pub verification_scope: String,
+    /// Minimum header observation for the active store, when one exists.
+    pub active_store_minimum: Option<CollectionDerivedStoreMinimum>,
+    /// Whether attention is required for an observed anomaly.
+    pub attention_required: bool,
+    /// Whether schema1 still requires explicit migration for logical mutation.
+    pub migration_required_for_mutation: bool,
 }
 
 /// One retained installation generation containing a pack.

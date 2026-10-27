@@ -280,6 +280,7 @@ impl CollectionQueryError {
                 "profile_default_missing"
             }
             Self::Profile(CollectionProfileError::UnknownProfile { .. }) => "unknown_profile",
+            Self::Profile(CollectionProfileError::NotProfileMember { .. }) => "not_profile_member",
             Self::Profile(CollectionProfileError::MissingFile { .. }) => "config_missing",
             Self::Profile(CollectionProfileError::CurrentDirectory { .. }) => "config_io",
             Self::Profile(CollectionProfileError::Io { source, .. })

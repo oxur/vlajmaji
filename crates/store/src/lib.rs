@@ -20,21 +20,22 @@ mod dictionary_schema;
 mod dictionary_snapshot;
 mod dictionary_verification;
 pub use collection_profiles::{
-    CollectionProfile, CollectionProfileError, CollectionProfileIdentity,
-    CollectionProfileMembershipWriteRequest, CollectionProfileSummary,
-    CollectionProfileWriteReport, CollectionProfileWriteRequest, CollectionProfiles,
-    CollectionProfilesReport,
+    CollectionPolicySelection, CollectionProfile, CollectionProfileEnablementRequest,
+    CollectionProfileError, CollectionProfileIdentity, CollectionProfileMembershipWriteRequest,
+    CollectionProfilePolicyReport, CollectionProfileSummary, CollectionProfileWriteReport,
+    CollectionProfileWriteRequest, CollectionProfiles, CollectionProfilesReport,
 };
 pub use collections::{
     CollectionCaptureReference, CollectionCaptureSummary, CollectionCatalogue,
     CollectionCatalogueMigrationReport, CollectionCategoryCounts, CollectionDerivedStoreMinimum,
     CollectionEntityReference, CollectionError, CollectionErrorCategory, CollectionFailureReport,
     CollectionGeneration, CollectionGenerationMember, CollectionInput, CollectionInputDisposition,
-    CollectionInspection, CollectionInstalledArtifactLocations, CollectionInstalledHistory,
-    CollectionListReport, CollectionMutationReport, CollectionReferenceMetadata,
-    CollectionRegistrationSummary, CollectionReleaseSummary, CollectionRequest,
-    CollectionSelection, CollectionSourceMetadata, CollectionTermsSummary, NativePathReport,
-    native_path_report,
+    CollectionInspection, CollectionInstallationState, CollectionInstalledArtifactLocations,
+    CollectionInstalledHistory, CollectionJournalObservation, CollectionListReport,
+    CollectionMutationReport, CollectionReconciliationAttempt, CollectionReconciliationReport,
+    CollectionReferenceMetadata, CollectionRegistrationSummary, CollectionReleaseSummary,
+    CollectionRequest, CollectionSelection, CollectionSourceMetadata, CollectionTermsSummary,
+    NativePathReport, native_path_report,
 };
 pub use dictionary::{
     DictionaryStore, DictionaryStoreError, DictionaryStoreInvalidity, DictionaryStoreSummary,

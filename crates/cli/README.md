@@ -42,7 +42,7 @@ integrity. `all` reports six ordered result rows. A failed check exits nonzero,
 leaves stdout empty, and writes both its structured error and complete report
 to stderr.
 
-`collections register|install|migrate|update|rebuild|list|inspect ROOT` manages
+`collections register|install|migrate|update|rebuild|remove|reinstall|reconcile|list|inspect ROOT` manages
 an explicit local source catalogue. Registration stores typed source and
 reference metadata without copying release payloads. Installation creates one
 verified Unified generation; it never changes the default store or source
@@ -54,11 +54,17 @@ the same selected manifest or sealed inputs as install and replaces only
 currently installed selected packs at the expected local revision. `rebuild`
 uses retained sealed inputs to publish a new derived generation at the expected
 revision. These commands do not change profile membership or the global default;
-removal and reinstall are later lifecycle operations.
+`remove ROOT --pack ID... --expected-revision N` removes active membership while
+retaining source registrations, owned sealed inputs, and history. `reinstall`
+uses the exact retained `--release-sha256` with the ordinary sealed
+input or manifest options and an expected revision. `reconcile ROOT` explicitly
+observes SQLite physical recovery, attempts, and minimum derived-store state;
+it neither activates a generation nor performs a full audit.
 See the [collection guide](../../docs/collections.md) for commands, strict
 manifest fields, state semantics, and structured failures.
 
-`collections configure`, `collections profiles`, and `collections selection`
+`collections configure`, `collections enable`, `collections disable`,
+`collections default`, `collections profiles`, and `collections selection`
 manage a separate versioned user configuration. They accept `--config`; when
 omitted, the CLI resolves `XDG_CONFIG_HOME/vlajmaji/config.toml`, falling back
 to `HOME/.config/vlajmaji/config.toml`. A profile stores one catalogue ROOT,
@@ -69,6 +75,10 @@ cursor binds the observed profile/catalogue/generation/selection snapshot.
 `collections configure` updates membership while preserving a profile's
 existing disabled packs; newly created profiles start with none. Explicit
 library profile requests can deliberately replace the disabled list.
+`enable` and `disable` change only selected members, while `default --profile`
+sets and `default --clear` clears the configured default. Partial policy writes
+read the latest config under its writer lock and report only changed member IDs;
+semantic no-ops retain the original bytes and revision.
 This layer does not alter `dictionary-query STORE` or the global default-store
 route, and a selected installed payload that fails its minimum open is reported
 as an error rather than as metadata-only availability.

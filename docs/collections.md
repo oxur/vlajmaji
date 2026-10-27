@@ -121,8 +121,15 @@ generation. Rebuild uses the currently installed sealed inputs, verifies the
 derived SQLite store, and can repair a damaged derived store without selecting
 an older historical generation as a fallback. Missing or corrupt retained
 release inputs remain errors. Failed or interrupted stages remain identifiable
-for inspection and are not silently cleaned up. Removal, exact reinstall, and
-recovery are separate future operations.
+for inspection and are not silently cleaned up. `remove` records a
+revision-checked transition out of installed state while retaining registrations,
+owned sealed inputs, and historical generations. `reinstall` requires the
+registered release digest and that exact normalized input; it stages a fresh
+owned copy and never restores from an older generation implicitly. Repeating
+the currently installed release is an explicit verification-only idempotent
+result. `reconcile` reports retained lifecycle attempts and minimum store
+observations without activating a generation, migrating the catalogue, or
+performing a full integrity audit.
 
 `list` and `inspect` are read-only. They report the minimum readable format
 boundary, current owned-file presence, registration inputs, terms, attribution,
@@ -161,6 +168,12 @@ disabled packs. The library's explicit `CollectionProfiles::configure`
 request remains authoritative for callers that deliberately replace that
 list.
 
+`collections enable` and `collections disable` change only selected members'
+enabled bits, and `collections default` sets or clears the configured default.
+These policy commands read the latest configuration under its cooperative
+writer lock. Their strict version-1 reports list only changed IDs in profile
+membership order; semantic no-ops preserve the original bytes and revision.
+
 A semantic no-op keeps the existing configuration bytes, comments, formatting,
 and revision. A real change serializes TOML again and may lose comments or
 formatting. The sibling lock coordinates cooperating writers. Immediately
@@ -172,6 +185,10 @@ guarantee for either creation or replacement.
 ```sh
 vlajmaji collections configure ./local-catalogue \
   --profile research --pack llg --pack sutysisku --make-default
+vlajmaji collections disable --config ./profiles.toml \
+  --profile research --pack llg
+vlajmaji collections enable --config ./profiles.toml --profile research --all
+vlajmaji collections default --config ./profiles.toml --clear
 vlajmaji collections profiles
 vlajmaji collections selection --profile research
 vlajmaji lookup farvi --profile research --source llg
