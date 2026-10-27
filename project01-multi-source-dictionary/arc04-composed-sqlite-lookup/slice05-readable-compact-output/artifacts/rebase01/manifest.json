@@ -1,0 +1,41 @@
+{
+  "scope": "Exact root rebase originals and CDC read-only frozen scope; not functional acceptance",
+  "payloads": [
+    {
+      "path": "pre-rebase.json",
+      "original": "/tmp/vlajmaji-p01-a04-s05-root-rebase01/pre-rebase.json",
+      "bytes": 1325,
+      "sha256": "3b64391625948a46ee7548464245c7abfdc66f3a0bb39fd9a74d5ec591084045"
+    },
+    {
+      "path": "post-rebase.json",
+      "original": "/tmp/vlajmaji-p01-a04-s05-root-rebase01/post-rebase.json",
+      "bytes": 2359,
+      "sha256": "6445b167dd7dfd84312ff9945461eda8dc0bd7643dd646466166d07b5d054db9"
+    },
+    {
+      "path": "range-diff.txt",
+      "original": "/tmp/vlajmaji-p01-a04-s05-root-rebase01/range-diff.txt",
+      "bytes": 152,
+      "sha256": "3ce99f57992ff35186c9296e441c936bc42bbe12aabc007ddf8d3e3af7c18087"
+    },
+    {
+      "path": "pr5-merged.json",
+      "original": "/tmp/vlajmaji-p01-a04-s05-root-rebase01/pr5-merged.json",
+      "bytes": 1980,
+      "sha256": "424fa50ad84fc5aee578add82db7f977d13e1cbcf3ea305cce9c6eb1d05f7332"
+    },
+    {
+      "path": "main-ci-terminal.json",
+      "original": "/tmp/vlajmaji-p01-a04-s05-root-rebase01/main-ci-terminal.json",
+      "bytes": 9300,
+      "sha256": "4527be543af6b13acb1eb88d83b242de35673bffb8da039fa39f35e5a11ccedf"
+    },
+    {
+      "path": "cdc-frozen-scope01.json",
+      "original": "/tmp/vlajmaji-p01-a04-s05-cdc/frozen-scope01.json",
+      "bytes": 4731,
+      "sha256": "cb3dd46e5cec86e6c67bce3f0e2a4a3880dc242b607c40e7751057be080f9563"
+    }
+  ]
+}

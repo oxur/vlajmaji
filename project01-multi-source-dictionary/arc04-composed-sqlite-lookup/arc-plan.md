@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S04 PR5 OPEN/current432/PR CI40518812275 SUCCESS. S05 INITIAL compact/detail ISSUED after root final readiness PASS; exact intake/transfer pending, no runtime; readable/numeric/fresharc mandatory follow-up. |
-| version / date | 1.15 / 2026-10-27 UTC |
-| authority | Duncan explicitly directed next-slice continuation and separate S05 branch after S04 delivery; Autonomous THROUGH ARC04 ONLY, requested Sol6.1/high CDC and retained Luna/high CC. Root created PR5/new branch; S05 INITIAL issued after root readiness PASS; no source transfer/build/trial/future push yet. Prior authority below is historical. |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S04 PR5 user-MERGED as32e99/main CI40523395402 SUCCESS. S05 INITIAL author FROZEN after same-tree rebase; CDC independent source/API/Tiny/CLI review ACTIVE. Six S05OPEN; readable/numeric/fresharc mandatory follow-up. |
+| version / date | 1.16 / 2026-10-27 UTC |
+| authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
-| accepted inputs | Accepted Arc01–03 and S01–S04 at source432; PR5 unmerged dependency, current predecessor-tree Linux/mac/Check CI green; retained G4 unchanged. Source432 is not remote-main b010. |
-| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; NEW codex/project01-readable-compact-output at432/tree dd2f378, clean; same retained target. Old S04 branch remains432/PR5 OPEN. CDC quiet readiness ownership; root read-only. Prior dcdf/b010 integration facts remain historical below. |
+| accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
+| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-readable-compact-output current clean5bf/tree7e78, metadata-rebased onto32e99/main with old9eb chain preserved; same retained target. Old S04 local/origin branch remains432. CDC independent ownership, CC/root read-only. Actual primary checkout52fd remains distinct. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -18,7 +18,7 @@ The prior roadmap promised a fair unified/ATTACH/application-fanout comparison a
 
 Historical version 1.0 planning-only boundary (superseded by version 1.2 below): only the eight named planning paths were authorized then. No source/target/store/default/catalogue writes, new branch/worktree, CC prompt, investigation, benchmark, network, installation or migration runs. The protocol's effort proposal and numeric operational budgets are not approved. A04 stays PLANNED; A05/A06 unactivated. Existing published CLI is unchanged, and source7b1c565 is an accepted local unpushed feature, not a published A04 implementation. Arc01–03 accepted records, main, Bauske, original research and installed provisional Lensisku default remain immutable.
 
-## Five useful increments (S01–S04 CLOSED; S05 DRAFT readiness)
+## Five useful increments (S01–S04 CLOSED; S05 INITIAL independent review)
 
 | Increment | Useful delivery, including API / CLI / docs / gates | Depends on / readiness decision |
 | --- | --- | --- |

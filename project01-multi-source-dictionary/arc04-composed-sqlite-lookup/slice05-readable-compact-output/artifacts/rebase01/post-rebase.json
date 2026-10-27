@@ -1,0 +1,60 @@
+{
+  "old_base": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "new_base": "32e99b4fb0bfdc24e66535952114b6497d6aabfa",
+  "old_head": "9eb5c69862f2caf2ded381676ed457f28cd1e44c",
+  "new_head": "5bf5fb13f3d89f969570dff6aae5736feebd55fd",
+  "tree": "7e78aa64fc78257011edda1c35a1bc8316012eae",
+  "clean": true,
+  "commit_mapping": [
+    {
+      "old": "2209e7c215b51aac01d02b1ddb3ab42c0daaf6f7",
+      "new": "d52b30cfbf32c440e33da7e67ac42e7789add77f",
+      "tree": "d6f3fd0ad4bfc84ea613c2b6e830ed356b9106ed",
+      "parents": [
+        "32e99b4fb0bfdc24e66535952114b6497d6aabfa"
+      ],
+      "two_trailers": [
+        "Co-authored-by: Codex <noreply@openai.com>",
+        "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+      ]
+    },
+    {
+      "old": "9eb5c69862f2caf2ded381676ed457f28cd1e44c",
+      "new": "5bf5fb13f3d89f969570dff6aae5736feebd55fd",
+      "tree": "7e78aa64fc78257011edda1c35a1bc8316012eae",
+      "parents": [
+        "d52b30cfbf32c440e33da7e67ac42e7789add77f"
+      ],
+      "two_trailers": [
+        "Co-authored-by: Codex <noreply@openai.com>",
+        "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+      ]
+    }
+  ],
+  "source_tree_unchanged": true,
+  "backup_ref": "refs/heads/codex/archive/project01-s05-pre-main-9eb5c698",
+  "scope_paths": [
+    "README.md",
+    "crates/cli/README.md",
+    "crates/cli/src/main.rs",
+    "crates/cli/src/query_output.rs",
+    "crates/cli/tests/query_output_contract.rs",
+    "crates/search/README.md",
+    "crates/search/src/collection_query.rs",
+    "crates/search/src/collection_query/projection.rs",
+    "crates/search/src/dictionary.rs",
+    "crates/search/src/dictionary/borrowed.rs",
+    "crates/search/src/dictionary/projection.rs",
+    "crates/search/src/lib.rs",
+    "crates/search/tests/collection_projection_contract.rs",
+    "crates/search/tests/dictionary_projection_contract.rs",
+    "crates/store/src/collections.rs",
+    "crates/store/src/collections/reference_projection.rs",
+    "crates/store/src/lib.rs",
+    "crates/store/tests/reference_projection_contract.rs",
+    "docs/collections.md"
+  ],
+  "old_s04_refs_unchanged": true,
+  "guard_and_lock_unchanged": true,
+  "verification": "Git metadata/byte-tree equivalence only; no new tests/builds/providers/Full IO; prior author evidence retains its original source identity; independent S05 review pending"
+}

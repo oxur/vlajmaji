@@ -1,0 +1,31 @@
+{
+  "scope": "User-authorized S05 rebase after PR5 merge; no source-body changes or Cargo/Full operation",
+  "branch": "codex/project01-readable-compact-output",
+  "old_base": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "new_base": "32e99b4fb0bfdc24e66535952114b6497d6aabfa",
+  "base_tree": "dd2f378be98b6fe9c62d5f45055a70a351971bb1",
+  "old_head": "9eb5c69862f2caf2ded381676ed457f28cd1e44c",
+  "old_tree": "7e78aa64fc78257011edda1c35a1bc8316012eae",
+  "commits": [
+    {
+      "head": "2209e7c215b51aac01d02b1ddb3ab42c0daaf6f7",
+      "tree": "d6f3fd0ad4bfc84ea613c2b6e830ed356b9106ed",
+      "parents": [
+        "432d6321e3b2431e7fe2cc5f60e9317780e984b8"
+      ],
+      "subject": "S05 initial: add compact lookup and detail projections"
+    },
+    {
+      "head": "9eb5c69862f2caf2ded381676ed457f28cd1e44c",
+      "tree": "7e78aa64fc78257011edda1c35a1bc8316012eae",
+      "parents": [
+        "2209e7c215b51aac01d02b1ddb3ab42c0daaf6f7"
+      ],
+      "subject": "Return NoMatch for stale compact detail keys"
+    }
+  ],
+  "old_s04_local": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "old_s04_origin": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "lock_sha256": "65cd7f39a88bdd2a3dab1fcd14e9055ff7b77cb22ec3af8c309ce49dbea78700",
+  "guard_sha256": "20fe7ba73311aa503870923af09f33f3b53262742ca4eeea2972092924cf5de8"
+}
