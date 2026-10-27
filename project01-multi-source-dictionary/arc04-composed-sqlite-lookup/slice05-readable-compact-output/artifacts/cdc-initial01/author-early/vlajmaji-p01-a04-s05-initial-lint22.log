@@ -1,0 +1,117 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: the `Err`-variant returned from this function is very large
+   --> crates/search/src/collection_query/projection.rs:196:10
+    |
+100 |     Query(CollectionQueryError),
+    |     --------------------------- the largest variant contains at least 128 bytes
+...
+196 |     ) -> Result<CollectionCompactQueryResponse, CollectionCompactProjectionError> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: try reducing the size of `collection_query::projection::CollectionCompactProjectionError`, for example by boxing large elements or replacing it with `Box<collection_query::projection::CollectionCompactProjectionError>`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#result_large_err
+    = note: `-D clippy::result-large-err` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::result_large_err)]`
+
+error: the `Err`-variant returned from this function is very large
+   --> crates/search/src/collection_query/projection.rs:237:10
+    |
+100 |     Query(CollectionQueryError),
+    |     --------------------------- the largest variant contains at least 128 bytes
+...
+237 |     ) -> Result<CollectionHitDetailResponse, CollectionCompactProjectionError> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: try reducing the size of `collection_query::projection::CollectionCompactProjectionError`, for example by boxing large elements or replacing it with `Box<collection_query::projection::CollectionCompactProjectionError>`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#result_large_err
+
+error: the `Err`-variant returned from this function is very large
+   --> crates/search/src/collection_query/projection.rs:252:37
+    |
+100 |     Query(CollectionQueryError),
+    |     --------------------------- the largest variant contains at least 128 bytes
+...
+252 |     fn ensure_compact(&mut self) -> Result<(), CollectionCompactProjectionError> {
+    |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: try reducing the size of `collection_query::projection::CollectionCompactProjectionError`, for example by boxing large elements or replacing it with `Box<collection_query::projection::CollectionCompactProjectionError>`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#result_large_err
+
+error: the `Err`-variant returned from this function is very large
+   --> crates/search/src/collection_query/projection.rs:275:10
+    |
+100 |     Query(CollectionQueryError),
+    |     --------------------------- the largest variant contains at least 128 bytes
+...
+275 |     ) -> Result<(), CollectionCompactProjectionError> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: try reducing the size of `collection_query::projection::CollectionCompactProjectionError`, for example by boxing large elements or replacing it with `Box<collection_query::projection::CollectionCompactProjectionError>`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#result_large_err
+
+error: the `Err`-variant returned from this function is very large
+   --> crates/search/src/collection_query/projection.rs:296:10
+    |
+100 |     Query(CollectionQueryError),
+    |     --------------------------- the largest variant contains at least 128 bytes
+...
+296 |     ) -> Result<CollectionCompactReferenceResponse, CollectionCompactProjectionError> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: try reducing the size of `collection_query::projection::CollectionCompactProjectionError`, for example by boxing large elements or replacing it with `Box<collection_query::projection::CollectionCompactProjectionError>`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#result_large_err
+
+error: this `if` statement can be collapsed
+   --> crates/search/src/collection_query/projection.rs:297:9
+    |
+297 | /         if let RelationTarget::Unresolved(text) = &target {
+298 | |             if text.is_empty() {
+299 | |                 return Err(
+300 | |                     CollectionQueryError::Query(DictionaryQueryError::InvalidReference {
+...   |
+306 | |         }
+    | |_________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#collapsible_if
+    = note: `-D clippy::collapsible-if` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::collapsible_if)]`
+help: collapse nested if block
+    |
+297 ~         if let RelationTarget::Unresolved(text) = &target
+298 ~             && text.is_empty() {
+299 |                 return Err(
+...
+304 |                 );
+305 ~             }
+    |
+
+error: the `Err`-variant returned from this function is very large
+   --> crates/search/src/collection_query/projection.rs:386:51
+    |
+100 |     Query(CollectionQueryError),
+    |     --------------------------- the largest variant contains at least 128 bytes
+...
+386 |     fn wrap_managed_cursor(&self, inner: &str) -> Result<String, CollectionCompactProjectionError> {
+    |                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: try reducing the size of `collection_query::projection::CollectionCompactProjectionError`, for example by boxing large elements or replacing it with `Box<collection_query::projection::CollectionCompactProjectionError>`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#result_large_err
+
+error: the `Err`-variant returned from this function is very large
+   --> crates/search/src/collection_query/projection.rs:420:10
+    |
+100 |     Query(CollectionQueryError),
+    |     --------------------------- the largest variant contains at least 128 bytes
+...
+420 |     ) -> Result<String, CollectionCompactProjectionError> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: try reducing the size of `collection_query::projection::CollectionCompactProjectionError`, for example by boxing large elements or replacing it with `Box<collection_query::projection::CollectionCompactProjectionError>`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#result_large_err
+
+error: could not compile `vlajmaji-search` (lib) due to 8 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib test) due to 8 previous errors
+make: *** [lint] Error 101

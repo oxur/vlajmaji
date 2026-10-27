@@ -1,0 +1,186 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 10.07s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-79c55689d7ba55d9)
+
+running 32 tests
+test collections::lifecycle::tests::test_foreign_key_layout_requires_one_composite_constraint ... ok
+
+running 1 test
+test collection_profiles::tests::test_configure_membership_reads_latest_policy_after_lock ... ok
+test collection_profiles::policy::tests::test_set_default_resolves_profile_added_before_lock ... ok
+test collections::maintenance::tests::test_journal_observation_reports_regular_file_and_rejects_non_files ... ok
+test collections::maintenance::tests::test_journal_path_suffix_preserves_native_database_bytes ... ok
+test collection_profiles::tests::test_configure_writer_phases_preserve_precommit_and_report_uncertainty ... ok
+test collections::maintenance::tests::test_validate_event_reinstall_requires_removed_digest_and_generation ... ok
+test collections::maintenance::tests::test_validate_event_rejects_duplicate_order_version_and_revision_overflow ... ok
+test collections::maintenance::tests::test_validate_event_remove_accepts_installed_and_registered_only_dispositions ... ok
+test collections::manifest_tests::test_allocate_stage_retries_occupied_candidate_without_overwriting_it ... ok
+test collections::manifest_tests::test_batch_failure_reports_validated_failed_unprocessed_and_skipped_inputs ... ok
+
+running 1 test
+test collections::manifest_tests::test_injected_rollback_failure_retains_initiating_and_rollback_causes ... ok
+test collection_profiles::policy::tests::test_config_writer_child_exit_keeps_visible_snapshot_and_requires_alt_file ... ok
+test collections::manifest_tests::test_manifest_direct_api_rejects_duplicate_and_escaped_duplicate_keys ... ok
+test collections::manifest_tests::test_manifest_locator_absence_and_null_are_none_and_strings_are_retained ... ok
+test collections::manifest_tests::test_manifest_locator_wrong_type_is_rejected ... ok
+test collections::manifest_tests::test_selection_skips_unselected_missing_native_path_and_all_reports_failure ... ok
+test collections::manifest_tests::test_sutysisku_manifest_optional_locators_accept_omission_and_null ... ok
+test collection_profiles::policy::tests::test_enablement_reads_latest_default_root_membership_and_disabled_under_lock ... ok
+test dictionary_schema::checked_integer_tests::sqlite_integer_conversion_and_evidence_increment_are_checked ... ok
+test dictionary_schema::tests::insertion_order_covers_schema_and_places_foreign_key_parents_first ... ok
+test dictionary_schema::tests::projection_orders_present_tables_and_rejects_unknown_tables ... ok
+test identity_tests::tuple_identity_is_length_prefixed_and_byte_exact ... ok
+test collections::lifecycle::tests::test_migration_child_exit_after_ddl_reconciles_as_v1_then_migrates ... ok
+test collections::lifecycle::tests::test_reconcile_v1_is_read_only_and_does_not_migrate ... ok
+test dictionary::lifecycle_tests::committed_incomplete_header_survives_population_failure ... ok
+test collections::lifecycle::tests::test_catalogue_child_exit_before_commit_reconciles_to_prior_generation ... ok
+test collections::maintenance::tests::test_lifecycle_rollback_uncertainty_keeps_both_causes_and_reconcile_is_not_applicable ... ok
+test collections::lifecycle::tests::test_rebuild_before_commit_returned_fault_preserves_active_generation ... ok
+test collections::lifecycle::tests::test_migration_returned_faults_roll_back_before_and_after_ddl_with_context ... ok
+test collections::manifest_tests::test_interruption_after_stage_allocation_retains_prior_generation_and_allows_retry ... ok
+test collections::lifecycle::tests::test_update_returned_fault_rolls_back_and_dual_fault_retains_both_causes ... ok
+
+test result: ok. 32 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.41s
+
+     Running tests/collection_policy_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collection_policy_contract-998831330adbe26d)
+
+running 2 tests
+test test_partial_enablement_preserves_latest_disabled_order_and_reports_changed_members ... ok
+test test_default_policy_set_clear_and_same_value_are_explicit_atomic_noops ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests/collection_profiles_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collection_profiles_contract-6b4975dd213ba1ca)
+
+running 11 tests
+test test_profile_read_preserves_false_zero_empty_and_short_lists ... ok
+test test_profile_rejects_unknown_duplicate_and_incomplete_shapes ... ok
+test test_root_native_roundtrips_exact_bytes_and_rejects_malformed_descriptors ... ok
+test test_configure_busy_sibling_preserves_foreign_file_and_writes_nothing ... ok
+test test_configure_requires_registered_pack_and_keeps_old_bytes ... ok
+test test_configure_preserves_native_config_path_when_platform_allows ... ok
+test test_configure_revision_overflow_preserves_existing_bytes ... ok
+test test_configure_is_idempotent_and_keeps_unrelated_profiles ... ok
+test test_membership_writer_preserves_disabled_policy_and_explicit_writer_can_clear_it ... ok
+test test_membership_writer_new_profile_starts_empty_and_incompatible_root_preserves_old_file ... ok
+test test_configure_creates_private_directories_and_preserves_existing_file_mode ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.29s
+
+     Running tests/collections_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collections_contract-375643d800fad5c9)
+
+running 18 tests
+test test_empty_existing_roots_register_install_expect_occupied_with_validated_input ... ok
+test test_catalogue_unsupported_schema_version_is_read_only ... ok
+test test_install_revision_overflow_is_known_precommit_failure ... ok
+test test_catalogue_root_symlink_is_not_followed_for_read_or_write ... ok
+test test_catalogue_file_and_database_symlink_are_refused_without_modification ... ok
+test test_malformed_seal_and_release_mismatch_expect_typed_pack_errors ... ok
+test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok
+test test_request_all_missing_pack_is_rejected ... ok
+test test_sealed_pack_mismatch_is_rejected_before_catalogue_creation ... ok
+test test_list_uses_compact_registration_summary_without_decoding_descriptor ... ok
+test test_reference_metadata_preserves_nonempty_form_and_editorial_link_sets ... ok
+test test_exact_repeat_rejects_corrupt_owned_store_without_activating_changes ... ok
+test test_begin_busy_register_install_expect_validated_context_and_retry ... ok
+test test_catalogue_register_then_install_and_repeat_keeps_generation ... ok
+test test_missing_sealed_input_expect_known_pack_and_typed_io_cause ... ok
+test test_new_release_registration_stays_uninstalled_and_install_requires_later_update_flow ... ok
+test test_install_commit_busy_rolls_back_catalogue_and_retains_staged_attempt ... ok
+test test_install_conflicting_shared_source_is_typed_and_valid_counterpart_composes_once ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.11s
+
+     Running tests/collections_lifecycle_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collections_lifecycle_contract-98cbc5f466aaa6fc)
+
+running 4 tests
+test test_update_and_migrate_missing_catalogue_do_not_create_root ... ok
+test test_catalogue_migration_v1_preserves_generation_and_fences_legacy_names ... ok
+test test_four_source_update_and_rebuild_preserve_complete_typed_inventory ... ok
+test test_update_replaces_selected_pack_and_rebuild_forces_new_generation ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.03s
+
+     Running tests/collections_maintenance_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collections_maintenance_contract-4712fe11c6089bf0)
+
+running 8 tests
+test test_remove_registered_only_pack_commits_without_creating_generation ... ok
+test test_reinstall_digest_mismatch_preserves_removed_state ... ok
+test test_remove_registered_only_pack_keeps_active_generation ... ok
+test test_remove_reinstall_retained_release_and_revision ... ok
+test test_reinstall_open_and_begin_busy_keep_validated_input_context ... ok
+test test_remove_one_pack_publishes_survivor_generation_and_reinstall_restores_member ... ok
+test test_reconcile_committed_stage_markers_and_unknown_operation ... ok
+test test_literal_four_pack_remove_reinstall_and_remove_all_preserve_inventory ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.76s
+
+     Running tests/dictionary_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_contract-e4ea922946d3a8dd)
+
+running 14 tests
+test fresh_path_lifecycle_refuses_existing_leafs_and_missing_parents ... ok
+test empty_valid_dictionary_has_a_real_empty_projection ... ok
+test empty_source_metadata_values_survive_actual_sql_projection ... ok
+test full_fixture_has_independent_direct_sql_value_oracles ... ok
+test complete_dictionary_creates_typed_projection_and_reopens_read_only ... ok
+test full_unsigned_text_empty_and_nul_values_survive_sql_and_reopen ... ok
+test empty_available_release_keeps_explicit_zero_counts ... ok
+test reversed_self_reference_rows_persist_and_reopen_in_model_order ... ok
+test legacy_archive_rebuild_is_explicit_separate_and_byte_preserving ... ok
+test test_minimal_open_rejects_unsupported_dictionary_and_registry_versions ... ok
+test metadata_query_missing_required_columns_is_format_without_writing ... ok
+test explicit_projection_verification_rejects_same_count_scalar_edits_without_repair ... ok
+test sql_role_presence_foreign_key_and_unique_constraints_are_real ... ok
+test integrity_failures_are_classified_without_mutating_the_database ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.82s
+
+     Running tests/dictionary_snapshot.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_snapshot-d3e60f6b59a34d73)
+
+running 2 tests
+test test_attached_rejects_non_utf8_native_path_without_lossy_routing_or_creation ... ok
+test test_snapshot_topologies_open_read_only_and_deduplicate_same_logical_ids ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+     Running tests/dictionary_verification.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_verification-4047a26c7aeeddbd)
+
+running 6 tests
+test test_unparseable_canonical_blocks_dependent_checks_but_model_fails ... ok
+test test_duplicate_json_keys_remain_a_strict_model_failure_and_block_draft_dependents ... ok
+test test_selected_schema_and_fks_run_without_canonical_prerequisites ... ok
+test test_all_reports_independent_simultaneous_schema_metadata_and_fk_failures ... ok
+test test_unsupported_header_versions_fail_before_unparseable_canonical_blocks ... ok
+test test_valid_store_passes_all_scopes_and_selective_reports_have_one_row ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.68s
+
+     Running tests/fixture.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/fixture-a03a757a42313cd7)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/public_identity.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/public_identity-de0bf9e47f6c9ba4)
+
+running 1 test
+test external_consumer_can_hydrate_the_published_record_identity ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/reference_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/reference_projection_contract-f034be2bfc490c04)
+
+running 3 tests
+test test_reference_projection_catalog_release_keeps_requested_source_occurrence ... ok
+test test_reference_projection_assertion_keeps_target_links_and_skips_unrelated_bodies ... ok
+test test_reference_projection_skips_unrelated_malformed_body_and_reports_selected_error ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+   Doc-tests vlajmaji_store
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

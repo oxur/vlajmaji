@@ -1,0 +1,60 @@
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.25s
+     Running tests/dictionary_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_projection_contract-04bfbbd887bd71ce)
+
+running 1 test
+
+thread 'compact_managed_local_reference_retains_all_contributor_scopes' (78283717) panicked at crates/search/tests/dictionary_projection_contract.rs:722:9:
+assertion `left == right` failed: matches: [
+    CollectionReferenceMatch {
+        pack_id: "la-lojban",
+        release_sha256: "b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3",
+        source_id: "source-a",
+        model_release_id: "",
+        role: Some(
+            "entry",
+        ),
+        entity_id: Some(
+            "entry-a-farvi",
+        ),
+        occurrence: None,
+        capture: None,
+        native_entry_id: None,
+        native_assertion_id: None,
+        contributing_pack_ids: [
+            "la-lojban",
+        ],
+    },
+    CollectionReferenceMatch {
+        pack_id: "llg",
+        release_sha256: "b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3",
+        source_id: "source-a",
+        model_release_id: "",
+        role: Some(
+            "entry",
+        ),
+        entity_id: Some(
+            "entry-a-farvi",
+        ),
+        occurrence: None,
+        capture: None,
+        native_entry_id: None,
+        native_assertion_id: None,
+        contributing_pack_ids: [
+            "llg",
+        ],
+    },
+]
+  left: 2
+ right: 1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test compact_managed_local_reference_retains_all_contributor_scopes ... FAILED
+
+failures:
+
+failures:
+    compact_managed_local_reference_retains_all_contributor_scopes
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 4 filtered out; finished in 0.46s
+
+error: test failed, to rerun pass `-p vlajmaji-search --test dictionary_projection_contract`

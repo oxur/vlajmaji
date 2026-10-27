@@ -1,0 +1,14 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+error: unused import: `json`
+  --> crates/cli/tests/query_output_contract.rs:14:25
+   |
+14 | use serde_json::{Value, json};
+   |                         ^^^^
+   |
+   = note: `-D unused-imports` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error: could not compile `vlajmaji-cli` (test "query_output_contract") due to 1 previous error
+make: *** [lint] Error 101

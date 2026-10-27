@@ -1,0 +1,52 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error: unused import: `Dictionary`
+  --> crates/store/tests/reference_projection_contract.rs:11:5
+   |
+11 |     Dictionary, LocalRef, PackId, PackPayloadKind, RelationTarget, seal_release,
+   |     ^^^^^^^^^^
+   |
+   = note: `-D unused-imports` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error[E0599]: no variant, associated function, or constant named `Jbotci` found for enum `vlajmaji_lexicon::PackId` in the current scope
+  --> crates/store/tests/reference_projection_contract.rs:38:39
+   |
+38 |     let sealed = seal_release(PackId::Jbotci, PackPayloadKind::Synthetic, &dictionary).unwrap();
+   |                                       ^^^^^^ variant, associated function, or constant not found in `vlajmaji_lexicon::PackId`
+
+error[E0599]: no variant, associated function, or constant named `Jbotci` found for enum `vlajmaji_lexicon::PackId` in the current scope
+  --> crates/store/tests/reference_projection_contract.rs:41:30
+   |
+41 |             pack_id: PackId::Jbotci,
+   |                              ^^^^^^ variant, associated function, or constant not found in `vlajmaji_lexicon::PackId`
+
+error[E0599]: no variant, associated function, or constant named `Jbotci` found for enum `vlajmaji_lexicon::PackId` in the current scope
+  --> crates/store/tests/reference_projection_contract.rs:45:49
+   |
+45 |         CollectionSelection::Packs(vec![PackId::Jbotci]),
+   |                                                 ^^^^^^ variant, associated function, or constant not found in `vlajmaji_lexicon::PackId`
+
+error[E0599]: no variant, associated function, or constant named `Jbotci` found for enum `vlajmaji_lexicon::PackId` in the current scope
+  --> crates/store/tests/reference_projection_contract.rs:54:21
+   |
+54 |             PackId::Jbotci,
+   |                     ^^^^^^ variant, associated function, or constant not found in `vlajmaji_lexicon::PackId`
+
+error[E0277]: can't compare `std::string::String` with `&std::string::String`
+  --> crates/store/tests/reference_projection_contract.rs:77:69
+   |
+77 |                 .any(|entity| { entity.role == "entry" && entity.id == entry_id })
+   |                                                                     ^^ no implementation for `std::string::String == &std::string::String`
+   |
+   = help: the trait `std::cmp::PartialEq<&std::string::String>` is not implemented for `std::string::String`
+help: consider dereferencing here
+   |
+77 |                 .any(|entity| { entity.role == "entry" && entity.id == *entry_id })
+   |                                                                        +
+
+Some errors have detailed explanations: E0277, E0599.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `vlajmaji-store` (test "reference_projection_contract") due to 6 previous errors
+make: *** [lint] Error 101

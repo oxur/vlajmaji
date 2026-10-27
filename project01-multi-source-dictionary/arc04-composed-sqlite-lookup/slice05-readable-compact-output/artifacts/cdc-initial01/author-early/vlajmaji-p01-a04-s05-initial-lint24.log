@@ -1,0 +1,41 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: unused import: `DictionaryProjectionError`
+  --> crates/search/src/collection_query/projection.rs:14:5
+   |
+14 |     DictionaryProjectionError, DictionaryProjectionProfile, DictionaryQueryError,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `-D unused-imports` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error[E0308]: `match` arms have incompatible types
+   --> crates/search/src/collection_query.rs:331:40
+    |
+285 |           let category = match self {
+    |  ________________________-
+286 | |             Self::Profile(CollectionProfileError::Busy(_)) => "config_busy",
+287 | |             Self::Profile(CollectionProfileError::UnsupportedVersion(_)) => "config_version",
+288 | |             Self::Profile(CollectionProfileError::NoDefaultProfile { .. }) => {
+...   |
+303 | |             Self::Catalogue(_) => "catalogue",
+    | |                                   ----------- this and all prior arms are found to be of type `&str`
+...   |
+331 | |             Self::Projection(error) => error.report().code,
+    | |                                        ^^^^^^^^^^^^^^^^^^^ expected `&str`, found `String`
+...   |
+339 | |             Self::UnavailablePack { .. } => "unavailable_selection",
+340 | |         };
+    | |_________- `match` arms have incompatible types
+    |
+help: consider borrowing here
+    |
+331 |             Self::Projection(error) => &error.report().code,
+    |                                        +
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-search` (lib test) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib) due to 2 previous errors
+make: *** [lint] Error 101

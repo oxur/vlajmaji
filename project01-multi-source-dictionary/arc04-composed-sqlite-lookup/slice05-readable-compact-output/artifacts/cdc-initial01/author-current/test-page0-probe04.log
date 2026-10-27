@@ -1,0 +1,25 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.29s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-716ca61c9a463933)
+
+running 1 test
+test dictionary::projection::tests::compact_zero_page_skips_hit_projection_but_keeps_counts ... FAILED
+
+failures:
+
+---- dictionary::projection::tests::compact_zero_page_skips_hit_projection_but_keeps_counts stdout ----
+
+thread 'dictionary::projection::tests::compact_zero_page_skips_hit_projection_but_keeps_counts' (78274251) panicked at crates/search/src/dictionary/projection.rs:1652:9:
+assertion `left == right` failed
+  left: 7
+ right: 6
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    dictionary::projection::tests::compact_zero_page_skips_hit_projection_but_keeps_counts
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.17s
+
+error: test failed, to rerun pass `-p vlajmaji-search --lib`

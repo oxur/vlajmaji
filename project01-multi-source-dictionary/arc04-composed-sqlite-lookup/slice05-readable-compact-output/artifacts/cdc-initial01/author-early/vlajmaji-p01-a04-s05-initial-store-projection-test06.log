@@ -1,0 +1,21 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.29s
+     Running tests/reference_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/reference_projection_contract-f034be2bfc490c04)
+
+running 2 tests
+
+thread 'test_reference_projection_catalog_release_keeps_requested_source_occurrence' (78160157) panicked at crates/store/tests/reference_projection_contract.rs:30:27:
+called `Result::unwrap()` on an `Err` value: Os { code: 17, kind: AlreadyExists, message: "File exists" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_reference_projection_catalog_release_keeps_requested_source_occurrence ... FAILED
+test test_reference_projection_assertion_keeps_target_links_and_skips_unrelated_bodies ... ok
+
+failures:
+
+failures:
+    test_reference_projection_catalog_release_keeps_requested_source_occurrence
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+error: test failed, to rerun pass `-p vlajmaji-store --test reference_projection_contract`

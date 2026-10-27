@@ -1,0 +1,235 @@
+{
+  "phase": "prospective-independent-preparation03",
+  "scope": "SOURCE ONLY; original finite independent Tiny/CLI proof",
+  "compiled": false,
+  "product_executed": false,
+  "full_executed": false,
+  "caller_lock_exists": false,
+  "payloads": [
+    {
+      "path": "public-caller01/Cargo.toml",
+      "bytes": 690,
+      "sha256": "f2f19733d01559393190fe22eb9686c85a3d38245ff6ac07a72ef72dfec97e99"
+    },
+    {
+      "path": "public-caller01/fixtures/lensisku.json",
+      "bytes": 136,
+      "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+    },
+    {
+      "path": "public-caller01/fixtures/llg-valid-row.txt",
+      "bytes": 158,
+      "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+    },
+    {
+      "path": "public-caller01/fixtures/sutysisku.json",
+      "bytes": 150,
+      "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
+    },
+    {
+      "path": "public-caller01/src/cause_checks.rs",
+      "bytes": 1542,
+      "sha256": "21a46ef8d560097089a0a8234a14b574b64a67014f9e9d03c5771c966b353ed4"
+    },
+    {
+      "path": "public-caller01/src/complete_fixture.rs",
+      "bytes": 46457,
+      "sha256": "0792a2b1aa5fc3b570e3c817a127ed571c1b9b39786ee5c22d906e7574175eac"
+    },
+    {
+      "path": "public-caller01/src/context_checks.rs",
+      "bytes": 2501,
+      "sha256": "48359636f1396a125ded5d0afee511f02b6fc73889f95bee2cb7a792779cb188"
+    },
+    {
+      "path": "public-caller01/src/cursor_checks.rs",
+      "bytes": 2169,
+      "sha256": "8cdc114e94e4859c0a186e75fe2a6492f73f67d44884069d55acede7f426de08"
+    },
+    {
+      "path": "public-caller01/src/derived_fault_checks.rs",
+      "bytes": 4661,
+      "sha256": "70cf0d5c93b52997cb908f5117efdc25b3c07d23d3a5a6538d0470f8074aea47"
+    },
+    {
+      "path": "public-caller01/src/detail_identity_checks.rs",
+      "bytes": 2293,
+      "sha256": "05092db566c0101f820f1aeef0f3ad1480c903df0ffcb62fe5bb4e86e0964146"
+    },
+    {
+      "path": "public-caller01/src/eager_checks.rs",
+      "bytes": 4777,
+      "sha256": "8211a631a54a5c0b2b66806e89af5f00d19d9ca2affa02c4f36d43de388942db"
+    },
+    {
+      "path": "public-caller01/src/helpers.rs",
+      "bytes": 3071,
+      "sha256": "b0d29b14379a7156ee005f93bec5cd927e48d4e058a698cd441194c53dfb9e81"
+    },
+    {
+      "path": "public-caller01/src/history_checks.rs",
+      "bytes": 4104,
+      "sha256": "493c8b4c9aab9880dcff5eddf533307e4724bbe775e8e6609ad4d99ac9387e3a"
+    },
+    {
+      "path": "public-caller01/src/main.rs",
+      "bytes": 10504,
+      "sha256": "a5aad74c998f2bf5fddcdb9488ac45ce4e36519fd3ef8086b0c3b69be0dff133"
+    },
+    {
+      "path": "public-caller01/src/metadata_only_checks.rs",
+      "bytes": 3192,
+      "sha256": "484b8108ded40983260e2081a6c7ae0a8d37fd2f7f76f9411c981d21e856e3d1"
+    },
+    {
+      "path": "public-caller01/src/owned_paths.rs",
+      "bytes": 876,
+      "sha256": "d1b69dd19be7c868d8958b888d991c6fe241660620ad243edbef0db9a670c55f"
+    },
+    {
+      "path": "public-caller01/src/reference_checks.rs",
+      "bytes": 3456,
+      "sha256": "0f2ac71d5505b34ed9ea118cf87696a8095a43d912bd2251c4d7c8afa7a4e9a1"
+    },
+    {
+      "path": "public-caller01/src/selection_checks.rs",
+      "bytes": 4559,
+      "sha256": "3e954e4f495d26f341cc5e2610b60b69d65cfac6b3331d268cea251aacb65b2a"
+    },
+    {
+      "path": "public-caller01/src/shared_body_checks.rs",
+      "bytes": 10638,
+      "sha256": "348d15eb217460845fd11c34093dc1571c82ef53dcc4ad91da505ce9918bba62"
+    },
+    {
+      "path": "public-caller01/src/store_projection_checks.rs",
+      "bytes": 3363,
+      "sha256": "6588f30dc54ee89b0d3e83b0df7d209b411a40789fd05b83d6ec6bb5be8ab2c5"
+    },
+    {
+      "path": "public-caller01/src/supplement.rs",
+      "bytes": 3644,
+      "sha256": "9d68e4faa55c660072e0f08629c4fdeb04fdbeacd7e493e3ac8897c9b6946354"
+    },
+    {
+      "path": "public-caller01/src/targeted_sentinel_checks.rs",
+      "bytes": 3810,
+      "sha256": "f1eb4c89deeaf4a76c85b2daa7ae1e4a2bd65453f6843fd8ea799891663f73df"
+    }
+  ],
+  "include_closure": [
+    {
+      "from": "public-caller01/src/helpers.rs",
+      "literal": "../fixtures/lensisku.json",
+      "to": "public-caller01/fixtures/lensisku.json"
+    },
+    {
+      "from": "public-caller01/src/helpers.rs",
+      "literal": "../fixtures/sutysisku.json",
+      "to": "public-caller01/fixtures/sutysisku.json"
+    },
+    {
+      "from": "public-caller01/src/helpers.rs",
+      "literal": "../fixtures/llg-valid-row.txt",
+      "to": "public-caller01/fixtures/llg-valid-row.txt"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "helpers.rs",
+      "to": "public-caller01/src/helpers.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "supplement.rs",
+      "to": "public-caller01/src/supplement.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "reference_checks.rs",
+      "to": "public-caller01/src/reference_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "cursor_checks.rs",
+      "to": "public-caller01/src/cursor_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "store_projection_checks.rs",
+      "to": "public-caller01/src/store_projection_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "metadata_only_checks.rs",
+      "to": "public-caller01/src/metadata_only_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "owned_paths.rs",
+      "to": "public-caller01/src/owned_paths.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "history_checks.rs",
+      "to": "public-caller01/src/history_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "context_checks.rs",
+      "to": "public-caller01/src/context_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "cause_checks.rs",
+      "to": "public-caller01/src/cause_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "derived_fault_checks.rs",
+      "to": "public-caller01/src/derived_fault_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "detail_identity_checks.rs",
+      "to": "public-caller01/src/detail_identity_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "targeted_sentinel_checks.rs",
+      "to": "public-caller01/src/targeted_sentinel_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "selection_checks.rs",
+      "to": "public-caller01/src/selection_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/main.rs",
+      "literal": "eager_checks.rs",
+      "to": "public-caller01/src/eager_checks.rs"
+    },
+    {
+      "from": "public-caller01/src/shared_body_checks.rs",
+      "literal": "complete_fixture.rs",
+      "to": "public-caller01/src/complete_fixture.rs"
+    },
+    {
+      "from": "public-caller01/src/supplement.rs",
+      "literal": "complete_fixture.rs",
+      "to": "public-caller01/src/complete_fixture.rs"
+    }
+  ],
+  "method_history": "First closure checker compared resolved /private/tmp target against unresolved /tmp parent and stopped before writing manifest. Both now resolve consistently for source containment; no product command ran.",
+  "limits": [
+    "not a frozen product/source applicability manifest",
+    "Rust API/type/setup qualification waits for committed handback",
+    "eager/sentinel SQL mutations apply ONLY to NEW owned Tiny fixtures, not accepted roots",
+    "all malformed/typed-cause predicates remain unexecuted expectations",
+    "current source preparation supersedes earlier nonfrozen indexes; all earlier method records retained"
+  ],
+  "cli_checker": {
+    "source_sha256": "5313864d0e7bb84d0c82a79af06aa345788eb298e957ac31b108f8571f8c652f",
+    "pure_receipt": "cli-checker-method03.json",
+    "product_orchestration_executed": false
+  }
+}

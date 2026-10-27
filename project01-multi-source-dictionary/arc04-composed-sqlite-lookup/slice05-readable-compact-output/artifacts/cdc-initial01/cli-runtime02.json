@@ -1,0 +1,24 @@
+{
+  "source_head": "5bf5fb13f3d89f969570dff6aae5736feebd55fd",
+  "argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/cli-checks01.py",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/bin/cli-initial01",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/public-runtime03/caller-context.json",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/cli-runtime02"
+  ],
+  "exit": 1,
+  "timeout": false,
+  "elapsed_s": 0.6674037082120776,
+  "checker_sha256": "7f726579735430a7bace422a3521ade87ccde07f08957aa114a2310aef13b696",
+  "log_bytes": 5309,
+  "log_sha256": "534670c749f74f80d39b4acb63d699b9567caf2f9535fd01ce66e37b79f3db67",
+  "actual_child_receipts": 54,
+  "child_exit_counts": {
+    "0": 18,
+    "1": 36
+  },
+  "all_child_exits_expected": true,
+  "known_api_and_edges_failures_remain": true
+}

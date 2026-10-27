@@ -1,0 +1,22 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.54s
+     Running tests/dictionary_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_projection_contract-04bfbbd887bd71ce)
+
+running 1 test
+
+thread 'compact_local_reference_filters_distinct_pack_assertions_by_policy' (78341507) panicked at crates/search/tests/dictionary_projection_contract.rs:1154:13:
+assertion `left == right` failed: first-selected; selected releases={"la-lojban": ["llg-release-3c8ef651d2168effee1d55d8d9d72d791a808d8f6b83af72d09fee760a2f5812", "llg-release-b9ae360a592229cb25f9f7e1038f84c2946acda4aba2fa43091e6186069724d4", "llg-release-a38cdbb43168f175decbc98b7055bd7076539f3d0406c96b01b0fe7ed05baa52"]}
+  left: {"llg-assertion-89941b23f6d1e5097f669596e361211111a4387204b81e4ed877e0a8cb36d68f": AssertionRecord { id: EntityId("llg-assertion-89941b23f6d1e5097f669596e361211111a4387204b81e4ed877e0a8cb36d68f"), entry: EntityId("llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"), occurrence: OccurrenceRef { capture: CaptureRef { namespace: "captured:llg:gismu", sha256: "d3b07a6385c210787a8eb77b7cd7c7e7a68e728412b1a8501835e9ff095ab375" }, locator: "1" }, native_sense_id: Missing, language: Value("en"), definition: Value(TextValue { text: "d", language: Value("en"), markup: Missing }), source_score: Missing, timestamps: [], eligibility: Lexical }, "second-llg-assertion-89941b23f6d1e5097f669596e361211111a4387204b81e4ed877e0a8cb36d68f": AssertionRecord { id: EntityId("second-llg-assertion-89941b23f6d1e5097f669596e361211111a4387204b81e4ed877e0a8cb36d68f"), entry: EntityId("llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"), occurrence: OccurrenceRef { capture: CaptureRef { namespace: "captured:second:llg:gismu", sha256: "d3b07a6385c210787a8eb77b7cd7c7e7a68e728412b1a8501835e9ff095ab375" }, locator: "1" }, native_sense_id: Missing, language: Value("en"), definition: Value(TextValue { text: "d", language: Value("en"), markup: Missing }), source_score: Missing, timestamps: [], eligibility: Lexical }}
+ right: {"llg-assertion-89941b23f6d1e5097f669596e361211111a4387204b81e4ed877e0a8cb36d68f": AssertionRecord { id: EntityId("llg-assertion-89941b23f6d1e5097f669596e361211111a4387204b81e4ed877e0a8cb36d68f"), entry: EntityId("llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"), occurrence: OccurrenceRef { capture: CaptureRef { namespace: "captured:llg:gismu", sha256: "d3b07a6385c210787a8eb77b7cd7c7e7a68e728412b1a8501835e9ff095ab375" }, locator: "1" }, native_sense_id: Missing, language: Value("en"), definition: Value(TextValue { text: "d", language: Value("en"), markup: Missing }), source_score: Missing, timestamps: [], eligibility: Lexical }}
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test compact_local_reference_filters_distinct_pack_assertions_by_policy ... FAILED
+
+failures:
+
+failures:
+    compact_local_reference_filters_distinct_pack_assertions_by_policy
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.24s
+
+error: test failed, to rerun pass `-p vlajmaji-search --test dictionary_projection_contract`

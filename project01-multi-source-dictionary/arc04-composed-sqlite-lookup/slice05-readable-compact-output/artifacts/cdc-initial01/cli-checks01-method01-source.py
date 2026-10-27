@@ -1,0 +1,98 @@
+"""Prospective S05 Tiny CLI proof. SOURCE ONLY until frozen caller review.
+
+Inputs are explicit current/preserved binaries and an owned Tiny caller root.
+This is not a Full entrypoint. No ambient HOME/default fallback is permitted.
+"""
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+MANAGED = set("version ok category detail operation config_path root_path profile requested_profile snapshot known_pack_ids outcome writer".split())
+STANDALONE = {"code", "message", "sources"}
+
+def strict_json(raw):
+    # Reject trailing material, including warnings. Whitespace/LF alone is framing.
+    text = raw.decode("utf-8")
+    obj, end = json.JSONDecoder().raw_decode(text)
+    assert not text[end:].strip(), text[end:]
+    return obj
+
+def run(binary, args, env, out, name, expected=0, stdin=None):
+    result = subprocess.run([str(binary), *map(str, args)], input=stdin,
+                            capture_output=True, env=env, timeout=60)
+    for suffix, data in [("stdout", result.stdout), ("stderr", result.stderr)]:
+        with (out / f"{name}.{suffix}").open("xb") as handle:
+            handle.write(data)
+    assert result.returncode == expected, (name, result.returncode, result.stderr)
+    return result
+
+def error(result, managed, category, operation=None):
+    assert result.stdout == b""
+    obj = strict_json(result.stderr)
+    if managed:
+        assert set(obj) == MANAGED
+        assert obj["version"] == 1 and obj["ok"] is False
+        assert obj["category"] == category
+        assert obj["operation"] == operation
+        assert obj["outcome"] == "not_applicable"
+        for field in ["config_path", "root_path", "profile", "requested_profile", "snapshot", "writer"]:
+            assert obj[field] is None, (field, obj[field])
+        assert obj["known_pack_ids"] == []
+    else:
+        assert set(obj) == STANDALONE and obj["code"] == category
+        assert obj["sources"] == []
+    return obj
+
+def main():
+    binary, baseline, context_file, out = map(Path, sys.argv[1:])
+    out.mkdir()  # Exclusive; preserve every failed attempt, never pre-delete.
+    context = json.loads(context_file.read_text())
+    store, root = Path(context["store"]), Path(context["root"])
+    assert store.is_absolute() and root.is_absolute()
+    env = {"PATH": os.defpath, "LANG": "C.UTF-8"}
+    for name in ["HOME", "XDG_CONFIG_HOME", "XDG_DATA_HOME"]:
+        owned = out / name.lower()
+        owned.mkdir(mode=0o700)
+        env[name] = str(owned.resolve())
+    config = out.resolve() / "config.toml"
+    request = json.dumps({"operation": "exact", "spelling": "farvi"})
+    old = run(baseline, ["dictionary-query", store, "--request", request], env, out, "baseline")
+    current = run(binary, ["dictionary-query", store, "--request", request], env, out, "default-full")
+    explicit = run(binary, ["dictionary-query", store, "--format", "full", "--request", request], env, out, "explicit-full")
+    assert old.stderr == current.stderr == explicit.stderr == b""
+    assert old.stdout == current.stdout == explicit.stdout
+    projected = run(binary, ["dictionary-query", store, "--format", "compact", "--request", request], env, out, "compact")
+    compact = strict_json(projected.stdout)
+    assert "response" not in compact and "result" not in compact
+    assert compact["totals"]["occurrences"] == 5
+    assert len([h for group in compact["groups"] for h in group["hits"]]) == 5
+    configured = run(binary, ["collections", "configure", root, "--all", "--profile", "tiny", "--make-default", "--config", config], env, out, "configure")
+    assert strict_json(configured.stdout)["outcome"] == "committed"
+    managed = run(binary, ["lookup", "farvi", "--format", "compact", "--config", config], env, out, "managed-compact")
+    assert strict_json(managed.stdout)["result"]["operation"] == "exact"
+    first = context["detail_keys"][0]
+    for command, prefix in [("dictionary-detail", [store]), ("lookup-detail", [])]:
+        key = json.dumps(first, separators=(",", ":"))
+        args = [command, *prefix, "--reference", key]
+        if command == "lookup-detail":
+            args += ["--config", config]
+        complete = strict_json(run(binary, args, env, out, command).stdout)
+        body = complete["response"] if command == "lookup-detail" else complete
+        assert body["status"] == "Resolved" and body["hit"] is not None
+        assert body["detail_ref"] == first
+        for field in ["native_entry_id", "native_assertion_id", "contributor_id", "distributor_id"]:
+            changed = dict(first)
+            del changed[field]
+            bad = [command, *prefix, "--reference", json.dumps(changed)]
+            # Absent config plus broken key must retain the static-key error.
+            if command == "lookup-detail":
+                bad += ["--config", out / "absent-config"]
+            failure = run(binary, bad, env, out, f"{command}-missing-{field}", 1)
+            error(failure, command == "lookup-detail", "invalid_detail_reference", "lookup_detail")
+    print(json.dumps({"ok": True, "scope": "prospective Tiny CLI; exact executed child receipts retained", "baseline_sha256": hashlib.sha256(old.stdout).hexdigest()}))
+
+if __name__ == "__main__":
+    main()

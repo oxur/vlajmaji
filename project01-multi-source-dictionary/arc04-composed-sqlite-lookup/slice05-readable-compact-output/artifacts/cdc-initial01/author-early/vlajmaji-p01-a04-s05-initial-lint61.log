@@ -1,0 +1,17 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: manual implementation of `.is_multiple_of()`
+   --> crates/search/src/collection_query/projection.rs:715:8
+    |
+715 |     if value.len() % 2 != 0 || !lower_hex(value) {
+    |        ^^^^^^^^^^^^^^^^^^^^ help: replace with: `!value.len().is_multiple_of(2)`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#manual_is_multiple_of
+    = note: `-D clippy::manual-is-multiple-of` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::manual_is_multiple_of)]`
+
+error: could not compile `vlajmaji-search` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+make: *** [lint] Error 101

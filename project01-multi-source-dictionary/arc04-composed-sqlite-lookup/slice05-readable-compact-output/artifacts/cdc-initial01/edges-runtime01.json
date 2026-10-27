@@ -1,0 +1,21 @@
+{
+  "source_head": "5bf5fb13f3d89f969570dff6aae5736feebd55fd",
+  "scope": "finite original-contract counterexamples with valid/restored counterparts",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/bin/contract-edges01",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/edges-runtime01",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/public-runtime03/caller-context.json"
+  ],
+  "exit": 101,
+  "timeout": false,
+  "elapsed_s": 0.5064567504450679,
+  "log_bytes": 1669,
+  "log_sha256": "bc65d465deb1cbab5717c46f8c338828d003dd325dc66fd7169968ea796fa886",
+  "binary_bytes": 27466400,
+  "binary_sha256": "e727f66839e758224fbcc6858fd21789f11c819d7a6c648cfe5b0ec4b0d7c23f",
+  "isolated_env": {
+    "HOME": "/tmp/vlajmaji-p01-a04-s05-cdc/edges-runtime01-environment/home",
+    "XDG_DATA_HOME": "/tmp/vlajmaji-p01-a04-s05-cdc/edges-runtime01-environment/xdg-data",
+    "XDG_CONFIG_HOME": "/tmp/vlajmaji-p01-a04-s05-cdc/edges-runtime01-environment/xdg-config"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "pure-method-qualification-only",
+  "product_executed": false,
+  "source": "/tmp/vlajmaji-p01-a04-s05-cdc/cli-checks01.py",
+  "sha256": "5313864d0e7bb84d0c82a79af06aa345788eb298e957ac31b108f8571f8c652f",
+  "bytes": 8939,
+  "positives": 2,
+  "negative_predicates": 27,
+  "negative_names": [
+    "missing-version",
+    "missing-ok",
+    "missing-category",
+    "missing-detail",
+    "missing-operation",
+    "missing-config_path",
+    "missing-root_path",
+    "missing-profile",
+    "missing-requested_profile",
+    "missing-snapshot",
+    "missing-known_pack_ids",
+    "missing-outcome",
+    "missing-writer",
+    "changed-version-True",
+    "changed-version-2",
+    "changed-ok-True",
+    "changed-detail-None",
+    "changed-detail-",
+    "changed-operation-lookup",
+    "changed-outcome-committed",
+    "changed-snapshot-{}",
+    "changed-known_pack_ids-None",
+    "unwrapped",
+    "outer-extra",
+    "wrong-outer",
+    "inner-not-object",
+    "trailing-stderr"
+  ],
+  "inherited_owned_path_qualification": "method02 retained ONLY for exact unchanged owned_store body",
+  "unchanged_function_hashes": {
+    "strict_json": "936ba434d6cf9d7e4610183dd07081153e9fe65a288892de34fd0407166ce2e6",
+    "owned_store": "9a4ac750d076dca27fb297c5f4902e7de08037595b38d98bca3faa606a52b84f"
+  },
+  "framing_clarification": "Issued section6 existing envelope retained: exact outer error key plus exact section10 inner3/13 keys. Prior top-level reading is unexecuted harness interpretation error.",
+  "unexecuted_orchestration": [
+    "all product child routes",
+    "deleted-cwd child routes",
+    "baseline/current wire comparison"
+  ]
+}

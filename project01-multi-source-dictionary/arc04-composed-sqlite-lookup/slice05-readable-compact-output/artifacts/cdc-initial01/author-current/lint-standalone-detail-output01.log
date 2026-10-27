@@ -1,0 +1,28 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+error[E0308]: mismatched types
+   --> crates/cli/src/main.rs:543:18
+    |
+543 |             Some(store),
+    |             ---- ^^^^^ expected `&Path`, found `&Option<PathBuf>`
+    |             |
+    |             arguments to this enum variant are incorrect
+    |
+    = note: expected reference `&std::path::Path`
+               found reference `&std::option::Option<std::path::PathBuf>`
+help: the type constructed contains `&std::option::Option<std::path::PathBuf>` due to the type of the argument passed
+   --> crates/cli/src/main.rs:543:13
+    |
+543 |             Some(store),
+    |             ^^^^^-----^
+    |                  |
+    |                  this argument influences the type of `Some`
+note: tuple variant defined here
+   --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/option.rs:606:4
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-cli` (bin "vlajmaji") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-cli` (bin "vlajmaji" test) due to 1 previous error
+make: *** [lint] Error 101

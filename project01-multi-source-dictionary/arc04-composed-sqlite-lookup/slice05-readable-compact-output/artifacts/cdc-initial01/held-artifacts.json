@@ -1,0 +1,21 @@
+{
+  "scope": "Local binary/Tiny outputs retained, not copied into small evidence bundle; no accepted/Full/default data reads",
+  "binary_receipts": [
+    "public-runtime01.json",
+    "public-runtime02.json",
+    "public-runtime03.json",
+    "edges-runtime01.json",
+    "edges-runtime02.json",
+    "cli-build01.json"
+  ],
+  "local_bin_directory": "/tmp/vlajmaji-p01-a04-s05-cdc/bin",
+  "local_tiny_roots": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/public-runtime01",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/public-runtime02",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/public-runtime03",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/edges-runtime01",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/edges-runtime02"
+  ],
+  "failed_attempts_retained": true,
+  "raw_overwrite_limit": "Some earlier author temp aliases were overwritten as explicitly attested in execution; retained files are actual extant bytes, not claimed complete archival originals."
+}

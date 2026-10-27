@@ -1,0 +1,22 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.22s
+     Running tests/dictionary_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_projection_contract-04bfbbd887bd71ce)
+
+running 1 test
+
+thread 'compact_four_literal_install_matches_preinput_typed_family_union' (78189309) panicked at crates/search/tests/dictionary_projection_contract.rs:410:5:
+assertion `left == right` failed
+  left: 164
+ right: 158
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test compact_four_literal_install_matches_preinput_typed_family_union ... FAILED
+
+failures:
+
+failures:
+    compact_four_literal_install_matches_preinput_typed_family_union
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p vlajmaji-search --test dictionary_projection_contract`

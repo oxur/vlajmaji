@@ -1,0 +1,12 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/dictionary_projection_contract.rs:1177:
+             for row in &payload.confirmed {
+                 let expected_scope = admitted
+                     .iter()
+-                    .find_map(|index| {
+-                        expected_release_ids[*index].get(row.assertion.id.as_str())
+-                    })
++                    .find_map(|index| expected_release_ids[*index].get(row.assertion.id.as_str()))
+                     .expect("selected assertion has a pre-input release scope");
+                 assert_eq!(
+                     row.release_ids.iter().cloned().collect::<BTreeSet<_>>(),

@@ -1,0 +1,122 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0425]: cannot find type `CaptureRef` in this scope
+   --> crates/search/src/dictionary/projection.rs:228:30
+    |
+228 |     pub loaded_captures: Vec<CaptureRef>,
+    |                              ^^^^^^^^^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+220 | pub struct DictionaryCompactSourceAvailability<CaptureRef> {
+    |                                               ++++++++++++
+
+error[E0425]: cannot find type `CaptureRef` in this scope
+   --> crates/search/src/dictionary/projection.rs:229:31
+    |
+229 |     pub missing_captures: Vec<CaptureRef>,
+    |                               ^^^^^^^^^^ not found in this scope
+    |
+help: you might be missing a type parameter
+    |
+220 | pub struct DictionaryCompactSourceAvailability<CaptureRef> {
+    |                                               ++++++++++++
+
+error[E0425]: cannot find type `CaptureRef` in this scope
+   --> crates/search/src/dictionary/projection.rs:228:30
+    |
+228 |     pub loaded_captures: Vec<CaptureRef>,
+    |                              ^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `CaptureRef` in this scope
+   --> crates/search/src/dictionary/projection.rs:229:31
+    |
+229 |     pub missing_captures: Vec<CaptureRef>,
+    |                               ^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `started` in this scope
+   --> crates/search/src/dictionary/projection.rs:319:32
+    |
+319 |         let provider_started = started;
+    |                                ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `started` in this scope
+   --> crates/search/src/dictionary/projection.rs:334:24
+    |
+334 |                 total: started.elapsed(),
+    |                        ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `CaptureRef` in this scope
+    --> crates/search/src/dictionary/projection.rs:1047:31
+     |
+1047 |         loaded_captures: &'a [CaptureRef],
+     |                               ^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `CaptureRef` in this scope
+    --> crates/search/src/dictionary/projection.rs:1048:32
+     |
+1048 |         missing_captures: &'a [CaptureRef],
+     |                                ^^^^^^^^^^ not found in this scope
+
+error[E0631]: type mismatch in function arguments
+   --> crates/search/src/dictionary/projection.rs:405:22
+    |
+255 |     Exact(Box<DictionaryCompactExactResponse>),
+    |     ----- found signature defined here
+...
+405 |                 .map(DictionaryCompactQueryResult::Exact),
+    |                  --- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected due to this
+    |                  |
+    |                  required by a bound introduced by this call
+    |
+    = note: expected function signature `fn(dictionary::projection::DictionaryCompactExactResponse) -> _`
+               found function signature `fn(std::boxed::Box<dictionary::projection::DictionaryCompactExactResponse>) -> _`
+note: required by a bound in `std::result::Result::<T, E>::map`
+   --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/result.rs:831:4
+help: consider wrapping the function in a closure
+    |
+405 |                 .map(|arg0: dictionary::projection::DictionaryCompactExactResponse| DictionaryCompactQueryResult::Exact(/* std::boxed::Box<dictionary::projection::DictionaryCompactExactResponse> */)),
+    |                      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                                    +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+error[E0631]: type mismatch in function arguments
+   --> crates/search/src/dictionary/projection.rs:408:22
+    |
+256 |     Resolve(Box<DictionaryCompactReferenceResolution>),
+    |     ------- found signature defined here
+...
+408 |                 .map(DictionaryCompactQueryResult::Resolve),
+    |                  --- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected due to this
+    |                  |
+    |                  required by a bound introduced by this call
+    |
+    = note: expected function signature `fn(dictionary::projection::DictionaryCompactReferenceResolution) -> _`
+               found function signature `fn(std::boxed::Box<dictionary::projection::DictionaryCompactReferenceResolution>) -> _`
+note: required by a bound in `std::result::Result::<T, E>::map`
+   --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/result.rs:831:4
+help: consider wrapping the function in a closure
+    |
+408 |                 .map(|arg0: dictionary::projection::DictionaryCompactReferenceResolution| DictionaryCompactQueryResult::Resolve(/* std::boxed::Box<dictionary::projection::DictionaryCompactReferenceResolution> */)),
+    |                      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                                      +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+error[E0063]: missing field `availability` in initializer of `dictionary::projection::DictionaryCompactReferenceResolution`
+   --> crates/search/src/dictionary/projection.rs:596:43
+    |
+596 |             RelationTarget::Unknown => Ok(DictionaryCompactReferenceResolution {
+    |                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ missing `availability`
+
+error: unused variable: `started`
+   --> crates/search/src/dictionary/projection.rs:432:13
+    |
+432 |         let started = std::time::Instant::now();
+    |             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_started`
+    |
+    = note: `-D unused-variables` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(unused_variables)]`
+
+Some errors have detailed explanations: E0063, E0425, E0631.
+For more information about an error, try `rustc --explain E0063`.
+error: could not compile `vlajmaji-search` (lib test) due to 14 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib) due to 14 previous errors
+make: *** [lint] Error 101

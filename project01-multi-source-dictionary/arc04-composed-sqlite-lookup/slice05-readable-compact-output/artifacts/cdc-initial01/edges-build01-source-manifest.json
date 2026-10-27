@@ -1,0 +1,135 @@
+{
+  "payloads": [
+    {
+      "path": "Cargo.lock",
+      "bytes": 11040,
+      "sha256": "5846621914f2d9eee401ac6214baa05a3b3aa0cb0fb98ec8afb6e9457e91a002"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 690,
+      "sha256": "f2f19733d01559393190fe22eb9686c85a3d38245ff6ac07a72ef72dfec97e99"
+    },
+    {
+      "path": "fixtures/lensisku.json",
+      "bytes": 136,
+      "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+    },
+    {
+      "path": "fixtures/llg-valid-row.txt",
+      "bytes": 158,
+      "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+    },
+    {
+      "path": "fixtures/sutysisku.json",
+      "bytes": 150,
+      "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
+    },
+    {
+      "path": "src/bin/contract-edges.rs",
+      "bytes": 8980,
+      "sha256": "f0a318bd9e6f0c3c990625caaccc5d7813c500f7828e9d92b74b1184aa32c73e"
+    },
+    {
+      "path": "src/bin/full-resolve-api.rs",
+      "bytes": 426,
+      "sha256": "d6637d38ac88eeb2440f8039d55f0af7804c6ddf725ea8bb60500c8135812793"
+    },
+    {
+      "path": "src/cause_checks.rs",
+      "bytes": 1542,
+      "sha256": "21a46ef8d560097089a0a8234a14b574b64a67014f9e9d03c5771c966b353ed4"
+    },
+    {
+      "path": "src/complete_fixture.rs",
+      "bytes": 46457,
+      "sha256": "0792a2b1aa5fc3b570e3c817a127ed571c1b9b39786ee5c22d906e7574175eac"
+    },
+    {
+      "path": "src/context_checks.rs",
+      "bytes": 4585,
+      "sha256": "c1e298e9a8ba57df26dcc96a533df51a8999f03bb3eeb234baa057ad641ad8da"
+    },
+    {
+      "path": "src/cursor_checks.rs",
+      "bytes": 2169,
+      "sha256": "8cdc114e94e4859c0a186e75fe2a6492f73f67d44884069d55acede7f426de08"
+    },
+    {
+      "path": "src/derived_fault_checks.rs",
+      "bytes": 4661,
+      "sha256": "70cf0d5c93b52997cb908f5117efdc25b3c07d23d3a5a6538d0470f8074aea47"
+    },
+    {
+      "path": "src/detail_identity_checks.rs",
+      "bytes": 3301,
+      "sha256": "049c7af1fe92cb45cb919a015e2ba60ca4287bc5fca9edb3f603cf8641a8ecac"
+    },
+    {
+      "path": "src/eager_checks.rs",
+      "bytes": 5173,
+      "sha256": "42ff8c6341c64babcfc49374b7ec9f32a6205180128295590d24148edf4874f9"
+    },
+    {
+      "path": "src/helpers.rs",
+      "bytes": 3071,
+      "sha256": "b0d29b14379a7156ee005f93bec5cd927e48d4e058a698cd441194c53dfb9e81"
+    },
+    {
+      "path": "src/history_checks.rs",
+      "bytes": 4104,
+      "sha256": "493c8b4c9aab9880dcff5eddf533307e4724bbe775e8e6609ad4d99ac9387e3a"
+    },
+    {
+      "path": "src/main.rs",
+      "bytes": 10802,
+      "sha256": "9d8fb65b1e96f91cccb319edce34974aa685c265c64bcb074fff67a51abd8d21"
+    },
+    {
+      "path": "src/metadata_only_checks.rs",
+      "bytes": 3192,
+      "sha256": "484b8108ded40983260e2081a6c7ae0a8d37fd2f7f76f9411c981d21e856e3d1"
+    },
+    {
+      "path": "src/owned_paths.rs",
+      "bytes": 876,
+      "sha256": "d1b69dd19be7c868d8958b888d991c6fe241660620ad243edbef0db9a670c55f"
+    },
+    {
+      "path": "src/public_api_checks.rs",
+      "bytes": 4660,
+      "sha256": "9cf13264101373e817dd5a0f8f80f46eeb4f9c4ab1395e5c14052fcaf9cbf5bb"
+    },
+    {
+      "path": "src/reference_checks.rs",
+      "bytes": 3456,
+      "sha256": "0f2ac71d5505b34ed9ea118cf87696a8095a43d912bd2251c4d7c8afa7a4e9a1"
+    },
+    {
+      "path": "src/selection_checks.rs",
+      "bytes": 4559,
+      "sha256": "3e954e4f495d26f341cc5e2610b60b69d65cfac6b3331d268cea251aacb65b2a"
+    },
+    {
+      "path": "src/shared_body_checks.rs",
+      "bytes": 11254,
+      "sha256": "6f65ef7d50312dcec4e3d96dec5c65238848ab0790804568a79212c976719ac2"
+    },
+    {
+      "path": "src/store_projection_checks.rs",
+      "bytes": 3363,
+      "sha256": "6588f30dc54ee89b0d3e83b0df7d209b411a40789fd05b83d6ec6bb5be8ab2c5"
+    },
+    {
+      "path": "src/supplement.rs",
+      "bytes": 3644,
+      "sha256": "9d68e4faa55c660072e0f08629c4fdeb04fdbeacd7e493e3ac8897c9b6946354"
+    },
+    {
+      "path": "src/targeted_sentinel_checks.rs",
+      "bytes": 3810,
+      "sha256": "f1eb4c89deeaf4a76c85b2daa7ae1e4a2bd65453f6843fd8ea799891663f73df"
+    }
+  ],
+  "source_head": "5bf5fb13f3d89f969570dff6aae5736feebd55fd"
+}

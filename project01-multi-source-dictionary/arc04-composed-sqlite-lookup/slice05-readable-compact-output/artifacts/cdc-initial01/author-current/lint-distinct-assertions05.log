@@ -1,0 +1,18 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji)
+error[E0308]: mismatched types
+    --> crates/search/tests/dictionary_projection_contract.rs:1184:21
+     |
+1184 |                     *expected_scope,
+     |                     ^^^^^^^^^^^^^^^ expected `BTreeSet<EntityId>`, found `BTreeSet<String>`
+     |
+     = note: expected struct `std::collections::BTreeSet<vlajmaji_lexicon::EntityId>`
+                found struct `std::collections::BTreeSet<std::string::String>`
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-search` (test "dictionary_projection_contract") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

@@ -1,0 +1,23 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0425]: cannot find value `candidate_sql` in this scope
+   --> crates/search/src/dictionary/projection.rs:757:17
+    |
+625 |         let _candidate_sql = sql.elapsed();
+    |             -------------- `_candidate_sql` defined here
+...
+757 |                 candidate_sql,
+    |                 ^^^^^^^^^^^^^
+    |
+help: the leading underscore in `_candidate_sql` marks it as unused, consider renaming it to `candidate_sql`
+    |
+625 -         let _candidate_sql = sql.elapsed();
+625 +         let candidate_sql = sql.elapsed();
+    |
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib) due to 1 previous error
+make: *** [lint] Error 101

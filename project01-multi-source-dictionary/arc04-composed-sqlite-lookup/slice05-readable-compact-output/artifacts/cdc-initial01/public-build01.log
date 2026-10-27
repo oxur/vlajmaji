@@ -1,0 +1,74 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+     Locking 50 packages to highest Rust 1.99.1 compatible versions
+      Adding serde_json v1.0.151 (available: v1.0.154)
+      Adding sha2 v0.10.9 (available: v0.11.1)
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+   Compiling vlajmaji-a04-s05-cdc-public-01 v0.0.0 (/tmp/vlajmaji-p01-a04-s05-cdc/public-caller01)
+error[E0308]: mismatched types
+    --> src/context_checks.rs:16:47
+     |
+  16 |         let model = Dictionary::from_document(original.clone()).unwrap();
+     |                     ------------------------- ^^^^^^^^^^^^^^^^ expected `DictionaryDocument`, found `DictionaryDocument<RegistryDocument>`
+     |                     |
+     |                     arguments to this function are incorrect
+     |
+     = note: expected struct `DictionaryDocument<SourceRegistry>`
+                found struct `DictionaryDocument<RegistryDocument>`
+note: associated function defined here
+    --> /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/dictionary.rs:1026:12
+     |
+1026 |     pub fn from_document(document: DictionaryDocument) -> Result<Self, DictionaryError> {
+     |            ^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+    --> src/context_checks.rs:20:47
+     |
+  20 |         let model = Dictionary::from_document(changed.clone()).unwrap();
+     |                     ------------------------- ^^^^^^^^^^^^^^^ expected `DictionaryDocument`, found `DictionaryDocument<RegistryDocument>`
+     |                     |
+     |                     arguments to this function are incorrect
+     |
+     = note: expected struct `DictionaryDocument<SourceRegistry>`
+                found struct `DictionaryDocument<RegistryDocument>`
+note: associated function defined here
+    --> /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/dictionary.rs:1026:12
+     |
+1026 |     pub fn from_document(document: DictionaryDocument) -> Result<Self, DictionaryError> {
+     |            ^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+    --> src/context_checks.rs:57:47
+     |
+  57 |         let model = Dictionary::from_document(lexical.clone()).unwrap();
+     |                     ------------------------- ^^^^^^^^^^^^^^^ expected `DictionaryDocument`, found `DictionaryDocument<RegistryDocument>`
+     |                     |
+     |                     arguments to this function are incorrect
+     |
+     = note: expected struct `DictionaryDocument<SourceRegistry>`
+                found struct `DictionaryDocument<RegistryDocument>`
+note: associated function defined here
+    --> /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/dictionary.rs:1026:12
+     |
+1026 |     pub fn from_document(document: DictionaryDocument) -> Result<Self, DictionaryError> {
+     |            ^^^^^^^^^^^^^
+
+error[E0599]: no associated function or constant named `resolve_profiled` found for struct `vlajmaji_search::DictionarySearchEngine` in the current scope
+   --> src/public_api_checks.rs:25:167
+    |
+ 25 | ...archEngine::resolve_profiled;
+    |                ^^^^^^^^^^^^^^^^ associated function or constant not found in `vlajmaji_search::DictionarySearchEngine`
+    |
+help: there is a method `exact_profiled` with a similar name
+   --> /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary.rs:980:5
+    |
+980 | /     pub fn exact_profiled(
+981 | |         &self,
+982 | |         spelling: &str,
+983 | |         options: DictionaryExactOptions,
+984 | |     ) -> Result<(DictionaryExactResponse, DictionaryExactProfile), DictionaryQueryError> {
+    | |________________________________________________________________________________________^
+
+Some errors have detailed explanations: E0308, E0599.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-a04-s05-cdc-public-01` (bin "vlajmaji-a04-s05-cdc-public-01") due to 4 previous errors

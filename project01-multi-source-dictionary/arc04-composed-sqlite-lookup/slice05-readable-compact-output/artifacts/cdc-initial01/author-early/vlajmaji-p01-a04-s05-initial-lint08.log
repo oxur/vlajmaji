@@ -1,0 +1,878 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: very complex type used. Consider factoring parts into `type` definitions
+   --> crates/search/src/dictionary/projection.rs:879:10
+    |
+879 |       ) -> Result<
+    |  __________^
+880 | |         (
+881 | |             super::ReferenceStatus,
+882 | |             Option<vlajmaji_store::CollectionEntityReference>,
+...   |
+886 | |         DictionaryQueryError,
+887 | |     > {
+    | |_____^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#type_complexity
+    = note: `-D clippy::type-complexity` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::type_complexity)]`
+
+error: this `if` statement can be collapsed
+   --> crates/search/src/dictionary/projection.rs:917:9
+    |
+917 | /         if let Some(occurrence) = &catalog.occurrence {
+918 | |             if occurrence.locator.is_empty() || !release.captures.contains(&occurrence.capture) {
+919 | |                 return Err(super::invalid_ref(
+920 | |                     "catalogue occurrence is outside the requested release",
+...   |
+923 | |         }
+    | |_________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#collapsible_if
+    = note: `-D clippy::collapsible-if` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::collapsible_if)]`
+help: collapse nested if block
+    |
+917 ~         if let Some(occurrence) = &catalog.occurrence
+918 ~             && (occurrence.locator.is_empty() || !release.captures.contains(&occurrence.capture)) {
+919 |                 return Err(super::invalid_ref(
+920 |                     "catalogue occurrence is outside the requested release",
+921 |                 ));
+922 ~             }
+    |
+
+error: missing documentation for a constant
+  --> crates/search/src/dictionary/projection.rs:28:1
+   |
+28 | pub const COMPACT_POLICY: &str = "compact-dictionary-v1";
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `-D missing-docs` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(missing_docs)]`
+
+error: missing documentation for a struct
+  --> crates/search/src/dictionary/projection.rs:32:1
+   |
+32 | pub struct DictionaryProjectionProfile {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:33:5
+   |
+33 |     pub total: Duration,
+   |     ^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:34:5
+   |
+34 |     pub candidate_sql: Duration,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:35:5
+   |
+35 |     pub hydration: Duration,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:36:5
+   |
+36 |     pub projection: Duration,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct
+  --> crates/search/src/dictionary/projection.rs:41:1
+   |
+41 | pub struct DictionaryHitDetailRef {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:42:5
+   |
+42 |     pub version: u32,
+   |     ^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:43:5
+   |
+43 |     pub digest_policy: String,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:44:5
+   |
+44 |     pub role: String,
+   |     ^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:45:5
+   |
+45 |     pub source: SourceId,
+   |     ^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:46:5
+   |
+46 |     pub entry_id: EntityId,
+   |     ^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:47:5
+   |
+47 |     pub assertion_id: EntityId,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:48:5
+   |
+48 |     pub occurrence: OccurrenceRef,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:49:5
+   |
+49 |     pub entry_sha256: String,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:50:5
+   |
+50 |     pub assertion_sha256: String,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:52:5
+   |
+52 |     pub native_entry_id: Option<String>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:54:5
+   |
+54 |     pub native_assertion_id: Option<String>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:56:5
+   |
+56 |     pub contributor_id: Option<lexicon::ContributorId>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:58:5
+   |
+58 |     pub distributor_id: Option<lexicon::DistributorId>,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for an enum
+  --> crates/search/src/dictionary/projection.rs:63:1
+   |
+63 | pub enum DictionaryDetailReferenceInvalidity {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a variant
+  --> crates/search/src/dictionary/projection.rs:64:5
+   |
+64 |     UnsupportedVersion,
+   |     ^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a variant
+  --> crates/search/src/dictionary/projection.rs:65:5
+   |
+65 |     UnsupportedDigestPolicy,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a variant
+  --> crates/search/src/dictionary/projection.rs:66:5
+   |
+66 |     WrongRole,
+   |     ^^^^^^^^^
+
+error: missing documentation for a variant
+  --> crates/search/src/dictionary/projection.rs:67:5
+   |
+67 |     InvalidDigest,
+   |     ^^^^^^^^^^^^^
+
+error: missing documentation for a variant
+  --> crates/search/src/dictionary/projection.rs:68:5
+   |
+68 |     EmptyLocator,
+   |     ^^^^^^^^^^^^
+
+error: missing documentation for a variant
+  --> crates/search/src/dictionary/projection.rs:69:5
+   |
+69 |     InvalidCapture,
+   |     ^^^^^^^^^^^^^^
+
+error: missing documentation for an enum
+  --> crates/search/src/dictionary/projection.rs:74:1
+   |
+74 | pub enum DictionaryProjectionError {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a variant
+  --> crates/search/src/dictionary/projection.rs:75:5
+   |
+75 |     Query(Box<DictionaryQueryError>),
+   |     ^^^^^
+
+error: missing documentation for a variant
+  --> crates/search/src/dictionary/projection.rs:76:5
+   |
+76 |     ReferenceJson {
+   |     ^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:77:9
+   |
+77 |         source: serde_json::Error,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a variant
+  --> crates/search/src/dictionary/projection.rs:79:5
+   |
+79 |     InvalidDetailReference {
+   |     ^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:80:9
+   |
+80 |         reason: DictionaryDetailReferenceInvalidity,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a variant
+  --> crates/search/src/dictionary/projection.rs:82:5
+   |
+82 |     MalformedSnapshot {
+   |     ^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:83:9
+   |
+83 |         value: String,
+   |         ^^^^^^^^^^^^^
+
+error: missing documentation for a variant
+  --> crates/search/src/dictionary/projection.rs:85:5
+   |
+85 |     StaleSnapshot {
+   |     ^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:86:9
+   |
+86 |         expected: String,
+   |         ^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+  --> crates/search/src/dictionary/projection.rs:87:9
+   |
+87 |         observed: String,
+   |         ^^^^^^^^^^^^^^^^
+
+error: missing documentation for a method
+   --> crates/search/src/dictionary/projection.rs:121:5
+    |
+121 |     pub fn report(&self) -> super::DictionaryErrorReport {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct
+   --> crates/search/src/dictionary/projection.rs:174:1
+    |
+174 | pub struct DictionaryCompactHit {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:175:5
+    |
+175 |     pub occurrence_id: String,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:176:5
+    |
+176 |     pub entry: EntryRecord,
+    |     ^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:177:5
+    |
+177 |     pub assertion: lexicon::AssertionRecord,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:178:5
+    |
+178 |     pub capture: CaptureMetadata,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:179:5
+    |
+179 |     pub snapshot_attribution: lexicon::SnapshotAttribution,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:180:5
+    |
+180 |     pub occurrence_attribution: Option<lexicon::OccurrenceAttribution>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:181:5
+    |
+181 |     pub contributor: Option<lexicon::ContributorRecord>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:182:5
+    |
+182 |     pub distributor: Option<lexicon::DistributorRecord>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:183:5
+    |
+183 |     pub release_ids: Vec<EntityId>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:184:5
+    |
+184 |     pub detail_ref: DictionaryHitDetailRef,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct
+   --> crates/search/src/dictionary/projection.rs:189:1
+    |
+189 | pub struct DictionaryCompactGroup {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:190:5
+    |
+190 |     pub source: lexicon::SourceRecord,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:191:5
+    |
+191 |     pub full_count: usize,
+    |     ^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:192:5
+    |
+192 |     pub returned_count: usize,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:193:5
+    |
+193 |     pub partial: bool,
+    |     ^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:194:5
+    |
+194 |     pub hits: Vec<DictionaryCompactHit>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct
+   --> crates/search/src/dictionary/projection.rs:199:1
+    |
+199 | pub struct DictionaryCompactExactResponse {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:200:5
+    |
+200 |     pub version: u32,
+    |     ^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:201:5
+    |
+201 |     pub projection_policy: String,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:202:5
+    |
+202 |     pub policy: String,
+    |     ^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:203:5
+    |
+203 |     pub store_schema: u32,
+    |     ^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:204:5
+    |
+204 |     pub catalogue_revision: u64,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:205:5
+    |
+205 |     pub state_sha256: String,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:206:5
+    |
+206 |     pub snapshot_sha256: String,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:207:5
+    |
+207 |     pub spelling: String,
+    |     ^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:208:5
+    |
+208 |     pub resolved_sources: Vec<SourceId>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:209:5
+    |
+209 |     pub native_candidate_occurrences: usize,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:210:5
+    |
+210 |     pub totals: DictionaryTotals,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:211:5
+    |
+211 |     pub source_totals: Vec<DictionarySourceTotal>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:212:5
+    |
+212 |     pub availability: Vec<DictionaryCompactSourceAvailability>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:213:5
+    |
+213 |     pub groups: Vec<DictionaryCompactGroup>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:214:5
+    |
+214 |     pub next_cursor: Option<String>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:215:5
+    |
+215 |     pub code_notices: Vec<lexicon::CodeNotice>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct
+   --> crates/search/src/dictionary/projection.rs:220:1
+    |
+220 | pub struct DictionaryCompactSourceAvailability {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:221:5
+    |
+221 |     pub source: lexicon::SourceRecord,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:222:5
+    |
+222 |     pub aliases: Vec<lexicon::SourceAlias>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:223:5
+    |
+223 |     pub lineage: Vec<lexicon::SourceLineage>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:224:5
+    |
+224 |     pub collections: Vec<lexicon::CollectionRecord>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:225:5
+    |
+225 |     pub components: Vec<lexicon::ComponentRecord>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:226:5
+    |
+226 |     pub releases: Vec<vlajmaji_store::CollectionReleaseSummary>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:227:5
+    |
+227 |     pub selected_available_release_ids: Vec<EntityId>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:228:5
+    |
+228 |     pub loaded_captures: Vec<CaptureRef>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:229:5
+    |
+229 |     pub missing_captures: Vec<CaptureRef>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:230:5
+    |
+230 |     pub owned_head: Option<lexicon::OwnedHead>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:231:5
+    |
+231 |     pub selectable: bool,
+    |     ^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:232:5
+    |
+232 |     pub reason: Option<super::SourceSelectionFailure>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct
+   --> crates/search/src/dictionary/projection.rs:237:1
+    |
+237 | pub struct DictionaryCompactReferenceAssertion {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:238:5
+    |
+238 |     pub entry: EntryRecord,
+    |     ^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:239:5
+    |
+239 |     pub assertion: lexicon::AssertionRecord,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:240:5
+    |
+240 |     pub occurrence_id: String,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:241:5
+    |
+241 |     pub occurrence_attribution: Option<lexicon::OccurrenceAttribution>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:242:5
+    |
+242 |     pub capture_metadata: Option<CaptureMetadata>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:243:5
+    |
+243 |     pub snapshot_attribution: Option<lexicon::SnapshotAttribution>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:244:5
+    |
+244 |     pub payload_present: bool,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:245:5
+    |
+245 |     pub current_eligible: bool,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:246:5
+    |
+246 |     pub release_ids: Vec<EntityId>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:247:5
+    |
+247 |     pub owned_revision_ids: Vec<EntityId>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:248:5
+    |
+248 |     pub tombstoned_by: Vec<EntityId>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:249:5
+    |
+249 |     pub detail_ref: Option<DictionaryHitDetailRef>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for an enum
+   --> crates/search/src/dictionary/projection.rs:254:1
+    |
+254 | pub enum DictionaryCompactQueryResult {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a variant
+   --> crates/search/src/dictionary/projection.rs:255:5
+    |
+255 |     Exact(Box<DictionaryCompactExactResponse>),
+    |     ^^^^^
+
+error: missing documentation for a variant
+   --> crates/search/src/dictionary/projection.rs:256:5
+    |
+256 |     Resolve(Box<DictionaryCompactReferenceResolution>),
+    |     ^^^^^^^
+
+error: missing documentation for a struct
+   --> crates/search/src/dictionary/projection.rs:261:1
+    |
+261 | pub struct DictionaryCompactReferenceResolution {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:262:5
+    |
+262 |     pub version: u32,
+    |     ^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:263:5
+    |
+263 |     pub projection_policy: String,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:264:5
+    |
+264 |     pub state_sha256: String,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:265:5
+    |
+265 |     pub snapshot_sha256: String,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:266:5
+    |
+266 |     pub target: RelationTarget,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:267:5
+    |
+267 |     pub status: super::ReferenceStatus,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:268:5
+    |
+268 |     pub entity: Option<vlajmaji_store::CollectionEntityReference>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:269:5
+    |
+269 |     pub confirmed: Vec<DictionaryCompactReferenceAssertion>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:270:5
+    |
+270 |     pub unverified: Vec<DictionaryCompactReferenceAssertion>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:271:5
+    |
+271 |     pub availability: Vec<DictionaryCompactSourceAvailability>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:272:5
+    |
+272 |     pub requested_release: Option<vlajmaji_store::CollectionReleaseSummary>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct
+   --> crates/search/src/dictionary/projection.rs:277:1
+    |
+277 | pub struct DictionaryHitDetailResponse {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:278:5
+    |
+278 |     pub version: u32,
+    |     ^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:279:5
+    |
+279 |     pub projection_policy: String,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:280:5
+    |
+280 |     pub detail_ref: DictionaryHitDetailRef,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:281:5
+    |
+281 |     pub status: super::ReferenceStatus,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:282:5
+    |
+282 |     pub operational_reason: Option<String>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:283:5
+    |
+283 |     pub state_sha256: Option<String>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:284:5
+    |
+284 |     pub snapshot_sha256: String,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:285:5
+    |
+285 |     pub hit: Option<DictionaryHit>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/search/src/dictionary/projection.rs:286:5
+    |
+286 |     pub current_eligible: Option<bool>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for an associated function
+   --> crates/search/src/dictionary/projection.rs:303:5
+    |
+303 |     pub fn open(path: impl AsRef<Path>) -> Result<Self, DictionaryQueryError> {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for an associated function
+   --> crates/search/src/dictionary/projection.rs:306:5
+    |
+306 | /     pub fn open_snapshot(
+307 | |         topology: DictionaryReadTopology,
+308 | |         manifest: DictionarySnapshotManifest,
+309 | |     ) -> Result<Self, DictionaryQueryError> {
+    | |___________________________________________^
+
+error: missing documentation for an associated function
+   --> crates/search/src/dictionary/projection.rs:314:5
+    |
+314 | /     pub fn open_snapshot_profiled(
+315 | |         topology: DictionaryReadTopology,
+316 | |         manifest: DictionarySnapshotManifest,
+317 | |     ) -> Result<(Self, DictionarySnapshotOpenProfile), DictionaryQueryError> {
+    | |____________________________________________________________________________^
+
+error: missing documentation for a method
+   --> crates/search/src/dictionary/projection.rs:391:5
+    |
+391 |     pub fn state_sha256(&self) -> &str {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a method
+   --> crates/search/src/dictionary/projection.rs:394:5
+    |
+394 |     pub fn snapshot_sha256(&self) -> &str {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a method
+   --> crates/search/src/dictionary/projection.rs:397:5
+    |
+397 | /     pub fn execute(
+398 | |         &self,
+399 | |         request: DictionaryRequest,
+400 | |     ) -> Result<DictionaryCompactQueryResult, DictionaryQueryError> {
+    | |___________________________________________________________________^
+
+error: missing documentation for a method
+   --> crates/search/src/dictionary/projection.rs:410:5
+    |
+410 | /     pub fn execute_profiled(
+411 | |         &self,
+412 | |         request: DictionaryRequest,
+413 | |     ) -> Result<(DictionaryCompactQueryResult, DictionaryProjectionProfile), DictionaryQueryError>
+    | |__________________________________________________________________________________________________^
+
+error: missing documentation for a method
+   --> crates/search/src/dictionary/projection.rs:426:5
+    |
+426 | /     pub fn exact(
+427 | |         &self,
+428 | |         spelling: &str,
+429 | |         options: DictionaryExactOptions,
+430 | |     ) -> Result<DictionaryCompactExactResponse, DictionaryQueryError> {
+    | |_____________________________________________________________________^
+
+error: missing documentation for a method
+   --> crates/search/src/dictionary/projection.rs:589:5
+    |
+589 | /     pub fn resolve(
+590 | |         &self,
+591 | |         target: &RelationTarget,
+592 | |     ) -> Result<DictionaryCompactReferenceResolution, DictionaryQueryError> {
+    | |___________________________________________________________________________^
+
+error: missing documentation for a method
+   --> crates/search/src/dictionary/projection.rs:995:5
+    |
+995 | /     pub fn detail(
+996 | |         &self,
+997 | |         reference: &DictionaryHitDetailRef,
+998 | |         expected_snapshot: Option<&str>,
+999 | |     ) -> Result<DictionaryHitDetailResponse, DictionaryProjectionError> {
+    | |_______________________________________________________________________^
+
+error: could not compile `vlajmaji-search` (lib) due to 136 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib test) due to 136 previous errors
+make: *** [lint] Error 101

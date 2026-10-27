@@ -1,0 +1,31 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0432]: unresolved imports `dictionary::DictionaryCompactGroup`, `dictionary::DictionaryCompactReferenceAssertion`
+  --> crates/search/src/lib.rs:47:37
+   |
+47 |     DictionaryCompactExactResponse, DictionaryCompactGroup, DictionaryCompactHit,
+   |                                     ^^^^^^^^^^^^^^^^^^^^^^ no `DictionaryCompactGroup` in `dictionary`
+48 |     DictionaryCompactQueryResult, DictionaryCompactReferenceAssertion,
+   |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ no `DictionaryCompactReferenceAssertion` in `dictionary`
+   |
+   = help: consider importing this struct instead:
+           crate::dictionary::projection::DictionaryCompactGroup
+   = help: consider importing this struct instead:
+           crate::dictionary::projection::DictionaryCompactReferenceAssertion
+help: a similar name exists in the module
+   |
+47 -     DictionaryCompactExactResponse, DictionaryCompactGroup, DictionaryCompactHit,
+47 +     DictionaryCompactExactResponse, DictionaryCompactHit, DictionaryCompactHit,
+   |
+help: a similar name exists in the module
+   |
+48 -     DictionaryCompactQueryResult, DictionaryCompactReferenceAssertion,
+48 +     DictionaryCompactQueryResult, DictionaryCompactReferenceResolution,
+   |
+
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib) due to 1 previous error
+make: *** [lint] Error 101

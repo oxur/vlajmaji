@@ -1,0 +1,11 @@
+FAIL page groups include only sources represented on page {"compact_groups":3,"compact_hit_counts":[1,0,0],"complete_source_totals":3,"full_groups":1}
+FAIL standalone snapshot exact declared serialization {"actual":"46ba2c1215903f2e4fa2d7c4e8d687cbd184afe75dd5f4e31143498aab131674","expected_availability_key":"f320ff5e0087c1ec5f0b931c1080e55cff70330757f7f3d35fc6c652bc75dcb1"}
+FAIL reference same-call profile accounts materialization {"candidate_sql_ns":0,"confirmed":1,"lookup_ns":0,"projection_ns":0,"total_ns":121291}
+FAIL inherited duplicate capture fast-open validation {"compact_error":null,"full_error":"dictionary integrity error: duplicate capture identity in query index"}
+FAIL inherited duplicate entry fast-open validation {"compact_error":null,"full_error":"dictionary integrity error: duplicate entry identity in query index"}
+PASS source uniqueness precedes overlay admission {"compact_error":"dictionary snapshot: invalid snapshot manifest: unknown selected release ID unknown-overlay-release","full_error":"dictionary snapshot: invalid snapshot manifest: unknown selected release ID unknown-overlay-release"}
+FAIL known unselected SQL candidate skips missing Entry {"compact_error":"dictionary integrity error: assertion llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6 references missing entry","full_zero":true}
+
+thread 'main' (78653734) panicked at src/bin/contract-edges.rs:27:1019:
+called `Result::unwrap()` on an `Err` value: SqliteFailure(Error { code: ConstraintViolation, extended_code: 787 }, Some("FOREIGN KEY constraint failed"))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

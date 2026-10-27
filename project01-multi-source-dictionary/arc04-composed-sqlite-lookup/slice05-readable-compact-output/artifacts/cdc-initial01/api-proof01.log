@@ -1,0 +1,25 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking smallvec v1.16.4
+    Checking vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon)
+    Checking rusqlite v0.40.2
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-a04-s05-cdc-public-01 v0.0.0 (/tmp/vlajmaji-p01-a04-s05-cdc/public-caller01)
+error[E0599]: no associated function or constant named `resolve_profiled` found for struct `DictionarySearchEngine` in the current scope
+   --> src/bin/full-resolve-api.rs:5:167
+    |
+  5 | ...tionarySearchEngine::resolve_profiled;
+    |                         ^^^^^^^^^^^^^^^^ associated function or constant not found in `DictionarySearchEngine`
+    |
+help: there is a method `exact_profiled` with a similar name
+   --> /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary.rs:980:5
+    |
+980 | /     pub fn exact_profiled(
+981 | |         &self,
+982 | |         spelling: &str,
+983 | |         options: DictionaryExactOptions,
+984 | |     ) -> Result<(DictionaryExactResponse, DictionaryExactProfile), DictionaryQueryError> {
+    | |________________________________________________________________________________________^
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `vlajmaji-a04-s05-cdc-public-01` (bin "full-resolve-api") due to 1 previous error

@@ -1,0 +1,24 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 9.02s
+     Running tests/query_output_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/query_output_contract-8c40f1574c1fa19e)
+
+running 2 tests
+
+thread 'test_lookup_compact_and_detail_preserve_managed_envelope' (78377918) panicked at crates/cli/tests/query_output_contract.rs:388:5:
+{"error":{"category":"stale_snapshot","config_path":{"encoding":"unix-bytes","hex":"2f7661722f666f6c646572732f64742f6b63386e646e3664336b783863316a6e787230356472736830303030676e2f542f766c616a6d616a692d7330352d71756572792d6f75747075742d35353335342d313739333132333330323334383932333030302d302f636f6e6669672e746f6d6c","utf8":"/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-55354-1793123302348923000-0/config.toml"},"detail":"dictionary projection: stale snapshot: expected 287b96b6605f7eee71b1d61ed08a5c4148e45db3f0804825e91dfc0b8a50d106, observed 548f9e3649463d54a4c807ace96d6cf2840126e1a456e798bb32ed35b7472e8e","known_pack_ids":["llg"],"ok":false,"operation":"lookup_detail","outcome":"not_applicable","profile":{"config_path":{"encoding":"unix-bytes","hex":"2f7661722f666f6c646572732f64742f6b63386e646e3664336b783863316a6e787230356472736830303030676e2f542f766c616a6d616a692d7330352d71756572792d6f75747075742d35353335342d313739333132333330323334383932333030302d302f636f6e6669672e746f6d6c","utf8":"/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-55354-1793123302348923000-0/config.toml"},"name":"compact-test","revision":1,"sha256":"2599218faa12cbc1d09e45c7f444311082f5982b1b40a44842a3e768b86244d1","version":1},"requested_profile":null,"root_path":{"encoding":"unix-bytes","hex":"2f7661722f666f6c646572732f64742f6b63386e646e3664336b783863316a6e787230356472736830303030676e2f542f766c616a6d616a692d7330352d71756572792d6f75747075742d35353335342d313739333132333330323334383932333030302d302f636174616c6f677565","utf8":"/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-55354-1793123302348923000-0/catalogue"},"snapshot":{"binding_sha256":"548f9e3649463d54a4c807ace96d6cf2840126e1a456e798bb32ed35b7472e8e","collections":[{"default_member":true,"derived_state":"minimum_ok","disabled":false,"installed_copy_ownership":"tool_owned","installed_release_sha256":"b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3","original_inputs_present":true,"owned_files_present":true,"owned_files_warning":null,"pack_id":"llg","producer_selectable":true,"request_selected":true}],"content_id":"ecbb1561dbb25a71b6e854209130af3fb88367d4e277475283e44a4ad422f9e5","disabled":[],"generation_id":"35c10b6f5246f247d3e9b86ece8562d6-3a8a77a117550f058864406d2aca1b4d","local_revision":1,"order_policy":"source-release-occurrence-v1","packs":["llg"],"profile":{"config_path":{"encoding":"unix-bytes","hex":"2f7661722f666f6c646572732f64742f6b63386e646e3664336b783863316a6e787230356472736830303030676e2f542f766c616a6d616a692d7330352d71756572792d6f75747075742d35353335342d313739333132333330323334383932333030302d302f636f6e6669672e746f6d6c","utf8":"/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-55354-1793123302348923000-0/config.toml"},"name":"compact-test","revision":1,"sha256":"2599218faa12cbc1d09e45c7f444311082f5982b1b40a44842a3e768b86244d1","version":1},"projection_policy":"compact-collection-query-v1","recorded_state_sha256":"b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3","selected_releases":{"llg":["release-a","release-b","release-o1"]},"selection_policy":"selected-available-owned-head-v2","version":1},"version":1,"writer":null}}
+
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_lookup_compact_and_detail_preserve_managed_envelope ... FAILED
+test test_dictionary_compact_query_and_detail_keep_full_default ... ok
+
+failures:
+
+failures:
+    test_lookup_compact_and_detail_preserve_managed_envelope
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.86s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test query_output_contract`

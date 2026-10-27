@@ -1,0 +1,20 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.99s
+     Running tests/reference_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/reference_projection_contract-f034be2bfc490c04)
+
+running 1 test
+
+thread 'test_reference_projection_skips_unrelated_malformed_body_and_reports_selected_error' (78362135) panicked at crates/store/tests/reference_projection_contract.rs:316:10:
+called `Result::unwrap()` on an `Err` value: ReferenceProjection { pack: LensiskuJbotci, release_sha256: "c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55", source: Error("missing field `entry_ids`", line: 1, column: 59) }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_reference_projection_skips_unrelated_malformed_body_and_reports_selected_error ... FAILED
+
+failures:
+
+failures:
+    test_reference_projection_skips_unrelated_malformed_body_and_reports_selected_error
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 2 filtered out; finished in 0.14s
+
+error: test failed, to rerun pass `-p vlajmaji-store --test reference_projection_contract`

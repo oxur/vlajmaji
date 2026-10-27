@@ -1,0 +1,24 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.58s
+     Running tests/dictionary_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_projection_contract-04bfbbd887bd71ce)
+
+running 1 test
+
+thread 'test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page' (78448115) panicked at crates/search/tests/dictionary_projection_contract.rs:513:5:
+assertion failed: matches!(restored.exact("farvi", DictionaryExactOptions
+    {
+        page_size: Some(1), cursor: Some(foreign_compact_cursor),
+        ..Default::default()
+    }), Err(DictionaryQueryError::StaleCursor))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... FAILED
+
+failures:
+
+failures:
+    test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 10 filtered out; finished in 0.25s
+
+error: test failed, to rerun pass `-p vlajmaji-search --test dictionary_projection_contract`

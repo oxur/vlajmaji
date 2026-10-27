@@ -1,0 +1,26 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 11.02s
+     Running tests/dictionary_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_projection_contract-04bfbbd887bd71ce)
+
+running 1 test
+test compact_exact_matches_full_occurrences_and_detail_roundtrips ... FAILED
+
+failures:
+
+---- compact_exact_matches_full_occurrences_and_detail_roundtrips stdout ----
+
+thread 'compact_exact_matches_full_occurrences_and_detail_roundtrips' (78082739) panicked at crates/search/tests/dictionary_projection_contract.rs:118:5:
+assertion failed: matches!(compact_engine.exact("sie", DictionaryExactOptions
+    { page_size: Some(1), cursor: Some(cursor), ..Default::default() }),
+    Err(DictionaryQueryError::StaleCursor))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    compact_exact_matches_full_occurrences_and_detail_roundtrips
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.20s
+
+error: test failed, to rerun pass `-p vlajmaji-search --test dictionary_projection_contract`

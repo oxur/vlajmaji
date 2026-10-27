@@ -1,0 +1,43 @@
+{
+  "scope": "CURRENT pure checker/path method only; empty owned directories/symlinks retained, NO product/SQLite/target/default action",
+  "source_sha256": "d47513359a7d5bbd9a4413d2fa19c29904d93d76b4654f6a2bdfcd82102ac4bf",
+  "source_bytes": 7526,
+  "wire_positive": 1,
+  "wire_negatives": 23,
+  "wire_rejected": [
+    "absent:category",
+    "absent:config_path",
+    "absent:detail",
+    "absent:known_pack_ids",
+    "absent:ok",
+    "absent:operation",
+    "absent:outcome",
+    "absent:profile",
+    "absent:requested_profile",
+    "absent:root_path",
+    "absent:snapshot",
+    "absent:version",
+    "absent:writer",
+    "changed:version:2",
+    "changed:version:True",
+    "changed:detail:None",
+    "changed:ok:True",
+    "changed:category:unknown_selection",
+    "changed:operation:lookup",
+    "changed:outcome:unchanged",
+    "changed:known_pack_ids:['llg']",
+    "changed:config_path:{'encoding': 'lossy'}",
+    "trailing-warning"
+  ],
+  "path_positive": 1,
+  "path_negatives": [
+    "outside",
+    "dotdot",
+    "linked-leaf",
+    "linked-root",
+    "wrong-fixture-scope",
+    "relative"
+  ],
+  "retained_method_root": "/tmp/vlajmaji-p01-a04-s05-cdc/owned-path-method01",
+  "limits": "CLI orchestration/new key predicates have not been executed; actual Tiny journey remains pending frozen handback."
+}

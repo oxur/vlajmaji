@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S04 PR5 user-MERGED as32e99/main CI40523395402 SUCCESS. S05 INITIAL author FROZEN after same-tree rebase; CDC independent source/API/Tiny/CLI review ACTIVE. Six S05OPEN; readable/numeric/fresharc mandatory follow-up. |
-| version / date | 1.16 / 2026-10-27 UTC |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S04 user-MERGED/main32e99 CIgreen. S05 INITIAL5bf NOT ACCEPTED; correction iteration01 ISSUED/rootreadinessPASS, exact9paths/pass2of5/intake+transfer pending. Six S05OPEN; readable/numeric/fresharc follow. |
+| version / date | 1.17 / 2026-10-27 UTC |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |

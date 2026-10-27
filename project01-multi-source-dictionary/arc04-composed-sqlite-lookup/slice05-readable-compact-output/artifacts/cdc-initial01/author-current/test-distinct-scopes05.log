@@ -1,0 +1,20 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.87s
+     Running tests/dictionary_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_projection_contract-04bfbbd887bd71ce)
+
+running 1 test
+
+thread 'compact_local_reference_retains_distinct_assertion_scopes' (78324489) panicked at crates/search/tests/dictionary_projection_contract.rs:875:50:
+called `Result::unwrap()` on an `Err` value: MutationContext { source: Pack(Dictionary(DuplicateOccurrence("captured:a:d1:/0 has multiple normalized assertions"))), attempt_id: Some("9b87da4f086fa22a72016f712e265ae3"), prior_local_revision: Some(0), proposed_generation: Some("a14d3306cbb6178ec117d5c7f2e165fe-9b87da4f086fa22a72016f712e265ae3"), observed_generation: None, inputs: [CollectionInputDisposition { pack_id: "llg", disposition: "validated", payload_kind: Some("synthetic"), release_sha256: Some("b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3"), report: None }, CollectionInputDisposition { pack_id: "la-lojban", disposition: "validated", payload_kind: Some("synthetic"), release_sha256: Some("c8d6c880022af0b4d81911a21bb4b725dbc72b9f2c64d4e39127ae3a2e08ea6a"), report: None }] }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test compact_local_reference_retains_distinct_assertion_scopes ... FAILED
+
+failures:
+
+failures:
+    compact_local_reference_retains_distinct_assertion_scopes
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 5 filtered out; finished in 0.27s
+
+error: test failed, to rerun pass `-p vlajmaji-search --test dictionary_projection_contract`

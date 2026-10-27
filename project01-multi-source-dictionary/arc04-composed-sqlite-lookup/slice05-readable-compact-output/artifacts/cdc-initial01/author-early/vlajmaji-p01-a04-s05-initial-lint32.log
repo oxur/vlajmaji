@@ -1,0 +1,88 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error: unused import: `BTreeSet`
+  --> crates/store/src/collections.rs:16:34
+   |
+16 | use std::collections::{BTreeMap, BTreeSet};
+   |                                  ^^^^^^^^
+   |
+   = note: `-D unused-imports` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error: unused imports: `CollectionProjectedCapture` and `CollectionProjectedRelease`
+  --> crates/store/src/collections.rs:21:5
+   |
+21 |     CollectionProjectedCapture, CollectionProjectedRelease, CollectionReferenceProjection,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: unused imports: `LocalRef` and `RelationTarget`
+  --> crates/store/src/collections.rs:27:5
+   |
+27 |     LocalRef, OccurrenceRef, PackId, PackPayloadKind, PackSeal, Presence, RegistryDocument,
+   |     ^^^^^^^^
+28 |     RelationTarget, ReleaseAccounting, ReleaseRecord, SourceEvidence, SourceLineage, SourceRecord,
+   |     ^^^^^^^^^^^^^^
+
+error[E0392]: lifetime parameter `'a` is never used
+  --> crates/store/src/collections/reference_projection.rs:80:22
+   |
+80 | struct RawDescriptor<'a> {
+   |                      ^^ unused lifetime parameter
+   |
+   = help: consider removing `'a`, referring to it in a field, or using a marker such as `std::marker::PhantomData`
+
+error[E0599]: no method named `deserialize` found for struct `collections::reference_projection::deserialize_digest_map::Seed<'a>` in the current scope
+   --> crates/store/src/collections/reference_projection.rs:161:18
+    |
+128 |     struct Seed<'a>(&'a BTreeSet<String>);
+    |     --------------- method `deserialize` not found for this struct
+...
+161 |     Seed(wanted).deserialize(&mut deserializer)
+    |                  ^^^^^^^^^^^ this is an associated function, not a method
+    |
+   ::: /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/de/mod.rs:809:8
+    |
+809 |     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    |        ----------- the method is available for `collections::reference_projection::deserialize_digest_map::Seed<'_>` here
+    |
+    = note: found the following associated functions; to be used as methods, functions must have a `self` parameter
+note: the candidate is defined in the trait `_::_serde::Deserialize`
+   --> /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/de/mod.rs:561:5
+    |
+561 | /     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+562 | |     where
+563 | |         D: Deserializer<'de>;
+    | |_____________________________^
+    = help: items from traits can only be used if the trait is in scope
+help: use associated function syntax instead
+    |
+161 -     Seed(wanted).deserialize(&mut deserializer)
+161 +     collections::reference_projection::deserialize_digest_map::Seed<'_>::deserialize(&mut deserializer)
+    |
+help: trait `DeserializeSeed` which provides `deserialize` is implemented but not in scope; perhaps you want to import it
+    |
+  3 + use crate::_::_serde::de::DeserializeSeed;
+    |
+
+error: unused variable: `wanted_id`
+   --> crates/store/src/collections/reference_projection.rs:214:27
+    |
+214 |         let (wanted_role, wanted_id, catalog_release) = match target {
+    |                           ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_wanted_id`
+    |
+    = note: `-D unused-variables` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(unused_variables)]`
+
+error: unused variable: `collections`
+   --> crates/store/src/collections/reference_projection.rs:433:13
+    |
+433 |         let collections: Vec<_> = source_metadata
+    |             ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_collections`
+
+Some errors have detailed explanations: E0392, E0599.
+For more information about an error, try `rustc --explain E0392`.
+error: could not compile `vlajmaji-store` (lib) due to 8 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-store` (lib test) due to 8 previous errors
+make: *** [lint] Error 101

@@ -1,0 +1,32 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling thiserror-impl v2.0.21
+   Compiling serde v1.0.229
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon)
+   Compiling thiserror v2.0.21
+   Compiling confyg v0.3.0
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 19.20s
+     Running tests/query_output_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/query_output_contract-8c40f1574c1fa19e)
+
+running 2 tests
+
+thread 'test_lookup_compact_and_detail_preserve_managed_envelope' (78204650) panicked at crates/cli/tests/query_output_contract.rs:211:5:
+assertion failed: store_path.is_file()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_lookup_compact_and_detail_preserve_managed_envelope ... FAILED
+
+thread 'test_dictionary_compact_query_and_detail_keep_full_default' (78204649) panicked at crates/cli/tests/query_output_contract.rs:121:5:
+assertion failed: compact["groups"][0]["hits"][0].get("assertion").is_none()
+test test_dictionary_compact_query_and_detail_keep_full_default ... FAILED
+
+failures:
+
+failures:
+    test_dictionary_compact_query_and_detail_keep_full_default
+    test_lookup_compact_and_detail_preserve_managed_envelope
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.75s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test query_output_contract`

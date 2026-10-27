@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a04-s05-cdc/cli-checks01.py", line 253, in <module>
+    main()
+  File "/tmp/vlajmaji-p01-a04-s05-cdc/cli-checks01.py", line 244, in main
+    error(failure, command == "lookup-detail", "invalid_detail_reference", "lookup_detail")
+  File "/tmp/vlajmaji-p01-a04-s05-cdc/cli-checks01.py", line 99, in error
+    assert set(obj) == STANDALONE and obj["code"] == category
+                                      ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

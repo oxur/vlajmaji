@@ -1,0 +1,17 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0609]: no field `assertion_id` on type `&vlajmaji_search::DictionaryCompactHit`
+   --> crates/search/tests/dictionary_projection_contract.rs:638:28
+    |
+638 |             .map(|hit| hit.assertion_id.clone())
+    |                            ^^^^^^^^^^^^ unknown field
+    |
+help: one of the expressions' fields has a field of the same name
+    |
+638 |             .map(|hit| hit.detail_ref.assertion_id.clone())
+    |                            +++++++++++
+
+For more information about this error, try `rustc --explain E0609`.
+error: could not compile `vlajmaji-search` (test "dictionary_projection_contract") due to 1 previous error
+make: *** [lint] Error 101

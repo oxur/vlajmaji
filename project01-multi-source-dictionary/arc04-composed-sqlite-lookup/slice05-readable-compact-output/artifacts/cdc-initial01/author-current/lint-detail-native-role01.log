@@ -1,0 +1,28 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0308]: mismatched types
+   --> crates/search/tests/collection_projection_contract.rs:319:14
+    |
+319 |         Some(vlajmaji_lexicon::EntityId::new("unknown-native-entry-for-control").unwrap());
+    |         ---- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `String`, found `EntityId`
+    |         |
+    |         arguments to this enum variant are incorrect
+    |
+help: the type constructed contains `vlajmaji_lexicon::EntityId` due to the type of the argument passed
+   --> crates/search/tests/collection_projection_contract.rs:319:9
+    |
+319 |         Some(vlajmaji_lexicon::EntityId::new("unknown-native-entry-for-control").unwrap());
+    |         ^^^^^----------------------------------------------------------------------------^
+    |              |
+    |              this argument influences the type of `Some`
+note: tuple variant defined here
+   --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/option.rs:606:4
+help: try using a conversion method
+    |
+319 |         Some(vlajmaji_lexicon::EntityId::new("unknown-native-entry-for-control").unwrap().to_string());
+    |                                                                                          ++++++++++++
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-search` (test "collection_projection_contract") due to 1 previous error
+make: *** [lint] Error 101

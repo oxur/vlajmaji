@@ -1,0 +1,26 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: useless conversion to the same type: `collection_query::CollectionQueryError`
+   --> crates/search/src/collection_query/projection.rs:246:17
+    |
+246 | /                 CollectionQueryError::Query(DictionaryQueryError::InvalidReference {
+247 | |                     detail: "Unresolved target must be nonempty".into(),
+248 | |                 })
+249 | |                 .into(),
+    | |_______________________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#useless_conversion
+    = note: `-D clippy::useless-conversion` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::useless_conversion)]`
+help: consider removing `.into()`
+    |
+246 ~                 CollectionQueryError::Query(DictionaryQueryError::InvalidReference {
+247 +                     detail: "Unresolved target must be nonempty".into(),
+248 ~                 }),
+    |
+
+error: could not compile `vlajmaji-search` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+make: *** [lint] Error 101

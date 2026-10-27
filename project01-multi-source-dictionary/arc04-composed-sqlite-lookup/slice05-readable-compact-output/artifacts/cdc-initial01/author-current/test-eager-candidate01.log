@@ -1,0 +1,24 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.37s
+     Running tests/dictionary_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_projection_contract-04bfbbd887bd71ce)
+
+running 1 test
+test test_full_exact_surfaces_corrupt_candidate_beyond_selected_page ... FAILED
+
+failures:
+
+---- test_full_exact_surfaces_corrupt_candidate_beyond_selected_page stdout ----
+
+thread 'test_full_exact_surfaces_corrupt_candidate_beyond_selected_page' (78432452) panicked at crates/search/tests/dictionary_projection_contract.rs:357:5:
+sqlite candidate mutation failed: Error: unable to open database "/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-64518-1793124890034956000-0/dictionary.sqlite3": unable to open database file
+
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test_full_exact_surfaces_corrupt_candidate_beyond_selected_page
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.21s
+
+error: test failed, to rerun pass `-p vlajmaji-search --test dictionary_projection_contract`

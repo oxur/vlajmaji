@@ -1,0 +1,43 @@
+{
+  "scope": "pure compact Resolve wire-checker qualification + source-only CLI reference transport preparation",
+  "source_bytes": 14478,
+  "source_sha256": "be9d5151eaaa1bc042e2e181e7d808fcdc254e7c8b838ce6c2df37e81c3d0391",
+  "preserved_source": "cli-checks01-method06-source.py",
+  "positive": 1,
+  "negative": 16,
+  "negative_names": [
+    "missing availability",
+    "missing confirmed",
+    "missing entity",
+    "missing projection_policy",
+    "missing requested_release",
+    "missing snapshot_sha256",
+    "missing state_sha256",
+    "missing status",
+    "missing target",
+    "missing unverified",
+    "missing version",
+    "extra wrapper",
+    "wrong projection",
+    "boolean version",
+    "raw view array",
+    "full release inventory"
+  ],
+  "retained_unchanged_helpers": [
+    "strict_json",
+    "error",
+    "owned_store",
+    "compact_exact_wire",
+    "detail_wire"
+  ],
+  "prior_pure_receipts_retained": [
+    "cli-checker-method03.json",
+    "cli-checker-method05.json"
+  ],
+  "limits": [
+    "no product subprocess, Rust compile, shared target, Full model/store operation",
+    "new reference request comes from pre-input typed Local Assertion ID, serde-serialized by uncompiled public caller",
+    "new process orchestration remains unexecuted and waits frozen method review",
+    "shape/lightweight sentinel checks do not claim complete body, attribution or performance equivalence"
+  ]
+}

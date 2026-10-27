@@ -1,0 +1,74 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0425]: cannot find function `invalid_reference` in this scope
+   --> crates/search/src/dictionary/projection.rs:596:28
+    |
+596 |                 return Err(invalid_reference("Unresolved target must be nonempty"));
+    |                            ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `invalid_reference` in this scope
+   --> crates/search/src/dictionary/projection.rs:642:25
+    |
+642 |                         invalid_reference("LocalRef does not exist in its specific role table")
+    |                         ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `invalid_reference` in this scope
+   --> crates/search/src/dictionary/projection.rs:668:25
+    |
+668 |                         invalid_reference("LocalRef does not exist in its specific role table")
+    |                         ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `invalid_reference` in this scope
+   --> crates/search/src/dictionary/projection.rs:686:25
+    |
+686 |                         invalid_reference("LocalRef does not exist in its specific role table")
+    |                         ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `invalid_reference` in this scope
+   --> crates/search/src/dictionary/projection.rs:706:25
+    |
+706 |                         invalid_reference("LocalRef does not exist in its specific role table")
+    |                         ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `invalid_reference` in this scope
+   --> crates/search/src/dictionary/projection.rs:893:28
+    |
+893 |             .ok_or_else(|| invalid_reference("catalogue release does not exist"))?;
+    |                            ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `invalid_reference` in this scope
+   --> crates/search/src/dictionary/projection.rs:898:28
+    |
+898 |             .ok_or_else(|| invalid_reference("catalogue release has no component"))?;
+    |                            ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `invalid_reference` in this scope
+   --> crates/search/src/dictionary/projection.rs:903:28
+    |
+903 |             .ok_or_else(|| invalid_reference("catalogue release has no collection"))?;
+    |                            ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `invalid_reference` in this scope
+   --> crates/search/src/dictionary/projection.rs:905:24
+    |
+905 |             return Err(invalid_reference(
+    |                        ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `invalid_reference` in this scope
+   --> crates/search/src/dictionary/projection.rs:913:24
+    |
+913 |             return Err(invalid_reference(
+    |                        ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `invalid_reference` in this scope
+   --> crates/search/src/dictionary/projection.rs:919:28
+    |
+919 |                 return Err(invalid_reference(
+    |                            ^^^^^^^^^^^^^^^^^ not found in this scope
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `vlajmaji-search` (lib test) due to 11 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib) due to 11 previous errors
+make: *** [lint] Error 101

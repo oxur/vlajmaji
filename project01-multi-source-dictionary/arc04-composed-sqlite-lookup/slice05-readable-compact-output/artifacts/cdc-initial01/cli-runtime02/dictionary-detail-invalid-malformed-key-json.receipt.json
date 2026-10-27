@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/bin/cli-initial01",
+    "dictionary-detail",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/public-runtime03/catalogue/generations/32fd0bd09538e3306557ed44e6c7cff2/store",
+    "--reference",
+    "{"
+  ],
+  "exit": 1,
+  "expected_exit": 1,
+  "elapsed_s": 0.005553833208978176,
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_bytes": 141,
+  "stderr_sha256": "427aa057fc0407b214ae8fad297ea15262bd54350d68eae8229323b761e0e0f8",
+  "cwd": null,
+  "isolated_environment": {
+    "HOME": "/private/tmp/vlajmaji-p01-a04-s05-cdc/cli-runtime02/home",
+    "XDG_CONFIG_HOME": "/private/tmp/vlajmaji-p01-a04-s05-cdc/cli-runtime02/xdg_config_home",
+    "XDG_DATA_HOME": "/private/tmp/vlajmaji-p01-a04-s05-cdc/cli-runtime02/xdg_data_home"
+  }
+}

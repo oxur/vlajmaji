@@ -1,0 +1,7 @@
+argv: env CARGO=/tmp/vlajmaji-p01-a04-cargo RUST_TOOLCHAIN=1.98.0 CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target CARGO_NET_OFFLINE=true make lint
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.30s
+[1;32m✓ Clippy passed[0m
+exit=0

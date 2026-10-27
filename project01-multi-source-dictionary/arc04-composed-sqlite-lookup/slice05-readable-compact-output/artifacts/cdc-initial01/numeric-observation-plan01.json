@@ -1,0 +1,277 @@
+{
+  "status": "PROSPECTIVE SOURCE-ONLY; no trial/execution clearance",
+  "preparation_history": "First read used a guessed slice directory and observed absent; rg resolved actual slice01-topology-comparison. First parser then raised KeyError prime because measured records omit that key; no output/product run. Corrected get(false), actual reference operation and paired cursor dependency normalization checked.",
+  "request_source": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice01-topology-comparison/artifacts/cdc-prerequisite02/full-freeze02/requests-full03.json",
+  "request_source_sha256": "6fe407b2411263370524a44bd101c271fa17a3c3f4e92ee65425025f76d24c21",
+  "request_source_bytes": 13672,
+  "request_wire_conversion": "Existing record operation reference maps to DictionaryRequest Resolve; exact options preserve spelling/sources/page_size and regenerated projection-specific cursor dependencies.",
+  "prime_count_per_warm_process": 27,
+  "measured_count_per_warm_process": 27,
+  "measured_identity_groups": [
+    {
+      "id": "farvi-all",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "farvi-lsk",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "farvi-llg",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "farvi-sut",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "absent",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "excluded-sut",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page-0",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page-1",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page-2",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page-3",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page-8",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page-concat-2",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page-concat-3",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page-concat-4",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page-concat-5",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page2-concat-2",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page2-concat-3",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "page3-concat-2",
+      "operation": "exact",
+      "observations_per_implementation": 3,
+      "warm_boundary": "actual lookup SQL/selection/order/cleanup excluding projection"
+    },
+    {
+      "id": "jbotci-local",
+      "operation": "reference",
+      "observations_per_implementation": 3,
+      "warm_boundary": "whole resolution construction excluding only serialization/render"
+    },
+    {
+      "id": "jbotci-catalogue-native333",
+      "operation": "reference",
+      "observations_per_implementation": 3,
+      "warm_boundary": "whole resolution construction excluding only serialization/render"
+    },
+    {
+      "id": "la-catalogue-native333",
+      "operation": "reference",
+      "observations_per_implementation": 3,
+      "warm_boundary": "whole resolution construction excluding only serialization/render"
+    },
+    {
+      "id": "llg-component",
+      "operation": "reference",
+      "observations_per_implementation": 3,
+      "warm_boundary": "whole resolution construction excluding only serialization/render"
+    },
+    {
+      "id": "sut-native-entry",
+      "operation": "reference",
+      "observations_per_implementation": 3,
+      "warm_boundary": "whole resolution construction excluding only serialization/render"
+    },
+    {
+      "id": "unknown",
+      "operation": "reference",
+      "observations_per_implementation": 3,
+      "warm_boundary": "whole resolution construction excluding only serialization/render"
+    },
+    {
+      "id": "unresolved",
+      "operation": "reference",
+      "observations_per_implementation": 3,
+      "warm_boundary": "whole resolution construction excluding only serialization/render"
+    },
+    {
+      "id": "wrong-role",
+      "operation": "reference",
+      "observations_per_implementation": 3,
+      "warm_boundary": "whole resolution construction excluding only serialization/render"
+    },
+    {
+      "id": "missing",
+      "operation": "reference",
+      "observations_per_implementation": 3,
+      "warm_boundary": "whole resolution construction excluding only serialization/render"
+    }
+  ],
+  "warm_implementations": [
+    "candidate-full",
+    "compact",
+    "readable"
+  ],
+  "warm_process_orders": [
+    [
+      "candidate-full",
+      "compact",
+      "readable"
+    ],
+    [
+      "readable",
+      "candidate-full",
+      "compact"
+    ],
+    [
+      "compact",
+      "readable",
+      "candidate-full"
+    ]
+  ],
+  "grouping": "same request identity AND implementation across three rounds; never pool heterogeneous requests",
+  "fresh_process_orders": [
+    [
+      "baseline-full",
+      "candidate-full",
+      "compact",
+      "readable"
+    ],
+    [
+      "readable",
+      "compact",
+      "candidate-full",
+      "baseline-full"
+    ],
+    [
+      "compact",
+      "baseline-full",
+      "readable",
+      "candidate-full"
+    ]
+  ],
+  "fresh_process_count": 12,
+  "warm_process_count": 9,
+  "additional_semantic_observer_max": 1,
+  "warm_median_max_ms": [
+    250,
+    750
+  ],
+  "full_hydration_serialization_cap": {
+    "request_ids": [
+      "farvi-all"
+    ],
+    "median_max_ms": [
+      500,
+      1000
+    ]
+  },
+  "compact_readable_projection_serialization_cap": {
+    "request_ids": [
+      "farvi-all",
+      "farvi-lsk",
+      "farvi-llg",
+      "farvi-sut",
+      "absent",
+      "excluded-sut",
+      "page-0",
+      "page-1",
+      "page-2",
+      "page-3",
+      "page-8",
+      "page-concat-2",
+      "page-concat-3",
+      "page-concat-4",
+      "page-concat-5",
+      "page2-concat-2",
+      "page2-concat-3",
+      "page3-concat-2",
+      "jbotci-local",
+      "jbotci-catalogue-native333",
+      "la-catalogue-native333",
+      "llg-component",
+      "sut-native-entry",
+      "unknown",
+      "unresolved",
+      "missing"
+    ],
+    "median_max_ms": [
+      50,
+      150
+    ],
+    "reference_is_overlapping_subset_not_subtracted_from_warm": true
+  },
+  "wrong_role_policy": "expected invalid_reference; conservative whole call plus report construction warm timing, serialization separate; no invented success/profile",
+  "executable_preflight_pending": [
+    "initial and readable accepted source",
+    "qualified actual profiler boundaries",
+    "current binaries/source closure",
+    "same-code Tiny runner qualification",
+    "expanded fixed argv and resource/pin inventory",
+    "root executable review"
+  ]
+}

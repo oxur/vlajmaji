@@ -1,0 +1,140 @@
+{
+  "phase": "prospective-independent-source-preparation02",
+  "compiled": false,
+  "product_executed": false,
+  "shared_target_touched": false,
+  "full_data_accessed": false,
+  "caller_lock_exists": false,
+  "payloads": [
+    {
+      "path": "check-initial-scope01.py",
+      "bytes": 3483,
+      "sha256": "baddf68fa1c9c01bc0ca24897490da1bd44b956de1f941eb8e3c206ad3928730"
+    },
+    {
+      "path": "cli-checker-method03.json",
+      "bytes": 1636,
+      "sha256": "1f0078038542054eb54a93d2af2d832a78948303a28ed407c306528b5f61f20c"
+    },
+    {
+      "path": "cli-checks01.py",
+      "bytes": 8939,
+      "sha256": "5313864d0e7bb84d0c82a79af06aa345788eb298e957ac31b108f8571f8c652f"
+    },
+    {
+      "path": "numeric-observation-plan01.json",
+      "bytes": 8827,
+      "sha256": "64e98a2035fd726e9863b9d29b72530c1474523268d57ba7857bc18e559dbd38"
+    },
+    {
+      "path": "profile-gates-method01.json",
+      "bytes": 574,
+      "sha256": "a4a0c83db94c051d1570a9aa8b409eeecf0db4e748786d882adf5bb4dda7b023"
+    },
+    {
+      "path": "profile-gates01.py",
+      "bytes": 3050,
+      "sha256": "9e336eff010a98abd9ab0ae21448bb1061282b18dabaa245a7c7c9d070ea0ca8"
+    },
+    {
+      "path": "public-caller01/Cargo.toml",
+      "bytes": 690,
+      "sha256": "f2f19733d01559393190fe22eb9686c85a3d38245ff6ac07a72ef72dfec97e99"
+    },
+    {
+      "path": "public-caller01/src/cause_checks.rs",
+      "bytes": 1542,
+      "sha256": "21a46ef8d560097089a0a8234a14b574b64a67014f9e9d03c5771c966b353ed4"
+    },
+    {
+      "path": "public-caller01/src/complete_fixture.rs",
+      "bytes": 46457,
+      "sha256": "0792a2b1aa5fc3b570e3c817a127ed571c1b9b39786ee5c22d906e7574175eac"
+    },
+    {
+      "path": "public-caller01/src/context_checks.rs",
+      "bytes": 2501,
+      "sha256": "48359636f1396a125ded5d0afee511f02b6fc73889f95bee2cb7a792779cb188"
+    },
+    {
+      "path": "public-caller01/src/cursor_checks.rs",
+      "bytes": 2169,
+      "sha256": "8cdc114e94e4859c0a186e75fe2a6492f73f67d44884069d55acede7f426de08"
+    },
+    {
+      "path": "public-caller01/src/derived_fault_checks.rs",
+      "bytes": 4661,
+      "sha256": "70cf0d5c93b52997cb908f5117efdc25b3c07d23d3a5a6538d0470f8074aea47"
+    },
+    {
+      "path": "public-caller01/src/helpers.rs",
+      "bytes": 3071,
+      "sha256": "b0d29b14379a7156ee005f93bec5cd927e48d4e058a698cd441194c53dfb9e81"
+    },
+    {
+      "path": "public-caller01/src/history_checks.rs",
+      "bytes": 4104,
+      "sha256": "493c8b4c9aab9880dcff5eddf533307e4724bbe775e8e6609ad4d99ac9387e3a"
+    },
+    {
+      "path": "public-caller01/src/main.rs",
+      "bytes": 10177,
+      "sha256": "b80a0a18562074f638333aece66a5d2cc25a56f0908aded5cc86a6f409de168c"
+    },
+    {
+      "path": "public-caller01/src/metadata_only_checks.rs",
+      "bytes": 3192,
+      "sha256": "484b8108ded40983260e2081a6c7ae0a8d37fd2f7f76f9411c981d21e856e3d1"
+    },
+    {
+      "path": "public-caller01/src/owned_paths.rs",
+      "bytes": 876,
+      "sha256": "d1b69dd19be7c868d8958b888d991c6fe241660620ad243edbef0db9a670c55f"
+    },
+    {
+      "path": "public-caller01/src/reference_checks.rs",
+      "bytes": 3456,
+      "sha256": "0f2ac71d5505b34ed9ea118cf87696a8095a43d912bd2251c4d7c8afa7a4e9a1"
+    },
+    {
+      "path": "public-caller01/src/shared_body_checks.rs",
+      "bytes": 10638,
+      "sha256": "348d15eb217460845fd11c34093dc1571c82ef53dcc4ad91da505ce9918bba62"
+    },
+    {
+      "path": "public-caller01/src/store_projection_checks.rs",
+      "bytes": 3363,
+      "sha256": "6588f30dc54ee89b0d3e83b0df7d209b411a40789fd05b83d6ec6bb5be8ab2c5"
+    },
+    {
+      "path": "public-caller01/src/supplement.rs",
+      "bytes": 3644,
+      "sha256": "9d68e4faa55c660072e0f08629c4fdeb04fdbeacd7e493e3ac8897c9b6946354"
+    }
+  ],
+  "limits": [
+    "not a frozen candidate/source applicability manifest",
+    "Rust public APIs and method setup must be reconciled at handback before compile/run",
+    "new deleted-cwd product child orchestration is unexecuted",
+    "numeric acceptance evaluator qualification uses synthetic observations only"
+  ],
+  "framing_note": "section6 existing outer error envelope retained; section10 3/13 keys are inner report types; old top-level checker bytes and qualification retained separately",
+  "additional_fixture_payloads": [
+    {
+      "path": "public-caller01/fixtures/lensisku.json",
+      "bytes": 136,
+      "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+    },
+    {
+      "path": "public-caller01/fixtures/llg-valid-row.txt",
+      "bytes": 158,
+      "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+    },
+    {
+      "path": "public-caller01/fixtures/sutysisku.json",
+      "bytes": 150,
+      "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
+    }
+  ],
+  "index_note": "Initial nonfrozen preparation index covered21files/127050B and excluded the sibling fixtures directory. Added exact3 include_bytes dependencies here; this is source preparation only, not final frozen closure."
+}

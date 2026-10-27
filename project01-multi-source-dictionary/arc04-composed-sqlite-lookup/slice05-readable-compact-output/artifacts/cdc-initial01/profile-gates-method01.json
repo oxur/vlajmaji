@@ -1,0 +1,16 @@
+{
+  "status": "pure synthetic evaluator qualification; no product timer or performance result",
+  "source_sha256": "9e336eff010a98abd9ab0ae21448bb1061282b18dabaa245a7c7c9d070ea0ca8",
+  "source_bytes": 3050,
+  "positive_groups": 81,
+  "observations": 243,
+  "negative_controls": [
+    "single-slow-reference",
+    "wrong-role-whole-call",
+    "single-compact-projection",
+    "missing-round",
+    "duplicate-round",
+    "wrong-role-success"
+  ],
+  "limits": "Fresh CLI, setup/RSS, bytes, actual profiler boundaries and output framing are separate pending executable proof"
+}

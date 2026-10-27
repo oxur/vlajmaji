@@ -1,0 +1,23 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.44s
+     Running tests/query_output_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/query_output_contract-8c40f1574c1fa19e)
+
+running 2 tests
+test test_lookup_compact_and_detail_preserve_managed_envelope ... ok
+
+thread 'test_dictionary_compact_query_and_detail_keep_full_default' (78214211) panicked at crates/cli/tests/query_output_contract.rs:183:5:
+assertion `left == right` failed
+  left: Null
+ right: "entry"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_dictionary_compact_query_and_detail_keep_full_default ... FAILED
+
+failures:
+
+failures:
+    test_dictionary_compact_query_and_detail_keep_full_default
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.81s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test query_output_contract`

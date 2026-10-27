@@ -1,0 +1,16 @@
+argv: env CARGO=/tmp/vlajmaji-p01-a04-cargo RUST_TOOLCHAIN=1.98.0 CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target CARGO_NET_OFFLINE=true make lint
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+error: function `run_os` is never used
+  --> crates/cli/tests/query_output_contract.rs:60:4
+   |
+60 | fn run_os(args: &[std::ffi::OsString]) -> Output {
+   |    ^^^^^^
+   |
+   = note: `-D dead-code` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[expect(dead_code)]` or `#[allow(dead_code)]`
+
+error: could not compile `vlajmaji-cli` (test "query_output_contract") due to 1 previous error
+make: *** [lint] Error 101
+exit=2

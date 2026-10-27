@@ -1,0 +1,42 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0428]: the name `decode_lower_hex` is defined multiple times
+    --> crates/search/src/collection_query/projection.rs:1210:1
+     |
+1068 | fn decode_lower_hex(encoded: &str) -> Option<Vec<u8>> {
+     | ----------------------------------------------------- previous definition of the value `decode_lower_hex` here
+...
+1210 | fn decode_lower_hex(value: &str) -> Result<Vec<u8>, ()> {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `decode_lower_hex` redefined here
+     |
+     = note: `decode_lower_hex` must be defined only once in the value namespace of this module
+
+error[E0308]: mismatched types
+    --> crates/search/src/collection_query/projection.rs:1170:9
+     |
+1170 |     let Ok(bytes) = decode_lower_hex(hex) else {
+     |         ^^^^^^^^^   --------------------- this expression has type `std::option::Option<std::vec::Vec<u8>>`
+     |         |
+     |         expected `Option<Vec<u8>>`, found `Result<_, _>`
+     |
+     = note: expected enum `std::option::Option<std::vec::Vec<u8>>`
+                found enum `std::result::Result<_, _>`
+
+error[E0308]: mismatched types
+    --> crates/search/src/collection_query/projection.rs:1185:9
+     |
+1185 |     let Ok(inner) = decode_lower_hex(&managed.inner) else {
+     |         ^^^^^^^^^   -------------------------------- this expression has type `std::option::Option<std::vec::Vec<u8>>`
+     |         |
+     |         expected `Option<Vec<u8>>`, found `Result<_, _>`
+     |
+     = note: expected enum `std::option::Option<std::vec::Vec<u8>>`
+                found enum `std::result::Result<_, _>`
+
+Some errors have detailed explanations: E0308, E0428.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-search` (lib test) due to 3 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib) due to 3 previous errors
+make: *** [lint] Error 101

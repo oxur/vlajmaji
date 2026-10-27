@@ -1,0 +1,26 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0716]: temporary value dropped while borrowed
+   --> crates/search/tests/dictionary_projection_contract.rs:919:23
+    |
+919 |       let after_entry = after_dictionary
+    |  _______________________^
+920 | |         .document()
+    | |___________________^ creates a temporary value which is freed while still in use
+...
+925 |           .unwrap();
+    |                    - temporary value is freed at the end of this statement
+926 |       assert_eq!(before_entry, after_entry);
+    |       ------------------------------------- borrow later used here
+    |
+help: consider using a `let` binding to create a longer lived value
+    |
+919 ~     let binding = after_dictionary
+920 +         .document();
+921 ~     let after_entry = binding
+    |
+
+For more information about this error, try `rustc --explain E0716`.
+error: could not compile `vlajmaji-search` (test "dictionary_projection_contract") due to 1 previous error
+make: *** [lint] Error 101

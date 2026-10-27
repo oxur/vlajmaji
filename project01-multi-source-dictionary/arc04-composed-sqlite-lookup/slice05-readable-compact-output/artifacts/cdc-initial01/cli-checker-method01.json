@@ -1,0 +1,32 @@
+{
+  "status": "pure method qualification only; NO CLI/product execution",
+  "checker_sha256": "4173928060045a2f08198871a09b826b67e5ed6e4b133f229b1aea1b7633f225",
+  "checker_bytes": 5233,
+  "valid_managed_positive": 1,
+  "missing_key_negatives": 13,
+  "changed_field_negatives": 7,
+  "trailing_stderr_negative": 1,
+  "rejected": [
+    "absent:category",
+    "absent:config_path",
+    "absent:detail",
+    "absent:known_pack_ids",
+    "absent:ok",
+    "absent:operation",
+    "absent:outcome",
+    "absent:profile",
+    "absent:requested_profile",
+    "absent:root_path",
+    "absent:snapshot",
+    "absent:version",
+    "absent:writer",
+    "changed:version",
+    "changed:ok",
+    "changed:category",
+    "changed:operation",
+    "changed:outcome",
+    "changed:known_pack_ids",
+    "changed:config_path",
+    "trailing:warning"
+  ]
+}

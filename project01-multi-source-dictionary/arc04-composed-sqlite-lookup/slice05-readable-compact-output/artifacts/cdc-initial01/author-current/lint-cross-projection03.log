@@ -1,0 +1,9 @@
+argv: env CARGO=/tmp/vlajmaji-p01-a04-cargo RUST_TOOLCHAIN=1.98.0 CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target CARGO_NET_OFFLINE=true make lint
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+error: failed to open: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/.cargo-build-lock
+
+Caused by:
+  Operation not permitted (os error 1)
+make: *** [lint] Error 101
+exit=2

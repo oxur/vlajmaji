@@ -1,0 +1,15 @@
+{
+  "kind": "source-applicability-only",
+  "source": "/tmp/vlajmaji-p01-a04-s05-cdc/cli-checks01.py",
+  "sha256": "f1675d1a26dbd922d35bc7147a950f711ba8594d533d24f348fc1acd2dfc3ab8",
+  "bytes": 9633,
+  "product_executed": false,
+  "AST_valid": true,
+  "exact_unchanged_helpers_vs_method03": {
+    "strict_json": "936ba434d6cf9d7e4610183dd07081153e9fe65a288892de34fd0407166ce2e6",
+    "error": "9a73b1022cb97b4e8e07e01198b7debdf5070b1f529e82df1bf4259ce6561f81",
+    "owned_store": "9a4ac750d076dca27fb297c5f4902e7de08037595b38d98bca3faa606a52b84f"
+  },
+  "retained_pure_qualification": "cli-checker-method03.json positives2/negatives27 applies to these identical helper bodies ONLY",
+  "orchestration_change": "Original explicit capture/unknown-key negatives and pre-config profile/pack static context discriminator prepared; all product children including new routes unexecuted."
+}

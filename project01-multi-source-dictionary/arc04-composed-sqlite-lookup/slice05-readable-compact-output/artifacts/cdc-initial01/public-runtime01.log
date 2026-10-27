@@ -1,0 +1,7 @@
+PASS compiled remaining issued public method signatures (missing full resolve_profiled proof remains FAIL; no operations executed by signatures)
+
+thread 'main' (78636164) panicked at src/main.rs:29:2:
+assertion `left == right` failed
+  left: 15
+ right: 25
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

@@ -1,0 +1,235 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: unused import: `CaptureRef`
+  --> crates/search/src/dictionary/projection.rs:15:36
+   |
+15 |     Availability, CaptureMetadata, CaptureRef, EntityId, EntryRecord, OccurrenceRef,
+   |                                    ^^^^^^^^^^
+   |
+   = note: `-D unused-imports` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error: unused imports: `DictionaryGroup` and `SourceSelectionFailure`
+  --> crates/search/src/dictionary/projection.rs:23:29
+   |
+23 |     DictionaryExactOptions, DictionaryGroup, DictionaryHit, DictionaryQueryError,
+   |                             ^^^^^^^^^^^^^^^
+24 |     DictionaryQueryProvider, DictionaryRequest, DictionarySnapshotOpenProfile,
+25 |     DictionarySourceTotal, DictionaryTotals, SourceSelectionFailure, borrowed,
+   |                                              ^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0599]: no method named `as_document` found for struct `vlajmaji_lexicon::RegistryDocument` in the current scope
+   --> crates/search/src/dictionary/projection.rs:272:42
+    |
+272 |         let registry = document.registry.as_document();
+    |                                          ^^^^^^^^^^^ method not found in `vlajmaji_lexicon::RegistryDocument`
+
+error[E0599]: no method named `as_document` found for struct `vlajmaji_lexicon::RegistryDocument` in the current scope
+   --> crates/search/src/dictionary/projection.rs:378:26
+    |
+376 | /                     self.document
+377 | |                         .registry
+378 | |                         .as_document()
+    | |                         -^^^^^^^^^^^ method not found in `vlajmaji_lexicon::RegistryDocument`
+    | |_________________________|
+    |
+
+error[E0599]: no method named `as_ref` found for enum `vlajmaji_lexicon::Presence<T>` in the current scope
+   --> crates/search/src/dictionary/projection.rs:425:32
+    |
+425 |                 entry.spelling.as_ref().cloned().unwrap_or_default(),
+    |                                ^^^^^^ method not found in `vlajmaji_lexicon::Presence<std::string::String>`
+    |
+note: the method `as_ref` exists on the type `std::string::String`
+   --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/convert/mod.rs:224:4
+
+error[E0599]: no method named `as_document` found for struct `vlajmaji_lexicon::RegistryDocument` in the current scope
+   --> crates/search/src/dictionary/projection.rs:610:14
+    |
+607 |           let snapshot_attribution = self
+    |  ____________________________________-
+608 | |             .document
+609 | |             .registry
+610 | |             .as_document()
+    | |             -^^^^^^^^^^^ method not found in `vlajmaji_lexicon::RegistryDocument`
+    | |_____________|
+    |
+
+error[E0599]: no method named `as_document` found for struct `vlajmaji_lexicon::RegistryDocument` in the current scope
+   --> crates/search/src/dictionary/projection.rs:621:14
+    |
+618 |           let occurrence_attribution = self
+    |  ______________________________________-
+619 | |             .document
+620 | |             .registry
+621 | |             .as_document()
+    | |             -^^^^^^^^^^^ method not found in `vlajmaji_lexicon::RegistryDocument`
+    | |_____________|
+    |
+
+error[E0599]: no method named `as_document` found for struct `vlajmaji_lexicon::RegistryDocument` in the current scope
+   --> crates/search/src/dictionary/projection.rs:632:22
+    |
+630 | /                 self.document
+631 | |                     .registry
+632 | |                     .as_document()
+    | |                     -^^^^^^^^^^^ method not found in `vlajmaji_lexicon::RegistryDocument`
+    | |_____________________|
+    |
+
+error[E0599]: no method named `as_document` found for struct `vlajmaji_lexicon::RegistryDocument` in the current scope
+   --> crates/search/src/dictionary/projection.rs:644:22
+    |
+642 | /                 self.document
+643 | |                     .registry
+644 | |                     .as_document()
+    | |                     -^^^^^^^^^^^ method not found in `vlajmaji_lexicon::RegistryDocument`
+    | |_____________________|
+    |
+
+error[E0277]: `?` couldn't convert the error to `dictionary::DictionaryQueryError`
+   --> crates/search/src/dictionary/projection.rs:684:40
+    |
+684 |             entry_sha256: digest(entry)?,
+    |                           -------------^ the trait `std::convert::From<dictionary::projection::DictionaryProjectionError>` is not implemented for `dictionary::DictionaryQueryError`
+    |                           |
+    |                           this can't be annotated with `?` because it has type `Result<_, dictionary::projection::DictionaryProjectionError>`
+    |
+note: `dictionary::DictionaryQueryError` needs to implement `From<dictionary::projection::DictionaryProjectionError>`
+   --> crates/search/src/dictionary.rs:359:1
+    |
+359 | pub enum DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: the question mark operation (`?`) implicitly performs a conversion on the error value using the `From` trait
+help: `dictionary::DictionaryQueryError` implements trait `std::convert::From<T>`
+   --> crates/search/src/dictionary.rs:430:1
+    |
+430 | impl From<DictionaryStoreError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_store::DictionaryStoreError>`
+...
+435 | impl From<DictionarySnapshotError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_store::DictionarySnapshotError>`
+...
+440 | impl From<DictionaryError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_lexicon::DictionaryError>`
+...
+445 | impl From<RegistryError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_lexicon::RegistryError>`
+    = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-30d263294cfdc365.long-type-16595589143115236612.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+error[E0277]: `?` couldn't convert the error to `dictionary::DictionaryQueryError`
+   --> crates/search/src/dictionary/projection.rs:685:48
+    |
+685 |             assertion_sha256: digest(assertion)?,
+    |                               -----------------^ the trait `std::convert::From<dictionary::projection::DictionaryProjectionError>` is not implemented for `dictionary::DictionaryQueryError`
+    |                               |
+    |                               this can't be annotated with `?` because it has type `Result<_, dictionary::projection::DictionaryProjectionError>`
+    |
+note: `dictionary::DictionaryQueryError` needs to implement `From<dictionary::projection::DictionaryProjectionError>`
+   --> crates/search/src/dictionary.rs:359:1
+    |
+359 | pub enum DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: the question mark operation (`?`) implicitly performs a conversion on the error value using the `From` trait
+help: `dictionary::DictionaryQueryError` implements trait `std::convert::From<T>`
+   --> crates/search/src/dictionary.rs:430:1
+    |
+430 | impl From<DictionaryStoreError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_store::DictionaryStoreError>`
+...
+435 | impl From<DictionarySnapshotError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_store::DictionarySnapshotError>`
+...
+440 | impl From<DictionaryError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_lexicon::DictionaryError>`
+...
+445 | impl From<RegistryError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_lexicon::RegistryError>`
+    = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-30d263294cfdc365.long-type-16595589143115236612.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+error[E0277]: `?` couldn't convert the error to `dictionary::DictionaryQueryError`
+   --> crates/search/src/dictionary/projection.rs:684:40
+    |
+684 |             entry_sha256: digest(entry)?,
+    |                           -------------^ the trait `std::convert::From<dictionary::projection::DictionaryProjectionError>` is not implemented for `dictionary::DictionaryQueryError`
+    |                           |
+    |                           this can't be annotated with `?` because it has type `Result<_, dictionary::projection::DictionaryProjectionError>`
+    |
+note: `dictionary::DictionaryQueryError` needs to implement `From<dictionary::projection::DictionaryProjectionError>`
+   --> crates/search/src/dictionary.rs:359:1
+    |
+359 | pub enum DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: the question mark operation (`?`) implicitly performs a conversion on the error value using the `From` trait
+help: `dictionary::DictionaryQueryError` implements trait `std::convert::From<T>`
+   --> crates/search/src/dictionary.rs:430:1
+    |
+430 | impl From<DictionaryStoreError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_store::DictionaryStoreError>`
+...
+435 | impl From<DictionarySnapshotError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_store::DictionarySnapshotError>`
+...
+440 | impl From<DictionaryError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_lexicon::DictionaryError>`
+...
+445 | impl From<RegistryError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_lexicon::RegistryError>`
+    = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-7d4f25272a8dbd0d.long-type-3881971022414898285.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+error[E0277]: `?` couldn't convert the error to `dictionary::DictionaryQueryError`
+   --> crates/search/src/dictionary/projection.rs:685:48
+    |
+685 |             assertion_sha256: digest(assertion)?,
+    |                               -----------------^ the trait `std::convert::From<dictionary::projection::DictionaryProjectionError>` is not implemented for `dictionary::DictionaryQueryError`
+    |                               |
+    |                               this can't be annotated with `?` because it has type `Result<_, dictionary::projection::DictionaryProjectionError>`
+    |
+note: `dictionary::DictionaryQueryError` needs to implement `From<dictionary::projection::DictionaryProjectionError>`
+   --> crates/search/src/dictionary.rs:359:1
+    |
+359 | pub enum DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: the question mark operation (`?`) implicitly performs a conversion on the error value using the `From` trait
+help: `dictionary::DictionaryQueryError` implements trait `std::convert::From<T>`
+   --> crates/search/src/dictionary.rs:430:1
+    |
+430 | impl From<DictionaryStoreError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_store::DictionaryStoreError>`
+...
+435 | impl From<DictionarySnapshotError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_store::DictionarySnapshotError>`
+...
+440 | impl From<DictionaryError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_lexicon::DictionaryError>`
+...
+445 | impl From<RegistryError> for DictionaryQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `std::convert::From<vlajmaji_lexicon::RegistryError>`
+    = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-7d4f25272a8dbd0d.long-type-3881971022414898285.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+error[E0599]: no method named `as_document` found for struct `vlajmaji_lexicon::RegistryDocument` in the current scope
+   --> crates/search/src/dictionary/projection.rs:716:42
+    |
+716 |         let registry = document.registry.as_document();
+    |                                          ^^^^^^^^^^^ method not found in `vlajmaji_lexicon::RegistryDocument`
+
+error[E0599]: no method named `as_ref` found for enum `vlajmaji_lexicon::Presence<T>` in the current scope
+    --> crates/search/src/dictionary/projection.rs:1075:35
+     |
+1075 |                 && entry.spelling.as_ref() == Some(&spelling.to_owned())
+     |                                   ^^^^^^ method not found in `vlajmaji_lexicon::Presence<std::string::String>`
+     |
+note: the method `as_ref` exists on the type `std::string::String`
+    --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/convert/mod.rs:224:4
+
+Some errors have detailed explanations: E0277, E0599.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `vlajmaji-search` (lib) due to 13 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib test) due to 13 previous errors
+make: *** [lint] Error 101

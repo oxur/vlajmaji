@@ -1,0 +1,37 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.75s
+     Running tests/dictionary_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/dictionary_projection_contract-04bfbbd887bd71ce)
+
+running 15 tests
+test compact_local_reference_keeps_linked_assertions_and_status ... ok
+test compact_exact_matches_full_occurrences_and_detail_roundtrips ... ok
+test compact_four_literal_install_matches_preinput_typed_family_union ... ok
+test test_compact_detail_identity_conflicts_are_typed_and_absent_values_are_no_match ... ok
+test compact_detail_snapshot_tracks_legitimate_attached_context_changes ... ok
+test test_compact_exact_preserves_alias_and_owned_head_overlay_selection ... ok
+test test_compact_detail_changed_assertion_body_expect_no_retarget ... FAILED
+test compact_local_reference_retains_distinct_assertion_scopes ... ok
+test test_full_exact_surfaces_corrupt_candidate_beyond_selected_page ... ok
+test compact_managed_catalog_reference_uses_targeted_projection ... ok
+test test_full_exact_validates_unselected_sql_candidates_before_source_filtering ... ok
+test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok
+test compact_managed_local_reference_retains_all_contributor_scopes ... ok
+test compact_local_reference_deduplicates_equal_history_and_rejects_unequal_body ... ok
+test compact_local_reference_filters_distinct_pack_assertions_by_policy ... ok
+
+failures:
+
+---- test_compact_detail_changed_assertion_body_expect_no_retarget stdout ----
+
+thread 'test_compact_detail_changed_assertion_body_expect_no_retarget' (78584837) panicked at crates/search/tests/dictionary_projection_contract.rs:998:53:
+called `Result::unwrap()` on an `Err` value: MutationContext { source: Pack(LegacyArchiveUnsupported), attempt_id: Some("15c4e1ee4a81c5b8b0f7f52f311c4783"), prior_local_revision: Some(0), proposed_generation: Some("8ec1e2f330a05383cf4a2d64a6c892d8-15c4e1ee4a81c5b8b0f7f52f311c4783"), observed_generation: None, inputs: [CollectionInputDisposition { pack_id: "llg", disposition: "validated", payload_kind: Some("synthetic"), release_sha256: Some("c8f4cf31fcf571a7de887db524aa6c9bfe5e73e4bb2f480fb6bb49e25845ce55"), report: None }] }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test_compact_detail_changed_assertion_body_expect_no_retarget
+
+test result: FAILED. 14 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.23s
+
+error: test failed, to rerun pass `-p vlajmaji-search --test dictionary_projection_contract`

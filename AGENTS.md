@@ -2,6 +2,10 @@
 
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
+**Current S05 checkpoint, 2026-10-27:** Current clean5bf/tree7e78 on separate S05branch after user-authorized same-tree main32e99 rebase; accepted S04 merged/green, old S04refs432 preserved. Frozen INITIAL NOT ACCEPTED after independent finite source/API/Tiny/CLI review. Root final concrete readiness passed iteration01 correction: exact NINE source paths, totalpass2of5; reviewed-final draft preserved, source/index/retained target remains CDC-owned/quiet until retained Luna/high exact intake/readback and explicit transfer. Six S05 rows OPEN; readable laternumbered02/pass3, Full/currentLinux/ARC/futurepush still pending. Root read-only.
+
+### Historical pre-correction frozen checkpoint
+
 **Current S05 checkpoint, 2026-10-27:** INITIAL author frozen, then root safely rebased onto merged-main32e99. Current clean5bf5fb13/tree7e78 equals pre-rebase9eb exactly; original chain preserved by backup ref and artifacts/rebase01. Main CI40523395402 all3SUCCESS covers accepted S04 tree, not S05. Author gates306/0/1+19, isolated60/0/0, Syntheticallfeatures308/0/1 retain original9eb identities and tree applicability. CDC exclusively owns source/index/ONE retained target for independent initial review; CC/root read-only. Six S05 rows OPEN; first independent caller compile has a missing frozen API finding plus separately corrected caller errors. No Full/readable issue/external delivery/acceptance inferred.
 
 ## Historical S05 issue/author current headers (superseded)

@@ -1,6 +1,6 @@
 # S05 ledger — Readable and compact output
 
-ISSUED INITIAL AUTHOR FROZEN / CDC independent review ACTIVE, 2026-10-27 UTC. All six rows OPEN. Current5bf/tree7e78 is a metadata-only rebase of author9eb onto user-merged S04 main32e99 (same source tree; originals in artifacts/rebase01). Author current9eb gates are306/0/1+19helpers, isolated60/0/0, Syntheticallfeatures308/0/1; they are retained-tree evidence, not fresh5bf execution or independent acceptance. Source/index/retained target returned to CDC. Initial compile proof found a missing frozen full resolve_profiled API alongside three caller-only conversion errors; finite diagnostic controls continue before a consolidated disposition. Readable01 remains unissued; Full/numeric/current Linux/fresh assembled ARC acceptance pending. Criteria/proof/owner/status cells unchanged.
+ISSUED CORRECTION ITERATION01 / intake pending, 2026-10-27 UTC. All six original rows OPEN. Original frozen INITIAL5bf is NOT ACCEPTED. Root final readiness PASS at draft55ad497b; exact nine-path pass2of5 correction issued after evidence closure963payloads/2,987,932B. CDC source/index/target remains quiet until retained CC exact-packet readback is accepted and explicit transfer occurs. Readable moves to numbered02/plannedpass3; no Full/Linux/ARC acceptance or external action inferred. Original criterion/proof/owner/status cells unchanged.
 
 | ID | Criterion | Verify at execution | Owner / workflow | Status | Evidence / notes |
 | --- | --- | --- | --- | --- | --- |
@@ -22,3 +22,11 @@ Actual source-cited CC intake and CDC fresh identity check are in artifacts/exec
 ### Current evidence-state clarification —2026-10-27 UTC
 
 The original issue-time no-runtime/current-clean phrasing was correct only at issue. The author now owns the exclusive implementation interval and has executed the scoped WIP receipts named above; retain their exact scope/history rather than promote them to current-source or independent acceptance. All six binding rows remain OPEN.
+
+### Draft correction iteration01
+
+Original initial remains preserved and rejected, not reset. Eight runtime edge predicates/five CLI strict predicates/missing API and source pre-page clones have exact separate evidence scopes; caller mistakes are retained separately. Current source/index/target stays CDC-owned and quiet while root reviews the nine-path correction draft. No row closure or readable issue.
+
+### Correction iteration01 issued / history retained
+
+Root final readiness and preservation checks passed; reviewed-final draft preserved byte-exact, active prompt changed only its statusline. Original prompt/all initial failed and method records unchanged. This is total pass2of5, no reset. Nine-path author interval does not start from issue metadata alone; explicit intake+transfer follows. All rows OPEN.
