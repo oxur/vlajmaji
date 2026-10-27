@@ -430,12 +430,12 @@ pub struct DictionaryHitDetailResponse {
 pub struct DictionaryCompactSearchEngine {
     provider: DictionaryQueryProvider,
     document: lexicon::UnverifiedDictionaryDocument,
+    indices: borrowed::CompactIndices,
     state_sha256: String,
     overlay: Option<Vec<EntityId>>,
     selected: BTreeMap<SourceId, BTreeSet<String>>,
     availability: Vec<DictionaryCompactSourceAvailability>,
     source_map: BTreeMap<SourceId, lexicon::SourceRecord>,
-    source_order: Vec<SourceId>,
     snapshot_sha256: String,
 }
 
@@ -502,17 +502,14 @@ impl DictionaryCompactSearchEngine {
                 });
             }
         }
+        let (indices, (availability, selected)) =
+            borrowed::index_document(&document, overlay.as_deref())?;
         let registry = &document.registry;
-        let sources = super::unique_map(
-            registry
-                .sources
-                .iter()
-                .cloned()
-                .map(|source| (source.id.clone(), source)),
-            "source",
-        )?;
-        let source_order: Vec<_> = sources.keys().cloned().collect();
-        let (availability, selected) = borrowed::source_views(&document, overlay.as_deref())?;
+        let sources = registry
+            .sources
+            .iter()
+            .map(|source| (source.id.clone(), source.clone()))
+            .collect::<BTreeMap<_, _>>();
         let snapshot_sha256 = compact_snapshot_sha256(
             &state_sha256,
             generation.as_deref(),
@@ -522,12 +519,12 @@ impl DictionaryCompactSearchEngine {
         Ok(Self {
             provider,
             document,
+            indices,
             state_sha256,
             overlay,
             selected,
             availability,
             source_map: sources,
-            source_order,
             snapshot_sha256,
         })
     }
@@ -569,14 +566,15 @@ impl DictionaryCompactSearchEngine {
                 )
             }
             DictionaryRequest::Resolve { target } => {
-                let response = self.resolve(&target)?;
+                let (response, profile) = self.resolve_profiled(&target)?;
                 (
                     DictionaryCompactQueryResult::Resolve(Box::new(response)),
-                    DictionaryProjectionProfile::default(),
+                    profile,
                 )
             }
         };
         profile.total = started.elapsed();
+        profile.lookup = profile.total.saturating_sub(profile.projection);
         Ok((result, profile))
     }
     /// Query byte-exact spelling matches with compact hit bodies.
@@ -598,14 +596,10 @@ impl DictionaryCompactSearchEngine {
         let total_started = std::time::Instant::now();
         let lookup_started = std::time::Instant::now();
         let resolved_sources: Vec<SourceId> = if options.sources.is_empty() {
-            self.source_order
+            self.availability
                 .iter()
-                .filter(|source| {
-                    self.selected
-                        .get(*source)
-                        .is_some_and(|ids| !ids.is_empty())
-                })
-                .cloned()
+                .filter(|row| row.selectable)
+                .map(|row| row.source.id.clone())
                 .collect()
         } else {
             let mut result = BTreeSet::new();
@@ -639,47 +633,61 @@ impl DictionaryCompactSearchEngine {
         let sql = std::time::Instant::now();
         let candidate_ids = self.provider.exact_assertion_ids(spelling)?;
         let candidate_sql = sql.elapsed();
-        let mut rows = Vec::new();
-        for id in &candidate_ids {
-            let assertion = self
-                .document
-                .metadata
-                .assertions
-                .iter()
-                .find(|row| &row.id == id)
-                .ok_or_else(|| DictionaryQueryError::Integrity {
+        let mut candidate_keys: BTreeSet<String> =
+            candidate_ids.iter().map(ToString::to_string).collect();
+        let mut rows = Vec::<(usize, usize)>::new();
+        for id in std::mem::take(&mut candidate_keys) {
+            let assertion_index = *self.indices.assertions.get(&id).ok_or_else(|| {
+                DictionaryQueryError::Integrity {
                     detail: format!(
                         "SQL candidate {id} is absent from the loaded dictionary draft"
                     ),
-                })?;
-            let entry = self
-                .document
-                .metadata
-                .entries
-                .iter()
-                .find(|row| row.id == assertion.entry)
-                .ok_or_else(|| DictionaryQueryError::Integrity {
-                    detail: format!("assertion {} references missing entry", assertion.id),
-                })?;
-            if !resolved_sources.contains(&entry.source)
-                || !self
-                    .selected
-                    .get(&entry.source)
-                    .is_some_and(|ids| ids.contains(&id.to_string()))
-                || !matches!(assertion.eligibility, lexicon::Eligibility::Lexical)
-            {
+                }
+            })?;
+            let assertion = &self.document.metadata.assertions[assertion_index];
+            let selected_for_source = resolved_sources.iter().any(|source| {
+                self.selected
+                    .get(source)
+                    .is_some_and(|ids| ids.contains(id.as_str()))
+            });
+            if !selected_for_source {
                 continue;
             }
-            rows.push((entry.source.clone(), entry.clone(), assertion.clone()));
+            if !matches!(assertion.eligibility, lexicon::Eligibility::Lexical) {
+                continue;
+            }
+            let entry_id = assertion.entry.to_string();
+            let entry_index = *self.indices.entries.get(&entry_id).ok_or_else(|| {
+                DictionaryQueryError::Integrity {
+                    detail: format!("assertion {} references missing entry", assertion.id),
+                }
+            })?;
+            rows.push((entry_index, assertion_index));
         }
-        rows.sort_by_key(|(_, entry, assertion)| {
-            (
-                entry.source.to_string(),
-                presence_value(&entry.spelling).cloned().unwrap_or_default(),
-                super::tuple_hex(&assertion.occurrence),
-                assertion.id.to_string(),
-            )
-        });
+        rows.sort_by(
+            |(left_entry, left_assertion), (right_entry, right_assertion)| {
+                let left_entry = &self.document.metadata.entries[*left_entry];
+                let right_entry = &self.document.metadata.entries[*right_entry];
+                let left_assertion = &self.document.metadata.assertions[*left_assertion];
+                let right_assertion = &self.document.metadata.assertions[*right_assertion];
+                (
+                    &left_entry.source,
+                    presence_value(&left_entry.spelling)
+                        .map(String::as_str)
+                        .unwrap_or(""),
+                    super::tuple_hex(&left_assertion.occurrence),
+                    left_assertion.id.to_string(),
+                )
+                    .cmp(&(
+                        &right_entry.source,
+                        presence_value(&right_entry.spelling)
+                            .map(String::as_str)
+                            .unwrap_or(""),
+                        super::tuple_hex(&right_assertion.occurrence),
+                        right_assertion.id.to_string(),
+                    ))
+            },
+        );
         let lookup = lookup_started.elapsed();
         let projection_started = std::time::Instant::now();
         let total = rows.len();
@@ -687,21 +695,29 @@ impl DictionaryCompactSearchEngine {
         let mut groups = Vec::new();
         let mut offset = 0usize;
         if let Some(cursor) = options.cursor.as_deref() {
-            offset = cursor_position(cursor, &cursor_binding, spelling, &rows)?;
+            offset = cursor_position(cursor, &cursor_binding, spelling, &rows, &self.document)?;
         }
         let page_end = options
             .page_size
             .map_or(total, |size| offset.saturating_add(size).min(total));
         let selected_rows = &rows[offset.min(total)..page_end];
         let mut by_source: BTreeMap<SourceId, Vec<DictionaryCompactHit>> = BTreeMap::new();
-        for (source, entry, assertion) in selected_rows {
+        for (entry_index, assertion_index) in selected_rows {
+            let entry = &self.document.metadata.entries[*entry_index];
+            let assertion = &self.document.metadata.assertions[*assertion_index];
+            let source = &entry.source;
             by_source
                 .entry(source.clone())
                 .or_default()
                 .push(self.compact_hit(entry, assertion)?);
         }
         for source in &resolved_sources {
-            let count = rows.iter().filter(|(id, _, _)| id == source).count();
+            let count = rows
+                .iter()
+                .filter(|(entry_index, _)| {
+                    self.document.metadata.entries[*entry_index].source == *source
+                })
+                .count();
             if count == 0 {
                 continue;
             }
@@ -718,7 +734,7 @@ impl DictionaryCompactSearchEngine {
                 distinct_spellings: 1,
             });
             let hits = by_source.remove(source).unwrap_or_default();
-            if !selected_rows.is_empty() {
+            if !hits.is_empty() {
                 groups.push(DictionaryCompactGroup {
                     source: record,
                     full_count: count,
@@ -729,7 +745,9 @@ impl DictionaryCompactSearchEngine {
             }
         }
         let next_cursor = if page_end < total {
-            selected_rows.last().map(|(_, entry, assertion)| {
+            selected_rows.last().map(|(entry_index, assertion_index)| {
+                let entry = &self.document.metadata.entries[*entry_index];
+                let assertion = &self.document.metadata.assertions[*assertion_index];
                 make_cursor(
                     &cursor_binding,
                     spelling,
@@ -781,6 +799,46 @@ impl DictionaryCompactSearchEngine {
         &self,
         target: &RelationTarget,
     ) -> Result<DictionaryCompactReferenceResolution, DictionaryQueryError> {
+        self.resolve_inner(target, None)
+    }
+
+    /// Resolve a reference and report lookup and response-projection timings.
+    fn resolve_profiled(
+        &self,
+        target: &RelationTarget,
+    ) -> Result<
+        (
+            DictionaryCompactReferenceResolution,
+            DictionaryProjectionProfile,
+        ),
+        DictionaryQueryError,
+    > {
+        let started = std::time::Instant::now();
+        let mut projection = Duration::ZERO;
+        let response = self.resolve_inner(target, Some(&mut projection))?;
+        let total = started.elapsed();
+        let lookup = total.saturating_sub(projection);
+        Ok((
+            response,
+            DictionaryProjectionProfile {
+                total,
+                lookup,
+                projection,
+                candidate_sql: Duration::ZERO,
+            },
+        ))
+    }
+
+    fn resolve_inner(
+        &self,
+        target: &RelationTarget,
+        mut projection: Option<&mut Duration>,
+    ) -> Result<DictionaryCompactReferenceResolution, DictionaryQueryError> {
+        let projection_started = projection.as_ref().map(|_| std::time::Instant::now());
+        let availability = self.availability.clone();
+        if let (Some(projection), Some(started)) = (projection.as_deref_mut(), projection_started) {
+            *projection += started.elapsed();
+        }
         let (status, entity, assertions, unverified, requested_release) = match target {
             RelationTarget::Unknown => (
                 super::ReferenceStatus::Unknown,
@@ -800,7 +858,7 @@ impl DictionaryCompactSearchEngine {
                 None,
             ),
             RelationTarget::Local(local) => {
-                let (entity, rows) = self.resolve_local(local)?;
+                let (entity, rows) = self.resolve_local(local, projection.as_deref_mut())?;
                 (
                     super::ReferenceStatus::Resolved,
                     Some(entity),
@@ -809,9 +867,12 @@ impl DictionaryCompactSearchEngine {
                     None,
                 )
             }
-            RelationTarget::Catalog(catalog) => self.resolve_catalog(catalog)?,
+            RelationTarget::Catalog(catalog) => {
+                self.resolve_catalog(catalog, projection.as_deref_mut())?
+            }
         };
-        Ok(DictionaryCompactReferenceResolution {
+        let projection_started = projection.as_ref().map(|_| std::time::Instant::now());
+        let response = DictionaryCompactReferenceResolution {
             version: 1,
             projection_policy: COMPACT_POLICY.into(),
             state_sha256: self.state_sha256.clone(),
@@ -821,14 +882,19 @@ impl DictionaryCompactSearchEngine {
             entity,
             confirmed: assertions,
             unverified,
-            availability: self.availability.clone(),
+            availability,
             requested_release,
-        })
+        };
+        if let (Some(projection), Some(started)) = (projection, projection_started) {
+            *projection += started.elapsed();
+        }
+        Ok(response)
     }
 
     fn resolve_local(
         &self,
         local: &lexicon::LocalRef,
+        mut projection: Option<&mut Duration>,
     ) -> Result<
         (
             vlajmaji_store::CollectionEntityReference,
@@ -973,6 +1039,7 @@ impl DictionaryCompactSearchEngine {
                     .map(|row| row.source.to_string())
             })
             .collect();
+        let projection_started = projection.as_ref().map(|_| std::time::Instant::now());
         let entity = vlajmaji_store::CollectionEntityReference {
             role: role.to_owned(),
             id: id.to_string(),
@@ -992,23 +1059,29 @@ impl DictionaryCompactSearchEngine {
             evidence: None,
             spelling,
         };
-        let views = assertion_ids
-            .iter()
-            .filter_map(|id| {
-                self.document
-                    .metadata
-                    .assertions
-                    .iter()
-                    .find(|row| row.id.to_string() == *id)
-            })
-            .map(|row| self.reference_assertion(row))
-            .collect::<Result<Vec<_>, _>>()?;
+        if let (Some(projection), Some(started)) = (projection.as_deref_mut(), projection_started) {
+            *projection += started.elapsed();
+        }
+        let mut views = Vec::with_capacity(assertion_ids.len());
+        for id in &assertion_ids {
+            let Some(row) = self
+                .document
+                .metadata
+                .assertions
+                .iter()
+                .find(|row| row.id.to_string() == *id)
+            else {
+                continue;
+            };
+            views.push(self.reference_assertion(row, projection.as_deref_mut())?);
+        }
         Ok((entity, views))
     }
 
     fn reference_assertion(
         &self,
         assertion: &lexicon::AssertionRecord,
+        projection: Option<&mut Duration>,
     ) -> Result<DictionaryCompactReferenceAssertion, DictionaryQueryError> {
         let entry = self
             .document
@@ -1025,28 +1098,22 @@ impl DictionaryCompactSearchEngine {
             .registry
             .occurrences
             .iter()
-            .find(|row| super::record_key(&row.occurrence) == occurrence_id)
-            .cloned();
+            .find(|row| super::record_key(&row.occurrence) == occurrence_id);
         let capture = self
             .document
             .captures
             .iter()
             .find(|row| row.identity == assertion.occurrence.capture);
-        let snapshot_attribution = self
-            .document
-            .registry
-            .snapshots
-            .iter()
-            .find(|row| {
-                row.snapshot.namespace() == assertion.occurrence.capture.namespace
-                    && row.snapshot.sha256() == assertion.occurrence.capture.sha256
-            })
-            .cloned();
+        let snapshot_attribution = self.document.registry.snapshots.iter().find(|row| {
+            row.snapshot.namespace() == assertion.occurrence.capture.namespace
+                && row.snapshot.sha256() == assertion.occurrence.capture.sha256
+        });
         let current_eligible = matches!(assertion.eligibility, lexicon::Eligibility::Lexical)
             && self
                 .selected
                 .get(&entry.source)
                 .is_some_and(|ids| ids.contains(&assertion.id.to_string()));
+        let projection_started = projection.as_ref().map(|_| std::time::Instant::now());
         let detail_ref = if capture.is_some() {
             Some(DictionaryHitDetailRef {
                 version: 1,
@@ -1074,13 +1141,13 @@ impl DictionaryCompactSearchEngine {
         } else {
             None
         };
-        Ok(DictionaryCompactReferenceAssertion {
+        let projected = DictionaryCompactReferenceAssertion {
             entry: entry.clone(),
             assertion: assertion.clone(),
             occurrence_id,
-            occurrence_attribution,
+            occurrence_attribution: occurrence_attribution.cloned(),
             capture_metadata: capture.map(|row| row.metadata.clone()),
-            snapshot_attribution,
+            snapshot_attribution: snapshot_attribution.cloned(),
             payload_present: capture.is_some_and(|row| {
                 row.occurrences
                     .iter()
@@ -1118,12 +1185,17 @@ impl DictionaryCompactSearchEngine {
                 .map(|row| row.id.clone())
                 .collect(),
             detail_ref,
-        })
+        };
+        if let (Some(projection), Some(started)) = (projection, projection_started) {
+            *projection += started.elapsed();
+        }
+        Ok(projected)
     }
 
     fn resolve_catalog(
         &self,
         catalog: &lexicon::CatalogTarget,
+        mut projection: Option<&mut Duration>,
     ) -> Result<CompactCatalogResolution, DictionaryQueryError> {
         let metadata = &self.document.metadata;
         let release = metadata
@@ -1209,10 +1281,11 @@ impl DictionaryCompactSearchEngine {
                 .iter()
                 .any(|(expected, actual)| expected.is_some() && actual.is_none())
             {
-                unverified_views.push(self.reference_assertion(assertion)?);
+                unverified_views
+                    .push(self.reference_assertion(assertion, projection.as_deref_mut())?);
                 continue;
             }
-            confirmed.push(self.reference_assertion(assertion)?);
+            confirmed.push(self.reference_assertion(assertion, projection.as_deref_mut())?);
         }
         let status = if confirmed.is_empty() && unverified_views.is_empty() {
             if release.availability == Availability::Available {
@@ -1225,12 +1298,16 @@ impl DictionaryCompactSearchEngine {
         } else {
             super::ReferenceStatus::Resolved
         };
+        let projection_started = projection.as_ref().map(|_| std::time::Instant::now());
         let requested_release = self
             .availability
             .iter()
             .flat_map(|row| &row.releases)
             .find(|row| row.id == release.id.to_string())
             .cloned();
+        if let (Some(projection), Some(started)) = (projection, projection_started) {
+            *projection += started.elapsed();
+        }
         Ok((status, None, confirmed, unverified_views, requested_release))
     }
     /// Resolve a detail key and materialize the complete hit on demand.
@@ -1852,6 +1929,10 @@ fn validate_detail_reference(
         Some(DictionaryDetailReferenceInvalidity::WrongRole)
     } else if !valid_sha256(&reference.entry_sha256) || !valid_sha256(&reference.assertion_sha256) {
         Some(DictionaryDetailReferenceInvalidity::InvalidDigest)
+    } else if reference.occurrence.capture.namespace.is_empty()
+        || !valid_sha256(&reference.occurrence.capture.sha256)
+    {
+        Some(DictionaryDetailReferenceInvalidity::InvalidCapture)
     } else if reference.occurrence.locator.is_empty() {
         Some(DictionaryDetailReferenceInvalidity::EmptyLocator)
     } else {
@@ -1875,7 +1956,7 @@ fn compact_snapshot_sha256(
         recorded_state_sha256: &'a str,
         generation: Option<&'a str>,
         selected_release_ids: Option<&'a [EntityId]>,
-        sources: Vec<CompactSnapshotSource<'a>>,
+        availability: Vec<CompactSnapshotSource<'a>>,
     }
     #[derive(Serialize)]
     struct CompactSnapshotSource<'a> {
@@ -1909,7 +1990,7 @@ fn compact_snapshot_sha256(
         recorded_state_sha256: state,
         generation,
         selected_release_ids: ids.as_deref(),
-        sources,
+        availability: sources,
     })
     .map_err(|error| DictionaryQueryError::Integrity {
         detail: format!("serialize compact snapshot: {error}"),
@@ -1965,7 +2046,8 @@ fn cursor_position(
     cursor: &str,
     binding: &str,
     spelling: &str,
-    rows: &[(SourceId, EntryRecord, lexicon::AssertionRecord)],
+    rows: &[(usize, usize)],
+    document: &lexicon::UnverifiedDictionaryDocument,
 ) -> Result<usize, DictionaryQueryError> {
     let Some(hex_data) = cursor.strip_prefix("dictionary-compact-v1:") else {
         return if is_valid_foreign_cursor(cursor) {
@@ -2009,8 +2091,10 @@ fn cursor_position(
         return Err(DictionaryQueryError::InvalidCursorPosition);
     }
     rows.iter()
-        .position(|(source, entry, assertion)| {
-            source == &envelope.body.last.source
+        .position(|(entry_index, assertion_index)| {
+            let entry = &document.metadata.entries[*entry_index];
+            let assertion = &document.metadata.assertions[*assertion_index];
+            entry.source == envelope.body.last.source
                 && presence_value(&entry.spelling).is_some_and(|value| value == spelling)
                 && super::tuple_hex(&assertion.occurrence) == envelope.body.last.occurrence_id
                 && assertion.id.to_string() == envelope.body.last.assertion_id

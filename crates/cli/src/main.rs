@@ -1433,18 +1433,14 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
             profile,
             pack,
         } => {
-            let location_packs = pack
-                .iter()
-                .filter_map(|value| parse_collection_pack(value).ok())
-                .collect::<Vec<_>>();
             let detail_ref = DictionaryHitDetailRef::from_json_bytes(reference.as_bytes())
                 .map_err(|error| {
                     managed_pre_config_error(
                         "invalid_detail_reference",
                         error.to_string(),
                         "lookup_detail",
-                        profile.as_deref(),
-                        &location_packs,
+                        None,
+                        &[],
                     )
                 })?;
             if let Some(snapshot) = expected_snapshot.as_deref() {
@@ -1453,11 +1449,15 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                         "malformed_snapshot",
                         error.to_string(),
                         "lookup_detail",
-                        profile.as_deref(),
-                        &location_packs,
+                        None,
+                        &[],
                     )
                 })?;
             }
+            let location_packs = pack
+                .iter()
+                .filter_map(|value| parse_collection_pack(value).ok())
+                .collect::<Vec<_>>();
             let config_path = resolve_config_path(config.as_deref()).map_err(|error| {
                 config_location_error(
                     error,

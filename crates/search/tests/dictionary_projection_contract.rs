@@ -21,9 +21,9 @@ use vlajmaji_lexicon::{
 };
 use vlajmaji_search::{
     CollectionCompactQueryResult, CollectionCompactSearchEngine, CollectionQueryResult,
-    CollectionQuerySelection, CollectionSearchEngine, DictionaryCompactSearchEngine,
-    DictionaryDetailReferenceInvalidity, DictionaryExactOptions, DictionaryProjectionError,
-    DictionaryQueryError, DictionaryRequest, DictionarySearchEngine,
+    CollectionQuerySelection, CollectionSearchEngine, DictionaryCompactQueryResult,
+    DictionaryCompactSearchEngine, DictionaryDetailReferenceInvalidity, DictionaryExactOptions,
+    DictionaryProjectionError, DictionaryQueryError, DictionaryRequest, DictionarySearchEngine,
 };
 use vlajmaji_store::{
     CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection, DictionaryStore,
@@ -379,6 +379,109 @@ fn compact_exact_matches_full_occurrences_and_detail_roundtrips() {
 }
 
 #[test]
+fn test_resolve_profiled_local_projection_positive_and_balanced() {
+    let root = scratch();
+    let store = root.join("dictionary.sqlite3");
+    let dictionary = fixture::complete_fixture().unwrap();
+    let entry = dictionary.document().metadata.entries[0].id.clone();
+    let bytes = dictionary.to_json_bytes().unwrap();
+    let full_engine = DictionarySearchEngine::build(&store, &bytes).unwrap();
+    let compact_engine = DictionaryCompactSearchEngine::open(&store).unwrap();
+    let target = RelationTarget::Local(vlajmaji_lexicon::LocalRef::Entry(entry));
+
+    let (full, full_profile) = full_engine.resolve_profiled(&target).unwrap();
+    let (compact_result, compact_profile) = compact_engine
+        .execute_profiled(DictionaryRequest::Resolve {
+            target: target.clone(),
+        })
+        .unwrap();
+    let DictionaryCompactQueryResult::Resolve(compact) = compact_result else {
+        panic!("compact engine returned an exact response for a reference target");
+    };
+    assert_eq!(full.status, vlajmaji_search::ReferenceStatus::Resolved);
+    assert_eq!(compact.status, vlajmaji_search::ReferenceStatus::Resolved);
+    assert!(full_profile.projection > std::time::Duration::ZERO);
+    assert!(compact_profile.projection > std::time::Duration::ZERO);
+    assert_eq!(
+        full_profile.total,
+        full_profile.lookup + full_profile.projection
+    );
+    assert_eq!(
+        compact_profile.total,
+        compact_profile.lookup + compact_profile.projection
+    );
+    assert_eq!(full_profile.candidate_sql, std::time::Duration::ZERO);
+    assert_eq!(compact_profile.candidate_sql, std::time::Duration::ZERO);
+
+    let document = dictionary.document();
+    let (catalog_release, catalog_assertion) = document
+        .metadata
+        .releases
+        .iter()
+        .filter(|release| {
+            release.selected && release.availability == vlajmaji_lexicon::Availability::Available
+        })
+        .find_map(|release| {
+            document
+                .metadata
+                .assertions
+                .iter()
+                .find(|assertion| release.assertions.contains(&assertion.id))
+                .map(|assertion| (release, assertion))
+        })
+        .expect("fixture has a selected available release with an assertion");
+    let catalog_entry = document
+        .metadata
+        .entries
+        .iter()
+        .find(|entry| entry.id == catalog_assertion.entry)
+        .expect("catalogue assertion has its Entry");
+    let catalog_target = RelationTarget::Catalog(vlajmaji_lexicon::CatalogTarget {
+        source: catalog_entry.source.clone(),
+        release: catalog_release.id.clone(),
+        native_entry_id: None,
+        native_assertion_id: None,
+        occurrence: Some(catalog_assertion.occurrence.clone()),
+    });
+    let (full_catalog, full_catalog_profile) =
+        full_engine.resolve_profiled(&catalog_target).unwrap();
+    let (compact_catalog, compact_catalog_profile) = compact_engine
+        .execute_profiled(DictionaryRequest::Resolve {
+            target: catalog_target,
+        })
+        .unwrap();
+    let DictionaryCompactQueryResult::Resolve(compact_catalog) = compact_catalog else {
+        panic!("compact engine returned an exact response for a Catalog target");
+    };
+    assert_eq!(
+        full_catalog.status,
+        vlajmaji_search::ReferenceStatus::Resolved
+    );
+    assert_eq!(
+        compact_catalog.status,
+        vlajmaji_search::ReferenceStatus::Resolved
+    );
+    assert!(full_catalog_profile.projection > std::time::Duration::ZERO);
+    assert!(compact_catalog_profile.projection > std::time::Duration::ZERO);
+    assert_eq!(
+        full_catalog_profile.total,
+        full_catalog_profile.lookup + full_catalog_profile.projection
+    );
+    assert_eq!(
+        compact_catalog_profile.total,
+        compact_catalog_profile.lookup + compact_catalog_profile.projection
+    );
+    assert_eq!(
+        full_catalog_profile.candidate_sql,
+        std::time::Duration::ZERO
+    );
+    assert_eq!(
+        compact_catalog_profile.candidate_sql,
+        std::time::Duration::ZERO
+    );
+}
+
+#[test]
 fn test_full_exact_surfaces_corrupt_candidate_beyond_selected_page() {
     let root = scratch();
     let store = root.join("dictionary.sqlite3");
@@ -630,6 +733,164 @@ fn test_full_exact_validates_unselected_sql_candidates_before_source_filtering()
         matches!(result, Err(DictionaryQueryError::Integrity { .. })),
         "an invalid SQL candidate from an unselected source must be checked before source filtering: {result:?}"
     );
+    fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_selected_missing_entry_fails_but_unselected_candidate_is_skipped_after_lookup() {
+    let root = scratch();
+    let store = root.join("dictionary.sqlite3");
+    let database = store.join("dictionary.sqlite3");
+    let dictionary = fixture::complete_fixture().unwrap();
+    DictionaryStore::create(&store, &dictionary).unwrap();
+    let original_database = fs::read(&database).unwrap();
+
+    let mut document = unverified_document(&dictionary);
+    let missing = document
+        .metadata
+        .assertions
+        .iter()
+        .find_map(|assertion| {
+            let entry = document.metadata.entries.iter().find(|entry| {
+                entry.id == assertion.entry
+                    && entry.source.as_str() == "source-b"
+                    && matches!(
+                        &entry.spelling,
+                        vlajmaji_lexicon::Presence::Value(spelling) if spelling == "farvi"
+                    )
+            })?;
+            Some((entry.id.clone(), assertion.id.clone()))
+        })
+        .expect("source-b has a farvi Entry and Assertion in the pre-input fixture");
+    document
+        .metadata
+        .entries
+        .retain(|entry| entry.id != missing.0);
+    let canonical = serde_json::to_vec(&document).unwrap();
+    let digest = sha256(&canonical);
+    let encoded = canonical
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
+        .collect::<String>();
+    let mutation = Command::new("sqlite3")
+        .arg(&database)
+        .arg(format!(
+            "UPDATE canonical_document SET json=X'{encoded}' WHERE id=1; UPDATE metadata SET value='{digest}' WHERE key='canonical_sha256'; SELECT changes();"
+        ))
+        .output()
+        .unwrap();
+    assert!(
+        mutation.status.success(),
+        "canonical Entry removal failed: {}",
+        String::from_utf8_lossy(&mutation.stderr)
+    );
+    assert_eq!(String::from_utf8_lossy(&mutation.stdout).trim(), "1");
+
+    let full = DictionarySearchEngine::open(&store).unwrap();
+    let compact = DictionaryCompactSearchEngine::open(&store).unwrap();
+    {
+        let sources = vec!["source-a".to_owned()];
+        let full_result = full
+            .exact(
+                "farvi",
+                DictionaryExactOptions {
+                    sources: sources.clone(),
+                    ..Default::default()
+                },
+            )
+            .unwrap();
+        assert!(
+            full_result
+                .groups
+                .iter()
+                .flat_map(|group| &group.hits)
+                .all(|hit| hit.assertion.id != missing.1)
+        );
+        let compact_result = compact
+            .exact(
+                "farvi",
+                DictionaryExactOptions {
+                    sources,
+                    ..Default::default()
+                },
+            )
+            .unwrap();
+        assert!(
+            compact_result
+                .groups
+                .iter()
+                .flat_map(|group| &group.hits)
+                .all(|hit| hit.assertion.id != missing.1)
+        );
+    }
+    drop(full);
+    drop(compact);
+
+    let full = DictionarySearchEngine::open(&store).unwrap();
+    let compact = DictionaryCompactSearchEngine::open(&store).unwrap();
+    assert!(matches!(
+        full.exact(
+            "farvi",
+            DictionaryExactOptions {
+                sources: vec!["source-b".into()],
+                ..Default::default()
+            }
+        ),
+        Err(DictionaryQueryError::Integrity { .. })
+    ));
+    assert!(matches!(
+        compact.exact(
+            "farvi",
+            DictionaryExactOptions {
+                sources: vec!["source-b".into()],
+                ..Default::default()
+            }
+        ),
+        Err(DictionaryQueryError::Integrity { .. })
+    ));
+    drop(full);
+    drop(compact);
+
+    let mutation = Command::new("sqlite3")
+        .arg(&database)
+        .arg(format!(
+            "UPDATE assertions SET id='zz-unknown-unselected-sql-id' WHERE id='{}'; SELECT changes();",
+            missing.1
+        ))
+        .output()
+        .unwrap();
+    assert!(
+        mutation.status.success(),
+        "unknown SQL candidate mutation failed: {}",
+        String::from_utf8_lossy(&mutation.stderr)
+    );
+    assert_eq!(String::from_utf8_lossy(&mutation.stdout).trim(), "1");
+    let full = DictionarySearchEngine::open(&store).unwrap();
+    let compact = DictionaryCompactSearchEngine::open(&store).unwrap();
+    assert!(matches!(
+        full.exact(
+            "farvi",
+            DictionaryExactOptions {
+                sources: vec!["source-a".into()],
+                ..Default::default()
+            }
+        ),
+        Err(DictionaryQueryError::Integrity { .. })
+    ));
+    assert!(matches!(
+        compact.exact(
+            "farvi",
+            DictionaryExactOptions {
+                sources: vec!["source-a".into()],
+                ..Default::default()
+            }
+        ),
+        Err(DictionaryQueryError::Integrity { .. })
+    ));
+    drop(full);
+    drop(compact);
+
+    fs::write(&database, original_database).unwrap();
     fs::remove_dir_all(root).unwrap();
 }
 
@@ -1278,6 +1539,15 @@ fn compact_managed_catalog_reference_uses_targeted_projection() {
     assert_eq!(profiled_exact.totals.occurrences, expected_farvi);
     assert!(first_profile.payload_setup.is_some());
     assert!(first_profile.total >= first_profile.query.total);
+    assert_eq!(
+        first_profile.total - first_profile.payload_setup.unwrap().total,
+        first_profile.query.total
+    );
+    assert_eq!(
+        first_profile.query.lookup + first_profile.query.projection,
+        first_profile.query.total
+    );
+    assert!(first_profile.query.candidate_sql <= first_profile.query.lookup);
 
     let response = engine
         .execute_profiled(DictionaryRequest::Resolve {
@@ -1290,6 +1560,13 @@ fn compact_managed_catalog_reference_uses_targeted_projection() {
         "profile={:?}",
         response.1
     );
+    assert_eq!(response.1.total, response.1.query.total);
+    assert_eq!(
+        response.1.query.lookup + response.1.query.projection,
+        response.1.query.total
+    );
+    assert!(response.1.query.projection > std::time::Duration::ZERO);
+    assert!(response.1.query.candidate_sql <= response.1.query.lookup);
     let response = response.0;
     let CollectionCompactQueryResult::Resolve(response) = response.result else {
         panic!("expected a managed compact Resolve response");
@@ -1483,6 +1760,36 @@ fn compact_managed_catalog_reference_uses_targeted_projection() {
     assert_eq!(full_profiled.totals.occurrences, expected_farvi);
     assert!(full_profile.payload_setup.is_some());
     assert!(full_profile.total >= full_profile.query.total);
+    assert_eq!(
+        full_profile.total - full_profile.payload_setup.unwrap().total,
+        full_profile.query.total
+    );
+    assert_eq!(
+        full_profile.query.lookup + full_profile.query.projection,
+        full_profile.query.total
+    );
+    assert!(full_profile.query.candidate_sql <= full_profile.query.lookup);
+
+    let (profiled_resolve, resolve_profile) = full_engine
+        .execute_profiled(DictionaryRequest::Resolve {
+            target: target.clone(),
+        })
+        .unwrap();
+    assert!(resolve_profile.payload_setup.is_none());
+    assert_eq!(resolve_profile.total, resolve_profile.query.total);
+    assert_eq!(
+        resolve_profile.query.lookup + resolve_profile.query.projection,
+        resolve_profile.query.total
+    );
+    assert!(resolve_profile.query.projection > std::time::Duration::ZERO);
+    assert!(resolve_profile.query.candidate_sql <= resolve_profile.query.lookup);
+    let CollectionQueryResult::Resolve(profiled_resolve) = profiled_resolve.result else {
+        panic!("expected a managed full Resolve response");
+    };
+    assert_eq!(
+        profiled_resolve.status,
+        vlajmaji_search::ReferenceStatus::Resolved
+    );
 
     let full_page_options = DictionaryExactOptions {
         page_size: Some(1),
@@ -2428,6 +2735,50 @@ fn compact_four_literal_install_matches_preinput_typed_family_union() {
     let full = full_engine
         .exact("farvi", DictionaryExactOptions::default())
         .unwrap();
+    #[derive(Serialize)]
+    struct ExpectedSnapshot<'a> {
+        version: u32,
+        policy: &'static str,
+        recorded_state_sha256: &'a str,
+        generation: Option<&'a str>,
+        selected_release_ids: Option<&'a [vlajmaji_lexicon::EntityId]>,
+        availability: Vec<ExpectedAvailability<'a>>,
+    }
+    #[derive(Serialize)]
+    struct ExpectedAvailability<'a> {
+        source_id: &'a vlajmaji_lexicon::SourceId,
+        selected_available_release_ids: Vec<&'a vlajmaji_lexicon::EntityId>,
+        loaded_captures: &'a [vlajmaji_lexicon::CaptureRef],
+        missing_captures: &'a [vlajmaji_lexicon::CaptureRef],
+        owned_head: Option<&'a vlajmaji_lexicon::OwnedHead>,
+        selectable: bool,
+        reason: Option<vlajmaji_search::SourceSelectionFailure>,
+    }
+    let expected_snapshot = ExpectedSnapshot {
+        version: 1,
+        policy: "compact-dictionary-v1",
+        recorded_state_sha256: compact.state_sha256(),
+        generation: None,
+        selected_release_ids: None,
+        availability: full
+            .availability
+            .iter()
+            .map(|row| ExpectedAvailability {
+                source_id: &row.source.id,
+                selected_available_release_ids: row.selected_available_release_ids.iter().collect(),
+                loaded_captures: &row.loaded_captures,
+                missing_captures: &row.missing_captures,
+                owned_head: row.owned_head.as_ref(),
+                selectable: row.selectable,
+                reason: row.reason,
+            })
+            .collect(),
+    };
+    assert_eq!(
+        compact.snapshot_sha256(),
+        sha256(&serde_json::to_vec(&expected_snapshot).unwrap()),
+        "the compact snapshot hashes the declared availability body"
+    );
     assert_eq!(result.totals, full.totals);
     assert_eq!(result.source_totals, full.source_totals);
     assert_eq!(

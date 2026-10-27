@@ -755,6 +755,12 @@ impl CollectionSearchEngine {
         let mut profile = CollectionProjectionProfile::default();
         let response = self.execute_inner(request, Some(&mut profile))?;
         profile.total = started.elapsed();
+        profile.query.total = profile.total.saturating_sub(
+            profile
+                .payload_setup
+                .map_or(Duration::ZERO, |setup| setup.total),
+        );
+        profile.query.lookup = profile.query.total.saturating_sub(profile.query.projection);
         Ok((response, profile))
     }
 
@@ -795,22 +801,38 @@ impl CollectionSearchEngine {
                     engine.exact(&spelling, options)?
                 };
                 if let Some(cursor) = response.next_cursor.take() {
+                    let projection_started = profile.as_ref().map(|_| Instant::now());
                     response.next_cursor =
                         Some(wrap_cursor(&cursor, &self.snapshot.binding_sha256)?);
+                    if let (Some(profile), Some(started)) =
+                        (profile.as_deref_mut(), projection_started)
+                    {
+                        profile.query.projection += started.elapsed();
+                    }
                 }
-                Ok(self.response(CollectionQueryResult::Exact(Box::new(response))))
+                let projection_started = profile.as_ref().map(|_| Instant::now());
+                let response = self.response(CollectionQueryResult::Exact(Box::new(response)));
+                if let (Some(profile), Some(started)) = (profile, projection_started) {
+                    profile.query.projection += started.elapsed();
+                }
+                Ok(response)
             }
             DictionaryRequest::Resolve { target } => {
                 let query_started = Instant::now();
                 let response = self.resolve_target(target, profile.as_deref_mut())?;
-                if let Some(profile) = profile {
+                if let Some(profile) = profile.as_deref_mut() {
                     profile.query.total = query_started.elapsed().saturating_sub(
                         profile
                             .payload_setup
                             .map_or(Duration::ZERO, |setup| setup.total),
                     );
                 }
-                Ok(self.response(CollectionQueryResult::Resolve(Box::new(response))))
+                let projection_started = profile.as_ref().map(|_| Instant::now());
+                let response = self.response(CollectionQueryResult::Resolve(Box::new(response)));
+                if let (Some(profile), Some(started)) = (profile, projection_started) {
+                    profile.query.projection += started.elapsed();
+                }
+                Ok(response)
             }
         }
     }
@@ -895,7 +917,7 @@ impl CollectionSearchEngine {
     fn resolve_target(
         &mut self,
         target: RelationTarget,
-        profile: Option<&mut CollectionProjectionProfile>,
+        mut profile: Option<&mut CollectionProjectionProfile>,
     ) -> Result<CollectionReferenceResponse, CollectionQueryError> {
         match &target {
             RelationTarget::Unknown => {
@@ -931,13 +953,19 @@ impl CollectionSearchEngine {
         if let Some((pack, release)) = self.selected_payload_for_target(&target, &matches.admission)
         {
             let _ = (pack, release);
-            self.ensure_payload(profile)?;
+            self.ensure_payload(profile.as_deref_mut())?;
             let engine = self.payload.as_ref().ok_or_else(|| {
                 CollectionQueryError::Query(DictionaryQueryError::Integrity {
                     detail: "payload engine is unavailable after setup".into(),
                 })
             })?;
-            let mut payload = engine.resolve(&target)?;
+            let mut payload = if let Some(profile) = profile {
+                let (payload, query_profile) = engine.resolve_profiled(&target)?;
+                profile.query.projection += query_profile.projection;
+                payload
+            } else {
+                engine.resolve(&target)?
+            };
             if matches!(target, RelationTarget::Local(_)) {
                 let admitted: BTreeSet<String> = matches
                     .admission

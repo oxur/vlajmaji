@@ -250,6 +250,12 @@ fn test_dictionary_compact_query_and_detail_keep_full_default() {
     let mut empty_locator = detail_ref.clone();
     empty_locator["occurrence"]["locator"] = Value::String(String::new());
     invalid_detail_cases.push(empty_locator);
+    let mut empty_capture_namespace = detail_ref.clone();
+    empty_capture_namespace["occurrence"]["capture"]["namespace"] = Value::String(String::new());
+    invalid_detail_cases.push(empty_capture_namespace);
+    let mut invalid_capture_digest = detail_ref.clone();
+    invalid_capture_digest["occurrence"]["capture"]["sha256"] = Value::String("A".repeat(64));
+    invalid_detail_cases.push(invalid_capture_digest);
     for invalid_reference in invalid_detail_cases {
         let invalid = run_strings(&[
             "dictionary-detail",
@@ -344,10 +350,10 @@ fn test_dictionary_compact_query_and_detail_keep_full_default() {
     assert_eq!(managed_error["error"]["config_path"], Value::Null);
     assert_eq!(managed_error["error"]["root_path"], Value::Null);
     assert_eq!(managed_error["error"]["profile"], Value::Null);
-    assert_eq!(managed_error["error"]["requested_profile"], "requested");
+    assert!(managed_error["error"]["requested_profile"].is_null());
     assert_eq!(
         managed_error["error"]["known_pack_ids"],
-        serde_json::json!(["llg"])
+        serde_json::json!([])
     );
     assert!(managed_error["error"]["writer"].is_null());
     for key in [
@@ -370,6 +376,54 @@ fn test_dictionary_compact_query_and_detail_keep_full_default() {
             "missing field {key}"
         );
     }
+    let malformed_snapshot = run_strings(&[
+        "lookup-detail",
+        "--reference",
+        &detail_ref.to_string(),
+        "--expected-snapshot",
+        "not-a-digest",
+        "--config",
+        root.join("missing-config.toml").to_str().unwrap(),
+        "--profile",
+        "requested",
+        "--pack",
+        "llg",
+    ]);
+    assert!(!malformed_snapshot.status.success());
+    let malformed_snapshot: Value = serde_json::from_slice(&malformed_snapshot.stderr).unwrap();
+    assert_eq!(
+        malformed_snapshot["error"]["category"],
+        "malformed_snapshot"
+    );
+    assert!(malformed_snapshot["error"]["config_path"].is_null());
+    assert!(malformed_snapshot["error"]["root_path"].is_null());
+    assert!(malformed_snapshot["error"]["profile"].is_null());
+    assert!(malformed_snapshot["error"]["requested_profile"].is_null());
+    assert!(malformed_snapshot["error"]["snapshot"].is_null());
+    assert_eq!(
+        malformed_snapshot["error"]["known_pack_ids"],
+        serde_json::json!([])
+    );
+    assert!(malformed_snapshot["error"]["writer"].is_null());
+    let mut opaque_unicode_namespace = detail_ref.clone();
+    opaque_unicode_namespace["occurrence"]["capture"]["namespace"] =
+        Value::String("opaque/λ/é".into());
+    let unicode_static_reference = run_strings(&[
+        "lookup-detail",
+        "--reference",
+        &opaque_unicode_namespace.to_string(),
+        "--config",
+        root.join("missing-config.toml").to_str().unwrap(),
+        "--profile",
+        "requested",
+        "--pack",
+        "llg",
+    ]);
+    assert!(!unicode_static_reference.status.success());
+    let unicode_error: Value = serde_json::from_slice(&unicode_static_reference.stderr).unwrap();
+    assert_eq!(unicode_error["error"]["category"], "config_missing");
+    assert_eq!(unicode_error["error"]["operation"], "lookup_detail");
+    assert_eq!(unicode_error["error"]["outcome"], "not_applicable");
     let wrong_role = {
         let mut value = detail_ref.clone();
         value["role"] = Value::String("entry".into());
@@ -394,6 +448,13 @@ fn test_dictionary_compact_query_and_detail_keep_full_default() {
     );
     assert!(managed_invalid["error"]["config_path"].is_null());
     assert!(managed_invalid["error"]["root_path"].is_null());
+    assert!(managed_invalid["error"]["profile"].is_null());
+    assert!(managed_invalid["error"]["requested_profile"].is_null());
+    assert!(managed_invalid["error"]["snapshot"].is_null());
+    assert_eq!(
+        managed_invalid["error"]["known_pack_ids"],
+        serde_json::json!([])
+    );
     assert_eq!(managed_invalid["error"]["outcome"], "not_applicable");
     std::fs::remove_dir_all(root).unwrap();
 }

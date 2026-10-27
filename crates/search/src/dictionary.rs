@@ -1141,25 +1141,60 @@ impl DictionarySearchEngine {
         &self,
         target: &RelationTarget,
     ) -> Result<ReferenceResolution, DictionaryQueryError> {
+        self.resolve_inner(target, None)
+    }
+
+    /// Resolve a local or catalogue target and report same-call lookup and
+    /// response-projection timings.
+    pub fn resolve_profiled(
+        &self,
+        target: &RelationTarget,
+    ) -> Result<(ReferenceResolution, DictionaryProjectionProfile), DictionaryQueryError> {
+        let started = Instant::now();
+        let mut profile = DictionaryProjectionProfile::default();
+        let response = self.resolve_inner(target, Some(&mut profile))?;
+        profile.total = started.elapsed();
+        profile.lookup = profile.total.saturating_sub(profile.projection);
+        Ok((response, profile))
+    }
+
+    fn resolve_inner(
+        &self,
+        target: &RelationTarget,
+        mut profile: Option<&mut DictionaryProjectionProfile>,
+    ) -> Result<ReferenceResolution, DictionaryQueryError> {
         let metadata = &self.dictionary.metadata;
+        let projection_started = profile.as_ref().map(|_| Instant::now());
         let availability = self.availability.clone();
-        match target {
-            RelationTarget::Unknown => Ok(ReferenceResolution {
-                version: 1,
-                state_sha256: self.state_sha256.clone(),
-                target: target.clone(),
-                status: ReferenceStatus::Unknown,
-                entity: None,
-                confirmed: vec![],
-                unverified: vec![],
-                availability,
-                requested_release: None,
-            }),
+        if let (Some(profile), Some(started)) = (profile.as_deref_mut(), projection_started) {
+            profile.projection += started.elapsed();
+        }
+        let response = match target {
+            RelationTarget::Unknown => {
+                let projection_started = profile.as_ref().map(|_| Instant::now());
+                let response = ReferenceResolution {
+                    version: 1,
+                    state_sha256: self.state_sha256.clone(),
+                    target: target.clone(),
+                    status: ReferenceStatus::Unknown,
+                    entity: None,
+                    confirmed: vec![],
+                    unverified: vec![],
+                    availability,
+                    requested_release: None,
+                };
+                if let (Some(profile), Some(started)) = (profile.as_deref_mut(), projection_started)
+                {
+                    profile.projection += started.elapsed();
+                }
+                response
+            }
             RelationTarget::Unresolved(text) => {
                 if text.is_empty() {
                     return Err(invalid_ref("Unresolved target must be nonempty"));
                 }
-                Ok(ReferenceResolution {
+                let projection_started = profile.as_ref().map(|_| Instant::now());
+                let response = ReferenceResolution {
                     version: 1,
                     state_sha256: self.state_sha256.clone(),
                     target: target.clone(),
@@ -1169,9 +1204,15 @@ impl DictionarySearchEngine {
                     unverified: vec![],
                     availability,
                     requested_release: None,
-                })
+                };
+                if let (Some(profile), Some(started)) = (profile.as_deref_mut(), projection_started)
+                {
+                    profile.projection += started.elapsed();
+                }
+                response
             }
             RelationTarget::Local(local) => {
+                let projection_started = profile.as_ref().map(|_| Instant::now());
                 let entity = self.local_entity(local).ok_or_else(|| {
                     invalid_ref("LocalRef does not exist in its specific role table")
                 })?;
@@ -1180,8 +1221,13 @@ impl DictionarySearchEngine {
                     .into_iter()
                     .map(|row| row.id.to_string())
                     .collect();
-                let views = self.reference_views(&ids);
-                Ok(ReferenceResolution {
+                if let (Some(profile), Some(started)) = (profile.as_deref_mut(), projection_started)
+                {
+                    profile.projection += started.elapsed();
+                }
+                let views = self.reference_views(&ids, profile.as_deref_mut());
+                let projection_started = profile.as_ref().map(|_| Instant::now());
+                let response = ReferenceResolution {
                     version: 1,
                     state_sha256: self.state_sha256.clone(),
                     target: target.clone(),
@@ -1191,12 +1237,18 @@ impl DictionarySearchEngine {
                     unverified: vec![],
                     availability,
                     requested_release: None,
-                })
+                };
+                if let (Some(profile), Some(started)) = (profile.as_deref_mut(), projection_started)
+                {
+                    profile.projection += started.elapsed();
+                }
+                response
             }
             RelationTarget::Catalog(catalog) => {
-                self.resolve_catalog(target, catalog, metadata, availability)
+                self.resolve_catalog(target, catalog, metadata, availability, profile)?
             }
-        }
+        };
+        Ok(response)
     }
 
     fn resolve_sources(
@@ -1550,12 +1602,12 @@ impl DictionarySearchEngine {
         catalog: &CatalogTarget,
         metadata: &lexicon::DictionaryMetadata,
         availability: Vec<DictionarySourceAvailability>,
+        mut profile: Option<&mut DictionaryProjectionProfile>,
     ) -> Result<ReferenceResolution, DictionaryQueryError> {
         let release = metadata
             .releases
             .iter()
             .find(|row| row.id == catalog.release)
-            .cloned()
             .ok_or_else(|| invalid_ref("catalogue release does not exist"))?;
         let component = metadata
             .components
@@ -1662,8 +1714,8 @@ impl DictionarySearchEngine {
                 confirmed_ids.insert(id.clone());
             }
         }
-        let confirmed = self.reference_views(&confirmed_ids);
-        let unverified = self.reference_views(&unverified_ids);
+        let confirmed = self.reference_views(&confirmed_ids, profile.as_deref_mut());
+        let unverified = self.reference_views(&unverified_ids, profile.as_deref_mut());
         let status = if !confirmed.is_empty() {
             ReferenceStatus::Resolved
         } else if !unverified.is_empty() {
@@ -1673,7 +1725,8 @@ impl DictionarySearchEngine {
         } else {
             ReferenceStatus::NoMatch
         };
-        Ok(ReferenceResolution {
+        let projection_started = profile.as_ref().map(|_| Instant::now());
+        let response = ReferenceResolution {
             version: 1,
             state_sha256: self.state_sha256.clone(),
             target: target.clone(),
@@ -1682,11 +1735,19 @@ impl DictionarySearchEngine {
             confirmed,
             unverified,
             availability,
-            requested_release: Some(release),
-        })
+            requested_release: Some(release.clone()),
+        };
+        if let (Some(profile), Some(started)) = (profile, projection_started) {
+            profile.projection += started.elapsed();
+        }
+        Ok(response)
     }
 
-    fn reference_views(&self, ids: &BTreeSet<String>) -> Vec<ReferenceAssertionView> {
+    fn reference_views(
+        &self,
+        ids: &BTreeSet<String>,
+        mut profile: Option<&mut DictionaryProjectionProfile>,
+    ) -> Vec<ReferenceAssertionView> {
         let mut views = Vec::new();
         for id in ids {
             let Some(assertion) = self.assertions.get(id) else {
@@ -1695,48 +1756,37 @@ impl DictionarySearchEngine {
             let Some(entry) = self.entries.get(&assertion.entry.to_string()) else {
                 continue;
             };
-            let occurrence_id = tuple_hex(&assertion.occurrence);
             let capture = self.capture(&assertion.occurrence.capture);
-            let raw = self.occurrence(&assertion.occurrence).cloned();
+            let raw = self.occurrence(&assertion.occurrence);
             let attr = self
                 .occurrences_by_key
-                .get(&tuple_hex(&assertion.occurrence))
-                .cloned();
-            let releases = self
-                .release_ids_by_assertion
-                .get(id)
-                .cloned()
-                .unwrap_or_default();
-            let owned_revision_ids = self
-                .revisions_by_assertion
-                .get(id)
-                .cloned()
-                .unwrap_or_default();
-            let tombstoned_by = self
-                .tombstones_by_assertion
-                .get(id)
-                .cloned()
-                .unwrap_or_default();
-            let capture_metadata = capture.map(|row| row.metadata.clone());
+                .get(&tuple_hex(&assertion.occurrence));
+            let releases = self.release_ids_by_assertion.get(id);
+            let owned_revision_ids = self.revisions_by_assertion.get(id);
+            let tombstoned_by = self.tombstones_by_assertion.get(id);
             let current_eligible = self
                 .selected_assertions
                 .get(&entry.source)
                 .is_some_and(|selected| selected.contains(id))
                 && matches!(assertion.eligibility, Eligibility::Lexical);
+            let projection_started = profile.as_ref().map(|_| Instant::now());
             views.push(ReferenceAssertionView {
                 entry: entry.clone(),
                 assertion: assertion.clone(),
-                occurrence_id,
-                occurrence_attribution: attr,
-                raw,
-                capture_metadata,
+                occurrence_id: tuple_hex(&assertion.occurrence),
+                occurrence_attribution: attr.cloned(),
+                raw: raw.cloned(),
+                capture_metadata: capture.map(|row| row.metadata.clone()),
                 payload_present: capture.is_some()
                     && self.occurrence(&assertion.occurrence).is_some(),
                 current_eligible,
-                release_ids: releases,
-                owned_revision_ids,
-                tombstoned_by,
+                release_ids: releases.cloned().unwrap_or_default(),
+                owned_revision_ids: owned_revision_ids.cloned().unwrap_or_default(),
+                tombstoned_by: tombstoned_by.cloned().unwrap_or_default(),
             });
+            if let (Some(profile), Some(started)) = (profile.as_deref_mut(), projection_started) {
+                profile.projection += started.elapsed();
+            }
         }
         views.sort_by(|a, b| {
             (
