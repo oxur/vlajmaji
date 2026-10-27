@@ -1249,31 +1249,110 @@ impl DictionaryCompactSearchEngine {
                 });
             }
         }
-        let assertion = self
+        let no_match = || DictionaryHitDetailResponse {
+            version: 1,
+            projection_policy: "complete-dictionary-hit-v1".into(),
+            detail_ref: reference.clone(),
+            status: super::ReferenceStatus::NoMatch,
+            operational_reason: None,
+            state_sha256: Some(self.state_sha256.clone()),
+            snapshot_sha256: self.snapshot_sha256.clone(),
+            hit: None,
+            current_eligible: None,
+        };
+        let Some(assertion) = self
             .document
             .metadata
             .assertions
             .iter()
-            .find(|row| row.id == reference.assertion_id && row.occurrence == reference.occurrence)
-            .ok_or_else(|| DictionaryProjectionError::InvalidDetailReference {
-                reason: DictionaryDetailReferenceInvalidity::InvalidCapture,
-            })?;
-        let entry = self
+            .find(|row| row.id == reference.assertion_id)
+        else {
+            return Ok(no_match());
+        };
+        if assertion.occurrence != reference.occurrence {
+            return Err(DictionaryProjectionError::Query(Box::new(
+                DictionaryQueryError::InvalidReference {
+                    detail: "detail assertion occurrence does not match the requested key".into(),
+                },
+            )));
+        }
+        if assertion.entry != reference.entry_id {
+            return Err(DictionaryProjectionError::Query(Box::new(
+                DictionaryQueryError::InvalidReference {
+                    detail: "detail assertion does not link to the requested entry".into(),
+                },
+            )));
+        }
+        let Some(entry) = self
             .document
             .metadata
             .entries
             .iter()
-            .find(|row| row.id == reference.entry_id && row.id == assertion.entry)
-            .ok_or_else(|| DictionaryProjectionError::InvalidDetailReference {
-                reason: DictionaryDetailReferenceInvalidity::InvalidCapture,
-            })?;
-        if entry.source != reference.source
-            || digest(entry)? != reference.entry_sha256
+            .find(|row| row.id == reference.entry_id)
+        else {
+            return Ok(no_match());
+        };
+        if entry.source != reference.source {
+            return Err(DictionaryProjectionError::Query(Box::new(
+                DictionaryQueryError::InvalidReference {
+                    detail: "detail entry source does not match the requested key".into(),
+                },
+            )));
+        }
+        if digest(entry)? != reference.entry_sha256
             || digest(assertion)? != reference.assertion_sha256
         {
-            return Err(DictionaryProjectionError::InvalidDetailReference {
-                reason: DictionaryDetailReferenceInvalidity::InvalidDigest,
-            });
+            return Ok(no_match());
+        }
+
+        let capture = self
+            .document
+            .captures
+            .iter()
+            .find(|row| row.identity == assertion.occurrence.capture);
+        if capture.is_none() {
+            return Err(DictionaryProjectionError::Query(Box::new(
+                DictionaryQueryError::InvalidReference {
+                    detail: "detail occurrence capture owner is not retained".into(),
+                },
+            )));
+        }
+        let native = self.document.registry.occurrences.iter().find(|row| {
+            super::record_key(&row.occurrence) == super::tuple_hex(&assertion.occurrence)
+        });
+        let snapshot = self.document.registry.snapshots.iter().find(|row| {
+            row.snapshot.namespace() == assertion.occurrence.capture.namespace
+                && row.snapshot.sha256() == assertion.occurrence.capture.sha256
+        });
+        let actual_native_entry = native.and_then(|row| row.native_entry_id.as_deref());
+        let actual_native_assertion = native.and_then(|row| row.native_assertion_id.as_deref());
+        if reference
+            .native_entry_id
+            .as_deref()
+            .is_some_and(|requested| {
+                actual_native_entry != Some(requested) && actual_native_assertion == Some(requested)
+            })
+            || reference
+                .native_assertion_id
+                .as_deref()
+                .is_some_and(|requested| {
+                    actual_native_assertion != Some(requested)
+                        && actual_native_entry == Some(requested)
+                })
+        {
+            return Err(DictionaryProjectionError::Query(Box::new(
+                DictionaryQueryError::InvalidReference {
+                    detail: "native identity was supplied in the wrong role slot".into(),
+                },
+            )));
+        }
+        if actual_native_entry != reference.native_entry_id.as_deref()
+            || actual_native_assertion != reference.native_assertion_id.as_deref()
+            || native.and_then(|row| row.contributor.as_ref()) != reference.contributor_id.as_ref()
+            || snapshot.and_then(|row| row.distributor.as_ref())
+                != reference.distributor_id.as_ref()
+        {
+            return Ok(no_match());
         }
         let hit = self.complete_hit(entry, assertion)?;
         let current_eligible = matches!(assertion.eligibility, lexicon::Eligibility::Lexical)
