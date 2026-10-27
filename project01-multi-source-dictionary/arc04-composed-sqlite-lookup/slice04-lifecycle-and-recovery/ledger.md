@@ -1,6 +1,6 @@
 # S04 ledger — lifecycle and recovery
 
-CURRENT: production at frozen a7b9baf6 passes the current finite independent public/CLI29/three actual stage-reconcile counterparts. The author03 persistent test used remove-all and missed its required real REMOVE-stage/clean-attention/count3 regression. Iteration04 ONE-test-path is ISSUED after root readiness, FIFTH/final implementation pass; exact intake/transfer pending. CDC owns source/index/target. All six rows OPEN; qualified runner Tiny/finite Full/current-head Linux/fresh-arc acceptance pending.
+CURRENT: production at frozen a7b9baf6 passes the current finite independent public/CLI29/three actual stage-reconcile counterparts. The author03 persistent test used remove-all and missed its required real REMOVE-stage/clean-attention/count3 regression. Iteration04 ONE-test-path is ISSUED after root readiness, FIFTH/final implementation pass; exact intake accepted and ONE test-path/index/retained target explicitly transferred to CC at 2026-10-27 05:44:45 UTC; CDC/root read-only there. All six rows OPEN; qualified runner Tiny/finite Full/current-head Linux/fresh-arc acceptance pending.
 
 | ID | Criterion | Verification | Owner | Status | Current disposition |
 | --- | --- | --- | --- | --- | --- |
@@ -66,3 +66,7 @@ Previous active03/sourcea9 paragraphs are dated history. CC returned a7; product
 ### Iteration04 actual issue — 2026-10-27 05:42:16 UTC
 
 Root concrete readiness PASS after complete prompt/review/design and100payload/six-row/four-prompt checks. Status-only issued prompt SHA 19ee8caba4e58c69a6eeff9d2ba3545cadbd8184b07ac87f3e80e10489013880; reviewed draft94b2c830…82a6 preserved bytewise. Exact one test path, FIFTH final pass; CDC retains source/index/target pending exact retained-CC readback/explicit transfer. No criterion/proof/owner/status change or Full/delivery/acceptance inference.
+
+### Iteration04 accepted intake/transfer checkpoint — 2026-10-27 05:44:45 UTC
+
+The exact issued prompt/readback is accepted at independently clean a7. CDC-owned sessions ended; CC launched none. Global process-list checks were denied and are not claimed as proof. Only the named test path/index/one retained target explicitly transfers to CC; all other source immutable, all six binding cells/statuses unchanged. Fifth final pass, no Full/delivery or automatic05.
