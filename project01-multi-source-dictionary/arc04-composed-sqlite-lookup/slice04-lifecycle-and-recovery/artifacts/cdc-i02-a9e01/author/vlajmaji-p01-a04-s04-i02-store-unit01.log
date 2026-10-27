@@ -1,0 +1,23 @@
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.06s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-a3654fa1431d47c4)
+
+running 5 tests
+test collections::maintenance::tests::test_validate_event_remove_accepts_installed_and_registered_only_dispositions ... ok
+test collections::maintenance::tests::test_validate_event_reinstall_requires_removed_digest_and_generation ... ok
+test collections::maintenance::tests::test_validate_event_rejects_duplicate_order_version_and_revision_overflow ... ok
+test collections::maintenance::tests::test_journal_observation_reports_regular_file_and_rejects_non_files ... ok
+
+thread 'collections::maintenance::tests::test_journal_path_suffix_preserves_native_database_bytes' (77400623) panicked at crates/store/src/collections/maintenance.rs:946:31:
+called `Result::unwrap()` on an `Err` value: Os { code: 92, kind: Uncategorized, message: "Illegal byte sequence" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test collections::maintenance::tests::test_journal_path_suffix_preserves_native_database_bytes ... FAILED
+
+failures:
+
+failures:
+    collections::maintenance::tests::test_journal_path_suffix_preserves_native_database_bytes
+
+test result: FAILED. 4 passed; 1 failed; 0 ignored; 0 measured; 26 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p vlajmaji-store --lib`

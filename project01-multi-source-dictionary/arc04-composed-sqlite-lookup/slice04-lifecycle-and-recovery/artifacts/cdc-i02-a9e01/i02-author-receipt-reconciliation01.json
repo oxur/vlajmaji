@@ -1,0 +1,41 @@
+{
+  "source_commit": "a9eeb440b029a4466f265cfc4eaf3e15fb773b31",
+  "gates": [
+    {
+      "gate": "check",
+      "path": "/tmp/vlajmaji-p01-a04-s04-i02-check-final01.log",
+      "bytes": 40161,
+      "sha256": "792ed800831b5ef8f5b33a3eeb50aacd6a7b4072191e106cf5469ecd405a1648",
+      "summary_rows": 51,
+      "passed": 276,
+      "failed": 0,
+      "ignored": 1,
+      "terminal_banner": true,
+      "proof_scope": "CDC raw author receipt reconciliation; not independent execution or Linux"
+    },
+    {
+      "gate": "no-default",
+      "path": "/tmp/vlajmaji-p01-a04-s04-i02-no-default-final01.log",
+      "bytes": 5473,
+      "sha256": "c1ec7ec9aa0dbc718b6fcd9f53c8114034f2606e78e89cee5d7269509257ccc4",
+      "summary_rows": 7,
+      "passed": 39,
+      "failed": 0,
+      "ignored": 0,
+      "terminal_banner": false,
+      "proof_scope": "CDC raw author receipt reconciliation; not independent execution or Linux"
+    },
+    {
+      "gate": "all-features",
+      "path": "/tmp/vlajmaji-p01-a04-s04-i02-all-features-final01.log",
+      "bytes": 37332,
+      "sha256": "48e99c185ca4cdfb792eff563bde06c3854bc9963cc4923d79730a4521b25e0b",
+      "summary_rows": 51,
+      "passed": 278,
+      "failed": 0,
+      "ignored": 1,
+      "terminal_banner": false,
+      "proof_scope": "CDC raw author receipt reconciliation; not independent execution or Linux"
+    }
+  ]
+}

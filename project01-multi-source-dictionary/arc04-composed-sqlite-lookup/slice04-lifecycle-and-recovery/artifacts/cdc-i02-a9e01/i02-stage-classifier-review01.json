@@ -1,0 +1,66 @@
+{
+  "source_commit": "a9eeb440b029a4466f265cfc4eaf3e15fb773b31",
+  "preconditions": "fresh original four-pack Tiny CLI journey completed with only committed owned stages; no manual or failed-stage injection in this ROOT",
+  "markers": [
+    {
+      "version": 1,
+      "attempt_id": "451e2d222b8aac1740b00cac86ceeb3f",
+      "operation": "install"
+    },
+    {
+      "version": 1,
+      "attempt_id": "839b5f90c79a0723337e8aa594aa621e",
+      "operation": "reinstall"
+    },
+    {
+      "version": 1,
+      "attempt_id": "b2bb467f1080531671779cf3096076fa",
+      "operation": "remove"
+    }
+  ],
+  "committed_attempts": [
+    {
+      "attempt_id": "451e2d222b8aac1740b00cac86ceeb3f",
+      "detail": "Unified store passed All verification",
+      "operation": "install",
+      "prior_revision": 0,
+      "status": "committed"
+    },
+    {
+      "attempt_id": "b2bb467f1080531671779cf3096076fa",
+      "detail": "{\"version\":1,\"operation\":\"remove\",\"local_revision\":2,\"packs\":[{\"pack_id\":\"llg\",\"prior_state\":\"installed\",\"release_sha256\":\"231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146\"}],\"generation_id\":\"2f57a798a7e4f5f7df5a218f9cd3e7cd-b2bb467f1080531671779cf3096076fa\"}",
+      "operation": "remove",
+      "prior_revision": 1,
+      "status": "committed"
+    },
+    {
+      "attempt_id": "839b5f90c79a0723337e8aa594aa621e",
+      "detail": "{\"version\":1,\"operation\":\"reinstall\",\"local_revision\":3,\"packs\":[{\"pack_id\":\"llg\",\"prior_state\":\"removed\",\"release_sha256\":\"231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146\"}],\"generation_id\":\"2f57a798a7e4f5f7df5a218f9cd3e7cd-839b5f90c79a0723337e8aa594aa621e\"}",
+      "operation": "reinstall",
+      "prior_revision": 2,
+      "status": "committed"
+    },
+    {
+      "attempt_id": "1b8a3f93c96a044a1cdbb9df1c2a9927",
+      "detail": "{\"version\":1,\"operation\":\"remove\",\"local_revision\":4,\"packs\":[{\"pack_id\":\"lensisku-jbotci\",\"prior_state\":\"installed\",\"release_sha256\":\"5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c\"},{\"pack_id\":\"llg\",\"prior_state\":\"installed\",\"release_sha256\":\"231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146\"},{\"pack_id\":\"la-lojban\",\"prior_state\":\"installed\",\"release_sha256\":\"7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03\"},{\"pack_id\":\"sutysisku\",\"prior_state\":\"installed\",\"release_sha256\":\"8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c\"}],\"generation_id\":null}",
+      "operation": "remove",
+      "prior_revision": 3,
+      "status": "committed"
+    }
+  ],
+  "expected": {
+    "staged_attempts": [],
+    "attention_required": false
+  },
+  "actual": {
+    "staged_attempts": [
+      "unreadable:3833396235663930633739613037323333333765386161353934616136323165",
+      "unreadable:6232626234363766313038303533313637313737396366333039363037366661"
+    ],
+    "attention_required": true
+  },
+  "ok": false,
+  "script_sha256": "dcff5ce4751bac7eb8274dbcd750176da04b02159fcead70d36d5b8383ba90a7",
+  "reconcile_stdout_sha256": "06cb62e0e465d3446f5b096646b92eec42926100dce01929bab3ceb6e2d75427",
+  "scope": "same finite CLI outputs and exact marker files only; no new product invocation/DB open/mutation/Full access; one connected committed-stage classification finding"
+}

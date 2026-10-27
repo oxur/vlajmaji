@@ -1,0 +1,19 @@
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.99s
+     Running tests/collections_maintenance_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collections_maintenance_contract-b6e2b281a196a5f9)
+
+running 1 test
+
+thread 'test_reinstall_open_and_begin_busy_keep_validated_input_context' (77414102) panicked at crates/store/tests/collections_maintenance_contract.rs:687:10:
+called `Result::unwrap()` on an `Err` value: InvalidColumnType(0, "value", Text)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_reinstall_open_and_begin_busy_keep_validated_input_context ... FAILED
+
+failures:
+
+failures:
+    test_reinstall_open_and_begin_busy_keep_validated_input_context
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.15s
+
+error: test failed, to rerun pass `-p vlajmaji-store --test collections_maintenance_contract`

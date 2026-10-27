@@ -1,0 +1,26 @@
+{
+  "source_commit": "a9eeb440b029a4466f265cfc4eaf3e15fb773b31",
+  "parent": "024de8163e46b047c0e506aad6a0e3b109a71784",
+  "tree": "c245b56243d7eb99902e21d9206ad6da70fe2751",
+  "verdict": "NOT_ACCEPTABLE_FOR_S04; F01/F02/F03 finite repair proof PASS; remaining stage-classifier finding REPRODUCED",
+  "author_default": "276/0/1 +19 helper tests",
+  "author_no_default": "39/0/0",
+  "author_all_features": "278/0/1",
+  "independent_public": {
+    "exit": 0,
+    "diagnostic_failures": 0,
+    "receipt": "receipts/i02-cdc-public-runtime01.json"
+  },
+  "independent_cli": {
+    "exit": 0,
+    "processes": 29,
+    "receipt": "receipts/i02-cdc-cli-runtime01.json"
+  },
+  "classifier": {
+    "exit": 1,
+    "finding_count": 1,
+    "receipt": "i02-stage-classifier-review01.json"
+  },
+  "remaining": "bounded numbered03 recognition correction, actual Linux, qualified finite Full/fresh arc proof; six rows OPEN",
+  "retention": "all failed/corrected attempts preserved locally/canonically at their actual source states; bulk fixtures/DBs/binaries local, never Git; no Full/default/network/push"
+}
