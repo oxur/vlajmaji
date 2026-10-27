@@ -1212,19 +1212,12 @@ impl DictionarySearchEngine {
                 response
             }
             RelationTarget::Local(local) => {
-                let projection_started = profile.as_ref().map(|_| Instant::now());
-                let entity = self.local_entity(local).ok_or_else(|| {
-                    invalid_ref("LocalRef does not exist in its specific role table")
-                })?;
-                let ids: BTreeSet<String> = self
-                    .local_assertions(local)
-                    .into_iter()
-                    .map(|row| row.id.to_string())
-                    .collect();
-                if let (Some(profile), Some(started)) = (profile.as_deref_mut(), projection_started)
-                {
-                    profile.projection += started.elapsed();
-                }
+                let entity = self
+                    .local_entity(local, profile.as_deref_mut())
+                    .ok_or_else(|| {
+                        invalid_ref("LocalRef does not exist in its specific role table")
+                    })?;
+                let ids: BTreeSet<String> = self.local_assertion_ids(local).into_iter().collect();
                 let views = self.reference_views(&ids, profile.as_deref_mut());
                 let projection_started = profile.as_ref().map(|_| Instant::now());
                 let response = ReferenceResolution {
@@ -1536,62 +1529,74 @@ impl DictionarySearchEngine {
         Ok(hex(&Sha256::digest(bytes)))
     }
 
-    fn local_entity(&self, reference: &LocalRef) -> Option<ReferenceEntity> {
+    fn local_entity(
+        &self,
+        reference: &LocalRef,
+        mut profile: Option<&mut DictionaryProjectionProfile>,
+    ) -> Option<ReferenceEntity> {
         match reference {
-            LocalRef::Entry(id) => self
-                .entries
-                .get(&id.to_string())
-                .cloned()
-                .map(ReferenceEntity::Entry),
-            LocalRef::Assertion(id) => self
-                .assertions
-                .get(&id.to_string())
-                .cloned()
-                .map(ReferenceEntity::Assertion),
-            LocalRef::Form(id) => self
-                .forms_by_id
-                .get(&id.to_string())
-                .cloned()
-                .map(ReferenceEntity::Form),
-            LocalRef::EditorialSense(id) => self
-                .editorial_by_id
-                .get(&id.to_string())
-                .cloned()
-                .map(ReferenceEntity::EditorialSense),
+            LocalRef::Entry(id) => {
+                let row = self.entries.get(&id.to_string())?;
+                let started = profile.as_ref().map(|_| Instant::now());
+                let entity = ReferenceEntity::Entry(row.clone());
+                if let (Some(profile), Some(started)) = (profile.as_mut(), started) {
+                    profile.projection += started.elapsed();
+                }
+                Some(entity)
+            }
+            LocalRef::Assertion(id) => {
+                let row = self.assertions.get(&id.to_string())?;
+                let started = profile.as_ref().map(|_| Instant::now());
+                let entity = ReferenceEntity::Assertion(row.clone());
+                if let (Some(profile), Some(started)) = (profile.as_mut(), started) {
+                    profile.projection += started.elapsed();
+                }
+                Some(entity)
+            }
+            LocalRef::Form(id) => {
+                let row = self.forms_by_id.get(&id.to_string())?;
+                let started = profile.as_ref().map(|_| Instant::now());
+                let entity = ReferenceEntity::Form(row.clone());
+                if let (Some(profile), Some(started)) = (profile.as_mut(), started) {
+                    profile.projection += started.elapsed();
+                }
+                Some(entity)
+            }
+            LocalRef::EditorialSense(id) => {
+                let row = self.editorial_by_id.get(&id.to_string())?;
+                let started = profile.as_ref().map(|_| Instant::now());
+                let entity = ReferenceEntity::EditorialSense(row.clone());
+                if let (Some(profile), Some(started)) = (profile.as_mut(), started) {
+                    profile.projection += started.elapsed();
+                }
+                Some(entity)
+            }
         }
     }
 
-    fn local_assertions(&self, reference: &LocalRef) -> Vec<lexicon::AssertionRecord> {
+    fn local_assertion_ids(&self, reference: &LocalRef) -> Vec<String> {
         match reference {
             LocalRef::Entry(id) => self
                 .assertions_by_entry
                 .get(&id.to_string())
-                .cloned()
+                .map(|rows| rows.iter().map(|row| row.id.to_string()).collect())
                 .unwrap_or_default(),
             LocalRef::Assertion(id) => self
                 .assertions
                 .get(&id.to_string())
-                .cloned()
+                .map(|row| row.id.to_string())
                 .into_iter()
                 .collect(),
             LocalRef::Form(id) => self
                 .forms_by_id
                 .get(&id.to_string())
                 .and_then(|form| self.assertions_by_entry.get(&form.entry.to_string()))
-                .cloned()
+                .map(|rows| rows.iter().map(|row| row.id.to_string()).collect())
                 .unwrap_or_default(),
             LocalRef::EditorialSense(id) => self
                 .editorial_by_id
                 .get(&id.to_string())
-                .map(|sense| {
-                    sense
-                        .assertions
-                        .iter()
-                        .filter_map(|assertion| {
-                            self.assertions.get(&assertion.to_string()).cloned()
-                        })
-                        .collect()
-                })
+                .map(|sense| sense.assertions.iter().map(ToString::to_string).collect())
                 .unwrap_or_default(),
         }
     }
@@ -1769,6 +1774,8 @@ impl DictionarySearchEngine {
                 .get(&entry.source)
                 .is_some_and(|selected| selected.contains(id))
                 && matches!(assertion.eligibility, Eligibility::Lexical);
+            let payload_present =
+                capture.is_some() && self.occurrence(&assertion.occurrence).is_some();
             let projection_started = profile.as_ref().map(|_| Instant::now());
             views.push(ReferenceAssertionView {
                 entry: entry.clone(),
@@ -1777,8 +1784,7 @@ impl DictionarySearchEngine {
                 occurrence_attribution: attr.cloned(),
                 raw: raw.cloned(),
                 capture_metadata: capture.map(|row| row.metadata.clone()),
-                payload_present: capture.is_some()
-                    && self.occurrence(&assertion.occurrence).is_some(),
+                payload_present,
                 current_eligible,
                 release_ids: releases.cloned().unwrap_or_default(),
                 owned_revision_ids: owned_revision_ids.cloned().unwrap_or_default(),

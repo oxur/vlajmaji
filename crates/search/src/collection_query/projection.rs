@@ -1,7 +1,10 @@
 //! Managed compact queries reuse the captured collection policy while keeping
 //! the Unified payload behind the compact dictionary projection boundary.
 
-use std::time::{Duration, Instant};
+use std::{
+    collections::BTreeSet,
+    time::{Duration, Instant},
+};
 
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
@@ -163,8 +166,16 @@ impl CollectionCompactSearchEngine {
         request: crate::DictionaryRequest,
     ) -> Result<(CollectionCompactQueryResponse, CollectionProjectionProfile), CollectionQueryError>
     {
+        let started = Instant::now();
         let mut profile = CollectionProjectionProfile::default();
         let response = self.execute_inner(request, Some(&mut profile))?;
+        profile.total = started.elapsed();
+        profile.query.total = profile.total.saturating_sub(
+            profile
+                .payload_setup
+                .map_or(Duration::ZERO, |setup| setup.total),
+        );
+        profile.query.lookup = profile.query.total.saturating_sub(profile.query.projection);
         Ok((response, profile))
     }
 
@@ -173,7 +184,6 @@ impl CollectionCompactSearchEngine {
         request: crate::DictionaryRequest,
         mut profile: Option<&mut CollectionProjectionProfile>,
     ) -> Result<CollectionCompactQueryResponse, CollectionQueryError> {
-        let started = Instant::now();
         let result = match request {
             crate::DictionaryRequest::Exact {
                 spelling,
@@ -225,7 +235,9 @@ impl CollectionCompactSearchEngine {
                         profile.query.projection += started.elapsed();
                     }
                 }
-                CollectionCompactQueryResult::Exact(Box::new(response))
+                let response =
+                    super::measure_collection_projection(&mut profile, || Box::new(response));
+                CollectionCompactQueryResult::Exact(response)
             }
             crate::DictionaryRequest::Resolve { target } => {
                 if let Some(profile) = profile.as_deref_mut() {
@@ -235,23 +247,15 @@ impl CollectionCompactSearchEngine {
                     self.ensure_compact_if_selected(&target, &mut ignored_setup)?;
                 }
                 let response = self.resolve_compact(target, profile.as_deref_mut())?;
-                CollectionCompactQueryResult::Resolve(Box::new(response))
+                let response =
+                    super::measure_collection_projection(&mut profile, || Box::new(response));
+                CollectionCompactQueryResult::Resolve(response)
             }
         };
         let projection_started = profile.as_ref().map(|_| Instant::now());
         let response = self.response(result);
-        if let Some(profile) = profile {
-            let total = started.elapsed();
-            profile.total = total;
-            if let Some(projected) = projection_started {
-                profile.query.projection += projected.elapsed();
-            }
-            profile.query.total = total.saturating_sub(
-                profile
-                    .payload_setup
-                    .map_or(Duration::ZERO, |setup| setup.total),
-            );
-            profile.query.lookup = profile.query.total.saturating_sub(profile.query.projection);
+        if let (Some(profile), Some(started)) = (profile, projection_started) {
+            profile.query.projection += started.elapsed();
         }
         Ok(response)
     }
@@ -530,7 +534,7 @@ impl CollectionCompactSearchEngine {
         ) {
             return Ok(());
         }
-        let matches = self.compact_metadata_matches(target)?;
+        let matches = self.compact_metadata_matches(target, None)?;
         if self
             .base
             .selected_payload_for_target(target, &matches.admission)
@@ -544,12 +548,13 @@ impl CollectionCompactSearchEngine {
     fn compact_metadata_matches(
         &self,
         target: &RelationTarget,
+        mut profile: Option<&mut CollectionProjectionProfile>,
     ) -> Result<super::MetadataMatches, CollectionQueryError> {
         let RelationTarget::Catalog(requested) = target else {
             let RelationTarget::Local(local) = target else {
-                return self.base.metadata_matches(target);
+                return self.base.metadata_matches(target, profile.as_deref_mut());
             };
-            return self.compact_local_metadata_matches(local);
+            return self.compact_local_metadata_matches(local, profile);
         };
         let catalogue = CollectionCatalogue::open(&self.base.root)?;
         if catalogue.local_revision()? != self.base.snapshot.local_revision {
@@ -595,7 +600,10 @@ impl CollectionCompactSearchEngine {
                 };
                 release_owner_found = true;
                 if requested_release.is_none() {
-                    requested_release = Some(release.summary.clone());
+                    requested_release =
+                        Some(super::measure_collection_projection(&mut profile, || {
+                            release.summary.clone()
+                        }));
                 }
                 if requested.occurrence.as_ref().is_some_and(|occurrence| {
                     occurrence.locator.is_empty()
@@ -662,8 +670,9 @@ impl CollectionCompactSearchEngine {
                 },
             ));
         }
+        let public = super::measure_collection_projection(&mut profile, || rows.clone());
         Ok(super::MetadataMatches {
-            public: rows.clone(),
+            public,
             admission: rows,
             requested_release,
         })
@@ -672,6 +681,7 @@ impl CollectionCompactSearchEngine {
     fn compact_local_metadata_matches(
         &self,
         local: &LocalRef,
+        mut profile: Option<&mut CollectionProjectionProfile>,
     ) -> Result<super::MetadataMatches, CollectionQueryError> {
         let catalogue = CollectionCatalogue::open(&self.base.root)?;
         if catalogue.local_revision()? != self.base.snapshot.local_revision {
@@ -756,9 +766,13 @@ impl CollectionCompactSearchEngine {
                 contributing_pack_ids: vec![pack_id],
             });
         }
-        let admission = rows.clone();
-        let mut public: Vec<CollectionReferenceMatch> = Vec::new();
-        for row in rows {
+        let mut groups: Vec<(usize, BTreeSet<String>, Option<usize>)> = Vec::new();
+        for (index, row) in rows.iter().enumerate() {
+            let row_is_current = self.base.generation.as_ref().is_some_and(|generation| {
+                generation.members.iter().any(|member| {
+                    member.pack_id == row.pack_id && member.release_sha256 == row.release_sha256
+                })
+            });
             let same_identity = |existing: &CollectionReferenceMatch| {
                 existing.source_id == row.source_id
                     && existing.role == row.role
@@ -768,28 +782,39 @@ impl CollectionCompactSearchEngine {
                     && existing.native_entry_id == row.native_entry_id
                     && existing.native_assertion_id == row.native_assertion_id
             };
-            if let Some(existing) = public.iter_mut().find(|existing| same_identity(existing)) {
-                for pack_id in &row.contributing_pack_ids {
-                    if !existing.contributing_pack_ids.contains(pack_id) {
-                        existing.contributing_pack_ids.push(pack_id.clone());
-                    }
-                }
-                existing.contributing_pack_ids.sort();
-                if self.base.generation.as_ref().is_some_and(|generation| {
-                    generation.members.iter().any(|member| {
-                        member.pack_id == row.pack_id && member.release_sha256 == row.release_sha256
-                    })
-                }) {
-                    existing.pack_id = row.pack_id;
-                    existing.release_sha256 = row.release_sha256;
+            if let Some((_, contributors, current)) = groups
+                .iter_mut()
+                .find(|(first, _, _)| same_identity(&rows[*first]))
+            {
+                contributors.insert(row.pack_id.clone());
+                if row_is_current {
+                    *current = Some(index);
                 }
             } else {
-                public.push(row);
+                groups.push((
+                    index,
+                    row.contributing_pack_ids.iter().cloned().collect(),
+                    row_is_current.then_some(index),
+                ));
             }
         }
+        let public = super::measure_collection_projection(&mut profile, || {
+            groups
+                .iter()
+                .map(|(first, contributors, current)| {
+                    let mut row = rows[*first].clone();
+                    if let Some(current) = current {
+                        row.pack_id = rows[*current].pack_id.clone();
+                        row.release_sha256 = rows[*current].release_sha256.clone();
+                    }
+                    row.contributing_pack_ids = contributors.iter().cloned().collect();
+                    row
+                })
+                .collect()
+        });
         Ok(super::MetadataMatches {
             public,
-            admission,
+            admission: rows,
             requested_release: None,
         })
     }
@@ -810,7 +835,7 @@ impl CollectionCompactSearchEngine {
         }
         let metadata = match target {
             RelationTarget::Unknown | RelationTarget::Unresolved(_) => None,
-            _ => Some(self.compact_metadata_matches(&target)?),
+            _ => Some(self.compact_metadata_matches(&target, profile.as_deref_mut())?),
         };
         let payload = if let Some(metadata) = &metadata {
             if self
@@ -829,7 +854,8 @@ impl CollectionCompactSearchEngine {
                         engine.execute_profiled(crate::DictionaryRequest::Resolve {
                             target: target.clone(),
                         })?;
-                    profile.query = query_profile;
+                    profile.query.candidate_sql += query_profile.candidate_sql;
+                    profile.query.projection += query_profile.projection;
                     result
                 } else {
                     engine.execute(crate::DictionaryRequest::Resolve {
