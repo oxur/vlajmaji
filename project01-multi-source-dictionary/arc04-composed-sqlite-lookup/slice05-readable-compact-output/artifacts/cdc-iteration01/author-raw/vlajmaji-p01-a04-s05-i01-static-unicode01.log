@@ -1,0 +1,26 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.43s
+     Running tests/query_output_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/query_output_contract-8fec821b551a0c10)
+
+running 1 test
+test test_dictionary_compact_query_and_detail_keep_full_default ... FAILED
+
+failures:
+
+---- test_dictionary_compact_query_and_detail_keep_full_default stdout ----
+
+thread 'test_dictionary_compact_query_and_detail_keep_full_default' (78769693) panicked at crates/cli/tests/query_output_contract.rs:424:5:
+assertion `left == right` failed
+  left: String("config_missing")
+ right: "config_io"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test_dictionary_compact_query_and_detail_keep_full_default
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.88s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test query_output_contract`

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Arc04 owns this retained cache only during recorded exclusive intervals.
+set -euo pipefail
+export CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+export CARGO_NET_OFFLINE=true
+printf 'Vlajmaji Arc04 retained task target: %s\n' "$CARGO_TARGET_DIR" >&2
+exec cargo "$@"

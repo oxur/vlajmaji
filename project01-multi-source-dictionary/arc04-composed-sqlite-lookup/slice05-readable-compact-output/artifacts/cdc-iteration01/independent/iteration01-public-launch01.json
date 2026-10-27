@@ -1,0 +1,16 @@
+{
+  "scope": "preservation of displayed exec result; not a product failure",
+  "argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/run-public02.py",
+    "c3643f4915b7876313dc3a58d8c56c87cf38fa5c",
+    "runtime",
+    "public-build04",
+    "public-runtime04"
+  ],
+  "actual_exit": 1,
+  "stage": "source snapshot exclusive mkdir",
+  "error": "FileExistsError: [Errno 17] File exists: /tmp/vlajmaji-p01-a04-s05-cdc/public-build04-source",
+  "tool_chunk_id": "d2fdd6",
+  "effects": "No Cargo build or product invocation reached; existing directory retained unchanged. No deletion/reset/overwrite."
+}

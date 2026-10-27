@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S04 user-MERGED/main32e99 CIgreen. S05 INITIAL5bf NOT ACCEPTED; correction iteration01 ISSUED/rootreadinessPASS, exact9paths/pass2of5/intake accepted; explicit CC transfer follows metadata commit. Six S05OPEN; readable/numeric/fresharc follow. |
-| version / date | 1.17 / 2026-10-27 UTC |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S04 user-merged/main32e99 CIgreen. S05 iteration02 ISSUED after root readiness PASS, exact6paths/pass3of5; whole-plan intake/explicit transfer pending. Frozen c364 NOT ACCEPTED on F02/F03; all6S05OPEN. Readable/numeric/fresharc follow. |
+| version / date | 1.19 / 2026-10-27 UTC |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-readable-compact-output correction baseline5bf/tree7e78, metadata-rebased onto32e99/main with old9eb chain preserved; same retained target. Old S04 local/origin branch remains432. CC sole nine-path/index/retained-target implementation ownership effective on explicit CDC dispatch after intake metadata commit; CDC/root then read-only. Actual primary checkout52fd remains distinct. |
+| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-readable-compact-output current clean c364/treebcaf (parent5bf), metadata-rebased onto32e99/main with old9eb chain preserved; same retained target. Old S04 local/origin branch remains432. CDC owns quiet source/index/retained target after frozen handback/independent review; CC/root read-only until new exact intake/transfer. Actual primary checkout52fd remains distinct. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -170,3 +170,11 @@ Root accepted complete concrete19path compact/detail increment, exact public/wir
 ### S05 actual intake and initial author interval
 
 CC complete source-cited readback accepted and fresh source432/tree/branch/lock/guard verified. Metadata commit and explicit CDC transfer start exclusive19path/source-index/ONE retainedtarget ownership; root/CDC readonly. Six S05/remaining arc/project obligations unchanged OPEN; initial/readable scope and normal five-total persist. No runtime evidence/Full/external authority at handoff.
+
+### S05 iteration01 frozen review and proposed iteration02 — 2026-10-27 UTC
+
+Corrective pass2 returned c364 (parent5bf, treebcaf, eight within nine). Independent API,25named general PASS lines/shared6+5/edges/54strictCLI succeed at exact stated scope; source-contract initialization/test-target and real optional timer/cleanup gaps keep INITIAL unaccepted. DRAFT02 proposes pass3of5/SIX paths, readable03/plannedpass4, root readiness before issue/intake/transfer. Six S05 rows remain OPEN, parent5DONE/5OPEN and project14OPEN unchanged. Current evidence/artifact preservation has no Full/Linux/ARC/delivery authority. Earlier ownership/source check headers are dated historical; accepted rebase/main/S04 history remains unchanged.
+
+### S05 iteration02 status-only issue —2026-10-27 UTC
+
+Root FINAL ITERATION02 READINESS PASS, 2026-10-27 UTC: exact reviewed draft20159B/SHAa1a96b35fe2cefe56a674278263d78772eec146e35643e1af94307289b00b2f9, plan c073d688…a2fd, ledger b1bc3d97…df4a, review7469f9f2…a511. Root read complete current bodies and source-critical recipes; independently verified all369payloads/2,302,475B under manifest1ce3b61a…f6c34, comprising368 whole original-file matches plus137039B exact live execution prefix, no extras. The prior wording '369exact task-original payloads' is qualified by this whole-file versus prefix distinction. Six binding criterion/proof/owner/status cells remain unchanged OPEN; quiet c364 parent5bf/treebcaf, two parsed trailers. Exact reviewed draft is preserved separately; active prompt changes ONLY line3 status. Corrective pass3of5, readable03/plannedpass4; all product/Full/Linux/ARC/external acceptance remains pending. Complete retained CC intake must explicitly cover WHOLE slice-plan §§1–12, including prior omitted §§1–2/6 history, before fresh source/lock/guard/refs check and CDC explicit SIX-path/index/ONE-target transfer. No new human approval gate or source work at issuance.

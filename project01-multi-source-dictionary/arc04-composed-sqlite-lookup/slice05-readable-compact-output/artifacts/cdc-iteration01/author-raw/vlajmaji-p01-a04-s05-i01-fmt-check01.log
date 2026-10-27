@@ -1,0 +1,11 @@
+[1;34mChecking code formatting...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary.rs:1880:
+             Err(DictionaryQueryError::Integrity { .. })
+         ));
+     }
+-
+ }
+ 
+ fn indexed_group<T>(
+make: *** [fmt-check] Error 1

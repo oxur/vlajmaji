@@ -1,0 +1,28 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: field `sources` is never read
+  --> crates/search/src/dictionary/borrowed.rs:17:9
+   |
+14 | pub(super) struct CompactIndices {
+   |                   -------------- field in this struct
+...
+17 |     pub sources: BTreeMap<SourceId, usize>,
+   |         ^^^^^^^
+   |
+   = note: `-D dead-code` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[expect(dead_code)]` or `#[allow(dead_code)]`
+
+error: field `source_order` is never read
+   --> crates/search/src/dictionary/projection.rs:439:5
+    |
+430 | pub struct DictionaryCompactSearchEngine {
+    |            ----------------------------- field in this struct
+...
+439 |     source_order: Vec<SourceId>,
+    |     ^^^^^^^^^^^^
+
+error: could not compile `vlajmaji-search` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib test) due to 2 previous errors
+make: *** [lint] Error 101

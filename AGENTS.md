@@ -2,7 +2,7 @@
 
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
-**Current S05 checkpoint, 2026-10-27:** Correction baseline5bf/tree7e78 on separate S05branch after user-authorized same-tree main32e99 rebase; accepted S04 merged/green, old S04refs432 preserved. Frozen INITIAL NOT ACCEPTED after independent finite source/API/Tiny/CLI review. Root final concrete readiness passed iteration01 correction: exact NINE source paths, totalpass2of5; reviewed-final draft preserved; exact retained Luna/high intake accepted and fresh baseline rechecked. Sole NINE-path/source-index/retained-target ownership transfers to CC by explicit CDC dispatch after this metadata commit; CDC/root then read-only until frozen handback. Six S05 rows OPEN; readable laternumbered02/pass3, Full/currentLinux/ARC/futurepush still pending. Root read-only.
+**Current S05 checkpoint, 2026-10-27:** iteration02 ISSUED status-only after root final readiness PASS, exact SIX source paths/pass3of5; readable03/plannedpass4 remains unissued. Frozen c364/source-contract F02/F03 remain NOT ACCEPTED despite retained scoped semantic success. CDC exclusively owns QUIET source/index/ONE retained target until complete CC WHOLE-plan §§1–12 intake/readback, fresh identity check and explicit six-path transfer. CC/root read-only. Six S05/fiveotherarc/all14project OPEN; no Full/Linux/ARC/external acceptance.
 
 ### Historical pre-correction frozen checkpoint
 
@@ -135,3 +135,11 @@ Root concrete readiness PASS accepted19initialpaths/21plannedunion, sixOPEN and 
 ### S05 actual initial intake / source ownership
 
 CDC accepted complete source-cited intake (artifacts/execution.md, original8890ff2a…08a15), reverified clean432/newbranch/oldS04refs/lock/guard, and records explicit sole19path/index/retainedtarget transfer to retained Luna/high CC after this metadata commit. CDC/root then source/index/target readonly; planning remains CDC except CC append-only execution. No new Full/default/cache/network/delivery/readable01 permission, no test/acceptance yet.
+
+### Historical S05 iteration01 handoff checkpoint (superseded)
+
+**Current S05 checkpoint, 2026-10-27:** Correction baseline5bf/tree7e78 on separate S05branch after user-authorized same-tree main32e99 rebase; accepted S04 merged/green, old S04refs432 preserved. Frozen INITIAL NOT ACCEPTED after independent finite source/API/Tiny/CLI review. Root final concrete readiness passed iteration01 correction: exact NINE source paths, totalpass2of5; reviewed-final draft preserved; exact retained Luna/high intake accepted and fresh baseline rechecked. Sole NINE-path/source-index/retained-target ownership transfers to CC by explicit CDC dispatch after this metadata commit; CDC/root then read-only until frozen handback. Six S05 rows OPEN; readable laternumbered02/pass3, Full/currentLinux/ARC/futurepush still pending. Root read-only.
+
+## Historical pre-iteration02-issue checkpoint —2026-10-27 UTC
+
+**Current S05 checkpoint, 2026-10-27:** Author iteration01 returned clean c364/treebcaf; CDC frozen source/API/Tiny/54CLI review completed. Functional repairs PASS, INITIAL contribution NOT ACCEPTED on remaining F02 initialization/test-target and F03 actual optional timing/cleanup. DRAFT02 proposes exact SIX paths/pass3of5, readable03/plannedpass4, root readiness pending. CDC exclusively owns quiet source/index/retained target; CC/root read-only. All six S05/fiveotherarc/all14project OPEN; no Full/currentLinux/readable/ARC/external action.

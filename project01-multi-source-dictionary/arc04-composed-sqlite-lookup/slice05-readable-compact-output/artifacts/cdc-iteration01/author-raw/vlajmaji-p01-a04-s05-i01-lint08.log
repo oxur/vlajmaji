@@ -1,0 +1,40 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0382]: borrow of moved value: `profile`
+   --> crates/search/src/collection_query.rs:946:54
+    |
+904 |         mut profile: Option<&mut CollectionProjectionProfile>,
+    |         ----------- move occurs because `profile` has type `std::option::Option<&mut collection_query::projection::CollectionProjectionProfile>`, which does not implement the `Copy` trait
+...
+940 |             self.ensure_payload(profile)?;
+    |                                 ------- value moved here
+...
+946 |             let mut payload = if let Some(profile) = profile.as_deref_mut() {
+    |                                                      ^^^^^^^ value borrowed here after move
+    |
+note: consider changing this parameter type in method `ensure_payload` to borrow instead if owning the value isn't necessary
+   --> crates/search/src/collection_query.rs:874:18
+    |
+872 |     fn ensure_payload(
+    |        -------------- in this method
+873 |         &mut self,
+874 |         profile: Option<&mut CollectionProjectionProfile>,
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ this parameter takes ownership of the value
+
+error: variable does not need to be mutable
+   --> crates/search/src/dictionary/projection.rs:897:9
+    |
+897 |         mut projection: Option<&mut Duration>,
+    |         ----^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `-D unused-mut` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(unused_mut)]`
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `vlajmaji-search` (lib test) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib) due to 2 previous errors
+make: *** [lint] Error 101

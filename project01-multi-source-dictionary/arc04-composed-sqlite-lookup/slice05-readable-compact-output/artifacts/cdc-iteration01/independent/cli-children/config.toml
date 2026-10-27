@@ -1,0 +1,13 @@
+version = 1
+revision = 1
+default_profile = "tiny"
+
+[profiles.tiny]
+root = "/tmp/vlajmaji-p01-a04-s05-cdc/iteration01-public-runtime01/catalogue"
+packs = [
+    "lensisku-jbotci",
+    "llg",
+    "la-lojban",
+    "sutysisku",
+]
+disabled = []

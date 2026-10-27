@@ -1,0 +1,17 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: derefed type is same as origin
+    --> crates/search/src/dictionary/projection.rs:1189:53
+     |
+1189 |         if let (Some(projection), Some(started)) = (projection.as_deref_mut(), projection_started) {
+     |                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^ help: try: `projection`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#needless_option_as_deref
+     = note: `-D clippy::needless-option-as-deref` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::needless_option_as_deref)]`
+
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib) due to 1 previous error
+make: *** [lint] Error 101

@@ -1,0 +1,126 @@
+{
+  "scope_only": true,
+  "ok": true,
+  "correction_base": "5bf5fb13f3d89f969570dff6aae5736feebd55fd",
+  "correction_allowed_count": 9,
+  "correction_changed_paths": [
+    "crates/cli/src/main.rs",
+    "crates/cli/tests/query_output_contract.rs",
+    "crates/search/src/collection_query.rs",
+    "crates/search/src/collection_query/projection.rs",
+    "crates/search/src/dictionary.rs",
+    "crates/search/src/dictionary/borrowed.rs",
+    "crates/search/src/dictionary/projection.rs",
+    "crates/search/tests/dictionary_projection_contract.rs"
+  ],
+  "head": "c3643f4915b7876313dc3a58d8c56c87cf38fa5c",
+  "base": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "tree": "bcaf63c9ec11b18ea23049ca10921b5d8e06da32",
+  "branch": "codex/project01-readable-compact-output",
+  "allowed_count": 19,
+  "changed_count": 19,
+  "lock_sha256": "65cd7f39a88bdd2a3dab1fcd14e9055ff7b77cb22ec3af8c309ce49dbea78700",
+  "guard_sha256": "20fe7ba73311aa503870923af09f33f3b53262742ca4eeea2972092924cf5de8",
+  "parsed_trailers": [
+    "Co-authored-by: Codex <noreply@openai.com>",
+    "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+  ],
+  "changed_files": [
+    {
+      "path": "README.md",
+      "git_blob": "a2cabbd70273453b763f5d17320e086b595b33e4",
+      "sha256": "beb254e97387aad0425ad83adf350569b9059f3a9b8533e98775eef91e52cb17"
+    },
+    {
+      "path": "crates/cli/README.md",
+      "git_blob": "5af7eebc98c367d67808a630db209b9e037590c1",
+      "sha256": "4008070b8df559839faa7e2182596896d7f070e19cc5a90ecf5a7ac12ca8672b"
+    },
+    {
+      "path": "crates/cli/src/main.rs",
+      "git_blob": "141abba8c70f28b7baaa427f91016feb27075a08",
+      "sha256": "54eda867d8aff64534c2f9ed6ee3e71cd0900de5a582dd4e950fc0075a3bef4e"
+    },
+    {
+      "path": "crates/cli/src/query_output.rs",
+      "git_blob": "ed6ddfee19b08984f204989d48bef8151ec846a9",
+      "sha256": "3cce9e431ab0d32294b39573b6ac5facaf5f10fdbdf10d2b1f6a0829232c41fb"
+    },
+    {
+      "path": "crates/cli/tests/query_output_contract.rs",
+      "git_blob": "2d01ba4ae484c64213391aed08032a153a9fa878",
+      "sha256": "5d3e861665d5a2eee8644111bfe33c448f66cb4e81cf81b38814c45c8145cfd0"
+    },
+    {
+      "path": "crates/search/README.md",
+      "git_blob": "da747f4c8501b1fb0a1cdea3e49b784ee5748af6",
+      "sha256": "f73548e5b33aafd48b79a292ff347dc76f3c1ac2b268b07f1a545b8e6292daba"
+    },
+    {
+      "path": "crates/search/src/collection_query.rs",
+      "git_blob": "80670b49ea04ff72339621772dfbe51c7b5f1182",
+      "sha256": "8a05ff637d7ec9e24181dd19b89551d413c12b3b561abf89091dad36429717b6"
+    },
+    {
+      "path": "crates/search/src/collection_query/projection.rs",
+      "git_blob": "d909612745bfc9c4157a554ff206a43e1f124e25",
+      "sha256": "9014b5d2bbea726987224d72d7b5f179fbe2e77769af6db4235717a392db2524"
+    },
+    {
+      "path": "crates/search/src/dictionary.rs",
+      "git_blob": "daf16b0118081a498ab5f030a3afdf00df481208",
+      "sha256": "ae5e0c52e57c667dab58f0c52e58bf83f600a8e1c9e06fdbda314975631b1ba3"
+    },
+    {
+      "path": "crates/search/src/dictionary/borrowed.rs",
+      "git_blob": "0a8b2008e5c4e073ef1b36c5a613b4dd406739bf",
+      "sha256": "670699c54cff2f13a5ae3b3592dc4bb41a84225048597f915b506ddbec75fbe8"
+    },
+    {
+      "path": "crates/search/src/dictionary/projection.rs",
+      "git_blob": "e4a1544b47ff7157dc8834550508b639167b374f",
+      "sha256": "ccd14105c297cc99b8d9d60bf2ffbf7629d7ecc94a0fc7ab23c0d69509932cde"
+    },
+    {
+      "path": "crates/search/src/lib.rs",
+      "git_blob": "568d2c09f2be34c24457ac98fb335ab9277a8e7c",
+      "sha256": "917437ed0c46bb8a50f16dfbf422f3857815b4efcc9380e07d70fc78537d1d31"
+    },
+    {
+      "path": "crates/search/tests/collection_projection_contract.rs",
+      "git_blob": "0b1fa244b04d0dd3640f79731f4bcac7023e6cdc",
+      "sha256": "e1503b2bc3b0a21238fa4fdbb97664984ea9fc60f77193aeafd0f2a72799ae2f"
+    },
+    {
+      "path": "crates/search/tests/dictionary_projection_contract.rs",
+      "git_blob": "ce8885cde58f1fcff0a6f9124d9ce17312cdf9a2",
+      "sha256": "d49c2bb29d197987a3a149ed8112db64b0f6485d16cdf8a663f8efbeba020712"
+    },
+    {
+      "path": "crates/store/src/collections.rs",
+      "git_blob": "362fede499cc01db22d0098f73f3112b272351e3",
+      "sha256": "3d49784d8aa20a0a5b859b0bc295aae334be579cc48a680fdf985e4795ead304"
+    },
+    {
+      "path": "crates/store/src/collections/reference_projection.rs",
+      "git_blob": "bb9c5e2974437efb96b19551ae0e674cc0021fc6",
+      "sha256": "090255269a34e9823866a3b65491415890a54f1a9a8909b9926d719bf5f8419b"
+    },
+    {
+      "path": "crates/store/src/lib.rs",
+      "git_blob": "aaada01223820f9a8bd02a037cff1efa5ad4a5e6",
+      "sha256": "7cf3cfc532eaa38fd2111c9253537f3c754aab8fd9662218d37b5e942c373e1c"
+    },
+    {
+      "path": "crates/store/tests/reference_projection_contract.rs",
+      "git_blob": "94e6f276c7abdc1305538a48f3e8725105c6a755",
+      "sha256": "40a0748cbedd7203ac8f4e3c15eeb9e6f362a3e103f3030aab3922b4d1e00d91"
+    },
+    {
+      "path": "docs/collections.md",
+      "git_blob": "c280f11f2cf2c463f52f70ef5b430e5ede52b842",
+      "sha256": "bc45c01cd52d8db5f34daadd8f9859518cc31676d85ce7a47cdb786d42e948e9"
+    }
+  ],
+  "limits": "No Cargo/target/database/default/network actions; scope is not functional acceptance"
+}

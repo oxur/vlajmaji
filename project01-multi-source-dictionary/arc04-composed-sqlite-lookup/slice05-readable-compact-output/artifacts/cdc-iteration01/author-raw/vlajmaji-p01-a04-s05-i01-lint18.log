@@ -1,0 +1,101 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji)
+error[E0425]: cannot find value `profile` in this scope
+    --> crates/cli/src/main.rs:1462:21
+     |
+1462 |                     profile.as_deref(),
+     |                     ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `location_packs` in this scope
+    --> crates/cli/src/main.rs:1463:22
+     |
+1463 |                     &location_packs,
+     |                      ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `profile` in this scope
+    --> crates/cli/src/main.rs:1471:21
+     |
+1471 |                     profile.as_deref(),
+     |                     ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `profile` in this scope
+    --> crates/cli/src/main.rs:1476:55
+     |
+1476 |             let configured_profile = profiles.profile(profile.as_deref()).map_err(|error| {
+     |                                                       ^^^^^^^
+     |
+help: a local variable with a similar name exists
+     |
+1476 |             let configured_profile = profiles.profile(profiles.as_deref()).map_err(|error| {
+     |                                                              +
+
+error[E0425]: cannot find value `profile` in this scope
+    --> crates/cli/src/main.rs:1481:21
+     |
+1481 |                     profile.as_deref(),
+     |                     ^^^^^^^
+     |
+help: a local variable with a similar name exists
+     |
+1481 |                     profiles.as_deref(),
+     |                            +
+
+error[E0425]: cannot find value `pack` in this scope
+    --> crates/cli/src/main.rs:1487:37
+     |
+1487 |             let override_packs = if pack.is_empty() {
+     |                                     ^^^^ not found in this scope
+
+error[E0425]: cannot find value `pack` in this scope
+    --> crates/cli/src/main.rs:1490:53
+     |
+1490 |                 let mut parsed = Vec::with_capacity(pack.len());
+     |                                                     ^^^^ not found in this scope
+
+error[E0425]: cannot find value `pack` in this scope
+    --> crates/cli/src/main.rs:1491:31
+     |
+1491 |                 for value in &pack {
+     |                               ^^^^ not found in this scope
+
+error[E0425]: cannot find value `profile` in this scope
+    --> crates/cli/src/main.rs:1500:29
+     |
+1500 | ...                   profile.as_deref(),
+     |                       ^^^^^^^
+     |
+help: a local variable with a similar name exists
+     |
+1500 |                             profiles.as_deref(),
+     |                                    +
+
+error[E0425]: cannot find value `profile` in this scope
+    --> crates/cli/src/main.rs:1510:17
+     |
+1510 |                 profile.as_deref(),
+     |                 ^^^^^^^
+     |
+help: a local variable with a similar name exists
+     |
+1510 |                 profiles.as_deref(),
+     |                        +
+
+error[E0425]: cannot find value `profile` in this scope
+    --> crates/cli/src/main.rs:1518:21
+     |
+1518 |                     profile.as_deref(),
+     |                     ^^^^^^^
+     |
+help: a local variable with a similar name exists
+     |
+1518 |                     profiles.as_deref(),
+     |                            +
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `vlajmaji-cli` (bin "vlajmaji") due to 11 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-cli` (bin "vlajmaji" test) due to 11 previous errors
+make: *** [lint] Error 101

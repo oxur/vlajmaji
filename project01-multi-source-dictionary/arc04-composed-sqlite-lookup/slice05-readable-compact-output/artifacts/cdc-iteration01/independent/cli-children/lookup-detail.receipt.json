@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/bin/cli-iteration01",
+    "lookup-detail",
+    "--reference",
+    "{\"assertion_id\":\"jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0\",\"assertion_sha256\":\"c1cab67c61ec8482ad1ec2f33a70bdc05f6bc249a11b2e686170830efd3a05b6\",\"contributor_id\":\"lensisku-user-a4d26868017c0ccffe2efe50944ef4211834660cca834c6e9f86dec6a88246fa\",\"digest_policy\":\"entry-assertion-serde-json-v1\",\"distributor_id\":\"jbotci\",\"entry_id\":\"jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-entry-0\",\"entry_sha256\":\"67e4a7ba8c7872dbcc0939c7553d7ded92ed411a05e208c43fdc962176104e24\",\"native_assertion_id\":\"333\",\"native_entry_id\":null,\"occurrence\":{\"capture\":{\"namespace\":\"captured:lensisku:jbotci:en\",\"sha256\":\"63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429\"},\"locator\":\"/0\"},\"role\":\"assertion\",\"source\":\"lensisku\",\"version\":1}",
+    "--config",
+    "/private/tmp/vlajmaji-p01-a04-s05-cdc/iteration01-cli-runtime01/config.toml"
+  ],
+  "exit": 0,
+  "expected_exit": 0,
+  "elapsed_s": 0.033919332548975945,
+  "stdout_bytes": 9786,
+  "stdout_sha256": "acf19f41198d0d841e3615f87cc9d95d1ca37e46d3fcb63327c8593a970d4b66",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "cwd": null,
+  "isolated_environment": {
+    "HOME": "/private/tmp/vlajmaji-p01-a04-s05-cdc/iteration01-cli-runtime01/home",
+    "XDG_CONFIG_HOME": "/private/tmp/vlajmaji-p01-a04-s05-cdc/iteration01-cli-runtime01/xdg_config_home",
+    "XDG_DATA_HOME": "/private/tmp/vlajmaji-p01-a04-s05-cdc/iteration01-cli-runtime01/xdg_data_home"
+  }
+}

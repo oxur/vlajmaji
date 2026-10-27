@@ -1,0 +1,41 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0382]: borrow of partially moved value: `profile`
+   --> crates/search/src/collection_query.rs:831:42
+    |
+824 |                 if let Some(profile) = profile {
+    |                             ------- value partially moved here
+...
+831 |                 let projection_started = profile.as_ref().map(|_| Instant::now());
+    |                                          ^^^^^^^ value borrowed here after partial move
+    |
+    = note: partial move occurs because value has type `&mut collection_query::projection::CollectionProjectionProfile`, which does not implement the `Copy` trait
+help: borrow this binding in the pattern to avoid moving the value
+    |
+824 |                 if let Some(ref profile) = profile {
+    |                             +++
+
+error[E0596]: cannot borrow `projection` as mutable, as it is not declared as mutable
+    --> crates/search/src/dictionary/projection.rs:897:9
+     |
+ 897 |         projection: Option<&mut Duration>,
+     |         ^^^^^^^^^^ not mutable
+...
+1062 |         if let (Some(projection), Some(started)) = (projection.as_deref_mut(), projection_started) {
+     |                                                     ---------- cannot borrow as mutable
+...
+1076 |             views.push(self.reference_assertion(row, projection.as_deref_mut())?);
+     |                                                      ---------- cannot borrow as mutable
+     |
+help: consider changing this to be mutable
+     |
+ 897 |         mut projection: Option<&mut Duration>,
+     |         +++
+
+Some errors have detailed explanations: E0382, E0596.
+For more information about an error, try `rustc --explain E0382`.
+error: could not compile `vlajmaji-search` (lib test) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib) due to 2 previous errors
+make: *** [lint] Error 101

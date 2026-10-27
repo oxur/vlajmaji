@@ -1,0 +1,12 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: couldn't read `crates/search/src/dictionary/unverified_index_tests/../../../lexicon/examples/support/dictionary_fixture.rs`: No such file or directory (os error 2)
+    --> crates/search/src/dictionary.rs:1857:5
+     |
+1857 |     mod fixture;
+     |     ^^^^^^^^^^^^
+
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

@@ -1,0 +1,18 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: variable does not need to be mutable
+    --> crates/search/src/dictionary/projection.rs:1084:9
+     |
+1084 |         mut projection: Option<&mut Duration>,
+     |         ----^^^^^^^^^^
+     |         |
+     |         help: remove this `mut`
+     |
+     = note: `-D unused-mut` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(unused_mut)]`
+
+error: could not compile `vlajmaji-search` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+make: *** [lint] Error 101

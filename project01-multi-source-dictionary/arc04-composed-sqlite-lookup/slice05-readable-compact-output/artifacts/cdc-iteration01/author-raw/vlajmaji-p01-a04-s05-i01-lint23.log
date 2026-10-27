@@ -1,0 +1,62 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji)
+error: for loop over a single element
+   --> crates/search/tests/dictionary_projection_contract.rs:724:5
+    |
+724 | /     for sources in [vec!["source-a".to_owned()]] {
+725 | |         let full_result = full
+726 | |             .exact(
+727 | |                 "farvi",
+...   |
+756 | |         );
+757 | |     }
+    | |_____^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#single_element_loop
+    = note: `-D clippy::single-element-loop` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::single_element_loop)]`
+help: try
+    |
+724 ~     {
+725 +         let sources = ..;
+726 +         let full_result = full
+727 +             .exact(
+728 +                 "farvi",
+729 +                 DictionaryExactOptions {
+730 +                     sources: sources.clone(),
+731 +                     ..Default::default()
+732 +                 },
+733 +             )
+734 +             .unwrap();
+735 +         assert!(
+736 +             full_result
+737 +                 .groups
+738 +                 .iter()
+739 +                 .flat_map(|group| &group.hits)
+740 +                 .all(|hit| hit.assertion.id != missing.1)
+741 +         );
+742 +         let compact_result = compact
+743 +             .exact(
+744 +                 "farvi",
+745 +                 DictionaryExactOptions {
+746 +                     sources,
+747 +                     ..Default::default()
+748 +                 },
+749 +             )
+750 +             .unwrap();
+751 +         assert!(
+752 +             compact_result
+753 +                 .groups
+754 +                 .iter()
+755 +                 .flat_map(|group| &group.hits)
+756 +                 .all(|hit| hit.assertion.id != missing.1)
+757 +         );
+758 +     }
+    |
+
+error: could not compile `vlajmaji-search` (test "dictionary_projection_contract") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

@@ -1,0 +1,20 @@
+{
+  "source_head": "c3643f4915b7876313dc3a58d8c56c87cf38fa5c",
+  "scope": "exact frozen public fullresolve_profiled compile contract; current corrected public API signature qualification, no product execution",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-cargo",
+    "+1.98.0",
+    "check",
+    "--bin",
+    "full-resolve-api",
+    "--manifest-path",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/public-caller01/Cargo.toml",
+    "--offline",
+    "--locked"
+  ],
+  "exit": 0,
+  "timeout": false,
+  "elapsed_s": 2.9306428749114275,
+  "log_bytes": 398,
+  "log_sha256": "9de8502c07571352746cb4b4038c51352ce0b74fce0c35cfd18add5d1b219b1a"
+}

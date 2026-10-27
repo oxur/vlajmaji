@@ -1,0 +1,35 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0061]: this function takes 4 arguments but 5 arguments were supplied
+    --> crates/search/src/dictionary/projection.rs:700:22
+     |
+ 700 |             offset = cursor_position(cursor, &cursor_binding, spelling, &rows, &self.document)?;
+     |                      ^^^^^^^^^^^^^^^                                           -------------- unexpected argument #5 of type `&vlajmaji_lexicon::DictionaryDocument<vlajmaji_lexicon::RegistryDocument>`
+     |
+note: expected `&[(SourceId, EntryRecord, ...)]`, found `&Vec<(usize, usize)>`
+    --> crates/search/src/dictionary/projection.rs:700:73
+     |
+ 700 |             offset = cursor_position(cursor, &cursor_binding, spelling, &rows, &self.document)?;
+     |                                                                         ^^^^^
+     = note: expected reference `&[(vlajmaji_lexicon::SourceId, vlajmaji_lexicon::EntryRecord, vlajmaji_lexicon::AssertionRecord)]`
+                found reference `&std::vec::Vec<(usize, usize)>`
+note: function defined here
+    --> crates/search/src/dictionary/projection.rs:1984:4
+     |
+1984 | fn cursor_position(
+     |    ^^^^^^^^^^^^^^^
+...
+1988 |     rows: &[(SourceId, EntryRecord, lexicon::AssertionRecord)],
+     |     ----------------------------------------------------------
+help: remove the extra argument
+     |
+ 700 -             offset = cursor_position(cursor, &cursor_binding, spelling, &rows, &self.document)?;
+ 700 +             offset = cursor_position(cursor, &cursor_binding, spelling, /* &[(vlajmaji_lexicon::SourceId, vlajmaji_lexicon::EntryRecord, vlajmaji_lexicon::AssertionRecord)] */)?;
+     |
+
+For more information about this error, try `rustc --explain E0061`.
+error: could not compile `vlajmaji-search` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+make: *** [lint] Error 101
