@@ -6,7 +6,7 @@ mod fixture;
 use std::{
     collections::BTreeMap,
     fs,
-    path::PathBuf,
+    path::{Path, PathBuf},
     process::Command,
     sync::atomic::{AtomicU64, Ordering},
     time::{SystemTime, UNIX_EPOCH},
@@ -102,6 +102,31 @@ fn unverified_document(
         captures: document.captures.clone(),
         metadata: document.metadata.clone(),
     }
+}
+
+fn replace_canonical_store_document(
+    database: &Path,
+    document: &vlajmaji_lexicon::UnverifiedDictionaryDocument,
+) {
+    let canonical = serde_json::to_vec(document).unwrap();
+    let digest = sha256(&canonical);
+    let encoded = canonical
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
+        .collect::<String>();
+    let mutation = Command::new("sqlite3")
+        .arg(database)
+        .arg(format!(
+            "UPDATE canonical_document SET json=X'{encoded}' WHERE id=1; UPDATE metadata SET value='{digest}' WHERE key='canonical_sha256'; SELECT changes();"
+        ))
+        .output()
+        .unwrap();
+    assert!(
+        mutation.status.success(),
+        "canonical document mutation failed: {}",
+        String::from_utf8_lossy(&mutation.stderr)
+    );
+    assert_eq!(String::from_utf8_lossy(&mutation.stdout).trim(), "1");
 }
 
 fn sha256(bytes: &[u8]) -> String {
@@ -891,6 +916,74 @@ fn test_selected_missing_entry_fails_but_unselected_candidate_is_skipped_after_l
     drop(compact);
 
     fs::write(&database, original_database).unwrap();
+    fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_public_fast_open_rejects_duplicate_capture_entry_and_ordered_capture_source() {
+    let root = scratch();
+    let store = root.join("dictionary.sqlite3");
+    let database = store.join("dictionary.sqlite3");
+    let dictionary = fixture::complete_fixture().unwrap();
+    DictionaryStore::create(&store, &dictionary).unwrap();
+    let original_database = fs::read(&database).unwrap();
+    let original = unverified_document(&dictionary);
+
+    let assert_duplicate = |expected: &str| {
+        let full_error = match DictionarySearchEngine::open(&store) {
+            Err(error) => error,
+            Ok(_) => panic!("full fast-open accepted duplicate identity: {expected}"),
+        };
+        assert!(
+            matches!(full_error, DictionaryQueryError::Integrity { ref detail } if detail == expected)
+        );
+        let compact_error = match DictionaryCompactSearchEngine::open(&store) {
+            Err(error) => error,
+            Ok(_) => panic!("compact fast-open accepted duplicate identity: {expected}"),
+        };
+        assert!(
+            matches!(compact_error, DictionaryQueryError::Integrity { ref detail } if detail == expected)
+        );
+    };
+    let assert_valid = || {
+        let full = DictionarySearchEngine::open(&store).unwrap();
+        let compact = DictionaryCompactSearchEngine::open(&store).unwrap();
+        drop(full);
+        drop(compact);
+    };
+
+    let mut duplicate_capture = original.clone();
+    duplicate_capture
+        .captures
+        .push(duplicate_capture.captures[0].clone());
+    replace_canonical_store_document(&database, &duplicate_capture);
+    assert_duplicate("duplicate capture identity in query index");
+    fs::write(&database, &original_database).unwrap();
+    assert_valid();
+
+    let mut duplicate_capture_and_source = original.clone();
+    duplicate_capture_and_source
+        .captures
+        .push(duplicate_capture_and_source.captures[0].clone());
+    duplicate_capture_and_source
+        .registry
+        .sources
+        .push(duplicate_capture_and_source.registry.sources[0].clone());
+    replace_canonical_store_document(&database, &duplicate_capture_and_source);
+    assert_duplicate("duplicate capture identity in query index");
+    fs::write(&database, &original_database).unwrap();
+    assert_valid();
+
+    let mut duplicate_entry = original.clone();
+    duplicate_entry
+        .metadata
+        .entries
+        .push(duplicate_entry.metadata.entries[0].clone());
+    replace_canonical_store_document(&database, &duplicate_entry);
+    assert_duplicate("duplicate entry identity in query index");
+    fs::write(&database, &original_database).unwrap();
+    assert_valid();
+
     fs::remove_dir_all(root).unwrap();
 }
 

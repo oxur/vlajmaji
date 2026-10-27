@@ -32,6 +32,20 @@ use crate::{
     ReferenceResolution, ReferenceStatus,
 };
 
+fn measure_collection_projection<T>(
+    profile: &mut Option<&mut CollectionProjectionProfile>,
+    operation: impl FnOnce() -> T,
+) -> T {
+    if let Some(profile) = profile.as_deref_mut() {
+        let started = Instant::now();
+        let value = operation();
+        profile.query.projection += started.elapsed();
+        value
+    } else {
+        operation()
+    }
+}
+
 /// Explicit pack membership and independently disabled packs for a managed query.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -818,15 +832,7 @@ impl CollectionSearchEngine {
                 Ok(response)
             }
             DictionaryRequest::Resolve { target } => {
-                let query_started = Instant::now();
                 let response = self.resolve_target(target, profile.as_deref_mut())?;
-                if let Some(profile) = profile.as_deref_mut() {
-                    profile.query.total = query_started.elapsed().saturating_sub(
-                        profile
-                            .payload_setup
-                            .map_or(Duration::ZERO, |setup| setup.total),
-                    );
-                }
                 let projection_started = profile.as_ref().map(|_| Instant::now());
                 let response = self.response(CollectionQueryResult::Resolve(Box::new(response)));
                 if let (Some(profile), Some(started)) = (profile, projection_started) {
@@ -949,7 +955,7 @@ impl CollectionSearchEngine {
             }
             _ => {}
         }
-        let matches = self.metadata_matches(&target)?;
+        let matches = self.metadata_matches(&target, profile.as_deref_mut())?;
         if let Some((pack, release)) = self.selected_payload_for_target(&target, &matches.admission)
         {
             let _ = (pack, release);
@@ -959,7 +965,7 @@ impl CollectionSearchEngine {
                     detail: "payload engine is unavailable after setup".into(),
                 })
             })?;
-            let mut payload = if let Some(profile) = profile {
+            let mut payload = if let Some(profile) = profile.as_deref_mut() {
                 let (payload, query_profile) = engine.resolve_profiled(&target)?;
                 profile.query.projection += query_profile.projection;
                 payload
@@ -1024,14 +1030,16 @@ impl CollectionSearchEngine {
                 },
                 _ => None,
             };
-            return Ok(CollectionReferenceResponse {
-                target,
-                status: payload.status,
-                operational_reason: None,
-                payload: Some(payload),
-                catalogue_matches: matches.public,
-                requested_release,
-            });
+            return Ok(measure_collection_projection(&mut profile, || {
+                CollectionReferenceResponse {
+                    target,
+                    status: payload.status,
+                    operational_reason: None,
+                    payload: Some(payload),
+                    catalogue_matches: matches.public,
+                    requested_release,
+                }
+            }));
         }
         let requested_release = if let RelationTarget::Catalog(catalog) = &target {
             match matches
@@ -1077,19 +1085,22 @@ impl CollectionSearchEngine {
         } else {
             ReferenceStatus::CatalogueOnly
         };
-        Ok(CollectionReferenceResponse {
-            target,
-            status,
-            operational_reason: (!matches.public.is_empty()).then_some(reason),
-            payload: None,
-            catalogue_matches: matches.public,
-            requested_release,
-        })
+        Ok(measure_collection_projection(&mut profile, || {
+            CollectionReferenceResponse {
+                target,
+                status,
+                operational_reason: (!matches.public.is_empty()).then_some(reason),
+                payload: None,
+                catalogue_matches: matches.public,
+                requested_release,
+            }
+        }))
     }
 
     fn metadata_matches(
         &self,
         target: &RelationTarget,
+        mut profile: Option<&mut CollectionProjectionProfile>,
     ) -> Result<MetadataMatches, CollectionQueryError> {
         let catalogue = CollectionCatalogue::open(&self.root)?;
         if catalogue.local_revision()? != self.snapshot.local_revision {
@@ -1124,7 +1135,10 @@ impl CollectionSearchEngine {
                             continue;
                         };
                         if requested_release.is_none() {
-                            requested_release = Some(CollectionReleaseSummary::from(release));
+                            requested_release =
+                                Some(measure_collection_projection(&mut profile, || {
+                                    CollectionReleaseSummary::from(release)
+                                }));
                         }
                         let source = descriptor
                             .source_metadata
@@ -1331,11 +1345,15 @@ impl CollectionSearchEngine {
             }
             _ => {}
         }
-        let admission = results.clone();
         let public = if matches!(target, RelationTarget::Local(_)) {
-            let mut deduplicated: Vec<CollectionReferenceMatch> = Vec::new();
-            for row in &results {
-                let same_public_identity = |existing: &CollectionReferenceMatch| {
+            let mut groups: Vec<(usize, BTreeSet<String>, Option<usize>)> = Vec::new();
+            for (index, row) in results.iter().enumerate() {
+                let row_is_current = self.generation.as_ref().is_some_and(|generation| {
+                    generation.members.iter().any(|member| {
+                        member.pack_id == row.pack_id && member.release_sha256 == row.release_sha256
+                    })
+                });
+                let same_identity = |existing: &CollectionReferenceMatch| {
                     existing.source_id == row.source_id
                         && existing.role == row.role
                         && existing.entity_id == row.entity_id
@@ -1344,35 +1362,42 @@ impl CollectionSearchEngine {
                         && existing.native_entry_id == row.native_entry_id
                         && existing.native_assertion_id == row.native_assertion_id
                 };
-                if let Some(existing) = deduplicated
+                if let Some((_, contributors, current)) = groups
                     .iter_mut()
-                    .find(|row| same_public_identity(row))
+                    .find(|(first, _, _)| same_identity(&results[*first]))
                 {
-                    if !existing.contributing_pack_ids.contains(&row.pack_id) {
-                        existing.contributing_pack_ids.push(row.pack_id.clone());
-                        existing.contributing_pack_ids.sort();
-                    }
-                    let row_is_current = self.generation.as_ref().is_some_and(|generation| {
-                        generation.members.iter().any(|member| {
-                            member.pack_id == row.pack_id
-                                && member.release_sha256 == row.release_sha256
-                        })
-                    });
+                    contributors.insert(row.pack_id.clone());
                     if row_is_current {
-                        existing.pack_id = row.pack_id.clone();
-                        existing.release_sha256 = row.release_sha256.clone();
+                        *current = Some(index);
                     }
                 } else {
-                    deduplicated.push(row.clone());
+                    groups.push((
+                        index,
+                        row.contributing_pack_ids.iter().cloned().collect(),
+                        row_is_current.then_some(index),
+                    ));
                 }
             }
-            deduplicated
+            measure_collection_projection(&mut profile, || {
+                groups
+                    .iter()
+                    .map(|(first, contributors, current)| {
+                        let mut row = results[*first].clone();
+                        if let Some(current) = current {
+                            row.pack_id = results[*current].pack_id.clone();
+                            row.release_sha256 = results[*current].release_sha256.clone();
+                        }
+                        row.contributing_pack_ids = contributors.iter().cloned().collect();
+                        row
+                    })
+                    .collect()
+            })
         } else {
-            results
+            measure_collection_projection(&mut profile, || results.clone())
         };
         Ok(MetadataMatches {
             public,
-            admission,
+            admission: results,
             requested_release,
         })
     }
