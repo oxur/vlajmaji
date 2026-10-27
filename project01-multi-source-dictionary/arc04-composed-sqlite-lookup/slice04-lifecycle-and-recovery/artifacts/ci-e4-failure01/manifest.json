@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "scope": "failed hostedCI and source/fixture diagnosis only; no product repair/new Full",
+  "payloads": [
+    {
+      "path": "all-jobs.log",
+      "bytes": 343584,
+      "sha256": "59d37c3c8ae53647eec4b33386cf99c7322d7170a464bde9daef1e0085b9b042"
+    },
+    {
+      "path": "census01.json",
+      "bytes": 1175,
+      "sha256": "2320648880bf4f0a402aea178502e37352ba05b022d7d1f2c5e1aeb07d6ab1bd"
+    },
+    {
+      "path": "diagnosis.md",
+      "bytes": 2670,
+      "sha256": "faffd5ea3a080e1cfdb15d81805e0561e7e96f49972db9b363645e7935ecc7dc"
+    },
+    {
+      "path": "fixture-precondition/fixture/release.json",
+      "bytes": 19661,
+      "sha256": "467b390d8d237482259e160659a0561c979578b0d99f3c44b2b72209732f9f83"
+    },
+    {
+      "path": "fixture-precondition/fixture/report.json",
+      "bytes": 2799,
+      "sha256": "78f61b24aa34e2594a94fc23ae81b0f2a9fa1422625a7925f1b97ceb0dbba6b1"
+    },
+    {
+      "path": "fixture-precondition/fixture/seal.json",
+      "bytes": 938,
+      "sha256": "a719f0c767e1c9cd55545a37b2472f67a31fbbd92b305169ae53032b65fb5275"
+    },
+    {
+      "path": "fixture-precondition/receipt.json",
+      "bytes": 1613,
+      "sha256": "e6e7f882301a6c375224606a17258432d7b1dc63fea40e4b7a53c21e14853851"
+    },
+    {
+      "path": "fixture-precondition/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-precondition/stdout.log",
+      "bytes": 2147,
+      "sha256": "5c3358b12a4749f68673c9b45842b3a89395f85c6b0b86bd4c603496b70e6430"
+    },
+    {
+      "path": "frozen-cli-maintenance-e4.rs.txt",
+      "bytes": 40265,
+      "sha256": "f0e4b56d70e0ab5539559b03bb9dc7aba702d4f8e60b99269789a5559d81845e"
+    },
+    {
+      "path": "linux-job.log",
+      "bytes": 92347,
+      "sha256": "592b642f4d87d0cfa157127b96377a79575c17b08022207bda50c73693b84aa5"
+    },
+    {
+      "path": "run-terminal.json",
+      "bytes": 9380,
+      "sha256": "cf39ca2816e53b30b1fd69feac562d62bc087fb1d33dd32ecfe680b5d7063764"
+    }
+  ],
+  "bytes": 516579
+}

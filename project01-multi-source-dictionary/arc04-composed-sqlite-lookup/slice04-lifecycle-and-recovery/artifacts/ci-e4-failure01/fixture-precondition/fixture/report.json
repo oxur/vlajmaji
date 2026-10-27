@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "components": [
+    {
+      "component": "gismu",
+      "input_bytes": 195,
+      "input_sha256": "30af4ce20e2309a04cac0b6a8a4f8af05046940e3fcef7bc2d8bd1b4522773be",
+      "input_lines": 2,
+      "native_fields": 8,
+      "lexical_assertions": 1,
+      "form_only_assertions": 0,
+      "excluded_assertions": 1,
+      "headers": 1,
+      "unsupported_rows": 0,
+      "header_claims": [
+        {
+          "occurrence": {
+            "capture": {
+              "namespace": "captured:llg:gismu",
+              "sha256": "30af4ce20e2309a04cac0b6a8a4f8af05046940e3fcef7bc2d8bd1b4522773be"
+            },
+            "locator": "1"
+          },
+          "declared_body_count": 1,
+          "count_matches": true
+        }
+      ],
+      "declared_body_count": 1,
+      "observed_body_count": 1,
+      "declared_count_matches": true,
+      "assigned_forms": 2,
+      "contexts": 2,
+      "diagnostics": {
+        "source_header": 1
+      }
+    },
+    {
+      "component": "cmavo",
+      "input_bytes": 113,
+      "input_sha256": "b913f30055f7299d64129c2da46f504c89f37ef5208f254389af60b37d3a7261",
+      "input_lines": 2,
+      "native_fields": 5,
+      "lexical_assertions": 1,
+      "form_only_assertions": 0,
+      "excluded_assertions": 1,
+      "headers": 1,
+      "unsupported_rows": 0,
+      "header_claims": [
+        {
+          "occurrence": {
+            "capture": {
+              "namespace": "captured:llg:cmavo",
+              "sha256": "b913f30055f7299d64129c2da46f504c89f37ef5208f254389af60b37d3a7261"
+            },
+            "locator": "1"
+          },
+          "declared_body_count": 1,
+          "count_matches": true
+        }
+      ],
+      "declared_body_count": 1,
+      "observed_body_count": 1,
+      "declared_count_matches": true,
+      "assigned_forms": 0,
+      "contexts": 1,
+      "diagnostics": {
+        "source_header": 1
+      }
+    },
+    {
+      "component": "rafsi",
+      "input_bytes": 18,
+      "input_sha256": "1fe380c73539440359596ae97e48a1b3b62b1460bf7319e4252ac39d87bb1c79",
+      "input_lines": 1,
+      "native_fields": 3,
+      "lexical_assertions": 0,
+      "form_only_assertions": 1,
+      "excluded_assertions": 1,
+      "headers": 0,
+      "unsupported_rows": 0,
+      "header_claims": [],
+      "declared_body_count": null,
+      "observed_body_count": 1,
+      "declared_count_matches": null,
+      "assigned_forms": 1,
+      "contexts": 1,
+      "diagnostics": {}
+    }
+  ],
+  "captures": 4,
+  "occurrences": 5,
+  "entries": 4,
+  "lexical_assertions": 2,
+  "excluded_assertions": 3,
+  "eligible_spellings": 2,
+  "all_spellings": 2,
+  "native_fields": 16,
+  "assigned_forms": 3,
+  "contexts": 4,
+  "teaching_code_extensions": 0,
+  "frequency_extensions": 0,
+  "extensions": 0,
+  "diagnostics": {
+    "source_header": 2
+  }
+}

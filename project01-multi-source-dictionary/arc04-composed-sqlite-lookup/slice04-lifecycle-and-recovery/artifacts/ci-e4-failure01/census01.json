@@ -1,0 +1,29 @@
+{
+  "source": "e4e8bfc55c5071d9144fa72e7360525efa43fd56",
+  "run_conclusion": "failure",
+  "actual_completed_test_summaries": {
+    "Test (ubuntu-latest) / Run cargo test --workspace --locked": {
+      "result_rows": 7,
+      "passed": 45,
+      "failed": 2,
+      "ignored": 0
+    },
+    "Test (macos-latest) / Run cargo test --workspace --locked": {
+      "result_rows": 51,
+      "passed": 277,
+      "failed": 0,
+      "ignored": 1
+    },
+    "linux_skipped_steps": [
+      "Run cargo test --locked -p vlajmaji-search --no-default-features",
+      "Install graph backend build dependencies",
+      "Prepare synthetic embedded data for all-feature tests",
+      "Prepare synthetic LLG data for all-feature tests",
+      "Prepare synthetic La-Lojban data for all-feature tests",
+      "Prepare synthetic Sutysisku data for all-feature tests",
+      "Run cargo test --workspace --all-features --locked",
+      "Post Run Swatinem/rust-cache@v2"
+    ]
+  },
+  "limits": "Linux workspace aborted in CLI maintenance; these partial rows are NOT completed workspace success. Later workspace packages/isolated/Synthetic/allfeatures unrun. Mac default passed; no Mac allfeatures."
+}
