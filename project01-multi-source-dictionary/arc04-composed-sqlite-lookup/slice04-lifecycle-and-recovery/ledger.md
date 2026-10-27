@@ -1,6 +1,6 @@
 # S04 ledger — lifecycle and recovery
 
-CURRENT: initial8b remains ACCEPTED_INITIAL_ONLY. Frozen iteration02 a9eeb440 independently passes the three assigned corrections at finite public/CLI scope; one reproduced committed remove/reinstall-stage classification defect still blocks complete S04. Iteration02 returned; CDC owns source/index/target. Iteration03 two-path prompt is ISSUED after root readiness and exact committed-ID negative clarification; intake/transfer pending. Six binding rows remain OPEN; actual Linux/finite Full/fresh-arc proof pending.
+CURRENT: initial8b remains ACCEPTED_INITIAL_ONLY. Frozen iteration02 a9eeb440 independently passes the three assigned corrections at finite public/CLI scope; one reproduced committed remove/reinstall-stage classification defect still blocks complete S04. Iteration02 returned. Iteration03 two-path prompt is ISSUED, exact intake accepted and source/index/retained target explicitly transferred to retained CC at2026-10-27 05:25:05 UTC; CDC/root read-only there. Six binding rows remain OPEN; actual Linux/finite Full/fresh-arc proof pending.
 
 | ID | Criterion | Verification | Owner | Status | Current disposition |
 | --- | --- | --- | --- | --- | --- |
@@ -54,3 +54,7 @@ The previous active-iteration02/current024 paragraphs are historical. CC returne
 ### Iteration03 actual issue — 2026-10-27 05:22:36 UTC
 
 Root concrete readiness PASS; exact unknown-operation negative now deliberately uses an actually committed attempt ID in a separate new directory. Reviewed draft preserved bytewise; prompt is ISSUED SHA 2caca137bb44b1b6e571e89ebacafea55793abe3fe659328ce480736b1343cd5, revised pre-issue SHA 0cf2ada107f1be23d7e4c265a311462102ddfcbdfdb66aeafdf0e6ea349dfc0c. No criterion/proof/owner/status change. CDC owns source/index/target pending exact retained-CC intake and explicit two-path transfer; no functional completion or new Full/Linux/delivery authority.
+
+### Iteration03 accepted intake/ownership checkpoint — 2026-10-27 05:25:05 UTC
+
+Exact issued88f5075/prompt2caca137…343cd5 source-cited readback accepted at independently clean a9eeb440; no active CDC sessions. Two named source paths/index/one retained target explicitly transfer to retained CC; all five operation names and committed-ID unknown negative are understood. CDC/root read-only there until frozen handback; CC appends exact intake/commands to existing execution. No criterion/proof/owner/status cell or six-row OPEN state changes.
