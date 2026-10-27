@@ -1,6 +1,6 @@
 # Arc04 ledger
 
-Arc04 active, 2026-10-27 UTC. S01–S04 CLOSED/twenty-four child rows DONE. A04-01/02/03/04/05 DONE, A04-06/07/08/09/10 OPEN; all14projectrows OPEN. S04 root canonical/mechanical close accepted at432 with currentCI40515705170 green. S05 useful readable/compact/reference/detail, budgets and freshassembled ARC review remain unissued. Root creates requested S04PR then separateS05branch; no S05source/issue before actual transition, no merge/publication inferred.
+Arc04 active, 2026-10-27 UTC. S01–S04 CLOSED/24childDONE; A04-01/02/03/04/05 DONE, fiveotherarc/all14project OPEN. Requested S04PR5 OPEN/current432/PR CI40518812275 terminal SUCCESS. Root created separate S05branch at432; CDC owns quiet readiness. S05 INITIAL issued after root final concrete readiness PASS; sixOPEN, exact CC intake/explicit transfer pending; no source edit/trial/Full/future delivery authority.
 
 | ID | Criterion | Verify at execution | Owner / workflow | Status | Evidence / notes |
 | --- | --- | --- | --- | --- | --- |
@@ -44,3 +44,15 @@ Initial source-guided catalogue2/migrate/update/rebuild increment is ISSUED afte
 ## S04 accepted mechanical bubble-up — 2026-10-27 14:09:56 UTC
 
 Root finalcanonicalPASS permits sixS04DONE and newlyA04-03/05DONE only. Twenty-four child rows acrossS01–S04done, fivearcdone/fiveopen, all14projectopen. S05 owns W5/projection/detail/numeric/freshassembled arc; no silent deferral, no A05activation. Duncan requests S04PR afterclose and separateS05branch; root coordinates actualrefs/delivery. No newruntime/Full/source/push/merge/publication from this close.
+
+## Historical pre-S05 current summary (superseded2026-10-27)
+
+Arc04 active, 2026-10-27 UTC. S01–S04 CLOSED/twenty-four child rows DONE. A04-01/02/03/04/05 DONE, A04-06/07/08/09/10 OPEN; all14projectrows OPEN. S04 root canonical/mechanical close accepted at432 with currentCI40515705170 green. S05 useful readable/compact/reference/detail, budgets and freshassembled ARC review remain unissued. Root creates requested S04PR then separateS05branch; no S05source/issue before actual transition, no merge/publication inferred.
+
+## S05 readiness checkpoint
+
+New slice05-readable-compact-output is DRAFT, no acceptance contribution yet. All10arc criterion/proof/owner/status cells unchanged; original five remaining rows retain exact owners and gates. S04 PR/CI/separate branch are delivery facts, not S05 runtime.
+
+### S05 initial issued after readiness
+
+Root accepted exact six child contracts/19initialpaths at432; no parent status/criterion change. Initial compact/detail pass1of5normal; readable/numeric/fresh ARC gates remain. CC source ownership starts only with explicit coherent intake/transfer.

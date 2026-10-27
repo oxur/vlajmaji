@@ -1,5 +1,11 @@
 # Vlajmaji planning
 
+**Current authority: Autonomous execution THROUGH ARC04 ONLY.** Requested Sol6.1/high CDC and retained Luna/high CC unchanged. Duncan requested next slice and separate S05 branch. S04 CLOSED at432; requested PR5 is OPEN/attached/current432 with PR CI40518812275 terminal SUCCESS. No merge/publication/future S05 push authority inferred. All14projectrows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
+
+**Current Arc04 checkpoint, 2026-10-27:** S01–S04 CLOSED/twenty-four child rows DONE; A04-01/02/03/04/05 DONE, fiveotherarc/all14project OPEN. Root created codex/project01-readable-compact-output at clean432/tree dd2f378 in the SAME isolated Arc04 worktree after opening PR5; old S04 branch remains432, remote main b010 distinct from protected primary52fd. CDC owns QUIET source/index/retained target pending exact S05 CC intake/transfer; CC owns none until reviewed issue/exact intake/explicit transfer. Canonical slice05-readable-compact-output INITIAL is ISSUED after root final concrete readiness PASS; exact retained CC intake/readback and explicit19path transfer pending. No S05 source edits/builds/Full trials or extra stores at issue. No S04 source pass/reopen.
+
+## Historical pre-S04-close current headers (superseded)
+
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Unchanged requested Sol6.1/high CDC and Luna/high CC; CDC owns planning/design/independent review, CC source/index/target only during issued intervals. Latest direct user explicitly authorizes PR4/main integration of the current reviewed Arc03+A04S01–S03 delivery; Duncan has merged PR4 as b0106b3392a2aa1e002e39c912bc586eedfb30e7; root owns tree/CI reconciliation. Actual user default/Bauske/accepted data remain protected; no publication/tag or future feature push is inferred. All fourteen project rows OPEN; A05/A06 unactivated.
 
 **Current Arc04 checkpoint:** S01–S03 CLOSED/eighteen child rows; A04-01/02/04 DONE, seven other arc/all fourteen project rows OPEN. Duncan merged PR4 as main b0106b with accepted dcdf tree; main CI40425580977 all three jobs SUCCESS, root final reconciliation PASS. S04 initial catalogue2/migrate/update/rebuild increment is independently ACCEPTED locally at clean8b5df7b3; source/index/target returned to CDC. Numbered phase2 iteration01 is ISSUED after root final concrete readiness PASS; CC exact issued readback is accepted and exclusive sixteen-path/source-index/retained-target ownership has transferred; CDC/root are source/index/target read-only until frozen handback. All six S04 rows remain OPEN through the initial useful increment and mandatory follow-up lifecycle/policy integration. S05 unissued, no Full/new cache/future push or A05 authority.
@@ -88,24 +94,28 @@ Duncan explicitly approved seven TOTAL candidate stores: retain the two historic
 **Current Arc04 checkpoint:** S01 CLOSED at source4b4158c after independent technical acceptance and root canonical consistency approval. Six slice rows/A04-01 DONE; other nine arc and all fourteen project rows OPEN. Unified derived SQLite selected; S02 source-guided provisioning/catalogue plan, six-row ledger and initial prompt are ISSUED in arc04-composed-sqlite-lookup/slice02-local-provisioning-catalogue after root readiness PASS. Retained CC owns source/index/target only after explicit dispatched acknowledgment; no extra comparison or actual default activation. Prior holds/approvals remain dated history in protocol1.7.
 
 
-## S03 accepted and current integration authority — 2026-10-27 UTC
+## Historical S03 integration authority — 2026-10-27 UTC
 
 Root canonical consistency cleared six S03 DONE and only A04-04 newly DONE atdcdf216. Current user requested and personally completed PR4/main merge; this supersedes earlier no-PR/main restrictions for this reviewed delivery only. PR4 includes accepted Arc03 inheritance and Arc04 S01–S03; merge/tree/CI reconciliation precedes S04 issue. S04 lifecycle and S05 compact/readable remain mandatory within original arc authority, but future feature pushes/publication require their own explicit delivery scope. Historical checkpoints and preserved records remain unchanged; actual user default is untouched.
 
-## Arc04 S04 initial issue — 2026-10-27 UTC
+## Historical Arc04 S04 initial issue — 2026-10-27 UTC
 
 Duncan directed “when you've finished up, go ahead and dive into the next slice”. S03 mechanical close b436e2c is clean and reconciled with user-attributed PR4/main merge/terminal CI. Initial source dcdf remains clean on the isolated codex branch. S04 slice04-lifecycle-and-recovery open set is ISSUED after root reviewed the twelve-path initial format/write-fence/migrate/update/rebuild recipe; no source changes before CC intake/acknowledgment. Remove/reinstall/recovery/policy/default migration remain binding S04 follow-up, no early slice close. Existing Autonomous role/models/guard/target/protected artifacts persist; actual default, main and Bauske are not mutation destinations. No Full or future push is inferred.
 
-## Arc04 S04 iteration01 issue — 2026-10-27 UTC
+## Historical Arc04 S04 iteration01 issue — 2026-10-27 UTC
 
 Root final readiness PASS accepted the concrete remaining remove/reinstall/reconcile/policy/restart/scratch-default recipe at clean initial8b. Exact sixteen source paths, no schema3/dependency/lock/Full/new-cache/network/push authority. The initial prompt and initial acceptance remain unchanged. CDC dispatches retained Luna/high for exact issued-packet intake, then explicitly transfers sole source/index/target ownership. All six S04 rows remain OPEN and S05 unissued.
 
 Iteration01 actual ownership checkpoint — 2026-10-27 03:03:33 UTC: retained CC acknowledged exact issued planning65bfaad/prompta4e8b0fe…4454a3 and clean8b/tree5045, complete required intake and source-cited contract, no mismatch or prior edit/build/test. CDC accepted readback and explicitly transferred only sixteen paths/source index/retained target; CC implementation interval is active. No runtime result or closure is inferred; all six S04 rows OPEN, no Full/default/network/push/CI.
 
-## Arc04 S04 iteration02 issue — 2026-10-27 UTC
+## Historical Arc04 S04 iteration02 issue — 2026-10-27 UTC
 
 Phase2 frozen024 is independently rejected pending three connected query/context/journal corrections; initial8b remains accepted only for its bounded increment. Root concrete readiness PASS cleared the exact seven-path cc-prompt-iteration02.md, issued SHA 079cbf4e9e535031d26aa9decea4c4dcb5c04ab4d580891ab9ba1c2afd32934a, under existing Autonomous THROUGH ARC04 and retained role/models. CDC owns source/index/target until exact CC intake/explicit transfer. Six S04 rows and remaining arc/project obligations stay OPEN; no Full/default/cache/network/push/CI/PR/publication authority or S05 issue is inferred. Prior issue/ownership checkpoints are dated history.
 
-### Iteration02 exact intake and ownership transfer — 2026-10-27 04:52:10 UTC
+### Historical iteration02 exact intake and ownership transfer — 2026-10-27 04:52:10 UTC
 
 Retained Luna/high CC acknowledged issued planning23f6240/prompt079cbf4e…32934a, loaded exact full prompt/plan/ledger/review, canonical summary/referenced raw failures, named source sections/fixtures and Rust EH-01/04/10 + OB-16, and returned a source-cited three-finding contract readback. This reading coverage is CC attestation, not independent proof of understanding. CDC checked it against the actual recipe, revalidated clean source024/treec8336dd4/branch and no active process, accepted intake and explicitly transferred ONLY the seven issued source paths/index/one retained target to CC. Source edits/builds must follow this transfer; CC first records its own detailed intake in execution.md. CDC/root now source/index/target read-only until explicit frozen handback; CDC retains planning except CC append-only attestation. Full/default/cache/network/push/CI remain unissued, all six rows OPEN.
+
+## S05 initial issue —2026-10-27 UTC
+
+Root concrete readiness PASS accepted19initialpaths/21plannedunion, sixOPEN and unchanged parent obligations at clean432/new S05branch. Reviewed draft promptfe0d6d27…4316 is byte-preserved; initial current prompt status-only ISSUED. Source/index/retainedtarget remain CDC-owned until retained Luna/high completes exact intake/readback and CDC fresh identity/explicit transfer. Root readonly, no Full/default/cache/network/future delivery/readable01/arcclose authority. Earlier S04 assignment ownership paragraphs are historical only.

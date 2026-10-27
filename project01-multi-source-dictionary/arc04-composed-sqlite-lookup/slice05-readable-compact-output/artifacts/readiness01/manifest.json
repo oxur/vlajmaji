@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "scope": "S05 source-only readiness; preserved prior unissued notes and root PR5 actual receipts. No S05 runtime/acceptance.",
+  "source": {
+    "head": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+    "tree": "dd2f378be98b6fe9c62d5f45055a70a351971bb1",
+    "branch": "codex/project01-readable-compact-output",
+    "clean": true,
+    "dependency_pr": "https://github.com/oxur/vlajmaji/pull/5",
+    "pr_ci_run": 40518812275
+  },
+  "files": [
+    {
+      "path": "prospective-contract02.md",
+      "bytes": 11202,
+      "sha256": "0b5a7dac9832d58fd38496cf8c9d6e9584616e77329be89238407a4005f36797",
+      "original": "/tmp/vlajmaji-p01-a04-s04-cdc/s05-prospective-contract02.md"
+    },
+    {
+      "path": "prospective-api-notes03.md",
+      "bytes": 4526,
+      "sha256": "9aa34cdf2a3ea14002c7772ec135abf4afeef5b99a9b9248ae29fe2e0271521e",
+      "original": "/tmp/vlajmaji-p01-a04-s04-cdc/s05-prospective-api-notes03.md"
+    },
+    {
+      "path": "pr5-all-jobs.log",
+      "bytes": 521363,
+      "sha256": "3d3868b968d4aaca4446c6d8cb885e12b02fd0bf849477db89966f1fce6cff95",
+      "original": "/tmp/vlajmaji-p01-a04-root-ci-40518812275/all-jobs.log"
+    },
+    {
+      "path": "pr5-linux-job-terminal.json",
+      "bytes": 3914,
+      "sha256": "9898b63128f4fa969207d82e85c3c081c852792beb028f3c2d660ea5537784f5",
+      "original": "/tmp/vlajmaji-p01-a04-root-ci-40518812275/linux-job-terminal.json"
+    },
+    {
+      "path": "pr5-run-terminal.json",
+      "bytes": 9308,
+      "sha256": "cc4f6cf515c7126a0a38b42ee0d074d472a9602920ba944426f2a3c82aa5a9c1",
+      "original": "/tmp/vlajmaji-p01-a04-root-ci-40518812275/run-terminal.json"
+    }
+  ]
+}

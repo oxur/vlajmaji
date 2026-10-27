@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE; A04-01/02/03/04/05 DONE, fiveotherarcOPEN. S04 accepted432/currentCI40515705170/rootcanonicalPASS. S05 useful output/detail/numeric/fresharc remains unissued, separate sourcebranch after S04PR. |
-| version / date | 1.14 / 2026-10-27 UTC |
-| authority | Latest 2026-10-27: Duncan directed “when you've finished up, go ahead and dive into the next slice”. Autonomous THROUGH ARC04 ONLY and unchanged Sol6.1/high CDC/Luna/high CC persist. S03/user merge/main CI reconciled; root approved S04 initial readiness. S01 numerical/count agreements remain accepted historical comparison authority, not new S04 Full/push authority. |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S04 PR5 OPEN/current432/PR CI40518812275 SUCCESS. S05 INITIAL compact/detail ISSUED after root final readiness PASS; exact intake/transfer pending, no runtime; readable/numeric/fresharc mandatory follow-up. |
+| version / date | 1.15 / 2026-10-27 UTC |
+| authority | Duncan explicitly directed next-slice continuation and separate S05 branch after S04 delivery; Autonomous THROUGH ARC04 ONLY, requested Sol6.1/high CDC and retained Luna/high CC. Root created PR5/new branch; S05 INITIAL issued after root readiness PASS; no source transfer/build/trial/future push yet. Prior authority below is historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
-| accepted inputs | Accepted Arc01–03 and S01–S03 contracts, reviewed source dcdf216; Duncan merged PR4 as main b0106b with identical tree and all three main CI jobs SUCCESS. Bauske c580/accepted data/default remain protected. |
-| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; reviewed dcdf216 clean; current push and PR4 integration CI green; Duncan merged PR4 as main b0106b with identical accepted tree; main CI40425580977 terminal SUCCESS, all three jobs; root final reconciliation PASS |
+| accepted inputs | Accepted Arc01–03 and S01–S04 at source432; PR5 unmerged dependency, current predecessor-tree Linux/mac/Check CI green; retained G4 unchanged. Source432 is not remote-main b010. |
+| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; NEW codex/project01-readable-compact-output at432/tree dd2f378, clean; same retained target. Old S04 branch remains432/PR5 OPEN. CDC quiet readiness ownership; root read-only. Prior dcdf/b010 integration facts remain historical below. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -18,7 +18,7 @@ The prior roadmap promised a fair unified/ATTACH/application-fanout comparison a
 
 Historical version 1.0 planning-only boundary (superseded by version 1.2 below): only the eight named planning paths were authorized then. No source/target/store/default/catalogue writes, new branch/worktree, CC prompt, investigation, benchmark, network, installation or migration runs. The protocol's effort proposal and numeric operational budgets are not approved. A04 stays PLANNED; A05/A06 unactivated. Existing published CLI is unchanged, and source7b1c565 is an accepted local unpushed feature, not a published A04 implementation. Arc01–03 accepted records, main, Bauske, original research and installed provisional Lensisku default remain immutable.
 
-## Five useful increments (S01–S02 closed; later increments design before issue)
+## Five useful increments (S01–S04 CLOSED; S05 DRAFT readiness)
 
 | Increment | Useful delivery, including API / CLI / docs / gates | Depends on / readiness decision |
 | --- | --- | --- |
@@ -158,3 +158,11 @@ Duncan now requests S04branchPR afterclose and S05onitsownbranch. Root will crea
 2026-10-27 14:09:56 UTC: root finalcanonicalconsistencyPASS atplanning8bc/source432 verifies fourbodies/exactscope/10manifests780payloads/currentLinux. SixchildDONE and newlyA04-03/05DONE only; S01–S04 now24childDONE/5arcDONE5OPEN/all14projectOPEN. This records completed lifecycle/W2state and remaining S05/W5, not criteria/architecture change. All scale/resource/retained-lock/internalbaseline/source-equivalence limits remain as accepted.
 
 S04PR is explicitly user-requested afterclose; root owns creation/attachment and separateS05branch transition using retainedcheckout/target, exactbranch/base to be recorded beforeissue. No sourcebranchswitch/implementation from this record. S05must deliver useful pre-hydration groupedreadable exact/reference, compactJSON/detail and approvednumeric budgets, then fresh standaloneSol assembledW1–W5 review/arcclose. No futurepush/merge/publication, actualdefault or A05authority inferred.
+
+## S05 draft readiness / version1.15 — 2026-10-27 UTC
+
+S04 canonical close be873/metadata7b329 accepted; root opened requested PR5 (no merge) and new S05 branch at432. PR5 CI40518812275 all3jobs SUCCESS; raw predecessor-tree receipts preserved in S05 artifacts/readiness01. S05 initial compact/reference/complete-detail API+CLI and planned numbered01 readable are two useful passes within five-total; exact19initial/21union paths, numeric sheet and fresh assembled ARC owner frozen in DRAFT open set. Root concrete readiness pending; no source edits/builds/trials/issue/Full or future external authority. All six new child rows OPEN; no arc/project criterion/status changed. Earlier integration header used dcdf/S04 branch; this current metadata supersedes it, history unchanged.
+
+### S05 initial issue after final readiness
+
+Root accepted complete concrete19path compact/detail increment, exact public/wire/error/cursor/metadata/protocol contracts, sixOPEN and unchanged remaining arc/project cells. INITIAL prompt now issued status-only; reviewed draft retained, exact CC intake and transfer pending. This is pass1of5normalS05, readable01 next ONLY at reviewed actual source; source432/PR5dependency preserved, no Full/runtime/external/acceptance inferred.

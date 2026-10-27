@@ -9,7 +9,7 @@
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.26 / 2026-10-27 UTC |
+| version / date | 1.27 / 2026-10-27 UTC |
 
 ## Purpose and first useful result
 
@@ -389,3 +389,11 @@ S04 technically accepted at432d632/currentCI40515705170 after independent qualif
 ## Version1.26 — Arc04 lifecycle closed, output remains
 
 2026-10-27 14:09:56 UTC: S04 canonical/mechanical close atsource432 after root final consistency and currentLinuxPASS. Arc04 S01–S04 deliver24childDONE, only A04-01/02/03/04/05DONE; output/snapshot/outputcompatibility/budgets/freshassembled arc rows06–10 remainOPEN. All14projectrows unchangedOPEN, A05/A06 unactivated. Duncan requests S04PR then separateS05branch; root coordinates actualtransition, not a merge/publication permission. This updates roadmap progress without weakening remaining W5 or higher-scale acceptance.
+
+## S05 draft readiness —2026-10-27 / version1.27
+
+S04 CLOSED source432/planningbe873 with metadata7b329; requested PR5 OPEN and actual PR CI40518812275 terminal SUCCESS. Root created separate codex/project01-readable-compact-output at accepted432 in retained isolated checkout; S04branch unchanged, remote main b010 dependency unmerged. S05 complete DRAFT open set now specifies initial compact/reference/detail and planned readable follow-up plus numeric/current-Linux/fresh assembled Arc04 acceptance. CDC quiet readiness ownership; no source issue/edit/build/Full/trial/futurepush/merge. Five remaining arc and all14project obligations remain OPEN; A05/A06 unactivated.
+
+### S05 initial issue after root readiness
+
+Root final concrete readiness PASS clears the initial compact/detail API+CLI assignment, now status-only ISSUED with reviewed prompt bytes preserved. SixS05rows/all14project rows and five remaining arc rows OPEN; exact retained CC intake/explicit19path source-index-target transfer pending. Same S05branch/PR5dependency and original THROUGHARC04 endpoint/roles; no new runtime/Full/external action.
