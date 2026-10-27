@@ -1,0 +1,16 @@
+### Iteration05 terminal gates and frozen author handback — 2026-10-27 UTC
+
+The final source delta is exactly `crates/cli/tests/collections_maintenance_contract.rs`. After the final native release/seal byte-retention assertions were added, current format and lint ran in required order, followed by the affected CLI target and the stable workspace check. All used `CARGO=/tmp/vlajmaji-p01-a04-cargo`, `RUST_TOOLCHAIN=1.98.0`, `CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target`, `CARGO_NET_OFFLINE=true`; `CARGO_HOME` was untouched.
+
+Unique raw receipts and exits:
+
+- `/tmp/vlajmaji-p01-a04-s04-i05-format01.log`: format exit 0, 170 bytes, SHA-256 `baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4`.
+- `/tmp/vlajmaji-p01-a04-s04-i05-lint01.log`: lint exit 0, 351 bytes, SHA-256 `9a18b962e4856ab23d7b3380987d1ccd3d0d188fc38443324b0dc34de9b956f5`.
+- `/tmp/vlajmaji-p01-a04-s04-i05-cli01.log`: affected CLI target exit 0, 813 bytes, SHA-256 `08add557eafa0af97ba113e7ba0c33434c1b37f42bb0ba5e7562a7f90a7607cc` (4 passed on macOS; the two changed Linux-only tests were cfg-excluded). These first receipts precede the final source-byte readback addition and are preserved as earlier attempts.
+- `/tmp/vlajmaji-p01-a04-s04-i05-format02.log`: final format exit 0, 170 bytes, SHA-256 `baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4`.
+- `/tmp/vlajmaji-p01-a04-s04-i05-lint02.log`: final lint exit 0, 351 bytes, SHA-256 `a63a61abda6a27c83243987f6f33b2fe7a8615aefe17d9c6268fc1e5067d7cf4`.
+- `/tmp/vlajmaji-p01-a04-s04-i05-cli02.log`: final affected CLI target exit 0, 813 bytes, SHA-256 `d95a4b97ce4ca76da075e0b7d4f8145fcbeb92bcf0898e177d0f16b1ccfb6c67`; macOS executed 4/4 non-Linux tests. The native ROOT and `/dev/full` changed bodies were not executed locally.
+- `/tmp/vlajmaji-p01-a04-s04-i05-check01.log`: `make check` exit 0, 39,157 bytes, SHA-256 `c7cad0a14d4b348b1e23a966fc17413a1cdfc859d5dddec68524589e3bd2fcf5`. Mechanical population: 51 Rust test-summary rows, 277 passed, 0 failed, 1 ignored; Make/planning helper tests 19 passed, 0 failed; final “All checks passed (tools + format + lint + tests + docs)” banner.
+- `/tmp/vlajmaji-p01-a04-s04-i05-list01.log`: changed CLI maintenance target `--list` inventory exit 0, 583 bytes, SHA-256 `afa05b18529d23cb728d756a0f2aee0ebc9cbfed0b993909b1614e850b06e8db`; four macOS-visible tests, zero benchmarks.
+
+`git diff --check` passed. Commit `432d6321e3b2431e7fe2cc5f60e9317780e984b8` has parent exactly `e4e8bfc55c5071d9144fa72e7360525efa43fd56`, tree `dd2f378be98b6fe9c62d5f45055a70a351971bb1`, and only the named test path differs from e4 (90 insertions, 15 deletions). `git status --short` was empty; `git interpret-trailers --parse` returned adjacent `Co-authored-by: Codex <noreply@openai.com>` and `Co-authored-by: Billo AI <ai-engineering@billo.systems>` trailers. No source/build/test process remains active. CC has explicitly returned the one-file source/index/retained-target ownership to CDC. The corrected Linux-only bodies still require actual current-head Linux execution; no Linux pass is claimed and no Full, network, push, or publication action was performed. All six ledger rows remain OPEN.

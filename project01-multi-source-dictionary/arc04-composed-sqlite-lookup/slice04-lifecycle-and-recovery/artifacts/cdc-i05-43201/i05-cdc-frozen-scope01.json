@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "timestamp": "2026-10-27T13:50:04.749033+00:00",
+  "scope": "independent Git/source boundary, not Linux runtime acceptance",
+  "ok": true,
+  "head": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "parent": "e4e8bfc55c5071d9144fa72e7360525efa43fd56",
+  "tree": "dd2f378be98b6fe9c62d5f45055a70a351971bb1",
+  "branch": "codex/project01-composed-sqlite-lookup",
+  "clean": true,
+  "changed_paths": [
+    "crates/cli/tests/collections_maintenance_contract.rs"
+  ],
+  "other_identical_tracked_entries": 121,
+  "coauthor_trailers": [
+    "Co-authored-by: Codex <noreply@openai.com>",
+    "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+  ],
+  "patch_sha256": "8f2d39faaa0f14d4a0295e1f42f951208381a595e2789024fa02469328685135",
+  "test_sha256": "5afc9a16eec57bf2f54b61adc6f09b719f0a7be420ebf261dc62452758789807",
+  "runtime_and_lock_byte_equivalent_to_e4": true,
+  "full_proof_retention": "same production bytes; no Full re-execution",
+  "linux_repaired_bodies": "pending actual current-head hosted default/allfeatures"
+}

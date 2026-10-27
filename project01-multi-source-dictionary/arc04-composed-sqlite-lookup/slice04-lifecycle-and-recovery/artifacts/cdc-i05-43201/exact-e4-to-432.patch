@@ -1,0 +1,186 @@
+diff --git a/crates/cli/tests/collections_maintenance_contract.rs b/crates/cli/tests/collections_maintenance_contract.rs
+index 140bdf0..545eeea 100644
+--- a/crates/cli/tests/collections_maintenance_contract.rs
++++ b/crates/cli/tests/collections_maintenance_contract.rs
+@@ -675,10 +675,65 @@ fn test_linux_native_root_and_config_roundtrip_through_cli() {
+     let config = base.join(std::ffi::OsString::from_vec(b"profiles-\xfe.toml".to_vec()));
+     let release = base.join(std::ffi::OsString::from_vec(b"release-\xfd.json".to_vec()));
+     let seal = base.join(std::ffi::OsString::from_vec(b"seal-\xfc.json".to_vec()));
+-    let dictionary = Dictionary::from_document(Default::default()).unwrap();
+-    let sealed = seal_release(PackId::Llg, PackPayloadKind::Synthetic, &dictionary).unwrap();
+-    fs::write(&release, &sealed.release).unwrap();
+-    fs::write(&seal, &sealed.seal).unwrap();
++    let fixture = base.join("llg-fixture");
++    let materialized = run_owned(&[
++        "data-pack".into(),
++        "fixture".into(),
++        "llg".into(),
++        fixture.as_os_str().to_owned(),
++    ]);
++    assert!(
++        materialized.status.success(),
++        "{}",
++        String::from_utf8_lossy(&materialized.stderr)
++    );
++    let release_bytes = fs::read(fixture.join("release.json")).unwrap();
++    let seal_bytes = fs::read(fixture.join("seal.json")).unwrap();
++    let checked =
++        vlajmaji_lexicon::load_sealed_release(PackId::Llg, &release_bytes, &seal_bytes).unwrap();
++    let selected_available_releases: Vec<_> = checked
++        .metadata()
++        .releases
++        .iter()
++        .filter(|release| {
++            release.selected && release.availability == vlajmaji_lexicon::Availability::Available
++        })
++        .collect();
++    assert!(!selected_available_releases.is_empty());
++    let farvi_entries: Vec<_> = checked
++        .metadata()
++        .entries
++        .iter()
++        .filter(|entry| {
++            matches!(
++                &entry.spelling,
++                vlajmaji_lexicon::Presence::Value(spelling) if spelling == "farvi"
++            )
++        })
++        .collect();
++    assert_eq!(farvi_entries.len(), 1);
++    let farvi_entry = farvi_entries[0];
++    let farvi_assertions: Vec<_> = checked
++        .metadata()
++        .assertions
++        .iter()
++        .filter(|assertion| {
++            assertion.entry == farvi_entry.id
++                && assertion.eligibility == vlajmaji_lexicon::Eligibility::Lexical
++        })
++        .collect();
++    assert_eq!(farvi_assertions.len(), 1);
++    let expected_assertion_id = serde_json::to_value(&farvi_assertions[0].id).unwrap();
++    assert!(
++        selected_available_releases
++            .iter()
++            .any(|release| release.assertions.contains(&farvi_assertions[0].id))
++    );
++    drop(checked);
++    fs::write(&release, &release_bytes).unwrap();
++    fs::write(&seal, &seal_bytes).unwrap();
++    assert_eq!(fs::read(&release).unwrap(), release_bytes);
++    assert_eq!(fs::read(&seal).unwrap(), seal_bytes);
+ 
+     let register = run_owned(&[
+         "collections".into(),
+@@ -762,10 +817,17 @@ fn test_linux_native_root_and_config_roundtrip_through_cli() {
+         "--profile".into(),
+         "native".into(),
+     ]);
+-    assert!(
+-        lookup.status.success(),
+-        "{}",
+-        String::from_utf8_lossy(&lookup.stderr)
++    let lookup = json_owned(&lookup);
++    let response = &lookup["result"]["response"];
++    assert_eq!(response["totals"]["occurrences"], 1);
++    assert_eq!(response["totals"]["source_groups"], 1);
++    assert_eq!(response["source_totals"].as_array().unwrap().len(), 1);
++    assert_eq!(response["groups"].as_array().unwrap().len(), 1);
++    assert_eq!(response["groups"][0]["source"]["id"], "llg");
++    assert_eq!(response["groups"][0]["hits"].as_array().unwrap().len(), 1);
++    assert_eq!(
++        response["groups"][0]["hits"][0]["assertion"]["id"],
++        expected_assertion_id
+     );
+ 
+     let disabled = run_owned(&[
+@@ -818,7 +880,7 @@ fn test_linux_native_root_and_config_roundtrip_through_cli() {
+         "2".into(),
+     ]);
+     assert_eq!(json_owned(&removed)["outcome"], "removed");
+-    let registered_sha = sha256(&sealed.release);
++    let registered_sha = sha256(&release_bytes);
+     let reinstalled = run_owned(&[
+         "collections".into(),
+         "reinstall".into(),
+@@ -879,6 +941,8 @@ fn test_linux_native_root_and_config_roundtrip_through_cli() {
+         "5".into(),
+     ]);
+     assert_eq!(json_owned(&migrated)["outcome"], "idempotent");
++    assert_eq!(fs::read(&release).unwrap(), release_bytes);
++    assert_eq!(fs::read(&seal).unwrap(), seal_bytes);
+     let _ = fs::remove_dir_all(base);
+ }
+ 
+@@ -1090,6 +1154,17 @@ fn test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes() {
+     assert_eq!(json(&ordinary)["outcome"], "idempotent");
+     assert_eq!(fs::read(&db).unwrap(), idempotent_bytes);
+ 
++    let before_remove: Value = json(&run(&[
++        "collections".as_ref(),
++        "list".as_ref(),
++        catalogue.as_os_str(),
++    ]));
++    assert_eq!(before_remove["local_revision"], 2);
++    assert_eq!(
++        before_remove["generation"]["generation_id"],
++        generation_after["generation"]["generation_id"]
++    );
++
+     let full = OpenOptions::new().write(true).open("/dev/full").unwrap();
+     let remove_output = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
+         .args([
+@@ -1099,7 +1174,7 @@ fn test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes() {
+             "--pack",
+             "llg",
+             "--expected-revision",
+-            "3",
++            "2",
+         ])
+         .env_clear()
+         .stdout(std::process::Stdio::from(full))
+@@ -1130,7 +1205,7 @@ fn test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes() {
+     assert_eq!(remove_error["operation"], "remove");
+     assert_eq!(remove_error["category"], "response_output_io");
+     assert_eq!(remove_error["activation"], "committed");
+-    assert_eq!(remove_error["prior_local_revision"], 3);
++    assert_eq!(remove_error["prior_local_revision"], 2);
+     assert!(remove_error["proposed_generation"].is_null());
+     assert!(remove_error["observed_generation"].is_null());
+     let after_remove: Value = json(&run(&[
+@@ -1138,7 +1213,7 @@ fn test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes() {
+         "list".as_ref(),
+         catalogue.as_os_str(),
+     ]));
+-    assert_eq!(after_remove["local_revision"], 4);
++    assert_eq!(after_remove["local_revision"], 3);
+     assert!(after_remove["generation"].is_null());
+ 
+     let full = OpenOptions::new().write(true).open("/dev/full").unwrap();
+@@ -1158,7 +1233,7 @@ fn test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes() {
+             "--release-sha256",
+             &release_sha256,
+             "--expected-revision",
+-            "4",
++            "3",
+         ])
+         .env_clear()
+         .stdout(std::process::Stdio::from(full))
+@@ -1189,7 +1264,7 @@ fn test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes() {
+     assert_eq!(reinstall_error["operation"], "reinstall");
+     assert_eq!(reinstall_error["category"], "response_output_io");
+     assert_eq!(reinstall_error["activation"], "committed");
+-    assert_eq!(reinstall_error["prior_local_revision"], 4);
++    assert_eq!(reinstall_error["prior_local_revision"], 3);
+     assert!(reinstall_error["observed_generation"].is_string());
+     assert_eq!(
+         reinstall_error["proposed_generation"],
+@@ -1200,7 +1275,7 @@ fn test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes() {
+         "list".as_ref(),
+         catalogue.as_os_str(),
+     ]));
+-    assert_eq!(after_reinstall["local_revision"], 5);
++    assert_eq!(after_reinstall["local_revision"], 4);
+     assert_eq!(
+         after_reinstall["generation"]["generation_id"],
+         reinstall_error["observed_generation"]

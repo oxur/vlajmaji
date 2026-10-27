@@ -1,0 +1,12 @@
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.45s
+     Running tests/collections_maintenance_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collections_maintenance_contract-d6e88f2bd15efbcf)
+
+running 4 tests
+test test_cli_policy_commands_preserve_context_and_apply_partial_changes ... ok
+test test_collections_remove_reinstall_reconcile_cli_preserves_explicit_state ... ok
+test test_managed_default_scratch_transition_preserves_legacy_default_store ... ok
+test test_four_pack_synthetic_update_and_rebuild_preserve_all_members ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.35s
+

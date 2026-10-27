@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "scope": "CDC raw author-receipt reconciliation, not independent test re-execution or Linux acceptance",
+  "source": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "ok": true,
+  "gates": {
+    "format02": {
+      "path": "/tmp/vlajmaji-p01-a04-s04-i05-format02.log",
+      "bytes": 170,
+      "sha256": "baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4",
+      "reported_terminal_exit": 0,
+      "terminal_exit_attribution": "CC actual tool exit attestation; CDC log reconciliation",
+      "rust_result_rows": 0,
+      "rust_population": [
+        0,
+        0,
+        0
+      ]
+    },
+    "lint02": {
+      "path": "/tmp/vlajmaji-p01-a04-s04-i05-lint02.log",
+      "bytes": 351,
+      "sha256": "a63a61abda6a27c83243987f6f33b2fe7a8615aefe17d9c6268fc1e5067d7cf4",
+      "reported_terminal_exit": 0,
+      "terminal_exit_attribution": "CC actual tool exit attestation; CDC log reconciliation",
+      "rust_result_rows": 0,
+      "rust_population": [
+        0,
+        0,
+        0
+      ]
+    },
+    "cli02": {
+      "path": "/tmp/vlajmaji-p01-a04-s04-i05-cli02.log",
+      "bytes": 813,
+      "sha256": "d95a4b97ce4ca76da075e0b7d4f8145fcbeb92bcf0898e177d0f16b1ccfb6c67",
+      "reported_terminal_exit": 0,
+      "terminal_exit_attribution": "CC actual tool exit attestation; CDC log reconciliation",
+      "rust_result_rows": 1,
+      "rust_population": [
+        4,
+        0,
+        0
+      ]
+    },
+    "check01": {
+      "path": "/tmp/vlajmaji-p01-a04-s04-i05-check01.log",
+      "bytes": 39157,
+      "sha256": "c7cad0a14d4b348b1e23a966fc17413a1cdfc859d5dddec68524589e3bd2fcf5",
+      "reported_terminal_exit": 0,
+      "terminal_exit_attribution": "CC actual tool exit attestation; CDC log reconciliation",
+      "rust_result_rows": 51,
+      "rust_population": [
+        277,
+        0,
+        1
+      ]
+    },
+    "list01": {
+      "path": "/tmp/vlajmaji-p01-a04-s04-i05-list01.log",
+      "bytes": 583,
+      "sha256": "afa05b18529d23cb728d756a0f2aee0ebc9cbfed0b993909b1614e850b06e8db",
+      "reported_terminal_exit": 0,
+      "terminal_exit_attribution": "CC actual tool exit attestation; CDC log reconciliation",
+      "rust_result_rows": 0,
+      "rust_population": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "linux_changed_tests": "cfg-excluded locally; pending actual hosted current-head default/allfeatures"
+}
