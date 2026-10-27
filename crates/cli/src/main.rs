@@ -20,7 +20,8 @@ use vlajmaji_search::{
     Query, SearchEngine, SearchOptions,
 };
 use vlajmaji_store::{
-    CollectionCatalogue, CollectionError, CollectionInput, CollectionProfileMembershipWriteRequest,
+    CollectionCatalogue, CollectionError, CollectionInput, CollectionPolicySelection,
+    CollectionProfileEnablementRequest, CollectionProfileMembershipWriteRequest,
     CollectionProfiles, CollectionRequest, CollectionSelection, DictionaryStoreVerification,
     DictionaryStoreVerificationCheck, DictionaryStoreVerificationReport,
 };
@@ -117,7 +118,7 @@ enum Command {
     },
     /// Register or install explicitly selected local source packs.
     #[command(
-        after_help = "Register, install, list, and inspect use an explicit ROOT and never download data. Register records metadata only; install creates and verifies a new Unified generation. Manifest paths are relative to the manifest's parent; Synthetic inputs require --allow-synthetic. The configure, profiles, and selection subcommands use an explicit --config or resolve XDG_CONFIG_HOME/HOME configuration; they do not alter the global default store."
+        after_help = "Register, install, list, and inspect use an explicit ROOT and never download data. Register records metadata only; install creates and verifies a new Unified generation. Manifest paths are relative to the manifest's parent; Synthetic inputs require --allow-synthetic. The configure, enable, disable, default, profiles, and selection subcommands use an explicit --config or resolve XDG_CONFIG_HOME/HOME configuration; they do not alter the global default store."
     )]
     Collections {
         #[command(subcommand)]
@@ -158,6 +159,47 @@ enum CollectionsCommand {
         after_help = "Use --manifest with --pack ID (repeatable) or --all. --all requires all four pack records. A different installed release reports update_required; this command does not alter source selection or the user's default store."
     )]
     Install(CollectionMutationArgs),
+    /// Explicitly migrate a compatible version-1 catalogue to version 2.
+    Migrate {
+        root: PathBuf,
+        #[arg(long)]
+        expected_revision: u64,
+    },
+    /// Replace selected currently installed packs at an expected revision.
+    #[command(
+        after_help = "Uses the same --manifest or direct sealed inputs as install. Only selected currently installed packs are replaced; --expected-revision is checked before staging. This never changes a profile or the global default."
+    )]
+    Update {
+        #[command(flatten)]
+        args: CollectionMutationArgs,
+        #[arg(long)]
+        expected_revision: u64,
+    },
+    /// Rebuild the current derived generation from retained sealed inputs.
+    Rebuild {
+        root: PathBuf,
+        #[arg(long)]
+        expected_revision: u64,
+    },
+    /// Remove one or more installed or registered packs without deleting retained inputs.
+    Remove {
+        root: PathBuf,
+        #[arg(long, required = true)]
+        pack: Vec<String>,
+        #[arg(long)]
+        expected_revision: u64,
+    },
+    /// Restore one exact previously removed retained release.
+    Reinstall {
+        #[command(flatten)]
+        args: CollectionMutationArgs,
+        #[arg(long = "release-sha256")]
+        registered_release_sha256: String,
+        #[arg(long)]
+        expected_revision: u64,
+    },
+    /// Observe SQLite recovery and retained attempts without logical activation.
+    Reconcile { root: PathBuf },
     /// List registrations and the current installed generation.
     #[command(
         after_help = "Read-only summary of an existing explicit catalogue. This does not create a catalogue or rehash pack/store payloads."
@@ -179,6 +221,37 @@ enum CollectionsCommand {
         all: bool,
         #[arg(long)]
         make_default: bool,
+        #[arg(long)]
+        config: Option<PathBuf>,
+    },
+    /// Change enabled state for all or explicitly selected profile members.
+    Enable {
+        #[arg(long)]
+        profile: Option<String>,
+        #[arg(long, required_unless_present = "all", conflicts_with = "all")]
+        pack: Vec<String>,
+        #[arg(long, required_unless_present = "pack", conflicts_with = "pack")]
+        all: bool,
+        #[arg(long)]
+        config: Option<PathBuf>,
+    },
+    /// Disable all or explicitly selected profile members.
+    Disable {
+        #[arg(long)]
+        profile: Option<String>,
+        #[arg(long, required_unless_present = "all", conflicts_with = "all")]
+        pack: Vec<String>,
+        #[arg(long, required_unless_present = "pack", conflicts_with = "pack")]
+        all: bool,
+        #[arg(long)]
+        config: Option<PathBuf>,
+    },
+    /// Set the default profile or explicitly clear it.
+    Default {
+        #[arg(long, required_unless_present = "clear", conflicts_with = "clear")]
+        profile: Option<String>,
+        #[arg(long, required_unless_present = "profile", conflicts_with = "profile")]
+        clear: bool,
         #[arg(long)]
         config: Option<PathBuf>,
     },
@@ -359,11 +432,17 @@ struct ManagedOutputContext {
     snapshot: Option<vlajmaji_search::CollectionSelectionSnapshot>,
     known_pack_ids: Vec<String>,
     outcome: String,
+    collection_failure: Option<vlajmaji_store::CollectionFailureReport>,
 }
 
 impl ManagedOutputContext {
-    fn report(&self, detail: String) -> CollectionQueryErrorReport {
-        CollectionQueryErrorReport {
+    fn report(&self, detail: String) -> serde_json::Value {
+        if let Some(mut report) = self.collection_failure.clone() {
+            report.category = "response_output_io".into();
+            report.detail = format!("{detail}; {}", report.detail);
+            return serde_json::json!(report);
+        }
+        serde_json::json!(CollectionQueryErrorReport {
             version: 1,
             ok: false,
             category: "response_output_io".into(),
@@ -377,7 +456,7 @@ impl ManagedOutputContext {
             known_pack_ids: self.known_pack_ids.clone(),
             outcome: self.outcome.clone(),
             writer: None,
-        }
+        })
     }
 }
 
@@ -396,6 +475,7 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
         snapshot: None,
         known_pack_ids: packs,
         outcome: outcome.into(),
+        collection_failure: None,
     };
     match command {
         Command::Lookup {
@@ -450,6 +530,46 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
                 Vec::new(),
                 "not_applicable",
             )),
+            CollectionsCommand::Enable {
+                config,
+                profile,
+                pack,
+                ..
+            } => Some(context(
+                "enable",
+                resolve_config_path(config.as_deref()).ok().as_deref(),
+                None,
+                profile.as_deref(),
+                pack.clone(),
+                "unchanged",
+            )),
+            CollectionsCommand::Disable {
+                config,
+                profile,
+                pack,
+                ..
+            } => Some(context(
+                "disable",
+                resolve_config_path(config.as_deref()).ok().as_deref(),
+                None,
+                profile.as_deref(),
+                pack.clone(),
+                "unchanged",
+            )),
+            CollectionsCommand::Default {
+                config, profile, ..
+            } => Some(context(
+                if profile.is_some() {
+                    "set_default"
+                } else {
+                    "clear_default"
+                },
+                resolve_config_path(config.as_deref()).ok().as_deref(),
+                None,
+                profile.as_deref(),
+                Vec::new(),
+                "unchanged",
+            )),
             CollectionsCommand::Selection {
                 config,
                 profile,
@@ -466,6 +586,141 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
         },
         _ => None,
     }
+}
+
+fn mutation_output_context(
+    operation: &str,
+    root: &Path,
+    report: &vlajmaji_store::CollectionMutationReport,
+    prior_revision: u64,
+) -> ManagedOutputContext {
+    let generation = report.generation.as_ref();
+    let committed = match operation {
+        "update" => report.outcome == "updated",
+        "rebuild" => report.outcome == "rebuilt",
+        "remove" => report.outcome == "removed",
+        "reinstall" => report.outcome == "reinstalled",
+        _ => false,
+    };
+    let proposed_generation = if committed {
+        match operation {
+            "update" | "rebuild" => generation.map(|item| item.generation_id.clone()),
+            "remove" | "reinstall" => generation.and_then(|item| {
+                let stage_name = item.store_path.parent()?.file_name()?;
+                let attempt = report.attempt_id.as_deref()?;
+                (stage_name == std::ffi::OsStr::new(attempt)).then(|| item.generation_id.clone())
+            }),
+            _ => None,
+        }
+    } else {
+        None
+    };
+    let activation = if committed {
+        "committed"
+    } else {
+        "not_applicable"
+    };
+    let output = vlajmaji_store::CollectionFailureReport {
+        version: 1,
+        ok: false,
+        operation: operation.into(),
+        category: "response_output_io".into(),
+        detail: format!(
+            "{operation} completed at local_revision={}",
+            report.local_revision
+        ),
+        path: Some(vlajmaji_store::native_path_report(root)),
+        pack_id: None,
+        attempt_id: report.attempt_id.clone(),
+        prior_local_revision: Some(prior_revision),
+        proposed_generation,
+        observed_generation: generation.map(|item| item.generation_id.clone()),
+        activation: Some(activation.into()),
+        inputs: report.inputs.clone(),
+    };
+    lifecycle_output_context(operation, output)
+}
+
+fn reconciliation_output_context(
+    report: &vlajmaji_store::CollectionReconciliationReport,
+) -> ManagedOutputContext {
+    let output = vlajmaji_store::CollectionFailureReport {
+        version: 1,
+        ok: false,
+        operation: "reconcile".into(),
+        category: "response_output_io".into(),
+        detail: "reconcile completed without logical activation".into(),
+        path: Some(report.root_path.clone()),
+        pack_id: None,
+        attempt_id: None,
+        prior_local_revision: None,
+        proposed_generation: None,
+        observed_generation: report.active_generation.clone(),
+        activation: Some("not_applicable".into()),
+        inputs: Vec::new(),
+    };
+    lifecycle_output_context("reconcile", output)
+}
+
+fn migration_output_context(
+    report: &vlajmaji_store::CollectionCatalogueMigrationReport,
+) -> ManagedOutputContext {
+    let output = vlajmaji_store::CollectionFailureReport {
+        version: 1,
+        ok: false,
+        operation: "migrate".into(),
+        category: "response_output_io".into(),
+        detail: format!(
+            "migrate completed at local_revision={}",
+            report.local_revision
+        ),
+        path: Some(report.root_path.clone()),
+        pack_id: None,
+        attempt_id: None,
+        prior_local_revision: Some(report.prior_local_revision),
+        proposed_generation: None,
+        observed_generation: report.active_generation.clone(),
+        activation: Some(
+            if report.outcome == "migrated" {
+                "committed"
+            } else {
+                "not_applicable"
+            }
+            .into(),
+        ),
+        inputs: Vec::new(),
+    };
+    lifecycle_output_context("migrate", output)
+}
+
+fn lifecycle_output_context(
+    operation: &str,
+    collection_failure: vlajmaji_store::CollectionFailureReport,
+) -> ManagedOutputContext {
+    ManagedOutputContext {
+        operation: operation.into(),
+        config_path: None,
+        root_path: collection_failure.path.clone(),
+        profile: None,
+        requested_profile: None,
+        snapshot: None,
+        known_pack_ids: Vec::new(),
+        outcome: collection_failure
+            .activation
+            .clone()
+            .unwrap_or_else(|| "not_applicable".into()),
+        collection_failure: Some(collection_failure),
+    }
+}
+
+fn lifecycle_serialization_error(context: &ManagedOutputContext, detail: String) -> CliError {
+    let mut failure = context
+        .collection_failure
+        .clone()
+        .expect("lifecycle output context retains its collection report");
+    failure.category = "response_serialization".into();
+    failure.detail = format!("{}: {detail}", failure.detail);
+    CliError::CollectionFailure(Box::new(failure))
 }
 
 fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliError> {
@@ -1029,8 +1284,82 @@ fn collections_command(
     output_context: &mut Option<ManagedOutputContext>,
 ) -> Result<serde_json::Value, CliError> {
     match command {
-        CollectionsCommand::Register(args) => collection_mutation(args, "register"),
-        CollectionsCommand::Install(args) => collection_mutation(args, "install"),
+        CollectionsCommand::Register(args) => {
+            collection_mutation(args, "register", None, output_context)
+        }
+        CollectionsCommand::Install(args) => {
+            collection_mutation(args, "install", None, output_context)
+        }
+        CollectionsCommand::Migrate {
+            root,
+            expected_revision,
+        } => {
+            let report = CollectionCatalogue::migrate(root, expected_revision)
+                .map_err(|error| collection_cli_error(error, "migrate"))?;
+            let context = migration_output_context(&report);
+            *output_context = Some(context.clone());
+            serde_json::to_value(report)
+                .map_err(|error| lifecycle_serialization_error(&context, error.to_string()))
+        }
+        CollectionsCommand::Update {
+            args,
+            expected_revision,
+        } => collection_mutation(args, "update", Some(expected_revision), output_context),
+        CollectionsCommand::Rebuild {
+            root,
+            expected_revision,
+        } => {
+            let report = CollectionCatalogue::rebuild(&root, expected_revision)
+                .map_err(|error| collection_cli_error(error, "rebuild"))?;
+            let context = mutation_output_context("rebuild", &root, &report, expected_revision);
+            *output_context = Some(context.clone());
+            serde_json::to_value(report)
+                .map_err(|error| lifecycle_serialization_error(&context, error.to_string()))
+        }
+        CollectionsCommand::Remove {
+            root,
+            pack,
+            expected_revision,
+        } => {
+            let packs = pack
+                .iter()
+                .map(|pack| parse_collection_pack(pack))
+                .collect::<Result<Vec<_>, _>>()
+                .map_err(|error| collection_cli_error(error, "remove"))?;
+            let report = CollectionCatalogue::remove(&root, &packs, expected_revision)
+                .map_err(|error| collection_cli_error(error, "remove"))?;
+            let context = mutation_output_context("remove", &root, &report, expected_revision);
+            *output_context = Some(context.clone());
+            serde_json::to_value(report)
+                .map_err(|error| lifecycle_serialization_error(&context, error.to_string()))
+        }
+        CollectionsCommand::Reinstall {
+            args,
+            registered_release_sha256,
+            expected_revision,
+        } => {
+            let request = collection_request(&args, "reinstall")?;
+            let report = CollectionCatalogue::reinstall(
+                &args.root,
+                request,
+                &registered_release_sha256,
+                expected_revision,
+            )
+            .map_err(|error| collection_cli_error(error, "reinstall"))?;
+            let context =
+                mutation_output_context("reinstall", &args.root, &report, expected_revision);
+            *output_context = Some(context.clone());
+            serde_json::to_value(report)
+                .map_err(|error| lifecycle_serialization_error(&context, error.to_string()))
+        }
+        CollectionsCommand::Reconcile { root } => {
+            let report = CollectionCatalogue::reconcile(&root)
+                .map_err(|error| collection_cli_error(error, "reconcile"))?;
+            let context = reconciliation_output_context(&report);
+            *output_context = Some(context.clone());
+            serde_json::to_value(report)
+                .map_err(|error| lifecycle_serialization_error(&context, error.to_string()))
+        }
         CollectionsCommand::List { root } => {
             let catalogue = CollectionCatalogue::open(&root)
                 .map_err(|error| collection_cli_error(error, "list"))?;
@@ -1147,6 +1476,54 @@ fn collections_command(
             }
             serde_json::to_value(report).map_err(|error| {
                 managed_cli_error("response_serialization", error.to_string(), "configure")
+            })
+        }
+        CollectionsCommand::Enable {
+            config,
+            profile,
+            pack,
+            all,
+        } => profile_enablement_command(config, profile, pack, all, true, output_context),
+        CollectionsCommand::Disable {
+            config,
+            profile,
+            pack,
+            all,
+        } => profile_enablement_command(config, profile, pack, all, false, output_context),
+        CollectionsCommand::Default {
+            config,
+            profile,
+            clear: _,
+        } => {
+            let operation = if profile.is_some() {
+                "set_default"
+            } else {
+                "clear_default"
+            };
+            let path = resolve_config_path(config.as_deref()).map_err(|error| {
+                config_location_error(error, operation, None, profile.as_deref(), &[])
+            })?;
+            let report =
+                CollectionProfiles::set_default(&path, profile.as_deref()).map_err(|error| {
+                    with_managed_context(
+                        managed_profile_error(error, operation),
+                        Some(&path),
+                        None,
+                        profile.as_deref(),
+                        None,
+                        &[],
+                    )
+                })?;
+            if let Some(context) = output_context.as_mut() {
+                context.operation = operation.to_owned();
+                context.config_path = Some(report.path.clone());
+                context.root_path = report.root.clone();
+                context.requested_profile = profile.clone();
+                context.known_pack_ids = report.packs.iter().map(ToString::to_string).collect();
+                context.outcome = report.outcome.clone();
+            }
+            serde_json::to_value(report).map_err(|error| {
+                managed_cli_error("response_serialization", error.to_string(), operation)
             })
         }
         CollectionsCommand::Profiles { config } => {
@@ -1267,6 +1644,88 @@ fn managed_error_for(error: CollectionQueryError, operation: &str) -> CliError {
     CliError::Managed(Box::new(error.report_for(operation)))
 }
 
+fn managed_profile_error(
+    error: vlajmaji_store::CollectionProfileError,
+    operation: &str,
+) -> CliError {
+    match error {
+        vlajmaji_store::CollectionProfileError::Catalogue { source } => {
+            managed_error_for(CollectionQueryError::Catalogue(*source), operation)
+        }
+        other => managed_error_for(CollectionQueryError::Profile(other), operation),
+    }
+}
+
+fn profile_enablement_command(
+    config: Option<PathBuf>,
+    profile: Option<String>,
+    pack: Vec<String>,
+    all: bool,
+    enabled: bool,
+    output_context: &mut Option<ManagedOutputContext>,
+) -> Result<serde_json::Value, CliError> {
+    let operation = if enabled { "enable" } else { "disable" };
+    let location_packs = pack
+        .iter()
+        .filter_map(|value| parse_collection_pack(value).ok())
+        .collect::<Vec<_>>();
+    let path = resolve_config_path(config.as_deref()).map_err(|error| {
+        config_location_error(error, operation, None, profile.as_deref(), &location_packs)
+    })?;
+    let selection = if all {
+        CollectionPolicySelection::All
+    } else {
+        let mut parsed = Vec::with_capacity(pack.len());
+        for value in &pack {
+            match parse_collection_pack(value) {
+                Ok(value) => parsed.push(value),
+                Err(error) => {
+                    return Err(with_managed_context(
+                        managed_error_for(
+                            CollectionQueryError::InvalidSelection(error.to_string()),
+                            operation,
+                        ),
+                        Some(&path),
+                        None,
+                        profile.as_deref(),
+                        None,
+                        &parsed,
+                    ));
+                }
+            }
+        }
+        CollectionPolicySelection::Packs(parsed)
+    };
+    let report = CollectionProfiles::set_enabled(
+        &path,
+        CollectionProfileEnablementRequest {
+            profile: profile.clone(),
+            selection,
+            enabled,
+        },
+    )
+    .map_err(|error| {
+        with_managed_context(
+            managed_profile_error(error, operation),
+            Some(&path),
+            None,
+            profile.as_deref(),
+            None,
+            &location_packs,
+        )
+    })?;
+    if let Some(context) = output_context.as_mut() {
+        context.operation = operation.to_owned();
+        context.config_path = Some(report.path.clone());
+        context.root_path = report.root.clone();
+        context.requested_profile = report.profile.clone();
+        context.known_pack_ids = report.packs.iter().map(ToString::to_string).collect();
+        context.outcome = report.outcome.clone();
+    }
+    serde_json::to_value(report)
+        .map_err(|error| managed_cli_error("response_serialization", error.to_string(), operation))
+}
+
 fn with_managed_context(
     error: CliError,
     config_path: Option<&Path>,
@@ -1368,8 +1827,49 @@ fn resolve_config_path(explicit: Option<&Path>) -> Result<PathBuf, ConfigLocatio
 fn collection_mutation(
     args: CollectionMutationArgs,
     operation: &str,
+    expected_revision: Option<u64>,
+    output_context: &mut Option<ManagedOutputContext>,
 ) -> Result<serde_json::Value, CliError> {
-    let request = if let Some(manifest) = args.manifest.as_ref() {
+    let request = collection_request(&args, operation)?;
+    let report = match operation {
+        "register" => CollectionCatalogue::register(&args.root, request)
+            .map_err(|error| collection_cli_error(error, operation))?,
+        "install" => CollectionCatalogue::install(&args.root, request)
+            .map_err(|error| collection_cli_error(error, operation))?,
+        "update" => CollectionCatalogue::update(
+            &args.root,
+            request,
+            expected_revision.expect("update CLI requires an expected revision"),
+        )
+        .map_err(|error| collection_cli_error(error, operation))?,
+        _ => {
+            return Err(structured_error(
+                "collections_operation",
+                "unsupported collection mutation",
+            ));
+        }
+    };
+    if operation == "update" {
+        let context = mutation_output_context(
+            "update",
+            &args.root,
+            &report,
+            expected_revision.expect("update CLI requires an expected revision"),
+        );
+        *output_context = Some(context.clone());
+        serde_json::to_value(report)
+            .map_err(|error| lifecycle_serialization_error(&context, error.to_string()))
+    } else {
+        serde_json::to_value(report)
+            .map_err(|error| structured_error("collections_json", error.to_string()))
+    }
+}
+
+fn collection_request(
+    args: &CollectionMutationArgs,
+    operation: &str,
+) -> Result<CollectionRequest<'static>, CliError> {
+    if let Some(manifest) = args.manifest.as_ref() {
         if args.release.is_some() || args.seal.is_some() {
             return Err(collection_request_error(
                 "manifest mode cannot be combined with release or seal",
@@ -1398,7 +1898,12 @@ fn collection_mutation(
                     .map_err(|error| collection_cli_error(error, operation))?,
             )
         };
-        read_collection_manifest(manifest, selection, args.allow_synthetic, operation)?
+        Ok(read_collection_manifest(
+            manifest,
+            selection,
+            args.allow_synthetic,
+            operation,
+        )?)
     } else {
         if args.all || args.pack.len() != 1 {
             return Err(collection_request_error(
@@ -1417,7 +1922,7 @@ fn collection_mutation(
                 ));
             }
         };
-        CollectionRequest::new(
+        Ok(CollectionRequest::new(
             vec![CollectionInput::SealedFiles {
                 pack_id: pack,
                 release,
@@ -1426,22 +1931,8 @@ fn collection_mutation(
             CollectionSelection::Packs(vec![pack]),
             args.allow_synthetic,
         )
-        .map_err(|error| collection_cli_error(error, operation))?
-    };
-    let report = match operation {
-        "register" => CollectionCatalogue::register(&args.root, request)
-            .map_err(|error| collection_cli_error(error, operation))?,
-        "install" => CollectionCatalogue::install(&args.root, request)
-            .map_err(|error| collection_cli_error(error, operation))?,
-        _ => {
-            return Err(structured_error(
-                "collections_operation",
-                "unsupported collection mutation",
-            ));
-        }
-    };
-    serde_json::to_value(report)
-        .map_err(|error| structured_error("collections_json", error.to_string()))
+        .map_err(|error| collection_cli_error(error, operation))?)
+    }
 }
 
 fn parse_collection_pack(value: &str) -> Result<PackId, CollectionError> {
@@ -2038,8 +2529,20 @@ fn write_output_error<E: Write>(
 
 #[cfg(test)]
 mod managed_output_tests {
-    use super::{ManagedOutputContext, emit_success_response};
-    use std::io::{self, Write};
+    use super::{
+        ManagedOutputContext, emit_success_response, lifecycle_output_context,
+        mutation_output_context,
+    };
+    use std::{
+        borrow::Cow,
+        fs,
+        io::{self, Write},
+        time::{SystemTime, UNIX_EPOCH},
+    };
+    use vlajmaji_lexicon::{Dictionary, PackId, PackPayloadKind, seal_release};
+    use vlajmaji_store::{
+        CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection,
+    };
 
     struct BadDescriptorWriter;
 
@@ -2064,6 +2567,7 @@ mod managed_output_tests {
             snapshot: None,
             known_pack_ids: vec!["llg".into()],
             outcome: "committed".into(),
+            collection_failure: None,
         };
         let mut stderr = Vec::new();
         let ok = emit_success_response(
@@ -2100,6 +2604,7 @@ mod managed_output_tests {
             snapshot: None,
             known_pack_ids: vec!["llg".into()],
             outcome: "not_applicable".into(),
+            collection_failure: None,
         };
         let mut read_stderr = Vec::new();
         assert!(!emit_success_response(
@@ -2111,6 +2616,306 @@ mod managed_output_tests {
         let read_envelope: serde_json::Value = serde_json::from_slice(&read_stderr).unwrap();
         assert_eq!(read_envelope["error"]["operation"], "lookup");
         assert_eq!(read_envelope["error"]["outcome"], "not_applicable");
+    }
+
+    #[test]
+    fn test_emit_collection_response_io_failure_retains_committed_lifecycle_context() {
+        let context = lifecycle_output_context(
+            "update",
+            vlajmaji_store::CollectionFailureReport {
+                version: 1,
+                ok: false,
+                operation: "update".into(),
+                category: "response_output_io".into(),
+                detail: "update completed at local_revision=8".into(),
+                path: Some(vlajmaji_store::NativePathReport {
+                    encoding: "unix-bytes".into(),
+                    hex: "2f746d702f636174616c6f677565".into(),
+                    utf8: Some("/tmp/catalogue".into()),
+                }),
+                pack_id: None,
+                attempt_id: Some("attempt-8".into()),
+                prior_local_revision: Some(7),
+                proposed_generation: Some("generation-8".into()),
+                observed_generation: Some("generation-8".into()),
+                activation: Some("committed".into()),
+                inputs: vec![vlajmaji_store::CollectionInputDisposition {
+                    pack_id: "llg".into(),
+                    disposition: "validated".into(),
+                    payload_kind: Some("synthetic".into()),
+                    release_sha256: Some("a".repeat(64)),
+                    report: None,
+                }],
+            },
+        );
+        let mut stderr = Vec::new();
+        assert!(!emit_success_response(
+            &serde_json::json!({"operation":"update"}),
+            &mut BadDescriptorWriter,
+            &mut stderr,
+            Some(&context),
+        ));
+        let envelope: serde_json::Value = serde_json::from_slice(&stderr).unwrap();
+        assert_eq!(envelope["error"]["category"], "response_output_io");
+        assert_eq!(envelope["error"]["operation"], "update");
+        assert_eq!(envelope["error"]["activation"], "committed");
+        assert_eq!(envelope["error"]["prior_local_revision"], 7);
+        assert_eq!(envelope["error"]["proposed_generation"], "generation-8");
+        assert_eq!(envelope["error"]["observed_generation"], "generation-8");
+        assert_eq!(envelope["error"]["attempt_id"], "attempt-8");
+        assert_eq!(envelope["error"]["inputs"][0]["pack_id"], "llg");
+        assert!(
+            envelope["error"]["detail"]
+                .as_str()
+                .unwrap()
+                .contains("local_revision=8")
+        );
+    }
+
+    #[test]
+    fn test_mutation_output_context_distinguishes_published_kept_and_cleared_generations() {
+        let root = std::path::Path::new("/tmp/catalogue");
+        let generation = |id: &str, attempt: &str| vlajmaji_store::CollectionGeneration {
+            generation_id: id.into(),
+            content_id: "content".into(),
+            canonical_sha256: "a".repeat(64),
+            store_path: root.join("generations").join(attempt).join("store"),
+            path: vlajmaji_store::NativePathReport {
+                encoding: "unix-bytes".into(),
+                hex: "2f746d702f636174616c6f677565".into(),
+                utf8: Some("/tmp/catalogue".into()),
+            },
+            members: Vec::new(),
+        };
+        let report = |outcome: &str,
+                      attempt: Option<&str>,
+                      current: Option<vlajmaji_store::CollectionGeneration>| {
+            vlajmaji_store::CollectionMutationReport {
+                version: 1,
+                ok: true,
+                operation: "remove".into(),
+                outcome: outcome.into(),
+                local_revision: 4,
+                policy_state: "unconfigured".into(),
+                attempt_id: attempt.map(str::to_owned),
+                generation: current,
+                inputs: Vec::new(),
+            }
+        };
+
+        let published = mutation_output_context(
+            "remove",
+            root,
+            &report(
+                "removed",
+                Some("attempt-4"),
+                Some(generation("generation-4", "attempt-4")),
+            ),
+            3,
+        );
+        let failure = published.collection_failure.unwrap();
+        assert_eq!(failure.activation.as_deref(), Some("committed"));
+        assert_eq!(failure.proposed_generation.as_deref(), Some("generation-4"));
+        assert_eq!(failure.observed_generation.as_deref(), Some("generation-4"));
+
+        let kept = mutation_output_context(
+            "remove",
+            root,
+            &report(
+                "removed",
+                Some("attempt-4"),
+                Some(generation("generation-3", "attempt-3")),
+            ),
+            3,
+        );
+        let failure = kept.collection_failure.unwrap();
+        assert_eq!(failure.activation.as_deref(), Some("committed"));
+        assert!(failure.proposed_generation.is_none());
+        assert_eq!(failure.observed_generation.as_deref(), Some("generation-3"));
+
+        let cleared = mutation_output_context(
+            "remove",
+            root,
+            &report("removed", Some("attempt-4"), None),
+            3,
+        );
+        let failure = cleared.collection_failure.unwrap();
+        assert_eq!(failure.activation.as_deref(), Some("committed"));
+        assert!(failure.proposed_generation.is_none());
+        assert!(failure.observed_generation.is_none());
+
+        let idempotent = mutation_output_context(
+            "reinstall",
+            root,
+            &report(
+                "idempotent",
+                None,
+                Some(generation("generation-3", "attempt-3")),
+            ),
+            3,
+        );
+        let failure = idempotent.collection_failure.unwrap();
+        assert_eq!(failure.activation.as_deref(), Some("not_applicable"));
+        assert!(failure.proposed_generation.is_none());
+
+        for (operation, outcome) in [("update", "updated"), ("rebuild", "rebuilt")] {
+            let context = mutation_output_context(
+                operation,
+                root,
+                &report(
+                    outcome,
+                    Some("attempt-5"),
+                    Some(generation("generation-5", "attempt-5")),
+                ),
+                4,
+            );
+            let failure = context.collection_failure.as_ref().unwrap();
+            assert_eq!(failure.operation, operation);
+            assert_eq!(failure.activation.as_deref(), Some("committed"));
+            assert_eq!(failure.proposed_generation.as_deref(), Some("generation-5"));
+            assert_eq!(failure.observed_generation.as_deref(), Some("generation-5"));
+            let mut stderr = Vec::new();
+            assert!(!emit_success_response(
+                &serde_json::json!({"operation": operation}),
+                &mut BadDescriptorWriter,
+                &mut stderr,
+                Some(&context),
+            ));
+            let envelope: serde_json::Value = serde_json::from_slice(&stderr).unwrap();
+            assert_eq!(envelope["error"]["operation"], operation);
+            assert_eq!(envelope["error"]["activation"], "committed");
+            assert_eq!(envelope["error"]["proposed_generation"], "generation-5");
+        }
+    }
+
+    #[test]
+    fn test_actual_remove_reports_keep_subset_and_clear_output_contexts() {
+        let root = std::env::temp_dir().join(format!(
+            "vlajmaji-s04-output-context-{}-{}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fn request(pack: PackId) -> CollectionRequest<'static> {
+            let dictionary = Dictionary::from_document(Default::default()).unwrap();
+            let release = seal_release(pack, PackPayloadKind::Synthetic, &dictionary).unwrap();
+            CollectionRequest::new(
+                vec![CollectionInput::SealedBytes {
+                    pack_id: pack,
+                    release: Cow::Owned(release.release),
+                    seal: Cow::Owned(release.seal),
+                }],
+                CollectionSelection::Packs(vec![pack]),
+                true,
+            )
+            .unwrap()
+        }
+        fn assert_receipt(
+            context: &ManagedOutputContext,
+            activation: &str,
+            proposed: Option<&str>,
+            observed: Option<&str>,
+        ) {
+            let mut stderr = Vec::new();
+            assert!(!emit_success_response(
+                &serde_json::json!({"operation":"remove"}),
+                &mut BadDescriptorWriter,
+                &mut stderr,
+                Some(context),
+            ));
+            let envelope: serde_json::Value = serde_json::from_slice(&stderr).unwrap();
+            let error = &envelope["error"];
+            assert_eq!(error["operation"], "remove");
+            assert_eq!(error["activation"], activation);
+            assert_eq!(error["proposed_generation"].as_str(), proposed);
+            assert_eq!(error["observed_generation"].as_str(), observed);
+        }
+
+        let llg = request(PackId::Llg);
+        let jb = request(PackId::LensiskuJbotci);
+        let la = request(PackId::LaLojban);
+        CollectionCatalogue::register(&root, llg.clone()).unwrap();
+        CollectionCatalogue::register(&root, jb.clone()).unwrap();
+        CollectionCatalogue::install(&root, llg).unwrap();
+        let installed_both = CollectionCatalogue::install(&root, jb).unwrap();
+        let original_generation = installed_both.generation.unwrap().generation_id;
+        CollectionCatalogue::register(&root, la).unwrap();
+        let before_keep = CollectionCatalogue::open(&root)
+            .unwrap()
+            .local_revision()
+            .unwrap();
+
+        let keep = CollectionCatalogue::remove(&root, &[PackId::LaLojban], before_keep).unwrap();
+        let kept_generation = keep.generation.as_ref().unwrap().generation_id.clone();
+        assert_eq!(kept_generation, original_generation);
+        let context = mutation_output_context("remove", &root, &keep, before_keep);
+        assert_receipt(&context, "committed", None, Some(kept_generation.as_str()));
+
+        let subset =
+            CollectionCatalogue::remove(&root, &[PackId::LensiskuJbotci], keep.local_revision)
+                .unwrap();
+        let subset_generation = subset.generation.as_ref().unwrap().generation_id.clone();
+        assert_ne!(subset_generation, kept_generation);
+        let context = mutation_output_context("remove", &root, &subset, keep.local_revision);
+        assert_receipt(
+            &context,
+            "committed",
+            Some(subset_generation.as_str()),
+            Some(subset_generation.as_str()),
+        );
+
+        let clear =
+            CollectionCatalogue::remove(&root, &[PackId::Llg], subset.local_revision).unwrap();
+        assert!(clear.generation.is_none());
+        let context = mutation_output_context("remove", &root, &clear, subset.local_revision);
+        assert_receipt(&context, "committed", None, None);
+        let _ = fs::remove_dir_all(root);
+    }
+
+    #[test]
+    fn test_emit_migrated_response_io_failure_reports_migration_context() {
+        let report = vlajmaji_store::CollectionCatalogueMigrationReport {
+            version: 1,
+            ok: true,
+            operation: "migrate".into(),
+            outcome: "migrated".into(),
+            root_path: vlajmaji_store::NativePathReport {
+                encoding: "unix-bytes".into(),
+                hex: "2f746d702f636174616c6f677565".into(),
+                utf8: Some("/tmp/catalogue".into()),
+            },
+            prior_schema_version: 1,
+            schema_version: 2,
+            prior_local_revision: 6,
+            local_revision: 6,
+            active_generation: Some("generation-6".into()),
+        };
+        let context = super::migration_output_context(&report);
+        let mut stderr = Vec::new();
+        assert!(!emit_success_response(
+            &serde_json::json!({"operation":"migrate","outcome":"migrated"}),
+            &mut BadDescriptorWriter,
+            &mut stderr,
+            Some(&context),
+        ));
+        let envelope: serde_json::Value = serde_json::from_slice(&stderr).unwrap();
+        let error = &envelope["error"];
+        assert_eq!(error["category"], "response_output_io");
+        assert_eq!(error["operation"], "migrate");
+        assert_eq!(error["activation"], "committed");
+        assert_eq!(error["prior_local_revision"], 6);
+        assert_eq!(error["observed_generation"], "generation-6");
+        assert!(error["proposed_generation"].is_null());
+        assert!(error["attempt_id"].is_null());
+        assert_eq!(error["inputs"], serde_json::json!([]));
+        assert!(
+            error["detail"]
+                .as_str()
+                .unwrap()
+                .contains("local_revision=6")
+        );
     }
 }
 

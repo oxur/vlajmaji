@@ -90,9 +90,51 @@ vlajmaji verify all "$STORE"
 The catalogue retains immutable generation and registration history. An exact
 installed repeat verifies incoming and owned bytes and the current derived
 store; it does not create another generation. A different release for an
-already-installed pack reports `update_required`; replacing an installed pack
-belongs to a later lifecycle operation. Failed or interrupted stages remain
-identifiable for inspection and are not silently cleaned up.
+already-installed pack reports `update_required`; use the explicit
+revision-checked update command to replace currently installed selected packs.
+A compatible version-1 catalogue must first be explicitly migrated. Rebuild
+publishes a fresh derived generation from retained sealed inputs. These
+operations retain earlier registrations and generations; they do not change
+user selection or the global default.
+
+```sh
+vlajmaji collections list ./local-catalogue
+vlajmaji collections migrate ./local-catalogue --expected-revision 4
+vlajmaji collections update ./local-catalogue \
+  --manifest ./batch.json --pack llg --allow-synthetic --expected-revision 5
+vlajmaji collections rebuild ./local-catalogue --expected-revision 6
+```
+
+Migration renames the six physical version-1 tables transactionally. It leaves
+only the old `catalogue_meta` name as a read-only `key,value` view; the other
+five old table names are absent, preventing old same-release no-op reads from
+mistaking retained history for an active installation. The expected local
+revision is checked under the writer transaction before migration or lifecycle
+staging. A pinned read transaction may make migration commit Busy; release it
+and retry with the unchanged revision. Exact same-seal update is idempotent,
+while rebuild deliberately advances revision and generation identity even when
+canonical content is unchanged.
+
+Update replaces only selected packs that are already installed. It retains
+other current members and rejects stale expected revisions before allocating a
+generation. Rebuild uses the currently installed sealed inputs, verifies the
+derived SQLite store, and can repair a damaged derived store without selecting
+an older historical generation as a fallback. Missing or corrupt retained
+release inputs remain errors. Failed or interrupted stages remain identifiable
+for inspection and are not silently cleaned up. `remove` records a
+revision-checked transition out of installed state while retaining registrations,
+owned sealed inputs, and historical generations. `reinstall` requires the
+registered release digest and that exact normalized input; it stages a fresh
+owned copy and never restores from an older generation implicitly. Repeating
+the currently installed release is an explicit verification-only idempotent
+result. `reconcile` reports retained lifecycle attempts and minimum store
+observations without activating a generation, migrating the catalogue, or
+performing a full integrity audit.
+
+Configured lookup reports a selected pack with a committed removal as
+`removed`; a pack that was only registered remains `registered_only`. The
+selection-policy marker distinguishes this lifecycle-aware state interpretation
+from earlier snapshots.
 
 `list` and `inspect` are read-only. They report the minimum readable format
 boundary, current owned-file presence, registration inputs, terms, attribution,
@@ -101,6 +143,10 @@ perform an `all` audit. Use the explicit store verification command when a new
 full integrity check is needed. The generation's `path` descriptor contains a
 UTF-8 convenience value when representable and an encoding-tagged hex value for
 native path fidelity.
+
+The version-1 `CollectionListReport` wire format includes the additive
+`catalogue_schema_version` field; its earlier fields and meanings are retained,
+while serialized list envelopes now include that additional field.
 
 Collection failures are versioned JSON reports on stderr with a stable
 category, operation, detail, nullable context fields, input dispositions, and
@@ -127,6 +173,12 @@ disabled packs. The library's explicit `CollectionProfiles::configure`
 request remains authoritative for callers that deliberately replace that
 list.
 
+`collections enable` and `collections disable` change only selected members'
+enabled bits, and `collections default` sets or clears the configured default.
+These policy commands read the latest configuration under its cooperative
+writer lock. Their strict version-1 reports list only changed IDs in profile
+membership order; semantic no-ops preserve the original bytes and revision.
+
 A semantic no-op keeps the existing configuration bytes, comments, formatting,
 and revision. A real change serializes TOML again and may lose comments or
 formatting. The sibling lock coordinates cooperating writers. Immediately
@@ -138,6 +190,10 @@ guarantee for either creation or replacement.
 ```sh
 vlajmaji collections configure ./local-catalogue \
   --profile research --pack llg --pack sutysisku --make-default
+vlajmaji collections disable --config ./profiles.toml \
+  --profile research --pack llg
+vlajmaji collections enable --config ./profiles.toml --profile research --all
+vlajmaji collections default --config ./profiles.toml --clear
 vlajmaji collections profiles
 vlajmaji collections selection --profile research
 vlajmaji lookup farvi --profile research --source llg

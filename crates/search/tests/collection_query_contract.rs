@@ -1632,7 +1632,7 @@ fn test_stale_reference_snapshot_wins_before_corrupt_heavy_metadata() {
 
     let mutation = Command::new("sqlite3")
         .arg(root.join("catalogue.sqlite3"))
-        .arg("UPDATE catalogue_meta SET value='2' WHERE key='local_revision'; UPDATE registrations SET descriptor_json=x'00' WHERE pack_id='llg';")
+        .arg("UPDATE catalogue_meta_v2 SET value='2' WHERE key='local_revision'; UPDATE registrations_v2 SET descriptor_json=x'00' WHERE pack_id='llg';")
         .output()
         .unwrap();
     assert!(

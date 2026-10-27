@@ -280,6 +280,7 @@ impl CollectionQueryError {
                 "profile_default_missing"
             }
             Self::Profile(CollectionProfileError::UnknownProfile { .. }) => "unknown_profile",
+            Self::Profile(CollectionProfileError::NotProfileMember { .. }) => "not_profile_member",
             Self::Profile(CollectionProfileError::MissingFile { .. }) => "config_missing",
             Self::Profile(CollectionProfileError::CurrentDirectory { .. }) => "config_io",
             Self::Profile(CollectionProfileError::Io { source, .. })
@@ -548,10 +549,14 @@ impl CollectionSearchEngine {
                     .any(|pack| pack.as_str() == row.pack_id),
                 installed_release_sha256: current,
                 producer_selectable,
-                derived_state: if row.installed_release_sha256.is_none() {
-                    "registered_only".into()
-                } else {
-                    minimum_store_state.unwrap_or("minimum_unavailable").into()
+                derived_state: match row.installation_state {
+                    vlajmaji_store::CollectionInstallationState::Installed => {
+                        minimum_store_state.unwrap_or("minimum_unavailable").into()
+                    }
+                    vlajmaji_store::CollectionInstallationState::RegisteredOnly => {
+                        "registered_only".into()
+                    }
+                    vlajmaji_store::CollectionInstallationState::Removed => "removed".into(),
                 },
                 original_inputs_present: registration
                     .map(|registration| registration.inputs_present),
@@ -607,7 +612,7 @@ impl CollectionSearchEngine {
             disabled: selection.disabled.clone(),
             selected_releases,
             collections: collections.clone(),
-            selection_policy: "selected-available-owned-head-v1".into(),
+            selection_policy: "selected-available-owned-head-v2".into(),
             order_policy: "source-release-occurrence-v1".into(),
             projection_policy: "full-dictionary-exact-v1".into(),
             binding_sha256: String::new(),
@@ -755,7 +760,12 @@ impl CollectionSearchEngine {
             if state.installed_release_sha256.is_none() {
                 return Err(CollectionQueryError::UnavailablePack {
                     pack_id: pack.to_string(),
-                    reason: "registered_only".into(),
+                    reason: if state.derived_state == "removed" {
+                        "removed"
+                    } else {
+                        "registered_only"
+                    }
+                    .into(),
                 });
             }
             if !state.producer_selectable {
@@ -1289,6 +1299,9 @@ impl CollectionSearchEngine {
             .collections
             .iter()
             .find(|row| row.pack_id == pack)?;
+        if availability.derived_state == "removed" {
+            return Some("removed".into());
+        }
         if availability.installed_release_sha256.as_deref() != Some(release) {
             return Some("registered_only".into());
         }

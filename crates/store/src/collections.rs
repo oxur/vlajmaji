@@ -14,6 +14,9 @@ use rusqlite::{Connection, OptionalExtension, params};
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::BTreeMap;
+mod lifecycle;
+mod maintenance;
+
 use vlajmaji_lexicon::{
     Availability, CaptureMetadata, CaptureRef, CodeNotice, CollectionRecord, ComponentRecord,
     Dictionary, DistributorRecord, JbotciImportOptions, LaLojbanImportOptions, LlgImportOptions,
@@ -420,6 +423,12 @@ pub enum CollectionErrorCategory {
     InvalidRequest,
     /// A catalogue, manifest, or model version is unsupported.
     UnsupportedVersion,
+    /// A version-1 catalogue must be explicitly migrated before writes.
+    MigrationRequired,
+    /// A caller's expected catalogue revision was stale.
+    RevisionConflict,
+    /// The requested pack or active generation is not installed.
+    NotInstalled,
     /// No owned catalogue exists at the requested path.
     MissingCatalogue,
     /// A caller-owned destination already exists.
@@ -432,6 +441,10 @@ pub enum CollectionErrorCategory {
     IdentityConflict,
     /// Replacing an installed pack is reserved for a later lifecycle operation.
     UpdateRequired,
+    /// An explicitly removed pack must be restored with exact reinstall.
+    ReinstallRequired,
+    /// The requested release identity is not retained for this pack.
+    UnknownRegisteredRelease,
     /// The catalogue writer is busy.
     Busy,
     /// An owned artifact or catalogue write failed.
@@ -450,6 +463,23 @@ pub enum CollectionError {
     InvalidRequest(String),
     /// Catalogue or model schema is not supported.
     UnsupportedVersion(String),
+    /// A version-1 catalogue is readable but requires explicit migration before writes.
+    MigrationRequired {
+        /// Observed catalogue schema version.
+        version: u32,
+    },
+    /// Expected revision differs from the revision read under the writer lock.
+    RevisionConflict {
+        /// Revision supplied by the caller.
+        expected: u64,
+        /// Revision observed under the writer lock.
+        observed: u64,
+    },
+    /// No active generation exists or a requested pack has no current installation.
+    NotInstalled {
+        /// Missing current pack, or none when there is no active generation.
+        pack: Option<PackId>,
+    },
     /// The requested path has no initialized catalogue.
     MissingCatalogue(PathBuf),
     /// A protected destination already exists.
@@ -502,6 +532,18 @@ pub enum CollectionError {
     },
     /// A different release is already installed and updates belong to S04.
     UpdateRequired(PackId),
+    /// The pack was explicitly removed and must be restored with exact reinstall.
+    ReinstallRequired {
+        /// Pack that must be restored through the exact reinstall operation.
+        pack: PackId,
+    },
+    /// The requested release is not retained for this pack.
+    UnknownRegisteredRelease {
+        /// Stable pack identity.
+        pack: PackId,
+        /// Exact release digest requested by the caller.
+        release_sha256: String,
+    },
     /// Catalogue writer could not obtain its immediate transaction.
     Busy(String),
     /// Busy SQLite operation with its original database error retained.
@@ -573,6 +615,9 @@ impl CollectionError {
         match self {
             Self::InvalidRequest(_) => CollectionErrorCategory::InvalidRequest,
             Self::UnsupportedVersion(_) => CollectionErrorCategory::UnsupportedVersion,
+            Self::MigrationRequired { .. } => CollectionErrorCategory::MigrationRequired,
+            Self::RevisionConflict { .. } => CollectionErrorCategory::RevisionConflict,
+            Self::NotInstalled { .. } => CollectionErrorCategory::NotInstalled,
             Self::MissingCatalogue(_) => CollectionErrorCategory::MissingCatalogue,
             Self::OccupiedDestination(_) => CollectionErrorCategory::OccupiedDestination,
             Self::InputIo { .. } => CollectionErrorCategory::InputIo,
@@ -584,6 +629,10 @@ impl CollectionError {
                 CollectionErrorCategory::IdentityConflict
             }
             Self::UpdateRequired(_) => CollectionErrorCategory::UpdateRequired,
+            Self::ReinstallRequired { .. } => CollectionErrorCategory::ReinstallRequired,
+            Self::UnknownRegisteredRelease { .. } => {
+                CollectionErrorCategory::UnknownRegisteredRelease
+            }
             Self::Busy(_) | Self::BusySource(_) => CollectionErrorCategory::Busy,
             Self::ArtifactIo { .. } | Self::ArtifactIoSource { .. } => {
                 CollectionErrorCategory::ArtifactIo
@@ -643,9 +692,11 @@ impl CollectionError {
                 (None, pack.map(|id| id.as_str().to_owned()))
             }
             Self::PackConflict { .. } => (None, None),
-            Self::Adapter { pack, .. } | Self::UpdateRequired(pack) => {
-                (None, Some(pack.as_str().to_owned()))
-            }
+            Self::Adapter { pack, .. }
+            | Self::UpdateRequired(pack)
+            | Self::ReinstallRequired { pack } => (None, Some(pack.as_str().to_owned())),
+            Self::UnknownRegisteredRelease { pack, .. } => (None, Some(pack.as_str().to_owned())),
+            Self::NotInstalled { pack: Some(pack) } => (None, Some(pack.as_str().to_owned())),
             _ => (None, None),
         };
         let pack_id = pack_id.or(batch_pack_id);
@@ -672,12 +723,17 @@ impl CollectionError {
             prior_local_revision: None,
             proposed_generation: None,
             observed_generation: None,
-            activation: if matches!(
+            activation: if operation == "reconcile" {
+                Some("not_applicable".into())
+            } else if matches!(
                 source,
                 Self::Indeterminate(_) | Self::IndeterminateSources { .. }
             ) {
                 Some("indeterminate".into())
-            } else if matches!(operation, "register" | "install") {
+            } else if matches!(
+                operation,
+                "register" | "install" | "migrate" | "update" | "rebuild" | "remove" | "reinstall"
+            ) {
                 Some("not_activated".into())
             } else {
                 Some("not_applicable".into())
@@ -694,12 +750,17 @@ fn category_name(category: CollectionErrorCategory) -> &'static str {
     match category {
         CollectionErrorCategory::InvalidRequest => "invalid_request",
         CollectionErrorCategory::UnsupportedVersion => "unsupported_version",
+        CollectionErrorCategory::MigrationRequired => "migration_required",
+        CollectionErrorCategory::RevisionConflict => "revision_conflict",
+        CollectionErrorCategory::NotInstalled => "not_installed",
         CollectionErrorCategory::MissingCatalogue => "missing_catalogue",
         CollectionErrorCategory::OccupiedDestination => "occupied_destination",
         CollectionErrorCategory::InputIo => "input_io",
         CollectionErrorCategory::InputInvalid => "input_invalid",
         CollectionErrorCategory::IdentityConflict => "identity_conflict",
         CollectionErrorCategory::UpdateRequired => "update_required",
+        CollectionErrorCategory::ReinstallRequired => "reinstall_required",
+        CollectionErrorCategory::UnknownRegisteredRelease => "unknown_registered_release",
         CollectionErrorCategory::Busy => "busy",
         CollectionErrorCategory::ArtifactIo => "artifact_io",
         CollectionErrorCategory::VerificationFailed => "verification_failed",
@@ -713,6 +774,20 @@ impl fmt::Display for CollectionError {
             Self::InvalidRequest(detail) => write!(f, "invalid collection request: {detail}"),
             Self::UnsupportedVersion(detail) => {
                 write!(f, "unsupported collection version: {detail}")
+            }
+            Self::MigrationRequired { version } => write!(
+                f,
+                "collection catalogue version {version} requires explicit migration"
+            ),
+            Self::RevisionConflict { expected, observed } => write!(
+                f,
+                "collection catalogue revision changed: expected {expected}, observed {observed}"
+            ),
+            Self::NotInstalled { pack: Some(pack) } => {
+                write!(f, "collection pack {pack} is not installed")
+            }
+            Self::NotInstalled { pack: None } => {
+                write!(f, "collection catalogue has no active generation")
             }
             Self::MissingCatalogue(path) => {
                 write!(f, "collection catalogue is missing: {}", path.display())
@@ -748,8 +823,17 @@ impl fmt::Display for CollectionError {
             } => write!(f, "conflicting {category} identity {key}: {source}"),
             Self::UpdateRequired(pack) => write!(
                 f,
-                "updating installed pack {pack} is reserved for a later lifecycle operation"
+                "pack {pack} is installed at another release; use an explicit revision-checked update"
             ),
+            Self::ReinstallRequired { pack } => {
+                write!(f, "pack {pack} was removed; use exact reinstall")
+            }
+            Self::UnknownRegisteredRelease {
+                pack,
+                release_sha256,
+            } => {
+                write!(f, "release {release_sha256} is not registered for {pack}")
+            }
             Self::Busy(detail) => write!(f, "collection catalogue is busy: {detail}"),
             Self::BusySource(source) => write!(f, "collection catalogue is busy: {source}"),
             Self::ArtifactIo {
@@ -1108,6 +1192,28 @@ impl CollectionCatalogue {
         crate::collections_schema::local_revision(&self.connection, &self.root)
     }
 
+    /// Returns the physical collection-catalogue schema version.
+    ///
+    /// # Errors
+    /// Returns a typed catalogue error when the version metadata is unreadable.
+    pub fn schema_version(&self) -> Result<u32, CollectionError> {
+        crate::collections_schema::schema_version(
+            &self.connection,
+            &crate::collections_schema::database_path(&self.root),
+        )
+    }
+
+    /// Explicitly migrates a compatible version-1 catalogue to version 2.
+    ///
+    /// # Errors
+    /// Returns typed validation, revision, busy, I/O, or indeterminate errors.
+    pub fn migrate(
+        root: impl AsRef<Path>,
+        expected_local_revision: u64,
+    ) -> Result<CollectionCatalogueMigrationReport, CollectionError> {
+        lifecycle::migrate_catalogue(root.as_ref(), expected_local_revision)
+    }
+
     /// Returns exact current tool-owned artifact paths for an installed pack.
     ///
     /// This decodes catalogue path metadata only; it does not test file
@@ -1120,10 +1226,14 @@ impl CollectionCatalogue {
         &self,
         pack: PackId,
     ) -> Result<Option<CollectionInstalledArtifactLocations>, CollectionError> {
+        let tables = crate::collections_schema::tables_for(&self.connection, &self.root)?;
         let registered: bool = self
             .connection
             .query_row(
-                "SELECT EXISTS(SELECT 1 FROM registrations WHERE pack_id=?1)",
+                &format!(
+                    "SELECT EXISTS(SELECT 1 FROM {} WHERE pack_id=?1)",
+                    tables.registrations
+                ),
                 [pack.as_str()],
                 |row| row.get(0),
             )
@@ -1163,10 +1273,14 @@ impl CollectionCatalogue {
     pub fn list(&self) -> Result<CollectionListReport, CollectionError> {
         let local_revision =
             crate::collections_schema::local_revision(&self.connection, &self.root)?;
+        let tables = crate::collections_schema::tables_for(&self.connection, &self.root)?;
         let generation = read_generation(&self.connection, &self.root)?;
         let mut statement = self
             .connection
-            .prepare("SELECT DISTINCT pack_id FROM registrations ORDER BY pack_id")
+            .prepare(&format!(
+                "SELECT DISTINCT pack_id FROM {} ORDER BY pack_id",
+                tables.registrations
+            ))
             .map_err(|error| db_error(&self.root, error))?;
         let ids = statement
             .query_map([], |row| row.get::<_, String>(0))
@@ -1179,9 +1293,10 @@ impl CollectionCatalogue {
             .collect::<Result<Vec<_>, _>>()?;
         let mut staged = self
             .connection
-            .prepare(
-                "SELECT attempt_id FROM attempts WHERE status <> 'committed' ORDER BY attempt_id",
-            )
+            .prepare(&format!(
+                "SELECT attempt_id FROM {} WHERE status <> 'committed' ORDER BY attempt_id",
+                tables.attempts
+            ))
             .map_err(|error| db_error(&self.root, error))?;
         let mut staged_attempts = staged
             .query_map([], |row| row.get(0))
@@ -1193,6 +1308,10 @@ impl CollectionCatalogue {
         staged_attempts.dedup();
         Ok(CollectionListReport {
             version: 1,
+            catalogue_schema_version: crate::collections_schema::schema_version(
+                &self.connection,
+                &crate::collections_schema::database_path(&self.root),
+            )?,
             local_revision,
             generation,
             packs,
@@ -1210,20 +1329,28 @@ impl CollectionCatalogue {
     }
 
     fn inspect_id(&self, pack_id: &str) -> Result<CollectionInspection, CollectionError> {
+        let tables = crate::collections_schema::tables_for(&self.connection, &self.root)?;
         let installed: Option<String> = self
             .connection
             .query_row(
-                "SELECT release_sha256 FROM installed_heads WHERE pack_id=?1",
+                &format!(
+                    "SELECT release_sha256 FROM {} WHERE pack_id=?1",
+                    tables.installed_heads
+                ),
                 [pack_id],
                 |row| row.get(0),
             )
             .optional()
             .map_err(|error| db_error(&self.root, error))?;
-        let mut statement = self.connection.prepare(
-            "SELECT r.release_sha256,r.payload_kind,l.input_paths_json,r.summary_json FROM registrations r
-             JOIN registration_locations l USING(pack_id,release_sha256)
-             WHERE r.pack_id=?1 ORDER BY r.release_sha256,l.input_paths_json"
-        ).map_err(|error| db_error(&self.root, error))?;
+        let mut statement = self
+            .connection
+            .prepare(&format!(
+                "SELECT r.release_sha256,r.payload_kind,l.input_paths_json,r.summary_json FROM {} r
+             JOIN {} l USING(pack_id,release_sha256)
+             WHERE r.pack_id=?1 ORDER BY r.release_sha256,l.input_paths_json",
+                tables.registrations, tables.registration_locations
+            ))
+            .map_err(|error| db_error(&self.root, error))?;
         let mut rows = statement
             .query([pack_id])
             .map_err(|error| db_error(&self.root, error))?;
@@ -1322,9 +1449,16 @@ impl CollectionCatalogue {
         }
         let has_installation = installed_member.is_some();
         let installed_history = self.installed_history(pack_id)?;
+        let installation_state = maintenance::installation_state(
+            &self.connection,
+            &self.root,
+            pack_id,
+            has_installation,
+        )?;
         Ok(CollectionInspection {
             version: 1,
             pack_id: pack_id.into(),
+            installation_state,
             installed_release_sha256: installed,
             installed_history,
             registrations,
@@ -1343,12 +1477,14 @@ impl CollectionCatalogue {
         &self,
         pack_id: &str,
     ) -> Result<Vec<CollectionInstalledHistory>, CollectionError> {
+        let tables = crate::collections_schema::tables_for(&self.connection, &self.root)?;
         let mut statement = self
             .connection
-            .prepare(
+            .prepare(&format!(
                 "SELECT generation_id,content_id,canonical_sha256,local_revision,members_json
-             FROM generations ORDER BY local_revision DESC",
-            )
+             FROM {} ORDER BY local_revision DESC",
+                tables.generations
+            ))
             .map_err(|error| db_error(&self.root, error))?;
         let rows = statement
             .query_map([], |row| {
@@ -1415,8 +1551,9 @@ impl CollectionCatalogue {
         pack: PackId,
         release_sha256: &str,
     ) -> Result<CollectionReferenceMetadata, CollectionError> {
+        let tables = crate::collections_schema::tables_for(&self.connection, &self.root)?;
         let (payload_kind, bytes): (String, Vec<u8>) = self.connection.query_row(
-            "SELECT payload_kind,descriptor_json FROM registrations WHERE pack_id=?1 AND release_sha256=?2",
+            &format!("SELECT payload_kind,descriptor_json FROM {} WHERE pack_id=?1 AND release_sha256=?2", tables.registrations),
             params![pack.as_str(), release_sha256],
             |row| Ok((row.get(0)?, row.get(1)?)),
         ).optional().map_err(|error| db_error(&self.root, error))?
@@ -1460,11 +1597,103 @@ impl CollectionCatalogue {
         root: impl AsRef<Path>,
         request: CollectionRequest<'_>,
     ) -> Result<CollectionMutationReport, CollectionError> {
-        mutate_install(root.as_ref(), request)
+        lifecycle::mutate_install_mode(root.as_ref(), request, lifecycle::InstallMode::Install)
+    }
+
+    /// Replaces selected currently installed members after checking the expected revision.
+    ///
+    /// # Errors
+    /// Returns typed selection, revision, identity, verification, I/O or transaction errors.
+    pub fn update(
+        root: impl AsRef<Path>,
+        request: CollectionRequest<'_>,
+        expected_local_revision: u64,
+    ) -> Result<CollectionMutationReport, CollectionError> {
+        lifecycle::mutate_install_mode(
+            root.as_ref(),
+            request,
+            lifecycle::InstallMode::Update(expected_local_revision),
+        )
+    }
+
+    /// Forces a new generation from the currently installed release and seal copies.
+    ///
+    /// # Errors
+    /// Returns typed revision, missing/corrupt input, verification or transaction errors.
+    pub fn rebuild(
+        root: impl AsRef<Path>,
+        expected_local_revision: u64,
+    ) -> Result<CollectionMutationReport, CollectionError> {
+        let root = absolute_path(root.as_ref())?;
+        let catalogue = Self::open(&root)?;
+        read_generation(&catalogue.connection, &root)?
+            .ok_or(CollectionError::NotInstalled { pack: None })?;
+        let members = current_members(&catalogue.connection, &root)?;
+        let selected = members
+            .iter()
+            .map(|member| parse_pack_id(&member.pack_id))
+            .collect::<Result<Vec<_>, _>>()?;
+        let inputs = members
+            .iter()
+            .map(|member| {
+                Ok(CollectionInput::SealedFiles {
+                    pack_id: parse_pack_id(&member.pack_id)?,
+                    release: root.join(&member.release_path),
+                    seal: root.join(&member.seal_path),
+                })
+            })
+            .collect::<Result<Vec<_>, CollectionError>>()?;
+        drop(catalogue);
+        let request = CollectionRequest::new(inputs, CollectionSelection::Packs(selected), true)?;
+        lifecycle::mutate_install_mode(
+            &root,
+            request,
+            lifecycle::InstallMode::Rebuild(expected_local_revision),
+        )
+    }
+
+    /// Removes registered packs from the active set without deleting their retained data.
+    ///
+    /// # Errors
+    /// Returns typed request, revision, state, verification, or transaction errors.
+    pub fn remove(
+        root: impl AsRef<Path>,
+        packs: &[PackId],
+        expected_local_revision: u64,
+    ) -> Result<CollectionMutationReport, CollectionError> {
+        maintenance::remove(root.as_ref(), packs, expected_local_revision)
+    }
+
+    /// Restores one exact retained release after an explicit removal.
+    ///
+    /// # Errors
+    /// Returns typed selection, revision, registration, identity, verification, or transaction errors.
+    pub fn reinstall(
+        root: impl AsRef<Path>,
+        request: CollectionRequest<'_>,
+        registered_release_sha256: &str,
+        expected_local_revision: u64,
+    ) -> Result<CollectionMutationReport, CollectionError> {
+        maintenance::reinstall(
+            root.as_ref(),
+            request,
+            registered_release_sha256,
+            expected_local_revision,
+        )
+    }
+
+    /// Observes and explicitly reconciles SQLite physical recovery without logical activation.
+    ///
+    /// # Errors
+    /// Returns typed native-path, catalogue, metadata, or rollback uncertainty errors.
+    pub fn reconcile(
+        root: impl AsRef<Path>,
+    ) -> Result<CollectionReconciliationReport, CollectionError> {
+        maintenance::reconcile(root.as_ref())
     }
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 struct InstalledMember {
     pack_id: String,
@@ -1503,6 +1732,22 @@ fn mutation_context(error: CollectionError, context: MutationErrorContext) -> Co
     }
 }
 
+fn require_v2(
+    connection: &Connection,
+    root: &Path,
+    tables: crate::collections_schema::CatalogueTables,
+) -> Result<(), CollectionError> {
+    let version = crate::collections_schema::schema_version(
+        connection,
+        &crate::collections_schema::database_path(root),
+    )?;
+    if version != crate::collections_schema::VERSION_2 {
+        let _ = tables;
+        return Err(CollectionError::MigrationRequired { version });
+    }
+    Ok(())
+}
+
 fn mutate_register(
     root: &Path,
     request: CollectionRequest<'_>,
@@ -1528,6 +1773,8 @@ fn mutate_register(
     let mut transaction = TransactionGuard::begin(&connection, &root)
         .map_err(|error| mutation_context(error, error_context.clone()))?;
     let result = (|| -> Result<CollectionMutationReport, CollectionError> {
+        let tables = crate::collections_schema::tables_for(&connection, &root)?;
+        require_v2(&connection, &root, tables)?;
         let prior_revision = crate::collections_schema::local_revision(&connection, &root)?;
         error_context.prior_local_revision = Some(prior_revision);
         let mut changed = false;
@@ -1546,7 +1793,7 @@ fn mutate_register(
             )
             .map_err(|error| CollectionError::InvalidRequest(error.to_string()))?;
             let old: Option<(String, Vec<u8>, Vec<u8>)> = connection.query_row(
-            "SELECT payload_kind,seal_json,descriptor_json FROM registrations WHERE pack_id=?1 AND release_sha256=?2",
+            &format!("SELECT payload_kind,seal_json,descriptor_json FROM {} WHERE pack_id=?1 AND release_sha256=?2", tables.registrations),
             params![pack.pack_id.as_str(), digest],
             |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)),
         ).optional().map_err(|error| db_error(&root, error))?;
@@ -1561,7 +1808,7 @@ fn mutate_register(
                         });
                     }
                     let inserted = connection.execute(
-                    "INSERT OR IGNORE INTO registration_locations(pack_id,release_sha256,input_paths_json) VALUES(?1,?2,?3)",
+                    &format!("INSERT OR IGNORE INTO {}(pack_id,release_sha256,input_paths_json) VALUES(?1,?2,?3)", tables.registration_locations),
                     params![pack.pack_id.as_str(), digest, locations],
                 ).map_err(|error| db_error(&root, error))?;
                     changed |= inserted > 0;
@@ -1569,6 +1816,7 @@ fn mutate_register(
                 None => {
                     crate::collections_schema::insert_registration(
                         &connection,
+                        tables,
                         crate::collections_schema::RegistrationInsert {
                             pack_id: pack.pack_id.as_str(),
                             release_sha256: &digest,
@@ -1599,11 +1847,11 @@ fn mutate_register(
                     "catalogue local_revision exceeds SQLite INTEGER range".into(),
                 )
             })?;
-            crate::collections_schema::update_revision(&connection, revision)
+            crate::collections_schema::update_revision(&connection, tables, revision)
                 .map_err(|error| db_error(&root, error))?;
             let id = attempt_id(&root, "register", revision);
             error_context.attempt_id = Some(id.clone());
-            connection.execute("INSERT INTO attempts(attempt_id,operation,status,prior_revision,detail) VALUES(?1,'register','committed',?2,'metadata-only registration')", params![id, prior_sql])
+            connection.execute(&format!("INSERT INTO {}(attempt_id,operation,status,prior_revision,detail) VALUES(?1,'register','committed',?2,'metadata-only registration')", tables.attempts), params![id, prior_sql])
             .map_err(|error| db_error(&root, error))?;
             completed_attempt = Some(id);
         }
@@ -1638,414 +1886,6 @@ fn mutate_register(
                     rollback_source: Some(Box::new(rollback)),
                 },
                 error_context,
-            )),
-        },
-    }
-}
-
-fn mutate_install(
-    root: &Path,
-    request: CollectionRequest<'_>,
-) -> Result<CollectionMutationReport, CollectionError> {
-    validate_selection(&request.inputs, &request.selection)?;
-    let cwd = operation_cwd(root, &request)?;
-    let root = absolute_path_with_cwd(root, cwd.as_deref())?;
-    let input_ids = request.inputs.iter().map(input_pack_id).collect::<Vec<_>>();
-    let selected_ids = selected_pack_ids(&request.inputs, &request.selection);
-    let normalized = normalize_selected(request, cwd.as_deref())?;
-    let mut error_context = MutationErrorContext {
-        inputs: input_dispositions(&input_ids, &selected_ids, &normalized),
-        ..MutationErrorContext::default()
-    };
-    let (connection, newly_created) =
-        writer_connection(&root).map_err(|error| mutation_context(error, error_context.clone()))?;
-    if newly_created {
-        create_private_dir(&root.join("generations"))
-            .map_err(|error| mutation_context(error, error_context.clone()))?;
-        crate::collections_schema::sync_dir(&root)
-            .map_err(|error| mutation_context(error, error_context.clone()))?;
-    }
-    let mut transaction = TransactionGuard::begin(&connection, &root)
-        .map_err(|error| mutation_context(error, error_context.clone()))?;
-    let result = (|| -> Result<CollectionMutationReport, CollectionError> {
-        let prior_revision = crate::collections_schema::local_revision(&connection, &root)?;
-        error_context.prior_local_revision = Some(prior_revision);
-        let revision = prior_revision.checked_add(1).ok_or_else(|| {
-            CollectionError::UnsupportedVersion("catalogue local_revision overflowed u64".into())
-        })?;
-        let prior_sql = i64::try_from(prior_revision).map_err(|_| {
-            CollectionError::UnsupportedVersion(
-                "catalogue local_revision exceeds SQLite INTEGER range".into(),
-            )
-        })?;
-        let revision_sql = i64::try_from(revision).map_err(|_| {
-            CollectionError::UnsupportedVersion(
-                "next local_revision exceeds SQLite INTEGER range".into(),
-            )
-        })?;
-        let previous_generation = current_members(&connection, &root)?;
-        error_context.observed_generation =
-            read_generation(&connection, &root)?.map(|item| item.generation_id);
-        let mut members = previous_generation.clone();
-        let mut new_packs = std::collections::BTreeMap::new();
-        let mut dispositions = Vec::new();
-        for pack in normalized {
-            let digest = release_sha256(&pack.release);
-            if let Some(existing) = members
-                .iter()
-                .find(|member| member.pack_id == pack.pack_id.as_str())
-            {
-                if existing.release_sha256 != digest {
-                    return Err(CollectionError::UpdateRequired(pack.pack_id));
-                }
-                if existing.payload_kind != payload_kind_name(pack.seal.payload_kind) {
-                    return Err(CollectionError::IdentityConflict {
-                        category: "payload kind".into(),
-                        key: format!("{}:{digest}", pack.pack_id),
-                    });
-                }
-                let existing_release = fs::read(root.join(&existing.release_path))
-                    .map_err(|error| artifact_error(root.join(&existing.release_path), error))?;
-                let existing_seal = fs::read(root.join(&existing.seal_path))
-                    .map_err(|error| artifact_error(root.join(&existing.seal_path), error))?;
-                let old_seal =
-                    PackSeal::from_json_bytes(&existing_seal).map_err(verification_error)?;
-                if existing_release != pack.release || old_seal != pack.seal {
-                    return Err(CollectionError::IdentityConflict {
-                        category: "installed release/seal".into(),
-                        key: format!("{}:{digest}", pack.pack_id),
-                    });
-                }
-                dispositions.push(disposition(&pack, "validated"));
-            } else {
-                new_packs.insert(pack.pack_id.as_str().to_owned(), pack);
-            }
-        }
-        if new_packs.is_empty() && !members.is_empty() {
-            let generation = read_generation(&connection, &root)?;
-            let store_path = generation
-                .as_ref()
-                .map(|item| item.store_path.clone())
-                .ok_or_else(|| {
-                    CollectionError::VerificationFailed("installed heads have no generation".into())
-                })?;
-            let mut dictionaries = Vec::new();
-            for member in &members {
-                let release_path = root.join(&member.release_path);
-                let seal_path = root.join(&member.seal_path);
-                let release = fs::read(&release_path)
-                    .map_err(|error| artifact_error(release_path.clone(), error))?;
-                let seal = fs::read(&seal_path)
-                    .map_err(|error| artifact_error(seal_path.clone(), error))?;
-                dictionaries.push(
-                    load_sealed_release(parse_pack_id(&member.pack_id)?, &release, &seal)
-                        .map_err(verification_error)?,
-                );
-            }
-            let composed =
-                vlajmaji_lexicon::compose_dictionaries(dictionaries).map_err(composition_error)?;
-            let canonical = composed.to_json_bytes().map_err(verification_error)?;
-            if generation
-                .as_ref()
-                .is_none_or(|item| release_sha256(&canonical) != item.canonical_sha256)
-            {
-                return Err(CollectionError::VerificationFailed(
-                    "existing generation canonical digest changed".into(),
-                ));
-            }
-            let opened = crate::DictionaryStore::open(&store_path).map_err(verification_error)?;
-            if opened.recorded_state_sha256()
-                != generation
-                    .as_ref()
-                    .map_or("", |item| item.canonical_sha256.as_str())
-            {
-                return Err(CollectionError::VerificationFailed(
-                    "existing store header digest differs from catalogue canonical digest".into(),
-                ));
-            }
-            drop(opened);
-            let verification = crate::DictionaryStoreVerification::verify(
-                &store_path,
-                crate::DictionaryStoreVerificationCheck::All,
-            )
-            .map_err(verification_error)?;
-            if !verification.ok {
-                return Err(CollectionError::VerificationFailed(
-                    "existing generation failed All verification".into(),
-                ));
-            }
-            return Ok(CollectionMutationReport {
-                version: 1,
-                ok: true,
-                operation: "install".into(),
-                outcome: "idempotent".into(),
-                local_revision: prior_revision,
-                policy_state: "unconfigured".into(),
-                attempt_id: None,
-                generation,
-                inputs: error_context.inputs.clone(),
-            });
-        }
-
-        let catalogue_id = crate::collections_schema::catalogue_identity(&connection)
-            .map_err(|error| db_error(&root, error))?;
-        let (attempt, generation_id, stage) =
-            allocate_stage(&root, revision, &catalogue_id, attempt_id)?;
-        error_context.attempt_id = Some(attempt.clone());
-        error_context.proposed_generation = Some(generation_id.clone());
-        #[cfg(test)]
-        if TEST_INTERRUPT_AFTER_STAGE_ALLOCATION.with(|interrupt| interrupt.replace(false)) {
-            return Err(CollectionError::InvalidRequest(
-                "injected interruption after stage allocation".into(),
-            ));
-        }
-        let relative_stage = PathBuf::from("generations").join(&attempt);
-        write_new_file(
-            &stage.join("attempt.json"),
-            &serde_json::to_vec(&StageMarker {
-                version: 1,
-                attempt_id: attempt.clone(),
-                operation: "install".into(),
-            })
-            .map_err(|error| CollectionError::InvalidRequest(error.to_string()))?,
-        )?;
-        create_private_dir(&stage.join("inputs"))?;
-        for (pack_id, pack) in &new_packs {
-            let input_dir = stage.join("inputs").join(pack_id);
-            create_private_dir(&input_dir)?;
-            write_new_file(&input_dir.join("release.json"), &pack.release)?;
-            write_new_file(&input_dir.join("seal.json"), &pack.seal_bytes)?;
-            if let Some(report) = &pack.report {
-                let bytes = serde_json::to_vec(report).map_err(|error| {
-                    CollectionError::ArtifactIoSource {
-                        path: Some(input_dir.join("report.json")),
-                        source: Box::new(error),
-                    }
-                })?;
-                write_new_file(&input_dir.join("report.json"), &bytes)?;
-            }
-            crate::collections_schema::sync_dir(&input_dir)?;
-            let prefix = relative_stage.join("inputs").join(pack_id);
-            members.push(InstalledMember {
-                pack_id: pack_id.clone(),
-                release_sha256: release_sha256(&pack.release),
-                payload_kind: payload_kind_name(pack.seal.payload_kind).into(),
-                release_path: prefix.join("release.json").to_string_lossy().into_owned(),
-                seal_path: prefix.join("seal.json").to_string_lossy().into_owned(),
-                report_path: pack
-                    .report
-                    .as_ref()
-                    .map(|_| prefix.join("report.json").to_string_lossy().into_owned()),
-            });
-            let descriptor = descriptor_bytes(pack)?;
-            let summary = registration_summary_bytes(&descriptor)?;
-            let locations = serde_json::to_vec(
-                &pack
-                    .input_paths
-                    .iter()
-                    .map(|path| native_path_report(path))
-                    .collect::<Vec<_>>(),
-            )
-            .map_err(|error| CollectionError::InvalidRequest(error.to_string()))?;
-            let existing: Option<(String, Vec<u8>, Vec<u8>)> = connection.query_row(
-            "SELECT payload_kind,seal_json,descriptor_json FROM registrations WHERE pack_id=?1 AND release_sha256=?2",
-            params![pack_id, release_sha256(&pack.release)],
-            |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)),
-        ).optional().map_err(|error| db_error(&root, error))?;
-            match existing {
-                Some((kind, seal, old_descriptor))
-                    if kind == payload_kind_name(pack.seal.payload_kind)
-                        && PackSeal::from_json_bytes(&seal).ok().as_ref() == Some(&pack.seal)
-                        && old_descriptor == descriptor =>
-                {
-                    connection.execute("INSERT OR IGNORE INTO registration_locations(pack_id,release_sha256,input_paths_json) VALUES(?1,?2,?3)", params![pack_id, release_sha256(&pack.release), locations]).map_err(|error| db_error(&root, error))?;
-                }
-                Some(_) => {
-                    return Err(CollectionError::IdentityConflict {
-                        category: "registration".into(),
-                        key: format!("{pack_id}:{}", release_sha256(&pack.release)),
-                    });
-                }
-                None => crate::collections_schema::insert_registration(
-                    &connection,
-                    crate::collections_schema::RegistrationInsert {
-                        pack_id,
-                        release_sha256: &release_sha256(&pack.release),
-                        payload_kind: payload_kind_name(pack.seal.payload_kind),
-                        seal_json: &pack.seal_bytes,
-                        descriptor_json: &descriptor,
-                        summary_json: &summary,
-                        input_paths_json: &locations,
-                    },
-                )
-                .map_err(|error| db_error(&root, error))?,
-            };
-        }
-        members.sort_by_key(|member| pack_order(&member.pack_id));
-        let new_dispositions = new_packs
-            .values()
-            .map(|pack| disposition(pack, "installed"))
-            .collect::<Vec<_>>();
-        // Inputs have been sealed and copied into the owned stage. Release the
-        // adapter's typed models before loading the complete composing set.
-        drop(new_packs);
-        let mut dictionaries = Vec::new();
-        for member in &members {
-            let release_path = root.join(&member.release_path);
-            let seal_path = root.join(&member.seal_path);
-            let release = fs::read(&release_path)
-                .map_err(|error| artifact_error(release_path.clone(), error))?;
-            let seal =
-                fs::read(&seal_path).map_err(|error| artifact_error(seal_path.clone(), error))?;
-            dictionaries.push(
-                load_sealed_release(parse_pack_id(&member.pack_id)?, &release, &seal)
-                    .map_err(verification_error)?,
-            );
-        }
-        let composed =
-            vlajmaji_lexicon::compose_dictionaries(dictionaries).map_err(composition_error)?;
-        let canonical =
-            composed
-                .to_json_bytes()
-                .map_err(|error| CollectionError::InputInvalid {
-                    pack: None,
-                    detail: error.to_string(),
-                })?;
-        let canonical_sha256 = release_sha256(&canonical);
-        let content_id = content_identity(&members)?;
-        let store_path = stage.join("store");
-        let created_store =
-            crate::DictionaryStore::create(&store_path, &composed).map_err(verification_error)?;
-        if created_store.recorded_state_sha256() != canonical_sha256 {
-            drop(created_store);
-            return Err(CollectionError::VerificationFailed(
-                "created Unified store digest differs from composed release".into(),
-            ));
-        }
-        drop(created_store);
-        set_private_file(&store_path.join("dictionary.sqlite3"))?;
-        set_private_directory(&store_path)?;
-        crate::collections_schema::sync_file(&store_path.join("dictionary.sqlite3"))?;
-        crate::collections_schema::sync_dir(&store_path)?;
-        let verification = crate::DictionaryStoreVerification::verify(
-            &store_path,
-            crate::DictionaryStoreVerificationCheck::All,
-        )
-        .map_err(verification_error)?;
-        if !verification.ok {
-            return Err(CollectionError::VerificationFailed(
-                "new Unified store did not pass All verification".into(),
-            ));
-        }
-        write_new_file(
-            &stage.join("verified.json"),
-            &serde_json::to_vec(&verification).map_err(|error| {
-                CollectionError::ArtifactIoSource {
-                    path: Some(stage.join("verified.json")),
-                    source: Box::new(error),
-                }
-            })?,
-        )?;
-        crate::collections_schema::sync_dir(&stage.join("inputs"))?;
-        crate::collections_schema::sync_dir(&stage)?;
-        let members_bytes =
-            serde_json::to_vec(&members).map_err(|error| CollectionError::ArtifactIoSource {
-                path: None,
-                source: Box::new(error),
-            })?;
-        connection.execute(
-        "INSERT INTO generations(generation_id,content_id,canonical_sha256,store_path,members_json,local_revision) VALUES(?1,?2,?3,?4,?5,?6)",
-        params![generation_id, content_id, canonical_sha256, native_path_bytes(&store_path), members_bytes, revision_sql],
-    ).map_err(|error| db_error(&root, error))?;
-        connection
-            .execute("DELETE FROM installed_heads", [])
-            .map_err(|error| db_error(&root, error))?;
-        for member in &members {
-            connection.execute("INSERT INTO installed_heads(pack_id,release_sha256,payload_kind,generation_id) VALUES(?1,?2,?3,?4)", params![member.pack_id, member.release_sha256, member.payload_kind, generation_id])
-            .map_err(|error| db_error(&root, error))?;
-        }
-        crate::collections_schema::update_revision(&connection, revision)
-            .map_err(|error| db_error(&root, error))?;
-        connection.execute("INSERT INTO attempts(attempt_id,operation,status,prior_revision,detail) VALUES(?1,'install','committed',?2,'Unified store passed All verification')", params![attempt, prior_sql])
-        .map_err(|error| db_error(&root, error))?;
-        // Make all owned directory entries durable before the SQLite commit. The
-        // catalogue commit itself publishes the already-complete stage.
-        crate::collections_schema::sync_dir(&root.join("generations"))?;
-        let generation = Some(CollectionGeneration {
-            generation_id: generation_id.clone(),
-            content_id: content_id.clone(),
-            canonical_sha256: canonical_sha256.clone(),
-            path: native_path_report(&store_path),
-            store_path,
-            members: members
-                .iter()
-                .map(|member| CollectionGenerationMember {
-                    pack_id: member.pack_id.clone(),
-                    release_sha256: member.release_sha256.clone(),
-                    payload_kind: member.payload_kind.clone(),
-                })
-                .collect(),
-        });
-        let completed_by_id = new_dispositions
-            .iter()
-            .chain(&dispositions)
-            .map(|input| (input.pack_id.as_str(), input))
-            .collect::<std::collections::BTreeMap<_, _>>();
-        let inputs = error_context
-            .inputs
-            .iter()
-            .map(|input| {
-                completed_by_id.get(input.pack_id.as_str()).map_or_else(
-                    || input.clone(),
-                    |completed| CollectionInputDisposition {
-                        disposition: completed.disposition.clone(),
-                        ..input.clone()
-                    },
-                )
-            })
-            .collect();
-        Ok(CollectionMutationReport {
-            version: 1,
-            ok: true,
-            operation: "install".into(),
-            outcome: "installed".into(),
-            local_revision: revision,
-            policy_state: "unconfigured".into(),
-            attempt_id: Some(attempt),
-            generation,
-            inputs,
-        })
-    })();
-    match result {
-        Ok(report) if report.outcome == "idempotent" => match transaction.rollback() {
-            Ok(()) => Ok(report),
-            Err(error) => Err(mutation_context(error, error_context)),
-        },
-        Ok(report) => match transaction.commit() {
-            Ok(()) => Ok(report),
-            Err(error) => {
-                if matches!(
-                    error,
-                    CollectionError::Indeterminate(_)
-                        | CollectionError::IndeterminateSources { .. }
-                ) {
-                    error_context.observed_generation = None;
-                }
-                Err(mutation_context(error, error_context))
-            }
-        },
-        Err(error) => match transaction.rollback() {
-            Ok(()) => Err(mutation_context(error, error_context)),
-            Err(rollback) => Err(mutation_context(
-                CollectionError::IndeterminateSources {
-                    detail: "operation failed and rollback could not be confirmed".into(),
-                    source: Some(Box::new(error)),
-                    rollback_source: Some(Box::new(rollback)),
-                },
-                MutationErrorContext {
-                    observed_generation: None,
-                    ..error_context
-                },
             )),
         },
     }
@@ -2299,24 +2139,62 @@ fn current_members(
     connection: &Connection,
     root: &Path,
 ) -> Result<Vec<InstalledMember>, CollectionError> {
-    let bytes: Option<Vec<u8>> = connection
+    let tables = crate::collections_schema::tables_for(
+        connection,
+        &crate::collections_schema::database_path(root),
+    )?;
+    let Some(generation_id) = selected_generation_id(connection, root, tables)? else {
+        return Ok(Vec::new());
+    };
+    let bytes: Vec<u8> = connection
         .query_row(
-            "SELECT members_json FROM generations ORDER BY local_revision DESC LIMIT 1",
-            [],
+            &format!(
+                "SELECT members_json FROM {} WHERE generation_id=?1",
+                tables.generations
+            ),
+            [generation_id],
             |row| row.get(0),
         )
-        .optional()
         .map_err(|error| db_error(root, error))?;
-    bytes
-        .map(|bytes| {
-            serde_json::from_slice(&bytes).map_err(|error| {
-                CollectionError::UnsupportedVersion(format!(
-                    "generation member list is malformed: {error}"
-                ))
-            })
-        })
-        .transpose()
-        .map(Option::unwrap_or_default)
+    serde_json::from_slice(&bytes).map_err(|error| {
+        CollectionError::UnsupportedVersion(format!("generation member list is malformed: {error}"))
+    })
+}
+
+fn selected_generation_id(
+    connection: &Connection,
+    root: &Path,
+    tables: crate::collections_schema::CatalogueTables,
+) -> Result<Option<String>, CollectionError> {
+    if crate::collections_schema::schema_version(
+        connection,
+        &crate::collections_schema::database_path(root),
+    )? == crate::collections_schema::VERSION_2
+    {
+        let active: String = connection
+            .query_row(
+                &format!(
+                    "SELECT value FROM {} WHERE key='active_generation_id'",
+                    tables.meta
+                ),
+                [],
+                |row| row.get(0),
+            )
+            .map_err(|error| db_error(root, error))?;
+        Ok((!active.is_empty()).then_some(active))
+    } else {
+        connection
+            .query_row(
+                &format!(
+                    "SELECT generation_id FROM {} ORDER BY local_revision DESC LIMIT 1",
+                    tables.generations
+                ),
+                [],
+                |row| row.get(0),
+            )
+            .optional()
+            .map_err(|error| db_error(root, error))
+    }
 }
 
 fn orphan_stage_attempts(
@@ -2324,8 +2202,15 @@ fn orphan_stage_attempts(
     connection: &Connection,
 ) -> Result<Vec<String>, CollectionError> {
     let committed = {
+        let tables = crate::collections_schema::tables_for(
+            connection,
+            &crate::collections_schema::database_path(root),
+        )?;
         let mut statement = connection
-            .prepare("SELECT attempt_id FROM attempts WHERE status='committed'")
+            .prepare(&format!(
+                "SELECT attempt_id FROM {} WHERE status='committed'",
+                tables.attempts
+            ))
             .map_err(|error| db_error(root, error))?;
         statement
             .query_map([], |row| row.get::<_, String>(0))
@@ -2371,7 +2256,15 @@ fn orphan_stage_attempts(
         let bytes =
             fs::read(&marker_path).map_err(|error| artifact_error(marker_path.clone(), error))?;
         let marker: StageMarker = match serde_json::from_slice::<StageMarker>(&bytes) {
-            Ok(marker) if marker.version == 1 && marker.operation == "install" => marker,
+            Ok(marker)
+                if marker.version == 1
+                    && matches!(
+                        marker.operation.as_str(),
+                        "install" | "update" | "rebuild" | "remove" | "reinstall"
+                    ) =>
+            {
+                marker
+            }
             _ => {
                 orphaned.push(format!(
                     "unreadable:{}",
@@ -2432,12 +2325,28 @@ fn read_generation(
     connection: &Connection,
     root: &Path,
 ) -> Result<Option<CollectionGeneration>, CollectionError> {
+    let tables = crate::collections_schema::tables_for(
+        connection,
+        &crate::collections_schema::database_path(root),
+    )?;
     type Row = (String, String, String, Vec<u8>, Vec<u8>);
-    let row: Option<Row> = connection.query_row(
-        "SELECT generation_id,content_id,canonical_sha256,store_path,members_json FROM generations ORDER BY local_revision DESC LIMIT 1",
-        [],
-        |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?, row.get(4)?)),
-    ).optional().map_err(|error| db_error(root, error))?;
+    let selected_generation = selected_generation_id(connection, root, tables)?;
+    let selected_pointer = selected_generation.is_some();
+    let select = if let Some(generation_id) = selected_generation {
+        connection.query_row(
+            &format!("SELECT generation_id,content_id,canonical_sha256,store_path,members_json FROM {} WHERE generation_id=?1", tables.generations),
+            [generation_id],
+            |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?, row.get(4)?)),
+        ).optional().map_err(|error| db_error(root, error))?
+    } else {
+        None
+    };
+    if selected_pointer && select.is_none() {
+        return Err(CollectionError::UnsupportedVersion(
+            "active generation pointer names no retained generation".into(),
+        ));
+    }
+    let row: Option<Row> = select;
     row.map(
         |(generation_id, content_id, canonical_sha256, path_bytes, members_bytes)| {
             let store_path = native_path_from_bytes(&path_bytes)?;
@@ -2953,6 +2862,8 @@ fn artifact_error(path: PathBuf, error: impl Error + Send + Sync + 'static) -> C
 pub struct CollectionListReport {
     /// Report schema version.
     pub version: u32,
+    /// Physical catalogue schema version (an additive field in list v1).
+    pub catalogue_schema_version: u32,
     /// Catalogue-local revision.
     pub local_revision: u64,
     /// Current installed generation, if any.
@@ -2970,6 +2881,8 @@ pub struct CollectionInspection {
     pub version: u32,
     /// Stable pack ID.
     pub pack_id: String,
+    /// Explicit active/removal state for this registered pack.
+    pub installation_state: CollectionInstallationState,
     /// Current installed release digest, if installed.
     pub installed_release_sha256: Option<String>,
     /// Immutable generations that contained this pack, newest first.
@@ -2984,6 +2897,81 @@ pub struct CollectionInspection {
     pub derived_store_minimum: Option<CollectionDerivedStoreMinimum>,
     /// User selection is not configured by S02.
     pub policy_state: String,
+}
+
+/// Current logical state of one registered pack.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum CollectionInstallationState {
+    /// The pack is a member of the active generation.
+    Installed,
+    /// The pack has a registration but has never been installed or removed.
+    RegisteredOnly,
+    /// A committed remove event explicitly made the pack inactive.
+    Removed,
+}
+
+/// Small retained attempt observation emitted by explicit reconciliation.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct CollectionReconciliationAttempt {
+    /// Stable attempt identity.
+    pub attempt_id: String,
+    /// Operation token.
+    pub operation: String,
+    /// Stored attempt status.
+    pub status: String,
+    /// Previous catalogue revision.
+    pub prior_revision: u64,
+    /// Bounded operation detail.
+    pub detail: String,
+}
+
+/// Physical SQLite journal presence observation; it is not a hot-journal verdict.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct CollectionJournalObservation {
+    /// Whether the journal path exists.
+    pub present: bool,
+    /// Journal file length when present and readable.
+    pub byte_length: Option<u64>,
+}
+
+/// Versioned observation returned by explicit physical recovery inspection.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct CollectionReconciliationReport {
+    /// Report schema version.
+    pub version: u32,
+    /// Whether the observation completed.
+    pub ok: bool,
+    /// Operation token.
+    pub operation: String,
+    /// Exact native catalogue root.
+    pub root_path: NativePathReport,
+    /// Current physical catalogue schema.
+    pub catalogue_schema_version: u32,
+    /// Current logical catalogue revision.
+    pub local_revision: u64,
+    /// Explicit active generation, without historical fallback.
+    pub active_generation: Option<String>,
+    /// Number of retained physical generation rows.
+    pub retained_generation_count: usize,
+    /// Small attempt summaries.
+    pub attempts: Vec<CollectionReconciliationAttempt>,
+    /// Controlled, uncommitted or unmarked stage observations.
+    pub staged_attempts: Vec<String>,
+    /// Journal observation before the read transaction.
+    pub journal_before: CollectionJournalObservation,
+    /// Journal observation after the read transaction is rolled back.
+    pub journal_after: CollectionJournalObservation,
+    /// Whether the explicit writable open completed SQLite recovery handling.
+    pub sqlite_recovery: String,
+    /// Deliberately limited verification scope.
+    pub verification_scope: String,
+    /// Minimum header observation for the active store, when one exists.
+    pub active_store_minimum: Option<CollectionDerivedStoreMinimum>,
+    /// Whether attention is required for an observed anomaly.
+    pub attention_required: bool,
+    /// Whether schema1 still requires explicit migration for logical mutation.
+    pub migration_required_for_mutation: bool,
 }
 
 /// One retained installation generation containing a pack.
@@ -3270,6 +3258,31 @@ pub struct CollectionMutationReport {
     pub generation: Option<CollectionGeneration>,
     /// Per-input dispositions.
     pub inputs: Vec<CollectionInputDisposition>,
+}
+
+/// Result of an explicit collection-catalogue schema migration.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct CollectionCatalogueMigrationReport {
+    /// Report schema version.
+    pub version: u32,
+    /// True only for a completed operation.
+    pub ok: bool,
+    /// Operation name.
+    pub operation: String,
+    /// `migrated` or `idempotent`.
+    pub outcome: String,
+    /// Native catalogue root.
+    pub root_path: NativePathReport,
+    /// Schema observed before the operation.
+    pub prior_schema_version: u32,
+    /// Schema after the operation.
+    pub schema_version: u32,
+    /// Revision observed before the operation.
+    pub prior_local_revision: u64,
+    /// Revision after the operation.
+    pub local_revision: u64,
+    /// Active generation identity, or none for a registered-only catalogue.
+    pub active_generation: Option<String>,
 }
 
 /// Encodes a native path without using it as a lossy routing string.

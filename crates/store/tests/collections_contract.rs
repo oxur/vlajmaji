@@ -75,7 +75,7 @@ fn test_install_revision_overflow_is_known_precommit_failure() {
     let connection = Connection::open(root.join("catalogue.sqlite3")).unwrap();
     connection
         .execute(
-            "UPDATE catalogue_meta SET value=?1 WHERE key='local_revision'",
+            "UPDATE catalogue_meta_v2 SET value=?1 WHERE key='local_revision'",
             [u64::MAX.to_string()],
         )
         .unwrap();
@@ -1095,7 +1095,7 @@ fn test_list_uses_compact_registration_summary_without_decoding_descriptor() {
 
     let connection = Connection::open(root.join("catalogue.sqlite3")).unwrap();
     connection.execute(
-        "UPDATE registrations SET descriptor_json=x'00' WHERE pack_id='llg' AND release_sha256=?1",
+        "UPDATE registrations_v2 SET descriptor_json=x'00' WHERE pack_id='llg' AND release_sha256=?1",
         [digest],
     ).unwrap();
     drop(connection);
@@ -1275,7 +1275,7 @@ fn test_catalogue_unsupported_schema_version_is_read_only() {
     let connection = Connection::open(&db).unwrap();
     connection
         .execute(
-            "UPDATE catalogue_meta SET value='999' WHERE key='schema_version'",
+            "UPDATE catalogue_meta_v2 SET value='999' WHERE key='schema_version'",
             [],
         )
         .unwrap();
