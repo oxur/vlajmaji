@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a04-s04-cdc/full-runner-tiny-journey02.py", line 29, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/tmp/vlajmaji-p01-a04-s04-cdc/full-runner-tiny-journey02.py", line 27, in main
+    r.execute(cfg,tiny=True)
+  File "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational-runner03.py", line 202, in execute
+    g2 = publication('G2-rebuild',['collections','rebuild',root,'--expected-revision','1'],2)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational-runner03.py", line 157, in publication
+    g=check.mutation(report,op,outcome,revision,kept if subset else IDS,digests,kind,dispositions)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/vlajmaji-p01-a04-s04-cdc/full-receipt-checker01.py", line 46, in mutation
+    assert len(v['inputs'])==len(dispositions)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

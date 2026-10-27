@@ -1,0 +1,43 @@
+   Compiling typenum v1.20.1
+   Compiling serde_core v1.0.229
+   Compiling libc v0.2.191
+   Compiling winnow v1.0.4
+   Compiling syn v3.0.9
+   Compiling zmij v1.0.23
+   Compiling itoa v1.0.18
+   Compiling winnow v0.7.15
+   Compiling cfg-if v1.0.5
+   Compiling memchr v2.8.3
+   Compiling toml_writer v1.1.2+spec-1.1.0
+   Compiling libsqlite3-sys v0.38.2
+   Compiling smallvec v1.16.3
+   Compiling toml_parser v1.1.5+spec-1.1.0
+   Compiling fallible-streaming-iterator v0.1.9
+   Compiling bitflags v2.13.2
+   Compiling fallible-iterator v0.3.0
+   Compiling generic-array v0.14.7
+   Compiling cpufeatures v0.2.17
+   Compiling rusqlite v0.40.2
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling digest v0.10.7
+   Compiling sha2 v0.10.9
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling serde_spanned v1.1.1
+   Compiling toml_datetime v0.7.5+spec-1.1.0
+   Compiling serde_json v1.0.151
+   Compiling toml v0.9.12+spec-1.1.0
+   Compiling thiserror v2.0.21
+   Compiling serde v1.0.229
+   Compiling confyg v0.3.0
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon)
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 12.35s
+     Running tests/collections_maintenance_contract.rs (target/debug/deps/collections_maintenance_contract-b6e2b281a196a5f9)
+
+running 1 test
+test test_reconcile_committed_stage_markers_and_unknown_operation ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 7 filtered out; finished in 0.28s
+

@@ -1,0 +1,52 @@
+{
+  "scope": "independent source boundary/raw-receipt reconciliation; not repeated runtime",
+  "head": "e4e8bfc55c5071d9144fa72e7360525efa43fd56",
+  "parent": "a7b9baf67a6eea784cb90a2f388bf5e2537cbc72",
+  "tree": "a5e9a73a82ac7ecfcffa516fa138d07e7ee6f2d5",
+  "paths": [
+    "crates/store/tests/collections_maintenance_contract.rs"
+  ],
+  "trailers": [
+    "Co-authored-by: Codex <noreply@openai.com>",
+    "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+  ],
+  "current_default_summary_rows": 51,
+  "current_default_counts": [
+    277,
+    0,
+    1
+  ],
+  "receipts": {
+    "format02": {
+      "path": "/tmp/vlajmaji-p01-a04-s04-i04-format02.log",
+      "bytes": 170,
+      "sha256": "baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4"
+    },
+    "lint01": {
+      "path": "/tmp/vlajmaji-p01-a04-s04-i04-lint01.log",
+      "bytes": 1478,
+      "sha256": "4a0d182e443b55e5708d2cb1730e4a883647d4526a3321741bc530c060fc5d0c"
+    },
+    "lint02": {
+      "path": "/tmp/vlajmaji-p01-a04-s04-i04-lint02.log",
+      "bytes": 355,
+      "sha256": "8b052f86ff3c7c63a0f09c885866240dbce22b6ca539b1a70f534b3dc566e54d"
+    },
+    "focused01": {
+      "path": "/tmp/vlajmaji-p01-a04-s04-i04-focused01.log",
+      "bytes": 1696,
+      "sha256": "b198652d37750d6a915e4796460a2a5a09acb7874d56a980eb65ffe661e1197e"
+    },
+    "check01": {
+      "path": "/tmp/vlajmaji-p01-a04-s04-i04-check01.log",
+      "bytes": 39397,
+      "sha256": "f39ac5896940f7a85254676f941dfe5110c5e97db94ce2f0cae8d160e964b881"
+    },
+    "store-list01": {
+      "path": "/tmp/vlajmaji-p01-a04-s04-i04-store-list01.log",
+      "bytes": 782,
+      "sha256": "37e77f6631c3e7ffd129e7287fad0b6a249ee017f6d27f87ea16331551a7c19c"
+    }
+  },
+  "retention": "a7 runtime/39 no-default/279 allfeatures applicable to byte-identical production; revised test not claimed allfeatures/Linux executed"
+}

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a04-s04-cdc/full-runner-tiny-journey03.py", line 29, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/tmp/vlajmaji-p01-a04-s04-cdc/full-runner-tiny-journey03.py", line 27, in main
+    r.execute(cfg,tiny=True)
+  File "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational-runner04.py", line 229, in execute
+    check.managed_error(child_error(out/'profile4-no-default.stderr'),'profile_default_missing',config)
+  File "/tmp/vlajmaji-p01-a04-s04-cdc/full-receipt-checker01.py", line 74, in managed_error
+    assert e['version']==1 and e['ok'] is False and e['operation']==operation
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

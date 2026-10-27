@@ -1,0 +1,69 @@
+{
+  "stages": [
+    "041117d36f6314fa41f7398c6f8156ed",
+    "0ba28ce5822b5d08e5dd2c5637519719",
+    "d718db3b3041147db5af60dd69ac920f",
+    "deb1488b5538fa6d2034d626b9d5e6b9"
+  ],
+  "reconciled": {
+    "active_generation": "f9d7c238e7e26df1a3d1749e58e7c19b-d718db3b3041147db5af60dd69ac920f",
+    "active_store_minimum": {
+      "diagnostic": null,
+      "status": "supported"
+    },
+    "attempts": [
+      {
+        "attempt_id": "041117d36f6314fa41f7398c6f8156ed",
+        "detail": "Unified store passed All verification",
+        "operation": "install",
+        "prior_revision": 0,
+        "status": "committed"
+      },
+      {
+        "attempt_id": "0ba28ce5822b5d08e5dd2c5637519719",
+        "detail": "Unified store passed All verification",
+        "operation": "rebuild",
+        "prior_revision": 1,
+        "status": "committed"
+      },
+      {
+        "attempt_id": "deb1488b5538fa6d2034d626b9d5e6b9",
+        "detail": "{\"version\":1,\"operation\":\"remove\",\"local_revision\":3,\"packs\":[{\"pack_id\":\"llg\",\"prior_state\":\"installed\",\"release_sha256\":\"231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146\"}],\"generation_id\":\"f9d7c238e7e26df1a3d1749e58e7c19b-deb1488b5538fa6d2034d626b9d5e6b9\"}",
+        "operation": "remove",
+        "prior_revision": 2,
+        "status": "committed"
+      },
+      {
+        "attempt_id": "d718db3b3041147db5af60dd69ac920f",
+        "detail": "{\"version\":1,\"operation\":\"reinstall\",\"local_revision\":4,\"packs\":[{\"pack_id\":\"llg\",\"prior_state\":\"removed\",\"release_sha256\":\"231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146\"}],\"generation_id\":\"f9d7c238e7e26df1a3d1749e58e7c19b-d718db3b3041147db5af60dd69ac920f\"}",
+        "operation": "reinstall",
+        "prior_revision": 3,
+        "status": "committed"
+      }
+    ],
+    "attention_required": false,
+    "catalogue_schema_version": 2,
+    "journal_after": {
+      "byte_length": null,
+      "present": false
+    },
+    "journal_before": {
+      "byte_length": null,
+      "present": false
+    },
+    "local_revision": 4,
+    "migration_required_for_mutation": false,
+    "ok": true,
+    "operation": "reconcile",
+    "retained_generation_count": 4,
+    "root_path": {
+      "encoding": "unix-bytes",
+      "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330342d6364632f66756c6c2d72756e6e65722d74696e792d6d6574686f6430332f726f6f74",
+      "utf8": "/tmp/vlajmaji-p01-a04-s04-cdc/full-runner-tiny-method03/root"
+    },
+    "sqlite_recovery": "writable_open_completed",
+    "staged_attempts": [],
+    "verification_scope": "minimum_header_only",
+    "version": 1
+  }
+}

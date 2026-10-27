@@ -1,0 +1,12 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s
+     Running tests/collections_maintenance_contract.rs (target/debug/deps/collections_maintenance_contract-b6e2b281a196a5f9)
+test_literal_four_pack_remove_reinstall_and_remove_all_preserve_inventory: test
+test_reconcile_committed_stage_markers_and_unknown_operation: test
+test_reinstall_digest_mismatch_preserves_removed_state: test
+test_reinstall_open_and_begin_busy_keep_validated_input_context: test
+test_remove_one_pack_publishes_survivor_generation_and_reinstall_restores_member: test
+test_remove_registered_only_pack_commits_without_creating_generation: test
+test_remove_registered_only_pack_keeps_active_generation: test
+test_remove_reinstall_retained_release_and_revision: test
+
+8 tests, 0 benchmarks

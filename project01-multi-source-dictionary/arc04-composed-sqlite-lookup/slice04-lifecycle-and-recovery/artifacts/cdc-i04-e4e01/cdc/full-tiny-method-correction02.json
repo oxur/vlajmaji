@@ -1,0 +1,10 @@
+{
+  "classification": "caller-only operation precedence expectation",
+  "failed_receipt": "full-tiny-journey02.json",
+  "actual_stage": "profile4-no-default child expected exit1 successfully; assertion failed on operation",
+  "contract": "CLI lookup resolves default before engine; no-default report operation lookup; already-open exact query errors operation exact",
+  "correction": "pass operation=lookup only for profile4-no-default",
+  "retained_root": "/tmp/vlajmaji-p01-a04-s04-cdc/full-runner-tiny-method02",
+  "fresh_root": "/tmp/vlajmaji-p01-a04-s04-cdc/full-runner-tiny-method03",
+  "product_source_unchanged": "e4e8bfc55c5071d9144fa72e7360525efa43fd56"
+}

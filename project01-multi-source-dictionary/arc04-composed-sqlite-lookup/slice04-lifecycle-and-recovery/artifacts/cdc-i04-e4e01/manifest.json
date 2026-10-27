@@ -1,0 +1,292 @@
+{
+  "version": 1,
+  "scope": "small current checkpoint; no databases/binaries/Full data",
+  "payloads": [
+    {
+      "path": "author/vlajmaji-p01-a04-s04-i04-check01.log",
+      "bytes": 39397,
+      "sha256": "f39ac5896940f7a85254676f941dfe5110c5e97db94ce2f0cae8d160e964b881"
+    },
+    {
+      "path": "author/vlajmaji-p01-a04-s04-i04-focused01.log",
+      "bytes": 1696,
+      "sha256": "b198652d37750d6a915e4796460a2a5a09acb7874d56a980eb65ffe661e1197e"
+    },
+    {
+      "path": "author/vlajmaji-p01-a04-s04-i04-format01.log",
+      "bytes": 170,
+      "sha256": "baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4"
+    },
+    {
+      "path": "author/vlajmaji-p01-a04-s04-i04-format02.log",
+      "bytes": 170,
+      "sha256": "baa923a76d595cf812070b9da9ecc33c200bedb740b5a92526a21ed15796b3e4"
+    },
+    {
+      "path": "author/vlajmaji-p01-a04-s04-i04-lint01.log",
+      "bytes": 1478,
+      "sha256": "4a0d182e443b55e5708d2cb1730e4a883647d4526a3321741bc530c060fc5d0c"
+    },
+    {
+      "path": "author/vlajmaji-p01-a04-s04-i04-lint02.log",
+      "bytes": 355,
+      "sha256": "8b052f86ff3c7c63a0f09c885866240dbce22b6ca539b1a70f534b3dc566e54d"
+    },
+    {
+      "path": "author/vlajmaji-p01-a04-s04-i04-store-list01.log",
+      "bytes": 782,
+      "sha256": "37e77f6631c3e7ffd129e7287fad0b6a249ee017f6d27f87ea16331551a7c19c"
+    },
+    {
+      "path": "cdc/full-observer-build01.json",
+      "bytes": 1723,
+      "sha256": "bb33dfac6f43ddceb793e10f08babd25efcd467ca80b8ab9aca449e35da6d4a5"
+    },
+    {
+      "path": "cdc/full-observer-build01.log",
+      "bytes": 167,
+      "sha256": "3fed230c190f6843ee3d39f9fe075a2d1ed1061ed5c1f8c3f1109723e2cda0ab"
+    },
+    {
+      "path": "cdc/full-observer-qualify01.json",
+      "bytes": 1756,
+      "sha256": "6e18dc69f8f12e87d63a7d3eaad41046ce7547fc21fa131e2915865c8130fb0f"
+    },
+    {
+      "path": "cdc/full-observer-qualify01.log",
+      "bytes": 620,
+      "sha256": "d12d07cc23bd938a0f47f05f3b5b15b3dabcef0737f29580ae950a1a480ea969"
+    },
+    {
+      "path": "cdc/full-operational-runner03.py",
+      "bytes": 19609,
+      "sha256": "d3a529db3bed95a55e720847d51e62dcc159726f5ec727c05c7e0d2f0d3a201c"
+    },
+    {
+      "path": "cdc/full-operational-runner04.py",
+      "bytes": 19623,
+      "sha256": "50128eb65f7a37f2eec6ea53abc879fa94ba78f2e7572d244b0dd2b3407ea969"
+    },
+    {
+      "path": "cdc/full-operational-runner05.py",
+      "bytes": 19642,
+      "sha256": "6751636f2348939de8dd910ca2ca07b8cd31c361c08566dcac44983d450bea20"
+    },
+    {
+      "path": "cdc/full-receipt-checker01.py",
+      "bytes": 8419,
+      "sha256": "5511eddcc4f87949cf225db9c753e4f58b77d0ed4d44c033c89fdfc4e2ed2249"
+    },
+    {
+      "path": "cdc/full-runner-method05.json",
+      "bytes": 6459,
+      "sha256": "24b2d48982d91d0ce3d30c0a1a4e2ad66e8e7d191b1e68b141bdd9ebd889f0a7"
+    },
+    {
+      "path": "cdc/full-runner-method05.py",
+      "bytes": 4920,
+      "sha256": "9f2a871e861f288d8d10793fe8b89a0fdb19667c078a822c8f7dd93dd194ea20"
+    },
+    {
+      "path": "cdc/full-runner-tiny-journey02.py",
+      "bytes": 2963,
+      "sha256": "53a5ceace1e02a2e26f9da6989d0dc11b190e9f0921b6a7a3796be64589689d7"
+    },
+    {
+      "path": "cdc/full-runner-tiny-journey03.py",
+      "bytes": 2963,
+      "sha256": "802a2dd8d10c5568e7bf8c16335c2e07991d1eee2b3b49dacb0b873ffbc8baa3"
+    },
+    {
+      "path": "cdc/full-runner-tiny-journey04.py",
+      "bytes": 2963,
+      "sha256": "fcd0084d16421b75fee162a3bdb86fc30b01280228d0a87edd4d572faeb6a2a7"
+    },
+    {
+      "path": "cdc/full-tiny-cli-build01.json",
+      "bytes": 1760,
+      "sha256": "5241dea09e91137200a9d7fad3920855575e3295b7ace6b039bf37813ada7107"
+    },
+    {
+      "path": "cdc/full-tiny-cli-build01.log",
+      "bytes": 72,
+      "sha256": "299f16a2c523be18fef769975d2df00e0505521db047540feea3a74b94666887"
+    },
+    {
+      "path": "cdc/full-tiny-journey01.json",
+      "bytes": 1895,
+      "sha256": "23a96148a38cdbcddd6dbc417ae13f386a0e1d8266f6d24d13739152a5000e2f"
+    },
+    {
+      "path": "cdc/full-tiny-journey01.log",
+      "bytes": 1078,
+      "sha256": "347f6ae19b2899222810c56db61ff0cfa5cf2109b8cadfb2433c7b1fca958100"
+    },
+    {
+      "path": "cdc/full-tiny-journey02.json",
+      "bytes": 1893,
+      "sha256": "24de99b7dc3f3c4f177641bbfbb79805fcf1c622b220d95af8c5fa8ee24dc34e"
+    },
+    {
+      "path": "cdc/full-tiny-journey02.log",
+      "bytes": 769,
+      "sha256": "175b6f4c16df9a690719dacfa5b934d43ec07f67ae336b59f3c9f6aa4a17b7d4"
+    },
+    {
+      "path": "cdc/full-tiny-journey03.json",
+      "bytes": 1893,
+      "sha256": "a8f3371d7b62e1c5796ca05e7ab73be81452a1a59d6becbffa0f896d74fd7754"
+    },
+    {
+      "path": "cdc/full-tiny-journey03.log",
+      "bytes": 456,
+      "sha256": "dbe11e0e10127042033486fd66855b1641ce2a7464c5549d5a6cdf3a9c8b9352"
+    },
+    {
+      "path": "cdc/full-tiny-method-correction01.json",
+      "bytes": 926,
+      "sha256": "945d794bc31c291a57563d4095ee4820c9602d8cbcb26a4c4da881e6d0f0c906"
+    },
+    {
+      "path": "cdc/full-tiny-method-correction02.json",
+      "bytes": 666,
+      "sha256": "2b57f118cf1a7b9173027df0c97816f01df79e480c7151ca2652032776fabdbb"
+    },
+    {
+      "path": "cdc/i04-cdc-boundary01.json",
+      "bytes": 1869,
+      "sha256": "c077eb499197f4771a6f1b98781a58a22b8f1e4c3df6d53899801312dd981824"
+    },
+    {
+      "path": "cdc/phase2-wire-checker01.py",
+      "bytes": 3275,
+      "sha256": "accf21f3ba68e681472c0ca9922077b2f2758ef87624ebaa457a552ce2266bf9"
+    },
+    {
+      "path": "cdc/stage_guard_split01.py",
+      "bytes": 2723,
+      "sha256": "8b78f747fe7977ea9aad67a2a26472261d76f2047e5a30e3c06aee47b655c859"
+    },
+    {
+      "path": "cdc/tiny-journey01-held-output-inventory.json",
+      "bytes": 19770,
+      "sha256": "d3a16503667a0d16c1f7f0caece9d114bad5b121dad257125249fbdeb758767f"
+    },
+    {
+      "path": "cdc/tiny-journey02-held-output-inventory.json",
+      "bytes": 58854,
+      "sha256": "2b6054ac5effb7a79d6cda51cf9c1db7ab272d30b5d3e65efd5470819042a9c1"
+    },
+    {
+      "path": "cdc/tiny-journey03-held-output-inventory.json",
+      "bytes": 64008,
+      "sha256": "86af59ea107bf8ee332c9bc337069945fd39bad8570ce973640c23957754d837"
+    },
+    {
+      "path": "frozen-test-e4.rs.txt",
+      "bytes": 38406,
+      "sha256": "97df61121e25816c29478c9b7101dc515e1c4894cff6579a40b0e3817ce5c43a"
+    },
+    {
+      "path": "observer/Cargo.lock",
+      "bytes": 11038,
+      "sha256": "2b918cf53deadead193f74beaf29b907040921c7a902d924a3cd7880dac92305"
+    },
+    {
+      "path": "observer/Cargo.toml",
+      "bytes": 698,
+      "sha256": "8173c3761f1c3a7a9b703ab35f521cfdcc02be7f81b8d13f47fd4e28f39a6bfc"
+    },
+    {
+      "path": "observer/accepted-descriptors-and-refs02.json",
+      "bytes": 16593,
+      "sha256": "7f332ad5f3e58f0d4a99cf3c12e82400e85923840430db76291c54951ccef867"
+    },
+    {
+      "path": "observer/fixtures/complete_fixture.rs",
+      "bytes": 46457,
+      "sha256": "0792a2b1aa5fc3b570e3c817a127ed571c1b9b39786ee5c22d906e7574175eac"
+    },
+    {
+      "path": "observer/fixtures/lensisku.json",
+      "bytes": 136,
+      "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+    },
+    {
+      "path": "observer/fixtures/llg-valid-row.txt",
+      "bytes": 158,
+      "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+    },
+    {
+      "path": "observer/fixtures/sutysisku.json",
+      "bytes": 150,
+      "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
+    },
+    {
+      "path": "observer/src/descriptor.rs",
+      "bytes": 4188,
+      "sha256": "d5c986761963854fd3651c503aa8e42a4cfcd8cacfb8ec7caf8d027a6b4cad13"
+    },
+    {
+      "path": "observer/src/helpers.rs",
+      "bytes": 3071,
+      "sha256": "b0d29b14379a7156ee005f93bec5cd927e48d4e058a698cd441194c53dfb9e81"
+    },
+    {
+      "path": "observer/src/main.rs",
+      "bytes": 23146,
+      "sha256": "cf477bdbff182399af38fbe612d8a814347fa956a84e4bd3876493a9b298fbd7"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 968,
+      "sha256": "2a734224c2673ef2536ab347836c96ea2f43e5142ef42bd957572eb983e65dfe"
+    },
+    {
+      "path": "tiny-pass/G1-install.stdout",
+      "bytes": 2078,
+      "sha256": "0dd50270dfd3f2aeba7dcb4319ee660fd6963d5a7cfc3364d158ee65b1a96972"
+    },
+    {
+      "path": "tiny-pass/G2-rebuild.stdout",
+      "bytes": 2076,
+      "sha256": "09370a2501591864ffe9e3f1ab277af8657dc753596029bdf6faa471893f8d5f"
+    },
+    {
+      "path": "tiny-pass/G3-remove-llg.stdout",
+      "bytes": 1247,
+      "sha256": "8a8fea7d28e21f072950a4e452a52ed0ad57ee3b654c62ef430bf7bd599cf1c6"
+    },
+    {
+      "path": "tiny-pass/G4-exact-reinstall.stdout",
+      "bytes": 1902,
+      "sha256": "bf7db0dc41383d01a3a5eba5d9bab3225a21f01c1fe2944fa258469d408590f0"
+    },
+    {
+      "path": "tiny-pass/U1-owned-paths-before-after.json",
+      "bytes": 7234,
+      "sha256": "221d5ab8886ef0cda2e72e441a2354381a61b6b9bc5dabfa5b3656cdd434c809"
+    },
+    {
+      "path": "tiny-pass/actual-generations-and-attempts.json",
+      "bytes": 2640,
+      "sha256": "fb2a6ef00deb67ffa866b7a5426cee8906622066820e5658504c2ce708468fba"
+    },
+    {
+      "path": "tiny-pass/final-reconcile.stdout",
+      "bytes": 1984,
+      "sha256": "dcc6616429ddd67e907e03de4302dacad841e6e17b15369a748d7dfa9e072cab"
+    },
+    {
+      "path": "tiny-pass/profile5-restore.stdout",
+      "bytes": 962,
+      "sha256": "db44fb44884aaa551078de3fbeba304c7a4f1a82dfac3c1f192f36af6e9b39de"
+    },
+    {
+      "path": "tiny-pass/summary.json",
+      "bytes": 8582,
+      "sha256": "f3fe21d13cec798124f3349ce7d3f3f271410ee636c2248d87d7062380716260"
+    }
+  ],
+  "bytes": 471496
+}

@@ -1,0 +1,15 @@
+{
+  "classification": "caller expectation failure, no production change",
+  "failed_runtime": "full-tiny-journey01.json",
+  "failed_stage": "G2-rebuild after successful real child",
+  "old_expectation": "zero inputs",
+  "source_contract": "lifecycle.rs publication maps all normalized current members to installed dispositions at lines832-835",
+  "correction": "same four installed dispositions as install; remove remains no-input and reinstall selected validated plus skipped",
+  "new_runner": {
+    "path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational-runner04.py",
+    "sha256": "50128eb65f7a37f2eec6ea53abc879fa94ba78f2e7572d244b0dd2b3407ea969"
+  },
+  "first_fixture_retained": "/tmp/vlajmaji-p01-a04-s04-cdc/full-runner-tiny-method01",
+  "fresh_retry": "/tmp/vlajmaji-p01-a04-s04-cdc/full-runner-tiny-method02",
+  "commentary_erratum": "First update reversed actual/expected; subsequent update corrects explicitly."
+}
