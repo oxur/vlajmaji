@@ -1,0 +1,41 @@
+{
+  "head": "7399563f98b41d26bd5099d04873e1a8cc7e23fe",
+  "parent": "c3643f4915b7876313dc3a58d8c56c87cf38fa5c",
+  "tree": "e1840807bba597e779a1b28d02937ceff9ffc4ab",
+  "branch": "codex/project01-readable-compact-output",
+  "status": "",
+  "delta": [
+    "crates/search/src/collection_query.rs",
+    "crates/search/src/collection_query/projection.rs",
+    "crates/search/src/dictionary.rs",
+    "crates/search/src/dictionary/borrowed.rs",
+    "crates/search/src/dictionary/projection.rs",
+    "crates/search/tests/dictionary_projection_contract.rs"
+  ],
+  "cumulative_paths": [
+    "README.md",
+    "crates/cli/README.md",
+    "crates/cli/src/main.rs",
+    "crates/cli/src/query_output.rs",
+    "crates/cli/tests/query_output_contract.rs",
+    "crates/search/README.md",
+    "crates/search/src/collection_query.rs",
+    "crates/search/src/collection_query/projection.rs",
+    "crates/search/src/dictionary.rs",
+    "crates/search/src/dictionary/borrowed.rs",
+    "crates/search/src/dictionary/projection.rs",
+    "crates/search/src/lib.rs",
+    "crates/search/tests/collection_projection_contract.rs",
+    "crates/search/tests/dictionary_projection_contract.rs",
+    "crates/store/src/collections.rs",
+    "crates/store/src/collections/reference_projection.rs",
+    "crates/store/src/lib.rs",
+    "crates/store/tests/reference_projection_contract.rs",
+    "docs/collections.md"
+  ],
+  "lock": "65cd7f39a88bdd2a3dab1fcd14e9055ff7b77cb22ec3af8c309ce49dbea78700",
+  "guard": "20fe7ba73311aa503870923af09f33f3b53262742ca4eeea2972092924cf5de8",
+  "s04local": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "s04origin": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "trailers": "Co-authored-by: Codex <noreply@openai.com>\nCo-authored-by: Billo AI <ai-engineering@billo.systems>\n"
+}

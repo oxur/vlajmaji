@@ -1,0 +1,27 @@
+# S05 iteration02 frozen independent disposition
+
+Compact/detail semantic, API and finite Tiny contribution: PASS at7399563f98b41d26bd5099d04873e1a8cc7e23fe. Strict F03 instrumentation: ONE OPEN carryover. INITIAL is not unconditionally accepted; no row closes and no Full metric trial is eligible. This is pass3of5; readable03/pass4 must first close that exact carryover, then deliver its useful increment.
+
+## Boundary and source disposition
+
+Clean S05 branch, parentc364, treee1840807bba597e779a1b28d02937ceff9ffc4ab, exactly six issued paths/cumulative19. Both adjacent coauthors parse; lock65cd…8700/guard20fe…de8/both S04refs432 unchanged. Root independently corroborated six current body hashes. CDC read complete six-path delta and current profile/Resolve entrypoints, recovered compact Local/managed bodies where output truncated, and read actual persistent tests. This is source-critical review, not every repository line.
+
+F02 closes at this contribution: exactly one known-overlay check after Capture/CaptureOccurrence/Entry/Assertion/Source and before source_views/owned revisions; primitive ordinals retained/used without body/digest cache. Actual direct compact test covers all13families, None/known-overlay valid, capture+source/source+Form/capture+unknown/unknown-only/unknown+ownedrevision. Public Full+Compact tests separately mutate Capture-only, Capture+Source, Entry, check exact typed errors, write original bytes and reopen valid after each. Independent edge controls separately compare bytes/restoration; do not invent stronger per-case author byte-pair assertions.
+
+F03 mostly repaired: ordinary None avoids newly mandatory clocks, shared profile wrappers finalize AFTER inner-owned temporaries drop, actual clone/materialization/digests/Box/wrappers are narrowly timed, lookup/classification/paging/descriptor reads stay outside. Inherited full Exact clocks/equation remain explicit exceptions. Metadata retains FIRST row non-pack fields, only current pack/release changes, contributor scopes stay private; originals MOVE to admission after public construction, avoiding a third vector. A prebuilt full release_summary only moves: no artificial clone/positive timer.
+
+ONE mandatory root-dispositioned carryover: compact_hit still clones occurrence_key into returned occurrence_id OUTSIDE timing. This pure output clone is not move-only. Readable03 FIRST item must, after the final key lookup, MOVE the existing String into occurrence_id/remove unnecessary clone; if actual reuse requires it, time only the real output clone. Preserve bytes/key policy. No silent739 edit, extra pass/reset, criterion/threshold change or dropped defect. INITIAL is not unconditionally accepted; this must close on next frozen source BEFORE metric trials.
+
+## Actual current independent execution
+
+Explicit wrapper+1.98.0/offline/locked/one returned target, fresh owned Tiny roots, isolated runtime HOME/XDG. API compile0; public build0/runtime0 with29 named PASS lines (includes signature/comparator lines, not29 operations), sharedAssertion6/6 and distinctEntry5/5. Edges build0/runtime0,11namedPASS/zero failures plusEntry5/5. Independent actual private compact index1/1. All original finite input-derived25family/max-multiset/fivelexical/native333/typed detail/Presence/Forms/editorial/contexts/pages0/1/2/3/cursor/history/contributors/missing-corrupt-version/valid-restoration predicates pass.
+
+Original required parity needed ONE bounded caller helper: WHOLE serdeValue ordinary/profile Exact+Local+Catalog responses for standalone Full+Compact and managed Full+Compact; managed first Exact setupSome, both warm references None; exact same-call equations/positive materialization/SQL subset. SAME already-installed fourliteral Tiny root/pre-input target, no extra fixture/store/matrix. All four groups pass. Current main inverses exactly one include+one call to original canonical c364 bytes; original predicates unchanged. These arithmetic/parity checks do not replace source placement review or prove numeric budgets.
+
+Public raw12564B/SHA3a93fd1a…227e4, edges7012B/SHA822482bb…3125f, directindex677B/SHA73dc8fde…5ed9; exact debug binary/argv/source/environment identities in receipts. Qualitative elapsed times are not protocol trials. Three exact source-snapshot payload tables identical; one full closure plus all three original manifests retained.
+
+Author current raw logs independently parsed/hash-matched: default55rows311/0/1+19helpers, isolated9rows65/0/0, Syntheticallfeatures55rows313/0/1, package23paths; focused18/18 and managed5/5 are AUTHOR evidence. All57 raw attempts preserved; zero filters are zero proof, target-lock denials are sandbox failures. The pre-Box passing check remains pre-edit evidence, not final source. No source edits during active gates/independent runs.
+
+c364 strict54CLI/static/capture/full-baseline-wire results remain PASS AT c364. Exact739delta leaves CLI/store/exports/docs bytes unchanged, and new current library/whole-result parity supports limited retention; NO fresh739CLIprocess claim. Readable03 changes CLI and needs relevant real-process/output/Linux proof.
+
+All6S05/fivearc/all14project rows OPEN. Mandatory next: strictF03 carryover plus useful readable Exact/Resolve/detail typed transport/goldens/W1–W5, finite approved Full/numerics, actual candidate Linux and fresh assembled Arc reviewer. No source/Full/numeric/external effect follows this record. Root reviews concrete readable03 against739 before issue/intake/transfer.

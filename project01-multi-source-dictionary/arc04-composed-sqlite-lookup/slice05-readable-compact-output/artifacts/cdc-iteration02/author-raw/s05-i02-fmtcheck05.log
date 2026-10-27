@@ -1,0 +1,74 @@
+[1;34mChecking code formatting...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/collection_query.rs:1030:
+                 },
+                 _ => None,
+             };
+-            return Ok(measure_collection_projection(&mut profile, || CollectionReferenceResponse {
+-                target,
+-                status: payload.status,
+-                operational_reason: None,
+-                payload: Some(payload),
+-                catalogue_matches: matches.public,
+-                requested_release,
++            return Ok(measure_collection_projection(&mut profile, || {
++                CollectionReferenceResponse {
++                    target,
++                    status: payload.status,
++                    operational_reason: None,
++                    payload: Some(payload),
++                    catalogue_matches: matches.public,
++                    requested_release,
++                }
+             }));
+         }
+         let requested_release = if let RelationTarget::Catalog(catalog) = &target {
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/collection_query.rs:1083:
+         } else {
+             ReferenceStatus::CatalogueOnly
+         };
+-        Ok(measure_collection_projection(&mut profile, || CollectionReferenceResponse {
+-            target,
+-            status,
+-            operational_reason: (!matches.public.is_empty()).then_some(reason),
+-            payload: None,
+-            catalogue_matches: matches.public,
+-            requested_release,
++        Ok(measure_collection_projection(&mut profile, || {
++            CollectionReferenceResponse {
++                target,
++                status,
++                operational_reason: (!matches.public.is_empty()).then_some(reason),
++                payload: None,
++                catalogue_matches: matches.public,
++                requested_release,
++            }
+         }))
+     }
+ 
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/collection_query.rs:1131:
+                             continue;
+                         };
+                         if requested_release.is_none() {
+-                            requested_release = Some(measure_collection_projection(
+-                                &mut profile,
+-                                || CollectionReleaseSummary::from(release),
+-                            ));
++                            requested_release =
++                                Some(measure_collection_projection(&mut profile, || {
++                                    CollectionReleaseSummary::from(release)
++                                }));
+                         }
+                         let source = descriptor
+                             .source_metadata
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/collection_query.rs:1347:
+             for (index, row) in results.iter().enumerate() {
+                 let row_is_current = self.generation.as_ref().is_some_and(|generation| {
+                     generation.members.iter().any(|member| {
+-                        member.pack_id == row.pack_id
+-                            && member.release_sha256 == row.release_sha256
++                        member.pack_id == row.pack_id && member.release_sha256 == row.release_sha256
+                     })
+                 });
+                 let same_identity = |existing: &CollectionReferenceMatch| {
+make: *** [fmt-check] Error 1

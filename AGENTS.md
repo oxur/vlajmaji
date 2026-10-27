@@ -2,7 +2,7 @@
 
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
-**Current S05 checkpoint, 2026-10-27:** issued iteration02/pass3of5 complete WHOLE-plan §§1–12 CC intake/readback is accepted after explicit factual erratum; fresh clean c364/treebcaf/lock/guard/both S04refs verified. On explicit CDC message after this metadata commit, retained Luna/high CC exclusively owns ONLY SIX issued source paths/index/ONE retained target; CDC/root read-only until frozen handback. All6S05/fiveotherarc/all14project OPEN; readable03plannedpass4/Fullnumeric/Linux/freshARC/external actions remain pending. No source edit/build at intake.
+**Current S05 checkpoint,2026-10-27:** frozen739 returned to CDC; compact/detail semantic/API/finiteTiny PASS, strictF03 ONE pure output String clone OPEN, FIRST mandatory readable03/pass4 correction. INITIAL not unconditionally accepted/all6OPEN/noFullmetriceligibility. CDC owns QUIETsource/index/ONEtarget; CC/root read-only. Next concrete readable03 requires root review before issue/transfer; no current source/Full/Linux/external effect.
 
 ### Historical pre-correction frozen checkpoint
 
@@ -147,3 +147,7 @@ CDC accepted complete source-cited intake (artifacts/execution.md, original8890f
 ## Historical issue-time checkpoint —2026-10-27 UTC
 
 **Current S05 checkpoint, 2026-10-27:** iteration02 ISSUED status-only after root final readiness PASS, exact SIX source paths/pass3of5; readable03/plannedpass4 remains unissued. Frozen c364/source-contract F02/F03 remain NOT ACCEPTED despite retained scoped semantic success. CDC exclusively owns QUIET source/index/ONE retained target until complete CC WHOLE-plan §§1–12 intake/readback, fresh identity check and explicit six-path transfer. CC/root read-only. Six S05/fiveotherarc/all14project OPEN; no Full/Linux/ARC/external acceptance.
+
+## Historical iteration02 author interval —2026-10-27 UTC
+
+**Current S05 checkpoint, 2026-10-27:** issued iteration02/pass3of5 complete WHOLE-plan §§1–12 CC intake/readback is accepted after explicit factual erratum; fresh clean c364/treebcaf/lock/guard/both S04refs verified. On explicit CDC message after this metadata commit, retained Luna/high CC exclusively owns ONLY SIX issued source paths/index/ONE retained target; CDC/root read-only until frozen handback. All6S05/fiveotherarc/all14project OPEN; readable03plannedpass4/Fullnumeric/Linux/freshARC/external actions remain pending. No source edit/build at intake.

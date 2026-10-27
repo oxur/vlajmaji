@@ -1,0 +1,344 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:538:9
+    |
+538 |         index_document(&original, None).expect("unchanged compact input has unique identities");
+    |         ^^^^^^^^^^^^^^ not found in this scope
+    |
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+553 | /         rejects_duplicate!("capture", |document: &mut UnverifiedDictionaryDocument| {
+554 | |             document.captures.push(document.captures[0].clone());
+555 | |         });
+    | |__________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+556 | /         rejects_duplicate!(
+557 | |             "capture occurrence",
+558 | |             |document: &mut UnverifiedDictionaryDocument| {
+559 | |                 let occurrence = document.captures[0].occurrences[0].clone();
+...   |
+562 | |         );
+    | |_________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+563 | /         rejects_duplicate!("entry", |document: &mut UnverifiedDictionaryDocument| {
+564 | |             document
+565 | |                 .metadata
+566 | |                 .entries
+567 | |                 .push(document.metadata.entries[0].clone());
+568 | |         });
+    | |__________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+569 | /         rejects_duplicate!(
+570 | |             "assertion",
+571 | |             |document: &mut UnverifiedDictionaryDocument| {
+572 | |                 document
+...   |
+577 | |         );
+    | |_________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+578 | /         rejects_duplicate!("source", |document: &mut UnverifiedDictionaryDocument| {
+579 | |             document
+580 | |                 .registry
+581 | |                 .sources
+582 | |                 .push(document.registry.sources[0].clone());
+583 | |         });
+    | |__________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+584 | /         rejects_duplicate!("form", |document: &mut UnverifiedDictionaryDocument| {
+585 | |             document
+586 | |                 .metadata
+587 | |                 .forms
+588 | |                 .push(document.metadata.forms[0].clone());
+589 | |         });
+    | |__________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+590 | /         rejects_duplicate!(
+591 | |             "editorial sense",
+592 | |             |document: &mut UnverifiedDictionaryDocument| {
+593 | |                 document
+...   |
+598 | |         );
+    | |_________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+599 | /         rejects_duplicate!(
+600 | |             "computation",
+601 | |             |document: &mut UnverifiedDictionaryDocument| {
+602 | |                 document
+...   |
+607 | |         );
+    | |_________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+608 | /         rejects_duplicate!(
+609 | |             "snapshot attribution",
+610 | |             |document: &mut UnverifiedDictionaryDocument| {
+611 | |                 document
+...   |
+616 | |         );
+    | |_________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+617 | /         rejects_duplicate!(
+618 | |             "occurrence attribution",
+619 | |             |document: &mut UnverifiedDictionaryDocument| {
+620 | |                 document
+...   |
+625 | |         );
+    | |_________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+626 | /         rejects_duplicate!(
+627 | |             "contributor",
+628 | |             |document: &mut UnverifiedDictionaryDocument| {
+629 | |                 document
+...   |
+634 | |         );
+    | |_________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+635 | /         rejects_duplicate!(
+636 | |             "distributor",
+637 | |             |document: &mut UnverifiedDictionaryDocument| {
+638 | |                 document
+...   |
+643 | |         );
+    | |_________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:544:35
+    |
+544 |                   let error = match index_document(&document, None) {
+    |                                     ^^^^^^^^^^^^^^ not found in this scope
+...
+644 | /         rejects_duplicate!(
+645 | |             "owned revision",
+646 | |             |document: &mut UnverifiedDictionaryDocument| {
+647 | |                 document
+...   |
+652 | |         );
+    | |_________- in this macro invocation
+    |
+    = note: this error originates in the macro `rejects_duplicate` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:660:13
+    |
+660 |             index_document(&capture_before_overlay, Some(&unknown)),
+    |             ^^^^^^^^^^^^^^ not found in this scope
+    |
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:666:13
+    |
+666 |             index_document(&original, Some(&unknown)),
+    |             ^^^^^^^^^^^^^^ not found in this scope
+    |
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0425]: cannot find function `index_document` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:677:13
+    |
+677 |             index_document(&overlay_before_owned_revision, Some(&unknown)),
+    |             ^^^^^^^^^^^^^^ not found in this scope
+    |
+help: consider importing this function
+    |
+354 +     use crate::dictionary::borrowed::index_document;
+    |
+
+error[E0308]: mismatched types
+   --> crates/search/src/dictionary/borrowed.rs:173:13
+    |
+173 |             sources,
+    |             ^^^^^^^ expected `BTreeMap<String, usize>`, found `BTreeMap<SourceId, usize>`
+    |
+    = note: expected struct `std::collections::BTreeMap<std::string::String, _>`
+               found struct `std::collections::BTreeMap<vlajmaji_lexicon::SourceId, _>`
+
+error[E0433]: cannot find type `EntityId` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:654:24
+    |
+654 |         let unknown = [EntityId::new("unknown-release").unwrap()];
+    |                        ^^^^^^^^ use of undeclared type `EntityId`
+
+error[E0277]: the `?` operator can only be used in a closure that returns `Result` or `Option` (or another type that implements `std::ops::FromResidual`)
+    --> crates/search/src/dictionary/projection.rs:1490:39
+     |
+1482 |         let detail_ref = measure_projection(&mut profile, || DictionaryHitDetailRef {
+     |                                                           -- this function should return `Result` or `Option` to accept `?`
+...
+1490 |             entry_sha256: entry_sha256?,
+     |                                       ^ cannot use the `?` operator in a closure that returns `dictionary::projection::DictionaryHitDetailRef`
+
+error[E0277]: the `?` operator can only be used in a closure that returns `Result` or `Option` (or another type that implements `std::ops::FromResidual`)
+    --> crates/search/src/dictionary/projection.rs:1491:47
+     |
+1482 |         let detail_ref = measure_projection(&mut profile, || DictionaryHitDetailRef {
+     |                                                           -- this function should return `Result` or `Option` to accept `?`
+...
+1491 |             assertion_sha256: assertion_sha256?,
+     |                                               ^ cannot use the `?` operator in a closure that returns `dictionary::projection::DictionaryHitDetailRef`
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.
+Some errors have detailed explanations: E0277, E0308, E0425, E0433.
+error: could not compile `vlajmaji-search` (lib test) due to 21 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib) due to 3 previous errors
+make: *** [lint] Error 101

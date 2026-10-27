@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S04 user-merged/main32e99 CIgreen. S05 iteration02 ISSUED after root readiness PASS, exact6paths/pass3of5; whole-plan intake accepted; explicit transfer follows metadata commit. Frozen c364 NOT ACCEPTED on F02/F03; all6S05OPEN. Readable/numeric/fresharc follow. |
-| version / date | 1.19 / 2026-10-27 UTC |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S05 frozen739 bounded semantic/API PASS; strictF03 ONE FIRST readable03/pass4 carryover, INITIAL not unconditionally accepted/all6OPEN/noFullmetriceligibility. Next draft root review pending. |
+| version / date | 1.20 / 2026-10-27 UTC |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
@@ -184,3 +184,7 @@ Root FINAL ITERATION02 READINESS PASS, 2026-10-27 UTC: exact reviewed draft20159
 CDC accepts the complete iteration02 intake/readback after reading the exact appended original and factual erratum. CC explicitly loaded WHOLE current plan §§1–12 and all issued required bodies/source functions, verified369payloads/2,302,475B; prior omitted sections remain historical and are not retroactively relabelled read. Correct c364 capture/static CLI negatives remain PASS, not a new repair. A further wording calibration: the erratum's 'retains primitive ordinal maps' describes the ISSUED target design; current c364 builds then discards several maps. Retain/use them is required implementation, not already completed source evidence. Source timing regions/None routing/inner cleanup remain substantive acceptance discriminators, never equations alone.
 
 Immediately before transfer CDC independently rechecked clean c3643f4915b7876313dc3a58d8c56c87cf38fa5c/treebcaf63c9ec11b18ea23049ca10921b5d8e06da32/S05 branch, lock65cd7f39…8700/guard20fe7ba7…de8 and BOTH old S04refs432d632 unchanged. Upon the explicit CDC transfer message following this scoped metadata commit, retained Luna/high CC exclusively owns ONLY the SIX issued source paths, source index and ONE retained Arc01 target. CDC/root become source/index/target read-only until frozen handback; CDC continues planning/independent preparation only. CC may append existing execution.md only outside source. Pass3of5/all6rowsOPEN/readable03plannedpass4/FullnumericLinuxfreshARCexternal holds unchanged. No source operation occurred during intake.
+
+### S05 iteration02 bounded disposition —2026-10-27 UTC
+
+Frozen739 compact/detail semantic/API/finiteTiny contribution PASS; strictF03 ONE OPEN pure output String clone in compact_hit. Root explicitly makes its exact move-or-real-timed-clone repair FIRST readable03/pass4 item within original21path union/five-total budget. INITIAL not unconditionally accepted, all6OPEN/noFullmetriceligibility. Current independent API0/public29namedPASS+shared6/5/edges11namedPASS+shared5/privateindex1/1; WHOLE ordinary/profile Exact+Local+Catalog parity across four modes and managedfirstSome/warmNone PASS. CDC owns quiet739/source/index/target. Existing review-iteration02 and immutable cdc-iteration02 preserve exact scope; no new runtime/external authority.

@@ -1,0 +1,21 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0425]: cannot find type `BTreeSet` in this scope
+   --> crates/search/src/collection_query/projection.rs:763:37
+    |
+763 |         let mut groups: Vec<(usize, BTreeSet<String>, Option<usize>)> = Vec::new();
+    |                                     ^^^^^^^^ not found in this scope
+    |
+help: consider importing one of these structs
+    |
+  4 + use crate::BTreeSet;
+    |
+  4 + use std::collections::BTreeSet;
+    |
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `vlajmaji-search` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+make: *** [lint] Error 101

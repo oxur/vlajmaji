@@ -1,0 +1,37 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0061]: this method takes 2 arguments but 1 argument was supplied
+    --> crates/search/src/collection_query/projection.rs:547:34
+     |
+ 547 |                 return self.base.metadata_matches(target);
+     |                                  ^^^^^^^^^^^^^^^^-------- argument #2 of type `std::option::Option<&mut collection_query::projection::CollectionProjectionProfile>` is missing
+     |
+note: method defined here
+    --> crates/search/src/collection_query.rs:1100:8
+     |
+1100 |     fn metadata_matches(
+     |        ^^^^^^^^^^^^^^^^
+...
+1103 |         mut profile: Option<&mut CollectionProjectionProfile>,
+     |         -----------------------------------------------------
+help: provide the argument
+     |
+ 547 |                 return self.base.metadata_matches(target, /* std::option::Option<&mut collection_query::projection::CollectionProjectionProfile> */);
+     |                                                         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+error[E0599]: no method named `as_str` found for enum `vlajmaji_lexicon::Presence<T>` in the current scope
+   --> crates/search/src/dictionary/projection.rs:896:41
+    |
+896 |                     Some(entry.spelling.as_str()),
+    |                                         ^^^^^^ method not found in `vlajmaji_lexicon::Presence<std::string::String>`
+    |
+note: the method `as_str` exists on the type `std::string::String`
+   --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/alloc/src/string.rs:1057:4
+
+Some errors have detailed explanations: E0061, E0599.
+For more information about an error, try `rustc --explain E0061`.
+error: could not compile `vlajmaji-search` (lib test) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib) due to 2 previous errors
+make: *** [lint] Error 101

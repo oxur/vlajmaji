@@ -1,0 +1,23 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 14.69s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-7b41836ffc483a5a)
+
+running 1 test
+test dictionary::borrowed::identity_tests::test_index_document_preserves_duplicate_order_and_overlay_boundary ... FAILED
+
+failures:
+
+---- dictionary::borrowed::identity_tests::test_index_document_preserves_duplicate_order_and_overlay_boundary stdout ----
+
+thread 'dictionary::borrowed::identity_tests::test_index_document_preserves_duplicate_order_and_overlay_boundary' (78930403) panicked at crates/search/src/dictionary/borrowed.rs:712:9:
+assertion failed: selected.values().any(|ids| ids.contains(known.as_str()))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    dictionary::borrowed::identity_tests::test_index_document_preserves_duplicate_order_and_overlay_boundary
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.13s
+
+error: test failed, to rerun pass `-p vlajmaji-search --lib`

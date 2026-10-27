@@ -1,0 +1,14 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.95s
+     Running tests/collection_projection_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collection_projection_contract-b2a28f0144887a26)
+
+running 5 tests
+test test_compact_detail_reports_removed_history_without_opening_payload ... ok
+test test_compact_detail_distinguishes_native_role_conflict_from_native_value_no_match ... ok
+test test_compact_detail_preserves_selected_missing_and_corrupt_payload_causes ... ok
+test test_compact_detail_stale_snapshot_precedes_selected_bad_payload_and_restores ... ok
+test test_compact_detail_key_survives_rebuild_remove_and_exact_reinstall ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.18s
+

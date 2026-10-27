@@ -1,0 +1,24 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-a04-s05-cdc-public-01 v0.0.0 (/tmp/vlajmaji-p01-a04-s05-cdc/public-caller01)
+warning: function `inventory` is never used
+  --> src/bin/../helpers.rs:23:4
+   |
+23 | fn inventory(d:&UnverifiedDictionaryDocument)->BTreeMap<&'static str,BTreeMap<String,usize>> {
+   |    ^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `assert_owned_store_path` is never used
+ --> src/bin/../owned_paths.rs:2:4
+  |
+2 | fn assert_owned_store_path(root: &Path, store: &Path) {
+  |    ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `run` is never used
+  --> src/bin/../shared_body_checks.rs:11:8
+   |
+11 | pub fn run(base:&Path) {
+   |        ^^^
+
+warning: `vlajmaji-a04-s05-cdc-public-01` (bin "contract-edges") generated 3 warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.62s

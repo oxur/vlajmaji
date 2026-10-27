@@ -1,0 +1,20 @@
+{
+  "source_head": "7399563f98b41d26bd5099d04873e1a8cc7e23fe",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-cargo",
+    "+1.98.0",
+    "test",
+    "-p",
+    "vlajmaji-search",
+    "--lib",
+    "test_index_document_preserves_duplicate_order_and_overlay_boundary",
+    "--offline",
+    "--locked"
+  ],
+  "exit": 0,
+  "timeout": false,
+  "elapsed_s": 3.7587033323943615,
+  "bytes": 677,
+  "sha256": "73dc8fde18900df95329356fde8bfd7e2d1fab5c8c715ae91796d0967cb15ed9",
+  "scope": "independent current ONE original required private compact-index duplicate/order/overlay regression; no Full or timing trial"
+}

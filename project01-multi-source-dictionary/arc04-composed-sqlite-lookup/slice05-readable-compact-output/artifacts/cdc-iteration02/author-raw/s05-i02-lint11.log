@@ -1,0 +1,15 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0433]: cannot find module or crate `lexicon` in this scope
+   --> crates/search/src/dictionary/borrowed.rs:704:61
+    |
+704 |                 release.selected && release.availability == lexicon::Availability::Available
+    |                                                             ^^^^^^^ use of unresolved module or unlinked crate `lexicon`
+    |
+    = help: if you wanted to use a crate named `lexicon`, use `cargo add lexicon` to add it to your `Cargo.toml`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101
