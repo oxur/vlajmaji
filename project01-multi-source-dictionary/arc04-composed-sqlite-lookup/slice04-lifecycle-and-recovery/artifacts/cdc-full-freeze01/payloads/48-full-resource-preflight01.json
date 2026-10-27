@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-27T05:57:06Z",
+  "df_raw": "Filesystem   1024-blocks       Used Available Capacity iused      ifree %iused  Mounted on\n/dev/disk3s5  1948455240 1613406240 292036248    85% 9823493 2920362480    0%   /System/Volumes/Data\n",
+  "available_bytes": 299045117952,
+  "shared_target_baseline_kib": 60160964,
+  "shared_target_scope": "actual du -sk after optimized builds completed, not cache delta/peak; fixed retained Arc01 target",
+  "publication_attempt_max": 4,
+  "new_campaign_bytes_post_threshold": 12884901888,
+  "historical_generation_bytes": 1923240333,
+  "conservative_four_generation_plus_catalogue_bytes": 7863772724,
+  "expected_output_budget_post_bytes": 134217728,
+  "expected_fingerprint_outputs_included": true,
+  "timeout": "600s actively bounded per process group",
+  "rss": "OS highwater accepted after child completion;12GiB publication/All,8GiB read-only; NOT live memory enforcement",
+  "retention": "all failed Tiny roots and early source/method records retained; Full first failure stops, no retry/fifth slot/cleanup/reset",
+  "full_paths_absent": [
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+  ]
+}

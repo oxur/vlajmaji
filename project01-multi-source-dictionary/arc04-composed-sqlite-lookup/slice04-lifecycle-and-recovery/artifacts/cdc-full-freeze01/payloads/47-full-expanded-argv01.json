@@ -1,0 +1,554 @@
+{
+  "scope": "Exact all stage argv from actual SAME Tiny journey translated to fixed Full constants. Only declared prior receipt native-stage attempt IDs and actual immediate-before-transition cursors remain runtime substitutions, validated by runner. No arbitrary overrides.",
+  "runtime_binding_rules": "G1..G4 attempt IDs from exact typed publication receipts; safe_store validates native hex/path and exact owned generations/<attempt>/store/no symlinks/traversal. Cursors from named immediate preceding successful managed page1 response, reused byte-exact.",
+  "stages": [
+    {
+      "stage": "P0-input-expectations",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/observer",
+        "freeze",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-batch-proposed01.json",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/pre-input-expected.json"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G1-install",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "collections",
+        "install",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-batch-proposed01.json",
+        "--all"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 12884901888
+    },
+    {
+      "stage": "G1-All",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "verify",
+        "all",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/{{G1_ATTEMPT}}/store"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 12884901888
+    },
+    {
+      "stage": "G1-public",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/observer",
+        "observe",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/pre-input-expected.json",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-caller01/accepted-descriptors-and-refs02.json",
+        "all",
+        "1",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/G1-inner.json"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G1-native",
+      "argv_template": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice02-local-provisioning-catalogue/artifacts/cdc-review01/native-oracle/native_topology.py",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/{{G1_ATTEMPT}}/store/dictionary.sqlite3",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/G1-native-result",
+        "lensisku-jbotci,llg,la-lojban,sutysisku"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile1-configure",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "collections",
+        "configure",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+        "--profile",
+        "full",
+        "--all",
+        "--make-default",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile1-lookup",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G1-cursor-origin",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--page-size",
+        "1",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "update-identical",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "collections",
+        "update",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-batch-proposed01.json",
+        "--all",
+        "--expected-revision",
+        "1"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 12884901888
+    },
+    {
+      "stage": "U1-cursor-fresh-process-valid",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--page-size",
+        "1",
+        "--cursor",
+        "{{G1_MANAGED_CURSOR}}",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G2-rebuild",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "collections",
+        "rebuild",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+        "--expected-revision",
+        "1"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 12884901888
+    },
+    {
+      "stage": "G2-All",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "verify",
+        "all",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/{{G2_ATTEMPT}}/store"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 12884901888
+    },
+    {
+      "stage": "G2-public",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/observer",
+        "observe",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/pre-input-expected.json",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-caller01/accepted-descriptors-and-refs02.json",
+        "all",
+        "2",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/G2-inner.json"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G2-prior-cursor-stale",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--page-size",
+        "1",
+        "--cursor",
+        "{{G1_MANAGED_CURSOR}}",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G2-fresh-oldG1-explicit-store",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "dictionary-query",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/{{G1_ATTEMPT}}/store",
+        "--request",
+        "{\"operation\": \"exact\", \"spelling\": \"farvi\", \"options\": {}}"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G2-current-cursor-before-remove",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--page-size",
+        "1",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G3-remove-llg",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "collections",
+        "remove",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+        "--pack",
+        "llg",
+        "--expected-revision",
+        "2"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 12884901888
+    },
+    {
+      "stage": "G3-All",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "verify",
+        "all",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/{{G3_ATTEMPT}}/store"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 12884901888
+    },
+    {
+      "stage": "G3-public",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/observer",
+        "observe",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/pre-input-expected.json",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-caller01/accepted-descriptors-and-refs02.json",
+        "subset",
+        "3",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/G3-inner.json"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G3-native",
+      "argv_template": [
+        "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice02-local-provisioning-catalogue/artifacts/cdc-review01/native-oracle/native_topology.py",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/{{G3_ATTEMPT}}/store/dictionary.sqlite3",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/G3-native-result",
+        "lensisku-jbotci,la-lojban,sutysisku"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G3-immediately-prior-cursor-stale-before-unavailable",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--page-size",
+        "1",
+        "--cursor",
+        "{{G2_CURRENT_CURSOR_BEFORE_REMOVE_SAVED}}",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile1-removed-unavailable",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile2-disable",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "collections",
+        "disable",
+        "--profile",
+        "full",
+        "--pack",
+        "llg",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile2-subset",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G3-profile2-current-cursor-before-restore",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--page-size",
+        "1",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G4-exact-reinstall",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "collections",
+        "reinstall",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+        "--manifest",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-batch-proposed01.json",
+        "--pack",
+        "llg",
+        "--release-sha256",
+        "d8c8be02b9888c1eee3d3daa053746e483aec995935c4d225234479d4215ce12",
+        "--expected-revision",
+        "3"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 12884901888
+    },
+    {
+      "stage": "G4-All",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "verify",
+        "all",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/{{G4_ATTEMPT}}/store"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 12884901888
+    },
+    {
+      "stage": "G4-public",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/observer",
+        "observe",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/pre-input-expected.json",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-caller01/accepted-descriptors-and-refs02.json",
+        "all",
+        "4",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/G4-inner.json"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G4-immediately-prior-cursor-stale",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--page-size",
+        "1",
+        "--cursor",
+        "{{G3_PROFILE2_CURRENT_CURSOR_BEFORE_RESTORE_SAVED}}",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile2-restored-disabled",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "G4-profile2-current-cursor-before-enable",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--page-size",
+        "1",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile3-enable",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "collections",
+        "enable",
+        "--profile",
+        "full",
+        "--pack",
+        "llg",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile3-prior-disabled-cursor-stale",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--page-size",
+        "1",
+        "--cursor",
+        "{{G4_PROFILE2_CURRENT_CURSOR_BEFORE_ENABLE_SAVED}}",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile3-all",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile4-clear",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "collections",
+        "default",
+        "--clear",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile4-no-default",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile5-restore",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "collections",
+        "default",
+        "--profile",
+        "full",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "profile5-all",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    },
+    {
+      "stage": "final-reconcile",
+      "argv_template": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "collections",
+        "reconcile",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01"
+      ],
+      "timeout_seconds": 600,
+      "rss_post_threshold_bytes": 8589934592
+    }
+  ],
+  "guard_prefix_template": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "{{PER_STAGE_POST_RSS}}",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/{{STAGE}}.stderr",
+    "--stdout",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-campaign01/{{STAGE}}.stdout",
+    "--"
+  ]
+}

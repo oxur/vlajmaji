@@ -1,0 +1,161 @@
+{
+  "utc": "2026-10-27T05:55:14Z",
+  "scope": "ONE actual current streaming SHA/size recheck of exact8 accepted release/seal files; full parsed seals compared; no model/SQLite/payload interpretation",
+  "inputs": [
+    {
+      "pack_id": "lensisku-jbotci",
+      "release": {
+        "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-lensisku-jbotci/data/release.json",
+        "bytes": 215412497,
+        "sha256": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460"
+      },
+      "seal": {
+        "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-lensisku-jbotci/data/seal.json",
+        "bytes": 603,
+        "sha256": "8562580939685e8828a899a54f373388c9b2f3cacdbbe305662ab32ac05aa02e"
+      },
+      "parsed_seal": {
+        "version": 1,
+        "pack_id": "lensisku-jbotci",
+        "payload_kind": "full",
+        "dictionary_version": 1,
+        "registry_version": 1,
+        "release_sha256": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460",
+        "release_bytes": 215412497,
+        "source_ids": [
+          "lensisku"
+        ],
+        "release_ids": [
+          "jbotci-release-34c2919a00a7bd68e07efb3e0fdd8dae02e9f48f82c006415a62dd634acf973a"
+        ],
+        "captures": [
+          {
+            "namespace": "captured:lensisku:jbotci:en",
+            "sha256": "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde"
+          },
+          {
+            "namespace": "captured:lensisku:jbotci:en:metadata",
+            "sha256": "fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98"
+          }
+        ]
+      }
+    },
+    {
+      "pack_id": "llg",
+      "release": {
+        "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-llg/data/release.json",
+        "bytes": 14433039,
+        "sha256": "d8c8be02b9888c1eee3d3daa053746e483aec995935c4d225234479d4215ce12"
+      },
+      "seal": {
+        "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-llg/data/seal.json",
+        "bytes": 936,
+        "sha256": "c2ca8c6158ad6550bd56e5bd77404132adccea404de5a7b670b88e8de86812d6"
+      },
+      "parsed_seal": {
+        "version": 1,
+        "pack_id": "llg",
+        "payload_kind": "full",
+        "dictionary_version": 1,
+        "registry_version": 1,
+        "release_sha256": "d8c8be02b9888c1eee3d3daa053746e483aec995935c4d225234479d4215ce12",
+        "release_bytes": 14433039,
+        "source_ids": [
+          "llg"
+        ],
+        "release_ids": [
+          "llg-release-f1c254f1e4b7943e039b55ec28a6fcd901c0249c4e4da964ebdc53e1a7e92105",
+          "llg-release-e6a00816117b2966eb2a060c8025b336f42744807396529fd01f9db60471e87f",
+          "llg-release-abf9ea251e8284c206b25927729e63ab5c2567c3a29d3b20ded92b29c6899154"
+        ],
+        "captures": [
+          {
+            "namespace": "captured:llg:notice",
+            "sha256": "9fb2ae1345252ba30999523a0980e1ae69795f5940d2fd9cea8a56c67be18a55"
+          },
+          {
+            "namespace": "captured:llg:gismu",
+            "sha256": "f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7"
+          },
+          {
+            "namespace": "captured:llg:cmavo",
+            "sha256": "544414d61f3ff35dd2cf4e4f79f3c86bf9bb0568eb3403f57288057e16796402"
+          },
+          {
+            "namespace": "captured:llg:rafsi",
+            "sha256": "31b90a8551cb3cb9f4d0c6873867af1906e9210c398bf49f20e5c21aa02d0d24"
+          }
+        ]
+      }
+    },
+    {
+      "pack_id": "la-lojban",
+      "release": {
+        "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-la-lojban/data/release.json",
+        "bytes": 111187880,
+        "sha256": "e66951094935bd910c6a9ad12fa1bbb51f0578b53d44f22a73056811fe2bc64e"
+      },
+      "seal": {
+        "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-la-lojban/data/seal.json",
+        "bytes": 474,
+        "sha256": "249e69dea1743a9076cf2b6f7c2836b3b3d819684455d96c2848c87ed1faabb2"
+      },
+      "parsed_seal": {
+        "version": 1,
+        "pack_id": "la-lojban",
+        "payload_kind": "full",
+        "dictionary_version": 1,
+        "registry_version": 1,
+        "release_sha256": "e66951094935bd910c6a9ad12fa1bbb51f0578b53d44f22a73056811fe2bc64e",
+        "release_bytes": 111187880,
+        "source_ids": [
+          "lensisku"
+        ],
+        "release_ids": [
+          "la-lojban-release-1c22018f4e91c09f3df4177d6f449559e138d6be2d6f45a52d1bac92500a5137"
+        ],
+        "captures": [
+          {
+            "namespace": "captured:lensisku:la-lojban:en",
+            "sha256": "861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35"
+          }
+        ]
+      }
+    },
+    {
+      "pack_id": "sutysisku",
+      "release": {
+        "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-sutysisku/data/release.json",
+        "bytes": 94511884,
+        "sha256": "67499447426d34c269577eb6947d7c7b22b71090e5a30fd653375819d590ffa2"
+      },
+      "seal": {
+        "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji/crates/data-sutysisku/data/seal.json",
+        "bytes": 472,
+        "sha256": "7d0720dc62d1b997a265f1e585be664ac86a8a461ca6ee5915af0b72c34f4fc5"
+      },
+      "parsed_seal": {
+        "version": 1,
+        "pack_id": "sutysisku",
+        "payload_kind": "full",
+        "dictionary_version": 1,
+        "registry_version": 1,
+        "release_sha256": "67499447426d34c269577eb6947d7c7b22b71090e5a30fd653375819d590ffa2",
+        "release_bytes": 94511884,
+        "source_ids": [
+          "sutysisku"
+        ],
+        "release_ids": [
+          "sutysisku-release-274d43472b636b9fb653c7022c02298de5fd675aab9209c6cbf3131e081fa02e"
+        ],
+        "captures": [
+          {
+            "namespace": "captured:sutysisku:parsed-en",
+            "sha256": "8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d"
+          }
+        ]
+      }
+    }
+  ],
+  "total_bytes": 435547785
+}

@@ -1,0 +1,9 @@
+{
+  "scope": "outside-caller pre-execution source type correction, not a compiler/runtime/product failure",
+  "source_fact": "CollectionGenerationMember.pack_id is String; PackId is enum with as_str, no String PartialEq<PackId> implementation",
+  "old_sha256": "1085ac6f140ea97aa769103b9cad48927a5074a6e3d9bebf50e3d51dcc5b11eb",
+  "new_sha256": "cf477bdbff182399af38fbe612d8a814347fa956a84e4bd3876493a9b298fbd7",
+  "old_bytes_path": "/tmp/vlajmaji-p01-a04-s04-cdc/caller-history/full-before-member-id-type-preflight01.rs",
+  "actual_compile": "pending frozen04 handback",
+  "change": "g.members.iter().any(|m| m.pack_id == PackId::Llg) -> g.members.iter().any(|m| m.pack_id == PackId::Llg.as_str())"
+}

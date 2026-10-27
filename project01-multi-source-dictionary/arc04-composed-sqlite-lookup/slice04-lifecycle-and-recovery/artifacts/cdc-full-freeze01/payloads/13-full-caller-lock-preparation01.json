@@ -1,0 +1,9 @@
+{
+  "scope": "outside-caller source-only lock preparation; identical dependency declarations and every package/version/checksum/edge retained, only root caller name changed; no Cargo resolution/build/cache/network or product source mutation",
+  "from": "/tmp/vlajmaji-p01-a04-s04-cdc/maintenance-caller01/Cargo.lock",
+  "from_sha256": "9ee2c0b873305599eb4b551c1a4789cca526c9f6f4b6006e1cb578a2e4db2ac5",
+  "to": "/tmp/vlajmaji-p01-a04-s04-cdc/full-caller01/Cargo.lock",
+  "to_sha256": "2b918cf53deadead193f74beaf29b907040921c7a902d924a3cd7880dac92305",
+  "packages": 51,
+  "actual_locked_build": "PENDING frozen CC handback"
+}

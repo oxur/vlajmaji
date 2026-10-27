@@ -1,0 +1,322 @@
+{
+  "ok": true,
+  "scope": "Pure finite runner02 predicates. No product, corpus, SQLite, target, or child access.",
+  "runner_sha256": "6751636f2348939de8dd910ca2ca07b8cd31c361c08566dcac44983d450bea20",
+  "checker_sha256": "5511eddcc4f87949cf225db9c753e4f58b77d0ed4d44c033c89fdfc4e2ed2249",
+  "checks": [
+    {
+      "name": "native supported descriptor and exact owned store",
+      "pass": true
+    },
+    {
+      "name": "traversal",
+      "pass": true
+    },
+    {
+      "name": "lossy display disagreement",
+      "pass": true
+    },
+    {
+      "name": "native NUL",
+      "pass": true
+    },
+    {
+      "name": "uppercase hex",
+      "pass": true
+    },
+    {
+      "name": "owned symlink refused",
+      "pass": true
+    },
+    {
+      "name": "literal complete mutation positive",
+      "pass": true
+    },
+    {
+      "name": "outer missing version",
+      "pass": true
+    },
+    {
+      "name": "outer missing ok",
+      "pass": true
+    },
+    {
+      "name": "outer missing operation",
+      "pass": true
+    },
+    {
+      "name": "outer missing outcome",
+      "pass": true
+    },
+    {
+      "name": "outer missing local_revision",
+      "pass": true
+    },
+    {
+      "name": "outer missing policy_state",
+      "pass": true
+    },
+    {
+      "name": "outer missing attempt_id",
+      "pass": true
+    },
+    {
+      "name": "outer missing generation",
+      "pass": true
+    },
+    {
+      "name": "outer missing inputs",
+      "pass": true
+    },
+    {
+      "name": "outer extra empty",
+      "pass": true
+    },
+    {
+      "name": "generation missing generation_id",
+      "pass": true
+    },
+    {
+      "name": "generation missing content_id",
+      "pass": true
+    },
+    {
+      "name": "generation missing canonical_sha256",
+      "pass": true
+    },
+    {
+      "name": "generation missing path",
+      "pass": true
+    },
+    {
+      "name": "generation missing members",
+      "pass": true
+    },
+    {
+      "name": "generation extra empty",
+      "pass": true
+    },
+    {
+      "name": "member missing pack_id",
+      "pass": true
+    },
+    {
+      "name": "member missing release_sha256",
+      "pass": true
+    },
+    {
+      "name": "member missing payload_kind",
+      "pass": true
+    },
+    {
+      "name": "member extra empty",
+      "pass": true
+    },
+    {
+      "name": "input missing pack_id",
+      "pass": true
+    },
+    {
+      "name": "input missing disposition",
+      "pass": true
+    },
+    {
+      "name": "input missing payload_kind",
+      "pass": true
+    },
+    {
+      "name": "input missing release_sha256",
+      "pass": true
+    },
+    {
+      "name": "input missing report",
+      "pass": true
+    },
+    {
+      "name": "input extra empty",
+      "pass": true
+    },
+    {
+      "name": "wrong member kind",
+      "pass": true
+    },
+    {
+      "name": "wrong operation",
+      "pass": true
+    },
+    {
+      "name": "wrong disposition",
+      "pass": true
+    },
+    {
+      "name": "missing null input report",
+      "pass": true
+    },
+    {
+      "name": "reused failure-literal-positive",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-activation",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-attempt_id",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-category",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-detail",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-inputs",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-observed_generation",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-ok",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-operation",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-pack_id",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-path",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-prior_local_revision",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-proposed_generation",
+      "pass": true
+    },
+    {
+      "name": "reused failure-missing-version",
+      "pass": true
+    },
+    {
+      "name": "reused failure-extra-empty-key",
+      "pass": true
+    },
+    {
+      "name": "reused policy-literal-positive",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-affected_pack_ids",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-default_profile",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-disabled",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-observed_availability",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-observed_catalogue_revision",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-ok",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-operation",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-outcome",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-packs",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-path",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-prior_revision",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-prior_sha256",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-profile",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-revision",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-root",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-sha256",
+      "pass": true
+    },
+    {
+      "name": "reused policy-missing-version",
+      "pass": true
+    },
+    {
+      "name": "reused policy-extra-empty-key",
+      "pass": true
+    },
+    {
+      "name": "complete pretty child JSON and declared time lines",
+      "pass": true
+    },
+    {
+      "name": "arbitrary trailing child text",
+      "pass": true
+    },
+    {
+      "name": "second JSON",
+      "pass": true
+    },
+    {
+      "name": "zero RSS",
+      "pass": true
+    },
+    {
+      "name": "missing RSS",
+      "pass": true
+    },
+    {
+      "name": "unknown metric",
+      "pass": true
+    },
+    {
+      "name": "Full constants independent of input ordering",
+      "pass": true
+    }
+  ],
+  "passed": 78,
+  "actual_Tiny_cli_journey": "PENDING frozen handback; these pure controls are not product/orchestration execution"
+}

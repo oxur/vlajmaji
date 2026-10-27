@@ -1,0 +1,53 @@
+{
+  "status": "PENDING_ROOT_EXACT_READINESS_REVIEW_NO_FULL_EXECUTION",
+  "source": "e4e8bfc55c5071d9144fa72e7360525efa43fd56",
+  "production_equivalence": "e4 test-only descendant of independently reproduced a7; no production changes",
+  "source_closure": {
+    "path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-final-source-closure02.json",
+    "bytes": 14714,
+    "sha256": "6044c9974e77f7431c8709027d52a3ecf73f526a06e87269feed05545206702c"
+  },
+  "preflight": {
+    "path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-executable-preflight02.json",
+    "bytes": 15561,
+    "sha256": "125f59da3cafc0aaadc90e45b74d407b7c6605bdfedd95a485fbfab3743ea6ab"
+  },
+  "expanded_argv": {
+    "path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-expanded-argv01.json",
+    "bytes": 17969,
+    "sha256": "d4a2ce5a073b7db19f345f573c2ab0a28a3323f568ebfb018a1f55de5f55d35c"
+  },
+  "resources": {
+    "path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-resource-preflight01.json",
+    "bytes": 1259,
+    "sha256": "f0aae3393d10255f5f9e374b84f7b5f81d9e209243492fa3a4d785860102cc87"
+  },
+  "launch_argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational-runner05.py",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-executable-preflight02.json"
+  ],
+  "binary_records": {
+    "source_commit": "e4e8bfc55c5071d9144fa72e7360525efa43fd56",
+    "binaries": [
+      {
+        "path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "bytes": 12709648,
+        "sha256": "20b21d4e27310437d643b246ecbaf652b5a4c6e53c407abf6035dca261d1b79c",
+        "source": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/vlajmaji"
+      },
+      {
+        "path": "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/observer",
+        "bytes": 8634160,
+        "sha256": "21f12402b464c1c7f3503245fa17b0dac7c9bbeff44368cffd1eaa5f187a6341",
+        "source": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/vlajmaji-a04-s04-cdc-full-01"
+      }
+    ]
+  },
+  "qualification": "same observer15 debug and exact optimized positive; pure78 current runner05 and actual original4pack Tiny03 SAME execute PASS; failed01/02 expectations retained",
+  "pending": "root exact readiness; finite Full; actual candidate-specific Linux/CI; independent six-row/fresh arc closure",
+  "full_coverage_limits": "4publication1ROOT plus U1; finalG4active forS05. No Full remove-all/changed-release/crash/held-reader claim. Native47table/15empty plus declared tuple subsets, not all47 rows independently reconstructed.",
+  "scope_preservation": "seven S01+S02 accepted root+Arc03/default never opened/mutated by this campaign. No import/download/cache purge/new target/cleanup/publication.",
+  "raw_dependencies": "all8 current streaming SHA/size verified; native script/comparator source unchanged23fe1d15, all/subset route inherited",
+  "resource_total_scope": "Runner measures root+out+config+sidecars each stage. Preflight/binaries separately observed overhead will be added to final resource receipt; conservative estimate has >4GiB headroom. No passing total claim until actual observations."
+}
