@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S03 CLOSED/18childDONE/3arcDONE. S04 technically ACCEPTED432/currentCI40515705170 SUCCESS, sixrow canonicalclose/root reviewpending; S05 usefuloutput/fresharc unissued. Remaining contracts unchanged. |
-| version / date | 1.13 / 2026-10-27 UTC |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE; A04-01/02/03/04/05 DONE, fiveotherarcOPEN. S04 accepted432/currentCI40515705170/rootcanonicalPASS. S05 useful output/detail/numeric/fresharc remains unissued, separate sourcebranch after S04PR. |
+| version / date | 1.14 / 2026-10-27 UTC |
 | authority | Latest 2026-10-27: Duncan directed “when you've finished up, go ahead and dive into the next slice”. Autonomous THROUGH ARC04 ONLY and unchanged Sol6.1/high CDC/Luna/high CC persist. S03/user merge/main CI reconciled; root approved S04 initial readiness. S01 numerical/count agreements remain accepted historical comparison authority, not new S04 Full/push authority. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S03 contracts, reviewed source dcdf216; Duncan merged PR4 as main b0106b with identical tree and all three main CI jobs SUCCESS. Bauske c580/accepted data/default remain protected. |
@@ -152,3 +152,9 @@ Retained Luna/high CC acknowledged issued planning23f6240/prompt079cbf4e…32934
 S04 delivers catalogue2/migration/writefence, explicit lifecycle/policy/reconcile and reversible scratch legacy/default transition at432d632; current hosted40515705170 alljobsSUCCESS. CDC Tiny/public/CLI and one reviewed4publicationFull proof retain exact scope/resource/crash/platform limitations. Sixchildrows stayOPEN until rootcanonical/mechanical close; proposed newlyA04-03/05done only. Other fivearc and all14projectrows retain S05/output/budget/compatibility/freshassembled owners. This updates current disposition, not criteria/decomposition/architecture. Initial two increments required six total implementation passes including explicit human5→6ONEtestfile/CI amendment; no automatic seventh. Every original/numbered prompt/failure retained.
 
 Duncan now requests S04branchPR afterclose and S05onitsownbranch. Root will create/attachS04PR and coordinate a new nondefaultS05branch basedaccepted432 (record exactbase/ref/dependency then); existing isolatedcheckout/retainedtarget can be reused without newcache/worktree. No S05sourceissue before S04canonicalclose/PR/actualbranchtransition. No merge/publication or generalfuturepush authority. S05 remains useful pre-hydration readable exact/reference, compactJSON/detail with numeric sheet plus freshassembledARC review; no separate fresharc campaign before W5.
+
+## Version1.14 — S04 canonical/mechanical close
+
+2026-10-27 14:09:56 UTC: root finalcanonicalconsistencyPASS atplanning8bc/source432 verifies fourbodies/exactscope/10manifests780payloads/currentLinux. SixchildDONE and newlyA04-03/05DONE only; S01–S04 now24childDONE/5arcDONE5OPEN/all14projectOPEN. This records completed lifecycle/W2state and remaining S05/W5, not criteria/architecture change. All scale/resource/retained-lock/internalbaseline/source-equivalence limits remain as accepted.
+
+S04PR is explicitly user-requested afterclose; root owns creation/attachment and separateS05branch transition using retainedcheckout/target, exactbranch/base to be recorded beforeissue. No sourcebranchswitch/implementation from this record. S05must deliver useful pre-hydration groupedreadable exact/reference, compactJSON/detail and approvednumeric budgets, then fresh standaloneSol assembledW1–W5 review/arcclose. No futurepush/merge/publication, actualdefault or A05authority inferred.

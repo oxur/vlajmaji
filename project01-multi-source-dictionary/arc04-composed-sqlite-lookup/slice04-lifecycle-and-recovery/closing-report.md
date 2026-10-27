@@ -1,3 +1,7 @@
+# Current canonical close — 2026-10-27 14:09:56 UTC
+
+Root final canonical consistency PASS at planning8bc3f386/source432d632. Six child rows now DONE by mechanical close; newly A04-03/05 DONE only, five other arc/all14project OPEN. The author proposed-completion body below is retained as the dated pre-close attestation; references there to OPEN/pending describe that checkpoint. The actual close commit is pending until committed and will be appended through the recorded convention.
+
 # Arc04 S04 — CC proposed completion
 
 S04 delivers schema-2 migration/fencing; update, rebuild, remove and exact reinstall; reconciliation; selection policy; and reversible scratch handling of legacy/default state. Library, CLI, and guides provide typed outcomes and preserve explicit STORE behavior. This is the author’s proposed completion report, not independent acceptance. The six S04 ledger rows remain OPEN until root’s canonical review and the planning mechanical close.
@@ -58,3 +62,7 @@ S04 delivered the lifecycle work assigned to it; no S04 requirement is silently 
 Answering the findings-to-plan question: after acceptance, update the arc plan to record the current/versioned lifecycle closure and the remaining S05 output delivery, without creating a structural slice or changing criteria. The [CDC verification](cdc-verification.md) and [CDC retrospective](cdc-retrospective.md) provide the independent disposition and process analysis; the report and planning-file inventory are enumerated by artifacts/scope-inventory01.json.
 
 Protected primary source 52fd was not changed. Earlier user-authorized PR4 was merged by Duncan to main b0106b with the accepted S01–S03 tree and terminal green CI. Current S04 commit 432 is a separate frozen delivery. Explicit permission now exists for root to create the S04 PR after canonical close; no S04 PR has yet been created and merge is not authorized here. S05 must receive its own branch and root transition after this close. No claim is made that 432 is already merged. The planning mechanical-close commit should include this report and the final records; its actual commit identity is returned after creation rather than embedded self-referentially.
+
+## CDC canonical close addendum
+
+All six author-proposed DONE rows independently accepted, no deferrals/no-ops; root final scope/evidence consistency PASS. Mechanical close and actual commit/receipt are recorded in execution.md and cdc-verification.md. Supporting artifact/planning inventory is refreshed in artifacts/scope-inventory01.json. S04PR creation and separateS05branch are root-owned next actions, no source/merge/publication action here.

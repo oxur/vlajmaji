@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "S04 technical ACCEPTED canonical proposal; all six statuses OPEN pending root consistency and mechanical close",
+  "scope": "S04 technical/canonical ACCEPTED; mechanical six-child/five-arc/14-open-project checker PASS",
   "source_baseline": "dcdf216ea5805b20f374ce74c302e42bef12c158",
   "source_commit": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
   "source_parent": "e4e8bfc55c5071d9144fa72e7360525efa43fd56",
@@ -887,6 +887,7 @@
     "artifacts/execution.md",
     "artifacts/linux-target-attribution01.json",
     "artifacts/local-full-readiness-clarification01.md",
+    "artifacts/mechanical-close-verification01.json",
     "artifacts/review-i02-a9e01.md",
     "artifacts/review-i03-a7b01.md",
     "artifacts/review-initial01.md",
@@ -896,7 +897,7 @@
     "artifacts/scope-inventory01.json",
     "artifacts/verify-close01.py"
   ],
-  "artifact_count": 807,
+  "artifact_count": 808,
   "inventory_self": "Included in path inventory; no recursive self-hash. Immutable bundle hashes independently checked.",
   "immutable_manifests": [
     {
@@ -974,24 +975,13 @@
     "cdc-verification.md",
     "cdc-retrospective.md"
   ],
-  "first_class_note": "All listed first-class bodies exist; prompts/plan/ledger/closing3 excluded from supporting-artifact count. Canonical root review precedes mechanical closure.",
+  "first_class_note": "All11firstclass documents exist; original6issuedprompts preserved; closing3docs/plan/ledger excluded from supporting artifact count.",
   "planning_commit_scope": [
     "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/arc-plan.md",
     "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/ledger.md",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/canonical-proposal-verification01.json",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/canonical-proposal-verification02.json",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/cdc-linux-final01/all-jobs.log",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/cdc-linux-final01/ci-40515705170-cdc-census01.json",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/cdc-linux-final01/jobs-snapshot01.json",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/cdc-linux-final01/linux-job-status01.json",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/cdc-linux-final01/manifest.json",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/cdc-linux-final01/run-snapshot01.json",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/cdc-linux-final01/run-terminal.json",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/closing-report-attempt01.md",
     "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/execution.md",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/linux-target-attribution01.json",
+    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/mechanical-close-verification01.json",
     "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/scope-inventory01.json",
-    "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/artifacts/verify-close01.py",
     "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/cdc-retrospective.md",
     "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/cdc-verification.md",
     "project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice04-lifecycle-and-recovery/closing-report.md",
@@ -1000,5 +990,15 @@
     "project01-multi-source-dictionary/ledger.md",
     "project01-multi-source-dictionary/project-plan.md"
   ],
-  "bulk_local_record": "Existing canonical receipts retain exact /tmp source/binary/argv/output/DB pointers. Bulk remains outside Git under approved scratch homes; no new Full execution."
+  "bulk_local_record": "Existing canonical receipts retain exact /tmp source/binary/argv/output/DB pointers. Bulk remains outside Git under approved scratch homes; no new Full execution.",
+  "root_canonical_acceptance": {
+    "planning": "8bc3f38636b3b24df99cadd9b1795fc9ba197c3e",
+    "source": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+    "artifact_paths_before_mechanical_receipt": 807,
+    "manifests": 10,
+    "payloads": 780,
+    "payload_bytes": 4388274,
+    "verdict": "PASS"
+  },
+  "close_commit": "pending until this scoped close is committed; actual identity returned/appended next"
 }

@@ -1,6 +1,6 @@
 # S04 CDC retrospective
 
-2026-10-27 UTC; technical ACCEPTED at432d632, canonical closure pending. Outcome: explicit catalogue2 migration/write fence, update/rebuild, retained logical remove/exact reinstall/reconcile, partial policy/default commands and reversible scratch legacy transition work through library/CLI. The single four-publication Full campaign and actual current Linux validate their declared scopes; S05 output and fresh assembled arc review remain. CDC includes its own design, callers, accounting and review errors here. This is process analysis, not a comparative study or model-quality verdict.
+2026-10-27 UTC; technical/canonical ACCEPTED at432d632 after root final consistency PASS; mechanical close verified. Outcome: explicit catalogue2 migration/write fence, update/rebuild, retained logical remove/exact reinstall/reconcile, partial policy/default commands and reversible scratch legacy transition work through library/CLI. The single four-publication Full campaign and actual current Linux validate their declared scopes; S05 output and fresh assembled arc review remain. CDC includes its own design, callers, accounting and review errors here. This is process analysis, not a comparative study or model-quality verdict.
 
 ## Observations and interpretation
 
@@ -29,3 +29,5 @@ S03 follow-through: lifecycle/version/write-fence was concretely resolved and ve
 S05 must now deliver useful output, not a verification-only slice: declare compact/readable projection before availability/release cloning/hit hydration, preserve existing full wire/error/order semantics, supply complete stable hit detail and readable exact/Resolve mapping, meet the approved numeric/byte sheet and perform fresh assembled W1–W5 review. Root creates a separate S05 source branch after S04 canonical close/PR; no source work, extra Full generation, actual-default access or future external delivery is inferred here.
 
 Final canonical review found a CDC attribution bug: nine correct passing names/populations had null target fields because ANSI escaped Running headers. Root and corrected CDC parsing bind the existing raw lines to actual targets; original census remains unchanged with explicit erratum/new small receipt. This is reviewer method/provenance repair, not product failure or an extra runtime gate, and reinforces deriving specific claims from actual receipt fields.
+
+Canonical closure now accepted by root at8bc/source432; sixchild and limited parent bubble-up mechanicallyclose, all learning/evidence limits above unchanged. No additional runtime or study was needed. Exact closecommit follows recorded convention; S05follow-through remains to be evaluated at its owning close.

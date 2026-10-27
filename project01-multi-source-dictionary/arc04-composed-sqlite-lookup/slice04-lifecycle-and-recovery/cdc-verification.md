@@ -1,6 +1,6 @@
 # S04 independent CDC verification
 
-**Technical verdict: ACCEPTED at432d6321e3b2431e7fe2cc5f60e9317780e984b8; canonical consistency and mechanical closure pending root review.** 2026-10-27 UTC. All six ledger statuses intentionally remain OPEN at this proposal. CDC Sol6.1/high designed/reviewed and executed independent outside callers and the finite Full campaign; retained Luna/high CC authored product code. Requested roles/settings are unchanged; no claim of backend model attestation. Current hosted execution, author gates, CDC execution and root reconciliation are distinguished below.
+**Technical and canonical verdict: ACCEPTED at432d6321e3b2431e7fe2cc5f60e9317780e984b8; root final consistency PASS at planning8bc3f386.** Six unchanged rows are now DONE by authorized mechanical close. The dated technical proposal and evidence/applicability below remain the basis; no runtime/Full reexecution. Requested Sol6.1/high CDC and Luna/high CC roles unchanged.
 
 | Original row | Independent disposition, evidence and applicability |
 | --- | --- |
@@ -34,3 +34,7 @@ The arc-plan needs a current-state/version update for completed lifecycle and re
 ## Dated hosted target-attribution correction — 2026-10-27 UTC
 
 The immutable cdc-linux-final01 census correctly counted populations and9passing witness names, but its target field was null for all9: ANSI escapes interrupted the first parser’s Running-header match. Earlier target-scoped wording overstated that parser output. Root independently resolved actual headers; CDC now separately strips ANSI and tracks Running per(job,step) over the SAME downloaded log (SHAe43c93c1…da659). artifacts/linux-target-attribution01.json binds all9 exact ok lines1187/1198/1200/1594/2047/2058/2061/2454/3563 to actual lifecycle/maintenance test binaries. Distinct devfull2targets eachdefault+allfeatures, native2 and storeREMOVE3 are thereby established by corrected existing-output attribution. Original6payloadbundle/census remain unchanged, no CI/source/runtime/Full rerun and no changed technical verdict.
+
+## Root canonical acceptance and mechanical closure
+
+2026-10-27 14:09:56 UTC: root read completeCCreport/CDCverifier/retro and fullyqueried inventory807artifacts/11firstclass/20sourcehashes, rehashed all10immutablemanifests780payloads4388274B and checked all6issuedprompt hashes/unchangedoriginalcontracts. FinalcanonicalPASS cleared sixchildDONE/newlyA04-03,05DONE only; fiveotherarc/all14projectOPEN. Bounded mechanicalchecker actualreceipt and scopedcommit identity accompany close. No change to source432/currentCI, proofscope or originalfailedrecords. Freshassembled ARC reviewer staysS05/arcclose; root S04PR/separateS05branch transition precedes any S05issue.

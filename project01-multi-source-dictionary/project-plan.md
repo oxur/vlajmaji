@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01–03 CLOSED; all fourteen project rows OPEN. A04 S01–S03 CLOSED; S04 lifecycle technicalACCEPTED432/currentCIgreen, canonicalclosepending; S05output/fresharc remains; A05/A06 unactivated |
+| status | project OPEN; Arc01–03 CLOSED; all fourteen project rows OPEN. A04 S01–S04 CLOSED/24childDONE; fivearcobligationsDONE/fiveOPEN; S05output/fresharc remains; A05/A06 unactivated |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.25 / 2026-10-27 UTC |
+| version / date | 1.26 / 2026-10-27 UTC |
 
 ## Purpose and first useful result
 
@@ -109,7 +109,7 @@ define execution order. Later arcs are roadmap entries, not issued assignments.
 | [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Four scope-preserving slices after S01 sizing; current detail in arc plan. |
 | [02 — Reproducible full jbotci import](arc02-reproducible-jbotci-import/arc-plan.md) (CLOSED at4e37016) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Two useful slices: lossless Rust/CLI normalization, then pinned pipeline/full persistence composition. |
 | [03 — Independent corpus packages](arc03-independent-corpus-packages/arc-plan.md) (CLOSED at7b1c565; final canonical accepted) | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
-| [04 — Composed SQLite lookup](arc04-composed-sqlite-lookup/arc-plan.md) (active; S01 CLOSED/Unified selected) | Fair unified/ATTACH/fanout decision and selected integration **plus** local selected/all4 install, catalogue/list/inspect, configured/default one-command exact/ref, lifecycle/recovery and readable/compact/full-detail output. | Accepted A01–03 contracts and exact four Full packs; exact inquiry/effort/numeric approval and concrete S01 provider design recorded. | Five useful increments; S01 accepted at source4b4158c, selecting Unified for the frozen workload. S02 local selected/all provisioning/catalogue CLOSED atce1bd238 with current Linux/macOS CI and canonical acceptance. S03 configured/default lookup CLOSED at dcdf216 with independent and current Linux/macOS proof; S04 lifecycle technicalACCEPTED at432 with currentCI40515705170 green and independent finiteFull proof, canonicalclosepending; readable/compact/reference/detail S05 and fresharc remain. |
+| [04 — Composed SQLite lookup](arc04-composed-sqlite-lookup/arc-plan.md) (active; S01 CLOSED/Unified selected) | Fair unified/ATTACH/fanout decision and selected integration **plus** local selected/all4 install, catalogue/list/inspect, configured/default one-command exact/ref, lifecycle/recovery and readable/compact/full-detail output. | Accepted A01–03 contracts and exact four Full packs; exact inquiry/effort/numeric approval and concrete S01 provider design recorded. | Five useful increments; S01 accepted at source4b4158c, selecting Unified for the frozen workload. S02 local selected/all provisioning/catalogue CLOSED atce1bd238 with current Linux/macOS CI and canonical acceptance. S03 configured/default lookup CLOSED at dcdf216 with independent and current Linux/macOS proof; S04 lifecycle CLOSED at432/currentCI40515705170/rootcanonicalPASS with independent finiteFull proof; readable/compact/reference/detail S05 and fresharc remain. |
 | 05 — Owned dictionary | First-class editable source, revision/history and explicit editorial relationships, immutable export/reimport and its own optional data crate. | A01 model plus accepted A04 composition. | Model is reserved in A01; production editing belongs here. |
 | 06 — Integrated dictionary workbench | Rust/CLI source selection and grouped output across all packs and owned revisions; old query-family regression, removal/reload, paging, documentation and clean offline replay compose end to end. | Accepted predecessors. | Final integration adds remaining behavior; it must not postpone A01's usable lookup. |
 
@@ -385,3 +385,7 @@ Configured/default combined lookup is independently accepted atdcdf216; eighteen
 ## Version1.25 — Arc04 lifecycle technical proposal
 
 S04 technically accepted at432d632/currentCI40515705170 after independent qualifiedTiny and one4publicationFull campaign; rootcanonical sixrow closepending. Project14criteria/statuses unchangedOPEN. Afterclose, parentcompletion is limited to A04-03/05 in addition to prior01/02/04; output/snapshot/compatibility/budgets/freshassembled arc acceptance remain S05/arcclose. Duncan explicitly requests S04PR then S05separatebranch; root handles those transitions, no merge/publication/futurepush inferred. This is current roadmap/status maintenance, not A05/A06 activation or scopechange.
+
+## Version1.26 — Arc04 lifecycle closed, output remains
+
+2026-10-27 14:09:56 UTC: S04 canonical/mechanical close atsource432 after root final consistency and currentLinuxPASS. Arc04 S01–S04 deliver24childDONE, only A04-01/02/03/04/05DONE; output/snapshot/outputcompatibility/budgets/freshassembled arc rows06–10 remainOPEN. All14projectrows unchangedOPEN, A05/A06 unactivated. Duncan requests S04PR then separateS05branch; root coordinates actualtransition, not a merge/publication permission. This updates roadmap progress without weakening remaining W5 or higher-scale acceptance.
