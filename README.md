@@ -169,6 +169,13 @@ complete totals before paging, and returns a continuation cursor when needed.
 The [query guide](docs/dictionary-query.md) covers source filters, paging,
 availability, stable references, and structured errors.
 
+Compact exact/reference output is opt-in with `dictionary-query STORE
+--format compact --request JSON`; configured lookup uses `lookup --format
+compact --request JSON`. Both retain full output by default. Compact hits carry
+strict detail keys that can be expanded with `dictionary-detail STORE
+--reference JSON`, or `lookup-detail --reference JSON` for managed results.
+The collection guide documents snapshot checking and the compact/detail fields.
+
 Corpus data is not bundled. The [migration and replay guide](docs/migration.md)
 describes importing research inputs, building a store, querying it, and running
 the separately gated full-corpus test.

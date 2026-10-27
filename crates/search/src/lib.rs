@@ -38,17 +38,25 @@ pub mod collection_query;
 pub mod dictionary;
 
 pub use collection_query::{
-    CollectionPackAvailability, CollectionQueryError, CollectionQueryErrorReport,
-    CollectionQueryResponse, CollectionQueryResult, CollectionQuerySelection,
-    CollectionReferenceMatch, CollectionReferenceResponse, CollectionSearchEngine,
-    CollectionSelectionSnapshot,
+    CollectionCompactQueryResponse, CollectionCompactQueryResult,
+    CollectionCompactReferenceResponse, CollectionCompactSearchEngine, CollectionHitDetailResponse,
+    CollectionPackAvailability, CollectionProjectionProfile, CollectionQueryError,
+    CollectionQueryErrorReport, CollectionQueryResponse, CollectionQueryResult,
+    CollectionQuerySelection, CollectionReferenceMatch, CollectionReferenceResponse,
+    CollectionSearchEngine, CollectionSelectionSnapshot,
 };
 pub use dictionary::{
+    DictionaryCompactExactResponse, DictionaryCompactGroup, DictionaryCompactHit,
+    DictionaryCompactQueryResult, DictionaryCompactReferenceAssertion,
+    DictionaryCompactReferenceResolution, DictionaryCompactSearchEngine,
+    DictionaryCompactSourceAvailability, DictionaryDetailReferenceInvalidity,
     DictionaryErrorReport, DictionaryExactOptions, DictionaryExactProfile, DictionaryExactResponse,
-    DictionaryGroup, DictionaryHit, DictionaryQueryError, DictionaryRequest,
-    DictionarySearchEngine, DictionarySnapshotOpenProfile, DictionarySourceAvailability,
-    DictionarySourceTotal, DictionaryTotals, ReferenceAssertionView, ReferenceEntity,
-    ReferenceResolution, ReferenceStatus, SourceSelectionFailure,
+    DictionaryGroup, DictionaryHit, DictionaryHitDetailRef, DictionaryHitDetailResponse,
+    DictionaryProjectionError, DictionaryProjectionProfile, DictionaryQueryError,
+    DictionaryRequest, DictionarySearchEngine, DictionarySnapshotOpenProfile,
+    DictionarySourceAvailability, DictionarySourceTotal, DictionaryTotals, ReferenceAssertionView,
+    ReferenceEntity, ReferenceResolution, ReferenceStatus, SourceSelectionFailure,
+    validate_detail_snapshot_sha256,
 };
 
 /// Query policy identities included in every response.

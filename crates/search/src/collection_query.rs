@@ -3,11 +3,19 @@
 //! This wrapper captures policy separately from source records. It does not
 //! change the existing explicit-STORE query route or authenticate payload bytes.
 
+mod projection;
+pub use projection::{
+    CollectionCompactQueryResponse, CollectionCompactQueryResult,
+    CollectionCompactReferenceResponse, CollectionCompactSearchEngine, CollectionHitDetailResponse,
+    CollectionProjectionProfile,
+};
+
 use std::{
     collections::{BTreeMap, BTreeSet},
     error::Error,
     fmt,
     path::{Path, PathBuf},
+    time::{Duration, Instant},
 };
 
 use serde::{Deserialize, Serialize};
@@ -133,6 +141,7 @@ pub struct CollectionReferenceMatch {
 struct MetadataMatches {
     public: Vec<CollectionReferenceMatch>,
     admission: Vec<CollectionReferenceMatch>,
+    requested_release: Option<CollectionReleaseSummary>,
 }
 
 /// Managed wrapper around an existing full resolution or a metadata-only match.
@@ -237,6 +246,8 @@ pub enum CollectionQueryError {
     Catalogue(CollectionError),
     /// Existing full query engine failed.
     Query(DictionaryQueryError),
+    /// Compact detail-key validation or lookup failed.
+    Projection(crate::DictionaryProjectionError),
     /// Selection refers to an unknown or duplicate pack.
     InvalidSelection(String),
     /// The requested profile exists, but explicitly selects a disabled pack.
@@ -318,6 +329,17 @@ impl CollectionQueryError {
                     .into(),
                     writer: profile_writer_context(self),
                 };
+            }
+            Self::Projection(crate::DictionaryProjectionError::Query(_)) => "query",
+            Self::Projection(
+                crate::DictionaryProjectionError::ReferenceJson { .. }
+                | crate::DictionaryProjectionError::InvalidDetailReference { .. },
+            ) => "invalid_detail_reference",
+            Self::Projection(crate::DictionaryProjectionError::MalformedSnapshot { .. }) => {
+                "malformed_snapshot"
+            }
+            Self::Projection(crate::DictionaryProjectionError::StaleSnapshot { .. }) => {
+                "stale_snapshot"
             }
             Self::InvalidSelection(_) => "unknown_selection",
             Self::DisabledSelection { .. } => "disabled_selection",
@@ -419,6 +441,7 @@ impl fmt::Display for CollectionQueryError {
             Self::Profile(error) => write!(f, "collection profile: {error}"),
             Self::Catalogue(error) => write!(f, "collection catalogue: {error}"),
             Self::Query(error) => write!(f, "dictionary query: {error}"),
+            Self::Projection(error) => write!(f, "dictionary projection: {error}"),
             Self::InvalidSelection(detail) => write!(f, "invalid collection selection: {detail}"),
             Self::DisabledSelection { pack_id } => {
                 write!(f, "pack {pack_id} is disabled by the selected profile")
@@ -444,6 +467,7 @@ impl Error for CollectionQueryError {
             Self::Profile(error) => Some(error),
             Self::Catalogue(error) => Some(error),
             Self::Query(error) => Some(error),
+            Self::Projection(error) => Some(error),
             _ => None,
         }
     }
@@ -461,6 +485,11 @@ impl From<CollectionError> for CollectionQueryError {
 impl From<DictionaryQueryError> for CollectionQueryError {
     fn from(error: DictionaryQueryError) -> Self {
         Self::Query(error)
+    }
+}
+impl From<crate::DictionaryProjectionError> for CollectionQueryError {
+    fn from(error: crate::DictionaryProjectionError) -> Self {
+        Self::Projection(error)
     }
 }
 
@@ -689,6 +718,17 @@ impl CollectionSearchEngine {
         Ok(engine)
     }
 
+    /// Capture a named/default profile and report configuration/policy setup time.
+    pub fn open_configured_profiled(
+        profiles: &CollectionProfiles,
+        name: Option<&str>,
+        override_packs: Option<&[PackId]>,
+    ) -> Result<(Self, Duration), CollectionQueryError> {
+        let started = Instant::now();
+        let engine = Self::open_configured(profiles, name, override_packs)?;
+        Ok((engine, started.elapsed()))
+    }
+
     /// Return the captured metadata-only operational snapshot.
     #[must_use]
     pub fn selection(&self) -> &CollectionSelectionSnapshot {
@@ -703,6 +743,26 @@ impl CollectionSearchEngine {
         &mut self,
         request: DictionaryRequest,
     ) -> Result<CollectionQueryResponse, CollectionQueryError> {
+        self.execute_inner(request, None)
+    }
+
+    /// Execute a managed request and capture same-call payload and query timing.
+    pub fn execute_profiled(
+        &mut self,
+        request: DictionaryRequest,
+    ) -> Result<(CollectionQueryResponse, CollectionProjectionProfile), CollectionQueryError> {
+        let started = Instant::now();
+        let mut profile = CollectionProjectionProfile::default();
+        let response = self.execute_inner(request, Some(&mut profile))?;
+        profile.total = started.elapsed();
+        Ok((response, profile))
+    }
+
+    fn execute_inner(
+        &mut self,
+        request: DictionaryRequest,
+        mut profile: Option<&mut CollectionProjectionProfile>,
+    ) -> Result<CollectionQueryResponse, CollectionQueryError> {
         match request {
             DictionaryRequest::Exact {
                 spelling,
@@ -716,13 +776,24 @@ impl CollectionSearchEngine {
                     options.cursor = Some(cursor);
                 }
                 self.admit_exact()?;
-                self.ensure_payload()?;
+                self.ensure_payload(profile.as_deref_mut())?;
                 let engine = self.payload.as_ref().ok_or_else(|| {
                     CollectionQueryError::Query(DictionaryQueryError::Integrity {
                         detail: "payload engine is unavailable after setup".into(),
                     })
                 })?;
-                let mut response = engine.exact(&spelling, options)?;
+                let mut response = if let Some(profile) = profile.as_deref_mut() {
+                    let (response, exact_profile) = engine.exact_profiled(&spelling, options)?;
+                    profile.query.total = exact_profile.total;
+                    profile.query.candidate_sql = exact_profile.candidate_sql;
+                    profile.query.lookup = exact_profile
+                        .lookup_order_paging
+                        .saturating_add(exact_profile.candidate_sql);
+                    profile.query.projection = exact_profile.hydration;
+                    response
+                } else {
+                    engine.exact(&spelling, options)?
+                };
                 if let Some(cursor) = response.next_cursor.take() {
                     response.next_cursor =
                         Some(wrap_cursor(&cursor, &self.snapshot.binding_sha256)?);
@@ -730,7 +801,15 @@ impl CollectionSearchEngine {
                 Ok(self.response(CollectionQueryResult::Exact(Box::new(response))))
             }
             DictionaryRequest::Resolve { target } => {
-                let response = self.resolve_target(target)?;
+                let query_started = Instant::now();
+                let response = self.resolve_target(target, profile.as_deref_mut())?;
+                if let Some(profile) = profile {
+                    profile.query.total = query_started.elapsed().saturating_sub(
+                        profile
+                            .payload_setup
+                            .map_or(Duration::ZERO, |setup| setup.total),
+                    );
+                }
                 Ok(self.response(CollectionQueryResult::Resolve(Box::new(response))))
             }
         }
@@ -784,7 +863,10 @@ impl CollectionSearchEngine {
         Ok(())
     }
 
-    fn ensure_payload(&mut self) -> Result<(), CollectionQueryError> {
+    fn ensure_payload(
+        &mut self,
+        profile: Option<&mut CollectionProjectionProfile>,
+    ) -> Result<(), CollectionQueryError> {
         if self.payload.is_some() {
             return Ok(());
         }
@@ -795,9 +877,15 @@ impl CollectionSearchEngine {
                     pack_id: "unified".into(),
                     reason: "no_generation".into(),
                 })?;
-        match DictionarySearchEngine::open_snapshot(DictionaryReadTopology::Unified, manifest) {
-            Ok(engine) => {
+        match DictionarySearchEngine::open_snapshot_profiled(
+            DictionaryReadTopology::Unified,
+            manifest,
+        ) {
+            Ok((engine, setup)) => {
                 self.payload = Some(engine);
+                if let Some(profile) = profile {
+                    profile.payload_setup = Some(setup);
+                }
                 Ok(())
             }
             Err(error) => Err(CollectionQueryError::Query(error)),
@@ -807,6 +895,7 @@ impl CollectionSearchEngine {
     fn resolve_target(
         &mut self,
         target: RelationTarget,
+        profile: Option<&mut CollectionProjectionProfile>,
     ) -> Result<CollectionReferenceResponse, CollectionQueryError> {
         match &target {
             RelationTarget::Unknown => {
@@ -842,7 +931,7 @@ impl CollectionSearchEngine {
         if let Some((pack, release)) = self.selected_payload_for_target(&target, &matches.admission)
         {
             let _ = (pack, release);
-            self.ensure_payload()?;
+            self.ensure_payload(profile)?;
             let engine = self.payload.as_ref().ok_or_else(|| {
                 CollectionQueryError::Query(DictionaryQueryError::Integrity {
                     detail: "payload engine is unavailable after setup".into(),
@@ -984,6 +1073,7 @@ impl CollectionSearchEngine {
         }
         let list = catalogue.list()?;
         let mut results = Vec::new();
+        let mut requested_release = None;
         match target {
             RelationTarget::Catalog(requested) => {
                 let mut release_owner_found = false;
@@ -1005,6 +1095,9 @@ impl CollectionSearchEngine {
                         let Some(release) = release else {
                             continue;
                         };
+                        if requested_release.is_none() {
+                            requested_release = Some(CollectionReleaseSummary::from(release));
+                        }
                         let source = descriptor
                             .source_metadata
                             .collections
@@ -1249,7 +1342,11 @@ impl CollectionSearchEngine {
         } else {
             results
         };
-        Ok(MetadataMatches { public, admission })
+        Ok(MetadataMatches {
+            public,
+            admission,
+            requested_release,
+        })
     }
 
     fn selected_payload_for_target(
@@ -1586,7 +1683,11 @@ fn wrap_cursor(inner: &str, binding: &str) -> Result<String, CollectionQueryErro
 
 fn unwrap_cursor(cursor: &str, binding: &str) -> Result<String, CollectionQueryError> {
     let Some(encoded) = cursor.strip_prefix("collection-v1:") else {
-        return Err(CollectionQueryError::MalformedCursor);
+        return Err(if projection::is_valid_compact_managed_cursor(cursor) {
+            CollectionQueryError::StaleCursor
+        } else {
+            CollectionQueryError::MalformedCursor
+        });
     };
     let Some((hex, digest)) = encoded.split_once(':') else {
         return Err(CollectionQueryError::MalformedCursor);

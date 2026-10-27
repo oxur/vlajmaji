@@ -16,6 +16,10 @@ use sha2::{Digest, Sha256};
 use std::collections::BTreeMap;
 mod lifecycle;
 mod maintenance;
+mod reference_projection;
+pub use reference_projection::{
+    CollectionProjectedCapture, CollectionProjectedRelease, CollectionReferenceProjection,
+};
 
 use vlajmaji_lexicon::{
     Availability, CaptureMetadata, CaptureRef, CodeNotice, CollectionRecord, ComponentRecord,
@@ -463,6 +467,15 @@ pub enum CollectionError {
     InvalidRequest(String),
     /// Catalogue or model schema is not supported.
     UnsupportedVersion(String),
+    /// A retained descriptor could not be decoded for a targeted projection.
+    ReferenceProjection {
+        /// Registration whose descriptor was read.
+        pack: PackId,
+        /// Exact registered release digest.
+        release_sha256: String,
+        /// Original JSON decoding failure.
+        source: serde_json::Error,
+    },
     /// A version-1 catalogue is readable but requires explicit migration before writes.
     MigrationRequired {
         /// Observed catalogue schema version.
@@ -615,6 +628,7 @@ impl CollectionError {
         match self {
             Self::InvalidRequest(_) => CollectionErrorCategory::InvalidRequest,
             Self::UnsupportedVersion(_) => CollectionErrorCategory::UnsupportedVersion,
+            Self::ReferenceProjection { .. } => CollectionErrorCategory::UnsupportedVersion,
             Self::MigrationRequired { .. } => CollectionErrorCategory::MigrationRequired,
             Self::RevisionConflict { .. } => CollectionErrorCategory::RevisionConflict,
             Self::NotInstalled { .. } => CollectionErrorCategory::NotInstalled,
@@ -691,6 +705,7 @@ impl CollectionError {
             Self::InputInvalid { pack, .. } | Self::InputInvalidSource { pack, .. } => {
                 (None, pack.map(|id| id.as_str().to_owned()))
             }
+            Self::ReferenceProjection { pack, .. } => (None, Some(pack.as_str().to_owned())),
             Self::PackConflict { .. } => (None, None),
             Self::Adapter { pack, .. }
             | Self::UpdateRequired(pack)
@@ -775,6 +790,14 @@ impl fmt::Display for CollectionError {
             Self::UnsupportedVersion(detail) => {
                 write!(f, "unsupported collection version: {detail}")
             }
+            Self::ReferenceProjection {
+                pack,
+                release_sha256,
+                source,
+            } => write!(
+                f,
+                "project retained {pack} release {release_sha256}: {source}"
+            ),
             Self::MigrationRequired { version } => write!(
                 f,
                 "collection catalogue version {version} requires explicit migration"
@@ -895,6 +918,7 @@ impl Error for CollectionError {
     fn source(&self) -> Option<&(dyn Error + 'static)> {
         match self {
             Self::InputIo { source, .. } => Some(source),
+            Self::ReferenceProjection { source, .. } => Some(source),
             Self::InputInvalidSource { source, .. } => Some(source.as_ref()),
             Self::Adapter { source, .. } => Some(source.as_ref()),
             Self::Pack(source) => Some(source.as_ref()),
@@ -3226,6 +3250,41 @@ pub struct CollectionReleaseSummary {
     pub redistribution: String,
     /// Evidence retained for the redistribution disposition.
     pub redistribution_evidence: Vec<String>,
+}
+
+impl From<&ReleaseRecord> for CollectionReleaseSummary {
+    fn from(release: &ReleaseRecord) -> Self {
+        Self {
+            id: release.id.to_string(),
+            component_id: release.component.to_string(),
+            distributor_id: release.distributor.as_ref().map(ToString::to_string),
+            upstream_revision: release.upstream_revision.clone(),
+            distributor_revision: release.distributor_revision.clone(),
+            captured_at: release.captured_at.clone(),
+            time_precision: release.time_precision,
+            schema_version: release.schema_version,
+            normalizer: release.normalizer.clone(),
+            normalizer_version: release.normalizer_version.clone(),
+            captures: release.captures.clone(),
+            accounting: release.accounting.clone(),
+            diagnostics_count: release.diagnostics.len(),
+            selected: release.selected,
+            availability: release.availability,
+            content_notices_count: release.content_notices.len(),
+            content_notice_licenses: release
+                .content_notices
+                .iter()
+                .map(|notice| notice.license.clone())
+                .collect(),
+            content_notice_locators: release
+                .content_notices
+                .iter()
+                .map(|notice| notice.locator.clone())
+                .collect(),
+            redistribution: format!("{:?}", release.redistribution).to_lowercase(),
+            redistribution_evidence: release.redistribution_evidence.clone(),
+        }
+    }
 }
 
 /// Minimum header observation for the currently derived store.

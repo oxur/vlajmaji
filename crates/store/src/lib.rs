@@ -32,8 +32,9 @@ pub use collections::{
     CollectionGeneration, CollectionGenerationMember, CollectionInput, CollectionInputDisposition,
     CollectionInspection, CollectionInstallationState, CollectionInstalledArtifactLocations,
     CollectionInstalledHistory, CollectionJournalObservation, CollectionListReport,
-    CollectionMutationReport, CollectionReconciliationAttempt, CollectionReconciliationReport,
-    CollectionReferenceMetadata, CollectionRegistrationSummary, CollectionReleaseSummary,
+    CollectionMutationReport, CollectionProjectedCapture, CollectionProjectedRelease,
+    CollectionReconciliationAttempt, CollectionReconciliationReport, CollectionReferenceMetadata,
+    CollectionReferenceProjection, CollectionRegistrationSummary, CollectionReleaseSummary,
     CollectionRequest, CollectionSelection, CollectionSourceMetadata, CollectionTermsSummary,
     NativePathReport, native_path_report,
 };

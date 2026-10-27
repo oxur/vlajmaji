@@ -79,6 +79,17 @@ library profile requests can deliberately replace the disabled list.
 sets and `default --clear` clears the configured default. Partial policy writes
 read the latest config under its writer lock and report only changed member IDs;
 semantic no-ops retain the original bytes and revision.
+`dictionary-query STORE --format compact --request JSON` and
+`lookup --format compact --request JSON` opt into compact Exact/Resolve output;
+both commands still default to the established full response. Resolve a returned
+key with `dictionary-detail STORE --reference JSON [--expected-snapshot SHA]`
+or `lookup-detail --reference JSON [--expected-snapshot SHA]`. Detail keys are
+strict versioned JSON and include required nullable fields. The optional
+snapshot token detects a mismatch with the compact query view; it is not an
+authenticity proof for an ordinary-open store.
+Standalone compact `dictionary-query` writes the selected Exact or Resolve
+response object directly at the JSON root. Configured `lookup` keeps its
+managed envelope and operation-tagged result.
 This layer does not alter `dictionary-query STORE` or the global default-store
 route, and a selected installed payload that fails its minimum open is reported
 as an error rather than as metadata-only availability.
