@@ -2258,7 +2258,10 @@ fn orphan_stage_attempts(
         let marker: StageMarker = match serde_json::from_slice::<StageMarker>(&bytes) {
             Ok(marker)
                 if marker.version == 1
-                    && matches!(marker.operation.as_str(), "install" | "update" | "rebuild") =>
+                    && matches!(
+                        marker.operation.as_str(),
+                        "install" | "update" | "rebuild" | "remove" | "reinstall"
+                    ) =>
             {
                 marker
             }

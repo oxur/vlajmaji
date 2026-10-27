@@ -841,3 +841,105 @@ fn test_remove_registered_only_pack_keeps_active_generation() {
     drop(catalogue);
     fs::remove_dir_all(root).unwrap();
 }
+
+#[test]
+fn test_reconcile_committed_stage_markers_and_unknown_operation() {
+    let root = fresh_root("committed-stage-marker-operations");
+    let (release, seal, release_sha256) = sealed_llg();
+    let installed = CollectionCatalogue::install(&root, request(&release, &seal)).unwrap();
+    assert_eq!(installed.local_revision, 1);
+    let removed = CollectionCatalogue::remove(&root, &[PackId::Llg], 1).unwrap();
+    assert_eq!(removed.local_revision, 2);
+    assert!(removed.generation.is_none());
+    let reinstalled =
+        CollectionCatalogue::reinstall(&root, request(&release, &seal), &release_sha256, 2)
+            .unwrap();
+    assert_eq!(reinstalled.local_revision, 3);
+    let active_generation = reinstalled.generation.unwrap().generation_id;
+
+    let clean = CollectionCatalogue::reconcile(&root).unwrap();
+    assert_eq!(clean.local_revision, 3);
+    assert_eq!(
+        clean.active_generation.as_deref(),
+        Some(active_generation.as_str())
+    );
+    assert!(clean.staged_attempts.is_empty());
+    let committed_install = clean
+        .attempts
+        .iter()
+        .find(|attempt| attempt.operation == "install")
+        .expect("install attempt is retained")
+        .attempt_id
+        .clone();
+    assert!(
+        clean
+            .attempts
+            .iter()
+            .any(|attempt| { attempt.operation == "remove" && attempt.status == "committed" })
+    );
+    assert!(
+        clean
+            .attempts
+            .iter()
+            .any(|attempt| { attempt.operation == "reinstall" && attempt.status == "committed" })
+    );
+
+    let generation_root = root.join("generations");
+    let orphan_id = "ffffffffffffffffffffffffffffffff";
+    assert!(
+        !clean
+            .attempts
+            .iter()
+            .any(|attempt| attempt.attempt_id == orphan_id)
+    );
+    let orphan_dir = generation_root.join("valid-uncommitted-remove");
+    fs::create_dir(&orphan_dir).unwrap();
+    let orphan_marker = serde_json::to_vec(&serde_json::json!({
+        "version": 1,
+        "attempt_id": orphan_id,
+        "operation": "remove"
+    }))
+    .unwrap();
+    fs::write(orphan_dir.join("attempt.json"), &orphan_marker).unwrap();
+
+    let unknown_dir = generation_root.join("unknown-operation-committed-id");
+    fs::create_dir(&unknown_dir).unwrap();
+    let unknown_marker = serde_json::to_vec(&serde_json::json!({
+        "version": 1,
+        "attempt_id": committed_install,
+        "operation": "future-operation"
+    }))
+    .unwrap();
+    fs::write(unknown_dir.join("attempt.json"), &unknown_marker).unwrap();
+
+    let database_path = root.join("catalogue.sqlite3");
+    let database_before = fs::read(&database_path).unwrap();
+    let report = CollectionCatalogue::reconcile(&root).unwrap();
+    let mut unknown_name_hex = String::new();
+    for byte in b"unknown-operation-committed-id" {
+        use std::fmt::Write as _;
+        write!(unknown_name_hex, "{byte:02x}").unwrap();
+    }
+    let mut expected_staged = vec![
+        orphan_id.to_owned(),
+        format!("unreadable:{unknown_name_hex}"),
+    ];
+    expected_staged.sort();
+    let mut observed_staged = report.staged_attempts.clone();
+    observed_staged.sort();
+    assert_eq!(observed_staged, expected_staged);
+    assert!(report.attention_required);
+    assert_eq!(report.local_revision, clean.local_revision);
+    assert_eq!(report.active_generation, clean.active_generation);
+    assert_eq!(report.attempts, clean.attempts);
+    assert_eq!(fs::read(&database_path).unwrap(), database_before);
+    assert_eq!(
+        fs::read(orphan_dir.join("attempt.json")).unwrap(),
+        orphan_marker
+    );
+    assert_eq!(
+        fs::read(unknown_dir.join("attempt.json")).unwrap(),
+        unknown_marker
+    );
+    fs::remove_dir_all(root).unwrap();
+}
