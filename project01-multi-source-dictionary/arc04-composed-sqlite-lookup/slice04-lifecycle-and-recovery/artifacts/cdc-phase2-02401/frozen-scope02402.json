@@ -1,0 +1,115 @@
+{
+  "ok": true,
+  "scope": "read-only exact committed source/scope/lock/guard/trailers/protected Git boundaries; no behavioral/DB/default/target proof",
+  "head": "024de8163e46b047c0e506aad6a0e3b109a71784",
+  "parent": "8b5df7b3ebc06d14b880af59f223355736706260",
+  "tree": "c8336dd4e24eb6d32b9dd00f9aeb29347e38ff9e",
+  "base": "8b5df7b3ebc06d14b880af59f223355736706260",
+  "changed_files": [
+    {
+      "path": "crates/cli/README.md",
+      "bytes": 8476,
+      "sha256": "67d8ea17dbdd54561e560c95c3f15b034545441afac9328207e9635fb2a07e48",
+      "git_blob": "a09b7e4189c4f20f3fa04273793de8da9fe6d445"
+    },
+    {
+      "path": "crates/cli/src/main.rs",
+      "bytes": 120842,
+      "sha256": "549fe4ac6de03537623055dc89abe045a45a8d4befc113480fc70360b9b66778",
+      "git_blob": "54d64a524a277e31d4f5812a045ebf4f1d57a4a1"
+    },
+    {
+      "path": "crates/cli/tests/collections_maintenance_contract.rs",
+      "bytes": 38915,
+      "sha256": "5c096b416914ec82e6ddc4bf1ac143cbe57e3ed87dbe5b9e5793334f851439fd",
+      "git_blob": "535c735e995b6da01ef1ee26c61cb691853f405e"
+    },
+    {
+      "path": "crates/search/src/collection_query.rs",
+      "bytes": 72594,
+      "sha256": "0bd613948f9ae0ac0e09586637c2bbd706e96cf4da34144b4e28c346ec8d6717",
+      "git_blob": "8e1f75ce39148331b69636f76d7770ffd491b6a2"
+    },
+    {
+      "path": "crates/store/README.md",
+      "bytes": 5779,
+      "sha256": "0f4e3f63b06fede36ec4e2e598b8c7b5c471d243e8ffe0b3aaa61e0541227d59",
+      "git_blob": "23a5c7b80bdc3e2424d121af04803132ea060497"
+    },
+    {
+      "path": "crates/store/src/collection_profiles.rs",
+      "bytes": 59965,
+      "sha256": "b61e26ce067d3b327e8e7d1e6676dd30e9b1b9bdc20f3fe0fd92c8f4f239e433",
+      "git_blob": "490cb531e8481cabf9d57fcd18e30447a1d83298"
+    },
+    {
+      "path": "crates/store/src/collection_profiles/policy.rs",
+      "bytes": 24460,
+      "sha256": "51b8d1f90a44df7f2ac36a88abadec2541ce8a0e7f6f29b26eb3ab858699684c",
+      "git_blob": "815d7b2df8367212a1c7957316822a6c5eaeff5a"
+    },
+    {
+      "path": "crates/store/src/collections.rs",
+      "bytes": 157025,
+      "sha256": "08f800f37cd31e8084f091891e80c0e3aa31e69c77d66cd75bfa0f76f3d6941b",
+      "git_blob": "f4a0aa09233f1e6b3e6a37c1f39ec1d7ea3d0d3b"
+    },
+    {
+      "path": "crates/store/src/collections/lifecycle.rs",
+      "bytes": 61087,
+      "sha256": "c4e3450f1791788f61aa65f5625c29ddcfbda7e8208ffc669ca85ad05229226e",
+      "git_blob": "59cc326c9142badb2c037d0419b67de95cf42f43"
+    },
+    {
+      "path": "crates/store/src/collections/maintenance.rs",
+      "bytes": 37512,
+      "sha256": "e7dfad5c24e9efd112146473ea1c955e2c91c0429c3c3d1bb362e1a15ed9407f",
+      "git_blob": "8bdafbb8614787b4262ddd94c8e0f47c8fccb0ce"
+    },
+    {
+      "path": "crates/store/src/lib.rs",
+      "bytes": 15336,
+      "sha256": "87c574ab0b0e8d3f3289eb8094ac32cd7b52e0cb353c2fdf527f9ccd968f7699",
+      "git_blob": "e87011dc8c3d0d3a773b3873216830d55eeb7cd6"
+    },
+    {
+      "path": "crates/store/tests/collection_policy_contract.rs",
+      "bytes": 5852,
+      "sha256": "70cb42964ed63810d3599c8bc7c7140d17df6795b8f8441fdcf67161c9605fb4",
+      "git_blob": "88e8a61140249a0fb556efc6cf739cd8aa73da8d"
+    },
+    {
+      "path": "crates/store/tests/collections_maintenance_contract.rs",
+      "bytes": 27662,
+      "sha256": "e95318b04cc392a32b3fcb3044903093e5435d62603be2671da619bc18019463",
+      "git_blob": "8d93ec3c0ad0356bd905d7379d676d01972f3fcf"
+    },
+    {
+      "path": "docs/collections.md",
+      "bytes": 10341,
+      "sha256": "10b7950b05b326290923263c428a9b14ea5e8e5e9b92e53d96aeb31ea31f1932",
+      "git_blob": "3cac88fd3071f30e21d39af8ceae309a25b7b542"
+    }
+  ],
+  "trailers": [
+    "Co-authored-by: Codex <noreply@openai.com>",
+    "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+  ],
+  "protected_git": [
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji",
+      "head": "52fd3c40a781d6945cfc74a2e79fa66b249e2a5d",
+      "status": ""
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc03/vlajmaji",
+      "head": "7b1c565ebf6c8a423e04211b599006b8c21d65d9",
+      "status": ""
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/bauske",
+      "head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+      "status": ""
+    }
+  ]
+}

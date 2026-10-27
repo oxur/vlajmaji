@@ -1,0 +1,13 @@
+version = 1
+revision = 5
+default_profile = "all"
+
+[profiles.all]
+root = "/tmp/vlajmaji-p01-a04-s04-cdc/phase2-cli-runtime01/cli lifecycle λ $()"
+packs = [
+    "lensisku-jbotci",
+    "llg",
+    "la-lojban",
+    "sutysisku",
+]
+disabled = []

@@ -1,0 +1,144 @@
+{
+  "ok": true,
+  "scope": "pure exact-key envelope predicates only; no product/CLI/store proof",
+  "source_sha256": "accf21f3ba68e681472c0ca9922077b2f2758ef87624ebaa457a552ce2266bf9",
+  "controls": [
+    {
+      "name": "failure-literal-positive",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-activation",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-attempt_id",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-category",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-detail",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-inputs",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-observed_generation",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-ok",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-operation",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-pack_id",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-path",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-prior_local_revision",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-proposed_generation",
+      "pass": true
+    },
+    {
+      "name": "failure-missing-version",
+      "pass": true
+    },
+    {
+      "name": "failure-extra-empty-key",
+      "pass": true
+    },
+    {
+      "name": "policy-literal-positive",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-affected_pack_ids",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-default_profile",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-disabled",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-observed_availability",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-observed_catalogue_revision",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-ok",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-operation",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-outcome",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-packs",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-path",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-prior_revision",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-prior_sha256",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-profile",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-revision",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-root",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-sha256",
+      "pass": true
+    },
+    {
+      "name": "policy-missing-version",
+      "pass": true
+    },
+    {
+      "name": "policy-extra-empty-key",
+      "pass": true
+    }
+  ],
+  "passed": 34
+}

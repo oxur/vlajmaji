@@ -1,0 +1,12 @@
+[package]
+name = "vlajmaji-a04-s04-cdc-maintenance-01"
+version = "0.0.0"
+edition = "2024"
+[dependencies]
+vlajmaji-lexicon = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon" }
+vlajmaji-store = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store" }
+vlajmaji-search = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search" }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.151", features = ["raw_value", "arbitrary_precision"] }
+sha2 = "=0.10.9"
+rusqlite = { version = "=0.40.2", default-features = false, features = ["bundled", "limits"] }

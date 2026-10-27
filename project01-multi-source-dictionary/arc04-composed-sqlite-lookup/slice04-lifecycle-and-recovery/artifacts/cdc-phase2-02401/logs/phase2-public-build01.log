@@ -1,0 +1,44 @@
+     Locking 50 packages to latest Rust 1.98.0 compatible versions
+      Adding serde_json v1.0.151 (available: v1.0.154)
+      Adding sha2 v0.10.9 (available: v0.11.1)
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+   Compiling vlajmaji-a04-s04-cdc-maintenance-01 v0.0.0 (/tmp/vlajmaji-p01-a04-s04-cdc/maintenance-caller01)
+error[E0631]: type mismatch in function arguments
+   --> src/main.rs:341:24
+    |
+341 |         IDS.iter().map(PackId::as_str).collect::<Vec<_>>()
+    |                    --- ^^^^^^^^^^^^^^
+    |                    |   |
+    |                    |   expected due to this
+    |                    |   found signature defined here
+    |                    required by a bound introduced by this call
+    |
+    = note: expected function signature `fn(&vlajmaji_lexicon::PackId) -> _`
+               found function signature `fn(vlajmaji_lexicon::PackId) -> _`
+note: required by a bound in `std::iter::Iterator::map`
+   --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/iter/traits/iterator.rs:831:4
+help: consider wrapping the function in a closure
+    |
+341 |         IDS.iter().map(|arg0: &vlajmaji_lexicon::PackId| PackId::as_str(*arg0)).collect::<Vec<_>>()
+    |                        +++++++++++++++++++++++++++++++++               +++++++
+
+error[E0599]: the method `collect` exists for struct `Map<Iter<'_, PackId>, fn(PackId) -> &str {PackId::as_str}>`, but its trait bounds were not satisfied
+   --> src/main.rs:341:40
+    |
+341 |         IDS.iter().map(PackId::as_str).collect::<Vec<_>>()
+    |                                        ^^^^^^^ method cannot be called due to unsatisfied trait bounds
+    |
+    = note: the following trait bounds were not satisfied:
+            `<fn(vlajmaji_lexicon::PackId) -> &'static str {vlajmaji_lexicon::PackId::as_str} as FnOnce<(&vlajmaji_lexicon::PackId,)>>::Output = _`
+            which is required by `std::iter::Map<std::slice::Iter<'_, vlajmaji_lexicon::PackId>, fn(vlajmaji_lexicon::PackId) -> &'static str {vlajmaji_lexicon::PackId::as_str}>: std::iter::Iterator`
+            `fn(vlajmaji_lexicon::PackId) -> &'static str {vlajmaji_lexicon::PackId::as_str}: FnMut<(&vlajmaji_lexicon::PackId,)>`
+            which is required by `std::iter::Map<std::slice::Iter<'_, vlajmaji_lexicon::PackId>, fn(vlajmaji_lexicon::PackId) -> &'static str {vlajmaji_lexicon::PackId::as_str}>: std::iter::Iterator`
+            `std::iter::Map<std::slice::Iter<'_, vlajmaji_lexicon::PackId>, fn(vlajmaji_lexicon::PackId) -> &'static str {vlajmaji_lexicon::PackId::as_str}>: std::iter::Iterator`
+            which is required by `&mut std::iter::Map<std::slice::Iter<'_, vlajmaji_lexicon::PackId>, fn(vlajmaji_lexicon::PackId) -> &'static str {vlajmaji_lexicon::PackId::as_str}>: std::iter::Iterator`
+    = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_a04_s04_cdc_maintenance_01-b58b66d553f5edd2.long-type-3468500027309037515.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+Some errors have detailed explanations: E0599, E0631.
+For more information about an error, try `rustc --explain E0599`.
+error: could not compile `vlajmaji-a04-s04-cdc-maintenance-01` (bin "vlajmaji-a04-s04-cdc-maintenance-01") due to 2 previous errors

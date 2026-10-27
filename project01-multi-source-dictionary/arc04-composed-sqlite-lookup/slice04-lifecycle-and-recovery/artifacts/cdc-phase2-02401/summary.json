@@ -1,0 +1,29 @@
+{
+  "source": "024de8163e46b047c0e506aad6a0e3b109a71784",
+  "parent": "8b5df7b3ebc06d14b880af59f223355736706260",
+  "disposition": "REJECTED_PHASE2_CANDIDATE_PENDING_THREE_CONNECTED_CORRECTIONS",
+  "scope_pass": true,
+  "all_six_rows_open": true,
+  "independent_public": {
+    "runtime01": "caller-only migration revision oracle failure after successful captured-v1 route",
+    "runtime02": "confirmed removed reason product failure, failfast",
+    "runtime03": "diagnostic complete; one retained removed-reason failure; remaining named predicates reached, overall exit101"
+  },
+  "independent_cli": {
+    "exit": 0,
+    "processes": 26,
+    "scope": "original exact schema/count/default/BrokenPipe predicates; later direct envelope inspection additionally confirms known-context gap"
+  },
+  "findings": [
+    "F01 removed/query integration and required v2 selection marker",
+    "F02 known maintenance failure context/pack/input accounting",
+    "F03 native/no-follow/truthful journal observations and after-rollback timing"
+  ],
+  "not_proved": [
+    "actual Linux physical native/dev-full execution",
+    "Full lifecycle campaign",
+    "hot-journal recovery",
+    "power-loss durability"
+  ],
+  "preservation": "No source/default/protected/accepted-store writes. Runtime Tiny roots, failed builds/binaries and raw aliases retained locally; bulk binaries not Git."
+}

@@ -1,0 +1,8 @@
+PASS pre-input literal6/lexical5 and exact25-family comparator: reorder positive, missing/extra empty, multiplicity and Presence negatives
+PREPARED original standalone Lensisku STORE for independent explicit/scratch-XDG CLI before/after controls; no real default
+
+thread 'main' (77373663) panicked at src/main.rs:1081:5:
+assertion `left == right` failed
+  left: 2
+ right: 1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

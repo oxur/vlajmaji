@@ -1,0 +1,8 @@
+PASS pre-input literal6/lexical5 and exact25-family comparator: reorder positive, missing/extra empty, multiplicity and Presence negatives
+PREPARED original standalone Lensisku STORE for independent explicit/scratch-XDG CLI before/after controls; no real default
+PASS actual captured-v1 Tiny creation→reconcile no auto-migration/logical mutation→typed v1 write fence→EXPLICIT migrate valid counterpart; no v1 crash/journal claim
+
+thread 'main' (77375931) panicked at src/main.rs:291:5:
+assertion failed: matches!(e.execute(exact(None,None)),Err(CollectionQueryError::UnavailablePack{reason,..})
+    if reason=="removed")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
