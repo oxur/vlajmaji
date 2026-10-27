@@ -1,6 +1,6 @@
 # Project01 ledger
 
-**Current partial checkpoint, 2026-10-27 UTC:** A04 S01–S03 independently accepted/eighteen child rows; A04-01/02/04 DONE, seven arc obligations and all fourteen project rows OPEN. S03 configured selection/cursor/native/full-wire proof is additional partial evidence; S04 lifecycle/migration, S05 projections/fresh arc and A05/A06/Operator gates retain their owners. Root owns user-authorized current PR4 integration; no project completion.
+**Current partial checkpoint, 2026-10-27 UTC:** A04 S01–S03 accepted/18childDONE; S04 lifecycle technicalACCEPTED432/currentCI40515705170 green, canonicalclosepending. Current A04-01/02/04DONE/7OPEN; proposed after rootclearance only03/05 additionallyDONE. All14projectrows remainOPEN; S05 output/budgets/fresharc, A05/A06 and Operator gates retain owners. User requests S04PR afterclose/separateS05branch; root coordinates, no merge/publication inferred.
 
 All fourteen project rows remain **open**. Arc01all4children and independent technical composition at efef9c4supply the complete fixture foundation; final canonical packet gate accepted at7ddd0db and Arc01CLOSED. A03all4children and fresh assembled technical composition are accepted; actual canonical gate independently accepted. Remaining topology/editor/final project and Operator gates remain. Arc02completefullraw/pipeline/persistedlookup and fresh technical/finalcanonical gates are also accepted at4e37016/5456b54. Partial contributions are explicit below; none is full-project acceptance.
 

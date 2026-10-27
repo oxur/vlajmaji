@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S03 CLOSED, eighteen child rows/A04-01,02,04 DONE; seven arc rows OPEN. S04 initial increment independently accepted locally at 8b5df7b3; numbered iteration01 ISSUED after root final readiness PASS, six lifecycle rows OPEN, S05 unissued |
-| version / date | 1.12 / 2026-10-27 UTC |
+| status | ACTIVE; S01–S03 CLOSED/18childDONE/3arcDONE. S04 technically ACCEPTED432/currentCI40515705170 SUCCESS, sixrow canonicalclose/root reviewpending; S05 usefuloutput/fresharc unissued. Remaining contracts unchanged. |
+| version / date | 1.13 / 2026-10-27 UTC |
 | authority | Latest 2026-10-27: Duncan directed “when you've finished up, go ahead and dive into the next slice”. Autonomous THROUGH ARC04 ONLY and unchanged Sol6.1/high CDC/Luna/high CC persist. S03/user merge/main CI reconciled; root approved S04 initial readiness. S01 numerical/count agreements remain accepted historical comparison authority, not new S04 Full/push authority. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S03 contracts, reviewed source dcdf216; Duncan merged PR4 as main b0106b with identical tree and all three main CI jobs SUCCESS. Bauske c580/accepted data/default remain protected. |
@@ -146,3 +146,9 @@ Phase2 frozen024 is independently rejected pending three connected query/context
 ### Iteration02 exact intake and ownership transfer — 2026-10-27 04:52:10 UTC
 
 Retained Luna/high CC acknowledged issued planning23f6240/prompt079cbf4e…32934a, loaded exact full prompt/plan/ledger/review, canonical summary/referenced raw failures, named source sections/fixtures and Rust EH-01/04/10 + OB-16, and returned a source-cited three-finding contract readback. This reading coverage is CC attestation, not independent proof of understanding. CDC checked it against the actual recipe, revalidated clean source024/treec8336dd4/branch and no active process, accepted intake and explicitly transferred ONLY the seven issued source paths/index/one retained target to CC. Source edits/builds must follow this transfer; CC first records its own detailed intake in execution.md. CDC/root now source/index/target read-only until explicit frozen handback; CDC retains planning except CC append-only attestation. Full/default/cache/network/push/CI remain unissued, all six rows OPEN.
+
+## Version1.13 — S04 complete technical proposal, canonical close pending
+
+S04 delivers catalogue2/migration/writefence, explicit lifecycle/policy/reconcile and reversible scratch legacy/default transition at432d632; current hosted40515705170 alljobsSUCCESS. CDC Tiny/public/CLI and one reviewed4publicationFull proof retain exact scope/resource/crash/platform limitations. Sixchildrows stayOPEN until rootcanonical/mechanical close; proposed newlyA04-03/05done only. Other fivearc and all14projectrows retain S05/output/budget/compatibility/freshassembled owners. This updates current disposition, not criteria/decomposition/architecture. Initial two increments required six total implementation passes including explicit human5→6ONEtestfile/CI amendment; no automatic seventh. Every original/numbered prompt/failure retained.
+
+Duncan now requests S04branchPR afterclose and S05onitsownbranch. Root will create/attachS04PR and coordinate a new nondefaultS05branch basedaccepted432 (record exactbase/ref/dependency then); existing isolatedcheckout/retainedtarget can be reused without newcache/worktree. No S05sourceissue before S04canonicalclose/PR/actualbranchtransition. No merge/publication or generalfuturepush authority. S05 remains useful pre-hydration readable exact/reference, compactJSON/detail with numeric sheet plus freshassembledARC review; no separate fresharc campaign before W5.

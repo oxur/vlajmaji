@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "scope": "CDC independent parse/reconciliation of downloaded hosted logs; no local reexecution",
+  "head": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "ci_run": 40515705170,
+  "conclusion": "success",
+  "census": [
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "result_rows": 51,
+      "passed": 282,
+      "failed": 0,
+      "ignored": 1
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --locked -p vlajmaji-search --no-default-features",
+      "result_rows": 7,
+      "passed": 39,
+      "failed": 0,
+      "ignored": 0
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --all-features --locked",
+      "result_rows": 51,
+      "passed": 284,
+      "failed": 0,
+      "ignored": 1
+    },
+    {
+      "job": "Test (macos-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "result_rows": 51,
+      "passed": 277,
+      "failed": 0,
+      "ignored": 1
+    }
+  ],
+  "explicit_witness_observations": [
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "target": null,
+      "test": "test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes",
+      "line": "2026-10-27T13:52:04.8254346Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "target": null,
+      "test": "test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes",
+      "line": "2026-10-27T13:52:05.2955012Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "target": null,
+      "test": "test_linux_native_root_and_config_roundtrip_through_cli",
+      "line": "2026-10-27T13:52:05.4983299Z test test_linux_native_root_and_config_roundtrip_through_cli ... ok"
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "target": null,
+      "test": "test_reconcile_committed_stage_markers_and_unknown_operation",
+      "line": "2026-10-27T13:52:14.1170866Z test test_reconcile_committed_stage_markers_and_unknown_operation ... ok"
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --all-features --locked",
+      "target": null,
+      "test": "test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes",
+      "line": "2026-10-27T13:53:51.7689819Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --all-features --locked",
+      "target": null,
+      "test": "test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes",
+      "line": "2026-10-27T13:53:52.4134785Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --all-features --locked",
+      "target": null,
+      "test": "test_linux_native_root_and_config_roundtrip_through_cli",
+      "line": "2026-10-27T13:53:52.7123943Z test test_linux_native_root_and_config_roundtrip_through_cli ... ok"
+    },
+    {
+      "job": "Test (ubuntu-latest)",
+      "step": "Run cargo test --workspace --all-features --locked",
+      "target": null,
+      "test": "test_reconcile_committed_stage_markers_and_unknown_operation",
+      "line": "2026-10-27T13:54:02.5233301Z test test_reconcile_committed_stage_markers_and_unknown_operation ... ok"
+    },
+    {
+      "job": "Test (macos-latest)",
+      "step": "Run cargo test --workspace --locked",
+      "target": null,
+      "test": "test_reconcile_committed_stage_markers_and_unknown_operation",
+      "line": "2026-10-27T13:52:18.1656160Z test test_reconcile_committed_stage_markers_and_unknown_operation ... ok"
+    }
+  ],
+  "discrepancy": "aggregate jobs snapshot temporarily retained Linux in_progress; direct individual Linux job122228979572 completed success with all steps success resolves it; original snapshots preserved",
+  "full_reexecution": false,
+  "ok": true
+}
