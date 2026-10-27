@@ -158,6 +158,28 @@ enum CollectionsCommand {
         after_help = "Use --manifest with --pack ID (repeatable) or --all. --all requires all four pack records. A different installed release reports update_required; this command does not alter source selection or the user's default store."
     )]
     Install(CollectionMutationArgs),
+    /// Explicitly migrate a compatible version-1 catalogue to version 2.
+    Migrate {
+        root: PathBuf,
+        #[arg(long)]
+        expected_revision: u64,
+    },
+    /// Replace selected currently installed packs at an expected revision.
+    #[command(
+        after_help = "Uses the same --manifest or direct sealed inputs as install. Only selected currently installed packs are replaced; --expected-revision is checked before staging. This never changes a profile or the global default."
+    )]
+    Update {
+        #[command(flatten)]
+        args: CollectionMutationArgs,
+        #[arg(long)]
+        expected_revision: u64,
+    },
+    /// Rebuild the current derived generation from retained sealed inputs.
+    Rebuild {
+        root: PathBuf,
+        #[arg(long)]
+        expected_revision: u64,
+    },
     /// List registrations and the current installed generation.
     #[command(
         after_help = "Read-only summary of an existing explicit catalogue. This does not create a catalogue or rehash pack/store payloads."
@@ -359,11 +381,17 @@ struct ManagedOutputContext {
     snapshot: Option<vlajmaji_search::CollectionSelectionSnapshot>,
     known_pack_ids: Vec<String>,
     outcome: String,
+    collection_failure: Option<vlajmaji_store::CollectionFailureReport>,
 }
 
 impl ManagedOutputContext {
-    fn report(&self, detail: String) -> CollectionQueryErrorReport {
-        CollectionQueryErrorReport {
+    fn report(&self, detail: String) -> serde_json::Value {
+        if let Some(mut report) = self.collection_failure.clone() {
+            report.category = "response_output_io".into();
+            report.detail = format!("{detail}; {}", report.detail);
+            return serde_json::json!(report);
+        }
+        serde_json::json!(CollectionQueryErrorReport {
             version: 1,
             ok: false,
             category: "response_output_io".into(),
@@ -377,7 +405,7 @@ impl ManagedOutputContext {
             known_pack_ids: self.known_pack_ids.clone(),
             outcome: self.outcome.clone(),
             writer: None,
-        }
+        })
     }
 }
 
@@ -396,6 +424,7 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
         snapshot: None,
         known_pack_ids: packs,
         outcome: outcome.into(),
+        collection_failure: None,
     };
     match command {
         Command::Lookup {
@@ -466,6 +495,103 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
         },
         _ => None,
     }
+}
+
+fn mutation_output_context(
+    operation: &str,
+    root: &Path,
+    report: &vlajmaji_store::CollectionMutationReport,
+    prior_revision: u64,
+) -> ManagedOutputContext {
+    let generation = report.generation.as_ref();
+    let changed_generation = matches!(report.outcome.as_str(), "updated" | "rebuilt");
+    let activation = if changed_generation {
+        "committed"
+    } else {
+        "not_applicable"
+    };
+    let output = vlajmaji_store::CollectionFailureReport {
+        version: 1,
+        ok: false,
+        operation: operation.into(),
+        category: "response_output_io".into(),
+        detail: format!(
+            "{operation} completed at local_revision={}",
+            report.local_revision
+        ),
+        path: Some(vlajmaji_store::native_path_report(root)),
+        pack_id: None,
+        attempt_id: report.attempt_id.clone(),
+        prior_local_revision: Some(prior_revision),
+        proposed_generation: changed_generation
+            .then(|| generation.map(|item| item.generation_id.clone()))
+            .flatten(),
+        observed_generation: generation.map(|item| item.generation_id.clone()),
+        activation: Some(activation.into()),
+        inputs: report.inputs.clone(),
+    };
+    lifecycle_output_context(operation, output)
+}
+
+fn migration_output_context(
+    report: &vlajmaji_store::CollectionCatalogueMigrationReport,
+) -> ManagedOutputContext {
+    let output = vlajmaji_store::CollectionFailureReport {
+        version: 1,
+        ok: false,
+        operation: "migrate".into(),
+        category: "response_output_io".into(),
+        detail: format!(
+            "migrate completed at local_revision={}",
+            report.local_revision
+        ),
+        path: Some(report.root_path.clone()),
+        pack_id: None,
+        attempt_id: None,
+        prior_local_revision: Some(report.prior_local_revision),
+        proposed_generation: None,
+        observed_generation: report.active_generation.clone(),
+        activation: Some(
+            if report.outcome == "migrated" {
+                "committed"
+            } else {
+                "not_applicable"
+            }
+            .into(),
+        ),
+        inputs: Vec::new(),
+    };
+    lifecycle_output_context("migrate", output)
+}
+
+fn lifecycle_output_context(
+    operation: &str,
+    collection_failure: vlajmaji_store::CollectionFailureReport,
+) -> ManagedOutputContext {
+    ManagedOutputContext {
+        operation: operation.into(),
+        config_path: None,
+        root_path: collection_failure.path.clone(),
+        profile: None,
+        requested_profile: None,
+        snapshot: None,
+        known_pack_ids: Vec::new(),
+        outcome: collection_failure
+            .activation
+            .clone()
+            .unwrap_or_else(|| "not_applicable".into()),
+        collection_failure: Some(collection_failure),
+    }
+}
+
+fn lifecycle_serialization_error(context: &ManagedOutputContext, detail: String) -> CliError {
+    let mut failure = context
+        .collection_failure
+        .clone()
+        .expect("lifecycle output context retains its collection report");
+    failure.category = "response_serialization".into();
+    failure.detail = format!("{}: {detail}", failure.detail);
+    CliError::CollectionFailure(Box::new(failure))
 }
 
 fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliError> {
@@ -1029,8 +1155,38 @@ fn collections_command(
     output_context: &mut Option<ManagedOutputContext>,
 ) -> Result<serde_json::Value, CliError> {
     match command {
-        CollectionsCommand::Register(args) => collection_mutation(args, "register"),
-        CollectionsCommand::Install(args) => collection_mutation(args, "install"),
+        CollectionsCommand::Register(args) => {
+            collection_mutation(args, "register", None, output_context)
+        }
+        CollectionsCommand::Install(args) => {
+            collection_mutation(args, "install", None, output_context)
+        }
+        CollectionsCommand::Migrate {
+            root,
+            expected_revision,
+        } => {
+            let report = CollectionCatalogue::migrate(root, expected_revision)
+                .map_err(|error| collection_cli_error(error, "migrate"))?;
+            let context = migration_output_context(&report);
+            *output_context = Some(context.clone());
+            serde_json::to_value(report)
+                .map_err(|error| lifecycle_serialization_error(&context, error.to_string()))
+        }
+        CollectionsCommand::Update {
+            args,
+            expected_revision,
+        } => collection_mutation(args, "update", Some(expected_revision), output_context),
+        CollectionsCommand::Rebuild {
+            root,
+            expected_revision,
+        } => {
+            let report = CollectionCatalogue::rebuild(&root, expected_revision)
+                .map_err(|error| collection_cli_error(error, "rebuild"))?;
+            let context = mutation_output_context("rebuild", &root, &report, expected_revision);
+            *output_context = Some(context.clone());
+            serde_json::to_value(report)
+                .map_err(|error| lifecycle_serialization_error(&context, error.to_string()))
+        }
         CollectionsCommand::List { root } => {
             let catalogue = CollectionCatalogue::open(&root)
                 .map_err(|error| collection_cli_error(error, "list"))?;
@@ -1368,6 +1524,8 @@ fn resolve_config_path(explicit: Option<&Path>) -> Result<PathBuf, ConfigLocatio
 fn collection_mutation(
     args: CollectionMutationArgs,
     operation: &str,
+    expected_revision: Option<u64>,
+    output_context: &mut Option<ManagedOutputContext>,
 ) -> Result<serde_json::Value, CliError> {
     let request = if let Some(manifest) = args.manifest.as_ref() {
         if args.release.is_some() || args.seal.is_some() {
@@ -1433,6 +1591,12 @@ fn collection_mutation(
             .map_err(|error| collection_cli_error(error, operation))?,
         "install" => CollectionCatalogue::install(&args.root, request)
             .map_err(|error| collection_cli_error(error, operation))?,
+        "update" => CollectionCatalogue::update(
+            &args.root,
+            request,
+            expected_revision.expect("update CLI requires an expected revision"),
+        )
+        .map_err(|error| collection_cli_error(error, operation))?,
         _ => {
             return Err(structured_error(
                 "collections_operation",
@@ -1440,8 +1604,20 @@ fn collection_mutation(
             ));
         }
     };
-    serde_json::to_value(report)
-        .map_err(|error| structured_error("collections_json", error.to_string()))
+    if operation == "update" {
+        let context = mutation_output_context(
+            "update",
+            &args.root,
+            &report,
+            expected_revision.expect("update CLI requires an expected revision"),
+        );
+        *output_context = Some(context.clone());
+        serde_json::to_value(report)
+            .map_err(|error| lifecycle_serialization_error(&context, error.to_string()))
+    } else {
+        serde_json::to_value(report)
+            .map_err(|error| structured_error("collections_json", error.to_string()))
+    }
 }
 
 fn parse_collection_pack(value: &str) -> Result<PackId, CollectionError> {
@@ -2038,7 +2214,7 @@ fn write_output_error<E: Write>(
 
 #[cfg(test)]
 mod managed_output_tests {
-    use super::{ManagedOutputContext, emit_success_response};
+    use super::{ManagedOutputContext, emit_success_response, lifecycle_output_context};
     use std::io::{self, Write};
 
     struct BadDescriptorWriter;
@@ -2064,6 +2240,7 @@ mod managed_output_tests {
             snapshot: None,
             known_pack_ids: vec!["llg".into()],
             outcome: "committed".into(),
+            collection_failure: None,
         };
         let mut stderr = Vec::new();
         let ok = emit_success_response(
@@ -2100,6 +2277,7 @@ mod managed_output_tests {
             snapshot: None,
             known_pack_ids: vec!["llg".into()],
             outcome: "not_applicable".into(),
+            collection_failure: None,
         };
         let mut read_stderr = Vec::new();
         assert!(!emit_success_response(
@@ -2111,6 +2289,104 @@ mod managed_output_tests {
         let read_envelope: serde_json::Value = serde_json::from_slice(&read_stderr).unwrap();
         assert_eq!(read_envelope["error"]["operation"], "lookup");
         assert_eq!(read_envelope["error"]["outcome"], "not_applicable");
+    }
+
+    #[test]
+    fn test_emit_collection_response_io_failure_retains_committed_lifecycle_context() {
+        let context = lifecycle_output_context(
+            "update",
+            vlajmaji_store::CollectionFailureReport {
+                version: 1,
+                ok: false,
+                operation: "update".into(),
+                category: "response_output_io".into(),
+                detail: "update completed at local_revision=8".into(),
+                path: Some(vlajmaji_store::NativePathReport {
+                    encoding: "unix-bytes".into(),
+                    hex: "2f746d702f636174616c6f677565".into(),
+                    utf8: Some("/tmp/catalogue".into()),
+                }),
+                pack_id: None,
+                attempt_id: Some("attempt-8".into()),
+                prior_local_revision: Some(7),
+                proposed_generation: Some("generation-8".into()),
+                observed_generation: Some("generation-8".into()),
+                activation: Some("committed".into()),
+                inputs: vec![vlajmaji_store::CollectionInputDisposition {
+                    pack_id: "llg".into(),
+                    disposition: "validated".into(),
+                    payload_kind: Some("synthetic".into()),
+                    release_sha256: Some("a".repeat(64)),
+                    report: None,
+                }],
+            },
+        );
+        let mut stderr = Vec::new();
+        assert!(!emit_success_response(
+            &serde_json::json!({"operation":"update"}),
+            &mut BadDescriptorWriter,
+            &mut stderr,
+            Some(&context),
+        ));
+        let envelope: serde_json::Value = serde_json::from_slice(&stderr).unwrap();
+        assert_eq!(envelope["error"]["category"], "response_output_io");
+        assert_eq!(envelope["error"]["operation"], "update");
+        assert_eq!(envelope["error"]["activation"], "committed");
+        assert_eq!(envelope["error"]["prior_local_revision"], 7);
+        assert_eq!(envelope["error"]["proposed_generation"], "generation-8");
+        assert_eq!(envelope["error"]["observed_generation"], "generation-8");
+        assert_eq!(envelope["error"]["attempt_id"], "attempt-8");
+        assert_eq!(envelope["error"]["inputs"][0]["pack_id"], "llg");
+        assert!(
+            envelope["error"]["detail"]
+                .as_str()
+                .unwrap()
+                .contains("local_revision=8")
+        );
+    }
+
+    #[test]
+    fn test_emit_migrated_response_io_failure_reports_migration_context() {
+        let report = vlajmaji_store::CollectionCatalogueMigrationReport {
+            version: 1,
+            ok: true,
+            operation: "migrate".into(),
+            outcome: "migrated".into(),
+            root_path: vlajmaji_store::NativePathReport {
+                encoding: "unix-bytes".into(),
+                hex: "2f746d702f636174616c6f677565".into(),
+                utf8: Some("/tmp/catalogue".into()),
+            },
+            prior_schema_version: 1,
+            schema_version: 2,
+            prior_local_revision: 6,
+            local_revision: 6,
+            active_generation: Some("generation-6".into()),
+        };
+        let context = super::migration_output_context(&report);
+        let mut stderr = Vec::new();
+        assert!(!emit_success_response(
+            &serde_json::json!({"operation":"migrate","outcome":"migrated"}),
+            &mut BadDescriptorWriter,
+            &mut stderr,
+            Some(&context),
+        ));
+        let envelope: serde_json::Value = serde_json::from_slice(&stderr).unwrap();
+        let error = &envelope["error"];
+        assert_eq!(error["category"], "response_output_io");
+        assert_eq!(error["operation"], "migrate");
+        assert_eq!(error["activation"], "committed");
+        assert_eq!(error["prior_local_revision"], 6);
+        assert_eq!(error["observed_generation"], "generation-6");
+        assert!(error["proposed_generation"].is_null());
+        assert!(error["attempt_id"].is_null());
+        assert_eq!(error["inputs"], serde_json::json!([]));
+        assert!(
+            error["detail"]
+                .as_str()
+                .unwrap()
+                .contains("local_revision=6")
+        );
     }
 }
 

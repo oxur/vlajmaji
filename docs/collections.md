@@ -90,9 +90,39 @@ vlajmaji verify all "$STORE"
 The catalogue retains immutable generation and registration history. An exact
 installed repeat verifies incoming and owned bytes and the current derived
 store; it does not create another generation. A different release for an
-already-installed pack reports `update_required`; replacing an installed pack
-belongs to a later lifecycle operation. Failed or interrupted stages remain
-identifiable for inspection and are not silently cleaned up.
+already-installed pack reports `update_required`; use the explicit
+revision-checked update command to replace currently installed selected packs.
+A compatible version-1 catalogue must first be explicitly migrated. Rebuild
+publishes a fresh derived generation from retained sealed inputs. These
+operations retain earlier registrations and generations; they do not change
+user selection or the global default.
+
+```sh
+vlajmaji collections list ./local-catalogue
+vlajmaji collections migrate ./local-catalogue --expected-revision 4
+vlajmaji collections update ./local-catalogue \
+  --manifest ./batch.json --pack llg --allow-synthetic --expected-revision 5
+vlajmaji collections rebuild ./local-catalogue --expected-revision 6
+```
+
+Migration renames the six physical version-1 tables transactionally. It leaves
+only the old `catalogue_meta` name as a read-only `key,value` view; the other
+five old table names are absent, preventing old same-release no-op reads from
+mistaking retained history for an active installation. The expected local
+revision is checked under the writer transaction before migration or lifecycle
+staging. A pinned read transaction may make migration commit Busy; release it
+and retry with the unchanged revision. Exact same-seal update is idempotent,
+while rebuild deliberately advances revision and generation identity even when
+canonical content is unchanged.
+
+Update replaces only selected packs that are already installed. It retains
+other current members and rejects stale expected revisions before allocating a
+generation. Rebuild uses the currently installed sealed inputs, verifies the
+derived SQLite store, and can repair a damaged derived store without selecting
+an older historical generation as a fallback. Missing or corrupt retained
+release inputs remain errors. Failed or interrupted stages remain identifiable
+for inspection and are not silently cleaned up. Removal, exact reinstall, and
+recovery are separate future operations.
 
 `list` and `inspect` are read-only. They report the minimum readable format
 boundary, current owned-file presence, registration inputs, terms, attribution,
@@ -101,6 +131,10 @@ perform an `all` audit. Use the explicit store verification command when a new
 full integrity check is needed. The generation's `path` descriptor contains a
 UTF-8 convenience value when representable and an encoding-tagged hex value for
 native path fidelity.
+
+The version-1 `CollectionListReport` wire format includes the additive
+`catalogue_schema_version` field; its earlier fields and meanings are retained,
+while serialized list envelopes now include that additional field.
 
 Collection failures are versioned JSON reports on stderr with a stable
 category, operation, detail, nullable context fields, input dispositions, and

@@ -27,13 +27,14 @@ pub use collection_profiles::{
 };
 pub use collections::{
     CollectionCaptureReference, CollectionCaptureSummary, CollectionCatalogue,
-    CollectionCategoryCounts, CollectionDerivedStoreMinimum, CollectionEntityReference,
-    CollectionError, CollectionErrorCategory, CollectionFailureReport, CollectionGeneration,
-    CollectionGenerationMember, CollectionInput, CollectionInputDisposition, CollectionInspection,
-    CollectionInstalledArtifactLocations, CollectionInstalledHistory, CollectionListReport,
-    CollectionMutationReport, CollectionReferenceMetadata, CollectionRegistrationSummary,
-    CollectionReleaseSummary, CollectionRequest, CollectionSelection, CollectionSourceMetadata,
-    CollectionTermsSummary, NativePathReport, native_path_report,
+    CollectionCatalogueMigrationReport, CollectionCategoryCounts, CollectionDerivedStoreMinimum,
+    CollectionEntityReference, CollectionError, CollectionErrorCategory, CollectionFailureReport,
+    CollectionGeneration, CollectionGenerationMember, CollectionInput, CollectionInputDisposition,
+    CollectionInspection, CollectionInstalledArtifactLocations, CollectionInstalledHistory,
+    CollectionListReport, CollectionMutationReport, CollectionReferenceMetadata,
+    CollectionRegistrationSummary, CollectionReleaseSummary, CollectionRequest,
+    CollectionSelection, CollectionSourceMetadata, CollectionTermsSummary, NativePathReport,
+    native_path_report,
 };
 pub use dictionary::{
     DictionaryStore, DictionaryStoreError, DictionaryStoreInvalidity, DictionaryStoreSummary,

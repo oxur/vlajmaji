@@ -12,7 +12,39 @@ use crate::collections::CollectionError;
 
 pub(crate) const CATALOGUE_FILE: &str = "catalogue.sqlite3";
 const FORMAT: &str = "vlajmaji-collection-catalogue";
-const VERSION: &str = "1";
+pub(crate) const VERSION_1: u32 = 1;
+pub(crate) const VERSION_2: u32 = 2;
+
+#[derive(Clone, Copy)]
+pub(crate) struct CatalogueTables {
+    pub(crate) meta: &'static str,
+    pub(crate) registrations: &'static str,
+    pub(crate) registration_locations: &'static str,
+    pub(crate) generations: &'static str,
+    pub(crate) installed_heads: &'static str,
+    pub(crate) attempts: &'static str,
+}
+
+const TABLES_V1: CatalogueTables = CatalogueTables {
+    meta: "catalogue_meta",
+    registrations: "registrations",
+    registration_locations: "registration_locations",
+    generations: "generations",
+    installed_heads: "installed_heads",
+    attempts: "attempts",
+};
+const TABLES_V2: CatalogueTables = CatalogueTables {
+    meta: "catalogue_meta_v2",
+    registrations: "registrations_v2",
+    registration_locations: "registration_locations_v2",
+    generations: "generations_v2",
+    installed_heads: "installed_heads_v2",
+    attempts: "attempts_v2",
+};
+
+pub(crate) const fn tables_v2() -> CatalogueTables {
+    TABLES_V2
+}
 
 pub(crate) fn database_path(root: &Path) -> PathBuf {
     root.join(CATALOGUE_FILE)
@@ -62,6 +94,39 @@ pub(crate) fn open_readonly(root: &Path) -> Result<Connection, CollectionError> 
         })?;
     check_family(&connection, &path)?;
     Ok(connection)
+}
+
+pub(crate) fn schema_version(connection: &Connection, path: &Path) -> Result<u32, CollectionError> {
+    let raw: String = connection
+        .query_row(
+            "SELECT value FROM catalogue_meta WHERE key='schema_version'",
+            [],
+            |row| row.get(0),
+        )
+        .map_err(|error| CollectionError::ArtifactIoSource {
+            path: Some(path.to_path_buf()),
+            source: Box::new(error),
+        })?;
+    let version = raw.parse::<u32>().map_err(|_| {
+        CollectionError::UnsupportedVersion("catalogue schema_version is malformed".into())
+    })?;
+    if version != VERSION_1 && version != VERSION_2 {
+        return Err(CollectionError::UnsupportedVersion(format!(
+            "catalogue schema_version {version} is not supported"
+        )));
+    }
+    Ok(version)
+}
+
+pub(crate) fn tables_for(
+    connection: &Connection,
+    path: &Path,
+) -> Result<CatalogueTables, CollectionError> {
+    match schema_version(connection, path)? {
+        VERSION_1 => Ok(TABLES_V1),
+        VERSION_2 => Ok(TABLES_V2),
+        _ => unreachable!("schema_version validates the closed version set"),
+    }
 }
 
 pub(crate) fn initialize_exclusive(root: &Path) -> Result<Connection, CollectionError> {
@@ -126,8 +191,8 @@ pub(crate) fn initialize_exclusive(root: &Path) -> Result<Connection, Collection
          PRAGMA synchronous=FULL;
          PRAGMA foreign_keys=ON;
          BEGIN IMMEDIATE;
-         CREATE TABLE catalogue_meta(key TEXT PRIMARY KEY, value TEXT NOT NULL) STRICT;
-         CREATE TABLE registrations(
+         CREATE TABLE catalogue_meta_v2(key TEXT PRIMARY KEY, value TEXT NOT NULL) STRICT;
+         CREATE TABLE registrations_v2(
            pack_id TEXT NOT NULL,
            release_sha256 TEXT NOT NULL,
            payload_kind TEXT NOT NULL,
@@ -137,14 +202,14 @@ pub(crate) fn initialize_exclusive(root: &Path) -> Result<Connection, Collection
            input_paths_json BLOB NOT NULL,
            PRIMARY KEY(pack_id, release_sha256)
          ) STRICT;
-         CREATE TABLE registration_locations(
+         CREATE TABLE registration_locations_v2(
            pack_id TEXT NOT NULL,
            release_sha256 TEXT NOT NULL,
            input_paths_json BLOB NOT NULL,
            PRIMARY KEY(pack_id, release_sha256, input_paths_json),
-           FOREIGN KEY(pack_id, release_sha256) REFERENCES registrations(pack_id, release_sha256)
+           FOREIGN KEY(pack_id, release_sha256) REFERENCES registrations_v2(pack_id, release_sha256)
          ) STRICT;
-         CREATE TABLE generations(
+         CREATE TABLE generations_v2(
            generation_id TEXT PRIMARY KEY,
            content_id TEXT NOT NULL,
            canonical_sha256 TEXT NOT NULL,
@@ -152,27 +217,29 @@ pub(crate) fn initialize_exclusive(root: &Path) -> Result<Connection, Collection
            members_json BLOB NOT NULL,
            local_revision INTEGER NOT NULL
          ) STRICT;
-         CREATE TABLE installed_heads(
+         CREATE TABLE installed_heads_v2(
            pack_id TEXT PRIMARY KEY,
            release_sha256 TEXT NOT NULL,
            payload_kind TEXT NOT NULL,
-           generation_id TEXT NOT NULL REFERENCES generations(generation_id)
+           generation_id TEXT NOT NULL REFERENCES generations_v2(generation_id)
          ) STRICT;
-         CREATE TABLE attempts(
+         CREATE TABLE attempts_v2(
            attempt_id TEXT PRIMARY KEY,
            operation TEXT NOT NULL,
            status TEXT NOT NULL,
            prior_revision INTEGER NOT NULL,
            detail TEXT NOT NULL
          ) STRICT;
-         INSERT INTO catalogue_meta(key,value) VALUES
+         INSERT INTO catalogue_meta_v2(key,value) VALUES
            ('format','vlajmaji-collection-catalogue'),
-           ('schema_version','1'),
+           ('schema_version','2'),
            ('local_revision','0'),
+           ('active_generation_id',''),
            ('complete','true'),
            ('path_host','{host}'),
            ('path_encoding','{path_encoding}'),
            ('catalogue_id', lower(hex(randomblob(16))));
+         CREATE VIEW catalogue_meta AS SELECT key,value FROM catalogue_meta_v2;
          COMMIT;"
     );
     connection
@@ -264,11 +331,7 @@ pub(crate) fn check_family(connection: &Connection, path: &Path) -> Result<(), C
             "catalogue family marker is missing or different".into(),
         ));
     }
-    if get("schema_version")?.as_deref() != Some(VERSION) {
-        return Err(CollectionError::UnsupportedVersion(
-            "catalogue schema_version is not supported".into(),
-        ));
-    }
+    let _ = schema_version(connection, path)?;
     if get("complete")?.as_deref() != Some("true") {
         return Err(CollectionError::UnsupportedVersion(
             "catalogue is not marked complete".into(),
@@ -318,9 +381,13 @@ pub(crate) fn check_family(connection: &Connection, path: &Path) -> Result<(), C
 }
 
 pub(crate) fn local_revision(connection: &Connection, path: &Path) -> Result<u64, CollectionError> {
+    let tables = tables_for(connection, path)?;
     let raw: String = connection
         .query_row(
-            "SELECT value FROM catalogue_meta WHERE key='local_revision'",
+            &format!(
+                "SELECT value FROM {} WHERE key='local_revision'",
+                tables.meta
+            ),
             [],
             |row| row.get(0),
         )
@@ -377,22 +444,33 @@ pub(crate) struct RegistrationInsert<'a> {
 
 pub(crate) fn insert_registration(
     connection: &Connection,
+    tables: CatalogueTables,
     record: RegistrationInsert<'_>,
 ) -> Result<(), rusqlite::Error> {
     connection.execute(
-        "INSERT INTO registrations(pack_id,release_sha256,payload_kind,seal_json,descriptor_json,summary_json,input_paths_json) VALUES(?1,?2,?3,?4,?5,?6,?7)",
+        &format!("INSERT INTO {}(pack_id,release_sha256,payload_kind,seal_json,descriptor_json,summary_json,input_paths_json) VALUES(?1,?2,?3,?4,?5,?6,?7)", tables.registrations),
         params![record.pack_id, record.release_sha256, record.payload_kind, record.seal_json, record.descriptor_json, record.summary_json, record.input_paths_json],
     )?;
     connection.execute(
-        "INSERT INTO registration_locations(pack_id,release_sha256,input_paths_json) VALUES(?1,?2,?3)",
-        params![record.pack_id, record.release_sha256, record.input_paths_json],
+        &format!(
+            "INSERT INTO {}(pack_id,release_sha256,input_paths_json) VALUES(?1,?2,?3)",
+            tables.registration_locations
+        ),
+        params![
+            record.pack_id,
+            record.release_sha256,
+            record.input_paths_json
+        ],
     )?;
     Ok(())
 }
 
-pub(crate) fn catalogue_identity(connection: &Connection) -> Result<String, rusqlite::Error> {
+pub(crate) fn catalogue_identity(
+    connection: &Connection,
+    tables: CatalogueTables,
+) -> Result<String, rusqlite::Error> {
     connection.query_row(
-        "SELECT value FROM catalogue_meta WHERE key='catalogue_id'",
+        &format!("SELECT value FROM {} WHERE key='catalogue_id'", tables.meta),
         [],
         |row| row.get(0),
     )
@@ -400,11 +478,30 @@ pub(crate) fn catalogue_identity(connection: &Connection) -> Result<String, rusq
 
 pub(crate) fn update_revision(
     connection: &Connection,
+    tables: CatalogueTables,
     revision: u64,
 ) -> Result<(), rusqlite::Error> {
     connection.execute(
-        "UPDATE catalogue_meta SET value=?1 WHERE key='local_revision'",
+        &format!(
+            "UPDATE {} SET value=?1 WHERE key='local_revision'",
+            tables.meta
+        ),
         [revision.to_string()],
+    )?;
+    Ok(())
+}
+
+pub(crate) fn update_active_generation(
+    connection: &Connection,
+    tables: CatalogueTables,
+    generation_id: &str,
+) -> Result<(), rusqlite::Error> {
+    connection.execute(
+        &format!(
+            "UPDATE {} SET value=?1 WHERE key='active_generation_id'",
+            tables.meta
+        ),
+        [generation_id],
     )?;
     Ok(())
 }

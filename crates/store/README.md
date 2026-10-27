@@ -27,6 +27,17 @@ integrity checks. Use the explicit verification API for that boundary. The
 [collection guide](../../docs/collections.md) describes manifests, local paths,
 registration, installation, history, and error reports.
 
+Version-1 catalogues remain readable, but writes require the explicit
+`CollectionCatalogue::migrate(root, expected_local_revision)` operation.
+Migration fences the old physical table names and advances the catalogue
+revision transactionally. `update` replaces selected currently installed packs
+at an expected revision; `rebuild` reconstructs the current generation from its
+retained sealed inputs and publishes a new generation identity. Neither
+operation changes user selection or the global default store. A stale revision,
+missing installed pack, or invalid retained input is reported without silently
+falling back to an older generation. Removal, reinstall, and recovery remain
+separate future lifecycle operations.
+
 ```rust,no_run
 use vlajmaji_lexicon::Dictionary;
 use vlajmaji_store::DictionaryStore;

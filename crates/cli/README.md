@@ -42,12 +42,19 @@ integrity. `all` reports six ordered result rows. A failed check exits nonzero,
 leaves stdout empty, and writes both its structured error and complete report
 to stderr.
 
-`collections register|install|list|inspect ROOT` manages an explicit local
-source catalogue. Registration stores typed source and reference metadata
-without copying release payloads. Installation creates one verified Unified
-generation; it never changes the default store or source selection. Manifest
-paths resolve beside the manifest, and selected inputs are read locally with
-the existing pack adapters. Synthetic packs require `--allow-synthetic`.
+`collections register|install|migrate|update|rebuild|list|inspect ROOT` manages
+an explicit local source catalogue. Registration stores typed source and
+reference metadata without copying release payloads. Installation creates one
+verified Unified generation; it never changes the default store or source
+selection. Manifest paths resolve beside the manifest, and selected inputs are
+read locally with the existing pack adapters. Synthetic packs require
+`--allow-synthetic`. A compatible version-1 catalogue requires explicit
+`collections migrate ROOT --expected-revision N` before writes. `update` uses
+the same selected manifest or sealed inputs as install and replaces only
+currently installed selected packs at the expected local revision. `rebuild`
+uses retained sealed inputs to publish a new derived generation at the expected
+revision. These commands do not change profile membership or the global default;
+removal and reinstall are later lifecycle operations.
 See the [collection guide](../../docs/collections.md) for commands, strict
 manifest fields, state semantics, and structured failures.
 
