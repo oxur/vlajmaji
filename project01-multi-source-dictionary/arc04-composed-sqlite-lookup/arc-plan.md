@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S05 frozen739 bounded semantic/API PASS; strictF03 ONE FIRST readable03/pass4 carryover, INITIAL not unconditionally accepted/all6OPEN/noFullmetriceligibility. Next draft root review pending. |
-| version / date | 1.20 / 2026-10-27 UTC |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S05 frozen739 bounded semantic/API PASS; strictF03 ONE FIRST readable03/pass4 carryover, INITIAL not unconditionally accepted/all6OPEN/noFullmetriceligibility. Readable03/pass4 eleven-path ISSUED after root FINAL READINESS PASS; complete literal typed goldens/W1–W5 argv+revisions frozen; complete intake then explicit transfer pending. |
+| version / date | 1.22 / 2026-10-27 UTC |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-readable-compact-output current clean c364/treebcaf (parent5bf), metadata-rebased onto32e99/main with old9eb chain preserved; same retained target. Old S04 local/origin branch remains432. CDC owns quiet source/index/retained target after frozen handback/independent review; CC/root read-only until new exact intake/transfer. Actual primary checkout52fd remains distinct. |
+| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-readable-compact-output current clean7399563/treee184 (parentc364), metadata-rebased onto32e99/main with old9eb chain preserved; same retained target. Old S04 local/origin branch remains432. CDC owns quiet source/index/retained target after frozen handback/independent review; CC/root read-only until new exact intake/transfer. Actual primary checkout52fd remains distinct. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -188,3 +188,11 @@ Immediately before transfer CDC independently rechecked clean c3643f4915b7876313
 ### S05 iteration02 bounded disposition —2026-10-27 UTC
 
 Frozen739 compact/detail semantic/API/finiteTiny contribution PASS; strictF03 ONE OPEN pure output String clone in compact_hit. Root explicitly makes its exact move-or-real-timed-clone repair FIRST readable03/pass4 item within original21path union/five-total budget. INITIAL not unconditionally accepted, all6OPEN/noFullmetriceligibility. Current independent API0/public29namedPASS+shared6/5/edges11namedPASS+shared5/privateindex1/1; WHOLE ordinary/profile Exact+Local+Catalog parity across four modes and managedfirstSome/warmNone PASS. CDC owns quiet739/source/index/target. Existing review-iteration02 and immutable cdc-iteration02 preserve exact scope; no new runtime/external authority.
+
+### 2026-10-27 current readable03 DRAFT checkpoint / version1.21
+
+At clean739/treee184 CDC owns quiet S05 source/index/ONE target. Bounded semantic/API/Tiny contribution passes, strictF03 pure occurrence String clone remains OPEN and is the FIRST exact move in readable03/pass4. The eleven-path draft and slice-plan§14 freeze pure typed Exact/Resolve/detail renderers, literal complete goldens, common typed CLI IO and source-grounded W1–W5 Tiny sequence: catalogue/profile1/absent→1/1→1/2→1/3→2/3→3/3. Root final packet review precedes issue/intake/transfer. All six S05 and five remaining arc/all14project rows OPEN; no source/Full/numeric/platform/external action or accepted metric from drafting. Historical current-source/ownership paragraphs remain attributed to their own checkpoints.
+
+### 2026-10-27 readable03 STATUS-ONLY issue / version1.22
+
+Root FINAL READINESS PASS; exact20032B reviewed draft2cd8dcdd preserved create-new, active prompt differs ONLY statusline. Current assignment S05 cc-prompt-iteration03.md/pass4ofFIVE TOTAL; predecessor02 returned with bounded contribution and ONE strictF03 carryover. Eleven paths not yet transferred: retained CC complete intake1–14/readback, fresh source/lock/guard/refs and CDC explicit ownership message required. Six S05/fivearc/14project rows OPEN; no source/Full/numeric/platform/external action from issue. DRAFT descriptions above remain historical checkpoints.

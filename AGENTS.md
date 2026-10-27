@@ -2,7 +2,7 @@
 
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
-**Current S05 checkpoint,2026-10-27:** frozen739 returned to CDC; compact/detail semantic/API/finiteTiny PASS, strictF03 ONE pure output String clone OPEN, FIRST mandatory readable03/pass4 correction. INITIAL not unconditionally accepted/all6OPEN/noFullmetriceligibility. CDC owns QUIETsource/index/ONEtarget; CC/root read-only. Next concrete readable03 requires root review before issue/transfer; no current source/Full/Linux/external effect.
+**Current S05 checkpoint,2026-10-27:** clean7399563/treee184 on codex/project01-readable-compact-output returned to CDC; bounded compact/detail semantic/API/finiteTiny PASS, strictF03 ONE pure output String clone OPEN. Readable03/pass4 is ISSUED after root FINAL READINESS PASS; it freezes ELEVEN source paths, exact occurrence String MOVE, direct typed literal Exact/Resolve/detail goldens and actual owned-Tiny W1–W5 argv/revision table in plan§14. INITIAL not unconditionally accepted/all6OPEN/noFullmetriceligibility. CDC owns QUIET source/index/ONE retained target; CC/root read-only. Root final concrete packet review passed; exact reviewed draft preserved and active prompt STATUS-LINE-ONLY issued. Complete retained CC intake/CDC source-cited review/fresh identity/explicit eleven-path transfer remain pending; no source/runtime/Full/Linux/external effect. Prior current checkpoints below are dated historical ownership facts.
 
 ### Historical pre-correction frozen checkpoint
 

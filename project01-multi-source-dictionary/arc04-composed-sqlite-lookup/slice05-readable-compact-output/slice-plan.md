@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| Status / version | BOUNDED SEMANTIC/API PASS / 1.6 / 2026-10-27 UTC. Frozen739 finite proof passes; strictF03 ONE mandatory readable03/pass4 carryover. INITIAL not unconditionally accepted/all6OPEN/noFullmetriceligibility. Next draft root review pending. |
+| Status / version | BOUNDED SEMANTIC/API PASS; readable03 ISSUED / 1.8 / 2026-10-27 UTC. Frozen739 finite proof passes; strictF03 ONE mandatory readable03/pass4 carryover. INITIAL not unconditionally accepted/all6OPEN/noFullmetriceligibility. Readable03 root readiness PASS/ISSUED; complete CC intake and explicit11path transfer pending. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
-| Source / dependency | Current clean c3643f4915b7876313dc3a58d8c56c87cf38fa5c, parent5bf5fb13, treebcaf63c9ec11b18ea23049ca10921b5d8e06da32 on separate S05branch. Existing merged main32e99/accepted432 dependency and same-tree rebase history remain below. No source change during CDC independent review. |
-| Ownership | CC returned clean c364/source-index/retained target; CDC exclusively owns these for independent disposition/planning, root and CC read-only. No new source work before reviewed issue/exact intake/explicit SIX-path transfer. |
+| Source / dependency | Current clean7399563f98b41d26bd5099d04873e1a8cc7e23fe, parentc3643f4915b7876313dc3a58d8c56c87cf38fa5c, treee1840807bba597e779a1b28d02937ceff9ffc4ab on codex/project01-readable-compact-output. Existing merged main32e99/accepted432 dependency and same-tree rebase history remain below. No source change during CDC independent review. |
+| Ownership | CC returned clean739/source-index/ONE retained Arc01 target; CDC exclusively owns these QUIET for readable03 planning, root and CC read-only. No new source work before root-reviewed issue/exact complete intake/explicit ELEVEN-path transfer. |
 | Delivery | Additive compact Exact/Resolve and complete occurrence detail, then source-grouped readable Exact/Resolve/detail. Full default JSON stays compatible. Public libraries, CLI, documentation and actual five-workflow composition accompany output, not verification alone. |
-| Sizing | Normal FIVE TOTAL S05 pass limit: initial compact/detail pass1 frozen NOT ACCEPTED; proposed correction iteration01/pass2; readable moves to later numbered02/plannedpass3. Corrections consume passes, no reset; no increment alone closes S05. S04's six-pass history is closed and unchanged. |
+| Sizing | Normal FIVE TOTAL S05 pass limit: initial/pass1, correction01/pass2 and02/pass3 are preserved; readable03 is proposed pass4, including ONE strictF03 mandatory String-move carryover. Bounded semantic/API/Tiny PASS at739 does not close INITIAL or any row; no metric eligibility until carryover closes. Corrections consume passes, no reset. S04's six-pass history is closed and unchanged. |
 | Limits | No dependency/lock/schema/importer/model/workflow changes, topology redo, new Full store/generation, cleanup/cache reset, actual-default access, S04 branch writes, A05 activation, network/push/PR/merge/publication. Later finite retained-G4 trial needs exact executable root readiness. |
 
 ## 1. Source findings and preserved behavior
@@ -533,4 +533,269 @@ Immediately before transfer CDC independently rechecked clean c3643f4915b7876313
 
 Frozen739 compact/detail semantic/API/finiteTiny contribution PASS; strictF03 ONE OPEN pure output String clone in compact_hit. Root explicitly makes its exact move-or-real-timed-clone repair FIRST readable03/pass4 item within original21path union/five-total budget. INITIAL not unconditionally accepted, all6OPEN/noFullmetriceligibility. Current independent API0/public29namedPASS+shared6/5/edges11namedPASS+shared5/privateindex1/1; WHOLE ordinary/profile Exact+Local+Catalog parity across four modes and managedfirstSome/warmNone PASS. CDC owns quiet739/source/index/target. Existing review-iteration02 and immutable cdc-iteration02 preserve exact scope; no new runtime/external authority.
 
-Exact carryover: after last occurrence-key lookup MOVE existing tuple String into returned occurrence_id/remove unnecessary clone; if real reuse requires it, time only real output clone. No key/output bytes change or silent739edit; next frozen source must close it before numeric trials. Readable03 concrete goldens/typed transport first returns to root.
+Historical review offered move-or-real-timed-clone. Current source-grounded03 recipe is definite: after final occurrence_attributions.get(&occurrence_key), MOVE existing String into occurrence_id; it has no later key use. Remove unnecessary clone; no new timer. No key/output bytes change or silent739edit; next frozen source must close it before numeric trials. Readable03 concrete goldens/typed transport first returns to root.
+
+
+## 14. Readable03/pass4 concrete contract — DRAFT 2026-10-27 UTC
+
+This section and cc-prompt-iteration03.md form the proposed ELEVEN-path readable increment at quiet7399563/treee184. Root accepted the initial engineering spine as policy, not final readiness or issue. Six original criterion/proof/owner/status cells remain OPEN and unchanged; pass4ofFIVE TOTAL, no reset. Sections1–13 and all issued prompt bytes remain historical/binding except these explicit current sequencing/format refinements. INITIAL semantic/API/Tiny contribution is bounded PASS; strictF03 remains OPEN until the first source change below is frozen and inspected. No Full metric eligibility yet.
+
+### 14.1 Exact carryover and typed transport
+
+In dictionary/projection.rs::compact_hit, remove `let occurrence_id = occurrence_key.clone();`. Perform the existing final `self.indices.occurrence_attributions.get(&occurrence_key)` lookup, then `let occurrence_id = occurrence_key;`. That tuple String has no later key use; move it into the existing timed returned-hit construction. No clone/timer fallback, representation/key change or other engine edit. The remaining TEN paths implement the four pure typed renderers, additive readable routing, tests and owning docs exactly as the draft prompt lists. Current source/ownership is739/CDC quiet, not c364/CC. The inherited full path and strict compact wire stay unchanged.
+
+The CLI chooses Full/Compact/Readable before constructor/setup. Detail has Full/Readable only. Pure renderers take existing typed compact/detail data; direct typed serde for Presence, reference/catalogue values and complete DictionaryHit, no Value roundtrip. The private QueryOutput Json/Readable boundary writes readable String bytes once and flushes through the existing shared BrokenPipe/nonBroken handler. Managed context is captured from the typed result first. The NEW readable standalone dictionary-query origin uses the existing three-key dictionary error report on response-output IO; existing full/compact standalone compatibility and all managed envelopes remain intact. Explicit literal syntax and grouping in the prompt are binding.
+
+### 14.2 Complete literal presentation fixtures and expected bytes
+
+These are PURE PRESENTATION DATA, not accepted canonical dictionaries, Engine results or authenticated key/body digests. Public projection structs are caller-constructible. K deliberately supplies format-valid fixed digests, so a formatter test must not query/admit/recompute them. Construct the typed input structs corresponding to the values below, independently predeclare the exact UTF-8 expected strings INLINE in presentation_contract.rs, and compare renderer output byte-for-byte. Do not generate expected strings by rendering, Value roundtrip, trimming or newline normalization. Every fenced text body below includes its displayed final LF and no blank footer. Structural LF is separate from literal backslash-n inside JSON. The zero Exact golden contains TWO content lines, each ending LF.
+
+K is the following exact one-line serde-shaped key, in declared field order; all nullable keys are present. No ellipses or substituted source-specific IDs in these literal tests:
+
+```json
+{"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a","assertion_id":"assertion-a","occurrence":{"capture":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"},"entry_sha256":"1111111111111111111111111111111111111111111111111111111111111111","assertion_sha256":"2222222222222222222222222222222222222222222222222222222222222222","native_entry_id":null,"native_assertion_id":null,"contributor_id":null,"distributor_id":null}
+```
+
+For nonempty Exact, input totals are4/1/1, one source id source-a abbreviation A, full_count4/returned_count3/partial=true, cursor Some("next-page"). The three hit records have SAME assertion ID/occurrence ID/key and the spelling/definition Presence states shown; duplicate occurrence display is deliberate, never deduplicated. SourceRecord's other fields and unused compact fields may use harmless typed defaults; they are not emitted. The third definition is complete TextValue {text: é plus LF plus quoted text, language:Missing, markup:Null}, never flattened. These intentionally independent presentation records do not purport to satisfy canonical per-occurrence uniqueness/body-hash invariants.
+
+#### Literal Exact zero
+
+```text
+Exact "farvi": 0 occurrences, 0 spellings, 0 sources
+next_cursor: null
+```
+
+#### Literal Exact nonempty / all Presence states / duplicate occurrences
+
+```text
+Exact "farvi": 4 occurrences, 1 spellings, 1 sources
+A [source-a] 3/4 (partial)
+  assertion-a @ 00
+    spelling: "Missing"
+    definition: "Missing"
+    detail: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a","assertion_id":"assertion-a","occurrence":{"capture":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"},"entry_sha256":"1111111111111111111111111111111111111111111111111111111111111111","assertion_sha256":"2222222222222222222222222222222222222222222222222222222222222222","native_entry_id":null,"native_assertion_id":null,"contributor_id":null,"distributor_id":null}
+  assertion-a @ 00
+    spelling: "Null"
+    definition: "Null"
+    detail: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a","assertion_id":"assertion-a","occurrence":{"capture":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"},"entry_sha256":"1111111111111111111111111111111111111111111111111111111111111111","assertion_sha256":"2222222222222222222222222222222222222222222222222222222222222222","native_entry_id":null,"native_assertion_id":null,"contributor_id":null,"distributor_id":null}
+  assertion-a @ 00
+    spelling: {"Value":"farvi"}
+    definition: {"Value":{"text":"é\n\"quoted\"","language":"Missing","markup":"Null"}}
+    detail: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a","assertion_id":"assertion-a","occurrence":{"capture":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"},"entry_sha256":"1111111111111111111111111111111111111111111111111111111111111111","assertion_sha256":"2222222222222222222222222222222222222222222222222222222222222222","native_entry_id":null,"native_assertion_id":null,"contributor_id":null,"distributor_id":null}
+next_cursor: "next-page"
+```
+
+The Resolve input below has target Local Assertion(assertion-a), status Unverified, entity None; one confirmed source-a/A row with the shown lexical body/K, and one unverified source-z row absent from availability with the shown Excluded/Null/Missing state and detail None. First matching availability abbreviation for source-a is A; include a SECOND matching source-a availability with label "wrong" to prove first-match policy. No source-z availability exists: use literal ? fallback, keep the row. Independently add an input with two source IDs in reverse order and repeated rows to assert ascending SourceId grouping and stable within-group multiplicity separately from the literal single-row groups. Both classification counts always appear.
+
+#### Literal Resolve confirmed + unverified/excluded/fallback
+
+```text
+Reference {"Local":{"Assertion":"assertion-a"}}: Unverified
+entity: null
+confirmed: 1
+A [source-a] 1 confirmed
+  assertion-a @ 00
+    spelling: {"Value":"farvi"}
+    definition: {"Value":{"text":"é\n\"quoted\"","language":"Missing","markup":"Null"}}
+    eligibility: "Lexical"
+    payload_present: true
+    current_eligible: true
+    detail: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a","assertion_id":"assertion-a","occurrence":{"capture":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"},"entry_sha256":"1111111111111111111111111111111111111111111111111111111111111111","assertion_sha256":"2222222222222222222222222222222222222222222222222222222222222222","native_entry_id":null,"native_assertion_id":null,"contributor_id":null,"distributor_id":null}
+unverified: 1
+? [source-z] 1 unverified
+  assertion-z @ 01
+    spelling: "Null"
+    definition: "Missing"
+    eligibility: {"Excluded":{"reason":"not lexical"}}
+    payload_present: false
+    current_eligible: false
+    detail: null
+requested_release: null
+```
+
+#### Literal Resolve Unknown
+
+```text
+Reference "Unknown": Unknown
+entity: null
+confirmed: 0
+unverified: 0
+requested_release: null
+```
+
+The following managed CatalogueOnly fixture is also pure presentation data (empty captured policy snapshot rather than a claim about actual removal). Outer target/status/reason/requested_release are authoritative; payload=None. Its input snapshot is exactly the literal line; collections/catalogue_matches empty. A separate paired payload=Some fixture deliberately disagrees on nested target/status/requested_release and must render OUTER values with all nested views retained; expected fields are direct typed serde, not fallback or JSON-shape inspection. Actual removed/current selection semantics belong the process journey in14.3.
+
+#### Literal managed metadata-only Resolve
+
+```text
+Reference {"Local":{"Assertion":"assertion-a"}}: CatalogueOnly
+reason: "removed"
+payload: false
+entity: null
+confirmed: 0
+unverified: 0
+requested_release: null
+catalogue_matches: []
+selection: {"version":1,"profile":null,"local_revision":0,"generation_id":null,"content_id":null,"recorded_state_sha256":null,"packs":[],"disabled":[],"selected_releases":{},"collections":[],"selection_policy":"selected-available-owned-head-v2","order_policy":"source-release-occurrence-v1","projection_policy":"compact-dictionary-v1","binding_sha256":"3333333333333333333333333333333333333333333333333333333333333333"}
+collections: []
+```
+
+#### Literal detail NoMatch / hit null
+
+```text
+Detail assertion-a: NoMatch
+snapshot: "3333333333333333333333333333333333333333333333333333333333333333"
+reason: "lexical_identity_changed"
+current_eligible: null
+reference: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a","assertion_id":"assertion-a","occurrence":{"capture":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"},"entry_sha256":"1111111111111111111111111111111111111111111111111111111111111111","assertion_sha256":"2222222222222222222222222222222222222222222222222222222222222222","native_entry_id":null,"native_assertion_id":null,"contributor_id":null,"distributor_id":null}
+hit: null
+```
+
+The complete detail golden uses K and fixed snapshot333… as above, status Resolved/reasonNone/current_eligibleSome(true). The supplied DictionaryHit is exactly the following nonempty lexical/capture/raw typed body: no renderer constructs it. Its source_score is Presence::Value(RawJson::new("1e+9999")); RawJson's transparent serializer emits the retained lexeme as a JSON STRING, not a number or Value normalization. This deliberately small full-hit literal pins ALL existing DictionaryHit fields, their declared order, null/empty distinction and typed pretty indentation. It is NOT a substitute for the separate accepted complete_fixture Forms/editorial/contexts test below.
+
+#### Literal complete detail / direct typed pretty DictionaryHit
+
+```text
+Detail assertion-a: Resolved
+snapshot: "3333333333333333333333333333333333333333333333333333333333333333"
+reason: null
+current_eligible: true
+reference: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a","assertion_id":"assertion-a","occurrence":{"capture":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"},"entry_sha256":"1111111111111111111111111111111111111111111111111111111111111111","assertion_sha256":"2222222222222222222222222222222222222222222222222222222222222222","native_entry_id":null,"native_assertion_id":null,"contributor_id":null,"distributor_id":null}
+hit: {
+  "occurrence_id": "00",
+  "entry": {
+    "id": "entry-a",
+    "source": "source-a",
+    "spelling": {
+      "Value": "farvi"
+    },
+    "language": "Missing",
+    "script": "Null",
+    "native_word_class": "Missing",
+    "selmaho": "Missing",
+    "mapped_pos": "Missing"
+  },
+  "assertion": {
+    "id": "assertion-a",
+    "entry": "entry-a",
+    "occurrence": {
+      "capture": {
+        "namespace": "fixture:readable",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "locator": "/0"
+    },
+    "native_sense_id": "Null",
+    "language": "Missing",
+    "definition": {
+      "Value": {
+        "text": "é\n\"quoted\"",
+        "language": "Missing",
+        "markup": "Null"
+      }
+    },
+    "source_score": {
+      "Value": "1e+9999"
+    },
+    "timestamps": [],
+    "eligibility": "Lexical"
+  },
+  "capture": {
+    "source_name": "Fixture é",
+    "format_label": "json",
+    "locator": "memory:readable",
+    "revision": "Missing",
+    "captured_at": "Null",
+    "time_precision": "Unknown",
+    "notice_locator": "Missing"
+  },
+  "raw": {
+    "locator": "/0",
+    "fields": [
+      {
+        "name": "score",
+        "encoding": "Json",
+        "raw_value": "1e+9999"
+      }
+    ],
+    "raw_line": null
+  },
+  "snapshot_attribution": {
+    "snapshot": {
+      "namespace": "fixture:readable",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "source": "source-a",
+    "distributor": null
+  },
+  "occurrence_attribution": null,
+  "contributor": null,
+  "distributor": null,
+  "release_ids": [
+    "release-a"
+  ],
+  "contexts": [],
+  "frames": [],
+  "forms": [],
+  "etymologies": [],
+  "relations": [],
+  "editorial_senses": [],
+  "computations": [],
+  "annotations": [],
+  "extensions": [],
+  "owned_revision_ids": [],
+  "tombstoned_by": []
+}
+```
+
+Supplementary complete_fixture test is mandatory: use crates/lexicon/examples/support/dictionary_fixture.rs::complete_fixture, preserving its actual nonempty Forms/editorial_senses/contexts and all complete DictionaryHit fields through existing strict construction/detail. Use the actual si'e assertion hit for nonempty Forms+contexts and the captured:a:d1 /0 farvi assertion hit for nonempty editorial_senses, derived from fixture input IDs BEFORE candidate detail; these are DIFFERENT hits. Assert their respective expected collections nonempty BEFORE formatter comparison. Do not demand all three on one hit or attach editorial data to si'e merely for the test. Expected body is independently DIRECT serde_json::to_string_pretty(&known_hit), compared whole with the literal prefix/reference metadata and one LF. This is a typed-serializer body comparator, NOT falsely described as an all-literal nested-fixture golden; the complete literal small hit above remains separate. Add direct typed Presence/TextValue/RawJson equality assertions to distinguish struct key order, retained lexical strings and duplicate Vec rows from Value-roundtrip behavior.
+
+All header atoms use A = direct JSON-string CONTENT, stripping only the enclosing quotes; all labelled values use complete J. In a dedicated input put ESC (U+001B), CR, tab, LF, backslash, quote and visible é in source abbreviation, source ID where typed constructor permits opaque content, assertion/occurrence IDs and spelling/definition. Expected literal escapes are respectively backslash-u001b, backslash-r, backslash-t, backslash-n, double-backslash and backslash-quote; é stays UTF-8. Never emit a literal ESC/CR/tab from corpus fields. If a typed ID rejects one control, preserve the rejection and exercise that control in the remaining unconstrained header String fields; do not weaken ID validation. No trimming, ANSI, wrapping, width probe, singularization or extra footer LF.
+
+### 14.3 Actual W1–W5 Tiny process journey / frozen argv and revisions
+
+This is ONE fresh owned Tiny four-literal journey, not Full or a new comparative trial. It uses all four accepted source-literal models BEFORE installation: exact portable source recipe from S03 slice03-configured-combined-lookup/artifacts/cdc-review02/public-caller01/src/helpers.rs::models and ::inventory, with its three literal fixtures copied INLINE into the allowed existing CLI test (no planning include path). The original recipe emits models [JB,LLG,La,Sut]. Strictly reconstruct/seal each Synthetic input with existing seal_release and load_sealed_release, retain exact release/seal bytes, input IDs/digests and source-native attribution BEFORE invoking candidate CLI. Derive max-multiset25-family/capture expected inventory directly from individual inputs; six raw occurrences/five lexical farvi and three logical sources with2/1/2 hits, pack contributions1/1/1/2. Candidate composition/order may not manufacture expected preservation. Stock data-pack fixture's six farvi hits is supplementary, not a replacement.
+
+Let B be a uniquely created private test base, R=B/root initially ABSENT, F=B/config.toml initially ABSENT, H=B/home, D=B/xdg-data, C=B/xdg-config (owned private existing directories). Every child clears inherited environment and sets HOME=H, XDG_DATA_HOME=D, XDG_CONFIG_HOME=C, with absolute paths and explicit ROOT/STORE or --config F on managed commands. No real default access even read. Read-only negative missing-HOME tests may remove the tested variable while retaining an owned XDG_DATA_HOME fallback and explicit paths; do not let env_clear-only accidentally reach platform passwd home. Mutation CLI commands such as install/remove do NOT accept --config; their positional R and owned HOME/XDG provide isolation. Lookup/config/profile routes explicitly carry --config F. B's current executable is env!(CARGO_BIN_EXE_vlajmaji), not a shell/bare PATH binary. Each argv cell below is an exact argument VECTOR template (angle-symbols replaced by the owned native OsString/value specified); do not shell-split JSON/paths. No invented --root or --set-default flag.
+
+Write M=B/manifest.json with EXACT shape {"version":1,"inputs":[{"kind":"sealed","pack_id":"lensisku-jbotci","release":"packs/lensisku-jbotci/release.json","seal":"packs/lensisku-jbotci/seal.json"},{"kind":"sealed","pack_id":"llg","release":"packs/llg/release.json","seal":"packs/llg/seal.json"},{"kind":"sealed","pack_id":"la-lojban","release":"packs/la-lojban/release.json","seal":"packs/la-lojban/seal.json"},{"kind":"sealed","pack_id":"sutysisku","release":"packs/sutysisku/release.json","seal":"packs/sutysisku/seal.json"}]}. All release/seal paths relative to M's parent. Do not substitute a packs map or omit Synthetic opt-in.
+
+Precompute A_LLG from the LLG input's single lexical farvi Assertion ID, Q_L={"operation":"resolve","target":{"Local":{"Assertion":A_LLG}}}, and Q_C={"operation":"resolve","target":<typed CatalogTarget serialized directly from that input's source/release/capture/locator/native attribution>}. Q_C is built from the pre-input exact roles, not selected from candidate response; serialize the existing RelationTarget directly without hand-invented Catalog keys. E={"operation":"exact","spelling":"farvi"}; E1 adds options:{page_size:1}; default remaining options via strict parser. D_LLG=pre-input seal.release_sha256 (exact sealed canonical release SHA; crosscheck load_sealed_release). L=B/packs/llg/release.json and T=B/packs/llg/seal.json. K_LLG is the CLI returned compact key checked against the PRE-INPUT entry/assertion/capture/native identity and complete typed body digest; obtaining its opaque binding/digest encoding from the response is not the expected lexical oracle. Save O=observed managed compact snapshot.binding_sha256 (expected_snapshot for managed detail), and CUR1=compact page1 cursor. Both are opaque observed tokens used only for declared stale/positive tests. G1_STORE is decoded from the successful install JSON generation.path NativePathReport, NOT generation.store_path (the Rust store_path field is serde(skip)). For this normal UTF-8 B use generation.path.utf8 as the exact absolute STORE; when a separate native-path control needs it, decode that report's declared encoding/hex using the existing native adapter and compare original native bytes. Check native containment/absence-before-create/expected generation and pin G1_STORE for explicit standalone comparisons; do not guess layout or select a default.
+
+| Step / workflow | EXACT argv after executable | Expected exit / content | Catalogue revision / profile-file revision AFTER |
+| --- | --- | --- | --- |
+| W1 install | ["collections","install",R,"--manifest",M,"--all","--allow-synthetic"] |0; one all-four committed batch, G1 all4; exact pre-input inventory/pins and five-hit oracle. Fresh schema seeds0 then batch increments ONCE. |1 / absent |
+| W2 list | ["collections","list",R] |0; schema2, four registered/installed, G1; do not mistake producer source for PackId. |1 / absent |
+| W2 inspect each | ["collections","inspect",R,P] for P in [lensisku-jbotci,llg,la-lojban,sutysisku] |0 each; actual release/seal/ownership/verification scope per record. |1 / absent |
+| W3 configure | ["collections","configure",R,"--profile","work","--all","--make-default","--config",F] |0 committed; all4 member/default enabled; fresh file revision1. |1 /1 |
+| W3 profiles / selection | ["collections","profiles","--config",F]; ["collections","selection","--config",F,"--profile","work"] |0; default=work/all4; actual catalogue1/profile1 and projection/policy fields. |1 /1 |
+| W3/W5 default compatibility | ["lookup","farvi","--config",F]; ["lookup","farvi","--config",F,"--format","full"] |0; default and explicitFull complete JSON byte-identical at unchanged captured state; five occurrences/three sources/2-1-2. |1 /1 |
+| W5 compact/readable | ["lookup","farvi","--config",F,"--profile","work","--format","compact"]; same vector final "readable" |0; complete projected typed wire vs exact readable grammar, same five occurrences/all alternatives/totals/provenance; no full engine for readable. |1 /1 |
+| W5 standalone compatibility | ["dictionary-query",G1_STORE,"--request",E]; same vector with ["--format","full"], ["--format","compact"], ["--format","readable"] |0; default/explicitFull bytes equal; full compact semantic identity and readable typed expected; explicit immutable STORE only, no config lookup. |1 /1 |
+| W5 Local/Catalog reference | ["lookup","--request",Q_L,"--config",F,"--profile","work","--format","readable"]; same with Q_C; ["dictionary-query",G1_STORE,"--request",Q_L,"--format","readable"] and Q_C |0; BOTH live pre-remove Q_L and Q_C MUST be Resolved with EXACTLY one confirmed/zero unverified: the pre-input single lexical LLG assertion, every supplied identity known. Compare its exact assertion/entry/capture/locator/native slots and requested release; never accept candidate-observed status as oracle. Readable is reference output, not fake Exact. Keep full/compact paired current routes where original fixture comparator applies. |1 /1 |
+| W5 detail / page token | ["lookup-detail","--reference",K_LLG,"--config",F,"--profile","work","--format","readable"]; ["dictionary-detail",G1_STORE,"--reference",K_LLG,"--format","readable"]; ["lookup","farvi","--config",F,"--profile","work","--page-size","1","--format","compact"] |0; complete hit fields, key identity, managed optional observed O positive; capture CUR1 and managed snapshot token O. No automatic detail hydration in renderer. |1 /1 |
+| W4 disable | ["collections","disable","--profile","work","--pack","llg","--config",F] |0 committed profile change only; installed bytes unchanged. |1 /2 |
+| W4 disabled query/cursor | ["lookup","farvi","--config",F,"--profile","work","--format","readable"]; compact counterpart; ["lookup","farvi","--config",F,"--profile","work","--page-size","1","--cursor",CUR1,"--format","compact"] |0 fresh: four hits/two sources LSK2+Sut2;1 cursor: typed stale before any unavailable/payload result. Preserve all current readonly context. |1 /2 |
+| W4 enable | ["collections","enable","--profile","work","--pack","llg","--config",F] |0 committed; restored five hits/three sources on fresh readable+compact argv above, original release IDs unchanged. |1 /3 |
+| W4 remove | ["collections","remove",R,"--pack","llg","--expected-revision","1"] |0 committed; catalogue2/G2 three-pack active subset, all immutable old inputs/G1 retained; file policy still includes enabled LLG. |2 /3 |
+| W4 removed Exact | ["lookup","farvi","--config",F,"--profile","work","--format","readable"] |1 typed unavailable/removed, no successful four-hit/zero fallback because enabled requested LLG is now unavailable. |2 /3 |
+| W4 removed reference/detail | ["lookup","--request",Q_L,"--config",F,"--profile","work","--format","readable"]; same with Q_C; ["lookup-detail","--reference",K_LLG,"--config",F,"--profile","work","--format","readable"] |0 metadata-only CatalogueOnly/removed and hit:null, exact source/release/role/key retained. ["--expected-snapshot",O] paired on detail returns1 typed stale BEFORE admission. |2 /3 |
+| W4 exact reinstall | ["collections","reinstall",R,"--pack","llg","--release",L,"--seal",T,"--allow-synthetic","--release-sha256",D_LLG,"--expected-revision","2"] |0 committed; exact pre-input release restored in G3 all4, no wrong-release retarget. |3 /3 |
+| W4/W5 restored readback | Repeat fresh all-four readable/compact/reference/detail vectors, plus expected_snapshot O negative |0 fresh: five hits/three sources and complete stable-key detail;1 oldO: typed stale. Old G1 explicit STORE still gives its original read result. |3 /3 |
+| W2/W4 reconcile | ["collections","reconcile",R]; list/profiles/selection above |0; logical revision unchanged, G3active/3retained generations, supported committed install/remove/reinstall stages not false attention; config remains revision3. No cleanup. |3 /3 |
+
+No extra mutating setup/noops precede this table. Assert each expected revision BEFORE next dependent mutation and after every listed transition; do not derive next expected value from returned candidate revision. Read-only commands MUST leave revisions/owned state unchanged. The exact count above is ONE batch install + remove + reinstall = THREE Tiny publications, not three Full generations, and configure/disable/enable = THREE config revisions. No register step or rebuild is silently inserted. If an existing API's exact wire differs from this recipe, preserve failing setup receipt and resolve it source-first before proceeding; do not relax oracle from observed output.
+
+### 14.4 Applicability, outputs and readiness hold
+
+The eleven-path scope is exactly the prompt's list, within approved21 union; only dictionary/projection.rs changes engine code and only the occurrence String move. Existing library projection/selection/state/profile tests verify output identity and actual source timer boundary; no extra kernel audit. The readable/presentation library and real CLI proof includes reference as well as Exact and complete detail, all statuses, direct typed serde, no second LF, common output IO and path/context precedence. Author gates use pinned Rust1.98.0, one retained target, unique labels, safe stdin formatter, lint-before-behavior, ordered final fmt-check→lint→check, isolated no-default, Syntheticallfeatures and search/CLI list-only package inventories. Actual Linux-specific nonUTF8 CONFIG/ROOT and write-open /dev/full remain external until separately authorized current-head CI; macOS conditional controls do not prove those branches.
+
+The prohibition is on RETAINED FULL/G4 reads/models/import/create/reverification/All and ANY numeric campaign during this issue, not on the explicitly approved owned Tiny fixture preparation/install/remove/reinstall and their inherent existing verification (including Tiny internal All). No new Full ROOT/generation, resource experiment/cache action/actual-default access/network/external delivery. Later exact retained-G4 numeric/read-only/fresh assembled ARC gates remain mandatory with separate concrete readiness; this pass does not launch or waive them. Root concrete final packet review is pending; no source transfer, issue or runtime from DRAFT metadata. Once root accepts, preserve reviewed draft/status-only issue/scoped commit/full intake then explicit eleven-path/index/ONE-target handoff. All six rows remain OPEN.
+
+### Readable03 final readiness and STATUS-ONLY issue —2026-10-27 UTC
+
+Root FINAL READINESS PASS at exact reviewed prompt20032B/SHA2cd8dcddce30f96e036318d2329ca186c2117b15f7a2b3fb25736d37b719cda4, plan111856B/SHA6715efadd5e7bee52a7f14ec258f5365e7eadc2d136728384afd1b685f61774a and ledger11355B/SHA34acf432a188ebbd736fa3844f04b436bd28a1735775483541567f5ad468c36e. Root read complete prompt/§14 literal+workflow appendix/ledger and source-checked typed hit/RawJson/native path/Clap/seal/config+catalogue revision boundaries; six original cells unchangedOPEN, source739 clean. Accepted exact source-grounded clarification replaces historical move-or-time possibility with definite String MOVE; no criterion/policy change.
+
+CDC author readiness: source-grounded actual739 APIs/wire/lifetime/Clap and fixture attachments inspected; design-complete pure typed Exact/Resolve/detail grammar/goldens/IO+revision transitions settled; PF12/13 borrowed projection/direct typed serde, EH04 existing error contexts and OB16 explicit output/engine ownership applied; executable eleven-path recipe/current fixtures+one target/pinned1.98 fit existing homes; falsifiable literal full-wire/Presence/control/LF/source-group/strict IO/native/stale/readback controls with pre-input expected IDs; coherent complete plan1–14 and exact prior evidence manifest/current-source distinctions, all six rowsOPEN. Sketches/literal authored data are not compiled product proof.
+
+Current assignment is `cc-prompt-iteration03.md` (Project01/Arc04/S05), issued2026-10-27 UTC; predecessor `cc-prompt-iteration02.md` is returned for review, bounded semantic/API/Tiny contribution PASS at739 with ONE strictF03 carryover. Initial/01/02 prompts stay byte-preserved. Exact reviewed draft copied create-new to artifacts/cc-prompt-iteration03-reviewed-draft01.md; active prompt SHA05cc094c1444d96a9ff37eab904400ddd6f97f0dced4f9e14b7bfc22268640c7 differs ONLY line3STATUS. Pass4ofFIVE TOTAL, not a reset. Retained Luna/high CC must now load COMPLETE required prompt/plan§§1–14/ledger/evidence/source extent, append exact coverage+source-cited readback to existing execution.md, then wait for CDC review/fresh source739/treee184/lock65cd…8700/guard20fe…de8/oldS04refs432 checks and explicit ELEVEN-path/source-index/ONE-target transfer. Issue metadata alone transfers nothing. No new user gate for routine authorized intake/transfer; no source/Full/numeric/Linux/external acceptance or action from this issue. Root/CC read-only while CDC owns quiet source/index/target.
