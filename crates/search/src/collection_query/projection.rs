@@ -85,7 +85,7 @@ pub struct CollectionProjectionProfile {
     pub total: Duration,
     /// Time spent opening and hydrating the selected payload.
     pub payload_setup: Option<DictionarySnapshotOpenProfile>,
-    /// Query timing, when the operation is lexical exact lookup.
+    /// Query timing for the exact or reference operation.
     pub query: DictionaryProjectionProfile,
 }
 
@@ -217,7 +217,13 @@ impl CollectionCompactSearchEngine {
                     }
                 };
                 if let Some(cursor) = response.next_cursor.take() {
+                    let projection_started = profile.as_ref().map(|_| Instant::now());
                     response.next_cursor = Some(self.wrap_managed_cursor(&cursor)?);
+                    if let (Some(profile), Some(started)) =
+                        (profile.as_deref_mut(), projection_started)
+                    {
+                        profile.query.projection += started.elapsed();
+                    }
                 }
                 CollectionCompactQueryResult::Exact(Box::new(response))
             }
@@ -232,15 +238,20 @@ impl CollectionCompactSearchEngine {
                 CollectionCompactQueryResult::Resolve(Box::new(response))
             }
         };
+        let projection_started = profile.as_ref().map(|_| Instant::now());
         let response = self.response(result);
         if let Some(profile) = profile {
             let total = started.elapsed();
             profile.total = total;
+            if let Some(projected) = projection_started {
+                profile.query.projection += projected.elapsed();
+            }
             profile.query.total = total.saturating_sub(
                 profile
                     .payload_setup
                     .map_or(Duration::ZERO, |setup| setup.total),
             );
+            profile.query.lookup = profile.query.total.saturating_sub(profile.query.projection);
         }
         Ok(response)
     }
