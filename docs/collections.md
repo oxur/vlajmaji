@@ -209,3 +209,22 @@ complete typed dictionary and builds its search indexes. A selected installed
 payload whose minimum store cannot be opened returns a typed payload error;
 registered-only, disabled, or unselected references can be reported from
 retained catalogue metadata without claiming the payload exists.
+
+Compact output is opt-in and leaves the established full response as the
+default. Use `dictionary-query STORE --format compact --request JSON` for an
+explicit store or `lookup --format compact --request JSON` for a configured
+selection. Compact Exact results retain totals, source summaries, and paging
+cursors while omitting complete hit bodies. Each hit contains a strict
+versioned detail key; request the complete body with
+`dictionary-detail STORE --reference JSON [--expected-snapshot SHA]` or
+`lookup-detail --reference JSON [--expected-snapshot SHA]`. The detail key
+binds typed entry and assertion records, their occurrence, source, native IDs,
+and attribution. Nullable key fields must be present as either a value or JSON
+`null`. The optional lower-case SHA-256 snapshot catches a changed compact
+view; it does not authenticate an ordinary-open SQLite store. Compact Resolve
+can return targeted metadata-only local or catalogue results when no selected
+payload is admitted, while a selected installed payload failure remains an
+error. Standalone compact `dictionary-query` writes the selected Exact or
+Resolve response object directly at the JSON root; the operation-tagged
+library enum is not an extra CLI wrapper. Configured `lookup` keeps its managed
+envelope and nested result tag.

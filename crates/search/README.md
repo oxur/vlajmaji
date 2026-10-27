@@ -54,6 +54,17 @@ retained catalogue view without opening a payload; selected installed
 references surface a typed error if their derived database cannot be opened.
 Only the CLI resolves config from XDG/HOME; library APIs take explicit paths.
 
+The additive compact API, `DictionaryCompactSearchEngine` and
+`CollectionCompactSearchEngine`, keeps exact-query hits small while preserving
+the existing full response as the default. Compact hits carry a strict,
+versioned detail key with typed entry/assertion digests and occurrence
+identity; `detail` validates that key and an optional lower-case snapshot SHA
+before returning the complete `DictionaryHit`. Compact Resolve reports
+targeted local or catalogue projections and retains contributor pack/release
+scopes for admission. It does not authenticate ordinary-open SQLite payload
+bytes, and a compact hit's snapshot token is not a signature. See
+`docs/collections.md` for managed CLI examples and the exact JSON contract.
+
 The `topology_probe` example is a local comparison harness, not user
 configuration or an installer. `prepare --manifest FILE` strictly loads four
 explicitly pinned sealed inputs and exclusively creates one unified and four

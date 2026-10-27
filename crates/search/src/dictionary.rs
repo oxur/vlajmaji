@@ -29,6 +29,17 @@ use vlajmaji_store::{
     DictionarySnapshotManifest, DictionaryStore, DictionaryStoreError,
 };
 
+mod borrowed;
+pub mod projection;
+pub use projection::{
+    DictionaryCompactExactResponse, DictionaryCompactGroup, DictionaryCompactHit,
+    DictionaryCompactQueryResult, DictionaryCompactReferenceAssertion,
+    DictionaryCompactReferenceResolution, DictionaryCompactSearchEngine,
+    DictionaryCompactSourceAvailability, DictionaryDetailReferenceInvalidity,
+    DictionaryHitDetailRef, DictionaryHitDetailResponse, DictionaryProjectionError,
+    DictionaryProjectionProfile, validate_detail_snapshot_sha256,
+};
+
 /// Exact lookup policy included in every result and cursor binding.
 pub const EXACT_POLICY: &str = "exact-entry-v1";
 /// Selection policy included in every cursor binding.
@@ -2150,6 +2161,13 @@ fn cursor_position(
     binding: &str,
     hits: &[DictionaryHit],
 ) -> Result<usize, DictionaryQueryError> {
+    if cursor.starts_with("dictionary-compact-v1:") {
+        return if is_valid_compact_cursor(cursor) {
+            Err(DictionaryQueryError::StaleCursor)
+        } else {
+            Err(malformed_cursor("malformed foreign compact cursor"))
+        };
+    }
     let bytes = unhex(cursor)?;
     let envelope: CursorEnvelope =
         serde_json::from_slice(&bytes).map_err(|error| malformed_cursor(error.to_string()))?;
@@ -2175,6 +2193,58 @@ fn cursor_position(
         .position(|hit| hit_key(hit) == wanted)
         .map(|index| index + 1)
         .ok_or(DictionaryQueryError::InvalidCursorPosition)
+}
+
+fn is_valid_compact_cursor(cursor: &str) -> bool {
+    #[derive(Deserialize, Serialize)]
+    #[serde(deny_unknown_fields)]
+    struct CompactBody {
+        version: u32,
+        binding: String,
+        last: CompactKey,
+    }
+    #[derive(Deserialize, Serialize)]
+    #[serde(deny_unknown_fields)]
+    struct CompactKey {
+        source: SourceId,
+        spelling: String,
+        occurrence_id: String,
+        assertion_id: String,
+    }
+    #[derive(Deserialize)]
+    #[serde(deny_unknown_fields)]
+    struct CompactEnvelope {
+        body: CompactBody,
+        checksum: String,
+    }
+
+    let Some(encoded) = cursor.strip_prefix("dictionary-compact-v1:") else {
+        return false;
+    };
+    let Ok(bytes) = unhex(encoded) else {
+        return false;
+    };
+    let Ok(envelope) = serde_json::from_slice::<CompactEnvelope>(&bytes) else {
+        return false;
+    };
+    let Ok(body) = serde_json::to_vec(&envelope.body) else {
+        return false;
+    };
+    envelope.body.version == 1
+        && is_sha256_hex(&envelope.body.binding)
+        && is_sha256_hex(&envelope.checksum)
+        && !envelope.body.last.assertion_id.is_empty()
+        && !envelope.body.last.spelling.is_empty()
+        && valid_cursor_occurrence_hex(&envelope.body.last.occurrence_id)
+        && hex(&Sha256::digest(body)) == envelope.checksum
+}
+
+fn valid_cursor_occurrence_hex(value: &str) -> bool {
+    !value.is_empty()
+        && value.len().is_multiple_of(2)
+        && value
+            .bytes()
+            .all(|byte| byte.is_ascii_digit() || (b'a'..=b'f').contains(&byte))
 }
 
 fn is_sha256_hex(text: &str) -> bool {

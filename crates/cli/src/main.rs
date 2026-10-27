@@ -1,10 +1,13 @@
 //! JSON command-line interface for the research lexical-search prototype.
 
+mod query_output;
+
 use std::ffi::OsString;
 use std::io::{self, Read, Write};
 use std::path::{Path, PathBuf};
 
 use clap::{Args as ClapArgs, Parser, Subcommand, ValueEnum};
+use query_output::QueryOutput;
 use vlajmaji_lexicon::{
     Dictionary, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION,
     JbotciImportError, JbotciImportOptions, LA_LOJBAN_PINNED_RAW_SHA256, LA_LOJBAN_PINNED_REVISION,
@@ -15,9 +18,10 @@ use vlajmaji_lexicon::{
     import_sutysisku_export, seal_release,
 };
 use vlajmaji_search::{
-    CollectionQueryError, CollectionQueryErrorReport, CollectionSearchEngine,
-    DictionaryErrorReport, DictionaryExactOptions, DictionaryRequest, DictionarySearchEngine,
-    Query, SearchEngine, SearchOptions,
+    CollectionCompactSearchEngine, CollectionQueryError, CollectionQueryErrorReport,
+    CollectionSearchEngine, DictionaryCompactQueryResult, DictionaryCompactSearchEngine,
+    DictionaryErrorReport, DictionaryExactOptions, DictionaryHitDetailRef, DictionaryRequest,
+    DictionarySearchEngine, Query, SearchEngine, SearchOptions, validate_detail_snapshot_sha256,
 };
 use vlajmaji_store::{
     CollectionCatalogue, CollectionError, CollectionInput, CollectionPolicySelection,
@@ -76,6 +80,16 @@ enum Command {
         store: Option<PathBuf>,
         #[arg(long)]
         request: Option<String>,
+        #[arg(long, value_enum, default_value_t = QueryFormat::Full)]
+        format: QueryFormat,
+    },
+    /// Resolve a compact hit key into its complete standalone dictionary hit.
+    DictionaryDetail {
+        store: Option<PathBuf>,
+        #[arg(long)]
+        reference: String,
+        #[arg(long)]
+        expected_snapshot: Option<String>,
     },
     /// Explicitly audit one or all integrity boundaries of an existing grouped store.
     #[command(
@@ -144,7 +158,29 @@ enum Command {
         profile: Option<String>,
         #[arg(long)]
         pack: Vec<String>,
+        #[arg(long, value_enum, default_value_t = QueryFormat::Full)]
+        format: QueryFormat,
     },
+    /// Resolve a compact hit key against the configured collection selection.
+    LookupDetail {
+        #[arg(long)]
+        reference: String,
+        #[arg(long)]
+        expected_snapshot: Option<String>,
+        #[arg(long)]
+        config: Option<PathBuf>,
+        #[arg(long)]
+        profile: Option<String>,
+        #[arg(long)]
+        pack: Vec<String>,
+    },
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum, Default)]
+enum QueryFormat {
+    #[default]
+    Full,
+    Compact,
 }
 
 #[derive(Debug, Subcommand)]
@@ -437,6 +473,13 @@ struct ManagedOutputContext {
 
 impl ManagedOutputContext {
     fn report(&self, detail: String) -> serde_json::Value {
+        if self.operation == "dictionary_detail" {
+            return serde_json::json!(DictionaryErrorReport {
+                code: "response_output_io".into(),
+                message: detail,
+                sources: Vec::new(),
+            });
+        }
         if let Some(mut report) = self.collection_failure.clone() {
             report.category = "response_output_io".into();
             report.detail = format!("{detail}; {}", report.detail);
@@ -478,17 +521,28 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
         collection_failure: None,
     };
     match command {
-        Command::Lookup {
-            config,
-            profile,
-            pack,
-            ..
-        } => Some(context(
+        Command::Lookup { profile, pack, .. } => Some(context(
             "lookup",
-            resolve_config_path(config.as_deref()).ok().as_deref(),
+            None,
             None,
             profile.as_deref(),
             pack.clone(),
+            "not_applicable",
+        )),
+        Command::LookupDetail { profile, pack, .. } => Some(context(
+            "lookup_detail",
+            None,
+            None,
+            profile.as_deref(),
+            pack.clone(),
+            "not_applicable",
+        )),
+        Command::DictionaryDetail { store, .. } => Some(context(
+            "dictionary_detail",
+            None,
+            store.as_deref(),
+            None,
+            Vec::new(),
             "not_applicable",
         )),
         Command::Collections { command } => match command {
@@ -723,7 +777,7 @@ fn lifecycle_serialization_error(context: &ManagedOutputContext, detail: String)
     CliError::CollectionFailure(Box::new(failure))
 }
 
-fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliError> {
+fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
     let args = Args::parse();
     let mut output_context = managed_output_context(&args.command);
     let output = match args.command {
@@ -805,7 +859,11 @@ fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliErr
                 "assertions":assertions
             })
         }
-        Command::DictionaryQuery { store, request } => {
+        Command::DictionaryQuery {
+            store,
+            request,
+            format,
+        } => {
             let request_text = match request {
                 Some(text) => text,
                 None => {
@@ -824,22 +882,62 @@ fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliErr
                     )
                 })?;
             let selected = resolve_store(store)?;
-            let engine = DictionarySearchEngine::open(&selected.path)
-                .map_err(|error| CliError::Structured(error.report()))?;
-            match request {
-                DictionaryRequest::Exact { spelling, options } => serde_json::to_value(
-                    engine
-                        .exact(&spelling, options)
-                        .map_err(|error| CliError::Structured(error.report()))?,
-                )
-                .map_err(|error| structured_error("response_json", error.to_string()))?,
-                DictionaryRequest::Resolve { target } => serde_json::to_value(
-                    engine
-                        .resolve(&target)
-                        .map_err(|error| CliError::Structured(error.report()))?,
-                )
-                .map_err(|error| structured_error("response_json", error.to_string()))?,
+            match format {
+                QueryFormat::Full => {
+                    let engine = DictionarySearchEngine::open(&selected.path)
+                        .map_err(|error| CliError::Structured(error.report()))?;
+                    match request {
+                        DictionaryRequest::Exact { spelling, options } => serde_json::to_value(
+                            engine
+                                .exact(&spelling, options)
+                                .map_err(|error| CliError::Structured(error.report()))?,
+                        )
+                        .map_err(|error| structured_error("response_json", error.to_string()))?,
+                        DictionaryRequest::Resolve { target } => serde_json::to_value(
+                            engine
+                                .resolve(&target)
+                                .map_err(|error| CliError::Structured(error.report()))?,
+                        )
+                        .map_err(|error| structured_error("response_json", error.to_string()))?,
+                    }
+                }
+                QueryFormat::Compact => {
+                    let engine = DictionaryCompactSearchEngine::open(&selected.path)
+                        .map_err(|error| CliError::Structured(error.report()))?;
+                    let result = engine
+                        .execute(request)
+                        .map_err(|error| CliError::Structured(error.report()))?;
+                    match result {
+                        DictionaryCompactQueryResult::Exact(response) => {
+                            serde_json::to_value(*response)
+                        }
+                        DictionaryCompactQueryResult::Resolve(response) => {
+                            serde_json::to_value(*response)
+                        }
+                    }
+                    .map_err(|error| structured_error("response_json", error.to_string()))?
+                }
             }
+        }
+        Command::DictionaryDetail {
+            store,
+            reference,
+            expected_snapshot,
+        } => {
+            let reference = DictionaryHitDetailRef::from_json_bytes(reference.as_bytes())
+                .map_err(|error| CliError::Structured(error.report()))?;
+            if let Some(snapshot) = expected_snapshot.as_deref() {
+                validate_detail_snapshot_sha256(snapshot)
+                    .map_err(|error| CliError::Structured(error.report()))?;
+            }
+            let selected = resolve_store(store)?;
+            let engine = DictionaryCompactSearchEngine::open(&selected.path)
+                .map_err(|error| CliError::Structured(error.report()))?;
+            let response = engine
+                .detail(&reference, expected_snapshot.as_deref())
+                .map_err(|error| CliError::Structured(error.report()))?;
+            serde_json::to_value(response)
+                .map_err(|error| structured_error("response_json", error.to_string()))?
         }
         Command::Verify { check, store } => {
             let selected = resolve_store(store)?;
@@ -1116,9 +1214,14 @@ fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliErr
             config,
             profile,
             pack,
+            format,
         } => {
             // Decode caller input before touching configuration or catalogue paths so
             // malformed request data has deterministic precedence over unavailable stores.
+            let preliminary_packs = pack
+                .iter()
+                .filter_map(|value| parse_collection_pack(value).ok())
+                .collect::<Vec<_>>();
             let request = if let Some(word) = word {
                 DictionaryRequest::Exact {
                     spelling: word,
@@ -1131,10 +1234,12 @@ fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliErr
                 }
             } else {
                 if !source.is_empty() || page_size.is_some() || cursor.is_some() {
-                    return Err(managed_cli_error(
+                    return Err(managed_pre_config_error(
                         "invalid_request",
                         "direct source/page/cursor flags require WORD and cannot override request JSON or stdin",
                         "lookup",
+                        profile.as_deref(),
+                        &preliminary_packs,
                     ));
                 }
                 let text = match request {
@@ -1142,20 +1247,24 @@ fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliErr
                     None => {
                         let mut text = String::new();
                         io::stdin().read_to_string(&mut text).map_err(|error| {
-                            managed_cli_error(
+                            managed_pre_config_error(
                                 "request_io",
                                 format!("read dictionary request: {error}"),
                                 "lookup",
+                                profile.as_deref(),
+                                &preliminary_packs,
                             )
                         })?;
                         text
                     }
                 };
                 serde_json::from_str::<DictionaryRequest>(&text).map_err(|error| {
-                    managed_cli_error(
+                    managed_pre_config_error(
                         "request_invalid",
                         format!("decode dictionary request: {error}"),
                         "lookup",
+                        profile.as_deref(),
+                        &preliminary_packs,
                     )
                 })?
             };
@@ -1211,24 +1320,6 @@ fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliErr
                 }
                 Some(parsed)
             };
-            let mut engine = CollectionSearchEngine::open_configured(
-                &profiles,
-                profile.as_deref(),
-                override_packs.as_deref(),
-            )
-            .map_err(|error| {
-                let known_pack_ids = override_packs
-                    .as_deref()
-                    .unwrap_or(&configured_profile.packs);
-                with_managed_context(
-                    managed_error_for(error, "lookup"),
-                    Some(&config_path),
-                    Some(&configured_profile.root),
-                    profile.as_deref(),
-                    Some(profile_identity.clone()),
-                    known_pack_ids,
-                )
-            })?;
             if let Some(context) = output_context.as_mut() {
                 context.config_path = Some(profile_identity.config_path.clone());
                 context.root_path =
@@ -1248,21 +1339,222 @@ fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliErr
             if let Some(context) = output_context.as_mut() {
                 context.operation = operation.into();
             }
-            let response = engine.execute(request).map_err(|error| {
-                let mut report = error.report_for(operation);
-                report.snapshot = Some(engine.selection().clone());
-                report.profile = engine.selection().profile.clone();
-                report.config_path = Some(profile_identity.config_path.clone());
-                report.root_path =
-                    Some(vlajmaji_store::native_path_report(&configured_profile.root));
-                report.known_pack_ids = engine
-                    .selection()
-                    .collections
-                    .iter()
-                    .map(|row| row.pack_id.clone())
-                    .collect();
-                CliError::Managed(Box::new(report))
+            let (response_value, snapshot, collections) = match format {
+                QueryFormat::Full => {
+                    let mut engine = CollectionSearchEngine::open_configured(
+                        &profiles,
+                        profile.as_deref(),
+                        override_packs.as_deref(),
+                    )
+                    .map_err(|error| {
+                        let known_pack_ids = override_packs
+                            .as_deref()
+                            .unwrap_or(&configured_profile.packs);
+                        with_managed_context(
+                            managed_error_for(error, "lookup"),
+                            Some(&config_path),
+                            Some(&configured_profile.root),
+                            profile.as_deref(),
+                            Some(profile_identity.clone()),
+                            known_pack_ids,
+                        )
+                    })?;
+                    let response = engine.execute(request.clone()).map_err(|error| {
+                        let mut report = error.report_for(operation);
+                        report.snapshot = Some(engine.selection().clone());
+                        report.profile = engine.selection().profile.clone();
+                        report.config_path = Some(profile_identity.config_path.clone());
+                        report.root_path =
+                            Some(vlajmaji_store::native_path_report(&configured_profile.root));
+                        report.known_pack_ids = engine
+                            .selection()
+                            .collections
+                            .iter()
+                            .map(|row| row.pack_id.clone())
+                            .collect();
+                        CliError::Managed(Box::new(report))
+                    })?;
+                    let value = serde_json::to_value(&response).map_err(|error| {
+                        managed_cli_error("response_serialization", error.to_string(), operation)
+                    })?;
+                    (value, response.snapshot, response.collections)
+                }
+                QueryFormat::Compact => {
+                    let mut engine = CollectionCompactSearchEngine::open_configured(
+                        &profiles,
+                        profile.as_deref(),
+                        override_packs.as_deref(),
+                    )
+                    .map_err(|error| {
+                        let known_pack_ids = override_packs
+                            .as_deref()
+                            .unwrap_or(&configured_profile.packs);
+                        with_managed_context(
+                            managed_error_for(error, "lookup"),
+                            Some(&config_path),
+                            Some(&configured_profile.root),
+                            profile.as_deref(),
+                            Some(profile_identity.clone()),
+                            known_pack_ids,
+                        )
+                    })?;
+                    let response = engine.execute(request).map_err(|error| {
+                        let mut report = error.report_for(operation);
+                        report.snapshot = Some(engine.selection().clone());
+                        report.profile = engine.selection().profile.clone();
+                        report.config_path = Some(profile_identity.config_path.clone());
+                        report.root_path =
+                            Some(vlajmaji_store::native_path_report(&configured_profile.root));
+                        report.known_pack_ids = engine
+                            .selection()
+                            .collections
+                            .iter()
+                            .map(|row| row.pack_id.clone())
+                            .collect();
+                        CliError::Managed(Box::new(report))
+                    })?;
+                    let value = serde_json::to_value(&response).map_err(|error| {
+                        managed_cli_error("response_serialization", error.to_string(), operation)
+                    })?;
+                    (value, response.snapshot, response.collections)
+                }
+            };
+            if let Some(context) = output_context.as_mut() {
+                context.snapshot = Some(snapshot);
+                context.known_pack_ids =
+                    collections.iter().map(|row| row.pack_id.clone()).collect();
+            }
+            response_value
+        }
+        Command::LookupDetail {
+            reference,
+            expected_snapshot,
+            config,
+            profile,
+            pack,
+        } => {
+            let location_packs = pack
+                .iter()
+                .filter_map(|value| parse_collection_pack(value).ok())
+                .collect::<Vec<_>>();
+            let detail_ref = DictionaryHitDetailRef::from_json_bytes(reference.as_bytes())
+                .map_err(|error| {
+                    managed_pre_config_error(
+                        "invalid_detail_reference",
+                        error.to_string(),
+                        "lookup_detail",
+                        profile.as_deref(),
+                        &location_packs,
+                    )
+                })?;
+            if let Some(snapshot) = expected_snapshot.as_deref() {
+                validate_detail_snapshot_sha256(snapshot).map_err(|error| {
+                    managed_pre_config_error(
+                        "malformed_snapshot",
+                        error.to_string(),
+                        "lookup_detail",
+                        profile.as_deref(),
+                        &location_packs,
+                    )
+                })?;
+            }
+            let config_path = resolve_config_path(config.as_deref()).map_err(|error| {
+                config_location_error(
+                    error,
+                    "lookup_detail",
+                    None,
+                    profile.as_deref(),
+                    &location_packs,
+                )
             })?;
+            let profiles = CollectionProfiles::read(config_path.clone()).map_err(|error| {
+                with_managed_context(
+                    managed_error_for(CollectionQueryError::Profile(error), "lookup_detail"),
+                    Some(&config_path),
+                    None,
+                    profile.as_deref(),
+                    None,
+                    &[],
+                )
+            })?;
+            let configured_profile = profiles.profile(profile.as_deref()).map_err(|error| {
+                with_managed_context(
+                    managed_error_for(CollectionQueryError::Profile(error), "lookup_detail"),
+                    Some(&config_path),
+                    None,
+                    profile.as_deref(),
+                    None,
+                    &[],
+                )
+            })?;
+            let profile_identity = profiles.identity(&configured_profile);
+            let override_packs = if pack.is_empty() {
+                None
+            } else {
+                let mut parsed = Vec::with_capacity(pack.len());
+                for value in &pack {
+                    parsed.push(parse_collection_pack(value).map_err(|error| {
+                        with_managed_context(
+                            managed_error_for(
+                                CollectionQueryError::InvalidSelection(error.to_string()),
+                                "lookup_detail",
+                            ),
+                            Some(&config_path),
+                            Some(&configured_profile.root),
+                            profile.as_deref(),
+                            Some(profile_identity.clone()),
+                            &configured_profile.packs,
+                        )
+                    })?);
+                }
+                Some(parsed)
+            };
+            let mut engine = CollectionCompactSearchEngine::open_configured(
+                &profiles,
+                profile.as_deref(),
+                override_packs.as_deref(),
+            )
+            .map_err(|error| {
+                with_managed_context(
+                    managed_error_for(error, "lookup_detail"),
+                    Some(&config_path),
+                    Some(&configured_profile.root),
+                    profile.as_deref(),
+                    Some(profile_identity.clone()),
+                    override_packs
+                        .as_deref()
+                        .unwrap_or(&configured_profile.packs),
+                )
+            })?;
+            if let Some(context) = output_context.as_mut() {
+                context.config_path = Some(profile_identity.config_path.clone());
+                context.root_path =
+                    Some(vlajmaji_store::native_path_report(&configured_profile.root));
+                context.profile = Some(profile_identity.clone());
+                context.known_pack_ids = override_packs
+                    .as_deref()
+                    .unwrap_or(&configured_profile.packs)
+                    .iter()
+                    .map(ToString::to_string)
+                    .collect();
+            }
+            let response = engine
+                .detail(&detail_ref, expected_snapshot.as_deref())
+                .map_err(|error| {
+                    let mut report = error.report_for("lookup_detail");
+                    report.snapshot = Some(engine.selection().clone());
+                    report.profile = engine.selection().profile.clone();
+                    report.config_path = Some(profile_identity.config_path.clone());
+                    report.root_path =
+                        Some(vlajmaji_store::native_path_report(&configured_profile.root));
+                    report.known_pack_ids = engine
+                        .selection()
+                        .collections
+                        .iter()
+                        .map(|row| row.pack_id.clone())
+                        .collect();
+                    CliError::Managed(Box::new(report))
+                })?;
             if let Some(context) = output_context.as_mut() {
                 context.snapshot = Some(response.snapshot.clone());
                 context.known_pack_ids = response
@@ -1272,11 +1564,11 @@ fn execute() -> Result<(serde_json::Value, Option<ManagedOutputContext>), CliErr
                     .collect();
             }
             serde_json::to_value(response).map_err(|error| {
-                managed_cli_error("response_serialization", error.to_string(), operation)
+                managed_cli_error("response_serialization", error.to_string(), "lookup_detail")
             })?
         }
     };
-    Ok((output, output_context))
+    Ok((QueryOutput::Json(output), output_context))
 }
 
 fn collections_command(
@@ -1765,6 +2057,23 @@ fn managed_cli_error(category: &str, detail: impl Into<String>, operation: &str)
         outcome: "not_applicable".into(),
         writer: None,
     }))
+}
+
+fn managed_pre_config_error(
+    category: &str,
+    detail: impl Into<String>,
+    operation: &str,
+    requested_profile: Option<&str>,
+    known_pack_ids: &[PackId],
+) -> CliError {
+    with_managed_context(
+        managed_cli_error(category, detail, operation),
+        None,
+        None,
+        requested_profile,
+        None,
+        known_pack_ids,
+    )
 }
 
 #[derive(Debug)]
@@ -2467,7 +2776,12 @@ fn main() -> std::process::ExitCode {
     };
     let mut stdout = io::stdout().lock();
     let mut stderr = io::stderr().lock();
-    if emit_success_response(&output, &mut stdout, &mut stderr, output_context.as_ref()) {
+    if emit_success_response(
+        output.as_json(),
+        &mut stdout,
+        &mut stderr,
+        output_context.as_ref(),
+    ) {
         std::process::ExitCode::SUCCESS
     } else {
         std::process::ExitCode::FAILURE
@@ -2616,6 +2930,39 @@ mod managed_output_tests {
         let read_envelope: serde_json::Value = serde_json::from_slice(&read_stderr).unwrap();
         assert_eq!(read_envelope["error"]["operation"], "lookup");
         assert_eq!(read_envelope["error"]["outcome"], "not_applicable");
+    }
+
+    #[test]
+    fn test_emit_dictionary_detail_io_failure_uses_structured_error_report() {
+        let context = ManagedOutputContext {
+            operation: "dictionary_detail".into(),
+            config_path: None,
+            root_path: None,
+            profile: None,
+            requested_profile: None,
+            snapshot: None,
+            known_pack_ids: Vec::new(),
+            outcome: "not_applicable".into(),
+            collection_failure: None,
+        };
+        let mut stderr = Vec::new();
+        assert!(!emit_success_response(
+            &serde_json::json!({"version":1,"hit":{}}),
+            &mut BadDescriptorWriter,
+            &mut stderr,
+            Some(&context),
+        ));
+        let envelope: serde_json::Value = serde_json::from_slice(&stderr).unwrap();
+        let report = envelope["error"].as_object().unwrap();
+        assert_eq!(report.len(), 3);
+        assert_eq!(report["code"], "response_output_io");
+        assert_eq!(report["sources"], serde_json::json!([]));
+        assert!(
+            report["message"]
+                .as_str()
+                .unwrap()
+                .contains("Bad file descriptor")
+        );
     }
 
     #[test]
