@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S02 CLOSED, twelve child rows/A04-01–02 DONE; other eight arc rows OPEN. S03 ISSUED after root readiness PASS; S04/S05 not issued |
-| version / date | 1.8 / 2026-10-26 UTC |
+| status | ACTIVE; S01–S03 CLOSED, eighteen child rows/A04-01,02,04 DONE; seven arc rows OPEN. S04/S05 not issued; S04 waits final root reconciliation of user-merged PR4/main CI |
+| version / date | 1.9 / 2026-10-27 UTC |
 | authority | Latest 2026-10-25: Duncan explicitly approved seven TOTAL stores in protocol 1.5, retaining the historical two plus clean fresh five after remaining prerequisites. Original protocol 1.1 approval and Autonomous THROUGH ARC04 ONLY persist; unchanged Sol6.1/high CDC and Luna/high CC. CDC readiness clearance is now recorded in protocol 1.6 and slice artifacts/cdc-prerequisite02. Prior checkpoints remain historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
-| accepted inputs | Arc01–03/source7b retained; current sourcece1bd238, protected main52fd/Bauskec580. S01 decision4b and S02 technical evidence are current; actual user default unchanged |
-| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; current ce1bd238 clean and explicitly authorized push/hosted CI complete |
+| accepted inputs | Arc01–03/source7b retained; current reviewed sourcedcdf216, S03 accepted; prior main52fd/Bauskec580 preservation is dated execution evidence. Root owns newly authorized PR4 main integration; actual user default unchanged |
+| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-composed-sqlite-lookup; reviewed dcdf216 clean; current push and PR4 integration CI green; Duncan merged PR4 as main b0106b with identical accepted tree; root reports main CI watch exit 0, terminal-summary reconciliation pending |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -117,3 +117,8 @@ Root canonical consistency PASS cleared six child rows DONE and A04-02 DONE; A04
 ## S03 readiness and issue — 2026-10-26 UTC
 
 Source-guided configured combined lookup packet: slice03-configured-combined-lookup/{slice-plan.md,ledger.md,cc-prompt.md}, exact18 source paths/six OPEN rows. Separate explicit TOML policy preserves catalogue schema1 and old STORE route; managed outer cursor rejects changed operational snapshots before unavailable admission. Actual offline confyg single-source/serializer proof and source-literal census precede implementation. Root canonical readiness PASS; issue does not accept runtime or authorize another Full create/push/default switch. S04 lifecycle/S05 projection and fresh arc workflow composition remain.
+
+
+## Version 1.9 — S03 accepted, reviewed integration authorized
+
+2026-10-27 UTC: six S03 rows accepted atdcdf216 after independent retained Full/literal/public/CLI proof and actual forced Linux CONFIG/native ROOT/dev-full; root canonical scope/evidence consistency PASS. Newly A04-04 DONE only; A04-03/05/06/07/08/09/10 remain OPEN/all fourteen project rows OPEN. S04 lifecycle/version fence/migration and S05 projection/whole-workflow composition remain mandatory. Latest user explicitly requests PR/main merge of current reviewed delivery; PR4 includes accepted Arc03 plus A04S01–S03 (not only S03). Root owns preserving-commit integration; S04 issue waits actual merge/tree/CI reconciliation, no future push/publication inferred. Prior no-main statements are historical scope.

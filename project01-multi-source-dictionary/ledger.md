@@ -1,6 +1,6 @@
 # Project01 ledger
 
-**Current partial checkpoint, 2026-10-26 UTC:** A04 S01 accepted comparison and S02 technically accepted provisioning/catalogue/Full grouped-query evidence are additional partial contributions only; all fourteen rows below remain OPEN with their exact criterion, status, significance and origin columns preserved. S02 canonical close is accepted/mechanical; A04-02 DONE, eight remaining arc rows OPEN. Earlier per-row planning-only/runtime notes describe their dated checkpoint; current A04 evidence is the S02 CDC verifier, with S03–S05/A05/A06/Operator obligations retained.
+**Current partial checkpoint, 2026-10-27 UTC:** A04 S01–S03 independently accepted/eighteen child rows; A04-01/02/04 DONE, seven arc obligations and all fourteen project rows OPEN. S03 configured selection/cursor/native/full-wire proof is additional partial evidence; S04 lifecycle/migration, S05 projections/fresh arc and A05/A06/Operator gates retain their owners. Root owns user-authorized current PR4 integration; no project completion.
 
 All fourteen project rows remain **open**. Arc01all4children and independent technical composition at efef9c4supply the complete fixture foundation; final canonical packet gate accepted at7ddd0db and Arc01CLOSED. A03all4children and fresh assembled technical composition are accepted; actual canonical gate independently accepted. Remaining topology/editor/final project and Operator gates remain. Arc02completefullraw/pipeline/persistedlookup and fresh technical/finalcanonical gates are also accepted at4e37016/5456b54. Partial contributions are explicit below; none is full-project acceptance.
 
@@ -70,3 +70,8 @@ Protocol1.4 supersedes interim reuse advice with a proposed clean re-entry and e
 ## S01 count answer recorded — 2026-10-25
 
 Duncan explicitly approved seven TOTAL candidate stores: retain the two historical/unaccepted stores and create five clean comparison stores only after the remaining prerequisites. Protocol 1.5 records the exact answer and timestamp semantics. Same seven working hours including preparation, 12 GiB including the retained two, 600-second bounds and three balanced rounds; no reset. COUNT gate cleared only. Full operations remain HOLD until CDC reviews the complete comparator/prefix/source/gates, batch/reference/page and Value-serialization harness, frozen category config, binaries and expanded argv. No topology decision or acceptance is implied; all rows remain OPEN. All fourteen project criteria, statuses and owners remain unchanged.
+
+
+## Arc04 S03 partial contribution — 2026-10-27 UTC
+
+S03 verifier atdcdf216 contributes configured/default pack versus source policy, strict native profiles/writer outcomes, coherent pages/reference/cursor semantics and preserved full wire to P01-08/10/11/12/14. Current native Linux and output-loss controls complement local Full proof. P01-08 integration is now partial through S03 rather than entirely future, but S04/S05 production lifecycle/output and A06/Operator remain. All fourteen criterion/status/significance/origin columns remain unchanged and OPEN; no global requirement or accepted historical timing is relabeled complete.

@@ -1,6 +1,6 @@
 # S03 CDC retrospective
 
-2026-10-27 UTC; technical acceptance atdcdf216, canonical close pending independent root consistency. Process observations below do not replace acceptance and do not measure a general improvement in speed/reliability.
+2026-10-27 UTC; technical acceptance atdcdf216, canonical close accepted after independent root consistency. Process observations below do not replace acceptance and do not measure a general improvement in speed/reliability.
 
 ## What worked
 
@@ -24,8 +24,11 @@ Automatic approval review rejected the corrected-head push before execution beca
 
 ## Follow-through for S04 and S05
 
-Freeze lifecycle catalogue/version/write-fence and active-head/generation semantics before code: current generation JSON and installed heads are coupled, so heads-only logical removal cannot claim old-writer compatibility. Preserve retired immutable artifacts/references; no implicit purge or invention of sealed provenance from an old standalone STORE. Explicit scratch migration/default policy must retain old STORE compatibility and actual user default. S04 begins only after current canonical close and authorized merge reconciliation.
+Freeze lifecycle catalogue/version/write-fence and active-head/generation semantics before code: current generation JSON and installed heads are coupled, so heads-only logical removal cannot claim old-writer compatibility. Preserve retired immutable artifacts/references; no implicit purge or invention of sealed provenance from an old standalone STORE. Explicit scratch migration/default policy must retain old STORE compatibility and actual user default. Canonical close is complete and Duncan has merged PR4 with the accepted tree. S04 implementation issue waits final root main-CI reconciliation; prospective source-guided readiness is authorized.
 
 Continue source-literal prerequisites before every expected fixture tuple, strict nonempty graph validation before composition/install, and current exact category/key/presence oracles with valid counterparts. Specify public error/category/native state and mutation/outcome context at issue. Every platform positive must require its success branch; a permitted qualifier is useful but different evidence. Preserve failed methods and exact source hashes.
 
 S05 must select projection before full availability/release inventories and candidate-hit hydration, preserving all occurrences, requested missing/null states, totals/pages/provenance and explicit detail access. Current outer7,164,883B for five hits and multi-GB typed setup remain concrete costs, not reasons to claim compact delivery early. Approved compact/readable budgets and actual end-to-end composition remain future gates. No framework/memory change or broad extra test campaign is implied by this retrospective.
+
+
+Canonical review also caught stale current ledger evidence after terminal CI, despite accurate verifier text. Updating only current dispositions restored agreement while OPEN statuses intentionally waited mechanical closure. The first CC closing report mixed tiny/Full counts and described the one cfg edit imprecisely; its two originals are retained and the final exact negated attribute is verified. These are record/method errors, not further product runs. Future close records should be derived from one named current evidence sheet before copying counts/status phrases.

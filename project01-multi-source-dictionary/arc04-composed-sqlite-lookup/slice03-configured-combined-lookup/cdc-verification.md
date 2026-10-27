@@ -1,6 +1,6 @@
 # S03 independent CDC verification
 
-**Technical verdict: ACCEPTED; canonical/mechanical close pending root review.** 2026-10-27 UTC, source `dcdf216ea5805b20f374ce74c302e42bef12c158`. All six ledger rows remain OPEN until the reviewed close is applied. CDC designed/reviewed and executed independent outside callers, authored no product code, and distinguishes author gates, actual CDC execution, hosted execution and root source/receipt reconciliation. Requested Sol6.1/high CDC and Luna/high CC remain unchanged; backend attestation is unavailable.
+**Technical and canonical verdict: ACCEPTED; mechanical closure verified by the named checker/receipt.** 2026-10-27 UTC, source `dcdf216ea5805b20f374ce74c302e42bef12c158`. All six unchanged ledger rows are DONE after root canonical consistency PASS and mechanical close. CDC designed/reviewed and executed independent outside callers, authored no product code, and distinguishes author gates, actual CDC execution, hosted execution and root source/receipt reconciliation. Requested Sol6.1/high CDC and Luna/high CC remain unchanged; backend attestation is unavailable.
 
 | Row | Independent disposition and concrete evidence |
 | --- | --- |
@@ -23,6 +23,11 @@ Initial45f2 hosted CI was green but its conditional CONFIG test did not prove th
 
 ## Canonical and parent disposition
 
-CC report is author proposed-completion, this is CDC technical acceptance, and root consistency review/mechanical check still precede DONE statuses. Proposed bubble-up: newly A04-04 DONE only; A04-03 catalogue/policy and A04-07/08 cross-lifecycle/compatibility remain OPEN with S04/S05 owners, as do remaining arc obligations/all fourteen project rows. No A05 activation.
+The historical CC report is author proposed-completion; this verifier records independent technical/canonical acceptance after root checked the exact four-body packet and all scope/evidence identities. Mechanical bubble-up: newly A04-04 DONE only; A04-03 catalogue/policy and A04-07/08 cross-lifecycle/compatibility remain OPEN with S04/S05 owners, as do remaining arc obligations/all fourteen project rows. No A05 activation.
 
-Earlier exact-candidate push approval/rejection/success history is preserved in `ci-delivery01/02`. Latest user separately requests PR and merge of the reviewed current delivery; root owns that authorized integration and actual final identities. Prior main52fd/Arc03 7b1c/Bauske c580 clean observations describe the protected execution interval, not a false promise that authorized main integration never occurs. No publication/tag, later feature push or actual default switch is inferred. S04 issue waits canonical acceptance plus root merge/scope reconciliation.
+Earlier exact-candidate push approval/rejection/success history is preserved in `ci-delivery01/02`. Latest user separately requested PR and merge of the reviewed current delivery and personally merged PR4 as main b0106b3392a2aa1e002e39c912bc586eedfb30e7; CDC independently checked its parents and exact accepted tree. Root owns final integration-CI reconciliation. Prior main52fd/Arc03 7b1c/Bauske c580 clean observations describe the protected execution interval, not a false promise that authorized main integration never occurs. No publication/tag, later feature push or actual default switch is inferred. Canonical acceptance is complete. S04 issue waits final root reconciliation of main CI; prospective source-guided readiness is authorized.
+
+
+## Canonical consistency disposition
+
+Root read all four bodies plus the corrected current ledger atcb246fd and independently verified sixteen exact source blobs,248 unique proposal artifacts and all eight manifests/219 payloads with zero mismatch. Current ledger evidence was corrected from stale pending-CI text without changing any criterion/proof/owner/status cell. Root explicitly cleared six child DONE and only A04-04 newly DONE. Final added checker/receipt/root-review pointers are enumerated in the refreshed inventory; no technical rerun.

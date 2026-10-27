@@ -1,3 +1,11 @@
+# Current S03 canonical closing checkpoint
+
+2026-10-27 UTC: CDC technical ACCEPTED and root canonical consistency PASS; all six unchanged child rows are now DONE at source `dcdf216ea5805b20f374ce74c302e42bef12c158`. Sixteen source paths/eight immutable manifests are reconciled in `artifacts/scope-inventory01.json`; mechanical checker/receipt and local close commit follow. Actual commit identity is returned after creation (not self-embedded). Only A04-04 newly DONE; seven arc obligations/all fourteen project rows OPEN. Duncan personally merged PR4 as main b0106b with the exact accepted dcdf tree; main CI40425580977 is terminal SUCCESS with Check/Linux/macOS all success. S04 issue waits that reconciliation.
+
+The report below is the preserved historical CC proposed-completion body, independently accepted by CDC/root at this checkpoint. Its OPEN/pending statements describe authoring time. No new runtime or Full campaign occurred.
+
+---
+
 # Arc04 S03 closing report
 
 **Disposition: CC proposed-done; independent acceptance and canonical closure remain pending.** This report records the implementation and evidence for the configured combined-lookup slice. All six S03 ledger rows remain **OPEN**; this is not CDC acceptance or a planning-ledger closure.

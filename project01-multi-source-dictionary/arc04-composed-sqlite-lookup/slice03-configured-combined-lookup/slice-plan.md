@@ -2,7 +2,7 @@
 
 | Field | Binding current value |
 | --- | --- |
-| Status | Test-only correction frozen atdcdf216, local ordered gates passed. Initial45f2 hosted CI green; separate exact-candidate approval now clears the prior rejection. Root normal push completed; currentdcdf run40424262199 terminal SUCCESS, forced CONFIG/native ROOT/dev-full proved. CDC technical ACCEPTED; six rows OPEN pending canonical/mechanical close. |
+| Status | CLOSED, 2026-10-27 UTC. Six unchanged rows independently accepted atdcdf216 after current forced-positive Linux/macOS CI and root canonical consistency PASS. Duncan has merged PR4 as main b0106b with the accepted dcdf tree; S04 issue waits final root main-CI reconciliation. |
 | Authority | Autonomous THROUGH ARC04; unchanged requested Sol6.1/high CDC, Luna/high CC. No new model/budget question. S02 CLOSED atce1bd238 / planning36e7fc9. |
 | Source / ownership | Clean dcdf216, parent45f21dc3, cumulative baseline ce1bd238. CC returned source/index/target; no active command. Root alone owns the explicitly approved dcdf delivery/watch, with no future push authority inferred; protected/default/Full-store boundaries remain. |
 | Useful result | Configure selected/all installed collections and issue one combined exact/reference command with pack selection, source filters, coherent pages and truthful operational availability. |
@@ -189,3 +189,8 @@ After exact CC readback, ownership transfers only for the existing cfg-controlle
 CC returned clean dcdf216, exact one-attribute test diff, actual ordered format02/lint/check exits0 and mechanically counted236/0/1+19. First format01 has success output only and no retained exit; it is preserved, not promoted into actual exit evidence. CDC and root independently verify removing the cfg attribute restores exact prior test bytes, all fifteen other S03 file hashes/runtime/lock unchanged, and both parsed trailers. Prior independent45f2 functional/Full evidence remains retained, not rerun.
 
 Root's push attempt was rejected by automatic approval review before execution because the earlier approval named45f21dc3. Exact displayed reason/instructions are preserved in `artifacts/ci-delivery02/auto-review-rejection-dcdf01.json` with its transcription/backend distinction. There is no push exit/log; no retry or indirect bypass. Root has presented the exact one-line correction and separate user approval question. Current boundary is a real pending human delivery gate; no S04 issue/source/target/Full work.
+
+
+## Accepted endpoint — 2026-10-27 UTC
+
+CDC technical ACCEPTED and root canonical consistency PASS cover all six unchanged contracts, sixteen source paths,248 proposal artifacts and eight immutable manifests/219 payloads. All six child rows DONE; newly A04-04 DONE only, seven other arc rows and all fourteen project rows OPEN. Mechanical checker/receipt and exact scoped close commit follow; actual commit identity is returned after creation, not self-embedded. Historical issued/rejected/held checkpoints above retain their original scope. No new runtime/Full campaign or S04 issue. Latest direct user authorizes root PR4/main integration of current reviewed Arc03+A04S01–S03 delivery; future feature push/publication is not inferred.

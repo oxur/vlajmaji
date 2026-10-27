@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "S03 technical ACCEPTED proposal; six rowsOPEN until root consistency/mechanical close",
+  "scope": "S03 technical/canonical ACCEPTED; mechanical six-child/three-arc/14-open-project checks PASS",
   "source_baseline": "ce1bd238d4529f5f5b27877569e4b44fa39fe12f",
   "source_commit": "dcdf216ea5805b20f374ce74c302e42bef12c158",
   "source_parent": "45f21dc3d81d8b248d801104274fa799a1ff8608",
@@ -98,46 +98,52 @@
   "slice_contracts_unchanged_vs_initial_issue": true,
   "slice_contracts": [
     [
-      " A04-S03-01 ",
-      " Explicit-file versioned configuration preserves native paths and complete local profile/default policy without implicit IO or env merging. ",
-      " Strict source/lock proof; actual file/read/write/false/empty/default/native/XDG/override controls; APIs and help. ",
-      " CC implement / CDC independently reproduce; A04-03/04 ",
-      " open "
+      "A04-S03-01",
+      "Explicit-file versioned configuration preserves native paths and complete local profile/default policy without implicit IO or env merging.",
+      "Strict source/lock proof; actual file/read/write/false/empty/default/native/XDG/override controls; APIs and help.",
+      "CC implement / CDC independently reproduce; A04-03/04",
+      "done",
+      "PASS technically. Current independent configuration/public writer and44-process CLI controls pass; exactdcdf hosted Linux CONFIG must succeed/readback (the error qualifier is excluded), native ROOT and output controls also pass. Root canonical consistency PASS; mechanically closed."
     ],
     [
-      " A04-S03-02 ",
-      " Managed exact selection distinguishes pack membership, enablement, source aliases and unavailable artifacts while preserving full occurrence semantics. ",
-      " Literal source census; default/all/JB/La/aliases/unselected/disabled/uninstalled/copy-v-derived controls; complete full pages/totals. ",
-      " CC implement / CDC independently reproduce; A04-03/04/07 ",
-      " open "
+      "A04-S03-02",
+      "Managed exact selection distinguishes pack membership, enablement, source aliases and unavailable artifacts while preserving full occurrence semantics.",
+      "Literal source census; default/all/JB/La/aliases/unselected/disabled/uninstalled/copy-v-derived controls; complete full pages/totals.",
+      "CC implement / CDC independently reproduce; A04-03/04/07",
+      "done",
+      "PASS technically. Literal all/JB/La/source/pages/old-route controls and one retained Full campaign match exact five identities, source3/1/1, complete page chains and unchanged full inner wire. Current hosted gates pass; root canonical consistency PASS; mechanically closed."
     ],
     [
-      " A04-S03-03 ",
-      " Metadata-only and available references preserve exact source/release/capture/native/local roles without invented payloads or retargeting. ",
-      " Positive/wrong-role/native333/reference/presence/conflict fixtures; unavailable reason vs matching status; exact frozen Full targets. ",
-      " CC implement / CDC independently reproduce; A04-03/04/07 ",
-      " open "
+      "A04-S03-03",
+      "Metadata-only and available references preserve exact source/release/capture/native/local roles without invented payloads or retargeting.",
+      "Positive/wrong-role/native333/reference/presence/conflict fixtures; unavailable reason vs matching status; exact frozen Full targets.",
+      "CC implement / CDC independently reproduce; A04-03/04/07",
+      "done",
+      "PASS technically after retained d843 rejection. Identical shared Assertion6/6 and distinct-assertion/release Entry5/5 prove contributor admission/filtering repair; general history/role/cause and five pre-input Full references/JB333vsLa333/wrong-role pass. Root canonical consistency PASS; mechanically closed."
     ],
     [
-      " A04-S03-04 ",
-      " Policy/catalogue/generation snapshots and cursors remain coherent through file changes and concurrent mutations. ",
-      " Captured file\u2192pinned catalogue\u2192file recheck; complete binding; stale cursors and old reader counterpart; explicit writer rollback/uncertainty/concurrency. ",
-      " CC implement / CDC independently reproduce; A04-04/07 ",
-      " open "
+      "A04-S03-04",
+      "Policy/catalogue/generation snapshots and cursors remain coherent through file changes and concurrent mutations.",
+      "Captured file\u2192pinned catalogue\u2192file recheck; complete binding; stale cursors and old reader counterpart; explicit writer rollback/uncertainty/concurrency.",
+      "CC implement / CDC independently reproduce; A04-04/07",
+      "done",
+      "PASS technically. General48 fresh paging/stale-before-unavailable/old snapshot/copy-warning/restoration and writer controls pass; typed Snapshot variant limitation remains explicit. Current hosted Linux output/committed-state controls pass. Final root canonical consistency PASS; mechanically closed."
     ],
     [
-      " A04-S03-05 ",
-      " Useful offline library/CLI/docs integrate configured default lookup while keeping existing explicit/default STORE, native and protected behavior. ",
-      " Outside callers; actual CLI isolated env/macOS+Linux controls; current format/lint/check and affected feature/package gates; unchanged old wire. ",
-      " CC implement / CDC independently reproduce; A04-04/08 ",
-      " open "
+      "A04-S03-05",
+      "Useful offline library/CLI/docs integrate configured default lookup while keeping existing explicit/default STORE, native and protected behavior.",
+      "Outside callers; actual CLI isolated env/macOS+Linux controls; current format/lint/check and affected feature/package gates; unchanged old wire.",
+      "CC implement / CDC independently reproduce; A04-04/08",
+      "done",
+      "PASS technically. Current local ordered format02/lint/check236/0/1+19; retained isolated38 and Synthetic238. Current40424262199 all3jobsSUCCESS: Linux238/0/1,isolated38/0/0,allfeatures240/0/1; Mac236/0/1. Forced CONFIG/native ROOT/dev-full each2Linux observations. PR4/current reviewed merge authorized and root-owned; canonical consistency PASS; mechanically closed."
     ],
     [
-      " A04-S03-06 ",
-      " Scope/evidence/resources and inherited metadata remain complete through independent close and later lifecycle/output integration. ",
-      " Cheap literal/comparator prerequisites, exact18-path diff/lock inventory, readonly Full reuse/hash boundary, all attempts and retro; all14projectOPEN. ",
-      " CC implement / CDC independently reproduce; A04-09/10 ",
-      " open "
+      "A04-S03-06",
+      "Scope/evidence/resources and inherited metadata remain complete through independent close and later lifecycle/output integration.",
+      "Cheap literal/comparator prerequisites, exact18-path diff/lock inventory, readonly Full reuse/hash boundary, all attempts and retro; all14projectOPEN.",
+      "CC implement / CDC independently reproduce; A04-09/10",
+      "done",
+      "PASS technically. Exact16/18 source scope, one-test-only dcdf retention, unchanged lock/old registry records, eight manifests219payloads and248artifact paths reconcile. Qualified methods preceded one readonly Full campaign, hashes unchanged; all failures and retro retained. Root canonical consistency PASS; mechanically closed; no new Full/default mutation, all14projectOPEN."
     ]
   ],
   "slice_root_files": [
@@ -381,6 +387,7 @@
     "artifacts/iteration03-readiness/runtime-retention45f201.json",
     "artifacts/linux-ci-checkpoint01.json",
     "artifacts/local-readiness-and-linux-checkpoint.md",
+    "artifacts/mechanical-close-verification01.json",
     "artifacts/readiness01/Cargo.lock",
     "artifacts/readiness01/Cargo.toml",
     "artifacts/readiness01/fixture-census01.json",
@@ -393,15 +400,17 @@
     "artifacts/readiness01/runtime01.log",
     "artifacts/readiness01/src/main.rs",
     "artifacts/resolve01.log",
+    "artifacts/root-canonical-scope-review01.json",
     "artifacts/root-full-output-review45f201.json",
     "artifacts/scope-inventory01.json",
     "artifacts/test-profiles01.log",
     "artifacts/test-profiles02.log",
     "artifacts/test-profiles03.log",
     "artifacts/test-profiles04.log",
-    "artifacts/test-profiles05.log"
+    "artifacts/test-profiles05.log",
+    "artifacts/verify-close01.py"
   ],
-  "artifact_path_count": 248,
+  "artifact_path_count": 251,
   "manifest_records": [
     {
       "path": "artifacts/cdc-full-readonly01/manifest.json",
@@ -445,10 +454,7 @@
   ],
   "proposed_parent_status": "onlyA04-04 newlyDONE; A04-03/07/08 and otherremaining obligationsOPEN; all14projectOPEN",
   "PR_whole_branch_scope_root_observation": "PR4,16commits/60files25280+/906- vs main52fd: Arc03 plus A04S01\u2013S03; S03increment16paths",
-  "planning_close_identity": "PENDING root consistency \u2192 mechanical status updates \u2192 scoped local commit; actual identity returned afterward, not self-embedded",
-  "postapproval_artifacts_not_yet_claimed": [
-    "artifacts/verify-close01.py",
-    "artifacts/mechanical-close-verification01.json"
-  ],
+  "planning_close_identity": "Local mechanical close commit follows; actual identity returned after commit, never self-embedded.",
+  "postapproval_artifacts_not_yet_claimed": [],
   "no_additional_runtime_campaign": true
 }
