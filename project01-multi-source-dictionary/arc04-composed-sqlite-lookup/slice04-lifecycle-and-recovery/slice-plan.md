@@ -340,3 +340,5 @@ CDC technical sixrow verdict ACCEPTED; canonical closing-report/CDCverification/
 ## Actual S04 canonical close — 2026-10-27 14:09:56 UTC
 
 Root fullyread finalfourbodies and independently verified exact807supportingpaths/11firstclassdocs/20sourcehashes, all10manifests780payloads4388274B, sixissuedprompts and unchangedcontracts atclean8bc/source432. FinalcanonicalPASS; sixrowmechanical close and parent03/05 completion authorized. Current source432 remainsfrozenS04. Root creates/attaches requested S04PR and then returns actual separateS05branch/base before sourceissue. ConcreteS05readiness planning may proceed afterclose underexisting THROUGHARC04 authority; sourcework waits transition. Closecommit pendinguntilscopedcommit; actualidentity appended after.
+
+Actual scoped close identity: be873f2a31ed57e7c9cc62e8cfb038166f35d8b7 (12explicit planningpaths, both parsed adjacent coauthors); artifacts/mechanical-close-verification01.json PASS. Source432 clean/correctbranch and planningclean were observed aftercommit; no runtime/source/Full operations. Metadata commit identity is returned separately, not recursively embedded.

@@ -74,3 +74,5 @@ The exact issued prompt/readback is accepted at independently clean a7. CDC-owne
 ## Actual mechanical close — 2026-10-27 14:09:56 UTC
 
 Root final canonical consistency PASS at8bc3f386/source432d632: fourcompletebodies/807artifactpaths/11firstclassdocs/20sourcehashes/all10manifests780payloads4388274B/6issuedpromptSHAs and unchanged6bindingcells verified. Sixchildrows nowDONE; only parentA04-03/05 newlyDONE, fiveotherarc/all14projectOPEN. No deferrals/no-ops, no runtime/Full/source work. Closecommit identity pending until scopedcommit; actualhash returned/appended through recorded convention.
+
+Actual scoped close identity: be873f2a31ed57e7c9cc62e8cfb038166f35d8b7 (12explicit planningpaths, both parsed adjacent coauthors); artifacts/mechanical-close-verification01.json PASS. Source432 clean/correctbranch and planningclean were observed aftercommit; no runtime/source/Full operations. Metadata commit identity is returned separately, not recursively embedded.

@@ -1,6 +1,6 @@
 # Current canonical close — 2026-10-27 14:09:56 UTC
 
-Root final canonical consistency PASS at planning8bc3f386/source432d632. Six child rows now DONE by mechanical close; newly A04-03/05 DONE only, five other arc/all14project OPEN. The author proposed-completion body below is retained as the dated pre-close attestation; references there to OPEN/pending describe that checkpoint. The actual close commit is pending until committed and will be appended through the recorded convention.
+Root final canonical consistency PASS at planning8bc3f386/source432d632. Six child rows now DONE by mechanical close; newly A04-03/05 DONE only, five other arc/all14project OPEN. The author proposed-completion body below is retained as the dated pre-close attestation; references there to OPEN/pending describe that checkpoint. The actual scoped close commit is be873f2a31ed57e7c9cc62e8cfb038166f35d8b7; bounded mechanical receipt is artifacts/mechanical-close-verification01.json. This dated metadata update records the committed identity without rewriting author attestation.
 
 # Arc04 S04 — CC proposed completion
 

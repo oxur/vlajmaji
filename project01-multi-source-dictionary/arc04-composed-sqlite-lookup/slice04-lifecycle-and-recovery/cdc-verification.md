@@ -38,3 +38,5 @@ The immutable cdc-linux-final01 census correctly counted populations and9passing
 ## Root canonical acceptance and mechanical closure
 
 2026-10-27 14:09:56 UTC: root read completeCCreport/CDCverifier/retro and fullyqueried inventory807artifacts/11firstclass/20sourcehashes, rehashed all10immutablemanifests780payloads4388274B and checked all6issuedprompt hashes/unchangedoriginalcontracts. FinalcanonicalPASS cleared sixchildDONE/newlyA04-03,05DONE only; fiveotherarc/all14projectOPEN. Bounded mechanicalchecker actualreceipt and scopedcommit identity accompany close. No change to source432/currentCI, proofscope or originalfailedrecords. Freshassembled ARC reviewer staysS05/arcclose; root S04PR/separateS05branch transition precedes any S05issue.
+
+Actual scoped close identity: be873f2a31ed57e7c9cc62e8cfb038166f35d8b7 (12explicit planningpaths, both parsed adjacent coauthors); artifacts/mechanical-close-verification01.json PASS. Source432 clean/correctbranch and planningclean were observed aftercommit; no runtime/source/Full operations. Metadata commit identity is returned separately, not recursively embedded.
