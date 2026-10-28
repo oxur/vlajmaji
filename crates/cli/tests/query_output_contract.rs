@@ -3116,9 +3116,9 @@ fn test_managed_compact_lookup_and_detail_report_full_device_envelopes() {
             assert_eq!(report["config_path"], native_path(&config));
             assert_eq!(report["root_path"], native_path(&root));
             assert_eq!(report["requested_profile"], "compact-test");
-            assert_eq!(report["known_pack_ids"], expected_packs);
+            assert_eq!(&report["known_pack_ids"], expected_packs);
             assert_eq!(report["outcome"], "not_applicable");
-            assert_eq!(report["snapshot"], expected_snapshot);
+            assert_eq!(&report["snapshot"], expected_snapshot);
             assert!(report["profile"].is_object());
             assert!(report["writer"].is_null());
             assert!(
