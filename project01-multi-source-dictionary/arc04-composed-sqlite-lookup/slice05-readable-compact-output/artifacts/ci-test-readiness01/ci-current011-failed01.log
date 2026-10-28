@@ -1,0 +1,253 @@
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	﻿2026-10-28T04:59:13.0806372Z ##[group]Run cargo clippy --workspace --all-targets --locked -- -D warnings
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:13.0806929Z [36;1mcargo clippy --workspace --all-targets --locked -- -D warnings[0m
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:13.0824778Z shell: /usr/bin/bash -e {0}
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:13.0825029Z env:
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:13.0825208Z   CARGO_TERM_COLOR: always
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:13.0825414Z   RUST_BACKTRACE: 1
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:13.0825602Z   CARGO_HOME: /home/runner/.cargo
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:13.0825815Z   CARGO_INCREMENTAL: 0
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:13.0826021Z   CACHE_ON_FAILURE: false
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:13.0826209Z ##[endgroup]
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:13.1871707Z [1m[92m    Checking[0m vlajmaji-lexicon v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:15.1640907Z [1m[92m    Checking[0m vlajmaji-store v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:15.2563797Z [1m[92m    Checking[0m vlajmaji-data-la-lojban v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban)
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:15.4209136Z [1m[92m    Checking[0m vlajmaji-data-sutysisku v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku)
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:15.4438959Z [1m[92m    Checking[0m vlajmaji-data-llg v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg)
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:15.6050741Z [1m[92m    Checking[0m vlajmaji-data-lensisku-jbotci v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci)
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:17.5374773Z [1m[92m    Checking[0m vlajmaji-search v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:20.0641465Z [1m[92m    Checking[0m vlajmaji-cli v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli)
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:20.2761653Z [1m[92m    Checking[0m vlajmaji v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji)
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4149027Z [1m[91merror[E0277][0m[1m: can't compare `serde_json::Value` with `&serde_json::Value`[0m
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4161070Z     [1m[94m--> [0mcrates/cli/tests/query_output_contract.rs:3119:13
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4190706Z      [1m[94m|[0m
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4220910Z [1m[94m3119[0m [1m[94m|[0m             assert_eq!(report["known_pack_ids"], expected_packs);
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4222028Z      [1m[94m|[0m             [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m [1m[91mno implementation for `serde_json::Value == &serde_json::Value`[0m
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4222643Z      [1m[94m|[0m
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4223349Z      [1m[94m= [0m[1mhelp[0m: the trait `std::cmp::PartialEq<&serde_json::Value>` is not implemented for `serde_json::Value`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4224311Z      [1m[94m= [0m[1mhelp[0m: the following other types implement trait `std::cmp::PartialEq<Rhs>`:
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4224939Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<bool>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4225465Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<f32>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4226071Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<f64>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4226588Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<i16>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4253647Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<i32>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4290533Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<i64>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4310867Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<i8>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4350748Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<isize>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4360264Z              and 35 others
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4360785Z 
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4361685Z [1m[91merror[E0277][0m[1m: can't compare `serde_json::Value` with `&serde_json::Value`[0m
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4362573Z     [1m[94m--> [0mcrates/cli/tests/query_output_contract.rs:3121:13
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4363169Z      [1m[94m|[0m
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4363812Z [1m[94m3121[0m [1m[94m|[0m             assert_eq!(report["snapshot"], expected_snapshot);
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4365360Z      [1m[94m|[0m             [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m [1m[91mno implementation for `serde_json::Value == &serde_json::Value`[0m
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4366135Z      [1m[94m|[0m
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4366960Z      [1m[94m= [0m[1mhelp[0m: the trait `std::cmp::PartialEq<&serde_json::Value>` is not implemented for `serde_json::Value`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4368042Z      [1m[94m= [0m[1mhelp[0m: the following other types implement trait `std::cmp::PartialEq<Rhs>`:
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4368808Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<bool>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4369460Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<f32>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4370336Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<f64>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4370988Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<i16>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4371575Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<i32>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4372597Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<i64>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4373165Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<i8>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4373747Z                `&mut serde_json::Value` implements `std::cmp::PartialEq<isize>`
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4374213Z              and 35 others
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.4374775Z 
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.6364661Z [1mFor more information about this error, try `rustc --explain E0277`.[0m
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.6422891Z [1m[91merror[0m: could not compile `vlajmaji-cli` (test "query_output_contract") due to 2 previous errors
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.6423782Z [1m[33mwarning[0m: build failed, waiting for other jobs to finish...
+Check	Run cargo clippy --workspace --all-targets --locked -- -D warnings	2026-10-28T04:59:21.8155484Z ##[error]Process completed with exit code 101.
+Test (macos-latest)	Run cargo test --workspace --locked	﻿2026-10-28T05:00:22.9558740Z ##[group]Run cargo test --workspace --locked
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:22.9559180Z [36;1mcargo test --workspace --locked[0m
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:22.9596060Z shell: /bin/bash -e {0}
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:22.9596270Z env:
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:22.9596430Z   CARGO_TERM_COLOR: always
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:22.9596690Z   RUST_BACKTRACE: 1
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:22.9596880Z   CARGO_HOME: /Users/runner/.cargo
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:22.9597120Z   CARGO_INCREMENTAL: 0
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:22.9597720Z   CACHE_ON_FAILURE: false
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:22.9597990Z ##[endgroup]
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:23.1817470Z [1m[92m    Updating[0m crates.io index
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:23.9762180Z [1m[92m   Compiling[0m vlajmaji-lexicon v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:23.9787860Z [1m[92m   Compiling[0m bauske-phonology v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/bauske/crates/phonology)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:27.3686540Z [1m[92m   Compiling[0m vlajmaji-store v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:29.4738320Z [1m[92m   Compiling[0m vlajmaji-data-llg v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:29.5159580Z [1m[92m   Compiling[0m vlajmaji-data-la-lojban v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:29.5492440Z [1m[92m   Compiling[0m vlajmaji-data-sutysisku v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:29.5800560Z [1m[92m   Compiling[0m vlajmaji-data-lensisku-jbotci v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:30.5708540Z [1m[92m   Compiling[0m vlajmaji-search v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:33.6438100Z [1m[92m   Compiling[0m vlajmaji v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:38.7593260Z [1m[92m   Compiling[0m vlajmaji-cli v0.3.0 (/Users/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3186270Z [1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 40.27s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3536690Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji-d15d6ac3a6cf85c2)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3642520Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3644480Z running 0 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3644740Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3645040Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3645410Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3649780Z [1m[92m     Running[0m unittests src/main.rs (target/debug/deps/vlajmaji-88839ecc0d7761be)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3779670Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3780190Z running 12 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3846140Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3866940Z test default_path_tests::test_marker_exists_distinguishes_absence_and_propagates_metadata_errors ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3960200Z test collection_manifest_tests::test_manifest_duplicate_keys_rejects_escaped_equivalents_recursively ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3962210Z test collection_manifest_tests::test_manifest_validation_freezes_relative_paths_without_reading_them ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3973930Z test managed_output_tests::test_emit_dictionary_detail_io_failure_uses_structured_error_report ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3977870Z test managed_output_tests::test_emit_collection_response_io_failure_retains_committed_lifecycle_context ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3980330Z test managed_output_tests::test_emit_migrated_response_io_failure_reports_migration_context ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3982070Z test managed_output_tests::test_emit_managed_response_io_failure_reports_committed_context ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3983880Z test managed_output_tests::test_emit_readable_uses_shared_writer_without_adding_a_newline ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3987310Z test managed_output_tests::test_shared_json_and_readable_writer_handles_flush_errors_and_broken_pipe ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.3988290Z test managed_output_tests::test_mutation_output_context_distinguishes_published_kept_and_cleared_generations ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.5795010Z test managed_output_tests::test_actual_remove_reports_keep_subset_and_clear_output_contexts ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.5796660Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.5797950Z [1m[92m     Running[0m tests/cli_contract.rs (target/debug/deps/cli_contract-0a8c760244099121)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.5798560Z test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.20s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.5799000Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.5914880Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.5915880Z running 2 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.6304970Z test help_and_version_are_available ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.8213610Z test valid_json_limit_zero_and_failures_are_inspectable ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.8214040Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.8214340Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.23s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.8214760Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.8215620Z [1m[92m     Running[0m tests/collection_query_contract.rs (target/debug/deps/collection_query_contract-a4bb78ff8945be25)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.8333800Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.8334270Z running 16 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:03.9415430Z test test_all_managed_commands_report_config_path_for_unusable_home_fallback ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.2907620Z test test_cli_configure_preserves_hand_authored_disabled_policy_and_noop_bytes ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.2921040Z test test_absolute_config_and_root_work_without_child_cwd_but_relative_config_fails_typed ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.2960890Z test test_collections_help_distinguishes_explicit_root_from_config_home_resolution ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.2999570Z test test_configure_failure_reports_known_file_root_profile_and_requested_packs ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.3121810Z test test_configure_invalid_pack_keeps_known_context_without_creating_files ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.3810140Z test test_all_four_fixture_packs_keep_source_attribution_in_configured_lookup ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.5804670Z test test_configure_commits_when_stdout_reader_closes_early ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.6868750Z test test_configure_relative_file_and_root_share_child_cwd ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.6970220Z test test_configure_profiles_selection_and_lookup_use_explicit_config_and_root ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.7071660Z test test_lookup_request_parse_precedes_missing_config_and_uses_managed_error_envelope ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.8494280Z test test_configure_reports_exact_native_root_path_and_keeps_ascii_root_working ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.9726320Z test test_lookup_profile_and_disabled_selection_fail_with_typed_context ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:04.9944050Z test test_lookup_resolves_absolute_xdg_config_and_rejects_direct_override_of_request ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.1163790Z test test_profiles_reports_exact_native_config_io_and_keeps_ascii_counterpart_working ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.2235430Z test test_profiles_reports_not_applicable_context_when_stdout_file_limit_fails ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.2236690Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.2237290Z test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.39s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.2238420Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.2239670Z [1m[92m     Running[0m tests/collections_contract.rs (target/debug/deps/collections_contract-af839ba8715a40a1)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.2346690Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.2347410Z running 10 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.2415380Z test test_collections_cli_install_help_explains_selection_and_update_boundary ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.2448210Z test test_collections_cli_list_absent_catalogue_expect_typed_error ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.2490410Z test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.3679900Z test test_collections_cli_lost_install_response_expect_committed_generation_and_query ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.4519720Z test test_collections_cli_register_install_list_inspect_expect_structured_reports ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.5661400Z test test_collections_cli_relative_paths_are_frozen_across_working_directories ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.5847760Z test test_collections_cli_runtime_validation_expect_versioned_report_and_clap_boundary ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.5974710Z test test_collections_cli_all_raw_inputs_expect_four_pack_install ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.7054350Z test test_collections_cli_tampered_repeat_expect_prior_generation_unchanged ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.7135580Z test test_collections_cli_opposite_pack_orders_expect_same_content_and_distinct_generations ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.7136200Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.7136600Z test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.48s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.7137300Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.7138220Z [1m[92m     Running[0m tests/collections_lifecycle_contract.rs (target/debug/deps/collections_lifecycle_contract-bca4dbf6bbc41b98)
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.7237330Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.7237790Z running 2 tests
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:05.8399590Z test test_collections_lifecycle_commands_migrate_update_rebuild_reports ... FAILED
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1096160Z test test_sut_lifecycle_update_rebuild_preserves_old_store_and_stales_managed_cursor ... ok
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1097450Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1097590Z failures:
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1097680Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1097990Z ---- test_collections_lifecycle_commands_migrate_update_rebuild_reports stdout ----
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1098460Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1098960Z thread 'test_collections_lifecycle_commands_migrate_update_rebuild_reports' (15470) panicked at crates/cli/tests/collections_lifecycle_contract.rs:35:27:
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1099880Z called `Result::unwrap()` on an `Err` value: Os { code: 17, kind: AlreadyExists, message: "File exists" }
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1100960Z stack backtrace:
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1101340Z    0: __rustc::rust_begin_unwind
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1101930Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/panicking.rs:679:5
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1102520Z    1: core::panicking::panic_fmt
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1103000Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/panicking.rs:80:14
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1103460Z    2: core::result::unwrap_failed
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1104050Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/result.rs:1870:5
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1104850Z    3: <core::result::Result<(), core::io::error::Error>>::unwrap
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1105410Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/result.rs:1231:23
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1106090Z    4: collections_lifecycle_contract::fresh_root
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1106450Z              at ./tests/collections_lifecycle_contract.rs:35:27
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1107110Z    5: collections_lifecycle_contract::test_collections_lifecycle_commands_migrate_update_rebuild_reports
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1107970Z              at ./tests/collections_lifecycle_contract.rs:62:16
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1108610Z    6: collections_lifecycle_contract::test_collections_lifecycle_commands_migrate_update_rebuild_reports::{closure#0}
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1109310Z              at ./tests/collections_lifecycle_contract.rs:61:72
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1110220Z    7: <collections_lifecycle_contract::test_collections_lifecycle_commands_migrate_update_rebuild_reports::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1111210Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/ops/function.rs:250:5
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1111980Z    8: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1115960Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/ops/function.rs:250:5
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1116780Z note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1117150Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1117150Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1117290Z failures:
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1117700Z     test_collections_lifecycle_commands_migrate_update_rebuild_reports
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1118610Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1119000Z test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.39s
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1119480Z 
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1121740Z [1m[91merror[0m: test failed, to rerun pass `-p vlajmaji-cli --test collections_lifecycle_contract`
+Test (macos-latest)	Run cargo test --workspace --locked	2026-10-28T05:01:06.1165130Z ##[error]Process completed with exit code 101.
+Test (ubuntu-latest)	Run cargo test --workspace --locked	﻿2026-10-28T04:59:43.9541853Z ##[group]Run cargo test --workspace --locked
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:43.9542210Z [36;1mcargo test --workspace --locked[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:43.9597812Z shell: /usr/bin/bash -e {0}
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:43.9598037Z env:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:43.9598205Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:43.9598404Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:43.9598592Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:43.9598811Z   CARGO_INCREMENTAL: 0
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:43.9598998Z   CACHE_ON_FAILURE: false
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:43.9599194Z ##[endgroup]
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:44.1045540Z [1m[92m    Updating[0m crates.io index
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:45.7673128Z [1m[92m   Compiling[0m vlajmaji-lexicon v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:45.7707955Z [1m[92m   Compiling[0m bauske-phonology v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/bauske/crates/phonology)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:48.4739669Z [1m[92m   Compiling[0m vlajmaji-store v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:48.4741358Z [1m[92m   Compiling[0m vlajmaji-data-la-lojban v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:48.4742818Z [1m[92m   Compiling[0m vlajmaji-data-lensisku-jbotci v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:48.5034493Z [1m[92m   Compiling[0m vlajmaji-data-llg v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:48.5036182Z [1m[92m   Compiling[0m vlajmaji-data-sutysisku v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:52.0904525Z [1m[92m   Compiling[0m vlajmaji-search v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:56.0013382Z [1m[92m   Compiling[0m vlajmaji v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T04:59:59.5988907Z [1m[92m   Compiling[0m vlajmaji-cli v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8683845Z [1m[91merror[E0277][0m[1m: can't compare `serde_json::Value` with `&serde_json::Value`[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8684983Z     [1m[94m--> [0mcrates/cli/tests/query_output_contract.rs:3119:13
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8737340Z      [1m[94m|[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8767694Z [1m[94m3119[0m [1m[94m|[0m             assert_eq!(report["known_pack_ids"], expected_packs);
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8797852Z      [1m[94m|[0m             [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m [1m[91mno implementation for `serde_json::Value == &serde_json::Value`[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8827193Z      [1m[94m|[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8827997Z      [1m[94m= [0m[1mhelp[0m: the trait `PartialEq<&serde_json::Value>` is not implemented for `serde_json::Value`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8828962Z      [1m[94m= [0m[1mhelp[0m: the following other types implement trait `PartialEq<Rhs>`:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8829580Z                `&mut serde_json::Value` implements `PartialEq<bool>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8830108Z                `&mut serde_json::Value` implements `PartialEq<f32>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8830612Z                `&mut serde_json::Value` implements `PartialEq<f64>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8831085Z                `&mut serde_json::Value` implements `PartialEq<i16>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8831530Z                `&mut serde_json::Value` implements `PartialEq<i32>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8831988Z                `&mut serde_json::Value` implements `PartialEq<i64>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8832470Z                `&mut serde_json::Value` implements `PartialEq<i8>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8832966Z                `&mut serde_json::Value` implements `PartialEq<isize>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8833388Z              and 35 others
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8833693Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8834199Z [1m[91merror[E0277][0m[1m: can't compare `serde_json::Value` with `&serde_json::Value`[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8857526Z     [1m[94m--> [0mcrates/cli/tests/query_output_contract.rs:3121:13
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8858326Z      [1m[94m|[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8887515Z [1m[94m3121[0m [1m[94m|[0m             assert_eq!(report["snapshot"], expected_snapshot);
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8917905Z      [1m[94m|[0m             [1m[91m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m [1m[91mno implementation for `serde_json::Value == &serde_json::Value`[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8947246Z      [1m[94m|[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.8948256Z      [1m[94m= [0m[1mhelp[0m: the trait `PartialEq<&serde_json::Value>` is not implemented for `serde_json::Value`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.9067770Z      [1m[94m= [0m[1mhelp[0m: the following other types implement trait `PartialEq<Rhs>`:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.9068753Z                `&mut serde_json::Value` implements `PartialEq<bool>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.9097286Z                `&mut serde_json::Value` implements `PartialEq<f32>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.9097868Z                `&mut serde_json::Value` implements `PartialEq<f64>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.9127594Z                `&mut serde_json::Value` implements `PartialEq<i16>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.9148266Z                `&mut serde_json::Value` implements `PartialEq<i32>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.9148962Z                `&mut serde_json::Value` implements `PartialEq<i64>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.9149613Z                `&mut serde_json::Value` implements `PartialEq<i8>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.9150262Z                `&mut serde_json::Value` implements `PartialEq<isize>`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.9150842Z              and 35 others
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:03.9151175Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:04.1168191Z [1mFor more information about this error, try `rustc --explain E0277`.[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:04.1229462Z [1m[91merror[0m: could not compile `vlajmaji-cli` (test "query_output_contract") due to 2 previous errors
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:04.1230557Z [1m[33mwarning[0m: build failed, waiting for other jobs to finish...
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-10-28T05:00:06.6609104Z ##[error]Process completed with exit code 101.

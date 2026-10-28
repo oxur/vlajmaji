@@ -1,0 +1,11 @@
+{
+  "question": "May I apply the prepared two-file test repair (/tmp/vlajmaji-p01-a04-s05-cdc/ci-test-repair-proposal01.patch), validate, commit/push and follow CI? Your earlier six-pass cap requires this explicit extension. Then I can finish the independent Arc04 review, closeout and PR.",
+  "answer": "yes! Please do!!",
+  "provenance": "Direct human response to root in current conversation; exact question/answer relayed by root to CDC",
+  "scope": "ONE seventh test-only pass; exactly crates/cli/tests/query_output_contract.rs and crates/cli/tests/collections_lifecycle_contract.rs; validation/commit+normalpush/CI authorized; root performs exact-commit push/CI, not CC/CDC",
+  "no_automatic_eighth": true,
+  "no_optimisation_or_Full_repeat": true,
+  "source_baseline": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "models": "Sol6.1/high CDC and retained Luna/high CC",
+  "remaining": "current hosted CI, fresh Sol6.1/high assembled Tiny W1-W5 review and canonical close/retro/bubbleup/PR; stop before Arc05/merge/publication"
+}

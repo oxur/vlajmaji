@@ -1,0 +1,15 @@
+{
+  "manifest_sha256": "e7f2db71f58a7be33f4f9ea45062a25c6812414fe19ef0b308e29fbd2fe4af75",
+  "payload_count": 102,
+  "payload_bytes": 4192931,
+  "whole_originals": 101,
+  "held_wires_count": 3,
+  "held_wire_bytes": 21494547,
+  "all_6_binding_cells_unchanged_open": true,
+  "planning_commit": "84acb5de2e6b28697aafc1513925da4b734ad909",
+  "planning_clean": true,
+  "diff_check": true,
+  "adjacent_trailers": true,
+  "scope": "non-product canonical byte reconciliation only; no Full DB/config/target access",
+  "checker_correction": "Initial comparison included mutable evidence column; corrected to five binding columns including status, whose six rows match exactly."
+}

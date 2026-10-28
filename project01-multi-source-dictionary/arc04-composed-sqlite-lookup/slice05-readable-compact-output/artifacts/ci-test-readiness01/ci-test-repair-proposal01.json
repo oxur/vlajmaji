@@ -1,0 +1,19 @@
+{
+  "scope": "PROPOSED ONLY; neither source file edited; execution requires explicit seventh test-only pass approval",
+  "source": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "ci_run": 40635299414,
+  "patch_sha256": "19cd1cda136da45047245e7fc5182f15f712ca13f9292cf4c9164fb616c477a4",
+  "files": {
+    "crates/cli/tests/query_output_contract.rs": {
+      "before_sha256": "4bb1556505b9eb4c29ab1b3050d770c1fc683da3fc0ec59a128d85090c92d958",
+      "proposed_after_sha256": "e8a143721d309c1a1bd300c239635e41db429dffcc29a92a04722e1be42fa4ad"
+    },
+    "crates/cli/tests/collections_lifecycle_contract.rs": {
+      "before_sha256": "793ee4107dffbe0341fddafceb67fc4170050b8ea37348f767d2bc00375c52df",
+      "proposed_after_sha256": "8c464e4953d881aee408e01d4fb028433ffec05cf2c7761b413475e95bb4a4f6"
+    }
+  },
+  "basis": "Two Linux-only Value versus &Value compile errors; macOS lifecycle scratch AlreadyExists. Fixture allocation follows existing crates/cli/tests/default_store.rs bounded exclusive counter pattern.",
+  "production_change": false,
+  "validation": "Current ordered local gates, affected CLI tests, independent diff review, exact normal push and hosted CI; no automatic eighth pass."
+}
