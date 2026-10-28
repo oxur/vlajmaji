@@ -1,0 +1,51 @@
+{
+  "status": "EXACT FROZEN FULL EXECUTABLE REVIEW ONLY; NO LAUNCH CLEARANCE",
+  "product_head": "1b9038ddc6c45f3ea709a0bdfec64041221e3571",
+  "product_tree": "338daa526d9f1cd56813d0c68a41a3f258e8ec47",
+  "full_preflight_sha256": "9815fd6bd31ed7d62907e006a3df28c97ddc51954c4f6359848e540d3a2b1732",
+  "current_external_binaries": [
+    {
+      "path": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+      "bytes": 152624,
+      "sha256": "94a5f331b4d73cbabad9998057013f4d4b6ab2c2d1c3042a1a6e4e56d94773a6"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+      "bytes": 12709648,
+      "sha256": "20b21d4e27310437d643b246ecbaf652b5a4c6e53c407abf6035dca261d1b79c"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "bytes": 8220672,
+      "sha256": "2f756fb3c3d16ac7bfcb2b6ea98b58dbe478de4cb5e066bbfb638697c42fdc73"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/vlajmaji",
+      "bytes": 14077968,
+      "sha256": "5dbdb3c2837199cecd3697d588d7267f41ad3ec50f8f8b118ad143cfcbcb7911"
+    }
+  ],
+  "deferred_full_config_pin": {
+    "pin": {
+      "path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "bytes": 219,
+      "sha256": "51a6cb10ad3c7a0dd27a5bc03f207cd1d81774d6cf4cbeb21ee64c75fd17108c"
+    },
+    "observation": "Expected from accepted S04 profile5 report+settled size; NOT currently stat/read/hash-verified. Runner strict leaf/hash only after root launch clearance."
+  },
+  "database_boundary": "DB paths/hashes from accepted G4 receipt only. DBs excluded from frozen_files; ONE actual before/after pair is inside the single campaign after clearance, prehash warms cache.",
+  "method_population": {
+    "preflight_inventory_failure": 0,
+    "attempt01_actual_baseline_cli_instrumentation_failure": 1,
+    "approved_retry02_actual_passed_processes": 22,
+    "total_actual_tiny_processes": 23,
+    "setup_children": 4,
+    "pure_observer_comparator_positive": 1,
+    "pure_observer_comparator_negative": 6,
+    "wire_controls": 9,
+    "analysis_controls": 7,
+    "fresh_boundary_controls": 3,
+    "inventory_controls": 4
+  },
+  "limits": "No Full ROOT/config/DB current leaf/read/hash/query; sources/binaries/Tiny and accepted small prior reports only. Root exact Full launch review pending. All six S05 rows OPEN; actual current Linux and fresh assembled Arc04 execution/closure remain."
+}

@@ -1,0 +1,15 @@
+{
+  "status": "REVISED FULL EXECUTABLE PACKET FOR ROOT REVIEW ONLY; NO LAUNCH CLEARANCE",
+  "effective_preflight": "numeric-full-preflight02.json",
+  "effective_preflight_sha256": "ccaf90dfb06a4648512978fdaebdc9275095db81312bb07a5f9c8abda4269669",
+  "base_manifest": {
+    "path": "../numeric-freeze01/manifest.json",
+    "sha256": "62cf6c0b93b7b6722241853dfc672badf77f7bd976eb5350d04d658fd83ddaa0",
+    "payloads": 295,
+    "bytes": 5722336,
+    "disposition": "Retain entire immutable original sources/builds/method/Tiny closure/history; packet02 supersedes packet01 execution config/accounting only."
+  },
+  "delta_scope": "Only scratch accounting/provenance/resources and builderpin changed. Runtime runner/analysis/observer/CLI/witness/53pin total/22argv/recordedDBpair/deferredconfig unchanged.",
+  "retained_full_read_or_launch": false,
+  "rows": "All six OPEN/currentLinux/freshARC/closure still required"
+}

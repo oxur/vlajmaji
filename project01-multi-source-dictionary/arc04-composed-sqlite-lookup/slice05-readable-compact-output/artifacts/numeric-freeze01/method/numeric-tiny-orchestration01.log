@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-method01.py", line 16, in <module>
+    r.execute(cfg,tiny=True)
+  File "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner01.py", line 259, in execute
+    assert result.returncode==0 and receipt['decision']=='passed' and receipt['exit_code']==0
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

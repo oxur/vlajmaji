@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-cargo",
+    "+1.98.0",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "-p",
+    "vlajmaji-cli"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "head": "1b9038ddc6c45f3ea709a0bdfec64041221e3571",
+  "tree": "338daa526d9f1cd56813d0c68a41a3f258e8ec47",
+  "rustc": "rustc 1.98.0 (88d9e12ae 2026-08-18)\nbinary: rustc\ncommit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea\ncommit-date: 2026-08-18\nhost: aarch64-apple-darwin\nrelease: 1.98.0\nLLVM version: 22.1.8\n",
+  "env_explicit": {
+    "RUSTUP_TOOLCHAIN": "1.98.0",
+    "RUST_TOOLCHAIN": "1.98.0",
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true"
+  },
+  "no_full_access": true
+}

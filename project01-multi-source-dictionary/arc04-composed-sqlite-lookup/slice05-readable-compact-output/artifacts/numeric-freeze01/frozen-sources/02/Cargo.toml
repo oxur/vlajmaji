@@ -1,0 +1,30 @@
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.3.0"
+edition = "2024"
+rust-version = "1.98"
+publish = ["crates-io"]
+license = "Apache-2.0"
+repository = "https://github.com/oxur/vlajmaji"
+
+[workspace.dependencies]
+clap = { version = "=4.6.6", features = ["derive"] }
+bauske-phonology = { version = "0.3.0", path = "../bauske/crates/phonology" }
+vlajmaji-lexicon = { version = "0.3.0", path = "crates/lexicon" }
+vlajmaji-store = { version = "0.3.0", path = "crates/store" }
+vlajmaji-search = { version = "0.3.0", path = "crates/search" }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.151", features = ["raw_value", "arbitrary_precision"] }
+sha2 = "=0.10.9"
+confyg = "=0.3.0"
+toml = "=0.9.12"
+rusqlite = { version = "=0.40.2", default-features = false, features = ["bundled"] }
+oxigraph = "=0.5.13"
+strsim = "=0.11.1"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"

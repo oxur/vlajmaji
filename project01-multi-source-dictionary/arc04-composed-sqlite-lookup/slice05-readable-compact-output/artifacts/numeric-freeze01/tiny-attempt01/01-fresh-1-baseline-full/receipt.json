@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+    "lookup",
+    "farvi",
+    "--config",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml"
+  ],
+  "decision": "rejected missing/zero/unparseable RSS receipt",
+  "elapsed_seconds": 0.057546624913811684,
+  "exit_code": 1,
+  "log": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/01-fresh-1-baseline-full/stderr",
+  "maximum_resident_set_size_bytes": null,
+  "pid": 70029,
+  "rss_parse_ok": false,
+  "rss_source": "/usr/bin/time -l maximum resident set size",
+  "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/01-fresh-1-baseline-full/stdout",
+  "timed_out": false
+}

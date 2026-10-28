@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status / version | Final04 test-only bounded ACCEPTED /1.11 /2026-10-28 UTC; original persistent omissions CLOSED at1b. All6OPEN for numeric/currentLinux/freshARC/closure. |
+| Status / version | Final04 bounded ACCEPTED; current optimized tools +actual Tiny numerical method qualified /1.14 /2026-10-28 UTC. Effective Full packet03 awaits root review; all6OPEN. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
 | Source / dependency | Clean1b9038ddc6c45f3ea709a0bdfec64041221e3571, parent5e/tree338daa526d9f1cd56813d0c68a41a3f258e8ec47 on codex/project01-readable-compact-output; production exact5e/main32e99 base and old S04 local/origin432 frozen. |
 | Ownership | CC explicit all-terminal handback accepted clean1b; CDC exclusively owns source/index/ONEtarget, root/CC read-only. Current optimized build/ownedTiny method qualification authorized; retainedFull held for exact executable root review. |
@@ -841,3 +841,17 @@ Fresh CDC read-only source check clean5e19754ce7ccad0ddea788c2e344df116711814c/t
 ### Final04 actual bounded disposition —2026-10-28 UTC
 
 Root+CDC exact1b source/test-boundary acceptance and current328/0/1+19/default+isolated13/CLI5/emitter1 close original persistent omissions. See review-iteration04.md for exact8module/12binary counts, failed-oracle/copy-denial/message-only amendment history, package erratum and retained5e production applicability. All6OPEN; CDC owns returned source/index/ONEtarget for current optimized build and SAMEcode Tiny qualification. NO retainedFull until final exact executable readiness; currentLinux/freshARC/close remain. No sixthpass.
+
+## 16. Exact numerical executable packet — review only
+
+Current1b production remains accepted at the stated bounded semantic/API/Tiny scope, original persistent omissions closed. Current pinned Rust1.98 optimized CLI/observer build and SAMEcode Tiny method qualification are actual and preserved in artifacts/numeric-freeze01/manifest.json(295payloads5722336B/SHA62cf6c0b…daa0). Raw attempt01 ONEreal baselineCLI failed sandboxRSSinstrumentation; explicitly approved elevated freshoutput02 SAME22stages passed, DBpairunchanged/targetdelta0; methodpopulation23, notsinglefirstpass. Pure7analysis/3fresh-stop/4inventory/9wire/typed1+6 scopes distinct fromFullmetrics.
+
+Execution packet original numeric-full-preflight01.json SHA9815fd6b…1732 has fixed22argv,52current source/binarypins andONEdeferred expected219B configpin; acceptedRECORDEDtwoDBhashes excludedfromfrozenfiles. No currentFullROOT/config/DBleaf/data/hash/query during preparation. Firstactual checks await root executableclearance; ONEwholecampaignDBpair, no auto-retry. RetainedG4/root/config are preserved, no newstore/generation/Fullimport/All/cachecleanup. Active600s stagegroup timeout;8GiB RSS/128MiB capture/12GiB allnamedS05scratch postcompletion limits. Per-ID3observation med/max, ResolveWHOLEquery.total, frozen startup/warm/projection/byte budgets unchanged. All6OPEN/currentLinux/freshARC/closure pending; fiveimplementationpassesexhausted/noimplicit6/externalpush.
+
+### §16 effective accounting packet02 (original packet retained)
+
+Current executable review configuration is artifacts/numeric-freeze02/numeric-full-preflight02.json SHAccaf90df…69669, backed by additive5payload191051B manifest6a82b070…891a0 and unchanged295payload base62cf6c0b…daa0. Actualsource prefix was alreadyS05; omitted inheritedTMPDIR is corrected using qualified /varalias/privateTEMP plus source-listed genericfixtureprefix finitebirth>=verifiedissue1793112634, explicitS05/D5 allbirths. Census777paths/551084376B; excluded375oldgenericmetadata preserved and afterboundary overcount disclosed. Namedroot/frozenleaf strictnofollow unchanged; no newobservations. Currenttarget69289476096 distinct fromTiny69291364352 (causeunproven); campaignfreshquietpair required. Original01/failedbuilder02 preserved. FullZERO, all6OPEN.
+
+### §16 effective final packet03 (one exact private-unit prefix)
+
+Final executable configuration is artifacts/numeric-freeze03/numeric-full-preflight03.json SHA5637fead…557a2, additive4payload181538B manifest9982d585…33518 inheriting immutable02/6a82 and01/62cf. Source-exact missing privateunit compact-projection prefix addsONEroot, now778namedpaths/552360352B; actualpacketfree269164015616B/target69289476096B. Exact22argv/runtime/limits/DBrecordedpair/deferredconfig unchanged. No extra observations; allpriorfailedmethods/packets preserved. Root exactlaunchclearancepending, retainedFullZERO/currentLinux/freshARC/close open.

@@ -1,0 +1,428 @@
+{
+  "inputs": [
+    {
+      "descriptor": {
+        "body_sha256": "913953bd97e542e3358d5a2eab1f79a6657214ff06f9c932ffd561b2d690d004",
+        "captures": "f2a45f9a211459a64bf98939905e37a5ff9b84610f4e69e4d46bd0ec6dbff1ab",
+        "category_counts": {
+          "annotations": 0,
+          "assertions": 33526,
+          "computations": 0,
+          "contexts": 76357,
+          "editorial_senses": 0,
+          "entries": 33526,
+          "etymologies": 2085,
+          "extensions": 73226,
+          "forms": 4008,
+          "frames": 0,
+          "owned_heads": 0,
+          "owned_revisions": 0,
+          "relations": 0
+        },
+        "dictionary_version": 1,
+        "entities": "53d718aedfeb21a8a77647d7ea2dcfd915d38c74768149b4a780833a56928756",
+        "extension_row_sha256_ordered_multiset": "111397cf6078609cbda87769155e674de02c402b49619b19a3eff8b7813afeb9",
+        "registry": "85914db4ebefcec1af3df2431b1214b186832afe836e73d6e0f569620be4b0fa",
+        "registry_version": 1,
+        "source_metadata": "2e0850b082a442385d62ee9e02a34d41777c87f374cb887166e9c3fec963615e",
+        "upstream_catalogue_revision": 0
+      },
+      "farvi": [
+        {
+          "assertion": {
+            "definition": {
+              "Value": {
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing",
+                "text": "$x_{1}$ develops/evolves towards/into $x_{2}$ from $x_{3}$ through stages $x_{4}$."
+              }
+            },
+            "eligibility": "Lexical",
+            "entry": "jbotci-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-entry-13306",
+            "id": "jbotci-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-assertion-13306",
+            "language": {
+              "Value": "en"
+            },
+            "native_sense_id": "Missing",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:lensisku:jbotci:en",
+                "sha256": "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde"
+              },
+              "locator": "/13306"
+            },
+            "source_score": {
+              "Value": "100002.0"
+            },
+            "timestamps": []
+          },
+          "attribution": {
+            "contributor": "lensisku-user-94cdd271fe8c169cf2d1f698d5e78124c1f861fc7258dacd46248e02d985cd93",
+            "native_assertion_id": "333",
+            "native_entry_id": null,
+            "occurrence": {
+              "locator": "/13306",
+              "snapshot": {
+                "namespace": "captured:lensisku:jbotci:en",
+                "sha256": "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde"
+              }
+            }
+          },
+          "release_id": "jbotci-release-34c2919a00a7bd68e07efb3e0fdd8dae02e9f48f82c006415a62dd634acf973a",
+          "target": {
+            "Catalog": {
+              "native_assertion_id": "333",
+              "native_entry_id": null,
+              "occurrence": {
+                "capture": {
+                  "namespace": "captured:lensisku:jbotci:en",
+                  "sha256": "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde"
+                },
+                "locator": "/13306"
+              },
+              "release": "jbotci-release-34c2919a00a7bd68e07efb3e0fdd8dae02e9f48f82c006415a62dd634acf973a",
+              "source": "lensisku"
+            }
+          }
+        },
+        {
+          "assertion": {
+            "definition": {
+              "Value": {
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing",
+                "text": "$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$"
+              }
+            },
+            "eligibility": "Lexical",
+            "entry": "jbotci-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-entry-13307",
+            "id": "jbotci-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-assertion-13307",
+            "language": {
+              "Value": "en"
+            },
+            "native_sense_id": "Missing",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:lensisku:jbotci:en",
+                "sha256": "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde"
+              },
+              "locator": "/13307"
+            },
+            "source_score": {
+              "Value": "1.0"
+            },
+            "timestamps": []
+          },
+          "attribution": {
+            "contributor": "lensisku-user-08798c97ca3767102e0294a66d9b682faba80d655825c26361f4c03830fb4da4",
+            "native_assertion_id": "69002",
+            "native_entry_id": null,
+            "occurrence": {
+              "locator": "/13307",
+              "snapshot": {
+                "namespace": "captured:lensisku:jbotci:en",
+                "sha256": "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde"
+              }
+            }
+          },
+          "release_id": "jbotci-release-34c2919a00a7bd68e07efb3e0fdd8dae02e9f48f82c006415a62dd634acf973a",
+          "target": {
+            "Catalog": {
+              "native_assertion_id": "69002",
+              "native_entry_id": null,
+              "occurrence": {
+                "capture": {
+                  "namespace": "captured:lensisku:jbotci:en",
+                  "sha256": "12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde"
+                },
+                "locator": "/13307"
+              },
+              "release": "jbotci-release-34c2919a00a7bd68e07efb3e0fdd8dae02e9f48f82c006415a62dd634acf973a",
+              "source": "lensisku"
+            }
+          }
+        }
+      ],
+      "pack_id": "lensisku-jbotci",
+      "payload_kind": "full",
+      "release_sha256": "0987ec84a8434573b5979ea854ca459ce2ea9c7fa03ebac6639574dd2b7aa460"
+    },
+    {
+      "descriptor": {
+        "body_sha256": "d5eaecc7e25bcd65c392616d414a3fa4fc3daaff385adee0f414a670d1ef40c9",
+        "captures": "3fe4d445c81c70b4dc01d6bee0528580144796a1c1317d1a764e9fcf7a7e3d2a",
+        "category_counts": {
+          "annotations": 0,
+          "assertions": 4074,
+          "computations": 0,
+          "contexts": 5804,
+          "editorial_senses": 0,
+          "entries": 2435,
+          "etymologies": 0,
+          "extensions": 2865,
+          "forms": 3091,
+          "frames": 0,
+          "owned_heads": 0,
+          "owned_revisions": 0,
+          "relations": 0
+        },
+        "dictionary_version": 1,
+        "entities": "7930140dcd213873fb7a159de8fdb253b96889c3cf8d8aef07d9b7a488175e64",
+        "extension_row_sha256_ordered_multiset": "81013d67bf3325885ad2dbe6453a32aa22518f3fe4b9a802fc51545c036e8910",
+        "registry": "c56d28d8193c6906822230da9922ffec9421fd3b1e9bf3c365e7cb80bfaf50c8",
+        "registry_version": 1,
+        "source_metadata": "6a6ee241e42292c3e027992407362d555c6ef78ac165dc3e879250e1b1695dfd",
+        "upstream_catalogue_revision": 0
+      },
+      "farvi": [
+        {
+          "assertion": {
+            "definition": {
+              "Value": {
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing",
+                "text": "x1 develops/evolves towards/into x2 from x3 through stages x4"
+              }
+            },
+            "eligibility": "Lexical",
+            "entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+            "id": "llg-assertion-664c45855ea2ec025117a37c107ba557c65a80524a4a5e01009316cd07c84605",
+            "language": {
+              "Value": "en"
+            },
+            "native_sense_id": "Missing",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:llg:gismu",
+                "sha256": "f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7"
+              },
+              "locator": "357"
+            },
+            "source_score": "Missing",
+            "timestamps": []
+          },
+          "attribution": {
+            "contributor": null,
+            "native_assertion_id": null,
+            "native_entry_id": "farvi",
+            "occurrence": {
+              "locator": "357",
+              "snapshot": {
+                "namespace": "captured:llg:gismu",
+                "sha256": "f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7"
+              }
+            }
+          },
+          "release_id": "llg-release-f1c254f1e4b7943e039b55ec28a6fcd901c0249c4e4da964ebdc53e1a7e92105",
+          "target": {
+            "Catalog": {
+              "native_assertion_id": null,
+              "native_entry_id": "farvi",
+              "occurrence": {
+                "capture": {
+                  "namespace": "captured:llg:gismu",
+                  "sha256": "f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7"
+                },
+                "locator": "357"
+              },
+              "release": "llg-release-f1c254f1e4b7943e039b55ec28a6fcd901c0249c4e4da964ebdc53e1a7e92105",
+              "source": "llg"
+            }
+          }
+        }
+      ],
+      "pack_id": "llg",
+      "payload_kind": "full",
+      "release_sha256": "d8c8be02b9888c1eee3d3daa053746e483aec995935c4d225234479d4215ce12"
+    },
+    {
+      "descriptor": {
+        "body_sha256": "d7e207d98606ecdee21b155c555d7de088437c946698d5b459675d340208dde5",
+        "captures": "892008c8bd1796eb414bb87a336a7dc71a1c54b2af511c36dfbcb2aa28606f84",
+        "category_counts": {
+          "annotations": 0,
+          "assertions": 17056,
+          "computations": 0,
+          "contexts": 47557,
+          "editorial_senses": 0,
+          "entries": 17056,
+          "etymologies": 1428,
+          "extensions": 39974,
+          "forms": 1548,
+          "frames": 0,
+          "owned_heads": 0,
+          "owned_revisions": 0,
+          "relations": 0
+        },
+        "dictionary_version": 1,
+        "entities": "a565a7ecdd799435c28ea1193ccf3f202cf63631a50b513b3de6be3dfced0568",
+        "extension_row_sha256_ordered_multiset": "d65452a62727c5f4095b692b1ecfb1c7366730e6911f0b4402197cd93a7f7808",
+        "registry": "d16f69b91b547eca9bd769d0874ddebc312e2887be3471b222db3864a279e125",
+        "registry_version": 1,
+        "source_metadata": "a4ab0aec8596cf93dddf5600b4a1da71806ed053d21a87e9970aab7041414441",
+        "upstream_catalogue_revision": 0
+      },
+      "farvi": [
+        {
+          "assertion": {
+            "definition": {
+              "Value": {
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing",
+                "text": "$x_{1}$ develops/evolves towards/into $x_{2}$ from $x_{3}$ through stages $x_{4}$."
+              }
+            },
+            "eligibility": "Lexical",
+            "entry": "la-lojban-861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35-entry-4095",
+            "id": "la-lojban-861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35-assertion-4095",
+            "language": {
+              "Value": "en"
+            },
+            "native_sense_id": "Missing",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:lensisku:la-lojban:en",
+                "sha256": "861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35"
+              },
+              "locator": "/4095"
+            },
+            "source_score": {
+              "Value": "100001"
+            },
+            "timestamps": []
+          },
+          "attribution": {
+            "contributor": "lensisku-user-94cdd271fe8c169cf2d1f698d5e78124c1f861fc7258dacd46248e02d985cd93",
+            "native_assertion_id": "333",
+            "native_entry_id": null,
+            "occurrence": {
+              "locator": "/4095",
+              "snapshot": {
+                "namespace": "captured:lensisku:la-lojban:en",
+                "sha256": "861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35"
+              }
+            }
+          },
+          "release_id": "la-lojban-release-1c22018f4e91c09f3df4177d6f449559e138d6be2d6f45a52d1bac92500a5137",
+          "target": {
+            "Catalog": {
+              "native_assertion_id": "333",
+              "native_entry_id": null,
+              "occurrence": {
+                "capture": {
+                  "namespace": "captured:lensisku:la-lojban:en",
+                  "sha256": "861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35"
+                },
+                "locator": "/4095"
+              },
+              "release": "la-lojban-release-1c22018f4e91c09f3df4177d6f449559e138d6be2d6f45a52d1bac92500a5137",
+              "source": "lensisku"
+            }
+          }
+        }
+      ],
+      "pack_id": "la-lojban",
+      "payload_kind": "full",
+      "release_sha256": "e66951094935bd910c6a9ad12fa1bbb51f0578b53d44f22a73056811fe2bc64e"
+    },
+    {
+      "descriptor": {
+        "body_sha256": "354b092e82b6d206b7bf03ada46c8c7442908f1578e51a1889d9cd12412f9da4",
+        "captures": "b5c9b38cd840fd479556a1748e6f0da3d9d2dd1788fbe8ba6113dca1d68bb4fe",
+        "category_counts": {
+          "annotations": 0,
+          "assertions": 23705,
+          "computations": 0,
+          "contexts": 47492,
+          "editorial_senses": 0,
+          "entries": 23705,
+          "etymologies": 0,
+          "extensions": 22042,
+          "forms": 2951,
+          "frames": 0,
+          "owned_heads": 0,
+          "owned_revisions": 0,
+          "relations": 0
+        },
+        "dictionary_version": 1,
+        "entities": "efc78ea92c3cf44cd34047e195d207778f512948a7b30ee337e3fc22f80869c7",
+        "extension_row_sha256_ordered_multiset": "0016d6fd4fc4bfcb3d4fa718035dfbf9d3f516453313cbb32b6179eb5241bb93",
+        "registry": "e7599c3393fe0baa51174618966dc25a9e97f0148880d02622f3dea47c2843f0",
+        "registry_version": 1,
+        "source_metadata": "ac514f52b8c56ee6f12cece4814de5d36472f90ad9b4b0d79d88cc1a33ac8fd2",
+        "upstream_catalogue_revision": 0
+      },
+      "farvi": [
+        {
+          "assertion": {
+            "definition": {
+              "Value": {
+                "language": {
+                  "Value": "en"
+                },
+                "markup": "Missing",
+                "text": "$x_{1}$ develops/evolves towards/into $x_{2}$ from $x_{3}$ through stages $x_{4}$."
+              }
+            },
+            "eligibility": "Lexical",
+            "entry": "sutysisku-8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d-entry-11309",
+            "id": "sutysisku-8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d-assertion-11309",
+            "language": {
+              "Value": "en"
+            },
+            "native_sense_id": "Missing",
+            "occurrence": {
+              "capture": {
+                "namespace": "captured:sutysisku:parsed-en",
+                "sha256": "8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d"
+              },
+              "locator": "/11309"
+            },
+            "source_score": "Missing",
+            "timestamps": []
+          },
+          "attribution": {
+            "contributor": null,
+            "native_assertion_id": null,
+            "native_entry_id": "farvi",
+            "occurrence": {
+              "locator": "/11309",
+              "snapshot": {
+                "namespace": "captured:sutysisku:parsed-en",
+                "sha256": "8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d"
+              }
+            }
+          },
+          "release_id": "sutysisku-release-274d43472b636b9fb653c7022c02298de5fd675aab9209c6cbf3131e081fa02e",
+          "target": {
+            "Catalog": {
+              "native_assertion_id": null,
+              "native_entry_id": "farvi",
+              "occurrence": {
+                "capture": {
+                  "namespace": "captured:sutysisku:parsed-en",
+                  "sha256": "8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d"
+                },
+                "locator": "/11309"
+              },
+              "release": "sutysisku-release-274d43472b636b9fb653c7022c02298de5fd675aab9209c6cbf3131e081fa02e",
+              "source": "sutysisku"
+            }
+          }
+        }
+      ],
+      "pack_id": "sutysisku",
+      "payload_kind": "full",
+      "release_sha256": "67499447426d34c269577eb6947d7c7b22b71090e5a30fd653375819d590ffa2"
+    }
+  ],
+  "version": 1
+}

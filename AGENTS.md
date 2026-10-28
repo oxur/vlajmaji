@@ -2,6 +2,10 @@
 
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
+**Current S05 checkpoint,2026-10-28 UTC:** clean1b/tree338daa/final04 bounded ACCEPTED, persistent omissions CLOSED. CDC owns quiet source/index/ONEtarget; current pinned optimized tools and SAMEcode Tiny numeric method qualified(1failedRSSchild+22PASS), all6OPEN. Effective Full packet035637/deltafreeze9982(inherits6a82/base62cf) awaitsroot executableclearance; complete inheritedTMPDIR/birth-bound/private-unit accounting, NOretainedFullleaf/data/hash/query yet. CurrentLinux/freshARC/close/externalgate remain; fivepassesused/noautomatic6.
+
+### Historical final04 bounded ownership checkpoint
+
 **Current S05 checkpoint,2026-10-28 UTC:** Final04/pass5 bounded ACCEPTED at clean1b/tree338daa, original persistent omissions CLOSED; all6OPEN. CDC exclusively owns explicitly returned source/index/ONEtarget; CC/root read-only. Current pinned optimized build and SAMEcode ownedTiny method qualification authorized; retainedFull held for final executable root review, actualLinux/freshARC/close pending. Fivepasses exhausted/noautomatic6/external authority.
 
 ### Historical final04 intake/handoff checkpoint

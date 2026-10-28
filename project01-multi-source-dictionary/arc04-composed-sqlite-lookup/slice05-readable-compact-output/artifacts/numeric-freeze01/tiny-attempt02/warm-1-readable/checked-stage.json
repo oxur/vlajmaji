@@ -1,0 +1,2188 @@
+{
+  "kind": "warm",
+  "round": 1,
+  "mode": "readable",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+    "warm-tiny",
+    "readable",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+  ],
+  "number": 15,
+  "guard_argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "8589934592",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/stderr",
+    "--stdout",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/stdout",
+    "--",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+    "warm-tiny",
+    "readable",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+  ],
+  "guard_exit": 0,
+  "receipt": {
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "warm-tiny",
+      "readable",
+      "1",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ],
+    "decision": "passed",
+    "elapsed_seconds": 0.15889825019985437,
+    "exit_code": 0,
+    "log": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/stderr",
+    "maximum_resident_set_size_bytes": 11403264,
+    "pid": 70177,
+    "rss_parse_ok": true,
+    "rss_source": "/usr/bin/time -l maximum resident set size",
+    "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/stdout",
+    "timed_out": false
+  },
+  "stdout_bytes": 40915,
+  "stdout_sha256": "78a310c8ad850b15ac125627946aa20e01a8f1d1f717f7c58ba480726aa3a146",
+  "stderr_bytes": 777,
+  "stderr_sha256": "b590f4c333b10985d0549060fba1482126a9071e74b0dc2c385e939436e450d6",
+  "rows": [
+    {
+      "config_and_capture_ns": 6619958,
+      "connection_proof": "one engine/one Unified provider by source; actual OS FD count not measured",
+      "constructor_profile_ns": 6397375,
+      "mode": "readable",
+      "request_spec_sha256": "e756d5fa27d681edc6f1443cba3e991daab39276ee552cbbbf2436b26d76f4d6",
+      "round": 1,
+      "row_type": "setup",
+      "snapshot": {
+        "binding_sha256": "1c24e69f220efebfe7e519066762cedbd4b78b834ad1e0ce438e61a0ac051606",
+        "collections": [
+          {
+            "default_member": true,
+            "derived_state": "minimum_ok",
+            "disabled": false,
+            "installed_copy_ownership": "tool_owned",
+            "installed_release_sha256": "7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03",
+            "original_inputs_present": true,
+            "owned_files_present": true,
+            "owned_files_warning": null,
+            "pack_id": "la-lojban",
+            "producer_selectable": true,
+            "request_selected": true
+          },
+          {
+            "default_member": true,
+            "derived_state": "minimum_ok",
+            "disabled": false,
+            "installed_copy_ownership": "tool_owned",
+            "installed_release_sha256": "5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c",
+            "original_inputs_present": true,
+            "owned_files_present": true,
+            "owned_files_warning": null,
+            "pack_id": "lensisku-jbotci",
+            "producer_selectable": true,
+            "request_selected": true
+          },
+          {
+            "default_member": true,
+            "derived_state": "minimum_ok",
+            "disabled": false,
+            "installed_copy_ownership": "tool_owned",
+            "installed_release_sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146",
+            "original_inputs_present": true,
+            "owned_files_present": true,
+            "owned_files_warning": null,
+            "pack_id": "llg",
+            "producer_selectable": true,
+            "request_selected": true
+          },
+          {
+            "default_member": true,
+            "derived_state": "minimum_ok",
+            "disabled": false,
+            "installed_copy_ownership": "tool_owned",
+            "installed_release_sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c",
+            "original_inputs_present": true,
+            "owned_files_present": true,
+            "owned_files_warning": null,
+            "pack_id": "sutysisku",
+            "producer_selectable": true,
+            "request_selected": true
+          }
+        ],
+        "content_id": "b43012a6fd099731301fa2271665c26717e4cbd0795bb2a97691057d593ccf35",
+        "disabled": [],
+        "generation_id": "f8fafbabb03cb7a9709f5d2937d38e16-5faea77dcdc648a9b0d80d96e7863ada",
+        "local_revision": 1,
+        "order_policy": "source-release-occurrence-v1",
+        "packs": [
+          "lensisku-jbotci",
+          "llg",
+          "la-lojban",
+          "sutysisku"
+        ],
+        "profile": {
+          "config_path": {
+            "encoding": "unix-bytes",
+            "hex": "2f746d702f766c616a6d616a692d7030312d6130342d7330352d6364632f6e756d657269632d74696e792d6669787475726530312f636f6e6669672e746f6d6c",
+            "utf8": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml"
+          },
+          "name": "work",
+          "revision": 1,
+          "sha256": "10f82807fdf2bcd570646a1166e465afeb423b9ac1407dc9d7258874e73e3418",
+          "version": 1
+        },
+        "projection_policy": "compact-collection-query-v1",
+        "recorded_state_sha256": "5a9b8f9b48ba840c1c741da4c1f16eb26f84de4c0c8fbeb9b45212abc34ff1c4",
+        "selected_releases": {
+          "la-lojban": [
+            "la-lojban-release-abf263510936f872e7346957374af1bc9b726c9d2e1ee2fab96f3969ec629951"
+          ],
+          "lensisku-jbotci": [
+            "jbotci-release-99e795a97ffe04574ddfd9acc3095a0e2c0e362d578c20c6cb7b609d5c39d6ab"
+          ],
+          "llg": [
+            "llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb",
+            "llg-release-b39e54ac3983d89045775b4e7f6127ec0f71c1985f96fa1719048b4fea3fe993",
+            "llg-release-be0058c0e1f0a34a47a9ad59087c0ebe2473b92d064e7b4dc16b1fa15f6580fb"
+          ],
+          "sutysisku": [
+            "sutysisku-release-70c62273e362222e3d1bebd904e537e3a615c233ac2d01140c2757573a7c21f5"
+          ]
+        },
+        "selection_policy": "selected-available-owned-head-v2",
+        "version": 1
+      },
+      "sqlite_runtime_version": "3.53.2",
+      "tiny": true
+    },
+    {
+      "candidate_sql_ns": 32875,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 3,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--farvi-all",
+      "identity": "farvi-all",
+      "lookup_ns": 57668,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": 795792,
+      "prime": true,
+      "projection_ns": 36165,
+      "query_total_ns": 93833,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 28291,
+      "total_ns": 889625,
+      "wire_bytes": 10681,
+      "wire_sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15"
+    },
+    {
+      "candidate_sql_ns": 17834,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 2,
+          "source_groups": 1
+        }
+      },
+      "id": "prime--farvi-lsk",
+      "identity": "farvi-lsk",
+      "lookup_ns": 29040,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 17168,
+      "query_total_ns": 46208,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 14000,
+      "total_ns": 46208,
+      "wire_bytes": 7120,
+      "wire_sha256": "0e0ac426ef59d7f0c509b957f4a1cfa79c077c7b40a135f41a13bad840199abd"
+    },
+    {
+      "candidate_sql_ns": 14917,
+      "facts": {
+        "assertion_ids": [
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 1,
+            "source": "llg"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 1,
+          "source_groups": 1
+        }
+      },
+      "id": "prime--farvi-llg",
+      "identity": "farvi-llg",
+      "lookup_ns": 20543,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 9916,
+      "query_total_ns": 30459,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 11750,
+      "total_ns": 30459,
+      "wire_bytes": 5683,
+      "wire_sha256": "d51240f4be75780061cdddd4bd0658fef1d7094aef554c821ccf5ea379ffb68c"
+    },
+    {
+      "candidate_sql_ns": 12916,
+      "facts": {
+        "assertion_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 2,
+          "source_groups": 1
+        }
+      },
+      "id": "prime--farvi-sut",
+      "identity": "farvi-sut",
+      "lookup_ns": 20457,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 14043,
+      "query_total_ns": 34500,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 12584,
+      "total_ns": 34500,
+      "wire_bytes": 6974,
+      "wire_sha256": "1744986433d76bbce8a2bdd3ebb8b590a7455c371d0b2d9bdad833209b70cdef"
+    },
+    {
+      "candidate_sql_ns": 8625,
+      "facts": {
+        "assertion_ids": [],
+        "groups": 0,
+        "operation": "exact",
+        "source_totals": [],
+        "totals": {
+          "distinct_spellings": 0,
+          "occurrences": 0,
+          "source_groups": 0
+        }
+      },
+      "id": "prime--absent",
+      "identity": "absent",
+      "lookup_ns": 11043,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 3582,
+      "query_total_ns": 14625,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 8042,
+      "total_ns": 14625,
+      "wire_bytes": 4551,
+      "wire_sha256": "1310f09bb53cb2055d6042b655390fa24f0afe067c9bf5cb4f04aabdd0559cd5"
+    },
+    {
+      "candidate_sql_ns": 8667,
+      "facts": {
+        "assertion_ids": [],
+        "groups": 0,
+        "operation": "exact",
+        "source_totals": [],
+        "totals": {
+          "distinct_spellings": 0,
+          "occurrences": 0,
+          "source_groups": 0
+        }
+      },
+      "id": "prime--excluded-sut",
+      "identity": "excluded-sut",
+      "lookup_ns": 10957,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 3501,
+      "query_total_ns": 14458,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 7583,
+      "total_ns": 14458,
+      "wire_bytes": 4552,
+      "wire_sha256": "0d3881179e10d9889d38b8f0f8e250714f91a6d5bffbab41cdf83d5459b711a5"
+    },
+    {
+      "candidate_sql_ns": 10583,
+      "facts": {
+        "assertion_ids": [],
+        "groups": 0,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page-0",
+      "identity": "page-0",
+      "lookup_ns": 17125,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 3750,
+      "query_total_ns": 20875,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 7583,
+      "total_ns": 20875,
+      "wire_bytes": 4548,
+      "wire_sha256": "7c757d8e3d4d3e7595174f642f957a6212479e8a31bb4a791cef3850a08bbd40"
+    },
+    {
+      "candidate_sql_ns": 11000,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page-1",
+      "identity": "page-1",
+      "lookup_ns": 18833,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 81542,
+      "query_total_ns": 100375,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 11875,
+      "total_ns": 100375,
+      "wire_bytes": 8508,
+      "wire_sha256": "3d771138f05467ec03428641c603d501c7704487dec8457526c50e480ea7d565"
+    },
+    {
+      "candidate_sql_ns": 11333,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page-2",
+      "identity": "page-2",
+      "lookup_ns": 20041,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 85000,
+      "query_total_ns": 105041,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 15666,
+      "total_ns": 105041,
+      "wire_bytes": 9821,
+      "wire_sha256": "349dcf58d9d28f773f743059308ae3c4f6b41c999749724f4eeeb69e44ec723f"
+    },
+    {
+      "candidate_sql_ns": 10459,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6"
+        ],
+        "groups": 2,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page-3",
+      "identity": "page-3",
+      "lookup_ns": 21708,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 130459,
+      "query_total_ns": 152167,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 34333,
+      "total_ns": 152167,
+      "wire_bytes": 10800,
+      "wire_sha256": "b0808ebd94ec571cccd8a5133581066f166d6c62e748b07a28dba399a2be8af1"
+    },
+    {
+      "candidate_sql_ns": 31000,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 3,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page-8",
+      "identity": "page-8",
+      "lookup_ns": 54835,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 32790,
+      "query_total_ns": 87625,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 22583,
+      "total_ns": 87625,
+      "wire_bytes": 10681,
+      "wire_sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15"
+    },
+    {
+      "candidate_sql_ns": 17500,
+      "facts": {
+        "assertion_ids": [
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page-concat-2",
+      "identity": "page-concat-2",
+      "lookup_ns": 51457,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 80377,
+      "query_total_ns": 131834,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 12958,
+      "total_ns": 131834,
+      "wire_bytes": 8565,
+      "wire_sha256": "aa44fde4b9c5f31439c58ce99f7d321240f843ddcccc098a88e89fd68fa97e2b"
+    },
+    {
+      "candidate_sql_ns": 14167,
+      "facts": {
+        "assertion_ids": [
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page-concat-3",
+      "identity": "page-concat-3",
+      "lookup_ns": 41165,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 75710,
+      "query_total_ns": 116875,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 12166,
+      "total_ns": 116875,
+      "wire_bytes": 8228,
+      "wire_sha256": "0a303714ed57238821d22abbcde3504579fb366f056e60ce6a29904e95c2955d"
+    },
+    {
+      "candidate_sql_ns": 12333,
+      "facts": {
+        "assertion_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page-concat-4",
+      "identity": "page-concat-4",
+      "lookup_ns": 37458,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 78250,
+      "query_total_ns": 115708,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 11833,
+      "total_ns": 115708,
+      "wire_bytes": 8470,
+      "wire_sha256": "e622e5411fe1a6fb0ffe27ee7945c3d37c5b11aa474a191c0bfa09599f1f6e2f"
+    },
+    {
+      "candidate_sql_ns": 11375,
+      "facts": {
+        "assertion_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page-concat-5",
+      "identity": "page-concat-5",
+      "lookup_ns": 36375,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 9000,
+      "query_total_ns": 45375,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 10166,
+      "total_ns": 45375,
+      "wire_bytes": 5781,
+      "wire_sha256": "a366c4946d0769460791f30498adecd0247b23dd66ed1d58a01b7c280c760204"
+    },
+    {
+      "candidate_sql_ns": 10792,
+      "facts": {
+        "assertion_ids": [
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0"
+        ],
+        "groups": 2,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page2-concat-2",
+      "identity": "page2-concat-2",
+      "lookup_ns": 37126,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 82999,
+      "query_total_ns": 120125,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 36083,
+      "total_ns": 120125,
+      "wire_bytes": 9605,
+      "wire_sha256": "c5ce0591e5eaaed1154a7e273bc72bd144f15e5bd6481de166843bbbf00ad4a4"
+    },
+    {
+      "candidate_sql_ns": 69625,
+      "facts": {
+        "assertion_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page2-concat-3",
+      "identity": "page2-concat-3",
+      "lookup_ns": 105750,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 14166,
+      "query_total_ns": 119916,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 16417,
+      "total_ns": 119916,
+      "wire_bytes": 5781,
+      "wire_sha256": "a366c4946d0769460791f30498adecd0247b23dd66ed1d58a01b7c280c760204"
+    },
+    {
+      "candidate_sql_ns": 19834,
+      "facts": {
+        "assertion_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "prime--page3-concat-2",
+      "identity": "page3-concat-2",
+      "lookup_ns": 51583,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 15958,
+      "query_total_ns": 67541,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 15375,
+      "total_ns": 67541,
+      "wire_bytes": 6974,
+      "wire_sha256": "101a88dc43f875b555c790443fcd8edb514eff1764555e13b784b17dd7b0b39c"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Resolved",
+        "unverified_ids": []
+      },
+      "id": "prime--jbotci-local",
+      "identity": "jbotci-local",
+      "lookup_ns": 7817168,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 18207,
+      "query_total_ns": 7835375,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 22667,
+      "total_ns": 7835375,
+      "wire_bytes": 7136,
+      "wire_sha256": "de019f3000916e145185c8c774984f15deeae9ebb74d669c9deacc6714710f82"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Resolved",
+        "unverified_ids": []
+      },
+      "id": "prime--jbotci-catalogue-native333",
+      "identity": "jbotci-catalogue-native333",
+      "lookup_ns": 7439710,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 15957,
+      "query_total_ns": 7455667,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 21500,
+      "total_ns": 7455667,
+      "wire_bytes": 8176,
+      "wire_sha256": "934f502a742919882073aa1bca473678e2104f642dacd2ba07715ce694a36fa9"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Resolved",
+        "unverified_ids": []
+      },
+      "id": "prime--la-catalogue-native333",
+      "identity": "la-catalogue-native333",
+      "lookup_ns": 6442960,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 12624,
+      "query_total_ns": 6455584,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 18209,
+      "total_ns": 6455584,
+      "wire_bytes": 7958,
+      "wire_sha256": "b32bf7795b7262a9827c0664f1ba789fe6bae68ca9c589c94db64634de1e8ab5"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6"
+        ],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Resolved",
+        "unverified_ids": []
+      },
+      "id": "prime--llg-component",
+      "identity": "llg-component",
+      "lookup_ns": 6615585,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 25874,
+      "query_total_ns": 6641459,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 31291,
+      "total_ns": 6641459,
+      "wire_bytes": 7866,
+      "wire_sha256": "c6cf5eb177de1e7ee631e5f5b2a6b74d5480a7c4040fb0b375936bdf6c9b8bf3"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0"
+        ],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Resolved",
+        "unverified_ids": []
+      },
+      "id": "prime--sut-native-entry",
+      "identity": "sut-native-entry",
+      "lookup_ns": 6430208,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 20334,
+      "query_total_ns": 6450542,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 24625,
+      "total_ns": 6450542,
+      "wire_bytes": 7982,
+      "wire_sha256": "85b2876754ff7e8113bed35e55bfb3cd90f90584ea7a015bd9c4ac31b2c232df"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Unknown",
+        "unverified_ids": []
+      },
+      "id": "prime--unknown",
+      "identity": "unknown",
+      "lookup_ns": 293,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 1249,
+      "query_total_ns": 1542,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 6250,
+      "total_ns": 1542,
+      "wire_bytes": 4620,
+      "wire_sha256": "80f98e5e60b59ff66a15e2109c0b3ea6ef4b48be728c98cd77293b40f2dcf38b"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Unresolved",
+        "unverified_ids": []
+      },
+      "id": "prime--unresolved",
+      "identity": "unresolved",
+      "lookup_ns": 166,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 1209,
+      "query_total_ns": 1375,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 5542,
+      "total_ns": 1375,
+      "wire_bytes": 4660,
+      "wire_sha256": "9782dc1e8e70dc2ad6fa9c6d47bc8e7e1ba98b35d7f39f2723271fb64ea11dfb"
+    },
+    {
+      "expected_error": "invalid_reference",
+      "id": "prime--wrong-role",
+      "identity": "wrong-role",
+      "mode": "readable",
+      "ok": false,
+      "operation": "reference",
+      "prime": true,
+      "profile": null,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 9584,
+      "whole_error_ns": 3434333,
+      "wire_bytes": 445,
+      "wire_sha256": "e224dc97c9f47889a04160382dc095d9e3d9947c6b0fa9713d0844403beb3634"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [],
+        "operation": "resolve",
+        "reason": null,
+        "status": "NoMatch",
+        "unverified_ids": []
+      },
+      "id": "prime--missing",
+      "identity": "missing",
+      "lookup_ns": 6762250,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": true,
+      "projection_ns": 2708,
+      "query_total_ns": 6764958,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 15500,
+      "total_ns": 6764958,
+      "wire_bytes": 6227,
+      "wire_sha256": "3e67cc0f023929e3cf380c378401ad8175dcf509aad27514c92e574bbc4acbf1"
+    },
+    {
+      "candidate_sql_ns": 27250,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 3,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "farvi-all",
+      "identity": "farvi-all",
+      "lookup_ns": 49878,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 36288,
+      "query_total_ns": 86166,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 23625,
+      "total_ns": 86166,
+      "wire_bytes": 10681,
+      "wire_sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15"
+    },
+    {
+      "candidate_sql_ns": 68875,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 2,
+          "source_groups": 1
+        }
+      },
+      "id": "farvi-lsk",
+      "identity": "farvi-lsk",
+      "lookup_ns": 98336,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 25914,
+      "query_total_ns": 124250,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 24209,
+      "total_ns": 124250,
+      "wire_bytes": 7120,
+      "wire_sha256": "0e0ac426ef59d7f0c509b957f4a1cfa79c077c7b40a135f41a13bad840199abd"
+    },
+    {
+      "candidate_sql_ns": 19083,
+      "facts": {
+        "assertion_ids": [
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 1,
+            "source": "llg"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 1,
+          "source_groups": 1
+        }
+      },
+      "id": "farvi-llg",
+      "identity": "farvi-llg",
+      "lookup_ns": 25749,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 14501,
+      "query_total_ns": 40250,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 12042,
+      "total_ns": 40250,
+      "wire_bytes": 5683,
+      "wire_sha256": "d51240f4be75780061cdddd4bd0658fef1d7094aef554c821ccf5ea379ffb68c"
+    },
+    {
+      "candidate_sql_ns": 15000,
+      "facts": {
+        "assertion_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 2,
+          "source_groups": 1
+        }
+      },
+      "id": "farvi-sut",
+      "identity": "farvi-sut",
+      "lookup_ns": 23042,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 14166,
+      "query_total_ns": 37208,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 13292,
+      "total_ns": 37208,
+      "wire_bytes": 6974,
+      "wire_sha256": "1744986433d76bbce8a2bdd3ebb8b590a7455c371d0b2d9bdad833209b70cdef"
+    },
+    {
+      "candidate_sql_ns": 10083,
+      "facts": {
+        "assertion_ids": [],
+        "groups": 0,
+        "operation": "exact",
+        "source_totals": [],
+        "totals": {
+          "distinct_spellings": 0,
+          "occurrences": 0,
+          "source_groups": 0
+        }
+      },
+      "id": "absent",
+      "identity": "absent",
+      "lookup_ns": 12541,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 4042,
+      "query_total_ns": 16583,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 8459,
+      "total_ns": 16583,
+      "wire_bytes": 4551,
+      "wire_sha256": "1310f09bb53cb2055d6042b655390fa24f0afe067c9bf5cb4f04aabdd0559cd5"
+    },
+    {
+      "candidate_sql_ns": 9250,
+      "facts": {
+        "assertion_ids": [],
+        "groups": 0,
+        "operation": "exact",
+        "source_totals": [],
+        "totals": {
+          "distinct_spellings": 0,
+          "occurrences": 0,
+          "source_groups": 0
+        }
+      },
+      "id": "excluded-sut",
+      "identity": "excluded-sut",
+      "lookup_ns": 11625,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 3833,
+      "query_total_ns": 15458,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 7792,
+      "total_ns": 15458,
+      "wire_bytes": 4552,
+      "wire_sha256": "0d3881179e10d9889d38b8f0f8e250714f91a6d5bffbab41cdf83d5459b711a5"
+    },
+    {
+      "candidate_sql_ns": 11125,
+      "facts": {
+        "assertion_ids": [],
+        "groups": 0,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page-0",
+      "identity": "page-0",
+      "lookup_ns": 18165,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 4043,
+      "query_total_ns": 22208,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 7667,
+      "total_ns": 22208,
+      "wire_bytes": 4548,
+      "wire_sha256": "7c757d8e3d4d3e7595174f642f957a6212479e8a31bb4a791cef3850a08bbd40"
+    },
+    {
+      "candidate_sql_ns": 11208,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page-1",
+      "identity": "page-1",
+      "lookup_ns": 19082,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 86293,
+      "query_total_ns": 105375,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 12417,
+      "total_ns": 105375,
+      "wire_bytes": 8508,
+      "wire_sha256": "3d771138f05467ec03428641c603d501c7704487dec8457526c50e480ea7d565"
+    },
+    {
+      "candidate_sql_ns": 11500,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page-2",
+      "identity": "page-2",
+      "lookup_ns": 20752,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 85415,
+      "query_total_ns": 106167,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 13917,
+      "total_ns": 106167,
+      "wire_bytes": 9821,
+      "wire_sha256": "349dcf58d9d28f773f743059308ae3c4f6b41c999749724f4eeeb69e44ec723f"
+    },
+    {
+      "candidate_sql_ns": 10750,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6"
+        ],
+        "groups": 2,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page-3",
+      "identity": "page-3",
+      "lookup_ns": 20209,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 83958,
+      "query_total_ns": 104167,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 15208,
+      "total_ns": 104167,
+      "wire_bytes": 10800,
+      "wire_sha256": "b0808ebd94ec571cccd8a5133581066f166d6c62e748b07a28dba399a2be8af1"
+    },
+    {
+      "candidate_sql_ns": 30291,
+      "facts": {
+        "assertion_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 3,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page-8",
+      "identity": "page-8",
+      "lookup_ns": 56419,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 53831,
+      "query_total_ns": 110250,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 24292,
+      "total_ns": 110250,
+      "wire_bytes": 10681,
+      "wire_sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15"
+    },
+    {
+      "candidate_sql_ns": 33125,
+      "facts": {
+        "assertion_ids": [
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page-concat-2",
+      "identity": "page-concat-2",
+      "lookup_ns": 67876,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 84499,
+      "query_total_ns": 152375,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 13458,
+      "total_ns": 152375,
+      "wire_bytes": 8565,
+      "wire_sha256": "aa44fde4b9c5f31439c58ce99f7d321240f843ddcccc098a88e89fd68fa97e2b"
+    },
+    {
+      "candidate_sql_ns": 23917,
+      "facts": {
+        "assertion_ids": [
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page-concat-3",
+      "identity": "page-concat-3",
+      "lookup_ns": 70081,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 119377,
+      "query_total_ns": 189458,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 18209,
+      "total_ns": 189458,
+      "wire_bytes": 8228,
+      "wire_sha256": "0a303714ed57238821d22abbcde3504579fb366f056e60ce6a29904e95c2955d"
+    },
+    {
+      "candidate_sql_ns": 27625,
+      "facts": {
+        "assertion_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page-concat-4",
+      "identity": "page-concat-4",
+      "lookup_ns": 56127,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 122331,
+      "query_total_ns": 178458,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 12542,
+      "total_ns": 178458,
+      "wire_bytes": 8470,
+      "wire_sha256": "e622e5411fe1a6fb0ffe27ee7945c3d37c5b11aa474a191c0bfa09599f1f6e2f"
+    },
+    {
+      "candidate_sql_ns": 14583,
+      "facts": {
+        "assertion_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page-concat-5",
+      "identity": "page-concat-5",
+      "lookup_ns": 41501,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 10624,
+      "query_total_ns": 52125,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 13458,
+      "total_ns": 52125,
+      "wire_bytes": 5781,
+      "wire_sha256": "a366c4946d0769460791f30498adecd0247b23dd66ed1d58a01b7c280c760204"
+    },
+    {
+      "candidate_sql_ns": 12625,
+      "facts": {
+        "assertion_ids": [
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0"
+        ],
+        "groups": 2,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page2-concat-2",
+      "identity": "page2-concat-2",
+      "lookup_ns": 40209,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 85749,
+      "query_total_ns": 125958,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 18750,
+      "total_ns": 125958,
+      "wire_bytes": 9605,
+      "wire_sha256": "c5ce0591e5eaaed1154a7e273bc72bd144f15e5bd6481de166843bbbf00ad4a4"
+    },
+    {
+      "candidate_sql_ns": 12042,
+      "facts": {
+        "assertion_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page2-concat-3",
+      "identity": "page2-concat-3",
+      "lookup_ns": 37044,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 9081,
+      "query_total_ns": 46125,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 11166,
+      "total_ns": 46125,
+      "wire_bytes": 5781,
+      "wire_sha256": "a366c4946d0769460791f30498adecd0247b23dd66ed1d58a01b7c280c760204"
+    },
+    {
+      "candidate_sql_ns": 11125,
+      "facts": {
+        "assertion_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+        ],
+        "groups": 1,
+        "operation": "exact",
+        "source_totals": [
+          {
+            "occurrences": 2,
+            "source": "lensisku"
+          },
+          {
+            "occurrences": 1,
+            "source": "llg"
+          },
+          {
+            "occurrences": 2,
+            "source": "sutysisku"
+          }
+        ],
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 5,
+          "source_groups": 3
+        }
+      },
+      "id": "page3-concat-2",
+      "identity": "page3-concat-2",
+      "lookup_ns": 36087,
+      "mode": "readable",
+      "ok": true,
+      "operation": "exact",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 13080,
+      "query_total_ns": 49167,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 11958,
+      "total_ns": 49167,
+      "wire_bytes": 6974,
+      "wire_sha256": "101a88dc43f875b555c790443fcd8edb514eff1764555e13b784b17dd7b0b39c"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Resolved",
+        "unverified_ids": []
+      },
+      "id": "jbotci-local",
+      "identity": "jbotci-local",
+      "lookup_ns": 6944585,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 15082,
+      "query_total_ns": 6959667,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 18084,
+      "total_ns": 6959667,
+      "wire_bytes": 7136,
+      "wire_sha256": "de019f3000916e145185c8c774984f15deeae9ebb74d669c9deacc6714710f82"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [
+          "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Resolved",
+        "unverified_ids": []
+      },
+      "id": "jbotci-catalogue-native333",
+      "identity": "jbotci-catalogue-native333",
+      "lookup_ns": 7777708,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 20459,
+      "query_total_ns": 7798167,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 25542,
+      "total_ns": 7798167,
+      "wire_bytes": 8176,
+      "wire_sha256": "934f502a742919882073aa1bca473678e2104f642dacd2ba07715ce694a36fa9"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [
+          "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0"
+        ],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Resolved",
+        "unverified_ids": []
+      },
+      "id": "la-catalogue-native333",
+      "identity": "la-catalogue-native333",
+      "lookup_ns": 7278834,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 15166,
+      "query_total_ns": 7294000,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 19500,
+      "total_ns": 7294000,
+      "wire_bytes": 7958,
+      "wire_sha256": "b32bf7795b7262a9827c0664f1ba789fe6bae68ca9c589c94db64634de1e8ab5"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [
+          "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6"
+        ],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Resolved",
+        "unverified_ids": []
+      },
+      "id": "llg-component",
+      "identity": "llg-component",
+      "lookup_ns": 6731708,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 23250,
+      "query_total_ns": 6754958,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 24459,
+      "total_ns": 6754958,
+      "wire_bytes": 7866,
+      "wire_sha256": "c6cf5eb177de1e7ee631e5f5b2a6b74d5480a7c4040fb0b375936bdf6c9b8bf3"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [
+          "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0"
+        ],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Resolved",
+        "unverified_ids": []
+      },
+      "id": "sut-native-entry",
+      "identity": "sut-native-entry",
+      "lookup_ns": 6420166,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 14626,
+      "query_total_ns": 6434792,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 20791,
+      "total_ns": 6434792,
+      "wire_bytes": 7982,
+      "wire_sha256": "85b2876754ff7e8113bed35e55bfb3cd90f90584ea7a015bd9c4ac31b2c232df"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Unknown",
+        "unverified_ids": []
+      },
+      "id": "unknown",
+      "identity": "unknown",
+      "lookup_ns": 207,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 1209,
+      "query_total_ns": 1416,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 6417,
+      "total_ns": 1416,
+      "wire_bytes": 4620,
+      "wire_sha256": "80f98e5e60b59ff66a15e2109c0b3ea6ef4b48be728c98cd77293b40f2dcf38b"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [],
+        "operation": "resolve",
+        "reason": null,
+        "status": "Unresolved",
+        "unverified_ids": []
+      },
+      "id": "unresolved",
+      "identity": "unresolved",
+      "lookup_ns": 250,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 833,
+      "query_total_ns": 1083,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 5500,
+      "total_ns": 1083,
+      "wire_bytes": 4660,
+      "wire_sha256": "9782dc1e8e70dc2ad6fa9c6d47bc8e7e1ba98b35d7f39f2723271fb64ea11dfb"
+    },
+    {
+      "expected_error": "invalid_reference",
+      "id": "wrong-role",
+      "identity": "wrong-role",
+      "mode": "readable",
+      "ok": false,
+      "operation": "reference",
+      "prime": false,
+      "profile": null,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 8792,
+      "whole_error_ns": 3054458,
+      "wire_bytes": 445,
+      "wire_sha256": "e224dc97c9f47889a04160382dc095d9e3d9947c6b0fa9713d0844403beb3634"
+    },
+    {
+      "candidate_sql_ns": 0,
+      "facts": {
+        "confirmed_ids": [],
+        "operation": "resolve",
+        "reason": null,
+        "status": "NoMatch",
+        "unverified_ids": []
+      },
+      "id": "missing",
+      "identity": "missing",
+      "lookup_ns": 6082334,
+      "mode": "readable",
+      "ok": true,
+      "operation": "reference",
+      "payload_setup_ns": null,
+      "prime": false,
+      "projection_ns": 2166,
+      "query_total_ns": 6084500,
+      "round": 1,
+      "row_type": "request",
+      "serialization_ns": 12500,
+      "total_ns": 6084500,
+      "wire_bytes": 6227,
+      "wire_sha256": "3e67cc0f023929e3cf380c378401ad8175dcf509aad27514c92e574bbc4acbf1"
+    },
+    {
+      "measured": 27,
+      "mode": "readable",
+      "prime": 27,
+      "round": 1,
+      "row_type": "complete",
+      "semantic_observer": "separate finite process; this warm stdout is summary, not actual CLI E2E",
+      "tiny": true
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "inputs": [
+    {
+      "kind": "sealed",
+      "pack_id": "lensisku-jbotci",
+      "release": "packs/lensisku-jbotci/release.json",
+      "seal": "packs/lensisku-jbotci/seal.json"
+    },
+    {
+      "kind": "sealed",
+      "pack_id": "llg",
+      "release": "packs/llg/release.json",
+      "seal": "packs/llg/seal.json"
+    },
+    {
+      "kind": "sealed",
+      "pack_id": "la-lojban",
+      "release": "packs/la-lojban/release.json",
+      "seal": "packs/la-lojban/seal.json"
+    },
+    {
+      "kind": "sealed",
+      "pack_id": "sutysisku",
+      "release": "packs/sutysisku/release.json",
+      "seal": "packs/sutysisku/seal.json"
+    }
+  ]
+}

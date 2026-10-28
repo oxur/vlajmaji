@@ -1,0 +1,12 @@
+{
+  "classification": "Tiny numerical preflight-builder method applicability failure; no product finding",
+  "source_runner_sha256": "a5afe2c1adb8fcd09453b633cddb648267c0f2d3a13557541219c0cca081181e",
+  "stage": "inventory(scratch) before preflight output creation and before any numeric22 child launch",
+  "displayed_traceback_transcription": "File numeric-runner01.py line78 inventory: m=p.lstat();assert not stat.S_ISLNK(m.st_mode),p; AssertionError: /tmp/vlajmaji-p01-a04-s05-cdc/owned-path-method01/catalogue/linked",
+  "original_raw_log": "No separate raw file; actual exec tool transcript retained, this is authored transcription not byte-copy raw proof",
+  "preflight_created": false,
+  "numeric_output_created": false,
+  "tiny_fixture_retained": true,
+  "retained_full_access": false,
+  "proposal": "Record retained symlink lstat/readlink identity without following; preserve strict nofollow for frozen/data/root paths; awaiting root concrete disposition"
+}

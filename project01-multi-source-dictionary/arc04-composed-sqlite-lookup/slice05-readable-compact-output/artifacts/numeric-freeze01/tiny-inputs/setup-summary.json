@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "fixture_scope": "original-four-pack-synthetic-readable",
+  "root": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/root",
+  "config": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+  "store": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/root/generations/5faea77dcdc648a9b0d80d96e7863ada/store",
+  "catalogue_revision": 1,
+  "profile_revision": 1,
+  "inputs": [
+    {
+      "pack_id": "lensisku-jbotci",
+      "release": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/lensisku-jbotci/release.json",
+      "release_sha256": "5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c",
+      "seal": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/lensisku-jbotci/seal.json",
+      "seal_sha256": "7211e26c78e6a1a8e4b809a239ad9ed564e5bb5f451c82ffa7a11a9f3e121ef3"
+    },
+    {
+      "pack_id": "llg",
+      "release": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/llg/release.json",
+      "release_sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146",
+      "seal": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/llg/seal.json",
+      "seal_sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc"
+    },
+    {
+      "pack_id": "la-lojban",
+      "release": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/la-lojban/release.json",
+      "release_sha256": "7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03",
+      "seal": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/la-lojban/seal.json",
+      "seal_sha256": "7c36e2fc7ddf2bac3652071a98858d05981f675004e04283f53dfd11d1d92ed3"
+    },
+    {
+      "pack_id": "sutysisku",
+      "release": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/sutysisku/release.json",
+      "release_sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c",
+      "seal": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/sutysisku/seal.json",
+      "seal_sha256": "d95739ffd58c641cdfd258b116d961548c80b32229588301663897c4b57b0d3d"
+    }
+  ],
+  "no_full_access": true
+}

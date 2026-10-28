@@ -1,0 +1,43 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-cargo",
+    "+1.98.0",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/Cargo.toml"
+  ],
+  "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "files": [
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/Cargo.toml",
+      "bytes": 690,
+      "sha256": "f2f19733d01559393190fe22eb9686c85a3d38245ff6ac07a72ef72dfec97e99"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/Cargo.lock",
+      "bytes": 11040,
+      "sha256": "5846621914f2d9eee401ac6214baa05a3b3aa0cb0fb98ec8afb6e9457e91a002"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/src/main.rs",
+      "bytes": 12925,
+      "sha256": "0f539576da2358dd2b3e653cd5bb447e57f5c071ced7e9829bb8ee7315b61951"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/src/semantic.rs",
+      "bytes": 9649,
+      "sha256": "ad2f773e849293ecc0d93d8a7bb78106615335cf4f6a52788522cd128647432c"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/fixtures/requests-full03.json",
+      "bytes": 13672,
+      "sha256": "6fe407b2411263370524a44bd101c271fa17a3c3f4e92ee65425025f76d24c21"
+    }
+  ],
+  "rust": "1.98.0",
+  "source_head": "1b9038ddc6c45f3ea709a0bdfec64041221e3571",
+  "no_full_access": true
+}

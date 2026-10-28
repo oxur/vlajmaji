@@ -1,0 +1,2103 @@
+{
+  "schema": 1,
+  "source_head": "1b9038ddc6c45f3ea709a0bdfec64041221e3571",
+  "payloads": [
+    {
+      "path": "frozen-sources/01/Cargo.lock",
+      "bytes": 32156,
+      "sha256": "65cd7f39a88bdd2a3dab1fcd14e9055ff7b77cb22ec3af8c309ce49dbea78700",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.lock",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/02/Cargo.toml",
+      "bytes": 961,
+      "sha256": "256e08fe4e4da6c867edc5aaed4fb20726efd48143c6029e103966b6e6192aa4",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.toml",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/03/README.md",
+      "bytes": 12490,
+      "sha256": "5169a55ab4ffa1f649cc93298c52bebbd9e17c38192147a6851b48f1e8a5e981",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/README.md",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/04/README.md",
+      "bytes": 9548,
+      "sha256": "130ef39913960a0cc107c084ea04b5614a33c6a0abad8dd076969acb05417352",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/README.md",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/05/main.rs",
+      "bytes": 145695,
+      "sha256": "1be2dd7a5ec311c41b98193ba219a5b385ccfc62463c0d3b5030460ff923e4fe",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/src/main.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/06/query_output.rs",
+      "bytes": 323,
+      "sha256": "8d9207472be3f1a671b8dc89c956e5609ca2d7ffa70ff3ec39fb97d6271758f5",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/src/query_output.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/07/query_output_contract.rs",
+      "bytes": 109246,
+      "sha256": "4bb1556505b9eb4c29ab1b3050d770c1fc683da3fc0ec59a128d85090c92d958",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/tests/query_output_contract.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/08/README.md",
+      "bytes": 5865,
+      "sha256": "6b14fed31010a1a35dd3535598123930b35a6b73b1441c6b70536aa8857efe65",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/README.md",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/09/projection.rs",
+      "bytes": 51416,
+      "sha256": "7a31f42c66229853319da465ad5ae0576c3703e9b107fff35319f2dcc760f87e",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/collection_query/projection.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/10/collection_query.rs",
+      "bytes": 80009,
+      "sha256": "e564750e4464d77258a69482b3f89b2675013b845bd3ebc4914dd78b643c6bd9",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/collection_query.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/11/borrowed.rs",
+      "bytes": 26575,
+      "sha256": "f511722ed486643fa9b6c0496d3fcaed90ff0a1d5514452a7139c8dffa3e8293",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary/borrowed.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/12/projection.rs",
+      "bytes": 83489,
+      "sha256": "7e8dce325525a9399f65ce535e687a2579e1e16044beee805ee23f11e48ee980",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary/projection.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/13/dictionary.rs",
+      "bytes": 88183,
+      "sha256": "c344595023e3e884372005b830379000765e6ef63a57d68a65387fed80d45eb7",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/14/lib.rs",
+      "bytes": 57852,
+      "sha256": "62ef4a05895ba5578d206c3147b1f37990c77ced20e9d71ad6e7d11b1c594ede",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/lib.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/15/presentation.rs",
+      "bytes": 11647,
+      "sha256": "b94a5f9aea56634426afd58ec7c32f9928267d4e3a60432d74a0282952f94d37",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/presentation.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/16/collection_projection_contract.rs",
+      "bytes": 18298,
+      "sha256": "e1503b2bc3b0a21238fa4fdbb97664984ea9fc60f77193aeafd0f2a72799ae2f",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/collection_projection_contract.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/17/dictionary_projection_contract.rs",
+      "bytes": 112169,
+      "sha256": "1a9a5c0764346a8ec7892f2e8d76fe303d4c400991ce9341a6fcc9bdc0f3d201",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/dictionary_projection_contract.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/18/presentation_contract.rs",
+      "bytes": 33981,
+      "sha256": "cbf26d8655d6b3f52cac2829c385c8ff76bbb0420dbec20b34e0be6e2b3fce21",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/presentation_contract.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/19/reference_projection.rs",
+      "bytes": 42089,
+      "sha256": "090255269a34e9823866a3b65491415890a54f1a9a8909b9926d719bf5f8419b",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/collections/reference_projection.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/20/collections.rs",
+      "bytes": 159894,
+      "sha256": "3d49784d8aa20a0a5b859b0bc295aae334be579cc48a680fdf985e4795ead304",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/collections.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/21/lib.rs",
+      "bytes": 15427,
+      "sha256": "7cf3cfc532eaa38fd2111c9253537f3c754aab8fd9662218d37b5e942c373e1c",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/lib.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/22/reference_projection_contract.rs",
+      "bytes": 14091,
+      "sha256": "40a0748cbedd7203ac8f4e3c15eeb9e6f362a3e103f3030aab3922b4d1e00d91",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/tests/reference_projection_contract.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/23/collections.md",
+      "bytes": 13509,
+      "sha256": "a009277214a20c97c471a05cd9040d71177c43de969bbe16013157ec203d6049",
+      "original_path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/docs/collections.md",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/24/accepted-descriptors-and-refs02.json",
+      "bytes": 16593,
+      "sha256": "7f332ad5f3e58f0d4a99cf3c12e82400e85923840430db76291c54951ccef867",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/full-caller01/accepted-descriptors-and-refs02.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/26/stage_guard_split01.py",
+      "bytes": 2723,
+      "sha256": "8b78f747fe7977ea9aad67a2a26472261d76f2047e5a30e3c06aee47b655c859",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/27/cli-checks01.py",
+      "bytes": 15841,
+      "sha256": "b0a03a79d6ba38d55c9a496d13900a85d342689291fb7e53ef08ca0ac803f969",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/cli-checks01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/28/numeric-analysis01.py",
+      "bytes": 5020,
+      "sha256": "5fb7ac6649856a2a2e7a9ee87855c94e8154a2573c96a4548cad48b812a14b0a",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-analysis01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/29/Cargo.lock",
+      "bytes": 11040,
+      "sha256": "5846621914f2d9eee401ac6214baa05a3b3aa0cb0fb98ec8afb6e9457e91a002",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/Cargo.lock",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/30/Cargo.toml",
+      "bytes": 690,
+      "sha256": "f2f19733d01559393190fe22eb9686c85a3d38245ff6ac07a72ef72dfec97e99",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/Cargo.toml",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/31/requests-full03.json",
+      "bytes": 13672,
+      "sha256": "6fe407b2411263370524a44bd101c271fa17a3c3f4e92ee65425025f76d24c21",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/fixtures/requests-full03.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/32/main.rs",
+      "bytes": 12925,
+      "sha256": "0f539576da2358dd2b3e653cd5bb447e57f5c071ced7e9829bb8ee7315b61951",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/src/main.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/33/semantic.rs",
+      "bytes": 9649,
+      "sha256": "ad2f773e849293ecc0d93d8a7bb78106615335cf4f6a52788522cd128647432c",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/src/semantic.rs",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/34/numeric-fresh-boundary-qualifier01.log",
+      "bytes": 334,
+      "sha256": "c805bcf1d4e52fe9c57c9d56f734e41e5f5dec7be46fd1b4227f0d7928745564",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-fresh-boundary-qualifier01.log",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/35/numeric-fresh-boundary-qualifier01.py",
+      "bytes": 2286,
+      "sha256": "8949c28f909ceca1789554f4289f43daba372173cfa1c901101530e75c294f87",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-fresh-boundary-qualifier01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/38/numeric-full-preflight-builder01.py",
+      "bytes": 6453,
+      "sha256": "a177582c4491d11c3633f100f477095964686d4a40d99cb8a6608b07a2f65372",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-preflight-builder01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/39/numeric-inventory-qualifier01-receipt.json",
+      "bytes": 287,
+      "sha256": "f852dc2256855bb5aa2bd6624c4c32b3f5ea2224fd9be93ac46a76b07253160e",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-inventory-qualifier01-receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/40/numeric-inventory-qualifier01.log",
+      "bytes": 362,
+      "sha256": "6ffebe634b1c2da706cc10753aa48c48db1c19a0656cfcea0d5e275c1edc2df9",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-inventory-qualifier01.log",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/41/numeric-inventory-qualifier01.py",
+      "bytes": 1974,
+      "sha256": "065d8938ae7ec71c8ee3d7cdd745d0d861914b6a27fb35cd3e55cfc8bbd52e1a",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-inventory-qualifier01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/42/numeric-method-qualifier01.log",
+      "bytes": 528,
+      "sha256": "6d6a596e97f86c202b7bd4cee9bf0d269defd15b12716c6e0f7f2497680864d8",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-method-qualifier01.log",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/43/numeric-method-qualifier01.py",
+      "bytes": 3385,
+      "sha256": "70d22d14e6ab0a298d2eecd22193f7a7228142c4017b92d2fed26255f363c3fa",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-method-qualifier01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/44/numeric-runner01-source-before-fresh-boundary01.py",
+      "bytes": 18759,
+      "sha256": "23e6b9d548d376d86fe9d66f6d0bebab2ce79de500187594f75fa9680c4170fc",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner01-source-before-fresh-boundary01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/45/numeric-runner01-source-before-link-inventory01.py",
+      "bytes": 19615,
+      "sha256": "a5afe2c1adb8fcd09453b633cddb648267c0f2d3a13557541219c0cca081181e",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner01-source-before-link-inventory01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/46/numeric-runner01-source-before-stage21-analysis01.py",
+      "bytes": 18685,
+      "sha256": "985925f588aba34762b99ea6d2666fbd1707c468d9ef47e446c3b6e4c5d8a333",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner01-source-before-stage21-analysis01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/47/numeric-runner01.py",
+      "bytes": 20095,
+      "sha256": "1bce613cebfe37efe0ff76d16e1e89ab7bf5f039f12bfd90568cb5de80951b26",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/48/numeric-tiny-method01.py",
+      "bytes": 805,
+      "sha256": "f40d2c711a898a3c01ee4fd2a753cad073bb21a67ac5b69d73165928dad63a46",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-method01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/49/numeric-tiny-preflight-builder02.py",
+      "bytes": 3410,
+      "sha256": "97f28c4cfa6895447ee4e91741775bbd4efb3e5327f2f3287df26cb1eb79353a",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-preflight-builder02.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/50/numeric-tiny-workload01.py",
+      "bytes": 3052,
+      "sha256": "6ba4827e8e009a9bcce873018e3e7e23e58e614282c5e223f7fac2ebb9402c79",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-workload01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "frozen-sources/51/numeric-wire-qualifier01.py",
+      "bytes": 2393,
+      "sha256": "d286bb2b1f09df0e3aa7981273e3330396778f13b07ee09f49ca286e6432063c",
+      "original_path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-wire-qualifier01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-build-cli01-pre.json",
+      "bytes": 810,
+      "sha256": "1e8595c3c38e5a0fcac8106bfce7b47482fc88221bc5589655ed8e8e75d86c79",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-build-cli01-pre.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-build-cli01-result.json",
+      "bytes": 219,
+      "sha256": "7cc4e543b98c6bd87e485d2d672090295d8f70a0712abbeacec36c58649bae31",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-build-cli01-result.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-build-cli01.log",
+      "bytes": 526,
+      "sha256": "4bdf286000882d0f2c8b3d8c5f2d418917a11143d1727985a1a55780f6494c9a",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-build-cli01.log",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-build-observer01-pre.json",
+      "bytes": 1413,
+      "sha256": "7b6130648c1a0231ad670974ed9eba7bb2aae9ab73f6ab865f9ef8176a50648c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-build-observer01-pre.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-build-observer01-result.json",
+      "bytes": 223,
+      "sha256": "22fcdaa0c1279a6fb99e116ef4f93ee6c8cc83cfe4b99fa64ebe3cdbf1707ce0",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-build-observer01-result.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-build-observer01.log",
+      "bytes": 510,
+      "sha256": "a6e86af6086514c6c9206493089d72164aae7d9896835cf1a993f408bd256e5e",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-build-observer01.log",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-cli-binary01.json",
+      "bytes": 420,
+      "sha256": "bdb1967416a7cf99c68a4ea60d63293cf22421b5dd2e8a79e10b2e8cd76236af",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-cli-binary01.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-full-preflight01.json",
+      "bytes": 50373,
+      "sha256": "9815fd6bd31ed7d62907e006a3df28c97ddc51954c4f6359848e540d3a2b1732",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-preflight01.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-observer-binary01.json",
+      "bytes": 500,
+      "sha256": "6f58424d0fd3f7a8b1f60bc0f889f157de9d8fe8e990c4841cba8fc03623d03f",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-observer-binary01.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-semantic-qualifier01-receipt.json",
+      "bytes": 435,
+      "sha256": "fa5c1ab0262912dcc4a344cd8d76b8dedc23f0fd37cc1bba4902db17811079a1",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-semantic-qualifier01-receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-semantic-qualifier01.log",
+      "bytes": 211,
+      "sha256": "d143728b4a024d01f2093705d9692c9245853143c481060e84131605d775c4ae",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-semantic-qualifier01.log",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-source-closure04.json",
+      "bytes": 6486,
+      "sha256": "07991603d3207e085ea1300d73038ac3bfa68eeeffdbaac203265de4928a4e68",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-source-closure04.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-tiny-orchestration01-receipt.json",
+      "bytes": 560,
+      "sha256": "2aaba583bf1979cf2c8aa3a4ff852459644028cb1f1952a4711a641bbc3e40cf",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01-receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-tiny-orchestration01.log",
+      "bytes": 434,
+      "sha256": "483f5791107fb8092cfa96df4a85186317e989188ffe71400795f0bb87316447",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01.log",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-tiny-orchestration02-receipt.json",
+      "bytes": 570,
+      "sha256": "da7e0a7cabaa96a1c03bcebcbd50e9822dd423ca8b663b3aabdab019fc668fe9",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02-receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-tiny-orchestration02.log",
+      "bytes": 3242,
+      "sha256": "84b58736c711d11ac81436d1a6487e91ffd0865ae432a7a1e62b8289bf16a235",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02.log",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-tiny-preflight-method-failure01.json",
+      "bytes": 967,
+      "sha256": "21d4a2d3530cd3692cbd4df3e62c4e6ccfcf5c9f2bf9cb26e1807e7bf51cc5da",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-preflight-method-failure01.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-tiny-preflight01.json",
+      "bytes": 47014,
+      "sha256": "d6eceba26111bff42a02a071ef732de4678afa9bff35b20d57bcb177a73d2404",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-preflight01.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-tiny-preflight02.json",
+      "bytes": 47429,
+      "sha256": "b7cb956436c03b764ff312044783721690794f2003cefdaa6b4e03ac195f2a57",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-preflight02.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-tiny-setup01-receipt.json",
+      "bytes": 241,
+      "sha256": "db4b09ce846ed5e421723f93cb0aa3cbba0491507ff992b1286f0cc0809980f4",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-setup01-receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-tiny-setup01.log",
+      "bytes": 1947,
+      "sha256": "1f1a235055f6698318608f9ba04f6e24efd155ec6715580f9fd9b7638694c613",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-setup01.log",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-tiny-setup01.py",
+      "bytes": 4074,
+      "sha256": "0ca769a83bbe7788003813984c6cc9d4b96364c2ef8d37894aa0a2da4f77b6c2",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-setup01.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-wire-qualifier01-receipt.json",
+      "bytes": 649,
+      "sha256": "15ca6dd5272150f18b9e1baf286d723a8be0b355a81447ce27c4e763c6329ca0",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-wire-qualifier01-receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "method/numeric-wire-qualifier01.log",
+      "bytes": 479,
+      "sha256": "8f08ece1f0395d58ec0139db735d5f883dd5276be908cd39363daefe5a63d58e",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-wire-qualifier01.log",
+      "original_byte_copy": true
+    },
+    {
+      "path": "summary.json",
+      "bytes": 2500,
+      "sha256": "61fc6d8773d9ae608e7551189084f213bd69fb5c4bfbfc1a373fce68e24cc7e5",
+      "provenance": "newly authored CDC interpretation"
+    },
+    {
+      "path": "tiny-attempt01/01-fresh-1-baseline-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/01-fresh-1-baseline-full/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/01-fresh-1-baseline-full/guard.stdout",
+      "bytes": 661,
+      "sha256": "9e01cbedd00bf43af5eed4a387a404259dd743235e632e9102038e19492752d8",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/01-fresh-1-baseline-full/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/01-fresh-1-baseline-full/receipt.json",
+      "bytes": 709,
+      "sha256": "e9c3682d167ee662d8147765c11a18f99ff0e929f8ae65aa2fc146146a129ff7",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/01-fresh-1-baseline-full/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/01-fresh-1-baseline-full/stage.json",
+      "bytes": 1920,
+      "sha256": "b9b6bf6b0257689b85a343e8f7a25ec8baa94aeebc8d2555fbebfaf7785a3b65",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/01-fresh-1-baseline-full/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/01-fresh-1-baseline-full/stderr",
+      "bytes": 106,
+      "sha256": "67596440898327a7af569a76fd7cb8b90d94195099d1b517e79f610666a3b23a",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/01-fresh-1-baseline-full/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/01-fresh-1-baseline-full/stdout",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/01-fresh-1-baseline-full/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/database-after.json",
+      "bytes": 353,
+      "sha256": "29f2d74bfcc4993f3e48cc214e5ef435daf7abbd3cdff03579201f359b96e4f1",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/database-after.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/database-before.json",
+      "bytes": 353,
+      "sha256": "29f2d74bfcc4993f3e48cc214e5ef435daf7abbd3cdff03579201f359b96e4f1",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/database-before.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/environment.json",
+      "bytes": 378,
+      "sha256": "4ca17a1158c74382d98856d170354acefb806ce33e1904eec9fc55d11bdbe9f0",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/environment.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/expanded-stages.json",
+      "bytes": 8209,
+      "sha256": "514a9d8a71f0903b3e37e9d897799e2ed8ac83e414d10d9ee14d1f0c832ab50c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/expanded-stages.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/inventory-before-summary.json",
+      "bytes": 565979,
+      "sha256": "edfd29b1b87a3200187354f74bc2dfbd9bee9f15cdf956505e84c23540e85bc9",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/inventory-before-summary.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/pre-input-normalized-facts.json",
+      "bytes": 23350,
+      "sha256": "ec933164dbe9c766a621356ae49c6339f3703bdd290e1f5d45d9b623959057f9",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/pre-input-normalized-facts.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/s05-scratch-before.json",
+      "bytes": 563174,
+      "sha256": "def0d39beb9a79bb6166875df09cf23e8c1956a41a8065be54d8d11fccf09c58",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/s05-scratch-before.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/summary.json",
+      "bytes": 2092,
+      "sha256": "e22347072efc88edcac21d936b5ba0c8f052f41f54a6233bac82de0075e57726",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/summary.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/target-cache-after.json",
+      "bytes": 128,
+      "sha256": "4ce67d3b8c2ac79548b02c59689d2efb03700fab8c658f140c050d802601ff02",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/target-cache-after.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt01/target-cache-before.json",
+      "bytes": 167,
+      "sha256": "0525ce50e38b2fe4a84c711561e483880aed3483f8e63eceeff41be279c1c7d2",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration01/target-cache-before.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/01-fresh-1-baseline-full/checked-stage.json",
+      "bytes": 2012,
+      "sha256": "61b0eb13c677ec5d061d826fd84d6b11ec1b2486fd06f64c9b57ea9475f894f5",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/01-fresh-1-baseline-full/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/01-fresh-1-baseline-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/01-fresh-1-baseline-full/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/01-fresh-1-baseline-full/guard.stdout",
+      "bytes": 622,
+      "sha256": "70afb1c3c0f02f94ea93a02ecb6e55f2a202cbfc5067bc3bb304a85264396018",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/01-fresh-1-baseline-full/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/01-fresh-1-baseline-full/receipt.json",
+      "bytes": 670,
+      "sha256": "b28a661c196ae28f775a1c009666fbfcbc7650bf95a208947ab3d8e9702d6e52",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/01-fresh-1-baseline-full/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/01-fresh-1-baseline-full/stage.json",
+      "bytes": 1879,
+      "sha256": "98f590705e9553776231dcdbe82735121b7cade7804d68360292e32dfd2ce763",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/01-fresh-1-baseline-full/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/01-fresh-1-baseline-full/stderr",
+      "bytes": 777,
+      "sha256": "7dd6a0a8e802a0b762659aa4db7054c87df929f11a1e3b2680fda81bccc7dc92",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/01-fresh-1-baseline-full/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/01-fresh-1-baseline-full/stdout",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/01-fresh-1-baseline-full/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/02-fresh-1-candidate-full/checked-stage.json",
+      "bytes": 2116,
+      "sha256": "90fc57e71f655cd6fd72aa350280b124ef012f3acc8a6dda1479e334e8e500a6",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/02-fresh-1-candidate-full/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/02-fresh-1-candidate-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/02-fresh-1-candidate-full/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/02-fresh-1-candidate-full/guard.stdout",
+      "bytes": 649,
+      "sha256": "006d7479e81ff3e3e6f4059bc4479801dcb7af814ddcda81547d62d4d27d7f8b",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/02-fresh-1-candidate-full/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/02-fresh-1-candidate-full/receipt.json",
+      "bytes": 705,
+      "sha256": "c712098ef86fd2f9f7fe84dc2564d940eac928235af58c907c790e385ced8846",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/02-fresh-1-candidate-full/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/02-fresh-1-candidate-full/stage.json",
+      "bytes": 1983,
+      "sha256": "45593986acca9971b8bb06fcd527b3bff26f1986827004a00515da5042c5e0c7",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/02-fresh-1-candidate-full/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/02-fresh-1-candidate-full/stderr",
+      "bytes": 777,
+      "sha256": "fa591732f584e0e9a71f0fb681afe813a07c70a112ef05861bf7c8137915e3e9",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/02-fresh-1-candidate-full/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/02-fresh-1-candidate-full/stdout",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/02-fresh-1-candidate-full/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/03-fresh-1-compact/checked-stage.json",
+      "bytes": 2090,
+      "sha256": "3a31197b9def0cbac52139e980a9112b617e3d9591a98d6396a00c8ed8957a63",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/03-fresh-1-compact/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/03-fresh-1-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/03-fresh-1-compact/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/03-fresh-1-compact/guard.stdout",
+      "bytes": 638,
+      "sha256": "9f4337078a97197e7664daead76c2ca5811f6bd7fde09795cd69dd6d994e1282",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/03-fresh-1-compact/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/03-fresh-1-compact/receipt.json",
+      "bytes": 694,
+      "sha256": "52703300a5c0cf4af16798b8399cc1baa77f47cc880e4a9574a4b62736a4ce60",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/03-fresh-1-compact/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/03-fresh-1-compact/stage.json",
+      "bytes": 1957,
+      "sha256": "a1feb91817fb6ed1af3e20256eee5256e3c46891dd2b25b13a4e92dce97cc30b",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/03-fresh-1-compact/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/03-fresh-1-compact/stderr",
+      "bytes": 777,
+      "sha256": "f085888c0b3a6fde62bb8f0cfb1a5bb8a7b9489ad6a77c88e3d709cb60acfa36",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/03-fresh-1-compact/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/03-fresh-1-compact/stdout",
+      "bytes": 32300,
+      "sha256": "00a7e11e4b88a1d24a0cbd09515ae0690deecf9055fc959497d644ee81563aac",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/03-fresh-1-compact/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/04-fresh-1-readable/checked-stage.json",
+      "bytes": 2098,
+      "sha256": "f0e9ef509c58bd176f282123b4f682ca87d3ae3f17347d6a10dbce1c2450c2a7",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/04-fresh-1-readable/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/04-fresh-1-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/04-fresh-1-readable/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/04-fresh-1-readable/guard.stdout",
+      "bytes": 641,
+      "sha256": "fe01676af8d72aa57b5814890f95703ce55dbc45bbe163d43981a60a03a74559",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/04-fresh-1-readable/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/04-fresh-1-readable/receipt.json",
+      "bytes": 697,
+      "sha256": "5c26ceb3f8827c2642ccaf385258e2eebf2850bd6b560c8442ce4593953ae71f",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/04-fresh-1-readable/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/04-fresh-1-readable/stage.json",
+      "bytes": 1965,
+      "sha256": "800c7ba577d2856db32c604e47632e19f0d156253325bb3235cadca8591aba39",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/04-fresh-1-readable/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/04-fresh-1-readable/stderr",
+      "bytes": 777,
+      "sha256": "a70c30eed0fda9833e983231097de0f7db303e4541ab4aac6c9026d5f5776ffa",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/04-fresh-1-readable/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/04-fresh-1-readable/stdout",
+      "bytes": 10681,
+      "sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/04-fresh-1-readable/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/05-fresh-2-readable/checked-stage.json",
+      "bytes": 2097,
+      "sha256": "0ff8560a8b0405701012970b8bb3d16341907dd3550296a9096f74855c157eae",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/05-fresh-2-readable/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/05-fresh-2-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/05-fresh-2-readable/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/05-fresh-2-readable/guard.stdout",
+      "bytes": 640,
+      "sha256": "7b8177fb757ca75c9329a0342ab38d983356a323d4761527d1372ed05a5b8dc2",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/05-fresh-2-readable/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/05-fresh-2-readable/receipt.json",
+      "bytes": 696,
+      "sha256": "e8dd960531e8fae95195c6d77c3bc707b337b5f863bec79d7bed5079482f27d3",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/05-fresh-2-readable/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/05-fresh-2-readable/stage.json",
+      "bytes": 1964,
+      "sha256": "73ec1b781465fd2875f920021650203ea8fcfebea991d032c648f48778abc507",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/05-fresh-2-readable/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/05-fresh-2-readable/stderr",
+      "bytes": 777,
+      "sha256": "5cf5547ba2035e8b807d6c136a2c16fd47b06dfea5ff576e3d3c8b06ce6baf50",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/05-fresh-2-readable/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/05-fresh-2-readable/stdout",
+      "bytes": 10681,
+      "sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/05-fresh-2-readable/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/06-fresh-2-compact/checked-stage.json",
+      "bytes": 2089,
+      "sha256": "5a272b85dc78b6fbedf0cf0ae6e54829705f5acc646e68f4026d15574248bd36",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/06-fresh-2-compact/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/06-fresh-2-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/06-fresh-2-compact/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/06-fresh-2-compact/guard.stdout",
+      "bytes": 637,
+      "sha256": "a29ef7f6fad6239c6bfee5c34a19e24fff35a8addbfc45a1668e971713c79eb3",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/06-fresh-2-compact/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/06-fresh-2-compact/receipt.json",
+      "bytes": 693,
+      "sha256": "a0c66f9018c303eaebdc61354077b92a91de7bac4298405cc7c235af50bbc170",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/06-fresh-2-compact/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/06-fresh-2-compact/stage.json",
+      "bytes": 1956,
+      "sha256": "b15670745d5e3d16f77815aa04df8639b27829585a40c68c25a139f1d81b904d",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/06-fresh-2-compact/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/06-fresh-2-compact/stderr",
+      "bytes": 777,
+      "sha256": "af3297e4aff8af76e0570798dc02b08d1453ce212be2cbb54db6958075798933",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/06-fresh-2-compact/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/06-fresh-2-compact/stdout",
+      "bytes": 32300,
+      "sha256": "00a7e11e4b88a1d24a0cbd09515ae0690deecf9055fc959497d644ee81563aac",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/06-fresh-2-compact/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/07-fresh-2-candidate-full/checked-stage.json",
+      "bytes": 2115,
+      "sha256": "4486e6d0e30ec93c002a0581921c322c5781016f44b1b390b981d692bd5bcf5c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/07-fresh-2-candidate-full/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/07-fresh-2-candidate-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/07-fresh-2-candidate-full/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/07-fresh-2-candidate-full/guard.stdout",
+      "bytes": 648,
+      "sha256": "386ff1011a28122d5b1571f3d684e7c3f56bb709e64b7f386cc05932b0473923",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/07-fresh-2-candidate-full/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/07-fresh-2-candidate-full/receipt.json",
+      "bytes": 704,
+      "sha256": "79e12d85eae175da619bceaab8f23cb7c8c381b0328140b81704f98c05a55ef8",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/07-fresh-2-candidate-full/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/07-fresh-2-candidate-full/stage.json",
+      "bytes": 1982,
+      "sha256": "64112bea2acdd18981e9de5d99bed871f9db936cdc8623e0277880f0102bb6c3",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/07-fresh-2-candidate-full/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/07-fresh-2-candidate-full/stderr",
+      "bytes": 777,
+      "sha256": "9439845737042d927a507fcb4f2548f5b6ff65de2a2cba32952638e729959735",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/07-fresh-2-candidate-full/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/07-fresh-2-candidate-full/stdout",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/07-fresh-2-candidate-full/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/08-fresh-2-baseline-full/checked-stage.json",
+      "bytes": 2013,
+      "sha256": "d1cfba557ca50af3635af7b6de18701c171416e792bab990094b1ed31df28ea1",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/08-fresh-2-baseline-full/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/08-fresh-2-baseline-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/08-fresh-2-baseline-full/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/08-fresh-2-baseline-full/guard.stdout",
+      "bytes": 623,
+      "sha256": "00dd4380fac1934bcfcdaf250cf8c2786460a2f8079ce4df9d91bbc01f3aa14b",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/08-fresh-2-baseline-full/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/08-fresh-2-baseline-full/receipt.json",
+      "bytes": 671,
+      "sha256": "a59e42192847585ae7a400bc9deb2927ca47cb153ee61bf8df58a2b28878dc5f",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/08-fresh-2-baseline-full/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/08-fresh-2-baseline-full/stage.json",
+      "bytes": 1880,
+      "sha256": "d40638eb7d72a523b095ca6b8d322cd4e52743cc6f27f6db7c84bfcc31ac80d8",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/08-fresh-2-baseline-full/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/08-fresh-2-baseline-full/stderr",
+      "bytes": 777,
+      "sha256": "d05fd8366f194539ce0f1dc4e7906b1bf656bc7992198090d06d48568a5fa855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/08-fresh-2-baseline-full/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/08-fresh-2-baseline-full/stdout",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/08-fresh-2-baseline-full/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/09-fresh-3-compact/checked-stage.json",
+      "bytes": 2089,
+      "sha256": "2cb973ad66a6cf837e8a7a8b220c304a2aba43117d560f3a831da7a6612dba6c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/09-fresh-3-compact/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/09-fresh-3-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/09-fresh-3-compact/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/09-fresh-3-compact/guard.stdout",
+      "bytes": 637,
+      "sha256": "2fa0705a52b4b93dc1bb6f337397ea898bf69bfc729ff792919baffc08c377b2",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/09-fresh-3-compact/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/09-fresh-3-compact/receipt.json",
+      "bytes": 693,
+      "sha256": "09e5b7f5148d2c6c81806450e36292a8f718c5e68c8b9ccd4bab5b3bedd3ed85",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/09-fresh-3-compact/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/09-fresh-3-compact/stage.json",
+      "bytes": 1956,
+      "sha256": "750b349606e9b79855a4e7ebc6f6da9cfcfbd93ec97f25e6bddb79ea9abc2c20",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/09-fresh-3-compact/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/09-fresh-3-compact/stderr",
+      "bytes": 777,
+      "sha256": "85814dc8934901ac24b0d9e3cbdfef3f9c00954ffd895f2654ec6bae4d469e84",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/09-fresh-3-compact/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/09-fresh-3-compact/stdout",
+      "bytes": 32300,
+      "sha256": "00a7e11e4b88a1d24a0cbd09515ae0690deecf9055fc959497d644ee81563aac",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/09-fresh-3-compact/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/10-fresh-3-baseline-full/checked-stage.json",
+      "bytes": 2014,
+      "sha256": "67d475ef9253b0f538bcf61fbc1319b90aad30a9bd7aa27cbdfffe00fff6bfa8",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/10-fresh-3-baseline-full/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/10-fresh-3-baseline-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/10-fresh-3-baseline-full/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/10-fresh-3-baseline-full/guard.stdout",
+      "bytes": 623,
+      "sha256": "0b603588f28bb850bbaaf60c0612c85384dfdf5bd2f5729687172888f2aa7797",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/10-fresh-3-baseline-full/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/10-fresh-3-baseline-full/receipt.json",
+      "bytes": 671,
+      "sha256": "8ef70372c917988c6f49baf1e47b5bd0bd9c03c070f5c7ef18b0931488da941c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/10-fresh-3-baseline-full/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/10-fresh-3-baseline-full/stage.json",
+      "bytes": 1881,
+      "sha256": "2ea65d750592472a8962d1b63d753f560e776b6027d2b27d3c0fbad426c7f43a",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/10-fresh-3-baseline-full/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/10-fresh-3-baseline-full/stderr",
+      "bytes": 777,
+      "sha256": "c0df7c90e509ee6b9b3cae59a966577c71d63c6ec8b981a38e30ae3712fdfd15",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/10-fresh-3-baseline-full/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/10-fresh-3-baseline-full/stdout",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/10-fresh-3-baseline-full/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/11-fresh-3-readable/checked-stage.json",
+      "bytes": 2098,
+      "sha256": "5951cad24a4e328e27446bdbab8d4800913e6fde176d4f953ff228fee215f12e",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/11-fresh-3-readable/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/11-fresh-3-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/11-fresh-3-readable/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/11-fresh-3-readable/guard.stdout",
+      "bytes": 640,
+      "sha256": "a99ec934c719c19525dbce2faa8fedc18909f342b8f291f79cf30297a8114d67",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/11-fresh-3-readable/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/11-fresh-3-readable/receipt.json",
+      "bytes": 696,
+      "sha256": "7ed5e31a4883c54ff2996e3875003c03263aee82065cd01c9525f1faff85b914",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/11-fresh-3-readable/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/11-fresh-3-readable/stage.json",
+      "bytes": 1965,
+      "sha256": "d04de2d1554dbe6f41ce2b5cb3a6d3468043f01f425d5bfbc478d142e424914b",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/11-fresh-3-readable/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/11-fresh-3-readable/stderr",
+      "bytes": 777,
+      "sha256": "477f7d19974b079b5d42d056be297ead8bb198df7f52e5be400b5478b87d7b9a",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/11-fresh-3-readable/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/11-fresh-3-readable/stdout",
+      "bytes": 10681,
+      "sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/11-fresh-3-readable/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/12-fresh-3-candidate-full/checked-stage.json",
+      "bytes": 2116,
+      "sha256": "d507c7b1b713eb1719f1321259a39ebb75e88e98608e6a779a8be5e15d568d22",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/12-fresh-3-candidate-full/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/12-fresh-3-candidate-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/12-fresh-3-candidate-full/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/12-fresh-3-candidate-full/guard.stdout",
+      "bytes": 648,
+      "sha256": "d1e45df22a220ec0f1eca1c3bdbfe1ac5303f4977cdd30c63fdc7f4735a969f0",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/12-fresh-3-candidate-full/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/12-fresh-3-candidate-full/receipt.json",
+      "bytes": 704,
+      "sha256": "ea60bd4bf7058948433b99cf84e91db551d85592ea9b53ea93254fbea68f1870",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/12-fresh-3-candidate-full/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/12-fresh-3-candidate-full/stage.json",
+      "bytes": 1983,
+      "sha256": "e8ca3346f91cac1d657d180edfec4b8b94105265c329b44e885aff9c3b267ede",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/12-fresh-3-candidate-full/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/12-fresh-3-candidate-full/stderr",
+      "bytes": 777,
+      "sha256": "7d28a31de778514f62431e8ffbc069e38b052bd1f9159bbf623449b62c9c7ffe",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/12-fresh-3-candidate-full/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/12-fresh-3-candidate-full/stdout",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/12-fresh-3-candidate-full/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/database-after.json",
+      "bytes": 353,
+      "sha256": "29f2d74bfcc4993f3e48cc214e5ef435daf7abbd3cdff03579201f359b96e4f1",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/database-after.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/database-before.json",
+      "bytes": 353,
+      "sha256": "29f2d74bfcc4993f3e48cc214e5ef435daf7abbd3cdff03579201f359b96e4f1",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/database-before.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/environment.json",
+      "bytes": 378,
+      "sha256": "f62cae5e5c3ecd92dc1d39ceb1e464a9ab45ca7593ad5d575b794ad84a245abd",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/environment.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/expanded-stages.json",
+      "bytes": 8209,
+      "sha256": "c68c8e16b843752d3be24be3410abba66471ace63cf187a38fa7c1c8c905d642",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/expanded-stages.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/fresh-phase-budget.json",
+      "bytes": 1213,
+      "sha256": "1ce5b5d9c55412d00655e1c6deb27384c04bfd12ed1ca5763b67ad76856f64fe",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/fresh-phase-budget.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/inventory-before-summary.json",
+      "bytes": 599161,
+      "sha256": "930b95252c46c451c5bf2aab9f797dce9beca13a8d2e8be6e45a190c1e1ae120",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/inventory-before-summary.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/numerical-analysis.json",
+      "bytes": 42765,
+      "sha256": "e1e823ed25b5484c920739c1f7a4537b449cd9bcc244cd32f84d012930e0d78a",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/numerical-analysis.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/pre-input-normalized-facts.json",
+      "bytes": 23350,
+      "sha256": "ec933164dbe9c766a621356ae49c6339f3703bdd290e1f5d45d9b623959057f9",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/pre-input-normalized-facts.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/s05-scratch-before.json",
+      "bytes": 566850,
+      "sha256": "9875a30aa71f9a8895e6a14d8474f34911d212f0b797449223828806058ad009",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/s05-scratch-before.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/checked-stage.json",
+      "bytes": 2809,
+      "sha256": "be57fae68ba07fca103bfb19050e38f0c12615af60839bf2c933ff52d2bb4ff1",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/detail-0.json",
+      "bytes": 9753,
+      "sha256": "1c34082bc8922c8cd2c4bde8250d58c6bca9b3f063e18a20c118b2222a021a32",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/detail-0.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/detail-1.json",
+      "bytes": 9716,
+      "sha256": "d2b3bda48bcf5a7beaf9aeec6c083f1f4b7790446bb298279282bdae9076249e",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/detail-1.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/detail-2.json",
+      "bytes": 9348,
+      "sha256": "0c0d56f93f2d6832755506767670114a107b4fd242aee8ebcc907029831513ba",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/detail-2.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/detail-3.json",
+      "bytes": 9100,
+      "sha256": "5164e913528d9dbb322b9783703d3375faa15463c582f21cc369739cc703d52b",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/detail-3.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/detail-4.json",
+      "bytes": 8574,
+      "sha256": "ff36f8283e529145a8c1a9550842716e5431882ec1a9a825214b36d757563356",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/detail-4.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/guard.stdout",
+      "bytes": 730,
+      "sha256": "b46ec0d41a418b6e81f691607a2f8d31877090497d2d0b0edf26b2baabc76d71",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/receipt.json",
+      "bytes": 778,
+      "sha256": "567f6ebb133feec4e93925d1da6fdc53a78a8f24ddb8597e8702dc424cdf4d13",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/stage.json",
+      "bytes": 2225,
+      "sha256": "e7043492cd6c8b1ccabbc6f27addc461fc2b0eb4e6e5fcbb9d9d83c2a81bd0c9",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/stderr",
+      "bytes": 777,
+      "sha256": "ecb86f2476c9d6111f51d1d282c57cb905154670c3136d21a50e916931f52725",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/semantic/stdout",
+      "bytes": 385,
+      "sha256": "a9e6c063f1e43303da86dd426a2ee1f410e1aa8a9b24608b2906982a617dd288",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/summary.json",
+      "bytes": 1695,
+      "sha256": "f8861323b8d151294ca0ecb636a0bf54cddd67a32729c8ce07f942b110843c79",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/summary.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/target-cache-after.json",
+      "bytes": 128,
+      "sha256": "4ce67d3b8c2ac79548b02c59689d2efb03700fab8c658f140c050d802601ff02",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/target-cache-after.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/target-cache-before.json",
+      "bytes": 167,
+      "sha256": "0525ce50e38b2fe4a84c711561e483880aed3483f8e63eceeff41be279c1c7d2",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/target-cache-before.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-compact/checked-stage.json",
+      "bytes": 63097,
+      "sha256": "21a93a6c79a8945db4e266d3d01a4f0c8f330f25aad66a8cd3aac740875ace6a",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-compact/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-compact/farvi-all-wire.txt",
+      "bytes": 32300,
+      "sha256": "00a7e11e4b88a1d24a0cbd09515ae0690deecf9055fc959497d644ee81563aac",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-compact/farvi-all-wire.txt",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-compact/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-compact/guard.stdout",
+      "bytes": 760,
+      "sha256": "8c1a495b1f58cf22a49193dcf057d4fff106341f43395167dfbf33209885da46",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-compact/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-compact/receipt.json",
+      "bytes": 816,
+      "sha256": "42f2504348e20889649fae029858d431ca272009a682dc687f12c79fcefd2acc",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-compact/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-compact/stage.json",
+      "bytes": 2331,
+      "sha256": "c5e910b6a30b38da8689d6ba51d92ca99c7246f4579ce22f2e16cd78aa3381cd",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-compact/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-compact/stderr",
+      "bytes": 777,
+      "sha256": "2c29b402200f5689db85292947b35274b4fc77698ddad2fd31ea989022170363",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-compact/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-compact/stdout",
+      "bytes": 40926,
+      "sha256": "c9db6eae0c16cb41ce34261e74bb788481f12c99e4296753e0121aa5aab813b2",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-compact/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-full/checked-stage.json",
+      "bytes": 62915,
+      "sha256": "55be05b10b1a93ac31f40268923ee3cf6110fe3dcb5ab0bc1e7c957bb0f9481b",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-full/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-full/farvi-all-wire.txt",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-full/farvi-all-wire.txt",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-full/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-full/guard.stdout",
+      "bytes": 748,
+      "sha256": "c26b82ce88584482a93b112026632097cc19e950a01e688c658f8bc6ee74a7b7",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-full/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-full/receipt.json",
+      "bytes": 804,
+      "sha256": "7af0bf4787fa5add29ce3a8b665bf1a7f9325a70f0e8dafff9c7e63028dcee74",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-full/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-full/stage.json",
+      "bytes": 2298,
+      "sha256": "601c02425216f48c4b4af563beb1fad5fee1e5869766f3ee8a1f7a7707b6104c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-full/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-full/stderr",
+      "bytes": 777,
+      "sha256": "4c1c9a33f359f00fa361026b0731ddd2ff63b6c47a68a48a7bac007ef5b92ac1",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-full/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-full/stdout",
+      "bytes": 40777,
+      "sha256": "11fa9e658ffdb6eef78cc7d3b08abae02d0119a06971f9b1290e285c4b9292d3",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-full/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-readable/checked-stage.json",
+      "bytes": 63097,
+      "sha256": "df5ce4abf6ff4da1543bce7b7d99d4725198174914a36b8d7d892d4b6d2fd918",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-readable/farvi-all-wire.txt",
+      "bytes": 10681,
+      "sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/farvi-all-wire.txt",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-readable/guard.stdout",
+      "bytes": 764,
+      "sha256": "c28acb28f52b7df996c5b0fb6a55e3ddc144e8b6d3978dac117c90023a96bd8c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-readable/receipt.json",
+      "bytes": 820,
+      "sha256": "feeade0c3b5bb410f9e32458a6ff3d3aa18c5e73584b534e9a9cf222f9c96e4b",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-readable/stage.json",
+      "bytes": 2342,
+      "sha256": "b1f4180b841e845a8bfef09b0e6e665918d2197a9a732d2da1421ddc4f8410d4",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-readable/stderr",
+      "bytes": 777,
+      "sha256": "b590f4c333b10985d0549060fba1482126a9071e74b0dc2c385e939436e450d6",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-1-readable/stdout",
+      "bytes": 40915,
+      "sha256": "78a310c8ad850b15ac125627946aa20e01a8f1d1f717f7c58ba480726aa3a146",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-1-readable/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-compact/checked-stage.json",
+      "bytes": 63110,
+      "sha256": "9feba30caf4ead4fdfb4906c60343f2a37d9131f23202497859e7689acc99cc5",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-compact/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-compact/farvi-all-wire.txt",
+      "bytes": 32300,
+      "sha256": "00a7e11e4b88a1d24a0cbd09515ae0690deecf9055fc959497d644ee81563aac",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-compact/farvi-all-wire.txt",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-compact/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-compact/guard.stdout",
+      "bytes": 760,
+      "sha256": "256082768c156f853e5a37ce738430912243bad6e6e8fbbf3e6fc1f3f355e8da",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-compact/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-compact/receipt.json",
+      "bytes": 816,
+      "sha256": "fc17c0295b2a30d5d4cac665295f17ed87de4cbe45d9aa3e97089e3c36bdd6f8",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-compact/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-compact/stage.json",
+      "bytes": 2331,
+      "sha256": "3b2ed6d461749c0dd0df58326d8cdb7db822666da723d390be4db1210c3d65b1",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-compact/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-compact/stderr",
+      "bytes": 777,
+      "sha256": "4d91f23b67a0cf38ea64c5e70f2cf0413251bc33e12a24e6ff1ee497dfa83daa",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-compact/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-compact/stdout",
+      "bytes": 40939,
+      "sha256": "2477fec3d7cc3266ffb1ec5bac6d76cde8729fcb4f7804e3e8288d8d06cc69e4",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-compact/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-full/checked-stage.json",
+      "bytes": 62896,
+      "sha256": "ac9f91a9ea23d6b9238df6c5009c353c3bc2c34bd46e73493c895e488cb34d2b",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-full/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-full/farvi-all-wire.txt",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-full/farvi-all-wire.txt",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-full/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-full/guard.stdout",
+      "bytes": 748,
+      "sha256": "f910d4eaed674a1cc9ad534cfd70f19ad6c3554b1c17dc59b554e88c57e5cf82",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-full/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-full/receipt.json",
+      "bytes": 804,
+      "sha256": "be3d3ca21d51dcbd92645efdf4048e00a525397c7e14d9fc570f75cae4150f38",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-full/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-full/stage.json",
+      "bytes": 2298,
+      "sha256": "73e3e9651d8d3ccad564562e94182fe7a2d7f78ae493d9c40346c55b6596dd86",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-full/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-full/stderr",
+      "bytes": 777,
+      "sha256": "cda6a76116a07c1402d8c3cc488e38c3cbf3e39814f4a52d58ab4a126f7f7b6f",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-full/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-full/stdout",
+      "bytes": 40758,
+      "sha256": "e74dfd9d1958f470deae051d0f900b72f437aed648b24a2db3a6a32edfdd944f",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-full/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-readable/checked-stage.json",
+      "bytes": 63084,
+      "sha256": "45083f14fd3cdcd306ef3effe693d086672e0045d4e0b8580c8259981848d222",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-readable/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-readable/farvi-all-wire.txt",
+      "bytes": 10681,
+      "sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-readable/farvi-all-wire.txt",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-readable/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-readable/guard.stdout",
+      "bytes": 764,
+      "sha256": "332de233819dbb0cf35eae5dde395150d67bdc21c3705582c8a44b14bab8b697",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-readable/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-readable/receipt.json",
+      "bytes": 820,
+      "sha256": "1dd6e05d605276ac95678a3572c2968e33691dfe12399c14fd0b1f76abccf791",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-readable/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-readable/stage.json",
+      "bytes": 2342,
+      "sha256": "c7228a3915eb60f088787d51449ebb99903c0b6eb9668db1416782992d9c6c7d",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-readable/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-readable/stderr",
+      "bytes": 777,
+      "sha256": "3cde73cd3edfdbd39e926b85711876bb95e8037e3d24acd86cbf6109f59b5554",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-readable/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-2-readable/stdout",
+      "bytes": 40902,
+      "sha256": "a602f2a7f66eda48dd55f26773f7e3ae4b3c1ed32ff9fe9c5ff3998c8d1750bc",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-2-readable/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-compact/checked-stage.json",
+      "bytes": 63079,
+      "sha256": "80816441778c123694c6c056ffe087c95734f0afb9fe884c457aca8d653bdad1",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-compact/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-compact/farvi-all-wire.txt",
+      "bytes": 32300,
+      "sha256": "00a7e11e4b88a1d24a0cbd09515ae0690deecf9055fc959497d644ee81563aac",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-compact/farvi-all-wire.txt",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-compact/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-compact/guard.stdout",
+      "bytes": 759,
+      "sha256": "316036d2c730851b1f570c1ca3b697e19b54b9deee599a9ed28de94ea6eaece7",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-compact/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-compact/receipt.json",
+      "bytes": 815,
+      "sha256": "86c43dcb92e147a7190d87951ed69e1cc4732fe5ab38f7ef14878ff1d3246be8",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-compact/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-compact/stage.json",
+      "bytes": 2330,
+      "sha256": "dc4b13a37dde8578d39ff7cfff9253b4c62e9b193b1ce08639ca6c948980f4f3",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-compact/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-compact/stderr",
+      "bytes": 777,
+      "sha256": "64dfa843f8d21ab4742b10e98b43420e0f23f9cad02d75c7a8da2ca7e855f294",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-compact/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-compact/stdout",
+      "bytes": 40909,
+      "sha256": "45208a627e24c0b6060c4d5a056643f12ca3759cba44712a81a644527fe7fa6e",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-compact/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-full/checked-stage.json",
+      "bytes": 62903,
+      "sha256": "966323195fd61a3e8bc710ea3bf8b4975985786a1c64c317c634bb3d519aab42",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-full/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-full/farvi-all-wire.txt",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-full/farvi-all-wire.txt",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-full/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-full/guard.stdout",
+      "bytes": 748,
+      "sha256": "9e092d59d23c3a2db9637c7dc7f015b0af0ce76a0826d5a78fccd38e83d3f5c6",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-full/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-full/receipt.json",
+      "bytes": 804,
+      "sha256": "5ec8295e504a6fafa357efdedf7091ff1a58bc0438b9ca0ae02fb55ac194a0ce",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-full/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-full/stage.json",
+      "bytes": 2298,
+      "sha256": "8315ea1a98dce46d9b8d266a32b6a10ea9a03eb66d0333d878d54d4d52f3bb10",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-full/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-full/stderr",
+      "bytes": 777,
+      "sha256": "8f0f896be4d9d54609e0bd4bdbaea5495e37e5d2731a4e6dea47ddaf241f0220",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-full/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-full/stdout",
+      "bytes": 40765,
+      "sha256": "e5d80ed1dbe006b51b87175160bb7474eec85a8abe30a3c943f7113401d7e691",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-full/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-readable/checked-stage.json",
+      "bytes": 63064,
+      "sha256": "4f476d1fafe08493f116b02dfb9cc1138d212e244c5286872593f65195d404f5",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-readable/checked-stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-readable/farvi-all-wire.txt",
+      "bytes": 10681,
+      "sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-readable/farvi-all-wire.txt",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-readable/guard.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-readable/guard.stdout",
+      "bytes": 764,
+      "sha256": "83f023f34c4da038870c30520c75609236365231119b3d2eed270471c14cbb2d",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-readable/guard.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-readable/receipt.json",
+      "bytes": 820,
+      "sha256": "8df23135e6056c83c70f9ba8914a8dd6233bc59ca22bea50a2d88f61c92c6888",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-readable/receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-readable/stage.json",
+      "bytes": 2342,
+      "sha256": "877650841aae54fecc0458559e22bb765f9bd94837324d8d61cade2301dfc59c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-readable/stage.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-readable/stderr",
+      "bytes": 777,
+      "sha256": "965b64b6f611452441446418841d242669d6600a7d6d62b5d12219a5552a55ff",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-readable/stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-attempt02/warm-3-readable/stdout",
+      "bytes": 40882,
+      "sha256": "0b3c05e77146fc4be8866a407a4cfe48363d277eba1a93e2415df5a777beafb2",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/warm-3-readable/stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/config.toml",
+      "bytes": 228,
+      "sha256": "10f82807fdf2bcd570646a1166e465afeb423b9ac1407dc9d7258874e73e3418",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/input-provenance.json",
+      "bytes": 296,
+      "sha256": "670ba27722c709fe9c092eae8a8c3d621a295dc3fe91ed09b190427f53360c40",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/input-provenance.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/manifest.json",
+      "bytes": 669,
+      "sha256": "01d3885c3623e047f10481a207375af81f31fba1e3b2868ac95cf88e57ca78d4",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/manifest.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/packs/la-lojban/release.json",
+      "bytes": 4995,
+      "sha256": "7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/la-lojban/release.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/packs/la-lojban/seal.json",
+      "bytes": 474,
+      "sha256": "7c36e2fc7ddf2bac3652071a98858d05981f675004e04283f53dfd11d1d92ed3",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/la-lojban/seal.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/packs/lensisku-jbotci/release.json",
+      "bytes": 8417,
+      "sha256": "5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/lensisku-jbotci/release.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/packs/lensisku-jbotci/seal.json",
+      "bytes": 603,
+      "sha256": "7211e26c78e6a1a8e4b809a239ad9ed564e5bb5f451c82ffa7a11a9f3e121ef3",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/lensisku-jbotci/seal.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/packs/llg/release.json",
+      "bytes": 10174,
+      "sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/llg/release.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/packs/llg/seal.json",
+      "bytes": 938,
+      "sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/llg/seal.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/packs/sutysisku/release.json",
+      "bytes": 9148,
+      "sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/sutysisku/release.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/packs/sutysisku/seal.json",
+      "bytes": 473,
+      "sha256": "d95739ffd58c641cdfd258b116d961548c80b32229588301663897c4b57b0d3d",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/sutysisku/seal.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/readable-context.json",
+      "bytes": 26098,
+      "sha256": "02681953e6fc6d9243bdf7d239cc0ae21ee7cd5ad966b006fba4e78756b466cf",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/readable-context.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/requests.json",
+      "bytes": 13622,
+      "sha256": "e756d5fa27d681edc6f1443cba3e991daab39276ee552cbbbf2436b26d76f4d6",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-inputs/setup-summary.json",
+      "bytes": 2131,
+      "sha256": "8dab1869ff5902cf84aad007276b66922c17d98ace6f450863aa44f521d34ef0",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup-summary.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/configure.receipt.json",
+      "bytes": 617,
+      "sha256": "3a62e408245c9643e1f83d1c3f965cdfd37180fc0b95f02982358704bf71be50",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/configure.receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/configure.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/configure.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/configure.stdout",
+      "bytes": 565,
+      "sha256": "33cee5e891c3c2a4ece6818e2ca319c8159b1be90c79f5f7db5c35f1a92961bb",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/configure.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/install.receipt.json",
+      "bytes": 593,
+      "sha256": "4611126c96b823676ed379bb63593e86867596af8786657e01f6e5b64c79f5ba",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/install.receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/install.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/install.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/install.stdout",
+      "bytes": 2069,
+      "sha256": "0e54a45d00a601d75c0a31219e58782f4e62215ee469940efee3db9352960c8c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/install.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/list.receipt.json",
+      "bytes": 463,
+      "sha256": "ce654272811c78cfdb9152592636ab135258d17c1bb9a3711c73a3730b1d3767",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/list.receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/list.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/list.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/list.stdout",
+      "bytes": 24678,
+      "sha256": "d8b898a9a6556112b91f5008a9b3a856207d36e244327b76ab26cda7ee7dd5c7",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/list.stdout",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/profiles.receipt.json",
+      "bytes": 488,
+      "sha256": "bfc1bf96001a30ea3b1a22aac6728da93f13abd078d82b5969e81ec09f61a87c",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/profiles.receipt.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/profiles.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/profiles.stderr",
+      "original_byte_copy": true
+    },
+    {
+      "path": "tiny-setup/profiles.stdout",
+      "bytes": 715,
+      "sha256": "c55c63b329cdfe0b1468cabfa62aada4910fb0b3e1599b213e0050059900b369",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/setup/profiles.stdout",
+      "original_byte_copy": true
+    }
+  ],
+  "payload_count": 295,
+  "payload_bytes": 5722336,
+  "external_current_pins": [
+    {
+      "path": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+      "bytes": 152624,
+      "sha256": "94a5f331b4d73cbabad9998057013f4d4b6ab2c2d1c3042a1a6e4e56d94773a6"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+      "bytes": 12709648,
+      "sha256": "20b21d4e27310437d643b246ecbaf652b5a4c6e53c407abf6035dca261d1b79c"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "bytes": 8220672,
+      "sha256": "2f756fb3c3d16ac7bfcb2b6ea98b58dbe478de4cb5e066bbfb638697c42fdc73"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/vlajmaji",
+      "bytes": 14077968,
+      "sha256": "5dbdb3c2837199cecd3697d588d7267f41ad3ec50f8f8b118ad143cfcbcb7911"
+    }
+  ],
+  "deferred_full_metadata_pin": {
+    "pin": {
+      "path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "bytes": 219,
+      "sha256": "51a6cb10ad3c7a0dd27a5bc03f207cd1d81774d6cf4cbeb21ee64c75fd17108c"
+    },
+    "observation": "Expected from accepted S04 profile5 report+settled size; NOT currently stat/read/hash-verified. Runner strict leaf/hash only after root launch clearance."
+  },
+  "limits": "No Full ROOT/config/DB current leaf/read/hash/query; sources/binaries/Tiny and accepted small prior reports only. Root exact Full launch review pending. All six S05 rows OPEN; actual current Linux and fresh assembled Arc04 execution/closure remain."
+}

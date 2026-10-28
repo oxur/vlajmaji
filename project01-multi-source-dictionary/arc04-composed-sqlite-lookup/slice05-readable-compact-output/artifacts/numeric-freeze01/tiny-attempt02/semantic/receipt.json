@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+    "semantic-tiny",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+  ],
+  "decision": "passed",
+  "elapsed_seconds": 0.10798520781099796,
+  "exit_code": 0,
+  "log": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/stderr",
+  "maximum_resident_set_size_bytes": 10272768,
+  "pid": 70201,
+  "rss_parse_ok": true,
+  "rss_source": "/usr/bin/time -l maximum resident set size",
+  "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration02/semantic/stdout",
+  "timed_out": false
+}

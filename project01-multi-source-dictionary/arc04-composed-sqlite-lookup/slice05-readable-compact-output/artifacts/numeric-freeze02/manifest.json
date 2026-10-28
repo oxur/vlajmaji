@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "source_head": "1b9038ddc6c45f3ea709a0bdfec64041221e3571",
+  "base_manifest": {
+    "path": "../numeric-freeze01/manifest.json",
+    "sha256": "62cf6c0b93b7b6722241853dfc672badf77f7bd976eb5350d04d658fd83ddaa0",
+    "payloads": 295,
+    "bytes": 5722336,
+    "disposition": "Retain entire immutable original sources/builds/method/Tiny closure/history; packet02 supersedes packet01 execution config/accounting only."
+  },
+  "payloads": [
+    {
+      "path": "numeric-full-preflight-builder02.py",
+      "bytes": 8373,
+      "sha256": "5892a54f60232df2f79fcb8f0e430252f646d380efec705b066193bdfdab8c5a",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-preflight-builder02.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "numeric-full-preflight-builder03.py",
+      "bytes": 9197,
+      "sha256": "9e1deea9bc415eb19f52cf16c75739cd99eb64990273476b1d3311cdbd968a84",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-preflight-builder03.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "numeric-full-preflight02.json",
+      "bytes": 170267,
+      "sha256": "ccaf90dfb06a4648512978fdaebdc9275095db81312bb07a5f9c8abda4269669",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-preflight02.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "numeric-accounting-correction01.json",
+      "bytes": 2298,
+      "sha256": "e9a8072652eae2ec7635e8d5987ad1096b03b67be609635c80fe019051a94254",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-accounting-correction01.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "summary.json",
+      "bytes": 916,
+      "sha256": "774c2803f908e9311e6acdd363c0a37be72221bf8f773d5e94c0d642f21b911a",
+      "provenance": "newly authored CDC interpretation"
+    }
+  ],
+  "payload_count": 5,
+  "payload_bytes": 191051,
+  "limits": "Additive immutable accounting correction only; no DB/model/binary payload, new observation or Full clearance"
+}

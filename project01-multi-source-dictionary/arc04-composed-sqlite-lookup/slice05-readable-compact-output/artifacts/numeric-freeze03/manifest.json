@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "source_head": "1b9038ddc6c45f3ea709a0bdfec64041221e3571",
+  "base_manifest": {
+    "path": "../numeric-freeze02/manifest.json",
+    "sha256": "6a82b0703ca8b4554d5bc926a44b9a47ee05fdb0ada9ab389b75ee3803b891a0",
+    "payloads": 5,
+    "bytes": 191051,
+    "inherits": "unchanged numeric-freeze01 295payloads5722336B/62cf6c0b\u2026daa0"
+  },
+  "payloads": [
+    {
+      "path": "numeric-full-preflight-builder04.py",
+      "bytes": 9228,
+      "sha256": "9bf056b19baf28febe8c3ebeea5a9e3122d38093009dad22e5760ffde558cff2",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-preflight-builder04.py",
+      "original_byte_copy": true
+    },
+    {
+      "path": "numeric-full-preflight03.json",
+      "bytes": 170683,
+      "sha256": "5637fead6ea3cb3eaccba34145362251bea6779e40a2a35c0326ff8a123557a2",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-preflight03.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "numeric-accounting-correction02.json",
+      "bytes": 757,
+      "sha256": "4834f4f45592f0abee9c4fe2d995fdfe028232eb64f55ca9c74f7daa5fcb408d",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-accounting-correction02.json",
+      "original_byte_copy": true
+    },
+    {
+      "path": "summary.json",
+      "bytes": 870,
+      "sha256": "87c9fb0f8c65ae6e5064aa020e324441b37af7f8ad71b5ba2d9c830fcdb23ef3",
+      "provenance": "newly authored CDC interpretation"
+    }
+  ],
+  "payload_count": 4,
+  "payload_bytes": 181538,
+  "limits": "Final additive one-prefix accounting precision only; no database/model/binary payload/new trial"
+}

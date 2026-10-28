@@ -1,0 +1,573 @@
+{
+  "catalog_request": {
+    "operation": "resolve",
+    "target": {
+      "Catalog": {
+        "native_assertion_id": null,
+        "native_entry_id": "farvi",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:llg:gismu",
+            "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+          },
+          "locator": "1"
+        },
+        "release": "llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb",
+        "source": "llg"
+      }
+    }
+  },
+  "expected_assertions": {
+    "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0": {
+      "definition": {
+        "Value": {
+          "language": {
+            "Value": "en"
+          },
+          "markup": "Missing",
+          "text": "synthetic develops"
+        }
+      },
+      "eligibility": "Lexical",
+      "entry": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-entry-0",
+      "id": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+      "language": {
+        "Value": "en"
+      },
+      "native_sense_id": "Missing",
+      "occurrence": {
+        "capture": {
+          "namespace": "captured:lensisku:jbotci:en",
+          "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+        },
+        "locator": "/0"
+      },
+      "source_score": {
+        "Value": "1.2500"
+      },
+      "timestamps": []
+    },
+    "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0": {
+      "definition": {
+        "Value": {
+          "language": {
+            "Value": "en"
+          },
+          "markup": "Missing",
+          "text": "synthetic develops"
+        }
+      },
+      "eligibility": "Lexical",
+      "entry": "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-entry-0",
+      "id": "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+      "language": {
+        "Value": "en"
+      },
+      "native_sense_id": "Missing",
+      "occurrence": {
+        "capture": {
+          "namespace": "captured:lensisku:la-lojban:en",
+          "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+        },
+        "locator": "/0"
+      },
+      "source_score": {
+        "Value": "1.2500"
+      },
+      "timestamps": []
+    },
+    "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6": {
+      "definition": {
+        "Value": {
+          "language": {
+            "Value": "en"
+          },
+          "markup": "Missing",
+          "text": "d"
+        }
+      },
+      "eligibility": "Lexical",
+      "entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+      "id": "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+      "language": {
+        "Value": "en"
+      },
+      "native_sense_id": "Missing",
+      "occurrence": {
+        "capture": {
+          "namespace": "captured:llg:gismu",
+          "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+        },
+        "locator": "1"
+      },
+      "source_score": "Missing",
+      "timestamps": []
+    },
+    "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0": {
+      "definition": {
+        "Value": {
+          "language": {
+            "Value": "en"
+          },
+          "markup": "Missing",
+          "text": "synthetic one"
+        }
+      },
+      "eligibility": "Lexical",
+      "entry": "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-entry-0",
+      "id": "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+      "language": {
+        "Value": "en"
+      },
+      "native_sense_id": "Missing",
+      "occurrence": {
+        "capture": {
+          "namespace": "captured:sutysisku:parsed-en",
+          "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
+        },
+        "locator": "/0"
+      },
+      "source_score": "Missing",
+      "timestamps": []
+    },
+    "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1": {
+      "definition": {
+        "Value": {
+          "language": {
+            "Value": "en"
+          },
+          "markup": "Missing",
+          "text": "synthetic two"
+        }
+      },
+      "eligibility": "Lexical",
+      "entry": "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-entry-1",
+      "id": "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1",
+      "language": {
+        "Value": "en"
+      },
+      "native_sense_id": "Missing",
+      "occurrence": {
+        "capture": {
+          "namespace": "captured:sutysisku:parsed-en",
+          "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
+        },
+        "locator": "/1"
+      },
+      "source_score": "Missing",
+      "timestamps": []
+    }
+  },
+  "expected_catalog_matches": [
+    {
+      "capture": {
+        "namespace": "captured:llg:gismu",
+        "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+      },
+      "contributing_pack_ids": [
+        "llg"
+      ],
+      "entity_id": "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+      "model_release_id": "llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb",
+      "native_assertion_id": null,
+      "native_entry_id": "farvi",
+      "occurrence": "1",
+      "pack_id": "llg",
+      "release_sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146",
+      "role": "assertion",
+      "source_id": "llg"
+    }
+  ],
+  "expected_entries": {
+    "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-entry-0": {
+      "id": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-entry-0",
+      "language": {
+        "Value": "jbo"
+      },
+      "mapped_pos": "Missing",
+      "native_word_class": {
+        "Value": "gismu"
+      },
+      "script": "Missing",
+      "selmaho": "Missing",
+      "source": "lensisku",
+      "spelling": {
+        "Value": "farvi"
+      }
+    },
+    "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-entry-0": {
+      "id": "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-entry-0",
+      "language": {
+        "Value": "jbo"
+      },
+      "mapped_pos": "Missing",
+      "native_word_class": {
+        "Value": "gismu"
+      },
+      "script": "Missing",
+      "selmaho": "Missing",
+      "source": "lensisku",
+      "spelling": {
+        "Value": "farvi"
+      }
+    },
+    "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92": {
+      "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+      "language": {
+        "Value": "jbo"
+      },
+      "mapped_pos": "Missing",
+      "native_word_class": "Missing",
+      "script": "Missing",
+      "selmaho": "Missing",
+      "source": "llg",
+      "spelling": {
+        "Value": "farvi"
+      }
+    },
+    "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-entry-0": {
+      "id": "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-entry-0",
+      "language": {
+        "Value": "jbo"
+      },
+      "mapped_pos": "Missing",
+      "native_word_class": {
+        "Value": "gismu"
+      },
+      "script": "Missing",
+      "selmaho": "Missing",
+      "source": "sutysisku",
+      "spelling": {
+        "Value": "farvi"
+      }
+    },
+    "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-entry-1": {
+      "id": "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-entry-1",
+      "language": {
+        "Value": "jbo"
+      },
+      "mapped_pos": "Missing",
+      "native_word_class": {
+        "Value": "gismu"
+      },
+      "script": "Missing",
+      "selmaho": "Missing",
+      "source": "sutysisku",
+      "spelling": {
+        "Value": "farvi"
+      }
+    },
+    "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-entry-2": {
+      "id": "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-entry-2",
+      "language": {
+        "Value": "jbo"
+      },
+      "mapped_pos": "Missing",
+      "native_word_class": {
+        "Value": "unsupported"
+      },
+      "script": "Missing",
+      "selmaho": "Missing",
+      "source": "sutysisku",
+      "spelling": {
+        "Value": "zoizoizoi"
+      }
+    }
+  },
+  "expected_keys": {
+    "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0": {
+      "assertion_id": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+      "assertion_sha256": "c1cab67c61ec8482ad1ec2f33a70bdc05f6bc249a11b2e686170830efd3a05b6",
+      "contributor_id": "lensisku-user-a4d26868017c0ccffe2efe50944ef4211834660cca834c6e9f86dec6a88246fa",
+      "digest_policy": "entry-assertion-serde-json-v1",
+      "distributor_id": "jbotci",
+      "entry_id": "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-entry-0",
+      "entry_sha256": "67e4a7ba8c7872dbcc0939c7553d7ded92ed411a05e208c43fdc962176104e24",
+      "native_assertion_id": "333",
+      "native_entry_id": null,
+      "occurrence": {
+        "capture": {
+          "namespace": "captured:lensisku:jbotci:en",
+          "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+        },
+        "locator": "/0"
+      },
+      "role": "assertion",
+      "source": "lensisku",
+      "version": 1
+    },
+    "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0": {
+      "assertion_id": "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+      "assertion_sha256": "f3cd623b052e7bdea29029b9096beab094c320fa2bc86199f8f85bbbf5af4867",
+      "contributor_id": "lensisku-user-a4d26868017c0ccffe2efe50944ef4211834660cca834c6e9f86dec6a88246fa",
+      "digest_policy": "entry-assertion-serde-json-v1",
+      "distributor_id": "la-lojban",
+      "entry_id": "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-entry-0",
+      "entry_sha256": "41fb17e9ab96f8065bdc1c26b4f52bbb532b32d9f513c621e5b1b41c551d651f",
+      "native_assertion_id": "333",
+      "native_entry_id": null,
+      "occurrence": {
+        "capture": {
+          "namespace": "captured:lensisku:la-lojban:en",
+          "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+        },
+        "locator": "/0"
+      },
+      "role": "assertion",
+      "source": "lensisku",
+      "version": 1
+    },
+    "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6": {
+      "assertion_id": "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+      "assertion_sha256": "5a5d803b91a72ca4f57a437cc6c5367c45f8bff7b6cfac50f81f3075db59b7ce",
+      "contributor_id": null,
+      "digest_policy": "entry-assertion-serde-json-v1",
+      "distributor_id": null,
+      "entry_id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+      "entry_sha256": "6616f386f916de3028288065ad2f52518a7b268082f387988b41590f1ac61ba1",
+      "native_assertion_id": null,
+      "native_entry_id": "farvi",
+      "occurrence": {
+        "capture": {
+          "namespace": "captured:llg:gismu",
+          "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+        },
+        "locator": "1"
+      },
+      "role": "assertion",
+      "source": "llg",
+      "version": 1
+    },
+    "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0": {
+      "assertion_id": "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+      "assertion_sha256": "87e37142157471d77269716c51fd207cb37dcbcf5b28a80da98ffa589054d8a5",
+      "contributor_id": null,
+      "digest_policy": "entry-assertion-serde-json-v1",
+      "distributor_id": "la-lojban",
+      "entry_id": "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-entry-0",
+      "entry_sha256": "f06afbe8c4b6b99a9b8b011174a3ffe9418892ce53f1ed8c8611b1e3deee32d4",
+      "native_assertion_id": null,
+      "native_entry_id": "farvi",
+      "occurrence": {
+        "capture": {
+          "namespace": "captured:sutysisku:parsed-en",
+          "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
+        },
+        "locator": "/0"
+      },
+      "role": "assertion",
+      "source": "sutysisku",
+      "version": 1
+    },
+    "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1": {
+      "assertion_id": "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1",
+      "assertion_sha256": "32e819fccead236c53db8398a61e8a1302408212b3f0e993f84353adf0f04003",
+      "contributor_id": null,
+      "digest_policy": "entry-assertion-serde-json-v1",
+      "distributor_id": "la-lojban",
+      "entry_id": "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-entry-1",
+      "entry_sha256": "e7c1c3b678ecfa9d44dbfbb829b63ddcc63b8dac73a48cd511005fe6ab4140a4",
+      "native_assertion_id": null,
+      "native_entry_id": "farvi",
+      "occurrence": {
+        "capture": {
+          "namespace": "captured:sutysisku:parsed-en",
+          "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
+        },
+        "locator": "/1"
+      },
+      "role": "assertion",
+      "source": "sutysisku",
+      "version": 1
+    }
+  },
+  "expected_local_entity": {
+    "assertion_ids": [
+      "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6"
+    ],
+    "entry_ids": [
+      "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"
+    ],
+    "evidence": null,
+    "id": "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+    "occurrence": {
+      "capture": {
+        "namespace": "captured:llg:gismu",
+        "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+      },
+      "locator": "1"
+    },
+    "role": "assertion",
+    "source_ids": [
+      "llg"
+    ],
+    "spelling": null
+  },
+  "expected_local_matches": [
+    {
+      "capture": {
+        "namespace": "captured:llg:gismu",
+        "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+      },
+      "contributing_pack_ids": [
+        "llg"
+      ],
+      "entity_id": "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+      "model_release_id": "",
+      "native_assertion_id": null,
+      "native_entry_id": "farvi",
+      "occurrence": "1",
+      "pack_id": "llg",
+      "release_sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146",
+      "role": "assertion",
+      "source_id": "llg"
+    }
+  ],
+  "expected_requested_release": {
+    "accounting": {
+      "input_occurrences": 1,
+      "normalized_occurrences": 1,
+      "query_excluded_occurrences": 0,
+      "unit": "physical-line"
+    },
+    "availability": "Available",
+    "captured_at": "Missing",
+    "captures": [
+      {
+        "namespace": "captured:llg:gismu",
+        "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+      },
+      {
+        "namespace": "captured:llg:notice",
+        "sha256": "b71031347d06acb62eedaf897b5c0d1a7aab9d6ad8cace09659517aa6bbc21b9"
+      }
+    ],
+    "component_id": "llg-component-gismu",
+    "content_notice_licenses": [
+      {
+        "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+      }
+    ],
+    "content_notice_locators": [
+      {
+        "Value": "https://example.invalid/llg/public_domain.txt"
+      }
+    ],
+    "content_notices_count": 1,
+    "diagnostics_count": 0,
+    "distributor_id": null,
+    "distributor_revision": "Missing",
+    "id": "llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb",
+    "normalizer": "vlajmaji-llg-lists",
+    "normalizer_version": "1",
+    "redistribution": "held",
+    "redistribution_evidence": [
+      "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+    ],
+    "schema_version": 1,
+    "selected": true,
+    "time_precision": "Unknown",
+    "upstream_revision": "Missing"
+  },
+  "fixture_scope": "original-four-pack-synthetic-readable",
+  "inputs": [
+    {
+      "pack_id": "lensisku-jbotci",
+      "release": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/lensisku-jbotci/release.json",
+      "release_sha256": "5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c",
+      "seal": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/lensisku-jbotci/seal.json",
+      "seal_sha256": "7211e26c78e6a1a8e4b809a239ad9ed564e5bb5f451c82ffa7a11a9f3e121ef3"
+    },
+    {
+      "pack_id": "llg",
+      "release": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/llg/release.json",
+      "release_sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146",
+      "seal": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/llg/seal.json",
+      "seal_sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc"
+    },
+    {
+      "pack_id": "la-lojban",
+      "release": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/la-lojban/release.json",
+      "release_sha256": "7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03",
+      "seal": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/la-lojban/seal.json",
+      "seal_sha256": "7c36e2fc7ddf2bac3652071a98858d05981f675004e04283f53dfd11d1d92ed3"
+    },
+    {
+      "pack_id": "sutysisku",
+      "release": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/sutysisku/release.json",
+      "release_sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c",
+      "seal": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/packs/sutysisku/seal.json",
+      "seal_sha256": "d95739ffd58c641cdfd258b116d961548c80b32229588301663897c4b57b0d3d"
+    }
+  ],
+  "known_llg_hit_pretty": "{\n  \"occurrence_id\": \"000000000000001263617074757265643a6c6c673a6769736d75000000000000004030343038666438626631616461653964306461316537666161626233356136633263646636346430313231343062636164666464383134663036316232373335000000000000000131\",\n  \"entry\": {\n    \"id\": \"llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92\",\n    \"source\": \"llg\",\n    \"spelling\": {\n      \"Value\": \"farvi\"\n    },\n    \"language\": {\n      \"Value\": \"jbo\"\n    },\n    \"script\": \"Missing\",\n    \"native_word_class\": \"Missing\",\n    \"selmaho\": \"Missing\",\n    \"mapped_pos\": \"Missing\"\n  },\n  \"assertion\": {\n    \"id\": \"llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6\",\n    \"entry\": \"llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92\",\n    \"occurrence\": {\n      \"capture\": {\n        \"namespace\": \"captured:llg:gismu\",\n        \"sha256\": \"0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735\"\n      },\n      \"locator\": \"1\"\n    },\n    \"native_sense_id\": \"Missing\",\n    \"language\": {\n      \"Value\": \"en\"\n    },\n    \"definition\": {\n      \"Value\": {\n        \"text\": \"d\",\n        \"language\": {\n          \"Value\": \"en\"\n        },\n        \"markup\": \"Missing\"\n      }\n    },\n    \"source_score\": \"Missing\",\n    \"timestamps\": [],\n    \"eligibility\": \"Lexical\"\n  },\n  \"capture\": {\n    \"source_name\": \"The Logical Language Group, Inc.\",\n    \"format_label\": \"llg-gismu-fixed-columns\",\n    \"locator\": \"https://example.invalid/llg/gismu.txt\",\n    \"revision\": \"Missing\",\n    \"captured_at\": \"Missing\",\n    \"time_precision\": \"Unknown\",\n    \"notice_locator\": {\n      \"Value\": \"https://example.invalid/llg/public_domain.txt\"\n    }\n  },\n  \"raw\": {\n    \"locator\": \"1\",\n    \"fields\": [\n      {\n        \"name\": \"word\",\n        \"encoding\": \"Text\",\n        \"raw_value\": \"farvi\"\n      },\n      {\n        \"name\": \"assigned_rafsi_cvc\",\n        \"encoding\": \"Text\",\n        \"raw_value\": \"   \"\n      },\n      {\n        \"name\": \"assigned_rafsi_ccv\",\n        \"encoding\": \"Text\",\n        \"raw_value\": \"   \"\n      },\n      {\n        \"name\": \"assigned_rafsi_cvv\",\n        \"encoding\": \"Text\",\n        \"raw_value\": \"    \"\n      },\n      {\n        \"name\": \"keyword\",\n        \"encoding\": \"Text\",\n        \"raw_value\": \"grow                \"\n      },\n      {\n        \"name\": \"hint\",\n        \"encoding\": \"Text\",\n        \"raw_value\": \"                    \"\n      },\n      {\n        \"name\": \"definition\",\n        \"encoding\": \"Text\",\n        \"raw_value\": \"d                                                                                               \"\n      }\n    ],\n    \"raw_line\": \" farvi              grow                                      d                                                                                               \"\n  },\n  \"snapshot_attribution\": {\n    \"snapshot\": {\n      \"namespace\": \"captured:llg:gismu\",\n      \"sha256\": \"0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735\"\n    },\n    \"source\": \"llg\",\n    \"distributor\": null\n  },\n  \"occurrence_attribution\": {\n    \"occurrence\": {\n      \"snapshot\": {\n        \"namespace\": \"captured:llg:gismu\",\n        \"sha256\": \"0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735\"\n      },\n      \"locator\": \"1\"\n    },\n    \"contributor\": null,\n    \"native_entry_id\": \"farvi\",\n    \"native_assertion_id\": null\n  },\n  \"contributor\": null,\n  \"distributor\": null,\n  \"release_ids\": [\n    \"llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb\"\n  ],\n  \"contexts\": [\n    {\n      \"id\": \"llg-context-79b9015fed531c8a95cc953de903e9e2016d8cc459a5dff16df78e0560e6ddf8\",\n      \"assertion\": \"llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6\",\n      \"kind\": \"Gloss\",\n      \"value\": {\n        \"Value\": {\n          \"text\": \"grow\",\n          \"language\": {\n            \"Value\": \"en\"\n          },\n          \"markup\": \"Missing\"\n        }\n      },\n      \"translated_from\": null,\n      \"evidence\": {\n        \"occurrence\": {\n          \"capture\": {\n            \"namespace\": \"captured:llg:gismu\",\n            \"sha256\": \"0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735\"\n          },\n          \"locator\": \"1\"\n        },\n        \"field_index\": 4,\n        \"citation\": \"Missing\",\n        \"offset\": null\n      }\n    }\n  ],\n  \"frames\": [],\n  \"forms\": [],\n  \"etymologies\": [],\n  \"relations\": [],\n  \"editorial_senses\": [],\n  \"computations\": [],\n  \"annotations\": [],\n  \"extensions\": [],\n  \"owned_revision_ids\": [],\n  \"tombstoned_by\": []\n}",
+  "lexical_assertion_ids": [
+    "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+    "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+    "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+    "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+    "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+  ],
+  "llg_key": {
+    "assertion_id": "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+    "assertion_sha256": "5a5d803b91a72ca4f57a437cc6c5367c45f8bff7b6cfac50f81f3075db59b7ce",
+    "contributor_id": null,
+    "digest_policy": "entry-assertion-serde-json-v1",
+    "distributor_id": null,
+    "entry_id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+    "entry_sha256": "6616f386f916de3028288065ad2f52518a7b268082f387988b41590f1ac61ba1",
+    "native_assertion_id": null,
+    "native_entry_id": "farvi",
+    "occurrence": {
+      "capture": {
+        "namespace": "captured:llg:gismu",
+        "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+      },
+      "locator": "1"
+    },
+    "role": "assertion",
+    "source": "llg",
+    "version": 1
+  },
+  "local_request": {
+    "operation": "resolve",
+    "target": {
+      "Local": {
+        "Assertion": "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6"
+      }
+    }
+  },
+  "ordered_lexical_assertion_ids": [
+    "jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+    "la-lojban-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0",
+    "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+    "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-0",
+    "sutysisku-3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03-assertion-1"
+  ],
+  "sources": {
+    "lensisku": {
+      "abbreviation": "LSK",
+      "abbreviation_evidence": null,
+      "abbreviation_kind": "ProjectAssigned",
+      "display_name": "Lensisku",
+      "id": "lensisku",
+      "origin": "Upstream"
+    },
+    "llg": {
+      "abbreviation": "LLG",
+      "abbreviation_evidence": null,
+      "abbreviation_kind": "ProjectAssigned",
+      "display_name": "The Logical Language Group, Inc.",
+      "id": "llg",
+      "origin": "Upstream"
+    },
+    "sutysisku": {
+      "abbreviation": "SUT",
+      "abbreviation_evidence": null,
+      "abbreviation_kind": "ProjectAssigned",
+      "display_name": "Sutysisku",
+      "id": "sutysisku",
+      "origin": "Upstream"
+    }
+  }
+}
