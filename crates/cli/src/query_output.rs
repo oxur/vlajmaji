@@ -2,14 +2,8 @@
 
 /// A query result before it is written to stdout.
 pub(crate) enum QueryOutput {
-    /// JSON is the only initial S05 output mode; readable rendering is a later pass.
+    /// Existing JSON output, retained as a typed Value for byte-compatible writing.
     Json(serde_json::Value),
-}
-
-impl QueryOutput {
-    pub(crate) fn as_json(&self) -> &serde_json::Value {
-        match self {
-            Self::Json(value) => value,
-        }
-    }
+    /// Already-rendered deterministic UTF-8 text.
+    Readable(String),
 }

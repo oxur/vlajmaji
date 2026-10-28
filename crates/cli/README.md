@@ -90,6 +90,11 @@ authenticity proof for an ordinary-open store.
 Standalone compact `dictionary-query` writes the selected Exact or Resolve
 response object directly at the JSON root. Configured `lookup` keeps its
 managed envelope and operation-tagged result.
+`--format readable` is available on both query commands and their detail
+commands. It writes deterministic source-grouped text from the same compact
+typed response; Full JSON stays the default, and compact JSON remains
+unchanged. Detail commands accept Full or Readable; Compact is not a detail
+format.
 This layer does not alter `dictionary-query STORE` or the global default-store
 route, and a selected installed payload that fails its minimum open is reported
 as an error rather than as metadata-only availability.
