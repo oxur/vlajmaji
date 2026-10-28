@@ -187,3 +187,92 @@ Within existing allowed search contract/private helper tests, use existing Tiny 
 4. Compare indexed helper outcome to the literal legacy `.find`/first-attribution predicates on these bounded inputs, plus WHOLE public Full Local/Catalog/ordinary-profiled parity already required. No new public test accessor, backend/dependency or fixture corpus. Native333 JB-versus-La/release scoping and existing unknown/wrong-role/missing controls remain source-/input-grounded; later numerical protocol unchanged.
 
 These controls test FIRST/order/unknown/error semantics, not timing or a new performance matrix. No Full model/import/DB/cache trial now. Both cache/linear-join repairs must complete in the SAME existing pass before final stable gates/freeze; root final amendment readiness and exact delta intake before ownership transfer. The later one additional frozen22-child campaign can still fail; retain that failure with no seventh/retry if it does.
+
+
+## Binding cross-mode join amendment — SAME iteration05 / sixth total pass
+
+Amendment status: ISSUED — human six-file scope and root final readiness PASS2026-10-28 UTC; extra TWO paths await delta intake and explicit extension.
+
+This addendum addresses two source-obvious Compact/Readable quadratic joins before the ONE further numerical campaign; it does not claim an observed Compact/Readable warm failure. Failed campaign01 stopped in Full warm stage13. No extra product/Full timing was run to diagnose this. Preserve the current issued35432B/b8e83216 original+Catalog body byte-exact separately before appending. Same sixth implementation pass and ONE additional <=22-stage campaign, unchanged budgets/no retry/seventh; extra-file scope authority must be recorded explicitly, not inferred from that pass approval.
+
+## Exact scope delta / distinct three policies
+
+Proposed maximum SIX EXISTING paths: original four remain; add ONLY (5) crates/search/src/dictionary/projection.rs and (6) crates/store/src/collections/reference_projection.rs. No borrowed.rs/dictionary.rs/collection_compact.rs/CLI/renderer/model/schema/deps/test-backend/newfile changes. Existing search/tests/collection_query_contract.rs and private inline tests in these allowed source files hold the new finite controls. Original four-path cache/Full work can continue independently while this draft awaits authority. Do not run final stable whole-source gates until all actually authorized source changes stabilize.
+
+Keep these DIFFERENT semantics explicit:
+
+- Retained Full descriptors accept typed duplicate rows: Catalog entity/attribution FIRST wins, unknown actual native is metadata wildcard; Local ALL raw rows, per-registration FIRST ambiguity. Existing preceding addendum remains exact.
+- Constructed standalone Compact engine ALREADY validates primitive identity uniqueness in borrowed::index_document. Its existing ordinal maps are equivalent to its later .find under this invariant; do not weaken/strengthen constructor validation or copy Full duplicate policy here.
+- Raw retained store projection accepts ordered duplicate occurrence rows and uses ANY matching native attribution, with lazy parse visit/error order. FIRST-only Full or constructed-engine UNIQUE semantics cannot be substituted here. This path does NOT admit missing actual native as a positive match.
+
+## A. Compact kernel: three substitutions, no new indexing or API
+
+At frozen1b dictionary/projection.rs::resolve_catalog iterates the requested release.assertions, then scans metadata.assertions, metadata.entries and registry.occurrences for every ID; occurrence scan allocates record_key and tuple_hex repeatedly. Its constructor always calls borrowed::index_document, which builds UNIQUE entries/assertions/occurrence_attributions maps and rejects duplicates before this method runs. The engine's document and those ordinals remain immutable together.
+
+Replace only the repeated joins with existing indices:
+
+```rust
+// Shape: keep ORIGINAL surrounding control flow, continue/errors and vectors.
+let Some(assertion) = self.indices.assertions.get(id.as_str())
+    .and_then(|&ordinal| metadata.assertions.get(ordinal)) else { continue; };
+// ... original optional occurrence predicate ...
+let Some(entry) = self.indices.entries.get(assertion.entry.as_str())
+    .and_then(|&ordinal| metadata.entries.get(ordinal)) else { continue; };
+// ... original source predicate ...
+let occurrence_key = super::tuple_hex(&assertion.occurrence); // ONCE/candidate
+let attribution = self.indices.occurrence_attributions.get(&occurrence_key)
+    .and_then(|&ordinal| self.document.registry.occurrences.get(ordinal));
+```
+
+EntityId supports as_str as in existing code. Do not add unverified .unwrap, reconstruct keys with a stricter identity constructor, or clone assertion/entry bodies. Existing missing assertion/entry behavior is CONTINUE, not the Full metadata Integrity error. Keep original release.assertions vector order AND duplicates, pairs comparison, actualNone→unverified (when expectedSome), confirmed/unverified vector order, availability-driven NoMatch/CatalogueOnly, owner/component/collection/invalid-target/occurrence validation, requested-release summary and all status/error/materialization behavior. Existing uniqueness means .find first versus index is not a new duplicate policy. Do NOT edit borrowed.rs or introduce a new index; no broad optimization of detail/Exact/kernel code. Existing reference_assertion and optional projection timing regions stay exact: key/ordinal/classification remains lookup, actual returned fields/hash clones remain projection, ordinaryNone no newInstant. Readable shares the same typed Compact response and needs no separate renderer change.
+
+## B. Raw store projection: lazy ordered-key index with deferred errors
+
+At reference_projection.rs around572–640, each source/optional-occurrence-eligible assertion entity scans registry.occurrences RawValues, parses OccurrenceKey for EACH row, and parses complete OccurrenceAttribution ONLY when the tuple matches. It stops at FIRST native-success row, but can continue past a matching row with missing/different native values to a later duplicate. A malformed key before success errors; an unrelated tuple's malformed native body is ignored. This repeated parse join is quadratic. Later materialization ALSO reads occurrence keys/selected full rows; preserve that later code UNCHANGED.
+
+A private per-call helper of the following shape is concrete; local type names may vary, lifetime/behavior is binding:
+
+```rust
+struct RawNativeLookup<'a> {
+    rows: &'a [&'a RawValue],
+    // Exact namespace/SHA/locator STRING tuple, ordered matching raw ordinals.
+    by_tuple: BTreeMap<(String, String, String), Vec<usize>>,
+    first_bad_key: Option<usize>,
+    // These target native flags are CONSTANT for this one reference_projection.
+    wanted_entry: Option<&'a str>,
+    wanted_assertion: Option<&'a str>,
+    result: BTreeMap<(String, String, String), bool>,
+}
+// Equivalent distinct lifetimes for target/rows are fine if borrowed lifetimes
+// actually require it; never clone raw descriptor bodies to satisfy borrowing.
+// build(): parse keys once until FIRST key error, record ordinal, DO NOT return it.
+// matches(&mut self, &OccurrenceRef) -> Result<bool, serde_json::Error>
+```
+
+Helper initialization is LAZY at the FIRST entity that passed the original source/occurrence filters AND actually needs native matching. No initialization/registry validation when all entities are filtered or neither native flag is supplied. Keep original entity iteration and all later release/capture/source/registry code/order intact. Tuple construction uses the same plain strings the old comparisons use, not fallible new SourceId/RecordIdentity grammar or normalization.
+
+Key prepass parses `OccurrenceKey` from each raw in order ONCE until first error; it stores successfully parsed tuple→ordered ordinal lists for the valid PREFIX only. Stop at the first invalid key. Defer that invalid key's ordinal without returning its error early. No full OccurrenceAttribution decode in prepass. An ordinal is enough: when legacy scan must reach that row, reparse the EXACT immutable raw as OccurrenceKey and propagate the real serde_json::Error through the ORIGINAL CollectionError::ReferenceProjection{pack,digest,source} mapping. This avoids cloning/stringifying errors or a persistent negative cache. The immutable bytes make the same parse deterministic. Returning a stored owned original error exactly once is also acceptable if ownership/lifetime is explicit and errors are not memoized.
+
+For an eligible candidate occurrence:
+
+1. If a bool result for this exact tuple exists, return that successful prior computation; target native flags and raw buffer are fixed for the whole helper. No result exists for an error.
+2. Visit ONLY matching tuple ordinals from the valid prefix, in ORIGINAL raw order. Decode full OccurrenceAttribution at each such ordinal, propagating its ORIGINAL typed error immediately when visited. Nonmatching tuple rows' malformed native bodies must NEVER be newly decoded/error. Preserve native_match exactly: requested missing flag is unrestricted, requestedSome requires actualSome equal; actualNone for requestedSome is false, NOT Full's wildcard. Continue on false, break on the first true (ANY matching duplicate). Memoize true and return without replaying a later key error or parsing later matching rows.
+3. If no true row was found, replay first_bad_key error if it exists: legacy would reach it before finding success. Do NOT memoize false or an error before that check. If there is no key error and no typed matching error, memoize false and return. All valid-prefix nonmatching keys have already been inspected; do not scan RawValues again per candidate.
+
+An earlier matching typed-body error outranks a later key error; a success before either shields later rows DURING THIS NATIVE PHASE. A later candidate with another tuple may still reach the deferred key error, so one candidate's true result cannot suppress errors globally. Result memo keys are bounded to candidate occurrence tuples, ordinals total<=registry.occurrences.len(), valid key map<=raw row count. Memoize ONLYbool success/failure after full original relevant scan; NEVERerrors. All state is per-call and dropped before function returns, no cross-target/request cache, no raw-body clone/complete typed registry cache. Work/index/memo allocations/drop remain metadata lookup, actual memory included in8GiB; no fake512MiBheap claim or output field/schema change.
+
+Downstream materialization lines951ff still parses ALL occurrence keys and selected complete rows. Therefore native early success does NOT imply whole reference_projection succeeds if later phases find bad keys/selected fields. Preserve all subsequent error precedence. Do not remove, duplicate, eagerly prevalidate or reorder those phases, and do not claim false whole-method success in a helper-only test. No raw error is converted to absent/NoMatch or generic text.
+
+## C. Finite paired controls, original inputs and no new matrix
+
+Use existing allowed search contract fixtures, RawValue helper unit tests inside reference_projection.rs, and already-required same-code semantic/Tiny/native witnesses. No new test file/backend/dependency/public accessor. Preserve complete existing Full/Compact wire, target-scoped native333 JBversusLa, unknown/missing/unverified/role controls. Add only these discriminators:
+
+- Constructed Compact valid fixture: ordinal lookup versus literal old `.find` yields WHOLE same Exact/Local/Catalog response, page/order/source and ordinary/profiled parity; retain original duplicate-identity constructor failures. Releaseassertions `[B,A,B]` retains declared order/multiplicity; missing assertion and missing entry retain CONTINUE behavior. An absent attribution +requestedSome retains Unverified, not NoMatch/Integrity. Existing complete fixture supplies bodies; pre-input expected rows are independent of candidate result.
+- Raw private helper differential against a literal legacy nested-loop implementation on bounded inline RawValue rows: duplicate tuple firstNone then laterSomeWanted yields true (rejects FIRST-only); firstdifferentSome/laterWanted yields true; absent/mismatching actual yields false when no other match/error. Malformed key before would-be success errors; key error after earlier success is NOT raised by helper. A second eligible tuple lacking an earlier success DOES raise that deferred key error. Matching tuple malformed complete row before success errors; malformed complete row of a NONmatching tuple is ignored; malformed matching row after earlier success is ignored in this phase. Keep original error category and concrete serde source, not string-only assertions.
+- Public error-precedence counterpart: use an earlier native success, a later deferred occurrence-key error, and a deliberately malformed raw.captures CaptureKey/CaptureProjection field that the existing code reads AFTER native matching and BEFORE the final registry occurrence loop (951ff). The capture-phase error must win; restoring that exact capture field reaches the later materialization occurrence-key error. Do NOT use early RawSourceMetadata/component/collection/code_notices parsing as the supposedly intervening error. Conversely a malformed key before native success must win before the intervening phase. Actual complete public projection/response equality on the restored valid descriptor is required. Do NOT demand whole-method success just because private native phase bypassed later error. Restore exact fixture descriptors after intentional SQL changes and use fresh read-only byte pairs around product calls.
+
+No new Full observation to investigate this lead. Later SAME one additional frozen22-stage campaign must actually cover all3modes/27prime+27measured and native/error/source/semantic expectations; no promise of passing from source alone. All current local/Tiny gates wait for stabilized complete authorized six-path source, while four-path focused work can proceed normally. If any finite fixture is invalid under actual public preconditions, preserve the setup failure and repair the harness only; do not weaken the required error/order oracle or label it a product defect.
+
+## Authority and transfer boundary
+
+The previous human scope ceiling is FOUR. Until affirmative explicit human scope amendment AND root concrete readiness, the two extra files remain READONLY. After approval/issue, retainedCC reads WHOLEthis addendum, current plan§17.6/ledger and exact critical source/index-builder bodies; returns source-cited delta differentiating FullFIRST/CompactUNIQUE/RawANY+error visits. CDC accepts delta, verifies current original-four WIP stays in scope and both extra baseline files/lock/guard/oldrefs unchanged, then explicitly extends SOLE author ownership to the extra two files. Existing four-file transfer/one shared index+target continues, not a new writer/pass/worktree/cache. All six criteria remain OPEN; no seventh/retry/extra campaign/push from this addendum. Later executable trial still needs exact root frozen review.

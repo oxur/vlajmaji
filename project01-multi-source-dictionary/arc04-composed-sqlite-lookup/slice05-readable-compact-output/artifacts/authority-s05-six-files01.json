@@ -1,0 +1,11 @@
+{
+  "record_kind": "authored transcription of root-reported verbatim human scope question and submitted answer, not raw backend payload",
+  "question_item_id": [
+    "request_user_input_async",
+    "call_b18e9a0c7bf6406a9a930b3e3d80116e",
+    0
+  ],
+  "question": "May I expand this same correction pass from four to six existing files? Cross-mode review found nested searches in two additional Compact/Readable paths: `crates/search/src/dictionary/projection.rs` and `crates/store/src/collections/reference_projection.rs`. The proposed edits replace those searches with indexed lookups while preserving order, duplicates and error behavior. This adds no implementation pass or trial; the same sixth pass, one campaign and unchanged limits apply.",
+  "answer": "Approve six-file scope",
+  "effective_scope": "SAME sixth total S05 pass, max SIX existing source files (original four plus only named Compact kernel/Raw projection paths), SAME one additional <=22stage campaign and unchanged thresholds. No automatic seventh/retry/push. Extra two remain read-only until root final readiness, delta intake and explicit ownership extension. Original four author ownership continues."
+}
