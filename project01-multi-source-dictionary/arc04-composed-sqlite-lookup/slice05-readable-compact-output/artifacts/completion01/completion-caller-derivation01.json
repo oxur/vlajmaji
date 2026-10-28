@@ -1,0 +1,40 @@
+{
+  "original_main_sha256": "0f539576da2358dd2b3e653cd5bb447e57f5c071ced7e9829bb8ee7315b61951",
+  "inverse_substitutions_byte_exact": true,
+  "files": [
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-caller01/Cargo.toml",
+      "bytes": 699,
+      "sha256": "f7c952a074c7c1a1f417a09d41a025b69c683f034d8883b6f1130925cbb441fe",
+      "byte_equal_original": false,
+      "inverse_own_package_name_exact": true
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-caller01/Cargo.lock",
+      "bytes": 11049,
+      "sha256": "1b3fadb26338d798e050d9a054905a892668906567b08a8cef4623f152b3eed8",
+      "byte_equal_original": false,
+      "inverse_own_package_name_exact": true
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-caller01/fixtures/requests-full03.json",
+      "bytes": 13672,
+      "sha256": "6fe407b2411263370524a44bd101c271fa17a3c3f4e92ee65425025f76d24c21",
+      "byte_equal_original": true
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-caller01/src/semantic.rs",
+      "bytes": 9649,
+      "sha256": "ad2f773e849293ecc0d93d8a7bb78106615335cf4f6a52788522cd128647432c",
+      "byte_equal_original": true
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-caller01/src/main.rs",
+      "bytes": 14634,
+      "sha256": "17c99730f9f4a85068e708beb52e7093641561a598256a1ceeca26129fe4cab1",
+      "byte_equal_original": false
+    }
+  ],
+  "scope": "external source-only derivation; no Cargo/product/Full access",
+  "root_review_metadata_exception": "unique outside package/binary name to avoid retained-target collision; own package Cargo.toml/Cargo.lock name ONLY"
+}

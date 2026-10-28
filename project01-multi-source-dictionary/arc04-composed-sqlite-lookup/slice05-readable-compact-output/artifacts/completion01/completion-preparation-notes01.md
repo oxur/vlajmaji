@@ -1,0 +1,1 @@
+Initial pure qualifier setup failed before product/DB access: missing optional prime key in measured workload rows (KeyError prime, tool chunk4045f6). Corrected Python helper/fixture to mirror frozen Rust #[serde(default)] false. No original raw-file export existed for this transcript-only attempt. No product method attempt or numerical observation.

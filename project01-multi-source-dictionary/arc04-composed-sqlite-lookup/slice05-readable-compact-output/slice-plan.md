@@ -987,3 +987,14 @@ than a required seventh source correction. Historical targets/failures remain
 preserved. All six slice rows remain OPEN pending the remaining verification,
 current-head hosted CI, fresh assembled-arc review and closeout; no new execution
 or external delivery is issued by this status clarification.
+
+
+## 18. Completion-only resumption after accepted timings — 2026-10-28
+
+Duncan explicitly resumed, “nice! Let's pick things back up and finish it off!”, after the recorded current-timing acceptance. Complete the skipped Full correctness/output, current hosted CI, fresh assembled Arc04 execution and closeout/requested PR. No optimisation/product-source correction is assigned; BL-0001 remains optional, sixth implementation pass remains used, failed01/02 and diagnostic unchanged. Root owns source011 normal delivery/CI/PR; a discovered CI correction needs its own explicit disposition, no automatic seventh pass. No Arc05/merge/publication.
+
+The compact active method is [artifacts/completion01/completion-plan01.md](artifacts/completion01/completion-plan01.md). NEW outside caller uniquely named vlajmaji-a04-s05-completion-observer-01 derives from frozen original, replacing ONLY startup/warm/projection/wrong-role latency panics with actual/target/report-only operator-exception records; unchanged semantic.rs, fixtures and dependency lock closure. No product file changes. Nine balanced warm observers plus ONE unchanged semantic observer maximum, ONCE, fixed retained G4/catalogue4/profile5/54-request graph. Reuse exact011 twelve checked fresh receipts, never rerun or relabel them fresh observations. Same-ID three-round medians/maxima remain reported; historical numerical failure is not renamed PASS. All correctness/profile/byte/RSS/scratch/timeout/DBpair/quiet-target checks remain fatal, stopfirstfailure/no retry.
+
+Source-only preparation is frozen in completion01 manifest: pure SAME helper18 controls PASS, initial optional-prime setup miss retained separately. One-target pinned1.98 optimized compile and ONE SAME-code Tiny10 qualifier follow only explicit root target transfer; original callers/binaries/packets immutable. No Full config/DB leaf read/stat/hash before separate exact root executable packet review, after compilation/Tiny qualification. One Full DB pre/post pair only inside cleared invocation, no additional Full store/model/import/create/All. Existing resource/strict path/env and full original gates remain as linked in active method.
+
+All six binding rows remain OPEN; completion-only local execution, actual current hosted platform/feature results, fresh Sol6.1/high selected original W1–W5 execution plus reviewed current Full combined evidence, CDC/root review/retro/bubble-up/canonical closure remain necessary. No result acceptance or seventh source pass is created by method preparation. CDC owns planning/external prep; source/index/retained target stay QUIET until explicit boundary.

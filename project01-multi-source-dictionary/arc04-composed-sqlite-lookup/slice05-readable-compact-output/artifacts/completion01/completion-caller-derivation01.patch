@@ -1,0 +1,72 @@
+--- numeric-caller01/src/main.rs
++++ completion-caller01/src/main.rs
+@@ -1,4 +1,5 @@
+-//! PROSPECTIVE S05 numerical observer. SOURCE ONLY, no build/run authority.
++//! Completion-only observer derived from the frozen numerical observer.
++//! Latency targets are reported under the explicit operator exception; all other checks remain.
+ //! Full command has fixed retained ROOT/config/workload; Tiny qualification separate.
+ //! No store mutation/import/create/All API; exactly one engine per process.
+ use serde::{Deserialize, Serialize};
+@@ -24,6 +25,20 @@
+ }
+ fn ns(x:Duration)->u64{x.as_nanos().try_into().expect("bounded duration")}
+ fn sha(b:&[u8])->String{format!("{:x}",Sha256::digest(b))}
++fn record_latency(checks:&mut Vec<Value>,boundary:&str,actual:Duration,maximum:Duration){
++ let within=actual<=maximum;
++ checks.push(json!({"boundary":boundary,"actual_ns":ns(actual),"maximum_ns":ns(maximum),"within_historical_target":within,"operator_exception":if within{Value::Null}else{json!({"source":"011af09a44abc153b8b8253f70d84147e21a6bb0","decision":"operator accepted current timings; report only, not a historical target pass"})}}));
++}
++fn qualify_latency(){
++ let mut checks=Vec::new();
++ for (name,limit) in [("startup",8000),("warm",750),("full-projection",1000),("small-projection",150),("wrong-role",750)]{
++  record_latency(&mut checks,name,Duration::from_millis(limit),Duration::from_millis(limit));
++  record_latency(&mut checks,name,Duration::from_millis(limit+1),Duration::from_millis(limit));
++ }
++ assert_eq!(checks.len(),10);for pair in checks.chunks_exact(2){assert_eq!(pair[0]["within_historical_target"],true);assert!(pair[0]["operator_exception"].is_null());assert_eq!(pair[1]["within_historical_target"],false);assert!(!pair[1]["operator_exception"].is_null());}
++ emit(&json!({"row_type":"latency_method_qualified","positive":5,"report_only_overruns":5,"checks":checks,"no_product_or_database_access":true}));
++}
++
+ fn emit(v:&Value){let mut out=std::io::stdout().lock();serde_json::to_writer(&mut out,v).unwrap();out.write_all(b"\n").unwrap();out.flush().unwrap();}
+ fn json_wire<T:Serialize>(r:T)->Vec<u8>{
+  // Actual existing CLI Full/Compact path: typed -> Value -> writer + LF.
+@@ -64,6 +79,7 @@
+ fn main(){
+  let process_started=Instant::now();
+  let a:Vec<_>=std::env::args_os().skip(1).collect();
++ if a.first().and_then(|x|x.to_str())==Some("qualify-latency"){assert_eq!(a.len(),1);qualify_latency();return}
+  if a.first().and_then(|x|x.to_str())==Some("qualify-tiny") {assert_eq!(a.len(),2);qualify_semantic_method(&PathBuf::from(&a[1]));return}
+  if a.first().and_then(|x|x.to_str()).is_some_and(|s|s=="semantic-full"||s=="semantic-tiny") {
+    let tiny=a[0]=="semantic-tiny";assert_eq!(a.len(),if tiny{4}else{2});let out=PathBuf::from(&a[1]);assert!(out.is_absolute()&&out.is_dir());
+@@ -94,24 +110,26 @@
+     assert_eq!(p.payload_setup.is_some(),index==0,"exactly first priming Exact opens payload");
+     let (facts,cursor)=facts(&response);check_facts(w,&facts,tiny);cursors.insert(w.id.clone(),cursor);
+     let serialize_started=Instant::now();let bytes=wire(response,mode);let serialization=serialize_started.elapsed();
+-    let row=json!({"row_type":"request","id":w.id,"identity":w.id.strip_prefix("prime--").unwrap_or(&w.id),"prime":w.prime,"mode":mode,"round":round,"operation":w.operation,"ok":true,"total_ns":ns(p.total),"payload_setup_ns":p.payload_setup.map(|s|ns(s.total)),"query_total_ns":ns(p.query.total),"lookup_ns":ns(p.query.lookup),"projection_ns":ns(p.query.projection),"candidate_sql_ns":ns(p.query.candidate_sql),"serialization_ns":ns(serialization),"wire_bytes":bytes.len(),"wire_sha256":sha(&bytes),"facts":facts});
++    let mut row=json!({"row_type":"request","id":w.id,"identity":w.id.strip_prefix("prime--").unwrap_or(&w.id),"prime":w.prime,"mode":mode,"round":round,"operation":w.operation,"ok":true,"total_ns":ns(p.total),"payload_setup_ns":p.payload_setup.map(|s|ns(s.total)),"query_total_ns":ns(p.query.total),"lookup_ns":ns(p.query.lookup),"projection_ns":ns(p.query.projection),"candidate_sql_ns":ns(p.query.candidate_sql),"serialization_ns":ns(serialization),"wire_bytes":bytes.len(),"wire_sha256":sha(&bytes),"facts":facts});
+     if w.id=="farvi-all"{let mut f=OpenOptions::new().write(true).create_new(true).open(out.join("farvi-all-wire.txt")).unwrap();f.write_all(&bytes).unwrap();f.sync_all().unwrap();}
+     // Hash/representative-file IO are observer work outside query/serialization.
+     // Drop response serialization buffer BEFORE next request, no multi-body retention.
+-    let wire_len=bytes.len();drop(bytes);emit(&row);
+-    if index==0 {assert!(config_and_capture+p.payload_setup.unwrap().total<=Duration::from_secs(8),"fresh typed startup maximum");}
++    let wire_len=bytes.len();drop(bytes);let mut latency_checks=Vec::new();
++    if index==0 {record_latency(&mut latency_checks,"fresh typed startup maximum",config_and_capture+p.payload_setup.unwrap().total,Duration::from_secs(8));}
+     if !w.prime {
+       let warm=if w.operation=="reference"{p.query.total}else{p.query.lookup};
+-      assert!(warm<=Duration::from_millis(750),"per-request warm maximum: {}",w.id);
+-      if mode=="full"&&w.id=="farvi-all" {assert!(p.query.projection+serialization<=Duration::from_secs(1),"full hydration+serialization maximum");}
+-      if mode!="full" {assert!(p.query.projection+serialization<=Duration::from_millis(150),"compact/readable projection+serialization maximum: {}",w.id);}
++      record_latency(&mut latency_checks,"per-request warm maximum",warm,Duration::from_millis(750));
++      if mode=="full"&&w.id=="farvi-all" {record_latency(&mut latency_checks,"full hydration+serialization maximum",p.query.projection+serialization,Duration::from_secs(1));}
++      if mode!="full" {record_latency(&mut latency_checks,"compact/readable projection+serialization maximum",p.query.projection+serialization,Duration::from_millis(150));}
+       if w.id=="farvi-all"&&mode!="full" {assert!(wire_len<=if mode=="compact"{65536}else{131072},"five-hit output byte maximum");}
+     }
++    row["latency_checks"]=json!(latency_checks);emit(&row);
+    },
+    Err(error)=>{
+     let report=error.report_for("lookup");drop(error);let whole_error=error_started.elapsed();assert_eq!(Some(report.category.as_str()),w.expected_error.as_deref());
+     let serialization_started=Instant::now();let bytes=json_wire(json!({"error":report}));let serialization=serialization_started.elapsed();
+-    emit(&json!({"row_type":"request","id":w.id,"identity":w.id.strip_prefix("prime--").unwrap_or(&w.id),"prime":w.prime,"mode":mode,"round":round,"operation":w.operation,"ok":false,"expected_error":w.expected_error,"whole_error_ns":ns(whole_error),"serialization_ns":ns(serialization),"wire_bytes":bytes.len(),"wire_sha256":sha(&bytes),"profile":null}));drop(bytes);if !w.prime{assert!(whole_error<=Duration::from_millis(750),"whole wrong-role error+report maximum");}
++    let mut latency_checks=Vec::new();if !w.prime{record_latency(&mut latency_checks,"whole wrong-role error+report maximum",whole_error,Duration::from_millis(750));}
++    emit(&json!({"row_type":"request","id":w.id,"identity":w.id.strip_prefix("prime--").unwrap_or(&w.id),"prime":w.prime,"mode":mode,"round":round,"operation":w.operation,"ok":false,"expected_error":w.expected_error,"whole_error_ns":ns(whole_error),"serialization_ns":ns(serialization),"wire_bytes":bytes.len(),"wire_sha256":sha(&bytes),"profile":null,"latency_checks":latency_checks}));drop(bytes);
+    }
+   }
+   if w.prime{prime+=1}else{measured+=1}

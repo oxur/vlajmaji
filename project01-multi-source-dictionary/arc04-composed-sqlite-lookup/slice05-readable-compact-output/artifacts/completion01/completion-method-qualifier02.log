@@ -1,0 +1,19 @@
+PASS positive exact3 peridentity/implementation; semantic facts validated
+PASS report-only startup/wholeResolve/wrongrole/Full+smallprojection overruns retain originalactuals/targets
+PASS reject request identity
+PASS reject duplicate round
+PASS reject profile equation
+PASS reject fabricated timingexception
+PASS reject semantic fact
+PASS reject fivehit oversized wire
+PASS guard positive
+PASS reject guard decision
+PASS reject guard timed_out
+PASS reject guard maximum_resident_set_size_bytes
+PASS reject guard rss_parse_ok
+PASS reject 128MiB capture
+PASS reject setup/complete tiny
+PASS reject setup/complete request_spec_sha256
+PASS reject setup/complete snapshot
+PASS reject setup/complete mode
+COMPLETE 18 pure completion-method controls; no product/database/config or metric observation
