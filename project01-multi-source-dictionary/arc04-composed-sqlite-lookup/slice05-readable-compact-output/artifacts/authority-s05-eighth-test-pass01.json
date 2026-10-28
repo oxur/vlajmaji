@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-28",
+  "source": "Direct human response in root thread, relayed verbatim by root to CDC",
+  "question": "Pushed 5bc9da7. macOS CI passed; Linux exposed two incorrect expected labels and four lint errors in the same test. Production code and Full-data evidence remain unchanged. May I apply the prepared six-line test-only patch (/tmp/vlajmaji-p01-a04-s05-cdc/ci-linux-test-repair-proposal02.patch), validate, push and follow CI? This requires another approval because the seventh-pass limit you approved is exhausted. Arc04 closeout and the PR remain pending.",
+  "answer": "yes please!",
+  "scope": [
+    "ONE eighth TEST-ONLY pass",
+    "crates/cli/tests/query_output_contract.rs ONLY",
+    "SIX-line patch05c590fec2c81127b79339ee3a02286614d00e6cf850c4442362bfde05642a90",
+    "validation/local commit; root normalpush exact candidate and follow actualCI"
+  ],
+  "excluded": [
+    "automatic ninth",
+    "product changes",
+    "Full replay",
+    "extra source scope",
+    "Arc05",
+    "merge",
+    "publication"
+  ],
+  "roles": "Sol6.1/high CDC, retained Luna/high CC; root external delivery",
+  "source_baseline": "5bc9da710f765152b6a39cbc1506a2716aebfe60"
+}

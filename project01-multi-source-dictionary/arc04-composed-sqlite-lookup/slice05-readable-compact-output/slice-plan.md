@@ -2,10 +2,10 @@
 
 | Field | Value |
 | --- | --- |
-| Status / version | Iteration06 frozen5bc/localPASS, actualCI40700824095 FAILURE (MacPASS/Linuxwrongoperation/Check4Lint); human eighth-test-only extension PENDING; freshARC BLOCKED /1.26 /2026-10-28. All6OPEN. |
+| Status / version | Iteration07 eighth TEST-ONLY pass humanapproved/ISSUED; bounded intake/freshpins/explicitONEpathtransfer pending /1.27 /2026-10-28. PriorCI40700824095 failure preserved; all6OPEN. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
 | Source / dependency | CURRENT clean5bc9da710f765152b6a39cbc1506a2716aebfe60/tree43a889e7/parent011/S05branch/base32e99; exact2test-only delta/cumulative23. All131otherGitentries byte-identical011; oldS04local+origin432 unchanged. |
-| Ownership | Source/index/ONEtarget QUIET after actual failedCI. Root prepares concrete ONE-test-file next proposal; human eighth-pass extension PENDING. No edits/Cargo/product/Full/freshreview launch; CDC evidence/planning only. |
+| Ownership | CDC owns QUIET source/index/ONEtarget sequencing until coherent retainedLuna/high intake+freshpins+explicitONEpathtransfer. Root/CC readonly; no Cargo/source edit before transfer. |
 | Delivery | Additive compact Exact/Resolve and complete occurrence detail, then source-grouped readable Exact/Resolve/detail. Full default JSON stays compatible. Public libraries, CLI, documentation and actual five-workflow composition accompany output, not verification alone. |
 | Sizing | Six completed author passes plus ONE explicitly human-approved seventh TEST-ONLY pass (iteration06), exactly two paths. No automatic eighth, Full replay or optimisation. |
 | Limits | No dependency/lock/schema/importer/model/workflow changes, topology redo, new Full store/generation, cleanup/cache reset, actual-default access, S04 branch writes, A05 activation, network/push/PR/merge/publication. Later finite retained-G4 trial needs exact executable root readiness. |
@@ -1013,3 +1013,9 @@ Duncan answered “yes! Please do!!” to root's exact question asking to apply 
 Root WHOLE8660B draft3bf05aa4 readiness PASS; reviewed draft preserved byte-exact, canonical cc-prompt-iteration06.md changes ONLY authority/status line. The source-guided two-file recipe fixes Linux E0277 by complete borrowed Value equality and lifecycle exclusive fixture allocation with existing AtomicUsize100-attempt pattern. Exact raw CI/patch/metadata/readiness are in ci-test-readiness01 manifest. Direct scope2; cumulative main32e99→01122 becomes23 through existing lifecycle test, not production/API/dependency expansion. All6binding rows remain OPEN.
 
 Retained Luna/high must complete the prompt's bounded applicable intake/source-cited readback; fresh source/lock/guard/protected refs and quiet target checked before explicit TWO-test-path/index/ONE-target ownership transfer. CDC currently owns QUIET sequencing, root readonly. Ordered scoped format→lint→twofocused suites→makecheck, actual final-source hostedCI mandatory; unchanged production/feature/package/Full evidence retained only with exact applicability. Root alone performs authorized normal push/followsCI for returned exact candidate. Then fresh assigned Sol6.1/high actual selected Tiny W1–W5 assembled review and same-reviewer canonical packet, CDC/arc retrospectives/bubble-up/closure/requestedPR; no Arc05/merge/publish.
+
+## 20. Explicit eighth TEST-ONLY pass / iteration07 issue —2026-10-28
+
+Human answered “yes please!” to root's exact six-line ONE-test-file correction/validate/push/CI question after seventh limit exhausted. Authority artifacts/authority-s05-eighth-test-pass01.json preserves exact question/answer. Root WHOLE5676B/f9c7916d draft readiness PASS; reviewed draft remains byte-exact, active prompt changes STATUS LINE ONLY. Exact source5bc/tree43a clean; no product/Full change, all6OPEN, noautomatic9.
+
+CDC owns QUIET source/index/ONEtarget sequencing until retained Luna/high applicable bounded intake/source-cited readback+freshpins+explicit ONE-path transfer. Only query_output_contract.rs six-line patch05c590fe permitted; actual main cumulative23 unchanged. Format→lint→affected suite→makecheck, root exactcandidate normalpush/currentCI, then fresh actual W1–W5/same-reviewer canonical/retro/bubbleup/close/PR remain. Previous failures preserved; no Arc05/merge/publish.

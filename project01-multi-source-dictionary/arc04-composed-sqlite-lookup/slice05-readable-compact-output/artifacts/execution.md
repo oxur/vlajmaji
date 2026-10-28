@@ -1039,3 +1039,9 @@ Independent current source inspection corroborates main.rs1389–1398 maps succe
 ### Pending eighth-pass draft preservation —2026-10-28
 
 Root WHOLE5676B iteration07 draft readiness PASS, six-line ONE-file patch/source5bc baseline verified; human eighth-pass reply still PENDING. Preserved whole draft/readiness originals without issue or transfer: cc-prompt-iteration07-reviewed-draft01.md 5676B SHAf9c7916dd7d36f0c79c118ae9d3572f8bac1ea7f6978c4695764ea3024b51806; root-ci-draft-readiness02.json 958B SHA50a2990bd677db1f5da634d71b4412504252ef1cccd7371161f29d1730bbe0e7. No source/Cargo/runtime/freshreview/close; no automatic ninth. Fresh assembled current draft/postscript source-only corrections accepted; later final candidate/currentCI+pins still required before launch.
+
+## 20. Explicit eighth TEST-ONLY pass / iteration07 issue —2026-10-28
+
+Human answered “yes please!” to root's exact six-line ONE-test-file correction/validate/push/CI question after seventh limit exhausted. Authority artifacts/authority-s05-eighth-test-pass01.json preserves exact question/answer. Root WHOLE5676B/f9c7916d draft readiness PASS; reviewed draft remains byte-exact, active prompt changes STATUS LINE ONLY. Exact source5bc/tree43a clean; no product/Full change, all6OPEN, noautomatic9.
+
+CDC owns QUIET source/index/ONEtarget sequencing until retained Luna/high applicable bounded intake/source-cited readback+freshpins+explicit ONE-path transfer. Only query_output_contract.rs six-line patch05c590fe permitted; actual main cumulative23 unchanged. Format→lint→affected suite→makecheck, root exactcandidate normalpush/currentCI, then fresh actual W1–W5/same-reviewer canonical/retro/bubbleup/close/PR remain. Previous failures preserved; no Arc05/merge/publish.
