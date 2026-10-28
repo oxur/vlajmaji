@@ -1178,9 +1178,10 @@ impl DictionaryCompactSearchEngine {
         let mut confirmed = Vec::new();
         let mut unverified_views = Vec::new();
         for id in &release.assertions {
-            let Some(assertion) = metadata.assertions.iter().find(|row| row.id == *id) else {
+            let Some(assertion_index) = self.indices.assertions.get(id.as_str()) else {
                 continue;
             };
+            let assertion = &metadata.assertions[*assertion_index];
             if catalog
                 .occurrence
                 .as_ref()
@@ -1188,19 +1189,19 @@ impl DictionaryCompactSearchEngine {
             {
                 continue;
             }
-            let Some(entry) = metadata
-                .entries
-                .iter()
-                .find(|row| row.id == assertion.entry)
-            else {
+            let Some(entry_index) = self.indices.entries.get(assertion.entry.as_str()) else {
                 continue;
             };
+            let entry = &metadata.entries[*entry_index];
             if entry.source != catalog.source {
                 continue;
             }
-            let attribution = self.document.registry.occurrences.iter().find(|row| {
-                super::record_key(&row.occurrence) == super::tuple_hex(&assertion.occurrence)
-            });
+            let attribution_key = super::tuple_hex(&assertion.occurrence);
+            let attribution = self
+                .indices
+                .occurrence_attributions
+                .get(&attribution_key)
+                .map(|index| &self.document.registry.occurrences[*index]);
             let pairs = [
                 (
                     &catalog.native_entry_id,
@@ -1792,6 +1793,107 @@ mod tests {
                 .map(|group| group.hits.len())
                 .sum::<usize>()
         );
+        drop(engine);
+        std::fs::remove_dir_all(root).unwrap();
+    }
+
+    #[test]
+    fn compact_catalogue_ordinals_preserve_release_order_and_missing_link_skips() {
+        let root = scratch();
+        let store_path = root.join("dictionary.sqlite3");
+        let dictionary = fixture::complete_fixture().unwrap();
+        let store = DictionaryStore::create(&store_path, &dictionary).unwrap();
+        drop(store);
+        let mut engine = DictionaryCompactSearchEngine::open(&store_path).unwrap();
+
+        let release_index = engine
+            .document
+            .metadata
+            .releases
+            .iter()
+            .position(|release| {
+                release.selected
+                    && release.availability == lexicon::Availability::Available
+                    && release.assertions.len() >= 2
+            })
+            .expect("fixture has a selected available release with two assertions");
+        let release = &engine.document.metadata.releases[release_index];
+        let first_id = release.assertions[0].clone();
+        let second_id = release.assertions[1].clone();
+        let first_index = engine
+            .document
+            .metadata
+            .assertions
+            .iter()
+            .position(|assertion| assertion.id == first_id)
+            .unwrap();
+        let second_index = engine
+            .document
+            .metadata
+            .assertions
+            .iter()
+            .position(|assertion| assertion.id == second_id)
+            .unwrap();
+        let occurrence = engine.document.metadata.assertions[first_index]
+            .occurrence
+            .clone();
+        let source = engine
+            .document
+            .metadata
+            .entries
+            .iter()
+            .find(|entry| entry.id == engine.document.metadata.assertions[first_index].entry)
+            .unwrap()
+            .source
+            .clone();
+        let common_entry = engine.document.metadata.assertions[first_index]
+            .entry
+            .clone();
+        engine.document.metadata.assertions[second_index].entry = common_entry;
+        engine.document.metadata.assertions[second_index].occurrence = occurrence.clone();
+        engine.document.metadata.releases[release_index].assertions =
+            vec![first_id.clone(), second_id.clone(), first_id.clone()];
+
+        let target = lexicon::CatalogTarget {
+            source,
+            release: engine.document.metadata.releases[release_index].id.clone(),
+            native_entry_id: None,
+            native_assertion_id: None,
+            occurrence: Some(occurrence),
+        };
+        let result = engine.resolve_catalog(&target, None).unwrap();
+        assert_eq!(
+            result
+                .2
+                .iter()
+                .map(|row| row.assertion.id.clone())
+                .collect::<Vec<_>>(),
+            vec![first_id.clone(), second_id, first_id.clone()]
+        );
+
+        engine.document.metadata.releases[release_index].assertions = vec![
+            lexicon::EntityId::new("missing-assertion").unwrap(),
+            first_id.clone(),
+        ];
+        let missing_assertion = engine.resolve_catalog(&target, None).unwrap();
+        assert_eq!(
+            missing_assertion
+                .2
+                .iter()
+                .map(|row| row.assertion.id.clone())
+                .collect::<Vec<_>>(),
+            vec![first_id.clone()],
+            "a missing assertion ID is skipped in its declared release position"
+        );
+
+        engine.document.metadata.releases[release_index].assertions = vec![first_id.clone()];
+        engine.document.metadata.assertions[first_index].entry =
+            lexicon::EntityId::new("missing-entry").unwrap();
+        let missing_entry = engine.resolve_catalog(&target, None).unwrap();
+        assert!(missing_entry.2.is_empty());
+        assert!(missing_entry.3.is_empty());
+        assert_eq!(missing_entry.0, super::super::ReferenceStatus::NoMatch);
+
         drop(engine);
         std::fs::remove_dir_all(root).unwrap();
     }

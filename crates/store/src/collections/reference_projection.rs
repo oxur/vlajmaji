@@ -145,6 +145,97 @@ struct OccurrenceKey {
     occurrence: vlajmaji_lexicon::RecordIdentity,
 }
 
+type OccurrenceTuple = (String, String, String);
+
+/// Per-call ordered candidate index for the native-only phase of a Catalog
+/// projection. Keys are decoded only through the first malformed raw key;
+/// complete attribution bodies remain lazy and are decoded only for matching
+/// tuples in their original row order.
+struct RawOccurrenceNativeLookup<'a> {
+    rows: &'a [&'a RawValue],
+    ordinals: BTreeMap<OccurrenceTuple, Vec<usize>>,
+    first_bad_key: Option<usize>,
+    successful_matches: BTreeMap<OccurrenceTuple, bool>,
+}
+
+impl<'a> RawOccurrenceNativeLookup<'a> {
+    fn new(rows: &'a [&'a RawValue]) -> Self {
+        let mut ordinals = BTreeMap::<OccurrenceTuple, Vec<usize>>::new();
+        let mut first_bad_key = None;
+        for (ordinal, row) in rows.iter().enumerate() {
+            let Ok(key) = serde_json::from_str::<OccurrenceKey>(row.get()) else {
+                first_bad_key = Some(ordinal);
+                break;
+            };
+            ordinals
+                .entry((
+                    key.occurrence.snapshot().namespace().to_owned(),
+                    key.occurrence.snapshot().sha256().to_owned(),
+                    key.occurrence.locator().to_owned(),
+                ))
+                .or_default()
+                .push(ordinal);
+        }
+        Self {
+            rows,
+            ordinals,
+            first_bad_key,
+            successful_matches: BTreeMap::new(),
+        }
+    }
+
+    fn matches(
+        &mut self,
+        occurrence: &OccurrenceRef,
+        native_entry_id: Option<&str>,
+        native_assertion_id: Option<&str>,
+        pack: PackId,
+        release_sha256: &str,
+    ) -> Result<bool, CollectionError> {
+        let tuple = (
+            occurrence.capture.namespace.clone(),
+            occurrence.capture.sha256.clone(),
+            occurrence.locator.clone(),
+        );
+        if let Some(matched) = self.successful_matches.get(&tuple) {
+            return Ok(*matched);
+        }
+
+        if let Some(ordinals) = self.ordinals.get(&tuple) {
+            for ordinal in ordinals {
+                let row: OccurrenceAttribution = serde_json::from_str(self.rows[*ordinal].get())
+                    .map_err(|source| CollectionError::ReferenceProjection {
+                        pack,
+                        release_sha256: release_sha256.to_owned(),
+                        source,
+                    })?;
+                let matches = native_entry_id
+                    .is_none_or(|wanted| row.native_entry_id.as_deref() == Some(wanted))
+                    && native_assertion_id
+                        .is_none_or(|wanted| row.native_assertion_id.as_deref() == Some(wanted));
+                if matches {
+                    self.successful_matches.insert(tuple, true);
+                    return Ok(true);
+                }
+            }
+        }
+
+        if let Some(ordinal) = self.first_bad_key {
+            return match serde_json::from_str::<OccurrenceKey>(self.rows[ordinal].get()) {
+                Err(source) => Err(CollectionError::ReferenceProjection {
+                    pack,
+                    release_sha256: release_sha256.to_owned(),
+                    source,
+                }),
+                Ok(_) => unreachable!("the deferred occurrence key was invalid during indexing"),
+            };
+        }
+
+        self.successful_matches.insert(tuple, false);
+        Ok(false)
+    }
+}
+
 #[derive(Deserialize)]
 struct ContributorKey {
     id: ContributorId,
@@ -573,6 +664,7 @@ impl CollectionCatalogue {
         let mut catalog_release_owned = false;
         if let Some(catalog) = catalog_target {
             let mut catalog_candidate_ids = BTreeSet::new();
+            let mut native_lookup = None;
             for (_, assertion, _) in entity_rows
                 .iter()
                 .filter(|(_, links, _)| links.role == "assertion")
@@ -595,40 +687,16 @@ impl CollectionCatalogue {
                     continue;
                 }
                 if catalog.native_entry_id.is_some() || catalog.native_assertion_id.is_some() {
-                    let mut native_match = false;
-                    for attribution_raw in &registry.occurrences {
-                        let key: OccurrenceKey = serde_json::from_str(attribution_raw.get())
-                            .map_err(|source| CollectionError::ReferenceProjection {
-                                pack,
-                                release_sha256: release_sha256.to_owned(),
-                                source,
-                            })?;
-                        if key.occurrence.snapshot().namespace() != occurrence.capture.namespace
-                            || key.occurrence.snapshot().sha256() != occurrence.capture.sha256
-                            || key.occurrence.locator() != occurrence.locator
-                        {
-                            continue;
-                        }
-                        let row: OccurrenceAttribution =
-                            serde_json::from_str(attribution_raw.get()).map_err(|source| {
-                                CollectionError::ReferenceProjection {
-                                    pack,
-                                    release_sha256: release_sha256.to_owned(),
-                                    source,
-                                }
-                            })?;
-                        native_match = catalog
-                            .native_entry_id
-                            .as_ref()
-                            .is_none_or(|wanted| row.native_entry_id.as_ref() == Some(wanted))
-                            && catalog.native_assertion_id.as_ref().is_none_or(|wanted| {
-                                row.native_assertion_id.as_ref() == Some(wanted)
-                            });
-                        if native_match {
-                            break;
-                        }
-                    }
-                    if !native_match {
+                    let lookup = native_lookup.get_or_insert_with(|| {
+                        RawOccurrenceNativeLookup::new(&registry.occurrences)
+                    });
+                    if !lookup.matches(
+                        occurrence,
+                        catalog.native_entry_id.as_deref(),
+                        catalog.native_assertion_id.as_deref(),
+                        pack,
+                        release_sha256,
+                    )? {
                         continue;
                     }
                 }
@@ -1052,5 +1120,264 @@ impl CollectionCatalogue {
             captures,
             code_notices: relevant_notices,
         })
+    }
+}
+
+#[cfg(test)]
+mod native_lookup_tests {
+    use super::*;
+
+    fn occurrence(namespace: &str, locator: &str) -> OccurrenceRef {
+        OccurrenceRef {
+            capture: CaptureRef {
+                namespace: namespace.to_owned(),
+                sha256: "a".repeat(64),
+            },
+            locator: locator.to_owned(),
+        }
+    }
+
+    fn raw_key(occurrence: &OccurrenceRef) -> String {
+        serde_json::to_string(&occurrence.to_record_identity().unwrap()).unwrap()
+    }
+
+    fn raw_attribution(
+        occurrence: &OccurrenceRef,
+        native_entry_id: Option<&str>,
+        native_assertion_id: Option<&str>,
+    ) -> Box<RawValue> {
+        let value = serde_json::json!({
+            "occurrence": serde_json::from_str::<serde_json::Value>(&raw_key(occurrence)).unwrap(),
+            "contributor": null,
+            "native_entry_id": native_entry_id,
+            "native_assertion_id": native_assertion_id,
+        });
+        RawValue::from_string(serde_json::to_string(&value).unwrap()).unwrap()
+    }
+
+    fn row_refs(rows: &[Box<RawValue>]) -> Vec<&RawValue> {
+        rows.iter().map(Box::as_ref).collect()
+    }
+
+    fn legacy_native_match(
+        rows: &[&RawValue],
+        occurrence: &OccurrenceRef,
+        native_entry_id: Option<&str>,
+        native_assertion_id: Option<&str>,
+    ) -> Result<bool, serde_json::Error> {
+        for raw in rows {
+            let key: OccurrenceKey = serde_json::from_str(raw.get())?;
+            if key.occurrence.snapshot().namespace() != occurrence.capture.namespace
+                || key.occurrence.snapshot().sha256() != occurrence.capture.sha256
+                || key.occurrence.locator() != occurrence.locator
+            {
+                continue;
+            }
+            let row: OccurrenceAttribution = serde_json::from_str(raw.get())?;
+            let matches = native_entry_id
+                .is_none_or(|wanted| row.native_entry_id.as_deref() == Some(wanted))
+                && native_assertion_id
+                    .is_none_or(|wanted| row.native_assertion_id.as_deref() == Some(wanted));
+            if matches {
+                return Ok(true);
+            }
+        }
+        Ok(false)
+    }
+
+    fn assert_reference_json_data(error: CollectionError) {
+        match error {
+            CollectionError::ReferenceProjection { source, .. } => {
+                assert_eq!(source.classify(), serde_json::error::Category::Data);
+            }
+            other => panic!("expected the original serde projection error, got {other:?}"),
+        }
+    }
+
+    fn matches(
+        lookup: &mut RawOccurrenceNativeLookup<'_>,
+        occurrence: &OccurrenceRef,
+        expected: Option<&str>,
+    ) -> Result<bool, CollectionError> {
+        lookup.matches(occurrence, expected, None, PackId::Llg, &"d".repeat(64))
+    }
+
+    #[test]
+    fn raw_native_lookup_keeps_ordered_any_and_first_success() {
+        let wanted = occurrence("captured:test", "/wanted");
+        let other = occurrence("captured:test", "/other");
+        let rows = vec![
+            raw_attribution(&wanted, None, None),
+            raw_attribution(&wanted, Some("entry-wanted"), None),
+            raw_attribution(&other, Some("entry-wanted"), None),
+            raw_attribution(&wanted, Some("entry-later"), None),
+        ];
+        let refs = row_refs(&rows);
+        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
+        assert_eq!(
+            matches(&mut lookup, &wanted, Some("entry-wanted")).unwrap(),
+            legacy_native_match(&refs, &wanted, Some("entry-wanted"), None).unwrap()
+        );
+        assert_eq!(
+            matches(&mut lookup, &other, Some("entry-wanted")).unwrap(),
+            legacy_native_match(&refs, &other, Some("entry-wanted"), None).unwrap()
+        );
+        let rows = vec![raw_attribution(&other, Some("entry-wanted"), None)];
+        let refs = row_refs(&rows);
+        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
+        assert_eq!(
+            matches(&mut lookup, &other, Some("absent")).unwrap(),
+            legacy_native_match(&refs, &other, Some("absent"), None).unwrap()
+        );
+    }
+
+    #[test]
+    fn raw_native_lookup_defers_key_errors_until_the_legacy_visit_point() {
+        let first = occurrence("captured:test", "/first");
+        let second = occurrence("captured:test", "/second");
+        let good = raw_attribution(&first, Some("entry-wanted"), None);
+        let malformed_key =
+            RawValue::from_string(r#"{"occurrence":"truncated"}"#.to_owned()).unwrap();
+        let rows = vec![good, malformed_key];
+        let refs = row_refs(&rows);
+        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
+        assert!(matches(&mut lookup, &first, Some("entry-wanted")).unwrap());
+        assert!(legacy_native_match(&refs, &first, Some("entry-wanted"), None).unwrap());
+        let error = matches(&mut lookup, &second, Some("entry-wanted")).unwrap_err();
+        let legacy_error =
+            legacy_native_match(&refs, &second, Some("entry-wanted"), None).unwrap_err();
+        assert_eq!(legacy_error.classify(), serde_json::error::Category::Data);
+        assert_reference_json_data(error);
+    }
+
+    #[test]
+    fn raw_native_lookup_errors_on_malformed_key_before_a_candidate_match() {
+        let wanted = occurrence("captured:test", "/wanted");
+        let bad_key = RawValue::from_string(r#"{"occurrence":"truncated"}"#.to_owned()).unwrap();
+        let rows = vec![
+            bad_key,
+            raw_attribution(&wanted, Some("entry-wanted"), None),
+        ];
+        let refs = row_refs(&rows);
+        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
+        let error = matches(&mut lookup, &wanted, Some("entry-wanted")).unwrap_err();
+        let legacy_error =
+            legacy_native_match(&refs, &wanted, Some("entry-wanted"), None).unwrap_err();
+        assert_eq!(legacy_error.classify(), serde_json::error::Category::Data);
+        assert_reference_json_data(error);
+    }
+
+    #[test]
+    fn raw_native_lookup_decodes_only_matching_bodies_through_first_match() {
+        let wanted = occurrence("captured:test", "/wanted");
+        let other = occurrence("captured:test", "/other");
+        let bad_other = RawValue::from_string(format!(
+            r#"{{"occurrence":{},"contributor":null,"native_entry_id":17,"native_assertion_id":null}}"#,
+            raw_key(&other)
+        ))
+        .unwrap();
+        let bad_matching = RawValue::from_string(format!(
+            r#"{{"occurrence":{},"contributor":null,"native_entry_id":17,"native_assertion_id":null}}"#,
+            raw_key(&wanted)
+        ))
+        .unwrap();
+
+        let rows = vec![
+            bad_other,
+            raw_attribution(&wanted, Some("entry-wanted"), None),
+            bad_matching.clone(),
+        ];
+        let refs = row_refs(&rows);
+        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
+        assert!(matches(&mut lookup, &wanted, Some("entry-wanted")).unwrap());
+        assert!(legacy_native_match(&refs, &wanted, Some("entry-wanted"), None).unwrap());
+
+        let rows = vec![bad_matching];
+        let refs = row_refs(&rows);
+        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
+        let error = matches(&mut lookup, &wanted, Some("entry-wanted")).unwrap_err();
+        let legacy_error =
+            legacy_native_match(&refs, &wanted, Some("entry-wanted"), None).unwrap_err();
+        assert_eq!(legacy_error.classify(), serde_json::error::Category::Data);
+        assert_reference_json_data(error);
+    }
+
+    #[test]
+    fn raw_native_lookup_requires_both_native_ids_on_one_attribution_row() {
+        let wanted = occurrence("captured:test", "/wanted");
+        let split_rows = vec![
+            raw_attribution(&wanted, Some("entry-wanted"), None),
+            raw_attribution(&wanted, None, Some("assertion-wanted")),
+        ];
+        let refs = row_refs(&split_rows);
+        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
+        assert!(
+            !lookup
+                .matches(
+                    &wanted,
+                    Some("entry-wanted"),
+                    Some("assertion-wanted"),
+                    PackId::Llg,
+                    &"d".repeat(64),
+                )
+                .unwrap(),
+            "the entry and assertion filters must be satisfied by one row"
+        );
+        assert!(
+            !legacy_native_match(
+                &refs,
+                &wanted,
+                Some("entry-wanted"),
+                Some("assertion-wanted")
+            )
+            .unwrap()
+        );
+
+        let same_row = vec![raw_attribution(
+            &wanted,
+            Some("entry-wanted"),
+            Some("assertion-wanted"),
+        )];
+        let refs = row_refs(&same_row);
+        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
+        assert_eq!(
+            lookup
+                .matches(
+                    &wanted,
+                    Some("entry-wanted"),
+                    Some("assertion-wanted"),
+                    PackId::Llg,
+                    &"d".repeat(64),
+                )
+                .unwrap(),
+            legacy_native_match(
+                &refs,
+                &wanted,
+                Some("entry-wanted"),
+                Some("assertion-wanted")
+            )
+            .unwrap()
+        );
+        assert!(
+            lookup
+                .matches(
+                    &wanted,
+                    Some("entry-wanted"),
+                    Some("assertion-wanted"),
+                    PackId::Llg,
+                    &"d".repeat(64),
+                )
+                .unwrap()
+        );
+
+        let refs = row_refs(&same_row);
+        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
+        assert_eq!(
+            lookup
+                .matches(&wanted, None, None, PackId::Llg, &"d".repeat(64))
+                .unwrap(),
+            legacy_native_match(&refs, &wanted, None, None).unwrap(),
+            "a native-unfiltered candidate accepts any matching occurrence row"
+        );
     }
 }

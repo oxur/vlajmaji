@@ -11,7 +11,8 @@ pub use projection::{
 };
 
 use std::{
-    collections::{BTreeMap, BTreeSet},
+    cell::RefCell,
+    collections::{BTreeMap, BTreeSet, HashMap},
     error::Error,
     fmt,
     path::{Path, PathBuf},
@@ -515,6 +516,7 @@ pub struct CollectionSearchEngine {
     generation: Option<CollectionGeneration>,
     manifest: Option<vlajmaji_store::DictionarySnapshotManifest>,
     payload: Option<DictionarySearchEngine>,
+    reference_metadata_cache: RefCell<vlajmaji_store::CollectionReferenceMetadataCache>,
 }
 
 impl CollectionSearchEngine {
@@ -676,6 +678,9 @@ impl CollectionSearchEngine {
             generation,
             manifest,
             payload: None,
+            reference_metadata_cache: RefCell::new(
+                vlajmaji_store::CollectionReferenceMetadataCache::default(),
+            ),
         };
         let revision_after = CollectionCatalogue::open(&this.root)?.local_revision()?;
         if revision_after != this.snapshot.local_revision {
@@ -1111,6 +1116,21 @@ impl CollectionSearchEngine {
             ));
         }
         let list = catalogue.list()?;
+        let registered: Vec<_> = list
+            .packs
+            .iter()
+            .flat_map(|pack| {
+                let Some(pack_id) = parse_pack_id(&pack.pack_id) else {
+                    return Vec::new();
+                };
+                pack.registrations
+                    .iter()
+                    .map(move |registration| (pack_id, registration.release_sha256.clone()))
+                    .collect()
+            })
+            .collect();
+        let mut reference_metadata_cache = self.reference_metadata_cache.borrow_mut();
+        reference_metadata_cache.retain_registered(&catalogue, &registered)?;
         let mut results = Vec::new();
         let mut requested_release = None;
         match target {
@@ -1124,8 +1144,11 @@ impl CollectionSearchEngine {
                         ))
                     })?;
                     for registration in &pack.registrations {
-                        let descriptor =
-                            catalogue.reference_metadata(pack_id, &registration.release_sha256)?;
+                        let descriptor = catalogue.reference_metadata_reusing(
+                            pack_id,
+                            &registration.release_sha256,
+                            &mut reference_metadata_cache,
+                        )?;
                         let release = descriptor
                             .source_metadata
                             .releases
@@ -1189,8 +1212,9 @@ impl CollectionSearchEngine {
                                 },
                             ));
                         }
+                        let lookup = FullDescriptorLookup::new(&descriptor);
                         for assertion_id in &release.assertions {
-                            let entity = descriptor.entities.iter().find(|entity| entity.role == "assertion" && entity.id == assertion_id.as_str()).ok_or_else(|| CollectionQueryError::Query(DictionaryQueryError::Integrity { detail: "release assertion is absent from the retained descriptor".into() }))?;
+                            let entity = lookup.entity("assertion", assertion_id.as_str()).ok_or_else(|| CollectionQueryError::Query(DictionaryQueryError::Integrity { detail: "release assertion is absent from the retained descriptor".into() }))?;
                             if !entity
                                 .source_ids
                                 .iter()
@@ -1208,9 +1232,8 @@ impl CollectionSearchEngine {
                             {
                                 continue;
                             }
-                            let native_entry = find_native(&descriptor, occurrence, "entry");
-                            let native_assertion =
-                                find_native(&descriptor, occurrence, "assertion");
+                            let native_entry = lookup.native(occurrence, "entry");
+                            let native_assertion = lookup.native(occurrence, "assertion");
                             if requested.native_entry_id.as_ref().is_some_and(|expected| {
                                 native_entry
                                     .as_ref()
@@ -1253,6 +1276,8 @@ impl CollectionSearchEngine {
             }
             RelationTarget::Local(local) => {
                 let (role, id) = local_role_id(local);
+                let body_key = format!("{role}:{id}");
+                let mut first_per_registration = Vec::new();
                 for pack in &list.packs {
                     let pack_id = parse_pack_id(&pack.pack_id).ok_or_else(|| {
                         CollectionQueryError::InvalidSelection(format!(
@@ -1261,8 +1286,21 @@ impl CollectionSearchEngine {
                         ))
                     })?;
                     for registration in &pack.registrations {
-                        let descriptor =
-                            catalogue.reference_metadata(pack_id, &registration.release_sha256)?;
+                        let descriptor = catalogue.reference_metadata_reusing(
+                            pack_id,
+                            &registration.release_sha256,
+                            &mut reference_metadata_cache,
+                        )?;
+                        if let Some(entity) = descriptor
+                            .entities
+                            .iter()
+                            .find(|entity| entity.role == role && entity.id == id)
+                        {
+                            first_per_registration.push((
+                                entity.clone(),
+                                descriptor.body_sha256.get(&body_key).cloned(),
+                            ));
+                        }
                         for entity in descriptor
                             .entities
                             .iter()
@@ -1299,48 +1337,13 @@ impl CollectionSearchEngine {
                         },
                     ));
                 }
-                if let Some(first) = results.first() {
-                    let first_pack = parse_pack_id(&first.pack_id).ok_or_else(|| {
-                        CollectionQueryError::InvalidSelection(
-                            "unsupported registered pack ID".into(),
-                        )
-                    })?;
-                    let first_descriptor =
-                        catalogue.reference_metadata(first_pack, &first.release_sha256)?;
-                    let first_entity = first_descriptor
-                        .entities
+                if let Some((first_entity, first_body)) = first_per_registration.first()
+                    && first_per_registration
                         .iter()
-                        .find(|entity| entity.role == role && entity.id == id)
-                        .ok_or_else(|| {
-                            CollectionQueryError::Query(DictionaryQueryError::Integrity {
-                                detail: "local entity disappeared from its retained descriptor"
-                                    .into(),
-                            })
-                        })?;
-                    let first_body = first_descriptor.body_sha256.get(&format!("{role}:{id}"));
-                    for row in results.iter().skip(1) {
-                        let pack = parse_pack_id(&row.pack_id).ok_or_else(|| {
-                            CollectionQueryError::InvalidSelection(
-                                "unsupported registered pack ID".into(),
-                            )
-                        })?;
-                        let descriptor = catalogue.reference_metadata(pack, &row.release_sha256)?;
-                        let entity = descriptor
-                            .entities
-                            .iter()
-                            .find(|entity| entity.role == role && entity.id == id)
-                            .ok_or_else(|| {
-                                CollectionQueryError::Query(DictionaryQueryError::Integrity {
-                                    detail: "local entity disappeared from its retained descriptor"
-                                        .into(),
-                                })
-                            })?;
-                        if entity != first_entity
-                            || descriptor.body_sha256.get(&format!("{role}:{id}")) != first_body
-                        {
-                            return Err(CollectionQueryError::AmbiguousReference);
-                        }
-                    }
+                        .skip(1)
+                        .any(|(entity, body)| entity != first_entity || body != first_body)
+                {
+                    return Err(CollectionQueryError::AmbiguousReference);
                 }
             }
             _ => {}
@@ -1601,20 +1604,67 @@ fn local_role_id(local: &LocalRef) -> (&'static str, &str) {
     }
 }
 
-fn find_native(
-    descriptor: &vlajmaji_store::CollectionReferenceMetadata,
-    occurrence: &vlajmaji_lexicon::OccurrenceRef,
-    role: &str,
-) -> Option<String> {
-    let attribution = descriptor.registry.occurrences.iter().find(|attribution| {
-        attribution.occurrence.snapshot().namespace() == occurrence.capture.namespace
-            && attribution.occurrence.snapshot().sha256() == occurrence.capture.sha256
-            && attribution.occurrence.locator() == occurrence.locator
-    })?;
-    match role {
-        "entry" => attribution.native_entry_id.clone(),
-        "assertion" => attribution.native_assertion_id.clone(),
-        _ => None,
+/// Borrowed first-ordinal indices for a retained Full descriptor. The source
+/// descriptor is intentionally not a validated dictionary model, so duplicate
+/// identities retain the same first-match behavior as the former linear scans.
+/// The maps only carry ordinals: body/entity values are borrowed from the
+/// descriptor and are cloned only when materializing a returned match.
+struct FullDescriptorLookup<'a> {
+    descriptor: &'a vlajmaji_store::CollectionReferenceMetadata,
+    entities: HashMap<(&'a str, &'a str), usize>,
+    occurrences: HashMap<(&'a str, &'a str, &'a str), usize>,
+}
+
+impl<'a> FullDescriptorLookup<'a> {
+    fn new(descriptor: &'a vlajmaji_store::CollectionReferenceMetadata) -> Self {
+        let mut entities = HashMap::with_capacity(descriptor.entities.len());
+        for (ordinal, entity) in descriptor.entities.iter().enumerate() {
+            entities
+                .entry((entity.role.as_str(), entity.id.as_str()))
+                .or_insert(ordinal);
+        }
+
+        let mut occurrences = HashMap::with_capacity(descriptor.registry.occurrences.len());
+        for (ordinal, attribution) in descriptor.registry.occurrences.iter().enumerate() {
+            let identity = &attribution.occurrence;
+            occurrences
+                .entry((
+                    identity.snapshot().namespace(),
+                    identity.snapshot().sha256(),
+                    identity.locator(),
+                ))
+                .or_insert(ordinal);
+        }
+
+        Self {
+            descriptor,
+            entities,
+            occurrences,
+        }
+    }
+
+    fn entity(
+        &self,
+        role: &str,
+        id: &str,
+    ) -> Option<&'a vlajmaji_store::CollectionEntityReference> {
+        self.entities
+            .get(&(role, id))
+            .map(|ordinal| &self.descriptor.entities[*ordinal])
+    }
+
+    fn native(&self, occurrence: &vlajmaji_lexicon::OccurrenceRef, role: &str) -> Option<String> {
+        let ordinal = *self.occurrences.get(&(
+            occurrence.capture.namespace.as_str(),
+            occurrence.capture.sha256.as_str(),
+            occurrence.locator.as_str(),
+        ))?;
+        let attribution = &self.descriptor.registry.occurrences[ordinal];
+        match role {
+            "entry" => attribution.native_entry_id.clone(),
+            "assertion" => attribution.native_assertion_id.clone(),
+            _ => None,
+        }
     }
 }
 
