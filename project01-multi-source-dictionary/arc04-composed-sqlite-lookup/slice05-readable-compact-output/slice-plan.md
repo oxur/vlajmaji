@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| Status / version | Replacement Full numerical campaign FAILED at measured WholeResolve1.206865292s>750ms /1.23 /2026-10-28 UTC. Sixth pass/additional campaign exhausted; all6OPEN; explicit STOP/no automatic7/retry/push. |
+| Status / version | Iteration06 seventh TEST-ONLY pass ISSUED; bounded intake accepted, explicit two-path handoff after scoped metadata commit /1.24 /2026-10-28. Full correctness/output complete with accepted timing exceptions; all6OPEN. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
 | Source / dependency | CURRENT clean011af09a44abc153b8b8253f70d84147e21a6bb0/treea8c0fdcb/parent1b/S05branch/base32e99; original21 plus approved existing search contract =22 cumulative paths. Old S04local/origin432 unchanged. |
-| Ownership | CDC owns QUIET source/index/ONEtarget for failure preservation and evidence-only existing output/frozen-source review. No source/Cargo/product/Full DB/config access or execution under exhausted budget; root/CC readonly. |
+| Ownership | AFTER scoped handoff commit+explicit dispatch, retained Luna/high owns ONLY query_output_contract.rs + collections_lifecycle_contract.rs, source index and ONE retained target. CDC/root source/index/target READONLY until terminal handback; CDC planning. |
 | Delivery | Additive compact Exact/Resolve and complete occurrence detail, then source-grouped readable Exact/Resolve/detail. Full default JSON stays compatible. Public libraries, CLI, documentation and actual five-workflow composition accompany output, not verification alone. |
-| Sizing | SIX completed author passes initial+01..05 under exact human amendment; final05 bounded review PASS. No automatic seventh/reset/retry; ONE additional<=22 Full campaign still requires root exact executable clearance. |
+| Sizing | Six completed author passes plus ONE explicitly human-approved seventh TEST-ONLY pass (iteration06), exactly two paths. No automatic eighth, Full replay or optimisation. |
 | Limits | No dependency/lock/schema/importer/model/workflow changes, topology redo, new Full store/generation, cleanup/cache reset, actual-default access, S04 branch writes, A05 activation, network/push/PR/merge/publication. Later finite retained-G4 trial needs exact executable root readiness. |
 
 ## 1. Source findings and preserved behavior
