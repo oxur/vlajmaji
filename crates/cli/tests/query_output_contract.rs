@@ -3136,7 +3136,7 @@ fn test_managed_compact_lookup_and_detail_report_full_device_envelopes() {
             .unwrap()
     };
     let failed_lookup = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
-        .args(&lookup_args)
+        .args(lookup_args)
         .env_clear()
         .stdout(full_device())
         .stderr(std::process::Stdio::piped())
@@ -3144,7 +3144,7 @@ fn test_managed_compact_lookup_and_detail_report_full_device_envelopes() {
         .unwrap();
     assert_managed_error(
         &failed_lookup,
-        "lookup",
+        "exact",
         &lookup["snapshot"],
         &lookup["snapshot"]["collections"]
             .as_array()
@@ -3155,7 +3155,7 @@ fn test_managed_compact_lookup_and_detail_report_full_device_envelopes() {
     );
 
     let failed_detail = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
-        .args(&detail_args)
+        .args(detail_args)
         .env_clear()
         .stdout(full_device())
         .stderr(std::process::Stdio::piped())
@@ -3174,7 +3174,7 @@ fn test_managed_compact_lookup_and_detail_report_full_device_envelopes() {
     );
 
     let failed_readable_lookup = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
-        .args(&readable_lookup_args)
+        .args(readable_lookup_args)
         .env_clear()
         .stdout(full_device())
         .stderr(std::process::Stdio::piped())
@@ -3182,7 +3182,7 @@ fn test_managed_compact_lookup_and_detail_report_full_device_envelopes() {
         .unwrap();
     assert_managed_error(
         &failed_readable_lookup,
-        "lookup",
+        "exact",
         &lookup["snapshot"],
         &lookup["snapshot"]["collections"]
             .as_array()
@@ -3193,7 +3193,7 @@ fn test_managed_compact_lookup_and_detail_report_full_device_envelopes() {
     );
 
     let failed_readable_detail = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
-        .args(&readable_detail_args)
+        .args(readable_detail_args)
         .env_clear()
         .stdout(full_device())
         .stderr(std::process::Stdio::piped())
