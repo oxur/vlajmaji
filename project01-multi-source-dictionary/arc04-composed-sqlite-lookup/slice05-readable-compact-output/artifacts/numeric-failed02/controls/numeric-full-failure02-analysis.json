@@ -1,0 +1,258 @@
+{
+  "source_head": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "source_tree": "a8c0fdcb3e39fb260602bb48b837b25f4d2380ac",
+  "attempted_stages": 13,
+  "checked_stages": 12,
+  "request_rows": 46,
+  "prime": 27,
+  "measured_prefix": 19,
+  "all_actual_facts_equal_preinput": true,
+  "last_measured": {
+    "candidate_sql_ns": 0,
+    "facts": {
+      "confirmed_ids": [
+        "jbotci-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-assertion-13306"
+      ],
+      "operation": "resolve",
+      "reason": null,
+      "status": "Resolved",
+      "unverified_ids": []
+    },
+    "id": "jbotci-local",
+    "identity": "jbotci-local",
+    "lookup_ns": 1205107043,
+    "mode": "full",
+    "ok": true,
+    "operation": "reference",
+    "payload_setup_ns": null,
+    "prime": false,
+    "projection_ns": 1758249,
+    "query_total_ns": 1206865292,
+    "round": 1,
+    "row_type": "request",
+    "serialization_ns": 8219458,
+    "total_ns": 1206865292,
+    "wire_bytes": 7132562,
+    "wire_sha256": "93c328c18fc014f4ebc8e77e68d9d16ce1a116381653eea8005c575c5a1d058b"
+  },
+  "prime_timings": [
+    {
+      "id": "prime--farvi-all",
+      "query_total_ns": 3472375,
+      "lookup_ns": 481708,
+      "projection_ns": 2990667,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--farvi-lsk",
+      "query_total_ns": 1946000,
+      "lookup_ns": 154375,
+      "projection_ns": 1791625,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--farvi-llg",
+      "query_total_ns": 2277208,
+      "lookup_ns": 213000,
+      "projection_ns": 2064208,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--farvi-sut",
+      "query_total_ns": 2344875,
+      "lookup_ns": 251166,
+      "projection_ns": 2093709,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--absent",
+      "query_total_ns": 2221292,
+      "lookup_ns": 98083,
+      "projection_ns": 2123209,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--excluded-sut",
+      "query_total_ns": 1895333,
+      "lookup_ns": 129083,
+      "projection_ns": 1766250,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page-0",
+      "query_total_ns": 2065750,
+      "lookup_ns": 133833,
+      "projection_ns": 1931917,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page-1",
+      "query_total_ns": 3307667,
+      "lookup_ns": 266085,
+      "projection_ns": 3041582,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page-2",
+      "query_total_ns": 2474792,
+      "lookup_ns": 173167,
+      "projection_ns": 2301625,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page-3",
+      "query_total_ns": 1796000,
+      "lookup_ns": 143377,
+      "projection_ns": 1652623,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page-8",
+      "query_total_ns": 2255042,
+      "lookup_ns": 149875,
+      "projection_ns": 2105167,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page-concat-2",
+      "query_total_ns": 2284667,
+      "lookup_ns": 237291,
+      "projection_ns": 2047376,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page-concat-3",
+      "query_total_ns": 2314375,
+      "lookup_ns": 183166,
+      "projection_ns": 2131209,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page-concat-4",
+      "query_total_ns": 2578833,
+      "lookup_ns": 167541,
+      "projection_ns": 2411292,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page-concat-5",
+      "query_total_ns": 1756834,
+      "lookup_ns": 158876,
+      "projection_ns": 1597958,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page2-concat-2",
+      "query_total_ns": 2143375,
+      "lookup_ns": 173165,
+      "projection_ns": 1970210,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page2-concat-3",
+      "query_total_ns": 2075417,
+      "lookup_ns": 148668,
+      "projection_ns": 1926749,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--page3-concat-2",
+      "query_total_ns": 1954083,
+      "lookup_ns": 157790,
+      "projection_ns": 1796293,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--jbotci-local",
+      "query_total_ns": 1539841583,
+      "lookup_ns": 1536546001,
+      "projection_ns": 3295582,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--jbotci-catalogue-native333",
+      "query_total_ns": 1292680250,
+      "lookup_ns": 1290399374,
+      "projection_ns": 2280876,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--la-catalogue-native333",
+      "query_total_ns": 1260235583,
+      "lookup_ns": 1258002291,
+      "projection_ns": 2233292,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--llg-component",
+      "query_total_ns": 1239240416,
+      "lookup_ns": 1237667916,
+      "projection_ns": 1572500,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--sut-native-entry",
+      "query_total_ns": 1262606792,
+      "lookup_ns": 1260089541,
+      "projection_ns": 2517251,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--unknown",
+      "query_total_ns": 11584,
+      "lookup_ns": 1000,
+      "projection_ns": 10584,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--unresolved",
+      "query_total_ns": 1416,
+      "lookup_ns": 83,
+      "projection_ns": 1333,
+      "whole_error_ns": null,
+      "ok": true
+    },
+    {
+      "id": "prime--wrong-role",
+      "query_total_ns": null,
+      "lookup_ns": null,
+      "projection_ns": null,
+      "whole_error_ns": 1228742750,
+      "ok": false
+    },
+    {
+      "id": "prime--missing",
+      "query_total_ns": 1662715625,
+      "lookup_ns": 1662705626,
+      "projection_ns": 9999,
+      "whole_error_ns": null,
+      "ok": true
+    }
+  ],
+  "scope": "existing saved outputs only; primes diagnostic, not measured acceptance; no subphase cause inference",
+  "stages14_22_analysis_semantic_absent": true
+}

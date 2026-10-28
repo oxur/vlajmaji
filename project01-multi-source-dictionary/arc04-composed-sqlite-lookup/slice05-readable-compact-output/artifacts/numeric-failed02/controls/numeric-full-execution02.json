@@ -1,0 +1,4374 @@
+{
+  "readiness_status": "ROOT_REVIEWED_EXACT_FROZEN_NUMERICAL_CAMPAIGN",
+  "root": "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01",
+  "config": "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+  "output": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02",
+  "cli": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+  "observer": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+  "baseline": "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+  "workload": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/fixtures/requests-full03.json",
+  "guard": "/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+  "python": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+  "source": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "source_commit": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "source_tree": "a8c0fdcb3e39fb260602bb48b837b25f4d2380ac",
+  "catalogue_revision": 4,
+  "profile_revision": 5,
+  "minimum_free_bytes": 17179869184,
+  "target_cache": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+  "sqlite_runtime_version": "3.53.2",
+  "database_paths": [
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/catalogue.sqlite3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/22138258fb19a4b58ae1bb67d230a49e/store/dictionary.sqlite3"
+  ],
+  "expected_database_sha256": {
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/22138258fb19a4b58ae1bb67d230a49e/store/dictionary.sqlite3": "b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/catalogue.sqlite3": "051dae4cf3fd0b4f77c230ab348e39e353a22bbb482a26fe35ce089bdda0603c"
+  },
+  "expected_assertion_ids": [
+    "jbotci-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-assertion-13306",
+    "jbotci-12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde-assertion-13307",
+    "llg-assertion-664c45855ea2ec025117a37c107ba557c65a80524a4a5e01009316cd07c84605",
+    "la-lojban-861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35-assertion-4095",
+    "sutysisku-8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d-assertion-11309"
+  ],
+  "new_s05_scratch_paths": [
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-accept_unrelated_control-2wk1y0wb",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-accept_unrelated_control-_8h_qj9l",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-accept_unrelated_control-lzemvbb9",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-accept_unrelated_control-puq7eq8g",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-accept_unrelated_control-ux8l38st",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-accept_unrelated_control-x6s0yj2l",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-accept_unrelated_control-z8lne6yp",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-0d6btzbf",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-0rwg57y2",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-1dq_s1km",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-1oe219r1",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-23sxt1ie",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-2nh7fkf8",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-2yk50pok",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-3hgeq1bp",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-3rjl8knm",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-40x_yzk6",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-47sqpp5y",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-4_v8e9a3",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-4n3iwp3i",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-567j5u2q",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-57bhude0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-6j_mv9ad",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-75aupjzj",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-7dd93pj8",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-7lmv4nv1",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-8k3s1jet",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-9i5w2vym",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-_arampvc",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-_hmvkmb8",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-_piqmvwp",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-_x8o24gq",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-a5f16qxl",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-b659oijj",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-bahpali3",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-bdzr68jb",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-boiqypt3",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-cclbapui",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-cndhrvx5",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-codn1tdu",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-d4datlgq",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-daj1g9ap",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-dwk262k1",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-e9m26tbj",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-fo0wdqxo",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-fqp7omhq",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-g06g46nj",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-g7ox1ig5",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-ghexmiyz",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-gn3de1zb",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-go8m30lw",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-hd3ixexw",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-hefwza0y",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-hpin6c8i",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-htm4y1h0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-iaip_9r6",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-iqzbfq2l",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-j8r_lfga",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-jh14_q0i",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-k5w36yyp",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-l1ivwzmn",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-l_u5rkhv",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-lvxbikcx",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-m60ygpej",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-md8tj0bq",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-mkjb1p8h",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-mlwbhsnd",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-mn79cxap",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-mu2qoc1f",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-npfedcdo",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-ntt_d__y",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-nxm5gnbg",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-ox5nw8mt",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-p069shqu",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-pa517mrd",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-pgx4t3lm",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-pqlhk9lj",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-q2guo5tp",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-qo2ocmx7",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-rkjbs2vr",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-rncmtyk_",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-rstpzbog",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-s__tifm8",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-sl3p1xlo",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-sogarale",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-st7wpdv4",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-sw92z6cm",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-szvjkt7w",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-t1lcmfz2",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-t51uptp0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-t9izixbs",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-tqa6azp3",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-tyg1k0x_",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-un2mh2wh",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-w2_c4tej",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-wjb1o3gp",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-x19l7ffs",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-xgfzm_u8",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-xpmjytll",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-xrx93wuw",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-xup1mjng",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-xxis7jlh",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-xzgoopey",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-yjsbmkce",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-yn3x9vb8",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-yo2oraxd",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-zeyee7cy",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-zj7u295c",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-zyt6kaf4",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-fixture-zyxou56_",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-unrelated_F01-1_x05p9l",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-unrelated_F01-a7tyc78v",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-unrelated_F01-cdcsmjwn",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-unrelated_F01-tix9733_",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-unrelated_F01-w8b6w1ht",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-unrelated_F03-3c3x8u2a",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-unrelated_F03-5h8go9ei",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-unrelated_F03-az8z6omy",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-unrelated_F03-mxa1t5ob",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-unrelated_F03-yz94pxqs",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-work_before_false_provenance-16bmlh_2",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-work_before_false_provenance-ag779ee1",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-work_before_false_provenance-fxt9832z",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-work_before_false_provenance-ijoknacc",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-work_before_false_provenance-psl75wsz",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-work_before_false_provenance-vyb0s7b3",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-cdc-work_before_false_provenance-yb_la451",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-checks.CYrYfmbbcn",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-checks.fdSr9Xh8Hi",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-checks.hyyWyDjwPL",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-final-sealed.FSXOzR2vrj",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-final.remGQOtOct",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-final.s2mRc6TVa4",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-mutants.WZwZCKVWeq",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-sealed-rerun.JKLidwMEGL",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/s05-selftest.5acFplufBa",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-compact-projection-40223-1",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-reference-projection-21765-1793116377679731000",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-reference-projection-21998-1793116415090716000",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-reference-projection-22417-1793116518938752000",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-reference-projection-53519-1793122649731555000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-reference-projection-53965-1793122797218086000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-catalog-native-capture-error-order-96342-1793156151779166000",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-full-catalogue-first-ordinal-cache-97214-1793156266385700000",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-local-history-late-corruption-1516-1793156964260841000",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-local-history-late-corruption-934-1793156886459588000",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-11286-1793158141493059000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-12169-1793144829307451000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-12955-1793114588098778000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-16906-1793158283710917000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-17566-1793131408295141000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-18975-1793131909083543000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-19664-1793158484129569000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-21288-1793132310271220000-16",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-22050-1793132414127812000-16",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-25170-1793117616441420000-2",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-25892-1793145939401275000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-25979-1793133088856007000-16",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-28311-1793133280424765000-16",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-31468-1793146165285320000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-32508-1793119019670853000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-33122-1793119134673482000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-33272-1793133401794192000-16",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-34054-1793119299148159000-3",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-34580-1793146641922946000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-34812-1793119382704589000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-34812-1793119382716361000-3",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-35260-1793119439811301000-3",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-35468-1793133504533177000-16",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-38149-1793119948401565000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-39100-1793120099282994000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-41289-1793120456875584000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-41747-1793120527197770000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-46918-1793121548372186000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-47007-1793136726627029000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-47298-1793121599119611000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-47719-1793121653510010000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-47986-1793121691820916000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-48217-1793121729688590000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-48464-1793121778673642000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-48910-1793136957573827000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-50171-1793122107762908000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-50301-1793137248808324000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-50844-1793122193190551000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-53284-1793138033180234000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-56263-1793138276817733000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-58847-1793149654824269000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-61711-1793138401067904000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-63989-1793138501436071000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-64518-1793124890034956000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-67295-1793125348741605000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-69134-1793138591702970000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-71009-1793138704918072000-17",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-86439-1793127355259048000-8",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-compact-dictionary-97013-1793127991836530000-8",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-1145-1793144073537685000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-1467-1793144108305141000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-147-1793143952432237000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-18748-1793145150846957000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-20295-1793145316022866000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-20991-1793145391527738000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-21395-1793145438650235000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-25411-1793133001117682000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-28639-1793118430918424000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-28639-1793118430918493000-1",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-30087-1793118641584087000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-387-1793143979204747000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-52571-1793149008206035000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-52889-1793149045010681000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-5355-1793144448371991000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-53717-1793149116785208000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-54328-1793149198877183000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-55354-1793123302348923000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-55886-1793149492074143000-4",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-5595-1793144477411345000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-99381-1793143878534297000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-query-output-99652-1793143915692790000-0",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-readable-54988-1793149317491427000-2",
+    "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s05-readable-54988-1793149317491576000-5",
+    "/tmp/s05-extra-two-handoff-message",
+    "/tmp/s05-extra-two-handoff-paths",
+    "/tmp/s05-extra-two-handoff.py",
+    "/tmp/s05-i02-all-features-final01.log",
+    "/tmp/s05-i02-borrowed-current-fmt.rs",
+    "/tmp/s05-i02-borrowed-current01.log",
+    "/tmp/s05-i02-borrowed-current02.log",
+    "/tmp/s05-i02-borrowed-current03.log",
+    "/tmp/s05-i02-borrowed-rustfmt01.rs",
+    "/tmp/s05-i02-check-final01.log",
+    "/tmp/s05-i02-check-final02.log",
+    "/tmp/s05-i02-collection-query-current-fmt.rs",
+    "/tmp/s05-i02-collection-rustfmt01.rs",
+    "/tmp/s05-i02-commit-message-final.txt",
+    "/tmp/s05-i02-cprojection-rustfmt01.rs",
+    "/tmp/s05-i02-cqprojection-current-fmt.rs",
+    "/tmp/s05-i02-cqprojection-current-fmt2.rs",
+    "/tmp/s05-i02-dict-projection-current-fmt.rs",
+    "/tmp/s05-i02-dictionary-contract-current01.log",
+    "/tmp/s05-i02-dictionary-contract-current02.log",
+    "/tmp/s05-i02-dictionary-contract-final01.log",
+    "/tmp/s05-i02-dictionary-rustfmt01.rs",
+    "/tmp/s05-i02-fastopen-duplicates01.log",
+    "/tmp/s05-i02-fastopen-duplicates02.log",
+    "/tmp/s05-i02-fastopen-test01.log",
+    "/tmp/s05-i02-fmtcheck-final01.log",
+    "/tmp/s05-i02-fmtcheck-final02.log",
+    "/tmp/s05-i02-fmtcheck01.log",
+    "/tmp/s05-i02-fmtcheck02.log",
+    "/tmp/s05-i02-fmtcheck03.log",
+    "/tmp/s05-i02-fmtcheck04.log",
+    "/tmp/s05-i02-fmtcheck05.log",
+    "/tmp/s05-i02-fmtcheck06.log",
+    "/tmp/s05-i02-fmtcheck07.log",
+    "/tmp/s05-i02-fmtcheck08.log",
+    "/tmp/s05-i02-fmtcheck09.log",
+    "/tmp/s05-i02-fmtcheck10.log",
+    "/tmp/s05-i02-fmtcheck11.log",
+    "/tmp/s05-i02-fmtcheck12.log",
+    "/tmp/s05-i02-fmtcheck13.log",
+    "/tmp/s05-i02-fmtcheck14.log",
+    "/tmp/s05-i02-format-borrowed02.rs",
+    "/tmp/s05-i02-format-borrowed03.rs",
+    "/tmp/s05-i02-format-borrowed04.rs",
+    "/tmp/s05-i02-format-borrowed05.rs",
+    "/tmp/s05-i02-format-collection02.rs",
+    "/tmp/s05-i02-format-collection03.rs",
+    "/tmp/s05-i02-format-collection04.rs",
+    "/tmp/s05-i02-format-cprojection02.rs",
+    "/tmp/s05-i02-format-cprojection03.rs",
+    "/tmp/s05-i02-format-cprojection04.rs",
+    "/tmp/s05-i02-format-dictionary02.rs",
+    "/tmp/s05-i02-format-dictionary03.rs",
+    "/tmp/s05-i02-format-dictionary04.rs",
+    "/tmp/s05-i02-format-projection03.rs",
+    "/tmp/s05-i02-format-projection04.rs",
+    "/tmp/s05-i02-format-projection05.rs",
+    "/tmp/s05-i02-format-projection06.rs",
+    "/tmp/s05-i02-index-test01.log",
+    "/tmp/s05-i02-index-test02.log",
+    "/tmp/s05-i02-index-test03.log",
+    "/tmp/s05-i02-index-test04.log",
+    "/tmp/s05-i02-index-test05.log",
+    "/tmp/s05-i02-index-test06.log",
+    "/tmp/s05-i02-lint-final01.log",
+    "/tmp/s05-i02-lint-final02.log",
+    "/tmp/s05-i02-lint01.log",
+    "/tmp/s05-i02-lint02.log",
+    "/tmp/s05-i02-lint03.log",
+    "/tmp/s05-i02-lint04.log",
+    "/tmp/s05-i02-lint05.log",
+    "/tmp/s05-i02-lint06.log",
+    "/tmp/s05-i02-lint07.log",
+    "/tmp/s05-i02-lint08.log",
+    "/tmp/s05-i02-lint09.log",
+    "/tmp/s05-i02-lint10.log",
+    "/tmp/s05-i02-lint11.log",
+    "/tmp/s05-i02-lint12.log",
+    "/tmp/s05-i02-lint13.log",
+    "/tmp/s05-i02-managed-current01.log",
+    "/tmp/s05-i02-managed-final01.log",
+    "/tmp/s05-i02-managed-tests01.log",
+    "/tmp/s05-i02-no-default-final01.log",
+    "/tmp/s05-i02-package-search-final01.log",
+    "/tmp/s05-i02-profile-test01.log",
+    "/tmp/s05-i02-profile-test02.log",
+    "/tmp/s05-i02-profile-test03.log",
+    "/tmp/s05-i02-projection-current-fmt.rs",
+    "/tmp/s05-i02-projection-current-fmt2.rs",
+    "/tmp/s05-i02-projection-rustfmt01.rs",
+    "/tmp/s05-i02-projection-rustfmt02.rs",
+    "/tmp/s05-i02-safe-rustfmt-final01",
+    "/tmp/s05-i02-safe-rustfmt-final02",
+    "/tmp/s05-i03-after-remove-err.txt",
+    "/tmp/s05-i03-after-remove-latest.err",
+    "/tmp/s05-i03-after-remove-latest.out",
+    "/tmp/s05-i03-after-remove-out.txt",
+    "/tmp/s05-i03-all-features-retry01.log",
+    "/tmp/s05-i03-atoms-fmt-check01.log",
+    "/tmp/s05-i03-atoms-lint01.log",
+    "/tmp/s05-i03-atoms-rustfmt01.rs",
+    "/tmp/s05-i03-atoms-test01.log",
+    "/tmp/s05-i03-atoms-test02.log",
+    "/tmp/s05-i03-cli-existing01.log",
+    "/tmp/s05-i03-cli-readable01.log",
+    "/tmp/s05-i03-cli-readable02.log",
+    "/tmp/s05-i03-cli-readable03.log",
+    "/tmp/s05-i03-commit-message.txt",
+    "/tmp/s05-i03-final-check01.log",
+    "/tmp/s05-i03-final-format01.log",
+    "/tmp/s05-i03-final-io-cli-package01.log",
+    "/tmp/s05-i03-final-io-cli-package02.log",
+    "/tmp/s05-i03-final-io-fmt-check01.log",
+    "/tmp/s05-i03-final-io-fmt-check02.log",
+    "/tmp/s05-i03-final-io-lint01.log",
+    "/tmp/s05-i03-final-io-lint02.log",
+    "/tmp/s05-i03-final-io-rustfmt01-cli.rs",
+    "/tmp/s05-i03-final-io-rustfmt01-main.rs",
+    "/tmp/s05-i03-final-io-rustfmt02-main.rs",
+    "/tmp/s05-i03-final-lint01.log",
+    "/tmp/s05-i03-finaljourney-fmt-check01.log",
+    "/tmp/s05-i03-finaljourney-lint01.log",
+    "/tmp/s05-i03-finaljourney-test01.log",
+    "/tmp/s05-i03-fmt-check08.log",
+    "/tmp/s05-i03-fmt-check09.log",
+    "/tmp/s05-i03-fmt-check10.log",
+    "/tmp/s05-i03-fmtcheck01.log",
+    "/tmp/s05-i03-fmtcheck02.log",
+    "/tmp/s05-i03-fmtcheck03.log",
+    "/tmp/s05-i03-fmtcheck04.log",
+    "/tmp/s05-i03-fmtcheck05.log",
+    "/tmp/s05-i03-fmtcheck06.log",
+    "/tmp/s05-i03-format-safe-lib.rs.rs",
+    "/tmp/s05-i03-format-safe-main.rs.rs",
+    "/tmp/s05-i03-format-safe-presentation.rs.rs",
+    "/tmp/s05-i03-format-safe-presentation_contract.rs.rs",
+    "/tmp/s05-i03-format-safe-projection.rs.rs",
+    "/tmp/s05-i03-format-safe-query_output.rs.rs",
+    "/tmp/s05-i03-format-safe-query_output_contract.rs.rs",
+    "/tmp/s05-i03-format-safe-query_output_contract10.rs",
+    "/tmp/s05-i03-format-safe-query_output_contract11.rs",
+    "/tmp/s05-i03-format-safe-query_output_contract2.rs",
+    "/tmp/s05-i03-format-safe-query_output_contract3.rs",
+    "/tmp/s05-i03-format-safe-query_output_contract4.rs",
+    "/tmp/s05-i03-format-safe-query_output_contract5.rs",
+    "/tmp/s05-i03-format-safe-query_output_contract6.rs",
+    "/tmp/s05-i03-format-safe-query_output_contract7.rs",
+    "/tmp/s05-i03-format-safe-query_output_contract8.rs",
+    "/tmp/s05-i03-format-safe-query_output_contract9.rs",
+    "/tmp/s05-i03-format01",
+    "/tmp/s05-i03-format02",
+    "/tmp/s05-i03-format03",
+    "/tmp/s05-i03-format04",
+    "/tmp/s05-i03-format05",
+    "/tmp/s05-i03-format06",
+    "/tmp/s05-i03-format07",
+    "/tmp/s05-i03-format08-cli-test.rs",
+    "/tmp/s05-i03-format08-main.rs",
+    "/tmp/s05-i03-format08-presentation.rs",
+    "/tmp/s05-i03-format09-presentation.rs",
+    "/tmp/s05-i03-format10-presentation.rs",
+    "/tmp/s05-i03-full-cli-test01.log",
+    "/tmp/s05-i03-lifecycle-fmt-check01.log",
+    "/tmp/s05-i03-lifecycle-fmt-check02.log",
+    "/tmp/s05-i03-lifecycle-fmt-check03.log",
+    "/tmp/s05-i03-lifecycle-fmt-check04.log",
+    "/tmp/s05-i03-lifecycle-fmt-check05.log",
+    "/tmp/s05-i03-lifecycle-fmt-check06.log",
+    "/tmp/s05-i03-lifecycle-lint01.log",
+    "/tmp/s05-i03-lifecycle-lint02.log",
+    "/tmp/s05-i03-lifecycle-lint03.log",
+    "/tmp/s05-i03-lifecycle-lint04.log",
+    "/tmp/s05-i03-lifecycle-lint05.log",
+    "/tmp/s05-i03-lifecycle-lint06.log",
+    "/tmp/s05-i03-lifecycle-test01.log",
+    "/tmp/s05-i03-lifecycle-test02.log",
+    "/tmp/s05-i03-lifecycle-test03-retry.log",
+    "/tmp/s05-i03-lifecycle-test03.log",
+    "/tmp/s05-i03-lifecycle-test04.log",
+    "/tmp/s05-i03-lifecycle-test05.log",
+    "/tmp/s05-i03-lint01.log",
+    "/tmp/s05-i03-lint02.log",
+    "/tmp/s05-i03-lint03.log",
+    "/tmp/s05-i03-lint04.log",
+    "/tmp/s05-i03-lint05.log",
+    "/tmp/s05-i03-lint06.log",
+    "/tmp/s05-i03-lint07.log",
+    "/tmp/s05-i03-lint08.log",
+    "/tmp/s05-i03-lint09.log",
+    "/tmp/s05-i03-lint10.log",
+    "/tmp/s05-i03-literals-fmt-check01.log",
+    "/tmp/s05-i03-literals-lint01.log",
+    "/tmp/s05-i03-literals-test01.log",
+    "/tmp/s05-i03-literals-test02.log",
+    "/tmp/s05-i03-package-cli01.log",
+    "/tmp/s05-i03-package-search01.log",
+    "/tmp/s05-i03-presentation-literals-rustfmt01.rs",
+    "/tmp/s05-i03-presentation-test01.log",
+    "/tmp/s05-i03-presentation01.log",
+    "/tmp/s05-i03-presentation02.log",
+    "/tmp/s05-i03-presentation03.log",
+    "/tmp/s05-i03-presentation04.log",
+    "/tmp/s05-i03-presentation05.log",
+    "/tmp/s05-i03-query-output-fmt08.rs",
+    "/tmp/s05-i03-query-output-workflow-rustfmt01.rs",
+    "/tmp/s05-i03-query-output-workflow-rustfmt02.rs",
+    "/tmp/s05-i03-query-output-workflow-rustfmt03.rs",
+    "/tmp/s05-i03-query-output-workflow-rustfmt04.rs",
+    "/tmp/s05-i03-query-output-workflow-rustfmt05.rs",
+    "/tmp/s05-i03-query-output-workflow-rustfmt06.rs",
+    "/tmp/s05-i03-query-output-workflow-rustfmt07.rs",
+    "/tmp/s05-i03-resolve-fmt-check01.log",
+    "/tmp/s05-i03-resolve-fmt-check02.log",
+    "/tmp/s05-i03-resolve-fmt-check03.log",
+    "/tmp/s05-i03-resolve-golden-rustfmt01.rs",
+    "/tmp/s05-i03-resolve-golden-rustfmt02.rs",
+    "/tmp/s05-i03-resolve-golden-rustfmt03.rs",
+    "/tmp/s05-i03-resolve-golden-test01.log",
+    "/tmp/s05-i03-resolve-lint01.log",
+    "/tmp/s05-i03-resolve-lint02.log",
+    "/tmp/s05-i03-resolve-lint03.log",
+    "/tmp/s05-i03-sealed-fmt-check01.log",
+    "/tmp/s05-i03-sealed-fmt-check02.log",
+    "/tmp/s05-i03-sealed-fmt-check03.log",
+    "/tmp/s05-i03-sealed-journey-test01.log",
+    "/tmp/s05-i03-sealed-journey-test02.log",
+    "/tmp/s05-i03-sealed-journey-test03.log",
+    "/tmp/s05-i03-sealed-lint02.log",
+    "/tmp/s05-i03-sealed-lint03.log",
+    "/tmp/s05-i03-sealed-lint04.log",
+    "/tmp/s05-i03-stable-check01.log",
+    "/tmp/s05-i03-stable-format01.log",
+    "/tmp/s05-i03-stable-lint01.log",
+    "/tmp/s05-i03-w1w5-cli-contract01.log",
+    "/tmp/s05-i03-w1w5-fmt-check01.log",
+    "/tmp/s05-i03-w1w5-lint01.log",
+    "/tmp/s05-i03-w1w5-test01.log",
+    "/tmp/s05-i03-workflow-fmt-check01.log",
+    "/tmp/s05-i03-workflow-fmt-check02.log",
+    "/tmp/s05-i03-workflow-fmt-check03.log",
+    "/tmp/s05-i03-workflow-fmt-check04.log",
+    "/tmp/s05-i03-workflow-fmt-check05.log",
+    "/tmp/s05-i03-workflow-fmt-check06.log",
+    "/tmp/s05-i03-workflow-fmt-check07.log",
+    "/tmp/s05-i03-workflow-fmt-check08.log",
+    "/tmp/s05-i03-workflow-lint01.log",
+    "/tmp/s05-i03-workflow-lint02.log",
+    "/tmp/s05-i03-workflow-lint03.log",
+    "/tmp/s05-i03-workflow-lint04.log",
+    "/tmp/s05-i03-workflow-lint05.log",
+    "/tmp/s05-i03-workflow-lint06.log",
+    "/tmp/s05-i03-workflow-lint07.log",
+    "/tmp/s05-i03-workflow-lint08.log",
+    "/tmp/s05-i03-workflow-lint09.log",
+    "/tmp/s05-i03-workflow-readables-fmt-check01.log",
+    "/tmp/s05-i03-workflow-readables-fmt-check02.log",
+    "/tmp/s05-i03-workflow-readables-fmt-check03.log",
+    "/tmp/s05-i03-workflow-readables-lint01.log",
+    "/tmp/s05-i03-workflow-readables-lint02.log",
+    "/tmp/s05-i03-workflow-readables-lint03.log",
+    "/tmp/s05-i03-workflow-readables-rustfmt01.rs",
+    "/tmp/s05-i03-workflow-readables-rustfmt02.rs",
+    "/tmp/s05-i03-workflow-readables-rustfmt03.rs",
+    "/tmp/s05-i03-workflow-readables-test01.log",
+    "/tmp/s05-i03-workflow-readables-test02.log",
+    "/tmp/s05-i03-workflow-readables-test03.log",
+    "/tmp/s05-i03-workflow-sealed-fmt-check01.log",
+    "/tmp/s05-i03-workflow-sealed-lint01.log",
+    "/tmp/s05-i03-workflow-sealed-rustfmt01.rs",
+    "/tmp/s05-i03-workflow-test01.log",
+    "/tmp/s05-i03-workflow-test02.log",
+    "/tmp/s05-i03-workflow-test03.log",
+    "/tmp/s05-i03-workflow-test04.log",
+    "/tmp/s05-i03-workflow-test05.log",
+    "/tmp/s05-i03-workflow-test06.log",
+    "/tmp/s05-i03-workflow-test07.log",
+    "/tmp/s05-i03-workflow-test08.log",
+    "/tmp/s05-i05-all-features-final01.log",
+    "/tmp/s05-i05-cache-control01.log",
+    "/tmp/s05-i05-cache-control02.log",
+    "/tmp/s05-i05-cache-control03.log",
+    "/tmp/s05-i05-cache-control04.log",
+    "/tmp/s05-i05-cache-control05.log",
+    "/tmp/s05-i05-cache-control06.log",
+    "/tmp/s05-i05-cache-control07.log",
+    "/tmp/s05-i05-cache-control08.log",
+    "/tmp/s05-i05-cache-fmtcheck28.log",
+    "/tmp/s05-i05-cache-format28.rs",
+    "/tmp/s05-i05-cache-format29.rs",
+    "/tmp/s05-i05-cache-format30.rs",
+    "/tmp/s05-i05-cache-lint28.log",
+    "/tmp/s05-i05-check-final01.log",
+    "/tmp/s05-i05-commit-message.txt",
+    "/tmp/s05-i05-compact-unique-test01.log",
+    "/tmp/s05-i05-final-fmt-check01.log",
+    "/tmp/s05-i05-fmt-cache-cases01.stdout",
+    "/tmp/s05-i05-fmt-cache-cases02.stdout",
+    "/tmp/s05-i05-fmt-check04.log",
+    "/tmp/s05-i05-fmt-check05.log",
+    "/tmp/s05-i05-fmt-check06.log",
+    "/tmp/s05-i05-fmt-check07.log",
+    "/tmp/s05-i05-fmt-check08.log",
+    "/tmp/s05-i05-fmt-check09.log",
+    "/tmp/s05-i05-fmt-check10.log",
+    "/tmp/s05-i05-fmt-check11.log",
+    "/tmp/s05-i05-fmt-check12.log",
+    "/tmp/s05-i05-fmt-check13.log",
+    "/tmp/s05-i05-fmt-check14.log",
+    "/tmp/s05-i05-fmt-check15.log",
+    "/tmp/s05-i05-fmt-check16.log",
+    "/tmp/s05-i05-fmt-check17.log",
+    "/tmp/s05-i05-fmt-check18.log",
+    "/tmp/s05-i05-fmt-check19.log",
+    "/tmp/s05-i05-fmt-check20.log",
+    "/tmp/s05-i05-fmt-check21.log",
+    "/tmp/s05-i05-fmt-check22.log",
+    "/tmp/s05-i05-fmt-check23.log",
+    "/tmp/s05-i05-fmt-check24.log",
+    "/tmp/s05-i05-fmt-check25.log",
+    "/tmp/s05-i05-fmt-check26.log",
+    "/tmp/s05-i05-fmt-check37.log",
+    "/tmp/s05-i05-fmt-check38.log",
+    "/tmp/s05-i05-fmt-check39.log",
+    "/tmp/s05-i05-fmt-check40.log",
+    "/tmp/s05-i05-fmt-local-duplicate01.stdout",
+    "/tmp/s05-i05-fmt-public-test01.stdout",
+    "/tmp/s05-i05-fmt-public-test02.stdout",
+    "/tmp/s05-i05-fmt-public-test03.stdout",
+    "/tmp/s05-i05-fmt-public-test04.stdout",
+    "/tmp/s05-i05-fmt-public-test05.stdout",
+    "/tmp/s05-i05-fmt-raw-public01.stdout",
+    "/tmp/s05-i05-fmt-raw-public02.stdout",
+    "/tmp/s05-i05-fmt-raw-public03.stdout",
+    "/tmp/s05-i05-fmt-safe-0.rs",
+    "/tmp/s05-i05-fmt-safe-1.rs",
+    "/tmp/s05-i05-fmt-safe-2.rs",
+    "/tmp/s05-i05-fmt-safe-3.rs",
+    "/tmp/s05-i05-fmt-safe-4.rs",
+    "/tmp/s05-i05-fmt-safe-5.rs",
+    "/tmp/s05-i05-fmt-safe-6.rs",
+    "/tmp/s05-i05-fmt-safe-7.rs",
+    "/tmp/s05-i05-fmt-safe-8.rs",
+    "/tmp/s05-i05-fmt-safe-9.rs",
+    "/tmp/s05-i05-fmtcheck29.log",
+    "/tmp/s05-i05-fmtcheck30.log",
+    "/tmp/s05-i05-fmtcheck31.log",
+    "/tmp/s05-i05-fmtcheck32.log",
+    "/tmp/s05-i05-fmtcheck33.log",
+    "/tmp/s05-i05-fmtcheck34.log",
+    "/tmp/s05-i05-format-collections01.rs",
+    "/tmp/s05-i05-format-collections02.rs",
+    "/tmp/s05-i05-format-collections03.rs",
+    "/tmp/s05-i05-format-collections04.rs",
+    "/tmp/s05-i05-format-searchquery01.rs",
+    "/tmp/s05-i05-format-searchquery02.rs",
+    "/tmp/s05-i05-format-storelib01.rs",
+    "/tmp/s05-i05-format-storelib02.rs",
+    "/tmp/s05-i05-full-first-test01.log",
+    "/tmp/s05-i05-full-first-test02.log",
+    "/tmp/s05-i05-full-first-test03.log",
+    "/tmp/s05-i05-full-first-test04.log",
+    "/tmp/s05-i05-full-first-test05.log",
+    "/tmp/s05-i05-full-first-test06.log",
+    "/tmp/s05-i05-full-first-test07.log",
+    "/tmp/s05-i05-full-first-test08.log",
+    "/tmp/s05-i05-full-first-test09.log",
+    "/tmp/s05-i05-full-late-error-test01.log",
+    "/tmp/s05-i05-lint04.log",
+    "/tmp/s05-i05-lint05.log",
+    "/tmp/s05-i05-lint06.log",
+    "/tmp/s05-i05-lint07.log",
+    "/tmp/s05-i05-lint08.log",
+    "/tmp/s05-i05-lint09.log",
+    "/tmp/s05-i05-lint10.log",
+    "/tmp/s05-i05-lint11.log",
+    "/tmp/s05-i05-lint12.log",
+    "/tmp/s05-i05-lint13.log",
+    "/tmp/s05-i05-lint14.log",
+    "/tmp/s05-i05-lint15.log",
+    "/tmp/s05-i05-lint16.log",
+    "/tmp/s05-i05-lint17.log",
+    "/tmp/s05-i05-lint18.log",
+    "/tmp/s05-i05-lint19.log",
+    "/tmp/s05-i05-lint20.log",
+    "/tmp/s05-i05-lint21.log",
+    "/tmp/s05-i05-lint22.log",
+    "/tmp/s05-i05-lint23.log",
+    "/tmp/s05-i05-lint24.log",
+    "/tmp/s05-i05-lint25.log",
+    "/tmp/s05-i05-lint26.log",
+    "/tmp/s05-i05-lint27.log",
+    "/tmp/s05-i05-lint29.log",
+    "/tmp/s05-i05-lint30.log",
+    "/tmp/s05-i05-lint31.log",
+    "/tmp/s05-i05-lint32.log",
+    "/tmp/s05-i05-lint33.log",
+    "/tmp/s05-i05-lint34.log",
+    "/tmp/s05-i05-lint37.log",
+    "/tmp/s05-i05-lint38.log",
+    "/tmp/s05-i05-lint39.log",
+    "/tmp/s05-i05-lint40.log",
+    "/tmp/s05-i05-lint41.log",
+    "/tmp/s05-i05-local-chain-focused01.log",
+    "/tmp/s05-i05-local-chain-focused02.log",
+    "/tmp/s05-i05-local-chain-format01.rs",
+    "/tmp/s05-i05-no-default-final01.log",
+    "/tmp/s05-i05-order-format29.rs",
+    "/tmp/s05-i05-order-format30.rs",
+    "/tmp/s05-i05-order-format31.rs",
+    "/tmp/s05-i05-order-format32.rs",
+    "/tmp/s05-i05-order-format33.rs",
+    "/tmp/s05-i05-raw-any-test01.log",
+    "/tmp/s05-i05-raw-any-test02.log",
+    "/tmp/s05-i05-raw-any-test03.log",
+    "/tmp/s05-i05-raw-any-test04.log",
+    "/tmp/s05-i05-raw-any-test05.log",
+    "/tmp/s05-i05-raw-private06.log",
+    "/tmp/s05-i05-raw-public-order-test01.log",
+    "/tmp/s05-i05-raw-public-order-test02.log",
+    "/tmp/s05-i05-raw-public-order-test03.log",
+    "/tmp/s05-i05-search-collection-contract03.log",
+    "/tmp/s05-i05-search-contract-full-index-blob.rs",
+    "/tmp/s05-i05-search-contract-full-index-drop.rs",
+    "/tmp/s05-i05-search-contract-full-index-fix.rs",
+    "/tmp/s05-i05-search-contract-full-index-registered.rs",
+    "/tmp/s05-i05-search-contract-full-index.rs",
+    "/tmp/s05-i05-search-contract-late-error.rs",
+    "/tmp/s05-i05-search-contract01.log",
+    "/tmp/s05-i05-search-list-final01.log",
+    "/tmp/s05-i05-search-order04.log",
+    "/tmp/s05-i05-search-order05.log",
+    "/tmp/s05-i05-search-order06.log",
+    "/tmp/s05-i05-search-query-full-index-final.rs",
+    "/tmp/s05-i05-search-query-full-index-fix.rs",
+    "/tmp/s05-i05-search-query-full-index.rs",
+    "/tmp/s05-i05-store-list-final01.log",
+    "/tmp/vlajmaji-p01-a04-s05-cc",
+    "/tmp/vlajmaji-p01-a04-s05-cc-commit.txt",
+    "/tmp/vlajmaji-p01-a04-s05-cdc",
+    "/tmp/vlajmaji-p01-a04-s05-i01-all-features-final01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-check-final01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-cli-output01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-dictionary-projection-final01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-fmt-check01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-fmt-check02.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-fmt-check03.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-fmt-check04.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format02.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format03.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format04.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format05.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format06.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format07.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format08.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format09.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format10.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format11.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format12.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format13.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format14.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format15.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format16.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format17.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format18.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format19.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format20.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format21.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-format22.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-identity-families01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-identity-families02.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-identity-families03.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-inventory-cli01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-inventory-search01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-inventory-store01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint02.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint03.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint04.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint05.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint06.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint07.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint08.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint09.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint10.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint11.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint12.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint13.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint14.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint15.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint16.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint17.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint18.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint19.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint20.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint21.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint22.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint23.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint24.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-lint25.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-managed-profile01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-missing-entry01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-no-default-final01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-no-default-final02.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-package-cli01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-package-search01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-profile01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-rustfmt-stdin01.rs",
+    "/tmp/vlajmaji-p01-a04-s05-i01-rustfmt-stdin02.rs",
+    "/tmp/vlajmaji-p01-a04-s05-i01-rustfmt-stdin03.rs",
+    "/tmp/vlajmaji-p01-a04-s05-i01-rustfmt-stdin04.rs",
+    "/tmp/vlajmaji-p01-a04-s05-i01-search-contract01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-search-contract02.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-snapshot-contract01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-static-unicode01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-static-unicode02.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-test01.log",
+    "/tmp/vlajmaji-p01-a04-s05-i01-test02.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-cli-test01.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-cli-test02.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-cli-test03.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-cli-test04.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-cli-test05.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-cli-test06.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-dictionary-test01.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-dictionary-test02.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-dictionary-test03.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-dictionary-test04.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format01.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format02.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format03.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format04.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format11.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format12.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format13.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format14.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format15.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format16.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format17.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format18.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format19.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format20.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format21.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format22.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format23.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format24.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format25.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format26.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format27.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format28.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format29.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format30.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format31.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format32.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format33.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format34.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format35.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format36.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format37.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format38.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format39.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format40.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format41.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format42.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format43.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format44.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format45.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format46.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format47.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format48.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format49.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format50.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format51.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format52.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format53.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format54.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format55.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format56.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format57.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format58.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format59.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format60.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format66.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format67.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-format68.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint01.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint02.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint03.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint04.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint05.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint06.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint07.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint08.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint09.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint10.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint12.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint13.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint14.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint15.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint16.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint17.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint18.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint19.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint20.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint21.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint22.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint23.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint24.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint25.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint26.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint27.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint28.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint29.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint30.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint31.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint32.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint33.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint34.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint35.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint36.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint37.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint38.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint39.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint41.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint42.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint43.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint44.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint45.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint46.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint47.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint48.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint49.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint50.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint51.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint52.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint53.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint54.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint55.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint56.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint57.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint58.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint59.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint60.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint61.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint62.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint63.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint64.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint65.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint66.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint67.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint68.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-lint69.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-search-test10.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-search-test11.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-search-test12.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-search-test13.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-search-test14.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-search-test15.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-store-projection-test01.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-store-projection-test02.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-store-projection-test03.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-store-projection-test04.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-store-projection-test05.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-store-projection-test06.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-store-projection-test07.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-store-projection-test08.log",
+    "/tmp/vlajmaji-p01-a04-s05-initial-store-projection-test09.log",
+    "/tmp/vlajmaji-p01-a04-s05-root-rebase01",
+    "/tmp/vlajmaji-s05-i04-check-final01.log",
+    "/tmp/vlajmaji-s05-i04-cli-contract-final01.log",
+    "/tmp/vlajmaji-s05-i04-cli-contract-final02.log",
+    "/tmp/vlajmaji-s05-i04-cli-contract-final03.log",
+    "/tmp/vlajmaji-s05-i04-commit-message.txt",
+    "/tmp/vlajmaji-s05-i04-emitter-final01.log",
+    "/tmp/vlajmaji-s05-i04-emitter-final02.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check01.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check02.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check03.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check04.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check05.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check06.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check07.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check08.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check09.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check10.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check11.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check12.log",
+    "/tmp/vlajmaji-s05-i04-fmt-check13.log",
+    "/tmp/vlajmaji-s05-i04-format-main01.rs",
+    "/tmp/vlajmaji-s05-i04-format-presentation01.rs",
+    "/tmp/vlajmaji-s05-i04-format-presentation02.rs",
+    "/tmp/vlajmaji-s05-i04-format-presentation03.rs",
+    "/tmp/vlajmaji-s05-i04-format-presentation04.rs",
+    "/tmp/vlajmaji-s05-i04-format-query-output01.rs",
+    "/tmp/vlajmaji-s05-i04-format-query-output02.rs",
+    "/tmp/vlajmaji-s05-i04-format-query03.rs",
+    "/tmp/vlajmaji-s05-i04-format-query04.rs",
+    "/tmp/vlajmaji-s05-i04-format-query05.rs",
+    "/tmp/vlajmaji-s05-i04-format-query06.rs",
+    "/tmp/vlajmaji-s05-i04-format-query07.rs",
+    "/tmp/vlajmaji-s05-i04-format-query08.rs",
+    "/tmp/vlajmaji-s05-i04-format-query09.rs",
+    "/tmp/vlajmaji-s05-i04-format-query10.rs",
+    "/tmp/vlajmaji-s05-i04-format-query11.rs",
+    "/tmp/vlajmaji-s05-i04-format-query12.rs",
+    "/tmp/vlajmaji-s05-i04-format-query13.rs",
+    "/tmp/vlajmaji-s05-i04-journey01.log",
+    "/tmp/vlajmaji-s05-i04-journey02.log",
+    "/tmp/vlajmaji-s05-i04-journey03.log",
+    "/tmp/vlajmaji-s05-i04-journey04.log",
+    "/tmp/vlajmaji-s05-i04-journey05.log",
+    "/tmp/vlajmaji-s05-i04-lint01.log",
+    "/tmp/vlajmaji-s05-i04-lint02.log",
+    "/tmp/vlajmaji-s05-i04-lint03.log",
+    "/tmp/vlajmaji-s05-i04-lint04.log",
+    "/tmp/vlajmaji-s05-i04-lint05.log",
+    "/tmp/vlajmaji-s05-i04-lint06.log",
+    "/tmp/vlajmaji-s05-i04-lint07.log",
+    "/tmp/vlajmaji-s05-i04-lint08.log",
+    "/tmp/vlajmaji-s05-i04-lint09.log",
+    "/tmp/vlajmaji-s05-i04-lint10.log",
+    "/tmp/vlajmaji-s05-i04-lint11.log",
+    "/tmp/vlajmaji-s05-i04-lint12.log",
+    "/tmp/vlajmaji-s05-i04-lint13.log",
+    "/tmp/vlajmaji-s05-i04-presentation-final01.log",
+    "/tmp/vlajmaji-s05-i04-presentation-final02.log",
+    "/tmp/vlajmaji-s05-i04-presentation-nodefault01.log",
+    "/tmp/vlajmaji-s05-iteration01-handoff-message01.txt"
+  ],
+  "scratch_scope_provenance": {
+    "temporary_bases": [
+      "/tmp",
+      "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T"
+    ],
+    "inherited_TMPDIR_original": "/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/",
+    "source_prefixes_explicit": [
+      "s05-",
+      "vlajmaji-s05-",
+      "vlajmaji-p01-a04-s05"
+    ],
+    "source_fixture_prefixes_conservative": [
+      "vlajmaji-compact-projection-",
+      "vlajmaji-reference-projection-",
+      "vlajmaji-query-output-",
+      "vlajmaji-s04-",
+      "vlajmaji-s03-profile-",
+      "vlajmaji-s03-cli-",
+      "vlajmaji-s03-managed-",
+      "vlajmaji-s02-",
+      "vlajmaji-verification-",
+      "vlajmaji-store-fixture-",
+      "vlajmaji-dictionary-store-",
+      "vlajmaji-data-pack-",
+      "vlajmaji-cli-default-store-",
+      "vlajmaji-topology-",
+      "vlajmaji-cli-verify-",
+      "vlajmaji-search-topology-",
+      "vlajmaji-cli-marker-unit-",
+      "vlajmaji-manifest-"
+    ],
+    "generic_birth_cutoff": 1793112634,
+    "cutoff_source_commit": "949dde529378b33a32df0d6055942be52596d1cb",
+    "generic_lstat_census": [
+      {
+        "path": "/tmp/vlajmaji-s04-lifecycle-current05.log",
+        "birthtime": 1793065936.1317542,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-extensions.log",
+        "birthtime": 1792848773.9628305,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-header-results.json",
+        "birthtime": 1792848795.8228908,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-returned-faults01.log",
+        "birthtime": 1793065416.5173538,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-header-final.log",
+        "birthtime": 1792847331.7529993,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-repair01-cc-example-final.json",
+        "birthtime": 1792832428.9332457,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-example-store-final",
+        "birthtime": 1792847294.689629,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-make-no-default-cc.log",
+        "birthtime": 1792847401.847293,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-caller-baseline-store",
+        "birthtime": 1792848737.7426596,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-workspace-locked.log",
+        "birthtime": 1792848690.7084148,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-make-check-cc.log",
+        "birthtime": 1792847153.1398664,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lifecycle-current06.log",
+        "birthtime": 1793066030.1788847,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-refprobe-unrecognized.stderr",
+        "birthtime": 1792884885.2007236,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-full-replay-cc-copy.log",
+        "birthtime": 1792847115.5622244,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-issue.py",
+        "birthtime": 1792848183.4807215,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-ref01-final-public.json",
+        "birthtime": 1792833046.8630967,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-returned-faults02.log",
+        "birthtime": 1793065456.9014044,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-fk02.log",
+        "birthtime": 1793063352.7155278,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-close-verify.py",
+        "birthtime": 1792989239.5602643,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-variants-cc-copy",
+        "birthtime": 1792847133.2586534,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-full-replay-cc-run2.log",
+        "birthtime": 1792847010.7409465,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-fk03.log",
+        "birthtime": 1793063390.3099253,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-ordered.log",
+        "birthtime": 1792848773.2136326,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-returned-faults03.log",
+        "birthtime": 1793065489.917085,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-fourpack-focused04.log",
+        "birthtime": 1793065233.9636915,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-mechanical-close.py",
+        "birthtime": 1792989204.0035079,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ordered-final",
+        "birthtime": 1792847328.7004025,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-refprobe-unrecognized.status",
+        "birthtime": 1792884885.216361,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-close.py",
+        "birthtime": 1792835079.1122508,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-header-cc-copy",
+        "birthtime": 1792847140.3786128,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-rebuild-returned-fault02.log",
+        "birthtime": 1793065723.7635908,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-cli-focused02.log",
+        "birthtime": 1793063956.7746973,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-all-features-cc.log",
+        "birthtime": 1792847236.5253096,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-ref01-final-public-r2.json",
+        "birthtime": 1792833070.3047266,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-full-replay-final",
+        "birthtime": 1792847305.0338597,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-inventory07.log",
+        "birthtime": 1793065174.6655889,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-variants.log",
+        "birthtime": 1792848769.9451191,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-inventory06.log",
+        "birthtime": 1793065153.4792829,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-header-cc.log",
+        "birthtime": 1792847083.806473,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-cli-focused03.log",
+        "birthtime": 1793064050.5822086,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-caller-create.stderr",
+        "birthtime": 1792848730.5210588,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-migrate-output-context02.log",
+        "birthtime": 1793064363.1158504,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-fourpack-focused01.log",
+        "birthtime": 1793064760.0662892,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-example-final.log",
+        "birthtime": 1792847291.0102649,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-replay",
+        "birthtime": 1792848737.989244,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-refinement-records.py",
+        "birthtime": 1792831584.2457423,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-fourpack-focused03.log",
+        "birthtime": 1793065206.107044,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-rebuild-returned-fault01.log",
+        "birthtime": 1793065712.6935503,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-cli01.log",
+        "birthtime": 1793063615.1323197,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-cli-focused01.log",
+        "birthtime": 1793063625.7224107,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-full-replay.log",
+        "birthtime": 1792848737.927135,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-close-records.py",
+        "birthtime": 1792988996.8663826,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-returned-faults04.log",
+        "birthtime": 1793065530.7316742,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ref-edges-cc",
+        "birthtime": 1792847083.5134225,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-inventory10.log",
+        "birthtime": 1793065228.6567783,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-inventory05.log",
+        "birthtime": 1793065014.4967082,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-example-input.json",
+        "birthtime": 1792846934.1638591,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-cli-contract.log",
+        "birthtime": 1792848591.679739,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-current-metadata.py",
+        "birthtime": 1793061322.7645726,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-fourpack-focused02.log",
+        "birthtime": 1793065023.5756385,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-migrate-output-context01.log",
+        "birthtime": 1793064289.1275349,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ordered-cc",
+        "birthtime": 1792847066.849163,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-close.py",
+        "birthtime": 1792849153.2395177,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-fk-control01.log",
+        "birthtime": 1793063074.8565547,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-example.log",
+        "birthtime": 1792848691.012717,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-fixture-raw.json",
+        "birthtime": 1792884292.564817,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-reference-results-final.json",
+        "birthtime": 1792848794.3168676,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-full-replay-final.log",
+        "birthtime": 1792847304.9555137,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-fourpack02.log",
+        "birthtime": 1793064700.4026723,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-full-replay-cc",
+        "birthtime": 1792846996.9740026,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-pointer-member01.log",
+        "birthtime": 1793066156.0793846,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lifecycle-focused01.log",
+        "birthtime": 1793062561.8662975,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-transport",
+        "birthtime": 1792848794.355047,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-fourpack03.log",
+        "birthtime": 1793064738.7538993,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-fourpack01.log",
+        "birthtime": 1793064672.0695953,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-close-commit.txt",
+        "birthtime": 1792989280.2607803,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ordered-cc-copy.log",
+        "birthtime": 1792847136.4584444,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-final02.log",
+        "birthtime": 1793064227.1220615,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-extension-cc-copy",
+        "birthtime": 1792847137.2327335,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-fault-hooks01.log",
+        "birthtime": 1793065382.2370136,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-fault-hooks03.log",
+        "birthtime": 1793065439.8574793,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-ref02-records.py",
+        "birthtime": 1792833650.9297526,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ordered-cc-copy",
+        "birthtime": 1792847136.4887087,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ref-edges-cc-copy.log",
+        "birthtime": 1792847137.6449242,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-inventory08.log",
+        "birthtime": 1793065187.3906832,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-fourpack03.log",
+        "birthtime": 1793064746.6143584,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-fourpack01.log",
+        "birthtime": 1793064663.6270497,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-pointer-member02.log",
+        "birthtime": 1793066200.7308528,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-cli01.log",
+        "birthtime": 1793063607.4341366,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-extension-final",
+        "birthtime": 1792847329.5090575,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-error-report03.log",
+        "birthtime": 1793066004.5453954,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lifecycle-focused02.log",
+        "birthtime": 1793062613.7811692,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-linux-output01.log",
+        "birthtime": 1793064033.1109173,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lifecycle-focused03.log",
+        "birthtime": 1793062731.2422967,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-tmp-alias-14966-1792887974005531000",
+        "birthtime": 1792887974.0196035,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-make-no-default.log",
+        "birthtime": 1792848656.9119022,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-pointer-member03.log",
+        "birthtime": 1793066230.0496688,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-fourpack02.log",
+        "birthtime": 1793064709.9024744,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-inventory09.log",
+        "birthtime": 1793065199.918804,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-header-controls.log",
+        "birthtime": 1792848794.5725238,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-transport-cc",
+        "birthtime": 1792847083.54524,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-final01.log",
+        "birthtime": 1793064193.3075283,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-fault-hooks02.log",
+        "birthtime": 1793065400.4482965,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-full-replay-cc-run2",
+        "birthtime": 1792847010.7842066,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-variants-final.log",
+        "birthtime": 1792847325.2389045,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-output-context-unit02.log",
+        "birthtime": 1793064041.812619,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-version-kind02.log",
+        "birthtime": 1793065912.0869367,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-store-lib-current01.log",
+        "birthtime": 1793066047.3254714,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-fourpack04.log",
+        "birthtime": 1793064784.3360417,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lifecycle-focused07.log",
+        "birthtime": 1793063311.5402188,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-pointer-member03.log",
+        "birthtime": 1793066224.78668,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-refprobe-unrecognized.stdout",
+        "birthtime": 1792884885.1938987,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-pointer-member02.log",
+        "birthtime": 1793066194.6250334,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lifecycle-focused06.log",
+        "birthtime": 1793063089.4835742,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-variants-cc",
+        "birthtime": 1792847040.7045853,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-transport.log",
+        "birthtime": 1792848794.3248458,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-cli-default-store-cdc",
+        "birthtime": 1792893207.681787,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-fixture-metadata.toml",
+        "birthtime": 1792884443.6469736,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-control-copy",
+        "birthtime": 1792847115.5454233,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-header-cc",
+        "birthtime": 1792847085.0633426,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-fault-hooks05.log",
+        "birthtime": 1793065514.202597,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-variants-final",
+        "birthtime": 1792847325.2813358,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-no-default-cc.log",
+        "birthtime": 1792847229.6987488,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-output-context-unit01.log",
+        "birthtime": 1793063941.2118967,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-reference-results-retry.json",
+        "birthtime": 1792848785.21971,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-final02.log",
+        "birthtime": 1793064237.228381,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-transport-final.log",
+        "birthtime": 1792847331.365307,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lifecycle-focused04.log",
+        "birthtime": 1793062878.125313,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-pointer-member01.log",
+        "birthtime": 1793066148.0168617,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lifecycle-focused05.log",
+        "birthtime": 1793062986.505253,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-packet.py",
+        "birthtime": 1792845052.6612177,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-final03.log",
+        "birthtime": 1793064260.304708,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-fourpack04.log",
+        "birthtime": 1793064789.5461464,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-ref02-prompt.py",
+        "birthtime": 1792833751.4383416,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-repair01-cc-positive.json",
+        "birthtime": 1792832417.4691985,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-fault-hooks04.log",
+        "birthtime": 1793065475.4437723,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-prompt.md",
+        "birthtime": 1792826687.728161,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-fault-hooks02.log",
+        "birthtime": 1793065399.533677,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lifecycle-focused08.log",
+        "birthtime": 1793063361.043483,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-draft.py",
+        "birthtime": 1793061075.8524551,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-fixture-metadata-bad.toml",
+        "birthtime": 1792884443.6517677,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ref-edges-final.log",
+        "birthtime": 1792847329.944202,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lifecycle-focused09.log",
+        "birthtime": 1793063400.5390184,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-fault-hooks03.log",
+        "birthtime": 1793065438.876747,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ref-edges-final",
+        "birthtime": 1792847331.3603623,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-extensions",
+        "birthtime": 1792848773.9902997,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-refprobe-protected.stdout",
+        "birthtime": 1792884887.8524172,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-caller-create.log",
+        "birthtime": 1792848730.5251405,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-output-context03.log",
+        "birthtime": 1793064352.6861074,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-make-check.log",
+        "birthtime": 1792848606.7491217,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-migration-invalids03.log",
+        "birthtime": 1793066206.0962338,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-full-replay-cc.log",
+        "birthtime": 1792846996.8042655,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-fault-hooks01.log",
+        "birthtime": 1793065381.1302946,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-independent-cc",
+        "birthtime": 1792846968.8562336,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-reference-edges-retry.log",
+        "birthtime": 1792848785.1115654,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-migration-invalids02.log",
+        "birthtime": 1793066173.4521825,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-verification-readiness.py",
+        "birthtime": 1792898050.982964,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-extension-final.log",
+        "birthtime": 1792847329.4756012,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-verification-version-precedence-focused.log",
+        "birthtime": 1792900452.2260058,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-inventory10.log",
+        "birthtime": 1793065227.7215915,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-fault-hooks04.log",
+        "birthtime": 1793065474.530811,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-current06.log",
+        "birthtime": 1793065967.395659,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-fault-hooks05.log",
+        "birthtime": 1793065513.1310785,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-inventory05.log",
+        "birthtime": 1793065007.9368799,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-ref01-final-fixture.json",
+        "birthtime": 1792833043.7768016,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-output-context03.log",
+        "birthtime": 1793064344.499736,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-public-caller-final-build.log",
+        "birthtime": 1792847281.863582,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ref-edges-cc-copy",
+        "birthtime": 1792847138.8920004,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-inventory07.log",
+        "birthtime": 1793065173.5907624,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-fk03.log",
+        "birthtime": 1793063381.4759321,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-example-store-cc-run2",
+        "birthtime": 1792846948.9652433,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-split-fk-valid-counterpart01.log",
+        "birthtime": 1793065700.000833,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-workspace-check-cc.log",
+        "birthtime": 1792847264.8964782,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-issue.py",
+        "birthtime": 1793061236.978355,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-variants-cc.log",
+        "birthtime": 1792847040.6391919,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-fk02.log",
+        "birthtime": 1793063344.2850647,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-extension-cc-copy.log",
+        "birthtime": 1792847137.20117,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-phase2-prospective.py",
+        "birthtime": 1793062134.044252,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-inventory06.log",
+        "birthtime": 1793065152.4047573,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-migration-invalids04.log",
+        "birthtime": 1793066236.7773445,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-reference-edges-final.log",
+        "birthtime": 1792848793.0574837,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-focused-search.log",
+        "birthtime": 1792848576.0185149,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-issue-message.txt",
+        "birthtime": 1793061267.712501,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-make-all-features.log",
+        "birthtime": 1792848667.3662753,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-extension-cc",
+        "birthtime": 1792847067.6600997,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ordered-final.log",
+        "birthtime": 1792847328.6699028,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-empty-cwd",
+        "birthtime": 1792953748.0798383,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-make-all-features-cc.log",
+        "birthtime": 1792847416.7072918,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-header-cc-copy.log",
+        "birthtime": 1792847139.1352217,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-inventory08.log",
+        "birthtime": 1793065188.2758574,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-refprobe-protected.status",
+        "birthtime": 1792884887.8653817,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-full-replay-cc-copy",
+        "birthtime": 1792847115.642969,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-inventory09.log",
+        "birthtime": 1793065200.9303715,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-search-contract.log",
+        "birthtime": 1792848591.1665206,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-ordered",
+        "birthtime": 1792848773.2427275,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-reference-edges.log",
+        "birthtime": 1792848774.401011,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-version-kind02.log",
+        "birthtime": 1793065918.5020301,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ordered-cc.log",
+        "birthtime": 1792847066.7922268,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-close-framing.py",
+        "birthtime": 1792989056.5367897,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-variants",
+        "birthtime": 1792848769.9857671,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-example-store",
+        "birthtime": 1792848693.6044822,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-repair01-cc-positive-final3.json",
+        "birthtime": 1792832808.340115,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-repair01-cc-example-final2.json",
+        "birthtime": 1792832681.2165668,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-transport-final",
+        "birthtime": 1792847331.3923588,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-make-check-final.log",
+        "birthtime": 1792848620.9111457,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-transport-cc-copy",
+        "birthtime": 1792847138.924638,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-repair01-cc-example.json",
+        "birthtime": 1792832284.3518791,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-plan.md",
+        "birthtime": 1792826251.2777276,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-output01.log",
+        "birthtime": 1793063888.455086,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-output02.log",
+        "birthtime": 1793063925.1135147,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-cli-build.log",
+        "birthtime": 1792848720.4814882,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-error-report03.log",
+        "birthtime": 1793066015.6268146,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-repair01-cc-example-final3.json",
+        "birthtime": 1792832800.1212854,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-repair01-cc-positive-final2.json",
+        "birthtime": 1792832690.0655265,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-cli-lifecycle-current01.log",
+        "birthtime": 1793064314.5149593,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-reference-results.json",
+        "birthtime": 1792848775.0950637,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-linux-output01.log",
+        "birthtime": 1793064024.8337553,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-variants-cc-copy.log",
+        "birthtime": 1792847133.2145894,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-output03.log",
+        "birthtime": 1793063989.4938908,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-r01-public-caller-build.log",
+        "birthtime": 1792848720.6388967,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-refprobe-sentinel",
+        "birthtime": 1792884885.212637,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-ref-edges-cc.log",
+        "birthtime": 1792847082.001043,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-lint-output02.log",
+        "birthtime": 1793063933.6653807,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-format-output01.log",
+        "birthtime": 1793063879.3612406,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-extension-cc.log",
+        "birthtime": 1792847067.63245,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-transport-cc.log",
+        "birthtime": 1792847083.5191047,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-make-check-cc-run2.log",
+        "birthtime": 1792847170.5960612,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-cli-lifecycle-current02.log",
+        "birthtime": 1793064372.3407755,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s02-refprobe-protected.stderr",
+        "birthtime": 1792884887.853126,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-transport-cc-copy.log",
+        "birthtime": 1792847138.8969226,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-make-check-cc-run3.log",
+        "birthtime": 1792847187.5659132,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-fence-refine.py",
+        "birthtime": 1793061131.7789414,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/tmp/vlajmaji-s04-header-final",
+        "birthtime": 1792847333.2078786,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-profile-configure-69623-1792990953649065000",
+        "birthtime": 1792990953.649524,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-lifecycle-update-returned-fault-99010-1793065459760116000-1",
+        "birthtime": 1793065459.760521,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-split-fk-93000-1793063315560884000",
+        "birthtime": 1793063315.5611184,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-cli-maintenance-27656-1793073483909386000",
+        "birthtime": 1793073483.90984,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-local-history-late-corruption-1516-1793156964260841000",
+        "birthtime": 1793156964.316363,
+        "selected": true,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-local-history-late-corruption-934-1793156886459588000",
+        "birthtime": 1793156886.601383,
+        "selected": true,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-lifecycle-migration-returned-fault-99187-1793065492773204000-2",
+        "birthtime": 1793065492.7739987,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-v1-3710-1793067105115962000",
+        "birthtime": 1793067105.1192544,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-symlink-target-17870-1792981298058031000",
+        "birthtime": 1792981298.0610166,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-symlink-alias-32603-1792984725740342000",
+        "birthtime": 1792984725.918771,
+        "selected": false,
+        "is_symlink": true,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27202-1792838187337139000-3",
+        "birthtime": 1792838187.3380504,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-78067-1792884087330767000-4",
+        "birthtime": 1792884087.3317626,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-67898-1792843157739378000-11",
+        "birthtime": 1792843157.7394423,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-catalog-native-capture-error-order-96342-1793156151779166000",
+        "birthtime": 1793156151.8282945,
+        "selected": true,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-symlink-target-32603-1792984725740007000",
+        "birthtime": 1792984725.7804441,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-configure-output-error-84356-1792994753587373000",
+        "birthtime": 1792994753.5877862,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-four-source-update-rebuild-97805-1793065026256680000",
+        "birthtime": 1793065026.265878,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-topology-34438-1792968002047743000-0",
+        "birthtime": 1792968002.0481014,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-symlink-alias-17870-1792981298058181000",
+        "birthtime": 1792981298.1141932,
+        "selected": false,
+        "is_symlink": true,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-configure-output-error-84466-1792994783314294000",
+        "birthtime": 1792994783.314783,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-24768-1792837711159101000-1",
+        "birthtime": 1792837711.1595492,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-update-rebuild-88702-1793062566439065000",
+        "birthtime": 1793062566.4423099,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-v1-93343-1793063363175663000",
+        "birthtime": 1793063363.1795645,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27202-1792838187337134000-2",
+        "birthtime": 1792838187.3382974,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27202-1792838187374513000-7",
+        "birthtime": 1792838187.3746743,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-23198-1792837293268804000-0",
+        "birthtime": 1792837293.2691092,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-maintenance-committed-stage-marker-operations-62408-1793078911842232000",
+        "birthtime": 1793078911.845796,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-v1-4071-1793067243487770000",
+        "birthtime": 1793067243.4912956,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-split-fk-93343-1793063363378506000",
+        "birthtime": 1793063363.3787663,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-root-file-32603-1792984725739915000",
+        "birthtime": 1792984725.7406535,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-shared-source-conflict-16689-1792980673944592000",
+        "birthtime": 1792980674.013735,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-four-source-update-rebuild-97022-1793064766838883000",
+        "birthtime": 1793064766.8486536,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-lifecycle-catalogue-child-exit-30946-1793074570006097000-0",
+        "birthtime": 1793074570.0105078,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-36403-1792838884228190000-4",
+        "birthtime": 1792838884.228587,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-summary-isolation-17773-1792981253936674000",
+        "birthtime": 1792981254.0027044,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-relative-file-root-89261-1792995698519940000",
+        "birthtime": 1792995698.5209856,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-policy-default-policy-26722-1793073194680260000",
+        "birthtime": 1793073194.680849,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-cli-lost-response-20131-1792982502208457000",
+        "birthtime": 1792982502.2086575,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-unsupported-derived-version-87704-1792995434300937000",
+        "birthtime": 1792995434.3503149,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-search-topology-34605-1792968095583313000-0",
+        "birthtime": 1792968095.5835547,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-native-config-io-90556-1792995914104339000",
+        "birthtime": 1792995914.1046352,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-cli-lifecycle-14564-1792979221484915000",
+        "birthtime": 1792979221.485054,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-23680-1792837370944432000-1",
+        "birthtime": 1792837370.9446383,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-profile-error-categories-82694-1792994308474321000",
+        "birthtime": 1792994308.4748576,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-v1-3929-1793067203807133000",
+        "birthtime": 1793067203.8104525,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-cli-maintenance-29601-1793074141510683000",
+        "birthtime": 1793074141.5114393,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-cli-default-store-70348-5",
+        "birthtime": 1792894196.8421504,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-23261-1792837304442680000-1",
+        "birthtime": 1792837304.4429593,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-cli-default-store-70348-2",
+        "birthtime": 1792894196.8422754,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-lifecycle-update-returned-fault-98814-1793065422407936000",
+        "birthtime": 1793065422.4083216,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-database-symlink-32689-1792984786104027000",
+        "birthtime": 1792984786.1323476,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-maintenance-reinstall-open-busy-context-50193-1793077505409586000",
+        "birthtime": 1793077505.41308,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27202-1792838187337515000-5",
+        "birthtime": 1792838187.3380103,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-native-config-io-90391-1792995884755261000",
+        "birthtime": 1792995884.7553537,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-cli-absent-14564-1792979221484932000",
+        "birthtime": 1792979221.4851456,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-deleted-cwd-91930-1792996237115857000",
+        "birthtime": 1792996237.1163273,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-23744-1792837391710829000-0",
+        "birthtime": 1792837391.7111895,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27065-1792838165202637000-0",
+        "birthtime": 1792838165.2035573,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-native-root-parent-32603-1792984725817421000",
+        "birthtime": 1792984725.8174808,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-profile-literal-69623-1792990953649094000",
+        "birthtime": 1792990953.6495457,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-deleted-cwd-92053-1792996269344708000",
+        "birthtime": 1792996269.345256,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-lifecycle-migration-returned-fault-98814-1793065422407937000",
+        "birthtime": 1793065422.4084358,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-24768-1792837711159097000-0",
+        "birthtime": 1792837711.159597,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-23619-1792837356792590000-1",
+        "birthtime": 1792837356.7928455,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-78067-1792884087334072000-6",
+        "birthtime": 1792884087.3346257,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-native-input-17956-1792981354814339000",
+        "birthtime": 1792981354.815076,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-bad-seal-version-3710-1793067105282627000",
+        "birthtime": 1793067105.2829003,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-migrate-v1-84478-1793062195659655000",
+        "birthtime": 1793062195.665802,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-23426-1792837332924782000-0",
+        "birthtime": 1792837332.9251497,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-native-config-io-90622-1792995933688757000",
+        "birthtime": 1792995933.68938,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-23261-1792837304442680000-0",
+        "birthtime": 1792837304.44302,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27065-1792838165202648000-3",
+        "birthtime": 1792838165.2034016,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-valid-fk-1963-1793066177949794000",
+        "birthtime": 1793066177.9498699,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-local-history-equal-91456-1792996091906741000",
+        "birthtime": 1792996091.9621208,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-four-pack-75544-1792992518221723000",
+        "birthtime": 1792992518.2223399,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-reference-projection-53519-1793122649731555000-0",
+        "birthtime": 1793122649.7319303,
+        "selected": true,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27202-1792838187337392000-4",
+        "birthtime": 1792838187.3378463,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-verification-27905-1792899031953529000-0",
+        "birthtime": 1792899031.9540985,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27065-1792838165202651000-2",
+        "birthtime": 1792838165.203602,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-full-catalogue-first-ordinal-cache-97214-1793156266385700000",
+        "birthtime": 1793156266.446017,
+        "selected": true,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-cli-maintenance-29463-1793074111302920000",
+        "birthtime": 1793074111.3034842,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-23321-1792837317481458000-0",
+        "birthtime": 1792837317.4819355,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-data-pack-four-pack-sql-92674-2",
+        "birthtime": 1792953698.2923346,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-78067-1792884087361379000-8",
+        "birthtime": 1792884087.3618274,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-register-install-16871-1792980744637745000",
+        "birthtime": 1792980744.6413739,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-exact-73266-1792991919519488000",
+        "birthtime": 1792991919.5928888,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-selected-payload-failure-76199-1792992793317177000",
+        "birthtime": 1792992793.3754666,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-four-pack-93723-1792996890697706000",
+        "birthtime": 1792996890.6981626,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-cli-lifecycle-3422-1793066901964949000",
+        "birthtime": 1793066901.9651616,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-23558-1792837345502386000-1",
+        "birthtime": 1792837345.502614,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-commit-busy-16124-1792980388004614000",
+        "birthtime": 1792980388.007494,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-78067-1792884087363578000-9",
+        "birthtime": 1792884087.3638384,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-bad-seal-version-3929-1793067203965312000",
+        "birthtime": 1793067203.9655564,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-78067-1792884087330000000-3",
+        "birthtime": 1792884087.3314273,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-profile-missing-pack-69623-1792990953649095000",
+        "birthtime": 1792990953.6494155,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27065-1792838165202850000-4",
+        "birthtime": 1792838165.2036538,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-24831-1792837731148236000-0",
+        "birthtime": 1792837731.1485875,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-reference-projection-21765-1793116377679731000",
+        "birthtime": 1793116377.6803377,
+        "selected": true,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-v1-1963-1793066177802085000",
+        "birthtime": 1793066177.805283,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-data-pack-four-pack-sql-91650-4",
+        "birthtime": 1792953663.366471,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-78067-1792884087334375000-7",
+        "birthtime": 1792884087.3346605,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-local-history-equal-91574-1792996136537124000",
+        "birthtime": 1792996136.5941088,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-native-root-io-92918-1792996430600522000",
+        "birthtime": 1792996430.6009717,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-reference-projection-21998-1793116415090716000",
+        "birthtime": 1793116415.091131,
+        "selected": true,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-xdg-74644-1792992160064436000",
+        "birthtime": 1792992160.064646,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-78067-1792884087329674000-0",
+        "birthtime": 1792884087.330991,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27065-1792838165202902000-5",
+        "birthtime": 1792838165.2037086,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-cli-default-store-70804-1",
+        "birthtime": 1792894216.8834457,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-78067-1792884087329689000-2",
+        "birthtime": 1792884087.3309562,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-summary-isolation-83502-1793062083638092000",
+        "birthtime": 1793062083.714506,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-cli-maintenance-24155-1793072261683737000",
+        "birthtime": 1793072261.6840866,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-native-root-io-93388-1792996603364771000",
+        "birthtime": 1792996603.3652275,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-verification-27520-1792898980776642000-4",
+        "birthtime": 1792898980.7770011,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-update-rebuild-1140-1793065941098492000",
+        "birthtime": 1793065941.1050026,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-v1-93000-1793063315358086000",
+        "birthtime": 1793063315.3618572,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-lifecycle-migration-returned-fault-99010-1793065459760084000-0",
+        "birthtime": 1793065459.7607007,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-data-pack-llg-fixture-18300-0",
+        "birthtime": 1792945493.7493842,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-commands-74644-1792992160064391000",
+        "birthtime": 1792992160.0646808,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-cli-all-raw-17627-1792981139871811000",
+        "birthtime": 1792981139.8719728,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27065-1792838165245229000-7",
+        "birthtime": 1792838165.2454474,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27065-1792838165226875000-6",
+        "birthtime": 1792838165.2270901,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-profile-native-path-overflow-88934-1792995657862483000",
+        "birthtime": 1792995657.8635433,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-commands-75052-1792992274610527000",
+        "birthtime": 1792992274.6108258,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-23877-1792837410972758000-1",
+        "birthtime": 1792837410.9731662,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-78067-1792884087382167000-10",
+        "birthtime": 1792884087.382427,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-lifecycle-catalogue-child-exit-30773-1793074537131956000-0",
+        "birthtime": 1793074537.1323469,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-migrate-v1-90881-1793062881975087000",
+        "birthtime": 1793062881.978401,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-78067-1792884087330856000-5",
+        "birthtime": 1792884087.3316605,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-dictionary-contract-87197-1792846584768583000-2",
+        "birthtime": 1792846584.769135,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-maintenance-reinstall-open-busy-context-50005-1793077472969973000",
+        "birthtime": 1793077472.9731677,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-native-root-io-93282-1792996560643688000",
+        "birthtime": 1792996560.6441538,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27202-1792838187337241000-1",
+        "birthtime": 1792838187.33788,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-migrate-v1-85103-1793062230785647000",
+        "birthtime": 1793062230.7886913,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-unsupported-derived-version-87796-1792995458350440000",
+        "birthtime": 1792995458.4024272,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-78067-1792884087382450000-11",
+        "birthtime": 1792884087.3827417,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-root-file-32689-1792984786095972000",
+        "birthtime": 1792984786.0973258,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-topology-34401-1792967974807284000-0",
+        "birthtime": 1792967974.8076384,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-policy-lock-29020-1793073947680442000",
+        "birthtime": 1793073947.680719,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s04-lifecycle-reconcile-v1-read-only-31346-1793074703069724000-0",
+        "birthtime": 1793074703.072698,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-compact-projection-40223-1",
+        "birthtime": 1793120292.078564,
+        "selected": true,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-cli-default-store-70348-1",
+        "birthtime": 1792894196.8421147,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-27202-1792838187359832000-6",
+        "birthtime": 1792838187.3600206,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-reference-projection-22417-1793116518938752000",
+        "birthtime": 1793116518.9394243,
+        "selected": true,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-29318-1792899515508198000-4",
+        "birthtime": 1792899515.508936,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-verification-27724-1792899008453603000-0",
+        "birthtime": 1792899008.4544318,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-reference-projection-53965-1793122797218086000-0",
+        "birthtime": 1793122797.2183826,
+        "selected": true,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-dictionary-store-23198-1792837293268806000-1",
+        "birthtime": 1792837293.2691681,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-data-pack-llg-fixture-18757-0",
+        "birthtime": 1792945633.686002,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-cli-configure-output-file-limit-85439-1792995003117940000",
+        "birthtime": 1792995003.1182034,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s03-managed-unsupported-derived-version-87622-1792995415889988000",
+        "birthtime": 1792995415.9426372,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-s02-cli-relative-paths-19176-1792981992867423000",
+        "birthtime": 1792981992.8678262,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      },
+      {
+        "path": "/private/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/vlajmaji-cli-default-store-70348-0",
+        "birthtime": 1792894196.8421774,
+        "selected": false,
+        "is_symlink": false,
+        "observation": "lstat only; no referent read"
+      }
+    ],
+    "caveat": "ExplicitS05/D5 allbirths; generic fixtures include finite supported lstat birth>=earliest issue boundary. Possible historical overcount AFTER boundary, not exact S05-only/cumulative/peak attribution. Does not select retained p01 roots except explicit S05, actual user default or arbitrary directory names. No cleanup/reset.",
+    "source_calibration": "Actual query scratch prefix already vlajmaji-s05-query-output; confirmed old omission was inherited TMPDIR plus generic reference fixture coverage, not invented prefix drift."
+  },
+  "frozen_files": [
+    {
+      "path": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+      "bytes": 152624,
+      "sha256": "94a5f331b4d73cbabad9998057013f4d4b6ab2c2d1c3042a1a6e4e56d94773a6"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.lock",
+      "bytes": 32156,
+      "sha256": "65cd7f39a88bdd2a3dab1fcd14e9055ff7b77cb22ec3af8c309ce49dbea78700"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.toml",
+      "bytes": 961,
+      "sha256": "256e08fe4e4da6c867edc5aaed4fb20726efd48143c6029e103966b6e6192aa4"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/README.md",
+      "bytes": 12490,
+      "sha256": "5169a55ab4ffa1f649cc93298c52bebbd9e17c38192147a6851b48f1e8a5e981"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/README.md",
+      "bytes": 9548,
+      "sha256": "130ef39913960a0cc107c084ea04b5614a33c6a0abad8dd076969acb05417352"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/src/main.rs",
+      "bytes": 145695,
+      "sha256": "1be2dd7a5ec311c41b98193ba219a5b385ccfc62463c0d3b5030460ff923e4fe"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/src/query_output.rs",
+      "bytes": 323,
+      "sha256": "8d9207472be3f1a671b8dc89c956e5609ca2d7ffa70ff3ec39fb97d6271758f5"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/tests/query_output_contract.rs",
+      "bytes": 109246,
+      "sha256": "4bb1556505b9eb4c29ab1b3050d770c1fc683da3fc0ec59a128d85090c92d958"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/README.md",
+      "bytes": 5865,
+      "sha256": "6b14fed31010a1a35dd3535598123930b35a6b73b1441c6b70536aa8857efe65"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/collection_query/projection.rs",
+      "bytes": 51416,
+      "sha256": "7a31f42c66229853319da465ad5ae0576c3703e9b107fff35319f2dcc760f87e"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/collection_query.rs",
+      "bytes": 81468,
+      "sha256": "f74b76c7da4193b5fc754aebf9c62a7afabb85d0c71029572ea961eba5af763a"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary/borrowed.rs",
+      "bytes": 26575,
+      "sha256": "f511722ed486643fa9b6c0496d3fcaed90ff0a1d5514452a7139c8dffa3e8293"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary/projection.rs",
+      "bytes": 87615,
+      "sha256": "a16e1147c333754bf963f4990f08c1608d84c58b2a4b8d5f6b4c87af36d84e2e"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary.rs",
+      "bytes": 88183,
+      "sha256": "c344595023e3e884372005b830379000765e6ef63a57d68a65387fed80d45eb7"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/lib.rs",
+      "bytes": 57852,
+      "sha256": "62ef4a05895ba5578d206c3147b1f37990c77ced20e9d71ad6e7d11b1c594ede"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/presentation.rs",
+      "bytes": 11647,
+      "sha256": "b94a5f9aea56634426afd58ec7c32f9928267d4e3a60432d74a0282952f94d37"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/collection_projection_contract.rs",
+      "bytes": 18298,
+      "sha256": "e1503b2bc3b0a21238fa4fdbb97664984ea9fc60f77193aeafd0f2a72799ae2f"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/collection_query_contract.rs",
+      "bytes": 94361,
+      "sha256": "c5b3226c2db4ad972c1ba744ead181f2ba89fae36591f94efdb6f31af22cde58"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/dictionary_projection_contract.rs",
+      "bytes": 112169,
+      "sha256": "1a9a5c0764346a8ec7892f2e8d76fe303d4c400991ce9341a6fcc9bdc0f3d201"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/presentation_contract.rs",
+      "bytes": 33981,
+      "sha256": "cbf26d8655d6b3f52cac2829c385c8ff76bbb0420dbec20b34e0be6e2b3fce21"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/collections/reference_projection.rs",
+      "bytes": 54172,
+      "sha256": "93289ca51d6b24d2c3f5ef95393d7e3ade31d1bc5a452bd91f19a0eb9f9c5d38"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/collections.rs",
+      "bytes": 188267,
+      "sha256": "6b4014cbf7d341e93e5c9c25b7d1f4ee88bc10d789aaee6510e86db3b19a425f"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/lib.rs",
+      "bytes": 15461,
+      "sha256": "35e8043a98b06babc8b38c28ed7d81141cb2f8130ec4497b4d142d34d6705201"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/tests/reference_projection_contract.rs",
+      "bytes": 14091,
+      "sha256": "40a0748cbedd7203ac8f4e3c15eeb9e6f362a3e103f3030aab3922b4d1e00d91"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/docs/collections.md",
+      "bytes": 13509,
+      "sha256": "a009277214a20c97c471a05cd9040d71177c43de969bbe16013157ec203d6049"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/full-caller01/accepted-descriptors-and-refs02.json",
+      "bytes": 16593,
+      "sha256": "7f332ad5f3e58f0d4a99cf3c12e82400e85923840430db76291c54951ccef867"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+      "bytes": 12709648,
+      "sha256": "20b21d4e27310437d643b246ecbaf652b5a4c6e53c407abf6035dca261d1b79c"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+      "bytes": 2723,
+      "sha256": "8b78f747fe7977ea9aad67a2a26472261d76f2047e5a30e3c06aee47b655c859"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/cli-checks01.py",
+      "bytes": 15841,
+      "sha256": "b0a03a79d6ba38d55c9a496d13900a85d342689291fb7e53ef08ca0ac803f969"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/i05-independent01/pin-qualifier01.log",
+      "bytes": 322,
+      "sha256": "df50af2df4e8e3bdf166756e4641998879e0cf16f29d48fa6b0ef18c539a45e3"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/i05-independent01/release-cli01.json",
+      "bytes": 1237,
+      "sha256": "55842bd4b7c350a6ab5ca9ffa5a96d9bca54b64d52fa74b0a32ce608375f6071"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/i05-independent01/release-observer01.json",
+      "bytes": 1270,
+      "sha256": "d66eded74a9b637c91e1a07486544f9bbe999a42662a53ecd9d6b4ad17fb70fa"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/i05-independent01/semantic-method-current01.log",
+      "bytes": 211,
+      "sha256": "d143728b4a024d01f2093705d9692c9245853143c481060e84131605d775c4ae"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/i05-independent01/tiny-reconciliation01.json",
+      "bytes": 756,
+      "sha256": "0cecc76db51f049aa1ee464be59d62ac2511cf2075e3a0f524bcbe2501d135e8"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/i05-independent01/wire-current01.log",
+      "bytes": 479,
+      "sha256": "8f08ece1f0395d58ec0139db735d5f883dd5276be908cd39363daefe5a63d58e"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-analysis01.py",
+      "bytes": 5020,
+      "sha256": "5fb7ac6649856a2a2e7a9ee87855c94e8154a2573c96a4548cad48b812a14b0a"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/Cargo.lock",
+      "bytes": 11040,
+      "sha256": "5846621914f2d9eee401ac6214baa05a3b3aa0cb0fb98ec8afb6e9457e91a002"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/Cargo.toml",
+      "bytes": 690,
+      "sha256": "f2f19733d01559393190fe22eb9686c85a3d38245ff6ac07a72ef72dfec97e99"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/fixtures/requests-full03.json",
+      "bytes": 13672,
+      "sha256": "6fe407b2411263370524a44bd101c271fa17a3c3f4e92ee65425025f76d24c21"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/src/main.rs",
+      "bytes": 12925,
+      "sha256": "0f539576da2358dd2b3e653cd5bb447e57f5c071ced7e9829bb8ee7315b61951"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-caller01/src/semantic.rs",
+      "bytes": 9649,
+      "sha256": "ad2f773e849293ecc0d93d8a7bb78106615335cf4f6a52788522cd128647432c"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-fresh-boundary-qualifier01.log",
+      "bytes": 334,
+      "sha256": "c805bcf1d4e52fe9c57c9d56f734e41e5f5dec7be46fd1b4227f0d7928745564"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-fresh-boundary-qualifier01.py",
+      "bytes": 2286,
+      "sha256": "8949c28f909ceca1789554f4289f43daba372173cfa1c901101530e75c294f87"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/manifest.json",
+      "bytes": 575,
+      "sha256": "9490d53c3349fc64a427a991d6f3ff606d335ce6f8c73723b51c635716efda3f"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+      "bytes": 8322080,
+      "sha256": "1192a055a79ca3c26ed561f80e77a3b8098c7aec7c3cc22607b2bcaf90ba9592"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+      "bytes": 14140928,
+      "sha256": "29f8cf5d4319d3d3ac9fd27fab5de4885b1a060e10946386b8f6c8ff8ecfd473"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-preflight-builder05.py",
+      "bytes": 10803,
+      "sha256": "32c21f6cc1143863d0de4318e109c63a9d74ca7a08947331dc7827564c54e97c"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-inventory-qualifier01-receipt.json",
+      "bytes": 287,
+      "sha256": "f852dc2256855bb5aa2bd6624c4c32b3f5ea2224fd9be93ac46a76b07253160e"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-inventory-qualifier01.log",
+      "bytes": 362,
+      "sha256": "6ffebe634b1c2da706cc10753aa48c48db1c19a0656cfcea0d5e275c1edc2df9"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-inventory-qualifier01.py",
+      "bytes": 1974,
+      "sha256": "065d8938ae7ec71c8ee3d7cdd745d0d861914b6a27fb35cd3e55cfc8bbd52e1a"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-method-qualifier01.log",
+      "bytes": 528,
+      "sha256": "6d6a596e97f86c202b7bd4cee9bf0d269defd15b12716c6e0f7f2497680864d8"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-method-qualifier01.py",
+      "bytes": 3385,
+      "sha256": "70d22d14e6ab0a298d2eecd22193f7a7228142c4017b92d2fed26255f363c3fa"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-pin-qualifier01.py",
+      "bytes": 1525,
+      "sha256": "cb079762975e5a6964b10c3d52405ea3b7f7fdb7c56383ddc64c81728db2f68b"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner01-source-before-fresh-boundary01.py",
+      "bytes": 18759,
+      "sha256": "23e6b9d548d376d86fe9d66f6d0bebab2ce79de500187594f75fa9680c4170fc"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner01-source-before-link-inventory01.py",
+      "bytes": 19615,
+      "sha256": "a5afe2c1adb8fcd09453b633cddb648267c0f2d3a13557541219c0cca081181e"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner01-source-before-stage21-analysis01.py",
+      "bytes": 18685,
+      "sha256": "985925f588aba34762b99ea6d2666fbd1707c468d9ef47e446c3b6e4c5d8a333"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner02.py",
+      "bytes": 20095,
+      "sha256": "d933178bd964a3f6bab98905a47a3820636656006341e85af46ecc2ad82fdb7f"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-method02.py",
+      "bytes": 805,
+      "sha256": "17633ce639d757b7643c93506525ab391add5fcab8e8c779c83550334ff2200b"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-preflight-builder04.py",
+      "bytes": 3564,
+      "sha256": "e86bf9f8a0e3869d2d81f3c84f7b9f39a261ae9a81fd60781408af1151e2dfa6"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-workload01.py",
+      "bytes": 3052,
+      "sha256": "6ba4827e8e009a9bcce873018e3e7e23e58e614282c5e223f7fac2ebb9402c79"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s05-cdc/numeric-wire-qualifier02.py",
+      "bytes": 2393,
+      "sha256": "d9db4c901a4783399c6b4a52448fa9cfad05332a558b95c152579d4d7103f48f"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "bytes": 219,
+      "sha256": "51a6cb10ad3c7a0dd27a5bc03f207cd1d81774d6cf4cbeb21ee64c75fd17108c"
+    }
+  ],
+  "deferred_full_metadata_pin": {
+    "pin": {
+      "path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "bytes": 219,
+      "sha256": "51a6cb10ad3c7a0dd27a5bc03f207cd1d81774d6cf4cbeb21ee64c75fd17108c"
+    },
+    "observation": "Expected from accepted S04 profile5 report+settled size; NOT currently stat/read/hash-verified. Runner strict leaf/hash only after root launch clearance."
+  },
+  "db_hash_boundary": "DB paths/hashes from accepted G4 receipt only. DBs excluded from frozen_files; ONE actual before/after pair is inside the single campaign after clearance, prehash warms cache.",
+  "expanded_stages": [
+    {
+      "kind": "fresh",
+      "round": 1,
+      "mode": "baseline-full",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ]
+    },
+    {
+      "kind": "fresh",
+      "round": 1,
+      "mode": "candidate-full",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+        "--format",
+        "full"
+      ]
+    },
+    {
+      "kind": "fresh",
+      "round": 1,
+      "mode": "compact",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+        "--format",
+        "compact"
+      ]
+    },
+    {
+      "kind": "fresh",
+      "round": 1,
+      "mode": "readable",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+        "--format",
+        "readable"
+      ]
+    },
+    {
+      "kind": "fresh",
+      "round": 2,
+      "mode": "readable",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+        "--format",
+        "readable"
+      ]
+    },
+    {
+      "kind": "fresh",
+      "round": 2,
+      "mode": "compact",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+        "--format",
+        "compact"
+      ]
+    },
+    {
+      "kind": "fresh",
+      "round": 2,
+      "mode": "candidate-full",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+        "--format",
+        "full"
+      ]
+    },
+    {
+      "kind": "fresh",
+      "round": 2,
+      "mode": "baseline-full",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ]
+    },
+    {
+      "kind": "fresh",
+      "round": 3,
+      "mode": "compact",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+        "--format",
+        "compact"
+      ]
+    },
+    {
+      "kind": "fresh",
+      "round": 3,
+      "mode": "baseline-full",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+      ]
+    },
+    {
+      "kind": "fresh",
+      "round": 3,
+      "mode": "readable",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+        "--format",
+        "readable"
+      ]
+    },
+    {
+      "kind": "fresh",
+      "round": 3,
+      "mode": "candidate-full",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+        "lookup",
+        "farvi",
+        "--config",
+        "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+        "--format",
+        "full"
+      ]
+    },
+    {
+      "kind": "warm",
+      "round": 1,
+      "mode": "full",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+        "warm-full",
+        "full",
+        "1",
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full"
+      ]
+    },
+    {
+      "kind": "warm",
+      "round": 1,
+      "mode": "compact",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+        "warm-full",
+        "compact",
+        "1",
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-compact"
+      ]
+    },
+    {
+      "kind": "warm",
+      "round": 1,
+      "mode": "readable",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+        "warm-full",
+        "readable",
+        "1",
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-readable"
+      ]
+    },
+    {
+      "kind": "warm",
+      "round": 2,
+      "mode": "readable",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+        "warm-full",
+        "readable",
+        "2",
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-2-readable"
+      ]
+    },
+    {
+      "kind": "warm",
+      "round": 2,
+      "mode": "full",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+        "warm-full",
+        "full",
+        "2",
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-2-full"
+      ]
+    },
+    {
+      "kind": "warm",
+      "round": 2,
+      "mode": "compact",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+        "warm-full",
+        "compact",
+        "2",
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-2-compact"
+      ]
+    },
+    {
+      "kind": "warm",
+      "round": 3,
+      "mode": "compact",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+        "warm-full",
+        "compact",
+        "3",
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-3-compact"
+      ]
+    },
+    {
+      "kind": "warm",
+      "round": 3,
+      "mode": "readable",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+        "warm-full",
+        "readable",
+        "3",
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-3-readable"
+      ]
+    },
+    {
+      "kind": "warm",
+      "round": 3,
+      "mode": "full",
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+        "warm-full",
+        "full",
+        "3",
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-3-full"
+      ]
+    },
+    {
+      "kind": "semantic",
+      "round": null,
+      "mode": null,
+      "argv": [
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+        "semantic-full",
+        "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/semantic"
+      ]
+    }
+  ],
+  "preflight_observed": {
+    "free_bytes": 442482618368,
+    "minimum_free_bytes": 17179869184,
+    "new_scratch_named_paths": 947,
+    "new_scratch_logical_bytes": 677013263,
+    "target_cache_bytes": 70755123200,
+    "mechanisms": "600s active per-stage process-group timeout;8GiB RSS/128MiB capture/12GiB ALL named S05 scratch are POSTCOMPLETION checks, not live enforcement; no cache reset/cleanup",
+    "finite_children": 22,
+    "phase_boundaries": "12fresh verdict before warm13; SAME21 analysis beforesemantic22; stop on first failure/no automatic retry",
+    "private_env": "runner creates0700 isolated HOME/XDG_DATA_HOME/XDG_CONFIG_HOME under fresh output; allchildren use explicit config; no actualdefault access",
+    "population": "12fresh4modesx3 balancedrounds +9warm3modesx3rounds54requests(27prime/27measured)each +ONEsemantic; sameID3obs med/max, no pooling/retries",
+    "connections": "one Unified provider/engine perprocess bysource; actual OS fdcount unmeasured",
+    "disk_arithmetic": "current named scratch <12GiB; up to22*128MiB capture plus named representative/detail files all counted against12GiB after each child; no new Full store/generation, retainedROOT outside quota, sharedtarget excluded with quiet before/after allocation pair",
+    "output_accounting": "final inventory/summary own bytes explicitly named post-inventory delta, not false exact all-files total"
+  },
+  "pin_preparation_policy": {
+    "ordinary_paths": "canonical_system_tmp then original-path nofollow/regular-leaf BEFORE size/hash; no broad resolve",
+    "python_alias": {
+      "path": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+      "native_link_payload": "python3.11",
+      "strict_target": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11"
+    },
+    "deferred_config": "NOT passed through current leaf helper; accepted219B/hash expectation only until exact root clearance"
+  },
+  "method_evidence": {
+    "tiny_attempt01": "one REAL baseline CLI observation, failed sandboxRSS instrumentation; preserved unchanged",
+    "tiny_retry02": "prior1b1instrumentation-failed realbaseline+22PASS retained separately; current011 zero-stage pin-closure attempt then22PASS at numeric-tiny-orchestration04; total45 actualTiny method children across history, no Fullmetrics",
+    "pure_controls": {
+      "analysis": 7,
+      "fresh_stop": 3,
+      "symlink_inventory": 4,
+      "wire": 9,
+      "typed_compact_comparator_positive": 1,
+      "typed_compact_comparator_negative": 6
+    },
+    "whole_scope": "No retainedFull root/config/DB current stat/read/hash/query in packet preparation; only accepted small priorreports/witness/baselinebinary and current sources/Tiny data."
+  },
+  "current_qualification": {
+    "source_head": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+    "source_tree": "a8c0fdcb3e39fb260602bb48b837b25f4d2380ac",
+    "checked_stages": 22,
+    "warm_actual_requests": 486,
+    "prime": 243,
+    "measured": 243,
+    "preinput_facts": 54,
+    "same_saved_analysis_exact": true,
+    "phase12_exact": true,
+    "all63_pins_stable": true,
+    "database_pair_unchanged": true,
+    "target_cache_pair_bytes": 70755123200,
+    "observed_scratch_bytes": 675903391,
+    "scope": "current Tiny method only; no Full metric acceptance",
+    "retained_population": "prior source1b:1instrumentation-failed realbaseline+22PASS; current011 zero-stage outer pin-closure attempt then22PASS. Total45 realTiny method children, not one clean22 across history; no Full child in this record."
+  }
+}

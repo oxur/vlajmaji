@@ -1,0 +1,55 @@
+{
+  "kind": "fresh",
+  "round": 2,
+  "mode": "baseline-full",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+    "lookup",
+    "farvi",
+    "--config",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+  ],
+  "number": 8,
+  "guard_argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "8589934592",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/08-fresh-2-baseline-full/stderr",
+    "--stdout",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/08-fresh-2-baseline-full/stdout",
+    "--",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+    "lookup",
+    "farvi",
+    "--config",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+  ],
+  "guard_exit": 0,
+  "receipt": {
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+    ],
+    "decision": "passed",
+    "elapsed_seconds": 2.041144917719066,
+    "exit_code": 0,
+    "log": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/08-fresh-2-baseline-full/stderr",
+    "maximum_resident_set_size_bytes": 2251440128,
+    "pid": 24971,
+    "rss_parse_ok": true,
+    "rss_source": "/usr/bin/time -l maximum resident set size",
+    "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/08-fresh-2-baseline-full/stdout",
+    "timed_out": false
+  },
+  "stdout_bytes": 7164849,
+  "stdout_sha256": "1a05cefc7da46006e5089f60963f205bb0e9131570684d69428d0b508c692473",
+  "stderr_bytes": 777,
+  "stderr_sha256": "c025cbbaa29353e3b71815727530252ada22b1e11d196f43600ec812d78d3009"
+}

@@ -1,0 +1,20 @@
+{"stage": 1, "kind": "fresh", "mode": "baseline-full", "round": 1, "decision": "passed", "elapsed_seconds": 2.825661750510335, "rss_bytes": 2253111296}
+{"stage": 2, "kind": "fresh", "mode": "candidate-full", "round": 1, "decision": "passed", "elapsed_seconds": 1.9829340409487486, "rss_bytes": 2250129408}
+{"stage": 3, "kind": "fresh", "mode": "compact", "round": 1, "decision": "passed", "elapsed_seconds": 1.5068296249955893, "rss_bytes": 1408761856}
+{"stage": 4, "kind": "fresh", "mode": "readable", "round": 1, "decision": "passed", "elapsed_seconds": 1.4885550839826465, "rss_bytes": 1390051328}
+{"stage": 5, "kind": "fresh", "mode": "readable", "round": 2, "decision": "passed", "elapsed_seconds": 1.4572615837678313, "rss_bytes": 1417216000}
+{"stage": 6, "kind": "fresh", "mode": "compact", "round": 2, "decision": "passed", "elapsed_seconds": 1.4396599996834993, "rss_bytes": 1416069120}
+{"stage": 7, "kind": "fresh", "mode": "candidate-full", "round": 2, "decision": "passed", "elapsed_seconds": 2.035404291935265, "rss_bytes": 2262646784}
+{"stage": 8, "kind": "fresh", "mode": "baseline-full", "round": 2, "decision": "passed", "elapsed_seconds": 2.041144917719066, "rss_bytes": 2251440128}
+{"stage": 9, "kind": "fresh", "mode": "compact", "round": 3, "decision": "passed", "elapsed_seconds": 1.5014663748443127, "rss_bytes": 1402667008}
+{"stage": 10, "kind": "fresh", "mode": "baseline-full", "round": 3, "decision": "passed", "elapsed_seconds": 2.034472624771297, "rss_bytes": 2264629248}
+{"stage": 11, "kind": "fresh", "mode": "readable", "round": 3, "decision": "passed", "elapsed_seconds": 1.4952298756688833, "rss_bytes": 1385709568}
+{"stage": 12, "kind": "fresh", "mode": "candidate-full", "round": 3, "decision": "passed", "elapsed_seconds": 1.9794657928869128, "rss_bytes": 2316468224}
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner02.py", line 303, in <module>
+    cfg=json.loads(Path(sys.argv[1]).read_bytes());execute(cfg,tiny=False)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner02.py", line 259, in execute
+    assert result.returncode==0 and receipt['decision']=='passed' and receipt['exit_code']==0
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

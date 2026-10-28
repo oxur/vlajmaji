@@ -1,0 +1,55 @@
+{
+  "fresh": {
+    "baseline-full": {
+      "observations_ns": [
+        2825661751,
+        2041144918,
+        2034472625
+      ],
+      "median_ns": 2041144918,
+      "maximum_ns": 2825661751,
+      "median_limit_ns": 6000000000,
+      "maximum_limit_ns": 10000000000,
+      "ok": true
+    },
+    "candidate-full": {
+      "observations_ns": [
+        1982934041,
+        2035404292,
+        1979465793
+      ],
+      "median_ns": 1982934041,
+      "maximum_ns": 2035404292,
+      "median_limit_ns": 6000000000,
+      "maximum_limit_ns": 10000000000,
+      "ok": true
+    },
+    "compact": {
+      "observations_ns": [
+        1506829625,
+        1439660000,
+        1501466375
+      ],
+      "median_ns": 1501466375,
+      "maximum_ns": 1506829625,
+      "median_limit_ns": 5500000000,
+      "maximum_limit_ns": 9000000000,
+      "ok": true
+    },
+    "readable": {
+      "observations_ns": [
+        1488555084,
+        1457261584,
+        1495229876
+      ],
+      "median_ns": 1488555084,
+      "maximum_ns": 1495229876,
+      "median_limit_ns": 5500000000,
+      "maximum_limit_ns": 9000000000,
+      "ok": true
+    }
+  },
+  "failed": [],
+  "ok": true,
+  "scope": "same retained12 fresh observations; exact3 per mode; no new process or trial"
+}

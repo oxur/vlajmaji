@@ -1,0 +1,43 @@
+{
+  "status": "ROOT_EXACT_EXECUTABLE_REVIEW_PASS",
+  "reviewed_at_utc": "2026-10-28T03:56:38.547910+00:00",
+  "packet": {
+    "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-preflight04.json",
+    "bytes": 182561,
+    "sha256": "1021d4cc6f8751c910f4079c4ee250afc1814d6f0b0d4e0a140893606100b9e9"
+  },
+  "source_head": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "source_tree": "a8c0fdcb3e39fb260602bb48b837b25f4d2380ac",
+  "planning_head": "63662defd08440e1a0226a87a2926a256c9870ee",
+  "canonical_manifest_sha256": "71d7b2d961dec5f89baff19f7ab4e2154bd1f252bd951e063a88d6b2e0e863fd",
+  "canonical_payload_count": 381,
+  "canonical_payload_bytes": 5846094,
+  "canonical_proof": "all sizes/hashes/noextras;378whole originals exact;execution281345B exact prefix;immutableGitdiff exact;heldbinaryinventory separately authored",
+  "nondata_pins_independently_rehashed": 61,
+  "deferred_Fullconfig_pin_not_stat_read_hashed": 1,
+  "FullDBs_not_stat_read_hashed": "recorded expectations only;ONE pair allowed INSIDE cleared campaign",
+  "runner02": "d933178bd964a3f6bab98905a47a3820636656006341e85af46ecc2ad82fdb7f;sole output01->02 constant change from runner01",
+  "finite_children_max": 22,
+  "phase_gates": "12fresh verdict beforewarm13;SAME21analysis beforesemantic22;stopfirstfailure",
+  "resource_observation": {
+    "current_named_roots": 947,
+    "entries": 6465,
+    "scratch_bytes": 677218324,
+    "link_payload_entries": 17,
+    "free_bytes": 442450747392,
+    "target_allocated_bytes": 70751592448,
+    "historical_Tiny_pair_bytes": 70755123200,
+    "distinct_target_delta_from_Tiny": -3530752,
+    "target_change_cause": "unproven; historical equality not a campaign requirement",
+    "scratch_under_12GiB": true,
+    "free_at_least_16GiB": true,
+    "generic_birth_census_consistent": true,
+    "scope": "resource metadata only; no retained Full config/DB stat/read/hash; Full own quiet before/after delta0 still required"
+  },
+  "resource_settled_delta": "resource log own printed bytes and this clearance metadata occur after observation; fresh campaign inventory counts them",
+  "six_binding_cells_and_issued_prompt": "unchanged;all6OPEN",
+  "authorization": "Existing human extra-pass01 +six-files01 authority: one additional Full campaign ONLY;no seventh/no automatic retry/no push/CI/PR/Arc05/newstore/cache reset/cleanup",
+  "execution_copy_policy": "Create NEW execution02 by changing ONLY readiness_status value FULL_EXACT_PACKET_FOR_ROOT_REVIEW_NOT_EXECUTION_CLEARANCE to ROOT_REVIEWED_EXACT_FROZEN_NUMERICAL_CAMPAIGN;preserve original packet. Verify inverse status replacement byteexact before launch. Never rewrite source/protocol/budgets or oldfailure.",
+  "target_policy": "HistoricalTiny70,755,123,200B and current70,751,592,448B are distinct observations with causeUNPROVEN. Full owns quiet before/after pair and requires delta0 unchanged. No Cargo/product sessions active perCDC; root resource sessions terminal.",
+  "root_method_notes": "Initial resource-check session handle omitted, process later confirmed terminated;not accepted evidence. Captured resource04 exited1 on superfluous historical-Tiny target-equality assertion. Resource05 terminal0 records current values with original campaign policy. Scoped ps first sandbox-denied then elevatedread confirmed termination;no source/target/data mutation."
+}

@@ -1,0 +1,662 @@
+{
+  "output": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02",
+  "explicit_controls": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-execution02.json",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-execution02-copy-proof.json",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-execution02.log",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-execution02-receipt.json",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/root-full-clearance02.json",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-failure02-analysis.json"
+  ],
+  "files": [
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/01-fresh-1-baseline-full/checked-stage.json",
+      "bytes": 1914,
+      "sha256": "9942dbc53d244d253d7f6808f6a021e363599c9b6f8afef489cbed47d762c956",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/01-fresh-1-baseline-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/01-fresh-1-baseline-full/guard.stdout",
+      "bytes": 580,
+      "sha256": "1ce3e7469c015daeb13ddec7be87602b875898a9773566e9f21a6f99d2a7c471",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/01-fresh-1-baseline-full/receipt.json",
+      "bytes": 628,
+      "sha256": "b0673c48b3d943b1a98428d507929c9a00fcd21d4fe8c4d9fd83439d8a6dfca5",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/01-fresh-1-baseline-full/stage.json",
+      "bytes": 1779,
+      "sha256": "4e8d88161a636fae119bf6382970ca1616dd8e3f039d24a7058913e086f8dc97",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/01-fresh-1-baseline-full/stderr",
+      "bytes": 777,
+      "sha256": "63ed56036ae3034c9e2af5273d624bd2e1d109d267e0bdc311a51af6400198c4",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/01-fresh-1-baseline-full/stdout",
+      "bytes": 7164849,
+      "sha256": "1a05cefc7da46006e5089f60963f205bb0e9131570684d69428d0b508c692473",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/02-fresh-1-candidate-full/checked-stage.json",
+      "bytes": 2017,
+      "sha256": "fa3c0ff81b1bb4319e96f6d2254dbb84db06bf298930e268727f123816b76842",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/02-fresh-1-candidate-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/02-fresh-1-candidate-full/guard.stdout",
+      "bytes": 606,
+      "sha256": "4e988e21e32965eb0761e64e8fc67500fb91caa4f2690cb31a92c0cbcdb50ad9",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/02-fresh-1-candidate-full/receipt.json",
+      "bytes": 662,
+      "sha256": "2d4156e44054fa27ec36982528fb0a3a132ebf332dd1a5bf481e48fc33ca59eb",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/02-fresh-1-candidate-full/stage.json",
+      "bytes": 1882,
+      "sha256": "2627daf88931bb4d881d753eae63bca14066ae8e926a028ed3d6595009e9d666",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/02-fresh-1-candidate-full/stderr",
+      "bytes": 777,
+      "sha256": "6433c05ab6ddafc75d8438e2977ee3b8a620ce3f44950e80c0888abe784c3585",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/02-fresh-1-candidate-full/stdout",
+      "bytes": 7164849,
+      "sha256": "1a05cefc7da46006e5089f60963f205bb0e9131570684d69428d0b508c692473",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/03-fresh-1-compact/checked-stage.json",
+      "bytes": 1989,
+      "sha256": "efd8a8f079781fbabd526e5f50409f99f6fd5d9e9724f96d8af72c16db8c48e0",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/03-fresh-1-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/03-fresh-1-compact/guard.stdout",
+      "bytes": 595,
+      "sha256": "9ed1871d936de886033914aeea1310887eadd46e938403dc38547cc84d667b94",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/03-fresh-1-compact/receipt.json",
+      "bytes": 651,
+      "sha256": "675369b9cb7c1d41091793e143a97098d8b67f3dd8399c351099d28c22a03aeb",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/03-fresh-1-compact/stage.json",
+      "bytes": 1854,
+      "sha256": "2d6f5864a008ea0931cc5a5212860cff189efcb05792370a69ff180b5f1b0db0",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/03-fresh-1-compact/stderr",
+      "bytes": 777,
+      "sha256": "3e9f235de4047e8da76128b14954687d89d9855471c5da2bb4697aefdf282fee",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/03-fresh-1-compact/stdout",
+      "bytes": 33785,
+      "sha256": "216adbf31d7cbf595d877d005abfaac94c2a1e054ef8ab11c645cbc152528d93",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/04-fresh-1-readable/checked-stage.json",
+      "bytes": 1997,
+      "sha256": "f2b71dd89cf359c6149789c515102433c635d8068c697814175c05eb8608e77f",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/04-fresh-1-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/04-fresh-1-readable/guard.stdout",
+      "bytes": 598,
+      "sha256": "334c454b7609c9b9c4d6c7a90a8e9311c4e6633f51cb440cbc18752d6fd62c99",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/04-fresh-1-readable/receipt.json",
+      "bytes": 654,
+      "sha256": "d01f5bbeb291a1698cc4a2161831dff1210252c65d61f6c4cd25ebd142bafdad",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/04-fresh-1-readable/stage.json",
+      "bytes": 1862,
+      "sha256": "85b7186a1cd98889e4fc4e1de7925c9f466a5b6db17a1441cf6586b2cdbfb75b",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/04-fresh-1-readable/stderr",
+      "bytes": 777,
+      "sha256": "1751be37154007acb393d257262f6efc273f2ada3383880e2d1ec7fe2b692508",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/04-fresh-1-readable/stdout",
+      "bytes": 11173,
+      "sha256": "3d98f7b3cf3472bf119b98dcd542e7a8b55f4ffcbbb8dbfc9bd24e77c66f2e35",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/05-fresh-2-readable/checked-stage.json",
+      "bytes": 1997,
+      "sha256": "72826387f42d5e5c42ab32a0f5d9af342a0ad4a8ad2ce7ffdda1c2d3a61648fc",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/05-fresh-2-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/05-fresh-2-readable/guard.stdout",
+      "bytes": 598,
+      "sha256": "dfbdd0e11722bdf63c58c5944d000dcea52c88db1d43e4c3d83a64725e163f87",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/05-fresh-2-readable/receipt.json",
+      "bytes": 654,
+      "sha256": "47f7d3f1ab38ae1241219316e3d5327965ba5fe0a2c82f7146a876d086b5db53",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/05-fresh-2-readable/stage.json",
+      "bytes": 1862,
+      "sha256": "07468bbd79246657930ae050b9925a61335877e9f947e9f6af3f13191414d167",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/05-fresh-2-readable/stderr",
+      "bytes": 777,
+      "sha256": "b2e3bbf455584a72bb61d2487f278610dad8c50c7e2243ac4ebc050fcb0fc840",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/05-fresh-2-readable/stdout",
+      "bytes": 11173,
+      "sha256": "3d98f7b3cf3472bf119b98dcd542e7a8b55f4ffcbbb8dbfc9bd24e77c66f2e35",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/06-fresh-2-compact/checked-stage.json",
+      "bytes": 1989,
+      "sha256": "3a2276ffbf0ebf2c1363b4dc451a2f4b4c66021d3b82cba43c3f60f2bf58c977",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/06-fresh-2-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/06-fresh-2-compact/guard.stdout",
+      "bytes": 595,
+      "sha256": "026a5b1fc3fdf5e787ad69bb87da6a65459a00150a3669b20876f3a251927541",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/06-fresh-2-compact/receipt.json",
+      "bytes": 651,
+      "sha256": "5300914c29a20f2579952bcb2fcb03a1786aeca33db310869dfee68a4be14987",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/06-fresh-2-compact/stage.json",
+      "bytes": 1854,
+      "sha256": "770a5de5197b6a297960cb8cc378d51e3045587da69cd33da7fa413e9b8d0621",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/06-fresh-2-compact/stderr",
+      "bytes": 777,
+      "sha256": "2af322abfe4b4063b0dbf7ce8d0c29555371a05760252c63c9b30c23912dada4",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/06-fresh-2-compact/stdout",
+      "bytes": 33785,
+      "sha256": "216adbf31d7cbf595d877d005abfaac94c2a1e054ef8ab11c645cbc152528d93",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/07-fresh-2-candidate-full/checked-stage.json",
+      "bytes": 2016,
+      "sha256": "6bc7cc6810d9e1bf9dbea0be635ff1fd621c3e1f037ff0164ea427aad04158b7",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/07-fresh-2-candidate-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/07-fresh-2-candidate-full/guard.stdout",
+      "bytes": 605,
+      "sha256": "b72bae181e771c76a0ac9bafb0ef4f4548d6a143025cccecfc6e25347d4c947b",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/07-fresh-2-candidate-full/receipt.json",
+      "bytes": 661,
+      "sha256": "9545428479cfc9d277fa0ef3d2bff6bfd8b160e711fd35a6287d08db9fd9d055",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/07-fresh-2-candidate-full/stage.json",
+      "bytes": 1881,
+      "sha256": "0b42d2eaafdb4921cb5ce8143ada371688cff95e39fd193244a13e7927f04467",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/07-fresh-2-candidate-full/stderr",
+      "bytes": 777,
+      "sha256": "336355da8d5c9f0423454fdb8f0d6e7b15584cbae97e9076e35928c8dfeb1480",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/07-fresh-2-candidate-full/stdout",
+      "bytes": 7164849,
+      "sha256": "1a05cefc7da46006e5089f60963f205bb0e9131570684d69428d0b508c692473",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/08-fresh-2-baseline-full/checked-stage.json",
+      "bytes": 1914,
+      "sha256": "14b724ead1393583229c9d2e1ad460967519587c25878fed2ac384b65c98ba77",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/08-fresh-2-baseline-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/08-fresh-2-baseline-full/guard.stdout",
+      "bytes": 580,
+      "sha256": "b1c3c84d7053441fd50f2c34b7dacc706e842e306a7d8b96c3454bc481b93a62",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/08-fresh-2-baseline-full/receipt.json",
+      "bytes": 628,
+      "sha256": "eb71ef3e0e86c255faa175fc7800b667509b1b7cdd5dde359996a929d4a95a61",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/08-fresh-2-baseline-full/stage.json",
+      "bytes": 1779,
+      "sha256": "a389157a1be9e026169bc2ccea11401b0c5b40b2df8675b53eaed060303c60ec",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/08-fresh-2-baseline-full/stderr",
+      "bytes": 777,
+      "sha256": "c025cbbaa29353e3b71815727530252ada22b1e11d196f43600ec812d78d3009",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/08-fresh-2-baseline-full/stdout",
+      "bytes": 7164849,
+      "sha256": "1a05cefc7da46006e5089f60963f205bb0e9131570684d69428d0b508c692473",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/09-fresh-3-compact/checked-stage.json",
+      "bytes": 1989,
+      "sha256": "88100fe5e34f56b26910fed45dea634d22b3c3e0ae731be17600cb6146fc84f0",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/09-fresh-3-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/09-fresh-3-compact/guard.stdout",
+      "bytes": 595,
+      "sha256": "d6e8abd18d6ef43ed3b981a6052e4491be716b7d23889d21d444bf8b2ef1fbfa",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/09-fresh-3-compact/receipt.json",
+      "bytes": 651,
+      "sha256": "3519500f3835cabcb10411faa7d8f2038a2af699c0c2cc020f93e9d4abd26584",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/09-fresh-3-compact/stage.json",
+      "bytes": 1854,
+      "sha256": "96256beeb33dcc996b905afea1bcc518dd3588586c1a719dadf4fe08a9f2b0d1",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/09-fresh-3-compact/stderr",
+      "bytes": 777,
+      "sha256": "41c244a8898bd51384b8e7a2ee8de7db0f5105e67ce26c5fd2783ff87f865163",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/09-fresh-3-compact/stdout",
+      "bytes": 33785,
+      "sha256": "216adbf31d7cbf595d877d005abfaac94c2a1e054ef8ab11c645cbc152528d93",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/10-fresh-3-baseline-full/checked-stage.json",
+      "bytes": 1915,
+      "sha256": "aaa7196a0914176e9b3a7c63367961e26394544038bfde1de36357adb5cbd767",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/10-fresh-3-baseline-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/10-fresh-3-baseline-full/guard.stdout",
+      "bytes": 580,
+      "sha256": "828eb163737811f9c11674e5b9e8a426656e2cc9542b7ba5edcc8e6c9ef670d5",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/10-fresh-3-baseline-full/receipt.json",
+      "bytes": 628,
+      "sha256": "8f1908fae1293e52cf6020588e68675be316872f0df222763f35b518a51c336c",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/10-fresh-3-baseline-full/stage.json",
+      "bytes": 1780,
+      "sha256": "38b8a9e1fb5d169dc7752e47b26089514ec00a3e084158e497d066581abe4aac",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/10-fresh-3-baseline-full/stderr",
+      "bytes": 777,
+      "sha256": "c0999050fd342d7c39b3c225c72c1622d5c3a100e5432fc6645657ed6a20e343",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/10-fresh-3-baseline-full/stdout",
+      "bytes": 7164849,
+      "sha256": "1a05cefc7da46006e5089f60963f205bb0e9131570684d69428d0b508c692473",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/11-fresh-3-readable/checked-stage.json",
+      "bytes": 1998,
+      "sha256": "e131da52ad9686cc9e4093f66f2eb9ad3a1c171610db26b2b4bcbba5cd49e992",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/11-fresh-3-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/11-fresh-3-readable/guard.stdout",
+      "bytes": 598,
+      "sha256": "1c18c418efa5dc572a6306cc4d2397030eb3dae385206a0bd0fcb1772d4a8462",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/11-fresh-3-readable/receipt.json",
+      "bytes": 654,
+      "sha256": "a085df8c7df3e440a5f4687d397d741ac339c6ec6516b85332269d5a7625cc4e",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/11-fresh-3-readable/stage.json",
+      "bytes": 1863,
+      "sha256": "703a648bfb92bafc279104b3412b6bf5b7b3de19e6b2efffa26d94529a1181a5",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/11-fresh-3-readable/stderr",
+      "bytes": 777,
+      "sha256": "e4ca62ce4cda188de6a1ec1aaa59c4ab548c07fc67d511edafe41adf37bf7915",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/11-fresh-3-readable/stdout",
+      "bytes": 11173,
+      "sha256": "3d98f7b3cf3472bf119b98dcd542e7a8b55f4ffcbbb8dbfc9bd24e77c66f2e35",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/12-fresh-3-candidate-full/checked-stage.json",
+      "bytes": 2018,
+      "sha256": "9cd071c3d7f4cd78659e30952a02cf409dc912d4a0703a6a8d8e8f0be0489183",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/12-fresh-3-candidate-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/12-fresh-3-candidate-full/guard.stdout",
+      "bytes": 606,
+      "sha256": "26edc17f22a5d582ab8d378405c85e49b38eda66d5d843210cd25a86daf98224",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/12-fresh-3-candidate-full/receipt.json",
+      "bytes": 662,
+      "sha256": "08d15583626e3ddaae3fa8f0689bd6e31cdb6573d3418995528e3f30ab15489c",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/12-fresh-3-candidate-full/stage.json",
+      "bytes": 1883,
+      "sha256": "ae86c76ba86e453541c7dcdcd769a09f59b9411898dd81098cf358fef4f5e57c",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/12-fresh-3-candidate-full/stderr",
+      "bytes": 777,
+      "sha256": "822e06f71a241bedbf3aae0391b4981007edc837ac1fbeabac756e53774830cd",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/12-fresh-3-candidate-full/stdout",
+      "bytes": 7164849,
+      "sha256": "1a05cefc7da46006e5089f60963f205bb0e9131570684d69428d0b508c692473",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/database-after.json",
+      "bytes": 335,
+      "sha256": "9dda82e7d98dd2a7361fe8b0b03bb3f7552b3b4b466c2890de6ce2b8a37e5bc1",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/database-before.json",
+      "bytes": 335,
+      "sha256": "9dda82e7d98dd2a7361fe8b0b03bb3f7552b3b4b466c2890de6ce2b8a37e5bc1",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/environment.json",
+      "bytes": 336,
+      "sha256": "5a2c79e9d659a1e9b46216ed3cc0c8e51deb63b8b0f33394b7eee0b8bd8a7363",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/expanded-stages.json",
+      "bytes": 6377,
+      "sha256": "71fe9ebaaafb746a4cb9732072af1b54d34f19a0e988197373004f4f083b6818",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/fresh-phase-budget.json",
+      "bytes": 1253,
+      "sha256": "a2bf4296f5cd0d677438829dd0cadb8b9197b751a18d485fb81f5db1cf96fb7a",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/inventory-before-summary.json",
+      "bytes": 1097157,
+      "sha256": "dc478cfde6bc9d792dd89a262f9addfb82f32ba78d737930ebacb88910cd681d",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/pre-input-normalized-facts.json",
+      "bytes": 23524,
+      "sha256": "255495bc80c3182c912173acede9756df334c2d345ba18c143f24a467fefe6fe",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/s05-scratch-before.json",
+      "bytes": 1080035,
+      "sha256": "c5909419cf62a92bb4c08f2754bb68f14d355db4b83ad54275af6827cfcd82e6",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/summary.json",
+      "bytes": 2057,
+      "sha256": "95853591f2d86e771027ca3fbb4535e63c6e1c5e2976e482ffdcb9611cb8a703",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/target-cache-after.json",
+      "bytes": 128,
+      "sha256": "119eae6b3243b863c18520dca8bc97f314d6459eab6f0136b20c276592dd5da1",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/target-cache-before.json",
+      "bytes": 167,
+      "sha256": "2bd3b30f5a3694d0ba0491cad618dab1e9e9ab1a5c94975e64d0c0b85223f123",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/farvi-all-wire.txt",
+      "bytes": 7164849,
+      "sha256": "1a05cefc7da46006e5089f60963f205bb0e9131570684d69428d0b508c692473",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/guard.stdout",
+      "bytes": 584,
+      "sha256": "6d99ade0276c49f76ecac5b3d275339d25ba9ca84e1ea54a841072f355c4523c",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/receipt.json",
+      "bytes": 632,
+      "sha256": "98413fd431cab45bf8eddd0211a24b397ea32b70afee896779fd9feecaf93da5",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/stage.json",
+      "bytes": 1776,
+      "sha256": "96f1dceb48c10052fc805af78e8925e7070aabb2f1346ff6f7fdf7bd3ea1aaba",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/stderr",
+      "bytes": 951,
+      "sha256": "0d6d77aac077b79b6783ef086742cbd55abef4d468b18d3c8e4161af46afa74e",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/stdout",
+      "bytes": 36979,
+      "sha256": "b004f8d20587acc12fffeeb09af6b02bdb64123a32dcce3593ce2693d1f9d0a4",
+      "scope": "campaign-output"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-execution02.json",
+      "bytes": 182549,
+      "sha256": "b236b85baeff97d96f0b459f2472fa3341e9b8898bc6f73906ca5fd86fecf0be",
+      "scope": "explicit-control"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-execution02-copy-proof.json",
+      "bytes": 520,
+      "sha256": "29532ccb0c6e99a47af1ea75831db2b18dfd78ba5285bf9f2f84832d288cd745",
+      "scope": "explicit-control"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-execution02.log",
+      "bytes": 2356,
+      "sha256": "ff73a6fe45bd67431f0c9de2cf7b81f6fbd17250b4e410657a663bf18a22fbbb",
+      "scope": "explicit-control"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-execution02-receipt.json",
+      "bytes": 905,
+      "sha256": "5487b8ccff32d73709739e413914acf977fedd579c6e0729fd6c53e2d4808f98",
+      "scope": "explicit-control"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-full-clearance02.json",
+      "bytes": 3339,
+      "sha256": "536668c7441d203f9e98805a1374a3491fdcf9795b2320c62e523b2c079097b5",
+      "scope": "explicit-control"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full-failure02-analysis.json",
+      "bytes": 6313,
+      "sha256": "d84216709b01c5305a6714557d9e87f5999dda93814cf6ea2e1371c5d7e56ae4",
+      "scope": "explicit-control"
+    }
+  ],
+  "scope": "all saved output02 files plus exactly six named controls; inventory own bytes excluded; no Full DB/config read"
+}

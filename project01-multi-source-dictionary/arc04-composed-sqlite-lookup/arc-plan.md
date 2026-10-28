@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE/fivearcDONEfiveOPEN. S05 final05 frozen011 bounded source/API/Tiny PASS; first Full failure immutable; additional exact Full/current Linux/fresh ARC/close pending. All6OPEN. |
-| version / date | 1.31 /2026-10-28 UTC |
+| status | ACTIVE; S01–S04 CLOSED/fivearcDONEfiveOPEN. S05 replacement Full FAILED WholeResolve1.206865292s>750ms after12freshPASS. Sixth pass/additional campaign exhausted; STOP preservation only/all6OPEN/currentLinux/freshARC/close pending. |
+| version / date | 1.32 /2026-10-28 UTC |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | Same isolated S05 branch clean011/treea8c/parent1b/base32e99, exact6 correction delta/cumulative22 approved. CC handed source/index/ONEtarget to CDC; root/CC readonly. Old S04local/origin432 and actualprimarymain52fd protected. Additional <=22 Full execution awaits exact root clearance; no automatic7/retry/push. |
+| integration destination | Same isolated S05 branch clean011/treea8c/parent1b/base32e99, exact6 correction delta/cumulative22 approved. CDC owns QUIET source/index/target for failure preservation/existing-output+frozen-source review only. Replacement Full failure exhausted sixth pass/sole additional campaign; no automatic7/retry/push or new FullDB/config access. Old S04local/origin432/primarymain52fd protected. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -286,3 +286,10 @@ OriginalFOURpath CCownership/work continues. ExtraCompactkernel andRawprojection
 ### 17.7 Frozen05 handback and bounded independent review —2026-10-28 UTC
 
 Clean011af09a/treea8c/parent1b exact6sourcepaths returned by CC with all gates terminal. CDC whole-critical-delta review and independent affected Tiny/current optimized SAME-code22 qualification PASS at scopes in review-iteration05.md/cdc-iteration05 manifest. Current no-default corrected83/10groups; author --list are test names, missing actual package lists now executed0. Cumulative main diff22 is original21 plus explicitly authorized existing search/tests/collection_query_contract.rs; no scope waiver/new pass. All6binding rows OPEN; first Full failure immutable; one additional22 campaign REVIEW-only packet04/rootclearance pending, no automatic7/retry/push/currentLinux/freshARC/close claim. Prior dated transfer/WIP paragraphs remain historical.
+
+
+### Replacement Full campaign terminal failure / explicit STOP —2026-10-28 UTC
+
+Actual session38736/PID24920 exact qualifiedPython-B runner02/execution02/output02: outerexit1/110.9844945827499s/raw2356B SHA ff73a6fe45bd67431f0c9de2cf7b81f6fbd17250b4e410657a663bf18a22fbbb. All12freshPASS/savedphase12PASS; stage13Fullwarm child101, measuredjbotci-local wholequery1.206865292s>750ms (lookup1.205107043/projection1.758249ms), correctResolvedfact.13attempted12checked/no14–22/no21analysis/nosemantic. All47rows/setup+46requests27prime19measured preserved; all46facts exactfrozenexpectations. ALL27prime timingsevaluated asdiagnostic only, no cache/hash/decode cause attribution fromresidual. WholecurrentFull numerical gateNOTACCEPTED.
+
+Root explicit disposition STOP implementation/performance execution: SIXTHpass+SOLEadditionalcampaign exhausted. All6S05OPEN; no sourceedit/Cargo/newproduct or FullDB/config read/stat/hash, retry/seventh/push/newstore/reset/cleanup. Evidence-only existing savedoutputs/receipts/frozen SOURCE permitted for bounded hypotheses. ONE campaignDBpair unchanged; OWNtarget70751592448bothdelta0, historicalTiny3.5MBdifference causeUNPROVEN/not equalitygate. Resource mechanisms and finalownbytes limits in review-numeric02. Canonical numeric-failed02/output-inventory02 preserve exact outputs/six namedcontrols/heldbulkywires; failed01 unchanged. Current clean source011/treea8c; CDC owns QUIET source/index/target for preservation only. No new runtime authority.

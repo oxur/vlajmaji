@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+    "warm-full",
+    "full",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full"
+  ],
+  "decision": "rejected child exit",
+  "elapsed_seconds": 14.216103833168745,
+  "exit_code": 101,
+  "log": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/stderr",
+  "maximum_resident_set_size_bytes": 2934226944,
+  "pid": 25012,
+  "rss_parse_ok": true,
+  "rss_source": "/usr/bin/time -l maximum resident set size",
+  "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/stdout",
+  "timed_out": false
+}

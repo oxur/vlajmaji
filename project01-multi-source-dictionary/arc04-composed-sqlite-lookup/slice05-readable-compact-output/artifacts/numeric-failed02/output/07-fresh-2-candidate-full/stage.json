@@ -1,0 +1,61 @@
+{
+  "kind": "fresh",
+  "round": 2,
+  "mode": "candidate-full",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+    "lookup",
+    "farvi",
+    "--config",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+    "--format",
+    "full"
+  ],
+  "number": 7,
+  "guard_argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "8589934592",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/07-fresh-2-candidate-full/stderr",
+    "--stdout",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/07-fresh-2-candidate-full/stdout",
+    "--",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+    "lookup",
+    "farvi",
+    "--config",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+    "--format",
+    "full"
+  ],
+  "guard_exit": 0,
+  "receipt": {
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "--format",
+      "full"
+    ],
+    "decision": "passed",
+    "elapsed_seconds": 2.035404291935265,
+    "exit_code": 0,
+    "log": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/07-fresh-2-candidate-full/stderr",
+    "maximum_resident_set_size_bytes": 2262646784,
+    "pid": 24966,
+    "rss_parse_ok": true,
+    "rss_source": "/usr/bin/time -l maximum resident set size",
+    "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/07-fresh-2-candidate-full/stdout",
+    "timed_out": false
+  },
+  "stdout_bytes": 7164849,
+  "stdout_sha256": "1a05cefc7da46006e5089f60963f205bb0e9131570684d69428d0b508c692473",
+  "stderr_bytes": 777,
+  "stderr_sha256": "336355da8d5c9f0423454fdb8f0d6e7b15584cbae97e9076e35928c8dfeb1480"
+}

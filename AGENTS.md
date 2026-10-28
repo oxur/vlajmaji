@@ -2,6 +2,10 @@
 
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
+**Current S05 checkpoint,2026-10-28 UTC:** clean011/treea8c QUIET; replacement Full FAILED WholeResolve1.206865292s>750ms after12freshPASS. Sixth pass/sole additional campaign exhausted; explicit STOP preservation/existing-output+frozen-source review ONLY. All6OPEN/no source/Cargo/product/FullDB-config read/stat/hash/retry/seventh/push; currentLinux/freshARC/close pending.
+
+### Historical pre-replacement-result checkpoint
+
 **Current S05 checkpoint,2026-10-28 UTC:** clean frozen011/treea8c/parent1b exact6 author handback, CDC owns source/index/ONEtarget. Whole-critical-delta/independent affected Tiny/current optimized22-method qualification PASS; review-iteration05+canonical cdc-iteration05. All6OPEN/additional Full exact rootclearance/currentLinux/freshARC/close pending, noautomatic7/retry/push.
 
 ### Historical six-path author interval checkpoint

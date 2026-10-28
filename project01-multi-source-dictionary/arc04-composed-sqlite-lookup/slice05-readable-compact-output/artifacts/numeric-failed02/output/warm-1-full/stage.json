@@ -1,0 +1,55 @@
+{
+  "kind": "warm",
+  "round": 1,
+  "mode": "full",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+    "warm-full",
+    "full",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full"
+  ],
+  "number": 13,
+  "guard_argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "8589934592",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/stderr",
+    "--stdout",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/stdout",
+    "--",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+    "warm-full",
+    "full",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full"
+  ],
+  "guard_exit": 101,
+  "receipt": {
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+      "warm-full",
+      "full",
+      "1",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full"
+    ],
+    "decision": "rejected child exit",
+    "elapsed_seconds": 14.216103833168745,
+    "exit_code": 101,
+    "log": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/stderr",
+    "maximum_resident_set_size_bytes": 2934226944,
+    "pid": 25012,
+    "rss_parse_ok": true,
+    "rss_source": "/usr/bin/time -l maximum resident set size",
+    "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/warm-1-full/stdout",
+    "timed_out": false
+  },
+  "stdout_bytes": 36979,
+  "stdout_sha256": "b004f8d20587acc12fffeeb09af6b02bdb64123a32dcce3593ce2693d1f9d0a4",
+  "stderr_bytes": 951,
+  "stderr_sha256": "0d6d77aac077b79b6783ef086742cbd55abef4d468b18d3c8e4161af46afa74e"
+}

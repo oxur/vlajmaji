@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+    "lookup",
+    "farvi",
+    "--config",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+    "--format",
+    "readable"
+  ],
+  "decision": "passed",
+  "elapsed_seconds": 1.4572615837678313,
+  "exit_code": 0,
+  "log": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/05-fresh-2-readable/stderr",
+  "maximum_resident_set_size_bytes": 1417216000,
+  "pid": 24957,
+  "rss_parse_ok": true,
+  "rss_source": "/usr/bin/time -l maximum resident set size",
+  "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full02/05-fresh-2-readable/stdout",
+  "timed_out": false
+}
