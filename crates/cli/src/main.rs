@@ -3008,6 +3008,24 @@ mod managed_output_tests {
         }
     }
 
+    #[derive(Default)]
+    struct FlushBrokenPipeAfterWrite {
+        bytes: Vec<u8>,
+        flushes: usize,
+    }
+
+    impl Write for FlushBrokenPipeAfterWrite {
+        fn write(&mut self, buffer: &[u8]) -> io::Result<usize> {
+            self.bytes.extend_from_slice(buffer);
+            Ok(buffer.len())
+        }
+
+        fn flush(&mut self) -> io::Result<()> {
+            self.flushes += 1;
+            Err(io::Error::from(io::ErrorKind::BrokenPipe))
+        }
+    }
+
     #[test]
     fn test_shared_json_and_readable_writer_handles_flush_errors_and_broken_pipe() {
         let context = ManagedOutputContext {
@@ -3056,6 +3074,30 @@ mod managed_output_tests {
             ));
             assert!(stderr.is_empty());
         }
+
+        let mut json_writer = FlushBrokenPipeAfterWrite::default();
+        let mut stderr = Vec::new();
+        assert!(emit_success_response(
+            &QueryOutput::Json(serde_json::json!({"ok":true})),
+            &mut json_writer,
+            &mut stderr,
+            Some(&context),
+        ));
+        assert_eq!(json_writer.bytes, b"{\"ok\":true}\n");
+        assert_eq!(json_writer.flushes, 1);
+        assert!(stderr.is_empty());
+
+        let mut readable_writer = FlushBrokenPipeAfterWrite::default();
+        let mut stderr = Vec::new();
+        assert!(emit_success_response(
+            &QueryOutput::Readable("readable body".into()),
+            &mut readable_writer,
+            &mut stderr,
+            Some(&context),
+        ));
+        assert_eq!(readable_writer.bytes, b"readable body");
+        assert_eq!(readable_writer.flushes, 1);
+        assert!(stderr.is_empty());
     }
 
     #[test]

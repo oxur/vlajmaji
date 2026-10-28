@@ -11,7 +11,8 @@ use std::{
 };
 
 use vlajmaji_lexicon::{
-    CaptureRef, EntityId, LocalRef, OccurrenceRef, Presence, RelationTarget, SourceId, TextValue,
+    CaptureRef, Eligibility, EntityId, LocalRef, OccurrenceRef, Presence, RelationTarget, SourceId,
+    TextValue,
 };
 use vlajmaji_search::{
     CollectionCompactQueryResponse, CollectionCompactQueryResult,
@@ -228,6 +229,167 @@ unverified: 1
 requested_release: null
 "#;
     assert_eq!(rendered, expected);
+    drop(engine);
+    fs::remove_dir_all(root).expect("remove owned test root");
+}
+
+fn literal_resolve_input() -> DictionaryCompactReferenceResolution {
+    let (root, engine) = compact_engine();
+    let dictionary = fixture::complete_fixture().expect("complete fixture");
+    let seed_assertion_id = dictionary
+        .metadata()
+        .assertions
+        .iter()
+        .find(|row| row.eligibility == Eligibility::Lexical)
+        .expect("fixture lexical assertion")
+        .id
+        .clone();
+    let mut response = engine
+        .resolve(&RelationTarget::Local(LocalRef::Assertion(
+            seed_assertion_id,
+        )))
+        .expect("seed typed projection structs");
+    let mut first_availability = response.availability[0].clone();
+    first_availability.source.id = SourceId::new("source-a").unwrap();
+    first_availability.source.abbreviation = "A".into();
+    let mut later_availability = first_availability.clone();
+    later_availability.source.abbreviation = "wrong".into();
+
+    let mut confirmed = response.confirmed[0].clone();
+    confirmed.entry.id = EntityId::new("entry-a").unwrap();
+    confirmed.entry.source = SourceId::new("source-a").unwrap();
+    confirmed.entry.spelling = Presence::Value("farvi".into());
+    confirmed.assertion.id = EntityId::new("assertion-a").unwrap();
+    confirmed.assertion.entry = confirmed.entry.id.clone();
+    confirmed.assertion.occurrence = literal_detail_ref().occurrence;
+    confirmed.assertion.definition = Presence::Value(TextValue {
+        text: "é\n\"quoted\"".into(),
+        language: Presence::Missing,
+        markup: Presence::Null,
+    });
+    confirmed.assertion.eligibility = Eligibility::Lexical;
+    confirmed.occurrence_id = "00".into();
+    confirmed.payload_present = true;
+    confirmed.current_eligible = true;
+    confirmed.detail_ref = Some(literal_detail_ref());
+
+    let mut excluded = confirmed.clone();
+    excluded.entry.id = EntityId::new("entry-z").unwrap();
+    excluded.entry.source = SourceId::new("source-z").unwrap();
+    excluded.entry.spelling = Presence::Null;
+    excluded.assertion.id = EntityId::new("assertion-z").unwrap();
+    excluded.assertion.entry = excluded.entry.id.clone();
+    excluded.assertion.definition = Presence::Missing;
+    excluded.assertion.eligibility = Eligibility::Excluded {
+        reason: "not lexical".into(),
+    };
+    excluded.occurrence_id = "01".into();
+    excluded.payload_present = false;
+    excluded.current_eligible = false;
+    excluded.detail_ref = None;
+
+    response.target =
+        RelationTarget::Local(LocalRef::Assertion(EntityId::new("assertion-a").unwrap()));
+    response.status = ReferenceStatus::Unverified;
+    response.entity = None;
+    response.confirmed = vec![confirmed];
+    response.unverified = vec![excluded];
+    response.availability = vec![first_availability, later_availability];
+    response.requested_release = None;
+    drop(engine);
+    fs::remove_dir_all(root).expect("remove seed fixture root");
+    response
+}
+
+#[test]
+fn test_render_dictionary_compact_resolve_matches_mixed_literal_golden() {
+    let response = literal_resolve_input();
+    const EXPECTED: &str = "Reference {\"Local\":{\"Assertion\":\"assertion-a\"}}: Unverified\nentity: null\nconfirmed: 1\nA [source-a] 1 confirmed\n  assertion-a @ 00\n    spelling: {\"Value\":\"farvi\"}\n    definition: {\"Value\":{\"text\":\"é\\n\\\"quoted\\\"\",\"language\":\"Missing\",\"markup\":\"Null\"}}\n    eligibility: \"Lexical\"\n    payload_present: true\n    current_eligible: true\n    detail: {\"version\":1,\"digest_policy\":\"entry-assertion-serde-json-v1\",\"role\":\"assertion\",\"source\":\"source-a\",\"entry_id\":\"entry-a\",\"assertion_id\":\"assertion-a\",\"occurrence\":{\"capture\":{\"namespace\":\"fixture:readable\",\"sha256\":\"0000000000000000000000000000000000000000000000000000000000000000\"},\"locator\":\"/0\"},\"entry_sha256\":\"1111111111111111111111111111111111111111111111111111111111111111\",\"assertion_sha256\":\"2222222222222222222222222222222222222222222222222222222222222222\",\"native_entry_id\":null,\"native_assertion_id\":null,\"contributor_id\":null,\"distributor_id\":null}\nunverified: 1\n? [source-z] 1 unverified\n  assertion-z @ 01\n    spelling: \"Null\"\n    definition: \"Missing\"\n    eligibility: {\"Excluded\":{\"reason\":\"not lexical\"}}\n    payload_present: false\n    current_eligible: false\n    detail: null\nrequested_release: null\n";
+    assert_eq!(
+        render_dictionary_compact(&DictionaryCompactQueryResult::Resolve(Box::new(response))),
+        EXPECTED
+    );
+}
+
+#[test]
+fn test_render_dictionary_compact_groups_sources_and_preserves_row_multiplicity() {
+    let mut response = literal_resolve_input();
+    let source_z = response.unverified[0].clone();
+    let source_a = response.confirmed[0].clone();
+    let mut source_z2 = source_z.clone();
+    source_z2.assertion.id = EntityId::new("assertion-z2").unwrap();
+    source_z2.occurrence_id = "02".into();
+    let mut source_a2 = source_a.clone();
+    source_a2.assertion.id = EntityId::new("assertion-a2").unwrap();
+    source_a2.occurrence_id = "03".into();
+    response.confirmed = vec![source_z, source_a.clone(), source_z2, source_a2, source_a];
+    response.unverified.clear();
+
+    let input_sources: Vec<_> = response
+        .confirmed
+        .iter()
+        .map(|row| row.entry.source.as_str())
+        .collect();
+    assert_eq!(
+        input_sources,
+        ["source-z", "source-a", "source-z", "source-a", "source-a"]
+    );
+    let rendered =
+        render_dictionary_compact(&DictionaryCompactQueryResult::Resolve(Box::new(response)));
+    let headers: Vec<_> = rendered
+        .lines()
+        .filter(|line| line.ends_with(" confirmed") || line.ends_with(" unverified"))
+        .collect();
+    assert_eq!(
+        headers,
+        ["A [source-a] 3 confirmed", "? [source-z] 2 confirmed"]
+    );
+    let row_ids: Vec<_> = rendered
+        .lines()
+        .filter_map(|line| line.strip_prefix("  "))
+        .filter_map(|line| line.split_once(" @ ").map(|(id, _)| id))
+        .collect();
+    assert_eq!(
+        row_ids,
+        [
+            "assertion-a",
+            "assertion-a2",
+            "assertion-a",
+            "assertion-z",
+            "assertion-z2"
+        ]
+    );
+}
+
+#[test]
+fn test_render_dictionary_compact_actual_nonempty_page_zero_keeps_totals_and_is_repeatable() {
+    let (root, engine) = compact_engine();
+    let unpaged = engine
+        .exact("farvi", DictionaryExactOptions::default())
+        .expect("nonempty fixture exact result");
+    assert!(unpaged.totals.occurrences > 0);
+    assert!(!unpaged.groups.is_empty());
+
+    let page_zero = engine
+        .exact(
+            "farvi",
+            DictionaryExactOptions {
+                page_size: Some(0),
+                ..DictionaryExactOptions::default()
+            },
+        )
+        .expect("page-size-zero query result");
+    assert_eq!(page_zero.totals, unpaged.totals);
+    assert!(page_zero.groups.is_empty());
+    assert!(page_zero.next_cursor.is_none());
+    let expected = format!(
+        "Exact \"farvi\": {} occurrences, {} spellings, {} sources\nnext_cursor: null\n",
+        unpaged.totals.occurrences, unpaged.totals.distinct_spellings, unpaged.totals.source_groups,
+    );
+    let result = DictionaryCompactQueryResult::Exact(Box::new(page_zero));
+    let rendered = render_dictionary_compact(&result);
+    assert_eq!(rendered, expected);
+    assert_eq!(render_dictionary_compact(&result), expected);
     drop(engine);
     fs::remove_dir_all(root).expect("remove owned test root");
 }
