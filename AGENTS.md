@@ -2,6 +2,14 @@
 
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
+**Current S05 checkpoint,2026-10-28 UTC:** clean1b/tree338daa; one Full numerical campaign FAILED warmFull jbotci-local1.214126625s>750ms after12freshPASS. Failure immutable/DB+cachepairsunchanged. HUMANapproved SIXtotal: ONEmax4existingpathcorrection+requiredlocal/Tiny+ONEadditional<=22stagecampaign, noautomatic7/retry/push. CDC owns QUIET source/index/ONEtarget; draft05/rootreadiness BEFORE issue/source/build and separate exactFullreadiness beforelaunch. All6OPEN/currentLinux/freshARC/closepending.
+
+### Historical pre-amendment failure checkpoint
+
+**Current S05 checkpoint,2026-10-28 UTC:** clean1b/tree338daa/final04 bounded ACCEPTED. ONEexactFullcampaign TERMINALFAILED:12freshcheckedPASS, stage13Fullwarm measuredjbotci-local1.214126625s>750ms; no14–22/retry. DB/cachepairs unchanged. CDC owns QUIET source/index/ONEtarget; root/CCreadonly. Fivepassesused/noautomatic6/additionaltrial; failure preservation/source-only proposal pending explicitdisposition. All6OPEN/currentLinux/freshARC/close/externalpending.
+
+### Historical prelaunch numerical checkpoint
+
 **Current S05 checkpoint,2026-10-28 UTC:** clean1b/tree338daa/final04 bounded ACCEPTED, persistent omissions CLOSED. CDC owns quiet source/index/ONEtarget; current pinned optimized tools and SAMEcode Tiny numeric method qualified(1failedRSSchild+22PASS), all6OPEN. Effective Full packet035637/deltafreeze9982(inherits6a82/base62cf) awaitsroot executableclearance; complete inheritedTMPDIR/birth-bound/private-unit accounting, NOretainedFullleaf/data/hash/query yet. CurrentLinux/freshARC/close/externalgate remain; fivepassesused/noautomatic6.
 
 ### Historical final04 bounded ownership checkpoint
@@ -167,3 +175,8 @@ CDC accepted complete source-cited intake (artifacts/execution.md, original8890f
 ## Historical iteration02 author interval —2026-10-27 UTC
 
 **Current S05 checkpoint, 2026-10-27:** issued iteration02/pass3of5 complete WHOLE-plan §§1–12 CC intake/readback is accepted after explicit factual erratum; fresh clean c364/treebcaf/lock/guard/both S04refs verified. On explicit CDC message after this metadata commit, retained Luna/high CC exclusively owns ONLY SIX issued source paths/index/ONE retained target; CDC/root read-only until frozen handback. All6S05/fiveotherarc/all14project OPEN; readable03plannedpass4/Fullnumeric/Linux/freshARC/external actions remain pending. No source edit/build at intake.
+
+
+### Explicit one-pass/campaign amendment —2026-10-28 UTC
+
+Duncan explicitly submitted “Approve one correction pass and campaign” to the exact question preserved with answer/itemid in artifacts/authority-s05-extra-pass01.json (1243B/SHA352b69455418f0ea7247da261eeff6eee228a098daef86ea0284b4e174836330). Scope is SIX TOTAL S05 implementation passes, one correction affecting AT MOST FOUR EXISTING files, required local/Tiny validation and ONEadditional <=22-stage Full campaign; same Sol6.1/high CDC/Luna/high CC, unchanged thresholds, retained failedrun, NOautomaticseventh/retry/push. Root concrete readiness before numbered05issue/intake/transfer/dependent source/build, then separate exactfrozen executable review before additionalFull launch. Existing failure evidence/source1b remain unchanged. Earlier five-total/exhaustion/noamendment paragraphs are historical and explain why this amendment was requested; no budget reset or retroactive pass. All6rowsOPEN/currentLinux/freshARC/close/externalgate pending. CDC exclusively owns QUIET source/index/ONEtarget for preservation/source-only concrete05 drafting; CC/root readonly.

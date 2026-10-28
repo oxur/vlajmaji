@@ -1,0 +1,282 @@
+[
+  {
+    "kind": "fresh",
+    "round": 1,
+    "mode": "baseline-full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+    ]
+  },
+  {
+    "kind": "fresh",
+    "round": 1,
+    "mode": "candidate-full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "--format",
+      "full"
+    ]
+  },
+  {
+    "kind": "fresh",
+    "round": 1,
+    "mode": "compact",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "--format",
+      "compact"
+    ]
+  },
+  {
+    "kind": "fresh",
+    "round": 1,
+    "mode": "readable",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "--format",
+      "readable"
+    ]
+  },
+  {
+    "kind": "fresh",
+    "round": 2,
+    "mode": "readable",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "--format",
+      "readable"
+    ]
+  },
+  {
+    "kind": "fresh",
+    "round": 2,
+    "mode": "compact",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "--format",
+      "compact"
+    ]
+  },
+  {
+    "kind": "fresh",
+    "round": 2,
+    "mode": "candidate-full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "--format",
+      "full"
+    ]
+  },
+  {
+    "kind": "fresh",
+    "round": 2,
+    "mode": "baseline-full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+    ]
+  },
+  {
+    "kind": "fresh",
+    "round": 3,
+    "mode": "compact",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "--format",
+      "compact"
+    ]
+  },
+  {
+    "kind": "fresh",
+    "round": 3,
+    "mode": "baseline-full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml"
+    ]
+  },
+  {
+    "kind": "fresh",
+    "round": 3,
+    "mode": "readable",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "--format",
+      "readable"
+    ]
+  },
+  {
+    "kind": "fresh",
+    "round": 3,
+    "mode": "candidate-full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/vlajmaji",
+      "lookup",
+      "farvi",
+      "--config",
+      "/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+      "--format",
+      "full"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 1,
+    "mode": "full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "warm-full",
+      "full",
+      "1",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full01/warm-1-full"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 1,
+    "mode": "compact",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "warm-full",
+      "compact",
+      "1",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full01/warm-1-compact"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 1,
+    "mode": "readable",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "warm-full",
+      "readable",
+      "1",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full01/warm-1-readable"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 2,
+    "mode": "readable",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "warm-full",
+      "readable",
+      "2",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full01/warm-2-readable"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 2,
+    "mode": "full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "warm-full",
+      "full",
+      "2",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full01/warm-2-full"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 2,
+    "mode": "compact",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "warm-full",
+      "compact",
+      "2",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full01/warm-2-compact"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 3,
+    "mode": "compact",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "warm-full",
+      "compact",
+      "3",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full01/warm-3-compact"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 3,
+    "mode": "readable",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "warm-full",
+      "readable",
+      "3",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full01/warm-3-readable"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 3,
+    "mode": "full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "warm-full",
+      "full",
+      "3",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full01/warm-3-full"
+    ]
+  },
+  {
+    "kind": "semantic",
+    "round": null,
+    "mode": null,
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries01/numeric-observer",
+      "semantic-full",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-full01/semantic"
+    ]
+  }
+]

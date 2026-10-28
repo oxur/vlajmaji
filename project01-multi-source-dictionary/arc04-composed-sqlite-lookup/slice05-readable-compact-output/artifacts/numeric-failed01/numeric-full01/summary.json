@@ -1,0 +1,28 @@
+{
+  "ok": false,
+  "tiny_method": false,
+  "completed_or_attempted_stages": 13,
+  "elapsed_seconds": 120.141735333018,
+  "failure": {
+    "type": "AssertionError",
+    "detail": "",
+    "traceback": "Traceback (most recent call last):\n  File \"/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner01.py\", line 259, in execute\n    assert result.returncode==0 and receipt['decision']=='passed' and receipt['exit_code']==0\n                                                                      ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+  },
+  "database_before": {
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/catalogue.sqlite3": "051dae4cf3fd0b4f77c230ab348e39e353a22bbb482a26fe35ce089bdda0603c",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/22138258fb19a4b58ae1bb67d230a49e/store/dictionary.sqlite3": "b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725"
+  },
+  "database_after": {
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/catalogue.sqlite3": "051dae4cf3fd0b4f77c230ab348e39e353a22bbb482a26fe35ce089bdda0603c",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/22138258fb19a4b58ae1bb67d230a49e/store/dictionary.sqlite3": "b04e8006447192846657611179c5efd8059dd58b301f1420a760eca74aa4a725"
+  },
+  "database_unchanged": true,
+  "observed_inventory_bytes": 604346371,
+  "target_cache_before_bytes": 69289476096,
+  "target_cache_after_bytes": 69289476096,
+  "target_cache_delta_bytes": 0,
+  "settled_delta": "inventory-before-summary.json, target-cache-after.json and summary.json are authored AFTER this observation and excluded from its exact bytes; final external manifest will include both",
+  "resource_mechanism": "600s process-group timeout active; RSS8GiB/output128MiB/new scratch12GiB checked AFTER each process, not live enforcement",
+  "fresh_semantics": "fresh PROCESS only; one prehash pair warmed OS cache; no cache controls",
+  "proof_scope": "same-call timings + exact3 observations per identity; no pooling/retry; one semantic observer; errors retained; no detail latency cap"
+}

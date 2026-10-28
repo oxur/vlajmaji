@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| Status / version | Final04 bounded ACCEPTED; current optimized tools +actual Tiny numerical method qualified /1.14 /2026-10-28 UTC. Effective Full packet03 awaits root review; all6OPEN. |
+| Status / version | Final04 bounded ACCEPTED; first Full numerical campaign FAILED at measured Full warm reference /1.15 /2026-10-28 UTC. Twelve fresh PASS; no retry, all6OPEN; explicit disposition required. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
 | Source / dependency | Clean1b9038ddc6c45f3ea709a0bdfec64041221e3571, parent5e/tree338daa526d9f1cd56813d0c68a41a3f258e8ec47 on codex/project01-readable-compact-output; production exact5e/main32e99 base and old S04 local/origin432 frozen. |
-| Ownership | CC explicit all-terminal handback accepted clean1b; CDC exclusively owns source/index/ONEtarget, root/CC read-only. Current optimized build/ownedTiny method qualification authorized; retainedFull held for exact executable root review. |
+| Ownership | CC explicit all-terminal handback accepted clean1b; CDC exclusively owns source/index/ONEtarget, root/CC read-only. Root-cleared one Full campaign TERMINAL failure/13attempted12checked; CDC owns quiet source/index/ONEtarget. One human-authorized sixth correction/max4existingpaths and additional <=22campaign pending concrete root readiness; no source/build/launch yet. |
 | Delivery | Additive compact Exact/Resolve and complete occurrence detail, then source-grouped readable Exact/Resolve/detail. Full default JSON stays compatible. Public libraries, CLI, documentation and actual five-workflow composition accompany output, not verification alone. |
-| Sizing | FIVE TOTAL completed: initial/pass1,01/pass2,02/pass3,03/pass4,04/pass5. Final04 exactTHREEtestpath bounded acceptance; no automatic sixth/reset; six criteria/all later gates unchanged. |
+| Sizing | FIVE completed: initial/pass1,01/pass2,02/pass3,03/pass4,04/pass5. Human explicit amendment authorizes SIXtotal, one max4existingpath correction05 pending root readiness. No automatic seventh/reset; criteria/later gates unchanged. |
 | Limits | No dependency/lock/schema/importer/model/workflow changes, topology redo, new Full store/generation, cleanup/cache reset, actual-default access, S04 branch writes, A05 activation, network/push/PR/merge/publication. Later finite retained-G4 trial needs exact executable root readiness. |
 
 ## 1. Source findings and preserved behavior
@@ -855,3 +855,19 @@ Current executable review configuration is artifacts/numeric-freeze02/numeric-fu
 ### §16 effective final packet03 (one exact private-unit prefix)
 
 Final executable configuration is artifacts/numeric-freeze03/numeric-full-preflight03.json SHA5637fead…557a2, additive4payload181538B manifest9982d585…33518 inheriting immutable02/6a82 and01/62cf. Source-exact missing privateunit compact-projection prefix addsONEroot, now778namedpaths/552360352B; actualpacketfree269164015616B/target69289476096B. Exact22argv/runtime/limits/DBrecordedpair/deferredconfig unchanged. No extra observations; allpriorfailedmethods/packets preserved. Root exactlaunchclearancepending, retainedFullZERO/currentLinux/freshARC/close open.
+
+
+### First exact Full numerical campaign — FAILED /2026-10-28 UTC
+
+Root exact executable clearance at clean1b/tree338daa/planningbda711 authorized ONE <=22children. Exclusive execution-copy170671B/SHA2022435ea55d56f4cff266f491f8c24e77d2f0939fda14e2329f9b12d9f366f4 differs from immutable reviewedpacket035637 ONLYreadiness_status; inversebytes/allotherfields exact. Actual escalated qualified Python-B/time-l campaign outer session77755 EXIT1,139.200255459s; raw2355B/SHAe52604883f1a1ff14e6777082a7ab352fc85b289a18ee1d1a06102faed242d0d. Root clearance transcription/statuscopy/outer raw+receipt retained, not invented backend authority payload.
+
+Exactly12freshchildren checkedPASS and phase12med/maxPASS, then stage13 Full warm observer EXIT101/57.137581917s/RSS2759983104/timeoutfalse. Measured jbotci-local whole query.total1214126625ns >750000000ns warmmaximum; lookup1212427125ns/projection1699500ns, prime1245563917ns. Actual47JSONL=setup+46requestrows(27prime/19measured), all46facts agree PRE-INPUT expected facts. NOstages14–22,21rowanalysis or semantic22; no pooled/fabricated/full-success verdict. Source-based descriptor-cost explanation is inference, not measured subphase. Stopfirstfailure/no retry followed exactly.
+
+ONEactual DBpre/postpair equals recorded expectedSHA for catalogue+G4dictionary; targetallocation69289476096B both/delta0, namedS05observedinventory604346371B, postinventory-summary ownbytes disclosed. Source remainsclean1b/tree338daa, planning executionbaselinebda711. Resource/RSS/output postthresholds are notliveenforcement; timeoutactive. Actualuserdefault untouched; no stores/generations/cachecleanup/sourceedit/build/externalaction. Twelvefresh med/maxseconds baseline2.027/2.313,candidateFull2.087/2.089,Compact1.489/1.501,Readable1.458/1.500; these scoped successes do NOTpass failedwarm/fullnumericalgate.
+
+Canonical artifacts/numeric-failed01 byte-copies allsmallraw/checkedreceipts/outputanalysis and seven bulkyFullwire hashes/localhold paths. Immutablefreeze01/02/03 and priorTiny23methodobservations remain unchanged. See review-numeric01.md and source-only recommendation; recommendation is NOTissued. FiveTOTALimplementationpasses exhausted at failure; the later explicit amendment below now authorizes SIXtotal. Per§7 failedgate returns forexplicitdisposition/noautoextra trial/budgetrelaxation; need narrow HUMANamendment for sixthcorrection+ONEadditionalcampaign beforeany newsource/runtime. All6S05/fivearc/all14projectOPEN; currentLinux/freshARC/closure and externaldelivery remain pending. Fresh assembledreview NOTlaunched.
+
+
+### Explicit one-pass/campaign amendment —2026-10-28 UTC
+
+Duncan explicitly submitted “Approve one correction pass and campaign” to the exact question preserved with answer/itemid in artifacts/authority-s05-extra-pass01.json (1243B/SHA352b69455418f0ea7247da261eeff6eee228a098daef86ea0284b4e174836330). Scope is SIX TOTAL S05 implementation passes, one correction affecting AT MOST FOUR EXISTING files, required local/Tiny validation and ONEadditional <=22-stage Full campaign; same Sol6.1/high CDC/Luna/high CC, unchanged thresholds, retained failedrun, NOautomaticseventh/retry/push. Root concrete readiness before numbered05issue/intake/transfer/dependent source/build, then separate exactfrozen executable review before additionalFull launch. Existing failure evidence/source1b remain unchanged. Earlier five-total/exhaustion/noamendment paragraphs are historical and explain why this amendment was requested; no budget reset or retroactive pass. All6rowsOPEN/currentLinux/freshARC/close/externalgate pending. CDC exclusively owns QUIET source/index/ONEtarget for preservation/source-only concrete05 drafting; CC/root readonly.
