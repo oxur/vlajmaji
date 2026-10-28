@@ -1,0 +1,92 @@
+{
+  "head": "5bc9da710f765152b6a39cbc1506a2716aebfe60",
+  "parent": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "tree": "43a889e70f5cc49288ebcb5641458c5fc521c321",
+  "scope": [
+    "crates/cli/tests/collections_lifecycle_contract.rs",
+    "crates/cli/tests/query_output_contract.rs"
+  ],
+  "unchanged_other_git_entries": 131,
+  "cumulative_paths": 23,
+  "logs": [
+    {
+      "name": "i06-fmt-check01.log",
+      "bytes": 179,
+      "sha256": "484a72f1fdebf43030b2f4ce79f41d8c807eeb3971972355b2dabe01150b07a8",
+      "rust_summary_rows": 0,
+      "rust_sums": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "i06-lint01.log",
+      "bytes": 351,
+      "sha256": "3879e2502a44bda32fe121f6a5e22c6937748890680af07a96299c0d22f67df8",
+      "rust_summary_rows": 0,
+      "rust_sums": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "i06-query-output-test01.log",
+      "bytes": 271,
+      "sha256": "b4019bc4341702b013643293fa4e6b2ddcb9ac25efc275221246c513ba2810d8",
+      "rust_summary_rows": 0,
+      "rust_sums": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "i06-query-output-test02.log",
+      "bytes": 961,
+      "sha256": "974cd88d14191664f569b9f0904f692d3095eef6e2817aab34005a145daf67b3",
+      "rust_summary_rows": 1,
+      "rust_sums": [
+        5,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "i06-collections-lifecycle-test01.log",
+      "bytes": 760,
+      "sha256": "03860d0488ffed3c586153bef1150f04beadd2037668e0de5fed23be6acfe34d",
+      "rust_summary_rows": 1,
+      "rust_sums": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "i06-check01.log",
+      "bytes": 46118,
+      "sha256": "e8762db5bc02bf226c857fbdc0cc275bc283af70eb6c682d32412175fed7dbdd",
+      "rust_summary_rows": 56,
+      "rust_sums": [
+        338,
+        0,
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "limits": "existing-output/source only; no Cargo/Full/CI execution; local Linux body excluded; all6OPEN"
+}

@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "source_head": "5bc9da710f765152b6a39cbc1506a2716aebfe60",
+  "source_tree": "43a889e70f5cc49288ebcb5641458c5fc521c321",
+  "payloads": [
+    {
+      "path": "i06-fmt-check01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i06-fmt-check01.log",
+      "bytes": 179,
+      "sha256": "484a72f1fdebf43030b2f4ce79f41d8c807eeb3971972355b2dabe01150b07a8",
+      "classification": "whole_original_byte_copy"
+    },
+    {
+      "path": "i06-lint01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i06-lint01.log",
+      "bytes": 351,
+      "sha256": "3879e2502a44bda32fe121f6a5e22c6937748890680af07a96299c0d22f67df8",
+      "classification": "whole_original_byte_copy"
+    },
+    {
+      "path": "i06-query-output-test01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i06-query-output-test01.log",
+      "bytes": 271,
+      "sha256": "b4019bc4341702b013643293fa4e6b2ddcb9ac25efc275221246c513ba2810d8",
+      "classification": "whole_original_byte_copy"
+    },
+    {
+      "path": "i06-query-output-test02.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i06-query-output-test02.log",
+      "bytes": 961,
+      "sha256": "974cd88d14191664f569b9f0904f692d3095eef6e2817aab34005a145daf67b3",
+      "classification": "whole_original_byte_copy"
+    },
+    {
+      "path": "i06-collections-lifecycle-test01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i06-collections-lifecycle-test01.log",
+      "bytes": 760,
+      "sha256": "03860d0488ffed3c586153bef1150f04beadd2037668e0de5fed23be6acfe34d",
+      "classification": "whole_original_byte_copy"
+    },
+    {
+      "path": "i06-check01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i06-check01.log",
+      "bytes": 46118,
+      "sha256": "e8762db5bc02bf226c857fbdc0cc275bc283af70eb6c682d32412175fed7dbdd",
+      "classification": "whole_original_byte_copy"
+    },
+    {
+      "path": "cdc-i06-independent01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/cdc-i06-independent01.json",
+      "bytes": 2110,
+      "sha256": "a34f24eebdd74910cda9e651a46d356a908c5c56ebf341959506ceea67d4c945",
+      "classification": "whole_original_byte_copy"
+    },
+    {
+      "path": "cdc-i06-delta.patch",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/cdc-i06-delta.patch",
+      "bytes": 2598,
+      "sha256": "8dfb09d89e8b3acda5fc054cb905d5d2a11715f7cb75512a257bf35b09c64c64",
+      "classification": "whole_original_byte_copy"
+    }
+  ],
+  "payload_count": 8,
+  "payload_bytes": 53348,
+  "limits": "Raw commands/exits/environment additionally attested by retained CC in execution.md; no raw outer terminal transcript fabricated. Existing-output/source-only CDC verification, local Mac excludes changed Linux body."
+}
