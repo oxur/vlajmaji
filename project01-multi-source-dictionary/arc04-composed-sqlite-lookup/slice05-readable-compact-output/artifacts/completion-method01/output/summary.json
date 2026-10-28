@@ -1,0 +1,25 @@
+{
+  "completion_checks_passed": true,
+  "latency_targets": "report-only explicit exception; see completion-analysis.json; never a historical numerical PASS",
+  "tiny_method": true,
+  "attempted_children": 10,
+  "reused_fresh_children": 12,
+  "elapsed_seconds": 49.96206466574222,
+  "failure": null,
+  "database_before": {
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/root/catalogue.sqlite3": "1db84d92d40d7a10a3daaf5e079e4e0d28b44d5f366989928025b925247e8052",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/root/generations/5faea77dcdc648a9b0d80d96e7863ada/store/dictionary.sqlite3": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+  },
+  "database_after": {
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/root/catalogue.sqlite3": "1db84d92d40d7a10a3daaf5e079e4e0d28b44d5f366989928025b925247e8052",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/root/generations/5faea77dcdc648a9b0d80d96e7863ada/store/dictionary.sqlite3": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+  },
+  "database_unchanged": true,
+  "target_cache_before_bytes": 70760869888,
+  "target_cache_after_bytes": 70760869888,
+  "target_cache_delta_bytes": 0,
+  "observed_scratch_bytes": 751748319,
+  "resource_mechanism": "600s process-group timeout active;8GiB RSS/128MiB captured output/12GiB observed scratch checked after each process; not live enforcement",
+  "settled_delta": "inventory-before-summary.json,target-cache-after.json,summary.json written after inventory observation; include external final inventory own-bytes separately",
+  "scope": "one nine-warm+semantic completion invocation;12passed historical fresh reused; failed campaigns immutable; fresh process is not cold OS cache"
+}

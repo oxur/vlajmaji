@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-method01.py", line 10, in <module>
+    c.execute(cfg,tiny=True)
+  File "/tmp/vlajmaji-p01-a04-s05-cdc/completion-runner01.py", line 63, in execute
+    assert out.is_relative_to(HERE) and out.name.startswith('completion-tiny-')
+AssertionError

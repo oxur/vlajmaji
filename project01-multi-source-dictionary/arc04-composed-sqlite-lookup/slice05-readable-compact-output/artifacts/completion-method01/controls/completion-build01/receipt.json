@@ -1,0 +1,36 @@
+{
+  "source_head": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-cargo",
+    "+1.98.0",
+    "build",
+    "--release",
+    "--manifest-path",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-caller01/Cargo.toml",
+    "--locked",
+    "--offline"
+  ],
+  "env": {
+    "HOME": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-build01/home",
+    "XDG_DATA_HOME": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-build01/xdg-data",
+    "XDG_CONFIG_HOME": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-build01/xdg-config",
+    "TMPDIR": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-build01/tmp",
+    "CARGO_HOME": "/Users/oubiwann/.cargo",
+    "RUSTUP_HOME": "/Users/oubiwann/.rustup",
+    "PATH": "/Users/oubiwann/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.11/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "RUSTUP_TOOLCHAIN": "1.98.0"
+  },
+  "started_utc": "2026-10-28T05:11:54.179893+00:00",
+  "exit": 0,
+  "timeout": false,
+  "elapsed_seconds": 6.520605334080756,
+  "log": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-build01/build.log",
+  "log_bytes": 279,
+  "log_sha256": "5abe58641d1c6a4a87480d31dec4fa36f37ef636ebfcc290faccf27fa253a7e1",
+  "binary": {
+    "path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+    "bytes": 8334736,
+    "sha256": "6ea668453c15ec5a9b912f8de9055053f51ee5cbd307c4c6e39b8ba5d33ba2f9"
+  }
+}

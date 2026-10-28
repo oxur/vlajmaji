@@ -1,0 +1,838 @@
+{
+  "scope": "authorized outside-caller build/pure controls/SOLE owned Tiny10 and REVIEW-ONLY Full completion packet, not a Full launch or acceptance",
+  "source_head": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "files": [
+    {
+      "path": "controls/completion-source-closure02.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-source-closure02.json",
+      "bytes": 4059,
+      "sha256": "45aa4f038dd286fce3ac58e1128d566a161b7ef3f564dda8193470f7affb91bf",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-preflight-builder01.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-preflight-builder01.py",
+      "bytes": 5523,
+      "sha256": "35dd3de4e5ce6de66b5914812ce7e058525cd88814b89789c68abeb5b8550201",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-preflight-builder02.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-preflight-builder02.py",
+      "bytes": 5524,
+      "sha256": "94624fce929eafbde0a3a38003496dc543ad88bf9ee8b77414119517abad6066",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-preflight-builder03.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-preflight-builder03.py",
+      "bytes": 6154,
+      "sha256": "96679d125f52b967a0b0313636ba844d654682a87e8ef1db01598590abbbb2d4",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-build01.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-build01.py",
+      "bytes": 2251,
+      "sha256": "941c5cadacefd4d33dc8a5ddc5f1e2a38835aa8a5be4113d87cee1a6a88ca974",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-tiny-method01.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-method01.py",
+      "bytes": 525,
+      "sha256": "851e3613d3c92cc11ed986e2de6a82135276a0e720fedd1b2b9400525bdbd525",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-reconcile-tiny01.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-reconcile-tiny01.py",
+      "bytes": 3335,
+      "sha256": "77b7c2571445ab94545c4f5094ce40c54b6660e984dda8a6522b97fd6c349ab0",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-tiny-reconciliation01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-reconciliation01.json",
+      "bytes": 860,
+      "sha256": "d9dec272d2d6f5bb39cef7f333407a6fb93cc38e44e6eb92d29779e1f4718711",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-tiny-preflight01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-preflight01.json",
+      "bytes": 394120,
+      "sha256": "e900c2d7339d34ad02a14d0d552fa18501efcd18015f06bbbd81f90b92c3c315",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-tiny-preflight02.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-preflight02.json",
+      "bytes": 394337,
+      "sha256": "110c2da7c5038d375cf34ed0191247570594af36b10460f8f7c8047defaa39bb",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-tiny-preflight-builder01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-preflight-builder01.log",
+      "bytes": 293,
+      "sha256": "639ae457f563f8da4dd7e3c6f5af008742f52423e2b66500e2d598db0cd8350b",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-tiny-preflight-builder02.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-preflight-builder02.log",
+      "bytes": 293,
+      "sha256": "1b4a0b9d3e8a2cddaf9ec20a1169debc652c0a9d1cd9fa6034b249732b73abf3",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-tiny-execution01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-execution01.log",
+      "bytes": 331,
+      "sha256": "9debf8d0fdbc489f1a11a2dd67fb36bdd489774e2bbb75107efc4c84d512c08e",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-tiny-execution01-receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-execution01-receipt.json",
+      "bytes": 599,
+      "sha256": "c833202d82a345581c60c8e8862b43cd1c53f32c7cd049403ae57a930826bb81",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-tiny-execution02.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-execution02.log",
+      "bytes": 1990,
+      "sha256": "ecd24bd3cdd543df22e72035689ff73941cb7c4d65bff8172865c2b90793f7c8",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-tiny-execution02-receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-execution02-receipt.json",
+      "bytes": 639,
+      "sha256": "b7587a09aba05d95df6a194be45cd17adbb9327d5a8f4b055da72cfa5f6f1397",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-full-preflight01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full-preflight01.json",
+      "bytes": 396264,
+      "sha256": "e523e53cf05b172463370765537b0f055304b8665c84d2a4c2e2d1f1052e5a89",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-full-preflight-builder01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full-preflight-builder01.log",
+      "bytes": 292,
+      "sha256": "e9c14e9f01742aa41f0f054f8aaf550ee6961f715e041f9d6ad99af8d3a31630",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-build01/latency-qualifier-receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-build01/latency-qualifier-receipt.json",
+      "bytes": 376,
+      "sha256": "be3e39e2edf1aa8fcad107d2438eaa57b6d60f69d3054b8b7fc124c93d3a215a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-build01/latency-qualifier.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-build01/latency-qualifier.log",
+      "bytes": 2128,
+      "sha256": "3555d5e5691c89a50499a622e50af8c221fe84dff363ff60fdefd430690a2e15",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-build01/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-build01/receipt.json",
+      "bytes": 1487,
+      "sha256": "d970c752732e27a89154b2ac27dc902b93a248169324e2a7cc4bb7e89f76e1e8",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-build01/build.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-build01/build.log",
+      "bytes": 279,
+      "sha256": "5abe58641d1c6a4a87480d31dec4fa36f37ef636ebfcc290faccf27fa253a7e1",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/completion-analysis.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/completion-analysis.json",
+      "bytes": 46860,
+      "sha256": "de4549f22bc78fa8d2b4b886ad5a14a206e81206e87b2832b1babc2ff17c83df",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/database-after.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/database-after.json",
+      "bytes": 353,
+      "sha256": "29f2d74bfcc4993f3e48cc214e5ef435daf7abbd3cdff03579201f359b96e4f1",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/database-before.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/database-before.json",
+      "bytes": 353,
+      "sha256": "29f2d74bfcc4993f3e48cc214e5ef435daf7abbd3cdff03579201f359b96e4f1",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/environment.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/environment.json",
+      "bytes": 348,
+      "sha256": "cfb6bf47a936d6611004d3c2534ba9d17dba13ac8c45e26e3c4f02396b808dae",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/expanded-stages.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/expanded-stages.json",
+      "bytes": 4407,
+      "sha256": "94b7457dbacd66cdb1b7b39d1676e31b3f8c5248474c0f02fad2eaf3b9ea8c7b",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/inventory-before-summary.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/inventory-before-summary.json",
+      "bytes": 1125128,
+      "sha256": "54cd8d9b5781680df81e497c38b132113b6d21411468b15e9b5b5c3d1d922a03",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/pre-input-normalized-facts.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/pre-input-normalized-facts.json",
+      "bytes": 23350,
+      "sha256": "ec933164dbe9c766a621356ae49c6339f3703bdd290e1f5d45d9b623959057f9",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/reused-fresh.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/reused-fresh.json",
+      "bytes": 26439,
+      "sha256": "bb432a6d123137897e4628b908fdc7570e7e077249b6d2c9e3250ed7ef1a80ee",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/s05-scratch-before.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/s05-scratch-before.json",
+      "bytes": 1109586,
+      "sha256": "1e40ce29df6c84f187ec2d0c04c6d33c6d7415a54223f5b47f7749762e2d1e02",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/checked-stage.json",
+      "bytes": 2791,
+      "sha256": "71ca8b3dbaba88959d7d2b2a9c05d6a4fc40f219b70c461d93c4fd62efdcec45",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/detail-0.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/detail-0.json",
+      "bytes": 9753,
+      "sha256": "1c34082bc8922c8cd2c4bde8250d58c6bca9b3f063e18a20c118b2222a021a32",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/detail-1.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/detail-1.json",
+      "bytes": 9716,
+      "sha256": "d2b3bda48bcf5a7beaf9aeec6c083f1f4b7790446bb298279282bdae9076249e",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/detail-2.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/detail-2.json",
+      "bytes": 9348,
+      "sha256": "0c0d56f93f2d6832755506767670114a107b4fd242aee8ebcc907029831513ba",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/detail-3.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/detail-3.json",
+      "bytes": 9100,
+      "sha256": "5164e913528d9dbb322b9783703d3375faa15463c582f21cc369739cc703d52b",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/detail-4.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/detail-4.json",
+      "bytes": 8574,
+      "sha256": "ff36f8283e529145a8c1a9550842716e5431882ec1a9a825214b36d757563356",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/guard.stdout",
+      "bytes": 705,
+      "sha256": "7c11532b5163cae559b8e1eb712e9e972dcf0f0a67102bf5e8985d5ec5602cdc",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/receipt.json",
+      "bytes": 753,
+      "sha256": "c8f6b42cee1dc3eb4f746557d277fe269812af350f28344721ae98a9bb248801",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/stage.json",
+      "bytes": 2207,
+      "sha256": "8d2a9a711fcdc1de5e6d022c7a87a24bcf48a8c55041b892f7aca5dca0fca15b",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/stderr",
+      "bytes": 777,
+      "sha256": "11f3ece905c8b0d579a6c287c09bf36a0a7a0452041a7ce9788f8e5d71ecc262",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic/stdout",
+      "bytes": 385,
+      "sha256": "a9e6c063f1e43303da86dd426a2ee1f410e1aa8a9b24608b2906982a617dd288",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/summary.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/summary.json",
+      "bytes": 1751,
+      "sha256": "a09156a9cdbf9de7037442d8809876d88107e3394cd85426020496c3805b0a9d",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/target-cache-after.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/target-cache-after.json",
+      "bytes": 128,
+      "sha256": "b56fa13ffbd2d99bb00953bfea80dd60c3c2127b4c8c898fa1ba19827a8c8325",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/target-cache-before.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/target-cache-before.json",
+      "bytes": 108,
+      "sha256": "064d80da136ecd0f6c18aeeb50eb64e3f88dc4b3dab377c460138bdb07d37ca2",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact/checked-stage.json",
+      "bytes": 77153,
+      "sha256": "58a77beb439bc7b4f06dc55f3e53a365ea29751c1af1f8b5c80634d0f940faab",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact/farvi-all-wire.txt",
+      "bytes": 32300,
+      "sha256": "00a7e11e4b88a1d24a0cbd09515ae0690deecf9055fc959497d644ee81563aac",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact/guard.stdout",
+      "bytes": 736,
+      "sha256": "72e0aa2bb69f7765cc8b0891d3c3fa96447304b26e898e7099d28f6be6374ad9",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact/receipt.json",
+      "bytes": 792,
+      "sha256": "309e0b19c5b0b560ad70e71191258405586d7750c5f23ef2ff47c25124d26766",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact/stage.json",
+      "bytes": 2313,
+      "sha256": "ebcebe35e06393e5876ca3abc5774be3cce54d2661d8c4d4c72ca277ad729ac7",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact/stderr",
+      "bytes": 777,
+      "sha256": "42fd4d81a837e585df9bc1e03b37203e68b81bc1d331fbca782a3f843383154a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact/stdout",
+      "bytes": 50160,
+      "sha256": "82cc3cbd8f7c29fe7d3a7d0374d138a839761ff777d593eecd099fd20bcabd3a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-full/checked-stage.json",
+      "bytes": 70890,
+      "sha256": "798aedfbdd63e805c9878844ef4bf7cb4d894398e0590709b0b7568c3b7a2e73",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-full/farvi-all-wire.txt",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-full/guard.stdout",
+      "bytes": 724,
+      "sha256": "80ac0dd7b6c7e9343ab3c9f663ecf33ef2f7b23f0e6a38e15254267a333974ac",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-full/receipt.json",
+      "bytes": 780,
+      "sha256": "bb7fd7c3250847fc1472dc7f5fa67abf5ff765b35f31adcf9107c68220089764",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-full/stage.json",
+      "bytes": 2280,
+      "sha256": "c6e5e0e2d9674cf2ada03793d63ecc626ec0763332031982ac335a3616b249ed",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-full/stderr",
+      "bytes": 777,
+      "sha256": "a7a9a0c6d762b11e999ff8d7fd60cee02e57c5f2728649cd750c5a8add6d37bb",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-full/stdout",
+      "bytes": 45880,
+      "sha256": "252c10c68c3ef6d1546f17174739fccf72d5fa957cd094d50908029aab938bfd",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-readable/checked-stage.json",
+      "bytes": 77140,
+      "sha256": "0ac7670ea2d08f60479ee17acc81b709e57e4ebb97a7b8f03792a78ea55c6f7a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-readable/farvi-all-wire.txt",
+      "bytes": 10681,
+      "sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-readable/guard.stdout",
+      "bytes": 739,
+      "sha256": "88f548487b3bbcb68217e9f178b5b82c782410f563890d6dd38f2c8e4b7f4b4b",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-readable/receipt.json",
+      "bytes": 795,
+      "sha256": "f3ad17af2afabcb2e0e5a7c74d159dfd88fbbc7922fa7e15f89e9b2afb674a41",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-readable/stage.json",
+      "bytes": 2323,
+      "sha256": "3a4100d251125d3dd67065827da064298f4c16b7685486b5f40e771d86a80ede",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-readable/stderr",
+      "bytes": 777,
+      "sha256": "d39a22fd9a56eacb0d736a1c4d0b7aaccde2a4067ed2064d84948b89bafc6cd6",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-readable/stdout",
+      "bytes": 50137,
+      "sha256": "43fc9d283f632e3b7bb022ff494c96a1b8a077ca651f1e51a3cfeb972d1aa957",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/checked-stage.json",
+      "bytes": 77189,
+      "sha256": "e85c5b72e5690183dc02f50eed6f01799e9ff9c38a731f9289c2e794e079187a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/farvi-all-wire.txt",
+      "bytes": 32300,
+      "sha256": "00a7e11e4b88a1d24a0cbd09515ae0690deecf9055fc959497d644ee81563aac",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/guard.stdout",
+      "bytes": 735,
+      "sha256": "7c47ef653831f855a5d7c946a8547c2c2e1dc3173c059b42943d28abdf96c354",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/receipt.json",
+      "bytes": 791,
+      "sha256": "4ebf5edb57b2bd47a9a54a47252e2d983e963f0cbb6a9278d5b33bb844179f89",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/stage.json",
+      "bytes": 2312,
+      "sha256": "c4c4d2ffd5b02411bfaa2182455bf3768f4216388c1d6f9ae588a41070368ec3",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/stderr",
+      "bytes": 777,
+      "sha256": "1da39bf81897f80b12c301b1f4b9dc196b86008d12d8814fb0e39e98096033ef",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/stdout",
+      "bytes": 50197,
+      "sha256": "714274c21a84f8f74ccc1dacee891840f56ad210bfe4f2167a2d594467339186",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/checked-stage.json",
+      "bytes": 70879,
+      "sha256": "8468805b4536719d6f4beb96ede4eed4dc7f0f9d12e5853920a9cd96a6acd498",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/farvi-all-wire.txt",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/guard.stdout",
+      "bytes": 724,
+      "sha256": "a00c996d52dae1b0ec2ebae470bed4449a7ee2883f7e1faa15a27268f71adbe0",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/receipt.json",
+      "bytes": 780,
+      "sha256": "aa6edbc46e453469fa2e6c75650c413bfaead7ded79bfdd900532df29a8fd257",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/stage.json",
+      "bytes": 2280,
+      "sha256": "5103ece241a4df264772a16ef1398b213ea23568c2eb96da42254a99ba3164d0",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/stderr",
+      "bytes": 777,
+      "sha256": "9becb4d10199eebad71e377c0a55da9c1195394a8068061d958869567bac3a47",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/stdout",
+      "bytes": 45869,
+      "sha256": "983d7cd57c2df50c0796989c2c81dbb0915c1c2c9fc2791dc6bdb962ba8a27e7",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-readable/checked-stage.json",
+      "bytes": 77134,
+      "sha256": "7959d8678eb7e1716e8654caf4dae609b8017042545a067ae6d6dc06d7296bce",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-readable/farvi-all-wire.txt",
+      "bytes": 10681,
+      "sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-readable/guard.stdout",
+      "bytes": 739,
+      "sha256": "de26fe55890e6b0256ddc8ec5fda4688800ff9072ce8089f164c469e00c979d8",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-readable/receipt.json",
+      "bytes": 795,
+      "sha256": "90a6dd1048e1ef42ac9564a13948362cecce4f33772c4deb216bb406d237aa03",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-readable/stage.json",
+      "bytes": 2323,
+      "sha256": "38804269472aff3c58bb8635f25612037531f2420ac174515f638e89651f85fe",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-readable/stderr",
+      "bytes": 777,
+      "sha256": "0d9b234a185e42a442e4bf484c49ae1aa2f829df76e177d2341b59cf06a7dd70",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-readable/stdout",
+      "bytes": 50131,
+      "sha256": "ed8cbff4faf1504095283b3e8558979d78ad9ae216539ec28353d3171244482d",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-compact/checked-stage.json",
+      "bytes": 77177,
+      "sha256": "b88f5b80811714249cdf89b0676d71590b0598e645857805f8e55b0280802255",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-compact/farvi-all-wire.txt",
+      "bytes": 32300,
+      "sha256": "00a7e11e4b88a1d24a0cbd09515ae0690deecf9055fc959497d644ee81563aac",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-compact/guard.stdout",
+      "bytes": 735,
+      "sha256": "2ecd78c16cfe6455db428adfd7df0b2549cf8407924fb84f315d606823cca8a8",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-compact/receipt.json",
+      "bytes": 791,
+      "sha256": "561493de8bbb11088e241e7e1c53ad82f5960d170525015af81e6c7efc888448",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-compact/stage.json",
+      "bytes": 2312,
+      "sha256": "8cdd6131e6a04bdc3ec647f2887f246d9f624b42da098a40397d3a6b289414b3",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-compact/stderr",
+      "bytes": 777,
+      "sha256": "1d8dd6ca1df06bb7da3913dbc3d1adb93a6c470b55f7e2a62938ea997ea49432",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-compact/stdout",
+      "bytes": 50185,
+      "sha256": "a925982145a95f7ffcd913b1fec9f87cb919c52686ec4a376068331ce6db2b33",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-full/checked-stage.json",
+      "bytes": 70902,
+      "sha256": "0b2649bf097c10f108d5aa5dff852d4033825be4865065963ad3bcd9f1112156",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-full/farvi-all-wire.txt",
+      "bytes": 35126,
+      "sha256": "014f02af07b58cb5f4eb08c3e5e9d7ff167bad7c5031f604bf78723ad59844ad",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-full/guard.stdout",
+      "bytes": 724,
+      "sha256": "5c5112289ee54672f26efc57031d926d77694bbc2f0fac8531858206c63a6b6b",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-full/receipt.json",
+      "bytes": 780,
+      "sha256": "8e5349505dc48567b6629527d4ccc74d990a2172c0d9199495de0a7907487396",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-full/stage.json",
+      "bytes": 2280,
+      "sha256": "188cb7eed6f2bb43c3a0899f036777b1d8f1363ab440e4de7a59a6c340305b59",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-full/stderr",
+      "bytes": 777,
+      "sha256": "b7dede1b2f154a9dcfaafea1b671e3c709d8ebae733c46699f067eb818e69b1c",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-full/stdout",
+      "bytes": 45892,
+      "sha256": "76d15f955a52ed34ab7b82de3a2bdbac1edeef087331d23ddb3a40ead100c74b",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-readable/checked-stage.json",
+      "bytes": 77150,
+      "sha256": "932b8fcd3c92fff18363ce13d8237794086416ecad30528c0bac37908a34f88a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-readable/farvi-all-wire.txt",
+      "bytes": 10681,
+      "sha256": "012b4eb6bbfcae1724a72b12bc24847475196135043ca4b631f29064e6f38a15",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-readable/guard.stdout",
+      "bytes": 738,
+      "sha256": "a0597026400f74c97f20b713f2dfcc3c6a17a569963f350b3e697657eefb5bc4",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-readable/receipt.json",
+      "bytes": 794,
+      "sha256": "2d264af30723fb9b9c6bb79b099209d6847435022c416fdb8d09c4aff486bc12",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-readable/stage.json",
+      "bytes": 2322,
+      "sha256": "d58f736311a3f891eb5846551381dea9d29da8cb36c1fb21ee44f69872c98344",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-readable/stderr",
+      "bytes": 777,
+      "sha256": "0226fd5bcc6c08ed64c0ad263f24af1d5b354b1ae4fc8895fbfb385d88181e57",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-readable/stdout",
+      "bytes": 50148,
+      "sha256": "5ea3a46a2a2a56dce3b121c5a459ef2d4aff553a55362e91cb7e63dd6d0413cd",
+      "kind": "whole-original"
+    },
+    {
+      "path": "held-binary-inventory.json",
+      "bytes": 335,
+      "sha256": "b793385386779ccc3d4e1204ff118445809a41998c8080690c812569e571ff11",
+      "kind": "new-authored-inventory"
+    }
+  ]
+}

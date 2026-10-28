@@ -1,0 +1,62 @@
+{
+  "kind": "warm",
+  "round": 2,
+  "mode": "full",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+    "warm-tiny",
+    "full",
+    "2",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+  ],
+  "number": 5,
+  "original_equivalent_stage": 17,
+  "guard_argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "8589934592",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/stderr",
+    "--stdout",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/stdout",
+    "--",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+    "warm-tiny",
+    "full",
+    "2",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+  ],
+  "guard_exit": 0,
+  "receipt": {
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-tiny",
+      "full",
+      "2",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ],
+    "decision": "passed",
+    "elapsed_seconds": 0.15985208377242088,
+    "exit_code": 0,
+    "log": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/stderr",
+    "maximum_resident_set_size_bytes": 11862016,
+    "pid": 48089,
+    "rss_parse_ok": true,
+    "rss_source": "/usr/bin/time -l maximum resident set size",
+    "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full/stdout",
+    "timed_out": false
+  },
+  "stdout_bytes": 45869,
+  "stdout_sha256": "983d7cd57c2df50c0796989c2c81dbb0915c1c2c9fc2791dc6bdb962ba8a27e7",
+  "stderr_bytes": 777,
+  "stderr_sha256": "9becb4d10199eebad71e377c0a55da9c1195394a8068061d958869567bac3a47"
+}

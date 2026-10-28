@@ -1,0 +1,140 @@
+[
+  {
+    "kind": "warm",
+    "round": 1,
+    "mode": "full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-tiny",
+      "full",
+      "1",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-full",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 1,
+    "mode": "compact",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-tiny",
+      "compact",
+      "1",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 1,
+    "mode": "readable",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-tiny",
+      "readable",
+      "1",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-readable",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 2,
+    "mode": "readable",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-tiny",
+      "readable",
+      "2",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-readable",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 2,
+    "mode": "full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-tiny",
+      "full",
+      "2",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-full",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 2,
+    "mode": "compact",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-tiny",
+      "compact",
+      "2",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 3,
+    "mode": "compact",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-tiny",
+      "compact",
+      "3",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-compact",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 3,
+    "mode": "readable",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-tiny",
+      "readable",
+      "3",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-readable",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ]
+  },
+  {
+    "kind": "warm",
+    "round": 3,
+    "mode": "full",
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-tiny",
+      "full",
+      "3",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-3-full",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ]
+  },
+  {
+    "kind": "semantic",
+    "round": null,
+    "mode": null,
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "semantic-tiny",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/semantic",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ]
+  }
+]

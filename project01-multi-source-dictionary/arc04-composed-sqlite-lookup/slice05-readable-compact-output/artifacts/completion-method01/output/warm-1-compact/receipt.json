@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+    "warm-tiny",
+    "compact",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+  ],
+  "decision": "passed",
+  "elapsed_seconds": 0.15850237477570772,
+  "exit_code": 0,
+  "log": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact/stderr",
+  "maximum_resident_set_size_bytes": 11108352,
+  "pid": 48077,
+  "rss_parse_ok": true,
+  "rss_source": "/usr/bin/time -l maximum resident set size",
+  "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-1-compact/stdout",
+  "timed_out": false
+}

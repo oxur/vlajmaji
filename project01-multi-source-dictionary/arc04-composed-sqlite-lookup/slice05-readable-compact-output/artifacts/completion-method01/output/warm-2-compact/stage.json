@@ -1,0 +1,62 @@
+{
+  "kind": "warm",
+  "round": 2,
+  "mode": "compact",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+    "warm-tiny",
+    "compact",
+    "2",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+  ],
+  "number": 6,
+  "original_equivalent_stage": 18,
+  "guard_argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "8589934592",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/stderr",
+    "--stdout",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/stdout",
+    "--",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+    "warm-tiny",
+    "compact",
+    "2",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+  ],
+  "guard_exit": 0,
+  "receipt": {
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-tiny",
+      "compact",
+      "2",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ],
+    "decision": "passed",
+    "elapsed_seconds": 0.1620303327217698,
+    "exit_code": 0,
+    "log": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/stderr",
+    "maximum_resident_set_size_bytes": 12566528,
+    "pid": 48092,
+    "rss_parse_ok": true,
+    "rss_source": "/usr/bin/time -l maximum resident set size",
+    "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-tiny-01/warm-2-compact/stdout",
+    "timed_out": false
+  },
+  "stdout_bytes": 50197,
+  "stdout_sha256": "714274c21a84f8f74ccc1dacee891840f56ad210bfe4f2167a2d594467339186",
+  "stderr_bytes": 777,
+  "stderr_sha256": "1da39bf81897f80b12c301b1f4b9dc196b86008d12d8814fb0e39e98096033ef"
+}
