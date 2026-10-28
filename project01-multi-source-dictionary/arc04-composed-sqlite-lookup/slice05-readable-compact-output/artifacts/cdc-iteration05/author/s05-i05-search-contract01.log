@@ -1,0 +1,28 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.72s
+     Running tests/collection_query_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collection_query_contract-c6f6e2b16ff764e0)
+
+running 18 tests
+test test_metadata_only_unknown_and_unresolved_do_not_require_payload ... ok
+test test_public_profile_lookup_errors_keep_typed_categories_and_context ... ok
+test test_catalog_native_match_defers_occurrence_key_until_after_capture_projection ... ok
+test test_full_catalogue_cache_revalidates_and_preserves_first_ordinals ... ok
+test test_missing_installed_copy_is_advisory_and_accessor_stays_metadata_only ... ok
+test test_selected_corrupt_derived_store_is_not_reported_as_catalogue_only ... ok
+test test_resolve_uses_selected_payload_when_an_unrelated_pack_is_registered_only ... ok
+test test_missing_derived_state_stales_cursor_and_exact_restore_accepts_it ... ok
+test test_config_change_stales_cursor_before_disabled_selection_admission ... ok
+test test_local_scan_reports_late_descriptor_failure_before_ambiguity ... ok
+test test_managed_exact_matches_existing_unpaged_wire_and_wraps_page_cursor ... ok
+test test_readiness_four_source_literals_keep_independent_exact_counts ... ok
+test test_equal_local_contributors_admit_selected_enabled_pack_payload ... ok
+test test_selected_installed_catalog_reference_reports_typed_payload_failure ... ok
+test test_stale_reference_snapshot_wins_before_corrupt_heavy_metadata ... ok
+test test_selected_unsupported_derived_version_is_typed_for_exact_and_resolve ... ok
+test test_historical_local_identity_deduplicates_equal_body_and_rejects_conflict ... ok
+test test_shared_entry_retains_each_selected_contributor_release_scope ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.19s
+

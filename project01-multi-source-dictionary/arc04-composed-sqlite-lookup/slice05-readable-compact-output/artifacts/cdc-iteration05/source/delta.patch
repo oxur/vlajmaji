@@ -1,0 +1,2591 @@
+diff --git a/crates/search/src/collection_query.rs b/crates/search/src/collection_query.rs
+index 0160797..37ab220 100644
+--- a/crates/search/src/collection_query.rs
++++ b/crates/search/src/collection_query.rs
+@@ -11,7 +11,8 @@ pub use projection::{
+ };
+ 
+ use std::{
+-    collections::{BTreeMap, BTreeSet},
++    cell::RefCell,
++    collections::{BTreeMap, BTreeSet, HashMap},
+     error::Error,
+     fmt,
+     path::{Path, PathBuf},
+@@ -515,6 +516,7 @@ pub struct CollectionSearchEngine {
+     generation: Option<CollectionGeneration>,
+     manifest: Option<vlajmaji_store::DictionarySnapshotManifest>,
+     payload: Option<DictionarySearchEngine>,
++    reference_metadata_cache: RefCell<vlajmaji_store::CollectionReferenceMetadataCache>,
+ }
+ 
+ impl CollectionSearchEngine {
+@@ -676,6 +678,9 @@ impl CollectionSearchEngine {
+             generation,
+             manifest,
+             payload: None,
++            reference_metadata_cache: RefCell::new(
++                vlajmaji_store::CollectionReferenceMetadataCache::default(),
++            ),
+         };
+         let revision_after = CollectionCatalogue::open(&this.root)?.local_revision()?;
+         if revision_after != this.snapshot.local_revision {
+@@ -1111,6 +1116,21 @@ impl CollectionSearchEngine {
+             ));
+         }
+         let list = catalogue.list()?;
++        let registered: Vec<_> = list
++            .packs
++            .iter()
++            .flat_map(|pack| {
++                let Some(pack_id) = parse_pack_id(&pack.pack_id) else {
++                    return Vec::new();
++                };
++                pack.registrations
++                    .iter()
++                    .map(move |registration| (pack_id, registration.release_sha256.clone()))
++                    .collect()
++            })
++            .collect();
++        let mut reference_metadata_cache = self.reference_metadata_cache.borrow_mut();
++        reference_metadata_cache.retain_registered(&catalogue, &registered)?;
+         let mut results = Vec::new();
+         let mut requested_release = None;
+         match target {
+@@ -1124,8 +1144,11 @@ impl CollectionSearchEngine {
+                         ))
+                     })?;
+                     for registration in &pack.registrations {
+-                        let descriptor =
+-                            catalogue.reference_metadata(pack_id, &registration.release_sha256)?;
++                        let descriptor = catalogue.reference_metadata_reusing(
++                            pack_id,
++                            &registration.release_sha256,
++                            &mut reference_metadata_cache,
++                        )?;
+                         let release = descriptor
+                             .source_metadata
+                             .releases
+@@ -1189,8 +1212,9 @@ impl CollectionSearchEngine {
+                                 },
+                             ));
+                         }
++                        let lookup = FullDescriptorLookup::new(&descriptor);
+                         for assertion_id in &release.assertions {
+-                            let entity = descriptor.entities.iter().find(|entity| entity.role == "assertion" && entity.id == assertion_id.as_str()).ok_or_else(|| CollectionQueryError::Query(DictionaryQueryError::Integrity { detail: "release assertion is absent from the retained descriptor".into() }))?;
++                            let entity = lookup.entity("assertion", assertion_id.as_str()).ok_or_else(|| CollectionQueryError::Query(DictionaryQueryError::Integrity { detail: "release assertion is absent from the retained descriptor".into() }))?;
+                             if !entity
+                                 .source_ids
+                                 .iter()
+@@ -1208,9 +1232,8 @@ impl CollectionSearchEngine {
+                             {
+                                 continue;
+                             }
+-                            let native_entry = find_native(&descriptor, occurrence, "entry");
+-                            let native_assertion =
+-                                find_native(&descriptor, occurrence, "assertion");
++                            let native_entry = lookup.native(occurrence, "entry");
++                            let native_assertion = lookup.native(occurrence, "assertion");
+                             if requested.native_entry_id.as_ref().is_some_and(|expected| {
+                                 native_entry
+                                     .as_ref()
+@@ -1253,6 +1276,8 @@ impl CollectionSearchEngine {
+             }
+             RelationTarget::Local(local) => {
+                 let (role, id) = local_role_id(local);
++                let body_key = format!("{role}:{id}");
++                let mut first_per_registration = Vec::new();
+                 for pack in &list.packs {
+                     let pack_id = parse_pack_id(&pack.pack_id).ok_or_else(|| {
+                         CollectionQueryError::InvalidSelection(format!(
+@@ -1261,8 +1286,21 @@ impl CollectionSearchEngine {
+                         ))
+                     })?;
+                     for registration in &pack.registrations {
+-                        let descriptor =
+-                            catalogue.reference_metadata(pack_id, &registration.release_sha256)?;
++                        let descriptor = catalogue.reference_metadata_reusing(
++                            pack_id,
++                            &registration.release_sha256,
++                            &mut reference_metadata_cache,
++                        )?;
++                        if let Some(entity) = descriptor
++                            .entities
++                            .iter()
++                            .find(|entity| entity.role == role && entity.id == id)
++                        {
++                            first_per_registration.push((
++                                entity.clone(),
++                                descriptor.body_sha256.get(&body_key).cloned(),
++                            ));
++                        }
+                         for entity in descriptor
+                             .entities
+                             .iter()
+@@ -1299,48 +1337,13 @@ impl CollectionSearchEngine {
+                         },
+                     ));
+                 }
+-                if let Some(first) = results.first() {
+-                    let first_pack = parse_pack_id(&first.pack_id).ok_or_else(|| {
+-                        CollectionQueryError::InvalidSelection(
+-                            "unsupported registered pack ID".into(),
+-                        )
+-                    })?;
+-                    let first_descriptor =
+-                        catalogue.reference_metadata(first_pack, &first.release_sha256)?;
+-                    let first_entity = first_descriptor
+-                        .entities
++                if let Some((first_entity, first_body)) = first_per_registration.first()
++                    && first_per_registration
+                         .iter()
+-                        .find(|entity| entity.role == role && entity.id == id)
+-                        .ok_or_else(|| {
+-                            CollectionQueryError::Query(DictionaryQueryError::Integrity {
+-                                detail: "local entity disappeared from its retained descriptor"
+-                                    .into(),
+-                            })
+-                        })?;
+-                    let first_body = first_descriptor.body_sha256.get(&format!("{role}:{id}"));
+-                    for row in results.iter().skip(1) {
+-                        let pack = parse_pack_id(&row.pack_id).ok_or_else(|| {
+-                            CollectionQueryError::InvalidSelection(
+-                                "unsupported registered pack ID".into(),
+-                            )
+-                        })?;
+-                        let descriptor = catalogue.reference_metadata(pack, &row.release_sha256)?;
+-                        let entity = descriptor
+-                            .entities
+-                            .iter()
+-                            .find(|entity| entity.role == role && entity.id == id)
+-                            .ok_or_else(|| {
+-                                CollectionQueryError::Query(DictionaryQueryError::Integrity {
+-                                    detail: "local entity disappeared from its retained descriptor"
+-                                        .into(),
+-                                })
+-                            })?;
+-                        if entity != first_entity
+-                            || descriptor.body_sha256.get(&format!("{role}:{id}")) != first_body
+-                        {
+-                            return Err(CollectionQueryError::AmbiguousReference);
+-                        }
+-                    }
++                        .skip(1)
++                        .any(|(entity, body)| entity != first_entity || body != first_body)
++                {
++                    return Err(CollectionQueryError::AmbiguousReference);
+                 }
+             }
+             _ => {}
+@@ -1601,20 +1604,67 @@ fn local_role_id(local: &LocalRef) -> (&'static str, &str) {
+     }
+ }
+ 
+-fn find_native(
+-    descriptor: &vlajmaji_store::CollectionReferenceMetadata,
+-    occurrence: &vlajmaji_lexicon::OccurrenceRef,
+-    role: &str,
+-) -> Option<String> {
+-    let attribution = descriptor.registry.occurrences.iter().find(|attribution| {
+-        attribution.occurrence.snapshot().namespace() == occurrence.capture.namespace
+-            && attribution.occurrence.snapshot().sha256() == occurrence.capture.sha256
+-            && attribution.occurrence.locator() == occurrence.locator
+-    })?;
+-    match role {
+-        "entry" => attribution.native_entry_id.clone(),
+-        "assertion" => attribution.native_assertion_id.clone(),
+-        _ => None,
++/// Borrowed first-ordinal indices for a retained Full descriptor. The source
++/// descriptor is intentionally not a validated dictionary model, so duplicate
++/// identities retain the same first-match behavior as the former linear scans.
++/// The maps only carry ordinals: body/entity values are borrowed from the
++/// descriptor and are cloned only when materializing a returned match.
++struct FullDescriptorLookup<'a> {
++    descriptor: &'a vlajmaji_store::CollectionReferenceMetadata,
++    entities: HashMap<(&'a str, &'a str), usize>,
++    occurrences: HashMap<(&'a str, &'a str, &'a str), usize>,
++}
++
++impl<'a> FullDescriptorLookup<'a> {
++    fn new(descriptor: &'a vlajmaji_store::CollectionReferenceMetadata) -> Self {
++        let mut entities = HashMap::with_capacity(descriptor.entities.len());
++        for (ordinal, entity) in descriptor.entities.iter().enumerate() {
++            entities
++                .entry((entity.role.as_str(), entity.id.as_str()))
++                .or_insert(ordinal);
++        }
++
++        let mut occurrences = HashMap::with_capacity(descriptor.registry.occurrences.len());
++        for (ordinal, attribution) in descriptor.registry.occurrences.iter().enumerate() {
++            let identity = &attribution.occurrence;
++            occurrences
++                .entry((
++                    identity.snapshot().namespace(),
++                    identity.snapshot().sha256(),
++                    identity.locator(),
++                ))
++                .or_insert(ordinal);
++        }
++
++        Self {
++            descriptor,
++            entities,
++            occurrences,
++        }
++    }
++
++    fn entity(
++        &self,
++        role: &str,
++        id: &str,
++    ) -> Option<&'a vlajmaji_store::CollectionEntityReference> {
++        self.entities
++            .get(&(role, id))
++            .map(|ordinal| &self.descriptor.entities[*ordinal])
++    }
++
++    fn native(&self, occurrence: &vlajmaji_lexicon::OccurrenceRef, role: &str) -> Option<String> {
++        let ordinal = *self.occurrences.get(&(
++            occurrence.capture.namespace.as_str(),
++            occurrence.capture.sha256.as_str(),
++            occurrence.locator.as_str(),
++        ))?;
++        let attribution = &self.descriptor.registry.occurrences[ordinal];
++        match role {
++            "entry" => attribution.native_entry_id.clone(),
++            "assertion" => attribution.native_assertion_id.clone(),
++            _ => None,
++        }
+     }
+ }
+ 
+diff --git a/crates/search/src/dictionary/projection.rs b/crates/search/src/dictionary/projection.rs
+index b740ec7..c5954b3 100644
+--- a/crates/search/src/dictionary/projection.rs
++++ b/crates/search/src/dictionary/projection.rs
+@@ -1178,9 +1178,10 @@ impl DictionaryCompactSearchEngine {
+         let mut confirmed = Vec::new();
+         let mut unverified_views = Vec::new();
+         for id in &release.assertions {
+-            let Some(assertion) = metadata.assertions.iter().find(|row| row.id == *id) else {
++            let Some(assertion_index) = self.indices.assertions.get(id.as_str()) else {
+                 continue;
+             };
++            let assertion = &metadata.assertions[*assertion_index];
+             if catalog
+                 .occurrence
+                 .as_ref()
+@@ -1188,19 +1189,19 @@ impl DictionaryCompactSearchEngine {
+             {
+                 continue;
+             }
+-            let Some(entry) = metadata
+-                .entries
+-                .iter()
+-                .find(|row| row.id == assertion.entry)
+-            else {
++            let Some(entry_index) = self.indices.entries.get(assertion.entry.as_str()) else {
+                 continue;
+             };
++            let entry = &metadata.entries[*entry_index];
+             if entry.source != catalog.source {
+                 continue;
+             }
+-            let attribution = self.document.registry.occurrences.iter().find(|row| {
+-                super::record_key(&row.occurrence) == super::tuple_hex(&assertion.occurrence)
+-            });
++            let attribution_key = super::tuple_hex(&assertion.occurrence);
++            let attribution = self
++                .indices
++                .occurrence_attributions
++                .get(&attribution_key)
++                .map(|index| &self.document.registry.occurrences[*index]);
+             let pairs = [
+                 (
+                     &catalog.native_entry_id,
+@@ -1795,6 +1796,107 @@ mod tests {
+         drop(engine);
+         std::fs::remove_dir_all(root).unwrap();
+     }
++
++    #[test]
++    fn compact_catalogue_ordinals_preserve_release_order_and_missing_link_skips() {
++        let root = scratch();
++        let store_path = root.join("dictionary.sqlite3");
++        let dictionary = fixture::complete_fixture().unwrap();
++        let store = DictionaryStore::create(&store_path, &dictionary).unwrap();
++        drop(store);
++        let mut engine = DictionaryCompactSearchEngine::open(&store_path).unwrap();
++
++        let release_index = engine
++            .document
++            .metadata
++            .releases
++            .iter()
++            .position(|release| {
++                release.selected
++                    && release.availability == lexicon::Availability::Available
++                    && release.assertions.len() >= 2
++            })
++            .expect("fixture has a selected available release with two assertions");
++        let release = &engine.document.metadata.releases[release_index];
++        let first_id = release.assertions[0].clone();
++        let second_id = release.assertions[1].clone();
++        let first_index = engine
++            .document
++            .metadata
++            .assertions
++            .iter()
++            .position(|assertion| assertion.id == first_id)
++            .unwrap();
++        let second_index = engine
++            .document
++            .metadata
++            .assertions
++            .iter()
++            .position(|assertion| assertion.id == second_id)
++            .unwrap();
++        let occurrence = engine.document.metadata.assertions[first_index]
++            .occurrence
++            .clone();
++        let source = engine
++            .document
++            .metadata
++            .entries
++            .iter()
++            .find(|entry| entry.id == engine.document.metadata.assertions[first_index].entry)
++            .unwrap()
++            .source
++            .clone();
++        let common_entry = engine.document.metadata.assertions[first_index]
++            .entry
++            .clone();
++        engine.document.metadata.assertions[second_index].entry = common_entry;
++        engine.document.metadata.assertions[second_index].occurrence = occurrence.clone();
++        engine.document.metadata.releases[release_index].assertions =
++            vec![first_id.clone(), second_id.clone(), first_id.clone()];
++
++        let target = lexicon::CatalogTarget {
++            source,
++            release: engine.document.metadata.releases[release_index].id.clone(),
++            native_entry_id: None,
++            native_assertion_id: None,
++            occurrence: Some(occurrence),
++        };
++        let result = engine.resolve_catalog(&target, None).unwrap();
++        assert_eq!(
++            result
++                .2
++                .iter()
++                .map(|row| row.assertion.id.clone())
++                .collect::<Vec<_>>(),
++            vec![first_id.clone(), second_id, first_id.clone()]
++        );
++
++        engine.document.metadata.releases[release_index].assertions = vec![
++            lexicon::EntityId::new("missing-assertion").unwrap(),
++            first_id.clone(),
++        ];
++        let missing_assertion = engine.resolve_catalog(&target, None).unwrap();
++        assert_eq!(
++            missing_assertion
++                .2
++                .iter()
++                .map(|row| row.assertion.id.clone())
++                .collect::<Vec<_>>(),
++            vec![first_id.clone()],
++            "a missing assertion ID is skipped in its declared release position"
++        );
++
++        engine.document.metadata.releases[release_index].assertions = vec![first_id.clone()];
++        engine.document.metadata.assertions[first_index].entry =
++            lexicon::EntityId::new("missing-entry").unwrap();
++        let missing_entry = engine.resolve_catalog(&target, None).unwrap();
++        assert!(missing_entry.2.is_empty());
++        assert!(missing_entry.3.is_empty());
++        assert_eq!(missing_entry.0, super::super::ReferenceStatus::NoMatch);
++
++        drop(engine);
++        std::fs::remove_dir_all(root).unwrap();
++    }
+ }
+ 
+ fn digest<T: Serialize>(record: &T) -> Result<String, DictionaryProjectionError> {
+diff --git a/crates/search/tests/collection_query_contract.rs b/crates/search/tests/collection_query_contract.rs
+index f28992f..2185070 100644
+--- a/crates/search/tests/collection_query_contract.rs
++++ b/crates/search/tests/collection_query_contract.rs
+@@ -123,6 +123,34 @@ fn sha256(bytes: &[u8]) -> String {
+     format!("{:x}", Sha256::digest(bytes))
+ }
+ 
++fn sqlite_exec(database: &std::path::Path, sql: &str) {
++    let output = Command::new("sqlite3")
++        .arg(database)
++        .arg(sql)
++        .output()
++        .expect("sqlite3 must be available for the isolated catalogue mutation");
++    assert!(
++        output.status.success(),
++        "sqlite3 mutation failed: {}",
++        String::from_utf8_lossy(&output.stderr)
++    );
++}
++
++fn sqlite_blob(value: &[u8]) -> String {
++    let mut literal = String::with_capacity(3 + value.len() * 2);
++    literal.push_str("x'");
++    for byte in value {
++        use std::fmt::Write as _;
++        write!(literal, "{byte:02x}").unwrap();
++    }
++    literal.push('\'');
++    literal
++}
++
++fn sqlite_text(value: &str) -> String {
++    format!("'{}'", value.replace('\'', "''"))
++}
++
+ #[test]
+ fn test_public_profile_lookup_errors_keep_typed_categories_and_context() {
+     let root = fresh_root("profile-error-categories");
+@@ -344,6 +372,207 @@ fn test_historical_local_identity_deduplicates_equal_body_and_rejects_conflict()
+     fs::remove_dir_all(conflict_root).unwrap();
+ }
+ 
++#[test]
++fn test_local_scan_reports_late_descriptor_failure_before_ambiguity() {
++    let root = fresh_root("local-history-late-corruption");
++    let (assertion_id, current_release_id, _, _, _, _) = install_two_release_history(&root, true);
++    let catalogue = CollectionCatalogue::open(&root).unwrap();
++    let registrations = catalogue
++        .list()
++        .unwrap()
++        .packs
++        .into_iter()
++        .find(|pack| pack.pack_id == "llg")
++        .unwrap()
++        .registrations;
++    let current_release_sha256 = registrations
++        .iter()
++        .find_map(|registration| {
++            let metadata = catalogue
++                .reference_metadata(PackId::Llg, &registration.release_sha256)
++                .unwrap();
++            metadata
++                .source_metadata
++                .releases
++                .iter()
++                .any(|release| release.id == current_release_id)
++                .then(|| registration.release_sha256.clone())
++        })
++        .unwrap();
++    let late_release_sha256 = registrations
++        .into_iter()
++        .find_map(|registration| {
++            let metadata = catalogue
++                .reference_metadata(PackId::Llg, &registration.release_sha256)
++                .unwrap();
++            metadata
++                .source_metadata
++                .releases
++                .iter()
++                .any(|release| release.id.as_str() == "release-history")
++                .then_some(registration.release_sha256)
++        })
++        .unwrap();
++    let late_descriptor = catalogue
++        .reference_metadata(PackId::Llg, &late_release_sha256)
++        .unwrap();
++    let late_descriptor_literal =
++        sqlite_blob(serde_json::to_string(&late_descriptor).unwrap().as_bytes());
++    drop(catalogue);
++
++    let mut engine = CollectionSearchEngine::open(&root, selection()).unwrap();
++    let ambiguous = engine
++        .execute(DictionaryRequest::Resolve {
++            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
++        })
++        .unwrap_err();
++    assert!(matches!(
++        ambiguous,
++        CollectionQueryError::AmbiguousReference
++    ));
++
++    sqlite_exec(
++        &root.join("catalogue.sqlite3"),
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json=x'00' WHERE pack_id='llg' AND release_sha256='{}';",
++            late_release_sha256
++        ),
++    );
++    let late_error = engine
++        .execute(DictionaryRequest::Resolve {
++            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
++        })
++        .unwrap_err();
++    let late_error_debug = format!("{late_error:?}");
++    assert!(matches!(
++        &late_error,
++        CollectionQueryError::Catalogue(vlajmaji_store::CollectionError::UnsupportedVersion(_))
++    ));
++
++    // Cache pruning must not validate an unknown later pack before the
++    // original ordered scan reaches this earlier corrupt LLG registration.
++    sqlite_exec(
++        &root.join("catalogue.sqlite3"),
++        "INSERT INTO registrations_v2(pack_id,release_sha256,payload_kind,seal_json,descriptor_json,summary_json,input_paths_json) SELECT 'zz-invalid',release_sha256,payload_kind,seal_json,descriptor_json,summary_json,input_paths_json FROM registrations_v2 WHERE pack_id='llg' ORDER BY release_sha256 LIMIT 1; INSERT INTO registration_locations_v2(pack_id,release_sha256,input_paths_json) SELECT 'zz-invalid',release_sha256,input_paths_json FROM registration_locations_v2 WHERE pack_id='llg' ORDER BY release_sha256,input_paths_json LIMIT 1;",
++    );
++    let corruption_precedes_later_invalid_pack = engine
++        .execute(DictionaryRequest::Resolve {
++            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
++        })
++        .unwrap_err();
++    assert!(
++        matches!(
++            &corruption_precedes_later_invalid_pack,
++            CollectionQueryError::Catalogue(vlajmaji_store::CollectionError::UnsupportedVersion(_))
++        ),
++        "unexpected precedence result: {corruption_precedes_later_invalid_pack:?}"
++    );
++    assert_eq!(
++        format!("{corruption_precedes_later_invalid_pack:?}"),
++        late_error_debug,
++        "the same earlier corrupt descriptor must win before the later unknown pack"
++    );
++    sqlite_exec(
++        &root.join("catalogue.sqlite3"),
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={late_descriptor_literal} WHERE pack_id='llg' AND release_sha256='{}';",
++            late_release_sha256
++        ),
++    );
++    let later_invalid_pack_error = engine
++        .execute(DictionaryRequest::Resolve {
++            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
++        })
++        .unwrap_err();
++    assert!(matches!(
++        later_invalid_pack_error,
++        CollectionQueryError::InvalidSelection(ref detail)
++            if detail == "unsupported registered pack ID zz-invalid"
++    ));
++
++    sqlite_exec(
++        &root.join("catalogue.sqlite3"),
++        "DELETE FROM registration_locations_v2 WHERE pack_id='zz-invalid'; DELETE FROM registrations_v2 WHERE pack_id='zz-invalid';",
++    );
++    let restored_conflict = engine
++        .execute(DictionaryRequest::Resolve {
++            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
++        })
++        .unwrap_err();
++    assert!(matches!(
++        restored_conflict,
++        CollectionQueryError::AmbiguousReference
++    ));
++
++    // Restore an input-derived descriptor with the exact same entity/body
++    // value in both releases. The current engine must rebuild from SQL bytes,
++    // deduplicate the now-equal identity, and agree with a fresh engine.
++    let mut equal_body_descriptor = late_descriptor;
++    equal_body_descriptor.release_sha256 = current_release_sha256.clone();
++    let equal_body_json = serde_json::to_string(&equal_body_descriptor).unwrap();
++    let equal_body_literal = sqlite_blob(equal_body_json.as_bytes());
++    sqlite_exec(
++        &root.join("catalogue.sqlite3"),
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={equal_body_literal} WHERE pack_id='llg' AND release_sha256='{current_release_sha256}';"
++        ),
++    );
++    let restored_equal = engine
++        .execute(DictionaryRequest::Resolve {
++            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
++        })
++        .unwrap();
++    let CollectionQueryResult::Resolve(restored_equal) = restored_equal.result else {
++        panic!("wrong operation result after restoring equal metadata");
++    };
++    assert!(restored_equal.payload.is_some());
++    assert_eq!(restored_equal.catalogue_matches.len(), 1);
++    let expected_equal = restored_equal.clone();
++    let mut fresh_engine = CollectionSearchEngine::open(&root, selection()).unwrap();
++    let fresh_equal = fresh_engine
++        .execute(DictionaryRequest::Resolve {
++            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
++        })
++        .unwrap();
++    let CollectionQueryResult::Resolve(fresh_equal) = fresh_equal.result else {
++        panic!("wrong fresh operation result after restoring equal metadata");
++    };
++    assert_eq!(restored_equal, fresh_equal);
++
++    sqlite_exec(
++        &root.join("catalogue.sqlite3"),
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json=x'00' WHERE pack_id='llg' AND release_sha256='{current_release_sha256}';"
++        ),
++    );
++    assert!(matches!(
++        engine.execute(DictionaryRequest::Resolve {
++            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
++        }),
++        Err(CollectionQueryError::Catalogue(
++            vlajmaji_store::CollectionError::UnsupportedVersion(_)
++        ))
++    ));
++    sqlite_exec(
++        &root.join("catalogue.sqlite3"),
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={equal_body_literal} WHERE pack_id='llg' AND release_sha256='{current_release_sha256}';"
++        ),
++    );
++    let equal_after_exact_restore = engine
++        .execute(DictionaryRequest::Resolve {
++            target: RelationTarget::Local(LocalRef::Assertion(assertion_id)),
++        })
++        .unwrap();
++    let CollectionQueryResult::Resolve(equal_after_exact_restore) =
++        equal_after_exact_restore.result
++    else {
++        panic!("wrong operation result after restoring exact equal bytes");
++    };
++    assert_eq!(equal_after_exact_restore, expected_equal);
++    fs::remove_dir_all(root).unwrap();
++}
++
+ #[test]
+ fn test_equal_local_contributors_admit_selected_enabled_pack_payload() {
+     let mut document = fixture::complete_fixture().unwrap().into_document();
+@@ -1267,6 +1496,653 @@ fn test_metadata_only_unknown_and_unresolved_do_not_require_payload() {
+     fs::remove_dir_all(root).unwrap();
+ }
+ 
++#[test]
++fn test_full_catalogue_cache_revalidates_and_preserves_first_ordinals() {
++    let root = fresh_root("full-catalogue-first-ordinal-cache");
++    let mut document = fixture::complete_fixture().unwrap().into_document();
++    document.legacy_archive = None;
++    let dictionary = Dictionary::from_document(document).unwrap();
++    let sealed = seal_release(PackId::Llg, PackPayloadKind::Synthetic, &dictionary).unwrap();
++    let registration = CollectionRequest::new(
++        vec![CollectionInput::SealedBytes {
++            pack_id: PackId::Llg,
++            release: Cow::Borrowed(&sealed.release),
++            seal: Cow::Borrowed(&sealed.seal),
++        }],
++        CollectionSelection::Packs(vec![PackId::Llg]),
++        true,
++    )
++    .unwrap();
++    CollectionCatalogue::register(&root, registration).unwrap();
++    let catalogue = CollectionCatalogue::open(&root).unwrap();
++    let registration = catalogue
++        .list()
++        .unwrap()
++        .packs
++        .into_iter()
++        .find(|pack| pack.pack_id == "llg")
++        .unwrap()
++        .registrations
++        .into_iter()
++        .next()
++        .unwrap();
++    let release_sha256 = registration.release_sha256;
++    let payload_kind = registration.payload_kind;
++    let descriptor = catalogue
++        .reference_metadata(PackId::Llg, &release_sha256)
++        .unwrap();
++    drop(catalogue);
++    let release = descriptor
++        .source_metadata
++        .releases
++        .iter()
++        .find(|release| release.id.as_str() == "release-a")
++        .unwrap();
++    let selected_entity = descriptor
++        .entities
++        .iter()
++        .find(|entity| {
++            entity.role == "assertion"
++                && release.assertions.iter().any(|id| id.as_str() == entity.id)
++                && entity.source_ids.iter().any(|source| source == "source-a")
++                && entity.occurrence.is_some()
++        })
++        .unwrap();
++    let occurrence = selected_entity.occurrence.as_ref().unwrap().clone();
++    let attribution_index = descriptor
++        .registry
++        .occurrences
++        .iter()
++        .position(|attribution| {
++            attribution.occurrence.snapshot().namespace() == occurrence.capture.namespace
++                && attribution.occurrence.snapshot().sha256() == occurrence.capture.sha256
++                && attribution.occurrence.locator() == occurrence.locator
++        })
++        .unwrap();
++    let target = |native_entry_id: Option<&str>| {
++        RelationTarget::Catalog(CatalogTarget {
++            source: SourceId::new("source-a").unwrap(),
++            release: vlajmaji_lexicon::EntityId::new("release-a").unwrap(),
++            native_entry_id: native_entry_id.map(str::to_owned),
++            native_assertion_id: None,
++            occurrence: Some(occurrence.clone()),
++        })
++    };
++
++    let mut engine = CollectionSearchEngine::open(&root, selection()).unwrap();
++    let initial = engine
++        .execute(DictionaryRequest::Resolve {
++            target: target(None),
++        })
++        .unwrap();
++    let CollectionQueryResult::Resolve(initial) = initial.result else {
++        panic!("wrong result kind");
++    };
++    assert_eq!(initial.catalogue_matches.len(), 1);
++
++    let mut wire = serde_json::to_value(&descriptor).unwrap();
++    let entities = wire["entities"].as_array_mut().unwrap();
++    let first_entity = entities
++        .iter()
++        .position(|entity| entity["role"] == "assertion" && entity["id"] == selected_entity.id)
++        .unwrap();
++    let mut later_entity = entities[first_entity].clone();
++    later_entity["source_ids"] = serde_json::json!([]);
++    later_entity["occurrence"] = serde_json::Value::Null;
++    entities.push(later_entity);
++
++    let attributions = wire["registry"]["occurrences"].as_array_mut().unwrap();
++    attributions[attribution_index]["native_entry_id"] = serde_json::Value::Null;
++    let mut later_attribution = attributions[attribution_index].clone();
++    later_attribution["native_entry_id"] = serde_json::json!("later-entry");
++    attributions.push(later_attribution);
++    let changed_json = serde_json::to_string(&wire).unwrap();
++    let changed_literal = sqlite_blob(changed_json.as_bytes());
++    let database = root.join("catalogue.sqlite3");
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={changed_literal} WHERE pack_id='llg' AND release_sha256='{}';",
++            release_sha256
++        ),
++    );
++
++    let first_after_mutation = engine
++        .execute(DictionaryRequest::Resolve {
++            target: target(Some("later-entry")),
++        })
++        .unwrap();
++    let CollectionQueryResult::Resolve(first_after_mutation) = first_after_mutation.result else {
++        panic!("wrong result kind");
++    };
++    assert_eq!(first_after_mutation.catalogue_matches.len(), 1);
++    assert_eq!(
++        first_after_mutation.catalogue_matches[0].source_id, selected_entity.source_ids[0],
++        "duplicate entity identity keeps the first descriptor ordinal"
++    );
++    assert_eq!(
++        first_after_mutation.catalogue_matches[0].native_entry_id, None,
++        "an earlier None attribution is not replaced by a later Some"
++    );
++    assert_eq!(
++        first_after_mutation.status,
++        vlajmaji_search::ReferenceStatus::Unverified
++    );
++
++    let local_with_late_duplicate = engine
++        .execute(DictionaryRequest::Resolve {
++            target: RelationTarget::Local(LocalRef::Assertion(
++                vlajmaji_lexicon::EntityId::new(selected_entity.id.clone()).unwrap(),
++            )),
++        })
++        .unwrap();
++    let CollectionQueryResult::Resolve(local_with_late_duplicate) =
++        local_with_late_duplicate.result
++    else {
++        panic!("wrong local result kind");
++    };
++    assert_eq!(
++        local_with_late_duplicate.catalogue_matches.len(),
++        2,
++        "Local keeps the original and later duplicate raw rows even though FIRST controls ambiguity"
++    );
++    assert_ne!(
++        local_with_late_duplicate.catalogue_matches[0].source_id,
++        local_with_late_duplicate.catalogue_matches[1].source_id,
++        "the duplicate remains observable as a distinct retained raw row"
++    );
++
++    let original_json = serde_json::to_string(&descriptor).unwrap();
++    let original_literal = sqlite_blob(original_json.as_bytes());
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json=x'7b7d' WHERE pack_id='llg' AND release_sha256='{}';",
++            release_sha256
++        ),
++    );
++    assert!(
++        engine
++            .execute(DictionaryRequest::Resolve {
++                target: target(None)
++            })
++            .is_err()
++    );
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={original_literal} WHERE pack_id='llg' AND release_sha256='{}';",
++            release_sha256
++        ),
++    );
++    assert!(
++        engine
++            .execute(DictionaryRequest::Resolve {
++                target: target(None)
++            })
++            .is_ok()
++    );
++
++    let mut first_native_wire = serde_json::from_str::<serde_json::Value>(&original_json).unwrap();
++    let native_rows = first_native_wire["registry"]["occurrences"]
++        .as_array_mut()
++        .unwrap();
++    let first_native_index = native_rows
++        .iter()
++        .position(|row| {
++            row["occurrence"]["snapshot"]["namespace"] == occurrence.capture.namespace
++                && row["occurrence"]["snapshot"]["sha256"] == occurrence.capture.sha256
++                && row["occurrence"]["locator"] == occurrence.locator
++        })
++        .expect("selected assertion has a registry row");
++    native_rows[first_native_index]["native_entry_id"] = serde_json::json!("first-native");
++    let mut later_native = native_rows[first_native_index].clone();
++    later_native["native_entry_id"] = serde_json::json!("later-native");
++    native_rows.push(later_native);
++    let first_native_json = serde_json::to_string(&first_native_wire).unwrap();
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
++            sqlite_blob(first_native_json.as_bytes()),
++            release_sha256
++        ),
++    );
++    let first_native = engine
++        .execute(DictionaryRequest::Resolve {
++            target: target(Some("first-native")),
++        })
++        .unwrap();
++    let CollectionQueryResult::Resolve(first_native) = first_native.result else {
++        panic!("wrong result kind");
++    };
++    assert_eq!(first_native.catalogue_matches.len(), 1);
++    assert_eq!(
++        first_native.catalogue_matches[0].native_entry_id.as_deref(),
++        Some("first-native")
++    );
++    let later_native = engine
++        .execute(DictionaryRequest::Resolve {
++            target: target(Some("later-native")),
++        })
++        .unwrap();
++    let CollectionQueryResult::Resolve(later_native) = later_native.result else {
++        panic!("wrong result kind");
++    };
++    assert!(later_native.catalogue_matches.is_empty());
++    assert_eq!(
++        later_native.status,
++        vlajmaji_search::ReferenceStatus::NoMatch
++    );
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={original_literal} WHERE pack_id='llg' AND release_sha256='{}';",
++            release_sha256
++        ),
++    );
++
++    let second_assertion = release
++        .assertions
++        .iter()
++        .find(|id| id.as_str() != selected_entity.id)
++        .expect("release has a second assertion for ordered-duplicate control");
++    let mut ordered_wire = serde_json::from_str::<serde_json::Value>(&original_json).unwrap();
++    let ordered_entities = ordered_wire["entities"].as_array_mut().unwrap();
++    let first_entity = ordered_entities
++        .iter()
++        .position(|entity| entity["role"] == "assertion" && entity["id"] == selected_entity.id)
++        .unwrap();
++    let second_entity = ordered_entities
++        .iter()
++        .position(|entity| {
++            entity["role"] == "assertion" && entity["id"] == second_assertion.as_str()
++        })
++        .unwrap();
++    ordered_entities[second_entity]["source_ids"] = serde_json::json!(["source-a"]);
++    ordered_entities[second_entity]["occurrence"] =
++        ordered_entities[first_entity]["occurrence"].clone();
++    let release_row = ordered_wire["source_metadata"]["releases"]
++        .as_array_mut()
++        .unwrap()
++        .iter_mut()
++        .find(|row| row["id"] == release.id.as_str())
++        .unwrap();
++    release_row["assertions"] = serde_json::json!([
++        selected_entity.id,
++        second_assertion.as_str(),
++        selected_entity.id
++    ]);
++    let ordered_json = serde_json::to_string(&ordered_wire).unwrap();
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
++            sqlite_blob(ordered_json.as_bytes()),
++            release_sha256
++        ),
++    );
++    let ordered = engine
++        .execute(DictionaryRequest::Resolve {
++            target: target(None),
++        })
++        .unwrap();
++    let CollectionQueryResult::Resolve(ordered) = ordered.result else {
++        panic!("wrong result kind");
++    };
++    assert_eq!(
++        ordered
++            .catalogue_matches
++            .iter()
++            .map(|row| row.entity_id.as_deref().unwrap())
++            .collect::<Vec<_>>(),
++        vec![
++            selected_entity.id.as_str(),
++            second_assertion.as_str(),
++            selected_entity.id.as_str()
++        ],
++        "release assertions retain their declared order and multiplicity"
++    );
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={original_literal} WHERE pack_id='llg' AND release_sha256='{}';",
++            release_sha256
++        ),
++    );
++
++    let mut missing_wire = serde_json::from_str::<serde_json::Value>(&original_json).unwrap();
++    let missing_release = missing_wire["source_metadata"]["releases"]
++        .as_array_mut()
++        .unwrap()
++        .iter_mut()
++        .find(|row| row["id"] == release.id.as_str())
++        .unwrap();
++    missing_release["assertions"] = serde_json::json!(["missing-assertion", selected_entity.id]);
++    let missing_attribution = missing_wire["registry"]["occurrences"]
++        .as_array_mut()
++        .unwrap()
++        .iter_mut()
++        .find(|row| {
++            row["occurrence"]["snapshot"]["namespace"] == occurrence.capture.namespace
++                && row["occurrence"]["snapshot"]["sha256"] == occurrence.capture.sha256
++                && row["occurrence"]["locator"] == occurrence.locator
++        })
++        .expect("selected assertion has a registry row");
++    missing_attribution["native_entry_id"] = serde_json::json!("requested-native");
++    let missing_json = serde_json::to_string(&missing_wire).unwrap();
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
++            sqlite_blob(missing_json.as_bytes()),
++            release_sha256
++        ),
++    );
++    assert!(matches!(
++        engine.execute(DictionaryRequest::Resolve {
++            target: target(Some("requested-native")),
++        }),
++        Err(CollectionQueryError::Query(
++            vlajmaji_search::DictionaryQueryError::Integrity { .. }
++        ))
++    ));
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={original_literal} WHERE pack_id='llg' AND release_sha256='{}';",
++            release_sha256
++        ),
++    );
++
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET payload_kind='legacy_archive' WHERE pack_id='llg' AND release_sha256='{}';",
++            release_sha256
++        ),
++    );
++    assert!(
++        engine
++            .execute(DictionaryRequest::Resolve {
++                target: target(None)
++            })
++            .is_err()
++    );
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET payload_kind={} WHERE pack_id='llg' AND release_sha256='{}';",
++            sqlite_text(&payload_kind),
++            release_sha256
++        ),
++    );
++    assert!(
++        engine
++            .execute(DictionaryRequest::Resolve {
++                target: target(None)
++            })
++            .is_ok()
++    );
++
++    let revision = CollectionCatalogue::open(&root)
++        .unwrap()
++        .local_revision()
++        .unwrap();
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE catalogue_meta_v2 SET value='{}' WHERE key='local_revision';",
++            revision + 1
++        ),
++    );
++    assert!(matches!(
++        engine.execute(DictionaryRequest::Resolve {
++            target: target(None),
++        }),
++        Err(CollectionQueryError::Catalogue(_))
++    ));
++    fs::remove_dir_all(root).unwrap();
++}
++
++#[test]
++fn test_catalog_native_match_defers_occurrence_key_until_after_capture_projection() {
++    let root = fresh_root("catalog-native-capture-error-order");
++    let mut document = fixture::complete_fixture().unwrap().into_document();
++    document.legacy_archive = None;
++    let dictionary = Dictionary::from_document(document).unwrap();
++    let sealed = seal_release(PackId::Llg, PackPayloadKind::Synthetic, &dictionary).unwrap();
++    let request = CollectionRequest::new(
++        vec![CollectionInput::SealedBytes {
++            pack_id: PackId::Llg,
++            release: Cow::Borrowed(&sealed.release),
++            seal: Cow::Borrowed(&sealed.seal),
++        }],
++        CollectionSelection::Packs(vec![PackId::Llg]),
++        true,
++    )
++    .unwrap();
++    let report = CollectionCatalogue::register(&root, request).unwrap();
++    let release_sha256 = report.inputs[0]
++        .release_sha256
++        .as_deref()
++        .unwrap()
++        .to_owned();
++    drop(report);
++
++    let catalogue = CollectionCatalogue::open(&root).unwrap();
++    let descriptor = catalogue
++        .reference_metadata(PackId::Llg, &release_sha256)
++        .unwrap();
++    let release = descriptor
++        .source_metadata
++        .releases
++        .iter()
++        .find(|release| release.id.as_str() == "release-a")
++        .unwrap();
++    let assertion = descriptor
++        .entities
++        .iter()
++        .find(|entity| {
++            entity.role == "assertion"
++                && release.assertions.iter().any(|id| id.as_str() == entity.id)
++                && entity.source_ids.iter().any(|source| source == "source-a")
++                && entity.occurrence.is_some()
++        })
++        .unwrap();
++    let occurrence = assertion.occurrence.as_ref().unwrap().clone();
++    let target = RelationTarget::Catalog(CatalogTarget {
++        source: SourceId::new("source-a").unwrap(),
++        release: vlajmaji_lexicon::EntityId::new("release-a").unwrap(),
++        native_entry_id: Some("native-entry-wanted".into()),
++        native_assertion_id: Some("native-assertion-wanted".into()),
++        occurrence: Some(occurrence.clone()),
++    });
++    let source_filtered_target = RelationTarget::Catalog(CatalogTarget {
++        source: SourceId::new("source-b").unwrap(),
++        release: vlajmaji_lexicon::EntityId::new("release-a").unwrap(),
++        native_entry_id: Some("native-entry-wanted".into()),
++        native_assertion_id: Some("native-assertion-wanted".into()),
++        occurrence: Some(occurrence.clone()),
++    });
++    let occurrence_filtered_target = RelationTarget::Catalog(CatalogTarget {
++        source: SourceId::new("source-a").unwrap(),
++        release: vlajmaji_lexicon::EntityId::new("release-a").unwrap(),
++        native_entry_id: Some("native-entry-wanted".into()),
++        native_assertion_id: Some("native-assertion-wanted".into()),
++        occurrence: Some(OccurrenceRef {
++            capture: occurrence.capture.clone(),
++            locator: "/filtered-out-occurrence".into(),
++        }),
++    });
++    drop(catalogue);
++
++    let original_json = serde_json::to_string(&descriptor).unwrap();
++    let mut changed: serde_json::Value = serde_json::from_str(&original_json).unwrap();
++    {
++        let occurrence_rows = changed["registry"]["occurrences"].as_array_mut().unwrap();
++        let matching_index = occurrence_rows
++            .iter()
++            .position(|row| {
++                row["occurrence"]["snapshot"]["namespace"] == occurrence.capture.namespace
++                    && row["occurrence"]["snapshot"]["sha256"] == occurrence.capture.sha256
++                    && row["occurrence"]["locator"] == occurrence.locator
++            })
++            .unwrap();
++        occurrence_rows[matching_index]["native_entry_id"] =
++            serde_json::json!("native-entry-wanted");
++        occurrence_rows[matching_index]["native_assertion_id"] =
++            serde_json::json!("native-assertion-wanted");
++    }
++    let database = root.join("catalogue.sqlite3");
++    let native_json = serde_json::to_string(&changed).unwrap();
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
++            sqlite_blob(native_json.as_bytes()),
++            release_sha256
++        ),
++    );
++    let catalogue = CollectionCatalogue::open(&root).unwrap();
++    let expected = catalogue
++        .reference_projection(PackId::Llg, &release_sha256, &target)
++        .unwrap();
++    let unfiltered_target = RelationTarget::Catalog(CatalogTarget {
++        source: SourceId::new("source-a").unwrap(),
++        release: vlajmaji_lexicon::EntityId::new("release-a").unwrap(),
++        native_entry_id: None,
++        native_assertion_id: None,
++        occurrence: Some(occurrence.clone()),
++    });
++    let expected_unfiltered = catalogue
++        .reference_projection(PackId::Llg, &release_sha256, &unfiltered_target)
++        .unwrap();
++    drop(catalogue);
++
++    changed["registry"]["occurrences"]
++        .as_array_mut()
++        .unwrap()
++        .push(serde_json::json!({"occurrence": "truncated"}));
++    let captures = changed["captures"].as_array_mut().unwrap();
++    let capture_index = captures
++        .iter()
++        .position(|row| {
++            row["capture"]["namespace"] == occurrence.capture.namespace
++                && row["capture"]["sha256"] == occurrence.capture.sha256
++        })
++        .unwrap();
++    let valid_capture = captures[capture_index].clone();
++    captures[capture_index]["metadata"] = serde_json::json!(17);
++    let capture_bad_json = serde_json::to_string(&changed).unwrap();
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
++            sqlite_blob(capture_bad_json.as_bytes()),
++            release_sha256
++        ),
++    );
++
++    let catalogue = CollectionCatalogue::open(&root).unwrap();
++    let unfiltered_capture_error = catalogue
++        .reference_projection(PackId::Llg, &release_sha256, &unfiltered_target)
++        .unwrap_err();
++    match unfiltered_capture_error {
++        vlajmaji_store::CollectionError::ReferenceProjection { source, .. } => {
++            assert_eq!(source.classify(), serde_json::error::Category::Data);
++            assert!(source.to_string().contains("CaptureMetadata"));
++        }
++        other => {
++            panic!("expected selected capture parse error without native filters, got {other:?}")
++        }
++    }
++    let capture_error = catalogue
++        .reference_projection(PackId::Llg, &release_sha256, &target)
++        .unwrap_err();
++    match capture_error {
++        vlajmaji_store::CollectionError::ReferenceProjection { source, .. } => {
++            assert_eq!(source.classify(), serde_json::error::Category::Data);
++            assert!(source.to_string().contains("CaptureMetadata"));
++        }
++        other => panic!("expected selected capture parse error before deferred key, got {other:?}"),
++    }
++    for filtered_target in [&source_filtered_target, &occurrence_filtered_target] {
++        let filtered_capture_error = catalogue
++            .reference_projection(PackId::Llg, &release_sha256, filtered_target)
++            .unwrap_err();
++        match filtered_capture_error {
++            vlajmaji_store::CollectionError::ReferenceProjection { source, .. } => {
++                assert_eq!(source.classify(), serde_json::error::Category::Data);
++                assert!(source.to_string().contains("CaptureMetadata"));
++            }
++            other => {
++                panic!("expected capture projection before filtered raw lookup, got {other:?}")
++            }
++        }
++    }
++    drop(catalogue);
++
++    changed["captures"].as_array_mut().unwrap()[capture_index] = valid_capture;
++    let capture_restored_json = serde_json::to_string(&changed).unwrap();
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
++            sqlite_blob(capture_restored_json.as_bytes()),
++            release_sha256
++        ),
++    );
++    let catalogue = CollectionCatalogue::open(&root).unwrap();
++    let unfiltered_occurrence_error = catalogue
++        .reference_projection(PackId::Llg, &release_sha256, &unfiltered_target)
++        .unwrap_err();
++    match unfiltered_occurrence_error {
++        vlajmaji_store::CollectionError::ReferenceProjection { source, .. } => {
++            assert_eq!(source.classify(), serde_json::error::Category::Data);
++            assert!(source.to_string().contains("RecordIdentity"));
++        }
++        other => panic!("expected late occurrence-key error without native filters, got {other:?}"),
++    }
++    let occurrence_error = catalogue
++        .reference_projection(PackId::Llg, &release_sha256, &target)
++        .unwrap_err();
++    match occurrence_error {
++        vlajmaji_store::CollectionError::ReferenceProjection { source, .. } => {
++            assert_eq!(source.classify(), serde_json::error::Category::Data);
++            assert!(source.to_string().contains("RecordIdentity"));
++        }
++        other => panic!("expected deferred occurrence-key error after capture, got {other:?}"),
++    }
++    drop(catalogue);
++
++    sqlite_exec(
++        &database,
++        &format!(
++            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
++            sqlite_blob(native_json.as_bytes()),
++            release_sha256
++        ),
++    );
++    let catalogue = CollectionCatalogue::open(&root).unwrap();
++    assert_eq!(
++        catalogue
++            .reference_projection(PackId::Llg, &release_sha256, &target)
++            .unwrap(),
++        expected,
++        "restoring both raw sections reproduces the complete typed projection"
++    );
++    assert_eq!(
++        catalogue
++            .reference_projection(PackId::Llg, &release_sha256, &unfiltered_target)
++            .unwrap(),
++        expected_unfiltered,
++        "the no-native path also restores the complete typed projection"
++    );
++    drop(catalogue);
++    fs::remove_dir_all(root).unwrap();
++}
++
+ #[test]
+ fn test_resolve_uses_selected_payload_when_an_unrelated_pack_is_registered_only() {
+     let root = fresh_root("selected-reference-unrelated-unavailable");
+diff --git a/crates/store/src/collections.rs b/crates/store/src/collections.rs
+index 362fede..c2cd87a 100644
+--- a/crates/store/src/collections.rs
++++ b/crates/store/src/collections.rs
+@@ -5,6 +5,7 @@
+ 
+ use std::{
+     borrow::Cow,
++    collections::BTreeSet,
+     error::Error,
+     fmt, fs, io,
+     path::{Path, PathBuf},
+@@ -1101,6 +1102,141 @@ pub struct CollectionReferenceMetadata {
+     pub category_counts: CollectionCategoryCounts,
+ }
+ 
++const REFERENCE_METADATA_CACHE_MAX_ENTRIES: usize = 128;
++const REFERENCE_METADATA_CACHE_MAX_WEIGHT: usize = 536_870_912;
++
++struct CachedReferenceMetadata {
++    fingerprint: [u8; 32],
++    weight: usize,
++    metadata: CollectionReferenceMetadata,
++}
++
++/// Bounded parsed metadata reused only for one native catalogue root.
++///
++/// The byte limit is a serialized-descriptor weight, not an allocation or RSS bound.
++#[derive(Default)]
++pub struct CollectionReferenceMetadataCache {
++    root: Option<PathBuf>,
++    entries: BTreeMap<(PackId, String), CachedReferenceMetadata>,
++    serialized_weight: usize,
++    #[cfg(test)]
++    max_entries: usize,
++    #[cfg(test)]
++    max_weight: usize,
++    #[cfg(test)]
++    stats: ReferenceMetadataCacheStats,
++}
++
++#[cfg(test)]
++#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
++struct ReferenceMetadataCacheStats {
++    sql_reads: usize,
++    fingerprints: usize,
++    decodes: usize,
++    hits: usize,
++}
++
++impl CollectionReferenceMetadataCache {
++    /// Drops cached descriptors while preserving this cache's native-root binding.
++    pub fn clear(&mut self) {
++        self.entries.clear();
++        self.serialized_weight = 0;
++    }
++
++    /// Retains entries whose exact pack/release keys are present in a current listing.
++    ///
++    /// This performs no descriptor decoding or payload access.
++    pub fn retain_registered(
++        &mut self,
++        catalogue: &CollectionCatalogue,
++        registered: &[(PackId, String)],
++    ) -> Result<(), CollectionError> {
++        self.bind_root(&catalogue.root)?;
++        let registered: BTreeSet<_> = registered.iter().cloned().collect();
++        let mut retained_weight = 0usize;
++        self.entries.retain(|key, value| {
++            if registered.contains(key) {
++                retained_weight = retained_weight.saturating_add(value.weight);
++                true
++            } else {
++                false
++            }
++        });
++        self.serialized_weight = retained_weight;
++        Ok(())
++    }
++
++    fn bind_root(&mut self, root: &Path) -> Result<(), CollectionError> {
++        match &self.root {
++            Some(bound) if bound != root => Err(CollectionError::InvalidRequest(
++                "reference metadata cache is bound to a different catalogue root".into(),
++            )),
++            Some(_) => Ok(()),
++            None => {
++                self.root = Some(root.to_path_buf());
++                Ok(())
++            }
++        }
++    }
++
++    fn max_entries(&self) -> usize {
++        #[cfg(test)]
++        {
++            if self.max_entries != 0 {
++                return self.max_entries;
++            }
++        }
++        REFERENCE_METADATA_CACHE_MAX_ENTRIES
++    }
++
++    fn max_weight(&self) -> usize {
++        #[cfg(test)]
++        {
++            if self.max_weight != 0 {
++                return self.max_weight;
++            }
++        }
++        REFERENCE_METADATA_CACHE_MAX_WEIGHT
++    }
++
++    fn remove(&mut self, key: &(PackId, String)) {
++        if let Some(old) = self.entries.remove(key) {
++            self.serialized_weight = self.serialized_weight.saturating_sub(old.weight);
++        }
++    }
++}
++
++fn decode_reference_metadata(
++    pack: PackId,
++    release_sha256: &str,
++    payload_kind: &str,
++    bytes: &[u8],
++) -> Result<CollectionReferenceMetadata, CollectionError> {
++    let metadata: CollectionReferenceMetadata = serde_json::from_slice(bytes).map_err(|error| {
++        CollectionError::UnsupportedVersion(format!("reference descriptor is malformed: {error}"))
++    })?;
++    validate_reference_metadata_header(&metadata, pack, release_sha256, payload_kind)?;
++    Ok(metadata)
++}
++
++fn validate_reference_metadata_header(
++    metadata: &CollectionReferenceMetadata,
++    pack: PackId,
++    release_sha256: &str,
++    payload_kind: &str,
++) -> Result<(), CollectionError> {
++    if metadata.version != 1
++        || metadata.pack_id != pack.as_str()
++        || metadata.release_sha256 != release_sha256
++        || metadata.payload_kind != payload_kind
++    {
++        return Err(CollectionError::UnsupportedVersion(
++            "reference descriptor identity does not match its catalogue key".into(),
++        ));
++    }
++    Ok(())
++}
++
+ /// Source-level catalogue rows retained without lexical body payloads.
+ #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+ pub struct CollectionSourceMetadata {
+@@ -1575,29 +1711,117 @@ impl CollectionCatalogue {
+         pack: PackId,
+         release_sha256: &str,
+     ) -> Result<CollectionReferenceMetadata, CollectionError> {
+-        let tables = crate::collections_schema::tables_for(&self.connection, &self.root)?;
+-        let (payload_kind, bytes): (String, Vec<u8>) = self.connection.query_row(
+-            &format!("SELECT payload_kind,descriptor_json FROM {} WHERE pack_id=?1 AND release_sha256=?2", tables.registrations),
+-            params![pack.as_str(), release_sha256],
+-            |row| Ok((row.get(0)?, row.get(1)?)),
+-        ).optional().map_err(|error| db_error(&self.root, error))?
+-          .ok_or_else(|| CollectionError::InvalidRequest(format!("no registered {} release {release_sha256}", pack.as_str())))?;
+-        let descriptor: CollectionReferenceMetadata =
+-            serde_json::from_slice(&bytes).map_err(|error| {
+-                CollectionError::UnsupportedVersion(format!(
+-                    "reference descriptor is malformed: {error}"
+-                ))
+-            })?;
+-        if descriptor.version != 1
+-            || descriptor.pack_id != pack.as_str()
+-            || descriptor.release_sha256 != release_sha256
+-            || descriptor.payload_kind != payload_kind
++        let (payload_kind, bytes) = self.reference_metadata_row(pack, release_sha256)?;
++        decode_reference_metadata(pack, release_sha256, &payload_kind, &bytes)
++    }
++
++    /// Returns current retained metadata while reusing a validated parse for this catalogue.
++    ///
++    /// The current registration row and exact descriptor bytes are read on every call.
++    ///
++    /// # Errors
++    /// Returns the same typed errors as [`Self::reference_metadata`], or an invalid
++    /// request when the cache is bound to another native catalogue root.
++    pub fn reference_metadata_reusing<'cache>(
++        &self,
++        pack: PackId,
++        release_sha256: &str,
++        cache: &'cache mut CollectionReferenceMetadataCache,
++    ) -> Result<Cow<'cache, CollectionReferenceMetadata>, CollectionError> {
++        cache.bind_root(&self.root)?;
++        #[cfg(test)]
++        {
++            cache.stats.sql_reads += 1;
++        }
++        let (payload_kind, bytes) = self.reference_metadata_row(pack, release_sha256)?;
++        let fingerprint: [u8; 32] = Sha256::digest(&bytes).into();
++        #[cfg(test)]
++        {
++            cache.stats.fingerprints += 1;
++        }
++        let key = (pack, release_sha256.to_owned());
++
++        if cache
++            .entries
++            .get(&key)
++            .is_some_and(|entry| entry.fingerprint == fingerprint)
++        {
++            let validation = {
++                let entry = cache.entries.get(&key).expect("cache key was checked");
++                validate_reference_metadata_header(&entry.metadata, key.0, &key.1, &payload_kind)
++            };
++            if let Err(error) = validation {
++                cache.remove(&key);
++                return Err(error);
++            }
++            #[cfg(test)]
++            {
++                cache.stats.hits += 1;
++            }
++            return Ok(Cow::Borrowed(
++                &cache
++                    .entries
++                    .get(&key)
++                    .expect("validated entry remains")
++                    .metadata,
++            ));
++        }
++
++        // A changed row must invalidate its old parsed value before decode, so a
++        // malformed replacement can never fall back to stale successful data.
++        cache.remove(&key);
++        #[cfg(test)]
+         {
+-            return Err(CollectionError::UnsupportedVersion(
+-                "reference descriptor identity does not match its catalogue key".into(),
++            cache.stats.decodes += 1;
++        }
++        let metadata = decode_reference_metadata(pack, release_sha256, &payload_kind, &bytes)?;
++        let weight = bytes.len();
++        let next_weight = cache.serialized_weight.checked_add(weight);
++        let within_weight = next_weight.is_some_and(|next| next <= cache.max_weight());
++        if cache.entries.len() < cache.max_entries() && within_weight {
++            cache.serialized_weight = next_weight.expect("weight was checked");
++            cache.entries.insert(
++                key.clone(),
++                CachedReferenceMetadata {
++                    fingerprint,
++                    weight,
++                    metadata,
++                },
++            );
++            return Ok(Cow::Borrowed(
++                &cache
++                    .entries
++                    .get(&key)
++                    .expect("entry was inserted")
++                    .metadata,
+             ));
+         }
+-        Ok(descriptor)
++        Ok(Cow::Owned(metadata))
++    }
++
++    fn reference_metadata_row(
++        &self,
++        pack: PackId,
++        release_sha256: &str,
++    ) -> Result<(String, Vec<u8>), CollectionError> {
++        let tables = crate::collections_schema::tables_for(&self.connection, &self.root)?;
++        self.connection
++            .query_row(
++                &format!(
++                    "SELECT payload_kind,descriptor_json FROM {} WHERE pack_id=?1 AND release_sha256=?2",
++                    tables.registrations
++                ),
++                params![pack.as_str(), release_sha256],
++                |row| Ok((row.get(0)?, row.get(1)?)),
++            )
++            .optional()
++            .map_err(|error| db_error(&self.root, error))?
++            .ok_or_else(|| {
++                CollectionError::InvalidRequest(format!(
++                    "no registered {} release {release_sha256}",
++                    pack.as_str()
++                ))
++            })
+     }
+ 
+     /// Registers selected source metadata without copying release payloads.
+@@ -3725,6 +3949,17 @@ thread_local! {
+ mod manifest_tests {
+     use super::*;
+ 
++    fn temporary_catalogue_root(label: &str) -> PathBuf {
++        std::env::temp_dir().join(format!(
++            "vlajmaji-{label}-{}-{}",
++            std::process::id(),
++            std::time::SystemTime::now()
++                .duration_since(std::time::UNIX_EPOCH)
++                .unwrap()
++                .as_nanos()
++        ))
++    }
++
+     #[test]
+     fn test_allocate_stage_retries_occupied_candidate_without_overwriting_it() {
+         let unique = format!(
+@@ -3764,6 +3999,525 @@ mod manifest_tests {
+         let _ = fs::remove_dir_all(root);
+     }
+ 
++    #[test]
++    fn test_reference_metadata_cache_revalidates_current_kind_and_bytes() {
++        let root = temporary_catalogue_root("reference-cache");
++        let dictionary = Dictionary::from_document(Default::default()).unwrap();
++        let sealed_llg =
++            seal_release(PackId::Llg, PackPayloadKind::Synthetic, &dictionary).unwrap();
++        let sealed_la =
++            seal_release(PackId::LaLojban, PackPayloadKind::Synthetic, &dictionary).unwrap();
++        let request = CollectionRequest::new(
++            vec![
++                CollectionInput::SealedBytes {
++                    pack_id: PackId::Llg,
++                    release: Cow::Borrowed(&sealed_llg.release),
++                    seal: Cow::Borrowed(&sealed_llg.seal),
++                },
++                CollectionInput::SealedBytes {
++                    pack_id: PackId::LaLojban,
++                    release: Cow::Borrowed(&sealed_la.release),
++                    seal: Cow::Borrowed(&sealed_la.seal),
++                },
++            ],
++            CollectionSelection::Packs(vec![PackId::Llg, PackId::LaLojban]),
++            true,
++        )
++        .unwrap();
++        CollectionCatalogue::register(&root, request).unwrap();
++
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let list = catalogue.list().unwrap();
++        let registration = list
++            .packs
++            .iter()
++            .find(|pack| pack.pack_id == PackId::Llg.as_str())
++            .unwrap()
++            .registrations
++            .first()
++            .unwrap()
++            .clone();
++        let la_registration = list
++            .packs
++            .iter()
++            .find(|pack| pack.pack_id == PackId::LaLojban.as_str())
++            .unwrap()
++            .registrations
++            .first()
++            .unwrap()
++            .clone();
++        let tables = crate::collections_schema::tables_for(&catalogue.connection, &root).unwrap();
++        let original_bytes: Vec<u8> = catalogue
++            .connection
++            .query_row(
++                &format!(
++                    "SELECT descriptor_json FROM {} WHERE pack_id=?1 AND release_sha256=?2",
++                    tables.registrations
++                ),
++                params![PackId::Llg.as_str(), registration.release_sha256],
++                |row| row.get(0),
++            )
++            .unwrap();
++        let db_path = crate::collections_schema::database_path(&root);
++        drop(catalogue);
++
++        let mut cache = CollectionReferenceMetadataCache {
++            max_entries: 1,
++            max_weight: 1024 * 1024,
++            ..CollectionReferenceMetadataCache::default()
++        };
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let uncached_first = catalogue
++            .reference_metadata(PackId::Llg, &registration.release_sha256)
++            .unwrap();
++        let first = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap();
++        assert!(matches!(first, Cow::Borrowed(_)));
++        assert_eq!(first.as_ref(), &uncached_first);
++        drop(first);
++        let second = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap();
++        assert!(matches!(second, Cow::Borrowed(_)));
++        drop(second);
++        assert_eq!(
++            cache.stats,
++            ReferenceMetadataCacheStats {
++                sql_reads: 2,
++                fingerprints: 2,
++                decodes: 1,
++                hits: 1,
++            }
++        );
++        assert_eq!(cache.serialized_weight, original_bytes.len());
++        drop(catalogue);
++
++        // A valid same-key byte change must replace the cached parse, and
++        // restoring the original bytes must decode again rather than retain
++        // either earlier value.
++        let original_revision =
++            serde_json::from_slice::<CollectionReferenceMetadata>(&original_bytes)
++                .unwrap()
++                .upstream_catalogue_revision;
++        let mut changed_metadata =
++            serde_json::from_slice::<serde_json::Value>(&original_bytes).unwrap();
++        changed_metadata["upstream_catalogue_revision"] = serde_json::json!(original_revision + 1);
++        let changed_bytes = serde_json::to_vec(&changed_metadata).unwrap();
++        let writer = Connection::open(&db_path).unwrap();
++        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
++        writer
++            .execute(
++                &format!(
++                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
++                    tables.registrations
++                ),
++                params![
++                    changed_bytes,
++                    PackId::Llg.as_str(),
++                    registration.release_sha256
++                ],
++            )
++            .unwrap();
++        drop(writer);
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let changed = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap();
++        assert!(matches!(changed, Cow::Borrowed(_)));
++        assert_eq!(changed.upstream_catalogue_revision, original_revision + 1);
++        assert_eq!(cache.stats.decodes, 2);
++        drop(catalogue);
++
++        let writer = Connection::open(&db_path).unwrap();
++        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
++        writer
++            .execute(
++                &format!(
++                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
++                    tables.registrations
++                ),
++                params![
++                    original_bytes.as_slice(),
++                    PackId::Llg.as_str(),
++                    registration.release_sha256
++                ],
++            )
++            .unwrap();
++        drop(writer);
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let restored_bytes = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap();
++        assert!(matches!(restored_bytes, Cow::Borrowed(_)));
++        assert_eq!(cache.stats.decodes, 3);
++
++        let over_entry_limit = catalogue
++            .reference_metadata_reusing(
++                PackId::LaLojban,
++                &la_registration.release_sha256,
++                &mut cache,
++            )
++            .unwrap();
++        assert!(matches!(over_entry_limit, Cow::Owned(_)));
++        let uncached_over_entry_limit = catalogue
++            .reference_metadata(PackId::LaLojban, &la_registration.release_sha256)
++            .unwrap();
++        assert_eq!(uncached_over_entry_limit.pack_id, PackId::LaLojban.as_str());
++        assert_eq!(over_entry_limit.as_ref(), &uncached_over_entry_limit);
++        drop(over_entry_limit);
++        assert_eq!(cache.entries.len(), 1);
++        assert_eq!(cache.serialized_weight, original_bytes.len());
++        drop(catalogue);
++
++        let writer = Connection::open(&db_path).unwrap();
++        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
++        writer
++            .execute(
++                &format!(
++                    "UPDATE {} SET payload_kind='changed-kind' WHERE pack_id=?1 AND release_sha256=?2",
++                    tables.registrations
++                ),
++                params![PackId::Llg.as_str(), registration.release_sha256],
++            )
++            .unwrap();
++        drop(writer);
++
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let kind_error = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap_err();
++        assert!(matches!(kind_error, CollectionError::UnsupportedVersion(_)));
++        let uncached_kind_error = catalogue
++            .reference_metadata(PackId::Llg, &registration.release_sha256)
++            .unwrap_err();
++        assert!(matches!(
++            uncached_kind_error,
++            CollectionError::UnsupportedVersion(_)
++        ));
++        assert!(cache.entries.is_empty());
++        drop(catalogue);
++
++        let writer = Connection::open(&db_path).unwrap();
++        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
++        writer
++            .execute(
++                &format!(
++                    "UPDATE {} SET payload_kind='synthetic' WHERE pack_id=?1 AND release_sha256=?2",
++                    tables.registrations
++                ),
++                params![PackId::Llg.as_str(), registration.release_sha256],
++            )
++            .unwrap();
++        drop(writer);
++
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let restored_kind = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap();
++        let uncached_restored_kind = catalogue
++            .reference_metadata(PackId::Llg, &registration.release_sha256)
++            .unwrap();
++        assert!(matches!(restored_kind, Cow::Borrowed(_)));
++        assert_eq!(restored_kind.as_ref(), &uncached_restored_kind);
++        assert_eq!(cache.stats.decodes, 5);
++        drop(catalogue);
++
++        let writer = Connection::open(&db_path).unwrap();
++        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
++        writer
++            .execute(
++                &format!(
++                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
++                    tables.registrations
++                ),
++                params![
++                    b"\0".as_slice(),
++                    PackId::Llg.as_str(),
++                    registration.release_sha256
++                ],
++            )
++            .unwrap();
++        drop(writer);
++
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let bytes_error = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap_err();
++        assert!(matches!(
++            bytes_error,
++            CollectionError::UnsupportedVersion(_)
++        ));
++        let uncached_bytes_error = catalogue
++            .reference_metadata(PackId::Llg, &registration.release_sha256)
++            .unwrap_err();
++        assert!(matches!(
++            uncached_bytes_error,
++            CollectionError::UnsupportedVersion(_)
++        ));
++        assert_eq!(cache.stats.decodes, 6);
++        assert!(cache.entries.is_empty());
++        drop(catalogue);
++
++        let writer = Connection::open(&db_path).unwrap();
++        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
++        writer
++            .execute(
++                &format!(
++                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
++                    tables.registrations
++                ),
++                params![
++                    original_bytes.as_slice(),
++                    PackId::Llg.as_str(),
++                    registration.release_sha256
++                ],
++            )
++            .unwrap();
++        drop(writer);
++
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let restored = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap();
++        assert!(matches!(restored, Cow::Borrowed(_)));
++        assert_eq!(cache.stats.decodes, 7);
++        assert_eq!(cache.stats.hits, 1);
++        assert_eq!(cache.entries.len(), 1);
++        assert!(matches!(
++            cache.bind_root(&root.join("other-root")),
++            Err(CollectionError::InvalidRequest(_))
++        ));
++        let other_root = temporary_catalogue_root("reference-cache-wrong-root");
++        let other_request = CollectionRequest::new(
++            vec![CollectionInput::SealedBytes {
++                pack_id: PackId::Llg,
++                release: Cow::Borrowed(&sealed_llg.release),
++                seal: Cow::Borrowed(&sealed_llg.seal),
++            }],
++            CollectionSelection::Packs(vec![PackId::Llg]),
++            true,
++        )
++        .unwrap();
++        CollectionCatalogue::register(&other_root, other_request).unwrap();
++        let other_catalogue = CollectionCatalogue::open(&other_root).unwrap();
++        let prior_stats = cache.stats;
++        let wrong_root = other_catalogue
++            .reference_metadata_reusing(PackId::Sutysisku, "missing-release", &mut cache)
++            .unwrap_err();
++        assert!(
++            matches!(wrong_root, CollectionError::InvalidRequest(ref detail)
++            if detail == "reference metadata cache is bound to a different catalogue root")
++        );
++        assert_eq!(
++            cache.stats, prior_stats,
++            "root binding fails before any row read"
++        );
++        drop(other_catalogue);
++        let _ = fs::remove_dir_all(other_root);
++        cache
++            .retain_registered(
++                &catalogue,
++                &[(PackId::LaLojban, la_registration.release_sha256.clone())],
++            )
++            .unwrap();
++        assert!(cache.entries.is_empty());
++        assert_eq!(cache.serialized_weight, 0);
++        let after_prune = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap();
++        assert!(matches!(after_prune, Cow::Borrowed(_)));
++        assert_eq!(cache.stats.decodes, 8);
++        assert_eq!(cache.entries.len(), 1);
++        assert_eq!(cache.serialized_weight, original_bytes.len());
++        cache.clear();
++        assert!(cache.entries.is_empty());
++        assert_eq!(cache.serialized_weight, 0);
++        assert_eq!(cache.root.as_deref(), Some(root.as_path()));
++        let after_clear = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap();
++        assert!(matches!(after_clear, Cow::Borrowed(_)));
++        assert_eq!(cache.stats.decodes, 9);
++        assert_eq!(cache.entries.len(), 1);
++        assert_eq!(cache.serialized_weight, original_bytes.len());
++        assert_eq!(cache.root.as_deref(), Some(root.as_path()));
++        drop(catalogue);
++
++        let mut changed_header =
++            serde_json::from_slice::<serde_json::Value>(&original_bytes).unwrap();
++        changed_header["release_sha256"] = serde_json::json!("0".repeat(64));
++        let changed_header_bytes = serde_json::to_vec(&changed_header).unwrap();
++        let writer = Connection::open(&db_path).unwrap();
++        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
++        writer
++            .execute(
++                &format!(
++                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
++                    tables.registrations
++                ),
++                params![
++                    changed_header_bytes,
++                    PackId::Llg.as_str(),
++                    registration.release_sha256
++                ],
++            )
++            .unwrap();
++        drop(writer);
++
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let cached_header_error = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap_err();
++        let uncached_header_error = catalogue
++            .reference_metadata(PackId::Llg, &registration.release_sha256)
++            .unwrap_err();
++        assert!(matches!(
++            &cached_header_error,
++            CollectionError::UnsupportedVersion(_)
++        ));
++        assert_eq!(
++            format!("{cached_header_error:?}"),
++            format!("{uncached_header_error:?}")
++        );
++        assert_eq!(cache.stats.decodes, 10);
++        drop(catalogue);
++
++        let writer = Connection::open(&db_path).unwrap();
++        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
++        writer
++            .execute(
++                &format!(
++                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
++                    tables.registrations
++                ),
++                params![
++                    original_bytes.as_slice(),
++                    PackId::Llg.as_str(),
++                    registration.release_sha256
++                ],
++            )
++            .unwrap();
++        drop(writer);
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let restored_header = catalogue
++            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
++            .unwrap();
++        assert!(matches!(restored_header, Cow::Borrowed(_)));
++        assert_eq!(cache.stats.decodes, 11);
++        assert_eq!(cache.serialized_weight, original_bytes.len());
++        drop(catalogue);
++
++        let mut oversized_cache = CollectionReferenceMetadataCache {
++            max_weight: 1,
++            ..CollectionReferenceMetadataCache::default()
++        };
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let oversized = catalogue
++            .reference_metadata_reusing(
++                PackId::Llg,
++                &registration.release_sha256,
++                &mut oversized_cache,
++            )
++            .unwrap();
++        assert!(matches!(oversized, Cow::Owned(_)));
++        let uncached_oversized = catalogue
++            .reference_metadata(PackId::Llg, &registration.release_sha256)
++            .unwrap();
++        assert_eq!(oversized.as_ref(), &uncached_oversized);
++        drop(oversized);
++        assert!(oversized_cache.entries.is_empty());
++        assert_eq!(oversized_cache.serialized_weight, 0);
++        drop(catalogue);
++
++        let mut replacement_cache = CollectionReferenceMetadataCache {
++            max_weight: original_bytes.len(),
++            ..CollectionReferenceMetadataCache::default()
++        };
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let initial = catalogue
++            .reference_metadata_reusing(
++                PackId::Llg,
++                &registration.release_sha256,
++                &mut replacement_cache,
++            )
++            .unwrap();
++        assert!(matches!(initial, Cow::Borrowed(_)));
++        drop(initial);
++        assert_eq!(replacement_cache.entries.len(), 1);
++        assert_eq!(replacement_cache.serialized_weight, original_bytes.len());
++        drop(catalogue);
++
++        let mut larger_valid = original_bytes.clone();
++        larger_valid.extend(std::iter::repeat_n(b' ', 16));
++        let writer = Connection::open(&db_path).unwrap();
++        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
++        writer
++            .execute(
++                &format!(
++                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
++                    tables.registrations
++                ),
++                params![
++                    larger_valid,
++                    PackId::Llg.as_str(),
++                    registration.release_sha256
++                ],
++            )
++            .unwrap();
++        drop(writer);
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let oversized_replacement = catalogue
++            .reference_metadata_reusing(
++                PackId::Llg,
++                &registration.release_sha256,
++                &mut replacement_cache,
++            )
++            .unwrap();
++        assert!(matches!(oversized_replacement, Cow::Owned(_)));
++        let uncached_oversized_replacement = catalogue
++            .reference_metadata(PackId::Llg, &registration.release_sha256)
++            .unwrap();
++        assert_eq!(
++            oversized_replacement.as_ref(),
++            &uncached_oversized_replacement
++        );
++        drop(oversized_replacement);
++        assert!(replacement_cache.entries.is_empty());
++        assert_eq!(replacement_cache.serialized_weight, 0);
++        drop(catalogue);
++
++        let writer = Connection::open(&db_path).unwrap();
++        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
++        writer
++            .execute(
++                &format!(
++                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
++                    tables.registrations
++                ),
++                params![
++                    original_bytes.as_slice(),
++                    PackId::Llg.as_str(),
++                    registration.release_sha256
++                ],
++            )
++            .unwrap();
++        drop(writer);
++        let catalogue = CollectionCatalogue::open(&root).unwrap();
++        let restored_small = catalogue
++            .reference_metadata_reusing(
++                PackId::Llg,
++                &registration.release_sha256,
++                &mut replacement_cache,
++            )
++            .unwrap();
++        assert!(matches!(restored_small, Cow::Borrowed(_)));
++        drop(restored_small);
++        assert_eq!(replacement_cache.entries.len(), 1);
++        drop(catalogue);
++        let _ = fs::remove_dir_all(root);
++    }
++
+     #[test]
+     fn test_interruption_after_stage_allocation_retains_prior_generation_and_allows_retry() {
+         let unique = format!(
+diff --git a/crates/store/src/collections/reference_projection.rs b/crates/store/src/collections/reference_projection.rs
+index bb9c5e2..77edd47 100644
+--- a/crates/store/src/collections/reference_projection.rs
++++ b/crates/store/src/collections/reference_projection.rs
+@@ -145,6 +145,97 @@ struct OccurrenceKey {
+     occurrence: vlajmaji_lexicon::RecordIdentity,
+ }
+ 
++type OccurrenceTuple = (String, String, String);
++
++/// Per-call ordered candidate index for the native-only phase of a Catalog
++/// projection. Keys are decoded only through the first malformed raw key;
++/// complete attribution bodies remain lazy and are decoded only for matching
++/// tuples in their original row order.
++struct RawOccurrenceNativeLookup<'a> {
++    rows: &'a [&'a RawValue],
++    ordinals: BTreeMap<OccurrenceTuple, Vec<usize>>,
++    first_bad_key: Option<usize>,
++    successful_matches: BTreeMap<OccurrenceTuple, bool>,
++}
++
++impl<'a> RawOccurrenceNativeLookup<'a> {
++    fn new(rows: &'a [&'a RawValue]) -> Self {
++        let mut ordinals = BTreeMap::<OccurrenceTuple, Vec<usize>>::new();
++        let mut first_bad_key = None;
++        for (ordinal, row) in rows.iter().enumerate() {
++            let Ok(key) = serde_json::from_str::<OccurrenceKey>(row.get()) else {
++                first_bad_key = Some(ordinal);
++                break;
++            };
++            ordinals
++                .entry((
++                    key.occurrence.snapshot().namespace().to_owned(),
++                    key.occurrence.snapshot().sha256().to_owned(),
++                    key.occurrence.locator().to_owned(),
++                ))
++                .or_default()
++                .push(ordinal);
++        }
++        Self {
++            rows,
++            ordinals,
++            first_bad_key,
++            successful_matches: BTreeMap::new(),
++        }
++    }
++
++    fn matches(
++        &mut self,
++        occurrence: &OccurrenceRef,
++        native_entry_id: Option<&str>,
++        native_assertion_id: Option<&str>,
++        pack: PackId,
++        release_sha256: &str,
++    ) -> Result<bool, CollectionError> {
++        let tuple = (
++            occurrence.capture.namespace.clone(),
++            occurrence.capture.sha256.clone(),
++            occurrence.locator.clone(),
++        );
++        if let Some(matched) = self.successful_matches.get(&tuple) {
++            return Ok(*matched);
++        }
++
++        if let Some(ordinals) = self.ordinals.get(&tuple) {
++            for ordinal in ordinals {
++                let row: OccurrenceAttribution = serde_json::from_str(self.rows[*ordinal].get())
++                    .map_err(|source| CollectionError::ReferenceProjection {
++                        pack,
++                        release_sha256: release_sha256.to_owned(),
++                        source,
++                    })?;
++                let matches = native_entry_id
++                    .is_none_or(|wanted| row.native_entry_id.as_deref() == Some(wanted))
++                    && native_assertion_id
++                        .is_none_or(|wanted| row.native_assertion_id.as_deref() == Some(wanted));
++                if matches {
++                    self.successful_matches.insert(tuple, true);
++                    return Ok(true);
++                }
++            }
++        }
++
++        if let Some(ordinal) = self.first_bad_key {
++            return match serde_json::from_str::<OccurrenceKey>(self.rows[ordinal].get()) {
++                Err(source) => Err(CollectionError::ReferenceProjection {
++                    pack,
++                    release_sha256: release_sha256.to_owned(),
++                    source,
++                }),
++                Ok(_) => unreachable!("the deferred occurrence key was invalid during indexing"),
++            };
++        }
++
++        self.successful_matches.insert(tuple, false);
++        Ok(false)
++    }
++}
++
+ #[derive(Deserialize)]
+ struct ContributorKey {
+     id: ContributorId,
+@@ -573,6 +664,7 @@ impl CollectionCatalogue {
+         let mut catalog_release_owned = false;
+         if let Some(catalog) = catalog_target {
+             let mut catalog_candidate_ids = BTreeSet::new();
++            let mut native_lookup = None;
+             for (_, assertion, _) in entity_rows
+                 .iter()
+                 .filter(|(_, links, _)| links.role == "assertion")
+@@ -595,40 +687,16 @@ impl CollectionCatalogue {
+                     continue;
+                 }
+                 if catalog.native_entry_id.is_some() || catalog.native_assertion_id.is_some() {
+-                    let mut native_match = false;
+-                    for attribution_raw in &registry.occurrences {
+-                        let key: OccurrenceKey = serde_json::from_str(attribution_raw.get())
+-                            .map_err(|source| CollectionError::ReferenceProjection {
+-                                pack,
+-                                release_sha256: release_sha256.to_owned(),
+-                                source,
+-                            })?;
+-                        if key.occurrence.snapshot().namespace() != occurrence.capture.namespace
+-                            || key.occurrence.snapshot().sha256() != occurrence.capture.sha256
+-                            || key.occurrence.locator() != occurrence.locator
+-                        {
+-                            continue;
+-                        }
+-                        let row: OccurrenceAttribution =
+-                            serde_json::from_str(attribution_raw.get()).map_err(|source| {
+-                                CollectionError::ReferenceProjection {
+-                                    pack,
+-                                    release_sha256: release_sha256.to_owned(),
+-                                    source,
+-                                }
+-                            })?;
+-                        native_match = catalog
+-                            .native_entry_id
+-                            .as_ref()
+-                            .is_none_or(|wanted| row.native_entry_id.as_ref() == Some(wanted))
+-                            && catalog.native_assertion_id.as_ref().is_none_or(|wanted| {
+-                                row.native_assertion_id.as_ref() == Some(wanted)
+-                            });
+-                        if native_match {
+-                            break;
+-                        }
+-                    }
+-                    if !native_match {
++                    let lookup = native_lookup.get_or_insert_with(|| {
++                        RawOccurrenceNativeLookup::new(&registry.occurrences)
++                    });
++                    if !lookup.matches(
++                        occurrence,
++                        catalog.native_entry_id.as_deref(),
++                        catalog.native_assertion_id.as_deref(),
++                        pack,
++                        release_sha256,
++                    )? {
+                         continue;
+                     }
+                 }
+@@ -1054,3 +1122,262 @@ impl CollectionCatalogue {
+         })
+     }
+ }
++
++#[cfg(test)]
++mod native_lookup_tests {
++    use super::*;
++
++    fn occurrence(namespace: &str, locator: &str) -> OccurrenceRef {
++        OccurrenceRef {
++            capture: CaptureRef {
++                namespace: namespace.to_owned(),
++                sha256: "a".repeat(64),
++            },
++            locator: locator.to_owned(),
++        }
++    }
++
++    fn raw_key(occurrence: &OccurrenceRef) -> String {
++        serde_json::to_string(&occurrence.to_record_identity().unwrap()).unwrap()
++    }
++
++    fn raw_attribution(
++        occurrence: &OccurrenceRef,
++        native_entry_id: Option<&str>,
++        native_assertion_id: Option<&str>,
++    ) -> Box<RawValue> {
++        let value = serde_json::json!({
++            "occurrence": serde_json::from_str::<serde_json::Value>(&raw_key(occurrence)).unwrap(),
++            "contributor": null,
++            "native_entry_id": native_entry_id,
++            "native_assertion_id": native_assertion_id,
++        });
++        RawValue::from_string(serde_json::to_string(&value).unwrap()).unwrap()
++    }
++
++    fn row_refs(rows: &[Box<RawValue>]) -> Vec<&RawValue> {
++        rows.iter().map(Box::as_ref).collect()
++    }
++
++    fn legacy_native_match(
++        rows: &[&RawValue],
++        occurrence: &OccurrenceRef,
++        native_entry_id: Option<&str>,
++        native_assertion_id: Option<&str>,
++    ) -> Result<bool, serde_json::Error> {
++        for raw in rows {
++            let key: OccurrenceKey = serde_json::from_str(raw.get())?;
++            if key.occurrence.snapshot().namespace() != occurrence.capture.namespace
++                || key.occurrence.snapshot().sha256() != occurrence.capture.sha256
++                || key.occurrence.locator() != occurrence.locator
++            {
++                continue;
++            }
++            let row: OccurrenceAttribution = serde_json::from_str(raw.get())?;
++            let matches = native_entry_id
++                .is_none_or(|wanted| row.native_entry_id.as_deref() == Some(wanted))
++                && native_assertion_id
++                    .is_none_or(|wanted| row.native_assertion_id.as_deref() == Some(wanted));
++            if matches {
++                return Ok(true);
++            }
++        }
++        Ok(false)
++    }
++
++    fn assert_reference_json_data(error: CollectionError) {
++        match error {
++            CollectionError::ReferenceProjection { source, .. } => {
++                assert_eq!(source.classify(), serde_json::error::Category::Data);
++            }
++            other => panic!("expected the original serde projection error, got {other:?}"),
++        }
++    }
++
++    fn matches(
++        lookup: &mut RawOccurrenceNativeLookup<'_>,
++        occurrence: &OccurrenceRef,
++        expected: Option<&str>,
++    ) -> Result<bool, CollectionError> {
++        lookup.matches(occurrence, expected, None, PackId::Llg, &"d".repeat(64))
++    }
++
++    #[test]
++    fn raw_native_lookup_keeps_ordered_any_and_first_success() {
++        let wanted = occurrence("captured:test", "/wanted");
++        let other = occurrence("captured:test", "/other");
++        let rows = vec![
++            raw_attribution(&wanted, None, None),
++            raw_attribution(&wanted, Some("entry-wanted"), None),
++            raw_attribution(&other, Some("entry-wanted"), None),
++            raw_attribution(&wanted, Some("entry-later"), None),
++        ];
++        let refs = row_refs(&rows);
++        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
++        assert_eq!(
++            matches(&mut lookup, &wanted, Some("entry-wanted")).unwrap(),
++            legacy_native_match(&refs, &wanted, Some("entry-wanted"), None).unwrap()
++        );
++        assert_eq!(
++            matches(&mut lookup, &other, Some("entry-wanted")).unwrap(),
++            legacy_native_match(&refs, &other, Some("entry-wanted"), None).unwrap()
++        );
++        let rows = vec![raw_attribution(&other, Some("entry-wanted"), None)];
++        let refs = row_refs(&rows);
++        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
++        assert_eq!(
++            matches(&mut lookup, &other, Some("absent")).unwrap(),
++            legacy_native_match(&refs, &other, Some("absent"), None).unwrap()
++        );
++    }
++
++    #[test]
++    fn raw_native_lookup_defers_key_errors_until_the_legacy_visit_point() {
++        let first = occurrence("captured:test", "/first");
++        let second = occurrence("captured:test", "/second");
++        let good = raw_attribution(&first, Some("entry-wanted"), None);
++        let malformed_key =
++            RawValue::from_string(r#"{"occurrence":"truncated"}"#.to_owned()).unwrap();
++        let rows = vec![good, malformed_key];
++        let refs = row_refs(&rows);
++        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
++        assert!(matches(&mut lookup, &first, Some("entry-wanted")).unwrap());
++        assert!(legacy_native_match(&refs, &first, Some("entry-wanted"), None).unwrap());
++        let error = matches(&mut lookup, &second, Some("entry-wanted")).unwrap_err();
++        let legacy_error =
++            legacy_native_match(&refs, &second, Some("entry-wanted"), None).unwrap_err();
++        assert_eq!(legacy_error.classify(), serde_json::error::Category::Data);
++        assert_reference_json_data(error);
++    }
++
++    #[test]
++    fn raw_native_lookup_errors_on_malformed_key_before_a_candidate_match() {
++        let wanted = occurrence("captured:test", "/wanted");
++        let bad_key = RawValue::from_string(r#"{"occurrence":"truncated"}"#.to_owned()).unwrap();
++        let rows = vec![
++            bad_key,
++            raw_attribution(&wanted, Some("entry-wanted"), None),
++        ];
++        let refs = row_refs(&rows);
++        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
++        let error = matches(&mut lookup, &wanted, Some("entry-wanted")).unwrap_err();
++        let legacy_error =
++            legacy_native_match(&refs, &wanted, Some("entry-wanted"), None).unwrap_err();
++        assert_eq!(legacy_error.classify(), serde_json::error::Category::Data);
++        assert_reference_json_data(error);
++    }
++
++    #[test]
++    fn raw_native_lookup_decodes_only_matching_bodies_through_first_match() {
++        let wanted = occurrence("captured:test", "/wanted");
++        let other = occurrence("captured:test", "/other");
++        let bad_other = RawValue::from_string(format!(
++            r#"{{"occurrence":{},"contributor":null,"native_entry_id":17,"native_assertion_id":null}}"#,
++            raw_key(&other)
++        ))
++        .unwrap();
++        let bad_matching = RawValue::from_string(format!(
++            r#"{{"occurrence":{},"contributor":null,"native_entry_id":17,"native_assertion_id":null}}"#,
++            raw_key(&wanted)
++        ))
++        .unwrap();
++
++        let rows = vec![
++            bad_other,
++            raw_attribution(&wanted, Some("entry-wanted"), None),
++            bad_matching.clone(),
++        ];
++        let refs = row_refs(&rows);
++        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
++        assert!(matches(&mut lookup, &wanted, Some("entry-wanted")).unwrap());
++        assert!(legacy_native_match(&refs, &wanted, Some("entry-wanted"), None).unwrap());
++
++        let rows = vec![bad_matching];
++        let refs = row_refs(&rows);
++        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
++        let error = matches(&mut lookup, &wanted, Some("entry-wanted")).unwrap_err();
++        let legacy_error =
++            legacy_native_match(&refs, &wanted, Some("entry-wanted"), None).unwrap_err();
++        assert_eq!(legacy_error.classify(), serde_json::error::Category::Data);
++        assert_reference_json_data(error);
++    }
++
++    #[test]
++    fn raw_native_lookup_requires_both_native_ids_on_one_attribution_row() {
++        let wanted = occurrence("captured:test", "/wanted");
++        let split_rows = vec![
++            raw_attribution(&wanted, Some("entry-wanted"), None),
++            raw_attribution(&wanted, None, Some("assertion-wanted")),
++        ];
++        let refs = row_refs(&split_rows);
++        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
++        assert!(
++            !lookup
++                .matches(
++                    &wanted,
++                    Some("entry-wanted"),
++                    Some("assertion-wanted"),
++                    PackId::Llg,
++                    &"d".repeat(64),
++                )
++                .unwrap(),
++            "the entry and assertion filters must be satisfied by one row"
++        );
++        assert!(
++            !legacy_native_match(
++                &refs,
++                &wanted,
++                Some("entry-wanted"),
++                Some("assertion-wanted")
++            )
++            .unwrap()
++        );
++
++        let same_row = vec![raw_attribution(
++            &wanted,
++            Some("entry-wanted"),
++            Some("assertion-wanted"),
++        )];
++        let refs = row_refs(&same_row);
++        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
++        assert_eq!(
++            lookup
++                .matches(
++                    &wanted,
++                    Some("entry-wanted"),
++                    Some("assertion-wanted"),
++                    PackId::Llg,
++                    &"d".repeat(64),
++                )
++                .unwrap(),
++            legacy_native_match(
++                &refs,
++                &wanted,
++                Some("entry-wanted"),
++                Some("assertion-wanted")
++            )
++            .unwrap()
++        );
++        assert!(
++            lookup
++                .matches(
++                    &wanted,
++                    Some("entry-wanted"),
++                    Some("assertion-wanted"),
++                    PackId::Llg,
++                    &"d".repeat(64),
++                )
++                .unwrap()
++        );
++
++        let refs = row_refs(&same_row);
++        let mut lookup = RawOccurrenceNativeLookup::new(&refs);
++        assert_eq!(
++            lookup
++                .matches(&wanted, None, None, PackId::Llg, &"d".repeat(64))
++                .unwrap(),
++            legacy_native_match(&refs, &wanted, None, None).unwrap(),
++            "a native-unfiltered candidate accepts any matching occurrence row"
++        );
++    }
++}
+diff --git a/crates/store/src/lib.rs b/crates/store/src/lib.rs
+index aaada01..ce3d603 100644
+--- a/crates/store/src/lib.rs
++++ b/crates/store/src/lib.rs
+@@ -34,9 +34,9 @@ pub use collections::{
+     CollectionInstalledHistory, CollectionJournalObservation, CollectionListReport,
+     CollectionMutationReport, CollectionProjectedCapture, CollectionProjectedRelease,
+     CollectionReconciliationAttempt, CollectionReconciliationReport, CollectionReferenceMetadata,
+-    CollectionReferenceProjection, CollectionRegistrationSummary, CollectionReleaseSummary,
+-    CollectionRequest, CollectionSelection, CollectionSourceMetadata, CollectionTermsSummary,
+-    NativePathReport, native_path_report,
++    CollectionReferenceMetadataCache, CollectionReferenceProjection, CollectionRegistrationSummary,
++    CollectionReleaseSummary, CollectionRequest, CollectionSelection, CollectionSourceMetadata,
++    CollectionTermsSummary, NativePathReport, native_path_report,
+ };
+ pub use dictionary::{
+     DictionaryStore, DictionaryStoreError, DictionaryStoreInvalidity, DictionaryStoreSummary,

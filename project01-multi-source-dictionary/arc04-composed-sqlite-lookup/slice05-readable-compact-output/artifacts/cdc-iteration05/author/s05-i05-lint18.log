@@ -1,0 +1,92 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error[E0369]: binary operation `==` cannot be applied to type `std::result::Result<bool, collections::CollectionError>`
+    --> crates/store/src/collections/reference_projection.rs:1314:9
+     |
+1314 | /         assert_eq!(
+1315 | |             lookup.matches(
+1316 | |                 &wanted,
+1317 | |                 Some("entry-wanted"),
+...    |
+1323 | |             "the entry and assertion filters must be satisfied by one row"
+1324 | |         );
+     | |         ^
+     | |         |
+     | |_________std::result::Result<bool, collections::CollectionError>
+     |           std::result::Result<bool, collections::CollectionError>
+     |
+note: an implementation of `std::cmp::PartialEq` might be missing for `collections::CollectionError`
+    --> crates/store/src/collections.rs:466:1
+     |
+ 466 | pub enum CollectionError {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^ must implement `std::cmp::PartialEq`
+help: consider annotating `collections::CollectionError` with `#[derive(PartialEq)]`
+    -->  crates/store/src/collections.rs:466:1
+     |
+ 466 + #[derive(PartialEq)]
+ 467 | pub enum CollectionError {
+     |
+
+error[E0369]: binary operation `==` cannot be applied to type `std::result::Result<bool, serde_json::Error>`
+    --> crates/store/src/collections/reference_projection.rs:1325:9
+     |
+1325 | /         assert_eq!(
+1326 | |             legacy_native_match(
+1327 | |                 &refs,
+1328 | |                 &wanted,
+...    |
+1332 | |             Ok(false)
+1333 | |         );
+     | |         ^
+     | |         |
+     | |_________std::result::Result<bool, serde_json::Error>
+     |           std::result::Result<bool, serde_json::Error>
+     |
+note: `serde_json::Error` does not implement `std::cmp::PartialEq`
+    --> /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/error.rs:17:1
+     |
+  17 | pub struct Error {
+     | ^^^^^^^^^^^^^^^^ `serde_json::Error` is defined in another crate
+
+error[E0369]: binary operation `==` cannot be applied to type `std::result::Result<bool, collections::CollectionError>`
+    --> crates/store/src/collections/reference_projection.rs:1342:9
+     |
+1342 | /         assert_eq!(
+1343 | |             lookup.matches(
+1344 | |                 &wanted,
+1345 | |                 Some("entry-wanted"),
+...    |
+1356 | |         );
+     | |         ^
+     | |         |
+     | |_________std::result::Result<bool, collections::CollectionError>
+     |           std::result::Result<bool, serde_json::Error>
+     |
+note: `std::result::Result<bool, collections::CollectionError>` does not implement `std::cmp::PartialEq<std::result::Result<bool, serde_json::Error>>`
+    --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/result.rs:557:0
+     |
+     = note: `std::result::Result<bool, collections::CollectionError>` is defined in another crate
+
+error[E0369]: binary operation `==` cannot be applied to type `std::result::Result<bool, collections::CollectionError>`
+    --> crates/store/src/collections/reference_projection.rs:1371:9
+     |
+1371 | /         assert_eq!(
+1372 | |             lookup.matches(&wanted, None, None, PackId::Llg, &"d".repeat(64)),
+1373 | |             legacy_native_match(&refs, &wanted, None, None),
+1374 | |             "a native-unfiltered candidate accepts any matching occurrence row"
+1375 | |         );
+     | |         ^
+     | |         |
+     | |_________std::result::Result<bool, collections::CollectionError>
+     |           std::result::Result<bool, serde_json::Error>
+     |
+note: `std::result::Result<bool, collections::CollectionError>` does not implement `std::cmp::PartialEq<std::result::Result<bool, serde_json::Error>>`
+    --> /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/result.rs:557:0
+     |
+     = note: `std::result::Result<bool, collections::CollectionError>` is defined in another crate
+
+For more information about this error, try `rustc --explain E0369`.
+error: could not compile `vlajmaji-store` (lib test) due to 4 previous errors
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

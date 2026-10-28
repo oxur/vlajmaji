@@ -1,0 +1,38 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.81s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-a3654fa1431d47c4)
+
+running 4 tests
+test collections::reference_projection::native_lookup_tests::raw_native_lookup_defers_key_errors_until_the_legacy_visit_point ... FAILED
+test collections::reference_projection::native_lookup_tests::raw_native_lookup_errors_on_malformed_key_before_a_candidate_match ... FAILED
+test collections::reference_projection::native_lookup_tests::raw_native_lookup_decodes_only_matching_bodies_through_first_match ... ok
+test collections::reference_projection::native_lookup_tests::raw_native_lookup_keeps_ordered_any_and_first_success ... FAILED
+
+failures:
+
+---- collections::reference_projection::native_lookup_tests::raw_native_lookup_defers_key_errors_until_the_legacy_visit_point stdout ----
+
+thread 'collections::reference_projection::native_lookup_tests::raw_native_lookup_defers_key_errors_until_the_legacy_visit_point' (79672982) panicked at crates/store/src/collections/reference_projection.rs:1196:10:
+called `Result::unwrap()` on an `Err` value: Error("EOF while parsing an object", line: 1, column: 79)
+
+---- collections::reference_projection::native_lookup_tests::raw_native_lookup_errors_on_malformed_key_before_a_candidate_match stdout ----
+
+thread 'collections::reference_projection::native_lookup_tests::raw_native_lookup_errors_on_malformed_key_before_a_candidate_match' (79672983) panicked at crates/store/src/collections/reference_projection.rs:1212:10:
+called `Result::unwrap()` on an `Err` value: Error("EOF while parsing an object", line: 1, column: 79)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- collections::reference_projection::native_lookup_tests::raw_native_lookup_keeps_ordered_any_and_first_success stdout ----
+
+thread 'collections::reference_projection::native_lookup_tests::raw_native_lookup_keeps_ordered_any_and_first_success' (79672984) panicked at crates/store/src/collections/reference_projection.rs:1184:9:
+assertion failed: !matches(&mut lookup, &other, Some("absent")).unwrap()
+
+
+failures:
+    collections::reference_projection::native_lookup_tests::raw_native_lookup_defers_key_errors_until_the_legacy_visit_point
+    collections::reference_projection::native_lookup_tests::raw_native_lookup_errors_on_malformed_key_before_a_candidate_match
+    collections::reference_projection::native_lookup_tests::raw_native_lookup_keeps_ordered_any_and_first_success
+
+test result: FAILED. 1 passed; 3 failed; 0 ignored; 0 measured; 33 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p vlajmaji-store --lib`

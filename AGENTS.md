@@ -2,6 +2,10 @@
 
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
+**Current S05 checkpoint,2026-10-28 UTC:** clean frozen011/treea8c/parent1b exact6 author handback, CDC owns source/index/ONEtarget. Whole-critical-delta/independent affected Tiny/current optimized22-method qualification PASS; review-iteration05+canonical cdc-iteration05. All6OPEN/additional Full exact rootclearance/currentLinux/freshARC/close pending, noautomatic7/retry/push.
+
+### Historical six-path author interval checkpoint
+
 **Current S05 checkpoint,2026-10-28 UTC:** appended six-file addendum complete delta intake/source-cited readback ACCEPTED; fresh originalFOUR WIP/extraTWO baseline/lock/guard/oldrefs verified. AFTER this scoped metadata commit and explicit CDC extension, retained Luna/high CC exclusively owns SIX issued source paths/index/ONEtarget for SAME sixth pass. CDC/root source/index/target READONLY; all6OPEN/failedFull immutable/noautomatic7/retry/push; later exact numerical readiness separate.
 
 ### Historical extraTWO issued intake checkpoint

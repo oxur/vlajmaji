@@ -1,0 +1,21 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.08s
+     Running tests/collection_query_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collection_query_contract-c6f6e2b16ff764e0)
+
+running 1 test
+
+thread 'test_full_catalogue_cache_revalidates_and_preserves_first_ordinals' (79646524) panicked at crates/search/tests/collection_query_contract.rs:132:5:
+sqlite3 mutation failed: Error: stepping, database is locked (5)
+
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_full_catalogue_cache_revalidates_and_preserves_first_ordinals ... FAILED
+
+failures:
+
+failures:
+    test_full_catalogue_cache_revalidates_and_preserves_first_ordinals
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 15 filtered out; finished in 0.35s
+
+error: test failed, to rerun pass `-p vlajmaji-search --test collection_query_contract`

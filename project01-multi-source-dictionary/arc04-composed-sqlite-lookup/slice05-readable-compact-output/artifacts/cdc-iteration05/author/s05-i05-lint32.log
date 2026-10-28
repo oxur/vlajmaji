@@ -1,0 +1,23 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0382]: use of moved value: `assertion_id`
+   --> crates/search/tests/collection_query_contract.rs:470:63
+    |
+378 |     let (assertion_id, _, _, _, _, _) = install_two_release_history(&root, true);
+    |          ------------ move occurs because `assertion_id` has type `vlajmaji_lexicon::EntityId`, which does not implement the `Copy` trait
+...
+446 |             target: RelationTarget::Local(LocalRef::Assertion(assertion_id)),
+    |                                                               ------------ value moved here
+...
+470 |             target: RelationTarget::Local(LocalRef::Assertion(assertion_id)),
+    |                                                               ^^^^^^^^^^^^ value used here after move
+    |
+help: consider cloning the value if the performance cost is acceptable
+    |
+446 |             target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
+    |                                                                           ++++++++
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `vlajmaji-search` (test "collection_query_contract") due to 1 previous error
+make: *** [lint] Error 101

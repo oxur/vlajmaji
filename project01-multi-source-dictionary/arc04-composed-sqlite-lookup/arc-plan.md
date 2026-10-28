@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE/fivearcDONEfiveOPEN. S05 final04 bounded ACCEPTED1b; exactFullnumericalcampaign FAILED at warmFullreference1.214s>750ms after12freshPASS. Human sixth-total/six-file correction05 and amendments ISSUED; complete delta accepted, explicit six-path ownership follows scoped metadata commit. All6OPEN/currentLinux/freshARC/close. |
-| version / date | 1.30 /2026-10-28 UTC |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE/fivearcDONEfiveOPEN. S05 final05 frozen011 bounded source/API/Tiny PASS; first Full failure immutable; additional exact Full/current Linux/fresh ARC/close pending. All6OPEN. |
+| version / date | 1.31 /2026-10-28 UTC |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | Same isolated S05branch HEAD1b/tree338daa/base32e99; originalFOUR author WIP expected. OldS04local/origin432 immutable. Complete extraTWO delta accepted/fresh baseline pins+lockguardrefs verified; AFTER scoped metadata commit +explicit CDC extension retained CC owns SIX issued source paths/index/ONEtarget, CDC/root READONLY. FailedFull13attempted12checked immutable; later one additional <=22 campaign exact readiness separate. Accepted FullG4 and actualprimarylocalmain52fd protected. |
+| integration destination | Same isolated S05 branch clean011/treea8c/parent1b/base32e99, exact6 correction delta/cumulative22 approved. CC handed source/index/ONEtarget to CDC; root/CC readonly. Old S04local/origin432 and actualprimarymain52fd protected. Additional <=22 Full execution awaits exact root clearance; no automatic7/retry/push. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -281,3 +281,8 @@ No extra2edit/build yet. Fourfilecache+Fullwork maycontinue (subsetunit1/existin
 Root FINALextra2 readiness PASS: WHOLEdraft13931B0ad306e9+sole284B latecaptureclarification+WHOLE§17.6 read; canonical49649B88e14965 exact35432Bb8e83216prefix+2LF+14215Bc483f38d, authority1180B3ccf exactverbatimquestion/answer/itemid, bothheldsourcebodies exact1b83489B7e8dce32/42089B09025526 verified. Wholeamendedrevieweddraft byte-preserved artifacts/cc-prompt-iteration05-with-compact-reviewed-draft01.md; activeprompt ONLYlastaddendumSTATUSline changes. No priorissuedprefix/body/immutablefailurechanged.
 
 OriginalFOURpath CCownership/work continues. ExtraCompactkernel andRawprojection TWOpaths NOTyettransferred: retainedCC must loadWHOLEnewaddendum+§17.6/currentfields/sourcecriticalbodies+borroweduniqueindexcontract and return conciseFIRST/UNIQUE/ANY/errorphase readback. After CDCacceptance/freshheldpins+lockguardrefscheck, explicitTWOfileextension joins SAMEactivepass6/sharedindexONEtarget. No new rootcycle absentactualmismatch; no seventh/retry/push/newFulllaunch from issue. All6OPEN/laterexactnumericalfreeze/currentLinux/freshARC/closepending.
+
+
+### 17.7 Frozen05 handback and bounded independent review —2026-10-28 UTC
+
+Clean011af09a/treea8c/parent1b exact6sourcepaths returned by CC with all gates terminal. CDC whole-critical-delta review and independent affected Tiny/current optimized SAME-code22 qualification PASS at scopes in review-iteration05.md/cdc-iteration05 manifest. Current no-default corrected83/10groups; author --list are test names, missing actual package lists now executed0. Cumulative main diff22 is original21 plus explicitly authorized existing search/tests/collection_query_contract.rs; no scope waiver/new pass. All6binding rows OPEN; first Full failure immutable; one additional22 campaign REVIEW-only packet04/rootclearance pending, no automatic7/retry/push/currentLinux/freshARC/close claim. Prior dated transfer/WIP paragraphs remain historical.

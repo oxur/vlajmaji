@@ -1,0 +1,5 @@
+PASS nested link payload counted exactly; owned referent directory/file absent from inventory
+PASS dangling native-byte and self-loop links observed without following or recursion
+PASS named scratch root remains strict nofollow
+PASS frozen/data leaf remains strict nofollow
+COMPLETE 4 inventory method controls; no product/Full process, referent read or cleanup

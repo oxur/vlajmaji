@@ -1,0 +1,61 @@
+{
+  "kind": "warm",
+  "round": 1,
+  "mode": "readable",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+    "warm-tiny",
+    "readable",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration04/warm-1-readable",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+  ],
+  "number": 15,
+  "guard_argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "8589934592",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration04/warm-1-readable/stderr",
+    "--stdout",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration04/warm-1-readable/stdout",
+    "--",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+    "warm-tiny",
+    "readable",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration04/warm-1-readable",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+  ],
+  "guard_exit": 0,
+  "receipt": {
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+      "warm-tiny",
+      "readable",
+      "1",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration04/warm-1-readable",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/config.toml",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/requests.json"
+    ],
+    "decision": "passed",
+    "elapsed_seconds": 0.15954350028187037,
+    "exit_code": 0,
+    "log": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration04/warm-1-readable/stderr",
+    "maximum_resident_set_size_bytes": 11534336,
+    "pid": 22507,
+    "rss_parse_ok": true,
+    "rss_source": "/usr/bin/time -l maximum resident set size",
+    "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-orchestration04/warm-1-readable/stdout",
+    "timed_out": false
+  },
+  "stdout_bytes": 40911,
+  "stdout_sha256": "a5a31167ef22ae1ee8b613884d3520b24c33a4901ac651d6ed947fca6eb77eb2",
+  "stderr_bytes": 777,
+  "stderr_sha256": "b912aa28838efb7c303b7240ee09ff987dc93954f97159e995fcd682819d04ed"
+}

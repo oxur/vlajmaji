@@ -1,0 +1,34 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji)
+error[E0433]: cannot find type `CollectionError` in this scope
+    --> crates/search/tests/collection_query_contract.rs:1854:9
+     |
+1854 |         CollectionError::ReferenceProjection { source, .. } => {
+     |         ^^^^^^^^^^^^^^^ use of undeclared type `CollectionError`
+     |
+help: an enum with a similar name exists
+     |
+1854 -         CollectionError::ReferenceProjection { source, .. } => {
+1854 +         CollectionInput::ReferenceProjection { source, .. } => {
+     |
+
+error[E0433]: cannot find type `CollectionError` in this scope
+    --> crates/search/tests/collection_query_contract.rs:1877:9
+     |
+1877 |         CollectionError::ReferenceProjection { source, .. } => {
+     |         ^^^^^^^^^^^^^^^ use of undeclared type `CollectionError`
+     |
+help: an enum with a similar name exists
+     |
+1877 -         CollectionError::ReferenceProjection { source, .. } => {
+1877 +         CollectionInput::ReferenceProjection { source, .. } => {
+     |
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `vlajmaji-search` (test "collection_query_contract") due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "tiny_method": true,
+  "completed_or_attempted_stages": 22,
+  "elapsed_seconds": 85.189840875566,
+  "failure": null,
+  "database_before": {
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/root/catalogue.sqlite3": "1db84d92d40d7a10a3daaf5e079e4e0d28b44d5f366989928025b925247e8052",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/root/generations/5faea77dcdc648a9b0d80d96e7863ada/store/dictionary.sqlite3": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+  },
+  "database_after": {
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/root/catalogue.sqlite3": "1db84d92d40d7a10a3daaf5e079e4e0d28b44d5f366989928025b925247e8052",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-fixture01/root/generations/5faea77dcdc648a9b0d80d96e7863ada/store/dictionary.sqlite3": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+  },
+  "database_unchanged": true,
+  "observed_inventory_bytes": 675903391,
+  "target_cache_before_bytes": 70755123200,
+  "target_cache_after_bytes": 70755123200,
+  "target_cache_delta_bytes": 0,
+  "settled_delta": "inventory-before-summary.json, target-cache-after.json and summary.json are authored AFTER this observation and excluded from its exact bytes; final external manifest will include both",
+  "resource_mechanism": "600s process-group timeout active; RSS8GiB/output128MiB/new scratch12GiB checked AFTER each process, not live enforcement",
+  "fresh_semantics": "fresh PROCESS only; one prehash pair warmed OS cache; no cache controls",
+  "proof_scope": "same-call timings + exact3 observations per identity; no pooling/retry; one semantic observer; errors retained; no detail latency cap"
+}

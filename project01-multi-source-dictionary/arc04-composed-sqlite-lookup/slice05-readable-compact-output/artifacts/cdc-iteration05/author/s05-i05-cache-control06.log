@@ -1,0 +1,25 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.94s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-a3654fa1431d47c4)
+
+running 1 test
+test collections::manifest_tests::test_reference_metadata_cache_revalidates_current_kind_and_bytes ... FAILED
+
+failures:
+
+---- collections::manifest_tests::test_reference_metadata_cache_revalidates_current_kind_and_bytes stdout ----
+
+thread 'collections::manifest_tests::test_reference_metadata_cache_revalidates_current_kind_and_bytes' (79748225) panicked at crates/store/src/collections.rs:4378:9:
+assertion `left == right` failed
+  left: 10
+ right: 9
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    collections::manifest_tests::test_reference_metadata_cache_revalidates_current_kind_and_bytes
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.13s
+
+error: test failed, to rerun pass `-p vlajmaji-store --lib`

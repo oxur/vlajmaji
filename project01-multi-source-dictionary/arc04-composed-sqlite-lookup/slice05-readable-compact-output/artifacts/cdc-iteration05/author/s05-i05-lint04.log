@@ -1,0 +1,27 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0308]: mismatched types
+    --> crates/search/src/collection_query.rs:1217:69
+     |
+1217 | ...   let entity = lookup.entity("assertion", assertion_id).ok_or_else(|| CollectionQueryError::Query(DictionaryQueryError::Integr...
+     |                           ------              ^^^^^^^^^^^^ expected `&str`, found `&EntityId`
+     |                           |
+     |                           arguments to this method are incorrect
+     |
+     = note: expected reference `&str`
+                found reference `&vlajmaji_lexicon::EntityId`
+note: method defined here
+    --> crates/search/src/collection_query.rs:1646:8
+     |
+1646 |     fn entity(
+     |        ^^^^^^
+...
+1649 |         id: &str,
+     |         --------
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-search` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+make: *** [lint] Error 101

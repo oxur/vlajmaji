@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| Status / version | Final04 bounded ACCEPTED; first Full numerical campaign FAILED at measured Full warm reference /1.21 /2026-10-28 UTC. SIX-file addendum complete delta accepted; explicit ownership extension follows scoped metadata commit, author WIP/all6OPEN. |
+| Status / version | Frozen05 bounded source/API/Tiny PASS; additional Full numerical/current Linux/fresh ARC pending /1.22 /2026-10-28 UTC. All6OPEN; first failed campaign immutable. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
-| Source / dependency | Author BASELINE1b9038ddc6c45f3ea709a0bdfec64041221e3571 clean at transfer, parent5e/tree338daa on S05branch/base32e99; oldS04local/origin432 frozen. WIP after transfer is author-owned, not claimed future clean. |
-| Ownership | Original intake and BOTH amendment deltas accepted. Fresh HEAD1b with exactly originalFOUR WIP, extraTWO baseline bodies, lock/guard/oldrefs verified. AFTER this scoped metadata commit and explicit CDC extension retained Luna/high CC exclusively owns SIX issued paths/index/ONEtarget. CDC/root READONLY until frozen handback; CDC planning, CC append-only execution. WIP is not claimed clean. No Full/external action from extension. |
+| Source / dependency | CURRENT clean011af09a44abc153b8b8253f70d84147e21a6bb0/treea8c0fdcb/parent1b/S05branch/base32e99; original21 plus approved existing search contract =22 cumulative paths. Old S04local/origin432 unchanged. |
+| Ownership | CC explicitly returned SIX source paths/index/ONEtarget with all gates terminal; CDC exclusively owns current source/index/target for independent proof and exact numerical preparation. Root/CC readonly. No further source pass/Full launch/external action without applicable authority. |
 | Delivery | Additive compact Exact/Resolve and complete occurrence detail, then source-grouped readable Exact/Resolve/detail. Full default JSON stays compatible. Public libraries, CLI, documentation and actual five-workflow composition accompany output, not verification alone. |
-| Sizing | FIVE completed: initial/pass1,01/pass2,02/pass3,03/pass4,04/pass5. Human explicit amendments authorize SIXtotal, one max6existingpath correction05/amendments ISSUED; complete delta accepted, explicit extension follows scoped metadata commit. No automatic seventh/reset; criteria/later gates unchanged. |
+| Sizing | SIX completed author passes initial+01..05 under exact human amendment; final05 bounded review PASS. No automatic seventh/reset/retry; ONE additional<=22 Full campaign still requires root exact executable clearance. |
 | Limits | No dependency/lock/schema/importer/model/workflow changes, topology redo, new Full store/generation, cleanup/cache reset, actual-default access, S04 branch writes, A05 activation, network/push/PR/merge/publication. Later finite retained-G4 trial needs exact executable root readiness. |
 
 ## 1. Source findings and preserved behavior
@@ -963,3 +963,8 @@ OriginalFOURpath CCownership/work continues. ExtraCompactkernel andRawprojection
 ### 17.6 Ownership extension checkpoint —2026-10-28 UTC
 
 Complete extraTWO delta intake/readback accepted after actual WHOLE appended addendum, current §17.6/ledger and source-critical Compact ordinal/Raw visit-order bodies were loaded. FIRST/UNIQUE/ANY policies and downstream capture-versus-registry error phases are distinct. Fresh source HEAD1b/tree338daa is EXPECTED originalFOUR WIP; held projection83489B/7e8dce32 and reference_projection42089B/09025526 remain baseline, lock65cd/guard20fe and both old S04 refs432 unchanged. After scoped metadata commit and explicit CDC dispatch the extraTWO join the existing author interval: SIX existing paths, same index/ONEtarget/SIXTH total pass. All prior read/hold/history preserved; no new root review cycle absent mismatch, no seventh/retry/Full/push from extension.
+
+
+### 17.7 Frozen05 handback and bounded independent review —2026-10-28 UTC
+
+Clean011af09a/treea8c/parent1b exact6sourcepaths returned by CC with all gates terminal. CDC whole-critical-delta review and independent affected Tiny/current optimized SAME-code22 qualification PASS at scopes in review-iteration05.md/cdc-iteration05 manifest. Current no-default corrected83/10groups; author --list are test names, missing actual package lists now executed0. Cumulative main diff22 is original21 plus explicitly authorized existing search/tests/collection_query_contract.rs; no scope waiver/new pass. All6binding rows OPEN; first Full failure immutable; one additional22 campaign REVIEW-only packet04/rootclearance pending, no automatic7/retry/push/currentLinux/freshARC/close claim. Prior dated transfer/WIP paragraphs remain historical.

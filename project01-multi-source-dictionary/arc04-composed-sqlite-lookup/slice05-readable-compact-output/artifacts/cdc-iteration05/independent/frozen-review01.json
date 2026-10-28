@@ -1,0 +1,88 @@
+{
+  "source": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "head": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "tree": "a8c0fdcb3e39fb260602bb48b837b25f4d2380ac",
+  "parent": "1b9038ddc6c45f3ea709a0bdfec64041221e3571",
+  "branch": "codex/project01-readable-compact-output",
+  "clean": true,
+  "files": [
+    {
+      "path": "crates/search/src/collection_query.rs",
+      "bytes": 81468,
+      "sha256": "f74b76c7da4193b5fc754aebf9c62a7afabb85d0c71029572ea961eba5af763a"
+    },
+    {
+      "path": "crates/search/src/dictionary/projection.rs",
+      "bytes": 87615,
+      "sha256": "a16e1147c333754bf963f4990f08c1608d84c58b2a4b8d5f6b4c87af36d84e2e"
+    },
+    {
+      "path": "crates/search/tests/collection_query_contract.rs",
+      "bytes": 94361,
+      "sha256": "c5b3226c2db4ad972c1ba744ead181f2ba89fae36591f94efdb6f31af22cde58"
+    },
+    {
+      "path": "crates/store/src/collections.rs",
+      "bytes": 188267,
+      "sha256": "6b4014cbf7d341e93e5c9c25b7d1f4ee88bc10d789aaee6510e86db3b19a425f"
+    },
+    {
+      "path": "crates/store/src/collections/reference_projection.rs",
+      "bytes": 54172,
+      "sha256": "93289ca51d6b24d2c3f5ef95393d7e3ade31d1bc5a452bd91f19a0eb9f9c5d38"
+    },
+    {
+      "path": "crates/store/src/lib.rs",
+      "bytes": 15461,
+      "sha256": "35e8043a98b06babc8b38c28ed7d81141cb2f8130ec4497b4d142d34d6705201"
+    }
+  ],
+  "author_raw_reconciliation": [
+    {
+      "path": "/private/tmp/s05-i05-check-final01.log",
+      "bytes": 47195,
+      "sha256": "2c0e8cc35f4d203c19404a42a98230511b02ddda6db97c5fb0a716a02f7aa714",
+      "rust_groups": 56,
+      "rust_totals": [
+        338,
+        0,
+        1
+      ]
+    },
+    {
+      "path": "/private/tmp/s05-i05-no-default-final01.log",
+      "bytes": 10123,
+      "sha256": "375271d74c576d9a8b39333b37dd37d5d9bd378b4a09a30b145e61a6177b4e38",
+      "rust_groups": 10,
+      "rust_totals": [
+        83,
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/private/tmp/s05-i05-all-features-final01.log",
+      "bytes": 44366,
+      "sha256": "eb6d4612e03c6d6a3219e65119d9e6c3a54f451d0ebbe7d953804c5723816cfe",
+      "rust_groups": 56,
+      "rust_totals": [
+        340,
+        0,
+        1
+      ]
+    },
+    {
+      "path": "/private/tmp/s05-i05-store-list-final01.log",
+      "bytes": 11765,
+      "sha256": "f4dd7d566dd5689d3e6ab958eb424f75d08e75aaf5695086bad9bcb67bbae1a6",
+      "scope": "list-only"
+    },
+    {
+      "path": "/private/tmp/s05-i05-search-list-final01.log",
+      "bytes": 8604,
+      "sha256": "a41689f57a61ca2a0df77145ab4610fc381fe004fcfc7dbcc35d227222a238d1",
+      "scope": "list-only"
+    }
+  ],
+  "review": "CDC read whole six-path delta and critical caller context; no blocking source-contract issue; runtime acceptance pending"
+}

@@ -1,0 +1,87 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: function `raw_rows` is never used
+    --> crates/store/src/collections/reference_projection.rs:1158:8
+     |
+1158 |     fn raw_rows(rows: &[String]) -> Vec<Box<RawValue>> {
+     |        ^^^^^^^^
+     |
+     = note: `-D dead-code` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[expect(dead_code)]` or `#[allow(dead_code)]`
+
+error: could not compile `vlajmaji-store` (lib test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error[E0308]: mismatched types
+    --> crates/search/src/dictionary/projection.rs:1199:53
+     |
+1199 |             let attribution_key = super::record_key(&assertion.occurrence);
+     |                                   ----------------- ^^^^^^^^^^^^^^^^^^^^^ expected `&RecordIdentity`, found `&OccurrenceRef`
+     |                                   |
+     |                                   arguments to this function are incorrect
+     |
+     = note: expected reference `&vlajmaji_lexicon::RecordIdentity`
+                found reference `&vlajmaji_lexicon::OccurrenceRef`
+note: function defined here
+    --> crates/search/src/dictionary.rs:2076:4
+     |
+2076 | fn record_key(row: &lexicon::RecordIdentity) -> String {
+     |    ^^^^^^^^^^ -----------------------------
+
+error[E0609]: no field `confirmed` on type `(ReferenceStatus, Option<CollectionEntityReference>, ..., ..., ...)`
+    --> crates/search/src/dictionary/projection.rs:1867:18
+     |
+1867 |                 .confirmed
+     |                  ^^^^^^^^^ unknown field
+     |
+     = note: available fields are: `0`, `1`, `2`, `3`, `4`
+     = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-30d263294cfdc365.long-type-10185035055669622521.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0609]: no field `confirmed` on type `(ReferenceStatus, Option<CollectionEntityReference>, ..., ..., ...)`
+    --> crates/search/src/dictionary/projection.rs:1881:18
+     |
+1881 |                 .confirmed
+     |                  ^^^^^^^^^ unknown field
+     |
+     = note: available fields are: `0`, `1`, `2`, `3`, `4`
+     = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-30d263294cfdc365.long-type-10185035055669622521.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0609]: no field `confirmed` on type `(ReferenceStatus, Option<CollectionEntityReference>, ..., ..., ...)`
+    --> crates/search/src/dictionary/projection.rs:1893:31
+     |
+1893 |         assert!(missing_entry.confirmed.is_empty());
+     |                               ^^^^^^^^^ unknown field
+     |
+     = note: available fields are: `0`, `1`, `2`, `3`, `4`
+     = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-30d263294cfdc365.long-type-10185035055669622521.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0609]: no field `unverified` on type `(ReferenceStatus, Option<CollectionEntityReference>, ..., ..., ...)`
+    --> crates/search/src/dictionary/projection.rs:1894:31
+     |
+1894 |         assert!(missing_entry.unverified.is_empty());
+     |                               ^^^^^^^^^^ unknown field
+     |
+     = note: available fields are: `0`, `1`, `2`, `3`, `4`
+     = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-30d263294cfdc365.long-type-10185035055669622521.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0609]: no field `status` on type `(ReferenceStatus, Option<CollectionEntityReference>, ..., ..., ...)`
+    --> crates/search/src/dictionary/projection.rs:1895:34
+     |
+1895 |         assert_eq!(missing_entry.status, super::super::ReferenceStatus::NoMatch);
+     |                                  ^^^^^^ unknown field
+     |
+     = note: available fields are: `0`, `1`, `2`, `3`, `4`
+     = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-30d263294cfdc365.long-type-10185035055669622521.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-search` (lib) due to 1 previous error
+Some errors have detailed explanations: E0308, E0609.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-search` (lib test) due to 6 previous errors
+make: *** [lint] Error 101

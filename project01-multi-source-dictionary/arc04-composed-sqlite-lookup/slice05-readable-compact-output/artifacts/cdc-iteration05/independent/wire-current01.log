@@ -1,0 +1,10 @@
+PASS positive same current compact CLI schema/count/input5IDs
+PASS missing outer key
+PASS extra outer key
+PASS missing mandatory compact capture key
+PASS forbidden raw extra field
+PASS wrong complete count
+PASS wrong pre-input assertion identity
+PASS positive actual Full CLI byte hash comparator
+PASS wrong complete Full byte hash
+COMPLETE 9 pure wire controls; complementary Rust SAME complete typed comparator covers Presence/native-role/key-hash/release/occurrence mutations

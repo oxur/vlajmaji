@@ -1,0 +1,5 @@
+PASS known system /tmp alias plus strict owned regular leaf
+PASS reject arbitrary ancestor link before pin payload read
+PASS reject arbitrary leaf link before pin payload read
+PASS sole exact Python alias payload plus strict target
+COMPLETE4 pure pin-preparation controls; no symlink referent traversal by negative checks

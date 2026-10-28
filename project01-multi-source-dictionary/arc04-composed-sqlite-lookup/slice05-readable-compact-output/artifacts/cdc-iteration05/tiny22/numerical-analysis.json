@@ -1,0 +1,1839 @@
+{
+  "fresh": {
+    "baseline-full": {
+      "observations_ns": [
+        58136834,
+        54872375,
+        53052959
+      ],
+      "median_ns": 54872375,
+      "maximum_ns": 58136834,
+      "median_limit_ns": 6000000000,
+      "maximum_limit_ns": 10000000000,
+      "ok": true
+    },
+    "candidate-full": {
+      "observations_ns": [
+        326211334,
+        56505208,
+        56905750
+      ],
+      "median_ns": 56905750,
+      "maximum_ns": 326211334,
+      "median_limit_ns": 6000000000,
+      "maximum_limit_ns": 10000000000,
+      "ok": true
+    },
+    "compact": {
+      "observations_ns": [
+        53514959,
+        56732125,
+        54974126
+      ],
+      "median_ns": 54974126,
+      "maximum_ns": 56732125,
+      "median_limit_ns": 5500000000,
+      "maximum_limit_ns": 9000000000,
+      "ok": true
+    },
+    "readable": {
+      "observations_ns": [
+        56727250,
+        55166875,
+        56609958
+      ],
+      "median_ns": 56609958,
+      "maximum_ns": 56727250,
+      "median_limit_ns": 5500000000,
+      "maximum_limit_ns": 9000000000,
+      "ok": true
+    }
+  },
+  "startup": {
+    "full": {
+      "observations_ns": [
+        15405208,
+        5732416,
+        5170750
+      ],
+      "median_ns": 5732416,
+      "maximum_ns": 15405208,
+      "median_limit_ns": 5000000000,
+      "maximum_limit_ns": 8000000000,
+      "ok": true
+    },
+    "compact": {
+      "observations_ns": [
+        6678792,
+        5670624,
+        5558166
+      ],
+      "median_ns": 5670624,
+      "maximum_ns": 6678792,
+      "median_limit_ns": 5000000000,
+      "maximum_limit_ns": 8000000000,
+      "ok": true
+    },
+    "readable": {
+      "observations_ns": [
+        5231459,
+        6025958,
+        6610625
+      ],
+      "median_ns": 6025958,
+      "maximum_ns": 6610625,
+      "median_limit_ns": 5000000000,
+      "maximum_limit_ns": 8000000000,
+      "ok": true
+    }
+  },
+  "warm": {
+    "full:farvi-all": {
+      "observations_ns": [
+        55376,
+        58998,
+        59749
+      ],
+      "median_ns": 58998,
+      "maximum_ns": 59749,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:farvi-lsk": {
+      "observations_ns": [
+        93292,
+        165500,
+        59710
+      ],
+      "median_ns": 93292,
+      "maximum_ns": 165500,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:farvi-llg": {
+      "observations_ns": [
+        29082,
+        49333,
+        27460
+      ],
+      "median_ns": 29082,
+      "maximum_ns": 49333,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:farvi-sut": {
+      "observations_ns": [
+        25916,
+        29459,
+        24416
+      ],
+      "median_ns": 25916,
+      "maximum_ns": 29459,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:absent": {
+      "observations_ns": [
+        53292,
+        32874,
+        20625
+      ],
+      "median_ns": 32874,
+      "maximum_ns": 53292,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:excluded-sut": {
+      "observations_ns": [
+        24957,
+        38958,
+        35584
+      ],
+      "median_ns": 35584,
+      "maximum_ns": 38958,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page-0": {
+      "observations_ns": [
+        38000,
+        43875,
+        82873
+      ],
+      "median_ns": 43875,
+      "maximum_ns": 82873,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page-1": {
+      "observations_ns": [
+        35208,
+        37583,
+        35461
+      ],
+      "median_ns": 35461,
+      "maximum_ns": 37583,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page-2": {
+      "observations_ns": [
+        29914,
+        40458,
+        42290
+      ],
+      "median_ns": 40458,
+      "maximum_ns": 42290,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page-3": {
+      "observations_ns": [
+        40916,
+        40377,
+        34083
+      ],
+      "median_ns": 40377,
+      "maximum_ns": 40916,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page-8": {
+      "observations_ns": [
+        34709,
+        28999,
+        26999
+      ],
+      "median_ns": 28999,
+      "maximum_ns": 34709,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page-concat-2": {
+      "observations_ns": [
+        53000,
+        46790,
+        46625
+      ],
+      "median_ns": 46790,
+      "maximum_ns": 53000,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page-concat-3": {
+      "observations_ns": [
+        43419,
+        40793,
+        42958
+      ],
+      "median_ns": 42958,
+      "maximum_ns": 43419,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page-concat-4": {
+      "observations_ns": [
+        42084,
+        39044,
+        40459
+      ],
+      "median_ns": 40459,
+      "maximum_ns": 42084,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page-concat-5": {
+      "observations_ns": [
+        38789,
+        35874,
+        46584
+      ],
+      "median_ns": 38789,
+      "maximum_ns": 46584,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page2-concat-2": {
+      "observations_ns": [
+        40835,
+        38209,
+        44624
+      ],
+      "median_ns": 40835,
+      "maximum_ns": 44624,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page2-concat-3": {
+      "observations_ns": [
+        37916,
+        35252,
+        37793
+      ],
+      "median_ns": 37793,
+      "maximum_ns": 37916,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:page3-concat-2": {
+      "observations_ns": [
+        36624,
+        33916,
+        40251
+      ],
+      "median_ns": 36624,
+      "maximum_ns": 40251,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "full:jbotci-local": {
+      "observations_ns": [
+        3627417,
+        3118458,
+        3854542
+      ],
+      "median_ns": 3627417,
+      "maximum_ns": 3854542,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "full:jbotci-catalogue-native333": {
+      "observations_ns": [
+        6698708,
+        7340000,
+        5954417
+      ],
+      "median_ns": 6698708,
+      "maximum_ns": 7340000,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "full:la-catalogue-native333": {
+      "observations_ns": [
+        6694125,
+        6263750,
+        6661000
+      ],
+      "median_ns": 6661000,
+      "maximum_ns": 6694125,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "full:llg-component": {
+      "observations_ns": [
+        5832000,
+        7027417,
+        6342750
+      ],
+      "median_ns": 6342750,
+      "maximum_ns": 7027417,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "full:sut-native-entry": {
+      "observations_ns": [
+        6914500,
+        6766458,
+        6536834
+      ],
+      "median_ns": 6766458,
+      "maximum_ns": 6914500,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "full:unknown": {
+      "observations_ns": [
+        1667,
+        1875,
+        1583
+      ],
+      "median_ns": 1667,
+      "maximum_ns": 1875,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "full:unresolved": {
+      "observations_ns": [
+        1166,
+        1083,
+        1042
+      ],
+      "median_ns": 1083,
+      "maximum_ns": 1166,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "full:wrong-role": {
+      "observations_ns": [
+        2964167,
+        3353125,
+        3500833
+      ],
+      "median_ns": 3353125,
+      "maximum_ns": 3500833,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "whole_error_ns"
+    },
+    "full:missing": {
+      "observations_ns": [
+        9696208,
+        9490958,
+        9063917
+      ],
+      "median_ns": 9490958,
+      "maximum_ns": 9696208,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "compact:farvi-all": {
+      "observations_ns": [
+        156876,
+        44206,
+        53956
+      ],
+      "median_ns": 53956,
+      "maximum_ns": 156876,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:farvi-lsk": {
+      "observations_ns": [
+        107500,
+        89250,
+        57919
+      ],
+      "median_ns": 89250,
+      "maximum_ns": 107500,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:farvi-llg": {
+      "observations_ns": [
+        30335,
+        40750,
+        22542
+      ],
+      "median_ns": 30335,
+      "maximum_ns": 40750,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:farvi-sut": {
+      "observations_ns": [
+        40662,
+        33500,
+        25080
+      ],
+      "median_ns": 33500,
+      "maximum_ns": 40662,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:absent": {
+      "observations_ns": [
+        37333,
+        14376,
+        26417
+      ],
+      "median_ns": 26417,
+      "maximum_ns": 37333,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:excluded-sut": {
+      "observations_ns": [
+        19917,
+        13292,
+        27542
+      ],
+      "median_ns": 19917,
+      "maximum_ns": 27542,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page-0": {
+      "observations_ns": [
+        29292,
+        20165,
+        27835
+      ],
+      "median_ns": 27835,
+      "maximum_ns": 29292,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page-1": {
+      "observations_ns": [
+        27999,
+        20001,
+        23003
+      ],
+      "median_ns": 23003,
+      "maximum_ns": 27999,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page-2": {
+      "observations_ns": [
+        24580,
+        22416,
+        24625
+      ],
+      "median_ns": 24580,
+      "maximum_ns": 24625,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page-3": {
+      "observations_ns": [
+        24125,
+        23334,
+        23289
+      ],
+      "median_ns": 23334,
+      "maximum_ns": 24125,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page-8": {
+      "observations_ns": [
+        25380,
+        25631,
+        24668
+      ],
+      "median_ns": 25380,
+      "maximum_ns": 25631,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page-concat-2": {
+      "observations_ns": [
+        43542,
+        42292,
+        42038
+      ],
+      "median_ns": 42292,
+      "maximum_ns": 43542,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page-concat-3": {
+      "observations_ns": [
+        38501,
+        38208,
+        37500
+      ],
+      "median_ns": 38208,
+      "maximum_ns": 38501,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page-concat-4": {
+      "observations_ns": [
+        36169,
+        38500,
+        35833
+      ],
+      "median_ns": 36169,
+      "maximum_ns": 38500,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page-concat-5": {
+      "observations_ns": [
+        38250,
+        36875,
+        58166
+      ],
+      "median_ns": 38250,
+      "maximum_ns": 58166,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page2-concat-2": {
+      "observations_ns": [
+        39459,
+        38003,
+        111045
+      ],
+      "median_ns": 39459,
+      "maximum_ns": 111045,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page2-concat-3": {
+      "observations_ns": [
+        37376,
+        35792,
+        49914
+      ],
+      "median_ns": 37376,
+      "maximum_ns": 49914,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:page3-concat-2": {
+      "observations_ns": [
+        38623,
+        37834,
+        44165
+      ],
+      "median_ns": 38623,
+      "maximum_ns": 44165,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "compact:jbotci-local": {
+      "observations_ns": [
+        8150459,
+        6857500,
+        6718166
+      ],
+      "median_ns": 6857500,
+      "maximum_ns": 8150459,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "compact:jbotci-catalogue-native333": {
+      "observations_ns": [
+        7389291,
+        7349833,
+        6971375
+      ],
+      "median_ns": 7349833,
+      "maximum_ns": 7389291,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "compact:la-catalogue-native333": {
+      "observations_ns": [
+        6569833,
+        6877333,
+        7385708
+      ],
+      "median_ns": 6877333,
+      "maximum_ns": 7385708,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "compact:llg-component": {
+      "observations_ns": [
+        6439208,
+        6485792,
+        7516084
+      ],
+      "median_ns": 6485792,
+      "maximum_ns": 7516084,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "compact:sut-native-entry": {
+      "observations_ns": [
+        7350792,
+        6198750,
+        7098917
+      ],
+      "median_ns": 7098917,
+      "maximum_ns": 7350792,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "compact:unknown": {
+      "observations_ns": [
+        1875,
+        1459,
+        1500
+      ],
+      "median_ns": 1500,
+      "maximum_ns": 1875,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "compact:unresolved": {
+      "observations_ns": [
+        1042,
+        1125,
+        1166
+      ],
+      "median_ns": 1125,
+      "maximum_ns": 1166,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "compact:wrong-role": {
+      "observations_ns": [
+        3353958,
+        3140041,
+        3049750
+      ],
+      "median_ns": 3140041,
+      "maximum_ns": 3353958,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "whole_error_ns"
+    },
+    "compact:missing": {
+      "observations_ns": [
+        7496333,
+        7542042,
+        6507375
+      ],
+      "median_ns": 7496333,
+      "maximum_ns": 7542042,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "readable:farvi-all": {
+      "observations_ns": [
+        61585,
+        57831,
+        47037
+      ],
+      "median_ns": 57831,
+      "maximum_ns": 61585,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:farvi-lsk": {
+      "observations_ns": [
+        112711,
+        89294,
+        72544
+      ],
+      "median_ns": 89294,
+      "maximum_ns": 112711,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:farvi-llg": {
+      "observations_ns": [
+        27419,
+        28667,
+        41125
+      ],
+      "median_ns": 28667,
+      "maximum_ns": 41125,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:farvi-sut": {
+      "observations_ns": [
+        24708,
+        22625,
+        78630
+      ],
+      "median_ns": 24708,
+      "maximum_ns": 78630,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:absent": {
+      "observations_ns": [
+        13083,
+        11249,
+        18998
+      ],
+      "median_ns": 13083,
+      "maximum_ns": 18998,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:excluded-sut": {
+      "observations_ns": [
+        12084,
+        11084,
+        15709
+      ],
+      "median_ns": 12084,
+      "maximum_ns": 15709,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page-0": {
+      "observations_ns": [
+        20126,
+        17335,
+        23793
+      ],
+      "median_ns": 20126,
+      "maximum_ns": 23793,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page-1": {
+      "observations_ns": [
+        20162,
+        18002,
+        20500
+      ],
+      "median_ns": 20162,
+      "maximum_ns": 20500,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page-2": {
+      "observations_ns": [
+        20418,
+        19372,
+        20622
+      ],
+      "median_ns": 20418,
+      "maximum_ns": 20622,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page-3": {
+      "observations_ns": [
+        21167,
+        25171,
+        21503
+      ],
+      "median_ns": 21503,
+      "maximum_ns": 25171,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page-8": {
+      "observations_ns": [
+        23001,
+        23414,
+        22705
+      ],
+      "median_ns": 23001,
+      "maximum_ns": 23414,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page-concat-2": {
+      "observations_ns": [
+        41709,
+        43623,
+        42081
+      ],
+      "median_ns": 42081,
+      "maximum_ns": 43623,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page-concat-3": {
+      "observations_ns": [
+        38000,
+        37420,
+        37169
+      ],
+      "median_ns": 37420,
+      "maximum_ns": 38000,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page-concat-4": {
+      "observations_ns": [
+        36998,
+        65623,
+        35998
+      ],
+      "median_ns": 36998,
+      "maximum_ns": 65623,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page-concat-5": {
+      "observations_ns": [
+        35710,
+        54958,
+        36210
+      ],
+      "median_ns": 36210,
+      "maximum_ns": 54958,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page2-concat-2": {
+      "observations_ns": [
+        37498,
+        48960,
+        37498
+      ],
+      "median_ns": 37498,
+      "maximum_ns": 48960,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page2-concat-3": {
+      "observations_ns": [
+        38083,
+        80417,
+        35416
+      ],
+      "median_ns": 38083,
+      "maximum_ns": 80417,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:page3-concat-2": {
+      "observations_ns": [
+        36207,
+        92378,
+        35915
+      ],
+      "median_ns": 36207,
+      "maximum_ns": 92378,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "lookup_ns"
+    },
+    "readable:jbotci-local": {
+      "observations_ns": [
+        7398375,
+        6644333,
+        6279167
+      ],
+      "median_ns": 6644333,
+      "maximum_ns": 7398375,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "readable:jbotci-catalogue-native333": {
+      "observations_ns": [
+        7057917,
+        6826917,
+        6664750
+      ],
+      "median_ns": 6826917,
+      "maximum_ns": 7057917,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "readable:la-catalogue-native333": {
+      "observations_ns": [
+        6458625,
+        8042375,
+        6267834
+      ],
+      "median_ns": 6458625,
+      "maximum_ns": 8042375,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "readable:llg-component": {
+      "observations_ns": [
+        7421167,
+        7134875,
+        6829583
+      ],
+      "median_ns": 7134875,
+      "maximum_ns": 7421167,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "readable:sut-native-entry": {
+      "observations_ns": [
+        6760209,
+        7218917,
+        6422250
+      ],
+      "median_ns": 6760209,
+      "maximum_ns": 7218917,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "readable:unknown": {
+      "observations_ns": [
+        1500,
+        1583,
+        1375
+      ],
+      "median_ns": 1500,
+      "maximum_ns": 1583,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "readable:unresolved": {
+      "observations_ns": [
+        1084,
+        1042,
+        1000
+      ],
+      "median_ns": 1042,
+      "maximum_ns": 1084,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    },
+    "readable:wrong-role": {
+      "observations_ns": [
+        3290500,
+        3500084,
+        3724042
+      ],
+      "median_ns": 3500084,
+      "maximum_ns": 3724042,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "whole_error_ns"
+    },
+    "readable:missing": {
+      "observations_ns": [
+        7150709,
+        6769542,
+        5955333
+      ],
+      "median_ns": 6769542,
+      "maximum_ns": 7150709,
+      "median_limit_ns": 250000000,
+      "maximum_limit_ns": 750000000,
+      "ok": true,
+      "boundary": "query_total_ns"
+    }
+  },
+  "projection_serialization": {
+    "full:farvi-all": {
+      "observations_ns": [
+        236166,
+        240460,
+        236709
+      ],
+      "median_ns": 236709,
+      "maximum_ns": 240460,
+      "median_limit_ns": 500000000,
+      "maximum_limit_ns": 1000000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:farvi-all": {
+      "observations_ns": [
+        346916,
+        191918,
+        189127
+      ],
+      "median_ns": 191918,
+      "maximum_ns": 346916,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:farvi-lsk": {
+      "observations_ns": [
+        162249,
+        172583,
+        137665
+      ],
+      "median_ns": 162249,
+      "maximum_ns": 172583,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:farvi-llg": {
+      "observations_ns": [
+        94414,
+        120750,
+        83958
+      ],
+      "median_ns": 94414,
+      "maximum_ns": 120750,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:farvi-sut": {
+      "observations_ns": [
+        184046,
+        113417,
+        129671
+      ],
+      "median_ns": 129671,
+      "maximum_ns": 184046,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:absent": {
+      "observations_ns": [
+        86501,
+        62958,
+        81708
+      ],
+      "median_ns": 81708,
+      "maximum_ns": 86501,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:excluded-sut": {
+      "observations_ns": [
+        67624,
+        59291,
+        77459
+      ],
+      "median_ns": 67624,
+      "maximum_ns": 77459,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page-0": {
+      "observations_ns": [
+        69124,
+        62417,
+        68999
+      ],
+      "median_ns": 68999,
+      "maximum_ns": 69124,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page-1": {
+      "observations_ns": [
+        175460,
+        159623,
+        385080
+      ],
+      "median_ns": 175460,
+      "maximum_ns": 385080,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page-2": {
+      "observations_ns": [
+        188420,
+        183375,
+        183750
+      ],
+      "median_ns": 183750,
+      "maximum_ns": 188420,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page-3": {
+      "observations_ns": [
+        203375,
+        190083,
+        190085
+      ],
+      "median_ns": 190085,
+      "maximum_ns": 203375,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page-8": {
+      "observations_ns": [
+        157078,
+        150453,
+        144957
+      ],
+      "median_ns": 150453,
+      "maximum_ns": 157078,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page-concat-2": {
+      "observations_ns": [
+        157666,
+        155000,
+        154712
+      ],
+      "median_ns": 155000,
+      "maximum_ns": 157666,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page-concat-3": {
+      "observations_ns": [
+        148374,
+        146875,
+        147000
+      ],
+      "median_ns": 147000,
+      "maximum_ns": 148374,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page-concat-4": {
+      "observations_ns": [
+        153540,
+        152792,
+        150041
+      ],
+      "median_ns": 152792,
+      "maximum_ns": 153540,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page-concat-5": {
+      "observations_ns": [
+        80708,
+        77500,
+        166042
+      ],
+      "median_ns": 80708,
+      "maximum_ns": 166042,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page2-concat-2": {
+      "observations_ns": [
+        170958,
+        164748,
+        229663
+      ],
+      "median_ns": 170958,
+      "maximum_ns": 229663,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page2-concat-3": {
+      "observations_ns": [
+        86958,
+        76375,
+        97377
+      ],
+      "median_ns": 86958,
+      "maximum_ns": 97377,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:page3-concat-2": {
+      "observations_ns": [
+        93752,
+        92666,
+        114043
+      ],
+      "median_ns": 93752,
+      "maximum_ns": 114043,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "compact:jbotci-local": {
+      "observations_ns": [
+        136373,
+        123128,
+        127625
+      ],
+      "median_ns": 127625,
+      "maximum_ns": 136373,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "compact:jbotci-catalogue-native333": {
+      "observations_ns": [
+        139708,
+        121165,
+        145499
+      ],
+      "median_ns": 139708,
+      "maximum_ns": 145499,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "compact:la-catalogue-native333": {
+      "observations_ns": [
+        155331,
+        120292,
+        161043
+      ],
+      "median_ns": 155331,
+      "maximum_ns": 161043,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "compact:llg-component": {
+      "observations_ns": [
+        217542,
+        186460,
+        144540
+      ],
+      "median_ns": 186460,
+      "maximum_ns": 217542,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "compact:sut-native-entry": {
+      "observations_ns": [
+        135544,
+        118209,
+        115914
+      ],
+      "median_ns": 118209,
+      "maximum_ns": 135544,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "compact:unknown": {
+      "observations_ns": [
+        18125,
+        17375,
+        17499
+      ],
+      "median_ns": 17499,
+      "maximum_ns": 18125,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "compact:unresolved": {
+      "observations_ns": [
+        15207,
+        14999,
+        14708
+      ],
+      "median_ns": 14999,
+      "maximum_ns": 15207,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "compact:missing": {
+      "observations_ns": [
+        42583,
+        52875,
+        40501
+      ],
+      "median_ns": 42583,
+      "maximum_ns": 52875,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "readable:farvi-all": {
+      "observations_ns": [
+        65999,
+        63668,
+        60296
+      ],
+      "median_ns": 63668,
+      "maximum_ns": 65999,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:farvi-lsk": {
+      "observations_ns": [
+        53539,
+        46998,
+        142497
+      ],
+      "median_ns": 53539,
+      "maximum_ns": 142497,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:farvi-llg": {
+      "observations_ns": [
+        25373,
+        23500,
+        29958
+      ],
+      "median_ns": 25373,
+      "maximum_ns": 29958,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:farvi-sut": {
+      "observations_ns": [
+        29333,
+        26626,
+        34245
+      ],
+      "median_ns": 29333,
+      "maximum_ns": 34245,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:absent": {
+      "observations_ns": [
+        13709,
+        12126,
+        14627
+      ],
+      "median_ns": 13709,
+      "maximum_ns": 14627,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:excluded-sut": {
+      "observations_ns": [
+        12625,
+        11291,
+        13334
+      ],
+      "median_ns": 12625,
+      "maximum_ns": 13334,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page-0": {
+      "observations_ns": [
+        13124,
+        11624,
+        13249
+      ],
+      "median_ns": 13124,
+      "maximum_ns": 13249,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page-1": {
+      "observations_ns": [
+        102254,
+        92041,
+        101459
+      ],
+      "median_ns": 101459,
+      "maximum_ns": 102254,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page-2": {
+      "observations_ns": [
+        99707,
+        123045,
+        104003
+      ],
+      "median_ns": 104003,
+      "maximum_ns": 123045,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page-3": {
+      "observations_ns": [
+        104459,
+        106413,
+        105081
+      ],
+      "median_ns": 105081,
+      "maximum_ns": 106413,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page-8": {
+      "observations_ns": [
+        47082,
+        46045,
+        45711
+      ],
+      "median_ns": 46045,
+      "maximum_ns": 47082,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page-concat-2": {
+      "observations_ns": [
+        93250,
+        96793,
+        94835
+      ],
+      "median_ns": 94835,
+      "maximum_ns": 96793,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page-concat-3": {
+      "observations_ns": [
+        89125,
+        90705,
+        89664
+      ],
+      "median_ns": 89664,
+      "maximum_ns": 90705,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page-concat-4": {
+      "observations_ns": [
+        95751,
+        106169,
+        93585
+      ],
+      "median_ns": 95751,
+      "maximum_ns": 106169,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page-concat-5": {
+      "observations_ns": [
+        20248,
+        23959,
+        18623
+      ],
+      "median_ns": 20248,
+      "maximum_ns": 23959,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page2-concat-2": {
+      "observations_ns": [
+        100168,
+        159665,
+        100460
+      ],
+      "median_ns": 100460,
+      "maximum_ns": 159665,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page2-concat-3": {
+      "observations_ns": [
+        19500,
+        45041,
+        18334
+      ],
+      "median_ns": 19500,
+      "maximum_ns": 45041,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:page3-concat-2": {
+      "observations_ns": [
+        25501,
+        32414,
+        24835
+      ],
+      "median_ns": 25501,
+      "maximum_ns": 32414,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": false
+    },
+    "readable:jbotci-local": {
+      "observations_ns": [
+        49666,
+        41167,
+        30583
+      ],
+      "median_ns": 41167,
+      "maximum_ns": 49666,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "readable:jbotci-catalogue-native333": {
+      "observations_ns": [
+        49373,
+        49707,
+        82749
+      ],
+      "median_ns": 49707,
+      "maximum_ns": 82749,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "readable:la-catalogue-native333": {
+      "observations_ns": [
+        52457,
+        50167,
+        38207
+      ],
+      "median_ns": 50167,
+      "maximum_ns": 52457,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "readable:llg-component": {
+      "observations_ns": [
+        56498,
+        43624,
+        33458
+      ],
+      "median_ns": 43624,
+      "maximum_ns": 56498,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "readable:sut-native-entry": {
+      "observations_ns": [
+        50208,
+        49375,
+        42582
+      ],
+      "median_ns": 49375,
+      "maximum_ns": 50208,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "readable:unknown": {
+      "observations_ns": [
+        7750,
+        7416,
+        7417
+      ],
+      "median_ns": 7417,
+      "maximum_ns": 7750,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "readable:unresolved": {
+      "observations_ns": [
+        6457,
+        6208,
+        6291
+      ],
+      "median_ns": 6291,
+      "maximum_ns": 6457,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    },
+    "readable:missing": {
+      "observations_ns": [
+        22626,
+        26416,
+        14209
+      ],
+      "median_ns": 22626,
+      "maximum_ns": 26416,
+      "median_limit_ns": 50000000,
+      "maximum_limit_ns": 150000000,
+      "ok": true,
+      "reference_overlap_not_subtracted_from_warm": true
+    }
+  },
+  "failed": [],
+  "ok": true,
+  "scope": "actual 3 observations per identity/mode; priming excluded; no heterogeneous pooling, retries or detail cap"
+}

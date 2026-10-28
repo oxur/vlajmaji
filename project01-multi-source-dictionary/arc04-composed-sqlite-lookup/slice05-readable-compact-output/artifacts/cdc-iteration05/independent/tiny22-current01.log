@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-tiny-method02.py", line 16, in <module>
+    r.execute(cfg,tiny=True)
+  File "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner02.py", line 212, in execute
+    for path in [cfg['cli'],cfg['observer'],cfg['baseline'],str(GUARD),__file__,str(HERE/'numeric-analysis01.py'),str(HERE/'cli-checks01.py'),str(cfg['workload']),str(config)]:assert str(Path(path).resolve()) in closure,path
+                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: /tmp/vlajmaji-p01-a04-s05-cdc/numeric-runner02.py

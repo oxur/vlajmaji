@@ -1,0 +1,10 @@
+PASS constructed Compact Catalog UNIQUE joins: pre-input exact body/native/Resolved and profiled whole parity
+PASS pre-input native Catalog and legacy Local nativeNone; cache/uncached WHOLE metadata parity
+PASS same-key VALID metadata replacement and exact restored cache/uncached parity
+PASS SAME cache/engine current bytes and SQLkind corruption→error→exact restore; original Full fields
+PASS public Raw native phase vs late capture/registry typed errors and whole restored projection
+PASS prune/clear unchanged semantics and SAME-call Full Resolve profiled parity/equation; no performance acceptance
+PASS full standalone Exact+Local+Catalog WHOLE ordinary/profile parity
+PASS compact standalone Exact+Local+Catalog WHOLE ordinary/profile parity
+PASS full managed Exact+Local+Catalog WHOLE parity; firstSome+warmNone
+PASS compact managed Exact+Local+Catalog WHOLE parity; firstSome+warmNone
