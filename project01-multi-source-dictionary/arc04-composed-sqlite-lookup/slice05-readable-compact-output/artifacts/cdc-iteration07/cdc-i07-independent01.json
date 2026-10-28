@@ -1,0 +1,79 @@
+{
+  "head": "a72a742e7a44fe833a3db64d85988f3a0b5833ee",
+  "parent": "5bc9da710f765152b6a39cbc1506a2716aebfe60",
+  "tree": "16aa871df62608e7b3da1a35dbdf9b972f6c40c1",
+  "direct_paths": [
+    "crates/cli/tests/query_output_contract.rs"
+  ],
+  "other_unchanged_git_entries_vs_parent": 132,
+  "delta_vs_011": "exact two test files; all131 other Git entries unchanged011",
+  "cumulative_paths": 23,
+  "logs": [
+    {
+      "path": "/tmp/vlajmaji-s05-i07-fmt-check01.log",
+      "bytes": 179,
+      "sha256": "484a72f1fdebf43030b2f4ce79f41d8c807eeb3971972355b2dabe01150b07a8",
+      "rust_groups": 0,
+      "sums": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/tmp/vlajmaji-s05-i07-lint01.log",
+      "bytes": 327,
+      "sha256": "dbb3f477db4cddfd8e75b4fb764fc556052a5e8486f41108fbb86cc636692c49",
+      "rust_groups": 0,
+      "sums": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/tmp/vlajmaji-s05-i07-lint02.log",
+      "bytes": 351,
+      "sha256": "217bee9aefb2e4808d3a99893fd5912fdd73502a8cb90c1a24d26ea43f40a20b",
+      "rust_groups": 0,
+      "sums": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/tmp/vlajmaji-s05-i07-query-test01.log",
+      "bytes": 961,
+      "sha256": "037701d99bb73f3b49331158b5fd943fafa59b40676d4294a161827283efcd49",
+      "rust_groups": 1,
+      "sums": [
+        5,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/tmp/vlajmaji-s05-i07-check01.log",
+      "bytes": 46118,
+      "sha256": "3ead010f8c444f38d93a763640b4391313a0c14fbaf4011145ad3ed176c4af7d",
+      "rust_groups": 56,
+      "sums": [
+        338,
+        0,
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "scope": "CDC source/retained-output review only, no Cargo/Full/CI; all6OPEN"
+}

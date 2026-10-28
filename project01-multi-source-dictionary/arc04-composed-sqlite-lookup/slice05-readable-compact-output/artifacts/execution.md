@@ -1063,3 +1063,9 @@ After CDC acceptance and explicit one-file/index/retained-target transfer only, 
 ### CDC iteration07 intake acceptance / ONE-file handoff —2026-10-28
 
 CDC read actual complete bounded intake and accepted source-cited requestoperation/Copyargs recipe, exactsixlineONEpath scope/platformexclusion and orderedgates. Fresh sourceclean5bc9da71/tree43a889e7/S05branch, lock65cd/guard20fe/oldlocal+originS04432/originmain32e99 verified; all priorjobs terminal. AFTERthisscopedcommit+explicitdispatch retainedLuna/high exclusively owns ONLY crates/cli/tests/query_output_contract.rs, sourceindex and ONEretainedArc01target for iteration07/eighthTESTONLYpass. CDC/root source/index/target READONLY until clean terminalhandback. No newFull/productscope/automatic9/externalactionbyCC; all6OPEN; root handles authorized exactcandidatepush/currentCI.
+
+### Eighth pass actual frozen return / CDC bounded acceptance —2026-10-28
+
+CC allterminalhandback: cleana72a742e7a44fe833a3db64d85988f3a0b5833ee/parent5bc/tree16aa871df62608e7b3da1a35dbdf9b972f6c40c1, EXACTONEfileSIXlines23f93e, adjacentparsedtrailers/diffcheck0. CDCreadWHOLEdelta/raw5logs and independentlyparsed56groups338/0/1+19tools, focused5/5, fmt/lintPASS; firstprecompilelintEPERM+identicalelevatedretry preserved. Source131entriesvs011 unchanged outside2tests, cumulative23. See review-iteration07.md and artifacts/cdc-iteration07/manifest.json. Actual tool/env/status details additionally retainedCCattestation; no inventedrawoutertranscript.
+
+Source/index/ONEtarget explicitly QUIET to root for authorized exacta72 normalpush/currentCI; no CDC/CC product/target/Fulloperations during delivery. No freshfeature/package/Full replay solelytestcorrection. All6OPEN/finalhostedCI+freshNEW SolactualW1–W5+SAMEreviewercanonical+retro/bubbleup/close/PR pending. Root authorizes report-only retainedCC closingreport draft concurrently, notanotherproductpass; noautomatic9/Arc05/merge/publish.
