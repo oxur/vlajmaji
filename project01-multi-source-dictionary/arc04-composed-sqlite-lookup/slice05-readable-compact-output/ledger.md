@@ -1,5 +1,7 @@
 # S05 ledger — Readable and compact output
 
+**Current:** actuala72CI407899 FAILURE after Check/MacSUCCESS and Linuxoutput8/8; projection15/3spawnE2BIG. Human ninthTESTONLYSQLstdinproposalPENDING; source/targetQUIET/freshreviewBLOCKED. SIX bindingstatuses OPEN; timingexception/fullcompletion remain exactscope below.
+
 ## Operator disposition: current timings accepted
 
 Duncan explicitly states, "I'm accepting the current timings as-is". For current

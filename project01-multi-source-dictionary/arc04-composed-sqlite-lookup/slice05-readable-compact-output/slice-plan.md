@@ -2,10 +2,10 @@
 
 | Field | Value |
 | --- | --- |
-| Status / version | Iteration07 eighth TEST-ONLY frozena72/localPASS; CDC boundedacceptance/currentCI+freshARC pending /1.28 /2026-10-28. PriorCI/Full failures preserved; all6OPEN. |
+| Status / version | Actuala72CI40789937233 FAILURE after Check/MacSUCCESS+Linuxoutput8/8; projection15/3setupE2BIG. HumanNINTHtest-onlytransport amendmentPENDING, freshARC/closeBLOCKED /1.29 /2026-10-28. All6OPEN. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
 | Source / dependency | CURRENT cleana72a742e7a44fe833a3db64d85988f3a0b5833ee/tree16aa871d/parent5bc/S05branch/base32e99. ONE-file directdelta, cumulative23; all131entriesoutside2tests byte-identical011. OldS04refs432 unchanged. |
-| Ownership | Root owns QUIET source/index/ONEtarget for authorized exacta72normalpush/currentCI. CDC/CC readonly there; CDC planning, retainedCC report-only closingdraft on assigned reportpath. Allgates terminal. |
+| Ownership | Source/index/ONEtarget QUIET; no edits/Cargo/runtime/Full/freshreview. Root preparesONEfileSQLstdin portabilityproposal, humanninthPENDING; CDC/CC report/evidenceonly. |
 | Delivery | Additive compact Exact/Resolve and complete occurrence detail, then source-grouped readable Exact/Resolve/detail. Full default JSON stays compatible. Public libraries, CLI, documentation and actual five-workflow composition accompany output, not verification alone. |
 | Sizing | Six completed author passes plus ONE explicitly human-approved seventh TEST-ONLY pass (iteration06), exactly two paths. No automatic eighth, Full replay or optimisation. |
 | Limits | No dependency/lock/schema/importer/model/workflow changes, topology redo, new Full store/generation, cleanup/cache reset, actual-default access, S04 branch writes, A05 activation, network/push/PR/merge/publication. Later finite retained-G4 trial needs exact executable root readiness. |

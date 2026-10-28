@@ -1,0 +1,17 @@
+{
+  "status": "PROPOSED_ONLY_REQUIRES_HUMAN_NINTH_TEST_ONLY_PASS",
+  "source": "a72a742e7a44fe833a3db64d85988f3a0b5833ee",
+  "ci_run": 40789937233,
+  "file": "crates/search/tests/dictionary_projection_contract.rs",
+  "before_sha256": "1a9a5c0764346a8ec7892f2e8d76fe303d4c400991ce9341a6fcc9bdc0f3d201",
+  "proposed_after_sha256": "9ffc49edd5d7556a94a5580782839bf125d37a07e2f773bf3c420c5a295f4f08",
+  "patch_sha256": "5147563d6f62abda9c7cf57e4ef3d51b4a14ffc3b304a87fc97c53ba3b100185",
+  "private_helper": "file-backed sqlite3 stdin; only DB path is argv; exclusive create_new SQL file outside store within owned test scratch via parent().parent(); same established dictionary_contract.rs67\u2013105 pattern",
+  "all_6_sql_literal_tokens_unchanged": true,
+  "all_6_call_builders_converted": true,
+  "assertions_and_fixtures": "unchanged SQL+BLOB+SHA+SELECTchanges; no reduced fixture or skipped test; all original caller success/stdout/stderr assertions stay",
+  "format": "source-only stdin rustfmt1.98/edition2024 exit0, no repository edit/Cargo/build/test/Full access",
+  "scope_audit": "rg all sqlite3Command sites across crates; only this file carries3fullcanonicalSQLargv sites; remaining3samefile small sites converted to one transport; other dictionary_contract alreadyfilebacked, other crate query mutations are short SQL",
+  "validation": "one ninth test-only pass:format\u2192lint\u2192full affected projection18test suite\u2192makecheck, then exactnormalpush+Linux/Mac/featureCI; no newFull campaign",
+  "authority": "Await human; noautomatictenth"
+}

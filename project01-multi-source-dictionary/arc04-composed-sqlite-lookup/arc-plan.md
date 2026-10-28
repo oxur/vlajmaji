@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/fivearcDONEfiveOPEN. S05 replacement Full FAILED WholeResolve1.206865292s>750ms after12freshPASS. Sixth pass/additional campaign exhausted; STOP preservation only/all6OPEN/currentLinux/freshARC/close pending. |
-| version / date | 1.32 /2026-10-28 UTC |
+| status | ACTIVE; S01–S04 CLOSED/fivearcDONEfiveOPEN. S05 production011 correctness/output/resources complete with explicit timingexception; candidatea72currentCIblockedprojectiontestSQLargvE2BIG. Humanninthtest-onlyproposalPENDING/freshARC+canonical close stillrequired. |
+| version / date | 1.33 /2026-10-28 |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | Same isolated S05 branch clean011/treea8c/parent1b/base32e99, exact6 correction delta/cumulative22 approved. CDC owns QUIET source/index/target for failure preservation/existing-output+frozen-source review only. Replacement Full failure exhausted sixth pass/sole additional campaign; no automatic7/retry/push or new FullDB/config access. Old S04local/origin432/primarymain52fd protected. |
+| integration destination | Same isolatedS05branch cleana72/tree16aa/parent5bc/base32e99, cumulative23. Production011 unchanged through2test-onlydescendants. CurrentCI407899 failure preserved; source/index/targetQUIET/noautomatic9or10/Fullreplay. OldS04refs432/primarymain52fd protected. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority

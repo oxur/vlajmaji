@@ -1,5 +1,8 @@
 # Arc04 ledger
 
+**Current proposed close checkpoint, 2026-10-28:** S01–S04/24childDONE/fivearcDONE; S05candidatea72 source011productionequivalent outside2tests, actualCI407899failure at projectionSQLargvsetup after Linuxoutput8/8. Human ninthONEtestfileproposalPENDING; freshW1–W5/canonical/closeBLOCKED. All6S05/fivearc/all14projectOPEN; no Arc05. Previous opening checkpoint below historical.
+
+
 Arc04 active, 2026-10-27 UTC. S01–S04 CLOSED/24childDONE; A04-01/02/03/04/05 DONE, fiveotherarc/all14project OPEN. Requested S04PR5 OPEN/current432/PR CI40518812275 terminal SUCCESS. Root created separate S05branch at432; CDC owns quiet readiness. S05 INITIAL issued after root final concrete readiness PASS; sixOPEN, exact CC intake/explicit transfer pending; no source edit/trial/Full/future delivery authority.
 
 | ID | Criterion | Verify at execution | Owner / workflow | Status | Evidence / notes |

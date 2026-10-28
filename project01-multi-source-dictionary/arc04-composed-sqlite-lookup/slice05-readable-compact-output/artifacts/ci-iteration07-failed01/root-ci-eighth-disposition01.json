@@ -1,0 +1,71 @@
+{
+  "source": "a72a742e7a44fe833a3db64d85988f3a0b5833ee",
+  "run": 40789937233,
+  "url": "https://github.com/oxur/vlajmaji/actions/runs/40789937233",
+  "push_session70484_exit": 0,
+  "watch_session20985_exit": 1,
+  "jobs": [
+    [
+      "Test (macos-latest)",
+      "success"
+    ],
+    [
+      "Check",
+      "success"
+    ],
+    [
+      "Test (ubuntu-latest)",
+      "failure"
+    ]
+  ],
+  "default_populations": {
+    "Test (macos-latest)": {
+      "groups": 56,
+      "sums": [
+        338,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    "Test (ubuntu-latest)": {
+      "groups": 34,
+      "sums": [
+        215,
+        3,
+        1,
+        0,
+        0
+      ]
+    }
+  },
+  "linux_output_suite": "all8passed incl corrected managed/devfull test",
+  "linux_failed_suite": "dictionary_projection_contract15passed/3failed E2BIG before sqlite3launch",
+  "linux_no_default_and_all_features": "skipped after defaultfailure",
+  "diagnosis": "Observed failures are sqlite3 process-spawn E2BIG before the mutation/product assertions; later assertions remain unexecuted on Linux, not a product correctness verdict. Giant SQLargv contains wholecanonical hexBLOB. Source-only audit covers all6samefilemutationcalls; established file-backed stdin pattern in dictionary_contract.rs. All6SQLprograms/fixtures/assertions preserved in proposal.",
+  "proposal_patch_sha256": "5147563d6f62abda9c7cf57e4ef3d51b4a14ffc3b304a87fc97c53ba3b100185",
+  "raw_files": [
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-eighth-terminal01.json",
+      "bytes": 9300,
+      "sha256": "441a434021b8e2c06b3ba31a2420b032fe217b8c5e0e37fea798369d543135c2"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-eighth-all01.log",
+      "bytes": 400997,
+      "sha256": "5b63433e7485f08c9416cf2b2d76941d73b224d17f7eca6af61d27763057ff30"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-eighth-failed01.log",
+      "bytes": 78907,
+      "sha256": "05a4de258b02908eda2de0870d5025f3fed514fe9ce1cd670f784168e5bd69c0"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-eighth-watch01.log",
+      "bytes": 13178,
+      "sha256": "97b87bcaa92ce2ba2b315be193636ede5c4eef5fe6028a8053c7ff0079d0fab6"
+    }
+  ],
+  "authority": "human ninthtest-onlypass questionPENDING; no automatictenth, sourcea72/targetquiet"
+}

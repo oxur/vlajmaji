@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "status": "ACTUAL_CI_FAILURE_PRESERVED_NINTH_AUTHORITY_PENDING",
+  "source": "a72a742e7a44fe833a3db64d85988f3a0b5833ee",
+  "payloads": [
+    {
+      "path": "ci-eighth-all01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-eighth-all01.log",
+      "bytes": 400997,
+      "sha256": "5b63433e7485f08c9416cf2b2d76941d73b224d17f7eca6af61d27763057ff30"
+    },
+    {
+      "path": "ci-eighth-failed01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-eighth-failed01.log",
+      "bytes": 78907,
+      "sha256": "05a4de258b02908eda2de0870d5025f3fed514fe9ce1cd670f784168e5bd69c0"
+    },
+    {
+      "path": "ci-eighth-terminal01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-eighth-terminal01.json",
+      "bytes": 9300,
+      "sha256": "441a434021b8e2c06b3ba31a2420b032fe217b8c5e0e37fea798369d543135c2"
+    },
+    {
+      "path": "ci-eighth-watch01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-eighth-watch01.log",
+      "bytes": 13178,
+      "sha256": "97b87bcaa92ce2ba2b315be193636ede5c4eef5fe6028a8053c7ff0079d0fab6"
+    },
+    {
+      "path": "root-ci-eighth-disposition01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-ci-eighth-disposition01.json",
+      "bytes": 2320,
+      "sha256": "e9ccf83b7cc5826050899d211a8f42ce64dc56906fc251e47707f7db3f6afcad"
+    },
+    {
+      "path": "root-i07-prepush01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-i07-prepush01.json",
+      "bytes": 582,
+      "sha256": "98e3ec5022c047e580e57e587429405d737d8ffe667ce49948120c9a6f100622"
+    },
+    {
+      "path": "ci-sqlite-stdin-proposal03.patch",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-sqlite-stdin-proposal03.patch",
+      "bytes": 5856,
+      "sha256": "5147563d6f62abda9c7cf57e4ef3d51b4a14ffc3b304a87fc97c53ba3b100185"
+    },
+    {
+      "path": "ci-sqlite-stdin-proposal03.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-sqlite-stdin-proposal03.json",
+      "bytes": 1560,
+      "sha256": "a760a0839d5c40a3886fbb6b6640f9b783abaaf97c8311ea15a7ac63b2477a9f"
+    },
+    {
+      "path": "ci-sqlite-stdin-proposal03-candidate.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-sqlite-stdin-proposal03-candidate.rs",
+      "bytes": 112736,
+      "sha256": "9ffc49edd5d7556a94a5580782839bf125d37a07e2f773bf3c420c5a295f4f08"
+    }
+  ],
+  "payload_count": 9,
+  "payload_bytes": 625436,
+  "classification": "whole saved original copies; raw logs distinct from root-authored review/attestation/proposal"
+}
