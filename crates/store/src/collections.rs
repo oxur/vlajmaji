@@ -5,6 +5,7 @@
 
 use std::{
     borrow::Cow,
+    collections::BTreeSet,
     error::Error,
     fmt, fs, io,
     path::{Path, PathBuf},
@@ -1101,6 +1102,141 @@ pub struct CollectionReferenceMetadata {
     pub category_counts: CollectionCategoryCounts,
 }
 
+const REFERENCE_METADATA_CACHE_MAX_ENTRIES: usize = 128;
+const REFERENCE_METADATA_CACHE_MAX_WEIGHT: usize = 536_870_912;
+
+struct CachedReferenceMetadata {
+    fingerprint: [u8; 32],
+    weight: usize,
+    metadata: CollectionReferenceMetadata,
+}
+
+/// Bounded parsed metadata reused only for one native catalogue root.
+///
+/// The byte limit is a serialized-descriptor weight, not an allocation or RSS bound.
+#[derive(Default)]
+pub struct CollectionReferenceMetadataCache {
+    root: Option<PathBuf>,
+    entries: BTreeMap<(PackId, String), CachedReferenceMetadata>,
+    serialized_weight: usize,
+    #[cfg(test)]
+    max_entries: usize,
+    #[cfg(test)]
+    max_weight: usize,
+    #[cfg(test)]
+    stats: ReferenceMetadataCacheStats,
+}
+
+#[cfg(test)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+struct ReferenceMetadataCacheStats {
+    sql_reads: usize,
+    fingerprints: usize,
+    decodes: usize,
+    hits: usize,
+}
+
+impl CollectionReferenceMetadataCache {
+    /// Drops cached descriptors while preserving this cache's native-root binding.
+    pub fn clear(&mut self) {
+        self.entries.clear();
+        self.serialized_weight = 0;
+    }
+
+    /// Retains entries whose exact pack/release keys are present in a current listing.
+    ///
+    /// This performs no descriptor decoding or payload access.
+    pub fn retain_registered(
+        &mut self,
+        catalogue: &CollectionCatalogue,
+        registered: &[(PackId, String)],
+    ) -> Result<(), CollectionError> {
+        self.bind_root(&catalogue.root)?;
+        let registered: BTreeSet<_> = registered.iter().cloned().collect();
+        let mut retained_weight = 0usize;
+        self.entries.retain(|key, value| {
+            if registered.contains(key) {
+                retained_weight = retained_weight.saturating_add(value.weight);
+                true
+            } else {
+                false
+            }
+        });
+        self.serialized_weight = retained_weight;
+        Ok(())
+    }
+
+    fn bind_root(&mut self, root: &Path) -> Result<(), CollectionError> {
+        match &self.root {
+            Some(bound) if bound != root => Err(CollectionError::InvalidRequest(
+                "reference metadata cache is bound to a different catalogue root".into(),
+            )),
+            Some(_) => Ok(()),
+            None => {
+                self.root = Some(root.to_path_buf());
+                Ok(())
+            }
+        }
+    }
+
+    fn max_entries(&self) -> usize {
+        #[cfg(test)]
+        {
+            if self.max_entries != 0 {
+                return self.max_entries;
+            }
+        }
+        REFERENCE_METADATA_CACHE_MAX_ENTRIES
+    }
+
+    fn max_weight(&self) -> usize {
+        #[cfg(test)]
+        {
+            if self.max_weight != 0 {
+                return self.max_weight;
+            }
+        }
+        REFERENCE_METADATA_CACHE_MAX_WEIGHT
+    }
+
+    fn remove(&mut self, key: &(PackId, String)) {
+        if let Some(old) = self.entries.remove(key) {
+            self.serialized_weight = self.serialized_weight.saturating_sub(old.weight);
+        }
+    }
+}
+
+fn decode_reference_metadata(
+    pack: PackId,
+    release_sha256: &str,
+    payload_kind: &str,
+    bytes: &[u8],
+) -> Result<CollectionReferenceMetadata, CollectionError> {
+    let metadata: CollectionReferenceMetadata = serde_json::from_slice(bytes).map_err(|error| {
+        CollectionError::UnsupportedVersion(format!("reference descriptor is malformed: {error}"))
+    })?;
+    validate_reference_metadata_header(&metadata, pack, release_sha256, payload_kind)?;
+    Ok(metadata)
+}
+
+fn validate_reference_metadata_header(
+    metadata: &CollectionReferenceMetadata,
+    pack: PackId,
+    release_sha256: &str,
+    payload_kind: &str,
+) -> Result<(), CollectionError> {
+    if metadata.version != 1
+        || metadata.pack_id != pack.as_str()
+        || metadata.release_sha256 != release_sha256
+        || metadata.payload_kind != payload_kind
+    {
+        return Err(CollectionError::UnsupportedVersion(
+            "reference descriptor identity does not match its catalogue key".into(),
+        ));
+    }
+    Ok(())
+}
+
 /// Source-level catalogue rows retained without lexical body payloads.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct CollectionSourceMetadata {
@@ -1575,29 +1711,117 @@ impl CollectionCatalogue {
         pack: PackId,
         release_sha256: &str,
     ) -> Result<CollectionReferenceMetadata, CollectionError> {
-        let tables = crate::collections_schema::tables_for(&self.connection, &self.root)?;
-        let (payload_kind, bytes): (String, Vec<u8>) = self.connection.query_row(
-            &format!("SELECT payload_kind,descriptor_json FROM {} WHERE pack_id=?1 AND release_sha256=?2", tables.registrations),
-            params![pack.as_str(), release_sha256],
-            |row| Ok((row.get(0)?, row.get(1)?)),
-        ).optional().map_err(|error| db_error(&self.root, error))?
-          .ok_or_else(|| CollectionError::InvalidRequest(format!("no registered {} release {release_sha256}", pack.as_str())))?;
-        let descriptor: CollectionReferenceMetadata =
-            serde_json::from_slice(&bytes).map_err(|error| {
-                CollectionError::UnsupportedVersion(format!(
-                    "reference descriptor is malformed: {error}"
-                ))
-            })?;
-        if descriptor.version != 1
-            || descriptor.pack_id != pack.as_str()
-            || descriptor.release_sha256 != release_sha256
-            || descriptor.payload_kind != payload_kind
+        let (payload_kind, bytes) = self.reference_metadata_row(pack, release_sha256)?;
+        decode_reference_metadata(pack, release_sha256, &payload_kind, &bytes)
+    }
+
+    /// Returns current retained metadata while reusing a validated parse for this catalogue.
+    ///
+    /// The current registration row and exact descriptor bytes are read on every call.
+    ///
+    /// # Errors
+    /// Returns the same typed errors as [`Self::reference_metadata`], or an invalid
+    /// request when the cache is bound to another native catalogue root.
+    pub fn reference_metadata_reusing<'cache>(
+        &self,
+        pack: PackId,
+        release_sha256: &str,
+        cache: &'cache mut CollectionReferenceMetadataCache,
+    ) -> Result<Cow<'cache, CollectionReferenceMetadata>, CollectionError> {
+        cache.bind_root(&self.root)?;
+        #[cfg(test)]
         {
-            return Err(CollectionError::UnsupportedVersion(
-                "reference descriptor identity does not match its catalogue key".into(),
+            cache.stats.sql_reads += 1;
+        }
+        let (payload_kind, bytes) = self.reference_metadata_row(pack, release_sha256)?;
+        let fingerprint: [u8; 32] = Sha256::digest(&bytes).into();
+        #[cfg(test)]
+        {
+            cache.stats.fingerprints += 1;
+        }
+        let key = (pack, release_sha256.to_owned());
+
+        if cache
+            .entries
+            .get(&key)
+            .is_some_and(|entry| entry.fingerprint == fingerprint)
+        {
+            let validation = {
+                let entry = cache.entries.get(&key).expect("cache key was checked");
+                validate_reference_metadata_header(&entry.metadata, key.0, &key.1, &payload_kind)
+            };
+            if let Err(error) = validation {
+                cache.remove(&key);
+                return Err(error);
+            }
+            #[cfg(test)]
+            {
+                cache.stats.hits += 1;
+            }
+            return Ok(Cow::Borrowed(
+                &cache
+                    .entries
+                    .get(&key)
+                    .expect("validated entry remains")
+                    .metadata,
             ));
         }
-        Ok(descriptor)
+
+        // A changed row must invalidate its old parsed value before decode, so a
+        // malformed replacement can never fall back to stale successful data.
+        cache.remove(&key);
+        #[cfg(test)]
+        {
+            cache.stats.decodes += 1;
+        }
+        let metadata = decode_reference_metadata(pack, release_sha256, &payload_kind, &bytes)?;
+        let weight = bytes.len();
+        let next_weight = cache.serialized_weight.checked_add(weight);
+        let within_weight = next_weight.is_some_and(|next| next <= cache.max_weight());
+        if cache.entries.len() < cache.max_entries() && within_weight {
+            cache.serialized_weight = next_weight.expect("weight was checked");
+            cache.entries.insert(
+                key.clone(),
+                CachedReferenceMetadata {
+                    fingerprint,
+                    weight,
+                    metadata,
+                },
+            );
+            return Ok(Cow::Borrowed(
+                &cache
+                    .entries
+                    .get(&key)
+                    .expect("entry was inserted")
+                    .metadata,
+            ));
+        }
+        Ok(Cow::Owned(metadata))
+    }
+
+    fn reference_metadata_row(
+        &self,
+        pack: PackId,
+        release_sha256: &str,
+    ) -> Result<(String, Vec<u8>), CollectionError> {
+        let tables = crate::collections_schema::tables_for(&self.connection, &self.root)?;
+        self.connection
+            .query_row(
+                &format!(
+                    "SELECT payload_kind,descriptor_json FROM {} WHERE pack_id=?1 AND release_sha256=?2",
+                    tables.registrations
+                ),
+                params![pack.as_str(), release_sha256],
+                |row| Ok((row.get(0)?, row.get(1)?)),
+            )
+            .optional()
+            .map_err(|error| db_error(&self.root, error))?
+            .ok_or_else(|| {
+                CollectionError::InvalidRequest(format!(
+                    "no registered {} release {release_sha256}",
+                    pack.as_str()
+                ))
+            })
     }
 
     /// Registers selected source metadata without copying release payloads.
@@ -3725,6 +3949,17 @@ thread_local! {
 mod manifest_tests {
     use super::*;
 
+    fn temporary_catalogue_root(label: &str) -> PathBuf {
+        std::env::temp_dir().join(format!(
+            "vlajmaji-{label}-{}-{}",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ))
+    }
+
     #[test]
     fn test_allocate_stage_retries_occupied_candidate_without_overwriting_it() {
         let unique = format!(
@@ -3761,6 +3996,525 @@ mod manifest_tests {
             fs::read(occupied.join("sentinel")).unwrap(),
             b"keep exactly"
         );
+        let _ = fs::remove_dir_all(root);
+    }
+
+    #[test]
+    fn test_reference_metadata_cache_revalidates_current_kind_and_bytes() {
+        let root = temporary_catalogue_root("reference-cache");
+        let dictionary = Dictionary::from_document(Default::default()).unwrap();
+        let sealed_llg =
+            seal_release(PackId::Llg, PackPayloadKind::Synthetic, &dictionary).unwrap();
+        let sealed_la =
+            seal_release(PackId::LaLojban, PackPayloadKind::Synthetic, &dictionary).unwrap();
+        let request = CollectionRequest::new(
+            vec![
+                CollectionInput::SealedBytes {
+                    pack_id: PackId::Llg,
+                    release: Cow::Borrowed(&sealed_llg.release),
+                    seal: Cow::Borrowed(&sealed_llg.seal),
+                },
+                CollectionInput::SealedBytes {
+                    pack_id: PackId::LaLojban,
+                    release: Cow::Borrowed(&sealed_la.release),
+                    seal: Cow::Borrowed(&sealed_la.seal),
+                },
+            ],
+            CollectionSelection::Packs(vec![PackId::Llg, PackId::LaLojban]),
+            true,
+        )
+        .unwrap();
+        CollectionCatalogue::register(&root, request).unwrap();
+
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let list = catalogue.list().unwrap();
+        let registration = list
+            .packs
+            .iter()
+            .find(|pack| pack.pack_id == PackId::Llg.as_str())
+            .unwrap()
+            .registrations
+            .first()
+            .unwrap()
+            .clone();
+        let la_registration = list
+            .packs
+            .iter()
+            .find(|pack| pack.pack_id == PackId::LaLojban.as_str())
+            .unwrap()
+            .registrations
+            .first()
+            .unwrap()
+            .clone();
+        let tables = crate::collections_schema::tables_for(&catalogue.connection, &root).unwrap();
+        let original_bytes: Vec<u8> = catalogue
+            .connection
+            .query_row(
+                &format!(
+                    "SELECT descriptor_json FROM {} WHERE pack_id=?1 AND release_sha256=?2",
+                    tables.registrations
+                ),
+                params![PackId::Llg.as_str(), registration.release_sha256],
+                |row| row.get(0),
+            )
+            .unwrap();
+        let db_path = crate::collections_schema::database_path(&root);
+        drop(catalogue);
+
+        let mut cache = CollectionReferenceMetadataCache {
+            max_entries: 1,
+            max_weight: 1024 * 1024,
+            ..CollectionReferenceMetadataCache::default()
+        };
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let uncached_first = catalogue
+            .reference_metadata(PackId::Llg, &registration.release_sha256)
+            .unwrap();
+        let first = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap();
+        assert!(matches!(first, Cow::Borrowed(_)));
+        assert_eq!(first.as_ref(), &uncached_first);
+        drop(first);
+        let second = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap();
+        assert!(matches!(second, Cow::Borrowed(_)));
+        drop(second);
+        assert_eq!(
+            cache.stats,
+            ReferenceMetadataCacheStats {
+                sql_reads: 2,
+                fingerprints: 2,
+                decodes: 1,
+                hits: 1,
+            }
+        );
+        assert_eq!(cache.serialized_weight, original_bytes.len());
+        drop(catalogue);
+
+        // A valid same-key byte change must replace the cached parse, and
+        // restoring the original bytes must decode again rather than retain
+        // either earlier value.
+        let original_revision =
+            serde_json::from_slice::<CollectionReferenceMetadata>(&original_bytes)
+                .unwrap()
+                .upstream_catalogue_revision;
+        let mut changed_metadata =
+            serde_json::from_slice::<serde_json::Value>(&original_bytes).unwrap();
+        changed_metadata["upstream_catalogue_revision"] = serde_json::json!(original_revision + 1);
+        let changed_bytes = serde_json::to_vec(&changed_metadata).unwrap();
+        let writer = Connection::open(&db_path).unwrap();
+        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
+        writer
+            .execute(
+                &format!(
+                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
+                    tables.registrations
+                ),
+                params![
+                    changed_bytes,
+                    PackId::Llg.as_str(),
+                    registration.release_sha256
+                ],
+            )
+            .unwrap();
+        drop(writer);
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let changed = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap();
+        assert!(matches!(changed, Cow::Borrowed(_)));
+        assert_eq!(changed.upstream_catalogue_revision, original_revision + 1);
+        assert_eq!(cache.stats.decodes, 2);
+        drop(catalogue);
+
+        let writer = Connection::open(&db_path).unwrap();
+        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
+        writer
+            .execute(
+                &format!(
+                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
+                    tables.registrations
+                ),
+                params![
+                    original_bytes.as_slice(),
+                    PackId::Llg.as_str(),
+                    registration.release_sha256
+                ],
+            )
+            .unwrap();
+        drop(writer);
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let restored_bytes = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap();
+        assert!(matches!(restored_bytes, Cow::Borrowed(_)));
+        assert_eq!(cache.stats.decodes, 3);
+
+        let over_entry_limit = catalogue
+            .reference_metadata_reusing(
+                PackId::LaLojban,
+                &la_registration.release_sha256,
+                &mut cache,
+            )
+            .unwrap();
+        assert!(matches!(over_entry_limit, Cow::Owned(_)));
+        let uncached_over_entry_limit = catalogue
+            .reference_metadata(PackId::LaLojban, &la_registration.release_sha256)
+            .unwrap();
+        assert_eq!(uncached_over_entry_limit.pack_id, PackId::LaLojban.as_str());
+        assert_eq!(over_entry_limit.as_ref(), &uncached_over_entry_limit);
+        drop(over_entry_limit);
+        assert_eq!(cache.entries.len(), 1);
+        assert_eq!(cache.serialized_weight, original_bytes.len());
+        drop(catalogue);
+
+        let writer = Connection::open(&db_path).unwrap();
+        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
+        writer
+            .execute(
+                &format!(
+                    "UPDATE {} SET payload_kind='changed-kind' WHERE pack_id=?1 AND release_sha256=?2",
+                    tables.registrations
+                ),
+                params![PackId::Llg.as_str(), registration.release_sha256],
+            )
+            .unwrap();
+        drop(writer);
+
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let kind_error = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap_err();
+        assert!(matches!(kind_error, CollectionError::UnsupportedVersion(_)));
+        let uncached_kind_error = catalogue
+            .reference_metadata(PackId::Llg, &registration.release_sha256)
+            .unwrap_err();
+        assert!(matches!(
+            uncached_kind_error,
+            CollectionError::UnsupportedVersion(_)
+        ));
+        assert!(cache.entries.is_empty());
+        drop(catalogue);
+
+        let writer = Connection::open(&db_path).unwrap();
+        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
+        writer
+            .execute(
+                &format!(
+                    "UPDATE {} SET payload_kind='synthetic' WHERE pack_id=?1 AND release_sha256=?2",
+                    tables.registrations
+                ),
+                params![PackId::Llg.as_str(), registration.release_sha256],
+            )
+            .unwrap();
+        drop(writer);
+
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let restored_kind = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap();
+        let uncached_restored_kind = catalogue
+            .reference_metadata(PackId::Llg, &registration.release_sha256)
+            .unwrap();
+        assert!(matches!(restored_kind, Cow::Borrowed(_)));
+        assert_eq!(restored_kind.as_ref(), &uncached_restored_kind);
+        assert_eq!(cache.stats.decodes, 5);
+        drop(catalogue);
+
+        let writer = Connection::open(&db_path).unwrap();
+        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
+        writer
+            .execute(
+                &format!(
+                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
+                    tables.registrations
+                ),
+                params![
+                    b"\0".as_slice(),
+                    PackId::Llg.as_str(),
+                    registration.release_sha256
+                ],
+            )
+            .unwrap();
+        drop(writer);
+
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let bytes_error = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap_err();
+        assert!(matches!(
+            bytes_error,
+            CollectionError::UnsupportedVersion(_)
+        ));
+        let uncached_bytes_error = catalogue
+            .reference_metadata(PackId::Llg, &registration.release_sha256)
+            .unwrap_err();
+        assert!(matches!(
+            uncached_bytes_error,
+            CollectionError::UnsupportedVersion(_)
+        ));
+        assert_eq!(cache.stats.decodes, 6);
+        assert!(cache.entries.is_empty());
+        drop(catalogue);
+
+        let writer = Connection::open(&db_path).unwrap();
+        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
+        writer
+            .execute(
+                &format!(
+                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
+                    tables.registrations
+                ),
+                params![
+                    original_bytes.as_slice(),
+                    PackId::Llg.as_str(),
+                    registration.release_sha256
+                ],
+            )
+            .unwrap();
+        drop(writer);
+
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let restored = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap();
+        assert!(matches!(restored, Cow::Borrowed(_)));
+        assert_eq!(cache.stats.decodes, 7);
+        assert_eq!(cache.stats.hits, 1);
+        assert_eq!(cache.entries.len(), 1);
+        assert!(matches!(
+            cache.bind_root(&root.join("other-root")),
+            Err(CollectionError::InvalidRequest(_))
+        ));
+        let other_root = temporary_catalogue_root("reference-cache-wrong-root");
+        let other_request = CollectionRequest::new(
+            vec![CollectionInput::SealedBytes {
+                pack_id: PackId::Llg,
+                release: Cow::Borrowed(&sealed_llg.release),
+                seal: Cow::Borrowed(&sealed_llg.seal),
+            }],
+            CollectionSelection::Packs(vec![PackId::Llg]),
+            true,
+        )
+        .unwrap();
+        CollectionCatalogue::register(&other_root, other_request).unwrap();
+        let other_catalogue = CollectionCatalogue::open(&other_root).unwrap();
+        let prior_stats = cache.stats;
+        let wrong_root = other_catalogue
+            .reference_metadata_reusing(PackId::Sutysisku, "missing-release", &mut cache)
+            .unwrap_err();
+        assert!(
+            matches!(wrong_root, CollectionError::InvalidRequest(ref detail)
+            if detail == "reference metadata cache is bound to a different catalogue root")
+        );
+        assert_eq!(
+            cache.stats, prior_stats,
+            "root binding fails before any row read"
+        );
+        drop(other_catalogue);
+        let _ = fs::remove_dir_all(other_root);
+        cache
+            .retain_registered(
+                &catalogue,
+                &[(PackId::LaLojban, la_registration.release_sha256.clone())],
+            )
+            .unwrap();
+        assert!(cache.entries.is_empty());
+        assert_eq!(cache.serialized_weight, 0);
+        let after_prune = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap();
+        assert!(matches!(after_prune, Cow::Borrowed(_)));
+        assert_eq!(cache.stats.decodes, 8);
+        assert_eq!(cache.entries.len(), 1);
+        assert_eq!(cache.serialized_weight, original_bytes.len());
+        cache.clear();
+        assert!(cache.entries.is_empty());
+        assert_eq!(cache.serialized_weight, 0);
+        assert_eq!(cache.root.as_deref(), Some(root.as_path()));
+        let after_clear = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap();
+        assert!(matches!(after_clear, Cow::Borrowed(_)));
+        assert_eq!(cache.stats.decodes, 9);
+        assert_eq!(cache.entries.len(), 1);
+        assert_eq!(cache.serialized_weight, original_bytes.len());
+        assert_eq!(cache.root.as_deref(), Some(root.as_path()));
+        drop(catalogue);
+
+        let mut changed_header =
+            serde_json::from_slice::<serde_json::Value>(&original_bytes).unwrap();
+        changed_header["release_sha256"] = serde_json::json!("0".repeat(64));
+        let changed_header_bytes = serde_json::to_vec(&changed_header).unwrap();
+        let writer = Connection::open(&db_path).unwrap();
+        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
+        writer
+            .execute(
+                &format!(
+                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
+                    tables.registrations
+                ),
+                params![
+                    changed_header_bytes,
+                    PackId::Llg.as_str(),
+                    registration.release_sha256
+                ],
+            )
+            .unwrap();
+        drop(writer);
+
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let cached_header_error = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap_err();
+        let uncached_header_error = catalogue
+            .reference_metadata(PackId::Llg, &registration.release_sha256)
+            .unwrap_err();
+        assert!(matches!(
+            &cached_header_error,
+            CollectionError::UnsupportedVersion(_)
+        ));
+        assert_eq!(
+            format!("{cached_header_error:?}"),
+            format!("{uncached_header_error:?}")
+        );
+        assert_eq!(cache.stats.decodes, 10);
+        drop(catalogue);
+
+        let writer = Connection::open(&db_path).unwrap();
+        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
+        writer
+            .execute(
+                &format!(
+                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
+                    tables.registrations
+                ),
+                params![
+                    original_bytes.as_slice(),
+                    PackId::Llg.as_str(),
+                    registration.release_sha256
+                ],
+            )
+            .unwrap();
+        drop(writer);
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let restored_header = catalogue
+            .reference_metadata_reusing(PackId::Llg, &registration.release_sha256, &mut cache)
+            .unwrap();
+        assert!(matches!(restored_header, Cow::Borrowed(_)));
+        assert_eq!(cache.stats.decodes, 11);
+        assert_eq!(cache.serialized_weight, original_bytes.len());
+        drop(catalogue);
+
+        let mut oversized_cache = CollectionReferenceMetadataCache {
+            max_weight: 1,
+            ..CollectionReferenceMetadataCache::default()
+        };
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let oversized = catalogue
+            .reference_metadata_reusing(
+                PackId::Llg,
+                &registration.release_sha256,
+                &mut oversized_cache,
+            )
+            .unwrap();
+        assert!(matches!(oversized, Cow::Owned(_)));
+        let uncached_oversized = catalogue
+            .reference_metadata(PackId::Llg, &registration.release_sha256)
+            .unwrap();
+        assert_eq!(oversized.as_ref(), &uncached_oversized);
+        drop(oversized);
+        assert!(oversized_cache.entries.is_empty());
+        assert_eq!(oversized_cache.serialized_weight, 0);
+        drop(catalogue);
+
+        let mut replacement_cache = CollectionReferenceMetadataCache {
+            max_weight: original_bytes.len(),
+            ..CollectionReferenceMetadataCache::default()
+        };
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let initial = catalogue
+            .reference_metadata_reusing(
+                PackId::Llg,
+                &registration.release_sha256,
+                &mut replacement_cache,
+            )
+            .unwrap();
+        assert!(matches!(initial, Cow::Borrowed(_)));
+        drop(initial);
+        assert_eq!(replacement_cache.entries.len(), 1);
+        assert_eq!(replacement_cache.serialized_weight, original_bytes.len());
+        drop(catalogue);
+
+        let mut larger_valid = original_bytes.clone();
+        larger_valid.extend(std::iter::repeat_n(b' ', 16));
+        let writer = Connection::open(&db_path).unwrap();
+        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
+        writer
+            .execute(
+                &format!(
+                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
+                    tables.registrations
+                ),
+                params![
+                    larger_valid,
+                    PackId::Llg.as_str(),
+                    registration.release_sha256
+                ],
+            )
+            .unwrap();
+        drop(writer);
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let oversized_replacement = catalogue
+            .reference_metadata_reusing(
+                PackId::Llg,
+                &registration.release_sha256,
+                &mut replacement_cache,
+            )
+            .unwrap();
+        assert!(matches!(oversized_replacement, Cow::Owned(_)));
+        let uncached_oversized_replacement = catalogue
+            .reference_metadata(PackId::Llg, &registration.release_sha256)
+            .unwrap();
+        assert_eq!(
+            oversized_replacement.as_ref(),
+            &uncached_oversized_replacement
+        );
+        drop(oversized_replacement);
+        assert!(replacement_cache.entries.is_empty());
+        assert_eq!(replacement_cache.serialized_weight, 0);
+        drop(catalogue);
+
+        let writer = Connection::open(&db_path).unwrap();
+        let tables = crate::collections_schema::tables_for(&writer, &root).unwrap();
+        writer
+            .execute(
+                &format!(
+                    "UPDATE {} SET descriptor_json=?1 WHERE pack_id=?2 AND release_sha256=?3",
+                    tables.registrations
+                ),
+                params![
+                    original_bytes.as_slice(),
+                    PackId::Llg.as_str(),
+                    registration.release_sha256
+                ],
+            )
+            .unwrap();
+        drop(writer);
+        let catalogue = CollectionCatalogue::open(&root).unwrap();
+        let restored_small = catalogue
+            .reference_metadata_reusing(
+                PackId::Llg,
+                &registration.release_sha256,
+                &mut replacement_cache,
+            )
+            .unwrap();
+        assert!(matches!(restored_small, Cow::Borrowed(_)));
+        drop(restored_small);
+        assert_eq!(replacement_cache.entries.len(), 1);
+        drop(catalogue);
         let _ = fs::remove_dir_all(root);
     }
 

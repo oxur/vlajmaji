@@ -123,6 +123,34 @@ fn sha256(bytes: &[u8]) -> String {
     format!("{:x}", Sha256::digest(bytes))
 }
 
+fn sqlite_exec(database: &std::path::Path, sql: &str) {
+    let output = Command::new("sqlite3")
+        .arg(database)
+        .arg(sql)
+        .output()
+        .expect("sqlite3 must be available for the isolated catalogue mutation");
+    assert!(
+        output.status.success(),
+        "sqlite3 mutation failed: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+}
+
+fn sqlite_blob(value: &[u8]) -> String {
+    let mut literal = String::with_capacity(3 + value.len() * 2);
+    literal.push_str("x'");
+    for byte in value {
+        use std::fmt::Write as _;
+        write!(literal, "{byte:02x}").unwrap();
+    }
+    literal.push('\'');
+    literal
+}
+
+fn sqlite_text(value: &str) -> String {
+    format!("'{}'", value.replace('\'', "''"))
+}
+
 #[test]
 fn test_public_profile_lookup_errors_keep_typed_categories_and_context() {
     let root = fresh_root("profile-error-categories");
@@ -342,6 +370,207 @@ fn test_historical_local_identity_deduplicates_equal_body_and_rejects_conflict()
     assert!(matches!(error, CollectionQueryError::AmbiguousReference));
     assert_eq!(error.report_for("resolve").category, "ambiguous_reference");
     fs::remove_dir_all(conflict_root).unwrap();
+}
+
+#[test]
+fn test_local_scan_reports_late_descriptor_failure_before_ambiguity() {
+    let root = fresh_root("local-history-late-corruption");
+    let (assertion_id, current_release_id, _, _, _, _) = install_two_release_history(&root, true);
+    let catalogue = CollectionCatalogue::open(&root).unwrap();
+    let registrations = catalogue
+        .list()
+        .unwrap()
+        .packs
+        .into_iter()
+        .find(|pack| pack.pack_id == "llg")
+        .unwrap()
+        .registrations;
+    let current_release_sha256 = registrations
+        .iter()
+        .find_map(|registration| {
+            let metadata = catalogue
+                .reference_metadata(PackId::Llg, &registration.release_sha256)
+                .unwrap();
+            metadata
+                .source_metadata
+                .releases
+                .iter()
+                .any(|release| release.id == current_release_id)
+                .then(|| registration.release_sha256.clone())
+        })
+        .unwrap();
+    let late_release_sha256 = registrations
+        .into_iter()
+        .find_map(|registration| {
+            let metadata = catalogue
+                .reference_metadata(PackId::Llg, &registration.release_sha256)
+                .unwrap();
+            metadata
+                .source_metadata
+                .releases
+                .iter()
+                .any(|release| release.id.as_str() == "release-history")
+                .then_some(registration.release_sha256)
+        })
+        .unwrap();
+    let late_descriptor = catalogue
+        .reference_metadata(PackId::Llg, &late_release_sha256)
+        .unwrap();
+    let late_descriptor_literal =
+        sqlite_blob(serde_json::to_string(&late_descriptor).unwrap().as_bytes());
+    drop(catalogue);
+
+    let mut engine = CollectionSearchEngine::open(&root, selection()).unwrap();
+    let ambiguous = engine
+        .execute(DictionaryRequest::Resolve {
+            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
+        })
+        .unwrap_err();
+    assert!(matches!(
+        ambiguous,
+        CollectionQueryError::AmbiguousReference
+    ));
+
+    sqlite_exec(
+        &root.join("catalogue.sqlite3"),
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json=x'00' WHERE pack_id='llg' AND release_sha256='{}';",
+            late_release_sha256
+        ),
+    );
+    let late_error = engine
+        .execute(DictionaryRequest::Resolve {
+            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
+        })
+        .unwrap_err();
+    let late_error_debug = format!("{late_error:?}");
+    assert!(matches!(
+        &late_error,
+        CollectionQueryError::Catalogue(vlajmaji_store::CollectionError::UnsupportedVersion(_))
+    ));
+
+    // Cache pruning must not validate an unknown later pack before the
+    // original ordered scan reaches this earlier corrupt LLG registration.
+    sqlite_exec(
+        &root.join("catalogue.sqlite3"),
+        "INSERT INTO registrations_v2(pack_id,release_sha256,payload_kind,seal_json,descriptor_json,summary_json,input_paths_json) SELECT 'zz-invalid',release_sha256,payload_kind,seal_json,descriptor_json,summary_json,input_paths_json FROM registrations_v2 WHERE pack_id='llg' ORDER BY release_sha256 LIMIT 1; INSERT INTO registration_locations_v2(pack_id,release_sha256,input_paths_json) SELECT 'zz-invalid',release_sha256,input_paths_json FROM registration_locations_v2 WHERE pack_id='llg' ORDER BY release_sha256,input_paths_json LIMIT 1;",
+    );
+    let corruption_precedes_later_invalid_pack = engine
+        .execute(DictionaryRequest::Resolve {
+            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
+        })
+        .unwrap_err();
+    assert!(
+        matches!(
+            &corruption_precedes_later_invalid_pack,
+            CollectionQueryError::Catalogue(vlajmaji_store::CollectionError::UnsupportedVersion(_))
+        ),
+        "unexpected precedence result: {corruption_precedes_later_invalid_pack:?}"
+    );
+    assert_eq!(
+        format!("{corruption_precedes_later_invalid_pack:?}"),
+        late_error_debug,
+        "the same earlier corrupt descriptor must win before the later unknown pack"
+    );
+    sqlite_exec(
+        &root.join("catalogue.sqlite3"),
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={late_descriptor_literal} WHERE pack_id='llg' AND release_sha256='{}';",
+            late_release_sha256
+        ),
+    );
+    let later_invalid_pack_error = engine
+        .execute(DictionaryRequest::Resolve {
+            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
+        })
+        .unwrap_err();
+    assert!(matches!(
+        later_invalid_pack_error,
+        CollectionQueryError::InvalidSelection(ref detail)
+            if detail == "unsupported registered pack ID zz-invalid"
+    ));
+
+    sqlite_exec(
+        &root.join("catalogue.sqlite3"),
+        "DELETE FROM registration_locations_v2 WHERE pack_id='zz-invalid'; DELETE FROM registrations_v2 WHERE pack_id='zz-invalid';",
+    );
+    let restored_conflict = engine
+        .execute(DictionaryRequest::Resolve {
+            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
+        })
+        .unwrap_err();
+    assert!(matches!(
+        restored_conflict,
+        CollectionQueryError::AmbiguousReference
+    ));
+
+    // Restore an input-derived descriptor with the exact same entity/body
+    // value in both releases. The current engine must rebuild from SQL bytes,
+    // deduplicate the now-equal identity, and agree with a fresh engine.
+    let mut equal_body_descriptor = late_descriptor;
+    equal_body_descriptor.release_sha256 = current_release_sha256.clone();
+    let equal_body_json = serde_json::to_string(&equal_body_descriptor).unwrap();
+    let equal_body_literal = sqlite_blob(equal_body_json.as_bytes());
+    sqlite_exec(
+        &root.join("catalogue.sqlite3"),
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={equal_body_literal} WHERE pack_id='llg' AND release_sha256='{current_release_sha256}';"
+        ),
+    );
+    let restored_equal = engine
+        .execute(DictionaryRequest::Resolve {
+            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
+        })
+        .unwrap();
+    let CollectionQueryResult::Resolve(restored_equal) = restored_equal.result else {
+        panic!("wrong operation result after restoring equal metadata");
+    };
+    assert!(restored_equal.payload.is_some());
+    assert_eq!(restored_equal.catalogue_matches.len(), 1);
+    let expected_equal = restored_equal.clone();
+    let mut fresh_engine = CollectionSearchEngine::open(&root, selection()).unwrap();
+    let fresh_equal = fresh_engine
+        .execute(DictionaryRequest::Resolve {
+            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
+        })
+        .unwrap();
+    let CollectionQueryResult::Resolve(fresh_equal) = fresh_equal.result else {
+        panic!("wrong fresh operation result after restoring equal metadata");
+    };
+    assert_eq!(restored_equal, fresh_equal);
+
+    sqlite_exec(
+        &root.join("catalogue.sqlite3"),
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json=x'00' WHERE pack_id='llg' AND release_sha256='{current_release_sha256}';"
+        ),
+    );
+    assert!(matches!(
+        engine.execute(DictionaryRequest::Resolve {
+            target: RelationTarget::Local(LocalRef::Assertion(assertion_id.clone())),
+        }),
+        Err(CollectionQueryError::Catalogue(
+            vlajmaji_store::CollectionError::UnsupportedVersion(_)
+        ))
+    ));
+    sqlite_exec(
+        &root.join("catalogue.sqlite3"),
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={equal_body_literal} WHERE pack_id='llg' AND release_sha256='{current_release_sha256}';"
+        ),
+    );
+    let equal_after_exact_restore = engine
+        .execute(DictionaryRequest::Resolve {
+            target: RelationTarget::Local(LocalRef::Assertion(assertion_id)),
+        })
+        .unwrap();
+    let CollectionQueryResult::Resolve(equal_after_exact_restore) =
+        equal_after_exact_restore.result
+    else {
+        panic!("wrong operation result after restoring exact equal bytes");
+    };
+    assert_eq!(equal_after_exact_restore, expected_equal);
+    fs::remove_dir_all(root).unwrap();
 }
 
 #[test]
@@ -1264,6 +1493,653 @@ fn test_metadata_only_unknown_and_unresolved_do_not_require_payload() {
         }),
         Err(vlajmaji_search::CollectionQueryError::NoEnabledPacks)
     ));
+    fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_full_catalogue_cache_revalidates_and_preserves_first_ordinals() {
+    let root = fresh_root("full-catalogue-first-ordinal-cache");
+    let mut document = fixture::complete_fixture().unwrap().into_document();
+    document.legacy_archive = None;
+    let dictionary = Dictionary::from_document(document).unwrap();
+    let sealed = seal_release(PackId::Llg, PackPayloadKind::Synthetic, &dictionary).unwrap();
+    let registration = CollectionRequest::new(
+        vec![CollectionInput::SealedBytes {
+            pack_id: PackId::Llg,
+            release: Cow::Borrowed(&sealed.release),
+            seal: Cow::Borrowed(&sealed.seal),
+        }],
+        CollectionSelection::Packs(vec![PackId::Llg]),
+        true,
+    )
+    .unwrap();
+    CollectionCatalogue::register(&root, registration).unwrap();
+    let catalogue = CollectionCatalogue::open(&root).unwrap();
+    let registration = catalogue
+        .list()
+        .unwrap()
+        .packs
+        .into_iter()
+        .find(|pack| pack.pack_id == "llg")
+        .unwrap()
+        .registrations
+        .into_iter()
+        .next()
+        .unwrap();
+    let release_sha256 = registration.release_sha256;
+    let payload_kind = registration.payload_kind;
+    let descriptor = catalogue
+        .reference_metadata(PackId::Llg, &release_sha256)
+        .unwrap();
+    drop(catalogue);
+    let release = descriptor
+        .source_metadata
+        .releases
+        .iter()
+        .find(|release| release.id.as_str() == "release-a")
+        .unwrap();
+    let selected_entity = descriptor
+        .entities
+        .iter()
+        .find(|entity| {
+            entity.role == "assertion"
+                && release.assertions.iter().any(|id| id.as_str() == entity.id)
+                && entity.source_ids.iter().any(|source| source == "source-a")
+                && entity.occurrence.is_some()
+        })
+        .unwrap();
+    let occurrence = selected_entity.occurrence.as_ref().unwrap().clone();
+    let attribution_index = descriptor
+        .registry
+        .occurrences
+        .iter()
+        .position(|attribution| {
+            attribution.occurrence.snapshot().namespace() == occurrence.capture.namespace
+                && attribution.occurrence.snapshot().sha256() == occurrence.capture.sha256
+                && attribution.occurrence.locator() == occurrence.locator
+        })
+        .unwrap();
+    let target = |native_entry_id: Option<&str>| {
+        RelationTarget::Catalog(CatalogTarget {
+            source: SourceId::new("source-a").unwrap(),
+            release: vlajmaji_lexicon::EntityId::new("release-a").unwrap(),
+            native_entry_id: native_entry_id.map(str::to_owned),
+            native_assertion_id: None,
+            occurrence: Some(occurrence.clone()),
+        })
+    };
+
+    let mut engine = CollectionSearchEngine::open(&root, selection()).unwrap();
+    let initial = engine
+        .execute(DictionaryRequest::Resolve {
+            target: target(None),
+        })
+        .unwrap();
+    let CollectionQueryResult::Resolve(initial) = initial.result else {
+        panic!("wrong result kind");
+    };
+    assert_eq!(initial.catalogue_matches.len(), 1);
+
+    let mut wire = serde_json::to_value(&descriptor).unwrap();
+    let entities = wire["entities"].as_array_mut().unwrap();
+    let first_entity = entities
+        .iter()
+        .position(|entity| entity["role"] == "assertion" && entity["id"] == selected_entity.id)
+        .unwrap();
+    let mut later_entity = entities[first_entity].clone();
+    later_entity["source_ids"] = serde_json::json!([]);
+    later_entity["occurrence"] = serde_json::Value::Null;
+    entities.push(later_entity);
+
+    let attributions = wire["registry"]["occurrences"].as_array_mut().unwrap();
+    attributions[attribution_index]["native_entry_id"] = serde_json::Value::Null;
+    let mut later_attribution = attributions[attribution_index].clone();
+    later_attribution["native_entry_id"] = serde_json::json!("later-entry");
+    attributions.push(later_attribution);
+    let changed_json = serde_json::to_string(&wire).unwrap();
+    let changed_literal = sqlite_blob(changed_json.as_bytes());
+    let database = root.join("catalogue.sqlite3");
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={changed_literal} WHERE pack_id='llg' AND release_sha256='{}';",
+            release_sha256
+        ),
+    );
+
+    let first_after_mutation = engine
+        .execute(DictionaryRequest::Resolve {
+            target: target(Some("later-entry")),
+        })
+        .unwrap();
+    let CollectionQueryResult::Resolve(first_after_mutation) = first_after_mutation.result else {
+        panic!("wrong result kind");
+    };
+    assert_eq!(first_after_mutation.catalogue_matches.len(), 1);
+    assert_eq!(
+        first_after_mutation.catalogue_matches[0].source_id, selected_entity.source_ids[0],
+        "duplicate entity identity keeps the first descriptor ordinal"
+    );
+    assert_eq!(
+        first_after_mutation.catalogue_matches[0].native_entry_id, None,
+        "an earlier None attribution is not replaced by a later Some"
+    );
+    assert_eq!(
+        first_after_mutation.status,
+        vlajmaji_search::ReferenceStatus::Unverified
+    );
+
+    let local_with_late_duplicate = engine
+        .execute(DictionaryRequest::Resolve {
+            target: RelationTarget::Local(LocalRef::Assertion(
+                vlajmaji_lexicon::EntityId::new(selected_entity.id.clone()).unwrap(),
+            )),
+        })
+        .unwrap();
+    let CollectionQueryResult::Resolve(local_with_late_duplicate) =
+        local_with_late_duplicate.result
+    else {
+        panic!("wrong local result kind");
+    };
+    assert_eq!(
+        local_with_late_duplicate.catalogue_matches.len(),
+        2,
+        "Local keeps the original and later duplicate raw rows even though FIRST controls ambiguity"
+    );
+    assert_ne!(
+        local_with_late_duplicate.catalogue_matches[0].source_id,
+        local_with_late_duplicate.catalogue_matches[1].source_id,
+        "the duplicate remains observable as a distinct retained raw row"
+    );
+
+    let original_json = serde_json::to_string(&descriptor).unwrap();
+    let original_literal = sqlite_blob(original_json.as_bytes());
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json=x'7b7d' WHERE pack_id='llg' AND release_sha256='{}';",
+            release_sha256
+        ),
+    );
+    assert!(
+        engine
+            .execute(DictionaryRequest::Resolve {
+                target: target(None)
+            })
+            .is_err()
+    );
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={original_literal} WHERE pack_id='llg' AND release_sha256='{}';",
+            release_sha256
+        ),
+    );
+    assert!(
+        engine
+            .execute(DictionaryRequest::Resolve {
+                target: target(None)
+            })
+            .is_ok()
+    );
+
+    let mut first_native_wire = serde_json::from_str::<serde_json::Value>(&original_json).unwrap();
+    let native_rows = first_native_wire["registry"]["occurrences"]
+        .as_array_mut()
+        .unwrap();
+    let first_native_index = native_rows
+        .iter()
+        .position(|row| {
+            row["occurrence"]["snapshot"]["namespace"] == occurrence.capture.namespace
+                && row["occurrence"]["snapshot"]["sha256"] == occurrence.capture.sha256
+                && row["occurrence"]["locator"] == occurrence.locator
+        })
+        .expect("selected assertion has a registry row");
+    native_rows[first_native_index]["native_entry_id"] = serde_json::json!("first-native");
+    let mut later_native = native_rows[first_native_index].clone();
+    later_native["native_entry_id"] = serde_json::json!("later-native");
+    native_rows.push(later_native);
+    let first_native_json = serde_json::to_string(&first_native_wire).unwrap();
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
+            sqlite_blob(first_native_json.as_bytes()),
+            release_sha256
+        ),
+    );
+    let first_native = engine
+        .execute(DictionaryRequest::Resolve {
+            target: target(Some("first-native")),
+        })
+        .unwrap();
+    let CollectionQueryResult::Resolve(first_native) = first_native.result else {
+        panic!("wrong result kind");
+    };
+    assert_eq!(first_native.catalogue_matches.len(), 1);
+    assert_eq!(
+        first_native.catalogue_matches[0].native_entry_id.as_deref(),
+        Some("first-native")
+    );
+    let later_native = engine
+        .execute(DictionaryRequest::Resolve {
+            target: target(Some("later-native")),
+        })
+        .unwrap();
+    let CollectionQueryResult::Resolve(later_native) = later_native.result else {
+        panic!("wrong result kind");
+    };
+    assert!(later_native.catalogue_matches.is_empty());
+    assert_eq!(
+        later_native.status,
+        vlajmaji_search::ReferenceStatus::NoMatch
+    );
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={original_literal} WHERE pack_id='llg' AND release_sha256='{}';",
+            release_sha256
+        ),
+    );
+
+    let second_assertion = release
+        .assertions
+        .iter()
+        .find(|id| id.as_str() != selected_entity.id)
+        .expect("release has a second assertion for ordered-duplicate control");
+    let mut ordered_wire = serde_json::from_str::<serde_json::Value>(&original_json).unwrap();
+    let ordered_entities = ordered_wire["entities"].as_array_mut().unwrap();
+    let first_entity = ordered_entities
+        .iter()
+        .position(|entity| entity["role"] == "assertion" && entity["id"] == selected_entity.id)
+        .unwrap();
+    let second_entity = ordered_entities
+        .iter()
+        .position(|entity| {
+            entity["role"] == "assertion" && entity["id"] == second_assertion.as_str()
+        })
+        .unwrap();
+    ordered_entities[second_entity]["source_ids"] = serde_json::json!(["source-a"]);
+    ordered_entities[second_entity]["occurrence"] =
+        ordered_entities[first_entity]["occurrence"].clone();
+    let release_row = ordered_wire["source_metadata"]["releases"]
+        .as_array_mut()
+        .unwrap()
+        .iter_mut()
+        .find(|row| row["id"] == release.id.as_str())
+        .unwrap();
+    release_row["assertions"] = serde_json::json!([
+        selected_entity.id,
+        second_assertion.as_str(),
+        selected_entity.id
+    ]);
+    let ordered_json = serde_json::to_string(&ordered_wire).unwrap();
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
+            sqlite_blob(ordered_json.as_bytes()),
+            release_sha256
+        ),
+    );
+    let ordered = engine
+        .execute(DictionaryRequest::Resolve {
+            target: target(None),
+        })
+        .unwrap();
+    let CollectionQueryResult::Resolve(ordered) = ordered.result else {
+        panic!("wrong result kind");
+    };
+    assert_eq!(
+        ordered
+            .catalogue_matches
+            .iter()
+            .map(|row| row.entity_id.as_deref().unwrap())
+            .collect::<Vec<_>>(),
+        vec![
+            selected_entity.id.as_str(),
+            second_assertion.as_str(),
+            selected_entity.id.as_str()
+        ],
+        "release assertions retain their declared order and multiplicity"
+    );
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={original_literal} WHERE pack_id='llg' AND release_sha256='{}';",
+            release_sha256
+        ),
+    );
+
+    let mut missing_wire = serde_json::from_str::<serde_json::Value>(&original_json).unwrap();
+    let missing_release = missing_wire["source_metadata"]["releases"]
+        .as_array_mut()
+        .unwrap()
+        .iter_mut()
+        .find(|row| row["id"] == release.id.as_str())
+        .unwrap();
+    missing_release["assertions"] = serde_json::json!(["missing-assertion", selected_entity.id]);
+    let missing_attribution = missing_wire["registry"]["occurrences"]
+        .as_array_mut()
+        .unwrap()
+        .iter_mut()
+        .find(|row| {
+            row["occurrence"]["snapshot"]["namespace"] == occurrence.capture.namespace
+                && row["occurrence"]["snapshot"]["sha256"] == occurrence.capture.sha256
+                && row["occurrence"]["locator"] == occurrence.locator
+        })
+        .expect("selected assertion has a registry row");
+    missing_attribution["native_entry_id"] = serde_json::json!("requested-native");
+    let missing_json = serde_json::to_string(&missing_wire).unwrap();
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
+            sqlite_blob(missing_json.as_bytes()),
+            release_sha256
+        ),
+    );
+    assert!(matches!(
+        engine.execute(DictionaryRequest::Resolve {
+            target: target(Some("requested-native")),
+        }),
+        Err(CollectionQueryError::Query(
+            vlajmaji_search::DictionaryQueryError::Integrity { .. }
+        ))
+    ));
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={original_literal} WHERE pack_id='llg' AND release_sha256='{}';",
+            release_sha256
+        ),
+    );
+
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET payload_kind='legacy_archive' WHERE pack_id='llg' AND release_sha256='{}';",
+            release_sha256
+        ),
+    );
+    assert!(
+        engine
+            .execute(DictionaryRequest::Resolve {
+                target: target(None)
+            })
+            .is_err()
+    );
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET payload_kind={} WHERE pack_id='llg' AND release_sha256='{}';",
+            sqlite_text(&payload_kind),
+            release_sha256
+        ),
+    );
+    assert!(
+        engine
+            .execute(DictionaryRequest::Resolve {
+                target: target(None)
+            })
+            .is_ok()
+    );
+
+    let revision = CollectionCatalogue::open(&root)
+        .unwrap()
+        .local_revision()
+        .unwrap();
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE catalogue_meta_v2 SET value='{}' WHERE key='local_revision';",
+            revision + 1
+        ),
+    );
+    assert!(matches!(
+        engine.execute(DictionaryRequest::Resolve {
+            target: target(None),
+        }),
+        Err(CollectionQueryError::Catalogue(_))
+    ));
+    fs::remove_dir_all(root).unwrap();
+}
+
+#[test]
+fn test_catalog_native_match_defers_occurrence_key_until_after_capture_projection() {
+    let root = fresh_root("catalog-native-capture-error-order");
+    let mut document = fixture::complete_fixture().unwrap().into_document();
+    document.legacy_archive = None;
+    let dictionary = Dictionary::from_document(document).unwrap();
+    let sealed = seal_release(PackId::Llg, PackPayloadKind::Synthetic, &dictionary).unwrap();
+    let request = CollectionRequest::new(
+        vec![CollectionInput::SealedBytes {
+            pack_id: PackId::Llg,
+            release: Cow::Borrowed(&sealed.release),
+            seal: Cow::Borrowed(&sealed.seal),
+        }],
+        CollectionSelection::Packs(vec![PackId::Llg]),
+        true,
+    )
+    .unwrap();
+    let report = CollectionCatalogue::register(&root, request).unwrap();
+    let release_sha256 = report.inputs[0]
+        .release_sha256
+        .as_deref()
+        .unwrap()
+        .to_owned();
+    drop(report);
+
+    let catalogue = CollectionCatalogue::open(&root).unwrap();
+    let descriptor = catalogue
+        .reference_metadata(PackId::Llg, &release_sha256)
+        .unwrap();
+    let release = descriptor
+        .source_metadata
+        .releases
+        .iter()
+        .find(|release| release.id.as_str() == "release-a")
+        .unwrap();
+    let assertion = descriptor
+        .entities
+        .iter()
+        .find(|entity| {
+            entity.role == "assertion"
+                && release.assertions.iter().any(|id| id.as_str() == entity.id)
+                && entity.source_ids.iter().any(|source| source == "source-a")
+                && entity.occurrence.is_some()
+        })
+        .unwrap();
+    let occurrence = assertion.occurrence.as_ref().unwrap().clone();
+    let target = RelationTarget::Catalog(CatalogTarget {
+        source: SourceId::new("source-a").unwrap(),
+        release: vlajmaji_lexicon::EntityId::new("release-a").unwrap(),
+        native_entry_id: Some("native-entry-wanted".into()),
+        native_assertion_id: Some("native-assertion-wanted".into()),
+        occurrence: Some(occurrence.clone()),
+    });
+    let source_filtered_target = RelationTarget::Catalog(CatalogTarget {
+        source: SourceId::new("source-b").unwrap(),
+        release: vlajmaji_lexicon::EntityId::new("release-a").unwrap(),
+        native_entry_id: Some("native-entry-wanted".into()),
+        native_assertion_id: Some("native-assertion-wanted".into()),
+        occurrence: Some(occurrence.clone()),
+    });
+    let occurrence_filtered_target = RelationTarget::Catalog(CatalogTarget {
+        source: SourceId::new("source-a").unwrap(),
+        release: vlajmaji_lexicon::EntityId::new("release-a").unwrap(),
+        native_entry_id: Some("native-entry-wanted".into()),
+        native_assertion_id: Some("native-assertion-wanted".into()),
+        occurrence: Some(OccurrenceRef {
+            capture: occurrence.capture.clone(),
+            locator: "/filtered-out-occurrence".into(),
+        }),
+    });
+    drop(catalogue);
+
+    let original_json = serde_json::to_string(&descriptor).unwrap();
+    let mut changed: serde_json::Value = serde_json::from_str(&original_json).unwrap();
+    {
+        let occurrence_rows = changed["registry"]["occurrences"].as_array_mut().unwrap();
+        let matching_index = occurrence_rows
+            .iter()
+            .position(|row| {
+                row["occurrence"]["snapshot"]["namespace"] == occurrence.capture.namespace
+                    && row["occurrence"]["snapshot"]["sha256"] == occurrence.capture.sha256
+                    && row["occurrence"]["locator"] == occurrence.locator
+            })
+            .unwrap();
+        occurrence_rows[matching_index]["native_entry_id"] =
+            serde_json::json!("native-entry-wanted");
+        occurrence_rows[matching_index]["native_assertion_id"] =
+            serde_json::json!("native-assertion-wanted");
+    }
+    let database = root.join("catalogue.sqlite3");
+    let native_json = serde_json::to_string(&changed).unwrap();
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
+            sqlite_blob(native_json.as_bytes()),
+            release_sha256
+        ),
+    );
+    let catalogue = CollectionCatalogue::open(&root).unwrap();
+    let expected = catalogue
+        .reference_projection(PackId::Llg, &release_sha256, &target)
+        .unwrap();
+    let unfiltered_target = RelationTarget::Catalog(CatalogTarget {
+        source: SourceId::new("source-a").unwrap(),
+        release: vlajmaji_lexicon::EntityId::new("release-a").unwrap(),
+        native_entry_id: None,
+        native_assertion_id: None,
+        occurrence: Some(occurrence.clone()),
+    });
+    let expected_unfiltered = catalogue
+        .reference_projection(PackId::Llg, &release_sha256, &unfiltered_target)
+        .unwrap();
+    drop(catalogue);
+
+    changed["registry"]["occurrences"]
+        .as_array_mut()
+        .unwrap()
+        .push(serde_json::json!({"occurrence": "truncated"}));
+    let captures = changed["captures"].as_array_mut().unwrap();
+    let capture_index = captures
+        .iter()
+        .position(|row| {
+            row["capture"]["namespace"] == occurrence.capture.namespace
+                && row["capture"]["sha256"] == occurrence.capture.sha256
+        })
+        .unwrap();
+    let valid_capture = captures[capture_index].clone();
+    captures[capture_index]["metadata"] = serde_json::json!(17);
+    let capture_bad_json = serde_json::to_string(&changed).unwrap();
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
+            sqlite_blob(capture_bad_json.as_bytes()),
+            release_sha256
+        ),
+    );
+
+    let catalogue = CollectionCatalogue::open(&root).unwrap();
+    let unfiltered_capture_error = catalogue
+        .reference_projection(PackId::Llg, &release_sha256, &unfiltered_target)
+        .unwrap_err();
+    match unfiltered_capture_error {
+        vlajmaji_store::CollectionError::ReferenceProjection { source, .. } => {
+            assert_eq!(source.classify(), serde_json::error::Category::Data);
+            assert!(source.to_string().contains("CaptureMetadata"));
+        }
+        other => {
+            panic!("expected selected capture parse error without native filters, got {other:?}")
+        }
+    }
+    let capture_error = catalogue
+        .reference_projection(PackId::Llg, &release_sha256, &target)
+        .unwrap_err();
+    match capture_error {
+        vlajmaji_store::CollectionError::ReferenceProjection { source, .. } => {
+            assert_eq!(source.classify(), serde_json::error::Category::Data);
+            assert!(source.to_string().contains("CaptureMetadata"));
+        }
+        other => panic!("expected selected capture parse error before deferred key, got {other:?}"),
+    }
+    for filtered_target in [&source_filtered_target, &occurrence_filtered_target] {
+        let filtered_capture_error = catalogue
+            .reference_projection(PackId::Llg, &release_sha256, filtered_target)
+            .unwrap_err();
+        match filtered_capture_error {
+            vlajmaji_store::CollectionError::ReferenceProjection { source, .. } => {
+                assert_eq!(source.classify(), serde_json::error::Category::Data);
+                assert!(source.to_string().contains("CaptureMetadata"));
+            }
+            other => {
+                panic!("expected capture projection before filtered raw lookup, got {other:?}")
+            }
+        }
+    }
+    drop(catalogue);
+
+    changed["captures"].as_array_mut().unwrap()[capture_index] = valid_capture;
+    let capture_restored_json = serde_json::to_string(&changed).unwrap();
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
+            sqlite_blob(capture_restored_json.as_bytes()),
+            release_sha256
+        ),
+    );
+    let catalogue = CollectionCatalogue::open(&root).unwrap();
+    let unfiltered_occurrence_error = catalogue
+        .reference_projection(PackId::Llg, &release_sha256, &unfiltered_target)
+        .unwrap_err();
+    match unfiltered_occurrence_error {
+        vlajmaji_store::CollectionError::ReferenceProjection { source, .. } => {
+            assert_eq!(source.classify(), serde_json::error::Category::Data);
+            assert!(source.to_string().contains("RecordIdentity"));
+        }
+        other => panic!("expected late occurrence-key error without native filters, got {other:?}"),
+    }
+    let occurrence_error = catalogue
+        .reference_projection(PackId::Llg, &release_sha256, &target)
+        .unwrap_err();
+    match occurrence_error {
+        vlajmaji_store::CollectionError::ReferenceProjection { source, .. } => {
+            assert_eq!(source.classify(), serde_json::error::Category::Data);
+            assert!(source.to_string().contains("RecordIdentity"));
+        }
+        other => panic!("expected deferred occurrence-key error after capture, got {other:?}"),
+    }
+    drop(catalogue);
+
+    sqlite_exec(
+        &database,
+        &format!(
+            "UPDATE registrations_v2 SET descriptor_json={} WHERE pack_id='llg' AND release_sha256='{}';",
+            sqlite_blob(native_json.as_bytes()),
+            release_sha256
+        ),
+    );
+    let catalogue = CollectionCatalogue::open(&root).unwrap();
+    assert_eq!(
+        catalogue
+            .reference_projection(PackId::Llg, &release_sha256, &target)
+            .unwrap(),
+        expected,
+        "restoring both raw sections reproduces the complete typed projection"
+    );
+    assert_eq!(
+        catalogue
+            .reference_projection(PackId::Llg, &release_sha256, &unfiltered_target)
+            .unwrap(),
+        expected_unfiltered,
+        "the no-native path also restores the complete typed projection"
+    );
+    drop(catalogue);
     fs::remove_dir_all(root).unwrap();
 }
 

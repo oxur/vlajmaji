@@ -34,9 +34,9 @@ pub use collections::{
     CollectionInstalledHistory, CollectionJournalObservation, CollectionListReport,
     CollectionMutationReport, CollectionProjectedCapture, CollectionProjectedRelease,
     CollectionReconciliationAttempt, CollectionReconciliationReport, CollectionReferenceMetadata,
-    CollectionReferenceProjection, CollectionRegistrationSummary, CollectionReleaseSummary,
-    CollectionRequest, CollectionSelection, CollectionSourceMetadata, CollectionTermsSummary,
-    NativePathReport, native_path_report,
+    CollectionReferenceMetadataCache, CollectionReferenceProjection, CollectionRegistrationSummary,
+    CollectionReleaseSummary, CollectionRequest, CollectionSelection, CollectionSourceMetadata,
+    CollectionTermsSummary, NativePathReport, native_path_report,
 };
 pub use dictionary::{
     DictionaryStore, DictionaryStoreError, DictionaryStoreInvalidity, DictionaryStoreSummary,
