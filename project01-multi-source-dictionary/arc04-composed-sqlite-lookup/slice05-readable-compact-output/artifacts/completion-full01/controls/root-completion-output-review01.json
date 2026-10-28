@@ -1,0 +1,84 @@
+{
+  "scope": "Root independently checked saved raw/checked Full completion outputs; no product rerun, Full DB/config access or target traversal",
+  "source": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "execution_packet_sha256": "80082b80942c295ebc9a134267fbae30fa1f658414a032b28452ef36c6840cf1",
+  "counts": {
+    "requests": 486,
+    "prime": 243,
+    "expected_errors": 18,
+    "measured": 243
+  },
+  "same_identity_three_round_groups": 81,
+  "stages": [
+    {
+      "number": 1,
+      "kind": "warm",
+      "rss_bytes": 2947825664,
+      "elapsed_seconds": 22.554006041027606
+    },
+    {
+      "number": 2,
+      "kind": "warm",
+      "rss_bytes": 1897791488,
+      "elapsed_seconds": 26.76714975014329
+    },
+    {
+      "number": 3,
+      "kind": "warm",
+      "rss_bytes": 2856517632,
+      "elapsed_seconds": 26.678193791769445
+    },
+    {
+      "number": 4,
+      "kind": "warm",
+      "rss_bytes": 1844051968,
+      "elapsed_seconds": 26.733019708655775
+    },
+    {
+      "number": 5,
+      "kind": "warm",
+      "rss_bytes": 2961178624,
+      "elapsed_seconds": 21.96473370771855
+    },
+    {
+      "number": 6,
+      "kind": "warm",
+      "rss_bytes": 1881505792,
+      "elapsed_seconds": 26.71456608362496
+    },
+    {
+      "number": 7,
+      "kind": "warm",
+      "rss_bytes": 1880031232,
+      "elapsed_seconds": 26.64066541660577
+    },
+    {
+      "number": 8,
+      "kind": "warm",
+      "rss_bytes": 1862221824,
+      "elapsed_seconds": 26.77306729182601
+    },
+    {
+      "number": 9,
+      "kind": "warm",
+      "rss_bytes": 3108241408,
+      "elapsed_seconds": 21.984221166931093
+    },
+    {
+      "number": 10,
+      "kind": "semantic",
+      "rss_bytes": 2312781824,
+      "elapsed_seconds": 18.862913582473993
+    }
+  ],
+  "maximum_rss_bytes": 3108241408,
+  "semantic_summary_and_unchanged_source_method_checked": true,
+  "saved_database_pair_unchanged": true,
+  "saved_target_pair_delta_bytes": 0,
+  "observed_scratch_bytes": 777843162,
+  "historical_targets_met": false,
+  "accepted_latency_groups": 21,
+  "per_observation_latency_exceptions": 63,
+  "retained_fresh_count": 12,
+  "limitations": "Saved semantic result reflects unchanged separately executed semantic caller assertions; no new semantic execution. Retained fresh raw/receipts independently checked at root preflight; not rerun now."
+}

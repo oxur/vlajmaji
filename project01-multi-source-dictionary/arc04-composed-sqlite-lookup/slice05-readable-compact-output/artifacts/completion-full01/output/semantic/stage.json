@@ -1,0 +1,50 @@
+{
+  "kind": "semantic",
+  "round": null,
+  "mode": null,
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+    "semantic-full",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic"
+  ],
+  "number": 10,
+  "original_equivalent_stage": 22,
+  "guard_argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "8589934592",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/stderr",
+    "--stdout",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/stdout",
+    "--",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+    "semantic-full",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic"
+  ],
+  "guard_exit": 0,
+  "receipt": {
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "semantic-full",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic"
+    ],
+    "decision": "passed",
+    "elapsed_seconds": 18.862913582473993,
+    "exit_code": 0,
+    "log": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/stderr",
+    "maximum_resident_set_size_bytes": 2312781824,
+    "pid": 49630,
+    "rss_parse_ok": true,
+    "rss_source": "/usr/bin/time -l maximum resident set size",
+    "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/stdout",
+    "timed_out": false
+  },
+  "stdout_bytes": 385,
+  "stdout_sha256": "5fbb01f8615380901b72baf02ba160590f4a6c489ea4b396181aa6e8bdcf7ef1",
+  "stderr_bytes": 777,
+  "stderr_sha256": "692060a5425111da77370c0e614279bdbd37d71d3573df0451985de8e668dc01"
+}

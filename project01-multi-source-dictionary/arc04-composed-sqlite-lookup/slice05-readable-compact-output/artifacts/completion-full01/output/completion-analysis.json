@@ -1,0 +1,2710 @@
+{
+  "completion_checks_passed": true,
+  "historical_targets_met": false,
+  "accepted_latency_exceptions": [
+    "warm:full:jbotci-local",
+    "warm:full:jbotci-catalogue-native333",
+    "warm:full:la-catalogue-native333",
+    "warm:full:llg-component",
+    "warm:full:sut-native-entry",
+    "warm:full:wrong-role",
+    "warm:full:missing",
+    "warm:compact:jbotci-local",
+    "warm:compact:jbotci-catalogue-native333",
+    "warm:compact:la-catalogue-native333",
+    "warm:compact:llg-component",
+    "warm:compact:sut-native-entry",
+    "warm:compact:wrong-role",
+    "warm:compact:missing",
+    "warm:readable:jbotci-local",
+    "warm:readable:jbotci-catalogue-native333",
+    "warm:readable:la-catalogue-native333",
+    "warm:readable:llg-component",
+    "warm:readable:sut-native-entry",
+    "warm:readable:wrong-role",
+    "warm:readable:missing"
+  ],
+  "per_observation_latency_exceptions": [
+    {
+      "mode": "full",
+      "round": 1,
+      "id": "jbotci-local",
+      "actual_ns": 1170845750,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 1,
+      "id": "jbotci-catalogue-native333",
+      "actual_ns": 1243621000,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 1,
+      "id": "la-catalogue-native333",
+      "actual_ns": 1238420000,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 1,
+      "id": "llg-component",
+      "actual_ns": 1238154709,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 1,
+      "id": "sut-native-entry",
+      "actual_ns": 1244856250,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 1,
+      "id": "wrong-role",
+      "actual_ns": 1192378042,
+      "boundary": "whole wrong-role error+report maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 1,
+      "id": "missing",
+      "actual_ns": 1638259834,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 1,
+      "id": "jbotci-local",
+      "actual_ns": 1897559291,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 1,
+      "id": "jbotci-catalogue-native333",
+      "actual_ns": 1997368291,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 1,
+      "id": "la-catalogue-native333",
+      "actual_ns": 1906426459,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 1,
+      "id": "llg-component",
+      "actual_ns": 1843069917,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 1,
+      "id": "sut-native-entry",
+      "actual_ns": 1961745292,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 1,
+      "id": "wrong-role",
+      "actual_ns": 950100542,
+      "boundary": "whole wrong-role error+report maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 1,
+      "id": "missing",
+      "actual_ns": 1986800334,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 1,
+      "id": "jbotci-local",
+      "actual_ns": 1897219791,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 1,
+      "id": "jbotci-catalogue-native333",
+      "actual_ns": 2009803583,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 1,
+      "id": "la-catalogue-native333",
+      "actual_ns": 1920091666,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 1,
+      "id": "llg-component",
+      "actual_ns": 1832888792,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 1,
+      "id": "sut-native-entry",
+      "actual_ns": 1966774667,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 1,
+      "id": "wrong-role",
+      "actual_ns": 963087083,
+      "boundary": "whole wrong-role error+report maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 1,
+      "id": "missing",
+      "actual_ns": 2017299625,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 2,
+      "id": "jbotci-local",
+      "actual_ns": 1905693292,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 2,
+      "id": "jbotci-catalogue-native333",
+      "actual_ns": 2025760250,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 2,
+      "id": "la-catalogue-native333",
+      "actual_ns": 1920154708,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 2,
+      "id": "llg-component",
+      "actual_ns": 1819355875,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 2,
+      "id": "sut-native-entry",
+      "actual_ns": 1971326667,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 2,
+      "id": "wrong-role",
+      "actual_ns": 954077250,
+      "boundary": "whole wrong-role error+report maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 2,
+      "id": "missing",
+      "actual_ns": 1996211417,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 2,
+      "id": "jbotci-local",
+      "actual_ns": 1219411167,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 2,
+      "id": "jbotci-catalogue-native333",
+      "actual_ns": 1267464417,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 2,
+      "id": "la-catalogue-native333",
+      "actual_ns": 1250394250,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 2,
+      "id": "llg-component",
+      "actual_ns": 1225507333,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 2,
+      "id": "sut-native-entry",
+      "actual_ns": 1235652709,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 2,
+      "id": "wrong-role",
+      "actual_ns": 1185588542,
+      "boundary": "whole wrong-role error+report maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 2,
+      "id": "missing",
+      "actual_ns": 1649990667,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 2,
+      "id": "jbotci-local",
+      "actual_ns": 1909284667,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 2,
+      "id": "jbotci-catalogue-native333",
+      "actual_ns": 2062029708,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 2,
+      "id": "la-catalogue-native333",
+      "actual_ns": 1949656458,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 2,
+      "id": "llg-component",
+      "actual_ns": 1824185833,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 2,
+      "id": "sut-native-entry",
+      "actual_ns": 1950547041,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 2,
+      "id": "wrong-role",
+      "actual_ns": 952637125,
+      "boundary": "whole wrong-role error+report maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 2,
+      "id": "missing",
+      "actual_ns": 1990407750,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 3,
+      "id": "jbotci-local",
+      "actual_ns": 1907015584,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 3,
+      "id": "jbotci-catalogue-native333",
+      "actual_ns": 2030318917,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 3,
+      "id": "la-catalogue-native333",
+      "actual_ns": 1911113875,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 3,
+      "id": "llg-component",
+      "actual_ns": 1833333334,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 3,
+      "id": "sut-native-entry",
+      "actual_ns": 1951324500,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 3,
+      "id": "wrong-role",
+      "actual_ns": 948843667,
+      "boundary": "whole wrong-role error+report maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "compact",
+      "round": 3,
+      "id": "missing",
+      "actual_ns": 1995767834,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 3,
+      "id": "jbotci-local",
+      "actual_ns": 1906492000,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 3,
+      "id": "jbotci-catalogue-native333",
+      "actual_ns": 2039281250,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 3,
+      "id": "la-catalogue-native333",
+      "actual_ns": 1961496041,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 3,
+      "id": "llg-component",
+      "actual_ns": 1890864959,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 3,
+      "id": "sut-native-entry",
+      "actual_ns": 1969990625,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 3,
+      "id": "wrong-role",
+      "actual_ns": 954998250,
+      "boundary": "whole wrong-role error+report maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "readable",
+      "round": 3,
+      "id": "missing",
+      "actual_ns": 2002314958,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 3,
+      "id": "jbotci-local",
+      "actual_ns": 1180421250,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 3,
+      "id": "jbotci-catalogue-native333",
+      "actual_ns": 1259446709,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 3,
+      "id": "la-catalogue-native333",
+      "actual_ns": 1266243125,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 3,
+      "id": "llg-component",
+      "actual_ns": 1212452583,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 3,
+      "id": "sut-native-entry",
+      "actual_ns": 1254386958,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 3,
+      "id": "wrong-role",
+      "actual_ns": 1210448500,
+      "boundary": "whole wrong-role error+report maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    },
+    {
+      "mode": "full",
+      "round": 3,
+      "id": "missing",
+      "actual_ns": 1673172917,
+      "boundary": "per-request warm maximum",
+      "maximum_ns": 750000000,
+      "operator_exception": {
+        "decision": "operator accepted current timings; report only, not a historical target pass",
+        "source": "011af09a44abc153b8b8253f70d84147e21a6bb0"
+      },
+      "within_historical_target": false
+    }
+  ],
+  "historical_analysis": {
+    "fresh": {
+      "baseline-full": {
+        "observations_ns": [
+          2825661751,
+          2041144918,
+          2034472625
+        ],
+        "median_ns": 2041144918,
+        "maximum_ns": 2825661751,
+        "median_limit_ns": 6000000000,
+        "maximum_limit_ns": 10000000000,
+        "ok": true
+      },
+      "candidate-full": {
+        "observations_ns": [
+          1982934041,
+          2035404292,
+          1979465793
+        ],
+        "median_ns": 1982934041,
+        "maximum_ns": 2035404292,
+        "median_limit_ns": 6000000000,
+        "maximum_limit_ns": 10000000000,
+        "ok": true
+      },
+      "compact": {
+        "observations_ns": [
+          1506829625,
+          1439660000,
+          1501466375
+        ],
+        "median_ns": 1501466375,
+        "maximum_ns": 1506829625,
+        "median_limit_ns": 5500000000,
+        "maximum_limit_ns": 9000000000,
+        "ok": true
+      },
+      "readable": {
+        "observations_ns": [
+          1488555084,
+          1457261584,
+          1495229876
+        ],
+        "median_ns": 1488555084,
+        "maximum_ns": 1495229876,
+        "median_limit_ns": 5500000000,
+        "maximum_limit_ns": 9000000000,
+        "ok": true
+      }
+    },
+    "startup": {
+      "full": {
+        "observations_ns": [
+          2134477750,
+          1580944624,
+          1580298958
+        ],
+        "median_ns": 1580944624,
+        "maximum_ns": 2134477750,
+        "median_limit_ns": 5000000000,
+        "maximum_limit_ns": 8000000000,
+        "ok": true
+      },
+      "compact": {
+        "observations_ns": [
+          1286210626,
+          1275583625,
+          1270039458
+        ],
+        "median_ns": 1275583625,
+        "maximum_ns": 1286210626,
+        "median_limit_ns": 5000000000,
+        "maximum_limit_ns": 8000000000,
+        "ok": true
+      },
+      "readable": {
+        "observations_ns": [
+          1265468958,
+          1279899083,
+          1282953375
+        ],
+        "median_ns": 1279899083,
+        "maximum_ns": 1282953375,
+        "median_limit_ns": 5000000000,
+        "maximum_limit_ns": 8000000000,
+        "ok": true
+      }
+    },
+    "warm": {
+      "full:farvi-all": {
+        "observations_ns": [
+          195500,
+          194624,
+          314834
+        ],
+        "median_ns": 195500,
+        "maximum_ns": 314834,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:farvi-lsk": {
+        "observations_ns": [
+          136457,
+          129334,
+          129584
+        ],
+        "median_ns": 129584,
+        "maximum_ns": 136457,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:farvi-llg": {
+        "observations_ns": [
+          132833,
+          137625,
+          118501
+        ],
+        "median_ns": 132833,
+        "maximum_ns": 137625,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:farvi-sut": {
+        "observations_ns": [
+          128083,
+          116125,
+          125083
+        ],
+        "median_ns": 125083,
+        "maximum_ns": 128083,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:absent": {
+        "observations_ns": [
+          92917,
+          93418,
+          123124
+        ],
+        "median_ns": 93418,
+        "maximum_ns": 123124,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:excluded-sut": {
+        "observations_ns": [
+          134166,
+          125625,
+          115460
+        ],
+        "median_ns": 125625,
+        "maximum_ns": 134166,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page-0": {
+        "observations_ns": [
+          138002,
+          140709,
+          137501
+        ],
+        "median_ns": 138002,
+        "maximum_ns": 140709,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page-1": {
+        "observations_ns": [
+          135210,
+          148584,
+          172124
+        ],
+        "median_ns": 148584,
+        "maximum_ns": 172124,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page-2": {
+        "observations_ns": [
+          134419,
+          141208,
+          138541
+        ],
+        "median_ns": 138541,
+        "maximum_ns": 141208,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page-3": {
+        "observations_ns": [
+          132582,
+          142918,
+          131582
+        ],
+        "median_ns": 132582,
+        "maximum_ns": 142918,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page-8": {
+        "observations_ns": [
+          131999,
+          132999,
+          424291
+        ],
+        "median_ns": 132999,
+        "maximum_ns": 424291,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page-concat-2": {
+        "observations_ns": [
+          154459,
+          187583,
+          173375
+        ],
+        "median_ns": 173375,
+        "maximum_ns": 187583,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page-concat-3": {
+        "observations_ns": [
+          158415,
+          166583,
+          160918
+        ],
+        "median_ns": 160918,
+        "maximum_ns": 166583,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page-concat-4": {
+        "observations_ns": [
+          148666,
+          165168,
+          146167
+        ],
+        "median_ns": 148666,
+        "maximum_ns": 165168,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page-concat-5": {
+        "observations_ns": [
+          142749,
+          160958,
+          175498
+        ],
+        "median_ns": 160958,
+        "maximum_ns": 175498,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page2-concat-2": {
+        "observations_ns": [
+          162999,
+          179667,
+          155416
+        ],
+        "median_ns": 162999,
+        "maximum_ns": 179667,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page2-concat-3": {
+        "observations_ns": [
+          149166,
+          169502,
+          159083
+        ],
+        "median_ns": 159083,
+        "maximum_ns": 169502,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:page3-concat-2": {
+        "observations_ns": [
+          314750,
+          164876,
+          158375
+        ],
+        "median_ns": 164876,
+        "maximum_ns": 314750,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "full:jbotci-local": {
+        "observations_ns": [
+          1170845750,
+          1219411167,
+          1180421250
+        ],
+        "median_ns": 1180421250,
+        "maximum_ns": 1219411167,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "full:jbotci-catalogue-native333": {
+        "observations_ns": [
+          1243621000,
+          1267464417,
+          1259446709
+        ],
+        "median_ns": 1259446709,
+        "maximum_ns": 1267464417,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "full:la-catalogue-native333": {
+        "observations_ns": [
+          1238420000,
+          1250394250,
+          1266243125
+        ],
+        "median_ns": 1250394250,
+        "maximum_ns": 1266243125,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "full:llg-component": {
+        "observations_ns": [
+          1238154709,
+          1225507333,
+          1212452583
+        ],
+        "median_ns": 1225507333,
+        "maximum_ns": 1238154709,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "full:sut-native-entry": {
+        "observations_ns": [
+          1244856250,
+          1235652709,
+          1254386958
+        ],
+        "median_ns": 1244856250,
+        "maximum_ns": 1254386958,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "full:unknown": {
+        "observations_ns": [
+          4834,
+          4708,
+          4333
+        ],
+        "median_ns": 4708,
+        "maximum_ns": 4834,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "query_total_ns"
+      },
+      "full:unresolved": {
+        "observations_ns": [
+          1125,
+          1292,
+          1583
+        ],
+        "median_ns": 1292,
+        "maximum_ns": 1583,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "query_total_ns"
+      },
+      "full:wrong-role": {
+        "observations_ns": [
+          1192378042,
+          1185588542,
+          1210448500
+        ],
+        "median_ns": 1192378042,
+        "maximum_ns": 1210448500,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "whole_error_ns"
+      },
+      "full:missing": {
+        "observations_ns": [
+          1638259834,
+          1649990667,
+          1673172917
+        ],
+        "median_ns": 1649990667,
+        "maximum_ns": 1673172917,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "compact:farvi-all": {
+        "observations_ns": [
+          765871,
+          528413,
+          471416
+        ],
+        "median_ns": 528413,
+        "maximum_ns": 765871,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:farvi-lsk": {
+        "observations_ns": [
+          314500,
+          299752,
+          535001
+        ],
+        "median_ns": 314500,
+        "maximum_ns": 535001,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:farvi-llg": {
+        "observations_ns": [
+          97959,
+          120709,
+          98331
+        ],
+        "median_ns": 98331,
+        "maximum_ns": 120709,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:farvi-sut": {
+        "observations_ns": [
+          92875,
+          104707,
+          99624
+        ],
+        "median_ns": 99624,
+        "maximum_ns": 104707,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:absent": {
+        "observations_ns": [
+          22542,
+          26709,
+          29543
+        ],
+        "median_ns": 26709,
+        "maximum_ns": 29543,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:excluded-sut": {
+        "observations_ns": [
+          36751,
+          39041,
+          37877
+        ],
+        "median_ns": 37877,
+        "maximum_ns": 39041,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page-0": {
+        "observations_ns": [
+          33124,
+          35083,
+          30665
+        ],
+        "median_ns": 33124,
+        "maximum_ns": 35083,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page-1": {
+        "observations_ns": [
+          80666,
+          83123,
+          76374
+        ],
+        "median_ns": 80666,
+        "maximum_ns": 83123,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page-2": {
+        "observations_ns": [
+          130375,
+          133294,
+          122581
+        ],
+        "median_ns": 130375,
+        "maximum_ns": 133294,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page-3": {
+        "observations_ns": [
+          195127,
+          226750,
+          184330
+        ],
+        "median_ns": 195127,
+        "maximum_ns": 226750,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page-8": {
+        "observations_ns": [
+          283126,
+          370086,
+          314413
+        ],
+        "median_ns": 314413,
+        "maximum_ns": 370086,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page-concat-2": {
+        "observations_ns": [
+          105707,
+          154834,
+          163002
+        ],
+        "median_ns": 154834,
+        "maximum_ns": 163002,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page-concat-3": {
+        "observations_ns": [
+          111334,
+          127084,
+          129792
+        ],
+        "median_ns": 127084,
+        "maximum_ns": 129792,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page-concat-4": {
+        "observations_ns": [
+          83297,
+          93329,
+          107665
+        ],
+        "median_ns": 93329,
+        "maximum_ns": 107665,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page-concat-5": {
+        "observations_ns": [
+          95003,
+          102372,
+          99875
+        ],
+        "median_ns": 99875,
+        "maximum_ns": 102372,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page2-concat-2": {
+        "observations_ns": [
+          142335,
+          148252,
+          146295
+        ],
+        "median_ns": 146295,
+        "maximum_ns": 148252,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page2-concat-3": {
+        "observations_ns": [
+          91375,
+          97498,
+          91832
+        ],
+        "median_ns": 91832,
+        "maximum_ns": 97498,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:page3-concat-2": {
+        "observations_ns": [
+          129334,
+          136833,
+          127001
+        ],
+        "median_ns": 129334,
+        "maximum_ns": 136833,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "compact:jbotci-local": {
+        "observations_ns": [
+          1897559291,
+          1909284667,
+          1907015584
+        ],
+        "median_ns": 1907015584,
+        "maximum_ns": 1909284667,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "compact:jbotci-catalogue-native333": {
+        "observations_ns": [
+          1997368291,
+          2062029708,
+          2030318917
+        ],
+        "median_ns": 2030318917,
+        "maximum_ns": 2062029708,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "compact:la-catalogue-native333": {
+        "observations_ns": [
+          1906426459,
+          1949656458,
+          1911113875
+        ],
+        "median_ns": 1911113875,
+        "maximum_ns": 1949656458,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "compact:llg-component": {
+        "observations_ns": [
+          1843069917,
+          1824185833,
+          1833333334
+        ],
+        "median_ns": 1833333334,
+        "maximum_ns": 1843069917,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "compact:sut-native-entry": {
+        "observations_ns": [
+          1961745292,
+          1950547041,
+          1951324500
+        ],
+        "median_ns": 1951324500,
+        "maximum_ns": 1961745292,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "compact:unknown": {
+        "observations_ns": [
+          1958,
+          3000,
+          2042
+        ],
+        "median_ns": 2042,
+        "maximum_ns": 3000,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "query_total_ns"
+      },
+      "compact:unresolved": {
+        "observations_ns": [
+          1083,
+          1291,
+          1125
+        ],
+        "median_ns": 1125,
+        "maximum_ns": 1291,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "query_total_ns"
+      },
+      "compact:wrong-role": {
+        "observations_ns": [
+          950100542,
+          952637125,
+          948843667
+        ],
+        "median_ns": 950100542,
+        "maximum_ns": 952637125,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "whole_error_ns"
+      },
+      "compact:missing": {
+        "observations_ns": [
+          1986800334,
+          1990407750,
+          1995767834
+        ],
+        "median_ns": 1990407750,
+        "maximum_ns": 1995767834,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "readable:farvi-all": {
+        "observations_ns": [
+          609001,
+          640375,
+          512250
+        ],
+        "median_ns": 609001,
+        "maximum_ns": 640375,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:farvi-lsk": {
+        "observations_ns": [
+          235709,
+          311459,
+          265168
+        ],
+        "median_ns": 265168,
+        "maximum_ns": 311459,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:farvi-llg": {
+        "observations_ns": [
+          68042,
+          99334,
+          86918
+        ],
+        "median_ns": 86918,
+        "maximum_ns": 99334,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:farvi-sut": {
+        "observations_ns": [
+          77251,
+          137834,
+          90835
+        ],
+        "median_ns": 90835,
+        "maximum_ns": 137834,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:absent": {
+        "observations_ns": [
+          20624,
+          41752,
+          22085
+        ],
+        "median_ns": 22085,
+        "maximum_ns": 41752,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:excluded-sut": {
+        "observations_ns": [
+          36918,
+          41416,
+          35623
+        ],
+        "median_ns": 36918,
+        "maximum_ns": 41416,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page-0": {
+        "observations_ns": [
+          33085,
+          83583,
+          30668
+        ],
+        "median_ns": 33085,
+        "maximum_ns": 83583,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page-1": {
+        "observations_ns": [
+          74502,
+          96834,
+          79708
+        ],
+        "median_ns": 79708,
+        "maximum_ns": 96834,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page-2": {
+        "observations_ns": [
+          119789,
+          137585,
+          128832
+        ],
+        "median_ns": 128832,
+        "maximum_ns": 137585,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page-3": {
+        "observations_ns": [
+          180541,
+          271791,
+          220540
+        ],
+        "median_ns": 220540,
+        "maximum_ns": 271791,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page-8": {
+        "observations_ns": [
+          261087,
+          418326,
+          406543
+        ],
+        "median_ns": 406543,
+        "maximum_ns": 418326,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page-concat-2": {
+        "observations_ns": [
+          95794,
+          167002,
+          119290
+        ],
+        "median_ns": 119290,
+        "maximum_ns": 167002,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page-concat-3": {
+        "observations_ns": [
+          96874,
+          135709,
+          117666
+        ],
+        "median_ns": 117666,
+        "maximum_ns": 135709,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page-concat-4": {
+        "observations_ns": [
+          74250,
+          106832,
+          86211
+        ],
+        "median_ns": 86211,
+        "maximum_ns": 106832,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page-concat-5": {
+        "observations_ns": [
+          86625,
+          111169,
+          107124
+        ],
+        "median_ns": 107124,
+        "maximum_ns": 111169,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page2-concat-2": {
+        "observations_ns": [
+          135040,
+          151998,
+          160999
+        ],
+        "median_ns": 151998,
+        "maximum_ns": 160999,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page2-concat-3": {
+        "observations_ns": [
+          86876,
+          94708,
+          93500
+        ],
+        "median_ns": 93500,
+        "maximum_ns": 94708,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:page3-concat-2": {
+        "observations_ns": [
+          123916,
+          132915,
+          129751
+        ],
+        "median_ns": 129751,
+        "maximum_ns": 132915,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "lookup_ns"
+      },
+      "readable:jbotci-local": {
+        "observations_ns": [
+          1897219791,
+          1905693292,
+          1906492000
+        ],
+        "median_ns": 1905693292,
+        "maximum_ns": 1906492000,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "readable:jbotci-catalogue-native333": {
+        "observations_ns": [
+          2009803583,
+          2025760250,
+          2039281250
+        ],
+        "median_ns": 2025760250,
+        "maximum_ns": 2039281250,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "readable:la-catalogue-native333": {
+        "observations_ns": [
+          1920091666,
+          1920154708,
+          1961496041
+        ],
+        "median_ns": 1920154708,
+        "maximum_ns": 1961496041,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "readable:llg-component": {
+        "observations_ns": [
+          1832888792,
+          1819355875,
+          1890864959
+        ],
+        "median_ns": 1832888792,
+        "maximum_ns": 1890864959,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "readable:sut-native-entry": {
+        "observations_ns": [
+          1966774667,
+          1971326667,
+          1969990625
+        ],
+        "median_ns": 1969990625,
+        "maximum_ns": 1971326667,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      },
+      "readable:unknown": {
+        "observations_ns": [
+          2292,
+          2541,
+          4459
+        ],
+        "median_ns": 2541,
+        "maximum_ns": 4459,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "query_total_ns"
+      },
+      "readable:unresolved": {
+        "observations_ns": [
+          1042,
+          1041,
+          11041
+        ],
+        "median_ns": 1042,
+        "maximum_ns": 11041,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": true,
+        "boundary": "query_total_ns"
+      },
+      "readable:wrong-role": {
+        "observations_ns": [
+          963087083,
+          954077250,
+          954998250
+        ],
+        "median_ns": 954998250,
+        "maximum_ns": 963087083,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "whole_error_ns"
+      },
+      "readable:missing": {
+        "observations_ns": [
+          2017299625,
+          1996211417,
+          2002314958
+        ],
+        "median_ns": 2002314958,
+        "maximum_ns": 2017299625,
+        "median_limit_ns": 250000000,
+        "maximum_limit_ns": 750000000,
+        "ok": false,
+        "boundary": "query_total_ns"
+      }
+    },
+    "projection_serialization": {
+      "full:farvi-all": {
+        "observations_ns": [
+          11151709,
+          11010501,
+          11474999
+        ],
+        "median_ns": 11151709,
+        "maximum_ns": 11474999,
+        "median_limit_ns": 500000000,
+        "maximum_limit_ns": 1000000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:farvi-all": {
+        "observations_ns": [
+          222253,
+          256837,
+          210792
+        ],
+        "median_ns": 222253,
+        "maximum_ns": 256837,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:farvi-lsk": {
+        "observations_ns": [
+          185792,
+          174123,
+          191791
+        ],
+        "median_ns": 185792,
+        "maximum_ns": 191791,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:farvi-llg": {
+        "observations_ns": [
+          100459,
+          106791,
+          112210
+        ],
+        "median_ns": 106791,
+        "maximum_ns": 112210,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:farvi-sut": {
+        "observations_ns": [
+          90249,
+          92168,
+          95834
+        ],
+        "median_ns": 92168,
+        "maximum_ns": 95834,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:absent": {
+        "observations_ns": [
+          64333,
+          66000,
+          64083
+        ],
+        "median_ns": 64333,
+        "maximum_ns": 66000,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:excluded-sut": {
+        "observations_ns": [
+          62166,
+          62708,
+          58956
+        ],
+        "median_ns": 62166,
+        "maximum_ns": 62708,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page-0": {
+        "observations_ns": [
+          64917,
+          66083,
+          62292
+        ],
+        "median_ns": 64917,
+        "maximum_ns": 66083,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page-1": {
+        "observations_ns": [
+          168751,
+          169252,
+          159418
+        ],
+        "median_ns": 168751,
+        "maximum_ns": 169252,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page-2": {
+        "observations_ns": [
+          179083,
+          183623,
+          176128
+        ],
+        "median_ns": 179083,
+        "maximum_ns": 183623,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page-3": {
+        "observations_ns": [
+          204123,
+          378250,
+          201628
+        ],
+        "median_ns": 204123,
+        "maximum_ns": 378250,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page-8": {
+        "observations_ns": [
+          173041,
+          283415,
+          212003
+        ],
+        "median_ns": 212003,
+        "maximum_ns": 283415,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page-concat-2": {
+        "observations_ns": [
+          166043,
+          202916,
+          178247
+        ],
+        "median_ns": 178247,
+        "maximum_ns": 202916,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page-concat-3": {
+        "observations_ns": [
+          166207,
+          178916,
+          242667
+        ],
+        "median_ns": 178916,
+        "maximum_ns": 242667,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page-concat-4": {
+        "observations_ns": [
+          155578,
+          164087,
+          164711
+        ],
+        "median_ns": 164087,
+        "maximum_ns": 164711,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page-concat-5": {
+        "observations_ns": [
+          84290,
+          91753,
+          88666
+        ],
+        "median_ns": 88666,
+        "maximum_ns": 91753,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page2-concat-2": {
+        "observations_ns": [
+          171873,
+          185290,
+          175204
+        ],
+        "median_ns": 175204,
+        "maximum_ns": 185290,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page2-concat-3": {
+        "observations_ns": [
+          81999,
+          86960,
+          82751
+        ],
+        "median_ns": 82751,
+        "maximum_ns": 86960,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:page3-concat-2": {
+        "observations_ns": [
+          97499,
+          103333,
+          97792
+        ],
+        "median_ns": 97792,
+        "maximum_ns": 103333,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "compact:jbotci-local": {
+        "observations_ns": [
+          142833,
+          144583,
+          140624
+        ],
+        "median_ns": 142833,
+        "maximum_ns": 144583,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "compact:jbotci-catalogue-native333": {
+        "observations_ns": [
+          201332,
+          213168,
+          179416
+        ],
+        "median_ns": 201332,
+        "maximum_ns": 213168,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "compact:la-catalogue-native333": {
+        "observations_ns": [
+          185792,
+          184000,
+          202793
+        ],
+        "median_ns": 185792,
+        "maximum_ns": 202793,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "compact:llg-component": {
+        "observations_ns": [
+          180957,
+          194082,
+          161792
+        ],
+        "median_ns": 180957,
+        "maximum_ns": 194082,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "compact:sut-native-entry": {
+        "observations_ns": [
+          187042,
+          158920,
+          169079
+        ],
+        "median_ns": 169079,
+        "maximum_ns": 187042,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "compact:unknown": {
+        "observations_ns": [
+          18126,
+          23041,
+          18125
+        ],
+        "median_ns": 18126,
+        "maximum_ns": 23041,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "compact:unresolved": {
+        "observations_ns": [
+          15041,
+          14959,
+          14958
+        ],
+        "median_ns": 14959,
+        "maximum_ns": 15041,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "compact:missing": {
+        "observations_ns": [
+          61790,
+          115083,
+          58625
+        ],
+        "median_ns": 61790,
+        "maximum_ns": 115083,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "readable:farvi-all": {
+        "observations_ns": [
+          81541,
+          78625,
+          73375
+        ],
+        "median_ns": 78625,
+        "maximum_ns": 81541,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:farvi-lsk": {
+        "observations_ns": [
+          45208,
+          75041,
+          54957
+        ],
+        "median_ns": 54957,
+        "maximum_ns": 75041,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:farvi-llg": {
+        "observations_ns": [
+          23083,
+          26916,
+          27624
+        ],
+        "median_ns": 26916,
+        "maximum_ns": 27624,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:farvi-sut": {
+        "observations_ns": [
+          21582,
+          42375,
+          26082
+        ],
+        "median_ns": 26082,
+        "maximum_ns": 42375,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:absent": {
+        "observations_ns": [
+          12375,
+          17415,
+          14082
+        ],
+        "median_ns": 14082,
+        "maximum_ns": 17415,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:excluded-sut": {
+        "observations_ns": [
+          11833,
+          14875,
+          13252
+        ],
+        "median_ns": 13252,
+        "maximum_ns": 14875,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page-0": {
+        "observations_ns": [
+          13498,
+          25125,
+          13457
+        ],
+        "median_ns": 13498,
+        "maximum_ns": 25125,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page-1": {
+        "observations_ns": [
+          95040,
+          108125,
+          101916
+        ],
+        "median_ns": 101916,
+        "maximum_ns": 108125,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page-2": {
+        "observations_ns": [
+          98294,
+          111040,
+          106752
+        ],
+        "median_ns": 106752,
+        "maximum_ns": 111040,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page-3": {
+        "observations_ns": [
+          104877,
+          136834,
+          198460
+        ],
+        "median_ns": 136834,
+        "maximum_ns": 198460,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page-8": {
+        "observations_ns": [
+          47622,
+          107591,
+          68291
+        ],
+        "median_ns": 68291,
+        "maximum_ns": 107591,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page-concat-2": {
+        "observations_ns": [
+          89956,
+          107665,
+          101918
+        ],
+        "median_ns": 101918,
+        "maximum_ns": 107665,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page-concat-3": {
+        "observations_ns": [
+          90334,
+          113875,
+          99793
+        ],
+        "median_ns": 99793,
+        "maximum_ns": 113875,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page-concat-4": {
+        "observations_ns": [
+          85958,
+          94251,
+          96331
+        ],
+        "median_ns": 94251,
+        "maximum_ns": 96331,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page-concat-5": {
+        "observations_ns": [
+          19499,
+          22623,
+          22585
+        ],
+        "median_ns": 22585,
+        "maximum_ns": 22623,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page2-concat-2": {
+        "observations_ns": [
+          95294,
+          99836,
+          100668
+        ],
+        "median_ns": 99836,
+        "maximum_ns": 100668,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page2-concat-3": {
+        "observations_ns": [
+          18915,
+          20668,
+          20792
+        ],
+        "median_ns": 20668,
+        "maximum_ns": 20792,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:page3-concat-2": {
+        "observations_ns": [
+          25501,
+          56418,
+          27415
+        ],
+        "median_ns": 27415,
+        "maximum_ns": 56418,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": false
+      },
+      "readable:jbotci-local": {
+        "observations_ns": [
+          58253,
+          55582,
+          54291
+        ],
+        "median_ns": 55582,
+        "maximum_ns": 58253,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "readable:jbotci-catalogue-native333": {
+        "observations_ns": [
+          89458,
+          83290,
+          91876
+        ],
+        "median_ns": 89458,
+        "maximum_ns": 91876,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "readable:la-catalogue-native333": {
+        "observations_ns": [
+          104334,
+          74875,
+          88042
+        ],
+        "median_ns": 88042,
+        "maximum_ns": 104334,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "readable:llg-component": {
+        "observations_ns": [
+          103125,
+          73373,
+          121250
+        ],
+        "median_ns": 103125,
+        "maximum_ns": 121250,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "readable:sut-native-entry": {
+        "observations_ns": [
+          81625,
+          75917,
+          116458
+        ],
+        "median_ns": 81625,
+        "maximum_ns": 116458,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "readable:unknown": {
+        "observations_ns": [
+          10541,
+          9333,
+          41416
+        ],
+        "median_ns": 10541,
+        "maximum_ns": 41416,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "readable:unresolved": {
+        "observations_ns": [
+          6626,
+          6500,
+          26626
+        ],
+        "median_ns": 6626,
+        "maximum_ns": 26626,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      },
+      "readable:missing": {
+        "observations_ns": [
+          68667,
+          37792,
+          39375
+        ],
+        "median_ns": 39375,
+        "maximum_ns": 68667,
+        "median_limit_ns": 50000000,
+        "maximum_limit_ns": 150000000,
+        "ok": true,
+        "reference_overlap_not_subtracted_from_warm": true
+      }
+    },
+    "failed": [
+      "warm:full:jbotci-local",
+      "warm:full:jbotci-catalogue-native333",
+      "warm:full:la-catalogue-native333",
+      "warm:full:llg-component",
+      "warm:full:sut-native-entry",
+      "warm:full:wrong-role",
+      "warm:full:missing",
+      "warm:compact:jbotci-local",
+      "warm:compact:jbotci-catalogue-native333",
+      "warm:compact:la-catalogue-native333",
+      "warm:compact:llg-component",
+      "warm:compact:sut-native-entry",
+      "warm:compact:wrong-role",
+      "warm:compact:missing",
+      "warm:readable:jbotci-local",
+      "warm:readable:jbotci-catalogue-native333",
+      "warm:readable:la-catalogue-native333",
+      "warm:readable:llg-component",
+      "warm:readable:sut-native-entry",
+      "warm:readable:wrong-role",
+      "warm:readable:missing"
+    ],
+    "ok": false,
+    "scope": "actual 3 observations per identity/mode; priming excluded; no heterogeneous pooling, retries or detail cap"
+  },
+  "scope": "original12 passed fresh reused at source011 +9 complete new warm processes; same-ID3round stats; latency is report-only under explicit decision, not historical target PASS; correctness/byte/resource failures remain fatal"
+}

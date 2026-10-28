@@ -1,0 +1,719 @@
+{
+  "scope": "sole completed correctness/output/resource continuation at source011, with accepted latency exceptions; historical failures unchanged; not current CI/fresh ARC/closure",
+  "source_head": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "files": [
+    {
+      "path": "controls/completion-full-execution01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full-execution01.json",
+      "bytes": 396265,
+      "sha256": "80082b80942c295ebc9a134267fbae30fa1f658414a032b28452ef36c6840cf1",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/root-completion-clearance01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-completion-clearance01.json",
+      "bytes": 1506,
+      "sha256": "7bccf4eae160e7ec47517dd3155f63713253939313e2d22bb1d6e8a19c785ac4",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/root-completion-preflight-review01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-completion-preflight-review01.json",
+      "bytes": 1642,
+      "sha256": "bc75dbf176dded5db962232fe62e33c68d10865f68973deabcaf0a29a0389e6e",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/root-completion-output-review01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-completion-output-review01.json",
+      "bytes": 2334,
+      "sha256": "250264b2df71a136fd923543871f6f6e9725a1aacc43eb2cfadb6b4637881feb",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-full-execution01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full-execution01.log",
+      "bytes": 2002,
+      "sha256": "e23237f6cf03a16ff6299034bef07140b5f02923537f9eaede151deb0baf3458",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-full-execution01-receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full-execution01-receipt.json",
+      "bytes": 693,
+      "sha256": "fe92b4615dde0bb6ccc96aaea8109903356ace765871237176d896ef7d62c049",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-reconcile-full01.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-reconcile-full01.py",
+      "bytes": 3858,
+      "sha256": "a773f0ac5c77a052fea7985b8d6c4a248acf8571a6699940f313c13badb2c148",
+      "kind": "whole-original"
+    },
+    {
+      "path": "controls/completion-full-reconciliation01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full-reconciliation01.json",
+      "bytes": 1827,
+      "sha256": "8eaf7ef42f852e75d5fa4a39b95e84ea112c7dc91193ca78a9925d023e5aceb4",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/completion-analysis.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/completion-analysis.json",
+      "bytes": 76516,
+      "sha256": "748b651aeb885bb8204a4bde20d5a0a7b5d4818531d72188c5f00f77b0864912",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/database-after.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/database-after.json",
+      "bytes": 335,
+      "sha256": "9dda82e7d98dd2a7361fe8b0b03bb3f7552b3b4b466c2890de6ce2b8a37e5bc1",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/database-before.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/database-before.json",
+      "bytes": 335,
+      "sha256": "9dda82e7d98dd2a7361fe8b0b03bb3f7552b3b4b466c2890de6ce2b8a37e5bc1",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/environment.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/environment.json",
+      "bytes": 345,
+      "sha256": "00767ecbf2f69b04d9aac292ab693f5c648d050ae0212aa472a4c3ed86985776",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/expanded-stages.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/expanded-stages.json",
+      "bytes": 2897,
+      "sha256": "458db63d6cb3046f4f3bcfde5514f9e1cf1463f8e0c2f3e424520c63a01dd3c0",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/inventory-before-summary.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/inventory-before-summary.json",
+      "bytes": 1142796,
+      "sha256": "bda4896ef08232d852fb24478f84bff27af1773624c5e5fe2c85df872d68312f",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/pre-input-normalized-facts.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/pre-input-normalized-facts.json",
+      "bytes": 23524,
+      "sha256": "255495bc80c3182c912173acede9756df334c2d345ba18c143f24a467fefe6fe",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/reused-fresh.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/reused-fresh.json",
+      "bytes": 25244,
+      "sha256": "97a97cf535891dde307440865c38df22478d15c6ea03a516bb0466a4542c3400",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/s05-scratch-before.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/s05-scratch-before.json",
+      "bytes": 1127350,
+      "sha256": "13dc422b316151beda76ece8087c216e40b2132cc60c46661463c108a40eb2ab",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/checked-stage.json",
+      "bytes": 2344,
+      "sha256": "7733b2f36b88577f75a3916f4f44b2715569a426f625112cdaf4b47b404b5c89",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/detail-0.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/detail-0.json",
+      "bytes": 13798,
+      "sha256": "8651577f8682192852e68329c34c969d2b1fa50869f48d2ec4b20d18dbec298a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/detail-1.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/detail-1.json",
+      "bytes": 14415,
+      "sha256": "9a4bae12d15f37290f3bcbb449151df1c8e6ecaeaeb2fa2ceb79e06ab99a0dbc",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/detail-2.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/detail-2.json",
+      "bytes": 13077,
+      "sha256": "52c7e9eb63e52e290621961f4f23035707a8142e80cafd1dedb3b13746e753ab",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/detail-3.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/detail-3.json",
+      "bytes": 12635,
+      "sha256": "15201e8e1bba6375296d73505766a5ca764e22fcca65c0353bfcf2f722487372",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/detail-4.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/detail-4.json",
+      "bytes": 11841,
+      "sha256": "1a5db3d93edea59e0a91defa08f9ad355bdc883a1367e40423502b862dfec470",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/guard.stdout",
+      "bytes": 566,
+      "sha256": "d61b93dd48e08c18399ba7a86eab76518f4c7fb607d5f57afd053f886b2c333a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/receipt.json",
+      "bytes": 606,
+      "sha256": "bb4768984ba5e25b6f18de527ae09bbec2e902f302218d887be491572057e8c1",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/stage.json",
+      "bytes": 1760,
+      "sha256": "68c2cc19b967b5c4cf1a61e36907f17f3b6b504b6e6006439677e7ab994b167f",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/stderr",
+      "bytes": 777,
+      "sha256": "692060a5425111da77370c0e614279bdbd37d71d3573df0451985de8e668dc01",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/semantic/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/semantic/stdout",
+      "bytes": 385,
+      "sha256": "5fbb01f8615380901b72baf02ba160590f4a6c489ea4b396181aa6e8bdcf7ef1",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/summary.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/summary.json",
+      "bytes": 1716,
+      "sha256": "bc36462042cb31ad011fa02f29320486fb40b3ef19df855bf61728ea4fff707e",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/target-cache-after.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/target-cache-after.json",
+      "bytes": 128,
+      "sha256": "b56fa13ffbd2d99bb00953bfea80dd60c3c2127b4c8c898fa1ba19827a8c8325",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/target-cache-before.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/target-cache-before.json",
+      "bytes": 108,
+      "sha256": "064d80da136ecd0f6c18aeeb50eb64e3f88dc4b3dab377c460138bdb07d37ca2",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/checked-stage.json",
+      "bytes": 78307,
+      "sha256": "87a62353934b1dbccfed127b97576ad5d9f71d759c6e2d424d727df01fdf1412",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/farvi-all-wire.txt",
+      "bytes": 33785,
+      "sha256": "216adbf31d7cbf595d877d005abfaac94c2a1e054ef8ab11c645cbc152528d93",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/guard.stdout",
+      "bytes": 595,
+      "sha256": "31a48a1cc8aaa3134f1fc8511bbff64982a91c74c5dfd6cb0c0f178bf77c54f1",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/receipt.json",
+      "bytes": 643,
+      "sha256": "d610edef38ff990a97a131204604fb3ba76a083755a9a80ff51af9a93c842fc5",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/stage.json",
+      "bytes": 1864,
+      "sha256": "9f51678ea090f755d43f6634488039ccf2d689b8a8bbb7c5b4b093ab0f178cac",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/stderr",
+      "bytes": 777,
+      "sha256": "da1e9b191edcb0f172ef5b9a0553e183f0d009269532cd78271efea3ecb9dbda",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-compact/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/stdout",
+      "bytes": 51490,
+      "sha256": "d6a845510d0742d68bc855eccad0d2d31bd421abc2031c7efde1adc5d6fdf8a8",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-full/checked-stage.json",
+      "bytes": 72428,
+      "sha256": "67ac5ce8379f4d7d27868aa77282e7688911fd8ecd55f10c4386398967b17228",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-full/guard.stdout",
+      "bytes": 584,
+      "sha256": "25f5ea55b48427d4f2fb65dd2df061bc8105f52876a497f90072b4b3d61f4111",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-full/receipt.json",
+      "bytes": 632,
+      "sha256": "1780e4dc83f58489c6df31777fcd0e29bb4efbbb62de59bc80087328bd09b568",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-full/stage.json",
+      "bytes": 1832,
+      "sha256": "ab5738fb6cbe50f715a8db176017cabf0c08892b2d73d40c270c45efd5d8a580",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-full/stderr",
+      "bytes": 777,
+      "sha256": "91d213026b3325db9ad08c6d882923cda0170f5f7f59b84c6846d8a4a116479e",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-full/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-full/stdout",
+      "bytes": 47593,
+      "sha256": "2eecb81e254440bc0e70b166bfea3f376882d1cf9350787c7c0025e4cc0d9747",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-readable/checked-stage.json",
+      "bytes": 78284,
+      "sha256": "71333ae00d23cadb2995522c44bf98dcb01e884dd66456f44fcb8c07f05eb7a2",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-readable/farvi-all-wire.txt",
+      "bytes": 11173,
+      "sha256": "3d98f7b3cf3472bf119b98dcd542e7a8b55f4ffcbbb8dbfc9bd24e77c66f2e35",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-readable/guard.stdout",
+      "bytes": 600,
+      "sha256": "9ec1f611006f0f76448b088685517ea1e84c1d97e782a388953afd9d2d26eb02",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-readable/receipt.json",
+      "bytes": 648,
+      "sha256": "d58cd4abd12bae73844d1b42763a6fb7a4d864bd7709ad81a34fb10c47220c3a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-readable/stage.json",
+      "bytes": 1876,
+      "sha256": "67d5c184ee9f6bf010a801ea7b6e3f4ae6a6c25d5b6975fb626ca60aefa5b97c",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-readable/stderr",
+      "bytes": 777,
+      "sha256": "c2074772970a40af15d4d3c6f4ac46d8fe258a9c57ce52f743cfee91df46363a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-1-readable/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-readable/stdout",
+      "bytes": 51455,
+      "sha256": "e66a6e83d307ed96012fe2dd63062cd886ea51a294dae9b5ae04032101db997a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-compact/checked-stage.json",
+      "bytes": 78319,
+      "sha256": "a09a00eeea2b31c4bcb64a1329f97e20226bb25134ae62aa4426b2b4193478c3",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-compact/farvi-all-wire.txt",
+      "bytes": 33785,
+      "sha256": "216adbf31d7cbf595d877d005abfaac94c2a1e054ef8ab11c645cbc152528d93",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-compact/guard.stdout",
+      "bytes": 595,
+      "sha256": "08cbe522b25348068d02a6be5ea3cd0af9d44f999b4c62e4a009dcbe3457a700",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-compact/receipt.json",
+      "bytes": 643,
+      "sha256": "b8cf26fe36c2c3cb6c73e8387048fa06316fc77bfa5963c80319ff29d27f9ec7",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-compact/stage.json",
+      "bytes": 1864,
+      "sha256": "a9e9fa9e857c05f67780c74dbbdabd682e57095cc44c1741e3c67d3a23565153",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-compact/stderr",
+      "bytes": 777,
+      "sha256": "f6f5f4c958679dcc7c388cb8bf2063dda33b0a90ee3d61b502f53e0544a42e7a",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-compact/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-compact/stdout",
+      "bytes": 51502,
+      "sha256": "392a029d4185a2d472b3be2fda58380054d4e67e37e89634bbb6ae3bc5650cff",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-full/checked-stage.json",
+      "bytes": 72427,
+      "sha256": "68bf66f410c3cccd53c775a1d9d2ba12d27c5b43768226be1bcf42fcf869e9cc",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-full/guard.stdout",
+      "bytes": 583,
+      "sha256": "b7b8a08f95e906e70ffea17e6072c74ab53ee52b3840bb1f48cc56cd8289d12c",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-full/receipt.json",
+      "bytes": 631,
+      "sha256": "3638346d00b221cac916391f1cc4ecf4fd42b278fe031be1b5743d38079ab099",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-full/stage.json",
+      "bytes": 1831,
+      "sha256": "9d7cb4255579a2a11278ce31dd41951940ce75c263f55ba2806b3dd5a9d2136e",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-full/stderr",
+      "bytes": 777,
+      "sha256": "4677eec91d04fa4aac366970a4ed2f1b83f09b846b3763d229ca0a2a83738c74",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-full/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-full/stdout",
+      "bytes": 47593,
+      "sha256": "87c0109f1618931ddf6c1f9db1694d17647292eda39931933e089390f60e82d0",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-readable/checked-stage.json",
+      "bytes": 78309,
+      "sha256": "6db0d0303837c565a9e3acc2b48450bee6126e42a49a26010bb2e6198836aaf5",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-readable/farvi-all-wire.txt",
+      "bytes": 11173,
+      "sha256": "3d98f7b3cf3472bf119b98dcd542e7a8b55f4ffcbbb8dbfc9bd24e77c66f2e35",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-readable/guard.stdout",
+      "bytes": 600,
+      "sha256": "b743fb410aea5d98bee80a3d82e808c7e1b87d5b5f4142f4e015b792ab76b782",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-readable/receipt.json",
+      "bytes": 648,
+      "sha256": "4843df543cd43a7712d4f55b9c00854cf18db44a2ad5c5ba9a5239a9512abeb5",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-readable/stage.json",
+      "bytes": 1876,
+      "sha256": "85ff5842b3aa9e09c7c14054dc6616ffc417e8aabc3bceba210b7b72fd4831cd",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-readable/stderr",
+      "bytes": 777,
+      "sha256": "a05bbdba677e7a072e0a71a72206b43881821925bf5de260f7ca854bf099b3dd",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-2-readable/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-2-readable/stdout",
+      "bytes": 51480,
+      "sha256": "7b2609f0453d28e047d43820b143a53362cb1f554f1288872e6803d368fe2f53",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-compact/checked-stage.json",
+      "bytes": 78303,
+      "sha256": "4e1bb6387a22c6149028889d7ea06e1b0ad2a78487855362ff851ea0c8c90e87",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-compact/farvi-all-wire.txt",
+      "bytes": 33785,
+      "sha256": "216adbf31d7cbf595d877d005abfaac94c2a1e054ef8ab11c645cbc152528d93",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-compact/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-compact/guard.stdout",
+      "bytes": 595,
+      "sha256": "c6b641b53ed887cbd3597d1f23d711d438b243ee06dfeafb2f3d104a6701d965",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-compact/receipt.json",
+      "bytes": 643,
+      "sha256": "84a85d0e5557cf950662bce0c2a6accf8d95de87642751df6fa3ee48a2fac0b9",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-compact/stage.json",
+      "bytes": 1864,
+      "sha256": "f3774ee428998e8b2b3a9a03078d9e6cc55b1c5b8459e28d6bc71eeb1859501c",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-compact/stderr",
+      "bytes": 777,
+      "sha256": "29349de83b80c16d25356ee2d22f3a7d3343d0e83176d06604784cb341d0eae9",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-compact/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-compact/stdout",
+      "bytes": 51486,
+      "sha256": "08d1db52a3a30d3be247e33356e9c847c139f62c9515b00e42468ca595d68706",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-full/checked-stage.json",
+      "bytes": 72438,
+      "sha256": "c2012a93c88f4d7ac492af5cec393250e4fbf76e5c0d1317b50a43db70f58ed7",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-full/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-full/guard.stdout",
+      "bytes": 584,
+      "sha256": "1bf053be1caa0bbb9c19a99bf38e85467ddf788338da61aac418ac05f5f77fdf",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-full/receipt.json",
+      "bytes": 632,
+      "sha256": "089bdcf857cb15e0ff328f3aea47cb4739bf6b5da794a9d31505fe20ee9a0aa5",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-full/stage.json",
+      "bytes": 1832,
+      "sha256": "a3c09e0c1e70e79ea5f6a5518f78f61d95196909b20b6ffb8cf2d9e965b34fb3",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-full/stderr",
+      "bytes": 777,
+      "sha256": "73ccddd4f2ad2bb04fecb36f7cc31421645f1fe4cc9f851473e8db5ae6249be6",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-full/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-full/stdout",
+      "bytes": 47603,
+      "sha256": "1b799354bdc426d2af11a1d70ae5a50dbd356d15ace0038dfc27ea65568a7764",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/checked-stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-readable/checked-stage.json",
+      "bytes": 78299,
+      "sha256": "9c44e4ba0be09465502e8324d4c8ff10c8622b0e6d00d2a87cb2bd404a248f04",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/farvi-all-wire.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-readable/farvi-all-wire.txt",
+      "bytes": 11173,
+      "sha256": "3d98f7b3cf3472bf119b98dcd542e7a8b55f4ffcbbb8dbfc9bd24e77c66f2e35",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/guard.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-readable/guard.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/guard.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-readable/guard.stdout",
+      "bytes": 599,
+      "sha256": "837bfe64b34d0a4d3846749a5abc616ab257bcd09063267966720c6381a21aa4",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-readable/receipt.json",
+      "bytes": 647,
+      "sha256": "814bb7560ddfbf07d7d263cb81c59bd6467cce603b242da70625aab318996ffa",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/stage.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-readable/stage.json",
+      "bytes": 1875,
+      "sha256": "4fb226af6c5e102157a27c3d05e6a33b369764ccccec706fac3c4360d381af76",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-readable/stderr",
+      "bytes": 777,
+      "sha256": "feb9a9f9667c1cd34b3ed444f757a8773da06626fbee948b75395d5f0a225125",
+      "kind": "whole-original"
+    },
+    {
+      "path": "output/warm-3-readable/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-3-readable/stdout",
+      "bytes": 51471,
+      "sha256": "228f32a7687ffc3ab46ceac10d3b9cbc02caccd5963453117a4104d8c7ef1dac",
+      "kind": "whole-original"
+    },
+    {
+      "path": "held-wire-inventory.json",
+      "bytes": 836,
+      "sha256": "2b662b02ab90e494107d4adb4fb5e2b7f870d80ecffe9974f0aaa2f426bf8dac",
+      "kind": "new-authored-inventory"
+    }
+  ]
+}

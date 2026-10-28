@@ -1,0 +1,56 @@
+{
+  "kind": "warm",
+  "round": 1,
+  "mode": "compact",
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+    "warm-full",
+    "compact",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact"
+  ],
+  "number": 2,
+  "original_equivalent_stage": 14,
+  "guard_argv": [
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/stage_guard_split01.py",
+    "--timeout",
+    "600",
+    "--max-rss-bytes",
+    "8589934592",
+    "--log",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/stderr",
+    "--stdout",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/stdout",
+    "--",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+    "warm-full",
+    "compact",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact"
+  ],
+  "guard_exit": 0,
+  "receipt": {
+    "argv": [
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-frozen-binaries01/completion-observer",
+      "warm-full",
+      "compact",
+      "1",
+      "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact"
+    ],
+    "decision": "passed",
+    "elapsed_seconds": 26.76714975014329,
+    "exit_code": 0,
+    "log": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/stderr",
+    "maximum_resident_set_size_bytes": 1897791488,
+    "pid": 49507,
+    "rss_parse_ok": true,
+    "rss_source": "/usr/bin/time -l maximum resident set size",
+    "stdout_path": "/tmp/vlajmaji-p01-a04-s05-cdc/completion-full01/warm-1-compact/stdout",
+    "timed_out": false
+  },
+  "stdout_bytes": 51490,
+  "stdout_sha256": "d6a845510d0742d68bc855eccad0d2d31bd421abc2031c7efde1adc5d6fdf8a8",
+  "stderr_bytes": 777,
+  "stderr_sha256": "da1e9b191edcb0f172ef5b9a0553e183f0d009269532cd78271efea3ecb9dbda"
+}

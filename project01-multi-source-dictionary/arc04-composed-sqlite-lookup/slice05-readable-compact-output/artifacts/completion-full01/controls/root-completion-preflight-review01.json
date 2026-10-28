@@ -1,0 +1,47 @@
+{
+  "review": "Root exact completion-only preflight PASS; execution clearance separate",
+  "packet_sha256": "e523e53cf05b172463370765537b0f055304b8665c84d2a4c2e2d1f1052e5a89",
+  "nondata_pins_checked": 127,
+  "deferred_full_config_not_read_or_stat": {
+    "path": "/private/tmp/vlajmaji-p01-a04-s04-cdc/full-config01.toml",
+    "bytes": 219,
+    "sha256": "51a6cb10ad3c7a0dd27a5bc03f207cd1d81774d6cf4cbeb21ee64c75fd17108c"
+  },
+  "full_database_not_read_or_stat": [
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/catalogue.sqlite3",
+    "/tmp/vlajmaji-p01-a04-s04-cdc/full-operational01/generations/22138258fb19a4b58ae1bb67d230a49e/store/dictionary.sqlite3"
+  ],
+  "stable_protocol_fields_checked": [
+    "root",
+    "config",
+    "cli",
+    "baseline",
+    "workload",
+    "guard",
+    "python",
+    "source",
+    "source_commit",
+    "source_tree",
+    "catalogue_revision",
+    "profile_revision",
+    "minimum_free_bytes",
+    "target_cache",
+    "sqlite_runtime_version",
+    "database_paths",
+    "expected_database_sha256",
+    "expected_assertion_ids"
+  ],
+  "new_children_maximum": 10,
+  "reused_checked_fresh": 12,
+  "current_tiny_children": 10,
+  "current_tiny_facts": 486,
+  "current_named_scratch_roots": 953,
+  "current_scratch_entries": 6797,
+  "current_scratch_bytes": 753309872,
+  "current_free_bytes": 460285906944,
+  "current_target_bytes": 70760869888,
+  "source_commit": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "source_tree": "a8c0fdcb3e39fb260602bb48b837b25f4d2380ac",
+  "latency_disposition": "report-only explicit exception; correctness/byte/resource checks enforced",
+  "no_source_edit_or_Cargo": true
+}
