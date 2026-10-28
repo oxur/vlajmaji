@@ -220,3 +220,15 @@ Canonical artifacts/numeric-failed01 byte-copies allsmallraw/checkedreceipts/out
 ### Explicit one-pass/campaign amendment —2026-10-28 UTC
 
 Duncan explicitly submitted “Approve one correction pass and campaign” to the exact question preserved with answer/itemid in artifacts/authority-s05-extra-pass01.json (1243B/SHA352b69455418f0ea7247da261eeff6eee228a098daef86ea0284b4e174836330). Scope is SIX TOTAL S05 implementation passes, one correction affecting AT MOST FOUR EXISTING files, required local/Tiny validation and ONEadditional <=22-stage Full campaign; same Sol6.1/high CDC/Luna/high CC, unchanged thresholds, retained failedrun, NOautomaticseventh/retry/push. Root concrete readiness before numbered05issue/intake/transfer/dependent source/build, then separate exactfrozen executable review before additionalFull launch. Existing failure evidence/source1b remain unchanged. Earlier five-total/exhaustion/noamendment paragraphs are historical and explain why this amendment was requested; no budget reset or retroactive pass. All6rowsOPEN/currentLinux/freshARC/close/externalgate pending. CDC exclusively owns QUIET source/index/ONEtarget for preservation/source-only concrete05 drafting; CC/root readonly.
+
+
+### Concrete05 DRAFT checkpoint —2026-10-28 UTC
+
+DRAFT cc-prompt-iteration05.md and slice-plan§17 now freeze exact FOURexistingpaths, named storecache/Cow APIs, RefCell&self/noescape, currentSQLbytes+kind/header validation, nativeROOT/prune/128entry+512MiBproxy/ownedfallback, originalpostscanambiguity precedence and exacttoolhomes/ownedHOME-XDG-TMPDIR gates. Human sixth-totalamendment is active but rootconcretereadiness/issue/completeintake/explicittransfer stillpending; source1b remainscleanquiet/CDCexclusive, no dependentbuild/Fulltrial. All6OPEN; failurebundle unchanged.
+
+
+### Iteration05 root readiness / STATUS-ONLY issue —2026-10-28 UTC
+
+Root FINAL concrete readiness PASS after reading WHOLE24789B DRAFT4e7c6578…79434 and new§17, checking sourceclean1b/lock65cd/guard20fe, full bodies/guidepaths/toolhomes and3precedence/environmentcorrections. CurrentcacheCOW/root/currentbytes+SQLkind/header/fallback/128entries512MiBproxy and same-readerrestoration/latecorruption-over-ambiguity controls accepted as a concrete recipe, NOTproductacceptance. Exactrevieweddraft byte-preserved artifacts/cc-prompt-iteration05-reviewed-draft01.md; activeprompt ISSUED STATUSLINEONLY. Previous immutableprompts/failurebundle/humanquestionanswer unchanged.
+
+Iteration05 is SIXTH TOTAL by explicit human amendment, maxFOURexistingpaths; noautomatic7/retry. CDC exclusively owns QUIET source/index/ONEtarget until retainedLuna/high FULLplan§§1–17/prompt/evidence/source intake +source-citedreadback is coherent and accepted, fresh1b/lock/guard/oldrefs checked and explicit CDC ownership dispatch. Rootreadonly; issuealone transfersnothing. NoFulltrial/currentLinux/sourceacceptance/rowclosure/network/push from issue. All6OPEN; laterONEadditional22campaign needs NEWexclusiveoutput/frozenbinaries/exactrootreview.
