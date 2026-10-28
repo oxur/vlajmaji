@@ -2,10 +2,10 @@
 
 | Field | Value |
 | --- | --- |
-| Status / version | Iteration06 seventh TEST-ONLY pass frozen5bc9da71; CDC bounded delta/local gates PASS; actual currentCI/freshARC pending /1.25 /2026-10-28. Full correctness/output complete with accepted timing exceptions; all6OPEN. |
+| Status / version | Iteration06 frozen5bc/localPASS, actualCI40700824095 FAILURE (MacPASS/Linuxwrongoperation/Check4Lint); human eighth-test-only extension PENDING; freshARC BLOCKED /1.26 /2026-10-28. All6OPEN. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
 | Source / dependency | CURRENT clean5bc9da710f765152b6a39cbc1506a2716aebfe60/tree43a889e7/parent011/S05branch/base32e99; exact2test-only delta/cumulative23. All131otherGitentries byte-identical011; oldS04local+origin432 unchanged. |
-| Ownership | Root owns QUIET source/index/ONEtarget for authorized exact candidate normalpush/currentCI. CDC/CC readonly there; CDC planning/source-only freshreview preparation. All author sessions terminal. |
+| Ownership | Source/index/ONEtarget QUIET after actual failedCI. Root prepares concrete ONE-test-file next proposal; human eighth-pass extension PENDING. No edits/Cargo/product/Full/freshreview launch; CDC evidence/planning only. |
 | Delivery | Additive compact Exact/Resolve and complete occurrence detail, then source-grouped readable Exact/Resolve/detail. Full default JSON stays compatible. Public libraries, CLI, documentation and actual five-workflow composition accompany output, not verification alone. |
 | Sizing | Six completed author passes plus ONE explicitly human-approved seventh TEST-ONLY pass (iteration06), exactly two paths. No automatic eighth, Full replay or optimisation. |
 | Limits | No dependency/lock/schema/importer/model/workflow changes, topology redo, new Full store/generation, cleanup/cache reset, actual-default access, S04 branch writes, A05 activation, network/push/PR/merge/publication. Later finite retained-G4 trial needs exact executable root readiness. |

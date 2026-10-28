@@ -1,0 +1,18 @@
+{
+  "status": "PROPOSED_ONLY_NO_SOURCE_EDIT_REQUIRES_EXPLICIT_EIGHTH_TEST_ONLY_PASS",
+  "source": "5bc9da710f765152b6a39cbc1506a2716aebfe60",
+  "ci_run": 40700824095,
+  "file": "crates/cli/tests/query_output_contract.rs",
+  "before_sha256": "e8a143721d309c1a1bd300c239635e41db429dffcc29a92a04722e1be42fa4ad",
+  "proposed_after_sha256": "23f93e3e6caa2db07f81fcc7ff292a41efb6516845afc0d68b8a88cfd6293e94",
+  "patch_sha256": "05c590fec2c81127b79339ee3a02286614d00e6cf850c4442362bfde05642a90",
+  "scope": "six changed lines in one Linux-only test:four needless args borrows removed, two exact-operation expectations corrected; lookup_detail expectations and all other assertions unchanged",
+  "source_basis": [
+    "crates/cli/src/main.rs:1389-1398 sets successful request outputcontext operation exact/resolve",
+    "main.rs:1476-1527 populates readable and compact error context from actual response",
+    "main.rs:1633-1677 preserves lookup_detail context",
+    "whole Linux-only test2976-3220 audited; both exact expectations +all4Lint sites handled"
+  ],
+  "validation": "same ordered formatting/lint/affected suite/makecheck; actual current Linux/macOS CI mandatory; no new Full campaign; production/deps untouched",
+  "authority": "Await human one additional eighth test-only correction pass with commit/push/CI; no automatic ninth"
+}

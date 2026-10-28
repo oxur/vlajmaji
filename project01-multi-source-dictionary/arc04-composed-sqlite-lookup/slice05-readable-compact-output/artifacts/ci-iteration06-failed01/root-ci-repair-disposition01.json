@@ -1,0 +1,49 @@
+{
+  "head": "5bc9da710f765152b6a39cbc1506a2716aebfe60",
+  "run": 40700824095,
+  "url": "https://github.com/oxur/vlajmaji/actions/runs/40700824095",
+  "watch_session": 21357,
+  "watch_terminal_exit": 1,
+  "push_session": 13959,
+  "push_terminal_exit": 0,
+  "macos_default": {
+    "summary_rows": 56,
+    "passed": 338,
+    "failed": 0,
+    "ignored": 1
+  },
+  "linux_default_partial": {
+    "summary_rows": 13,
+    "passed": 79,
+    "failed": 1,
+    "ignored": 0,
+    "last_target": "query_output_contract 7passed/1failed"
+  },
+  "check": "check+format pass;Clippy4needlessgenericargsborrows fail;docs/tools skipped",
+  "linux_feature_gates": "no-default/allfeatures skipped after defaultfailure",
+  "source_diagnosis": "Whole Linux-only device test and real outputcontext paths reviewed. Actual and already acceptedmain Exact output operation=exact, test wrongly expectslookup twice. lookup_detail stayslookup_detail. Allfour argumentarrays areCopy &str arrays. Six-line ONE-file proposal preserves allother assertions. No source edit/runtime retry/extraFull.",
+  "proposal_sha256": "05c590fec2c81127b79339ee3a02286614d00e6cf850c4442362bfde05642a90",
+  "human_gate": "Explicit eighth test-onlypass/commitpushCI question pending; noautomaticninth",
+  "raw_files": [
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-repair-terminal01.json",
+      "bytes": 9300,
+      "sha256": "6205313e4bef8ce1267709b000cbc5bebbb82034860a16eafb09a443a9a5da01"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-repair-all01.log",
+      "bytes": 348133,
+      "sha256": "460587194f0741d3c687e1cc3520186880a92ee743e04d8c36585abec2989de8"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-repair-failed01.log",
+      "bytes": 41411,
+      "sha256": "e72cdff4bac2261bc06e81a0ce4770ec8bc22ddc5f768cee339a27a8afd64ad4"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-repair-watch01.log",
+      "bytes": 7497,
+      "sha256": "51bd86ec289f5b7e426e77e9b755df0fc18cc2b43e73024e9133dd450437b881"
+    }
+  ]
+}
