@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE/fivearcDONEfiveOPEN. S05 final04 bounded ACCEPTED1b; exactFullnumericalcampaign FAILED at warmFullreference1.214s>750ms after12freshPASS. Human sixth-total correction/amended05 ISSUED; complete delta intake/transferpending. All6OPEN/currentLinux/freshARC/close. |
-| version / date | 1.29 /2026-10-28 UTC |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE/fivearcDONEfiveOPEN. S05 final04 bounded ACCEPTED1b; exactFullnumericalcampaign FAILED at warmFullreference1.214s>750ms after12freshPASS. Human sixth-total/six-file correction05 and amendments ISSUED; complete delta accepted, explicit six-path ownership follows scoped metadata commit. All6OPEN/currentLinux/freshARC/close. |
+| version / date | 1.30 /2026-10-28 UTC |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | Same isolated S05branch clean1b/tree338daa/base32e99, oldS04local/origin432 immutable. Explicit CC all-terminal return accepted; CDC owns source/index/ONEtarget, root/CC read-only. One root-cleared Fullcampaign terminalFAILED/13attempted12checked; no retry/newsourcepass. CDC source/index/targetquiet pending completeamendedintake/transfer; acceptedFullG4 unchanged. Actualprimarylocalmain52fd distinct. |
+| integration destination | Same isolated S05branch HEAD1b/tree338daa/base32e99; originalFOUR author WIP expected. OldS04local/origin432 immutable. Complete extraTWO delta accepted/fresh baseline pins+lockguardrefs verified; AFTER scoped metadata commit +explicit CDC extension retained CC owns SIX issued source paths/index/ONEtarget, CDC/root READONLY. FailedFull13attempted12checked immutable; later one additional <=22 campaign exact readiness separate. Accepted FullG4 and actualprimarylocalmain52fd protected. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
