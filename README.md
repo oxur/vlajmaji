@@ -175,6 +175,10 @@ compact --request JSON`. Both retain full output by default. Compact hits carry
 strict detail keys that can be expanded with `dictionary-detail STORE
 --reference JSON`, or `lookup-detail --reference JSON` for managed results.
 The collection guide documents snapshot checking and the compact/detail fields.
+Pass `--format readable` to `dictionary-query` or configured `lookup` for
+deterministic source-grouped text, or to either detail command for a readable
+complete-hit view. Full JSON remains the default; compact JSON keeps its
+existing response shape.
 
 Corpus data is not bundled. The [migration and replay guide](docs/migration.md)
 describes importing research inputs, building a store, querying it, and running

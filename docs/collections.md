@@ -228,3 +228,30 @@ error. Standalone compact `dictionary-query` writes the selected Exact or
 Resolve response object directly at the JSON root; the operation-tagged
 library enum is not an extra CLI wrapper. Configured `lookup` keeps its managed
 envelope and nested result tag.
+
+The query commands and both detail commands also accept `--format readable`.
+Readable output is rendered from the same typed compact result and does not
+alter profile selection, cursor binding, or detail-key validation. Exact and
+Resolve readable output retains occurrence records, `Presence` values, and
+totals, while omitting compact availability, notices, and other projection
+metadata; use Compact JSON when those fields are needed. Full JSON remains the
+default, and Compact JSON retains its existing wire shape.
+
+For example, run a query in readable form. To request a complete hit, first
+copy the complete `detail_ref` object from a Compact Exact hit into
+`DETAIL_REF_JSON`, then pass that same strict key to either detail command:
+
+```sh
+vlajmaji dictionary-query "$STORE" --format readable --request '{"operation":"exact","spelling":"farvi"}'
+vlajmaji lookup farvi --profile research --format readable
+vlajmaji dictionary-query "$STORE" --format compact --request '{"operation":"exact","spelling":"farvi"}'
+DETAIL_REF_JSON='REPLACE_WITH_COMPLETE_DETAIL_REF_JSON_FROM_COMPACT_HIT'
+vlajmaji dictionary-detail "$STORE" --format readable --reference "$DETAIL_REF_JSON"
+vlajmaji lookup-detail --profile research --format readable --reference "$DETAIL_REF_JSON"
+```
+
+Replace the variable placeholder with the literal JSON object copied from the hit.
+Keep every field from that key, including its digest policy, role,
+source, occurrence and nullable native/contributor/distributor fields. Readable
+detail renders the complete `DictionaryHit`, omitting only the outer version,
+policy, and state fields from its wrapper.

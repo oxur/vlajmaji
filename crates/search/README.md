@@ -64,6 +64,10 @@ targeted local or catalogue projections and retains contributor pack/release
 scopes for admission. It does not authenticate ordinary-open SQLite payload
 bytes, and a compact hit's snapshot token is not a signature. See
 `docs/collections.md` for managed CLI examples and the exact JSON contract.
+The search crate also exports four pure `render_*` functions for readable
+compact Exact/Resolve and complete-hit detail output. They format typed
+responses already returned by the query APIs and do not open a provider or
+change query selection.
 
 The `topology_probe` example is a local comparison harness, not user
 configuration or an installer. `prepare --manifest FILE` strictly loads four

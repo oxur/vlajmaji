@@ -21,7 +21,9 @@ use vlajmaji_search::{
     CollectionCompactSearchEngine, CollectionQueryError, CollectionQueryErrorReport,
     CollectionSearchEngine, DictionaryCompactQueryResult, DictionaryCompactSearchEngine,
     DictionaryErrorReport, DictionaryExactOptions, DictionaryHitDetailRef, DictionaryRequest,
-    DictionarySearchEngine, Query, SearchEngine, SearchOptions, validate_detail_snapshot_sha256,
+    DictionarySearchEngine, Query, SearchEngine, SearchOptions, render_collection_compact,
+    render_collection_detail, render_dictionary_compact, render_dictionary_detail,
+    validate_detail_snapshot_sha256,
 };
 use vlajmaji_store::{
     CollectionCatalogue, CollectionError, CollectionInput, CollectionPolicySelection,
@@ -90,6 +92,8 @@ enum Command {
         reference: String,
         #[arg(long)]
         expected_snapshot: Option<String>,
+        #[arg(long, value_enum, default_value_t = DetailFormat::Full)]
+        format: DetailFormat,
     },
     /// Explicitly audit one or all integrity boundaries of an existing grouped store.
     #[command(
@@ -173,6 +177,8 @@ enum Command {
         profile: Option<String>,
         #[arg(long)]
         pack: Vec<String>,
+        #[arg(long, value_enum, default_value_t = DetailFormat::Full)]
+        format: DetailFormat,
     },
 }
 
@@ -181,6 +187,14 @@ enum QueryFormat {
     #[default]
     Full,
     Compact,
+    Readable,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum, Default)]
+enum DetailFormat {
+    #[default]
+    Full,
+    Readable,
 }
 
 #[derive(Debug, Subcommand)]
@@ -473,7 +487,10 @@ struct ManagedOutputContext {
 
 impl ManagedOutputContext {
     fn report(&self, detail: String) -> serde_json::Value {
-        if self.operation == "dictionary_detail" {
+        if matches!(
+            self.operation.as_str(),
+            "dictionary_detail" | "dictionary_query"
+        ) {
             return serde_json::json!(DictionaryErrorReport {
                 code: "response_output_io".into(),
                 message: detail,
@@ -500,6 +517,20 @@ impl ManagedOutputContext {
             outcome: self.outcome.clone(),
             writer: None,
         })
+    }
+}
+
+fn dictionary_readable_output_context(store: &Path, operation: &str) -> ManagedOutputContext {
+    ManagedOutputContext {
+        operation: operation.into(),
+        config_path: None,
+        root_path: Some(vlajmaji_store::native_path_report(store)),
+        profile: None,
+        requested_profile: None,
+        snapshot: None,
+        known_pack_ids: Vec::new(),
+        outcome: "not_applicable".into(),
+        collection_failure: None,
     }
 }
 
@@ -917,12 +948,28 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                     }
                     .map_err(|error| structured_error("response_json", error.to_string()))?
                 }
+                QueryFormat::Readable => {
+                    let engine = DictionaryCompactSearchEngine::open(&selected.path)
+                        .map_err(|error| CliError::Structured(error.report()))?;
+                    let result = engine
+                        .execute(request)
+                        .map_err(|error| CliError::Structured(error.report()))?;
+                    output_context = Some(dictionary_readable_output_context(
+                        &selected.path,
+                        "dictionary_query",
+                    ));
+                    return Ok((
+                        QueryOutput::Readable(render_dictionary_compact(&result)),
+                        output_context,
+                    ));
+                }
             }
         }
         Command::DictionaryDetail {
             store,
             reference,
             expected_snapshot,
+            format,
         } => {
             let reference = DictionaryHitDetailRef::from_json_bytes(reference.as_bytes())
                 .map_err(|error| CliError::Structured(error.report()))?;
@@ -936,8 +983,16 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
             let response = engine
                 .detail(&reference, expected_snapshot.as_deref())
                 .map_err(|error| CliError::Structured(error.report()))?;
-            serde_json::to_value(response)
-                .map_err(|error| structured_error("response_json", error.to_string()))?
+            match format {
+                DetailFormat::Full => serde_json::to_value(response)
+                    .map_err(|error| structured_error("response_json", error.to_string()))?,
+                DetailFormat::Readable => {
+                    return Ok((
+                        QueryOutput::Readable(render_dictionary_detail(&response)),
+                        output_context,
+                    ));
+                }
+            }
         }
         Command::Verify { check, store } => {
             let selected = resolve_store(store)?;
@@ -1418,6 +1473,53 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                     })?;
                     (value, response.snapshot, response.collections)
                 }
+                QueryFormat::Readable => {
+                    let mut engine = CollectionCompactSearchEngine::open_configured(
+                        &profiles,
+                        profile.as_deref(),
+                        override_packs.as_deref(),
+                    )
+                    .map_err(|error| {
+                        let known_pack_ids = override_packs
+                            .as_deref()
+                            .unwrap_or(&configured_profile.packs);
+                        with_managed_context(
+                            managed_error_for(error, "lookup"),
+                            Some(&config_path),
+                            Some(&configured_profile.root),
+                            profile.as_deref(),
+                            Some(profile_identity.clone()),
+                            known_pack_ids,
+                        )
+                    })?;
+                    let response = engine.execute(request).map_err(|error| {
+                        let mut report = error.report_for(operation);
+                        report.snapshot = Some(engine.selection().clone());
+                        report.profile = engine.selection().profile.clone();
+                        report.config_path = Some(profile_identity.config_path.clone());
+                        report.root_path =
+                            Some(vlajmaji_store::native_path_report(&configured_profile.root));
+                        report.known_pack_ids = engine
+                            .selection()
+                            .collections
+                            .iter()
+                            .map(|row| row.pack_id.clone())
+                            .collect();
+                        CliError::Managed(Box::new(report))
+                    })?;
+                    if let Some(context) = output_context.as_mut() {
+                        context.snapshot = Some(response.snapshot.clone());
+                        context.known_pack_ids = response
+                            .collections
+                            .iter()
+                            .map(|row| row.pack_id.clone())
+                            .collect();
+                    }
+                    return Ok((
+                        QueryOutput::Readable(render_collection_compact(&response)),
+                        output_context,
+                    ));
+                }
             };
             if let Some(context) = output_context.as_mut() {
                 context.snapshot = Some(snapshot);
@@ -1432,6 +1534,7 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
             config,
             profile,
             pack,
+            format,
         } => {
             let detail_ref = DictionaryHitDetailRef::from_json_bytes(reference.as_bytes())
                 .map_err(|error| {
@@ -1563,9 +1666,17 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                     .map(|row| row.pack_id.clone())
                     .collect();
             }
-            serde_json::to_value(response).map_err(|error| {
-                managed_cli_error("response_serialization", error.to_string(), "lookup_detail")
-            })?
+            match format {
+                DetailFormat::Full => serde_json::to_value(response).map_err(|error| {
+                    managed_cli_error("response_serialization", error.to_string(), "lookup_detail")
+                })?,
+                DetailFormat::Readable => {
+                    return Ok((
+                        QueryOutput::Readable(render_collection_detail(&response)),
+                        output_context,
+                    ));
+                }
+            }
         }
     };
     Ok((QueryOutput::Json(output), output_context))
@@ -2776,12 +2887,7 @@ fn main() -> std::process::ExitCode {
     };
     let mut stdout = io::stdout().lock();
     let mut stderr = io::stderr().lock();
-    if emit_success_response(
-        output.as_json(),
-        &mut stdout,
-        &mut stderr,
-        output_context.as_ref(),
-    ) {
+    if emit_success_response(&output, &mut stdout, &mut stderr, output_context.as_ref()) {
         std::process::ExitCode::SUCCESS
     } else {
         std::process::ExitCode::FAILURE
@@ -2794,28 +2900,21 @@ enum ResponseWriteFailure {
 }
 
 fn emit_success_response<W: Write, E: Write>(
-    output: &serde_json::Value,
+    output: &QueryOutput,
     stdout: &mut W,
     stderr: &mut E,
     context: Option<&ManagedOutputContext>,
 ) -> bool {
-    let write_result = serde_json::to_writer(&mut *stdout, output)
-        .map_err(|error| match error.io_error_kind() {
-            Some(io::ErrorKind::BrokenPipe) => ResponseWriteFailure::BrokenPipe,
-            _ => ResponseWriteFailure::Other(error.to_string()),
-        })
-        .and_then(|()| {
-            stdout
-                .write_all(b"\n")
-                .and_then(|()| stdout.flush())
-                .map_err(|error| {
-                    if error.kind() == io::ErrorKind::BrokenPipe {
-                        ResponseWriteFailure::BrokenPipe
-                    } else {
-                        ResponseWriteFailure::Other(error.to_string())
-                    }
-                })
-        });
+    let write_result = match output {
+        QueryOutput::Json(value) => serde_json::to_writer(&mut *stdout, value)
+            .map_err(|error| match error.io_error_kind() {
+                Some(io::ErrorKind::BrokenPipe) => ResponseWriteFailure::BrokenPipe,
+                _ => ResponseWriteFailure::Other(error.to_string()),
+            })
+            .and_then(|()| write_response_bytes(stdout, b"\n")),
+        QueryOutput::Readable(text) => write_response_bytes(stdout, text.as_bytes()),
+    }
+    .and_then(|()| stdout.flush().map_err(response_write_failure));
     match write_result {
         Ok(()) => true,
         Err(ResponseWriteFailure::BrokenPipe) => true,
@@ -2823,6 +2922,21 @@ fn emit_success_response<W: Write, E: Write>(
             write_output_error(stderr, context, detail);
             false
         }
+    }
+}
+
+fn write_response_bytes<W: Write>(
+    stdout: &mut W,
+    bytes: &[u8],
+) -> Result<(), ResponseWriteFailure> {
+    stdout.write_all(bytes).map_err(response_write_failure)
+}
+
+fn response_write_failure(error: io::Error) -> ResponseWriteFailure {
+    if error.kind() == io::ErrorKind::BrokenPipe {
+        ResponseWriteFailure::BrokenPipe
+    } else {
+        ResponseWriteFailure::Other(error.to_string())
     }
 }
 
@@ -2844,7 +2958,7 @@ fn write_output_error<E: Write>(
 #[cfg(test)]
 mod managed_output_tests {
     use super::{
-        ManagedOutputContext, emit_success_response, lifecycle_output_context,
+        ManagedOutputContext, QueryOutput, emit_success_response, lifecycle_output_context,
         mutation_output_context,
     };
     use std::{
@@ -2870,6 +2984,80 @@ mod managed_output_tests {
         }
     }
 
+    struct FlushFailureWriter;
+
+    impl Write for FlushFailureWriter {
+        fn write(&mut self, buffer: &[u8]) -> io::Result<usize> {
+            Ok(buffer.len())
+        }
+
+        fn flush(&mut self) -> io::Result<()> {
+            Err(io::Error::from_raw_os_error(5))
+        }
+    }
+
+    struct BrokenPipeWriter;
+
+    impl Write for BrokenPipeWriter {
+        fn write(&mut self, _buffer: &[u8]) -> io::Result<usize> {
+            Err(io::Error::from(io::ErrorKind::BrokenPipe))
+        }
+
+        fn flush(&mut self) -> io::Result<()> {
+            Ok(())
+        }
+    }
+
+    #[test]
+    fn test_shared_json_and_readable_writer_handles_flush_errors_and_broken_pipe() {
+        let context = ManagedOutputContext {
+            operation: "lookup".into(),
+            config_path: None,
+            root_path: None,
+            profile: None,
+            requested_profile: Some("research".into()),
+            snapshot: None,
+            known_pack_ids: vec!["llg".into()],
+            outcome: "not_applicable".into(),
+            collection_failure: None,
+        };
+
+        for output in [
+            QueryOutput::Json(serde_json::json!({"ok":true})),
+            QueryOutput::Readable("readable body".into()),
+        ] {
+            let mut stderr = Vec::new();
+            assert!(!emit_success_response(
+                &output,
+                &mut FlushFailureWriter,
+                &mut stderr,
+                Some(&context),
+            ));
+            let envelope: serde_json::Value = serde_json::from_slice(&stderr).unwrap();
+            assert_eq!(envelope["error"]["category"], "response_output_io");
+            assert_eq!(envelope["error"]["operation"], "lookup");
+            assert_eq!(envelope["error"]["outcome"], "not_applicable");
+            assert_eq!(
+                envelope["error"]["known_pack_ids"],
+                serde_json::json!(["llg"])
+            );
+        }
+
+        for output in [
+            QueryOutput::Json(serde_json::json!({"ok":true})),
+            QueryOutput::Readable("readable body".into()),
+        ] {
+            let mut stderr = Vec::new();
+            assert!(emit_success_response(
+                &output,
+                &mut BrokenPipeWriter,
+                &mut stderr,
+                Some(&context),
+            ));
+            assert!(stderr.is_empty());
+        }
+    }
+
     #[test]
     fn test_emit_managed_response_io_failure_reports_committed_context() {
         let context = ManagedOutputContext {
@@ -2885,7 +3073,7 @@ mod managed_output_tests {
         };
         let mut stderr = Vec::new();
         let ok = emit_success_response(
-            &serde_json::json!({"ok":true}),
+            &QueryOutput::Json(serde_json::json!({"ok":true})),
             &mut BadDescriptorWriter,
             &mut stderr,
             Some(&context),
@@ -2922,7 +3110,7 @@ mod managed_output_tests {
         };
         let mut read_stderr = Vec::new();
         assert!(!emit_success_response(
-            &serde_json::json!({"ok":true}),
+            &QueryOutput::Json(serde_json::json!({"ok":true})),
             &mut BadDescriptorWriter,
             &mut read_stderr,
             Some(&read_context),
@@ -2930,6 +3118,43 @@ mod managed_output_tests {
         let read_envelope: serde_json::Value = serde_json::from_slice(&read_stderr).unwrap();
         assert_eq!(read_envelope["error"]["operation"], "lookup");
         assert_eq!(read_envelope["error"]["outcome"], "not_applicable");
+    }
+
+    #[test]
+    fn test_emit_readable_uses_shared_writer_without_adding_a_newline() {
+        let mut stdout = Vec::new();
+        let mut stderr = Vec::new();
+        assert!(emit_success_response(
+            &QueryOutput::Readable("readable body\n".into()),
+            &mut stdout,
+            &mut stderr,
+            None,
+        ));
+        assert_eq!(stdout, b"readable body\n");
+        assert!(stderr.is_empty());
+
+        let context = ManagedOutputContext {
+            operation: "lookup".into(),
+            config_path: None,
+            root_path: None,
+            profile: None,
+            requested_profile: Some("readable".into()),
+            snapshot: None,
+            known_pack_ids: vec!["llg".into()],
+            outcome: "not_applicable".into(),
+            collection_failure: None,
+        };
+        let mut stderr = Vec::new();
+        assert!(!emit_success_response(
+            &QueryOutput::Readable("readable body\n".into()),
+            &mut BadDescriptorWriter,
+            &mut stderr,
+            Some(&context),
+        ));
+        let envelope: serde_json::Value = serde_json::from_slice(&stderr).unwrap();
+        assert_eq!(envelope["error"]["category"], "response_output_io");
+        assert_eq!(envelope["error"]["operation"], "lookup");
+        assert_eq!(envelope["error"]["outcome"], "not_applicable");
     }
 
     #[test]
@@ -2947,7 +3172,7 @@ mod managed_output_tests {
         };
         let mut stderr = Vec::new();
         assert!(!emit_success_response(
-            &serde_json::json!({"version":1,"hit":{}}),
+            &QueryOutput::Json(serde_json::json!({"version":1,"hit":{}})),
             &mut BadDescriptorWriter,
             &mut stderr,
             Some(&context),
@@ -2997,7 +3222,7 @@ mod managed_output_tests {
         );
         let mut stderr = Vec::new();
         assert!(!emit_success_response(
-            &serde_json::json!({"operation":"update"}),
+            &QueryOutput::Json(serde_json::json!({"operation":"update"})),
             &mut BadDescriptorWriter,
             &mut stderr,
             Some(&context),
@@ -3123,7 +3348,7 @@ mod managed_output_tests {
             assert_eq!(failure.observed_generation.as_deref(), Some("generation-5"));
             let mut stderr = Vec::new();
             assert!(!emit_success_response(
-                &serde_json::json!({"operation": operation}),
+                &QueryOutput::Json(serde_json::json!({"operation": operation})),
                 &mut BadDescriptorWriter,
                 &mut stderr,
                 Some(&context),
@@ -3167,7 +3392,7 @@ mod managed_output_tests {
         ) {
             let mut stderr = Vec::new();
             assert!(!emit_success_response(
-                &serde_json::json!({"operation":"remove"}),
+                &QueryOutput::Json(serde_json::json!({"operation":"remove"})),
                 &mut BadDescriptorWriter,
                 &mut stderr,
                 Some(context),
@@ -3242,7 +3467,7 @@ mod managed_output_tests {
         let context = super::migration_output_context(&report);
         let mut stderr = Vec::new();
         assert!(!emit_success_response(
-            &serde_json::json!({"operation":"migrate","outcome":"migrated"}),
+            &QueryOutput::Json(serde_json::json!({"operation":"migrate","outcome":"migrated"})),
             &mut BadDescriptorWriter,
             &mut stderr,
             Some(&context),

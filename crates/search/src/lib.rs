@@ -36,6 +36,8 @@ use vlajmaji_store::{
 pub mod collection_query;
 /// Grouped exact queries and stable dictionary reference resolution.
 pub mod dictionary;
+/// Pure text renderers for compact dictionary projections.
+pub mod presentation;
 
 pub use collection_query::{
     CollectionCompactQueryResponse, CollectionCompactQueryResult,
@@ -57,6 +59,10 @@ pub use dictionary::{
     DictionarySourceAvailability, DictionarySourceTotal, DictionaryTotals, ReferenceAssertionView,
     ReferenceEntity, ReferenceResolution, ReferenceStatus, SourceSelectionFailure,
     validate_detail_snapshot_sha256,
+};
+pub use presentation::{
+    render_collection_compact, render_collection_detail, render_dictionary_compact,
+    render_dictionary_detail,
 };
 
 /// Query policy identities included in every response.

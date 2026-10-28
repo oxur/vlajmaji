@@ -1413,8 +1413,8 @@ impl DictionaryCompactSearchEngine {
             self.document.registry.snapshots[*snapshot_index].clone()
         });
         let occurrence_key = super::tuple_hex(&assertion.occurrence);
-        let occurrence_id = occurrence_key.clone();
         let occurrence_index = self.indices.occurrence_attributions.get(&occurrence_key);
+        let occurrence_id = occurrence_key;
         let occurrence_attribution = occurrence_index.map(|index| {
             measure_projection(&mut profile, || {
                 self.document.registry.occurrences[*index].clone()
