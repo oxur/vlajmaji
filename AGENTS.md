@@ -1,5 +1,11 @@
 # Vlajmaji planning
 
+Repository-wide future candidates live in [backlog.md](backlog.md), created at
+Duncan's request on 2026-10-27. Backlog entries link to evidence in the owning
+slice's artifacts; recording an item does not authorize implementation or change
+active acceptance criteria. BL-0001 records the S05 metadata byte-comparison
+candidate; the diagnostic originals remain preserved in place.
+
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
 **Current S05 checkpoint,2026-10-28 UTC:** clean011/treea8c QUIET; replacement Full FAILED WholeResolve1.206865292s>750ms after12freshPASS. Sixth pass/sole additional campaign exhausted; explicit STOP preservation/existing-output+frozen-source review ONLY. All6OPEN/no source/Cargo/product/FullDB-config read/stat/hash/retry/seventh/push; currentLinux/freshARC/close pending.
