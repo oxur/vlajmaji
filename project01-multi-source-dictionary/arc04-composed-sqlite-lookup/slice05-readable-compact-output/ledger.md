@@ -1,6 +1,6 @@
 # S05 ledger — Readable and compact output
 
-CURRENT final test-only04/pass5ofFIVE ISSUED after root FINAL readiness PASS; frozen5e semantic/API/finiteTiny PASS/strictF03closed. CDC owns quiet source/index/ONEtarget until complete retained CC intake/readback/freshidentity and explicitTHREEpath transfer. All6OPEN; laterFull/numeric/Linux/freshARC/external gates unchanged.
+CURRENT final04/pass5ofFIVE ISSUED; complete CC intake/readback accepted/freshclean5e verified. THREEtestpath/source-index/ONEtarget transfer effective ONLY explicitCDCdispatch after scoped metadata commit. CDC/root then read-only. All6OPEN; laterFull/numeric/Linux/freshARC/external gates unchanged.
 
 | ID | Criterion | Verify at execution | Owner / workflow | Status | Evidence / notes |
 | --- | --- | --- | --- | --- | --- |
@@ -72,3 +72,9 @@ Review-iteration03.md/plan§15 and canonical cdc-iteration03 preserve current5e 
 ### Final04 STATUS-ONLY issue / readiness —2026-10-28 UTC
 
 Root final readiness PASS exact reviewed draft38c85297…0738/plan7e5bff79…5827e/ledger5da3aa87…4523/reviewe4f8ab17…14ce0/manifest7d38f53f…e6dcf and all659payloads. Preserved reviewed draft; active04 SHA73511b1da01a888c2762b00912caf1554a87b4287cde0676899121f86960bb15 differs ONLYline3. THREEtestpaths only; FIFTHtotal/no automatic sixth. Initial/01/02/03 prompts immutable; six bindingcellsOPEN unchanged. Issue not source transfer/acceptance: CDC quiet ownership until complete CC intake/fresh5e checks/explicit handoff.
+
+### Final04 complete intake accepted / conditional ownership handoff —2026-10-28 UTC
+
+CDC read COMPLETE new CC intake/readback in execution.md (wholefile197680B/SHA c76d1f3231366681491e4dc072edb8a1de34d5deac70b1252dee1b780d7d8a1f before this append). Actual required coverage is CC attestation: issued20955B/73511b1d…bb15; WHOLE833lineplan§§1–15, ledger/review/bothAGENTS, required source bodies and testing/Rust guide sections;659payloads3,185,566B with exact187806B handbackprefix/provenance. CDC compared source-cited readback to actual13fieldkey/registrygetter/nativecontainment-beforeIO/mixedliteral/order/page0/realflush semantics and found it coherent. One shorthand named defaultFull among missing vectors; actual originalG1 default+Full ALREADY exists, preserved; missing Exact modes are Compact/Readable. CDC explicitly corrected this before transfer; prompt already correct. No completed existing control is reclassified as missing.
+
+Fresh CDC read-only source check clean5e19754ce7ccad0ddea788c2e344df116711814c/tree4c91c02a9d66d58ec7e26c9323289f40a730ccde/S05branch; lock65cd…8700/guard20fe…de8 and both old S04refs432 unchanged. No CC edit/build/runtime during intake and all prior CDC tool sessions terminal. AFTER this scoped metadata commit, explicit CDC dispatch transfers ONLY THREE test paths (presentation_contract.rs, main.rs managed_output_tests cfgbody ONLY, query_output_contract.rs original journey+bounded helpers/imports), source index and ONE retained target to Luna/high CC. CDC/root then source/index/target read-only until clean frozen handback. CDC retains planning except CC append-only execution. FinalFIFTHpass, no automatic sixth; all6OPEN/no Fullnumericplatformexternal acceptance.

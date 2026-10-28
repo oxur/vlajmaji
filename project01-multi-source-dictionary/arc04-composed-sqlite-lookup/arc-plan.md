@@ -7,7 +7,7 @@
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | Same isolated S05 branch clean5e/tree4c91 parent739/base32e99; old S04local/origin432 protected. CDC QUIETsource/index/ONEtarget until complete retained CC04 intake/review/freshidentity and explicit THREEtestpath handoff; root read-only. Actual primary localmain52fd distinct. |
+| integration destination | Same isolated S05branch verifiedclean5e/tree4c91/base32e99, oldS04local/origin432 immutable. Final04 intake/readback accepted; AFTER scoped metadata commit+explicitdispatch CC owns THREEtestpaths/index/ONEtarget, CDC/root then read-only until frozenreturn. Actualprimarylocalmain52fd distinct. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
