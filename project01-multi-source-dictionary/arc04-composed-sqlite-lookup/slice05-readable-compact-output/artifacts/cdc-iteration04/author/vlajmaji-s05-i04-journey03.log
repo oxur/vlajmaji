@@ -1,0 +1,25 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.43s
+     Running tests/query_output_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/query_output_contract-8fec821b551a0c10)
+
+running 1 test
+test test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection ... FAILED
+
+failures:
+
+---- test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection stdout ----
+
+thread 'test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection' (79419294) panicked at crates/cli/tests/query_output_contract.rs:850:13:
+assertion `left == right` failed
+  left: Object {"accounting": Object {"input_occurrences": Number(1), "normalized_occurrences": Number(1), "query_excluded_occurrences": Number(0), "unit": String("physical-line")}, "assertions": Array [String("llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6")], "availability": String("Available"), "captured_at": String("Missing"), "captures": Array [Object {"namespace": String("captured:llg:gismu"), "sha256": String("0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735")}, Object {"namespace": String("captured:llg:notice"), "sha256": String("b71031347d06acb62eedaf897b5c0d1a7aab9d6ad8cace09659517aa6bbc21b9")}], "component": String("llg-component-gismu"), "content_notices": Array [Object {"license": Object {"Value": String("source-claimed public domain; scope and requested conditions are not independently established")}, "locator": Object {"Value": String("https://example.invalid/llg/public_domain.txt")}, "text": Object {"Value": String("Explicit synthetic notice")}}], "diagnostics": Array [], "distributor": Null, "distributor_revision": String("Missing"), "id": String("llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb"), "normalizer": String("vlajmaji-llg-lists"), "normalizer_version": String("1"), "redistribution": String("Held"), "redistribution_evidence": Array [String("The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination.")], "schema_version": Number(1), "selected": Bool(true), "time_precision": String("Unknown"), "upstream_revision": String("Missing")}
+ right: Object {"accounting": Object {"input_occurrences": Number(1), "normalized_occurrences": Number(1), "query_excluded_occurrences": Number(0), "unit": String("physical-line")}, "availability": String("Available"), "captured_at": String("Missing"), "captures": Array [Object {"namespace": String("captured:llg:gismu"), "sha256": String("0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735")}, Object {"namespace": String("captured:llg:notice"), "sha256": String("b71031347d06acb62eedaf897b5c0d1a7aab9d6ad8cace09659517aa6bbc21b9")}], "component_id": String("llg-component-gismu"), "content_notice_licenses": Array [Object {"Value": String("source-claimed public domain; scope and requested conditions are not independently established")}], "content_notice_locators": Array [Object {"Value": String("https://example.invalid/llg/public_domain.txt")}], "content_notices_count": Number(1), "diagnostics_count": Number(0), "distributor_id": Null, "distributor_revision": String("Missing"), "id": String("llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb"), "normalizer": String("vlajmaji-llg-lists"), "normalizer_version": String("1"), "redistribution": String("held"), "redistribution_evidence": Array [String("The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination.")], "schema_version": Number(1), "selected": Bool(true), "time_precision": String("Unknown"), "upstream_revision": String("Missing")}
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 4 filtered out; finished in 1.28s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test query_output_contract`

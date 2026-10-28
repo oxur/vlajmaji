@@ -2,6 +2,10 @@
 
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
+**Current S05 checkpoint,2026-10-28 UTC:** Final04/pass5 bounded ACCEPTED at clean1b/tree338daa, original persistent omissions CLOSED; all6OPEN. CDC exclusively owns explicitly returned source/index/ONEtarget; CC/root read-only. Current pinned optimized build and SAMEcode ownedTiny method qualification authorized; retainedFull held for final executable root review, actualLinux/freshARC/close pending. Fivepasses exhausted/noautomatic6/external authority.
+
+### Historical final04 intake/handoff checkpoint
+
 **Current S05 checkpoint,2026-10-28 UTC:** final04/pass5ofFIVE complete CC intake/readback accepted; freshclean5e/tree4c91/lockguardoldrefs verified. AFTER current scoped metadata commit and explicit CDC handoff, retainedLuna/high CC exclusively owns THREEtestpaths/index/ONEtarget; CDC/root source/index/target read-only until frozenreturn. main.rs productionprefix must stay bitexact; all6OPEN/FullnumericLinuxfreshARCexternalheld. CDC planning/CC append execution only. No automatic sixthpass.
 
 ### Historical final04 DRAFT checkpoint

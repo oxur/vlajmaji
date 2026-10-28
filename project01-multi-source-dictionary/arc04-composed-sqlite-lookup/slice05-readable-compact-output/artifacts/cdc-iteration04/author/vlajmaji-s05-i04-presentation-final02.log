@@ -1,0 +1,22 @@
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.69s
+     Running tests/presentation_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/presentation_contract-8f7c35ec5dab5988)
+
+running 13 tests
+test test_render_dictionary_compact_unknown_resolve_matches_literal_golden ... ok
+test test_render_dictionary_compact_unresolved_atoms_use_json_string_escaping ... ok
+test test_render_dictionary_compact_nomatch_resolve_matches_literal_golden ... ok
+test test_render_dictionary_compact_zero_exact_matches_literal_golden ... ok
+test test_render_dictionary_detail_nomatch_matches_literal_golden ... ok
+test test_render_collection_compact_metadata_only_resolve_matches_literal_golden ... ok
+test test_render_dictionary_detail_complete_typed_hit_matches_literal_golden ... ok
+test test_render_dictionary_compact_actual_nonempty_page_zero_keeps_totals_and_is_repeatable ... ok
+test test_render_dictionary_compact_resolve_groups_confirmed_and_unverified ... ok
+test test_render_dictionary_compact_groups_sources_and_preserves_row_multiplicity ... ok
+test test_render_dictionary_compact_nonempty_presence_and_duplicate_occurrences_matches_literal_golden ... ok
+test test_render_dictionary_compact_preserves_typed_presence_and_duplicate_order ... ok
+test test_render_dictionary_compact_resolve_matches_mixed_literal_golden ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.47s
+

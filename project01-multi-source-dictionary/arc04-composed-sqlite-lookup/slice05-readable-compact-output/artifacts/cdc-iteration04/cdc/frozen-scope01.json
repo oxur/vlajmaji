@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "scope_only": true,
+  "head": "1b9038ddc6c45f3ea709a0bdfec64041221e3571",
+  "parent": "5e19754ce7ccad0ddea788c2e344df116711814c",
+  "tree": "338daa526d9f1cd56813d0c68a41a3f258e8ec47",
+  "changed_files": [
+    {
+      "path": "crates/cli/src/main.rs",
+      "sha256": "1be2dd7a5ec311c41b98193ba219a5b385ccfc62463c0d3b5030460ff923e4fe",
+      "blob": "90cb930c9afd68703f4f2eb8b305679d768a639b"
+    },
+    {
+      "path": "crates/cli/tests/query_output_contract.rs",
+      "sha256": "4bb1556505b9eb4c29ab1b3050d770c1fc683da3fc0ec59a128d85090c92d958",
+      "blob": "e8adcbd68b5e878c486abf634f703d872cce438e"
+    },
+    {
+      "path": "crates/search/tests/presentation_contract.rs",
+      "sha256": "cbf26d8655d6b3f52cac2829c385c8ff76bbb0420dbec20b34e0be6e2b3fce21",
+      "blob": "0473bb3d90ed4f18d749cd7cb5a01d9d00d3ae18"
+    }
+  ],
+  "production_prefix_bytes": 117783,
+  "production_prefix_sha256": "70c32c57b0160d89cd0389b8e94c5ba8554dfe1d449b11adfaac55aa813aa898",
+  "all_other_git_paths_unchanged": true,
+  "lock_sha256": "65cd7f39a88bdd2a3dab1fcd14e9055ff7b77cb22ec3af8c309ce49dbea78700",
+  "guard_sha256": "20fe7ba73311aa503870923af09f33f3b53262742ca4eeea2972092924cf5de8",
+  "parsed_trailers": [
+    "Co-authored-by: Codex <noreply@openai.com>",
+    "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+  ],
+  "limits": "Read-only Git/source boundary only; no Cargo, target, database, default, Full or network actions; not behavioral acceptance"
+}

@@ -1,0 +1,20 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+error: unused variable: `entry`
+   --> crates/cli/tests/query_output_contract.rs:728:14
+    |
+728 |         for (entry, assertion, occurrence, spelling, definition) in rows {
+    |              ^^^^^ help: if this is intentional, prefix it with an underscore: `_entry`
+    |
+    = note: `-D unused-variables` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(unused_variables)]`
+
+error: unused variable: `entry`
+    --> crates/cli/tests/query_output_contract.rs:1096:14
+     |
+1096 |         for (entry, assertion, occurrence, spelling, definition) in rows {
+     |              ^^^^^ help: if this is intentional, prefix it with an underscore: `_entry`
+
+error: could not compile `vlajmaji-cli` (test "query_output_contract") due to 2 previous errors
+make: *** [lint] Error 101

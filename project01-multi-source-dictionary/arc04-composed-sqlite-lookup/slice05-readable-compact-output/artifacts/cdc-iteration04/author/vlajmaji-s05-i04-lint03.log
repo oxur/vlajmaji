@@ -1,0 +1,25 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: the borrowed expression implements the required traits
+   --> crates/cli/tests/query_output_contract.rs:864:17
+    |
+864 | /                 &expected_llg_detail_ref["occurrence"]["locator"]
+865 | |                     .as_str()
+866 | |                     .unwrap()
+    | |_____________________________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#needless_borrows_for_generic_args
+    = note: `-D clippy::needless-borrows-for-generic-args` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::needless_borrows_for_generic_args)]`
+help: change this to
+    |
+864 ~                 expected_llg_detail_ref["occurrence"]["locator"]
+865 +                     .as_str()
+866 +                     .unwrap()
+    |
+
+error: could not compile `vlajmaji-cli` (test "query_output_contract") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

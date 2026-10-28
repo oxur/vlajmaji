@@ -1,0 +1,22 @@
+{
+  "source_head": "1b9038ddc6c45f3ea709a0bdfec64041221e3571",
+  "tree": "338daa526d9f1cd56813d0c68a41a3f258e8ec47",
+  "disposition": "BOUNDED FINAL TEST-ONLY ACCEPTED; all six rows remain OPEN",
+  "current_gate": {
+    "check_exit": 0,
+    "rust_rows": 56,
+    "passed": 328,
+    "failed": 0,
+    "ignored": 1,
+    "tooling": 19,
+    "presentation_default": 13,
+    "presentation_no_default": 13,
+    "cli_output": 5,
+    "focused_emitter": 1,
+    "whole_main_unit": 12,
+    "managed_output_module": 8
+  },
+  "equivalence": "Exactly three test paths; main production prefix 117783 bytes SHA70c32c57b0160d89cd0389b8e94c5ba8554dfe1d449b11adfaac55aa813aa898 and every other Git path unchanged from5e. Prior5e independent public34/edge11/strictCLI54/readable64 retained by actual production equivalence, not newly executed here.",
+  "packages": "Use retained i03 search25total lines/24entries SHA541cc4f1 and CLI21total/20entries SHA4c0b07d; older i02search23total/22entries historical only.",
+  "limits": "NO Full/numeric/hostedLinux/fresh assembled ARC/row acceptance. Five passes exhausted; no automatic sixth. Numeric source-only pure qualification not a product timing trial."
+}

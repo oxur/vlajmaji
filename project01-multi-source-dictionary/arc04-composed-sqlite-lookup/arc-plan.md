@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE/fivearcDONEfiveOPEN. S05 frozen5e bounded semanticPASS/strictF03closed; final04/pass5 THREEtestpaths ISSUED after root readiness. All6OPEN/laterFullnumericLinuxfreshARCheld. |
-| version / date | 1.25 /2026-10-28 UTC |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE/fivearcDONEfiveOPEN. S05 final04/pass5 bounded ACCEPTED at1b; original persistent omissions CLOSED. All6OPEN for numeric/currentLinux/freshARC/closure. |
+| version / date | 1.26 /2026-10-28 UTC |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | Same isolated S05branch verifiedclean5e/tree4c91/base32e99, oldS04local/origin432 immutable. Final04 intake/readback accepted; AFTER scoped metadata commit+explicitdispatch CC owns THREEtestpaths/index/ONEtarget, CDC/root then read-only until frozenreturn. Actualprimarylocalmain52fd distinct. |
+| integration destination | Same isolated S05branch clean1b/tree338daa/base32e99, oldS04local/origin432 immutable. Explicit CC all-terminal return accepted; CDC owns source/index/ONEtarget, root/CC read-only. Current optimized build/ownedTiny qualification authorized; retainedFull executable review held. Actualprimarylocalmain52fd distinct. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority

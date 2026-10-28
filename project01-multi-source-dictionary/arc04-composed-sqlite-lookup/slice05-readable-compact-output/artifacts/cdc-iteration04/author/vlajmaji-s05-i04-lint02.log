@@ -1,0 +1,36 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc04 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+error: unused import: `DictionaryCompactReferenceAssertion`
+  --> crates/search/tests/presentation_contract.rs:21:5
+   |
+21 |     DictionaryCompactReferenceAssertion, DictionaryCompactReferenceResolution,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `-D unused-imports` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error[E0277]: can't compare `serde_json::Value` with `&std::string::String`
+   --> crates/cli/tests/query_output_contract.rs:412:13
+    |
+412 |             assert_eq!(group["source"]["id"], source);
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ no implementation for `serde_json::Value == &std::string::String`
+    |
+    = help: the trait `std::cmp::PartialEq<&std::string::String>` is not implemented for `serde_json::Value`
+    = help: the following other types implement trait `std::cmp::PartialEq<Rhs>`:
+              `&mut serde_json::Value` implements `std::cmp::PartialEq<bool>`
+              `&mut serde_json::Value` implements `std::cmp::PartialEq<f32>`
+              `&mut serde_json::Value` implements `std::cmp::PartialEq<f64>`
+              `&mut serde_json::Value` implements `std::cmp::PartialEq<i16>`
+              `&mut serde_json::Value` implements `std::cmp::PartialEq<i32>`
+              `&mut serde_json::Value` implements `std::cmp::PartialEq<i64>`
+              `&mut serde_json::Value` implements `std::cmp::PartialEq<i8>`
+              `&mut serde_json::Value` implements `std::cmp::PartialEq<isize>`
+            and 35 others
+
+error: could not compile `vlajmaji-search` (test "presentation_contract") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `vlajmaji-cli` (test "query_output_contract") due to 1 previous error
+make: *** [lint] Error 101
