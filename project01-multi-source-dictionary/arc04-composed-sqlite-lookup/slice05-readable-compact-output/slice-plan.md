@@ -975,3 +975,15 @@ Clean011af09a/treea8c/parent1b exact6sourcepaths returned by CC with all gates t
 Actual session38736/PID24920 exact qualifiedPython-B runner02/execution02/output02: outerexit1/110.9844945827499s/raw2356B SHA ff73a6fe45bd67431f0c9de2cf7b81f6fbd17250b4e410657a663bf18a22fbbb. All12freshPASS/savedphase12PASS; stage13Fullwarm child101, measuredjbotci-local wholequery1.206865292s>750ms (lookup1.205107043/projection1.758249ms), correctResolvedfact.13attempted12checked/no14–22/no21analysis/nosemantic. All47rows/setup+46requests27prime19measured preserved; all46facts exactfrozenexpectations. ALL27prime timingsevaluated asdiagnostic only, no cache/hash/decode cause attribution fromresidual. WholecurrentFull numerical gateNOTACCEPTED.
 
 Root explicit disposition STOP implementation/performance execution: SIXTHpass+SOLEadditionalcampaign exhausted. All6S05OPEN; no sourceedit/Cargo/newproduct or FullDB/config read/stat/hash, retry/seventh/push/newstore/reset/cleanup. Evidence-only existing savedoutputs/receipts/frozen SOURCE permitted for bounded hypotheses. ONE campaignDBpair unchanged; OWNtarget70751592448bothdelta0, historicalTiny3.5MBdifference causeUNPROVEN/not equalitygate. Resource mechanisms and finalownbytes limits in review-numeric02. Canonical numeric-failed02/output-inventory02 preserve exact outputs/six namedcontrols/heldbulkywires; failed01 unchanged. Current clean source011/treea8c; CDC owns QUIET source/index/target for preservation only. No new runtime authority.
+
+
+## Operator disposition: current timings accepted
+
+Duncan accepts the observed current timings at source011af09a, including the
+1.206865292-second unsampled Local result. The explicit exception and remaining
+evidence/authority boundaries are recorded in the [slice ledger](ledger.md#operator-disposition-current-timings-accepted).
+Further latency optimisation is optional [BL-0001](../../../backlog.md), rather
+than a required seventh source correction. Historical targets/failures remain
+preserved. All six slice rows remain OPEN pending the remaining verification,
+current-head hosted CI, fresh assembled-arc review and closeout; no new execution
+or external delivery is issued by this status clarification.

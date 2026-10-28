@@ -6,6 +6,15 @@ slice's artifacts; recording an item does not authorize implementation or change
 active acceptance criteria. BL-0001 records the S05 metadata byte-comparison
 candidate; the diagnostic originals remain preserved in place.
 
+**Current timing disposition:** Duncan accepts the reported current timings at
+source011af09a, including the 1.206865292-second Local lookup. The
+[slice ledger](project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice05-readable-compact-output/ledger.md#operator-disposition-current-timings-accepted)
+records this explicit exception. BL-0001 is optional future optimisation; all six
+S05 rows remain OPEN for remaining evidence/platform/composition/closeout duties.
+Earlier failure/STOP checkpoints below are historical regarding the need to
+correct observed latency; their exhausted execution and external-action limits
+remain in force. No new source pass, Full campaign or push is issued here.
+
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
 **Current S05 checkpoint,2026-10-28 UTC:** clean011/treea8c QUIET; replacement Full FAILED WholeResolve1.206865292s>750ms after12freshPASS. Sixth pass/sole additional campaign exhausted; explicit STOP preservation/existing-output+frozen-source review ONLY. All6OPEN/no source/Cargo/product/FullDB-config read/stat/hash/retry/seventh/push; currentLinux/freshARC/close pending.

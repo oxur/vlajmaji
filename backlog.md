@@ -29,6 +29,13 @@ The controlling unsampled `jbotci-local` result was 1.206865292 seconds against
 the unchanged 750 ms maximum. All six S05 criteria remain OPEN. Recording this
 candidate neither defers nor waives those obligations or the 250 ms median target.
 
+**Subsequent Operator disposition:** Duncan accepts the reported current timings
+as-is at source011af09a. This optimisation is optional future work; the observed
+latency overrun no longer requires a corrective pass. The [explicit exception and
+remaining acceptance obligations](project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice05-readable-compact-output/ledger.md#operator-disposition-current-timings-accepted)
+are recorded in the slice ledger. Original targets, measurements and failures
+remain preserved; no unexecuted result or resource gate is accepted by inference.
+
 ### Candidate approach and trade-offs
 
 Retain a bounded exact-byte snapshot beside each parsed cache entry. Compare
