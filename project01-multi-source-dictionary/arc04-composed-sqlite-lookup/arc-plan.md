@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE/fivearcDONEfiveOPEN. S05 final04 bounded ACCEPTED1b; exactFullnumericalcampaign FAILED at warmFullreference1.214s>750ms after12freshPASS. All6OPEN/explicitdisposition/currentLinux/freshARC/close. |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE/fivearcDONEfiveOPEN. S05 final04 bounded ACCEPTED1b; exactFullnumericalcampaign FAILED at warmFullreference1.214s>750ms after12freshPASS. Human sixth-total correction/amended05 ISSUED; complete delta intake/transferpending. All6OPEN/currentLinux/freshARC/close. |
 | version / date | 1.29 /2026-10-28 UTC |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | Same isolated S05branch clean1b/tree338daa/base32e99, oldS04local/origin432 immutable. Explicit CC all-terminal return accepted; CDC owns source/index/ONEtarget, root/CC read-only. One root-cleared Fullcampaign terminalFAILED/13attempted12checked; no retry/newsourcepass. CDC source/index/targetquiet pending explicitdisposition; acceptedFullG4 unchanged. Actualprimarylocalmain52fd distinct. |
+| integration destination | Same isolated S05branch clean1b/tree338daa/base32e99, oldS04local/origin432 immutable. Explicit CC all-terminal return accepted; CDC owns source/index/ONEtarget, root/CC read-only. One root-cleared Fullcampaign terminalFAILED/13attempted12checked; no retry/newsourcepass. CDC source/index/targetquiet pending completeamendedintake/transfer; acceptedFullG4 unchanged. Actualprimarylocalmain52fd distinct. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -232,3 +232,21 @@ DRAFT cc-prompt-iteration05.md and slice-plan§17 now freeze exact FOURexistingp
 Root FINAL concrete readiness PASS after reading WHOLE24789B DRAFT4e7c6578…79434 and new§17, checking sourceclean1b/lock65cd/guard20fe, full bodies/guidepaths/toolhomes and3precedence/environmentcorrections. CurrentcacheCOW/root/currentbytes+SQLkind/header/fallback/128entries512MiBproxy and same-readerrestoration/latecorruption-over-ambiguity controls accepted as a concrete recipe, NOTproductacceptance. Exactrevieweddraft byte-preserved artifacts/cc-prompt-iteration05-reviewed-draft01.md; activeprompt ISSUED STATUSLINEONLY. Previous immutableprompts/failurebundle/humanquestionanswer unchanged.
 
 Iteration05 is SIXTH TOTAL by explicit human amendment, maxFOURexistingpaths; noautomatic7/retry. CDC exclusively owns QUIET source/index/ONEtarget until retainedLuna/high FULLplan§§1–17/prompt/evidence/source intake +source-citedreadback is coherent and accepted, fresh1b/lock/guard/oldrefs checked and explicit CDC ownership dispatch. Rootreadonly; issuealone transfersnothing. NoFulltrial/currentLinux/sourceacceptance/rowclosure/network/push from issue. All6OPEN; laterONEadditional22campaign needs NEWexclusiveoutput/frozenbinaries/exactrootreview.
+
+
+### 17.5 Pre-transfer Catalog join / Local duplicate amendment —DRAFT HOLD
+
+No source/index/target transfer or implementation occurred. RetainedCC completed the original120line issued05 intake (execution235544B/48ab3be0…3284), but root found a necessary second source-grounded join bottleneck from ALL27 already-emitted PRIME rows: nativeCatalogJB19.844s/missing20.528s/Sut6.321s/La2.702s/LLG.871s. Those are PRIMES, not newly measured failures or new runtime. Actual measuredstop remains jbotci-local1.214s; futuremeasurednativevectors unexecuted. Cache-only draft was insufficiently comprehensive, not a failed implemented product pass.
+
+Preserve originalissued05 EXACT24777B/84ac13c9 in artifacts/cc-prompt-iteration05-issued-before-catalog-amendment01.md; activeprompt retains that entire byte-prefix and appends a10637B Catalogamendment15aa6a34. AmendmentDRAFT/HOLDbeforetransfer until rootfullreview+retainedCCdeltaintake+freshchecks/explicitownership. SAMEiteration05/sixthpass/sameFOURexistingfiles/noadditionalhumanquestion or pass; originalcacheAPIs/128entry512MiBproxy/currentSQLfingerprint/None/root/error/budget boundaries unchanged.
+
+Private FullDescriptorLookup borrows CURRENTvalidateddescriptor, temporary HashMaps entity(role,id)->FIRSTordinal and registry(namespace,SHA,locator)->FIRSTordinal via entry.or_insert; no clonebody/newpublicAPI/persistentindex. Build ONLYafter existingCatalogowner/invalidtarget/occurrenceguards. Originalrelease.assertions vector drives order+duplicates and missingentityerror at sameiterationpoint; unknownactualnativeNone is WILDCARD, not rejected by reverseindexintersection. FirstattributionNone wins laterSome; mapiteration neverdriveswire. Indexcount<=entity+registryrows, actualRSSincluded/not512MiBheapclaim; maps/Cow dropbefore nextmutablecache access. Actualclones stayoldpoints; indexinglookup/drop staylookupresidual.
+
+Local emitting.filter retainsALL orderedraw/admissionsrows and originalpublicdedup. Additional exact sourceclarification: old ambiguity rereads FIRST entity PERREGISTRATION for everyresultrow, so compare only registrationFIRSTentity/digest againstglobalFIRSTbaseline, NOTeachrawduplicate. DifferingnonFIRSTwithinone registration mustnotnewlybeambiguous; differingFIRSTacrossregistrations remainsambiguousAFTERallreads, latercorruptionstillwins. Small existingTinyretaineddescriptorSQL/native/order/duplicate controls in sameallowedtestpath rejectlastwins/reordering/newuniqueness/missingnative-as-mismatch/earlymissingentityskip. No dictionary/projection/CLI scopechange or extra Full observation. Activeprompt containscomplete source-guidedhelpers/finitecontrol details.
+
+
+### Iteration05 Catalog amendment root readiness / STATUS-ONLY issue —2026-10-28 UTC
+
+Root FINAL amendment readiness PASS after reading WHOLE10637B15aa6a34 amendment+WHOLE§17.5, independently exactoriginalissued24777B84ac prefix/archivedbase/current35416Bf8e1 draft, all27existingprime literals/range/sourceclean1b. ExactreviewedWHOLEamendeddraft preserved artifacts/cc-prompt-iteration05-with-catalog-reviewed-draft01.md; activeprompt changes ONLY appendedamendmentSTATUSline. Originalissuedbase/otherprompts/failurebundle unchanged.
+
+No source/index/targettransfer, edit, build, test or newFullactivity occurred during hold. RetainedCC's originalcomplete120line intake48ab remains actualcoverage; appendedamendment/§17.5/source-criticaljoin/per-registrationFIRST delta must nowbe read and source-cited BEFORE CDCacceptance+fresh1b checks+explicitfourpath/index/ONEtargettransfer. No additionalrootgate absentactualcontradiction; SAMEhumanamendedSIXTHpass/fourfiles, no seventh/Full/push authority from issue. All6OPEN/failedcampaignimmutable/laterexactnumericalfreeze/currentLinux/freshARC/closepending.

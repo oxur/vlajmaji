@@ -118,3 +118,72 @@ At stable completion freeze one clean scoped source commit with both ADJACENT pa
 After frozen proof, CDC builds pinned optimized current CLI+observer outside target, qualifies SAME-code bounded Tiny/wire/semantic/method predicates as meaningful changed-source preparation, then presents NEW exact Full packet to root. Retain failed campaign01 immutable. Additional actual Full campaign must have NEW exclusive output (for example numeric-full02), changed runner fixed-output constant reviewed explicitly, exact source/binary/pin closure/new DBpair/resources/owned env, unchanged balanced12fresh+9warm+semantic22 and budgets. Baseline unchanged, no pooled observations/retry/cache reset/new Full store. Any early failure stops; no stage22 after known21 failure or warm13 after known12 failure. New campaign is ONE disclosed additional campaign under amendment, not a continuation erasing13failed children. No automatic second retry or seventh implementation pass; nonconvergence returns explicit disposition.
 
 All six rows remain OPEN until actual numerical/current Linux/selected fresh independent Arc04 W1–W5 execution/CDC retro/rootcanonical gates. Source pass approval does not authorize push/CI, PR/merge or publication. Do not precreate acceptance/closure artifacts or launch fresh reviewer against WIP.
+
+
+## Binding Catalog join amendment — SAME iteration05 / pass6
+
+Amendment status: ISSUED — root final readiness PASS2026-10-28 UTC; delta intake and explicit transfer still required.
+
+The preceding issued05 base is preserved BYTE-EXACT at artifacts/cc-prompt-iteration05-issued-before-catalog-amendment01.md (24777B/SHA84ac13c987abffcb6bb8e9c002215dd8901844dd21c38f50c5aae89078dbeaea). Its cache surface/limits/freshness/error/lifetime/gates remain binding. This amendment adds the source-grounded Catalog join correction within EXACTLY THE SAME FOUR EXISTING FILES and SAME human-authorized SIXTH pass, no budget reset/seventh. No source edit/build or handoff has occurred. Completed original120-line intake is historical actual coverage, not advance reading of this amendment.
+
+### Why cache-only is incomplete, from EXISTING output only
+
+CDC/root examined ALL27 retained PRIME request rows already emitted by warm1Full in the failed campaign. This is existing-output analysis, not another Full child/metric observation. Eighteen Exact primes query.total span1,847,833–3,854,208ns. Nine reference primes are below; these are priming rows, NOT three-observation acceptance or extra measured failure counts:
+
+| Original prime identity | Whole query.total ns (or whole error) |
+| --- | ---: |
+| jbotci-local |1245563917|
+| jbotci-catalogue-native333 |19844226833|
+| la-catalogue-native333 |2701522125|
+| llg-component |870683833|
+| sut-native-entry |6320514875|
+| unknown |5792|
+| unresolved |1542|
+| wrong-role |whole_error_ns821476334, profile null|
+| missing |20528113375|
+
+Only subsequent measured jbotci-local1,214,126,625ns triggered the actual stop. Other measured native cases were NOT reached. Canonical original raw is numeric-failed01/numeric-full01/warm-1-full/stdout (47rows total, all46 printed facts matched pre-input). Metadata descriptor parse is not a separately timed proven cost. Source nevertheless shows Catalog loops `release.assertions`, repeatedly `descriptor.entities.iter().find`, then `find_native` repeatedly scans registry.occurrences. That quadratic join is a second source-grounded correction target; cache-only cannot honestly be called sufficient without addressing it. Do not weaken the WholeResolve250/750ms or whole-error budget. The existing dictionary kernel already has primitive indices; no dictionary.rs/projection.rs change is justified here.
+
+### Exact private borrowed-index shape in collection_query.rs
+
+Keep all original cache public APIs/opaque fields/Cow return and `metadata_matches(&self)` unchanged. Add a PRIVATE helper of this shape; names may follow local style, behavior/lifetimes are binding:
+
+```rust
+struct FullDescriptorLookup<'d> {
+    descriptor: &'d CollectionReferenceMetadata,
+    entity_first: HashMap<(&'d str, &'d str), usize>,
+    attribution_first: HashMap<(&'d str, &'d str, &'d str), usize>,
+}
+impl<'d> FullDescriptorLookup<'d> {
+    fn new(descriptor: &'d CollectionReferenceMetadata) -> Self;
+    fn entity(&self, role: &str, id: &str) -> Option<&'d CollectionEntityReference>;
+    fn native(&self, occurrence: &OccurrenceRef, role: &str) -> Option<String>;
+}
+```
+
+No public type/export/accessor for these indices, no new persistent cache index, no Clone of descriptor/registry/entity bodies. `descriptor` is the currently validated Cow's borrow. `new` scans entities ONCE, inserts `(entity.role.as_str(),entity.id.as_str()) -> ordinal` via `entry(...).or_insert(ordinal)`, and scans registry.occurrences ONCE, inserts `(row.occurrence.snapshot().namespace(), row.occurrence.snapshot().sha256(), row.occurrence.locator()) -> ordinal` likewise. Preserve FIRST ordinal, including when first native values areNone. Keys borrow existing strings, values primitive ordinals. No validation, sorting, deduplication of source rows or invented uniqueness error; arbitrary roles/duplicates accepted by the old typed decoder remain accepted. HashMap iteration must NEVER drive wire/output order.
+
+`entity` uses first ordinal to borrow that existing entity. `native` performs ONE first-attribution tuple lookup, then clones only the requested entry/assertion optional String at the SAME old `find_native` call positions; unknown role remainsNone. Exact current `find_native` predicates are namespace+SHA+locator only; do NOT add source/release filters. First matching occurrence row with nativeNone wins even if a later duplicate hasSome. Optional one-row helper returning a borrowed attribution and two existing clone calls is equivalent, if it has the same first-row/no-output-clone-before-oldpoint semantics.
+
+Index size is bounded to at most descriptor.entities.len() +descriptor.registry.occurrences.len() entries, duplicate keys only reduce it. These are TRANSIENT per-descriptor lookup indices, not full body caches or another selected inventory. They are not included in512MiB serialized cache proxy as a false heap bound; actual resident memory includes cache+indices+payload and must pass8GiB. No body strings/digests are computed in setup. All maps/drop and current Cow drop BEFORE the next mutable cache-helper call; no borrowed index survives the iteration/payload admission. No whole-cache immutable reference escaped by deepclone. Row/hash/index build/lookup/drop are lookup/residual, NOT returned-output projection; retain optional None/no-new-Instant contract. No extra profiling partition/public counter/wire change.
+
+### Original Catalog ordering/error/admission policy is authoritative
+
+Use these maps ONLY in the existing Full Catalog branch when a requested release belongs to the requested source. Keep the current registration scan order, full decoder/SQL-byte validation, first release lookup, requested-release cloning and existing collection/component ownership code exactly; do not replace its nested first/any semantics with a new uniqueness interpretation. Construct the borrowed index AFTER the existing owner match, invalid-target and occurrence/release/capture validation guards, immediately before the original release.assertions loop. Thus error precedence for wrong-role/unknown release/invalid occurrence remains unchanged.
+
+Continue iterating the ORIGINAL release.assertions VECTOR, including every duplicate and its order. For each ID, replace only `.entities.iter().find(role==assertion &&id==...)` by indexed FIRSTentity lookup; an absent assertion still produces the existing Integrity error at that original loop position. Do NOT prevalidate all release IDs or reverse-match a native key before that loop: it could hide a missing earlier entity or change order. Preserve entity source_ids filter, entity occurrenceNone skip, optional requested occurrence filter and existing native call sites.
+
+CRITICAL: current native admission skips only when requestedSome and actualSome!=expected. An actualNone is a WILDCARD at this metadata stage, not mismatch; payload can later beUnverified. Do NOT intersect exact reverse native indexes, drop unknown-attribution rows, treat nativeNone as failure or retarget source/release. Clone fields/build intermediate/public responses at the existing points, retaining Full Local nativeNone and all public/inner wire/schema/status/presence fields exactly.
+
+Local MUST retain its `.filter` over ALL matching entities in original order and multiplicity for raw/admission rows; existing public representative/dedup policy remains unchanged. Do not substitute `entity_first` for that emitting scan or collapse raw Local duplicates. CRITICAL clarification of the preceding base ambiguity sketch: legacy post-scan rereads `.entities.find(role,id)` for EACH result row, so it compares only each REGISTRATION'S FIRST matching entity/digest against the global first registration's FIRST entity/digest. A later differing duplicate WITHIN the SAME registration does not newly cause ambiguity; it still supplies its original raw row. Compare the per-registration FIRST once while available, not each raw duplicate, accumulate the mismatch flag, complete all original registration reads and raise ambiguity only at the old post-scan point. Later corruption still wins. Public first-row/currentpack+digest representative and private all-contributor admission scopes remain unchanged.
+
+### Small differential persistent controls, no expanded matrix
+
+Within existing allowed search contract/private helper tests, use existing Tiny retained descriptors/SQL mutation and restore to discriminate:
+
+1. FIRST duplicate role/id entity differs from later duplicate in relevant source/occurrence fields: Full Catalog must follow FIRST as old `.find`, while Local retains ALL matching ordered raw/admission rows and original public dedup. Non-FIRST differing duplicate within one registration must NOT newly cause ambiguity; a genuinely different FIRST entity across registrations MUST still cause post-scan ambiguity (and later corrupt registration must take precedence). Paired original valid descriptors restore exact prior response.
+2. FIRST occurrence attribution has nativeNone and later duplicate has a conflictingSome (and a counterpart firstSome/laterdifferentSome): indexed native admission/output must use FIRST, preserve unknownactual wildcard, and never use last-wins or a reverse native-only intersection. Preserve exact current FullNative fields/status behavior; expected rows come from pre-input/uncached descriptor and old literal predicates, not observed indexed result.
+3. Release assertions ordered `[B,A,B]` (source-known valid IDs) retains that order and multiplicity in Full Catalog matches. Missing entity at an earlier vector position must still give the same Integrity error even if a later assertion would match the requested native key. Unknown native actual has a valid counterexample showing admission survives for later payload classification.
+4. Compare indexed helper outcome to the literal legacy `.find`/first-attribution predicates on these bounded inputs, plus WHOLE public Full Local/Catalog/ordinary-profiled parity already required. No new public test accessor, backend/dependency or fixture corpus. Native333 JB-versus-La/release scoping and existing unknown/wrong-role/missing controls remain source-/input-grounded; later numerical protocol unchanged.
+
+These controls test FIRST/order/unknown/error semantics, not timing or a new performance matrix. No Full model/import/DB/cache trial now. Both cache/linear-join repairs must complete in the SAME existing pass before final stable gates/freeze; root final amendment readiness and exact delta intake before ownership transfer. The later one additional frozen22-child campaign can still fail; retain that failure with no seventh/retry if it does.
