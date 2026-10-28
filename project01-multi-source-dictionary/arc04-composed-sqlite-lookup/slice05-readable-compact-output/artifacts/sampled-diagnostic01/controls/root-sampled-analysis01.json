@@ -1,0 +1,135 @@
+{
+  "scope": "Root retained-output analysis only; no new product or database operation",
+  "source_commit": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "main_thread_samples": 1752,
+  "metadata_matches_disjoint_nodes": [
+    {
+      "line": 33,
+      "count": 984
+    },
+    {
+      "line": 64,
+      "count": 469
+    },
+    {
+      "line": 224,
+      "count": 49
+    },
+    {
+      "line": 290,
+      "count": 14
+    },
+    {
+      "line": 305,
+      "count": 5
+    },
+    {
+      "line": 308,
+      "count": 2
+    },
+    {
+      "line": 311,
+      "count": 1
+    },
+    {
+      "line": 313,
+      "count": 1
+    }
+  ],
+  "metadata_matches_samples": 1525,
+  "sha_compression_disjoint_nodes": [
+    {
+      "line": 34,
+      "count": 850
+    },
+    {
+      "line": 65,
+      "count": 357
+    },
+    {
+      "line": 515,
+      "count": 92
+    }
+  ],
+  "metadata_sha_samples": 1207,
+  "metadata_sha_fraction": 0.6889269406392694,
+  "observer_sha_samples_outside_product": 92,
+  "all_sha_samples": 1299,
+  "descriptor_row_disjoint_nodes": [
+    {
+      "line": 35,
+      "count": 132
+    },
+    {
+      "line": 66,
+      "count": 59
+    }
+  ],
+  "descriptor_row_samples": 191,
+  "decode_disjoint_nodes": [
+    {
+      "line": 92,
+      "count": 49
+    }
+  ],
+  "decode_samples": 49,
+  "request_rows": 46,
+  "priming_rows": 27,
+  "measured_prefix_rows": 19,
+  "all46_wire_hashes_and_sizes_match_unsampled_failure02": true,
+  "last_request": {
+    "id": "jbotci-local",
+    "query_total_ns": 1195746417,
+    "lookup_ns": 1194051501,
+    "projection_ns": 1694916
+  },
+  "before_last_sum_nonoverlapping_request_duration_ns": 11320861334,
+  "sampler_window_limitation": "Requested10-second window near process start mixes setup/priming; no per-request timestamped stack stream. Fractions do not isolate final failed measured request or establish exact seconds saved. Beforelast summed query durations exceed nominal window.",
+  "database_pair_equal_from_retained_receipts": true,
+  "target_pair_bytes": 70746484736,
+  "diagnostic_not_acceptance": true,
+  "next_candidate": "Bounded exact-byte snapshots in private metadata cache; compare currently read descriptor bytes instead of SHA256 before parse reuse. Preserve fresh SQL byte/header checks and error behavior; explicitly account raw-byte memory. Source-only proposal, not implementation or proven speedup.",
+  "all_six_S05_rows": "OPEN",
+  "files": {
+    "authority.json": {
+      "bytes": 509,
+      "sha256": "068315ed6695a9bce00c4e54d2848ab2f0bf473e425b91b5cbcdabe282ae42b3"
+    },
+    "receipt.json": {
+      "bytes": 1644,
+      "sha256": "e1e74e32f82c6b73bdb686f587db0d44eeea773e57d4625c305142479ef678cf"
+    },
+    "sample.txt": {
+      "bytes": 155327,
+      "sha256": "076cbfda02b5d597ee7bdfa39d51edd9dcdfe3ec290d3d1254406f6637d8a662"
+    },
+    "sample.stderr": {
+      "bytes": 239,
+      "sha256": "5ace7e5732d2d3ad82bc62a7dc1673b9de86545e79e05efff91d2cd3f7805ed3"
+    },
+    "stdout": {
+      "bytes": 36982,
+      "sha256": "c8352ce806297f62bb59f87f7d8584de660362e4b4e4736b5910c896ffb8f9cc"
+    },
+    "stderr": {
+      "bytes": 951,
+      "sha256": "4d4d20a78d11e87d19d7becddf663cb3c9cc33eb79092d1eb92c1fd6958d6603"
+    },
+    "database-before.json": {
+      "bytes": 335,
+      "sha256": "9dda82e7d98dd2a7361fe8b0b03bb3f7552b3b4b466c2890de6ce2b8a37e5bc1"
+    },
+    "database-after.json": {
+      "bytes": 335,
+      "sha256": "9dda82e7d98dd2a7361fe8b0b03bb3f7552b3b4b466c2890de6ce2b8a37e5bc1"
+    },
+    "target-before.json": {
+      "bytes": 108,
+      "sha256": "6ce2525f60c0c1a0678c1f266d465b84f133772c39d9b0359ab31913882d568f"
+    },
+    "target-after.json": {
+      "bytes": 108,
+      "sha256": "6ce2525f60c0c1a0678c1f266d465b84f133772c39d9b0359ab31913882d568f"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "scope": "CDC independent analysis of saved sample/stdout/receipts and frozen source only; no new product/data/source operation",
+  "sample_sha256": "076cbfda02b5d597ee7bdfa39d51edd9dcdfe3ec290d3d1254406f6637d8a662",
+  "main_thread_samples": 1752,
+  "metadata_disjoint_nodes": [
+    {
+      "samples": 984,
+      "depth": 22,
+      "line": "+   ! 984 _RNvMs5_NtCs5fROXDGUiNQ_15vlajmaji_search16collection_queryNtB5_22CollectionSearchEngine16metadata_matches  (in numeric-observer) + 1164  [0x100ab2d60]"
+    },
+    {
+      "samples": 469,
+      "depth": 22,
+      "line": "+   ! 469 _RNvMs5_NtCs5fROXDGUiNQ_15vlajmaji_search16collection_queryNtB5_22CollectionSearchEngine16metadata_matches  (in numeric-observer) + 3596  [0x100ab36e0]"
+    },
+    {
+      "samples": 49,
+      "depth": 22,
+      "line": "+   ! 49 _RNvMs5_NtCs5fROXDGUiNQ_15vlajmaji_search16collection_queryNtB5_22CollectionSearchEngine16metadata_matches  (in numeric-observer) + 328  [0x100ab2a1c]"
+    },
+    {
+      "samples": 14,
+      "depth": 22,
+      "line": "+   ! 14 _RNvMs5_NtCs5fROXDGUiNQ_15vlajmaji_search16collection_queryNtB5_22CollectionSearchEngine16metadata_matches  (in numeric-observer) + 1988  [0x100ab3098]"
+    },
+    {
+      "samples": 5,
+      "depth": 22,
+      "line": "+   ! 5 _RNvMs5_NtCs5fROXDGUiNQ_15vlajmaji_search16collection_queryNtB5_22CollectionSearchEngine16metadata_matches  (in numeric-observer) + 2092  [0x100ab3100]"
+    },
+    {
+      "samples": 2,
+      "depth": 22,
+      "line": "+   ! 2 _RNvMs5_NtCs5fROXDGUiNQ_15vlajmaji_search16collection_queryNtB5_22CollectionSearchEngine16metadata_matches  (in numeric-observer) + 3872  [0x100ab37f4]"
+    },
+    {
+      "samples": 1,
+      "depth": 22,
+      "line": "+   ! 1 _RNvMs5_NtCs5fROXDGUiNQ_15vlajmaji_search16collection_queryNtB5_22CollectionSearchEngine16metadata_matches  (in numeric-observer) + 4244  [0x100ab3968]"
+    },
+    {
+      "samples": 1,
+      "depth": 22,
+      "line": "+   ! 1 _RNvMs5_NtCs5fROXDGUiNQ_15vlajmaji_search16collection_queryNtB5_22CollectionSearchEngine16metadata_matches  (in numeric-observer) + 7696  [0x100ab46e4]"
+    }
+  ],
+  "metadata_inclusive_disjoint_sum": 1525,
+  "metadata_fraction": 0.8704337899543378,
+  "sha_leaf_nodes": [
+    {
+      "samples": 850,
+      "depth": 24,
+      "metadata_ancestor": true,
+      "line": "+   ! : 850 _RNvNtCslX27SriDrWK_4sha26sha25611compress256  (in numeric-observer) + 7712,1748,...  [0x100e140d8,0x100e1298c,...]"
+    },
+    {
+      "samples": 357,
+      "depth": 24,
+      "metadata_ancestor": true,
+      "line": "+   ! : 357 _RNvNtCslX27SriDrWK_4sha26sha25611compress256  (in numeric-observer) + 7712,900,...  [0x100e140d8,0x100e1263c,...]"
+    },
+    {
+      "samples": 92,
+      "depth": 18,
+      "metadata_ancestor": false,
+      "line": "+ 92 _RNvNtCslX27SriDrWK_4sha26sha25611compress256  (in numeric-observer) + 1564,2296,...  [0x100e128d4,0x100e12bb0,...]"
+    }
+  ],
+  "sha_top_of_stack_sum": 1299,
+  "sha_fraction": 0.7414383561643836,
+  "sha_with_metadata_ancestor": 1207,
+  "sha_metadata_fraction": 0.6889269406392694,
+  "sha_outside_metadata": 92,
+  "sample_start_delay_ms": 104,
+  "requests": 46,
+  "prime": 27,
+  "measured_prefix": 19,
+  "all_actual_facts_match_frozen": true,
+  "database_saved_pair_unchanged": true,
+  "target_saved_pair_unchanged": true,
+  "numerical_acceptance": false,
+  "limitations": [
+    "10-second sampled window starts104ms after observer launch and mixes setup/primes/multiple requests; no exact measuredjbotci-local-only attribution",
+    "sample count fraction is not a controlled walltime fraction/speedup prediction; optimized/inlined symbol stacks omit some source boundaries",
+    "metadata SHA ancestor is consistent with current reference_metadata_reusing Sha256::digest(&bytes); no direct cache-hit/miss/decode counters in this production sample",
+    "92SHA samples outside metadata subtree are separate observer-side work; not charged to metadata query by this aggregation",
+    "sampling overhead invalidates acceptance; prior Full failures remain failed; no new implementation/trial authority"
+  ]
+}

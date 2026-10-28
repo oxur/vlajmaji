@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+    "warm-full",
+    "full",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01"
+  ],
+  "wrapper_argv": [
+    "/usr/bin/time",
+    "-l",
+    "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
+    "-B",
+    "-c",
+    "import os,sys; f=open(sys.argv[1],\"x\"); f.write(str(os.getpid())); f.close(); os.execv(sys.argv[2],sys.argv[2:])",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/observer.pid",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/numeric-observer",
+    "warm-full",
+    "full",
+    "1",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01"
+  ],
+  "timeout_seconds": 60,
+  "sampler_seconds": 10,
+  "sampling_interval_ms": 5
+}

@@ -1,0 +1,188 @@
+{
+  "scope": "one authorized sampled diagnostic, not numerical acceptance or a further campaign; failed01/02 unchanged",
+  "source_head": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "files": [
+    {
+      "path": "controls/root-diagnostic-proposal01.md",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-diagnostic-proposal01.md",
+      "bytes": 4984,
+      "sha256": "dd4eb45f662662e9d0416e46600018d47c887c874b3f9d8bf4533224bae8e4b1",
+      "kind": "whole-original",
+      "origin_role": "historical proposal, before diagnostic approval"
+    },
+    {
+      "path": "controls/root-sampled-diagnostic01.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-sampled-diagnostic01.py",
+      "bytes": 11557,
+      "sha256": "6dbfebf1c0fc851b5da7eef0b1810e2c7ab10ac740277c1d08656052cecd3da1",
+      "kind": "whole-original",
+      "origin_role": "final executed launcher"
+    },
+    {
+      "path": "controls/root-sampled-analysis01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-sampled-analysis01.json",
+      "bytes": 3746,
+      "sha256": "046d4dcd8601c0c6add59b1ec8a4a0d5d1cba9033acffd281fc085ee3d4b21d6",
+      "kind": "whole-original",
+      "origin_role": "root retained-output analysis"
+    },
+    {
+      "path": "controls/root-sampled-findings01.md",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-sampled-findings01.md",
+      "bytes": 5887,
+      "sha256": "2dc1df27ed4afd430c97903d5295d8319886057115e381668eaaa392d4f1a476",
+      "kind": "whole-original",
+      "origin_role": "root findings and unissued recommendation"
+    },
+    {
+      "path": "controls/sampled-diagnostic01-cdc-analysis.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01-cdc-analysis.json",
+      "bytes": 4099,
+      "sha256": "8e837bf12567107aac2ffcf85c32ad9cd3c86429485c713eb82b7e161b92b8fa",
+      "kind": "whole-original",
+      "origin_role": "independent CDC retained-output analysis"
+    },
+    {
+      "path": "controls/root-sampled-outer-observation01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-sampled-outer-observation01.json",
+      "bytes": 626,
+      "sha256": "80807da36529f1428f27b1ccaa7cf623e0ec9f2b967f9b7da4d77393b51c0467",
+      "kind": "whole-original",
+      "origin_role": "root-authored terminal-status attestation, not exported outer raw transcript"
+    },
+    {
+      "path": "output/authority.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/authority.json",
+      "bytes": 509,
+      "sha256": "068315ed6695a9bce00c4e54d2848ab2f0bf473e425b91b5cbcdabe282ae42b3",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/database-after.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/database-after.json",
+      "bytes": 335,
+      "sha256": "9dda82e7d98dd2a7361fe8b0b03bb3f7552b3b4b466c2890de6ce2b8a37e5bc1",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/database-before.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/database-before.json",
+      "bytes": 335,
+      "sha256": "9dda82e7d98dd2a7361fe8b0b03bb3f7552b3b4b466c2890de6ce2b8a37e5bc1",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/environment.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/environment.json",
+      "bytes": 354,
+      "sha256": "4a81b6a749041066c3f8242f570a7dc0fbbaa3ed8d83a4394c9648bfa19b5646",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/launch.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/launch.json",
+      "bytes": 788,
+      "sha256": "b46b94287f86e921ce1eba89755f18f36d9dcdc662947fbe5e7ccdd18748e3e7",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/observer.pid",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/observer.pid",
+      "bytes": 5,
+      "sha256": "e41035773590bdef29272afd93d44bb70c66cd740938defbba13e1a1c45f30db",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/receipt.json",
+      "bytes": 1644,
+      "sha256": "e1e74e32f82c6b73bdb686f587db0d44eeea773e57d4625c305142479ef678cf",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/sample.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/sample.stderr",
+      "bytes": 239,
+      "sha256": "5ace7e5732d2d3ad82bc62a7dc1673b9de86545e79e05efff91d2cd3f7805ed3",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/sample.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/sample.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/sample.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/sample.txt",
+      "bytes": 155327,
+      "sha256": "076cbfda02b5d597ee7bdfa39d51edd9dcdfe3ec290d3d1254406f6637d8a662",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/scratch-after.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/scratch-after.json",
+      "bytes": 1101002,
+      "sha256": "6fe5b6b96a60dbcd84a99bb0a0575df2712d42f8f5cd85e4cf9a2a4c2b4fb955",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/scratch-before.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/scratch-before.json",
+      "bytes": 1098654,
+      "sha256": "42de6adabb8426ba174236c16351f158dfd817fbfdebdd4dc3794024960d21ee",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/stderr",
+      "bytes": 951,
+      "sha256": "4d4d20a78d11e87d19d7becddf663cb3c9cc33eb79092d1eb92c1fd6958d6603",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/stdout",
+      "bytes": 36982,
+      "sha256": "c8352ce806297f62bb59f87f7d8584de660362e4b4e4736b5910c896ffb8f9cc",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/target-after.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/target-after.json",
+      "bytes": 108,
+      "sha256": "6ce2525f60c0c1a0678c1f266d465b84f133772c39d9b0359ab31913882d568f",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "output/target-before.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/sampled-diagnostic01/target-before.json",
+      "bytes": 108,
+      "sha256": "6ce2525f60c0c1a0678c1f266d465b84f133772c39d9b0359ab31913882d568f",
+      "kind": "whole-original",
+      "origin_role": "saved diagnostic output or integrity/resource receipt"
+    },
+    {
+      "path": "held-wire-inventory.json",
+      "bytes": 391,
+      "sha256": "aa5753fac7fdfdbb552e5f92e67f790a17d2d442ad57068995f5660a621607ba",
+      "kind": "new-authored-inventory"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+
+thread 'main' (79915869) panicked at src/main.rs:105:7:
+per-request warm maximum: jbotci-local
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+       14.48 real        11.34 user         2.46 sys
+          2942550016  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              193425  page reclaims
+                   0  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                  16  voluntary context switches
+               33609  involuntary context switches
+        137676487638  instructions retired
+         43311796683  cycles elapsed
+          1655917184  peak memory footprint
