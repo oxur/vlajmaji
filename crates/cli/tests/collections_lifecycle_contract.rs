@@ -6,7 +6,7 @@ use std::{
     io::Write,
     path::PathBuf,
     process::{Command, Stdio},
-    time::{SystemTime, UNIX_EPOCH},
+    sync::atomic::{AtomicUsize, Ordering},
 };
 
 use serde_json::Value;
@@ -23,17 +23,22 @@ use vlajmaji_store::{
     CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection,
 };
 
+static NEXT_ROOT: AtomicUsize = AtomicUsize::new(0);
+
 fn fresh_root() -> PathBuf {
-    let stamp = SystemTime::now()
-        .duration_since(UNIX_EPOCH)
-        .unwrap()
-        .as_nanos();
-    let root = std::env::temp_dir().join(format!(
-        "vlajmaji-s04-cli-lifecycle-{}-{stamp}",
-        std::process::id()
-    ));
-    fs::create_dir(&root).unwrap();
-    root
+    for _ in 0..100 {
+        let root = std::env::temp_dir().join(format!(
+            "vlajmaji-s04-cli-lifecycle-{}-{}",
+            std::process::id(),
+            NEXT_ROOT.fetch_add(1, Ordering::Relaxed)
+        ));
+        match fs::create_dir(&root) {
+            Ok(()) => return root,
+            Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => continue,
+            Err(error) => panic!("create exclusive scratch directory: {error}"),
+        }
+    }
+    panic!("could not allocate unique scratch directory after 100 attempts")
 }
 
 fn run(args: &[&std::ffi::OsStr]) -> std::process::Output {
