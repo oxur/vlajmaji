@@ -1,0 +1,3407 @@
+diff --git a/README.md b/README.md
+index a2cabbd..654a853 100644
+--- a/README.md
++++ b/README.md
+@@ -175,6 +175,10 @@ compact --request JSON`. Both retain full output by default. Compact hits carry
+ strict detail keys that can be expanded with `dictionary-detail STORE
+ --reference JSON`, or `lookup-detail --reference JSON` for managed results.
+ The collection guide documents snapshot checking and the compact/detail fields.
++Pass `--format readable` to `dictionary-query` or configured `lookup` for
++deterministic source-grouped text, or to either detail command for a readable
++complete-hit view. Full JSON remains the default; compact JSON keeps its
++existing response shape.
+ 
+ Corpus data is not bundled. The [migration and replay guide](docs/migration.md)
+ describes importing research inputs, building a store, querying it, and running
+diff --git a/crates/cli/README.md b/crates/cli/README.md
+index 5af7eeb..7f2647c 100644
+--- a/crates/cli/README.md
++++ b/crates/cli/README.md
+@@ -90,6 +90,11 @@ authenticity proof for an ordinary-open store.
+ Standalone compact `dictionary-query` writes the selected Exact or Resolve
+ response object directly at the JSON root. Configured `lookup` keeps its
+ managed envelope and operation-tagged result.
++`--format readable` is available on both query commands and their detail
++commands. It writes deterministic source-grouped text from the same compact
++typed response; Full JSON stays the default, and compact JSON remains
++unchanged. Detail commands accept Full or Readable; Compact is not a detail
++format.
+ This layer does not alter `dictionary-query STORE` or the global default-store
+ route, and a selected installed payload that fails its minimum open is reported
+ as an error rather than as metadata-only availability.
+diff --git a/crates/cli/src/main.rs b/crates/cli/src/main.rs
+index 141abba..f71e2b9 100644
+--- a/crates/cli/src/main.rs
++++ b/crates/cli/src/main.rs
+@@ -21,7 +21,9 @@ use vlajmaji_search::{
+     CollectionCompactSearchEngine, CollectionQueryError, CollectionQueryErrorReport,
+     CollectionSearchEngine, DictionaryCompactQueryResult, DictionaryCompactSearchEngine,
+     DictionaryErrorReport, DictionaryExactOptions, DictionaryHitDetailRef, DictionaryRequest,
+-    DictionarySearchEngine, Query, SearchEngine, SearchOptions, validate_detail_snapshot_sha256,
++    DictionarySearchEngine, Query, SearchEngine, SearchOptions, render_collection_compact,
++    render_collection_detail, render_dictionary_compact, render_dictionary_detail,
++    validate_detail_snapshot_sha256,
+ };
+ use vlajmaji_store::{
+     CollectionCatalogue, CollectionError, CollectionInput, CollectionPolicySelection,
+@@ -90,6 +92,8 @@ enum Command {
+         reference: String,
+         #[arg(long)]
+         expected_snapshot: Option<String>,
++        #[arg(long, value_enum, default_value_t = DetailFormat::Full)]
++        format: DetailFormat,
+     },
+     /// Explicitly audit one or all integrity boundaries of an existing grouped store.
+     #[command(
+@@ -173,6 +177,8 @@ enum Command {
+         profile: Option<String>,
+         #[arg(long)]
+         pack: Vec<String>,
++        #[arg(long, value_enum, default_value_t = DetailFormat::Full)]
++        format: DetailFormat,
+     },
+ }
+ 
+@@ -181,6 +187,14 @@ enum QueryFormat {
+     #[default]
+     Full,
+     Compact,
++    Readable,
++}
++
++#[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum, Default)]
++enum DetailFormat {
++    #[default]
++    Full,
++    Readable,
+ }
+ 
+ #[derive(Debug, Subcommand)]
+@@ -473,7 +487,10 @@ struct ManagedOutputContext {
+ 
+ impl ManagedOutputContext {
+     fn report(&self, detail: String) -> serde_json::Value {
+-        if self.operation == "dictionary_detail" {
++        if matches!(
++            self.operation.as_str(),
++            "dictionary_detail" | "dictionary_query"
++        ) {
+             return serde_json::json!(DictionaryErrorReport {
+                 code: "response_output_io".into(),
+                 message: detail,
+@@ -503,6 +520,20 @@ impl ManagedOutputContext {
+     }
+ }
+ 
++fn dictionary_readable_output_context(store: &Path, operation: &str) -> ManagedOutputContext {
++    ManagedOutputContext {
++        operation: operation.into(),
++        config_path: None,
++        root_path: Some(vlajmaji_store::native_path_report(store)),
++        profile: None,
++        requested_profile: None,
++        snapshot: None,
++        known_pack_ids: Vec::new(),
++        outcome: "not_applicable".into(),
++        collection_failure: None,
++    }
++}
++
+ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
+     let context = |operation: &str,
+                    config: Option<&Path>,
+@@ -917,12 +948,28 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
+                     }
+                     .map_err(|error| structured_error("response_json", error.to_string()))?
+                 }
++                QueryFormat::Readable => {
++                    let engine = DictionaryCompactSearchEngine::open(&selected.path)
++                        .map_err(|error| CliError::Structured(error.report()))?;
++                    let result = engine
++                        .execute(request)
++                        .map_err(|error| CliError::Structured(error.report()))?;
++                    output_context = Some(dictionary_readable_output_context(
++                        &selected.path,
++                        "dictionary_query",
++                    ));
++                    return Ok((
++                        QueryOutput::Readable(render_dictionary_compact(&result)),
++                        output_context,
++                    ));
++                }
+             }
+         }
+         Command::DictionaryDetail {
+             store,
+             reference,
+             expected_snapshot,
++            format,
+         } => {
+             let reference = DictionaryHitDetailRef::from_json_bytes(reference.as_bytes())
+                 .map_err(|error| CliError::Structured(error.report()))?;
+@@ -936,8 +983,16 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
+             let response = engine
+                 .detail(&reference, expected_snapshot.as_deref())
+                 .map_err(|error| CliError::Structured(error.report()))?;
+-            serde_json::to_value(response)
+-                .map_err(|error| structured_error("response_json", error.to_string()))?
++            match format {
++                DetailFormat::Full => serde_json::to_value(response)
++                    .map_err(|error| structured_error("response_json", error.to_string()))?,
++                DetailFormat::Readable => {
++                    return Ok((
++                        QueryOutput::Readable(render_dictionary_detail(&response)),
++                        output_context,
++                    ));
++                }
++            }
+         }
+         Command::Verify { check, store } => {
+             let selected = resolve_store(store)?;
+@@ -1418,6 +1473,53 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
+                     })?;
+                     (value, response.snapshot, response.collections)
+                 }
++                QueryFormat::Readable => {
++                    let mut engine = CollectionCompactSearchEngine::open_configured(
++                        &profiles,
++                        profile.as_deref(),
++                        override_packs.as_deref(),
++                    )
++                    .map_err(|error| {
++                        let known_pack_ids = override_packs
++                            .as_deref()
++                            .unwrap_or(&configured_profile.packs);
++                        with_managed_context(
++                            managed_error_for(error, "lookup"),
++                            Some(&config_path),
++                            Some(&configured_profile.root),
++                            profile.as_deref(),
++                            Some(profile_identity.clone()),
++                            known_pack_ids,
++                        )
++                    })?;
++                    let response = engine.execute(request).map_err(|error| {
++                        let mut report = error.report_for(operation);
++                        report.snapshot = Some(engine.selection().clone());
++                        report.profile = engine.selection().profile.clone();
++                        report.config_path = Some(profile_identity.config_path.clone());
++                        report.root_path =
++                            Some(vlajmaji_store::native_path_report(&configured_profile.root));
++                        report.known_pack_ids = engine
++                            .selection()
++                            .collections
++                            .iter()
++                            .map(|row| row.pack_id.clone())
++                            .collect();
++                        CliError::Managed(Box::new(report))
++                    })?;
++                    if let Some(context) = output_context.as_mut() {
++                        context.snapshot = Some(response.snapshot.clone());
++                        context.known_pack_ids = response
++                            .collections
++                            .iter()
++                            .map(|row| row.pack_id.clone())
++                            .collect();
++                    }
++                    return Ok((
++                        QueryOutput::Readable(render_collection_compact(&response)),
++                        output_context,
++                    ));
++                }
+             };
+             if let Some(context) = output_context.as_mut() {
+                 context.snapshot = Some(snapshot);
+@@ -1432,6 +1534,7 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
+             config,
+             profile,
+             pack,
++            format,
+         } => {
+             let detail_ref = DictionaryHitDetailRef::from_json_bytes(reference.as_bytes())
+                 .map_err(|error| {
+@@ -1563,9 +1666,17 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
+                     .map(|row| row.pack_id.clone())
+                     .collect();
+             }
+-            serde_json::to_value(response).map_err(|error| {
+-                managed_cli_error("response_serialization", error.to_string(), "lookup_detail")
+-            })?
++            match format {
++                DetailFormat::Full => serde_json::to_value(response).map_err(|error| {
++                    managed_cli_error("response_serialization", error.to_string(), "lookup_detail")
++                })?,
++                DetailFormat::Readable => {
++                    return Ok((
++                        QueryOutput::Readable(render_collection_detail(&response)),
++                        output_context,
++                    ));
++                }
++            }
+         }
+     };
+     Ok((QueryOutput::Json(output), output_context))
+@@ -2776,12 +2887,7 @@ fn main() -> std::process::ExitCode {
+     };
+     let mut stdout = io::stdout().lock();
+     let mut stderr = io::stderr().lock();
+-    if emit_success_response(
+-        output.as_json(),
+-        &mut stdout,
+-        &mut stderr,
+-        output_context.as_ref(),
+-    ) {
++    if emit_success_response(&output, &mut stdout, &mut stderr, output_context.as_ref()) {
+         std::process::ExitCode::SUCCESS
+     } else {
+         std::process::ExitCode::FAILURE
+@@ -2794,28 +2900,21 @@ enum ResponseWriteFailure {
+ }
+ 
+ fn emit_success_response<W: Write, E: Write>(
+-    output: &serde_json::Value,
++    output: &QueryOutput,
+     stdout: &mut W,
+     stderr: &mut E,
+     context: Option<&ManagedOutputContext>,
+ ) -> bool {
+-    let write_result = serde_json::to_writer(&mut *stdout, output)
+-        .map_err(|error| match error.io_error_kind() {
+-            Some(io::ErrorKind::BrokenPipe) => ResponseWriteFailure::BrokenPipe,
+-            _ => ResponseWriteFailure::Other(error.to_string()),
+-        })
+-        .and_then(|()| {
+-            stdout
+-                .write_all(b"\n")
+-                .and_then(|()| stdout.flush())
+-                .map_err(|error| {
+-                    if error.kind() == io::ErrorKind::BrokenPipe {
+-                        ResponseWriteFailure::BrokenPipe
+-                    } else {
+-                        ResponseWriteFailure::Other(error.to_string())
+-                    }
+-                })
+-        });
++    let write_result = match output {
++        QueryOutput::Json(value) => serde_json::to_writer(&mut *stdout, value)
++            .map_err(|error| match error.io_error_kind() {
++                Some(io::ErrorKind::BrokenPipe) => ResponseWriteFailure::BrokenPipe,
++                _ => ResponseWriteFailure::Other(error.to_string()),
++            })
++            .and_then(|()| write_response_bytes(stdout, b"\n")),
++        QueryOutput::Readable(text) => write_response_bytes(stdout, text.as_bytes()),
++    }
++    .and_then(|()| stdout.flush().map_err(response_write_failure));
+     match write_result {
+         Ok(()) => true,
+         Err(ResponseWriteFailure::BrokenPipe) => true,
+@@ -2826,6 +2925,21 @@ fn emit_success_response<W: Write, E: Write>(
+     }
+ }
+ 
++fn write_response_bytes<W: Write>(
++    stdout: &mut W,
++    bytes: &[u8],
++) -> Result<(), ResponseWriteFailure> {
++    stdout.write_all(bytes).map_err(response_write_failure)
++}
++
++fn response_write_failure(error: io::Error) -> ResponseWriteFailure {
++    if error.kind() == io::ErrorKind::BrokenPipe {
++        ResponseWriteFailure::BrokenPipe
++    } else {
++        ResponseWriteFailure::Other(error.to_string())
++    }
++}
++
+ fn write_output_error<E: Write>(
+     stderr: &mut E,
+     context: Option<&ManagedOutputContext>,
+@@ -2844,7 +2958,7 @@ fn write_output_error<E: Write>(
+ #[cfg(test)]
+ mod managed_output_tests {
+     use super::{
+-        ManagedOutputContext, emit_success_response, lifecycle_output_context,
++        ManagedOutputContext, QueryOutput, emit_success_response, lifecycle_output_context,
+         mutation_output_context,
+     };
+     use std::{
+@@ -2870,6 +2984,80 @@ mod managed_output_tests {
+         }
+     }
+ 
++    struct FlushFailureWriter;
++
++    impl Write for FlushFailureWriter {
++        fn write(&mut self, buffer: &[u8]) -> io::Result<usize> {
++            Ok(buffer.len())
++        }
++
++        fn flush(&mut self) -> io::Result<()> {
++            Err(io::Error::from_raw_os_error(5))
++        }
++    }
++
++    struct BrokenPipeWriter;
++
++    impl Write for BrokenPipeWriter {
++        fn write(&mut self, _buffer: &[u8]) -> io::Result<usize> {
++            Err(io::Error::from(io::ErrorKind::BrokenPipe))
++        }
++
++        fn flush(&mut self) -> io::Result<()> {
++            Ok(())
++        }
++    }
++
++    #[test]
++    fn test_shared_json_and_readable_writer_handles_flush_errors_and_broken_pipe() {
++        let context = ManagedOutputContext {
++            operation: "lookup".into(),
++            config_path: None,
++            root_path: None,
++            profile: None,
++            requested_profile: Some("research".into()),
++            snapshot: None,
++            known_pack_ids: vec!["llg".into()],
++            outcome: "not_applicable".into(),
++            collection_failure: None,
++        };
++
++        for output in [
++            QueryOutput::Json(serde_json::json!({"ok":true})),
++            QueryOutput::Readable("readable body".into()),
++        ] {
++            let mut stderr = Vec::new();
++            assert!(!emit_success_response(
++                &output,
++                &mut FlushFailureWriter,
++                &mut stderr,
++                Some(&context),
++            ));
++            let envelope: serde_json::Value = serde_json::from_slice(&stderr).unwrap();
++            assert_eq!(envelope["error"]["category"], "response_output_io");
++            assert_eq!(envelope["error"]["operation"], "lookup");
++            assert_eq!(envelope["error"]["outcome"], "not_applicable");
++            assert_eq!(
++                envelope["error"]["known_pack_ids"],
++                serde_json::json!(["llg"])
++            );
++        }
++
++        for output in [
++            QueryOutput::Json(serde_json::json!({"ok":true})),
++            QueryOutput::Readable("readable body".into()),
++        ] {
++            let mut stderr = Vec::new();
++            assert!(emit_success_response(
++                &output,
++                &mut BrokenPipeWriter,
++                &mut stderr,
++                Some(&context),
++            ));
++            assert!(stderr.is_empty());
++        }
++    }
++
+     #[test]
+     fn test_emit_managed_response_io_failure_reports_committed_context() {
+         let context = ManagedOutputContext {
+@@ -2885,7 +3073,7 @@ mod managed_output_tests {
+         };
+         let mut stderr = Vec::new();
+         let ok = emit_success_response(
+-            &serde_json::json!({"ok":true}),
++            &QueryOutput::Json(serde_json::json!({"ok":true})),
+             &mut BadDescriptorWriter,
+             &mut stderr,
+             Some(&context),
+@@ -2922,7 +3110,7 @@ mod managed_output_tests {
+         };
+         let mut read_stderr = Vec::new();
+         assert!(!emit_success_response(
+-            &serde_json::json!({"ok":true}),
++            &QueryOutput::Json(serde_json::json!({"ok":true})),
+             &mut BadDescriptorWriter,
+             &mut read_stderr,
+             Some(&read_context),
+@@ -2932,6 +3120,43 @@ mod managed_output_tests {
+         assert_eq!(read_envelope["error"]["outcome"], "not_applicable");
+     }
+ 
++    #[test]
++    fn test_emit_readable_uses_shared_writer_without_adding_a_newline() {
++        let mut stdout = Vec::new();
++        let mut stderr = Vec::new();
++        assert!(emit_success_response(
++            &QueryOutput::Readable("readable body\n".into()),
++            &mut stdout,
++            &mut stderr,
++            None,
++        ));
++        assert_eq!(stdout, b"readable body\n");
++        assert!(stderr.is_empty());
++
++        let context = ManagedOutputContext {
++            operation: "lookup".into(),
++            config_path: None,
++            root_path: None,
++            profile: None,
++            requested_profile: Some("readable".into()),
++            snapshot: None,
++            known_pack_ids: vec!["llg".into()],
++            outcome: "not_applicable".into(),
++            collection_failure: None,
++        };
++        let mut stderr = Vec::new();
++        assert!(!emit_success_response(
++            &QueryOutput::Readable("readable body\n".into()),
++            &mut BadDescriptorWriter,
++            &mut stderr,
++            Some(&context),
++        ));
++        let envelope: serde_json::Value = serde_json::from_slice(&stderr).unwrap();
++        assert_eq!(envelope["error"]["category"], "response_output_io");
++        assert_eq!(envelope["error"]["operation"], "lookup");
++        assert_eq!(envelope["error"]["outcome"], "not_applicable");
++    }
++
+     #[test]
+     fn test_emit_dictionary_detail_io_failure_uses_structured_error_report() {
+         let context = ManagedOutputContext {
+@@ -2947,7 +3172,7 @@ mod managed_output_tests {
+         };
+         let mut stderr = Vec::new();
+         assert!(!emit_success_response(
+-            &serde_json::json!({"version":1,"hit":{}}),
++            &QueryOutput::Json(serde_json::json!({"version":1,"hit":{}})),
+             &mut BadDescriptorWriter,
+             &mut stderr,
+             Some(&context),
+@@ -2997,7 +3222,7 @@ mod managed_output_tests {
+         );
+         let mut stderr = Vec::new();
+         assert!(!emit_success_response(
+-            &serde_json::json!({"operation":"update"}),
++            &QueryOutput::Json(serde_json::json!({"operation":"update"})),
+             &mut BadDescriptorWriter,
+             &mut stderr,
+             Some(&context),
+@@ -3123,7 +3348,7 @@ mod managed_output_tests {
+             assert_eq!(failure.observed_generation.as_deref(), Some("generation-5"));
+             let mut stderr = Vec::new();
+             assert!(!emit_success_response(
+-                &serde_json::json!({"operation": operation}),
++                &QueryOutput::Json(serde_json::json!({"operation": operation})),
+                 &mut BadDescriptorWriter,
+                 &mut stderr,
+                 Some(&context),
+@@ -3167,7 +3392,7 @@ mod managed_output_tests {
+         ) {
+             let mut stderr = Vec::new();
+             assert!(!emit_success_response(
+-                &serde_json::json!({"operation":"remove"}),
++                &QueryOutput::Json(serde_json::json!({"operation":"remove"})),
+                 &mut BadDescriptorWriter,
+                 &mut stderr,
+                 Some(context),
+@@ -3242,7 +3467,7 @@ mod managed_output_tests {
+         let context = super::migration_output_context(&report);
+         let mut stderr = Vec::new();
+         assert!(!emit_success_response(
+-            &serde_json::json!({"operation":"migrate","outcome":"migrated"}),
++            &QueryOutput::Json(serde_json::json!({"operation":"migrate","outcome":"migrated"})),
+             &mut BadDescriptorWriter,
+             &mut stderr,
+             Some(&context),
+diff --git a/crates/cli/src/query_output.rs b/crates/cli/src/query_output.rs
+index ed6ddfe..6a08983 100644
+--- a/crates/cli/src/query_output.rs
++++ b/crates/cli/src/query_output.rs
+@@ -2,14 +2,8 @@
+ 
+ /// A query result before it is written to stdout.
+ pub(crate) enum QueryOutput {
+-    /// JSON is the only initial S05 output mode; readable rendering is a later pass.
++    /// Existing JSON output, retained as a typed Value for byte-compatible writing.
+     Json(serde_json::Value),
+-}
+-
+-impl QueryOutput {
+-    pub(crate) fn as_json(&self) -> &serde_json::Value {
+-        match self {
+-            Self::Json(value) => value,
+-        }
+-    }
++    /// Already-rendered deterministic UTF-8 text.
++    Readable(String),
+ }
+diff --git a/crates/cli/tests/query_output_contract.rs b/crates/cli/tests/query_output_contract.rs
+index 2d01ba4..5dfaaf1 100644
+--- a/crates/cli/tests/query_output_contract.rs
++++ b/crates/cli/tests/query_output_contract.rs
+@@ -5,20 +5,24 @@ mod fixture;
+ 
+ use std::{
+     borrow::Cow,
+-    collections::BTreeSet,
++    collections::{BTreeMap, BTreeSet},
+     path::{Path, PathBuf},
+     process::{Command, Output},
+     sync::atomic::{AtomicUsize, Ordering},
+     time::{SystemTime, UNIX_EPOCH},
+ };
+ 
+-use serde_json::Value;
++use serde_json::{Value, json};
++use sha2::{Digest, Sha256};
+ use vlajmaji_lexicon::{
+-    Dictionary, LocalRef, PackId, PackPayloadKind, RelationTarget, seal_release,
++    CatalogTarget, Dictionary, Eligibility, JbotciImportOptions, LaLojbanImportOptions,
++    LlgImportOptions, LocalRef, PackId, PackPayloadKind, Presence, RelationTarget,
++    SutysiskuImportOptions, import_jbotci_export, import_la_lojban_export, import_llg_lists,
++    import_sutysisku_export, load_sealed_release, seal_release,
+ };
+ use vlajmaji_search::DictionaryRequest;
+ use vlajmaji_store::{
+-    CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection,
++    CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection, DictionaryStore,
+ };
+ 
+ static NEXT: AtomicUsize = AtomicUsize::new(0);
+@@ -57,6 +61,1244 @@ fn run_strings(args: &[&str]) -> Output {
+         .unwrap()
+ }
+ 
++fn run_isolated(args: &[&str], home: &Path) -> Output {
++    let xdg = home.join("xdg");
++    std::fs::create_dir_all(xdg.join("config")).unwrap();
++    std::fs::create_dir_all(xdg.join("data")).unwrap();
++    std::fs::create_dir_all(xdg.join("state")).unwrap();
++    Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
++        .args(args)
++        .env_clear()
++        .env("HOME", home)
++        .env("XDG_CONFIG_HOME", xdg.join("config"))
++        .env("XDG_DATA_HOME", xdg.join("data"))
++        .env("XDG_STATE_HOME", xdg.join("state"))
++        .stdout(std::process::Stdio::piped())
++        .stderr(std::process::Stdio::piped())
++        .output()
++        .unwrap()
++}
++
++const TINY_LENS: &[u8] = br#"[{"word":"farvi","word_type":"gismu","definition":"synthetic develops","definition_id":333,"score":1.2500,"user":{"username":"shared"}}]"#;
++const TINY_SUT: &[u8] = br#"{"farvi":{"d":"synthetic one","t":"gismu","n":null},"farvi":{"d":"synthetic two","t":"gismu"},"zoizoizoi":{"d":"retained excluded","t":"unsupported"}}"#;
++const TINY_LLG_HEX: &str = "206661727669202020202020202020202020202067726f772020202020202020202020202020202020202020202020202020202020202020202020202020642020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020";
++const TINY_NOTICE: &[u8] = b"Explicit synthetic notice";
++
++fn sha256(bytes: &[u8]) -> String {
++    format!("{:x}", Sha256::digest(bytes))
++}
++
++fn tiny_llg() -> Vec<u8> {
++    TINY_LLG_HEX
++        .as_bytes()
++        .as_chunks::<2>()
++        .0
++        .iter()
++        .map(|pair| {
++            let digit = |byte: u8| match byte {
++                b'0'..=b'9' => byte - b'0',
++                b'a'..=b'f' => byte - b'a' + 10,
++                _ => panic!("invalid fixture hex"),
++            };
++            (digit(pair[0]) << 4) | digit(pair[1])
++        })
++        .collect()
++}
++
++fn tiny_models() -> Vec<Dictionary> {
++    let revision = "0".repeat(40);
++    let metadata = format!(
++        "language_tag = \"en\"\nlanguage_realname = \"English\"\nsource_language_tag = \"jbo\"\nformat = \"json\"\npositive_scores_only = false\nfilename = \"dictionary-en.json\"\nmetadata_url = \"https://example.invalid/languages\"\ndownload_url = \"https://example.invalid/synthetic\"\nlensisku_created_at = \"2026-10-04T03:07:08Z\"\nsha256 = \"{}\"\ndefinition_count = 1\nentry_count = 1\n",
++        sha256(TINY_LENS)
++    );
++    let jbotci = import_jbotci_export(
++        TINY_LENS,
++        metadata.as_bytes(),
++        &JbotciImportOptions {
++            revision: revision.clone(),
++            expected_raw_sha256: sha256(TINY_LENS),
++            expected_metadata_sha256: sha256(metadata.as_bytes()),
++        },
++    )
++    .unwrap()
++    .into_dictionary();
++    let la = import_la_lojban_export(
++        TINY_LENS,
++        &LaLojbanImportOptions {
++            revision: revision.clone(),
++            expected_raw_sha256: sha256(TINY_LENS),
++            raw_locator: Some("https://example.invalid/la".into()),
++            notice_locator: Some("https://example.invalid/code-notice".into()),
++        },
++    )
++    .unwrap()
++    .into_dictionary();
++    let llg = tiny_llg();
++    let llg = import_llg_lists(
++        &llg,
++        b"",
++        b"",
++        TINY_NOTICE,
++        &LlgImportOptions {
++            expected_gismu_sha256: sha256(&llg),
++            expected_cmavo_sha256: sha256(b""),
++            expected_rafsi_sha256: sha256(b""),
++            expected_notice_sha256: sha256(TINY_NOTICE),
++            base_locator: "https://example.invalid/llg".into(),
++        },
++    )
++    .unwrap()
++    .into_dictionary();
++    let sut = import_sutysisku_export(
++        TINY_SUT,
++        &SutysiskuImportOptions {
++            revision,
++            expected_raw_sha256: sha256(TINY_SUT),
++            raw_locator: Some("https://example.invalid/sut".into()),
++            notice_locator: Some("https://example.invalid/code-notice".into()),
++        },
++    )
++    .unwrap()
++    .into_dictionary();
++    vec![jbotci, llg, la, sut]
++}
++
++type TypedInventory = BTreeMap<String, BTreeMap<String, usize>>;
++
++macro_rules! typed_rows {
++    ($rows:expr) => {{
++        let mut inventory = BTreeMap::new();
++        for row in $rows {
++            *inventory
++                .entry(sha256(&serde_json::to_vec(row).unwrap()))
++                .or_insert(0) += 1;
++        }
++        inventory
++    }};
++}
++
++fn typed_inventory(dictionary: &Dictionary) -> TypedInventory {
++    let document = dictionary.clone().into_document();
++    let metadata = document.metadata;
++    let registry = document.registry.into_document();
++    let mut inventory = BTreeMap::new();
++    macro_rules! add_metadata {
++        ($($family:ident),+ $(,)?) => {$({
++            inventory.insert(stringify!($family).to_owned(), typed_rows!(&metadata.$family));
++        })+};
++    }
++    add_metadata!(
++        collections,
++        components,
++        releases,
++        code_notices,
++        entries,
++        assertions,
++        contexts,
++        forms,
++        etymologies,
++        frames,
++        relations,
++        owned_revisions,
++        owned_heads,
++        editorial_senses,
++        computations,
++        annotations,
++        extensions,
++    );
++    macro_rules! add_registry {
++        ($($family:ident),+ $(,)?) => {$({
++            inventory.insert(stringify!($family).to_owned(), typed_rows!(&registry.$family));
++        })+};
++    }
++    add_registry!(
++        sources,
++        contributors,
++        distributors,
++        aliases,
++        lineage,
++        snapshots,
++        occurrences
++    );
++    inventory.insert("captures".to_owned(), typed_rows!(&document.captures));
++    inventory
++}
++
++fn max_input_inventory(models: &[Dictionary]) -> TypedInventory {
++    let mut expected = BTreeMap::new();
++    for family in [
++        "collections",
++        "components",
++        "releases",
++        "code_notices",
++        "entries",
++        "assertions",
++        "contexts",
++        "forms",
++        "etymologies",
++        "frames",
++        "relations",
++        "owned_revisions",
++        "owned_heads",
++        "editorial_senses",
++        "computations",
++        "annotations",
++        "extensions",
++        "sources",
++        "contributors",
++        "distributors",
++        "aliases",
++        "lineage",
++        "snapshots",
++        "occurrences",
++        "captures",
++    ] {
++        expected.insert(family.to_owned(), BTreeMap::new());
++    }
++    for model in models {
++        for (family, rows) in typed_inventory(model) {
++            let expected_rows = expected.get_mut(&family).unwrap();
++            for (digest, count) in rows {
++                let maximum = expected_rows.entry(digest).or_insert(0);
++                *maximum = (*maximum).max(count);
++            }
++        }
++    }
++    expected
++}
++
++fn write_tiny_manifest(base: &Path, models: &[Dictionary]) -> (PathBuf, PathBuf, PathBuf, String) {
++    assert_eq!(
++        sha256(TINY_LENS),
++        "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
++    );
++    assert_eq!(
++        sha256(&tiny_llg()),
++        "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
++    );
++    assert_eq!(
++        sha256(TINY_SUT),
++        "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
++    );
++    let mut inputs = Vec::new();
++    let mut llg_release_sha = None;
++    let mut llg_release_path = None;
++    let mut llg_seal_path = None;
++    for (index, (pack, model)) in [
++        (PackId::LensiskuJbotci, &models[0]),
++        (PackId::Llg, &models[1]),
++        (PackId::LaLojban, &models[2]),
++        (PackId::Sutysisku, &models[3]),
++    ]
++    .into_iter()
++    .enumerate()
++    {
++        let sealed = seal_release(pack, PackPayloadKind::Synthetic, model).unwrap();
++        let release_path = base.join(format!("pack-{index}-release.json"));
++        let seal_path = base.join(format!("pack-{index}-seal.json"));
++        let release_sha = sha256(&sealed.release);
++        assert_eq!(
++            typed_inventory(&load_sealed_release(pack, &sealed.release, &sealed.seal).unwrap()),
++            typed_inventory(model),
++            "sealed pre-input model retains every typed family"
++        );
++        if pack == PackId::Llg {
++            llg_release_sha = Some(release_sha);
++            llg_release_path = Some(release_path.clone());
++            llg_seal_path = Some(seal_path.clone());
++        }
++        std::fs::write(&release_path, &sealed.release).unwrap();
++        std::fs::write(&seal_path, &sealed.seal).unwrap();
++        inputs.push(json!({
++            "kind": "sealed", "pack_id": pack.as_str(),
++            "release": release_path, "seal": seal_path,
++        }));
++    }
++    let manifest = json!({
++        "version": 1,
++        "inputs": inputs,
++    });
++    let path = base.join("manifest.json");
++    std::fs::write(&path, serde_json::to_vec(&manifest).unwrap()).unwrap();
++    (
++        path,
++        llg_release_path.unwrap(),
++        llg_seal_path.unwrap(),
++        llg_release_sha.unwrap(),
++    )
++}
++
++#[test]
++fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
++    let base = scratch();
++    let root = base.join("catalogue");
++    let config = base.join("config.toml");
++    let models = tiny_models();
++    let expected_inventory = max_input_inventory(&models);
++    assert_eq!(
++        expected_inventory.len(),
++        25,
++        "all typed families are accounted for"
++    );
++    assert_eq!(expected_inventory["assertions"].values().sum::<usize>(), 6);
++    assert_eq!(expected_inventory["sources"].values().sum::<usize>(), 3);
++    let mut lexical_farvi = BTreeMap::new();
++    for model in &models {
++        let document = model.clone().into_document();
++        for assertion in &document.metadata.assertions {
++            let is_lexical_farvi = assertion.eligibility == Eligibility::Lexical
++                && document.metadata.entries.iter().any(|entry| {
++                    entry.id == assertion.entry && entry.spelling == Presence::Value("farvi".into())
++                });
++            lexical_farvi.insert(
++                sha256(&serde_json::to_vec(assertion).unwrap()),
++                is_lexical_farvi,
++            );
++        }
++    }
++    assert_eq!(
++        expected_inventory["assertions"]
++            .iter()
++            .filter(|(digest, _)| lexical_farvi.get(*digest) == Some(&true))
++            .map(|(_, count)| count)
++            .sum::<usize>(),
++        5,
++        "pre-input max-union lexical farvi assertions"
++    );
++    let manifest_and_release = write_tiny_manifest(&base, &models);
++    let manifest = manifest_and_release.0;
++    let llg_release_path = manifest_and_release.1;
++    let llg_seal_path = manifest_and_release.2;
++    let llg_release_sha = manifest_and_release.3;
++    let llg = &models[1];
++    let llg_entry = llg
++        .metadata()
++        .entries
++        .iter()
++        .find(|entry| entry.spelling == Presence::Value("farvi".into()))
++        .expect("LLG farvi entry");
++    let llg_assertion = llg
++        .metadata()
++        .assertions
++        .iter()
++        .find(|assertion| {
++            assertion.entry == llg_entry.id && assertion.eligibility == Eligibility::Lexical
++        })
++        .expect("LLG lexical farvi assertion");
++    let local_target = RelationTarget::Local(LocalRef::Assertion(llg_assertion.id.clone()));
++    let llg_source = llg_entry.source.clone();
++    let llg_release = llg.metadata().releases[0].id.clone();
++    let catalog_target = RelationTarget::Catalog(CatalogTarget {
++        source: llg_source,
++        release: llg_release,
++        native_entry_id: None,
++        native_assertion_id: None,
++        occurrence: Some(llg_assertion.occurrence.clone()),
++    });
++
++    let install = run_isolated(
++        &[
++            "collections",
++            "install",
++            root.to_str().unwrap(),
++            "--manifest",
++            manifest.to_str().unwrap(),
++            "--all",
++            "--allow-synthetic",
++        ],
++        &base,
++    );
++    assert!(
++        install.status.success(),
++        "{}",
++        String::from_utf8_lossy(&install.stderr)
++    );
++    let installed: Value = serde_json::from_slice(&install.stdout).unwrap();
++    assert_eq!(installed["local_revision"], 1);
++    assert_eq!(
++        installed["generation"]["members"].as_array().unwrap().len(),
++        4
++    );
++    let installed_store = PathBuf::from(
++        installed["generation"]["path"]["utf8"]
++            .as_str()
++            .expect("JSON-safe generation.path"),
++    );
++    let installed_model = DictionaryStore::open(&installed_store)
++        .unwrap()
++        .dictionary()
++        .unwrap();
++    assert_eq!(
++        typed_inventory(&installed_model),
++        expected_inventory,
++        "the installed model equals the independent pre-input max multiset"
++    );
++    let old_generation_sha = sha256(
++        &DictionaryStore::open(&installed_store)
++            .unwrap()
++            .canonical_bytes()
++            .unwrap(),
++    );
++    assert_eq!(
++        installed["inputs"]
++            .as_array()
++            .unwrap()
++            .iter()
++            .find(|input| input["pack_id"] == "llg")
++            .and_then(|input| input["release_sha256"].as_str())
++            .expect("registered LLG release digest"),
++        llg_release_sha,
++        "candidate registered the pre-input sealed LLG release"
++    );
++    let installed_release_sha = llg_release_sha.clone();
++
++    let configured = run_isolated(
++        &[
++            "collections",
++            "configure",
++            root.to_str().unwrap(),
++            "--profile",
++            "four",
++            "--all",
++            "--make-default",
++            "--config",
++            config.to_str().unwrap(),
++        ],
++        &base,
++    );
++    assert!(
++        configured.status.success(),
++        "{}",
++        String::from_utf8_lossy(&configured.stderr)
++    );
++    let configured: Value = serde_json::from_slice(&configured.stdout).unwrap();
++    assert_eq!(configured["revision"], 1);
++
++    let profiles = run_isolated(
++        &[
++            "collections",
++            "profiles",
++            "--config",
++            config.to_str().unwrap(),
++        ],
++        &base,
++    );
++    assert!(profiles.status.success());
++    assert_eq!(
++        serde_json::from_slice::<Value>(&profiles.stdout).unwrap()["revision"],
++        1
++    );
++    let selection = run_isolated(
++        &[
++            "collections",
++            "selection",
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++        ],
++        &base,
++    );
++    assert!(selection.status.success());
++    let selected: Value = serde_json::from_slice(&selection.stdout).unwrap();
++    assert_eq!(selected["packs"].as_array().unwrap().len(), 4);
++    let inspect = run_isolated(
++        &["collections", "inspect", root.to_str().unwrap(), "llg"],
++        &base,
++    );
++    assert!(inspect.status.success());
++    let inspect: Value = serde_json::from_slice(&inspect.stdout).unwrap();
++    assert_eq!(inspect["pack_id"], "llg");
++    assert_eq!(inspect["installation_state"], "installed");
++    let initial_list = run_isolated(&["collections", "list", root.to_str().unwrap()], &base);
++    assert!(initial_list.status.success());
++    let initial_list: Value = serde_json::from_slice(&initial_list.stdout).unwrap();
++    assert_eq!(initial_list["catalogue_schema_version"], 2);
++    assert_eq!(initial_list["local_revision"], 1);
++
++    let lookup = |format: Option<&str>, request: Option<&str>| {
++        let mut args = vec![
++            "lookup",
++            "farvi",
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++        ];
++        if let Some(request) = request {
++            args = vec![
++                "lookup",
++                "--request",
++                request,
++                "--config",
++                config.to_str().unwrap(),
++                "--profile",
++                "four",
++            ];
++        }
++        if let Some(format) = format {
++            args.extend(["--format", format]);
++        }
++        run_isolated(&args, &base)
++    };
++    let full = lookup(None, None);
++    assert!(
++        full.status.success(),
++        "{}",
++        String::from_utf8_lossy(&full.stderr)
++    );
++    let full_value: Value = serde_json::from_slice(&full.stdout).unwrap();
++    assert_eq!(full_value["snapshot"]["local_revision"], 1);
++    assert_eq!(full_value["result"]["response"]["totals"]["occurrences"], 5);
++    assert_eq!(
++        full_value["result"]["response"]["source_totals"]
++            .as_array()
++            .unwrap()
++            .len(),
++        3
++    );
++    let explicit_profile_full = lookup(Some("full"), None);
++    assert!(explicit_profile_full.status.success());
++    assert_eq!(explicit_profile_full.stdout, full.stdout);
++    let default_full = run_isolated(
++        &["lookup", "farvi", "--config", config.to_str().unwrap()],
++        &base,
++    );
++    let default_full_explicit = run_isolated(
++        &[
++            "lookup",
++            "farvi",
++            "--config",
++            config.to_str().unwrap(),
++            "--format",
++            "full",
++        ],
++        &base,
++    );
++    assert!(default_full.status.success());
++    assert_eq!(default_full.stdout, default_full_explicit.stdout);
++
++    let compact = lookup(Some("compact"), None);
++    assert!(
++        compact.status.success(),
++        "{}",
++        String::from_utf8_lossy(&compact.stderr)
++    );
++    let compact_value: Value = serde_json::from_slice(&compact.stdout).unwrap();
++    let compact_response = &compact_value["result"]["response"];
++    assert_eq!(compact_response["totals"]["occurrences"], 5);
++    assert_eq!(
++        compact_response["source_totals"],
++        full_value["result"]["response"]["source_totals"]
++    );
++    let readable = lookup(Some("readable"), None);
++    assert!(
++        readable.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable.stderr)
++    );
++    let readable = String::from_utf8(readable.stdout).unwrap();
++    assert!(readable.starts_with("Exact \"farvi\": 5 occurrences"));
++    assert!(readable.ends_with("next_cursor: null\n"));
++
++    for target in [local_target.clone(), catalog_target.clone()] {
++        let request = serde_json::to_string(&DictionaryRequest::Resolve { target }).unwrap();
++        let resolved = lookup(Some("compact"), Some(&request));
++        assert!(
++            resolved.status.success(),
++            "{}",
++            String::from_utf8_lossy(&resolved.stderr)
++        );
++        let resolved: Value = serde_json::from_slice(&resolved.stdout).unwrap();
++        let response = &resolved["result"]["response"];
++        assert_eq!(response["status"], "Resolved");
++        assert_eq!(
++            response["payload"]["confirmed"].as_array().unwrap().len(),
++            1
++        );
++        assert_eq!(
++            response["payload"]["unverified"].as_array().unwrap().len(),
++            0
++        );
++    }
++    let local_request = serde_json::to_string(&DictionaryRequest::Resolve {
++        target: local_target.clone(),
++    })
++    .unwrap();
++    let readable_reference = lookup(Some("readable"), Some(&local_request));
++    assert!(
++        readable_reference.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable_reference.stderr)
++    );
++    let readable_reference = String::from_utf8(readable_reference.stdout).unwrap();
++    assert!(readable_reference.starts_with("Reference {\"Local\":{\"Assertion\":\""));
++    assert!(readable_reference.contains(": Resolved\n"));
++
++    let resolved_local = lookup(Some("compact"), Some(&local_request));
++    let resolved_local: Value = serde_json::from_slice(&resolved_local.stdout).unwrap();
++    let detail_ref =
++        resolved_local["result"]["response"]["payload"]["confirmed"][0]["detail_ref"].clone();
++    let catalog_request = serde_json::to_string(&DictionaryRequest::Resolve {
++        target: catalog_target.clone(),
++    })
++    .unwrap();
++    let resolved_catalog = lookup(Some("compact"), Some(&catalog_request));
++    assert!(resolved_catalog.status.success());
++    let resolved_catalog: Value = serde_json::from_slice(&resolved_catalog.stdout).unwrap();
++    let catalog_detail_ref =
++        resolved_catalog["result"]["response"]["payload"]["confirmed"][0]["detail_ref"].clone();
++    let readable_catalog = lookup(Some("readable"), Some(&catalog_request));
++    assert!(readable_catalog.status.success());
++    let readable_catalog = String::from_utf8(readable_catalog.stdout).unwrap();
++    assert!(readable_catalog.starts_with("Reference {\"Catalog\":"));
++    assert!(readable_catalog.contains(": Resolved\n"));
++    assert_eq!(detail_ref["source"], llg_entry.source.as_str());
++    assert_eq!(detail_ref["entry_id"], llg_entry.id.as_str());
++    assert_eq!(detail_ref["assertion_id"], llg_assertion.id.as_str());
++    assert_eq!(
++        detail_ref["occurrence"],
++        serde_json::to_value(&llg_assertion.occurrence).unwrap()
++    );
++    assert_eq!(
++        detail_ref["entry_sha256"],
++        sha256(&serde_json::to_vec(llg_entry).unwrap()),
++        "detail key binds the pre-input Entry body"
++    );
++    assert_eq!(
++        detail_ref["assertion_sha256"],
++        sha256(&serde_json::to_vec(llg_assertion).unwrap()),
++        "detail key binds the pre-input Assertion body"
++    );
++    assert_eq!(detail_ref["native_entry_id"], "farvi");
++    assert_eq!(
++        catalog_detail_ref, detail_ref,
++        "Local and Catalog compact hits carry the same pre-input K_LLG"
++    );
++    let snapshot = resolved_local["snapshot"]["binding_sha256"]
++        .as_str()
++        .unwrap();
++    let detail = run_isolated(
++        &[
++            "lookup-detail",
++            "--reference",
++            &detail_ref.to_string(),
++            "--expected-snapshot",
++            snapshot,
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++        ],
++        &base,
++    );
++    assert!(
++        detail.status.success(),
++        "{}",
++        String::from_utf8_lossy(&detail.stderr)
++    );
++    assert_eq!(
++        serde_json::from_slice::<Value>(&detail.stdout).unwrap()["response"]["status"],
++        "Resolved"
++    );
++    let readable_detail = run_isolated(
++        &[
++            "lookup-detail",
++            "--reference",
++            &detail_ref.to_string(),
++            "--expected-snapshot",
++            snapshot,
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++            "--format",
++            "readable",
++        ],
++        &base,
++    );
++    assert!(
++        readable_detail.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable_detail.stderr)
++    );
++    let readable_detail = String::from_utf8(readable_detail.stdout).unwrap();
++    let detail_assertion = detail_ref["assertion_id"].as_str().unwrap();
++    assert!(
++        readable_detail.starts_with(&format!("Detail {detail_assertion}:")),
++        "{readable_detail:?}"
++    );
++    assert!(readable_detail.contains(": Resolved\n"));
++    let readable_catalog_detail = run_isolated(
++        &[
++            "lookup-detail",
++            "--reference",
++            &catalog_detail_ref.to_string(),
++            "--expected-snapshot",
++            snapshot,
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++            "--format",
++            "readable",
++        ],
++        &base,
++    );
++    assert!(
++        readable_catalog_detail.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable_catalog_detail.stderr)
++    );
++    let readable_catalog_detail = String::from_utf8(readable_catalog_detail.stdout).unwrap();
++    assert!(readable_catalog_detail.starts_with("Detail "));
++    assert!(readable_catalog_detail.contains(": Resolved\n"));
++
++    let explicit_default = run_isolated(
++        &[
++            "dictionary-query",
++            installed_store.to_str().unwrap(),
++            "--request",
++            r#"{"operation":"exact","spelling":"farvi"}"#,
++        ],
++        &base,
++    );
++    assert!(explicit_default.status.success());
++    let explicit_full = run_isolated(
++        &[
++            "dictionary-query",
++            installed_store.to_str().unwrap(),
++            "--request",
++            r#"{"operation":"exact","spelling":"farvi"}"#,
++            "--format",
++            "full",
++        ],
++        &base,
++    );
++    assert_eq!(explicit_default.stdout, explicit_full.stdout);
++
++    let first_page = run_isolated(
++        &[
++            "lookup",
++            "farvi",
++            "--page-size",
++            "1",
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++            "--format",
++            "compact",
++        ],
++        &base,
++    );
++    let first_page: Value = serde_json::from_slice(&first_page.stdout).unwrap();
++    let cursor = first_page["result"]["response"]["next_cursor"]
++        .as_str()
++        .unwrap()
++        .to_owned();
++
++    let disabled = run_isolated(
++        &[
++            "collections",
++            "disable",
++            "--profile",
++            "four",
++            "--pack",
++            "llg",
++            "--config",
++            config.to_str().unwrap(),
++        ],
++        &base,
++    );
++    assert!(
++        disabled.status.success(),
++        "{}",
++        String::from_utf8_lossy(&disabled.stderr)
++    );
++    assert_eq!(
++        serde_json::from_slice::<Value>(&disabled.stdout).unwrap()["revision"],
++        2
++    );
++    let disabled_selection = run_isolated(
++        &[
++            "collections",
++            "selection",
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++        ],
++        &base,
++    );
++    assert!(disabled_selection.status.success());
++    assert_eq!(
++        serde_json::from_slice::<Value>(&disabled_selection.stdout).unwrap()["local_revision"],
++        1,
++        "profile-only policy updates do not change the catalogue revision"
++    );
++    assert_eq!(
++        serde_json::from_slice::<Value>(&disabled_selection.stdout).unwrap()["disabled"],
++        json!(["llg"])
++    );
++    let disabled_lookup = lookup(None, None);
++    let disabled_value: Value = serde_json::from_slice(&disabled_lookup.stdout).unwrap();
++    assert_eq!(
++        disabled_value["result"]["response"]["totals"]["occurrences"],
++        4
++    );
++    assert_eq!(
++        disabled_value["result"]["response"]["source_totals"]
++            .as_array()
++            .unwrap()
++            .len(),
++        2
++    );
++    let disabled_compact = lookup(Some("compact"), None);
++    assert!(disabled_compact.status.success());
++    let disabled_compact: Value = serde_json::from_slice(&disabled_compact.stdout).unwrap();
++    assert_eq!(
++        disabled_compact["result"]["response"]["totals"]["occurrences"],
++        4
++    );
++    let disabled_readable = lookup(Some("readable"), None);
++    assert!(disabled_readable.status.success());
++    assert!(
++        String::from_utf8(disabled_readable.stdout)
++            .unwrap()
++            .starts_with("Exact \"farvi\": 4 occurrences")
++    );
++    let stale_cursor = run_isolated(
++        &[
++            "lookup",
++            "farvi",
++            "--page-size",
++            "1",
++            "--cursor",
++            &cursor,
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++            "--format",
++            "compact",
++        ],
++        &base,
++    );
++    assert!(!stale_cursor.status.success());
++    assert_eq!(
++        serde_json::from_slice::<Value>(&stale_cursor.stderr).unwrap()["error"]["category"],
++        "stale_cursor"
++    );
++    let disabled_snapshot = disabled_compact["snapshot"]["binding_sha256"]
++        .as_str()
++        .unwrap();
++    for reference in [&detail_ref, &catalog_detail_ref] {
++        let disabled_detail = run_isolated(
++            &[
++                "lookup-detail",
++                "--reference",
++                &reference.to_string(),
++                "--expected-snapshot",
++                disabled_snapshot,
++                "--config",
++                config.to_str().unwrap(),
++                "--profile",
++                "four",
++            ],
++            &base,
++        );
++        assert!(
++            disabled_detail.status.success(),
++            "{}",
++            String::from_utf8_lossy(&disabled_detail.stderr)
++        );
++        let disabled_detail: Value = serde_json::from_slice(&disabled_detail.stdout).unwrap();
++        assert_eq!(disabled_detail["response"]["status"], "CatalogueOnly");
++        assert_eq!(disabled_detail["response"]["hit"], Value::Null);
++    }
++
++    let enabled = run_isolated(
++        &[
++            "collections",
++            "enable",
++            "--profile",
++            "four",
++            "--pack",
++            "llg",
++            "--config",
++            config.to_str().unwrap(),
++        ],
++        &base,
++    );
++    assert!(
++        enabled.status.success(),
++        "{}",
++        String::from_utf8_lossy(&enabled.stderr)
++    );
++    assert_eq!(
++        serde_json::from_slice::<Value>(&enabled.stdout).unwrap()["revision"],
++        3
++    );
++    assert_eq!(
++        serde_json::from_slice::<Value>(&lookup(None, None).stdout).unwrap()["result"]["response"]
++            ["totals"]["occurrences"],
++        5
++    );
++    let enabled_compact = lookup(Some("compact"), None);
++    assert!(enabled_compact.status.success());
++    let enabled_compact: Value = serde_json::from_slice(&enabled_compact.stdout).unwrap();
++    assert_eq!(
++        enabled_compact["result"]["response"]["totals"]["occurrences"],
++        5
++    );
++    let enabled_readable = lookup(Some("readable"), None);
++    assert!(enabled_readable.status.success());
++    assert!(
++        String::from_utf8(enabled_readable.stdout)
++            .unwrap()
++            .starts_with("Exact \"farvi\": 5 occurrences")
++    );
++
++    let removed = run_isolated(
++        &[
++            "collections",
++            "remove",
++            root.to_str().unwrap(),
++            "--pack",
++            "llg",
++            "--expected-revision",
++            "1",
++        ],
++        &base,
++    );
++    assert!(
++        removed.status.success(),
++        "{}",
++        String::from_utf8_lossy(&removed.stderr)
++    );
++    let removed: Value = serde_json::from_slice(&removed.stdout).unwrap();
++    assert_eq!(removed["local_revision"], 2);
++    let removed_default = lookup(None, None);
++    assert!(!removed_default.status.success());
++    let removed_default_error: Value = serde_json::from_slice(&removed_default.stderr).unwrap();
++    assert_eq!(
++        removed_default_error["error"]["category"], "unavailable_selection",
++        "removing the configured default must not silently fall back to another pack"
++    );
++
++    let removed_local = lookup(Some("compact"), Some(&local_request));
++    assert!(
++        removed_local.status.success(),
++        "{}",
++        String::from_utf8_lossy(&removed_local.stderr)
++    );
++    let removed_local: Value = serde_json::from_slice(&removed_local.stdout).unwrap();
++    assert_eq!(
++        removed_local["result"]["response"]["status"],
++        "CatalogueOnly"
++    );
++    assert_eq!(
++        removed_local["result"]["response"]["operational_reason"],
++        "removed"
++    );
++    assert_eq!(removed_local["result"]["response"]["payload"], Value::Null);
++    let removed_catalog = lookup(Some("compact"), Some(&catalog_request));
++    assert!(removed_catalog.status.success());
++    let removed_catalog: Value = serde_json::from_slice(&removed_catalog.stdout).unwrap();
++    assert_eq!(
++        removed_catalog["result"]["response"]["status"],
++        "CatalogueOnly"
++    );
++    assert_eq!(
++        removed_catalog["result"]["response"]["operational_reason"],
++        "removed"
++    );
++    assert_eq!(
++        removed_catalog["result"]["response"]["payload"],
++        Value::Null
++    );
++    let removed_snapshot = removed_catalog["snapshot"]["binding_sha256"]
++        .as_str()
++        .unwrap();
++    let stale_old_snapshot = run_isolated(
++        &[
++            "lookup-detail",
++            "--reference",
++            &detail_ref.to_string(),
++            "--expected-snapshot",
++            snapshot,
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++        ],
++        &base,
++    );
++    assert!(!stale_old_snapshot.status.success());
++    assert_eq!(
++        serde_json::from_slice::<Value>(&stale_old_snapshot.stderr).unwrap()["error"]["category"],
++        "stale_snapshot"
++    );
++    for reference in [&detail_ref, &catalog_detail_ref] {
++        let removed_detail = run_isolated(
++            &[
++                "lookup-detail",
++                "--reference",
++                &reference.to_string(),
++                "--expected-snapshot",
++                removed_snapshot,
++                "--config",
++                config.to_str().unwrap(),
++                "--profile",
++                "four",
++            ],
++            &base,
++        );
++        assert!(removed_detail.status.success());
++        let removed_detail: Value = serde_json::from_slice(&removed_detail.stdout).unwrap();
++        assert_eq!(removed_detail["response"]["status"], "CatalogueOnly");
++        assert_eq!(removed_detail["response"]["hit"], Value::Null);
++        let removed_detail_readable = run_isolated(
++            &[
++                "lookup-detail",
++                "--reference",
++                &reference.to_string(),
++                "--expected-snapshot",
++                removed_snapshot,
++                "--config",
++                config.to_str().unwrap(),
++                "--profile",
++                "four",
++                "--format",
++                "readable",
++            ],
++            &base,
++        );
++        assert!(removed_detail_readable.status.success());
++        assert!(
++            String::from_utf8(removed_detail_readable.stdout)
++                .unwrap()
++                .contains("CatalogueOnly")
++        );
++    }
++
++    let reinstall = run_isolated(
++        &[
++            "collections",
++            "reinstall",
++            root.to_str().unwrap(),
++            "--pack",
++            "llg",
++            "--release",
++            llg_release_path.to_str().unwrap(),
++            "--seal",
++            llg_seal_path.to_str().unwrap(),
++            "--allow-synthetic",
++            "--release-sha256",
++            &installed_release_sha,
++            "--expected-revision",
++            "2",
++        ],
++        &base,
++    );
++    assert!(
++        reinstall.status.success(),
++        "{}",
++        String::from_utf8_lossy(&reinstall.stderr)
++    );
++    let reinstalled: Value = serde_json::from_slice(&reinstall.stdout).unwrap();
++    assert_eq!(reinstalled["local_revision"], 3);
++    let restored_local = lookup(Some("compact"), Some(&local_request));
++    let restored_local: Value = serde_json::from_slice(&restored_local.stdout).unwrap();
++    assert_eq!(restored_local["result"]["response"]["status"], "Resolved");
++    assert_eq!(
++        restored_local["result"]["response"]["payload"]["confirmed"]
++            .as_array()
++            .unwrap()
++            .len(),
++        1
++    );
++    let restored_catalog = lookup(Some("compact"), Some(&catalog_request));
++    assert!(restored_catalog.status.success());
++    let restored_catalog: Value = serde_json::from_slice(&restored_catalog.stdout).unwrap();
++    assert_eq!(restored_catalog["result"]["response"]["status"], "Resolved");
++    assert_eq!(
++        restored_catalog["result"]["response"]["payload"]["confirmed"]
++            .as_array()
++            .unwrap()
++            .len(),
++        1
++    );
++    let restored_full = lookup(None, None);
++    assert!(restored_full.status.success());
++    let restored_full_value: Value = serde_json::from_slice(&restored_full.stdout).unwrap();
++    assert_eq!(
++        restored_full_value["result"]["response"]["totals"]["occurrences"],
++        5
++    );
++    let restored_compact = lookup(Some("compact"), None);
++    assert!(restored_compact.status.success());
++    let restored_compact_value: Value = serde_json::from_slice(&restored_compact.stdout).unwrap();
++    assert_eq!(
++        restored_compact_value["result"]["response"]["totals"]["occurrences"],
++        5
++    );
++    let restored_readable = lookup(Some("readable"), None);
++    assert!(restored_readable.status.success());
++    assert!(
++        String::from_utf8(restored_readable.stdout)
++            .unwrap()
++            .starts_with("Exact \"farvi\": 5 occurrences")
++    );
++    let restored_snapshot = restored_compact_value["snapshot"]["binding_sha256"]
++        .as_str()
++        .unwrap();
++    let restored_detail = run_isolated(
++        &[
++            "lookup-detail",
++            "--reference",
++            &detail_ref.to_string(),
++            "--expected-snapshot",
++            restored_snapshot,
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++        ],
++        &base,
++    );
++    assert!(restored_detail.status.success());
++    let restored_detail: Value = serde_json::from_slice(&restored_detail.stdout).unwrap();
++    assert_eq!(restored_detail["response"]["status"], "Resolved");
++    assert_eq!(
++        restored_detail["response"]["hit"]["assertion"]["id"],
++        detail_ref["assertion_id"]
++    );
++    let stale_restored_old_snapshot = run_isolated(
++        &[
++            "lookup-detail",
++            "--reference",
++            &detail_ref.to_string(),
++            "--expected-snapshot",
++            snapshot,
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++        ],
++        &base,
++    );
++    assert!(!stale_restored_old_snapshot.status.success());
++    assert_eq!(
++        serde_json::from_slice::<Value>(&stale_restored_old_snapshot.stderr).unwrap()["error"]["category"],
++        "stale_snapshot"
++    );
++    let stale_restored_cursor = run_isolated(
++        &[
++            "lookup",
++            "farvi",
++            "--page-size",
++            "1",
++            "--cursor",
++            &cursor,
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++            "--format",
++            "compact",
++        ],
++        &base,
++    );
++    assert!(!stale_restored_cursor.status.success());
++    assert_eq!(
++        serde_json::from_slice::<Value>(&stale_restored_cursor.stderr).unwrap()["error"]["category"],
++        "stale_cursor"
++    );
++    let fresh_cursor_page1 = run_isolated(
++        &[
++            "lookup",
++            "farvi",
++            "--page-size",
++            "1",
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++            "--format",
++            "compact",
++        ],
++        &base,
++    );
++    assert!(fresh_cursor_page1.status.success());
++    let fresh_cursor_page1: Value = serde_json::from_slice(&fresh_cursor_page1.stdout).unwrap();
++    let fresh_cursor = fresh_cursor_page1["result"]["response"]["next_cursor"]
++        .as_str()
++        .unwrap();
++    let fresh_cursor_page2 = run_isolated(
++        &[
++            "lookup",
++            "farvi",
++            "--page-size",
++            "1",
++            "--cursor",
++            fresh_cursor,
++            "--config",
++            config.to_str().unwrap(),
++            "--profile",
++            "four",
++            "--format",
++            "compact",
++        ],
++        &base,
++    );
++    assert!(fresh_cursor_page2.status.success());
++    assert_eq!(
++        sha256(
++            &DictionaryStore::open(&installed_store)
++                .unwrap()
++                .canonical_bytes()
++                .unwrap()
++        ),
++        old_generation_sha,
++        "retired G1 canonical bytes remain unchanged"
++    );
++
++    let reconciled = run_isolated(&["collections", "reconcile", root.to_str().unwrap()], &base);
++    assert!(
++        reconciled.status.success(),
++        "{}",
++        String::from_utf8_lossy(&reconciled.stderr)
++    );
++    let reconciled: Value = serde_json::from_slice(&reconciled.stdout).unwrap();
++    assert_eq!(reconciled["retained_generation_count"], 3);
++    assert_eq!(
++        reconciled["active_generation"],
++        reinstalled["generation"]["generation_id"]
++    );
++    assert_eq!(reconciled["attention_required"], false);
++    assert_eq!(reconciled["local_revision"], 3);
++    assert_eq!(reconciled["catalogue_schema_version"], 2);
++    let final_profiles = run_isolated(
++        &[
++            "collections",
++            "profiles",
++            "--config",
++            config.to_str().unwrap(),
++        ],
++        &base,
++    );
++    let final_profiles: Value = serde_json::from_slice(&final_profiles.stdout).unwrap();
++    assert_eq!(final_profiles["revision"], 3);
++    let final_list = run_isolated(&["collections", "list", root.to_str().unwrap()], &base);
++    assert_eq!(
++        serde_json::from_slice::<Value>(&final_list.stdout).unwrap()["local_revision"],
++        3
++    );
++    let _ = std::fs::remove_dir_all(base);
++}
++
+ #[cfg(target_os = "linux")]
+ fn run_os(args: &[std::ffi::OsString]) -> Output {
+     Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
+@@ -157,6 +1399,24 @@ fn test_dictionary_compact_query_and_detail_keep_full_default() {
+         serde_json::from_slice::<Value>(&explicit_full.stdout).unwrap()
+     );
+ 
++    let readable = run_strings(&[
++        "dictionary-query",
++        store.to_str().unwrap(),
++        "--request",
++        r#"{"operation":"exact","spelling":"farvi"}"#,
++        "--format",
++        "readable",
++    ]);
++    assert!(
++        readable.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable.stderr)
++    );
++    let readable = String::from_utf8(readable.stdout).unwrap();
++    assert!(readable.starts_with("Exact \"farvi\": "));
++    assert!(readable.contains("\n  "));
++    assert!(readable.ends_with("next_cursor: null\n"));
++
+     let compact = run_strings(&[
+         "dictionary-query",
+         store.to_str().unwrap(),
+@@ -213,6 +1473,22 @@ fn test_dictionary_compact_query_and_detail_keep_full_default() {
+     let detail: Value = serde_json::from_slice(&detail.stdout).unwrap();
+     assert_eq!(detail["hit"]["assertion"]["id"], detail_ref["assertion_id"]);
+ 
++    let detail_readable = run_strings(&[
++        "dictionary-detail",
++        store.to_str().unwrap(),
++        "--reference",
++        &detail_ref.to_string(),
++        "--expected-snapshot",
++        compact["snapshot_sha256"].as_str().unwrap(),
++        "--format",
++        "readable",
++    ]);
++    assert!(detail_readable.status.success());
++    let detail_readable = String::from_utf8(detail_readable.stdout).unwrap();
++    assert!(detail_readable.starts_with("Detail "));
++    assert!(detail_readable.contains("\"occurrence_id\""));
++    assert!(detail_readable.ends_with("\n}\n"));
++
+     let mut invalid_detail_cases = vec![
+         {
+             let mut value = detail_ref.clone();
+@@ -308,6 +1584,95 @@ fn test_dictionary_compact_query_and_detail_keep_full_default() {
+     assert!(resolved.get("response").is_none());
+     assert!(resolved["target"].is_object());
+     assert!(resolved["status"].is_string());
++    let full_local = run_strings(&[
++        "dictionary-query",
++        store.to_str().unwrap(),
++        "--request",
++        &resolve_request,
++        "--format",
++        "full",
++    ]);
++    assert!(full_local.status.success());
++    assert_eq!(
++        serde_json::from_slice::<Value>(&full_local.stdout).unwrap()["status"],
++        "Resolved"
++    );
++    let readable_local = run_strings(&[
++        "dictionary-query",
++        store.to_str().unwrap(),
++        "--request",
++        &resolve_request,
++        "--format",
++        "readable",
++    ]);
++    assert!(readable_local.status.success());
++    let readable_local = String::from_utf8(readable_local.stdout).unwrap();
++    assert!(readable_local.starts_with("Reference {\"Local\":"));
++    assert!(readable_local.contains(": Resolved\n"));
++
++    let document = dict.document();
++    let (catalog_release, catalog_assertion) = document
++        .metadata
++        .releases
++        .iter()
++        .filter(|release| {
++            release.selected && release.availability == vlajmaji_lexicon::Availability::Available
++        })
++        .find_map(|release| {
++            document
++                .metadata
++                .assertions
++                .iter()
++                .find(|assertion| release.assertions.contains(&assertion.id))
++                .map(|assertion| (release, assertion))
++        })
++        .expect("fixture has a selected available release with an assertion");
++    let catalog_entry = document
++        .metadata
++        .entries
++        .iter()
++        .find(|entry| entry.id == catalog_assertion.entry)
++        .expect("catalogue assertion has its Entry");
++    let catalog_request = serde_json::to_string(&DictionaryRequest::Resolve {
++        target: RelationTarget::Catalog(CatalogTarget {
++            source: catalog_entry.source.clone(),
++            release: catalog_release.id.clone(),
++            native_entry_id: None,
++            native_assertion_id: None,
++            occurrence: Some(catalog_assertion.occurrence.clone()),
++        }),
++    })
++    .unwrap();
++    for format in ["full", "compact", "readable"] {
++        let catalog = run_strings(&[
++            "dictionary-query",
++            store.to_str().unwrap(),
++            "--request",
++            &catalog_request,
++            "--format",
++            format,
++        ]);
++        assert!(
++            catalog.status.success(),
++            "{format}: {}",
++            String::from_utf8_lossy(&catalog.stderr)
++        );
++        match format {
++            "readable" => {
++                let text = String::from_utf8(catalog.stdout).unwrap();
++                assert!(text.starts_with("Reference {\"Catalog\":"));
++                assert!(text.contains(": Resolved\n"));
++            }
++            _ => {
++                let value: Value = serde_json::from_slice(&catalog.stdout).unwrap();
++                assert_eq!(value["status"], "Resolved");
++                if format == "compact" {
++                    assert!(value.get("operation").is_none());
++                    assert!(value.get("response").is_none());
++                }
++            }
++        }
++    }
+ 
+     let malformed = run_strings(&[
+         "dictionary-detail",
+@@ -524,6 +1889,60 @@ fn test_lookup_compact_and_detail_preserve_managed_envelope() {
+         detail_ref["assertion_id"]
+     );
+     assert!(detail["snapshot"]["binding_sha256"].is_string());
++
++    let readable_lookup = run_strings(&[
++        "lookup",
++        "farvi",
++        "--config",
++        config.to_str().unwrap(),
++        "--profile",
++        "compact-test",
++        "--format",
++        "readable",
++    ]);
++    assert!(
++        readable_lookup.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable_lookup.stderr)
++    );
++    let readable_lookup = String::from_utf8(readable_lookup.stdout).unwrap();
++    assert!(readable_lookup.starts_with("Exact \"farvi\": "));
++    assert!(readable_lookup.contains("selection: {\"version\":1,"));
++    assert!(readable_lookup.ends_with("\n"));
++
++    let readable_detail = run_strings(&[
++        "lookup-detail",
++        "--reference",
++        &detail_ref.to_string(),
++        "--expected-snapshot",
++        lookup["snapshot"]["binding_sha256"].as_str().unwrap(),
++        "--config",
++        config.to_str().unwrap(),
++        "--profile",
++        "compact-test",
++        "--format",
++        "readable",
++    ]);
++    assert!(
++        readable_detail.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable_detail.stderr)
++    );
++    let readable_detail = String::from_utf8(readable_detail.stdout).unwrap();
++    assert!(readable_detail.starts_with("Detail "));
++    assert!(readable_detail.contains("catalogue_matches: ["));
++    assert!(readable_detail.contains("\"occurrence_id\""));
++
++    let invalid_detail_format = run_strings(&[
++        "lookup-detail",
++        "--reference",
++        &detail_ref.to_string(),
++        "--config",
++        config.to_str().unwrap(),
++        "--format",
++        "compact",
++    ]);
++    assert_eq!(invalid_detail_format.status.code(), Some(2));
+     assert!(store_path.exists());
+     std::fs::remove_dir_all(base).unwrap();
+ }
+@@ -576,6 +1995,23 @@ fn test_managed_compact_lookup_and_detail_resolve_absolute_paths_after_deleted_c
+     let detail_ref = lookup["result"]["response"]["groups"][0]["hits"][0]["detail_ref"].clone();
+     let expected_snapshot = lookup["snapshot"]["binding_sha256"].as_str().unwrap();
+ 
++    let readable_cwd = base.join("readable-child-cwd");
++    std::fs::create_dir(&readable_cwd).unwrap();
++    let mut readable_lookup_args = absolute_lookup_args.clone();
++    let last = readable_lookup_args.len() - 1;
++    readable_lookup_args[last] = "readable".into();
++    let readable_lookup = run_after_removing_cwd(&readable_cwd, &readable_lookup_args);
++    assert!(
++        readable_lookup.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable_lookup.stderr)
++    );
++    assert!(
++        String::from_utf8(readable_lookup.stdout)
++            .unwrap()
++            .starts_with("Exact \"farvi\": ")
++    );
++
+     let detail_cwd = base.join("detail-child-cwd");
+     std::fs::create_dir(&detail_cwd).unwrap();
+     let absolute_detail_args = vec![
+@@ -602,6 +2038,22 @@ fn test_managed_compact_lookup_and_detail_resolve_absolute_paths_after_deleted_c
+         detail_ref["assertion_id"]
+     );
+ 
++    let readable_detail_cwd = base.join("readable-detail-child-cwd");
++    std::fs::create_dir(&readable_detail_cwd).unwrap();
++    let mut readable_detail_args = absolute_detail_args.clone();
++    readable_detail_args.extend(["--format".into(), "readable".into()]);
++    let readable_detail = run_after_removing_cwd(&readable_detail_cwd, &readable_detail_args);
++    assert!(
++        readable_detail.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable_detail.stderr)
++    );
++    assert!(
++        String::from_utf8(readable_detail.stdout)
++            .unwrap()
++            .starts_with("Detail ")
++    );
++
+     let relative_cwd = base.join("relative-child-cwd");
+     std::fs::create_dir(&relative_cwd).unwrap();
+     let relative_lookup_args = vec![
+@@ -696,6 +2148,52 @@ fn test_managed_compact_routes_roundtrip_native_root_and_config() {
+         detail_ref["assertion_id"]
+     );
+ 
++    let readable_lookup_args = vec![
++        "lookup".into(),
++        "farvi".into(),
++        "--config".into(),
++        native_config.as_os_str().to_owned(),
++        "--profile".into(),
++        "native-compact".into(),
++        "--format".into(),
++        "readable".into(),
++    ];
++    let readable_lookup = run_os(&readable_lookup_args);
++    assert!(
++        readable_lookup.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable_lookup.stderr)
++    );
++    assert!(
++        String::from_utf8(readable_lookup.stdout)
++            .unwrap()
++            .starts_with("Exact \"farvi\": ")
++    );
++    let readable_detail_args = vec![
++        "lookup-detail".into(),
++        "--reference".into(),
++        detail_ref.to_string().into(),
++        "--expected-snapshot".into(),
++        expected_snapshot.into(),
++        "--config".into(),
++        native_config.as_os_str().to_owned(),
++        "--profile".into(),
++        "native-compact".into(),
++        "--format".into(),
++        "readable".into(),
++    ];
++    let readable_detail = run_os(&readable_detail_args);
++    assert!(
++        readable_detail.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable_detail.stderr)
++    );
++    assert!(
++        String::from_utf8(readable_detail.stdout)
++            .unwrap()
++            .starts_with("Detail ")
++    );
++
+     std::fs::remove_dir_all(&native_root).unwrap();
+     let missing_root = run_os(&lookup_args);
+     assert!(!missing_root.status.success());
+@@ -773,7 +2271,35 @@ fn test_managed_compact_lookup_and_detail_tolerate_broken_pipe() {
+         String::from_utf8_lossy(&detail.stderr)
+     );
+ 
+-    for args in [&lookup_args[..], &detail_args[..]] {
++    let readable_lookup_args = [
++        "lookup",
++        "farvi",
++        "--config",
++        config.to_str().unwrap(),
++        "--profile",
++        "compact-test",
++        "--format",
++        "readable",
++    ];
++    let readable_detail_args = [
++        "lookup-detail",
++        "--reference",
++        detail_ref.as_str(),
++        "--expected-snapshot",
++        response["snapshot"]["binding_sha256"].as_str().unwrap(),
++        "--config",
++        config.to_str().unwrap(),
++        "--profile",
++        "compact-test",
++        "--format",
++        "readable",
++    ];
++    for args in [
++        &lookup_args[..],
++        &detail_args[..],
++        &readable_lookup_args[..],
++        &readable_detail_args[..],
++    ] {
+         let mut child = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
+             .args(args)
+             .env_clear()
+@@ -858,6 +2384,50 @@ fn test_dictionary_compact_query_reports_full_device_output_failure() {
+     assert!(stderr.contains("write JSON:"), "{stderr}");
+     assert!(stderr.contains("No space left on device"), "{stderr}");
+ 
++    let readable_query_args = [
++        "dictionary-query",
++        store.to_str().unwrap(),
++        "--request",
++        request,
++        "--format",
++        "readable",
++    ];
++    let readable_query = run_strings(&readable_query_args);
++    assert!(
++        readable_query.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable_query.stderr)
++    );
++    assert!(
++        String::from_utf8(readable_query.stdout)
++            .unwrap()
++            .starts_with("Exact \"farvi\": ")
++    );
++    let full = std::fs::OpenOptions::new()
++        .write(true)
++        .open("/dev/full")
++        .unwrap();
++    let failed_readable_query = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
++        .args(readable_query_args)
++        .env_clear()
++        .stdout(full)
++        .stderr(std::process::Stdio::piped())
++        .output()
++        .unwrap();
++    assert!(!failed_readable_query.status.success());
++    let readable_query_envelope: Value =
++        serde_json::from_slice(&failed_readable_query.stderr).unwrap();
++    let readable_query_report = readable_query_envelope["error"].as_object().unwrap();
++    assert_eq!(readable_query_report.len(), 3);
++    assert_eq!(readable_query_report["code"], "response_output_io");
++    assert_eq!(readable_query_report["sources"], serde_json::json!([]));
++    assert!(
++        readable_query_report["message"]
++            .as_str()
++            .unwrap()
++            .contains("No space left on device")
++    );
++
+     let full = std::fs::OpenOptions::new()
+         .write(true)
+         .open("/dev/full")
+@@ -881,6 +2451,50 @@ fn test_dictionary_compact_query_reports_full_device_output_failure() {
+             .unwrap()
+             .contains("No space left on device")
+     );
++
++    let readable_detail_args = [
++        "dictionary-detail",
++        store.to_str().unwrap(),
++        "--reference",
++        &detail_ref,
++        "--format",
++        "readable",
++    ];
++    let readable_detail = run_strings(&readable_detail_args);
++    assert!(
++        readable_detail.status.success(),
++        "{}",
++        String::from_utf8_lossy(&readable_detail.stderr)
++    );
++    assert!(
++        String::from_utf8(readable_detail.stdout)
++            .unwrap()
++            .starts_with("Detail ")
++    );
++    let full = std::fs::OpenOptions::new()
++        .write(true)
++        .open("/dev/full")
++        .unwrap();
++    let failed_readable_detail = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
++        .args(readable_detail_args)
++        .env_clear()
++        .stdout(full)
++        .stderr(std::process::Stdio::piped())
++        .output()
++        .unwrap();
++    assert!(!failed_readable_detail.status.success());
++    let readable_detail_envelope: Value =
++        serde_json::from_slice(&failed_readable_detail.stderr).unwrap();
++    let readable_detail_report = readable_detail_envelope["error"].as_object().unwrap();
++    assert_eq!(readable_detail_report.len(), 3);
++    assert_eq!(readable_detail_report["code"], "response_output_io");
++    assert_eq!(readable_detail_report["sources"], serde_json::json!([]));
++    assert!(
++        readable_detail_report["message"]
++            .as_str()
++            .unwrap()
++            .contains("No space left on device")
++    );
+     std::fs::remove_dir_all(base).unwrap();
+ }
+ 
+@@ -952,6 +2566,44 @@ fn test_managed_compact_lookup_and_detail_report_full_device_envelopes() {
+         detail_ref["assertion_id"]
+     );
+ 
++    let readable_lookup_args = [
++        "lookup",
++        "farvi",
++        "--config",
++        config.to_str().unwrap(),
++        "--profile",
++        "compact-test",
++        "--format",
++        "readable",
++    ];
++    let readable_lookup = run_strings(&readable_lookup_args);
++    assert!(readable_lookup.status.success());
++    assert!(
++        String::from_utf8(readable_lookup.stdout)
++            .unwrap()
++            .starts_with("Exact \"farvi\": ")
++    );
++    let readable_detail_args = [
++        "lookup-detail",
++        "--reference",
++        &detail_ref_text,
++        "--expected-snapshot",
++        lookup["snapshot"]["binding_sha256"].as_str().unwrap(),
++        "--config",
++        config.to_str().unwrap(),
++        "--profile",
++        "compact-test",
++        "--format",
++        "readable",
++    ];
++    let readable_detail = run_strings(&readable_detail_args);
++    assert!(readable_detail.status.success());
++    assert!(
++        String::from_utf8(readable_detail.stdout)
++            .unwrap()
++            .starts_with("Detail ")
++    );
++
+     let native_path = |path: &Path| {
+         let bytes = path.as_os_str().as_encoded_bytes();
+         serde_json::json!({
+@@ -1045,6 +2697,44 @@ fn test_managed_compact_lookup_and_detail_report_full_device_envelopes() {
+             .map(|row| row["pack_id"].clone())
+             .collect::<Value>(),
+     );
++
++    let failed_readable_lookup = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
++        .args(&readable_lookup_args)
++        .env_clear()
++        .stdout(full_device())
++        .stderr(std::process::Stdio::piped())
++        .output()
++        .unwrap();
++    assert_managed_error(
++        &failed_readable_lookup,
++        "lookup",
++        &lookup["snapshot"],
++        &lookup["snapshot"]["collections"]
++            .as_array()
++            .unwrap()
++            .iter()
++            .map(|row| row["pack_id"].clone())
++            .collect::<Value>(),
++    );
++
++    let failed_readable_detail = Command::new(env!("CARGO_BIN_EXE_vlajmaji"))
++        .args(&readable_detail_args)
++        .env_clear()
++        .stdout(full_device())
++        .stderr(std::process::Stdio::piped())
++        .output()
++        .unwrap();
++    assert_managed_error(
++        &failed_readable_detail,
++        "lookup_detail",
++        &detail["snapshot"],
++        &detail["snapshot"]["collections"]
++            .as_array()
++            .unwrap()
++            .iter()
++            .map(|row| row["pack_id"].clone())
++            .collect::<Value>(),
++    );
+     assert!(store_path.exists());
+     std::fs::remove_dir_all(base).unwrap();
+ }
+diff --git a/crates/search/README.md b/crates/search/README.md
+index da747f4..2414d52 100644
+--- a/crates/search/README.md
++++ b/crates/search/README.md
+@@ -64,6 +64,10 @@ targeted local or catalogue projections and retains contributor pack/release
+ scopes for admission. It does not authenticate ordinary-open SQLite payload
+ bytes, and a compact hit's snapshot token is not a signature. See
+ `docs/collections.md` for managed CLI examples and the exact JSON contract.
++The search crate also exports four pure `render_*` functions for readable
++compact Exact/Resolve and complete-hit detail output. They format typed
++responses already returned by the query APIs and do not open a provider or
++change query selection.
+ 
+ The `topology_probe` example is a local comparison harness, not user
+ configuration or an installer. `prepare --manifest FILE` strictly loads four
+diff --git a/crates/search/src/dictionary/projection.rs b/crates/search/src/dictionary/projection.rs
+index 6bbe4ad..b740ec7 100644
+--- a/crates/search/src/dictionary/projection.rs
++++ b/crates/search/src/dictionary/projection.rs
+@@ -1413,8 +1413,8 @@ impl DictionaryCompactSearchEngine {
+             self.document.registry.snapshots[*snapshot_index].clone()
+         });
+         let occurrence_key = super::tuple_hex(&assertion.occurrence);
+-        let occurrence_id = occurrence_key.clone();
+         let occurrence_index = self.indices.occurrence_attributions.get(&occurrence_key);
++        let occurrence_id = occurrence_key;
+         let occurrence_attribution = occurrence_index.map(|index| {
+             measure_projection(&mut profile, || {
+                 self.document.registry.occurrences[*index].clone()
+diff --git a/crates/search/src/lib.rs b/crates/search/src/lib.rs
+index 568d2c0..85d63f6 100644
+--- a/crates/search/src/lib.rs
++++ b/crates/search/src/lib.rs
+@@ -36,6 +36,8 @@ use vlajmaji_store::{
+ pub mod collection_query;
+ /// Grouped exact queries and stable dictionary reference resolution.
+ pub mod dictionary;
++/// Pure text renderers for compact dictionary projections.
++pub mod presentation;
+ 
+ pub use collection_query::{
+     CollectionCompactQueryResponse, CollectionCompactQueryResult,
+@@ -58,6 +60,10 @@ pub use dictionary::{
+     ReferenceEntity, ReferenceResolution, ReferenceStatus, SourceSelectionFailure,
+     validate_detail_snapshot_sha256,
+ };
++pub use presentation::{
++    render_collection_compact, render_collection_detail, render_dictionary_compact,
++    render_dictionary_detail,
++};
+ 
+ /// Query policy identities included in every response.
+ pub const SPELLING_POLICY: &str = "scalar-levenshtein-v1";
+diff --git a/crates/search/src/presentation.rs b/crates/search/src/presentation.rs
+new file mode 100644
+index 0000000..309b81e
+--- /dev/null
++++ b/crates/search/src/presentation.rs
+@@ -0,0 +1,344 @@
++//! Pure, source-grouped terminal renderers for compact dictionary projections.
++//!
++//! These functions only format already projected values. They never open a
++//! provider, load payload data, or change query selection.
++
++use std::{collections::BTreeMap, fmt::Write as _};
++
++use serde::Serialize;
++
++use crate::{
++    CollectionCompactQueryResponse, CollectionCompactQueryResult,
++    CollectionCompactReferenceResponse, CollectionHitDetailResponse,
++    DictionaryCompactExactResponse, DictionaryCompactQueryResult,
++    DictionaryCompactReferenceAssertion, DictionaryCompactReferenceResolution,
++    DictionaryHitDetailResponse, ReferenceStatus,
++};
++
++/// Render a standalone compact Exact or Resolve result as readable text.
++#[must_use]
++pub fn render_dictionary_compact(result: &DictionaryCompactQueryResult) -> String {
++    match result {
++        DictionaryCompactQueryResult::Exact(response) => render_exact(response, None),
++        DictionaryCompactQueryResult::Resolve(response) => render_dictionary_resolve(response),
++    }
++}
++
++/// Render a managed compact Exact or Resolve result as readable text.
++#[must_use]
++pub fn render_collection_compact(response: &CollectionCompactQueryResponse) -> String {
++    match &response.result {
++        CollectionCompactQueryResult::Exact(result) => {
++            render_exact(result, Some((&response.snapshot, &response.collections)))
++        }
++        CollectionCompactQueryResult::Resolve(result) => {
++            render_collection_resolve(result, &response.snapshot, &response.collections)
++        }
++    }
++}
++
++/// Render a standalone complete-hit detail response as readable text.
++#[must_use]
++pub fn render_dictionary_detail(response: &DictionaryHitDetailResponse) -> String {
++    render_detail(response, None)
++}
++
++/// Render a managed complete-hit detail response as readable text.
++#[must_use]
++pub fn render_collection_detail(response: &CollectionHitDetailResponse) -> String {
++    render_detail(
++        &response.response,
++        Some((
++            &response.snapshot,
++            &response.collections,
++            &response.catalogue_matches,
++        )),
++    )
++}
++
++fn render_exact(
++    response: &DictionaryCompactExactResponse,
++    managed: Option<(
++        &crate::CollectionSelectionSnapshot,
++        &[crate::CollectionPackAvailability],
++    )>,
++) -> String {
++    let mut output = String::new();
++    writeln!(
++        output,
++        "Exact {}: {} occurrences, {} spellings, {} sources",
++        json(&response.spelling),
++        response.totals.occurrences,
++        response.totals.distinct_spellings,
++        response.totals.source_groups,
++    )
++    .expect("writing to String cannot fail");
++
++    for group in &response.groups {
++        write!(
++            output,
++            "{} [{}] {}/{}",
++            atom(&group.source.abbreviation),
++            atom(group.source.id.as_str()),
++            group.returned_count,
++            group.full_count,
++        )
++        .expect("writing to String cannot fail");
++        if group.partial {
++            output.push_str(" (partial)");
++        }
++        output.push('\n');
++        for hit in &group.hits {
++            writeln!(
++                output,
++                "  {} @ {}",
++                atom(hit.assertion.id.as_str()),
++                atom(&hit.occurrence_id),
++            )
++            .expect("writing to String cannot fail");
++            writeln!(output, "    spelling: {}", json(&hit.entry.spelling))
++                .expect("writing to String cannot fail");
++            writeln!(
++                output,
++                "    definition: {}",
++                json(&hit.assertion.definition)
++            )
++            .expect("writing to String cannot fail");
++            writeln!(output, "    detail: {}", json(&hit.detail_ref))
++                .expect("writing to String cannot fail");
++        }
++    }
++
++    if let Some((snapshot, collections)) = managed {
++        writeln!(output, "selection: {}", json(snapshot)).expect("writing to String cannot fail");
++        writeln!(output, "collections: {}", json(collections))
++            .expect("writing to String cannot fail");
++    }
++    writeln!(output, "next_cursor: {}", json(&response.next_cursor))
++        .expect("writing to String cannot fail");
++    output
++}
++
++fn render_dictionary_resolve(response: &DictionaryCompactReferenceResolution) -> String {
++    let mut output = String::new();
++    write_reference_head(&mut output, &response.target, response.status);
++    write_entity_and_views(
++        &mut output,
++        response.entity.as_ref(),
++        &response.confirmed,
++        &response.unverified,
++        &response.availability,
++    );
++    writeln!(
++        output,
++        "requested_release: {}",
++        json(&response.requested_release)
++    )
++    .expect("writing to String cannot fail");
++    output
++}
++
++fn render_collection_resolve(
++    response: &CollectionCompactReferenceResponse,
++    snapshot: &crate::CollectionSelectionSnapshot,
++    collections: &[crate::CollectionPackAvailability],
++) -> String {
++    let mut output = String::new();
++    write_reference_head(&mut output, &response.target, response.status);
++    writeln!(output, "reason: {}", json(&response.operational_reason))
++        .expect("writing to String cannot fail");
++    writeln!(output, "payload: {}", response.payload.is_some())
++        .expect("writing to String cannot fail");
++
++    if let Some(payload) = &response.payload {
++        write_entity_and_views(
++            &mut output,
++            payload.entity.as_ref(),
++            &payload.confirmed,
++            &payload.unverified,
++            &payload.availability,
++        );
++    } else {
++        writeln!(output, "entity: null\nconfirmed: 0\nunverified: 0")
++            .expect("writing to String cannot fail");
++    }
++
++    writeln!(
++        output,
++        "requested_release: {}",
++        json(&response.requested_release)
++    )
++    .expect("writing to String cannot fail");
++    writeln!(
++        output,
++        "catalogue_matches: {}",
++        json(&response.catalogue_matches)
++    )
++    .expect("writing to String cannot fail");
++    writeln!(output, "selection: {}", json(snapshot)).expect("writing to String cannot fail");
++    writeln!(output, "collections: {}", json(collections)).expect("writing to String cannot fail");
++    output
++}
++
++fn write_reference_head(
++    output: &mut String,
++    target: &vlajmaji_lexicon::RelationTarget,
++    status: ReferenceStatus,
++) {
++    writeln!(output, "Reference {}: {status:?}", json(target))
++        .expect("writing to String cannot fail");
++}
++
++fn write_entity_and_views(
++    output: &mut String,
++    entity: Option<&vlajmaji_store::CollectionEntityReference>,
++    confirmed: &[DictionaryCompactReferenceAssertion],
++    unverified: &[DictionaryCompactReferenceAssertion],
++    availability: &[crate::DictionaryCompactSourceAvailability],
++) {
++    writeln!(output, "entity: {}", json(&entity)).expect("writing to String cannot fail");
++    writeln!(output, "confirmed: {}", confirmed.len()).expect("writing to String cannot fail");
++    write_classification(output, confirmed, availability, "confirmed");
++    writeln!(output, "unverified: {}", unverified.len()).expect("writing to String cannot fail");
++    write_classification(output, unverified, availability, "unverified");
++}
++
++fn write_classification(
++    output: &mut String,
++    rows: &[DictionaryCompactReferenceAssertion],
++    availability: &[crate::DictionaryCompactSourceAvailability],
++    label: &str,
++) {
++    let mut groups =
++        BTreeMap::<&vlajmaji_lexicon::SourceId, Vec<&DictionaryCompactReferenceAssertion>>::new();
++    for row in rows {
++        groups.entry(&row.entry.source).or_default().push(row);
++    }
++
++    for (source_id, group) in groups {
++        let abbreviation = availability
++            .iter()
++            .find(|source| &source.source.id == source_id)
++            .map(|source| source.source.abbreviation.as_str())
++            .unwrap_or("?");
++        writeln!(
++            output,
++            "{} [{}] {} {label}",
++            atom(abbreviation),
++            atom(source_id.as_str()),
++            group.len(),
++        )
++        .expect("writing to String cannot fail");
++        for row in group {
++            write_reference_row(output, row);
++        }
++    }
++}
++
++fn write_reference_row(output: &mut String, row: &DictionaryCompactReferenceAssertion) {
++    writeln!(
++        output,
++        "  {} @ {}",
++        atom(row.assertion.id.as_str()),
++        atom(&row.occurrence_id),
++    )
++    .expect("writing to String cannot fail");
++    writeln!(output, "    spelling: {}", json(&row.entry.spelling))
++        .expect("writing to String cannot fail");
++    writeln!(
++        output,
++        "    definition: {}",
++        json(&row.assertion.definition)
++    )
++    .expect("writing to String cannot fail");
++    writeln!(
++        output,
++        "    eligibility: {}",
++        json(&row.assertion.eligibility)
++    )
++    .expect("writing to String cannot fail");
++    writeln!(
++        output,
++        "    payload_present: {}",
++        json(&row.payload_present)
++    )
++    .expect("writing to String cannot fail");
++    writeln!(
++        output,
++        "    current_eligible: {}",
++        json(&row.current_eligible)
++    )
++    .expect("writing to String cannot fail");
++    writeln!(output, "    detail: {}", json(&row.detail_ref))
++        .expect("writing to String cannot fail");
++}
++
++fn render_detail(
++    response: &DictionaryHitDetailResponse,
++    managed: Option<(
++        &crate::CollectionSelectionSnapshot,
++        &[crate::CollectionPackAvailability],
++        &[crate::CollectionReferenceMatch],
++    )>,
++) -> String {
++    let mut output = String::new();
++    writeln!(
++        output,
++        "Detail {}: {:?}",
++        atom(response.detail_ref.assertion_id.as_str()),
++        response.status,
++    )
++    .expect("writing to String cannot fail");
++    writeln!(output, "snapshot: {}", json(&response.snapshot_sha256))
++        .expect("writing to String cannot fail");
++    writeln!(output, "reason: {}", json(&response.operational_reason))
++        .expect("writing to String cannot fail");
++    writeln!(
++        output,
++        "current_eligible: {}",
++        json(&response.current_eligible)
++    )
++    .expect("writing to String cannot fail");
++    writeln!(output, "reference: {}", json(&response.detail_ref))
++        .expect("writing to String cannot fail");
++    if let Some((snapshot, collections, catalogue_matches)) = managed {
++        writeln!(output, "selection: {}", json(snapshot)).expect("writing to String cannot fail");
++        writeln!(output, "collections: {}", json(collections))
++            .expect("writing to String cannot fail");
++        writeln!(output, "catalogue_matches: {}", json(catalogue_matches))
++            .expect("writing to String cannot fail");
++    }
++    if let Some(hit) = &response.hit {
++        writeln!(output, "hit: {}", pretty_json(hit)).expect("writing to String cannot fail");
++    } else {
++        output.push_str("hit: null\n");
++    }
++    output
++}
++
++fn json<T: Serialize + ?Sized>(value: &T) -> String {
++    serde_json::to_string(value).expect("public projection types are JSON serializable")
++}
++
++fn pretty_json<T: Serialize + ?Sized>(value: &T) -> String {
++    serde_json::to_string_pretty(value).expect("public projection types are JSON serializable")
++}
++
++fn atom(value: &str) -> String {
++    let encoded = json(&value);
++    encoded
++        .strip_prefix('"')
++        .and_then(|value| value.strip_suffix('"'))
++        .expect("JSON strings have enclosing quotes")
++        .to_owned()
++}
++
++#[cfg(test)]
++mod tests {
++    use super::atom;
++
++    #[test]
++    fn header_atoms_use_json_content_escaping_without_normalization() {
++        assert_eq!(atom("A\u{1b}\r\t\n\\\"é"), r#"A\u001b\r\t\n\\\"é"#);
++    }
++}
+diff --git a/crates/search/tests/presentation_contract.rs b/crates/search/tests/presentation_contract.rs
+new file mode 100644
+index 0000000..c7cd925
+--- /dev/null
++++ b/crates/search/tests/presentation_contract.rs
+@@ -0,0 +1,613 @@
++//! Literal and typed-value contracts for readable compact output.
++
++#[path = "../../lexicon/examples/support/dictionary_fixture.rs"]
++mod fixture;
++
++use std::{
++    fs,
++    path::PathBuf,
++    sync::atomic::{AtomicU64, Ordering},
++    time::{SystemTime, UNIX_EPOCH},
++};
++
++use vlajmaji_lexicon::{
++    CaptureRef, EntityId, LocalRef, OccurrenceRef, Presence, RelationTarget, SourceId, TextValue,
++};
++use vlajmaji_search::{
++    CollectionCompactQueryResponse, CollectionCompactQueryResult,
++    CollectionCompactReferenceResponse, CollectionSelectionSnapshot,
++    DictionaryCompactExactResponse, DictionaryCompactGroup, DictionaryCompactQueryResult,
++    DictionaryCompactReferenceResolution, DictionaryCompactSearchEngine, DictionaryExactOptions,
++    DictionaryHit, DictionaryHitDetailRef, DictionaryHitDetailResponse, DictionarySearchEngine,
++    DictionaryTotals, ReferenceStatus, render_collection_compact, render_dictionary_compact,
++    render_dictionary_detail,
++};
++
++static NEXT_PATH: AtomicU64 = AtomicU64::new(0);
++const DETAIL_KEY: &str = r#"{"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a","assertion_id":"assertion-a","occurrence":{"capture":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"},"entry_sha256":"1111111111111111111111111111111111111111111111111111111111111111","assertion_sha256":"2222222222222222222222222222222222222222222222222222222222222222","native_entry_id":null,"native_assertion_id":null,"contributor_id":null,"distributor_id":null}"#;
++
++fn scratch() -> PathBuf {
++    let nonce = SystemTime::now()
++        .duration_since(UNIX_EPOCH)
++        .expect("clock is after the Unix epoch")
++        .as_nanos();
++    let root = std::env::temp_dir().join(format!(
++        "vlajmaji-s05-readable-{}-{nonce}-{}",
++        std::process::id(),
++        NEXT_PATH.fetch_add(1, Ordering::Relaxed)
++    ));
++    fs::create_dir(&root).expect("create owned test root");
++    root
++}
++
++fn compact_engine() -> (PathBuf, DictionaryCompactSearchEngine) {
++    let root = scratch();
++    let store = root.join("dictionary.sqlite3");
++    let dictionary = fixture::complete_fixture().expect("complete fixture");
++    let bytes = dictionary.to_json_bytes().expect("fixture JSON");
++    DictionarySearchEngine::build(&store, &bytes).expect("build fixture store");
++    let engine = DictionaryCompactSearchEngine::open(&store).expect("open compact engine");
++    (root, engine)
++}
++
++#[test]
++fn test_render_dictionary_compact_zero_exact_matches_literal_golden() {
++    let response = DictionaryCompactExactResponse {
++        version: 1,
++        projection_policy: "compact-dictionary-v1".into(),
++        policy: "exact".into(),
++        store_schema: 2,
++        catalogue_revision: 0,
++        state_sha256: "0".repeat(64),
++        snapshot_sha256: "1".repeat(64),
++        spelling: "farvi".into(),
++        resolved_sources: Vec::new(),
++        native_candidate_occurrences: 0,
++        totals: DictionaryTotals {
++            occurrences: 0,
++            distinct_spellings: 0,
++            source_groups: 0,
++        },
++        source_totals: Vec::new(),
++        availability: Vec::new(),
++        groups: Vec::new(),
++        next_cursor: None,
++        code_notices: Vec::new(),
++    };
++    let rendered =
++        render_dictionary_compact(&DictionaryCompactQueryResult::Exact(Box::new(response)));
++    assert_eq!(
++        rendered,
++        "Exact \"farvi\": 0 occurrences, 0 spellings, 0 sources\nnext_cursor: null\n"
++    );
++    assert_eq!(
++        rendered,
++        render_dictionary_compact(&DictionaryCompactQueryResult::Exact(Box::new(
++            DictionaryCompactExactResponse {
++                version: 1,
++                projection_policy: "compact-dictionary-v1".into(),
++                policy: "exact".into(),
++                store_schema: 2,
++                catalogue_revision: 0,
++                state_sha256: "0".repeat(64),
++                snapshot_sha256: "1".repeat(64),
++                spelling: "farvi".into(),
++                resolved_sources: Vec::new(),
++                native_candidate_occurrences: 0,
++                totals: DictionaryTotals {
++                    occurrences: 0,
++                    distinct_spellings: 0,
++                    source_groups: 0,
++                },
++                source_totals: Vec::new(),
++                availability: Vec::new(),
++                groups: Vec::new(),
++                next_cursor: None,
++                code_notices: Vec::new(),
++            },
++        )))
++    );
++}
++
++#[test]
++fn test_render_dictionary_compact_unknown_resolve_matches_literal_golden() {
++    let response = DictionaryCompactReferenceResolution {
++        version: 1,
++        projection_policy: "compact-dictionary-v1".into(),
++        state_sha256: "0".repeat(64),
++        snapshot_sha256: "1".repeat(64),
++        target: RelationTarget::Unknown,
++        status: ReferenceStatus::Unknown,
++        entity: None,
++        confirmed: Vec::new(),
++        unverified: Vec::new(),
++        availability: Vec::new(),
++        requested_release: None,
++    };
++    assert_eq!(
++        render_dictionary_compact(&DictionaryCompactQueryResult::Resolve(Box::new(response))),
++        "Reference \"Unknown\": Unknown\nentity: null\nconfirmed: 0\nunverified: 0\nrequested_release: null\n"
++    );
++}
++
++#[test]
++fn test_render_dictionary_compact_unresolved_atoms_use_json_string_escaping() {
++    let response = DictionaryCompactReferenceResolution {
++        version: 1,
++        projection_policy: "compact-dictionary-v1".into(),
++        state_sha256: "0".repeat(64),
++        snapshot_sha256: "1".repeat(64),
++        target: RelationTarget::Unresolved("esc\u{1b}cr\r tab\tline\nslash\\quote\"é".into()),
++        status: ReferenceStatus::Unresolved,
++        entity: None,
++        confirmed: Vec::new(),
++        unverified: Vec::new(),
++        availability: Vec::new(),
++        requested_release: None,
++    };
++    assert_eq!(
++        render_dictionary_compact(&DictionaryCompactQueryResult::Resolve(Box::new(response))),
++        "Reference {\"Unresolved\":\"esc\\u001bcr\\r tab\\tline\\nslash\\\\quote\\\"é\"}: Unresolved\nentity: null\nconfirmed: 0\nunverified: 0\nrequested_release: null\n"
++    );
++}
++
++#[test]
++fn test_render_dictionary_compact_nomatch_resolve_matches_literal_golden() {
++    let response = DictionaryCompactReferenceResolution {
++        version: 1,
++        projection_policy: "compact-dictionary-v1".into(),
++        state_sha256: "0".repeat(64),
++        snapshot_sha256: "1".repeat(64),
++        target: RelationTarget::Local(LocalRef::Assertion(EntityId::new("assertion-a").unwrap())),
++        status: ReferenceStatus::NoMatch,
++        entity: None,
++        confirmed: Vec::new(),
++        unverified: Vec::new(),
++        availability: Vec::new(),
++        requested_release: None,
++    };
++    assert_eq!(
++        render_dictionary_compact(&DictionaryCompactQueryResult::Resolve(Box::new(response))),
++        "Reference {\"Local\":{\"Assertion\":\"assertion-a\"}}: NoMatch\nentity: null\nconfirmed: 0\nunverified: 0\nrequested_release: null\n"
++    );
++}
++
++#[test]
++fn test_render_dictionary_compact_resolve_groups_confirmed_and_unverified() {
++    let (root, engine) = compact_engine();
++    let dictionary = fixture::complete_fixture().expect("complete fixture");
++    let assertion = dictionary
++        .metadata()
++        .assertions
++        .iter()
++        .find(|row| row.eligibility == vlajmaji_lexicon::Eligibility::Lexical)
++        .expect("fixture lexical assertion")
++        .id
++        .clone();
++    let mut response = engine
++        .resolve(&RelationTarget::Local(LocalRef::Assertion(assertion)))
++        .expect("resolve fixture assertion");
++    let available = response
++        .availability
++        .first_mut()
++        .expect("fixture has source availability");
++    available.source.abbreviation = "A".into();
++    let available_source = available.source.id.clone();
++    let mut confirmed = response
++        .confirmed
++        .first()
++        .cloned()
++        .expect("fixture has a confirmed assertion");
++    confirmed.entry.source = available_source;
++    let mut fallback = confirmed.clone();
++    fallback.entry.source = SourceId::new("source-z").unwrap();
++    response.confirmed = vec![confirmed];
++    response.unverified = vec![fallback];
++    let rendered =
++        render_dictionary_compact(&DictionaryCompactQueryResult::Resolve(Box::new(response)));
++    let expected = r#"Reference {"Local":{"Assertion":"assertion-0"}}: Resolved
++entity: {"role":"assertion","id":"assertion-0","entry_ids":["entry-a-farvi"],"assertion_ids":["assertion-0"],"source_ids":["source-a"],"occurrence":{"capture":{"namespace":"captured:a:d1","sha256":"0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"},"locator":"/0"},"evidence":null,"spelling":null}
++confirmed: 1
++A [source-a] 1 confirmed
++  assertion-0 @ 000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f30
++    spelling: {"Value":"farvi"}
++    definition: {"Value":{"text":"$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$","language":{"Value":"en"},"markup":"Missing"}}
++    eligibility: "Lexical"
++    payload_present: true
++    current_eligible: true
++    detail: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a-farvi","assertion_id":"assertion-0","occurrence":{"capture":{"namespace":"captured:a:d1","sha256":"0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"},"locator":"/0"},"entry_sha256":"8fcf293a117bddcb68dc6d9a330905a3fe257e129d81002c87e4bb47d3ceffbf","assertion_sha256":"4f4775ec379d731de7a2c8554332b7c063ce4be9d74d27604a8434c57c49bdda","native_entry_id":"333","native_assertion_id":"69002","contributor_id":"suzil","distributor_id":"distributor-a-d1"}
++unverified: 1
++? [source-z] 1 unverified
++  assertion-0 @ 000000000000000d63617074757265643a613a643100000000000000403065643065643864393661343030643339643631353237613736353432646463323662383535373339643036383963303464336665383438373237613031653300000000000000022f30
++    spelling: {"Value":"farvi"}
++    definition: {"Value":{"text":"$x_1$ (object) develops/evolves towards/into $x_2$ (state) from $x_3$ (state) for reason/because of $x_4$ (fact, event) through stages $x_5$","language":{"Value":"en"},"markup":"Missing"}}
++    eligibility: "Lexical"
++    payload_present: true
++    current_eligible: true
++    detail: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a-farvi","assertion_id":"assertion-0","occurrence":{"capture":{"namespace":"captured:a:d1","sha256":"0ed0ed8d96a400d39d61527a76542ddc26b855739d0689c04d3fe848727a01e3"},"locator":"/0"},"entry_sha256":"8fcf293a117bddcb68dc6d9a330905a3fe257e129d81002c87e4bb47d3ceffbf","assertion_sha256":"4f4775ec379d731de7a2c8554332b7c063ce4be9d74d27604a8434c57c49bdda","native_entry_id":"333","native_assertion_id":"69002","contributor_id":"suzil","distributor_id":"distributor-a-d1"}
++requested_release: null
++"#;
++    assert_eq!(rendered, expected);
++    drop(engine);
++    fs::remove_dir_all(root).expect("remove owned test root");
++}
++
++#[test]
++fn test_render_collection_compact_metadata_only_resolve_matches_literal_golden() {
++    let snapshot = CollectionSelectionSnapshot {
++        version: 1,
++        profile: None,
++        local_revision: 0,
++        generation_id: None,
++        content_id: None,
++        recorded_state_sha256: None,
++        packs: Vec::new(),
++        disabled: Vec::new(),
++        selected_releases: Default::default(),
++        collections: Vec::new(),
++        selection_policy: "selected-available-owned-head-v2".into(),
++        order_policy: "source-release-occurrence-v1".into(),
++        projection_policy: "compact-dictionary-v1".into(),
++        binding_sha256: "3".repeat(64),
++    };
++    let result =
++        CollectionCompactQueryResult::Resolve(Box::new(CollectionCompactReferenceResponse {
++            target: RelationTarget::Local(LocalRef::Assertion(
++                EntityId::new("assertion-a").unwrap(),
++            )),
++            status: ReferenceStatus::CatalogueOnly,
++            operational_reason: Some("removed".into()),
++            payload: None,
++            catalogue_matches: Vec::new(),
++            requested_release: None,
++        }));
++    let response = CollectionCompactQueryResponse {
++        version: 1,
++        snapshot,
++        collections: Vec::new(),
++        result,
++    };
++    assert_eq!(
++        render_collection_compact(&response),
++        "Reference {\"Local\":{\"Assertion\":\"assertion-a\"}}: CatalogueOnly\nreason: \"removed\"\npayload: false\nentity: null\nconfirmed: 0\nunverified: 0\nrequested_release: null\ncatalogue_matches: []\nselection: {\"version\":1,\"profile\":null,\"local_revision\":0,\"generation_id\":null,\"content_id\":null,\"recorded_state_sha256\":null,\"packs\":[],\"disabled\":[],\"selected_releases\":{},\"collections\":[],\"selection_policy\":\"selected-available-owned-head-v2\",\"order_policy\":\"source-release-occurrence-v1\",\"projection_policy\":\"compact-dictionary-v1\",\"binding_sha256\":\"3333333333333333333333333333333333333333333333333333333333333333\"}\ncollections: []\n"
++    );
++}
++
++#[test]
++fn test_render_dictionary_detail_nomatch_matches_literal_golden() {
++    let detail_ref = literal_detail_ref();
++    let response = DictionaryHitDetailResponse {
++        version: 1,
++        projection_policy: "complete-dictionary-hit-v1".into(),
++        detail_ref,
++        status: ReferenceStatus::NoMatch,
++        operational_reason: Some("lexical_identity_changed".into()),
++        state_sha256: None,
++        snapshot_sha256: "3".repeat(64),
++        hit: None,
++        current_eligible: None,
++    };
++    assert_eq!(
++        render_dictionary_detail(&response),
++        format!(
++            "Detail assertion-a: NoMatch\nsnapshot: \"{}\"\nreason: \"lexical_identity_changed\"\ncurrent_eligible: null\nreference: {}\nhit: null\n",
++            "3".repeat(64),
++            DETAIL_KEY,
++        )
++    );
++}
++
++#[test]
++fn test_render_dictionary_detail_complete_typed_hit_matches_literal_golden() {
++    const HIT_JSON: &str = r#"{"occurrence_id":"00","entry":{"id":"entry-a","source":"source-a","spelling":{"Value":"farvi"},"language":"Missing","script":"Null","native_word_class":"Missing","selmaho":"Missing","mapped_pos":"Missing"},"assertion":{"id":"assertion-a","entry":"entry-a","occurrence":{"capture":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"},"native_sense_id":"Null","language":"Missing","definition":{"Value":{"text":"é\n\"quoted\"","language":"Missing","markup":"Null"}},"source_score":{"Value":"1e+9999"},"timestamps":[],"eligibility":"Lexical"},"capture":{"source_name":"Fixture é","format_label":"json","locator":"memory:readable","revision":"Missing","captured_at":"Null","time_precision":"Unknown","notice_locator":"Missing"},"raw":{"locator":"/0","fields":[{"name":"score","encoding":"Json","raw_value":"1e+9999"}],"raw_line":null},"snapshot_attribution":{"snapshot":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"source":"source-a","distributor":null},"occurrence_attribution":null,"contributor":null,"distributor":null,"release_ids":["release-a"],"contexts":[],"frames":[],"forms":[],"etymologies":[],"relations":[],"editorial_senses":[],"computations":[],"annotations":[],"extensions":[],"owned_revision_ids":[],"tombstoned_by":[]}"#;
++    const HIT_PRETTY: &str = r#"{
++  "occurrence_id": "00",
++  "entry": {
++    "id": "entry-a",
++    "source": "source-a",
++    "spelling": {
++      "Value": "farvi"
++    },
++    "language": "Missing",
++    "script": "Null",
++    "native_word_class": "Missing",
++    "selmaho": "Missing",
++    "mapped_pos": "Missing"
++  },
++  "assertion": {
++    "id": "assertion-a",
++    "entry": "entry-a",
++    "occurrence": {
++      "capture": {
++        "namespace": "fixture:readable",
++        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
++      },
++      "locator": "/0"
++    },
++    "native_sense_id": "Null",
++    "language": "Missing",
++    "definition": {
++      "Value": {
++        "text": "é\n\"quoted\"",
++        "language": "Missing",
++        "markup": "Null"
++      }
++    },
++    "source_score": {
++      "Value": "1e+9999"
++    },
++    "timestamps": [],
++    "eligibility": "Lexical"
++  },
++  "capture": {
++    "source_name": "Fixture é",
++    "format_label": "json",
++    "locator": "memory:readable",
++    "revision": "Missing",
++    "captured_at": "Null",
++    "time_precision": "Unknown",
++    "notice_locator": "Missing"
++  },
++  "raw": {
++    "locator": "/0",
++    "fields": [
++      {
++        "name": "score",
++        "encoding": "Json",
++        "raw_value": "1e+9999"
++      }
++    ],
++    "raw_line": null
++  },
++  "snapshot_attribution": {
++    "snapshot": {
++      "namespace": "fixture:readable",
++      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
++    },
++    "source": "source-a",
++    "distributor": null
++  },
++  "occurrence_attribution": null,
++  "contributor": null,
++  "distributor": null,
++  "release_ids": [
++    "release-a"
++  ],
++  "contexts": [],
++  "frames": [],
++  "forms": [],
++  "etymologies": [],
++  "relations": [],
++  "editorial_senses": [],
++  "computations": [],
++  "annotations": [],
++  "extensions": [],
++  "owned_revision_ids": [],
++  "tombstoned_by": []
++}"#;
++    let hit: DictionaryHit = serde_json::from_str(HIT_JSON).expect("typed literal hit");
++    assert_eq!(serde_json::to_string_pretty(&hit).unwrap(), HIT_PRETTY);
++    let response = DictionaryHitDetailResponse {
++        version: 1,
++        projection_policy: "complete-dictionary-hit-v1".into(),
++        detail_ref: literal_detail_ref(),
++        status: ReferenceStatus::Resolved,
++        operational_reason: None,
++        state_sha256: Some("0".repeat(64)),
++        snapshot_sha256: "3".repeat(64),
++        hit: Some(hit),
++        current_eligible: Some(true),
++    };
++    let expected = format!(
++        "Detail assertion-a: Resolved\nsnapshot: \"{}\"\nreason: null\ncurrent_eligible: true\nreference: {}\nhit: {HIT_PRETTY}\n",
++        "3".repeat(64),
++        DETAIL_KEY,
++    );
++    assert_eq!(render_dictionary_detail(&response), expected);
++}
++
++fn literal_detail_ref() -> DictionaryHitDetailRef {
++    DictionaryHitDetailRef {
++        version: 1,
++        digest_policy: "entry-assertion-serde-json-v1".into(),
++        role: "assertion".into(),
++        source: SourceId::new("source-a").unwrap(),
++        entry_id: EntityId::new("entry-a").unwrap(),
++        assertion_id: EntityId::new("assertion-a").unwrap(),
++        occurrence: OccurrenceRef {
++            capture: CaptureRef {
++                namespace: "fixture:readable".into(),
++                sha256: "0".repeat(64),
++            },
++            locator: "/0".into(),
++        },
++        entry_sha256: "1".repeat(64),
++        assertion_sha256: "2".repeat(64),
++        native_entry_id: None,
++        native_assertion_id: None,
++        contributor_id: None,
++        distributor_id: None,
++    }
++}
++
++#[test]
++fn test_render_dictionary_compact_nonempty_presence_and_duplicate_occurrences_matches_literal_golden()
++ {
++    const KEY: &str = DETAIL_KEY;
++    let (root, engine) = compact_engine();
++    let mut response = engine
++        .exact("farvi", DictionaryExactOptions::default())
++        .expect("complete fixture exact result");
++    let mut base = response.groups[0].hits[0].clone();
++    let source_id = SourceId::new("source-a").unwrap();
++    base.entry.source = source_id.clone();
++    base.entry.id = EntityId::new("entry-a").unwrap();
++    base.assertion.entry = base.entry.id.clone();
++    base.assertion.id = EntityId::new("assertion-a").unwrap();
++    base.assertion.occurrence = literal_detail_ref().occurrence.clone();
++    base.occurrence_id = "00".into();
++    base.detail_ref = literal_detail_ref();
++
++    let mut missing = base.clone();
++    missing.entry.spelling = Presence::Missing;
++    missing.assertion.definition = Presence::Missing;
++    let mut null = base.clone();
++    null.entry.spelling = Presence::Null;
++    null.assertion.definition = Presence::Null;
++    let mut value = base;
++    value.entry.spelling = Presence::Value("farvi".into());
++    value.assertion.definition = Presence::Value(TextValue {
++        text: "é\n\"quoted\"".into(),
++        language: Presence::Missing,
++        markup: Presence::Null,
++    });
++
++    let mut source = response.groups[0].source.clone();
++    source.id = source_id;
++    source.abbreviation = "A".into();
++    response.spelling = "farvi".into();
++    response.totals = DictionaryTotals {
++        occurrences: 4,
++        distinct_spellings: 1,
++        source_groups: 1,
++    };
++    response.groups = vec![DictionaryCompactGroup {
++        source,
++        full_count: 4,
++        returned_count: 3,
++        partial: true,
++        hits: vec![missing, null, value],
++    }];
++    response.next_cursor = Some("next-page".into());
++    let expected = format!(
++        "Exact \"farvi\": 4 occurrences, 1 spellings, 1 sources\nA [source-a] 3/4 (partial)\n  assertion-a @ 00\n    spelling: \"Missing\"\n    definition: \"Missing\"\n    detail: {KEY}\n  assertion-a @ 00\n    spelling: \"Null\"\n    definition: \"Null\"\n    detail: {KEY}\n  assertion-a @ 00\n    spelling: {{\"Value\":\"farvi\"}}\n    definition: {{\"Value\":{{\"text\":\"é\\n\\\"quoted\\\"\",\"language\":\"Missing\",\"markup\":\"Null\"}}}}\n    detail: {KEY}\nnext_cursor: \"next-page\"\n"
++    );
++    assert_eq!(serde_json::to_string(&literal_detail_ref()).unwrap(), KEY);
++    assert_eq!(
++        render_dictionary_compact(&DictionaryCompactQueryResult::Exact(Box::new(response))),
++        expected
++    );
++    drop(engine);
++    fs::remove_dir_all(root).expect("remove owned test root");
++}
++
++#[test]
++fn test_render_dictionary_compact_preserves_typed_presence_and_duplicate_order() {
++    let root = scratch();
++    let store = root.join("dictionary.sqlite3");
++    let dictionary = fixture::complete_fixture().expect("complete fixture");
++    let metadata = dictionary.metadata();
++    let context_id = metadata
++        .assertions
++        .iter()
++        .find(|row| {
++            row.occurrence.capture.namespace == "captured:a:lexical"
++                && row.occurrence.locator == "/0"
++        })
++        .expect("fixture context assertion")
++        .id
++        .clone();
++    let editorial_id = metadata
++        .assertions
++        .iter()
++        .find(|row| {
++            row.occurrence.capture.namespace == "captured:a:d1" && row.occurrence.locator == "/0"
++        })
++        .expect("fixture editorial assertion")
++        .id
++        .clone();
++    let editorial_sense_id = metadata
++        .editorial_senses
++        .iter()
++        .find(|row| row.assertions.contains(&editorial_id))
++        .expect("fixture editorial link")
++        .id
++        .clone();
++    let bytes = dictionary.to_json_bytes().expect("fixture JSON");
++    DictionarySearchEngine::build(&store, &bytes).expect("build fixture store");
++    let engine = DictionaryCompactSearchEngine::open(&store).expect("open compact engine");
++
++    let compact = DictionaryCompactQueryResult::Exact(Box::new(
++        engine
++            .exact("farvi", DictionaryExactOptions::default())
++            .expect("fixture exact result"),
++    ));
++    let rendered = render_dictionary_compact(&compact);
++    let exact = match &compact {
++        DictionaryCompactQueryResult::Exact(response) => response,
++        DictionaryCompactQueryResult::Resolve(_) => unreachable!(),
++    };
++    assert!(rendered.ends_with("\n"));
++    assert!(rendered.contains("next_cursor: null\n"));
++    assert_eq!(
++        rendered.matches("    detail: {").count(),
++        exact
++            .groups
++            .iter()
++            .map(|group| group.hits.len())
++            .sum::<usize>()
++    );
++    for group in &exact.groups {
++        let projected = group
++            .hits
++            .iter()
++            .map(|hit| {
++                format!(
++                    "  {} @ {}\n    spelling: {}\n    definition: {}\n    detail: {}\n",
++                    serde_json::to_string(hit.assertion.id.as_str())
++                        .unwrap()
++                        .trim_matches('"'),
++                    serde_json::to_string(&hit.occurrence_id)
++                        .unwrap()
++                        .trim_matches('"'),
++                    serde_json::to_string(&hit.entry.spelling).unwrap(),
++                    serde_json::to_string(&hit.assertion.definition).unwrap(),
++                    serde_json::to_string(&hit.detail_ref).unwrap(),
++                )
++            })
++            .collect::<String>();
++        assert!(rendered.contains(&projected));
++    }
++
++    let context_key = engine
++        .exact("si'e", DictionaryExactOptions::default())
++        .expect("si'e exact result")
++        .groups
++        .into_iter()
++        .flat_map(|group| group.hits)
++        .find(|hit| hit.assertion.id == context_id)
++        .expect("pre-input context assertion hit");
++    let context_detail = engine
++        .detail(&context_key.detail_ref, None)
++        .expect("si'e complete detail");
++    let context_hit = context_detail.hit.as_ref().expect("si'e full hit");
++    assert!(!context_hit.forms.is_empty());
++    assert!(!context_hit.contexts.is_empty());
++    let context_pretty = serde_json::to_string_pretty(context_hit).unwrap();
++    assert!(
++        render_dictionary_detail(&context_detail).ends_with(&format!("hit: {context_pretty}\n"))
++    );
++
++    let editorial_key = exact
++        .groups
++        .iter()
++        .flat_map(|group| &group.hits)
++        .find(|hit| hit.assertion.id == editorial_id)
++        .expect("pre-input editorial farvi assertion");
++    let detail = engine
++        .detail(&editorial_key.detail_ref, None)
++        .expect("complete fixture detail");
++    let hit = detail.hit.as_ref().expect("complete hit");
++    assert_eq!(hit.assertion.occurrence.capture.namespace, "captured:a:d1");
++    assert_eq!(hit.assertion.occurrence.locator, "/0");
++    assert!(
++        hit.editorial_senses
++            .iter()
++            .any(|row| row.id == editorial_sense_id)
++    );
++    let pretty = serde_json::to_string_pretty(hit).unwrap();
++    assert!(render_dictionary_detail(&detail).ends_with(&format!("hit: {pretty}\n")));
++
++    drop(engine);
++    fs::remove_dir_all(root).expect("remove owned test root");
++}
+diff --git a/docs/collections.md b/docs/collections.md
+index c280f11..ba76c23 100644
+--- a/docs/collections.md
++++ b/docs/collections.md
+@@ -228,3 +228,30 @@ error. Standalone compact `dictionary-query` writes the selected Exact or
+ Resolve response object directly at the JSON root; the operation-tagged
+ library enum is not an extra CLI wrapper. Configured `lookup` keeps its managed
+ envelope and nested result tag.
++
++The query commands and both detail commands also accept `--format readable`.
++Readable output is rendered from the same typed compact result and does not
++alter profile selection, cursor binding, or detail-key validation. Exact and
++Resolve readable output retains occurrence records, `Presence` values, and
++totals, while omitting compact availability, notices, and other projection
++metadata; use Compact JSON when those fields are needed. Full JSON remains the
++default, and Compact JSON retains its existing wire shape.
++
++For example, run a query in readable form. To request a complete hit, first
++copy the complete `detail_ref` object from a Compact Exact hit into
++`DETAIL_REF_JSON`, then pass that same strict key to either detail command:
++
++```sh
++vlajmaji dictionary-query "$STORE" --format readable --request '{"operation":"exact","spelling":"farvi"}'
++vlajmaji lookup farvi --profile research --format readable
++vlajmaji dictionary-query "$STORE" --format compact --request '{"operation":"exact","spelling":"farvi"}'
++DETAIL_REF_JSON='REPLACE_WITH_COMPLETE_DETAIL_REF_JSON_FROM_COMPACT_HIT'
++vlajmaji dictionary-detail "$STORE" --format readable --reference "$DETAIL_REF_JSON"
++vlajmaji lookup-detail --profile research --format readable --reference "$DETAIL_REF_JSON"
++```
++
++Replace the variable placeholder with the literal JSON object copied from the hit.
++Keep every field from that key, including its digest policy, role,
++source, occurrence and nullable native/contributor/distributor fields. Readable
++detail renders the complete `DictionaryHit`, omitting only the outer version,
++policy, and state fields from its wrapper.

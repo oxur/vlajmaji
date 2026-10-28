@@ -1,0 +1,106 @@
+{
+  "ok": true,
+  "scope_only": true,
+  "head": "5e19754ce7ccad0ddea788c2e344df116711814c",
+  "parent": "7399563f98b41d26bd5099d04873e1a8cc7e23fe",
+  "tree": "4c91c02a9d66d58ec7e26c9323289f40a730ccde",
+  "delta": [
+    "README.md",
+    "crates/cli/README.md",
+    "crates/cli/src/main.rs",
+    "crates/cli/src/query_output.rs",
+    "crates/cli/tests/query_output_contract.rs",
+    "crates/search/README.md",
+    "crates/search/src/dictionary/projection.rs",
+    "crates/search/src/lib.rs",
+    "crates/search/src/presentation.rs",
+    "crates/search/tests/presentation_contract.rs",
+    "docs/collections.md"
+  ],
+  "cumulative_count": 21,
+  "cumulative_paths": [
+    "README.md",
+    "crates/cli/README.md",
+    "crates/cli/src/main.rs",
+    "crates/cli/src/query_output.rs",
+    "crates/cli/tests/query_output_contract.rs",
+    "crates/search/README.md",
+    "crates/search/src/collection_query.rs",
+    "crates/search/src/collection_query/projection.rs",
+    "crates/search/src/dictionary.rs",
+    "crates/search/src/dictionary/borrowed.rs",
+    "crates/search/src/dictionary/projection.rs",
+    "crates/search/src/lib.rs",
+    "crates/search/src/presentation.rs",
+    "crates/search/tests/collection_projection_contract.rs",
+    "crates/search/tests/dictionary_projection_contract.rs",
+    "crates/search/tests/presentation_contract.rs",
+    "crates/store/src/collections.rs",
+    "crates/store/src/collections/reference_projection.rs",
+    "crates/store/src/lib.rs",
+    "crates/store/tests/reference_projection_contract.rs",
+    "docs/collections.md"
+  ],
+  "trailers": [
+    "Co-authored-by: Codex <noreply@openai.com>",
+    "Co-authored-by: Billo AI <ai-engineering@billo.systems>"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 12490,
+      "sha256": "5169a55ab4ffa1f649cc93298c52bebbd9e17c38192147a6851b48f1e8a5e981"
+    },
+    {
+      "path": "crates/cli/README.md",
+      "bytes": 9548,
+      "sha256": "130ef39913960a0cc107c084ea04b5614a33c6a0abad8dd076969acb05417352"
+    },
+    {
+      "path": "crates/cli/src/main.rs",
+      "bytes": 144323,
+      "sha256": "495ac82c83c9608dc5da5ede0709c6cfc238bac5d91bee50653ac6819a0aae80"
+    },
+    {
+      "path": "crates/cli/src/query_output.rs",
+      "bytes": 323,
+      "sha256": "8d9207472be3f1a671b8dc89c956e5609ca2d7ffa70ff3ec39fb97d6271758f5"
+    },
+    {
+      "path": "crates/cli/tests/query_output_contract.rs",
+      "bytes": 89394,
+      "sha256": "d9ffbbddf6bc4922d73f4ae61e6d59642e15ca70db8fac24e021e06202e8840b"
+    },
+    {
+      "path": "crates/search/README.md",
+      "bytes": 5865,
+      "sha256": "6b14fed31010a1a35dd3535598123930b35a6b73b1441c6b70536aa8857efe65"
+    },
+    {
+      "path": "crates/search/src/dictionary/projection.rs",
+      "bytes": 83489,
+      "sha256": "7e8dce325525a9399f65ce535e687a2579e1e16044beee805ee23f11e48ee980"
+    },
+    {
+      "path": "crates/search/src/lib.rs",
+      "bytes": 57852,
+      "sha256": "62ef4a05895ba5578d206c3147b1f37990c77ced20e9d71ad6e7d11b1c594ede"
+    },
+    {
+      "path": "crates/search/src/presentation.rs",
+      "bytes": 11647,
+      "sha256": "b94a5f9aea56634426afd58ec7c32f9928267d4e3a60432d74a0282952f94d37"
+    },
+    {
+      "path": "crates/search/tests/presentation_contract.rs",
+      "bytes": 26467,
+      "sha256": "8d17ee2494c4344012a66a45eb4ab1e8d63ec8e29f24ca9b7d22871aacc4f1d0"
+    },
+    {
+      "path": "docs/collections.md",
+      "bytes": 13509,
+      "sha256": "a009277214a20c97c471a05cd9040d71177c43de969bbe16013157ec203d6049"
+    }
+  ],
+  "limits": "Read-only source/refs; no runtime or acceptance claim"
+}

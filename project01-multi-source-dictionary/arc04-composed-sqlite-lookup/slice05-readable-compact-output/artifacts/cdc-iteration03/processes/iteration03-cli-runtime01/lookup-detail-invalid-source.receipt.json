@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+    "lookup-detail",
+    "--reference",
+    "{\"assertion_id\": \"jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-assertion-0\", \"assertion_sha256\": \"c1cab67c61ec8482ad1ec2f33a70bdc05f6bc249a11b2e686170830efd3a05b6\", \"contributor_id\": \"lensisku-user-a4d26868017c0ccffe2efe50944ef4211834660cca834c6e9f86dec6a88246fa\", \"digest_policy\": \"entry-assertion-serde-json-v1\", \"distributor_id\": \"jbotci\", \"entry_id\": \"jbotci-63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429-entry-0\", \"entry_sha256\": \"67e4a7ba8c7872dbcc0939c7553d7ded92ed411a05e208c43fdc962176104e24\", \"native_assertion_id\": \"333\", \"native_entry_id\": null, \"occurrence\": {\"capture\": {\"namespace\": \"captured:lensisku:jbotci:en\", \"sha256\": \"63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429\"}, \"locator\": \"/0\"}, \"role\": \"assertion\", \"source\": \"\", \"version\": 1}",
+    "--config",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/iteration03-cli-runtime01/absent-config"
+  ],
+  "exit": 1,
+  "expected_exit": 1,
+  "elapsed_s": 0.024798084050416946,
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_bytes": 332,
+  "stderr_sha256": "1c07d1d5b1bcf7d4c889f217f14672d379ba3d8e90767fe5f1f186c6fa662109",
+  "cwd": null,
+  "isolated_environment": {
+    "HOME": "/private/tmp/vlajmaji-p01-a04-s05-cdc/iteration03-cli-runtime01/home",
+    "XDG_CONFIG_HOME": "/private/tmp/vlajmaji-p01-a04-s05-cdc/iteration03-cli-runtime01/xdg_config_home",
+    "XDG_DATA_HOME": "/private/tmp/vlajmaji-p01-a04-s05-cdc/iteration03-cli-runtime01/xdg_data_home"
+  }
+}

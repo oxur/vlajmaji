@@ -2,6 +2,14 @@
 
 **Current authority: Autonomous execution THROUGH ARC04 ONLY.** Same Sol6.1/high CDC and Luna/high CC. Duncan merged S04 PR5 and explicitly authorized rebase+continue; no future S05 push/publication authority inferred. All14project rows OPEN; A05/A06 unactivated; actual user default/Bauske/accepted data protected.
 
+**Current S05 checkpoint,2026-10-28 UTC:** root FINAL readiness PASS; final test-only04/pass5ofFIVE ISSUED, exact THREEpaths (presentation test, CLI cfgtestbody ONLY, original CLI journey). Current clean5e/tree4c91; strictF03closed/bounded semanticPASS, all6OPEN/latergatesheld. CDC exclusively owns QUIET source/index/ONEtarget until COMPLETE retained CC issued intake/source-cited readback/freshidentity then explicit transfer. Root/CC read-only before handoff. No Full/numeric/external authority.
+
+### Historical final04 DRAFT checkpoint
+
+**Current S05 checkpoint,2026-10-28 UTC:** readable03 returned clean5e/tree4c91; exact String MOVE closes strictF03, semantic/API/finiteTiny contribution PASS. Persistent original THREE-path test-only completion DRAFT04/finalpass5ofFIVE awaits root readiness; all6OPEN/FullnumericLinuxfreshARCexternal held. Actual CC terminal handback complete; CDC exclusively owns QUIET source/index/ONE retained target; CC/root read-only, no source edits or issue/transfer from DRAFT. See slice-plan§15/review-iteration03.
+
+### Historical readable03 issued ownership checkpoint
+
 **Current S05 checkpoint,2026-10-27:** readable03/pass4 ISSUED at planning2cce635; root final readiness PASS and actual complete CC intake/readback accepted. Verified baseline739/treee184; strictF03 exact occurrence String MOVE FIRST, followed by four pure typed readable renderers/typed CLI/Tiny W1–W5/gates. EFFECTIVE on explicit CDC handoff after current metadata commit, retained Luna/high CC exclusively owns ELEVEN issued source paths/index/ONE retained Arc01 target; CDC/root source/index/target READ-ONLY until clean frozen handback. CDC owns planning/independent preparation; CC appends only execution.md outside source. Subsequent WIP is not claimed clean739. All6OPEN/noFullmetriceligibility until carryover closes; no Full/numeric/Linux/external effect from intake/transfer. Historical checkpoints below remain preserved.
 
 ### Historical pre-correction frozen checkpoint

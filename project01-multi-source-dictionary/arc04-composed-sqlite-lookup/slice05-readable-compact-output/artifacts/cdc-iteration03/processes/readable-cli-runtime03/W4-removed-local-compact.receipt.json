@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+    "lookup",
+    "--request",
+    "{\"operation\":\"resolve\",\"target\":{\"Local\":{\"Assertion\":\"llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6\"}}}",
+    "--config",
+    "/tmp/vlajmaji-p01-a04-s05-cdc/readable-cli-runtime03/config.toml",
+    "--profile",
+    "work",
+    "--format",
+    "compact"
+  ],
+  "exit": 0,
+  "expected_exit": 0,
+  "elapsed_s": 0.05715133249759674,
+  "stdout_bytes": 4880,
+  "stdout_sha256": "9bbfa9fa2a69a6a965a4c5794233db6fe2482e4d6959ea73cf4303c386002517",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "cwd": null,
+  "isolated_environment": {
+    "HOME": "/tmp/vlajmaji-p01-a04-s05-cdc/readable-cli-runtime03/home",
+    "XDG_CONFIG_HOME": "/tmp/vlajmaji-p01-a04-s05-cdc/readable-cli-runtime03/xdg_config_home",
+    "XDG_DATA_HOME": "/tmp/vlajmaji-p01-a04-s05-cdc/readable-cli-runtime03/xdg_data_home"
+  }
+}

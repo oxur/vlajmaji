@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/24childDONE; fivearcDONE/fiveOPEN. S05 frozen739 bounded semantic/API PASS; strictF03 ONE FIRST readable03/pass4 carryover, INITIAL not unconditionally accepted/all6OPEN/noFullmetriceligibility. Readable03/pass4 eleven-path ISSUED after root FINAL READINESS PASS; complete literal typed goldens/W1–W5 argv+revisions frozen; complete intake accepted; explicit eleven-path/index/ONEtarget transfer effective on CDC handoff message, CDC/root then read-only. |
-| version / date | 1.23 / 2026-10-27 UTC |
+| status | ACTIVE; S01–S04 CLOSED/24childDONE/fivearcDONEfiveOPEN. S05 frozen5e bounded semanticPASS/strictF03closed; final04/pass5 THREEtestpaths ISSUED after root readiness. All6OPEN/laterFullnumericLinuxfreshARCheld. |
+| version / date | 1.25 /2026-10-28 UTC |
 | authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji; codex/project01-readable-compact-output readable03 author baseline7399563/treee184 (parentc364), freshly verified clean before transfer; subsequent WIP not claimed clean739, metadata-rebased onto32e99/main with old9eb chain preserved; same retained target. Old S04 local/origin branch remains432. Complete readable03 intake accepted; CC owns exact11paths/index/ONEtarget effective on explicit handoff after scoped metadata commit, CDC/root then read-only until frozen return. CDC retains planning and independent preparation. Actual primary checkout52fd remains distinct. |
+| integration destination | Same isolated S05 branch clean5e/tree4c91 parent739/base32e99; old S04local/origin432 protected. CDC QUIETsource/index/ONEtarget until complete retained CC04 intake/review/freshidentity and explicit THREEtestpath handoff; root read-only. Actual primary localmain52fd distinct. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority

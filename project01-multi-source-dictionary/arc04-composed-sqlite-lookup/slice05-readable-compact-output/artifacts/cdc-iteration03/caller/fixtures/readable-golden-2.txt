@@ -1,0 +1,21 @@
+Reference {"Local":{"Assertion":"assertion-a"}}: Unverified
+entity: null
+confirmed: 1
+A [source-a] 1 confirmed
+  assertion-a @ 00
+    spelling: {"Value":"farvi"}
+    definition: {"Value":{"text":"é\n\"quoted\"","language":"Missing","markup":"Null"}}
+    eligibility: "Lexical"
+    payload_present: true
+    current_eligible: true
+    detail: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a","assertion_id":"assertion-a","occurrence":{"capture":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"},"entry_sha256":"1111111111111111111111111111111111111111111111111111111111111111","assertion_sha256":"2222222222222222222222222222222222222222222222222222222222222222","native_entry_id":null,"native_assertion_id":null,"contributor_id":null,"distributor_id":null}
+unverified: 1
+? [source-z] 1 unverified
+  assertion-z @ 01
+    spelling: "Null"
+    definition: "Missing"
+    eligibility: {"Excluded":{"reason":"not lexical"}}
+    payload_present: false
+    current_eligible: false
+    detail: null
+requested_release: null
