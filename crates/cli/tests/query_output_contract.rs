@@ -6,7 +6,7 @@ mod fixture;
 use std::{
     borrow::Cow,
     collections::{BTreeMap, BTreeSet},
-    path::{Path, PathBuf},
+    path::{Component, Path, PathBuf},
     process::{Command, Output},
     sync::atomic::{AtomicUsize, Ordering},
     time::{SystemTime, UNIX_EPOCH},
@@ -16,13 +16,14 @@ use serde_json::{Value, json};
 use sha2::{Digest, Sha256};
 use vlajmaji_lexicon::{
     CatalogTarget, Dictionary, Eligibility, JbotciImportOptions, LaLojbanImportOptions,
-    LlgImportOptions, LocalRef, PackId, PackPayloadKind, Presence, RelationTarget,
+    LlgImportOptions, LocalRef, OccurrenceRef, PackId, PackPayloadKind, Presence, RelationTarget,
     SutysiskuImportOptions, import_jbotci_export, import_la_lojban_export, import_llg_lists,
     import_sutysisku_export, load_sealed_release, seal_release,
 };
-use vlajmaji_search::DictionaryRequest;
+use vlajmaji_search::{DictionaryHitDetailResponse, DictionaryRequest};
 use vlajmaji_store::{
-    CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection, DictionaryStore,
+    CollectionCatalogue, CollectionInput, CollectionReleaseSummary, CollectionRequest,
+    CollectionSelection, DictionaryStore, native_path_report,
 };
 
 static NEXT: AtomicUsize = AtomicUsize::new(0);
@@ -86,6 +87,19 @@ const TINY_NOTICE: &[u8] = b"Explicit synthetic notice";
 
 fn sha256(bytes: &[u8]) -> String {
     format!("{:x}", Sha256::digest(bytes))
+}
+
+fn occurrence_id(reference: &OccurrenceRef) -> String {
+    let mut bytes = Vec::new();
+    for part in [
+        reference.capture.namespace.as_bytes(),
+        reference.capture.sha256.as_bytes(),
+        reference.locator.as_bytes(),
+    ] {
+        bytes.extend_from_slice(&(part.len() as u64).to_be_bytes());
+        bytes.extend_from_slice(part);
+    }
+    bytes.iter().map(|byte| format!("{byte:02x}")).collect()
 }
 
 fn tiny_llg() -> Vec<u8> {
@@ -365,6 +379,47 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
         5,
         "pre-input max-union lexical farvi assertions"
     );
+    let mut expected_farvi = BTreeMap::<String, Vec<(Value, Value, String, String, String)>>::new();
+    let mut seen_farvi_assertions = BTreeSet::new();
+    for model in &models {
+        let document = model.clone().into_document();
+        for entry in &document.metadata.entries {
+            if entry.spelling != Presence::Value("farvi".into()) {
+                continue;
+            }
+            for assertion in document.metadata.assertions.iter().filter(|assertion| {
+                assertion.entry == entry.id && assertion.eligibility == Eligibility::Lexical
+            }) {
+                let body_digest = sha256(&serde_json::to_vec(assertion).unwrap());
+                if seen_farvi_assertions.insert(body_digest) {
+                    expected_farvi
+                        .entry(entry.source.as_str().to_owned())
+                        .or_default()
+                        .push((
+                            serde_json::to_value(entry).unwrap(),
+                            serde_json::to_value(assertion).unwrap(),
+                            occurrence_id(&assertion.occurrence),
+                            serde_json::to_string(&entry.spelling).unwrap(),
+                            serde_json::to_string(&assertion.definition).unwrap(),
+                        ));
+                }
+            }
+        }
+    }
+    assert_eq!(expected_farvi.values().map(Vec::len).sum::<usize>(), 5);
+    let assert_farvi_response = |response: &Value| {
+        let groups = response["groups"].as_array().expect("exact groups");
+        assert_eq!(groups.len(), expected_farvi.len());
+        for (group, (source, rows)) in groups.iter().zip(&expected_farvi) {
+            assert_eq!(group["source"]["id"].as_str().unwrap(), source.as_str());
+            let hits = group["hits"].as_array().expect("group hits");
+            assert_eq!(hits.len(), rows.len());
+            for (hit, (entry, assertion, _, _, _)) in hits.iter().zip(rows) {
+                assert_eq!(&hit["entry"], entry);
+                assert_eq!(&hit["assertion"], assertion);
+            }
+        }
+    };
     let manifest_and_release = write_tiny_manifest(&base, &models);
     let manifest = manifest_and_release.0;
     let llg_release_path = manifest_and_release.1;
@@ -385,9 +440,48 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
             assertion.entry == llg_entry.id && assertion.eligibility == Eligibility::Lexical
         })
         .expect("LLG lexical farvi assertion");
+    let llg_registry = llg.registry().as_document();
+    let occurrence_identity = llg_assertion.occurrence.to_record_identity().unwrap();
+    let snapshot_identity = llg_assertion
+        .occurrence
+        .capture
+        .to_snapshot_identity()
+        .unwrap();
+    let occurrence_attribution = llg_registry
+        .occurrences
+        .iter()
+        .find(|row| row.occurrence == occurrence_identity)
+        .expect("pre-input occurrence attribution");
+    let snapshot_attribution = llg_registry
+        .snapshots
+        .iter()
+        .find(|row| row.snapshot == snapshot_identity)
+        .expect("pre-input snapshot attribution");
+    let expected_llg_detail_ref = json!({
+        "version": 1,
+        "digest_policy": "entry-assertion-serde-json-v1",
+        "role": "assertion",
+        "source": llg_entry.source.as_str(),
+        "entry_id": llg_entry.id.as_str(),
+        "assertion_id": llg_assertion.id.as_str(),
+        "occurrence": serde_json::to_value(&llg_assertion.occurrence).unwrap(),
+        "entry_sha256": sha256(&serde_json::to_vec(llg_entry).unwrap()),
+        "assertion_sha256": sha256(&serde_json::to_vec(llg_assertion).unwrap()),
+        "native_entry_id": occurrence_attribution.native_entry_id,
+        "native_assertion_id": occurrence_attribution.native_assertion_id,
+        "contributor_id": serde_json::to_value(&occurrence_attribution.contributor).unwrap(),
+        "distributor_id": serde_json::to_value(&snapshot_attribution.distributor).unwrap(),
+    });
     let local_target = RelationTarget::Local(LocalRef::Assertion(llg_assertion.id.clone()));
     let llg_source = llg_entry.source.clone();
-    let llg_release = llg.metadata().releases[0].id.clone();
+    let llg_release_record = llg
+        .metadata()
+        .releases
+        .first()
+        .expect("pre-input LLG release");
+    let expected_llg_release = CollectionReleaseSummary::from(llg_release_record);
+    let expected_llg_release_record = serde_json::to_value(llg_release_record).unwrap();
+    let llg_release = llg_release_record.id.clone();
     let catalog_target = RelationTarget::Catalog(CatalogTarget {
         source: llg_source,
         release: llg_release,
@@ -395,6 +489,27 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
         native_assertion_id: None,
         occurrence: Some(llg_assertion.occurrence.clone()),
     });
+    let assert_readable_llg_detail = |rendered: &str| {
+        let lines: Vec<_> = rendered.lines().collect();
+        let row = format!(
+            "  {} @ {}",
+            llg_assertion.id,
+            occurrence_id(&llg_assertion.occurrence)
+        );
+        let row_index = lines
+            .iter()
+            .position(|line| *line == row)
+            .expect("Readable LLG assertion row from pre-input occurrence");
+        let detail = lines
+            .iter()
+            .skip(row_index + 1)
+            .find_map(|line| line.trim_start().strip_prefix("detail: "))
+            .expect("detail follows the LLG row");
+        assert_eq!(
+            serde_json::from_str::<Value>(detail).unwrap(),
+            expected_llg_detail_ref
+        );
+    };
 
     let install = run_isolated(
         &[
@@ -424,6 +539,35 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
             .as_str()
             .expect("JSON-safe generation.path"),
     );
+    assert!(root.is_absolute());
+    assert_eq!(
+        installed["generation"]["path"],
+        serde_json::to_value(native_path_report(&installed_store)).unwrap(),
+        "the CLI reports the exact native generation path"
+    );
+    assert!(installed_store.is_absolute());
+    assert!(installed_store.starts_with(&root));
+    assert_ne!(installed_store, root);
+    let relative_store = installed_store.strip_prefix(&root).unwrap();
+    assert!(
+        relative_store
+            .components()
+            .all(|component| matches!(component, Component::Normal(_)))
+    );
+    let root_metadata = std::fs::symlink_metadata(&root).unwrap();
+    assert!(root_metadata.is_dir());
+    assert!(!root_metadata.file_type().is_symlink());
+    let mut checked_path = root.clone();
+    for component in relative_store.components() {
+        checked_path.push(component.as_os_str());
+        let metadata = std::fs::symlink_metadata(&checked_path).unwrap();
+        assert!(!metadata.file_type().is_symlink(), "{checked_path:?}");
+        assert!(metadata.is_dir(), "{checked_path:?}");
+    }
+    let database_path = installed_store.join("dictionary.sqlite3");
+    let database_metadata = std::fs::symlink_metadata(&database_path).unwrap();
+    assert!(database_metadata.is_file());
+    assert!(!database_metadata.file_type().is_symlink());
     let installed_model = DictionaryStore::open(&installed_store)
         .unwrap()
         .dictionary()
@@ -550,6 +694,7 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
     let full_value: Value = serde_json::from_slice(&full.stdout).unwrap();
     assert_eq!(full_value["snapshot"]["local_revision"], 1);
     assert_eq!(full_value["result"]["response"]["totals"]["occurrences"], 5);
+    assert_farvi_response(&full_value["result"]["response"]);
     assert_eq!(
         full_value["result"]["response"]["source_totals"]
             .as_array()
@@ -591,6 +736,7 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
         compact_response["source_totals"],
         full_value["result"]["response"]["source_totals"]
     );
+    assert_farvi_response(compact_response);
     let readable = lookup(Some("readable"), None);
     assert!(
         readable.status.success(),
@@ -598,11 +744,34 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
         String::from_utf8_lossy(&readable.stderr)
     );
     let readable = String::from_utf8(readable.stdout).unwrap();
-    assert!(readable.starts_with("Exact \"farvi\": 5 occurrences"));
+    assert!(readable.starts_with("Exact \"farvi\": 5 occurrences, 1 spellings, 3 sources\n"));
     assert!(readable.ends_with("next_cursor: null\n"));
+    assert_eq!(readable.matches(" @ ").count(), 5);
+    for rows in expected_farvi.values() {
+        for (_, assertion, occurrence, spelling, definition) in rows {
+            assert!(readable.contains(assertion["id"].as_str().unwrap()));
+            assert!(readable.contains(&format!(
+                "  {} @ {occurrence}",
+                assertion["id"].as_str().unwrap()
+            )));
+            assert!(readable.contains(&format!("spelling: {spelling}")));
+            assert!(readable.contains(&format!("definition: {definition}")));
+        }
+    }
+    assert_readable_llg_detail(&readable);
 
     for target in [local_target.clone(), catalog_target.clone()] {
         let request = serde_json::to_string(&DictionaryRequest::Resolve { target }).unwrap();
+        let resolved_full = lookup(None, Some(&request));
+        assert!(
+            resolved_full.status.success(),
+            "{}",
+            String::from_utf8_lossy(&resolved_full.stderr)
+        );
+        assert_eq!(
+            serde_json::from_slice::<Value>(&resolved_full.stdout).unwrap()["result"]["response"]["status"],
+            "Resolved"
+        );
         let resolved = lookup(Some("compact"), Some(&request));
         assert!(
             resolved.status.success(),
@@ -632,27 +801,181 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
         String::from_utf8_lossy(&readable_reference.stderr)
     );
     let readable_reference = String::from_utf8(readable_reference.stdout).unwrap();
-    assert!(readable_reference.starts_with("Reference {\"Local\":{\"Assertion\":\""));
-    assert!(readable_reference.contains(": Resolved\n"));
+    assert!(readable_reference.starts_with(&format!(
+        "Reference {}: Resolved\n",
+        serde_json::to_string(&local_target).unwrap()
+    )));
+    assert!(readable_reference.contains("confirmed: 1\n"));
+    assert!(readable_reference.contains("unverified: 0\n"));
+    assert!(readable_reference.contains(&format!(
+        "  {} @ {}\n",
+        llg_assertion.id,
+        occurrence_id(&llg_assertion.occurrence)
+    )));
+    let detail_line = readable_reference
+        .lines()
+        .find(|line| line.trim_start().starts_with("detail: "))
+        .expect("Readable Local row detail label");
+    assert_eq!(
+        serde_json::from_str::<Value>(detail_line.trim_start().strip_prefix("detail: ").unwrap())
+            .unwrap(),
+        expected_llg_detail_ref
+    );
+    assert!(readable_reference.contains("requested_release: null\n"));
 
     let resolved_local = lookup(Some("compact"), Some(&local_request));
     let resolved_local: Value = serde_json::from_slice(&resolved_local.stdout).unwrap();
     let detail_ref =
         resolved_local["result"]["response"]["payload"]["confirmed"][0]["detail_ref"].clone();
+    assert_eq!(detail_ref, expected_llg_detail_ref);
     let catalog_request = serde_json::to_string(&DictionaryRequest::Resolve {
         target: catalog_target.clone(),
     })
     .unwrap();
+    let standalone_resolve = |request: &str, format: &str| {
+        run_isolated(
+            &[
+                "dictionary-query",
+                installed_store.to_str().unwrap(),
+                "--request",
+                request,
+                "--format",
+                format,
+            ],
+            &base,
+        )
+    };
+    for (request, catalog) in [(&local_request, false), (&catalog_request, true)] {
+        let target = if catalog {
+            &catalog_target
+        } else {
+            &local_target
+        };
+        let standalone_full = standalone_resolve(request, "full");
+        assert!(
+            standalone_full.status.success(),
+            "{}",
+            String::from_utf8_lossy(&standalone_full.stderr)
+        );
+        let full_value: Value = serde_json::from_slice(&standalone_full.stdout).unwrap();
+        assert_eq!(full_value["status"], "Resolved");
+        assert_eq!(full_value["confirmed"].as_array().unwrap().len(), 1);
+        assert!(full_value["unverified"].as_array().unwrap().is_empty());
+        assert_eq!(
+            full_value["confirmed"][0]["entry"],
+            serde_json::to_value(llg_entry).unwrap()
+        );
+        assert_eq!(
+            full_value["confirmed"][0]["assertion"],
+            serde_json::to_value(llg_assertion).unwrap()
+        );
+        if catalog {
+            assert_eq!(full_value["requested_release"], expected_llg_release_record);
+        } else {
+            assert_eq!(full_value["requested_release"], Value::Null);
+        }
+
+        let standalone_compact = standalone_resolve(request, "compact");
+        assert!(
+            standalone_compact.status.success(),
+            "{}",
+            String::from_utf8_lossy(&standalone_compact.stderr)
+        );
+        let compact_value: Value = serde_json::from_slice(&standalone_compact.stdout).unwrap();
+        assert_eq!(compact_value["status"], "Resolved");
+        assert_eq!(compact_value["confirmed"].as_array().unwrap().len(), 1);
+        assert!(compact_value["unverified"].as_array().unwrap().is_empty());
+        assert_eq!(
+            compact_value["confirmed"][0]["entry"],
+            serde_json::to_value(llg_entry).unwrap()
+        );
+        assert_eq!(
+            compact_value["confirmed"][0]["assertion"],
+            serde_json::to_value(llg_assertion).unwrap()
+        );
+        assert_eq!(
+            compact_value["confirmed"][0]["detail_ref"],
+            expected_llg_detail_ref
+        );
+        if catalog {
+            assert_eq!(
+                compact_value["requested_release"],
+                serde_json::to_value(&expected_llg_release).unwrap()
+            );
+        } else {
+            assert_eq!(compact_value["requested_release"], Value::Null);
+        }
+
+        let standalone_readable = standalone_resolve(request, "readable");
+        assert!(
+            standalone_readable.status.success(),
+            "{}",
+            String::from_utf8_lossy(&standalone_readable.stderr)
+        );
+        let readable = String::from_utf8(standalone_readable.stdout).unwrap();
+        assert!(readable.starts_with(&format!(
+            "Reference {}: Resolved\n",
+            serde_json::to_string(target).unwrap()
+        )));
+        assert!(readable.contains(": Resolved\n"));
+        assert!(readable.contains("confirmed: 1\n"));
+        assert!(readable.contains("unverified: 0\n"));
+        let row = format!(
+            "  {} @ {}\n",
+            llg_assertion.id,
+            occurrence_id(&llg_assertion.occurrence)
+        );
+        assert!(readable.contains(&row));
+        assert!(readable.contains(&format!(
+            "    spelling: {}\n",
+            serde_json::to_string(&llg_entry.spelling).unwrap()
+        )));
+        assert!(readable.contains(&format!(
+            "    definition: {}\n",
+            serde_json::to_string(&llg_assertion.definition).unwrap()
+        )));
+        let detail_line = readable
+            .lines()
+            .find(|line| line.trim_start().starts_with("detail: "))
+            .expect("Readable reference row detail label");
+        assert_eq!(
+            serde_json::from_str::<Value>(
+                detail_line.trim_start().strip_prefix("detail: ").unwrap()
+            )
+            .unwrap(),
+            expected_llg_detail_ref
+        );
+        if catalog {
+            assert!(readable.contains(&format!(
+                "requested_release: {}\n",
+                serde_json::to_string(&Some(&expected_llg_release)).unwrap()
+            )));
+        } else {
+            assert!(readable.contains("requested_release: null\n"));
+        }
+    }
     let resolved_catalog = lookup(Some("compact"), Some(&catalog_request));
     assert!(resolved_catalog.status.success());
     let resolved_catalog: Value = serde_json::from_slice(&resolved_catalog.stdout).unwrap();
     let catalog_detail_ref =
         resolved_catalog["result"]["response"]["payload"]["confirmed"][0]["detail_ref"].clone();
+    assert_eq!(catalog_detail_ref, expected_llg_detail_ref);
     let readable_catalog = lookup(Some("readable"), Some(&catalog_request));
     assert!(readable_catalog.status.success());
     let readable_catalog = String::from_utf8(readable_catalog.stdout).unwrap();
     assert!(readable_catalog.starts_with("Reference {\"Catalog\":"));
     assert!(readable_catalog.contains(": Resolved\n"));
+    assert!(readable_catalog.starts_with(&format!(
+        "Reference {}: Resolved\n",
+        serde_json::to_string(&catalog_target).unwrap()
+    )));
+    assert!(readable_catalog.contains("confirmed: 1\n"));
+    assert!(readable_catalog.contains("unverified: 0\n"));
+    assert!(readable_catalog.contains(&format!(
+        "requested_release: {}\n",
+        serde_json::to_string(&Some(&expected_llg_release)).unwrap()
+    )));
+    assert_readable_llg_detail(&readable_catalog);
     assert_eq!(detail_ref["source"], llg_entry.source.as_str());
     assert_eq!(detail_ref["entry_id"], llg_entry.id.as_str());
     assert_eq!(detail_ref["assertion_id"], llg_assertion.id.as_str());
@@ -674,6 +997,51 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
     assert_eq!(
         catalog_detail_ref, detail_ref,
         "Local and Catalog compact hits carry the same pre-input K_LLG"
+    );
+    let standalone_local = standalone_resolve(&local_request, "compact");
+    assert!(standalone_local.status.success());
+    let standalone_local: Value = serde_json::from_slice(&standalone_local.stdout).unwrap();
+    let standalone_key = serde_json::to_string(&expected_llg_detail_ref).unwrap();
+    let standalone_detail_args = [
+        "dictionary-detail",
+        installed_store.to_str().unwrap(),
+        "--reference",
+        standalone_key.as_str(),
+        "--expected-snapshot",
+        standalone_local["snapshot_sha256"].as_str().unwrap(),
+    ];
+    let standalone_detail = run_isolated(&standalone_detail_args, &base);
+    assert!(
+        standalone_detail.status.success(),
+        "{}",
+        String::from_utf8_lossy(&standalone_detail.stderr)
+    );
+    let standalone_detail: DictionaryHitDetailResponse =
+        serde_json::from_slice(&standalone_detail.stdout).unwrap();
+    assert_eq!(
+        standalone_detail.status,
+        vlajmaji_search::ReferenceStatus::Resolved
+    );
+    let standalone_hit = standalone_detail.hit.as_ref().expect("complete LLG hit");
+    assert_eq!(standalone_hit.entry, *llg_entry);
+    assert_eq!(standalone_hit.assertion, *llg_assertion);
+    let mut standalone_readable_args = standalone_detail_args.to_vec();
+    standalone_readable_args.extend(["--format", "readable"]);
+    let standalone_readable_detail = run_isolated(&standalone_readable_args, &base);
+    assert!(
+        standalone_readable_detail.status.success(),
+        "{}",
+        String::from_utf8_lossy(&standalone_readable_detail.stderr)
+    );
+    let standalone_readable_detail = String::from_utf8(standalone_readable_detail.stdout).unwrap();
+    let hit_start = standalone_readable_detail.find("\nhit: ").unwrap() + "\nhit: ".len();
+    assert_eq!(
+        &standalone_readable_detail[hit_start..],
+        format!(
+            "{}\n",
+            serde_json::to_string_pretty(standalone_hit).unwrap()
+        ),
+        "Readable prints the complete directly typed Full hit"
     );
     let snapshot = resolved_local["snapshot"]["binding_sha256"]
         .as_str()
@@ -776,6 +1144,70 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
         &base,
     );
     assert_eq!(explicit_default.stdout, explicit_full.stdout);
+    let explicit_compact = run_isolated(
+        &[
+            "dictionary-query",
+            installed_store.to_str().unwrap(),
+            "--request",
+            r#"{"operation":"exact","spelling":"farvi"}"#,
+            "--format",
+            "compact",
+        ],
+        &base,
+    );
+    assert!(explicit_compact.status.success());
+    let explicit_compact: Value = serde_json::from_slice(&explicit_compact.stdout).unwrap();
+    assert_eq!(explicit_compact["totals"]["occurrences"], 5);
+    assert_farvi_response(&explicit_compact);
+    let explicit_compact_llg = explicit_compact["groups"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .flat_map(|group| group["hits"].as_array().unwrap())
+        .find(|hit| hit["assertion"]["id"] == llg_assertion.id.as_str())
+        .expect("pre-input LLG farvi exact hit");
+    assert_eq!(explicit_compact_llg["detail_ref"], expected_llg_detail_ref);
+    assert!(
+        !explicit_compact
+            .as_object()
+            .unwrap()
+            .contains_key("operation")
+    );
+    assert!(
+        !explicit_compact
+            .as_object()
+            .unwrap()
+            .contains_key("response")
+    );
+    let explicit_readable = run_isolated(
+        &[
+            "dictionary-query",
+            installed_store.to_str().unwrap(),
+            "--request",
+            r#"{"operation":"exact","spelling":"farvi"}"#,
+            "--format",
+            "readable",
+        ],
+        &base,
+    );
+    assert!(explicit_readable.status.success());
+    let explicit_readable = String::from_utf8(explicit_readable.stdout).unwrap();
+    assert!(
+        explicit_readable.starts_with("Exact \"farvi\": 5 occurrences, 1 spellings, 3 sources\n")
+    );
+    assert_eq!(explicit_readable.matches(" @ ").count(), 5);
+    for rows in expected_farvi.values() {
+        for (_, assertion, occurrence, spelling, definition) in rows {
+            assert!(explicit_readable.contains(assertion["id"].as_str().unwrap()));
+            assert!(explicit_readable.contains(&format!(
+                "  {} @ {occurrence}",
+                assertion["id"].as_str().unwrap()
+            )));
+            assert!(explicit_readable.contains(&format!("spelling: {spelling}")));
+            assert!(explicit_readable.contains(&format!("definition: {definition}")));
+        }
+    }
+    assert_readable_llg_detail(&explicit_readable);
 
     let first_page = run_isolated(
         &[
@@ -1018,6 +1450,38 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
         removed_catalog["result"]["response"]["payload"],
         Value::Null
     );
+    for (request, catalog) in [(&local_request, false), (&catalog_request, true)] {
+        let removed_readable = lookup(Some("readable"), Some(request));
+        assert!(
+            removed_readable.status.success(),
+            "{}",
+            String::from_utf8_lossy(&removed_readable.stderr)
+        );
+        let removed_readable = String::from_utf8(removed_readable.stdout).unwrap();
+        let target = if catalog {
+            &catalog_target
+        } else {
+            &local_target
+        };
+        assert!(removed_readable.starts_with(&format!(
+            "Reference {}: CatalogueOnly\n",
+            serde_json::to_string(target).unwrap()
+        )));
+        assert!(removed_readable.contains("reason: \"removed\"\n"));
+        assert!(removed_readable.contains("payload: false\n"));
+        assert!(removed_readable.contains("entity: null\nconfirmed: 0\nunverified: 0\n"));
+        if catalog {
+            assert!(removed_readable.contains(&format!(
+                "requested_release: {}\n",
+                serde_json::to_string(&Some(&expected_llg_release)).unwrap()
+            )));
+        } else {
+            assert!(removed_readable.contains("requested_release: null\n"));
+        }
+        assert!(removed_readable.contains("catalogue_matches: "));
+        assert!(removed_readable.contains("selection: "));
+        assert!(removed_readable.contains("collections: "));
+    }
     let removed_snapshot = removed_catalog["snapshot"]["binding_sha256"]
         .as_str()
         .unwrap();
@@ -1130,6 +1594,17 @@ fn test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection() {
             .len(),
         1
     );
+    for request in [&local_request, &catalog_request] {
+        let restored_readable = lookup(Some("readable"), Some(request));
+        assert!(
+            restored_readable.status.success(),
+            "{}",
+            String::from_utf8_lossy(&restored_readable.stderr)
+        );
+        let restored_readable = String::from_utf8(restored_readable.stdout).unwrap();
+        assert!(restored_readable.contains(": Resolved\n"));
+        assert!(restored_readable.contains("confirmed: 1\n"));
+    }
     let restored_full = lookup(None, None);
     assert!(restored_full.status.success());
     let restored_full_value: Value = serde_json::from_slice(&restored_full.stdout).unwrap();
