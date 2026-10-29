@@ -1,6 +1,6 @@
 # S01 ledger — owned journal
 
-**Current, 2026-10-28:** ISSUED for complete intake after root readiness at d75532d; baseline a55/tree836; seven rows OPEN, no implementation/gates run. Binding definitions are slice-plan§§2–8. Complete intake accepted; CC eleven-path/index/ONE-target ownership becomes effective only on explicit CDC dispatch after the handoff commit; root/CDC then source-read-only.
+**Current, 2026-10-28:** INITIAL implementation active after accepted intake and explicit eleven-path/index/ONE-target handoff recorded at df5bec2e. Baseline a55/tree836 plus author WIP; root/CDC source/index/target read-only. Actual partial gates and retained failures are in artifacts/execution.md and original logs; no frozen delivery or independent acceptance yet. Seven rows remain OPEN; binding definitions remain slice-plan§§2–8. The earlier no-implementation/intake-only checkpoint is preserved in the issue/handoff Git history.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |

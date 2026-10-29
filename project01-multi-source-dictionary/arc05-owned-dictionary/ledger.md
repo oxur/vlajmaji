@@ -1,6 +1,6 @@
 # Arc05 ledger
 
-**Current, 2026-10-28:** Active Arc05 under directive04; baseline a55/tree836; S01 ISSUED for complete intake after root readiness d75532d; all eight arc rows OPEN. S01 intake accepted; CC source/index/ONE-target transfer effective only on explicit CDC dispatch after handoff commit; root/CDC then read-only. All fourteen project rows OPEN; Arc06 unactivated. No implementation/acceptance claim.
+**Current, 2026-10-28:** Active Arc05 under directive04. S01 INITIAL implementation is active after accepted intake and explicit df5bec2e handoff; baseline a55/tree836 plus author WIP. CC owns the eleven allowed source paths/index/ONE target; root/CDC source-read-only. S02 is a source-guided UNISSUED draft, dependent on actual S01 acceptance. All eight arc rows and fourteen project rows remain OPEN; Arc06 unactivated. Partial author gates are not independent acceptance; dated earlier checkpoints remain in Git history.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |
