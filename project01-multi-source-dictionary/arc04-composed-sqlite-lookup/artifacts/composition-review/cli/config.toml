@@ -1,0 +1,13 @@
+version = 1
+revision = 3
+default_profile = "work"
+
+[profiles.work]
+root = "/tmp/vlajmaji-p01-a04-arc-review02/cli/root"
+packs = [
+    "lensisku-jbotci",
+    "llg",
+    "la-lojban",
+    "sutysisku",
+]
+disabled = []

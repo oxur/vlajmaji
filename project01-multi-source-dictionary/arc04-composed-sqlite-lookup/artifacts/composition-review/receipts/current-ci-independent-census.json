@@ -1,0 +1,974 @@
+{
+  "push": {
+    "log_sha256": "f5f453850bcb3b5138ee7a60f03a604282b7c22fca58a60c8ce89ef6b2c497a6",
+    "populations": {
+      "Test (macos-latest) / Run cargo test --workspace --locked": {
+        "groups": 56,
+        "counts": [
+          338,
+          0,
+          1
+        ]
+      },
+      "Test (ubuntu-latest) / Run cargo test --workspace --locked": {
+        "groups": 56,
+        "counts": [
+          346,
+          0,
+          1
+        ]
+      },
+      "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features": {
+        "groups": 10,
+        "counts": [
+          83,
+          0,
+          0
+        ]
+      },
+      "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked": {
+        "groups": 56,
+        "counts": [
+          348,
+          0,
+          1
+        ]
+      }
+    },
+    "witnesses": [
+      {
+        "line": 495,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:08.5176440Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok"
+      },
+      {
+        "line": 532,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:10.2686270Z test test_configure_reports_exact_native_root_path_and_keeps_ascii_root_working ... ok"
+      },
+      {
+        "line": 535,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:10.6566970Z test test_profiles_reports_exact_native_config_io_and_keeps_ascii_counterpart_working ... ok"
+      },
+      {
+        "line": 545,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:10.7350180Z test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok"
+      },
+      {
+        "line": 710,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:20.4159960Z test complete_fixture_keeps_native_presence_and_release_absence_distinct ... ok"
+      },
+      {
+        "line": 740,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:20.7885150Z test repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters ... ok"
+      },
+      {
+        "line": 820,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:21.9988420Z test test_compact_detail_distinguishes_native_role_conflict_from_native_value_no_match ... ok"
+      },
+      {
+        "line": 831,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:22.9593110Z test test_catalog_native_match_defers_occurrence_key_until_after_capture_projection ... ok"
+      },
+      {
+        "line": 858,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:25.1611060Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok"
+      },
+      {
+        "line": 859,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:25.1612480Z test native_candidate_counts_are_stage_labelled ... ok"
+      },
+      {
+        "line": 862,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:25.1729640Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok"
+      },
+      {
+        "line": 871,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:25.5393570Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok"
+      },
+      {
+        "line": 893,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:29.0555430Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok"
+      },
+      {
+        "line": 946,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:30.7508210Z test collections::maintenance::tests::test_journal_path_suffix_preserves_native_database_bytes ... ok"
+      },
+      {
+        "line": 959,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:30.9453830Z test collections::manifest_tests::test_selection_skips_unselected_missing_native_path_and_all_reports_failure ... ok"
+      },
+      {
+        "line": 961,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:30.9465450Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_decodes_only_matching_bodies_through_first_match ... ok"
+      },
+      {
+        "line": 962,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:30.9467860Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_defers_key_errors_until_the_legacy_visit_point ... ok"
+      },
+      {
+        "line": 963,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:30.9470000Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_errors_on_malformed_key_before_a_candidate_match ... ok"
+      },
+      {
+        "line": 964,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:30.9484570Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_keeps_ordered_any_and_first_success ... ok"
+      },
+      {
+        "line": 965,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:30.9487980Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_requires_both_native_ids_on_one_attribution_row ... ok"
+      },
+      {
+        "line": 989,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:31.2350440Z test test_configure_preserves_native_config_path_when_platform_allows ... ok"
+      },
+      {
+        "line": 995,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:31.2575020Z test test_root_native_roundtrips_exact_bytes_and_rejects_malformed_descriptors ... ok"
+      },
+      {
+        "line": 1015,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:31.8287790Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok"
+      },
+      {
+        "line": 1072,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:36.8109500Z test test_attached_rejects_non_utf8_native_path_without_lossy_routing_or_creation ... ok"
+      },
+      {
+        "line": 2326,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:09.9926595Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok"
+      },
+      {
+        "line": 2376,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:14.0166161Z test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok"
+      },
+      {
+        "line": 2377,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:14.0316308Z test test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly ... ok"
+      },
+      {
+        "line": 2391,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:14.7420434Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 2402,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:15.2350941Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 2404,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:15.4996236Z test test_linux_native_root_and_config_roundtrip_through_cli ... ok"
+      },
+      {
+        "line": 2464,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:17.5086643Z test test_dictionary_compact_query_reports_full_device_output_failure ... ok"
+      },
+      {
+        "line": 2469,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:20.3770028Z test test_managed_compact_routes_roundtrip_native_root_and_config ... ok"
+      },
+      {
+        "line": 2548,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:22.9957115Z test complete_fixture_keeps_native_presence_and_release_absence_distinct ... ok"
+      },
+      {
+        "line": 2575,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:23.3140719Z test repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters ... ok"
+      },
+      {
+        "line": 2660,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:24.6105889Z test test_compact_detail_distinguishes_native_role_conflict_from_native_value_no_match ... ok"
+      },
+      {
+        "line": 2669,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:25.4770636Z test test_catalog_native_match_defers_occurrence_key_until_after_capture_projection ... ok"
+      },
+      {
+        "line": 2696,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:28.1331272Z test native_candidate_counts_are_stage_labelled ... ok"
+      },
+      {
+        "line": 2698,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:28.1401288Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok"
+      },
+      {
+        "line": 2700,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:28.1442169Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok"
+      },
+      {
+        "line": 2710,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:28.5647645Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok"
+      },
+      {
+        "line": 2731,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:32.0296753Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok"
+      },
+      {
+        "line": 2783,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:34.7307098Z test collections::maintenance::tests::test_journal_path_suffix_preserves_native_database_bytes ... ok"
+      },
+      {
+        "line": 2796,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:34.9386341Z test collections::manifest_tests::test_selection_skips_unselected_missing_native_path_and_all_reports_failure ... ok"
+      },
+      {
+        "line": 2798,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:34.9389661Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_decodes_only_matching_bodies_through_first_match ... ok"
+      },
+      {
+        "line": 2799,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:34.9391013Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_defers_key_errors_until_the_legacy_visit_point ... ok"
+      },
+      {
+        "line": 2800,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:34.9392492Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_errors_on_malformed_key_before_a_candidate_match ... ok"
+      },
+      {
+        "line": 2801,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:34.9397619Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_keeps_ordered_any_and_first_success ... ok"
+      },
+      {
+        "line": 2802,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:34.9398735Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_requires_both_native_ids_on_one_attribution_row ... ok"
+      },
+      {
+        "line": 2826,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:35.3083183Z test test_configure_preserves_native_config_path_when_platform_allows ... ok"
+      },
+      {
+        "line": 2833,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:35.3236306Z test test_root_native_roundtrips_exact_bytes_and_rejects_malformed_descriptors ... ok"
+      },
+      {
+        "line": 2852,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:35.7088424Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok"
+      },
+      {
+        "line": 2857,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:36.2099023Z test test_sealed_input_native_non_utf8_path_is_preserved_in_inspection ... ok"
+      },
+      {
+        "line": 2911,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:45.0474387Z test test_attached_rejects_non_utf8_native_path_without_lossy_routing_or_creation ... ok"
+      },
+      {
+        "line": 3049,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:05.6567030Z test test_compact_detail_distinguishes_native_role_conflict_from_native_value_no_match ... ok"
+      },
+      {
+        "line": 3059,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:07.0923849Z test test_catalog_native_match_defers_occurrence_key_until_after_capture_projection ... ok"
+      },
+      {
+        "line": 3088,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:09.9767658Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok"
+      },
+      {
+        "line": 3090,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:09.9769167Z test native_candidate_counts_are_stage_labelled ... ok"
+      },
+      {
+        "line": 3091,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:09.9893427Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok"
+      },
+      {
+        "line": 3101,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:10.4192607Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok"
+      },
+      {
+        "line": 3122,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:15.4529469Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok"
+      },
+      {
+        "line": 3341,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:05.1414864Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok"
+      },
+      {
+        "line": 3391,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:16.6481777Z test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok"
+      },
+      {
+        "line": 3392,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:16.6647899Z test test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly ... ok"
+      },
+      {
+        "line": 3406,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:17.5540972Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 3417,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:18.2966662Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 3420,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:18.7602659Z test test_linux_native_root_and_config_roundtrip_through_cli ... ok"
+      },
+      {
+        "line": 3479,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:21.1416732Z test test_dictionary_compact_query_reports_full_device_output_failure ... ok"
+      },
+      {
+        "line": 3485,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:21.8395337Z test test_managed_compact_routes_roundtrip_native_root_and_config ... ok"
+      },
+      {
+        "line": 3563,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:24.7556978Z test complete_fixture_keeps_native_presence_and_release_absence_distinct ... ok"
+      },
+      {
+        "line": 3589,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:25.0674694Z test repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters ... ok"
+      },
+      {
+        "line": 3674,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:26.6166737Z test test_compact_detail_distinguishes_native_role_conflict_from_native_value_no_match ... ok"
+      },
+      {
+        "line": 3684,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:27.3007001Z test test_catalog_native_match_defers_occurrence_key_until_after_capture_projection ... ok"
+      },
+      {
+        "line": 3710,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:29.2541008Z test native_candidate_counts_are_stage_labelled ... ok"
+      },
+      {
+        "line": 3713,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:29.2636869Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok"
+      },
+      {
+        "line": 3714,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:29.2670131Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok"
+      },
+      {
+        "line": 3725,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:29.6959039Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok"
+      },
+      {
+        "line": 3746,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:33.8596575Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok"
+      },
+      {
+        "line": 3798,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:36.3299907Z test collections::maintenance::tests::test_journal_path_suffix_preserves_native_database_bytes ... ok"
+      },
+      {
+        "line": 3811,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:36.5055831Z test collections::manifest_tests::test_selection_skips_unselected_missing_native_path_and_all_reports_failure ... ok"
+      },
+      {
+        "line": 3813,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:36.5061274Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_decodes_only_matching_bodies_through_first_match ... ok"
+      },
+      {
+        "line": 3814,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:36.5062837Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_defers_key_errors_until_the_legacy_visit_point ... ok"
+      },
+      {
+        "line": 3815,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:36.5064732Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_errors_on_malformed_key_before_a_candidate_match ... ok"
+      },
+      {
+        "line": 3816,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:36.5067439Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_keeps_ordered_any_and_first_success ... ok"
+      },
+      {
+        "line": 3817,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:36.5071148Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_requires_both_native_ids_on_one_attribution_row ... ok"
+      },
+      {
+        "line": 3841,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:36.7643328Z test test_configure_preserves_native_config_path_when_platform_allows ... ok"
+      },
+      {
+        "line": 3848,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:36.7827272Z test test_root_native_roundtrips_exact_bytes_and_rejects_malformed_descriptors ... ok"
+      },
+      {
+        "line": 3867,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:37.2690633Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok"
+      },
+      {
+        "line": 3871,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:37.3902939Z test test_sealed_input_native_non_utf8_path_is_preserved_in_inspection ... ok"
+      },
+      {
+        "line": 3926,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:43.1262262Z test test_attached_rejects_non_utf8_native_path_without_lossy_routing_or_creation ... ok"
+      }
+    ],
+    "terminal_success_jobs": 3,
+    "headSha": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2"
+  },
+  "pr": {
+    "log_sha256": "45ef5c92883b642e3c39e2c2ee5a3cb6a47d43e2170eaefcbcaa756f3a203373",
+    "populations": {
+      "Test (ubuntu-latest) / Run cargo test --workspace --locked": {
+        "groups": 56,
+        "counts": [
+          346,
+          0,
+          1
+        ]
+      },
+      "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features": {
+        "groups": 10,
+        "counts": [
+          83,
+          0,
+          0
+        ]
+      },
+      "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked": {
+        "groups": 56,
+        "counts": [
+          348,
+          0,
+          1
+        ]
+      },
+      "Test (macos-latest) / Run cargo test --workspace --locked": {
+        "groups": 56,
+        "counts": [
+          338,
+          0,
+          1
+        ]
+      }
+    },
+    "witnesses": [
+      {
+        "line": 1326,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:35.0401552Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok"
+      },
+      {
+        "line": 1376,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:39.8776711Z test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok"
+      },
+      {
+        "line": 1377,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:39.8971082Z test test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly ... ok"
+      },
+      {
+        "line": 1392,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:40.6638091Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 1402,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:41.1906584Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 1404,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:41.4034254Z test test_linux_native_root_and_config_roundtrip_through_cli ... ok"
+      },
+      {
+        "line": 1464,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:43.2881917Z test test_dictionary_compact_query_reports_full_device_output_failure ... ok"
+      },
+      {
+        "line": 1470,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:45.0804197Z test test_managed_compact_routes_roundtrip_native_root_and_config ... ok"
+      },
+      {
+        "line": 1548,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:49.5790561Z test complete_fixture_keeps_native_presence_and_release_absence_distinct ... ok"
+      },
+      {
+        "line": 1572,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:49.8610892Z test repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters ... ok"
+      },
+      {
+        "line": 1659,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:50.9511368Z test test_compact_detail_distinguishes_native_role_conflict_from_native_value_no_match ... ok"
+      },
+      {
+        "line": 1669,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:51.5728543Z test test_catalog_native_match_defers_occurrence_key_until_after_capture_projection ... ok"
+      },
+      {
+        "line": 1695,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:53.6839896Z test native_candidate_counts_are_stage_labelled ... ok"
+      },
+      {
+        "line": 1697,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:53.6934299Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok"
+      },
+      {
+        "line": 1700,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:53.6978652Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok"
+      },
+      {
+        "line": 1710,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:54.1226655Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok"
+      },
+      {
+        "line": 1731,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:57.3347690Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok"
+      },
+      {
+        "line": 1783,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:59.2471034Z test collections::maintenance::tests::test_journal_path_suffix_preserves_native_database_bytes ... ok"
+      },
+      {
+        "line": 1796,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:59.3683570Z test collections::manifest_tests::test_selection_skips_unselected_missing_native_path_and_all_reports_failure ... ok"
+      },
+      {
+        "line": 1798,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:59.3780592Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_decodes_only_matching_bodies_through_first_match ... ok"
+      },
+      {
+        "line": 1799,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:59.3790471Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_defers_key_errors_until_the_legacy_visit_point ... ok"
+      },
+      {
+        "line": 1800,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:59.3820276Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_errors_on_malformed_key_before_a_candidate_match ... ok"
+      },
+      {
+        "line": 1801,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:59.3850026Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_keeps_ordered_any_and_first_success ... ok"
+      },
+      {
+        "line": 1802,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:59.3880093Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_requires_both_native_ids_on_one_attribution_row ... ok"
+      },
+      {
+        "line": 1826,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:59.6355397Z test test_configure_preserves_native_config_path_when_platform_allows ... ok"
+      },
+      {
+        "line": 1833,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:59.6536830Z test test_root_native_roundtrips_exact_bytes_and_rejects_malformed_descriptors ... ok"
+      },
+      {
+        "line": 1852,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:26:00.0738504Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok"
+      },
+      {
+        "line": 1856,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:26:00.2109444Z test test_sealed_input_native_non_utf8_path_is_preserved_in_inspection ... ok"
+      },
+      {
+        "line": 1911,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:26:05.8051729Z test test_attached_rejects_non_utf8_native_path_without_lossy_routing_or_creation ... ok"
+      },
+      {
+        "line": 2049,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:29.1920258Z test test_compact_detail_distinguishes_native_role_conflict_from_native_value_no_match ... ok"
+      },
+      {
+        "line": 2059,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:29.7910695Z test test_catalog_native_match_defers_occurrence_key_until_after_capture_projection ... ok"
+      },
+      {
+        "line": 2087,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:31.9290701Z test native_candidate_counts_are_stage_labelled ... ok"
+      },
+      {
+        "line": 2090,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:31.9327794Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok"
+      },
+      {
+        "line": 2091,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:31.9440637Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok"
+      },
+      {
+        "line": 2101,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:32.3810940Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok"
+      },
+      {
+        "line": 2122,
+        "step": "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features",
+        "text": "2026-10-29T00:26:35.5497019Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok"
+      },
+      {
+        "line": 2343,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:28.1046752Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok"
+      },
+      {
+        "line": 2391,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:34.3472360Z test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok"
+      },
+      {
+        "line": 2392,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:34.3702359Z test test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly ... ok"
+      },
+      {
+        "line": 2406,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:35.2818499Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 2417,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:35.9740402Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 2420,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:36.2980112Z test test_linux_native_root_and_config_roundtrip_through_cli ... ok"
+      },
+      {
+        "line": 2479,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:40.3412152Z test test_dictionary_compact_query_reports_full_device_output_failure ... ok"
+      },
+      {
+        "line": 2485,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:41.1812659Z test test_managed_compact_routes_roundtrip_native_root_and_config ... ok"
+      },
+      {
+        "line": 2563,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:44.1360887Z test complete_fixture_keeps_native_presence_and_release_absence_distinct ... ok"
+      },
+      {
+        "line": 2588,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:44.4406841Z test repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters ... ok"
+      },
+      {
+        "line": 2675,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:45.6858733Z test test_compact_detail_distinguishes_native_role_conflict_from_native_value_no_match ... ok"
+      },
+      {
+        "line": 2684,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:46.2641796Z test test_catalog_native_match_defers_occurrence_key_until_after_capture_projection ... ok"
+      },
+      {
+        "line": 2709,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:48.3708727Z test native_candidate_counts_are_stage_labelled ... ok"
+      },
+      {
+        "line": 2712,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:48.3824474Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok"
+      },
+      {
+        "line": 2715,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:48.3887090Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok"
+      },
+      {
+        "line": 2725,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:48.8465592Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok"
+      },
+      {
+        "line": 2746,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:51.9861336Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok"
+      },
+      {
+        "line": 2798,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:53.8515073Z test collections::maintenance::tests::test_journal_path_suffix_preserves_native_database_bytes ... ok"
+      },
+      {
+        "line": 2811,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:53.9861010Z test collections::manifest_tests::test_selection_skips_unselected_missing_native_path_and_all_reports_failure ... ok"
+      },
+      {
+        "line": 2813,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:53.9910383Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_decodes_only_matching_bodies_through_first_match ... ok"
+      },
+      {
+        "line": 2814,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:53.9931945Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_defers_key_errors_until_the_legacy_visit_point ... ok"
+      },
+      {
+        "line": 2815,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:53.9961432Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_errors_on_malformed_key_before_a_candidate_match ... ok"
+      },
+      {
+        "line": 2816,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:53.9965410Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_keeps_ordered_any_and_first_success ... ok"
+      },
+      {
+        "line": 2817,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:53.9974917Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_requires_both_native_ids_on_one_attribution_row ... ok"
+      },
+      {
+        "line": 2841,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:54.2645874Z test test_configure_preserves_native_config_path_when_platform_allows ... ok"
+      },
+      {
+        "line": 2848,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:54.2857278Z test test_root_native_roundtrips_exact_bytes_and_rejects_malformed_descriptors ... ok"
+      },
+      {
+        "line": 2867,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:54.7068324Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok"
+      },
+      {
+        "line": 2873,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:28:54.9312084Z test test_sealed_input_native_non_utf8_path_is_preserved_in_inspection ... ok"
+      },
+      {
+        "line": 2926,
+        "step": "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked",
+        "text": "2026-10-29T00:29:01.2012791Z test test_attached_rejects_non_utf8_native_path_without_lossy_routing_or_creation ... ok"
+      },
+      {
+        "line": 3548,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:26.8785730Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok"
+      },
+      {
+        "line": 3585,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:28.8827040Z test test_configure_reports_exact_native_root_path_and_keeps_ascii_root_working ... ok"
+      },
+      {
+        "line": 3588,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:29.4192130Z test test_profiles_reports_exact_native_config_io_and_keeps_ascii_counterpart_working ... ok"
+      },
+      {
+        "line": 3598,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:29.5512580Z test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok"
+      },
+      {
+        "line": 3763,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:42.7268050Z test complete_fixture_keeps_native_presence_and_release_absence_distinct ... ok"
+      },
+      {
+        "line": 3790,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:43.2095860Z test repeated_native_ids_and_spellings_stay_distinct_and_negative_scores_are_not_filters ... ok"
+      },
+      {
+        "line": 3873,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:44.9552610Z test test_compact_detail_distinguishes_native_role_conflict_from_native_value_no_match ... ok"
+      },
+      {
+        "line": 3884,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:46.1537400Z test test_catalog_native_match_defers_occurrence_key_until_after_capture_projection ... ok"
+      },
+      {
+        "line": 3911,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:49.5769520Z test native_exact_preserves_alternatives_and_limit_zero_keeps_total ... ok"
+      },
+      {
+        "line": 3912,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:49.5791520Z test native_candidate_counts_are_stage_labelled ... ok"
+      },
+      {
+        "line": 3915,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:49.5884550Z test source_native_class_mapping_is_format_aware_and_preserves_unknowns ... ok"
+      },
+      {
+        "line": 3922,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:49.9722690Z test direct_references_preserve_catalogue_only_and_known_native_mismatch ... ok"
+      },
+      {
+        "line": 3946,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:54.2478420Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok"
+      },
+      {
+        "line": 3999,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:56.4554640Z test collections::maintenance::tests::test_journal_path_suffix_preserves_native_database_bytes ... ok"
+      },
+      {
+        "line": 4012,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:56.7028450Z test collections::manifest_tests::test_selection_skips_unselected_missing_native_path_and_all_reports_failure ... ok"
+      },
+      {
+        "line": 4014,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:56.7032990Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_decodes_only_matching_bodies_through_first_match ... ok"
+      },
+      {
+        "line": 4015,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:56.7034420Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_defers_key_errors_until_the_legacy_visit_point ... ok"
+      },
+      {
+        "line": 4016,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:56.7035760Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_errors_on_malformed_key_before_a_candidate_match ... ok"
+      },
+      {
+        "line": 4017,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:56.7038390Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_keeps_ordered_any_and_first_success ... ok"
+      },
+      {
+        "line": 4018,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:56.7040340Z test collections::reference_projection::native_lookup_tests::raw_native_lookup_requires_both_native_ids_on_one_attribution_row ... ok"
+      },
+      {
+        "line": 4042,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:56.9634730Z test test_configure_preserves_native_config_path_when_platform_allows ... ok"
+      },
+      {
+        "line": 4048,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:56.9885070Z test test_root_native_roundtrips_exact_bytes_and_rejects_malformed_descriptors ... ok"
+      },
+      {
+        "line": 4068,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:25:57.5891100Z test test_native_non_utf8_catalogue_root_preserves_bytes_or_reports_host_io ... ok"
+      },
+      {
+        "line": 4125,
+        "step": "Test (macos-latest) / Run cargo test --workspace --locked",
+        "text": "2026-10-29T00:26:02.9924070Z test test_attached_rejects_non_utf8_native_path_without_lossy_routing_or_creation ... ok"
+      }
+    ],
+    "terminal_success_jobs": 3,
+    "headSha": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2"
+  }
+}

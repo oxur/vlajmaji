@@ -1,0 +1,1582 @@
+{
+  "stage": "public",
+  "scope": "review02 ALL extant owned paths, nofollow; shared target excluded; own inventory file excluded because written after observation",
+  "bytes": 15162006,
+  "file_count": 148,
+  "symlink_count": 0,
+  "directory_count": 89,
+  "threshold": 209715200,
+  "peak_or_cumulative_claim": false,
+  "rows": [
+    {
+      "path": "consumer",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "home",
+      "bytes": 64,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "methods",
+      "bytes": 224,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public",
+      "bytes": 608,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "receipts",
+      "bytes": 384,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "tmp",
+      "bytes": 64,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "xdg-config",
+      "bytes": 64,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "xdg-data",
+      "bytes": 64,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "receipts/build.json",
+      "bytes": 1735,
+      "kind": "file",
+      "accounted_bytes": 1735,
+      "sha256": "8b8297facefbd2780bab68cfcedf8e6c0a79a2a912bd2841f0580b11f6fcc165"
+    },
+    {
+      "path": "receipts/build.stderr",
+      "bytes": 1048,
+      "kind": "file",
+      "accounted_bytes": 1048,
+      "sha256": "646adc9318861913102e45ed22680835b82df6b15ecc984b2a1745f2d6cf22ee"
+    },
+    {
+      "path": "receipts/build.stdout",
+      "bytes": 0,
+      "kind": "file",
+      "accounted_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipts/preflight-readback.md",
+      "bytes": 6608,
+      "kind": "file",
+      "accounted_bytes": 6608,
+      "sha256": "de5710e6e95900741fdcc59e8c5b953745ef1826efc02084e9b2e46d564473fa"
+    },
+    {
+      "path": "receipts/preparation.json",
+      "bytes": 13480,
+      "kind": "file",
+      "accounted_bytes": 13480,
+      "sha256": "6b1fb183df468bf49b29e04d9ba381a5e9b98a814eaf1ab8a263f9078ba106e5"
+    },
+    {
+      "path": "receipts/public.json",
+      "bytes": 1397,
+      "kind": "file",
+      "accounted_bytes": 1397,
+      "sha256": "d8dcf4a2947c20daf8433fd4a366065f94f0e87bf186e2c28e6104122560491b"
+    },
+    {
+      "path": "receipts/public.stderr",
+      "bytes": 106,
+      "kind": "file",
+      "accounted_bytes": 106,
+      "sha256": "533e03353b74199daaac58ae59784f4904921850a8151705148f6def03c48487"
+    },
+    {
+      "path": "receipts/public.stdout",
+      "bytes": 13030,
+      "kind": "file",
+      "accounted_bytes": 13030,
+      "sha256": "b117c4d08cd6f1cb1c65ea67e55204745e784ea9aaca8b84ab44ea19395b2ee5"
+    },
+    {
+      "path": "receipts/retained-bundles.json",
+      "bytes": 781,
+      "kind": "file",
+      "accounted_bytes": 781,
+      "sha256": "383c0320f14d03daa91976498e4a7774b003406776b7193b771fb33a0b94acfa"
+    },
+    {
+      "path": "receipts/tmpdir-amendment.json",
+      "bytes": 759,
+      "kind": "file",
+      "accounted_bytes": 759,
+      "sha256": "0adf126f6b0fff2d3f9347297cc61f6c5fd28bc83fb4b88c4edf003a16f96bc6"
+    },
+    {
+      "path": "public/caller-context.json",
+      "bytes": 4174,
+      "kind": "file",
+      "accounted_bytes": 4174,
+      "sha256": "715a5b24c44be56e2e9beb1a538a499fd45a512dbb601e185bad91079d7aa13b"
+    },
+    {
+      "path": "public/catalogue",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/changed-lexical-body-store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/complete-fixture-store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/context-after-store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/context-before-store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-corrupt-catalogue",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-missing-catalogue",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-version-catalogue",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/eager-unverified-store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/readable-context.json",
+      "bytes": 21636,
+      "kind": "file",
+      "accounted_bytes": 21636,
+      "sha256": "b5a49140f4ffd9b887c2a17e33c85bdeefea2f22facf8f161f58f62e8aa0314e"
+    },
+    {
+      "path": "public/readable-inputs",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/registered-only",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/remove-all-catalogue",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-assertion",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-entry",
+      "bytes": 160,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/targeted-sentinel-catalogue",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/targeted-sentinel-catalogue/catalogue.sqlite3",
+      "bytes": 2887680,
+      "kind": "file",
+      "accounted_bytes": 2887680,
+      "sha256": "6f629f83a004cc57c63fc413a41117979f6720e48674750fe75f939d31c145ef"
+    },
+    {
+      "path": "public/targeted-sentinel-catalogue/generations",
+      "bytes": 64,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-entry/R",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-entry/pre-install-expectations.json",
+      "bytes": 3252,
+      "kind": "file",
+      "accounted_bytes": 3252,
+      "sha256": "b053e9f9f6ae50b108585139c1005e47361ada39fcae234c5b9851465fd3e2dc"
+    },
+    {
+      "path": "public/shared-entry/summary.json",
+      "bytes": 7065,
+      "kind": "file",
+      "accounted_bytes": 7065,
+      "sha256": "ea5e4880c3433b33cac9772c19977fdf4545d9b5799e7f87d6adf6671205ff7a"
+    },
+    {
+      "path": "public/shared-entry/R/catalogue.sqlite3",
+      "bytes": 86016,
+      "kind": "file",
+      "accounted_bytes": 86016,
+      "sha256": "95339d89c472e0a3fe31d8e34418dbbc343642e50fd2748936ea05b36cc53c0f"
+    },
+    {
+      "path": "public/shared-entry/R/generations",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf/attempt.json",
+      "bytes": 83,
+      "kind": "file",
+      "accounted_bytes": 83,
+      "sha256": "4ced5b06130fb77c6a134316e5dc62e63e9c5389584eded51822f98b7fab502c"
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf/inputs",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf/store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf/verified.json",
+      "bytes": 689,
+      "kind": "file",
+      "accounted_bytes": 689,
+      "sha256": "835b5b1b0a4ff0505537eea82eb98c005829071dec0a18fee68e4fb74c376219"
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf/store/dictionary.sqlite3",
+      "bytes": 602112,
+      "kind": "file",
+      "accounted_bytes": 602112,
+      "sha256": "a48b57bab9117b63c2ef617f9efc70070a7101d9386f2c2cfb4aee6ae3b1d800"
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf/inputs/la-lojban",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf/inputs/llg",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf/inputs/llg/release.json",
+      "bytes": 10342,
+      "kind": "file",
+      "accounted_bytes": 10342,
+      "sha256": "1beaeea81aa57866ad966dbcab6ff76df7fd95688ef49a47757be1d92ed107b8"
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf/inputs/llg/seal.json",
+      "bytes": 987,
+      "kind": "file",
+      "accounted_bytes": 987,
+      "sha256": "e24a5954d8d896a3520f9a7bc39657abc25a98b076c6a984e52672ffbfa878a8"
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf/inputs/la-lojban/release.json",
+      "bytes": 10174,
+      "kind": "file",
+      "accounted_bytes": 10174,
+      "sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146"
+    },
+    {
+      "path": "public/shared-entry/R/generations/744c6a5e30c6a6ad676ea8bbd6dd35bf/inputs/la-lojban/seal.json",
+      "bytes": 944,
+      "kind": "file",
+      "accounted_bytes": 944,
+      "sha256": "8cf26b18623871250354d69dbfadef506d3b2d8eae4d00dd952e86c75b442f9f"
+    },
+    {
+      "path": "public/shared-assertion/R",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-assertion/summary.json",
+      "bytes": 6427,
+      "kind": "file",
+      "accounted_bytes": 6427,
+      "sha256": "6afb8d591d85bb4b75562c8bcd068b7abfc008c2464c7bac7d3cd2d1bcff0d36"
+    },
+    {
+      "path": "public/shared-assertion/R/catalogue.sqlite3",
+      "bytes": 151552,
+      "kind": "file",
+      "accounted_bytes": 151552,
+      "sha256": "6017e091f8c83a40957368cc971d763cae68394efeda536c04067e1b1d8bc6a9"
+    },
+    {
+      "path": "public/shared-assertion/R/generations",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154/attempt.json",
+      "bytes": 83,
+      "kind": "file",
+      "accounted_bytes": 83,
+      "sha256": "34cdb7bf950b343d3bb439abc3f66aa5ac490aef2119b455c5f458ef9665dab6"
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154/inputs",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154/store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154/verified.json",
+      "bytes": 689,
+      "kind": "file",
+      "accounted_bytes": 689,
+      "sha256": "4683fcf641f5c6fdee85c37d4d3704c1b3f0d024c36b3dcbdfd971e1c651d0a3"
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154/store/dictionary.sqlite3",
+      "bytes": 819200,
+      "kind": "file",
+      "accounted_bytes": 819200,
+      "sha256": "b569b78085dd756bdc14bfab4fc02466587a9b4374c12512d1bf123de0674982"
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154/inputs/la-lojban",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154/inputs/llg",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154/inputs/llg/release.json",
+      "bytes": 71643,
+      "kind": "file",
+      "accounted_bytes": 71643,
+      "sha256": "b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3"
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154/inputs/llg/seal.json",
+      "bytes": 1319,
+      "kind": "file",
+      "accounted_bytes": 1319,
+      "sha256": "7983ae74db807c5d2f6a52eaab6375d78b198454cf3bf015eb1473d94f8f7623"
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154/inputs/la-lojban/release.json",
+      "bytes": 71643,
+      "kind": "file",
+      "accounted_bytes": 71643,
+      "sha256": "b9feb7fa72910f7c7936fc0848c6c0cf5be5dd161a5fc7086f757c964ca85de3"
+    },
+    {
+      "path": "public/shared-assertion/R/generations/f31ff03be5dd8b73ab7df2ce5f66c154/inputs/la-lojban/seal.json",
+      "bytes": 1325,
+      "kind": "file",
+      "accounted_bytes": 1325,
+      "sha256": "08ae87748989f12b5bf427b9e34e3320a831b3601cdab3550cea1d7f8e4e9e8c"
+    },
+    {
+      "path": "public/remove-all-catalogue/catalogue.sqlite3",
+      "bytes": 102400,
+      "kind": "file",
+      "accounted_bytes": 102400,
+      "sha256": "922634e75a3de4ef23fb991cdfba3a62e7e26f053f8915997e245c870a074b5f"
+    },
+    {
+      "path": "public/remove-all-catalogue/generations",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/attempt.json",
+      "bytes": 83,
+      "kind": "file",
+      "accounted_bytes": 83,
+      "sha256": "782dc86862f261b03f7d4157d3b3a5bc4d7248dadbbd78d0696969815ddc4761"
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/verified.json",
+      "bytes": 689,
+      "kind": "file",
+      "accounted_bytes": 689,
+      "sha256": "835b5b1b0a4ff0505537eea82eb98c005829071dec0a18fee68e4fb74c376219"
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/store/dictionary.sqlite3",
+      "bytes": 630784,
+      "kind": "file",
+      "accounted_bytes": 630784,
+      "sha256": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/la-lojban",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/lensisku-jbotci",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/llg",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/sutysisku",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/sutysisku/release.json",
+      "bytes": 9148,
+      "kind": "file",
+      "accounted_bytes": 9148,
+      "sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c"
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/sutysisku/seal.json",
+      "bytes": 473,
+      "kind": "file",
+      "accounted_bytes": 473,
+      "sha256": "d95739ffd58c641cdfd258b116d961548c80b32229588301663897c4b57b0d3d"
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/llg/release.json",
+      "bytes": 10174,
+      "kind": "file",
+      "accounted_bytes": 10174,
+      "sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146"
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/llg/seal.json",
+      "bytes": 938,
+      "kind": "file",
+      "accounted_bytes": 938,
+      "sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc"
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/lensisku-jbotci/release.json",
+      "bytes": 8417,
+      "kind": "file",
+      "accounted_bytes": 8417,
+      "sha256": "5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c"
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/lensisku-jbotci/seal.json",
+      "bytes": 603,
+      "kind": "file",
+      "accounted_bytes": 603,
+      "sha256": "7211e26c78e6a1a8e4b809a239ad9ed564e5bb5f451c82ffa7a11a9f3e121ef3"
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/la-lojban/release.json",
+      "bytes": 4995,
+      "kind": "file",
+      "accounted_bytes": 4995,
+      "sha256": "7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03"
+    },
+    {
+      "path": "public/remove-all-catalogue/generations/5f9f78f6c2ecf7fc9714e1762eae74dc/inputs/la-lojban/seal.json",
+      "bytes": 474,
+      "kind": "file",
+      "accounted_bytes": 474,
+      "sha256": "7c36e2fc7ddf2bac3652071a98858d05981f675004e04283f53dfd11d1d92ed3"
+    },
+    {
+      "path": "public/registered-only/catalogue.sqlite3",
+      "bytes": 106496,
+      "kind": "file",
+      "accounted_bytes": 106496,
+      "sha256": "c50fdaf19839ed1a4be3bba24a0700503cb4dd828875c5ae84663ff346eb64ca"
+    },
+    {
+      "path": "public/registered-only/generations",
+      "bytes": 64,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/readable-inputs/la-lojban",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/readable-inputs/lensisku-jbotci",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/readable-inputs/llg",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/readable-inputs/sutysisku",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/readable-inputs/sutysisku/release.json",
+      "bytes": 9148,
+      "kind": "file",
+      "accounted_bytes": 9148,
+      "sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c"
+    },
+    {
+      "path": "public/readable-inputs/sutysisku/seal.json",
+      "bytes": 473,
+      "kind": "file",
+      "accounted_bytes": 473,
+      "sha256": "d95739ffd58c641cdfd258b116d961548c80b32229588301663897c4b57b0d3d"
+    },
+    {
+      "path": "public/readable-inputs/llg/release.json",
+      "bytes": 10174,
+      "kind": "file",
+      "accounted_bytes": 10174,
+      "sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146"
+    },
+    {
+      "path": "public/readable-inputs/llg/seal.json",
+      "bytes": 938,
+      "kind": "file",
+      "accounted_bytes": 938,
+      "sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc"
+    },
+    {
+      "path": "public/readable-inputs/lensisku-jbotci/release.json",
+      "bytes": 8417,
+      "kind": "file",
+      "accounted_bytes": 8417,
+      "sha256": "5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c"
+    },
+    {
+      "path": "public/readable-inputs/lensisku-jbotci/seal.json",
+      "bytes": 603,
+      "kind": "file",
+      "accounted_bytes": 603,
+      "sha256": "7211e26c78e6a1a8e4b809a239ad9ed564e5bb5f451c82ffa7a11a9f3e121ef3"
+    },
+    {
+      "path": "public/readable-inputs/la-lojban/release.json",
+      "bytes": 4995,
+      "kind": "file",
+      "accounted_bytes": 4995,
+      "sha256": "7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03"
+    },
+    {
+      "path": "public/readable-inputs/la-lojban/seal.json",
+      "bytes": 474,
+      "kind": "file",
+      "accounted_bytes": 474,
+      "sha256": "7c36e2fc7ddf2bac3652071a98858d05981f675004e04283f53dfd11d1d92ed3"
+    },
+    {
+      "path": "public/eager-unverified-store/dictionary.sqlite3",
+      "bytes": 901120,
+      "kind": "file",
+      "accounted_bytes": 901120,
+      "sha256": "c97247797b68999b2d313cabc3c0ba6ef094ff4a89406b7a2820c38c655fa836"
+    },
+    {
+      "path": "public/derived-version-catalogue/catalogue.sqlite3",
+      "bytes": 69632,
+      "kind": "file",
+      "accounted_bytes": 69632,
+      "sha256": "e259d756b353acdbe83dc49af60b0b5ae86f29277068368b2602b6909bb41489"
+    },
+    {
+      "path": "public/derived-version-catalogue/generations",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-version-catalogue/generations/887d488894764c1485f2c00f247ad7be",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-version-catalogue/generations/887d488894764c1485f2c00f247ad7be/attempt.json",
+      "bytes": 83,
+      "kind": "file",
+      "accounted_bytes": 83,
+      "sha256": "0b7bee78b92f56e4341076aee57bcfe103443e10fa3ca18c35bd8e001c761e46"
+    },
+    {
+      "path": "public/derived-version-catalogue/generations/887d488894764c1485f2c00f247ad7be/inputs",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-version-catalogue/generations/887d488894764c1485f2c00f247ad7be/store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-version-catalogue/generations/887d488894764c1485f2c00f247ad7be/verified.json",
+      "bytes": 689,
+      "kind": "file",
+      "accounted_bytes": 689,
+      "sha256": "8c35ca9d699a01995b254f25e719d62a03a3b8a4914abc55c314adbbc60092c9"
+    },
+    {
+      "path": "public/derived-version-catalogue/generations/887d488894764c1485f2c00f247ad7be/store/dictionary.sqlite3",
+      "bytes": 593920,
+      "kind": "file",
+      "accounted_bytes": 593920,
+      "sha256": "56b05fa113fba8a32a1e1c1a5a696d3dd8c40ae5aa2e7b6b8024591f471cdc3f"
+    },
+    {
+      "path": "public/derived-version-catalogue/generations/887d488894764c1485f2c00f247ad7be/inputs/llg",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-version-catalogue/generations/887d488894764c1485f2c00f247ad7be/inputs/llg/release.json",
+      "bytes": 10174,
+      "kind": "file",
+      "accounted_bytes": 10174,
+      "sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146"
+    },
+    {
+      "path": "public/derived-version-catalogue/generations/887d488894764c1485f2c00f247ad7be/inputs/llg/seal.json",
+      "bytes": 938,
+      "kind": "file",
+      "accounted_bytes": 938,
+      "sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc"
+    },
+    {
+      "path": "public/derived-missing-catalogue/catalogue.sqlite3",
+      "bytes": 69632,
+      "kind": "file",
+      "accounted_bytes": 69632,
+      "sha256": "83207f5444438c7796ba3d95468a62f718013237ecf9d3c5d380c9c83112dce7"
+    },
+    {
+      "path": "public/derived-missing-catalogue/generations",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-missing-catalogue/generations/aa8c80e26079a071d20236e1796d8bf2",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-missing-catalogue/generations/aa8c80e26079a071d20236e1796d8bf2/attempt.json",
+      "bytes": 83,
+      "kind": "file",
+      "accounted_bytes": 83,
+      "sha256": "01f31fc6e10edebdfa7b4a51251bf52d10839e1f6288a174bb3be430807b61fe"
+    },
+    {
+      "path": "public/derived-missing-catalogue/generations/aa8c80e26079a071d20236e1796d8bf2/inputs",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-missing-catalogue/generations/aa8c80e26079a071d20236e1796d8bf2/store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-missing-catalogue/generations/aa8c80e26079a071d20236e1796d8bf2/verified.json",
+      "bytes": 689,
+      "kind": "file",
+      "accounted_bytes": 689,
+      "sha256": "8c35ca9d699a01995b254f25e719d62a03a3b8a4914abc55c314adbbc60092c9"
+    },
+    {
+      "path": "public/derived-missing-catalogue/generations/aa8c80e26079a071d20236e1796d8bf2/store/dictionary.sqlite3",
+      "bytes": 593920,
+      "kind": "file",
+      "accounted_bytes": 593920,
+      "sha256": "56b05fa113fba8a32a1e1c1a5a696d3dd8c40ae5aa2e7b6b8024591f471cdc3f"
+    },
+    {
+      "path": "public/derived-missing-catalogue/generations/aa8c80e26079a071d20236e1796d8bf2/inputs/llg",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-missing-catalogue/generations/aa8c80e26079a071d20236e1796d8bf2/inputs/llg/release.json",
+      "bytes": 10174,
+      "kind": "file",
+      "accounted_bytes": 10174,
+      "sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146"
+    },
+    {
+      "path": "public/derived-missing-catalogue/generations/aa8c80e26079a071d20236e1796d8bf2/inputs/llg/seal.json",
+      "bytes": 938,
+      "kind": "file",
+      "accounted_bytes": 938,
+      "sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc"
+    },
+    {
+      "path": "public/derived-corrupt-catalogue/catalogue.sqlite3",
+      "bytes": 69632,
+      "kind": "file",
+      "accounted_bytes": 69632,
+      "sha256": "035e70841f6609965edb5ae7e5abb804e5b9f779f5fecd57ae13af6babeb03e6"
+    },
+    {
+      "path": "public/derived-corrupt-catalogue/generations",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-corrupt-catalogue/generations/fb99bb3c2db0c413aa5e5ee876c4c76a",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-corrupt-catalogue/generations/fb99bb3c2db0c413aa5e5ee876c4c76a/attempt.json",
+      "bytes": 83,
+      "kind": "file",
+      "accounted_bytes": 83,
+      "sha256": "4cceb37580103cc150face94a674dddeb2461c530061bc0a064bcddebb9f7e06"
+    },
+    {
+      "path": "public/derived-corrupt-catalogue/generations/fb99bb3c2db0c413aa5e5ee876c4c76a/inputs",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-corrupt-catalogue/generations/fb99bb3c2db0c413aa5e5ee876c4c76a/store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-corrupt-catalogue/generations/fb99bb3c2db0c413aa5e5ee876c4c76a/verified.json",
+      "bytes": 689,
+      "kind": "file",
+      "accounted_bytes": 689,
+      "sha256": "8c35ca9d699a01995b254f25e719d62a03a3b8a4914abc55c314adbbc60092c9"
+    },
+    {
+      "path": "public/derived-corrupt-catalogue/generations/fb99bb3c2db0c413aa5e5ee876c4c76a/store/dictionary.sqlite3",
+      "bytes": 593920,
+      "kind": "file",
+      "accounted_bytes": 593920,
+      "sha256": "56b05fa113fba8a32a1e1c1a5a696d3dd8c40ae5aa2e7b6b8024591f471cdc3f"
+    },
+    {
+      "path": "public/derived-corrupt-catalogue/generations/fb99bb3c2db0c413aa5e5ee876c4c76a/inputs/llg",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/derived-corrupt-catalogue/generations/fb99bb3c2db0c413aa5e5ee876c4c76a/inputs/llg/release.json",
+      "bytes": 10174,
+      "kind": "file",
+      "accounted_bytes": 10174,
+      "sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146"
+    },
+    {
+      "path": "public/derived-corrupt-catalogue/generations/fb99bb3c2db0c413aa5e5ee876c4c76a/inputs/llg/seal.json",
+      "bytes": 938,
+      "kind": "file",
+      "accounted_bytes": 938,
+      "sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc"
+    },
+    {
+      "path": "public/context-before-store/dictionary.sqlite3",
+      "bytes": 901120,
+      "kind": "file",
+      "accounted_bytes": 901120,
+      "sha256": "c97247797b68999b2d313cabc3c0ba6ef094ff4a89406b7a2820c38c655fa836"
+    },
+    {
+      "path": "public/context-after-store/dictionary.sqlite3",
+      "bytes": 901120,
+      "kind": "file",
+      "accounted_bytes": 901120,
+      "sha256": "1d8ba5c8a1aef15b5f4cfab08145c1330afe928c548750607eba10625493aabe"
+    },
+    {
+      "path": "public/complete-fixture-store/dictionary.sqlite3",
+      "bytes": 901120,
+      "kind": "file",
+      "accounted_bytes": 901120,
+      "sha256": "c97247797b68999b2d313cabc3c0ba6ef094ff4a89406b7a2820c38c655fa836"
+    },
+    {
+      "path": "public/changed-lexical-body-store/dictionary.sqlite3",
+      "bytes": 901120,
+      "kind": "file",
+      "accounted_bytes": 901120,
+      "sha256": "849b734c018df79670b6474a7dfdc27e49a87c4096a026b8020fe353b1919907"
+    },
+    {
+      "path": "public/catalogue/catalogue.sqlite3",
+      "bytes": 110592,
+      "kind": "file",
+      "accounted_bytes": 110592,
+      "sha256": "64cf674c24af9ed8059963f0ae5d0cb2c401bee7154fc7d9355a9ffd76f24dfc"
+    },
+    {
+      "path": "public/catalogue/generations",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/e9c89224caf1766582fab60cfca3900b",
+      "bytes": 160,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/efdafddd82adc7ce76103c7c8100c0e7",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/attempt.json",
+      "bytes": 83,
+      "kind": "file",
+      "accounted_bytes": 83,
+      "sha256": "5657946e8bebfb6a8d77ee21dd4c887e38a2fe9eb7cfa5855ea06b4cf7e96552"
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/verified.json",
+      "bytes": 689,
+      "kind": "file",
+      "accounted_bytes": 689,
+      "sha256": "835b5b1b0a4ff0505537eea82eb98c005829071dec0a18fee68e4fb74c376219"
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/store/dictionary.sqlite3",
+      "bytes": 630784,
+      "kind": "file",
+      "accounted_bytes": 630784,
+      "sha256": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/la-lojban",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/lensisku-jbotci",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/llg",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/sutysisku",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/sutysisku/release.json",
+      "bytes": 9148,
+      "kind": "file",
+      "accounted_bytes": 9148,
+      "sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c"
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/sutysisku/seal.json",
+      "bytes": 473,
+      "kind": "file",
+      "accounted_bytes": 473,
+      "sha256": "d95739ffd58c641cdfd258b116d961548c80b32229588301663897c4b57b0d3d"
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/llg/release.json",
+      "bytes": 10174,
+      "kind": "file",
+      "accounted_bytes": 10174,
+      "sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146"
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/llg/seal.json",
+      "bytes": 938,
+      "kind": "file",
+      "accounted_bytes": 938,
+      "sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc"
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/lensisku-jbotci/release.json",
+      "bytes": 8417,
+      "kind": "file",
+      "accounted_bytes": 8417,
+      "sha256": "5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c"
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/lensisku-jbotci/seal.json",
+      "bytes": 603,
+      "kind": "file",
+      "accounted_bytes": 603,
+      "sha256": "7211e26c78e6a1a8e4b809a239ad9ed564e5bb5f451c82ffa7a11a9f3e121ef3"
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/la-lojban/release.json",
+      "bytes": 4995,
+      "kind": "file",
+      "accounted_bytes": 4995,
+      "sha256": "7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03"
+    },
+    {
+      "path": "public/catalogue/generations/fe45c57199ebf89f57a504c696682658/inputs/la-lojban/seal.json",
+      "bytes": 474,
+      "kind": "file",
+      "accounted_bytes": 474,
+      "sha256": "7c36e2fc7ddf2bac3652071a98858d05981f675004e04283f53dfd11d1d92ed3"
+    },
+    {
+      "path": "public/catalogue/generations/efdafddd82adc7ce76103c7c8100c0e7/attempt.json",
+      "bytes": 85,
+      "kind": "file",
+      "accounted_bytes": 85,
+      "sha256": "ea3005b25f403abed44d0870e131dcd0e114cb725936a65132b114080c5c61a3"
+    },
+    {
+      "path": "public/catalogue/generations/efdafddd82adc7ce76103c7c8100c0e7/inputs",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/efdafddd82adc7ce76103c7c8100c0e7/store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/efdafddd82adc7ce76103c7c8100c0e7/verified.json",
+      "bytes": 689,
+      "kind": "file",
+      "accounted_bytes": 689,
+      "sha256": "835b5b1b0a4ff0505537eea82eb98c005829071dec0a18fee68e4fb74c376219"
+    },
+    {
+      "path": "public/catalogue/generations/efdafddd82adc7ce76103c7c8100c0e7/store/dictionary.sqlite3",
+      "bytes": 630784,
+      "kind": "file",
+      "accounted_bytes": 630784,
+      "sha256": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+    },
+    {
+      "path": "public/catalogue/generations/efdafddd82adc7ce76103c7c8100c0e7/inputs/sutysisku",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/efdafddd82adc7ce76103c7c8100c0e7/inputs/sutysisku/release.json",
+      "bytes": 9148,
+      "kind": "file",
+      "accounted_bytes": 9148,
+      "sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c"
+    },
+    {
+      "path": "public/catalogue/generations/efdafddd82adc7ce76103c7c8100c0e7/inputs/sutysisku/seal.json",
+      "bytes": 473,
+      "kind": "file",
+      "accounted_bytes": 473,
+      "sha256": "d95739ffd58c641cdfd258b116d961548c80b32229588301663897c4b57b0d3d"
+    },
+    {
+      "path": "public/catalogue/generations/e9c89224caf1766582fab60cfca3900b/attempt.json",
+      "bytes": 82,
+      "kind": "file",
+      "accounted_bytes": 82,
+      "sha256": "8dedb6f41ab63b962f37c7bbaaa9e536e15a313f48e0cc3ce9986f30fde500cb"
+    },
+    {
+      "path": "public/catalogue/generations/e9c89224caf1766582fab60cfca3900b/store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/e9c89224caf1766582fab60cfca3900b/verified.json",
+      "bytes": 689,
+      "kind": "file",
+      "accounted_bytes": 689,
+      "sha256": "a71316edea5b716ed8ccb5709f6862a2b1cf522acd7eacbc817fb667a5041fa8"
+    },
+    {
+      "path": "public/catalogue/generations/e9c89224caf1766582fab60cfca3900b/store/dictionary.sqlite3",
+      "bytes": 622592,
+      "kind": "file",
+      "accounted_bytes": 622592,
+      "sha256": "e2e87f3c5d6c5fad774492ee85050c8943ebda6946486ba786ad9ab387311da3"
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/attempt.json",
+      "bytes": 83,
+      "kind": "file",
+      "accounted_bytes": 83,
+      "sha256": "2a3c6ad28c62f7d21379b4266302db846f9962d81a7ffa2d79c0f0c902e30b96"
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs",
+      "bytes": 192,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/store",
+      "bytes": 96,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/verified.json",
+      "bytes": 689,
+      "kind": "file",
+      "accounted_bytes": 689,
+      "sha256": "835b5b1b0a4ff0505537eea82eb98c005829071dec0a18fee68e4fb74c376219"
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/store/dictionary.sqlite3",
+      "bytes": 630784,
+      "kind": "file",
+      "accounted_bytes": 630784,
+      "sha256": "a3e444c859558797074ba13bab90aaf74a34567cb5ee8c754aed7103567cc076"
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/la-lojban",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/lensisku-jbotci",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/llg",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/sutysisku",
+      "bytes": 128,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/sutysisku/release.json",
+      "bytes": 9148,
+      "kind": "file",
+      "accounted_bytes": 9148,
+      "sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c"
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/sutysisku/seal.json",
+      "bytes": 473,
+      "kind": "file",
+      "accounted_bytes": 473,
+      "sha256": "d95739ffd58c641cdfd258b116d961548c80b32229588301663897c4b57b0d3d"
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/llg/release.json",
+      "bytes": 10174,
+      "kind": "file",
+      "accounted_bytes": 10174,
+      "sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146"
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/llg/seal.json",
+      "bytes": 938,
+      "kind": "file",
+      "accounted_bytes": 938,
+      "sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc"
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/lensisku-jbotci/release.json",
+      "bytes": 8417,
+      "kind": "file",
+      "accounted_bytes": 8417,
+      "sha256": "5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c"
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/lensisku-jbotci/seal.json",
+      "bytes": 603,
+      "kind": "file",
+      "accounted_bytes": 603,
+      "sha256": "7211e26c78e6a1a8e4b809a239ad9ed564e5bb5f451c82ffa7a11a9f3e121ef3"
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/la-lojban/release.json",
+      "bytes": 4995,
+      "kind": "file",
+      "accounted_bytes": 4995,
+      "sha256": "7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03"
+    },
+    {
+      "path": "public/catalogue/generations/0987b2bc848d2251f7813cca7c02cfa8/inputs/la-lojban/seal.json",
+      "bytes": 474,
+      "kind": "file",
+      "accounted_bytes": 474,
+      "sha256": "7c36e2fc7ddf2bac3652071a98858d05981f675004e04283f53dfd11d1d92ed3"
+    },
+    {
+      "path": "methods/arc04-review-post-journey01.py",
+      "bytes": 6133,
+      "kind": "file",
+      "accounted_bytes": 6133,
+      "sha256": "a71b4dc56cdf1fe0fc7eba2fbfadc5dc48b706a2b32e2f79cf36d96f4eee94b4"
+    },
+    {
+      "path": "methods/cli-checks01.py",
+      "bytes": 15841,
+      "kind": "file",
+      "accounted_bytes": 15841,
+      "sha256": "b0a03a79d6ba38d55c9a496d13900a85d342689291fb7e53ef08ca0ac803f969"
+    },
+    {
+      "path": "methods/inventory.py",
+      "bytes": 1498,
+      "kind": "file",
+      "accounted_bytes": 1498,
+      "sha256": "d3c0c46cd10a3e8be82b942637f7ce2ed19a8c3b25aa58db42ff3f98c2a13bb7"
+    },
+    {
+      "path": "methods/readable-cli-checks01.py",
+      "bytes": 18279,
+      "kind": "file",
+      "accounted_bytes": 18279,
+      "sha256": "f42e75d43bf663b76698a40e73b1fb8a084f02ac5cc04fd79a1982ac0a553844"
+    },
+    {
+      "path": "methods/run-stage.py",
+      "bytes": 2638,
+      "kind": "file",
+      "accounted_bytes": 2638,
+      "sha256": "81aa8de4618ce7a99570015a570a07f1c3e9244cda22c7c006ab022840759826"
+    },
+    {
+      "path": "consumer/Cargo.lock",
+      "bytes": 11046,
+      "kind": "file",
+      "accounted_bytes": 11046,
+      "sha256": "b85f2191a2ccff13220d371745697eb422f6d5081993af86287cd0140ad7f252"
+    },
+    {
+      "path": "consumer/Cargo.toml",
+      "bytes": 696,
+      "kind": "file",
+      "accounted_bytes": 696,
+      "sha256": "a676aadb0f73bf349975fdd527a83fd8779062d6806b1709c1af964b4d048598"
+    },
+    {
+      "path": "consumer/fixtures",
+      "bytes": 480,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "consumer/src",
+      "bytes": 736,
+      "kind": "directory",
+      "accounted_bytes": 0
+    },
+    {
+      "path": "consumer/src/cause_checks.rs",
+      "bytes": 1542,
+      "kind": "file",
+      "accounted_bytes": 1542,
+      "sha256": "21a46ef8d560097089a0a8234a14b574b64a67014f9e9d03c5771c966b353ed4"
+    },
+    {
+      "path": "consumer/src/complete_fixture.rs",
+      "bytes": 46457,
+      "kind": "file",
+      "accounted_bytes": 46457,
+      "sha256": "0792a2b1aa5fc3b570e3c817a127ed571c1b9b39786ee5c22d906e7574175eac"
+    },
+    {
+      "path": "consumer/src/context_checks.rs",
+      "bytes": 4585,
+      "kind": "file",
+      "accounted_bytes": 4585,
+      "sha256": "c1e298e9a8ba57df26dcc96a533df51a8999f03bb3eeb234baa057ad641ad8da"
+    },
+    {
+      "path": "consumer/src/cursor_checks.rs",
+      "bytes": 2169,
+      "kind": "file",
+      "accounted_bytes": 2169,
+      "sha256": "8cdc114e94e4859c0a186e75fe2a6492f73f67d44884069d55acede7f426de08"
+    },
+    {
+      "path": "consumer/src/derived_fault_checks.rs",
+      "bytes": 4661,
+      "kind": "file",
+      "accounted_bytes": 4661,
+      "sha256": "70cf0d5c93b52997cb908f5117efdc25b3c07d23d3a5a6538d0470f8074aea47"
+    },
+    {
+      "path": "consumer/src/detail_identity_checks.rs",
+      "bytes": 3301,
+      "kind": "file",
+      "accounted_bytes": 3301,
+      "sha256": "049c7af1fe92cb45cb919a015e2ba60ca4287bc5fca9edb3f603cf8641a8ecac"
+    },
+    {
+      "path": "consumer/src/eager_checks.rs",
+      "bytes": 5173,
+      "kind": "file",
+      "accounted_bytes": 5173,
+      "sha256": "42ff8c6341c64babcfc49374b7ec9f32a6205180128295590d24148edf4874f9"
+    },
+    {
+      "path": "consumer/src/helpers.rs",
+      "bytes": 3071,
+      "kind": "file",
+      "accounted_bytes": 3071,
+      "sha256": "b0d29b14379a7156ee005f93bec5cd927e48d4e058a698cd441194c53dfb9e81"
+    },
+    {
+      "path": "consumer/src/history_checks.rs",
+      "bytes": 4104,
+      "kind": "file",
+      "accounted_bytes": 4104,
+      "sha256": "493c8b4c9aab9880dcff5eddf533307e4724bbe775e8e6609ad4d99ac9387e3a"
+    },
+    {
+      "path": "consumer/src/main.rs",
+      "bytes": 11286,
+      "kind": "file",
+      "accounted_bytes": 11286,
+      "sha256": "8661bd0fd2a60c1141c5898fd1a68a25c7645dc880458723420b94a4a1e0af9f"
+    },
+    {
+      "path": "consumer/src/metadata_only_checks.rs",
+      "bytes": 3192,
+      "kind": "file",
+      "accounted_bytes": 3192,
+      "sha256": "484b8108ded40983260e2081a6c7ae0a8d37fd2f7f76f9411c981d21e856e3d1"
+    },
+    {
+      "path": "consumer/src/owned_paths.rs",
+      "bytes": 876,
+      "kind": "file",
+      "accounted_bytes": 876,
+      "sha256": "d1b69dd19be7c868d8958b888d991c6fe241660620ad243edbef0db9a670c55f"
+    },
+    {
+      "path": "consumer/src/profile_parity_checks.rs",
+      "bytes": 5024,
+      "kind": "file",
+      "accounted_bytes": 5024,
+      "sha256": "c587faabb327841a6da5ffd1461c86b814eb6a1f7be73f155b8d317c75ba85c9"
+    },
+    {
+      "path": "consumer/src/public_api_checks.rs",
+      "bytes": 4573,
+      "kind": "file",
+      "accounted_bytes": 4573,
+      "sha256": "b58505fd7b2a8def551c9352542bb50621d1e913e9e669e03dbfeb67e8a16275"
+    },
+    {
+      "path": "consumer/src/readable_checks.rs",
+      "bytes": 14063,
+      "kind": "file",
+      "accounted_bytes": 14063,
+      "sha256": "4f2dfe0cf3c5e4393bb64b2a3e89ccf5a93639a80bce1382e064073ba05f3d2c"
+    },
+    {
+      "path": "consumer/src/reference_checks.rs",
+      "bytes": 5065,
+      "kind": "file",
+      "accounted_bytes": 5065,
+      "sha256": "f653477fc9db26cc9b6795489c751c317560012ff68fb3526434793d7dd7eac8"
+    },
+    {
+      "path": "consumer/src/selection_checks.rs",
+      "bytes": 4559,
+      "kind": "file",
+      "accounted_bytes": 4559,
+      "sha256": "3e954e4f495d26f341cc5e2610b60b69d65cfac6b3331d268cea251aacb65b2a"
+    },
+    {
+      "path": "consumer/src/shared_body_checks.rs",
+      "bytes": 11254,
+      "kind": "file",
+      "accounted_bytes": 11254,
+      "sha256": "6f65ef7d50312dcec4e3d96dec5c65238848ab0790804568a79212c976719ac2"
+    },
+    {
+      "path": "consumer/src/store_projection_checks.rs",
+      "bytes": 3363,
+      "kind": "file",
+      "accounted_bytes": 3363,
+      "sha256": "6588f30dc54ee89b0d3e83b0df7d209b411a40789fd05b83d6ec6bb5be8ab2c5"
+    },
+    {
+      "path": "consumer/src/supplement.rs",
+      "bytes": 3644,
+      "kind": "file",
+      "accounted_bytes": 3644,
+      "sha256": "9d68e4faa55c660072e0f08629c4fdeb04fdbeacd7e493e3ac8897c9b6946354"
+    },
+    {
+      "path": "consumer/src/targeted_sentinel_checks.rs",
+      "bytes": 3810,
+      "kind": "file",
+      "accounted_bytes": 3810,
+      "sha256": "f1eb4c89deeaf4a76c85b2daa7ae1e4a2bd65453f6843fd8ea799891663f73df"
+    },
+    {
+      "path": "consumer/fixtures/lensisku.json",
+      "bytes": 136,
+      "kind": "file",
+      "accounted_bytes": 136,
+      "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429"
+    },
+    {
+      "path": "consumer/fixtures/llg-valid-row.txt",
+      "bytes": 158,
+      "kind": "file",
+      "accounted_bytes": 158,
+      "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-0.txt",
+      "bytes": 71,
+      "kind": "file",
+      "accounted_bytes": 71,
+      "sha256": "ae09d21574344b9ade1712e7f44f72ffe6a1861297526768471f4679bdf703d1"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-1.txt",
+      "bytes": 2099,
+      "kind": "file",
+      "accounted_bytes": 2099,
+      "sha256": "c50574a8f794981064a4e8784bc56c34ae72319a4d4a409c22b042f20f3997ae"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-2.txt",
+      "bytes": 1162,
+      "kind": "file",
+      "accounted_bytes": 1162,
+      "sha256": "3a072bec32a3a4576c800549cafcec2b02869d89b6c90d8bc1e7043918613166"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-3.txt",
+      "bytes": 93,
+      "kind": "file",
+      "accounted_bytes": 93,
+      "sha256": "aef7b14aa0785018a0f2c2a9b8126f91e8003577e2d4a2d4b0bb40788cde8b54"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-4.txt",
+      "bytes": 618,
+      "kind": "file",
+      "accounted_bytes": 618,
+      "sha256": "836e6928b5bdc42230f60d4cd20e0b85d29ad2285880d256fac42dd940652473"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-5.txt",
+      "bytes": 746,
+      "kind": "file",
+      "accounted_bytes": 746,
+      "sha256": "3d42737481f0e37ab5ee3363251fda0d5a015f8c4a946b81c1120ae7434ebafd"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-6.txt",
+      "bytes": 2573,
+      "kind": "file",
+      "accounted_bytes": 2573,
+      "sha256": "eea90f972547805bf119f0c435bef513833fdc1f3460f8ea38a4cb1bc1845a6d"
+    },
+    {
+      "path": "consumer/fixtures/readable-hit.json",
+      "bytes": 1853,
+      "kind": "file",
+      "accounted_bytes": 1853,
+      "sha256": "b299acc89f5ccd3246add1b8dafe836346268dc3e6a4c3f60e78d279c7e510eb"
+    },
+    {
+      "path": "consumer/fixtures/readable-key.json",
+      "bytes": 562,
+      "kind": "file",
+      "accounted_bytes": 562,
+      "sha256": "0e6a899af74b4034ec926ec450a110a4d5b1674ad4da121397e00160a1912fec"
+    },
+    {
+      "path": "consumer/fixtures/readable-snapshot.json",
+      "bytes": 409,
+      "kind": "file",
+      "accounted_bytes": 409,
+      "sha256": "6f680b393c0768f49b1b694d73ebdbe4e6a07e1f6bc530ac1fa0704e14af8e8f"
+    },
+    {
+      "path": "consumer/fixtures/sutysisku.json",
+      "bytes": 150,
+      "kind": "file",
+      "accounted_bytes": 150,
+      "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03"
+    }
+  ]
+}

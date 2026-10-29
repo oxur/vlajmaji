@@ -1,0 +1,2290 @@
+{
+  "schema": "arc04-independent-review02-v1",
+  "scope": "fresh selected composition/source/saved-evidence review; product source/index unchanged; not canonical closure",
+  "source": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+  "technical_report": {
+    "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc04-composed-sqlite-lookup/artifacts/composition-review.md",
+    "bytes": 17374,
+    "sha256": "63d44c20c343db81ec9448aa8a6f505ce1ac9826507429f9fe12904a5efd87ac"
+  },
+  "payload_count": 325,
+  "payload_bytes": 1818684,
+  "files": [
+    {
+      "path": "consumer/Cargo.lock",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/Cargo.lock",
+      "bytes": 11046,
+      "sha256": "b85f2191a2ccff13220d371745697eb422f6d5081993af86287cd0140ad7f252",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/Cargo.toml",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/Cargo.toml",
+      "bytes": 696,
+      "sha256": "a676aadb0f73bf349975fdd527a83fd8779062d6806b1709c1af964b4d048598",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/lensisku.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/lensisku.json",
+      "bytes": 136,
+      "sha256": "63fb2e10e80f34e6d7f04fbe9bcfe1cd69c7ec0c4016045d02e8b3cfcd866429",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/llg-valid-row.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/llg-valid-row.txt",
+      "bytes": 158,
+      "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-0.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/readable-golden-0.txt",
+      "bytes": 71,
+      "sha256": "ae09d21574344b9ade1712e7f44f72ffe6a1861297526768471f4679bdf703d1",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-1.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/readable-golden-1.txt",
+      "bytes": 2099,
+      "sha256": "c50574a8f794981064a4e8784bc56c34ae72319a4d4a409c22b042f20f3997ae",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-2.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/readable-golden-2.txt",
+      "bytes": 1162,
+      "sha256": "3a072bec32a3a4576c800549cafcec2b02869d89b6c90d8bc1e7043918613166",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-3.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/readable-golden-3.txt",
+      "bytes": 93,
+      "sha256": "aef7b14aa0785018a0f2c2a9b8126f91e8003577e2d4a2d4b0bb40788cde8b54",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-4.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/readable-golden-4.txt",
+      "bytes": 618,
+      "sha256": "836e6928b5bdc42230f60d4cd20e0b85d29ad2285880d256fac42dd940652473",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-5.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/readable-golden-5.txt",
+      "bytes": 746,
+      "sha256": "3d42737481f0e37ab5ee3363251fda0d5a015f8c4a946b81c1120ae7434ebafd",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/readable-golden-6.txt",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/readable-golden-6.txt",
+      "bytes": 2573,
+      "sha256": "eea90f972547805bf119f0c435bef513833fdc1f3460f8ea38a4cb1bc1845a6d",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/readable-hit.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/readable-hit.json",
+      "bytes": 1853,
+      "sha256": "b299acc89f5ccd3246add1b8dafe836346268dc3e6a4c3f60e78d279c7e510eb",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/readable-key.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/readable-key.json",
+      "bytes": 562,
+      "sha256": "0e6a899af74b4034ec926ec450a110a4d5b1674ad4da121397e00160a1912fec",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/readable-snapshot.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/readable-snapshot.json",
+      "bytes": 409,
+      "sha256": "6f680b393c0768f49b1b694d73ebdbe4e6a07e1f6bc530ac1fa0704e14af8e8f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/fixtures/sutysisku.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/fixtures/sutysisku.json",
+      "bytes": 150,
+      "sha256": "3e7738c9412a4dfb6169e8492f8ecb7fd25003d2141dbb8fa11782e580d00b03",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/cause_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/cause_checks.rs",
+      "bytes": 1542,
+      "sha256": "21a46ef8d560097089a0a8234a14b574b64a67014f9e9d03c5771c966b353ed4",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/complete_fixture.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/complete_fixture.rs",
+      "bytes": 46457,
+      "sha256": "0792a2b1aa5fc3b570e3c817a127ed571c1b9b39786ee5c22d906e7574175eac",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/context_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/context_checks.rs",
+      "bytes": 4585,
+      "sha256": "c1e298e9a8ba57df26dcc96a533df51a8999f03bb3eeb234baa057ad641ad8da",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/cursor_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/cursor_checks.rs",
+      "bytes": 2169,
+      "sha256": "8cdc114e94e4859c0a186e75fe2a6492f73f67d44884069d55acede7f426de08",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/derived_fault_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/derived_fault_checks.rs",
+      "bytes": 4661,
+      "sha256": "70cf0d5c93b52997cb908f5117efdc25b3c07d23d3a5a6538d0470f8074aea47",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/detail_identity_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/detail_identity_checks.rs",
+      "bytes": 3301,
+      "sha256": "049c7af1fe92cb45cb919a015e2ba60ca4287bc5fca9edb3f603cf8641a8ecac",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/eager_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/eager_checks.rs",
+      "bytes": 5173,
+      "sha256": "42ff8c6341c64babcfc49374b7ec9f32a6205180128295590d24148edf4874f9",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/helpers.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/helpers.rs",
+      "bytes": 3071,
+      "sha256": "b0d29b14379a7156ee005f93bec5cd927e48d4e058a698cd441194c53dfb9e81",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/history_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/history_checks.rs",
+      "bytes": 4104,
+      "sha256": "493c8b4c9aab9880dcff5eddf533307e4724bbe775e8e6609ad4d99ac9387e3a",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/main.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/main.rs",
+      "bytes": 11286,
+      "sha256": "8661bd0fd2a60c1141c5898fd1a68a25c7645dc880458723420b94a4a1e0af9f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/metadata_only_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/metadata_only_checks.rs",
+      "bytes": 3192,
+      "sha256": "484b8108ded40983260e2081a6c7ae0a8d37fd2f7f76f9411c981d21e856e3d1",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/owned_paths.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/owned_paths.rs",
+      "bytes": 876,
+      "sha256": "d1b69dd19be7c868d8958b888d991c6fe241660620ad243edbef0db9a670c55f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/profile_parity_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/profile_parity_checks.rs",
+      "bytes": 5024,
+      "sha256": "c587faabb327841a6da5ffd1461c86b814eb6a1f7be73f155b8d317c75ba85c9",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/public_api_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/public_api_checks.rs",
+      "bytes": 4573,
+      "sha256": "b58505fd7b2a8def551c9352542bb50621d1e913e9e669e03dbfeb67e8a16275",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/readable_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/readable_checks.rs",
+      "bytes": 14063,
+      "sha256": "4f2dfe0cf3c5e4393bb64b2a3e89ccf5a93639a80bce1382e064073ba05f3d2c",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/reference_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/reference_checks.rs",
+      "bytes": 5065,
+      "sha256": "f653477fc9db26cc9b6795489c751c317560012ff68fb3526434793d7dd7eac8",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/selection_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/selection_checks.rs",
+      "bytes": 4559,
+      "sha256": "3e954e4f495d26f341cc5e2610b60b69d65cfac6b3331d268cea251aacb65b2a",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/shared_body_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/shared_body_checks.rs",
+      "bytes": 11254,
+      "sha256": "6f65ef7d50312dcec4e3d96dec5c65238848ab0790804568a79212c976719ac2",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/store_projection_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/store_projection_checks.rs",
+      "bytes": 3363,
+      "sha256": "6588f30dc54ee89b0d3e83b0df7d209b411a40789fd05b83d6ec6bb5be8ab2c5",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/supplement.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/supplement.rs",
+      "bytes": 3644,
+      "sha256": "9d68e4faa55c660072e0f08629c4fdeb04fdbeacd7e493e3ac8897c9b6946354",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "consumer/src/targeted_sentinel_checks.rs",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/consumer/src/targeted_sentinel_checks.rs",
+      "bytes": 3810,
+      "sha256": "f1eb4c89deeaf4a76c85b2daa7ae1e4a2bd65453f6843fd8ea799891663f73df",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "methods/arc04-review-post-journey01.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/methods/arc04-review-post-journey01.py",
+      "bytes": 6133,
+      "sha256": "a71b4dc56cdf1fe0fc7eba2fbfadc5dc48b706a2b32e2f79cf36d96f4eee94b4",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "methods/cli-checks01.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/methods/cli-checks01.py",
+      "bytes": 15841,
+      "sha256": "b0a03a79d6ba38d55c9a496d13900a85d342689291fb7e53ef08ca0ac803f969",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "methods/inventory.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/methods/inventory.py",
+      "bytes": 1498,
+      "sha256": "d3c0c46cd10a3e8be82b942637f7ce2ed19a8c3b25aa58db42ff3f98c2a13bb7",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "methods/publish-review.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/methods/publish-review.py",
+      "bytes": 2296,
+      "sha256": "71fb0ff3ac45956af3c956015bd14dbf311a25a20e0cc2102b834013e0c9f609",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "methods/readable-cli-checks01.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/methods/readable-cli-checks01.py",
+      "bytes": 18279,
+      "sha256": "f42e75d43bf663b76698a40e73b1fb8a084f02ac5cc04fd79a1982ac0a553844",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "methods/run-remaining.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/methods/run-remaining.py",
+      "bytes": 2597,
+      "sha256": "6e8d5dde12506871d35bf3b9e6a25aced70ffe7b6e5d361fd39ea571c3572478",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "methods/run-stage.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/methods/run-stage.py",
+      "bytes": 2638,
+      "sha256": "81aa8de4618ce7a99570015a570a07f1c3e9244cda22c7c006ab022840759826",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/build.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/build.json",
+      "bytes": 1735,
+      "sha256": "8b8297facefbd2780bab68cfcedf8e6c0a79a2a912bd2841f0580b11f6fcc165",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/build.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/build.stderr",
+      "bytes": 1048,
+      "sha256": "646adc9318861913102e45ed22680835b82df6b15ecc984b2a1745f2d6cf22ee",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/build.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/build.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/cli.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/cli.json",
+      "bytes": 1534,
+      "sha256": "5432795798af509ff24fc0307f3e84c4b436ea22ef29e2f4d792841ba463a1e9",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/cli.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/cli.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/cli.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/cli.stdout",
+      "bytes": 254,
+      "sha256": "670188b9efa1716bb4e65fa371a17bc6ba43ed57d165a176a36fa9eece57c52a",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/current-ci-independent-census.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/current-ci-independent-census.json",
+      "bytes": 48663,
+      "sha256": "a8c1e3d02ad9afe10e9a118a1ad68edb02fefd80a3182f8c1ad574f7a1400e35",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/fresh-composition-census.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/fresh-composition-census.json",
+      "bytes": 2727,
+      "sha256": "565b9cd36cde1e07e71fa19f1440252a9af31a47ac4e923b09779f0b68accded",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/inventory-cli.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/inventory-cli.json",
+      "bytes": 106971,
+      "sha256": "93ecd8e63b137fdab8f4efda27d7c593eb3ca5efaeeae291c567aa23c606086f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/inventory-final.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/inventory-final.json",
+      "bytes": 120866,
+      "sha256": "e5034c456ae9dbcff0bca1453043380c61866bfcc9fc3fb1863cf07b0e341ef0",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/inventory-post.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/inventory-post.json",
+      "bytes": 119767,
+      "sha256": "ccab575fc1c44f15ca301f979b68da9bb1c363d23a34f061fbb8460321324e89",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/inventory-public.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/inventory-public.json",
+      "bytes": 51276,
+      "sha256": "3a7f5041e6b0a504a2b9f765e77fa2e1d569e8b613c9799733f6986e44fbf814",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/linux-target-attribution.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/linux-target-attribution.json",
+      "bytes": 6609,
+      "sha256": "9f759b83eb80cb473ffba852c55b1de60271d449f6a892c6e6061f14df3af4c7",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/observer-owner-disposition.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/observer-owner-disposition.json",
+      "bytes": 2937,
+      "sha256": "984f5eb69795f9befa500951a1f4aa8d419955d04965664316a3609a56b3a0fd",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/observer-reviewer-disposition.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/observer-reviewer-disposition.json",
+      "bytes": 583,
+      "sha256": "9bf6ced5743f0dd6309e526b4fabff5e16d424a43e84c0a93b29ea1c145996ff",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/post.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/post.json",
+      "bytes": 1541,
+      "sha256": "cd80ec6e6b34078b9cb552599ef9375779582dbc0daedc1d0bad4e1fd7d3fb66",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/post.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/post.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/post.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/post.stdout",
+      "bytes": 61,
+      "sha256": "c33419dec6b01580e8dea0687a645f0ea6e59ef78070e1158b4ea9927202aa8a",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/preflight-readback.md",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/preflight-readback.md",
+      "bytes": 6608,
+      "sha256": "de5710e6e95900741fdcc59e8c5b953745ef1826efc02084e9b2e46d564473fa",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/preparation.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/preparation.json",
+      "bytes": 13480,
+      "sha256": "6b1fb183df468bf49b29e04d9ba381a5e9b98a814eaf1ab8a263f9078ba106e5",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/public-wrapper-failure.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/public-wrapper-failure.json",
+      "bytes": 15867,
+      "sha256": "8959104e0def8831b5b5bf2ad07a194ade6e53b62adbd1d163fb8ece75ed73d5",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/public.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/public.json",
+      "bytes": 1397,
+      "sha256": "d8dcf4a2947c20daf8433fd4a366065f94f0e87bf186e2c28e6104122560491b",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/public.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/public.stderr",
+      "bytes": 106,
+      "sha256": "533e03353b74199daaac58ae59784f4904921850a8151705148f6def03c48487",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/public.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/public.stdout",
+      "bytes": 13030,
+      "sha256": "b117c4d08cd6f1cb1c65ea67e55204745e784ea9aaca8b84ab44ea19395b2ee5",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/quiet-handback.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/quiet-handback.json",
+      "bytes": 510,
+      "sha256": "9da387826fbb89bcaa15ee4b2614a1f4bf990e11984b3afd0f826f37a5b01ea6",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/remaining-runner-derivation.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/remaining-runner-derivation.json",
+      "bytes": 453,
+      "sha256": "8bdb1520db47129787ee80423de1dd44721eb78bf79758a833f1d2e395fe8e23",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/retained-bundles.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/retained-bundles.json",
+      "bytes": 781,
+      "sha256": "383c0320f14d03daa91976498e4a7774b003406776b7193b771fb33a0b94acfa",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/retained-full-independent-census.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/retained-full-independent-census.json",
+      "bytes": 1296,
+      "sha256": "90b3383addce601ba44b5fead85c52f0ae7da6a3d518aff50189395e0b72e1ab",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/retained-full-whole-detail-comparison.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/retained-full-whole-detail-comparison.json",
+      "bytes": 887,
+      "sha256": "17495580eac37c2a27ac78add493f3a5b95a92c1c56d6c18d862948521b40a2a",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/review-findings-and-coverage.md",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/review-findings-and-coverage.md",
+      "bytes": 2481,
+      "sha256": "f3d2cb06fe9efa0dfb21c73f61a5fa463123b9eed27046a10c38218fd734f353",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/source-equivalence.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/source-equivalence.json",
+      "bytes": 319,
+      "sha256": "1f2e67d94c994b8057895f1e5d441a8f1572a7401d21dc1816e7ce04c796d22f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "receipts/tmpdir-amendment.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/tmpdir-amendment.json",
+      "bytes": 759,
+      "sha256": "0adf126f6b0fff2d3f9347297cc61f6c5fd28bc83fb4b88c4edf003a16f96bc6",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W1-install.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W1-install.receipt.json",
+      "bytes": 846,
+      "sha256": "35a9484c5a3bfe3162b352b687e6c5d83489cec7dda609d055d9278d2f973321",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W1-install.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W1-install.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W1-install.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W1-install.stdout",
+      "bytes": 2027,
+      "sha256": "76945bf3a09fde915ded08fa9583197209fc27dd58f2fd8d4bdbb866f5b87a9b",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-initial-list.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-initial-list.receipt.json",
+      "bytes": 729,
+      "sha256": "2b294c33dfd287c3c04c4a800b97992a0b650a087abad9fd718c38b7e13eadb5",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-initial-list.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-initial-list.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-initial-list.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-initial-list.stdout",
+      "bytes": 24300,
+      "sha256": "67e0ae9827614402e3f89a1e185534ffe5d1e223acd7def3e685d21cc7752168",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-la-lojban.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-la-lojban.receipt.json",
+      "bytes": 749,
+      "sha256": "4ec082e0019135eece80f3b0ec85525ca33235ef964cffce45d2d6fcbc0ede46",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-la-lojban.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-la-lojban.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-la-lojban.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-la-lojban.stdout",
+      "bytes": 4277,
+      "sha256": "53c66a197cd83d5977ce5f28b31bd5b4d3e533c9c3c4046edf96e0c3472a3fd7",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-lensisku-jbotci.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-lensisku-jbotci.receipt.json",
+      "bytes": 754,
+      "sha256": "786a693faaf890ff13ea128aa34380fe6629ab4a00cb3af54ec2941742a388bd",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-lensisku-jbotci.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-lensisku-jbotci.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-lensisku-jbotci.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-lensisku-jbotci.stdout",
+      "bytes": 5259,
+      "sha256": "9d15ebe249a1ade24ec171d387980fd32861082f479c736f8916164322dda177",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-llg.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-llg.receipt.json",
+      "bytes": 742,
+      "sha256": "f1e47446043bfed646d4918c9b77efa39f65578091f8a255f2367ebc409dc96c",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-llg.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-llg.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-llg.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-llg.stdout",
+      "bytes": 8762,
+      "sha256": "fe22bb5dbd17a9bf8a33ac18ec044218c1dd988c5dc41f1f8853490a42fcee01",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-sutysisku.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-sutysisku.receipt.json",
+      "bytes": 748,
+      "sha256": "ebeb05bab55f7908e1e434e3751a6ee1c1ad9bf4b8427757a117d694731cd936",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-sutysisku.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-sutysisku.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W2-inspect-sutysisku.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W2-inspect-sutysisku.stdout",
+      "bytes": 4758,
+      "sha256": "62ca806d599803a722e483aa36a024ebfc946996afc480e85881f0e11baaf615",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-configure.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-configure.receipt.json",
+      "bytes": 870,
+      "sha256": "0c62ff2f46b2d38c3f96a6f812f45b71aa5102a34ceb52fe4419337b67099570",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-configure.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-configure.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-configure.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-configure.stdout",
+      "bytes": 523,
+      "sha256": "32073696fdc071345e581b3103b6f84ad4c811e7edb084a0cb61a2ff4e0c439b",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-configured-list.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-configured-list.receipt.json",
+      "bytes": 729,
+      "sha256": "7db453aa1009b991b9d20bdfcb3f1fff1073f25b4cd861523409ddbca7655860",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-configured-list.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-configured-list.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-configured-list.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-configured-list.stdout",
+      "bytes": 24300,
+      "sha256": "67e0ae9827614402e3f89a1e185534ffe5d1e223acd7def3e685d21cc7752168",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-configured-profiles.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-configured-profiles.receipt.json",
+      "bytes": 754,
+      "sha256": "8cf8358f8f020295732bef21309c50f42f1d30b51fe774bdf3aa22820e9cbd44",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-configured-profiles.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-configured-profiles.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-configured-profiles.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-configured-profiles.stdout",
+      "bytes": 631,
+      "sha256": "478c1a94598d4236833024a938fcd19505867b77b5f15b9f5eb225ef0a485aaa",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-default.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-default.receipt.json",
+      "bytes": 748,
+      "sha256": "9460a8cde1d40330d67ec23f84a470909eef24b50b93a3de5048738d065b2dd8",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-default.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-default.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-default.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-default.stdout",
+      "bytes": 35084,
+      "sha256": "86d1f82bc7b6de92ac0fd73f0752a844f98e1ea88dda430e64be00eafdf8a1a8",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-explicit-full.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-explicit-full.receipt.json",
+      "bytes": 776,
+      "sha256": "4aa1f855645df612917beabca31dabce57b0f191788faf89e133218a191ed943",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-explicit-full.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-explicit-full.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W3-explicit-full.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-explicit-full.stdout",
+      "bytes": 35084,
+      "sha256": "86d1f82bc7b6de92ac0fd73f0752a844f98e1ea88dda430e64be00eafdf8a1a8",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disable.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disable.receipt.json",
+      "bytes": 806,
+      "sha256": "1601fb7b7c5e9d7659987099919ed7cfd9e358788ec4371f6195a43bf2c5a1ff",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disable.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disable.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disable.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disable.stdout",
+      "bytes": 866,
+      "sha256": "eabd9cf8cebd0167a302d2d2274f0b42d7a77f731be983d7bfb2cea517034fc4",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-compact.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-compact.receipt.json",
+      "bytes": 808,
+      "sha256": "45271701895ba2adfb02324d7eb83f8a8b6b42e86f3ea014bcf109f7672770a2",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-compact.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-compact.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-compact.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-compact.stdout",
+      "bytes": 28743,
+      "sha256": "f9e584c6db1e1679eb33b9bd1836431d7fc6d108ff4a409d67666e7ee25635f7",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-list.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-list.receipt.json",
+      "bytes": 729,
+      "sha256": "70d29744816e60ad347b7e728bad04f06e41007d12602b55c973cfc0f91ca6b1",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-list.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-list.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-list.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-list.stdout",
+      "bytes": 24300,
+      "sha256": "67e0ae9827614402e3f89a1e185534ffe5d1e223acd7def3e685d21cc7752168",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-oldcursor.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-oldcursor.receipt.json",
+      "bytes": 3526,
+      "sha256": "a189626a92be052b33df1af84c5ebe8c1caae3f4d6c0a65b8d807483375f6c61",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-oldcursor.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-oldcursor.stderr",
+      "bytes": 3734,
+      "sha256": "71dd5be7658baaa3acd7a8ee7dc480f4b2b3e2a884ffd42bd694f93fbed3ebc4",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-oldcursor.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-oldcursor.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-profiles.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-profiles.receipt.json",
+      "bytes": 754,
+      "sha256": "28f286e94176bebad335bc94fb41b8354bdfc21b23358f90388068912ad0ecac",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-profiles.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-profiles.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-profiles.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-profiles.stdout",
+      "bytes": 636,
+      "sha256": "9ea036d5eb4d70fafe8bcdb3f902d1f55e3e82cafe2d0f402e92f8745b82171b",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-readable.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-readable.receipt.json",
+      "bytes": 808,
+      "sha256": "8f77155bf681598cb4a77d539bc0bc75cc23095f3025aeddd781d368c384db0f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-readable.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-readable.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-disabled-readable.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-disabled-readable.stdout",
+      "bytes": 9264,
+      "sha256": "9ae976b317da4e1c673a8434a2637d9735438d69678a1ba70b67f457c5fb4f49",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enable.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enable.receipt.json",
+      "bytes": 805,
+      "sha256": "8a8e160930d1a2d3d0073bbf5bc12ccdf131cb716c146bd17eb7e5e7dc0f543e",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enable.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enable.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enable.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enable.stdout",
+      "bytes": 860,
+      "sha256": "3ee78b1e7b8700346eb64888ae3c75a0e4d3602c56fdb9c841daaf1e36c7b2ac",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-compact.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-compact.receipt.json",
+      "bytes": 808,
+      "sha256": "918ed3d0608b937d782a0a2d00a559165d4ad55e7be82c88044c7c47c6cd1f97",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-compact.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-compact.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-compact.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-compact.stdout",
+      "bytes": 32258,
+      "sha256": "73feef67734fb29160119b3cf2892d929ef5a36fb9ca51d44ec1f57d5956b5c8",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-list.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-list.receipt.json",
+      "bytes": 728,
+      "sha256": "0d6a52397d11b0ecabf35480cfc7e5730eb51ddb81814f4f9995e14855bd5abb",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-list.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-list.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-list.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-list.stdout",
+      "bytes": 24300,
+      "sha256": "67e0ae9827614402e3f89a1e185534ffe5d1e223acd7def3e685d21cc7752168",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-profiles.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-profiles.receipt.json",
+      "bytes": 755,
+      "sha256": "120213b7dd21ddc4f79a70b76a5a409205ba9e0c2c4759bcb23827232eaa6272",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-profiles.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-profiles.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-profiles.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-profiles.stdout",
+      "bytes": 631,
+      "sha256": "aa3a2ae0a2d0876c2cc129dcfff811c1b46996b2e18c654e52d7e0db217aeb17",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-readable.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-readable.receipt.json",
+      "bytes": 809,
+      "sha256": "bf810fb0efec18183b17196cad4ef17e371a666aec3944d28aaa185ea5a2e652",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-readable.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-readable.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-enabled-readable.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-enabled-readable.stdout",
+      "bytes": 10639,
+      "sha256": "fc55c984c4831369e89a467271826468a84685462894434ad56c02d75efbbdf2",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-reconcile.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-reconcile.receipt.json",
+      "bytes": 733,
+      "sha256": "fa13d472816857a8926b5e79c74e95d6db1bc3a4087e12af986c5da1d9af69c7",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-reconcile.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-reconcile.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-reconcile.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-reconcile.stdout",
+      "bytes": 1772,
+      "sha256": "386e7714a3f32f62a214831c711719f7bdde4397b14b7358dd5782f43fb3a5d1",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-reinstall.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-reinstall.receipt.json",
+      "bytes": 1080,
+      "sha256": "f188560b64a70d764e189a61be26688c51b990ff20f800136b75d08264bc56d6",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-reinstall.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-reinstall.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-reinstall.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-reinstall.stdout",
+      "bytes": 1500,
+      "sha256": "d32bc972e2d937e87f858179471ddb813f96df9fb6578c683eba075a3e8b46e2",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-remove.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-remove.receipt.json",
+      "bytes": 790,
+      "sha256": "cf3eea9b37a6fd40c62f44341b3acabd14e74b50cddf422a237dc3776449536f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-remove.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-remove.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-remove.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-remove.stdout",
+      "bytes": 1196,
+      "sha256": "5d2f1658ead3a57b81fb86825c74b3de57f5cc91ede59314bcafaeda8d7a5f55",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-catalog-compact.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-catalog-compact.receipt.json",
+      "bytes": 1209,
+      "sha256": "727fe92a7ea5f8a40273f57a7aa0cdd84a289b84ab8ae1ae7a11f70985641633",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-catalog-compact.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-catalog-compact.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-catalog-compact.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-catalog-compact.stdout",
+      "bytes": 6290,
+      "sha256": "e2a9310164d8279d57654f32a1535adbe8044c59de58702730809f4dc56a995f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-catalog.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-catalog.receipt.json",
+      "bytes": 1210,
+      "sha256": "ce2c6d0aad6afba503a2d2d0041f63a558bd7f80a4e6692996b6716db78fae53",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-catalog.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-catalog.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-catalog.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-catalog.stdout",
+      "bytes": 6245,
+      "sha256": "e6eaafa331cfe8db0ea834d4789536bdca1479c0837ff669a2aa0844047f467a",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-detail-oldsnapshot.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-detail-oldsnapshot.receipt.json",
+      "bytes": 1678,
+      "sha256": "d477c1482842682c881f4e296de363608dc4b1b9640963cacbc1738c4d32aaeb",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-detail-oldsnapshot.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-detail-oldsnapshot.stderr",
+      "bytes": 3820,
+      "sha256": "60d64b36ab4eb8d4312f8b58a38025f66d6669bc43764b8d6966aa82d145bc08",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-detail-oldsnapshot.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-detail-oldsnapshot.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-detail.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-detail.receipt.json",
+      "bytes": 1579,
+      "sha256": "b0f0068430b896c419080ff79026e0153404e71771cc2f6a3e9048c3f176a649",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-detail.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-detail.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-detail.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-detail.stdout",
+      "bytes": 5501,
+      "sha256": "4799a6a1651881deeb81144a268513a0caee867f65db8a7c6eb84d50bf74ebe2",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-exact.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-exact.receipt.json",
+      "bytes": 808,
+      "sha256": "1d2f194e74ebefd260bc831f2341677b5f9204530bbf0a2e422ba3b7aef9526e",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-exact.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-exact.stderr",
+      "bytes": 3673,
+      "sha256": "61090707b2076c1aea332921830fe5ecc2ad512e25f3d10c754923c380722c87",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-exact.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-exact.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-list.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-list.receipt.json",
+      "bytes": 729,
+      "sha256": "d69d5f03a170f7b2d08d4053a7018017958b8b8d1487f12106fb2a8aeb008ed2",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-list.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-list.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-list.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-list.stdout",
+      "bytes": 25307,
+      "sha256": "908a8ac8e161f4e328445cc7241890c953cc0b9e6844241ff7368eadab4cb7d9",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-local-compact.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-local-compact.receipt.json",
+      "bytes": 968,
+      "sha256": "b07472795701b45f4075bbf38b2bdf223a7b421198541908e188448025116b9a",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-local-compact.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-local-compact.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-local-compact.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-local-compact.stdout",
+      "bytes": 4838,
+      "sha256": "36870f3d93645fc7d8983ac2f34235684e80b411b2c3fb10db531872127acaa6",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-local.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-local.receipt.json",
+      "bytes": 969,
+      "sha256": "15daf2e4c3aa20e08db72753210d18708b72e805b9799e592b7ac70a93f0c18f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-local.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-local.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-local.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-local.stdout",
+      "bytes": 4793,
+      "sha256": "87540f8bbcde400d568917db416a6616c71e8708b54a3afd57b4442071147924",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-profiles.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-profiles.receipt.json",
+      "bytes": 754,
+      "sha256": "dd787bb967530e05e0b30a077c83325a2a7aa64607a48288e9c1122864195ee6",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-profiles.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-profiles.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-removed-profiles.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-removed-profiles.stdout",
+      "bytes": 631,
+      "sha256": "aa3a2ae0a2d0876c2cc129dcfff811c1b46996b2e18c654e52d7e0db217aeb17",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-restored-list.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-restored-list.receipt.json",
+      "bytes": 729,
+      "sha256": "441789ef9116f5105518699be8f3880c56226f524905bf7f4939242af3466d3a",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-restored-list.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-restored-list.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-restored-list.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-restored-list.stdout",
+      "bytes": 27086,
+      "sha256": "b3b1a8a6652bb63381f1e10cc487ea524523671133ca9c7c7872a712188bc2c7",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-restored-profiles.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-restored-profiles.receipt.json",
+      "bytes": 754,
+      "sha256": "08ad0afbef405ebbe29f4d2a8613e2b59514e3fd54137d2bfe5dcb3424133c3f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-restored-profiles.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-restored-profiles.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W4-restored-profiles.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W4-restored-profiles.stdout",
+      "bytes": 631,
+      "sha256": "aa3a2ae0a2d0876c2cc129dcfff811c1b46996b2e18c654e52d7e0db217aeb17",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-catalog-compact.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-catalog-compact.receipt.json",
+      "bytes": 1210,
+      "sha256": "115bd47b878bc089bb75721ce518c7ebd38e39aa760a5ddddff56d11aca177ed",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-catalog-compact.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-catalog-compact.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-catalog-compact.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-catalog-compact.stdout",
+      "bytes": 22483,
+      "sha256": "54b51e761980e576c148850c2a08e64d6a0993807fb82170adc7e53d08159960",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-catalog.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-catalog.receipt.json",
+      "bytes": 1210,
+      "sha256": "f4df3f37a41a14c0e03544d1f5bb6fca73193d140c73e32e690db6951f368be6",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-catalog.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-catalog.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-catalog.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-catalog.stdout",
+      "bytes": 7824,
+      "sha256": "357181557ea443eb134a56b4dd270cf37620ff161ab8c5bd343c60a86eae5fbb",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-compact.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-compact.receipt.json",
+      "bytes": 808,
+      "sha256": "5df1a5247a7af440d4704acd72a2c9d014c0df0b2e3d3db49bdbd38d46a54e66",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-compact.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-compact.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-compact.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-compact.stdout",
+      "bytes": 32258,
+      "sha256": "cf17807064bd7a513cbad8de00b2e5e3ddae865ae0a69dea7a9f5909dce81a96",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-cursor.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-cursor.receipt.json",
+      "bytes": 836,
+      "sha256": "e9e2a0863965da56f9cda456927dffda248d6cc25a1807ce4531a2a9a4cc22b3",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-cursor.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-cursor.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-cursor.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-cursor.stdout",
+      "bytes": 23126,
+      "sha256": "11e0d9806963f48cbe8ab49f86ff4219f82662737765386451d1835e61f14359",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-detail-deleted-cwd.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-detail-deleted-cwd.receipt.json",
+      "bytes": 1635,
+      "sha256": "306dc0eb1ad1b479108a799f5a119b0b98461b3b8fc9bd53c8c2fd546fa7f86e",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-detail-deleted-cwd.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-detail-deleted-cwd.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-detail-deleted-cwd.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-detail-deleted-cwd.stdout",
+      "bytes": 10320,
+      "sha256": "1458b470497d83e228bb18c375e75c4374462f48f693a1aaf43696ca1b3c864b",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-detail-pinned.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-detail-pinned.receipt.json",
+      "bytes": 1679,
+      "sha256": "6cd7d42a8f5e718a5554ece0daefe66dd553cd7bce83f331bb5e793e48ae078f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-detail-pinned.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-detail-pinned.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-detail-pinned.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-detail-pinned.stdout",
+      "bytes": 10320,
+      "sha256": "1458b470497d83e228bb18c375e75c4374462f48f693a1aaf43696ca1b3c864b",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-detail.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-detail.receipt.json",
+      "bytes": 1579,
+      "sha256": "8b0766c35ce5b26521d054b7e83a5232459401b391084965a14643ed400e4497",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-detail.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-detail.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-detail.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-detail.stdout",
+      "bytes": 10320,
+      "sha256": "1458b470497d83e228bb18c375e75c4374462f48f693a1aaf43696ca1b3c864b",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-dictionary-detail-compact-clap.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-dictionary-detail-compact-clap.receipt.json",
+      "bytes": 1580,
+      "sha256": "fa2bac491e6cc62e7aaabfde20e85ee960e4e6e284cb73e6d6261dd0c1cd7891",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-dictionary-detail-compact-clap.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-dictionary-detail-compact-clap.stderr",
+      "bytes": 128,
+      "sha256": "b73f0dd9806491a07a72d296fe41d9655fe26d782efef5fbe0ecda43ce199dc1",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-dictionary-detail-compact-clap.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-dictionary-detail-compact-clap.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-final-list.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-final-list.receipt.json",
+      "bytes": 728,
+      "sha256": "2a9491bf21f334bd14d4f5aefed2540fa758d8e829b1485ad5467d7e65f6ed0f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-final-list.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-final-list.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-final-list.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-final-list.stdout",
+      "bytes": 27086,
+      "sha256": "b3b1a8a6652bb63381f1e10cc487ea524523671133ca9c7c7872a712188bc2c7",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-final-profiles.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-final-profiles.receipt.json",
+      "bytes": 754,
+      "sha256": "9859fc901a5a1a79ce2c8ffc547945a2fb0ba264494c941394ddfb16a32e0d2c",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-final-profiles.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-final-profiles.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-final-profiles.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-final-profiles.stdout",
+      "bytes": 631,
+      "sha256": "aa3a2ae0a2d0876c2cc129dcfff811c1b46996b2e18c654e52d7e0db217aeb17",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-local-compact.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-local-compact.receipt.json",
+      "bytes": 968,
+      "sha256": "4ecf0c26cdc4680964c03ede8f0c4a3f31b19a153e7b344b7bcf81c0d3967be9",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-local-compact.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-local-compact.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-local-compact.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-local-compact.stdout",
+      "bytes": 20150,
+      "sha256": "91a51f4b5f5c25249dad1814d6668e13993f1b11078412e74501b64155fb8e7d",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-local.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-local.receipt.json",
+      "bytes": 968,
+      "sha256": "ed3d782766aa36140778543b58a124d8cb8d40551dede63552733ad22b5f5161",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-local.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-local.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-local.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-local.stdout",
+      "bytes": 6867,
+      "sha256": "481979b69eddb52270ecb25f9daec288fced71a0aa1c37996145afafdccd539d",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-lookup-detail-compact-clap.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-lookup-detail-compact-clap.receipt.json",
+      "bytes": 1548,
+      "sha256": "d262f8f37b008420c362742fbbc3231a6197197c15187358e859f6115050f866",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-lookup-detail-compact-clap.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-lookup-detail-compact-clap.stderr",
+      "bytes": 128,
+      "sha256": "b73f0dd9806491a07a72d296fe41d9655fe26d782efef5fbe0ecda43ce199dc1",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-lookup-detail-compact-clap.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-lookup-detail-compact-clap.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-managed-deleted-cwd.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-managed-deleted-cwd.receipt.json",
+      "bytes": 864,
+      "sha256": "2e012d648a8dca5f0e50dd5f2d397cb2e5259aa20fa7fa6f10b2f48e14748395",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-managed-deleted-cwd.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-managed-deleted-cwd.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-managed-deleted-cwd.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-managed-deleted-cwd.stdout",
+      "bytes": 10639,
+      "sha256": "ea5196df6bd399b63b31b11e4c20f356dee88f59d8473932abb77b1f04a1256d",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-readable.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-readable.receipt.json",
+      "bytes": 809,
+      "sha256": "10afc5b0cc12c8a4a2661af7f05076ef5d5062c9156ee5bb1ccc24e3b59379cf",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-readable.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-readable.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-readable.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-readable.stdout",
+      "bytes": 10639,
+      "sha256": "ea5196df6bd399b63b31b11e4c20f356dee88f59d8473932abb77b1f04a1256d",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-compact.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-compact.receipt.json",
+      "bytes": 807,
+      "sha256": "f9282d5e6c65b949dbe01dc7724d8b840616a07526baf8b9e60d7004f4b54c1f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-compact.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-compact.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-compact.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-compact.stdout",
+      "bytes": 32258,
+      "sha256": "4ce8def5b5de0569d04bf2450ed4ac0a15d13eee725848342ec67440e5882f0f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-detail-oldsnapshot.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-detail-oldsnapshot.receipt.json",
+      "bytes": 1678,
+      "sha256": "86bced542703733df949ec2f443d6e3f18cb412930df2ed1ef5fbb25565d5487",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-detail-oldsnapshot.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-detail-oldsnapshot.stderr",
+      "bytes": 4126,
+      "sha256": "fbb4dad1fe11f8fc5463d20a790c1617cc2d7ea67804f158b335afc6e5cb689a",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-detail-oldsnapshot.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-detail-oldsnapshot.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-detail.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-detail.receipt.json",
+      "bytes": 1580,
+      "sha256": "d601c700342751ea9104f45da19bb03e2f4fae043cab324bea0cb94170d795de",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-detail.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-detail.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-detail.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-detail.stdout",
+      "bytes": 10320,
+      "sha256": "df9f7ed013d2495d94d40a345b7d77a717b843694e91522865ef2c8255b0f9b0",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-readable.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-readable.receipt.json",
+      "bytes": 809,
+      "sha256": "a55081a7830c59da7f4e267bbef2201e0d604032f85046e9672a0dfc820aabf8",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-readable.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-readable.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-restored-readable.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-restored-readable.stdout",
+      "bytes": 10639,
+      "sha256": "fa1c7f71e8ab1a8937f08cb57185c8e9df5067b0558b20764d86d7b4dc47919f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-retained-old-store.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-retained-old-store.receipt.json",
+      "bytes": 877,
+      "sha256": "9922cec355b228990e20c845c7accbda240434291b69e4d07fcbd805fe101621",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-retained-old-store.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-retained-old-store.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-retained-old-store.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-retained-old-store.stdout",
+      "bytes": 6204,
+      "sha256": "ffd6a6e77fdc56d1f2aeb77963650fb816deddb3d0ae6a62622cd11c18533f8e",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-standalone-deleted-cwd.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-standalone-deleted-cwd.receipt.json",
+      "bytes": 937,
+      "sha256": "02602e0eb83182838dcc4cf19f40088364df4ad5aa4c312f5701392a7d4c2e2b",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-standalone-deleted-cwd.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-standalone-deleted-cwd.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-standalone-deleted-cwd.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-standalone-deleted-cwd.stdout",
+      "bytes": 6204,
+      "sha256": "ffd6a6e77fdc56d1f2aeb77963650fb816deddb3d0ae6a62622cd11c18533f8e",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-catalog.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-catalog.receipt.json",
+      "bytes": 1220,
+      "sha256": "c47a2ad7b5e4a063e3ae7f878f0fa972e5aa4d3986c84e3b2be6fd1bc7ef8cd7",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-catalog.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-catalog.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-catalog.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-catalog.stdout",
+      "bytes": 2788,
+      "sha256": "63b97a3c9b556ceb33d67b6bec91893b64e6f763e648f965db8404d1c45a9811",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-compact.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-compact.receipt.json",
+      "bytes": 877,
+      "sha256": "db293d50b219619ef0af3a3082db13fe17eefdad5641475d83399453e6f4dd8c",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-compact.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-compact.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-compact.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-compact.stdout",
+      "bytes": 27766,
+      "sha256": "eebb39894681bc007e919eb69486ea6dc02b596f5c77e36e28c82d3bd163e740",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-default.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-default.receipt.json",
+      "bytes": 846,
+      "sha256": "ede2d60bb5e2a3cdc6ede02f747ec3c608d502ce26a57c023d823f8052570499",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-default.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-default.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-default.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-default.stdout",
+      "bytes": 30595,
+      "sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-detail.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-detail.receipt.json",
+      "bytes": 1582,
+      "sha256": "6e57e6b2bc60e1f86a6f616db78a808a9d93d0f365dec181273741ba7c48fab8",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-detail.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-detail.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-detail.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-detail.stdout",
+      "bytes": 5387,
+      "sha256": "2498a5c763c5fbd98bebe438d075389d6dcaea9aa6594bac105b36699f1d83d1",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-full.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-full.receipt.json",
+      "bytes": 874,
+      "sha256": "8b8cbc90e33975b18679372bf4f7008986d8c2b5ffa1af9a21dadacbed07b147",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-full.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-full.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-full.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-full.stdout",
+      "bytes": 30595,
+      "sha256": "368d46c41715df2b545c6e9901edf5e8f9f7d5819874626d7ad04cecdad391f6",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-local.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-local.receipt.json",
+      "bytes": 978,
+      "sha256": "5ed078577aed09dc3d1318df67ebab5a8105cf377262e76d11c553800c5a686f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-local.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-local.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-local.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-local.stdout",
+      "bytes": 1907,
+      "sha256": "d1c278c3887b790d8c619ae99128c00176a50ed78be1d18066e2a4656b72596f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-readable.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-readable.receipt.json",
+      "bytes": 877,
+      "sha256": "4dfa67f400b8db1ed910da33018e211706dbb4e7db7493759cebede0c306c994",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-readable.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-readable.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/W5-store-readable.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W5-store-readable.stdout",
+      "bytes": 6204,
+      "sha256": "ffd6a6e77fdc56d1f2aeb77963650fb816deddb3d0ae6a62622cd11c18533f8e",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/config.toml",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/config.toml",
+      "bytes": 214,
+      "sha256": "7e07f6cf96a62746d5148d74506c4ddf66b893552d73ed78b6aa68c2065d09e9",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/manifest.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/manifest.json",
+      "bytes": 489,
+      "sha256": "5fed8ed90a55828c88990ec47f6fcbed7cd0a331f212758285400ef62ea548b7",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/summary.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/summary.json",
+      "bytes": 268,
+      "sha256": "637a6db8507d6f12e83da77a8316f121b1a0f869abfeed71ee1d4754e8e0ea39",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/after-list.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/after-list.receipt.json",
+      "bytes": 729,
+      "sha256": "6f51ed7b37f41e3584edc8317997fe0679021c3c2b2ec9993d9e064533d471bf",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/after-list.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/after-list.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/after-list.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/after-list.stdout",
+      "bytes": 49942,
+      "sha256": "8bce5caf2ec1cb07c59c0fee8f6b8fd8c00bc64e430ad8ece251fd7b3be39e66",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/after-profiles.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/after-profiles.receipt.json",
+      "bytes": 754,
+      "sha256": "fcfb9bd186fd8cad8a4aea0cf2f0f2340aa4a7ba773f1eb858e7122574aa3720",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/after-profiles.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/after-profiles.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/after-profiles.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/after-profiles.stdout",
+      "bytes": 631,
+      "sha256": "aa3a2ae0a2d0876c2cc129dcfff811c1b46996b2e18c654e52d7e0db217aeb17",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/before-list.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/before-list.receipt.json",
+      "bytes": 729,
+      "sha256": "d5a3cc6c335e2bbeba98e01322c23dc5e0242a80f789f428b57598871d9d214b",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/before-list.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/before-list.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/before-list.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/before-list.stdout",
+      "bytes": 27086,
+      "sha256": "b3b1a8a6652bb63381f1e10cc487ea524523671133ca9c7c7872a712188bc2c7",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/before-profiles.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/before-profiles.receipt.json",
+      "bytes": 754,
+      "sha256": "72f7784e666a78f1c229dbe7ce97b7e8765d71255d0647a238662cac8ef47fe4",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/before-profiles.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/before-profiles.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/before-profiles.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/before-profiles.stdout",
+      "bytes": 631,
+      "sha256": "aa3a2ae0a2d0876c2cc129dcfff811c1b46996b2e18c654e52d7e0db217aeb17",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/identical-update.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/identical-update.receipt.json",
+      "bytes": 881,
+      "sha256": "9658ee773094798ac674e35cbee6e3cf631dc998448b6d1707da9b99841363a1",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/identical-update.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/identical-update.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/identical-update.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/identical-update.stdout",
+      "bytes": 1997,
+      "sha256": "cd20c07d75d57fc1f8b93fa8a357a14736bef6e24dc7d8e30de0bf9aa1e28249",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/old-g1-after.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/old-g1-after.receipt.json",
+      "bytes": 877,
+      "sha256": "401cc2dcf94878be6552c91a16f8becd1f85756a0683269e3f3997255feed492",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/old-g1-after.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/old-g1-after.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/old-g1-after.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/old-g1-after.stdout",
+      "bytes": 6204,
+      "sha256": "ffd6a6e77fdc56d1f2aeb77963650fb816deddb3d0ae6a62622cd11c18533f8e",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/old-g1-before.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/old-g1-before.receipt.json",
+      "bytes": 877,
+      "sha256": "5e391d23ac2ed9dd31eace41be866ff1ff888f98d3b26fbf07fa38b10f6f6682",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/old-g1-before.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/old-g1-before.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/old-g1-before.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/old-g1-before.stdout",
+      "bytes": 6204,
+      "sha256": "ffd6a6e77fdc56d1f2aeb77963650fb816deddb3d0ae6a62622cd11c18533f8e",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/rebuild.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/rebuild.receipt.json",
+      "bytes": 766,
+      "sha256": "f8bd80ef76ea7256e34a2b22337c7e1a2e260f4950a66e5a52cd4bc5e36698c8",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/rebuild.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/rebuild.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/rebuild.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/rebuild.stdout",
+      "bytes": 2025,
+      "sha256": "0238a5175b8aab5c7ebe1385c2bea3f9f3d897202ec235f1f1ad2bfe6054be4f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/rebuilt-compact.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/rebuilt-compact.receipt.json",
+      "bytes": 808,
+      "sha256": "9c85436d35190769713aad481577ea581dfea757d0b0a8aa96ab67505eb9a0db",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/rebuilt-compact.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/rebuilt-compact.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/rebuilt-compact.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/rebuilt-compact.stdout",
+      "bytes": 32258,
+      "sha256": "b37db8d8d954581096c26f50422d396b7db9c5d1b49f2ac5f7eebbdd0799c4a3",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/rebuilt-readable.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/rebuilt-readable.receipt.json",
+      "bytes": 809,
+      "sha256": "49f83c5e6dba24e0ecd0eb593c41308a359defcab101c0883d70b5359fcdccb6",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/rebuilt-readable.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/rebuilt-readable.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/rebuilt-readable.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/rebuilt-readable.stdout",
+      "bytes": 10639,
+      "sha256": "560cffd94351a148e6f675d2c3bb9afc1a7ac988a67bc36c809b671b6b52c26c",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/reconcile.receipt.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/reconcile.receipt.json",
+      "bytes": 733,
+      "sha256": "d7379acb86a50cbc215d2e1175f5dc8938e6eb478980dd85919b19e0f43d83f6",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/reconcile.stderr",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/reconcile.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/reconcile.stdout",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/reconcile.stdout",
+      "bytes": 1933,
+      "sha256": "a1388423ecccd29f292a0f28f38d54609a216ddadaf2e96ff96e742ba19db115",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/post-journey/summary.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/summary.json",
+      "bytes": 7156,
+      "sha256": "33a7278ae5e29cf5b3f3ac094922e723195b80ee94aa1b26b00f8fa43551c58f",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/packs/la-lojban/release.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/packs/la-lojban/release.json",
+      "bytes": 4995,
+      "sha256": "7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/packs/la-lojban/seal.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/packs/la-lojban/seal.json",
+      "bytes": 474,
+      "sha256": "7c36e2fc7ddf2bac3652071a98858d05981f675004e04283f53dfd11d1d92ed3",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/packs/lensisku-jbotci/release.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/packs/lensisku-jbotci/release.json",
+      "bytes": 8417,
+      "sha256": "5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/packs/lensisku-jbotci/seal.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/packs/lensisku-jbotci/seal.json",
+      "bytes": 603,
+      "sha256": "7211e26c78e6a1a8e4b809a239ad9ed564e5bb5f451c82ffa7a11a9f3e121ef3",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/packs/llg/release.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/packs/llg/release.json",
+      "bytes": 10174,
+      "sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/packs/llg/seal.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/packs/llg/seal.json",
+      "bytes": 938,
+      "sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/packs/sutysisku/release.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/packs/sutysisku/release.json",
+      "bytes": 9148,
+      "sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "cli/packs/sutysisku/seal.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/packs/sutysisku/seal.json",
+      "bytes": 473,
+      "sha256": "d95739ffd58c641cdfd258b116d961548c80b32229588301663897c4b57b0d3d",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "public/readable-context.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-context.json",
+      "bytes": 21636,
+      "sha256": "b5a49140f4ffd9b887c2a17e33c85bdeefea2f22facf8f161f58f62e8aa0314e",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "public/caller-context.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/caller-context.json",
+      "bytes": 4174,
+      "sha256": "715a5b24c44be56e2e9beb1a538a499fd45a512dbb601e185bad91079d7aa13b",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "public/shared-assertion/summary.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/shared-assertion/summary.json",
+      "bytes": 6427,
+      "sha256": "6afb8d591d85bb4b75562c8bcd068b7abfc008c2464c7bac7d3cd2d1bcff0d36",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "public/shared-entry/summary.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/shared-entry/summary.json",
+      "bytes": 7065,
+      "sha256": "ea5e4880c3433b33cac9772c19977fdf4545d9b5799e7f87d6adf6671205ff7a",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "public/shared-entry/pre-install-expectations.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/shared-entry/pre-install-expectations.json",
+      "bytes": 3252,
+      "sha256": "b053e9f9f6ae50b108585139c1005e47361ada39fcae234c5b9851465fd3e2dc",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "inputs/la-lojban/release.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/la-lojban/release.json",
+      "bytes": 4995,
+      "sha256": "7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "inputs/la-lojban/seal.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/la-lojban/seal.json",
+      "bytes": 474,
+      "sha256": "7c36e2fc7ddf2bac3652071a98858d05981f675004e04283f53dfd11d1d92ed3",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "inputs/lensisku-jbotci/release.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/lensisku-jbotci/release.json",
+      "bytes": 8417,
+      "sha256": "5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "inputs/lensisku-jbotci/seal.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/lensisku-jbotci/seal.json",
+      "bytes": 603,
+      "sha256": "7211e26c78e6a1a8e4b809a239ad9ed564e5bb5f451c82ffa7a11a9f3e121ef3",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "inputs/llg/release.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/llg/release.json",
+      "bytes": 10174,
+      "sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "inputs/llg/seal.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/llg/seal.json",
+      "bytes": 938,
+      "sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "inputs/sutysisku/release.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/sutysisku/release.json",
+      "bytes": 9148,
+      "sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c",
+      "kind": "whole-review-original"
+    },
+    {
+      "path": "inputs/sutysisku/seal.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/sutysisku/seal.json",
+      "bytes": 473,
+      "sha256": "d95739ffd58c641cdfd258b116d961548c80b32229588301663897c4b57b0d3d",
+      "kind": "whole-review-original"
+    }
+  ],
+  "exclusions": "Shared target binary and newly owned Tiny DBs remain local; hashes/paths in receipts/inventories. No retained Full data copied/read except permitted saved-output comparisons. Manifest excludes its own later bytes."
+}

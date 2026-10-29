@@ -1,0 +1,90 @@
+Detail assertion-a: Resolved
+snapshot: "3333333333333333333333333333333333333333333333333333333333333333"
+reason: null
+current_eligible: true
+reference: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"source-a","entry_id":"entry-a","assertion_id":"assertion-a","occurrence":{"capture":{"namespace":"fixture:readable","sha256":"0000000000000000000000000000000000000000000000000000000000000000"},"locator":"/0"},"entry_sha256":"1111111111111111111111111111111111111111111111111111111111111111","assertion_sha256":"2222222222222222222222222222222222222222222222222222222222222222","native_entry_id":null,"native_assertion_id":null,"contributor_id":null,"distributor_id":null}
+hit: {
+  "occurrence_id": "00",
+  "entry": {
+    "id": "entry-a",
+    "source": "source-a",
+    "spelling": {
+      "Value": "farvi"
+    },
+    "language": "Missing",
+    "script": "Null",
+    "native_word_class": "Missing",
+    "selmaho": "Missing",
+    "mapped_pos": "Missing"
+  },
+  "assertion": {
+    "id": "assertion-a",
+    "entry": "entry-a",
+    "occurrence": {
+      "capture": {
+        "namespace": "fixture:readable",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "locator": "/0"
+    },
+    "native_sense_id": "Null",
+    "language": "Missing",
+    "definition": {
+      "Value": {
+        "text": "é\n\"quoted\"",
+        "language": "Missing",
+        "markup": "Null"
+      }
+    },
+    "source_score": {
+      "Value": "1e+9999"
+    },
+    "timestamps": [],
+    "eligibility": "Lexical"
+  },
+  "capture": {
+    "source_name": "Fixture é",
+    "format_label": "json",
+    "locator": "memory:readable",
+    "revision": "Missing",
+    "captured_at": "Null",
+    "time_precision": "Unknown",
+    "notice_locator": "Missing"
+  },
+  "raw": {
+    "locator": "/0",
+    "fields": [
+      {
+        "name": "score",
+        "encoding": "Json",
+        "raw_value": "1e+9999"
+      }
+    ],
+    "raw_line": null
+  },
+  "snapshot_attribution": {
+    "snapshot": {
+      "namespace": "fixture:readable",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "source": "source-a",
+    "distributor": null
+  },
+  "occurrence_attribution": null,
+  "contributor": null,
+  "distributor": null,
+  "release_ids": [
+    "release-a"
+  ],
+  "contexts": [],
+  "frames": [],
+  "forms": [],
+  "etymologies": [],
+  "relations": [],
+  "editorial_senses": [],
+  "computations": [],
+  "annotations": [],
+  "extensions": [],
+  "owned_revision_ids": [],
+  "tombstoned_by": []
+}

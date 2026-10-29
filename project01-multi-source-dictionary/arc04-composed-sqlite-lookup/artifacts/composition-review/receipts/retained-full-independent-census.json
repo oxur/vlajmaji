@@ -1,0 +1,40 @@
+{
+  "requests": 486,
+  "prime": 243,
+  "measured": 243,
+  "expected_wrong_role_errors": 18,
+  "facts_or_expected_errors_equal_all54_preinput": true,
+  "same_id_mode_groups": 81,
+  "observations_per_group": 3,
+  "latency_groups_excepted": 21,
+  "observed_overruns": 63,
+  "maximum_warm_rss": 3108241408,
+  "metrics": {
+    "full:jbotci-local": {
+      "median_ns": 1180421250,
+      "maximum_ns": 1219411167
+    },
+    "full:jbotci-catalogue-native333": {
+      "median_ns": 1259446709,
+      "maximum_ns": 1267464417
+    },
+    "compact:jbotci-local": {
+      "median_ns": 1907015584,
+      "maximum_ns": 1909284667
+    },
+    "compact:jbotci-catalogue-native333": {
+      "median_ns": 2030318917,
+      "maximum_ns": 2062029708
+    },
+    "readable:jbotci-local": {
+      "median_ns": 1905693292,
+      "maximum_ns": 1906492000
+    },
+    "readable:jbotci-catalogue-native333": {
+      "median_ns": 2025760250,
+      "maximum_ns": 2039281250
+    }
+  },
+  "scope": "saved raw outputs only; no product/Full DB/config invocation; original source011 identity retained",
+  "parser_attempt_preserved": "initial parser wrongly demanded every request ok:true/facts, including explicit wrong-role; AssertionError before output. Correct parser checks expected error and profile:null, no product rerun."
+}

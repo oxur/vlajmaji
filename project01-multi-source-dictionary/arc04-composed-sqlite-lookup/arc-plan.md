@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/fivearcDONEfiveOPEN. S05production011 correctness/output/resources complete bytimingamendment; test-onlycandidate9026/DraftPR6 currentCI TERMINAL SUCCESS/freshactualW1–W5+canonical pending. |
-| version / date | 1.35 /2026-10-28 |
+| status | ACTIVE; S01–S04 CLOSED/fivearcDONEfiveOPEN. S05production011 correctness/output/resources complete bytimingamendment; test-onlycandidate9026/DraftPR6 currentCI TERMINAL SUCCESS/freshactualW1–W5 technicalACCEPTED/canonical pending. |
+| version / date | 1.36 /2026-10-28 |
 | authority | Autonomous THROUGHARC04 ONLY; explicit ninthONEtestfile correction/validate/push/PR humanstatement2026-10-28. Same roles/models; exactrootdelivery/PR6 authorized, noautomatic10/Fullreplay/Arc05/merge/publication. Older authority/checkpoints below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
@@ -298,3 +298,8 @@ Root explicit disposition STOP implementation/performance execution: SIXTHpass+S
 ### Version1.35 — current9026 hosted CI / fresh review readiness,2026-10-28
 
 Both exactHEAD PUSH40793790640/PR40793813316 all3jobs terminalSUCCESS; per-run platform/feature populations and whole originals are preserved in S05 artifacts/ci-iteration08-final01. Prior redCI/localfixture setup failure remain historical failures. Fresh NEW Sol actual bounded public+CLI/same-root update/rebuild/oldG1 composition and SAMEreviewer canonical packet still required; all6S05/fivearc/all14projectOPEN. DraftPR6 staysdraft; no Arc05/merge/publication.
+
+
+### Version1.36 — S05/fresh composition technical acceptance and proposedclose,2026-10-28
+
+S05 source9026/tree836 has actualfresh public+CLI/same-root W1–W5 technical ACCEPTED, both currentCI green, retainedsource011 completeFull correctness/output/resources under explicitlatencyexception. This finishes allfive usefulincrements technically; no structuralnew slice or architecturechange is needed. BL-0001 remainsoptional, historicalbudgetsFALSE21groups63; currentFull/Compact/Readable output and observedresources retain limits. Publicaddedobserverfailed1/childexitunknown preserved, originalremaining75CLIchildren pass; no repeatFull/public or criterionwaiver. All6S05/fivearc statuses stayOPEN pending SAMEreviewer canonicalandroot consistency; intendedmechanicalclose30child/10arcDONE, all14projectOPEN, A05/A06unactivated. Body/status/provenance updated; no scope/owner/amendment inferred beyond recordedoperator decisions.

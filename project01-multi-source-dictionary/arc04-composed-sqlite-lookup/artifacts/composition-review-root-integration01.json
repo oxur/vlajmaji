@@ -1,0 +1,61 @@
+{
+  "status": "ROOT_PURE_SAVED_OUTPUT_INTEGRATION_VERIFIED_NOT_CANONICAL_ACCEPTANCE",
+  "source": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+  "actual_child_receipts": 75,
+  "expected_exit_counts": {
+    "0": 69,
+    "1": 4,
+    "2": 2
+  },
+  "all_stdout_stderr_sizes_hashes_recomputed": true,
+  "actual_outer_cli_post_direct_exit": [
+    0,
+    0
+  ],
+  "compact_whole_comparisons": {
+    "contexts": [
+      "managedinstalled",
+      "standalone",
+      "restored",
+      "rebuilt"
+    ],
+    "hits_each": 5,
+    "checks": "every entire decodedEntry/Assertion equals preinput context AND fullhit; all13field keys equal preinput; exactorderedIDs/totals/groups"
+  },
+  "readable_detail_whole_comparisons": {
+    "contexts": [
+      "managed",
+      "standalone",
+      "restored",
+      "deletedcwd",
+      "pinnedsnapshot"
+    ],
+    "complete_prettyHit": "decodedcompletebodyequalsactualFullhit; existingliteral typedRawJson/format assertions preserved"
+  },
+  "public": "34actualsourceassertiontraces+whole6/6/5/5/finalsource statement verified separately; observerwrapper1 remainsFAILED, childexitUNKNOWN/RSS unavailable, no publicreplay",
+  "method": "pure saved-output/receipt reads only; root initialReadableJSON parsing assumption corrected using actualReadable hit: body; no product failure/source/runtime rerun",
+  "technical_and_canonical": "independentfreshtechnical report still writing; same-reviewer canonical required; allledgersOPEN",
+  "raw_reference_root": "/tmp/vlajmaji-p01-a04-arc-review02",
+  "pins": [
+    {
+      "path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/cli.json",
+      "bytes": 1534,
+      "sha256": "5432795798af509ff24fc0307f3e84c4b436ea22ef29e2f4d792841ba463a1e9"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-arc-review02/receipts/post.json",
+      "bytes": 1541,
+      "sha256": "cd80ec6e6b34078b9cb552599ef9375779582dbc0daedc1d0bad4e1fd7d3fb66"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/W3-default.stdout",
+      "bytes": 35084,
+      "sha256": "86d1f82bc7b6de92ac0fd73f0752a844f98e1ea88dda430e64be00eafdf8a1a8"
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/rebuilt-compact.stdout",
+      "bytes": 32258,
+      "sha256": "b37db8d8d954581096c26f50422d396b7db9c5d1b49f2ac5f7eebbdd0799c4a3"
+    }
+  ]
+}

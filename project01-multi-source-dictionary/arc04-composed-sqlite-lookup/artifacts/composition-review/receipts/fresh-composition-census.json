@@ -1,0 +1,60 @@
+{
+  "cli_children": 64,
+  "post_children": 11,
+  "actual_expected_exit_counts": {
+    "0": 69,
+    "1": 4,
+    "2": 2
+  },
+  "all_stdout_stderr_hashes_match": true,
+  "complete_compact_hit_fields_equal_full": {
+    "states": [
+      "installed managed",
+      "installed standalone",
+      "exact-restored managed",
+      "rebuilt managed"
+    ],
+    "five_hits_per_state": 5,
+    "all_projected_fields_and_13field_input_keys": true
+  },
+  "default_full_byte_equality": true,
+  "oldG1_readable_byte_equality": true,
+  "input_hashes": [
+    {
+      "pack_id": "lensisku-jbotci",
+      "release": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/lensisku-jbotci/release.json",
+      "release_sha256": "5349b699d54026d8dd23fd0662fa5a48817a013a39910005777d9e43117c880c",
+      "seal": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/lensisku-jbotci/seal.json",
+      "seal_sha256": "7211e26c78e6a1a8e4b809a239ad9ed564e5bb5f451c82ffa7a11a9f3e121ef3"
+    },
+    {
+      "pack_id": "llg",
+      "release": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/llg/release.json",
+      "release_sha256": "231aafa5fcb0bbca4af41155b925bdd42dcf79db85991b7417c4acb39e060146",
+      "seal": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/llg/seal.json",
+      "seal_sha256": "acf5a5bdd98e1887115d7d9303ec6c9c1e7b2112e17832027467e354ccef65dc"
+    },
+    {
+      "pack_id": "la-lojban",
+      "release": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/la-lojban/release.json",
+      "release_sha256": "7f52af418fb676bd1822991fb887939f5a406f217d23a78a2eacfbaaa0a7db03",
+      "seal": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/la-lojban/seal.json",
+      "seal_sha256": "7c36e2fc7ddf2bac3652071a98858d05981f675004e04283f53dfd11d1d92ed3"
+    },
+    {
+      "pack_id": "sutysisku",
+      "release": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/sutysisku/release.json",
+      "release_sha256": "8dc6280370c6a0e0eb607dcc2ef3d5e7dfbfa37a813e8df3a61c56689740b52c",
+      "seal": "/tmp/vlajmaji-p01-a04-arc-review02/public/readable-inputs/sutysisku/seal.json",
+      "seal_sha256": "d95739ffd58c641cdfd258b116d961548c80b32229588301663897c4b57b0d3d"
+    }
+  ],
+  "cli_revision": 3,
+  "post_summary": "same original CLI root update3/3 unchanged then rebuild4/3; oldG1 preserved",
+  "actual_child_tmpdir_mapping": {
+    "cli": "/tmp/vlajmaji-p01-a04-arc-review02/cli/tmpdir",
+    "post": "/tmp/vlajmaji-p01-a04-arc-review02/cli/post-journey/tmp"
+  },
+  "scope": "pure analysis after exactly one CLI journey and one same-root postscript; no new child",
+  "prior_parser_failure": "extra parenthesis SyntaxError before parsing/IO; corrected pure analysis, no product replay"
+}

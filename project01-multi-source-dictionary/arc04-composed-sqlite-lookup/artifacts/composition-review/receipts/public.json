@@ -1,0 +1,39 @@
+{
+  "stage": "public",
+  "argv": [
+    "/usr/bin/time",
+    "-l",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/release/vlajmaji-arc04-independent-review-01",
+    "/tmp/vlajmaji-p01-a04-arc-review02/public"
+  ],
+  "cwd": "/tmp/vlajmaji-p01-a04-arc-review02",
+  "environment": {
+    "HOME": "/tmp/vlajmaji-p01-a04-arc-review02/home",
+    "XDG_CONFIG_HOME": "/tmp/vlajmaji-p01-a04-arc-review02/xdg-config",
+    "XDG_DATA_HOME": "/tmp/vlajmaji-p01-a04-arc-review02/xdg-data",
+    "TMPDIR": "/tmp/vlajmaji-p01-a04-arc-review02/tmp",
+    "PATH": "/Users/oubiwann/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.11/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "CARGO_HOME": "/Users/oubiwann/.cargo",
+    "RUSTUP_HOME": "/Users/oubiwann/.rustup",
+    "CARGO_TARGET_DIR": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+    "CARGO_NET_OFFLINE": "true",
+    "LANG": "C.UTF-8"
+  },
+  "unset": [
+    "RELOJBAN_RESEARCH_ROOT"
+  ],
+  "exit": 1,
+  "timeout": false,
+  "active_process_group_timeout_seconds": 600,
+  "elapsed_seconds": 2.1792554995045066,
+  "pid": 5667,
+  "stdout": {
+    "bytes": 13030,
+    "sha256": "b117c4d08cd6f1cb1c65ea67e55204745e784ea9aaca8b84ab44ea19395b2ee5"
+  },
+  "stderr": {
+    "bytes": 106,
+    "sha256": "533e03353b74199daaac58ae59784f4904921850a8151705148f6def03c48487"
+  },
+  "maximum_rss_bytes": null
+}

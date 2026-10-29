@@ -1,0 +1,100 @@
+{
+  "assertions": [
+    {
+      "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6": {
+        "definition": {
+          "Value": {
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing",
+            "text": "d"
+          }
+        },
+        "eligibility": "Lexical",
+        "entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+        "id": "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+        "language": {
+          "Value": "en"
+        },
+        "native_sense_id": "Missing",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:llg:gismu",
+            "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+          },
+          "locator": "1"
+        },
+        "source_score": "Missing",
+        "timestamps": []
+      }
+    },
+    {
+      "second-llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6": {
+        "definition": {
+          "Value": {
+            "language": {
+              "Value": "en"
+            },
+            "markup": "Missing",
+            "text": "d"
+          }
+        },
+        "eligibility": "Lexical",
+        "entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+        "id": "second-llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+        "language": {
+          "Value": "en"
+        },
+        "native_sense_id": "Missing",
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:second:llg:gismu",
+            "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+          },
+          "locator": "1"
+        },
+        "source_score": "Missing",
+        "timestamps": []
+      }
+    }
+  ],
+  "entry": {
+    "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+    "language": {
+      "Value": "jbo"
+    },
+    "mapped_pos": "Missing",
+    "native_word_class": "Missing",
+    "script": "Missing",
+    "selmaho": "Missing",
+    "source": "llg",
+    "spelling": {
+      "Value": "farvi"
+    }
+  },
+  "per_assertion_memberships": [
+    {
+      "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6": [
+        "llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb"
+      ]
+    },
+    {
+      "second-llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6": [
+        "second-llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb"
+      ]
+    }
+  ],
+  "selected_releases": [
+    [
+      "llg-release-b39e54ac3983d89045775b4e7f6127ec0f71c1985f96fa1719048b4fea3fe993",
+      "llg-release-be0058c0e1f0a34a47a9ad59087c0ebe2473b92d064e7b4dc16b1fa15f6580fb",
+      "llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb"
+    ],
+    [
+      "second-llg-release-b39e54ac3983d89045775b4e7f6127ec0f71c1985f96fa1719048b4fea3fe993",
+      "second-llg-release-be0058c0e1f0a34a47a9ad59087c0ebe2473b92d064e7b4dc16b1fa15f6580fb",
+      "second-llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb"
+    ]
+  ]
+}

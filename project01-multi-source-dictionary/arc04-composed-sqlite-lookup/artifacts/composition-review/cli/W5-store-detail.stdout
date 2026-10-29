@@ -1,0 +1,165 @@
+Detail llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6: Resolved
+snapshot: "2784da0846b193fc7ab2460fccaf99054b46c967f14e5e25c9514462b4e37308"
+reason: null
+current_eligible: true
+reference: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"llg","entry_id":"llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92","assertion_id":"llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6","occurrence":{"capture":{"namespace":"captured:llg:gismu","sha256":"0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"},"locator":"1"},"entry_sha256":"6616f386f916de3028288065ad2f52518a7b268082f387988b41590f1ac61ba1","assertion_sha256":"5a5d803b91a72ca4f57a437cc6c5367c45f8bff7b6cfac50f81f3075db59b7ce","native_entry_id":"farvi","native_assertion_id":null,"contributor_id":null,"distributor_id":null}
+hit: {
+  "occurrence_id": "000000000000001263617074757265643a6c6c673a6769736d75000000000000004030343038666438626631616461653964306461316537666161626233356136633263646636346430313231343062636164666464383134663036316232373335000000000000000131",
+  "entry": {
+    "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+    "source": "llg",
+    "spelling": {
+      "Value": "farvi"
+    },
+    "language": {
+      "Value": "jbo"
+    },
+    "script": "Missing",
+    "native_word_class": "Missing",
+    "selmaho": "Missing",
+    "mapped_pos": "Missing"
+  },
+  "assertion": {
+    "id": "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+    "entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+    "occurrence": {
+      "capture": {
+        "namespace": "captured:llg:gismu",
+        "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+      },
+      "locator": "1"
+    },
+    "native_sense_id": "Missing",
+    "language": {
+      "Value": "en"
+    },
+    "definition": {
+      "Value": {
+        "text": "d",
+        "language": {
+          "Value": "en"
+        },
+        "markup": "Missing"
+      }
+    },
+    "source_score": "Missing",
+    "timestamps": [],
+    "eligibility": "Lexical"
+  },
+  "capture": {
+    "source_name": "The Logical Language Group, Inc.",
+    "format_label": "llg-gismu-fixed-columns",
+    "locator": "https://example.invalid/llg/gismu.txt",
+    "revision": "Missing",
+    "captured_at": "Missing",
+    "time_precision": "Unknown",
+    "notice_locator": {
+      "Value": "https://example.invalid/llg/public_domain.txt"
+    }
+  },
+  "raw": {
+    "locator": "1",
+    "fields": [
+      {
+        "name": "word",
+        "encoding": "Text",
+        "raw_value": "farvi"
+      },
+      {
+        "name": "assigned_rafsi_cvc",
+        "encoding": "Text",
+        "raw_value": "   "
+      },
+      {
+        "name": "assigned_rafsi_ccv",
+        "encoding": "Text",
+        "raw_value": "   "
+      },
+      {
+        "name": "assigned_rafsi_cvv",
+        "encoding": "Text",
+        "raw_value": "    "
+      },
+      {
+        "name": "keyword",
+        "encoding": "Text",
+        "raw_value": "grow                "
+      },
+      {
+        "name": "hint",
+        "encoding": "Text",
+        "raw_value": "                    "
+      },
+      {
+        "name": "definition",
+        "encoding": "Text",
+        "raw_value": "d                                                                                               "
+      }
+    ],
+    "raw_line": " farvi              grow                                      d                                                                                               "
+  },
+  "snapshot_attribution": {
+    "snapshot": {
+      "namespace": "captured:llg:gismu",
+      "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+    },
+    "source": "llg",
+    "distributor": null
+  },
+  "occurrence_attribution": {
+    "occurrence": {
+      "snapshot": {
+        "namespace": "captured:llg:gismu",
+        "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+      },
+      "locator": "1"
+    },
+    "contributor": null,
+    "native_entry_id": "farvi",
+    "native_assertion_id": null
+  },
+  "contributor": null,
+  "distributor": null,
+  "release_ids": [
+    "llg-release-d700e735e6cc3de526f702ce9c29bfdb9431878590246b445d720d81f6afb1bb"
+  ],
+  "contexts": [
+    {
+      "id": "llg-context-79b9015fed531c8a95cc953de903e9e2016d8cc459a5dff16df78e0560e6ddf8",
+      "assertion": "llg-assertion-35a9b06d187cc327730de118c2fcf4251f7cfd571d55e253dfd3500dcfe231e6",
+      "kind": "Gloss",
+      "value": {
+        "Value": {
+          "text": "grow",
+          "language": {
+            "Value": "en"
+          },
+          "markup": "Missing"
+        }
+      },
+      "translated_from": null,
+      "evidence": {
+        "occurrence": {
+          "capture": {
+            "namespace": "captured:llg:gismu",
+            "sha256": "0408fd8bf1adae9d0da1e7faabb35a6c2cdf64d012140bcadfdd814f061b2735"
+          },
+          "locator": "1"
+        },
+        "field_index": 4,
+        "citation": "Missing",
+        "offset": null
+      }
+    }
+  ],
+  "frames": [],
+  "forms": [],
+  "etymologies": [],
+  "relations": [],
+  "editorial_senses": [],
+  "computations": [],
+  "annotations": [],
+  "extensions": [],
+  "owned_revision_ids": [],
+  "tombstoned_by": []
+}

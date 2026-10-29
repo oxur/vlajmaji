@@ -1,0 +1,149 @@
+{
+  "method": "pending stderr Running header becomes active only on stdout running N tests; no cross-step pooling",
+  "runs": {
+    "push": [
+      {
+        "line": 2391,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --locked",
+        "target": "tests/collections_lifecycle_contract.rs",
+        "text": "2026-10-29T00:25:14.7420434Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 2402,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --locked",
+        "target": "tests/collections_maintenance_contract.rs",
+        "text": "2026-10-29T00:25:15.2350941Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 2464,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:25:17.5086643Z test test_dictionary_compact_query_reports_full_device_output_failure ... ok"
+      },
+      {
+        "line": 2467,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:25:18.4720163Z test test_managed_compact_lookup_and_detail_report_full_device_envelopes ... ok"
+      },
+      {
+        "line": 2469,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:25:20.3770028Z test test_managed_compact_routes_roundtrip_native_root_and_config ... ok"
+      },
+      {
+        "line": 3406,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --all-features --locked",
+        "target": "tests/collections_lifecycle_contract.rs",
+        "text": "2026-10-29T00:28:17.5540972Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 3417,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --all-features --locked",
+        "target": "tests/collections_maintenance_contract.rs",
+        "text": "2026-10-29T00:28:18.2966662Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 3479,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --all-features --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:28:21.1416732Z test test_dictionary_compact_query_reports_full_device_output_failure ... ok"
+      },
+      {
+        "line": 3481,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --all-features --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:28:21.3676565Z test test_managed_compact_lookup_and_detail_report_full_device_envelopes ... ok"
+      },
+      {
+        "line": 3485,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --all-features --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:28:21.8395337Z test test_managed_compact_routes_roundtrip_native_root_and_config ... ok"
+      }
+    ],
+    "pr": [
+      {
+        "line": 1392,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --locked",
+        "target": "tests/collections_lifecycle_contract.rs",
+        "text": "2026-10-29T00:25:40.6638091Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 1402,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --locked",
+        "target": "tests/collections_maintenance_contract.rs",
+        "text": "2026-10-29T00:25:41.1906584Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 1464,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:25:43.2881917Z test test_dictionary_compact_query_reports_full_device_output_failure ... ok"
+      },
+      {
+        "line": 1467,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:25:43.5433529Z test test_managed_compact_lookup_and_detail_report_full_device_envelopes ... ok"
+      },
+      {
+        "line": 1470,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:25:45.0804197Z test test_managed_compact_routes_roundtrip_native_root_and_config ... ok"
+      },
+      {
+        "line": 2406,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --all-features --locked",
+        "target": "tests/collections_lifecycle_contract.rs",
+        "text": "2026-10-29T00:28:35.2818499Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 2417,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --all-features --locked",
+        "target": "tests/collections_maintenance_contract.rs",
+        "text": "2026-10-29T00:28:35.9740402Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok"
+      },
+      {
+        "line": 2479,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --all-features --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:28:40.3412152Z test test_dictionary_compact_query_reports_full_device_output_failure ... ok"
+      },
+      {
+        "line": 2481,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --all-features --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:28:40.5497281Z test test_managed_compact_lookup_and_detail_report_full_device_envelopes ... ok"
+      },
+      {
+        "line": 2485,
+        "job": "Test (ubuntu-latest)",
+        "step": "Run cargo test --workspace --all-features --locked",
+        "target": "tests/query_output_contract.rs",
+        "text": "2026-10-29T00:28:41.1812659Z test test_managed_compact_routes_roundtrip_native_root_and_config ... ok"
+      }
+    ]
+  }
+}

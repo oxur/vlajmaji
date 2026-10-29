@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/tmp/vlajmaji-p01-a04-s05-cdc/numeric-frozen-binaries02/vlajmaji",
+    "lookup",
+    "farvi",
+    "--config",
+    "/tmp/vlajmaji-p01-a04-arc-review02/cli/config.toml",
+    "--profile",
+    "work",
+    "--format",
+    "compact"
+  ],
+  "exit": 0,
+  "expected_exit": 0,
+  "elapsed_s": 0.010157874785363674,
+  "stdout_bytes": 32258,
+  "stdout_sha256": "73feef67734fb29160119b3cf2892d929ef5a36fb9ca51d44ec1f57d5956b5c8",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "cwd": null,
+  "isolated_environment": {
+    "HOME": "/tmp/vlajmaji-p01-a04-arc-review02/cli/home",
+    "XDG_CONFIG_HOME": "/tmp/vlajmaji-p01-a04-arc-review02/cli/xdg_config_home",
+    "XDG_DATA_HOME": "/tmp/vlajmaji-p01-a04-arc-review02/cli/xdg_data_home"
+  }
+}
