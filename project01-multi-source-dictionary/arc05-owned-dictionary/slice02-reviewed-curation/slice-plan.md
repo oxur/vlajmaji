@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | ISSUED INITIAL/pass1 author UNFROZEN and HELD: CC returned source/index/ONEtarget QUIET for CDC read-only disposition; archive all-features failed at an unchanged fixture, strict variant-payload gap unresolved |
+| Status | ISSUED INITIAL/pass1 UNFROZEN: root permits bounded two-file strict-variant correction/current gates and ONE new Synthetic archive attempt; CC ownership effective after checkpoint+explicit dispatch |
 | Authority | Arc05/directive04 only, same retained CDC Sol6.1/high and CC Luna/high; five total passes for this later slice |
 | Baseline | Accepted S01 1b899ebb492d89ceb1561abb0befb17ff3ccc5a1/tree745f789e3ddef62a2c2977c95a1d76f6f12382db, parenta55; owned APIs/schema1 locally verified; normalized model1 unchanged |
 | Useful result | Persist reviewed own-source links/senses, inspect missing context truthfully, and materialize exact supplied Tiny context into existing validated Dictionary/reference queries |

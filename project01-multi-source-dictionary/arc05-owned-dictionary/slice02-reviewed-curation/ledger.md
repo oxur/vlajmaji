@@ -1,6 +1,6 @@
 # S02 ledger — reviewed curation
 
-**Current,2026-10-29:** S02 INITIAL/pass1 author is UNFROZEN/HELD at baseline1b899ebb plus exact14WIP paths. CC returned source/index/ONEtarget QUIET; CDC/root read-only pending failed-gate and strict-shape disposition. Default/no-default/package FILE gates passed at pre-correction bytes; one correctly placed archive all-features run failed at unchanged CLI fresh_root AlreadyExists (cause unproven). Link/Sense unknown payload fields are an unresolved source-reviewed strict-shape gap. No automatic retry/edit/freeze or acceptance; all8rows OPEN. Exact actual receipts/limitations and raw preservation are in artifacts/execution.md.
+**Current,2026-10-29:** Same S02 INITIAL/pass1 UNFROZEN at baseline1b899ebb plus exact14WIP. Root explicitly permits correction ONLY in the pure curation module/test for strict variant payloads, mandatory current-source gates and exactlyONE new sibling Synthetic archive execution with fresh owned parent environment. AFTER checkpoint commit+explicit dispatch CC owns source/index/ONEtarget for that bounded correction and original14-path freeze; root/CDC readonly. Old archive failure remains failed/cause unproven; no helper fragility fix or automatic second retry. All8rows OPEN; actual prior environment/pending criterion scopes must be reconciled before freeze. Evidence: artifacts/execution.md and logs/.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |
