@@ -1145,3 +1145,8 @@ Actualfresh report17,374B/63d44c20 ACCEPTED9026/tree836,325whole originals1,818,
 
 
 Canonical metadata validation note: first link-check stopped on three inherited execution-log Markdown targets that redundantly prefixed artifacts/ from inside artifacts/. Corrected only those relativehrefs to existing completion/failedCI records; originalraw/manifest/criteria unchanged. The failedchecker is a documentation validation attempt, not product/runtime failure or newgate.
+
+
+### Actual SAMEcanonical ACCEPTED / mechanical close —2026-10-28
+
+Canonical report 11037B/SHA7bad92fca6b45e55d0e72a0ffaaa996dd520228cc0dedb365a83466774ac1aa1; receipt 9867B/SHA3ef0b4e3d2c3d9f67d3f16e4bdf5d4ec6c6ade06f39f8e554d216fb6a9cd9ab0, separatelyauthoredoutsideoriginal325manifest. RootreadWHOLEboth and verified exactd511/tree6e559/proposalpacket71e43721/inventory0e6647/source9026-tree836 finalconsistencyPASS; explicitmechanicalcloseauthorized. ONLY6S05+5remainingArcStatuscells OPEN→DONE; criteria/verifiers/owners/evidencecells preserved, earlier24child+5arcDONE unchanged/all14projecttable unchangedOPEN. Currentclosedheaders/datetime/versionhistory/provenance metadata only; complete5reviewedevidence/retrobodies retainedexactundernewcloseprefix. Frozenproposalinventory/packet/all325originals/all9prompts unchanged. Actualclosecommit pendinguntilthisscopedcommit, recordednext inexistingexecution. PR6DRAFT/bothCI SUCCESS, rootmarksready afterdiffcheck; source/index/ONEtargetquiet/no runtime/planningpush/A05/merge/publication.

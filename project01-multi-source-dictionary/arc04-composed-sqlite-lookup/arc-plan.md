@@ -2,8 +2,8 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/fivearcDONEfiveOPEN. S05production011 correctness/output/resources complete bytimingamendment; test-onlycandidate9026/DraftPR6 currentCI TERMINAL SUCCESS/freshactualW1–W5 technicalACCEPTED/canonical pending. |
-| version / date | 1.36 /2026-10-28 |
+| status | CLOSED; all5children/30childrows and10arcrowsDONE after freshtechnical+SAMEcanonical ACCEPTED/rootconsistency at9026. All14projectOPEN/A05–A06unactivated; PR6DRAFT/currentbothCI SUCCESS. |
+| version / date | 1.37 /2026-10-28 |
 | authority | Autonomous THROUGHARC04 ONLY; explicit ninthONEtestfile correction/validate/push/PR humanstatement2026-10-28. Same roles/models; exactrootdelivery/PR6 authorized, noautomatic10/Fullreplay/Arc05/merge/publication. Older authority/checkpoints below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
@@ -303,3 +303,8 @@ Both exactHEAD PUSH40793790640/PR40793813316 all3jobs terminalSUCCESS; per-run p
 ### Version1.36 — S05/fresh composition technical acceptance and proposedclose,2026-10-28
 
 S05 source9026/tree836 has actualfresh public+CLI/same-root W1–W5 technical ACCEPTED, both currentCI green, retainedsource011 completeFull correctness/output/resources under explicitlatencyexception. This finishes allfive usefulincrements technically; no structuralnew slice or architecturechange is needed. BL-0001 remainsoptional, historicalbudgetsFALSE21groups63; currentFull/Compact/Readable output and observedresources retain limits. Publicaddedobserverfailed1/childexitunknown preserved, originalremaining75CLIchildren pass; no repeatFull/public or criterionwaiver. All6S05/fivearc statuses stayOPEN pending SAMEreviewer canonicalandroot consistency; intendedmechanicalclose30child/10arcDONE, all14projectOPEN, A05/A06unactivated. Body/status/provenance updated; no scope/owner/amendment inferred beyond recordedoperator decisions.
+
+
+### Version1.37 — actual canonical/mechanical close,2026-10-28
+
+SAMEfreshcanonical ACCEPTED at exact proposald511/packet71e43721/inventory0e6647; rootfinalconsistencyPASS. Authorized sixS05/fivearcopen→done only, prior24child/fivearcDONE unchanged; all30child/10arcDONE. Source9026/tree836 unchanged; actualmechanicalhash follows in execution. All14projectOPEN/A05–A06unactivated, no nextarc/source/runtime/merge/publication. PR6 remainsDRAFT until root deliveryfinalization; bothCI40793790640/40793813316 SUCCESS. Earlier pendingstatus/versionhistory describes its actualproposalcutoff.

@@ -1,3 +1,11 @@
+# Arc04 CDC retrospective — final close provenance
+
+**CLOSED,2026-10-28:** actual SAMEfresh canonical [ACCEPTED](artifacts/composition-review/final-canonical-review.md) after technicalacceptance at source9026/tree836, exact proposald5113e21/tree6e559 and rootfinalconsistencyPASS. SixS05/newfivearc status transitions nowDONE; all30child/10arcDONE, all14projectOPEN, A05/A06unactivated. PR6 remainsDRAFT/bothcurrentCI SUCCESS; root finalizesready separately. OriginaltimingtargetsFALSE21groups63/operatoramendment, publicobserver1/childexitunknown and every evidencelimit unchanged.
+
+The COMPLETE reviewed proposal body below is retained byte-for-byte as historical close evidence; its pending/OPEN statements describe d511 before the actual verdict. This prefix records mechanicalstatus/provenance only, not newtechnicalclaims. Actualclosecommit is recorded in existingexecution metadata after commit.
+
+---
+
 # Arc04 CDC retrospective — proposed, composition gate pending
 
 CURRENT: finaltest-onlycandidate9026/tree836, production011 unchanged outside3tests/130Gitentries. DraftPR6 created/attached; PUSH40793790640 and PR40793813316 BOTH TERMINAL SUCCESS/all3jobs each. Whole originals at S05/artifacts/ci-iteration08-final01. PriorredCI407899/sourcea72 remains failure; freshactualtechnical ACCEPTED; SAMEcanonical pending. All6S05/fivearc/all14projectrows remainOPEN.

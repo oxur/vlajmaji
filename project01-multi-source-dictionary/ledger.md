@@ -1,6 +1,8 @@
 # Project01 ledger
 
-**Current partial checkpoint,2026-10-28:** A04 allfiveincrements/freshactualW1–W5 technicalACCEPTED at9026/currentCIgreen. S01–S04/24child/priorfivearcDONE; final6S05/fivearc statuses remainOPEN pending SAMEcanonical/root mechanicalclose. All14projectrowsOPEN/A05–A06unactivated. TimingtargetsFALSE21groups63 explicitlyaccepted; no wholeproject/merge/publication acceptance.
+**Current partial checkpoint,2026-10-28:** Arc04 CLOSED at source9026/tree836 after actualtechnical+SAMEcanonical+rootconsistency;30child/10arcDONE. All14projectrows remainOPEN, A05/A06unactivated/finalOperator/contentgates retained. PR6 DRAFT with bothcurrentCI SUCCESS; no wholeproject/merge/publication acceptance.
+
+**Historical reviewed proposal checkpoint:** **Current partial checkpoint,2026-10-28:** A04 allfiveincrements/freshactualW1–W5 technicalACCEPTED at9026/currentCIgreen. S01–S04/24child/priorfivearcDONE; final6S05/fivearc statuses remainOPEN pending SAMEcanonical/root mechanicalclose. All14projectrowsOPEN/A05–A06unactivated. TimingtargetsFALSE21groups63 explicitlyaccepted; no wholeproject/merge/publication acceptance.
 
 **Historical prior partial checkpoint:** **Current partial checkpoint, 2026-10-27 UTC:** A04 S01–S04 independently CLOSED/24childDONE. A04-01/02/03/04/05DONE, fivearc obligations and all14projectrows OPEN. S04 lifecycle/migration/default/recovery and currentLinux/finiteFull scopedproof accepted; S05 output/budgets/fresharc, A05/A06 and Operator gates retain owners. Root creates requestedS04PR/separateS05branch; no projectcompletion/merge/publication inferred.
 
@@ -77,3 +79,8 @@ Duncan explicitly approved seven TOTAL candidate stores: retain the two historic
 ## Arc04 S03 partial contribution — 2026-10-27 UTC
 
 S03 verifier atdcdf216 contributes configured/default pack versus source policy, strict native profiles/writer outcomes, coherent pages/reference/cursor semantics and preserved full wire to P01-08/10/11/12/14. Current native Linux and output-loss controls complement local Full proof. P01-08 integration is now partial through S03 rather than entirely future, but S04/S05 production lifecycle/output and A06/Operator remain. All fourteen criterion/status/significance/origin columns remain unchanged and OPEN; no global requirement or accepted historical timing is relabeled complete.
+
+
+## Arc04 canonical/mechanical partial close —2026-10-28
+
+SAMEfreshcanonicalACCEPTED at arc04-composed-sqlite-lookup/artifacts/composition-review/final-canonical-review.md plus rootconsistency completes A04only. All14projecttablecells includingstatus/evidence retain exactreviewedproposal values; their canonicalpending language describes that earlierproposal cutoff, now superseded by this datedclose. AllprojectstatusesOPEN/A05–A06unactivated/finalOperator unchanged.

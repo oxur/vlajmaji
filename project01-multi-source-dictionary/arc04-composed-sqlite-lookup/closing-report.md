@@ -1,3 +1,11 @@
+# Arc04 closing report — final close provenance
+
+**CLOSED,2026-10-28:** actual SAMEfresh canonical [ACCEPTED](artifacts/composition-review/final-canonical-review.md) after technicalacceptance at source9026/tree836, exact proposald5113e21/tree6e559 and rootfinalconsistencyPASS. SixS05/newfivearc status transitions nowDONE; all30child/10arcDONE, all14projectOPEN, A05/A06unactivated. PR6 remainsDRAFT/bothcurrentCI SUCCESS; root finalizesready separately. OriginaltimingtargetsFALSE21groups63/operatoramendment, publicobserver1/childexitunknown and every evidencelimit unchanged.
+
+The COMPLETE reviewed proposal body below is retained byte-for-byte as historical close evidence; its pending/OPEN statements describe d511 before the actual verdict. This prefix records mechanicalstatus/provenance only, not newtechnicalclaims. Actualclosecommit is recorded in existingexecution metadata after commit.
+
+---
+
 # Arc04 proposed canonical close
 
 **Capability verdict: technically ACCEPTED at source9026; formal closure is PROPOSED and pending the SAME independent reviewer's canonical verdict and root consistency.** All6 S05 and remaining5 arc status cells are OPEN in this packet; the prior24 child/prior5 arc rows remain DONE, and all14 project rows remain OPEN. No canonical acceptance or actual close hash is prewritten. Draft [PR6](https://github.com/oxur/vlajmaji/pull/6) is open/attached; mark-ready follows the remaining gates, with no merge/publication/Arc05 authority.
