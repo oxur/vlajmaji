@@ -1,6 +1,6 @@
 # Project01 ledger
 
-**Current Arc05 checkpoint,2026-10-28:** S01 locally CLOSED at1b899ebb/tree745f after independent Rust/CLI/source proof. A05-01/02DONE, remaining6arc/all14projectOPEN. S02 ISSUED complete intake only after root28821fea readiness; transfer pending; source/index/ONEtarget QUIET. See S01 cdc-verification.md for exact scope/deviations; Arc06/finalOperator/content gates unchanged. Dated prior issue/intake checkpoints remain historical.
+**Current Arc05 checkpoint,2026-10-28:** S01 locally CLOSED at1b899ebb/tree745f after independent Rust/CLI/source proof. A05-01/02DONE, remaining6arc/all14projectOPEN. S02 intake ACCEPTED;14path/index/target transfer follows metadata commit+explicit dispatch, INITIAL/pass1; S02 CC source/index/ONEtarget ownership begins on explicit dispatch. See S01 cdc-verification.md for exact scope/deviations; Arc06/finalOperator/content gates unchanged. Dated prior issue/intake checkpoints remain historical.
 
 **Historical Arc04 final checkpoint (reviewed cutoff):**
 

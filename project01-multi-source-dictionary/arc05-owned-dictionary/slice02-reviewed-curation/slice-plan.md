@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | ISSUED for COMPLETE INTAKE ONLY after root exact readiness at28821fea; no source/index/target transfer yet |
+| Status | ISSUED INITIAL/pass1: complete intake ACCEPTED; fourteen-path transfer effective only after metadata commit + explicit CDC dispatch |
 | Authority | Arc05/directive04 only, same retained CDC Sol6.1/high and CC Luna/high; five total passes for this later slice |
 | Baseline | Accepted S01 1b899ebb492d89ceb1561abb0befb17ff3ccc5a1/tree745f789e3ddef62a2c2977c95a1d76f6f12382db, parenta55; owned APIs/schema1 locally verified; normalized model1 unchanged |
 | Useful result | Persist reviewed own-source links/senses, inspect missing context truthfully, and materialize exact supplied Tiny context into existing validated Dictionary/reference queries |
@@ -202,3 +202,7 @@ S01 is locally accepted at1b899ebb/tree745f with exact original controls and exp
 ## Version0.3 — exact readiness and intake-only issue,2026-10-28
 
 Root read whole current bodies and complete F01–F03 delta and granted final readiness at planning28821fea/tree8aa8d531: plan30171B/918a47a1…, prompt13993B/0ff4c0bb…, ledger4382B/aa2d5736…. Eight original rows remainOPEN. The prompt issue changes ONLY its STATUS line, inverse-byte-exact to that reviewed draft. Accepted source1b899ebb/tree745f, lock65cd/guard426d are unchanged. Retained Luna/high CC receives complete required intake ONLY; source/index/ONEtarget stay QUIET until CDC accepts actual coverage/source-cited readback and fresh pins then explicitly transfers the14paths. No implementation, runtime or external authority merely from issue.
+
+### Intake/handoff checkpoint —2026-10-29
+
+Complete actual intake plus F01 clarification accepted by CDC after source-citation/status-scope calibration and fresh clean1b899ebb/tree745f/lock/guard/protected-ref checks. Actual record: artifacts/execution.md. AFTER this scoped metadata commit and separate explicit dispatch, CC owns exact14paths/index/ONEtarget; root/CDC readonly. No enumeration-only comprehension or product acceptance claim. Eight rows OPEN; technical issued contract unchanged.

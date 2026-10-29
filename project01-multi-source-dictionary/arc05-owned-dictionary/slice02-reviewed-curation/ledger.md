@@ -1,6 +1,6 @@
 # S02 ledger — reviewed curation
 
-**Current,2026-10-28:** ISSUED for COMPLETE INTAKE ONLY after root final exact readiness at28821fea. Accepted S01 baseline1b899ebb/tree745f/schema1 and all8 original rows remainOPEN/unchanged. Actual coverage/readback must be written in artifacts/execution.md and accepted by CDC, then fresh source/lock/guard/protected refs and explicit14path/index/ONEtarget transfer precede implementation. Source/target QUIET; no intake acceptance or source work claimed.
+**Current,2026-10-29:** S02 INITIAL/pass1 ISSUED; complete intake/F01 clarification ACCEPTED after source-cited readback and fresh clean1b899ebb/tree745f/pins. AFTER scoped metadata commit + separate explicit CDC dispatch, CC owns exact14paths/index/ONEtarget; root/CDC readonly. All8rows OPEN; no implementation or acceptance inferred from intake. Actual evidence and narrow citation/status calibration are in artifacts/execution.md.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |
