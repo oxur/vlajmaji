@@ -1,0 +1,26 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: unused import: `CodeNotice`
+ --> crates/store/tests/owned_journal_contract.rs:8:37
+  |
+8 |     AbbreviationKind, Availability, CodeNotice, CollectionRecord, ComponentRecord, ContentNotice,
+  |                                     ^^^^^^^^^^
+  |
+  = note: `-D unused-imports` implied by `-D warnings`
+  = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error[E0382]: borrow of moved value: `created.head.revision.id`
+   --> crates/store/tests/owned_journal_contract.rs:189:21
+    |
+180 |     assert_eq!(appended.previous_head, Some(created.head.revision.id));
+    |                                             ------------------------ value moved here
+...
+189 |         reader.show(&created.head.revision.id).unwrap().dictionary,
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^ value borrowed here after move
+    |
+    = note: move occurs because `created.head.revision.id` has type `vlajmaji_lexicon::EntityId`, which does not implement the `Copy` trait
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `vlajmaji-store` (test "owned_journal_contract") due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

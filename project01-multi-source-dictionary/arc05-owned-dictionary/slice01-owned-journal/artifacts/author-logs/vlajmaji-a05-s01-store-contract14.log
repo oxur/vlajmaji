@@ -1,0 +1,34 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 14.64s
+     Running tests/owned_journal_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_journal_contract-80b8b25353934f97)
+
+running 13 tests
+test invalid_genesis_and_existing_foreign_root_are_not_replaced ... ok
+test foreign_database_and_missing_open_are_rejected_without_creation ... ok
+test changing_a_prior_release_selection_is_rejected_as_an_immutable_prefix ... ok
+test aborting_head_update_rolls_back_suffix_and_allows_explicit_retry ... ok
+test pinned_reader_busy_rolls_back_then_explicit_retry_succeeds ... ok
+test create_read_and_append_preserve_typed_history ... ok
+test show_detects_corrupt_payload_unknown_sections_and_excess_current_rows ... ok
+test two_open_writers_compare_the_persisted_head ... ok
+test complete_owned_state_round_trips_all_ordered_sections_and_presence ... ok
+registry.sources mutation excluded by model validation: InvalidJson("unknown source \"source-o\" at line 1 column 72048")
+registry.contributors mutation excluded by model validation: InvalidJson("unknown contributor \"officialdata\" at line 1 column 72133")
+test complete_vector_history_records_removal_and_explicit_reactivation ... ok
+registry.distributors mutation excluded by model validation: InvalidJson("unknown distributor \"distributor-a-d2\" at line 1 column 72129")
+test removal_reordering_and_duplicate_multiplicity_are_rejected ... ok
+captures mutation excluded by model validation: InvalidAvailability("available release release-a capture captured:a:opaque has no payload")
+metadata.collections mutation excluded by model validation: MissingReference("component component-m collection collection-m is absent or has the wrong role")
+metadata.components mutation excluded by model validation: MissingReference("release release-m component component-m is absent or has the wrong role")
+metadata.releases mutation excluded by model validation: MissingReference("registry snapshot catalogue:m:future has no loaded or unavailable catalogue capture")
+metadata.entries mutation excluded by model validation: MissingReference("release release-a assertion assertion-19 has no entry")
+metadata.assertions mutation excluded by model validation: MissingReference("release release-a assertion member assertion-19 is absent or has the wrong role")
+test every_typed_section_rejects_a_changed_prior_row_and_preserves_its_order ... ok
+metadata.owned_revisions mutation excluded by model validation: MissingReference("relation relation-editorial editorial revision is absent or has the wrong role")
+metadata.computations mutation excluded by model validation: MissingReference("form form-stem computation is absent or has the wrong role")
+typed-section prefix census: valid removals=["registry.aliases", "registry.lineage", "registry.snapshots", "registry.occurrences", "metadata.code_notices", "metadata.contexts", "metadata.frames", "metadata.forms", "metadata.etymologies", "metadata.relations", "metadata.editorial_senses", "metadata.annotations", "metadata.extensions"]; model-invalid removals=["registry.sources", "registry.contributors", "registry.distributors", "captures", "metadata.collections", "metadata.components", "metadata.releases", "metadata.entries", "metadata.assertions", "metadata.owned_revisions", "metadata.computations"]; valid reorders=["registry.contributors", "registry.distributors", "registry.aliases", "registry.lineage", "registry.snapshots", "registry.occurrences", "captures", "metadata.collections", "metadata.components", "metadata.releases", "metadata.entries", "metadata.assertions", "metadata.contexts", "metadata.forms", "metadata.etymologies", "metadata.relations", "metadata.extensions"]; model-invalid reorders=[]; singleton/equal-tail reorder not applicable=["registry.sources", "metadata.code_notices", "metadata.frames", "metadata.owned_revisions", "metadata.editorial_senses", "metadata.computations", "metadata.annotations"]
+test applicable_typed_section_removal_and_reorder_preserve_the_committed_prefix ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.89s
+

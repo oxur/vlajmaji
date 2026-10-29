@@ -1,0 +1,13 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error: the borrowed expression implements the required traits
+   --> crates/store/tests/owned_journal_contract.rs:143:33
+    |
+143 |     let next_id = EntityId::new(&format!("owned-r{next_number}")).unwrap();
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: change this to: `format!("owned-r{next_number}")`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#needless_borrows_for_generic_args
+    = note: `-D clippy::needless-borrows-for-generic-args` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::needless_borrows_for_generic_args)]`
+
+error: could not compile `vlajmaji-store` (test "owned_journal_contract") due to 1 previous error

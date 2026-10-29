@@ -1,0 +1,30 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.42s
+     Running tests/owned_journal_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_journal_contract-80b8b25353934f97)
+
+running 8 tests
+test invalid_genesis_and_existing_foreign_root_are_not_replaced ... ok
+test foreign_database_and_missing_open_are_rejected_without_creation ... ok
+test two_open_writers_compare_the_persisted_head ... ok
+test pinned_reader_busy_rolls_back_then_explicit_retry_succeeds ... ok
+test aborting_head_update_rolls_back_suffix_and_allows_explicit_retry ... ok
+test create_read_and_append_preserve_typed_history ... ok
+test show_detects_corrupt_payload_unknown_sections_and_excess_current_rows ... ok
+test complete_owned_state_round_trips_all_ordered_sections_and_presence ... FAILED
+
+failures:
+
+---- complete_owned_state_round_trips_all_ordered_sections_and_presence stdout ----
+
+thread 'complete_owned_state_round_trips_all_ordered_sections_and_presence' (81166845) panicked at crates/store/tests/owned_journal_contract.rs:192:83:
+called `Result::unwrap()` on an `Err` value: UnknownContributor("suzil")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    complete_owned_state_round_trips_all_ordered_sections_and_presence
+
+test result: FAILED. 7 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `-p vlajmaji-store --test owned_journal_contract`

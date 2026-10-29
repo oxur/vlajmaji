@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01–04 CLOSED and PR6 actually merged a55/tree836. Arc05 authorized THROUGH ARC05 ONLY; four-increment plan/S01 ISSUED, intake accepted; eleven-path source/index/ONE-target handoff effective on explicit CDC dispatch. All child acceptance pending. All14 project rows OPEN; Arc06 unactivated. |
+| status | project OPEN; Arc01–04 CLOSED. Arc05 S01 locally CLOSED at1b899ebb/tree745f;2arc DONE/6OPEN, all14project OPEN. S02 reconciled DRAFT/UNISSUED pending root readiness. Source/target QUIET; Arc06 unactivated. |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.30 / 2026-10-28 |
+| version / date | 1.31 / 2026-10-28 |
 
 ## Purpose and first useful result
 
@@ -417,3 +417,7 @@ Duncan reports merged PR6 and instructs “merged! Let's continue :-D”. Direct
 Arc05 now has a concrete four-increment plan: authoritative full-typed journal init/edit/head/history/show; reviewed curation plus explicit external-catalogue context adapter; sealed full-history export/check/reimport and explicit derived querying; optional owned package/offline consumer. Separate SQLite authority and persisted CAS avoid editing derived/upstream stores. External curation stays outside self-contained base Dictionary until exact caller context is supplied; no placeholder releases, corpus copies, spelling inference or silent retarget. Owned envelope version1 is distinct; normalized model1/registry1/PackId four/All-four remain unchanged. S01 full draft fixes schema/API/failure/read/metadata/example/CLI controls; S02 exact adapter remains its preissue task, not presumed done or deferred to Arc06.
 
 Reuse existing physical isolated Arc04 checkout on NEW codex/project01-owned-dictionary from a55, and ONE retained A01 target/Arc05 launcher; no new cache/worktree. Root QUIET source/index/target; CDC planning only until exact root readiness/intake/transfer. All14 project criteria/verify/owners/status cells remain unchanged OPEN; Arc06 and final project/Operator/rights gates retain owners. No Full/performance campaign/default touch/BL0001 optimisation/external action authorised. Historical accepted evidence and timing exception unchanged.
+
+## Version1.31 — S01 owned-journal local close,2026-10-28
+
+Actual source1b899ebb/tree745f delivers public Rust and explicit-root CLI complete owned journal init/edit/head/history/show. CDC independently reviewed all11 source paths and reproduced15store+3CLI plus one12-child public/CLI/hash/schema proof. SevenS01/A05-01/02DONE, remaining6arc/all14projectOPEN. P01-09 gains this partial history/CAS/metadata contribution; explicit cross-context curation, sealed export/reimport, optional owned package, assembled review and finalOperator remain owned later obligations. No wholeproject or Arc05 acceptance. S01 verifier/retro/execution preserve every available failed/current raw attempt and unknown incidental include-bytes input I/O in an aborted wrong-cwd compilation; no Full/no-access claim inferred. Root readiness still required before separate S02 issue/transfer. No external/Arc06 authority.

@@ -1,0 +1,28 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 12.44s
+     Running tests/owned_journal_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_journal_contract-33340eed004e48ce)
+
+running 2 tests
+test invalid_input_is_rejected_before_creating_explicit_root ... ok
+test explicit_root_file_stdin_history_show_replay_and_postcommit_output_failure ... FAILED
+
+failures:
+
+---- explicit_root_file_stdin_history_show_replay_and_postcommit_output_failure stdout ----
+
+thread 'explicit_root_file_stdin_history_show_replay_and_postcommit_output_failure' (81209912) panicked at crates/cli/tests/owned_journal_contract.rs:251:5:
+assertion `left == right` failed
+  left: Object {"assertions": Array [], "editor": String("owned-cli-editor"), "id": String("owned-cli-r0"), "parent": Null, "rationale": Object {"Value": Object {"language": String("Missing"), "markup": String("Missing"), "text": String("genesis")}}, "source": String("owned-cli-source"), "time_precision": String("Unknown"), "timestamp": String("Missing"), "tombstones": Array []}
+ right: "owned-cli-r0"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    explicit_root_file_stdin_history_show_replay_and_postcommit_output_failure
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.54s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test owned_journal_contract`

@@ -1,0 +1,87 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/tests/owned_journal_contract.rs:6:
+ 
+ use vlajmaji_lexicon::{
+     AbbreviationKind, Availability, CodeNotice, CollectionRecord, ComponentRecord, ContentNotice,
+-    ContributorId, ContributorRecord, Dictionary, DictionaryDocument, DictionaryMetadata,
+-    EntityId, OwnedHead, OwnedRevisionRecord, Presence, RedistributionStatus, RegistryDocument,
++    ContributorId, ContributorRecord, Dictionary, DictionaryDocument, DictionaryMetadata, EntityId,
++    OwnedHead, OwnedRevisionRecord, Presence, RedistributionStatus, RegistryDocument,
+     ReleaseAccounting, ReleaseRecord, SourceId, SourceOrigin, SourceRecord, SourceRegistry,
+     TextValue, TimePrecision,
+ };
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/tests/owned_journal_contract.rs:101:
+         native_name: "owned component".into(),
+         languages: vec!["jbo".into()],
+     });
+-    metadata.releases.push(release("owned-release-r0", &component_id));
++    metadata
++        .releases
++        .push(release("owned-release-r0", &component_id));
+     metadata.owned_revisions.push(OwnedRevisionRecord {
+         id: revision_id.clone(),
+         source: source.clone(),
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/tests/owned_journal_contract.rs:135:
+     let next_id = EntityId::new("owned-r1").unwrap();
+     let editor = old.editor.clone();
+     let component = document.metadata.components[0].id.clone();
+-    document.metadata.releases.push(release("owned-release-r1", &component));
++    document
++        .metadata
++        .releases
++        .push(release("owned-release-r1", &component));
+     document.metadata.catalogue_revision += 1;
+     document.metadata.owned_revisions.push(OwnedRevisionRecord {
+         id: next_id.clone(),
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/tests/owned_journal_contract.rs:170:
+     drop(reader);
+ 
+     let revised = next_revision(&initial);
+-    let appended = writer
+-        .commit(&created.head.revision.id, &revised)
+-        .unwrap();
++    let appended = writer.commit(&created.head.revision.id, &revised).unwrap();
+     assert_eq!(appended.head.sequence, 1);
+     assert_eq!(appended.previous_head, Some(created.head.revision.id));
+ 
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/tests/owned_journal_contract.rs:179:
+     let reader = OwnedJournalReader::open(&root).unwrap();
+     assert_eq!(reader.show_head().unwrap().dictionary, revised);
+-    assert_eq!(reader.show(&appended.head.revision.id).unwrap().dictionary, revised);
+-    assert_eq!(reader.show(&created.head.revision.id).unwrap().dictionary, initial);
++    assert_eq!(
++        reader.show(&appended.head.revision.id).unwrap().dictionary,
++        revised
++    );
++    assert_eq!(
++        reader.show(&created.head.revision.id).unwrap().dictionary,
++        initial
++    );
+     assert_eq!(reader.history().unwrap().commits.len(), 2);
+ }
+ 
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/tests/owned_journal_contract.rs:221:
+     assert_eq!(reader.head().unwrap().head.sequence, 0);
+     drop(reader);
+ 
+-    assert_eq!(writer.commit(&created.head.revision.id, &revised).unwrap().head.sequence, 1);
+-    assert_eq!(OwnedJournalReader::open(&root).unwrap().head().unwrap().head.sequence, 1);
++    assert_eq!(
++        writer
++            .commit(&created.head.revision.id, &revised)
++            .unwrap()
++            .head
++            .sequence,
++        1
++    );
++    assert_eq!(
++        OwnedJournalReader::open(&root)
++            .unwrap()
++            .head()
++            .unwrap()
++            .head
++            .sequence,
++        1
++    );
+ }
+ 

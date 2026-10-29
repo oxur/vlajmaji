@@ -1,0 +1,12 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.13s
+     Running tests/owned_journal_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_journal_contract-33340eed004e48ce)
+
+running 3 tests
+test invalid_input_is_rejected_before_creating_explicit_root ... ok
+test native_paths_and_deleted_working_directory_use_explicit_absolute_paths ... ok
+test explicit_root_file_stdin_history_show_replay_and_postcommit_output_failure ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.64s
+

@@ -1,0 +1,13 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+warning: can be more succinctly written as a byte str
+   --> crates/cli/tests/owned_journal_contract.rs:365:20
+    |
+365 |             .write(&[b'x'])
+    |                    ^^^^^^^ help: try: `b"x"`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#byte_char_slices
+    = note: `#[warn(clippy::byte_char_slices)]` on by default
+
+warning: `vlajmaji-cli` (test "owned_journal_contract") generated 1 warning (run `cargo clippy --fix --test "owned_journal_contract" -p vlajmaji-cli -- ` to apply 1 suggestion)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.94s

@@ -1,0 +1,33 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.04s
+     Running tests/owned_journal_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_journal_contract-80b8b25353934f97)
+
+running 11 tests
+test invalid_genesis_and_existing_foreign_root_are_not_replaced ... ok
+test foreign_database_and_missing_open_are_rejected_without_creation ... ok
+test changing_a_prior_release_selection_is_rejected_as_an_immutable_prefix ... ok
+test two_open_writers_compare_the_persisted_head ... ok
+test pinned_reader_busy_rolls_back_then_explicit_retry_succeeds ... ok
+test aborting_head_update_rolls_back_suffix_and_allows_explicit_retry ... ok
+test show_detects_corrupt_payload_unknown_sections_and_excess_current_rows ... ok
+test create_read_and_append_preserve_typed_history ... ok
+test complete_owned_state_round_trips_all_ordered_sections_and_presence ... ok
+test complete_vector_history_records_removal_and_explicit_reactivation ... ok
+test every_typed_section_rejects_a_changed_prior_row_and_preserves_its_order ... FAILED
+
+failures:
+
+---- every_typed_section_rejects_a_changed_prior_row_and_preserves_its_order stdout ----
+
+thread 'every_typed_section_rejects_a_changed_prior_row_and_preserves_its_order' (81181880) panicked at crates/store/tests/owned_journal_contract.rs:474:14:
+called `Result::unwrap_err()` on an `Ok` value: OwnedWriteReport { version: 1, operation: Edit, source: SourceId("source-o"), previous_head: Some(EntityId("revision-r2")), head: OwnedCommitSummary { sequence: 1, revision: OwnedRevisionRecord { id: EntityId("owned-r1"), source: SourceId("source-o"), parent: Some(EntityId("revision-r2")), editor: ContributorId("editor-1"), timestamp: Missing, time_precision: Unknown, assertions: [EntityId("assertion-18")], tombstones: [], rationale: Value(TextValue { text: "second draft", language: Null, markup: Missing }) }, state_sha256: "dd72a43651011785ff7f5c4dd944e48bebad0751aa28fc1b173524f9d464e6a9" } }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    every_typed_section_rejects_a_changed_prior_row_and_preserves_its_order
+
+test result: FAILED. 10 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
+
+error: test failed, to rerun pass `-p vlajmaji-store --test owned_journal_contract`

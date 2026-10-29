@@ -1,0 +1,167 @@
+[
+  {
+    "label": "public-example",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/owned_journal",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/inputs",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/public-journal"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout_sha256": "94629edfc170160ec54c2a5e2f2d813583ce047f98b5d77060c7dde03a9355a1",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "init-file",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "owned",
+      "init",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/cli-journal",
+      "--input",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/inputs/seed.json"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout_sha256": "bd4f9893d5eb6ce936832c410093a307c331b20d410749e27853f5d6b4bfc9b7",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "head-r0",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "owned",
+      "head",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/cli-journal"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout_sha256": "0907aebf82da7a57c6031b512e97cb37141f986326f5a63d42d8a63c11b8899d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "edit-stdin",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "owned",
+      "edit",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/cli-journal",
+      "--expected-head",
+      "owned-r0"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout_sha256": "fadb4ad46d02ebfcecf33d282f1961236dbd8cbd29818c35961ba0dde566ee59",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "head-r1",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "owned",
+      "head",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/cli-journal"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout_sha256": "85fc0ec72e4b49f8b6bb924a4caccb84f9bc4eb10a76f853713596289ba013e8",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "history-r1",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "owned",
+      "history",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/cli-journal"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout_sha256": "7f116b10b4d4e1f17530f8a37d57dabed892dd5cae577a93c7a046822ff874a9",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "show-r1",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "owned",
+      "show",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/cli-journal"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout_sha256": "802d55d02c6f17c15c7083a1655b455f8164855b5f0f329d9b589554963b4934",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "show-r0",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "owned",
+      "show",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/cli-journal",
+      "--revision",
+      "owned-r0"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout_sha256": "c8ee825a9c5934c96581ecbe261ada711bed724f38fc59da55249b3984a4c715",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "stale-replay",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "owned",
+      "edit",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/cli-journal",
+      "--expected-head",
+      "owned-r0"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "5d9b25e87349565c8cdfb9235ae38865d6a873f7d5ee73b85d744da71e785ec6"
+  },
+  {
+    "label": "unchanged-after-replay",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "owned",
+      "show",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/cli-journal"
+    ],
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout_sha256": "802d55d02c6f17c15c7083a1655b455f8164855b5f0f329d9b589554963b4934",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "unknown-revision",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "owned",
+      "show",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/cli-journal",
+      "--revision",
+      "owned-missing"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f7a1d6bb6e35ee005cad8d21435799d89f47f1ac1b30507e815e3f6b5b54aa84"
+  },
+  {
+    "label": "strict-input-before-root",
+    "argv": [
+      "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+      "owned",
+      "init",
+      "/private/tmp/vlajmaji-a05-s01-cdc-verify01-qlm14g7m/tmpdir/vlajmaji-a05-s01-cdc-6z_9tou8/never-created"
+    ],
+    "exit": 1,
+    "expected_exit": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "3a98d6a8b1957678f8bec1b55f94ef4886dde8b375e801c841315cdf67ec66a4"
+  }
+]

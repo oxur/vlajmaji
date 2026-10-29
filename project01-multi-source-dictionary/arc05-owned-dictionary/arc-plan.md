@@ -2,13 +2,13 @@
 
 | Field | Value |
 | --- | --- |
-| Status | IMPLEMENTATION ACTIVE: S01 INITIAL/pass1, eight arc rows OPEN; no candidate acceptance yet |
+| Status | S01 CLOSED locally; A05-01/02 DONE and6arc rows OPEN. S02 reconciled DRAFT/UNISSUED pending root readiness |
 | Authority | [directive04](../cdc-directive04.md), Duncan “merged! Let's continue :-D”; THROUGH ARC05 ONLY |
 | Roles | Retained CDC Sol6.1/high; retained CC Luna/high; fresh independent Sol6.1/high assembled review and SAME-context canonical gate at close |
-| Source | `codex/project01-owned-dictionary`, baseline `a55e1cc7c4d7b0df4a187ce3551bfce9141a39d3`, tree `836df880ca711c6813cb78ae1202973e618eb105` |
+| Source | `codex/project01-owned-dictionary`, accepted S01 `1b899ebb492d89ceb1561abb0befb17ff3ccc5a1`, tree `745f789e3ddef62a2c2977c95a1d76f6f12382db`; original merged baseline a55 retained |
 | Physical checkout | Reused `.worktrees/project01-arc04/vlajmaji`; old Arc04 branch9026 retained; no new worktree/cache |
-| Ownership | Explicit df5bec2 handoff effective: retained CC exclusively owns eleven S01 paths/index/ONE target; root/CDC source-read-only, CDC planning/independent preparation |
-| Version / date | 0.1 / 2026-10-28 |
+| Ownership | S01 author/independent sessions terminal; source/index/ONEtarget QUIET returned to root/CDC. S02 no intake/source transfer yet |
+| Version / date | 0.2 / 2026-10-28 |
 
 ## Useful result and boundaries
 
@@ -46,7 +46,7 @@ At arc close a fresh independent context actually exercises init→edit→stale 
 
 ## Current readiness
 
-Root final readiness PASS at d75532d was followed by status-only issue e61cb65, complete retained intake/citation erratum acceptance and explicit handoff df5bec2. S01 implementation is ACTIVE, not an unissued proposal. Core/CLI format+lint milestones and the first narrow7/7 public store behavior tests exist; full24/edit-policy/raw/Presence/reactivation/example/CLI/broad/feature/package and independent acceptance remain pending. These author milestones are not a frozen candidate or acceptance. All8arc/7child/14project rows OPEN; one writer owns source/target. S02 now has a source-guided UNISSUED [policy/schema/API draft](slice02-reviewed-curation/slice-plan.md), whose final source reconciliation/CLI report/readiness remain later work. No new external authority.
+S01 is locally CLOSED at1b899ebb/tree745f after full CDC source review, independent15store+3CLI and one12-child public/CLI proof. All7child and A05-01/02 DONE; remaining6arc/all14project OPEN. [S01 verification](slice01-owned-journal/cdc-verification.md) preserves source/gate applicability, Mac/Linux and rollback boundaries, original failed methods and unknown incidental include-bytes input I/O. S02 plan/prompt/ledger now bind actual accepted S01 and are ready for root exact DRAFT review; they remain UNISSUED. No source/index/target operation until readiness/intake/explicit transfer. No higher-scale acceptance or external authority.
 
 ### Historical draft readiness — version0.1
 
@@ -59,3 +59,5 @@ This is the concrete planning proposal, not an issued source assignment. S01's e
 ### S01 issue checkpoint — 2026-10-28
 
 Root final readiness PASS at proposal d75532d clears status-only initial issue and retained CC complete intake. Source/index/ONE target remain root QUIET until CDC accepts coverage/readback and explicitly transfers the eleven S01 paths; all8arc/7child/14project rows OPEN. Current S01 status supersedes the dated DRAFT readiness prose above; architecture and later-slice obligations unchanged.
+
+- 0.2 —2026-10-28: actual S01 local close/source1b899ebb, independent proof/retrospective and partial parent rows01/02; S02 current draft reconciled, still UNISSUED;6arc/all14project OPEN.

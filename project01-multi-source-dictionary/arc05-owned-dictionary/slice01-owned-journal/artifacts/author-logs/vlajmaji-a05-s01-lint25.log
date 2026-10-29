@@ -1,0 +1,40 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+error[E0308]: `match` arms have incompatible types
+   --> crates/store/tests/owned_journal_contract.rs:459:31
+    |
+457 |       let rows = match section {
+    |  ________________-
+458 | |         "registry.aliases" => &mut registry.aliases,
+    | |                               --------------------- this is found to be of type `&mut std::vec::Vec<vlajmaji_lexicon::SourceAlias>`
+459 | |         "registry.lineage" => &mut registry.lineage,
+    | |                               ^^^^^^^^^^^^^^^^^^^^^ expected `&mut Vec<SourceAlias>`, found `&mut Vec<SourceLineage>`
+460 | |         _ => panic!("unsupported removable registry section {section}"),
+461 | |     };
+    | |_____- `match` arms have incompatible types
+    |
+    = note: expected mutable reference `&mut std::vec::Vec<vlajmaji_lexicon::SourceAlias>`
+               found mutable reference `&mut std::vec::Vec<vlajmaji_lexicon::SourceLineage>`
+
+error[E0308]: `match` arms have incompatible types
+   --> crates/store/tests/owned_journal_contract.rs:472:31
+    |
+470 |       let rows = match section {
+    |  ________________-
+471 | |         "registry.aliases" => &mut registry.aliases,
+    | |                               --------------------- this is found to be of type `&mut std::vec::Vec<vlajmaji_lexicon::SourceAlias>`
+472 | |         "registry.lineage" => &mut registry.lineage,
+    | |                               ^^^^^^^^^^^^^^^^^^^^^ expected `&mut Vec<SourceAlias>`, found `&mut Vec<SourceLineage>`
+473 | |         _ => panic!("unsupported reorderable registry section {section}"),
+474 | |     };
+    | |_____- `match` arms have incompatible types
+    |
+    = note: expected mutable reference `&mut std::vec::Vec<vlajmaji_lexicon::SourceAlias>`
+               found mutable reference `&mut std::vec::Vec<vlajmaji_lexicon::SourceLineage>`
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-store` (test "owned_journal_contract") due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

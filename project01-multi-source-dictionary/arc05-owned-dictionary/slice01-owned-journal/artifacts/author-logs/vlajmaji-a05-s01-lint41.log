@@ -1,0 +1,22 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+error[E0382]: borrow of moved value: `native_root`
+   --> crates/cli/tests/owned_journal_contract.rs:494:17
+    |
+437 |     let native_root = scratch
+    |         ----------- move occurs because `native_root` has type `std::path::PathBuf`, which does not implement the `Copy` trait
+...
+462 |         (native_root, native_input)
+    |          ----------- value moved here
+...
+494 |                 native_root.as_os_str().to_os_string(),
+    |                 ^^^^^^^^^^^ value borrowed here after move
+    |
+    = note: borrow occurs due to deref coercion to `std::path::Path`
+help: consider cloning the value if the performance cost is acceptable
+    |
+462 |         (native_root.clone(), native_input)
+    |                     ++++++++
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `vlajmaji-cli` (test "owned_journal_contract") due to 1 previous error

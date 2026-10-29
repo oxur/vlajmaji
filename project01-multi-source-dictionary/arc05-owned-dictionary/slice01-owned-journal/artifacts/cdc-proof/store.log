@@ -1,0 +1,23 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s
+     Running tests/owned_journal_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_journal_contract-80b8b25353934f97)
+
+running 15 tests
+test head_rejects_a_consistent_but_non_genesis_parent_at_sequence_zero ... ok
+test invalid_genesis_and_existing_foreign_root_are_not_replaced ... ok
+test catalogue_revision_above_sqlite_integer_range_is_rejected_without_mutation ... ok
+test changing_a_prior_release_selection_is_rejected_as_an_immutable_prefix ... ok
+test foreign_database_and_missing_open_are_rejected_without_creation ... ok
+test create_read_and_append_preserve_typed_history ... ok
+test aborting_head_update_rolls_back_suffix_and_allows_explicit_retry ... ok
+test pinned_reader_busy_rolls_back_then_explicit_retry_succeeds ... ok
+test two_open_writers_compare_the_persisted_head ... ok
+test show_detects_corrupt_payload_unknown_sections_and_excess_current_rows ... ok
+test complete_owned_state_round_trips_all_ordered_sections_and_presence ... ok
+test complete_vector_history_records_removal_and_explicit_reactivation ... ok
+test removal_reordering_and_duplicate_multiplicity_are_rejected ... ok
+test every_typed_section_rejects_a_changed_prior_row_and_preserves_its_order ... ok
+test applicable_typed_section_removal_and_reorder_preserve_the_committed_prefix ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.85s
+

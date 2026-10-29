@@ -1,0 +1,30 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error: unused import: `AssertionRecord`
+  --> crates/store/tests/owned_journal_contract.rs:12:23
+   |
+12 |     AbbreviationKind, AssertionRecord, Availability, CaptureRef, CollectionRecord, ComponentRecord,
+   |                       ^^^^^^^^^^^^^^^
+   |
+   = note: `-D unused-imports` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error: very complex type used. Consider factoring parts into `type` definitions
+  --> crates/store/tests/owned_journal_contract.rs:45:6
+   |
+45 |   ) -> (
+   |  ______^
+46 | |     Vec<(String, i64, Vec<u8>)>,
+47 | |     Vec<(String, Option<String>, i64, String)>,
+48 | |     Vec<(String, String)>,
+49 | | ) {
+   | |_^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#type_complexity
+   = note: `-D clippy::type-complexity` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::type_complexity)]`
+
+error: could not compile `vlajmaji-store` (test "owned_journal_contract") due to 2 previous errors
+make: *** [lint] Error 101

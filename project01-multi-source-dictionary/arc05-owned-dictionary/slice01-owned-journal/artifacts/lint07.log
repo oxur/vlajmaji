@@ -1,0 +1,21 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error: missing documentation for the crate
+   --> crates/store/tests/owned_journal_contract.rs:1:1
+    |
+  1 | / use std::{
+  2 | |     fs,
+  3 | |     path::PathBuf,
+  4 | |     sync::atomic::{AtomicUsize, Ordering},
+...   |
+252 | |     );
+253 | | }
+    | |_^
+    |
+    = note: `-D missing-docs` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(missing_docs)]`
+
+error: could not compile `vlajmaji-store` (test "owned_journal_contract") due to 1 previous error

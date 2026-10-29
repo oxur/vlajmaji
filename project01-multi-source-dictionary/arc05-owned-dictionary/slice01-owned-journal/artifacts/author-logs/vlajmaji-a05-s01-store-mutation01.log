@@ -1,0 +1,23 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.87s
+     Running tests/owned_journal_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_journal_contract-80b8b25353934f97)
+
+running 1 test
+test every_typed_section_rejects_a_changed_prior_row_and_preserves_its_order ... FAILED
+
+failures:
+
+---- every_typed_section_rejects_a_changed_prior_row_and_preserves_its_order stdout ----
+
+thread 'every_typed_section_rejects_a_changed_prior_row_and_preserves_its_order' (81183513) panicked at crates/store/tests/owned_journal_contract.rs:473:27:
+accepted changed prior registry.snapshots row: OwnedWriteReport { version: 1, operation: Edit, source: SourceId("source-o"), previous_head: Some(EntityId("revision-r2")), head: OwnedCommitSummary { sequence: 1, revision: OwnedRevisionRecord { id: EntityId("owned-r1"), source: SourceId("source-o"), parent: Some(EntityId("revision-r2")), editor: ContributorId("editor-1"), timestamp: Missing, time_precision: Unknown, assertions: [EntityId("assertion-18")], tombstones: [], rationale: Value(TextValue { text: "second draft", language: Null, markup: Missing }) }, state_sha256: "dd72a43651011785ff7f5c4dd944e48bebad0751aa28fc1b173524f9d464e6a9" } }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    every_typed_section_rejects_a_changed_prior_row_and_preserves_its_order
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 10 filtered out; finished in 0.26s
+
+error: test failed, to rerun pass `-p vlajmaji-store --test owned_journal_contract`

@@ -2,13 +2,13 @@
 
 | Field | Value |
 | --- | --- |
-| Status | ISSUED for complete intake; seven rows OPEN; no source/build/CC transfer yet |
+| Status | CLOSED locally: seven rows DONE after independent CDC source/public/CLI verification at1b899ebb/tree745f |
 | Parent | [Arc05](../arc-plan.md), [directive04](../../cdc-directive04.md) |
 | Baseline | `a55e1cc7c4d7b0df4a187ce3551bfce9141a39d3`, tree `836df880ca711c6813cb78ae1202973e618eb105`; branch `codex/project01-owned-dictionary` |
 | Source home | `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji` (physical checkout reused) |
-| Ownership | Complete intake ACCEPTED; AFTER handoff commit + explicit CDC dispatch, CC owns eleven source paths/index/ONE target; root/CDC source-read-only |
+| Ownership | Author and CDC verification sessions terminal; source/index/ONEtarget QUIET, returned to root/CDC. No S02 transfer yet |
 | Roles / budget | Retained Sol6.1/high CDC + Luna/high CC; initial + corrections at most FIVE total passes, no automatic sixth |
-| Version / date | 0.1 / 2026-10-28 |
+| Version / date | 0.2 / 2026-10-28 |
 
 ## 1. First usable result
 
@@ -199,3 +199,7 @@ Retained Luna/high CC is assigned REQUIRED COMPLETE INTAKE ONLY now. Intake cove
 ### Initial intake acceptance / handoff — 2026-10-28
 
 Actual bounded intake/readback plus citation erratum in artifacts/execution.md accepted by CDC; fresh clean a55/tree836/branch/lock/guard/protected refs verified. After this metadata commit and explicit CDC dispatch, retained Luna/high owns exactly plan§8 eleven paths/index/ONE target for INITIAL/pass1of5. Root/CDC source-read-only, all rows OPEN; no root approval ceremony repeats. Substantive issued prompt remains byte-exact.
+
+## Version0.2 — actual S01 local close,2026-10-28
+
+CDC accepted1b899ebb/tree745f (same source tree as originalf35, adjacent-trailer metadata correction only) after complete source review, independent15store+3CLI and12-child public/CLI/new-owned-schema proof. Seven rows DONE; author and CDC raw failures/current gates retained in artifacts. cdc-verification.md defines exact scopes and unknown incidental ignored-input I/O deviation; cdc-retrospective.md supplies follow-through. Earlier readiness/intake/partial checkpoints retain their original time cutoffs. No hosted Linux/Full/export/curation/package/Arc05 or project acceptance inferred. S02 separate draft follows root readiness.

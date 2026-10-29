@@ -1,0 +1,35 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error[E0277]: the trait bound `u64: rusqlite::ToSql` is not satisfied
+    --> crates/store/src/owned.rs:1024:9
+     |
+1022 |     let payload: Vec<u8> = connection.query_row(
+     |                                       --------- required by a bound introduced by this call
+1023 |         "SELECT payload FROM owned_records WHERE section='metadata.owned_revisions' AND ordinal=?1",
+1024 |         [sequence],
+     |         ^^^^^^^^^^ the trait `rusqlite::ToSql` is not implemented for `u64`
+     |
+     = help: the following other types implement trait `rusqlite::ToSql`:
+               f32
+               f64
+               i16
+               i32
+               i64
+               i8
+               isize
+               u16
+             and 2 others
+     = note: required for `[u64; 1]` to implement `rusqlite::Params`
+note: required by a bound in `rusqlite::Connection::query_row`
+    --> /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rusqlite-0.40.2/src/lib.rs:684:12
+     |
+ 682 |     pub fn query_row<T, P, F>(&self, sql: &str, params: P, f: F) -> Result<T>
+     |            --------- required by a bound in this associated function
+ 683 |     where
+ 684 |         P: Params,
+     |            ^^^^^^ required by this bound in `Connection::query_row`
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `vlajmaji-store` (lib test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-store` (lib) due to 1 previous error

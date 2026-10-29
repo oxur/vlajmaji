@@ -1,0 +1,54 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error[E0609]: no field `source` on type `&&vlajmaji_lexicon::ReleaseRecord`
+   --> crates/store/src/owned.rs:685:23
+    |
+685 |         .filter(|r| r.source == *source)
+    |                       ^^^^^^ unknown field
+    |
+    = note: available fields are: `id`, `component`, `distributor`, `upstream_revision`, `distributor_revision` ... and 14 others
+
+error[E0609]: no field `release` on type `&vlajmaji_lexicon::CodeNotice`
+   --> crates/store/src/owned.rs:703:62
+    |
+703 |         .any(|r| !doc.metadata.code_notices.iter().any(|n| n.release == r.id))
+    |                                                              ^^^^^^^ unknown field
+    |
+    = note: available fields are: `text`, `locator`, `license`
+
+error[E0277]: `?` couldn't convert the error to `collections::CollectionError`
+   --> crates/store/src/owned_schema.rs:76:23
+    |
+ 57 | pub(crate) fn open_readonly(root: &Path) -> Result<Connection, CollectionError> {
+    |                                             ----------------------------------- expected `collections::CollectionError` because of this
+...
+ 76 |     check(&connection)?;
+    |     ------------------^ the trait `std::convert::From<rusqlite::Error>` is not implemented for `collections::CollectionError`
+    |     |
+    |     this can't be annotated with `?` because it has type `Result<_, rusqlite::Error>`
+    |
+note: `collections::CollectionError` needs to implement `From<rusqlite::Error>`
+   --> crates/store/src/collections.rs:466:1
+    |
+466 | pub enum CollectionError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: the question mark operation (`?`) implicitly performs a conversion on the error value using the `From` trait
+
+error: variable does not need to be mutable
+   --> crates/store/src/owned.rs:283:13
+    |
+283 |         let mut journal = Self {
+    |             ----^^^^^^^
+    |             |
+    |             help: remove this `mut`
+    |
+    = note: `-D unused-mut` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(unused_mut)]`
+
+Some errors have detailed explanations: E0277, E0609.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `vlajmaji-store` (lib) due to 4 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-store` (lib test) due to 4 previous errors
+make: *** [lint] Error 101

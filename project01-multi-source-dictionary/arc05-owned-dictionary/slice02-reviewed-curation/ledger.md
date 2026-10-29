@@ -1,6 +1,6 @@
 # S02 ledger — reviewed curation
 
-**Current, 2026-10-28:** SOURCE-GUIDED DRAFT, UNISSUED; eight rows OPEN. The current policy is slice-plan§§1–6, including the strict whole context-input codec, pure owned-base validation boundary and native output/error precedence. Root has reviewed those draft refinements without another design blocker; this is not executable readiness. Actual accepted S01 HEAD/API/schema and the exact prompt/readset/allowlist remain prerequisites. No S02 source/target ownership, intake, build or runtime has transferred.
+**Current, 2026-10-28:** SOURCE-GUIDED DRAFT, UNISSUED; eight rows OPEN. The current policy is slice-plan§§1–6, including the strict whole context-input codec, pure owned-base validation boundary and native output/error precedence. Root has reviewed those draft refinements without another design blocker; this is not executable readiness. Accepted S01 is1b899ebb/tree745f with schema1 and exact public APIs; prompt/readset/fourteen-path allowlist are reconciled. Root exact DRAFT readiness remains required. No S02 source/target ownership, intake, build or runtime has transferred.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |
