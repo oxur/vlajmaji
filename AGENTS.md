@@ -15,7 +15,7 @@ Earlier failure/STOP checkpoints below are historical regarding the need to
 correct observed latency; their exhausted execution and external-action limits
 remain in force. No new source pass, Full campaign or push is issued here.
 
-**Current ninth TEST-ONLY authority,2026-10-28:** Human explicitly approves apply/validate/push/PR; iteration08 ISSUEDstatus-only from reviewed7041B/e143624b. CDC owns QUIETsource/index/ONEtarget sequencing pending boundedLunaintake/freshpins/explicitONEpathtransfer. Only dictionary_projection_contract.rs transport; noautomatic10/Full/productchange. All6OPEN/currentCI/freshARC/close pending; noArc05/merge/publish. Earlier pending-ninth text historical.
+**Current ninth TEST-ONLY authority,2026-10-28:** Human explicitly approves apply/validate/push/PR; iteration08 ISSUEDstatus-only from reviewed7041B/e143624b. Complete boundedLunaintake ACCEPTED/freshclean a72/pins/protectedrefs verified. AFTERhandoffcommit+explicitdispatch CC owns ONLY dictionary_projection_contract.rs/index/ONEtarget; CDC/root readonlyuntilfrozenhandback. Only dictionary_projection_contract.rs transport; noautomatic10/Full/productchange. All6OPEN/currentCI/freshARC/close pending; noArc05/merge/publish. Earlier pending-ninth text historical.
 
 **Current actual CI block, 2026-10-28:** a72 eighthcandidate Check/MacSUCCESS and Linuxoutput8/8, laterprojection3setupE2BIG failures; CI40789937233 TERMINALFAILURE. Source/index/target QUIET; root concreteONEfile file-backedSQLstdin proposal03, human NINTHpass PENDING/noautomatic10. Freshreview/close BLOCKED; all6OPEN. Earlier currentCI-pending text is history.
 

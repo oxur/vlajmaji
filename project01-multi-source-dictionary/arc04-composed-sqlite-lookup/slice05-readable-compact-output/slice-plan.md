@@ -5,7 +5,7 @@
 | Status / version | Iteration08 ninthTESTONLY humanapproved/ISSUED, boundedintake/freshpins/ONEpathtransfer pending /1.30 /2026-10-28. PriorCI failures preserved; all6OPEN. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
 | Source / dependency | CURRENT cleana72a742e7a44fe833a3db64d85988f3a0b5833ee/tree16aa871d/parent5bc/S05branch/base32e99. ONE-file directdelta, cumulative23; all131entriesoutside2tests byte-identical011. OldS04refs432 unchanged. |
-| Ownership | CDC owns QUIETsource/index/ONEtarget sequencing; retainedLuna intake/freshpins/explicitONEtestpathtransfer BEFORE any edit/Cargo. Root/CC readonly. |
+| Ownership | AFTERscopedhandoffcommit+explicitdispatch retainedLuna/high owns ONLY dictionary_projection_contract.rs/index/ONEtarget for ninthTESTONLY. Intake/fresh a72pins ACCEPTED; CDC/root readonlyuntilfrozenhandback. |
 | Delivery | Additive compact Exact/Resolve and complete occurrence detail, then source-grouped readable Exact/Resolve/detail. Full default JSON stays compatible. Public libraries, CLI, documentation and actual five-workflow composition accompany output, not verification alone. |
 | Sizing | Six completed author passes plus ONE explicitly human-approved seventh TEST-ONLY pass (iteration06), exactly two paths. No automatic eighth, Full replay or optimisation. |
 | Limits | No dependency/lock/schema/importer/model/workflow changes, topology redo, new Full store/generation, cleanup/cache reset, actual-default access, S04 branch writes, A05 activation, network/push/PR/merge/publication. Later finite retained-G4 trial needs exact executable root readiness. |
