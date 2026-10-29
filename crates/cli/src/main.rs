@@ -8,6 +8,7 @@ use std::path::{Path, PathBuf};
 
 use clap::{Args as ClapArgs, Parser, Subcommand, ValueEnum};
 use query_output::QueryOutput;
+use vlajmaji_lexicon::EntityId;
 use vlajmaji_lexicon::{
     Dictionary, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION,
     JbotciImportError, JbotciImportOptions, LA_LOJBAN_PINNED_RAW_SHA256, LA_LOJBAN_PINNED_REVISION,
@@ -29,7 +30,8 @@ use vlajmaji_store::{
     CollectionCatalogue, CollectionError, CollectionInput, CollectionPolicySelection,
     CollectionProfileEnablementRequest, CollectionProfileMembershipWriteRequest,
     CollectionProfiles, CollectionRequest, CollectionSelection, DictionaryStoreVerification,
-    DictionaryStoreVerificationCheck, DictionaryStoreVerificationReport,
+    DictionaryStoreVerificationCheck, DictionaryStoreVerificationReport, OwnedJournal,
+    OwnedJournalError, OwnedJournalReader,
 };
 
 #[derive(Debug, Parser)]
@@ -179,6 +181,42 @@ enum Command {
         pack: Vec<String>,
         #[arg(long, value_enum, default_value_t = DetailFormat::Full)]
         format: DetailFormat,
+    },
+    /// Create, append to, or inspect one explicitly rooted authoritative dictionary journal.
+    #[command(
+        after_help = "Owned journals use only the explicit ROOT and never consult configuration or the default store. Init/edit read a complete versioned dictionary from --input FILE or stdin."
+    )]
+    Owned {
+        #[command(subcommand)]
+        command: OwnedCommand,
+    },
+}
+
+#[derive(Debug, Subcommand)]
+enum OwnedCommand {
+    /// Create a new owned journal from a complete genesis dictionary.
+    Init {
+        root: PathBuf,
+        #[arg(long)]
+        input: Option<PathBuf>,
+    },
+    /// Append one complete dictionary revision at the expected persisted head.
+    Edit {
+        root: PathBuf,
+        #[arg(long)]
+        expected_head: String,
+        #[arg(long)]
+        input: Option<PathBuf>,
+    },
+    /// Read the checked current head summary.
+    Head { root: PathBuf },
+    /// Read the checked contiguous revision summaries.
+    History { root: PathBuf },
+    /// Reconstruct and validate the current or explicitly selected revision.
+    Show {
+        root: PathBuf,
+        #[arg(long)]
+        revision: Option<String>,
     },
 }
 
@@ -472,6 +510,42 @@ fn structured_error(code: &str, message: impl Into<String>) -> CliError {
     })
 }
 
+fn owned_error(error: OwnedJournalError) -> CliError {
+    let category = serde_json::to_value(error.category())
+        .ok()
+        .and_then(|value| value.as_str().map(str::to_owned))
+        .unwrap_or_else(|| "backend".into());
+    structured_error(&format!("owned_{category}"), error.to_string())
+}
+
+fn read_owned_input(input: Option<PathBuf>) -> Result<Vec<u8>, CliError> {
+    match input {
+        Some(path) => std::fs::read(&path).map_err(|error| {
+            owned_error(OwnedJournalError::Io(io::Error::new(
+                error.kind(),
+                format!("read {}: {error}", path.display()),
+            )))
+        }),
+        None => {
+            let mut bytes = Vec::new();
+            io::stdin()
+                .read_to_end(&mut bytes)
+                .map_err(|error| owned_error(OwnedJournalError::Io(error)))?;
+            Ok(bytes)
+        }
+    }
+}
+
+fn parse_owned_dictionary(bytes: &[u8]) -> Result<Dictionary, CliError> {
+    Dictionary::from_json_bytes(bytes)
+        .map_err(|error| owned_error(OwnedJournalError::InvalidDictionary(error)))
+}
+
+fn parse_owned_id(value: &str) -> Result<EntityId, CliError> {
+    EntityId::new(value)
+        .map_err(|error| owned_error(OwnedJournalError::InvalidRequest(error.to_string())))
+}
+
 #[derive(Clone)]
 struct ManagedOutputContext {
     operation: String,
@@ -490,7 +564,8 @@ impl ManagedOutputContext {
         if matches!(
             self.operation.as_str(),
             "dictionary_detail" | "dictionary_query"
-        ) {
+        ) || self.operation.starts_with("owned_")
+        {
             return serde_json::json!(DictionaryErrorReport {
                 code: "response_output_io".into(),
                 message: detail,
@@ -576,6 +651,23 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
             Vec::new(),
             "not_applicable",
         )),
+        Command::Owned { command } => {
+            let (operation, root) = match command {
+                OwnedCommand::Init { root, .. } => ("owned_init", root),
+                OwnedCommand::Edit { root, .. } => ("owned_edit", root),
+                OwnedCommand::Head { root } => ("owned_head", root),
+                OwnedCommand::History { root } => ("owned_history", root),
+                OwnedCommand::Show { root, .. } => ("owned_show", root),
+            };
+            Some(context(
+                operation,
+                None,
+                Some(root),
+                None,
+                Vec::new(),
+                "not_applicable",
+            ))
+        }
         Command::Collections { command } => match command {
             CollectionsCommand::Configure {
                 root,
@@ -994,6 +1086,53 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                 }
             }
         }
+        Command::Owned { command } => match command {
+            OwnedCommand::Init { root, input } => {
+                let bytes = read_owned_input(input)?;
+                let genesis = parse_owned_dictionary(&bytes)?;
+                let (_, report) = OwnedJournal::create(&root, &genesis).map_err(owned_error)?;
+                serde_json::to_value(report)
+                    .map_err(|error| structured_error("owned_response", error.to_string()))?
+            }
+            OwnedCommand::Edit {
+                root,
+                expected_head,
+                input,
+            } => {
+                let expected_head = parse_owned_id(&expected_head)?;
+                let bytes = read_owned_input(input)?;
+                let candidate = parse_owned_dictionary(&bytes)?;
+                let mut journal = OwnedJournal::open(&root).map_err(owned_error)?;
+                let report = journal
+                    .commit(&expected_head, &candidate)
+                    .map_err(owned_error)?;
+                serde_json::to_value(report)
+                    .map_err(|error| structured_error("owned_response", error.to_string()))?
+            }
+            OwnedCommand::Head { root } => {
+                let reader = OwnedJournalReader::open(&root).map_err(owned_error)?;
+                let report = reader.head().map_err(owned_error)?;
+                serde_json::to_value(report)
+                    .map_err(|error| structured_error("owned_response", error.to_string()))?
+            }
+            OwnedCommand::History { root } => {
+                let reader = OwnedJournalReader::open(&root).map_err(owned_error)?;
+                let report = reader.history().map_err(owned_error)?;
+                serde_json::to_value(report)
+                    .map_err(|error| structured_error("owned_response", error.to_string()))?
+            }
+            OwnedCommand::Show { root, revision } => {
+                let revision = revision.as_deref().map(parse_owned_id).transpose()?;
+                let reader = OwnedJournalReader::open(&root).map_err(owned_error)?;
+                let report = match revision {
+                    Some(revision) => reader.show(&revision),
+                    None => reader.show_head(),
+                }
+                .map_err(owned_error)?;
+                serde_json::to_value(report)
+                    .map_err(|error| structured_error("owned_response", error.to_string()))?
+            }
+        },
         Command::Verify { check, store } => {
             let selected = resolve_store(store)?;
             let report = DictionaryStoreVerification::verify(&selected.path, check.into())

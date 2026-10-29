@@ -1,0 +1,1300 @@
+//! Authoritative, append-only local journals for explicitly owned dictionaries.
+use std::{
+    error::Error,
+    fmt, fs, io,
+    path::{Path, PathBuf},
+};
+
+use rusqlite::{Connection, OpenFlags, params};
+use serde::{Deserialize, Serialize, de::DeserializeOwned};
+use sha2::{Digest, Sha256};
+use vlajmaji_lexicon::{
+    Dictionary, DictionaryDocument, DictionaryError, DictionaryMetadata, EntityId, OwnedHead,
+    OwnedRevisionRecord, RegistryDocument, SourceId, SourceOrigin, SourceRegistry,
+};
+
+use crate::owned_schema::{self, SECTIONS};
+
+const FAMILY: &str = "vlajmaji-owned";
+
+/// A stable summary of one committed revision.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct OwnedCommitSummary {
+    /// Zero-based append sequence.
+    pub sequence: u64,
+    /// The complete typed revision record.
+    pub revision: OwnedRevisionRecord,
+    /// SHA-256 of the complete canonical dictionary state.
+    pub state_sha256: String,
+}
+
+/// Current owned source and its persisted head.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct OwnedHeadReport {
+    /// Report schema version.
+    pub version: u32,
+    /// The sole owned source.
+    pub source: SourceId,
+    /// Current committed head.
+    pub head: OwnedCommitSummary,
+}
+
+/// Typed committed history, genesis first.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct OwnedHistoryReport {
+    /// Report schema version.
+    pub version: u32,
+    /// The sole owned source.
+    pub source: SourceId,
+    /// Current revision identifier.
+    pub head: EntityId,
+    /// Ordered commit summaries from genesis through the current head.
+    pub commits: Vec<OwnedCommitSummary>,
+}
+
+/// A complete validated historical dictionary state.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct OwnedRevisionView {
+    /// Report schema version.
+    pub version: u32,
+    /// The sole owned source.
+    pub source: SourceId,
+    /// Requested commit metadata.
+    pub commit: OwnedCommitSummary,
+    /// Fully reconstructed and validated dictionary.
+    pub dictionary: Dictionary,
+}
+
+/// The journal operation represented by a successful write.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum OwnedWriteOperation {
+    /// Created genesis revision zero.
+    Init,
+    /// Appended one revision.
+    Edit,
+}
+
+/// Result of creating or appending to an owned journal.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct OwnedWriteReport {
+    /// Report schema version.
+    pub version: u32,
+    /// The committed operation.
+    pub operation: OwnedWriteOperation,
+    /// The sole owned source.
+    pub source: SourceId,
+    /// Previous head, absent only at genesis.
+    pub previous_head: Option<EntityId>,
+    /// Newly committed head.
+    pub head: OwnedCommitSummary,
+}
+
+/// Stable categories for owned journal failures.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+#[non_exhaustive]
+pub enum OwnedJournalErrorCategory {
+    /// Invalid caller policy or request shape.
+    InvalidRequest,
+    /// Invalid typed dictionary model.
+    InvalidDictionary,
+    /// Unsupported journal version.
+    UnsupportedVersion,
+    /// Another SQLite family occupies the path.
+    WrongFamily,
+    /// The expected head is no longer current.
+    Conflict,
+    /// An existing row was changed or removed.
+    ImmutableRecord,
+    /// Requested revision does not exist.
+    NotFound,
+    /// Persisted bytes violate integrity checks.
+    Integrity,
+    /// SQLite could not acquire or complete a transaction due to locking.
+    Busy,
+    /// Native filesystem failure.
+    Io,
+    /// SQLite backend failure.
+    Backend,
+    /// Commit outcome could not be established safely.
+    CommitOutcomeUnknown,
+}
+
+/// A typed failure from opening, validating, reading, or writing an owned journal.
+#[derive(Debug)]
+#[non_exhaustive]
+pub enum OwnedJournalError {
+    /// The caller request violates the owned-journal policy.
+    InvalidRequest(String),
+    /// The complete dictionary failed model validation.
+    InvalidDictionary(DictionaryError),
+    /// A journal or model version is unsupported.
+    UnsupportedVersion {
+        /// Journal schema version found in the fixed header.
+        found: u32,
+    },
+    /// The path belongs to another database family.
+    WrongFamily,
+    /// Persisted head differs from the expected head.
+    Conflict {
+        /// Head supplied by the caller.
+        expected: EntityId,
+        /// Head persisted when the writer acquired its transaction.
+        actual: EntityId,
+    },
+    /// A previously committed typed row was altered, removed, or reordered.
+    ImmutableRecord {
+        /// Versioned typed-vector section containing the changed row.
+        section: String,
+        /// Zero-based row position that differs from the committed prefix.
+        ordinal: u64,
+    },
+    /// The requested revision is not present.
+    NotFound(EntityId),
+    /// Persisted journal state is structurally or cryptographically invalid.
+    Integrity(String),
+    /// SQLite reported a busy/locked transaction.
+    Busy(String),
+    /// Filesystem operation failed.
+    Io(io::Error),
+    /// SQLite operation failed.
+    Backend(rusqlite::Error),
+    /// Commit and rollback observations cannot establish whether a commit occurred.
+    CommitOutcomeUnknown(String),
+}
+
+impl OwnedJournalError {
+    /// Returns the stable machine-readable failure category.
+    #[must_use]
+    pub fn category(&self) -> OwnedJournalErrorCategory {
+        match self {
+            Self::InvalidRequest(_) => OwnedJournalErrorCategory::InvalidRequest,
+            Self::InvalidDictionary(_) => OwnedJournalErrorCategory::InvalidDictionary,
+            Self::UnsupportedVersion { .. } => OwnedJournalErrorCategory::UnsupportedVersion,
+            Self::WrongFamily => OwnedJournalErrorCategory::WrongFamily,
+            Self::Conflict { .. } => OwnedJournalErrorCategory::Conflict,
+            Self::ImmutableRecord { .. } => OwnedJournalErrorCategory::ImmutableRecord,
+            Self::NotFound(_) => OwnedJournalErrorCategory::NotFound,
+            Self::Integrity(_) => OwnedJournalErrorCategory::Integrity,
+            Self::Busy(_) => OwnedJournalErrorCategory::Busy,
+            Self::Io(_) => OwnedJournalErrorCategory::Io,
+            Self::Backend(_) => OwnedJournalErrorCategory::Backend,
+            Self::CommitOutcomeUnknown(_) => OwnedJournalErrorCategory::CommitOutcomeUnknown,
+        }
+    }
+}
+
+impl fmt::Display for OwnedJournalError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::InvalidRequest(detail) => write!(f, "invalid owned journal request: {detail}"),
+            Self::InvalidDictionary(error) => write!(f, "invalid owned dictionary: {error}"),
+            Self::UnsupportedVersion { found } => {
+                write!(f, "unsupported owned journal version {found}")
+            }
+            Self::WrongFamily => f.write_str("database is not an owned dictionary journal"),
+            Self::Conflict { expected, actual } => write!(
+                f,
+                "owned journal head conflict: expected {expected}, found {actual}"
+            ),
+            Self::ImmutableRecord { section, ordinal } => {
+                write!(f, "immutable owned record changed at {section}[{ordinal}]")
+            }
+            Self::NotFound(revision) => write!(f, "owned revision not found: {revision}"),
+            Self::Integrity(detail) => write!(f, "owned journal integrity failure: {detail}"),
+            Self::Busy(detail) => write!(f, "owned journal is busy: {detail}"),
+            Self::Io(error) => write!(f, "owned journal filesystem error: {error}"),
+            Self::Backend(error) => write!(f, "owned journal backend error: {error}"),
+            Self::CommitOutcomeUnknown(detail) => {
+                write!(f, "owned journal commit outcome is unknown: {detail}")
+            }
+        }
+    }
+}
+impl Error for OwnedJournalError {
+    fn source(&self) -> Option<&(dyn Error + 'static)> {
+        match self {
+            Self::InvalidDictionary(error) => Some(error),
+            Self::Io(error) => Some(error),
+            Self::Backend(error) => Some(error),
+            _ => None,
+        }
+    }
+}
+impl From<io::Error> for OwnedJournalError {
+    fn from(value: io::Error) -> Self {
+        Self::Io(value)
+    }
+}
+impl From<rusqlite::Error> for OwnedJournalError {
+    fn from(value: rusqlite::Error) -> Self {
+        map_busy(value)
+    }
+}
+
+/// A writable handle to one explicit owned-dictionary journal.
+pub struct OwnedJournal {
+    connection: Connection,
+    poisoned: bool,
+}
+
+/// A read-only pinned snapshot of one owned-dictionary journal.
+pub struct OwnedJournalReader {
+    connection: Connection,
+}
+
+impl OwnedJournal {
+    /// Validates and creates a genesis journal under an existing parent directory.
+    ///
+    /// The root is created exclusively and is never replaced.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error for invalid genesis policy/model, an occupied root, or a
+    /// filesystem/SQLite failure. A failed partial root is retained for diagnosis.
+    pub fn create(
+        root: &Path,
+        genesis: &Dictionary,
+    ) -> Result<(Self, OwnedWriteReport), OwnedJournalError> {
+        validate_genesis(genesis)?;
+        match fs::symlink_metadata(root) {
+            Ok(_) => {
+                return Err(OwnedJournalError::Io(io::Error::new(
+                    io::ErrorKind::AlreadyExists,
+                    "owned journal root already exists",
+                )));
+            }
+            Err(error) if error.kind() == io::ErrorKind::NotFound => {}
+            Err(error) => return Err(error.into()),
+        }
+        let parent = root
+            .parent()
+            .filter(|path| !path.as_os_str().is_empty())
+            .unwrap_or_else(|| Path::new("."));
+        if !parent.is_dir() {
+            return Err(OwnedJournalError::Io(io::Error::new(
+                io::ErrorKind::NotFound,
+                "owned journal parent must exist",
+            )));
+        }
+        fs::create_dir(root)?;
+        let path = root.join(owned_schema::FILE);
+        let connection = Connection::open_with_flags(
+            &path,
+            OpenFlags::SQLITE_OPEN_READ_WRITE
+                | OpenFlags::SQLITE_OPEN_CREATE
+                | OpenFlags::SQLITE_OPEN_NO_MUTEX,
+        )?;
+        connection.busy_timeout(std::time::Duration::ZERO)?;
+        owned_schema::configure(&connection)?;
+        connection.execute_batch("BEGIN IMMEDIATE")?;
+        let journal = Self {
+            connection,
+            poisoned: false,
+        };
+        let transaction = RollbackGuard::new(&journal.connection, None);
+        let source = genesis.registry().as_document().sources[0].id.clone();
+        let prepared = (|| {
+            owned_schema::initialize(&journal.connection)?;
+            let state = sections(genesis)?;
+            let revision = genesis.metadata().owned_revisions[0].clone();
+            let hash = state_hash(genesis)?;
+            insert_initial(&journal.connection, &state, &revision, &hash, &source)?;
+            Ok::<_, OwnedJournalError>((revision, hash))
+        })();
+        let (revision, state_hash) = match prepared {
+            Ok(value) => value,
+            Err(error) => {
+                let result = rollback_error(&journal.connection, error);
+                transaction.disarm();
+                return result;
+            }
+        };
+        match journal.connection.execute_batch("COMMIT") {
+            Ok(()) => transaction.disarm(),
+            Err(error) => {
+                let result = resolve_commit_error(&journal.connection, error);
+                transaction.disarm();
+                return Err(result);
+            }
+        }
+        let summary = OwnedCommitSummary {
+            sequence: 0,
+            revision,
+            state_sha256: state_hash,
+        };
+        let report = OwnedWriteReport {
+            version: 1,
+            operation: OwnedWriteOperation::Init,
+            source,
+            previous_head: None,
+            head: summary,
+        };
+        Ok((journal, report))
+    }
+
+    /// Opens an existing journal for writes without creating or migrating it.
+    ///
+    /// # Errors
+    ///
+    /// Returns a typed path, family, version, or backend error.
+    pub fn open(root: &Path) -> Result<Self, OwnedJournalError> {
+        let path = checked_database_path(root)?;
+        let connection = Connection::open_with_flags(
+            &path,
+            OpenFlags::SQLITE_OPEN_READ_WRITE | OpenFlags::SQLITE_OPEN_NO_MUTEX,
+        )?;
+        connection.busy_timeout(std::time::Duration::ZERO)?;
+        check_header(&connection)?;
+        connection.execute_batch("PRAGMA foreign_keys=ON; PRAGMA synchronous=FULL;")?;
+        Ok(Self {
+            connection,
+            poisoned: false,
+        })
+    }
+
+    /// Appends exactly one revision if `expected_head` is still persisted.
+    ///
+    /// # Errors
+    ///
+    /// Returns conflict before append-policy failures when the persisted head
+    /// differs, or a typed validation, immutability, busy, or integrity error.
+    pub fn commit(
+        &mut self,
+        expected_head: &EntityId,
+        candidate: &Dictionary,
+    ) -> Result<OwnedWriteReport, OwnedJournalError> {
+        if self.poisoned {
+            return Err(OwnedJournalError::CommitOutcomeUnknown(
+                "writer handle is poisoned".into(),
+            ));
+        }
+        self.connection
+            .execute_batch("BEGIN IMMEDIATE")
+            .map_err(map_busy)?;
+        let transaction = RollbackGuard::new(&self.connection, Some(&mut self.poisoned));
+        let prepared = (|| {
+            let current = current_view(&self.connection)?;
+            if current.commit.revision.id != *expected_head {
+                return Err(OwnedJournalError::Conflict {
+                    expected: expected_head.clone(),
+                    actual: current.commit.revision.id,
+                });
+            }
+            let (old_sections, new_sections) = validate_edit(&current.dictionary, candidate)?;
+            let revision = candidate
+                .metadata()
+                .owned_revisions
+                .last()
+                .cloned()
+                .ok_or_else(|| {
+                    OwnedJournalError::Integrity("candidate revision is missing".into())
+                })?;
+            let sequence = current
+                .commit
+                .sequence
+                .checked_add(1)
+                .filter(|n| *n <= i64::MAX as u64)
+                .ok_or_else(|| {
+                    OwnedJournalError::InvalidRequest(
+                        "journal sequence exceeds SQLite INTEGER range".into(),
+                    )
+                })?;
+            let hash = state_hash(candidate)?;
+            insert_suffix(
+                &self.connection,
+                &old_sections,
+                &new_sections,
+                &revision,
+                sequence,
+                &hash,
+                &current.source,
+            )?;
+            Ok::<_, OwnedJournalError>((
+                current.source,
+                current.commit.revision.id,
+                sequence,
+                revision,
+                hash,
+            ))
+        })();
+        let (source, previous, sequence, revision, hash) = match prepared {
+            Ok(value) => value,
+            Err(error) => {
+                let result = rollback_error(&self.connection, error);
+                transaction.disarm();
+                if matches!(result, Err(OwnedJournalError::CommitOutcomeUnknown(_))) {
+                    self.poisoned = true;
+                }
+                return result;
+            }
+        };
+        match self.connection.execute_batch("COMMIT") {
+            Ok(()) => {
+                transaction.disarm();
+                Ok(OwnedWriteReport {
+                    version: 1,
+                    operation: OwnedWriteOperation::Edit,
+                    source,
+                    previous_head: Some(previous),
+                    head: OwnedCommitSummary {
+                        sequence,
+                        revision,
+                        state_sha256: hash,
+                    },
+                })
+            }
+            Err(error) => {
+                let resolved = resolve_commit_error(&self.connection, error);
+                transaction.disarm();
+                if matches!(resolved, OwnedJournalError::CommitOutcomeUnknown(_)) {
+                    self.poisoned = true;
+                }
+                Err(resolved)
+            }
+        }
+    }
+}
+
+impl OwnedJournalReader {
+    /// Opens a read-only, pinned snapshot without creating or migrating it.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error for a missing path, wrong family/version, or backend failure.
+    pub fn open(root: &Path) -> Result<Self, OwnedJournalError> {
+        let connection = Connection::open_with_flags(
+            checked_database_path(root)?,
+            OpenFlags::SQLITE_OPEN_READ_ONLY | OpenFlags::SQLITE_OPEN_NO_MUTEX,
+        )?;
+        connection.execute_batch("BEGIN DEFERRED")?;
+        check_header(&connection)?;
+        Ok(Self { connection })
+    }
+
+    /// Reads the checked current-head summary from this pinned snapshot.
+    ///
+    /// # Errors
+    ///
+    /// Returns an integrity or backend error if the current commit summary is invalid.
+    pub fn head(&self) -> Result<OwnedHeadReport, OwnedJournalError> {
+        let (source, summary) = read_current_summary(&self.connection)?;
+        Ok(OwnedHeadReport {
+            version: 1,
+            source,
+            head: summary,
+        })
+    }
+
+    /// Reads the contiguous typed commit chain without reconstructing every model body.
+    ///
+    /// # Errors
+    ///
+    /// Returns an integrity or backend error for malformed summary/chain metadata.
+    pub fn history(&self) -> Result<OwnedHistoryReport, OwnedJournalError> {
+        let (source, head) = read_current_summary(&self.connection)?;
+        let mut statement = self.connection.prepare("SELECT revision_id,parent_revision,sequence,state_sha256 FROM owned_commits ORDER BY sequence")?;
+        let mut rows = statement.query([])?;
+        let mut commits = Vec::new();
+        let mut previous: Option<EntityId> = None;
+        while let Some(row) = rows.next()? {
+            let id_text: String = row.get(0)?;
+            let id = EntityId::new(id_text)
+                .map_err(|error| OwnedJournalError::Integrity(error.to_string()))?;
+            let parent_text: Option<String> = row.get(1)?;
+            let parent = parent_text
+                .map(EntityId::new)
+                .transpose()
+                .map_err(|error| OwnedJournalError::Integrity(error.to_string()))?;
+            let sequence: i64 = row.get(2)?;
+            let hash: String = row.get(3)?;
+            if sequence < 0
+                || sequence as usize != commits.len()
+                || parent != previous
+                || !is_sha256(&hash)
+            {
+                return Err(OwnedJournalError::Integrity(
+                    "owned commit chain is not contiguous".into(),
+                ));
+            }
+            let revision = revision_for(&self.connection, &id, sequence as u64)?;
+            commits.push(OwnedCommitSummary {
+                sequence: sequence as u64,
+                revision: revision.clone(),
+                state_sha256: hash,
+            });
+            previous = Some(id);
+        }
+        if commits.last() != Some(&head) {
+            return Err(OwnedJournalError::Integrity(
+                "current head does not match commit chain".into(),
+            ));
+        }
+        Ok(OwnedHistoryReport {
+            version: 1,
+            source,
+            head: head.revision.id,
+            commits,
+        })
+    }
+
+    /// Reconstructs, validates, and hashes one requested historical state.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`OwnedJournalError::NotFound`] for an unknown revision and an
+    /// integrity/model error for invalid persisted bodies or hashes.
+    pub fn show(&self, revision: &EntityId) -> Result<OwnedRevisionView, OwnedJournalError> {
+        let summary = summary_for(&self.connection, revision)?;
+        let state = load_state(&self.connection, &summary)?;
+        let (source, _) = read_current_summary(&self.connection)?;
+        Ok(OwnedRevisionView {
+            version: 1,
+            source,
+            commit: summary,
+            dictionary: state,
+        })
+    }
+
+    /// Reconstructs the current head from this pinned snapshot.
+    ///
+    /// # Errors
+    ///
+    /// Returns a model, integrity, or backend error when the current state is invalid.
+    pub fn show_head(&self) -> Result<OwnedRevisionView, OwnedJournalError> {
+        let (_, summary) = read_current_summary(&self.connection)?;
+        self.show(&summary.revision.id)
+    }
+}
+
+fn checked_database_path(root: &Path) -> Result<PathBuf, OwnedJournalError> {
+    let root_meta = fs::symlink_metadata(root)?;
+    if !root_meta.file_type().is_dir() {
+        return Err(OwnedJournalError::Io(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            "owned journal root must be a real directory",
+        )));
+    }
+    let path = root.join(owned_schema::FILE);
+    let file_meta = fs::symlink_metadata(&path).map_err(|error| {
+        if error.kind() == io::ErrorKind::NotFound {
+            OwnedJournalError::Io(io::Error::new(
+                io::ErrorKind::NotFound,
+                "owned journal database is missing",
+            ))
+        } else {
+            OwnedJournalError::Io(error)
+        }
+    })?;
+    if !file_meta.file_type().is_file() {
+        return Err(OwnedJournalError::Io(io::Error::new(
+            io::ErrorKind::InvalidInput,
+            "owned journal database must be a regular file",
+        )));
+    }
+    Ok(path)
+}
+
+#[derive(Clone)]
+struct Sections(std::collections::BTreeMap<&'static str, Vec<Vec<u8>>>);
+impl std::ops::Index<&str> for Sections {
+    type Output = Vec<Vec<u8>>;
+    fn index(&self, index: &str) -> &Self::Output {
+        &self.0[index]
+    }
+}
+
+fn sections(dictionary: &Dictionary) -> Result<Sections, OwnedJournalError> {
+    let registry = dictionary.registry().as_document();
+    let metadata = dictionary.metadata();
+    let mut out = std::collections::BTreeMap::new();
+    macro_rules! add {
+        ($name:literal, $rows:expr) => {
+            out.insert(
+                $name,
+                ($rows)
+                    .iter()
+                    .map(serde_json::to_vec)
+                    .collect::<Result<Vec<_>, _>>()
+                    .map_err(|e| OwnedJournalError::Integrity(e.to_string()))?,
+            );
+        };
+    }
+    add!("registry.sources", registry.sources);
+    add!("registry.contributors", registry.contributors);
+    add!("registry.distributors", registry.distributors);
+    add!("registry.aliases", registry.aliases);
+    add!("registry.lineage", registry.lineage);
+    add!("registry.snapshots", registry.snapshots);
+    add!("registry.occurrences", registry.occurrences);
+    add!("captures", dictionary.captures());
+    add!("metadata.code_notices", metadata.code_notices);
+    add!("metadata.collections", metadata.collections);
+    add!("metadata.components", metadata.components);
+    add!("metadata.releases", metadata.releases);
+    add!("metadata.entries", metadata.entries);
+    add!("metadata.assertions", metadata.assertions);
+    add!("metadata.contexts", metadata.contexts);
+    add!("metadata.frames", metadata.frames);
+    add!("metadata.forms", metadata.forms);
+    add!("metadata.etymologies", metadata.etymologies);
+    add!("metadata.relations", metadata.relations);
+    add!("metadata.owned_revisions", metadata.owned_revisions);
+    add!("metadata.editorial_senses", metadata.editorial_senses);
+    add!("metadata.computations", metadata.computations);
+    add!("metadata.annotations", metadata.annotations);
+    add!("metadata.extensions", metadata.extensions);
+    Ok(Sections(out))
+}
+
+fn state_hash(dictionary: &Dictionary) -> Result<String, OwnedJournalError> {
+    Ok(hex(&Sha256::digest(
+        dictionary
+            .to_json_bytes()
+            .map_err(OwnedJournalError::InvalidDictionary)?,
+    )))
+}
+fn hex(bytes: &[u8]) -> String {
+    const D: &[u8; 16] = b"0123456789abcdef";
+    let mut s = String::with_capacity(bytes.len() * 2);
+    for b in bytes {
+        s.push(D[(b >> 4) as usize] as char);
+        s.push(D[(b & 15) as usize] as char);
+    }
+    s
+}
+fn is_sha256(value: &str) -> bool {
+    value.len() == 64
+        && value
+            .bytes()
+            .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
+}
+
+fn validate_genesis(dictionary: &Dictionary) -> Result<(), OwnedJournalError> {
+    let document = dictionary.document();
+    let registry = dictionary.registry().as_document();
+    let metadata = dictionary.metadata();
+    if document.version != 1
+        || document.legacy_archive.is_some()
+        || registry.sources.len() != 1
+        || registry.sources[0].origin != SourceOrigin::OwnedDraft
+        || metadata.owned_heads.len() != 1
+        || metadata.owned_revisions.len() != 1
+    {
+        return Err(OwnedJournalError::InvalidRequest(
+            "genesis must contain one owned source, head, and revision without a legacy archive"
+                .into(),
+        ));
+    }
+    let source = &registry.sources[0].id;
+    let head = &metadata.owned_heads[0];
+    let revision = &metadata.owned_revisions[0];
+    if &head.source != source
+        || head.revision != revision.id
+        || &revision.source != source
+        || revision.parent.is_some()
+        || !revision.tombstones.is_empty()
+        || metadata.catalogue_revision != 0
+    {
+        return Err(OwnedJournalError::InvalidRequest(
+            "genesis ownership/head/revision controls are inconsistent".into(),
+        ));
+    }
+    if registry
+        .contributors
+        .iter()
+        .all(|row| row.id != revision.editor)
+    {
+        return Err(OwnedJournalError::InvalidRequest(
+            "genesis editor must be registered".into(),
+        ));
+    }
+    let owned_collections: std::collections::BTreeSet<_> = metadata
+        .collections
+        .iter()
+        .filter(|collection| collection.source == *source)
+        .map(|collection| collection.id.clone())
+        .collect();
+    let owned_components: std::collections::BTreeSet<_> = metadata
+        .components
+        .iter()
+        .filter(|component| owned_collections.contains(&component.collection))
+        .map(|component| component.id.clone())
+        .collect();
+    let releases: Vec<_> = metadata
+        .releases
+        .iter()
+        .filter(|release| owned_components.contains(&release.component))
+        .collect();
+    if releases.is_empty() || owned_collections.is_empty() || owned_components.is_empty() {
+        return Err(OwnedJournalError::InvalidRequest(
+            "genesis requires owned collection, component, and release rows".into(),
+        ));
+    }
+    if releases
+        .iter()
+        .any(|release| release.content_notices.is_empty())
+    {
+        return Err(OwnedJournalError::InvalidRequest(
+            "each owned release requires a content notice".into(),
+        ));
+    }
+    Ok(())
+}
+
+#[derive(Deserialize)]
+struct DictionaryHeader {
+    version: u32,
+    legacy_archive: Option<Vec<u8>>,
+}
+
+fn header_fields(dictionary: &Dictionary) -> Result<DictionaryHeader, OwnedJournalError> {
+    let bytes = dictionary
+        .to_json_bytes()
+        .map_err(OwnedJournalError::InvalidDictionary)?;
+    serde_json::from_slice(&bytes).map_err(|error| {
+        OwnedJournalError::Integrity(format!("invalid dictionary header: {error}"))
+    })
+}
+
+fn validate_edit(
+    current: &Dictionary,
+    candidate: &Dictionary,
+) -> Result<(Sections, Sections), OwnedJournalError> {
+    let old_registry = current.registry().as_document();
+    let new_registry = candidate.registry().as_document();
+    let old = current.metadata();
+    let new = candidate.metadata();
+    let old_header = header_fields(current)?;
+    let new_header = header_fields(candidate)?;
+    let source = old_registry
+        .sources
+        .first()
+        .ok_or_else(|| OwnedJournalError::Integrity("current source is missing".into()))?
+        .id
+        .clone();
+    let next_catalogue_revision = old
+        .catalogue_revision
+        .checked_add(1)
+        .filter(|revision| *revision <= i64::MAX as u64)
+        .ok_or_else(|| {
+            OwnedJournalError::InvalidRequest(
+                "catalogue revision exceeds SQLite INTEGER range".into(),
+            )
+        })?;
+    if new_header.version != old_header.version
+        || new_header.legacy_archive != old_header.legacy_archive
+        || new_registry.sources.len() != 1
+        || new_registry.sources[0].id != source
+        || new.owned_heads.len() != 1
+        || new.owned_revisions.len() != old.owned_revisions.len() + 1
+        || new.catalogue_revision != next_catalogue_revision
+    {
+        return Err(OwnedJournalError::InvalidRequest(
+            "edit must append exactly one revision for the same owned source".into(),
+        ));
+    }
+    let prior = &old
+        .owned_revisions
+        .last()
+        .ok_or_else(|| OwnedJournalError::Integrity("current revision is missing".into()))?;
+    let next = new
+        .owned_revisions
+        .last()
+        .expect("candidate revision length checked");
+    if next.source != source
+        || next.parent.as_ref() != Some(&prior.id)
+        || new.owned_heads[0].source != source
+        || new.owned_heads[0].revision != next.id
+    {
+        return Err(OwnedJournalError::InvalidRequest(
+            "new revision must parent the persisted head and become the sole head".into(),
+        ));
+    }
+    let old_active: Vec<_> = prior.assertions.iter().map(ToString::to_string).collect();
+    let new_active: Vec<_> = next.assertions.iter().map(ToString::to_string).collect();
+    let expected: Vec<_> = old_active
+        .iter()
+        .filter(|id| !new_active.contains(id))
+        .cloned()
+        .collect();
+    let tombstones: Vec<_> = next.tombstones.iter().map(ToString::to_string).collect();
+    if tombstones != expected {
+        return Err(OwnedJournalError::InvalidRequest(
+            "new revision tombstones must exactly list removed prior active assertions in order"
+                .into(),
+        ));
+    }
+    let old_rows = sections(current)?;
+    let new_rows = sections(candidate)?;
+    for section in SECTIONS {
+        let a = &old_rows[section];
+        let b = &new_rows[section];
+        if b.len() < a.len() || a.iter().zip(b).any(|(x, y)| x != y) {
+            let ordinal = a.iter().zip(b).position(|(x, y)| x != y).unwrap_or(b.len());
+            return Err(OwnedJournalError::ImmutableRecord {
+                section: section.to_owned(),
+                ordinal: ordinal as u64,
+            });
+        }
+    }
+    let prior_assertions = old.assertions.len();
+    if new.assertions[prior_assertions..]
+        .iter()
+        .any(|assertion| !next.assertions.contains(&assertion.id))
+    {
+        return Err(OwnedJournalError::InvalidRequest(
+            "every appended assertion must be present in the new active set".into(),
+        ));
+    }
+    if new.owned_revisions[..old.owned_revisions.len()] != old.owned_revisions[..] {
+        return Err(OwnedJournalError::ImmutableRecord {
+            section: "metadata.owned_revisions".into(),
+            ordinal: (old.owned_revisions.len() - 1) as u64,
+        });
+    }
+    Ok((old_rows, new_rows))
+}
+
+fn insert_initial(
+    connection: &Connection,
+    rows: &Sections,
+    revision: &OwnedRevisionRecord,
+    hash: &str,
+    source: &SourceId,
+) -> Result<(), OwnedJournalError> {
+    let revision_text = revision.id.to_string();
+    connection.execute("INSERT INTO owned_commits(revision_id,parent_revision,sequence,state_sha256) VALUES(?1,NULL,0,?2)",params![revision_text,hash])?;
+    for section in SECTIONS {
+        for (ordinal, payload) in rows[section].iter().enumerate() {
+            connection.execute(
+                "INSERT INTO owned_records(section,ordinal,payload) VALUES(?1,?2,?3)",
+                params![section, ordinal as i64, payload],
+            )?;
+        }
+        connection.execute(
+            "INSERT INTO owned_commit_sections(revision_id,section,length) VALUES(?1,?2,?3)",
+            params![revision_text, section, rows[section].len() as i64],
+        )?;
+    }
+    connection.execute("UPDATE owned_meta SET source_id=?1,head_revision=?2,catalogue_revision=0 WHERE singleton=1",params![source.to_string(),revision_text])?;
+    Ok(())
+}
+fn insert_suffix(
+    connection: &Connection,
+    old: &Sections,
+    new: &Sections,
+    revision: &OwnedRevisionRecord,
+    sequence: u64,
+    hash: &str,
+    source: &SourceId,
+) -> Result<(), OwnedJournalError> {
+    let id = revision.id.to_string();
+    let parent = revision.parent.as_ref().map(ToString::to_string);
+    connection.execute("INSERT INTO owned_commits(revision_id,parent_revision,sequence,state_sha256) VALUES(?1,?2,?3,?4)",params![id,parent,sequence as i64,hash])?;
+    for section in SECTIONS {
+        for (offset, payload) in new[section].iter().enumerate().skip(old[section].len()) {
+            connection.execute(
+                "INSERT INTO owned_records(section,ordinal,payload) VALUES(?1,?2,?3)",
+                params![section, offset as i64, payload],
+            )?;
+        }
+        connection.execute(
+            "INSERT INTO owned_commit_sections(revision_id,section,length) VALUES(?1,?2,?3)",
+            params![id, section, new[section].len() as i64],
+        )?;
+    }
+    let changed=connection.execute("UPDATE owned_meta SET head_revision=?1,catalogue_revision=?2 WHERE singleton=1 AND head_revision=?3 AND source_id=?4",params![id,sequence as i64,revision.parent.as_ref().map(ToString::to_string),source.to_string()])?;
+    if changed != 1 {
+        return Err(OwnedJournalError::Integrity(
+            "conditional owned head update did not affect exactly one row".into(),
+        ));
+    }
+    Ok(())
+}
+fn map_busy(error: rusqlite::Error) -> OwnedJournalError {
+    if matches!(error,rusqlite::Error::SqliteFailure(ref e,_) if e.code==rusqlite::ErrorCode::DatabaseBusy || e.code==rusqlite::ErrorCode::DatabaseLocked)
+    {
+        OwnedJournalError::Busy(error.to_string())
+    } else {
+        OwnedJournalError::Backend(error)
+    }
+}
+fn rollback_error<T>(
+    connection: &Connection,
+    error: OwnedJournalError,
+) -> Result<T, OwnedJournalError> {
+    if connection.is_autocommit() {
+        return Err(error);
+    }
+    match connection.execute_batch("ROLLBACK") {
+        Ok(()) if connection.is_autocommit() => Err(error),
+        Ok(()) => Err(OwnedJournalError::CommitOutcomeUnknown(format!(
+            "rollback returned but autocommit is false after {error}"
+        ))),
+        Err(rollback) => Err(OwnedJournalError::CommitOutcomeUnknown(format!(
+            "{error}; rollback failed: {rollback}"
+        ))),
+    }
+}
+
+/// Best-effort rollback during unwinding; normal exits use observed rollback paths.
+struct RollbackGuard<'a> {
+    connection: &'a Connection,
+    poisoned: Option<&'a mut bool>,
+    armed: bool,
+}
+
+impl<'a> RollbackGuard<'a> {
+    fn new(connection: &'a Connection, poisoned: Option<&'a mut bool>) -> Self {
+        Self {
+            connection,
+            poisoned,
+            armed: true,
+        }
+    }
+
+    fn disarm(mut self) {
+        self.armed = false;
+    }
+}
+
+impl Drop for RollbackGuard<'_> {
+    fn drop(&mut self) {
+        if !self.armed || self.connection.is_autocommit() {
+            return;
+        }
+        let rollback_failed = self.connection.execute_batch("ROLLBACK").is_err();
+        if (rollback_failed || !self.connection.is_autocommit())
+            && let Some(poisoned) = self.poisoned.as_deref_mut()
+        {
+            *poisoned = true;
+        }
+    }
+}
+fn resolve_commit_error(connection: &Connection, error: rusqlite::Error) -> OwnedJournalError {
+    if connection.is_autocommit() {
+        OwnedJournalError::CommitOutcomeUnknown(format!(
+            "commit failed after transaction ended: {error}"
+        ))
+    } else {
+        match connection.execute_batch("ROLLBACK") {
+            Ok(()) if connection.is_autocommit() => map_busy(error),
+            Ok(()) => OwnedJournalError::CommitOutcomeUnknown(
+                "rollback did not return to autocommit".into(),
+            ),
+            Err(rollback) => OwnedJournalError::CommitOutcomeUnknown(format!(
+                "commit failed: {error}; rollback failed: {rollback}"
+            )),
+        }
+    }
+}
+
+fn check_header(connection: &Connection) -> Result<(), OwnedJournalError> {
+    let application_id: i32 =
+        connection.pragma_query_value(None, "application_id", |r| r.get(0))?;
+    if application_id != owned_schema::APPLICATION_ID {
+        return Err(OwnedJournalError::WrongFamily);
+    }
+    let schema: i32 = connection.pragma_query_value(None, "user_version", |r| r.get(0))?;
+    let (family, schema_meta, model, registry): (String, i32, i32, i32) = connection.query_row(
+        "SELECT family,schema_version,model_version,registry_version FROM owned_meta WHERE singleton=1",
+        [],
+        |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?)),
+    )?;
+    if family != FAMILY {
+        return Err(OwnedJournalError::WrongFamily);
+    }
+    if schema != 1 || schema_meta != 1 || model != 1 || registry != 1 {
+        return Err(OwnedJournalError::UnsupportedVersion {
+            found: schema as u32,
+        });
+    }
+    Ok(())
+}
+fn read_current_summary(
+    connection: &Connection,
+) -> Result<(SourceId, OwnedCommitSummary), OwnedJournalError> {
+    check_header(connection)?;
+    let (source_text, head, catalogue_revision): (String, String, i64) = connection.query_row(
+        "SELECT source_id,head_revision,catalogue_revision FROM owned_meta WHERE singleton=1",
+        [],
+        |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?)),
+    )?;
+    let source =
+        SourceId::new(source_text).map_err(|e| OwnedJournalError::Integrity(e.to_string()))?;
+    let id = EntityId::new(head).map_err(|e| OwnedJournalError::Integrity(e.to_string()))?;
+    let summary = summary_for(connection, &id)?;
+    if catalogue_revision < 0
+        || catalogue_revision as u64 != summary.sequence
+        || summary.revision.source != source
+    {
+        return Err(OwnedJournalError::Integrity(
+            "owned header disagrees with current revision summary".into(),
+        ));
+    }
+    Ok((source, summary))
+}
+fn summary_for(
+    connection: &Connection,
+    id: &EntityId,
+) -> Result<OwnedCommitSummary, OwnedJournalError> {
+    let result = connection.query_row(
+        "SELECT sequence,state_sha256,parent_revision FROM owned_commits WHERE revision_id=?1",
+        [id.to_string()],
+        |r| {
+            Ok((
+                r.get::<_, i64>(0)?,
+                r.get::<_, String>(1)?,
+                r.get::<_, Option<String>>(2)?,
+            ))
+        },
+    );
+    let (sequence, hash, parent_text) = match result {
+        Ok(v) => v,
+        Err(rusqlite::Error::QueryReturnedNoRows) => {
+            return Err(OwnedJournalError::NotFound(id.clone()));
+        }
+        Err(e) => return Err(e.into()),
+    };
+    if sequence < 0 || !is_sha256(&hash) {
+        return Err(OwnedJournalError::Integrity(
+            "commit sequence/hash is malformed".into(),
+        ));
+    }
+    let revision = revision_for(connection, id, sequence as u64)?;
+    let parent = parent_text
+        .map(EntityId::new)
+        .transpose()
+        .map_err(|e| OwnedJournalError::Integrity(e.to_string()))?;
+    if revision.parent != parent {
+        return Err(OwnedJournalError::Integrity(
+            "typed revision parent differs from commit parent".into(),
+        ));
+    }
+    Ok(OwnedCommitSummary {
+        sequence: sequence as u64,
+        revision,
+        state_sha256: hash,
+    })
+}
+fn revision_for(
+    connection: &Connection,
+    id: &EntityId,
+    sequence: u64,
+) -> Result<OwnedRevisionRecord, OwnedJournalError> {
+    let ordinal = i64::try_from(sequence).map_err(|_| {
+        OwnedJournalError::Integrity("revision ordinal exceeds SQLite range".into())
+    })?;
+    let payload: Vec<u8> = connection.query_row(
+        "SELECT payload FROM owned_records WHERE section='metadata.owned_revisions' AND ordinal=?1",
+        [ordinal],
+        |row| row.get(0),
+    )?;
+    let revision: OwnedRevisionRecord = serde_json::from_slice(&payload)
+        .map_err(|e| OwnedJournalError::Integrity(e.to_string()))?;
+    let (commit_seq, parent_text): (i64, Option<String>) = connection.query_row(
+        "SELECT sequence,parent_revision FROM owned_commits WHERE revision_id=?1",
+        [id.to_string()],
+        |r| Ok((r.get(0)?, r.get(1)?)),
+    )?;
+    let mut roster_statement = connection.prepare(
+        "SELECT section FROM owned_commit_sections WHERE revision_id=?1 ORDER BY section",
+    )?;
+    let roster_iter =
+        roster_statement.query_map([id.to_string()], |row| row.get::<_, String>(0))?;
+    let roster = roster_iter.collect::<Result<Vec<_>, _>>()?;
+    let mut expected: Vec<_> = SECTIONS.iter().map(|s| s.to_string()).collect();
+    expected.sort();
+    let header_source: String = connection.query_row(
+        "SELECT source_id FROM owned_meta WHERE singleton=1",
+        [],
+        |r| r.get(0),
+    )?;
+    let commit_parent = parent_text
+        .map(EntityId::new)
+        .transpose()
+        .map_err(|e| OwnedJournalError::Integrity(e.to_string()))?;
+    if commit_seq < 0
+        || commit_seq as u64 != sequence
+        || revision.id != *id
+        || roster != expected
+        || revision.source.to_string() != header_source
+        || revision.parent != commit_parent
+        || (sequence == 0 && revision.parent.is_some())
+        || (sequence > 0 && revision.parent.is_none())
+    {
+        return Err(OwnedJournalError::Integrity(
+            "revision summary disagrees with commit metadata".into(),
+        ));
+    }
+    Ok(revision)
+}
+fn current_view(connection: &Connection) -> Result<OwnedRevisionView, OwnedJournalError> {
+    let (_, summary) = read_current_summary(connection)?;
+    let dictionary = load_state(connection, &summary)?;
+    let (source, _) = read_current_summary(connection)?;
+    Ok(OwnedRevisionView {
+        version: 1,
+        source,
+        commit: summary,
+        dictionary,
+    })
+}
+
+fn read_section<T: DeserializeOwned>(
+    connection: &Connection,
+    section: &str,
+    revision: &EntityId,
+) -> Result<Vec<T>, OwnedJournalError> {
+    let len: i64 = match connection.query_row(
+        "SELECT length FROM owned_commit_sections WHERE revision_id=?1 AND section=?2",
+        params![revision.to_string(), section],
+        |r| r.get(0),
+    ) {
+        Ok(length) => length,
+        Err(rusqlite::Error::QueryReturnedNoRows) => {
+            return Err(OwnedJournalError::Integrity(format!(
+                "missing {section} commit prefix"
+            )));
+        }
+        Err(error) => return Err(error.into()),
+    };
+    if len < 0 {
+        return Err(OwnedJournalError::Integrity(format!(
+            "negative {section} length"
+        )));
+    }
+    let mut statement=connection.prepare("SELECT ordinal,payload FROM owned_records WHERE section=?1 AND ordinal<?2 ORDER BY ordinal")?;
+    let mut rows = statement.query(params![section, len])?;
+    let mut out = Vec::new();
+    while let Some(row) = rows.next()? {
+        let ordinal: i64 = row.get(0)?;
+        if ordinal as usize != out.len() {
+            return Err(OwnedJournalError::Integrity(format!(
+                "{section} ordinals are not contiguous"
+            )));
+        }
+        let bytes: Vec<u8> = row.get(1)?;
+        out.push(serde_json::from_slice(&bytes).map_err(|e| {
+            OwnedJournalError::Integrity(format!("{section} row is malformed: {e}"))
+        })?);
+    }
+    if out.len() as i64 != len {
+        return Err(OwnedJournalError::Integrity(format!(
+            "{section} prefix length differs from rows"
+        )));
+    }
+    Ok(out)
+}
+fn load_state(
+    connection: &Connection,
+    summary: &OwnedCommitSummary,
+) -> Result<Dictionary, OwnedJournalError> {
+    let id = &summary.revision.id;
+    validate_record_sections(connection)?;
+    let registry = RegistryDocument {
+        version: 1,
+        sources: read_section(connection, "registry.sources", id)?,
+        contributors: read_section(connection, "registry.contributors", id)?,
+        distributors: read_section(connection, "registry.distributors", id)?,
+        aliases: read_section(connection, "registry.aliases", id)?,
+        lineage: read_section(connection, "registry.lineage", id)?,
+        snapshots: read_section(connection, "registry.snapshots", id)?,
+        occurrences: read_section(connection, "registry.occurrences", id)?,
+    };
+    let doc = DictionaryDocument {
+        version: 1,
+        legacy_archive: None,
+        registry: SourceRegistry::from_document(registry)
+            .map_err(|e| OwnedJournalError::Integrity(e.to_string()))?,
+        captures: read_section(connection, "captures", id)?,
+        metadata: DictionaryMetadata {
+            catalogue_revision: summary.sequence,
+            code_notices: read_section(connection, "metadata.code_notices", id)?,
+            collections: read_section(connection, "metadata.collections", id)?,
+            components: read_section(connection, "metadata.components", id)?,
+            releases: read_section(connection, "metadata.releases", id)?,
+            entries: read_section(connection, "metadata.entries", id)?,
+            assertions: read_section(connection, "metadata.assertions", id)?,
+            contexts: read_section(connection, "metadata.contexts", id)?,
+            frames: read_section(connection, "metadata.frames", id)?,
+            forms: read_section(connection, "metadata.forms", id)?,
+            etymologies: read_section(connection, "metadata.etymologies", id)?,
+            relations: read_section(connection, "metadata.relations", id)?,
+            owned_revisions: read_section(connection, "metadata.owned_revisions", id)?,
+            owned_heads: vec![OwnedHead {
+                source: summary.revision.source.clone(),
+                revision: id.clone(),
+            }],
+            editorial_senses: read_section(connection, "metadata.editorial_senses", id)?,
+            computations: read_section(connection, "metadata.computations", id)?,
+            annotations: read_section(connection, "metadata.annotations", id)?,
+            extensions: read_section(connection, "metadata.extensions", id)?,
+        },
+    };
+    let dictionary = Dictionary::from_document(doc)
+        .map_err(|error| OwnedJournalError::Integrity(error.to_string()))?;
+    if state_hash(&dictionary)? != summary.state_sha256 {
+        return Err(OwnedJournalError::Integrity(
+            "reconstructed canonical state hash differs from commit".into(),
+        ));
+    }
+    validate_current_section_lengths(connection, summary)?;
+    Ok(dictionary)
+}
+
+fn validate_record_sections(connection: &Connection) -> Result<(), OwnedJournalError> {
+    let known: std::collections::HashSet<&str> = SECTIONS.iter().copied().collect();
+    let mut statement = connection.prepare("SELECT DISTINCT section FROM owned_records")?;
+    let rows = statement.query_map([], |row| row.get::<_, String>(0))?;
+    for row in rows {
+        let section = row?;
+        if !known.contains(section.as_str()) {
+            return Err(OwnedJournalError::Integrity(format!(
+                "unknown owned record section {section}"
+            )));
+        }
+    }
+    Ok(())
+}
+
+fn validate_current_section_lengths(
+    connection: &Connection,
+    summary: &OwnedCommitSummary,
+) -> Result<(), OwnedJournalError> {
+    let head: String = connection.query_row(
+        "SELECT head_revision FROM owned_meta WHERE singleton=1",
+        [],
+        |row| row.get(0),
+    )?;
+    if head != summary.revision.id.as_str() {
+        return Ok(());
+    }
+    let mut statement = connection.prepare(
+        "SELECT section,length FROM owned_commit_sections WHERE revision_id=?1 ORDER BY section",
+    )?;
+    let rows = statement.query_map([head], |row| {
+        Ok((row.get::<_, String>(0)?, row.get::<_, i64>(1)?))
+    })?;
+    for row in rows {
+        let (section, expected) = row?;
+        let actual: i64 = connection.query_row(
+            "SELECT COUNT(*) FROM owned_records WHERE section=?1",
+            [&section],
+            |row| row.get(0),
+        )?;
+        if actual != expected {
+            return Err(OwnedJournalError::Integrity(format!(
+                "current {section} row count {actual} differs from committed length {expected}"
+            )));
+        }
+    }
+    Ok(())
+}

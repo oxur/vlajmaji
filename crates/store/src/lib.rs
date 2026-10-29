@@ -19,6 +19,8 @@ mod dictionary;
 mod dictionary_schema;
 mod dictionary_snapshot;
 mod dictionary_verification;
+mod owned;
+mod owned_schema;
 pub use collection_profiles::{
     CollectionPolicySelection, CollectionProfile, CollectionProfileEnablementRequest,
     CollectionProfileError, CollectionProfileIdentity, CollectionProfileMembershipWriteRequest,
@@ -48,6 +50,11 @@ pub use dictionary_snapshot::{
 pub use dictionary_verification::{
     DictionaryStoreCheckStatus, DictionaryStoreVerification, DictionaryStoreVerificationCheck,
     DictionaryStoreVerificationReport, DictionaryStoreVerificationResult,
+};
+pub use owned::{
+    OwnedCommitSummary, OwnedHeadReport, OwnedHistoryReport, OwnedJournal, OwnedJournalError,
+    OwnedJournalErrorCategory, OwnedJournalReader, OwnedRevisionView, OwnedWriteOperation,
+    OwnedWriteReport,
 };
 
 #[cfg(feature = "graph")]

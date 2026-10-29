@@ -42,6 +42,15 @@ deleting registrations, sealed inputs, or historical generations;
 reports retained attempts and minimum derived-store observations; it does not
 activate, migrate, delete, or claim a full integrity audit.
 
+`OwnedJournal` is a separate authoritative append-only history for a complete
+owned dictionary. It requires a fresh explicit root and a validated owned
+genesis; each `commit` uses the persisted expected head and preserves every
+prior typed vector prefix. `OwnedJournalReader::head` and `history` validate
+summary metadata, while `show` explicitly reconstructs and validates the full
+requested state. This journal does not change the default store or collection
+catalogue. See the [owned dictionary guide](../../docs/owned-dictionary.md)
+and the `owned_journal` example.
+
 ```rust,no_run
 use vlajmaji_lexicon::Dictionary;
 use vlajmaji_store::DictionaryStore;

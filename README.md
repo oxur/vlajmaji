@@ -47,6 +47,10 @@ The Rust workspace already provides:
   source/reference metadata, while `collections install` builds one verified
   Unified generation. These commands do not configure the default store or
   select sources ([collection guide](docs/collections.md)).
+- An explicit append-only journal for complete user-owned dictionaries, with
+  persisted-head compare-and-swap and historical typed-state reconstruction
+  (`vlajmaji owned init|edit|head|history|show`; see
+  [owned dictionary guide](docs/owned-dictionary.md)).
 - A lossless local jbotci export normalizer with `jbotci-import` and
   read-only `jbotci-check` commands and an explicit pinned acquire/replay/check/
   update workflow ([import guide](docs/jbotci-import.md)).
