@@ -6,7 +6,7 @@
 | Parent | [Arc05](../arc-plan.md), [directive04](../../cdc-directive04.md) |
 | Baseline | `a55e1cc7c4d7b0df4a187ce3551bfce9141a39d3`, tree `836df880ca711c6813cb78ae1202973e618eb105`; branch `codex/project01-owned-dictionary` |
 | Source home | `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji` (physical checkout reused) |
-| Ownership | Root QUIET source/index/one target; CDC planning proposal only |
+| Ownership | Complete intake ACCEPTED; AFTER handoff commit + explicit CDC dispatch, CC owns eleven source paths/index/ONE target; root/CDC source-read-only |
 | Roles / budget | Retained Sol6.1/high CDC + Luna/high CC; initial + corrections at most FIVE total passes, no automatic sixth |
 | Version / date | 0.1 / 2026-10-28 |
 
@@ -195,3 +195,7 @@ CDC source inspection at accepted tree836 (now merged baseline a55) establishes 
 Root final DRAFT READINESS PASS reviewed exact proposal d75532d660bf5b14232d684528165c80057e719c/tree9b57bc9266f8fc12a4536c2386da9da39ca34447: whole S01 plan/prompt/ledger, parent bodies/deltas, F01–F03 and viable Connection rollback recipe. Root independently verified ten paths, unchanged14projectrows,8arc/7childOPEN, clean a55/tree836/lock65cd/guard426d. Original substantive reviewed prompt/plan are preserved in d75532d; active prompt differs ONLY its STATUS line. This metadata records readiness, not product acceptance.
 
 Retained Luna/high CC is assigned REQUIRED COMPLETE INTAKE ONLY now. Intake coverage/source-cited readback belongs in artifacts/execution.md. CDC accepts actual coverage and rechecks fresh branch/source/lock/guard before EXPLICIT eleven-path/index/ONE-target transfer. Until then root owns source/index/target QUIET; no source/Cargo/fixture action. No further root ceremony is required absent an actual mismatch. Five-total-pass budget and all rows OPEN unchanged.
+
+### Initial intake acceptance / handoff — 2026-10-28
+
+Actual bounded intake/readback plus citation erratum in artifacts/execution.md accepted by CDC; fresh clean a55/tree836/branch/lock/guard/protected refs verified. After this metadata commit and explicit CDC dispatch, retained Luna/high owns exactly plan§8 eleven paths/index/ONE target for INITIAL/pass1of5. Root/CDC source-read-only, all rows OPEN; no root approval ceremony repeats. Substantive issued prompt remains byte-exact.

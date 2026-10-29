@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01–04 CLOSED and PR6 actually merged a55/tree836. Arc05 authorized THROUGH ARC05 ONLY; four-increment plan/S01 ISSUED for complete intake after root readiness d75532d; no source transfer yet. All14 project rows OPEN; Arc06 unactivated. |
+| status | project OPEN; Arc01–04 CLOSED and PR6 actually merged a55/tree836. Arc05 authorized THROUGH ARC05 ONLY; four-increment plan/S01 ISSUED, intake accepted; eleven-path source/index/ONE-target handoff effective on explicit CDC dispatch. All child acceptance pending. All14 project rows OPEN; Arc06 unactivated. |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |

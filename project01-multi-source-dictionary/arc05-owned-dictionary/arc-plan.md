@@ -7,7 +7,7 @@
 | Roles | Retained CDC Sol6.1/high; retained CC Luna/high; fresh independent Sol6.1/high assembled review and SAME-context canonical gate at close |
 | Source | `codex/project01-owned-dictionary`, baseline `a55e1cc7c4d7b0df4a187ce3551bfce9141a39d3`, tree `836df880ca711c6813cb78ae1202973e618eb105` |
 | Physical checkout | Reused `.worktrees/project01-arc04/vlajmaji`; old Arc04 branch9026 retained; no new worktree/cache |
-| Ownership | Root owns QUIET source/index/ONE retained target. CDC owns this planning proposal. No CC dispatch before exact root readiness, intake and explicit transfer |
+| Ownership | S01 intake accepted; AFTER handoff commit and explicit dispatch, CC exclusively owns eleven paths/index/ONE target, root/CDC source-read-only; CDC planning |
 | Version / date | 0.1 / 2026-10-28 |
 
 ## Useful result and boundaries

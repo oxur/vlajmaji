@@ -1,6 +1,6 @@
 # S01 ledger — owned journal
 
-**Current, 2026-10-28:** ISSUED for complete intake after root readiness at d75532d; baseline a55/tree836; seven rows OPEN, no implementation/gates run. Binding definitions are slice-plan§§2–8. Root owns QUIET source/index/ONE target; CDC planning only.
+**Current, 2026-10-28:** ISSUED for complete intake after root readiness at d75532d; baseline a55/tree836; seven rows OPEN, no implementation/gates run. Binding definitions are slice-plan§§2–8. Complete intake accepted; CC eleven-path/index/ONE-target ownership becomes effective only on explicit CDC dispatch after the handoff commit; root/CDC then source-read-only.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |
