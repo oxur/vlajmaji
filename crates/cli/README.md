@@ -79,6 +79,15 @@ library profile requests can deliberately replace the disabled list.
 sets and `default --clear` clears the configured default. Partial policy writes
 read the latest config under its writer lock and report only changed member IDs;
 semantic no-ops retain the original bytes and revision.
+
+`owned init ROOT [--input FILE]`, `owned edit ROOT --expected-head REV
+[--input FILE]`, `owned head ROOT`, `owned history ROOT`, and `owned show ROOT
+[--revision REV]` operate on one explicit append-only owned dictionary journal.
+Init and edit accept complete typed dictionary JSON from a file or stdin; they
+never consult configuration or the default store. Each edit appends one
+revision only when its expected head is still current. Head/history report
+checked summaries, while show reconstructs and validates the selected full
+state. See the [owned journal guide](../../docs/owned-dictionary.md).
 `dictionary-query STORE --format compact --request JSON` and
 `lookup --format compact --request JSON` opt into compact Exact/Resolve output;
 both commands still default to the established full response. Resolve a returned
