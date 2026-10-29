@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| Status / version | Iteration08 ninthTESTONLY humanapproved/ISSUED, boundedintake/freshpins/ONEpathtransfer pending /1.30 /2026-10-28. PriorCI failures preserved; all6OPEN. |
+| Status / version | Ninthfrozen9026/localboundedPASS; DraftPR6 created/attached, PUSH40793790640+PR40793813316 CI TERMINAL SUCCESS/freshARCpending /1.32 /2026-10-28. All6OPEN. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
-| Source / dependency | CURRENT cleana72a742e7a44fe833a3db64d85988f3a0b5833ee/tree16aa871d/parent5bc/S05branch/base32e99. ONE-file directdelta, cumulative23; all131entriesoutside2tests byte-identical011. OldS04refs432 unchanged. |
-| Ownership | AFTERscopedhandoffcommit+explicitdispatch retainedLuna/high owns ONLY dictionary_projection_contract.rs/index/ONEtarget for ninthTESTONLY. Intake/fresh a72pins ACCEPTED; CDC/root readonlyuntilfrozenhandback. |
+| Source / dependency | CURRENT clean9026c51791b5a356567f78dd9cd3b8c0eb510fa2/tree836df880/parenta72/S05branch/base32e99; directONEtestdelta/cumulative23; all130otherGitentries byte-identical011 outside3tests. OldS04refs432 unchanged. |
+| Ownership | Root owns QUIETsource/index/ONEtarget for exactdelivery/CI/DraftPR6. CDCplanning/CCassignedclosingreportONLY; no source/target/Cargo/runtime; freshreviewunissuedpendingrootexactreadiness; currentCI nowgreen. |
 | Delivery | Additive compact Exact/Resolve and complete occurrence detail, then source-grouped readable Exact/Resolve/detail. Full default JSON stays compatible. Public libraries, CLI, documentation and actual five-workflow composition accompany output, not verification alone. |
-| Sizing | Six completed author passes plus ONE explicitly human-approved seventh TEST-ONLY pass (iteration06), exactly two paths. No automatic eighth, Full replay or optimisation. |
+| Sizing | NINE total implementation passes, with seventh/eighth/ninth TEST-ONLY extensions explicitly approved. Final ninth scope exactly one existing test path; no automatic tenth, Full replay or optimisation. |
 | Limits | No dependency/lock/schema/importer/model/workflow changes, topology redo, new Full store/generation, cleanup/cache reset, actual-default access, S04 branch writes, A05 activation, network/push/PR/merge/publication. Later finite retained-G4 trial needs exact executable root readiness. |
 
 ## 1. Source findings and preserved behavior
@@ -1025,3 +1025,8 @@ CDC owns QUIET source/index/ONEtarget sequencing until retained Luna/high applic
 Human explicitly says “yes please! apply, validate, and push :-D (also, go ahead and open a PR for this)”. Exact authority artifacts/authority-s05-ninth-test-pass01.json; preceding exactquestion wording not supplied in root relay, not reconstructed. Root reviewedWHOLE7041B/e143624b/proposal03patch5147563d; activeprompt STATUS-LINEONLY issue, reviewedoriginal preserved. ONE existing dictionary_projection_contract.rs stdintransport pass, candidate9ffc49ed; noautomatic10/Full/newscope. Sourcea72clean/all6OPEN.
 
 CDC owns QUIET sequencing until retainedLuna/high boundedintake/source-readback+freshpins+explicitONEtestpath/index/ONEtarget transfer. Orderedfmt→lint→WHOLE18projection→makecheck; root exactcandidatepush/currentCI/PR, then freshNEW SolactualW1–W5/SAMEreviewercanonical/retro/bubbleup/close. PriorfailedCI/Full untouched; Arc05/merge/publication excluded.
+
+
+### Current final CI / fresh composition readiness —2026-10-28
+
+Both exact9026 PUSH40793790640 and PR40793813316 are terminal SUCCESS/all3jobs each. CDC independently parsed both whole logs: per run Mac56groups338/0/1, Linuxdefault56groups346/0/1, isolatedsearch10groups83/0/0, Linuxallfeatures56groups348/0/1. [Seven whole originals](artifacts/ci-iteration08-final01/manifest.json) preserve terminal metadata/logs/watch/rootdisposition. Earlier failedCI and localsetupfailure/sole unchanged-source replay remain unchanged. Fresh actual Sol W1–W5/samecanonical/close remain, all6OPEN; no source/target/data/Cargo operation in this reconciliation. Root owns quiet source/index/ONEtarget pending exact reviewed fresh assignment.

@@ -1,0 +1,1590 @@
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push less than a minute ago
+
+JOBS
+* Test (macos-latest) (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+* Check (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  * Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  * Run cargo doc --workspace --locked --no-deps
+  * Run make test-tools
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  * Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push less than a minute ago
+
+JOBS
+* Test (macos-latest) (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push less than a minute ago
+
+JOBS
+* Test (macos-latest) (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 1 minute ago
+
+JOBS
+* Test (macos-latest) (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 1 minute ago
+
+JOBS
+* Test (macos-latest) (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 1 minute ago
+
+JOBS
+* Test (macos-latest) (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 1 minute ago
+
+JOBS
+* Test (macos-latest) (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 1 minute ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  * Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 2 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 2 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  * Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 2 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 2 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 2 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  * Install graph backend build dependencies
+  * Prepare synthetic embedded data for all-feature tests
+  * Prepare synthetic LLG data for all-feature tests
+  * Prepare synthetic La-Lojban data for all-feature tests
+  * Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 3 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 3 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 3 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 3 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 3 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 3 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 4 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 4 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 4 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 4 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  * Run cargo test --workspace --all-features --locked
+  * Post Run Swatinem/rust-cache@v2
+  * Post Run actions/checkout@v4
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 4 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+* Test (ubuntu-latest) (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  ✓ Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+✓ codex/project01-readable-compact-output CI oxur/vlajmaji#6 · 40793790640
+Triggered via push about 5 minutes ago
+
+JOBS
+✓ Test (macos-latest) in 1m45s (ID 123185169286)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  - Run cargo test --locked -p vlajmaji-search --no-default-features
+  - Install graph backend build dependencies
+  - Prepare synthetic embedded data for all-feature tests
+  - Prepare synthetic LLG data for all-feature tests
+  - Prepare synthetic La-Lojban data for all-feature tests
+  - Prepare synthetic Sutysisku data for all-feature tests
+  - Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Check in 35s (ID 123185169505)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo check --workspace --locked
+  ✓ Run cargo fmt --all -- --check
+  ✓ Run cargo clippy --workspace --all-targets --locked -- -D warnings
+  ✓ Run cargo doc --workspace --locked --no-deps
+  ✓ Run make test-tools
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+✓ Test (ubuntu-latest) in 4m53s (ID 123185169515)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/checkout@v4
+  ✓ Run dtolnay/rust-toolchain@1.98.0
+  ✓ Run Swatinem/rust-cache@v2
+  ✓ Run cargo test --workspace --locked
+  ✓ Run cargo test --locked -p vlajmaji-search --no-default-features
+  ✓ Install graph backend build dependencies
+  ✓ Prepare synthetic embedded data for all-feature tests
+  ✓ Prepare synthetic LLG data for all-feature tests
+  ✓ Prepare synthetic La-Lojban data for all-feature tests
+  ✓ Prepare synthetic Sutysisku data for all-feature tests
+  ✓ Run cargo test --workspace --all-features --locked
+  ✓ Post Run Swatinem/rust-cache@v2
+  ✓ Post Run actions/checkout@v4
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Check: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Check: .github#1
+
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Test (ubuntu-latest): .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Test (ubuntu-latest): .github#1
+

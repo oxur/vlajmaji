@@ -1,0 +1,87 @@
+{
+  "status": "ROOT_EXACT_NINTH_CANDIDATE_READY_FOR_AUTHORIZED_PUSH",
+  "source": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+  "tree": "836df880ca711c6813cb78ae1202973e618eb105",
+  "parent": "a72a742e7a44fe833a3db64d85988f3a0b5833ee",
+  "one_path": "crates/search/tests/dictionary_projection_contract.rs",
+  "candidate_sha256": "9ffc49edd5d7556a94a5580782839bf125d37a07e2f773bf3c420c5a295f4f08",
+  "six_sql_tokens_equal": true,
+  "production_baseline": "011af09a44abc153b8b8253f70d84147e21a6bb0",
+  "three_test_only_paths": [
+    "crates/cli/tests/collections_lifecycle_contract.rs",
+    "crates/cli/tests/query_output_contract.rs",
+    "crates/search/tests/dictionary_projection_contract.rs"
+  ],
+  "other_git_entries_identical": 130,
+  "cumulative_main_paths": 23,
+  "source_clean": true,
+  "raw_rehashed_and_census": [
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/i08-fmt-check01.log",
+      "bytes": 179,
+      "sha256": "484a72f1fdebf43030b2f4ce79f41d8c807eeb3971972355b2dabe01150b07a8",
+      "rust_groups": 0,
+      "rust_counts": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/i08-lint01.log",
+      "bytes": 357,
+      "sha256": "93da32dd88f8905e69811bf8db278e77e79cb413a4a930b58eb41f5af8ea375e",
+      "rust_groups": 0,
+      "rust_counts": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/i08-projection18-01.log",
+      "bytes": 2032,
+      "sha256": "3727386f340e9e837ab6fb1f17f5fcd5836039178860cf1da610a73adce1bacb",
+      "rust_groups": 1,
+      "rust_counts": [
+        18,
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/i08-projection18-final01.log",
+      "bytes": 1910,
+      "sha256": "81a3b4743befd408e9a1ee3590f2c6ec51340cf94493bc718c1d747dcfdd0c38",
+      "rust_groups": 1,
+      "rust_counts": [
+        18,
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/i08-make-check01.log",
+      "bytes": 35045,
+      "sha256": "b099bfa5cdc2b3b646b372c59e4a8421318914d677bad077481feecbf7a46816",
+      "rust_groups": 37,
+      "rust_counts": [
+        262,
+        1,
+        1
+      ]
+    },
+    {
+      "path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/check02/i08-make-check02.log",
+      "bytes": 46240,
+      "sha256": "cb603350246ba723c5b0f4f1839483e291df7288ca5c08cf2f87a838195f77a5",
+      "rust_groups": 56,
+      "rust_counts": [
+        338,
+        0,
+        1
+      ]
+    }
+  ],
+  "limits": "Original unchangedstore temporary-directory setup failure preserved; one unchangedsource retry passed, no fixture repair claim. Earlier focus variant narrower; exact prescribed focus passed. Raw gates author-attested, root census/source reproduced; final currentCI and fresh composition still required."
+}

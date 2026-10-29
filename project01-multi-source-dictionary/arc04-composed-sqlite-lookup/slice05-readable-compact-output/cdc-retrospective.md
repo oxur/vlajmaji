@@ -1,8 +1,8 @@
 # S05 CDC retrospective — proposed close record
 
-CURRENT BLOCK: actual CI40789937233 failed after Check/MacSUCCESS and corrected Linuxoutput8/8; dictionaryprojection15pass/3setupE2BIG at sqlite3 spawn. Laterfeature/freshassembled/canonical gates remain unexecuted. No automatic ninth/source correction/reviewer launch.
+CURRENT: finaltest-onlycandidate9026/tree836, production011 unchanged outside3tests/130Gitentries. DraftPR6 created/attached; PUSH40793790640 and PR40793813316 BOTH TERMINAL SUCCESS/all3jobs each. Whole originals at S05/artifacts/ci-iteration08-final01. PriorredCI407899/sourcea72 remains failure; freshassembled/canonical gates not launched/completed. All6S05/fivearc/all14projectrows remainOPEN.
 
-2026-10-28, evidence cutoff frozena72/local bounded acceptance; current hostedCI and fresh assembled/canonical gates pending. CDC authored this analysis of its own design/reviews/callers plus retained author/root records. It is not independent evidence that the method improves speed, model quality or collaboration cost. No new audit/trial/framework change is commissioned.
+2026-10-28, evidence cutoff frozen9026/local bounded acceptance; current hostedCI both terminalSUCCESS; fresh assembled/canonical gates pending. CDC authored this analysis of its own design/reviews/callers plus retained author/root records. It is not independent evidence that the method improves speed, model quality or collaboration cost. No new audit/trial/framework change is commissioned.
 
 ## Outcome and successful mechanisms
 
@@ -37,3 +37,5 @@ CC/CDC: derive complete expected tuples/state transitions/serialization directly
 All contributors: retain one mechanically derived current gate/scope sheet and distinguish Rust groups, helpers, platform exclusions, current package entries and old/raw attestation. Current source-equivalence retention avoided meaningless Full reruns. Its usefulness here is scoped evidence, not a quantified general speedup. No time/token comparisons were reliably measured.
 
 Fresh assembled/canonical reviewer and finalCI outcomes will be appended at actual completion. This record cannot substitute for those gates or authorize a ninth pass, optimisation, Arc05, merge/publication or framework/memory edits.
+
+Current ninth portability follow-through: ALL6SQLite mutation statements/assertions were preserved, replacing only largeargv transport with the existing file-backed stdin pattern. Exactfocused18/18 passed. A first makecheck failed before product at unchanged baseline policyfresh_rootAlreadyExists; root authorized ONEsame-code rerun/newexclusiveTMPDIR, which passed. Actualpath/causeunproven; this is retained fixture risk, not proof fixed by retry. Firstfocusedargv also omitted explicitlocked/offline and forcedsinglethread despite pinnedenv; finalexactdefaultconcurrencygate was separately executed. No resultreplacement or automatictenth occurred. Both exact9026 currentCI runs are now terminalSUCCESS; freshgate outcomes await actualreports.

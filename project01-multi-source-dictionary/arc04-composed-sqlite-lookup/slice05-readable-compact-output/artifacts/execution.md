@@ -1107,3 +1107,18 @@ This entry records intake only. CDC still owns the source/index/retained target;
 ### CDC iteration08 acceptance / ONE-file transfer —2026-10-28
 
 CDC read actual completeboundedintake; SQL6token/assertionpreservation, all6parentparentownedroot contexts, exclusivefilewrite/drop/reopen/File stdin and exact18targetgate recipe source-cited coherently. Fresh clean a72a742e/tree16aa871d/S05branch/lock65cd/guard20fe/oldS04local+origin432/originmain32e99 verified, allpriorjobs terminal. AFTERscopedhandoffcommit+explicitdispatch retainedLuna/high owns ONLY crates/search/tests/dictionary_projection_contract.rs, sourceindex and ONEretainedArc01target for NINTHTESTONLYiteration08. CDC/root source/index/target READONLYuntilfrozenhandback. No newFull/product/dependency/scope/automatic10/externalactionbyCC; all6OPEN.
+
+### Ninth frozen return / independentlocal disposition —2026-10-28
+
+CC clean9026/tree836/parenta72 EXACTONEtest/candidate9ffc, allsessions terminal, explicit source/index/ONEtargetreturn. CDC WHOLEdelta/SQL6token+130Gitentryequivalence/raw6logs independentlyreconciled; see review-iteration08 and cdc-iteration08 manifest/final-source-inventory01. Source/index/target QUIETtoROOTforauthorizedexactnormalpush/DRAFTPR/currentCI. No newqualifier/reportlayer beforedelivery; routine existingevidence preservation inparallel.
+
+Firstfocused18/18 variant notexactissued; finalexplicit+1.98/lockedoffline/defaultthreads18/18 separate. Firstmakecheck35045B/b099 failed37partialgroups262/1/1 at unchanged policyrootmkdir; ROOTSOLEretryafterexactfocus/newprivateTMPDIR PASS56groups338/0/1+19 (46240B/cb603350). Actualfailedpath/causeunproven/baselinefragilityunfixed; no thirdcheck/sourcechange. FinalCI/freshactualW1–W5/samecanonical pending/all6OPEN/noautomatic10/Fullreplay.
+
+### Actual ninth delivery / DraftPR checkpoint —2026-10-28
+
+Root independently verified exact9026/directONEpath/3testdelta130others/cumulative23/6SQLtokens/raw6logs, savedroot-i08-prepush01 original preserved. Exactnormalpush87863exit0, a72→9026; DRAFTPR6 create1496exit0/appattached https://github.com/oxur/vlajmaji/pull/6. PUSH40793790640 watch43078 and PR40793813316 watch6619 active; currentCheck/Mac/Linuxdefault/isolated stepsSUCCESS, allfeatures/overallterminal notyetclaimed. RootwillmarkPRready onlyafterrequiredCI/freshactualcomposition/SAMEcanonical/close gates; ledgers remainOPEN. Source/index/target ROOTQUIET, no localCargo/Full/reviewerlaunch.
+
+
+### Final current hosted CI / fresh readiness —2026-10-28
+
+Both exact9026 runs PUSH40793790640/PR40793813316 terminalSUCCESS/all3jobs each, watches43078/6619 terminal0. CDC parsed both whole logs independently and reproduced per-run groups/counts: Mac56/338/0/1, Linuxdefault56/346/0/1, isolated10/83/0/0, allfeatures56/348/0/1; overlapping populations are not summed. Seven whole originals+manifest at ci-iteration08-final01. Prior CI failures and initial localfixture setupfailure/sole unchanged-source rerun remain preserved, cause unproven. Root updated DraftPR6 body via ghapi REST PATCH after ghpr edit failed on deprecatedclassic projectCards GraphQL; no update was falsely attributed to that failed command. No source/runtime/target change or CI rerun from this metadata action. Fresh actualreview and canonical/close remain pending/all6OPEN.

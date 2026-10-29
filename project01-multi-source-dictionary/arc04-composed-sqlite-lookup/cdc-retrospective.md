@@ -1,8 +1,8 @@
 # Arc04 CDC retrospective — proposed, composition gate pending
 
-CURRENT BLOCK: actual CI40789937233 failed after Check/MacSUCCESS and corrected Linuxoutput8/8; dictionaryprojection15pass/3setupE2BIG at sqlite3 spawn. Laterfeature/freshassembled/canonical gates remain unexecuted. No automatic ninth/source correction/reviewer launch.
+CURRENT: finaltest-onlycandidate9026/tree836, production011 unchanged outside3tests/130Gitentries. DraftPR6 created/attached; PUSH40793790640 and PR40793813316 BOTH TERMINAL SUCCESS/all3jobs each. Whole originals at S05/artifacts/ci-iteration08-final01. PriorredCI407899/sourcea72 remains failure; freshassembled/canonical gates not launched/completed. All6S05/fivearc/all14projectrows remainOPEN.
 
-2026-10-28. S01–S04 accepted; S05 candidatea72/local bounded review complete, currentCI/freshW1–W5/canonical close pending. CDC read all FOUR accepted child retrospectives and current S05 proposed record, governing ledger/user-workflows and terminal review chronology. This synthesis uses existing evidence, not a second whole-code audit or effectiveness trial.
+2026-10-28. S01–S04 accepted; S05 candidate9026/local bounded review complete, currentCI both terminalSUCCESS; freshW1–W5/canonical close pending. CDC read all FOUR accepted child retrospectives and current S05 proposed record, governing ledger/user-workflows and terminal review chronology. This synthesis uses existing evidence, not a second whole-code audit or effectiveness trial.
 
 Arc04's intended result is five useful workflows, not only topology evidence: local install/catalogue/configured combined lookup/lifecycle/readable-compact-detail. Unified's selected architecture now has usable library/CLI surfaces. Final practical latency is explicitly accepted by Duncan, not misrepresented as the original budget succeeding. Project owned editing/export/final composition remains A05/A06/Operator work; no project closure.
 

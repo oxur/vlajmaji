@@ -1,0 +1,167 @@
+{
+  "status": "BOTH_CURRENT_NINTH_CI_RUNS_TERMINAL_SUCCESS",
+  "source": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+  "watch_sessions": {
+    "43078": 0,
+    "6619": 0
+  },
+  "runs": {
+    "push": {
+      "run": 40793790640,
+      "event": "push",
+      "source": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "Test (macos-latest)",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Test (ubuntu-latest)",
+          "conclusion": "success"
+        }
+      ],
+      "rust_populations": {
+        "Test (macos-latest) / Run cargo test --workspace --locked": {
+          "groups": 56,
+          "counts": [
+            338,
+            0,
+            1
+          ]
+        },
+        "Test (ubuntu-latest) / Run cargo test --workspace --locked": {
+          "groups": 56,
+          "counts": [
+            346,
+            0,
+            1
+          ]
+        },
+        "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features": {
+          "groups": 10,
+          "counts": [
+            83,
+            0,
+            0
+          ]
+        },
+        "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked": {
+          "groups": 56,
+          "counts": [
+            348,
+            0,
+            1
+          ]
+        }
+      },
+      "targeted_examples": [
+        "Test (macos-latest)\tRun cargo test --workspace --locked\t2026-10-29T00:25:29.0555430Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok",
+        "Test (ubuntu-latest)\tRun cargo test --workspace --locked\t2026-10-29T00:25:32.0296753Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok",
+        "Test (ubuntu-latest)\tRun cargo test --locked -p vlajmaji-search --no-default-features\t2026-10-29T00:26:15.4529469Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok",
+        "Test (ubuntu-latest)\tRun cargo test --workspace --all-features --locked\t2026-10-29T00:28:33.8596575Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok"
+      ],
+      "files": [
+        {
+          "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-ninth-push-terminal01.json",
+          "bytes": 9325,
+          "sha256": "d997af58cfc53981d36740292a95681954b6980d302a79c59e6e06c2b58b179b"
+        },
+        {
+          "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-ninth-push-all01.log",
+          "bytes": 576184,
+          "sha256": "f5f453850bcb3b5138ee7a60f03a604282b7c22fca58a60c8ce89ef6b2c497a6"
+        },
+        {
+          "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-ninth-push-watch01.log",
+          "bytes": 67026,
+          "sha256": "82b2e3be3afb152d6755f96e4c49b70a3aeb2b5284a1a12893ee8c2181529eed"
+        }
+      ]
+    },
+    "pr": {
+      "run": 40793813316,
+      "event": "pull_request",
+      "source": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "Check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Test (ubuntu-latest)",
+          "conclusion": "success"
+        },
+        {
+          "name": "Test (macos-latest)",
+          "conclusion": "success"
+        }
+      ],
+      "rust_populations": {
+        "Test (ubuntu-latest) / Run cargo test --workspace --locked": {
+          "groups": 56,
+          "counts": [
+            346,
+            0,
+            1
+          ]
+        },
+        "Test (ubuntu-latest) / Run cargo test --locked -p vlajmaji-search --no-default-features": {
+          "groups": 10,
+          "counts": [
+            83,
+            0,
+            0
+          ]
+        },
+        "Test (ubuntu-latest) / Run cargo test --workspace --all-features --locked": {
+          "groups": 56,
+          "counts": [
+            348,
+            0,
+            1
+          ]
+        },
+        "Test (macos-latest) / Run cargo test --workspace --locked": {
+          "groups": 56,
+          "counts": [
+            338,
+            0,
+            1
+          ]
+        }
+      },
+      "targeted_examples": [
+        "Test (ubuntu-latest)\tRun cargo test --workspace --locked\t2026-10-29T00:25:57.3347690Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok",
+        "Test (ubuntu-latest)\tRun cargo test --locked -p vlajmaji-search --no-default-features\t2026-10-29T00:26:35.5497019Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok",
+        "Test (ubuntu-latest)\tRun cargo test --workspace --all-features --locked\t2026-10-29T00:28:51.9861336Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok",
+        "Test (macos-latest)\tRun cargo test --workspace --locked\t2026-10-29T00:25:54.2478420Z test test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page ... ok"
+      ],
+      "files": [
+        {
+          "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-ninth-pr-terminal01.json",
+          "bytes": 9333,
+          "sha256": "220838870dc46ef2d1eb7f21a7745091be4e5bd71d5de98a0267cfa6382c6c87"
+        },
+        {
+          "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-ninth-pr-all01.log",
+          "bytes": 597954,
+          "sha256": "45ef5c92883b642e3c39e2c2ee5a3cb6a47d43e2170eaefcbcaa756f3a203373"
+        },
+        {
+          "path": "/tmp/vlajmaji-p01-a04-s05-cdc/ci-ninth-pr-watch01.log",
+          "bytes": 74807,
+          "sha256": "8669ed4a5df6de5ed0405f36e64826128815dd2e01c0dd89be0162f42ca01806"
+        }
+      ]
+    }
+  },
+  "limits": "Populations are per run/job/step, not pooled. Full corpus dependent test remains ignored. Earlier failedCI and localsetupfailure preserved; unchanged fixture helper not claimed fixed."
+}

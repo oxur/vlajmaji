@@ -1,0 +1,94 @@
+{
+  "status": "CDC_BOUNDED_LOCAL_REVIEW_PENDING_CURRENT_CI_AND_FRESH_COMPOSITION",
+  "head": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+  "parent": "a72a742e7a44fe833a3db64d85988f3a0b5833ee",
+  "tree": "836df880ca711c6813cb78ae1202973e618eb105",
+  "direct_paths": [
+    "crates/search/tests/dictionary_projection_contract.rs"
+  ],
+  "vs011_test_paths": [
+    "crates/cli/tests/collections_lifecycle_contract.rs",
+    "crates/cli/tests/query_output_contract.rs",
+    "crates/search/tests/dictionary_projection_contract.rs"
+  ],
+  "other130Gitentries_identical011": true,
+  "cumulative_paths": 23,
+  "SQL_literal_tokens_identical": 6,
+  "raw_census": [
+    {
+      "path": "i08-fmt-check01.log",
+      "rust_groups": 0,
+      "sums": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "helper19": false
+    },
+    {
+      "path": "i08-lint01.log",
+      "rust_groups": 0,
+      "sums": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "helper19": false
+    },
+    {
+      "path": "i08-projection18-01.log",
+      "rust_groups": 1,
+      "sums": [
+        18,
+        0,
+        0,
+        0,
+        0
+      ],
+      "helper19": false
+    },
+    {
+      "path": "i08-make-check01.log",
+      "rust_groups": 37,
+      "sums": [
+        262,
+        1,
+        1,
+        0,
+        0
+      ],
+      "helper19": false
+    },
+    {
+      "path": "i08-projection18-final01.log",
+      "rust_groups": 1,
+      "sums": [
+        18,
+        0,
+        0,
+        0,
+        0
+      ],
+      "helper19": false
+    },
+    {
+      "path": "i08-make-check02.log",
+      "rust_groups": 56,
+      "sums": [
+        338,
+        0,
+        1,
+        0,
+        0
+      ],
+      "helper19": true
+    }
+  ],
+  "focused_command_discrepancy": "First18/18 envpinned1.98/offline butnoexplicitplus/locked/offline andsinglethread; finalEXACT prescribed+1.98/lockedoffline/defaultconcurrency18/18 separate",
+  "makecheck_attempts": "FirstFAIL beforeproduct at legacy policyfresh_rootAlreadyExists/causeunproven; ROOTauthorizedSOLEsamecodecheck02/newexclusiveTMPDIR passed. No third. Passingdoesnotrepairfixture.",
+  "limits": "Doer terminal/env/argvattestation in existingexecution/report; no inventedrawoutertranscript, no CDCruntime/Full/CI"
+}

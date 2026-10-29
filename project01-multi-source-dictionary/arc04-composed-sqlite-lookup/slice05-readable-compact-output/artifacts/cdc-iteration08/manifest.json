@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "source": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+  "payloads": [
+    {
+      "path": "i08-fmt-check01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/i08-fmt-check01.log",
+      "bytes": 179,
+      "sha256": "484a72f1fdebf43030b2f4ce79f41d8c807eeb3971972355b2dabe01150b07a8",
+      "classification": "whole_original_copy"
+    },
+    {
+      "path": "i08-lint01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/i08-lint01.log",
+      "bytes": 357,
+      "sha256": "93da32dd88f8905e69811bf8db278e77e79cb413a4a930b58eb41f5af8ea375e",
+      "classification": "whole_original_copy"
+    },
+    {
+      "path": "i08-projection18-01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/i08-projection18-01.log",
+      "bytes": 2032,
+      "sha256": "3727386f340e9e837ab6fb1f17f5fcd5836039178860cf1da610a73adce1bacb",
+      "classification": "whole_original_copy"
+    },
+    {
+      "path": "i08-make-check01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/i08-make-check01.log",
+      "bytes": 35045,
+      "sha256": "b099bfa5cdc2b3b646b372c59e4a8421318914d677bad077481feecbf7a46816",
+      "classification": "whole_original_copy"
+    },
+    {
+      "path": "i08-projection18-final01.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/i08-projection18-final01.log",
+      "bytes": 1910,
+      "sha256": "81a3b4743befd408e9a1ee3590f2c6ec51340cf94493bc718c1d747dcfdd0c38",
+      "classification": "whole_original_copy"
+    },
+    {
+      "path": "i08-make-check02.log",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/i08-local01/tmp/check02/i08-make-check02.log",
+      "bytes": 46240,
+      "sha256": "cb603350246ba723c5b0f4f1839483e291df7288ca5c08cf2f87a838195f77a5",
+      "classification": "whole_original_copy"
+    },
+    {
+      "path": "source-delta.patch",
+      "original": "immutable Git diff a72a742e7a44fe833a3db64d85988f3a0b5833ee..9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+      "bytes": 6473,
+      "sha256": "0c623fa6529c3b4646666d81b71dfab100a7765476dd640ae6e24a24b97f9217",
+      "classification": "Git_payload"
+    },
+    {
+      "path": "independent-scope.json",
+      "bytes": 2266,
+      "sha256": "1e8869b0cfcf563afdd78c71bc223572e98ba9039887a154ee82ac569c9bc142",
+      "classification": "new_CDC_interpretation"
+    },
+    {
+      "path": "root-i08-prepush01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-i08-prepush01.json",
+      "bytes": 2900,
+      "sha256": "523852ceff4fdb0ef6685a76a20ccd470047f332a738821bcb6efddfe731946d",
+      "classification": "whole_original_root_review_copy"
+    }
+  ],
+  "payload_count": 9,
+  "payload_bytes": 97402
+}

@@ -1,0 +1,150 @@
+{
+  "status": "FROZEN_SOURCE_INVENTORY_NOT_ACCEPTANCE",
+  "source": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+  "tree": "836df880ca711c6813cb78ae1202973e618eb105",
+  "base": "32e99b4fb0bfdc24e66535952114b6497d6aabfa",
+  "direct_iteration08": [
+    "crates/search/tests/dictionary_projection_contract.rs"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "change": "M",
+      "bytes": 12490,
+      "sha256": "5169a55ab4ffa1f649cc93298c52bebbd9e17c38192147a6851b48f1e8a5e981"
+    },
+    {
+      "path": "crates/cli/README.md",
+      "change": "M",
+      "bytes": 9548,
+      "sha256": "130ef39913960a0cc107c084ea04b5614a33c6a0abad8dd076969acb05417352"
+    },
+    {
+      "path": "crates/cli/src/main.rs",
+      "change": "M",
+      "bytes": 145695,
+      "sha256": "1be2dd7a5ec311c41b98193ba219a5b385ccfc62463c0d3b5030460ff923e4fe"
+    },
+    {
+      "path": "crates/cli/src/query_output.rs",
+      "change": "A",
+      "bytes": 323,
+      "sha256": "8d9207472be3f1a671b8dc89c956e5609ca2d7ffa70ff3ec39fb97d6271758f5"
+    },
+    {
+      "path": "crates/cli/tests/collections_lifecycle_contract.rs",
+      "change": "M",
+      "bytes": 23190,
+      "sha256": "8c464e4953d881aee408e01d4fb028433ffec05cf2c7761b413475e95bb4a4f6"
+    },
+    {
+      "path": "crates/cli/tests/query_output_contract.rs",
+      "change": "A",
+      "bytes": 109242,
+      "sha256": "23f93e3e6caa2db07f81fcc7ff292a41efb6516845afc0d68b8a88cfd6293e94"
+    },
+    {
+      "path": "crates/search/README.md",
+      "change": "M",
+      "bytes": 5865,
+      "sha256": "6b14fed31010a1a35dd3535598123930b35a6b73b1441c6b70536aa8857efe65"
+    },
+    {
+      "path": "crates/search/src/collection_query.rs",
+      "change": "M",
+      "bytes": 81468,
+      "sha256": "f74b76c7da4193b5fc754aebf9c62a7afabb85d0c71029572ea961eba5af763a"
+    },
+    {
+      "path": "crates/search/src/collection_query/projection.rs",
+      "change": "A",
+      "bytes": 51416,
+      "sha256": "7a31f42c66229853319da465ad5ae0576c3703e9b107fff35319f2dcc760f87e"
+    },
+    {
+      "path": "crates/search/src/dictionary.rs",
+      "change": "M",
+      "bytes": 88183,
+      "sha256": "c344595023e3e884372005b830379000765e6ef63a57d68a65387fed80d45eb7"
+    },
+    {
+      "path": "crates/search/src/dictionary/borrowed.rs",
+      "change": "A",
+      "bytes": 26575,
+      "sha256": "f511722ed486643fa9b6c0496d3fcaed90ff0a1d5514452a7139c8dffa3e8293"
+    },
+    {
+      "path": "crates/search/src/dictionary/projection.rs",
+      "change": "A",
+      "bytes": 87615,
+      "sha256": "a16e1147c333754bf963f4990f08c1608d84c58b2a4b8d5f6b4c87af36d84e2e"
+    },
+    {
+      "path": "crates/search/src/lib.rs",
+      "change": "M",
+      "bytes": 57852,
+      "sha256": "62ef4a05895ba5578d206c3147b1f37990c77ced20e9d71ad6e7d11b1c594ede"
+    },
+    {
+      "path": "crates/search/src/presentation.rs",
+      "change": "A",
+      "bytes": 11647,
+      "sha256": "b94a5f9aea56634426afd58ec7c32f9928267d4e3a60432d74a0282952f94d37"
+    },
+    {
+      "path": "crates/search/tests/collection_projection_contract.rs",
+      "change": "A",
+      "bytes": 18298,
+      "sha256": "e1503b2bc3b0a21238fa4fdbb97664984ea9fc60f77193aeafd0f2a72799ae2f"
+    },
+    {
+      "path": "crates/search/tests/collection_query_contract.rs",
+      "change": "M",
+      "bytes": 94361,
+      "sha256": "c5b3226c2db4ad972c1ba744ead181f2ba89fae36591f94efdb6f31af22cde58"
+    },
+    {
+      "path": "crates/search/tests/dictionary_projection_contract.rs",
+      "change": "A",
+      "bytes": 112736,
+      "sha256": "9ffc49edd5d7556a94a5580782839bf125d37a07e2f773bf3c420c5a295f4f08"
+    },
+    {
+      "path": "crates/search/tests/presentation_contract.rs",
+      "change": "A",
+      "bytes": 33981,
+      "sha256": "cbf26d8655d6b3f52cac2829c385c8ff76bbb0420dbec20b34e0be6e2b3fce21"
+    },
+    {
+      "path": "crates/store/src/collections.rs",
+      "change": "M",
+      "bytes": 188267,
+      "sha256": "6b4014cbf7d341e93e5c9c25b7d1f4ee88bc10d789aaee6510e86db3b19a425f"
+    },
+    {
+      "path": "crates/store/src/collections/reference_projection.rs",
+      "change": "A",
+      "bytes": 54172,
+      "sha256": "93289ca51d6b24d2c3f5ef95393d7e3ade31d1bc5a452bd91f19a0eb9f9c5d38"
+    },
+    {
+      "path": "crates/store/src/lib.rs",
+      "change": "M",
+      "bytes": 15461,
+      "sha256": "35e8043a98b06babc8b38c28ed7d81141cb2f8130ec4497b4d142d34d6705201"
+    },
+    {
+      "path": "crates/store/tests/reference_projection_contract.rs",
+      "change": "A",
+      "bytes": 14091,
+      "sha256": "40a0748cbedd7203ac8f4e3c15eeb9e6f362a3e103f3030aab3922b4d1e00d91"
+    },
+    {
+      "path": "docs/collections.md",
+      "change": "M",
+      "bytes": 13509,
+      "sha256": "a009277214a20c97c471a05cd9040d71177c43de969bbe16013157ec203d6049"
+    }
+  ],
+  "count": 23
+}

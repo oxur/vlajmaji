@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| status | ACTIVE; S01–S04 CLOSED/fivearcDONEfiveOPEN. S05 production011 correctness/output/resources complete with explicit timingexception; candidatea72currentCIblockedprojectiontestSQLargvE2BIG. Humanninthtest-onlyproposalPENDING/freshARC+canonical close stillrequired. |
-| version / date | 1.33 /2026-10-28 |
-| authority | Duncan directed next-slice continuation/separate S05 branch and now S04 merge/rebase+continue; Autonomous THROUGH ARC04 ONLY, same roles/models. No future S05 push/PR/publication or Full trial implied. Prior authority below historical. |
+| status | ACTIVE; S01–S04 CLOSED/fivearcDONEfiveOPEN. S05production011 correctness/output/resources complete bytimingamendment; test-onlycandidate9026/DraftPR6 currentCI TERMINAL SUCCESS/freshactualW1–W5+canonical pending. |
+| version / date | 1.35 /2026-10-28 |
+| authority | Autonomous THROUGHARC04 ONLY; explicit ninthONEtestfile correction/validate/push/PR humanstatement2026-10-28. Same roles/models; exactrootdelivery/PR6 authorized, noautomatic10/Fullreplay/Arc05/merge/publication. Older authority/checkpoints below historical. |
 | planning owner | Existing Sol6.1/high CDC owns design/planning/independent review; retained Luna/high CC source/index/target during issued intervals; root read-only. |
 | accepted inputs | Accepted Arc01–03 and S01–S04 at432; user-merged PR5/main32e99 has EXACT432 tree and all3 main CI jobs SUCCESS. Retained G4 unchanged. S05 initial5bf is not accepted merely from author gates. |
-| integration destination | Same isolatedS05branch cleana72/tree16aa/parent5bc/base32e99, cumulative23. Production011 unchanged through2test-onlydescendants. CurrentCI407899 failure preserved; source/index/targetQUIET/noautomatic9or10/Fullreplay. OldS04refs432/primarymain52fd protected. |
+| integration destination | Same isolatedS05branch clean9026/tree836/parenta72/base32e99, cumulative23; production011 unchanged outside3tests/130Gitentries. DraftPR6 created/appattached; PUSH40793790640/PR40793813316 BOTH TERMINAL SUCCESS/all3jobs each. Source/index/ONEtarget ROOTQUIET; oldS04refs432/primarymain52fd protected. |
 | dependencies / blocks | Consumes accepted raw/model/pack/store/exact/reference contracts; provides local collection workflow and selected topology for A05/A06 |
 
 ## Useful outcome and authority
@@ -293,3 +293,8 @@ Clean011af09a/treea8c/parent1b exact6sourcepaths returned by CC with all gates t
 Actual session38736/PID24920 exact qualifiedPython-B runner02/execution02/output02: outerexit1/110.9844945827499s/raw2356B SHA ff73a6fe45bd67431f0c9de2cf7b81f6fbd17250b4e410657a663bf18a22fbbb. All12freshPASS/savedphase12PASS; stage13Fullwarm child101, measuredjbotci-local wholequery1.206865292s>750ms (lookup1.205107043/projection1.758249ms), correctResolvedfact.13attempted12checked/no14–22/no21analysis/nosemantic. All47rows/setup+46requests27prime19measured preserved; all46facts exactfrozenexpectations. ALL27prime timingsevaluated asdiagnostic only, no cache/hash/decode cause attribution fromresidual. WholecurrentFull numerical gateNOTACCEPTED.
 
 Root explicit disposition STOP implementation/performance execution: SIXTHpass+SOLEadditionalcampaign exhausted. All6S05OPEN; no sourceedit/Cargo/newproduct or FullDB/config read/stat/hash, retry/seventh/push/newstore/reset/cleanup. Evidence-only existing savedoutputs/receipts/frozen SOURCE permitted for bounded hypotheses. ONE campaignDBpair unchanged; OWNtarget70751592448bothdelta0, historicalTiny3.5MBdifference causeUNPROVEN/not equalitygate. Resource mechanisms and finalownbytes limits in review-numeric02. Canonical numeric-failed02/output-inventory02 preserve exact outputs/six namedcontrols/heldbulkywires; failed01 unchanged. Current clean source011/treea8c; CDC owns QUIET source/index/target for preservation only. No new runtime authority.
+
+
+### Version1.35 — current9026 hosted CI / fresh review readiness,2026-10-28
+
+Both exactHEAD PUSH40793790640/PR40793813316 all3jobs terminalSUCCESS; per-run platform/feature populations and whole originals are preserved in S05 artifacts/ci-iteration08-final01. Prior redCI/localfixture setup failure remain historical failures. Fresh NEW Sol actual bounded public+CLI/same-root update/rebuild/oldG1 composition and SAMEreviewer canonical packet still required; all6S05/fivearc/all14projectOPEN. DraftPR6 staysdraft; no Arc05/merge/publication.
