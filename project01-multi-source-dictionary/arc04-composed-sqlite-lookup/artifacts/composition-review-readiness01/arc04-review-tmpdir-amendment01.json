@@ -1,0 +1,14 @@
+{
+  "status": "PROSPECTIVE_METHOD_ONLY_AMENDMENT_BEFORE_ZERO_EXECUTIONS",
+  "original": "/tmp/vlajmaji-p01-a04-s05-cdc/readable-cli-checks01.py",
+  "before_bytes": 18270,
+  "before_sha256": "16f17d1f900f261bd3bb4d86d693d3433dffa8d5205b185a81cfc2e6bdbab785",
+  "private_copy_after_bytes": 18279,
+  "private_copy_after_sha256": "f42e75d43bf663b76698a40e73b1fb8a084f02ac5cc04fd79a1982ac0a553844",
+  "patch_sha256": "1d6710b8589b129bd4fb0f59c4c280522719a9f1eaec2265ef2a097f26e12bee",
+  "delta": "one env-directory loop adds TMPDIR; creates private CLI out/tmpdir via existing exclusive mkdir; passes replacementenv directly through unchangedprior.run; no original edits",
+  "proof": "inverse exact; ASTparse pass; originalmain123-125 and prior.run62-80 independently read byroot. Product tempdir callsites found tests-only; broader child OS/SQLite temp isolation still enforced",
+  "receipts": "existing prior.run isolated_environment contains HOME/XDG3 only; preserve it, separately record actual derived TMPDIR mapping from reviewed method; do not claim receipt logs4fields",
+  "scope": "review-owned readable-cli-checks copy ONLY; package rename remains independently allowed; immutable38originalclosure/production/source/index/lock untouched; no extra build/child/trial/qualifier/retry",
+  "execution": "zero so far; independent reviewer must check derivative before sole existing CLI journey; postscript already owned TMPDIR unchanged"
+}

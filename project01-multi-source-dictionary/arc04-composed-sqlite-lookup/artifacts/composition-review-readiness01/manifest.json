@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "status": "ROOT_EXACT_READINESS_STATUS_ONLY_ISSUE_NO_EXECUTION",
+  "status": "ISSUED_WITH_ROOT_APPROVED_PRIVATE_TMPDIR_METHOD_AMENDMENT_NO_EXECUTION",
   "source": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
   "assignment_path": "../composition-review-assignment.md",
-  "assignment_bytes": 13807,
-  "assignment_sha256": "f6d5c29f357879133b55ed868b08cfbd9d72e486f08ce3e8d45e00bdc577b444",
+  "assignment_bytes": 15464,
+  "assignment_sha256": "8f12978dbedb7541c1c87d35d5660bf98344776d83b4a0b1a5d93d81dea4ed31",
   "payloads": [
     {
       "path": "arc04-review-method-closure01.json",
@@ -40,10 +40,33 @@
       "sha256": "9a67f12d808a07a4dab9c7846bdc4a4ae2f2898ce1ad21898b49105c3d183ba9",
       "classification": "whole_original_copy",
       "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-arc-final-readiness01.json"
+    },
+    {
+      "path": "arc04-review-tmpdir-amendment01.patch",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/arc04-review-tmpdir-amendment01.patch",
+      "bytes": 585,
+      "sha256": "1d6710b8589b129bd4fb0f59c4c280522719a9f1eaec2265ef2a097f26e12bee",
+      "classification": "whole_original_copy"
+    },
+    {
+      "path": "arc04-review-tmpdir-amendment01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/arc04-review-tmpdir-amendment01.json",
+      "bytes": 1439,
+      "sha256": "9537efcfd9101d8fbf0baa93f9f4a6121c8070be8aebb04357d041384fd39e2a",
+      "classification": "whole_original_copy"
+    },
+    {
+      "path": "arc04-review-tmpdir-candidate01.py",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/arc04-review-tmpdir-candidate01.py",
+      "bytes": 18279,
+      "sha256": "f42e75d43bf663b76698a40e73b1fb8a084f02ac5cc04fd79a1982ac0a553844",
+      "classification": "whole_original_copy"
     }
   ],
-  "payload_count": 5,
-  "payload_bytes": 31235,
+  "payload_count": 8,
+  "payload_bytes": 51538,
   "reviewed_assignment_bytes": 13809,
-  "reviewed_assignment_sha256": "467d672505239c5682e779a9f14c5e29c841a66873183f48ca0bda268e1136c0"
+  "reviewed_assignment_sha256": "467d672505239c5682e779a9f14c5e29c841a66873183f48ca0bda268e1136c0",
+  "issued_prefix_bytes": 13807,
+  "issued_prefix_sha256": "f6d5c29f357879133b55ed868b08cfbd9d72e486f08ce3e8d45e00bdc577b444"
 }

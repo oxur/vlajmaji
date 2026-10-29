@@ -1,0 +1,11 @@
+--- a/readable-cli-checks01.py
++++ b/readable-cli-checks01.py
+@@ -121,7 +121,7 @@
+     ctx=prior.strict_json(context_file.read_bytes());assert ctx['fixture_scope']=='original-four-pack-synthetic-readable'
+     base=context_file.parent;out.mkdir(mode=0o700)
+     env={'PATH':os.defpath,'LANG':'C.UTF-8'}
+-    for key in ['HOME','XDG_CONFIG_HOME','XDG_DATA_HOME']:
++    for key in ['HOME','XDG_CONFIG_HOME','XDG_DATA_HOME','TMPDIR']:
+         d=out/key.lower();d.mkdir(mode=0o700);env[key]=str(d)
+     copied=out/'packs';copied.mkdir();records=[];llg=None
+     for row in ctx['inputs']:

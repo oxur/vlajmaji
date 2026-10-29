@@ -1127,3 +1127,8 @@ Both exact9026 runs PUSH40793790640/PR40793813316 terminalSUCCESS/all3jobs each,
 ### Fresh assembled Arc04 assignment issue —2026-10-28
 
 Root exactreadiness root-arc-final-readiness01.json received; exact13,809B draft467d6725 preserved at Arc04/artifacts/composition-review-readiness01/composition-review-assignment-reviewed01.md alongside original rootreadiness. Active Arc04/artifacts/composition-review-assignment.md differs ONLY UNISSUED→ISSUED token, inversebyteexact. Binding originalmethods38/202243B, CLI29f8cf5d/14140928B, postscript a71b4d/6133B unchanged; both currentCI green/evidence preserved. ROOTspawns NEW Sol6.1/high/forkNONE and grants scopedONEtarget/scratch/reports after this issuecommit; CDC does not launch. All6S05/fivearc/all14projectrowsOPEN; no Full/extraqualifier/tenth/Arc05/merge/publication.
+
+
+### Prospective fresh method TMPDIR correction —2026-10-28
+
+Before any fresh execution, reviewer/root found original readableCLI replaces outerenv with HOME/XDG/PATH/LANG and drops outerTMPDIR. Root authorized exact privatecopy envloop +TMPDIR, no original/product/oracle/argv change; active assignment prefix13807B preserved unchanged plus issuedaddendum, patch/JSON/candidate in existingreadinessmanifest. Original38closure remainsprovenance; newprivatehashf42e75d4 and separateTMPDIRmapping are required. Existing receipts still record3HOME/XDGfields. SameONEbuild/public/CLI/post/noextraqualifier/retry/sourcepass; postscriptalreadyisolated. AllrowsOPEN.
