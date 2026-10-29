@@ -51,6 +51,9 @@ The Rust workspace already provides:
   persisted-head compare-and-swap and historical typed-state reconstruction
   (`vlajmaji owned init|edit|head|history|show`; see
   [owned dictionary guide](docs/owned-dictionary.md)).
+- An opt-in owned-curation sidecar for pinned context and reviewed Link/Sense
+  records, with explicit materialization to a separate normalized view; it
+  does not change the default store.
 - A lossless local jbotci export normalizer with `jbotci-import` and
   read-only `jbotci-check` commands and an explicit pinned acquire/replay/check/
   update workflow ([import guide](docs/jbotci-import.md)).

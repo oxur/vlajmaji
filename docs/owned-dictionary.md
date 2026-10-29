@@ -61,6 +61,63 @@ configuration, create a default store, or download data. A report-write error
 can occur after an edit has committed; inspect the requested head before
 retrying, since a failed terminal write does not roll back a committed edit.
 
+## Reviewed curation and explicit context
+
+The separate curation sidecar is opt-in. Migrate a schema-1 journal at its
+current head before adding a complete curation document. Context inputs are
+strict files containing both a declared pin ID and the actual pinned
+Dictionary. `curation-show` reads the retained document; it does not resolve
+targets. `materialize` computes a separate normalized view, and writes its
+Dictionary bytes to a new output file only after semantic validation succeeds.
+
+The shipped Tiny example creates a genesis, one ordinary revision, a curation
+revision with a three-member Sense and dependent Link, and the exact context
+input. It demonstrates the visible missing-context result before supplying the
+context:
+
+```sh
+cargo run -p vlajmaji-store --example owned_curation -- \
+  /tmp/owned-curation-inputs /tmp/owned-curation-journal \
+  /tmp/owned-curation-normalized.json
+```
+
+The generated files are `seed.json`, `r1.json`, `curation.json`, and
+`context.json`. Use a different fresh root to exercise the CLI lifecycle:
+
+```sh
+CLI_CURATED_ROOT=/tmp/owned-curation-cli
+vlajmaji owned init "$CLI_CURATED_ROOT" --input /tmp/owned-curation-inputs/seed.json
+vlajmaji owned edit "$CLI_CURATED_ROOT" --expected-head curation-example-r0 \
+  --input /tmp/owned-curation-inputs/r1.json
+vlajmaji owned migrate-curation "$CLI_CURATED_ROOT" --expected-head curation-example-r1
+vlajmaji owned curate "$CLI_CURATED_ROOT" --expected-head curation-example-r1 \
+  --input /tmp/owned-curation-inputs/curation.json
+vlajmaji owned curation-show "$CLI_CURATED_ROOT"
+vlajmaji owned materialize "$CLI_CURATED_ROOT" \
+  --output /tmp/owned-curation-cli-unavailable.json
+vlajmaji owned materialize "$CLI_CURATED_ROOT" \
+  --context /tmp/owned-curation-inputs/context.json \
+  --output /tmp/owned-curation-cli-resolved.json
+```
+
+The first materialization reports `Unavailable` with `MissingContext`; the
+second resolves the retained records. The normalized file is an explicit view,
+not a sealed snapshot. To query it through the ordinary dictionary store,
+build another fresh root and query the spelling present in the generated Tiny
+input:
+
+```sh
+vlajmaji dictionary-build /tmp/owned-curation-cli-resolved.json \
+  /tmp/owned-curation-derived-store
+vlajmaji dictionary-query /tmp/owned-curation-derived-store \
+  --format compact --request '{"operation":"exact","spelling":"coi"}'
+```
+
+The compact hit's complete `detail_ref` can be passed unchanged to
+`dictionary-detail` for the same derived store. Context pin IDs, native
+attribution, occurrence identity, and expected hit IDs should come from the
+typed input before querying; a query result is not a source of identity.
+
 ## Rust API
 
 `vlajmaji_store::OwnedJournal::create(root, &genesis)` validates the owned

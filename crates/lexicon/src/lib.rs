@@ -42,6 +42,7 @@ mod jbotci;
 mod la_lojban;
 mod lensisku;
 pub mod llg;
+mod owned_curation;
 pub mod pack;
 pub mod registry;
 mod sutysisku;
@@ -71,6 +72,12 @@ pub use llg::{
     LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256, LLG_NOTICE_SHA256, LLG_RAFSI_SHA256,
     LlgComponentReport, LlgHeaderClaim, LlgImport, LlgImportError, LlgImportOptions,
     LlgImportReport, import_llg_lists,
+};
+pub use owned_curation::{
+    OwnedContextInput, OwnedContextPin, OwnedCurationData, OwnedCurationDocument,
+    OwnedCurationError, OwnedCurationKind, OwnedCurationReason, OwnedCurationRecord,
+    OwnedCurationResolution, OwnedCurationRevision, OwnedCurationStatus, OwnedMaterialization,
+    OwnedPinnedTarget, OwnedSenseMember,
 };
 pub use pack::{
     PackError, PackId, PackPayloadKind, PackSeal, SealedRelease, compose_dictionaries,

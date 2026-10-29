@@ -88,6 +88,14 @@ never consult configuration or the default store. Each edit appends one
 revision only when its expected head is still current. Head/history report
 checked summaries, while show reconstructs and validates the selected full
 state. See the [owned journal guide](../../docs/owned-dictionary.md).
+After explicit migration, `owned curate ROOT --expected-head REV [--input FILE]`
+appends a validated complete curation document, while `owned curation-show ROOT
+[--revision REV]` reads the retained document without resolving it. `owned
+materialize ROOT [--revision REV] [--context FILE ...] --output FILE` computes
+a separate view from the exact supplied context files; each file contains its
+declared pin ID and complete typed Dictionary. Output is created exclusively
+after materialization succeeds. The [owned dictionary guide](../../docs/owned-dictionary.md#reviewed-curation-and-explicit-context)
+includes a self-generated Tiny example and derived-query workflow.
 `dictionary-query STORE --format compact --request JSON` and
 `lookup --format compact --request JSON` opt into compact Exact/Resolve output;
 both commands still default to the established full response. Resolve a returned

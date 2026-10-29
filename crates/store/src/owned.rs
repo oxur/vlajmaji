@@ -9,8 +9,10 @@ use rusqlite::{Connection, OpenFlags, params};
 use serde::{Deserialize, Serialize, de::DeserializeOwned};
 use sha2::{Digest, Sha256};
 use vlajmaji_lexicon::{
-    Dictionary, DictionaryDocument, DictionaryError, DictionaryMetadata, EntityId, OwnedHead,
-    OwnedRevisionRecord, RegistryDocument, SourceId, SourceOrigin, SourceRegistry,
+    Dictionary, DictionaryDocument, DictionaryError, DictionaryMetadata, EntityId, OwnedContextPin,
+    OwnedCurationData, OwnedCurationDocument, OwnedCurationError, OwnedCurationRecord,
+    OwnedCurationRevision, OwnedHead, OwnedRevisionRecord, RegistryDocument, SourceId,
+    SourceOrigin, SourceRegistry,
 };
 
 use crate::owned_schema::{self, SECTIONS};
@@ -95,6 +97,34 @@ pub struct OwnedWriteReport {
     pub head: OwnedCommitSummary,
 }
 
+/// Result of an explicit schema-one to schema-two curation migration.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum OwnedMigrationOutcome {
+    /// Curation sidecar was created for every committed base revision.
+    Migrated,
+    /// The journal already had a valid schema-two header.
+    AlreadyCurrent,
+}
+
+/// Summary returned by an explicit curation migration.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct OwnedCurationMigrationReport {
+    /// Report schema version.
+    pub version: u32,
+    /// The sole owned source.
+    pub source: SourceId,
+    /// Current committed head.
+    pub head: EntityId,
+    /// Journal schema before the operation.
+    pub from_schema: u32,
+    /// Journal schema after the operation.
+    pub to_schema: u32,
+    /// Whether migration occurred or was already complete.
+    pub outcome: OwnedMigrationOutcome,
+}
+
 /// Stable categories for owned journal failures.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -122,6 +152,10 @@ pub enum OwnedJournalErrorCategory {
     Io,
     /// SQLite backend failure.
     Backend,
+    /// A curation operation requires explicit schema-two migration.
+    MigrationRequired,
+    /// Curation validation or persisted curation integrity failed.
+    InvalidCuration,
     /// Commit outcome could not be established safely.
     CommitOutcomeUnknown,
 }
@@ -165,6 +199,10 @@ pub enum OwnedJournalError {
     Io(io::Error),
     /// SQLite operation failed.
     Backend(rusqlite::Error),
+    /// The journal must be explicitly migrated before curation operations.
+    MigrationRequired,
+    /// Curation document validation or persisted curation integrity failed.
+    InvalidCuration(OwnedCurationError),
     /// Commit and rollback observations cannot establish whether a commit occurred.
     CommitOutcomeUnknown(String),
 }
@@ -185,6 +223,8 @@ impl OwnedJournalError {
             Self::Busy(_) => OwnedJournalErrorCategory::Busy,
             Self::Io(_) => OwnedJournalErrorCategory::Io,
             Self::Backend(_) => OwnedJournalErrorCategory::Backend,
+            Self::MigrationRequired => OwnedJournalErrorCategory::MigrationRequired,
+            Self::InvalidCuration(_) => OwnedJournalErrorCategory::InvalidCuration,
             Self::CommitOutcomeUnknown(_) => OwnedJournalErrorCategory::CommitOutcomeUnknown,
         }
     }
@@ -211,6 +251,8 @@ impl fmt::Display for OwnedJournalError {
             Self::Busy(detail) => write!(f, "owned journal is busy: {detail}"),
             Self::Io(error) => write!(f, "owned journal filesystem error: {error}"),
             Self::Backend(error) => write!(f, "owned journal backend error: {error}"),
+            Self::MigrationRequired => f.write_str("owned journal requires curation migration"),
+            Self::InvalidCuration(error) => write!(f, "invalid owned curation: {error}"),
             Self::CommitOutcomeUnknown(detail) => {
                 write!(f, "owned journal commit outcome is unknown: {detail}")
             }
@@ -223,6 +265,7 @@ impl Error for OwnedJournalError {
             Self::InvalidDictionary(error) => Some(error),
             Self::Io(error) => Some(error),
             Self::Backend(error) => Some(error),
+            Self::InvalidCuration(error) => Some(error),
             _ => None,
         }
     }
@@ -407,6 +450,7 @@ impl OwnedJournal {
                     )
                 })?;
             let hash = state_hash(candidate)?;
+            let schema = journal_schema(&self.connection)?;
             insert_suffix(
                 &self.connection,
                 &old_sections,
@@ -416,6 +460,37 @@ impl OwnedJournal {
                 &hash,
                 &current.source,
             )?;
+            if schema == owned_schema::CURATION_SCHEMA_VERSION {
+                let prior_curation = load_curation_document(
+                    &self.connection,
+                    &current.commit,
+                    current.source.clone(),
+                    current.dictionary.clone(),
+                )?;
+                let mut carried = prior_curation.into_data();
+                let previous_active = carried
+                    .revisions
+                    .last()
+                    .map(|row| row.active.clone())
+                    .unwrap_or_default();
+                carried.dictionary = candidate.clone();
+                carried.revisions.push(OwnedCurationRevision {
+                    revision: revision.id.clone(),
+                    active: previous_active,
+                    tombstones: Vec::new(),
+                });
+                let carried = OwnedCurationDocument::from_data(carried)
+                    .map_err(OwnedJournalError::InvalidCuration)?;
+                persist_curation_revision(
+                    &self.connection,
+                    &current.commit,
+                    sequence,
+                    &current.source,
+                    &revision,
+                    &hash,
+                    carried.as_data(),
+                )?;
+            }
             Ok::<_, OwnedJournalError>((
                 current.source,
                 current.commit.revision.id,
@@ -457,6 +532,259 @@ impl OwnedJournal {
                     self.poisoned = true;
                 }
                 Err(resolved)
+            }
+        }
+    }
+
+    /// Explicitly adds the curation sidecar to a schema-one journal.
+    ///
+    /// # Errors
+    ///
+    /// Returns a head conflict, a typed integrity/version error, or a busy
+    /// failure if another writer or a pinned reader prevents the migration.
+    pub fn migrate_curation(
+        &mut self,
+        expected_head: &EntityId,
+    ) -> Result<OwnedCurationMigrationReport, OwnedJournalError> {
+        if self.poisoned {
+            return Err(OwnedJournalError::CommitOutcomeUnknown(
+                "writer handle is poisoned".into(),
+            ));
+        }
+        self.connection
+            .execute_batch("BEGIN IMMEDIATE")
+            .map_err(map_busy)?;
+        let transaction = RollbackGuard::new(&self.connection, Some(&mut self.poisoned));
+        let result = (|| {
+            let (schema, source, head) = read_header_head(&self.connection)?;
+            if &head.revision.id != expected_head {
+                return Err(OwnedJournalError::Conflict {
+                    expected: expected_head.clone(),
+                    actual: head.revision.id,
+                });
+            }
+            if schema == owned_schema::CURATION_SCHEMA_VERSION {
+                return Ok(OwnedCurationMigrationReport {
+                    version: 1,
+                    source,
+                    head: head.revision.id,
+                    from_schema: 2,
+                    to_schema: 2,
+                    outcome: OwnedMigrationOutcome::AlreadyCurrent,
+                });
+            }
+            if schema != owned_schema::SCHEMA_VERSION {
+                return Err(OwnedJournalError::UnsupportedVersion {
+                    found: schema as u32,
+                });
+            }
+            let history = read_history_summaries(&self.connection)?;
+            if history.last() != Some(&head) {
+                return Err(OwnedJournalError::Integrity(
+                    "current head does not match the complete commit history".into(),
+                ));
+            }
+            // Migration is the explicit full-history verification boundary.
+            for summary in &history {
+                load_state(&self.connection, summary)?;
+            }
+            owned_schema::initialize_curation(&self.connection)?;
+            let mut curation_prefix = Vec::with_capacity(history.len());
+            for summary in &history {
+                let revision = summary.revision.id.to_string();
+                let curation_revision = OwnedCurationRevision {
+                    revision: summary.revision.id.clone(),
+                    active: Vec::new(),
+                    tombstones: Vec::new(),
+                };
+                let revision_payload = serde_json::to_vec(&curation_revision)
+                    .map_err(|error| OwnedJournalError::Integrity(error.to_string()))?;
+                curation_prefix.push(curation_revision);
+                self.connection.execute(
+                    "INSERT INTO owned_curation_revisions(revision_id,payload) VALUES(?1,?2)",
+                    params![revision, revision_payload],
+                )?;
+                let hash = curation_hash(&source, summary, &[], &[], &curation_prefix)?;
+                self.connection.execute(
+                    "INSERT INTO owned_curation_prefixes(revision_id,contexts_length,records_length,curation_sha256) VALUES(?1,0,0,?2)",
+                    params![revision, hash],
+                )?;
+            }
+            self.connection.execute_batch(&format!(
+                "PRAGMA user_version={}; UPDATE owned_meta SET schema_version={} WHERE singleton=1;",
+                owned_schema::CURATION_SCHEMA_VERSION,
+                owned_schema::CURATION_SCHEMA_VERSION
+            ))?;
+            Ok(OwnedCurationMigrationReport {
+                version: 1,
+                source,
+                head: head.revision.id,
+                from_schema: 1,
+                to_schema: 2,
+                outcome: OwnedMigrationOutcome::Migrated,
+            })
+        })();
+        match result {
+            Ok(report) => match self.connection.execute_batch("COMMIT") {
+                Ok(()) => {
+                    transaction.disarm();
+                    Ok(report)
+                }
+                Err(error) => {
+                    let error = resolve_commit_error(&self.connection, error);
+                    transaction.disarm();
+                    if matches!(error, OwnedJournalError::CommitOutcomeUnknown(_)) {
+                        self.poisoned = true;
+                    }
+                    Err(error)
+                }
+            },
+            Err(error) => {
+                let error = rollback_error(&self.connection, error);
+                transaction.disarm();
+                if matches!(error, Err(OwnedJournalError::CommitOutcomeUnknown(_))) {
+                    self.poisoned = true;
+                }
+                error
+            }
+        }
+    }
+
+    /// Appends a validated curation document with one matching base revision.
+    ///
+    /// # Errors
+    ///
+    /// Returns a migration-required error on schema one, a head conflict, an
+    /// immutable-prefix error, or a typed curation/journal failure.
+    pub fn commit_curated(
+        &mut self,
+        expected_head: &EntityId,
+        candidate: &OwnedCurationDocument,
+    ) -> Result<OwnedWriteReport, OwnedJournalError> {
+        if self.poisoned {
+            return Err(OwnedJournalError::CommitOutcomeUnknown(
+                "writer handle is poisoned".into(),
+            ));
+        }
+        self.connection
+            .execute_batch("BEGIN IMMEDIATE")
+            .map_err(map_busy)?;
+        let transaction = RollbackGuard::new(&self.connection, Some(&mut self.poisoned));
+        let prepared = (|| {
+            if journal_schema(&self.connection)? != owned_schema::CURATION_SCHEMA_VERSION {
+                return Err(OwnedJournalError::MigrationRequired);
+            }
+            let current = current_view(&self.connection)?;
+            if &current.commit.revision.id != expected_head {
+                return Err(OwnedJournalError::Conflict {
+                    expected: expected_head.clone(),
+                    actual: current.commit.revision.id,
+                });
+            }
+            let candidate_data = candidate.as_data();
+            let (old_sections, new_sections) =
+                validate_edit(&current.dictionary, &candidate_data.dictionary)?;
+            let prior = load_curation_document(
+                &self.connection,
+                &current.commit,
+                current.source.clone(),
+                current.dictionary.clone(),
+            )?;
+            let prior_data = prior.as_data();
+            if candidate_data.contexts.len() < prior_data.contexts.len()
+                || candidate_data.contexts[..prior_data.contexts.len()] != prior_data.contexts[..]
+                || candidate_data.records.len() < prior_data.records.len()
+                || candidate_data.records[..prior_data.records.len()] != prior_data.records[..]
+                || candidate_data.revisions.len() != prior_data.revisions.len() + 1
+                || candidate_data.revisions[..prior_data.revisions.len()]
+                    != prior_data.revisions[..]
+            {
+                return Err(OwnedJournalError::InvalidCuration(
+                    OwnedCurationError::InvalidDocument(
+                        "curation edit changed an immutable prefix".into(),
+                    ),
+                ));
+            }
+            let revision = candidate_data
+                .dictionary
+                .metadata()
+                .owned_revisions
+                .last()
+                .cloned()
+                .ok_or_else(|| {
+                    OwnedJournalError::Integrity("candidate revision is missing".into())
+                })?;
+            let sequence = current
+                .commit
+                .sequence
+                .checked_add(1)
+                .filter(|n| *n <= i64::MAX as u64)
+                .ok_or_else(|| {
+                    OwnedJournalError::InvalidRequest(
+                        "journal sequence exceeds SQLite INTEGER range".into(),
+                    )
+                })?;
+            let hash = state_hash(&candidate_data.dictionary)?;
+            insert_suffix(
+                &self.connection,
+                &old_sections,
+                &new_sections,
+                &revision,
+                sequence,
+                &hash,
+                &current.source,
+            )?;
+            persist_curation_revision(
+                &self.connection,
+                &current.commit,
+                sequence,
+                &current.source,
+                &revision,
+                &hash,
+                candidate_data,
+            )?;
+            Ok((
+                current.source,
+                current.commit.revision.id,
+                sequence,
+                revision,
+                hash,
+            ))
+        })();
+        match prepared {
+            Ok((source, previous, sequence, revision, hash)) => {
+                match self.connection.execute_batch("COMMIT") {
+                    Ok(()) => {
+                        transaction.disarm();
+                        Ok(OwnedWriteReport {
+                            version: 1,
+                            operation: OwnedWriteOperation::Edit,
+                            source,
+                            previous_head: Some(previous),
+                            head: OwnedCommitSummary {
+                                sequence,
+                                revision,
+                                state_sha256: hash,
+                            },
+                        })
+                    }
+                    Err(error) => {
+                        let error = resolve_commit_error(&self.connection, error);
+                        transaction.disarm();
+                        if matches!(error, OwnedJournalError::CommitOutcomeUnknown(_)) {
+                            self.poisoned = true;
+                        }
+                        Err(error)
+                    }
+                }
+            }
+            Err(error) => {
+                let error = rollback_error(&self.connection, error);
+                transaction.disarm();
+                if matches!(error, Err(OwnedJournalError::CommitOutcomeUnknown(_))) {
+                    self.poisoned = true;
+                }
+                error
             }
         }
     }
@@ -570,6 +898,42 @@ impl OwnedJournalReader {
     pub fn show_head(&self) -> Result<OwnedRevisionView, OwnedJournalError> {
         let (_, summary) = read_current_summary(&self.connection)?;
         self.show(&summary.revision.id)
+    }
+
+    /// Reconstructs and verifies one revision's complete curation document.
+    ///
+    /// # Errors
+    ///
+    /// Returns `NotFound` for an absent revision and typed integrity/curation
+    /// errors for malformed persisted prefixes or bodies.
+    pub fn curation_show(
+        &self,
+        revision: &EntityId,
+    ) -> Result<OwnedCurationDocument, OwnedJournalError> {
+        if journal_schema(&self.connection)? != owned_schema::CURATION_SCHEMA_VERSION {
+            return Err(OwnedJournalError::MigrationRequired);
+        }
+        let summary = summary_for(&self.connection, revision)?;
+        let dictionary = load_state(&self.connection, &summary)?;
+        let source = dictionary
+            .registry()
+            .as_document()
+            .sources
+            .first()
+            .ok_or_else(|| OwnedJournalError::Integrity("owned source missing".into()))?
+            .id
+            .clone();
+        load_curation_document(&self.connection, &summary, source, dictionary)
+    }
+
+    /// Reconstructs and verifies curation state at the pinned current head.
+    ///
+    /// # Errors
+    ///
+    /// Returns a migration, integrity, curation, or backend error.
+    pub fn curation_show_head(&self) -> Result<OwnedCurationDocument, OwnedJournalError> {
+        let (_, summary) = read_current_summary(&self.connection)?;
+        self.curation_show(&summary.revision.id)
     }
 }
 
@@ -1011,12 +1375,36 @@ fn check_header(connection: &Connection) -> Result<(), OwnedJournalError> {
     if family != FAMILY {
         return Err(OwnedJournalError::WrongFamily);
     }
-    if schema != 1 || schema_meta != 1 || model != 1 || registry != 1 {
+    if (schema != 1 && schema != 2) || schema_meta != schema || model != 1 || registry != 1 {
         return Err(OwnedJournalError::UnsupportedVersion {
             found: schema as u32,
         });
     }
     Ok(())
+}
+
+fn journal_schema(connection: &Connection) -> Result<i32, OwnedJournalError> {
+    let pragma: i32 = connection.pragma_query_value(None, "user_version", |r| r.get(0))?;
+    let meta: i32 = connection.query_row(
+        "SELECT schema_version FROM owned_meta WHERE singleton=1",
+        [],
+        |row| row.get(0),
+    )?;
+    if pragma != meta {
+        return Err(OwnedJournalError::UnsupportedVersion {
+            found: pragma as u32,
+        });
+    }
+    Ok(pragma)
+}
+
+fn read_header_head(
+    connection: &Connection,
+) -> Result<(i32, SourceId, OwnedCommitSummary), OwnedJournalError> {
+    check_header(connection)?;
+    let schema = journal_schema(connection)?;
+    let (source, summary) = read_current_summary(connection)?;
+    Ok((schema, source, summary))
 }
 fn read_current_summary(
     connection: &Connection,
@@ -1040,6 +1428,286 @@ fn read_current_summary(
         ));
     }
     Ok((source, summary))
+}
+
+fn read_history_summaries(
+    connection: &Connection,
+) -> Result<Vec<OwnedCommitSummary>, OwnedJournalError> {
+    let mut statement = connection.prepare(
+        "SELECT revision_id,parent_revision,sequence,state_sha256 FROM owned_commits ORDER BY sequence",
+    )?;
+    let mut rows = statement.query([])?;
+    let mut summaries = Vec::new();
+    let mut previous: Option<EntityId> = None;
+    while let Some(row) = rows.next()? {
+        let id_text: String = row.get(0)?;
+        let id = EntityId::new(id_text)
+            .map_err(|error| OwnedJournalError::Integrity(error.to_string()))?;
+        let parent = row
+            .get::<_, Option<String>>(1)?
+            .map(EntityId::new)
+            .transpose()
+            .map_err(|error| OwnedJournalError::Integrity(error.to_string()))?;
+        let sequence: i64 = row.get(2)?;
+        let hash: String = row.get(3)?;
+        if sequence < 0
+            || sequence as usize != summaries.len()
+            || parent != previous
+            || !is_sha256(&hash)
+        {
+            return Err(OwnedJournalError::Integrity(
+                "owned commit chain is not contiguous".into(),
+            ));
+        }
+        let revision = revision_for(connection, &id, sequence as u64)?;
+        summaries.push(OwnedCommitSummary {
+            sequence: sequence as u64,
+            revision,
+            state_sha256: hash,
+        });
+        previous = Some(id);
+    }
+    Ok(summaries)
+}
+
+#[derive(Serialize)]
+struct CurationHashBody<'a> {
+    version: u32,
+    source: &'a SourceId,
+    revision: &'a EntityId,
+    base_state_sha256: &'a str,
+    contexts: &'a [OwnedContextPin],
+    records: &'a [OwnedCurationRecord],
+    revisions: &'a [OwnedCurationRevision],
+}
+
+fn curation_hash(
+    source: &SourceId,
+    summary: &OwnedCommitSummary,
+    contexts: &[OwnedContextPin],
+    records: &[OwnedCurationRecord],
+    revisions: &[OwnedCurationRevision],
+) -> Result<String, OwnedJournalError> {
+    let body = CurationHashBody {
+        version: 1,
+        source,
+        revision: &summary.revision.id,
+        base_state_sha256: &summary.state_sha256,
+        contexts,
+        records,
+        revisions,
+    };
+    let bytes = serde_json::to_vec(&body)
+        .map_err(|error| OwnedJournalError::Integrity(error.to_string()))?;
+    Ok(hex(&Sha256::digest(bytes)))
+}
+
+fn persist_curation_revision(
+    connection: &Connection,
+    previous: &OwnedCommitSummary,
+    sequence: u64,
+    source: &SourceId,
+    revision: &OwnedRevisionRecord,
+    state_sha256: &str,
+    data: &OwnedCurationData,
+) -> Result<(), OwnedJournalError> {
+    if data.revisions.len() as u64 != sequence + 1
+        || data.revisions.last().map(|row| &row.revision) != Some(&revision.id)
+    {
+        return Err(OwnedJournalError::InvalidCuration(
+            OwnedCurationError::InvalidDocument(
+                "curation history does not match new base revision".into(),
+            ),
+        ));
+    }
+    let previous_lengths: (i64, i64) = connection.query_row(
+        "SELECT contexts_length,records_length FROM owned_curation_prefixes WHERE revision_id=?1",
+        [previous.revision.id.to_string()],
+        |row| Ok((row.get(0)?, row.get(1)?)),
+    )?;
+    let (contexts_start, records_start) = previous_lengths;
+    if contexts_start < 0
+        || records_start < 0
+        || data.contexts.len() < contexts_start as usize
+        || data.records.len() < records_start as usize
+    {
+        return Err(OwnedJournalError::Integrity(
+            "curation append prefix is malformed".into(),
+        ));
+    }
+    for (ordinal, pin) in data
+        .contexts
+        .iter()
+        .enumerate()
+        .skip(contexts_start as usize)
+    {
+        let payload = serde_json::to_vec(pin)
+            .map_err(|error| OwnedJournalError::Integrity(error.to_string()))?;
+        connection.execute(
+            "INSERT INTO owned_context_pins(ordinal,id,payload) VALUES(?1,?2,?3)",
+            params![ordinal as i64, pin.id.to_string(), payload],
+        )?;
+    }
+    for (ordinal, record) in data.records.iter().enumerate().skip(records_start as usize) {
+        let payload = serde_json::to_vec(record)
+            .map_err(|error| OwnedJournalError::Integrity(error.to_string()))?;
+        connection.execute(
+            "INSERT INTO owned_curation_records(ordinal,id,payload) VALUES(?1,?2,?3)",
+            params![ordinal as i64, record.id.to_string(), payload],
+        )?;
+    }
+    let curation_revision = data.revisions.last().expect("length was checked");
+    let payload = serde_json::to_vec(curation_revision)
+        .map_err(|error| OwnedJournalError::Integrity(error.to_string()))?;
+    connection.execute(
+        "INSERT INTO owned_curation_revisions(revision_id,payload) VALUES(?1,?2)",
+        params![revision.id.to_string(), payload],
+    )?;
+    let summary = OwnedCommitSummary {
+        sequence,
+        revision: revision.clone(),
+        state_sha256: state_sha256.to_owned(),
+    };
+    let hash = curation_hash(
+        source,
+        &summary,
+        &data.contexts,
+        &data.records,
+        &data.revisions,
+    )?;
+    connection.execute(
+        "INSERT INTO owned_curation_prefixes(revision_id,contexts_length,records_length,curation_sha256) VALUES(?1,?2,?3,?4)",
+        params![revision.id.to_string(), data.contexts.len() as i64, data.records.len() as i64, hash],
+    )?;
+    Ok(())
+}
+
+fn load_curation_document(
+    connection: &Connection,
+    summary: &OwnedCommitSummary,
+    source: SourceId,
+    dictionary: Dictionary,
+) -> Result<OwnedCurationDocument, OwnedJournalError> {
+    let prefix: (i64, i64, String) = connection.query_row(
+        "SELECT contexts_length,records_length,curation_sha256 FROM owned_curation_prefixes WHERE revision_id=?1",
+        [summary.revision.id.to_string()],
+        |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)),
+    ).map_err(|error| match error {
+        rusqlite::Error::QueryReturnedNoRows => OwnedJournalError::Integrity("missing curation prefix".into()),
+        other => other.into(),
+    })?;
+    let (contexts_len, records_len, expected_hash) = prefix;
+    if contexts_len < 0 || records_len < 0 || !is_sha256(&expected_hash) {
+        return Err(OwnedJournalError::Integrity(
+            "malformed curation prefix".into(),
+        ));
+    }
+    let contexts =
+        read_curation_rows::<OwnedContextPin>(connection, "owned_context_pins", contexts_len)?;
+    let records = read_curation_rows::<OwnedCurationRecord>(
+        connection,
+        "owned_curation_records",
+        records_len,
+    )?;
+    let mut statement = connection.prepare(
+        "SELECT r.revision_id,r.payload FROM owned_curation_revisions r JOIN owned_commits c ON c.revision_id=r.revision_id WHERE c.sequence<=?1 ORDER BY c.sequence",
+    )?;
+    let mut rows = statement.query([summary.sequence as i64])?;
+    let mut revisions = Vec::new();
+    while let Some(row) = rows.next()? {
+        let row_id: String = row.get(0)?;
+        let payload: Vec<u8> = row.get(1)?;
+        let revision: OwnedCurationRevision =
+            serde_json::from_slice(&payload).map_err(|error| {
+                OwnedJournalError::Integrity(format!("malformed curation revision: {error}"))
+            })?;
+        if revision.revision.as_str() != row_id {
+            return Err(OwnedJournalError::Integrity(
+                "curation revision key differs from its payload".into(),
+            ));
+        }
+        revisions.push(revision);
+    }
+    if revisions.len() as u64 != summary.sequence + 1 {
+        return Err(OwnedJournalError::Integrity(
+            "curation revision prefix is incomplete".into(),
+        ));
+    }
+    if curation_hash(&source, summary, &contexts, &records, &revisions)? != expected_hash {
+        return Err(OwnedJournalError::Integrity(
+            "curation prefix hash differs".into(),
+        ));
+    }
+    let document = OwnedCurationDocument::from_data(OwnedCurationData {
+        version: 1,
+        dictionary,
+        contexts,
+        records,
+        revisions,
+    })
+    .map_err(OwnedJournalError::InvalidCuration)?;
+    Ok(document)
+}
+
+trait CurationRow: DeserializeOwned {
+    fn identity(&self) -> &EntityId;
+}
+
+impl CurationRow for OwnedContextPin {
+    fn identity(&self) -> &EntityId {
+        &self.id
+    }
+}
+
+impl CurationRow for OwnedCurationRecord {
+    fn identity(&self) -> &EntityId {
+        &self.id
+    }
+}
+
+fn read_curation_rows<T: CurationRow>(
+    connection: &Connection,
+    table: &str,
+    length: i64,
+) -> Result<Vec<T>, OwnedJournalError> {
+    let sql = match table {
+        "owned_context_pins" | "owned_curation_records" => {
+            format!("SELECT ordinal,id,payload FROM {table} WHERE ordinal<?1 ORDER BY ordinal")
+        }
+        _ => {
+            return Err(OwnedJournalError::Integrity(
+                "invalid curation table".into(),
+            ));
+        }
+    };
+    let mut statement = connection.prepare(&sql)?;
+    let mut rows = statement.query([length])?;
+    let mut values = Vec::new();
+    while let Some(row) = rows.next()? {
+        let ordinal: i64 = row.get(0)?;
+        if ordinal < 0 || ordinal as usize != values.len() {
+            return Err(OwnedJournalError::Integrity(
+                "curation ordinals are not contiguous".into(),
+            ));
+        }
+        let row_id: String = row.get(1)?;
+        let payload: Vec<u8> = row.get(2)?;
+        let value: T = serde_json::from_slice(&payload).map_err(|error| {
+            OwnedJournalError::Integrity(format!("malformed curation row: {error}"))
+        })?;
+        if value.identity().as_str() != row_id {
+            return Err(OwnedJournalError::Integrity(
+                "curation identity key differs from its payload".into(),
+            ));
+        }
+        values.push(value);
+    }
+    if values.len() as i64 != length {
+        return Err(OwnedJournalError::Integrity(
+            "curation prefix length differs from rows".into(),
+        ));
+    }
+    Ok(values)
 }
 fn summary_for(
     connection: &Connection,
