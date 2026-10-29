@@ -1,6 +1,6 @@
 # Project01 ledger
 
-**Current Arc05 planning checkpoint, 2026-10-28:** Arc01–04 CLOSED; PR6 actually merged a55/tree836, merged-main CI40806671887 SUCCESS (baseline only). Directive04 activates THROUGH ARC05 ONLY; four-increment and S01 journal DRAFT open set, root readiness before issue. All14 binding project rows remain unchanged OPEN; Arc06/finalOperator/content gates retained. Source/index/ONE target ROOT QUIET; CDC planning only.
+**Current Arc05 planning checkpoint, 2026-10-28:** Arc01–04 CLOSED; PR6 actually merged a55/tree836, merged-main CI40806671887 SUCCESS (baseline only). Directive04 activates THROUGH ARC05 ONLY; four-increment plan and S01 journal ISSUED for complete intake after root readiness d75532d; source transfer pending. All14 binding project rows remain unchanged OPEN; Arc06/finalOperator/content gates retained. Source/index/ONE target ROOT QUIET; CDC planning only.
 
 **Historical Arc04 final checkpoint (reviewed cutoff):**
 

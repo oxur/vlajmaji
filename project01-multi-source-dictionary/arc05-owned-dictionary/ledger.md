@@ -1,6 +1,6 @@
 # Arc05 ledger
 
-**Current, 2026-10-28:** DRAFT Arc05 proposal under directive04; baseline a55/tree836; S01 unissued; all eight arc rows OPEN. Root QUIET source/index/target. All fourteen project rows OPEN; Arc06 unactivated. No implementation/acceptance claim.
+**Current, 2026-10-28:** Active Arc05 under directive04; baseline a55/tree836; S01 ISSUED for complete intake after root readiness d75532d; all eight arc rows OPEN. Root QUIET source/index/target. All fourteen project rows OPEN; Arc06 unactivated. No implementation/acceptance claim.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |

@@ -1,6 +1,6 @@
 # CC assignment — Arc05 S01 owned journal
 
-STATUS: DRAFT / UNISSUED — root exact readiness and explicit transfer required.
+STATUS: ISSUED — required complete intake only until explicit source ownership transfer.
 
 ## Outcome, authority and baseline
 

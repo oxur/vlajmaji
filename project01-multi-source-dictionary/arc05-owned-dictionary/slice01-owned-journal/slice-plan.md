@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | DRAFT / UNISSUED; seven rows OPEN; no source/build/CC transfer |
+| Status | ISSUED for complete intake; seven rows OPEN; no source/build/CC transfer yet |
 | Parent | [Arc05](../arc-plan.md), [directive04](../../cdc-directive04.md) |
 | Baseline | `a55e1cc7c4d7b0df4a187ce3551bfce9141a39d3`, tree `836df880ca711c6813cb78ae1202973e618eb105`; branch `codex/project01-owned-dictionary` |
 | Source home | `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji` (physical checkout reused) |
@@ -189,3 +189,9 @@ Durable intake/log evidence lives in this slice’s `artifacts/execution.md` and
 CDC source inspection at accepted tree836 (now merged baseline a55) establishes existing complete model/owned validator, read-only derived store, absent in-memory query constructor, actual CLI/Make/feature/package paths. Relevant Rust guidance: AP18/API02 support borrowing input and storing appended bodies once; AP19/EH04/EH13 support the named non_exhaustive library error; AP33 requires explicit rollback/commit-error handling rather than discarded failures; EH14 requires Errors docs; API04 supports reusing strict byte parsing for file/stdin. API03 is SHOULD: the concrete borrowed &Path signatures deliberately follow existing store APIs rather than changing handle types. AP67 supports typed revision/head IDs and operation enums. No new error dependency or unsafe Send/Sync promise is introduced. The complete draft resolves S01 input/schema/CAS/mutability/read/failure/CLI policies; remaining private implementation choices cannot change those outcomes. S02 exact external-context adapter is later work with binding arc obligations; it does not block standalone S01. Root initial full-draft review identified and this draft corrects F01 (separate no-reader CAS vs reader Busy) and F02 (summary commands avoid whole-history model verification), with Connection-level rollback handling checked against local rusqlite0.40.2 transaction.rs190–230/lib.rs548/is_autocommit1059. F03 evidence-home/registry-helper intake closure is corrected. Root final exact draft review remains PENDING; no acceptance or source edits claimed.
 
 - 0.1 — 2026-10-28: concrete DRAFT open set; whole typed candidates and append-prefix journal selected, explicit example/CLI route and finite negative controls included. Five total passes, no Full campaign.
+
+### Initial issue / assignment history — 2026-10-28
+
+Root final DRAFT READINESS PASS reviewed exact proposal d75532d660bf5b14232d684528165c80057e719c/tree9b57bc9266f8fc12a4536c2386da9da39ca34447: whole S01 plan/prompt/ledger, parent bodies/deltas, F01–F03 and viable Connection rollback recipe. Root independently verified ten paths, unchanged14projectrows,8arc/7childOPEN, clean a55/tree836/lock65cd/guard426d. Original substantive reviewed prompt/plan are preserved in d75532d; active prompt differs ONLY its STATUS line. This metadata records readiness, not product acceptance.
+
+Retained Luna/high CC is assigned REQUIRED COMPLETE INTAKE ONLY now. Intake coverage/source-cited readback belongs in artifacts/execution.md. CDC accepts actual coverage and rechecks fresh branch/source/lock/guard before EXPLICIT eleven-path/index/ONE-target transfer. Until then root owns source/index/target QUIET; no source/Cargo/fixture action. No further root ceremony is required absent an actual mismatch. Five-total-pass budget and all rows OPEN unchanged.

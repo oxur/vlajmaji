@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | DRAFT planning proposal; eight arc rows OPEN; S01 unissued; no source work |
+| Status | ACTIVE planning; eight arc rows OPEN; S01 ISSUED for complete intake after root readiness; no source work yet |
 | Authority | [directive04](../cdc-directive04.md), Duncan “merged! Let's continue :-D”; THROUGH ARC05 ONLY |
 | Roles | Retained CDC Sol6.1/high; retained CC Luna/high; fresh independent Sol6.1/high assembled review and SAME-context canonical gate at close |
 | Source | `codex/project01-owned-dictionary`, baseline `a55e1cc7c4d7b0df4a187ce3551bfce9141a39d3`, tree `836df880ca711c6813cb78ae1202973e618eb105` |
@@ -51,3 +51,7 @@ This is the concrete planning proposal, not an issued source assignment. S01's e
 ## Version history
 
 - 0.1 — 2026-10-28: directive04 Arc05 activation proposal at merged a55; physical checkout/one cache reused; four usable increments and separate authoritative/context/export/package boundaries fixed. All rows OPEN; S01 DRAFT only.
+
+### S01 issue checkpoint — 2026-10-28
+
+Root final readiness PASS at proposal d75532d clears status-only initial issue and retained CC complete intake. Source/index/ONE target remain root QUIET until CDC accepts coverage/readback and explicitly transfers the eleven S01 paths; all8arc/7child/14project rows OPEN. Current S01 status supersedes the dated DRAFT readiness prose above; architecture and later-slice obligations unchanged.
