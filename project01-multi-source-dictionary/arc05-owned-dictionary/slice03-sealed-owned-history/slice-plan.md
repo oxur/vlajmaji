@@ -6,7 +6,7 @@
 | Authority | Arc05/directive04; retained CDC Sol6.1/high + Luna/high CC; five total S03 assignments including initial, no automatic sixth |
 | Known source | Accepted S01 1b899ebb/tree745f; source branch codex/project01-owned-dictionary. Final S02 HEAD/schema/API/readset must replace this dependency placeholder before issue |
 | Useful result | Export/check/load every owned revision and curation cutoff, import into a fresh authoritative journal, replay only exact history, and query an explicitly extracted/materialized derived model |
-| Version / date | 0.2 / 2026-10-29; prospective policy root-read; accepted S02/API/report reconciliation and final readiness pending |
+| Version / date | 0.3 / 2026-10-29; prospective report/base-golden policy fixed; accepted S02/API/context-oracle reconciliation and final readiness pending |
 
 ## 1. Representation and ownership boundary
 
@@ -105,6 +105,7 @@ Proposed additions, exact final signatures require accepted S02 reconciliation:
 impl OwnedJournalReader {
     pub fn snapshot(&self) -> Result<OwnedSnapshot,OwnedJournalError>;
 }
+// snake_case serde variants; report is deny_unknown_fields.
 pub enum OwnedImportOutcome { Imported, AlreadyPresent }
 pub struct OwnedImportReport {
     pub version: u32,
@@ -112,6 +113,7 @@ pub struct OwnedImportReport {
     pub source: SourceId,
     pub head: EntityId,
     pub journal_schema: u32,
+    pub revision_count: u64,
     pub snapshot_sha256: String,
 }
 impl OwnedJournal {
@@ -143,7 +145,21 @@ export uses a pinned current journal and includes its ENTIRE retained history, n
 
 Static ID/Clap validation comes before input/journal/output IO as appropriate; sealed bytes are strictly loaded before import creates/opens a journal. check and snapshot-model take NO ROOT and must not call default resolution. Existing owned ManagedOutputContext needs optional root handling for these rootless operations; reuse the common Json writer/flush/BrokenPipe/error lifecycle, no new emitter. Public reports retain exact typed fieldsets and existing Json(Value) sorted map-key stdout plus one LF. Files use native Path/OsStr reports, never lossy UTF8 substitution. Existing dictionary-build retains its inherited UTF8 STORE-response restriction; use an explicitly owned UTF8 derived destination rather than widen that API here.
 
-Create_new each output, never replace existing files. Validate completely before output creation; for export preflight both explicit outputs, open each exclusively before writes, write/sync exact canonical bytes. No portable atomic-two-file or power-loss promise: any output open/write/flush/sync error may leave owned partial files; do not delete arbitrary paths or falsely roll back a completed file/import. Payload/seal/model files have NO added LF. Reports give version/source/head/schema/revision count and exact native output paths/byte lengths/SHA; precise final DTO field order/fieldset must be frozen before issue. Seal/load errors use existing owned_<category> envelope; output errors remain response_output_io. Partial-file and postcommit inspection boundaries must be documented.
+Create_new each output, never replace existing files. Validate completely before output creation; for export preflight both explicit outputs, open each exclusively before writes, write/sync exact canonical bytes. No portable atomic-two-file or power-loss promise: any output open/write/flush/sync error may leave owned partial files; do not delete arbitrary paths or falsely roll back a completed file/import. Payload/seal/model files have NO added LF. Reports use the exact prospective fieldsets below; accepted S02 source reconciliation may change implementation wiring but must not leave output policy to the author. Seal/load errors use existing owned_<category> envelope; output errors remain response_output_io. Partial-file and postcommit inspection boundaries must be documented.
+
+### Exact prospective report and small base-history oracle
+
+All report versions are1; new enums serialize snake_case. Field lists below are Rust typed declaration order, NOT stdout key order. Public OwnedImportReport above is also the CLI import result (outcome exactly imported/already_present). Private CLI DTOs have deny_unknown_fields and these exact fieldsets:
+
+- Export: `{version,source,head,journal_schema,revision_count,output:NativePathReport,output_bytes:u64,output_sha256:String,seal:NativePathReport,seal_bytes:u64,seal_sha256:String}`.
+- Check: `{version,source,head,journal_schema,revision_count,snapshot_bytes:u64,snapshot_sha256:String,seal_bytes:u64,seal_sha256:String}`; no ROOT or output path invented.
+- Snapshot-model: `{version,source,revision,journal_schema,output:NativePathReport,output_bytes:u64,output_sha256:String}`; revision is requested or snapshot head, bytes/hash cover the exact extracted Dictionary file.
+
+SHA fields are lowercase64; counts fit u64, revision_count is ACTUAL complete commit count. Export/import snapshot hash is the canonical complete payload hash, not a final-model hash. Check hashes the actual verified payload/seal input files (seal may have accepted whitespace); export hashes exact canonical emitted files. NativePathReport uses existing encoding/hex/utf8 semantics; stdout maps retain existing sorted-key order plus exactly one LF, file bytes noLF. Assert whole fieldsets and values, not selected labels or report-derived expected hashes.
+
+A small schema1 golden reuses the accepted S01 public example inputs, preserved at `../slice01-owned-journal/artifacts/cdc-proof/journey/inputs/{seed,edit}.json`, rather than constructing an expected result from the new exporter. Source owned-example, editor editor-example, head owned-r1, journal_schema1, revision_count2, curationNone. Ordered revision IDs `[owned-r0,owned-r1]`; active assertions r0[] and r1[owned-assertion-a,owned-assertion-b], both tombstones[]. Exact whole base bytes/hashes are: r0 2003B/SHA178cb4a48245db47a568bb740f5ec123575aae38eb961c9ce05f40c7f0526c9a; r1 5555B/SHAe96d7fdee27a1cf84b152799b51c7b6e541aeae714396665fa98985f5c81d05f. These are retained INPUT bytes checked against accepted S01 output, not a new journal query. Current/old extraction must equal the respective whole inputs, not only these hashes.
+
+Freeze actual24 prefix roster lengths for this golden in §2 order: r0 `[1,1,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0]`; r1 `[1,1,0,0,0,1,2,1,0,1,1,2,1,2,0,0,0,0,0,2,0,0,0,0]`. owned_heads is a control field, not a25th append vector. This small literal does NOT replace the separate rich all24-populated/schema2/context fidelity fixtures. Expected full snapshot/seal bytes are independently constructed from these known typed input models, literal rosters and fixed schema/source/head before product export; no expected field comes from exported/candidate output. The schema2 literal with actual S02 pin/record/selection hashes remains explicitly pending accepted S02, as do exact example argv/readset and final source pins.
 
 One shipped public example and corresponding actual CLI journey should reuse the accepted S02 Tiny identities/context: create/edit/curate a multi-revision schema2 journal, export twice and compare exact pair bytes, pure load and inspect ALL old base/curation states, import fresh/replay, reject a valid unequal snapshot unchanged, and inspect old revisions. Separately cover schema1 fresh import/extraction without forced migration. Write a base dictionary via snapshot-model and build an explicit derived store; import+S02 exact-context materialization supplies the reviewed cross-source view for existing queries. Compare Full/Compact/Readable Exact/Local/Catalog/detail to pre-input IDs/whole bodies and curation provenance; no oracle selected from query output. No live managed all-pack workbench or Arc06 promise. Use files/stdin for any model-sized input; small existing query/key JSON interfaces remain unchanged.
 
@@ -164,3 +180,4 @@ Use the SAME guard/ONE target and explicit+1.98/locked/offline, owned HOME/XDG/T
 
 - 2026-10-29, 0.1: initial prospective policy/API and eight-row open set; root read the whole plan/ledger and accepted the bounded exact-history replay direction, with accepted S02 reconciliation still required.
 - 2026-10-29, 0.2: corrected current S02 phase to implementation active and fixed the public distinction between full validating bare JSON decoding and canonical-byte equality at sealed loading. No issue, intake, source assignment or accepted S02 claim.
+- 2026-10-29, 0.3: fixed prospective report fieldsets and a retained-input schema1 whole-history/prefix golden; schema2 actual accepted context/history oracle remains pending. Parent A05-03 stays partial until actual S03 curation reimport, preserving its original verifier.
