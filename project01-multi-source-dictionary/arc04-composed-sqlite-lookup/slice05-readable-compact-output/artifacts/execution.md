@@ -1132,3 +1132,8 @@ Root exactreadiness root-arc-final-readiness01.json received; exact13,809B draft
 ### Prospective fresh method TMPDIR correction —2026-10-28
 
 Before any fresh execution, reviewer/root found original readableCLI replaces outerenv with HOME/XDG/PATH/LANG and drops outerTMPDIR. Root authorized exact privatecopy envloop +TMPDIR, no original/product/oracle/argv change; active assignment prefix13807B preserved unchanged plus issuedaddendum, patch/JSON/candidate in existingreadinessmanifest. Original38closure remainsprovenance; newprivatehashf42e75d4 and separateTMPDIRmapping are required. Existing receipts still record3HOME/XDGfields. SameONEbuild/public/CLI/post/noextraqualifier/retry/sourcepass; postscriptalreadyisolated. AllrowsOPEN.
+
+
+### Fresh sole public invocation / optional observer failure disposition —2026-10-28
+
+ONEuniqueconsumerbuild completed. Solepublic invocation produced complete34assertionPASS+shared6/6+5/5/source-finalstatement, then UNREQUIREDtime-l wrapper epilogue failed clockrateEPERM. Wrapperexit1 remains; childexitUNOBSERVED/no cleanprocessPASS or RSS claim. CDC read WHOLErunner/publicstdout/stderr/receipt/source; rootdisposition preserved in existingreadiness. No publicreplay/build/qualifier; issuedappend permits only originalremainingCLI+post with exact private directrunner2expressiondelta, samebytes/timeouts/captures/ownedpaths/observed200MiB criterion. Fresh independentcombinedverdict remains pending/allrowsOPEN; no source/target operation byCDC.

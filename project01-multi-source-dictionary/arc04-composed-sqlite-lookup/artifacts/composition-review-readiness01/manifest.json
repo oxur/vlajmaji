@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "status": "ISSUED_WITH_ROOT_APPROVED_PRIVATE_TMPDIR_METHOD_AMENDMENT_NO_EXECUTION",
+  "status": "ISSUED_ORIGINAL_REMAINING_CLI_POST_AFTER_OPTIONAL_OBSERVER_FAILURE",
   "source": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
   "assignment_path": "../composition-review-assignment.md",
-  "assignment_bytes": 15464,
-  "assignment_sha256": "8f12978dbedb7541c1c87d35d5660bf98344776d83b4a0b1a5d93d81dea4ed31",
+  "assignment_bytes": 17583,
+  "assignment_sha256": "f34e1b9d2f02b4a069cea2d5041fd7e99e33a8c5d74939d8d9876bf9c308c6ef",
   "payloads": [
     {
       "path": "arc04-review-method-closure01.json",
@@ -61,12 +61,21 @@
       "bytes": 18279,
       "sha256": "f42e75d43bf663b76698a40e73b1fb8a084f02ac5cc04fd79a1982ac0a553844",
       "classification": "whole_original_copy"
+    },
+    {
+      "path": "root-review-wrapper-disposition01.json",
+      "original_path": "/tmp/vlajmaji-p01-a04-s05-cdc/root-review-wrapper-disposition01.json",
+      "bytes": 2937,
+      "sha256": "984f5eb69795f9befa500951a1f4aa8d419955d04965664316a3609a56b3a0fd",
+      "classification": "whole_original_copy"
     }
   ],
-  "payload_count": 8,
-  "payload_bytes": 51538,
+  "payload_count": 9,
+  "payload_bytes": 54475,
   "reviewed_assignment_bytes": 13809,
   "reviewed_assignment_sha256": "467d672505239c5682e779a9f14c5e29c841a66873183f48ca0bda268e1136c0",
   "issued_prefix_bytes": 13807,
-  "issued_prefix_sha256": "f6d5c29f357879133b55ed868b08cfbd9d72e486f08ce3e8d45e00bdc577b444"
+  "issued_prefix_sha256": "f6d5c29f357879133b55ed868b08cfbd9d72e486f08ce3e8d45e00bdc577b444",
+  "prior_issued_prefix_bytes": 15464,
+  "prior_issued_prefix_sha256": "8f12978dbedb7541c1c87d35d5660bf98344776d83b4a0b1a5d93d81dea4ed31"
 }
