@@ -1,0 +1,85 @@
+{
+  "status": "DELIVERED_READY_FOR_REVIEW",
+  "date": "2026-10-28",
+  "pr": "https://github.com/oxur/vlajmaji/pull/6",
+  "draft": false,
+  "base": "main",
+  "source": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+  "source_tree": "836df880ca711c6813cb78ae1202973e618eb105",
+  "canonical_proposal": "d5113e21a92804359c1258c1d604f839ac74d556",
+  "mechanical_close": "b6eff0d04515d4841e53687e1b895fcd418b47b6",
+  "close_provenance": "1606885f024fbdf0d7bbd9a7dba163df6313685d",
+  "canonical_verdict_sha256": "7bad92fca6b45e55d0e72a0ffaaa996dd520228cc0dedb365a83466774ac1aa1",
+  "root_mechanical_consistency": "PASS",
+  "child_done": 30,
+  "arc_done": 10,
+  "project_open": 14,
+  "checks": [
+    {
+      "link": "https://github.com/oxur/vlajmaji/actions/runs/40793813316/job/123185243676",
+      "name": "Check",
+      "state": "SUCCESS",
+      "workflow": "CI"
+    },
+    {
+      "link": "https://github.com/oxur/vlajmaji/actions/runs/40793813316/job/123185243810",
+      "name": "Test (ubuntu-latest)",
+      "state": "SUCCESS",
+      "workflow": "CI"
+    },
+    {
+      "link": "https://github.com/oxur/vlajmaji/actions/runs/40793813316/job/123185244043",
+      "name": "Test (macos-latest)",
+      "state": "SUCCESS",
+      "workflow": "CI"
+    },
+    {
+      "link": "https://github.com/oxur/vlajmaji/actions/runs/40793790640/job/123185169505",
+      "name": "Check",
+      "state": "SUCCESS",
+      "workflow": "CI"
+    },
+    {
+      "link": "https://github.com/oxur/vlajmaji/actions/runs/40793790640/job/123185169515",
+      "name": "Test (ubuntu-latest)",
+      "state": "SUCCESS",
+      "workflow": "CI"
+    },
+    {
+      "link": "https://github.com/oxur/vlajmaji/actions/runs/40793790640/job/123185169286",
+      "name": "Test (macos-latest)",
+      "state": "SUCCESS",
+      "workflow": "CI"
+    }
+  ],
+  "unchanged_remote_main": "32e99b4fb0bfdc24e66535952114b6497d6aabfa",
+  "unchanged_remote_s04": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+  "remote_body_sha256": "1f27a56e67b7b4b3fcda6eaa97f15b2c6adcda1e4771e9de2d57398ec0743740",
+  "no_new_runtime": true,
+  "arc05_unactivated": true,
+  "merge_or_publication": false,
+  "planning_push": false,
+  "payloads": [
+    {
+      "path": "pr-final-api01.json",
+      "bytes": 17574,
+      "sha256": "20c16c141de54b5658c6f4363706d411fc6a3ea3c33134211412cb9b728a95f6"
+    },
+    {
+      "path": "pr-final-checks01.json",
+      "bytes": 870,
+      "sha256": "4ce05b18386ca1a9249bde0305dba07db2a389da63310ca40e3ea8584a619eb6"
+    },
+    {
+      "path": "pr-final-remote-refs01.txt",
+      "bytes": 240,
+      "sha256": "ee121c52e2241027cd0c904cef12a41945617a493a654ca4f974385aebebeae5"
+    },
+    {
+      "path": "root-mechanical-close-review01.json",
+      "bytes": 597,
+      "sha256": "327f48fbfecd81592b8d57d2195772fa95f97c835d4f0fe855c782dd8e86aa08"
+    }
+  ],
+  "limits": "Original latency targets remain false under explicit maintainer acceptance; local fixture setup failure and sole unchanged-source retry retained; optional public time observer failed and child exit remains unobserved. No claim that all attempts passed."
+}
