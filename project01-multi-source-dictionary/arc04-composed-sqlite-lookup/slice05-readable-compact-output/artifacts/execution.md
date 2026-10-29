@@ -1081,3 +1081,9 @@ Sourcea72/index/target remainQUIET; freshreview BLOCKED, all6S05/fivearc/all14pr
 ### Root-reviewed iteration08 remains UNISSUED —2026-10-28
 
 Root WHOLE7041B/e143624b draft/source-onlyproposal03 readiness PASS; independently all9failedCIbundle originals625436B/exacthashes/originalbytes/noextras verified under unchanged manifestd7f5c2fc…a2f5. Preserved whole originals cc-prompt-iteration08-reviewed-draft01.md: 7041B SHAe143624bdf1e1f4af2c18fb033503c8a8d28826ff5e1d3cdcbc25b4abc7db183; root-ci-draft-readiness03.json: 1420B SHA00bb506549d5b382a0dd88ef3c080dfbe4371a320cb87e3c585129a587660b59. Human NINTHtest-onlypass reply stillPENDING, sourcecleana72/targetQUIET/all6OPEN. No issue/intake/ownershiptransfer/Cargo/runtime/freshreview/close; noautomatic10. This is source-only readiness, not execution authority.
+
+## 21. Explicit ninth TEST-ONLY pass / iteration08 issue —2026-10-28
+
+Human explicitly says “yes please! apply, validate, and push :-D (also, go ahead and open a PR for this)”. Exact authority artifacts/authority-s05-ninth-test-pass01.json; preceding exactquestion wording not supplied in root relay, not reconstructed. Root reviewedWHOLE7041B/e143624b/proposal03patch5147563d; activeprompt STATUS-LINEONLY issue, reviewedoriginal preserved. ONE existing dictionary_projection_contract.rs stdintransport pass, candidate9ffc49ed; noautomatic10/Full/newscope. Sourcea72clean/all6OPEN.
+
+CDC owns QUIET sequencing until retainedLuna/high boundedintake/source-readback+freshpins+explicitONEtestpath/index/ONEtarget transfer. Orderedfmt→lint→WHOLE18projection→makecheck; root exactcandidatepush/currentCI/PR, then freshNEW SolactualW1–W5/SAMEreviewercanonical/retro/bubbleup/close. PriorfailedCI/Full untouched; Arc05/merge/publication excluded.

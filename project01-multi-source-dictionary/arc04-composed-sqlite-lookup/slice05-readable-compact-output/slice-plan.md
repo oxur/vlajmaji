@@ -2,10 +2,10 @@
 
 | Field | Value |
 | --- | --- |
-| Status / version | Actuala72CI40789937233 FAILURE after Check/MacSUCCESS+Linuxoutput8/8; projection15/3setupE2BIG. HumanNINTHtest-onlytransport amendmentPENDING, freshARC/closeBLOCKED /1.29 /2026-10-28. All6OPEN. |
+| Status / version | Iteration08 ninthTESTONLY humanapproved/ISSUED, boundedintake/freshpins/ONEpathtransfer pending /1.30 /2026-10-28. PriorCI failures preserved; all6OPEN. |
 | Authority | Duncan's Autonomous THROUGH ARC04 ONLY, explicit next-slice continuation and separate S05 branch direction; Sol6.1/high CDC, retained Luna/high CC. Root reviews this concrete packet before issue. |
 | Source / dependency | CURRENT cleana72a742e7a44fe833a3db64d85988f3a0b5833ee/tree16aa871d/parent5bc/S05branch/base32e99. ONE-file directdelta, cumulative23; all131entriesoutside2tests byte-identical011. OldS04refs432 unchanged. |
-| Ownership | Source/index/ONEtarget QUIET; no edits/Cargo/runtime/Full/freshreview. Root preparesONEfileSQLstdin portabilityproposal, humanninthPENDING; CDC/CC report/evidenceonly. |
+| Ownership | CDC owns QUIETsource/index/ONEtarget sequencing; retainedLuna intake/freshpins/explicitONEtestpathtransfer BEFORE any edit/Cargo. Root/CC readonly. |
 | Delivery | Additive compact Exact/Resolve and complete occurrence detail, then source-grouped readable Exact/Resolve/detail. Full default JSON stays compatible. Public libraries, CLI, documentation and actual five-workflow composition accompany output, not verification alone. |
 | Sizing | Six completed author passes plus ONE explicitly human-approved seventh TEST-ONLY pass (iteration06), exactly two paths. No automatic eighth, Full replay or optimisation. |
 | Limits | No dependency/lock/schema/importer/model/workflow changes, topology redo, new Full store/generation, cleanup/cache reset, actual-default access, S04 branch writes, A05 activation, network/push/PR/merge/publication. Later finite retained-G4 trial needs exact executable root readiness. |
@@ -1019,3 +1019,9 @@ Retained Luna/high must complete the prompt's bounded applicable intake/source-c
 Human answered “yes please!” to root's exact six-line ONE-test-file correction/validate/push/CI question after seventh limit exhausted. Authority artifacts/authority-s05-eighth-test-pass01.json preserves exact question/answer. Root WHOLE5676B/f9c7916d draft readiness PASS; reviewed draft remains byte-exact, active prompt changes STATUS LINE ONLY. Exact source5bc/tree43a clean; no product/Full change, all6OPEN, noautomatic9.
 
 CDC owns QUIET source/index/ONEtarget sequencing until retained Luna/high applicable bounded intake/source-cited readback+freshpins+explicit ONE-path transfer. Only query_output_contract.rs six-line patch05c590fe permitted; actual main cumulative23 unchanged. Format→lint→affected suite→makecheck, root exactcandidate normalpush/currentCI, then fresh actual W1–W5/same-reviewer canonical/retro/bubbleup/close/PR remain. Previous failures preserved; no Arc05/merge/publish.
+
+## 21. Explicit ninth TEST-ONLY pass / iteration08 issue —2026-10-28
+
+Human explicitly says “yes please! apply, validate, and push :-D (also, go ahead and open a PR for this)”. Exact authority artifacts/authority-s05-ninth-test-pass01.json; preceding exactquestion wording not supplied in root relay, not reconstructed. Root reviewedWHOLE7041B/e143624b/proposal03patch5147563d; activeprompt STATUS-LINEONLY issue, reviewedoriginal preserved. ONE existing dictionary_projection_contract.rs stdintransport pass, candidate9ffc49ed; noautomatic10/Full/newscope. Sourcea72clean/all6OPEN.
+
+CDC owns QUIET sequencing until retainedLuna/high boundedintake/source-readback+freshpins+explicitONEtestpath/index/ONEtarget transfer. Orderedfmt→lint→WHOLE18projection→makecheck; root exactcandidatepush/currentCI/PR, then freshNEW SolactualW1–W5/SAMEreviewercanonical/retro/bubbleup/close. PriorfailedCI/Full untouched; Arc05/merge/publication excluded.
