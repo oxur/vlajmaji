@@ -51,6 +51,15 @@ requested state. This journal does not change the default store or collection
 catalogue. See the [owned dictionary guide](../../docs/owned-dictionary.md)
 and the `owned_journal` example.
 
+`OwnedCurationDocument` is the separate, validated sidecar for pinned external
+context and reviewed Link/Sense records. After explicit schema migration,
+`commit_curated` appends its complete history at the same expected base head;
+`OwnedJournalReader::curation_show` returns the retained document without
+resolving it. Its pure `materialize` operation consumes the supplied pinned
+Dictionary inputs and returns a distinct normalized view with visible
+unavailable/unresolved outcomes. See the `owned_curation` example for a
+self-generated Tiny input set and the [curation workflow](../../docs/owned-dictionary.md#reviewed-curation-and-explicit-context).
+
 ```rust,no_run
 use vlajmaji_lexicon::Dictionary;
 use vlajmaji_store::DictionaryStore;

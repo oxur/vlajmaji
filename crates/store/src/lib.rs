@@ -52,9 +52,9 @@ pub use dictionary_verification::{
     DictionaryStoreVerificationReport, DictionaryStoreVerificationResult,
 };
 pub use owned::{
-    OwnedCommitSummary, OwnedHeadReport, OwnedHistoryReport, OwnedJournal, OwnedJournalError,
-    OwnedJournalErrorCategory, OwnedJournalReader, OwnedRevisionView, OwnedWriteOperation,
-    OwnedWriteReport,
+    OwnedCommitSummary, OwnedCurationMigrationReport, OwnedHeadReport, OwnedHistoryReport,
+    OwnedJournal, OwnedJournalError, OwnedJournalErrorCategory, OwnedJournalReader,
+    OwnedMigrationOutcome, OwnedRevisionView, OwnedWriteOperation, OwnedWriteReport,
 };
 
 #[cfg(feature = "graph")]

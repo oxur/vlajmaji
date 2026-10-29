@@ -13,10 +13,10 @@ use vlajmaji_lexicon::{
     Dictionary, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION,
     JbotciImportError, JbotciImportOptions, LA_LOJBAN_PINNED_RAW_SHA256, LA_LOJBAN_PINNED_REVISION,
     LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256, LLG_NOTICE_SHA256, LLG_RAFSI_SHA256,
-    LaLojbanImportError, LaLojbanImportOptions, LlgImportError, LlgImportOptions, PackId,
-    PackPayloadKind, SUTYSISKU_PINNED_RAW_SHA256, SUTYSISKU_PINNED_REVISION, SutysiskuImportError,
-    SutysiskuImportOptions, import_jbotci_export, import_la_lojban_export, import_llg_lists,
-    import_sutysisku_export, seal_release,
+    LaLojbanImportError, LaLojbanImportOptions, LlgImportError, LlgImportOptions,
+    OwnedContextInput, OwnedCurationDocument, PackId, PackPayloadKind, SUTYSISKU_PINNED_RAW_SHA256,
+    SUTYSISKU_PINNED_REVISION, SutysiskuImportError, SutysiskuImportOptions, import_jbotci_export,
+    import_la_lojban_export, import_llg_lists, import_sutysisku_export, seal_release,
 };
 use vlajmaji_search::{
     CollectionCompactSearchEngine, CollectionQueryError, CollectionQueryErrorReport,
@@ -217,6 +217,36 @@ enum OwnedCommand {
         root: PathBuf,
         #[arg(long)]
         revision: Option<String>,
+    },
+    /// Explicitly migrate a schema-one journal to curation schema two.
+    MigrateCuration {
+        root: PathBuf,
+        #[arg(long)]
+        expected_head: String,
+    },
+    /// Append a strict complete curation document at the expected base head.
+    Curate {
+        root: PathBuf,
+        #[arg(long)]
+        expected_head: String,
+        #[arg(long)]
+        input: Option<PathBuf>,
+    },
+    /// Read and verify the complete curation document at the head or revision.
+    CurationShow {
+        root: PathBuf,
+        #[arg(long)]
+        revision: Option<String>,
+    },
+    /// Materialize an explicit curation view to a new output file.
+    Materialize {
+        root: PathBuf,
+        #[arg(long)]
+        revision: Option<String>,
+        #[arg(long = "context")]
+        contexts: Vec<PathBuf>,
+        #[arg(long)]
+        output: PathBuf,
     },
 }
 
@@ -658,6 +688,10 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
                 OwnedCommand::Head { root } => ("owned_head", root),
                 OwnedCommand::History { root } => ("owned_history", root),
                 OwnedCommand::Show { root, .. } => ("owned_show", root),
+                OwnedCommand::MigrateCuration { root, .. } => ("owned_migrate_curation", root),
+                OwnedCommand::Curate { root, .. } => ("owned_curate", root),
+                OwnedCommand::CurationShow { root, .. } => ("owned_curation_show", root),
+                OwnedCommand::Materialize { root, .. } => ("owned_materialize", root),
             };
             Some(context(
                 operation,
@@ -1131,6 +1165,103 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                 .map_err(owned_error)?;
                 serde_json::to_value(report)
                     .map_err(|error| structured_error("owned_response", error.to_string()))?
+            }
+            OwnedCommand::MigrateCuration {
+                root,
+                expected_head,
+            } => {
+                let expected_head = parse_owned_id(&expected_head)?;
+                let mut journal = OwnedJournal::open(&root).map_err(owned_error)?;
+                let report = journal
+                    .migrate_curation(&expected_head)
+                    .map_err(owned_error)?;
+                serde_json::to_value(report)
+                    .map_err(|error| structured_error("owned_response", error.to_string()))?
+            }
+            OwnedCommand::Curate {
+                root,
+                expected_head,
+                input,
+            } => {
+                let expected_head = parse_owned_id(&expected_head)?;
+                let bytes = read_owned_input(input)?;
+                let candidate = OwnedCurationDocument::from_json_bytes(&bytes)
+                    .map_err(|error| owned_error(OwnedJournalError::InvalidCuration(error)))?;
+                let mut journal = OwnedJournal::open(&root).map_err(owned_error)?;
+                let report = journal
+                    .commit_curated(&expected_head, &candidate)
+                    .map_err(owned_error)?;
+                serde_json::to_value(report)
+                    .map_err(|error| structured_error("owned_response", error.to_string()))?
+            }
+            OwnedCommand::CurationShow { root, revision } => {
+                let revision = revision.as_deref().map(parse_owned_id).transpose()?;
+                let reader = OwnedJournalReader::open(&root).map_err(owned_error)?;
+                let document = match revision {
+                    Some(revision) => reader.curation_show(&revision),
+                    None => reader.curation_show_head(),
+                }
+                .map_err(owned_error)?;
+                serde_json::to_value(document)
+                    .map_err(|error| structured_error("owned_response", error.to_string()))?
+            }
+            OwnedCommand::Materialize {
+                root,
+                revision,
+                contexts,
+                output,
+            } => {
+                let revision = revision.as_deref().map(parse_owned_id).transpose()?;
+                let mut inputs = Vec::with_capacity(contexts.len());
+                for path in contexts {
+                    let bytes = read_owned_input(Some(path))?;
+                    let input = OwnedContextInput::from_json_bytes(&bytes)
+                        .map_err(|error| owned_error(OwnedJournalError::InvalidCuration(error)))?;
+                    inputs.push(input);
+                }
+                let reader = OwnedJournalReader::open(&root).map_err(owned_error)?;
+                let document = match revision {
+                    Some(revision) => reader.curation_show(&revision),
+                    None => reader.curation_show_head(),
+                }
+                .map_err(owned_error)?;
+                let materialized = document
+                    .materialize(inputs)
+                    .map_err(|error| owned_error(OwnedJournalError::InvalidCuration(error)))?;
+                let bytes = materialized
+                    .dictionary
+                    .to_json_bytes()
+                    .map_err(|error| owned_error(OwnedJournalError::InvalidDictionary(error)))?;
+                let mut file = std::fs::OpenOptions::new()
+                    .write(true)
+                    .create_new(true)
+                    .open(&output)
+                    .map_err(|error| {
+                        owned_error(OwnedJournalError::Io(io::Error::new(
+                            error.kind(),
+                            format!("create {}: {error}", output.display()),
+                        )))
+                    })?;
+                file.write_all(&bytes).map_err(|error| {
+                    owned_error(OwnedJournalError::Io(io::Error::new(
+                        error.kind(),
+                        format!("write {}: {error}", output.display()),
+                    )))
+                })?;
+                file.flush().map_err(|error| {
+                    owned_error(OwnedJournalError::Io(io::Error::new(
+                        error.kind(),
+                        format!("flush {}: {error}", output.display()),
+                    )))
+                })?;
+                serde_json::json!({
+                    "version": 1,
+                    "source": materialized.source,
+                    "revision": materialized.revision,
+                    "output": vlajmaji_store::native_path_report(&output),
+                    "output_sha256": sha256(&bytes),
+                    "resolutions": materialized.resolutions,
+                })
             }
         },
         Command::Verify { check, store } => {
