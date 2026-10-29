@@ -6,7 +6,7 @@
 | Authority | directive04 THROUGH ARC05 ONLY; retained Sol6.1/high CDC and Luna/high CC; five S04 passes including initial, no automatic sixth |
 | Known source | Accepted S01 1b899ebb/tree745f; final accepted S02/S03 source and exact snapshot APIs must replace this placeholder before issue |
 | Useful result | Caller-selected owned history can be embedded and strictly loaded by an offline consumer whose direct dependency graph excludes store/search/SQLite; the existing CLI prepares the exact local pair |
-| Version / date | 0.1 / 2026-10-29 |
+| Version / date | 0.2 / 2026-10-29; prospective existing-CI feature compatibility reconciled, accepted S03/exact allowlist/readset still pending |
 
 ## 1. Source-grounded package boundary
 
@@ -53,10 +53,32 @@ Continue the accepted existing CLI workflow from the same synthetic owned input:
 - Default/no-default and affected individual data-owned plus combined existing-four/data-owned/morphology/graph features retain existing contracts. All embedded/combined checks run ONLY in the reviewed disjoint Synthetic archive, with accepted upstream fixture commands jbotci/llg/la-lojban/sutysisku and owned export. Assert physical cwd equals the archive immediately BEFORE every Cargo exec and pass that workdir. Record actual source/archive equality for changed source/manifests; no source ignored-data probes.
 - Existing PackId/All remains four, and owned export/load does not alter registrations/config/defaults. No copying/redistributing foreign context data by implication.
 
-Exact source allowlist and required-reading manifest wait accepted S03. Expected homes: new data-owned manifest/README/lib/test, umbrella manifest/lib/README, lock, .gitignore, root README/owned guide and existing public workflow example/test only if actual integration needs it. No normalized model/PackId/pack merge/provider/upstream loader/SQL/search changes. Use an exact finite list before issue, not open-ended directories. No productsource assignment or build follows this draft.
+### Existing CI feature preparation compatibility
+
+Actual .github/workflows/ci.yml Test job prepares exactly four upstream synthetic packs, then runs `cargo test --workspace --all-features --locked` on Linux. The new embedded owned feature cannot compile in that clean job without its own pair. Include EXACT `.github/workflows/ci.yml` in the later S04 source allowlist for ONE synthetic owned-preparation step immediately before the unchanged all-features test; no trigger/job/backend/four-pack fixture or hosted-delivery change. Directive04 permits this local compatibility edit, while external CI dispatch/delivery remains unauthorized.
+
+Freeze this step against accepted S03 signatures before issue (the current source-guided prospective recipe is):
+
+```yaml
+      - name: Prepare synthetic owned snapshot for all-feature tests
+        if: runner.os == 'Linux'
+        run: |
+          owned_tmp=$(mktemp -d "${RUNNER_TEMP}/vlajmaji-owned-XXXXXX")
+          cargo run --locked --offline -p vlajmaji-store --example owned_curation -- "$owned_tmp/inputs" "$owned_tmp/journal" "$owned_tmp/materialized.json"
+          mkdir -p crates/data-owned/data
+          cargo run --locked --offline -p vlajmaji-cli -- owned export "$owned_tmp/journal" --output crates/data-owned/data/snapshot.json --seal crates/data-owned/data/seal.json
+```
+
+The example performs only its explicit synthetic normalization/journal/curation work; export creates the distinct pair exclusively. The external context remains a pin rather than an embedded foreign corpus. Existing output files must fail create_new rather than be overwritten. Preserve the existing four PackId/All fixture routes and all-features command. Reproduce this SAME command body locally once in the asserted disjoint Synthetic archive, with the same owned environment/target/guard and physical-cwd assertion before Cargo; no hosted action/network/default/retained-data probe follows this draft. This is original feature compatibility, not a new qualifier campaign or a change to S02's fourteen-path transfer.
+
+Exact source allowlist and required-reading manifest wait accepted S03. Expected homes: new data-owned manifest/README/lib/test, umbrella manifest/lib/README, lock, .gitignore, root README/owned guide, the exact existing CI workflow preparation step above and existing public workflow example/test only if actual integration needs it. No normalized model/PackId/pack merge/provider/upstream loader/SQL/search changes. Use an exact finite list before issue, not open-ended directories. No productsource assignment or build follows this draft.
 
 ## 5. Gates and arc endpoint
 
 Scoped stdin rustfmt→named copyback→fmt-check→lint, focused new/affected proof and one outside consumer, actual CLI example, required Make/no-default, disjoint Synthetic feature checks and affected package FILE lists. Pin existing CARGO_HOME/RUSTUP_HOME/PATH before owned HOME/XDG/TMPDIR and use unchanged Arc05 guard/ONE retained target/+1.98.0/offline. New fixtures use exclusive creation; no target reset/download/new cache. Preserve actual failed attempts and applicability. No benchmark/Full/default/network/push/PR/publication or automatic sixth pass.
 
 CDC independently reviews actual candidate and reproduces the affected public+CLI increment before child close. Arc05 then needs a fresh independent Sol/high context to execute the composed init/edit/conflict/curation/export/import/optional-load/explicit-query workflow, followed by SAME-context canonical review, root consistency and mechanical closure/retrospectives/project bubble-up. All fourteen project rows remain OPEN; Arc06 unactivated. This draft contains no success record or advance acceptance.
+
+### Version0.2 — existing all-features preparation,2026-10-29
+
+Root source review identified the clean CI embedded-input prerequisite before issue. The exact workflow path and one offline synthetic owned-preparation step are now prospective S04 scope; no blanket workflow exclusion applies to this compatibility step. No source/workflow edit, Cargo/hosted run or intake occurred. All eight original binding rows remain OPEN; accepted S03/signatures/allowlist/literal consumer and lock procedure remain pending.

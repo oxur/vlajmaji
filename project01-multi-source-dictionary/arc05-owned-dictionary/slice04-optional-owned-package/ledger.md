@@ -12,3 +12,7 @@
 | S04-06 | Required local/feature/native compatibility remains valid using disjoint Synthetic materialization and one retained target. | Scoped format/lint/focused/Make/no-default/individual+combined graph checks with physical archive cwd assertion and exact source equality; preserve failures. | CC / CDC independent | open | DRAFT plan§§4–5 |
 | S04-07 | Caller can run the public and CLI owned workflow without reverse-engineering tests or invoking Arc06 live integration. | Real shipped recipe and finite outside consumer/CLI workflow with direct exits/explicit roots/whole input-derived results. | CC / CDC independent | open | DRAFT plan§3 |
 | S04-08 | Assignment/intake, independent disposition, retrospective and higher Arc05 technical/canonical gates precede close. | Actual author report/CDC reproduction, row walk and fresh assembled/SAME canonical/root checks; no prewritten success. | CDC / root | open | Not started |
+
+## Prospective compatibility note —2026-10-29
+
+Plan§4 now permits exactly one offline synthetic owned-pair preparation step in the existing `.github/workflows/ci.yml` before its all-features test; the current four-pack recipe would otherwise lack the new embedded input. Same recipe must be proven locally in the asserted disjoint archive. No hosted delivery or current S02 source-scope expansion follows. All eight binding criteria/verifiers/owners/statuses above are unchanged OPEN.
