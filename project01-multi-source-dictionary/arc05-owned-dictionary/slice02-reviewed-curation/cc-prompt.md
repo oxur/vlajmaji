@@ -1,6 +1,6 @@
 # CC assignment — Arc05 S02 reviewed curation
 
-STATUS: DRAFT — UNISSUED; accepted S01 pinned below; root exact DRAFT readiness pending.
+STATUS: ISSUED — COMPLETE INTAKE ONLY after root28821fea readiness; source/index/target transfer NOT YET effective.
 
 ## Useful result and authority
 

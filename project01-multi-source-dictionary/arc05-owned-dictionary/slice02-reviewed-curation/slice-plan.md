@@ -2,11 +2,11 @@
 
 | Field | Value |
 | --- | --- |
-| Status | SOURCE-GUIDED DRAFT; UNISSUED. Accepted S01 pinned below; root exact readiness pending; not a second concurrent implementation |
+| Status | ISSUED for COMPLETE INTAKE ONLY after root exact readiness at28821fea; no source/index/target transfer yet |
 | Authority | Arc05/directive04 only, same retained CDC Sol6.1/high and CC Luna/high; five total passes for this later slice |
 | Baseline | Accepted S01 1b899ebb492d89ceb1561abb0befb17ff3ccc5a1/tree745f789e3ddef62a2c2977c95a1d76f6f12382db, parenta55; owned APIs/schema1 locally verified; normalized model1 unchanged |
 | Useful result | Persist reviewed own-source links/senses, inspect missing context truthfully, and materialize exact supplied Tiny context into existing validated Dictionary/reference queries |
-| Version / date | 0.2 / 2026-10-28; accepted dependency reconciled; root DRAFT readiness pending |
+| Version / date | 0.3 / 2026-10-28; status/readiness metadata only; substantive reviewed contract unchanged |
 
 ## 1. Boundary and source findings
 
@@ -198,3 +198,7 @@ ROOT EXACT DRAFT READINESS PENDING ONLY: accepted S01 1b899ebb/tree745f, APIs/sc
 ## Version0.2 dependency reconciliation —2026-10-28
 
 S01 is locally accepted at1b899ebb/tree745f with exact original controls and explicit limitations in its verifier. Schema1 remains current; its version negative changes pragma user_version2 while owned_meta remains1, so genuine matching schema2 after explicit migration does not require rewriting that S01 inconsistent-header test. Keep its UnsupportedVersion behavior/category. Exact fourteen source paths/readset are reconciled. Report transport follows existing Json(Value) sorted keys/singleLF; output FILE remains typed canonical Dictionary bytes/noLF/exactSHA. Existing compose-view dedup policy remains fixed. S02 still UNISSUED; no source/index/target transfer or acceptance claims.
+
+## Version0.3 — exact readiness and intake-only issue,2026-10-28
+
+Root read whole current bodies and complete F01–F03 delta and granted final readiness at planning28821fea/tree8aa8d531: plan30171B/918a47a1…, prompt13993B/0ff4c0bb…, ledger4382B/aa2d5736…. Eight original rows remainOPEN. The prompt issue changes ONLY its STATUS line, inverse-byte-exact to that reviewed draft. Accepted source1b899ebb/tree745f, lock65cd/guard426d are unchanged. Retained Luna/high CC receives complete required intake ONLY; source/index/ONEtarget stay QUIET until CDC accepts actual coverage/source-cited readback and fresh pins then explicitly transfers the14paths. No implementation, runtime or external authority merely from issue.

@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | S01 CLOSED locally; A05-01/02 DONE and6arc rows OPEN. S02 reconciled DRAFT/UNISSUED pending root readiness |
+| Status | S01 CLOSED locally; A05-01/02 DONE and6arc rows OPEN. S02 ISSUED complete intake only; source transfer pending |
 | Authority | [directive04](../cdc-directive04.md), Duncan “merged! Let's continue :-D”; THROUGH ARC05 ONLY |
 | Roles | Retained CDC Sol6.1/high; retained CC Luna/high; fresh independent Sol6.1/high assembled review and SAME-context canonical gate at close |
 | Source | `codex/project01-owned-dictionary`, accepted S01 `1b899ebb492d89ceb1561abb0befb17ff3ccc5a1`, tree `745f789e3ddef62a2c2977c95a1d76f6f12382db`; original merged baseline a55 retained |
@@ -46,7 +46,7 @@ At arc close a fresh independent context actually exercises init→edit→stale 
 
 ## Current readiness
 
-S01 is locally CLOSED at1b899ebb/tree745f after full CDC source review, independent15store+3CLI and one12-child public/CLI proof. All7child and A05-01/02 DONE; remaining6arc/all14project OPEN. [S01 verification](slice01-owned-journal/cdc-verification.md) preserves source/gate applicability, Mac/Linux and rollback boundaries, original failed methods and unknown incidental include-bytes input I/O. S02 plan/prompt/ledger now bind actual accepted S01 and are ready for root exact DRAFT review; they remain UNISSUED. No source/index/target operation until readiness/intake/explicit transfer. No higher-scale acceptance or external authority.
+S01 is locally CLOSED at1b899ebb/tree745f after full CDC source review, independent15store+3CLI and one12-child public/CLI proof. All7child and A05-01/02 DONE; remaining6arc/all14project OPEN. [S01 verification](slice01-owned-journal/cdc-verification.md) preserves source/gate applicability, Mac/Linux and rollback boundaries, original failed methods and unknown incidental include-bytes input I/O. S02 plan/prompt/ledger bind accepted S01 and passed root exact readiness at28821fea; the prompt is ISSUED status-only for complete intake. Actual readback acceptance/fresh pins/explicit14path transfer remain pending. No source/index/target operation until readiness/intake/explicit transfer. No higher-scale acceptance or external authority.
 
 ### Historical draft readiness — version0.1
 

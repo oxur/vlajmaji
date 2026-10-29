@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01–04 CLOSED. Arc05 S01 locally CLOSED at1b899ebb/tree745f;2arc DONE/6OPEN, all14project OPEN. S02 reconciled DRAFT/UNISSUED pending root readiness. Source/target QUIET; Arc06 unactivated. |
+| status | project OPEN; Arc01–04 CLOSED. Arc05 S01 locally CLOSED at1b899ebb/tree745f;2arc DONE/6OPEN, all14project OPEN. S02 ISSUED for complete intake only after root28821fea readiness; source transfer pending. Source/target QUIET; Arc06 unactivated. |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |

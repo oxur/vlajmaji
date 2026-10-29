@@ -1,6 +1,6 @@
 # Arc05 ledger
 
-**Current, 2026-10-28:** S01 CLOSED locally at1b899ebb/tree745f after independent source/public/CLI proof; A05-01/02 DONE, remaining6arc/all14project OPEN. S02 is reconciled UNISSUED draft awaiting root exact readiness. Source/index/ONEtarget QUIET; Arc06 unactivated. See S01 cdc-verification/retrospective and original raw failures, including unknown incidental input I/O in aborted source-cwd build.
+**Current, 2026-10-28:** S01 CLOSED locally at1b899ebb/tree745f after independent source/public/CLI proof; A05-01/02 DONE, remaining6arc/all14project OPEN. S02 is ISSUED for complete intake only after root28821fea readiness; accepted readback/fresh pins/explicit transfer still pending. Source/index/ONEtarget QUIET; Arc06 unactivated. See S01 cdc-verification/retrospective and original raw failures, including unknown incidental input I/O in aborted source-cwd build.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |
