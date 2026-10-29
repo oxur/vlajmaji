@@ -6,6 +6,16 @@ slice's artifacts; recording an item does not authorize implementation or change
 active acceptance criteria. BL-0001 records the S05 metadata byte-comparison
 candidate; the diagnostic originals remain preserved in place.
 
+## Current Arc05 authority and ownership — 2026-10-28
+
+Duncan reports PR6 merged and says “merged! Let's continue :-D”. [directive04](project01-multi-source-dictionary/cdc-directive04.md) governs Autonomous execution THROUGH ARC05 ONLY, with retained Sol6.1/high CDC and Luna/high CC. Arc01–04 remain CLOSED; all fourteen project rows OPEN; Arc06 unactivated. PR6 actually merged as a55e1cc7/tree836, equal accepted9026; merged-main CI40806671887 SUCCESS is baseline evidence only.
+
+The new [Arc05 plan](project01-multi-source-dictionary/arc05-owned-dictionary/arc-plan.md) and S01 journal open set are DRAFT/UNISSUED. CDC owns planning mutation only. Root owns QUIET source/index/ONE retained target; no CC dispatch/edit/build until exact root draft readiness, bounded intake and explicit transfer. Reuse physical `.worktrees/project01-arc04/vlajmaji` on NEW `codex/project01-owned-dictionary` from a55; old Arc04 branch9026 remains protected. Reuse the A01 target via `/tmp/vlajmaji-p01-a05-cargo`, no new cache/worktree. No default/retained Full access, network/push/PR/publication or BL-0001 optimisation. Existing broader project ownership/rights gates remain.
+
+## Historical Arc04 checkpoint archive
+
+The dated checkpoints below retain their original wording and evidence cutoffs. Their “Current” labels and stop-before-Arc05 authority refer to their recorded time and are superseded by directive04/current Arc05 header; no historical criteria, attempt or verdict is rewritten.
+
 **Current timing disposition:** Duncan accepts the reported current timings at
 source011af09a, including the 1.206865292-second Local lookup. The
 [slice ledger](project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice05-readable-compact-output/ledger.md#operator-disposition-current-timings-accepted)
@@ -115,6 +125,8 @@ remain in force. No new source pass, Full campaign or push is issued here.
 
 **Historical S01 prerequisite hold (superseded by actual clearance above):** protocol 1.5 records Duncan's explicit approval of seven TOTAL stores (retained historical two plus clean fresh five). Count gate cleared; Full create/query/timing remains held until CDC reviews the complete harness, controls, current gates and frozen config/source/binary/argv. Same seven hours/12 GiB/600 seconds/three rounds; no reset, bespoke resume or extra old-store Full validation.
 **Historical planning-only authority (2026-10-25, superseded by the renewal below):** Duncan authorized records/plan updates; implementation, investigation and installation are NOT issued. Arc01–03 remain accepted/immutable; all14projectrowsOPEN, A05/A06 unactivated. See `project01-multi-source-dictionary/arc04-composed-sqlite-lookup/arc-plan.md`. Root reviews the candidate before the scoped planning commit. No CC/source/target/store/network runs or new branch/worktree.
+
+## Standing planning rules
 
 Planning artifacts live on orphan branch `planning`, worktree
 `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning`, under
@@ -308,3 +320,7 @@ No extra2edit/build yet. Fourfilecache+Fullwork maycontinue (subsetunit1/existin
 Root FINALextra2 readiness PASS: WHOLEdraft13931B0ad306e9+sole284B latecaptureclarification+WHOLE§17.6 read; canonical49649B88e14965 exact35432Bb8e83216prefix+2LF+14215Bc483f38d, authority1180B3ccf exactverbatimquestion/answer/itemid, bothheldsourcebodies exact1b83489B7e8dce32/42089B09025526 verified. Wholeamendedrevieweddraft byte-preserved artifacts/cc-prompt-iteration05-with-compact-reviewed-draft01.md; activeprompt ONLYlastaddendumSTATUSline changes. No priorissuedprefix/body/immutablefailurechanged.
 
 OriginalFOURpath CCownership/work continues. ExtraCompactkernel andRawprojection TWOpaths NOTyettransferred: retainedCC must loadWHOLEnewaddendum+§17.6/currentfields/sourcecriticalbodies+borroweduniqueindexcontract and return conciseFIRST/UNIQUE/ANY/errorphase readback. After CDCacceptance/freshheldpins+lockguardrefscheck, explicitTWOfileextension joins SAMEactivepass6/sharedindexONEtarget. No new rootcycle absentactualmismatch; no seventh/retry/push/newFulllaunch from issue. All6OPEN/laterexactnumericalfreeze/currentLinux/freshARC/closepending.
+
+## Arc05 planning activation — 2026-10-28
+
+Directive04 and concrete four-increment Arc05/S01 DRAFT open set prepared locally at merged a55/tree836. No source or target operation; all new rows OPEN, all fourteen project binding rows unchanged OPEN. Root exact readiness precedes issue/CC ownership; stop before Arc06. Historical Arc04 closure/delivery/evidence remains unchanged.

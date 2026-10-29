@@ -1,5 +1,9 @@
 # Project01 ledger
 
+**Current Arc05 planning checkpoint, 2026-10-28:** Arc01–04 CLOSED; PR6 actually merged a55/tree836, merged-main CI40806671887 SUCCESS (baseline only). Directive04 activates THROUGH ARC05 ONLY; four-increment and S01 journal DRAFT open set, root readiness before issue. All14 binding project rows remain unchanged OPEN; Arc06/finalOperator/content gates retained. Source/index/ONE target ROOT QUIET; CDC planning only.
+
+**Historical Arc04 final checkpoint (reviewed cutoff):**
+
 **Current partial checkpoint,2026-10-28:** Arc04 CLOSED at source9026/tree836 after actualtechnical+SAMEcanonical+rootconsistency;30child/10arcDONE. All14projectrows remainOPEN, A05/A06unactivated/finalOperator/contentgates retained. PR6 DRAFT with bothcurrentCI SUCCESS; no wholeproject/merge/publication acceptance.
 
 **Historical reviewed proposal checkpoint:** **Current partial checkpoint,2026-10-28:** A04 allfiveincrements/freshactualW1–W5 technicalACCEPTED at9026/currentCIgreen. S01–S04/24child/priorfivearcDONE; final6S05/fivearc statuses remainOPEN pending SAMEcanonical/root mechanicalclose. All14projectrowsOPEN/A05–A06unactivated. TimingtargetsFALSE21groups63 explicitlyaccepted; no wholeproject/merge/publication acceptance.
@@ -84,3 +88,7 @@ S03 verifier atdcdf216 contributes configured/default pack versus source policy,
 ## Arc04 canonical/mechanical partial close —2026-10-28
 
 SAMEfreshcanonicalACCEPTED at arc04-composed-sqlite-lookup/artifacts/composition-review/final-canonical-review.md plus rootconsistency completes A04only. All14projecttablecells includingstatus/evidence retain exactreviewedproposal values; their canonicalpending language describes that earlierproposal cutoff, now superseded by this datedclose. AllprojectstatusesOPEN/A05–A06unactivated/finalOperator unchanged.
+
+## Arc05 activation/planning contribution — 2026-10-28
+
+Directive04 and arc05-owned-dictionary/{arc-plan.md,ledger.md} plus slice01-owned-journal/{slice-plan.md,ledger.md,cc-prompt.md} now own complete typed edits/revisions/history, local/external-context curation, sealed export/reimport/explicit querying and optional owned data. This is planning, not runtime evidence or a new partial implementation acceptance. All fourteen existing table rows (including evidence/notes) are byte-preserved OPEN; S01 and all new arc rows OPEN. S02 exact adapter remains later preissue design work; Arc06 final integration/Operator/rights owners unchanged. Historical Arc04 canonical/delivery evidence remains intact.

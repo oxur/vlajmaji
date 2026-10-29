@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01–04 CLOSED. Arc04 all5children/30childrows and10arcrowsDONE at9026 after freshtechnical+SAMEcanonical/rootconsistency. All14projectrowsOPEN/A05–A06unactivated; PR6DRAFT/currentbothCI SUCCESS. |
+| status | project OPEN; Arc01–04 CLOSED and PR6 actually merged a55/tree836. Arc05 authorized THROUGH ARC05 ONLY; four-increment/S01 DRAFT proposal, no source issue. All14 project rows OPEN; Arc06 unactivated. |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.29 / 2026-10-28 |
+| version / date | 1.30 / 2026-10-28 |
 
 ## Purpose and first useful result
 
@@ -26,13 +26,13 @@ and explicit availability. Subsequent arcs make it work with full, independently
 selectable corpora and an editable dictionary of our own.
 
 The design and remaining decisions are in [design.md](design.md). Acceptance is in
-[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is CLOSED after both accepted children and separate fresh technical/finalcanonical review. Arc03 all4children and fresh assembled technical composition are accepted at7b1c565; actual canonical packet is independently accepted at proposal a5226ee. A04 is now authorized/active under the current checkpoint below; A05/A06 remain unactivated.
+[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is CLOSED after both accepted children and separate fresh technical/finalcanonical review. Arc03 all4children and fresh assembled technical composition are accepted at7b1c565; actual canonical packet is independently accepted at proposal a5226ee. Arc04 is CLOSED and merged; directive04 now authorizes Arc05 only. Its concrete draft open set is linked below; Arc06 remains unactivated.
 
 ## Decisions already made
 
 - SQLite is the relational storage direction. Keep the canonical raw/normalized
   source material and make indexes rebuildable. Accepted A04 S01 selects Unified
-  for the scoped own-state/full-typed comparison; A05 owned writable topology remains reserved.
+  for the scoped own-state/full-typed comparison; Arc05 now selects a separate authoritative owned SQLite journal with persisted-head transactional CAS (draft details below).
 - Preserve each source assertion and occurrence. Default dictionary display groups
   definitions by named source and a stable abbreviation; it selects no winner.
 - Separate authors, asserting dictionaries, upstream lineage, distributors,
@@ -109,8 +109,8 @@ define execution order. Later arcs are roadmap entries, not issued assignments.
 | [01 — Dictionary foundation](arc01-dictionary-foundation/arc-plan.md) | Registered sources, broad versioned metadata/schema and grouped exact lookup over fixtures; existing lexicon/store/search crates and user documentation. | Current PoC, pinned research and explicit source roles. | Four scope-preserving slices after S01 sizing; current detail in arc plan. |
 | [02 — Reproducible full jbotci import](arc02-reproducible-jbotci-import/arc-plan.md) (CLOSED at4e37016) | Explicit acquire/replay/check/update path imports the pinned raw export with every alternative, original bytes and reconciled diagnostics; importer API plus Bash/Make entrypoints and normalized release. | Accepted A01 schema/identity/query contracts. | Two useful slices: lossless Rust/CLI normalization, then pinned pipeline/full persistence composition. |
 | [03 — Independent corpus packages](arc03-independent-corpus-packages/arc-plan.md) (CLOSED at7b1c565; final canonical accepted) | Dedicated opt-in packages/features for jbotci/Lensisku, LLG components, La-Lojban and Sutysisku, usable individually and together without build/load network access. | A01 contracts and A02 full import; pinned source/component inputs. | Plan per collection; split packaging work rather than omit a collection. |
-| [04 — Composed SQLite lookup](arc04-composed-sqlite-lookup/arc-plan.md) (CLOSED at9026 after technical+canonical acceptance) | Fair unified/ATTACH/fanout decision and selected integration **plus** local selected/all4 install, catalogue/list/inspect, configured/default one-command exact/ref, lifecycle/recovery and readable/compact/full-detail output. | Accepted A01–03 contracts and exact four Full packs; exact inquiry/effort/numeric approval and concrete S01 provider design recorded. | Five useful increments; S01 accepted at source4b4158c, selecting Unified for the frozen workload. S02 local selected/all provisioning/catalogue CLOSED atce1bd238 with current Linux/macOS CI and canonical acceptance. S03 configured/default lookup CLOSED at dcdf216 with independent and current Linux/macOS proof; S04 lifecycle CLOSED at432/currentCI40515705170/rootcanonicalPASS with independent finiteFull proof; S05 compact/readable/reference/complete detail and fresh actual W1–W5 are technically ACCEPTED at9026/currentCIgreen; canonicalclose remains. Explicit current latency exception retains original failed targets21groups63; BL-0001 optional, not newarc. |
-| 05 — Owned dictionary | First-class editable source, revision/history and explicit editorial relationships, immutable export/reimport and its own optional data crate. | A01 model plus accepted A04 composition. | Model is reserved in A01; production editing belongs here. |
+| [04 — Composed SQLite lookup](arc04-composed-sqlite-lookup/arc-plan.md) (CLOSED at9026 after technical+canonical acceptance) | Fair unified/ATTACH/fanout decision and selected integration **plus** local selected/all4 install, catalogue/list/inspect, configured/default one-command exact/ref, lifecycle/recovery and readable/compact/full-detail output. | Accepted A01–03 contracts and exact four Full packs; exact inquiry/effort/numeric approval and concrete S01 provider design recorded. | Five useful increments; S01 accepted at source4b4158c, selecting Unified for the frozen workload. S02 local selected/all provisioning/catalogue CLOSED atce1bd238 with current Linux/macOS CI and canonical acceptance. S03 configured/default lookup CLOSED at dcdf216 with independent and current Linux/macOS proof; S04 lifecycle CLOSED at432/currentCI40515705170/rootcanonicalPASS with independent finiteFull proof; S05 compact/readable/reference/complete detail and fresh actual W1–W5 are technically ACCEPTED at9026/currentCIgreen; canonical close and root consistency completed. Explicit current latency exception retains original failed targets21groups63; BL-0001 optional, not newarc. |
+| [05 — Owned dictionary](arc05-owned-dictionary/arc-plan.md) | First-class authoritative owned journal with complete typed revisions/history, reviewed local/external-context curation, sealed export/reimport and optional owned package; useful Rust+CLI at each increment. | Accepted A01 model and merged A04 a55/tree836; no new Full corpus. | ACTIVE authority / DRAFT planning: four increments; S01 init/edit/head/history/show complete draft, root readiness before issue. S02 exact context adapter remains later readiness work; scope already owned. |
 | 06 — Integrated dictionary workbench | Rust/CLI source selection and grouped output across all packs and owned revisions; old query-family regression, removal/reload, paging, documentation and clean offline replay compose end to end. | Accepted predecessors. | Final integration adds remaining behavior; it must not postpone A01's usable lookup. |
 
 Every implementation slice includes its relevant API/CLI entrypoint, documentation,
@@ -143,7 +143,7 @@ open. This plan neither completes them nor restarts the parked phonology arc.
 | Full raw jbotci shape, observed counts, unknown/wiki-row eligibility | Resolved A02at4e37016:33526raw/278254fields/33516eligible/31248spellings; every row retained,9blank+1wiki explicitly excluded. Supplier counts reconciled separately; independent finalcanonicalpacket accepted5456b54. |
 | Corpus component boundaries, common pack API and feature host | Resolved A03: common seal1/strict load/consuming composition,4unpublished optional embedded crates and umbrella features, exact component/provenance/held terms. All4children and fresh technical assembly accepted7b1c565; final packet accepted. |
 | Unified SQLite / ATTACH / fanout, ranking policy and query consistency | Resolved A04 S01 at4b4158c: Unified derived SQLite selected after correctness and three balanced rounds over the approved own-state/full-typed workload. S02/S03 integrate that scoped choice; no general ranking claim or merging local FTS top-k as if ranks were global. |
-| Owned editor conflict/revision semantics | A05 before production editing; preserve prior assertion references. |
+| Owned editor conflict/revision semantics | Arc05 draft chooses authoritative separate journal, full typed append preservation, persisted-head CAS and one same-source revision per edit. S01 exact draft readiness before issue; external curation adapter details before S02 issue. |
 | Public redistribution for each release | Source/release-specific evidence and notices; public publication held until resolved. Current code remains Apache-2.0. |
 | New service/interchange implementation, UI or artistic extension | Outside current scope; a later explicit decision. |
 
@@ -409,3 +409,11 @@ Arc04 exposed practical metadata lookup cost; Duncan explicitly accepts observed
 ## Version1.29 — Arc04 actual canonical/mechanical close,2026-10-28
 
 SAMEfreshcanonical ACCEPTED exact proposald5113e21 and rootconsistency complete Arc04only at source9026/tree836: all5children/30childrows and10arcDONE. Prior1.28body/history/partialclaims preserved at their reviewedcutoff; roadmapstatusnowCLOSED. All14projectbindingrows/evidence/status remainOPEN asreviewed, A05ownedediting/export/A06broaderintegration/finalOperator remain unactivated/owned, contentholds unchanged. PR6DRAFT with bothcurrentCI SUCCESS, rootmarksready separately; no merge/publication/nextarc authorization. Actualmechanicalclosehash recorded in Arc04/S05 execution metadata.
+
+## Version1.30 — Arc05 activation proposal, 2026-10-28
+
+Duncan reports merged PR6 and instructs “merged! Let's continue :-D”. Directive04 authorizes Autonomous work through Arc05 ONLY, same retained Sol6.1/high CDC and Luna/high CC. Arc04 merged a55e1cc7/tree836 equals accepted9026; actual merged-main CI40806671887 SUCCESS is inherited baseline evidence, not Arc05 validation. Earlier unactivated-A05/PR6-DRAFT statements retain their historical cutoffs.
+
+Arc05 now has a concrete four-increment plan: authoritative full-typed journal init/edit/head/history/show; reviewed curation plus explicit external-catalogue context adapter; sealed full-history export/check/reimport and explicit derived querying; optional owned package/offline consumer. Separate SQLite authority and persisted CAS avoid editing derived/upstream stores. External curation stays outside self-contained base Dictionary until exact caller context is supplied; no placeholder releases, corpus copies, spelling inference or silent retarget. Owned envelope version1 is distinct; normalized model1/registry1/PackId four/All-four remain unchanged. S01 full draft fixes schema/API/failure/read/metadata/example/CLI controls; S02 exact adapter remains its preissue task, not presumed done or deferred to Arc06.
+
+Reuse existing physical isolated Arc04 checkout on NEW codex/project01-owned-dictionary from a55, and ONE retained A01 target/Arc05 launcher; no new cache/worktree. Root QUIET source/index/target; CDC planning only until exact root readiness/intake/transfer. All14 project criteria/verify/owners/status cells remain unchanged OPEN; Arc06 and final project/Operator/rights gates retain owners. No Full/performance campaign/default touch/BL0001 optimisation/external action authorised. Historical accepted evidence and timing exception unchanged.
