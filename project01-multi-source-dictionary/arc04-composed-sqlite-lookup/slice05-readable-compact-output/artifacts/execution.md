@@ -1122,3 +1122,8 @@ Root independently verified exact9026/directONEpath/3testdelta130others/cumulati
 ### Final current hosted CI / fresh readiness —2026-10-28
 
 Both exact9026 runs PUSH40793790640/PR40793813316 terminalSUCCESS/all3jobs each, watches43078/6619 terminal0. CDC parsed both whole logs independently and reproduced per-run groups/counts: Mac56/338/0/1, Linuxdefault56/346/0/1, isolated10/83/0/0, allfeatures56/348/0/1; overlapping populations are not summed. Seven whole originals+manifest at ci-iteration08-final01. Prior CI failures and initial localfixture setupfailure/sole unchanged-source rerun remain preserved, cause unproven. Root updated DraftPR6 body via ghapi REST PATCH after ghpr edit failed on deprecatedclassic projectCards GraphQL; no update was falsely attributed to that failed command. No source/runtime/target change or CI rerun from this metadata action. Fresh actualreview and canonical/close remain pending/all6OPEN.
+
+
+### Fresh assembled Arc04 assignment issue —2026-10-28
+
+Root exactreadiness root-arc-final-readiness01.json received; exact13,809B draft467d6725 preserved at Arc04/artifacts/composition-review-readiness01/composition-review-assignment-reviewed01.md alongside original rootreadiness. Active Arc04/artifacts/composition-review-assignment.md differs ONLY UNISSUED→ISSUED token, inversebyteexact. Binding originalmethods38/202243B, CLI29f8cf5d/14140928B, postscript a71b4d/6133B unchanged; both currentCI green/evidence preserved. ROOTspawns NEW Sol6.1/high/forkNONE and grants scopedONEtarget/scratch/reports after this issuecommit; CDC does not launch. All6S05/fivearc/all14projectrowsOPEN; no Full/extraqualifier/tenth/Arc05/merge/publication.

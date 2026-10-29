@@ -1,6 +1,6 @@
 # Fresh Arc04 assembled review — current concise draft
 
-UNISSUED — final ninth TEST-ONLY candidate9026 frozen/pushed, DraftPR6 created/attached. Both exact9026 PUSH40793790640/PR40793813316 CI TERMINAL SUCCESS/all3jobs each. Prior failures preserved; no automatic tenth. Root exact final readiness and status-only issue precede fresh reviewer launch. Fresh NEW Sol6.1/high reviewer; no reviewer launch or target transfer until final test-only candidate/current hosted CI and root exact readiness. This document supersedes the old append-only draft; the old draft remains unchanged. Authorized endpoint Arc04 only, no Arc05/merge/publication. All six S05 rows, five parent arc rows and fourteen project rows remain OPEN before actual acceptance.
+ISSUED — final ninth TEST-ONLY candidate9026 frozen/pushed, DraftPR6 created/attached. Both exact9026 PUSH40793790640/PR40793813316 CI TERMINAL SUCCESS/all3jobs each. Prior failures preserved; no automatic tenth. Root exact final readiness and status-only issue precede fresh reviewer launch. Fresh NEW Sol6.1/high reviewer; no reviewer launch or target transfer until final test-only candidate/current hosted CI and root exact readiness. This document supersedes the old append-only draft; the old draft remains unchanged. Authorized endpoint Arc04 only, no Arc05/merge/publication. All six S05 rows, five parent arc rows and fourteen project rows remain OPEN before actual acceptance.
 
 ## Identity / decision basis
 
