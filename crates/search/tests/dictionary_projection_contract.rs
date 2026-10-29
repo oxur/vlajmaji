@@ -6,8 +6,9 @@ mod fixture;
 use std::{
     collections::BTreeMap,
     fs,
+    io::Write,
     path::{Path, PathBuf},
-    process::Command,
+    process::{Command, Output},
     sync::atomic::{AtomicU64, Ordering},
     time::{SystemTime, UNIX_EPOCH},
 };
@@ -104,6 +105,32 @@ fn unverified_document(
     }
 }
 
+fn sqlite_mutation(database: &Path, sql: &str) -> Output {
+    let root = database
+        .parent()
+        .and_then(Path::parent)
+        .expect("mutation database belongs to its owned test store");
+    let sql_path = root.join(format!(
+        "sqlite-mutation-{}.sql",
+        NEXT_PATH.fetch_add(1, Ordering::Relaxed)
+    ));
+    let mut sql_file = fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(&sql_path)
+        .expect("create exclusive mutation SQL file");
+    sql_file
+        .write_all(sql.as_bytes())
+        .expect("write complete mutation SQL");
+    drop(sql_file);
+    let sql_input = fs::File::open(&sql_path).expect("open mutation SQL for stdin");
+    Command::new("sqlite3")
+        .arg(database)
+        .stdin(sql_input)
+        .output()
+        .expect("run sqlite3 with file-backed mutation SQL")
+}
+
 fn replace_canonical_store_document(
     database: &Path,
     document: &vlajmaji_lexicon::UnverifiedDictionaryDocument,
@@ -114,13 +141,12 @@ fn replace_canonical_store_document(
         .iter()
         .map(|byte| format!("{byte:02x}"))
         .collect::<String>();
-    let mutation = Command::new("sqlite3")
-        .arg(database)
-        .arg(format!(
+    let mutation = sqlite_mutation(
+        database,
+        &format!(
             "UPDATE canonical_document SET json=X'{encoded}' WHERE id=1; UPDATE metadata SET value='{digest}' WHERE key='canonical_sha256'; SELECT changes();"
-        ))
-        .output()
-        .unwrap();
+        ),
+    );
     assert!(
         mutation.status.success(),
         "canonical document mutation failed: {}",
@@ -534,13 +560,10 @@ fn test_full_exact_surfaces_corrupt_candidate_beyond_selected_page() {
     assert!(first_page.totals.occurrences > 1);
     drop(engine);
 
-    let mutation = Command::new("sqlite3")
-        .arg(&database)
-        .arg(
-            "UPDATE assertions SET id='zz-corrupt-sql-assertion' WHERE id=(SELECT a.id FROM assertions AS a JOIN entries AS e ON e.id=a.entry_id WHERE e.spelling_value='farvi' AND a.eligibility='Lexical' ORDER BY e.source_id COLLATE BINARY DESC, a.occurrence_id COLLATE BINARY DESC LIMIT 1); SELECT changes();",
-        )
-        .output()
-        .unwrap();
+    let mutation = sqlite_mutation(
+        &database,
+        "UPDATE assertions SET id='zz-corrupt-sql-assertion' WHERE id=(SELECT a.id FROM assertions AS a JOIN entries AS e ON e.id=a.entry_id WHERE e.spelling_value='farvi' AND a.eligibility='Lexical' ORDER BY e.source_id COLLATE BINARY DESC, a.occurrence_id COLLATE BINARY DESC LIMIT 1); SELECT changes();",
+    );
     assert!(
         mutation.status.success(),
         "sqlite candidate mutation failed: {}",
@@ -633,13 +656,12 @@ fn test_full_exact_surfaces_missing_raw_occurrence_beyond_selected_page() {
         .iter()
         .map(|byte| format!("{byte:02x}"))
         .collect::<String>();
-    let mutation = Command::new("sqlite3")
-        .arg(&database)
-        .arg(format!(
+    let mutation = sqlite_mutation(
+        &database,
+        &format!(
             "UPDATE canonical_document SET json=X'{encoded}' WHERE id=1; UPDATE metadata SET value='{digest}' WHERE key='canonical_sha256'; SELECT changes();"
-        ))
-        .output()
-        .unwrap();
+        ),
+    );
     assert!(
         mutation.status.success(),
         "raw occurrence mutation failed: {}",
@@ -732,13 +754,10 @@ fn test_full_exact_validates_unselected_sql_candidates_before_source_filtering()
     assert!(selected.totals.occurrences > 0);
     drop(engine);
 
-    let mutation = Command::new("sqlite3")
-        .arg(&database)
-        .arg(
-            "UPDATE assertions SET id='zz-unselected-sql-assertion' WHERE id=(SELECT a.id FROM assertions AS a JOIN entries AS e ON e.id=a.entry_id WHERE e.spelling_value='farvi' AND a.eligibility='Lexical' AND e.source_id!='source-a' ORDER BY e.source_id COLLATE BINARY, a.occurrence_id COLLATE BINARY LIMIT 1); SELECT changes();",
-        )
-        .output()
-        .unwrap();
+    let mutation = sqlite_mutation(
+        &database,
+        "UPDATE assertions SET id='zz-unselected-sql-assertion' WHERE id=(SELECT a.id FROM assertions AS a JOIN entries AS e ON e.id=a.entry_id WHERE e.spelling_value='farvi' AND a.eligibility='Lexical' AND e.source_id!='source-a' ORDER BY e.source_id COLLATE BINARY, a.occurrence_id COLLATE BINARY LIMIT 1); SELECT changes();",
+    );
     assert!(
         mutation.status.success(),
         "sqlite unselected-candidate mutation failed: {}",
@@ -797,13 +816,12 @@ fn test_selected_missing_entry_fails_but_unselected_candidate_is_skipped_after_l
         .iter()
         .map(|byte| format!("{byte:02x}"))
         .collect::<String>();
-    let mutation = Command::new("sqlite3")
-        .arg(&database)
-        .arg(format!(
+    let mutation = sqlite_mutation(
+        &database,
+        &format!(
             "UPDATE canonical_document SET json=X'{encoded}' WHERE id=1; UPDATE metadata SET value='{digest}' WHERE key='canonical_sha256'; SELECT changes();"
-        ))
-        .output()
-        .unwrap();
+        ),
+    );
     assert!(
         mutation.status.success(),
         "canonical Entry removal failed: {}",
@@ -876,14 +894,13 @@ fn test_selected_missing_entry_fails_but_unselected_candidate_is_skipped_after_l
     drop(full);
     drop(compact);
 
-    let mutation = Command::new("sqlite3")
-        .arg(&database)
-        .arg(format!(
+    let mutation = sqlite_mutation(
+        &database,
+        &format!(
             "UPDATE assertions SET id='zz-unknown-unselected-sql-id' WHERE id='{}'; SELECT changes();",
             missing.1
-        ))
-        .output()
-        .unwrap();
+        ),
+    );
     assert!(
         mutation.status.success(),
         "unknown SQL candidate mutation failed: {}",
