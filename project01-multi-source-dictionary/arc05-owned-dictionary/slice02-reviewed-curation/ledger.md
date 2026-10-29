@@ -1,6 +1,6 @@
 # S02 ledger — reviewed curation
 
-**Current,2026-10-29:** S02 INITIAL/pass1 ISSUED; complete intake/F01 clarification ACCEPTED after source-cited readback and fresh clean1b899ebb/tree745f/pins. AFTER scoped metadata commit + separate explicit CDC dispatch, CC owns exact14paths/index/ONEtarget; root/CDC readonly. All8rows OPEN; no implementation or acceptance inferred from intake. Actual evidence and narrow citation/status calibration are in artifacts/execution.md.
+**Current,2026-10-29:** S02 INITIAL/pass1 author is UNFROZEN/HELD at baseline1b899ebb plus exact14WIP paths. CC returned source/index/ONEtarget QUIET; CDC/root read-only pending failed-gate and strict-shape disposition. Default/no-default/package FILE gates passed at pre-correction bytes; one correctly placed archive all-features run failed at unchanged CLI fresh_root AlreadyExists (cause unproven). Link/Sense unknown payload fields are an unresolved source-reviewed strict-shape gap. No automatic retry/edit/freeze or acceptance; all8rows OPEN. Exact actual receipts/limitations and raw preservation are in artifacts/execution.md.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |

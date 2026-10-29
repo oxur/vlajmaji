@@ -1,0 +1,25 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.89s
+     Running tests/owned_curation_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_curation_contract-d6fbc93aae2c2286)
+
+running 1 test
+test cli_requires_explicit_migration_and_materializes_to_a_new_file ... FAILED
+
+failures:
+
+---- cli_requires_explicit_migration_and_materializes_to_a_new_file stdout ----
+
+thread 'cli_requires_explicit_migration_and_materializes_to_a_new_file' (81517725) panicked at crates/cli/tests/owned_curation_contract.rs:564:5:
+assertion `left == right` failed
+  left: String("Resolved")
+ right: "resolved"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    cli_requires_explicit_migration_and_materializes_to_a_new_file
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.86s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test owned_curation_contract`

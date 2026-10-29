@@ -1,0 +1,20 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.08s
+     Running tests/owned_curation_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_curation_contract-5a153ac968b0d62b)
+
+running 11 tests
+test curation_operation_enums_use_snake_case_externally_tagged_names ... ok
+test strict_byte_codec_rejects_duplicate_keys_and_unsupported_version ... ok
+test typed_document_deserialization_revalidates_and_preserves_dictionary_bytes ... ok
+test inactive_records_remain_visible_without_resolving_their_target ... ok
+test from_data_and_manual_deserializer_reject_invalid_history ... ok
+test materialize_composes_the_exact_supplied_context_before_the_owned_base ... ok
+test missing_context_is_visible_and_exact_context_projects_link_and_provenance ... ok
+test a_three_member_sense_is_not_partially_projected ... ok
+test link_to_a_sense_reports_dependency_absence_before_its_missing_context ... ok
+test a_complete_three_member_sense_projects_all_members_in_declared_order ... ok
+test supplied_context_identity_and_target_checks_are_exact_and_non_retargeting ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+

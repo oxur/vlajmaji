@@ -1,0 +1,114 @@
+[1;34mRunning all-feature workspace tests...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s02-synthetic-archive.devQRn/crates/lexicon)
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s02-synthetic-archive.devQRn/crates/store)
+   Compiling vlajmaji-data-la-lojban v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s02-synthetic-archive.devQRn/crates/data-la-lojban)
+   Compiling vlajmaji-data-lensisku-jbotci v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s02-synthetic-archive.devQRn/crates/data-lensisku-jbotci)
+   Compiling vlajmaji-data-sutysisku v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s02-synthetic-archive.devQRn/crates/data-sutysisku)
+   Compiling vlajmaji-data-llg v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s02-synthetic-archive.devQRn/crates/data-llg)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s02-synthetic-archive.devQRn/crates/search)
+   Compiling vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s02-synthetic-archive.devQRn/crates/vlajmaji)
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s02-synthetic-archive.devQRn/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 48.20s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji-ef84bc35ae5a7f2d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji-4d1a2f9710103205)
+
+running 12 tests
+test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok
+test default_path_tests::test_marker_exists_distinguishes_absence_and_propagates_metadata_errors ... ok
+test managed_output_tests::test_emit_migrated_response_io_failure_reports_migration_context ... ok
+test managed_output_tests::test_emit_dictionary_detail_io_failure_uses_structured_error_report ... ok
+test managed_output_tests::test_emit_readable_uses_shared_writer_without_adding_a_newline ... ok
+test managed_output_tests::test_emit_collection_response_io_failure_retains_committed_lifecycle_context ... ok
+test managed_output_tests::test_shared_json_and_readable_writer_handles_flush_errors_and_broken_pipe ... ok
+test managed_output_tests::test_emit_managed_response_io_failure_reports_committed_context ... ok
+test managed_output_tests::test_mutation_output_context_distinguishes_published_kept_and_cleared_generations ... ok
+test collection_manifest_tests::test_manifest_validation_freezes_relative_paths_without_reading_them ... ok
+test collection_manifest_tests::test_manifest_duplicate_keys_rejects_escaped_equivalents_recursively ... ok
+test managed_output_tests::test_actual_remove_reports_keep_subset_and_clear_output_contexts ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.29s
+
+     Running tests/cli_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/cli_contract-3fcaaeece9897431)
+
+running 2 tests
+test help_and_version_are_available ... ok
+test valid_json_limit_zero_and_failures_are_inspectable ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.06s
+
+     Running tests/collection_query_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collection_query_contract-b989a04139dd591f)
+
+running 16 tests
+test test_configure_failure_reports_known_file_root_profile_and_requested_packs ... ok
+test test_configure_invalid_pack_keeps_known_context_without_creating_files ... ok
+test test_collections_help_distinguishes_explicit_root_from_config_home_resolution ... ok
+test test_lookup_request_parse_precedes_missing_config_and_uses_managed_error_envelope ... ok
+test test_all_managed_commands_report_config_path_for_unusable_home_fallback ... ok
+test test_all_four_fixture_packs_keep_source_attribution_in_configured_lookup ... ok
+test test_configure_relative_file_and_root_share_child_cwd ... ok
+test test_configure_commits_when_stdout_reader_closes_early ... ok
+test test_configure_reports_exact_native_root_path_and_keeps_ascii_root_working ... ok
+test test_lookup_profile_and_disabled_selection_fail_with_typed_context ... ok
+test test_lookup_resolves_absolute_xdg_config_and_rejects_direct_override_of_request ... ok
+test test_configure_profiles_selection_and_lookup_use_explicit_config_and_root ... ok
+test test_profiles_reports_exact_native_config_io_and_keeps_ascii_counterpart_working ... ok
+test test_absolute_config_and_root_work_without_child_cwd_but_relative_config_fails_typed ... ok
+test test_cli_configure_preserves_hand_authored_disabled_policy_and_noop_bytes ... ok
+test test_profiles_reports_not_applicable_context_when_stdout_file_limit_fails ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.41s
+
+     Running tests/collections_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collections_contract-01dcbd7c0f9d2606)
+
+running 10 tests
+test test_collections_cli_install_help_explains_selection_and_update_boundary ... ok
+test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok
+test test_collections_cli_list_absent_catalogue_expect_typed_error ... ok
+test test_collections_cli_runtime_validation_expect_versioned_report_and_clap_boundary ... ok
+test test_collections_cli_relative_paths_are_frozen_across_working_directories ... ok
+test test_collections_cli_register_install_list_inspect_expect_structured_reports ... ok
+test test_collections_cli_lost_install_response_expect_committed_generation_and_query ... ok
+test test_collections_cli_tampered_repeat_expect_prior_generation_unchanged ... ok
+test test_collections_cli_all_raw_inputs_expect_four_pack_install ... ok
+test test_collections_cli_opposite_pack_orders_expect_same_content_and_distinct_generations ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.99s
+
+     Running tests/collections_lifecycle_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collections_lifecycle_contract-5b7204760e1b6b85)
+
+running 2 tests
+test test_collections_lifecycle_commands_migrate_update_rebuild_reports ... ok
+test test_sut_lifecycle_update_rebuild_preserves_old_store_and_stales_managed_cursor ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.61s
+
+     Running tests/collections_maintenance_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/collections_maintenance_contract-fee8624f4af3a950)
+
+running 4 tests
+test test_cli_policy_commands_preserve_context_and_apply_partial_changes ... FAILED
+test test_collections_remove_reinstall_reconcile_cli_preserves_explicit_state ... ok
+test test_managed_default_scratch_transition_preserves_legacy_default_store ... ok
+test test_four_pack_synthetic_update_and_rebuild_preserve_all_members ... ok
+
+failures:
+
+---- test_cli_policy_commands_preserve_context_and_apply_partial_changes stdout ----
+
+thread 'test_cli_policy_commands_preserve_context_and_apply_partial_changes' (81604991) panicked at crates/cli/tests/collections_maintenance_contract.rs:30:27:
+called `Result::unwrap()` on an `Err` value: Os { code: 17, kind: AlreadyExists, message: "File exists" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test_cli_policy_commands_preserve_context_and_apply_partial_changes
+
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.86s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test collections_maintenance_contract`
+make: *** [test-all-features] Error 101

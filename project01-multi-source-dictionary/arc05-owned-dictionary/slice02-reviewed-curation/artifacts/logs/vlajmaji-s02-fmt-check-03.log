@@ -1,0 +1,64 @@
+[1;34mChecking code formatting...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/examples/owned_curation.rs:24:
+ 
+ fn main() -> Result<(), Box<dyn Error>> {
+     let mut args = env::args_os().skip(1);
+-    let seed_path = args.next().map(PathBuf::from).ok_or(
+-        "usage: owned_curation SEED.json CURATION.json ROOT OUTPUT [CONTEXT.json ...]",
+-    )?;
+-    let curation_path = args.next().map(PathBuf::from).ok_or(
+-        "usage: owned_curation SEED.json CURATION.json ROOT OUTPUT [CONTEXT.json ...]",
+-    )?;
+-    let root = args.next().map(PathBuf::from).ok_or(
+-        "usage: owned_curation SEED.json CURATION.json ROOT OUTPUT [CONTEXT.json ...]",
+-    )?;
+-    let output = args.next().map(PathBuf::from).ok_or(
+-        "usage: owned_curation SEED.json CURATION.json ROOT OUTPUT [CONTEXT.json ...]",
+-    )?;
++    let seed_path = args
++        .next()
++        .map(PathBuf::from)
++        .ok_or("usage: owned_curation SEED.json CURATION.json ROOT OUTPUT [CONTEXT.json ...]")?;
++    let curation_path = args
++        .next()
++        .map(PathBuf::from)
++        .ok_or("usage: owned_curation SEED.json CURATION.json ROOT OUTPUT [CONTEXT.json ...]")?;
++    let root = args
++        .next()
++        .map(PathBuf::from)
++        .ok_or("usage: owned_curation SEED.json CURATION.json ROOT OUTPUT [CONTEXT.json ...]")?;
++    let output = args
++        .next()
++        .map(PathBuf::from)
++        .ok_or("usage: owned_curation SEED.json CURATION.json ROOT OUTPUT [CONTEXT.json ...]")?;
+     let context_paths: Vec<PathBuf> = args.map(PathBuf::from).collect();
+ 
+     let seed = Dictionary::from_json_bytes(&read(&seed_path)?)?;
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/examples/owned_curation.rs:47:
+         .ok_or("seed has no owned revision")?
+         .id
+         .clone();
+-    if candidate.as_data().dictionary.metadata().owned_revisions.len()
++    if candidate
++        .as_data()
++        .dictionary
++        .metadata()
++        .owned_revisions
++        .len()
+         != seed.metadata().owned_revisions.len() + 1
+     {
+         return Err("curation input must append exactly one base revision".into());
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/examples/owned_curation.rs:76:
+     }
+     let materialized = candidate.materialize(contexts)?;
+     let bytes = materialized.dictionary.to_json_bytes()?;
+-    let mut file = OpenOptions::new().write(true).create_new(true).open(&output)?;
++    let mut file = OpenOptions::new()
++        .write(true)
++        .create_new(true)
++        .open(&output)?;
+     file.write_all(&bytes)?;
+     file.flush()?;
+     println!("wrote normalized view to {}", output.display());
+make: *** [fmt-check] Error 1
