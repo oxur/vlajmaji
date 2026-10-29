@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| Status | ACTIVE planning; eight arc rows OPEN; S01 ISSUED for complete intake after root readiness; no source work yet |
+| Status | IMPLEMENTATION ACTIVE: S01 INITIAL/pass1, eight arc rows OPEN; no candidate acceptance yet |
 | Authority | [directive04](../cdc-directive04.md), Duncan “merged! Let's continue :-D”; THROUGH ARC05 ONLY |
 | Roles | Retained CDC Sol6.1/high; retained CC Luna/high; fresh independent Sol6.1/high assembled review and SAME-context canonical gate at close |
 | Source | `codex/project01-owned-dictionary`, baseline `a55e1cc7c4d7b0df4a187ce3551bfce9141a39d3`, tree `836df880ca711c6813cb78ae1202973e618eb105` |
 | Physical checkout | Reused `.worktrees/project01-arc04/vlajmaji`; old Arc04 branch9026 retained; no new worktree/cache |
-| Ownership | S01 intake accepted; AFTER handoff commit and explicit dispatch, CC exclusively owns eleven paths/index/ONE target, root/CDC source-read-only; CDC planning |
+| Ownership | Explicit df5bec2 handoff effective: retained CC exclusively owns eleven S01 paths/index/ONE target; root/CDC source-read-only, CDC planning/independent preparation |
 | Version / date | 0.1 / 2026-10-28 |
 
 ## Useful result and boundaries
@@ -45,6 +45,10 @@ Use one retained target with `/tmp/vlajmaji-p01-a05-cargo` (SHA256 `426d1e498635
 At arc close a fresh independent context actually exercises init→edit→stale rejection→local/external curation→export→reimport→optional load→explicit derived query/history, including absent/conflicting context and old assertions. It reviews the four children and original compatibility boundaries, then SAME reviewer gates the actual canonical packet. CDC supplies child/arc retrospectives and project bubble-up; root checks consistency before mechanical closure. Produced-path inventory is proportionate, not a reconstruction of Arc04 megabytes. No success reports or row closures are prewritten.
 
 ## Current readiness
+
+Root final readiness PASS at d75532d was followed by status-only issue e61cb65, complete retained intake/citation erratum acceptance and explicit handoff df5bec2. S01 implementation is ACTIVE, not an unissued proposal. Core/CLI format+lint milestones and the first narrow7/7 public store behavior tests exist; full24/edit-policy/raw/Presence/reactivation/example/CLI/broad/feature/package and independent acceptance remain pending. These author milestones are not a frozen candidate or acceptance. All8arc/7child/14project rows OPEN; one writer owns source/target. S02 now has a source-guided UNISSUED [policy/schema/API draft](slice02-reviewed-curation/slice-plan.md), whose final source reconciliation/CLI report/readiness remain later work. No new external authority.
+
+### Historical draft readiness — version0.1
 
 This is the concrete planning proposal, not an issued source assignment. S01's exact API/schema/append rules and finite regression oracles are in its full slice plan and DRAFT prompt. Root exact readiness remains required before status-only issue, bounded retained CC intake, fresh baseline/pins and explicit source/index/target transfer. S02's detailed adapter is deliberately pending its later readiness; its capability and evidence obligations are already owned here. No unresolved human product choice blocks S01. No push/PR/publication/Arc06 authority is inferred.
 
