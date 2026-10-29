@@ -6,7 +6,7 @@
 | Authority | Arc05/directive04; retained CDC Sol6.1/high + Luna/high CC; five total S03 assignments including initial, no automatic sixth |
 | Known source | Accepted S01 1b899ebb/tree745f; source branch codex/project01-owned-dictionary. Final S02 HEAD/schema/API/readset must replace this dependency placeholder before issue |
 | Useful result | Export/check/load every owned revision and curation cutoff, import into a fresh authoritative journal, replay only exact history, and query an explicitly extracted/materialized derived model |
-| Version / date | 0.3 / 2026-10-29; prospective report/base-golden policy fixed; accepted S02/API/context-oracle reconciliation and final readiness pending |
+| Version / date | 0.4 / 2026-10-29; prospective report/base-golden policy fixed with actual CLI dependency boundary; accepted S02/API/context-oracle reconciliation and final readiness pending |
 
 ## 1. Representation and ownership boundary
 
@@ -149,7 +149,7 @@ Create_new each output, never replace existing files. Validate completely before
 
 ### Exact prospective report and small base-history oracle
 
-All report versions are1; new enums serialize snake_case. Field lists below are Rust typed declaration order, NOT stdout key order. Public OwnedImportReport above is also the CLI import result (outcome exactly imported/already_present). Private CLI DTOs have deny_unknown_fields and these exact fieldsets:
+All report versions are1; new public enums serialize snake_case. Public store/lexicon reports remain typed serde APIs; public OwnedImportReport above is also the CLI import result (outcome exactly imported/already_present). Private CLI-only reports use the existing serde_json::json! → QueryOutput::Json(Value) route with the exact fieldsets/types below, not a new serde dependency or an unused private input decoder. Their field lists are logical declarations, NOT stdout key order. Whole output-fieldset assertions reject extra/missing keys; deny_unknown_fields applies to actual public input DTOs, not this output-only Value construction:
 
 - Export: `{version,source,head,journal_schema,revision_count,output:NativePathReport,output_bytes:u64,output_sha256:String,seal:NativePathReport,seal_bytes:u64,seal_sha256:String}`.
 - Check: `{version,source,head,journal_schema,revision_count,snapshot_bytes:u64,snapshot_sha256:String,seal_bytes:u64,seal_sha256:String}`; no ROOT or output path invented.
@@ -181,3 +181,4 @@ Use the SAME guard/ONE target and explicit+1.98/locked/offline, owned HOME/XDG/T
 - 2026-10-29, 0.1: initial prospective policy/API and eight-row open set; root read the whole plan/ledger and accepted the bounded exact-history replay direction, with accepted S02 reconciliation still required.
 - 2026-10-29, 0.2: corrected current S02 phase to implementation active and fixed the public distinction between full validating bare JSON decoding and canonical-byte equality at sealed loading. No issue, intake, source assignment or accepted S02 claim.
 - 2026-10-29, 0.3: fixed prospective report fieldsets and a retained-input schema1 whole-history/prefix golden; schema2 actual accepted context/history oracle remains pending. Parent A05-03 stays partial until actual S03 curation reimport, preserving its original verifier.
+- 2026-10-29, 0.4: reflected actual CLI dependencies: private output-only reports use existing json!/Value with exact fieldsets, not an unavailable serde derive/input decoder; public typed store/lexicon APIs and file/hash/transport oracles unchanged.

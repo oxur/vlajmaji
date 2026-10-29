@@ -206,3 +206,7 @@ Root read whole current bodies and complete F01–F03 delta and granted final re
 ### Intake/handoff checkpoint —2026-10-29
 
 Complete actual intake plus F01 clarification accepted by CDC after source-citation/status-scope calibration and fresh clean1b899ebb/tree745f/lock/guard/protected-ref checks. Actual record: artifacts/execution.md. AFTER this scoped metadata commit and separate explicit dispatch, CC owns exact14paths/index/ONEtarget; root/CDC readonly. No enumeration-only comprehension or product acceptance claim. Eight rows OPEN; technical issued contract unchanged.
+
+### Initial implementation clarification — private CLI report,2026-10-29
+
+Actual CLI compilation showed that a local `#[derive(serde::Serialize)]` report cannot compile with crates/cli's existing direct dependencies: serde_json is present, serde is not. Root/CDC disposition keeps the issued prompt and public Rust APIs unchanged: the private OwnedMaterializeReport notation fixes the exact output fieldset/types, not a required internal named Serialize struct. Implement that shape through the existing serde_json::json! → QueryOutput::Json(Value) route. Preserve every declared key/type/native path/output SHA/resolution, sorted-map stdout plus one LF, canonical model file without LF, error precedence and whole-fieldset controls. No Cargo/serde dependency or new transport. Original failed compilation and actual corrected format/lint/behavior reach belong in artifacts/execution.md; this is same unfrozen INITIAL wiring clarification, not a new pass or successful behavioral result.
