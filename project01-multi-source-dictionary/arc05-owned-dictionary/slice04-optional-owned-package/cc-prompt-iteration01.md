@@ -1,6 +1,6 @@
 # S04 correction — curation-state oracle (iteration01)
 
-STATUS: DRAFT — root prospective readiness pending; NO execution authority.
+STATUS: ISSUED — PASS2/5; bounded readback only until explicit CDC transfer.
 
 This is S04 PASS2/5 under directive04 THROUGH ARC05 ONLY. Retained requested CC Luna/high; CDC Sol6.1/high. The INITIAL issued prompt a10ad409 remains immutable. Its one author consumer invocation actually failed; this follow-up explicitly budgets ONE corrective compile/invocation of the SAME consumer, after root reads this whole prompt/plan delta and corrected source. No automatic third invocation, sixth assignment, new consumer, lock, archive, matrix or product scope. This is a known observer correction, not a product-code defect or criterion change.
 

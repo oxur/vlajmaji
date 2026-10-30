@@ -1,6 +1,6 @@
 # S04 ledger — optional owned snapshot package
 
-**Current,2026-10-30:** INITIAL consumer46514/101 FAILED at first curation-hash observer assertion; whole originals preserved. PASS2/5 correction is DRAFT/unissued pending root full-source readiness, intake and explicit transfer; source/index/ONEtarget returned ROOT QUIET, same12 product WIP. All8 original binding rows unchanged OPEN through NEWfreshactual/SAMEcanonical/root. Prior intake/gates/failures remain historical evidence; no automatic retry or external/Arc06.
+**Current,2026-10-30:** INITIAL consumer46514/101 FAILED at first curation-hash observer assertion; whole originals preserved. PASS2/5 correction is ISSUED for bounded readback after root readiness; explicit CDC transfer still pending; source/index/ONEtarget returned ROOT QUIET, same12 product WIP. All8 original binding rows unchanged OPEN through NEWfreshactual/SAMEcanonical/root. Prior intake/gates/failures remain historical evidence; no automatic retry or external/Arc06.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |
