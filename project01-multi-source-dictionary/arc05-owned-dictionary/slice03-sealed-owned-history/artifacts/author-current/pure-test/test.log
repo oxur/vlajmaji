@@ -1,0 +1,16 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 30.81s
+     Running tests/owned_snapshot_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_snapshot_contract-256cc90de74b116e)
+
+running 7 tests
+test seal_byte_methods_reject_invalid_header_versions_and_digest_syntax ... ok
+test strict_snapshot_parser_rejects_duplicate_and_unknown_envelope_fields ... ok
+test same_final_head_does_not_make_a_different_old_cutoff_an_identical_history ... ok
+test bare_pretty_json_is_valid_but_sealed_input_must_be_canonical_and_all_routes_validate ... ok
+test schema_one_and_two_roundtrip_all_historical_states_and_seals ... ok
+test rich_complete_fixture_survives_one_commit_snapshot_codec_byte_for_byte ... ok
+test from_data_rejects_invalid_history_inventory_and_prefixes_without_panicking ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+

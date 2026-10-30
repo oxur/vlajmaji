@@ -1,0 +1,11 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 24.81s
+     Running tests/owned_snapshot_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_snapshot_contract-54ad009981124c38)
+
+running 2 tests
+test snapshot_rejects_orphaned_commit_section_rows_and_recovers_after_restore ... ok
+test schema_one_two_import_export_and_exact_replay_preserve_whole_history ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.35s
+

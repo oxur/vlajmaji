@@ -1,0 +1,16 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon)
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 25.10s
+     Running tests/owned_snapshot_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_snapshot_contract-54ad009981124c38)
+
+running 6 tests
+test snapshot_rejects_orphaned_commit_section_rows_and_recovers_after_restore ... ok
+test snapshot_import_rejects_wrong_family_missing_parent_and_symlink_without_replacement ... ok
+test imported_snapshot_reader_pins_busy_writer_then_refreshes_after_explicit_retry ... ok
+test imported_rich_24_section_snapshot_matches_canonical_input_whole ... ok
+test snapshot_import_conflicts_on_same_head_body_sidecar_and_history_extension ... ok
+test schema_one_two_import_export_and_exact_replay_preserve_whole_history ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+

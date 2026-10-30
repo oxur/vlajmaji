@@ -1,0 +1,20 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error: missing documentation for the crate
+   --> crates/store/tests/owned_snapshot_contract.rs:1:1
+    |
+  1 | / const SCHEMA1_SNAPSHOT: &str = r#####"{"version":1,"journal_schema":1,"source":"owned-example","head":"owned-r1","dictionary":{"v...
+  2 | | const SCHEMA1_SEAL: &str = r#####"{"version":1,"kind":"vlajmaji-owned-snapshot","snapshot_version":1,"journal_schema":1,"dictiona...
+  3 | | const SCHEMA2_SNAPSHOT: &str = r#####"{"version":1,"journal_schema":2,"source":"owned-example","head":"owned-r4","dictionary":{"v...
+  4 | | const SCHEMA2_SEAL: &str = r#####"{"version":1,"kind":"vlajmaji-owned-snapshot","snapshot_version":1,"journal_schema":2,"dictiona...
+...   |
+174 | |     assert_eq!(logical_sql(&root), before_conflict);
+175 | | }
+    | |_^
+    |
+    = note: `-D missing-docs` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(missing_docs)]`
+
+error: could not compile `vlajmaji-store` (test "owned_snapshot_contract") due to 1 previous error
+make: *** [lint] Error 101

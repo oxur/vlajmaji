@@ -1,0 +1,54 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon)
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Checking vlajmaji-data-la-lojban v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-la-lojban)
+    Checking vlajmaji-data-lensisku-jbotci v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-lensisku-jbotci)
+    Checking vlajmaji-data-sutysisku v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-sutysisku)
+    Checking vlajmaji-data-llg v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-llg)
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0599]: no method named `read_revision` found for struct `vlajmaji_store::OwnedJournalReader` in the current scope
+   --> crates/store/examples/owned_snapshot.rs:516:15
+    |
+516 |     if reader.read_revision(&r0_head)?.dictionary != genesis
+    |               ^^^^^^^^^^^^^ method not found in `vlajmaji_store::OwnedJournalReader`
+
+error[E0599]: no method named `read_revision` found for struct `vlajmaji_store::OwnedJournalReader` in the current scope
+   --> crates/store/examples/owned_snapshot.rs:517:19
+    |
+517 |         || reader.read_revision(&r1_head)?.dictionary != r1
+    |                   ^^^^^^^^^^^^^ method not found in `vlajmaji_store::OwnedJournalReader`
+
+error[E0599]: no method named `read_revision` found for struct `vlajmaji_store::OwnedJournalReader` in the current scope
+   --> crates/store/examples/owned_snapshot.rs:518:19
+    |
+518 |         || reader.read_revision(&r2_head)?.dictionary != r2
+    |                   ^^^^^^^^^^^^^ method not found in `vlajmaji_store::OwnedJournalReader`
+
+error[E0599]: no method named `read_revision` found for struct `vlajmaji_store::OwnedJournalReader` in the current scope
+   --> crates/store/examples/owned_snapshot.rs:519:19
+    |
+519 |         || reader.read_revision(&r3_head)?.dictionary != r3
+    |                   ^^^^^^^^^^^^^ method not found in `vlajmaji_store::OwnedJournalReader`
+
+error[E0599]: no method named `read_revision` found for struct `vlajmaji_store::OwnedJournalReader` in the current scope
+   --> crates/store/examples/owned_snapshot.rs:520:19
+    |
+520 |         || reader.read_revision(&r4_id)?.dictionary != r4
+    |                   ^^^^^^^^^^^^^ method not found in `vlajmaji_store::OwnedJournalReader`
+
+error: unused variable: `component`
+   --> crates/store/examples/owned_snapshot.rs:146:9
+    |
+146 |     let component = document.metadata.components[0].id.clone();
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_component`
+    |
+    = note: `-D unused-variables` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(unused_variables)]`
+
+For more information about this error, try `rustc --explain E0599`.
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji)
+error: could not compile `vlajmaji-store` (example "owned_snapshot") due to 6 previous errors
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

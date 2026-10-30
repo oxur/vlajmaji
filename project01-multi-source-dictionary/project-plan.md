@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01–04 CLOSED. Arc05 S01–S02 locally CLOSED at854865a7/treeef81ffbb;15child/2arc DONE,6arc/all14project OPEN. S03 DRAFT/UNISSUED pending root readiness; source/index/ONEtarget ROOT QUIET. Arc06 unactivated. |
+| status | project OPEN; Arc01–04 CLOSED. Arc05 S01–S03 locally CLOSED at2b7b6dda/tree83d81705;23child/fivearc DONE,3arc/all14project OPEN. S04 UNISSUED/root-readiness pending; source/index/ONEtarget ROOT QUIET. Arc06 unactivated. |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.32 / 2026-10-29 |
+| version / date | 1.33 / 2026-10-29 |
 
 ## Purpose and first useful result
 
@@ -425,3 +425,7 @@ Actual source1b899ebb/tree745f delivers public Rust and explicit-root CLI comple
 ## Version1.32 — S02 reviewed-curation local close,2026-10-29
 
 Source854865a7/treeef81ffbb delivers strict reviewed Link/Sense/context APIs, explicit schema2 migration/CAS/selection, native CLI materialization and the runnable Tiny guide. CDC independently executed mixed S01 own-a/b plus external context, whole logical SQL migration/no-write and retrospective r2/r3/r4 controls:40children matched exits after one retained25-child method-order oracle failure. S02 eight rows DONE; A05-03 remains OPEN/partial because its original verifier includes S03 reimport.15child/2arc DONE,6arc/all14project OPEN. Complete raw/index/verifier/retro retain original compiler/fixture/archive failures, passing sole corrected archive, exact-author-PATH gap and unsupported/unexecuted platform boundaries. BL-0002 is optional unimplemented inherited fixture-fragility follow-up. S03/S04/fresh NEW assembled/SAME canonical/root consistency gates remain; no project/Arc05/external/Arc06 acceptance.
+
+## Version1.33 — S03 sealed-history local close,2026-10-29
+
+Source2b7b6dda/tree83d81705 adds pure strict sealed full-history transport, atomic fresh import/exact replay/conflicts and native rootless check/model extraction. Actual original-writer/hash/export parity, all old states/selections, CURRENT empty migration and explicit derived Full/Compact/Readable/detail proof are accepted by CDC (58+6 direct verification children). S03 eight and A05-03/04/05 DONE;23child/fivearcDONE, three arc/all14project OPEN. Optional owned package and fresh NEW assembled/SAME canonical/root gates remain. See S03 verifier/retro/evidence index for current local gates, historical product/method failures and unexecuted platform/Full limits. No project/finalOperator/rights/external/Arc06 acceptance.

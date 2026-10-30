@@ -2,11 +2,11 @@
 
 | Field | Value |
 | --- | --- |
-| Status | IMPLEMENTATION ACTIVE, INITIAL/pass1; complete intake ACCEPTED. CC owns exact15/index/ONEtarget after actual transfer56beccde; ROOT/CDC source/index/target read-only |
+| Status | CLOSED locally at2b7b6dda/tree83d81705, INITIAL/pass1;8 rows DONE after independent58+6 original-control children; ROOT source/index/ONEtarget QUIET; arc/final gates remain |
 | Authority | Arc05/directive04; retained CDC Sol6.1/high + Luna/high CC; five total S03 assignments including initial, no automatic sixth |
 | Known source | Accepted S02 `854865a72c4ca4971e1b93fd25a2e69ee14b03a8`, tree `ef81ffbb10054bd4ceb935ac76f7912178a603e2`, parent accepted S01 `1b899ebb`; branch `codex/project01-owned-dictionary` |
 | Useful result | Export/check/load every owned revision and curation cutoff, import into a fresh authoritative journal, replay only exact history, and query an explicitly extracted/materialized derived model |
-| Version / date | 0.7 / 2026-10-29; accepted S02 API/hash/readset, schema2 and same-final-head alternate INPUT goldens, exact15 paths and executable prompt reconciled; root readiness PASS bd3b685, issue f51826d5, transfer56beccde |
+| Version / date | 0.8 / 2026-10-29; accepted S02 API/hash/readset, schema2 and same-final-head alternate INPUT goldens, exact15 paths and executable prompt reconciled; root readiness PASS bd3b685, issue f51826d5, transfer56beccde |
 
 ## 1. Representation and ownership boundary
 
@@ -274,3 +274,7 @@ Complete source-cited intake/addendum and original required-data query are accep
 ### Current implementation metadata —2026-10-29 CDT
 
 INITIAL/pass1 is active under the actual56beccde transfer. CC is completing the original finite source/test/example/docs census in the same fifteen-path scope; the preliminary pure/store/CLI and late-abort results in artifacts/execution.md are bounded subsets, not slice acceptance. The latest example/API and canonical-byte test additions remain unexecuted pending current ordered validation. All8 binding rows remain OPEN. Root/CDC retain planning/source-review duties and perform no source/index mutation or target operation during the CC interval. The issued prompt and substantive plan are unchanged; preimplementation/no-runtime statements above are preserved dated history, superseded by this current ownership/status record.
+
+### Version0.8 local close —2026-10-29 CDT
+
+Actual source2b7b6dda/tree83d81705/parent854, fourteen permitted paths, current local gates and independent frozen58-child proof plus separately completed original six-child CURRENT-empty schema2 control are accepted by CDC. See cdc-verification.md/retrospective and artifacts/evidence-index.json. Eight child rows DONE; A05-03/04/05 now DONE with prior01/02, three arc/all14project rows remain OPEN. S04 UNISSUED pending exact root readiness. Earlier pending/unexecuted statements are dated preparation/implementation history, not current acceptance. No external/Arc06.

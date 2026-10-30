@@ -1,0 +1,24 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon)
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 52s
+     Running tests/owned_snapshot_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/owned_snapshot_contract-54ad009981124c38)
+
+running 1 test
+test schema_one_two_import_export_and_exact_replay_preserve_whole_history ... FAILED
+
+failures:
+
+---- schema_one_two_import_export_and_exact_replay_preserve_whole_history stdout ----
+
+thread 'schema_one_two_import_export_and_exact_replay_preserve_whole_history' (82448881) panicked at crates/store/tests/owned_snapshot_contract.rs:139:54:
+called `Result::unwrap()` on an `Err` value: UnsupportedVersion { found: 1 }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    schema_one_two_import_export_and_exact_replay_preserve_whole_history
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+error: test failed, to rerun pass `-p vlajmaji-store --test owned_snapshot_contract`

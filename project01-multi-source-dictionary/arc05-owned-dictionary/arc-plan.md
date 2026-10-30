@@ -2,13 +2,13 @@
 
 | Field | Value |
 | --- | --- |
-| Status | S01–S02 CLOSED locally;15child DONE, A05-01/02 DONE and6arc rows OPEN; S03 INITIAL issued/intake accepted, exact15 initial implementation transfer after committed checkpoint+explicit dispatch |
+| Status | S01–S03 CLOSED locally;23child and A05-01…05 DONE,3arc/all14project OPEN; S04 UNISSUED/root-readiness pending, its8rows OPEN through final fresh/canonical/root gate |
 | Authority | [directive04](../cdc-directive04.md), Duncan “merged! Let's continue :-D”; THROUGH ARC05 ONLY |
 | Roles | Retained CDC Sol6.1/high; retained CC Luna/high; fresh independent Sol6.1/high assembled review and SAME-context canonical gate at close |
-| Source | `codex/project01-owned-dictionary`, accepted S02 `854865a72c4ca4971e1b93fd25a2e69ee14b03a8`, tree `ef81ffbb10054bd4ceb935ac76f7912178a603e2`; S01/base history retained |
+| Source | `codex/project01-owned-dictionary`, accepted S03 `2b7b6dda55dc00d62bfa4fcdc5d5a09742fcf528`, tree `83d81705cc1de3aa69f1d6d39e4c524bb1b6d9b3`; accepted S01/S02/base history retained |
 | Physical checkout | Reused `.worktrees/project01-arc04/vlajmaji`; old Arc04 branch9026 retained; no new worktree/cache |
-| Ownership | CC exact15/index/ONEtarget initial S03 ownership after committed intake checkpoint+explicit dispatch; root/CDC source read-only |
-| Version / date | 0.3 / 2026-10-29 |
+| Ownership | Source/index/ONEtarget returned ROOT QUIET after actual S03 independent proofs; CDC planning-only S04 final reconciliation |
+| Version / date | 0.4 / 2026-10-29 |
 
 ## Useful result and boundaries
 
@@ -46,7 +46,7 @@ At arc close a fresh independent context actually exercises init→edit→stale 
 
 ## Current readiness
 
-S01 and S02 are locally CLOSED,15child DONE. S02 public/CLI schema2 curation and actual context materialization are accepted at854865a7 after CDC40-child proof, retaining failed25-child method attempt, original archive collision and author PATH provenance limits. Its [verification](slice02-reviewed-curation/cdc-verification.md) and [retrospective](slice02-reviewed-curation/cdc-retrospective.md) supply the row walk. A05-01/02 DONE; A05-03 partialOPEN because its original verifier includes reimport; remaining6arc/all14project OPEN. S03 exact pure history/seal/import draft must bind accepted APIs/INPUT oracles and receive root readiness before issue. Source/index/ONEtarget ROOT QUIET; no external/Arc06 advance.
+S01–S03 are locally CLOSED at2b7b6dda/tree83d81705;23child and five arc rows DONE, three arc/all14project OPEN. S03 curation reimport discharges original A05-03 alongside S02; complete owned seal/history/import/query predicates discharge A05-04/05. Its [verification](slice03-sealed-owned-history/cdc-verification.md) and [retrospective](slice03-sealed-owned-history/cdc-retrospective.md) retain actual58+6 direct verification children, original product/method failures, source/gate/platform scopes and exact evidence copies. S04 optional-package exact current API/source/readset reconciliation and root readiness remain before issue; operational proof alone cannot close its eight rows, which retain original fresh assembled/SAME canonical/root gate. Source/index/ONEtarget ROOT QUIET. No Arc06/external advance.
 
 ### Historical draft readiness — version0.1
 
@@ -68,3 +68,5 @@ Root final readiness PASS at proposal d75532d clears status-only initial issue a
 ### S03 initial intake/transfer —2026-10-29 CDT
 
 Root exact bd3b685 readiness→status-only issue f51826d→complete source-cited intake/query addendum accepted→fresh854/treeef81/branch/lock/guard/protectedrefs verified. After current checkpoint commit+explicit dispatch, retained Luna/high CC owns exact15/index/ONEtarget for S03 INITIAL/pass1; root/CDC source read-only. S03 eight rows remain OPEN; S04 DRAFT/unissued, parent six rows/project14 OPEN. Current detailed ownership is S03 artifacts/execution.md; earlier Current readiness DRAFT sentence is historical pre-issue, not acceptance. No external/Arc06.
+
+- 0.4 —2026-10-29: actual S03 local close2b7/tree83d and original curation reimport/seal/history/query proof;23child/fivearcDONE, three arc/all14project OPEN. S04 remains UNISSUED pending final current reconciliation/readiness; its8rows OPEN through final assembled/canonical/root gate.

@@ -1,0 +1,14 @@
+[1;34mChecking code formatting...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+Diff in /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/examples/owned_snapshot.rs:584:
+         Err(OwnedJournalError::ImportConflict(_)) => {}
+         Ok(_) => return Err("a different valid history was not rejected as a conflict".into()),
+         Err(error) => {
+-            return Err(format!("different valid history returned the wrong error: {error}").into());
++            return Err(
++                format!("different valid history returned the wrong error: {error}").into(),
++            );
+         }
+     }
+     println!(
+make: *** [fmt-check] Error 1

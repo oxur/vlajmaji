@@ -1,0 +1,193 @@
+Detail la-lojban-4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15-assertion-0: Resolved
+snapshot: "088b5519631309049c194e7e2496f6a3a157583384e4e73ee9b50114f41e87f9"
+reason: null
+current_eligible: true
+reference: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"lensisku","entry_id":"la-lojban-4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15-entry-0","assertion_id":"la-lojban-4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15-assertion-0","occurrence":{"capture":{"namespace":"captured:lensisku:la-lojban:en","sha256":"4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15"},"locator":"/0"},"entry_sha256":"b933736c2fbf10ce5c580c7aaba2bcef11bbfca56ff2bdd6711d984da78224cd","assertion_sha256":"5ffb794f1362c4d65134af690f51d185c558d731db2cb9fcffebfac9ef3f3db9","native_entry_id":null,"native_assertion_id":"7","contributor_id":"lensisku-user-2bd806c97f0e00af1a1fc3328fa763a9269723c8db8fac4f93af71db186d6e90","distributor_id":"la-lojban"}
+hit: {
+  "occurrence_id": "000000000000001e63617074757265643a6c656e7369736b753a6c612d6c6f6a62616e3a656e00000000000000403436363763636162633662303066643837346239356134653132643036333966613764666238356161306663313034366538313038656631393833333261313500000000000000022f30",
+  "entry": {
+    "id": "la-lojban-4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15-entry-0",
+    "source": "lensisku",
+    "spelling": {
+      "Value": "coi"
+    },
+    "language": {
+      "Value": "jbo"
+    },
+    "script": "Missing",
+    "native_word_class": {
+      "Value": "gismu"
+    },
+    "selmaho": "Missing",
+    "mapped_pos": "Missing"
+  },
+  "assertion": {
+    "id": "la-lojban-4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15-assertion-0",
+    "entry": "la-lojban-4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15-entry-0",
+    "occurrence": {
+      "capture": {
+        "namespace": "captured:lensisku:la-lojban:en",
+        "sha256": "4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15"
+      },
+      "locator": "/0"
+    },
+    "native_sense_id": "Missing",
+    "language": {
+      "Value": "en"
+    },
+    "definition": {
+      "Value": {
+        "text": "greeting",
+        "language": {
+          "Value": "en"
+        },
+        "markup": "Missing"
+      }
+    },
+    "source_score": "Missing",
+    "timestamps": [],
+    "eligibility": "Lexical"
+  },
+  "capture": {
+    "source_name": "La-Lojban English dictionary export",
+    "format_label": "la-lojban-export-v1",
+    "locator": "https://example.invalid/tiny/en.json",
+    "revision": {
+      "Value": "0000000000000000000000000000000000000000"
+    },
+    "captured_at": "Missing",
+    "time_precision": "Unknown",
+    "notice_locator": {
+      "Value": "https://example.invalid/tiny/README.md"
+    }
+  },
+  "raw": {
+    "locator": "/0",
+    "fields": [
+      {
+        "name": "word",
+        "encoding": "Json",
+        "raw_value": "\"coi\""
+      },
+      {
+        "name": "word_type",
+        "encoding": "Json",
+        "raw_value": "\"gismu\""
+      },
+      {
+        "name": "definition",
+        "encoding": "Json",
+        "raw_value": "\"greeting\""
+      },
+      {
+        "name": "definition_id",
+        "encoding": "Json",
+        "raw_value": "7"
+      },
+      {
+        "name": "user",
+        "encoding": "Json",
+        "raw_value": "{\"username\":\"alice\"}"
+      }
+    ],
+    "raw_line": null
+  },
+  "snapshot_attribution": {
+    "snapshot": {
+      "namespace": "captured:lensisku:la-lojban:en",
+      "sha256": "4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15"
+    },
+    "source": "lensisku",
+    "distributor": "la-lojban"
+  },
+  "occurrence_attribution": {
+    "occurrence": {
+      "snapshot": {
+        "namespace": "captured:lensisku:la-lojban:en",
+        "sha256": "4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15"
+      },
+      "locator": "/0"
+    },
+    "contributor": "lensisku-user-2bd806c97f0e00af1a1fc3328fa763a9269723c8db8fac4f93af71db186d6e90",
+    "native_entry_id": null,
+    "native_assertion_id": "7"
+  },
+  "contributor": {
+    "id": "lensisku-user-2bd806c97f0e00af1a1fc3328fa763a9269723c8db8fac4f93af71db186d6e90",
+    "display_name": "alice"
+  },
+  "distributor": {
+    "id": "la-lojban",
+    "display_name": "La-Lojban"
+  },
+  "release_ids": [
+    "la-lojban-release-e9aeeda43d145fac9dd2430a88c958be771edfae8e31b7b8e0b9a82f0b7c756b"
+  ],
+  "contexts": [],
+  "frames": [],
+  "forms": [],
+  "etymologies": [],
+  "relations": [
+    {
+      "id": "cdc-reviewed-link",
+      "origin": {
+        "EditorialSense": "cdc-reviewed-sense"
+      },
+      "kind": "EditorialLink",
+      "direction": "Forward",
+      "scope": "Editorial",
+      "target": {
+        "Catalog": {
+          "source": "lensisku",
+          "release": "la-lojban-release-e9aeeda43d145fac9dd2430a88c958be771edfae8e31b7b8e0b9a82f0b7c756b",
+          "native_entry_id": null,
+          "native_assertion_id": "7",
+          "occurrence": {
+            "capture": {
+              "namespace": "captured:lensisku:la-lojban:en",
+              "sha256": "4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15"
+            },
+            "locator": "/0"
+          }
+        }
+      },
+      "evidence": null,
+      "editorial_revision": "owned-r2"
+    }
+  ],
+  "editorial_senses": [
+    {
+      "id": "cdc-reviewed-sense",
+      "assertions": [
+        "owned-assertion-a",
+        "owned-assertion-b",
+        "la-lojban-4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15-assertion-0"
+      ],
+      "editor": "editor-example",
+      "revision": "owned-r2",
+      "rationale": {
+        "text": "Review two retained owned assertions and one supplied occurrence",
+        "language": "Missing",
+        "markup": "Missing"
+      }
+    }
+  ],
+  "computations": [],
+  "annotations": [],
+  "extensions": [
+    {
+      "owner": "cdc-reviewed-sense",
+      "name": "vlajmaji.owned-curation.v1",
+      "value": "{\"version\":1,\"record\":{\"id\":\"cdc-reviewed-sense\",\"revision\":\"owned-r2\",\"editor\":\"editor-example\",\"rationale\":{\"text\":\"Review two retained owned assertions and one supplied occurrence\",\"language\":\"Missing\",\"markup\":\"Missing\"},\"kind\":{\"sense\":{\"members\":[{\"owned_assertion\":\"owned-assertion-a\"},{\"owned_assertion\":\"owned-assertion-b\"},{\"external\":{\"context\":\"cdc-context\",\"target\":{\"source\":\"lensisku\",\"release\":\"la-lojban-release-e9aeeda43d145fac9dd2430a88c958be771edfae8e31b7b8e0b9a82f0b7c756b\",\"native_entry_id\":null,\"native_assertion_id\":\"7\",\"occurrence\":{\"capture\":{\"namespace\":\"captured:lensisku:la-lojban:en\",\"sha256\":\"4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15\"},\"locator\":\"/0\"}},\"entry\":\"la-lojban-4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15-entry-0\",\"assertion\":\"la-lojban-4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15-assertion-0\"}}]}}},\"contexts\":[{\"id\":\"cdc-context\",\"model_sha256\":\"db8483868e595b42c412632c0b5b90e101d5a25a4f74bc2f5d1546de94ce0f13\",\"source_ids\":[\"lensisku\"],\"release_ids\":[\"la-lojban-release-e9aeeda43d145fac9dd2430a88c958be771edfae8e31b7b8e0b9a82f0b7c756b\"]}]}",
+      "evidence": null
+    },
+    {
+      "owner": "cdc-reviewed-link",
+      "name": "vlajmaji.owned-curation.v1",
+      "value": "{\"version\":1,\"record\":{\"id\":\"cdc-reviewed-link\",\"revision\":\"owned-r2\",\"editor\":\"editor-example\",\"rationale\":{\"text\":\"Link the reviewed sense to the pinned external occurrence\",\"language\":\"Missing\",\"markup\":\"Missing\"},\"kind\":{\"link\":{\"origin\":{\"EditorialSense\":\"cdc-reviewed-sense\"},\"direction\":\"Forward\",\"target\":{\"context\":\"cdc-context\",\"target\":{\"source\":\"lensisku\",\"release\":\"la-lojban-release-e9aeeda43d145fac9dd2430a88c958be771edfae8e31b7b8e0b9a82f0b7c756b\",\"native_entry_id\":null,\"native_assertion_id\":\"7\",\"occurrence\":{\"capture\":{\"namespace\":\"captured:lensisku:la-lojban:en\",\"sha256\":\"4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15\"},\"locator\":\"/0\"}},\"entry\":\"la-lojban-4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15-entry-0\",\"assertion\":\"la-lojban-4667ccabc6b00fd874b95a4e12d0639fa7dfb85aa0fc1046e8108ef198332a15-assertion-0\"}}}},\"contexts\":[{\"id\":\"cdc-context\",\"model_sha256\":\"db8483868e595b42c412632c0b5b90e101d5a25a4f74bc2f5d1546de94ce0f13\",\"source_ids\":[\"lensisku\"],\"release_ids\":[\"la-lojban-release-e9aeeda43d145fac9dd2430a88c958be771edfae8e31b7b8e0b9a82f0b7c756b\"]}]}",
+      "evidence": null
+    }
+  ],
+  "owned_revision_ids": [],
+  "tombstoned_by": []
+}

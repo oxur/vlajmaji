@@ -1,0 +1,36 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error: unnecessary parentheses around index expression
+    --> crates/store/src/owned.rs:1900:37
+     |
+1900 |                     length: lengths[(*section)].try_into().unwrap_or(u64::MAX),
+     |                                     ^        ^
+     |
+     = note: `-D unused-parens` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(unused_parens)]`
+help: remove these parentheses
+     |
+1900 -                     length: lengths[(*section)].try_into().unwrap_or(u64::MAX),
+1900 +                     length: lengths[*section].try_into().unwrap_or(u64::MAX),
+     |
+
+error[E0282]: type annotations needed
+   --> crates/store/src/owned.rs:561:40
+    |
+559 |                     let result = rollback_error(&connection, error);
+    |                                  ---------------------------------- type must be known at this point
+560 |                     guard.disarm();
+561 |                     return result.map(|_| unreachable!("DDL failure cannot succeed"));
+    |                                        ^
+    |
+help: consider giving this closure parameter an explicit type
+    |
+561 |                     return result.map(|_: /* Type */| unreachable!("DDL failure cannot succeed"));
+    |                                         ++++++++++++
+
+For more information about this error, try `rustc --explain E0282`.
+error: could not compile `vlajmaji-store` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-store` (lib test) due to 2 previous errors
+make: *** [lint] Error 101
