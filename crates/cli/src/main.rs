@@ -16,7 +16,8 @@ use vlajmaji_lexicon::{
     LaLojbanImportError, LaLojbanImportOptions, LlgImportError, LlgImportOptions,
     OwnedContextInput, OwnedCurationDocument, PackId, PackPayloadKind, SUTYSISKU_PINNED_RAW_SHA256,
     SUTYSISKU_PINNED_REVISION, SutysiskuImportError, SutysiskuImportOptions, import_jbotci_export,
-    import_la_lojban_export, import_llg_lists, import_sutysisku_export, seal_release,
+    import_la_lojban_export, import_llg_lists, import_sutysisku_export, load_owned_snapshot,
+    seal_owned_snapshot, seal_release,
 };
 use vlajmaji_search::{
     CollectionCompactSearchEngine, CollectionQueryError, CollectionQueryErrorReport,
@@ -237,6 +238,40 @@ enum OwnedCommand {
         root: PathBuf,
         #[arg(long)]
         revision: Option<String>,
+    },
+    /// Export and seal the complete history visible to a pinned reader.
+    Export {
+        root: PathBuf,
+        #[arg(long)]
+        output: PathBuf,
+        #[arg(long)]
+        seal: PathBuf,
+    },
+    /// Strictly validate a complete snapshot/seal pair without opening a journal root.
+    Check {
+        #[arg(long)]
+        input: PathBuf,
+        #[arg(long)]
+        seal: PathBuf,
+    },
+    /// Import a complete validated history or recognize an exact replay.
+    Import {
+        root: PathBuf,
+        #[arg(long)]
+        input: PathBuf,
+        #[arg(long)]
+        seal: PathBuf,
+    },
+    /// Extract one historical base Dictionary without opening a journal root.
+    SnapshotModel {
+        #[arg(long)]
+        input: PathBuf,
+        #[arg(long)]
+        seal: PathBuf,
+        #[arg(long)]
+        revision: Option<String>,
+        #[arg(long)]
+        output: PathBuf,
     },
     /// Materialize an explicit curation view to a new output file.
     Materialize {
@@ -576,6 +611,74 @@ fn parse_owned_id(value: &str) -> Result<EntityId, CliError> {
         .map_err(|error| owned_error(OwnedJournalError::InvalidRequest(error.to_string())))
 }
 
+fn read_owned_file(path: &Path) -> Result<Vec<u8>, CliError> {
+    std::fs::read(path).map_err(|error| {
+        owned_error(OwnedJournalError::Io(io::Error::new(
+            error.kind(),
+            format!("read {}: {error}", path.display()),
+        )))
+    })
+}
+
+fn create_owned_file(path: &Path) -> Result<std::fs::File, CliError> {
+    std::fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(path)
+        .map_err(|error| {
+            owned_error(OwnedJournalError::Io(io::Error::new(
+                error.kind(),
+                format!("create {}: {error}", path.display()),
+            )))
+        })
+}
+
+fn write_owned_handle(mut file: std::fs::File, path: &Path, bytes: &[u8]) -> Result<(), CliError> {
+    file.write_all(bytes).map_err(|error| {
+        owned_error(OwnedJournalError::Io(io::Error::new(
+            error.kind(),
+            format!("write {}: {error}", path.display()),
+        )))
+    })?;
+    file.flush().map_err(|error| {
+        owned_error(OwnedJournalError::Io(io::Error::new(
+            error.kind(),
+            format!("flush {}: {error}", path.display()),
+        )))
+    })?;
+    file.sync_all().map_err(|error| {
+        owned_error(OwnedJournalError::Io(io::Error::new(
+            error.kind(),
+            format!("sync {}: {error}", path.display()),
+        )))
+    })
+}
+
+fn write_owned_file(path: &Path, bytes: &[u8]) -> Result<(), CliError> {
+    write_owned_handle(create_owned_file(path)?, path, bytes)
+}
+
+fn preflight_owned_outputs(paths: [&Path; 2]) -> Result<(), CliError> {
+    for path in paths {
+        match std::fs::symlink_metadata(path) {
+            Ok(_) => {
+                return Err(owned_error(OwnedJournalError::Io(io::Error::new(
+                    io::ErrorKind::AlreadyExists,
+                    format!("output already exists: {}", path.display()),
+                ))));
+            }
+            Err(error) if error.kind() == io::ErrorKind::NotFound => {}
+            Err(error) => {
+                return Err(owned_error(OwnedJournalError::Io(io::Error::new(
+                    error.kind(),
+                    format!("inspect {}: {error}", path.display()),
+                ))));
+            }
+        }
+    }
+    Ok(())
+}
+
 #[derive(Clone)]
 struct ManagedOutputContext {
     operation: String,
@@ -683,20 +786,30 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
         )),
         Command::Owned { command } => {
             let (operation, root) = match command {
-                OwnedCommand::Init { root, .. } => ("owned_init", root),
-                OwnedCommand::Edit { root, .. } => ("owned_edit", root),
-                OwnedCommand::Head { root } => ("owned_head", root),
-                OwnedCommand::History { root } => ("owned_history", root),
-                OwnedCommand::Show { root, .. } => ("owned_show", root),
-                OwnedCommand::MigrateCuration { root, .. } => ("owned_migrate_curation", root),
-                OwnedCommand::Curate { root, .. } => ("owned_curate", root),
-                OwnedCommand::CurationShow { root, .. } => ("owned_curation_show", root),
-                OwnedCommand::Materialize { root, .. } => ("owned_materialize", root),
+                OwnedCommand::Init { root, .. } => ("owned_init", Some(root.as_path())),
+                OwnedCommand::Edit { root, .. } => ("owned_edit", Some(root.as_path())),
+                OwnedCommand::Head { root } => ("owned_head", Some(root.as_path())),
+                OwnedCommand::History { root } => ("owned_history", Some(root.as_path())),
+                OwnedCommand::Show { root, .. } => ("owned_show", Some(root.as_path())),
+                OwnedCommand::MigrateCuration { root, .. } => {
+                    ("owned_migrate_curation", Some(root.as_path()))
+                }
+                OwnedCommand::Curate { root, .. } => ("owned_curate", Some(root.as_path())),
+                OwnedCommand::CurationShow { root, .. } => {
+                    ("owned_curation_show", Some(root.as_path()))
+                }
+                OwnedCommand::Export { root, .. } => ("owned_export", Some(root.as_path())),
+                OwnedCommand::Check { .. } => ("owned_check", None),
+                OwnedCommand::Import { root, .. } => ("owned_import", Some(root.as_path())),
+                OwnedCommand::SnapshotModel { .. } => ("owned_snapshot_model", None),
+                OwnedCommand::Materialize { root, .. } => {
+                    ("owned_materialize", Some(root.as_path()))
+                }
             };
             Some(context(
                 operation,
                 None,
-                Some(root),
+                root,
                 None,
                 Vec::new(),
                 "not_applicable",
@@ -1204,6 +1317,88 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                 .map_err(owned_error)?;
                 serde_json::to_value(document)
                     .map_err(|error| structured_error("owned_response", error.to_string()))?
+            }
+            OwnedCommand::Export { root, output, seal } => {
+                let reader = OwnedJournalReader::open(&root).map_err(owned_error)?;
+                let snapshot = reader.snapshot().map_err(owned_error)?;
+                let sealed = seal_owned_snapshot(&snapshot)
+                    .map_err(|error| owned_error(OwnedJournalError::InvalidSnapshot(error)))?;
+                preflight_owned_outputs([output.as_path(), seal.as_path()])?;
+                let output_file = create_owned_file(&output)?;
+                let seal_file = create_owned_file(&seal)?;
+                write_owned_handle(output_file, &output, &sealed.snapshot)?;
+                write_owned_handle(seal_file, &seal, &sealed.seal)?;
+                let data = snapshot.as_data();
+                serde_json::json!({
+                    "version": 1,
+                    "source": data.source,
+                    "head": data.head,
+                    "journal_schema": data.journal_schema,
+                    "revision_count": data.commits.len() as u64,
+                    "output": vlajmaji_store::native_path_report(&output),
+                    "output_bytes": sealed.snapshot.len() as u64,
+                    "output_sha256": sha256(&sealed.snapshot),
+                    "seal": vlajmaji_store::native_path_report(&seal),
+                    "seal_bytes": sealed.seal.len() as u64,
+                    "seal_sha256": sha256(&sealed.seal),
+                })
+            }
+            OwnedCommand::Check { input, seal } => {
+                let snapshot_bytes = read_owned_file(&input)?;
+                let seal_bytes = read_owned_file(&seal)?;
+                let snapshot = load_owned_snapshot(&snapshot_bytes, &seal_bytes)
+                    .map_err(|error| owned_error(OwnedJournalError::InvalidSnapshot(error)))?;
+                let data = snapshot.as_data();
+                serde_json::json!({
+                    "version": 1,
+                    "source": data.source,
+                    "head": data.head,
+                    "journal_schema": data.journal_schema,
+                    "revision_count": data.commits.len() as u64,
+                    "snapshot_bytes": snapshot_bytes.len() as u64,
+                    "snapshot_sha256": sha256(&snapshot_bytes),
+                    "seal_bytes": seal_bytes.len() as u64,
+                    "seal_sha256": sha256(&seal_bytes),
+                })
+            }
+            OwnedCommand::Import { root, input, seal } => {
+                let snapshot_bytes = read_owned_file(&input)?;
+                let seal_bytes = read_owned_file(&seal)?;
+                let snapshot = load_owned_snapshot(&snapshot_bytes, &seal_bytes)
+                    .map_err(|error| owned_error(OwnedJournalError::InvalidSnapshot(error)))?;
+                let (_, report) =
+                    OwnedJournal::import_snapshot(&root, &snapshot).map_err(owned_error)?;
+                serde_json::to_value(report)
+                    .map_err(|error| structured_error("owned_response", error.to_string()))?
+            }
+            OwnedCommand::SnapshotModel {
+                input,
+                seal,
+                revision,
+                output,
+            } => {
+                let revision = revision.as_deref().map(parse_owned_id).transpose()?;
+                let snapshot_bytes = read_owned_file(&input)?;
+                let seal_bytes = read_owned_file(&seal)?;
+                let snapshot = load_owned_snapshot(&snapshot_bytes, &seal_bytes)
+                    .map_err(|error| owned_error(OwnedJournalError::InvalidSnapshot(error)))?;
+                let revision = revision.unwrap_or_else(|| snapshot.as_data().head.clone());
+                let dictionary = snapshot
+                    .dictionary_at(&revision)
+                    .map_err(|error| owned_error(OwnedJournalError::InvalidSnapshot(error)))?;
+                let bytes = dictionary
+                    .to_json_bytes()
+                    .map_err(|error| owned_error(OwnedJournalError::InvalidDictionary(error)))?;
+                write_owned_file(&output, &bytes)?;
+                serde_json::json!({
+                    "version": 1,
+                    "source": snapshot.as_data().source,
+                    "revision": revision,
+                    "journal_schema": snapshot.as_data().journal_schema,
+                    "output": vlajmaji_store::native_path_report(&output),
+                    "output_bytes": bytes.len() as u64,
+                    "output_sha256": sha256(&bytes),
+                })
             }
             OwnedCommand::Materialize {
                 root,

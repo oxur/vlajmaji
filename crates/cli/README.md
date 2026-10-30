@@ -96,6 +96,12 @@ a separate view from the exact supplied context files; each file contains its
 declared pin ID and complete typed Dictionary. Output is created exclusively
 after materialization succeeds. The [owned dictionary guide](../../docs/owned-dictionary.md#reviewed-curation-and-explicit-context)
 includes a self-generated Tiny example and derived-query workflow.
+`owned export ROOT --output FILE --seal FILE` writes a canonical sealed full
+history; `owned check --input FILE --seal FILE` validates it without opening a
+journal, `owned import ROOT --input FILE --seal FILE` imports into a fresh
+explicit root or recognizes an exact replay, and `owned snapshot-model` writes
+one selected historical Dictionary. These commands report native paths and
+exact byte counts and SHA-256 values. See the [sealed-history recipe](../../docs/owned-dictionary.md#sealed-complete-history).
 `dictionary-query STORE --format compact --request JSON` and
 `lookup --format compact --request JSON` opt into compact Exact/Resolve output;
 both commands still default to the established full response. Resolve a returned

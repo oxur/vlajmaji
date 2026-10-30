@@ -450,6 +450,48 @@ impl OwnedCurationDocument {
         })
     }
 
+    /// Compute the stable SHA-256 for this complete curation state.
+    ///
+    /// The base dictionary is hashed from its canonical typed bytes; context
+    /// pins, definitions, and every selection row participate in the hash.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the base dictionary cannot be serialized or its
+    /// owned source and head cannot be validated.
+    pub fn state_sha256(&self) -> Result<String, OwnedCurationError> {
+        #[derive(Serialize)]
+        struct CurationHash<'a> {
+            version: u32,
+            source: &'a SourceId,
+            revision: &'a EntityId,
+            base_state_sha256: String,
+            contexts: &'a [OwnedContextPin],
+            records: &'a [OwnedCurationRecord],
+            revisions: &'a [OwnedCurationRevision],
+        }
+
+        let (source, revision) = base_source_head(&self.0.dictionary)?;
+        let base_state_sha256 = sha256(
+            &self
+                .0
+                .dictionary
+                .to_json_bytes()
+                .map_err(OwnedCurationError::Dictionary)?,
+        );
+        let bytes = serde_json::to_vec(&CurationHash {
+            version: self.0.version,
+            source: &source,
+            revision: &revision,
+            base_state_sha256,
+            contexts: &self.0.contexts,
+            records: &self.0.records,
+            revisions: &self.0.revisions,
+        })
+        .map_err(|error| OwnedCurationError::InvalidDocument(error.to_string()))?;
+        Ok(sha256(&bytes))
+    }
+
     /// Serialize the validated envelope as typed JSON bytes.
     pub fn to_json_bytes(&self) -> Result<Vec<u8>, OwnedCurationError> {
         serde_json::to_vec(self).map_err(|e| OwnedCurationError::InvalidDocument(e.to_string()))
@@ -852,7 +894,7 @@ fn validate(data: &OwnedCurationData) -> Result<(), OwnedCurationError> {
     Ok(())
 }
 
-fn validate_owned_base(dictionary: &Dictionary) -> Result<(), OwnedCurationError> {
+pub(crate) fn validate_owned_base(dictionary: &Dictionary) -> Result<(), OwnedCurationError> {
     let doc = dictionary.document();
     if doc.version != 1 || doc.registry.as_document().version != 1 || doc.legacy_archive.is_some() {
         return Err(OwnedCurationError::InvalidDocument(

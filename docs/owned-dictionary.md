@@ -118,6 +118,109 @@ The compact hit's complete `detail_ref` can be passed unchanged to
 attribution, occurrence identity, and expected hit IDs should come from the
 typed input before querying; a query result is not a source of identity.
 
+## Sealed complete history
+
+`owned_snapshot` is a self-contained Tiny example of the complete snapshot
+boundary. It creates an empty owned `r0`, adds two owned assertions at `r1`, and explicitly
+migrates the journal, then records `r2`/`r3`/`r4` curation selections: both
+records active, the Link tombstoned, then reactivated. The ordered three-member
+Sense contains both owned assertions and one assertion from the explicitly
+pinned synthetic context. It writes fixed `owned-example`/`owned-r0` through
+`owned-r4` inputs, the complete sealed snapshot pair, and a second imported
+journal beneath fresh roots:
+
+```sh
+cargo run -p vlajmaji-store --example owned_snapshot -- \
+  /tmp/owned-snapshot-inputs /tmp/owned-snapshot-source \
+  /tmp/owned-snapshot-imported
+```
+
+The files are `seed.json`, `r1.json` through `r4.json`, `base.json`,
+`r2-curation.json` through `r4-curation.json`, `context.json`,
+`snapshot.json`, and `seal.json`. The CLI reproduces the journal in a separate
+fresh root. Each root and output parent must already have a parent directory;
+all leaves are exclusive creations. Expected heads and states come from the
+emitted typed inputs, not query results:
+
+```sh
+CLI_ROOT=/tmp/owned-snapshot-cli
+vlajmaji owned init "$CLI_ROOT" --input /tmp/owned-snapshot-inputs/seed.json
+vlajmaji owned edit "$CLI_ROOT" --expected-head owned-r0 \
+  --input /tmp/owned-snapshot-inputs/r1.json
+vlajmaji owned migrate-curation "$CLI_ROOT" --expected-head owned-r1
+vlajmaji owned curate "$CLI_ROOT" --expected-head owned-r1 \
+  --input /tmp/owned-snapshot-inputs/r2-curation.json
+vlajmaji owned curate "$CLI_ROOT" --expected-head owned-r2 \
+  --input /tmp/owned-snapshot-inputs/r3-curation.json
+vlajmaji owned curate "$CLI_ROOT" --expected-head owned-r3 \
+  --input /tmp/owned-snapshot-inputs/r4-curation.json
+vlajmaji owned history "$CLI_ROOT"
+vlajmaji owned show "$CLI_ROOT" --revision owned-r0
+vlajmaji owned show "$CLI_ROOT" --revision owned-r4
+vlajmaji owned curation-show "$CLI_ROOT" --revision owned-r0
+vlajmaji owned curation-show "$CLI_ROOT" --revision owned-r1
+vlajmaji owned curation-show "$CLI_ROOT" --revision owned-r2
+vlajmaji owned curation-show "$CLI_ROOT" --revision owned-r3
+vlajmaji owned curation-show "$CLI_ROOT" --revision owned-r4
+vlajmaji owned materialize "$CLI_ROOT" --revision owned-r4 \
+  --output /tmp/owned-snapshot-unavailable.json
+vlajmaji owned materialize "$CLI_ROOT" --revision owned-r4 \
+  --context /tmp/owned-snapshot-inputs/context.json \
+  --output /tmp/owned-snapshot-resolved.json
+vlajmaji owned export "$CLI_ROOT" \
+  --output /tmp/owned-snapshot.json --seal /tmp/owned-snapshot.seal.json
+vlajmaji owned export "$CLI_ROOT" \
+  --output /tmp/owned-snapshot-repeat.json --seal /tmp/owned-snapshot-repeat.seal.json
+vlajmaji owned check --input /tmp/owned-snapshot.json \
+  --seal /tmp/owned-snapshot.seal.json
+vlajmaji owned import /tmp/owned-snapshot-cli-imported \
+  --input /tmp/owned-snapshot.json --seal /tmp/owned-snapshot.seal.json
+vlajmaji owned import /tmp/owned-snapshot-cli-imported \
+  --input /tmp/owned-snapshot.json --seal /tmp/owned-snapshot.seal.json
+vlajmaji owned snapshot-model --input /tmp/owned-snapshot.json \
+  --seal /tmp/owned-snapshot.seal.json --revision owned-r0 \
+  --output /tmp/owned-snapshot-old-base.json
+vlajmaji owned snapshot-model --input /tmp/owned-snapshot.json \
+  --seal /tmp/owned-snapshot.seal.json --output /tmp/owned-snapshot-base.json
+vlajmaji dictionary-build /tmp/owned-snapshot-base.json \
+  /tmp/owned-snapshot-base-store
+vlajmaji dictionary-build /tmp/owned-snapshot-resolved.json \
+  /tmp/owned-snapshot-derived-store
+vlajmaji dictionary-query /tmp/owned-snapshot-derived-store \
+  --format compact --request '{"operation":"exact","spelling":"farvi"}'
+```
+
+The history and `show` calls return the emitted r0 through r4 states. Migration
+backfills empty curation prefixes at r0 and r1; later calls return the exact r2,
+r3, and r4 curation states. The first materialization has zero context and
+reports `Unavailable`/`MissingContext`; the second supplies exactly
+`cdc-context`. `curation-show` returns definitions without resolving targets.
+The two exports must be byte-identical pairs. The original base retains both owned assertions;
+the Sense retains both owned members while its external member and dependent
+Link resolve only with the declared context. The two imports demonstrate a fresh import followed by exact replay.
+The generated example also verifies each historical base and curation state,
+then rejects a different valid schema-one history as a conflict.
+
+Derive expected query targets and detail keys from `base.json`,
+`/tmp/owned-snapshot-resolved.json`, and `context.json` before querying. Exercise
+Full, Compact, and Readable Exact/Local/Catalog Resolve requests and Full and
+Readable detail using the existing query interfaces. For Local/Exact, use the
+owned `farvi` assertions; for Catalog, use the input-derived context target.
+Check the complete typed Entry, Assertion, native attribution, occurrence, and
+13-field detail key rather than taking an identity from query output. Full
+Resolve rows use inherited source/spelling/occurrence order; a Sense's member
+order remains its declared order.
+
+Snapshot JSON and seal writers emit canonical compact bytes without a trailing
+line feed. `OwnedSnapshot::from_json_bytes` validates the complete history but
+accepts otherwise valid JSON whitespace and field ordering; only snapshot
+sealing checks the exact payload bytes. Seal JSON input may itself contain
+valid noncanonical whitespace. Length and SHA-256 inventory the exact payload
+bytes; neither they nor retained history prove authorship, authenticity, or a
+licence grant. Export creates both requested files exclusively after
+validation, so a later filesystem failure can leave a partial pair. A report
+write failure after import does not undo the committed history.
+
 ## Rust API
 
 `vlajmaji_store::OwnedJournal::create(root, &genesis)` validates the owned

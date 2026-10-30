@@ -53,8 +53,9 @@ pub use dictionary_verification::{
 };
 pub use owned::{
     OwnedCommitSummary, OwnedCurationMigrationReport, OwnedHeadReport, OwnedHistoryReport,
-    OwnedJournal, OwnedJournalError, OwnedJournalErrorCategory, OwnedJournalReader,
-    OwnedMigrationOutcome, OwnedRevisionView, OwnedWriteOperation, OwnedWriteReport,
+    OwnedImportOutcome, OwnedImportReport, OwnedJournal, OwnedJournalError,
+    OwnedJournalErrorCategory, OwnedJournalReader, OwnedMigrationOutcome, OwnedRevisionView,
+    OwnedWriteOperation, OwnedWriteReport,
 };
 
 #[cfg(feature = "graph")]

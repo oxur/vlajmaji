@@ -60,6 +60,13 @@ Dictionary inputs and returns a distinct normalized view with visible
 unavailable/unresolved outcomes. See the `owned_curation` example for a
 self-generated Tiny input set and the [curation workflow](../../docs/owned-dictionary.md#reviewed-curation-and-explicit-context).
 
+`OwnedJournalReader::snapshot` exports the complete retained history, including
+the exact 24-section prefix roster and any migrated curation sidecar.
+`OwnedJournal::import_snapshot` validates before creating a fresh root and
+recognizes only an exact canonical replay. The `owned_snapshot` example emits
+a self-contained schema-two history, curation/context inputs, and sealed
+snapshot pair; see the [sealed-history workflow](../../docs/owned-dictionary.md#sealed-complete-history).
+
 ```rust,no_run
 use vlajmaji_lexicon::Dictionary;
 use vlajmaji_store::DictionaryStore;
