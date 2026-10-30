@@ -1,7 +1,12 @@
 {
   "version": 1,
-  "kind": "prospective-pre-input-buffers-not-product-proof",
-  "accepted_s03_binding": "PENDING",
+  "kind": "frozen-pre-input-buffers-not-new-product-proof",
+  "accepted_s03_binding": {
+    "source": "2b7b6dda55dc00d62bfa4fcdc5d5a09742fcf528",
+    "tree": "83d81705cc1de3aa69f1d6d39e4c524bb1b6d9b3",
+    "planning_close": "944c607a91f0fc365f67d12c858d95e31d882e9f",
+    "root_consistency": "PASS, source/metadata only; no S04 runtime"
+  },
   "positive_snapshot": {
     "path": "../../../slice03-sealed-owned-history/artifacts/schema2-golden/snapshot.json",
     "bytes": 15705,
@@ -15,8 +20,7 @@
   "cases": [
     {
       "name": "unsupported-payload",
-      "change": "ONLY first top-level snapshot version1→2; seal snapshot_version remains supported1 so payload decoder is reached",
-      "expected_variant_prospective": "UnsupportedVersion(kind=owned snapshot,found=2)",
+      "change": "ONLY first top-level snapshot version1\u21922; seal snapshot_version remains supported1 so payload decoder is reached",
       "payload": {
         "path": "unsupported-payload.json",
         "bytes": 15705,
@@ -27,12 +31,12 @@
         "bytes": 353,
         "sha256": "b3bfb493d6fade9c9158eabbe23149fcd59c957a051100318e1a43d995c95684"
       },
-      "checks": "outer exact SHA/length recomputed; original supported seal header/inventory and order preserved; noLF"
+      "checks": "outer exact SHA/length recomputed; original supported seal header/inventory and order preserved; noLF",
+      "expected_variant": "OwnedSnapshotError::UnsupportedVersion { kind: \"owned snapshot\", found: 2 }"
     },
     {
       "name": "unknown-prefix",
-      "change": "ONLY r0 first prefix section registry.sources→registry.invalid_section; final Dictionary and all state hashes unchanged",
-      "expected_variant_prospective": "History",
+      "change": "ONLY r0 first prefix section registry.sources\u2192registry.invalid_section; final Dictionary and all state hashes unchanged",
       "payload": {
         "path": "unknown-prefix.json",
         "bytes": 15713,
@@ -43,7 +47,267 @@
         "bytes": 353,
         "sha256": "4f4bb3222ef36f928bc347b0bde81062c1c2e3dd96a21c2ee2190bea113b61c9"
       },
-      "checks": "outer exact SHA/length recomputed; original supported seal header/inventory and order preserved; noLF"
+      "checks": "outer exact SHA/length recomputed; original supported seal header/inventory and order preserved; noLF",
+      "expected_variant": "OwnedSnapshotError::History(detail) where detail == \"commit roster section 0 must be registry.sources\""
     }
-  ]
+  ],
+  "history": [
+    {
+      "revision": "owned-r0",
+      "dictionary_bytes": 2003,
+      "state_sha256": "178cb4a48245db47a568bb740f5ec123575aae38eb961c9ce05f40c7f0526c9a",
+      "prefix_lengths": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "contexts_length": 0,
+      "records_length": 0,
+      "curation_sha256": "7a9ff76782384a8d55e2ccf5505759d2c6b709ec3a56a86294f70e78d3b7a2e0",
+      "dictionary": {
+        "path": "history/owned-r0.json",
+        "bytes": 2003,
+        "sha256": "178cb4a48245db47a568bb740f5ec123575aae38eb961c9ce05f40c7f0526c9a"
+      },
+      "curation": {
+        "path": "history/owned-r0.curation.json",
+        "bytes": 2123,
+        "sha256": "7aa7b4251ab80b017830760f5026de16c5be26b7393e4570998b10548cf49427"
+      }
+    },
+    {
+      "revision": "owned-r1",
+      "dictionary_bytes": 5555,
+      "state_sha256": "e96d7fdee27a1cf84b152799b51c7b6e541aeae714396665fa98985f5c81d05f",
+      "prefix_lengths": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        1,
+        1,
+        2,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "contexts_length": 0,
+      "records_length": 0,
+      "curation_sha256": "8003d426f599021ac75733efd9cc9462e2f99b3bd421c423a256e0d71596bf2b",
+      "dictionary": {
+        "path": "history/owned-r1.json",
+        "bytes": 5555,
+        "sha256": "e96d7fdee27a1cf84b152799b51c7b6e541aeae714396665fa98985f5c81d05f"
+      },
+      "curation": {
+        "path": "history/owned-r1.curation.json",
+        "bytes": 5727,
+        "sha256": "a05756ddbac0ee22a7e28419cbcc8cfe4e51a6577d0227f8f35934f698e82a31"
+      }
+    },
+    {
+      "revision": "owned-r2",
+      "dictionary_bytes": 5882,
+      "state_sha256": "1cdf04f2a5dfc078ebc7c55416821a2a62a5835865c21846a78d289b142cef3a",
+      "prefix_lengths": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        1,
+        1,
+        2,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "contexts_length": 1,
+      "records_length": 2,
+      "curation_sha256": "b6ec1a55d9602412849c910464996899f0b015899bd68a7002031e7cc2a445a9",
+      "dictionary": {
+        "path": "history/owned-r2.json",
+        "bytes": 5882,
+        "sha256": "1cdf04f2a5dfc078ebc7c55416821a2a62a5835865c21846a78d289b142cef3a"
+      },
+      "curation": {
+        "path": "history/owned-r2.curation.json",
+        "bytes": 8112,
+        "sha256": "48a28f11a8a4ef49f3f97c341fa9c1269100ba7d1f74e5886a5f46ce9a6d90b0"
+      }
+    },
+    {
+      "revision": "owned-r3",
+      "dictionary_bytes": 6201,
+      "state_sha256": "d5279857727404503d065e4760960e2665d0e3b617cd5d88249eba53fb4e3917",
+      "prefix_lengths": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        1,
+        1,
+        2,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "contexts_length": 1,
+      "records_length": 2,
+      "curation_sha256": "36ee700b310f64f599327f22d7017eacc32705bc051aa514a55675b6f4520e18",
+      "dictionary": {
+        "path": "history/owned-r3.json",
+        "bytes": 6201,
+        "sha256": "d5279857727404503d065e4760960e2665d0e3b617cd5d88249eba53fb4e3917"
+      },
+      "curation": {
+        "path": "history/owned-r3.curation.json",
+        "bytes": 8522,
+        "sha256": "e3f115135518b725facdbb11cdd00342c38af7030d4d72cda3161e2f7a1eea8e"
+      }
+    },
+    {
+      "revision": "owned-r4",
+      "dictionary_bytes": 6520,
+      "state_sha256": "5d912d6f36fe0df64045a862ed4dd228fde1caf2d2371979e9e86f758b0ab1a5",
+      "prefix_lengths": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        1,
+        1,
+        2,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5,
+        0,
+        0,
+        0,
+        0
+      ],
+      "contexts_length": 1,
+      "records_length": 2,
+      "curation_sha256": "fdf5d1d7ec48458d4815b2230ee5086f2709e028d7fa1416111337674062ef4a",
+      "dictionary": {
+        "path": "history/owned-r4.json",
+        "bytes": 6520,
+        "sha256": "5d912d6f36fe0df64045a862ed4dd228fde1caf2d2371979e9e86f758b0ab1a5"
+      },
+      "curation": {
+        "path": "history/owned-r4.curation.json",
+        "bytes": 8933,
+        "sha256": "b8d1551f42d1e0348ad1af8bc20089cf31f322078707806729475db11a432af3"
+      }
+    }
+  ],
+  "seal_or_hash_cases": [
+    {
+      "path": "tampered-payload.json",
+      "bytes": 15705,
+      "sha256": "7c2ce4f8e77964c75a0712ba2415ea798271609fb8ea978f59863cb2d7c016a9",
+      "expected_variant": "OwnedSnapshotError::HashMismatch { expected: positive_snapshot.sha256, actual: this payload SHA }",
+      "paired_with": "original positive seal for tampered payload; original positive payload for changed seal"
+    },
+    {
+      "path": "unsupported-seal.json",
+      "bytes": 353,
+      "sha256": "afa4b943ea7ed113ca7da33b14e521ad371bf8dcd36e8b38d916c00ef1023d83",
+      "expected_variant": "OwnedSnapshotError::UnsupportedVersion { kind: \"owned snapshot seal\", found: 2 }",
+      "paired_with": "original positive seal for tampered payload; original positive payload for changed seal"
+    },
+    {
+      "path": "wrong-kind.seal.json",
+      "bytes": 352,
+      "sha256": "528c5cea314eeb5d5c9951d02c54472105ab8bcdcf2febfbcd7211903390699b",
+      "expected_variant": "OwnedSnapshotError::InvalidDocument(detail) where detail == \"unexpected owned snapshot seal kind\"",
+      "paired_with": "original positive seal for tampered payload; original positive payload for changed seal"
+    }
+  ],
+  "cli_inputs": {
+    "context.json": {
+      "path": "../../../slice02-reviewed-curation/artifacts/cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/context.json",
+      "bytes": 9018,
+      "sha256": "b7ca991619bf9b0025e0b95aa6293b6793a5924ff8cde792eea4adb9dee3aaa8",
+      "authority": "original pre-input expected data, not S04 product output"
+    },
+    "expected-view.json": {
+      "path": "../../../slice02-reviewed-curation/artifacts/cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/expected-view.json",
+      "bytes": 17940,
+      "sha256": "bd662bd6734dda3a17d666fbb260163d17d84ee44df0906d84dd1d75c022bfb3",
+      "authority": "original pre-input expected data, not S04 product output"
+    }
+  }
 }

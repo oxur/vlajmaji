@@ -1,6 +1,6 @@
 # S04 ledger — optional owned snapshot package
 
-**Current,2026-10-29:** PROSPECTIVE DRAFT ONLY, UNISSUED. S02 is locally CLOSED at854865a7; S03 is INITIAL implementation active under its accepted-intake15-path/index/ONEtarget transfer; no accepted S03 snapshot API/source yet. Actual accepted source/dependency/allowlist/readset and literal consumer inputs must be reconciled before issue. All8rows OPEN. No source/index/target transfer or runtime is authorized by this record.
+**Current,2026-10-29:** DRAFT/UNISSUED; accepted S03 local close2b7/tree83d/planning944c607 root consistency PASS. Exact12paths/API/errors/readset/frozen original history INPUTs reconciled; root exact readiness pending. Source/index/ONEtarget ROOT QUIET. All8 binding rows byte-identical OPEN and remain OPEN/proposed after operational CDC proof through fresh NEW actual assembled/SAME canonical/root gates.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |
@@ -16,3 +16,5 @@
 ## Prospective compatibility note —2026-10-29
 
 Plan§4 now permits exactly one offline synthetic owned-pair preparation step in the existing `.github/workflows/ci.yml` before its all-features test; the current four-pack recipe would otherwise lack the new embedded input. Same recipe must be proven locally in the asserted disjoint archive. No hosted delivery or current S02 source-scope expansion follows. All eight binding criteria/verifiers/owners/statuses above are unchanged OPEN.
+
+Final0.4 reconciliation changes current readiness metadata only; all original criterion/verifier/owner/status/evidence cells remain unchanged. Exact new pure APIs/typed errors and source/INPUT hashes are in cc-prompt/readset and artifacts/consumer-inputs/oracles.json. No S04 issue/intake/Cargo/runtime/lock change occurred.
