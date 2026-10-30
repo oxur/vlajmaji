@@ -1,0 +1,48 @@
+# S04 — proposed CC closeout
+
+**Disposition: PROPOSED; all eight S04 ledger rows remain OPEN.** This is the author’s account of the implemented increment and its evidence. It is not independent acceptance or slice closure. CDC review, a fresh assembled review, SAME-context canonical review, and root consistency/close remain pending. The latest supplied CDC status is that its independent run is in progress; this report claims no CDC result.
+
+## Delivered capability and frozen source
+
+S04 adds the optional, unpublished `vlajmaji-data-owned` crate with an empty default feature set and an opt-in `embedded` loader that delegates to the strict owned-snapshot loader. The umbrella crate re-exports it only behind its opt-in feature. The allowed CI change prepares a local Synthetic owned snapshot/seal pair before the existing all-features test. A preserved two-dependency consumer and a twelve-command CLI observer exercise the package and explicit owned workflow without adding a fifth `PackId` or changing `CollectionSelection::All`.
+
+The author froze source commit `d2a566c6cf9106bbb3b2c1a0cf6c62e402ad2a0c` (tree `cc9f6f73e8d724e9129a26e7374fa64bb0f0b36e`, parent `2b7b6dda55dc00d62bfa4fcdc5d5a09742fcf528`). The commit contains exactly these twelve paths:
+
+- `.github/workflows/ci.yml`, `.gitignore`, `Cargo.lock`, `README.md`, and `docs/owned-dictionary.md`;
+- `crates/data-owned/Cargo.toml`, `crates/data-owned/README.md`, `crates/data-owned/src/lib.rs`, and `crates/data-owned/tests/owned_package_contract.rs`;
+- `crates/vlajmaji/Cargo.toml`, `crates/vlajmaji/src/lib.rs`, and `crates/vlajmaji/README.md`.
+
+The commit has adjacent Codex and Billo AI co-author trailers. The worktree and index were clean; `git diff --check HEAD^ HEAD` passed. The archive copy was byte-equal for all twelve paths before freeze. Detailed commands, raw outputs, source/binary pins, and earlier attempt chronology are in [the execution record](artifacts/execution.md).
+
+## Proposed row walk
+
+| Ledger row | Proposed evidence and scope | Current status |
+| --- | --- | --- |
+| **S04-01 — optional crate is default-empty and strictly loads the complete owned snapshot before SQLite** | `package-test01.log` records the default-feature check; the sole corrected private-consumer run checked five base states, five curation states, 24 typed section prefixes, and strict-loader errors. It used direct dependencies on `data-owned` and lexicon. This is author evidence; independent reproduction is pending. | **OPEN** |
+| **S04-02 — umbrella opt-in preserves defaults, features, and four-pack semantics** | Frozen manifest/export diff plus the passing no-default, combined owned/four-upstream/morphology test, and all-features archive run. Existing four pack routes ran; no `PackId` or `All` behavior was changed. | **OPEN** |
+| **S04-03 — explicit export prepares a deterministic local pair without a new protocol or implicit data access** | The permitted synthetic preparation ran the existing curation example and explicit CLI export with create-new snapshot/seal paths. The archive run then moved the pair to separate evidence storage and ran the existing rich-pair recipe. These are local synthetic inputs, not retained user or Full data. | **OPEN** |
+| **S04-04 — optional content preserves history, curation, authority, and context semantics** | The corrected consumer and author observer checked the five-state history and the twelve direct CLI children using input-derived expectations. Full/Compact/Readable exact, Local Sense Compact, and Full/Readable detail outputs were exercised. The expected view was pre-input data, not a materialized product output. | **OPEN** |
+| **S04-05 — package and licensing boundaries remain truthful; no fifth mandatory input is introduced** | Both package `--list` inventories completed with six actual entries apiece. `data-owned` remains unpublished; the owned feature is optional, and no payload/database is claimed as a distributable package entry. Documentation distinguishes integrity from permission and retains the four existing pack identifiers. No package verification, publication, or legal clearance was performed. | **OPEN** |
+| **S04-06 — local, feature, and native compatibility remains valid** | Scoped format and lint, default package test, corrected workspace `make check`, no-default test, four Synthetic routes, combined feature test, one physically asserted disjoint Synthetic archive all-features run, and both package FILE inventories completed. Exact receipts and qualifications are in the execution record. No hosted CI was run. | **OPEN** |
+| **S04-07 — callers can run the public and CLI workflow from preserved inputs** | The preserved direct consumer invocation passed, and the author observer completed all twelve CLI children with exit 0 and no timeout, including import/show/curation-show/materialize/build and the requested query/detail forms. The consumer method, its binding, input authorities, and all child stdout/stderr are retained under `artifacts/author12-method01/`. | **OPEN** |
+| **S04-08 — assignment, independent disposition, retrospective, and higher Arc05 gates precede closure** | Intake, source freeze, and author evidence are recorded. Independent CDC and fresh-review/canonical/root gates are not complete in this report. The slice therefore makes no child closure or Arc05 completion claim. | **OPEN** |
+
+## Validation, limitations, and preserved failures
+
+The current-source format check and Clippy passed after the recorded initial missing-crate-documentation failure was corrected. The default package test passed. The first actual workspace Make run failed in the CLI pipeline at `make_forwards_metacharacter_paths_and_requires_explicit_cargo_target`; the later corrected `make check` passed. A separate first Make wrapper failed before invoking Make because of shell quoting. These attempts remain in the execution record rather than being rewritten as one uninterrupted pass.
+
+The initial private consumer invocation exited 101 at the first curation `state_sha256` assertion because its expected value used the base Dictionary hash. The failure and whole original consumer bytes were retained; the single authorized correction changed the five expected curation hashes and the corrected invocation exited 0. Separately, author observer binding01 failed its pre-child membership check and launched zero product children; binding02 added only the missing `oracles.json` digest mapping, and the one authorized observer invocation then completed twelve children successfully. Neither earlier failure is erased by the later success.
+
+The actual `fmt-check02` environment receipt had a PATH component differing from the captured literal PATH; executable-lookup equivalence is not claimed. Subsequent required checks used the recorded literal PATH and pinned tool homes, guard, toolchain, offline/locked mode, fresh owned environment directories, and retained target. The first lock-bootstrap record’s byte count was later corrected: the accepted lock is 32,280 bytes, SHA-256 `56fe1cbb2b6eee50e82aa46b2532c6019bdc4872751e01dbeae0167b6012a689`. The sole archive all-features run was not repeated; its complete raw has 67 Rust summary groups, 396 passed, 0 failed, and 1 ignored, plus tooling output. Each package FILE inventory lists six actual package entries; retained-target notices are not entries.
+
+The package inventories do not establish publication or legal permission. The checks were local and synthetic. No hosted workflow dispatch, Full-data probe, network action, package verification, external publication, or Arc06 work is claimed. Cargo may perform incidental compiler input reads; no system-wide trace of such incidental IO was made. Runtime SQLite files in the preserved observer tree are generated evidence outputs and are not part of the source commit.
+
+## Artifact inventory
+
+The durable supporting evidence is under `artifacts/`: the full [execution record](artifacts/execution.md); source-readback and input oracles under `consumer-inputs/`; synthetic preparation, combined-feature, all-features, Make, no-default, format/lint and package-list receipts; the preserved consumer correction and its original failure; and the author observer method, both bindings, preflight failure, successful twelve-child outputs, and invocation environment under `author12-method01/`. The observer tree includes generated SQLite files; they are retained as runtime outputs, not committed source. First-class issued prompts remain in the slice root.
+
+## Bubble-up to Arc05
+
+S04 delivers the planned optional-owned-data packaging step: a consumer may opt into loading the complete preserved history before the umbrella’s store/search path, while the existing four-pack routing stays intact. The clean all-features CI job needs the newly allowed local synthetic pair-preparation step; the source change is limited to that preparation and does not enable external data access. The author run also surfaced a distinction worth carrying forward: the curation `state_sha256` hashes its typed curation state body, not the bytes of the entire curation JSON file. The initial consumer failure exposed this observer mistake and the corrected run uses the distinct expected hashes.
+
+Scope as specified and delivered is the exact twelve-path S04 allowlist. The independent role evidence, fresh actual review, same canonical review, root consistency, mechanical child close, and Arc05-level composition/retrospective remain pending. All eight S04 rows are still OPEN, all fourteen Arc05 project rows remain OPEN, and Arc06 is not activated. CDC owns subsequent row disposition and any arc-plan bubble-up; this proposed author report does not advance either scale.

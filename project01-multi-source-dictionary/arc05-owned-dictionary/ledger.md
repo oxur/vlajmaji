@@ -1,6 +1,6 @@
 # Arc05 ledger
 
-**Current,2026-10-29:** S01–S03 CLOSED locally at2b7b6dda/tree83d81705:23child DONE, A05-01…05 DONE, remaining3arc/all14project OPEN. S03 fixed-input58+6 proof includes actual curation reimport and CURRENT migrated-empty history. S04 INITIALintakeaccepted/freshpinsPASS, conditionalCC12/index/target aftercheckpoint+dispatch; all8S04rows stay OPEN/proposed through fresh NEW assembled/SAME canonical/root gates. Source/index/ONEtarget ROOT QUIET.
+**Current,2026-10-30:** S01–S03 CLOSED locally (23 child/five arc DONE). S04 frozen d2a566c6/treecc9f6f73 author gates+12CLI and independent13 operational PASS, proposed only; all8 S04/remaining3 arc/all14 project OPEN through NEW fresh actual/SAME canonical/root. Source/index/ONEtarget ROOT QUIET. Historical evidence below remains unchanged.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |

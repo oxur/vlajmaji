@@ -1,0 +1,38 @@
+# S04 CDC operational verification — PROPOSED, 2026-10-30
+
+Operational result: PASS at `d2a566c6cf9106bbb3b2c1a0cf6c62e402ad2a0c`, tree `cc9f6f73e8d724e9129a26e7374fa64bb0f0b36e`, parent accepted S03 `2b7b6dda`. This is independent operational evidence, not S04/Arc05 close. All eight S04 rows remain OPEN through the required fresh actual composition, SAME-context canonical review and root consistency.
+
+## Scope and source disposition
+
+CDC read the entire twelve-path delta, all four new package files, manifests/lock and CI body. The direct unpublished package has empty defaults and lexicon-only dependency; cfg-gated byte includes delegate unchanged to `load_owned_snapshot`. It returns the complete typed history, not a final-model projection. No new PackId, All dispatch, normalized schema, journal mutation, search or upstream-provider implementation was added. Umbrella data-owned is opt-in; its graph includes store/search, so the before-SQLite evidence is the direct consumer, not the umbrella. Current workspace lock is 32,280 bytes / `56fe1cbb…a689`: all142 old parsed records/all fields remain equal except the sole umbrella owned edge; one local data-owned record depends only on lexicon.
+
+CDC independently verified exact twelve paths/224 insertions, adjacent coauthor trailers, clean source/index, baseline whole-body equality and archive equality. CLI `c88259af…b3afc`, consumer `41f518f0…fd26f`, public owned_snapshot example `b0364ef2…866e`, guard `426d1e49…f53d` are frozen. No CDC Cargo/build/feature/default/Full/network operation occurred. Source/index/ONEtarget were returned ROOT QUIET after the proof.
+
+## Actual evidence and denominators
+
+Author current format/lint, default-empty test1/1, corrected Make67 Rust groups393/0/1 with19 tooling tests separately, isolated no-default10groups83/0/0, actual CI synthetic preparation, selected5groups3/0/0, combined2groups2/0/0, sole archive allfeatures67groups396/0/1 and two package FILE lists passed. These populations overlap and are not a unique sum. Package lists each have six entries plus the guard notice; no data/DB/scratch appears. No package verification, publication, hosted Arc05 CI, Linux raw-name positive or Full-import claim follows. Exact argv/env/raw and terminal ownership are in [execution](artifacts/execution.md).
+
+The archive first used the actual source CI example→export body with exclusive outputs. That generated pair was inventoried and moved unchanged outside the archive; its new empty data directory then received the frozen rich schema2 pair by explicit import/export. The sole two-direct-dependency consumer tested that rich pair and five historical dictionaries/curation bodies, literal24-prefix rosters, curation state hashes and strict typed negatives/positive restore. The private full24-record lock and two-direct-dependency manifest independently exclude store/search/SQLite/graph. Cargo tree was tool-transcript-only; the preserved closure JSON is truthfully source-derived, not fabricated raw tree output.
+
+Author's original12 CLI proof passed12/12. Independent CDC then executed SAME consumer ONCE plus the original12 CLI children, all13 actual exits0/no timeout, with all26 raw stdout/stderr hashes/lengths independently reconciled. Method is the reviewed unchanged draft05, `5fb64dbb…58a40`; binding `984154b8…df354` pinned all73 bodies before/after. Outer direct exit0, 0.794 seconds is observation, not performance acceptance. Execution26809B SHA `d27742540651584dbd16cdecb729c681230a6a66086274d740cad94104dd7436`; commands9100B SHA `39c495f416f9900448458655d1fb8317602f4ee44ceccc02e5ddbe31319bbaf8`. Whole materialized-r2 view17,940B SHA `bd662bd6734dda3a17d666fbb260163d17d84ee44df0906d84dd1d75c022bfb3` equals fixed pre-input authority.
+
+The independent CLI journey checked whole meaningful check/import/show-r1/curation-r3/materialize-r2 reports; explicit derived build; Exact Full/Compact/Readable; Local Sense Compact; Full/Readable detail. Whole21-field hits,10-field Compact hits,13-field keys and required render labels/values derive from pre-input models. Detail response fieldset/status/current eligibility/whole hit/key are checked; returned state/snapshot digest VALUES are not independently compared. Inherited accepted projection evidence applies; this is not a whole-nine-field detail-response equality claim. Fixed owned-a/b plus external member remain distinct from the public example's fixture.
+
+## Row walk — proposed, all OPEN
+
+| Row | Actual operational evidence | Remaining higher gate |
+| --- | --- | --- |
+| S04-01 | Default-empty build/test; direct strict whole-history consumer; parsed no-SQLite closure; independent same-binary reproduction. | Fresh actual optional interaction/canonical/root. |
+| S04-02 | Exact manifest/reexport diff; defaults unchanged; no-default, selected/combined/allfeatures and inherited All-four regressions. | Fresh assembled/canonical/root. |
+| S04-03 | Shipped create-new recipe/actual CI body and both pair identities preserved; explicit rich import/export exact pair. Existing export replacement negatives inherited S03. | Fresh full owned journey/canonical/root. |
+| S04-04 | All5 old whole models/curation bodies+state hashes,24 rosters, actual supplied-context whole view/queries; retained missing context authority. | Fresh zero/wrong/exact context and r3/r4 journey/canonical/root. |
+| S04-05 | publish=false, ignored/excluded data, two actual six-entry FILE inventories, separate code/content terms and unchanged four-pack dispatch. | Fresh source/canonical/root. |
+| S04-06 | Current qualified gates/disjoint asserted archive/one target; every actual failure retained; no input/cache/default cleanup. | Fresh source/actual composed proof/canonical/root. |
+| S04-07 | Runnable package recipe, same direct consumer, actual author12+independent12 public CLI workflow. | Fresh public Rust example+24 CLI/canonical/root. |
+| S04-08 | Issued initial/PASS2/intake/disposition, author report and this independent operational rowwalk exist. | Fresh NEW Sol6.1/high technical then SAME canonical and root consistency REQUIRED. |
+
+## Failures and evidence limits retained
+
+Initial lint101 missing test crate docs was corrected within scope. Qualified fmt02 PATH differs; current checks use actual original PATH. First Make2 retained target command-line override and failing unchanged pipeline control; actual MAKEFLAGS was not captured, so proposed causal explanation remains qualified. One authorized unchanged-source corrected Make passed. Consumer pass1 exit101 confused base-state with curation-state hash; only five constants/two variable references changed under PASS2/5, source reviewed before its sole corrective run. First author observer preflight1 omitted oracle-manifest pin, zero children; binding02 adds only that fixed hash, then the one original12 sequence passed. No failures were rewritten as passes. Historical S01 incidental compile input I/O uncertainty and S02 unproven/unfixed fresh_root collision remain; no inference that current successful archive repaired them. No new performance/library/default/community-authority claim.
+
+[CDC proof manifest](artifacts/cdc-proof01/manifest.json) indexes40 whole-original copies237,854B; every copied original's bytes/SHA/length match. Two generated proof DBs and the private full parent-environment preparation record remain held/excluded; the canonical outer receipt records actual argv/cwd and named required environment. Author's two generated proof DBs likewise remain excluded from Git. All21 fixed input authorities and19 actual consumer copies retain their earlier provenance. The pending fresh reviewer must inspect current actual source/receipts rather than infer acceptance from green summaries.

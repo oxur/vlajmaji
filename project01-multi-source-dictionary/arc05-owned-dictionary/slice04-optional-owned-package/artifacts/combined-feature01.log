@@ -1,0 +1,24 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-data-owned v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01/crates/data-owned)
+   Compiling vlajmaji-data-llg v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01/crates/data-llg)
+   Compiling vlajmaji-data-sutysisku v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01/crates/data-sutysisku)
+   Compiling vlajmaji-data-lensisku-jbotci v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01/crates/data-lensisku-jbotci)
+   Compiling vlajmaji-data-la-lojban v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01/crates/data-la-lojban)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01/crates/search)
+   Compiling vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01/crates/vlajmaji)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 24.94s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji-fc9f27e19eb00b1e)
+
+running 1 test
+test owned_data_smoke::test_data_owned_reexport_loads_complete_embedded_history ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+   Doc-tests vlajmaji
+
+running 1 test
+test crates/vlajmaji/src/../README.md - (line 36) - compile ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 7.56s; merged doctests compilation took 2.69s

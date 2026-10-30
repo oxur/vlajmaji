@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/artifacts/author12-method01/generated-query-method.py", line 263, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/artifacts/author12-method01/generated-query-method.py", line 85, in main
+    assert str(d/'oracles.json') in binding['file_sha256']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

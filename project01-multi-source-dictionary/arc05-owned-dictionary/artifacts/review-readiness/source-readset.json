@@ -1,0 +1,198 @@
+{
+  "source": "d2a566c6cf9106bbb3b2c1a0cf6c62e402ad2a0c",
+  "tree": "cc9f6f73e8d724e9129a26e7374fa64bb0f0b36e",
+  "files": [
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/AGENTS.md",
+      "bytes": 8404,
+      "sha256": "3775aeaad14a5c1eca7edc52d061f39130b1f24ba9fd6dc9f4f537a7282914d7",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.toml",
+      "bytes": 961,
+      "sha256": "256e08fe4e4da6c867edc5aaed4fb20726efd48143c6029e103966b6e6192aa4",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Makefile",
+      "bytes": 13617,
+      "sha256": "fbf5af53bcc41350e2376c79a0d552c81bc4053efae4b32f661a50544ede4ace",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/.github/workflows/ci.yml",
+      "bytes": 3688,
+      "sha256": "2e85d4f406b1954a148318ccf88b5aa01595430dff959d9caf81778509077e7b",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.lock",
+      "bytes": 32280,
+      "sha256": "56fe1cbb2b6eee50e82aa46b2532c6019bdc4872751e01dbeae0167b6012a689",
+      "required_scope": "FULL parsed package/edge comparison; source body hash"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/owned_schema.rs",
+      "bytes": 3590,
+      "sha256": "87a1d6e480a3d224882b1865214637a3f592764fd0e19c404847e120096e7c4a",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/owned.rs",
+      "bytes": 108820,
+      "sha256": "a345b82153f6258abf3f015e3d27f81bd5ce827cefd27fbaf40a917d193fe31d",
+      "required_scope": "FULL production1\u20132521 and private TEMP late-abort unit2522\u20132755"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/owned_snapshot.rs",
+      "bytes": 41892,
+      "sha256": "8e7b38af944bb31e10c5e7c46157dbd7f672395fa3ce30867b77ba982871b257",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/owned_curation.rs",
+      "bytes": 47647,
+      "sha256": "d779f21845bd1b103c2e1fbd9eb2d9ebfe02eb3acdd3a0768d305d39665913de",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/dictionary.rs",
+      "bytes": 94483,
+      "sha256": "0af2e5e18a2698a58532d6a158d8bc31812e0a30b20ec7a1c53e4aa90a5dc677",
+      "required_scope": "1\u2013180 IDs/Presence/raw;780\u20131102 owned/editorial/metadata/Dictionary manual validated Deserialize;1179\u20131250 validation entry;1940\u20132048 owned/editorial validation;2185\u20132256 helpers. Follow actually used helpers/types as needed; no invented full read."
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/registry.rs",
+      "bytes": 36161,
+      "sha256": "8d999e93c114dfd4e66a60de651c378d4c72ca721c9436f31881e1cf75fbc1e4",
+      "required_scope": "113\u2013185 origins/source;333\u2013400 document;560\u2013610 wrapper/Deserialize;685\u2013902 identity and document validators. Follow actual dependencies."
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/pack.rs",
+      "bytes": 25384,
+      "sha256": "d6cd719bf7eb67df9a51852fe05f06b4dfee41e5441be4bb69faab5d250253ed",
+      "required_scope": "388\u2013630 composition and681\u2013686 exact-value dedup; declares view semantics, not per-input vector-equality."
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/src/main.rs",
+      "bytes": 165741,
+      "sha256": "f7feefbca1534bceb073c219972c146aea95add514e145dcde2c422adff3e2ab",
+      "required_scope": "51\u2013300 Command/OwnedCommand;578\u2013681 owned errors/files;745\u2013819 managed context;1030\u20131462 actual build/query/detail/owned dispatch;3367\u20133437 emitter; follow called parsing/output helpers as needed."
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary.rs",
+      "bytes": 88183,
+      "sha256": "c344595023e3e884372005b830379000765e6ef63a57d68a65387fed80d45eb7",
+      "required_scope": "184\u2013227 hit;1281\u20131440 make_hit;1220\u20131280 resolve entry;1751\u20131810 reference ordering. Follow actual invoked paths."
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary/projection.rs",
+      "bytes": 87615,
+      "sha256": "a16e1147c333754bf963f4990f08c1608d84c58b2a4b8d5f6b4c87af36d84e2e",
+      "required_scope": "78\u2013100,244\u2013444 DTOs/Compact;855\u20131038 reference;1252\u2013end detail/current referenced helpers"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/presentation.rs",
+      "bytes": 11647,
+      "sha256": "b94a5f9aea56634426afd58ec7c32f9928267d4e3a60432d74a0282952f94d37",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/examples/owned_snapshot.rs",
+      "bytes": 22779,
+      "sha256": "ad70dfe26b29517a323f70ca7cb841338b22387467ddab88b86a6ca16785052d",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/docs/owned-dictionary.md",
+      "bytes": 14794,
+      "sha256": "663fda5a158d4833024209e5521a7f91a89c1247bc06afd944c11b08e0108e12",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-owned/Cargo.toml",
+      "bytes": 420,
+      "sha256": "080637192d464a0ca2ba7ebba5959f7af8dea8db183fe089687f5ec07ec0238c",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-owned/README.md",
+      "bytes": 2000,
+      "sha256": "61f18b0eb3dad224c7ac8e82b32799ed9ecbc0d2df7e72d96fb807970e62e2b0",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-owned/src/lib.rs",
+      "bytes": 1252,
+      "sha256": "db63cba7f052b2a574a55b662b145b3972acbb8680319061c604d90dc241245f",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-owned/tests/owned_package_contract.rs",
+      "bytes": 1048,
+      "sha256": "e8eaeba19f2fb27d41cde875237cea24965d7cf5f06299f7c50624949f9f70ac",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji/Cargo.toml",
+      "bytes": 1634,
+      "sha256": "c7560d2ac78a4a885e0d789c85102c8a55fd4f04186de1f7b991a3ff7a90d66b",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji/src/lib.rs",
+      "bytes": 1705,
+      "sha256": "6e7c642c48b4b0eb6ee73d124fe448dcce650cc8124c37831e477bc90ab62edd",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji/README.md",
+      "bytes": 6097,
+      "sha256": "b37654500e84073711fb246e0ffa5025cff4aa92109b5758ddbb8fb997ed8d60",
+      "required_scope": "FULL"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/tests/owned_snapshot_contract.rs",
+      "bytes": 59479,
+      "sha256": "4f99449b0802a66481577fa2e42c3cfa702da1f353028af7df286066ef24b956",
+      "required_scope": "FULL finite boundary/history/sealed negatives; source support not substitute execution"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/tests/owned_snapshot_contract.rs",
+      "bytes": 61201,
+      "sha256": "efc5584cb0df02bbb5cea570b769b607b5c49f2e269e41a2703c4cb7050815d7",
+      "required_scope": "FULL fresh/replay/alternate body/curation/older/newer/Busy/orphan/rich24 controls"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/tests/owned_snapshot_contract.rs",
+      "bytes": 30261,
+      "sha256": "34b5b01af9cccee067235d08557494662a29242d257a4330d8d4c29234abb477",
+      "required_scope": "FULL CLI IO/native/file/stdout controls; platform reach retained honestly"
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s04-owned-consumer01/src/main.rs",
+      "bytes": 4605,
+      "sha256": "9abbe19982ee5303c5b51be7519d126a641fb9ece8b9e4a1ee4aca680e5bb8c9",
+      "required_scope": "FULL; consumer Rust source and complete parsed normal private graph required, source-derived graph provenance explicit."
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s04-owned-consumer01/Cargo.toml",
+      "bytes": 463,
+      "sha256": "4deb0d45d918afdc99f44dbf8aba2d73a45568a6e24c393502b7e16934658b2e",
+      "required_scope": "FULL; consumer Rust source and complete parsed normal private graph required, source-derived graph provenance explicit."
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s04-owned-consumer01/Cargo.lock",
+      "bytes": 5132,
+      "sha256": "959134d55c5bfe7b199f48dbe0ab1bc9ba24e080a9372f23dbd29c4a4b65722b",
+      "required_scope": "FULL; consumer Rust source and complete parsed normal private graph required, source-derived graph provenance explicit."
+    },
+    {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/artifacts/consumer-correction01/private-lock-closure01.json",
+      "bytes": 6589,
+      "sha256": "ce92ce2e72aae06ed45591ffbaa5d269f819197b0c979fe5339eaa7bf9beb386",
+      "required_scope": "FULL; consumer Rust source and complete parsed normal private graph required, source-derived graph provenance explicit."
+    }
+  ]
+}

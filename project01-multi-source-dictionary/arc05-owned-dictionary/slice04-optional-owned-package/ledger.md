@@ -1,6 +1,6 @@
 # S04 ledger — optional owned snapshot package
 
-**Current,2026-10-30:** INITIAL consumer46514/101 FAILED at first curation-hash observer assertion; whole originals preserved. PASS2/5 bounded readback ACCEPTED/freshpinsPASS; after checkpoint+dispatch CC owns private-main correction/ONEtarget and unchanged12 index freeze, product12 readonly. All8 original binding rows unchanged OPEN through NEWfreshactual/SAMEcanonical/root. Prior intake/gates/failures remain historical evidence; no automatic retry or external/Arc06.
+**Current,2026-10-30:** Frozen source d2a566c6/treecc9f6f73, author gates/12CLI and independent SAME-consumer+12CLI13/13 PASS. Operational evidence is PROPOSED; all8 binding rows remain OPEN through NEW fresh actual composition/SAME canonical/root. Source/index/ONEtarget ROOT QUIET. Historical failures/qualified receipts preserved.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |
