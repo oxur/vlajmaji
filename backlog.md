@@ -74,3 +74,14 @@ snapshot lifetimes and out-of-band changes; it is not implied by this item.
 - [Exact diagnostic preservation manifest](project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice05-readable-compact-output/artifacts/sampled-diagnostic01/manifest.json).
 - [Unsampled failure disposition](project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice05-readable-compact-output/review-numeric02.md) and [failure evidence manifest](project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice05-readable-compact-output/artifacts/numeric-failed02/manifest.json).
 - [Owning slice plan](project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice05-readable-compact-output/slice-plan.md) and [open acceptance ledger](project01-multi-source-dictionary/arc04-composed-sqlite-lookup/slice05-readable-compact-output/ledger.md).
+
+## BL-0002: Investigate exclusive temporary-root allocation in CLI maintenance tests
+
+- **Status:** Proposed, unscheduled; no implementation authorized or shipped.
+- **Raised:** 2026-10-29 (America/Chicago), Arc05/S02.
+- **Observed source:** inherited collections_maintenance_contract fresh_root helper, unchanged by854865a7.
+- **Owner:** Unassigned pending a bounded future plan.
+
+The original S02 Synthetic all-features attempt failed at create_dir AlreadyExists before the named test's product calls. Collision cause and exact collided path are unproven. One explicitly authorized corrected-source archive with fresh owned environment passed; it does not establish a helper fix or causal diagnosis. Investigate actual allocation evidence and consider exclusive bounded temporary-root creation rather than relying only on PID/time names. A future task must preserve baseline failures, distinguish fixture setup from product assertions and validate portability; this entry neither authorizes an out-of-scope repair nor adds a current gate.
+
+Evidence: [original failed raw](project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/artifacts/logs/vlajmaji-s02-all-features-archive-final01.log), [sole corrected raw](project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/artifacts/strict-archive01/all-features.log), [existing chronology](project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/artifacts/execution.md), [CDC verification](project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/cdc-verification.md) and [retrospective](project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/cdc-retrospective.md).

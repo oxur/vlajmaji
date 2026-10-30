@@ -2,11 +2,11 @@
 
 | Field | Value |
 | --- | --- |
-| Status | ISSUED INITIAL/pass1 UNFROZEN: root permits bounded two-file strict-variant correction/current gates and ONE new Synthetic archive attempt; CC ownership effective after checkpoint+explicit dispatch |
+| Status | CLOSED locally at854865a7/treeef81ffbb after actual CDC proof02;8child DONE; source/index/ONEtarget ROOT QUIET; S03 UNISSUED pending root readiness |
 | Authority | Arc05/directive04 only, same retained CDC Sol6.1/high and CC Luna/high; five total passes for this later slice |
 | Baseline | Accepted S01 1b899ebb492d89ceb1561abb0befb17ff3ccc5a1/tree745f789e3ddef62a2c2977c95a1d76f6f12382db, parenta55; owned APIs/schema1 locally verified; normalized model1 unchanged |
 | Useful result | Persist reviewed own-source links/senses, inspect missing context truthfully, and materialize exact supplied Tiny context into existing validated Dictionary/reference queries |
-| Version / date | 0.3 / 2026-10-28; status/readiness metadata only; substantive reviewed contract unchanged |
+| Version / date | 0.4 / 2026-10-29; actual local acceptance/current metadata; substantive original criteria retained |
 
 ## 1. Boundary and source findings
 
@@ -210,3 +210,7 @@ Complete actual intake plus F01 clarification accepted by CDC after source-citat
 ### Initial implementation clarification — private CLI report,2026-10-29
 
 Actual CLI compilation showed that a local `#[derive(serde::Serialize)]` report cannot compile with crates/cli's existing direct dependencies: serde_json is present, serde is not. Root/CDC disposition keeps the issued prompt and public Rust APIs unchanged: the private OwnedMaterializeReport notation fixes the exact output fieldset/types, not a required internal named Serialize struct. Implement that shape through the existing serde_json::json! → QueryOutput::Json(Value) route. Preserve every declared key/type/native path/output SHA/resolution, sorted-map stdout plus one LF, canonical model file without LF, error precedence and whole-fieldset controls. No Cargo/serde dependency or new transport. Original failed compilation and actual corrected format/lint/behavior reach belong in artifacts/execution.md; this is same unfrozen INITIAL wiring clarification, not a new pass or successful behavioral result.
+
+## Actual local close —2026-10-29
+
+Initial/pass1 froze854865a7/treeef81ffbb, exact14paths. Root's late strict correction covered the pure module/test; its explicit additional docs path changed ONLY three curation-example-r0/r1 recipe head literals. Those scoped dispositions and the one authorized corrected archive are preserved in execution; the original failed archive/cause-unproven fixture fragility and literal-PATH provenance gap remain. CDC accepted the current slice after source review and proof02 (40children33zero/7expected1), with original method01 failure25 retained. See cdc-verification.md and cdc-retrospective.md; all8child DONE, A05-03 partialOPEN until S03 reimport, remaining6arc/all14project OPEN. No sealed export/optional package/fresh Arc05/hosted validation or external action is claimed. Source/index/ONEtarget returned ROOT QUIET.

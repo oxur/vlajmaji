@@ -1,0 +1,1852 @@
+{
+  "version": 1,
+  "source": "854865a72c4ca4971e1b93fd25a2e69ee14b03a8",
+  "tree": "ef81ffbb10054bd4ceb935ac76f7912178a603e2",
+  "scope": "Author completed raw logs, documented synthetic journey inputs/outputs, sole corrected archive receipts, failed independent method01 and successful method02 whole originals. Mutable primary/execution records and this index excluded. Six newly created Tiny SQLite stores remain held at original paths, not copied; full logical SQL snapshots are copied. No retained Full/default/binary payload copied.",
+  "files": [
+    {
+      "path": "cdc-proof01/execution.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/execution.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 9339,
+      "sha256": "02a5c68a94a2eb456e68c311d22359d474d7ce30fa6ca7900a98b0585ee2217b"
+    },
+    {
+      "path": "cdc-proof01/method.py",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/method.py",
+      "kind": "whole-original-byte-copy",
+      "bytes": 29948,
+      "sha256": "2fd0fff1ff1b8103002b479281adfcf079aabc79ac4fd522a2134c240e8e9eb4"
+    },
+    {
+      "path": "cdc-proof01/preflight.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/preflight.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8263,
+      "sha256": "6d68f685379c3dcdd086dfce3aadbc7867deeec7e7559d5b0e77bd23fc3d2c2f"
+    },
+    {
+      "path": "cdc-proof01/stderr.log",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/stderr.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 411,
+      "sha256": "1052f82d2c5cf09bf078f164b134c9a9f559c7ed4d28b5ce79ccd9fbde63cbdb"
+    },
+    {
+      "path": "cdc-proof01/stdout.log",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/stdout.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 97,
+      "sha256": "9e50ae32e310aefd83f2a44e99d77eab5f5f8bd54f7ccaf80d5b48576f42029e"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/absent.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/absent.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 5882,
+      "sha256": "1cdf04f2a5dfc078ebc7c55416821a2a62a5835865c21846a78d289b142cef3a"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/absent.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/absent.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/absent.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/absent.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 714,
+      "sha256": "de3fc4619df4539f4090109edd16baa8557d5025e5c59089aa00a87be475444d"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/commands.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/commands.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 12217,
+      "sha256": "238c42487b00791157b3cb6ba0f92038247b662769c3d1975f9953a6ebfecc3f"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/complete.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/complete.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 17940,
+      "sha256": "bd662bd6734dda3a17d666fbb260163d17d84ee44df0906d84dd1d75c022bfb3"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/complete.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/complete.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/complete.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/complete.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 683,
+      "sha256": "65e12b53334809b74994aa5b84daa838c350f7640fa1cc7956b9661e187d150d"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/context.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/context.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 9018,
+      "sha256": "b7ca991619bf9b0025e0b95aa6293b6793a5924ff8cde792eea4adb9dee3aaa8"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/creation-editor-mismatch.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/creation-editor-mismatch.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8188,
+      "sha256": "a22834f39ea6c1c55ef519a24a85ccaa373f747a8dbefd9c990c0cbddc99ebf3"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/creation-editor-mismatch.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/creation-editor-mismatch.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 169,
+      "sha256": "488ff4b17bf58480de9df0f5175c00bceb27cff72f647f89897d0dcda49578a9"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/creation-editor-mismatch.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/creation-editor-mismatch.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curate-stdin.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curate-stdin.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curate-stdin.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curate-stdin.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 527,
+      "sha256": "b7f195ba8cacf199ac6b128a54b12e013694bd85239db949b488758fdb0c56ff"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r0.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r0.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r0.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r0.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2124,
+      "sha256": "6145080a939d6ee4a79047fbdb087ebca97dbae52f7f01a1a8ddbac72c742a62"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r1.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r1.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r1.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r1.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 5728,
+      "sha256": "a211f3c60fb1d2429b07d036e01a881bf0222139e913ba68b50eaff44ee6476c"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r2.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r2.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r2.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation-r2.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8113,
+      "sha256": "fca743cf8bf9828148e5f4892082ccc8317501603e103a9eb569a361a2fdec8e"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/curation.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8112,
+      "sha256": "48a28f11a8a4ef49f3f97c341fa9c1269100ba7d1f74e5886a5f46ce9a6d90b0"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/dictionary-build.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/dictionary-build.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/dictionary-build.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/dictionary-build.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 280,
+      "sha256": "389a473f65746deb4e2d6ef6f47646d3a94cbc55ba95e2428221219a95434ae4"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/edit.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/edit.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/edit.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/edit.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 518,
+      "sha256": "fadb4ad46d02ebfcecf33d282f1961236dbd8cbd29818c35961ba0dde566ee59"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/existing-output.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/existing-output.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 214,
+      "sha256": "2096b1b6f0aa793754f20c85a14e1eb48d96a1f34d2ba1e6be9832a4ba6c41f3"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/existing-output.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/existing-output.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/expected-view.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/expected-view.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 17940,
+      "sha256": "bd662bd6734dda3a17d666fbb260163d17d84ee44df0906d84dd1d75c022bfb3"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/final-head.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/final-head.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/final-head.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/final-head.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 481,
+      "sha256": "f03148823f5aa82534b547bc4d652b25f7c4a5d15c2f4c6fe4ed786fbe4e8011"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/head-after-replay.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/head-after-replay.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/head-after-replay.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/head-after-replay.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 481,
+      "sha256": "f03148823f5aa82534b547bc4d652b25f7c4a5d15c2f4c6fe4ed786fbe4e8011"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/head-r2.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/head-r2.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/head-r2.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/head-r2.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 481,
+      "sha256": "f03148823f5aa82534b547bc4d652b25f7c4a5d15c2f4c6fe4ed786fbe4e8011"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/history-after.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/history-after.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/history-after.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/history-after.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 871,
+      "sha256": "7f116b10b4d4e1f17530f8a37d57dabed892dd5cae577a93c7a046822ff874a9"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/history-before.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/history-before.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/history-before.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/history-before.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 871,
+      "sha256": "7f116b10b4d4e1f17530f8a37d57dabed892dd5cae577a93c7a046822ff874a9"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/init.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/init.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/init.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/init.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 462,
+      "sha256": "bd4f9893d5eb6ce936832c410093a307c331b20d410749e27853f5d6b4bfc9b7"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/local-sense-full.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/local-sense-full.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/local-sense-full.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/local-sense-full.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 10670,
+      "sha256": "cb2943d3a56f26fa04c49b21bb2767249417d9ae26d2c4bc8b58054030a43c6a"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migrate.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migrate.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migrate.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migrate.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 108,
+      "sha256": "1a1071d105bdb803483de65ab5a015b5a239721bc068c01000cc8d9d1080a0a5"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migration-already-current.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migration-already-current.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migration-already-current.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migration-already-current.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 115,
+      "sha256": "5676eedc6e80d259503b07c2eda729baf620970abcdc6db460d59f4cab8ed3f9"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migration-held-reader.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migration-held-reader.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 99,
+      "sha256": "d04f907d99a792f8363ca50c213337000580224e5556ac4e1045c5ce1948f571"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migration-held-reader.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/migration-held-reader.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/new-record-inactive.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/new-record-inactive.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8092,
+      "sha256": "92290b2e62ac85c2633044ca24b74011251dd195a5e397cf731d1eb10d63f88a"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/new-record-inactive.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/new-record-inactive.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 160,
+      "sha256": "dae18331ae125a07d807a454c4da21a403f54c79256123b60e46a7efccbba7da"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/new-record-inactive.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/new-record-inactive.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-example.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-example.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-example.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-example.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 673,
+      "sha256": "5ec92d65bb693b8daaf3acc447162490ccb46b26e2e794bcc28cf1116caf2ed0"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-inputs/context.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-inputs/context.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 9031,
+      "sha256": "15b0558b8e801cf0917bbb3eb927757232a3d515681bb907c3c734d5b1acb3ba"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-inputs/curation.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-inputs/curation.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 7741,
+      "sha256": "d56cf2eccc13970f2a0688172f7f0b969418c008f61871b5f9942ada42dad549"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-inputs/r1.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-inputs/r1.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 3314,
+      "sha256": "71a252f3ab0cc2dbcb7c7a321857a5815b103a6ca20f1bfd6273f02217339142"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-inputs/seed.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-inputs/seed.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2331,
+      "sha256": "d683d90a22e1f02cf3a18c5e128706ffdfff93831814132bc421f2ca17d50615"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-view.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-view.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 17814,
+      "sha256": "12dfb5e769cfe3bbb3920ea52acee282ca2b13a12181f5270d33b7c61687b0de"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/r1.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/r1.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 5555,
+      "sha256": "e96d7fdee27a1cf84b152799b51c7b6e541aeae714396665fa98985f5c81d05f"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/reserved-record-id.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/reserved-record-id.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8109,
+      "sha256": "f018819b4814305a275aebc3636ee4fca49e55755d13bf6835517966930fcc2b"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/reserved-record-id.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/reserved-record-id.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 145,
+      "sha256": "af3d1de71b33e8e783318e7d4c90bba8396bb08fe78e43304165193abe4a7eaf"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/reserved-record-id.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/reserved-record-id.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/schema1-before-migration.logical-sqlite.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/schema1-before-migration.logical-sqlite.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 13790,
+      "sha256": "fd22781815647309147a8001e77c3da99c025303ba5690ecea021d7490a7a75e"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/schema2-after-migration.logical-sqlite.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/schema2-after-migration.logical-sqlite.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 15262,
+      "sha256": "7aa171d57f0af43e916f9415e8071d136bafcc7ac6bd419dd06f49aefe87ea2a"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/schema2-curated.logical-sqlite.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/schema2-curated.logical-sqlite.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 21265,
+      "sha256": "a8fd7d49dcb21ace4f32e1edd305f081451b923e6ced3bff6573595dc0792af8"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/seed.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/seed.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2003,
+      "sha256": "178cb4a48245db47a568bb740f5ec123575aae38eb961c9ce05f40c7f0526c9a"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/stale-curate.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/stale-curate.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 124,
+      "sha256": "7c1a6164015eacdfcecae648e7008b9b82d87f14671d8965d0e5a3e8f44d11e0"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/stale-curate.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/stale-curate.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/wrong-context.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/wrong-context.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 9018,
+      "sha256": "30eccfeae6dacc3c4b8781fe4cb357492b58b9e6bda594ad59153bc29fd08a32"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/wrong-context.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/wrong-context.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 267,
+      "sha256": "b0be8bee707e63c450fa3eb0eaca3c85bd9857b7c6a9ea4537ce282f3ea7fe60"
+    },
+    {
+      "path": "cdc-proof01/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/wrong-context.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/wrong-context.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/execution.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/execution.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 9331,
+      "sha256": "0e04b3097f815460e00011a4bee88183739b2880b6d0df7c894b20405da7e157"
+    },
+    {
+      "path": "cdc-proof02/method.py",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/method.py",
+      "kind": "whole-original-byte-copy",
+      "bytes": 30843,
+      "sha256": "53ef714f8da29bf1effb73346b38b2c5912c0cb98a93d00bb7f85dc04b610707"
+    },
+    {
+      "path": "cdc-proof02/preflight.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/preflight.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8303,
+      "sha256": "84a81afde702a988470a627292dcac5556052617ecc8a7c3d5c81f7515c56dfa"
+    },
+    {
+      "path": "cdc-proof02/stderr.log",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/stderr.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/stdout.log",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/stdout.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 203,
+      "sha256": "f0ef09c9f0541de778ca28dd5a11c08b883bf20292f5ad3e5c72d69865d519e7"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/absent.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/absent.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 5882,
+      "sha256": "1cdf04f2a5dfc078ebc7c55416821a2a62a5835865c21846a78d289b142cef3a"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/absent.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/absent.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/absent.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/absent.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 714,
+      "sha256": "ed049f87da6d7a6ae5fdc9694f8d2ad4a52ac35475d896c1736488e94b384146"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-compact.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-compact.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-compact.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-compact.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8834,
+      "sha256": "48fbf62774d57197ce07b9e94cdbb26270d2f7743a09d18cf105eefabd31a088"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-full.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-full.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-full.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-full.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8622,
+      "sha256": "05f55231f01e0fe61ec42cd4ed53d59c3d01d828e3b0fc7d1c26fa3f7aa45f9c"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-readable.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-readable.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-readable.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/catalog-readable.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2825,
+      "sha256": "15d5d02fbcc4d433da7bf95dc777c0e233cb18a2b274d015db9a9ac76aaba613"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/commands.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/commands.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 21080,
+      "sha256": "06719beff6b900cbd74dae58efbd6eac247a26cb3a7c11cd1b31428b10d33f86"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/complete.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/complete.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 17940,
+      "sha256": "bd662bd6734dda3a17d666fbb260163d17d84ee44df0906d84dd1d75c022bfb3"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/complete.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/complete.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/complete.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/complete.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 683,
+      "sha256": "34e28dfd1bb05edc39e78fea6e9ef3037d81529b9859e0477c325bc0a0a3b17c"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/context.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/context.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 9018,
+      "sha256": "b7ca991619bf9b0025e0b95aa6293b6793a5924ff8cde792eea4adb9dee3aaa8"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/creation-editor-mismatch.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/creation-editor-mismatch.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8188,
+      "sha256": "a22834f39ea6c1c55ef519a24a85ccaa373f747a8dbefd9c990c0cbddc99ebf3"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/creation-editor-mismatch.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/creation-editor-mismatch.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 169,
+      "sha256": "488ff4b17bf58480de9df0f5175c00bceb27cff72f647f89897d0dcda49578a9"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/creation-editor-mismatch.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/creation-editor-mismatch.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curate-stdin.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curate-stdin.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curate-stdin.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curate-stdin.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 527,
+      "sha256": "b7f195ba8cacf199ac6b128a54b12e013694bd85239db949b488758fdb0c56ff"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r0.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r0.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r0.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r0.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2124,
+      "sha256": "6145080a939d6ee4a79047fbdb087ebca97dbae52f7f01a1a8ddbac72c742a62"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r1.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r1.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r1.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r1.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 5728,
+      "sha256": "a211f3c60fb1d2429b07d036e01a881bf0222139e913ba68b50eaff44ee6476c"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r2.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r2.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r2.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation-r2.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8113,
+      "sha256": "fca743cf8bf9828148e5f4892082ccc8317501603e103a9eb569a361a2fdec8e"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/curation.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8112,
+      "sha256": "48a28f11a8a4ef49f3f97c341fa9c1269100ba7d1f74e5886a5f46ce9a6d90b0"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/dictionary-build.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/dictionary-build.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/dictionary-build.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/dictionary-build.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 280,
+      "sha256": "a11731305c5d37ef31c0e6ee808c90af5c765e9dffff18dea93c376da477e99d"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/edit.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/edit.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/edit.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/edit.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 518,
+      "sha256": "fadb4ad46d02ebfcecf33d282f1961236dbd8cbd29818c35961ba0dde566ee59"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/existing-output.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/existing-output.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 214,
+      "sha256": "bff9ad9e30f588fd07c171eb466b349539a9a1fd9e4e4f8ccc90255de72f05df"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/existing-output.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/existing-output.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/expected-view.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/expected-view.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 17940,
+      "sha256": "bd662bd6734dda3a17d666fbb260163d17d84ee44df0906d84dd1d75c022bfb3"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/final-head.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/final-head.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/final-head.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/final-head.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 481,
+      "sha256": "f03148823f5aa82534b547bc4d652b25f7c4a5d15c2f4c6fe4ed786fbe4e8011"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/head-after-replay.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/head-after-replay.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/head-after-replay.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/head-after-replay.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 481,
+      "sha256": "f03148823f5aa82534b547bc4d652b25f7c4a5d15c2f4c6fe4ed786fbe4e8011"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/head-r2.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/head-r2.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/head-r2.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/head-r2.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 481,
+      "sha256": "f03148823f5aa82534b547bc4d652b25f7c4a5d15c2f4c6fe4ed786fbe4e8011"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/history-after.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/history-after.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/history-after.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/history-after.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 871,
+      "sha256": "7f116b10b4d4e1f17530f8a37d57dabed892dd5cae577a93c7a046822ff874a9"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/history-before.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/history-before.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/history-before.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/history-before.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 871,
+      "sha256": "7f116b10b4d4e1f17530f8a37d57dabed892dd5cae577a93c7a046822ff874a9"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/init.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/init.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/init.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/init.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 462,
+      "sha256": "bd4f9893d5eb6ce936832c410093a307c331b20d410749e27853f5d6b4bfc9b7"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-compact.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-compact.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-compact.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-compact.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 12596,
+      "sha256": "07552ce983570a8ceb7f54d20c9e7dc08d0d3f2420ecf30f4dab03308f39291b"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-full.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-full.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-full.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-full.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 10670,
+      "sha256": "cb2943d3a56f26fa04c49b21bb2767249417d9ae26d2c4bc8b58054030a43c6a"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-readable.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-readable.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-readable.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/local-sense-readable.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 4113,
+      "sha256": "245daf0e66b7d11ab5a3dc96f5847c654dd2f7937d7052a988d26127e0b6a72f"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migrate.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migrate.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migrate.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migrate.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 108,
+      "sha256": "1a1071d105bdb803483de65ab5a015b5a239721bc068c01000cc8d9d1080a0a5"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migration-already-current.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migration-already-current.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migration-already-current.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migration-already-current.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 115,
+      "sha256": "5676eedc6e80d259503b07c2eda729baf620970abcdc6db460d59f4cab8ed3f9"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migration-held-reader.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migration-held-reader.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 99,
+      "sha256": "d04f907d99a792f8363ca50c213337000580224e5556ac4e1045c5ce1948f571"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migration-held-reader.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/migration-held-reader.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/new-record-inactive.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/new-record-inactive.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8092,
+      "sha256": "92290b2e62ac85c2633044ca24b74011251dd195a5e397cf731d1eb10d63f88a"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/new-record-inactive.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/new-record-inactive.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 160,
+      "sha256": "dae18331ae125a07d807a454c4da21a403f54c79256123b60e46a7efccbba7da"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/new-record-inactive.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/new-record-inactive.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/own-exact-compact.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/own-exact-compact.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/own-exact-compact.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/own-exact-compact.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 9840,
+      "sha256": "87e8a8aab9697b174a4aa4ba3d745cc0d92f02deea1df22eb78289cc12000616"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/own-exact-full.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/own-exact-full.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/own-exact-full.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/own-exact-full.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 16570,
+      "sha256": "6a92f9f11fa4701e002bb70d2d7ae84e5e6fb470130c3c8bdf3f66ebf4a969f3"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r2-retrospective.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r2-retrospective.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r2-retrospective.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r2-retrospective.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8113,
+      "sha256": "fca743cf8bf9828148e5f4892082ccc8317501603e103a9eb569a361a2fdec8e"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-curate.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-curate.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-curate.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-curate.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 519,
+      "sha256": "b779d85e4b632a10b57fa7a82597938e8ea18dbac3c6fe98150de6008e91b354"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-curation.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-curation.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8522,
+      "sha256": "e3f115135518b725facdbb11cdd00342c38af7030d4d72cda3161e2f7a1eea8e"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-historical-materialize.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-historical-materialize.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-historical-materialize.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-historical-materialize.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 732,
+      "sha256": "034dac3803b4de2408df09228fda5eadb14388953146a656b0680c6a43f6ec36"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-historical-view.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-historical-view.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 16403,
+      "sha256": "d7408ed8e087fa1afe2e930d2961b8ce28546c8d5412ec6fecab5e21cca651bd"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-retrospective.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-retrospective.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-retrospective.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r3-retrospective.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8523,
+      "sha256": "b9a1ccd5f13eb07eb976d413be99b75a63663084c674bcdeea2345b0d4096c2e"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-curate.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-curate.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-curate.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-curate.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 519,
+      "sha256": "e6cba0d63a42d7147df7cff780368a686584bcd6fce215030276942020f20bee"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-curation.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-curation.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8933,
+      "sha256": "b8d1551f42d1e0348ad1af8bc20089cf31f322078707806729475db11a432af3"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-historical-materialize.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-historical-materialize.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-historical-materialize.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-historical-materialize.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 731,
+      "sha256": "f61757997eed0f9353db34188d76039dcacf8fc942b8abb1eb9e0650a74d2091"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-historical-view.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-historical-view.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 18578,
+      "sha256": "24c36eba6c6bbdb17cebe1924f4f35b16bcb79642664dfc1eab1912605e32b15"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-retrospective.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-retrospective.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-retrospective.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/owned-r4-retrospective.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8934,
+      "sha256": "9df6c72694dcc853e07e8c5aae44517813380463e9479210f8acb82ef9d2dc8a"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-example.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-example.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-example.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-example.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 673,
+      "sha256": "0ab7267c3eccf1b5ae0ada854251ab9e82b66956d5bf96031b5bb7bf80226611"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-inputs/context.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-inputs/context.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 9031,
+      "sha256": "15b0558b8e801cf0917bbb3eb927757232a3d515681bb907c3c734d5b1acb3ba"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-inputs/curation.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-inputs/curation.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 7741,
+      "sha256": "d56cf2eccc13970f2a0688172f7f0b969418c008f61871b5f9942ada42dad549"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-inputs/r1.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-inputs/r1.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 3314,
+      "sha256": "71a252f3ab0cc2dbcb7c7a321857a5815b103a6ca20f1bfd6273f02217339142"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-inputs/seed.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-inputs/seed.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2331,
+      "sha256": "d683d90a22e1f02cf3a18c5e128706ffdfff93831814132bc421f2ca17d50615"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-view.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-view.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 17814,
+      "sha256": "12dfb5e769cfe3bbb3920ea52acee282ca2b13a12181f5270d33b7c61687b0de"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/r1.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/r1.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 5555,
+      "sha256": "e96d7fdee27a1cf84b152799b51c7b6e541aeae714396665fa98985f5c81d05f"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/r4-current-document.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/r4-current-document.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/r4-current-document.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/r4-current-document.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8934,
+      "sha256": "9df6c72694dcc853e07e8c5aae44517813380463e9479210f8acb82ef9d2dc8a"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/receipt.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/receipt.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1378,
+      "sha256": "99071b3b75a7521793a2243ffd085dc87b5ee4a19a5ee677f5356f163d32fba2"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/reserved-record-id.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/reserved-record-id.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8109,
+      "sha256": "f018819b4814305a275aebc3636ee4fca49e55755d13bf6835517966930fcc2b"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/reserved-record-id.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/reserved-record-id.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 145,
+      "sha256": "af3d1de71b33e8e783318e7d4c90bba8396bb08fe78e43304165193abe4a7eaf"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/reserved-record-id.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/reserved-record-id.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/schema1-before-migration.logical-sqlite.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/schema1-before-migration.logical-sqlite.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 13790,
+      "sha256": "fd22781815647309147a8001e77c3da99c025303ba5690ecea021d7490a7a75e"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/schema2-after-migration.logical-sqlite.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/schema2-after-migration.logical-sqlite.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 15262,
+      "sha256": "7aa171d57f0af43e916f9415e8071d136bafcc7ac6bd419dd06f49aefe87ea2a"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/schema2-curated.logical-sqlite.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/schema2-curated.logical-sqlite.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 21265,
+      "sha256": "a8fd7d49dcb21ace4f32e1edd305f081451b923e6ced3bff6573595dc0792af8"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/schema2-reactivated.logical-sqlite.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/schema2-reactivated.logical-sqlite.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 25151,
+      "sha256": "47bccae572622ef37b9f189a8ef2743f3fe4d8e78b403c4981f267d81f4ceef2"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/seed.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/seed.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2003,
+      "sha256": "178cb4a48245db47a568bb740f5ec123575aae38eb961c9ce05f40c7f0526c9a"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/stale-curate.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/stale-curate.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 124,
+      "sha256": "7c1a6164015eacdfcecae648e7008b9b82d87f14671d8965d0e5a3e8f44d11e0"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/stale-curate.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/stale-curate.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/wrong-context.json",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/wrong-context.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 9018,
+      "sha256": "30eccfeae6dacc3c4b8781fe4cb357492b58b9e6bda594ad59153bc29fd08a32"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/wrong-context.stderr",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/wrong-context.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 267,
+      "sha256": "b0be8bee707e63c450fa3eb0eaca3c85bd9857b7c6a9ea4537ce282f3ea7fe60"
+    },
+    {
+      "path": "cdc-proof02/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/wrong-context.stdout",
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/wrong-context.stdout",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "documented-journey01/build-cli.log",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/build-cli.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 177,
+      "sha256": "4b060298110ac95a98f352b1cac5149fbf00ff94efd87f8e96112781369654b9"
+    },
+    {
+      "path": "documented-journey01/cli-curate.log",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-curate.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 534,
+      "sha256": "c063e7513315f498744b9733fd32f8ffa8318c7408fcfc9e9dfe516833125954"
+    },
+    {
+      "path": "documented-journey01/cli-curation-show.log",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-curation-show.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 7742,
+      "sha256": "918dd0a1631790df1cc1c3c05f7c07025ea88fb05cf7a28e2fb5b2041dff13b0"
+    },
+    {
+      "path": "documented-journey01/cli-dictionary-build.log",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-dictionary-build.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 246,
+      "sha256": "9270a896c42ae5bdcb898af1a901ad52c13a179f00da0473ca6f51fb4529946b"
+    },
+    {
+      "path": "documented-journey01/cli-edit.log",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-edit.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 534,
+      "sha256": "84957e706e527736e70882911aff6deb3ba3f9b51fc197d3781ba805e65048af"
+    },
+    {
+      "path": "documented-journey01/cli-init.log",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-init.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 496,
+      "sha256": "0b346f00869ccd96a370e7fd731396361a2a6be95666bee3cfcb3829dbab83bb"
+    },
+    {
+      "path": "documented-journey01/cli-materialize-context.log",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-materialize-context.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 603,
+      "sha256": "3b1fc8db3404a6d50b9fee7cfcaf5f6e0b431a9bc29af6860ef38f545b4251be"
+    },
+    {
+      "path": "documented-journey01/cli-materialize-zero.log",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-materialize-zero.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 649,
+      "sha256": "1b4d1feb50711ea34dab50e17f5a1a313f83c03052ae113c57b6d267c258c8c0"
+    },
+    {
+      "path": "documented-journey01/cli-migrate.log",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-migrate.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 128,
+      "sha256": "aff2e92f3325fc96a5e28643f71c3c4e6bc6708a21cb063b094b55eedb2d6f99"
+    },
+    {
+      "path": "documented-journey01/cli-query-coi.json",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-query-coi.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 11952,
+      "sha256": "dae6916d6d3a714cdf5c7f611d619a14e6c19d5424736236b026c7a86058d0bd"
+    },
+    {
+      "path": "documented-journey01/cli-query-coi.stderr",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-query-coi.stderr",
+      "kind": "whole-original-byte-copy",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "documented-journey01/cli-resolved.json",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-resolved.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 17814,
+      "sha256": "12dfb5e769cfe3bbb3920ea52acee282ca2b13a12181f5270d33b7c61687b0de"
+    },
+    {
+      "path": "documented-journey01/cli-unavailable.json",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/cli-unavailable.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 4297,
+      "sha256": "75e7ebb17a53eca7074ba6e1bac1b502196f9a838b2ee13d4004e8e5d936f86a"
+    },
+    {
+      "path": "documented-journey01/example-normalized.json",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/example-normalized.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 17814,
+      "sha256": "12dfb5e769cfe3bbb3920ea52acee282ca2b13a12181f5270d33b7c61687b0de"
+    },
+    {
+      "path": "documented-journey01/inputs/context.json",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/inputs/context.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 9031,
+      "sha256": "15b0558b8e801cf0917bbb3eb927757232a3d515681bb907c3c734d5b1acb3ba"
+    },
+    {
+      "path": "documented-journey01/inputs/curation.json",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/inputs/curation.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 7741,
+      "sha256": "d56cf2eccc13970f2a0688172f7f0b969418c008f61871b5f9942ada42dad549"
+    },
+    {
+      "path": "documented-journey01/inputs/r1.json",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/inputs/r1.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 3314,
+      "sha256": "71a252f3ab0cc2dbcb7c7a321857a5815b103a6ca20f1bfd6273f02217339142"
+    },
+    {
+      "path": "documented-journey01/inputs/seed.json",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/inputs/seed.json",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2331,
+      "sha256": "d683d90a22e1f02cf3a18c5e128706ffdfff93831814132bc421f2ca17d50615"
+    },
+    {
+      "path": "documented-journey01/run-example.log",
+      "original_path": "/tmp/vlajmaji-s02-documented-journey01/run-example.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1026,
+      "sha256": "123493824fb485eb185d1b52c4f2387dc22a808d102bc39a91628d9473f46d10"
+    },
+    {
+      "path": "logs/vlajmaji-s02-all-features-archive-final01.log",
+      "original_path": "/tmp/vlajmaji-s02-all-features-archive-final01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 8208,
+      "sha256": "0d88d8f3f466576741a7f2cf3f97048a9bdaf3de500a1ab8f7ddb4e07a3a7e45"
+    },
+    {
+      "path": "logs/vlajmaji-s02-cli-curation-test-01.log",
+      "original_path": "/tmp/vlajmaji-s02-cli-curation-test-01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1667,
+      "sha256": "c84297e47d4c2507275fcd813a693dbf30a5d970440728604fd639563bd3dbf8"
+    },
+    {
+      "path": "logs/vlajmaji-s02-cli-curation-test-02.log",
+      "original_path": "/tmp/vlajmaji-s02-cli-curation-test-02.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 649,
+      "sha256": "84218bdf5e204b729b212b7e24a708ea75fe4c030f12e2ed1d6bc9d5765a1e77"
+    },
+    {
+      "path": "logs/vlajmaji-s02-cli-curation-test-06.log",
+      "original_path": "/tmp/vlajmaji-s02-cli-curation-test-06.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 649,
+      "sha256": "14919fdcd6a2f3a2747a58e3c3a3a699478c87c2e4c6e8ae9fcd6b58e24275f5"
+    },
+    {
+      "path": "logs/vlajmaji-s02-cli-derived-detail02.log",
+      "original_path": "/tmp/vlajmaji-s02-cli-derived-detail02.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1215,
+      "sha256": "d6beaba04189fb6c602877d97a52b8a7661220e938918e70ba7c7e0ea7f7a95b"
+    },
+    {
+      "path": "logs/vlajmaji-s02-cli-final03.log",
+      "original_path": "/tmp/vlajmaji-s02-cli-final03.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 649,
+      "sha256": "c8c8684965f6f69cccf616e14c05f36c6d2bfb1413b0b77570c83c200ceb0e8b"
+    },
+    {
+      "path": "logs/vlajmaji-s02-cli-s01-regression01.log",
+      "original_path": "/tmp/vlajmaji-s02-cli-s01-regression01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 811,
+      "sha256": "1bddd483e4c5f22694154aed442bf4fbf1fc24cc5e56ddeac9ef239f889a3468"
+    },
+    {
+      "path": "logs/vlajmaji-s02-example-cli01.log",
+      "original_path": "/tmp/vlajmaji-s02-example-cli01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 4745,
+      "sha256": "997124577631911501bb006f2825635b5e16fb5480cc33d383e568c8f0ff293b"
+    },
+    {
+      "path": "logs/vlajmaji-s02-example-final01.log",
+      "original_path": "/tmp/vlajmaji-s02-example-final01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 882,
+      "sha256": "854580ca123f40223fb10daf1e57d041ebc61b4ffe1ae1896db13c16339f1c9f"
+    },
+    {
+      "path": "logs/vlajmaji-s02-fmt-check-01.log",
+      "original_path": "/tmp/vlajmaji-s02-fmt-check-01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "path": "logs/vlajmaji-s02-fmt-check-02.log",
+      "original_path": "/tmp/vlajmaji-s02-fmt-check-02.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "path": "logs/vlajmaji-s02-fmt-check-03.log",
+      "original_path": "/tmp/vlajmaji-s02-fmt-check-03.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2925,
+      "sha256": "f6d3e22718b41bfcf63d75cf343b05114df378c147fc2e4b41b6d29ee3e8236c"
+    },
+    {
+      "path": "logs/vlajmaji-s02-fmt-check-04.log",
+      "original_path": "/tmp/vlajmaji-s02-fmt-check-04.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "path": "logs/vlajmaji-s02-lexicon-complete-sense02.log",
+      "original_path": "/tmp/vlajmaji-s02-lexicon-complete-sense02.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1445,
+      "sha256": "47115f1e8e4e2c80096648757d37fa312b33d95340a362b5995c1e8051fdca1b"
+    },
+    {
+      "path": "logs/vlajmaji-s02-lexicon-final01.log",
+      "original_path": "/tmp/vlajmaji-s02-lexicon-final01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1513,
+      "sha256": "340fc27d6bd45e32f731075aacde9e0ff86910569ba9bdf78aa7ac3d76960dba"
+    },
+    {
+      "path": "logs/vlajmaji-s02-lexicon-final04.log",
+      "original_path": "/tmp/vlajmaji-s02-lexicon-final04.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2236,
+      "sha256": "1e2779fddf4f1c8e22bc59d25f702ea6dc58e43af4cbf0095224b6ae148fd1da"
+    },
+    {
+      "path": "logs/vlajmaji-s02-lexicon-final05.log",
+      "original_path": "/tmp/vlajmaji-s02-lexicon-final05.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2237,
+      "sha256": "b5ca0e9d4e9e3a90f052d447c07511f0da24cc7ae42fdce81f25c033a0c736dd"
+    },
+    {
+      "path": "logs/vlajmaji-s02-lexicon-final06.log",
+      "original_path": "/tmp/vlajmaji-s02-lexicon-final06.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2136,
+      "sha256": "6162a88f6b233d6300774283e608bd7074e6da72836853bff72f924fb32f2e66"
+    },
+    {
+      "path": "logs/vlajmaji-s02-lexicon-final07.log",
+      "original_path": "/tmp/vlajmaji-s02-lexicon-final07.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1513,
+      "sha256": "395a112aee9947b93e6924020f8bdb1fc710626ed9a0c9d4857309999d6930ee"
+    },
+    {
+      "path": "logs/vlajmaji-s02-lint-01.log",
+      "original_path": "/tmp/vlajmaji-s02-lint-01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1387,
+      "sha256": "9f1cef24852d1c27ca325b75bd5bad583e9dd9096dd9db5d26d87df8b1e70a41"
+    },
+    {
+      "path": "logs/vlajmaji-s02-lint-02.log",
+      "original_path": "/tmp/vlajmaji-s02-lint-02.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 351,
+      "sha256": "71d13616e5d6bdbeeb61d7f3d7716614bf9284efad807fa1f5ee8167a2f5ab0c"
+    },
+    {
+      "path": "logs/vlajmaji-s02-lint-03.log",
+      "original_path": "/tmp/vlajmaji-s02-lint-03.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 355,
+      "sha256": "b04a98d736efcb311baf202e6460f900a7a73d63e0d875a6f3206f11d35e7d8e"
+    },
+    {
+      "path": "logs/vlajmaji-s02-lint-04.log",
+      "original_path": "/tmp/vlajmaji-s02-lint-04.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 355,
+      "sha256": "65fcef5e476c85c28619e27d83432aa887c4861e903c567c3809f25622c63c45"
+    },
+    {
+      "path": "logs/vlajmaji-s02-make-check-final01.log",
+      "original_path": "/tmp/vlajmaji-s02-make-check-final01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 52844,
+      "sha256": "ba20498788f92fdbd3696a67a806c61ecf30b7d1d58e81fa1165337517a4c0cb"
+    },
+    {
+      "path": "logs/vlajmaji-s02-no-default-final01.log",
+      "original_path": "/tmp/vlajmaji-s02-no-default-final01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 10123,
+      "sha256": "f9dd5053cc913fdcaf8567acff05e443df2d180f2f59d4afa5e2dd268a2dca7c"
+    },
+    {
+      "path": "logs/vlajmaji-s02-package-cli-final01.log",
+      "original_path": "/tmp/vlajmaji-s02-package-cli-final01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 626,
+      "sha256": "a9141e15a3f5881e2c775d57241b0a1ab3c21dea2f7200bcd67207dc9888e8c0"
+    },
+    {
+      "path": "logs/vlajmaji-s02-package-lexicon-final01.log",
+      "original_path": "/tmp/vlajmaji-s02-package-lexicon-final01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 729,
+      "sha256": "6811fc989cd856e84da25c99ad124a91985c9cba7a36ac16f629c213acce6da1"
+    },
+    {
+      "path": "logs/vlajmaji-s02-package-store-final01.log",
+      "original_path": "/tmp/vlajmaji-s02-package-store-final01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1090,
+      "sha256": "d3a7034b605f3cbeb2a1623e16af348576991660d235a8b8b91af85ea6b52fbc"
+    },
+    {
+      "path": "logs/vlajmaji-s02-store-curation-test-02.log",
+      "original_path": "/tmp/vlajmaji-s02-store-curation-test-02.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1093,
+      "sha256": "a770da76992ee3877b15af7b2af8ea870d038bbf64dff0c2a51c656aef4f236d"
+    },
+    {
+      "path": "logs/vlajmaji-s02-store-curation-test-04.log",
+      "original_path": "/tmp/vlajmaji-s02-store-curation-test-04.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 969,
+      "sha256": "e0483625be4b7bbcb009967b87437d9f084dc84198f3c78c9585ad0499e96d00"
+    },
+    {
+      "path": "logs/vlajmaji-s02-store-final03.log",
+      "original_path": "/tmp/vlajmaji-s02-store-final03.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 969,
+      "sha256": "067e416d32029cdf2e4bfaf96294aa4757586d6073466d8c8147736276977bcf"
+    },
+    {
+      "path": "logs/vlajmaji-s02-store-final04.log",
+      "original_path": "/tmp/vlajmaji-s02-store-final04.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 969,
+      "sha256": "07b9b9bd447923ea783647eea4103f7f747d45730196e2ac7bbb4437bc6d2e00"
+    },
+    {
+      "path": "logs/vlajmaji-s02-store-final05.log",
+      "original_path": "/tmp/vlajmaji-s02-store-final05.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 969,
+      "sha256": "067e416d32029cdf2e4bfaf96294aa4757586d6073466d8c8147736276977bcf"
+    },
+    {
+      "path": "logs/vlajmaji-s02-store-s01-regression01.log",
+      "original_path": "/tmp/vlajmaji-s02-store-s01-regression01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1716,
+      "sha256": "d47baf323369f6ef4ea72182a667b6687afabef62cbb1af563ca0fd3b2e33cc2"
+    },
+    {
+      "path": "logs/vlajmaji-s02-synthetic-jbotci02.log",
+      "original_path": "/tmp/vlajmaji-s02-synthetic-jbotci02.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1794,
+      "sha256": "50d96441687530ecff1aff1e8c84d7b0df52b4ad74447d1ef2620abba50be5ac"
+    },
+    {
+      "path": "logs/vlajmaji-s02-synthetic-la-lojban01.log",
+      "original_path": "/tmp/vlajmaji-s02-synthetic-la-lojban01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1002,
+      "sha256": "38eb89b486540665e095f8db584207a31135a90ae90c3127f7cd66658bf2dab4"
+    },
+    {
+      "path": "logs/vlajmaji-s02-synthetic-llg01.log",
+      "original_path": "/tmp/vlajmaji-s02-synthetic-llg01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2465,
+      "sha256": "388dfa94d5d99917fa04c8f4527611573c982e5db3881a02edde46975c58e31a"
+    },
+    {
+      "path": "logs/vlajmaji-s02-synthetic-sutysisku01.log",
+      "original_path": "/tmp/vlajmaji-s02-synthetic-sutysisku01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1088,
+      "sha256": "94f9dfe8965d72e1eaca511fb879f47d779cc26f3d0cf9ca65c06f48298bd64f"
+    },
+    {
+      "path": "logs/vlajmaji-s02-variant-strict-fmt-check01.log",
+      "original_path": "/private/tmp/vlajmaji-s02-variant-strict-fmt-check01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "path": "logs/vlajmaji-s02-variant-strict-fmt-check02.log",
+      "original_path": "/private/tmp/vlajmaji-s02-variant-strict-fmt-check02.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "path": "logs/vlajmaji-s02-variant-strict-focused01.log",
+      "original_path": "/private/tmp/vlajmaji-s02-variant-strict-focused01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1596,
+      "sha256": "e22e2f8649ced865a65d43b2f50c0c5f20b18f49ef225d5de22fc0e1eaea42a5"
+    },
+    {
+      "path": "logs/vlajmaji-s02-variant-strict-lint01.log",
+      "original_path": "/private/tmp/vlajmaji-s02-variant-strict-lint01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1387,
+      "sha256": "477692dc3c8cb3ca51101bb3bebe75492fcff0ce4fc9b47d45fd1f06867f3602"
+    },
+    {
+      "path": "logs/vlajmaji-s02-variant-strict-lint02.log",
+      "original_path": "/private/tmp/vlajmaji-s02-variant-strict-lint02.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 360,
+      "sha256": "c8a3b3c36ef935df89509bfbaf6b559b6b126c9cde3ba5f8e4daae17eff0f261"
+    },
+    {
+      "path": "logs/vlajmaji-s02-variant-strict-make-check01.log",
+      "original_path": "/private/tmp/vlajmaji-s02-variant-strict-make-check01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 52941,
+      "sha256": "79b5dc17e6995ed7e65b1b44f24073182b125a73cd399b9abdb9d00f5f72f9ad"
+    },
+    {
+      "path": "logs/vlajmaji-s02-variant-strict-no-default01.log",
+      "original_path": "/private/tmp/vlajmaji-s02-variant-strict-no-default01.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 10372,
+      "sha256": "3613c9de09cb140622b78eac6a3ca70d72e8d4f1639e7b8e75b6f577a664a847"
+    },
+    {
+      "path": "strict-archive01/all-features.exit",
+      "original_path": "/tmp/vlajmaji-s02-strict-archive01/all-features.exit",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "strict-archive01/all-features.log",
+      "original_path": "/tmp/vlajmaji-s02-strict-archive01/all-features.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 49611,
+      "sha256": "f14335bd5ae9daf14d2e893e1f61b9ece70d98a25609641caac31773e423b5aa"
+    },
+    {
+      "path": "strict-archive01/archive-identity.txt",
+      "original_path": "/tmp/vlajmaji-s02-strict-archive01/archive-identity.txt",
+      "kind": "whole-original-byte-copy",
+      "bytes": 170,
+      "sha256": "afda2d59e80375e5e1d67d8038dfb0dc5df10050b834ed2907cfd7295c897d8a"
+    },
+    {
+      "path": "strict-archive01/current14-byte-compare.log",
+      "original_path": "/tmp/vlajmaji-s02-strict-archive01/current14-byte-compare.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2792,
+      "sha256": "814b665d4ef78a915a9e0c3e4d334de8955a1fc6ab6e8dc208a4abf1ffc2f12a"
+    },
+    {
+      "path": "strict-archive01/fixture-jbotci.log",
+      "original_path": "/tmp/vlajmaji-s02-strict-archive01/fixture-jbotci.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1846,
+      "sha256": "f67359848767196ee36199d3c3c110f7d39bccf34808dc1dad8224202d2ddd0b"
+    },
+    {
+      "path": "strict-archive01/fixture-la-lojban.log",
+      "original_path": "/tmp/vlajmaji-s02-strict-archive01/fixture-la-lojban.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1002,
+      "sha256": "3ee314a9bb5c7e02c56b1ef627eb597307b02b0350f703fa807f38b46c8eddcd"
+    },
+    {
+      "path": "strict-archive01/fixture-llg.log",
+      "original_path": "/tmp/vlajmaji-s02-strict-archive01/fixture-llg.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 2465,
+      "sha256": "600562931cb63d36245ed5122d86bf2dfb200d9cd63f5d9e6b84bbba474de007"
+    },
+    {
+      "path": "strict-archive01/fixture-sutysisku.log",
+      "original_path": "/tmp/vlajmaji-s02-strict-archive01/fixture-sutysisku.log",
+      "kind": "whole-original-byte-copy",
+      "bytes": 1088,
+      "sha256": "e02f8729a9d4d78be85d040ed5a27795f73e5564bae34246c7fcd6df7aef5b07"
+    }
+  ],
+  "held_exclusions": [
+    {
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/cli-journal/owned.sqlite",
+      "kind": "held-new-Tiny-fixture-store-not-copied",
+      "bytes": 77824,
+      "sha256": "331fcf99763bca66fa88e7f5830b381feeb429a00e71fd8527ea2118a3cd77f4"
+    },
+    {
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/derived/dictionary.sqlite3",
+      "kind": "held-new-Tiny-fixture-store-not-copied",
+      "bytes": 618496,
+      "sha256": "014191927e3e77cab28bd465cbb3c4b19d79f2917358e935a6dda93aa275d0fc"
+    },
+    {
+      "original_path": "/private/tmp/a05-s02-cdc-proof01-74b_s9ep/tmpdir/vlajmaji-a05-s02-cdc-qwy8awb8/public-journal/owned.sqlite",
+      "kind": "held-new-Tiny-fixture-store-not-copied",
+      "bytes": 69632,
+      "sha256": "61be3e3f9d060bd432f3e653d160449c152bfd301b89826eb82bce42dad46df9"
+    },
+    {
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/cli-journal/owned.sqlite",
+      "kind": "held-new-Tiny-fixture-store-not-copied",
+      "bytes": 94208,
+      "sha256": "c00d8b6b7fa8159c46577a310e3800fc773c62d44a342df1e61cb14c345e3a1f"
+    },
+    {
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/derived/dictionary.sqlite3",
+      "kind": "held-new-Tiny-fixture-store-not-copied",
+      "bytes": 618496,
+      "sha256": "014191927e3e77cab28bd465cbb3c4b19d79f2917358e935a6dda93aa275d0fc"
+    },
+    {
+      "original_path": "/private/tmp/a05-s02-cdc-proof02-_u28cga_/tmpdir/vlajmaji-a05-s02-cdc-cgznzofy/public-journal/owned.sqlite",
+      "kind": "held-new-Tiny-fixture-store-not-copied",
+      "bytes": 69632,
+      "sha256": "61be3e3f9d060bd432f3e653d160449c152bfd301b89826eb82bce42dad46df9"
+    }
+  ]
+}

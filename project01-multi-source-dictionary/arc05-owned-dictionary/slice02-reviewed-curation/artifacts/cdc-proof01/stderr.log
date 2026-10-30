@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/private/tmp/a05-s02-independent-proof-draft.py", line 467, in <module>
+    main()
+  File "/private/tmp/a05-s02-independent-proof-draft.py", line 351, in main
+    assert body['unverified'] == [] and [r['assertion']['id'] for r in body['confirmed']] == ids
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

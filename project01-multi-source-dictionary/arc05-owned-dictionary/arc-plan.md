@@ -2,13 +2,13 @@
 
 | Field | Value |
 | --- | --- |
-| Status | S01 CLOSED locally; A05-01/02 DONE and6arc rows OPEN. S02 INITIAL/pass1: intake ACCEPTED, transfer after metadata commit+explicit dispatch |
+| Status | S01–S02 CLOSED locally;15child DONE, A05-01/02 DONE and6arc rows OPEN; S03 DRAFT/UNISSUED pending root readiness |
 | Authority | [directive04](../cdc-directive04.md), Duncan “merged! Let's continue :-D”; THROUGH ARC05 ONLY |
 | Roles | Retained CDC Sol6.1/high; retained CC Luna/high; fresh independent Sol6.1/high assembled review and SAME-context canonical gate at close |
-| Source | `codex/project01-owned-dictionary`, accepted S01 `1b899ebb492d89ceb1561abb0befb17ff3ccc5a1`, tree `745f789e3ddef62a2c2977c95a1d76f6f12382db`; original merged baseline a55 retained |
+| Source | `codex/project01-owned-dictionary`, accepted S02 `854865a72c4ca4971e1b93fd25a2e69ee14b03a8`, tree `ef81ffbb10054bd4ceb935ac76f7912178a603e2`; S01/base history retained |
 | Physical checkout | Reused `.worktrees/project01-arc04/vlajmaji`; old Arc04 branch9026 retained; no new worktree/cache |
-| Ownership | S02 complete intake ACCEPTED; AFTER this metadata checkpoint and explicit CDC dispatch, CC owns exact14paths/index/ONEtarget, root/CDC readonly. Until dispatch ROOT QUIET |
-| Version / date | 0.2 / 2026-10-28 |
+| Ownership | Source/index/ONEretainedtarget ROOT QUIET after actual CDC proof02; planning-only S03 preparation, no next issue/transfer yet |
+| Version / date | 0.3 / 2026-10-29 |
 
 ## Useful result and boundaries
 
@@ -20,7 +20,7 @@ Arc04 is CLOSED and actually merged as a55e1cc7 (tree-equal accepted9026). Main 
 
 1. **Authority:** a new versioned SQLite owned journal, distinct from rebuildable read-only `DictionaryStore` and upstream collection catalogues. Writes use one transaction and persisted expected-head CAS under `BEGIN IMMEDIATE`. Two already-open writers cannot silently overwrite one another. No automatic last-writer-wins or undo-by-deleting-history.
 2. **Model:** existing normalized Dictionary/registry version1 remains the complete typed model. S01 accepts whole validated genesis/candidate Dictionaries and appends new records; old typed bodies/order remain immutable. The current owned head and monotonically incremented catalogue revision are explicit control fields. An edit creates one same-source revision; active IDs describe the complete current set, and explicit tombstones retain removed assertion identities. Existing selected release flags stay immutable; existing owned-head selection already intersects release membership with current active IDs.
-3. **Curation/context:** reviewed local senses use existing owned/editorial types. Cross-source curation persists in a distinct version1 owned envelope outside the base Dictionary, with typed `CatalogTarget`, direction, editor/revision/rationale and exact context provenance. No foreign placeholder ReleaseRecords and no copying whole upstream corpora per edit. Absent context is explicitly unavailable/unresolved. With caller-supplied exact validated context, compose the actual bodies FIRST, then materialize reviewed links/groupings with closure to actual releases/assertions. Reject unequal same-ID bodies; never infer identity from spelling or silently retarget. S02 must freeze the precise adapter APIs/wire/status policy before issue; this proposal does not pretend that detail is already executable.
+3. **Curation/context:** reviewed local senses use existing owned/editorial types. Cross-source curation persists in a distinct version1 owned envelope outside the base Dictionary, with typed `CatalogTarget`, direction, editor/revision/rationale and exact context provenance. No foreign placeholder ReleaseRecords and no copying whole upstream corpora per edit. Absent context is explicitly unavailable/unresolved. With caller-supplied exact validated context, compose the actual bodies FIRST, then materialize reviewed links/groupings with closure to actual releases/assertions. Reject unequal same-ID bodies; never infer identity from spelling or silently retarget. S02 now delivers the precise strict version1 adapter and explicit schema2 migration at854865a7, independently accepted locally. Sealed history/reimport remains S03; this does not claim that later capability.
 4. **Export/reimport:** separate version1 owned snapshot/seal, preserving the complete ordered journal history and curation envelope. It is not a new `PackId`. Export validation and strict load precede derived indexing. Exact replay is idempotent only under S03's explicit import policy; conflicting same-ID bodies/head histories reject. S01 edit CAS itself has no idempotent stale-replay exception.
 5. **Packaging:** optional `vlajmaji-data-owned` and umbrella `data-owned` feature, default empty and `publish=false`, using explicit local snapshot materialization. Existing four upstream `PackId` values/All-four installation stay unchanged. No fifth mandatory upstream input, automatic publication, network load or redistribution claim.
 6. **Query boundary:** S01 provides actual init/edit/head/history/show. No assumed in-memory search constructor exists. S03 demonstrates snapshot→Dictionary→explicit fresh `DictionaryStore::create`→existing dictionary query/detail. Arc06 later integrates a live mixed managed view.
@@ -30,7 +30,7 @@ Arc04 is CLOSED and actually merged as a55e1cc7 (tree-equal accepted9026). Main 
 | Slice | Public Rust + CLI capability | Dependencies and owning acceptance |
 | --- | --- | --- |
 | [S01 — Owned journal](slice01-owned-journal/slice-plan.md) | Explicit ROOT init/edit/head/history/show, complete typed metadata, transactional CAS and immutable revision reads; shipped minimal seed/edit example and CLI recipe | Existing model/validators and rusqlite; no external context or corpus required. Initial full draft open set below |
-| S02 — Reviewed curation/context adapter | Local reviewed senses plus persisted pinned external links/groupings; show unavailable context; materialize against exact explicit Tiny context and query existing reference routes | Accepted S01. Must settle full adapter record/schema/status/error closure and no-retarget controls before issue; journal/envelope migration is explicit, not an unversioned S01 schema change |
+| S02 — Reviewed curation/context adapter | Local reviewed senses plus persisted pinned external links/groupings; show unavailable context; materialize against exact explicit Tiny context and query existing reference routes | Accepted S01; S02 locally CLOSED at854865a7 with exact adapter/migration/status/identity controls. Curation reimport remains S03 and A05-03 stays partialOPEN |
 | S03 — Sealed history and explicit querying | Deterministic export/check/load/reimport; preserve all historical bodies/heads/curation; exact replay vs conflict; explicit derived index and full/compact/readable Rust+CLI query | Accepted S01–02. Distinct owned envelope/loader, no placeholder composition or default-store fallback |
 | S04 — Optional owned package/offline consumer | Default-empty optional owned crate/feature; strict embedded snapshot load before SQLite; outside consumer and actual complete owned workflow | Accepted S03. Disjoint Synthetic materialization; no ignored Full payload overwrite. Existing four upstream/features remain compatible |
 
@@ -46,7 +46,7 @@ At arc close a fresh independent context actually exercises init→edit→stale 
 
 ## Current readiness
 
-S01 is locally CLOSED at1b899ebb/tree745f after full CDC source review, independent15store+3CLI and one12-child public/CLI proof. All7child and A05-01/02 DONE; remaining6arc/all14project OPEN. [S01 verification](slice01-owned-journal/cdc-verification.md) preserves source/gate applicability, Mac/Linux and rollback boundaries, original failed methods and unknown incidental include-bytes input I/O. S02 plan/prompt/ledger bind accepted S01 and passed root exact readiness at28821fea; the prompt is ISSUED status-only for complete intake. Actual readback/F01 clarification is ACCEPTED with fresh clean1b899ebb/pins; AFTER this scoped metadata commit + separate explicit dispatch CC owns14paths/index/ONEtarget for INITIAL/pass1, root/CDC readonly. No source/index/target operation until readiness/intake/explicit transfer. No higher-scale acceptance or external authority.
+S01 and S02 are locally CLOSED,15child DONE. S02 public/CLI schema2 curation and actual context materialization are accepted at854865a7 after CDC40-child proof, retaining failed25-child method attempt, original archive collision and author PATH provenance limits. Its [verification](slice02-reviewed-curation/cdc-verification.md) and [retrospective](slice02-reviewed-curation/cdc-retrospective.md) supply the row walk. A05-01/02 DONE; A05-03 partialOPEN because its original verifier includes reimport; remaining6arc/all14project OPEN. S03 exact pure history/seal/import draft must bind accepted APIs/INPUT oracles and receive root readiness before issue. Source/index/ONEtarget ROOT QUIET; no external/Arc06 advance.
 
 ### Historical draft readiness — version0.1
 
@@ -61,3 +61,5 @@ This is the concrete planning proposal, not an issued source assignment. S01's e
 Root final readiness PASS at proposal d75532d clears status-only initial issue and retained CC complete intake. Source/index/ONE target remain root QUIET until CDC accepts coverage/readback and explicitly transfers the eleven S01 paths; all8arc/7child/14project rows OPEN. Current S01 status supersedes the dated DRAFT readiness prose above; architecture and later-slice obligations unchanged.
 
 - 0.2 —2026-10-28: actual S01 local close/source1b899ebb, independent proof/retrospective and partial parent rows01/02; S02 current draft reconciled, still UNISSUED;6arc/all14project OPEN.
+
+- 0.3 —2026-10-29: accepted S02 source854865a7, independent mixed-own migration/materialization/history proof and local eight-row close; actual body/current ownership updated. No arc structural re-sequencing; A05-03 reimport remains S03. Unchanged fixture fragility is BL-0002, not shipped repair; S03/S04/fresh assembled/canonical gates remain.
