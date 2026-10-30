@@ -1,6 +1,6 @@
 # Arc05 S04 — Optional owned history package
 
-STATUS: DRAFT, UNISSUED — accepted S03 source/API/readset/INPUTs reconciled; exact root readiness pending.
+STATUS: ISSUED INITIAL — root exact readiness PASS118c86e; complete intake ONLY, no source/target authority until CDC acceptance/fresh pins/explicit transfer.
 
 You are the retained CC, requested Luna/high. This is a future INITIAL assignment, not current source/target authority. Accepted S03 is locally CLOSED at2b7b6dda/tree83d81705, planning944c607 after root consistency. Source/index/ONEtarget are ROOT QUIET. Do not implement, run Cargo, create product data or claim intake acceptance from this draft; root exact readiness/status-only issue remains. No backend/model attestation is available from a requested configuration alone.
 
