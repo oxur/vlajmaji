@@ -6,9 +6,13 @@ slice's artifacts; recording an item does not authorize implementation or change
 active acceptance criteria. BL-0001 records the S05 metadata byte-comparison
 candidate; the diagnostic originals remain preserved in place.
 
-## Current Arc05 authority and ownership — 2026-10-28
+## Current Arc05 authority and ownership — 2026-10-30
 
 Duncan reports PR6 merged and says “merged! Let's continue :-D”. [directive04](project01-multi-source-dictionary/cdc-directive04.md) governs Autonomous execution THROUGH ARC05 ONLY, with retained Sol6.1/high CDC and Luna/high CC. Arc01–04 remain CLOSED; all fourteen project rows OPEN; Arc06 unactivated. PR6 actually merged as a55e1cc7/tree836, equal accepted9026; merged-main CI40806671887 SUCCESS is baseline evidence only.
+
+Arc05 is at canonical close PROPOSAL after NEW fresh actual technical ACCEPTED at d2a566c6/treecc9f6f73. Four increments are operationally complete;23 prior child/five arc DONE retained,8 S04/3arc/all14 project OPEN pending SAME-context canonical/root. Current [canonical proposal](project01-multi-source-dictionary/arc05-owned-dictionary/closing-report.md) binds actual26 fresh children, child scopes, failures, inventories and the exact planned11-cell transition. Source/index/ONEtarget ROOT QUIET; CDC canonical planning only. Arc06/external/Full/default/BL0001 remain outside authority.
+
+### Historical Arc05 S04 intake checkpoint —2026-10-29
 
 Arc05 S01–S03 are CLOSED locally at2b7b6dda/tree83d81705:23child/fivearc DONE, three arc/all14project OPEN. [S03 verification](project01-multi-source-dictionary/arc05-owned-dictionary/slice03-sealed-owned-history/cdc-verification.md) binds actual58+6 original-control children and preserved failures/local feature/native limits. S04 INITIALisissuedafterroot118c86e; actualcompleteintake/addendum ACCEPTED and freshclean2b7pinsPASS. AFTERcheckpointcommit+explicitdispatch CCowns exact12/index/ONEtarget INITIAL, root/CDC readonly. Its8rowsremainOPEN/proposed untilfreshNEWactualassembled+SAMEcanonical/rootgate. Existing physical checkout/branch/target reused; no push/PR/CI/Full/default/BL0001/Arc06 authority. Historical child ownership/readiness records remain preserved.
 

@@ -50,3 +50,7 @@ Scope as specified and delivered is the exact twelve-path S04 allowlist. The ind
 ## CDC dated current-scope addendum —2026-10-30
 
 The original author body above is retained exactly as authored AS OF its supplied pre-CDC-result context, not a current assertion that CDC has not run. CDC13 subsequently passed; actual independent disposition is [CDC verification](cdc-verification.md), while fresh actual/SAME canonical/root remain pending and all8 rows OPEN. Consumer source/manifest/lock/graph/corrective run live under artifacts/consumer-correction01 and the same external consumer; author12-method01 holds the distinct CLI observer, not the consumer method. The two author generated DB copies are held/excluded from the planning commit as well as the source commit; no DB payload is evidence committed here. Fourteen rows are PROJECT rows, all OPEN. This addendum is CDC-supplied and does not attribute CDC reproduction to CC.
+
+## Current canonical proposal —2026-10-30
+
+Fresh independent technical review is now ACCEPTED at d2a566c6/treecc9f6f73 after actual26 children, with no blocking product finding at its stated local scope. [Technical report](../artifacts/composition-review.md) and immutable121-copy manifest preserve that separate role's actual evidence. This is CDC's dated update, not CC reproduction or final canonical acceptance. All8 statuses remain OPEN pending SAME-context canonical/root. The exact intended mechanical transition is in [Arc05 canonical close proposal](../closing-report.md#planned-mechanical-transition).

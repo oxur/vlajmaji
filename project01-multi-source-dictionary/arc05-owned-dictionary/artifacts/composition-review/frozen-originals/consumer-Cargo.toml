@@ -1,0 +1,11 @@
+[package]
+name = "vlajmaji-a05-s04-owned-consumer-01"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+vlajmaji-data-owned = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01/crates/data-owned", features = ["embedded"] }
+vlajmaji-lexicon = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01/crates/lexicon" }

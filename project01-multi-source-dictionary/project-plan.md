@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | project OPEN; Arc01–04 CLOSED. Arc05 S01–S03 locally CLOSED at2b7b6dda/tree83d81705;23child/fivearc DONE,3arc/all14project OPEN. S04 INITIALintakeaccepted/freshpinsPASS; aftercheckpoint+explicitdispatch CC12/index/ONEtarget, root/CDCreadonly. Arc06unactivated. |
+| status | Project OPEN; Arc01–04 CLOSED. Arc05 canonical PROPOSAL after actual fresh technical ACCEPTED at d2a566c6/treecc9f6f73;23 prior child/five arc DONE,8 S04/3arc/all14project OPEN pending SAME canonical/root. Arc06 unactivated. |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.33 / 2026-10-29 |
+| version / date | 1.34 / 2026-10-30 |
 
 ## Purpose and first useful result
 
@@ -26,7 +26,7 @@ and explicit availability. Subsequent arcs make it work with full, independently
 selectable corpora and an editable dictionary of our own.
 
 The design and remaining decisions are in [design.md](design.md). Acceptance is in
-[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is CLOSED after both accepted children and separate fresh technical/finalcanonical review. Arc03 all4children and fresh assembled technical composition are accepted at7b1c565; actual canonical packet is independently accepted at proposal a5226ee. Arc04 is CLOSED and merged; directive04 now authorizes Arc05 only. Its concrete draft open set is linked below; Arc06 remains unactivated.
+[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is CLOSED after both accepted children and separate fresh technical/finalcanonical review. Arc03 all4children and fresh assembled technical composition are accepted at7b1c565; actual canonical packet is independently accepted at proposal a5226ee. Arc04 is CLOSED and merged; directive04 now authorizes Arc05 only. Its four increments now have actual assembled technical support, with canonical proposal linked below; Arc06 remains unactivated.
 
 ## Decisions already made
 
@@ -429,3 +429,7 @@ Source854865a7/treeef81ffbb delivers strict reviewed Link/Sense/context APIs, ex
 ## Version1.33 — S03 sealed-history local close,2026-10-29
 
 Source2b7b6dda/tree83d81705 adds pure strict sealed full-history transport, atomic fresh import/exact replay/conflicts and native rootless check/model extraction. Actual original-writer/hash/export parity, all old states/selections, CURRENT empty migration and explicit derived Full/Compact/Readable/detail proof are accepted by CDC (58+6 direct verification children). S03 eight and A05-03/04/05 DONE;23child/fivearcDONE, three arc/all14project OPEN. Optional owned package and fresh NEW assembled/SAME canonical/root gates remain. See S03 verifier/retro/evidence index for current local gates, historical product/method failures and unexecuted platform/Full limits. No project/finalOperator/rights/external/Arc06 acceptance.
+
+## Version1.34 — Arc05 actual technical composition / canonical proposal,2026-10-30
+
+The [Arc05 canonical proposal](arc05-owned-dictionary/closing-report.md) composes four increments at d2a566c6/treecc9f6f73: authoritative full-typed append history/CAS, explicit reviewed local/external curation with truthful context absence, complete sealed history/import/replay, and optional pure owned loading before SQLite with explicit derived queries. NEW fresh actual26 children (24zero/2expected1) received bounded technical ACCEPTED; SAME-context canonical/root remain pending. No prior evidence is relabelled fresh. All8 S04/3arc statuses stay OPEN in this proposal; all14 project rows remain OPEN for final integrated/Operator work. No structural roadmap change or Arc06 activation is required. Existing PackId/All-four, content-rights holds, raw/native/platform and qualified-method limits remain. Current Arc05 hostedCI/push/PR/publication were not authorized or performed. Earlier draft/partial checkpoint text is historical at its own cutoff.

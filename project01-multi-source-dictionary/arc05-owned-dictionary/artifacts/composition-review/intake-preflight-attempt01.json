@@ -1,0 +1,7 @@
+{
+  "exit": 1,
+  "product_children": 0,
+  "failure": "Reviewer intake observer guessed wrong replacement text for frozen wrong-kind.seal.json; failed own assertion at line80. Frozen method never invoked.",
+  "method_sha256": "8f3a8f37ab560160a380249e3c8daaa4c35343643b782bbd8ffcef8b6b45bddb",
+  "raw_terminal": "Traceback (most recent call last):\n  File \"intake-preflight.py\", line 80, in <module>\n    elif r[\"path\"]==\"wrong-kind.seal.json\": assert raw==seal.replace(b\"vlajmaji-owned-snapshot\",b\"vlajmaji-corpus-release\")\nAssertionError\n"
+}

@@ -1,0 +1,29 @@
+# Arc05 CDC retrospective — canonical proposal,2026-10-30
+
+Arc05 now has actual fresh technical acceptance across four usable increments at d2a566c6/treecc9f6f73. SAME-context canonical/root remain pending; all8 S04/3arc statuses stay OPEN. This report interprets actual child/fresh evidence, not a substitute for acceptance or a measured process experiment.
+
+## What helped
+
+Keeping the authoritative journal separate from rebuildable indexes clarified transactional CAS, history and output boundaries. The full validated typed model avoided a definition-string editor that would silently lose metadata. Exact ordered24-vector prefixes and current/prior reconstruction made old states testable. The external-catalogue adapter retained provenance and missing-context truth without copying foreign corpora per edit; explicit composition was a declared view with existing dedup/multiplicity semantics. Distinct sealed history and a lexicon-only optional package then composed without changing PackId/All-four. Reusing one target and asserted disjoint Synthetic archives avoided commissioning another Full campaign.
+
+Fresh proof used emitted/pre-input typed authorities, fixed literal rosters and independent hashes before product children. Source review, whole outputs, exact expected exits and held-DB exclusions provided stronger evidence than aggregate passes alone. One NEW reviewer actually exercised public Rust, pure optional loading and24 CLI operations, then retained context for the still-pending canonical gate. That separation kept technical success from prematurely closing statuses.
+
+## Friction and responsibility
+
+The initial assignments sometimes progressed through compile/focused/broad gates before the complete original finite census was implemented. Root/CDC contract-to-source follow-through caught missing invariants and viable API/fixture boundaries; author corrections inside unfrozen scope then needed current gates. A correct intake receipt did not prove correct application: schema2 PRAGMA/header parity, orphan rows, strict enum payload fields and a consumer's base-versus-curation hash constants illustrate that distinction. Preserve these actual defects, oracle errors and scopes separately; do not attribute all churn to model capacity or context.
+
+Several observers initially could not reach their intended predicate: constructor-invalid inputs, unsupported native filenames, stdout write preconditions, seal self-validation before inventory mismatch, guessed kind/hash fields and CLI-vs-library response wrappers. Concrete source-backed positive counterparts and actual preconditions mattered. macOS EILSEQ is a scoped filesystem capability limit; Linux positives remain authored/unexecuted, not a generic pass or a broad skip. The native/output tests preserve commit-before-stdout acknowledgement rather than falsely promise rollback after durable success.
+
+Coordination also contributed. A stale retained S03 assignment wrote accepted planning bodies; CDC/root preserved both actual wrong bodies, waited for QUIET, restored exact accepted originals and cancelled the old write task. The first source commit's trailer metadata needed correction without changing its tree. PATH drift/dedup provenance, a lost lint terminal and uncaptured MAKEFLAGS weakened specific receipts. One S01 archive command used the wrong physical cwd, so incidental ignored compiler-input IO remains unknown; the subsequent asserted-cwd policy prevents that mechanism prospectively but cannot rewrite the old uncertainty. Existing fixture collisions remain BL-0002; successful later runs do not establish cause or a shipped repair.
+
+S04 remained deliberately thin, yet its consumer had five wrong expected curation hashes despite a correct readback; root's full source review found the mismatch as the first run had already failed. The authorized PASS2 changed only those five constants/two variable references and preserved all failed original bodies/binary/raw. Author12's missing oracle-manifest binding and fresh intake helper's guessed wrong kind failed before product children. Those setup corrections consumed no product retry and were labelled explicitly. Private lock closure replaced a missing standalone tree raw honestly, rather than fabricating a replayed original.
+
+## Scoped recommendations, not policy changes
+
+Complete the original finite input/control census before broad gates; verify actual API constructors/IO preconditions and positive counterparts before claiming reach; inspect whole affected enum/platform boundaries; distinguish base-state, curation-state and whole-file digest protocols with literal authorities. Verify required binding membership as well as existing digest values. Pin toolhomes and exact PATH before owned HOME/XDG/TMPDIR, assert physical archive cwd before Cargo, and capture authoritative direct child exits. Make task cancellation/ownership and durable report homes explicit when reusing an agent.
+
+These recommendations follow observed failures; they are not a framework/skill rewrite or a causally demonstrated efficiency improvement. Five-pass limits, original oracles, separate source/target ownership, actual failure preservation and independent disposition remain the adopted contract. No new benchmark, methodology project or corrective source commission is created here.
+
+## Bubble-up
+
+All four planned capabilities are delivered at the documented local scope and compose under fresh actual proof. No structural arc reordering is needed. Carry the unchanged collision fragility/unknown incidental IO/platform/CI/content-rights and final Operator boundaries forward; do not drop required corpora or treat optional owned data as a fifth PackId. All14 project rows stay OPEN. Arc06/live mixed managed integration and external delivery require their own later authority; this packet stops at Arc05 canonical close.

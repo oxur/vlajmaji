@@ -1,0 +1,34 @@
+{
+  "make-check02.log": {
+    "bytes": 56139,
+    "sha256": "b79df59dbf41e158bc3ecb4330517fb4404ec4666ce01323beb87ae4530ab60d",
+    "rust_groups": 67,
+    "passed": 393,
+    "failed": 0,
+    "ignored": 1
+  },
+  "owned-package-list01.log": {
+    "bytes": 196,
+    "sha256": "c90f0f71907ce2037f307cf0bf4e6bf8b499475b18bb0171ffe2d0a20a339d8a",
+    "entries": [
+      "Cargo.lock",
+      "Cargo.toml",
+      "Cargo.toml.orig",
+      "README.md",
+      "src/lib.rs",
+      "tests/owned_package_contract.rs"
+    ]
+  },
+  "umbrella-package-list01.log": {
+    "bytes": 172,
+    "sha256": "1eee0de391e26d1f775176d1fed4f35294df0405f07cb22aa0f496dbea487adf",
+    "entries": [
+      "Cargo.lock",
+      "Cargo.toml",
+      "Cargo.toml.orig",
+      "LICENSE",
+      "README.md",
+      "src/lib.rs"
+    ]
+  }
+}

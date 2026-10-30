@@ -1,3 +1,5 @@
+> Current canonical proposal,2026-10-30: fresh NEW independent technical review ACCEPTED at d2a566c6/treecc9f6f73 after actual26 children (24zero/2expected1). See [Arc05 technical review](../artifacts/composition-review.md). Operational body below retains its earlier cutoff. All8 S04 rows remain OPEN until SAME-context canonical ACCEPTED and root consistency; no closure is claimed here.
+
 # S04 CDC operational verification — PROPOSED, 2026-10-30
 
 Operational result: PASS at `d2a566c6cf9106bbb3b2c1a0cf6c62e402ad2a0c`, tree `cc9f6f73e8d724e9129a26e7374fa64bb0f0b36e`, parent accepted S03 `2b7b6dda`. This is independent operational evidence, not S04/Arc05 close. All eight S04 rows remain OPEN through the required fresh actual composition, SAME-context canonical review and root consistency.

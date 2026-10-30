@@ -1,0 +1,337 @@
+{
+  "status": "PROPOSED; SAME-context canonical/root acceptance PENDING",
+  "source": {
+    "head": "d2a566c6cf9106bbb3b2c1a0cf6c62e402ad2a0c",
+    "tree": "cc9f6f73e8d724e9129a26e7374fa64bb0f0b36e",
+    "branch": "codex/project01-owned-dictionary",
+    "clean": true,
+    "baseline": "a55e1cc7c4d7b0df4a187ce3551bfce9141a39d3",
+    "cumulative_paths": [
+      ".github/workflows/ci.yml",
+      ".gitignore",
+      "Cargo.lock",
+      "README.md",
+      "crates/cli/README.md",
+      "crates/cli/src/main.rs",
+      "crates/cli/tests/owned_curation_contract.rs",
+      "crates/cli/tests/owned_journal_contract.rs",
+      "crates/cli/tests/owned_snapshot_contract.rs",
+      "crates/data-owned/Cargo.toml",
+      "crates/data-owned/README.md",
+      "crates/data-owned/src/lib.rs",
+      "crates/data-owned/tests/owned_package_contract.rs",
+      "crates/lexicon/src/lib.rs",
+      "crates/lexicon/src/owned_curation.rs",
+      "crates/lexicon/src/owned_snapshot.rs",
+      "crates/lexicon/tests/owned_curation_contract.rs",
+      "crates/lexicon/tests/owned_snapshot_contract.rs",
+      "crates/store/README.md",
+      "crates/store/examples/owned_curation.rs",
+      "crates/store/examples/owned_journal.rs",
+      "crates/store/examples/owned_snapshot.rs",
+      "crates/store/src/lib.rs",
+      "crates/store/src/owned.rs",
+      "crates/store/src/owned_schema.rs",
+      "crates/store/tests/owned_curation_contract.rs",
+      "crates/store/tests/owned_journal_contract.rs",
+      "crates/store/tests/owned_snapshot_contract.rs",
+      "crates/vlajmaji/Cargo.toml",
+      "crates/vlajmaji/README.md",
+      "crates/vlajmaji/src/lib.rs",
+      "docs/owned-dictionary.md"
+    ],
+    "slices": [
+      {
+        "head": "1b899ebb",
+        "tree": "745f789e3ddef62a2c2977c95a1d76f6f12382db"
+      },
+      {
+        "head": "854865a72c4ca4971e1b93fd25a2e69ee14b03a8",
+        "tree": "ef81ffbb10054bd4ceb935ac76f7912178a603e2"
+      },
+      {
+        "head": "2b7b6dda55dc00d62bfa4fcdc5d5a09742fcf528",
+        "tree": "83d81705cc1de3aa69f1d6d39e4c524bb1b6d9b3"
+      },
+      {
+        "head": "d2a566c6cf9106bbb3b2c1a0cf6c62e402ad2a0c",
+        "tree": "cc9f6f73e8d724e9129a26e7374fa64bb0f0b36e"
+      }
+    ]
+  },
+  "planning_parent": "c860bbf237b776e54301647f5103159d5752d6f9",
+  "primary_bodies": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 57139,
+      "sha256": "3b392a7951e545f7fa6611c6ff4a1d87d4c14a7bd718962e6d8e2a13476745bb"
+    },
+    {
+      "path": "project01-multi-source-dictionary/project-plan.md",
+      "bytes": 60336,
+      "sha256": "510f8f6075d784744c432650fca5b8a65f57e21028617f02c9d25431d6f2d09b"
+    },
+    {
+      "path": "project01-multi-source-dictionary/ledger.md",
+      "bytes": 30108,
+      "sha256": "d9176f61c71a4326627c46379ca7d8ab308ce8bc40ae977a76b1afb77dfe44fe"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/arc-plan.md",
+      "bytes": 12469,
+      "sha256": "7d4b287ce039d5750cb9676a64a79b13c95de35597ae76f3f8b79bb0a0b5aeff"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/ledger.md",
+      "bytes": 4435,
+      "sha256": "58aabde438a24e465bb045f2bcab3eef5dffa7d9d5b2cf8b06984b9a03b13bc4"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/closing-report.md",
+      "bytes": 12509,
+      "sha256": "005117fb500585e9392f17805d0ba615c0a612699be220152c7e6a7bd45ffcb7"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/cdc-retrospective.md",
+      "bytes": 5879,
+      "sha256": "0014c9b7b3d506a9a5bb35e2680b529a57616ed39b1bdb6a40cf37183b08dc64"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/artifacts/composition-review.md",
+      "bytes": 18953,
+      "sha256": "920b379d11ee0df3f27ea745fda067210968fd7b5a4ef6f605528b8b67d221c8"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice01-owned-journal/slice-plan.md",
+      "bytes": 31870,
+      "sha256": "f645dfc939fe7318edf046f9fa2caebaf6c6c3e157e3497ed7de235f8749ade9"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice01-owned-journal/ledger.md",
+      "bytes": 3606,
+      "sha256": "f30bfa9f67a89e1881ce6013d24eae5a2947357e6eadd0d0565e4bb9372e0452"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice01-owned-journal/closing-report.md",
+      "bytes": 2935,
+      "sha256": "b517de7882b1cb1635c8f42d5fbc62236d8a187ff946f1c572481fef17be3d91"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice01-owned-journal/cdc-verification.md",
+      "bytes": 7350,
+      "sha256": "aa87ac25fd2cd5554b149d9d816017038e19be6a8d6b00771e674f37e58709fe"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice01-owned-journal/cdc-retrospective.md",
+      "bytes": 3764,
+      "sha256": "ea298c0285490f2f9f4617c719fd10af206f9d82459f47cd80d280c46c300c4b"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/slice-plan.md",
+      "bytes": 33296,
+      "sha256": "087bdcdac262b1612d3f094d8f6f810a6b887ff0b652dfbf4a0bb509eda030ee"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/ledger.md",
+      "bytes": 5237,
+      "sha256": "0f3fa15f44b73268ea91bc4cc0d99f2fa21912e3ad822a48c089f1ceb32cb1e1"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/closing-report.md",
+      "bytes": 9526,
+      "sha256": "8cd9f628bdef4ac2b6b3a765885d256d79c68c7f4232e50adc53629896347687"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/cdc-verification.md",
+      "bytes": 10512,
+      "sha256": "c940b577b32776e894de563c46b940f3e9f370e0c82757207ccd43fea407acf7"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/cdc-retrospective.md",
+      "bytes": 3807,
+      "sha256": "abd18dffed8880f4a7f94204b267244bf981e170fe6d0e352dff8548b65b2607"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice03-sealed-owned-history/slice-plan.md",
+      "bytes": 43305,
+      "sha256": "6b0d46ef405f097f8ebf86b51b020c6bc75c2985fbdff76c33c85c9af6d87040"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice03-sealed-owned-history/ledger.md",
+      "bytes": 5230,
+      "sha256": "57686ba0a3861f734fb4949d8767960fa90f780df8b148238dd6ec90bd226aa7"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice03-sealed-owned-history/closing-report.md",
+      "bytes": 5757,
+      "sha256": "db27d85a72febb97da5ac37fb7bfb0f98e6e925471d6be7339a327b312a5c537"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice03-sealed-owned-history/cdc-verification.md",
+      "bytes": 11786,
+      "sha256": "53e96ede870da7dab18347e2b255451cd900db7c213f86052c0008c2587ec4a8"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice03-sealed-owned-history/cdc-retrospective.md",
+      "bytes": 3627,
+      "sha256": "dd5b18820cb65af3b20562e804f63a90119e854744d2d0f95545bc4524f5edfd"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/slice-plan.md",
+      "bytes": 34479,
+      "sha256": "208b65e89ed17aae102569caebbe485d003cbac5b21f8993d3b0c8297167c85b"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/ledger.md",
+      "bytes": 5531,
+      "sha256": "326aa86e9a989af7f6111b2b7a98e9cb6864d95de2e165f0cc02828a75f2f2e8"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/closing-report.md",
+      "bytes": 11225,
+      "sha256": "60bffb6b2bec60f6369ed08a44ab9a1cf4fbc1cb6073a7617e1e1571566439fd"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/cdc-verification.md",
+      "bytes": 8155,
+      "sha256": "281ce9afce1dd09d28cc69699428962544ba6de3c5252aea551327ddc3acaf13"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/retro.md",
+      "bytes": 3290,
+      "sha256": "69081c06f9650700a6c1af23c15da35eb5824ff9fc666a926fce1d8a3ac6ec8e"
+    }
+  ],
+  "inventory": {
+    "path": "project01-multi-source-dictionary/arc05-owned-dictionary/artifacts/canonical-close/produced-paths.json",
+    "bytes": 301872,
+    "sha256": "1e4694e85489eb8b92a2e7a39052fac7ea12a750650e1b6f261753aa46caa9fe"
+  },
+  "immutable_authorities": [
+    {
+      "path": "project01-multi-source-dictionary/cdc-directive04.md",
+      "bytes": 6847,
+      "sha256": "2e8992ca4dda371175175adde70069eea1a5ce1187909b9d6ffea25cd0579c31"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/artifacts/composition-review-assignment.md",
+      "bytes": 12506,
+      "sha256": "c2aae9243e56c9f2b24f6dd9eb6e507fa333baa696761a03563f0ec65deaf582"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice01-owned-journal/cc-prompt.md",
+      "bytes": 11100,
+      "sha256": "0ce700137322468d78ccd8a702ceeadaac18467f1639eb1bcac031a390ef5500"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/cc-prompt.md",
+      "bytes": 14020,
+      "sha256": "7b3dc47dee60087fb90ce9b719db4ea2f30f0296e9b6b3f67882c8fc2444a607"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice03-sealed-owned-history/cc-prompt.md",
+      "bytes": 28001,
+      "sha256": "db2b7877a95c1f0c604e894c5eb88523112bd929ebae04b6037c322956af90e4"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/cc-prompt-iteration01.md",
+      "bytes": 7747,
+      "sha256": "216a582a57dda073ed07793ff65bef826b28ccc7be3802948711bfe80621a49a"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/cc-prompt.md",
+      "bytes": 24660,
+      "sha256": "a10ad40922fa28a8a9584e21d5a2826ea9d3ce5f0593fa7d9122e689736b9386"
+    }
+  ],
+  "ledger_checks": [
+    {
+      "path": "project01-multi-source-dictionary/ledger.md",
+      "rows": 14,
+      "before_statuses": {
+        "P01-01": "open",
+        "P01-02": "open",
+        "P01-03": "open",
+        "P01-04": "open",
+        "P01-05": "open",
+        "P01-06": "open",
+        "P01-07": "open",
+        "P01-08": "open",
+        "P01-09": "open",
+        "P01-10": "open",
+        "P01-11": "open",
+        "P01-12": "open",
+        "P01-13": "open",
+        "P01-14": "open"
+      },
+      "only_table_column_allowed_to_change": "Evidence"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/ledger.md",
+      "rows": 8,
+      "before_statuses": {
+        "A05-01": "done",
+        "A05-02": "done",
+        "A05-03": "done",
+        "A05-04": "done",
+        "A05-05": "done",
+        "A05-06": "open",
+        "A05-07": "open",
+        "A05-08": "open"
+      },
+      "only_table_column_allowed_to_change": "Evidence"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/ledger.md",
+      "rows": 8,
+      "before_statuses": {
+        "S04-01": "open",
+        "S04-02": "open",
+        "S04-03": "open",
+        "S04-04": "open",
+        "S04-05": "open",
+        "S04-06": "open",
+        "S04-07": "open",
+        "S04-08": "open"
+      },
+      "only_table_column_allowed_to_change": "Evidence"
+    }
+  ],
+  "child_status_counts": {
+    "slice01-owned-journal": {
+      "done": 7,
+      "open": 0
+    },
+    "slice02-reviewed-curation": {
+      "done": 8,
+      "open": 0
+    },
+    "slice03-sealed-owned-history": {
+      "done": 8,
+      "open": 0
+    },
+    "slice04-optional-owned-package": {
+      "done": 0,
+      "open": 8
+    }
+  },
+  "planned_mechanical_transition": {
+    "S04_OPEN_to_DONE": [
+      "S04-01",
+      "S04-02",
+      "S04-03",
+      "S04-04",
+      "S04-05",
+      "S04-06",
+      "S04-07",
+      "S04-08"
+    ],
+    "A05_OPEN_to_DONE": [
+      "A05-06",
+      "A05-07",
+      "A05-08"
+    ],
+    "unchanged": "23 prior child/five arc DONE; all14 project OPEN; every criterion/verifier/owner/evidence cell and all project Notes; raw/original manifests/prompts/frozen proposal inventory",
+    "allowed_metadata": "Dated actual CLOSED/version/provenance pointers only after SAME canonical ACCEPTED and root consistency; include separate reviewer verdict/receipt, no runtime/source/push."
+  }
+}
