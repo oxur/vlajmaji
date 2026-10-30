@@ -54,6 +54,10 @@ The Rust workspace already provides:
 - An opt-in owned-curation sidecar for pinned context and reviewed Link/Sense
   records, with explicit materialization to a separate normalized view; it
   does not change the default store.
+- A strict sealed snapshot codec and explicit full-history import/export for
+  schema-one and migrated schema-two owned journals, including retained
+  curation history and exact replay checks
+  ([sealed-history guide](docs/owned-dictionary.md#sealed-complete-history)).
 - A lossless local jbotci export normalizer with `jbotci-import` and
   read-only `jbotci-check` commands and an explicit pinned acquire/replay/check/
   update workflow ([import guide](docs/jbotci-import.md)).

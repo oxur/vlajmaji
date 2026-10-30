@@ -43,6 +43,7 @@ mod la_lojban;
 mod lensisku;
 pub mod llg;
 mod owned_curation;
+mod owned_snapshot;
 pub mod pack;
 pub mod registry;
 mod sutysisku;
@@ -78,6 +79,11 @@ pub use owned_curation::{
     OwnedCurationError, OwnedCurationKind, OwnedCurationReason, OwnedCurationRecord,
     OwnedCurationResolution, OwnedCurationRevision, OwnedCurationStatus, OwnedMaterialization,
     OwnedPinnedTarget, OwnedSenseMember,
+};
+pub use owned_snapshot::{
+    OwnedSectionPrefix, OwnedSnapshot, OwnedSnapshotCommit, OwnedSnapshotCuration,
+    OwnedSnapshotCurationPrefix, OwnedSnapshotData, OwnedSnapshotError, OwnedSnapshotSeal,
+    SealedOwnedSnapshot, load_owned_snapshot, seal_owned_snapshot,
 };
 pub use pack::{
     PackError, PackId, PackPayloadKind, PackSeal, SealedRelease, compose_dictionaries,
