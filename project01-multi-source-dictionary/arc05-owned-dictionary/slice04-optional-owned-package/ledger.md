@@ -1,6 +1,6 @@
 # S04 ledger — optional owned snapshot package
 
-**Current,2026-10-29:** INITIAL ISSUED intake-only after root exact118c86e readiness PASS. Accepted S03 baseline2b7/tree83d; source/index/ONEtarget ROOT QUIET. Retained Luna/high CC must return actual complete readset/structured-query/source-cited readback; CDC acceptance/freshpins/explicit12-path transfer precede edits/Cargo. All8 original binding rows unchanged OPEN through later fresh NEW actual assembled/SAME canonical/root gate.
+**Current,2026-10-29:** INITIAL intake ACCEPTED after actualcomplete15,100B readback/source-cited addendum; freshclean2b7/tree83d/branch/lock/guard/protectedrefs PASS. AFTERcheckpointcommit+explicitCDCdispatch CCowns exact12/index/ONEtarget INITIAL/pass1; root/CDC readonly. All8original binding rows unchanged OPEN/proposed through NEWfreshactual/SAMEcanonical/root. Details artifacts/execution.md; staleS03writeassignment cancelled and acceptedcanonical bytesrestored.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |

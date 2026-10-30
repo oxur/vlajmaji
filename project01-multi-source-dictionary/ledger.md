@@ -1,6 +1,6 @@
 # Project01 ledger
 
-**Current Arc05 checkpoint,2026-10-29:** S01–S03 locally CLOSED at2b7b6dda/tree83d81705;23child/fivearc DONE,3arc/all14project OPEN. P01-09 gains sealed-history/reimport/query partial evidence, with optional package/assembled/finalOperator still pending. S04 UNISSUED/root-readiness pending, source/index/ONEtarget ROOT QUIET; Arc06 unactivated. Original project criteria/verify/grade/scope/status/Notes remain unchanged.
+**Current Arc05 checkpoint,2026-10-29:** S01–S03 locally CLOSED at2b7b6dda/tree83d81705;23child/fivearc DONE,3arc/all14project OPEN. P01-09 gains sealed-history/reimport/query partial evidence, with optional package/assembled/finalOperator still pending. S04 INITIALintakeaccepted/freshpinsPASS; aftercheckpoint+explicitdispatch CC12/index/ONEtarget, root/CDCreadonly; Arc06 unactivated. Original project criteria/verify/grade/scope/status/Notes remain unchanged.
 
 **Historical Arc04 final checkpoint (reviewed cutoff):**
 

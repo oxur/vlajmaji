@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| Status | S01–S03 CLOSED locally;23child and A05-01…05 DONE,3arc/all14project OPEN; S04 UNISSUED/root-readiness pending, its8rows OPEN through final fresh/canonical/root gate |
+| Status | S01–S03 CLOSED locally;23child and A05-01…05 DONE,3arc/all14project OPEN; S04 INITIALintakeaccepted; conditionalCC12/index/target aftercheckpoint+dispatch, its8rowsOPEN through finalfresh/canonical/root gate |
 | Authority | [directive04](../cdc-directive04.md), Duncan “merged! Let's continue :-D”; THROUGH ARC05 ONLY |
 | Roles | Retained CDC Sol6.1/high; retained CC Luna/high; fresh independent Sol6.1/high assembled review and SAME-context canonical gate at close |
 | Source | `codex/project01-owned-dictionary`, accepted S03 `2b7b6dda55dc00d62bfa4fcdc5d5a09742fcf528`, tree `83d81705cc1de3aa69f1d6d39e4c524bb1b6d9b3`; accepted S01/S02/base history retained |
 | Physical checkout | Reused `.worktrees/project01-arc04/vlajmaji`; old Arc04 branch9026 retained; no new worktree/cache |
-| Ownership | Source/index/ONEtarget returned ROOT QUIET after actual S03 independent proofs; CDC planning-only S04 final reconciliation |
+| Ownership | S04 acceptedintake/freshpins; AFTERcommittedcheckpoint+explicitdispatch CCexclusive12/index/ONEtarget INITIAL, root/CDC readonly; governing planning CDC |
 | Version / date | 0.4 / 2026-10-29 |
 
 ## Useful result and boundaries
@@ -46,7 +46,7 @@ At arc close a fresh independent context actually exercises init→edit→stale 
 
 ## Current readiness
 
-S01–S03 are locally CLOSED at2b7b6dda/tree83d81705;23child and five arc rows DONE, three arc/all14project OPEN. S03 curation reimport discharges original A05-03 alongside S02; complete owned seal/history/import/query predicates discharge A05-04/05. Its [verification](slice03-sealed-owned-history/cdc-verification.md) and [retrospective](slice03-sealed-owned-history/cdc-retrospective.md) retain actual58+6 direct verification children, original product/method failures, source/gate/platform scopes and exact evidence copies. S04 optional-package exact current API/source/readset reconciliation and root readiness remain before issue; operational proof alone cannot close its eight rows, which retain original fresh assembled/SAME canonical/root gate. Source/index/ONEtarget ROOT QUIET. No Arc06/external advance.
+S01–S03 are locally CLOSED at2b7b6dda/tree83d81705;23child and five arc rows DONE, three arc/all14project OPEN. S03 curation reimport discharges original A05-03 alongside S02; complete owned seal/history/import/query predicates discharge A05-04/05. Its [verification](slice03-sealed-owned-history/cdc-verification.md) and [retrospective](slice03-sealed-owned-history/cdc-retrospective.md) retain actual58+6 direct verification children, original product/method failures, source/gate/platform scopes and exact evidence copies. S04 exact118c86e root readiness→e561 status-only issue→completeactualintake/addendum accepted and fresh2b7pinsPASS. AFTERcheckpointcommit+explicitdispatch CCowns12/index/ONEtarget INITIAL; operational proof alone cannot close its eight rows, which retain original fresh assembled/SAME canonical/root gate. Source/index/ONEtarget ROOT QUIET. No Arc06/external advance.
 
 ### Historical draft readiness — version0.1
 

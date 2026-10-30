@@ -1,0 +1,13 @@
+diff --git a/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc05-owned-dictionary/slice03-sealed-owned-history/artifacts/execution.md b/private/tmp/a05-s04-stale-close-edit01/1-execution.md
+index 4bd3b35..bc233d4 100644
+--- a/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc05-owned-dictionary/slice03-sealed-owned-history/artifacts/execution.md
++++ b/private/tmp/a05-s04-stale-close-edit01/1-execution.md
+@@ -245,3 +245,8 @@ Frozen source2b7/tree83d/parent854, exact14paths/clean/trailers/lock/guard verif
+ ### Mechanical raw-byte preservation qualification
+ 
+ The first close commit-preparation command stopped before commit when blanket staged diff-check flagged12 original raw logs with blank EOF lines. Every flagged path belongs to evidence-index.json and still byte-equals its original. Authored-path diff-check passes; raw originals are deliberately not normalized. Exact check output is retained at /private/tmp/a05-s03-close-raw-whitespace01.log; this is planning/bookkeeping, not a product gate failure or runtime retry.
++
++
++## Closing-report reconciliation — 2026-10-29 CDT
++
++The proposed report now lists S03-01 through S03-08 in child-criterion order and keeps all eight child rows OPEN pending CDC disposition. Parent Arc05 status is distinct: A05-01 and A05-02 are DONE; A05-03 through A05-08 remain OPEN. The earlier `71615` correction is a production defect classification: schema-two import wrote `PRAGMA user_version=1` with `owned_meta.schema_version=2`, and the importer was fixed to set both to 2 transactionally. Root later completed the six direct CURRENT-empty schema-two migration/export/import children successfully; this supersedes the earlier “remains pending” statement above, while preserving that statement as historical chronology. These were CDC/root executions, not CC reruns.

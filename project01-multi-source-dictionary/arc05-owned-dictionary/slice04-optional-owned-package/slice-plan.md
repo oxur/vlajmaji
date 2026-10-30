@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | ISSUED INITIAL for complete retained intake ONLY after root118c86e exact readiness PASS; source/index/ONEtarget ROOT QUIET until CDC acceptance/freshpins/explicit12-path transfer; all8rows OPEN through final fresh/canonical/root gate |
+| Status | INITIAL intake ACCEPTED/sourcepinsPASS; after committed checkpoint+explicitCDCdispatch CCowns exact12/index/ONEtarget, root/CDC readonly; all8rows OPEN through final fresh/canonical/root gate |
 | Authority | directive04 THROUGH ARC05 ONLY; retained Sol6.1/high CDC and Luna/high CC; five S04 passes including initial, no automatic sixth |
 | Known source | Accepted S03 2b7b6dda55dc00d62bfa4fcdc5d5a09742fcf528/tree83d81705cc1de3aa69f1d6d39e4c524bb1b6d9b3/parent854, planning944c607 root consistency PASS; lock65cd/guard426d |
 | Useful result | Caller-selected owned history can be embedded and strictly loaded by an offline consumer whose direct dependency graph excludes store/search/SQLite; the existing CLI prepares the exact local pair |
@@ -136,3 +136,7 @@ The finite public/CLI reuse is ONE12-command Tiny journey from the rich pair: ch
 ### Initial issue and intake-only assignment —2026-10-29 CDT
 
 Root final readiness PASS118c86e/tree56fdd910 reviewed the WHOLE current prompt24608B/3c8c68c3, plan28268B/45ed086d, ledger3966B/53aeca6c, oracles9196B/9781258b; independently verified23sourcepins/21wholeINPUTfiles/actualtypederrors. The prompt changes STATUS line ONLY (inverse byte-exact to reviewed draft). Retained Luna/high CC receives required complete intake/structured queries/readback at artifacts/execution.md, no source/index/target/Cargo/materialization authority yet. CDC then accepts actual coverage and freshclean2b7/branch/lock/guard/protectedrefs, commits checkpoint and explicitly transfers exact12/index/ONEtarget ONCE. Five assignments inclINITIAL/noautomatic6/failedhardgate replay; no further root ceremony absent actual mismatch. All8rows OPEN through final fresh NEW actual assembled/SAME canonical/root gate; Arc05 endpoint only/no external.
+
+### Actual accepted intake / conditional initial transfer —2026-10-29 CDT
+
+Complete intake+source-cited addendum15,100B/ae2f0861 accepted by CDC; fresh2026-10-30T04:39:10UTC clean2b7/tree83d/branch/oldlock142records/guard/protectedrefs PASS. Actual details in artifacts/execution.md and transfer-preflight01.json. AFTERthischeckpointcommit+explicitdispatch CCexclusivelyowns exact12/index/ONEtarget INITIAL/pass1; CDC/root read-only there. OldS03writing CANCELLED, original staleeditbodies preserved and acceptedcanonical bytesrestored. Issuedprompta10ad409 unchanged; all8rowsOPEN. No automatic hardgate replay/sixthassignment/external/Arc06.

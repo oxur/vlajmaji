@@ -1,0 +1,28 @@
+{
+  "utc": "2026-10-30T04:39:10.902796+00:00",
+  "source": "2b7b6dda55dc00d62bfa4fcdc5d5a09742fcf528",
+  "tree": "83d81705cc1de3aa69f1d6d39e4c524bb1b6d9b3",
+  "parent": "854865a72c4ca4971e1b93fd25a2e69ee14b03a8",
+  "branch": "codex/project01-owned-dictionary",
+  "source_clean": true,
+  "new_crate_absent": true,
+  "pins": {
+    "lock": {
+      "bytes": 32156,
+      "sha256": "65cd7f39a88bdd2a3dab1fcd14e9055ff7b77cb22ec3af8c309ce49dbea78700"
+    },
+    "guard": {
+      "bytes": 330,
+      "sha256": "426d1e49863551fe37252cecb8d36f8fb58410670fc550c6deedc89ddb92f53d"
+    }
+  },
+  "protected_refs": {
+    "refs/heads/codex/project01-composed-sqlite-lookup": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+    "refs/remotes/origin/codex/project01-composed-sqlite-lookup": "432d6321e3b2431e7fe2cc5f60e9317780e984b8",
+    "refs/heads/codex/project01-readable-compact-output": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+    "refs/remotes/origin/codex/project01-readable-compact-output": "9026c51791b5a356567f78dd9cd3b8c0eb510fa2",
+    "refs/remotes/origin/main": "a55e1cc7c4d7b0df4a187ce3551bfce9141a39d3"
+  },
+  "baseline_lock_packages": 142,
+  "boundary": "Named source/Git/guard/lock only; no Cargo/target/DB/default/network operation."
+}

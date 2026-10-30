@@ -1,6 +1,6 @@
 # Arc05 ledger
 
-**Current,2026-10-29:** S01–S03 CLOSED locally at2b7b6dda/tree83d81705:23child DONE, A05-01…05 DONE, remaining3arc/all14project OPEN. S03 fixed-input58+6 proof includes actual curation reimport and CURRENT migrated-empty history. S04 UNISSUED/root-readiness pending; all8S04 rows stay OPEN/proposed through fresh NEW assembled/SAME canonical/root gates. Source/index/ONEtarget ROOT QUIET.
+**Current,2026-10-29:** S01–S03 CLOSED locally at2b7b6dda/tree83d81705:23child DONE, A05-01…05 DONE, remaining3arc/all14project OPEN. S03 fixed-input58+6 proof includes actual curation reimport and CURRENT migrated-empty history. S04 INITIALintakeaccepted/freshpinsPASS, conditionalCC12/index/target aftercheckpoint+dispatch; all8S04rows stay OPEN/proposed through fresh NEW assembled/SAME canonical/root gates. Source/index/ONEtarget ROOT QUIET.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |

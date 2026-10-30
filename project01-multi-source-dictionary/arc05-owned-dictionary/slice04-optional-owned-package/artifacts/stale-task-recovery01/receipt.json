@@ -1,0 +1,25 @@
+{
+  "head": "e56185dc504ac57ec6830f2b3039de7d2e331b23",
+  "files": [
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice03-sealed-owned-history/closing-report.md",
+      "stale_copy": "/private/tmp/a05-s04-stale-close-edit01/0-closing-report.md",
+      "stale_bytes": 7296,
+      "stale_sha256": "37629a80bfb9ec545498ac6a14d24a498162aca63f34cfca297483618729c710",
+      "restored_bytes": 5757,
+      "restored_sha256": "db27d85a72febb97da5ac37fb7bfb0f98e6e925471d6be7339a327b312a5c537"
+    },
+    {
+      "path": "project01-multi-source-dictionary/arc05-owned-dictionary/slice03-sealed-owned-history/artifacts/execution.md",
+      "stale_copy": "/private/tmp/a05-s04-stale-close-edit01/1-execution.md",
+      "stale_bytes": 67239,
+      "stale_sha256": "6b83fd07e93a6c86d51d6169303b36f667e0d32da7326323d60c83eaadcfee79",
+      "restored_bytes": 66455,
+      "restored_sha256": "80dd0d90115184dd11a5aadc4cdc179c63e746d76ad628c2a70a5a2993bc5fbe"
+    }
+  ],
+  "scope": "Planning-only stale CC writes, preserved then byte-restored to committed canonical bodies. No source/index/target/Cargo operation.",
+  "diff_note": "Actual git diff --no-index output generated AFTER restoration by comparing committed/restored whole body against retained actual stale whole body; not an export of the original pre-restoration git diff.",
+  "agent_quiet": "CC FINAL_ANSWER/completed before restoration; list_agents subsequently confirms completed; no interrupt needed.",
+  "source": "clean2b7/tree83d; no source/index/target/Cargo command by CC in stale-edit interval; no target writes by CDC"
+}
