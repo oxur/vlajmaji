@@ -2,13 +2,13 @@
 
 | Field | Value |
 | --- | --- |
-| Status | Canonical close PROPOSAL: four increments operationally complete and NEW fresh actual technical ACCEPTED;23 prior child/five arc DONE retained,8 S04/3arc/all14project OPEN pending SAME-context canonical/root |
+| Status | CLOSED after SAME-context canonical ACCEPTED at97e448 plus root final consistency; all31 child/eight arc DONE, all14 project OPEN, Arc06 unactivated |
 | Authority | [directive04](../cdc-directive04.md), Duncan “merged! Let's continue :-D”; THROUGH ARC05 ONLY |
 | Roles | Retained CDC Sol6.1/high; retained CC Luna/high; fresh independent Sol6.1/high assembled review and SAME-context canonical gate at close |
 | Source | `codex/project01-owned-dictionary`, frozen S04 `d2a566c6cf9106bbb3b2c1a0cf6c62e402ad2a0c`, tree `cc9f6f73e8d724e9129a26e7374fa64bb0f0b36e`; accepted S01–S03/base history retained |
 | Physical checkout | Reused `.worktrees/project01-arc04/vlajmaji`; old Arc04 branch9026 retained; no new worktree/cache |
-| Ownership | All author/CDC/fresh runtime terminal; source/index/ONEtarget ROOT QUIET. CDC owns proposed canonical planning; SAME fresh reviewer owns later canonical verdict only |
-| Version / date | 0.5 / 2026-10-30 — canonical proposal |
+| Ownership | All sessions terminal; source/index/ONEtarget ROOT QUIET; mechanical planning close only, no further source/runtime/external authority |
+| Version / date | 0.6 /2026-10-30 — actual canonical/root mechanical close |
 
 ## Useful result and boundaries
 
@@ -46,7 +46,7 @@ At arc close a fresh independent context actually exercises init→edit→stale 
 
 ## Current readiness
 
-Four useful increments compose at frozen d2a566c6/treecc9f6f73. S01–S03 retain independent local closes; S04 operational gates/author12/CDC13 and NEW fresh actual26 are accepted as bounded technical evidence. [Fresh technical report](artifacts/composition-review.md) and [canonical close proposal](closing-report.md) retain exact source, row walks, failures, scope and produced-path inventory. All8 S04/remaining3 arc statuses remain OPEN pending SAME-context canonical ACCEPTED and root consistency. The final mechanical transition may change only those11 cells plus dated close metadata; all14 project rows remain OPEN, Arc06 unactivated. No external action or further runtime is authorized.
+Arc05 is CLOSED locally after actual NEW technical26 and SAME-context canonical ACCEPTED for97e448, followed by root final consistency PASS. Exactly8 S04+3remaining arc status cells mechanically became DONE;23prior child/fivearc DONE retained, all31child/eightarc DONE. All14 project rows remain OPEN; Arc06 unactivated. [Actual canonical verdict](artifacts/composition-review/canonical-review.md) and [receipt](artifacts/composition-review/canonical-receipt.json) bind reviewed proposal97e448/source d2a566c6/treecc9f6f73. Reviewed Evidence/old proposal-pending clauses retain the97 cutoff; actual dated CLOSED metadata supersedes them. Frozen proposal packet/inventory, immutable prompts/raws/technical manifest remain exact. No new runtime, CI/push/PR/publication or default/Full operation.
 
 ### Historical draft readiness — version0.1
 
@@ -72,3 +72,5 @@ Root exact bd3b685 readiness→status-only issue f51826d→complete source-cited
 - 0.4 —2026-10-29: actual S03 local close2b7/tree83d and original curation reimport/seal/history/query proof;23child/fivearcDONE, three arc/all14project OPEN. S04 remains UNISSUED pending final current reconciliation/readiness; its8rows OPEN through final assembled/canonical/root gate.
 
 - 0.5 —2026-10-30: frozen S04 d2a566c6, operational author/CDC proof and NEW actual assembled technical ACCEPTED; current body reconciled from superseded intake metadata. Canonical PROPOSAL only, statuses8+3 OPEN; SAME canonical/root pending. Four-increment architecture unchanged.
+
+- 0.6 —2026-10-30: actual SAME canonical ACCEPTED97e448 + root consistency PASS; exact11 status transitions/dated close provenance only. All31child/eightarcDONE,14projectOPEN; stop beforeArc06/external.

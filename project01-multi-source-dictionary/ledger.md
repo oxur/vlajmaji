@@ -1,6 +1,6 @@
 # Project01 ledger
 
-**Current Arc05 checkpoint,2026-10-30:** Four-increment canonical PROPOSAL after NEW fresh actual26 technical ACCEPTED at d2a566c6/treecc9f6f73.8 S04/3arc/all14project OPEN pending SAME canonical/root;23 earlierchild/fivearc DONE retained. Arc06 unactivated. Original project criteria/verifiers/Significance/Origin/Status/Notes unchanged; partial Evidence appended only.
+**Current Arc05 checkpoint,2026-10-30 — CLOSED locally:** SAME-context canonical ACCEPTED97e448/root final consistency precede exact11 mechanical flips; all31child/eightarcDONE, all14project OPEN. Project cells including Evidence/Notes unchanged from reviewed97proposal; old pending Evidence retains that cutoff, actual CLOSED header supersedes. Source d2a566c6/treecc9f6f73 unchanged/ROOTQUIET; Arc06 unactivated.
 
 **Historical Arc05 S03 checkpoint:** **Current Arc05 checkpoint,2026-10-29:** S01–S03 locally CLOSED at2b7b6dda/tree83d81705;23child/fivearc DONE,3arc/all14project OPEN. P01-09 gains sealed-history/reimport/query partial evidence, with optional package/assembled/finalOperator still pending. S04 INITIALintakeaccepted/freshpinsPASS; aftercheckpoint+explicitdispatch CC12/index/ONEtarget, root/CDCreadonly; Arc06 unactivated. Original project criteria/verify/grade/scope/status/Notes remain unchanged.
 

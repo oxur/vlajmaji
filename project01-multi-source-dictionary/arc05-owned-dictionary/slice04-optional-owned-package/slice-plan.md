@@ -2,11 +2,11 @@
 
 | Field | Value |
 | --- | --- |
-| Status | CANONICAL PROPOSAL: author/CDC operational and NEW fresh actual26 technical ACCEPTED at d2a566c6/treecc9f6f73; all8 rows OPEN pending SAME-context canonical/root; source/index/ONEtarget ROOT QUIET |
+| Status | CLOSED after SAME-context canonical ACCEPTED at97e448 and root actual consistency PASS; all8 S04 DONE/all31 child/eight arc DONE; all14project OPEN, Arc06 unactivated; source/index/ONEtarget ROOT QUIET |
 | Authority | directive04 THROUGH ARC05 ONLY; retained Sol6.1/high CDC and Luna/high CC; five S04 passes including initial, no automatic sixth |
 | Known source | Frozen S04 d2a566c6cf9106bbb3b2c1a0cf6c62e402ad2a0c/treecc9f6f73e8d724e9129a26e7374fa64bb0f0b36e/parent2b7b6dda; accepted S01–S03 retained; lock56fe1cbb2b6eee50e82aa46b2532c6019bdc4872751e01dbeae0167b6012a689/guard426d1e49 |
 | Useful result | Caller-selected owned history can be embedded and strictly loaded by an offline consumer whose direct dependency graph excludes store/search/SQLite; the existing CLI prepares the exact local pair |
-| Version / date | 0.5 /2026-10-30; actual operational/fresh technical evidence, canonical proposal/SAME-reviewer/root pending |
+| Version / date | 0.6 /2026-10-30; actual canonical/root mechanical close metadata only |
 
 ## 1. Source-grounded package boundary
 
@@ -166,3 +166,7 @@ Whole source-cited bounded readback+five-hash-table expansion accepted; fresh ex
 ### Version0.5 current metadata reconciliation —2026-10-30
 
 Root's canonical readiness read found the superseded WIP/old-lock top header in proposal3a903de4. This bounded metadata correction records frozen d2a566c6/treecc9f6f73/parent2b7, current lock56fe, actual fresh technical ACCEPTED and ROOT QUIET, without changing any recipe, dated assignment history, original criterion or pending status. All8 OPEN until SAME-context canonical ACCEPTED and root consistency; no source/runtime/new review context.
+
+### Version0.6 actual mechanical close —2026-10-30
+
+SAME fresh reviewer canonical ACCEPTED for97e448 (canonical-review.md04fc7170; actual receipt retained) and root final consistency PASS received. Only original8 S04+3arc statuses became DONE; every reviewed binding/Evidence/Notes cell and frozen proposal/raw/technical evidence remains unchanged. Current CLOSED metadata supersedes proposed/pending history at its own cutoff. Source d2a566c6/treecc9f6f73 unchanged; no runtime/external/Arc06.

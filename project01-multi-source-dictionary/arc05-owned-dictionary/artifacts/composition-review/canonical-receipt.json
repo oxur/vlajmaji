@@ -1,0 +1,207 @@
+{
+  "kind": "Arc05-SAME-context-canonical-review-receipt",
+  "date_utc": "2026-10-30 06:43:03 UTC",
+  "verdict": "ACCEPTED",
+  "scope": "Final committed canonical proposal only; root consistency remains prerequisite for the exact mechanical close. No runtime replay and no reviewer status flips.",
+  "reviewer_context": "/root/vlajmaji_arc05_fresh_review; same independent context as actual phase1 technical review",
+  "checks": {
+    "planning_head": "97e44881348e1a70e64517923617ec38dbade158",
+    "planning_tree": "1ea17f7a9172646bbfe5a964647f611239cb60b7",
+    "planning_status": "",
+    "parents": "97e44881348e1a70e64517923617ec38dbade158 3a903de4d3d87c2f72a243677f0a2ed109bbe191",
+    "packet.json": {
+      "bytes": 12868,
+      "sha256": "51336eec6321de94ba0c2a1f0440dc3b23e2189f228596beda715cc84c745459"
+    },
+    "produced-paths.json": {
+      "bytes": 301872,
+      "sha256": "937a65333e9bc543d1692acd6a41c3c9532d7fc3c4f852c2f489a1fadd846143"
+    },
+    "primary_bodies": {
+      "verified": 28
+    },
+    "immutable_authorities": {
+      "verified": 7
+    },
+    "inventory": {
+      "files": 1108,
+      "bytes": 5841091,
+      "whole_working_and_committed_parities": 1108,
+      "arc_inventory_members": 1102,
+      "arc_tracked_coverage": "exact",
+      "held_exclusions_unopened": 2,
+      "self_packet_exclusions": 2
+    },
+    "ledgers": {
+      "project01-multi-source-dictionary/ledger.md": {
+        "rows": 14,
+        "statuses": {
+          "P01-01": "open",
+          "P01-02": "open",
+          "P01-03": "open",
+          "P01-04": "open",
+          "P01-05": "open",
+          "P01-06": "open",
+          "P01-07": "open",
+          "P01-08": "open",
+          "P01-09": "open",
+          "P01-10": "open",
+          "P01-11": "open",
+          "P01-12": "open",
+          "P01-13": "open",
+          "P01-14": "open"
+        },
+        "changed_evidence_rows": [
+          "P01-07",
+          "P01-09",
+          "P01-12",
+          "P01-14"
+        ],
+        "all_other_cells_identical": true
+      },
+      "project01-multi-source-dictionary/arc05-owned-dictionary/ledger.md": {
+        "rows": 8,
+        "statuses": {
+          "A05-01": "done",
+          "A05-02": "done",
+          "A05-03": "done",
+          "A05-04": "done",
+          "A05-05": "done",
+          "A05-06": "open",
+          "A05-07": "open",
+          "A05-08": "open"
+        },
+        "changed_evidence_rows": [
+          "A05-06",
+          "A05-07",
+          "A05-08"
+        ],
+        "all_other_cells_identical": true
+      },
+      "project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/ledger.md": {
+        "rows": 8,
+        "statuses": {
+          "S04-01": "open",
+          "S04-02": "open",
+          "S04-03": "open",
+          "S04-04": "open",
+          "S04-05": "open",
+          "S04-06": "open",
+          "S04-07": "open",
+          "S04-08": "open"
+        },
+        "changed_evidence_rows": [
+          "S04-01",
+          "S04-02",
+          "S04-03",
+          "S04-04",
+          "S04-05",
+          "S04-06",
+          "S04-07",
+          "S04-08"
+        ],
+        "all_other_cells_identical": true
+      }
+    },
+    "earlier_child_primary_bodies_unchanged": 15,
+    "final_correction_paths": [
+      "project01-multi-source-dictionary/arc05-owned-dictionary/artifacts/canonical-close/packet.json",
+      "project01-multi-source-dictionary/arc05-owned-dictionary/artifacts/canonical-close/produced-paths.json",
+      "project01-multi-source-dictionary/arc05-owned-dictionary/slice04-optional-owned-package/slice-plan.md"
+    ],
+    "composition-review.md": {
+      "bytes": 18953,
+      "sha256": "920b379d11ee0df3f27ea745fda067210968fd7b5a4ef6f605528b8b67d221c8"
+    },
+    "composition-review/technical-evidence-manifest.json": {
+      "bytes": 43342,
+      "sha256": "4b0604ee1edadb4bb08dca5086791d68ff453de9d4633f8a13132d9cb324cc10"
+    },
+    "source_head": "d2a566c6cf9106bbb3b2c1a0cf6c62e402ad2a0c",
+    "source_tree": "cc9f6f73e8d724e9129a26e7374fa64bb0f0b36e",
+    "source_status": "",
+    "source_branch": "codex/project01-owned-dictionary",
+    "source_cumulative_paths": 32,
+    "product_children_this_phase": 0
+  },
+  "additional_checks": {
+    "local_primary_markdown_destinations": 149,
+    "missing_local_destinations": [],
+    "s04_prior_whole_bodies_retained": [
+      "closing-report.md:10610 bytes",
+      "cdc-verification.md:7764 bytes",
+      "retro.md:2648 bytes"
+    ],
+    "all_four_child_retrospectives": "Read current whole texts; S01-S03 byte-identical to issue checkpoint; S04 prior whole body retained with dated actual technical addendum.",
+    "arc_retrospective_and_bubbleup": "Actual closing report and arc retrospective read; all three bubble-up answers consistent; no structural/criteria/framework-policy change.",
+    "original_copy_parities_reverified": 121,
+    "original_copy_bytes": 699703,
+    "generated_technical_record_pins_reverified": 14,
+    "technical_held_exclusions_unopened": 8,
+    "proposal_held_author_databases_unopened": 2,
+    "diff_truncation_recovery": "Initial combined primary diff truncated; recovered file-specific S04 ledger/retro/plan deltas and project header; schema-aware all-cell comparisons cover full project/arc/S04 tables.",
+    "source_runtime_verdict": "Same-context phase1 technical ACCEPTED remains bounded to actual one-run26 proof; this phase zero product children.",
+    "limitations_preserved": [
+      "S01 wrong-cwd compiler incidental input I/O UNKNOWN",
+      "S02 fixture collision mechanism/path unproven and BL-0002 helper fix unshipped",
+      "Qualified PATH/fmt and uncaptured failed-Make MAKEFLAGS; no causal equivalence claim",
+      "S03 real corrected schema2 header bug, lost-terminal receipt and separate six-child CURRENT-empty proof",
+      "S04 consumer/base-versus-curation-hash failure/PASS2 and zero-child author binding failure",
+      "Phase1 reviewer extra kind assertion failure before product reach",
+      "Local macOS EILSEQ evidence; Linux positive unexecuted",
+      "No fresh Cargo/hosted CI/Full/timing/performance/packageverify/publication/rights/ambiguous-COMMIT proof",
+      "Detail digest VALUES not independently compared; Readable specified content only"
+    ]
+  },
+  "failed_read_only_query": {
+    "tool_chunk_id": "b5e466",
+    "argv": [
+      "python3",
+      "-"
+    ],
+    "transport": "bash here-document python3 - <<'PY'; full exact Python source retained in source_utf8 below",
+    "actual_exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<stdin>\", line 39, in <module>\nAssertionError\n",
+    "failure_line": 39,
+    "source_utf8": "import subprocess,json,hashlib,re,os\nfrom pathlib import Path\nb=Path('/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning'); ar='project01-multi-source-dictionary/arc05-owned-dictionary'; a=b/ar\ns=Path('/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji'); rev='97e44881348e1a70e64517923617ec38dbade158'; old='c860bbf237b776e54301647f5103159d5752d6f9'; prior='3a903de4d3d87c2f72a243677f0a2ed109bbe191'\ndef git(*args,root=b): return subprocess.check_output(['git','--no-optional-locks','-C',str(root),*args])\ndef sha(d): return hashlib.sha256(d).hexdigest()\ndef blob(r,p): return git('show',r+':'+p)\np=json.loads((a/'artifacts/canonical-close/packet.json').read_bytes()); inv=json.loads((a/'artifacts/canonical-close/produced-paths.json').read_bytes())\nr={}; r['planning_head']=git('rev-parse','HEAD').decode().strip(); r['planning_tree']=git('rev-parse','HEAD^{tree}').decode().strip(); r['planning_status']=git('status','--porcelain=v1').decode(); assert r['planning_head']==rev and not r['planning_status']\nr['parents']=git('rev-list','--parents','-n','1',rev).decode().strip(); assert git('rev-parse',prior+'^').decode().strip()==old\nfor name,expect in [('packet.json','51336eec6321de94ba0c2a1f0440dc3b23e2189f228596beda715cc84c745459'),('produced-paths.json','937a65333e9bc543d1692acd6a41c3c9532d7fc3c4f852c2f489a1fadd846143')]:\n d=(a/'artifacts/canonical-close'/name).read_bytes(); assert sha(d)==expect; assert d==blob(rev,ar+'/artifacts/canonical-close/'+name)\n r[name]={'bytes':len(d),'sha256':sha(d)}\nfor group in ['primary_bodies','immutable_authorities']:\n for f in p[group]:\n  d=(b/f['path']).read_bytes(); assert len(d)==f['bytes'] and sha(d)==f['sha256'],f['path']; assert d==blob(rev,f['path'])\n r[group]={'verified':len(p[group])}\npaths=[f['path'] for f in inv['files']]; assert len(set(paths))==1108 and inv['file_count']==1108\n# Batch read exactly listed committed blobs, excluding held payloads before any file read.\nheld={str(Path(h['path']).relative_to(b)) for h in inv['held_exclusions']}; assert not held.intersection(paths)\nreq=''.join(rev+':'+v+'\\n' for v in paths).encode(); proc=subprocess.run(['git','--no-optional-locks','-C',str(b),'cat-file','--batch'],input=req,stdout=subprocess.PIPE,check=True); data=proc.stdout; at=0\nfor f in inv['files']:\n end=data.index(b'\\n',at); header=data[at:end].decode().split(); assert header[1]=='blob'; size=int(header[2]); d=data[end+1:end+1+size]; at=end+size+2\n actual=(b/f['path']).read_bytes(); assert actual==d and len(d)==f['bytes'] and sha(d)==f['sha256'],f['path']\nassert at==len(data); assert sum(f['bytes'] for f in inv['files'])==inv['bytes']==5841091\nall_arc={str((Path(root)/name).relative_to(b)) for root,dirs,files in os.walk(a) for name in files}; selfexcluded={ar+'/'+x for x in inv['self_and_packet_excluded']}; arcpaths={x for x in paths if x.startswith(ar+'/')}; assert all_arc==arcpaths|held|selfexcluded,(all_arc-(arcpaths|held|selfexcluded),(arcpaths|held|selfexcluded)-all_arc)\ntracked=set(git('ls-tree','-r','--name-only',rev,'--',ar).decode().splitlines()); assert tracked==arcpaths|selfexcluded\nr['inventory']={'files':len(paths),'bytes':inv['bytes'],'whole_working_and_committed_parities':len(paths),'arc_inventory_members':len(arcpaths),'arc_tracked_coverage':'exact','held_exclusions_unopened':len(held),'self_packet_exclusions':2}\n# Schema-aware Markdown row comparison: identify each column by table header.\ndef table(d):\n lines=d.decode().splitlines(); header=next(x for x in lines if x.startswith('| ID |')); cols=[x.strip() for x in re.split(r'(?<!\\\\)\\|',header)[1:-1]]; rows={}\n for line in lines:\n  vals=[x.strip() for x in re.split(r'(?<!\\\\)\\|',line)[1:-1]]\n  if vals and re.fullmatch(r'(?:P01|A05|S0[1-4])-\\d\\d',vals[0]):\n   assert len(vals)==len(cols),(vals[0],len(vals),len(cols)); assert vals[0] not in rows; rows[vals[0]]=dict(zip(cols,vals))\n return cols,rows\nr['ledgers']={}\nfor ck in p['ledger_checks']:\n path=ck['path']; cols,rows=table(blob(rev,path)); oc,ors=table(blob(old,path)); assert cols==oc and rows.keys()==ors.keys() and len(rows)==ck['rows']; evidence=ck['only_table_column_allowed_to_change']; assert evidence in cols\n changed=[]\n for key,row in rows.items():\n  assert row['Status']==ck['before_statuses'][key]\n  for col in cols:\n   if row[col]!=ors[key][col]: assert col==evidence,(key,col); changed.append(key)\n if path=='project01-multi-source-dictionary/ledger.md':\n  assert changed==['P01-07','P01-09','P01-12','P01-14']\n  assert all(rows[k][evidence].startswith(ors[k][evidence]) for k in changed)\n r['ledgers'][path]={'rows':len(rows),'statuses':{k:v['Status'] for k,v in rows.items()},'changed_evidence_rows':changed,'all_other_cells_identical':True}\nfor child in ['slice01-owned-journal','slice02-reviewed-curation','slice03-sealed-owned-history']:\n for name in ['plan.md','ledger.md','closing-report.md','cdc-verification.md','retro.md']:\n  path=ar+'/'+child+'/'+name; assert blob(old,path)==blob(rev,path),path\n _,rows=table(blob(rev,ar+'/'+child+'/ledger.md')); assert all(v['Status']=='done' for v in rows.values())\nr['earlier_child_primary_bodies_unchanged']=15\nfinaldelta=git('diff','--name-only',prior,rev).decode().splitlines(); assert finaldelta==[ar+'/artifacts/canonical-close/packet.json',ar+'/artifacts/canonical-close/produced-paths.json',ar+'/slice04-optional-owned-package/slice-plan.md'],finaldelta\nr['final_correction_paths']=finaldelta\nfor name,expect in [('composition-review.md','920b379d11ee0df3f27ea745fda067210968fd7b5a4ef6f605528b8b67d221c8'),('composition-review/technical-evidence-manifest.json','4b0604ee1edadb4bb08dca5086791d68ff453de9d4633f8a13132d9cb324cc10')]:\n d=(a/'artifacts'/name).read_bytes(); assert sha(d)==expect; r[name]={'bytes':len(d),'sha256':sha(d)}\nr['source_head']=git('rev-parse','HEAD',root=s).decode().strip(); r['source_tree']=git('rev-parse','HEAD^{tree}',root=s).decode().strip(); r['source_status']=git('status','--porcelain=v1',root=s).decode(); r['source_branch']=git('branch','--show-current',root=s).decode().strip(); assert r['source_head']==p['source']['head'] and r['source_tree']==p['source']['tree'] and not r['source_status'] and r['source_branch']==p['source']['branch']\ncumulative=git('diff','--name-only',p['source']['baseline'],p['source']['head'],root=s).decode().splitlines(); assert cumulative==p['source']['cumulative_paths'] and len(cumulative)==32\nr['source_cumulative_paths']=len(cumulative); r['product_children_this_phase']=0; print(json.dumps(r,indent=2))\n",
+    "failure": "Packet descriptive Evidence label was assumed to be the literal table header; actual project Evidence and arc/S04 Evidence / scope were independently read.",
+    "reach": "Read-only inventory comparisons completed before failing header assertion; zero product children. Remaining helper statements after line39 were not executed.",
+    "disposition": "Parent approved read-only alias correction. No frozen file/product/source changes. Corrected query compares actual literal schema cells; uses actual primary paths from packet for earlier child equality.",
+    "corrected_query_tool_chunk_id": "6eacd0",
+    "corrected_query_actual_exit_code": 0,
+    "source_sha256": "285299a65d621c6277ad9d6aecef7fba5067e4ae818c9360fe066ec908dbe974",
+    "shell_command_sha256": "fdf24199ff51fb4b36a85d5fc85adb70126eb1729f27980532689184784ddad3"
+  },
+  "planned_transition": {
+    "prerequisites": [
+      "This actual SAME-context canonical ACCEPTED",
+      "Root independent consistency"
+    ],
+    "performer": "CDC/root only; reviewer performed no flips",
+    "open_to_done": [
+      "S04-01",
+      "S04-02",
+      "S04-03",
+      "S04-04",
+      "S04-05",
+      "S04-06",
+      "S04-07",
+      "S04-08",
+      "A05-06",
+      "A05-07",
+      "A05-08"
+    ],
+    "other_child_done": 23,
+    "other_arc_done": 5,
+    "all_project_open": 14,
+    "preserve": "Every reviewed criterion/verifier/owner/Evidence/Notes cell, all immutable originals/prompts/raws/technical report/manifest/frozen packet/inventory; metadata only dated actual CLOSED/version/provenance pointers",
+    "endpoint": "Stop Arc05; no Arc06 or external delivery"
+  },
+  "handback": "QUIET: source/index/ONE retained target read-only. Only canonical-review.md and canonical-receipt.json written; no Cargo/example/consumer/CLI/DB/Full/default/network/push/PR/CI/publish/cleanup.",
+  "canonical_report": {
+    "path": "canonical-review.md",
+    "bytes": 9826,
+    "sha256": "04fc7170a8320345f947c113d4d0bd831db584918771e4d69eb2376168307c63"
+  }
+}

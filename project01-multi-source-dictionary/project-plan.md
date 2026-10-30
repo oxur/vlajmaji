@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | Project OPEN; Arc01–04 CLOSED. Arc05 canonical PROPOSAL after actual fresh technical ACCEPTED at d2a566c6/treecc9f6f73;23 prior child/five arc DONE,8 S04/3arc/all14project OPEN pending SAME canonical/root. Arc06 unactivated. |
+| status | Project OPEN; Arc01–05 CLOSED locally. Arc05 actual SAME canonical ACCEPTED97e448/root consistency/mechanical11 close, source d2a566c6/treecc9f6f73; all31child/eightArc05DONE, all14projectOPEN; Arc06unactivated. |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.34 / 2026-10-30 |
+| version / date | 1.35 /2026-10-30 |
 
 ## Purpose and first useful result
 
@@ -433,3 +433,6 @@ Source2b7b6dda/tree83d81705 adds pure strict sealed full-history transport, atom
 ## Version1.34 — Arc05 actual technical composition / canonical proposal,2026-10-30
 
 The [Arc05 canonical proposal](arc05-owned-dictionary/closing-report.md) composes four increments at d2a566c6/treecc9f6f73: authoritative full-typed append history/CAS, explicit reviewed local/external curation with truthful context absence, complete sealed history/import/replay, and optional pure owned loading before SQLite with explicit derived queries. NEW fresh actual26 children (24zero/2expected1) received bounded technical ACCEPTED; SAME-context canonical/root remain pending. No prior evidence is relabelled fresh. All8 S04/3arc statuses stay OPEN in this proposal; all14 project rows remain OPEN for final integrated/Operator work. No structural roadmap change or Arc06 activation is required. Existing PackId/All-four, content-rights holds, raw/native/platform and qualified-method limits remain. Current Arc05 hostedCI/push/PR/publication were not authorized or performed. Earlier draft/partial checkpoint text is historical at its own cutoff.
+## Version1.35 — Arc05 actual canonical/root mechanical close,2026-10-30
+
+SAME-context [canonical verdict](arc05-owned-dictionary/artifacts/composition-review/canonical-review.md) ACCEPTED actual97e448 and root final consistency PASS precede exact8 S04+3arc status changes. All31child/eightArc05 DONE, all14project OPEN; source d2a566c6/treecc9f6f73 unchanged. Reviewed Evidence/proposed clauses retain97 cutoffs and are superseded by current CLOSED metadata only; frozen raw/manifest/prompt/packet/inventory bodies preserved. This is no additional technical/runtime/CI/source claim or external delivery. Arc06 remains unactivated.
