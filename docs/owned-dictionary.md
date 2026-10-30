@@ -257,3 +257,38 @@ vlajmaji owned show "$CLI_ROOT" --revision owned-r0
 The history contains sequences zero and one, and the explicit final command
 reconstructs the original `owned-r0` state. Choose new output directories for
 each run; both the example and CLI create their roots exclusively.
+
+## Optional embedded owned history
+
+Applications that need an owned history before SQLite can depend directly on
+`vlajmaji-data-owned` and `vlajmaji-lexicon`; the umbrella's `data-owned`
+feature is a convenience re-export, but the umbrella also includes store and
+search. The new package is unpublished, default-empty, and has no payload in a
+clean checkout. Its `embedded` feature includes a locally prepared snapshot
+and seal at compile time, and `load()` returns the complete validated
+`OwnedSnapshot` through the existing strict seal loader. The seal verifies
+bytes and history identity; it does not grant redistribution permission.
+Pinned foreign definitions remain references until a caller supplies matching
+context for explicit materialization.
+
+A local synthetic preparation uses the existing public example and CLI export
+path. Keep all paths fresh and task-owned:
+
+```sh
+scratch="$(mktemp -d)"
+cargo run -p vlajmaji-store --example owned_curation -- \
+  "$scratch/inputs" "$scratch/journal" "$scratch/view.json"
+mkdir crates/data-owned/data
+vlajmaji owned export "$scratch/journal" \
+  --output crates/data-owned/data/snapshot.json \
+  --seal crates/data-owned/data/seal.json
+```
+
+After preparing that explicit pair, opt in with `vlajmaji-data-owned/embedded`
+or the umbrella's `data-owned` feature. A direct before-SQLite consumer should
+depend only on `vlajmaji-data-owned` and `vlajmaji-lexicon`, then call
+`vlajmaji_data_owned::load()` and use `dictionary_at` or `curation_at` to read
+historical states. This package adds no `PackId`; `CollectionSelection::All`
+continues to mean the existing four upstream packs. A locally embedded
+snapshot may include owned notices and editor/source authority, but checksums
+do not supply permission to redistribute any content.

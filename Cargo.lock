@@ -1147,6 +1147,7 @@ dependencies = [
  "vlajmaji-data-la-lojban",
  "vlajmaji-data-lensisku-jbotci",
  "vlajmaji-data-llg",
+ "vlajmaji-data-owned",
  "vlajmaji-data-sutysisku",
  "vlajmaji-lexicon",
  "vlajmaji-search",
@@ -1181,6 +1182,13 @@ dependencies = [
 
 [[package]]
 name = "vlajmaji-data-llg"
+version = "0.3.0"
+dependencies = [
+ "vlajmaji-lexicon",
+]
+
+[[package]]
+name = "vlajmaji-data-owned"
 version = "0.3.0"
 dependencies = [
  "vlajmaji-lexicon",

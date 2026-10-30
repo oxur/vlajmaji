@@ -54,6 +54,8 @@ The Rust workspace already provides:
 - An opt-in owned-curation sidecar for pinned context and reviewed Link/Sense
   records, with explicit materialization to a separate normalized view; it
   does not change the default store.
+- An opt-in `vlajmaji-data-owned` package for a locally embedded, sealed whole
+  owned history. It remains separate from the four upstream pack identities.
 - A strict sealed snapshot codec and explicit full-history import/export for
   schema-one and migrated schema-two owned journals, including retained
   curation history and exact replay checks
