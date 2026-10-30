@@ -21,6 +21,7 @@ data-lensisku-jbotci = ["dep:vlajmaji-data-lensisku-jbotci", "vlajmaji-data-lens
 data-llg = ["dep:vlajmaji-data-llg", "vlajmaji-data-llg/embedded"]
 data-la-lojban = ["dep:vlajmaji-data-la-lojban", "vlajmaji-data-la-lojban/embedded"]
 data-sutysisku = ["dep:vlajmaji-data-sutysisku", "vlajmaji-data-sutysisku/embedded"]
+data-owned = ["dep:vlajmaji-data-owned", "vlajmaji-data-owned/embedded"]
 
 [dependencies]
 vlajmaji-lexicon.workspace = true
@@ -30,6 +31,7 @@ vlajmaji-data-lensisku-jbotci = { path = "../data-lensisku-jbotci", version = "0
 vlajmaji-data-llg = { path = "../data-llg", version = "0.3.0", optional = true }
 vlajmaji-data-la-lojban = { path = "../data-la-lojban", version = "0.3.0", optional = true }
 vlajmaji-data-sutysisku = { path = "../data-sutysisku", version = "0.3.0", optional = true }
+vlajmaji-data-owned = { path = "../data-owned", version = "0.3.0", optional = true }
 
 [lints]
 workspace = true

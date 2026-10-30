@@ -83,5 +83,15 @@ jobs:
       - name: Prepare synthetic Sutysisku data for all-feature tests
         if: runner.os == 'Linux'
         run: cargo run --locked --offline -p vlajmaji-cli -- data-pack fixture sutysisku crates/data-sutysisku/data
+      - name: Prepare synthetic owned snapshot for all-feature tests
+        if: runner.os == 'Linux'
+        run: |
+          scratch="$(mktemp -d "${RUNNER_TEMP}/vlajmaji-owned.XXXXXX")"
+          mkdir crates/data-owned/data
+          cargo run --locked --offline -p vlajmaji-store --example owned_curation -- \
+            "$scratch/inputs" "$scratch/journal" "$scratch/view.json"
+          cargo run --locked --offline -p vlajmaji-cli -- owned export "$scratch/journal" \
+            --output crates/data-owned/data/snapshot.json \
+            --seal crates/data-owned/data/seal.json
       - if: runner.os == 'Linux'
         run: cargo test --workspace --all-features --locked

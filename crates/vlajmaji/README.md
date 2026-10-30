@@ -68,6 +68,10 @@ The umbrella library enables no optional features by default.
   Lensisku pack crate. It forwards `embedded` and requires local payload
   preparation; no dictionary data is included by default and redistribution is
   held pending verified content terms.
+- `data-owned` selects and re-exports the unpublished `vlajmaji-data-owned`
+  package as `vlajmaji::data_owned`. It validates a complete local snapshot
+  and seal; it does not add a fifth upstream pack or implicitly materialize
+  foreign context.
 - `data-sutysisku` selects the unpublished optional Sutysisku English
   projection pack crate and re-exports it as `vlajmaji::data_sutysisku`. It
   forwards `embedded` and requires local payload preparation; no dictionary
