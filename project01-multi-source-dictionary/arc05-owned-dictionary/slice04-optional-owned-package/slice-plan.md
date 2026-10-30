@@ -2,11 +2,11 @@
 
 | Field | Value |
 | --- | --- |
-| Status | INITIAL consumer observer FAILED46514/101; PASS2/5 bounded readback ACCEPTED/freshpinsPASS; after checkpoint+dispatch CC owns private-main correction/ONEtarget+unchanged12 index freeze; product12 readonly, all8rows OPEN; same twelve-path product WIP, all8rows OPEN |
+| Status | CANONICAL PROPOSAL: author/CDC operational and NEW fresh actual26 technical ACCEPTED at d2a566c6/treecc9f6f73; all8 rows OPEN pending SAME-context canonical/root; source/index/ONEtarget ROOT QUIET |
 | Authority | directive04 THROUGH ARC05 ONLY; retained Sol6.1/high CDC and Luna/high CC; five S04 passes including initial, no automatic sixth |
-| Known source | Accepted S03 2b7b6dda55dc00d62bfa4fcdc5d5a09742fcf528/tree83d81705cc1de3aa69f1d6d39e4c524bb1b6d9b3/parent854, planning944c607 root consistency PASS; lock65cd/guard426d |
+| Known source | Frozen S04 d2a566c6cf9106bbb3b2c1a0cf6c62e402ad2a0c/treecc9f6f73e8d724e9129a26e7374fa64bb0f0b36e/parent2b7b6dda; accepted S01–S03 retained; lock56fe1cbb2b6eee50e82aa46b2532c6019bdc4872751e01dbeae0167b6012a689/guard426d1e49 |
 | Useful result | Caller-selected owned history can be embedded and strictly loaded by an offline consumer whose direct dependency graph excludes store/search/SQLite; the existing CLI prepares the exact local pair |
-| Version / date | 0.4 /2026-10-29; final accepted S03 exact API/error/source/readset/whole expected history reconciliation; root readiness pending |
+| Version / date | 0.5 /2026-10-30; actual operational/fresh technical evidence, canonical proposal/SAME-reviewer/root pending |
 
 ## 1. Source-grounded package boundary
 
@@ -162,3 +162,7 @@ Root WHOLEprompt7746B/e168a47c +plan resolution+correctedsource4605B/9abbe199+ba
 ### PASS2 actual accepted readback / conditional transfer —2026-10-30 CDT
 
 Whole source-cited bounded readback+five-hash-table expansion accepted; fresh exactWIP12/source-archive/branch/locks/manifest/main/candidate/guard/19inputs/protectedrefs/issuedprompts PASS (actual method-status parsing erratum retained in execution). AFTERthischeckpointcommit+explicitdispatch, CCexclusively owns reviewed private-main9abbe copyback and ONEtarget corrective runtime/remaining original matrix; product12bodyedits are forbidden, index may freeze only unchanged original12 after gates. Root/CDC readonly there. No automatic third invocation/sixthpass/newarchive/external; all8OPEN.
+
+### Version0.5 current metadata reconciliation —2026-10-30
+
+Root's canonical readiness read found the superseded WIP/old-lock top header in proposal3a903de4. This bounded metadata correction records frozen d2a566c6/treecc9f6f73/parent2b7, current lock56fe, actual fresh technical ACCEPTED and ROOT QUIET, without changing any recipe, dated assignment history, original criterion or pending status. All8 OPEN until SAME-context canonical ACCEPTED and root consistency; no source/runtime/new review context.
