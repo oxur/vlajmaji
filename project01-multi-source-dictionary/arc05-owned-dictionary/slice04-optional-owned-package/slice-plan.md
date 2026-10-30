@@ -2,11 +2,11 @@
 
 | Field | Value |
 | --- | --- |
-| Status | PROSPECTIVE DRAFT ONLY, UNISSUED. S02 locally CLOSED; S03 INITIAL issued for intake only, no accepted S03 dependency yet |
+| Status | PROSPECTIVE DRAFT ONLY, UNISSUED. S02 locally CLOSED; S03 INITIAL implementation active with exclusive CC15/index/ONEtarget ownership, no accepted S03 dependency yet |
 | Authority | directive04 THROUGH ARC05 ONLY; retained Sol6.1/high CDC and Luna/high CC; five S04 passes including initial, no automatic sixth |
 | Known source | Accepted S02 854865a7/treeef81ffbb; final accepted S03 source and exact snapshot APIs must replace the remaining dependency placeholder before issue |
 | Useful result | Caller-selected owned history can be embedded and strictly loaded by an offline consumer whose direct dependency graph excludes store/search/SQLite; the existing CLI prepares the exact local pair |
-| Version / date | 0.2 / 2026-10-29; prospective existing-CI feature compatibility reconciled, accepted S03/exact allowlist/readset still pending |
+| Version / date | 0.3 / 2026-10-29; first unissued prompt prepared, accepted S03/readset/consumer buffers/root readiness still pending |
 
 ## 1. Source-grounded package boundary
 
@@ -105,3 +105,8 @@ Outside-consumer positive/negative INPUT recipe, not runtime: reuse the accepted
 
 
 Prospective bootstrap ordering clarification: safe standalone stdin rustfmt/copyback precedes the ONE offline default-empty check. Before that check, do not run Cargo fmt/metadata/Make fmt-check or any other command that may implicitly write the new lock; otherwise the declared bootstrap would not be the actual first lock writer. Capture the old accepted lock before authoring, actual command/exit/new lock diff and exact permitted record exceptions, then require --locked --offline for all subsequent gates. This changes only unissued command ordering, not S03 ownership or S04 execution authority.
+
+
+### Prospective prompt checkpoint —2026-10-29 CDT
+
+S03 INITIAL is implementing under its original fifteen-path/index/ONEtarget transfer, not merely intake; no accepted S03 source is asserted. New cc-prompt.md is explicitly UNISSUED and carries the prospective exact twelve-path package/lock/CI/consumer/gate recipe. Accepted S03 source/API/pins, literal consumer buffers and exact source-read manifest remain mandatory reconciliation before root readiness or any S04 dispatch. This planning-only draft neither changes current S03 ownership nor closes any S04/project row.
