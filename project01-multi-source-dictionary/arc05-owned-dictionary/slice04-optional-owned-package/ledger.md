@@ -1,6 +1,6 @@
 # S04 ledger — optional owned snapshot package
 
-**Current,2026-10-29:** PROSPECTIVE DRAFT ONLY, UNISSUED. S02 is actively implemented; S03 snapshot APIs are still prospective. Actual accepted source/dependency/allowlist/readset and literal consumer inputs must be reconciled before issue. All8rows OPEN. No source/index/target transfer or runtime is authorized by this record.
+**Current,2026-10-29:** PROSPECTIVE DRAFT ONLY, UNISSUED. S02 is locally CLOSED at854865a7; S03 is INITIAL intake-only atf51826d, its snapshot APIs still prospective. Actual accepted source/dependency/allowlist/readset and literal consumer inputs must be reconciled before issue. All8rows OPEN. No source/index/target transfer or runtime is authorized by this record.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |

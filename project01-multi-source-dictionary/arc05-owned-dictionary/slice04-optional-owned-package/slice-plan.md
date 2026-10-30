@@ -2,9 +2,9 @@
 
 | Field | Value |
 | --- | --- |
-| Status | PROSPECTIVE DRAFT ONLY, UNISSUED. S02 INITIAL/pass1 active; S03 also DRAFT, neither accepted dependency is invented |
+| Status | PROSPECTIVE DRAFT ONLY, UNISSUED. S02 locally CLOSED; S03 INITIAL issued for intake only, no accepted S03 dependency yet |
 | Authority | directive04 THROUGH ARC05 ONLY; retained Sol6.1/high CDC and Luna/high CC; five S04 passes including initial, no automatic sixth |
-| Known source | Accepted S01 1b899ebb/tree745f; final accepted S02/S03 source and exact snapshot APIs must replace this placeholder before issue |
+| Known source | Accepted S02 854865a7/treeef81ffbb; final accepted S03 source and exact snapshot APIs must replace the remaining dependency placeholder before issue |
 | Useful result | Caller-selected owned history can be embedded and strictly loaded by an offline consumer whose direct dependency graph excludes store/search/SQLite; the existing CLI prepares the exact local pair |
 | Version / date | 0.2 / 2026-10-29; prospective existing-CI feature compatibility reconciled, accepted S03/exact allowlist/readset still pending |
 
@@ -82,3 +82,12 @@ CDC independently reviews actual candidate and reproduces the affected public+CL
 ### Version0.2 — existing all-features preparation,2026-10-29
 
 Root source review identified the clean CI embedded-input prerequisite before issue. The exact workflow path and one offline synthetic owned-preparation step are now prospective S04 scope; no blanket workflow exclusion applies to this compatibility step. No source/workflow edit, Cargo/hosted run or intake occurred. All eight original binding rows remain OPEN; accepted S03/signatures/allowlist/literal consumer and lock procedure remain pending.
+
+
+### Prospective integration refinements —2026-10-29
+
+Current dependency metadata: S02 is locally CLOSED at854865a7/planninge9b615ed; S03 INITIAL is issued atf51826d for complete intake only. This is not accepted S03 source or S04 issue authority. Exact API/source/body pins and final S04 readset/consumer buffers/feature matrix still wait accepted S03.
+
+The normal package embedded tests must validate the supplied pair generically rather than assume fixed personal fixture IDs, assertion counts or r4: the existing CI preparation deliberately uses accepted self-contained owned_curation Tiny example, whereas the independent S04 consumer can embed the richer S03 own-a/b history as its pre-input authority. These are distinct explicit inputs to the SAME strict loader, not permission to weaken the consumer's whole historical oracle. No own assertions/history claim comes merely from the CI example.
+
+A concrete later lock bootstrap may use ONE `guard +1.98.0 check -p vlajmaji-data-owned --offline` after the new default-empty crate/optional edge is authored and formatted, with the sole intended Cargo.lock change being the new local package and umbrella edge. Do not use generate-lockfile to re-resolve the graph, or intentionally fail a locked command first. Compare every preexisting package name/version/source/checksum/dependency record to the accepted lock; stop if unrelated resolution changes. After this explicit bootstrap, all product commands are locked/offline. This is prospective local command design, NOT a Cargo run or a promise that an unexecuted resolution succeeded. The outside consumer's private new lock is separately task-owned and must prove its actual normal closure contains no store/search/SQLite; it cannot claim that boundary from umbrella imports.
