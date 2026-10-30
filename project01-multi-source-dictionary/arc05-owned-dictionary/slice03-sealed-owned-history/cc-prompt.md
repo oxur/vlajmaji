@@ -1,6 +1,6 @@
 # CC assignment — Arc05 S03 sealed owned history
 
-STATUS: DRAFT — UNISSUED, root exact readiness pending; INTAKE/SOURCE/INDEX/TARGET NOT TRANSFERRED.
+STATUS: ISSUED — COMPLETE INTAKE ONLY after root bd3b685 readiness; SOURCE/INDEX/TARGET NOT TRANSFERRED.
 
 ## Outcome, authority and actual dependency
 

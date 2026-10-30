@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | FINAL IMPLEMENTATION DRAFT; UNISSUED, root exact readiness pending. S01–S02 locally accepted; source/index/ONEtarget ROOT QUIET |
+| Status | INITIAL ISSUED for retained CC COMPLETE INTAKE ONLY after root bd3b685 readiness; no source/index/target transfer yet |
 | Authority | Arc05/directive04; retained CDC Sol6.1/high + Luna/high CC; five total S03 assignments including initial, no automatic sixth |
 | Known source | Accepted S02 `854865a72c4ca4971e1b93fd25a2e69ee14b03a8`, tree `ef81ffbb10054bd4ceb935ac76f7912178a603e2`, parent accepted S01 `1b899ebb`; branch `codex/project01-owned-dictionary` |
 | Useful result | Export/check/load every owned revision and curation cutoff, import into a fresh authoritative journal, replay only exact history, and query an explicitly extracted/materialized derived model |
@@ -259,3 +259,8 @@ Freeze actual dictionary-query/detail argv and expected target/key from those IN
 Consequential policies are binding in §§1–6/8; private helper names beyond the shown transaction ownership and pure hash signature are local discretion. Actual source and guideline choices are in the prompt. No unresolved product choice or need for another investigation is asserted; root must still review this exact DRAFT/prompt/goldens before issue. All eight original criteria/verifiers/owners/statuses remain unchanged OPEN. This preparation is no implementation pass and grants no target transfer. Historical pending-S02 sentences in §7 are dated history, superseded only by this current dependency.
 
 - 2026-10-29,0.7: reconciled accepted S02 source854, close e9b615ed, actual missing pure hash API, exact15 source paths/readset/portable fixtures/reports/recipe and schema2/same-final-head alternate expected pairs. No S03 implementation/load/import/acceptance or issue claimed.
+
+
+### Initial issue/readiness metadata —2026-10-29
+
+Root final readiness PASS at planning bd3b685/treeeacdc2b7 covered the WHOLE prompt27996B/b6beb92a, current plan40203B/6d013d84, ledger3993B/62575b88, exact15 source paths and expected INPUT goldens. Only the prompt STATUS line changes for INITIAL issue; its reviewed substantive recipe is preserved byte-exact. Other DRAFT/no-readiness references in that preserved body describe its pre-issue authorship and are superseded as issue metadata by this actual root verdict/status line, never as product acceptance. Retained Luna/high CC is dispatched for complete intake and artifacts/execution.md coverage/readback ONLY. CDC must accept actual source-cited intake and fresh854/tree/branch/lock/guard/protectedrefs before ONE explicit15-path/index/retainedtarget transfer. Until then source/index/target ROOT QUIET; no implementation/Cargo. All8rows OPEN; no external/Arc06. No further root intake ceremony absent a real mismatch.
