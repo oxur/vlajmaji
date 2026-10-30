@@ -1,6 +1,6 @@
 # S03 ledger — sealed owned history
 
-**Current,2026-10-29:** INITIAL S03 ISSUED for retained CC complete intake ONLY after exact root bd3b685 readiness PASS. S01–S02 locally CLOSED; accepted source854865a7/treeef81ffbb, S02 planning close e9b615ed. Exact15 paths/readset/APIs and expected schema1/schema2/same-final-head alternate goldens are reconciled; no S03 product source/runtime exists; CDC complete intake accepted/fresh pins PASS; exact15/index/ONEtarget transfer takes effect only after this checkpoint commit+explicit dispatch. All8rows OPEN; source/index/ONEtarget CC INITIAL/pass1 after that committed dispatch; root/CDC then read-only. Historical draft evidence phrases below are superseded only as readiness metadata, not acceptance.
+**Current,2026-10-29 CDT:** INITIAL/pass1 implementation ACTIVE after complete intake acceptance and actual15-path/index/ONEtarget transfer56beccde. Accepted S02 baseline source854865a7/treeef81ffbb remains the parent; no S03 candidate is frozen or accepted. CC is completing the original finite source/test/example/docs census before final current gates; actual preliminary subset results and preserved failures are in artifacts/execution.md. Root/CDC source/index/target remain read-only. All8 binding rows remain OPEN; historical DRAFT/no-implementation evidence phrases below remain dated preparation context, not a current claim that no work has occurred.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |
