@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | INITIAL consumer observer FAILED46514/101; PASS2/5 correction ISSUED for bounded readback after root readiness; source/index/ONEtarget ROOT QUIET pending explicit transfer; same twelve-path product WIP, all8rows OPEN |
+| Status | INITIAL consumer observer FAILED46514/101; PASS2/5 bounded readback ACCEPTED/freshpinsPASS; after checkpoint+dispatch CC owns private-main correction/ONEtarget+unchanged12 index freeze; product12 readonly, all8rows OPEN; same twelve-path product WIP, all8rows OPEN |
 | Authority | directive04 THROUGH ARC05 ONLY; retained Sol6.1/high CDC and Luna/high CC; five S04 passes including initial, no automatic sixth |
 | Known source | Accepted S03 2b7b6dda55dc00d62bfa4fcdc5d5a09742fcf528/tree83d81705cc1de3aa69f1d6d39e4c524bb1b6d9b3/parent854, planning944c607 root consistency PASS; lock65cd/guard426d |
 | Useful result | Caller-selected owned history can be embedded and strictly loaded by an offline consumer whose direct dependency graph excludes store/search/SQLite; the existing CLI prepares the exact local pair |
@@ -157,3 +157,8 @@ Root authorizes drafting PASS2/5 under directive04, not a silent waiver of the o
 ### PASS2 issue/readback-only checkpoint —2026-10-30 CDT
 
 Root WHOLEprompt7746B/e168a47c +plan resolution+correctedsource4605B/9abbe199+baseline/preservation JSON readiness PASS. Draft and whole failed originals committed bbea6d37/treecee74314. Iteration01 changes STATUS line ONLY (inverse byteexact to e168), all other reviewed body bytes intact. Retained Luna/high reads the bounded correction context and supplies a short source-cited hash/readback plus fresh pins; no repeated full original intake, no Cargo/source/index/target write until CDC explicitly transfers. Source/index/ONEtarget remain ROOT QUIET; actualconsumer still original7fc2, product12 unmodified from prior gate pins. No further root ceremony absent mismatch.
+
+
+### PASS2 actual accepted readback / conditional transfer —2026-10-30 CDT
+
+Whole source-cited bounded readback+five-hash-table expansion accepted; fresh exactWIP12/source-archive/branch/locks/manifest/main/candidate/guard/19inputs/protectedrefs/issuedprompts PASS (actual method-status parsing erratum retained in execution). AFTERthischeckpointcommit+explicitdispatch, CCexclusively owns reviewed private-main9abbe copyback and ONEtarget corrective runtime/remaining original matrix; product12bodyedits are forbidden, index may freeze only unchanged original12 after gates. Root/CDC readonly there. No automatic third invocation/sixthpass/newarchive/external; all8OPEN.
