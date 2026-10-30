@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| Status | S01–S02 CLOSED locally;15child DONE, A05-01/02 DONE and6arc rows OPEN; S03 DRAFT/UNISSUED pending root readiness |
+| Status | S01–S02 CLOSED locally;15child DONE, A05-01/02 DONE and6arc rows OPEN; S03 INITIAL issued/intake accepted, exact15 initial implementation transfer after committed checkpoint+explicit dispatch |
 | Authority | [directive04](../cdc-directive04.md), Duncan “merged! Let's continue :-D”; THROUGH ARC05 ONLY |
 | Roles | Retained CDC Sol6.1/high; retained CC Luna/high; fresh independent Sol6.1/high assembled review and SAME-context canonical gate at close |
 | Source | `codex/project01-owned-dictionary`, accepted S02 `854865a72c4ca4971e1b93fd25a2e69ee14b03a8`, tree `ef81ffbb10054bd4ceb935ac76f7912178a603e2`; S01/base history retained |
 | Physical checkout | Reused `.worktrees/project01-arc04/vlajmaji`; old Arc04 branch9026 retained; no new worktree/cache |
-| Ownership | Source/index/ONEretainedtarget ROOT QUIET after actual CDC proof02; planning-only S03 preparation, no next issue/transfer yet |
+| Ownership | CC exact15/index/ONEtarget initial S03 ownership after committed intake checkpoint+explicit dispatch; root/CDC source read-only |
 | Version / date | 0.3 / 2026-10-29 |
 
 ## Useful result and boundaries
@@ -63,3 +63,8 @@ Root final readiness PASS at proposal d75532d clears status-only initial issue a
 - 0.2 —2026-10-28: actual S01 local close/source1b899ebb, independent proof/retrospective and partial parent rows01/02; S02 current draft reconciled, still UNISSUED;6arc/all14project OPEN.
 
 - 0.3 —2026-10-29: accepted S02 source854865a7, independent mixed-own migration/materialization/history proof and local eight-row close; actual body/current ownership updated. No arc structural re-sequencing; A05-03 reimport remains S03. Unchanged fixture fragility is BL-0002, not shipped repair; S03/S04/fresh assembled/canonical gates remain.
+
+
+### S03 initial intake/transfer —2026-10-29 CDT
+
+Root exact bd3b685 readiness→status-only issue f51826d→complete source-cited intake/query addendum accepted→fresh854/treeef81/branch/lock/guard/protectedrefs verified. After current checkpoint commit+explicit dispatch, retained Luna/high CC owns exact15/index/ONEtarget for S03 INITIAL/pass1; root/CDC source read-only. S03 eight rows remain OPEN; S04 DRAFT/unissued, parent six rows/project14 OPEN. Current detailed ownership is S03 artifacts/execution.md; earlier Current readiness DRAFT sentence is historical pre-issue, not acceptance. No external/Arc06.

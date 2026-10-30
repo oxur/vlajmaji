@@ -1,6 +1,6 @@
 # S03 ledger — sealed owned history
 
-**Current,2026-10-29:** INITIAL S03 ISSUED for retained CC complete intake ONLY after exact root bd3b685 readiness PASS. S01–S02 locally CLOSED; accepted source854865a7/treeef81ffbb, S02 planning close e9b615ed. Exact15 paths/readset/APIs and expected schema1/schema2/same-final-head alternate goldens are reconciled; no S03 product source/runtime exists; CDC intake acceptance/fresh pins/explicit transfer still required. All8rows OPEN; source/index/ONEtarget ROOT QUIET. Historical draft evidence phrases below are superseded only as readiness metadata, not acceptance.
+**Current,2026-10-29:** INITIAL S03 ISSUED for retained CC complete intake ONLY after exact root bd3b685 readiness PASS. S01–S02 locally CLOSED; accepted source854865a7/treeef81ffbb, S02 planning close e9b615ed. Exact15 paths/readset/APIs and expected schema1/schema2/same-final-head alternate goldens are reconciled; no S03 product source/runtime exists; CDC complete intake accepted/fresh pins PASS; exact15/index/ONEtarget transfer takes effect only after this checkpoint commit+explicit dispatch. All8rows OPEN; source/index/ONEtarget CC INITIAL/pass1 after that committed dispatch; root/CDC then read-only. Historical draft evidence phrases below are superseded only as readiness metadata, not acceptance.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |

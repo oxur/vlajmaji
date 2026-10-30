@@ -1,6 +1,6 @@
 # Arc05 ledger
 
-**Current,2026-10-29:** S01–S02 CLOSED locally at854865a7/treeef81ffbb;15child DONE, A05-01/02 DONE, remaining6arc/all14project OPEN. A05-03 is partial only until S03 actual curation reimport. S02 CDC proof02 forty children and retained failedmethod/originalarchive/PATH limitations are in its verifier/retro/evidence index. S03 DRAFT/UNISSUED pending exact root readiness. Source/index/ONEtarget ROOT QUIET; Arc06/external actions unactivated.
+**Current,2026-10-29:** S01–S02 CLOSED locally at854865a7/treeef81ffbb;15child DONE, A05-01/02 DONE, remaining6arc/all14project OPEN. A05-03 is partial only until S03 actual curation reimport. S02 CDC proof02 forty children and retained failedmethod/originalarchive/PATH limitations are in its verifier/retro/evidence index. S03 INITIAL issued/intake accepted/fresh pins PASS, CC exact15/index/ONEtarget after committed checkpoint+explicit dispatch; root/CDC source read-only; Arc06/external actions unactivated.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |
