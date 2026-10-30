@@ -1,0 +1,25 @@
+cwd=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01
+archive_expected=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01
+CARGO_HOME=/Users/oubiwann/.cargo
+RUSTUP_HOME=/Users/oubiwann/.rustup
+HOME=/private/tmp/vlajmaji-s04-rich-pair01.aGMdQf/home
+XDG_DATA_HOME=/private/tmp/vlajmaji-s04-rich-pair01.aGMdQf/xdg-data
+XDG_CONFIG_HOME=/private/tmp/vlajmaji-s04-rich-pair01.aGMdQf/xdg-config
+TMPDIR=/private/tmp/vlajmaji-s04-rich-pair01.aGMdQf/tmp
+PATH=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/bin:/Library/Frameworks/Python.framework/Versions/3.11/bin:/opt/gcloud/369.0.0/bin:/opt/go/1.24.3/bin:/opt/homebrew/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/oubiwann/.ghcup/bin:/Users/oubiwann/.local/bin:/Users/oubiwann/.cargo/bin:/usr/local/sbin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/go/bin:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS:/Users/oubiwann/Library/Application Support/ChatGPT-Profiles/personal/codex-home/tmp/arg0/codex-arg0HC6juU:/Users/oubiwann/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/bin:/Library/Frameworks/Python.framework/Versions/3.11/bin:/opt/gcloud/369.0.0/bin:/opt/go/1.24.3/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/oubiwann/.ghcup/bin:/Users/oubiwann/.local/bin:/Users/oubiwann/.cargo/bin:/usr/local/sbin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/oubiwann/.sdkman/candidates/gradle/current/bin:/Users/oubiwann/.rvm/bin:/Users/oubiwann/.npm-global/bin:/Users/oubiwann/.radicle/bin:/Users/oubiwann/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS:/Users/oubiwann/.cargo/bin:/Users/oubiwann/.rvm/bin:/Users/oubiwann/.npm-global/bin:/Users/oubiwann/.radicle/bin
+CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+input_snapshot=/private/tmp/vlajmaji-s04-rich-pair01.aGMdQf/inputs/snapshot.json
+input_seal=/private/tmp/vlajmaji-s04-rich-pair01.aGMdQf/inputs/seal.json
+argv=guard +1.98.0 run --locked --offline -p vlajmaji-cli -- owned import ROOT --input snapshot.json --seal seal.json; guard +1.98.0 run --locked --offline -p vlajmaji-cli -- owned export ROOT --output crates/data-owned/data/snapshot.json --seal crates/data-owned/data/seal.json
+cwd_assert_before_cargo_1=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01
+fresh_root=/private/tmp/vlajmaji-s04-rich-pair01.aGMdQf/journal
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.22s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji owned import /private/tmp/vlajmaji-s04-rich-pair01.aGMdQf/journal --input /private/tmp/vlajmaji-s04-rich-pair01.aGMdQf/inputs/snapshot.json --seal /private/tmp/vlajmaji-s04-rich-pair01.aGMdQf/inputs/seal.json`
+{"head":"owned-r4","journal_schema":2,"outcome":"imported","revision_count":5,"snapshot_sha256":"2d4925e6baf72044b71cae7a78f466412276b3d837765a6f0b1ed59fe58c3d8a","source":"owned-example","version":1}
+cwd_assert_before_cargo_2=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji owned export /private/tmp/vlajmaji-s04-rich-pair01.aGMdQf/journal --output crates/data-owned/data/snapshot.json --seal crates/data-owned/data/seal.json`
+{"head":"owned-r4","journal_schema":2,"output":{"encoding":"unix-bytes","hex":"6372617465732f646174612d6f776e65642f646174612f736e617073686f742e6a736f6e","utf8":"crates/data-owned/data/snapshot.json"},"output_bytes":15705,"output_sha256":"2d4925e6baf72044b71cae7a78f466412276b3d837765a6f0b1ed59fe58c3d8a","revision_count":5,"seal":{"encoding":"unix-bytes","hex":"6372617465732f646174612d6f776e65642f646174612f7365616c2e6a736f6e","utf8":"crates/data-owned/data/seal.json"},"seal_bytes":353,"seal_sha256":"412de31a528c5bd77a31cfeba3bfbdb2806c3f15d5adb363aca1a629ef82573e","source":"owned-example","version":1}
+actual_exit=0

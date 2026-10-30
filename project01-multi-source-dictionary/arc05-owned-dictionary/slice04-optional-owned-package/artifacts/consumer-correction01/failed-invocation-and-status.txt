@@ -1,0 +1,16 @@
+Evidence classification: one authorized direct-consumer invocation, terminal failure; no retry.
+Invocation: /tmp/vlajmaji-p01-a05-cargo +1.98.0 run --locked --offline --manifest-path Cargo.toml
+Physical cwd: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s04-owned-consumer01
+Result: functions.exec_command session 46514, terminal exit 101.
+CARGO_HOME=/Users/oubiwann/.cargo
+RUSTUP_HOME=/Users/oubiwann/.rustup
+PATH was loaded byte-for-byte from the captured PATH in consumer-lock01.log.
+CARGO_TARGET_DIR=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+Fresh owned environment directory created by mktemp: /private/tmp/vlajmaji-s04-consumer-run01.hDh1IQ
+HOME=/private/tmp/vlajmaji-s04-consumer-run01.hDh1IQ/home
+XDG_DATA_HOME=/private/tmp/vlajmaji-s04-consumer-run01.hDh1IQ/xdg-data
+XDG_CONFIG_HOME=/private/tmp/vlajmaji-s04-consumer-run01.hDh1IQ/xdg-config
+TMPDIR=/private/tmp/vlajmaji-s04-consumer-run01.hDh1IQ/tmp
+Observed failure: panic at src/main.rs:60 comparing curation.state_sha256() 7a9ff76782384a8d55e2ccf5505759d2c6b709ec3a56a86294f70e78d3b7a2e0 against base dictionary SHA 178cb4a48245db47a568bb740f5ec123575aae38eb961c9ce05f40c7f0526c9a.
+The consumer's curation-state assertion is wrong; no product defect is established. Remaining consumer assertions were not reached. No source/product/runtime command has run after this failure.
+The successful normal-dependency cargo tree output was returned by the tool transcript, not saved as a standalone raw file at execution time. This preservation set therefore does not fabricate an original raw graph file.

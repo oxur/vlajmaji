@@ -1,0 +1,12 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01/crates/lexicon)
+   Compiling vlajmaji-data-owned v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s04-synthetic-archive-initial01/crates/data-owned)
+   Compiling vlajmaji-a05-s04-owned-consumer-01 v0.0.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/s04-owned-consumer01)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 13.80s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji-a05-s04-owned-consumer-01`
+
+thread 'main' (83076329) panicked at src/main.rs:60:9:
+assertion `left == right` failed
+  left: "7a9ff76782384a8d55e2ccf5505759d2c6b709ec3a56a86294f70e78d3b7a2e0"
+ right: "178cb4a48245db47a568bb740f5ec123575aae38eb961c9ce05f40c7f0526c9a"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

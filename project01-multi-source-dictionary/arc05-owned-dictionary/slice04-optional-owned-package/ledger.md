@@ -1,6 +1,6 @@
 # S04 ledger — optional owned snapshot package
 
-**Current,2026-10-29:** INITIAL intake ACCEPTED after actualcomplete15,100B readback/source-cited addendum; freshclean2b7/tree83d/branch/lock/guard/protectedrefs PASS. AFTERcheckpointcommit+explicitCDCdispatch CCowns exact12/index/ONEtarget INITIAL/pass1; root/CDC readonly. All8original binding rows unchanged OPEN/proposed through NEWfreshactual/SAMEcanonical/root. Details artifacts/execution.md; staleS03writeassignment cancelled and acceptedcanonical bytesrestored.
+**Current,2026-10-30:** INITIAL consumer46514/101 FAILED at first curation-hash observer assertion; whole originals preserved. PASS2/5 correction is DRAFT/unissued pending root full-source readiness, intake and explicit transfer; source/index/ONEtarget returned ROOT QUIET, same12 product WIP. All8 original binding rows unchanged OPEN through NEWfreshactual/SAMEcanonical/root. Prior intake/gates/failures remain historical evidence; no automatic retry or external/Arc06.
 
 | ID | Criterion | Verify | Owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- |

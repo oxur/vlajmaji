@@ -1,0 +1,57 @@
+--- original/main.rs
++++ corrected/main.rs
+@@ -9,31 +9,31 @@
+         "owned-r0",
+         include_bytes!("../inputs/history/owned-r0.json"),
+         include_bytes!("../inputs/history/owned-r0.curation.json"),
+-        "178cb4a48245db47a568bb740f5ec123575aae38eb961c9ce05f40c7f0526c9a",
++        "7a9ff76782384a8d55e2ccf5505759d2c6b709ec3a56a86294f70e78d3b7a2e0",
+     ),
+     (
+         "owned-r1",
+         include_bytes!("../inputs/history/owned-r1.json"),
+         include_bytes!("../inputs/history/owned-r1.curation.json"),
+-        "e96d7fdee27a1cf84b152799b51c7b6e541aeae714396665fa98985f5c81d05f",
++        "8003d426f599021ac75733efd9cc9462e2f99b3bd421c423a256e0d71596bf2b",
+     ),
+     (
+         "owned-r2",
+         include_bytes!("../inputs/history/owned-r2.json"),
+         include_bytes!("../inputs/history/owned-r2.curation.json"),
+-        "1cdf04f2a5dfc078ebc7c55416821a2a62a5835865c21846a78d289b142cef3a",
++        "b6ec1a55d9602412849c910464996899f0b015899bd68a7002031e7cc2a445a9",
+     ),
+     (
+         "owned-r3",
+         include_bytes!("../inputs/history/owned-r3.json"),
+         include_bytes!("../inputs/history/owned-r3.curation.json"),
+-        "d5279857727404503d065e4760960e2665d0e3b617cd5d88249eba53fb4e3917",
++        "36ee700b310f64f599327f22d7017eacc32705bc051aa514a55675b6f4520e18",
+     ),
+     (
+         "owned-r4",
+         include_bytes!("../inputs/history/owned-r4.json"),
+         include_bytes!("../inputs/history/owned-r4.curation.json"),
+-        "5d912d6f36fe0df64045a862ed4dd228fde1caf2d2371979e9e86f758b0ab1a5",
++        "fdf5d1d7ec48458d4815b2230ee5086f2709e028d7fa1416111337674062ef4a",
+     ),
+ ];
+ 
+@@ -48,7 +48,7 @@
+     assert_eq!(snapshot.as_data().commits.len(), 5);
+     assert_eq!(snapshot.as_data().commits[0].prefixes.len(), 24);
+ 
+-    for (revision, expected_dictionary, expected_curation, expected_state_sha256) in HISTORIES {
++    for (revision, expected_dictionary, expected_curation, expected_curation_state_sha256) in HISTORIES {
+         let revision = EntityId::new((*revision).to_owned())?;
+         let dictionary = snapshot.dictionary_at(&revision)?;
+         assert_eq!(dictionary.to_json_bytes()?.as_slice(), *expected_dictionary);
+@@ -57,7 +57,7 @@
+             .curation_at(&revision)?
+             .expect("schema-two history has one curation state per base revision");
+         assert_eq!(curation.to_json_bytes()?.as_slice(), *expected_curation);
+-        assert_eq!(curation.state_sha256()?, *expected_state_sha256);
++        assert_eq!(curation.state_sha256()?, *expected_curation_state_sha256);
+     }
+ 
+     assert!(matches!(
