@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "kind": "prospective-pre-input-buffers-not-product-proof",
+  "accepted_s03_binding": "PENDING",
+  "positive_snapshot": {
+    "path": "../../../slice03-sealed-owned-history/artifacts/schema2-golden/snapshot.json",
+    "bytes": 15705,
+    "sha256": "2d4925e6baf72044b71cae7a78f466412276b3d837765a6f0b1ed59fe58c3d8a"
+  },
+  "positive_seal": {
+    "path": "../../../slice03-sealed-owned-history/artifacts/schema2-golden/seal.json",
+    "bytes": 353,
+    "sha256": "412de31a528c5bd77a31cfeba3bfbdb2806c3f15d5adb363aca1a629ef82573e"
+  },
+  "cases": [
+    {
+      "name": "unsupported-payload",
+      "change": "ONLY first top-level snapshot version1→2; seal snapshot_version remains supported1 so payload decoder is reached",
+      "expected_variant_prospective": "UnsupportedVersion(kind=owned snapshot,found=2)",
+      "payload": {
+        "path": "unsupported-payload.json",
+        "bytes": 15705,
+        "sha256": "3a0824a6e3a7409209d88d1ac79496b1d74e0c2a70d5a9a415f3ec16af32c247"
+      },
+      "seal": {
+        "path": "unsupported-payload.seal.json",
+        "bytes": 353,
+        "sha256": "b3bfb493d6fade9c9158eabbe23149fcd59c957a051100318e1a43d995c95684"
+      },
+      "checks": "outer exact SHA/length recomputed; original supported seal header/inventory and order preserved; noLF"
+    },
+    {
+      "name": "unknown-prefix",
+      "change": "ONLY r0 first prefix section registry.sources→registry.invalid_section; final Dictionary and all state hashes unchanged",
+      "expected_variant_prospective": "History",
+      "payload": {
+        "path": "unknown-prefix.json",
+        "bytes": 15713,
+        "sha256": "065bcb59825d93e4142643c1a031cfafe6e57dd705c2f99b3be09670f497fc0c"
+      },
+      "seal": {
+        "path": "unknown-prefix.seal.json",
+        "bytes": 353,
+        "sha256": "4f4bb3222ef36f928bc347b0bde81062c1c2e3dd96a21c2ee2190bea113b61c9"
+      },
+      "checks": "outer exact SHA/length recomputed; original supported seal header/inventory and order preserved; noLF"
+    }
+  ]
+}
