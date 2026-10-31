@@ -6,6 +6,10 @@ slice's artifacts; recording an item does not authorize implementation or change
 active acceptance criteria. BL-0001 records the S05 metadata byte-comparison
 candidate; the diagnostic originals remain preserved in place.
 
+## Arc06 activation — 2026-10-31
+
+Duncan authorizes the next arc after Arc05 main delivery. [directive05](project01-multi-source-dictionary/cdc-directive05.md) governs THROUGH ARC06 ONLY with unchanged explicitly selected Sol6.1/high CDC and Luna/high CC. Source branch `codex/project01-integrated-workbench` starts clean from merged `cb13d377`/tree`c8a65825`; existing physical Arc04 checkout/ONE target retained. After directive commit and explicit dispatch, retained CDC owns planning/source-read preparation only; ROOT source/index/target QUIET until concrete S01 readiness, complete CC intake and explicit transfer. No new external delivery/default/Full campaign or project acceptance is inferred. Earlier authority/endpoints below are historical.
+
 ## Arc05 delivered to main — 2026-10-31
 
 Duncan explicitly authorized the README update and merge. [Delivery receipt](project01-multi-source-dictionary/artifacts/arc05-delivery/delivery.md) records PR7 rebase-merged at `cb13d377`/tree`c8a65825`, primary main clean/synced, all six candidate CI checks and merged-main CI41239808260 SUCCESS. Branch `69a9f685` retains the identical validated tree; only README and two test-fixture repairs follow accepted implementation `d2a566c6`. Both actual CI setup failures and their reviews/controls are preserved. Arc05 remains CLOSED, all14 project rows OPEN, Arc06 unactivated. Source/index/retained target are QUIET. Earlier local-only/external-action restrictions below retain their dated historical cutoffs; no release, planning push, default/Full access or cleanup is authorized by this completed delivery.
