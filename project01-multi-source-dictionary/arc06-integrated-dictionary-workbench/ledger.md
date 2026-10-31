@@ -1,6 +1,6 @@
 # Arc06 ledger
 
-**ACTIVE S01 intake,2026-10-31; all8 OPEN, ROOT readiness PASS ae0d4b31.** Binding composition rows for [arc plan](arc-plan.md); no implementation/runtime evidence yet. ROOT owns source/index/ONE target QUIET.
+**ACTIVE S01 INITIAL/pass1 authoring,2026-10-31; all8 OPEN, ROOT readiness PASS ae0d4b31.** Binding composition rows for [arc plan](arc-plan.md). Complete intake/source-cited clarification accepted and explicit14/source-index/ONEtarget transfer c1deac39 dispatched; CC exclusive there, root/CDC readonly. Source authoring is uncompiled at this checkpoint, no behavioral or acceptance evidence yet. Earlier row Evidence descriptions retain their original planning cutoff.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
