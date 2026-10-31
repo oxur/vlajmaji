@@ -1,6 +1,6 @@
 # S01 — Bound mixed upstream/owned view
 
-**Status: DRAFT, NOT ISSUED — ROOT first-slice readiness pending.** Version0.1 /2026-10-31. Directive05 and [arc plan](../arc-plan.md) govern. CDC planning/source-read only; ROOT owns source/index/ONE retained target QUIET. No current implementation assignment. Retained CC Luna/high is parked; all old prompts superseded. Requested CDC Sol6.1/high is unchanged; no invented backend attestation. Five total passes including INITIAL.
+**Status: ISSUED / COMPLETE INTAKE ONLY — ROOT readiness PASS ae0d4b31.** Version0.2 /2026-10-31. Directive05 and [arc plan](../arc-plan.md) govern. CDC planning/source-read only; ROOT owns source/index/ONE retained target QUIET. No current implementation assignment. Retained CC Luna/high is parked; all old prompts superseded. Requested CDC Sol6.1/high is unchanged; no invented backend attestation. Five total passes including INITIAL.
 
 ## 1. Useful increment, baseline and exclusions
 
@@ -184,6 +184,8 @@ Guide reads were full PM wayfinder/01/02/03/engineering07 and selected Rust sect
 
 | Assignment | Date | State | Authority / reason |
 | --- | --- | --- | --- |
-| cc-prompt.md INITIAL | 2026-10-31 | DRAFT NOT ISSUED | ROOT first-slice readiness required; all previous CC assignments superseded. |
+| cc-prompt.md INITIAL | 2026-10-31 | ISSUED / COMPLETE INTAKE ONLY | ROOT first-slice readiness PASS ae0d4b31; all previous CC assignments superseded. Source/index/target ROOT QUIET until accepted readback/fresh pins/explicit transfer. |
 
 - 0.1,2026-10-31: actual cb13/API-grounded mixed build-new, singleton/multi-context and cheap historical/head identity/lifetime/publication design;14 allowed paths and finite A–G controls. No issued bytes or runtime claims.
+
+- 0.2,2026-10-31: ROOT actual first-slice readiness PASS for ae0d4b31 after whole contracts/final compact/nested/error delta review; clean QUIET handback acknowledged. STATUS-only INITIAL issue now authorizes retained Luna/high complete intake and artifacts/execution.md readback ONLY; no source/index/target/Cargo authority until CDC actual acceptance/fresh pins/explicit transfer. Substantive reviewed design unchanged; draft preserved at ae0d4b31.

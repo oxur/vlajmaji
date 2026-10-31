@@ -1,6 +1,6 @@
 # Arc06 — Integrated dictionary workbench
 
-**Status: DRAFT / first-slice root readiness pending, 2026-10-31.** Version 0.1. Authority: [directive05](../cdc-directive05.md). CDC owns planning/source-read preparation; ROOT owns source/index/ONE target QUIET. No CC issue, source edit, build, Full/default access or external action has occurred for this arc. All child/arc/project rows OPEN. This is an implementation roadmap, not acceptance or permission to execute a functional Full replay.
+**Status: ACTIVE / S01 ISSUED COMPLETE INTAKE ONLY, 2026-10-31.** Version 0.2. Authority: [directive05](../cdc-directive05.md). CDC owns planning/source-read preparation; ROOT owns source/index/ONE target QUIET. No CC issue, source edit, build, Full/default access or external action has occurred for this arc. All child/arc/project rows OPEN. This is an implementation roadmap, not acceptance or permission to execute a functional Full replay.
 
 ## Capability and accepted inputs
 
@@ -77,3 +77,5 @@ Fresh Arc06 review uses a NEW explicitly selected Sol/high context for actual as
 ## Version history / assignment
 
 - 0.1,2026-10-31: directive05 preparation from merged cb13; five useful increments retain all14 project rows/all12 query variants. S01 DRAFT only; no implementation assigned. ROOT exact first-slice readiness pending. CDC returns planning QUIET with committed candidate.
+
+- 0.2,2026-10-31: ROOT actual first-slice readiness PASS ae0d4b31 and QUIET planning handback; STATUS-only S01 issue/retained Luna/high complete intake authorized. Original design/8 OPEN rows unchanged; source/index/ONEtarget ROOT QUIET until normal accepted-intake explicit transfer.

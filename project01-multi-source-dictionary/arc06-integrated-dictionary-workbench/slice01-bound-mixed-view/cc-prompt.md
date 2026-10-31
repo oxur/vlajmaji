@@ -1,6 +1,6 @@
 # CC INITIAL assignment — Arc06 S01 bound mixed view
 
-**STATUS: DRAFT / NOT ISSUED. Do not execute or resume any older assignment.** Prepared2026-10-31 for the retained explicitly selected Luna/high CC, reviewed by retained Sol6.1/high CDC. Requested configuration is not backend attestation. ROOT first-slice readiness, later actual complete intake acceptance/fresh pins and explicit source/index/ONEtarget transfer are required before dependent edits or Cargo. This file is prospective CC implementation work, not an execution receipt.
+**STATUS: ISSUED / COMPLETE INTAKE ONLY. All older assignments are superseded.** Prepared2026-10-31 for the retained explicitly selected Luna/high CC, reviewed by retained Sol6.1/high CDC. Requested configuration is not backend attestation. ROOT first-slice readiness, later actual complete intake acceptance/fresh pins and explicit source/index/ONEtarget transfer are required before dependent edits or Cargo. This file is prospective CC implementation work, not an execution receipt.
 
 ## Assignment identity and result
 

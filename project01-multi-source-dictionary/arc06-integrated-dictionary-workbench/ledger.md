@@ -1,6 +1,6 @@
 # Arc06 ledger
 
-**DRAFT,2026-10-31; all8 OPEN.** Binding composition rows for [arc plan](arc-plan.md); no implementation/runtime evidence yet. ROOT owns source/index/ONE target QUIET.
+**ACTIVE S01 intake,2026-10-31; all8 OPEN, ROOT readiness PASS ae0d4b31.** Binding composition rows for [arc plan](arc-plan.md); no implementation/runtime evidence yet. ROOT owns source/index/ONE target QUIET.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |

@@ -1,6 +1,6 @@
 # S01 ledger — bound mixed view
 
-**DRAFT NOT ISSUED,2026-10-31.** All8 OPEN. Criteria map to the [slice plan](slice-plan.md); author and independent evidence not yet available. No source/target ownership transfer.
+**ISSUED COMPLETE INTAKE ONLY,2026-10-31; ROOT readiness PASS ae0d4b31.** All8 OPEN. Criteria map to the [slice plan](slice-plan.md); author and independent evidence not yet available. No source/target ownership transfer.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
