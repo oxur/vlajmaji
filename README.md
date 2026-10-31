@@ -52,10 +52,13 @@ The Rust workspace already provides:
   (`vlajmaji owned init|edit|head|history|show`; see
   [owned dictionary guide](docs/owned-dictionary.md)).
 - An opt-in owned-curation sidecar for pinned context and reviewed Link/Sense
-  records, with explicit materialization to a separate normalized view; it
-  does not change the default store.
+  records, explicit schema migration, and materialization to a separate
+  normalized view (`owned migrate-curation|curate|curation-show|materialize`).
+  Missing context stays unavailable until the caller supplies its exact input.
 - An opt-in `vlajmaji-data-owned` package for a locally embedded, sealed whole
-  owned history. It remains separate from the four upstream pack identities.
+  owned history, including historical dictionary and curation states. Direct
+  consumers need only this package and lexicon; the umbrella exposes it through
+  `data-owned`. It remains separate from the four upstream pack identities.
 - A strict sealed snapshot codec and explicit full-history import/export for
   schema-one and migrated schema-two owned journals, including retained
   curation history and exact replay checks
@@ -111,6 +114,7 @@ attested usage, semantic equivalence, or poetic merit.
 | [`vlajmaji-data-llg`](crates/data-llg) | Optional unpublished LLG embedded data package (local payload only) |
 | [`vlajmaji-data-la-lojban`](crates/data-la-lojban) | Optional unpublished La-Lojban embedded data package (local payload only) |
 | [`vlajmaji-data-sutysisku`](crates/data-sutysisku) | Optional unpublished Sutysisku embedded data package (local payload only) |
+| [`vlajmaji-data-owned`](crates/data-owned) | Optional unpublished sealed owned-history package (local payload only) |
 | [`vlajmaji-cli`](crates/cli) | The `vlajmaji` executable |
 
 ## Published 0.2.0 packages
@@ -193,15 +197,44 @@ deterministic source-grouped text, or to either detail command for a readable
 complete-hit view. Full JSON remains the default; compact JSON keeps its
 existing response shape.
 
+### Try an owned dictionary and its history
+
+After building the checkout, this self-contained synthetic example creates five
+revisions, records reviewed curation, exports a sealed history, and imports it
+into a separate journal. All paths are fresh and explicit:
+
+```sh
+(
+  set -eu
+  run_dir="$(mktemp -d)"
+  cargo +1.98.0 run --locked --offline -p vlajmaji-store --example owned_snapshot -- \
+    "$run_dir/inputs" "$run_dir/journal" "$run_dir/imported"
+  cargo +1.98.0 run --locked --offline -p vlajmaji-cli -- owned history "$run_dir/imported"
+  cargo +1.98.0 run --locked --offline -p vlajmaji-cli -- owned show "$run_dir/imported" \
+    --revision owned-r1
+  cargo +1.98.0 run --locked --offline -p vlajmaji-cli -- owned check \
+    --input "$run_dir/inputs/snapshot.json" --seal "$run_dir/inputs/seal.json"
+)
+```
+
+The historical read reconstructs `owned-r1` from the imported history. The
+snapshot retains curation definitions and context pins; resolving external
+members still requires the caller's matching context. See the [owned dictionary
+guide](docs/owned-dictionary.md) for editing, conflict handling, materialization,
+derived queries, and preparing the optional embedded package. The example uses
+neither the default store nor external corpus inputs.
+
 Corpus data is not bundled. The [migration and replay guide](docs/migration.md)
 describes importing research inputs, building a store, querying it, and running
 the separately gated full-corpus test.
 
 ## Where this is going
 
-Next come independently selectable corpus packages, multi-store composition,
-and an editable dictionary of our own. The longer aim is a practical vocabulary
-laboratory connected to Bauske's linguistic tools.
+Independent corpus packages, explicit composition, and owned dictionaries now
+have working Rust and CLI workflows. Next comes integrating owned editing with
+configured multi-source lookup and completing the end-to-end workbench checks.
+The longer aim is a practical vocabulary laboratory connected to Bauske's
+linguistic tools.
 
 The workspace is on the **0.3.0 development cycle**; its APIs remain experimental.
 
