@@ -1,6 +1,6 @@
 # S01 ledger — bound mixed view
 
-**INTAKE ACCEPTED / INITIAL TRANSFER CHECKPOINT,2026-10-31; ROOT readiness PASS ae0d4b31.** All8 OPEN. Criteria map to the [slice plan](slice-plan.md); [actual intake and transfer boundary](artifacts/execution.md) precede implementation. Effective ONLY after checkpoint commit and explicit CDC dispatch: CC exact14/source-index/ONEtarget INITIAL/pass1, root/CDC readonly. No author behavioral or independent acceptance evidence yet.
+**IMPLEMENTATION ACTIVE / INITIAL pass1,2026-10-31; ROOT readiness PASS ae0d4b31.** All8 OPEN. CC exclusively owns exact14/source-index/ONEtarget; root/CDC readonly. [Execution](artifacts/execution.md) preserves actual failures, bounded corrections and green focused populations; full original A–G, example/journey, broad gates, freeze and independent verification remain pending. The table below retains original binding criteria and historical as-issued evidence cells; this current metadata does not mark acceptance.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
