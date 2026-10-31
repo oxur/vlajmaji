@@ -1,6 +1,6 @@
 # S01 — Bound mixed upstream/owned view
 
-**Status: ISSUED / COMPLETE INTAKE ONLY — ROOT readiness PASS ae0d4b31.** Version0.2 /2026-10-31. Directive05 and [arc plan](../arc-plan.md) govern. CDC planning/source-read only; ROOT owns source/index/ONE retained target QUIET. Current assignment permits complete intake only; no dependent implementation authority. Retained CC Luna/high is parked; all old prompts superseded. Requested CDC Sol6.1/high is unchanged; no invented backend attestation. Five total passes including INITIAL.
+**Status: INTAKE ACCEPTED / INITIAL TRANSFER CHECKPOINT — 2026-10-31.** Version0.3. ROOT readiness PASS ae0d4b31 and directive05 govern. Complete retained Luna/high intake plus source-cited clarification accepted; fresh clean cb13/treec8a and protected pins checked in [execution](artifacts/execution.md). AFTER this checkpoint commit and explicit CDC dispatch, CC owns exactly14 source paths/index/ONE target for INITIAL/pass1; root/CDC source/index/target readonly. Before dispatch they remain ROOT QUIET. All old assignments superseded; requested Sol6.1/high CDC unchanged, no backend attestation. Five total passes including INITIAL; all8 rows OPEN, no runtime or acceptance claim.
 
 ## 1. Useful increment, baseline and exclusions
 

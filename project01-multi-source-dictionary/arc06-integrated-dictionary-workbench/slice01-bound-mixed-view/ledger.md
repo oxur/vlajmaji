@@ -1,6 +1,6 @@
 # S01 ledger — bound mixed view
 
-**ISSUED COMPLETE INTAKE ONLY,2026-10-31; ROOT readiness PASS ae0d4b31.** All8 OPEN. Criteria map to the [slice plan](slice-plan.md); author and independent evidence not yet available. No source/target ownership transfer.
+**INTAKE ACCEPTED / INITIAL TRANSFER CHECKPOINT,2026-10-31; ROOT readiness PASS ae0d4b31.** All8 OPEN. Criteria map to the [slice plan](slice-plan.md); [actual intake and transfer boundary](artifacts/execution.md) precede implementation. Effective ONLY after checkpoint commit and explicit CDC dispatch: CC exact14/source-index/ONEtarget INITIAL/pass1, root/CDC readonly. No author behavioral or independent acceptance evidence yet.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
