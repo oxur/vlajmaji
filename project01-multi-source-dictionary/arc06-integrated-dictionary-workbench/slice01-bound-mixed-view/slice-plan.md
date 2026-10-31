@@ -189,3 +189,5 @@ Guide reads were full PM wayfinder/01/02/03/engineering07 and selected Rust sect
 - 0.1,2026-10-31: actual cb13/API-grounded mixed build-new, singleton/multi-context and cheap historical/head identity/lifetime/publication design;14 allowed paths and finite A–G controls. No issued bytes or runtime claims.
 
 - 0.2,2026-10-31: ROOT actual first-slice readiness PASS for ae0d4b31 after whole contracts/final compact/nested/error delta review; clean QUIET handback acknowledged. STATUS-only INITIAL issue now authorizes retained Luna/high complete intake and artifacts/execution.md readback ONLY; no source/index/target/Cargo authority until CDC actual acceptance/fresh pins/explicit transfer. Substantive reviewed design unchanged; draft preserved at ae0d4b31.
+
+- 0.3,2026-10-31: complete intake plus dated readback correction accepted; fresh clean source/pins and actual conditional checkpoint c1deac39 followed by explicit CDC dispatch. CC now exact14/source-index/ONEtarget INITIAL/pass1 implementation owner; root/CDC readonly. First identity/store source draft authored but uncompiled; no behavior or acceptance. Issued prompt and original binding clauses unchanged.

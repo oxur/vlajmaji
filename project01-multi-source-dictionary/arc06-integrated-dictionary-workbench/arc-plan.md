@@ -79,3 +79,5 @@ Fresh Arc06 review uses a NEW explicitly selected Sol/high context for actual as
 - 0.1,2026-10-31: directive05 preparation from merged cb13; five useful increments retain all14 project rows/all12 query variants. S01 DRAFT only; no implementation assigned. ROOT exact first-slice readiness pending. CDC returns planning QUIET with committed candidate.
 
 - 0.2,2026-10-31: ROOT actual first-slice readiness PASS ae0d4b31 and QUIET planning handback; STATUS-only S01 issue/retained Luna/high complete intake authorized. Original design/8 OPEN rows unchanged; source/index/ONEtarget ROOT QUIET until normal accepted-intake explicit transfer.
+
+- 0.3,2026-10-31: c1deac39 complete intake/source-cited clarification accepted and explicit14/source-index/ONEtarget transfer dispatched; CC INITIAL/pass1 authoring active, root/CDC readonly. S02 [configured refresh draft](slice02-configured-refresh/slice-plan.md) and [ledger](slice02-configured-refresh/ledger.md) are UNISSUED, with accepted-S01 and final reference/status/API/readset prerequisites explicit. No runtime acceptance.

@@ -3,13 +3,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | Project OPEN; Arc01–05 CLOSED, Arc05 delivered PR7/main cb13d377 with main CI41239808260 SUCCESS. Arc06 ACTIVE under directive05; S01 ISSUED complete intake, ROOT readiness PASS ae0d4b31; source/index/ONEtarget ROOT QUIET. All14 project rows remain OPEN; Operator project acceptance separate. |
+| status | Project OPEN; Arc01–05 CLOSED, Arc05 delivered PR7/main cb13d377 with main CI41239808260 SUCCESS. Arc06 ACTIVE under directive05; S01 INITIAL/pass1 implementation active after accepted complete intake c1deac39 and explicit14-path/index/ONEtarget transfer; root/CDC source/index/target readonly. ROOT readiness PASS ae0d4b31. All14 project rows remain OPEN; Operator project acceptance separate. |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.36 /2026-10-31 |
+| version / date | 1.37 /2026-10-31 |
 
 ## Purpose and first useful result
 
@@ -444,3 +444,5 @@ Duncan says “Awesome! Let's dive into the next arc!” after actual Arc05 deli
 This version updates current routing from superseded Arc05 draft prose without rewriting dated histories or closed packets. Functional Full replay is later identified-input/fresh-output/finite-method ROOT-gated; no accepted retained Full DB/catalogue/cache leaf probe or actual user-default access. No optimization/benchmark/acquisition/network/external delivery. Arc06 close requires independent slices, NEW actual assembled Sol/high, SAME canonical and ROOT consistency/retros/bubble-up; project Operator acceptance remains separate.
 
 **Arc06 status,2026-10-31:** ROOT first-slice readiness PASS ae0d4b31; S01 STATUS-only issued for retained Luna/high complete intake. All original project rows OPEN; source/index/ONEtarget ROOT QUIET until accepted source-cited readback/fresh pins and explicit transfer. No design or execution-evidence change.
+
+- 1.37,2026-10-31: actual S01 complete intake accepted/c1deac39 explicit fourteen-path ownership transfer and uncompiled authoring begun; unissued S02 distinct configured-refresh draft prepared in parallel. No behavioral acceptance or project-row change.
