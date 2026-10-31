@@ -1,5 +1,7 @@
 # Project01 ledger
 
+**Current Arc06 planning,2026-10-31:** [directive05](cdc-directive05.md) activates THROUGH ARC06 ONLY after actual delivered cb13d377/main CI41239808260 SUCCESS. [Arc06 plan](arc06-integrated-dictionary-workbench/arc-plan.md) explicitly owns all14 rows/all12 Query variants; S01 complete DRAFT, ROOT readiness pending. No new runtime/acceptance; every original project table cell remains byte-identical OPEN. ROOT source/index/ONEtarget QUIET, CDC planning/source-read only; separate project Operator gate. Dated Arc05/local-only clauses below remain historical.
+
 **Arc05 delivery, 2026-10-31:** Duncan authorized README/example update and main merge after local closure. [Delivery evidence](artifacts/arc05-delivery/delivery.md) records PR7 rebase-merged `cb13d377`/tree`c8a65825`, exact candidate/rebased-tree equality, both observed test-fixture repairs, six successful candidate checks and merged-main CI41239808260 SUCCESS. Primary main clean/synced. All fourteen project status cells and closed Arc05 records remain unchanged; Arc06 unactivated. The local-close checkpoint below retains its earlier evidence cutoff.
 
 **Current Arc05 checkpoint,2026-10-30 — CLOSED locally:** SAME-context canonical ACCEPTED97e448/root final consistency precede exact11 mechanical flips; all31child/eightarcDONE, all14project OPEN. Project cells including Evidence/Notes unchanged from reviewed97proposal; old pending Evidence retains that cutoff, actual CLOSED header supersedes. Source d2a566c6/treecc9f6f73 unchanged/ROOTQUIET; Arc06 unactivated.

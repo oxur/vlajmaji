@@ -1,0 +1,14 @@
+# Arc06 ledger
+
+**DRAFT,2026-10-31; all8 OPEN.** Binding composition rows for [arc plan](arc-plan.md); no implementation/runtime evidence yet. ROOT owns source/index/ONE target QUIET.
+
+| ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
+| --- | --- | --- | --- | --- | --- | --- |
+| A06-01 | A mixed installed-upstream and live-owned result is usable through public Rust and CLI with explicit identity/curation/context and all competing occurrences. | S01 independent public/CLI row walk and fresh assembled mixed oracle. | correctness-grade | S01 / P01-01,02,09 | OPEN | None; DRAFT only. |
+| A06-02 | Configured source/revision/default selection and explicit refresh/removal/reload preserve history and invalidate stale cursor/reference bindings truthfully. | S02 lifecycle/config compatibility and pages/source-change reference sets. | correctness-grade | S02 / P01-02,09,11,12 | OPEN | None; DRAFT only. |
+| A06-03 | ReverseDefinition, Form and Links work on typed mixed authority without a lossy fabricated legacy archive. | S03 exact finite public/CLI variant/policy oracles plus original legacy regressions. | correctness-grade | S03 / P01-10 | OPEN | None; DRAFT only. |
+| A06-04 | All remaining eight computed/proposal Query variants preserve existing source/analysis/settings/proposal distinctions and complete totals. | S04 all-eight public/CLI census, optional morphology and unchanged policies. | correctness-grade | S04 / P01-10 | OPEN | None; DRAFT only. |
+| A06-05 | All four pinned corpora and owned input compose in an identified finite offline functional replay with fresh disjoint outputs. | S05 ROOT-cleared finite Full input/output method; all-corpus reference sets and explicit missing-input disposition. | correctness-grade | S05 / P01-03…09 | OPEN | None; DRAFT only. |
+| A06-06 | Versions, explicit verification, offline clean caller/features/package recipes and source/content boundaries remain usable and documented. | Affected local gates, package FILE/consumer proof, no-default/all-feature matrix and notice/holds review. | correctness-grade | All slices / P01-07,08,12,13 | OPEN | None; DRAFT only. |
+| A06-07 | All slices and original obligations compose in NEW actual independent assembled review, SAME canonical review and ROOT consistency with findings/retros/bubble-up complete. | Fresh Rust/CLI workflow; same-reviewer actual canonical packet; ROOT consistency and exact status-cell transition. | correctness-grade | Directive05 / P01-14 | OPEN | None; DRAFT only. |
+| A06-08 | Arc closes within directive05 without claiming project/Operator acceptance, publication/default/Full-store access or new performance targets. | All14 unchanged project rows OPEN; final scope/produced-path and bubble-up row walk. | correctness-grade | Directive05 / all14 | OPEN | None; DRAFT only. |
