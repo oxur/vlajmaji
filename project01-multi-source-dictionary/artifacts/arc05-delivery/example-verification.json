@@ -1,0 +1,19 @@
+{
+  "example_exit": 0,
+  "history_count": 5,
+  "historical_revision": "owned-r1",
+  "whole_r1_matches_input": true,
+  "snapshot_check": {
+    "head": "owned-r4",
+    "journal_schema": 2,
+    "revision_count": 5,
+    "seal_bytes": 353,
+    "seal_sha256": "412de31a528c5bd77a31cfeba3bfbdb2806c3f15d5adb363aca1a629ef82573e",
+    "snapshot_bytes": 15705,
+    "snapshot_sha256": "2d4925e6baf72044b71cae7a78f466412276b3d837765a6f0b1ed59fe58c3d8a",
+    "source": "owned-example",
+    "version": 1
+  },
+  "actual_example_root": "/var/folders/dt/kc8ndn6d3kx8c1jnxr05drsh0000gn/T/tmp.TXxgVUMaro",
+  "observer_note": "Post-run helper first searched the owned TMPDIR; actual mktemp fresh root differed, read from the example stdout before read-only equality check. No product command rerun."
+}

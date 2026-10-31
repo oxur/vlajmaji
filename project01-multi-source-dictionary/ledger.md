@@ -1,5 +1,7 @@
 # Project01 ledger
 
+**Arc05 delivery, 2026-10-31:** Duncan authorized README/example update and main merge after local closure. [Delivery evidence](artifacts/arc05-delivery/delivery.md) records PR7 rebase-merged `cb13d377`/tree`c8a65825`, exact candidate/rebased-tree equality, both observed test-fixture repairs, six successful candidate checks and merged-main CI41239808260 SUCCESS. Primary main clean/synced. All fourteen project status cells and closed Arc05 records remain unchanged; Arc06 unactivated. The local-close checkpoint below retains its earlier evidence cutoff.
+
 **Current Arc05 checkpoint,2026-10-30 — CLOSED locally:** SAME-context canonical ACCEPTED97e448/root final consistency precede exact11 mechanical flips; all31child/eightarcDONE, all14project OPEN. Project cells including Evidence/Notes unchanged from reviewed97proposal; old pending Evidence retains that cutoff, actual CLOSED header supersedes. Source d2a566c6/treecc9f6f73 unchanged/ROOTQUIET; Arc06 unactivated.
 
 **Historical Arc05 S03 checkpoint:** **Current Arc05 checkpoint,2026-10-29:** S01–S03 locally CLOSED at2b7b6dda/tree83d81705;23child/fivearc DONE,3arc/all14project OPEN. P01-09 gains sealed-history/reimport/query partial evidence, with optional package/assembled/finalOperator still pending. S04 INITIALintakeaccepted/freshpinsPASS; aftercheckpoint+explicitdispatch CC12/index/ONEtarget, root/CDCreadonly; Arc06 unactivated. Original project criteria/verify/grade/scope/status/Notes remain unchanged.

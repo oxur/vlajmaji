@@ -1,0 +1,20 @@
+{
+  "accepted_implementation": "d2a566c6cf9106bbb3b2c1a0cf6c62e402ad2a0c",
+  "final_head": "69a9f68507e23cef9b20e4bcabc86840e224689e",
+  "final_tree": "c8a65825b49c718c90e5b6f370b1f22358a5131a",
+  "post_acceptance_paths": [
+    "README.md",
+    "crates/cli/tests/collections_maintenance_contract.rs",
+    "crates/store/src/collection_profiles/policy.rs"
+  ],
+  "store_production_prefix_identical": true,
+  "source_clean": true,
+  "local_check": {
+    "exit": 0,
+    "passed": 395,
+    "failed": 0,
+    "ignored": 1,
+    "tooling_passed": 19,
+    "sha256": "0897297a9142db15cebf922011cd047ab8941339ad949c607c34cbc270e63906"
+  }
+}

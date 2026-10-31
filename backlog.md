@@ -77,11 +77,15 @@ snapshot lifetimes and out-of-band changes; it is not implied by this item.
 
 ## BL-0002: Investigate exclusive temporary-root allocation in CLI maintenance tests
 
-- **Status:** Proposed, unscheduled; no implementation authorized or shipped.
+- **Status:** Addressed for the named CLI helper during the 2026-10-31 delivery; original collision cause remains unproven.
 - **Raised:** 2026-10-29 (America/Chicago), Arc05/S02.
 - **Observed source:** inherited collections_maintenance_contract fresh_root helper, unchanged by854865a7.
-- **Owner:** Unassigned pending a bounded future plan.
+- **Owner:** Root delivery, with retained CDC read-only review; completed for the named helper.
 
 The original S02 Synthetic all-features attempt failed at create_dir AlreadyExists before the named test's product calls. Collision cause and exact collided path are unproven. One explicitly authorized corrected-source archive with fresh owned environment passed; it does not establish a helper fix or causal diagnosis. Investigate actual allocation evidence and consider exclusive bounded temporary-root creation rather than relying only on PID/time names. A future task must preserve baseline failures, distinguish fixture setup from product assertions and validate portability; this entry neither authorizes an out-of-scope repair nor adds a current gate.
 
 Evidence: [original failed raw](project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/artifacts/logs/vlajmaji-s02-all-features-archive-final01.log), [sole corrected raw](project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/artifacts/strict-archive01/all-features.log), [existing chronology](project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/artifacts/execution.md), [CDC verification](project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/cdc-verification.md) and [retrospective](project01-multi-source-dictionary/arc05-owned-dictionary/slice02-reviewed-curation/cdc-retrospective.md).
+
+### Delivery disposition — 2026-10-31
+
+The original 2026-10-29 status was “Proposed, unscheduled; no implementation authorized or shipped.” Duncan's later explicit README/main-merge request opened a delivery interval. Fresh PR macOS CI reproduced AlreadyExists in the named CLI allocator; a separate push macOS job later reproduced it in the store policy test allocator. Both scoped test-only repairs use exclusive bounded allocation and per-process sequences, with deterministic occupied-directory/file preservation controls. They are shipped through [PR7](https://github.com/oxur/vlajmaji/pull/7) at main `cb13d377`; final candidate and merged-main Linux/macOS CI passed. [Delivery record and raw failures](project01-multi-source-dictionary/artifacts/arc05-delivery/delivery.md) preserve the evidence. This resolves the named allocation weakness without claiming a causal diagnosis of the historical collision or an audit of every temporary-root helper. The original S02 failures and retrospective above remain unchanged.

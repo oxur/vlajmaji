@@ -1,0 +1,289 @@
+{
+  "id": 41239808260,
+  "event": "push",
+  "head_sha": "cb13d377aeba85c1b76a9173abb22bedd535ac69",
+  "status": "completed",
+  "conclusion": "success",
+  "html_url": "https://github.com/oxur/vlajmaji/actions/runs/41239808260",
+  "run_started_at": "2026-10-31T20:37:57Z",
+  "updated_at": "2026-10-31T20:43:06Z",
+  "jobs": [
+    {
+      "id": 124651179119,
+      "name": "Check",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/oxur/vlajmaji/actions/runs/41239808260/job/124651179119",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run dtolnay/rust-toolchain@1.98.0",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo check --workspace --locked",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo fmt --all -- --check",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo clippy --workspace --all-targets --locked -- -D warnings",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo doc --workspace --locked --no-deps",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run make test-tools",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 124651179126,
+      "name": "Test (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/oxur/vlajmaji/actions/runs/41239808260/job/124651179126",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run dtolnay/rust-toolchain@1.98.0",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo test --workspace --locked",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo test --locked -p vlajmaji-search --no-default-features",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install graph backend build dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare synthetic embedded data for all-feature tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare synthetic LLG data for all-feature tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare synthetic La-Lojban data for all-feature tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare synthetic Sutysisku data for all-feature tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare synthetic owned snapshot for all-feature tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo test --workspace --all-features --locked",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 124651179211,
+      "name": "Test (macos-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/oxur/vlajmaji/actions/runs/41239808260/job/124651179211",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run dtolnay/rust-toolchain@1.98.0",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo test --workspace --locked",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run cargo test --locked -p vlajmaji-search --no-default-features",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Install graph backend build dependencies",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Prepare synthetic embedded data for all-feature tests",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Prepare synthetic LLG data for all-feature tests",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Prepare synthetic La-Lojban data for all-feature tests",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Prepare synthetic Sutysisku data for all-feature tests",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Prepare synthetic owned snapshot for all-feature tests",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run cargo test --workspace --all-features --locked",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

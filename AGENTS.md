@@ -6,6 +6,10 @@ slice's artifacts; recording an item does not authorize implementation or change
 active acceptance criteria. BL-0001 records the S05 metadata byte-comparison
 candidate; the diagnostic originals remain preserved in place.
 
+## Arc05 delivered to main — 2026-10-31
+
+Duncan explicitly authorized the README update and merge. [Delivery receipt](project01-multi-source-dictionary/artifacts/arc05-delivery/delivery.md) records PR7 rebase-merged at `cb13d377`/tree`c8a65825`, primary main clean/synced, all six candidate CI checks and merged-main CI41239808260 SUCCESS. Branch `69a9f685` retains the identical validated tree; only README and two test-fixture repairs follow accepted implementation `d2a566c6`. Both actual CI setup failures and their reviews/controls are preserved. Arc05 remains CLOSED, all14 project rows OPEN, Arc06 unactivated. Source/index/retained target are QUIET. Earlier local-only/external-action restrictions below retain their dated historical cutoffs; no release, planning push, default/Full access or cleanup is authorized by this completed delivery.
+
 ## Current Arc05 authority and ownership — 2026-10-30
 
 Duncan reports PR6 merged and says “merged! Let's continue :-D”. [directive04](project01-multi-source-dictionary/cdc-directive04.md) governs Autonomous execution THROUGH ARC05 ONLY, with retained Sol6.1/high CDC and Luna/high CC. Arc01–04 remain CLOSED; all fourteen project rows OPEN; Arc06 unactivated. PR6 actually merged as a55e1cc7/tree836, equal accepted9026; merged-main CI40806671887 SUCCESS is baseline evidence only.
