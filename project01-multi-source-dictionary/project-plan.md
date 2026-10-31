@@ -9,7 +9,7 @@
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.37 /2026-10-31 |
+| version / date | 1.38 /2026-10-31 |
 
 ## Purpose and first useful result
 
@@ -446,3 +446,7 @@ This version updates current routing from superseded Arc05 draft prose without r
 **Arc06 status,2026-10-31:** ROOT first-slice readiness PASS ae0d4b31; S01 STATUS-only issued for retained Luna/high complete intake. All original project rows OPEN; source/index/ONEtarget ROOT QUIET until accepted source-cited readback/fresh pins and explicit transfer. No design or execution-evidence change.
 
 - 1.37,2026-10-31: actual S01 complete intake accepted/c1deac39 explicit fourteen-path ownership transfer and uncompiled authoring begun; unissued S02 distinct configured-refresh draft prepared in parallel. No behavioral acceptance or project-row change.
+
+## Arc06 pre-issue decomposition / version1.38 —2026-10-31
+
+ROOT agrees a source-grounded split: S02 delivers useful configured refresh/CAS/explicit status; new [S03](arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/slice-plan.md) owns complete retained-catalogue/owned reference admission, including actual body witnesses and distinct Full/Compact native policy. Lexical/computed/offline owners advance to S04/S05/S06. The arc plan contains an explicit successor crosswalk; original binding arc/project rows remain unchanged, all14 project rows OPEN. This avoids crowding lifecycle publication and reference matching into one recovery context; no duty/failed pass is reset. Current S01 INITIAL remains unchanged; all later slices UNISSUED pending accepted predecessors and exact ROOT readiness. Functional Full/fresh assembled/SAME canonical/Operator and external-action boundaries unchanged.

@@ -1,6 +1,6 @@
 # Arc06 ledger
 
-**ACTIVE S01 INITIAL/pass1 authoring,2026-10-31; all8 OPEN, ROOT readiness PASS ae0d4b31.** Binding composition rows for [arc plan](arc-plan.md). Complete intake/source-cited clarification accepted and explicit14/source-index/ONEtarget transfer c1deac39 dispatched; CC exclusive there, root/CDC readonly. Source authoring is uncompiled at this checkpoint, no behavioral or acceptance evidence yet. Earlier row Evidence descriptions retain their original planning cutoff.
+**ACTIVE S01 INITIAL/pass1 authoring,2026-10-31; all8 OPEN, ROOT readiness PASS ae0d4b31.** Binding composition rows for [arc plan](arc-plan.md). Complete intake/source-cited clarification accepted and explicit14/source-index/ONEtarget transfer c1deac39 dispatched; CC exclusive there, root/CDC readonly. Early format/fmt-check and failed compiler/lint observations now exist in S01 artifacts/execution.md; no behavioral or acceptance evidence yet. Earlier row Evidence descriptions retain their original planning cutoff. Version0.4 pre-issue decomposition uses the [arc-plan successor crosswalk](arc-plan.md#pre-issue-decomposition-amendment-2026-10-31): original S02 owns current S02 lifecycle plus S03 complete references; original S03/S04/S05 duties now execute as S04/S05/S06. Original table cells below remain unchanged, including owner/verifier labels; no obligation or status is waived.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
