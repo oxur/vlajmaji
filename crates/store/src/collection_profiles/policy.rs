@@ -395,6 +395,7 @@ mod tests {
         fs,
         path::{Path, PathBuf},
         process::Command,
+        sync::atomic::{AtomicU64, Ordering},
         time::{SystemTime, UNIX_EPOCH},
     };
 
@@ -405,17 +406,59 @@ mod tests {
         CollectionInput, CollectionProfileWriteRequest, CollectionRequest, CollectionSelection,
     };
 
+    static SCRATCH_SEQUENCE: AtomicU64 = AtomicU64::new(0);
+
+    fn create_root_with(mut candidate: impl FnMut(usize) -> PathBuf) -> PathBuf {
+        const MAX_ATTEMPTS: usize = 256;
+
+        for attempt in 0..MAX_ATTEMPTS {
+            let root = candidate(attempt);
+            match fs::create_dir(&root) {
+                Ok(()) => return root,
+                Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => continue,
+                Err(error) => panic!(
+                    "could not exclusively create test scratch directory {}: {error}",
+                    root.display()
+                ),
+            }
+        }
+        panic!("could not allocate a test scratch directory after {MAX_ATTEMPTS} candidates");
+    }
+
     fn fresh_root() -> PathBuf {
         let stamp = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .unwrap()
             .as_nanos();
-        let root = std::env::temp_dir().join(format!(
-            "vlajmaji-s04-policy-lock-{}-{stamp}",
-            std::process::id()
-        ));
-        fs::create_dir(&root).unwrap();
-        root
+        let sequence = SCRATCH_SEQUENCE.fetch_add(1, Ordering::Relaxed);
+        create_root_with(|attempt| {
+            std::env::temp_dir().join(format!(
+                "vlajmaji-s04-policy-lock-{}-{stamp}-{sequence}-{attempt}",
+                std::process::id()
+            ))
+        })
+    }
+
+    #[test]
+    fn test_create_root_with_occupied_candidates_preserves_existing_contents() {
+        let root = fresh_root();
+        let occupied_directory = root.join("occupied-directory");
+        fs::create_dir(&occupied_directory).unwrap();
+        let sentinel = occupied_directory.join("sentinel");
+        fs::write(&sentinel, b"preserve existing directory").unwrap();
+        let occupied_file = root.join("occupied-file");
+        fs::write(&occupied_file, b"preserve existing file").unwrap();
+        let fresh = root.join("fresh");
+        let candidates = [occupied_directory, occupied_file.clone(), fresh.clone()];
+
+        assert_eq!(
+            create_root_with(|attempt| candidates[attempt].clone()),
+            fresh
+        );
+        assert!(fresh.is_dir());
+        assert_eq!(fs::read(&sentinel).unwrap(), b"preserve existing directory");
+        assert_eq!(fs::read(&occupied_file).unwrap(), b"preserve existing file");
+        fs::remove_dir_all(root).unwrap();
     }
 
     fn register(root: &Path, pack: PackId) {
