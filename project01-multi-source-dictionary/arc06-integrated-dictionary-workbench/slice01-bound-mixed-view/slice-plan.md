@@ -1,6 +1,6 @@
 # S01 — Bound mixed upstream/owned view
 
-**Status: ISSUED / COMPLETE INTAKE ONLY — ROOT readiness PASS ae0d4b31.** Version0.2 /2026-10-31. Directive05 and [arc plan](../arc-plan.md) govern. CDC planning/source-read only; ROOT owns source/index/ONE retained target QUIET. No current implementation assignment. Retained CC Luna/high is parked; all old prompts superseded. Requested CDC Sol6.1/high is unchanged; no invented backend attestation. Five total passes including INITIAL.
+**Status: ISSUED / COMPLETE INTAKE ONLY — ROOT readiness PASS ae0d4b31.** Version0.2 /2026-10-31. Directive05 and [arc plan](../arc-plan.md) govern. CDC planning/source-read only; ROOT owns source/index/ONE retained target QUIET. Current assignment permits complete intake only; no dependent implementation authority. Retained CC Luna/high is parked; all old prompts superseded. Requested CDC Sol6.1/high is unchanged; no invented backend attestation. Five total passes including INITIAL.
 
 ## 1. Useful increment, baseline and exclusions
 

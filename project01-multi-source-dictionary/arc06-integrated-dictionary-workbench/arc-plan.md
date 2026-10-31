@@ -1,6 +1,6 @@
 # Arc06 — Integrated dictionary workbench
 
-**Status: ACTIVE / S01 ISSUED COMPLETE INTAKE ONLY, 2026-10-31.** Version 0.2. Authority: [directive05](../cdc-directive05.md). CDC owns planning/source-read preparation; ROOT owns source/index/ONE target QUIET. No CC issue, source edit, build, Full/default access or external action has occurred for this arc. All child/arc/project rows OPEN. This is an implementation roadmap, not acceptance or permission to execute a functional Full replay.
+**Status: ACTIVE / S01 ISSUED COMPLETE INTAKE ONLY, 2026-10-31.** Version 0.2. Authority: [directive05](../cdc-directive05.md). CDC owns planning/source-read preparation; ROOT owns source/index/ONE target QUIET. S01 is now issued for complete intake ONLY; no source edit, build, Full/default access or external action has occurred for this arc. All child/arc/project rows OPEN. This is an implementation roadmap, not acceptance or permission to execute a functional Full replay.
 
 ## Capability and accepted inputs
 
