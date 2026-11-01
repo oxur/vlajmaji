@@ -1,0 +1,2307 @@
+{
+  "binding_sha256_r1": "22a9a18e07ec0bee82ddc46d557ac0c825ed171213b21ccce7db42ee2fa2bc35",
+  "binding_sha256_r2": "86668ed7d2d88c3451640a1bcac2ea17dfd011e5abb588c952d97e839d16d895",
+  "expected": {
+    "definitions_by_source_r1": {
+      "lensisku": [
+        "advance"
+      ],
+      "owned-example": [
+        "grow",
+        "develop"
+      ]
+    },
+    "definitions_by_source_r2": {
+      "lensisku": [
+        "advance"
+      ],
+      "owned-example": [
+        "grow",
+        "develop",
+        "flourish"
+      ]
+    },
+    "historical_owned_revision": "owned-r1",
+    "historical_selection": {
+      "contexts": [],
+      "disabled": [],
+      "owned": {
+        "revision": "owned-r1"
+      },
+      "packs": [
+        "la-lojban"
+      ],
+      "version": 1
+    },
+    "owned_head_r1": "owned-r1",
+    "owned_head_r2": "owned-r2",
+    "request": {
+      "operation": "exact",
+      "options": {
+        "alias_scope": "ActiveOnly",
+        "cursor": null,
+        "page_size": null,
+        "sources": []
+      },
+      "spelling": "farvi"
+    },
+    "selection": {
+      "contexts": [],
+      "disabled": [],
+      "owned": "head",
+      "packs": [
+        "la-lojban"
+      ],
+      "version": 1
+    },
+    "source_order": [
+      "lensisku",
+      "owned-example"
+    ],
+    "spelling": "farvi",
+    "upstream_raw_sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+  },
+  "full_r1": {
+    "binding_sha256": "22a9a18e07ec0bee82ddc46d557ac0c825ed171213b21ccce7db42ee2fa2bc35",
+    "result": {
+      "operation": "exact",
+      "response": {
+        "availability": [
+          {
+            "aliases": [],
+            "collections": [
+              {
+                "description": "Missing",
+                "display_name": "La-Lojban English lexical export",
+                "id": "lensisku-la-lojban-en-collection",
+                "source": "lensisku"
+              }
+            ],
+            "components": [
+              {
+                "collection": "lensisku-la-lojban-en-collection",
+                "id": "lensisku-la-lojban-en-component",
+                "languages": [
+                  "jbo"
+                ],
+                "native_name": "assets/dumps/en.json"
+              }
+            ],
+            "lineage": [],
+            "loaded_captures": [
+              {
+                "namespace": "captured:lensisku:la-lojban:en",
+                "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+              }
+            ],
+            "missing_captures": [],
+            "owned_head": null,
+            "reason": null,
+            "releases": [
+              {
+                "accounting": {
+                  "input_occurrences": 1,
+                  "normalized_occurrences": 1,
+                  "query_excluded_occurrences": 0,
+                  "unit": "source-array-row"
+                },
+                "assertions": [
+                  "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-assertion-0"
+                ],
+                "availability": "Available",
+                "captured_at": "Missing",
+                "captures": [
+                  {
+                    "namespace": "captured:lensisku:la-lojban:en",
+                    "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                  }
+                ],
+                "component": "lensisku-la-lojban-en-component",
+                "content_notices": [
+                  {
+                    "license": "Missing",
+                    "locator": {
+                      "Value": "https://example.invalid/tiny/README.md"
+                    },
+                    "text": "Missing"
+                  }
+                ],
+                "diagnostics": [],
+                "distributor": "la-lojban",
+                "distributor_revision": {
+                  "Value": "0000000000000000000000000000000000000000"
+                },
+                "id": "la-lojban-release-116b8d1761763fa4341642a0f2ede5b45e508ac43b6ad79688bc5694e92ed438",
+                "normalizer": "vlajmaji-la-lojban-export",
+                "normalizer_version": "1",
+                "redistribution": "Held",
+                "redistribution_evidence": [
+                  "The repository software license does not establish rights to redistribute dictionary content."
+                ],
+                "schema_version": 1,
+                "selected": true,
+                "time_precision": "Unknown",
+                "upstream_revision": "Missing"
+              }
+            ],
+            "selectable": true,
+            "selected_available_release_ids": [
+              "la-lojban-release-116b8d1761763fa4341642a0f2ede5b45e508ac43b6ad79688bc5694e92ed438"
+            ],
+            "source": {
+              "abbreviation": "LSK",
+              "abbreviation_evidence": null,
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Lensisku",
+              "id": "lensisku",
+              "origin": "Upstream"
+            }
+          },
+          {
+            "aliases": [],
+            "collections": [
+              {
+                "description": {
+                  "Value": {
+                    "language": "Missing",
+                    "markup": "Missing",
+                    "text": "Synthetic, explicitly owned example"
+                  }
+                },
+                "display_name": "Example owned collection",
+                "id": "owned-example-collection",
+                "source": "owned-example"
+              }
+            ],
+            "components": [
+              {
+                "collection": "owned-example-collection",
+                "id": "owned-example-component",
+                "languages": [
+                  "jbo"
+                ],
+                "native_name": "example lexical entries"
+              }
+            ],
+            "lineage": [],
+            "loaded_captures": [
+              {
+                "namespace": "owned-example-capture",
+                "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+              }
+            ],
+            "missing_captures": [],
+            "owned_head": {
+              "revision": "owned-r1",
+              "source": "owned-example"
+            },
+            "reason": null,
+            "releases": [
+              {
+                "accounting": {
+                  "input_occurrences": 0,
+                  "normalized_occurrences": 0,
+                  "query_excluded_occurrences": 0,
+                  "unit": "occurrences"
+                },
+                "assertions": [],
+                "availability": "Available",
+                "captured_at": "Missing",
+                "captures": [],
+                "component": "owned-example-component",
+                "content_notices": [
+                  {
+                    "license": "Missing",
+                    "locator": "Missing",
+                    "text": {
+                      "Value": "synthetic example data; no licence grant"
+                    }
+                  }
+                ],
+                "diagnostics": [],
+                "distributor": null,
+                "distributor_revision": "Missing",
+                "id": "owned-release-r0",
+                "normalizer": "integrated-workbench-example",
+                "normalizer_version": "1",
+                "redistribution": "Held",
+                "redistribution_evidence": [],
+                "schema_version": 1,
+                "selected": true,
+                "time_precision": "Unknown",
+                "upstream_revision": "Missing"
+              },
+              {
+                "accounting": {
+                  "input_occurrences": 2,
+                  "normalized_occurrences": 2,
+                  "query_excluded_occurrences": 0,
+                  "unit": "occurrences"
+                },
+                "assertions": [
+                  "owned-assertion-a",
+                  "owned-assertion-b"
+                ],
+                "availability": "Available",
+                "captured_at": "Missing",
+                "captures": [
+                  {
+                    "namespace": "owned-example-capture",
+                    "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                  }
+                ],
+                "component": "owned-example-component",
+                "content_notices": [
+                  {
+                    "license": "Missing",
+                    "locator": "Missing",
+                    "text": {
+                      "Value": "synthetic example data; no licence grant"
+                    }
+                  }
+                ],
+                "diagnostics": [],
+                "distributor": null,
+                "distributor_revision": "Missing",
+                "id": "owned-release-r1",
+                "normalizer": "integrated-workbench-example",
+                "normalizer_version": "1",
+                "redistribution": "Held",
+                "redistribution_evidence": [],
+                "schema_version": 1,
+                "selected": true,
+                "time_precision": "Unknown",
+                "upstream_revision": "Missing"
+              }
+            ],
+            "selectable": true,
+            "selected_available_release_ids": [
+              "owned-release-r0",
+              "owned-release-r1"
+            ],
+            "source": {
+              "abbreviation": "OWN",
+              "abbreviation_evidence": "Example-only selector",
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Example owned dictionary",
+              "id": "owned-example",
+              "origin": "OwnedDraft"
+            }
+          }
+        ],
+        "catalogue_revision": 1,
+        "code_notices": [
+          {
+            "license": {
+              "Value": "Apache-2.0"
+            },
+            "locator": {
+              "Value": "LICENSE"
+            },
+            "text": "Apache-2.0"
+          }
+        ],
+        "groups": [
+          {
+            "full_count": 1,
+            "hits": [
+              {
+                "annotations": [],
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": {
+                        "Value": "en"
+                      },
+                      "markup": "Missing",
+                      "text": "advance"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-entry-0",
+                  "id": "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-assertion-0",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "captured:lensisku:la-lojban:en",
+                      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                    },
+                    "locator": "/0"
+                  },
+                  "source_score": "Missing",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "la-lojban-export-v1",
+                  "locator": "https://example.invalid/tiny/farvi.json",
+                  "notice_locator": {
+                    "Value": "https://example.invalid/tiny/README.md"
+                  },
+                  "revision": {
+                    "Value": "0000000000000000000000000000000000000000"
+                  },
+                  "source_name": "La-Lojban English dictionary export",
+                  "time_precision": "Unknown"
+                },
+                "computations": [],
+                "contexts": [],
+                "contributor": null,
+                "distributor": {
+                  "display_name": "La-Lojban",
+                  "id": "la-lojban"
+                },
+                "editorial_senses": [],
+                "entry": {
+                  "id": "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-entry-0",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": {
+                    "Value": "gismu"
+                  },
+                  "script": "Missing",
+                  "selmaho": "Missing",
+                  "source": "lensisku",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "etymologies": [],
+                "extensions": [],
+                "forms": [],
+                "frames": [],
+                "occurrence_attribution": {
+                  "contributor": null,
+                  "native_assertion_id": "1",
+                  "native_entry_id": null,
+                  "occurrence": {
+                    "locator": "/0",
+                    "snapshot": {
+                      "namespace": "captured:lensisku:la-lojban:en",
+                      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                    }
+                  }
+                },
+                "occurrence_id": "000000000000001e63617074757265643a6c656e7369736b753a6c612d6c6f6a62616e3a656e00000000000000403036323230666364383266663036373239333738376335303537623361363864366336333430306438306532396430326665356134613634626530313564623500000000000000022f30",
+                "owned_revision_ids": [],
+                "raw": {
+                  "fields": [
+                    {
+                      "encoding": "Json",
+                      "name": "word",
+                      "raw_value": "\"farvi\""
+                    },
+                    {
+                      "encoding": "Json",
+                      "name": "word_type",
+                      "raw_value": "\"gismu\""
+                    },
+                    {
+                      "encoding": "Json",
+                      "name": "definition",
+                      "raw_value": "\"advance\""
+                    },
+                    {
+                      "encoding": "Json",
+                      "name": "definition_id",
+                      "raw_value": "1"
+                    }
+                  ],
+                  "locator": "/0",
+                  "raw_line": null
+                },
+                "relations": [],
+                "release_ids": [
+                  "la-lojban-release-116b8d1761763fa4341642a0f2ede5b45e508ac43b6ad79688bc5694e92ed438"
+                ],
+                "snapshot_attribution": {
+                  "distributor": "la-lojban",
+                  "snapshot": {
+                    "namespace": "captured:lensisku:la-lojban:en",
+                    "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                  },
+                  "source": "lensisku"
+                },
+                "tombstoned_by": []
+              }
+            ],
+            "partial": false,
+            "returned_count": 1,
+            "source": {
+              "abbreviation": "LSK",
+              "abbreviation_evidence": null,
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Lensisku",
+              "id": "lensisku",
+              "origin": "Upstream"
+            }
+          },
+          {
+            "full_count": 2,
+            "hits": [
+              {
+                "annotations": [],
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": "Missing",
+                      "markup": "Missing",
+                      "text": "grow"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "owned-entry-farvi",
+                  "id": "owned-assertion-a",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    },
+                    "locator": "/a"
+                  },
+                  "source_score": "Null",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "application/json",
+                  "locator": "integrated-workbench example",
+                  "notice_locator": "Missing",
+                  "revision": "Missing",
+                  "source_name": "Example author input",
+                  "time_precision": "Unknown"
+                },
+                "computations": [],
+                "contexts": [],
+                "contributor": {
+                  "display_name": "Example editor",
+                  "id": "example-editor"
+                },
+                "distributor": null,
+                "editorial_senses": [],
+                "entry": {
+                  "id": "owned-entry-farvi",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": "Missing",
+                  "script": "Missing",
+                  "selmaho": "Null",
+                  "source": "owned-example",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "etymologies": [],
+                "extensions": [],
+                "forms": [],
+                "frames": [],
+                "occurrence_attribution": {
+                  "contributor": "example-editor",
+                  "native_assertion_id": "owned-a",
+                  "native_entry_id": "farvi",
+                  "occurrence": {
+                    "locator": "/a",
+                    "snapshot": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    }
+                  }
+                },
+                "occurrence_id": "00000000000000156f776e65642d6578616d706c652d6361707475726500000000000000403232323864633937376339306634343232633538643131323062363837356430333231396238396561626532353238303166643031336337656266353634356300000000000000022f61",
+                "owned_revision_ids": [
+                  "owned-r1"
+                ],
+                "raw": {
+                  "fields": [
+                    {
+                      "encoding": "Text",
+                      "name": "definition",
+                      "raw_value": "grow"
+                    }
+                  ],
+                  "locator": "/a",
+                  "raw_line": "farvi — grow"
+                },
+                "relations": [],
+                "release_ids": [
+                  "owned-release-r1"
+                ],
+                "snapshot_attribution": {
+                  "distributor": null,
+                  "snapshot": {
+                    "namespace": "owned-example-capture",
+                    "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                  },
+                  "source": "owned-example"
+                },
+                "tombstoned_by": []
+              },
+              {
+                "annotations": [],
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": "Missing",
+                      "markup": "Missing",
+                      "text": "develop"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "owned-entry-farvi",
+                  "id": "owned-assertion-b",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    },
+                    "locator": "/b"
+                  },
+                  "source_score": "Null",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "application/json",
+                  "locator": "integrated-workbench example",
+                  "notice_locator": "Missing",
+                  "revision": "Missing",
+                  "source_name": "Example author input",
+                  "time_precision": "Unknown"
+                },
+                "computations": [],
+                "contexts": [],
+                "contributor": {
+                  "display_name": "Example editor",
+                  "id": "example-editor"
+                },
+                "distributor": null,
+                "editorial_senses": [],
+                "entry": {
+                  "id": "owned-entry-farvi",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": "Missing",
+                  "script": "Missing",
+                  "selmaho": "Null",
+                  "source": "owned-example",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "etymologies": [],
+                "extensions": [],
+                "forms": [],
+                "frames": [],
+                "occurrence_attribution": {
+                  "contributor": "example-editor",
+                  "native_assertion_id": "owned-b",
+                  "native_entry_id": "farvi",
+                  "occurrence": {
+                    "locator": "/b",
+                    "snapshot": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    }
+                  }
+                },
+                "occurrence_id": "00000000000000156f776e65642d6578616d706c652d6361707475726500000000000000403232323864633937376339306634343232633538643131323062363837356430333231396238396561626532353238303166643031336337656266353634356300000000000000022f62",
+                "owned_revision_ids": [
+                  "owned-r1"
+                ],
+                "raw": {
+                  "fields": [
+                    {
+                      "encoding": "Text",
+                      "name": "definition",
+                      "raw_value": "develop"
+                    }
+                  ],
+                  "locator": "/b",
+                  "raw_line": "farvi — develop"
+                },
+                "relations": [],
+                "release_ids": [
+                  "owned-release-r1"
+                ],
+                "snapshot_attribution": {
+                  "distributor": null,
+                  "snapshot": {
+                    "namespace": "owned-example-capture",
+                    "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                  },
+                  "source": "owned-example"
+                },
+                "tombstoned_by": []
+              }
+            ],
+            "partial": false,
+            "returned_count": 2,
+            "source": {
+              "abbreviation": "OWN",
+              "abbreviation_evidence": "Example-only selector",
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Example owned dictionary",
+              "id": "owned-example",
+              "origin": "OwnedDraft"
+            }
+          }
+        ],
+        "native_candidate_occurrences": 3,
+        "next_cursor": null,
+        "policy": "exact-entry-v1",
+        "resolved_sources": [
+          "lensisku",
+          "owned-example"
+        ],
+        "source_totals": [
+          {
+            "distinct_spellings": 1,
+            "occurrences": 1,
+            "source": {
+              "abbreviation": "LSK",
+              "abbreviation_evidence": null,
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Lensisku",
+              "id": "lensisku",
+              "origin": "Upstream"
+            }
+          },
+          {
+            "distinct_spellings": 1,
+            "occurrences": 2,
+            "source": {
+              "abbreviation": "OWN",
+              "abbreviation_evidence": "Example-only selector",
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Example owned dictionary",
+              "id": "owned-example",
+              "origin": "OwnedDraft"
+            }
+          }
+        ],
+        "spelling": "farvi",
+        "state_sha256": "1b5ca5fe3c509b2788d45325903ddfa92219f64fe91a85451857e86b831d7c68",
+        "store_schema_version": 1,
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 3,
+          "source_groups": 2
+        },
+        "version": 1
+      }
+    },
+    "selection": {
+      "context_counts": {
+        "declared": 0,
+        "provided": 0
+      },
+      "curation_counts": null,
+      "disabled": [],
+      "owned": {
+        "curation_sha256": null,
+        "journal_schema": 1,
+        "mode": "head",
+        "revision": "owned-r1",
+        "sequence": 1,
+        "source": "owned-example",
+        "state_sha256": "372fcce44cf1dd1f0d2d37b8b42927a25ac227f3d6f1e846856d8097896e4286"
+      },
+      "packs": [
+        "la-lojban"
+      ],
+      "upstream": {
+        "content_id": "80bef00ef7150386a3e971813c3e410f3ba7284c76ae07b6d70cbfe65f25a6ce",
+        "generation_id": "a9a98a53d05dc7933dbefbdc63816f15-6ebd5892cd6553de68c80a6df0396e74",
+        "local_revision": 1,
+        "state_sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+      },
+      "version": 1
+    },
+    "version": 1
+  },
+  "full_r2": {
+    "binding_sha256": "86668ed7d2d88c3451640a1bcac2ea17dfd011e5abb588c952d97e839d16d895",
+    "result": {
+      "operation": "exact",
+      "response": {
+        "availability": [
+          {
+            "aliases": [],
+            "collections": [
+              {
+                "description": "Missing",
+                "display_name": "La-Lojban English lexical export",
+                "id": "lensisku-la-lojban-en-collection",
+                "source": "lensisku"
+              }
+            ],
+            "components": [
+              {
+                "collection": "lensisku-la-lojban-en-collection",
+                "id": "lensisku-la-lojban-en-component",
+                "languages": [
+                  "jbo"
+                ],
+                "native_name": "assets/dumps/en.json"
+              }
+            ],
+            "lineage": [],
+            "loaded_captures": [
+              {
+                "namespace": "captured:lensisku:la-lojban:en",
+                "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+              }
+            ],
+            "missing_captures": [],
+            "owned_head": null,
+            "reason": null,
+            "releases": [
+              {
+                "accounting": {
+                  "input_occurrences": 1,
+                  "normalized_occurrences": 1,
+                  "query_excluded_occurrences": 0,
+                  "unit": "source-array-row"
+                },
+                "assertions": [
+                  "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-assertion-0"
+                ],
+                "availability": "Available",
+                "captured_at": "Missing",
+                "captures": [
+                  {
+                    "namespace": "captured:lensisku:la-lojban:en",
+                    "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                  }
+                ],
+                "component": "lensisku-la-lojban-en-component",
+                "content_notices": [
+                  {
+                    "license": "Missing",
+                    "locator": {
+                      "Value": "https://example.invalid/tiny/README.md"
+                    },
+                    "text": "Missing"
+                  }
+                ],
+                "diagnostics": [],
+                "distributor": "la-lojban",
+                "distributor_revision": {
+                  "Value": "0000000000000000000000000000000000000000"
+                },
+                "id": "la-lojban-release-116b8d1761763fa4341642a0f2ede5b45e508ac43b6ad79688bc5694e92ed438",
+                "normalizer": "vlajmaji-la-lojban-export",
+                "normalizer_version": "1",
+                "redistribution": "Held",
+                "redistribution_evidence": [
+                  "The repository software license does not establish rights to redistribute dictionary content."
+                ],
+                "schema_version": 1,
+                "selected": true,
+                "time_precision": "Unknown",
+                "upstream_revision": "Missing"
+              }
+            ],
+            "selectable": true,
+            "selected_available_release_ids": [
+              "la-lojban-release-116b8d1761763fa4341642a0f2ede5b45e508ac43b6ad79688bc5694e92ed438"
+            ],
+            "source": {
+              "abbreviation": "LSK",
+              "abbreviation_evidence": null,
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Lensisku",
+              "id": "lensisku",
+              "origin": "Upstream"
+            }
+          },
+          {
+            "aliases": [],
+            "collections": [
+              {
+                "description": {
+                  "Value": {
+                    "language": "Missing",
+                    "markup": "Missing",
+                    "text": "Synthetic, explicitly owned example"
+                  }
+                },
+                "display_name": "Example owned collection",
+                "id": "owned-example-collection",
+                "source": "owned-example"
+              }
+            ],
+            "components": [
+              {
+                "collection": "owned-example-collection",
+                "id": "owned-example-component",
+                "languages": [
+                  "jbo"
+                ],
+                "native_name": "example lexical entries"
+              }
+            ],
+            "lineage": [],
+            "loaded_captures": [
+              {
+                "namespace": "owned-example-capture",
+                "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+              },
+              {
+                "namespace": "owned-example-capture-r2",
+                "sha256": "fc923d6a67bd8a3e13f971b75b5115a74793a51391e9c24b93ebeeffc955fbbe"
+              }
+            ],
+            "missing_captures": [],
+            "owned_head": {
+              "revision": "owned-r2",
+              "source": "owned-example"
+            },
+            "reason": null,
+            "releases": [
+              {
+                "accounting": {
+                  "input_occurrences": 0,
+                  "normalized_occurrences": 0,
+                  "query_excluded_occurrences": 0,
+                  "unit": "occurrences"
+                },
+                "assertions": [],
+                "availability": "Available",
+                "captured_at": "Missing",
+                "captures": [],
+                "component": "owned-example-component",
+                "content_notices": [
+                  {
+                    "license": "Missing",
+                    "locator": "Missing",
+                    "text": {
+                      "Value": "synthetic example data; no licence grant"
+                    }
+                  }
+                ],
+                "diagnostics": [],
+                "distributor": null,
+                "distributor_revision": "Missing",
+                "id": "owned-release-r0",
+                "normalizer": "integrated-workbench-example",
+                "normalizer_version": "1",
+                "redistribution": "Held",
+                "redistribution_evidence": [],
+                "schema_version": 1,
+                "selected": true,
+                "time_precision": "Unknown",
+                "upstream_revision": "Missing"
+              },
+              {
+                "accounting": {
+                  "input_occurrences": 2,
+                  "normalized_occurrences": 2,
+                  "query_excluded_occurrences": 0,
+                  "unit": "occurrences"
+                },
+                "assertions": [
+                  "owned-assertion-a",
+                  "owned-assertion-b"
+                ],
+                "availability": "Available",
+                "captured_at": "Missing",
+                "captures": [
+                  {
+                    "namespace": "owned-example-capture",
+                    "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                  }
+                ],
+                "component": "owned-example-component",
+                "content_notices": [
+                  {
+                    "license": "Missing",
+                    "locator": "Missing",
+                    "text": {
+                      "Value": "synthetic example data; no licence grant"
+                    }
+                  }
+                ],
+                "diagnostics": [],
+                "distributor": null,
+                "distributor_revision": "Missing",
+                "id": "owned-release-r1",
+                "normalizer": "integrated-workbench-example",
+                "normalizer_version": "1",
+                "redistribution": "Held",
+                "redistribution_evidence": [],
+                "schema_version": 1,
+                "selected": true,
+                "time_precision": "Unknown",
+                "upstream_revision": "Missing"
+              },
+              {
+                "accounting": {
+                  "input_occurrences": 1,
+                  "normalized_occurrences": 1,
+                  "query_excluded_occurrences": 0,
+                  "unit": "occurrences"
+                },
+                "assertions": [
+                  "owned-assertion-c"
+                ],
+                "availability": "Available",
+                "captured_at": "Missing",
+                "captures": [
+                  {
+                    "namespace": "owned-example-capture-r2",
+                    "sha256": "fc923d6a67bd8a3e13f971b75b5115a74793a51391e9c24b93ebeeffc955fbbe"
+                  }
+                ],
+                "component": "owned-example-component",
+                "content_notices": [
+                  {
+                    "license": "Missing",
+                    "locator": "Missing",
+                    "text": {
+                      "Value": "synthetic example data; no licence grant"
+                    }
+                  }
+                ],
+                "diagnostics": [],
+                "distributor": null,
+                "distributor_revision": "Missing",
+                "id": "owned-release-r2",
+                "normalizer": "integrated-workbench-example",
+                "normalizer_version": "1",
+                "redistribution": "Held",
+                "redistribution_evidence": [],
+                "schema_version": 1,
+                "selected": true,
+                "time_precision": "Unknown",
+                "upstream_revision": "Missing"
+              }
+            ],
+            "selectable": true,
+            "selected_available_release_ids": [
+              "owned-release-r0",
+              "owned-release-r1",
+              "owned-release-r2"
+            ],
+            "source": {
+              "abbreviation": "OWN",
+              "abbreviation_evidence": "Example-only selector",
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Example owned dictionary",
+              "id": "owned-example",
+              "origin": "OwnedDraft"
+            }
+          }
+        ],
+        "catalogue_revision": 2,
+        "code_notices": [
+          {
+            "license": {
+              "Value": "Apache-2.0"
+            },
+            "locator": {
+              "Value": "LICENSE"
+            },
+            "text": "Apache-2.0"
+          }
+        ],
+        "groups": [
+          {
+            "full_count": 1,
+            "hits": [
+              {
+                "annotations": [],
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": {
+                        "Value": "en"
+                      },
+                      "markup": "Missing",
+                      "text": "advance"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-entry-0",
+                  "id": "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-assertion-0",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "captured:lensisku:la-lojban:en",
+                      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                    },
+                    "locator": "/0"
+                  },
+                  "source_score": "Missing",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "la-lojban-export-v1",
+                  "locator": "https://example.invalid/tiny/farvi.json",
+                  "notice_locator": {
+                    "Value": "https://example.invalid/tiny/README.md"
+                  },
+                  "revision": {
+                    "Value": "0000000000000000000000000000000000000000"
+                  },
+                  "source_name": "La-Lojban English dictionary export",
+                  "time_precision": "Unknown"
+                },
+                "computations": [],
+                "contexts": [],
+                "contributor": null,
+                "distributor": {
+                  "display_name": "La-Lojban",
+                  "id": "la-lojban"
+                },
+                "editorial_senses": [],
+                "entry": {
+                  "id": "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-entry-0",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": {
+                    "Value": "gismu"
+                  },
+                  "script": "Missing",
+                  "selmaho": "Missing",
+                  "source": "lensisku",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "etymologies": [],
+                "extensions": [],
+                "forms": [],
+                "frames": [],
+                "occurrence_attribution": {
+                  "contributor": null,
+                  "native_assertion_id": "1",
+                  "native_entry_id": null,
+                  "occurrence": {
+                    "locator": "/0",
+                    "snapshot": {
+                      "namespace": "captured:lensisku:la-lojban:en",
+                      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                    }
+                  }
+                },
+                "occurrence_id": "000000000000001e63617074757265643a6c656e7369736b753a6c612d6c6f6a62616e3a656e00000000000000403036323230666364383266663036373239333738376335303537623361363864366336333430306438306532396430326665356134613634626530313564623500000000000000022f30",
+                "owned_revision_ids": [],
+                "raw": {
+                  "fields": [
+                    {
+                      "encoding": "Json",
+                      "name": "word",
+                      "raw_value": "\"farvi\""
+                    },
+                    {
+                      "encoding": "Json",
+                      "name": "word_type",
+                      "raw_value": "\"gismu\""
+                    },
+                    {
+                      "encoding": "Json",
+                      "name": "definition",
+                      "raw_value": "\"advance\""
+                    },
+                    {
+                      "encoding": "Json",
+                      "name": "definition_id",
+                      "raw_value": "1"
+                    }
+                  ],
+                  "locator": "/0",
+                  "raw_line": null
+                },
+                "relations": [],
+                "release_ids": [
+                  "la-lojban-release-116b8d1761763fa4341642a0f2ede5b45e508ac43b6ad79688bc5694e92ed438"
+                ],
+                "snapshot_attribution": {
+                  "distributor": "la-lojban",
+                  "snapshot": {
+                    "namespace": "captured:lensisku:la-lojban:en",
+                    "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                  },
+                  "source": "lensisku"
+                },
+                "tombstoned_by": []
+              }
+            ],
+            "partial": false,
+            "returned_count": 1,
+            "source": {
+              "abbreviation": "LSK",
+              "abbreviation_evidence": null,
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Lensisku",
+              "id": "lensisku",
+              "origin": "Upstream"
+            }
+          },
+          {
+            "full_count": 3,
+            "hits": [
+              {
+                "annotations": [],
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": "Missing",
+                      "markup": "Missing",
+                      "text": "grow"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "owned-entry-farvi",
+                  "id": "owned-assertion-a",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    },
+                    "locator": "/a"
+                  },
+                  "source_score": "Null",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "application/json",
+                  "locator": "integrated-workbench example",
+                  "notice_locator": "Missing",
+                  "revision": "Missing",
+                  "source_name": "Example author input",
+                  "time_precision": "Unknown"
+                },
+                "computations": [],
+                "contexts": [],
+                "contributor": {
+                  "display_name": "Example editor",
+                  "id": "example-editor"
+                },
+                "distributor": null,
+                "editorial_senses": [],
+                "entry": {
+                  "id": "owned-entry-farvi",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": "Missing",
+                  "script": "Missing",
+                  "selmaho": "Null",
+                  "source": "owned-example",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "etymologies": [],
+                "extensions": [],
+                "forms": [],
+                "frames": [],
+                "occurrence_attribution": {
+                  "contributor": "example-editor",
+                  "native_assertion_id": "owned-a",
+                  "native_entry_id": "farvi",
+                  "occurrence": {
+                    "locator": "/a",
+                    "snapshot": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    }
+                  }
+                },
+                "occurrence_id": "00000000000000156f776e65642d6578616d706c652d6361707475726500000000000000403232323864633937376339306634343232633538643131323062363837356430333231396238396561626532353238303166643031336337656266353634356300000000000000022f61",
+                "owned_revision_ids": [
+                  "owned-r1",
+                  "owned-r2"
+                ],
+                "raw": {
+                  "fields": [
+                    {
+                      "encoding": "Text",
+                      "name": "definition",
+                      "raw_value": "grow"
+                    }
+                  ],
+                  "locator": "/a",
+                  "raw_line": "farvi — grow"
+                },
+                "relations": [],
+                "release_ids": [
+                  "owned-release-r1"
+                ],
+                "snapshot_attribution": {
+                  "distributor": null,
+                  "snapshot": {
+                    "namespace": "owned-example-capture",
+                    "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                  },
+                  "source": "owned-example"
+                },
+                "tombstoned_by": []
+              },
+              {
+                "annotations": [],
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": "Missing",
+                      "markup": "Missing",
+                      "text": "develop"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "owned-entry-farvi",
+                  "id": "owned-assertion-b",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    },
+                    "locator": "/b"
+                  },
+                  "source_score": "Null",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "application/json",
+                  "locator": "integrated-workbench example",
+                  "notice_locator": "Missing",
+                  "revision": "Missing",
+                  "source_name": "Example author input",
+                  "time_precision": "Unknown"
+                },
+                "computations": [],
+                "contexts": [],
+                "contributor": {
+                  "display_name": "Example editor",
+                  "id": "example-editor"
+                },
+                "distributor": null,
+                "editorial_senses": [],
+                "entry": {
+                  "id": "owned-entry-farvi",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": "Missing",
+                  "script": "Missing",
+                  "selmaho": "Null",
+                  "source": "owned-example",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "etymologies": [],
+                "extensions": [],
+                "forms": [],
+                "frames": [],
+                "occurrence_attribution": {
+                  "contributor": "example-editor",
+                  "native_assertion_id": "owned-b",
+                  "native_entry_id": "farvi",
+                  "occurrence": {
+                    "locator": "/b",
+                    "snapshot": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    }
+                  }
+                },
+                "occurrence_id": "00000000000000156f776e65642d6578616d706c652d6361707475726500000000000000403232323864633937376339306634343232633538643131323062363837356430333231396238396561626532353238303166643031336337656266353634356300000000000000022f62",
+                "owned_revision_ids": [
+                  "owned-r1",
+                  "owned-r2"
+                ],
+                "raw": {
+                  "fields": [
+                    {
+                      "encoding": "Text",
+                      "name": "definition",
+                      "raw_value": "develop"
+                    }
+                  ],
+                  "locator": "/b",
+                  "raw_line": "farvi — develop"
+                },
+                "relations": [],
+                "release_ids": [
+                  "owned-release-r1"
+                ],
+                "snapshot_attribution": {
+                  "distributor": null,
+                  "snapshot": {
+                    "namespace": "owned-example-capture",
+                    "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                  },
+                  "source": "owned-example"
+                },
+                "tombstoned_by": []
+              },
+              {
+                "annotations": [],
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": "Missing",
+                      "markup": "Missing",
+                      "text": "flourish"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "owned-entry-farvi",
+                  "id": "owned-assertion-c",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "owned-example-capture-r2",
+                      "sha256": "fc923d6a67bd8a3e13f971b75b5115a74793a51391e9c24b93ebeeffc955fbbe"
+                    },
+                    "locator": "/c"
+                  },
+                  "source_score": "Null",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "application/json",
+                  "locator": "integrated-workbench example r2",
+                  "notice_locator": "Missing",
+                  "revision": "Missing",
+                  "source_name": "Example author input",
+                  "time_precision": "Unknown"
+                },
+                "computations": [],
+                "contexts": [],
+                "contributor": {
+                  "display_name": "Example editor",
+                  "id": "example-editor"
+                },
+                "distributor": null,
+                "editorial_senses": [],
+                "entry": {
+                  "id": "owned-entry-farvi",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": "Missing",
+                  "script": "Missing",
+                  "selmaho": "Null",
+                  "source": "owned-example",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "etymologies": [],
+                "extensions": [],
+                "forms": [],
+                "frames": [],
+                "occurrence_attribution": {
+                  "contributor": "example-editor",
+                  "native_assertion_id": "owned-c",
+                  "native_entry_id": "farvi",
+                  "occurrence": {
+                    "locator": "/c",
+                    "snapshot": {
+                      "namespace": "owned-example-capture-r2",
+                      "sha256": "fc923d6a67bd8a3e13f971b75b5115a74793a51391e9c24b93ebeeffc955fbbe"
+                    }
+                  }
+                },
+                "occurrence_id": "00000000000000186f776e65642d6578616d706c652d636170747572652d723200000000000000406663393233643661363762643861336531336639373162373562353131356137343739336135313339316539633234623933656265656666633935356662626500000000000000022f63",
+                "owned_revision_ids": [
+                  "owned-r2"
+                ],
+                "raw": {
+                  "fields": [
+                    {
+                      "encoding": "Text",
+                      "name": "definition",
+                      "raw_value": "flourish"
+                    }
+                  ],
+                  "locator": "/c",
+                  "raw_line": "farvi — flourish"
+                },
+                "relations": [],
+                "release_ids": [
+                  "owned-release-r2"
+                ],
+                "snapshot_attribution": {
+                  "distributor": null,
+                  "snapshot": {
+                    "namespace": "owned-example-capture-r2",
+                    "sha256": "fc923d6a67bd8a3e13f971b75b5115a74793a51391e9c24b93ebeeffc955fbbe"
+                  },
+                  "source": "owned-example"
+                },
+                "tombstoned_by": []
+              }
+            ],
+            "partial": false,
+            "returned_count": 3,
+            "source": {
+              "abbreviation": "OWN",
+              "abbreviation_evidence": "Example-only selector",
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Example owned dictionary",
+              "id": "owned-example",
+              "origin": "OwnedDraft"
+            }
+          }
+        ],
+        "native_candidate_occurrences": 4,
+        "next_cursor": null,
+        "policy": "exact-entry-v1",
+        "resolved_sources": [
+          "lensisku",
+          "owned-example"
+        ],
+        "source_totals": [
+          {
+            "distinct_spellings": 1,
+            "occurrences": 1,
+            "source": {
+              "abbreviation": "LSK",
+              "abbreviation_evidence": null,
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Lensisku",
+              "id": "lensisku",
+              "origin": "Upstream"
+            }
+          },
+          {
+            "distinct_spellings": 1,
+            "occurrences": 3,
+            "source": {
+              "abbreviation": "OWN",
+              "abbreviation_evidence": "Example-only selector",
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Example owned dictionary",
+              "id": "owned-example",
+              "origin": "OwnedDraft"
+            }
+          }
+        ],
+        "spelling": "farvi",
+        "state_sha256": "cf2495933e82deedac8157289ed3ca598b76150df83ef6086e58081f78a4405d",
+        "store_schema_version": 1,
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 4,
+          "source_groups": 2
+        },
+        "version": 1
+      }
+    },
+    "selection": {
+      "context_counts": {
+        "declared": 0,
+        "provided": 0
+      },
+      "curation_counts": null,
+      "disabled": [],
+      "owned": {
+        "curation_sha256": null,
+        "journal_schema": 1,
+        "mode": "head",
+        "revision": "owned-r2",
+        "sequence": 2,
+        "source": "owned-example",
+        "state_sha256": "b0a46586e5bba2817593f7cb0a5bdfb9a9897391fa1f4383ec4dd1b1217c69c7"
+      },
+      "packs": [
+        "la-lojban"
+      ],
+      "upstream": {
+        "content_id": "80bef00ef7150386a3e971813c3e410f3ba7284c76ae07b6d70cbfe65f25a6ce",
+        "generation_id": "a9a98a53d05dc7933dbefbdc63816f15-6ebd5892cd6553de68c80a6df0396e74",
+        "local_revision": 1,
+        "state_sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+      },
+      "version": 1
+    },
+    "version": 1
+  },
+  "historical_binding_sha256": "b86105ba1edceaf9b7c87fa7f13890cbbf79aeb409fb304d9fd09e2b36a8de41",
+  "historical_full_r1": {
+    "binding_sha256": "b86105ba1edceaf9b7c87fa7f13890cbbf79aeb409fb304d9fd09e2b36a8de41",
+    "result": {
+      "operation": "exact",
+      "response": {
+        "availability": [
+          {
+            "aliases": [],
+            "collections": [
+              {
+                "description": "Missing",
+                "display_name": "La-Lojban English lexical export",
+                "id": "lensisku-la-lojban-en-collection",
+                "source": "lensisku"
+              }
+            ],
+            "components": [
+              {
+                "collection": "lensisku-la-lojban-en-collection",
+                "id": "lensisku-la-lojban-en-component",
+                "languages": [
+                  "jbo"
+                ],
+                "native_name": "assets/dumps/en.json"
+              }
+            ],
+            "lineage": [],
+            "loaded_captures": [
+              {
+                "namespace": "captured:lensisku:la-lojban:en",
+                "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+              }
+            ],
+            "missing_captures": [],
+            "owned_head": null,
+            "reason": null,
+            "releases": [
+              {
+                "accounting": {
+                  "input_occurrences": 1,
+                  "normalized_occurrences": 1,
+                  "query_excluded_occurrences": 0,
+                  "unit": "source-array-row"
+                },
+                "assertions": [
+                  "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-assertion-0"
+                ],
+                "availability": "Available",
+                "captured_at": "Missing",
+                "captures": [
+                  {
+                    "namespace": "captured:lensisku:la-lojban:en",
+                    "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                  }
+                ],
+                "component": "lensisku-la-lojban-en-component",
+                "content_notices": [
+                  {
+                    "license": "Missing",
+                    "locator": {
+                      "Value": "https://example.invalid/tiny/README.md"
+                    },
+                    "text": "Missing"
+                  }
+                ],
+                "diagnostics": [],
+                "distributor": "la-lojban",
+                "distributor_revision": {
+                  "Value": "0000000000000000000000000000000000000000"
+                },
+                "id": "la-lojban-release-116b8d1761763fa4341642a0f2ede5b45e508ac43b6ad79688bc5694e92ed438",
+                "normalizer": "vlajmaji-la-lojban-export",
+                "normalizer_version": "1",
+                "redistribution": "Held",
+                "redistribution_evidence": [
+                  "The repository software license does not establish rights to redistribute dictionary content."
+                ],
+                "schema_version": 1,
+                "selected": true,
+                "time_precision": "Unknown",
+                "upstream_revision": "Missing"
+              }
+            ],
+            "selectable": true,
+            "selected_available_release_ids": [
+              "la-lojban-release-116b8d1761763fa4341642a0f2ede5b45e508ac43b6ad79688bc5694e92ed438"
+            ],
+            "source": {
+              "abbreviation": "LSK",
+              "abbreviation_evidence": null,
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Lensisku",
+              "id": "lensisku",
+              "origin": "Upstream"
+            }
+          },
+          {
+            "aliases": [],
+            "collections": [
+              {
+                "description": {
+                  "Value": {
+                    "language": "Missing",
+                    "markup": "Missing",
+                    "text": "Synthetic, explicitly owned example"
+                  }
+                },
+                "display_name": "Example owned collection",
+                "id": "owned-example-collection",
+                "source": "owned-example"
+              }
+            ],
+            "components": [
+              {
+                "collection": "owned-example-collection",
+                "id": "owned-example-component",
+                "languages": [
+                  "jbo"
+                ],
+                "native_name": "example lexical entries"
+              }
+            ],
+            "lineage": [],
+            "loaded_captures": [
+              {
+                "namespace": "owned-example-capture",
+                "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+              }
+            ],
+            "missing_captures": [],
+            "owned_head": {
+              "revision": "owned-r1",
+              "source": "owned-example"
+            },
+            "reason": null,
+            "releases": [
+              {
+                "accounting": {
+                  "input_occurrences": 0,
+                  "normalized_occurrences": 0,
+                  "query_excluded_occurrences": 0,
+                  "unit": "occurrences"
+                },
+                "assertions": [],
+                "availability": "Available",
+                "captured_at": "Missing",
+                "captures": [],
+                "component": "owned-example-component",
+                "content_notices": [
+                  {
+                    "license": "Missing",
+                    "locator": "Missing",
+                    "text": {
+                      "Value": "synthetic example data; no licence grant"
+                    }
+                  }
+                ],
+                "diagnostics": [],
+                "distributor": null,
+                "distributor_revision": "Missing",
+                "id": "owned-release-r0",
+                "normalizer": "integrated-workbench-example",
+                "normalizer_version": "1",
+                "redistribution": "Held",
+                "redistribution_evidence": [],
+                "schema_version": 1,
+                "selected": true,
+                "time_precision": "Unknown",
+                "upstream_revision": "Missing"
+              },
+              {
+                "accounting": {
+                  "input_occurrences": 2,
+                  "normalized_occurrences": 2,
+                  "query_excluded_occurrences": 0,
+                  "unit": "occurrences"
+                },
+                "assertions": [
+                  "owned-assertion-a",
+                  "owned-assertion-b"
+                ],
+                "availability": "Available",
+                "captured_at": "Missing",
+                "captures": [
+                  {
+                    "namespace": "owned-example-capture",
+                    "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                  }
+                ],
+                "component": "owned-example-component",
+                "content_notices": [
+                  {
+                    "license": "Missing",
+                    "locator": "Missing",
+                    "text": {
+                      "Value": "synthetic example data; no licence grant"
+                    }
+                  }
+                ],
+                "diagnostics": [],
+                "distributor": null,
+                "distributor_revision": "Missing",
+                "id": "owned-release-r1",
+                "normalizer": "integrated-workbench-example",
+                "normalizer_version": "1",
+                "redistribution": "Held",
+                "redistribution_evidence": [],
+                "schema_version": 1,
+                "selected": true,
+                "time_precision": "Unknown",
+                "upstream_revision": "Missing"
+              }
+            ],
+            "selectable": true,
+            "selected_available_release_ids": [
+              "owned-release-r0",
+              "owned-release-r1"
+            ],
+            "source": {
+              "abbreviation": "OWN",
+              "abbreviation_evidence": "Example-only selector",
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Example owned dictionary",
+              "id": "owned-example",
+              "origin": "OwnedDraft"
+            }
+          }
+        ],
+        "catalogue_revision": 1,
+        "code_notices": [
+          {
+            "license": {
+              "Value": "Apache-2.0"
+            },
+            "locator": {
+              "Value": "LICENSE"
+            },
+            "text": "Apache-2.0"
+          }
+        ],
+        "groups": [
+          {
+            "full_count": 1,
+            "hits": [
+              {
+                "annotations": [],
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": {
+                        "Value": "en"
+                      },
+                      "markup": "Missing",
+                      "text": "advance"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-entry-0",
+                  "id": "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-assertion-0",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "captured:lensisku:la-lojban:en",
+                      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                    },
+                    "locator": "/0"
+                  },
+                  "source_score": "Missing",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "la-lojban-export-v1",
+                  "locator": "https://example.invalid/tiny/farvi.json",
+                  "notice_locator": {
+                    "Value": "https://example.invalid/tiny/README.md"
+                  },
+                  "revision": {
+                    "Value": "0000000000000000000000000000000000000000"
+                  },
+                  "source_name": "La-Lojban English dictionary export",
+                  "time_precision": "Unknown"
+                },
+                "computations": [],
+                "contexts": [],
+                "contributor": null,
+                "distributor": {
+                  "display_name": "La-Lojban",
+                  "id": "la-lojban"
+                },
+                "editorial_senses": [],
+                "entry": {
+                  "id": "la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-entry-0",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": {
+                    "Value": "gismu"
+                  },
+                  "script": "Missing",
+                  "selmaho": "Missing",
+                  "source": "lensisku",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "etymologies": [],
+                "extensions": [],
+                "forms": [],
+                "frames": [],
+                "occurrence_attribution": {
+                  "contributor": null,
+                  "native_assertion_id": "1",
+                  "native_entry_id": null,
+                  "occurrence": {
+                    "locator": "/0",
+                    "snapshot": {
+                      "namespace": "captured:lensisku:la-lojban:en",
+                      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                    }
+                  }
+                },
+                "occurrence_id": "000000000000001e63617074757265643a6c656e7369736b753a6c612d6c6f6a62616e3a656e00000000000000403036323230666364383266663036373239333738376335303537623361363864366336333430306438306532396430326665356134613634626530313564623500000000000000022f30",
+                "owned_revision_ids": [],
+                "raw": {
+                  "fields": [
+                    {
+                      "encoding": "Json",
+                      "name": "word",
+                      "raw_value": "\"farvi\""
+                    },
+                    {
+                      "encoding": "Json",
+                      "name": "word_type",
+                      "raw_value": "\"gismu\""
+                    },
+                    {
+                      "encoding": "Json",
+                      "name": "definition",
+                      "raw_value": "\"advance\""
+                    },
+                    {
+                      "encoding": "Json",
+                      "name": "definition_id",
+                      "raw_value": "1"
+                    }
+                  ],
+                  "locator": "/0",
+                  "raw_line": null
+                },
+                "relations": [],
+                "release_ids": [
+                  "la-lojban-release-116b8d1761763fa4341642a0f2ede5b45e508ac43b6ad79688bc5694e92ed438"
+                ],
+                "snapshot_attribution": {
+                  "distributor": "la-lojban",
+                  "snapshot": {
+                    "namespace": "captured:lensisku:la-lojban:en",
+                    "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+                  },
+                  "source": "lensisku"
+                },
+                "tombstoned_by": []
+              }
+            ],
+            "partial": false,
+            "returned_count": 1,
+            "source": {
+              "abbreviation": "LSK",
+              "abbreviation_evidence": null,
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Lensisku",
+              "id": "lensisku",
+              "origin": "Upstream"
+            }
+          },
+          {
+            "full_count": 2,
+            "hits": [
+              {
+                "annotations": [],
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": "Missing",
+                      "markup": "Missing",
+                      "text": "grow"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "owned-entry-farvi",
+                  "id": "owned-assertion-a",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    },
+                    "locator": "/a"
+                  },
+                  "source_score": "Null",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "application/json",
+                  "locator": "integrated-workbench example",
+                  "notice_locator": "Missing",
+                  "revision": "Missing",
+                  "source_name": "Example author input",
+                  "time_precision": "Unknown"
+                },
+                "computations": [],
+                "contexts": [],
+                "contributor": {
+                  "display_name": "Example editor",
+                  "id": "example-editor"
+                },
+                "distributor": null,
+                "editorial_senses": [],
+                "entry": {
+                  "id": "owned-entry-farvi",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": "Missing",
+                  "script": "Missing",
+                  "selmaho": "Null",
+                  "source": "owned-example",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "etymologies": [],
+                "extensions": [],
+                "forms": [],
+                "frames": [],
+                "occurrence_attribution": {
+                  "contributor": "example-editor",
+                  "native_assertion_id": "owned-a",
+                  "native_entry_id": "farvi",
+                  "occurrence": {
+                    "locator": "/a",
+                    "snapshot": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    }
+                  }
+                },
+                "occurrence_id": "00000000000000156f776e65642d6578616d706c652d6361707475726500000000000000403232323864633937376339306634343232633538643131323062363837356430333231396238396561626532353238303166643031336337656266353634356300000000000000022f61",
+                "owned_revision_ids": [
+                  "owned-r1"
+                ],
+                "raw": {
+                  "fields": [
+                    {
+                      "encoding": "Text",
+                      "name": "definition",
+                      "raw_value": "grow"
+                    }
+                  ],
+                  "locator": "/a",
+                  "raw_line": "farvi — grow"
+                },
+                "relations": [],
+                "release_ids": [
+                  "owned-release-r1"
+                ],
+                "snapshot_attribution": {
+                  "distributor": null,
+                  "snapshot": {
+                    "namespace": "owned-example-capture",
+                    "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                  },
+                  "source": "owned-example"
+                },
+                "tombstoned_by": []
+              },
+              {
+                "annotations": [],
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": "Missing",
+                      "markup": "Missing",
+                      "text": "develop"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "owned-entry-farvi",
+                  "id": "owned-assertion-b",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    },
+                    "locator": "/b"
+                  },
+                  "source_score": "Null",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "application/json",
+                  "locator": "integrated-workbench example",
+                  "notice_locator": "Missing",
+                  "revision": "Missing",
+                  "source_name": "Example author input",
+                  "time_precision": "Unknown"
+                },
+                "computations": [],
+                "contexts": [],
+                "contributor": {
+                  "display_name": "Example editor",
+                  "id": "example-editor"
+                },
+                "distributor": null,
+                "editorial_senses": [],
+                "entry": {
+                  "id": "owned-entry-farvi",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": "Missing",
+                  "script": "Missing",
+                  "selmaho": "Null",
+                  "source": "owned-example",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "etymologies": [],
+                "extensions": [],
+                "forms": [],
+                "frames": [],
+                "occurrence_attribution": {
+                  "contributor": "example-editor",
+                  "native_assertion_id": "owned-b",
+                  "native_entry_id": "farvi",
+                  "occurrence": {
+                    "locator": "/b",
+                    "snapshot": {
+                      "namespace": "owned-example-capture",
+                      "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                    }
+                  }
+                },
+                "occurrence_id": "00000000000000156f776e65642d6578616d706c652d6361707475726500000000000000403232323864633937376339306634343232633538643131323062363837356430333231396238396561626532353238303166643031336337656266353634356300000000000000022f62",
+                "owned_revision_ids": [
+                  "owned-r1"
+                ],
+                "raw": {
+                  "fields": [
+                    {
+                      "encoding": "Text",
+                      "name": "definition",
+                      "raw_value": "develop"
+                    }
+                  ],
+                  "locator": "/b",
+                  "raw_line": "farvi — develop"
+                },
+                "relations": [],
+                "release_ids": [
+                  "owned-release-r1"
+                ],
+                "snapshot_attribution": {
+                  "distributor": null,
+                  "snapshot": {
+                    "namespace": "owned-example-capture",
+                    "sha256": "2228dc977c90f4422c58d1120b6875d03219b89eabe252801fd013c7ebf5645c"
+                  },
+                  "source": "owned-example"
+                },
+                "tombstoned_by": []
+              }
+            ],
+            "partial": false,
+            "returned_count": 2,
+            "source": {
+              "abbreviation": "OWN",
+              "abbreviation_evidence": "Example-only selector",
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Example owned dictionary",
+              "id": "owned-example",
+              "origin": "OwnedDraft"
+            }
+          }
+        ],
+        "native_candidate_occurrences": 3,
+        "next_cursor": null,
+        "policy": "exact-entry-v1",
+        "resolved_sources": [
+          "lensisku",
+          "owned-example"
+        ],
+        "source_totals": [
+          {
+            "distinct_spellings": 1,
+            "occurrences": 1,
+            "source": {
+              "abbreviation": "LSK",
+              "abbreviation_evidence": null,
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Lensisku",
+              "id": "lensisku",
+              "origin": "Upstream"
+            }
+          },
+          {
+            "distinct_spellings": 1,
+            "occurrences": 2,
+            "source": {
+              "abbreviation": "OWN",
+              "abbreviation_evidence": "Example-only selector",
+              "abbreviation_kind": "ProjectAssigned",
+              "display_name": "Example owned dictionary",
+              "id": "owned-example",
+              "origin": "OwnedDraft"
+            }
+          }
+        ],
+        "spelling": "farvi",
+        "state_sha256": "1b5ca5fe3c509b2788d45325903ddfa92219f64fe91a85451857e86b831d7c68",
+        "store_schema_version": 1,
+        "totals": {
+          "distinct_spellings": 1,
+          "occurrences": 3,
+          "source_groups": 2
+        },
+        "version": 1
+      }
+    },
+    "selection": {
+      "context_counts": {
+        "declared": 0,
+        "provided": 0
+      },
+      "curation_counts": null,
+      "disabled": [],
+      "owned": {
+        "curation_sha256": null,
+        "journal_schema": 1,
+        "mode": {
+          "revision": "owned-r1"
+        },
+        "revision": "owned-r1",
+        "sequence": 1,
+        "source": "owned-example",
+        "state_sha256": "372fcce44cf1dd1f0d2d37b8b42927a25ac227f3d6f1e846856d8097896e4286"
+      },
+      "packs": [
+        "la-lojban"
+      ],
+      "upstream": {
+        "content_id": "80bef00ef7150386a3e971813c3e410f3ba7284c76ae07b6d70cbfe65f25a6ce",
+        "generation_id": "a9a98a53d05dc7933dbefbdc63816f15-6ebd5892cd6553de68c80a6df0396e74",
+        "local_revision": 1,
+        "state_sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+      },
+      "version": 1
+    },
+    "version": 1
+  },
+  "inputs": "/private/tmp/vlajmaji-a06-s01-cdc-kcq65aaj/workbench-example/inputs",
+  "revision_one": {
+    "head": {
+      "revision": {
+        "assertions": [
+          "owned-assertion-a",
+          "owned-assertion-b"
+        ],
+        "editor": "example-editor",
+        "id": "owned-r1",
+        "parent": "owned-r0",
+        "rationale": {
+          "Value": {
+            "language": "Missing",
+            "markup": "Missing",
+            "text": "Add two owned farvi definitions"
+          }
+        },
+        "source": "owned-example",
+        "time_precision": "Unknown",
+        "timestamp": "Missing",
+        "tombstones": []
+      },
+      "sequence": 1,
+      "state_sha256": "372fcce44cf1dd1f0d2d37b8b42927a25ac227f3d6f1e846856d8097896e4286"
+    },
+    "operation": "edit",
+    "previous_head": "owned-r0",
+    "source": "owned-example",
+    "version": 1
+  },
+  "revision_two": {
+    "head": {
+      "revision": {
+        "assertions": [
+          "owned-assertion-a",
+          "owned-assertion-b",
+          "owned-assertion-c"
+        ],
+        "editor": "example-editor",
+        "id": "owned-r2",
+        "parent": "owned-r1",
+        "rationale": {
+          "Value": {
+            "language": "Missing",
+            "markup": "Missing",
+            "text": "Add a third competing farvi definition"
+          }
+        },
+        "source": "owned-example",
+        "time_precision": "Unknown",
+        "timestamp": "Missing",
+        "tombstones": []
+      },
+      "sequence": 2,
+      "state_sha256": "b0a46586e5bba2817593f7cb0a5bdfb9a9897391fa1f4383ec4dd1b1217c69c7"
+    },
+    "operation": "edit",
+    "previous_head": "owned-r1",
+    "source": "owned-example",
+    "version": 1
+  },
+  "state_sha256_r1": "1b5ca5fe3c509b2788d45325903ddfa92219f64fe91a85451857e86b831d7c68",
+  "state_sha256_r2": "cf2495933e82deedac8157289ed3ca598b76150df83ef6086e58081f78a4405d"
+}

@@ -1,0 +1,65 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error[E0422]: cannot find struct, variant or union type `OccurrenceRef` in the crate root
+   --> crates/search/src/workbench.rs:683:32
+    |
+683 |             occurrence: crate::OccurrenceRef {
+    |                                ^^^^^^^^^^^^^ not found in the crate root
+
+error[E0422]: cannot find struct, variant or union type `CaptureRef` in the crate root
+   --> crates/search/src/workbench.rs:684:33
+    |
+684 |                 capture: crate::CaptureRef {
+    |                                 ^^^^^^^^^^ not found in the crate root
+
+error[E0308]: mismatched types
+   --> crates/search/src/workbench.rs:293:64
+    |
+293 |                     .map(|response| WorkbenchFullResult::Exact(Box::new(response))),
+    |                                     -------------------------- ^^^^^^^^^^^^^^^^^^ expected `DictionaryExactResponse`, found `Box<DictionaryExactResponse>`
+    |                                     |
+    |                                     arguments to this enum variant are incorrect
+    |
+    = note: expected struct `dictionary::DictionaryExactResponse`
+               found struct `std::boxed::Box<dictionary::DictionaryExactResponse>`
+note: tuple variant defined here
+   --> crates/search/src/workbench.rs:111:5
+    |
+111 |     Exact(DictionaryExactResponse),
+    |     ^^^^^
+help: consider removing the Box
+    |
+293 -                     .map(|response| WorkbenchFullResult::Exact(Box::new(response))),
+293 +                     .map(|response| WorkbenchFullResult::Exact(response)),
+    |
+
+error[E0308]: mismatched types
+   --> crates/search/src/workbench.rs:296:66
+    |
+296 |                     .map(|response| WorkbenchFullResult::Resolve(Box::new(response))),
+    |                                     ---------------------------- ^^^^^^^^^^^^^^^^^^ expected `ReferenceResolution`, found `Box<ReferenceResolution>`
+    |                                     |
+    |                                     arguments to this enum variant are incorrect
+    |
+    = note: expected struct `dictionary::ReferenceResolution`
+               found struct `std::boxed::Box<dictionary::ReferenceResolution>`
+note: tuple variant defined here
+   --> crates/search/src/workbench.rs:113:5
+    |
+113 |     Resolve(ReferenceResolution),
+    |     ^^^^^^^
+help: consider removing the Box
+    |
+296 -                     .map(|response| WorkbenchFullResult::Resolve(Box::new(response))),
+296 +                     .map(|response| WorkbenchFullResult::Resolve(response)),
+    |
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-search` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+Some errors have detailed explanations: E0308, E0422.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `vlajmaji-search` (lib test) due to 4 previous errors
+make: *** [lint] Error 101

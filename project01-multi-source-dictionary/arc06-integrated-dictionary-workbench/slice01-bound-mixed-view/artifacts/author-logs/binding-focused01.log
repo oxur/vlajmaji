@@ -1,0 +1,22 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.82s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-a3654fa1431d47c4)
+
+running 1 test
+
+thread 'workbench::tests::test_binding_validation_rejects_inconsistent_selection_and_context_pins' (86118917) panicked at crates/store/src/workbench.rs:1876:9:
+assertion failed: matches!(WorkbenchBinding::from_json_bytes(&serde_json::to_vec(&catalogue_without_selected_packs).unwrap()),
+    Err(WorkbenchError::InvalidBinding { detail }) if detail ==
+    "catalogue binding requires a nonempty pack selection")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test workbench::tests::test_binding_validation_rejects_inconsistent_selection_and_context_pins ... FAILED
+
+failures:
+
+failures:
+    workbench::tests::test_binding_validation_rejects_inconsistent_selection_and_context_pins
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 43 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p vlajmaji-store --lib`

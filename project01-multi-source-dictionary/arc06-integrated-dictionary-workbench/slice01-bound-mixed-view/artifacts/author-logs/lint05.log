@@ -1,0 +1,84 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji)
+error: can be more succinctly written as a byte str
+   --> crates/cli/tests/workbench_contract.rs:543:31
+    |
+543 |         match full_file.write(&[b'x']) {
+    |                               ^^^^^^^ help: try: `b"x"`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#byte_char_slices
+    = note: `-D clippy::byte-char-slices` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::byte_char_slices)]`
+
+error: can be more succinctly written as a byte str
+   --> crates/cli/tests/workbench_contract.rs:560:27
+    |
+560 |     match full_file.write(&[b'x']) {
+    |                           ^^^^^^^ help: try: `b"x"`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#byte_char_slices
+
+error: can be more succinctly written as a byte str
+   --> crates/cli/tests/workbench_contract.rs:593:16
+    |
+593 |         .write(&[b'x'])
+    |                ^^^^^^^ help: try: `b"x"`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#byte_char_slices
+
+error: could not compile `vlajmaji-cli` (test "workbench_contract") due to 3 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: unused import: `WorkbenchOwnedRevision`
+  --> crates/cli/src/main.rs:36:67
+   |
+36 |     OwnedJournalError, OwnedJournalReader, WorkbenchBuildRequest, WorkbenchOwnedRevision,
+   |                                                                   ^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `-D unused-imports` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error[E0004]: non-exhaustive patterns: `&_` not covered
+   --> crates/cli/src/main.rs:636:22
+    |
+636 |     let code = match &error {
+    |                      ^^^^^^ pattern `&_` not covered
+    |
+note: `vlajmaji_store::WorkbenchError` defined here
+   --> crates/store/src/workbench.rs:598:1
+    |
+598 | pub enum WorkbenchError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^
+    = note: the matched value is of type `&vlajmaji_store::WorkbenchError`
+    = note: `vlajmaji_store::WorkbenchError` is marked as non-exhaustive, so a wildcard `_` is necessary to match exhaustively
+help: ensure that all possible cases are being handled by adding a match arm with a wildcard pattern or an explicit pattern as shown
+    |
+649 ~         Error::Serialization(_) => "workbench_response",
+650 ~         &_ => todo!(),
+    |
+
+error[E0004]: non-exhaustive patterns: `_` not covered
+   --> crates/cli/src/main.rs:655:11
+    |
+655 |     match error {
+    |           ^^^^^ pattern `_` not covered
+    |
+note: `vlajmaji_search::WorkbenchQueryError` defined here
+   --> crates/search/src/workbench.rs:161:1
+    |
+161 | pub enum WorkbenchQueryError {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: the matched value is of type `vlajmaji_search::WorkbenchQueryError`
+    = note: `vlajmaji_search::WorkbenchQueryError` is marked as non-exhaustive, so a wildcard `_` is necessary to match exhaustively
+help: ensure that all possible cases are being handled by adding a match arm with a wildcard pattern or an explicit pattern as shown
+    |
+666 ~         ),
+667 ~         _ => todo!(),
+    |
+
+For more information about this error, try `rustc --explain E0004`.
+error: could not compile `vlajmaji-cli` (bin "vlajmaji") due to 3 previous errors
+error: could not compile `vlajmaji-cli` (bin "vlajmaji" test) due to 3 previous errors
+make: *** [lint] Error 101

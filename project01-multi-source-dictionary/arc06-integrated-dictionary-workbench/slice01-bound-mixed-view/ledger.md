@@ -1,5 +1,7 @@
 # S01 ledger — bound mixed view
 
+**CURRENT HOLD,2026-10-31:** cf0998f0/tree18b66ea7 remains frozen/clean, native gates and original24-child independent proof retain their exact scopes. Late ONE std-only Rust1.98/edition2024 probe reproduced E0282 in the active nonUnix let-return/method shape (not a Windows crate build). The uncommitted close proposal was WITHDRAWN before acceptance commit and preserved under S01 artifacts/close-proposal-withdrawn01. All8 S01/all8arc/all14project OPEN. PASS2/5 iteration01 is DRAFT/unissued: ONE existing source path decode_native_path complete cfg return blocks, unchanged common/Unix behavior; exact positive language control/affected checks/normal builds then same24 independent proof are ROOT-dispositioned, but no source/index/target transfer yet. ROOT source/index/ONEtarget QUIET, CC parked. Earlier dated/status prose below retains its old cutoff.
+
 **IMPLEMENTATION ACTIVE / INITIAL pass1,2026-10-31; ROOT readiness PASS ae0d4b31.** All8 OPEN. CC exclusively owns exact14/source-index/ONEtarget; root/CDC readonly. [Execution](artifacts/execution.md) preserves actual failures, bounded corrections and green focused populations; full original A–G, example/journey, broad gates, freeze and independent verification remain pending. The table below retains original binding criteria and historical as-issued evidence cells; this current metadata does not mark acceptance.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |

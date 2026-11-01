@@ -1,0 +1,21 @@
+[1;34mRunning Clippy...[0m
+    Checking vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon)
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Checking vlajmaji-data-owned v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-owned)
+    Checking vlajmaji-data-la-lojban v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-la-lojban)
+    Checking vlajmaji-data-lensisku-jbotci v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-lensisku-jbotci)
+    Checking vlajmaji-data-sutysisku v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-sutysisku)
+    Checking vlajmaji-data-llg v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/data-llg)
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji)
+error[E0433]: cannot find type `RelationTarget` in this scope
+    --> crates/search/tests/workbench_contract.rs:1005:24
+     |
+1005 |     let sense_target = RelationTarget::Local(LocalRef::EditorialSense(sense_id.clone()));
+     |                        ^^^^^^^^^^^^^^ use of undeclared type `RelationTarget`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `vlajmaji-search` (test "workbench_contract") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

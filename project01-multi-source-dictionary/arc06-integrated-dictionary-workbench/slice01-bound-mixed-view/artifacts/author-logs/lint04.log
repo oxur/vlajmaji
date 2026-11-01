@@ -1,0 +1,15 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error: unused imports: `CaptureRef` and `OccurrenceRef`
+ --> crates/search/src/workbench.rs:6:24
+  |
+6 | use vlajmaji_lexicon::{CaptureRef, OccurrenceRef, OwnedCurationStatus};
+  |                        ^^^^^^^^^^  ^^^^^^^^^^^^^
+  |
+  = note: `-D unused-imports` implied by `-D warnings`
+  = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error: could not compile `vlajmaji-search` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

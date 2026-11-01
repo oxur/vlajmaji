@@ -1,0 +1,238 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error: cannot find attribute `serde` in this scope
+   --> crates/store/src/workbench.rs:263:7
+    |
+263 |     #[serde(deserialize_with = "deserialize_required_option")]
+    |       ^^^^^
+    |
+    = note: `serde` is an attribute that can be used by the derive macros `Deserialize` and `Serialize`, you might be missing a `derive` attribute
+    = note: `serde` is in scope, but it is a crate, not an attribute
+
+error: cannot find attribute `serde` in this scope
+   --> crates/store/src/workbench.rs:261:7
+    |
+261 |     #[serde(deserialize_with = "deserialize_required_option")]
+    |       ^^^^^
+    |
+    = note: `serde` is an attribute that can be used by the derive macros `Deserialize` and `Serialize`, you might be missing a `derive` attribute
+    = note: `serde` is in scope, but it is a crate, not an attribute
+
+error[E0277]: the trait bound `workbench::WorkbenchResolutionWire: serde::Deserialize<'de>` is not satisfied
+    --> crates/store/src/workbench.rs:291:18
+     |
+ 291 |     resolutions: Vec<WorkbenchResolutionWire>,
+     |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unsatisfied trait bound
+     |
+help: the trait `_::_serde::Deserialize<'_>` is not implemented for `workbench::WorkbenchResolutionWire`
+    --> crates/store/src/workbench.rs:258:1
+     |
+ 258 | struct WorkbenchResolutionWire {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Deserialize)]` to your `workbench::WorkbenchResolutionWire` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `_::_serde::Deserialize<'de>`:
+               &'a [u8]
+               &'a serde_json::value::RawValue
+               &'a std::path::Path
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+             and 353 others
+     = note: required for `std::vec::Vec<workbench::WorkbenchResolutionWire>` to implement `_::_serde::Deserialize<'_>`
+note: required by a bound in `_::_serde::de::SeqAccess::next_element`
+    --> /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/de/mod.rs:1771:12
+     |
+1769 |     fn next_element<T>(&mut self) -> Result<Option<T>, Self::Error>
+     |        ------------ required by a bound in this associated function
+1770 |     where
+1771 |         T: Deserialize<'de>,
+     |            ^^^^^^^^^^^^^^^^ required by this bound in `SeqAccess::next_element`
+     = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-9a190803c0b908d7.long-type-12557081008684787429.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0277]: the trait bound `workbench::WorkbenchResolutionWire: serde::Deserialize<'de>` is not satisfied
+    --> crates/store/src/workbench.rs:291:18
+     |
+ 291 |     resolutions: Vec<WorkbenchResolutionWire>,
+     |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unsatisfied trait bound
+     |
+help: the trait `_::_serde::Deserialize<'_>` is not implemented for `workbench::WorkbenchResolutionWire`
+    --> crates/store/src/workbench.rs:258:1
+     |
+ 258 | struct WorkbenchResolutionWire {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Deserialize)]` to your `workbench::WorkbenchResolutionWire` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `_::_serde::Deserialize<'de>`:
+               &'a [u8]
+               &'a serde_json::value::RawValue
+               &'a std::path::Path
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+             and 353 others
+     = note: required for `std::vec::Vec<workbench::WorkbenchResolutionWire>` to implement `_::_serde::Deserialize<'_>`
+note: required by a bound in `_::_serde::de::MapAccess::next_value`
+    --> /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/de/mod.rs:1916:12
+     |
+1914 |     fn next_value<V>(&mut self) -> Result<V, Self::Error>
+     |        ---------- required by a bound in this associated function
+1915 |     where
+1916 |         V: Deserialize<'de>,
+     |            ^^^^^^^^^^^^^^^^ required by this bound in `MapAccess::next_value`
+     = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-9a190803c0b908d7.long-type-12557081008684787429.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0277]: the trait bound `workbench::WorkbenchResolutionWire: serde::Deserialize<'de>` is not satisfied
+   --> crates/store/src/workbench.rs:280:10
+    |
+280 | #[derive(Deserialize)]
+    |          ^^^^^^^^^^^ unsatisfied trait bound
+    |
+help: the trait `_::_serde::Deserialize<'_>` is not implemented for `workbench::WorkbenchResolutionWire`
+   --> crates/store/src/workbench.rs:258:1
+    |
+258 | struct WorkbenchResolutionWire {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: for local types consider adding `#[derive(serde::Deserialize)]` to your `workbench::WorkbenchResolutionWire` type
+    = note: for types from other crates check whether the crate offers a `serde` feature flag
+    = help: the following other types implement trait `_::_serde::Deserialize<'de>`:
+              &'a [u8]
+              &'a serde_json::value::RawValue
+              &'a std::path::Path
+              &'a str
+              ()
+              (T,)
+              (T0, T1)
+              (T0, T1, T2)
+            and 353 others
+    = note: required for `std::vec::Vec<workbench::WorkbenchResolutionWire>` to implement `_::_serde::Deserialize<'_>`
+note: required by a bound in `_::_serde::__private229::de::missing_field`
+   --> /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/de.rs:26:8
+    |
+ 24 | pub fn missing_field<'de, V, E>(field: &'static str) -> Result<V, E>
+    |        ------------- required by a bound in this function
+ 25 | where
+ 26 |     V: Deserialize<'de>,
+    |        ^^^^^^^^^^^^^^^^ required by this bound in `missing_field`
+    = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-9a190803c0b908d7.long-type-12557081008684787429.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+    = note: this error originates in the derive macro `Deserialize` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0277]: the trait bound `workbench::WorkbenchResolutionWire: serde::Deserialize<'de>` is not satisfied
+    --> crates/store/src/workbench.rs:291:18
+     |
+ 291 |     resolutions: Vec<WorkbenchResolutionWire>,
+     |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unsatisfied trait bound
+     |
+help: the trait `_::_serde::Deserialize<'_>` is not implemented for `workbench::WorkbenchResolutionWire`
+    --> crates/store/src/workbench.rs:258:1
+     |
+ 258 | struct WorkbenchResolutionWire {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Deserialize)]` to your `workbench::WorkbenchResolutionWire` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `_::_serde::Deserialize<'de>`:
+               &'a [u8]
+               &'a serde_json::value::RawValue
+               &'a std::path::Path
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+             and 353 others
+     = note: required for `std::vec::Vec<workbench::WorkbenchResolutionWire>` to implement `_::_serde::Deserialize<'_>`
+note: required by a bound in `_::_serde::de::SeqAccess::next_element`
+    --> /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/de/mod.rs:1771:12
+     |
+1769 |     fn next_element<T>(&mut self) -> Result<Option<T>, Self::Error>
+     |        ------------ required by a bound in this associated function
+1770 |     where
+1771 |         T: Deserialize<'de>,
+     |            ^^^^^^^^^^^^^^^^ required by this bound in `SeqAccess::next_element`
+     = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-9ae360c6358d9ab5.long-type-5719655162508185813.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0277]: the trait bound `workbench::WorkbenchResolutionWire: serde::Deserialize<'de>` is not satisfied
+    --> crates/store/src/workbench.rs:291:18
+     |
+ 291 |     resolutions: Vec<WorkbenchResolutionWire>,
+     |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unsatisfied trait bound
+     |
+help: the trait `_::_serde::Deserialize<'_>` is not implemented for `workbench::WorkbenchResolutionWire`
+    --> crates/store/src/workbench.rs:258:1
+     |
+ 258 | struct WorkbenchResolutionWire {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Deserialize)]` to your `workbench::WorkbenchResolutionWire` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `_::_serde::Deserialize<'de>`:
+               &'a [u8]
+               &'a serde_json::value::RawValue
+               &'a std::path::Path
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+             and 353 others
+     = note: required for `std::vec::Vec<workbench::WorkbenchResolutionWire>` to implement `_::_serde::Deserialize<'_>`
+note: required by a bound in `_::_serde::de::MapAccess::next_value`
+    --> /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/de/mod.rs:1916:12
+     |
+1914 |     fn next_value<V>(&mut self) -> Result<V, Self::Error>
+     |        ---------- required by a bound in this associated function
+1915 |     where
+1916 |         V: Deserialize<'de>,
+     |            ^^^^^^^^^^^^^^^^ required by this bound in `MapAccess::next_value`
+     = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-9ae360c6358d9ab5.long-type-5719655162508185813.txt'
+     = note: consider using `--verbose` to print the full type name to the console
+
+error[E0277]: the trait bound `workbench::WorkbenchResolutionWire: serde::Deserialize<'de>` is not satisfied
+   --> crates/store/src/workbench.rs:280:10
+    |
+280 | #[derive(Deserialize)]
+    |          ^^^^^^^^^^^ unsatisfied trait bound
+    |
+help: the trait `_::_serde::Deserialize<'_>` is not implemented for `workbench::WorkbenchResolutionWire`
+   --> crates/store/src/workbench.rs:258:1
+    |
+258 | struct WorkbenchResolutionWire {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: for local types consider adding `#[derive(serde::Deserialize)]` to your `workbench::WorkbenchResolutionWire` type
+    = note: for types from other crates check whether the crate offers a `serde` feature flag
+    = help: the following other types implement trait `_::_serde::Deserialize<'de>`:
+              &'a [u8]
+              &'a serde_json::value::RawValue
+              &'a std::path::Path
+              &'a str
+              ()
+              (T,)
+              (T0, T1)
+              (T0, T1, T2)
+            and 353 others
+    = note: required for `std::vec::Vec<workbench::WorkbenchResolutionWire>` to implement `_::_serde::Deserialize<'_>`
+note: required by a bound in `_::_serde::__private229::de::missing_field`
+   --> /Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/de.rs:26:8
+    |
+ 24 | pub fn missing_field<'de, V, E>(field: &'static str) -> Result<V, E>
+    |        ------------- required by a bound in this function
+ 25 | where
+ 26 |     V: Deserialize<'de>,
+    |        ^^^^^^^^^^^^^^^^ required by this bound in `missing_field`
+    = note: the full name for the type has been written to '/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-9ae360c6358d9ab5.long-type-5719655162508185813.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+    = note: this error originates in the derive macro `Deserialize` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `vlajmaji-store` (lib) due to 5 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-store` (lib test) due to 5 previous errors
+make: *** [lint] Error 101

@@ -1,0 +1,20 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.52s
+     Running tests/workbench_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/workbench_contract-6e8280b23bd9db2d)
+
+running 11 tests
+test test_workbench_selection_rejects_contexts_without_enabled_selected_packs ... ok
+test test_workbench_selection_rejects_unknown_duplicate_and_missing_fields ... ok
+test test_workbench_destination_collision_preserves_existing_sentinel ... ok
+test test_workbench_owned_only_build_persists_checked_binding_and_store ... ok
+test test_workbench_symlink_candidate_rejects_without_touching_target ... ok
+test test_workbench_schema_two_migration_stales_old_binding_and_records_empty_curation_digest ... ok
+test test_workbench_open_owned_head_stales_but_retained_historical_revision_remains_current ... ok
+test test_workbench_disabled_missing_catalogue_member_is_not_opened ... ok
+test test_workbench_open_uses_captured_catalogue_identity_without_rereading_release_files ... ok
+test test_workbench_single_pack_uses_original_context_without_composition_deduplication ... ok
+test test_workbench_build_retains_and_materializes_supplied_curation_context ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.63s
+

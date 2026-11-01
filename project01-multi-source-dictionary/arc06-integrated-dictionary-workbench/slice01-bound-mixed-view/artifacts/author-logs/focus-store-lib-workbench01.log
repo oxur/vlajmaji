@@ -1,0 +1,10 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-a3654fa1431d47c4)
+
+running 2 tests
+test workbench::tests::test_build_new_owned_writer_after_reader_drop_is_checked_at_each_guard_stage ... ok
+test workbench::tests::test_build_new_catalogue_mutation_at_each_guard_stage_returns_stale_without_success ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 41 filtered out; finished in 0.37s
+

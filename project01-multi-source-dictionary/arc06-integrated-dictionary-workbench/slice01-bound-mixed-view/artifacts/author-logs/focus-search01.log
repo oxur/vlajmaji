@@ -1,0 +1,22 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.24s
+     Running tests/workbench_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/workbench_contract-f517e3a52f820cf5)
+
+running 3 tests
+
+thread 'test_execute_full_compact_and_cached_summary_preserve_query_contract' (85971044) panicked at crates/search/tests/workbench_contract.rs:227:76:
+called `Result::unwrap()` on an `Err` value: AliasCollision { alias: "workbench-ambiguous-source", sources: [SourceId("source-a"), SourceId("source-b")] }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_execute_full_compact_and_cached_summary_preserve_query_contract ... FAILED
+test test_execute_head_becomes_stale_after_writer_commit_but_history_stays_pinned ... ok
+test test_detail_requires_valid_matching_outer_binding ... ok
+
+failures:
+
+failures:
+    test_execute_full_compact_and_cached_summary_preserve_query_contract
+
+test result: FAILED. 2 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.44s
+
+error: test failed, to rerun pass `-p vlajmaji-search --test workbench_contract`

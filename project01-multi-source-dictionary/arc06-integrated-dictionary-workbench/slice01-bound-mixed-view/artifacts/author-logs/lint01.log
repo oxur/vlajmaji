@@ -1,0 +1,63 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error[E0308]: mismatched types
+   --> crates/store/src/workbench.rs:809:64
+    |
+809 |                 .map_err(|error| WorkbenchError::Serialization(error))?,
+    |                                  ----------------------------- ^^^^^ expected `Error`, found `DictionaryError`
+    |                                  |
+    |                                  arguments to this enum variant are incorrect
+    |
+note: tuple variant defined here
+   --> crates/store/src/workbench.rs:628:5
+    |
+628 |     Serialization(serde_json::Error),
+    |     ^^^^^^^^^^^^^
+
+error[E0277]: `?` couldn't convert the error to `workbench::WorkbenchError`
+    --> crates/store/src/workbench.rs:1179:29
+     |
+1179 |                 .transpose()?;
+     |                  -----------^ the trait `std::convert::From<vlajmaji_lexicon::DictionaryError>` is not implemented for `workbench::WorkbenchError`
+     |                  |
+     |                  this can't be annotated with `?` because it has type `Result<_, vlajmaji_lexicon::DictionaryError>`
+     |
+note: `workbench::WorkbenchError` needs to implement `From<vlajmaji_lexicon::DictionaryError>`
+    --> crates/store/src/workbench.rs:598:1
+     |
+ 598 | pub enum WorkbenchError {
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+     = note: the question mark operation (`?`) implicitly performs a conversion on the error value using the `From` trait
+     = help: `workbench::WorkbenchError` implements trait `std::convert::From<T>`:
+               std::convert::From<collections::CollectionError>
+               std::convert::From<dictionary::DictionaryStoreError>
+               std::convert::From<owned::OwnedJournalError>
+               std::convert::From<serde_json::Error>
+               std::convert::From<vlajmaji_lexicon::OwnedCurationError>
+               std::convert::From<vlajmaji_lexicon::PackError>
+
+error[E0308]: mismatched types
+    --> crates/store/src/workbench.rs:1297:47
+     |
+1297 |         let reader = OwnedJournalReader::open(root)?;
+     |                      ------------------------ ^^^^ expected `&Path`, found `PathBuf`
+     |                      |
+     |                      arguments to this function are incorrect
+     |
+note: associated function defined here
+    --> crates/store/src/owned.rs:1019:12
+     |
+1019 |     pub fn open(root: &Path) -> Result<Self, OwnedJournalError> {
+     |            ^^^^ -----------
+help: consider borrowing here
+     |
+1297 |         let reader = OwnedJournalReader::open(&root)?;
+     |                                               +
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `vlajmaji-store` (lib) due to 3 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-store` (lib test) due to 3 previous errors
+make: *** [lint] Error 101

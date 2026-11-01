@@ -1,0 +1,29 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0433]: cannot find type `OwnedSenseMember` in this scope
+   --> crates/search/tests/workbench_contract.rs:717:17
+    |
+717 |                 OwnedSenseMember::External(target.clone()),
+    |                 ^^^^^^^^^^^^^^^^ use of undeclared type `OwnedSenseMember`
+
+error[E0433]: cannot find type `OwnedSenseMember` in this scope
+   --> crates/search/tests/workbench_contract.rs:718:17
+    |
+718 |                 OwnedSenseMember::External(second_target),
+    |                 ^^^^^^^^^^^^^^^^ use of undeclared type `OwnedSenseMember`
+
+error[E0599]: no method named `to_json_bytes` found for struct `vlajmaji_store::WorkbenchBinding` in the current scope
+   --> crates/store/tests/workbench_contract.rs:976:46
+    |
+976 |     let valid_binding_bytes = report.binding.to_json_bytes().unwrap();
+    |                                              ^^^^^^^^^^^^^ method not found in `vlajmaji_store::WorkbenchBinding`
+
+For more information about this error, try `rustc --explain E0599`.
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `vlajmaji-search` (test "workbench_contract") due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-store` (test "workbench_contract") due to 1 previous error
+make: *** [lint] Error 101

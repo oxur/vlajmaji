@@ -1,0 +1,27 @@
+{
+  "created_utc": "2026-11-01T01:27:14.314638+00:00",
+  "argv": [
+    "/Users/oubiwann/.cargo/bin/rustc",
+    "+1.98.0",
+    "--crate-name",
+    "a06_native_inference",
+    "--crate-type",
+    "lib",
+    "--edition=2024",
+    "--emit",
+    "metadata",
+    "--out-dir",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/cdc-a06-s01-native-inference01",
+    "/private/tmp/a06-s01-native-inference01/probe.rs"
+  ],
+  "cwd": "/private/tmp/a06-s01-native-inference01",
+  "actual_exit": 1,
+  "source_bytes": 806,
+  "source_sha256": "af3f6456a457dc0bb28d55fa16a9171243028ad1194c1057240937fb8f7a9514",
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_bytes": 1328,
+  "stderr_sha256": "3d1f8b0d3f7692e0de9c706b0e2887b12036efd4c14f91140ede57e34d024c03",
+  "scope": "ONE host std-only edition2024 inference probe; not Windows build/runtime",
+  "target_scratch": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/cdc-a06-s01-native-inference01"
+}

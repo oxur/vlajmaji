@@ -1,0 +1,132 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+error: redundant closure
+   --> crates/store/src/workbench.rs:750:19
+    |
+750 |             .then(|| std::env::current_dir())
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the closure with the function itself: `std::env::current_dir`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#redundant_closure
+    = note: `-D clippy::redundant-closure` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::redundant_closure)]`
+
+error: very complex type used. Consider factoring parts into `type` definitions
+   --> crates/store/src/workbench.rs:973:6
+    |
+973 |   ) -> Result<
+    |  ______^
+974 | |     (
+975 | |         Option<WorkbenchCatalogueBinding>,
+976 | |         Vec<(PackId, Dictionary)>,
+...   |
+979 | |     WorkbenchError,
+980 | | > {
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#type_complexity
+    = note: `-D clippy::type-complexity` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::type_complexity)]`
+
+error: very complex type used. Consider factoring parts into `type` definitions
+    --> crates/store/src/workbench.rs:1075:6
+     |
+1075 |   ) -> Result<
+     |  ______^
+1076 | |     (
+1077 | |         Option<WorkbenchOwnedBinding>,
+1078 | |         Option<Dictionary>,
+...    |
+1082 | |     WorkbenchError,
+1083 | | > {
+     | |_^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#type_complexity
+
+error: manual implementation of `.is_multiple_of()`
+    --> crates/store/src/workbench.rs:1438:8
+     |
+1438 |     if report.hex.len() % 2 != 0
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace with: `!report.hex.len().is_multiple_of(2)`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#manual_is_multiple_of
+     = note: `-D clippy::manual-is-multiple-of` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::manual_is_multiple_of)]`
+
+error: using `chunks_exact` with a constant chunk size
+    --> crates/store/src/workbench.rs:1451:10
+     |
+1451 |         .chunks_exact(2)
+     |          ^^^^^^^^^^^^^^^ help: consider using `as_chunks` instead: `as_chunks::<2>().0.iter()`
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.98.0/index.html#chunks_exact_to_as_chunks
+     = note: `-D clippy::chunks-exact-to-as-chunks` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::chunks_exact_to_as_chunks)]`
+
+error: missing documentation for a struct field
+   --> crates/store/src/workbench.rs:600:24
+    |
+600 |     InvalidSelection { detail: String },
+    |                        ^^^^^^^^^^^^^^
+    |
+    = note: `-D missing-docs` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(missing_docs)]`
+
+error: missing documentation for a struct field
+   --> crates/store/src/workbench.rs:602:26
+    |
+602 |     UnsupportedVersion { kind: &'static str, found: u32 },
+    |                          ^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/store/src/workbench.rs:602:46
+    |
+602 |     UnsupportedVersion { kind: &'static str, found: u32 },
+    |                                              ^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/store/src/workbench.rs:604:33
+    |
+604 |     UnsupportedNativeEncoding { encoding: String },
+    |                                 ^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/store/src/workbench.rs:608:22
+    |
+608 |     InvalidBinding { detail: String },
+    |                      ^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/store/src/workbench.rs:611:9
+    |
+611 |         dependency: WorkbenchDependency,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/store/src/workbench.rs:612:9
+    |
+612 |         expected: String,
+    |         ^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/store/src/workbench.rs:613:9
+    |
+613 |         observed: Option<String>,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/store/src/workbench.rs:616:10
+    |
+616 |     Io { path: PathBuf, source: io::Error },
+    |          ^^^^^^^^^^^^^
+
+error: missing documentation for a struct field
+   --> crates/store/src/workbench.rs:616:25
+    |
+616 |     Io { path: PathBuf, source: io::Error },
+    |                         ^^^^^^^^^^^^^^^^^
+
+error: could not compile `vlajmaji-store` (lib) due to 15 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-store` (lib test) due to 15 previous errors
+make: *** [lint] Error 101

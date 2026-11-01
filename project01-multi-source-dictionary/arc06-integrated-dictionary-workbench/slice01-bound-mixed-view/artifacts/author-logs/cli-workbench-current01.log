@@ -1,0 +1,17 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.65s
+     Running tests/workbench_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/workbench_contract-48215cd8df6375dc)
+
+running 6 tests
+test test_workbench_build_rejects_strict_selection_before_creating_root ... ok
+test test_workbench_build_collision_preserves_existing_sentinel ... ok
+test test_workbench_build_handles_non_utf8_root_according_to_filesystem_capability ... ok
+test test_workbench_absolute_file_roots_survive_deleted_current_directory ... ok
+test test_workbench_build_info_and_query_use_explicit_native_file_roots ... ok
+test test_workbench_build_persists_before_other_or_broken_pipe_stdout_failure ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.92s
+
