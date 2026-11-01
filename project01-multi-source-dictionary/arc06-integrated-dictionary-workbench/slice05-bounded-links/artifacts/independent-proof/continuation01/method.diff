@@ -1,0 +1,159 @@
+--- original-method.py
++++ method-continuation01-draft.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""UNEXECUTED S05 independent DRAFT. Planned finite31 children: one existing
++"""S05 observer CONTINUATION01 DRAFT. Total finite31 product children: one existing
+ public Rust example binary and30 native CLI,23zero/8typedone. Includes EXACT
+ eight original guide roles under captured launcher/env/terminal. No Cargo,
+ new Rust consumer, source/index edits, Full corpus, acquisition or cleanup.
+@@ -220,8 +220,8 @@
+  elif confirmed and all(c['reason']=='requested_source' for c in o['candidates']):assert o['reason']=='requested_source'
+  else:assert o['reason']=='no_current_eligible_assertion'
+ 
+-def links_check(out,b,revision,compact,case='r1_depth2',indices=None,profile='direct',request=None,terminal=True):
+- eff=outer(out,b,'compact'if compact else'full',profile);keys(out['result'],'operation response');assert out['result']['operation']=='links'
++def links_check(out,b,revision,compact,case='r1_depth2',indices=None,profile='direct',request=None,terminal=True,config_revision=4):
++ eff=outer(out,b,'compact'if compact else'full',profile,config_revision=config_revision);keys(out['result'],'operation response');assert out['result']['operation']=='links'
+  r=out['result']['response'];keys(r,'policy state_sha256 query resolved_sources seed_assertion_ids totals source_totals availability groups next_cursor code_notices'+(' snapshot_sha256'if compact else''))
+  d=models[revision];want=fixed_case(case);wantrows=want['rows'];page=wantrows if indices is None else [wantrows[i]for i in indices]
+  assert r['policy']=='bounded-links-v1' and r['state_sha256']==b['state_sha256'] and r['query']==(request or depth2)['query']
+@@ -251,10 +251,10 @@
+  assert (r['next_cursor'] is None)==terminal
+  return r
+ 
+-def direct(root,revision):
++def direct(root,revision,head=False):
+  b=json.loads((root/'binding.json').read_bytes());keys(b,'version kind selection catalogue owned contexts resolutions selected_release_ids state_sha256 binding_sha256')
+  assert b['version']==1 and b['kind']=='vlajmaji-workbench'
+- assert b['selection']==json.loads(inputs['artifacts/links-inputs/selection-historical-r1.json']if revision==1 else inputs['artifacts/links-inputs/selection-head.json'])
++ assert b['selection']==json.loads(inputs['artifacts/links-inputs/selection-historical-r1.json']if revision==1 and not head else inputs['artifacts/links-inputs/selection-head.json'])
+  assert b['contexts']==[] and b['resolutions']==[]
+  c=b['catalogue'];assert c['root']==native(L/'catalogue')and c['local_revision']==1 and c['recorded_state_sha256']==sha(enc(json.loads(inputs['artifacts/links-inputs/mixed-pack-r1.json'])))
+  assert c['members']==[{'pack_id':'la-lojban','release_sha256':sha(enc(json.loads(inputs['artifacts/links-inputs/mixed-pack-r1.json']))),'payload_kind':'synthetic'}]
+@@ -264,7 +264,7 @@
+  digest(b['state_sha256']);assert b['binding_sha256']==sha(enc({k:b[k]for k in ['version','kind','selection','catalogue','owned','contexts','resolutions','selected_release_ids','state_sha256']}))
+  return b
+ 
+-def outer(out,b,fmt,profile='direct',detail=False):
++def outer(out,b,fmt,profile='direct',detail=False,config_revision=4):
+  keys(out,'version kind binding_sha256 selection '+('reference record origin_resolution target_observations'if detail else'format result')+(' configuration'if profile!='direct'else''))
+  assert out['version']==1 and out['kind']==('vlajmaji-workbench-link-detail'if detail else'vlajmaji-workbench-lexical')
+  if not detail:assert out['format']==fmt
+@@ -273,7 +273,13 @@
+  if profile=='direct':assert out['binding_sha256']==b['binding_sha256']
+  else:
+   # Protocol named field order, never the sorted CLI map order.
+-  ident={'version':1,'kind':'vlajmaji-configured-workbench','config':native(cfg),'config_revision':4,'config_sha256':sha(cfg.read_bytes()),'requested_profile':profile,'profile':'links','prepared_sequence':1,'view_binding_sha256':b['binding_sha256']}
++  assert config_revision in [3,4]
++  config_sha=sha(cfg.read_bytes())
++  if config_revision==3:
++   wire=json.loads(cfg.read_bytes());assert wire['revision']==4 and len(wire['profiles'])==1 and [p['sequence']for p in wire['prepared']]==[0,1]
++   wire['revision']=3;wire['profiles'][0]['active_generation']=0;wire['prepared']=wire['prepared'][:1]
++   config_sha=sha(enc(wire)+b'\n')
++  ident={'version':1,'kind':'vlajmaji-configured-workbench','config':native(cfg),'config_revision':config_revision,'config_sha256':config_sha,'requested_profile':profile,'profile':'links','prepared_sequence':0 if config_revision==3 else 1,'view_binding_sha256':b['binding_sha256']}
+   ident['effective_binding_sha256']=sha(enc(ident));assert out['configuration']==ident and out['binding_sha256']==ident['effective_binding_sha256']
+  return out['binding_sha256']
+ 
+@@ -388,17 +394,19 @@
+  expected={str(rev):{'records':[record_expected(d,r['identity']['evidence'])for r in fixed['r'+str(rev)+'_depth2']['rows']],'availability_full':availability(d,False),'availability_compact':availability(d,True)}for rev,d in models.items()}
+  protocol=json.loads(inputs['artifacts/links-inputs/links-cursor-protocol.json']);protoquery=copy.deepcopy(depth2);protoquery['options']['sources']=['KU','KO']
+  cursor_check(protocol['token'],'1'*64,protoquery,fixed['r1_depth2']['rows'][0])
+- base=Path(tempfile.mkdtemp(prefix='vlajmaji-a06-s05-cdc-',dir='/private/tmp'))
+- for k,leaf in [('HOME','home'),('XDG_DATA_HOME','xdg-data'),('XDG_CONFIG_HOME','xdg-config'),('TMPDIR','tmp')]:
+-  p=base/leaf;p.mkdir();env[k]=str(p)
+- env.update(CARGO_TARGET_DIR=binding['target'],CARGO_NET_OFFLINE='true',RUSTUP_AUTO_INSTALL='0')
+- selected_env={k:env[k]for k in ['PATH','CARGO_HOME','RUSTUP_HOME','HOME','XDG_DATA_HOME','XDG_CONFIG_HOME','TMPDIR','CARGO_TARGET_DIR','CARGO_NET_OFFLINE','RUSTUP_AUTO_INSTALL']}
+- (base/'selected-env.json').write_bytes(enc(selected_env));(base/'expected-before-children.json').write_bytes(enc(expected));(base/'planned-children.json').write_bytes(enc(PLAN))
++ base=Path(binding['continuation']['base']);assert base==Path('/private/tmp/vlajmaji-a06-s05-cdc-ube57fdz')
++ selected_env=json.loads((base/'selected-env.json').read_bytes())
++ for k,leaf in [('HOME','home'),('XDG_DATA_HOME','xdg-data'),('XDG_CONFIG_HOME','xdg-config'),('TMPDIR','tmp')]:assert selected_env[k]==str(base/leaf)and(base/leaf).is_dir()
++ env.update(selected_env)
++ assert enc(expected)==(base/'expected-before-children.json').read_bytes()and enc(PLAN)==(base/'planned-children.json').read_bytes()
++ with(base/'selected-env-continuation01.json').open('xb')as f:f.write(enc(selected_env))
+  W=base/'workbench-example';L=W/'links-workbench';I=W/'artifacts/links-inputs';hist=L/'view-historical-r1';current=L/'view-head-r2';cfg=L/'links-workbench-profiles.json'
+  requests={}
+  def req(name,value):
+   p=base/(name+' ü.json')
+-  with p.open('xb')as f:f.write(enc(value))
++  if name in ['depth two','depth one','KU filter','KO filter','zero','first','invalid depth','old Form key']:assert p.read_bytes()==enc(value)
++  else:
++   with p.open('xb')as f:f.write(enc(value))
+   requests[name]={'path':str(p),**pin(p)};return p
+  depth2file=req('depth two',depth2);depth1file=req('depth one',depth1)
+  ku=copy.deepcopy(depth2);ku['options']['sources']=['KU'];kufile=req('KU filter',ku)
+@@ -406,12 +414,17 @@
+  zero=copy.deepcopy(depth2);zero['options']['page_size']=0;zerofile=req('zero',zero)
+  first=copy.deepcopy(depth2);first['options']['page_size']=1;firstfile=req('first',first)
+  invalid=copy.deepcopy(depth2);invalid['query']['depth']=3;invalidfile=req('invalid depth',invalid)
+- malformed=base/'malformed ü.json';malformed.write_bytes(b'{')
++ malformed=base/'malformed ü.json';assert malformed.read_bytes()==b'{'
+  oldform={'version':1,'digest_policy':'form-entry-computation-serde-json-v1','role':'form','binding_sha256':'a'*64,'source':'links-upstream','entry_id':'links-upstream-entry-z','form_id':'links-upstream-form-z','entry_sha256':'b'*64,'form_sha256':'c'*64,'computation_sha256':None};oldformfile=req('old Form key',oldform)
+- (base/'negative-buffers-before-children.json').write_bytes(enc({str(p):pin(p)for p in [invalidfile,malformed,oldformfile]}))
+- children=[]
++ assert (base/'negative-buffers-before-children.json').read_bytes()==enc({str(p):pin(p)for p in [invalidfile,malformed,oldformfile]})
++ children=json.loads((base/'commands.json').read_bytes());assert len(children)==1
++ original=children[0];assert original['n']==1 and original['name']=='public-example'and original['argv']==[str(example),str(W)]and original['cwd']==str(base)and original['expected_exit']==original['actual_exit']==0 and not original['timeout']
++ for field in ['stdout','stderr']:assert pin(original[field])==original[field+'_pin']
++ assert Path(original['stderr']).read_bytes()==b''
++
+  def run(name,argv,code=0,readable=False):
+   n=len(children)+1;assert n<=31 and PLAN[n-1][0]==name
++  assert not(base/f'{n:02}-{name}.stdout').exists()and not(base/f'{n:02}-{name}.stderr').exists()
+   started=time.time()
+   try:
+    p=subprocess.run([str(a)for a in argv],cwd=base,env=env,capture_output=True,timeout=300);out,err,actual,timed=p.stdout,p.stderr,p.returncode,False
+@@ -425,7 +438,7 @@
+    documented=W/guide_files[name]
+    with documented.open('xb')as f:f.write(out)
+    row['documented_output']=str(documented);row['documented_output_pin']=pin(documented)
+-  children.append(row);(base/'commands.json').write_bytes(enc(children))
++  children.append(row);(base/'commands-continuation01.json').write_bytes(enc(children))
+   assert not timed and actual==code,row
+   if code:
+    assert out==b''and err.endswith(b'\n')and err.count(b'\n')==1
+@@ -450,11 +463,13 @@
+   if profile!='direct':args+=['profiles','link-detail','--config',config]+(['--profile',profile]if profile else[])
+   else:args+=['link-detail',root]
+   return v(name,*args,'--reference',path,'--expected-binding',expected_binding,'--format',fmt,readable=fmt=='readable',**kw)
+- public=run('public-example',[example,W])
++ public=json.loads(Path(original['stdout']).read_bytes())
+  # Verify ALL PATH-qualified emitted authorities before ANY CLI product child.
+  for emitted,raw in inputs.items():assert (W/emitted).read_bytes()==raw,emitted
+  assert public['profile_revisions']==[1,2,3,4,5,6]
+- b1=direct(hist,1);b2=direct(current,2);bc=direct(L/'view-configured-r2',2)
++ b1=direct(hist,1);b2=direct(current,2);bc=direct(L/'view-configured-r2',2);bcr1=direct(L/'view-configured-r1',1,head=True)
++ assert bcr1['selection']['owned']=='head'and b1['selection']['owned']=={'revision':'links-owned-r1'}and bcr1['binding_sha256']!=b1['binding_sha256']
++ assert bcr1['owned']['identity']==b1['owned']['identity']and bcr1['state_sha256']==b1['state_sha256']
+  assert b2['binding_sha256']==bc['binding_sha256']
+  before={str(p):pin(p)for root in [hist,current,L/'view-configured-r2']for p in [root/'binding.json',root/'dictionary/dictionary.sqlite3']};before[str(cfg)]=pin(cfg)
+  for emitted in inputs:before[str(W/emitted)]=pin(W/emitted)
+@@ -463,16 +478,13 @@
+  for key,rev,compact,profile,case in [
+   ('historical_full_r1',1,False,'direct','r1_depth2'),('historical_compact_r1',1,True,'direct','r1_depth2'),('historical_full_r1_depth1',1,False,'direct','depth1'),('historical_compact_r1_depth1',1,True,'direct','depth1'),('current_full_r2',2,False,'direct','r2_depth2'),('current_compact_r2',2,True,'direct','r2_depth2'),('configured_r2_full',2,False,'links','r2_depth2'),('configured_r2_compact',2,True,'links','r2_depth2'),('default_r2_full',2,False,None,'r2_depth2')]:
+   links_check(pub[key],b1 if rev==1 else b2,rev,compact,case,profile=profile,request=depth1 if case=='depth1'else depth2)
+- # Historical configured-r1 is an as-of config snapshot, not fresh rev4. Validate
+- # its complete fixed rows/body with captured original identity self-consistency.
++ # Source run_links_journey configures1/refreshr1=>2/set_default=>3 BEFORE
++ # retained configured-r1 queries. HEAD binding is distinct from historical r1.
+  for key,compact in [('configured_r1_full',False),('configured_r1_compact',True)]:
+-  old=pub[key];ident=old['configuration'];ordered={k:ident[k]for k in ['version','kind','config','config_revision','config_sha256','requested_profile','profile','prepared_sequence','view_binding_sha256']};assert ident['effective_binding_sha256']==sha(enc(ordered))and old['binding_sha256']==ident['effective_binding_sha256']
+-  assert ident['config_revision']==2 and ident['profile']=='links'and ident['requested_profile']=='links'and ident['prepared_sequence']==0 and ident['view_binding_sha256']==b1['binding_sha256']
+-  replacement=copy.deepcopy(old);replacement.pop('configuration');replacement['binding_sha256']=b1['binding_sha256']
+-  if compact:
+-   for g in replacement['result']['response']['groups']:
+-    for h in g['hits']:h['detail_ref']['binding_sha256']=b1['binding_sha256']
+-  links_check(replacement,b1,1,compact)
++  links_check(pub[key],bcr1,1,compact,profile='links',config_revision=3)
++ for key,bview,rev,profile in [('historical_link_detail',b1,1,'direct'),('configured_r2_detail',b2,2,'links')]:detail_check(pub[key],bview,rev,pub[key]['reference'],profile)
++ # Original8 documented output/key files must still be absent before child2.
++ for leaf in ['links-direct-full.json','links-direct-compact.json','links-direct-detail-ref.json','links-direct-detail.json','links-configured-readable.txt','links-named-full-r2.json','links-default-full-r2.json','links-named-compact-r2.json','links-named-detail-ref-r2.json','links-named-detail-r2.json']:assert not(W/leaf).exists()
+  # EXACT guide8 native calls, each captured in its own immutable stream pair.
+  g1=lexical('guide-historical-full',hist,I/'links-depth2.json');links_check(g1,b1,1,False)
+  g2=lexical('guide-historical-compact',hist,I/'links-depth2.json','compact');r=links_check(g2,b1,1,True)
+@@ -527,4 +539,4 @@
+  for emitted,raw in inputs.items():assert(W/emitted).read_bytes()==raw
+  check_pins()
+  receipt={'status':'PASS','scope':'31 original finite children; no rebuild/new consumer/default data/real Full/extra controls','base':str(base),'binding_file':str(Path(sys.argv[1]).resolve()),'binding_pin':pin(sys.argv[1]),'children':children,'selected_env':selected_env,'requests':requests,'post_unchanged':before,'pre_input_pin_count':42,'original_frozen_pin_count':len(binding['files'])}
+- (base/'execution.json').write_bytes(enc(receipt));print('PASS '+str(base),flush=True)
++ (base/'execution-continuation01.json').write_bytes(enc(receipt));print('PASS '+str(base),flush=True)
