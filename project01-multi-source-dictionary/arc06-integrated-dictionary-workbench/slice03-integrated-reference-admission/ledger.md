@@ -1,6 +1,6 @@
 # S03 ledger — complete integrated reference admission
 
-**DRAFT / NOT ISSUED,2026-10-31.** Eight OPEN rows; accepted S01/S02 source, exact witness/native/status/wire/readset and ROOT readiness still required. S01 is CLOSED; S02 is complete-intake-only and source/index/target ROOT QUIET. Current S03 plan0.2 source clarifications are prospective only. See [plan](slice-plan.md) and parent successor-owner crosswalk; no reference duty is dropped from original A06-02.
+**DRAFT / NOT ISSUED,2026-11-01.** Version0.4 plan binds accepted S02 source8f373fa0/tree8f0d and ROOT-verified close48064f01. Exact dedicated rich-reference API/witness/native/logical observation contract and thirteen-path proposal are frozen for ROOT review, not source authority. All8 rows OPEN; source/index/ONEtarget ROOT QUIET, CC parked. Complete final prompt/readset/intake/root readiness remains required; original table binding cells are unchanged.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
