@@ -1,5 +1,7 @@
 # Arc06 — Integrated dictionary workbench
 
+**Current S05 technical proposal —2026-11-01:** source d8bd64e/tree d579 QUIET; actual31 unique independent calls (23zero/8typedone) PASS. Child8 close awaits ROOT canonical consistency; all8Arc/14project statuses remain OPEN, S06/S07 owners unchanged. Earlier dated metadata retains its as-of cutoff.
+
 **Current S04 CLOSED —2026-11-01:** ROOT consistency837c0c5c accepted source04fead62/tree7a34a1b4 and authorised8 child status-only DONE transitions. All8 Arc06/all14 project raw rows remain unchanged OPEN; source/index/ONEtarget QUIET. S05 Links/S06 computed/S07 fresh assembled/newconsumer/identifiedFull/Operator retain owners. Following dated proposal clauses retain their as-of scope.
 
 **Current S04 technical proposal —2026-11-01:** source04fead62/tree7a34a1b4 QUIET; independent31 (23zero/8typedone) PASS. S04 child close is pending ROOT canonical consistency; all8 Arc06/all14 project rows remain OPEN. Current S04 verifier governs exact grades; S05 Links/S06 computed/S07 fresh assembled+new consumer+Full/Operator remain. Earlier dated status/ownership paragraphs retain their as-of scope.

@@ -1,5 +1,7 @@
 # S05 — Bounded typed and source-clause Links
 
+**CURRENT S05 CDC TECHNICAL PASS / CANONICAL PROPOSAL,2026-11-01.** Source d8bd64e/tree d579 is clean; source/index/ONEtarget QUIET and CC parked. Actual31 unique independent calls (23zero/8typedone) passed across three launches with no product replay. Proposes eight child DONE pending ROOT consistency; ACTUAL all8S05/8Arc/14Project statuses remain OPEN. Original issued/correction packets and prior dated custody/hold clauses retain their as-of scope. S06 computed/S07 final and separate Operator obligations continue through ALL Arc06.
+
 **STATUS: ISSUED / CORRECTION02 OF FIVE / INTAKE ACCEPTED / TRANSFER READY,2026-11-01.** ROOT readback/transfer consistency PASS21090c1. AFTER named custody checkpoint and explicit CDC retained-Luna dispatch, CC exclusively owns EXACT17/source index/ONEtarget; ROOT/CDC read-only until authorQUIET. Prior intake/DRAFT/history wording retains its as-of cutoff; all8S05/8Arc/14ProjectOPEN and throughALLArc06 active.
 
 ## 1. Useful increment, reuse and compatibility
