@@ -1,0 +1,504 @@
+{
+  "scope": "UNISSUED source-derived finite oracles; static scalar/ID calculations and existing P01/engine policies, NOT product outputs. Complete actual dictionary source/hit/notice bodies compared against constructed pre-query input. Whole ordered identities/counts independent of Full-vs-Compact parity.",
+  "r1": {
+    "spelling_distance": {
+      "request": {
+        "version": 1,
+        "query": {
+          "operation": "spelling_distance",
+          "anchor": "farvi",
+          "max_distance": null
+        },
+        "options": {
+          "sources": [],
+          "alias_scope": "ActiveOnly",
+          "page_size": null,
+          "cursor": null
+        }
+      },
+      "rows": [
+        {
+          "assertion_id": "comp-owned-farvi",
+          "spelling": "farvi",
+          "distance": 0
+        },
+        {
+          "assertion_id": "comp-upstream-farvi",
+          "spelling": "farvi",
+          "distance": 0
+        },
+        {
+          "assertion_id": "comp-upstream-unsupported",
+          "spelling": "farvi",
+          "distance": 0
+        },
+        {
+          "assertion_id": "comp-upstream-ba",
+          "spelling": "ba",
+          "distance": 4
+        },
+        {
+          "assertion_id": "comp-upstream-missing-class",
+          "spelling": "klama",
+          "distance": 5
+        },
+        {
+          "assertion_id": "comp-owned-snime",
+          "spelling": "snime",
+          "distance": 5
+        },
+        {
+          "assertion_id": "comp-upstream-null-class",
+          "spelling": "snime",
+          "distance": 5
+        },
+        {
+          "assertion_id": "comp-upstream-lujvo",
+          "spelling": "latkerlo",
+          "distance": 6
+        }
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 8,
+        "distinct_spellings": 5,
+        "source_groups": 2
+      },
+      "exclusions": {}
+    },
+    "prosody": {
+      "query": {
+        "operation": "prosody",
+        "kind": "brivla",
+        "syllables": 2,
+        "nuclei": 2,
+        "primary_nucleus": 0
+      },
+      "ids": [
+        "comp-owned-farvi",
+        "comp-upstream-farvi",
+        "comp-owned-snime"
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 3,
+        "distinct_spellings": 2,
+        "source_groups": 2
+      },
+      "exclusions": {
+        "unmapped-source-class": 3,
+        "requested-kind-filter": 2
+      }
+    },
+    "nuclei": {
+      "query": {
+        "operation": "nuclei",
+        "kind": "brivla",
+        "pattern": [
+          "a",
+          "i"
+        ]
+      },
+      "ids": [
+        "comp-owned-farvi",
+        "comp-upstream-farvi"
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 2,
+        "distinct_spellings": 1,
+        "source_groups": 2
+      },
+      "exclusions": {
+        "unmapped-source-class": 3,
+        "requested-kind-filter": 2,
+        "nucleus-pattern-mismatch": 1
+      }
+    },
+    "contrast": {
+      "query": {
+        "operation": "contrast",
+        "anchor": "farvi",
+        "kind": "brivla",
+        "require_mismatch": true
+      },
+      "ids": [
+        "comp-owned-snime"
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 1,
+        "distinct_spellings": 1,
+        "source_groups": 1
+      },
+      "position_vowels": [
+        [
+          "a",
+          "i"
+        ],
+        [
+          "i",
+          "e"
+        ]
+      ],
+      "exclusions": {
+        "unmapped-source-class": 3,
+        "requested-kind-filter": 2,
+        "no-within-vowel-mismatch": 2
+      },
+      "distance_positions": [
+        {
+          "index": 0,
+          "anchor": "a",
+          "candidate": "i",
+          "total": 1,
+          "profile_id": "representatives-v1",
+          "source_id": "P01-S20261022@0195f4b5b1f182ce8e21381210f766b326fb987f",
+          "contributions": [
+            {
+              "dimension": "height",
+              "left": "open",
+              "right": "close",
+              "cost": 1
+            },
+            {
+              "dimension": "backness",
+              "left": "front",
+              "right": "front",
+              "cost": 0
+            },
+            {
+              "dimension": "rounding",
+              "left": "unrounded",
+              "right": "unrounded",
+              "cost": 0
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "anchor": "i",
+          "candidate": "e",
+          "total": 1,
+          "profile_id": "representatives-v1",
+          "source_id": "P01-S20261022@0195f4b5b1f182ce8e21381210f766b326fb987f",
+          "contributions": [
+            {
+              "dimension": "height",
+              "left": "close",
+              "right": "open-mid",
+              "cost": 1
+            },
+            {
+              "dimension": "backness",
+              "left": "front",
+              "right": "front",
+              "cost": 0
+            },
+            {
+              "dimension": "rounding",
+              "left": "unrounded",
+              "right": "unrounded",
+              "cost": 0
+            }
+          ]
+        }
+      ]
+    },
+    "components": {
+      "query": {
+        "operation": "components",
+        "components": [
+          "mlatu"
+        ]
+      },
+      "ids": [
+        "comp-upstream-lujvo"
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 1,
+        "distinct_spellings": 1,
+        "source_groups": 1
+      },
+      "decomposition": [
+        "mlatu",
+        "kerlo"
+      ],
+      "source_authority": "Pinned dependency README gives latkerlo→mlatu kerlo; actual local cached test_diagnostics/good.txt also observed but not claimed published/package golden authority. Indices derive actual two-component no-hyphen algorithm. The one-component request rejects an erroneous whole-sequence matcher; unchanged pure helper tests cover noncontiguity/multiplicity.",
+      "negative_component_orders": [
+        [
+          "kerlo",
+          "mlatu"
+        ],
+        [
+          "mlatu",
+          "mlatu"
+        ]
+      ],
+      "full_sequence_positive": [
+        "mlatu",
+        "kerlo"
+      ]
+    },
+    "compose": {
+      "query": {
+        "operation": "compose",
+        "definition_contains": "plum",
+        "links_from": "farvi",
+        "min_nuclei": 2,
+        "kind": "brivla"
+      },
+      "ids": [
+        "comp-owned-snime"
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 1,
+        "distinct_spellings": 1,
+        "source_groups": 1
+      },
+      "all_depth1_target_hop_ids": [
+        "comp-owned-snime",
+        "comp-upstream-null-class"
+      ],
+      "forbidden_seed_ids": [
+        "comp-owned-farvi",
+        "comp-upstream-farvi",
+        "comp-upstream-unsupported"
+      ],
+      "exclusions": {
+        "candidate-filter": 6,
+        "unmapped-source-class": 1
+      }
+    }
+  },
+  "analysis_core": {
+    "farvi": {
+      "mapped_word_kind": "brivla",
+      "nuclei": [
+        {
+          "spelling": "a",
+          "kind": "vowel",
+          "stress_countable": true
+        },
+        {
+          "spelling": "i",
+          "kind": "vowel",
+          "stress_countable": true
+        }
+      ],
+      "syllable_count": 2,
+      "primary_nucleus": 0,
+      "stress_status": "assigned-primary",
+      "diagnostics": []
+    },
+    "snime": {
+      "mapped_word_kind": "brivla",
+      "nuclei": [
+        {
+          "spelling": "i",
+          "kind": "vowel",
+          "stress_countable": true
+        },
+        {
+          "spelling": "e",
+          "kind": "vowel",
+          "stress_countable": true
+        }
+      ],
+      "syllable_count": 2,
+      "primary_nucleus": 0,
+      "stress_status": "assigned-primary",
+      "diagnostics": []
+    },
+    "ba": {
+      "mapped_word_kind": "cmavo",
+      "nuclei": [
+        {
+          "spelling": "a",
+          "kind": "vowel",
+          "stress_countable": true
+        }
+      ],
+      "syllable_count": 1,
+      "primary_nucleus": null,
+      "stress_status": "known-no-primary",
+      "diagnostics": []
+    }
+  },
+  "proposal": {
+    "request": {
+      "version": 1,
+      "query": {
+        "operation": "proposal_exact",
+        "spelling": "farvi",
+        "proposals": [
+          {
+            "namespace": "experiment-one",
+            "spelling": "farvi",
+            "text": "first reading"
+          },
+          {
+            "namespace": "experiment-two",
+            "spelling": "farvi",
+            "text": "second reading"
+          },
+          {
+            "namespace": "experiment-one",
+            "spelling": "farvi",
+            "text": "first reading"
+          },
+          {
+            "namespace": "experiment-one",
+            "spelling": "snime",
+            "text": "unmatched"
+          },
+          {
+            "namespace": " ",
+            "spelling": "",
+            "text": ""
+          }
+        ]
+      },
+      "options": {
+        "sources": [],
+        "alias_scope": "ActiveOnly",
+        "page_size": null,
+        "cursor": null
+      }
+    },
+    "totals": {
+      "unit": "caller_proposals",
+      "candidate_proposals": 5,
+      "records": 3
+    },
+    "rows": [
+      {
+        "id": "561410100f6a75f60b8c1d15ffaa94b110a9a05ef32f6bf22c65a6a1aea57d21",
+        "namespace": "experiment-two",
+        "spelling": "farvi",
+        "text": "second reading",
+        "input_ordinal": 1
+      },
+      {
+        "id": "e665ac3f2e96bf14d5809d81fda5b1c9f369364d9a0ae275af20512e54d01258",
+        "namespace": "experiment-one",
+        "spelling": "farvi",
+        "text": "first reading",
+        "input_ordinal": 0
+      },
+      {
+        "id": "e665ac3f2e96bf14d5809d81fda5b1c9f369364d9a0ae275af20512e54d01258",
+        "namespace": "experiment-one",
+        "spelling": "farvi",
+        "text": "first reading",
+        "input_ordinal": 2
+      }
+    ],
+    "empty_spelling_positive": {
+      "id": "2b7206453a4ba8fa60da58e995d0e95224e55aefa653674edcfa9bd9dfc85d0b",
+      "namespace": " ",
+      "spelling": "",
+      "text": "",
+      "input_ordinal": 4
+    },
+    "nonmatching_invalid_namespace_negative": {
+      "namespace": "captured:forbidden",
+      "spelling": "different",
+      "text": "must validate before filtering"
+    },
+    "constructor_hash_recipe": "SHA256(domain bytes relojban-lexicon-proposal-v1 + NUL then each namespace,spelling,text UTF8 preceded by BE u64 byte length); lowercase64 id no prefix"
+  },
+  "generate": [
+    {
+      "components": [
+        "mlatu",
+        "kerlo"
+      ],
+      "setting": "standard",
+      "spelling": "latkerlo",
+      "engine_score": 7937,
+      "component_indices": [
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          8
+        ]
+      ],
+      "score_function": "latkerlo_jvotci::get_lujvo_with_analytics",
+      "engine_id": "latkerlo-jvotci-2.10.2601/Standard"
+    },
+    {
+      "components": [
+        "mlatu",
+        "kerlo"
+      ],
+      "setting": "allow_y",
+      "spelling": "latkerlo",
+      "engine_score": 7937,
+      "component_indices": [
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          8
+        ]
+      ],
+      "score_function": "latkerlo_jvotci::get_lujvo_with_analytics",
+      "engine_id": "latkerlo-jvotci-2.10.2601/AllowY"
+    },
+    {
+      "components": [
+        "mlatu",
+        "kerlo"
+      ],
+      "setting": "force_y",
+      "spelling": "latkerlo",
+      "engine_score": 7937,
+      "component_indices": [
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          8
+        ]
+      ],
+      "score_function": "latkerlo_jvotci::get_lujvo_with_analytics",
+      "engine_id": "latkerlo-jvotci-2.10.2601/ForceY"
+    }
+  ],
+  "r2": {
+    "candidate_assertions": 7,
+    "candidate_distinct_spellings": 5,
+    "removed_from_current": [
+      "comp-owned-snime"
+    ],
+    "historical_r1_unchanged": true,
+    "compose_records": 0,
+    "prosody_ids": [
+      "comp-owned-farvi",
+      "comp-upstream-farvi"
+    ]
+  },
+  "evidence_grade": "Generation latkerlo/7937 from pinned dependency README; score independently follows source score formula; indices[0,3],[3,8] follow two actual joined no-hyphen rafsi lat+kerlo source algorithm. Local cached test_diagnostics/good.txt was separately read for decomposition/indices, not claimed published/package source authority. Three settings retain this no-hyphen example and prove setting/engine_id, NOT differential hyphen behavior. No pre-issue engine runtime. Components exclusion breakdown uses actual direct-engine/input-candidate author counterpart, not guessed parse acceptance. Contrast complete position bodies derive actual default P01 coordinate table/profile/source."
+}

@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "query": {
+    "operation": "proposal_exact",
+    "spelling": "farvi",
+    "proposals": [
+      {
+        "namespace": "experiment-one",
+        "spelling": "farvi",
+        "text": "first reading"
+      },
+      {
+        "namespace": "experiment-two",
+        "spelling": "farvi",
+        "text": "second reading"
+      },
+      {
+        "namespace": "experiment-one",
+        "spelling": "farvi",
+        "text": "first reading"
+      },
+      {
+        "namespace": "experiment-one",
+        "spelling": "snime",
+        "text": "unmatched"
+      },
+      {
+        "namespace": " ",
+        "spelling": "",
+        "text": ""
+      }
+    ]
+  },
+  "options": {
+    "sources": [],
+    "alias_scope": "ActiveOnly",
+    "page_size": null,
+    "cursor": null
+  }
+}

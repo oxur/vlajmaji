@@ -219,3 +219,7 @@ Actual first constructor test72095/101 reached one test/zero passed/one failed b
 | CORRECTION02/5 | arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt-iteration01.md | 2026-11-01 | DRAFT, readiness pending; recipe-amendment02 explicit normalized9/Lexical6, all remaining original duties retained. |
 
 2026-11-01 current authority: CORRECTION02/5 bounded intake accepted with fresh current-WIP/authority/protected checks; explicit SAME15/index/ONEtarget transfer follows named checkpoint. See execution dated acceptance; original A–G, all8OPEN and Arc06 endpoint unchanged.
+
+## 2026-11-01 — recipe-amendment03 DRAFT within CORRECTION02/5
+
+Shared ROOT/CDC pre-execution wire miss: actual AliasScope serializes ActiveOnly, not active_only. CC confirms no affectedJSON/protocol/example/producer/guide compile/run; only prior typedRustcontract tests ran. recipe-amendment03.md plus FIVE separatelynamed derived buffers and compactbaseline supersede ONLY alias_scope wire strings and their two typedprotocol hash/envelope/token derivations. Unchanged SPECamend02 + five new mapped buffers retain SAMEpublic6/new12/all54; all semantic counts/matches/body/positions/raw/history/settings/proposalIDs unchanged. Originals/amend01/02/issuedprompt2 remain verbatim. This is WITHIN active CORRECTION02/5, no pass03; affected literal/protocol hold pending ROOTreadiness/boundedreadback/explicitSAME15resume. No modelserde/productcompatibility change. All original A–G/gates/limits/eightOPEN rows/Arc06 endpoint preserved.
