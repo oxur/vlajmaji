@@ -1,6 +1,6 @@
 # S05 — Bounded typed and source-clause Links
 
-**STATUS: HOLD / CORRECTION02 OF FIVE DRAFT,2026-11-01.** First focused constructor exposed the issued r2 release/capture contradiction. ROOT approved narrow fixture amendment; CC SOURCE/index/ONEtarget remains affected-HOLD, ROOT/CDC readonly. No implementation/rerun transfer until whole iteration01 readiness, issue, bounded intake/fresh WIP pins and explicit CDC dispatch. All8S05/8Arc/14ProjectOPEN; prior issued records retain their as-of scope.
+**STATUS: ISSUED / CORRECTION02 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final whole draft readiness PASS at bb26b952/tree08646489. Retained Luna/high bounded actual intake/readback+fresh WIP/protected/env pins only; source/index/ONEtarget affected-HOLD until CDC accepted intake, ROOT consistency and explicit dispatch. Prior DRAFT clauses/history retain as-of cutoff; correction norm/original issued records unchanged. All8S05/8Arc/14ProjectOPEN; THROUGH ALL Arc06 active.
 
 ## 1. Useful increment, reuse and compatibility
 
