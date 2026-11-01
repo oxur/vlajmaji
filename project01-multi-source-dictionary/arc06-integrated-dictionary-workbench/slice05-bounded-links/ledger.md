@@ -1,6 +1,6 @@
 # S05 ledger — bounded Links
 
-**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final readiness PASS atcbd13368. Retained Luna/high CC reads completepacket/source/data and writes only artifacts/execution.md actualreadback; SOURCE/index/ONEtargetROOTQUIET until CDC acceptedintake/freshpins/explicitEXACT17transfer. Prior DRAFT/unissued/readiness clauses retain their as-of cutoff; every raw ledger cell unchanged/all8OPEN, all8Arc/14ProjectOPEN, THROUGH ALL Arc06 active.
+**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ACCEPTED / TRANSFER READY,2026-11-01.** Actualreadback+bounded clarification accepted/fresh81pins and protectedrefsPASS. AFTER named checkpoint+explicit CDCdispatch retained Luna/high CC owns EXACT17/index/ONEtarget, ROOT/CDCreadonly untilQUIET; beforedispatchROOTQUIET. Every rawledgercell unchanged/all8OPEN, all8Arc/14ProjectOPEN; issuedcontracts/data unchanged and THROUGH ALL Arc06 active.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
