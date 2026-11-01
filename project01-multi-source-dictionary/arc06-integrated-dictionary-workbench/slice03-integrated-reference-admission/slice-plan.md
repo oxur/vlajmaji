@@ -1,6 +1,6 @@
 # S03 — Complete integrated reference admission
 
-**Status: DRAFT / NOT ISSUED,2026-11-01.** Version0.3. S01 is accepted at4fc937dc/ROOT dda20. S02 is implemented and frozen at8f373fa0/tree8f0d with actual33 independent PASS; canonical child consistency/acceptance remains pending. Source/index/ONEtarget ROOT QUIET, CC parked. This is planning/source-read preparation only; all8 S03 rows OPEN. Final accepted S02 close/API pins, exact rich reference protocol/allowlist/readset/finite oracles and ROOT readiness are required before S03 issue.
+**Status: DRAFT / NOT ISSUED,2026-11-01.** Version0.3. S01 is accepted at4fc937dc/ROOT dda20. S02 is implemented and frozen at8f373fa0/tree8f0d with actual33 independent PASS; ROOT canonical child consistency PASS at reviewed a831fa18 authorised the actual8-row S02 close. Source/index/ONEtarget ROOT QUIET, CC parked. This is planning/source-read preparation only; all8 S03 rows OPEN. Final accepted S02 close/API pins, exact rich reference protocol/allowlist/readset/finite oracles and ROOT readiness are required before S03 issue.
 
 ## 1. Useful increment and retained owners
 
