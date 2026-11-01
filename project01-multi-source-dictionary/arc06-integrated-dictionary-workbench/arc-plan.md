@@ -85,7 +85,7 @@ The historical Q01–Q06 grouping is not a count of enum variants. Actual `searc
 | P01-08 | S01/S02 selected Unified-derived integration; earlier comparison and accepted timing exception retained, no new topology/performance campaign. |
 | P01-09 | S01 same-reader owned head/history binding and reviewed context; S02 revision lifecycle; S07 optional snapshot import route. Arc05 remains exact authoritative history, never edit derived/upstream data. |
 | P01-10 | S01/S04/S05/S06 all twelve variants and existing policies, final complete variant census. |
-| P01-11 | S01 pages0/1/several/source filtering and stale tokens; S02 source/default/remove/reload identity changes; S03 complete integrated metadata/reference sets. |
+| P01-11 | S01 pages0/1/several/source filtering and stale tokens; S02 source/default/remove/reload identity changes; S03 complete integrated metadata/reference sets; S04/S05 lexical/form/edge source/currentness/pages/detail and applicable S06 source-result controls. Pagination applies only where the eventual frozen API defines it; computation-only results retain their own contract. |
 | P01-12 | Distinct normalized1, journal1/2, owned snapshot1, derived schema and new workbench manifest1; explicit verify/build/refresh/migration/clean offline recipe through S07. |
 | P01-13 | Every increment preserves original source/content notices and publication holds separate from Apache code; no external redistribution authority. |
 | P01-14 | Independent child row walks/retrospectives, NEW actual assembled Sol/high and SAME canonical review, ROOT consistency, parent bubble-up; all14 stay OPEN pending separate project/Operator acceptance. |

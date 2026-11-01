@@ -1,6 +1,6 @@
 # S04 — Typed literal definitions and stored forms
 
-**DRAFT0.3 / UNISSUED / NOT READY,2026-11-01.** ROOT approved a source-grounded split after whole-review of drafts0.1/0.2, retained in Git7c429165/00368855: S04 delivers ReverseDefinition+stored Form; S05 owns bounded Links, its parser compatibility and relation/clause detail. No Links/edge request, response or detail stub is exposed by S04. Current source baseline8f373fa0/tree8f0d is accepted S02; S03 is WIP with CC exclusively owning its13paths/index/ONEtarget INITIAL/pass1. Final accepted S03/API reconciliation, exact source/wire/detail/oracle/readset/allowlist and ROOT readiness precede S04 issue. All8 child/eightarc/fourteenproject rows OPEN; through ALL Arc06 endpoint unchanged.
+**DRAFT0.3 / UNISSUED / NOT READY,2026-11-01.** ROOT approved a source-grounded split after review of draft0.1 and source-backed sizing; prior0.1/0.2 are retained in Git7c429165/00368855: S04 delivers ReverseDefinition+stored Form; S05 owns bounded Links, its parser compatibility and relation/clause detail. No Links/edge request, response or detail stub is exposed by S04. Current source baseline8f373fa0/tree8f0d is accepted S02; S03 is WIP with CC exclusively owning its13paths/index/ONEtarget INITIAL/pass1. Final accepted S03/API reconciliation, exact source/wire/detail/oracle/readset/allowlist and ROOT readiness precede S04 issue. All8 child/eightarc/fourteenproject rows OPEN; through ALL Arc06 endpoint unchanged.
 
 ## Useful result and additive boundary
 
