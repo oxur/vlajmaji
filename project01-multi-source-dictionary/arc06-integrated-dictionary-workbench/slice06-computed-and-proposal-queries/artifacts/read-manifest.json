@@ -1,0 +1,663 @@
+{
+  "status": "DRAFT_UNISSUED_ROOT_READINESS_PENDING",
+  "source": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "branch": "codex/project01-integrated-workbench",
+  "head": "d8bd64e248b7193f9244cbe527e7fac1f7926ce7",
+  "tree": "d5793d2dbc148558d4824afa5644d3c984284bf2",
+  "parent": "04fead62fde19cbeccb0181592197a292cac670d",
+  "allowance": [
+    {
+      "path": "crates/search/src/lib.rs",
+      "new": false
+    },
+    {
+      "path": "crates/search/src/dictionary.rs",
+      "new": false
+    },
+    {
+      "path": "crates/search/src/dictionary/projection.rs",
+      "new": false
+    },
+    {
+      "path": "crates/search/src/workbench.rs",
+      "new": false
+    },
+    {
+      "path": "crates/search/src/workbench/lexical.rs",
+      "new": false
+    },
+    {
+      "path": "crates/search/src/workbench/computed.rs",
+      "new": true
+    },
+    {
+      "path": "crates/search/src/workbench/links.rs",
+      "new": false
+    },
+    {
+      "path": "crates/search/src/presentation.rs",
+      "new": false
+    },
+    {
+      "path": "crates/search/examples/integrated_workbench.rs",
+      "new": false
+    },
+    {
+      "path": "crates/search/tests/workbench_computed_contract.rs",
+      "new": true
+    },
+    {
+      "path": "crates/search/README.md",
+      "new": false
+    },
+    {
+      "path": "crates/cli/src/main.rs",
+      "new": false
+    },
+    {
+      "path": "crates/cli/tests/workbench_computed_contract.rs",
+      "new": true
+    },
+    {
+      "path": "docs/integrated-workbench.md",
+      "new": false
+    },
+    {
+      "path": "README.md",
+      "new": false
+    }
+  ],
+  "source_files": {
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/AGENTS.md": {
+      "bytes": 8404,
+      "sha256": "3775aeaad14a5c1eca7edc52d061f39130b1f24ba9fd6dc9f4f537a7282914d7",
+      "required_text_or_data_scope": "WHOLE; actual Rust1.98/contribution/test_ names/lints/native paths/errors/adjacent canonical trailers."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.toml": {
+      "bytes": 961,
+      "sha256": "256e08fe4e4da6c867edc5aaed4fb20726efd48143c6029e103966b6e6192aa4",
+      "required_text_or_data_scope": "WHOLE; actual workspace tools/edition/source dependency paths; READONLY no dependency change."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.lock": {
+      "bytes": 32280,
+      "sha256": "56fe1cbb2b6eee50e82aa46b2532c6019bdc4872751e01dbeae0167b6012a689",
+      "required_text_or_data_scope": "DATA WHOLE package identities+edges/current SHA; no regeneration."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/Cargo.toml": {
+      "bytes": 928,
+      "sha256": "9d45688f40eb4b797277033e6e89d5e93aad6688bdbefcee245552f60425490f",
+      "required_text_or_data_scope": "WHOLE; default=[]/optional morphology, actual helper/example feature provenance; READONLY."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/Cargo.toml": {
+      "bytes": 785,
+      "sha256": "16e7a2e5bbcda5af1b955fd5d78e6371a58279b3b37243da860f3e7521187575",
+      "required_text_or_data_scope": "WHOLE; existing morphology enabling search dependency/serde_json only; READONLY."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/lib.rs": {
+      "bytes": 60101,
+      "sha256": "b78cc3f5952659eb75dcb8d277b56111ee51d9f9c0c728eb597b4e1371b0126f",
+      "required_text_or_data_scope": "COMPLETE public Query/results/Nucleus/DistancePosition/ComputedValue/SearchError/policy constants and ALL eight algorithm match arms/final sort; source_kind/source_native_class/parse_kind/analyze/valid_component/guarded_generate/guarded_veljvo/ordered_subsequence+inline helper tests. Preserve exact old semantics while factoring pure class table/helpers."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary.rs": {
+      "bytes": 123283,
+      "sha256": "b0e8e107972fdee89ce1e55017f8a246604985620e6c9bf38cbc815203d70068",
+      "required_text_or_data_scope": "COMPLETE retained engine/maps/selected_assertions+build_selected_assertions, lexical_link_rows/lexical_link_hit/evidence, make_hit/actual state and availability/typed Hit DTO; literal existing Full setup/error scope. New borrowed candidate phase/page hydration only."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary/projection.rs": {
+      "bytes": 144809,
+      "sha256": "7fdf0b6037052b6f3869dacbf29368fd615b02483da15192723e4289554df65b",
+      "required_text_or_data_scope": "COMPLETE cached retained document/index uses, lexical_link_rows/lexical_link_hit/evidence and compact_hit, state/snapshot/availability and required-row closures. No Full setup/persistent index; actual cfg(test) cached-document control seam READ for patterns, no extra corruption case."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary/borrowed.rs": {
+      "bytes": 26575,
+      "sha256": "f511722ed486643fa9b6c0496d3fcaed90ff0a1d5514452a7139c8dffa3e8293",
+      "required_text_or_data_scope": "COMPLETE index_document/source_views and actual Head.active intersect selected Available release assertion IDs, existing borrowed maps/ordinals. READONLY no new persistent indices."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/workbench.rs": {
+      "bytes": 46947,
+      "sha256": "714b9b45611e969095d2fdf4792a888dee51be8c30565b6715507fdcee4ae953",
+      "required_text_or_data_scope": "COMPLETE errors/public exports/Full+Compact cache setup/direct+configured actual binding and pre/post freshness/readers scopes; pure units must avoid both providers."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/workbench/lexical.rs": {
+      "bytes": 113889,
+      "sha256": "20ea8397fa4d8f866c77fc9ed8db7a7d99619595788aca5303fdce32baa108c1",
+      "required_text_or_data_scope": "WHOLE strict request/options/results/required nulls/new operation-tagserde/error/cursor query4/body6/ALL existing position variants/guards/direct+configured dispatch/private writer windows. Existing wires/details/typed setup wrapping preserved."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/workbench/links.rs": {
+      "bytes": 92399,
+      "sha256": "90d0a4d8112fa11aaebd5e13dee7b779e72801792dd8aae6397a33207f4d8ebd",
+      "required_text_or_data_scope": "COMPLETE borrowed graph candidate/confirmed/current/Lexical/source rules, operation-local cache/direction/BFS/target-hop canonical set/page hydrate and private Full/Compact builder seams. Compose reuses same depth1 target IDs, not associated union/seeds/public guard."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/workbench/reference.rs": {
+      "bytes": 60002,
+      "sha256": "06d8b289ad9c43cfad4285935ba29c3e1b38a626f16f09dee712b9b6e1336ef2",
+      "required_text_or_data_scope": "COMPLETE four private rich-inner resolution/admission/format native status/result closures used by Links and all four public wrapper pre/capturedResult/drop/hook/NEWpost boundaries. READONLY preserve accepted native policies, no matcher edit allowance."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/presentation.rs": {
+      "bytes": 21269,
+      "sha256": "d53e558a632c60eb99fc8a191a1df25c20fa75258cf649b8c214edf697f0913c",
+      "required_text_or_data_scope": "COMPLETE accepted lexical/Links/form/detail renderers and exact JSON helper/outer labels; append flat computed/proposal/generate readable branches preserving old labels/bytes."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/examples/integrated_workbench.rs": {
+      "bytes": 186647,
+      "sha256": "d3a2659c3b37c90513dae9f6ff2c889409a27219a5b2d1d5523486896788ca86",
+      "required_text_or_data_scope": "WHOLE actual old42 path-qualified emission/owned genesis+edits/registry/release/whole-prefix constructors/direct historical vs configured HEAD/config4 stage order; extend separate computed workspace/emission, no old byte rewrite. Actual nested lexical result shape used by observer."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/workbench_lexical_contract.rs": {
+      "bytes": 101826,
+      "sha256": "5c8f36e705e14409f76d960af7a4902bfef7bf4bac67f8319c901e6ed4c55512",
+      "required_text_or_data_scope": "COMPLETE self-contained typed/source/owned-history/actual input body/page/exclusion/advisory controls; READONLY constructor patterns, no sibling include."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/workbench_links_contract.rs": {
+      "bytes": 84047,
+      "sha256": "0e96b14f7cf28e05d617773934e09548f0c2d7c522d62df29eb5c8de2c7434bb",
+      "required_text_or_data_scope": "WHOLE current fixed mixed/Head-release construction, target-hop versus associated union/source filtering/current history/body controls; READONLY copy only minimal validated recipe, no sibling include."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/corpus_contract.rs": {
+      "bytes": 14027,
+      "sha256": "6189f0982975f20eb6bebf4625cac602109a2e8e8c25bed8bc5bae8b3688a515",
+      "required_text_or_data_scope": "WHOLE legacy Query/scalar/nativeclass/Contrast/proposal/feature-off tests and tiny captured identical-population fixture; READONLY algorithm regression evidence, not new result oracle from live output."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/src/main.rs": {
+      "bytes": 226226,
+      "sha256": "fabd177b07637a3782c360bf73743fe7c2aa11ca3bc6b0ae7afc901979fd39d2",
+      "required_text_or_data_scope": "COMPLETE Workbench direct/configured lexical PathBuf request/strict decode BEFORE open, lexical_query_error/all existing named/future errors, read-only managed contexts and shared native/output emitter. Extend explicit Computation/Proposal current arms only; all12 guide syntax actual."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/tests/workbench_lexical_contract.rs": {
+      "bytes": 31239,
+      "sha256": "cc95406a9dec157d7e98c85acc89c9c7e9650908ead786ff8b0ad3adf76712f7",
+      "required_text_or_data_scope": "WHOLE portable scratch64/native Unicode/deletedcwd/Other/BrokenPipe/rawcapability/bytes-preservation/helper-parent controls; READONLY common route source/inherited grades, no sibling include."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/tests/workbench_links_contract.rs": {
+      "bytes": 60130,
+      "sha256": "007860ed625d9ed4768668bf21c83fa05494dbbc819c3daa47e3c8d36c120648",
+      "required_text_or_data_scope": "WHOLE current Links complete Readable semantic/actual CLI/native/emitter controls and actual result.response envelope shape; READONLY no sibling include."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/lib.rs": {
+      "bytes": 54399,
+      "sha256": "52d4f7aa8eab717bbbc99cc363637d1f4acb1bb27890b83becd7e55ce092a4e3",
+      "required_text_or_data_scope": "COMPLETE Proposal struct/private fields/getters/new and ImportError variants/Display/Error, actual proposal_id domain+BEu64 tuple; legacy add/lookup duplicates/stable ordering; source-format native-class getters. READONLY no unchecked Deserialize/constructor tighten."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/dictionary.rs": {
+      "bytes": 94483,
+      "sha256": "0af2e5e18a2698a58532d6a158d8bc31812e0a30b20ec7a1c53e4aa90a5dc677",
+      "required_text_or_data_scope": "COMPLETE Source/Entry native Presence/Assertion Eligibility/Context Note/RawCapture/RawOccurrence/CaptureRef/CodeNotice/release accounting/owned revision/head DTOs and ALL called Dictionary validation closure for source/evidence/capture/release/owned/native/history. READONLY."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/registry.rs": {
+      "bytes": 36161,
+      "sha256": "8d999e93c114dfd4e66a60de651c378d4c72ca721c9436f31881e1cf75fbc1e4",
+      "required_text_or_data_scope": "COMPLETE actual SourceId/SourceOrigin/SourceRecord/aliases/AliasScope/resolve_source/SnapshotIdentity/RecordIdentity/CaptureRef relations/constructor validation. READONLY."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/llg.rs": {
+      "bytes": 51536,
+      "sha256": "4489e1e9f9c5e37508e30bea84318a15736bafe00f00b7ef83faadc6651c39f6",
+      "required_text_or_data_scope": "COMPLETE ComponentKind normalizer_format, parse_gismu/parse_cmavo actual byte fields and normalize_dictionary_snapshot Entry.native_word_class=Missing plus actual raw payload/registry/evidence constructors. READONLY; per-assertion real fixed capture fallback, not fake native Entry rewriting."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/pack.rs": {
+      "bytes": 25384,
+      "sha256": "d6cd719bf7eb67df9a51852fe05f06b4dfee41e5441be4bb69faab5d250253ed",
+      "required_text_or_data_scope": "COMPLETE seal/load/compose_dictionaries keyed equal overlapping rows/final validation; mixed pack noHead vs one journalHead. READONLY."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/owned_snapshot.rs": {
+      "bytes": 41892,
+      "sha256": "8e7b38af944bb31e10c5e7c46157dbd7f672395fa3ce30867b77ba982871b257",
+      "required_text_or_data_scope": "COMPLETE genesis/validate_adjacent/owned-base called closures; revision+1/head/release/capture and immutable prefixes. READONLY."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/owned_curation.rs": {
+      "bytes": 47647,
+      "sha256": "d779f21845bd1b103c2e1fbd9eb2d9ebfe02eb3acdd3a0768d305d39665913de",
+      "required_text_or_data_scope": "COMPLETE validate_owned_base/current revision active/tombstone/removal ordering; READONLY constructor closure."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/owned.rs": {
+      "bytes": 118754,
+      "sha256": "01017c0a0e059d03124768cf0fa95c77f80fcdca4939bdaf4efa0d8eb73b780b",
+      "required_text_or_data_scope": "COMPLETE oneSource/oneHead/genesis/edit/reader complete retained metadata/writer transaction closure. R2 complete two-row capture release still both, Head one/tombstone other. READONLY."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/workbench.rs": {
+      "bytes": 85232,
+      "sha256": "037d739fd1c946c98dc0d33257238777855e79b91e0e27c2be9e59d68cb32104",
+      "required_text_or_data_scope": "COMPLETE capture_catalogue/capture_owned/build compose+selected release ID union/Head versus explicit historical binding/freshness/drop; READONLY."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/workbench_profiles.rs": {
+      "bytes": 87218,
+      "sha256": "55364e82c690beaccc2703961bb04c4e9479c6430c359acff9c018f5f76fca7c",
+      "required_text_or_data_scope": "COMPLETE configure/default/refresh/clearactive/ensure_current/read/absolute_path/typed IdentityPayload9 order/effective binding; config3 versus4 and preparedseq0/1. READONLY."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/docs/integrated-workbench.md": {
+      "bytes": 29090,
+      "sha256": "2fcc1a3b4dc2ee357f694437b386954a2bc8eea3f41024ad82195735bcbcc213",
+      "required_text_or_data_scope": "WHOLE existing output-parent guide/native request/ref/output paths/all earlier stages; append exact12 computed guide with captured launcher/env/terminal."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/README.md": {
+      "bytes": 8499,
+      "sha256": "09bc24182e1f5d63afae578350aedb822b4cdc4f3822da9543318a05fb590e3a",
+      "required_text_or_data_scope": "WHOLE current worktree0.3dev versus published0.2 surface; document8 families/threeunits/feature modes truthfully."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/README.md": {
+      "bytes": 15563,
+      "sha256": "4b24cd745cf54cceb88df52ab26cc8c339d86b472dc74824ae1444bcdb61eea2",
+      "required_text_or_data_scope": "WHOLE public packaging/development state; no false registry availability."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/.github/workflows/ci.yml": {
+      "bytes": 3688,
+      "sha256": "2e85d4f406b1954a148318ccf88b5aa01595430dff959d9caf81778509077e7b",
+      "required_text_or_data_scope": "WHOLE actual four Synthetic pack fixture commands/CORRECT five destinations+owned curation/export/workspace allfeatures; READONLY."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Makefile": {
+      "bytes": 13617,
+      "sha256": "fbf5af53bcc41350e2376c79a0d552c81bc4053efae4b32f661a50544ede4ace",
+      "required_text_or_data_scope": "COMPLETE fmt/fmt-check/lint/check/test-default/no-default/test-all-features/package recipes and CARGO+toolchain invocation; READONLY no cargo make."
+    },
+    "/Users/oubiwann/lab/oxur/bauske/crates/phonology/src/context.rs": {
+      "bytes": 28415,
+      "sha256": "b8a6662b8e597f0d16e17525f5fafc098654a2cbd6034087545b5d4bec9f4b64",
+      "required_text_or_data_scope": "COMPLETE analyze_word and native word-kind/diagnostics/nucleus extraction used by unchanged search analyze; READONLY exact source-derived finite farvi/snime/ba analysis."
+    },
+    "/Users/oubiwann/lab/oxur/bauske/crates/phonology/src/prosody.rs": {
+      "bytes": 38221,
+      "sha256": "fc42fce346570e359143702ef4d162425f07133fc1a2029c6416e1ea8a304e9d",
+      "required_text_or_data_scope": "COMPLETE canonical syllabify and assign_stress default/content/Cmavo/FollowingContextUnspecified/known-no-primary/error paths; READONLY."
+    },
+    "/Users/oubiwann/lab/oxur/bauske/crates/phonology/src/distance.rs": {
+      "bytes": 13247,
+      "sha256": "122d00b2a5ccedf04a0094176f4e4c6a08b9dbb86827d6adb8e59e217ef9a8b1",
+      "required_text_or_data_scope": "COMPLETE default representatives/profile/research source/feature contributions and compare for a→i/i→e; READONLY literal Contrast body oracle."
+    },
+    "/Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/latkerlo-jvotci-2.10.2601/README.md": {
+      "bytes": 696,
+      "sha256": "fb40d4bcc7ebd9ca01a036154994a3fe63e380de0d1f45db0f559162e31f0f38",
+      "required_text_or_data_scope": "WHOLE existing pinned dependency README latkerlo decomposition and7937; READONLY no code/runtime/mutation."
+    },
+    "/Users/oubiwann/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/latkerlo-jvotci-2.10.2601/src/jvozba.rs": {
+      "bytes": 24591,
+      "sha256": "aeab0f2a1baecb4494238d0c9b58fcd581859adb9c6a905255427463b77dc4bf",
+      "required_text_or_data_scope": "COMPLETE score/get_lujvo_with_analytics and called two-component nohyphen combination/index branches, actual settings distinction; READONLY static source authority, no engine runtime."
+    }
+  },
+  "closed_s05": {
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/cdc-verification.md": {
+      "bytes": 11946,
+      "sha256": "85ad4eb11aee3dddaaacbdf266ffd7ff43834348888bd2f1b7e4bb9bc7af6ef1"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/closing-report.md": {
+      "bytes": 4750,
+      "sha256": "63f0533446715adbb86e64a39d71f7018de628790eac8b095f5a8d37ec6bf4e5"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/retro.md": {
+      "bytes": 6419,
+      "sha256": "2a4b799561378b4e669664f407d88e041021b3a0da7f26316b61722edee912d0"
+    }
+  },
+  "old42_path_qualified_input_authorities": {
+    "inputs/expected.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/expected.json",
+      "bytes": 1093,
+      "sha256": "91f63128c7801de531ddb014857cedbaa1536ab4af49a52f934405fd946a0765",
+      "emitted_relative_path": "inputs/expected.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/historical-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/historical-selection.json",
+      "bytes": 133,
+      "sha256": "7f40fbc8fbcab37660ec8e3498fe38a848316f54c140656c73e942f497617b85",
+      "emitted_relative_path": "inputs/historical-selection.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/owned-r1.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/owned-r1.json",
+      "bytes": 5652,
+      "sha256": "372fcce44cf1dd1f0d2d37b8b42927a25ac227f3d6f1e846856d8097896e4286",
+      "emitted_relative_path": "inputs/owned-r1.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/owned-r2.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/owned-r2.json",
+      "bytes": 8282,
+      "sha256": "b0a46586e5bba2817593f7cb0a5bdfb9a9897391fa1f4383ec4dd1b1217c69c7",
+      "emitted_relative_path": "inputs/owned-r2.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/owned-seed.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/owned-seed.json",
+      "bytes": 2062,
+      "sha256": "6d7e6c61892e1f5027e675ac8b32441044460cf1ee0359c179729196b087e0e8",
+      "emitted_relative_path": "inputs/owned-seed.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/request.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/request.json",
+      "bytes": 163,
+      "sha256": "e868dd2d63d21ca68e2d4ec6bf157993af269aaa3fe82c1d4ba89ac08af3470b",
+      "emitted_relative_path": "inputs/request.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/selection.json",
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5",
+      "emitted_relative_path": "inputs/selection.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/upstream-dictionary.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/upstream-dictionary.json",
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279",
+      "emitted_relative_path": "inputs/upstream-dictionary.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/upstream-release.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/upstream-release.json",
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279",
+      "emitted_relative_path": "inputs/upstream-release.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/upstream-seal.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/upstream-seal.json",
+      "bytes": 474,
+      "sha256": "0d43c55ce524c4c3d8d4f7f422dca7b0d4b0a4330b1e332fc12a83b2584dd9e9",
+      "emitted_relative_path": "inputs/upstream-seal.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/upstream.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/upstream.json",
+      "bytes": 83,
+      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5",
+      "emitted_relative_path": "inputs/upstream.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/profile-alpha-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/profile-alpha-selection.json",
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5",
+      "emitted_relative_path": "inputs/profile-alpha-selection.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/profile-beta-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/profile-beta-selection.json",
+      "bytes": 67,
+      "sha256": "beeda00574bd9e1642c0f6a8b1771e9bc6fa836b4db601e2f414148579f1fe37",
+      "emitted_relative_path": "inputs/profile-beta-selection.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "inputs/profiles-expected.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/profiles-expected.json",
+      "bytes": 214,
+      "sha256": "fca09ccd0d28cc2f12e5f1aeecdf61b2862a45f967d6fb39e62361e3a7940bb9",
+      "emitted_relative_path": "inputs/profiles-expected.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/reference-inputs/reference-owned-entry.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/reference-owned-entry.json",
+      "bytes": 39,
+      "sha256": "ea3efd655902cb677499047d2af35fa1fc8aad6c13d2a4ab876967732d0b5893",
+      "emitted_relative_path": "artifacts/reference-inputs/reference-owned-entry.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/reference-inputs/reference-owned-assertion.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/reference-owned-assertion.json",
+      "bytes": 43,
+      "sha256": "8538c3fe9250d7236b67184edd76ad3ab54e4b8664b9818d9923b4f805a70acf",
+      "emitted_relative_path": "artifacts/reference-inputs/reference-owned-assertion.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/reference-inputs/reference-upstream.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/reference-upstream.json",
+      "bytes": 340,
+      "sha256": "7434b3aa7c3416f597d9567e2783e6d2553beeefb94dfb96e7c22cbbfe378d70",
+      "emitted_relative_path": "artifacts/reference-inputs/reference-upstream.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/reference-inputs/reference-unknown.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/reference-unknown.json",
+      "bytes": 9,
+      "sha256": "14c4849191d018fc8b00b02dc1e49d9f8b36a152066023b3b4c609b2f62ba328",
+      "emitted_relative_path": "artifacts/reference-inputs/reference-unknown.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/reference-inputs/reference-unresolved.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/reference-unresolved.json",
+      "bytes": 40,
+      "sha256": "74bbd4c69ea0e90d3b71b4dbd6158f1018a56c85b3da7d956a41508a39be0fdc",
+      "emitted_relative_path": "artifacts/reference-inputs/reference-unresolved.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/reference-inputs/reference-disabled-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/reference-disabled-selection.json",
+      "bytes": 89,
+      "sha256": "cc7756a611566ef3e82bb61f3e562cd3145ac6962937a4353e6c0b78eca014c2",
+      "emitted_relative_path": "artifacts/reference-inputs/reference-disabled-selection.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/reference-inputs/reference-expected.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/reference-expected.json",
+      "bytes": 529,
+      "sha256": "43687f3379aa83c419d5915641992debd80d5ab43b663ad66208fc6fe35bc714",
+      "emitted_relative_path": "artifacts/reference-inputs/reference-expected.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/lexical-inputs/lexical-upstream.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/lexical-upstream.json",
+      "bytes": 6986,
+      "sha256": "3684b05a345d5c0d592b488b4a48ef8afff0886741e91e1f26f5688ea16dd372",
+      "emitted_relative_path": "artifacts/lexical-inputs/lexical-upstream.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/lexical-inputs/lexical-owned-seed.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/lexical-owned-seed.json",
+      "bytes": 1955,
+      "sha256": "9431a242c37ff1b1deafb482cf666ea5d7d1a4352325fa3e108e3ca79d100186",
+      "emitted_relative_path": "artifacts/lexical-inputs/lexical-owned-seed.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/lexical-inputs/lexical-owned-r1.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/lexical-owned-r1.json",
+      "bytes": 7027,
+      "sha256": "1b964429a96ef6aef9a8e94de092fc5a7f0a61bff3d25145b9d4f193ef3180b1",
+      "emitted_relative_path": "artifacts/lexical-inputs/lexical-owned-r1.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/lexical-inputs/lexical-owned-r2.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/lexical-owned-r2.json",
+      "bytes": 9491,
+      "sha256": "c07605f8483b282e6b713241f5037ec1b957822171d400ce568ddfcd4c598268",
+      "emitted_relative_path": "artifacts/lexical-inputs/lexical-owned-r2.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/lexical-inputs/lexical-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/lexical-selection.json",
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5",
+      "emitted_relative_path": "artifacts/lexical-inputs/lexical-selection.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/lexical-inputs/lexical-historical-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/lexical-historical-selection.json",
+      "bytes": 141,
+      "sha256": "9105f55b42b68219c0c99977ab89c11a08515c0808f3ff65c0f93b37ccacd71c",
+      "emitted_relative_path": "artifacts/lexical-inputs/lexical-historical-selection.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/lexical-inputs/cursor-protocol-oracle.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/cursor-protocol-oracle.json",
+      "bytes": 2914,
+      "sha256": "d8d3407ae95366c0a8a8297d19668bc352646b97491d51f15de300edb5cbb24d",
+      "emitted_relative_path": "artifacts/lexical-inputs/cursor-protocol-oracle.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/lexical-inputs/form-all.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/form-all.json",
+      "bytes": 170,
+      "sha256": "a387b2b93c28b436f1cf39673544eb80d7a803ca9e196919d4c3d772696aa353",
+      "emitted_relative_path": "artifacts/lexical-inputs/form-all.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/lexical-inputs/lexical-expected.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/lexical-expected.json",
+      "bytes": 2625,
+      "sha256": "dab2dd0cbab06f269f081343c28ac2f3bcd45e1427818259a4296e045c5bfb0a",
+      "emitted_relative_path": "artifacts/lexical-inputs/lexical-expected.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/lexical-inputs/reverse-grow.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/independent-proof/inputs/reverse-grow.json",
+      "bytes": 157,
+      "sha256": "296c72534ad6d9afb654d7c087b59c453c84b0453a9eb83dd5b0da56542fefe0",
+      "emitted_relative_path": "artifacts/lexical-inputs/reverse-grow.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/links-inputs/mixed-pack-r1.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/independent-proof/inputs/artifacts/links-inputs/mixed-pack-r1.json",
+      "bytes": 29100,
+      "sha256": "f886533556e8bccdcc5d8dade8c55f3e128d38ba4c26b85f63c624c5186c93c8",
+      "emitted_relative_path": "artifacts/links-inputs/mixed-pack-r1.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/links-inputs/owned-r0.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/independent-proof/inputs/artifacts/links-inputs/owned-r0.json",
+      "bytes": 2932,
+      "sha256": "cb1d04451da1449dfd5c5ba24498775faa1b11c4ddff35eb0aa844757ba48eef",
+      "emitted_relative_path": "artifacts/links-inputs/owned-r0.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/links-inputs/owned-r1.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/independent-proof/inputs/artifacts/links-inputs/owned-r1.json",
+      "bytes": 11858,
+      "sha256": "32d4a383329cde13d7d981c85dbe45168bd028f007bf2f7c38b48ee4c99459ea",
+      "emitted_relative_path": "artifacts/links-inputs/owned-r1.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/links-inputs/owned-r2.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/independent-proof/inputs/artifacts/links-inputs/owned-r2.json",
+      "bytes": 13657,
+      "sha256": "5f27a3ff4bc380742421688f8ecc47dfeb0704b2ed4e119e8eff466dd27c05a1",
+      "emitted_relative_path": "artifacts/links-inputs/owned-r2.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/links-inputs/selection-head.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/independent-proof/inputs/artifacts/links-inputs/selection-head.json",
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5",
+      "emitted_relative_path": "artifacts/links-inputs/selection-head.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/links-inputs/selection-historical-r1.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/independent-proof/inputs/artifacts/links-inputs/selection-historical-r1.json",
+      "bytes": 139,
+      "sha256": "05eb7d246a0ff4aaf3c28b4bbab59703525a3cc4f17b03cc8a7ce8277823b234",
+      "emitted_relative_path": "artifacts/links-inputs/selection-historical-r1.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/links-inputs/links-depth1.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/links-inputs/links-depth1.json",
+      "bytes": 216,
+      "sha256": "5afeb8f7a666f67e35a897a2e3938df1ccc6dcf36168f2379ee608e5aea7215c",
+      "emitted_relative_path": "artifacts/links-inputs/links-depth1.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/links-inputs/links-depth2.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/links-inputs/links-depth2.json",
+      "bytes": 216,
+      "sha256": "328008543cedc71043d33a7ee77534aaffc96cae18ac0548fe6dcf7f23216b2e",
+      "emitted_relative_path": "artifacts/links-inputs/links-depth2.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/links-inputs/links-fixture-spec.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/links-inputs/links-fixture-spec-iteration01.json",
+      "bytes": 12694,
+      "sha256": "194a2dbd72b02bf7153a63f58f6a3ffa8702b051a431e6e08cc6191c6e4e63e5",
+      "emitted_relative_path": "artifacts/links-inputs/links-fixture-spec.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/links-inputs/links-expected.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/links-inputs/links-expected.json",
+      "bytes": 15575,
+      "sha256": "afabffea2036b774c32099ca131702ded9841fa4089eead209ab6db52a860017",
+      "emitted_relative_path": "artifacts/links-inputs/links-expected.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    },
+    "artifacts/links-inputs/links-cursor-protocol.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/links-inputs/links-cursor-protocol.json",
+      "bytes": 3088,
+      "sha256": "6c02bf9e588be03cadbfabcd79648d0b74f3ab40308c7830d973eb389912671e",
+      "emitted_relative_path": "artifacts/links-inputs/links-cursor-protocol.json",
+      "authority": "Accepted S05 frozen proof pre-child INPUT authority; PATH-qualified, not response; preserve WHOLE bytes and earlier stage semantics."
+    }
+  },
+  "new6_literal_authorities": {
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-cursor-protocol.json": {
+      "bytes": 6447,
+      "sha256": "7b380721fec91e3d6a9a880b48bad55e40f49a8afb0b4687cc40663c41052cad",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-cursor-protocol.json",
+      "required_text_or_data_scope": "WHOLE JSON and all fields/arrays/typed byte strings; source-derived static DRAFT authority, no runtime constructor claim."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-expected.json": {
+      "bytes": 13351,
+      "sha256": "69ff9a58ea37c76252382e7733dd7e687d5a96e21d2210cf1aa2795a8e632ae3",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-expected.json",
+      "required_text_or_data_scope": "WHOLE JSON and all fields/arrays/typed byte strings; source-derived static DRAFT authority, no runtime constructor claim."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-fixture-spec.json": {
+      "bytes": 11314,
+      "sha256": "95808d4a2e039dda5d7fee6686298dc77f1abd28404f87a11712ab88b7fd8e06",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-fixture-spec.json",
+      "required_text_or_data_scope": "WHOLE JSON and all fields/arrays/typed byte strings; source-derived static DRAFT authority, no runtime constructor claim."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-generate-request.json": {
+      "bytes": 263,
+      "sha256": "1775e5457595728ad8c4506100fd32e6860e03173adcaaf3a9b8169459a3f6a8",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-generate-request.json",
+      "required_text_or_data_scope": "WHOLE JSON and all fields/arrays/typed byte strings; source-derived static DRAFT authority, no runtime constructor claim."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-proposal-request.json": {
+      "bytes": 787,
+      "sha256": "22ceee315703f15e56e18162e386834de9c44bf33c8e06dbd54e9c04db78588f",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-proposal-request.json",
+      "required_text_or_data_scope": "WHOLE JSON and all fields/arrays/typed byte strings; source-derived static DRAFT authority, no runtime constructor claim."
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-source-request.json": {
+      "bytes": 238,
+      "sha256": "204951620d2103ab8f7668f2702c20c544486f376e10fba3bd0e2c9711c39be3",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-source-request.json",
+      "required_text_or_data_scope": "WHOLE JSON and all fields/arrays/typed byte strings; source-derived static DRAFT authority, no runtime constructor claim."
+    }
+  },
+  "new12_emitted_paths": [
+    "artifacts/computed-inputs/mixed-pack-r1.json",
+    "artifacts/computed-inputs/owned-r0.json",
+    "artifacts/computed-inputs/owned-r1.json",
+    "artifacts/computed-inputs/owned-r2.json",
+    "artifacts/computed-inputs/selection-head.json",
+    "artifacts/computed-inputs/selection-historical-r1.json",
+    "artifacts/computed-inputs/computed-fixture-spec.json",
+    "artifacts/computed-inputs/computed-expected.json",
+    "artifacts/computed-inputs/computed-source-request.json",
+    "artifacts/computed-inputs/computed-proposal-request.json",
+    "artifacts/computed-inputs/computed-generate-request.json",
+    "artifacts/computed-inputs/computed-cursor-protocol.json"
+  ],
+  "environment": {
+    "/tmp/vlajmaji-p01-a05-cargo": {
+      "bytes": 330,
+      "sha256": "426d1e49863551fe37252cecb8d36f8fb58410670fc550c6deedc89ddb92f53d"
+    },
+    "/private/tmp/vlajmaji-p01-a06-s01-original-env.sh": {
+      "bytes": 2287,
+      "sha256": "ae749d0dd537499b254fd4e9fc35980345eabf5e1164c41817e62eacc58b2c86"
+    }
+  },
+  "toolhomes": {
+    "CARGO_HOME": "/Users/oubiwann/.cargo",
+    "RUSTUP_HOME": "/Users/oubiwann/.rustup"
+  },
+  "path_sha256": "f7af29286b33342886cb96026c90a8bfcbbb7e3cfaef920ed73086ab33d3a53d",
+  "RUSTUP_AUTO_INSTALL": "0",
+  "protected_refs": {
+    "main": "cb13d377aeba85c1b76a9173abb22bedd535ac69",
+    "codex/project01-owned-dictionary": "69a9f68507e23cef9b20e4bcabc86840e224689e",
+    "bauske_head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+    "bauske_tree": "e5715eb87df84165ecba8b43cd35949ae9457695",
+    "origin/main": "cb13d377aeba85c1b76a9173abb22bedd535ac69"
+  },
+  "scope": "Whole pins are identities, not comprehension. Required semantic scopes/WHOLE six new JSON plus actual42oldinputs.54PATH-qualified emitted inputs=old42+new12(sixliterals included). No preinvented hashes for six not-yet-produced typed model/selection files; compare actual validated author outputs against source-derived fixed spec before dependent writes/queries. Default Search example featureOFF; CLI default morphologyON. Source/index/target QUIET before actual issue/intake/explicit transfer."
+}
