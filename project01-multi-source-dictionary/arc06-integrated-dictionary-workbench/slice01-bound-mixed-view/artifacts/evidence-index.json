@@ -1,6 +1,6 @@
 {
-  "source": "cf0998f0d76321a2c8601fa3bc29bb44c69b7c8c",
-  "tree": "18b66ea71556382fe32d91c245b03a98f30676d1",
+  "source": "4fc937dcbebd0e2f3171f495345d6ab2a6e29f62",
+  "tree": "5faeb83f99a056683e0c444a8172f015674d8fbf",
   "purpose": "durable necessary original failures/current gates and independent proof, not a new runtime/inventory framework",
   "copies": [
     {
@@ -10,7 +10,7 @@
       "bytes": 6883,
       "sha256": "757ca7b64c3b0c94a0d18495f907d58f320730c05417ffcc37dfc5df99e456a9",
       "original_as_of": "actual CC frozen proposed close BEFORE dated CDC canonical prefix",
-      "current_original_relation": "authorized canonical close now contains the whole original body as exact suffix; compare suffix, not whole prefixed file"
+      "current_original_relation": "whole original6883B author body retained byte-exact ONCE within current canonical report; later CDC prefixes/CC PASS2 append make it no longer a suffix"
     },
     {
       "original": "/private/tmp/a06-s01-independent-proof-draft.py",
@@ -1152,10 +1152,516 @@
       "kind": "ROOT-review proposed function only; NOT APPLIED/NOT EXECUTED at DRAFT",
       "bytes": 1739,
       "sha256": "5179fcc3799c9df6d3fbefefba1024281fa0be1e4ca7af06011240f9d69d8f3f"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/01-public-example.stdout",
+      "copy": "independent-proof02/01-public-example.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 84287,
+      "sha256": "5cfd9ae19076041825dca41bac3d39363842792dfe228eb7203bc8d08c9daef9"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/01-public-example.stderr",
+      "copy": "independent-proof02/01-public-example.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/02-init.stdout",
+      "copy": "independent-proof02/02-init.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 462,
+      "sha256": "a50128c58874b3097108bc53361d0b6fa589ab015e79f2cf70ef2f426b9d1611"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/02-init.stderr",
+      "copy": "independent-proof02/02-init.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/03-edit-r1.stdout",
+      "copy": "independent-proof02/03-edit-r1.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 514,
+      "sha256": "17bf78568cbd41d544eecf049d6ef8ff6b650cf8bfa3063038993dbd1bb1adef"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/03-edit-r1.stderr",
+      "copy": "independent-proof02/03-edit-r1.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/04-build-head-r1.stdout",
+      "copy": "independent-proof02/04-build-head-r1.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 1865,
+      "sha256": "29145edbf1a4975172893955b177d1e943d1737bb5d3972aba035eb93cdb691d"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/04-build-head-r1.stderr",
+      "copy": "independent-proof02/04-build-head-r1.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/05-info-r1.stdout",
+      "copy": "independent-proof02/05-info-r1.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 1841,
+      "sha256": "3b4fd0fe0ddf40b56bfaef8e501507b85536ddd83de15f76f47d6e29b517ef05"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/05-info-r1.stderr",
+      "copy": "independent-proof02/05-info-r1.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/06-full-r1.stdout",
+      "copy": "independent-proof02/06-full-r1.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 13126,
+      "sha256": "0368308c72420a3d4617ef695fd76c2f28e4af6a2ac7426e11a151d1cc69b8f2"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/06-full-r1.stderr",
+      "copy": "independent-proof02/06-full-r1.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/07-compact-r1.stdout",
+      "copy": "independent-proof02/07-compact-r1.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 13956,
+      "sha256": "1f99862b060d5fc2aa140b955a936279d1bc6b9ff6966659b5ce45a197b0a13a"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/07-compact-r1.stderr",
+      "copy": "independent-proof02/07-compact-r1.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/08-readable-r1.stdout",
+      "copy": "independent-proof02/08-readable-r1.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 3984,
+      "sha256": "aaf2240d5712b5e2f50585b787c03efa7f2c36ef659e9411c6ebe062e17891c4"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/08-readable-r1.stderr",
+      "copy": "independent-proof02/08-readable-r1.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/09-detail.stdout",
+      "copy": "independent-proof02/09-detail.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 4342,
+      "sha256": "de60fe5dc5b61db85365fa11c2b53d32defbe9d92e9d0f9f5739a50cb89051d7"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/09-detail.stderr",
+      "copy": "independent-proof02/09-detail.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/10-detail-readable.stdout",
+      "copy": "independent-proof02/10-detail-readable.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 5021,
+      "sha256": "108bcbe1d1bfc186cb0e6da87db755f0b8529e2f102c903f6a8584ca44f9c2dc"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/10-detail-readable.stderr",
+      "copy": "independent-proof02/10-detail-readable.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/11-build-historical.stdout",
+      "copy": "independent-proof02/11-build-historical.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 1917,
+      "sha256": "0371bad0e66b80528de6cd576c3db3b64b4374a7e1420746e198bc10ee4aabde"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/11-build-historical.stderr",
+      "copy": "independent-proof02/11-build-historical.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/12-historical-before.stdout",
+      "copy": "independent-proof02/12-historical-before.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 13143,
+      "sha256": "f343af91ce2d2401cf36c4d113b4ca84648a2909628c8a1d85cc712360cd22ee"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/12-historical-before.stderr",
+      "copy": "independent-proof02/12-historical-before.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/13-edit-r2.stdout",
+      "copy": "independent-proof02/13-edit-r2.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 541,
+      "sha256": "0b755bc9ef054c5a954f1152b56a805b0144a5560c292eadaa5923917b5c9546"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/13-edit-r2.stderr",
+      "copy": "independent-proof02/13-edit-r2.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/14-head-stale.stdout",
+      "copy": "independent-proof02/14-head-stale.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/14-head-stale.stderr",
+      "copy": "independent-proof02/14-head-stale.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 245,
+      "sha256": "9e1973e0e2801ecd05d78c8d1c5e919e06cca2654cd5690c5e7d28764403da41"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/15-historical-after.stdout",
+      "copy": "independent-proof02/15-historical-after.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 13143,
+      "sha256": "f343af91ce2d2401cf36c4d113b4ca84648a2909628c8a1d85cc712360cd22ee"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/15-historical-after.stderr",
+      "copy": "independent-proof02/15-historical-after.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/16-build-r2.stdout",
+      "copy": "independent-proof02/16-build-r2.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 1884,
+      "sha256": "b6cf3a4d245e52cfb513616e46c0f76925378c2bdecb202b07d031ee00305a30"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/16-build-r2.stderr",
+      "copy": "independent-proof02/16-build-r2.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/17-full-r2.stdout",
+      "copy": "independent-proof02/17-full-r2.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 16107,
+      "sha256": "fd0372b4282b3260a5321442af184584d670409b8ccde1b45d83c87ce1900ff1"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/17-full-r2.stderr",
+      "copy": "independent-proof02/17-full-r2.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/18-compact-r2.stdout",
+      "copy": "independent-proof02/18-compact-r2.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 17171,
+      "sha256": "d4f87fa916eb61567dc4745be34530c785d04b1bfb5cf96755e3c3e02abd891f"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/18-compact-r2.stderr",
+      "copy": "independent-proof02/18-compact-r2.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/19-wrong-outer-binding.stdout",
+      "copy": "independent-proof02/19-wrong-outer-binding.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/19-wrong-outer-binding.stderr",
+      "copy": "independent-proof02/19-wrong-outer-binding.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 219,
+      "sha256": "66066eecd4764cd720249c11af95b3fcb28605c28d520f8f501faa13de779fca"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/20-historical-info.stdout",
+      "copy": "independent-proof02/20-historical-info.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 1893,
+      "sha256": "795b1970244c58d0027378aeed89cd3c1f640ee9e967b59a7e6c1b0d5b8c066f"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/20-historical-info.stderr",
+      "copy": "independent-proof02/20-historical-info.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/21-migrate.stdout",
+      "copy": "independent-proof02/21-migrate.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 108,
+      "sha256": "c14d74974fa9b7e9c077862c60e45b1e01f2a7036f57df39c5f736a2fed5fa00"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/21-migrate.stderr",
+      "copy": "independent-proof02/21-migrate.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/22-migration-stale.stdout",
+      "copy": "independent-proof02/22-migration-stale.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/22-migration-stale.stderr",
+      "copy": "independent-proof02/22-migration-stale.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 245,
+      "sha256": "93138ecb9bb3382194069566952dec8d1eeec6840a94cc3ecc67eb14d3d62935"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/23-build-migrated.stdout",
+      "copy": "independent-proof02/23-build-migrated.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 1958,
+      "sha256": "22f96b10e72f87a465a2df786f82a74fa6c9bbcc4846d4051fe09214b1c36ed7"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/23-build-migrated.stderr",
+      "copy": "independent-proof02/23-build-migrated.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/24-full-migrated.stdout",
+      "copy": "independent-proof02/24-full-migrated.stdout",
+      "kind": "corrected-source CDC actual child raw stdout",
+      "bytes": 16249,
+      "sha256": "e5b139decf41b7800e601d36d9fdd556abe0d31fa95ac39fffcc5e2b73ad98ca"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/24-full-migrated.stderr",
+      "copy": "independent-proof02/24-full-migrated.stderr",
+      "kind": "corrected-source CDC actual child raw stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/execution.json",
+      "copy": "independent-proof02/execution.json",
+      "kind": "corrected-source CDC actual proof record",
+      "bytes": 20084,
+      "sha256": "7dc012a7bc1fe8a1e5edebdd3a5922381e4f211c2c52fb9e294e2f51ce3aa80e"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/commands.json",
+      "copy": "independent-proof02/commands.json",
+      "kind": "corrected-source CDC actual proof record",
+      "bytes": 19563,
+      "sha256": "293d96a4e851eaf5366325aa554812981e3c9c15ebbec61d1cab086cd68c9df1"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/expected-before-children.json",
+      "copy": "independent-proof02/expected-before-children.json",
+      "kind": "corrected-source CDC actual proof record",
+      "bytes": 15632,
+      "sha256": "6f38fe3c2a1d157156dad516df7044221a312c22bd8a6557f22fef037227a30e"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/selected-env.json",
+      "copy": "independent-proof02/selected-env.json",
+      "kind": "corrected-source CDC actual proof record",
+      "bytes": 2381,
+      "sha256": "bbdf4cd7d3976c7788feaaa610f8a5dcd8fa45e04ca7f3c1e575084440a0ed9a"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/detail.json",
+      "copy": "independent-proof02/detail.json",
+      "kind": "corrected-source CDC actual proof record",
+      "bytes": 731,
+      "sha256": "a7858b684cb4c6e0b9680ef8d9ead954d0349e37fc49250a919c719c939268f3"
+    },
+    {
+      "original": "/private/tmp/a06-s01-independent-bindings02.json",
+      "copy": "independent-proof02/bindings.json",
+      "kind": "corrected-source actual source/default binary/original input/env bindings",
+      "bytes": 11463,
+      "sha256": "b3f3fb7ea38d52eea7b2360306e76dc09f86308bab8fbb24fad431b469e08333"
+    },
+    {
+      "original": "/private/tmp/a06-s01-independent-proof02.stdout",
+      "copy": "independent-proof02/outer.stdout",
+      "kind": "actual outer tool capture; terminal0 from session16098",
+      "bytes": 89,
+      "sha256": "43f9c7c719825062dd0be46bab0857a170722ccb80db943ded69d371044127a8"
+    },
+    {
+      "original": "/private/tmp/a06-s01-independent-proof02.stderr",
+      "copy": "independent-proof02/outer.stderr",
+      "kind": "actual outer tool capture; terminal0 from session16098",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/a06-s01-native-inference-positive03/extracted-function.rs",
+      "copy": "native-inference-positive03/extracted-function.rs",
+      "kind": "actual sole positive host/std Rust1.98 edition2024 metadata probe; NOT Windows",
+      "bytes": 1739,
+      "sha256": "5179fcc3799c9df6d3fbefefba1024281fa0be1e4ca7af06011240f9d69d8f3f"
+    },
+    {
+      "original": "/private/tmp/a06-s01-native-inference-positive03/probe.rs",
+      "copy": "native-inference-positive03/probe.rs",
+      "kind": "actual sole positive host/std Rust1.98 edition2024 metadata probe; NOT Windows",
+      "bytes": 1968,
+      "sha256": "51a8b0e18caf2483e9d5d81adbd58eaad8b2299bfefad9864ac4ff1f288f2758"
+    },
+    {
+      "original": "/private/tmp/a06-s01-native-inference-positive03/argv.json",
+      "copy": "native-inference-positive03/argv.json",
+      "kind": "actual sole positive host/std Rust1.98 edition2024 metadata probe; NOT Windows",
+      "bytes": 371,
+      "sha256": "1dd69cb2f64f94984cfdc38db944e4c42c6b0d7e95070fcf426fb95488b6c88a"
+    },
+    {
+      "original": "/private/tmp/a06-s01-native-inference-positive03/env.json",
+      "copy": "native-inference-positive03/env.json",
+      "kind": "actual sole positive host/std Rust1.98 edition2024 metadata probe; NOT Windows",
+      "bytes": 2513,
+      "sha256": "66781db47782a3822129179275ff3eed199f7d2e8bef04074cd386b46d78cb7b"
+    },
+    {
+      "original": "/private/tmp/a06-s01-native-inference-positive03/preflight.json",
+      "copy": "native-inference-positive03/preflight.json",
+      "kind": "actual sole positive host/std Rust1.98 edition2024 metadata probe; NOT Windows",
+      "bytes": 616,
+      "sha256": "8b9e9a6adbe00ee9900b7d43039faf8c572131e055608db4a6f10c1b15f3efeb"
+    },
+    {
+      "original": "/private/tmp/a06-s01-native-inference-positive03/stdout.txt",
+      "copy": "native-inference-positive03/stdout.txt",
+      "kind": "actual sole positive host/std Rust1.98 edition2024 metadata probe; NOT Windows",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/private/tmp/a06-s01-native-inference-positive03/stderr.txt",
+      "copy": "native-inference-positive03/stderr.txt",
+      "kind": "actual sole positive host/std Rust1.98 edition2024 metadata probe; NOT Windows",
+      "bytes": 838,
+      "sha256": "425e75648efd50e6f42f254f58f4ee83fb9a9e7fe403517e25755e642560f42c"
+    },
+    {
+      "original": "/private/tmp/a06-s01-native-inference-positive03/exit-status.txt",
+      "copy": "native-inference-positive03/exit-status.txt",
+      "kind": "actual sole positive host/std Rust1.98 edition2024 metadata probe; NOT Windows",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "original": "/private/tmp/a06-s01-current-gates01/make-format.raw",
+      "copy": "pass2-gates/make-format.raw",
+      "kind": "actual PASS2 affected native/default build gate",
+      "bytes": 170,
+      "sha256": "8db1da8d5c52a276518372fb8f4ebccbcf5f52690a9af8bb0a03b3ad428abaf2"
+    },
+    {
+      "original": "/private/tmp/a06-s01-current-gates01/make-fmt-check.raw",
+      "copy": "pass2-gates/make-fmt-check.raw",
+      "kind": "actual PASS2 affected native/default build gate",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "original": "/private/tmp/a06-s01-current-gates01/make-lint.raw",
+      "copy": "pass2-gates/make-lint.raw",
+      "kind": "actual PASS2 affected native/default build gate",
+      "bytes": 711,
+      "sha256": "86769114947b2be98210ee07d47cf4583d822a3057d6a65edbf7851973d94ace"
+    },
+    {
+      "original": "/private/tmp/a06-s01-current-gates01/store-workbench-integration.raw",
+      "copy": "pass2-gates/store-workbench-integration.raw",
+      "kind": "actual PASS2 affected native/default build gate",
+      "bytes": 1523,
+      "sha256": "d78b266b0397ad88e8b4dc3253fad79d5a82ddd0b4955a7014a12d9ad91ca729"
+    },
+    {
+      "original": "/private/tmp/a06-s01-current-gates01/store-private-binding-build.raw",
+      "copy": "pass2-gates/store-private-binding-build.raw",
+      "kind": "actual PASS2 affected native/default build gate",
+      "bytes": 882,
+      "sha256": "53fa6393c13e34a8cc3572ea917f554c59a58a01780ec9d0cfb62379d9757736"
+    },
+    {
+      "original": "/private/tmp/a06-s01-current-gates01/default-cli-build.raw",
+      "copy": "pass2-gates/default-cli-build.raw",
+      "kind": "actual PASS2 affected native/default build gate",
+      "bytes": 536,
+      "sha256": "cd47e2f7de7d138df7f327c9a9053f7199b12fe6256d12f3e9495c05f6227b0b"
+    },
+    {
+      "original": "/private/tmp/a06-s01-current-gates01/default-integrated-example-build.raw",
+      "copy": "pass2-gates/default-integrated-example-build.raw",
+      "kind": "actual PASS2 affected native/default build gate",
+      "bytes": 299,
+      "sha256": "430406a86059fd8d8df913f875b96b2850ddcdbd99e2557d71d79ecacdc76009"
+    },
+    {
+      "original": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice01-bound-mixed-view/closing-report.md",
+      "copy": "cc-pass2-return-as-of.md",
+      "kind": "whole CC PASS2 return plus prior as-of canonical text before final CDC prefix",
+      "bytes": 14104,
+      "sha256": "fc37bc53e6d00f55b0362826129f1e639a0ea2824812eca51a24f7fbbb84fbc8",
+      "original_as_of": "actual CC PASS2 return before final CDC current prefix",
+      "current_original_relation": "whole as-of body retained byte-exact ONCE within current canonical closing report; not current whole-file equality"
     }
   ],
-  "files": 164,
-  "bytes": 1114611,
+  "files": 236,
+  "bytes": 1425226,
   "held_exclusions": [
     {
       "path": "/private/tmp/vlajmaji-a06-s01-cdc-kcq65aaj/cli-owned",
@@ -1196,14 +1702,83 @@
     {
       "path": "/private/tmp/vlajmaji-a06-s01-cdc-kcq65aaj/workbench-example/workbench-historical-r1",
       "reason": "task-owned example SQLite/derived root held in place; not copied or opened by preservation"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/cli-owned",
+      "reason": "NEW corrected-source task-owned SQLite/derived root HELD; not opened/copied by preservation"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/head-r1",
+      "reason": "NEW corrected-source task-owned SQLite/derived root HELD; not opened/copied by preservation"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/historical-r1",
+      "reason": "NEW corrected-source task-owned SQLite/derived root HELD; not opened/copied by preservation"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/head-r2",
+      "reason": "NEW corrected-source task-owned SQLite/derived root HELD; not opened/copied by preservation"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/migrated-r2",
+      "reason": "NEW corrected-source task-owned SQLite/derived root HELD; not opened/copied by preservation"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/workbench-example/catalogue",
+      "reason": "NEW corrected-source task-owned SQLite/derived root HELD; not opened/copied by preservation"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/workbench-example/owned",
+      "reason": "NEW corrected-source task-owned SQLite/derived root HELD; not opened/copied by preservation"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/workbench-example/workbench-r1",
+      "reason": "NEW corrected-source task-owned SQLite/derived root HELD; not opened/copied by preservation"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/workbench-example/workbench-r2",
+      "reason": "NEW corrected-source task-owned SQLite/derived root HELD; not opened/copied by preservation"
+    },
+    {
+      "path": "/private/tmp/vlajmaji-a06-s01-cdc-s31c0zl_/workbench-example/workbench-historical-r1",
+      "reason": "NEW corrected-source task-owned SQLite/derived root HELD; not opened/copied by preservation"
     }
   ],
   "not_reconstructed": [
     "earlier overwritten focus-search03 original raw (actual historical terminal/hash only retained in execution.md)",
     "inline-only fmt-check18955/lint98143 and first-format tool terminal where no separate raw file was created",
     "whole pre-edit WIP bodies not universally captured",
-    "no separate raw archive jbotci tool result: actual execution summary retained"
+    "no separate raw archive jbotci tool result: actual execution summary retained",
+    "positive-preflight01 wrapper unavailable; both positive-preflight01/02 original diskraw/argv/env/probe absent; available02 tool text preserved as escaped representation in execution.md",
+    "first CDC UTF8 append SyntaxError and intake-only commitccd8541; actual later acceptance d61; no source action then",
+    "CDC binding preparation at e384 stopped at real nonadjacent coauthor check before bindingsfile/productchildren; exact original commit object preserved before metadata-only amend4fc"
   ],
   "self_excluded": "this evidence index and first-class canonical close documents are not copy entries",
-  "current_disposition": "HOLD all8 S01 OPEN after late E0282 inference finding; prior close proposal withdrawn before commit; PASS2 DRAFT not issued"
+  "current_disposition": "CDC local S01 acceptance after PASS2 exact cfg repair/affected gates and unchanged-method corrected-source24; ROOT close consistency pending; all8arc/all14project OPEN",
+  "created_metadata_records": {
+    "pass2-commit-metadata/amend.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "pass2-commit-metadata/amend.stdout": {
+      "bytes": 171,
+      "sha256": "4bbcb301e23eb2cadfdb3b2249b3a68e681ab44c9269bec77ed017b5cf81e28d"
+    },
+    "pass2-commit-metadata/corrected-message.txt": {
+      "bytes": 271,
+      "sha256": "98889477d21335f733eed8bce447f4151588eaa15336d5957a23f6d81c9e41d7"
+    },
+    "pass2-commit-metadata/original-commit-object.raw": {
+      "bytes": 494,
+      "sha256": "3d30368997343a4b4b595762050447e579173fbab77e849549883199a352118d"
+    },
+    "pass2-commit-metadata/original-message.txt": {
+      "bytes": 272,
+      "sha256": "3347b656b4632b0286b713d174eb992d658829dfe0e92bd283cea11fb8296a53"
+    },
+    "pass2-commit-metadata/receipt.json": {
+      "bytes": 3077,
+      "sha256": "b488cc2112ce8ba94ba9a729276c79240b2f6e6d11e6ce5c17a9f267ece48236"
+    }
+  }
 }

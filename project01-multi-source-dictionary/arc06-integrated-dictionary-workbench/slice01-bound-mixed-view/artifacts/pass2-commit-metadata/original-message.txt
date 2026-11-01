@@ -1,0 +1,7 @@
+Fix non-Unix native path inference
+
+Return the typed unsupported-native-encoding error in the non-Unix cfg block while keeping Unix decoding and shared validation intact.
+
+Co-authored-by: Codex <noreply@openai.com>
+
+Co-authored-by: Billo AI <ai-engineering@billo.systems>

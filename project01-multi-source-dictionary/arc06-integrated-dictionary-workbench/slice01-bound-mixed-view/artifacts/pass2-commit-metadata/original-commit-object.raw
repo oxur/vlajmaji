@@ -1,0 +1,12 @@
+tree 5faeb83f99a056683e0c444a8172f015674d8fbf
+parent cf0998f0d76321a2c8601fa3bc29bb44c69b7c8c
+author Duncan McGreggor <oubiwann@gmail.com> 1793497951 -0500
+committer Duncan McGreggor <oubiwann@gmail.com> 1793497951 -0500
+
+Fix non-Unix native path inference
+
+Return the typed unsupported-native-encoding error in the non-Unix cfg block while keeping Unix decoding and shared validation intact.
+
+Co-authored-by: Codex <noreply@openai.com>
+
+Co-authored-by: Billo AI <ai-engineering@billo.systems>

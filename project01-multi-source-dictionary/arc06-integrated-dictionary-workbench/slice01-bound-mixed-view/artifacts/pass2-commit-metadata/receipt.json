@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-11-01T01:55:08.357390+00:00",
+  "original_commit": "e3845ac58dc1821b4a30ec7c13fef099b69f50c5",
+  "corrected_commit": "4fc937dcbebd0e2f3171f495345d6ab2a6e29f62",
+  "tree": "5faeb83f99a056683e0c444a8172f015674d8fbf",
+  "parent": "cf0998f0d76321a2c8601fa3bc29bb44c69b7c8c",
+  "actual_exit": 0,
+  "original_object": {
+    "bytes": 494,
+    "sha256": "3d30368997343a4b4b595762050447e579173fbab77e849549883199a352118d"
+  },
+  "original_message": {
+    "bytes": 272,
+    "sha256": "3347b656b4632b0286b713d174eb992d658829dfe0e92bd283cea11fb8296a53"
+  },
+  "corrected_message": {
+    "bytes": 271,
+    "sha256": "98889477d21335f733eed8bce447f4151588eaa15336d5957a23f6d81c9e41d7"
+  },
+  "source_bodies_before_after": {
+    "README.md": {
+      "bytes": 15392,
+      "sha256": "a471d8604b23d7c4ffedd4317156cb5079162da2f6eb917c52bfc6258ba425c2"
+    },
+    "crates/cli/src/main.rs": {
+      "bytes": 176677,
+      "sha256": "8f0ce66e3464bedfa7e23389c768038e99b12ed4361c57408b1c4f648662a63d"
+    },
+    "crates/cli/tests/workbench_contract.rs": {
+      "bytes": 20160,
+      "sha256": "225e177c093505a169dc806451f4ed281b7b3d8f70d125daae2bf5c23ebadfa5"
+    },
+    "crates/search/README.md": {
+      "bytes": 6409,
+      "sha256": "33e66db3c3deaf49400f2b758fb259e9331e8a7588305b8fa149be7a9363d690"
+    },
+    "crates/search/examples/integrated_workbench.rs": {
+      "bytes": 26437,
+      "sha256": "15f238e96d53d3378c8eb9586199578718e43a8cac11d09434fb4ab8aef2bb79"
+    },
+    "crates/search/src/lib.rs": {
+      "bytes": 58249,
+      "sha256": "5a3dfa5764b45fe8cf4ecd94fe6894e90e93f3ae332e4142e4c6c4019b869fec"
+    },
+    "crates/search/src/workbench.rs": {
+      "bytes": 25492,
+      "sha256": "544af5ed4a0815a0b6ef4468c142aabb7f2f9ceabc5b59526f5d01e7fad5205a"
+    },
+    "crates/search/tests/workbench_contract.rs": {
+      "bytes": 52386,
+      "sha256": "909e6bd414d653d9aea807fcb351a909a0069f93eecc13d493767d41c77e554e"
+    },
+    "crates/store/README.md": {
+      "bytes": 8128,
+      "sha256": "91c2cb8410d2bbbe0120a48180122b87e9b9fc4f3a621f4f8bac4c279e331705"
+    },
+    "crates/store/src/lib.rs": {
+      "bytes": 16180,
+      "sha256": "0e43e49e69fc8cb56184b8242ea2b71e5060c82b88e4157e632ec3720ff9f28c"
+    },
+    "crates/store/src/owned.rs": {
+      "bytes": 118754,
+      "sha256": "01017c0a0e059d03124768cf0fa95c77f80fcdca4939bdaf4efa0d8eb73b780b"
+    },
+    "crates/store/src/workbench.rs": {
+      "bytes": 84588,
+      "sha256": "cef8e1a5103ecf13bf2631bf57301f40cef40583c0ded9ac8481df2095a9f180"
+    },
+    "crates/store/tests/workbench_contract.rs": {
+      "bytes": 55317,
+      "sha256": "04c7eb52e7d6580df9ee0744b8037ad18d9698e5d4ecf54d163a440311372df5"
+    },
+    "docs/integrated-workbench.md": {
+      "bytes": 7707,
+      "sha256": "f580b3ab415219459d1a6d12ec4bd3d977bfb467dc9768735577437316facf19"
+    }
+  },
+  "clean_before_after": true,
+  "staged_delta_before_after": false,
+  "scope": "metadata ONLY one blank line deleted; binding prep previously stopped before filewrite/productchildren; sourcefiles readonly/no target/build/runtime"
+}

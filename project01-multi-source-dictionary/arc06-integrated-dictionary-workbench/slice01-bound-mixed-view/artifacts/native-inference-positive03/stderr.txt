@@ -1,0 +1,22 @@
+warning: struct `NativePathReport` is never constructed
+ --> /private/tmp/a06-s01-native-inference-positive03/probe.rs:2:8
+  |
+2 | struct NativePathReport { encoding: String, hex: String, utf8: Option<String> }
+  |        ^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: enum `WorkbenchError` is never used
+ --> /private/tmp/a06-s01-native-inference-positive03/probe.rs:4:6
+  |
+4 | enum WorkbenchError { UnsupportedNativeEncoding { encoding: String }, InvalidBinding { detail: String } }
+  |      ^^^^^^^^^^^^^^
+
+warning: function `decode_native_path` is never used
+ --> /private/tmp/a06-s01-native-inference-positive03/probe.rs:5:4
+  |
+5 | fn decode_native_path(report: &NativePathReport) -> Result<PathBuf, WorkbenchError> {
+  |    ^^^^^^^^^^^^^^^^^^
+
+warning: 3 warnings emitted
+
