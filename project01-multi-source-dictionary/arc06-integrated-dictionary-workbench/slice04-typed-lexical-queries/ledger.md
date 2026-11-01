@@ -1,6 +1,6 @@
 # S04 ledger — typed literal definitions and stored forms
 
-**STATUS: INTAKE ACCEPTED / INITIAL1 OF FIVE, 2026-11-01.** CDC whole-read the issued S04 readback and dated clarifications; all62 fresh pins and source/protected refs PASS. This checkpoint records transfer readiness for retained Luna/high CC; the explicit following dispatch transfers EXACT13 source paths/index/ONEtarget for the unchanged issued assignment. ROOT/CDC then remain source/index/target READONLY. All8 S04/8 arc/14 project rows OPEN; THROUGH ALL Arc06 active. Issued prompt5d834 remains unchanged; earlier intake-only metadata retains its issue cutoff.
+**STATUS: CC PROPOSED-DONE / QUIET, 2026-11-01.** S04 INITIAL1/5 returned source04fead62/tree7a34a1b4 after exact13-path freeze/current gates; source/index/ONEtarget are QUIET. CDC independent method/source/binary/input binding preparation is active; no independent product runtime or acceptance yet. All8 S04/8 arc/14 project rows remain OPEN; THROUGH ALL Arc06 continues. Issued prompt5d834 and original contracts remain unchanged. Earlier intake/issue records retain their as-of scope.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
