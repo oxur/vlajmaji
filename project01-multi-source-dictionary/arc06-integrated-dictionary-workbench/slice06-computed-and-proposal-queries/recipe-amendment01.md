@@ -1,4 +1,4 @@
-# S06 recipe-amendment01 — DRAFT, 2026-11-01
+# S06 recipe-amendment01 — ISSUED FOR BOUNDED READBACK, 2026-11-01
 
 This is a pre-execution fixture-authority amendment WITHIN issued INITIAL1/5, not a second implementation assignment or pass02. ROOT/CDC found a shared packet/co-review error before a constructor ran: `crates/lexicon/src/dictionary.rs:1528` requires every Lexical assertion's Entry spelling to be Presence::Value. CC explicitly confirmed no computed constructor, fixture, test or producer had been authored or executed; no command is active. The current lint passed compilation only. Preserve the original issued prompt/read-manifest/six literal files byte-exact at planning20e6733d and current paths. No validator/model change is authorized.
 
