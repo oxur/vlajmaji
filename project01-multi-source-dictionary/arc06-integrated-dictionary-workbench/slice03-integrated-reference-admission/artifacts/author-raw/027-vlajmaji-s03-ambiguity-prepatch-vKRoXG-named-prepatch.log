@@ -1,0 +1,22 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.01s
+     Running tests/workbench_reference_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/workbench_reference_contract-c31a9a2ab7eddc13)
+
+running 1 test
+
+thread 'test_workbench_reference_ambiguity_preserves_typed_cli_error' (87194982) panicked at crates/cli/tests/workbench_reference_contract.rs:771:5:
+assertion `left == right` failed
+  left: String("workbench_response")
+ right: "ambiguous_reference"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_workbench_reference_ambiguity_preserves_typed_cli_error ... FAILED
+
+failures:
+
+failures:
+    test_workbench_reference_ambiguity_preserves_typed_cli_error
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 5 filtered out; finished in 1.01s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test workbench_reference_contract`

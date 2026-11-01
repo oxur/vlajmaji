@@ -1,5 +1,7 @@
 # Project01 — Multi-source dictionary
 
+**CURRENT S03 VERIFIED / CANONICAL PROPOSAL,2026-11-01.** Source `f47697edda910e7aa3a2076be800fb046fddb983`/tree`302627a2c8f572095b81af09b340c258ba4c9cdd` is clean; correction02/5 is complete and source/index/ONEtarget ROOT QUIET. CDC's actual independent proof completed27 unique children (one author-compiled public example plus26 CLI),20zero/7expected typedone, across four launches WITHOUT replay; three observer errors and ROOT co-review misses are preserved. CDC proposes all8 S03 rows DONE pending ROOT canonical consistency and later exact mechanical transition; ALL8 S03/8Arc/14project statuses remain OPEN now. S01/S02 CLOSED; current seven-increment roadmap continues S04 reverse/form,S05 Links,S06 computed,S07 final. The current verifier/closing/retro and final proof govern this checkpoint; earlier CURRENT/pending/Evidence/ownership clauses remain historical at their dated cutoffs, including CC's unchanged original report. No further runtime/source authority, project acceptance or external delivery follows.
+
 **CURRENT ARC06 / S03 INITIAL ACTIVE / SEVEN-INCREMENT CROSSWALK,2026-11-01.** Explicit de1eb1da transfer is effective: retained Luna/high CC exclusively owns issued S03 EXACT13 source paths/index/ONE target, ROOT/CDC readonly; source8f373fa0 is BASELINE, current authoring is WIP, not frozen/accepted. Early format/fmtcheck pass and compile-only lint failures are preserved; no S03 behavior/acceptance claimed. ROOT approved UNISSUED S04 ReverseDefinition+stored Form and S05 bounded Links; computed→S06/final→S07, with original lexical A06-03 requiring BOTH S04+S05. The exact current arc crosswalk supersedes earlier numeric roadmap labels at their dated cutoffs; all8arc/14project raw rows/statuses remain unchanged OPEN. S01/S02 CLOSED; five assignments/slice and THROUGH ALL Arc06/final NEW actual/SAME canonical/ROOT/separate Operator boundaries unchanged. No S03 packet/input/source scope or external/default/retainedFull/acquisition/performance authority changes.
 
 **CURRENT S03 INTAKE ACCEPTED / TRANSFER READY,2026-11-01.** CDC accepted the complete issued-c27d1f1 readback after bounded required-null, all-retained-row/admission, native-policy and data-coverage clarifications; fresh clean source8f373fa0/tree8f0d/protectedrefs/guard/env/input pins PASS. AFTER the named checkpoint commit and explicit CDC message, retained Luna/high CC exclusively owns EXACT13 issued paths/index/ONE retained target for INITIAL/pass1 of5; ROOT/CDC then source/index/target READONLY. Until that message ROOT QUIET. All8 S03/all8arc/all14project remain OPEN; S01/S02 CLOSED. The earlier current/pending/ownership paragraphs retain their dated cutoffs and are superseded only by this current metadata. Through ALL Arc06 remains active; no external/default/retainedFull/acquisition/performance authority.
@@ -13,13 +15,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | Project OPEN; Arc01–05 CLOSED/delivered. Arc06 ACTIVE under directive05: S01/S02 CLOSED, S03 INITIAL/pass1 CC-exclusive EXACT13/index/ONEtarget after accepted de1eb1da intake/transfer. Current seven-increment crosswalk: S04 reverse/form, S05 Links, S06 computed, S07 final. All14 project rows OPEN; final Operator acceptance separate. |
+| status | Project OPEN; Arc01–05 CLOSED/delivered. Arc06 ACTIVE: S01/S02 CLOSED; S03 verified canonical proposal atf47697ed, ROOT consistency pending, all8child/8arc/14project OPEN. Source/index/ONEtarget QUIET. S04/S05 UNISSUED; computedS06/finalS07; separate Operator acceptance. |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.41 /2026-11-01 |
+| version / date | 1.42 /2026-11-01 |
 
 ## Purpose and first useful result
 
@@ -480,3 +482,8 @@ ROOT actual a831fa18 consistency PASS permits the8 child Status-only close at8f3
 ## Arc06 lexical successor crosswalk —2026-11-01
 
 ROOT-approved source-backed split: original first-roadmap lexical S03 now requires BOTH current S04 literal ReverseDefinition+stored Form and S05 bounded Links; original computed S04→currentS06, original offline/final S05→currentS07. See current Arc06 plan/table and unissued S04/S05 plans. Prior drafts/history remain in Git at7c429165/00368855; no Links/edge stubs in S04. Original8arc/all14project raw rows unchanged OPEN; current S03 issued packet/inputs/13-path INITIAL ownership unaffected. No runtime/source change or pass reset; throughALLArc06/final fresh+SAMEcanonical/ROOT/Operator and protected-data/external boundaries unchanged.
+
+
+## 1.42 —2026-11-01 verified S03 proposal
+
+Actual sourcef47697ed and final27 unique independent children are reconciled in S03 cdc-verification/closing/retro. Prior failure/source/ownership clauses retain their historical cutoff. Three observer repairs changed no product or expected semantic authority. ROOT canonical consistency and exact8 child flips are pending; all8child/8arc/14project statuses remain OPEN. Current seven-increment crosswalk and complete obligations unchanged. Source/index/ONEtarget QUIET; no new runtime or external authority.

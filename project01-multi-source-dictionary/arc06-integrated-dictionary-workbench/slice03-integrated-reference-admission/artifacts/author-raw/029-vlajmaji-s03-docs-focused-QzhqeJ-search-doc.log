@@ -1,0 +1,14 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.04s
+   Doc-tests vlajmaji_search
+
+running 5 tests
+test crates/search/src/workbench/reference.rs - workbench::reference::ConfiguredWorkbenchSearchEngine::resolve_reference (line 1222) - compile ... ok
+test crates/search/src/workbench/reference.rs - workbench::reference::ConfiguredWorkbenchSearchEngine::resolve_reference_compact (line 1376) - compile ... ok
+test crates/search/src/workbench/reference.rs - workbench::reference::WorkbenchSearchEngine::resolve_reference_compact (line 1098) - compile ... ok
+test crates/search/src/workbench/reference.rs - workbench::reference::WorkbenchSearchEngine::resolve_reference (line 973) - compile ... ok
+test crates/search/src/lib.rs - (line 7) ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+all doctests ran in 3.54s; merged doctests compilation took 3.37s

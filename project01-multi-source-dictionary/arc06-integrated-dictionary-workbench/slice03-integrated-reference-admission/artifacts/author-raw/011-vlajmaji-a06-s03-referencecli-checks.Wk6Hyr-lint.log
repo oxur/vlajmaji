@@ -1,0 +1,16 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+error[E0433]: cannot find module or crate `serde` in this scope
+   --> crates/cli/src/main.rs:899:32
+    |
+899 | fn workbench_reference_json<T: serde::Serialize>(value: &T) -> Result<String, CliError> {
+    |                                ^^^^^ use of unresolved module or unlinked crate `serde`
+    |
+    = help: if you wanted to use a crate named `serde`, use `cargo add serde` to add it to your `Cargo.toml`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `vlajmaji-cli` (bin "vlajmaji") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-cli` (bin "vlajmaji" test) due to 1 previous error
+make: *** [lint] Error 101

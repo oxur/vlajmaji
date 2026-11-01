@@ -1,0 +1,116 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+error: unused macro definition: `json_text`
+   --> crates/cli/src/main.rs:853:18
+    |
+853 |     macro_rules! json_text {
+    |                  ^^^^^^^^^
+    |
+    = note: `-D unused-macros` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(unused_macros)]`
+
+error[E0423]: expected function, found macro `json_text`
+   --> crates/cli/src/main.rs:859:59
+    |
+859 |     let mut lines = vec![format!("workbench_binding: {}", json_text(&binding_sha256))];
+    |                                                           ^^^^^^^^^ not a function
+    |
+help: use `!` to invoke the macro
+    |
+859 |     let mut lines = vec![format!("workbench_binding: {}", json_text!(&binding_sha256))];
+    |                                                                    +
+
+error[E0423]: expected function, found macro `json_text`
+   --> crates/cli/src/main.rs:863:13
+    |
+863 |             json_text(configuration)
+    |             ^^^^^^^^^ not a function
+    |
+help: use `!` to invoke the macro
+    |
+863 |             json_text!(configuration)
+    |                      +
+
+error[E0423]: expected function, found macro `json_text`
+   --> crates/cli/src/main.rs:866:51
+    |
+866 |     lines.push(format!("workbench_selection: {}", json_text(selection)));
+    |                                                   ^^^^^^^^^ not a function
+    |
+help: use `!` to invoke the macro
+    |
+866 |     lines.push(format!("workbench_selection: {}", json_text!(selection)));
+    |                                                            +
+
+error[E0423]: expected function, found macro `json_text`
+   --> crates/cli/src/main.rs:867:48
+    |
+867 |     lines.push(format!("reference_target: {}", json_text(&result.target)));
+    |                                                ^^^^^^^^^ not a function
+    |
+help: use `!` to invoke the macro
+    |
+867 |     lines.push(format!("reference_target: {}", json_text!(&result.target)));
+    |                                                         +
+
+error[E0423]: expected function, found macro `json_text`
+   --> crates/cli/src/main.rs:868:48
+    |
+868 |     lines.push(format!("reference_status: {}", json_text(&result.status)));
+    |                                                ^^^^^^^^^ not a function
+    |
+help: use `!` to invoke the macro
+    |
+868 |     lines.push(format!("reference_status: {}", json_text!(&result.status)));
+    |                                                         +
+
+error[E0423]: expected function, found macro `json_text`
+   --> crates/cli/src/main.rs:871:9
+    |
+871 |         json_text(&result.operational_reason)
+    |         ^^^^^^^^^ not a function
+    |
+help: use `!` to invoke the macro
+    |
+871 |         json_text!(&result.operational_reason)
+    |                  +
+
+error[E0423]: expected function, found macro `json_text`
+   --> crates/cli/src/main.rs:875:9
+    |
+875 |         json_text(&result.catalogue_matches)
+    |         ^^^^^^^^^ not a function
+    |
+help: use `!` to invoke the macro
+    |
+875 |         json_text!(&result.catalogue_matches)
+    |                  +
+
+error[E0423]: expected function, found macro `json_text`
+   --> crates/cli/src/main.rs:879:9
+    |
+879 |         json_text(&result.registrations)
+    |         ^^^^^^^^^ not a function
+    |
+help: use `!` to invoke the macro
+    |
+879 |         json_text!(&result.registrations)
+    |                  +
+
+error[E0423]: expected function, found macro `json_text`
+   --> crates/cli/src/main.rs:883:9
+    |
+883 |         json_text(&result.requested_release)
+    |         ^^^^^^^^^ not a function
+    |
+help: use `!` to invoke the macro
+    |
+883 |         json_text!(&result.requested_release)
+    |                  +
+
+For more information about this error, try `rustc --explain E0423`.
+error: could not compile `vlajmaji-cli` (bin "vlajmaji") due to 10 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `vlajmaji-cli` (bin "vlajmaji" test) due to 10 previous errors
+make: *** [lint] Error 101

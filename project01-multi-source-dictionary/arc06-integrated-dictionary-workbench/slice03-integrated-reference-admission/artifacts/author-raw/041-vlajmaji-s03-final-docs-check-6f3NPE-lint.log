@@ -1,0 +1,26 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji)
+error[E0382]: use of moved value: `target`
+   --> crates/cli/tests/workbench_reference_contract.rs:119:22
+    |
+ 96 |     let target = std::env::var_os("VLJ_REFERENCE_DELETED_TARGET").unwrap();
+    |         ------ move occurs because `target` has type `std::ffi::OsString`, which does not implement the `Copy` trait
+...
+107 |                 .arg(target)
+    |                      ------ value moved here
+...
+119 |                 .arg(target)
+    |                      ^^^^^^ value used here after move
+    |
+help: consider borrowing `target`
+    |
+107 |                 .arg(&target)
+    |                      +
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `vlajmaji-cli` (test "workbench_reference_contract") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

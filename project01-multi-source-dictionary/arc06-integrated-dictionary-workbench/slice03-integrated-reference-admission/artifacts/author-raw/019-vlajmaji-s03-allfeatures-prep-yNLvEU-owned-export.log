@@ -1,0 +1,4 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji owned export /private/tmp/vlajmaji-s03-owned-prep-NeMoPF/journal --output crates/data-owned/data/snapshot.json --seal crates/data-owned/data/seal.json`
+{"error":{"code":"owned_io","message":"owned journal filesystem error: create crates/data-owned/data/snapshot.json: No such file or directory (os error 2)","sources":[]}}

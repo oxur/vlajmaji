@@ -1,0 +1,16 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.12s
+     Running tests/workbench_reference_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/workbench_reference_contract-52a8251ff763127f)
+
+running 7 tests
+test test_resolve_reference_owned_release_is_known_outside_bound_catalogue ... ok
+test test_resolve_reference_admitted_catalog_and_local_targets_resolve ... ok
+test test_resolve_reference_equal_retained_rows_preserve_raw_order_and_installed_representative ... ok
+test test_resolve_reference_rejects_invalid_catalogue_callers_in_both_formats ... ok
+test test_resolve_reference_unequal_retained_role_bodies_are_ambiguous ... ok
+test test_resolve_reference_disabled_catalog_metadata_remains_catalogue_only ... ok
+test test_resolve_reference_native_metadata_wildcard_digest_integrity_and_restore ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.89s
+
