@@ -1,6 +1,6 @@
 # CC implementation prompt — S06 computed and proposal queries
 
-**STATUS: UNISSUED DRAFT / INITIAL1 OF FIVE,2026-11-01.** No intake/source/index/ONEtarget authority yet. Exact project-relative prompt path `arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt.md`. ROOT whole final packet readiness and named preservation precede status-only issue; actual retained Luna/high intake/readback/freshpins then explicit CDC transfer precede ALL source edits/format/Cargo/runtime. Through ALL Arc06 continues. S01–05 CLOSED; all S06/Arc/Project rows OPEN. No external delivery or S07 waiver.
+**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final packet readiness PASS and exact11 DRAFTfreeze5211d89 authorize retained Luna/high bounded actual semantic intake/readback+fresh source/input/protected/env pins ONLY, appending existing artifacts/execution.md. No source/index/ONEtarget edits, format/Cargo/runtime before CDC accepted intake/named custody checkpoint/explicit EXACT15 transfer. Exact project-relative prompt arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt.md; all child/arc/project statuses OPEN and THROUGH ALL Arc06 unchanged. Prior DRAFT/pending clauses retain their5211d89 as-of cutoff.
 
 ## Deliver the useful increment
 

@@ -1,6 +1,6 @@
 # S06 — Computed and proposal queries
 
-**STATUS: UNISSUED DRAFT 0.1, 2026-11-01.** S05 is accepted/closed at planning4a6758ca; accepted SOURCE is d8bd64e248b7193f9244cbe527e7fac1f7926ce7/tree d5793d2dbc148558d4824afa5644d3c984284bf2. SOURCE/index/ONEtarget remain QUIET; retained Luna/high is parked. This draft supplies the next useful increment and exact API/policy decisions for ROOT review. Finite fixture/protocol buffers and complete prompt/read manifest are saved; ROOT final readiness/named freeze and status-only issue still precede intake/transfer. All eight S06/all eight Arc06/all fourteen Project01 rows remain OPEN. S07 and separate Operator acceptance remain successors; THROUGH ALL Arc06 continues.
+**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final whole-packet readiness PASS and named exact11 DRAFTfreeze5211d89 authorize retained Luna/high actual intake/readback/freshpins ONLY. SOURCE/index/ONEtarget remain QUIET until CDC accepted intake, named custody checkpoint and explicit EXACT15 transfer. S05 CLOSED; all eight S06/eight Arc/fourteen Project statuses OPEN; THROUGH ALL Arc06 and S07/separate Operator successors unchanged. Earlier DRAFT/pending wording retains its5211d89 as-of cutoff; no substantive contract/literal/manifest change.
 
 ## 1. Useful result and compatibility
 
@@ -199,4 +199,4 @@ CDC afterQUIET proposes exact bounded public-example/CLI independent method with
 
 | Assignment | Prompt | Date | State/reason |
 | --- | --- | --- | --- |
-| INITIAL1/5 | arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt.md (saved UNISSUED DRAFT) | 2026-11-01 | UNISSUED; packet saved, ROOT final readiness/issue/intake/transfer pending |
+| INITIAL1/5 | arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt.md (ISSUED INTAKE ONLY) | 2026-11-01 | ISSUED INITIAL1/5; ROOT readiness5211d89, actual intake/CDC acceptance/explicit transfer pending |

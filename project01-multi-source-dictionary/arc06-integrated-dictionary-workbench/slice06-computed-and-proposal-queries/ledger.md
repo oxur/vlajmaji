@@ -1,6 +1,6 @@
 # S06 ledger — computed and proposal queries
 
-**STATUS: UNISSUED DRAFT,2026-11-01.** Accepted source d8bd64e/tree d579; S05 CLOSED. No source/index/target assignment yet. These eight slice criteria refine original A06-04 without editing any original parent raw row. All eight child/eight Arc/fourteen Project statuses OPEN; S07/Operator duties remain.
+**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final readiness PASS/exact11freeze5211d89; retained Luna/high may append actual bounded intake to artifacts/execution.md ONLY. SOURCE/index/ONEtarget remain QUIET pending CDC acceptance/named custody/explicit EXACT15 transfer. All eight child/eight Arc/fourteen Project statuses OPEN; original criteria/raw rows and S07/Operator duties unchanged.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
