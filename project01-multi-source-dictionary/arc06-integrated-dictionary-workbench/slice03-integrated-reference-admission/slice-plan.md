@@ -1,6 +1,6 @@
 # S03 — Complete integrated reference admission
 
-**Status: DRAFT / NOT ISSUED,2026-10-31.** Version0.2. S01 accepted at4fc937dc/tree5fa (ROOT canonical consistency dda20); S02 is issued COMPLETE INTAKE ONLY, no implementation transfer yet. This is CDC planning/source-read preparation, no S03 prompt/intake/source/runtime authority. All eight rows OPEN. Accepted S02 APIs/current source and final exact helper/wire/error/allowlist/readset/finite controls still require ROOT readiness before issue.
+**Status: DRAFT / NOT ISSUED,2026-10-31.** Version0.2. S01 accepted at4fc937dc/tree5fa (ROOT canonical consistency dda20); S02 complete intake was accepted and its EXACT15 paths/index/ONE target transferred to retained CC INITIAL/pass1 at planning a815ea5; ROOT/CDC remain source/index/target read-only during that interval. This is CDC planning/source-read preparation, no S03 prompt/intake/source/runtime authority. All eight rows OPEN. Accepted S02 APIs/current source and final exact helper/wire/error/allowlist/readset/finite controls still require ROOT readiness before issue.
 
 ## 1. Useful increment and retained owners
 
@@ -67,3 +67,8 @@ Reachable status contexts must honor actual S01 root/admission rules: catalogue 
 Source projection scope remains actual: reference_projection508+ reads WHOLE retained descriptor_json bytes then RawValue scans/types only targeted rows; metadata-only/no source-file probes, not constant-size or target-byte-only IO. S02 roster offers only small registration summaries. Do not call old list/inspect routes for ordinary reference setup; their advisory file/DictionaryStore probing is outside the new declared boundary. Drop the source catalogue reader before mutation hooks; fresh postcheck observes actual successful writers.
 
 - 0.2,2026-10-31: S01 acceptance/S02 intake metadata updated; actual shared retained document type/body-vs-projection protocol and declared per-format lazy setup confirmed, descriptor-equal/body-unequal finite fixture route noted, and reachable logical Removed versus operational precedence reconciled. All8 OPEN/unissued; no source/runtime/acceptance or final helper/path authority.
+
+
+### Current source precision after S02 transfer
+
+The store-shaped Local descriptor has NO native-ID fields. Native entry/assertion IDs belong to the separate Catalog registry/occurrence matching protocol; do not add a new native constraint to Local equality because of earlier shorthand. The complete descriptor shape above includes Form.evidence and its occurrence; Assertion.assertion_ids remains empty. Compare the raw typed role-body SHA independently. ROOT reconfirmed the whole immutable4fc constructor2630–2815; CDC also read those bodies and actual retained Full/Compact indexes. Full already retains typed cloned primary/related maps as part of its existing engine; a targeted witness BORROWS those rows. Compact already retains ordinal maps into its typed document; a targeted witness BORROWS its selected row. Do not build replacement whole-model maps or copy a whole document merely to make their helper signatures uniform. Exact common helper/names and error propagation remain final S03 readiness work after accepted S02, not implementation authority now.
