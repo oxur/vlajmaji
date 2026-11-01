@@ -1,0 +1,330 @@
+{
+  "status": "DRAFT_UNISSUED_FINAL_READINESS",
+  "source": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "head": "f47697edda910e7aa3a2076be800fb046fddb983",
+  "tree": "302627a2c8f572095b81af09b340c258ba4c9cdd",
+  "source_files": {
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/AGENTS.md": {
+      "bytes": 8404,
+      "sha256": "3775aeaad14a5c1eca7edc52d061f39130b1f24ba9fd6dc9f4f537a7282914d7",
+      "required_text_or_data_scope": "FULL; conventions/toolchain/test names/native errors/protected refs/adjacent commit trailers"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.toml": {
+      "bytes": 961,
+      "sha256": "256e08fe4e4da6c867edc5aaed4fb20726efd48143c6029e103966b6e6192aa4",
+      "required_text_or_data_scope": "FULL; edition2024/Rust1.98/workspace/lints/no dependency edit"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.lock": {
+      "bytes": 32280,
+      "sha256": "56fe1cbb2b6eee50e82aa46b2532c6019bdc4872751e01dbeae0167b6012a689",
+      "required_text_or_data_scope": "REQUIRED-DATA complete package+edge records/current hash; no regeneration"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/Cargo.toml": {
+      "bytes": 928,
+      "sha256": "9d45688f40eb4b797277033e6e89d5e93aad6688bdbefcee245552f60425490f",
+      "required_text_or_data_scope": "FULL; existing serde/serde_json/sha2, default empty/morphology optional; no dependency addition"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/Cargo.toml": {
+      "bytes": 785,
+      "sha256": "16e7a2e5bbcda5af1b955fd5d78e6371a58279b3b37243da860f3e7521187575",
+      "required_text_or_data_scope": "FULL; no direct serde dependency, use existing localmacro/inference pattern"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/lib.rs": {
+      "bytes": 58690,
+      "sha256": "737ec35bcf63d55ab958fec908e21a1baed27122d1e8446d2c1a257a483b24d2",
+      "required_text_or_data_scope": "export/module declarations; ALL12 Query variants and ReverseDefinition/Form arms + source/native distinction; no new oldQuery variants"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary.rs": {
+      "bytes": 94456,
+      "sha256": "14cae884d83cb42a4593158a825155dd37abcb714ee88de25eda1985bcf2ff2b",
+      "required_text_or_data_scope": "1–270 DTOs/options/complete21fieldHit; 345–580 errors/provider/engine maps; complete from_provider/index setup; exact967–1165; resolve_sources1268–1305 and COMPLETE make_hit1306–1485; binding/cursor helpers2100–2330; narrow S03 raw witnesses and related-row behavior; referenced definitions complete"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary/projection.rs": {
+      "bytes": 94793,
+      "sha256": "eed462ea7f9be7baebae64772d372db432c326ef96ae4a566bce63c891a5620b",
+      "required_text_or_data_scope": "newmodel/detail key/compact DTO1–444; engine/open/index/exact444–825; COMPLETE detail1274–1411/compact_hit1412–1535/complete_hit subsequent closure; cursor2060–2280; retained ordinal helpers; read entire referred functions beyond numeric boundary"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary/borrowed.rs": {
+      "bytes": 26575,
+      "sha256": "f511722ed486643fa9b6c0496d3fcaed90ff0a1d5514452a7139c8dffa3e8293",
+      "required_text_or_data_scope": "1–350 complete CompactIndices/index_document/source_views incl ownedhead∩release membership; _computations discarded and no entryassociationmap; READONLY"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/workbench.rs": {
+      "bytes": 45112,
+      "sha256": "a6eb12f72f3d5dd3486e462c61074f295e08e0febc48ebd6121fecd26fabb2ec",
+      "required_text_or_data_scope": "FULL public API/selection/error/wrappers/lazy engine/detail/manifest setup through query_selection; existing private controls as applicable; reused innerResult→newPOST semantics"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/workbench/reference.rs": {
+      "bytes": 62758,
+      "sha256": "17c20575416ff30f48b45557c4a2afe1c57a5be8c260206d2d70f676f5d94393",
+      "required_text_or_data_scope": "strict nullable DTO adapter and FOUR complete wrappers+their private writer tests; accepted reference policies remain compatibility boundary; READONLY no new reference semantics"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/presentation.rs": {
+      "bytes": 11647,
+      "sha256": "b94a5f9aea56634426afd58ec7c32f9928267d4e3a60432d74a0282952f94d37",
+      "required_text_or_data_scope": "FULL; existing rendering/public functions/typed compact JSON; preserve old renderers and add exactly two concrete lexical/formdetail render functions"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/examples/integrated_workbench.rs": {
+      "bytes": 59569,
+      "sha256": "e603587e4ae16614175480ca64e4b5c237c4c537aaa8ffd8f8f142faa16fffae",
+      "required_text_or_data_scope": "FULL actual constructor/emittedold21/prewrite ordering/six config revisions/three publications/history/CLI input setup; extend via separate lexical subworkspace/inputs/output fields"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/workbench_reference_contract.rs": {
+      "bytes": 73506,
+      "sha256": "686ae4e4a41badbd574b7c2afd5824882d035bdd0e2afa82405ef4a8820ec81b",
+      "required_text_or_data_scope": "self-contained pure fixture and valid owned emptyr0→r1/missingcapture/raw row/source/body controls; READONLY pattern only, no sibling include"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/src/main.rs": {
+      "bytes": 206599,
+      "sha256": "41b9ea581006a3e948057a47b319712caaabb99a7ef87f4c945e2104f1e2b9be",
+      "required_text_or_data_scope": "Workbench clap208–365; errors756–836; reference Readable850–898; read file950–963; COMPLETE ManagedOutputContext1061–1450/native inputs and dispatch workbench 1960–2465; shared emitter4353–4395+invoked definitions; new known errors must not fallthrough"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/tests/workbench_reference_contract.rs": {
+      "bytes": 32179,
+      "sha256": "45270c3fbce6731c552f155f6deb7d191152d99a7b0ab8dd75329beffa806c59",
+      "required_text_or_data_scope": "FULL nativeUnicode/deletedcwd/OtherBrokenPipe/portableconstructor/actual CLI ambiguity pattern; READONLY"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/dictionary.rs": {
+      "bytes": 94483,
+      "sha256": "0af2e5e18a2698a58532d6a158d8bc31812e0a30b20ec7a1c53e4aa90a5dc677",
+      "required_text_or_data_scope": "FULL relevant declarations Presence/Entry/Assertion/Form/SourceEvidence/Capture/Computation/revision/release and Dictionary constructors; whole validation closure for source/release/ownedhistory/capture/form/evidence and called functions (Form1685–1750/evidence2200+); no model edits"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/registry.rs": {
+      "bytes": 36161,
+      "sha256": "8d999e93c114dfd4e66a60de651c378d4c72ca721c9436f31881e1cf75fbc1e4",
+      "required_text_or_data_scope": "SourceId/SourceOrigin/abbreviation/SourceRecord/alias/snapshot/occurrence types and COMPLETE constructor/validate/resolve_source paths; AliasScope137–148; no invented original FormRole/native class"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/lib.rs": {
+      "bytes": 52776,
+      "sha256": "380af22349e6d2e31ca027f5c562322c41772510ab00d515ba895e39e5f00026",
+      "required_text_or_data_scope": "FormRole394–407 and legacyFormAssertion; SourceCrossReference is S05 only; no rewrite of model/source rules"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/pack.rs": {
+      "bytes": 25384,
+      "sha256": "d6cd719bf7eb67df9a51852fe05f06b4dfee41e5441be4bb69faab5d250253ed",
+      "required_text_or_data_scope": "compose_dictionaries388–630 and invoked identity/order closure; actual form/computation retention and sealed Synthetic preparation; no normalizer shortcuts"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/owned.rs": {
+      "bytes": 118754,
+      "sha256": "01017c0a0e059d03124768cf0fa95c77f80fcdca4939bdaf4efa0d8eb73b780b",
+      "required_text_or_data_scope": "create379+, writer.commit631+ and invoked append/history guards, reader open/identity/show/curation scopes, load_state2533–2605 retaining all entries/forms/computations; explicit reader drop; READONLY"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/workbench.rs": {
+      "bytes": 85232,
+      "sha256": "037d739fd1c946c98dc0d33257238777855e79b91e0e27c2be9e59d68cb32104",
+      "required_text_or_data_scope": "strict selection/compact identity, build/root capture/composition/ensure_current, snapshot_manifest, native decoder; exact Head/historical/available-overlay behavior; READONLY"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/workbench_profiles.rs": {
+      "bytes": 87218,
+      "sha256": "55364e82c690beaccc2703961bb04c4e9479c6430c359acff9c018f5f76fca7c",
+      "required_text_or_data_scope": "public configure/default/refresh/views/ensure_current and complete writer/lifetime scopes; IdentityPayload501–513/identity_for2061–2095 actual nine-field order; effective versus direct identity; READONLY"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/sqlite.rs": {
+      "bytes": 20862,
+      "sha256": "e7e70682ad58de09301f38ea00b3529494c2eaeeee0c00b11d567f5a44c1aca0",
+      "required_text_or_data_scope": "SearchQuery::DefinitionContains/Form244–335 and recordids semantics; evidence of ASCII/literal policy ONLY, not new SQL scan counters"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/lib.rs": {
+      "bytes": 16872,
+      "sha256": "463ebc533880cb8f79c38146dbd3e92c0070024793b740dc17becf77b43cbb7b",
+      "required_text_or_data_scope": "SearchQuery/Form API279–305 and its docs; existing search no effect"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/docs/integrated-workbench.md": {
+      "bytes": 19224,
+      "sha256": "fc01835e202e48328d55f3ba4edb5914a4cb125649849296888084563d0f0cf1",
+      "required_text_or_data_scope": "FULL actual old recipe/sourceCLI target env/input paths/current unpublished/public reference paths; preserve prior semantics"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/README.md": {
+      "bytes": 7784,
+      "sha256": "bfd536985355a8fc7e9b2b55270b1951a074e28e4d32d6a3f94c58bedf1f35ac",
+      "required_text_or_data_scope": "FULL current unpublished workbench/reference availability; new lexical usage meaningful"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/README.md": {
+      "bytes": 15441,
+      "sha256": "188d42c27a5007935ab33fdb3ea78283c30ff2af0aa5000486df5298c0f51855",
+      "required_text_or_data_scope": "FULL package/development status and minimal public use; no published0.2 availability claim"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/.github/workflows/ci.yml": {
+      "bytes": 3688,
+      "sha256": "2e85d4f406b1954a148318ccf88b5aa01595430dff959d9caf81778509077e7b",
+      "required_text_or_data_scope": "FULL current five Synthetic preparation categories/required owned-data mkdir/source vs archive environment, no workflow edits"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Makefile": {
+      "bytes": 13617,
+      "sha256": "fbf5af53bcc41350e2376c79a0d552c81bc4053efae4b32f661a50544ede4ace",
+      "required_text_or_data_scope": "FULL format/fmtcheck/lint/check/noDefault/allfeatures/package targets+called helper only as needed; no Makefile edit"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/owned_snapshot.rs": {
+      "bytes": 41892,
+      "sha256": "8e7b38af944bb31e10c5e7c46157dbd7f672395fa3ce30867b77ba982871b257",
+      "required_text_or_data_scope": "COMPLETE validate_genesis904–973 and validate_adjacent+called ownedbase/history constructor closures; zeroassociated metadata retained, real parent/head/tombstone consistency; READONLY"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/owned_curation.rs": {
+      "bytes": 47647,
+      "sha256": "d779f21845bd1b103c2e1fbd9eb2d9ebfe02eb3acdd3a0768d305d39665913de",
+      "required_text_or_data_scope": "COMPLETE validate_owned_base897–960 and calledsource/head/revision helpers; exact removed-active tombstones, oneOwnedDraft and catalogue sequence; READONLY"
+    }
+  },
+  "closed_s03": {
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/closing-report.md": {
+      "bytes": 10360,
+      "sha256": "c835dc42fc6a08def2f914b9a68488330e655fd7e944a4a3e9604be6ae8fb73a"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/cdc-verification.md": {
+      "bytes": 13248,
+      "sha256": "0b96d9b0ba07e8e2ffa823b7c985164fa17852137411ddfeba42e0da456a22a1"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/retro.md": {
+      "bytes": 6899,
+      "sha256": "09c9cef458575f2b0c618cb6547e9289c2c2c9552aedd2b7fc0f10d4cffad769"
+    }
+  },
+  "old21_input_authorities": {
+    "expected.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/expected.json",
+      "bytes": 1093,
+      "sha256": "91f63128c7801de531ddb014857cedbaa1536ab4af49a52f934405fd946a0765"
+    },
+    "historical-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/historical-selection.json",
+      "bytes": 133,
+      "sha256": "7f40fbc8fbcab37660ec8e3498fe38a848316f54c140656c73e942f497617b85"
+    },
+    "owned-r1.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-r1.json",
+      "bytes": 5652,
+      "sha256": "372fcce44cf1dd1f0d2d37b8b42927a25ac227f3d6f1e846856d8097896e4286"
+    },
+    "owned-r2.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-r2.json",
+      "bytes": 8282,
+      "sha256": "b0a46586e5bba2817593f7cb0a5bdfb9a9897391fa1f4383ec4dd1b1217c69c7"
+    },
+    "owned-seed.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-seed.json",
+      "bytes": 2062,
+      "sha256": "6d7e6c61892e1f5027e675ac8b32441044460cf1ee0359c179729196b087e0e8"
+    },
+    "request.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/request.json",
+      "bytes": 163,
+      "sha256": "e868dd2d63d21ca68e2d4ec6bf157993af269aaa3fe82c1d4ba89ac08af3470b"
+    },
+    "selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/selection.json",
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "upstream-dictionary.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-dictionary.json",
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "upstream-release.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-release.json",
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "upstream-seal.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-seal.json",
+      "bytes": 474,
+      "sha256": "0d43c55ce524c4c3d8d4f7f422dca7b0d4b0a4330b1e332fc12a83b2584dd9e9"
+    },
+    "upstream.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream.json",
+      "bytes": 83,
+      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+    },
+    "profile-alpha-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profile-alpha-selection.json",
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "profile-beta-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profile-beta-selection.json",
+      "bytes": 67,
+      "sha256": "beeda00574bd9e1642c0f6a8b1771e9bc6fa836b4db601e2f414148579f1fe37"
+    },
+    "profiles-expected.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profiles-expected.json",
+      "bytes": 214,
+      "sha256": "fca09ccd0d28cc2f12e5f1aeecdf61b2862a45f967d6fb39e62361e3a7940bb9"
+    },
+    "reference-owned-entry.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-owned-entry.json",
+      "bytes": 39,
+      "sha256": "ea3efd655902cb677499047d2af35fa1fc8aad6c13d2a4ab876967732d0b5893"
+    },
+    "reference-owned-assertion.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-owned-assertion.json",
+      "bytes": 43,
+      "sha256": "8538c3fe9250d7236b67184edd76ad3ab54e4b8664b9818d9923b4f805a70acf"
+    },
+    "reference-upstream.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-upstream.json",
+      "bytes": 340,
+      "sha256": "7434b3aa7c3416f597d9567e2783e6d2553beeefb94dfb96e7c22cbbfe378d70"
+    },
+    "reference-unknown.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-unknown.json",
+      "bytes": 9,
+      "sha256": "14c4849191d018fc8b00b02dc1e49d9f8b36a152066023b3b4c609b2f62ba328"
+    },
+    "reference-unresolved.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-unresolved.json",
+      "bytes": 40,
+      "sha256": "74bbd4c69ea0e90d3b71b4dbd6158f1018a56c85b3da7d956a41508a39be0fdc"
+    },
+    "reference-disabled-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-disabled-selection.json",
+      "bytes": 89,
+      "sha256": "cc7756a611566ef3e82bb61f3e562cd3145ac6962937a4353e6c0b78eca014c2"
+    },
+    "reference-expected.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-expected.json",
+      "bytes": 529,
+      "sha256": "43687f3379aa83c419d5915641992debd80d5ab43b663ad66208fc6fe35bc714"
+    }
+  },
+  "new4_literal_authorities": {
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/lexical-inputs/cursor-protocol-oracle.json": {
+      "bytes": 2914,
+      "sha256": "d8d3407ae95366c0a8a8297d19668bc352646b97491d51f15de300edb5cbb24d"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/lexical-inputs/form-all.json": {
+      "bytes": 170,
+      "sha256": "a387b2b93c28b436f1cf39673544eb80d7a803ca9e196919d4c3d772696aa353"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/lexical-inputs/lexical-expected.json": {
+      "bytes": 2625,
+      "sha256": "dab2dd0cbab06f269f081343c28ac2f3bcd45e1427818259a4296e045c5bfb0a"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice04-typed-lexical-queries/artifacts/lexical-inputs/reverse-grow.json": {
+      "bytes": 157,
+      "sha256": "296c72534ad6d9afb654d7c087b59c453c84b0453a9eb83dd5b0da56542fefe0"
+    }
+  },
+  "environment": {
+    "/tmp/vlajmaji-p01-a05-cargo": {
+      "bytes": 330,
+      "sha256": "426d1e49863551fe37252cecb8d36f8fb58410670fc550c6deedc89ddb92f53d"
+    },
+    "/private/tmp/vlajmaji-p01-a06-s01-original-env.sh": {
+      "bytes": 2287,
+      "sha256": "ae749d0dd537499b254fd4e9fc35980345eabf5e1164c41817e62eacc58b2c86"
+    }
+  },
+  "toolhomes": {
+    "CARGO_HOME": "/Users/oubiwann/.cargo",
+    "RUSTUP_HOME": "/Users/oubiwann/.rustup"
+  },
+  "path_sha256": "f7af29286b33342886cb96026c90a8bfcbbb7e3cfaef920ed73086ab33d3a53d",
+  "RUSTUP_AUTO_INSTALL": "0",
+  "protected_refs": {
+    "main": "cb13d377aeba85c1b76a9173abb22bedd535ac69",
+    "codex/project01-owned-dictionary": "69a9f68507e23cef9b20e4bcabc86840e224689e",
+    "bauske_head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+    "bauske_tree": "e5715eb87df84165ecba8b43cd35949ae9457695"
+  },
+  "scope": "Whole SHA/length rows identify files; they are NOT whole-text intake claims. Required actual text/symbol closure and complete data projections are separate. No source/runtime/target authority from this DRAFT."
+}

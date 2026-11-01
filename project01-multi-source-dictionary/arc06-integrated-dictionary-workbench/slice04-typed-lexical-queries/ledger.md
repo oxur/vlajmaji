@@ -1,6 +1,6 @@
 # S04 ledger — typed literal definitions and stored forms
 
-**DRAFT0.3 / UNISSUED / all8 OPEN,2026-11-01.** ROOT-approved split of unissued0.1/0.2: prior Links criterion/control moves wholly to S05; original A06-03 requires BOTH S04+S05. Prior ledger preserved in Git7c429165/00368855. Only two implemented request/result variants and actual Form detail belong here, no edge/Links stub. S03 source/index/target ownership unchanged; no runtime or acceptance.
+**DRAFT0.4 / UNISSUED / FINAL READINESS IN PREPARATION / all8 OPEN,2026-11-01.** ROOT-approved split of unissued0.1/0.2: prior Links criterion/control moves wholly to S05; original A06-03 requires BOTH S04+S05. Prior ledger preserved in Git7c429165/00368855. Only two implemented request/result variants and actual Form detail belong here, no edge/Links stub. S03 source/index/target ownership unchanged; no runtime or acceptance.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -12,3 +12,6 @@
 | S04-06 | Public native CLI/documentation deliver both useful queries and preserve prior routes. | A/F; literal guide/example, native/error/IO and old query/reference/managed/legacy regressions. | correctness-grade | Original A06-03 / P01-10,11 / CC then CDC | OPEN | None; unissued draft. |
 | S04-07 | Current scoped offline feature/package gates retain exact failures/applicability/counts. | G; prescribed common checks and current source/binary/input/freeze receipts. | correctness-grade | Original A06-03 / P01-10,11 / CC then CDC | OPEN | None; unissued draft. |
 | S04-08 | Independent verification/close/retro/bubble-up retain Links/computed/final obligations. | CDC actual proof and rowwalk then ROOT consistency; S05/S06/S07/Operator remain. | correctness-grade | Original A06-03 / P01-10,11 / CC then CDC | OPEN | None; unissued draft. |
+
+
+2026-11-01 interpretation (raw criteria unchanged): FormRecord has NO original-role field. S04-02 preserves actual richkind and the declared exact legacy-role filter/mapped_role policy, not invented source metadata. S03 is CLOSED atf47697ed/24c8e7a0; source/index/target QUIET. Final exactwire/cursor/detail/evidence/count design is current plan0.4; no implementation/intake/acceptance authority until ROOT readiness/status-onlyissue/actualreadback/freshpins/transfer. All8 rows remainOPEN.
