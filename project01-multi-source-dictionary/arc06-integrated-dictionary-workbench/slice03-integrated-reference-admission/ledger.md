@@ -1,6 +1,6 @@
 # S03 ledger — complete integrated reference admission
 
-**DRAFT / NOT ISSUED,2026-10-31.** Eight OPEN rows; accepted S01/S02 source, exact witness/native/status/wire/readset and ROOT readiness still required. Current CC ownership remains S01 only. See [plan](slice-plan.md) and parent successor-owner crosswalk; no reference duty is dropped from original A06-02.
+**DRAFT / NOT ISSUED,2026-10-31.** Eight OPEN rows; accepted S01/S02 source, exact witness/native/status/wire/readset and ROOT readiness still required. S01 is CLOSED; S02 is complete-intake-only and source/index/target ROOT QUIET. Current S03 plan0.2 source clarifications are prospective only. See [plan](slice-plan.md) and parent successor-owner crosswalk; no reference duty is dropped from original A06-02.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
