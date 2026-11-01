@@ -1,5 +1,7 @@
 # S02 ledger — configured mixed refresh and lifecycle
 
+**FINAL DRAFT READINESS PROPOSAL,2026-10-31 / NOT ISSUED.** Accepted S01 source4fc937dc/tree5fa and canonical close dda20f8/ROOT consistency PASS bound. Exact current plan/prompt/readset and corrected existing-BEGIN metadata observation require ROOT whole readiness before status-only issue. All8 rows OPEN; source/index/ONEtarget ROOT QUIET, retained CC parked. Earlier drafting/ownership clauses below retain their dated cutoffs.
+
 **DRAFT / NOT ISSUED,2026-10-31.** Original planned eight rows OPEN; accepted S01 plus final explicit status-roster/DTO design are required before S02 root readiness. Complete all-catalogue reference admission is explicitly owned by later S03; it is not an S02 implementation prerequisite. CC still owns S01; no S02 source/target/intake/runtime permission. See [slice plan](slice-plan.md).
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
