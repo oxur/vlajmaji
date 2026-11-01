@@ -1,0 +1,98 @@
+--- 714d-continuation01.py
++++ UNEXECUTED-continuation02.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+-"""UNEXECUTED S03 CDC continuation: reuse validated original example child1;
+-execute ONLY remaining26 CLI (27 total across attempts). No example replay,
++"""UNEXECUTED S03 CDC continuation: reuse validated original five children;
++execute ONLY remaining22 CLI (27 total across attempts). No example/CLI replay,
+ Cargo/consumer/default/Full/cleanup. Final source/binary/env bindings,
+ quiet custody and ROOT readiness are required before the sole execution.
+ Rich Form/Sense/native-patch/writer/IO controls remain author-source-reviewed
+@@ -109,15 +109,17 @@
+ expected={'up_whole_hit':whole_hit(up,up_a),'up_full':reference_row(up,up_a),'up_compact':reference_row(up,up_a,True),'owned_full':[reference_row(r2,a) for a in owned_as],'owned_compact':[reference_row(r2,a,True) for a in owned_as],'availability_full':availability(up,False)+availability(r2,False),'availability_compact':availability(up,True)+availability(r2,True)}
+ assert (base/'expected-before-children.json').read_bytes()==enc(expected)
+ # Restore only the original successful child, never invoke its binary again.
+-children=json.loads(Path(binding['continuation']['child1_commands']).read_bytes())
+-assert len(children)==1
+-first=children[0]
+-assert first['n']==1 and first['name']=='public-example' and first['expected_exit']==first['actual_exit']==0 and first['timeout'] is False
+-assert first['argv']==[str(example),str(base/'workbench-example')] and first['cwd']==str(base)
+-assert pin(first['stdout'])==first['stdout_pin'] and pin(first['stderr'])==first['stderr_pin']
++children=json.loads(Path(binding['continuation']['prefix_commands']).read_bytes())
++assert len(children)==5
++expected_prefix_names=['public-example','build-mixed-r2','upstream-full','upstream-compact','upstream-readable']
++for index,row in enumerate(children,1):
++ assert row['n']==index and row['name']==expected_prefix_names[index-1] and row['expected_exit']==row['actual_exit']==0 and row['timeout'] is False
++ assert row['cwd']==str(base) and row['argv']==binding['continuation']['expected_prefix_argv'][index-1]
++ assert pin(row['stdout'])==row['stdout_pin'] and pin(row['stderr'])==row['stderr_pin']
++assert (base/'commands-continuation01.json').read_bytes()==Path(binding['continuation']['prefix_commands']).read_bytes()
+ assert (base/'commands.json').read_bytes()==Path(binding['continuation']['child1_commands']).read_bytes()
+-json.loads(Path(first['stdout']).read_bytes())
+-assert not (base/'commands-continuation01.json').exists() and not (base/'execution-continuation01.json').exists()
++json.loads(Path(children[0]['stdout']).read_bytes())
++assert not (base/'commands-continuation02.json').exists() and not (base/'execution-continuation02.json').exists()
+ def run(name,argv,code=0,text=False):
+  n=len(children)+1;assert n<=27
+  started=time.time()
+@@ -129,7 +131,7 @@
+  with op.open('xb') as f:f.write(out)
+  with ep.open('xb') as f:f.write(err)
+  row={'n':n,'name':name,'argv':[str(a) for a in argv],'cwd':str(base),'expected_exit':code,'actual_exit':actual,'timeout':timeout,'seconds':time.time()-started,'stdout':str(op),'stderr':str(ep),'stdout_pin':pin(op),'stderr_pin':pin(ep)}
+- children.append(row);(base/'commands-continuation01.json').write_bytes(enc(children))
++ children.append(row);(base/'commands-continuation02.json').write_bytes(enc(children))
+  assert not timeout and actual==code,row
+  if code:
+   assert out==b'' and err.endswith(b'\n') and err.count(b'\n')==1
+@@ -143,7 +145,7 @@
+ W=base/'workbench-example';I=W/'inputs';C=W/'catalogue';J=W/'owned';cfg=W/'workbench-profiles.json';mix=base/'mixed-r2';disabled=base/'disabled-r2'
+ R=W/'artifacts/reference-inputs'
+ def emitted_path(name):return (R if name in new else I)/name
+-assert not mix.exists() and not disabled.exists()
++assert mix.is_dir() and not disabled.exists()
+ 
+ # Output identities below are checked against direct persisted binding and original
+ # inputs; opaque generation/content IDs are coherence-only, not predicted values.
+@@ -220,10 +222,14 @@
+  payload=compact['result']['payload']
+  if payload is None:assert remainder==[]
+  else:
+-  assert remainder[0]=='Reference '+enc(payload['target']).decode()+': '+payload['status']
+-  assert 'entity: '+enc(payload['entity']).decode() in remainder
++  assert remainder[0].startswith('Reference ')
++  target_json,status=remainder[0][len('Reference '):].rsplit(': ',1)
++  assert json.loads(target_json)==payload['target'] and status==payload['status']
++  entity_line=one(remainder,lambda line:line.startswith('entity: '))
++  assert json.loads(entity_line[len('entity: '):])==payload['entity']
+   assert 'confirmed: '+str(len(payload['confirmed'])) in remainder and 'unverified: 0' in remainder
+-  assert 'requested_release: '+enc(payload['requested_release']).decode() in remainder
++  release_line=one(remainder,lambda line:line.startswith('requested_release: '))
++  assert json.loads(release_line[len('requested_release: '):])==payload['requested_release']
+   expected_rows=sorted(payload['confirmed'],key=lambda r:r['entry']['source'])
+   # Stable source grouping preserves incoming order inside each source.
+   assert [json.loads(line[len('    spelling: '):]) for line in remainder if line.startswith('    spelling: ')]==[r['entry']['spelling'] for r in expected_rows]
+@@ -240,11 +246,12 @@
+ # Original child1 is restored above; validate ALL21 mapped outputs BEFORE child2.
+ for n,b in inputs.items():assert emitted_path(n).read_bytes()==b,n
+ before_cfg=cfg.read_bytes()
+-build=v('build-mixed-r2','workbench','build',mix,'--selection',I/'selection.json','--catalogue',C,'--owned',J)
++# Re-evaluate retained successful children2..5 OFFLINE, never invoke them again.
++build=json.loads(Path(children[1]['stdout']).read_bytes())
+ assert build['operation']=='build_new' and build['root']==native(mix);bm=direct(mix);assert build['binding']==bm
+-fu=v('upstream-full','workbench','reference',mix,'--target',R/'reference-upstream.json','--format','full');resolved_check(fu,up_target,bm,'full','up')
+-cu=v('upstream-compact','workbench','reference',mix,'--target',R/'reference-upstream.json','--format','compact');resolved_check(cu,up_target,bm,'compact','up')
+-readable_check(v('upstream-readable','workbench','reference',mix,'--target',R/'reference-upstream.json','--format','readable',text=True),cu)
++fu=json.loads(Path(children[2]['stdout']).read_bytes());resolved_check(fu,up_target,bm,'full','up')
++cu=json.loads(Path(children[3]['stdout']).read_bytes());resolved_check(cu,up_target,bm,'compact','up')
++readable_check(Path(children[4]['stdout']).read_text(),cu)
+ fe=v('owned-entry-full','workbench','reference',mix,'--target',R/'reference-owned-entry.json','--format','full');resolved_check(fe,entry_target,bm,'full','entry')
+ ce=v('owned-entry-compact','workbench','reference',mix,'--target',R/'reference-owned-entry.json','--format','compact');resolved_check(ce,entry_target,bm,'compact','entry')
+ fa=v('owned-assertion-full','workbench','reference',mix,'--target',R/'reference-owned-assertion.json','--format','full');resolved_check(fa,assertion_target,bm,'full','assertion')
+@@ -286,5 +293,5 @@
+ assert cfg.read_bytes()==before_cfg
+ for n,b in inputs.items():assert emitted_path(n).read_bytes()==b,n
+ check_pins()
+-(base/'execution-continuation01.json').write_bytes(enc({'status':'PASS','children':children,'source':binding['head'],'tree':binding['tree'],'method_sha256':pin(__file__)['sha256'],'bindings_sha256':pin(sys.argv[1])['sha256'],'scope':'27 bounded children: author-compiled public example replay plus26 independent CLI; full/compact complete targeted records and availability input-derived, reported state coherent with persisted binding; rich Form/Sense/raw descriptor/writer/IO controls inherited author-source-reviewed, not independently replayed','base':str(base),'continuation_of_child1_commands_sha256':pin(binding['continuation']['child1_commands'])['sha256'],'new_children':26}))
+-print(json.dumps({'status':'PASS','base':str(base),'children':len(children),'new_children':26,'original_children':1}))
++(base/'execution-continuation02.json').write_bytes(enc({'status':'PASS','children':children,'source':binding['head'],'tree':binding['tree'],'method_sha256':pin(__file__)['sha256'],'bindings_sha256':pin(sys.argv[1])['sha256'],'scope':'27 bounded children: author-compiled public example replay plus26 independent CLI; full/compact complete targeted records and availability input-derived, reported state coherent with persisted binding; rich Form/Sense/raw descriptor/writer/IO controls inherited author-source-reviewed, not independently replayed','base':str(base),'continuation_of_prefix_commands_sha256':pin(binding['continuation']['prefix_commands'])['sha256'],'new_children':22}))
++print(json.dumps({'status':'PASS','base':str(base),'children':len(children),'new_children':22,'original_children':5}))

@@ -1,0 +1,976 @@
+{
+  "status": "FROZEN_CDC_VERIFICATION",
+  "created_utc": "2026-11-01T09:59:24.777081+00:00",
+  "source": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "head": "f47697edda910e7aa3a2076be800fb046fddb983",
+  "tree": "302627a2c8f572095b81af09b340c258ba4c9cdd",
+  "parent": "8f373fa0298694b03d88f735a2ff11f1d1b9ca41",
+  "source_files": {
+    "README.md": {
+      "bytes": 15441,
+      "sha256": "188d42c27a5007935ab33fdb3ea78283c30ff2af0aa5000486df5298c0f51855"
+    },
+    "crates/cli/src/main.rs": {
+      "bytes": 206599,
+      "sha256": "41b9ea581006a3e948057a47b319712caaabb99a7ef87f4c945e2104f1e2b9be"
+    },
+    "crates/cli/tests/workbench_reference_contract.rs": {
+      "bytes": 32179,
+      "sha256": "45270c3fbce6731c552f155f6deb7d191152d99a7b0ab8dd75329beffa806c59"
+    },
+    "crates/search/README.md": {
+      "bytes": 7784,
+      "sha256": "bfd536985355a8fc7e9b2b55270b1951a074e28e4d32d6a3f94c58bedf1f35ac"
+    },
+    "crates/search/examples/integrated_workbench.rs": {
+      "bytes": 59569,
+      "sha256": "e603587e4ae16614175480ca64e4b5c237c4c537aaa8ffd8f8f142faa16fffae"
+    },
+    "crates/search/src/dictionary.rs": {
+      "bytes": 94456,
+      "sha256": "14cae884d83cb42a4593158a825155dd37abcb714ee88de25eda1985bcf2ff2b"
+    },
+    "crates/search/src/dictionary/projection.rs": {
+      "bytes": 94793,
+      "sha256": "eed462ea7f9be7baebae64772d372db432c326ef96ae4a566bce63c891a5620b"
+    },
+    "crates/search/src/lib.rs": {
+      "bytes": 58690,
+      "sha256": "737ec35bcf63d55ab958fec908e21a1baed27122d1e8446d2c1a257a483b24d2"
+    },
+    "crates/search/src/workbench.rs": {
+      "bytes": 45112,
+      "sha256": "a6eb12f72f3d5dd3486e462c61074f295e08e0febc48ebd6121fecd26fabb2ec"
+    },
+    "crates/search/src/workbench/reference.rs": {
+      "bytes": 62758,
+      "sha256": "17c20575416ff30f48b45557c4a2afe1c57a5be8c260206d2d70f676f5d94393"
+    },
+    "crates/search/tests/workbench_reference_contract.rs": {
+      "bytes": 73506,
+      "sha256": "686ae4e4a41badbd574b7c2afd5824882d035bdd0e2afa82405ef4a8820ec81b"
+    },
+    "crates/store/src/workbench.rs": {
+      "bytes": 85232,
+      "sha256": "037d739fd1c946c98dc0d33257238777855e79b91e0e27c2be9e59d68cb32104"
+    },
+    "docs/integrated-workbench.md": {
+      "bytes": 19224,
+      "sha256": "fc01835e202e48328d55f3ba4edb5914a4cb125649849296888084563d0f0cf1"
+    }
+  },
+  "cli": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+  "example": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/integrated_workbench",
+  "target": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+  "files": {
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/README.md": {
+      "bytes": 15441,
+      "sha256": "188d42c27a5007935ab33fdb3ea78283c30ff2af0aa5000486df5298c0f51855"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/src/main.rs": {
+      "bytes": 206599,
+      "sha256": "41b9ea581006a3e948057a47b319712caaabb99a7ef87f4c945e2104f1e2b9be"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/tests/workbench_reference_contract.rs": {
+      "bytes": 32179,
+      "sha256": "45270c3fbce6731c552f155f6deb7d191152d99a7b0ab8dd75329beffa806c59"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/README.md": {
+      "bytes": 7784,
+      "sha256": "bfd536985355a8fc7e9b2b55270b1951a074e28e4d32d6a3f94c58bedf1f35ac"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/examples/integrated_workbench.rs": {
+      "bytes": 59569,
+      "sha256": "e603587e4ae16614175480ca64e4b5c237c4c537aaa8ffd8f8f142faa16fffae"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary.rs": {
+      "bytes": 94456,
+      "sha256": "14cae884d83cb42a4593158a825155dd37abcb714ee88de25eda1985bcf2ff2b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/dictionary/projection.rs": {
+      "bytes": 94793,
+      "sha256": "eed462ea7f9be7baebae64772d372db432c326ef96ae4a566bce63c891a5620b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/lib.rs": {
+      "bytes": 58690,
+      "sha256": "737ec35bcf63d55ab958fec908e21a1baed27122d1e8446d2c1a257a483b24d2"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/workbench.rs": {
+      "bytes": 45112,
+      "sha256": "a6eb12f72f3d5dd3486e462c61074f295e08e0febc48ebd6121fecd26fabb2ec"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/workbench/reference.rs": {
+      "bytes": 62758,
+      "sha256": "17c20575416ff30f48b45557c4a2afe1c57a5be8c260206d2d70f676f5d94393"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/workbench_reference_contract.rs": {
+      "bytes": 73506,
+      "sha256": "686ae4e4a41badbd574b7c2afd5824882d035bdd0e2afa82405ef4a8820ec81b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/workbench.rs": {
+      "bytes": 85232,
+      "sha256": "037d739fd1c946c98dc0d33257238777855e79b91e0e27c2be9e59d68cb32104"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/docs/integrated-workbench.md": {
+      "bytes": 19224,
+      "sha256": "fc01835e202e48328d55f3ba4edb5914a4cb125649849296888084563d0f0cf1"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji": {
+      "bytes": 56748456,
+      "sha256": "cb5e8b288b00d68d20fa2114b0833d0979133590ee96e2597b2c7d286c9c0bd2"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/integrated_workbench": {
+      "bytes": 33289240,
+      "sha256": "b30d1935525e5bf15b7d5ce2c675c32e6ff3c4aeaf219fad977b11ac718e7d59"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/method.py": {
+      "bytes": 26234,
+      "sha256": "7c3aa1528b630972131ab8e2cfc4db5a606a8d448e7da73b64543df45a724dc3"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/expected.json": {
+      "bytes": 1093,
+      "sha256": "91f63128c7801de531ddb014857cedbaa1536ab4af49a52f934405fd946a0765"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/historical-selection.json": {
+      "bytes": 133,
+      "sha256": "7f40fbc8fbcab37660ec8e3498fe38a848316f54c140656c73e942f497617b85"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-r1.json": {
+      "bytes": 5652,
+      "sha256": "372fcce44cf1dd1f0d2d37b8b42927a25ac227f3d6f1e846856d8097896e4286"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-r2.json": {
+      "bytes": 8282,
+      "sha256": "b0a46586e5bba2817593f7cb0a5bdfb9a9897391fa1f4383ec4dd1b1217c69c7"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-seed.json": {
+      "bytes": 2062,
+      "sha256": "6d7e6c61892e1f5027e675ac8b32441044460cf1ee0359c179729196b087e0e8"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/request.json": {
+      "bytes": 163,
+      "sha256": "e868dd2d63d21ca68e2d4ec6bf157993af269aaa3fe82c1d4ba89ac08af3470b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/selection.json": {
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-dictionary.json": {
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-release.json": {
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-seal.json": {
+      "bytes": 474,
+      "sha256": "0d43c55ce524c4c3d8d4f7f422dca7b0d4b0a4330b1e332fc12a83b2584dd9e9"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream.json": {
+      "bytes": 83,
+      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profile-alpha-selection.json": {
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profile-beta-selection.json": {
+      "bytes": 67,
+      "sha256": "beeda00574bd9e1642c0f6a8b1771e9bc6fa836b4db601e2f414148579f1fe37"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profiles-expected.json": {
+      "bytes": 214,
+      "sha256": "fca09ccd0d28cc2f12e5f1aeecdf61b2862a45f967d6fb39e62361e3a7940bb9"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-owned-entry.json": {
+      "bytes": 39,
+      "sha256": "ea3efd655902cb677499047d2af35fa1fc8aad6c13d2a4ab876967732d0b5893"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-owned-assertion.json": {
+      "bytes": 43,
+      "sha256": "8538c3fe9250d7236b67184edd76ad3ab54e4b8664b9818d9923b4f805a70acf"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-upstream.json": {
+      "bytes": 340,
+      "sha256": "7434b3aa7c3416f597d9567e2783e6d2553beeefb94dfb96e7c22cbbfe378d70"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-unknown.json": {
+      "bytes": 9,
+      "sha256": "14c4849191d018fc8b00b02dc1e49d9f8b36a152066023b3b4c609b2f62ba328"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-unresolved.json": {
+      "bytes": 40,
+      "sha256": "74bbd4c69ea0e90d3b71b4dbd6158f1018a56c85b3da7d956a41508a39be0fdc"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-disabled-selection.json": {
+      "bytes": 89,
+      "sha256": "cc7756a611566ef3e82bb61f3e562cd3145ac6962937a4353e6c0b78eca014c2"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-expected.json": {
+      "bytes": 529,
+      "sha256": "43687f3379aa83c419d5915641992debd80d5ab43b663ad66208fc6fe35bc714"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/AGENTS.md": {
+      "bytes": 8404,
+      "sha256": "3775aeaad14a5c1eca7edc52d061f39130b1f24ba9fd6dc9f4f537a7282914d7"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.lock": {
+      "bytes": 32280,
+      "sha256": "56fe1cbb2b6eee50e82aa46b2532c6019bdc4872751e01dbeae0167b6012a689"
+    },
+    "/tmp/vlajmaji-p01-a05-cargo": {
+      "bytes": 330,
+      "sha256": "426d1e49863551fe37252cecb8d36f8fb58410670fc550c6deedc89ddb92f53d"
+    },
+    "/private/tmp/vlajmaji-p01-a06-s01-original-env.sh": {
+      "bytes": 2287,
+      "sha256": "ae749d0dd537499b254fd4e9fc35980345eabf5e1164c41817e62eacc58b2c86"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/cc-prompt.md": {
+      "bytes": 29032,
+      "sha256": "90364a84442df4176249c6d1c987953c07d2c64625c012c294466612822a512d"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/cc-prompt-iteration01.md": {
+      "bytes": 18382,
+      "sha256": "4b6798a1184f286870a76b1b1482ba0ce301bc11c120e0cffeaed6e8a6b874bb"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/slice-plan.md": {
+      "bytes": 37877,
+      "sha256": "a5af9f439a96e3a6947545a246ec50f58ee1ebf2ec1a876dc8dc7beb15d8604d"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/ledger.md": {
+      "bytes": 5017,
+      "sha256": "e66128e8427cfccf86c5ae1012275710f5b2477b62a6369fe9c863c193aea47d"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/closing-report.md": {
+      "bytes": 7101,
+      "sha256": "d46e5e23d546ac543e15a110bcf5107b1bfc7b2060118a552d81113ce664a04e"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/execution.md": {
+      "bytes": 76529,
+      "sha256": "808fd12cd066814be134178129dd71c0c73e318cc8a95e173692a26821e1e594"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/cc-closing-report.md": {
+      "bytes": 7101,
+      "sha256": "d46e5e23d546ac543e15a110bcf5107b1bfc7b2060118a552d81113ce664a04e"
+    },
+    "/private/tmp/vlajmaji-s03-package-final-WPyhZS/build-cli.log": {
+      "bytes": 177,
+      "sha256": "c716ef9b123619ed62825ee3cf0705323ff860d472fd22df443a84dc522d12ce"
+    },
+    "/private/tmp/vlajmaji-s03-package-final-WPyhZS/build-example.log": {
+      "bytes": 300,
+      "sha256": "d71aff125efe099d0e9d8721056a22a7f0d44fdb420caa20f2dea93625e4c7ed"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/method-continuation01.py": {
+      "bytes": 27688,
+      "sha256": "50091aa53611cb5ac817ab41a1f375aee9adcd2520720eba8ddffaa72cbd7542"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/method-continuation01.diff": {
+      "bytes": 15772,
+      "sha256": "d43655f937d5e32f2a4165e57de7d8e9923435dbb82b20991289f515eba4616f"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/bindings.json": {
+      "bytes": 26969,
+      "sha256": "19e2ca08850ab03702c0e72fe8f1890b047854f92bd361499aab56dcfb4d63b8"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/commands.json": {
+      "bytes": 706,
+      "sha256": "e09fe284deae1e5c3fdbb0d501657f7afefd8b40a8cfc1ad32e4389552233e8b"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/selected-env.json": {
+      "bytes": 2407,
+      "sha256": "bf6911bffc3d6c76802fc6c955155345891e0c04401f3116483150496f3ffa3e"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/expected-before-children.json": {
+      "bytes": 30080,
+      "sha256": "288dc53c1c12c10f59ea32edf15378c1d9bd4bd4518010c1664a119658aa3fab"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/negative-input-authority-before-children.json": {
+      "bytes": 1947,
+      "sha256": "ca499092a7b8e21eedc993a17d8a409c3b67a80d6695f0ade0a3275fbbe10442"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/01-public-example.stdout": {
+      "bytes": 458161,
+      "sha256": "a1d8827e2df2de9b0cecedc998953ba407543f5fef835e189c6d84dec0437ede"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/01-public-example.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/malformed.json": {
+      "bytes": 1,
+      "sha256": "021fb596db81e6d02bf3d2586ee3981fe519f275c0ac9ca76bbcf2ebb4097d96"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/wrong-role.json": {
+      "bytes": 38,
+      "sha256": "e60dbf9f9dae50b375dbcec018885f37ac5560835fdb34bc7f48a91566082594"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/unknown-release.json": {
+      "bytes": 273,
+      "sha256": "5ca9a42313ad9b1a9a6f760d3983aa782e83ff9494b5c1a8d0eaf10eecb0f90f"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/empty-unresolved.json": {
+      "bytes": 17,
+      "sha256": "d68ed417c092e6b43a8617ce5a0214f727dfaa781ecf5dfddce45d731ca0debf"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/wrong-source.json": {
+      "bytes": 345,
+      "sha256": "9c0681fa32267fe061a0a2ea95deede3d2bfec7a0e7b8161e91855ab28125993"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/launch01.status": {
+      "bytes": 7,
+      "sha256": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/launch01.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/launch01.stderr": {
+      "bytes": 1068,
+      "sha256": "ca33d0f7bbda44eed277e3e298f4cf7304a213ac14e7be0f2cb6a6d19d41313e"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/launch01.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/launch01.status": {
+      "bytes": 7,
+      "sha256": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/wrong-role.json": {
+      "bytes": 38,
+      "sha256": "e60dbf9f9dae50b375dbcec018885f37ac5560835fdb34bc7f48a91566082594"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/launch01.stderr": {
+      "bytes": 1068,
+      "sha256": "ca33d0f7bbda44eed277e3e298f4cf7304a213ac14e7be0f2cb6a6d19d41313e"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/commands.json": {
+      "bytes": 706,
+      "sha256": "e09fe284deae1e5c3fdbb0d501657f7afefd8b40a8cfc1ad32e4389552233e8b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/expected-before-children.json": {
+      "bytes": 30080,
+      "sha256": "288dc53c1c12c10f59ea32edf15378c1d9bd4bd4518010c1664a119658aa3fab"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/unknown-release.json": {
+      "bytes": 273,
+      "sha256": "5ca9a42313ad9b1a9a6f760d3983aa782e83ff9494b5c1a8d0eaf10eecb0f90f"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/selected-env.json": {
+      "bytes": 2407,
+      "sha256": "bf6911bffc3d6c76802fc6c955155345891e0c04401f3116483150496f3ffa3e"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/wrong-source.json": {
+      "bytes": 345,
+      "sha256": "9c0681fa32267fe061a0a2ea95deede3d2bfec7a0e7b8161e91855ab28125993"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/01-public-example.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/negative-input-authority-before-children.json": {
+      "bytes": 1947,
+      "sha256": "ca499092a7b8e21eedc993a17d8a409c3b67a80d6695f0ade0a3275fbbe10442"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/01-public-example.stdout": {
+      "bytes": 458161,
+      "sha256": "a1d8827e2df2de9b0cecedc998953ba407543f5fef835e189c6d84dec0437ede"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/malformed.json": {
+      "bytes": 1,
+      "sha256": "021fb596db81e6d02bf3d2586ee3981fe519f275c0ac9ca76bbcf2ebb4097d96"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/empty-unresolved.json": {
+      "bytes": 17,
+      "sha256": "d68ed417c092e6b43a8617ce5a0214f727dfaa781ecf5dfddce45d731ca0debf"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/expected.json": {
+      "bytes": 1093,
+      "sha256": "91f63128c7801de531ddb014857cedbaa1536ab4af49a52f934405fd946a0765"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/historical-selection.json": {
+      "bytes": 133,
+      "sha256": "7f40fbc8fbcab37660ec8e3498fe38a848316f54c140656c73e942f497617b85"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/owned-r1.json": {
+      "bytes": 5652,
+      "sha256": "372fcce44cf1dd1f0d2d37b8b42927a25ac227f3d6f1e846856d8097896e4286"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/owned-r2.json": {
+      "bytes": 8282,
+      "sha256": "b0a46586e5bba2817593f7cb0a5bdfb9a9897391fa1f4383ec4dd1b1217c69c7"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/owned-seed.json": {
+      "bytes": 2062,
+      "sha256": "6d7e6c61892e1f5027e675ac8b32441044460cf1ee0359c179729196b087e0e8"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/request.json": {
+      "bytes": 163,
+      "sha256": "e868dd2d63d21ca68e2d4ec6bf157993af269aaa3fe82c1d4ba89ac08af3470b"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/selection.json": {
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/upstream-dictionary.json": {
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/upstream-release.json": {
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/upstream-seal.json": {
+      "bytes": 474,
+      "sha256": "0d43c55ce524c4c3d8d4f7f422dca7b0d4b0a4330b1e332fc12a83b2584dd9e9"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/upstream.json": {
+      "bytes": 83,
+      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/profile-alpha-selection.json": {
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/profile-beta-selection.json": {
+      "bytes": 67,
+      "sha256": "beeda00574bd9e1642c0f6a8b1771e9bc6fa836b4db601e2f414148579f1fe37"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/profiles-expected.json": {
+      "bytes": 214,
+      "sha256": "fca09ccd0d28cc2f12e5f1aeecdf61b2862a45f967d6fb39e62361e3a7940bb9"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-owned-entry.json": {
+      "bytes": 39,
+      "sha256": "ea3efd655902cb677499047d2af35fa1fc8aad6c13d2a4ab876967732d0b5893"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-owned-assertion.json": {
+      "bytes": 43,
+      "sha256": "8538c3fe9250d7236b67184edd76ad3ab54e4b8664b9818d9923b4f805a70acf"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-upstream.json": {
+      "bytes": 340,
+      "sha256": "7434b3aa7c3416f597d9567e2783e6d2553beeefb94dfb96e7c22cbbfe378d70"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-unknown.json": {
+      "bytes": 9,
+      "sha256": "14c4849191d018fc8b00b02dc1e49d9f8b36a152066023b3b4c609b2f62ba328"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-unresolved.json": {
+      "bytes": 40,
+      "sha256": "74bbd4c69ea0e90d3b71b4dbd6158f1018a56c85b3da7d956a41508a39be0fdc"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-disabled-selection.json": {
+      "bytes": 89,
+      "sha256": "cc7756a611566ef3e82bb61f3e562cd3145ac6962937a4353e6c0b78eca014c2"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-expected.json": {
+      "bytes": 529,
+      "sha256": "43687f3379aa83c419d5915641992debd80d5ab43b663ad66208fc6fe35bc714"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/method-continuation02.py": {
+      "bytes": 28067,
+      "sha256": "25c53710c4f448175b60adf088d97c44b5b3f8f8d7d17bcab29860debac4ca50"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/method-continuation02.diff": {
+      "bytes": 8915,
+      "sha256": "27a8cd53f19908cbff5dd72fc1faf84b348970cc39542a957a686848e4460e09"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/bindings-continuation01.json": {
+      "bytes": 42418,
+      "sha256": "3973a78d23126d2ea5e36b88a667abab15910d526e82c64c0738275affab0e33"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/commands-continuation01.json": {
+      "bytes": 4211,
+      "sha256": "6751f7d745aff8ab2a7bd9485ef9e6dcac714dd0df5bf2c81b87136221d48162"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/02-build-mixed-r2.stdout": {
+      "bytes": 1929,
+      "sha256": "9a5ea715af1f1685baed0b5f4346b6186250e3a8207e8da8b78e08110a90f84b"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/02-build-mixed-r2.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/03-upstream-full.stdout": {
+      "bytes": 13558,
+      "sha256": "cfff0e0b5c5b901d791a809afc973da16828e6d284717d66d5bca49424092cc7"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/03-upstream-full.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/04-upstream-compact.stdout": {
+      "bytes": 14071,
+      "sha256": "dffcd9a03425f0e24de4996dd43d23692e707a3b33b3ec5539d8f1d952c9562a"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/04-upstream-compact.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/05-upstream-readable.stdout": {
+      "bytes": 7135,
+      "sha256": "6946038597f444ef8ed3225750e6e1e8ee26ca7c356ddff66644f5384fca0f87"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/05-upstream-readable.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/launch02.status": {
+      "bytes": 7,
+      "sha256": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/launch02.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/launch02.stderr": {
+      "bytes": 794,
+      "sha256": "1c20c5c45df0b4e87e7d8fb8be029147339e34b2c72d1ece54441626a5deb84c"
+    },
+    "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/mixed-r2/binding.json": {
+      "bytes": 1675,
+      "sha256": "f718a8f01470f64fd8dfd4c02d0e0d405cf4613b532494456d221b671bd0bf99"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/04-upstream-compact.stdout": {
+      "bytes": 14071,
+      "sha256": "dffcd9a03425f0e24de4996dd43d23692e707a3b33b3ec5539d8f1d952c9562a"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/mixed-r2-binding.json": {
+      "bytes": 1675,
+      "sha256": "f718a8f01470f64fd8dfd4c02d0e0d405cf4613b532494456d221b671bd0bf99"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/02-build-mixed-r2.stdout": {
+      "bytes": 1929,
+      "sha256": "9a5ea715af1f1685baed0b5f4346b6186250e3a8207e8da8b78e08110a90f84b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/05-upstream-readable.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/05-upstream-readable.stdout": {
+      "bytes": 7135,
+      "sha256": "6946038597f444ef8ed3225750e6e1e8ee26ca7c356ddff66644f5384fca0f87"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/02-build-mixed-r2.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/04-upstream-compact.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/03-upstream-full.stdout": {
+      "bytes": 13558,
+      "sha256": "cfff0e0b5c5b901d791a809afc973da16828e6d284717d66d5bca49424092cc7"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/launch02.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/commands-continuation01.json": {
+      "bytes": 4211,
+      "sha256": "6751f7d745aff8ab2a7bd9485ef9e6dcac714dd0df5bf2c81b87136221d48162"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/launch02.stderr": {
+      "bytes": 794,
+      "sha256": "1c20c5c45df0b4e87e7d8fb8be029147339e34b2c72d1ece54441626a5deb84c"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/03-upstream-full.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/launch02.status": {
+      "bytes": 7,
+      "sha256": "4bf4fca02e6eeaf7f1c510b82c756e7f8a3c567a230bae1094b254adc774f38b"
+    }
+  },
+  "inputs": {
+    "expected.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/expected.json",
+      "bytes": 1093,
+      "sha256": "91f63128c7801de531ddb014857cedbaa1536ab4af49a52f934405fd946a0765"
+    },
+    "historical-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/historical-selection.json",
+      "bytes": 133,
+      "sha256": "7f40fbc8fbcab37660ec8e3498fe38a848316f54c140656c73e942f497617b85"
+    },
+    "owned-r1.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-r1.json",
+      "bytes": 5652,
+      "sha256": "372fcce44cf1dd1f0d2d37b8b42927a25ac227f3d6f1e846856d8097896e4286"
+    },
+    "owned-r2.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-r2.json",
+      "bytes": 8282,
+      "sha256": "b0a46586e5bba2817593f7cb0a5bdfb9a9897391fa1f4383ec4dd1b1217c69c7"
+    },
+    "owned-seed.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-seed.json",
+      "bytes": 2062,
+      "sha256": "6d7e6c61892e1f5027e675ac8b32441044460cf1ee0359c179729196b087e0e8"
+    },
+    "request.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/request.json",
+      "bytes": 163,
+      "sha256": "e868dd2d63d21ca68e2d4ec6bf157993af269aaa3fe82c1d4ba89ac08af3470b"
+    },
+    "selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/selection.json",
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "upstream-dictionary.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-dictionary.json",
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "upstream-release.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-release.json",
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "upstream-seal.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-seal.json",
+      "bytes": 474,
+      "sha256": "0d43c55ce524c4c3d8d4f7f422dca7b0d4b0a4330b1e332fc12a83b2584dd9e9"
+    },
+    "upstream.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream.json",
+      "bytes": 83,
+      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+    },
+    "profile-alpha-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profile-alpha-selection.json",
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "profile-beta-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profile-beta-selection.json",
+      "bytes": 67,
+      "sha256": "beeda00574bd9e1642c0f6a8b1771e9bc6fa836b4db601e2f414148579f1fe37"
+    },
+    "profiles-expected.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profiles-expected.json",
+      "bytes": 214,
+      "sha256": "fca09ccd0d28cc2f12e5f1aeecdf61b2862a45f967d6fb39e62361e3a7940bb9"
+    },
+    "reference-owned-entry.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-owned-entry.json",
+      "bytes": 39,
+      "sha256": "ea3efd655902cb677499047d2af35fa1fc8aad6c13d2a4ab876967732d0b5893"
+    },
+    "reference-owned-assertion.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-owned-assertion.json",
+      "bytes": 43,
+      "sha256": "8538c3fe9250d7236b67184edd76ad3ab54e4b8664b9818d9923b4f805a70acf"
+    },
+    "reference-upstream.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-upstream.json",
+      "bytes": 340,
+      "sha256": "7434b3aa7c3416f597d9567e2783e6d2553beeefb94dfb96e7c22cbbfe378d70"
+    },
+    "reference-unknown.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-unknown.json",
+      "bytes": 9,
+      "sha256": "14c4849191d018fc8b00b02dc1e49d9f8b36a152066023b3b4c609b2f62ba328"
+    },
+    "reference-unresolved.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-unresolved.json",
+      "bytes": 40,
+      "sha256": "74bbd4c69ea0e90d3b71b4dbd6158f1018a56c85b3da7d956a41508a39be0fdc"
+    },
+    "reference-disabled-selection.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-disabled-selection.json",
+      "bytes": 89,
+      "sha256": "cc7756a611566ef3e82bb61f3e562cd3145ac6962937a4353e6c0b78eca014c2"
+    },
+    "reference-expected.json": {
+      "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/reference-inputs/reference-expected.json",
+      "bytes": 529,
+      "sha256": "43687f3379aa83c419d5915641992debd80d5ab43b663ad66208fc6fe35bc714"
+    }
+  },
+  "path_sha256": "f7af29286b33342886cb96026c90a8bfcbbb7e3cfaef920ed73086ab33d3a53d",
+  "toolhomes": {
+    "CARGO_HOME": "/Users/oubiwann/.cargo",
+    "RUSTUP_HOME": "/Users/oubiwann/.rustup"
+  },
+  "required_rustup_auto_install": "0",
+  "protected_refs": {
+    "main": "cb13d377aeba85c1b76a9173abb22bedd535ac69",
+    "codex/project01-owned-dictionary": "69a9f68507e23cef9b20e4bcabc86840e224689e",
+    "bauske_head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+    "bauske_tree": "e5715eb87df84165ecba8b43cd35949ae9457695"
+  },
+  "binary_provenance": {
+    "cli": {
+      "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+      "argv": [
+        "/tmp/vlajmaji-p01-a05-cargo",
+        "+1.98.0",
+        "build",
+        "--locked",
+        "--offline",
+        "-p",
+        "vlajmaji-cli"
+      ],
+      "features": "package-default; no --features/--all-features/--no-default-features",
+      "receipt": "CC actual tool argv/terminal0 and existing execution record; small raw Finished alone does not show cwd/argv"
+    },
+    "example": {
+      "cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+      "argv": [
+        "/tmp/vlajmaji-p01-a05-cargo",
+        "+1.98.0",
+        "build",
+        "--locked",
+        "--offline",
+        "-p",
+        "vlajmaji-search",
+        "--example",
+        "integrated_workbench"
+      ],
+      "features": "package-default; no --features/--all-features/--no-default-features",
+      "receipt": "CC actual tool argv/terminal0 + raw compile physical SOURCE search path; no backend attestation"
+    }
+  },
+  "mutable_after_terminal_four_asof_planning": [
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/slice-plan.md",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/ledger.md",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/closing-report.md",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/execution.md"
+  ],
+  "runtime_authority": "UNEXECUTED CONTINUATION02 DRAFT; ROOT review required. Reuse SAME five successful actual children/base/4roots/21authorities/prechild buffers. OFFLINE validate retained2..5 then ONLY remaining22CLI;27 total, no replay/Cargo/source/default/Full/newconsumer.",
+  "continuation": {
+    "base": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_",
+    "child1_commands": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer01/commands.json",
+    "original_method": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/method.py",
+    "original_bindings": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/bindings.json",
+    "original_launch_exit": 1,
+    "original_reached_children": 5,
+    "remaining_children": 22,
+    "original_child1": {
+      "n": 1,
+      "name": "public-example",
+      "argv": [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/integrated_workbench",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example"
+      ],
+      "cwd": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "timeout": false,
+      "seconds": 1.6741492748260498,
+      "stdout": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/01-public-example.stdout",
+      "stderr": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/01-public-example.stderr",
+      "stdout_pin": {
+        "bytes": 458161,
+        "sha256": "a1d8827e2df2de9b0cecedc998953ba407543f5fef835e189c6d84dec0437ede"
+      },
+      "stderr_pin": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "fixed_emission_mapping": "old14=workbench-example/inputs; new7=workbench-example/artifacts/reference-inputs",
+    "no_original_buffer_writes": true,
+    "prefix_commands": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/failed-observer02/commands-continuation01.json",
+    "expected_prefix_argv": [
+      [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/integrated_workbench",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example"
+      ],
+      [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+        "workbench",
+        "build",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/mixed-r2",
+        "--selection",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/selection.json",
+        "--catalogue",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/catalogue",
+        "--owned",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/owned"
+      ],
+      [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+        "workbench",
+        "reference",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/mixed-r2",
+        "--target",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-upstream.json",
+        "--format",
+        "full"
+      ],
+      [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+        "workbench",
+        "reference",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/mixed-r2",
+        "--target",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-upstream.json",
+        "--format",
+        "compact"
+      ],
+      [
+        "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+        "workbench",
+        "reference",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/mixed-r2",
+        "--target",
+        "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-upstream.json",
+        "--format",
+        "readable"
+      ]
+    ],
+    "original_prefix": [
+      {
+        "n": 1,
+        "name": "public-example",
+        "argv": [
+          "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/integrated_workbench",
+          "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example"
+        ],
+        "cwd": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "timeout": false,
+        "seconds": 1.6741492748260498,
+        "stdout": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/01-public-example.stdout",
+        "stderr": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/01-public-example.stderr",
+        "stdout_pin": {
+          "bytes": 458161,
+          "sha256": "a1d8827e2df2de9b0cecedc998953ba407543f5fef835e189c6d84dec0437ede"
+        },
+        "stderr_pin": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "n": 2,
+        "name": "build-mixed-r2",
+        "argv": [
+          "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+          "workbench",
+          "build",
+          "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/mixed-r2",
+          "--selection",
+          "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/inputs/selection.json",
+          "--catalogue",
+          "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/catalogue",
+          "--owned",
+          "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/owned"
+        ],
+        "cwd": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "timeout": false,
+        "seconds": 0.5824298858642578,
+        "stdout": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/02-build-mixed-r2.stdout",
+        "stderr": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/02-build-mixed-r2.stderr",
+        "stdout_pin": {
+          "bytes": 1929,
+          "sha256": "9a5ea715af1f1685baed0b5f4346b6186250e3a8207e8da8b78e08110a90f84b"
+        },
+        "stderr_pin": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "n": 3,
+        "name": "upstream-full",
+        "argv": [
+          "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+          "workbench",
+          "reference",
+          "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/mixed-r2",
+          "--target",
+          "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-upstream.json",
+          "--format",
+          "full"
+        ],
+        "cwd": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "timeout": false,
+        "seconds": 0.017853975296020508,
+        "stdout": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/03-upstream-full.stdout",
+        "stderr": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/03-upstream-full.stderr",
+        "stdout_pin": {
+          "bytes": 13558,
+          "sha256": "cfff0e0b5c5b901d791a809afc973da16828e6d284717d66d5bca49424092cc7"
+        },
+        "stderr_pin": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "n": 4,
+        "name": "upstream-compact",
+        "argv": [
+          "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+          "workbench",
+          "reference",
+          "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/mixed-r2",
+          "--target",
+          "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-upstream.json",
+          "--format",
+          "compact"
+        ],
+        "cwd": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "timeout": false,
+        "seconds": 0.014344215393066406,
+        "stdout": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/04-upstream-compact.stdout",
+        "stderr": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/04-upstream-compact.stderr",
+        "stdout_pin": {
+          "bytes": 14071,
+          "sha256": "dffcd9a03425f0e24de4996dd43d23692e707a3b33b3ec5539d8f1d952c9562a"
+        },
+        "stderr_pin": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "n": 5,
+        "name": "upstream-readable",
+        "argv": [
+          "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+          "workbench",
+          "reference",
+          "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/mixed-r2",
+          "--target",
+          "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/workbench-example/artifacts/reference-inputs/reference-upstream.json",
+          "--format",
+          "readable"
+        ],
+        "cwd": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_",
+        "expected_exit": 0,
+        "actual_exit": 0,
+        "timeout": false,
+        "seconds": 0.013666152954101562,
+        "stdout": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/05-upstream-readable.stdout",
+        "stderr": "/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_/05-upstream-readable.stderr",
+        "stdout_pin": {
+          "bytes": 7135,
+          "sha256": "6946038597f444ef8ed3225750e6e1e8ee26ca7c356ddff66644f5384fca0f87"
+        },
+        "stderr_pin": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "last_failure": "Readable JSON object-order observer mismatch after actual child5 exit0;8 direct labels passed,configured9"
+  }
+}

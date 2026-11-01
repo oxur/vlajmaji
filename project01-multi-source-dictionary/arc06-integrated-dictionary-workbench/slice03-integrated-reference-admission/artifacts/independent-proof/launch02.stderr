@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/method-continuation01.py", line 247, in <module>
+    readable_check(v('upstream-readable','workbench','reference',mix,'--target',R/'reference-upstream.json','--format','readable',text=True),cu)
+  File "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/method-continuation01.py", line 223, in readable_check
+    assert remainder[0]=='Reference '+enc(payload['target']).decode()+': '+payload['status']
+AssertionError
