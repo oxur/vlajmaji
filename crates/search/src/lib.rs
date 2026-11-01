@@ -67,9 +67,12 @@ pub use presentation::{
     render_dictionary_detail,
 };
 pub use workbench::{
-    WorkbenchCompactResponse, WorkbenchContextCounts, WorkbenchCurationCounts,
-    WorkbenchDetailResponse, WorkbenchFullResponse, WorkbenchFullResult, WorkbenchOwnedSummary,
-    WorkbenchQueryError, WorkbenchQuerySelection, WorkbenchSearchEngine, WorkbenchUpstreamSummary,
+    ConfiguredWorkbenchCompactResponse, ConfiguredWorkbenchDetailResponse,
+    ConfiguredWorkbenchFullResponse, ConfiguredWorkbenchQueryError,
+    ConfiguredWorkbenchSearchEngine, WorkbenchCompactResponse, WorkbenchContextCounts,
+    WorkbenchCurationCounts, WorkbenchDetailResponse, WorkbenchFullResponse, WorkbenchFullResult,
+    WorkbenchOwnedSummary, WorkbenchQueryError, WorkbenchQuerySelection, WorkbenchSearchEngine,
+    WorkbenchUpstreamSummary,
 };
 
 /// Query policy identities included in every response.

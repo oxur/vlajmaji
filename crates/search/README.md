@@ -69,6 +69,14 @@ compact Exact/Resolve and complete-hit detail output. They format typed
 responses already returned by the query APIs and do not open a provider or
 change query selection.
 
+`ConfiguredWorkbenchSearchEngine` captures one explicit named or default
+profile and lazily retains the same Full and Compact cores. Its outer binding
+identity includes the exact config bytes and requested selection mode; Compact
+snapshot/detail keys remain separate. A config or source change is checked
+before and after each query, including detail resolution. Library callers
+still pass the configuration path explicitly; only the CLI has any ambient
+configuration policy, and the workbench profile CLI requires `--config`.
+
 The `topology_probe` example is a local comparison harness, not user
 configuration or an installer. `prepare --manifest FILE` strictly loads four
 explicitly pinned sealed inputs and exclusively creates one unified and four
@@ -90,6 +98,9 @@ Requires Rust 1.98 or newer. Computed proposals and scores do not establish atte
 See the [API documentation](https://docs.rs/vlajmaji-search). Licensed under Apache-2.0.
 
 ## Bound mixed workbench queries
+
+These APIs are part of the current unpublished workspace 0.3.0; the dependency
+snippet above still names published 0.2.0 and does not provide them.
 
 `WorkbenchSearchEngine` lazily opens the existing Full and Compact query routes
 against one immutable `WorkbenchView`. Each operation checks catalogue and

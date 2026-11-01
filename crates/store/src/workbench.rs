@@ -1491,7 +1491,7 @@ struct NativePathReportWire {
     utf8: Option<String>,
 }
 
-fn deserialize_native_path<'de, D>(deserializer: D) -> Result<NativePathReport, D::Error>
+pub(crate) fn deserialize_native_path<'de, D>(deserializer: D) -> Result<NativePathReport, D::Error>
 where
     D: serde::Deserializer<'de>,
 {
@@ -1547,7 +1547,7 @@ fn validate_sha(value: &str, label: &str) -> Result<(), WorkbenchError> {
     Ok(())
 }
 
-fn decode_native_path(report: &NativePathReport) -> Result<PathBuf, WorkbenchError> {
+pub(crate) fn decode_native_path(report: &NativePathReport) -> Result<PathBuf, WorkbenchError> {
     if !report.hex.len().is_multiple_of(2)
         || !report
             .hex

@@ -28,17 +28,21 @@ use vlajmaji_lexicon::{
     seal_release,
 };
 use vlajmaji_search::{
-    DictionaryExactOptions, DictionaryRequest, WorkbenchFullResult, WorkbenchQueryError,
-    WorkbenchSearchEngine,
+    ConfiguredWorkbenchQueryError, ConfiguredWorkbenchSearchEngine, DictionaryExactOptions,
+    DictionaryRequest, WorkbenchFullResult, WorkbenchQueryError, WorkbenchSearchEngine,
 };
 use vlajmaji_store::{
     CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection, OwnedJournal,
-    WorkbenchBuildRequest, WorkbenchError, WorkbenchOwnedRevision, WorkbenchSelection,
+    WorkbenchBuildRequest, WorkbenchError, WorkbenchOwnedRevision,
+    WorkbenchProfileConfigureRequest, WorkbenchProfileError, WorkbenchProfiles, WorkbenchSelection,
 };
 
 const UPSTREAM_JSON: &[u8] = br#"[
   {"word":"farvi","word_type":"gismu","definition":"advance","definition_id":1}
 ]"#;
+const PROFILE_BETA_SELECTION_JSON: &[u8] =
+    br#"{"version":1,"packs":[],"disabled":[],"owned":"head","contexts":[]}"#;
+const PROFILES_EXPECTED_JSON: &[u8] = br#"{"version":1,"config_revisions":[1,2,3,4,5,6],"prepared_sequences":[0,1,2],"alpha_r1":{"occurrences":3,"source_groups":2},"beta_r1":{"occurrences":2,"source_groups":1},"beta_r2":{"occurrences":3,"source_groups":1}}"#;
 
 fn value(text: &str) -> TextValue {
     TextValue {
@@ -440,6 +444,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         &inputs.join("selection.json"),
         &serde_json::to_vec_pretty(&selection)?,
     )?;
+    let profile_alpha_selection = serde_json::to_vec_pretty(&selection)?;
+    write_new(
+        &inputs.join("profile-alpha-selection.json"),
+        &profile_alpha_selection,
+    )?;
+    write_new(
+        &inputs.join("profile-beta-selection.json"),
+        PROFILE_BETA_SELECTION_JSON,
+    )?;
+    write_new(
+        &inputs.join("profiles-expected.json"),
+        PROFILES_EXPECTED_JSON,
+    )?;
     write_new(
         &inputs.join("historical-selection.json"),
         &serde_json::to_vec_pretty(&historical_selection)?,
@@ -562,6 +579,166 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     {
         return Err("the owned Full hits differ from the emitted r1 input or order".into());
     }
+    let expected_owned_r1_assertions = revision_one
+        .metadata()
+        .assertions
+        .iter()
+        .filter(|assertion| assertion.entry == owned_entry.id)
+        .collect::<Vec<_>>();
+    if actual_r1.groups[1].hits.len() != expected_owned_r1_assertions.len()
+        || actual_r1.groups[1]
+            .hits
+            .iter()
+            .zip(&expected_owned_r1_assertions)
+            .any(|(hit, assertion)| hit.entry != *owned_entry || hit.assertion != **assertion)
+    {
+        return Err("the owned Full hits must match every emitted r1 Entry and Assertion".into());
+    }
+
+    // Keep the configured-profile journal independent from the original S01
+    // journal so its publication sequence is an input to this example alone.
+    let configured_owned_root = output_root.join("configured-owned");
+    let (mut configured_writer, configured_created) =
+        OwnedJournal::create(&configured_owned_root, &seed)?;
+    let configured_revision_one_result =
+        configured_writer.commit(&configured_created.head.revision.id, &revision_one)?;
+    drop(configured_writer);
+
+    let profile_config = output_root.join("workbench-profiles.json");
+    let profile_alpha_r1_root = output_root.join("configured-alpha-r1");
+    let profile_beta_r1_root = output_root.join("configured-beta-r1");
+    let alpha_configured = WorkbenchProfiles::configure(
+        &profile_config,
+        WorkbenchProfileConfigureRequest {
+            name: "alpha".into(),
+            catalogue_root: Some(output_root.join("catalogue")),
+            owned_root: Some(configured_owned_root.clone()),
+            selection: selection.clone(),
+            make_default: true,
+        },
+        None,
+    )?;
+    if alpha_configured.revision != 1 || !alpha_configured.changed {
+        return Err("alpha configuration must create profile revision one".into());
+    }
+    let alpha_r1 = WorkbenchProfiles::refresh(&profile_config, None, &profile_alpha_r1_root, 1)?;
+    if alpha_r1.publication.revision != 2
+        || alpha_r1.publication.active.as_ref().map(|row| row.sequence) != Some(0)
+    {
+        return Err("alpha r1 refresh must publish sequence zero at revision two".into());
+    }
+    let mut alpha_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, None)?;
+    let configured_alpha_r1 = alpha_engine.execute(request.clone())?;
+    let vlajmaji_search::WorkbenchFullResult::Exact(alpha_exact) = &configured_alpha_r1.result
+    else {
+        return Err("configured alpha must retain the Full Exact result tag".into());
+    };
+    if alpha_exact.totals.occurrences != 3
+        || alpha_exact.groups.len() != 2
+        || serde_json::to_vec(alpha_exact)? != serde_json::to_vec(actual_r1)?
+    {
+        return Err("configured alpha r1 must retain the exact mixed emitted-input result".into());
+    }
+
+    let beta_selection = WorkbenchSelection::from_json_bytes(PROFILE_BETA_SELECTION_JSON)?;
+    let beta_configured = WorkbenchProfiles::configure(
+        &profile_config,
+        WorkbenchProfileConfigureRequest {
+            name: "beta".into(),
+            catalogue_root: None,
+            owned_root: Some(configured_owned_root.clone()),
+            selection: beta_selection.clone(),
+            make_default: false,
+        },
+        Some(2),
+    )?;
+    if beta_configured.revision != 3 || beta_configured.default_profile.as_deref() != Some("alpha")
+    {
+        return Err("beta configuration must preserve alpha as default at revision three".into());
+    }
+    let profile_bytes_before_noop = fs::read(&profile_config)?;
+    let profile_sha_before_noop = Sha256::digest(&profile_bytes_before_noop);
+    let beta_noop = WorkbenchProfiles::configure(
+        &profile_config,
+        WorkbenchProfileConfigureRequest {
+            name: "beta".into(),
+            catalogue_root: None,
+            owned_root: Some(configured_owned_root.clone()),
+            selection: beta_selection.clone(),
+            make_default: false,
+        },
+        Some(3),
+    )?;
+    let profile_bytes_after_noop = fs::read(&profile_config)?;
+    if beta_noop.changed
+        || beta_noop.revision != 3
+        || profile_bytes_after_noop != profile_bytes_before_noop
+        || Sha256::digest(&profile_bytes_after_noop) != profile_sha_before_noop
+    {
+        return Err("the exact beta no-op must retain revision three and config bytes".into());
+    }
+    let mut named_alpha_engine =
+        ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("alpha"))?;
+    let named_alpha_r1 = named_alpha_engine.execute(request.clone())?;
+    if serde_json::to_vec(&named_alpha_r1.result)?
+        != serde_json::to_vec(&configured_alpha_r1.result)?
+        || named_alpha_r1.binding_sha256 == configured_alpha_r1.binding_sha256
+    {
+        return Err(
+            "named alpha must match the default body with a distinct effective identity".into(),
+        );
+    }
+    if !matches!(
+        alpha_engine.execute(request.clone()),
+        Err(ConfiguredWorkbenchQueryError::Profile(error))
+            if matches!(error.as_ref(), WorkbenchProfileError::ConfigChanged { .. })
+    ) {
+        return Err("an alpha engine must reject the changed config capture".into());
+    }
+    let beta_r1 =
+        WorkbenchProfiles::refresh(&profile_config, Some("beta"), &profile_beta_r1_root, 3)?;
+    if beta_r1.publication.revision != 4
+        || beta_r1.publication.active.as_ref().map(|row| row.sequence) != Some(1)
+    {
+        return Err("beta r1 refresh must publish sequence one at revision four".into());
+    }
+    let mut beta_engine_at_revision_four =
+        ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("beta"))?;
+    let configured_beta_r1 = beta_engine_at_revision_four.execute(request.clone())?;
+    let vlajmaji_search::WorkbenchFullResult::Exact(beta_r1_exact) = &configured_beta_r1.result
+    else {
+        return Err("configured beta must retain the Full Exact result tag".into());
+    };
+    if beta_r1_exact.totals.occurrences != 2
+        || beta_r1_exact.groups.len() != 1
+        || serde_json::to_vec(&beta_r1_exact.groups[0].hits)?
+            != serde_json::to_vec(&actual_r1.groups[1].hits)?
+    {
+        return Err("configured beta r1 must retain the exact two emitted owned hits".into());
+    }
+    let default = WorkbenchProfiles::set_default(&profile_config, Some("beta"), 4)?;
+    if default.revision != 5 || default.default_profile.as_deref() != Some("beta") {
+        return Err("setting beta as default must produce config revision five".into());
+    }
+    if !matches!(
+        beta_engine_at_revision_four.execute(request.clone()),
+        Err(ConfiguredWorkbenchQueryError::Profile(error))
+            if matches!(error.as_ref(), WorkbenchProfileError::ConfigChanged { .. })
+    ) {
+        return Err("changing the default must invalidate the captured beta engine".into());
+    }
+    let mut beta_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("beta"))?;
+    let configured_beta_r1 = beta_engine.execute(request.clone())?;
+    let vlajmaji_search::WorkbenchFullResult::Exact(beta_exact) = &configured_beta_r1.result else {
+        return Err("configured beta must retain the Full Exact result tag".into());
+    };
+    if beta_exact.totals.occurrences != 2
+        || beta_exact.groups.len() != 1
+        || serde_json::to_vec(&beta_exact.groups[0].hits)?
+            != serde_json::to_vec(&actual_r1.groups[1].hits)?
+    {
+        return Err("configured beta r1 must retain the exact two emitted owned hits".into());
+    }
 
     let historical_r1_root = output_root.join("workbench-historical-r1");
     let historical_r1 = vlajmaji_store::WorkbenchView::build_new(
@@ -586,10 +763,55 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         return Err("the historical r1 result must match the emitted r1 input".into());
     }
 
+    let mut default_beta_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, None)?;
+    let default_beta_before_append = default_beta_engine.execute(request.clone())?;
+    if default_beta_before_append
+        .configuration
+        .requested_profile
+        .is_some()
+        || serde_json::to_vec(&default_beta_before_append.result)?
+            != serde_json::to_vec(&configured_beta_r1.result)?
+    {
+        return Err("default beta must use the beta r1 body with default-mode identity".into());
+    }
+
+    let mut configured_writer = OwnedJournal::open(&configured_owned_root)?;
+    let configured_revision_two_result = configured_writer.commit(
+        &configured_revision_one_result.head.revision.id,
+        &revision_two,
+    )?;
+    drop(configured_writer);
+
     let mut writer = OwnedJournal::open(&owned_root)?;
     let revision_two_result =
         writer.commit(&revision_one_result.head.revision.id, &revision_two)?;
     drop(writer);
+    if !matches!(
+        default_beta_engine.execute(request.clone()),
+        Err(ConfiguredWorkbenchQueryError::Profile(error))
+            if matches!(error.as_ref(), WorkbenchProfileError::View(inner)
+                if matches!(inner.as_ref(), WorkbenchError::StaleDependencies {
+                    dependency: vlajmaji_store::WorkbenchDependency::Owned,
+                    ..
+                }))
+    ) {
+        return Err(
+            "the retained default beta Head view must stale after the configured r2 append".into(),
+        );
+    }
+    if !matches!(
+        beta_engine.execute(request.clone()),
+        Err(ConfiguredWorkbenchQueryError::Profile(error))
+            if matches!(error.as_ref(), WorkbenchProfileError::View(inner)
+                if matches!(inner.as_ref(), WorkbenchError::StaleDependencies {
+                    dependency: vlajmaji_store::WorkbenchDependency::Owned,
+                    ..
+                }))
+    ) {
+        return Err(
+            "the configured beta r1 Head view must become stale after the r2 append".into(),
+        );
+    }
     if !matches!(
         search_r1.execute(request.clone()),
         Err(WorkbenchQueryError::View(error))
@@ -623,10 +845,20 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         },
     )?;
     let mut search_r2 = WorkbenchSearchEngine::open(&workbench_r2_root)?;
-    let full_r2 = search_r2.execute(request)?;
+    let full_r2 = search_r2.execute(request.clone())?;
     let WorkbenchFullResult::Exact(actual_r2) = &full_r2.result else {
         return Err("the emitted exact request did not produce an exact r2 response".into());
     };
+    let expected_owned_r2_assertions = revision_two
+        .metadata()
+        .assertions
+        .iter()
+        .filter(|assertion| {
+            revision_two.metadata().entries.iter().any(|entry| {
+                entry.id == assertion.entry && entry.spelling == Presence::Value("farvi".into())
+            })
+        })
+        .collect::<Vec<_>>();
     if actual_r2.groups.len() != 2
         || actual_r2.groups[0].source.id.as_str() != "lensisku"
         || actual_r2.groups[1].source.id.as_str() != "owned-example"
@@ -642,8 +874,66 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             })
             .collect::<Vec<_>>()
             != ["grow", "develop", "flourish"]
+        || actual_r2.groups[1].hits.len() != expected_owned_r2_assertions.len()
+        || actual_r2.groups[1]
+            .hits
+            .iter()
+            .zip(&expected_owned_r2_assertions)
+            .any(|(hit, assertion)| {
+                hit.entry
+                    != *revision_two
+                        .metadata()
+                        .entries
+                        .iter()
+                        .find(|entry| entry.id == assertion.entry)
+                        .expect("fixture assertion has an entry")
+                    || hit.assertion != **assertion
+            })
     {
         return Err("the refreshed r2 query must retain all four competing definitions".into());
+    }
+    let profile_beta_r2_root = output_root.join("configured-beta-r2");
+    let beta_r2 = WorkbenchProfiles::refresh(&profile_config, None, &profile_beta_r2_root, 5)?;
+    if beta_r2.publication.revision != 6
+        || beta_r2.publication.active.as_ref().map(|row| row.sequence) != Some(2)
+    {
+        return Err("default beta r2 refresh must publish sequence two at revision six".into());
+    }
+    let mut beta_r2_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("beta"))?;
+    let configured_beta_r2 = beta_r2_engine.execute(request.clone())?;
+    let vlajmaji_search::WorkbenchFullResult::Exact(beta_r2_exact) = &configured_beta_r2.result
+    else {
+        return Err("configured beta r2 must retain the Full Exact result tag".into());
+    };
+    if beta_r2_exact.totals.occurrences != 3
+        || beta_r2_exact.groups.len() != 1
+        || serde_json::to_vec(&beta_r2_exact.groups[0].hits)?
+            != serde_json::to_vec(&actual_r2.groups[1].hits)?
+    {
+        return Err("configured beta r2 must retain the exact three emitted owned hits".into());
+    }
+    let history = WorkbenchProfiles::read(&profile_config)?.history(None)?;
+    if default.revision != 5
+        || default.default_profile.as_deref() != Some("beta")
+        || history
+            .prepared
+            .iter()
+            .map(|row| row.sequence)
+            .collect::<Vec<_>>()
+            != [0, 1, 2]
+    {
+        return Err("profile history must retain three rows through revision six".into());
+    }
+    let mut named_beta_engine =
+        ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("beta"))?;
+    let named_beta_r2 = named_beta_engine.execute(request.clone())?;
+    let mut refreshed_default_beta_engine =
+        ConfiguredWorkbenchSearchEngine::open(&profile_config, None)?;
+    let default_beta_r2 = refreshed_default_beta_engine.execute(request.clone())?;
+    if serde_json::to_vec(&named_beta_r2.result)? != serde_json::to_vec(&default_beta_r2.result)?
+        || named_beta_r2.binding_sha256 == default_beta_r2.binding_sha256
+    {
+        return Err("named and default beta must share the r2 body but differ in identity".into());
     }
     println!(
         "{}",
@@ -660,6 +950,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             "historical_full_r1": historical_full_r1,
             "historical_binding_sha256": historical_r1.binding.binding_sha256(),
             "full_r2": full_r2,
+            "profile_revisions": [
+                alpha_configured.revision,
+                alpha_r1.publication.revision,
+                beta_configured.revision,
+                beta_r1.publication.revision,
+                default.revision,
+                beta_r2.publication.revision
+            ],
+            "profile_history": history,
+            "configured_alpha_r1": configured_alpha_r1,
+            "configured_beta_r1": configured_beta_r1,
+            "configured_beta_r2": configured_beta_r2,
+            "beta_noop": beta_noop,
+            "configured_revision_two": configured_revision_two_result,
+            "named_alpha_r1": named_alpha_r1,
+            "default_beta_before_append": default_beta_before_append,
+            "named_beta_r2": named_beta_r2,
         }))?
     );
     Ok(())

@@ -27,13 +27,17 @@ use vlajmaji_search::{
     render_collection_detail, render_dictionary_compact, render_dictionary_detail,
     validate_detail_snapshot_sha256,
 };
-use vlajmaji_search::{WorkbenchQueryError, WorkbenchSearchEngine};
+use vlajmaji_search::{
+    ConfiguredWorkbenchQueryError, ConfiguredWorkbenchSearchEngine, WorkbenchQueryError,
+    WorkbenchSearchEngine,
+};
 use vlajmaji_store::{
     CollectionCatalogue, CollectionError, CollectionInput, CollectionPolicySelection,
     CollectionProfileEnablementRequest, CollectionProfileMembershipWriteRequest,
     CollectionProfiles, CollectionRequest, CollectionSelection, DictionaryStoreVerification,
     DictionaryStoreVerificationCheck, DictionaryStoreVerificationReport, OwnedJournal,
-    OwnedJournalError, OwnedJournalReader, WorkbenchBuildRequest, WorkbenchSelection,
+    OwnedJournalError, OwnedJournalReader, WorkbenchBuildRequest, WorkbenchProfileConfigureRequest,
+    WorkbenchProfileError, WorkbenchProfileWriteReport, WorkbenchProfiles, WorkbenchSelection,
     WorkbenchView,
 };
 
@@ -225,6 +229,105 @@ enum WorkbenchCommand {
     /// Resolve a complete hit detail with a mandatory outer workbench key.
     Detail {
         root: PathBuf,
+        #[arg(long)]
+        reference: PathBuf,
+        #[arg(long)]
+        expected_binding: String,
+        #[arg(long, value_enum, default_value_t = WorkbenchDetailFormat::Full)]
+        format: WorkbenchDetailFormat,
+    },
+    /// Configure and inspect named profiles over explicit workbench inputs.
+    Profiles {
+        #[command(subcommand)]
+        command: WorkbenchProfilesCommand,
+    },
+}
+
+#[derive(Debug, Subcommand)]
+enum WorkbenchProfilesCommand {
+    /// Add or replace one named selection.
+    Configure {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        name: String,
+        #[arg(long)]
+        selection: PathBuf,
+        #[arg(long)]
+        catalogue: Option<PathBuf>,
+        #[arg(long)]
+        owned: Option<PathBuf>,
+        #[arg(long)]
+        make_default: bool,
+        #[arg(long)]
+        expected_revision: Option<u64>,
+    },
+    /// Change or clear the declared default profile.
+    Default {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long, conflicts_with = "clear", required_unless_present = "clear")]
+        profile: Option<String>,
+        #[arg(long, conflicts_with = "profile")]
+        clear: bool,
+        #[arg(long)]
+        expected_revision: u64,
+    },
+    /// Remove one named profile while retaining publication history.
+    Remove {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        profile: String,
+        #[arg(long)]
+        expected_revision: u64,
+    },
+    /// Build and publish one new immutable root for a profile.
+    Refresh {
+        destination: PathBuf,
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        profile: Option<String>,
+        #[arg(long)]
+        expected_revision: u64,
+    },
+    /// Show the complete captured config and profile metadata.
+    Info {
+        #[arg(long)]
+        config: PathBuf,
+    },
+    /// Show retained publication history.
+    History {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        profile: Option<String>,
+    },
+    /// Observe current profile sources and active prepared state.
+    Status {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        profile: Option<String>,
+    },
+    /// Query a configured profile in a selected output format.
+    Query {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        profile: Option<String>,
+        #[arg(long)]
+        request: PathBuf,
+        #[arg(long, value_enum, default_value_t = WorkbenchQueryFormat::Full)]
+        format: WorkbenchQueryFormat,
+    },
+    /// Resolve a compact detail reference using its configured binding key.
+    Detail {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        profile: Option<String>,
         #[arg(long)]
         reference: PathBuf,
         #[arg(long)]
@@ -652,6 +755,34 @@ fn workbench_error(error: vlajmaji_store::WorkbenchError) -> CliError {
     structured_error(code, error.to_string())
 }
 
+fn workbench_profile_error(error: WorkbenchProfileError) -> CliError {
+    use WorkbenchProfileError as Error;
+    let error = match error {
+        Error::View(source) => return workbench_error(*source),
+        other => other,
+    };
+    let code = match &error {
+        Error::Io { .. } => "workbench_config_io",
+        Error::Decode { .. } | Error::InvalidPolicy { .. } => "invalid_workbench_config",
+        Error::UnsupportedVersion { .. } | Error::UnsupportedNativeEncoding { .. } => {
+            "unsupported_workbench_config"
+        }
+        Error::MissingFile(_) => "workbench_config_missing",
+        Error::NoDefault => "workbench_no_default",
+        Error::UnknownProfile { .. } => "unknown_workbench_profile",
+        Error::Unprepared { .. } => "unprepared_workbench_profile",
+        Error::Conflict { .. } => "workbench_config_conflict",
+        Error::Busy { .. } => "workbench_config_busy",
+        Error::RevisionOverflow(_) => "invalid_workbench_config",
+        Error::ConfigChanged { .. } => "stale_workbench_config",
+        Error::BindingMismatch { .. } => "invalid_workbench_config_binding",
+        Error::View(_) => "workbench_dependency",
+        Error::Indeterminate { .. } => "workbench_config_indeterminate",
+        _ => "invalid_workbench_config",
+    };
+    structured_error(code, error.to_string())
+}
+
 fn workbench_query_error(error: WorkbenchQueryError) -> CliError {
     match error {
         WorkbenchQueryError::View(error) => workbench_error(*error),
@@ -669,6 +800,14 @@ fn workbench_query_error(error: WorkbenchQueryError) -> CliError {
     }
 }
 
+fn configured_workbench_query_error(error: ConfiguredWorkbenchQueryError) -> CliError {
+    match error {
+        ConfiguredWorkbenchQueryError::Profile(error) => workbench_profile_error(*error),
+        ConfiguredWorkbenchQueryError::Query(error) => workbench_query_error(*error),
+        other => structured_error("workbench_response", other.to_string()),
+    }
+}
+
 fn workbench_query_context(root: &Path, operation: &str) -> ManagedOutputContext {
     ManagedOutputContext {
         operation: operation.into(),
@@ -679,6 +818,57 @@ fn workbench_query_context(root: &Path, operation: &str) -> ManagedOutputContext
         snapshot: None,
         known_pack_ids: Vec::new(),
         outcome: "not_applicable".into(),
+        collection_failure: None,
+    }
+}
+
+fn workbench_profiles_output_context(
+    config: &Path,
+    profile: Option<&str>,
+    destination: Option<&Path>,
+    operation: &str,
+    outcome: &str,
+) -> ManagedOutputContext {
+    ManagedOutputContext {
+        operation: operation.into(),
+        config_path: Some(vlajmaji_store::native_path_report(config)),
+        root_path: destination.map(vlajmaji_store::native_path_report),
+        profile: None,
+        requested_profile: profile.map(str::to_owned),
+        snapshot: None,
+        known_pack_ids: Vec::new(),
+        outcome: outcome.into(),
+        collection_failure: None,
+    }
+}
+
+fn workbench_profiles_write_output_context(
+    report: &WorkbenchProfileWriteReport,
+    requested_profile: Option<&str>,
+    destination: Option<&vlajmaji_store::NativePathReport>,
+) -> ManagedOutputContext {
+    let outcome = format!(
+        "{}; changed={}; prior_revision={:?}; revision={}; sha256={}; active={:?}",
+        if report.changed {
+            "published"
+        } else {
+            "unchanged"
+        },
+        report.changed,
+        report.prior_revision,
+        report.revision,
+        report.sha256,
+        report.active,
+    );
+    ManagedOutputContext {
+        operation: format!("workbench_profiles_{}", report.operation),
+        config_path: Some(report.config.clone()),
+        root_path: destination.cloned(),
+        profile: None,
+        requested_profile: requested_profile.map(str::to_owned),
+        snapshot: None,
+        known_pack_ids: Vec::new(),
+        outcome,
         collection_failure: None,
     }
 }
@@ -808,6 +998,22 @@ struct ManagedOutputContext {
 
 impl ManagedOutputContext {
     fn report(&self, detail: String) -> serde_json::Value {
+        if self.operation.starts_with("workbench_profiles_") {
+            let context = serde_json::json!({
+                "config": self.config_path,
+                "profile": self.requested_profile,
+                "destination": self.root_path,
+                "publication": self.outcome,
+            });
+            return serde_json::json!(DictionaryErrorReport {
+                code: "response_output_io".into(),
+                message: format!(
+                    "{detail}; workbench profile publication context: {}",
+                    serde_json::to_string(&context).unwrap_or_else(|_| "{}".into())
+                ),
+                sources: Vec::new(),
+            });
+        }
         if matches!(
             self.operation.as_str(),
             "dictionary_detail" | "dictionary_query"
@@ -944,6 +1150,18 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
                 WorkbenchCommand::Detail { root, .. } => {
                     ("workbench_detail", Some(root.as_path()), "not_applicable")
                 }
+                WorkbenchCommand::Profiles { command } => {
+                    let (operation, config, profile, root, outcome) =
+                        workbench_profiles_command_context(command);
+                    return Some(context(
+                        operation,
+                        Some(config),
+                        root,
+                        profile,
+                        Vec::new(),
+                        outcome,
+                    ));
+                }
             };
             Some(context(operation, None, root, None, Vec::new(), outcome))
         }
@@ -1041,6 +1259,100 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
             _ => None,
         },
         _ => None,
+    }
+}
+
+fn workbench_profiles_command_context(
+    command: &WorkbenchProfilesCommand,
+) -> (
+    &'static str,
+    &Path,
+    Option<&str>,
+    Option<&Path>,
+    &'static str,
+) {
+    match command {
+        WorkbenchProfilesCommand::Configure {
+            config,
+            name,
+            owned,
+            ..
+        } => (
+            "workbench_profiles_configure",
+            config,
+            Some(name),
+            owned.as_deref(),
+            "published",
+        ),
+        WorkbenchProfilesCommand::Default {
+            config, profile, ..
+        } => (
+            "workbench_profiles_default",
+            config,
+            profile.as_deref(),
+            None,
+            "published",
+        ),
+        WorkbenchProfilesCommand::Remove {
+            config, profile, ..
+        } => (
+            "workbench_profiles_remove",
+            config,
+            Some(profile),
+            None,
+            "published",
+        ),
+        WorkbenchProfilesCommand::Refresh {
+            destination,
+            config,
+            profile,
+            ..
+        } => (
+            "workbench_profiles_refresh",
+            config,
+            profile.as_deref(),
+            Some(destination),
+            "published",
+        ),
+        WorkbenchProfilesCommand::Info { config } => (
+            "workbench_profiles_info",
+            config,
+            None,
+            None,
+            "not_applicable",
+        ),
+        WorkbenchProfilesCommand::History { config, profile } => (
+            "workbench_profiles_history",
+            config,
+            profile.as_deref(),
+            None,
+            "not_applicable",
+        ),
+        WorkbenchProfilesCommand::Status { config, profile } => (
+            "workbench_profiles_status",
+            config,
+            profile.as_deref(),
+            None,
+            "not_applicable",
+        ),
+        WorkbenchProfilesCommand::Query {
+            config, profile, ..
+        } => (
+            "workbench_profiles_query",
+            config,
+            profile.as_deref(),
+            None,
+            "not_applicable",
+        ),
+        WorkbenchProfilesCommand::Detail {
+            config, profile, ..
+        } => (
+            "workbench_profiles_detail",
+            config,
+            profile.as_deref(),
+            None,
+            "not_applicable",
+        ),
     }
 }
 
@@ -1712,6 +2024,245 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                     }
                 }
             }
+            WorkbenchCommand::Profiles { command } => match command {
+                WorkbenchProfilesCommand::Configure {
+                    config,
+                    name,
+                    selection,
+                    catalogue,
+                    owned,
+                    make_default,
+                    expected_revision,
+                } => {
+                    let selection_bytes = read_workbench_file(&selection)?;
+                    let selection = WorkbenchSelection::from_json_bytes(&selection_bytes)
+                        .map_err(workbench_error)?;
+                    let report = WorkbenchProfiles::configure(
+                        &config,
+                        WorkbenchProfileConfigureRequest {
+                            name: name.clone(),
+                            catalogue_root: catalogue,
+                            owned_root: owned,
+                            selection,
+                            make_default,
+                        },
+                        expected_revision,
+                    )
+                    .map_err(workbench_profile_error)?;
+                    output_context = Some(workbench_profiles_write_output_context(
+                        &report,
+                        Some(&name),
+                        None,
+                    ));
+                    serde_json::to_value(report).map_err(|error| {
+                        structured_error("workbench_response", error.to_string())
+                    })?
+                }
+                WorkbenchProfilesCommand::Default {
+                    config,
+                    profile,
+                    clear,
+                    expected_revision,
+                } => {
+                    let profile = if clear {
+                        None
+                    } else {
+                        Some(profile.as_deref().ok_or_else(|| {
+                            structured_error(
+                                "invalid_workbench_config",
+                                "default requires --profile or --clear",
+                            )
+                        })?)
+                    };
+                    let report =
+                        WorkbenchProfiles::set_default(&config, profile, expected_revision)
+                            .map_err(workbench_profile_error)?;
+                    output_context = Some(workbench_profiles_write_output_context(
+                        &report, profile, None,
+                    ));
+                    serde_json::to_value(report).map_err(|error| {
+                        structured_error("workbench_response", error.to_string())
+                    })?
+                }
+                WorkbenchProfilesCommand::Remove {
+                    config,
+                    profile,
+                    expected_revision,
+                } => {
+                    let report = WorkbenchProfiles::remove(&config, &profile, expected_revision)
+                        .map_err(workbench_profile_error)?;
+                    output_context = Some(workbench_profiles_write_output_context(
+                        &report,
+                        Some(&profile),
+                        None,
+                    ));
+                    serde_json::to_value(report).map_err(|error| {
+                        structured_error("workbench_response", error.to_string())
+                    })?
+                }
+                WorkbenchProfilesCommand::Refresh {
+                    destination,
+                    config,
+                    profile,
+                    expected_revision,
+                } => {
+                    let report = WorkbenchProfiles::refresh(
+                        &config,
+                        profile.as_deref(),
+                        &destination,
+                        expected_revision,
+                    )
+                    .map_err(workbench_profile_error)?;
+                    output_context = Some(workbench_profiles_write_output_context(
+                        &report.publication,
+                        profile.as_deref(),
+                        Some(&report.view.root),
+                    ));
+                    serde_json::to_value(report).map_err(|error| {
+                        structured_error("workbench_response", error.to_string())
+                    })?
+                }
+                WorkbenchProfilesCommand::Info { config } => {
+                    let report = WorkbenchProfiles::read(&config)
+                        .map(|profiles| profiles.report())
+                        .map_err(workbench_profile_error)?;
+                    serde_json::to_value(report).map_err(|error| {
+                        structured_error("workbench_response", error.to_string())
+                    })?
+                }
+                WorkbenchProfilesCommand::History { config, profile } => {
+                    let report = WorkbenchProfiles::read(&config)
+                        .and_then(|profiles| profiles.history(profile.as_deref()))
+                        .map_err(workbench_profile_error)?;
+                    serde_json::to_value(report).map_err(|error| {
+                        structured_error("workbench_response", error.to_string())
+                    })?
+                }
+                WorkbenchProfilesCommand::Status { config, profile } => {
+                    let report = WorkbenchProfiles::read(&config)
+                        .and_then(|profiles| profiles.status(profile.as_deref()))
+                        .map_err(workbench_profile_error)?;
+                    serde_json::to_value(report).map_err(|error| {
+                        structured_error("workbench_response", error.to_string())
+                    })?
+                }
+                WorkbenchProfilesCommand::Query {
+                    config,
+                    profile,
+                    request,
+                    format,
+                } => {
+                    let bytes = read_workbench_file(&request)?;
+                    let request: DictionaryRequest = serde_json::from_slice(&bytes)
+                        .map_err(|error| structured_error("request_json", error.to_string()))?;
+                    let mut engine =
+                        ConfiguredWorkbenchSearchEngine::open(&config, profile.as_deref())
+                            .map_err(configured_workbench_query_error)?;
+                    match format {
+                        WorkbenchQueryFormat::Full => {
+                            let response = engine
+                                .execute(request)
+                                .map_err(configured_workbench_query_error)?;
+                            serde_json::to_value(response).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?
+                        }
+                        WorkbenchQueryFormat::Compact => {
+                            let response = engine
+                                .execute_compact(request)
+                                .map_err(configured_workbench_query_error)?;
+                            serde_json::to_value(response).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?
+                        }
+                        WorkbenchQueryFormat::Readable => {
+                            let response = engine
+                                .execute_compact(request)
+                                .map_err(configured_workbench_query_error)?;
+                            output_context = Some(workbench_profiles_output_context(
+                                &config,
+                                profile.as_deref(),
+                                None,
+                                "workbench_profiles_query",
+                                "not_applicable",
+                            ));
+                            let text = format!(
+                                "workbench_binding: {}\nworkbench_configuration: {}\nworkbench_selection: {}\n{}",
+                                serde_json::to_string(&response.binding_sha256).map_err(
+                                    |error| structured_error(
+                                        "workbench_response",
+                                        error.to_string()
+                                    )
+                                )?,
+                                serde_json::to_string(&response.configuration).map_err(
+                                    |error| structured_error(
+                                        "workbench_response",
+                                        error.to_string()
+                                    )
+                                )?,
+                                serde_json::to_string(&response.selection).map_err(|error| {
+                                    structured_error("workbench_response", error.to_string())
+                                })?,
+                                render_dictionary_compact(&response.result),
+                            );
+                            return Ok((QueryOutput::Readable(text), output_context));
+                        }
+                    }
+                }
+                WorkbenchProfilesCommand::Detail {
+                    config,
+                    profile,
+                    reference,
+                    expected_binding,
+                    format,
+                } => {
+                    let bytes = read_workbench_file(&reference)?;
+                    let reference = DictionaryHitDetailRef::from_json_bytes(&bytes)
+                        .map_err(|error| CliError::Structured(error.report()))?;
+                    let mut engine =
+                        ConfiguredWorkbenchSearchEngine::open(&config, profile.as_deref())
+                            .map_err(configured_workbench_query_error)?;
+                    let response = engine
+                        .detail(&reference, &expected_binding)
+                        .map_err(configured_workbench_query_error)?;
+                    match format {
+                        WorkbenchDetailFormat::Full => {
+                            serde_json::to_value(response).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?
+                        }
+                        WorkbenchDetailFormat::Readable => {
+                            output_context = Some(workbench_profiles_output_context(
+                                &config,
+                                profile.as_deref(),
+                                None,
+                                "workbench_profiles_detail",
+                                "not_applicable",
+                            ));
+                            let text = format!(
+                                "workbench_binding: {}\nworkbench_configuration: {}\nworkbench_selection: {}\n{}",
+                                serde_json::to_string(&response.binding_sha256).map_err(
+                                    |error| structured_error(
+                                        "workbench_response",
+                                        error.to_string()
+                                    )
+                                )?,
+                                serde_json::to_string(&response.configuration).map_err(
+                                    |error| structured_error(
+                                        "workbench_response",
+                                        error.to_string()
+                                    )
+                                )?,
+                                serde_json::to_string(&response.selection).map_err(|error| {
+                                    structured_error("workbench_response", error.to_string())
+                                })?,
+                                render_dictionary_detail(&response.result),
+                            );
+                            return Ok((QueryOutput::Readable(text), output_context));
+                        }
+                    }
+                }
+            },
         },
         Command::Verify { check, store } => {
             let selected = resolve_store(store)?;
