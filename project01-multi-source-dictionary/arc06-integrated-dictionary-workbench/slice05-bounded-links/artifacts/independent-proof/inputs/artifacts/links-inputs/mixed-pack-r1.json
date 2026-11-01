@@ -1,0 +1,1175 @@
+{
+  "version": 1,
+  "legacy_archive": null,
+  "registry": {
+    "version": 1,
+    "sources": [
+      {
+        "id": "links-owned",
+        "display_name": "links-owned",
+        "abbreviation": "KO",
+        "abbreviation_kind": "ProjectAssigned",
+        "abbreviation_evidence": "fixed Links input",
+        "origin": "OwnedDraft"
+      },
+      {
+        "id": "links-upstream",
+        "display_name": "links-upstream",
+        "abbreviation": "KU",
+        "abbreviation_kind": "ProjectAssigned",
+        "abbreviation_evidence": "fixed Links input",
+        "origin": "Upstream"
+      }
+    ],
+    "contributors": [
+      {
+        "id": "links-editor",
+        "display_name": "Links fixture editor"
+      },
+      {
+        "id": "links-upstream-editor",
+        "display_name": "Links upstream editor"
+      }
+    ],
+    "distributors": [],
+    "aliases": [],
+    "lineage": [],
+    "snapshots": [
+      {
+        "snapshot": {
+          "namespace": "links-owned-capture-r1",
+          "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+        },
+        "source": "links-owned",
+        "distributor": null
+      },
+      {
+        "snapshot": {
+          "namespace": "links-upstream-capture-r1",
+          "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+        },
+        "source": "links-upstream",
+        "distributor": null
+      }
+    ],
+    "occurrences": [
+      {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/0"
+        },
+        "contributor": "links-editor",
+        "native_entry_id": "links-owned-entry-a",
+        "native_assertion_id": "links-owned-a"
+      },
+      {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/1"
+        },
+        "contributor": "links-editor",
+        "native_entry_id": "links-owned-entry-b",
+        "native_assertion_id": "links-owned-b"
+      },
+      {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/2"
+        },
+        "contributor": "links-editor",
+        "native_entry_id": "links-owned-entry-c",
+        "native_assertion_id": "links-owned-c"
+      },
+      {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "links-upstream-capture-r1",
+            "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+          },
+          "locator": "/0"
+        },
+        "contributor": "links-upstream-editor",
+        "native_entry_id": "seed-native",
+        "native_assertion_id": "x-native"
+      },
+      {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "links-upstream-capture-r1",
+            "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+          },
+          "locator": "/1"
+        },
+        "contributor": "links-upstream-editor",
+        "native_entry_id": "N",
+        "native_assertion_id": "y-native"
+      },
+      {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "links-upstream-capture-r1",
+            "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+          },
+          "locator": "/2"
+        },
+        "contributor": "links-upstream-editor",
+        "native_entry_id": null,
+        "native_assertion_id": "z-native"
+      }
+    ]
+  },
+  "captures": [
+    {
+      "identity": {
+        "namespace": "links-owned-capture-r1",
+        "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+      },
+      "metadata": {
+        "source_name": "Links owned",
+        "format_label": "synthetic-links-rows-v1",
+        "locator": "links-owned-capture-r1",
+        "revision": "Missing",
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "bytes": [
+        115,
+        101,
+        101,
+        100,
+        32,
+        124,
+        32,
+        76,
+        105,
+        110,
+        107,
+        115,
+        32,
+        102,
+        105,
+        120,
+        116,
+        117,
+        114,
+        101,
+        32,
+        97,
+        10,
+        98,
+        114,
+        97,
+        110,
+        99,
+        104,
+        32,
+        124,
+        32,
+        76,
+        105,
+        110,
+        107,
+        115,
+        32,
+        102,
+        105,
+        120,
+        116,
+        117,
+        114,
+        101,
+        32,
+        98,
+        10,
+        108,
+        101,
+        97,
+        102,
+        32,
+        124,
+        32,
+        76,
+        105,
+        110,
+        107,
+        115,
+        32,
+        102,
+        105,
+        120,
+        116,
+        117,
+        114,
+        101,
+        32,
+        99
+      ],
+      "occurrences": [
+        {
+          "locator": "/0",
+          "fields": [
+            {
+              "name": "word",
+              "encoding": "Text",
+              "raw_value": "seed"
+            },
+            {
+              "name": "definition",
+              "encoding": "Text",
+              "raw_value": "Links fixture a"
+            }
+          ],
+          "raw_line": "seed | Links fixture a"
+        },
+        {
+          "locator": "/1",
+          "fields": [
+            {
+              "name": "word",
+              "encoding": "Text",
+              "raw_value": "branch"
+            },
+            {
+              "name": "definition",
+              "encoding": "Text",
+              "raw_value": "Links fixture b"
+            }
+          ],
+          "raw_line": "branch | Links fixture b"
+        },
+        {
+          "locator": "/2",
+          "fields": [
+            {
+              "name": "word",
+              "encoding": "Text",
+              "raw_value": "leaf"
+            },
+            {
+              "name": "definition",
+              "encoding": "Text",
+              "raw_value": "Links fixture c"
+            }
+          ],
+          "raw_line": "leaf | Links fixture c"
+        }
+      ]
+    },
+    {
+      "identity": {
+        "namespace": "links-upstream-capture-r1",
+        "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+      },
+      "metadata": {
+        "source_name": "Links upstream",
+        "format_label": "synthetic-links-rows-v1",
+        "locator": "links-upstream-capture-r1",
+        "revision": "Missing",
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "bytes": [
+        115,
+        101,
+        101,
+        100,
+        32,
+        124,
+        32,
+        76,
+        105,
+        110,
+        107,
+        115,
+        32,
+        102,
+        105,
+        120,
+        116,
+        117,
+        114,
+        101,
+        32,
+        120,
+        32,
+        124,
+        32,
+        83,
+        101,
+        101,
+        32,
+        97,
+        108,
+        115,
+        111,
+        32,
+        123,
+        98,
+        114,
+        97,
+        110,
+        99,
+        104,
+        125,
+        32,
+        123,
+        98,
+        114,
+        97,
+        110,
+        99,
+        104,
+        125,
+        32,
+        123,
+        109,
+        105,
+        115,
+        115,
+        105,
+        110,
+        103,
+        125,
+        46,
+        10,
+        98,
+        114,
+        97,
+        110,
+        99,
+        104,
+        32,
+        124,
+        32,
+        76,
+        105,
+        110,
+        107,
+        115,
+        32,
+        102,
+        105,
+        120,
+        116,
+        117,
+        114,
+        101,
+        32,
+        121,
+        10,
+        108,
+        101,
+        97,
+        102,
+        32,
+        124,
+        32,
+        76,
+        105,
+        110,
+        107,
+        115,
+        32,
+        102,
+        105,
+        120,
+        116,
+        117,
+        114,
+        101,
+        32,
+        122
+      ],
+      "occurrences": [
+        {
+          "locator": "/0",
+          "fields": [
+            {
+              "name": "word",
+              "encoding": "Text",
+              "raw_value": "seed"
+            },
+            {
+              "name": "definition",
+              "encoding": "Text",
+              "raw_value": "Links fixture x"
+            },
+            {
+              "name": "notes",
+              "encoding": "Text",
+              "raw_value": "See also {branch} {branch} {missing}."
+            }
+          ],
+          "raw_line": "seed | Links fixture x | See also {branch} {branch} {missing}."
+        },
+        {
+          "locator": "/1",
+          "fields": [
+            {
+              "name": "word",
+              "encoding": "Text",
+              "raw_value": "branch"
+            },
+            {
+              "name": "definition",
+              "encoding": "Text",
+              "raw_value": "Links fixture y"
+            }
+          ],
+          "raw_line": "branch | Links fixture y"
+        },
+        {
+          "locator": "/2",
+          "fields": [
+            {
+              "name": "word",
+              "encoding": "Text",
+              "raw_value": "leaf"
+            },
+            {
+              "name": "definition",
+              "encoding": "Text",
+              "raw_value": "Links fixture z"
+            }
+          ],
+          "raw_line": "leaf | Links fixture z"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "catalogue_revision": 1,
+    "code_notices": [],
+    "collections": [
+      {
+        "id": "links-owned-collection",
+        "source": "links-owned",
+        "display_name": "links-owned-collection",
+        "description": "Missing"
+      },
+      {
+        "id": "links-upstream-collection",
+        "source": "links-upstream",
+        "display_name": "links-upstream-collection",
+        "description": "Missing"
+      }
+    ],
+    "components": [
+      {
+        "id": "links-owned-component",
+        "collection": "links-owned-collection",
+        "native_name": "links-owned-component",
+        "languages": [
+          "jbo"
+        ]
+      },
+      {
+        "id": "links-upstream-component",
+        "collection": "links-upstream-collection",
+        "native_name": "links-upstream-component",
+        "languages": [
+          "jbo"
+        ]
+      }
+    ],
+    "releases": [
+      {
+        "id": "links-owned-release-r0",
+        "component": "links-owned-component",
+        "distributor": null,
+        "upstream_revision": "Missing",
+        "distributor_revision": "Missing",
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "schema_version": 1,
+        "normalizer": "links-fixed-v1",
+        "normalizer_version": "1",
+        "captures": [],
+        "assertions": [],
+        "accounting": {
+          "input_occurrences": 0,
+          "normalized_occurrences": 0,
+          "query_excluded_occurrences": 0,
+          "unit": "occurrences"
+        },
+        "diagnostics": [],
+        "selected": true,
+        "availability": "Available",
+        "content_notices": [
+          {
+            "text": {
+              "Value": "synthetic Links fixture"
+            },
+            "locator": "Missing",
+            "license": "Missing"
+          }
+        ],
+        "redistribution": "Held",
+        "redistribution_evidence": []
+      },
+      {
+        "id": "links-owned-release-r1",
+        "component": "links-owned-component",
+        "distributor": null,
+        "upstream_revision": "Missing",
+        "distributor_revision": "Missing",
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "schema_version": 1,
+        "normalizer": "links-fixed-v1",
+        "normalizer_version": "1",
+        "captures": [
+          {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          }
+        ],
+        "assertions": [
+          "links-owned-a",
+          "links-owned-b",
+          "links-owned-c"
+        ],
+        "accounting": {
+          "input_occurrences": 3,
+          "normalized_occurrences": 3,
+          "query_excluded_occurrences": 0,
+          "unit": "occurrences"
+        },
+        "diagnostics": [],
+        "selected": true,
+        "availability": "Available",
+        "content_notices": [
+          {
+            "text": {
+              "Value": "synthetic Links fixture"
+            },
+            "locator": "Missing",
+            "license": "Missing"
+          }
+        ],
+        "redistribution": "Held",
+        "redistribution_evidence": []
+      },
+      {
+        "id": "links-upstream-release-r1",
+        "component": "links-upstream-component",
+        "distributor": null,
+        "upstream_revision": "Missing",
+        "distributor_revision": "Missing",
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "schema_version": 1,
+        "normalizer": "links-fixed-v1",
+        "normalizer_version": "1",
+        "captures": [
+          {
+            "namespace": "links-upstream-capture-r1",
+            "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+          }
+        ],
+        "assertions": [
+          "links-upstream-x",
+          "links-upstream-y",
+          "links-upstream-z"
+        ],
+        "accounting": {
+          "input_occurrences": 3,
+          "normalized_occurrences": 3,
+          "query_excluded_occurrences": 0,
+          "unit": "occurrences"
+        },
+        "diagnostics": [],
+        "selected": true,
+        "availability": "Available",
+        "content_notices": [
+          {
+            "text": {
+              "Value": "synthetic Links fixture"
+            },
+            "locator": "Missing",
+            "license": "Missing"
+          }
+        ],
+        "redistribution": "Held",
+        "redistribution_evidence": []
+      }
+    ],
+    "entries": [
+      {
+        "id": "links-owned-entry-a",
+        "source": "links-owned",
+        "spelling": {
+          "Value": "seed"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": "Missing",
+        "selmaho": "Missing",
+        "mapped_pos": "Missing"
+      },
+      {
+        "id": "links-owned-entry-b",
+        "source": "links-owned",
+        "spelling": {
+          "Value": "branch"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": "Missing",
+        "selmaho": "Missing",
+        "mapped_pos": "Missing"
+      },
+      {
+        "id": "links-owned-entry-c",
+        "source": "links-owned",
+        "spelling": {
+          "Value": "leaf"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": "Missing",
+        "selmaho": "Missing",
+        "mapped_pos": "Missing"
+      },
+      {
+        "id": "links-upstream-entry-x",
+        "source": "links-upstream",
+        "spelling": {
+          "Value": "seed"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": "Missing",
+        "selmaho": "Missing",
+        "mapped_pos": "Missing"
+      },
+      {
+        "id": "links-upstream-entry-y",
+        "source": "links-upstream",
+        "spelling": {
+          "Value": "branch"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": "Missing",
+        "selmaho": "Missing",
+        "mapped_pos": "Missing"
+      },
+      {
+        "id": "links-upstream-entry-z",
+        "source": "links-upstream",
+        "spelling": {
+          "Value": "leaf"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": "Missing",
+        "selmaho": "Missing",
+        "mapped_pos": "Missing"
+      },
+      {
+        "id": "links-upstream-entry-q",
+        "source": "links-upstream",
+        "spelling": {
+          "Value": "branch"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": "Missing",
+        "selmaho": "Missing",
+        "mapped_pos": "Missing"
+      }
+    ],
+    "assertions": [
+      {
+        "id": "links-owned-a",
+        "entry": "links-owned-entry-a",
+        "occurrence": {
+          "capture": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/0"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "Links fixture a",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      {
+        "id": "links-owned-b",
+        "entry": "links-owned-entry-b",
+        "occurrence": {
+          "capture": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/1"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "Links fixture b",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      {
+        "id": "links-owned-c",
+        "entry": "links-owned-entry-c",
+        "occurrence": {
+          "capture": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/2"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "Links fixture c",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      {
+        "id": "links-upstream-x",
+        "entry": "links-upstream-entry-x",
+        "occurrence": {
+          "capture": {
+            "namespace": "links-upstream-capture-r1",
+            "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+          },
+          "locator": "/0"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "Links fixture x",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      {
+        "id": "links-upstream-y",
+        "entry": "links-upstream-entry-y",
+        "occurrence": {
+          "capture": {
+            "namespace": "links-upstream-capture-r1",
+            "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+          },
+          "locator": "/1"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "Links fixture y",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      {
+        "id": "links-upstream-z",
+        "entry": "links-upstream-entry-z",
+        "occurrence": {
+          "capture": {
+            "namespace": "links-upstream-capture-r1",
+            "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+          },
+          "locator": "/2"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "Links fixture z",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      }
+    ],
+    "contexts": [
+      {
+        "id": "links-note-x",
+        "assertion": "links-upstream-x",
+        "kind": "Note",
+        "value": {
+          "Value": {
+            "text": "See also {branch} {branch} {missing}.",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        },
+        "translated_from": null,
+        "evidence": {
+          "occurrence": {
+            "capture": {
+              "namespace": "links-upstream-capture-r1",
+              "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+            },
+            "locator": "/0"
+          },
+          "field_index": 2,
+          "citation": "Missing",
+          "offset": null
+        }
+      }
+    ],
+    "frames": [],
+    "forms": [
+      {
+        "id": "links-upstream-form-z",
+        "entry": "links-upstream-entry-z",
+        "spelling": "leaf-form",
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "pronunciation": {
+          "Value": {
+            "text": "leaf",
+            "language": {
+              "Value": "jbo"
+            },
+            "markup": "Missing"
+          }
+        },
+        "kind": "SourceReportedForm",
+        "standing": "Missing",
+        "components": [],
+        "evidence": {
+          "occurrence": {
+            "capture": {
+              "namespace": "links-upstream-capture-r1",
+              "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+            },
+            "locator": "/2"
+          },
+          "field_index": null,
+          "citation": "Missing",
+          "offset": null
+        },
+        "computation": null
+      }
+    ],
+    "etymologies": [],
+    "relations": [
+      {
+        "id": "links-relation-01",
+        "origin": {
+          "Assertion": "links-upstream-x"
+        },
+        "kind": "SourceSeeAlso",
+        "direction": "Forward",
+        "scope": "Assertion",
+        "target": {
+          "Local": {
+            "Entry": "links-owned-entry-b"
+          }
+        },
+        "evidence": {
+          "occurrence": {
+            "capture": {
+              "namespace": "links-upstream-capture-r1",
+              "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+            },
+            "locator": "/0"
+          },
+          "field_index": null,
+          "citation": "Missing",
+          "offset": null
+        },
+        "editorial_revision": null
+      },
+      {
+        "id": "links-relation-02",
+        "origin": {
+          "Form": "links-upstream-form-z"
+        },
+        "kind": "SourceEtymology",
+        "direction": "Reverse",
+        "scope": "Form",
+        "target": {
+          "Local": {
+            "Assertion": "links-owned-b"
+          }
+        },
+        "evidence": {
+          "occurrence": {
+            "capture": {
+              "namespace": "links-upstream-capture-r1",
+              "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+            },
+            "locator": "/2"
+          },
+          "field_index": null,
+          "citation": "Missing",
+          "offset": null
+        },
+        "editorial_revision": null
+      },
+      {
+        "id": "links-relation-05",
+        "origin": {
+          "Assertion": "links-upstream-y"
+        },
+        "kind": "SourceSeeAlso",
+        "direction": "Forward",
+        "scope": "Assertion",
+        "target": {
+          "Unresolved": "missing"
+        },
+        "evidence": {
+          "occurrence": {
+            "capture": {
+              "namespace": "links-upstream-capture-r1",
+              "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273"
+            },
+            "locator": "/1"
+          },
+          "field_index": null,
+          "citation": "Missing",
+          "offset": null
+        },
+        "editorial_revision": null
+      },
+      {
+        "id": "links-relation-03",
+        "origin": {
+          "EditorialSense": "links-owned-sense-ba"
+        },
+        "kind": "EditorialLink",
+        "direction": "Bidirectional",
+        "scope": "Editorial",
+        "target": {
+          "Local": {
+            "Assertion": "links-upstream-y"
+          }
+        },
+        "evidence": null,
+        "editorial_revision": "links-owned-r1"
+      },
+      {
+        "id": "links-relation-04",
+        "origin": {
+          "Entry": "links-owned-entry-b"
+        },
+        "kind": {
+          "Other": "fixture-unknown"
+        },
+        "direction": "Unspecified",
+        "scope": "Entry",
+        "target": "Unknown",
+        "evidence": null,
+        "editorial_revision": null
+      },
+      {
+        "id": "links-relation-06",
+        "origin": {
+          "Assertion": "links-upstream-y"
+        },
+        "kind": "EditorialLink",
+        "direction": "Forward",
+        "scope": "Assertion",
+        "target": {
+          "Local": {
+            "Assertion": "links-owned-c"
+          }
+        },
+        "evidence": null,
+        "editorial_revision": "links-owned-r1"
+      },
+      {
+        "id": "links-relation-07",
+        "origin": {
+          "Assertion": "links-owned-a"
+        },
+        "kind": "SourceSeeAlso",
+        "direction": "Forward",
+        "scope": "Assertion",
+        "target": {
+          "Catalog": {
+            "source": "links-upstream",
+            "release": "links-upstream-release-r1",
+            "native_entry_id": "N",
+            "native_assertion_id": null,
+            "occurrence": null
+          }
+        },
+        "evidence": {
+          "occurrence": {
+            "capture": {
+              "namespace": "links-owned-capture-r1",
+              "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+            },
+            "locator": "/0"
+          },
+          "field_index": null,
+          "citation": "Missing",
+          "offset": null
+        },
+        "editorial_revision": null
+      },
+      {
+        "id": "links-relation-08",
+        "origin": {
+          "Assertion": "links-owned-a"
+        },
+        "kind": "SourceSeeAlso",
+        "direction": "Forward",
+        "scope": "Assertion",
+        "target": {
+          "Catalog": {
+            "source": "links-upstream",
+            "release": "links-upstream-release-r1",
+            "native_entry_id": "absent",
+            "native_assertion_id": null,
+            "occurrence": null
+          }
+        },
+        "evidence": {
+          "occurrence": {
+            "capture": {
+              "namespace": "links-owned-capture-r1",
+              "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+            },
+            "locator": "/0"
+          },
+          "field_index": null,
+          "citation": "Missing",
+          "offset": null
+        },
+        "editorial_revision": null
+      }
+    ],
+    "owned_revisions": [
+      {
+        "id": "links-owned-r0",
+        "source": "links-owned",
+        "parent": null,
+        "editor": "links-editor",
+        "timestamp": "Missing",
+        "time_precision": "Unknown",
+        "assertions": [],
+        "tombstones": [],
+        "rationale": {
+          "Value": {
+            "text": "genesis",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        }
+      },
+      {
+        "id": "links-owned-r1",
+        "source": "links-owned",
+        "parent": "links-owned-r0",
+        "editor": "links-editor",
+        "timestamp": "Missing",
+        "time_precision": "Unknown",
+        "assertions": [
+          "links-owned-a",
+          "links-owned-b",
+          "links-owned-c"
+        ],
+        "tombstones": [],
+        "rationale": {
+          "Value": {
+            "text": "append a, b, c",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        }
+      }
+    ],
+    "owned_heads": [],
+    "editorial_senses": [
+      {
+        "id": "links-owned-sense-ba",
+        "assertions": [
+          "links-owned-b",
+          "links-owned-a"
+        ],
+        "editor": "links-editor",
+        "revision": "links-owned-r1",
+        "rationale": {
+          "text": "ordered b then a",
+          "language": "Missing",
+          "markup": "Missing"
+        }
+      }
+    ],
+    "computations": [],
+    "annotations": [],
+    "extensions": []
+  }
+}

@@ -1,0 +1,490 @@
+{
+  "version": 1,
+  "legacy_archive": null,
+  "registry": {
+    "version": 1,
+    "sources": [
+      {
+        "id": "links-owned",
+        "display_name": "links-owned",
+        "abbreviation": "KO",
+        "abbreviation_kind": "ProjectAssigned",
+        "abbreviation_evidence": "fixed Links input",
+        "origin": "OwnedDraft"
+      }
+    ],
+    "contributors": [
+      {
+        "id": "links-editor",
+        "display_name": "Links fixture editor"
+      }
+    ],
+    "distributors": [],
+    "aliases": [],
+    "lineage": [],
+    "snapshots": [
+      {
+        "snapshot": {
+          "namespace": "links-owned-capture-r1",
+          "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+        },
+        "source": "links-owned",
+        "distributor": null
+      }
+    ],
+    "occurrences": [
+      {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/0"
+        },
+        "contributor": "links-editor",
+        "native_entry_id": "links-owned-entry-a",
+        "native_assertion_id": "links-owned-a"
+      },
+      {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/1"
+        },
+        "contributor": "links-editor",
+        "native_entry_id": "links-owned-entry-b",
+        "native_assertion_id": "links-owned-b"
+      },
+      {
+        "occurrence": {
+          "snapshot": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/2"
+        },
+        "contributor": "links-editor",
+        "native_entry_id": "links-owned-entry-c",
+        "native_assertion_id": "links-owned-c"
+      }
+    ]
+  },
+  "captures": [
+    {
+      "identity": {
+        "namespace": "links-owned-capture-r1",
+        "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+      },
+      "metadata": {
+        "source_name": "Links owned",
+        "format_label": "synthetic-links-rows-v1",
+        "locator": "links-owned-capture-r1",
+        "revision": "Missing",
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "notice_locator": "Missing"
+      },
+      "bytes": [
+        115,
+        101,
+        101,
+        100,
+        32,
+        124,
+        32,
+        76,
+        105,
+        110,
+        107,
+        115,
+        32,
+        102,
+        105,
+        120,
+        116,
+        117,
+        114,
+        101,
+        32,
+        97,
+        10,
+        98,
+        114,
+        97,
+        110,
+        99,
+        104,
+        32,
+        124,
+        32,
+        76,
+        105,
+        110,
+        107,
+        115,
+        32,
+        102,
+        105,
+        120,
+        116,
+        117,
+        114,
+        101,
+        32,
+        98,
+        10,
+        108,
+        101,
+        97,
+        102,
+        32,
+        124,
+        32,
+        76,
+        105,
+        110,
+        107,
+        115,
+        32,
+        102,
+        105,
+        120,
+        116,
+        117,
+        114,
+        101,
+        32,
+        99
+      ],
+      "occurrences": [
+        {
+          "locator": "/0",
+          "fields": [
+            {
+              "name": "word",
+              "encoding": "Text",
+              "raw_value": "seed"
+            },
+            {
+              "name": "definition",
+              "encoding": "Text",
+              "raw_value": "Links fixture a"
+            }
+          ],
+          "raw_line": "seed | Links fixture a"
+        },
+        {
+          "locator": "/1",
+          "fields": [
+            {
+              "name": "word",
+              "encoding": "Text",
+              "raw_value": "branch"
+            },
+            {
+              "name": "definition",
+              "encoding": "Text",
+              "raw_value": "Links fixture b"
+            }
+          ],
+          "raw_line": "branch | Links fixture b"
+        },
+        {
+          "locator": "/2",
+          "fields": [
+            {
+              "name": "word",
+              "encoding": "Text",
+              "raw_value": "leaf"
+            },
+            {
+              "name": "definition",
+              "encoding": "Text",
+              "raw_value": "Links fixture c"
+            }
+          ],
+          "raw_line": "leaf | Links fixture c"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "catalogue_revision": 1,
+    "code_notices": [],
+    "collections": [
+      {
+        "id": "links-owned-collection",
+        "source": "links-owned",
+        "display_name": "links-owned-collection",
+        "description": "Missing"
+      }
+    ],
+    "components": [
+      {
+        "id": "links-owned-component",
+        "collection": "links-owned-collection",
+        "native_name": "links-owned-component",
+        "languages": [
+          "jbo"
+        ]
+      }
+    ],
+    "releases": [
+      {
+        "id": "links-owned-release-r0",
+        "component": "links-owned-component",
+        "distributor": null,
+        "upstream_revision": "Missing",
+        "distributor_revision": "Missing",
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "schema_version": 1,
+        "normalizer": "links-fixed-v1",
+        "normalizer_version": "1",
+        "captures": [],
+        "assertions": [],
+        "accounting": {
+          "input_occurrences": 0,
+          "normalized_occurrences": 0,
+          "query_excluded_occurrences": 0,
+          "unit": "occurrences"
+        },
+        "diagnostics": [],
+        "selected": true,
+        "availability": "Available",
+        "content_notices": [
+          {
+            "text": {
+              "Value": "synthetic Links fixture"
+            },
+            "locator": "Missing",
+            "license": "Missing"
+          }
+        ],
+        "redistribution": "Held",
+        "redistribution_evidence": []
+      },
+      {
+        "id": "links-owned-release-r1",
+        "component": "links-owned-component",
+        "distributor": null,
+        "upstream_revision": "Missing",
+        "distributor_revision": "Missing",
+        "captured_at": "Missing",
+        "time_precision": "Unknown",
+        "schema_version": 1,
+        "normalizer": "links-fixed-v1",
+        "normalizer_version": "1",
+        "captures": [
+          {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          }
+        ],
+        "assertions": [
+          "links-owned-a",
+          "links-owned-b",
+          "links-owned-c"
+        ],
+        "accounting": {
+          "input_occurrences": 3,
+          "normalized_occurrences": 3,
+          "query_excluded_occurrences": 0,
+          "unit": "occurrences"
+        },
+        "diagnostics": [],
+        "selected": true,
+        "availability": "Available",
+        "content_notices": [
+          {
+            "text": {
+              "Value": "synthetic Links fixture"
+            },
+            "locator": "Missing",
+            "license": "Missing"
+          }
+        ],
+        "redistribution": "Held",
+        "redistribution_evidence": []
+      }
+    ],
+    "entries": [
+      {
+        "id": "links-owned-entry-a",
+        "source": "links-owned",
+        "spelling": {
+          "Value": "seed"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": "Missing",
+        "selmaho": "Missing",
+        "mapped_pos": "Missing"
+      },
+      {
+        "id": "links-owned-entry-b",
+        "source": "links-owned",
+        "spelling": {
+          "Value": "branch"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": "Missing",
+        "selmaho": "Missing",
+        "mapped_pos": "Missing"
+      },
+      {
+        "id": "links-owned-entry-c",
+        "source": "links-owned",
+        "spelling": {
+          "Value": "leaf"
+        },
+        "language": {
+          "Value": "jbo"
+        },
+        "script": "Missing",
+        "native_word_class": "Missing",
+        "selmaho": "Missing",
+        "mapped_pos": "Missing"
+      }
+    ],
+    "assertions": [
+      {
+        "id": "links-owned-a",
+        "entry": "links-owned-entry-a",
+        "occurrence": {
+          "capture": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/0"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "Links fixture a",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      {
+        "id": "links-owned-b",
+        "entry": "links-owned-entry-b",
+        "occurrence": {
+          "capture": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/1"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "Links fixture b",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      },
+      {
+        "id": "links-owned-c",
+        "entry": "links-owned-entry-c",
+        "occurrence": {
+          "capture": {
+            "namespace": "links-owned-capture-r1",
+            "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110"
+          },
+          "locator": "/2"
+        },
+        "native_sense_id": "Missing",
+        "language": {
+          "Value": "en"
+        },
+        "definition": {
+          "Value": {
+            "text": "Links fixture c",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        },
+        "source_score": "Missing",
+        "timestamps": [],
+        "eligibility": "Lexical"
+      }
+    ],
+    "contexts": [],
+    "frames": [],
+    "forms": [],
+    "etymologies": [],
+    "relations": [],
+    "owned_revisions": [
+      {
+        "id": "links-owned-r0",
+        "source": "links-owned",
+        "parent": null,
+        "editor": "links-editor",
+        "timestamp": "Missing",
+        "time_precision": "Unknown",
+        "assertions": [],
+        "tombstones": [],
+        "rationale": {
+          "Value": {
+            "text": "genesis",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        }
+      },
+      {
+        "id": "links-owned-r1",
+        "source": "links-owned",
+        "parent": "links-owned-r0",
+        "editor": "links-editor",
+        "timestamp": "Missing",
+        "time_precision": "Unknown",
+        "assertions": [
+          "links-owned-a",
+          "links-owned-b",
+          "links-owned-c"
+        ],
+        "tombstones": [],
+        "rationale": {
+          "Value": {
+            "text": "append a, b, c",
+            "language": "Missing",
+            "markup": "Missing"
+          }
+        }
+      }
+    ],
+    "owned_heads": [
+      {
+        "source": "links-owned",
+        "revision": "links-owned-r1"
+      }
+    ],
+    "editorial_senses": [],
+    "computations": [],
+    "annotations": [],
+    "extensions": []
+  }
+}
