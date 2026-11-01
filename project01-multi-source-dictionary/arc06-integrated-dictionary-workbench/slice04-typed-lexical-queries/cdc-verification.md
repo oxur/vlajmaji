@@ -1,5 +1,7 @@
 # CDC verification — S04 literal definitions and stored Forms
 
+**CLOSED LOCALLY — ROOT consistency PASS, 2026-11-01.** ROOT whole-read the exact837c0c5c/treeb2503e5c canonical proposal at source04fead62/tree7a34a1b4 and accepted its original criteria/evidence grades. The authorised mechanical transition changes ONLY8 S04 Status OPEN→DONE, retaining every other raw cell/Evidence. S01–04 are accepted locally; all8 Arc06/all14 project statuses remain OPEN. Source/index/ONEtarget QUIET, CC parked. Following proposal/pending clauses retain their837c0c5c cutoff, superseded ONLY by this current closure metadata. Frozen methods/bindings/raws/inputs/CCoriginal and prior closed records stay unchanged. S05 Links/S06 computed/S07 final/newconsumer/identifiedFull/SAMEcanonical/ROOT/separate Operator retain owners; THROUGH ALL Arc06 continues.
+
 **PASS for S04; proposes all8 child rows DONE pending ROOT consistency. Actual8child/8arc/14project Status cells remain OPEN.** Source04fead62fde19cbeccb0181592197a292cac670d/tree7a34a1b43c5258f588beb6bc0acae2c6d26e4a6e/parentf47697ed; INITIAL1/5/exact13/clean/empty index/adjacent trailers. Source/index/ONEtarget QUIET. No higher-level acceptance.
 
 ## Actual independent method
@@ -35,3 +37,7 @@ Actual SOURCE-default binaries: CLI59,422,536B/3ccd9e564d6e26532fb825ed1734d35f2
 Durable [independent index](artifacts/independent-proof/evidence-index.json)47,421B/d32a1963 pins116 whole original/copies2,428,352B; [author index](artifacts/author-raw/index.json)26,369B/1eeea6d9 pins67 available explicit log/guide copies406,142B. ROOT/CDC verified all183; missing_explicit_paths=[] is availability-only, not historical completeness. Original CC10,797B/f22a21bd preserved once separately; canonical report is CDC assessment. No DB/productdirectory/binary/toolhome/target copied. Old issued packet/readmanifest/literals, S01–03 closed records and all failures remain unchanged.
 
 Proposed eight-row dispositions are DONE for S04-01 literalReverse,02 realstoredkinds,03 zeroassociation/detail/Integrity,04 currentness/writers,05 pages/counts/readable,06 API/nativeCLI/docs,07 scopedgates/freeze,08 independentverdict/close/retro/carryover. Evidence appends point here; ACTUAL Status cells stay OPEN until ROOT consistency. A06-03 gains PARTIAL Reverse/Form evidence with LinksS05 remaining; P01-09/10/11 gain partial API/owned/page/currentness evidence. Every other parent raw cell/Notes/status stays unchanged. S05 Links, S06 computed/proposal, S07 identified all-corpus functional/newRustconsumer/freshassembled/SAMEcanonical/ROOT and separate Operator gates retain owners; all8 arc/14project rows remain OPEN.
+
+## Mechanical close receipt —2026-11-01
+
+ROOT canonical consistency PASS837c0c5c authorised the exact8 child Status transitions only. Every other child cell and every8Arc/14project raw row remains byte-identical to that reviewed proposal. Source04fead62/tree7a34a1b4 and all proof artifacts are unchanged; source/index/ONEtarget QUIET. No product runtime or higher-level closure occurred.

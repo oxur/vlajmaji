@@ -1,6 +1,6 @@
 # S04 — Typed literal definitions and stored forms
 
-**STATUS: CDC VERIFIED / CANONICAL PROPOSAL, 2026-11-01.** Source04fead62/tree7a34a1b4 is frozen/QUIET after INITIAL1/5. Actual independent31 (1 author-compiled example +30CLI),23zero/8typedone, passed without repair/replay; ROOT inspected actual receipts/pins. CDC proposes all8 S04 rows DONE pending ROOT whole canonical consistency; all8 child/8 arc/14 project Status cells remain OPEN. See current cdc-verification.md, closing-report.md and retro.md. Issued packet/method/bindings/raws/earlier records retain their as-of cutoffs; THROUGH ALL Arc06/S05–07 and separate Operator gates remain.
+**CLOSED LOCALLY — ROOT consistency PASS, 2026-11-01.** ROOT whole-read the exact837c0c5c/treeb2503e5c canonical proposal at source04fead62/tree7a34a1b4 and accepted its original criteria/evidence grades. The authorised mechanical transition changes ONLY8 S04 Status OPEN→DONE, retaining every other raw cell/Evidence. S01–04 are accepted locally; all8 Arc06/all14 project statuses remain OPEN. Source/index/ONEtarget QUIET, CC parked. Following proposal/pending clauses retain their837c0c5c cutoff, superseded ONLY by this current closure metadata. Frozen methods/bindings/raws/inputs/CCoriginal and prior closed records stay unchanged. S05 Links/S06 computed/S07 final/newconsumer/identifiedFull/SAMEcanonical/ROOT/separate Operator retain owners; THROUGH ALL Arc06 continues.
 
 ## 1. Useful increment and compatibility
 
