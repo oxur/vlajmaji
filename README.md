@@ -39,7 +39,9 @@ The Rust workspace already provides:
   an optional owned-journal revision, with Full/Compact queries bound to
   captured dependency identities and an additive named-profile refresh/history
   workflow, plus explicit Local/Catalog reference admission for direct and
-  configured views ([integrated workbench guide](docs/integrated-workbench.md)).
+  configured views. The current workspace also exposes literal
+  reverse-definition and stored-Form queries with content-bound Form detail
+  ([integrated workbench guide](docs/integrated-workbench.md)).
 - Rebuildable SQLite indexes and an optional Oxigraph backend for research comparisons.
 - Exact and reverse-definition lookup, source-link traversal, spelling distance,
   and bounded phonological and prosodic filters.

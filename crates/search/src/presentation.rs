@@ -12,7 +12,8 @@ use crate::{
     CollectionCompactReferenceResponse, CollectionHitDetailResponse,
     DictionaryCompactExactResponse, DictionaryCompactQueryResult,
     DictionaryCompactReferenceAssertion, DictionaryCompactReferenceResolution,
-    DictionaryHitDetailResponse, ReferenceStatus,
+    DictionaryHitDetailResponse, ReferenceStatus, WorkbenchCompactFormRecord, WorkbenchFormRecord,
+    WorkbenchLexicalCompactResult, WorkbenchReverseDefinitionCompact,
 };
 
 /// Render a standalone compact Exact or Resolve result as readable text.
@@ -54,6 +55,133 @@ pub fn render_collection_detail(response: &CollectionHitDetailResponse) -> Strin
             &response.catalogue_matches,
         )),
     )
+}
+
+/// Render one already-projected compact lexical result without opening a view.
+///
+/// The output retains the query's source order, all pre-page counts, and every
+/// row field needed to follow a returned assertion or Form to its complete
+/// detail key. Complete Form evidence and computations remain available from
+/// the separate Form-detail operation.
+#[must_use]
+pub fn render_workbench_lexical_compact(result: &WorkbenchLexicalCompactResult) -> String {
+    let mut output = String::new();
+    let (operation, policy, totals, source_totals, next_cursor) = match result {
+        WorkbenchLexicalCompactResult::ReverseDefinition(response) => (
+            "reverse_definition",
+            &response.policy,
+            &response.totals,
+            &response.source_totals,
+            &response.next_cursor,
+        ),
+        WorkbenchLexicalCompactResult::Form(response) => (
+            "form",
+            &response.policy,
+            &response.totals,
+            &response.source_totals,
+            &response.next_cursor,
+        ),
+    };
+    writeln!(output, "lexical_operation: {}", json(&operation)).unwrap();
+    writeln!(output, "lexical_policy: {}", json(policy)).unwrap();
+    writeln!(output, "lexical_totals: {}", json(totals)).unwrap();
+    writeln!(output, "lexical_source_totals: {}", json(source_totals)).unwrap();
+    writeln!(output, "lexical_next_cursor: {}", json(next_cursor)).unwrap();
+
+    match result {
+        WorkbenchLexicalCompactResult::ReverseDefinition(response) => {
+            render_reverse_definition_groups(&mut output, response);
+        }
+        WorkbenchLexicalCompactResult::Form(response) => {
+            for group in &response.groups {
+                writeln!(output, "source: {}", json(&group.source)).unwrap();
+                writeln!(output, "full_count: {}", json(&group.full_count)).unwrap();
+                writeln!(output, "returned_count: {}", json(&group.returned_count)).unwrap();
+                writeln!(output, "partial: {}", json(&group.partial)).unwrap();
+                for row in &group.hits {
+                    render_compact_form(&mut output, row);
+                }
+            }
+        }
+    }
+    output
+}
+
+/// Render a complete Form detail that has already passed the provider's
+/// freshness and typed-row checks.
+#[must_use]
+pub fn render_workbench_form_detail(row: &WorkbenchFormRecord) -> String {
+    let mut output = String::new();
+    writeln!(output, "form: {}", json(&row.form)).unwrap();
+    writeln!(output, "entry: {}", json(&row.entry)).unwrap();
+    writeln!(output, "source: {}", json(&row.source)).unwrap();
+    writeln!(output, "mapped_role: {}", json(&row.mapped_role)).unwrap();
+    writeln!(output, "computation: {}", json(&row.computation)).unwrap();
+    writeln!(output, "evidence: {}", json(&row.evidence)).unwrap();
+    writeln!(
+        output,
+        "association_status: {}",
+        json(&row.association_status)
+    )
+    .unwrap();
+    writeln!(
+        output,
+        "associated_assertions: {}",
+        json(&row.associated_assertions)
+    )
+    .unwrap();
+    output
+}
+
+fn render_reverse_definition_groups(
+    output: &mut String,
+    response: &WorkbenchReverseDefinitionCompact,
+) {
+    for group in &response.groups {
+        writeln!(output, "source: {}", json(&group.source)).unwrap();
+        writeln!(output, "full_count: {}", json(&group.full_count)).unwrap();
+        writeln!(output, "returned_count: {}", json(&group.returned_count)).unwrap();
+        writeln!(output, "partial: {}", json(&group.partial)).unwrap();
+        for hit in &group.hits {
+            writeln!(output, "  assertion: {}", json(&hit.assertion.id)).unwrap();
+            writeln!(output, "    spelling: {}", json(&hit.entry.spelling)).unwrap();
+            writeln!(
+                output,
+                "    definition: {}",
+                json(&hit.assertion.definition)
+            )
+            .unwrap();
+            writeln!(output, "    detail: {}", json(&hit.detail_ref)).unwrap();
+        }
+    }
+}
+
+fn render_compact_form(output: &mut String, row: &WorkbenchCompactFormRecord) {
+    writeln!(output, "  form: {}", json(&row.form_id)).unwrap();
+    writeln!(output, "    kind: {}", json(&row.kind)).unwrap();
+    writeln!(output, "    mapped_role: {}", json(&row.mapped_role)).unwrap();
+    writeln!(
+        output,
+        "    entry: {}",
+        json(&serde_json::json!({"id": row.entry_id, "spelling": row.entry_spelling}))
+    )
+    .unwrap();
+    writeln!(output, "    source_id: {}", json(&row.source_id)).unwrap();
+    writeln!(output, "    evidence: {}", json(&row.evidence)).unwrap();
+    writeln!(output, "    computation_id: {}", json(&row.computation_id)).unwrap();
+    writeln!(
+        output,
+        "    association_status: {}",
+        json(&row.association_status)
+    )
+    .unwrap();
+    writeln!(
+        output,
+        "    associated_assertions: {}",
+        json(&row.associated_assertions)
+    )
+    .unwrap();
+    writeln!(output, "    form_detail: {}", json(&row.detail_ref)).unwrap();
 }
 
 fn render_exact(

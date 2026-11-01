@@ -19,23 +19,25 @@ use std::{
 use sha2::{Digest, Sha256};
 use vlajmaji_lexicon::{
     AbbreviationKind, AssertionRecord, Availability, CaptureMetadata, CaptureRef, CollectionRecord,
-    ComponentRecord, ContentNotice, ContributorId, ContributorRecord, Dictionary,
-    DictionaryDocument, DictionaryMetadata, Eligibility, EntityId, EntryRecord,
-    LaLojbanImportOptions, LocalRef, NativeEncoding, NativeField, OccurrenceAttribution,
-    OccurrenceRef, OwnedHead, OwnedRevisionRecord, Presence, RawCapture, RawOccurrence,
-    RedistributionStatus, RegistryDocument, RelationTarget, ReleaseAccounting, ReleaseRecord,
-    SnapshotAttribution, SourceId, SourceOrigin, SourceRecord, SourceRegistry, TextValue,
-    TimePrecision, import_la_lojban_export, seal_release,
+    ComponentRecord, ComputationRecord, ContentNotice, ContributorId, ContributorRecord,
+    Dictionary, DictionaryDocument, DictionaryMetadata, Eligibility, EntityId, EntryRecord,
+    FormKind, FormRecord, InputRef, LaLojbanImportOptions, LocalRef, NativeEncoding, NativeField,
+    OccurrenceAttribution, OccurrenceRef, OwnedHead, OwnedRevisionRecord, PackId, PackPayloadKind,
+    Presence, RawCapture, RawOccurrence, RedistributionStatus, RegistryDocument, RelationTarget,
+    ReleaseAccounting, ReleaseRecord, SnapshotAttribution, SourceEvidence, SourceId, SourceOrigin,
+    SourceRecord, SourceRegistry, TextValue, TimePrecision, import_la_lojban_export, seal_release,
 };
 use vlajmaji_search::{
     ConfiguredWorkbenchQueryError, ConfiguredWorkbenchSearchEngine, DictionaryExactOptions,
-    DictionaryRequest, ReferenceEntity, ReferenceStatus, WorkbenchFullResult, WorkbenchQueryError,
-    WorkbenchSearchEngine,
+    DictionaryRequest, ReferenceEntity, ReferenceStatus, WorkbenchFullResult,
+    WorkbenchLexicalCompactResult, WorkbenchLexicalFullResult, WorkbenchLexicalRequest,
+    WorkbenchQueryError, WorkbenchSearchEngine,
 };
 use vlajmaji_store::{
     CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection, OwnedJournal,
     WorkbenchBuildRequest, WorkbenchError, WorkbenchOwnedRevision,
     WorkbenchProfileConfigureRequest, WorkbenchProfileError, WorkbenchProfiles, WorkbenchSelection,
+    WorkbenchView,
 };
 
 const UPSTREAM_JSON: &[u8] = br#"[
@@ -51,6 +53,24 @@ const REFERENCE_UNRESOLVED_JSON: &[u8] = br#"{"Unresolved":"future editorial tar
 const REFERENCE_DISABLED_SELECTION_JSON: &[u8] =
     br#"{"version":1,"packs":["la-lojban"],"disabled":["la-lojban"],"owned":"head","contexts":[]}"#;
 const REFERENCE_EXPECTED_JSON: &[u8] = br#"{"version":1,"kind":"vlajmaji-workbench-reference","owned_source":"owned-example","owned_r1_assertions":["owned-assertion-a","owned-assertion-b"],"upstream_source":"lensisku","upstream_assertion":"la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-assertion-0","owned_status":"Resolved","upstream_status":"Resolved","disabled_status":"CatalogueOnly","disabled_reason":"disabled","unknown_status":"Unknown","unresolved_status":"Unresolved","profile_revisions":[1,2,3,4,5,6],"publication_sequences":[0,1,2]}"#;
+const LEXICAL_SELECTION_JSON: &[u8] =
+    br#"{"version":1,"packs":["la-lojban"],"disabled":[],"owned":"head","contexts":[]}"#;
+const LEXICAL_REVERSE_REQUEST_JSON: &[u8] = br#"{"version":1,"query":{"operation":"reverse_definition","contains":"gRoW"},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}"#;
+const LEXICAL_FORM_REQUEST_JSON: &[u8] = br#"{"version":1,"query":{"operation":"form","value":"farvi-form","role":null,"kind":null},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}"#;
+const LEXICAL_EXPECTED_JSON: &[u8] = br#"{"version":1,"policy":"stored-form-kind-v1","source_order":["lexical-owned","lexical-upstream"],"form_value":"farvi-form","form_order":["lexical-owned-form-stem","lexical-owned-form-components","lexical-owned-form-candidate","lexical-upstream-form-variant","lexical-upstream-form-pronunciation","lexical-upstream-form-reported","lexical-upstream-form-rafsi"],"forms":[{"id":"lexical-owned-form-stem","kind":"ComputedStem","entry":"lexical-owned-entry","mapped_role":null,"computation":"lexical-owned-computation-stem","evidence_status":null},{"id":"lexical-owned-form-components","kind":"ComputedComponents","entry":"lexical-owned-empty-entry","mapped_role":null,"computation":"lexical-owned-computation-components","evidence_status":null},{"id":"lexical-owned-form-candidate","kind":"GeneratedCandidate","entry":"lexical-owned-empty-entry","mapped_role":null,"computation":"lexical-owned-computation-candidate","evidence_status":null},{"id":"lexical-upstream-form-variant","kind":"SourceVariant","entry":"lexical-upstream-entry","mapped_role":null,"computation":null,"evidence_status":"CatalogueOnly"},{"id":"lexical-upstream-form-pronunciation","kind":"SourcePronunciation","entry":"lexical-upstream-entry","mapped_role":null,"computation":null,"evidence_status":"Loaded"},{"id":"lexical-upstream-form-reported","kind":"SourceReportedForm","entry":"lexical-upstream-entry","mapped_role":"SourceReportedForm","computation":null,"evidence_status":"Loaded"},{"id":"lexical-upstream-form-rafsi","kind":"AssignedRafsi","entry":"lexical-upstream-entry","mapped_role":"AssignedRafsi","computation":null,"evidence_status":"Loaded"}],"r1":{"records":7,"source_groups":2,"associated_assertion_union":4,"upstream_associations":["lexical-upstream-a","lexical-upstream-b"],"owned_main_associations":["lexical-owned-a","lexical-owned-b"],"owned_empty_associations":[],"reverse_grow_order":["lexical-owned-a","lexical-upstream-a","lexical-upstream-b"],"sum_repeated_form_associations":10},"r2":{"records":7,"source_groups":2,"associated_assertion_union":3,"upstream_associations":["lexical-upstream-a","lexical-upstream-b"],"owned_main_associations":["lexical-owned-c"],"owned_empty_associations":[],"reverse_grow_order":["lexical-upstream-a","lexical-upstream-b"],"sum_repeated_form_associations":9},"definitions":{"lexical-upstream-a":"GROW <b>literal</b>","lexical-upstream-b":"grow","lexical-owned-a":"grow","lexical-owned-b":"develop","lexical-owned-c":"flourish"},"scope":"PRE-input literal identity/count/order authority; compare whole returned records directly to typed emitted inputs. No candidate export or same-engine oracle."}"#;
+
+const LEXICAL_CURSOR_PROTOCOL_ORACLE_JSON: &[u8] = br##"{
+  "scope": "PURE pre-input protocol oracle, fixed artificial identity only; no product run/golden livebinding claim",
+  "query_payload_utf8": "{\"query\":{\"operation\":\"form\",\"value\":\"farvi-form\",\"role\":null,\"kind\":null},\"selectors\":[\"LU\",\"LO\"],\"resolved_sources\":[\"lexical-owned\",\"lexical-upstream\"],\"alias_scope\":\"ActiveOnly\"}",
+  "query_sha256": "670ff975f8187867a8901d6b547472cef8d49363470fdcc70538a1cc03c550dd",
+  "reversed_selectors_query_payload_utf8": "{\"query\":{\"operation\":\"form\",\"value\":\"farvi-form\",\"role\":null,\"kind\":null},\"selectors\":[\"LO\",\"LU\"],\"resolved_sources\":[\"lexical-owned\",\"lexical-upstream\"],\"alias_scope\":\"ActiveOnly\"}",
+  "reversed_selectors_query_sha256": "426379cde0fe8cf91ef19bbb56fd7266f755c1db1f28be3830878226f1ae25d7",
+  "body_utf8": "{\"version\":1,\"domain\":\"workbench-lexical-cursor-v1\",\"format\":\"compact\",\"binding_sha256\":\"1111111111111111111111111111111111111111111111111111111111111111\",\"query_sha256\":\"670ff975f8187867a8901d6b547472cef8d49363470fdcc70538a1cc03c550dd\",\"last\":{\"operation\":\"form\",\"source\":\"lexical-owned\",\"entry_spelling\":\"farvi\",\"spelling\":\"farvi-form\",\"kind\":\"ComputedStem\",\"form_id\":\"lexical-owned-form-stem\"}}",
+  "checksum": "3b3f73718cdefcf6d7063d50bc1f69140152b865a867e1289a576c4ad9f206f2",
+  "envelope_utf8": "{\"body\":{\"version\":1,\"domain\":\"workbench-lexical-cursor-v1\",\"format\":\"compact\",\"binding_sha256\":\"1111111111111111111111111111111111111111111111111111111111111111\",\"query_sha256\":\"670ff975f8187867a8901d6b547472cef8d49363470fdcc70538a1cc03c550dd\",\"last\":{\"operation\":\"form\",\"source\":\"lexical-owned\",\"entry_spelling\":\"farvi\",\"spelling\":\"farvi-form\",\"kind\":\"ComputedStem\",\"form_id\":\"lexical-owned-form-stem\"}},\"checksum\":\"3b3f73718cdefcf6d7063d50bc1f69140152b865a867e1289a576c4ad9f206f2\"}",
+  "token": "workbench-lexical-v1:7b22626f6479223a7b2276657273696f6e223a312c22646f6d61696e223a22776f726b62656e63682d6c65786963616c2d637572736f722d7631222c22666f726d6174223a22636f6d70616374222c2262696e64696e675f736861323536223a2231313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2271756572795f736861323536223a2236373066663937356638313837383637613839303164366235343734373263656638643439333633343730666463633730353338613163633033633535306464222c226c617374223a7b226f7065726174696f6e223a22666f726d222c22736f75726365223a226c65786963616c2d6f776e6564222c22656e7472795f7370656c6c696e67223a226661727669222c227370656c6c696e67223a2266617276692d666f726d222c226b696e64223a22436f6d70757465645374656d222c22666f726d5f6964223a226c65786963616c2d6f776e65642d666f726d2d7374656d227d7d2c22636865636b73756d223a2233623366373337313863646566636636643730363364353062633166363931343031353262383635613836376531323839613537366334616439663230366632227d"
+}
+"##;
 
 fn value(text: &str) -> TextValue {
     TextValue {
@@ -357,6 +377,1198 @@ fn next_edit(previous: &Dictionary) -> Result<Dictionary, Box<dyn std::error::Er
     });
     document.metadata.owned_heads[0].revision = revision;
     Ok(Dictionary::from_document(document)?)
+}
+
+fn lexical_release(
+    id: &str,
+    component: &EntityId,
+    captures: Vec<CaptureRef>,
+    assertions: Vec<EntityId>,
+) -> ReleaseRecord {
+    let count = assertions.len() as u64;
+    ReleaseRecord {
+        id: EntityId::new(id).unwrap(),
+        component: component.clone(),
+        distributor: None,
+        upstream_revision: Presence::Missing,
+        distributor_revision: Presence::Missing,
+        captured_at: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        schema_version: 1,
+        normalizer: "lexical-contract-fixture".into(),
+        normalizer_version: "1".into(),
+        captures,
+        assertions,
+        accounting: ReleaseAccounting {
+            input_occurrences: Some(count),
+            normalized_occurrences: Some(count),
+            query_excluded_occurrences: Some(0),
+            unit: "occurrences".into(),
+        },
+        diagnostics: Vec::new(),
+        selected: true,
+        availability: Availability::Available,
+        content_notices: vec![ContentNotice {
+            text: Presence::Value("synthetic lexical contract fixture".into()),
+            locator: Presence::Missing,
+            license: Presence::Missing,
+        }],
+        redistribution: RedistributionStatus::Held,
+        redistribution_evidence: Vec::new(),
+    }
+}
+
+fn lexical_upstream_dictionary() -> Dictionary {
+    let source = SourceId::new("lexical-upstream").unwrap();
+    let contributor = ContributorId::new("lexical-upstream-editor").unwrap();
+    let collection = EntityId::new("lexical-upstream-collection").unwrap();
+    let component = EntityId::new("lexical-upstream-component").unwrap();
+    let entry = EntityId::new("lexical-upstream-entry").unwrap();
+    let capture = RawCapture::new(
+        "captured:lexical-upstream:r1",
+        CaptureMetadata {
+            source_name: "Lexical upstream fixture".into(),
+            format_label: "text/plain".into(),
+            locator: "upstream r1".into(),
+            revision: Presence::Missing,
+            captured_at: Presence::Missing,
+            time_precision: TimePrecision::Unknown,
+            notice_locator: Presence::Missing,
+        },
+        b"GROW <b>literal</b>\ngrow\n".to_vec(),
+        vec![
+            RawOccurrence {
+                locator: "/0".into(),
+                fields: Vec::new(),
+                raw_line: Some("GROW <b>literal</b>".into()),
+            },
+            RawOccurrence {
+                locator: "/1".into(),
+                fields: Vec::new(),
+                raw_line: Some("grow".into()),
+            },
+        ],
+    );
+    let capture_ref = capture.identity.clone();
+    let occurrences = ["/0", "/1"].map(|locator| OccurrenceRef {
+        capture: capture_ref.clone(),
+        locator: locator.into(),
+    });
+    let old_capture = CaptureRef {
+        namespace: "captured:lexical-upstream-old".into(),
+        sha256: "11".repeat(32),
+    };
+    let registry = SourceRegistry::from_document(RegistryDocument {
+        sources: vec![SourceRecord {
+            id: source.clone(),
+            display_name: "Lexical upstream fixture".into(),
+            abbreviation: "LU".into(),
+            abbreviation_kind: AbbreviationKind::ProjectAssigned,
+            abbreviation_evidence: Some("S04 lexical fixture".into()),
+            origin: SourceOrigin::Upstream,
+        }],
+        contributors: vec![ContributorRecord {
+            id: contributor.clone(),
+            display_name: "Lexical fixture editor".into(),
+        }],
+        snapshots: vec![SnapshotAttribution {
+            snapshot: capture_ref.to_snapshot_identity().unwrap(),
+            source: source.clone(),
+            distributor: None,
+        }],
+        occurrences: occurrences
+            .iter()
+            .enumerate()
+            .map(|(index, occurrence)| OccurrenceAttribution {
+                occurrence: occurrence.to_record_identity().unwrap(),
+                contributor: Some(contributor.clone()),
+                native_entry_id: Some("lexical-upstream-entry".into()),
+                native_assertion_id: Some(format!(
+                    "lexical-upstream-{}",
+                    if index == 0 { "a" } else { "b" }
+                )),
+            })
+            .collect(),
+        ..RegistryDocument::default()
+    })
+    .unwrap();
+
+    let mut metadata = DictionaryMetadata::default();
+    metadata.collections.push(CollectionRecord {
+        id: collection.clone(),
+        source: source.clone(),
+        display_name: "Lexical upstream collection".into(),
+        description: Presence::Missing,
+    });
+    metadata.components.push(ComponentRecord {
+        id: component.clone(),
+        collection,
+        native_name: "farvi".into(),
+        languages: vec!["jbo".into()],
+    });
+    let count = 2;
+    let release = |id: &str,
+                   captures: Vec<CaptureRef>,
+                   assertions: Vec<EntityId>,
+                   occurrence_count: u64,
+                   availability| {
+        ReleaseRecord {
+            id: EntityId::new(id).unwrap(),
+            component: component.clone(),
+            distributor: None,
+            upstream_revision: Presence::Missing,
+            distributor_revision: Presence::Missing,
+            captured_at: Presence::Missing,
+            time_precision: TimePrecision::Unknown,
+            schema_version: 1,
+            normalizer: "lexical-contract-fixture".into(),
+            normalizer_version: "1".into(),
+            captures,
+            assertions,
+            accounting: ReleaseAccounting {
+                input_occurrences: Some(occurrence_count),
+                normalized_occurrences: Some(occurrence_count),
+                query_excluded_occurrences: Some(0),
+                unit: "occurrences".into(),
+            },
+            diagnostics: Vec::new(),
+            selected: true,
+            availability,
+            content_notices: vec![ContentNotice {
+                text: Presence::Value("synthetic lexical contract fixture".into()),
+                locator: Presence::Missing,
+                license: Presence::Missing,
+            }],
+            redistribution: RedistributionStatus::Held,
+            redistribution_evidence: Vec::new(),
+        }
+    };
+    let assertion_ids = [
+        EntityId::new("lexical-upstream-a").unwrap(),
+        EntityId::new("lexical-upstream-b").unwrap(),
+    ];
+    metadata.releases.push(release(
+        "lexical-upstream-release-r1",
+        vec![capture_ref.clone()],
+        assertion_ids.to_vec(),
+        count,
+        Availability::Available,
+    ));
+    metadata.releases.push(release(
+        "lexical-upstream-old-release",
+        vec![old_capture.clone()],
+        Vec::new(),
+        0,
+        Availability::Missing,
+    ));
+    metadata.entries.push(EntryRecord {
+        id: entry.clone(),
+        source: source.clone(),
+        spelling: Presence::Value("farvi".into()),
+        language: Presence::Value("jbo".into()),
+        script: Presence::Missing,
+        native_word_class: Presence::Missing,
+        selmaho: Presence::Missing,
+        mapped_pos: Presence::Missing,
+    });
+    metadata.assertions = vec![
+        AssertionRecord {
+            id: assertion_ids[0].clone(),
+            entry: entry.clone(),
+            occurrence: occurrences[0].clone(),
+            native_sense_id: Presence::Missing,
+            language: Presence::Value("en".into()),
+            definition: Presence::Value(TextValue {
+                text: "GROW <b>literal</b>".into(),
+                language: Presence::Missing,
+                markup: Presence::Missing,
+            }),
+            source_score: Presence::Missing,
+            timestamps: Vec::new(),
+            eligibility: Eligibility::Lexical,
+        },
+        AssertionRecord {
+            id: assertion_ids[1].clone(),
+            entry: entry.clone(),
+            occurrence: occurrences[1].clone(),
+            native_sense_id: Presence::Missing,
+            language: Presence::Value("en".into()),
+            definition: Presence::Value(TextValue {
+                text: "grow".into(),
+                language: Presence::Missing,
+                markup: Presence::Missing,
+            }),
+            source_score: Presence::Missing,
+            timestamps: Vec::new(),
+            eligibility: Eligibility::Lexical,
+        },
+    ];
+    let evidence = |occurrence: OccurrenceRef| {
+        Some(SourceEvidence {
+            occurrence,
+            field_index: None,
+            citation: Presence::Missing,
+            offset: None,
+        })
+    };
+    metadata.forms = vec![
+        FormRecord {
+            id: EntityId::new("lexical-upstream-form-variant").unwrap(),
+            entry: entry.clone(),
+            spelling: "farvi-form".into(),
+            language: Presence::Value("jbo".into()),
+            script: Presence::Missing,
+            pronunciation: Presence::Missing,
+            kind: FormKind::SourceVariant,
+            standing: Presence::Missing,
+            components: Vec::new(),
+            evidence: evidence(OccurrenceRef {
+                capture: old_capture,
+                locator: "/old".into(),
+            }),
+            computation: None,
+        },
+        FormRecord {
+            id: EntityId::new("lexical-upstream-form-pronunciation").unwrap(),
+            entry: entry.clone(),
+            spelling: "farvi-form".into(),
+            language: Presence::Value("jbo".into()),
+            script: Presence::Missing,
+            pronunciation: Presence::Value(TextValue {
+                text: "farvi".into(),
+                language: Presence::Value("jbo".into()),
+                markup: Presence::Missing,
+            }),
+            kind: FormKind::SourcePronunciation,
+            standing: Presence::Missing,
+            components: Vec::new(),
+            evidence: evidence(occurrences[0].clone()),
+            computation: None,
+        },
+        FormRecord {
+            id: EntityId::new("lexical-upstream-form-reported").unwrap(),
+            entry: entry.clone(),
+            spelling: "farvi-form".into(),
+            language: Presence::Value("jbo".into()),
+            script: Presence::Missing,
+            pronunciation: Presence::Missing,
+            kind: FormKind::SourceReportedForm,
+            standing: Presence::Missing,
+            components: Vec::new(),
+            evidence: evidence(occurrences[1].clone()),
+            computation: None,
+        },
+        FormRecord {
+            id: EntityId::new("lexical-upstream-form-rafsi").unwrap(),
+            entry,
+            spelling: "farvi-form".into(),
+            language: Presence::Value("jbo".into()),
+            script: Presence::Missing,
+            pronunciation: Presence::Missing,
+            kind: FormKind::AssignedRafsi,
+            standing: Presence::Missing,
+            components: Vec::new(),
+            evidence: evidence(occurrences[0].clone()),
+            computation: None,
+        },
+    ];
+    Dictionary::from_document(DictionaryDocument {
+        registry,
+        captures: vec![capture],
+        metadata,
+        ..DictionaryDocument::default()
+    })
+    .expect("fixed LU typed records preserve loaded and unavailable evidence")
+}
+
+fn lexical_owned_genesis() -> Dictionary {
+    let source = SourceId::new("lexical-owned").unwrap();
+    let editor = ContributorId::new("lexical-editor").unwrap();
+    let collection = EntityId::new("lexical-owned-collection").unwrap();
+    let component = EntityId::new("lexical-owned-component").unwrap();
+    let revision = EntityId::new("lexical-owned-r0").unwrap();
+    let registry = SourceRegistry::from_document(RegistryDocument {
+        sources: vec![SourceRecord {
+            id: source.clone(),
+            display_name: "Lexical owned fixture".into(),
+            abbreviation: "LO".into(),
+            abbreviation_kind: AbbreviationKind::ProjectAssigned,
+            abbreviation_evidence: Some("test fixture".into()),
+            origin: SourceOrigin::OwnedDraft,
+        }],
+        contributors: vec![ContributorRecord {
+            id: editor.clone(),
+            display_name: "Lexical fixture editor".into(),
+        }],
+        ..RegistryDocument::default()
+    })
+    .unwrap();
+    let mut metadata = DictionaryMetadata::default();
+    metadata.collections.push(CollectionRecord {
+        id: collection,
+        source: source.clone(),
+        display_name: "Lexical owned collection".into(),
+        description: Presence::Missing,
+    });
+    metadata.components.push(ComponentRecord {
+        id: component.clone(),
+        collection: EntityId::new("lexical-owned-collection").unwrap(),
+        native_name: "farvi forms".into(),
+        languages: vec!["jbo".into()],
+    });
+    metadata.releases.push(lexical_release(
+        "lexical-owned-release-r0",
+        &component,
+        Vec::new(),
+        Vec::new(),
+    ));
+    metadata.owned_revisions.push(OwnedRevisionRecord {
+        id: revision.clone(),
+        source: source.clone(),
+        parent: None,
+        editor,
+        timestamp: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        assertions: Vec::new(),
+        tombstones: Vec::new(),
+        rationale: Presence::Value(TextValue {
+            text: "empty genesis".into(),
+            language: Presence::Missing,
+            markup: Presence::Missing,
+        }),
+    });
+    metadata.owned_heads.push(OwnedHead { source, revision });
+    Dictionary::from_document(DictionaryDocument {
+        registry,
+        metadata,
+        ..DictionaryDocument::default()
+    })
+    .unwrap()
+}
+
+fn lexical_owned_revision_one(genesis: &Dictionary) -> Dictionary {
+    let source = SourceId::new("lexical-owned").unwrap();
+    let editor = ContributorId::new("lexical-editor").unwrap();
+    let capture = RawCapture::new(
+        "captured:lexical-owned:r1",
+        CaptureMetadata {
+            source_name: "Lexical owned fixture".into(),
+            format_label: "text/plain".into(),
+            locator: "owned r1".into(),
+            revision: Presence::Missing,
+            captured_at: Presence::Missing,
+            time_precision: TimePrecision::Unknown,
+            notice_locator: Presence::Missing,
+        },
+        b"farvi grow\nfarvi develop\n".to_vec(),
+        vec![
+            RawOccurrence {
+                locator: "/a".into(),
+                fields: Vec::new(),
+                raw_line: Some("farvi grow".into()),
+            },
+            RawOccurrence {
+                locator: "/b".into(),
+                fields: Vec::new(),
+                raw_line: Some("farvi develop".into()),
+            },
+        ],
+    );
+    let capture_ref = capture.identity.clone();
+    let occurrences = ["/a", "/b"].map(|locator| OccurrenceRef {
+        capture: capture_ref.clone(),
+        locator: locator.into(),
+    });
+    let mut document = genesis.document();
+    document.captures.push(capture);
+    let mut registry = document.registry.document();
+    registry.snapshots.push(SnapshotAttribution {
+        snapshot: capture_ref.to_snapshot_identity().unwrap(),
+        source: source.clone(),
+        distributor: None,
+    });
+    for (index, occurrence) in occurrences.iter().enumerate() {
+        registry.occurrences.push(OccurrenceAttribution {
+            occurrence: occurrence.to_record_identity().unwrap(),
+            contributor: Some(editor.clone()),
+            native_entry_id: Some("lexical-owned-entry".into()),
+            native_assertion_id: Some(format!(
+                "lexical-owned-{}",
+                if index == 0 { "a" } else { "b" }
+            )),
+        });
+    }
+    document.registry = SourceRegistry::from_document(registry).unwrap();
+    let main_entry = EntityId::new("lexical-owned-entry").unwrap();
+    let empty_entry = EntityId::new("lexical-owned-empty-entry").unwrap();
+    document.metadata.entries = vec![
+        EntryRecord {
+            id: main_entry.clone(),
+            source: source.clone(),
+            spelling: Presence::Value("farvi".into()),
+            language: Presence::Value("jbo".into()),
+            script: Presence::Missing,
+            native_word_class: Presence::Missing,
+            selmaho: Presence::Missing,
+            mapped_pos: Presence::Missing,
+        },
+        EntryRecord {
+            id: empty_entry.clone(),
+            source: source.clone(),
+            spelling: Presence::Value("zero-associated".into()),
+            language: Presence::Value("jbo".into()),
+            script: Presence::Missing,
+            native_word_class: Presence::Missing,
+            selmaho: Presence::Missing,
+            mapped_pos: Presence::Missing,
+        },
+    ];
+    let assertion_a = EntityId::new("lexical-owned-a").unwrap();
+    let assertion_b = EntityId::new("lexical-owned-b").unwrap();
+    document.metadata.assertions = vec![
+        AssertionRecord {
+            id: assertion_a.clone(),
+            entry: main_entry.clone(),
+            occurrence: occurrences[0].clone(),
+            native_sense_id: Presence::Missing,
+            language: Presence::Value("en".into()),
+            definition: Presence::Value(TextValue {
+                text: "grow".into(),
+                language: Presence::Missing,
+                markup: Presence::Missing,
+            }),
+            source_score: Presence::Missing,
+            timestamps: Vec::new(),
+            eligibility: Eligibility::Lexical,
+        },
+        AssertionRecord {
+            id: assertion_b.clone(),
+            entry: main_entry.clone(),
+            occurrence: occurrences[1].clone(),
+            native_sense_id: Presence::Missing,
+            language: Presence::Value("en".into()),
+            definition: Presence::Value(TextValue {
+                text: "develop".into(),
+                language: Presence::Missing,
+                markup: Presence::Missing,
+            }),
+            source_score: Presence::Missing,
+            timestamps: Vec::new(),
+            eligibility: Eligibility::Lexical,
+        },
+    ];
+    let computation_ids = [
+        EntityId::new("lexical-owned-computation-stem").unwrap(),
+        EntityId::new("lexical-owned-computation-components").unwrap(),
+        EntityId::new("lexical-owned-computation-candidate").unwrap(),
+    ];
+    document.metadata.computations = computation_ids
+        .iter()
+        .map(|id| ComputationRecord {
+            id: id.clone(),
+            tool: "fixture".into(),
+            tool_version: "1".into(),
+            inputs: vec![InputRef::Literal("farvi".into())],
+            policy: "fixture-literal".into(),
+            profile: Presence::Missing,
+            explanation: Presence::Missing,
+        })
+        .collect();
+    document.metadata.forms = vec![
+        FormRecord {
+            id: EntityId::new("lexical-owned-form-stem").unwrap(),
+            entry: main_entry,
+            spelling: "farvi-form".into(),
+            language: Presence::Value("jbo".into()),
+            script: Presence::Missing,
+            pronunciation: Presence::Missing,
+            kind: FormKind::ComputedStem,
+            standing: Presence::Missing,
+            components: Vec::new(),
+            evidence: None,
+            computation: Some(computation_ids[0].clone()),
+        },
+        FormRecord {
+            id: EntityId::new("lexical-owned-form-components").unwrap(),
+            entry: empty_entry.clone(),
+            spelling: "farvi-form".into(),
+            language: Presence::Value("jbo".into()),
+            script: Presence::Missing,
+            pronunciation: Presence::Missing,
+            kind: FormKind::ComputedComponents,
+            standing: Presence::Missing,
+            components: Vec::new(),
+            evidence: None,
+            computation: Some(computation_ids[1].clone()),
+        },
+        FormRecord {
+            id: EntityId::new("lexical-owned-form-candidate").unwrap(),
+            entry: empty_entry,
+            spelling: "farvi-form".into(),
+            language: Presence::Value("jbo".into()),
+            script: Presence::Missing,
+            pronunciation: Presence::Missing,
+            kind: FormKind::GeneratedCandidate,
+            standing: Presence::Missing,
+            components: Vec::new(),
+            evidence: None,
+            computation: Some(computation_ids[2].clone()),
+        },
+    ];
+    let component = document.metadata.components[0].id.clone();
+    document.metadata.releases.push(lexical_release(
+        "lexical-owned-release-r1",
+        &component,
+        vec![capture_ref],
+        vec![assertion_a.clone(), assertion_b.clone()],
+    ));
+    let revision = EntityId::new("lexical-owned-r1").unwrap();
+    document.metadata.catalogue_revision = 1;
+    document.metadata.owned_revisions.push(OwnedRevisionRecord {
+        id: revision.clone(),
+        source: source.clone(),
+        parent: Some(EntityId::new("lexical-owned-r0").unwrap()),
+        editor,
+        timestamp: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        assertions: vec![assertion_a, assertion_b],
+        tombstones: Vec::new(),
+        rationale: Presence::Value(TextValue {
+            text: "add a and b".into(),
+            language: Presence::Missing,
+            markup: Presence::Missing,
+        }),
+    });
+    document.metadata.owned_heads[0].revision = revision;
+    Dictionary::from_document(document).unwrap()
+}
+
+fn lexical_owned_revision_two(previous: &Dictionary) -> Dictionary {
+    let mut document = previous.document();
+    let source = SourceId::new("lexical-owned").unwrap();
+    let editor = ContributorId::new("lexical-editor").unwrap();
+    let capture = RawCapture::new(
+        "captured:lexical-owned:r2",
+        CaptureMetadata {
+            source_name: "Lexical owned fixture".into(),
+            format_label: "text/plain".into(),
+            locator: "owned r2".into(),
+            revision: Presence::Missing,
+            captured_at: Presence::Missing,
+            time_precision: TimePrecision::Unknown,
+            notice_locator: Presence::Missing,
+        },
+        b"farvi flourish\n".to_vec(),
+        vec![RawOccurrence {
+            locator: "/c".into(),
+            fields: Vec::new(),
+            raw_line: Some("farvi flourish".into()),
+        }],
+    );
+    let capture_ref = capture.identity.clone();
+    let occurrence = OccurrenceRef {
+        capture: capture_ref.clone(),
+        locator: "/c".into(),
+    };
+    document.captures.push(capture);
+    let mut registry = document.registry.document();
+    registry.snapshots.push(SnapshotAttribution {
+        snapshot: capture_ref.to_snapshot_identity().unwrap(),
+        source: source.clone(),
+        distributor: None,
+    });
+    registry.occurrences.push(OccurrenceAttribution {
+        occurrence: occurrence.to_record_identity().unwrap(),
+        contributor: Some(editor.clone()),
+        native_entry_id: Some("lexical-owned-entry".into()),
+        native_assertion_id: Some("lexical-owned-c".into()),
+    });
+    document.registry = SourceRegistry::from_document(registry).unwrap();
+    let assertion = EntityId::new("lexical-owned-c").unwrap();
+    document.metadata.assertions.push(AssertionRecord {
+        id: assertion.clone(),
+        entry: EntityId::new("lexical-owned-entry").unwrap(),
+        occurrence,
+        native_sense_id: Presence::Missing,
+        language: Presence::Value("en".into()),
+        definition: Presence::Value(TextValue {
+            text: "flourish".into(),
+            language: Presence::Missing,
+            markup: Presence::Missing,
+        }),
+        source_score: Presence::Missing,
+        timestamps: Vec::new(),
+        eligibility: Eligibility::Lexical,
+    });
+    let component = document.metadata.components[0].id.clone();
+    document.metadata.releases.push(lexical_release(
+        "lexical-owned-release-r2",
+        &component,
+        vec![capture_ref],
+        vec![assertion.clone()],
+    ));
+    let previous_revision = document.metadata.owned_revisions.last().unwrap().clone();
+    let revision = EntityId::new("lexical-owned-r2").unwrap();
+    document.metadata.catalogue_revision = 2;
+    document.metadata.owned_revisions.push(OwnedRevisionRecord {
+        id: revision.clone(),
+        source,
+        parent: Some(previous_revision.id),
+        editor,
+        timestamp: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        assertions: vec![assertion],
+        tombstones: vec![
+            EntityId::new("lexical-owned-a").unwrap(),
+            EntityId::new("lexical-owned-b").unwrap(),
+        ],
+        rationale: Presence::Value(TextValue {
+            text: "replace a and b with c".into(),
+            language: Presence::Missing,
+            markup: Presence::Missing,
+        }),
+    });
+    document.metadata.owned_heads[0].revision = revision;
+    Dictionary::from_document(document).unwrap()
+}
+
+fn build_lexical_view(
+    root: &std::path::Path,
+    upstream: &Dictionary,
+    owned_root: &std::path::Path,
+    owned_revision: WorkbenchOwnedRevision,
+    view_name: &str,
+) -> PathBuf {
+    let catalogue = root.join("catalogue");
+    if !catalogue.exists() {
+        let sealed = seal_release(PackId::LaLojban, PackPayloadKind::Synthetic, upstream).unwrap();
+        let request = CollectionRequest::new(
+            vec![CollectionInput::SealedBytes {
+                pack_id: PackId::LaLojban,
+                release: Cow::Borrowed(&sealed.release),
+                seal: Cow::Borrowed(&sealed.seal),
+            }],
+            CollectionSelection::Packs(vec![PackId::LaLojban]),
+            true,
+        )
+        .unwrap();
+        CollectionCatalogue::install(&catalogue, request).unwrap();
+    }
+    let view_root = root.join(view_name);
+    WorkbenchView::build_new(
+        &view_root,
+        WorkbenchBuildRequest {
+            catalogue_root: Some(catalogue),
+            owned_root: Some(owned_root.to_path_buf()),
+            selection: WorkbenchSelection {
+                version: 1,
+                packs: vec![PackId::LaLojban],
+                disabled: Vec::new(),
+                owned: Some(owned_revision),
+                contexts: Vec::new(),
+            },
+        },
+    )
+    .unwrap();
+    view_root
+}
+
+fn run_lexical_journey(
+    output_root: &Path,
+) -> Result<serde_json::Value, Box<dyn std::error::Error>> {
+    let root = output_root.join("lexical-workbench");
+    fs::create_dir(&root)?;
+    let artifacts = output_root.join("artifacts");
+    let inputs = artifacts.join("lexical-inputs");
+    fs::create_dir(&inputs)?;
+
+    let upstream = lexical_upstream_dictionary();
+    let seed = lexical_owned_genesis();
+    let revision_one = lexical_owned_revision_one(&seed);
+    let revision_two = lexical_owned_revision_two(&revision_one);
+    let selection: WorkbenchSelection = serde_json::from_slice(LEXICAL_SELECTION_JSON)?;
+    let mut historical_selection = selection.clone();
+    historical_selection.owned = Some(WorkbenchOwnedRevision::Revision(EntityId::new(
+        "lexical-owned-r1",
+    )?));
+    let form_request: WorkbenchLexicalRequest = serde_json::from_slice(LEXICAL_FORM_REQUEST_JSON)?;
+    let reverse_request: WorkbenchLexicalRequest =
+        serde_json::from_slice(LEXICAL_REVERSE_REQUEST_JSON)?;
+    let sealed = seal_release(PackId::LaLojban, PackPayloadKind::Synthetic, &upstream)?;
+
+    // The complete lexical input set is durable before installing its
+    // catalogue, creating the journal, or building a workbench database.
+    write_new(
+        &inputs.join("lexical-upstream.json"),
+        &upstream.to_json_bytes()?,
+    )?;
+    write_new(
+        &inputs.join("lexical-owned-seed.json"),
+        &seed.to_json_bytes()?,
+    )?;
+    write_new(
+        &inputs.join("lexical-owned-r1.json"),
+        &revision_one.to_json_bytes()?,
+    )?;
+    write_new(
+        &inputs.join("lexical-owned-r2.json"),
+        &revision_two.to_json_bytes()?,
+    )?;
+    write_new(
+        &inputs.join("lexical-selection.json"),
+        &serde_json::to_vec_pretty(&selection)?,
+    )?;
+    write_new(
+        &inputs.join("lexical-historical-selection.json"),
+        &serde_json::to_vec_pretty(&historical_selection)?,
+    )?;
+    write_new(
+        &inputs.join("reverse-grow.json"),
+        LEXICAL_REVERSE_REQUEST_JSON,
+    )?;
+    write_new(&inputs.join("form-all.json"), LEXICAL_FORM_REQUEST_JSON)?;
+    write_new(&inputs.join("lexical-expected.json"), LEXICAL_EXPECTED_JSON)?;
+    write_new(
+        &inputs.join("cursor-protocol-oracle.json"),
+        LEXICAL_CURSOR_PROTOCOL_ORACLE_JSON,
+    )?;
+
+    let catalogue_root = root.join("catalogue");
+    let owned_root = root.join("owned");
+    let request = CollectionRequest::new(
+        vec![CollectionInput::SealedBytes {
+            pack_id: PackId::LaLojban,
+            release: Cow::Borrowed(&sealed.release),
+            seal: Cow::Borrowed(&sealed.seal),
+        }],
+        CollectionSelection::Packs(vec![PackId::LaLojban]),
+        true,
+    )?;
+    CollectionCatalogue::install(&catalogue_root, request)?;
+    let (mut writer, created) = OwnedJournal::create(&owned_root, &seed)?;
+    if created.head.sequence != 0 {
+        return Err("the lexical owned journal must begin at sequence zero".into());
+    }
+    let committed_r1 = writer.commit(&created.head.revision.id, &revision_one)?;
+    if committed_r1.head.sequence != 1 {
+        return Err("the lexical r1 publication must be sequence one".into());
+    }
+
+    let view_r1 = build_lexical_view(
+        &root,
+        &upstream,
+        &owned_root,
+        WorkbenchOwnedRevision::Head,
+        "view-r1",
+    );
+    let mut engine_r1 = WorkbenchSearchEngine::open(&view_r1)?;
+    let form_r1 = engine_r1.execute_lexical(&form_request)?;
+    let WorkbenchLexicalFullResult::Form(forms_r1) = &form_r1.result else {
+        return Err("the fixed Form request did not return Form records".into());
+    };
+    if forms_r1.totals.records != 7
+        || forms_r1.totals.source_groups != 2
+        || forms_r1.totals.associated_assertions != 4
+        || forms_r1
+            .groups
+            .iter()
+            .map(|group| group.source.id.as_str())
+            .collect::<Vec<_>>()
+            != ["lexical-owned", "lexical-upstream"]
+    {
+        return Err("the r1 Form result differs from the fixed lexical counts/order".into());
+    }
+    let r1_input = revision_one.document();
+    let upstream_input = upstream.document();
+    let expected_form_ids = [
+        "lexical-owned-form-stem",
+        "lexical-owned-form-components",
+        "lexical-owned-form-candidate",
+        "lexical-upstream-form-variant",
+        "lexical-upstream-form-pronunciation",
+        "lexical-upstream-form-reported",
+        "lexical-upstream-form-rafsi",
+    ];
+    let returned_form_ids = forms_r1
+        .groups
+        .iter()
+        .flat_map(|group| group.hits.iter().map(|hit| hit.form.id.as_str()))
+        .collect::<Vec<_>>();
+    if returned_form_ids != expected_form_ids {
+        return Err("the returned Forms differ from the input-derived fixed order".into());
+    }
+    for group in &forms_r1.groups {
+        let input = if group.source.id.as_str() == "lexical-owned" {
+            &r1_input
+        } else {
+            &upstream_input
+        };
+        for row in &group.hits {
+            let expected = input
+                .metadata
+                .forms
+                .iter()
+                .find(|candidate| candidate.id == row.form.id)
+                .ok_or("a returned Form is absent from its emitted input")?;
+            if &row.form != expected {
+                return Err("a returned complete Form differs from its emitted input".into());
+            }
+            let expected_entry = input
+                .metadata
+                .entries
+                .iter()
+                .find(|candidate| candidate.id == row.entry.id)
+                .ok_or("a returned Form Entry is absent from its emitted input")?;
+            if &row.entry != expected_entry {
+                return Err("a returned complete Entry differs from its emitted input".into());
+            }
+            for associated in &row.associated_assertions {
+                let expected_assertion = input
+                    .metadata
+                    .assertions
+                    .iter()
+                    .find(|candidate| candidate.id == associated.assertion.id)
+                    .ok_or("a returned associated Assertion is absent from its emitted input")?;
+                if &associated.assertion != expected_assertion {
+                    return Err(
+                        "a complete associated Assertion differs from its emitted input".into(),
+                    );
+                }
+            }
+            if let Some(computation) = &row.computation {
+                let expected_computation = input
+                    .metadata
+                    .computations
+                    .iter()
+                    .find(|candidate| candidate.id == computation.id)
+                    .ok_or("a returned Computation is absent from its emitted input")?;
+                if computation != expected_computation {
+                    return Err("a returned Computation differs from its emitted input".into());
+                }
+            }
+            if let Some(evidence) = &row.evidence {
+                let expected_evidence =
+                    row.form.evidence.as_ref().ok_or(
+                        "a Form with a returned evidence projection has no input evidence",
+                    )?;
+                if &evidence.evidence != expected_evidence {
+                    return Err("returned Form evidence differs from its emitted input".into());
+                }
+                let absent_variant = row.form.id.as_str() == "lexical-upstream-form-variant";
+                if (evidence.status == "CatalogueOnly") != absent_variant
+                    || evidence.capture.is_some() == absent_variant
+                    || evidence.raw.is_some() == absent_variant
+                {
+                    return Err("loaded and catalogue-only Form evidence states disagree".into());
+                }
+            }
+        }
+    }
+    let compact_r1 = engine_r1.execute_lexical_compact(&form_request)?;
+    let WorkbenchLexicalCompactResult::Form(compact_forms_r1) = &compact_r1.result else {
+        return Err("the fixed Compact Form request returned another operation".into());
+    };
+    if compact_forms_r1.totals != forms_r1.totals {
+        return Err("Full and Compact Form totals differ for the same r1 request".into());
+    }
+    let form_binding = compact_r1.binding_sha256.clone();
+    let mut r1_details = Vec::new();
+    for compact_group in &compact_forms_r1.groups {
+        for compact_form in &compact_group.hits {
+            let detail = engine_r1.form_detail(&compact_form.detail_ref, &form_binding)?;
+            let expected = r1_input
+                .metadata
+                .forms
+                .iter()
+                .chain(upstream_input.metadata.forms.iter())
+                .find(|candidate| candidate.id == compact_form.form_id)
+                .ok_or("Compact returned a Form absent from both typed inputs")?;
+            if &detail.form.form != expected {
+                return Err("Form detail differs from the complete emitted Form row".into());
+            }
+            r1_details.push(detail);
+        }
+    }
+    let reverse_r1 = engine_r1.execute_lexical(&reverse_request)?;
+    let WorkbenchLexicalFullResult::ReverseDefinition(reverse_rows_r1) = &reverse_r1.result else {
+        return Err("the fixed reverse-definition request returned another operation".into());
+    };
+    let reverse_ids = reverse_rows_r1
+        .groups
+        .iter()
+        .flat_map(|group| group.hits.iter().map(|hit| hit.assertion.id.as_str()))
+        .collect::<Vec<_>>();
+    if reverse_rows_r1.totals.records != 3
+        || reverse_ids
+            != [
+                "lexical-owned-a",
+                "lexical-upstream-a",
+                "lexical-upstream-b",
+            ]
+    {
+        return Err("the r1 reverse-definition result differs from its typed inputs".into());
+    }
+
+    let profile_config = root.join("workbench-profiles.json");
+    let configured = WorkbenchProfiles::configure(
+        &profile_config,
+        WorkbenchProfileConfigureRequest {
+            name: "lexical".into(),
+            catalogue_root: Some(catalogue_root.clone()),
+            owned_root: Some(owned_root.clone()),
+            selection: selection.clone(),
+            make_default: true,
+        },
+        None,
+    )?;
+    let configured_refresh = WorkbenchProfiles::refresh(
+        &profile_config,
+        None,
+        root.join("configured-r1"),
+        configured.revision,
+    )?;
+    let mut named_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("lexical"))?;
+    let configured_form_r1 = named_engine.execute_lexical(&form_request)?;
+    if serde_json::to_vec(&configured_form_r1.result)? != serde_json::to_vec(&form_r1.result)? {
+        return Err(
+            "configured r1 Form output differs from the direct input-derived output".into(),
+        );
+    }
+    let configured_compact_r1 = named_engine.execute_lexical_compact(&form_request)?;
+    let WorkbenchLexicalCompactResult::Form(configured_compact_forms_r1) =
+        &configured_compact_r1.result
+    else {
+        return Err("configured Compact Form request returned another operation".into());
+    };
+    let configured_detail_r1 = named_engine.form_detail(
+        &configured_compact_forms_r1.groups[0].hits[0].detail_ref,
+        &configured_compact_r1.binding_sha256,
+    )?;
+    if configured_detail_r1.form.form.id.as_str() != "lexical-owned-form-stem" {
+        return Err("configured detail did not resolve the first emitted Compact Form".into());
+    }
+    let mut default_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, None)?;
+    let default_form_r1 = default_engine.execute_lexical(&form_request)?;
+    if serde_json::to_vec(&default_form_r1.result)?
+        != serde_json::to_vec(&configured_form_r1.result)?
+        || default_form_r1.binding_sha256 == configured_form_r1.binding_sha256
+        || default_form_r1.configuration.requested_profile.is_some()
+    {
+        return Err("named and default r1 outputs or effective identities disagree".into());
+    }
+
+    let committed_r2 = writer.commit(&committed_r1.head.revision.id, &revision_two)?;
+    if committed_r2.head.sequence != 2 {
+        return Err("the lexical r2 publication must be sequence two".into());
+    }
+    drop(writer);
+    if default_engine.execute_lexical(&form_request).is_ok() {
+        return Err("the retained default r1 engine remained current after the r2 append".into());
+    }
+    let refreshed_r2 = WorkbenchProfiles::refresh(
+        &profile_config,
+        Some("lexical"),
+        root.join("configured-r2"),
+        configured_refresh.publication.revision,
+    )?;
+    if refreshed_r2
+        .publication
+        .active
+        .as_ref()
+        .map(|prepared| prepared.sequence)
+        != Some(1)
+    {
+        return Err("the configured r2 refresh did not append prepared sequence one".into());
+    }
+    let mut named_r2_engine =
+        ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("lexical"))?;
+    let configured_form_r2 = named_r2_engine.execute_lexical(&form_request)?;
+    let configured_compact_r2 = named_r2_engine.execute_lexical_compact(&form_request)?;
+    let WorkbenchLexicalCompactResult::Form(configured_compact_forms_r2) =
+        &configured_compact_r2.result
+    else {
+        return Err("configured r2 Compact Form request returned another operation".into());
+    };
+    let configured_detail_r2 = named_r2_engine.form_detail(
+        &configured_compact_forms_r2.groups[0].hits[0].detail_ref,
+        &configured_compact_r2.binding_sha256,
+    )?;
+    let configured_detail_input = revision_two.document();
+    let configured_detail_expected = configured_detail_input
+        .metadata
+        .forms
+        .iter()
+        .find(|form| form.id == configured_detail_r2.form.form.id)
+        .ok_or("configured r2 detail Form is absent from the emitted owned input")?;
+    let configured_detail_entry = configured_detail_input
+        .metadata
+        .entries
+        .iter()
+        .find(|entry| entry.id == configured_detail_r2.form.entry.id)
+        .ok_or("configured r2 detail Entry is absent from the emitted owned input")?;
+    if &configured_detail_r2.form.form != configured_detail_expected
+        || &configured_detail_r2.form.entry != configured_detail_entry
+    {
+        return Err("configured r2 detail differs from its complete emitted input rows".into());
+    }
+    let default_r2_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, None)?;
+    let mut default_r2_engine = default_r2_engine;
+    let default_form_r2 = default_r2_engine.execute_lexical(&form_request)?;
+    let history = WorkbenchProfiles::read(&profile_config)?.history(None)?;
+    if serde_json::to_vec(&default_form_r2.result)?
+        != serde_json::to_vec(&configured_form_r2.result)?
+        || default_form_r2.binding_sha256 == configured_form_r2.binding_sha256
+        || default_form_r2.configuration.requested_profile.is_some()
+        || configured_detail_r2.form.form.id.as_str() != "lexical-owned-form-stem"
+        || history.revision != refreshed_r2.publication.revision
+        || history
+            .prepared
+            .iter()
+            .map(|row| row.sequence)
+            .collect::<Vec<_>>()
+            != [0, 1]
+    {
+        return Err("configured r2 named/default outputs or retained history disagree".into());
+    }
+    let view_r2 = build_lexical_view(
+        &root,
+        &upstream,
+        &owned_root,
+        WorkbenchOwnedRevision::Head,
+        "view-r2",
+    );
+    let mut engine_r2 = WorkbenchSearchEngine::open(&view_r2)?;
+    let form_r2 = engine_r2.execute_lexical(&form_request)?;
+    let WorkbenchLexicalFullResult::Form(forms_r2) = &form_r2.result else {
+        return Err("the r2 Form request did not return Form records".into());
+    };
+    if serde_json::to_vec(&configured_form_r2.result)? != serde_json::to_vec(&form_r2.result)? {
+        return Err(
+            "configured r2 Form output differs from the direct emitted-input result".into(),
+        );
+    }
+    let owned_associations = forms_r2
+        .groups
+        .iter()
+        .find(|group| group.source.id.as_str() == "lexical-owned")
+        .ok_or("r2 Form result lacks its owned source group")?
+        .hits
+        .iter()
+        .find(|row| row.form.id.as_str() == "lexical-owned-form-stem")
+        .ok_or("r2 Form result lacks the owned stem")?
+        .associated_assertions
+        .iter()
+        .map(|hit| hit.assertion.id.as_str())
+        .collect::<Vec<_>>();
+    if forms_r2.totals.records != 7
+        || forms_r2.totals.source_groups != 2
+        || forms_r2.totals.associated_assertions != 3
+        || forms_r2
+            .groups
+            .iter()
+            .flat_map(|group| group.hits.iter().map(|row| row.form.id.as_str()))
+            .collect::<Vec<_>>()
+            != expected_form_ids
+        || owned_associations != ["lexical-owned-c"]
+    {
+        return Err("r2 must expose only assertion c on the owned stem".into());
+    }
+    for group in &forms_r2.groups {
+        let input = if group.source.id.as_str() == "lexical-owned" {
+            revision_two.document()
+        } else {
+            upstream.document()
+        };
+        for row in &group.hits {
+            let expected_form = input
+                .metadata
+                .forms
+                .iter()
+                .find(|candidate| candidate.id == row.form.id)
+                .ok_or("an r2 returned Form is absent from its emitted input")?;
+            let expected_entry = input
+                .metadata
+                .entries
+                .iter()
+                .find(|candidate| candidate.id == row.entry.id)
+                .ok_or("an r2 returned Entry is absent from its emitted input")?;
+            if &row.form != expected_form || &row.entry != expected_entry {
+                return Err("an r2 complete Form or Entry differs from its emitted input".into());
+            }
+            for associated in &row.associated_assertions {
+                let expected_assertion = input
+                    .metadata
+                    .assertions
+                    .iter()
+                    .find(|candidate| candidate.id == associated.assertion.id)
+                    .ok_or("an r2 associated Assertion is absent from its emitted input")?;
+                if &associated.assertion != expected_assertion {
+                    return Err("an r2 complete Assertion differs from its emitted input".into());
+                }
+            }
+        }
+    }
+    let historical_view = build_lexical_view(
+        &root,
+        &upstream,
+        &owned_root,
+        WorkbenchOwnedRevision::Revision(EntityId::new("lexical-owned-r1")?),
+        "view-historical-r1",
+    );
+    let mut historical_engine = WorkbenchSearchEngine::open(&historical_view)?;
+    let historical_reverse = historical_engine.execute_lexical(&reverse_request)?;
+    let WorkbenchLexicalFullResult::ReverseDefinition(historical_rows) = &historical_reverse.result
+    else {
+        return Err("the historical r1 query returned another operation".into());
+    };
+    if historical_rows.totals.records != 3
+        || historical_rows
+            .groups
+            .iter()
+            .flat_map(|group| group.hits.iter().map(|hit| hit.assertion.id.as_str()))
+            .collect::<Vec<_>>()
+            != [
+                "lexical-owned-a",
+                "lexical-upstream-a",
+                "lexical-upstream-b",
+            ]
+    {
+        return Err("the retained historical r1 view lost its original matches".into());
+    }
+    let reverse_r2 = engine_r2.execute_lexical(&reverse_request)?;
+    let WorkbenchLexicalFullResult::ReverseDefinition(reverse_rows_r2) = &reverse_r2.result else {
+        return Err("the r2 reverse-definition request returned another operation".into());
+    };
+    if reverse_rows_r2.totals.records != 2 {
+        return Err("r2 reverse-definition must retain the two upstream matches".into());
+    }
+
+    Ok(serde_json::json!({
+        "input_root": inputs,
+        "selection": selection,
+        "profile_revision": configured.revision,
+        "publication_revision": configured_refresh.publication.revision,
+        "refreshed_r2_profile_revision": refreshed_r2.publication.revision,
+        "profile_history": history,
+        "owned_publication_sequences": [created.head.sequence, committed_r1.head.sequence, committed_r2.head.sequence],
+        "direct_r1_binding_sha256": form_r1.binding_sha256,
+        "configured_r1": configured_form_r1,
+        "configured_compact_r1": configured_compact_r1,
+        "configured_detail_r1": configured_detail_r1,
+        "default_r1": default_form_r1,
+        "full_form_r1": form_r1,
+        "compact_form_r1": compact_r1,
+        "form_details_r1": r1_details,
+        "reverse_grow_r1": reverse_r1,
+        "configured_r2": configured_form_r2,
+        "configured_compact_r2": configured_compact_r2,
+        "configured_detail_r2": configured_detail_r2,
+        "default_r2": default_form_r2,
+        "full_form_r2": form_r2,
+        "reverse_grow_r2": reverse_r2,
+        "historical_reverse_grow_r1": historical_reverse,
+        "fixed_expected": serde_json::from_slice::<serde_json::Value>(LEXICAL_EXPECTED_JSON)?,
+    }))
 }
 
 fn write_new(path: &Path, bytes: &[u8]) -> Result<(), Box<dyn std::error::Error>> {
@@ -1295,6 +2507,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     {
         return Err("named and default beta must share the r2 body but differ in identity".into());
     }
+    let lexical = run_lexical_journey(&output_root)?;
     println!(
         "{}",
         serde_json::to_string_pretty(&serde_json::json!({
@@ -1344,6 +2557,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             "default_beta_reference_before_append": default_beta_reference_before_append,
             "historical_owned_reference": historical_owned_reference,
             "named_beta_r2": named_beta_r2,
+            "lexical": lexical,
         }))?
     );
     Ok(())

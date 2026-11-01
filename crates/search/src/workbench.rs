@@ -15,7 +15,21 @@ use crate::{
     DictionaryQueryError, DictionaryRequest, DictionarySearchEngine, ReferenceResolution,
 };
 
+/// Literal reverse-definition and stored-Form workbench queries.
+pub mod lexical;
 pub(crate) mod reference;
+pub use lexical::{
+    ConfiguredWorkbenchFormDetailResponse, ConfiguredWorkbenchLexicalCompactResponse,
+    ConfiguredWorkbenchLexicalFullResponse, WorkbenchCompactFormRecord, WorkbenchFormCompact,
+    WorkbenchFormCompactGroup, WorkbenchFormDetailRef, WorkbenchFormDetailResponse,
+    WorkbenchFormEvidence, WorkbenchFormFull, WorkbenchFormFullGroup, WorkbenchFormRecord,
+    WorkbenchLexicalCompactResponse, WorkbenchLexicalCompactResult, WorkbenchLexicalError,
+    WorkbenchLexicalFullResponse, WorkbenchLexicalFullResult, WorkbenchLexicalOptions,
+    WorkbenchLexicalQuery, WorkbenchLexicalRequest, WorkbenchLexicalSourceTotal,
+    WorkbenchLexicalTotals, WorkbenchReverseDefinitionCompact,
+    WorkbenchReverseDefinitionCompactGroup, WorkbenchReverseDefinitionFull,
+    WorkbenchReverseDefinitionFullGroup,
+};
 pub use reference::{
     ConfiguredWorkbenchReferenceCompactResponse, ConfiguredWorkbenchReferenceFullResponse,
     WorkbenchReferenceCompactResponse, WorkbenchReferenceCompactResult,
@@ -249,6 +263,8 @@ pub enum WorkbenchQueryError {
     Query(Box<DictionaryQueryError>),
     /// Existing compact detail projection failure.
     Projection(Box<DictionaryProjectionError>),
+    /// A new lexical request, cursor, detail key, or retained-record failure.
+    Lexical(Box<WorkbenchLexicalError>),
     /// A retained catalogue descriptor could not be read or projected.
     Catalogue(Box<vlajmaji_store::CollectionError>),
     /// Matching retained rows or prepared bodies disagree for one role and ID.
@@ -278,6 +294,7 @@ impl fmt::Display for WorkbenchQueryError {
             Self::View(error) => write!(f, "workbench freshness: {error}"),
             Self::Query(error) => write!(f, "workbench query: {error}"),
             Self::Projection(error) => write!(f, "workbench detail: {error}"),
+            Self::Lexical(error) => write!(f, "workbench lexical query: {error}"),
             Self::Catalogue(error) => write!(f, "workbench catalogue: {error}"),
             Self::AmbiguousReference { role, id } => {
                 write!(f, "ambiguous {role} reference {id}")
@@ -299,6 +316,7 @@ impl Error for WorkbenchQueryError {
             Self::View(error) => Some(error.as_ref()),
             Self::Query(error) => Some(error.as_ref()),
             Self::Projection(error) => Some(error.as_ref()),
+            Self::Lexical(error) => Some(error.as_ref()),
             Self::Catalogue(error) => Some(error.as_ref()),
             _ => None,
         }
@@ -318,6 +336,11 @@ impl From<DictionaryQueryError> for WorkbenchQueryError {
 impl From<DictionaryProjectionError> for WorkbenchQueryError {
     fn from(value: DictionaryProjectionError) -> Self {
         Self::Projection(Box::new(value))
+    }
+}
+impl From<WorkbenchLexicalError> for WorkbenchQueryError {
+    fn from(value: WorkbenchLexicalError) -> Self {
+        Self::Lexical(Box::new(value))
     }
 }
 impl From<vlajmaji_store::CollectionError> for WorkbenchQueryError {

@@ -1299,6 +1299,553 @@ impl DictionarySearchEngine {
         Ok(selected.into_iter().collect())
     }
 
+    pub(crate) fn lexical_full(
+        &self,
+        request: &crate::workbench::lexical::WorkbenchLexicalRequest,
+        binding_sha256: &str,
+    ) -> Result<
+        crate::workbench::lexical::WorkbenchLexicalFullResult,
+        crate::workbench::lexical::WorkbenchLexicalError,
+    > {
+        use crate::workbench::lexical;
+        let available = self
+            .availability
+            .iter()
+            .map(|row| (row.source.id.clone(), row.selectable, row.reason))
+            .collect::<Vec<_>>();
+        let resolved_sources =
+            lexical::resolve_sources(&self.dictionary.registry, &request.options, &available)?;
+        let selected_sources: BTreeSet<_> = resolved_sources.iter().cloned().collect();
+        match &request.query {
+            lexical::WorkbenchLexicalQuery::ReverseDefinition { contains } => {
+                let needle = contains.to_ascii_lowercase();
+                let mut candidates = Vec::new();
+                for assertion in &self.dictionary.metadata.assertions {
+                    if !matches!(assertion.eligibility, Eligibility::Lexical) {
+                        continue;
+                    }
+                    let Some(entry) = self.entries.get(&assertion.entry.to_string()) else {
+                        return Err(lexical::WorkbenchLexicalError::Integrity {
+                            detail: format!(
+                                "assertion {} references a missing Entry",
+                                assertion.id
+                            ),
+                        });
+                    };
+                    if !selected_sources.contains(&entry.source)
+                        || !self
+                            .selected_assertions
+                            .get(&entry.source)
+                            .is_some_and(|ids| ids.contains(&assertion.id.to_string()))
+                    {
+                        continue;
+                    }
+                    let lexicon::Presence::Value(definition) = &assertion.definition else {
+                        continue;
+                    };
+                    if !definition.text.to_ascii_lowercase().contains(&needle) {
+                        continue;
+                    }
+                    let entry_spelling = match &entry.spelling {
+                        lexicon::Presence::Value(value) => value.clone(),
+                        _ => String::new(),
+                    };
+                    candidates.push((
+                        entry.source.clone(),
+                        entry_spelling,
+                        tuple_hex(&assertion.occurrence),
+                        assertion.id.clone(),
+                        assertion,
+                    ));
+                }
+                candidates.sort_by(|left, right| {
+                    (&left.0, &left.1, &left.2, &left.3)
+                        .cmp(&(&right.0, &right.1, &right.2, &right.3))
+                });
+                let start = if let Some(token) = request.options.cursor.as_deref() {
+                    let position = lexical::decode_cursor(
+                        token,
+                        request,
+                        &resolved_sources,
+                        "full",
+                        binding_sha256,
+                    )?;
+                    candidates
+                        .iter()
+                        .position(|candidate| match &position {
+                            lexical::WorkbenchLexicalPosition::ReverseDefinition {
+                                source,
+                                spelling,
+                                occurrence_id,
+                                assertion_id,
+                            } => {
+                                &candidate.0 == source
+                                    && &candidate.1 == spelling
+                                    && &candidate.2 == occurrence_id
+                                    && &candidate.3 == assertion_id
+                            }
+                            _ => false,
+                        })
+                        .map(|index| index + 1)
+                        .ok_or(lexical::WorkbenchLexicalError::InvalidCursorPosition)?
+                } else {
+                    0
+                };
+                let end = request.options.page_size.map_or(candidates.len(), |size| {
+                    start.saturating_add(size).min(candidates.len())
+                });
+                let mut by_source: BTreeMap<SourceId, Vec<usize>> = BTreeMap::new();
+                let mut all_counts: BTreeMap<SourceId, usize> = BTreeMap::new();
+                for (index, candidate) in candidates.iter().enumerate() {
+                    *all_counts.entry(candidate.0.clone()).or_default() += 1;
+                    if (start..end).contains(&index) {
+                        by_source
+                            .entry(candidate.0.clone())
+                            .or_default()
+                            .push(index);
+                    }
+                }
+                let source_totals = all_counts
+                    .iter()
+                    .map(|(id, count)| {
+                        let source = self.sources.get(id).cloned().ok_or_else(|| {
+                            lexical::WorkbenchLexicalError::Integrity {
+                                detail: format!("matching source {id} is missing"),
+                            }
+                        })?;
+                        Ok(lexical::WorkbenchLexicalSourceTotal {
+                            source,
+                            records: *count,
+                            associated_assertions: *count,
+                        })
+                    })
+                    .collect::<Result<Vec<_>, lexical::WorkbenchLexicalError>>()?;
+                let totals = lexical::WorkbenchLexicalTotals {
+                    unit: "assertion_occurrences".into(),
+                    records: candidates.len(),
+                    source_groups: all_counts.len(),
+                    associated_assertions: candidates.len(),
+                };
+                let groups = by_source
+                    .into_iter()
+                    .map(|(id, indices)| {
+                        let source = self.sources.get(&id).cloned().ok_or_else(|| {
+                            lexical::WorkbenchLexicalError::Integrity {
+                                detail: format!("matching source {id} is missing"),
+                            }
+                        })?;
+                        let hits = indices
+                            .iter()
+                            .map(|index| self.make_hit(candidates[*index].4))
+                            .collect::<Result<Vec<_>, _>>()?;
+                        let full_count = all_counts[&id];
+                        let returned_count = hits.len();
+                        Ok(lexical::WorkbenchReverseDefinitionFullGroup {
+                            source,
+                            full_count,
+                            returned_count,
+                            partial: returned_count < full_count,
+                            hits,
+                        })
+                    })
+                    .collect::<Result<Vec<_>, lexical::WorkbenchLexicalError>>()?;
+                let next_cursor = if end < candidates.len() && end > start {
+                    let candidate = &candidates[end - 1];
+                    Some(lexical::encode_cursor(
+                        request,
+                        &resolved_sources,
+                        "full",
+                        binding_sha256,
+                        lexical::WorkbenchLexicalPosition::ReverseDefinition {
+                            source: candidate.0.clone(),
+                            spelling: candidate.1.clone(),
+                            occurrence_id: candidate.2.clone(),
+                            assertion_id: candidate.3.clone(),
+                        },
+                    )?)
+                } else {
+                    None
+                };
+                Ok(lexical::WorkbenchLexicalFullResult::ReverseDefinition(
+                    Box::new(lexical::WorkbenchReverseDefinitionFull {
+                        policy: "literal-definition-ascii-v1".into(),
+                        state_sha256: self.state_sha256.clone(),
+                        query: request.query.clone(),
+                        resolved_sources,
+                        totals,
+                        source_totals,
+                        availability: self.availability.clone(),
+                        groups,
+                        next_cursor,
+                        code_notices: self.dictionary.metadata.code_notices.clone(),
+                    }),
+                ))
+            }
+            lexical::WorkbenchLexicalQuery::Form { value, role, kind } => {
+                struct Candidate<'a> {
+                    source: SourceId,
+                    entry_spelling: String,
+                    form: &'a FormRecord,
+                    entry: &'a EntryRecord,
+                }
+                let mut candidates = Vec::new();
+                for form in self.forms_by_id.values() {
+                    if form.spelling != *value
+                        || kind.is_some_and(|expected| expected != form.kind)
+                        || role.is_some_and(|expected| {
+                            lexical::mapped_role(form.kind) != Some(expected)
+                        })
+                    {
+                        continue;
+                    }
+                    let entry = self.entries.get(&form.entry.to_string()).ok_or_else(|| {
+                        lexical::WorkbenchLexicalError::Integrity {
+                            detail: format!("Form {} references a missing Entry", form.id),
+                        }
+                    })?;
+                    if !selected_sources.contains(&entry.source) {
+                        continue;
+                    }
+                    if !self.sources.contains_key(&entry.source) {
+                        return Err(lexical::WorkbenchLexicalError::Integrity {
+                            detail: format!("Form {} has no source row", form.id),
+                        });
+                    }
+                    let entry_spelling = match &entry.spelling {
+                        lexicon::Presence::Value(value) => value.clone(),
+                        _ => String::new(),
+                    };
+                    candidates.push(Candidate {
+                        source: entry.source.clone(),
+                        entry_spelling,
+                        form,
+                        entry,
+                    });
+                }
+                candidates.sort_by(|left, right| {
+                    (
+                        &left.source,
+                        &left.entry_spelling,
+                        &left.form.spelling,
+                        lexical::form_kind_rank(left.form.kind),
+                        &left.form.id,
+                    )
+                        .cmp(&(
+                            &right.source,
+                            &right.entry_spelling,
+                            &right.form.spelling,
+                            lexical::form_kind_rank(right.form.kind),
+                            &right.form.id,
+                        ))
+                });
+                let mut association_ids: BTreeMap<SourceId, BTreeSet<EntityId>> = BTreeMap::new();
+                let mut form_associations: BTreeMap<String, Vec<&lexicon::AssertionRecord>> =
+                    BTreeMap::new();
+                let candidate_sources = candidates
+                    .iter()
+                    .map(|candidate| (candidate.entry.id.clone(), candidate.source.clone()))
+                    .collect::<BTreeMap<_, _>>();
+                for (entry_id, source) in &candidate_sources {
+                    let mut assertions = self
+                        .assertions_by_entry
+                        .get(&entry_id.to_string())
+                        .into_iter()
+                        .flatten()
+                        .filter(|assertion| {
+                            matches!(assertion.eligibility, Eligibility::Lexical)
+                                && self
+                                    .selected_assertions
+                                    .get(source)
+                                    .is_some_and(|ids| ids.contains(&assertion.id.to_string()))
+                        })
+                        .collect::<Vec<_>>();
+                    assertions.sort_by(|left, right| {
+                        (tuple_hex(&left.occurrence), &left.id)
+                            .cmp(&(tuple_hex(&right.occurrence), &right.id))
+                    });
+                    association_ids
+                        .entry(source.clone())
+                        .or_default()
+                        .extend(assertions.iter().map(|row| row.id.clone()));
+                    form_associations.insert(entry_id.to_string(), assertions);
+                }
+                let start = if let Some(token) = request.options.cursor.as_deref() {
+                    let position = lexical::decode_cursor(
+                        token,
+                        request,
+                        &resolved_sources,
+                        "full",
+                        binding_sha256,
+                    )?;
+                    candidates
+                        .iter()
+                        .position(|candidate| match &position {
+                            lexical::WorkbenchLexicalPosition::Form {
+                                source,
+                                entry_spelling,
+                                spelling,
+                                kind,
+                                form_id,
+                            } => {
+                                &candidate.source == source
+                                    && &candidate.entry_spelling == entry_spelling
+                                    && candidate.form.spelling == *spelling
+                                    && candidate.form.kind == *kind
+                                    && candidate.form.id == *form_id
+                            }
+                            _ => false,
+                        })
+                        .map(|index| index + 1)
+                        .ok_or(lexical::WorkbenchLexicalError::InvalidCursorPosition)?
+                } else {
+                    0
+                };
+                let end = request.options.page_size.map_or(candidates.len(), |size| {
+                    start.saturating_add(size).min(candidates.len())
+                });
+                let mut by_source: BTreeMap<SourceId, Vec<usize>> = BTreeMap::new();
+                let mut source_counts: BTreeMap<SourceId, usize> = BTreeMap::new();
+                for (index, candidate) in candidates.iter().enumerate() {
+                    *source_counts.entry(candidate.source.clone()).or_default() += 1;
+                    if (start..end).contains(&index) {
+                        by_source
+                            .entry(candidate.source.clone())
+                            .or_default()
+                            .push(index);
+                    }
+                }
+                let source_totals = source_counts
+                    .iter()
+                    .map(|(id, count)| {
+                        let source = self.sources.get(id).cloned().ok_or_else(|| {
+                            lexical::WorkbenchLexicalError::Integrity {
+                                detail: format!("matching source {id} is missing"),
+                            }
+                        })?;
+                        Ok(lexical::WorkbenchLexicalSourceTotal {
+                            source,
+                            records: *count,
+                            associated_assertions: association_ids.get(id).map_or(0, BTreeSet::len),
+                        })
+                    })
+                    .collect::<Result<Vec<_>, lexical::WorkbenchLexicalError>>()?;
+                let totals = lexical::WorkbenchLexicalTotals {
+                    unit: "stored_forms".into(),
+                    records: candidates.len(),
+                    source_groups: source_counts.len(),
+                    associated_assertions: association_ids.values().map(BTreeSet::len).sum(),
+                };
+                let groups = by_source
+                    .into_iter()
+                    .map(|(id, indices)| {
+                        let source = self.sources.get(&id).cloned().ok_or_else(|| {
+                            lexical::WorkbenchLexicalError::Integrity {
+                                detail: format!("matching source {id} is missing"),
+                            }
+                        })?;
+                        let mut hits = Vec::new();
+                        for index in &indices {
+                            let candidate = &candidates[*index];
+                            let form = candidate.form;
+                            let computation = form
+                                .computation
+                                .as_ref()
+                                .map(|id| {
+                                    self.computations_by_id
+                                        .get(&id.to_string())
+                                        .map(|(_, row)| row.clone())
+                                        .ok_or_else(|| lexical::WorkbenchLexicalError::Integrity {
+                                            detail: format!(
+                                                "Form {} references missing computation {id}",
+                                                form.id
+                                            ),
+                                        })
+                                })
+                                .transpose()?;
+                            let evidence = form
+                                .evidence
+                                .as_ref()
+                                .map(|row| self.lexical_form_evidence(row, &candidate.source))
+                                .transpose()?;
+                            let mut associated_assertions = Vec::new();
+                            for assertion in form_associations
+                                .get(&candidate.entry.id.to_string())
+                                .into_iter()
+                                .flatten()
+                            {
+                                associated_assertions.push(self.make_hit(assertion)?);
+                            }
+                            hits.push(lexical::WorkbenchFormRecord {
+                                form: form.clone(),
+                                entry: candidate.entry.clone(),
+                                source: source.clone(),
+                                mapped_role: lexical::mapped_role(form.kind),
+                                computation,
+                                evidence,
+                                association_status: if associated_assertions.is_empty() {
+                                    "no_current_eligible_assertion"
+                                } else {
+                                    "eligible_assertions"
+                                }
+                                .into(),
+                                associated_assertions,
+                            });
+                        }
+                        let full_count = source_counts[&id];
+                        let returned_count = hits.len();
+                        Ok(lexical::WorkbenchFormFullGroup {
+                            source,
+                            full_count,
+                            returned_count,
+                            partial: returned_count < full_count,
+                            hits,
+                        })
+                    })
+                    .collect::<Result<Vec<_>, lexical::WorkbenchLexicalError>>()?;
+                let next_cursor = if end < candidates.len() && end > start {
+                    let candidate = &candidates[end - 1];
+                    Some(lexical::encode_cursor(
+                        request,
+                        &resolved_sources,
+                        "full",
+                        binding_sha256,
+                        lexical::WorkbenchLexicalPosition::Form {
+                            source: candidate.source.clone(),
+                            entry_spelling: candidate.entry_spelling.clone(),
+                            spelling: candidate.form.spelling.clone(),
+                            kind: candidate.form.kind,
+                            form_id: candidate.form.id.clone(),
+                        },
+                    )?)
+                } else {
+                    None
+                };
+                Ok(lexical::WorkbenchLexicalFullResult::Form(Box::new(
+                    lexical::WorkbenchFormFull {
+                        policy: "stored-form-kind-v1".into(),
+                        state_sha256: self.state_sha256.clone(),
+                        query: request.query.clone(),
+                        resolved_sources,
+                        totals,
+                        source_totals,
+                        availability: self.availability.clone(),
+                        groups,
+                        next_cursor,
+                        code_notices: self.dictionary.metadata.code_notices.clone(),
+                    },
+                )))
+            }
+        }
+    }
+
+    fn lexical_form_evidence(
+        &self,
+        evidence: &lexicon::SourceEvidence,
+        expected_source: &SourceId,
+    ) -> Result<
+        crate::workbench::lexical::WorkbenchFormEvidence,
+        crate::workbench::lexical::WorkbenchLexicalError,
+    > {
+        use crate::workbench::lexical::{WorkbenchFormEvidence, WorkbenchLexicalError};
+        let capture = self.capture(&evidence.occurrence.capture);
+        let snapshot_attribution = self
+            .snapshots_by_key
+            .get(&snapshot_key_for_ref(&evidence.occurrence.capture))
+            .cloned();
+        let occurrence_attribution = self
+            .occurrences_by_key
+            .get(&tuple_hex(&evidence.occurrence))
+            .cloned();
+        if snapshot_attribution
+            .as_ref()
+            .is_some_and(|row| row.source != *expected_source)
+            || occurrence_attribution
+                .as_ref()
+                .is_some_and(|row| record_key(&row.occurrence) != tuple_hex(&evidence.occurrence))
+        {
+            return Err(WorkbenchLexicalError::Integrity {
+                detail:
+                    "Form evidence registry attribution does not match its source or occurrence"
+                        .into(),
+            });
+        }
+        let contributor = occurrence_attribution
+            .as_ref()
+            .and_then(|row| row.contributor.as_ref())
+            .map(|id| {
+                self.contributors_by_id
+                    .get(&id.to_string())
+                    .cloned()
+                    .ok_or_else(|| WorkbenchLexicalError::Integrity {
+                        detail: format!("Form evidence names missing Contributor {id}"),
+                    })
+            })
+            .transpose()?;
+        let distributor = snapshot_attribution
+            .as_ref()
+            .and_then(|row| row.distributor.as_ref())
+            .map(|id| {
+                self.distributors_by_id
+                    .get(&id.to_string())
+                    .cloned()
+                    .ok_or_else(|| WorkbenchLexicalError::Integrity {
+                        detail: format!("Form evidence names missing Distributor {id}"),
+                    })
+            })
+            .transpose()?;
+        let known_unavailable_owner = self.dictionary.metadata.releases.iter().any(|release| {
+            release.availability != Availability::Available
+                && release.captures.contains(&evidence.occurrence.capture)
+                && self.dictionary.metadata.components.iter().any(|component| {
+                    component.id == release.component
+                        && self
+                            .dictionary
+                            .metadata
+                            .collections
+                            .iter()
+                            .any(|collection| {
+                                collection.id == component.collection
+                                    && collection.source == *expected_source
+                            })
+                })
+        });
+        let (status, reason, capture_metadata, raw) = if let Some(capture) = capture {
+            let raw = self
+                .occurrence(&evidence.occurrence)
+                .cloned()
+                .ok_or_else(|| WorkbenchLexicalError::Integrity {
+                    detail: format!(
+                        "loaded Form evidence locator {} is missing",
+                        evidence.occurrence.locator
+                    ),
+                })?;
+            if snapshot_attribution.is_none() {
+                return Err(WorkbenchLexicalError::Integrity {
+                    detail: "loaded Form evidence has no snapshot attribution".into(),
+                });
+            }
+            ("Loaded", None, Some(capture.metadata.clone()), Some(raw))
+        } else {
+            if !known_unavailable_owner {
+                return Err(WorkbenchLexicalError::Integrity {
+                    detail: "catalogue-only Form evidence has no owning retained release".into(),
+                });
+            }
+            ("CatalogueOnly", Some("missing_capture".into()), None, None)
+        };
+        Ok(WorkbenchFormEvidence {
+            evidence: evidence.clone(),
+            status: status.into(),
+            reason,
+            capture: capture_metadata,
+            raw,
+            snapshot_attribution,
+            occurrence_attribution,
+            contributor,
+            distributor,
+        })
+    }
+
     fn make_hit(
         &self,
         assertion: &lexicon::AssertionRecord,
