@@ -1,6 +1,6 @@
 # S04 ledger — typed literal definitions and stored forms
 
-**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final readiness/mechanical freeze PASS atfce441525a0b8e125c4a47aea04cfe0fae97fb2a. Retained Luna/high CC may read complete required material and append actual source-cited intake/readback ONLY to this slice artifacts/execution.md. ALL old assignments superseded; source/index/ONEtarget ROOT QUIET atf476. No source/runtime/build/index/target authority until CDC verifies understanding+62freshpins and explicitly transfers EXACT13paths. All8S04/8arc/14project OPEN; THROUGH ALL Arc06 active. This status-only line supersedes prior DRAFT/current-readiness language at its fce cutoff without changing any protocol/data/source contract.
+**STATUS: INTAKE ACCEPTED / INITIAL1 OF FIVE, 2026-11-01.** CDC whole-read the issued S04 readback and dated clarifications; all62 fresh pins and source/protected refs PASS. This checkpoint records transfer readiness for retained Luna/high CC; the explicit following dispatch transfers EXACT13 source paths/index/ONEtarget for the unchanged issued assignment. ROOT/CDC then remain source/index/target READONLY. All8 S04/8 arc/14 project rows OPEN; THROUGH ALL Arc06 active. Issued prompt5d834 remains unchanged; earlier intake-only metadata retains its issue cutoff.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
