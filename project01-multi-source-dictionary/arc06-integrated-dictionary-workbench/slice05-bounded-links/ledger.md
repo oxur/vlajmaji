@@ -1,6 +1,6 @@
 # S05 ledger — bounded Links
 
-**DESIGN DRAFT0.4 / UNISSUED / all8 OPEN,2026-11-01.** Accepted S04 source04fead62/closec802c789 is the design baseline; source/index/ONEtarget ROOT QUIET, CC parked. Exact additive Links contracts and prospective17-path allowance are in plan0.4; final fixture/literals/readset/prompt/readiness remain pending. No implementation assignment/runtime/source transfer. Original8 raw ledger rows unchanged; original A06-03 still requires S04+S05 and all8arc/14project remainOPEN.
+**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final readiness PASS atcbd13368. Retained Luna/high CC reads completepacket/source/data and writes only artifacts/execution.md actualreadback; SOURCE/index/ONEtargetROOTQUIET until CDC acceptedintake/freshpins/explicitEXACT17transfer. Prior DRAFT/unissued/readiness clauses retain their as-of cutoff; every raw ledger cell unchanged/all8OPEN, all8Arc/14ProjectOPEN, THROUGH ALL Arc06 active.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
