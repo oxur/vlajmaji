@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/method-continuation02.py", line 265, in <module>
+    readable_check(named,named_outer,True)
+  File "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice03-integrated-reference-admission/artifacts/independent-proof/method-continuation02.py", line 220, in readable_check
+    assert json.loads(line[len(prefix):])==(compact[key] if key else compact['result'][label[len('reference_'):]])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
