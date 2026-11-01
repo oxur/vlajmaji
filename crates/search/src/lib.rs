@@ -38,6 +38,8 @@ pub mod collection_query;
 pub mod dictionary;
 /// Pure text renderers for compact dictionary projections.
 pub mod presentation;
+/// Reusable queries over explicitly built, freshness-bound mixed dictionaries.
+pub mod workbench;
 
 pub use collection_query::{
     CollectionCompactQueryResponse, CollectionCompactQueryResult,
@@ -63,6 +65,11 @@ pub use dictionary::{
 pub use presentation::{
     render_collection_compact, render_collection_detail, render_dictionary_compact,
     render_dictionary_detail,
+};
+pub use workbench::{
+    WorkbenchCompactResponse, WorkbenchContextCounts, WorkbenchCurationCounts,
+    WorkbenchDetailResponse, WorkbenchFullResponse, WorkbenchFullResult, WorkbenchOwnedSummary,
+    WorkbenchQueryError, WorkbenchQuerySelection, WorkbenchSearchEngine, WorkbenchUpstreamSummary,
 };
 
 /// Query policy identities included in every response.

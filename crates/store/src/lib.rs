@@ -21,6 +21,7 @@ mod dictionary_snapshot;
 mod dictionary_verification;
 mod owned;
 mod owned_schema;
+mod workbench;
 pub use collection_profiles::{
     CollectionPolicySelection, CollectionProfile, CollectionProfileEnablementRequest,
     CollectionProfileError, CollectionProfileIdentity, CollectionProfileMembershipWriteRequest,
@@ -54,8 +55,14 @@ pub use dictionary_verification::{
 pub use owned::{
     OwnedCommitSummary, OwnedCurationMigrationReport, OwnedHeadReport, OwnedHistoryReport,
     OwnedImportOutcome, OwnedImportReport, OwnedJournal, OwnedJournalError,
-    OwnedJournalErrorCategory, OwnedJournalReader, OwnedMigrationOutcome, OwnedRevisionView,
-    OwnedWriteOperation, OwnedWriteReport,
+    OwnedJournalErrorCategory, OwnedJournalReader, OwnedMigrationOutcome, OwnedRevisionIdentity,
+    OwnedRevisionView, OwnedWriteOperation, OwnedWriteReport,
+};
+pub use workbench::{
+    WorkbenchBinding, WorkbenchBuildReport, WorkbenchBuildRequest, WorkbenchCatalogueBinding,
+    WorkbenchCatalogueMember, WorkbenchContextBinding, WorkbenchContextObservation,
+    WorkbenchDependency, WorkbenchError, WorkbenchOwnedBinding, WorkbenchOwnedRevision,
+    WorkbenchSelection, WorkbenchView,
 };
 
 #[cfg(feature = "graph")]

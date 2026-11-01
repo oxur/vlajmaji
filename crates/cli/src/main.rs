@@ -27,12 +27,14 @@ use vlajmaji_search::{
     render_collection_detail, render_dictionary_compact, render_dictionary_detail,
     validate_detail_snapshot_sha256,
 };
+use vlajmaji_search::{WorkbenchQueryError, WorkbenchSearchEngine};
 use vlajmaji_store::{
     CollectionCatalogue, CollectionError, CollectionInput, CollectionPolicySelection,
     CollectionProfileEnablementRequest, CollectionProfileMembershipWriteRequest,
     CollectionProfiles, CollectionRequest, CollectionSelection, DictionaryStoreVerification,
     DictionaryStoreVerificationCheck, DictionaryStoreVerificationReport, OwnedJournal,
-    OwnedJournalError, OwnedJournalReader,
+    OwnedJournalError, OwnedJournalReader, WorkbenchBuildRequest, WorkbenchSelection,
+    WorkbenchView,
 };
 
 #[derive(Debug, Parser)]
@@ -191,6 +193,60 @@ enum Command {
         #[command(subcommand)]
         command: OwnedCommand,
     },
+    /// Explicitly build, inspect, and query an immutable mixed-source workbench.
+    Workbench {
+        #[command(subcommand)]
+        command: WorkbenchCommand,
+    },
+}
+
+#[derive(Debug, Subcommand)]
+enum WorkbenchCommand {
+    /// Build a new workbench from a strict selection and explicit source roots.
+    Build {
+        root: PathBuf,
+        #[arg(long)]
+        selection: PathBuf,
+        #[arg(long)]
+        catalogue: Option<PathBuf>,
+        #[arg(long)]
+        owned: Option<PathBuf>,
+    },
+    /// Inspect the complete checked binding without opening query engines.
+    Info { root: PathBuf },
+    /// Query one explicit request in a selected output format.
+    Query {
+        root: PathBuf,
+        #[arg(long)]
+        request: PathBuf,
+        #[arg(long, value_enum, default_value_t = WorkbenchQueryFormat::Full)]
+        format: WorkbenchQueryFormat,
+    },
+    /// Resolve a complete hit detail with a mandatory outer workbench key.
+    Detail {
+        root: PathBuf,
+        #[arg(long)]
+        reference: PathBuf,
+        #[arg(long)]
+        expected_binding: String,
+        #[arg(long, value_enum, default_value_t = WorkbenchDetailFormat::Full)]
+        format: WorkbenchDetailFormat,
+    },
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum, Default)]
+enum WorkbenchQueryFormat {
+    #[default]
+    Full,
+    Compact,
+    Readable,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, ValueEnum, Default)]
+enum WorkbenchDetailFormat {
+    #[default]
+    Full,
+    Readable,
 }
 
 #[derive(Debug, Subcommand)]
@@ -575,6 +631,64 @@ fn structured_error(code: &str, message: impl Into<String>) -> CliError {
     })
 }
 
+fn workbench_error(error: vlajmaji_store::WorkbenchError) -> CliError {
+    use vlajmaji_store::WorkbenchError as Error;
+    let code = match &error {
+        Error::InvalidSelection { .. } => "invalid_workbench_selection",
+        Error::UnsupportedVersion { .. } | Error::UnsupportedNativeEncoding { .. } => {
+            "unsupported_workbench_version"
+        }
+        Error::ExistingDestination(_) => "existing_workbench",
+        Error::InvalidBinding { .. } => "invalid_workbench",
+        Error::StaleDependencies { .. } => "stale_workbench",
+        Error::Io { .. } => "workbench_io",
+        Error::Curation(_) => "workbench_context",
+        Error::Collection(_) | Error::Owned(_) | Error::Pack(_) | Error::Store(_) => {
+            "workbench_dependency"
+        }
+        Error::Serialization(_) => "workbench_response",
+        _ => "workbench_dependency",
+    };
+    structured_error(code, error.to_string())
+}
+
+fn workbench_query_error(error: WorkbenchQueryError) -> CliError {
+    match error {
+        WorkbenchQueryError::View(error) => workbench_error(*error),
+        WorkbenchQueryError::Query(error) => CliError::Structured(error.report()),
+        WorkbenchQueryError::Projection(error) => CliError::Structured(error.report()),
+        WorkbenchQueryError::MalformedBinding { value } => structured_error(
+            "invalid_workbench_binding",
+            format!("malformed binding {value:?}"),
+        ),
+        WorkbenchQueryError::StaleBinding { expected, observed } => structured_error(
+            "stale_workbench_binding",
+            format!("expected {expected}, observed {observed}"),
+        ),
+        other => structured_error("workbench_response", other.to_string()),
+    }
+}
+
+fn workbench_query_context(root: &Path, operation: &str) -> ManagedOutputContext {
+    ManagedOutputContext {
+        operation: operation.into(),
+        config_path: None,
+        root_path: Some(vlajmaji_store::native_path_report(root)),
+        profile: None,
+        requested_profile: None,
+        snapshot: None,
+        known_pack_ids: Vec::new(),
+        outcome: "not_applicable".into(),
+        collection_failure: None,
+    }
+}
+
+fn read_workbench_file(path: &Path) -> Result<Vec<u8>, CliError> {
+    std::fs::read(path).map_err(|error| {
+        structured_error("workbench_io", format!("read {}: {error}", path.display()))
+    })
+}
+
 fn owned_error(error: OwnedJournalError) -> CliError {
     let category = serde_json::to_value(error.category())
         .ok()
@@ -698,6 +812,7 @@ impl ManagedOutputContext {
             self.operation.as_str(),
             "dictionary_detail" | "dictionary_query"
         ) || self.operation.starts_with("owned_")
+            || self.operation.starts_with("workbench_")
         {
             return serde_json::json!(DictionaryErrorReport {
                 code: "response_output_io".into(),
@@ -814,6 +929,23 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
                 Vec::new(),
                 "not_applicable",
             ))
+        }
+        Command::Workbench { command } => {
+            let (operation, root, outcome) = match command {
+                WorkbenchCommand::Build { root, .. } => {
+                    ("workbench_build", Some(root.as_path()), "built")
+                }
+                WorkbenchCommand::Info { root } => {
+                    ("workbench_info", Some(root.as_path()), "not_applicable")
+                }
+                WorkbenchCommand::Query { root, .. } => {
+                    ("workbench_query", Some(root.as_path()), "not_applicable")
+                }
+                WorkbenchCommand::Detail { root, .. } => {
+                    ("workbench_detail", Some(root.as_path()), "not_applicable")
+                }
+            };
+            Some(context(operation, None, root, None, Vec::new(), outcome))
         }
         Command::Collections { command } => match command {
             CollectionsCommand::Configure {
@@ -1457,6 +1589,128 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                     "output_sha256": sha256(&bytes),
                     "resolutions": materialized.resolutions,
                 })
+            }
+        },
+        Command::Workbench { command } => match command {
+            WorkbenchCommand::Build {
+                root,
+                selection,
+                catalogue,
+                owned,
+            } => {
+                let bytes = read_workbench_file(&selection)?;
+                let selection =
+                    WorkbenchSelection::from_json_bytes(&bytes).map_err(workbench_error)?;
+                let report = WorkbenchView::build_new(
+                    &root,
+                    WorkbenchBuildRequest {
+                        catalogue_root: catalogue,
+                        owned_root: owned,
+                        selection,
+                    },
+                )
+                .map_err(workbench_error)?;
+                output_context = Some(ManagedOutputContext {
+                    operation: "workbench_build".into(),
+                    config_path: None,
+                    root_path: Some(report.root.clone()),
+                    profile: None,
+                    requested_profile: None,
+                    snapshot: None,
+                    known_pack_ids: Vec::new(),
+                    outcome: "built".into(),
+                    collection_failure: None,
+                });
+                serde_json::to_value(report)
+                    .map_err(|error| structured_error("workbench_response", error.to_string()))?
+            }
+            WorkbenchCommand::Info { root } => {
+                let view = WorkbenchView::open(&root).map_err(workbench_error)?;
+                serde_json::json!({
+                    "version": 1,
+                    "root": vlajmaji_store::native_path_report(view.root()),
+                    "binding": view.binding(),
+                })
+            }
+            WorkbenchCommand::Query {
+                root,
+                request,
+                format,
+            } => {
+                let bytes = read_workbench_file(&request)?;
+                let request: DictionaryRequest = serde_json::from_slice(&bytes)
+                    .map_err(|error| structured_error("request_json", error.to_string()))?;
+                let mut engine =
+                    WorkbenchSearchEngine::open(&root).map_err(workbench_query_error)?;
+                match format {
+                    WorkbenchQueryFormat::Full => {
+                        let response = engine.execute(request).map_err(workbench_query_error)?;
+                        serde_json::to_value(response).map_err(|error| {
+                            structured_error("workbench_response", error.to_string())
+                        })?
+                    }
+                    WorkbenchQueryFormat::Compact => {
+                        let response = engine
+                            .execute_compact(request)
+                            .map_err(workbench_query_error)?;
+                        serde_json::to_value(response).map_err(|error| {
+                            structured_error("workbench_response", error.to_string())
+                        })?
+                    }
+                    WorkbenchQueryFormat::Readable => {
+                        let response = engine
+                            .execute_compact(request)
+                            .map_err(workbench_query_error)?;
+                        output_context = Some(workbench_query_context(&root, "workbench_query"));
+                        let text = format!(
+                            "workbench_binding: {}\nworkbench_selection: {}\n{}",
+                            serde_json::to_string(engine.binding().binding_sha256()).map_err(
+                                |error| structured_error("workbench_response", error.to_string())
+                            )?,
+                            serde_json::to_string(&response.selection).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?,
+                            render_dictionary_compact(&response.result),
+                        );
+                        return Ok((QueryOutput::Readable(text), output_context));
+                    }
+                }
+            }
+            WorkbenchCommand::Detail {
+                root,
+                reference,
+                expected_binding,
+                format,
+            } => {
+                let bytes = read_workbench_file(&reference)?;
+                let reference = DictionaryHitDetailRef::from_json_bytes(&bytes)
+                    .map_err(|error| CliError::Structured(error.report()))?;
+                let mut engine =
+                    WorkbenchSearchEngine::open(&root).map_err(workbench_query_error)?;
+                let response = engine
+                    .detail(&reference, &expected_binding)
+                    .map_err(workbench_query_error)?;
+                match format {
+                    WorkbenchDetailFormat::Full => {
+                        serde_json::to_value(response).map_err(|error| {
+                            structured_error("workbench_response", error.to_string())
+                        })?
+                    }
+                    WorkbenchDetailFormat::Readable => {
+                        output_context = Some(workbench_query_context(&root, "workbench_detail"));
+                        let text = format!(
+                            "workbench_binding: {}\nworkbench_selection: {}\n{}",
+                            serde_json::to_string(&response.binding_sha256).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?,
+                            serde_json::to_string(&response.selection).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?,
+                            render_dictionary_detail(&response.result),
+                        );
+                        return Ok((QueryOutput::Readable(text), output_context));
+                    }
+                }
             }
         },
         Command::Verify { check, store } => {

@@ -32,6 +32,37 @@ pub struct OwnedCommitSummary {
     pub state_sha256: String,
 }
 
+/// The compact persisted identity of one owned revision.
+///
+/// This value intentionally omits active and tombstone rosters. Those are
+/// checked while reading the typed revision summary, but are not copied into
+/// identity bindings.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct OwnedRevisionIdentity {
+    /// Persisted owned-journal schema version.
+    pub journal_schema: u32,
+    /// The source that owns this revision.
+    pub source: SourceId,
+    /// The selected revision identifier.
+    pub revision: EntityId,
+    /// Zero-based append sequence.
+    pub sequence: u64,
+    /// SHA-256 of the complete canonical dictionary state.
+    pub state_sha256: String,
+    /// SHA-256 of the selected curation prefix; absent only for schema one.
+    #[serde(deserialize_with = "deserialize_required_option")]
+    pub curation_state_sha256: Option<String>,
+}
+
+fn deserialize_required_option<'de, D, T>(deserializer: D) -> Result<Option<T>, D::Error>
+where
+    D: serde::Deserializer<'de>,
+    T: DeserializeOwned,
+{
+    Option::<T>::deserialize(deserializer)
+}
+
 /// Current owned source and its persisted head.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -1019,6 +1050,40 @@ impl OwnedJournalReader {
         })
     }
 
+    /// Reads the compact checked identity of the current head.
+    ///
+    /// This validates the local revision summary, including its typed roster,
+    /// but does not reconstruct the dictionary or walk historical revisions.
+    ///
+    /// # Errors
+    ///
+    /// Returns an integrity or backend error when the journal header, summary,
+    /// or schema-two curation prefix is malformed.
+    pub fn head_identity(&self) -> Result<OwnedRevisionIdentity, OwnedJournalError> {
+        let schema = journal_schema(&self.connection)?;
+        let (_, summary) = read_current_summary(&self.connection)?;
+        revision_identity_for(&self.connection, schema, summary)
+    }
+
+    /// Reads the compact checked identity of one historical revision.
+    ///
+    /// The selected row's typed revision summary is validated, but the
+    /// dictionary body and unrelated history are not reconstructed.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`OwnedJournalError::NotFound`] for an unknown revision and an
+    /// integrity or backend error for a malformed summary or curation prefix.
+    pub fn revision_identity(
+        &self,
+        revision: &EntityId,
+    ) -> Result<OwnedRevisionIdentity, OwnedJournalError> {
+        check_header(&self.connection)?;
+        let schema = journal_schema(&self.connection)?;
+        let summary = summary_for(&self.connection, revision)?;
+        revision_identity_for(&self.connection, schema, summary)
+    }
+
     /// Reads the contiguous typed commit chain without reconstructing every model body.
     ///
     /// # Errors
@@ -1627,6 +1692,58 @@ fn read_current_summary(
         ));
     }
     Ok((source, summary))
+}
+
+fn revision_identity_for(
+    connection: &Connection,
+    schema: i32,
+    summary: OwnedCommitSummary,
+) -> Result<OwnedRevisionIdentity, OwnedJournalError> {
+    let curation_state_sha256 = match schema {
+        1 => None,
+        2 => Some(read_curation_prefix_identity(
+            connection,
+            &summary.revision.id,
+        )?),
+        other => {
+            return Err(OwnedJournalError::UnsupportedVersion {
+                found: other as u32,
+            });
+        }
+    };
+    Ok(OwnedRevisionIdentity {
+        journal_schema: schema as u32,
+        source: summary.revision.source,
+        revision: summary.revision.id,
+        sequence: summary.sequence,
+        state_sha256: summary.state_sha256,
+        curation_state_sha256,
+    })
+}
+
+fn read_curation_prefix_identity(
+    connection: &Connection,
+    revision: &EntityId,
+) -> Result<String, OwnedJournalError> {
+    let prefix: (i64, i64, String) = connection
+        .query_row(
+            "SELECT contexts_length,records_length,curation_sha256 FROM owned_curation_prefixes WHERE revision_id=?1",
+            [revision.to_string()],
+            |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)),
+        )
+        .map_err(|error| match error {
+            rusqlite::Error::QueryReturnedNoRows => {
+                OwnedJournalError::Integrity("missing curation prefix".into())
+            }
+            other => other.into(),
+        })?;
+    let (contexts_length, records_length, curation_sha256) = prefix;
+    if contexts_length < 0 || records_length < 0 || !is_sha256(&curation_sha256) {
+        return Err(OwnedJournalError::Integrity(
+            "malformed curation prefix".into(),
+        ));
+    }
+    Ok(curation_sha256)
 }
 
 fn read_history_summaries(
@@ -2751,5 +2868,148 @@ mod import_snapshot_tests {
         import_rows_and_finish(&connection, &snapshot, guard).unwrap();
         check_header(&connection).unwrap();
         assert_eq!(snapshot_from_connection(&connection).unwrap(), snapshot);
+    }
+
+    #[test]
+    fn test_revision_identity_checks_local_summary_and_schema_two_prefix() {
+        let snapshot = abort_snapshot();
+        let root = std::env::temp_dir().join(format!(
+            "vlajmaji-owned-identity-{}-{}",
+            std::process::id(),
+            NEXT_ROOT.fetch_add(1, Ordering::Relaxed)
+        ));
+        let (journal, imported) = OwnedJournal::import_snapshot(&root, &snapshot).unwrap();
+        drop(journal);
+
+        let reader = OwnedJournalReader::open(&root).unwrap();
+        let head = reader.head_identity().unwrap();
+        assert_eq!(head.journal_schema, 1);
+        assert_eq!(head.source, snapshot.as_data().source);
+        assert_eq!(head.revision, imported.head);
+        assert_eq!(head.sequence, 1);
+        assert_eq!(
+            head.state_sha256,
+            snapshot.as_data().commits[1].state_sha256
+        );
+        assert_eq!(head.curation_state_sha256, None);
+
+        let genesis_id = &snapshot.as_data().commits[0].revision;
+        let genesis = reader.revision_identity(genesis_id).unwrap();
+        assert_eq!(genesis.journal_schema, 1);
+        assert_eq!(genesis.revision, *genesis_id);
+        assert_eq!(genesis.sequence, 0);
+        assert_eq!(
+            genesis.state_sha256,
+            snapshot.as_data().commits[0].state_sha256
+        );
+        assert_eq!(genesis.curation_state_sha256, None);
+        let missing = EntityId::new("absent-owned-identity").unwrap();
+        assert!(matches!(
+            reader.revision_identity(&missing),
+            Err(OwnedJournalError::NotFound(id)) if id == missing
+        ));
+        drop(reader);
+
+        let mut writer = OwnedJournal::open(&root).unwrap();
+        writer.migrate_curation(&imported.head).unwrap();
+        drop(writer);
+        let reader = OwnedJournalReader::open(&root).unwrap();
+        let migrated = reader.head_identity().unwrap();
+        assert_eq!(migrated.journal_schema, 2);
+        assert_eq!(migrated.revision, imported.head);
+        assert_eq!(migrated.sequence, 1);
+        assert!(migrated.curation_state_sha256.is_some());
+        assert_eq!(reader.revision_identity(&imported.head).unwrap(), migrated);
+        drop(reader);
+
+        let connection = Connection::open(root.join(owned_schema::FILE)).unwrap();
+        let saved_prefix: (i64, i64, String) = connection
+            .query_row(
+                "SELECT contexts_length,records_length,curation_sha256 FROM owned_curation_prefixes WHERE revision_id=?1",
+                [imported.head.to_string()],
+                |row| Ok((row.get(0)?, row.get(1)?, row.get(2)?)),
+            )
+            .unwrap();
+        connection
+            .execute(
+                "DELETE FROM owned_curation_prefixes WHERE revision_id=?1",
+                [imported.head.to_string()],
+            )
+            .unwrap();
+        let reader = OwnedJournalReader::open(&root).unwrap();
+        assert!(matches!(
+            reader.head_identity(),
+            Err(OwnedJournalError::Integrity(message)) if message == "missing curation prefix"
+        ));
+        drop(reader);
+        connection
+            .execute(
+                "INSERT INTO owned_curation_prefixes(revision_id,contexts_length,records_length,curation_sha256) VALUES(?1,?2,?3,?4)",
+                params![imported.head.to_string(), saved_prefix.0, saved_prefix.1, saved_prefix.2],
+            )
+            .unwrap();
+
+        connection
+            .execute(
+                "UPDATE owned_curation_prefixes SET curation_sha256='not-a-sha256' WHERE revision_id=?1",
+                [imported.head.to_string()],
+            )
+            .unwrap();
+        let reader = OwnedJournalReader::open(&root).unwrap();
+        assert!(matches!(
+            reader.head_identity(),
+            Err(OwnedJournalError::Integrity(message)) if message == "malformed curation prefix"
+        ));
+        drop(reader);
+        connection
+            .execute(
+                "UPDATE owned_curation_prefixes SET curation_sha256=?1 WHERE revision_id=?2",
+                params![saved_prefix.2, imported.head.to_string()],
+            )
+            .unwrap();
+
+        connection
+            .execute(
+                "UPDATE owned_commits SET state_sha256='not-a-sha256' WHERE revision_id=?1",
+                [imported.head.to_string()],
+            )
+            .unwrap();
+        let reader = OwnedJournalReader::open(&root).unwrap();
+        assert!(matches!(
+            reader.head_identity(),
+            Err(OwnedJournalError::Integrity(message)) if message == "commit sequence/hash is malformed"
+        ));
+        drop(reader);
+        connection
+            .execute(
+                "UPDATE owned_commits SET state_sha256=?1 WHERE revision_id=?2",
+                params![
+                    snapshot.as_data().commits[1].state_sha256,
+                    imported.head.to_string()
+                ],
+            )
+            .unwrap();
+
+        connection
+            .execute(
+                "UPDATE owned_meta SET schema_version=1 WHERE singleton=1",
+                [],
+            )
+            .unwrap();
+        assert!(matches!(
+            OwnedJournalReader::open(&root),
+            Err(OwnedJournalError::UnsupportedVersion { found: 2 })
+        ));
+        connection
+            .execute(
+                "UPDATE owned_meta SET schema_version=2 WHERE singleton=1",
+                [],
+            )
+            .unwrap();
+        let reader = OwnedJournalReader::open(&root).unwrap();
+        assert_eq!(reader.head_identity().unwrap(), migrated);
+        drop(reader);
+        drop(connection);
+        fs::remove_dir_all(root).unwrap();
     }
 }

@@ -88,3 +88,14 @@ vlajmaji-search = "0.2.0"
 Requires Rust 1.98 or newer. Computed proposals and scores do not establish attested usage, semantic equivalence, or poetic merit. Corpora are not bundled.
 
 See the [API documentation](https://docs.rs/vlajmaji-search). Licensed under Apache-2.0.
+
+## Bound mixed workbench queries
+
+`WorkbenchSearchEngine` lazily opens the existing Full and Compact query routes
+against one immutable `WorkbenchView`. Each operation checks catalogue and
+owned-revision freshness before and after the query; a stale result is
+suppressed. Detail additionally requires the outer workbench binding digest,
+which is distinct from the existing compact-query snapshot digest.
+
+See [`docs/integrated-workbench.md`](../../docs/integrated-workbench.md) for
+CLI and library examples and the retained context semantics.
