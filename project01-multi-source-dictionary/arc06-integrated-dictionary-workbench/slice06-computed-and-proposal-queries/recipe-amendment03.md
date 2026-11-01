@@ -1,4 +1,4 @@
-# S06 recipe-amendment03 — DRAFT, 2026-11-01
+# S06 recipe-amendment03 — ISSUED FOR BOUNDED READBACK, 2026-11-01
 
 Pre-execution WIRE amendment WITHIN active [cc-prompt-iteration01.md](cc-prompt-iteration01.md), CORRECTION02/5; not implementation pass03 or a reset. ROOT/CDC shared a frozen-wire/co-review mistake: actual `AliasScope` at lexicon/registry.rs140–148 derives serde without rename, so JSON is `ActiveOnly` (or IncludeRetired), while the new literals incorrectly used active_only. WorkbenchLexicalOptions stores AliasScope directly; typed query binding does too. No model/serde alias/compatibility adapter or production wire change is authorized. MorphologySetting DOES explicitly rename snake_case and stays unchanged.
 
