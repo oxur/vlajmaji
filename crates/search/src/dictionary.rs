@@ -582,6 +582,74 @@ impl fmt::Debug for DictionarySearchEngine {
 }
 
 impl DictionarySearchEngine {
+    /// Borrow the retained typed inputs needed by the Links projection.
+    pub(crate) fn lexical_link_rows(&self) -> DictionaryLexicalLinkRows<'_> {
+        (
+            &self.dictionary.metadata,
+            &self.dictionary.registry,
+            &self.availability,
+            &self.dictionary.captures,
+            &self.selected_assertions,
+            &self.state_sha256,
+        )
+    }
+
+    /// Hydrate actual retained evidence for a Links record through the existing Full path.
+    pub(crate) fn lexical_link_evidence(
+        &self,
+        evidence: &lexicon::SourceEvidence,
+        expected_source: &SourceId,
+    ) -> Result<
+        crate::workbench::lexical::WorkbenchFormEvidence,
+        crate::workbench::lexical::WorkbenchLexicalError,
+    > {
+        self.lexical_form_evidence(evidence, expected_source)
+    }
+
+    /// Project one already-selected assertion through the existing Full hit path.
+    pub(crate) fn lexical_link_context(
+        &self,
+        context_id: &EntityId,
+    ) -> Result<lexicon::ContextRecord, crate::workbench::lexical::WorkbenchLexicalError> {
+        self.dictionary
+            .metadata
+            .contexts
+            .iter()
+            .find(|row| &row.id == context_id)
+            .cloned()
+            .ok_or_else(
+                || crate::workbench::lexical::WorkbenchLexicalError::Integrity {
+                    detail: format!("Links context {context_id} disappeared"),
+                },
+            )
+    }
+
+    pub(crate) fn lexical_link_revision(
+        &self,
+        revision_id: &EntityId,
+    ) -> Result<lexicon::OwnedRevisionRecord, crate::workbench::lexical::WorkbenchLexicalError>
+    {
+        self.dictionary
+            .metadata
+            .owned_revisions
+            .iter()
+            .find(|row| &row.id == revision_id)
+            .cloned()
+            .ok_or_else(
+                || crate::workbench::lexical::WorkbenchLexicalError::Integrity {
+                    detail: format!("Links revision {revision_id} disappeared"),
+                },
+            )
+    }
+
+    pub(crate) fn lexical_link_hit(
+        &self,
+        assertion: &lexicon::AssertionRecord,
+    ) -> Result<DictionaryHit, crate::workbench::lexical::WorkbenchLexicalError> {
+        self.make_hit(assertion)
+            .map_err(crate::workbench::lexical::WorkbenchLexicalError::from)
+    }
+
     pub(crate) fn owned_release_summary(
         &self,
         release_id: &EntityId,
@@ -1735,6 +1803,11 @@ impl DictionarySearchEngine {
                     },
                 )))
             }
+            lexical::WorkbenchLexicalQuery::Links { .. } => {
+                Err(lexical::WorkbenchLexicalError::InvalidRequest {
+                    detail: "Links must be handled by the mixed-workbench route".into(),
+                })
+            }
         }
     }
 
@@ -2377,6 +2450,15 @@ impl DictionarySearchEngine {
         views
     }
 }
+
+type DictionaryLexicalLinkRows<'a> = (
+    &'a lexicon::DictionaryMetadata,
+    &'a lexicon::RegistryDocument,
+    &'a [DictionarySourceAvailability],
+    &'a [lexicon::RawCapture],
+    &'a BTreeMap<SourceId, BTreeSet<String>>,
+    &'a str,
+);
 
 fn group_by<T>(
     rows: impl Iterator<Item = T>,

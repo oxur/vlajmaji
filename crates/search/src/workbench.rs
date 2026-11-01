@@ -17,6 +17,7 @@ use crate::{
 
 /// Literal reverse-definition and stored-Form workbench queries.
 pub mod lexical;
+pub mod links;
 pub(crate) mod reference;
 pub use lexical::{
     ConfiguredWorkbenchFormDetailResponse, ConfiguredWorkbenchLexicalCompactResponse,
@@ -29,6 +30,14 @@ pub use lexical::{
     WorkbenchLexicalTotals, WorkbenchReverseDefinitionCompact,
     WorkbenchReverseDefinitionCompactGroup, WorkbenchReverseDefinitionFull,
     WorkbenchReverseDefinitionFullGroup,
+};
+pub use links::{
+    ConfiguredWorkbenchLinkDetailResponse, WorkbenchCompactLinkRecord, WorkbenchLinkCandidate,
+    WorkbenchLinkCompactStep, WorkbenchLinkDetailRef, WorkbenchLinkDetailResponse,
+    WorkbenchLinkEvidenceId, WorkbenchLinkFullStep, WorkbenchLinkRecord, WorkbenchLinkStepId,
+    WorkbenchLinkTargetCompact, WorkbenchLinkTargetFull, WorkbenchLinksCompact,
+    WorkbenchLinksCompactGroup, WorkbenchLinksFull, WorkbenchLinksFullGroup,
+    WorkbenchLinksSourceTotal, WorkbenchLinksTotals,
 };
 pub use reference::{
     ConfiguredWorkbenchReferenceCompactResponse, ConfiguredWorkbenchReferenceFullResponse,

@@ -11,6 +11,7 @@ use std::{
 #[cfg(test)]
 use std::cell::Cell;
 
+use crate::workbench::lexical;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use vlajmaji_lexicon as lexicon;
@@ -453,6 +454,196 @@ pub struct DictionaryCompactSearchEngine {
 }
 
 impl DictionaryCompactSearchEngine {
+    #[cfg(test)]
+    pub(crate) fn test_with_unverified_link_document<T>(
+        &mut self,
+        inspect: impl FnOnce(&mut lexicon::UnverifiedDictionaryDocument) -> T,
+    ) -> T {
+        inspect(&mut self.document)
+    }
+
+    /// Borrow the retained typed inputs needed by the Links projection.
+    pub(crate) fn lexical_link_rows(&self) -> CompactLexicalLinkRows<'_> {
+        (
+            &self.document.metadata,
+            &self.document.registry,
+            &self.availability,
+            &self.document.captures,
+            &self.selected,
+            &self.state_sha256,
+            &self.snapshot_sha256,
+        )
+    }
+
+    /// Hydrate actual retained evidence for a Links record through the existing Compact path.
+    pub(crate) fn lexical_link_evidence(
+        &self,
+        evidence: &lexicon::SourceEvidence,
+        expected_source: &SourceId,
+    ) -> Result<lexical::WorkbenchFormEvidence, lexical::WorkbenchLexicalError> {
+        let capture_index = self
+            .document
+            .captures
+            .iter()
+            .position(|capture| capture.identity == evidence.occurrence.capture);
+        let snapshot = self
+            .document
+            .registry
+            .snapshots
+            .iter()
+            .find(|row| CaptureRef::from(&row.snapshot) == evidence.occurrence.capture);
+        if snapshot.is_some_and(|row| row.source != *expected_source) {
+            return Err(lexical::WorkbenchLexicalError::Integrity {
+                detail: "Links evidence snapshot attribution does not match its publisher".into(),
+            });
+        }
+        let occurrence_key = super::tuple_hex(&evidence.occurrence);
+        let occurrence = self
+            .document
+            .registry
+            .occurrences
+            .iter()
+            .find(|row| super::record_key(&row.occurrence) == occurrence_key);
+        let contributor = occurrence
+            .and_then(|row| row.contributor.as_ref())
+            .and_then(|id| {
+                self.document
+                    .registry
+                    .contributors
+                    .iter()
+                    .find(|row| row.id == *id)
+            })
+            .cloned();
+        if occurrence.is_some_and(|row| row.contributor.is_some() && contributor.is_none()) {
+            return Err(lexical::WorkbenchLexicalError::Integrity {
+                detail: "Links evidence names a missing Contributor".into(),
+            });
+        }
+        let distributor = snapshot
+            .and_then(|row| row.distributor.as_ref())
+            .and_then(|id| {
+                self.document
+                    .registry
+                    .distributors
+                    .iter()
+                    .find(|row| row.id == *id)
+            })
+            .cloned();
+        if snapshot.is_some_and(|row| row.distributor.is_some() && distributor.is_none()) {
+            return Err(lexical::WorkbenchLexicalError::Integrity {
+                detail: "Links evidence names a missing Distributor".into(),
+            });
+        }
+        if let Some(index) = capture_index {
+            let capture = &self.document.captures[index];
+            let raw = capture
+                .occurrences
+                .iter()
+                .find(|row| row.locator == evidence.occurrence.locator)
+                .cloned()
+                .ok_or_else(|| lexical::WorkbenchLexicalError::Integrity {
+                    detail: "Links evidence locator is missing from its loaded capture".into(),
+                })?;
+            let snapshot =
+                snapshot
+                    .cloned()
+                    .ok_or_else(|| lexical::WorkbenchLexicalError::Integrity {
+                        detail: "Links loaded evidence has no snapshot attribution".into(),
+                    })?;
+            Ok(lexical::WorkbenchFormEvidence {
+                evidence: evidence.clone(),
+                status: "Loaded".into(),
+                reason: None,
+                capture: Some(capture.metadata.clone()),
+                raw: Some(raw),
+                snapshot_attribution: Some(snapshot),
+                occurrence_attribution: occurrence.cloned(),
+                contributor,
+                distributor,
+            })
+        } else {
+            let known_owner = self.document.metadata.releases.iter().any(|release| {
+                release.availability != lexicon::Availability::Available
+                    && release.captures.contains(&evidence.occurrence.capture)
+                    && self.document.metadata.components.iter().any(|component| {
+                        component.id == release.component
+                            && self.document.metadata.collections.iter().any(|collection| {
+                                collection.id == component.collection
+                                    && collection.source == *expected_source
+                            })
+                    })
+            });
+            if !known_owner {
+                return Err(lexical::WorkbenchLexicalError::Integrity {
+                    detail: "Links catalogue-only evidence has no unavailable release owner".into(),
+                });
+            }
+            Ok(lexical::WorkbenchFormEvidence {
+                evidence: evidence.clone(),
+                status: "CatalogueOnly".into(),
+                reason: Some("missing_capture".into()),
+                capture: None,
+                raw: None,
+                snapshot_attribution: snapshot.cloned(),
+                occurrence_attribution: occurrence.cloned(),
+                contributor,
+                distributor,
+            })
+        }
+    }
+
+    pub(crate) fn lexical_link_context(
+        &self,
+        context_id: &EntityId,
+    ) -> Result<lexicon::ContextRecord, lexical::WorkbenchLexicalError> {
+        self.document
+            .metadata
+            .contexts
+            .iter()
+            .find(|row| &row.id == context_id)
+            .cloned()
+            .ok_or_else(|| lexical::WorkbenchLexicalError::Integrity {
+                detail: format!("Links context {context_id} disappeared"),
+            })
+    }
+
+    pub(crate) fn lexical_link_revision(
+        &self,
+        revision_id: &EntityId,
+    ) -> Result<lexicon::OwnedRevisionRecord, lexical::WorkbenchLexicalError> {
+        self.document
+            .metadata
+            .owned_revisions
+            .iter()
+            .find(|row| &row.id == revision_id)
+            .cloned()
+            .ok_or_else(|| lexical::WorkbenchLexicalError::Integrity {
+                detail: format!("Links revision {revision_id} disappeared"),
+            })
+    }
+
+    /// Project one selected assertion through the existing Compact hit path.
+    pub(crate) fn lexical_link_hit(
+        &self,
+        assertion: &lexicon::AssertionRecord,
+    ) -> Result<DictionaryCompactHit, crate::workbench::lexical::WorkbenchLexicalError> {
+        let entry_index = *self
+            .indices
+            .entries
+            .get(&assertion.entry.to_string())
+            .ok_or_else(
+                || crate::workbench::lexical::WorkbenchLexicalError::Integrity {
+                    detail: format!("assertion {} references a missing Entry", assertion.id),
+                },
+            )?;
+        self.compact_hit(
+            &self.document.metadata.entries[entry_index],
+            assertion,
+            None,
+        )
+        .map_err(crate::workbench::lexical::WorkbenchLexicalError::from)
+    }
+
     pub(crate) fn owned_release_summary(
         &self,
         release_id: &EntityId,
@@ -1013,6 +1204,11 @@ impl DictionaryCompactSearchEngine {
                         snapshot_sha256: self.snapshot_sha256.clone(),
                     },
                 )))
+            }
+            lexical::WorkbenchLexicalQuery::Links { .. } => {
+                Err(lexical::WorkbenchLexicalError::InvalidRequest {
+                    detail: "Links must be handled by the mixed-workbench route".into(),
+                })
             }
         }
     }
@@ -2447,6 +2643,16 @@ impl DictionaryCompactSearchEngine {
         })
     }
 }
+
+type CompactLexicalLinkRows<'a> = (
+    &'a lexicon::DictionaryMetadata,
+    &'a lexicon::RegistryDocument,
+    &'a [DictionaryCompactSourceAvailability],
+    &'a [lexicon::RawCapture],
+    &'a BTreeMap<SourceId, BTreeSet<String>>,
+    &'a str,
+    &'a str,
+);
 
 #[cfg(test)]
 mod tests {

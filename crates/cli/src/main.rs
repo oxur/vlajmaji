@@ -24,12 +24,13 @@ use vlajmaji_search::{
     CollectionSearchEngine, DictionaryCompactQueryResult, DictionaryCompactSearchEngine,
     DictionaryErrorReport, DictionaryExactOptions, DictionaryHitDetailRef, DictionaryRequest,
     DictionarySearchEngine, Query, SearchEngine, SearchOptions, render_collection_compact,
-    render_collection_detail, render_dictionary_compact, render_dictionary_detail,
-    validate_detail_snapshot_sha256,
+    render_collection_detail, render_configured_workbench_link_detail, render_dictionary_compact,
+    render_dictionary_detail, render_workbench_link_detail, validate_detail_snapshot_sha256,
 };
 use vlajmaji_search::{
     ConfiguredWorkbenchQueryError, ConfiguredWorkbenchSearchEngine, WorkbenchFormDetailRef,
-    WorkbenchLexicalError, WorkbenchLexicalRequest, WorkbenchQueryError, WorkbenchSearchEngine,
+    WorkbenchLexicalError, WorkbenchLexicalRequest, WorkbenchLinkDetailRef, WorkbenchQueryError,
+    WorkbenchSearchEngine,
 };
 use vlajmaji_store::{
     CollectionCatalogue, CollectionError, CollectionInput, CollectionPolicySelection,
@@ -244,6 +245,16 @@ enum WorkbenchCommand {
         #[arg(long, value_enum, default_value_t = WorkbenchDetailFormat::Full)]
         format: WorkbenchDetailFormat,
     },
+    /// Resolve one retained relation or parsed source-clause record.
+    LinkDetail {
+        root: PathBuf,
+        #[arg(long)]
+        reference: PathBuf,
+        #[arg(long)]
+        expected_binding: String,
+        #[arg(long, value_enum, default_value_t = WorkbenchDetailFormat::Full)]
+        format: WorkbenchDetailFormat,
+    },
     /// Resolve a complete hit detail with a mandatory outer workbench key.
     Detail {
         root: PathBuf,
@@ -361,6 +372,19 @@ enum WorkbenchProfilesCommand {
     },
     /// Resolve a complete Form using its configured effective binding key.
     FormDetail {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        profile: Option<String>,
+        #[arg(long)]
+        reference: PathBuf,
+        #[arg(long)]
+        expected_binding: String,
+        #[arg(long, value_enum, default_value_t = WorkbenchDetailFormat::Full)]
+        format: WorkbenchDetailFormat,
+    },
+    /// Resolve one retained relation or parsed source-clause record.
+    LinkDetail {
         #[arg(long)]
         config: PathBuf,
         #[arg(long)]
@@ -888,6 +912,12 @@ fn lexical_query_error(error: WorkbenchLexicalError) -> CliError {
         WorkbenchLexicalError::StaleFormDetail => {
             structured_error("stale_form_detail", "stale form detail")
         }
+        WorkbenchLexicalError::MalformedLinkDetail { detail } => {
+            structured_error("malformed_link_detail", detail)
+        }
+        WorkbenchLexicalError::StaleLinkDetail => {
+            structured_error("stale_link_detail", "stale link detail")
+        }
         WorkbenchLexicalError::Integrity { detail } => structured_error("integrity", detail),
         WorkbenchLexicalError::Dictionary(error) => CliError::Structured(error.report()),
         other => structured_error("workbench_lexical", other.to_string()),
@@ -1165,7 +1195,7 @@ impl ManagedOutputContext {
         {
             let message = if matches!(
                 self.operation.as_str(),
-                "workbench_lexical" | "workbench_form_detail"
+                "workbench_lexical" | "workbench_form_detail" | "workbench_link_detail"
             ) {
                 let context = serde_json::json!({
                     "root": &self.root_path,
@@ -1310,6 +1340,11 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
                 }
                 WorkbenchCommand::FormDetail { root, .. } => (
                     "workbench_form_detail",
+                    Some(root.as_path()),
+                    "not_applicable",
+                ),
+                WorkbenchCommand::LinkDetail { root, .. } => (
+                    "workbench_link_detail",
                     Some(root.as_path()),
                     "not_applicable",
                 ),
@@ -1528,6 +1563,15 @@ fn workbench_profiles_command_context(
             config, profile, ..
         } => (
             "workbench_profiles_form_detail",
+            config,
+            profile.as_deref(),
+            None,
+            "not_applicable",
+        ),
+        WorkbenchProfilesCommand::LinkDetail {
+            config, profile, ..
+        } => (
+            "workbench_profiles_link_detail",
             config,
             profile.as_deref(),
             None,
@@ -2269,6 +2313,36 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                     }
                 }
             }
+            WorkbenchCommand::LinkDetail {
+                root,
+                reference,
+                expected_binding,
+                format,
+            } => {
+                let bytes = read_workbench_file(&reference)?;
+                let reference: WorkbenchLinkDetailRef = serde_json::from_slice(&bytes)
+                    .map_err(|error| structured_error("request_json", error.to_string()))?;
+                let mut engine =
+                    WorkbenchSearchEngine::open(&root).map_err(workbench_query_error)?;
+                let response = engine
+                    .link_detail(&reference, &expected_binding)
+                    .map_err(workbench_query_error)?;
+                match format {
+                    WorkbenchDetailFormat::Full => {
+                        serde_json::to_value(response).map_err(|error| {
+                            structured_error("workbench_response", error.to_string())
+                        })?
+                    }
+                    WorkbenchDetailFormat::Readable => {
+                        output_context =
+                            Some(workbench_query_context(&root, "workbench_link_detail"));
+                        return Ok((
+                            QueryOutput::Readable(render_workbench_link_detail(&response)),
+                            output_context,
+                        ));
+                    }
+                }
+            }
             WorkbenchCommand::Detail {
                 root,
                 reference,
@@ -2632,6 +2706,45 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                                 vlajmaji_search::render_workbench_form_detail(&response.form),
                             );
                             return Ok((QueryOutput::Readable(text), output_context));
+                        }
+                    }
+                }
+                WorkbenchProfilesCommand::LinkDetail {
+                    config,
+                    profile,
+                    reference,
+                    expected_binding,
+                    format,
+                } => {
+                    let bytes = read_workbench_file(&reference)?;
+                    let reference: WorkbenchLinkDetailRef = serde_json::from_slice(&bytes)
+                        .map_err(|error| structured_error("request_json", error.to_string()))?;
+                    let mut engine =
+                        ConfiguredWorkbenchSearchEngine::open(&config, profile.as_deref())
+                            .map_err(configured_workbench_query_error)?;
+                    let response = engine
+                        .link_detail(&reference, &expected_binding)
+                        .map_err(configured_workbench_query_error)?;
+                    match format {
+                        WorkbenchDetailFormat::Full => {
+                            serde_json::to_value(response).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?
+                        }
+                        WorkbenchDetailFormat::Readable => {
+                            output_context = Some(workbench_profiles_output_context(
+                                &config,
+                                profile.as_deref(),
+                                None,
+                                "workbench_profiles_link_detail",
+                                "not_applicable",
+                            ));
+                            return Ok((
+                                QueryOutput::Readable(render_configured_workbench_link_detail(
+                                    &response,
+                                )),
+                                output_context,
+                            ));
                         }
                     }
                 }
