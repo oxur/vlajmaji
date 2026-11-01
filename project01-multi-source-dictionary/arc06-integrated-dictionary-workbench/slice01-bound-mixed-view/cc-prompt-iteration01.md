@@ -1,6 +1,6 @@
 # S01 iteration01 — nonUnix native-path inference correction
 
-**STATUS: DRAFT / NOT ISSUED. PASS2/5,2026-10-31.** ROOT must read this concrete draft/readset/probe recipe before status-only issue. No source/index/target authority is granted now. All8 S01/all8arc/all14project rows OPEN/HOLD. Retained CC Luna/high is parked; CDC Sol6.1/high owns planning. This supersedes the INITIAL source-write assignment ONLY after later issue/bounded actual readback/fresh pins/explicit ONE-path transfer. No extra model/layout/Operator choice is needed.
+**STATUS: ISSUED / BOUNDED COMPLETE INTAKE ONLY. PASS2/5,2026-10-31.** ROOT whole-draft readiness PASS is preserved at planning ae8541648ae9ab3859bfba6039509b2b61bd10d4. Retained CC Luna/high may perform the bounded complete reading/readback below and append actual intake to existing artifacts/execution.md ONLY. Source/index/ONE target remain ROOT QUIET; no correction/probe/Cargo/build authority until CDC accepts actual readback/fresh pins and explicitly transfers ONE source path. All8 S01/all8arc/all14project rows remain OPEN/HOLD. This current issue metadata supersedes the historical draft-readiness clauses below; the INITIAL source-write assignment is superseded. No extra model/layout/Operator choice is needed.
 
 ## Defect, exact boundary and preserved evidence
 
