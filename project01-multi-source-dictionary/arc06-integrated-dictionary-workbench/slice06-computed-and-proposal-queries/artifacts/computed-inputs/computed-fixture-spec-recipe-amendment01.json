@@ -1,0 +1,363 @@
+{
+  "scope": "UNISSUED S06 finite constructor recipe. Static source-derived authority, not a constructed Dictionary/runtime claim. Preserve all old42 public input bytes and stages. New literals are included in twelve new path-qualified inputs; no basename flattening.",
+  "sources": [
+    {
+      "id": "comp-owned",
+      "abbreviation": "CO",
+      "origin": "OwnedDraft",
+      "title": "Computed owned fixture"
+    },
+    {
+      "id": "comp-upstream",
+      "abbreviation": "CU",
+      "origin": "Upstream",
+      "title": "Computed upstream fixture"
+    }
+  ],
+  "transport": {
+    "pack": "La",
+    "profile": "Synthetic",
+    "mixed_pack_heads": [],
+    "owned_prefixes": [
+      "r0",
+      "r1"
+    ],
+    "source_record_overlap": "ALL byte-equal owned Source/metadata/registry/capture prefixes across mixed pack and journal; mixed pack never carries r2 rows",
+    "upstream_release": "comp-upstream-release-r1",
+    "upstream_release_assertions": [
+      "comp-upstream-farvi",
+      "comp-upstream-ba",
+      "comp-upstream-null-class",
+      "comp-upstream-unsupported",
+      "comp-upstream-missing-class",
+      "comp-upstream-missing-word",
+      "comp-upstream-null-word",
+      "comp-upstream-lujvo",
+      "comp-upstream-excluded"
+    ],
+    "upstream_accounting": {
+      "occurrences": 9,
+      "lexical": 6,
+      "excluded": 3
+    }
+  },
+  "captures": [
+    {
+      "key": "owned",
+      "namespace": "computed-owned-capture-r1",
+      "format_label": "owned-draft-json-v1",
+      "raw_utf8": "[{\"word\":\"farvi\",\"definition\":\"plum grows\",\"native_word_class\":\"gismu\",\"notes\":\"See also {snime}.\"},{\"word\":\"snime\",\"definition\":\"snow and plum\",\"native_word_class\":\"gismu\"}]",
+      "sha256": "27d8343c47613a629b295ad2ad2a79784a9d7cc158f68ba41a59ff45d5f9a868",
+      "raw_bytes": 174
+    },
+    {
+      "key": "gismu",
+      "namespace": "computed-gismu-capture-r1",
+      "format_label": "llg-gismu-fixed-columns",
+      "raw_utf8": " farvi              grow                                      object evolves                                                                                  ",
+      "sha256": "97a0baa5525c61ffe165c708932c900f95214dd660e317bf683c074dcbe074a0",
+      "raw_bytes": 158
+    },
+    {
+      "key": "cmavo",
+      "namespace": "computed-cmavo-capture-r1",
+      "format_label": "llg-cmavo-fixed-columns",
+      "raw_utf8": "ba        PU        future                                   future             ",
+      "sha256": "95cd5b3b084592abc99e1f82eeed69c04c4e97d4c6dba4470ddb575ca86f846f",
+      "raw_bytes": 80
+    },
+    {
+      "key": "generic",
+      "namespace": "computed-generic-capture-r1",
+      "format_label": "synthetic-computed-json-v1",
+      "raw_utf8": "[{\"word\":\"snime\",\"definition\":\"snow and plum\",\"native_word_class\":null},{\"word\":\"farvi\",\"definition\":\"future class\",\"native_word_class\":\"future-native-class\"},{\"word\":\"klama\",\"definition\":\"go\"},{\"definition\":\"missing word\",\"native_word_class\":\"gismu\"},{\"word\":null,\"definition\":\"null word\",\"native_word_class\":\"gismu\"},{\"word\":\"latkerlo\",\"definition\":\"cat ear\",\"native_word_class\":\"lujvo\"},{\"word\":\"farvi\",\"definition\":\"excluded control\",\"native_word_class\":\"gismu\"}]",
+      "sha256": "6a49c8eea8f3b09b3d7a87e51490b4687613e203f763e6199c797eb5c78add59",
+      "raw_bytes": 467
+    }
+  ],
+  "records": [
+    {
+      "assertion_id": "comp-owned-farvi",
+      "entry_id": "comp-owned-farvi-entry",
+      "source": "comp-owned",
+      "spelling_presence": {
+        "Value": "farvi"
+      },
+      "native_word_class_presence": {
+        "Value": "gismu"
+      },
+      "capture": "owned",
+      "locator": "/0",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-owned-snime",
+      "entry_id": "comp-owned-snime-entry",
+      "source": "comp-owned",
+      "spelling_presence": {
+        "Value": "snime"
+      },
+      "native_word_class_presence": {
+        "Value": "gismu"
+      },
+      "capture": "owned",
+      "locator": "/1",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-farvi",
+      "entry_id": "comp-upstream-farvi-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "farvi"
+      },
+      "native_word_class_presence": "Missing",
+      "capture": "gismu",
+      "locator": "line:1",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-ba",
+      "entry_id": "comp-upstream-ba-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "ba"
+      },
+      "native_word_class_presence": "Missing",
+      "capture": "cmavo",
+      "locator": "line:1",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-null-class",
+      "entry_id": "comp-upstream-null-class-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "snime"
+      },
+      "native_word_class_presence": "Null",
+      "capture": "generic",
+      "locator": "/0",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-unsupported",
+      "entry_id": "comp-upstream-unsupported-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "farvi"
+      },
+      "native_word_class_presence": {
+        "Value": "future-native-class"
+      },
+      "capture": "generic",
+      "locator": "/1",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-missing-class",
+      "entry_id": "comp-upstream-missing-class-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "klama"
+      },
+      "native_word_class_presence": "Missing",
+      "capture": "generic",
+      "locator": "/2",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-missing-word",
+      "entry_id": "comp-upstream-missing-word-entry",
+      "source": "comp-upstream",
+      "spelling_presence": "Missing",
+      "native_word_class_presence": {
+        "Value": "gismu"
+      },
+      "capture": "generic",
+      "locator": "/3",
+      "eligibility": {
+        "Excluded": {
+          "reason": "fixture-missing-headword"
+        }
+      }
+    },
+    {
+      "assertion_id": "comp-upstream-null-word",
+      "entry_id": "comp-upstream-null-word-entry",
+      "source": "comp-upstream",
+      "spelling_presence": "Null",
+      "native_word_class_presence": {
+        "Value": "gismu"
+      },
+      "capture": "generic",
+      "locator": "/4",
+      "eligibility": {
+        "Excluded": {
+          "reason": "fixture-null-headword"
+        }
+      }
+    },
+    {
+      "assertion_id": "comp-upstream-lujvo",
+      "entry_id": "comp-upstream-lujvo-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "latkerlo"
+      },
+      "native_word_class_presence": {
+        "Value": "lujvo"
+      },
+      "capture": "generic",
+      "locator": "/5",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-excluded",
+      "entry_id": "comp-upstream-excluded-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "farvi"
+      },
+      "native_word_class_presence": {
+        "Value": "gismu"
+      },
+      "capture": "generic",
+      "locator": "/6",
+      "eligibility": {
+        "Excluded": {
+          "reason": "fixture-control"
+        }
+      }
+    }
+  ],
+  "owned_history": {
+    "r0": {
+      "sequence": 0,
+      "active": [],
+      "entries": [],
+      "assertions": [],
+      "captures": []
+    },
+    "r1": {
+      "sequence": 1,
+      "parent": "comp-owned-r0",
+      "active": [
+        "comp-owned-farvi",
+        "comp-owned-snime"
+      ],
+      "release_assertions": [
+        "comp-owned-farvi",
+        "comp-owned-snime"
+      ],
+      "release_accounting": {
+        "occurrences": 2,
+        "lexical": 2,
+        "excluded": 0
+      }
+    },
+    "r2": {
+      "sequence": 2,
+      "parent": "comp-owned-r1",
+      "active": [
+        "comp-owned-farvi"
+      ],
+      "tombstones": [
+        "comp-owned-snime"
+      ],
+      "retained_assertions": [
+        "comp-owned-farvi",
+        "comp-owned-snime"
+      ],
+      "release_assertions": [
+        "comp-owned-farvi",
+        "comp-owned-snime"
+      ],
+      "release_accounting": {
+        "occurrences": 2,
+        "lexical": 2,
+        "excluded": 0
+      },
+      "immutable_capture": "owned",
+      "prefix_rule": "ALL metadata lists/capture/registry rows prefix unchanged except current head; append exactly one revision/release; complete capture occurrence coverage stays two even though active Head one"
+    }
+  },
+  "contexts": [
+    {
+      "id": "comp-owned-note",
+      "assertion": "comp-owned-farvi",
+      "kind": "Note",
+      "text": "See also {snime}.",
+      "evidence": {
+        "capture": "owned",
+        "locator": "/0",
+        "native_field": "notes"
+      },
+      "parser_rule": "see-also-braces-v2",
+      "tokens": [
+        {
+          "byte_start": 9,
+          "byte_end": 16,
+          "target_spelling": "snime"
+        }
+      ],
+      "retained_entry_targets": [
+        "comp-owned-snime-entry",
+        "comp-upstream-null-class-entry"
+      ]
+    }
+  ],
+  "fixed_eligible_candidate_ids_r1": [
+    "comp-owned-farvi",
+    "comp-owned-snime",
+    "comp-upstream-farvi",
+    "comp-upstream-ba",
+    "comp-upstream-null-class",
+    "comp-upstream-unsupported",
+    "comp-upstream-missing-class",
+    "comp-upstream-lujvo"
+  ],
+  "candidate_r1": {
+    "assertions": 8,
+    "distinct_value_spellings": 5
+  },
+  "candidate_r2": {
+    "assertions": 7,
+    "distinct_value_spellings": 5
+  },
+  "registry_and_evidence": "Actual SourceRecord/Collection/Component/Available selected releases, complete RawCapture/RawOccurrence/Registry snapshot+record closure and real source notice; no optional contributor/distributor IDs unless their complete actual rows are provided. Source definitions/Entry native Presence copied exactly from these fixed raw rows. Generic Missing and Null remain different. Owned editor/notice/revision membership/tombstones use validated existing template constructors, not speculative unvalidated JSON.",
+  "emission": {
+    "subworkspace": "computed-workbench",
+    "input_home": "artifacts/computed-inputs",
+    "files": [
+      "mixed-pack-r1.json",
+      "owned-r0.json",
+      "owned-r1.json",
+      "owned-r2.json",
+      "selection-head.json",
+      "selection-historical-r1.json",
+      "computed-fixture-spec.json",
+      "computed-expected.json",
+      "computed-source-request.json",
+      "computed-proposal-request.json",
+      "computed-generate-request.json",
+      "computed-cursor-protocol.json"
+    ],
+    "old_path_qualified_inputs": 42,
+    "new_path_qualified_inputs": 12,
+    "total_path_qualified_inputs": 54,
+    "write_order": "Emit all twelve before dependent seal/journal/build/query; do not rewrite any old42."
+  },
+  "configuration": {
+    "name": "computed",
+    "revision_recipe": [
+      "configure=1(make_default=false)",
+      "refresh-r1=2(seq0)",
+      "set-default=3",
+      "append-owned-r2",
+      "refresh-r2=4(seq1)"
+    ],
+    "historical": "explicit Revision r1 remains usable; Head r1 stales after actual r2 append",
+    "comparison": "named/default result body only; direct/effective keys and bindings have separate domains"
+  }
+}

@@ -200,3 +200,9 @@ CDC afterQUIET proposes exact bounded public-example/CLI independent method with
 | Assignment | Prompt | Date | State/reason |
 | --- | --- | --- | --- |
 | INITIAL1/5 | arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt.md (ISSUED INTAKE ONLY) | 2026-11-01 | ISSUED INITIAL1/5; ROOT readiness5211d89, actual intake/CDC acceptance/explicit transfer pending |
+
+## 2026-11-01 — recipe-amendment01 DRAFT within INITIAL1/5
+
+Shared CDC/ROOT pre-execution recipe error: Lexical requires Entry.spelling Value (lexicon/dictionary.rs1528–1534), conflicting with two frozen Missing/Null rows. No constructor/fixture/test/producer was authored or run; CC confirmed no active command. Current compiler lint PASS is compilation only. [recipe-amendment01.md](recipe-amendment01.md) and its separately named amended SPEC/EXPECTED supersede only the two eligibility flags and their accounting/candidate/exclusion derivations, pending ROOT exact readiness and explicit SAME INITIAL resume. Original issued prompt/manifest/six literals stay verbatim; four current literal inputs remain byte-identical. Current15 snapshot is dirty WIP, not frozen/accepted source. Same public6/new12/all54, all original A–G/gates/custody/limits and all eight raw ledger rows remain unchanged. No implementation pass02 is consumed.
+
+Recipe history: INITIAL1/5 issued `arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt.md` remains current. Its pre-execution recipe amendment is `arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/recipe-amendment01.md` (DRAFT/readiness pending), reason validator-incompatible original fixture; not a new assignment.
