@@ -5,7 +5,8 @@ use std::{error::Error, fmt, path::Path};
 use serde::{Deserialize, Serialize};
 use vlajmaji_lexicon::OwnedCurationStatus;
 use vlajmaji_store::{
-    DictionaryReadTopology, WorkbenchBinding, WorkbenchError, WorkbenchOwnedRevision, WorkbenchView,
+    ConfiguredWorkbenchView, DictionaryReadTopology, WorkbenchBinding, WorkbenchError,
+    WorkbenchOwnedRevision, WorkbenchProfileError, WorkbenchProfileIdentity, WorkbenchView,
 };
 
 use crate::{
@@ -155,6 +156,82 @@ pub struct WorkbenchDetailResponse {
     pub result: DictionaryHitDetailResponse,
 }
 
+/// Configured Full response with both effective and captured config identity.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct ConfiguredWorkbenchFullResponse {
+    /// Response version.
+    pub version: u32,
+    /// Effective configured identity used by this query.
+    pub binding_sha256: String,
+    /// Exact captured config/profile identity.
+    pub configuration: WorkbenchProfileIdentity,
+    /// Small existing workbench selection summary.
+    pub selection: WorkbenchQuerySelection,
+    /// Existing operation-tagged Full response.
+    pub result: WorkbenchFullResult,
+}
+
+/// Configured Compact response with the existing inner snapshot identity.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct ConfiguredWorkbenchCompactResponse {
+    /// Response version.
+    pub version: u32,
+    /// Effective configured identity used by this query.
+    pub binding_sha256: String,
+    /// Exact captured config/profile identity.
+    pub configuration: WorkbenchProfileIdentity,
+    /// Small existing workbench selection summary.
+    pub selection: WorkbenchQuerySelection,
+    /// Existing compact result with its separate inner snapshot hash.
+    pub result: DictionaryCompactQueryResult,
+}
+
+/// Configured detail response with the effective outer binding.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct ConfiguredWorkbenchDetailResponse {
+    /// Response version.
+    pub version: u32,
+    /// Effective configured identity used by this detail lookup.
+    pub binding_sha256: String,
+    /// Exact captured config/profile identity.
+    pub configuration: WorkbenchProfileIdentity,
+    /// Small existing workbench selection summary.
+    pub selection: WorkbenchQuerySelection,
+    /// Existing complete detail body.
+    pub result: DictionaryHitDetailResponse,
+}
+
+/// Config-file freshness or existing query failure for a configured engine.
+#[derive(Debug)]
+#[non_exhaustive]
+pub enum ConfiguredWorkbenchQueryError {
+    /// Explicit config/profile/source failure.
+    Profile(Box<WorkbenchProfileError>),
+    /// Existing query, projection, or detail failure.
+    Query(Box<WorkbenchQueryError>),
+}
+
+impl fmt::Display for ConfiguredWorkbenchQueryError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Profile(error) => write!(f, "configured workbench profile: {error}"),
+            Self::Query(error) => write!(f, "configured workbench query: {error}"),
+        }
+    }
+}
+
+impl Error for ConfiguredWorkbenchQueryError {
+    fn source(&self) -> Option<&(dyn Error + 'static)> {
+        match self {
+            Self::Profile(error) => Some(error.as_ref()),
+            Self::Query(error) => Some(error.as_ref()),
+        }
+    }
+}
+
 /// Freshness, existing query, projection, or outer-key failure.
 #[derive(Debug)]
 #[non_exhaustive]
@@ -229,6 +306,236 @@ pub struct WorkbenchSearchEngine {
     selection: WorkbenchQuerySelection,
     full: Option<DictionarySearchEngine>,
     compact: Option<DictionaryCompactSearchEngine>,
+}
+
+/// Reusable query engines bound to one captured configured profile.
+pub struct ConfiguredWorkbenchSearchEngine {
+    view: ConfiguredWorkbenchView,
+    selection: WorkbenchQuerySelection,
+    full: Option<DictionarySearchEngine>,
+    compact: Option<DictionaryCompactSearchEngine>,
+}
+
+impl fmt::Debug for ConfiguredWorkbenchSearchEngine {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("ConfiguredWorkbenchSearchEngine")
+            .field(
+                "binding_sha256",
+                &self.view.identity().effective_binding_sha256,
+            )
+            .field("full_initialized", &self.full.is_some())
+            .field("compact_initialized", &self.compact.is_some())
+            .finish()
+    }
+}
+
+impl ConfiguredWorkbenchSearchEngine {
+    /// Capture a named or default profile and retain lazy query engines.
+    ///
+    /// # Errors
+    /// Returns config, profile, source, or binding errors.
+    pub fn open(
+        config: impl AsRef<Path>,
+        profile: Option<&str>,
+    ) -> Result<Self, ConfiguredWorkbenchQueryError> {
+        let view = ConfiguredWorkbenchView::open(config, profile)
+            .map_err(|error| ConfiguredWorkbenchQueryError::Profile(Box::new(error)))?;
+        let selection = query_selection(view.view().binding());
+        Ok(Self {
+            view,
+            selection,
+            full: None,
+            compact: None,
+        })
+    }
+
+    /// Borrows the captured effective configuration identity.
+    #[must_use]
+    pub fn identity(&self) -> &WorkbenchProfileIdentity {
+        self.view.identity()
+    }
+
+    /// Borrows the complete direct S01 binding.
+    #[must_use]
+    pub fn binding(&self) -> &WorkbenchBinding {
+        self.view.view().binding()
+    }
+
+    /// Executes one Full Exact or Resolve request with config/source guards.
+    ///
+    /// # Errors
+    /// Returns config/source freshness or existing dictionary query errors.
+    pub fn execute(
+        &mut self,
+        request: DictionaryRequest,
+    ) -> Result<ConfiguredWorkbenchFullResponse, ConfiguredWorkbenchQueryError> {
+        self.execute_with_hook(request, || {})
+    }
+
+    fn execute_with_hook<F>(
+        &mut self,
+        request: DictionaryRequest,
+        after_inner: F,
+    ) -> Result<ConfiguredWorkbenchFullResponse, ConfiguredWorkbenchQueryError>
+    where
+        F: FnOnce(),
+    {
+        self.view
+            .ensure_current()
+            .map_err(|error| ConfiguredWorkbenchQueryError::Profile(Box::new(error)))?;
+        let result = (|| {
+            let engine = self.full_engine()?;
+            match request {
+                DictionaryRequest::Exact { spelling, options } => engine
+                    .exact(&spelling, options)
+                    .map(|response| WorkbenchFullResult::Exact(Box::new(response))),
+                DictionaryRequest::Resolve { target } => engine
+                    .resolve(&target)
+                    .map(|response| WorkbenchFullResult::Resolve(Box::new(response))),
+            }
+        })();
+        after_inner();
+        let freshness = self.view.ensure_current();
+        if let Err(error) = freshness {
+            return Err(ConfiguredWorkbenchQueryError::Profile(Box::new(error)));
+        }
+        let result = result.map_err(|error| {
+            ConfiguredWorkbenchQueryError::Query(Box::new(WorkbenchQueryError::Query(Box::new(
+                error,
+            ))))
+        })?;
+        Ok(ConfiguredWorkbenchFullResponse {
+            version: 1,
+            binding_sha256: self.view.identity().effective_binding_sha256.clone(),
+            configuration: self.view.identity().clone(),
+            selection: self.selection.clone(),
+            result,
+        })
+    }
+
+    /// Executes one Compact Exact or Resolve request with config/source guards.
+    ///
+    /// # Errors
+    /// Returns config/source freshness or existing dictionary query errors.
+    pub fn execute_compact(
+        &mut self,
+        request: DictionaryRequest,
+    ) -> Result<ConfiguredWorkbenchCompactResponse, ConfiguredWorkbenchQueryError> {
+        self.execute_compact_with_hook(request, || {})
+    }
+
+    fn execute_compact_with_hook<F>(
+        &mut self,
+        request: DictionaryRequest,
+        after_inner: F,
+    ) -> Result<ConfiguredWorkbenchCompactResponse, ConfiguredWorkbenchQueryError>
+    where
+        F: FnOnce(),
+    {
+        self.view
+            .ensure_current()
+            .map_err(|error| ConfiguredWorkbenchQueryError::Profile(Box::new(error)))?;
+        let result = self
+            .compact_engine()
+            .and_then(|engine| engine.execute(request));
+        after_inner();
+        let freshness = self.view.ensure_current();
+        if let Err(error) = freshness {
+            return Err(ConfiguredWorkbenchQueryError::Profile(Box::new(error)));
+        }
+        let result = result.map_err(|error| {
+            ConfiguredWorkbenchQueryError::Query(Box::new(WorkbenchQueryError::Query(Box::new(
+                error,
+            ))))
+        })?;
+        Ok(ConfiguredWorkbenchCompactResponse {
+            version: 1,
+            binding_sha256: self.view.identity().effective_binding_sha256.clone(),
+            configuration: self.view.identity().clone(),
+            selection: self.selection.clone(),
+            result,
+        })
+    }
+
+    /// Resolves detail using the same cached effective-generation Compact engine.
+    ///
+    /// # Errors
+    /// Returns config/source freshness, outer binding, or existing detail errors.
+    pub fn detail(
+        &mut self,
+        reference: &DictionaryHitDetailRef,
+        expected_effective_binding: &str,
+    ) -> Result<ConfiguredWorkbenchDetailResponse, ConfiguredWorkbenchQueryError> {
+        self.detail_with_hook(reference, expected_effective_binding, || {})
+    }
+
+    fn detail_with_hook<F>(
+        &mut self,
+        reference: &DictionaryHitDetailRef,
+        expected_effective_binding: &str,
+        after_inner: F,
+    ) -> Result<ConfiguredWorkbenchDetailResponse, ConfiguredWorkbenchQueryError>
+    where
+        F: FnOnce(),
+    {
+        self.view
+            .ensure_current()
+            .map_err(|error| ConfiguredWorkbenchQueryError::Profile(Box::new(error)))?;
+        let expected = expected_effective_binding.to_owned();
+        let result = (|| {
+            if !is_sha256(&expected) {
+                return Err(WorkbenchQueryError::MalformedBinding {
+                    value: expected.clone(),
+                });
+            }
+            let observed = &self.view.identity().effective_binding_sha256;
+            if &expected != observed {
+                return Err(WorkbenchQueryError::StaleBinding {
+                    expected: expected.clone(),
+                    observed: observed.clone(),
+                });
+            }
+            self.compact_engine()?
+                .detail(reference, None)
+                .map_err(Into::into)
+        })();
+        after_inner();
+        let freshness = self.view.ensure_current();
+        if let Err(error) = freshness {
+            return Err(ConfiguredWorkbenchQueryError::Profile(Box::new(error)));
+        }
+        let result =
+            result.map_err(|error| ConfiguredWorkbenchQueryError::Query(Box::new(error)))?;
+        Ok(ConfiguredWorkbenchDetailResponse {
+            version: 1,
+            binding_sha256: self.view.identity().effective_binding_sha256.clone(),
+            configuration: self.view.identity().clone(),
+            selection: self.selection.clone(),
+            result,
+        })
+    }
+
+    fn full_engine(&mut self) -> Result<&mut DictionarySearchEngine, DictionaryQueryError> {
+        if self.full.is_none() {
+            self.full = Some(DictionarySearchEngine::open_snapshot(
+                DictionaryReadTopology::Unified,
+                self.view.snapshot_manifest(),
+            )?);
+        }
+        Ok(self.full.as_mut().expect("full engine initialized"))
+    }
+
+    fn compact_engine(
+        &mut self,
+    ) -> Result<&mut DictionaryCompactSearchEngine, DictionaryQueryError> {
+        if self.compact.is_none() {
+            self.compact = Some(DictionaryCompactSearchEngine::open_snapshot(
+                DictionaryReadTopology::Unified,
+                self.view.snapshot_manifest(),
+            )?);
+        }
+        Ok(self.compact.as_mut().expect("compact engine initialized"))
+    }
 }
 
 impl fmt::Debug for WorkbenchSearchEngine {
@@ -526,9 +833,12 @@ mod tests {
     };
     use vlajmaji_store::{
         CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection,
-        WorkbenchBuildRequest, WorkbenchDependency, WorkbenchError, WorkbenchSelection,
-        WorkbenchView,
+        WorkbenchBuildRequest, WorkbenchDependency, WorkbenchError,
+        WorkbenchProfileConfigureRequest, WorkbenchProfileError, WorkbenchProfiles,
+        WorkbenchSelection, WorkbenchView,
     };
+
+    use crate::DictionaryExactOptions;
 
     use super::*;
 
@@ -709,6 +1019,84 @@ mod tests {
         ));
         assert!(engine.full.is_none());
         assert!(engine.compact.is_some());
+        fs::remove_dir_all(parent).unwrap();
+    }
+
+    #[test]
+    fn test_configured_query_config_change_suppresses_inner_error() {
+        let parent = fresh_root();
+        fs::create_dir(&parent).unwrap();
+        let catalogue = parent.join("catalogue");
+        catalogue_write(&catalogue, PackId::Llg, true);
+        let selection = WorkbenchSelection {
+            version: 1,
+            packs: vec![PackId::Llg],
+            disabled: Vec::new(),
+            owned: None,
+            contexts: Vec::new(),
+        };
+        let config = parent.join("profiles.json");
+        WorkbenchProfiles::configure(
+            &config,
+            WorkbenchProfileConfigureRequest {
+                name: "alpha".into(),
+                catalogue_root: Some(catalogue.clone()),
+                owned_root: None,
+                selection: selection.clone(),
+                make_default: true,
+            },
+            None,
+        )
+        .unwrap();
+        WorkbenchProfiles::refresh(&config, None, parent.join("prepared-alpha"), 1).unwrap();
+        WorkbenchProfiles::configure(
+            &config,
+            WorkbenchProfileConfigureRequest {
+                name: "beta".into(),
+                catalogue_root: Some(catalogue),
+                owned_root: None,
+                selection,
+                make_default: false,
+            },
+            Some(2),
+        )
+        .unwrap();
+        let mut engine = ConfiguredWorkbenchSearchEngine::open(&config, Some("alpha")).unwrap();
+        assert_eq!(engine.identity().config_revision, 3);
+        let unchanged_error = engine
+            .execute(DictionaryRequest::Exact {
+                spelling: "absent".into(),
+                options: DictionaryExactOptions {
+                    cursor: Some("malformed-cursor".into()),
+                    ..DictionaryExactOptions::default()
+                },
+            })
+            .unwrap_err();
+        assert!(matches!(
+            unchanged_error,
+            ConfiguredWorkbenchQueryError::Query(error)
+                if matches!(error.as_ref(), WorkbenchQueryError::Query(inner)
+                    if matches!(inner.as_ref(), DictionaryQueryError::MalformedCursor { .. }))
+        ));
+        let result = engine.execute_with_hook(
+            DictionaryRequest::Exact {
+                spelling: "absent".into(),
+                options: DictionaryExactOptions {
+                    cursor: Some("malformed-cursor".into()),
+                    ..DictionaryExactOptions::default()
+                },
+            },
+            || {
+                let changed = WorkbenchProfiles::set_default(&config, Some("beta"), 3).unwrap();
+                assert!(changed.changed);
+                assert_eq!(changed.revision, 4);
+            },
+        );
+        assert!(matches!(
+            result,
+            Err(ConfiguredWorkbenchQueryError::Profile(error))
+                if matches!(error.as_ref(), WorkbenchProfileError::ConfigChanged { .. })
+        ));
         fs::remove_dir_all(parent).unwrap();
     }
 }

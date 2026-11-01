@@ -37,7 +37,8 @@ The Rust workspace already provides:
   ([query guide](docs/dictionary-query.md)).
 - Explicit immutable mixed workbench views over selected installed packs and
   an optional owned-journal revision, with Full/Compact queries bound to
-  captured dependency identities ([integrated workbench guide](docs/integrated-workbench.md)).
+  captured dependency identities and an additive named-profile refresh/history
+  workflow ([integrated workbench guide](docs/integrated-workbench.md)).
 - Rebuildable SQLite indexes and an optional Oxigraph backend for research comparisons.
 - Exact and reverse-definition lookup, source-link traversal, spelling distance,
   and bounded phonological and prosodic filters.
@@ -233,10 +234,9 @@ the separately gated full-corpus test.
 
 ## Where this is going
 
-Independent corpus packages, explicit composition, and owned dictionaries now
-have working Rust and CLI workflows. Next comes integrating owned editing with
-configured multi-source lookup and completing the end-to-end workbench checks.
-The longer aim is a practical vocabulary laboratory connected to Bauske's
+Independent corpus packages, explicit composition, owned dictionaries, and
+configured mixed workbench refreshes now have Rust and CLI workflows. The
+longer aim is a practical vocabulary laboratory connected to Bauske's
 linguistic tools.
 
 The workspace is on the **0.3.0 development cycle**; its APIs remain experimental.

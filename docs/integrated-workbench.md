@@ -154,3 +154,158 @@ remain available through `info` and the library binding accessor. Composition
 errors remain errors even when individual records also have unavailable
 context outcomes. A failure after successful persistence does not roll back
 the workbench, and an incomplete new candidate is left in place for inspection.
+
+## Configure and refresh named profiles
+
+These APIs are new in the unpublished workspace 0.3.0; the 0.2.0 dependency
+snippets above do not expose them. The producer emits three profile inputs
+before creating any catalogue or journal: `profile-alpha-selection.json` is an
+exact copy of the mixed selection, `profile-beta-selection.json` selects only
+the owned Head, and `profiles-expected.json` declares revisions 1–6,
+publication sequences 0–2, and input-derived source-group and occurrence
+counts.
+
+Use a fresh CLI-owned journal for this sequence. The earlier `CLI_OWNED` from
+the unprofiled recipe has already advanced to r2. Initialize this new journal
+from the emitted seed and apply r1 first:
+
+```sh
+CLI_CONFIGURED_OWNED=workbench-example/cli-configured-owned
+"$CLI" owned init "$CLI_CONFIGURED_OWNED" --input workbench-example/inputs/owned-seed.json
+"$CLI" owned edit "$CLI_CONFIGURED_OWNED" --expected-head owned-r0 \
+  --input workbench-example/inputs/owned-r1.json
+PROFILE_CONFIG=workbench-example/cli-workbench-profiles.json
+CLI_ALPHA_R1=workbench-example/cli-configured-alpha-r1
+"$CLI" workbench profiles configure --config "$PROFILE_CONFIG" --name alpha \
+  --selection workbench-example/inputs/profile-alpha-selection.json \
+  --catalogue workbench-example/catalogue --owned "$CLI_CONFIGURED_OWNED" --make-default \
+  > workbench-example/profile-alpha-configure.json
+jq -e '.revision == 1 and .changed == true and .active == null' \
+  workbench-example/profile-alpha-configure.json
+"$CLI" workbench profiles refresh "$CLI_ALPHA_R1" --config "$PROFILE_CONFIG" \
+  --expected-revision 1 > workbench-example/profile-alpha-refresh.json
+jq -e '.publication.revision == 2 and .publication.active.sequence == 0' \
+  workbench-example/profile-alpha-refresh.json
+"$CLI" workbench profiles query --config "$PROFILE_CONFIG" --profile alpha \
+  --request workbench-example/inputs/request.json --format full \
+  > workbench-example/profile-alpha-full.json
+"$CLI" workbench profiles query --config "$PROFILE_CONFIG" --profile alpha \
+  --request workbench-example/inputs/request.json --format compact \
+  > workbench-example/profile-alpha-compact.json
+"$CLI" workbench profiles query --config "$PROFILE_CONFIG" --profile alpha \
+  --request workbench-example/inputs/request.json --format readable
+jq --slurpfile expected workbench-example/inputs/profiles-expected.json -e \
+  '.result.response.totals.occurrences == $expected[0].alpha_r1.occurrences and
+   (.result.response.groups | length) == $expected[0].alpha_r1.source_groups' \
+  workbench-example/profile-alpha-full.json
+```
+
+The compact detail reference and mandatory outer binding key come from the
+same configured response. The inner compact snapshot token remains a separate
+identity:
+
+```sh
+jq '.result.response.groups[0].hits[0].detail_ref' \
+  workbench-example/profile-alpha-compact.json \
+  > workbench-example/profile-alpha-detail-reference.json
+PROFILE_BINDING=$(jq -r '.binding_sha256' workbench-example/profile-alpha-compact.json)
+"$CLI" workbench profiles detail --config "$PROFILE_CONFIG" --profile alpha \
+  --reference workbench-example/profile-alpha-detail-reference.json \
+  --expected-binding "$PROFILE_BINDING" --format full \
+  > workbench-example/profile-alpha-detail.json
+```
+
+The exact repeated beta configuration is a semantic no-op: revision and config
+bytes must remain unchanged. Reopening alpha by name returns the same result
+body as the earlier default-mode query, with a different effective identity:
+
+```sh
+CLI_BETA_R1=workbench-example/cli-configured-beta-r1
+CLI_BETA_R2=workbench-example/cli-configured-beta-r2
+"$CLI" workbench profiles configure --config "$PROFILE_CONFIG" --name beta \
+  --selection workbench-example/inputs/profile-beta-selection.json \
+  --owned "$CLI_CONFIGURED_OWNED" --expected-revision 2 \
+  > workbench-example/profile-beta-configure.json
+jq -e '.revision == 3 and .changed == true and .default_profile == "alpha"' \
+  workbench-example/profile-beta-configure.json
+cp "$PROFILE_CONFIG" workbench-example/profile-config-before-noop.json
+shasum -a 256 "$PROFILE_CONFIG" > workbench-example/profile-config-before-noop.sha256
+"$CLI" workbench profiles configure --config "$PROFILE_CONFIG" --name beta \
+  --selection workbench-example/inputs/profile-beta-selection.json \
+  --owned "$CLI_CONFIGURED_OWNED" --expected-revision 3 \
+  > workbench-example/profile-beta-noop.json
+jq -e '.revision == 3 and .changed == false' workbench-example/profile-beta-noop.json
+cmp "$PROFILE_CONFIG" workbench-example/profile-config-before-noop.json
+shasum -a 256 -c workbench-example/profile-config-before-noop.sha256
+"$CLI" workbench profiles query --config "$PROFILE_CONFIG" --profile alpha \
+  --request workbench-example/inputs/request.json --format full \
+  > workbench-example/profile-alpha-named-full.json
+jq --slurpfile prior workbench-example/profile-alpha-full.json -e \
+  '.result == $prior[0].result and .binding_sha256 != $prior[0].binding_sha256' \
+  workbench-example/profile-alpha-named-full.json
+```
+
+Refresh beta's r1 view, then make beta the default before advancing its owned
+Head. A default-mode query must return the same two-hit body as the named beta
+query. Appending r2 makes that retained preparation stale; refreshing in
+default mode then publishes sequence two. Named and default beta queries after
+refresh have equal result bodies and distinct effective identities:
+
+```sh
+"$CLI" workbench profiles refresh "$CLI_BETA_R1" --config "$PROFILE_CONFIG" \
+  --profile beta --expected-revision 3 > workbench-example/profile-beta-r1.json
+"$CLI" workbench profiles query --config "$PROFILE_CONFIG" --profile beta \
+  --request workbench-example/inputs/request.json --format full \
+  > workbench-example/profile-beta-full-r1.json
+jq --slurpfile expected workbench-example/inputs/profiles-expected.json -e \
+  '.result.response.totals.occurrences == $expected[0].beta_r1.occurrences and
+   (.result.response.groups | length) == $expected[0].beta_r1.source_groups' \
+  workbench-example/profile-beta-full-r1.json
+"$CLI" workbench profiles default --config "$PROFILE_CONFIG" --profile beta \
+  --expected-revision 4 > workbench-example/profile-default-beta.json
+"$CLI" workbench profiles query --config "$PROFILE_CONFIG" \
+  --request workbench-example/inputs/request.json --format full \
+  > workbench-example/profile-beta-default-before-r2.json
+jq --slurpfile named workbench-example/profile-beta-full-r1.json -e \
+  '.result == $named[0].result and .configuration.requested_profile == null' \
+  workbench-example/profile-beta-default-before-r2.json
+"$CLI" owned edit "$CLI_CONFIGURED_OWNED" --expected-head owned-r1 \
+  --input workbench-example/inputs/owned-r2.json
+if "$CLI" workbench profiles query --config "$PROFILE_CONFIG" \
+    --request workbench-example/inputs/request.json --format full \
+    > workbench-example/profile-beta-stale.stdout.json \
+    2> workbench-example/profile-beta-stale.stderr.json; then
+  echo "expected the retained beta Head preparation to be stale" >&2
+  exit 1
+fi
+jq -e '.error.code == "stale_workbench"' workbench-example/profile-beta-stale.stderr.json
+"$CLI" workbench profiles refresh "$CLI_BETA_R2" --config "$PROFILE_CONFIG" \
+  --expected-revision 5 > workbench-example/profile-beta-r2.json
+jq -e '.publication.revision == 6 and .publication.active.sequence == 2' \
+  workbench-example/profile-beta-r2.json
+"$CLI" workbench profiles query --config "$PROFILE_CONFIG" --profile beta \
+  --request workbench-example/inputs/request.json --format full \
+  > workbench-example/profile-beta-full-r2.json
+jq --slurpfile expected workbench-example/inputs/profiles-expected.json -e \
+  '.result.response.totals.occurrences == $expected[0].beta_r2.occurrences and
+   (.result.response.groups | length) == $expected[0].beta_r2.source_groups' \
+  workbench-example/profile-beta-full-r2.json
+"$CLI" workbench profiles query --config "$PROFILE_CONFIG" \
+  --request workbench-example/inputs/request.json --format full \
+  > workbench-example/profile-beta-default-r2.json
+jq --slurpfile named workbench-example/profile-beta-full-r2.json -e \
+  '.result == $named[0].result and .binding_sha256 != $named[0].binding_sha256' \
+  workbench-example/profile-beta-default-r2.json
+"$CLI" workbench profiles info --config "$PROFILE_CONFIG" \
+  > workbench-example/profile-info.json
+jq -e '.default_profile == "beta" and .revision == 6' workbench-example/profile-info.json
+"$CLI" workbench profiles history --config "$PROFILE_CONFIG" \
+  > workbench-example/profile-history.json
+jq -e '.revision == 6 and (.prepared | map(.sequence)) == [0,1,2]' \
+  workbench-example/profile-history.json
+```
+
+The report in `profiles-expected.json` is the input-defined count oracle for
+these commands; it is not inferred from query responses. Config revision 3
+changes the effective identity captured by an earlier alpha engine, while the
+immutable alpha root and its history row remain available for inspection.

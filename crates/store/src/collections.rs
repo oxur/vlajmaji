@@ -1701,6 +1701,110 @@ impl CollectionCatalogue {
         read_generation(&self.connection, &self.root)
     }
 
+    /// Returns one coherent, metadata-only view of registrations and the active generation.
+    ///
+    /// This opens a short-lived read-only connection and reuses its existing deferred
+    /// transaction. It does not inspect payload files or derived dictionary stores.
+    ///
+    /// # Errors
+    /// Returns the typed catalogue error for malformed metadata, SQL failures, or rollback failure.
+    pub fn metadata_roster(&self) -> Result<CollectionMetadataRoster, CollectionError> {
+        let connection = crate::collections_schema::open_readonly(&self.root)?;
+        let captured = (|| {
+            let path = crate::collections_schema::database_path(&self.root);
+            let tables = crate::collections_schema::tables_for(&connection, &path)?;
+            let local_revision = crate::collections_schema::local_revision(&connection, &path)?;
+            let generation = read_generation(&connection, &self.root)?;
+            let installed = generation
+                .as_ref()
+                .map(|value| value.members.as_slice())
+                .unwrap_or_default();
+            let mut statement = connection
+                .prepare(&format!(
+                    "SELECT pack_id,release_sha256,payload_kind,summary_json FROM {} ORDER BY pack_id,release_sha256",
+                    tables.registrations
+                ))
+                .map_err(|error| db_error(&self.root, error))?;
+            let mut rows = statement
+                .query([])
+                .map_err(|error| db_error(&self.root, error))?;
+            let mut packs: Vec<CollectionMetadataPack> = Vec::new();
+            while let Some(row) = rows.next().map_err(|error| db_error(&self.root, error))? {
+                let pack_name: String = row.get(0).map_err(|error| db_error(&self.root, error))?;
+                let release_sha256: String =
+                    row.get(1).map_err(|error| db_error(&self.root, error))?;
+                let payload: String = row.get(2).map_err(|error| db_error(&self.root, error))?;
+                let summary_bytes: Vec<u8> =
+                    row.get(3).map_err(|error| db_error(&self.root, error))?;
+                let pack_id = parse_pack_id(&pack_name)?;
+                let payload_kind = match payload.as_str() {
+                    "full" => PackPayloadKind::Full,
+                    "synthetic" => PackPayloadKind::Synthetic,
+                    _ => {
+                        return Err(CollectionError::UnsupportedVersion(format!(
+                            "unknown registration payload kind {payload}"
+                        )));
+                    }
+                };
+                let summary: StoredCollectionRegistrationSummary =
+                    serde_json::from_slice(&summary_bytes).map_err(|error| {
+                        CollectionError::UnsupportedVersion(format!(
+                            "registration summary is malformed: {error}"
+                        ))
+                    })?;
+                let registration = CollectionMetadataRegistration {
+                    release_sha256: release_sha256.clone(),
+                    payload_kind,
+                    sources: summary.sources,
+                    releases: summary.releases,
+                };
+                if let Some(last) = packs.last_mut().filter(|item| item.pack_id == pack_id) {
+                    last.registrations.push(registration);
+                } else {
+                    let installed_release_sha256 = installed
+                        .iter()
+                        .find(|member| member.pack_id == pack_name)
+                        .map(|member| member.release_sha256.clone());
+                    let installation_state = maintenance::installation_state(
+                        &connection,
+                        &self.root,
+                        &pack_name,
+                        installed_release_sha256.is_some(),
+                    )?;
+                    packs.push(CollectionMetadataPack {
+                        pack_id,
+                        installation_state,
+                        installed_release_sha256,
+                        registrations: vec![registration],
+                    });
+                }
+            }
+            drop(rows);
+            drop(statement);
+            Ok(CollectionMetadataRoster {
+                version: 1,
+                scope: "catalogue-metadata-only-v1".into(),
+                local_revision,
+                generation: generation.map(|value| CollectionMetadataGeneration {
+                    generation_id: value.generation_id,
+                    content_id: value.content_id,
+                    state_sha256: value.canonical_sha256,
+                    members: value.members,
+                }),
+                packs,
+            })
+        })();
+        match captured {
+            Ok(roster) => {
+                connection
+                    .execute_batch("ROLLBACK")
+                    .map_err(|error| db_error(&self.root, error))?;
+                Ok(roster)
+            }
+            Err(error) => Err(error),
+        }
+    }
+
     /// Returns retained typed attribution without inventing missing payload rows.
     ///
     /// # Errors
@@ -3239,6 +3343,64 @@ pub struct CollectionInstalledHistory {
     pub payload_kind: String,
     /// True only for the currently active generation.
     pub current: bool,
+}
+
+/// One coherent catalog metadata roster captured from a single SQLite snapshot.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct CollectionMetadataRoster {
+    /// Report schema version.
+    pub version: u32,
+    /// Explicit scope marker; this report does not inspect payload files.
+    pub scope: String,
+    /// Catalogue-local revision observed in the pinned read transaction.
+    pub local_revision: u64,
+    /// Active generation identity, if one is selected.
+    pub generation: Option<CollectionMetadataGeneration>,
+    /// Registrations in pack-ID then release-digest order.
+    pub packs: Vec<CollectionMetadataPack>,
+}
+
+/// Small active-generation metadata retained by the roster.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct CollectionMetadataGeneration {
+    /// Physical generation identifier.
+    pub generation_id: String,
+    /// Data-derived content identifier.
+    pub content_id: String,
+    /// Canonical composed dictionary digest.
+    pub state_sha256: String,
+    /// Generation members, without store paths.
+    pub members: Vec<CollectionGenerationMember>,
+}
+
+/// Metadata for one registered pack and all of its releases.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct CollectionMetadataPack {
+    /// Stable pack identity.
+    pub pack_id: PackId,
+    /// Logical installation state inferred from catalogue metadata/events.
+    pub installation_state: CollectionInstallationState,
+    /// Release selected by the active generation, if any.
+    pub installed_release_sha256: Option<String>,
+    /// Registered release metadata in digest order.
+    pub registrations: Vec<CollectionMetadataRegistration>,
+}
+
+/// Compact retained metadata for one pack release.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct CollectionMetadataRegistration {
+    /// Registered release digest.
+    pub release_sha256: String,
+    /// Declared payload scope.
+    pub payload_kind: PackPayloadKind,
+    /// Exact registered source identities and metadata.
+    pub sources: Vec<SourceRecord>,
+    /// Release provenance/terms without assertion arrays.
+    pub releases: Vec<CollectionReleaseSummary>,
 }
 
 /// Metadata-only registration summary.

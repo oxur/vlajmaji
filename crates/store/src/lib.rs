@@ -22,6 +22,7 @@ mod dictionary_verification;
 mod owned;
 mod owned_schema;
 mod workbench;
+mod workbench_profiles;
 pub use collection_profiles::{
     CollectionPolicySelection, CollectionProfile, CollectionProfileEnablementRequest,
     CollectionProfileError, CollectionProfileIdentity, CollectionProfileMembershipWriteRequest,
@@ -35,11 +36,13 @@ pub use collections::{
     CollectionGeneration, CollectionGenerationMember, CollectionInput, CollectionInputDisposition,
     CollectionInspection, CollectionInstallationState, CollectionInstalledArtifactLocations,
     CollectionInstalledHistory, CollectionJournalObservation, CollectionListReport,
-    CollectionMutationReport, CollectionProjectedCapture, CollectionProjectedRelease,
-    CollectionReconciliationAttempt, CollectionReconciliationReport, CollectionReferenceMetadata,
-    CollectionReferenceMetadataCache, CollectionReferenceProjection, CollectionRegistrationSummary,
-    CollectionReleaseSummary, CollectionRequest, CollectionSelection, CollectionSourceMetadata,
-    CollectionTermsSummary, NativePathReport, native_path_report,
+    CollectionMetadataGeneration, CollectionMetadataPack, CollectionMetadataRegistration,
+    CollectionMetadataRoster, CollectionMutationReport, CollectionProjectedCapture,
+    CollectionProjectedRelease, CollectionReconciliationAttempt, CollectionReconciliationReport,
+    CollectionReferenceMetadata, CollectionReferenceMetadataCache, CollectionReferenceProjection,
+    CollectionRegistrationSummary, CollectionReleaseSummary, CollectionRequest,
+    CollectionSelection, CollectionSourceMetadata, CollectionTermsSummary, NativePathReport,
+    native_path_report,
 };
 pub use dictionary::{
     DictionaryStore, DictionaryStoreError, DictionaryStoreInvalidity, DictionaryStoreSummary,
@@ -63,6 +66,14 @@ pub use workbench::{
     WorkbenchCatalogueMember, WorkbenchContextBinding, WorkbenchContextObservation,
     WorkbenchDependency, WorkbenchError, WorkbenchOwnedBinding, WorkbenchOwnedRevision,
     WorkbenchSelection, WorkbenchView,
+};
+pub use workbench_profiles::{
+    ConfiguredWorkbenchView, WorkbenchConfiguredCatalogueStatus, WorkbenchConfiguredPackStatus,
+    WorkbenchPrepared, WorkbenchPreparedState, WorkbenchPreparedStatusError,
+    WorkbenchPreparedStatusReport, WorkbenchProfile, WorkbenchProfileConfigureRequest,
+    WorkbenchProfileError, WorkbenchProfileHistoryReport, WorkbenchProfileIdentity,
+    WorkbenchProfileRefreshReport, WorkbenchProfileStatusReport, WorkbenchProfileWriteReport,
+    WorkbenchProfiles, WorkbenchProfilesReport, WorkbenchPublicationContext,
 };
 
 #[cfg(feature = "graph")]

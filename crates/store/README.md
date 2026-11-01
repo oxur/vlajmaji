@@ -126,12 +126,23 @@ See the [API documentation](https://docs.rs/vlajmaji-store). Licensed under Apac
 
 ## Explicit mixed workbench views
 
+This API is part of the current unpublished workspace 0.3.0; the dependency
+snippet above still names published 0.2.0 and does not provide these types.
+
 `WorkbenchView::build_new` prepares a new, immutable directory from explicitly
 selected installed catalogue packs and an optional owned-journal revision. It
 retains a strict binding beside the derived `DictionaryStore`; it does not
 migrate or mutate either source. `WorkbenchView::open` checks the small binding
 and current dependency identities. Full history/model verification remains an
 explicit operation on the derived store or authoritative owned journal.
+
+`WorkbenchProfiles` stores explicit named selections and immutable refresh
+history in a caller-selected configuration file. `status` reports logical
+catalogue metadata and a bounded active-root minimum; it does not inspect pack
+payload files or claim a full store audit. `ConfiguredWorkbenchView` binds one
+prepared S01 view to the exact captured config bytes, requested profile mode,
+and active publication identity. Every library call receives an explicit
+config path; it does not consult HOME or XDG.
 
 The workbench API and its no-default-feature behavior are documented in
 [`docs/integrated-workbench.md`](../../docs/integrated-workbench.md).
