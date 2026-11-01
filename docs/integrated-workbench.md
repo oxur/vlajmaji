@@ -358,3 +358,105 @@ The report in `profiles-expected.json` is the input-defined count oracle for
 these commands; it is not inferred from query responses. Config revision 3
 changes the effective identity captured by an earlier alpha engine, while the
 immutable alpha root and its history row remain available for inspection.
+
+## Literal reverse-definition and stored-Form queries
+
+The integrated example adds an independent lexical workspace under
+`workbench-example/lexical-workbench`. Its ten typed inputs and fixed protocol
+oracles are written first to `workbench-example/artifacts/lexical-inputs/`;
+the earlier `inputs/` and `artifacts/reference-inputs/` files remain unchanged.
+The stage retains an upstream source, an owned r0→r1→r2 journal, and configured
+r1/r2 preparations. At r1, reverse lookup for `gRoW` returns owned assertion
+a and the two upstream literal matches a and b; owned assertion b has definition
+`develop` and is not a match. The seven `farvi-form` rows include four upstream
+Forms and three owned Forms, including two with no eligible assertions. At r2
+the owned assertion pair is tombstoned and only assertion c remains on the owned
+stem; the upstream rows and their evidence remain intact. The `view-r1` direct
+root is Head-bound and becomes stale after the append. The separate
+`view-historical-r1` root explicitly retains r1 and remains usable.
+
+The retained historical r1 view also supports the literal reverse-definition
+request. Full and Compact preserve the pre-input assertion order:
+`lexical-owned-a`, `lexical-upstream-a`, then `lexical-upstream-b`.
+
+```sh
+CLI="${CARGO_TARGET_DIR:-target}/debug/vlajmaji"
+LEXICAL_INPUTS=workbench-example/artifacts/lexical-inputs
+LEXICAL_VIEW=workbench-example/lexical-workbench/view-historical-r1
+"$CLI" workbench lexical "$LEXICAL_VIEW" \
+  --request "$LEXICAL_INPUTS/reverse-grow.json" --format full \
+  > workbench-example/lexical-reverse-full.json
+"$CLI" workbench lexical "$LEXICAL_VIEW" \
+  --request "$LEXICAL_INPUTS/reverse-grow.json" --format compact \
+  > workbench-example/lexical-reverse-compact.json
+jq -e '.result.response.totals.records == 3 and
+       ([.result.response.groups[].hits[].assertion.id] | flatten) ==
+       ["lexical-owned-a", "lexical-upstream-a", "lexical-upstream-b"]' \
+  workbench-example/lexical-reverse-full.json
+jq -e '.result.response.totals.records == 3 and
+       ([.result.response.groups[].hits[].assertion.id] | flatten) ==
+       ["lexical-owned-a", "lexical-upstream-a", "lexical-upstream-b"]' \
+  workbench-example/lexical-reverse-compact.json
+```
+
+Run a Full direct query and then a Compact query from the same emitted request:
+
+```sh
+LEXICAL_INPUTS=workbench-example/artifacts/lexical-inputs
+LEXICAL_VIEW=workbench-example/lexical-workbench/view-historical-r1
+LEXICAL_CONFIG=workbench-example/lexical-workbench/workbench-profiles.json
+"$CLI" workbench lexical "$LEXICAL_VIEW" \
+  --request "$LEXICAL_INPUTS/form-all.json" --format full \
+  > workbench-example/lexical-direct-full.json
+"$CLI" workbench lexical "$LEXICAL_VIEW" \
+  --request "$LEXICAL_INPUTS/form-all.json" --format compact \
+  > workbench-example/lexical-direct-compact.json
+jq -e '.format == "compact" and
+       .result.response.totals.records == 7 and
+       .result.response.totals.source_groups == 2' \
+  workbench-example/lexical-direct-compact.json
+jq '.result.response.groups[0].hits[0].detail_ref' \
+  workbench-example/lexical-direct-compact.json \
+  > workbench-example/lexical-direct-form-detail-ref.json
+DIRECT_BINDING=$(jq -r '.binding_sha256' workbench-example/lexical-direct-compact.json)
+"$CLI" workbench form-detail "$LEXICAL_VIEW" \
+  --reference workbench-example/lexical-direct-form-detail-ref.json \
+  --expected-binding "$DIRECT_BINDING" --format full \
+  > workbench-example/lexical-direct-form-detail.json
+```
+
+Configured queries accept either an explicit profile name or the current
+default. The result bodies agree when both modes select the same prepared
+profile, while their effective bindings remain distinct. The Compact key must
+be used with the matching configured binding:
+
+```sh
+"$CLI" workbench profiles lexical --config "$LEXICAL_CONFIG" \
+  --profile lexical --request "$LEXICAL_INPUTS/form-all.json" --format compact \
+  > workbench-example/lexical-named-compact.json
+"$CLI" workbench profiles lexical --config "$LEXICAL_CONFIG" \
+  --request "$LEXICAL_INPUTS/form-all.json" --format full \
+  > workbench-example/lexical-default-full.json
+jq -e '.configuration.requested_profile == null and
+       .result.response.totals.records == 7' \
+  workbench-example/lexical-default-full.json
+jq '.result.response.groups[0].hits[0].detail_ref' \
+  workbench-example/lexical-named-compact.json \
+  > workbench-example/lexical-named-form-detail-ref.json
+NAMED_BINDING=$(jq -r '.binding_sha256' workbench-example/lexical-named-compact.json)
+"$CLI" workbench profiles form-detail --config "$LEXICAL_CONFIG" \
+  --profile lexical --reference workbench-example/lexical-named-form-detail-ref.json \
+  --expected-binding "$NAMED_BINDING" --format full \
+  > workbench-example/lexical-named-form-detail.json
+```
+
+After the owned journal advances to r2, the configured Head-bound r1
+preparation becomes stale. Refresh the profile to create a new r2 preparation,
+then run named and default queries and resolve a Compact reference using the
+matching effective binding. Same-projection named and default bodies agree,
+while their effective bindings remain distinct. The explicit historical r1
+direct root remains usable. The refreshed preparation advances retained history
+without rewriting the earlier r1 row. `lexical-expected.json` fixes the
+pre-input IDs, order, association unions and literal definitions;
+`cursor-protocol-oracle.json` fixes the typed cursor bytes and checksum
+independently of a live view.

@@ -88,6 +88,16 @@ for a configured view. The target file contains the existing typed
 [integrated workbench guide](../../docs/integrated-workbench.md) includes
 working Rust and CLI examples.
 
+The current unpublished 0.3 workspace also exposes literal reverse-definition
+queries and lookup of actual stored Forms on a bound workbench. Form results
+retain their typed Entry, Source, computation or evidence state, and eligible
+assertions; Compact results carry a binding- and row-digest key for complete
+Form detail. Direct and configured Full/Compact APIs check freshness around
+the query, while configured detail keys use the profile's effective binding.
+These APIs are not available through the published 0.2 dependency examples at
+the top of this README. See the [integrated workbench guide](../../docs/integrated-workbench.md)
+for the emitted `artifacts/lexical-inputs` files and runnable CLI sequence.
+
 The `topology_probe` example is a local comparison harness, not user
 configuration or an installer. `prepare --manifest FILE` strictly loads four
 explicitly pinned sealed inputs and exclusively creates one unified and four

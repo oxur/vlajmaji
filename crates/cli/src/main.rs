@@ -28,8 +28,8 @@ use vlajmaji_search::{
     validate_detail_snapshot_sha256,
 };
 use vlajmaji_search::{
-    ConfiguredWorkbenchQueryError, ConfiguredWorkbenchSearchEngine, WorkbenchQueryError,
-    WorkbenchSearchEngine,
+    ConfiguredWorkbenchQueryError, ConfiguredWorkbenchSearchEngine, WorkbenchFormDetailRef,
+    WorkbenchLexicalError, WorkbenchLexicalRequest, WorkbenchQueryError, WorkbenchSearchEngine,
 };
 use vlajmaji_store::{
     CollectionCatalogue, CollectionError, CollectionInput, CollectionPolicySelection,
@@ -226,6 +226,24 @@ enum WorkbenchCommand {
         #[arg(long, value_enum, default_value_t = WorkbenchQueryFormat::Full)]
         format: WorkbenchQueryFormat,
     },
+    /// Find literal definitions or actually stored Forms.
+    Lexical {
+        root: PathBuf,
+        #[arg(long)]
+        request: PathBuf,
+        #[arg(long, value_enum, default_value_t = WorkbenchQueryFormat::Full)]
+        format: WorkbenchQueryFormat,
+    },
+    /// Resolve one complete stored Form using its content-bound key.
+    FormDetail {
+        root: PathBuf,
+        #[arg(long)]
+        reference: PathBuf,
+        #[arg(long)]
+        expected_binding: String,
+        #[arg(long, value_enum, default_value_t = WorkbenchDetailFormat::Full)]
+        format: WorkbenchDetailFormat,
+    },
     /// Resolve a complete hit detail with a mandatory outer workbench key.
     Detail {
         root: PathBuf,
@@ -329,6 +347,30 @@ enum WorkbenchProfilesCommand {
         request: PathBuf,
         #[arg(long, value_enum, default_value_t = WorkbenchQueryFormat::Full)]
         format: WorkbenchQueryFormat,
+    },
+    /// Find literal definitions or actually stored Forms in a configured profile.
+    Lexical {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        profile: Option<String>,
+        #[arg(long)]
+        request: PathBuf,
+        #[arg(long, value_enum, default_value_t = WorkbenchQueryFormat::Full)]
+        format: WorkbenchQueryFormat,
+    },
+    /// Resolve a complete Form using its configured effective binding key.
+    FormDetail {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        profile: Option<String>,
+        #[arg(long)]
+        reference: PathBuf,
+        #[arg(long)]
+        expected_binding: String,
+        #[arg(long, value_enum, default_value_t = WorkbenchDetailFormat::Full)]
+        format: WorkbenchDetailFormat,
     },
     /// Resolve a compact detail reference using its configured binding key.
     Detail {
@@ -807,6 +849,7 @@ fn workbench_query_error(error: WorkbenchQueryError) -> CliError {
         WorkbenchQueryError::View(error) => workbench_error(*error),
         WorkbenchQueryError::Query(error) => CliError::Structured(error.report()),
         WorkbenchQueryError::Projection(error) => CliError::Structured(error.report()),
+        WorkbenchQueryError::Lexical(error) => lexical_query_error(*error),
         WorkbenchQueryError::Catalogue(error) => {
             structured_error("workbench_dependency", error.to_string())
         }
@@ -822,6 +865,32 @@ fn workbench_query_error(error: WorkbenchQueryError) -> CliError {
             structured_error("ambiguous_reference", error.to_string())
         }
         other => structured_error("workbench_response", other.to_string()),
+    }
+}
+
+fn lexical_query_error(error: WorkbenchLexicalError) -> CliError {
+    match error {
+        WorkbenchLexicalError::InvalidRequest { detail } => {
+            structured_error("invalid_lexical_request", detail)
+        }
+        WorkbenchLexicalError::MalformedCursor { detail } => {
+            structured_error("malformed_cursor", detail)
+        }
+        WorkbenchLexicalError::StaleCursor => {
+            structured_error("stale_cursor", "stale lexical cursor")
+        }
+        WorkbenchLexicalError::InvalidCursorPosition => {
+            structured_error("invalid_cursor_position", "invalid lexical cursor position")
+        }
+        WorkbenchLexicalError::MalformedFormDetail { detail } => {
+            structured_error("malformed_form_detail", detail)
+        }
+        WorkbenchLexicalError::StaleFormDetail => {
+            structured_error("stale_form_detail", "stale form detail")
+        }
+        WorkbenchLexicalError::Integrity { detail } => structured_error("integrity", detail),
+        WorkbenchLexicalError::Dictionary(error) => CliError::Structured(error.report()),
+        other => structured_error("workbench_lexical", other.to_string()),
     }
 }
 
@@ -1094,9 +1163,24 @@ impl ManagedOutputContext {
         ) || self.operation.starts_with("owned_")
             || self.operation.starts_with("workbench_")
         {
+            let message = if matches!(
+                self.operation.as_str(),
+                "workbench_lexical" | "workbench_form_detail"
+            ) {
+                let context = serde_json::json!({
+                    "root": &self.root_path,
+                    "outcome": &self.outcome,
+                });
+                format!(
+                    "{detail}; workbench read-only context: {}",
+                    serde_json::to_string(&context).unwrap_or_else(|_| "{}".into())
+                )
+            } else {
+                detail
+            };
             return serde_json::json!(DictionaryErrorReport {
                 code: "response_output_io".into(),
-                message: detail,
+                message,
                 sources: Vec::new(),
             });
         }
@@ -1221,6 +1305,14 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
                 WorkbenchCommand::Query { root, .. } => {
                     ("workbench_query", Some(root.as_path()), "not_applicable")
                 }
+                WorkbenchCommand::Lexical { root, .. } => {
+                    ("workbench_lexical", Some(root.as_path()), "not_applicable")
+                }
+                WorkbenchCommand::FormDetail { root, .. } => (
+                    "workbench_form_detail",
+                    Some(root.as_path()),
+                    "not_applicable",
+                ),
                 WorkbenchCommand::Detail { root, .. } => {
                     ("workbench_detail", Some(root.as_path()), "not_applicable")
                 }
@@ -1418,6 +1510,24 @@ fn workbench_profiles_command_context(
             config, profile, ..
         } => (
             "workbench_profiles_query",
+            config,
+            profile.as_deref(),
+            None,
+            "not_applicable",
+        ),
+        WorkbenchProfilesCommand::Lexical {
+            config, profile, ..
+        } => (
+            "workbench_profiles_lexical",
+            config,
+            profile.as_deref(),
+            None,
+            "not_applicable",
+        ),
+        WorkbenchProfilesCommand::FormDetail {
+            config, profile, ..
+        } => (
+            "workbench_profiles_form_detail",
             config,
             profile.as_deref(),
             None,
@@ -2076,6 +2186,89 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                     }
                 }
             }
+            WorkbenchCommand::Lexical {
+                root,
+                request,
+                format,
+            } => {
+                let bytes = read_workbench_file(&request)?;
+                let request: WorkbenchLexicalRequest = serde_json::from_slice(&bytes)
+                    .map_err(|error| structured_error("request_json", error.to_string()))?;
+                let mut engine =
+                    WorkbenchSearchEngine::open(&root).map_err(workbench_query_error)?;
+                match format {
+                    WorkbenchQueryFormat::Full => {
+                        let response = engine
+                            .execute_lexical(&request)
+                            .map_err(workbench_query_error)?;
+                        serde_json::to_value(response).map_err(|error| {
+                            structured_error("workbench_response", error.to_string())
+                        })?
+                    }
+                    WorkbenchQueryFormat::Compact => {
+                        let response = engine
+                            .execute_lexical_compact(&request)
+                            .map_err(workbench_query_error)?;
+                        serde_json::to_value(response).map_err(|error| {
+                            structured_error("workbench_response", error.to_string())
+                        })?
+                    }
+                    WorkbenchQueryFormat::Readable => {
+                        let response = engine
+                            .execute_lexical_compact(&request)
+                            .map_err(workbench_query_error)?;
+                        let text = format!(
+                            "workbench_binding: {}\nworkbench_selection: {}\n{}",
+                            serde_json::to_string(response.binding_sha256.as_str()).map_err(
+                                |error| structured_error("workbench_response", error.to_string())
+                            )?,
+                            serde_json::to_string(&response.selection).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?,
+                            vlajmaji_search::render_workbench_lexical_compact(&response.result),
+                        );
+                        return Ok((QueryOutput::Readable(text), output_context));
+                    }
+                }
+            }
+            WorkbenchCommand::FormDetail {
+                root,
+                reference,
+                expected_binding,
+                format,
+            } => {
+                let bytes = read_workbench_file(&reference)?;
+                let reference: WorkbenchFormDetailRef = serde_json::from_slice(&bytes)
+                    .map_err(|error| structured_error("request_json", error.to_string()))?;
+                let mut engine =
+                    WorkbenchSearchEngine::open(&root).map_err(workbench_query_error)?;
+                let response = engine
+                    .form_detail(&reference, &expected_binding)
+                    .map_err(workbench_query_error)?;
+                match format {
+                    WorkbenchDetailFormat::Full => {
+                        serde_json::to_value(response).map_err(|error| {
+                            structured_error("workbench_response", error.to_string())
+                        })?
+                    }
+                    WorkbenchDetailFormat::Readable => {
+                        let text = format!(
+                            "workbench_binding: {}\nworkbench_selection: {}\nform_reference: {}\n{}",
+                            serde_json::to_string(&response.binding_sha256).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?,
+                            serde_json::to_string(&response.selection).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?,
+                            serde_json::to_string(&response.reference).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?,
+                            vlajmaji_search::render_workbench_form_detail(&response.form),
+                        );
+                        return Ok((QueryOutput::Readable(text), output_context));
+                    }
+                }
+            }
             WorkbenchCommand::Detail {
                 root,
                 reference,
@@ -2335,6 +2528,108 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                                     structured_error("workbench_response", error.to_string())
                                 })?,
                                 render_dictionary_compact(&response.result),
+                            );
+                            return Ok((QueryOutput::Readable(text), output_context));
+                        }
+                    }
+                }
+                WorkbenchProfilesCommand::Lexical {
+                    config,
+                    profile,
+                    request,
+                    format,
+                } => {
+                    let bytes = read_workbench_file(&request)?;
+                    let request: WorkbenchLexicalRequest = serde_json::from_slice(&bytes)
+                        .map_err(|error| structured_error("request_json", error.to_string()))?;
+                    let mut engine =
+                        ConfiguredWorkbenchSearchEngine::open(&config, profile.as_deref())
+                            .map_err(configured_workbench_query_error)?;
+                    match format {
+                        WorkbenchQueryFormat::Full => {
+                            let response = engine
+                                .execute_lexical(&request)
+                                .map_err(configured_workbench_query_error)?;
+                            serde_json::to_value(response).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?
+                        }
+                        WorkbenchQueryFormat::Compact => {
+                            let response = engine
+                                .execute_lexical_compact(&request)
+                                .map_err(configured_workbench_query_error)?;
+                            serde_json::to_value(response).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?
+                        }
+                        WorkbenchQueryFormat::Readable => {
+                            let response = engine
+                                .execute_lexical_compact(&request)
+                                .map_err(configured_workbench_query_error)?;
+                            let text = format!(
+                                "workbench_binding: {}\nworkbench_configuration: {}\nworkbench_selection: {}\n{}",
+                                serde_json::to_string(response.binding_sha256.as_str()).map_err(
+                                    |error| structured_error(
+                                        "workbench_response",
+                                        error.to_string()
+                                    )
+                                )?,
+                                serde_json::to_string(&response.configuration).map_err(
+                                    |error| {
+                                        structured_error("workbench_response", error.to_string())
+                                    }
+                                )?,
+                                serde_json::to_string(&response.selection).map_err(|error| {
+                                    structured_error("workbench_response", error.to_string())
+                                })?,
+                                vlajmaji_search::render_workbench_lexical_compact(&response.result),
+                            );
+                            return Ok((QueryOutput::Readable(text), output_context));
+                        }
+                    }
+                }
+                WorkbenchProfilesCommand::FormDetail {
+                    config,
+                    profile,
+                    reference,
+                    expected_binding,
+                    format,
+                } => {
+                    let bytes = read_workbench_file(&reference)?;
+                    let reference: WorkbenchFormDetailRef = serde_json::from_slice(&bytes)
+                        .map_err(|error| structured_error("request_json", error.to_string()))?;
+                    let mut engine =
+                        ConfiguredWorkbenchSearchEngine::open(&config, profile.as_deref())
+                            .map_err(configured_workbench_query_error)?;
+                    let response = engine
+                        .form_detail(&reference, &expected_binding)
+                        .map_err(configured_workbench_query_error)?;
+                    match format {
+                        WorkbenchDetailFormat::Full => {
+                            serde_json::to_value(response).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?
+                        }
+                        WorkbenchDetailFormat::Readable => {
+                            let text = format!(
+                                "workbench_binding: {}\nworkbench_configuration: {}\nworkbench_selection: {}\nform_reference: {}\n{}",
+                                serde_json::to_string(&response.binding_sha256).map_err(
+                                    |error| {
+                                        structured_error("workbench_response", error.to_string())
+                                    }
+                                )?,
+                                serde_json::to_string(&response.configuration).map_err(
+                                    |error| {
+                                        structured_error("workbench_response", error.to_string())
+                                    }
+                                )?,
+                                serde_json::to_string(&response.selection).map_err(|error| {
+                                    structured_error("workbench_response", error.to_string())
+                                })?,
+                                serde_json::to_string(&response.reference).map_err(|error| {
+                                    structured_error("workbench_response", error.to_string())
+                                })?,
+                                vlajmaji_search::render_workbench_form_detail(&response.form),
                             );
                             return Ok((QueryOutput::Readable(text), output_context));
                         }
