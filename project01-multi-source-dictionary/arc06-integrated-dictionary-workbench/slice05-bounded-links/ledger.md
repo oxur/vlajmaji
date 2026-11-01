@@ -1,6 +1,6 @@
 # S05 ledger — bounded Links
 
-**DESIGN DRAFT0.2 / UNISSUED / all8 OPEN,2026-11-01.** Owns ALL Links duties moved from unissued S04 drafts; original A06-03 requires both. No current source allowance/CC assignment/runtime/readiness. S03 is closed; S04 is CC-exclusive INITIAL1/5. Source-backed provisional decisions are in the plan; no final S05 readiness is implied.
+**DESIGN DRAFT0.3 / UNISSUED / all8 OPEN,2026-11-01.** Owns ALL Links duties moved from unissued S04 drafts; original A06-03 requires both. No current source allowance/CC assignment/runtime/readiness. S03 is closed; S04 is CC-exclusive INITIAL1/5. Source-backed provisional decisions are in the plan; no final S05 readiness is implied.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
