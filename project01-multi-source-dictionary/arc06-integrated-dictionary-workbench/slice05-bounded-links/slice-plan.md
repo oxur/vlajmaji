@@ -1,6 +1,6 @@
 # S05 — Bounded typed and source-clause Links
 
-**STATUS: ISSUED / CORRECTION02 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final whole draft readiness PASS at bb26b952/tree08646489. Retained Luna/high bounded actual intake/readback+fresh WIP/protected/env pins only; source/index/ONEtarget affected-HOLD until CDC accepted intake, ROOT consistency and explicit dispatch. Prior DRAFT clauses/history retain as-of cutoff; correction norm/original issued records unchanged. All8S05/8Arc/14ProjectOPEN; THROUGH ALL Arc06 active.
+**STATUS: ISSUED / CORRECTION02 OF FIVE / INTAKE ACCEPTED / TRANSFER READY,2026-11-01.** ROOT readback/transfer consistency PASS21090c1. AFTER named custody checkpoint and explicit CDC retained-Luna dispatch, CC exclusively owns EXACT17/source index/ONEtarget; ROOT/CDC read-only until authorQUIET. Prior intake/DRAFT/history wording retains its as-of cutoff; all8S05/8Arc/14ProjectOPEN and throughALLArc06 active.
 
 ## 1. Useful increment, reuse and compatibility
 
@@ -127,3 +127,8 @@ Paths below are relative to `project01-multi-source-dictionary/`; exact issued p
 | --- | --- | --- | --- |
 | INITIAL1/5 | 2026-11-01 | `arc06-integrated-dictionary-workbench/slice05-bounded-links/cc-prompt.md` | Issued d6e73d54; actual intake/transfer435c78c, core/compiler work and first focused constructor executed. Affected HOLD after frozen r2 release/capture authority contradiction; failed constructor/raw preserved, no journal/build/query reached. Superseded only by correction02 when issued. |
 | CORRECTION02/5 | 2026-11-01 | `arc06-integrated-dictionary-workbench/slice05-bounded-links/cc-prompt-iteration01.md` | DRAFT pending ROOT final readiness/status-only issue/bounded intake/fresh WIP pins/explicit transfer. Correct release coverage/accounting; preserve Headactive and all graph oracles; carry every remaining original obligation. No implementation authority yet. |
+
+
+### 2026-11-01 — correction02 custody authorization
+
+Correction02 exact prompt `arc06-integrated-dictionary-workbench/slice05-bounded-links/cc-prompt-iteration01.md` was issued77a5f702; bounded intake accepted21090c1 and ROOT actual readback/transfer consistency PASS. AFTER this named checkpoint and explicit CDC followup dispatch, retained Luna/high CC exclusively resumes SAME17/index/ONEtarget for assignment2/5. Before dispatch affectedHOLD. ROOT/CDC source/index/target read-only until actual authorQUIET; CDC planning only. First correct r2 retained release/accounting with unchanged Head, then finish ALL remaining originalA–G/current census/prescribed gates/solearchive/namedsourcefreeze; no per-green ROOTgate or obligation reduction. Original issued packet/literals and all raw ledger cells unchanged.
