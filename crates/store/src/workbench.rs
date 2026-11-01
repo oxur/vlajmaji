@@ -1579,25 +1579,29 @@ fn decode_native_path(report: &NativePathReport) -> Result<PathBuf, WorkbenchErr
         });
     }
     #[cfg(unix)]
-    let path = {
-        use std::os::unix::ffi::OsStringExt;
-        if report.encoding != "unix-bytes" {
-            return Err(WorkbenchError::UnsupportedNativeEncoding {
-                encoding: report.encoding.clone(),
+    {
+        let path = {
+            use std::os::unix::ffi::OsStringExt;
+            if report.encoding != "unix-bytes" {
+                return Err(WorkbenchError::UnsupportedNativeEncoding {
+                    encoding: report.encoding.clone(),
+                });
+            }
+            PathBuf::from(std::ffi::OsString::from_vec(bytes))
+        };
+        if !path.is_absolute() || path.to_str() != report.utf8.as_deref() {
+            return Err(WorkbenchError::InvalidBinding {
+                detail: "native path absolute/UTF-8 fields disagree".into(),
             });
         }
-        PathBuf::from(std::ffi::OsString::from_vec(bytes))
-    };
-    #[cfg(not(unix))]
-    let path = return Err(WorkbenchError::UnsupportedNativeEncoding {
-        encoding: report.encoding.clone(),
-    });
-    if !path.is_absolute() || path.to_str() != report.utf8.as_deref() {
-        return Err(WorkbenchError::InvalidBinding {
-            detail: "native path absolute/UTF-8 fields disagree".into(),
-        });
+        Ok(path)
     }
-    Ok(path)
+    #[cfg(not(unix))]
+    {
+        Err(WorkbenchError::UnsupportedNativeEncoding {
+            encoding: report.encoding.clone(),
+        })
+    }
 }
 
 fn seal_payload_kind(bytes: &[u8]) -> Result<PackPayloadKind, WorkbenchError> {
