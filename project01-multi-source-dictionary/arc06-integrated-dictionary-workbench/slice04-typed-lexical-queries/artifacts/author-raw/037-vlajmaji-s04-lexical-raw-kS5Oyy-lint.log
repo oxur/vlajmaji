@@ -1,0 +1,38 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0432]: unresolved import `vlajmaji_search::WorkbenchFormDetailResult`
+  --> crates/search/tests/workbench_lexical_contract.rs:17:5
+   |
+17 |     WorkbenchFormDetailResult, WorkbenchLexicalCompactResult, WorkbenchLexicalFullResult,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^ no `WorkbenchFormDetailResult` in the root
+   |
+help: a similar name exists in the module
+   |
+17 -     WorkbenchFormDetailResult, WorkbenchLexicalCompactResult, WorkbenchLexicalFullResult,
+17 +     WorkbenchFormDetailRef, WorkbenchLexicalCompactResult, WorkbenchLexicalFullResult,
+   |
+
+error: unused imports: `CaptureMetadata`, `CaptureRef`, `DictionaryDocument`, and `TimePrecision`
+  --> crates/search/tests/workbench_lexical_contract.rs:12:5
+   |
+12 |     CaptureMetadata, CaptureRef, Dictionary, DictionaryDocument, EntityId, FormKind, FormRecord,
+   |     ^^^^^^^^^^^^^^^  ^^^^^^^^^^              ^^^^^^^^^^^^^^^^^^
+13 |     LlgImportOptions, PackId, PackPayloadKind, Presence, SourceEvidence, TimePrecision,
+   |                                                                          ^^^^^^^^^^^^^
+   |
+   = note: `-D unused-imports` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error[E0609]: no field `result` on type `vlajmaji_search::WorkbenchFormDetailResponse`
+   --> crates/search/tests/workbench_lexical_contract.rs:217:58
+    |
+217 |     let WorkbenchFormDetailResult::Form(detail) = detail.result else {
+    |                                                          ^^^^^^ unknown field
+    |
+    = note: available fields are: `version`, `kind`, `binding_sha256`, `selection`, `reference`, `form`
+
+Some errors have detailed explanations: E0432, E0609.
+For more information about an error, try `rustc --explain E0432`.
+error: could not compile `vlajmaji-search` (test "workbench_lexical_contract") due to 3 previous errors
+make: *** [lint] Error 101

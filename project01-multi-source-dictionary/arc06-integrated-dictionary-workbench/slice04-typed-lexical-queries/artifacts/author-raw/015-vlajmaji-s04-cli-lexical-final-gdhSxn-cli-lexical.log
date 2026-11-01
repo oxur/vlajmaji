@@ -1,0 +1,14 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.03s
+     Running tests/workbench_lexical_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/workbench_lexical_contract-942a5f7e9928c5d0)
+
+running 3 tests
+test test_lexical_deleted_cwd_child ... ignored, invoked as an isolated child after deleting its own working directory
+raw-byte lexical request path unsupported here: macOS EILSEQ 92
+raw-byte Form-detail path unsupported here: macOS EILSEQ 92
+test test_lexical_absolute_paths_survive_deleted_cwd ... ok
+test test_direct_and_configured_lexical_cli_emit_full_compact_readable_and_detail ... ok
+
+test result: ok. 2 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 1.15s
+

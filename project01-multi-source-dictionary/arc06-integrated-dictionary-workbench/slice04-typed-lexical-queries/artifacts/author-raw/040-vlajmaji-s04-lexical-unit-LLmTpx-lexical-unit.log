@@ -1,0 +1,15 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.26s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_search-7b41836ffc483a5a)
+
+running 6 tests
+test workbench::lexical::tests::test_form_detail_key_syntax_precedes_binding_staleness ... ok
+test workbench::lexical::tests::test_required_nullable_request_fields_reject_missing_duplicate_and_unknown_keys ... ok
+test workbench::lexical::tests::test_cursor_matches_fixed_typed_protocol_oracle ... ok
+test workbench::lexical::tests::test_cursor_excludes_page_size_and_checks_malformed_identity_before_staleness ... ok
+test workbench::lexical::tests::test_configured_lexical_wrappers_recheck_after_config_writer ... ok
+test workbench::lexical::tests::test_direct_lexical_wrappers_recheck_after_catalogue_writer ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.45s
+

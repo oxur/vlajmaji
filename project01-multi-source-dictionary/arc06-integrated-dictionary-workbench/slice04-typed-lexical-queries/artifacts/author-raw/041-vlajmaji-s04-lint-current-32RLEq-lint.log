@@ -1,0 +1,13 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0433]: cannot find type `WorkbenchView` in this scope
+    --> crates/search/src/workbench/lexical.rs:1533:9
+     |
+1533 |         WorkbenchView::build_new(
+     |         ^^^^^^^^^^^^^ use of undeclared type `WorkbenchView`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `vlajmaji-search` (lib test) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

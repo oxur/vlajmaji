@@ -1,0 +1,27 @@
+workbench_binding: "416166327ba66bf307ec8c76c64d0a0d0a837f48905e33ab7b3faacdace80186"
+workbench_selection: {"version":1,"packs":["la-lojban"],"disabled":[],"upstream":{"local_revision":1,"generation_id":"fed14876ba595a8246d139f573c0bdff-203136281092ea286477ca633cd13114","content_id":"c9aa0e6f64fe035be286907cc109e1cd77e0ccb290ebedff7bcd9532b3f38e3c","state_sha256":"3684b05a345d5c0d592b488b4a48ef8afff0886741e91e1f26f5688ea16dd372"},"owned":{"mode":{"revision":"lexical-owned-r1"},"source":"lexical-owned","revision":"lexical-owned-r1","sequence":1,"journal_schema":1,"state_sha256":"1b964429a96ef6aef9a8e94de092fc5a7f0a61bff3d25145b9d4f193ef3180b1","curation_sha256":null},"context_counts":{"declared":0,"provided":0},"curation_counts":null}
+lexical_operation: "reverse_definition"
+lexical_policy: "literal-definition-ascii-v1"
+lexical_totals: {"unit":"assertion_occurrences","records":3,"source_groups":2,"associated_assertions":3}
+lexical_source_totals: [{"source":{"id":"lexical-owned","display_name":"Lexical owned fixture","abbreviation":"LO","abbreviation_kind":"ProjectAssigned","abbreviation_evidence":"test fixture","origin":"OwnedDraft"},"records":1,"associated_assertions":1},{"source":{"id":"lexical-upstream","display_name":"Lexical upstream fixture","abbreviation":"LU","abbreviation_kind":"ProjectAssigned","abbreviation_evidence":"S04 lexical fixture","origin":"Upstream"},"records":2,"associated_assertions":2}]
+lexical_next_cursor: null
+source: {"id":"lexical-owned","display_name":"Lexical owned fixture","abbreviation":"LO","abbreviation_kind":"ProjectAssigned","abbreviation_evidence":"test fixture","origin":"OwnedDraft"}
+full_count: 1
+returned_count: 1
+partial: false
+  assertion: "lexical-owned-a"
+    spelling: {"Value":"farvi"}
+    definition: {"Value":{"text":"grow","language":"Missing","markup":"Missing"}}
+    detail: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"lexical-owned","entry_id":"lexical-owned-entry","assertion_id":"lexical-owned-a","occurrence":{"capture":{"namespace":"captured:lexical-owned:r1","sha256":"d44365d01da99627357f2af8d69ae4abf940efd97c51abcd2e770068a4622383"},"locator":"/a"},"entry_sha256":"d96807b4d5547180701a3eb7553eda643c401ea4a618e2a2ada4bc95d1b5be13","assertion_sha256":"db8890eb6bf83eda86990b7f16bf72c088dec7b69994671e3f8656c6f163df5e","native_entry_id":"lexical-owned-entry","native_assertion_id":"lexical-owned-a","contributor_id":"lexical-editor","distributor_id":null}
+source: {"id":"lexical-upstream","display_name":"Lexical upstream fixture","abbreviation":"LU","abbreviation_kind":"ProjectAssigned","abbreviation_evidence":"S04 lexical fixture","origin":"Upstream"}
+full_count: 2
+returned_count: 2
+partial: false
+  assertion: "lexical-upstream-a"
+    spelling: {"Value":"farvi"}
+    definition: {"Value":{"text":"GROW <b>literal</b>","language":"Missing","markup":"Missing"}}
+    detail: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"lexical-upstream","entry_id":"lexical-upstream-entry","assertion_id":"lexical-upstream-a","occurrence":{"capture":{"namespace":"captured:lexical-upstream:r1","sha256":"6ad8c0740ed57aa6a0e6ff690ca54bd1b4807386749c3da6ce2de04a4af63494"},"locator":"/0"},"entry_sha256":"8eabba2023a9eaf1e1cd85c5d7403e7f774ffb69fe5c6bb3c8690c62b46c69ed","assertion_sha256":"47d2f89ac0d68f42d426b45761df94d6b5ab10ce59ad1bcb1260c6ce974a115c","native_entry_id":"lexical-upstream-entry","native_assertion_id":"lexical-upstream-a","contributor_id":"lexical-upstream-editor","distributor_id":null}
+  assertion: "lexical-upstream-b"
+    spelling: {"Value":"farvi"}
+    definition: {"Value":{"text":"grow","language":"Missing","markup":"Missing"}}
+    detail: {"version":1,"digest_policy":"entry-assertion-serde-json-v1","role":"assertion","source":"lexical-upstream","entry_id":"lexical-upstream-entry","assertion_id":"lexical-upstream-b","occurrence":{"capture":{"namespace":"captured:lexical-upstream:r1","sha256":"6ad8c0740ed57aa6a0e6ff690ca54bd1b4807386749c3da6ce2de04a4af63494"},"locator":"/1"},"entry_sha256":"8eabba2023a9eaf1e1cd85c5d7403e7f774ffb69fe5c6bb3c8690c62b46c69ed","assertion_sha256":"751c74e77b213d3545d45c480ed5911060d907cf2a3da0ad99bb3a1623e3abb4","native_entry_id":"lexical-upstream-entry","native_assertion_id":"lexical-upstream-b","contributor_id":"lexical-upstream-editor","distributor_id":null}
