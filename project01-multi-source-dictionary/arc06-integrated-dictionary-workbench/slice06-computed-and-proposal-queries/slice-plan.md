@@ -1,6 +1,6 @@
 # S06 — Computed and proposal queries
 
-**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final whole-packet readiness PASS and named exact11 DRAFTfreeze5211d89 authorize retained Luna/high actual intake/readback/freshpins ONLY. SOURCE/index/ONEtarget remain QUIET until CDC accepted intake, named custody checkpoint and explicit EXACT15 transfer. S05 CLOSED; all eight S06/eight Arc/fourteen Project statuses OPEN; THROUGH ALL Arc06 and S07/separate Operator successors unchanged. Earlier DRAFT/pending wording retains its5211d89 as-of cutoff; no substantive contract/literal/manifest change.
+**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ACCEPTED / TRANSFER READY,2026-11-01.** CDC whole-read actual intake plus bounded corrections and independently fresh-matched94pins/2,462,858B, accepted d8bd64e source/tree/branch/clean index/protected refs/Bauske/exact15allowance12existing+3absent. AFTER this named custody checkpoint and explicit retained-Luna dispatch, CC exclusively owns EXACT15/source index/ONEtarget; ROOT/CDC read-only there until actual authorQUIET. Earlier packet/intake clauses retain their as-of cutoff; all eight child/eight Arc/fourteen Project statuses OPEN and THROUGH ALL Arc06/S07/Operator duties unchanged.
 
 ## 1. Useful result and compatibility
 
