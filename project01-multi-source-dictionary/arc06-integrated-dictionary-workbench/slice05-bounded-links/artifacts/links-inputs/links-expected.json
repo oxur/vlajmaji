@@ -1,0 +1,644 @@
+{
+  "scope": "PRE-INPUT manually enumerated graph/order/count authority; body expectations come from complete emitted input rows BEFORE query; Full/Compact target lower arrays retain own format order, not these traversal-ID unions.",
+  "seed_assertion_ids": [
+    "links-owned-a",
+    "links-upstream-x"
+  ],
+  "clause_branch_entry_order": [
+    "links-owned-entry-b",
+    "links-upstream-entry-q",
+    "links-upstream-entry-y"
+  ],
+  "r1_depth2": {
+    "rows": [
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-07"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-08"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "reverse",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-owned-a"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-04"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-06"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": [
+          "links-owned-c"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-01"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 9,
+            "byte_end": 17,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "branch"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 18,
+            "byte_end": 26,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "branch"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 27,
+            "byte_end": 36,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "missing"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-02"
+          },
+          "orientation": "reverse",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": [
+          "links-upstream-z"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-05"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": []
+      }
+    ],
+    "totals": {
+      "unit": "traversal_steps",
+      "records": 13,
+      "source_groups": 2,
+      "distinct_evidence": 11,
+      "associated_assertions": 6,
+      "visited_assertions": 6
+    },
+    "source_totals": [
+      {
+        "source": "links-owned",
+        "records": 7,
+        "distinct_evidence": 5,
+        "associated_assertions": 4
+      },
+      {
+        "source": "links-upstream",
+        "records": 6,
+        "distinct_evidence": 6,
+        "associated_assertions": 4
+      }
+    ]
+  },
+  "r2_depth2": {
+    "rows": [
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-07"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-08"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "reverse",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-owned-a"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-04"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-06"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-01"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 9,
+            "byte_end": 17,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "branch"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 18,
+            "byte_end": 26,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "branch"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 27,
+            "byte_end": 36,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "missing"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-02"
+          },
+          "orientation": "reverse",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": [
+          "links-upstream-z"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-05"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": []
+      }
+    ],
+    "totals": {
+      "unit": "traversal_steps",
+      "records": 13,
+      "source_groups": 2,
+      "distinct_evidence": 11,
+      "associated_assertions": 5,
+      "visited_assertions": 5
+    },
+    "source_totals": [
+      {
+        "source": "links-owned",
+        "records": 7,
+        "distinct_evidence": 5,
+        "associated_assertions": 3
+      },
+      {
+        "source": "links-upstream",
+        "records": 6,
+        "distinct_evidence": 6,
+        "associated_assertions": 4
+      }
+    ]
+  },
+  "depth1": {
+    "row_indices_from_r1_depth2": [
+      0,
+      1,
+      2,
+      7,
+      8,
+      9,
+      10
+    ],
+    "totals": {
+      "unit": "traversal_steps",
+      "records": 7,
+      "source_groups": 2,
+      "distinct_evidence": 7,
+      "associated_assertions": 4,
+      "visited_assertions": 4
+    },
+    "source_totals": [
+      {
+        "source": "links-owned",
+        "records": 3,
+        "distinct_evidence": 3,
+        "associated_assertions": 2
+      },
+      {
+        "source": "links-upstream",
+        "records": 4,
+        "distinct_evidence": 4,
+        "associated_assertions": 3
+      }
+    ]
+  },
+  "only_KU_depth2": {
+    "row_indices_from_r1_depth2": [
+      7,
+      8,
+      9,
+      10,
+      12
+    ],
+    "targets_by_row": [
+      [],
+      [
+        "links-upstream-y"
+      ],
+      [
+        "links-upstream-y"
+      ],
+      [],
+      []
+    ],
+    "totals": {
+      "unit": "traversal_steps",
+      "records": 5,
+      "source_groups": 1,
+      "distinct_evidence": 5,
+      "associated_assertions": 2,
+      "visited_assertions": 2
+    },
+    "branch_observations": [
+      {
+        "entry": "links-owned-entry-b",
+        "reason": "requested_source"
+      },
+      {
+        "entry": "links-upstream-entry-q",
+        "reason": "no_current_eligible_assertion"
+      },
+      {
+        "entry": "links-upstream-entry-y",
+        "reason": null
+      }
+    ]
+  },
+  "only_KO_depth2": {
+    "row_indices_from_r1_depth2": [
+      0,
+      1,
+      2
+    ],
+    "targets_by_row": [
+      [],
+      [],
+      []
+    ],
+    "totals": {
+      "unit": "traversal_steps",
+      "records": 3,
+      "source_groups": 1,
+      "distinct_evidence": 3,
+      "associated_assertions": 1,
+      "visited_assertions": 1
+    }
+  },
+  "format_specific": {
+    "R07": {
+      "Full": {
+        "status": "Resolved",
+        "confirmed": [
+          "links-upstream-y"
+        ],
+        "unverified": [
+          "links-upstream-z"
+        ],
+        "hops": [
+          "links-upstream-y"
+        ]
+      },
+      "Compact": {
+        "status": "Unverified",
+        "confirmed": [
+          "links-upstream-y"
+        ],
+        "unverified": [
+          "links-upstream-z"
+        ],
+        "hops": [
+          "links-upstream-y"
+        ]
+      }
+    },
+    "R08": {
+      "Full": {
+        "status": "Unverified",
+        "payload": true,
+        "confirmed": [],
+        "unverified": [
+          "links-upstream-z"
+        ],
+        "hops": []
+      },
+      "Compact": {
+        "status": "NoMatch",
+        "payload": false,
+        "confirmed": [],
+        "unverified": [],
+        "hops": []
+      }
+    }
+  },
+  "pages_r1_size1_then3": {
+    "first_indices": [
+      0
+    ],
+    "second_indices": [
+      1,
+      2,
+      3
+    ],
+    "remaining_indices": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "all_totals_invariant": true,
+    "terminal_next_cursor": null
+  },
+  "empty_start": {
+    "records": 0,
+    "source_groups": 0,
+    "distinct_evidence": 0,
+    "associated_assertions": 0,
+    "visited_assertions": 0
+  },
+  "metadata_only_counterpart_R08": {
+    "status": "CatalogueOnly",
+    "operational_reason": "not_selected",
+    "payload": null,
+    "target_assertion_ids": [],
+    "same_depth2_counts_as_r1": true
+  }
+}
