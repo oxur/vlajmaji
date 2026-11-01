@@ -217,3 +217,5 @@ Actual first constructor test72095/101 reached one test/zero passed/one failed b
 | --- | --- | --- | --- |
 | INITIAL1/5 | arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt.md | 2026-11-01 | Executed; recipe-amendment01 within INITIAL; actual constructor failure now HELD, shared accounting authority miss. |
 | CORRECTION02/5 | arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt-iteration01.md | 2026-11-01 | DRAFT, readiness pending; recipe-amendment02 explicit normalized9/Lexical6, all remaining original duties retained. |
+
+2026-11-01 current authority: CORRECTION02/5 bounded intake accepted with fresh current-WIP/authority/protected checks; explicit SAME15/index/ONEtarget transfer follows named checkpoint. See execution dated acceptance; original A–G, all8OPEN and Arc06 endpoint unchanged.
