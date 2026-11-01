@@ -1,0 +1,21 @@
+
+running 2 tests
+test test_links_metadata_only_remote_target_retains_registration_without_hop ... ok
+test test_links_fixed_typed_constructor_and_bounded_query ... FAILED
+
+failures:
+
+---- test_links_fixed_typed_constructor_and_bounded_query stdout ----
+
+thread 'test_links_fixed_typed_constructor_and_bounded_query' (87851510) panicked at crates/search/tests/workbench_links_contract.rs:1368:5:
+assertion `left == right` failed
+  left: 3
+ right: 1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test_links_fixed_typed_constructor_and_bounded_query
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.65s
+

@@ -1,0 +1,21 @@
+
+running 2 tests
+test test_links_metadata_only_remote_target_retains_registration_without_hop ... ok
+test test_links_fixed_typed_constructor_and_bounded_query ... FAILED
+
+failures:
+
+---- test_links_fixed_typed_constructor_and_bounded_query stdout ----
+
+thread 'test_links_fixed_typed_constructor_and_bounded_query' (87853179) panicked at crates/search/tests/workbench_links_contract.rs:1326:5:
+assertion `left == right` failed
+  left: ["links-upstream|1|relation:links-relation-01|forward|links-upstream-x|", "links-upstream|1|clause:links-note-x:9:17:see-also-braces-v2:branch|forward|links-upstream-x|links-upstream-y", "links-upstream|1|clause:links-note-x:18:26:see-also-braces-v2:branch|forward|links-upstream-x|links-upstream-y", "links-upstream|1|clause:links-note-x:27:36:see-also-braces-v2:missing|forward|links-upstream-x|", "links-upstream|2|relation:links-relation-05|forward|links-upstream-y|"]
+ right: ["links-upstream|1|relation:links-relation-01|forward|links-upstream-x|links-owned-b", "links-upstream|1|clause:links-note-x:9:17:see-also-braces-v2:branch|forward|links-upstream-x|links-owned-b,links-upstream-y", "links-upstream|1|clause:links-note-x:18:26:see-also-braces-v2:branch|forward|links-upstream-x|links-owned-b,links-upstream-y", "links-upstream|1|clause:links-note-x:27:36:see-also-braces-v2:missing|forward|links-upstream-x|", "links-upstream|2|relation:links-relation-05|forward|links-upstream-y|"]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test_links_fixed_typed_constructor_and_bounded_query
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.61s
+

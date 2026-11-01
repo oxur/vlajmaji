@@ -1,0 +1,15 @@
+SOURCE=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji
+ARCHIVE=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s05-allfeatures-archive01
+CWD=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s05-allfeatures-archive01
+FRESH_ROOT=/private/tmp/vlajmaji-s05-c02-archive-fixtures-SgO1mL
+TARGET=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+PATH_SHA256=f7af29286b33342886cb96026c90a8bfcbbb7e3cfaef920ed73086ab33d3a53d
+PRECONDITION: all five destination paths absent
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-lexicon v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s05-allfeatures-archive01/crates/lexicon)
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s05-allfeatures-archive01/crates/store)
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s05-allfeatures-archive01/crates/search)
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji-s05-allfeatures-archive01/crates/cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 19.11s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji data-pack fixture jbotci crates/data-jbotci/data`
+{"error":{"code":"io","message":"create fresh pack directory crates/data-jbotci/data: No such file or directory (os error 2)","sources":[]}}

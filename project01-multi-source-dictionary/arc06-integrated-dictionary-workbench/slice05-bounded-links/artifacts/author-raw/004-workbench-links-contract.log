@@ -1,0 +1,2338 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.91s
+     Running tests/workbench_links_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/workbench_links_contract-719bab8eca4ecf68)
+
+running 1 test
+test test_direct_and_configured_links_detail_cli_full_and_readable ... FAILED
+
+failures:
+
+---- test_direct_and_configured_links_detail_cli_full_and_readable stdout ----
+
+thread 'test_direct_and_configured_links_detail_cli_full_and_readable' (87714528) panicked at crates/cli/tests/workbench_links_contract.rs:222:5:
+direct Links response: {
+  "binding_sha256": "ae41ac07322e19298e62d6c926038a6524efe9348918ee46b5331a716c357abb",
+  "format": "compact",
+  "kind": "vlajmaji-workbench-lexical",
+  "result": {
+    "operation": "links",
+    "response": {
+      "availability": [
+        {
+          "aliases": [],
+          "collections": [
+            {
+              "description": {
+                "Value": {
+                  "language": {
+                    "Value": "en"
+                  },
+                  "markup": "Missing",
+                  "text": "Gismu, cmavo, and assigned rafsi lists prepared by The Logical Language Group, Inc."
+                }
+              },
+              "display_name": "LLG complete word lists",
+              "id": "llg-list-family-collection",
+              "source": "llg"
+            }
+          ],
+          "components": [
+            {
+              "collection": "llg-list-family-collection",
+              "id": "llg-component-gismu",
+              "languages": [
+                "jbo"
+              ],
+              "native_name": "gismu.txt"
+            },
+            {
+              "collection": "llg-list-family-collection",
+              "id": "llg-component-cmavo",
+              "languages": [
+                "jbo"
+              ],
+              "native_name": "cmavo.txt"
+            },
+            {
+              "collection": "llg-list-family-collection",
+              "id": "llg-component-rafsi",
+              "languages": [
+                "jbo"
+              ],
+              "native_name": "rafsi.txt"
+            }
+          ],
+          "lineage": [],
+          "loaded_captures": [
+            {
+              "namespace": "captured:llg:gismu",
+              "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+            },
+            {
+              "namespace": "captured:llg:notice",
+              "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+            },
+            {
+              "namespace": "captured:llg:cmavo",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "namespace": "captured:llg:rafsi",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          ],
+          "missing_captures": [],
+          "owned_head": null,
+          "reason": null,
+          "releases": [
+            {
+              "accounting": {
+                "input_occurrences": 1,
+                "normalized_occurrences": 1,
+                "query_excluded_occurrences": 0,
+                "unit": "physical-line"
+              },
+              "availability": "Available",
+              "captured_at": "Missing",
+              "captures": [
+                {
+                  "namespace": "captured:llg:gismu",
+                  "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                },
+                {
+                  "namespace": "captured:llg:notice",
+                  "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                }
+              ],
+              "component_id": "llg-component-gismu",
+              "content_notice_licenses": [
+                {
+                  "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                }
+              ],
+              "content_notice_locators": [
+                {
+                  "Value": "https://example.invalid/cli-links/public_domain.txt"
+                }
+              ],
+              "content_notices_count": 1,
+              "diagnostics_count": 0,
+              "distributor_id": null,
+              "distributor_revision": "Missing",
+              "id": "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef",
+              "normalizer": "vlajmaji-llg-lists",
+              "normalizer_version": "1",
+              "redistribution": "held",
+              "redistribution_evidence": [
+                "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+              ],
+              "schema_version": 1,
+              "selected": true,
+              "time_precision": "Unknown",
+              "upstream_revision": "Missing"
+            },
+            {
+              "accounting": {
+                "input_occurrences": 0,
+                "normalized_occurrences": 0,
+                "query_excluded_occurrences": 0,
+                "unit": "physical-line"
+              },
+              "availability": "Available",
+              "captured_at": "Missing",
+              "captures": [
+                {
+                  "namespace": "captured:llg:cmavo",
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                },
+                {
+                  "namespace": "captured:llg:notice",
+                  "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                }
+              ],
+              "component_id": "llg-component-cmavo",
+              "content_notice_licenses": [
+                {
+                  "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                }
+              ],
+              "content_notice_locators": [
+                {
+                  "Value": "https://example.invalid/cli-links/public_domain.txt"
+                }
+              ],
+              "content_notices_count": 1,
+              "diagnostics_count": 0,
+              "distributor_id": null,
+              "distributor_revision": "Missing",
+              "id": "llg-release-4863a91da2bc8e3bacadd2e0e66192b1c3ca959ca1a3eb3623d5c08dd8b3236f",
+              "normalizer": "vlajmaji-llg-lists",
+              "normalizer_version": "1",
+              "redistribution": "held",
+              "redistribution_evidence": [
+                "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+              ],
+              "schema_version": 1,
+              "selected": true,
+              "time_precision": "Unknown",
+              "upstream_revision": "Missing"
+            },
+            {
+              "accounting": {
+                "input_occurrences": 0,
+                "normalized_occurrences": 0,
+                "query_excluded_occurrences": 0,
+                "unit": "physical-line"
+              },
+              "availability": "Available",
+              "captured_at": "Missing",
+              "captures": [
+                {
+                  "namespace": "captured:llg:rafsi",
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                },
+                {
+                  "namespace": "captured:llg:notice",
+                  "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                }
+              ],
+              "component_id": "llg-component-rafsi",
+              "content_notice_licenses": [
+                {
+                  "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                }
+              ],
+              "content_notice_locators": [
+                {
+                  "Value": "https://example.invalid/cli-links/public_domain.txt"
+                }
+              ],
+              "content_notices_count": 1,
+              "diagnostics_count": 0,
+              "distributor_id": null,
+              "distributor_revision": "Missing",
+              "id": "llg-release-cedb12e1999577b8063dc5b5f37bbd5c838e8b261c5601eae282df33805d8c80",
+              "normalizer": "vlajmaji-llg-lists",
+              "normalizer_version": "1",
+              "redistribution": "held",
+              "redistribution_evidence": [
+                "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+              ],
+              "schema_version": 1,
+              "selected": true,
+              "time_precision": "Unknown",
+              "upstream_revision": "Missing"
+            }
+          ],
+          "selectable": true,
+          "selected_available_release_ids": [
+            "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef",
+            "llg-release-4863a91da2bc8e3bacadd2e0e66192b1c3ca959ca1a3eb3623d5c08dd8b3236f",
+            "llg-release-cedb12e1999577b8063dc5b5f37bbd5c838e8b261c5601eae282df33805d8c80"
+          ],
+          "source": {
+            "abbreviation": "LLG",
+            "abbreviation_evidence": null,
+            "abbreviation_kind": "ProjectAssigned",
+            "display_name": "The Logical Language Group, Inc.",
+            "id": "llg",
+            "origin": "Upstream"
+          }
+        }
+      ],
+      "code_notices": [
+        {
+          "license": {
+            "Value": "Apache-2.0"
+          },
+          "locator": {
+            "Value": "LICENSE"
+          },
+          "text": "Apache-2.0"
+        }
+      ],
+      "groups": [
+        {
+          "full_count": 2,
+          "hits": [
+            {
+              "depth": 1,
+              "detail_ref": {
+                "binding_sha256": "ae41ac07322e19298e62d6c926038a6524efe9348918ee46b5331a716c357abb",
+                "digest_policy": "link-evidence-serde-json-v1",
+                "identity": {
+                  "kind": "typed_relation",
+                  "relation_id": "cli-links-relation"
+                },
+                "publisher": "llg",
+                "record_sha256": "1b1e6a7923e0eb2f6adbe0ac80440ea93b939054cb875203f62e5256cec4c627",
+                "role": "link_evidence",
+                "version": 1
+              },
+              "from": {
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": {
+                        "Value": "en"
+                      },
+                      "markup": "Missing",
+                      "text": "to grow"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                  "id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "captured:llg:gismu",
+                      "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                    },
+                    "locator": "1"
+                  },
+                  "source_score": "Missing",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "llg-gismu-fixed-columns",
+                  "locator": "https://example.invalid/cli-links/gismu.txt",
+                  "notice_locator": {
+                    "Value": "https://example.invalid/cli-links/public_domain.txt"
+                  },
+                  "revision": "Missing",
+                  "source_name": "The Logical Language Group, Inc.",
+                  "time_precision": "Unknown"
+                },
+                "contributor": null,
+                "detail_ref": {
+                  "assertion_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                  "assertion_sha256": "bde532eaa111dc2d75d39887940d9b3f6b721fa981d505a23a0c13672178e5b8",
+                  "contributor_id": null,
+                  "digest_policy": "entry-assertion-serde-json-v1",
+                  "distributor_id": null,
+                  "entry_id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                  "entry_sha256": "6616f386f916de3028288065ad2f52518a7b268082f387988b41590f1ac61ba1",
+                  "native_assertion_id": null,
+                  "native_entry_id": "farvi",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "captured:llg:gismu",
+                      "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                    },
+                    "locator": "1"
+                  },
+                  "role": "assertion",
+                  "source": "llg",
+                  "version": 1
+                },
+                "distributor": null,
+                "entry": {
+                  "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": "Missing",
+                  "script": "Missing",
+                  "selmaho": "Missing",
+                  "source": "llg",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "occurrence_attribution": {
+                  "contributor": null,
+                  "native_assertion_id": null,
+                  "native_entry_id": "farvi",
+                  "occurrence": {
+                    "locator": "1",
+                    "snapshot": {
+                      "namespace": "captured:llg:gismu",
+                      "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                    }
+                  }
+                },
+                "occurrence_id": "000000000000001263617074757265643a6c6c673a6769736d75000000000000004033306162646163643466643533386434646163333861333864313164353164386635303130393330363263623737306330663538383564306238646632376538000000000000000131",
+                "release_ids": [
+                  "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef"
+                ],
+                "snapshot_attribution": {
+                  "distributor": null,
+                  "snapshot": {
+                    "namespace": "captured:llg:gismu",
+                    "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                  },
+                  "source": "llg"
+                }
+              },
+              "identity": {
+                "evidence": {
+                  "kind": "typed_relation",
+                  "relation_id": "cli-links-relation"
+                },
+                "from_assertion_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                "orientation": "forward"
+              },
+              "origin_resolution": {
+                "catalogue_matches": [
+                  {
+                    "capture": {
+                      "namespace": "captured:llg:gismu",
+                      "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                    },
+                    "contributing_pack_ids": [
+                      "llg"
+                    ],
+                    "entity_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                    "model_release_id": "",
+                    "native_assertion_id": null,
+                    "native_entry_id": "farvi",
+                    "occurrence": "1",
+                    "pack_id": "llg",
+                    "release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                    "role": "assertion",
+                    "source_id": "llg"
+                  }
+                ],
+                "operational_reason": null,
+                "payload": {
+                  "availability": [
+                    {
+                      "aliases": [],
+                      "collections": [
+                        {
+                          "description": {
+                            "Value": {
+                              "language": {
+                                "Value": "en"
+                              },
+                              "markup": "Missing",
+                              "text": "Gismu, cmavo, and assigned rafsi lists prepared by The Logical Language Group, Inc."
+                            }
+                          },
+                          "display_name": "LLG complete word lists",
+                          "id": "llg-list-family-collection",
+                          "source": "llg"
+                        }
+                      ],
+                      "components": [
+                        {
+                          "collection": "llg-list-family-collection",
+                          "id": "llg-component-gismu",
+                          "languages": [
+                            "jbo"
+                          ],
+                          "native_name": "gismu.txt"
+                        },
+                        {
+                          "collection": "llg-list-family-collection",
+                          "id": "llg-component-cmavo",
+                          "languages": [
+                            "jbo"
+                          ],
+                          "native_name": "cmavo.txt"
+                        },
+                        {
+                          "collection": "llg-list-family-collection",
+                          "id": "llg-component-rafsi",
+                          "languages": [
+                            "jbo"
+                          ],
+                          "native_name": "rafsi.txt"
+                        }
+                      ],
+                      "lineage": [],
+                      "loaded_captures": [
+                        {
+                          "namespace": "captured:llg:gismu",
+                          "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                        },
+                        {
+                          "namespace": "captured:llg:notice",
+                          "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                        },
+                        {
+                          "namespace": "captured:llg:cmavo",
+                          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                        },
+                        {
+                          "namespace": "captured:llg:rafsi",
+                          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                        }
+                      ],
+                      "missing_captures": [],
+                      "owned_head": null,
+                      "reason": null,
+                      "releases": [
+                        {
+                          "accounting": {
+                            "input_occurrences": 1,
+                            "normalized_occurrences": 1,
+                            "query_excluded_occurrences": 0,
+                            "unit": "physical-line"
+                          },
+                          "availability": "Available",
+                          "captured_at": "Missing",
+                          "captures": [
+                            {
+                              "namespace": "captured:llg:gismu",
+                              "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                            },
+                            {
+                              "namespace": "captured:llg:notice",
+                              "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                            }
+                          ],
+                          "component_id": "llg-component-gismu",
+                          "content_notice_licenses": [
+                            {
+                              "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                            }
+                          ],
+                          "content_notice_locators": [
+                            {
+                              "Value": "https://example.invalid/cli-links/public_domain.txt"
+                            }
+                          ],
+                          "content_notices_count": 1,
+                          "diagnostics_count": 0,
+                          "distributor_id": null,
+                          "distributor_revision": "Missing",
+                          "id": "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef",
+                          "normalizer": "vlajmaji-llg-lists",
+                          "normalizer_version": "1",
+                          "redistribution": "held",
+                          "redistribution_evidence": [
+                            "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                          ],
+                          "schema_version": 1,
+                          "selected": true,
+                          "time_precision": "Unknown",
+                          "upstream_revision": "Missing"
+                        },
+                        {
+                          "accounting": {
+                            "input_occurrences": 0,
+                            "normalized_occurrences": 0,
+                            "query_excluded_occurrences": 0,
+                            "unit": "physical-line"
+                          },
+                          "availability": "Available",
+                          "captured_at": "Missing",
+                          "captures": [
+                            {
+                              "namespace": "captured:llg:cmavo",
+                              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            },
+                            {
+                              "namespace": "captured:llg:notice",
+                              "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                            }
+                          ],
+                          "component_id": "llg-component-cmavo",
+                          "content_notice_licenses": [
+                            {
+                              "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                            }
+                          ],
+                          "content_notice_locators": [
+                            {
+                              "Value": "https://example.invalid/cli-links/public_domain.txt"
+                            }
+                          ],
+                          "content_notices_count": 1,
+                          "diagnostics_count": 0,
+                          "distributor_id": null,
+                          "distributor_revision": "Missing",
+                          "id": "llg-release-4863a91da2bc8e3bacadd2e0e66192b1c3ca959ca1a3eb3623d5c08dd8b3236f",
+                          "normalizer": "vlajmaji-llg-lists",
+                          "normalizer_version": "1",
+                          "redistribution": "held",
+                          "redistribution_evidence": [
+                            "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                          ],
+                          "schema_version": 1,
+                          "selected": true,
+                          "time_precision": "Unknown",
+                          "upstream_revision": "Missing"
+                        },
+                        {
+                          "accounting": {
+                            "input_occurrences": 0,
+                            "normalized_occurrences": 0,
+                            "query_excluded_occurrences": 0,
+                            "unit": "physical-line"
+                          },
+                          "availability": "Available",
+                          "captured_at": "Missing",
+                          "captures": [
+                            {
+                              "namespace": "captured:llg:rafsi",
+                              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            },
+                            {
+                              "namespace": "captured:llg:notice",
+                              "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                            }
+                          ],
+                          "component_id": "llg-component-rafsi",
+                          "content_notice_licenses": [
+                            {
+                              "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                            }
+                          ],
+                          "content_notice_locators": [
+                            {
+                              "Value": "https://example.invalid/cli-links/public_domain.txt"
+                            }
+                          ],
+                          "content_notices_count": 1,
+                          "diagnostics_count": 0,
+                          "distributor_id": null,
+                          "distributor_revision": "Missing",
+                          "id": "llg-release-cedb12e1999577b8063dc5b5f37bbd5c838e8b261c5601eae282df33805d8c80",
+                          "normalizer": "vlajmaji-llg-lists",
+                          "normalizer_version": "1",
+                          "redistribution": "held",
+                          "redistribution_evidence": [
+                            "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                          ],
+                          "schema_version": 1,
+                          "selected": true,
+                          "time_precision": "Unknown",
+                          "upstream_revision": "Missing"
+                        }
+                      ],
+                      "selectable": true,
+                      "selected_available_release_ids": [
+                        "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef",
+                        "llg-release-4863a91da2bc8e3bacadd2e0e66192b1c3ca959ca1a3eb3623d5c08dd8b3236f",
+                        "llg-release-cedb12e1999577b8063dc5b5f37bbd5c838e8b261c5601eae282df33805d8c80"
+                      ],
+                      "source": {
+                        "abbreviation": "LLG",
+                        "abbreviation_evidence": null,
+                        "abbreviation_kind": "ProjectAssigned",
+                        "display_name": "The Logical Language Group, Inc.",
+                        "id": "llg",
+                        "origin": "Upstream"
+                      }
+                    }
+                  ],
+                  "confirmed": [
+                    {
+                      "assertion": {
+                        "definition": {
+                          "Value": {
+                            "language": {
+                              "Value": "en"
+                            },
+                            "markup": "Missing",
+                            "text": "to grow"
+                          }
+                        },
+                        "eligibility": "Lexical",
+                        "entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                        "id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                        "language": {
+                          "Value": "en"
+                        },
+                        "native_sense_id": "Missing",
+                        "occurrence": {
+                          "capture": {
+                            "namespace": "captured:llg:gismu",
+                            "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                          },
+                          "locator": "1"
+                        },
+                        "source_score": "Missing",
+                        "timestamps": []
+                      },
+                      "capture_metadata": {
+                        "captured_at": "Missing",
+                        "format_label": "llg-gismu-fixed-columns",
+                        "locator": "https://example.invalid/cli-links/gismu.txt",
+                        "notice_locator": {
+                          "Value": "https://example.invalid/cli-links/public_domain.txt"
+                        },
+                        "revision": "Missing",
+                        "source_name": "The Logical Language Group, Inc.",
+                        "time_precision": "Unknown"
+                      },
+                      "current_eligible": true,
+                      "detail_ref": {
+                        "assertion_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                        "assertion_sha256": "bde532eaa111dc2d75d39887940d9b3f6b721fa981d505a23a0c13672178e5b8",
+                        "contributor_id": null,
+                        "digest_policy": "entry-assertion-serde-json-v1",
+                        "distributor_id": null,
+                        "entry_id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                        "entry_sha256": "6616f386f916de3028288065ad2f52518a7b268082f387988b41590f1ac61ba1",
+                        "native_assertion_id": null,
+                        "native_entry_id": "farvi",
+                        "occurrence": {
+                          "capture": {
+                            "namespace": "captured:llg:gismu",
+                            "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                          },
+                          "locator": "1"
+                        },
+                        "role": "assertion",
+                        "source": "llg",
+                        "version": 1
+                      },
+                      "entry": {
+                        "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                        "language": {
+                          "Value": "jbo"
+                        },
+                        "mapped_pos": "Missing",
+                        "native_word_class": "Missing",
+                        "script": "Missing",
+                        "selmaho": "Missing",
+                        "source": "llg",
+                        "spelling": {
+                          "Value": "farvi"
+                        }
+                      },
+                      "occurrence_attribution": {
+                        "contributor": null,
+                        "native_assertion_id": null,
+                        "native_entry_id": "farvi",
+                        "occurrence": {
+                          "locator": "1",
+                          "snapshot": {
+                            "namespace": "captured:llg:gismu",
+                            "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                          }
+                        }
+                      },
+                      "occurrence_id": "000000000000001263617074757265643a6c6c673a6769736d75000000000000004033306162646163643466643533386434646163333861333864313164353164386635303130393330363263623737306330663538383564306238646632376538000000000000000131",
+                      "owned_revision_ids": [],
+                      "payload_present": true,
+                      "release_ids": [
+                        "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef"
+                      ],
+                      "snapshot_attribution": {
+                        "distributor": null,
+                        "snapshot": {
+                          "namespace": "captured:llg:gismu",
+                          "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                        },
+                        "source": "llg"
+                      },
+                      "tombstoned_by": []
+                    }
+                  ],
+                  "entity": {
+                    "assertion_ids": [
+                      "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+                    ],
+                    "entry_ids": [
+                      "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"
+                    ],
+                    "evidence": null,
+                    "id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                    "occurrence": {
+                      "capture": {
+                        "namespace": "captured:llg:gismu",
+                        "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                      },
+                      "locator": "1"
+                    },
+                    "role": "assertion",
+                    "source_ids": [
+                      "llg"
+                    ],
+                    "spelling": null
+                  },
+                  "projection_policy": "compact-dictionary-v1",
+                  "requested_release": null,
+                  "snapshot_sha256": "48ea7fd2abe6a6d1069c60da5af766ef720eaf505329cbf493bd7efa25b5807b",
+                  "state_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                  "status": "Resolved",
+                  "target": {
+                    "Local": {
+                      "Assertion": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+                    }
+                  },
+                  "unverified": [],
+                  "version": 1
+                },
+                "registrations": [
+                  {
+                    "admitted": true,
+                    "disabled": false,
+                    "installation_state": "installed",
+                    "installed_release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                    "operational_reason": null,
+                    "pack_id": "llg",
+                    "payload_kind": "synthetic",
+                    "release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                    "requested_release": null,
+                    "selected": true,
+                    "sources": [
+                      {
+                        "abbreviation": "LLG",
+                        "abbreviation_evidence": null,
+                        "abbreviation_kind": "ProjectAssigned",
+                        "display_name": "The Logical Language Group, Inc.",
+                        "id": "llg",
+                        "origin": "Upstream"
+                      }
+                    ]
+                  }
+                ],
+                "requested_release": null,
+                "status": "Resolved",
+                "target": {
+                  "Local": {
+                    "Assertion": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+                  }
+                }
+              },
+              "record": {
+                "authority": "source_evidence",
+                "direction": "Forward",
+                "identity": {
+                  "kind": "typed_relation",
+                  "relation_id": "cli-links-relation"
+                },
+                "origin": {
+                  "Assertion": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+                },
+                "publisher": "llg",
+                "relation_kind": "SourceSeeAlso",
+                "scope": "Assertion"
+              },
+              "target_assertion_ids": [
+                "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+              ],
+              "target_observations": [
+                {
+                  "candidates": [
+                    {
+                      "assertion_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                      "reason": null,
+                      "source_id": "llg",
+                      "traversal_status": "traversable"
+                    }
+                  ],
+                  "entry": null,
+                  "reason": null,
+                  "resolution": {
+                    "catalogue_matches": [
+                      {
+                        "capture": null,
+                        "contributing_pack_ids": [
+                          "llg"
+                        ],
+                        "entity_id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                        "model_release_id": "",
+                        "native_assertion_id": null,
+                        "native_entry_id": null,
+                        "occurrence": null,
+                        "pack_id": "llg",
+                        "release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                        "role": "entry",
+                        "source_id": "llg"
+                      }
+                    ],
+                    "operational_reason": null,
+                    "payload": {
+                      "availability": [
+                        {
+                          "aliases": [],
+                          "collections": [
+                            {
+                              "description": {
+                                "Value": {
+                                  "language": {
+                                    "Value": "en"
+                                  },
+                                  "markup": "Missing",
+                                  "text": "Gismu, cmavo, and assigned rafsi lists prepared by The Logical Language Group, Inc."
+                                }
+                              },
+                              "display_name": "LLG complete word lists",
+                              "id": "llg-list-family-collection",
+                              "source": "llg"
+                            }
+                          ],
+                          "components": [
+                            {
+                              "collection": "llg-list-family-collection",
+                              "id": "llg-component-gismu",
+                              "languages": [
+                                "jbo"
+                              ],
+                              "native_name": "gismu.txt"
+                            },
+                            {
+                              "collection": "llg-list-family-collection",
+                              "id": "llg-component-cmavo",
+                              "languages": [
+                                "jbo"
+                              ],
+                              "native_name": "cmavo.txt"
+                            },
+                            {
+                              "collection": "llg-list-family-collection",
+                              "id": "llg-component-rafsi",
+                              "languages": [
+                                "jbo"
+                              ],
+                              "native_name": "rafsi.txt"
+                            }
+                          ],
+                          "lineage": [],
+                          "loaded_captures": [
+                            {
+                              "namespace": "captured:llg:gismu",
+                              "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                            },
+                            {
+                              "namespace": "captured:llg:notice",
+                              "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                            },
+                            {
+                              "namespace": "captured:llg:cmavo",
+                              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            },
+                            {
+                              "namespace": "captured:llg:rafsi",
+                              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            }
+                          ],
+                          "missing_captures": [],
+                          "owned_head": null,
+                          "reason": null,
+                          "releases": [
+                            {
+                              "accounting": {
+                                "input_occurrences": 1,
+                                "normalized_occurrences": 1,
+                                "query_excluded_occurrences": 0,
+                                "unit": "physical-line"
+                              },
+                              "availability": "Available",
+                              "captured_at": "Missing",
+                              "captures": [
+                                {
+                                  "namespace": "captured:llg:gismu",
+                                  "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                                },
+                                {
+                                  "namespace": "captured:llg:notice",
+                                  "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                                }
+                              ],
+                              "component_id": "llg-component-gismu",
+                              "content_notice_licenses": [
+                                {
+                                  "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                                }
+                              ],
+                              "content_notice_locators": [
+                                {
+                                  "Value": "https://example.invalid/cli-links/public_domain.txt"
+                                }
+                              ],
+                              "content_notices_count": 1,
+                              "diagnostics_count": 0,
+                              "distributor_id": null,
+                              "distributor_revision": "Missing",
+                              "id": "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef",
+                              "normalizer": "vlajmaji-llg-lists",
+                              "normalizer_version": "1",
+                              "redistribution": "held",
+                              "redistribution_evidence": [
+                                "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                              ],
+                              "schema_version": 1,
+                              "selected": true,
+                              "time_precision": "Unknown",
+                              "upstream_revision": "Missing"
+                            },
+                            {
+                              "accounting": {
+                                "input_occurrences": 0,
+                                "normalized_occurrences": 0,
+                                "query_excluded_occurrences": 0,
+                                "unit": "physical-line"
+                              },
+                              "availability": "Available",
+                              "captured_at": "Missing",
+                              "captures": [
+                                {
+                                  "namespace": "captured:llg:cmavo",
+                                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                },
+                                {
+                                  "namespace": "captured:llg:notice",
+                                  "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                                }
+                              ],
+                              "component_id": "llg-component-cmavo",
+                              "content_notice_licenses": [
+                                {
+                                  "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                                }
+                              ],
+                              "content_notice_locators": [
+                                {
+                                  "Value": "https://example.invalid/cli-links/public_domain.txt"
+                                }
+                              ],
+                              "content_notices_count": 1,
+                              "diagnostics_count": 0,
+                              "distributor_id": null,
+                              "distributor_revision": "Missing",
+                              "id": "llg-release-4863a91da2bc8e3bacadd2e0e66192b1c3ca959ca1a3eb3623d5c08dd8b3236f",
+                              "normalizer": "vlajmaji-llg-lists",
+                              "normalizer_version": "1",
+                              "redistribution": "held",
+                              "redistribution_evidence": [
+                                "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                              ],
+                              "schema_version": 1,
+                              "selected": true,
+                              "time_precision": "Unknown",
+                              "upstream_revision": "Missing"
+                            },
+                            {
+                              "accounting": {
+                                "input_occurrences": 0,
+                                "normalized_occurrences": 0,
+                                "query_excluded_occurrences": 0,
+                                "unit": "physical-line"
+                              },
+                              "availability": "Available",
+                              "captured_at": "Missing",
+                              "captures": [
+                                {
+                                  "namespace": "captured:llg:rafsi",
+                                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                },
+                                {
+                                  "namespace": "captured:llg:notice",
+                                  "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                                }
+                              ],
+                              "component_id": "llg-component-rafsi",
+                              "content_notice_licenses": [
+                                {
+                                  "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                                }
+                              ],
+                              "content_notice_locators": [
+                                {
+                                  "Value": "https://example.invalid/cli-links/public_domain.txt"
+                                }
+                              ],
+                              "content_notices_count": 1,
+                              "diagnostics_count": 0,
+                              "distributor_id": null,
+                              "distributor_revision": "Missing",
+                              "id": "llg-release-cedb12e1999577b8063dc5b5f37bbd5c838e8b261c5601eae282df33805d8c80",
+                              "normalizer": "vlajmaji-llg-lists",
+                              "normalizer_version": "1",
+                              "redistribution": "held",
+                              "redistribution_evidence": [
+                                "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                              ],
+                              "schema_version": 1,
+                              "selected": true,
+                              "time_precision": "Unknown",
+                              "upstream_revision": "Missing"
+                            }
+                          ],
+                          "selectable": true,
+                          "selected_available_release_ids": [
+                            "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef",
+                            "llg-release-4863a91da2bc8e3bacadd2e0e66192b1c3ca959ca1a3eb3623d5c08dd8b3236f",
+                            "llg-release-cedb12e1999577b8063dc5b5f37bbd5c838e8b261c5601eae282df33805d8c80"
+                          ],
+                          "source": {
+                            "abbreviation": "LLG",
+                            "abbreviation_evidence": null,
+                            "abbreviation_kind": "ProjectAssigned",
+                            "display_name": "The Logical Language Group, Inc.",
+                            "id": "llg",
+                            "origin": "Upstream"
+                          }
+                        }
+                      ],
+                      "confirmed": [
+                        {
+                          "assertion": {
+                            "definition": {
+                              "Value": {
+                                "language": {
+                                  "Value": "en"
+                                },
+                                "markup": "Missing",
+                                "text": "to grow"
+                              }
+                            },
+                            "eligibility": "Lexical",
+                            "entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                            "id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                            "language": {
+                              "Value": "en"
+                            },
+                            "native_sense_id": "Missing",
+                            "occurrence": {
+                              "capture": {
+                                "namespace": "captured:llg:gismu",
+                                "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                              },
+                              "locator": "1"
+                            },
+                            "source_score": "Missing",
+                            "timestamps": []
+                          },
+                          "capture_metadata": {
+                            "captured_at": "Missing",
+                            "format_label": "llg-gismu-fixed-columns",
+                            "locator": "https://example.invalid/cli-links/gismu.txt",
+                            "notice_locator": {
+                              "Value": "https://example.invalid/cli-links/public_domain.txt"
+                            },
+                            "revision": "Missing",
+                            "source_name": "The Logical Language Group, Inc.",
+                            "time_precision": "Unknown"
+                          },
+                          "current_eligible": true,
+                          "detail_ref": {
+                            "assertion_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                            "assertion_sha256": "bde532eaa111dc2d75d39887940d9b3f6b721fa981d505a23a0c13672178e5b8",
+                            "contributor_id": null,
+                            "digest_policy": "entry-assertion-serde-json-v1",
+                            "distributor_id": null,
+                            "entry_id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                            "entry_sha256": "6616f386f916de3028288065ad2f52518a7b268082f387988b41590f1ac61ba1",
+                            "native_assertion_id": null,
+                            "native_entry_id": "farvi",
+                            "occurrence": {
+                              "capture": {
+                                "namespace": "captured:llg:gismu",
+                                "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                              },
+                              "locator": "1"
+                            },
+                            "role": "assertion",
+                            "source": "llg",
+                            "version": 1
+                          },
+                          "entry": {
+                            "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                            "language": {
+                              "Value": "jbo"
+                            },
+                            "mapped_pos": "Missing",
+                            "native_word_class": "Missing",
+                            "script": "Missing",
+                            "selmaho": "Missing",
+                            "source": "llg",
+                            "spelling": {
+                              "Value": "farvi"
+                            }
+                          },
+                          "occurrence_attribution": {
+                            "contributor": null,
+                            "native_assertion_id": null,
+                            "native_entry_id": "farvi",
+                            "occurrence": {
+                              "locator": "1",
+                              "snapshot": {
+                                "namespace": "captured:llg:gismu",
+                                "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                              }
+                            }
+                          },
+                          "occurrence_id": "000000000000001263617074757265643a6c6c673a6769736d75000000000000004033306162646163643466643533386434646163333861333864313164353164386635303130393330363263623737306330663538383564306238646632376538000000000000000131",
+                          "owned_revision_ids": [],
+                          "payload_present": true,
+                          "release_ids": [
+                            "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef"
+                          ],
+                          "snapshot_attribution": {
+                            "distributor": null,
+                            "snapshot": {
+                              "namespace": "captured:llg:gismu",
+                              "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                            },
+                            "source": "llg"
+                          },
+                          "tombstoned_by": []
+                        }
+                      ],
+                      "entity": {
+                        "assertion_ids": [
+                          "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+                        ],
+                        "entry_ids": [
+                          "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"
+                        ],
+                        "evidence": null,
+                        "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                        "occurrence": null,
+                        "role": "entry",
+                        "source_ids": [
+                          "llg"
+                        ],
+                        "spelling": {
+                          "Value": "farvi"
+                        }
+                      },
+                      "projection_policy": "compact-dictionary-v1",
+                      "requested_release": null,
+                      "snapshot_sha256": "48ea7fd2abe6a6d1069c60da5af766ef720eaf505329cbf493bd7efa25b5807b",
+                      "state_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                      "status": "Resolved",
+                      "target": {
+                        "Local": {
+                          "Entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"
+                        }
+                      },
+                      "unverified": [],
+                      "version": 1
+                    },
+                    "registrations": [
+                      {
+                        "admitted": true,
+                        "disabled": false,
+                        "installation_state": "installed",
+                        "installed_release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                        "operational_reason": null,
+                        "pack_id": "llg",
+                        "payload_kind": "synthetic",
+                        "release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                        "requested_release": null,
+                        "selected": true,
+                        "sources": [
+                          {
+                            "abbreviation": "LLG",
+                            "abbreviation_evidence": null,
+                            "abbreviation_kind": "ProjectAssigned",
+                            "display_name": "The Logical Language Group, Inc.",
+                            "id": "llg",
+                            "origin": "Upstream"
+                          }
+                        ]
+                      }
+                    ],
+                    "requested_release": null,
+                    "status": "Resolved",
+                    "target": {
+                      "Local": {
+                        "Entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"
+                      }
+                    }
+                  },
+                  "traversal_status": "traversable"
+                }
+              ],
+              "traversal_status": "traversable"
+            },
+            {
+              "depth": 1,
+              "detail_ref": {
+                "binding_sha256": "ae41ac07322e19298e62d6c926038a6524efe9348918ee46b5331a716c357abb",
+                "digest_policy": "link-evidence-serde-json-v1",
+                "identity": {
+                  "byte_end": 16,
+                  "byte_start": 9,
+                  "context_id": "cli-links-note",
+                  "kind": "source_clause",
+                  "rule_version": "see-also-braces-v2",
+                  "target_spelling": "farvi"
+                },
+                "publisher": "llg",
+                "record_sha256": "3e9704af5c360c42c07ed357177e1e903a4e8366a5e8610e0db40d0dfcd5ab0b",
+                "role": "link_evidence",
+                "version": 1
+              },
+              "from": {
+                "assertion": {
+                  "definition": {
+                    "Value": {
+                      "language": {
+                        "Value": "en"
+                      },
+                      "markup": "Missing",
+                      "text": "to grow"
+                    }
+                  },
+                  "eligibility": "Lexical",
+                  "entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                  "id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                  "language": {
+                    "Value": "en"
+                  },
+                  "native_sense_id": "Missing",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "captured:llg:gismu",
+                      "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                    },
+                    "locator": "1"
+                  },
+                  "source_score": "Missing",
+                  "timestamps": []
+                },
+                "capture": {
+                  "captured_at": "Missing",
+                  "format_label": "llg-gismu-fixed-columns",
+                  "locator": "https://example.invalid/cli-links/gismu.txt",
+                  "notice_locator": {
+                    "Value": "https://example.invalid/cli-links/public_domain.txt"
+                  },
+                  "revision": "Missing",
+                  "source_name": "The Logical Language Group, Inc.",
+                  "time_precision": "Unknown"
+                },
+                "contributor": null,
+                "detail_ref": {
+                  "assertion_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                  "assertion_sha256": "bde532eaa111dc2d75d39887940d9b3f6b721fa981d505a23a0c13672178e5b8",
+                  "contributor_id": null,
+                  "digest_policy": "entry-assertion-serde-json-v1",
+                  "distributor_id": null,
+                  "entry_id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                  "entry_sha256": "6616f386f916de3028288065ad2f52518a7b268082f387988b41590f1ac61ba1",
+                  "native_assertion_id": null,
+                  "native_entry_id": "farvi",
+                  "occurrence": {
+                    "capture": {
+                      "namespace": "captured:llg:gismu",
+                      "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                    },
+                    "locator": "1"
+                  },
+                  "role": "assertion",
+                  "source": "llg",
+                  "version": 1
+                },
+                "distributor": null,
+                "entry": {
+                  "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                  "language": {
+                    "Value": "jbo"
+                  },
+                  "mapped_pos": "Missing",
+                  "native_word_class": "Missing",
+                  "script": "Missing",
+                  "selmaho": "Missing",
+                  "source": "llg",
+                  "spelling": {
+                    "Value": "farvi"
+                  }
+                },
+                "occurrence_attribution": {
+                  "contributor": null,
+                  "native_assertion_id": null,
+                  "native_entry_id": "farvi",
+                  "occurrence": {
+                    "locator": "1",
+                    "snapshot": {
+                      "namespace": "captured:llg:gismu",
+                      "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                    }
+                  }
+                },
+                "occurrence_id": "000000000000001263617074757265643a6c6c673a6769736d75000000000000004033306162646163643466643533386434646163333861333864313164353164386635303130393330363263623737306330663538383564306238646632376538000000000000000131",
+                "release_ids": [
+                  "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef"
+                ],
+                "snapshot_attribution": {
+                  "distributor": null,
+                  "snapshot": {
+                    "namespace": "captured:llg:gismu",
+                    "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                  },
+                  "source": "llg"
+                }
+              },
+              "identity": {
+                "evidence": {
+                  "byte_end": 16,
+                  "byte_start": 9,
+                  "context_id": "cli-links-note",
+                  "kind": "source_clause",
+                  "rule_version": "see-also-braces-v2",
+                  "target_spelling": "farvi"
+                },
+                "from_assertion_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                "orientation": "forward"
+              },
+              "origin_resolution": {
+                "catalogue_matches": [
+                  {
+                    "capture": {
+                      "namespace": "captured:llg:gismu",
+                      "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                    },
+                    "contributing_pack_ids": [
+                      "llg"
+                    ],
+                    "entity_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                    "model_release_id": "",
+                    "native_assertion_id": null,
+                    "native_entry_id": "farvi",
+                    "occurrence": "1",
+                    "pack_id": "llg",
+                    "release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                    "role": "assertion",
+                    "source_id": "llg"
+                  }
+                ],
+                "operational_reason": null,
+                "payload": {
+                  "availability": [
+                    {
+                      "aliases": [],
+                      "collections": [
+                        {
+                          "description": {
+                            "Value": {
+                              "language": {
+                                "Value": "en"
+                              },
+                              "markup": "Missing",
+                              "text": "Gismu, cmavo, and assigned rafsi lists prepared by The Logical Language Group, Inc."
+                            }
+                          },
+                          "display_name": "LLG complete word lists",
+                          "id": "llg-list-family-collection",
+                          "source": "llg"
+                        }
+                      ],
+                      "components": [
+                        {
+                          "collection": "llg-list-family-collection",
+                          "id": "llg-component-gismu",
+                          "languages": [
+                            "jbo"
+                          ],
+                          "native_name": "gismu.txt"
+                        },
+                        {
+                          "collection": "llg-list-family-collection",
+                          "id": "llg-component-cmavo",
+                          "languages": [
+                            "jbo"
+                          ],
+                          "native_name": "cmavo.txt"
+                        },
+                        {
+                          "collection": "llg-list-family-collection",
+                          "id": "llg-component-rafsi",
+                          "languages": [
+                            "jbo"
+                          ],
+                          "native_name": "rafsi.txt"
+                        }
+                      ],
+                      "lineage": [],
+                      "loaded_captures": [
+                        {
+                          "namespace": "captured:llg:gismu",
+                          "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                        },
+                        {
+                          "namespace": "captured:llg:notice",
+                          "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                        },
+                        {
+                          "namespace": "captured:llg:cmavo",
+                          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                        },
+                        {
+                          "namespace": "captured:llg:rafsi",
+                          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                        }
+                      ],
+                      "missing_captures": [],
+                      "owned_head": null,
+                      "reason": null,
+                      "releases": [
+                        {
+                          "accounting": {
+                            "input_occurrences": 1,
+                            "normalized_occurrences": 1,
+                            "query_excluded_occurrences": 0,
+                            "unit": "physical-line"
+                          },
+                          "availability": "Available",
+                          "captured_at": "Missing",
+                          "captures": [
+                            {
+                              "namespace": "captured:llg:gismu",
+                              "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                            },
+                            {
+                              "namespace": "captured:llg:notice",
+                              "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                            }
+                          ],
+                          "component_id": "llg-component-gismu",
+                          "content_notice_licenses": [
+                            {
+                              "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                            }
+                          ],
+                          "content_notice_locators": [
+                            {
+                              "Value": "https://example.invalid/cli-links/public_domain.txt"
+                            }
+                          ],
+                          "content_notices_count": 1,
+                          "diagnostics_count": 0,
+                          "distributor_id": null,
+                          "distributor_revision": "Missing",
+                          "id": "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef",
+                          "normalizer": "vlajmaji-llg-lists",
+                          "normalizer_version": "1",
+                          "redistribution": "held",
+                          "redistribution_evidence": [
+                            "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                          ],
+                          "schema_version": 1,
+                          "selected": true,
+                          "time_precision": "Unknown",
+                          "upstream_revision": "Missing"
+                        },
+                        {
+                          "accounting": {
+                            "input_occurrences": 0,
+                            "normalized_occurrences": 0,
+                            "query_excluded_occurrences": 0,
+                            "unit": "physical-line"
+                          },
+                          "availability": "Available",
+                          "captured_at": "Missing",
+                          "captures": [
+                            {
+                              "namespace": "captured:llg:cmavo",
+                              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            },
+                            {
+                              "namespace": "captured:llg:notice",
+                              "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                            }
+                          ],
+                          "component_id": "llg-component-cmavo",
+                          "content_notice_licenses": [
+                            {
+                              "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                            }
+                          ],
+                          "content_notice_locators": [
+                            {
+                              "Value": "https://example.invalid/cli-links/public_domain.txt"
+                            }
+                          ],
+                          "content_notices_count": 1,
+                          "diagnostics_count": 0,
+                          "distributor_id": null,
+                          "distributor_revision": "Missing",
+                          "id": "llg-release-4863a91da2bc8e3bacadd2e0e66192b1c3ca959ca1a3eb3623d5c08dd8b3236f",
+                          "normalizer": "vlajmaji-llg-lists",
+                          "normalizer_version": "1",
+                          "redistribution": "held",
+                          "redistribution_evidence": [
+                            "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                          ],
+                          "schema_version": 1,
+                          "selected": true,
+                          "time_precision": "Unknown",
+                          "upstream_revision": "Missing"
+                        },
+                        {
+                          "accounting": {
+                            "input_occurrences": 0,
+                            "normalized_occurrences": 0,
+                            "query_excluded_occurrences": 0,
+                            "unit": "physical-line"
+                          },
+                          "availability": "Available",
+                          "captured_at": "Missing",
+                          "captures": [
+                            {
+                              "namespace": "captured:llg:rafsi",
+                              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            },
+                            {
+                              "namespace": "captured:llg:notice",
+                              "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                            }
+                          ],
+                          "component_id": "llg-component-rafsi",
+                          "content_notice_licenses": [
+                            {
+                              "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                            }
+                          ],
+                          "content_notice_locators": [
+                            {
+                              "Value": "https://example.invalid/cli-links/public_domain.txt"
+                            }
+                          ],
+                          "content_notices_count": 1,
+                          "diagnostics_count": 0,
+                          "distributor_id": null,
+                          "distributor_revision": "Missing",
+                          "id": "llg-release-cedb12e1999577b8063dc5b5f37bbd5c838e8b261c5601eae282df33805d8c80",
+                          "normalizer": "vlajmaji-llg-lists",
+                          "normalizer_version": "1",
+                          "redistribution": "held",
+                          "redistribution_evidence": [
+                            "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                          ],
+                          "schema_version": 1,
+                          "selected": true,
+                          "time_precision": "Unknown",
+                          "upstream_revision": "Missing"
+                        }
+                      ],
+                      "selectable": true,
+                      "selected_available_release_ids": [
+                        "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef",
+                        "llg-release-4863a91da2bc8e3bacadd2e0e66192b1c3ca959ca1a3eb3623d5c08dd8b3236f",
+                        "llg-release-cedb12e1999577b8063dc5b5f37bbd5c838e8b261c5601eae282df33805d8c80"
+                      ],
+                      "source": {
+                        "abbreviation": "LLG",
+                        "abbreviation_evidence": null,
+                        "abbreviation_kind": "ProjectAssigned",
+                        "display_name": "The Logical Language Group, Inc.",
+                        "id": "llg",
+                        "origin": "Upstream"
+                      }
+                    }
+                  ],
+                  "confirmed": [
+                    {
+                      "assertion": {
+                        "definition": {
+                          "Value": {
+                            "language": {
+                              "Value": "en"
+                            },
+                            "markup": "Missing",
+                            "text": "to grow"
+                          }
+                        },
+                        "eligibility": "Lexical",
+                        "entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                        "id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                        "language": {
+                          "Value": "en"
+                        },
+                        "native_sense_id": "Missing",
+                        "occurrence": {
+                          "capture": {
+                            "namespace": "captured:llg:gismu",
+                            "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                          },
+                          "locator": "1"
+                        },
+                        "source_score": "Missing",
+                        "timestamps": []
+                      },
+                      "capture_metadata": {
+                        "captured_at": "Missing",
+                        "format_label": "llg-gismu-fixed-columns",
+                        "locator": "https://example.invalid/cli-links/gismu.txt",
+                        "notice_locator": {
+                          "Value": "https://example.invalid/cli-links/public_domain.txt"
+                        },
+                        "revision": "Missing",
+                        "source_name": "The Logical Language Group, Inc.",
+                        "time_precision": "Unknown"
+                      },
+                      "current_eligible": true,
+                      "detail_ref": {
+                        "assertion_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                        "assertion_sha256": "bde532eaa111dc2d75d39887940d9b3f6b721fa981d505a23a0c13672178e5b8",
+                        "contributor_id": null,
+                        "digest_policy": "entry-assertion-serde-json-v1",
+                        "distributor_id": null,
+                        "entry_id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                        "entry_sha256": "6616f386f916de3028288065ad2f52518a7b268082f387988b41590f1ac61ba1",
+                        "native_assertion_id": null,
+                        "native_entry_id": "farvi",
+                        "occurrence": {
+                          "capture": {
+                            "namespace": "captured:llg:gismu",
+                            "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                          },
+                          "locator": "1"
+                        },
+                        "role": "assertion",
+                        "source": "llg",
+                        "version": 1
+                      },
+                      "entry": {
+                        "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                        "language": {
+                          "Value": "jbo"
+                        },
+                        "mapped_pos": "Missing",
+                        "native_word_class": "Missing",
+                        "script": "Missing",
+                        "selmaho": "Missing",
+                        "source": "llg",
+                        "spelling": {
+                          "Value": "farvi"
+                        }
+                      },
+                      "occurrence_attribution": {
+                        "contributor": null,
+                        "native_assertion_id": null,
+                        "native_entry_id": "farvi",
+                        "occurrence": {
+                          "locator": "1",
+                          "snapshot": {
+                            "namespace": "captured:llg:gismu",
+                            "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                          }
+                        }
+                      },
+                      "occurrence_id": "000000000000001263617074757265643a6c6c673a6769736d75000000000000004033306162646163643466643533386434646163333861333864313164353164386635303130393330363263623737306330663538383564306238646632376538000000000000000131",
+                      "owned_revision_ids": [],
+                      "payload_present": true,
+                      "release_ids": [
+                        "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef"
+                      ],
+                      "snapshot_attribution": {
+                        "distributor": null,
+                        "snapshot": {
+                          "namespace": "captured:llg:gismu",
+                          "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                        },
+                        "source": "llg"
+                      },
+                      "tombstoned_by": []
+                    }
+                  ],
+                  "entity": {
+                    "assertion_ids": [
+                      "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+                    ],
+                    "entry_ids": [
+                      "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"
+                    ],
+                    "evidence": null,
+                    "id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                    "occurrence": {
+                      "capture": {
+                        "namespace": "captured:llg:gismu",
+                        "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                      },
+                      "locator": "1"
+                    },
+                    "role": "assertion",
+                    "source_ids": [
+                      "llg"
+                    ],
+                    "spelling": null
+                  },
+                  "projection_policy": "compact-dictionary-v1",
+                  "requested_release": null,
+                  "snapshot_sha256": "48ea7fd2abe6a6d1069c60da5af766ef720eaf505329cbf493bd7efa25b5807b",
+                  "state_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                  "status": "Resolved",
+                  "target": {
+                    "Local": {
+                      "Assertion": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+                    }
+                  },
+                  "unverified": [],
+                  "version": 1
+                },
+                "registrations": [
+                  {
+                    "admitted": true,
+                    "disabled": false,
+                    "installation_state": "installed",
+                    "installed_release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                    "operational_reason": null,
+                    "pack_id": "llg",
+                    "payload_kind": "synthetic",
+                    "release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                    "requested_release": null,
+                    "selected": true,
+                    "sources": [
+                      {
+                        "abbreviation": "LLG",
+                        "abbreviation_evidence": null,
+                        "abbreviation_kind": "ProjectAssigned",
+                        "display_name": "The Logical Language Group, Inc.",
+                        "id": "llg",
+                        "origin": "Upstream"
+                      }
+                    ]
+                  }
+                ],
+                "requested_release": null,
+                "status": "Resolved",
+                "target": {
+                  "Local": {
+                    "Assertion": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+                  }
+                }
+              },
+              "record": {
+                "authority": "derived_source_clause",
+                "direction": null,
+                "identity": {
+                  "byte_end": 16,
+                  "byte_start": 9,
+                  "context_id": "cli-links-note",
+                  "kind": "source_clause",
+                  "rule_version": "see-also-braces-v2",
+                  "target_spelling": "farvi"
+                },
+                "origin": {
+                  "Assertion": "cli-links-note"
+                },
+                "publisher": "llg",
+                "relation_kind": null,
+                "scope": null
+              },
+              "target_assertion_ids": [
+                "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+              ],
+              "target_observations": [
+                {
+                  "candidates": [
+                    {
+                      "assertion_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                      "reason": null,
+                      "source_id": "llg",
+                      "traversal_status": "traversable"
+                    }
+                  ],
+                  "entry": {
+                    "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                    "language": {
+                      "Value": "jbo"
+                    },
+                    "mapped_pos": "Missing",
+                    "native_word_class": "Missing",
+                    "script": "Missing",
+                    "selmaho": "Missing",
+                    "source": "llg",
+                    "spelling": {
+                      "Value": "farvi"
+                    }
+                  },
+                  "reason": null,
+                  "resolution": {
+                    "catalogue_matches": [
+                      {
+                        "capture": null,
+                        "contributing_pack_ids": [
+                          "llg"
+                        ],
+                        "entity_id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                        "model_release_id": "",
+                        "native_assertion_id": null,
+                        "native_entry_id": null,
+                        "occurrence": null,
+                        "pack_id": "llg",
+                        "release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                        "role": "entry",
+                        "source_id": "llg"
+                      }
+                    ],
+                    "operational_reason": null,
+                    "payload": {
+                      "availability": [
+                        {
+                          "aliases": [],
+                          "collections": [
+                            {
+                              "description": {
+                                "Value": {
+                                  "language": {
+                                    "Value": "en"
+                                  },
+                                  "markup": "Missing",
+                                  "text": "Gismu, cmavo, and assigned rafsi lists prepared by The Logical Language Group, Inc."
+                                }
+                              },
+                              "display_name": "LLG complete word lists",
+                              "id": "llg-list-family-collection",
+                              "source": "llg"
+                            }
+                          ],
+                          "components": [
+                            {
+                              "collection": "llg-list-family-collection",
+                              "id": "llg-component-gismu",
+                              "languages": [
+                                "jbo"
+                              ],
+                              "native_name": "gismu.txt"
+                            },
+                            {
+                              "collection": "llg-list-family-collection",
+                              "id": "llg-component-cmavo",
+                              "languages": [
+                                "jbo"
+                              ],
+                              "native_name": "cmavo.txt"
+                            },
+                            {
+                              "collection": "llg-list-family-collection",
+                              "id": "llg-component-rafsi",
+                              "languages": [
+                                "jbo"
+                              ],
+                              "native_name": "rafsi.txt"
+                            }
+                          ],
+                          "lineage": [],
+                          "loaded_captures": [
+                            {
+                              "namespace": "captured:llg:gismu",
+                              "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                            },
+                            {
+                              "namespace": "captured:llg:notice",
+                              "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                            },
+                            {
+                              "namespace": "captured:llg:cmavo",
+                              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            },
+                            {
+                              "namespace": "captured:llg:rafsi",
+                              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                            }
+                          ],
+                          "missing_captures": [],
+                          "owned_head": null,
+                          "reason": null,
+                          "releases": [
+                            {
+                              "accounting": {
+                                "input_occurrences": 1,
+                                "normalized_occurrences": 1,
+                                "query_excluded_occurrences": 0,
+                                "unit": "physical-line"
+                              },
+                              "availability": "Available",
+                              "captured_at": "Missing",
+                              "captures": [
+                                {
+                                  "namespace": "captured:llg:gismu",
+                                  "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                                },
+                                {
+                                  "namespace": "captured:llg:notice",
+                                  "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                                }
+                              ],
+                              "component_id": "llg-component-gismu",
+                              "content_notice_licenses": [
+                                {
+                                  "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                                }
+                              ],
+                              "content_notice_locators": [
+                                {
+                                  "Value": "https://example.invalid/cli-links/public_domain.txt"
+                                }
+                              ],
+                              "content_notices_count": 1,
+                              "diagnostics_count": 0,
+                              "distributor_id": null,
+                              "distributor_revision": "Missing",
+                              "id": "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef",
+                              "normalizer": "vlajmaji-llg-lists",
+                              "normalizer_version": "1",
+                              "redistribution": "held",
+                              "redistribution_evidence": [
+                                "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                              ],
+                              "schema_version": 1,
+                              "selected": true,
+                              "time_precision": "Unknown",
+                              "upstream_revision": "Missing"
+                            },
+                            {
+                              "accounting": {
+                                "input_occurrences": 0,
+                                "normalized_occurrences": 0,
+                                "query_excluded_occurrences": 0,
+                                "unit": "physical-line"
+                              },
+                              "availability": "Available",
+                              "captured_at": "Missing",
+                              "captures": [
+                                {
+                                  "namespace": "captured:llg:cmavo",
+                                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                },
+                                {
+                                  "namespace": "captured:llg:notice",
+                                  "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                                }
+                              ],
+                              "component_id": "llg-component-cmavo",
+                              "content_notice_licenses": [
+                                {
+                                  "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                                }
+                              ],
+                              "content_notice_locators": [
+                                {
+                                  "Value": "https://example.invalid/cli-links/public_domain.txt"
+                                }
+                              ],
+                              "content_notices_count": 1,
+                              "diagnostics_count": 0,
+                              "distributor_id": null,
+                              "distributor_revision": "Missing",
+                              "id": "llg-release-4863a91da2bc8e3bacadd2e0e66192b1c3ca959ca1a3eb3623d5c08dd8b3236f",
+                              "normalizer": "vlajmaji-llg-lists",
+                              "normalizer_version": "1",
+                              "redistribution": "held",
+                              "redistribution_evidence": [
+                                "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                              ],
+                              "schema_version": 1,
+                              "selected": true,
+                              "time_precision": "Unknown",
+                              "upstream_revision": "Missing"
+                            },
+                            {
+                              "accounting": {
+                                "input_occurrences": 0,
+                                "normalized_occurrences": 0,
+                                "query_excluded_occurrences": 0,
+                                "unit": "physical-line"
+                              },
+                              "availability": "Available",
+                              "captured_at": "Missing",
+                              "captures": [
+                                {
+                                  "namespace": "captured:llg:rafsi",
+                                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                },
+                                {
+                                  "namespace": "captured:llg:notice",
+                                  "sha256": "db41820bbf7b9b099ef7567042904c30d51406dcb8c0100092bd842057aaa38a"
+                                }
+                              ],
+                              "component_id": "llg-component-rafsi",
+                              "content_notice_licenses": [
+                                {
+                                  "Value": "source-claimed public domain; scope and requested conditions are not independently established"
+                                }
+                              ],
+                              "content_notice_locators": [
+                                {
+                                  "Value": "https://example.invalid/cli-links/public_domain.txt"
+                                }
+                              ],
+                              "content_notices_count": 1,
+                              "diagnostics_count": 0,
+                              "distributor_id": null,
+                              "distributor_revision": "Missing",
+                              "id": "llg-release-cedb12e1999577b8063dc5b5f37bbd5c838e8b261c5601eae282df33805d8c80",
+                              "normalizer": "vlajmaji-llg-lists",
+                              "normalizer_version": "1",
+                              "redistribution": "held",
+                              "redistribution_evidence": [
+                                "The LLG notice is a source claim, not independent legal advice or a broadened redistribution determination."
+                              ],
+                              "schema_version": 1,
+                              "selected": true,
+                              "time_precision": "Unknown",
+                              "upstream_revision": "Missing"
+                            }
+                          ],
+                          "selectable": true,
+                          "selected_available_release_ids": [
+                            "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef",
+                            "llg-release-4863a91da2bc8e3bacadd2e0e66192b1c3ca959ca1a3eb3623d5c08dd8b3236f",
+                            "llg-release-cedb12e1999577b8063dc5b5f37bbd5c838e8b261c5601eae282df33805d8c80"
+                          ],
+                          "source": {
+                            "abbreviation": "LLG",
+                            "abbreviation_evidence": null,
+                            "abbreviation_kind": "ProjectAssigned",
+                            "display_name": "The Logical Language Group, Inc.",
+                            "id": "llg",
+                            "origin": "Upstream"
+                          }
+                        }
+                      ],
+                      "confirmed": [
+                        {
+                          "assertion": {
+                            "definition": {
+                              "Value": {
+                                "language": {
+                                  "Value": "en"
+                                },
+                                "markup": "Missing",
+                                "text": "to grow"
+                              }
+                            },
+                            "eligibility": "Lexical",
+                            "entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                            "id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                            "language": {
+                              "Value": "en"
+                            },
+                            "native_sense_id": "Missing",
+                            "occurrence": {
+                              "capture": {
+                                "namespace": "captured:llg:gismu",
+                                "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                              },
+                              "locator": "1"
+                            },
+                            "source_score": "Missing",
+                            "timestamps": []
+                          },
+                          "capture_metadata": {
+                            "captured_at": "Missing",
+                            "format_label": "llg-gismu-fixed-columns",
+                            "locator": "https://example.invalid/cli-links/gismu.txt",
+                            "notice_locator": {
+                              "Value": "https://example.invalid/cli-links/public_domain.txt"
+                            },
+                            "revision": "Missing",
+                            "source_name": "The Logical Language Group, Inc.",
+                            "time_precision": "Unknown"
+                          },
+                          "current_eligible": true,
+                          "detail_ref": {
+                            "assertion_id": "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b",
+                            "assertion_sha256": "bde532eaa111dc2d75d39887940d9b3f6b721fa981d505a23a0c13672178e5b8",
+                            "contributor_id": null,
+                            "digest_policy": "entry-assertion-serde-json-v1",
+                            "distributor_id": null,
+                            "entry_id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                            "entry_sha256": "6616f386f916de3028288065ad2f52518a7b268082f387988b41590f1ac61ba1",
+                            "native_assertion_id": null,
+                            "native_entry_id": "farvi",
+                            "occurrence": {
+                              "capture": {
+                                "namespace": "captured:llg:gismu",
+                                "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                              },
+                              "locator": "1"
+                            },
+                            "role": "assertion",
+                            "source": "llg",
+                            "version": 1
+                          },
+                          "entry": {
+                            "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                            "language": {
+                              "Value": "jbo"
+                            },
+                            "mapped_pos": "Missing",
+                            "native_word_class": "Missing",
+                            "script": "Missing",
+                            "selmaho": "Missing",
+                            "source": "llg",
+                            "spelling": {
+                              "Value": "farvi"
+                            }
+                          },
+                          "occurrence_attribution": {
+                            "contributor": null,
+                            "native_assertion_id": null,
+                            "native_entry_id": "farvi",
+                            "occurrence": {
+                              "locator": "1",
+                              "snapshot": {
+                                "namespace": "captured:llg:gismu",
+                                "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                              }
+                            }
+                          },
+                          "occurrence_id": "000000000000001263617074757265643a6c6c673a6769736d75000000000000004033306162646163643466643533386434646163333861333864313164353164386635303130393330363263623737306330663538383564306238646632376538000000000000000131",
+                          "owned_revision_ids": [],
+                          "payload_present": true,
+                          "release_ids": [
+                            "llg-release-6bda879e32e54c8c4dd2ab3eb332f110ed09b91c0b7d8cf912a45fea6a9366ef"
+                          ],
+                          "snapshot_attribution": {
+                            "distributor": null,
+                            "snapshot": {
+                              "namespace": "captured:llg:gismu",
+                              "sha256": "30abdacd4fd538d4dac38a38d11d51d8f501093062cb770c0f5885d0b8df27e8"
+                            },
+                            "source": "llg"
+                          },
+                          "tombstoned_by": []
+                        }
+                      ],
+                      "entity": {
+                        "assertion_ids": [
+                          "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+                        ],
+                        "entry_ids": [
+                          "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"
+                        ],
+                        "evidence": null,
+                        "id": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92",
+                        "occurrence": null,
+                        "role": "entry",
+                        "source_ids": [
+                          "llg"
+                        ],
+                        "spelling": {
+                          "Value": "farvi"
+                        }
+                      },
+                      "projection_policy": "compact-dictionary-v1",
+                      "requested_release": null,
+                      "snapshot_sha256": "48ea7fd2abe6a6d1069c60da5af766ef720eaf505329cbf493bd7efa25b5807b",
+                      "state_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                      "status": "Resolved",
+                      "target": {
+                        "Local": {
+                          "Entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"
+                        }
+                      },
+                      "unverified": [],
+                      "version": 1
+                    },
+                    "registrations": [
+                      {
+                        "admitted": true,
+                        "disabled": false,
+                        "installation_state": "installed",
+                        "installed_release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                        "operational_reason": null,
+                        "pack_id": "llg",
+                        "payload_kind": "synthetic",
+                        "release_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+                        "requested_release": null,
+                        "selected": true,
+                        "sources": [
+                          {
+                            "abbreviation": "LLG",
+                            "abbreviation_evidence": null,
+                            "abbreviation_kind": "ProjectAssigned",
+                            "display_name": "The Logical Language Group, Inc.",
+                            "id": "llg",
+                            "origin": "Upstream"
+                          }
+                        ]
+                      }
+                    ],
+                    "requested_release": null,
+                    "status": "Resolved",
+                    "target": {
+                      "Local": {
+                        "Entry": "llg-entry-0e5339688e6b167569105b8e82ae065d53d98bffabaec71e61481b6f1224fa92"
+                      }
+                    }
+                  },
+                  "traversal_status": "traversable"
+                }
+              ],
+              "traversal_status": "traversable"
+            }
+          ],
+          "partial": false,
+          "returned_count": 2,
+          "source": {
+            "abbreviation": "LLG",
+            "abbreviation_evidence": null,
+            "abbreviation_kind": "ProjectAssigned",
+            "display_name": "The Logical Language Group, Inc.",
+            "id": "llg",
+            "origin": "Upstream"
+          }
+        }
+      ],
+      "next_cursor": null,
+      "policy": "bounded-links-v1",
+      "query": {
+        "depth": 1,
+        "operation": "links",
+        "spelling": "farvi"
+      },
+      "resolved_sources": [
+        "llg"
+      ],
+      "seed_assertion_ids": [
+        "llg-assertion-047a048e694aca0121bc95668dc7d56b0ad52fbb956c61d345057f6ef8aabc8b"
+      ],
+      "snapshot_sha256": "48ea7fd2abe6a6d1069c60da5af766ef720eaf505329cbf493bd7efa25b5807b",
+      "source_totals": [
+        {
+          "associated_assertions": 1,
+          "distinct_evidence": 2,
+          "records": 2,
+          "source": {
+            "abbreviation": "LLG",
+            "abbreviation_evidence": null,
+            "abbreviation_kind": "ProjectAssigned",
+            "display_name": "The Logical Language Group, Inc.",
+            "id": "llg",
+            "origin": "Upstream"
+          }
+        }
+      ],
+      "state_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987",
+      "totals": {
+        "associated_assertions": 1,
+        "distinct_evidence": 2,
+        "records": 2,
+        "source_groups": 1,
+        "unit": "traversal_steps",
+        "visited_assertions": 1
+      }
+    }
+  },
+  "selection": {
+    "context_counts": {
+      "declared": 0,
+      "provided": 0
+    },
+    "curation_counts": null,
+    "disabled": [],
+    "owned": null,
+    "packs": [
+      "llg"
+    ],
+    "upstream": {
+      "content_id": "1763b5b9c801702ad3990af45d728c4f5ea5ad7fa6a51ed0e1827a852f716510",
+      "generation_id": "73a139c22548f82a4bf2e8dc79700309-4154d5798363dbcddffb84c884f751ad",
+      "local_revision": 1,
+      "state_sha256": "cf4e208b05b5a5542ea86d33396c770380de324403a1b7a0a0e54c5b21461987"
+    },
+    "version": 1
+  },
+  "version": 1
+}
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test_direct_and_configured_links_detail_cli_full_and_readable
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.92s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test workbench_links_contract`
