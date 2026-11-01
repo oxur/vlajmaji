@@ -1,4 +1,4 @@
-# S06 CORRECTION02/5 — DRAFT, 2026-11-01
+# S06 CORRECTION02/5 — ISSUED INTAKE ONLY, 2026-11-01
 
 Own project-relative path: `arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt-iteration01.md`.
 Predecessor: original issued [cc-prompt.md](cc-prompt.md), INITIAL1/5, with preserved [recipe-amendment01.md](recipe-amendment01.md) within that pass. This is the SECOND implementation assignment of FIVE, not a reset or pass03. Retained Luna/high CC; CDC/ROOT read-only SOURCE/index/target until explicit handback.

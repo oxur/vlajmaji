@@ -1,4 +1,4 @@
-# S06 recipe-amendment02 — DRAFT, 2026-11-01
+# S06 recipe-amendment02 — ISSUED FOR BOUNDED READBACK, 2026-11-01
 
 This supporting recipe correction accompanies [cc-prompt-iteration01.md](cc-prompt-iteration01.md), implementation CORRECTION02/5 after an actual constructor failure. Recipe-amendment01 was pre-execution within INITIAL1/5; do not retroactively count it as pass02 or reset the five-assignment limit. ROOT/CDC shared a second packet/co-review mistake: “CU accounting9/6/3” conflated the six Lexical rows with the normalized count. The unchanged validator at lexicon/dictionary.rs1590–1646 requires normalized_occurrences equal ALL retained release assertions, including Excluded rows.
 
