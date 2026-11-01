@@ -1,6 +1,6 @@
 # S04 — Typed literal definitions and stored forms
 
-**STATUS: CC PROPOSED-DONE / QUIET, 2026-11-01.** S04 INITIAL1/5 returned source04fead62/tree7a34a1b4 after exact13-path freeze/current gates; source/index/ONEtarget are QUIET. CDC independent method/source/binary/input binding preparation is active; no independent product runtime or acceptance yet. All8 S04/8 arc/14 project rows remain OPEN; THROUGH ALL Arc06 continues. Issued prompt5d834 and original contracts remain unchanged. Earlier intake/issue records retain their as-of scope.
+**STATUS: CDC VERIFIED / CANONICAL PROPOSAL, 2026-11-01.** Source04fead62/tree7a34a1b4 is frozen/QUIET after INITIAL1/5. Actual independent31 (1 author-compiled example +30CLI),23zero/8typedone, passed without repair/replay; ROOT inspected actual receipts/pins. CDC proposes all8 S04 rows DONE pending ROOT whole canonical consistency; all8 child/8 arc/14 project Status cells remain OPEN. See current cdc-verification.md, closing-report.md and retro.md. Issued packet/method/bindings/raws/earlier records retain their as-of cutoffs; THROUGH ALL Arc06/S05–07 and separate Operator gates remain.
 
 ## 1. Useful increment and compatibility
 
