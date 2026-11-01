@@ -1,6 +1,6 @@
 # S03 correction assignment02 — preserve typed CLI ambiguity errors
 
-**STATUS: DRAFT / ROOT REVIEW PENDING / NO SOURCE OR TARGET AUTHORITY,2026-11-01.** Assignment02 of FIVE total (INITIAL plus this correction, no reset), retained Luna/high CC; CDC Sol6.1/high independently verifies. The original issued `cc-prompt.md` at c27d1f1 and its design remain immutable. This correction supersedes only its implementation custody/gate state after explicit issue/intake/transfer. All8 S03/all8 Arc06/all14 project rows OPEN; S01/S02 accepted/closed. Continue THROUGH ALL Arc06, no external delivery/default/retainedFull/acquisition/performance authority.
+**STATUS: ISSUED / ROOT DRAFT READINESS PASS96532a6 / INTAKE ONLY / NO SOURCE OR TARGET AUTHORITY,2026-11-01.** Assignment02 of FIVE total (INITIAL plus this correction, no reset), retained Luna/high CC; CDC Sol6.1/high independently verifies. The original issued `cc-prompt.md` at c27d1f1 and its design remain immutable. This correction supersedes only its implementation custody/gate state after explicit issue/intake/transfer. All8 S03/all8 Arc06/all14 project rows OPEN; S01/S02 accepted/closed. Continue THROUGH ALL Arc06, no external delivery/default/retainedFull/acquisition/performance authority.
 
 ## 1. Actual defect, scope and evidence retained
 
