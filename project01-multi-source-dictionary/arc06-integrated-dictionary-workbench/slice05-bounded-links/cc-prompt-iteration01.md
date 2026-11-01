@@ -2,6 +2,8 @@
 
 **STATUS: DRAFT / CORRECTION02 OF FIVE / HOLD / NO INTAKE OR SOURCE TRANSFER,2026-11-01.** ROOT approved preparing this bounded amendment after the first focused constructor exposed a contradiction in OUR issued fixture. Whole-draft readiness, status-only issue, retained Luna/high bounded actual intake/fresh pins and explicit CDC custody dispatch are still required. Source/index/ONEtarget remain CC affected-HOLD; ROOT/CDC read-only. This is assignment2/5, not a reset or new slice. All8S05/8Arc/14Project rows remainOPEN; THROUGH ALL Arc06 continues, no external/default/retainedFull/acquisition/performance authority.
 
+Exact current/pending prompt path relative to `project01-multi-source-dictionary/`: `arc06-integrated-dictionary-workbench/slice05-bounded-links/cc-prompt-iteration01.md`. Predecessor is the unchanged `arc06-integrated-dictionary-workbench/slice05-bounded-links/cc-prompt.md`; assignment/date/reason/disposition are recorded in plan Assignment history.
+
 ## Concrete correction and preservation
 
 The original issued [cc-prompt.md](cc-prompt.md), original [read-manifest](artifacts/read-manifest.json), and ALL FIVE original literal files remain byte-exact. They retain their d6e73d54 as-of status and original81 identities; they are not relabelled current-source equal. The current plan/ledger append records the amendment without rewriting original criteria/history. Existing raw failures and source reviews retain their exact applicability. This was CDC/ROOT frozen-specification and co-review miss, not CC misconduct or a production validator defect.
