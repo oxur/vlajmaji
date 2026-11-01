@@ -1,0 +1,217 @@
+{
+  "status": "DRAFT_CORRECTION02_OF5_HOLD_NO_SOURCE_TRANSFER",
+  "planning_parent": "435c78c85e6b48a18457457d934ae9925edfc455",
+  "source": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "head": "04fead62fde19cbeccb0181592197a292cac670d",
+  "tree": "7a34a1b43c5258f588beb6bc0acae2c6d26e4a6e",
+  "branch": "codex/project01-integrated-workbench",
+  "source_is_clean": false,
+  "index_staged_delta": false,
+  "porcelain": " M crates/lexicon/src/lib.rs\n M crates/search/src/dictionary.rs\n M crates/search/src/dictionary/projection.rs\n M crates/search/src/lib.rs\n M crates/search/src/presentation.rs\n M crates/search/src/workbench.rs\n M crates/search/src/workbench/lexical.rs\n M crates/search/src/workbench/reference.rs\n?? crates/search/src/workbench/links.rs\n?? crates/search/tests/workbench_links_contract.rs",
+  "allowance17": [
+    {
+      "path": "crates/lexicon/src/lib.rs",
+      "exists": true,
+      "bytes": 53979,
+      "sha256": "8df287e70f57932d056c108b23eb53e8cfa563b8fe5b3978714ba0b4e284edea"
+    },
+    {
+      "path": "crates/lexicon/README.md",
+      "exists": true,
+      "bytes": 4867,
+      "sha256": "3695a8ec55311a071c7dfbc2e709c1fe434e98cc03e719fe93c6059ebd6eb034"
+    },
+    {
+      "path": "crates/search/src/lib.rs",
+      "exists": true,
+      "bytes": 60026,
+      "sha256": "260a2e610d1c0289a4cf90a4c632b5ddd92772b1078ddc22ad6a4e7d78217f35"
+    },
+    {
+      "path": "crates/search/src/dictionary.rs",
+      "exists": true,
+      "bytes": 123283,
+      "sha256": "b0e8e107972fdee89ce1e55017f8a246604985620e6c9bf38cbc815203d70068"
+    },
+    {
+      "path": "crates/search/src/dictionary/projection.rs",
+      "exists": true,
+      "bytes": 144581,
+      "sha256": "6725f3797cf82af0d5f946b70024a30059c373bcb9ebd8026b9f3287b38fb316"
+    },
+    {
+      "path": "crates/search/src/workbench.rs",
+      "exists": true,
+      "bytes": 46947,
+      "sha256": "714b9b45611e969095d2fdf4792a888dee51be8c30565b6715507fdcee4ae953"
+    },
+    {
+      "path": "crates/search/src/workbench/lexical.rs",
+      "exists": true,
+      "bytes": 87489,
+      "sha256": "93e4bf7be16b8b96c4cdd8b8c80c8634157de832c257b89bc13df161ff9015ba"
+    },
+    {
+      "path": "crates/search/src/workbench/reference.rs",
+      "exists": true,
+      "bytes": 60002,
+      "sha256": "06d8b289ad9c43cfad4285935ba29c3e1b38a626f16f09dee712b9b6e1336ef2"
+    },
+    {
+      "path": "crates/search/src/workbench/links.rs",
+      "exists": true,
+      "bytes": 91377,
+      "sha256": "d83acc0bbc2b0136515a702b5257968788880426816dcdfeb06608abf4570d71"
+    },
+    {
+      "path": "crates/search/src/presentation.rs",
+      "exists": true,
+      "bytes": 18239,
+      "sha256": "e53fc45e5ac22021b76944e508d8bf8da6a055f710fbbe3611569e4b20d2f9e0"
+    },
+    {
+      "path": "crates/search/examples/integrated_workbench.rs",
+      "exists": true,
+      "bytes": 113478,
+      "sha256": "0c2cb8274b7b52d7bbf046bf7a44e0f6c3a5c34ab0da5f0e1ad4794449a0d2c4"
+    },
+    {
+      "path": "crates/search/tests/workbench_links_contract.rs",
+      "exists": true,
+      "bytes": 29833,
+      "sha256": "8347a88ccc0bdc5d72d47bf3f48015bdb713ac8ca9a54ffa65893d057fb4d484"
+    },
+    {
+      "path": "crates/search/README.md",
+      "exists": true,
+      "bytes": 8499,
+      "sha256": "09bc24182e1f5d63afae578350aedb822b4cdc4f3822da9543318a05fb590e3a"
+    },
+    {
+      "path": "crates/cli/src/main.rs",
+      "exists": true,
+      "bytes": 221220,
+      "sha256": "1e31cb83b85582c85cbe780c201719984d23e08953247c9f9a071fbd345f2cb8"
+    },
+    {
+      "path": "crates/cli/tests/workbench_links_contract.rs",
+      "exists": false
+    },
+    {
+      "path": "docs/integrated-workbench.md",
+      "exists": true,
+      "bytes": 24721,
+      "sha256": "3786eea7892f4ff11a5c604039a55d58ce9f4ab79308c3759f942436cd606342"
+    },
+    {
+      "path": "README.md",
+      "exists": true,
+      "bytes": 15563,
+      "sha256": "4b24cd745cf54cceb88df52ab26cc8c339d86b472dc74824ae1444bcdb61eea2"
+    }
+  ],
+  "original_readmanifest": {
+    "bytes": 43043,
+    "sha256": "dcb8e0ee7b3b609f9ab8536ff654687a77bcab18f2d458b4250b3bb2ef4017f2"
+  },
+  "original_source_readset_current_equal_count": 32,
+  "original_source_readset_wip_differences": [
+    {
+      "path": "crates/search/src/lib.rs",
+      "original_issued": {
+        "bytes": 59548,
+        "sha256": "824351c7f2312720e2a6c1f2297d6bb7ac36869f5639a1ef66c84c3da7f6e4a8"
+      }
+    },
+    {
+      "path": "crates/search/src/dictionary.rs",
+      "original_issued": {
+        "bytes": 120427,
+        "sha256": "9f28a27acc8d24d06dc5ab939bfd477fa154aaa2b022622ad880ec06058324ae"
+      }
+    },
+    {
+      "path": "crates/search/src/dictionary/projection.rs",
+      "original_issued": {
+        "bytes": 136802,
+        "sha256": "4ef62f03296102ab7bf95b77723cc8d0d25636156a74032a82440be44399c89f"
+      }
+    },
+    {
+      "path": "crates/search/src/workbench.rs",
+      "original_issued": {
+        "bytes": 46430,
+        "sha256": "d4c47edf55f92bde699d1d3fc842ad8b9044956f13df6b3bf0249059da37bb4d"
+      }
+    },
+    {
+      "path": "crates/search/src/workbench/reference.rs",
+      "original_issued": {
+        "bytes": 62758,
+        "sha256": "17c20575416ff30f48b45557c4a2afe1c57a5be8c260206d2d70f676f5d94393"
+      }
+    },
+    {
+      "path": "crates/search/src/presentation.rs",
+      "original_issued": {
+        "bytes": 16811,
+        "sha256": "290b62c8795e237cec3c9235f560d3657b02421e6822d6400255bdd329e23351"
+      }
+    },
+    {
+      "path": "crates/lexicon/src/lib.rs",
+      "original_issued": {
+        "bytes": 52776,
+        "sha256": "380af22349e6d2e31ca027f5c562322c41772510ab00d515ba895e39e5f00026"
+      }
+    },
+    {
+      "path": "crates/search/src/workbench/lexical.rs",
+      "original_issued": {
+        "bytes": 79996,
+        "sha256": "43d1a6dd9318e55aff23cb6252c7a14c57777e31ba46cce4ceebf42dc8131e5e"
+      }
+    }
+  ],
+  "fixed_original_input_closed_environment_count": 41,
+  "protected_refs": {
+    "main": "cb13d377aeba85c1b76a9173abb22bedd535ac69",
+    "origin/main": "cb13d377aeba85c1b76a9173abb22bedd535ac69",
+    "codex/project01-owned-dictionary": "69a9f68507e23cef9b20e4bcabc86840e224689e"
+  },
+  "bauske": {
+    "head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+    "tree": "e5715eb87df84165ecba8b43cd35949ae9457695",
+    "status": "?? #README.md#\n?? .#README.md"
+  },
+  "original_spec": {
+    "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/links-inputs/links-fixture-spec.json",
+    "bytes": 12490,
+    "sha256": "3495708e36f8e96738d91bd2c21100e5ccce56f108de3a994c41893e8b4812d1"
+  },
+  "amended_spec": {
+    "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/links-inputs/links-fixture-spec-iteration01.json",
+    "bytes": 12694,
+    "sha256": "194a2dbd72b02bf7153a63f58f6a3ffa8702b051a431e6e08cc6191c6e4e63e5",
+    "emitted_relative_path": "artifacts/links-inputs/links-fixture-spec.json"
+  },
+  "failed_focused_original": {
+    "path": "/private/tmp/vlajmaji-s05-focused-links1-MhKNIr/focused.log",
+    "bytes": 1516,
+    "sha256": "95b60d975e167bde364ce0f0db1da6b5f45932157552efc7a8de2d136b726f65"
+  },
+  "failed_focused_preserved": {
+    "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/iteration01-focused-original.log",
+    "bytes": 1516,
+    "sha256": "95b60d975e167bde364ce0f0db1da6b5f45932157552efc7a8de2d136b726f65"
+  },
+  "reach": "One test failed during owned_r2 Dictionary validation; mixed typed model/r0/r1 preconditions reached. Task-owned exclusive temporary directory created. OwnedJournal::create/seal/catalogue/build/query UNREACHED. No cleanup or no-filesystem-write inference.",
+  "scope": "Readonly current WIP snapshot, not clean accepted source or implementation acceptance. Original40 source pins remain original-asof; differences only inside17. Original31 plus five original literal bytes plus3closed/2env unchanged. No source/index/target mutation.",
+  "fixed_original_parity_groups": {
+    "closed_s04": 3,
+    "old31_path_qualified_input_authorities": 31,
+    "new5_literal_authorities": 5,
+    "environment": 2,
+    "authority": "Original unchanged read-manifest maps supply exact paths/bytes/SHA; all41 actual equal before draft. Rows are not duplicated here."
+  }
+}

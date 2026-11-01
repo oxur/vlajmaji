@@ -1,6 +1,6 @@
 # S05 ledger — bounded Links
 
-**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ACCEPTED / TRANSFER READY,2026-11-01.** Actualreadback+bounded clarification accepted/fresh81pins and protectedrefsPASS. AFTER named checkpoint+explicit CDCdispatch retained Luna/high CC owns EXACT17/index/ONEtarget, ROOT/CDCreadonly untilQUIET; beforedispatchROOTQUIET. Every rawledgercell unchanged/all8OPEN, all8Arc/14ProjectOPEN; issuedcontracts/data unchanged and THROUGH ALL Arc06 active.
+**STATUS: HOLD / CORRECTION02 OF FIVE DRAFT,2026-11-01.** First focused constructor exposed the issued r2 release/capture contradiction. ROOT approved narrow fixture amendment; CC SOURCE/index/ONEtarget remains affected-HOLD, ROOT/CDC readonly. No implementation/rerun transfer until whole iteration01 readiness, issue, bounded intake/fresh WIP pins and explicit CDC dispatch. All8S05/8Arc/14ProjectOPEN; prior issued records retain their as-of scope.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -12,3 +12,10 @@
 | S05-06 | Native CLI/docs and prior query/reference/lexical/legacy behavior remain usable. | A/F; literal example/guide, native/error/IO and preserved roots/inputs. | correctness-grade | Original A06-03 / P01-10,11 / CC then CDC | OPEN | None; unissued roadmap draft. |
 | S05-07 | Current offline feature/package gates retain exact applicability/failures/counts. | G; common prescribed checks and current source/binary/input/freeze. | correctness-grade | Original A06-03 / P01-10,11 / CC then CDC | OPEN | None; unissued roadmap draft. |
 | S05-08 | Independent proof/close/retro/bubble-up retain computed/final/Operator duties. | CDC actual proof/rowwalk then ROOT consistency; S06/S07 remain. | correctness-grade | Original A06-03 / P01-10,11 / CC then CDC | OPEN | None; unissued roadmap draft. |
+
+
+## 2026-11-01 — correction02/5 fixture-authority disposition (DRAFT, not issued)
+
+ROOT approved the bounded amendment after WHOLE actual focused1 failure/source review. Original d6e73d54 issued prompt, read-manifest and FIVE original literal bytes remain unchanged; their `[a,b]` r2 Available-release instruction is superseded ONLY when iteration01 is issued. This was CDC/ROOT frozen fixture/co-review miss, not CC misconduct or a validator defect. Separately named `artifacts/links-inputs/links-fixture-spec-iteration01.json` retains r2 Available release assertions `[a,b,c]` and accounting3/3/0 over SAME immutable three-row capture. Actual Head.active `[a,b]`, tombstone `[c]`, all r0/r1 prefixes and graph/status/count/order/cursor/request oracles remain unchanged. Model-derived r2 state/view/effective hashes naturally change; artificial protocol binding remains original pure oracle. Public emission maps amended authority to SAME `artifacts/links-inputs/links-fixture-spec.json`; five current literals are four unchanged originals plus amended spec, EXACT11 new/PATH-qualified42 total. No validator/model/matcher/merge/dependency/allowance change.
+
+Initial assignment1 preserved: core/compiler work and first focused test at WIP HEAD04fead62, not accepted/frozen source. One test failed at r2 Dictionary validation before journal/seal/build/query; task-owned temporary directory already created, no no-write/cleanup inference. Actual failure raw preserved `artifacts/iteration01-focused-original.log`; current EXACT17 WIP/protected/original authority pins `artifacts/iteration01-source-baseline.json`. Correction assignment2/5 carries ALL remaining originalA–G, EXACT17 paths, original finite gates/census/onearchive/independent acceptance and wholeArc06 endpoint; no reset/newmatrix. Every raw ledger cell remains unchanged.
