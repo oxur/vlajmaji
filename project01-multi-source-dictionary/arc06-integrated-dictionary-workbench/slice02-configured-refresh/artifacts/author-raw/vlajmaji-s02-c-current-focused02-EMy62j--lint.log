@@ -1,0 +1,21 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Checking vlajmaji v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji)
+error[E0596]: cannot borrow `beta` as mutable, as it is not declared as mutable
+   --> crates/search/tests/workbench_profiles_contract.rs:228:9
+    |
+228 |         beta.execute(DictionaryRequest::Exact {
+    |         ^^^^ cannot borrow as mutable
+    |
+help: consider changing this to be mutable
+    |
+225 |     let mut beta = ConfiguredWorkbenchSearchEngine::open(&config, Some("beta")).unwrap();
+    |         +++
+
+For more information about this error, try `rustc --explain E0596`.
+error: could not compile `vlajmaji-search` (test "workbench_profiles_contract") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101

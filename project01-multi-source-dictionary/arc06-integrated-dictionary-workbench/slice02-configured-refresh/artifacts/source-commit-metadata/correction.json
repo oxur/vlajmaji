@@ -1,0 +1,24 @@
+{
+  "scope": "Metadata-only correction authorized by ROOT after CC QUIET. Only commit-message phrase replaced; source files/index clean, source tree and parent identical, target untouched. Original gates/binary builds retain actual ab352/WIP provenance; no revalidation or new assignment.",
+  "old_head": "ab3528882cf6a05bfdbd7292bc3748bd3c01bfa9",
+  "new_head": "8f373fa0298694b03d88f735a2ff11f1d1b9ca41",
+  "tree": "8f0d61298a061410c8a133df2107b73b4de4313e",
+  "parent": "4fc937dcbebd0e2f3171f495345d6ab2a6e29f62",
+  "argv": [
+    "git",
+    "-C",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+    "commit",
+    "--amend",
+    "--only",
+    "--cleanup=verbatim",
+    "--file",
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/source-commit-metadata/corrected-message.txt"
+  ],
+  "exit": 0,
+  "original_commit_bytes": 510,
+  "original_commit_sha256": "90770f603b29e302aa532be47510247f19bafe58c9d4d891584cc2baa76148c8",
+  "original_message_sha256": "347c4ddf740ff5a92bcda98b3366065d13a42000291cf8261725f7827ca5e9b0",
+  "corrected_message_sha256": "9406641faf999c32438cfc8329b4f30085d338723deb26a30ed8a0ce8747c88d",
+  "named_file_hashes_unchanged": 16
+}

@@ -1,0 +1,514 @@
+{
+  "version": 1,
+  "status": "TERMINAL_AUTHOR_EVIDENCE_AT_FROZEN_SOURCE",
+  "observed_utc": "2026-11-01T05:09:36.377816+00:00",
+  "scope": "Available terminal author raw bytes explicitly referenced in execution or retained CDC messages, plus exact archive overlay. Actual as-read whole copies, not reconstruction of unknown/overwritten historical bytes. Excludes DBs, temporary tool homes, target and product binaries. Three confirmed cursor2 auto-install launchers remain deviations; fourth available formatter body has unclassified invocation attribution. Independent33 not yet executed.",
+  "copies": [
+    {
+      "original": "/private/tmp/vlajmaji-s02-allfeatures-SmwPZk/all-features.log",
+      "copy": "author-raw/vlajmaji-s02-allfeatures-SmwPZk--all-features.log",
+      "bytes": 59051,
+      "sha256": "3b7a01f0dac2a7f068f1223661a37d9e2ea13199cafefd7a37219b801a663bca"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-archive-jbotci-QRGzeh/jbotci.log",
+      "copy": "author-raw/vlajmaji-s02-archive-jbotci-QRGzeh--jbotci.log",
+      "bytes": 1818,
+      "sha256": "9374ad3930568c550bd9f24e8e2161c88f6fb1a9cad14131bb01d060fca34beb"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-archive-la-lojban-CTSk62/la-lojban.log",
+      "copy": "author-raw/vlajmaji-s02-archive-la-lojban-CTSk62--la-lojban.log",
+      "bytes": 1002,
+      "sha256": "38eb89b486540665e095f8db584207a31135a90ae90c3127f7cd66658bf2dab4"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-archive-llg-XKgzKM/llg.log",
+      "copy": "author-raw/vlajmaji-s02-archive-llg-XKgzKM--llg.log",
+      "bytes": 2465,
+      "sha256": "3d452ad3112591e27b00509f02acd18bec71b89497ab94dc1d9c7f1177f74012"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-archive-overlay-YFWihS/overlay.tsv",
+      "copy": "author-raw/vlajmaji-s02-archive-overlay-YFWihS--overlay.tsv",
+      "bytes": 2611,
+      "sha256": "a3bc23f7931589b095d92cfd9a4364dfbce445b458510f6ff04db975cc96c47d"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-archive-owned-example-wvPp4z/owned-example.log",
+      "copy": "author-raw/vlajmaji-s02-archive-owned-example-wvPp4z--owned-example.log",
+      "bytes": 1247,
+      "sha256": "0c6f1174d3e9839675ad8baec6e4107cb33d9371aa88310eabbefd916ab83f0e"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-archive-owned-export-NQhM4X/owned-export.log",
+      "copy": "author-raw/vlajmaji-s02-archive-owned-export-NQhM4X--owned-export.log",
+      "bytes": 1058,
+      "sha256": "2d630ba63164460f54233719782fb507ad58da0203daf41c7354221d505b54a7"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-archive-sutysisku-42VKUF/sutysisku.log",
+      "copy": "author-raw/vlajmaji-s02-archive-sutysisku-42VKUF--sutysisku.log",
+      "bytes": 1088,
+      "sha256": "3ee01d87d912de2276769052d70dfe5d26693f618ebcff37473030b5ba632e7f"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-finite03-rzk8OL/store-contract.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-finite03-rzk8OL--store-contract.log",
+      "bytes": 1569,
+      "sha256": "ffad52dad846498dd3116448bcb8a123769d423f0f0ef157a01f54c2bad09212"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-finite04-UHtQLv/cli-contract.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-finite04-UHtQLv--cli-contract.log",
+      "bytes": 937,
+      "sha256": "7753b1663faae22360d8d5eef13cde0b4dcf98a0376ed2558b3460d900f388d9"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-finite04-UHtQLv/store-contract.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-finite04-UHtQLv--store-contract.log",
+      "bytes": 962,
+      "sha256": "777597759e642a5a30c43585fcbc10a3adccd12b618e525c0a1ab4d8cbc79feb"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-focused-QNosrb/lint.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-focused-QNosrb--lint.log",
+      "bytes": 2517,
+      "sha256": "0074118e7447ae965a180af92b2a0cd468d94cd436d2a10aefc5e5d0109b0396"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-focused02-EMy62j/lint.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-focused02-EMy62j--lint.log",
+      "bytes": 1285,
+      "sha256": "1da1e2da27a0aa56e1af6c93bae64a641e86c327422275e3aac259d803a6d662"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-focused03-NYnV2w/search-contract.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-focused03-NYnV2w--search-contract.log",
+      "bytes": 1222,
+      "sha256": "972f41654ad79f93acac683d35851cc09e014208ecf5307be29d937848a85c24"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-focused03-NYnV2w/store-contract.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-focused03-NYnV2w--store-contract.log",
+      "bytes": 962,
+      "sha256": "d038a25372c81c927eb2e393da74b08f310f7b669b5dc85c1586885c80d1ab42"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-focused03-NYnV2w/store-private.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-focused03-NYnV2w--store-private.log",
+      "bytes": 1217,
+      "sha256": "e6b2afc617b7a719704a02dad9e28c2967b95e217d9d5ea94d2bb0ddc2544305"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-search04-hqkKkj/search-contract.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-search04-hqkKkj--search-contract.log",
+      "bytes": 1323,
+      "sha256": "3d2aad66583dc8ed9e956df7f82bc9c25675aca8ccbd2ff3575b81726101eca6"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-search05-3KVxFi/search-contract.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-search05-3KVxFi--search-contract.log",
+      "bytes": 802,
+      "sha256": "72afd90920f3a5bc1e297100349c1962b8e75dc67f9042efc3f01d9ce7bd7d0b"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-search05-3KVxFi/store-contract.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-search05-3KVxFi--store-contract.log",
+      "bytes": 962,
+      "sha256": "96bd65d04a089ef3d8b05c41de536e00ced86bc637c452df0313a686bba309f8"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-search05-3KVxFi/store-private.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-search05-3KVxFi--store-private.log",
+      "bytes": 1217,
+      "sha256": "25a66f330845f37f75f33bcca136f51eb2315a1ef5f8910af49f67637ad81fc1"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-search06-dTWyt4/cli-contract.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-search06-dTWyt4--cli-contract.log",
+      "bytes": 1179,
+      "sha256": "2b9dd033a9571a722c996e5781f40221db798328694938951d2269e1384adffd"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-c-current-search06-dTWyt4/search-private.log",
+      "copy": "author-raw/vlajmaji-s02-c-current-search06-dTWyt4--search-private.log",
+      "bytes": 650,
+      "sha256": "92e3d0b8318848954d06b94f0454875a1227eed83d6daac023ddfde4febe6179"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-count-fmtcheck-3pFpZd/fmt-check.log",
+      "copy": "author-raw/vlajmaji-s02-count-fmtcheck-3pFpZd--fmt-check.log",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-count-format-xASVlJ/format.log",
+      "copy": "author-raw/vlajmaji-s02-count-format-xASVlJ--format.log",
+      "bytes": 170,
+      "sha256": "8db1da8d5c52a276518372fb8f4ebccbcf5f52690a9af8bb0a03b3ad428abaf2"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-count-lint-UAdtkV/lint.log",
+      "copy": "author-raw/vlajmaji-s02-count-lint-UAdtkV--lint.log",
+      "bytes": 357,
+      "sha256": "c637e92bfa24eea3edb87e762dd8a87db66b480e6a1abcb53f2ae56f93155d3d"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-count-search-dhoHm1/search-test.log",
+      "copy": "author-raw/vlajmaji-s02-count-search-dhoHm1--search-test.log",
+      "bytes": 682,
+      "sha256": "91d648fb58c0e8b39c07b34558ab67276fefc4ab39c014e19200cbc5ebd23e9b"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-current-checks-tCO3D6/lint.log",
+      "copy": "author-raw/vlajmaji-s02-current-checks-tCO3D6--lint.log",
+      "bytes": 2777,
+      "sha256": "36db69cd4e0ad5ee4d2429d35b2e7f5bcff8d95811c65c6ea608c059b15a53fd"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-cursor-format-CpvPoq/format.log",
+      "copy": "author-raw/vlajmaji-s02-cursor-format-CpvPoq--format.log",
+      "bytes": 534,
+      "sha256": "be44885f03ed9f836456809c33e157f36431a2d43a8b70bea4c1e6552b77bd72"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-cursor2-fmtcheck-IO4BNZ/fmt-check.log",
+      "copy": "author-raw/vlajmaji-s02-cursor2-fmtcheck-IO4BNZ--fmt-check.log",
+      "bytes": 534,
+      "sha256": "be44885f03ed9f836456809c33e157f36431a2d43a8b70bea4c1e6552b77bd72"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-cursor2-format-3iOxSJ/format.log",
+      "copy": "author-raw/vlajmaji-s02-cursor2-format-3iOxSJ--format.log",
+      "bytes": 534,
+      "sha256": "be44885f03ed9f836456809c33e157f36431a2d43a8b70bea4c1e6552b77bd72"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-cursor2-lint-nYU90h/lint.log",
+      "copy": "author-raw/vlajmaji-s02-cursor2-lint-nYU90h--lint.log",
+      "bytes": 907,
+      "sha256": "273bb90d4e00d5bc4f6b698272851753e05eb9ff671eefebbd5b9840b0605284"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-cursor3-lint-pmgzVP/lint.log",
+      "copy": "author-raw/vlajmaji-s02-cursor3-lint-pmgzVP--lint.log",
+      "bytes": 299,
+      "sha256": "5c0ac19fa48b420def6122e40d73ebe3e61f962b79eba634ef65ced7a6ac05dc"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-default-cli-build-VLVHC5/build.log",
+      "copy": "author-raw/vlajmaji-s02-default-cli-build-VLVHC5--build.log",
+      "bytes": 177,
+      "sha256": "510c235a0bb96b00cc2c1cb9b0a8e2d923580d67241a2c3c3df9872df3e5e3ed"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-default-example-build-HGuul5/build.log",
+      "copy": "author-raw/vlajmaji-s02-default-example-build-HGuul5--build.log",
+      "bytes": 299,
+      "sha256": "7e12a5e3ade46fbb2c77a78ef481bacf631cc3a2643ef4285f3ade6182db4e62"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-deletedcwd-cli-mzyWyn/cli-test.log",
+      "copy": "author-raw/vlajmaji-s02-deletedcwd-cli-mzyWyn--cli-test.log",
+      "bytes": 1155,
+      "sha256": "6c36cc6d7d9fb7212ee1e415ec15a69ec0eaf0527d4e9ac6a3260487cc8cc273"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-deletedcwd-fmtcheck-NS7IQU/make-fmt-check.log",
+      "copy": "author-raw/vlajmaji-s02-deletedcwd-fmtcheck-NS7IQU--make-fmt-check.log",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-deletedcwd-format2-Yps4Av/make-format.log",
+      "copy": "author-raw/vlajmaji-s02-deletedcwd-format2-Yps4Av--make-format.log",
+      "bytes": 170,
+      "sha256": "8db1da8d5c52a276518372fb8f4ebccbcf5f52690a9af8bb0a03b3ad428abaf2"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-deletedcwd-lint-Psn5oK/make-lint.log",
+      "copy": "author-raw/vlajmaji-s02-deletedcwd-lint-Psn5oK--make-lint.log",
+      "bytes": 351,
+      "sha256": "b2c3370af6ffcbabd57a57eda29a57fefcbd350f783bc2499de3c1a0371b005a"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-final-focused-rtBfBx/focused.log",
+      "copy": "author-raw/vlajmaji-s02-final-focused-rtBfBx--focused.log",
+      "bytes": 2328,
+      "sha256": "aa19a4926b48147bf7c3f7e6e001feeae3f31333818466b4f1fecf05d23ff1dd"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-final2-fmtcheck-3lVcjU/fmt-check.log",
+      "copy": "author-raw/vlajmaji-s02-final2-fmtcheck-3lVcjU--fmt-check.log",
+      "bytes": 105,
+      "sha256": "afed97355c07056cd4bf2d8a02b1edce3b563067676df0a6feecc4fd5045ee91"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-final2-format-175GQd/format.log",
+      "copy": "author-raw/vlajmaji-s02-final2-format-175GQd--format.log",
+      "bytes": 105,
+      "sha256": "afed97355c07056cd4bf2d8a02b1edce3b563067676df0a6feecc4fd5045ee91"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-final2-lint-GXay5s/lint.log",
+      "copy": "author-raw/vlajmaji-s02-final2-lint-GXay5s--lint.log",
+      "bytes": 299,
+      "sha256": "082df4c54e4d24c413e143a277be92a7f580d877d38507b187c68a71a2a60ede"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-final2-search-ZDtyvl/search.log",
+      "copy": "author-raw/vlajmaji-s02-final2-search-ZDtyvl--search.log",
+      "bytes": 682,
+      "sha256": "c91070900dc429a792161e8eae4f530262e413178b92ca80fcf1d24931ce21d6"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-final2-store-0RevbY/store.log",
+      "copy": "author-raw/vlajmaji-s02-final2-store-0RevbY--store.log",
+      "bytes": 962,
+      "sha256": "6983f0a10cbf0e0c229e3565499f299a8b950ac10eda9e2da47b2ea3b2fcccb6"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-finalbatch-cli-mn2pki/cli-test.log",
+      "copy": "author-raw/vlajmaji-s02-finalbatch-cli-mn2pki--cli-test.log",
+      "bytes": 937,
+      "sha256": "a73395e8ce7eaca277f29fb43ea06bd0cba3db38373a87601dc72066745d5d1f"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-finalbatch-fmtcheck-wqS5af/make-fmt-check.log",
+      "copy": "author-raw/vlajmaji-s02-finalbatch-fmtcheck-wqS5af--make-fmt-check.log",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-finalbatch-format-Uu8qP0/make-format.log",
+      "copy": "author-raw/vlajmaji-s02-finalbatch-format-Uu8qP0--make-format.log",
+      "bytes": 170,
+      "sha256": "8db1da8d5c52a276518372fb8f4ebccbcf5f52690a9af8bb0a03b3ad428abaf2"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-finalbatch-lint-IPqdr0/make-lint.log",
+      "copy": "author-raw/vlajmaji-s02-finalbatch-lint-IPqdr0--make-lint.log",
+      "bytes": 477,
+      "sha256": "ca9e2819ff480c11a5766f298ccdf915d547946855edc52f9e0289012ff73528"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-finalbatch-search-tgyy4C/search-test.log",
+      "copy": "author-raw/vlajmaji-s02-finalbatch-search-tgyy4C--search-test.log",
+      "bytes": 682,
+      "sha256": "755ab1ebfbf6d5bf4a6071bafb0aa769792d32786218f3fa0066753524ebbd79"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-finalbatch-store-FwWNmU/store-test.log",
+      "copy": "author-raw/vlajmaji-s02-finalbatch-store-FwWNmU--store-test.log",
+      "bytes": 962,
+      "sha256": "fa4d8e992fb87ef26f944d33124b65f4a8abd81f870df5f5d44b077474c77b29"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-focus-cli-Nw0Vpf/cli.log",
+      "copy": "author-raw/vlajmaji-s02-focus-cli-Nw0Vpf--cli.log",
+      "bytes": 1743,
+      "sha256": "60535719d36ef726707a7a1d7f8fc58dc369ba0708f6b175cb175902bf15bf08"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-focus-search-mndAO4/search.log",
+      "copy": "author-raw/vlajmaji-s02-focus-search-mndAO4--search.log",
+      "bytes": 682,
+      "sha256": "95d1e5271e70b96451891c55a984e37d938933ebe657b7d74715ed35b3c97a46"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-focus-store-tf1VGI/store.log",
+      "copy": "author-raw/vlajmaji-s02-focus-store-tf1VGI--store.log",
+      "bytes": 891,
+      "sha256": "8fa93c8b16323bb528764c4878992bb704b03794b126810f8cc9de128a1fc4f6"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-last-controls-store-WFPkRP/store-test.log",
+      "copy": "author-raw/vlajmaji-s02-last-controls-store-WFPkRP--store-test.log",
+      "bytes": 962,
+      "sha256": "6ddc01793f8e44d724804654e1e7fcb14a98bf22e97cbce21f7e2f700f2b7c48"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-make-check-dSAThD/make-check.log",
+      "copy": "author-raw/vlajmaji-s02-make-check-dSAThD--make-check.log",
+      "bytes": 61518,
+      "sha256": "23d45b93435641f71c7efc9d640239116f897c3dd08361505e7ea9384f4471f7"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-no-default-zhLpUw/no-default.log",
+      "copy": "author-raw/vlajmaji-s02-no-default-zhLpUw--no-default.log",
+      "bytes": 11258,
+      "sha256": "121183cb10727286c938d0f32be64a08b6490c960742ecf51922bc39613d5435"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-package-cli-qr4SrA/package-list.log",
+      "copy": "author-raw/vlajmaji-s02-package-cli-qr4SrA--package-list.log",
+      "bytes": 724,
+      "sha256": "dcccb8bb67de523daee93d05d58bcec21f699e565d5f160371096ceb1591a174"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-package-search-nEoOCm/package-list.log",
+      "copy": "author-raw/vlajmaji-s02-package-search-nEoOCm--package-list.log",
+      "bytes": 820,
+      "sha256": "5bdb054fcd9222179783bd3a65a639515f2cb01269da0999b0817fdc95da957d"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-package-store-dSIDaH/package-list.log",
+      "copy": "author-raw/vlajmaji-s02-package-store-dSIDaH--package-list.log",
+      "bytes": 1258,
+      "sha256": "00274bb590501dc8753fae3030a10ebe12e75cfcfe98bfb0938eb78ac684dc97"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-fmtcheck02/make-fmt-check.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-fmtcheck02--make-fmt-check.log",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-fmtcheck03/make-fmt-check.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-fmtcheck03--make-fmt-check.log",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-fmtcheck04/make-fmt-check.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-fmtcheck04--make-fmt-check.log",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-format01/make-format.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-format01--make-format.log",
+      "bytes": 170,
+      "sha256": "8db1da8d5c52a276518372fb8f4ebccbcf5f52690a9af8bb0a03b3ad428abaf2"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-format02/make-format.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-format02--make-format.log",
+      "bytes": 170,
+      "sha256": "8db1da8d5c52a276518372fb8f4ebccbcf5f52690a9af8bb0a03b3ad428abaf2"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-format03/make-format.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-format03--make-format.log",
+      "bytes": 170,
+      "sha256": "8db1da8d5c52a276518372fb8f4ebccbcf5f52690a9af8bb0a03b3ad428abaf2"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-format04/make-format.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-format04--make-format.log",
+      "bytes": 170,
+      "sha256": "8db1da8d5c52a276518372fb8f4ebccbcf5f52690a9af8bb0a03b3ad428abaf2"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-lint02/make-lint.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-lint02--make-lint.log",
+      "bytes": 355,
+      "sha256": "0d6584b2adc048723f8150987a485fc7cfbc3f2c37e25c7b528eb963b4095fa0"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-lint03/make-lint.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-lint03--make-lint.log",
+      "bytes": 355,
+      "sha256": "6776cd83cd2ca5914ff6973b99ddc7f54fecf4ead9d48d2a71e3815758aeb90d"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-lint04/make-lint.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-lint04--make-lint.log",
+      "bytes": 711,
+      "sha256": "650a900d4b1b29b414df0880f83da5e480ed8a9744cbc195b19cfa64e158f747"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-store01/store-test.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-store01--store-test.log",
+      "bytes": 1334,
+      "sha256": "3c8655e33704932ac1239e40c67a1d9fbb68c95e08e3090289f928ec9d87d30a"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-store03/store-test.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-store03--store-test.log",
+      "bytes": 814,
+      "sha256": "a5b8be83d669fad58e0b15c2e0cd323d9a620d40b7876d67983d0b51282dbe76"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-statusfix-store04/store-test.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-statusfix-store04--store-test.log",
+      "bytes": 814,
+      "sha256": "877d9b2094f1e7effcc9151a85ad40adcb6542feb1339a5eb8213443032dff4e"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-pass1-store-profile01/store-test.log",
+      "copy": "author-raw/vlajmaji-s02-pass1-store-profile01--store-test.log",
+      "bytes": 815,
+      "sha256": "c1affd00501f9eb563b9ab0fcf584cb06037449598d22bf44fa6efd89a7d77d5"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-profile-example-raw-iWMXOq/example.log",
+      "copy": "author-raw/vlajmaji-s02-profile-example-raw-iWMXOq--example.log",
+      "bytes": 215452,
+      "sha256": "27eeb880dfe48fcef230b1bab74c796f8995842d575810b547b63ba1a389d1a7"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-profile-journey-raw-4QpLuc/documented-journey.log",
+      "copy": "author-raw/vlajmaji-s02-profile-journey-raw-4QpLuc--documented-journey.log",
+      "bytes": 902,
+      "sha256": "2e89bd001acb3e560b93b1acff30f7bbd4710ab214a7ac23a4e6a46cb5bad844"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-profile-journey-raw-corrected-ueo9vK/documented-journey.log",
+      "copy": "author-raw/vlajmaji-s02-profile-journey-raw-corrected-ueo9vK--documented-journey.log",
+      "bytes": 258317,
+      "sha256": "eed865a29f903ca2109238b386797fb09ea9f89ca47d5ae63402d5b89cf048a1"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-profile-update-fmtcheck-EktzHP/make-fmt-check.log",
+      "copy": "author-raw/vlajmaji-s02-profile-update-fmtcheck-EktzHP--make-fmt-check.log",
+      "bytes": 179,
+      "sha256": "b1abcd1ab2565d880954dfdf0fc103130ecb2f19cd4b0bbe720331bd962e0b86"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-profile-update-format-ewCcPG/make-format.log",
+      "copy": "author-raw/vlajmaji-s02-profile-update-format-ewCcPG--make-format.log",
+      "bytes": 170,
+      "sha256": "8db1da8d5c52a276518372fb8f4ebccbcf5f52690a9af8bb0a03b3ad428abaf2"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-profile-update-lint-aWbeoh/make-lint.log",
+      "copy": "author-raw/vlajmaji-s02-profile-update-lint-aWbeoh--make-lint.log",
+      "bytes": 711,
+      "sha256": "df1a56ac65c1c049b52d0df30229086b73b533b8e3b1a52f2497ba466960ead9"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-rawnative-cli-Q9dfy7/cli-test.log",
+      "copy": "author-raw/vlajmaji-s02-rawnative-cli-Q9dfy7--cli-test.log",
+      "bytes": 1864,
+      "sha256": "da466653ca2916d0f7f926d154c9901d4cc5eb812e07155864cb4b99de6ab0a0"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-rawnative-cli2-vTt5NX/cli-test.log",
+      "copy": "author-raw/vlajmaji-s02-rawnative-cli2-vTt5NX--cli-test.log",
+      "bytes": 2479,
+      "sha256": "88dcdd0ba895a49d47bbe792bb9bbb49a4ae7c025d858d01eaf4e858ee7ed1d2"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-rawnative-cli3-MxqtIx/cli-test.log",
+      "copy": "author-raw/vlajmaji-s02-rawnative-cli3-MxqtIx--cli-test.log",
+      "bytes": 1310,
+      "sha256": "1b6a85a0884f36996e7f56c9a86cfbebcd6bb00675ec555277f561e9c6af1e97"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-resume-lint-NyfyyL/make-lint.log",
+      "copy": "author-raw/vlajmaji-s02-resume-lint-NyfyyL--make-lint.log",
+      "bytes": 1274,
+      "sha256": "677b2278a3463bad1bba06e7080349bb5dffc53bf81b2c8522a1708af13008c1"
+    },
+    {
+      "original": "/private/tmp/vlajmaji-s02-resume-searchfocus-JmQr9W/search-test.log",
+      "copy": "author-raw/vlajmaji-s02-resume-searchfocus-JmQr9W--search-test.log",
+      "bytes": 682,
+      "sha256": "07d1f808c539c718edc1df945234027c709018eaa38cbf371a495472ba98019a"
+    }
+  ],
+  "missing_explicit_paths": [],
+  "last_extended_utc": "2026-11-01T05:29:16.775097+00:00"
+}

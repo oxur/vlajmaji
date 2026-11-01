@@ -1,0 +1,39 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.97s
+     Running tests/workbench_profiles_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/workbench_profiles_contract-b75c9a2067a10663)
+
+running 7 tests
+test test_profiles_deleted_cwd_child ... ignored, invoked as an isolated child after deleting its own working directory
+raw-byte profile config path unsupported here: macOS EILSEQ 92
+test test_publication_context_display_retains_full_public_native_context_and_cause ... ok
+
+thread 'test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_it' (86687684) panicked at crates/cli/tests/workbench_profiles_contract.rs:212:13:
+assertion `left == right` failed
+  left: String("workbench_config_missing")
+ right: "workbench_config_io"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_it ... FAILED
+
+thread 'test_profiles_explicit_absolute_config_survives_deleted_cwd_and_relative_config_fails' (86687682) panicked at crates/cli/tests/workbench_profiles_contract.rs:121:5:
+deleted-cwd child relative-config failed: 
+thread 'test_profiles_deleted_cwd_child' (86687706) panicked at crates/cli/tests/workbench_profiles_contract.rs:92:13:
+assertion `left == right` failed
+  left: String("workbench_config_io")
+ right: "workbench_config_missing"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+test test_profiles_explicit_absolute_config_survives_deleted_cwd_and_relative_config_fails ... FAILED
+test test_profiles_configure_info_status_and_unprepared_query_have_explicit_contracts ... ok
+test test_profiles_noop_and_refresh_other_stdout_errors_report_durable_state ... ok
+test test_profiles_refresh_default_remove_and_history_preserve_publication_rows ... ok
+
+failures:
+
+failures:
+    test_profiles_explicit_absolute_config_survives_deleted_cwd_and_relative_config_fails
+    test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_it
+
+test result: FAILED. 4 passed; 2 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.92s
+
+error: test failed, to rerun pass `-p vlajmaji-cli --test workbench_profiles_contract`

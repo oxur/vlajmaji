@@ -1,0 +1,14 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.02s
+     Running tests/workbench_profiles_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/workbench_profiles_contract-5c381532014e354d)
+
+running 5 tests
+test test_configure_preserves_unicode_config_basename_in_lock_sibling ... ok
+test test_configure_noop_cas_and_strict_nullable_wire_are_preserved ... ok
+test test_status_reports_logical_catalogue_and_prepared_state ... ok
+test test_build_drops_catalogue_reader_before_successful_writer ... ok
+test test_refresh_history_and_captured_view_invalidate_on_any_config_change ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.85s
+

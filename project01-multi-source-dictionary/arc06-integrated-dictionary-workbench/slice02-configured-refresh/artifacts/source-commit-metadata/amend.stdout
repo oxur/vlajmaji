@@ -1,0 +1,7 @@
+[codex/project01-integrated-workbench 8f373fa] Add configured workbench profiles and refresh
+ Date: Sun Nov 1 00:22:36 2026 -0500
+ 15 files changed, 6188 insertions(+), 24 deletions(-)
+ create mode 100644 crates/cli/tests/workbench_profiles_contract.rs
+ create mode 100644 crates/search/tests/workbench_profiles_contract.rs
+ create mode 100644 crates/store/src/workbench_profiles.rs
+ create mode 100644 crates/store/tests/workbench_profiles_contract.rs

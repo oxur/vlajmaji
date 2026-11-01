@@ -1,0 +1,56 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+error[E0422]: cannot find struct, variant or union type `DictionaryExactOptions` in this scope
+    --> crates/search/src/workbench.rs:1067:26
+     |
+1067 |                 options: DictionaryExactOptions {
+     |                          ^^^^^^^^^^^^^^^^^^^^^^
+     |
+    ::: crates/search/src/dictionary.rs:232:1
+     |
+ 232 | pub struct DictionaryExactResponse {
+     | ---------------------------------- similarly named struct `DictionaryExactResponse` defined here
+     |
+help: a struct with a similar name exists
+     |
+1067 -                 options: DictionaryExactOptions {
+1067 +                 options: DictionaryExactResponse {
+     |
+help: consider importing this struct through its public re-export
+     |
+ 824 +     use crate::DictionaryExactOptions;
+     |
+
+error[E0433]: cannot find type `DictionaryExactOptions` in this scope
+    --> crates/search/src/workbench.rs:1069:23
+     |
+1069 |                     ..DictionaryExactOptions::default()
+     |                       ^^^^^^^^^^^^^^^^^^^^^^ use of undeclared type `DictionaryExactOptions`
+     |
+help: a struct with a similar name exists
+     |
+1069 -                     ..DictionaryExactOptions::default()
+1069 +                     ..DictionaryExactResponse::default()
+     |
+help: consider importing this struct through its public re-export
+     |
+ 824 +     use crate::DictionaryExactOptions;
+     |
+
+Some errors have detailed explanations: E0422, E0433.
+For more information about an error, try `rustc --explain E0422`.
+error: could not compile `vlajmaji-search` (lib test) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: unused variable: `built`
+   --> crates/store/tests/workbench_profiles_contract.rs:366:9
+    |
+366 |     let built = WorkbenchView::build_new(
+    |         ^^^^^ help: if this is intentional, prefix it with an underscore: `_built`
+    |
+    = note: `-D unused-variables` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(unused_variables)]`
+
+error: could not compile `vlajmaji-store` (test "workbench_profiles_contract") due to 1 previous error
+make: *** [lint] Error 101

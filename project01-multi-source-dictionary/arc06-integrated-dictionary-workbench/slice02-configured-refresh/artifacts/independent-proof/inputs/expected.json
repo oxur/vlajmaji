@@ -1,0 +1,60 @@
+{
+  "definitions_by_source_r1": {
+    "lensisku": [
+      "advance"
+    ],
+    "owned-example": [
+      "grow",
+      "develop"
+    ]
+  },
+  "definitions_by_source_r2": {
+    "lensisku": [
+      "advance"
+    ],
+    "owned-example": [
+      "grow",
+      "develop",
+      "flourish"
+    ]
+  },
+  "historical_owned_revision": "owned-r1",
+  "historical_selection": {
+    "contexts": [],
+    "disabled": [],
+    "owned": {
+      "revision": "owned-r1"
+    },
+    "packs": [
+      "la-lojban"
+    ],
+    "version": 1
+  },
+  "owned_head_r1": "owned-r1",
+  "owned_head_r2": "owned-r2",
+  "request": {
+    "operation": "exact",
+    "options": {
+      "alias_scope": "ActiveOnly",
+      "cursor": null,
+      "page_size": null,
+      "sources": []
+    },
+    "spelling": "farvi"
+  },
+  "selection": {
+    "contexts": [],
+    "disabled": [],
+    "owned": "head",
+    "packs": [
+      "la-lojban"
+    ],
+    "version": 1
+  },
+  "source_order": [
+    "lensisku",
+    "owned-example"
+  ],
+  "spelling": "farvi",
+  "upstream_raw_sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+}

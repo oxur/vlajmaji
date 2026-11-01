@@ -1,0 +1,15 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.04s
+     Running unittests src/lib.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/vlajmaji_store-a3654fa1431d47c4)
+
+running 6 tests
+test workbench_profiles::publication_tests::test_publish_after_parent_sync_failure_reports_visible_indeterminate ... ok
+test workbench_profiles::publication_tests::test_writer_guard_keeps_replaced_lock_sentinel ... ok
+test workbench_profiles::publication_tests::test_publish_stage_guard_keeps_replacement_sentinel ... ok
+test workbench_profiles::publication_tests::test_publish_pre_visible_error_preserves_original_bytes ... ok
+test workbench_profiles::publication_tests::test_refresh_source_change_after_build_preserves_published_config ... ok
+test workbench_profiles::publication_tests::test_refresh_source_change_after_rename_reports_indeterminate ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 45 filtered out; finished in 0.68s
+

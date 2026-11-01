@@ -1,0 +1,333 @@
+{
+  "status": "FROZEN_CDC_VERIFICATION",
+  "created_utc": "2026-11-01T05:28:15.409851+00:00",
+  "source": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "head": "8f373fa0298694b03d88f735a2ff11f1d1b9ca41",
+  "tree": "8f0d61298a061410c8a133df2107b73b4de4313e",
+  "parent": "4fc937dcbebd0e2f3171f495345d6ab2a6e29f62",
+  "source_files": [
+    "crates/store/src/lib.rs",
+    "crates/store/src/workbench_profiles.rs",
+    "crates/store/src/workbench.rs",
+    "crates/store/tests/workbench_profiles_contract.rs",
+    "crates/store/README.md",
+    "crates/store/src/collections.rs",
+    "crates/search/src/lib.rs",
+    "crates/search/src/workbench.rs",
+    "crates/search/tests/workbench_profiles_contract.rs",
+    "crates/search/examples/integrated_workbench.rs",
+    "crates/search/README.md",
+    "crates/cli/src/main.rs",
+    "crates/cli/tests/workbench_profiles_contract.rs",
+    "docs/integrated-workbench.md",
+    "README.md"
+  ],
+  "cli": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji",
+  "example": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/integrated_workbench",
+  "target": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target",
+  "files": {
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/lib.rs": {
+      "bytes": 16872,
+      "sha256": "463ebc533880cb8f79c38146dbd3e92c0070024793b740dc17becf77b43cbb7b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/workbench_profiles.rs": {
+      "bytes": 87218,
+      "sha256": "55364e82c690beaccc2703961bb04c4e9479c6430c359acff9c018f5f76fca7c"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/workbench.rs": {
+      "bytes": 84610,
+      "sha256": "574f75649feeeae3be39fd84f5ac8e9747d3aa931af2f6c81791f0660a4e9b87"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/tests/workbench_profiles_contract.rs": {
+      "bytes": 25528,
+      "sha256": "2ccc5b55e4c60f83bd333838cc1be17c0697048881d6f50ad76a9a2e8b374ea5"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/README.md": {
+      "bytes": 8786,
+      "sha256": "ce4818ab11109e5eab943026c10d0f3d8ce8382c7aa882e1ccfc6f23f054e409"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store/src/collections.rs": {
+      "bytes": 195633,
+      "sha256": "c91d98eae301b6fd23db0ca24aea07db747d9b56a8f2dc754cd9b3a11ce5d38f"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/lib.rs": {
+      "bytes": 58429,
+      "sha256": "1fc35e413a51736785c566c0131115c182e3e5b29364c2ccd5debde29de87c1b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/src/workbench.rs": {
+      "bytes": 39901,
+      "sha256": "b35d542389b1fe47643539ea5d08fa79f21da00d90ae7c84add40a1ada311062"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/tests/workbench_profiles_contract.rs": {
+      "bytes": 19376,
+      "sha256": "0da47d612de79603ba3458970098737f8d3fadb8a05903f17bd57c18f309799a"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/examples/integrated_workbench.rs": {
+      "bytes": 40663,
+      "sha256": "a4e14b334cbd00c63b4e4fd3ad0a39ca667f933c9d5a3956f7f1d8cc6bdca992"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search/README.md": {
+      "bytes": 7086,
+      "sha256": "f0a6c71e7f260da79edec15b4e7595f01da35f6479291c4808a1f21cf8c5ccc2"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/src/main.rs": {
+      "bytes": 198642,
+      "sha256": "360dc762ac73a68f37ad3d9b9b1d21b734a9218aaa4b85b1d05c225467a58a97"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli/tests/workbench_profiles_contract.rs": {
+      "bytes": 30857,
+      "sha256": "c5ccde243a18dc7f2216bd579c8e908e30dd43f3ff65e758281c5c3760e0af86"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/docs/integrated-workbench.md": {
+      "bytes": 16643,
+      "sha256": "0767e65e3ed8b4910b425fd80f39c55ecc73560698f98de2c9a1aeffd4ecc4ef"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/README.md": {
+      "bytes": 15358,
+      "sha256": "3df6809f384caf2e990868cfc69b82c42e34d0b0537e58218a0d0da7f250f4f6"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/Cargo.lock": {
+      "bytes": 32280,
+      "sha256": "56fe1cbb2b6eee50e82aa46b2532c6019bdc4872751e01dbeae0167b6012a689"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/AGENTS.md": {
+      "bytes": 8404,
+      "sha256": "3775aeaad14a5c1eca7edc52d061f39130b1f24ba9fd6dc9f4f537a7282914d7"
+    },
+    "/tmp/vlajmaji-p01-a05-cargo": {
+      "bytes": 330,
+      "sha256": "426d1e49863551fe37252cecb8d36f8fb58410670fc550c6deedc89ddb92f53d"
+    },
+    "/private/tmp/vlajmaji-p01-a06-s01-original-env.sh": {
+      "bytes": 2287,
+      "sha256": "ae749d0dd537499b254fd4e9fc35980345eabf5e1164c41817e62eacc58b2c86"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice01-bound-mixed-view/artifacts/author-logs/original-env.sh": {
+      "bytes": 2287,
+      "sha256": "ae749d0dd537499b254fd4e9fc35980345eabf5e1164c41817e62eacc58b2c86"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/vlajmaji": {
+      "bytes": 56042072,
+      "sha256": "e4da1054e047c3802d7ab3fa42a0006d99c5adf579e657cd04687a205752befa"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/integrated_workbench": {
+      "bytes": 29750504,
+      "sha256": "b5bd17933de0224fc8be3d7840f12d4b1b7598d5b2b87ce32cd0b0b359f138e4"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/method.py": {
+      "bytes": 28046,
+      "sha256": "d6cbed38a81a824370cd5f02d6e3bd41c92a686d48e50db466d4f151a80921da"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/cc-prompt.md": {
+      "bytes": 34471,
+      "sha256": "a16d8e29cda8fc3ba14e1e5849d8f5223511468b5b0d7ef9fad52253c76bd708"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/slice-plan.md": {
+      "bytes": 61113,
+      "sha256": "e39c40d4f44cf6660688215f4e2408f668a1939507f894e0dea28041dee3b337"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/ledger.md": {
+      "bytes": 4600,
+      "sha256": "b69af1357de3b693147d1b821ed09cd5b871f2667d05a5194f4f6c9f062ace77"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/closing-report.md": {
+      "bytes": 8560,
+      "sha256": "9ac4e81229a50cfb52294414f0d44f9a2aada9747ca6a088f5b3cae8d0ce6ae3"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/execution.md": {
+      "bytes": 66700,
+      "sha256": "a98c68fee2ab44f264086ebfc75fbcf8eec8fa5625daa9ad07bc683dd5069a63"
+    },
+    "/private/tmp/vlajmaji-s02-archive-overlay-YFWihS/overlay.tsv": {
+      "bytes": 2611,
+      "sha256": "a3bc23f7931589b095d92cfd9a4364dfbce445b458510f6ff04db975cc96c47d"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/expected.json": {
+      "bytes": 1093,
+      "sha256": "91f63128c7801de531ddb014857cedbaa1536ab4af49a52f934405fd946a0765"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/historical-selection.json": {
+      "bytes": 133,
+      "sha256": "7f40fbc8fbcab37660ec8e3498fe38a848316f54c140656c73e942f497617b85"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-r1.json": {
+      "bytes": 5652,
+      "sha256": "372fcce44cf1dd1f0d2d37b8b42927a25ac227f3d6f1e846856d8097896e4286"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-r2.json": {
+      "bytes": 8282,
+      "sha256": "b0a46586e5bba2817593f7cb0a5bdfb9a9897391fa1f4383ec4dd1b1217c69c7"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/owned-seed.json": {
+      "bytes": 2062,
+      "sha256": "6d7e6c61892e1f5027e675ac8b32441044460cf1ee0359c179729196b087e0e8"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/request.json": {
+      "bytes": 163,
+      "sha256": "e868dd2d63d21ca68e2d4ec6bf157993af269aaa3fe82c1d4ba89ac08af3470b"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/selection.json": {
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-dictionary.json": {
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-release.json": {
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream-seal.json": {
+      "bytes": 474,
+      "sha256": "0d43c55ce524c4c3d8d4f7f422dca7b0d4b0a4330b1e332fc12a83b2584dd9e9"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/upstream.json": {
+      "bytes": 83,
+      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profile-alpha-selection.json": {
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profile-beta-selection.json": {
+      "bytes": 67,
+      "sha256": "beeda00574bd9e1642c0f6a8b1771e9bc6fa836b4db601e2f414148579f1fe37"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs/profiles-expected.json": {
+      "bytes": 214,
+      "sha256": "fca09ccd0d28cc2f12e5f1aeecdf61b2862a45f967d6fb39e62361e3a7940bb9"
+    },
+    "/private/tmp/vlajmaji-s02-default-cli-build-VLVHC5/build.log": {
+      "bytes": 177,
+      "sha256": "510c235a0bb96b00cc2c1cb9b0a8e2d923580d67241a2c3c3df9872df3e5e3ed"
+    },
+    "/private/tmp/vlajmaji-s02-default-example-build-HGuul5/build.log": {
+      "bytes": 299,
+      "sha256": "7e12a5e3ade46fbb2c77a78ef481bacf631cc3a2643ef4285f3ade6182db4e62"
+    }
+  },
+  "input_root": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice02-configured-refresh/artifacts/independent-proof/inputs",
+  "inputs": {
+    "expected.json": {
+      "bytes": 1093,
+      "sha256": "91f63128c7801de531ddb014857cedbaa1536ab4af49a52f934405fd946a0765"
+    },
+    "historical-selection.json": {
+      "bytes": 133,
+      "sha256": "7f40fbc8fbcab37660ec8e3498fe38a848316f54c140656c73e942f497617b85"
+    },
+    "owned-r1.json": {
+      "bytes": 5652,
+      "sha256": "372fcce44cf1dd1f0d2d37b8b42927a25ac227f3d6f1e846856d8097896e4286"
+    },
+    "owned-r2.json": {
+      "bytes": 8282,
+      "sha256": "b0a46586e5bba2817593f7cb0a5bdfb9a9897391fa1f4383ec4dd1b1217c69c7"
+    },
+    "owned-seed.json": {
+      "bytes": 2062,
+      "sha256": "6d7e6c61892e1f5027e675ac8b32441044460cf1ee0359c179729196b087e0e8"
+    },
+    "request.json": {
+      "bytes": 163,
+      "sha256": "e868dd2d63d21ca68e2d4ec6bf157993af269aaa3fe82c1d4ba89ac08af3470b"
+    },
+    "selection.json": {
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "upstream-dictionary.json": {
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "upstream-release.json": {
+      "bytes": 4469,
+      "sha256": "9bb0f1071ca9152874bd43b3706f2c4a02964bdb69c3960e113ee6645d880279"
+    },
+    "upstream-seal.json": {
+      "bytes": 474,
+      "sha256": "0d43c55ce524c4c3d8d4f7f422dca7b0d4b0a4330b1e332fc12a83b2584dd9e9"
+    },
+    "upstream.json": {
+      "bytes": 83,
+      "sha256": "06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"
+    }
+  },
+  "additional_fixed_inputs": {
+    "profile-alpha-selection.json": {
+      "bytes": 107,
+      "sha256": "edad0414598f2be7ed74bef8d611c3fd05dfacd215ff91a5909a2021f32796e5"
+    },
+    "profile-beta-selection.json": {
+      "bytes": 67,
+      "sha256": "beeda00574bd9e1642c0f6a8b1771e9bc6fa836b4db601e2f414148579f1fe37"
+    },
+    "profiles-expected.json": {
+      "bytes": 214,
+      "sha256": "fca09ccd0d28cc2f12e5f1aeecdf61b2862a45f967d6fb39e62361e3a7940bb9"
+    }
+  },
+  "path_sha256": "f7af29286b33342886cb96026c90a8bfcbbb7e3cfaef920ed73086ab33d3a53d",
+  "toolhomes": {
+    "CARGO_HOME": "/Users/oubiwann/.cargo",
+    "RUSTUP_HOME": "/Users/oubiwann/.rustup"
+  },
+  "required_rustup_auto_install": "0",
+  "protected_refs": {
+    "main": "cb13d377aeba85c1b76a9173abb22bedd535ac69",
+    "owned_branch": "69a9f68507e23cef9b20e4bcabc86840e224689e",
+    "bauske_head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+    "bauske_tree": "e5715eb87df84165ecba8b43cd35949ae9457695"
+  },
+  "binary_provenance": {
+    "scope": "Author-reported actual source-cwd package-default Cargo builds after sole archive, before original ab352 commit. Source bodies byte-equal current amended tree; metadata-only successor, no build/replay attributed to amended HEAD.",
+    "source_cwd": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+    "head_during_build": "4fc937dcbebd0e2f3171f495345d6ab2a6e29f62",
+    "cli": {
+      "argv": [
+        "/tmp/vlajmaji-p01-a05-cargo",
+        "+1.98.0",
+        "build",
+        "--locked",
+        "--offline",
+        "-p",
+        "vlajmaji-cli"
+      ],
+      "exit": 0,
+      "raw": "/private/tmp/vlajmaji-s02-default-cli-build-VLVHC5/build.log",
+      "raw_pin": {
+        "bytes": 177,
+        "sha256": "510c235a0bb96b00cc2c1cb9b0a8e2d923580d67241a2c3c3df9872df3e5e3ed"
+      },
+      "binary_pin": {
+        "bytes": 56042072,
+        "sha256": "e4da1054e047c3802d7ab3fa42a0006d99c5adf579e657cd04687a205752befa"
+      }
+    },
+    "example": {
+      "argv": [
+        "/tmp/vlajmaji-p01-a05-cargo",
+        "+1.98.0",
+        "build",
+        "--locked",
+        "--offline",
+        "-p",
+        "vlajmaji-search",
+        "--example",
+        "integrated_workbench"
+      ],
+      "exit": 0,
+      "raw": "/private/tmp/vlajmaji-s02-default-example-build-HGuul5/build.log",
+      "raw_pin": {
+        "bytes": 299,
+        "sha256": "7e12a5e3ade46fbb2c77a78ef481bacf631cc3a2643ef4285f3ade6182db4e62"
+      },
+      "binary_pin": {
+        "bytes": 29750504,
+        "sha256": "b5bd17933de0224fc8be3d7840f12d4b1b7598d5b2b87ce32cd0b0b359f138e4"
+      }
+    }
+  },
+  "runtime_authority": "PREPARED ONLY. No product child until ROOT final binding readiness and explicit CDC runtime interval. Same reviewed33 children, no Cargo/build/newconsumer/Full/default/network."
+}

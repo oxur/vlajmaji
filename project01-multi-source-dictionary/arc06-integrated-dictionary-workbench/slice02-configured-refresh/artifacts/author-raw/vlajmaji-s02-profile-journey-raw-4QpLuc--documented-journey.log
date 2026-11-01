@@ -1,0 +1,9 @@
++ SRC=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji
++ JOURNEY_PARENT='"$journey_parent"'
++ cd /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji
++ '[' /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji = /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji ']'
++ /tmp/vlajmaji-p01-a05-cargo +1.98.0 run --locked --offline -p vlajmaji-search --example integrated_workbench -- '"$journey_parent"/workbench-example'
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running `/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/examples/integrated_workbench '"$journey_parent"/workbench-example'`
+Error: Os { code: 2, kind: NotFound, message: "No such file or directory" }

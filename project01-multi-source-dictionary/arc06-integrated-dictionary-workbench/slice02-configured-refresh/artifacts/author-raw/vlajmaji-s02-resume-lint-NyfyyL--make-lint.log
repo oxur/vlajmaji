@@ -1,0 +1,22 @@
+[1;34mRunning Clippy...[0m
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+    Checking vlajmaji-store v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/store)
+    Checking vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+    Checking vlajmaji-cli v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/cli)
+error[E0502]: cannot borrow `beta` as mutable because it is also borrowed as immutable
+   --> crates/search/tests/workbench_profiles_contract.rs:310:9
+    |
+310 |           beta.detail(
+    |           ^    ------ immutable borrow later used by call
+    |  _________|
+    | |
+311 | |             &compact_exact.groups[0].hits[0].detail_ref,
+312 | |             &beta.identity().effective_binding_sha256,
+    | |              ---- immutable borrow occurs here
+313 | |         ),
+    | |_________^ mutable borrow occurs here
+
+For more information about this error, try `rustc --explain E0502`.
+error: could not compile `vlajmaji-search` (test "workbench_profiles_contract") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+make: *** [lint] Error 101
