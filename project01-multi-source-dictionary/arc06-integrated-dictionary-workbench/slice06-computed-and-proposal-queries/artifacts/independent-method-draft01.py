@@ -237,7 +237,15 @@ def source_check(out,b,revision,request,compact=False,indices=None,requested='di
  keys(r,'policy_ids state_sha256 query resolved_sources totals source_totals availability hits exclusions next_cursor code_notices'+(' snapshot_sha256'if compact else''))
  assert r['policy_ids']==POLICIES[family] and r['query']==request['query']
  assert r['resolved_sources']==['comp-owned','comp-upstream']
- assert r['state_sha256']==b['state_sha256'] and r['totals']==expect['totals'] and r['exclusions']==expect['exclusions']
+ assert r['state_sha256']==b['state_sha256'] and r['totals']==expect['totals']
+ if 'exclusions' in expect:assert r['exclusions']==expect['exclusions']
+ else:
+  # Fixed Components authority does not freeze a per-engine rejection breakdown.
+  # Preserve author/source grade; only schema + first-exclusion conservation is
+  # independently derived here, never expected map values copied from a result.
+  assert family=='components' and isinstance(r['exclusions'],dict)
+  assert all(isinstance(k,str)and isinstance(v,int)and v>=0 for k,v in r['exclusions'].items())
+  assert sum(r['exclusions'].values())==r['totals']['candidate_assertions']-r['totals']['records']
  assert r['source_totals']==source_total(d,ids)
  assert r['availability']==availability(d,compact)
  assert r['code_notices']==d['metadata']['code_notices']
@@ -253,6 +261,8 @@ def source_check(out,b,revision,request,compact=False,indices=None,requested='di
   else:analysis_check(v['analysis'],d,a)
   assert v['distance_positions']==(fixed['r1']['contrast']['distance_positions']if family=='contrast'else[])
   assert v['computed_components']==(fixed['r1']['components']['decomposition']if family=='components'else None)
+ if request['options']['page_size'] in [None,0]:assert r['next_cursor'] is None
+ elif indices is not None and indices and indices[-1]<len(ids)-1:assert isinstance(r['next_cursor'],str)
  if r['next_cursor'] is not None:
   a=assertion(d,returned[-1]);token_check(r['next_cursor'],digest_outer,request,r['resolved_sources'],
     'compact'if compact else'full',source_position(d,a,distances[a['id']]))
@@ -265,6 +275,8 @@ def proposal_check(out,b,request,compact=False,indices=None):
  assert r['policy_ids']==POLICIES['proposal_exact'] and r['query']==request['query']
  assert r['totals']==fixed['proposal']['totals'] and r['code_notices']==[]
  rr=fixed['proposal']['rows'];assert r['proposals']==(rr if indices is None else[rr[i]for i in indices])
+ if request['options']['page_size'] in [None,0]:assert r['next_cursor'] is None
+ elif indices is not None and indices and indices[-1]<len(rr)-1:assert isinstance(r['next_cursor'],str)
  if r['next_cursor']is not None:
   last=r['proposals'][-1]
   token_check(r['next_cursor'],digest_outer,request,[],'compact'if compact else'full',
