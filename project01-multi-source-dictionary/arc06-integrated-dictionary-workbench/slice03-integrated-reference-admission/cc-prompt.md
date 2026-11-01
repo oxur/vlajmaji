@@ -1,6 +1,6 @@
 # CC assignment — S03 complete integrated reference admission
 
-**STATUS: DRAFT / NOT ISSUED,2026-11-01.** INITIAL/pass1 of FIVE total assignments. No intake/source/index/target/runtime authority until ROOT final readiness and status-only issue. Retained CC Luna/high ONLY, CDC Sol6.1/high; requested selection is not backend attestation. All older completed CC prompts/closing assignments are superseded and MAY NOT resume. Current S01/S02 CLOSED; source/index/ONEtarget ROOT QUIET, CC parked. All8 S03/8Arc/14Project rows OPEN.
+**STATUS: ISSUED / INITIAL PASS1 OF FIVE / COMPLETE INTAKE ONLY,2026-11-01.** ROOT whole readiness PASS at reviewed27a6724239e6e4bfdd2e22f4789a8f886bf30b96 preserves the exact0.4 API/wire/allowlist/readset/oracles. Retained Luna/high CC may load required complete text, execute read-only required-data queries and append actual source-cited intake/readback ONLY to this slice artifacts/execution.md. ALL prior completed assignments are superseded. No source/index/ONEtarget authority before CDC accepts coherent intake/fresh source/protected/guard/env/input pins and explicitly transfers EXACT13paths. Source/index/target ROOT QUIET; all8S03/8arc/14project OPEN. This status-only issue supersedes DRAFT/readiness-pending classification below at its historical cutoff, without changing substantive contract. No implementation, product-runtime or independent acceptance is claimed.
 
 ## Outcome, authority and exact scope
 

@@ -1,6 +1,6 @@
 # S03 ledger — complete integrated reference admission
 
-**DRAFT / NOT ISSUED,2026-11-01.** Version0.4 plan binds accepted S02 source8f373fa0/tree8f0d and ROOT-verified close48064f01. Exact dedicated rich-reference API/witness/native/logical observation contract and thirteen-path proposal are frozen for ROOT review, not source authority. All8 rows OPEN; source/index/ONEtarget ROOT QUIET, CC parked. Complete final prompt/readset/intake/root readiness remains required; original table binding cells are unchanged.
+**STATUS: ISSUED / INITIAL PASS1 OF FIVE / COMPLETE INTAKE ONLY,2026-11-01.** ROOT whole readiness PASS at reviewed27a6724239e6e4bfdd2e22f4789a8f886bf30b96 preserves the exact0.4 API/wire/allowlist/readset/oracles. Retained Luna/high CC may load required complete text, execute read-only required-data queries and append actual source-cited intake/readback ONLY to this slice artifacts/execution.md. ALL prior completed assignments are superseded. No source/index/ONEtarget authority before CDC accepts coherent intake/fresh source/protected/guard/env/input pins and explicitly transfers EXACT13paths. Source/index/target ROOT QUIET; all8S03/8arc/14project OPEN. This status-only issue supersedes DRAFT/readiness-pending classification below at its historical cutoff, without changing substantive contract. No implementation, product-runtime or independent acceptance is claimed.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |
