@@ -1,0 +1,143 @@
+--- 7013-original-method.py
++++ UNEXECUTED-method-continuation01.py
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env python3
+-"""UNEXECUTED S03 CDC draft: 27 children (one author-compiled public example,
+-26 CLI). No Cargo/consumer/default/Full/cleanup. Final source/binary/env bindings,
++"""UNEXECUTED S03 CDC continuation: reuse validated original example child1;
++execute ONLY remaining26 CLI (27 total across attempts). No example replay,
++Cargo/consumer/default/Full/cleanup. Final source/binary/env bindings,
+ quiet custody and ROOT readiness are required before the sole execution.
+ Rich Form/Sense/native-patch/writer/IO controls remain author-source-reviewed
+ unless this explicit point-of-use actually reaches them. No full corpus claim.
+@@ -97,15 +98,26 @@
+ up_a=one(up['metadata']['assertions'],lambda a:a['id']==fixed['upstream_assertion'])
+ owned_as=sorted(r2['metadata']['assertions'],key=lambda a:(one(r2['metadata']['entries'],lambda e:e['id']==a['entry'])['spelling']['Value'],occurrence_id(a['occurrence'])))
+ assert [a['id'] for a in owned_as]==['owned-assertion-a','owned-assertion-b','owned-assertion-c']
+-base=Path(tempfile.mkdtemp(prefix='vlajmaji-a06-s03-cdc-',dir='/private/tmp'))
++base=Path(binding['continuation']['base'])
++assert base.is_dir() and str(base)=='/private/tmp/vlajmaji-a06-s03-cdc-345rn1y_'
++retained_env=json.loads((base/'selected-env.json').read_bytes())
+ for k,leaf in [('HOME','home'),('XDG_DATA_HOME','xdg-data'),('XDG_CONFIG_HOME','xdg-config'),('TMPDIR','tmp')]:
+- p=base/leaf;p.mkdir();env[k]=str(p)
++ p=base/leaf;assert p.is_dir() and retained_env[k]==str(p);env[k]=str(p)
+ env['CARGO_NET_OFFLINE']='true';env['CARGO_TARGET_DIR']=binding['target'];env['RUSTUP_AUTO_INSTALL']='0'
+-(base/'selected-env.json').write_bytes(enc({k:env[k] for k in ['PATH','CARGO_HOME','RUSTUP_HOME','HOME','XDG_DATA_HOME','XDG_CONFIG_HOME','TMPDIR','CARGO_TARGET_DIR','CARGO_NET_OFFLINE','RUSTUP_AUTO_INSTALL']}))
++assert (base/'selected-env.json').read_bytes()==enc({k:env[k] for k in ['PATH','CARGO_HOME','RUSTUP_HOME','HOME','XDG_DATA_HOME','XDG_CONFIG_HOME','TMPDIR','CARGO_TARGET_DIR','CARGO_NET_OFFLINE','RUSTUP_AUTO_INSTALL']})
+ # Expected complete body/native/provenance buffers are persisted BEFORE child1.
+ expected={'up_whole_hit':whole_hit(up,up_a),'up_full':reference_row(up,up_a),'up_compact':reference_row(up,up_a,True),'owned_full':[reference_row(r2,a) for a in owned_as],'owned_compact':[reference_row(r2,a,True) for a in owned_as],'availability_full':availability(up,False)+availability(r2,False),'availability_compact':availability(up,True)+availability(r2,True)}
+-(base/'expected-before-children.json').write_bytes(enc(expected))
+-children=[]
++assert (base/'expected-before-children.json').read_bytes()==enc(expected)
++# Restore only the original successful child, never invoke its binary again.
++children=json.loads(Path(binding['continuation']['child1_commands']).read_bytes())
++assert len(children)==1
++first=children[0]
++assert first['n']==1 and first['name']=='public-example' and first['expected_exit']==first['actual_exit']==0 and first['timeout'] is False
++assert first['argv']==[str(example),str(base/'workbench-example')] and first['cwd']==str(base)
++assert pin(first['stdout'])==first['stdout_pin'] and pin(first['stderr'])==first['stderr_pin']
++assert (base/'commands.json').read_bytes()==Path(binding['continuation']['child1_commands']).read_bytes()
++json.loads(Path(first['stdout']).read_bytes())
++assert not (base/'commands-continuation01.json').exists() and not (base/'execution-continuation01.json').exists()
+ def run(name,argv,code=0,text=False):
+  n=len(children)+1;assert n<=27
+  started=time.time()
+@@ -117,7 +129,7 @@
+  with op.open('xb') as f:f.write(out)
+  with ep.open('xb') as f:f.write(err)
+  row={'n':n,'name':name,'argv':[str(a) for a in argv],'cwd':str(base),'expected_exit':code,'actual_exit':actual,'timeout':timeout,'seconds':time.time()-started,'stdout':str(op),'stderr':str(ep),'stdout_pin':pin(op),'stderr_pin':pin(ep)}
+- children.append(row);(base/'commands.json').write_bytes(enc(children))
++ children.append(row);(base/'commands-continuation01.json').write_bytes(enc(children))
+  assert not timeout and actual==code,row
+  if code:
+   assert out==b'' and err.endswith(b'\n') and err.count(b'\n')==1
+@@ -129,6 +141,9 @@
+  return json.loads(out)
+ def v(name,*argv,**kw):return run(name,[cli,*argv],**kw)
+ W=base/'workbench-example';I=W/'inputs';C=W/'catalogue';J=W/'owned';cfg=W/'workbench-profiles.json';mix=base/'mixed-r2';disabled=base/'disabled-r2'
++R=W/'artifacts/reference-inputs'
++def emitted_path(name):return (R if name in new else I)/name
++assert not mix.exists() and not disabled.exists()
+ 
+ # Output identities below are checked against direct persisted binding and original
+ # inputs; opaque generation/content IDs are coherence-only, not predicted values.
+@@ -220,44 +235,44 @@
+ # Derive every negative buffer from original authority BEFORE child1.
+ up_target=json.loads(inputs['reference-upstream.json']);entry_target=json.loads(inputs['reference-owned-entry.json']);assertion_target=json.loads(inputs['reference-owned-assertion.json'])
+ negative={'malformed':b'{','wrong-role':enc({'Local':{'Form':'owned-entry-farvi'}}),'unknown-release':enc({'Catalog':{**up_target['Catalog'],'release':'unknown-release'}}),'empty-unresolved':enc({'Unresolved':''}),'wrong-source':enc({'Catalog':{**up_target['Catalog'],'source':'owned-example'}})}
+-for name,b in negative.items():(base/f'{name}.json').write_bytes(b)
+-(base/'negative-input-authority-before-children.json').write_bytes(enc({name:{'bytes':len(b),'sha256':sha(b),'value_hex':b.hex()} for name,b in negative.items()}))
+-run('public-example',[example,W])
+-for n,b in inputs.items():assert (I/n).read_bytes()==b,n
++for name,b in negative.items():assert (base/f'{name}.json').read_bytes()==b
++assert (base/'negative-input-authority-before-children.json').read_bytes()==enc({name:{'bytes':len(b),'sha256':sha(b),'value_hex':b.hex()} for name,b in negative.items()})
++# Original child1 is restored above; validate ALL21 mapped outputs BEFORE child2.
++for n,b in inputs.items():assert emitted_path(n).read_bytes()==b,n
+ before_cfg=cfg.read_bytes()
+ build=v('build-mixed-r2','workbench','build',mix,'--selection',I/'selection.json','--catalogue',C,'--owned',J)
+ assert build['operation']=='build_new' and build['root']==native(mix);bm=direct(mix);assert build['binding']==bm
+-fu=v('upstream-full','workbench','reference',mix,'--target',I/'reference-upstream.json','--format','full');resolved_check(fu,up_target,bm,'full','up')
+-cu=v('upstream-compact','workbench','reference',mix,'--target',I/'reference-upstream.json','--format','compact');resolved_check(cu,up_target,bm,'compact','up')
+-readable_check(v('upstream-readable','workbench','reference',mix,'--target',I/'reference-upstream.json','--format','readable',text=True),cu)
+-fe=v('owned-entry-full','workbench','reference',mix,'--target',I/'reference-owned-entry.json','--format','full');resolved_check(fe,entry_target,bm,'full','entry')
+-ce=v('owned-entry-compact','workbench','reference',mix,'--target',I/'reference-owned-entry.json','--format','compact');resolved_check(ce,entry_target,bm,'compact','entry')
+-fa=v('owned-assertion-full','workbench','reference',mix,'--target',I/'reference-owned-assertion.json','--format','full');resolved_check(fa,assertion_target,bm,'full','assertion')
++fu=v('upstream-full','workbench','reference',mix,'--target',R/'reference-upstream.json','--format','full');resolved_check(fu,up_target,bm,'full','up')
++cu=v('upstream-compact','workbench','reference',mix,'--target',R/'reference-upstream.json','--format','compact');resolved_check(cu,up_target,bm,'compact','up')
++readable_check(v('upstream-readable','workbench','reference',mix,'--target',R/'reference-upstream.json','--format','readable',text=True),cu)
++fe=v('owned-entry-full','workbench','reference',mix,'--target',R/'reference-owned-entry.json','--format','full');resolved_check(fe,entry_target,bm,'full','entry')
++ce=v('owned-entry-compact','workbench','reference',mix,'--target',R/'reference-owned-entry.json','--format','compact');resolved_check(ce,entry_target,bm,'compact','entry')
++fa=v('owned-assertion-full','workbench','reference',mix,'--target',R/'reference-owned-assertion.json','--format','full');resolved_check(fa,assertion_target,bm,'full','assertion')
+ bbeta=direct(W/'configured-beta-r2',False)
+-fb=v('default-beta-full','workbench','profiles','reference','--config',cfg,'--target',I/'reference-owned-entry.json','--format','full');resolved_check(fb,entry_target,bbeta,'full','entry',True,None)
+-cb=v('default-beta-compact','workbench','profiles','reference','--config',cfg,'--target',I/'reference-owned-entry.json','--format','compact');resolved_check(cb,entry_target,bbeta,'compact','entry',True,None)
+-named=v('named-beta-readable','workbench','profiles','reference','--config',cfg,'--profile','beta','--target',I/'reference-owned-entry.json','--format','readable',text=True)
++fb=v('default-beta-full','workbench','profiles','reference','--config',cfg,'--target',R/'reference-owned-entry.json','--format','full');resolved_check(fb,entry_target,bbeta,'full','entry',True,None)
++cb=v('default-beta-compact','workbench','profiles','reference','--config',cfg,'--target',R/'reference-owned-entry.json','--format','compact');resolved_check(cb,entry_target,bbeta,'compact','entry',True,None)
++named=v('named-beta-readable','workbench','profiles','reference','--config',cfg,'--profile','beta','--target',R/'reference-owned-entry.json','--format','readable',text=True)
+ # Named/default effective identities differ: derive named expected envelope from
+ # frozen config+pre-input mode rather than compare its SHA to default response.
+ named_outer=copy.deepcopy(cb);named_outer['configuration']['requested_profile']='beta';ident=named_outer['configuration'];ident.pop('effective_binding_sha256');ident['effective_binding_sha256']=sha(enc(ident));named_outer['binding_sha256']=ident['effective_binding_sha256']
+ readable_check(named,named_outer,True)
+-build=v('build-disabled-r2','workbench','build',disabled,'--selection',I/'reference-disabled-selection.json','--catalogue',C,'--owned',J)
++build=v('build-disabled-r2','workbench','build',disabled,'--selection',R/'reference-disabled-selection.json','--catalogue',C,'--owned',J)
+ bd=direct(disabled,True,True);assert build['binding']==bd
+-fd=v('disabled-full','workbench','reference',disabled,'--target',I/'reference-upstream.json','--format','full')
+-cd=v('disabled-compact','workbench','reference',disabled,'--target',I/'reference-upstream.json','--format','compact')
++fd=v('disabled-full','workbench','reference',disabled,'--target',R/'reference-upstream.json','--format','full')
++cd=v('disabled-compact','workbench','reference',disabled,'--target',R/'reference-upstream.json','--format','compact')
+ for out,fmt in [(fd,'full'),(cd,'compact')]:
+  r=outer_check(out,up_target,bd,fmt);assert r=={'target':up_target,'status':'CatalogueOnly','operational_reason':'disabled','payload':None,'catalogue_matches':[registry_match()],'requested_release':summary(up['metadata']['releases'][0]),'registrations':[registration(True)]}
+-readable_check(v('disabled-readable','workbench','reference',disabled,'--target',I/'reference-upstream.json','--format','readable',text=True),cd)
+-fo=v('disabled-owned-full','workbench','reference',disabled,'--target',I/'reference-owned-entry.json','--format','full');resolved_check(fo,entry_target,bd,'full','entry')
++readable_check(v('disabled-readable','workbench','reference',disabled,'--target',R/'reference-upstream.json','--format','readable',text=True),cd)
++fo=v('disabled-owned-full','workbench','reference',disabled,'--target',R/'reference-owned-entry.json','--format','full');resolved_check(fo,entry_target,bd,'full','entry')
+ for name,fmt,status in [('unknown','full','Unknown'),('unresolved','compact','Unresolved')]:
+- target=json.loads(inputs[f'reference-{name}.json']);out=v(name,'workbench','reference',mix,'--target',I/f'reference-{name}.json','--format',fmt)
++ target=json.loads(inputs[f'reference-{name}.json']);out=v(name,'workbench','reference',mix,'--target',R/f'reference-{name}.json','--format',fmt)
+  assert outer_check(out,target,bm,fmt)=={'target':target,'status':status,'operational_reason':None,'payload':None,'catalogue_matches':[],'requested_release':None,'registrations':[]}
+ # Reuse the already-frozen independent negative buffers; no product replay.
+ for name,b in negative.items():
+  path=base/f'{name}.json';assert path.read_bytes()==b
+  code='request_json' if name=='malformed' else 'invalid_reference'
+  assert v(name,'workbench','reference',mix,'--target',path,'--format','full',code=1)['code']==code
+-keyfile=base/'detail-key.json';keyfile.write_bytes(enc(expected['up_compact']['detail_ref']))
++keyfile=base/'detail-key.json';assert not keyfile.exists();keyfile.write_bytes(enc(expected['up_compact']['detail_ref']))
+ detail=v('reference-key-detail','workbench','detail',mix,'--reference',keyfile,'--expected-binding',cu['binding_sha256'],'--format','full')
+ keys(detail,'version binding_sha256 selection result');assert detail['version']==1 and detail['binding_sha256']==cu['binding_sha256'] and detail['selection']==cu['selection']
+ dr=detail['result'];keys(dr,'version projection_policy detail_ref status operational_reason state_sha256 snapshot_sha256 hit current_eligible')
+@@ -266,10 +281,10 @@
+ assert dr['hit']==expected['up_whole_hit']
+ assert v('missing-target-file','workbench','reference',mix,'--target',base/'never-created-target.json','--format','full',code=1)['code']=='workbench_io'
+ rebuild=v('catalogue-rebuild','collections','rebuild',C,'--expected-revision','1');assert rebuild['ok'] is True and rebuild['operation']=='rebuild' and rebuild['local_revision']==2
+-assert v('stale-reference','workbench','reference',mix,'--target',I/'reference-upstream.json','--format','full',code=1)['code']=='stale_workbench'
++assert v('stale-reference','workbench','reference',mix,'--target',R/'reference-upstream.json','--format','full',code=1)['code']=='stale_workbench'
+ assert len(children)==27 and sum(c['actual_exit']==0 for c in children)==20
+ assert cfg.read_bytes()==before_cfg
+-for n,b in inputs.items():assert (I/n).read_bytes()==b,n
++for n,b in inputs.items():assert emitted_path(n).read_bytes()==b,n
+ check_pins()
+-(base/'execution.json').write_bytes(enc({'status':'PASS','children':children,'source':binding['head'],'tree':binding['tree'],'method_sha256':pin(__file__)['sha256'],'bindings_sha256':pin(sys.argv[1])['sha256'],'scope':'27 bounded children: author-compiled public example replay plus26 independent CLI; full/compact complete targeted records and availability input-derived, reported state coherent with persisted binding; rich Form/Sense/raw descriptor/writer/IO controls inherited author-source-reviewed, not independently replayed','base':str(base)}))
+-print(json.dumps({'status':'PASS','base':str(base),'children':len(children)}))
++(base/'execution-continuation01.json').write_bytes(enc({'status':'PASS','children':children,'source':binding['head'],'tree':binding['tree'],'method_sha256':pin(__file__)['sha256'],'bindings_sha256':pin(sys.argv[1])['sha256'],'scope':'27 bounded children: author-compiled public example replay plus26 independent CLI; full/compact complete targeted records and availability input-derived, reported state coherent with persisted binding; rich Form/Sense/raw descriptor/writer/IO controls inherited author-source-reviewed, not independently replayed','base':str(base),'continuation_of_child1_commands_sha256':pin(binding['continuation']['child1_commands'])['sha256'],'new_children':26}))
++print(json.dumps({'status':'PASS','base':str(base),'children':len(children),'new_children':26,'original_children':1}))
