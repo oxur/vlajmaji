@@ -453,6 +453,28 @@ pub struct DictionaryCompactSearchEngine {
 }
 
 impl DictionaryCompactSearchEngine {
+    pub(crate) fn owned_release_summary(
+        &self,
+        release_id: &EntityId,
+        source_id: &SourceId,
+    ) -> Option<vlajmaji_store::CollectionReleaseSummary> {
+        let metadata = &self.document.metadata;
+        let release = metadata
+            .releases
+            .iter()
+            .find(|release| release.id == *release_id)?;
+        let component = metadata
+            .components
+            .iter()
+            .find(|component| component.id == release.component)?;
+        let collection = metadata
+            .collections
+            .iter()
+            .find(|collection| collection.id == component.collection)?;
+        (collection.source == *source_id)
+            .then(|| vlajmaji_store::CollectionReleaseSummary::from(release))
+    }
+
     /// Open a standalone dictionary store for compact queries.
     pub fn open(path: impl AsRef<Path>) -> Result<Self, DictionaryQueryError> {
         Self::from_store(DictionaryStore::open(path)?)
@@ -2235,4 +2257,137 @@ fn decode_hex(value: &str) -> Option<Vec<u8>> {
 }
 fn hex(bytes: &[u8]) -> String {
     bytes.iter().map(|byte| format!("{byte:02x}")).collect()
+}
+
+impl DictionaryCompactSearchEngine {
+    /// Borrow exact typed role rows from the retained compact document before resolution.
+    pub(crate) fn typed_reference_witnesses(
+        &self,
+        target: &RelationTarget,
+    ) -> Result<Vec<crate::workbench::reference::TypedRoleWitness>, DictionaryQueryError> {
+        use crate::workbench::reference::{
+            assertion_witness, entry_witness, form_witness, sense_witness,
+        };
+        let metadata = &self.document.metadata;
+        let mut result = Vec::new();
+        macro_rules! add_assertion {
+            ($row:expr) => {
+                let entry_index = self
+                    .indices
+                    .entries
+                    .get(&($row).entry.to_string())
+                    .ok_or_else(|| DictionaryQueryError::Integrity {
+                        detail: format!("assertion {} references missing entry", ($row).id),
+                    })?;
+                let entry = &metadata.entries[*entry_index];
+                result.push(assertion_witness($row, entry)?);
+                result.push(entry_witness(entry)?);
+            };
+        }
+        match target {
+            RelationTarget::Local(lexicon::LocalRef::Entry(id)) => {
+                if let Some(entry_index) = self.indices.entries.get(&id.to_string()) {
+                    let entry = &metadata.entries[*entry_index];
+                    result.push(entry_witness(entry)?);
+                }
+            }
+            RelationTarget::Local(lexicon::LocalRef::Assertion(id)) => {
+                if let Some(row_index) = self.indices.assertions.get(&id.to_string()) {
+                    let row = &metadata.assertions[*row_index];
+                    add_assertion!(row);
+                }
+            }
+            RelationTarget::Local(lexicon::LocalRef::Form(id)) => {
+                if let Some(row_index) = self.indices.forms.get(&id.to_string()) {
+                    let row = &metadata.forms[*row_index];
+                    let entry_index = self
+                        .indices
+                        .entries
+                        .get(&row.entry.to_string())
+                        .ok_or_else(|| DictionaryQueryError::Integrity {
+                            detail: format!("form {} references missing entry", row.id),
+                        })?;
+                    let entry = &metadata.entries[*entry_index];
+                    result.push(form_witness(row, entry)?);
+                    result.push(entry_witness(entry)?);
+                }
+            }
+            RelationTarget::Local(lexicon::LocalRef::EditorialSense(id)) => {
+                if let Some(row_index) = self.indices.editorial_senses.get(&id.to_string()) {
+                    let row = &metadata.editorial_senses[*row_index];
+                    let assertions: Vec<_> = row
+                        .assertions
+                        .iter()
+                        .map(|id| {
+                            self.indices
+                                .assertions
+                                .get(&id.to_string())
+                                .map(|index| &metadata.assertions[*index])
+                                .ok_or_else(|| DictionaryQueryError::Integrity {
+                                    detail: format!(
+                                        "editorial sense {} references missing assertion {id}",
+                                        row.id
+                                    ),
+                                })
+                        })
+                        .collect::<Result<_, _>>()?;
+                    let entries: Vec<_> = assertions
+                        .iter()
+                        .map(|assertion| {
+                            self.indices.entries.get(&assertion.entry.to_string()).map(|index| {
+                                &metadata.entries[*index]
+                            }).ok_or_else(|| DictionaryQueryError::Integrity {
+                                detail: format!("editorial sense {} references assertion with missing entry", row.id),
+                            })
+                        })
+                        .collect::<Result<_, _>>()?;
+                    let linked: Vec<_> = assertions.into_iter().zip(entries).collect();
+                    result.push(sense_witness(row, &linked)?);
+                }
+            }
+            RelationTarget::Catalog(wanted) => {
+                if let Some(release) = metadata
+                    .releases
+                    .iter()
+                    .find(|release| release.id == wanted.release)
+                {
+                    for id in &release.assertions {
+                        let row_index =
+                            self.indices
+                                .assertions
+                                .get(&id.to_string())
+                                .ok_or_else(|| DictionaryQueryError::Integrity {
+                                    detail: format!(
+                                        "release {} references missing assertion {id}",
+                                        wanted.release
+                                    ),
+                                })?;
+                        let row = &metadata.assertions[*row_index];
+                        if wanted
+                            .occurrence
+                            .as_ref()
+                            .is_some_and(|occurrence| occurrence != &row.occurrence)
+                        {
+                            continue;
+                        }
+                        let entry_index = self
+                            .indices
+                            .entries
+                            .get(&row.entry.to_string())
+                            .ok_or_else(|| DictionaryQueryError::Integrity {
+                                detail: format!("assertion {} references missing entry", row.id),
+                            })?;
+                        let entry = &metadata.entries[*entry_index];
+                        if entry.source != wanted.source {
+                            continue;
+                        }
+                        result.push(assertion_witness(row, entry)?);
+                        result.push(entry_witness(entry)?);
+                    }
+                }
+            }
+            RelationTarget::Unknown | RelationTarget::Unresolved(_) => {}
+        }
+        Ok(result)
+    }
 }

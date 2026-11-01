@@ -21,15 +21,16 @@ use vlajmaji_lexicon::{
     AbbreviationKind, AssertionRecord, Availability, CaptureMetadata, CaptureRef, CollectionRecord,
     ComponentRecord, ContentNotice, ContributorId, ContributorRecord, Dictionary,
     DictionaryDocument, DictionaryMetadata, Eligibility, EntityId, EntryRecord,
-    LaLojbanImportOptions, NativeEncoding, NativeField, OccurrenceAttribution, OccurrenceRef,
-    OwnedHead, OwnedRevisionRecord, Presence, RawCapture, RawOccurrence, RedistributionStatus,
-    RegistryDocument, ReleaseAccounting, ReleaseRecord, SnapshotAttribution, SourceId,
-    SourceOrigin, SourceRecord, SourceRegistry, TextValue, TimePrecision, import_la_lojban_export,
-    seal_release,
+    LaLojbanImportOptions, LocalRef, NativeEncoding, NativeField, OccurrenceAttribution,
+    OccurrenceRef, OwnedHead, OwnedRevisionRecord, Presence, RawCapture, RawOccurrence,
+    RedistributionStatus, RegistryDocument, RelationTarget, ReleaseAccounting, ReleaseRecord,
+    SnapshotAttribution, SourceId, SourceOrigin, SourceRecord, SourceRegistry, TextValue,
+    TimePrecision, import_la_lojban_export, seal_release,
 };
 use vlajmaji_search::{
     ConfiguredWorkbenchQueryError, ConfiguredWorkbenchSearchEngine, DictionaryExactOptions,
-    DictionaryRequest, WorkbenchFullResult, WorkbenchQueryError, WorkbenchSearchEngine,
+    DictionaryRequest, ReferenceEntity, ReferenceStatus, WorkbenchFullResult, WorkbenchQueryError,
+    WorkbenchSearchEngine,
 };
 use vlajmaji_store::{
     CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection, OwnedJournal,
@@ -43,6 +44,13 @@ const UPSTREAM_JSON: &[u8] = br#"[
 const PROFILE_BETA_SELECTION_JSON: &[u8] =
     br#"{"version":1,"packs":[],"disabled":[],"owned":"head","contexts":[]}"#;
 const PROFILES_EXPECTED_JSON: &[u8] = br#"{"version":1,"config_revisions":[1,2,3,4,5,6],"prepared_sequences":[0,1,2],"alpha_r1":{"occurrences":3,"source_groups":2},"beta_r1":{"occurrences":2,"source_groups":1},"beta_r2":{"occurrences":3,"source_groups":1}}"#;
+const REFERENCE_OWNED_ENTRY_JSON: &[u8] = br#"{"Local":{"Entry":"owned-entry-farvi"}}"#;
+const REFERENCE_OWNED_ASSERTION_JSON: &[u8] = br#"{"Local":{"Assertion":"owned-assertion-a"}}"#;
+const REFERENCE_UNKNOWN_JSON: &[u8] = br#""Unknown""#;
+const REFERENCE_UNRESOLVED_JSON: &[u8] = br#"{"Unresolved":"future editorial target"}"#;
+const REFERENCE_DISABLED_SELECTION_JSON: &[u8] =
+    br#"{"version":1,"packs":["la-lojban"],"disabled":["la-lojban"],"owned":"head","contexts":[]}"#;
+const REFERENCE_EXPECTED_JSON: &[u8] = br#"{"version":1,"kind":"vlajmaji-workbench-reference","owned_source":"owned-example","owned_r1_assertions":["owned-assertion-a","owned-assertion-b"],"upstream_source":"lensisku","upstream_assertion":"la-lojban-06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5-assertion-0","owned_status":"Resolved","upstream_status":"Resolved","disabled_status":"CatalogueOnly","disabled_reason":"disabled","unknown_status":"Unknown","unresolved_status":"Unresolved","profile_revisions":[1,2,3,4,5,6],"publication_sequences":[0,1,2]}"#;
 
 fn value(text: &str) -> TextValue {
     TextValue {
@@ -385,6 +393,55 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let seed = genesis()?;
     let revision_one = edit(&seed)?;
     let revision_two = next_edit(&revision_one)?;
+    let owned_entry_target =
+        RelationTarget::Local(LocalRef::Entry(EntityId::new("owned-entry-farvi")?));
+    let owned_assertion_target =
+        RelationTarget::Local(LocalRef::Assertion(EntityId::new("owned-assertion-a")?));
+    let unknown_target = RelationTarget::Unknown;
+    let unresolved_target = RelationTarget::Unresolved("future editorial target".into());
+    let upstream_release = upstream
+        .metadata()
+        .releases
+        .first()
+        .ok_or("upstream input has no release")?;
+    let upstream_assertion = upstream
+        .metadata()
+        .assertions
+        .first()
+        .ok_or("upstream input has no assertion")?;
+    let upstream_registry = upstream.registry().document();
+    let upstream_source = upstream_registry
+        .sources
+        .iter()
+        .find(|row| row.id.as_str() == "lensisku")
+        .ok_or("upstream input has no Lensisku source")?;
+    let upstream_native = upstream_registry
+        .occurrences
+        .iter()
+        .find(|row| row.occurrence == upstream_assertion.occurrence.to_record_identity().unwrap())
+        .ok_or("upstream assertion has no retained native attribution")?;
+    let upstream_target = RelationTarget::Catalog(vlajmaji_lexicon::CatalogTarget {
+        source: upstream_source.id.clone(),
+        release: upstream_release.id.clone(),
+        native_entry_id: None,
+        native_assertion_id: upstream_native.native_assertion_id.clone(),
+        occurrence: Some(upstream_assertion.occurrence.clone()),
+    });
+    let disabled_selection: WorkbenchSelection =
+        serde_json::from_slice(REFERENCE_DISABLED_SELECTION_JSON)?;
+    let upstream_target_bytes = serde_json::to_vec(&upstream_target)?;
+    if upstream_target_bytes
+        != br#"{"Catalog":{"source":"lensisku","release":"la-lojban-release-116b8d1761763fa4341642a0f2ede5b45e508ac43b6ad79688bc5694e92ed438","native_entry_id":null,"native_assertion_id":"1","occurrence":{"capture":{"namespace":"captured:lensisku:la-lojban:en","sha256":"06220fcd82ff067293787c5057b3a68d6c63400d80e29d02fe5a4a64be015db5"},"locator":"/0"}}}"#
+    {
+        return Err("upstream reference target differs from its fixed typed input".into());
+    }
+    if serde_json::to_vec(&owned_entry_target)? != REFERENCE_OWNED_ENTRY_JSON
+        || serde_json::to_vec(&owned_assertion_target)? != REFERENCE_OWNED_ASSERTION_JSON
+        || serde_json::to_vec(&unknown_target)? != REFERENCE_UNKNOWN_JSON
+        || serde_json::to_vec(&unresolved_target)? != REFERENCE_UNRESOLVED_JSON
+    {
+        return Err("owned and status reference targets differ from fixed typed inputs".into());
+    }
     let selection = WorkbenchSelection {
         version: 1,
         packs: vec![vlajmaji_lexicon::PackId::LaLojban],
@@ -468,6 +525,37 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     write_new(
         &inputs.join("expected.json"),
         &serde_json::to_vec_pretty(&expected)?,
+    )?;
+
+    let reference_input_root = output_root.join("artifacts/reference-inputs");
+    fs::create_dir_all(&reference_input_root)?;
+    write_new(
+        &reference_input_root.join("reference-owned-entry.json"),
+        REFERENCE_OWNED_ENTRY_JSON,
+    )?;
+    write_new(
+        &reference_input_root.join("reference-owned-assertion.json"),
+        REFERENCE_OWNED_ASSERTION_JSON,
+    )?;
+    write_new(
+        &reference_input_root.join("reference-upstream.json"),
+        &upstream_target_bytes,
+    )?;
+    write_new(
+        &reference_input_root.join("reference-unknown.json"),
+        REFERENCE_UNKNOWN_JSON,
+    )?;
+    write_new(
+        &reference_input_root.join("reference-unresolved.json"),
+        REFERENCE_UNRESOLVED_JSON,
+    )?;
+    write_new(
+        &reference_input_root.join("reference-disabled-selection.json"),
+        REFERENCE_DISABLED_SELECTION_JSON,
+    )?;
+    write_new(
+        &reference_input_root.join("reference-expected.json"),
+        REFERENCE_EXPECTED_JSON,
     )?;
 
     let catalogue_root = output_root.join("catalogue");
@@ -595,6 +683,130 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         return Err("the owned Full hits must match every emitted r1 Entry and Assertion".into());
     }
 
+    let direct_upstream_reference = search_r1.resolve_reference(&upstream_target)?;
+    let upstream_reference_payload = direct_upstream_reference
+        .result
+        .payload
+        .as_ref()
+        .ok_or("direct upstream reference must include its admitted payload")?;
+    let upstream_reference_hit = upstream_reference_payload
+        .confirmed
+        .first()
+        .ok_or("direct upstream reference must confirm its typed assertion")?;
+    if direct_upstream_reference.result.status != ReferenceStatus::Resolved
+        || upstream_reference_payload.confirmed.len() != 1
+        || upstream_reference_hit.entry != *upstream_entry
+        || upstream_reference_hit.assertion != *upstream_assertion
+        || upstream_reference_hit.raw.as_ref() != Some(upstream_raw)
+        || upstream_reference_hit.occurrence_attribution.as_ref()
+            != Some(expected_occurrence_attribution)
+        || upstream_reference_hit.release_ids != [upstream_release.id.clone()]
+        || !upstream_reference_hit.owned_revision_ids.is_empty()
+    {
+        return Err("the direct upstream reference differs from its typed input".into());
+    }
+    let compact_r1_root = output_root.join("workbench-r1");
+    let mut direct_compact_engine = WorkbenchSearchEngine::open(&compact_r1_root)?;
+    let direct_compact_upstream =
+        direct_compact_engine.resolve_reference_compact(&upstream_target)?;
+    if direct_compact_upstream.result.status != ReferenceStatus::Resolved
+        || direct_compact_upstream
+            .result
+            .payload
+            .as_ref()
+            .is_none_or(|payload| payload.confirmed.len() != 1)
+    {
+        return Err("the direct Compact upstream reference must retain its typed payload".into());
+    }
+    let direct_reference_detail_ref = direct_compact_upstream
+        .result
+        .payload
+        .as_ref()
+        .and_then(|payload| payload.confirmed.first())
+        .and_then(|row| row.detail_ref.as_ref())
+        .ok_or("the direct Compact reference must issue its existing detail key")?;
+    let direct_reference_detail = direct_compact_engine.detail(
+        direct_reference_detail_ref,
+        &direct_compact_upstream.binding_sha256,
+    )?;
+    if direct_reference_detail.binding_sha256 != direct_compact_upstream.binding_sha256
+        || direct_reference_detail.result.hit.is_none()
+    {
+        return Err("the direct Compact reference detail must keep its outer binding".into());
+    }
+    let expected_owned_entry = revision_one
+        .metadata()
+        .entries
+        .iter()
+        .find(|entry| entry.id.as_str() == "owned-entry-farvi")
+        .ok_or("the owned r1 input lacks the fixed reference entry")?;
+    let expected_owned_assertion = revision_one
+        .metadata()
+        .assertions
+        .iter()
+        .find(|assertion| assertion.id.as_str() == "owned-assertion-a")
+        .ok_or("the owned r1 input lacks the fixed reference assertion")?;
+    let direct_owned_entry = search_r1.resolve_reference(&owned_entry_target)?;
+    if direct_owned_entry.result.status != ReferenceStatus::Resolved
+        || !matches!(
+            direct_owned_entry.result.payload.as_deref().and_then(|payload| payload.entity.as_ref()),
+            Some(ReferenceEntity::Entry(entry)) if entry == expected_owned_entry
+        )
+        || !direct_owned_entry.result.registrations.is_empty()
+    {
+        return Err("the direct owned Entry reference differs from its r1 input".into());
+    }
+    let direct_owned_assertion = search_r1.resolve_reference(&owned_assertion_target)?;
+    if direct_owned_assertion.result.status != ReferenceStatus::Resolved
+        || !matches!(
+            direct_owned_assertion.result.payload.as_deref().and_then(|payload| payload.entity.as_ref()),
+            Some(ReferenceEntity::Assertion(assertion)) if assertion == expected_owned_assertion
+        )
+        || direct_owned_assertion
+            .result
+            .payload
+            .as_ref()
+            .and_then(|payload| payload.confirmed.first())
+            .is_none_or(|row| row.owned_revision_ids != [EntityId::new("owned-r1").unwrap()])
+    {
+        return Err("the direct owned Assertion reference differs from its r1 input".into());
+    }
+    let direct_unknown = search_r1.resolve_reference(&unknown_target)?;
+    let direct_unresolved = search_r1.resolve_reference(&unresolved_target)?;
+    if direct_unknown.result.status != ReferenceStatus::Unknown
+        || direct_unknown.result.payload.is_some()
+        || direct_unresolved.result.status != ReferenceStatus::Unresolved
+        || direct_unresolved.result.payload.is_some()
+    {
+        return Err(
+            "Unknown and nonempty Unresolved targets must preserve their typed status".into(),
+        );
+    }
+
+    let disabled_workbench_root = output_root.join("workbench-reference-disabled");
+    vlajmaji_store::WorkbenchView::build_new(
+        &disabled_workbench_root,
+        WorkbenchBuildRequest {
+            catalogue_root: Some(output_root.join("catalogue")),
+            owned_root: Some(owned_root.clone()),
+            selection: disabled_selection,
+        },
+    )?;
+    let mut disabled_engine = WorkbenchSearchEngine::open(&disabled_workbench_root)?;
+    let disabled_upstream = disabled_engine.resolve_reference(&upstream_target)?;
+    let disabled_owned = disabled_engine.resolve_reference(&owned_entry_target)?;
+    if disabled_upstream.result.status != ReferenceStatus::CatalogueOnly
+        || disabled_upstream.result.operational_reason.as_deref() != Some("disabled")
+        || disabled_upstream.result.payload.is_some()
+        || disabled_owned.result.status != ReferenceStatus::Resolved
+        || !matches!(
+            disabled_owned.result.payload.as_deref().and_then(|payload| payload.entity.as_ref()),
+            Some(ReferenceEntity::Entry(entry)) if entry == expected_owned_entry
+        )
+    {
+        return Err("the disabled catalogue and active owned reference policies differ".into());
+    }
+
     // Keep the configured-profile journal independent from the original S01
     // journal so its publication sequence is an input to this example alone.
     let configured_owned_root = output_root.join("configured-owned");
@@ -638,6 +850,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         || serde_json::to_vec(alpha_exact)? != serde_json::to_vec(actual_r1)?
     {
         return Err("configured alpha r1 must retain the exact mixed emitted-input result".into());
+    }
+    let configured_alpha_reference = alpha_engine.resolve_reference(&upstream_target)?;
+    let configured_alpha_compact_reference =
+        alpha_engine.resolve_reference_compact(&upstream_target)?;
+    if configured_alpha_reference.result.status != ReferenceStatus::Resolved
+        || serde_json::to_vec(&configured_alpha_reference.result)?
+            != serde_json::to_vec(&direct_upstream_reference.result)?
+        || configured_alpha_reference.configuration.config_revision != 2
+        || configured_alpha_compact_reference.result.status != ReferenceStatus::Resolved
+        || configured_alpha_compact_reference
+            .configuration
+            .config_revision
+            != 2
+    {
+        return Err(
+            "configured alpha r1 must preserve the direct reference body and revision".into(),
+        );
     }
 
     let beta_selection = WorkbenchSelection::from_json_bytes(PROFILE_BETA_SELECTION_JSON)?;
@@ -688,12 +917,29 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             "named alpha must match the default body with a distinct effective identity".into(),
         );
     }
+    let named_alpha_reference = named_alpha_engine.resolve_reference(&upstream_target)?;
+    if serde_json::to_vec(&named_alpha_reference.result)?
+        != serde_json::to_vec(&configured_alpha_reference.result)?
+        || named_alpha_reference.binding_sha256 == configured_alpha_reference.binding_sha256
+        || named_alpha_reference.configuration.config_revision != 3
+    {
+        return Err(
+            "named alpha must retain the same r1 reference with a distinct identity".into(),
+        );
+    }
     if !matches!(
         alpha_engine.execute(request.clone()),
         Err(ConfiguredWorkbenchQueryError::Profile(error))
             if matches!(error.as_ref(), WorkbenchProfileError::ConfigChanged { .. })
     ) {
         return Err("an alpha engine must reject the changed config capture".into());
+    }
+    if !matches!(
+        alpha_engine.resolve_reference(&upstream_target),
+        Err(ConfiguredWorkbenchQueryError::Profile(error))
+            if matches!(error.as_ref(), WorkbenchProfileError::ConfigChanged { .. })
+    ) {
+        return Err("an alpha reference engine must reject the changed config capture".into());
     }
     let beta_r1 =
         WorkbenchProfiles::refresh(&profile_config, Some("beta"), &profile_beta_r1_root, 3)?;
@@ -716,6 +962,25 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     {
         return Err("configured beta r1 must retain the exact two emitted owned hits".into());
     }
+    let configured_beta_owned =
+        beta_engine_at_revision_four.resolve_reference(&owned_entry_target)?;
+    let configured_beta_owned_compact =
+        beta_engine_at_revision_four.resolve_reference_compact(&owned_entry_target)?;
+    if configured_beta_owned.result.status != ReferenceStatus::Resolved
+        || !configured_beta_owned.result.catalogue_matches.is_empty()
+        || !configured_beta_owned.result.registrations.is_empty()
+        || !matches!(
+            configured_beta_owned.result.payload.as_deref().and_then(|payload| payload.entity.as_ref()),
+            Some(ReferenceEntity::Entry(entry)) if entry == expected_owned_entry
+        )
+        || configured_beta_owned_compact.result.status != ReferenceStatus::Resolved
+        || !configured_beta_owned_compact
+            .result
+            .catalogue_matches
+            .is_empty()
+    {
+        return Err("configured beta r1 must resolve the owned Entry without a catalogue".into());
+    }
     let default = WorkbenchProfiles::set_default(&profile_config, Some("beta"), 4)?;
     if default.revision != 5 || default.default_profile.as_deref() != Some("beta") {
         return Err("setting beta as default must produce config revision five".into());
@@ -726,6 +991,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             if matches!(error.as_ref(), WorkbenchProfileError::ConfigChanged { .. })
     ) {
         return Err("changing the default must invalidate the captured beta engine".into());
+    }
+    if !matches!(
+        beta_engine_at_revision_four.resolve_reference(&owned_entry_target),
+        Err(ConfiguredWorkbenchQueryError::Profile(error))
+            if matches!(error.as_ref(), WorkbenchProfileError::ConfigChanged { .. })
+    ) {
+        return Err("changing the default must invalidate beta reference capture".into());
     }
     let mut beta_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("beta"))?;
     let configured_beta_r1 = beta_engine.execute(request.clone())?;
@@ -738,6 +1010,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             != serde_json::to_vec(&actual_r1.groups[1].hits)?
     {
         return Err("configured beta r1 must retain the exact two emitted owned hits".into());
+    }
+    let configured_beta_reference = beta_engine.resolve_reference(&owned_entry_target)?;
+    if configured_beta_reference.result.status != ReferenceStatus::Resolved
+        || !configured_beta_reference
+            .result
+            .catalogue_matches
+            .is_empty()
+        || !configured_beta_reference.result.registrations.is_empty()
+        || serde_json::to_vec(&configured_beta_reference.result)?
+            != serde_json::to_vec(&configured_beta_owned.result)?
+    {
+        return Err("configured beta r1 must retain the catalogue-free owned reference".into());
     }
 
     let historical_r1_root = output_root.join("workbench-historical-r1");
@@ -762,6 +1046,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     if serde_json::to_vec(&historical_full_r1.result)? != serde_json::to_vec(&full_r1.result)? {
         return Err("the historical r1 result must match the emitted r1 input".into());
     }
+    let historical_owned_reference = search_historical_r1.resolve_reference(&owned_entry_target)?;
+    if historical_owned_reference.result.status != ReferenceStatus::Resolved
+        || !matches!(
+            historical_owned_reference
+                .result
+                .payload
+                .as_deref()
+                .and_then(|payload| payload.entity.as_ref()),
+            Some(ReferenceEntity::Entry(entry)) if entry == expected_owned_entry
+        )
+    {
+        return Err("the historical owned-r1 reference must match its typed input".into());
+    }
 
     let mut default_beta_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, None)?;
     let default_beta_before_append = default_beta_engine.execute(request.clone())?;
@@ -773,6 +1070,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             != serde_json::to_vec(&configured_beta_r1.result)?
     {
         return Err("default beta must use the beta r1 body with default-mode identity".into());
+    }
+    let default_beta_reference_before_append =
+        default_beta_engine.resolve_reference(&owned_entry_target)?;
+    if default_beta_reference_before_append.result.status != ReferenceStatus::Resolved
+        || serde_json::to_vec(&default_beta_reference_before_append.result)?
+            != serde_json::to_vec(&configured_beta_reference.result)?
+        || default_beta_reference_before_append.binding_sha256
+            == configured_beta_reference.binding_sha256
+    {
+        return Err(
+            "named and default beta must share the r1 reference body with distinct identities"
+                .into(),
+        );
     }
 
     let mut configured_writer = OwnedJournal::open(&configured_owned_root)?;
@@ -800,6 +1110,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         );
     }
     if !matches!(
+        default_beta_engine.resolve_reference(&owned_entry_target),
+        Err(ConfiguredWorkbenchQueryError::Profile(error))
+            if matches!(error.as_ref(), WorkbenchProfileError::View(inner)
+                if matches!(inner.as_ref(), WorkbenchError::StaleDependencies {
+                    dependency: vlajmaji_store::WorkbenchDependency::Owned,
+                    ..
+                }))
+    ) {
+        return Err("the default beta reference Head must stale after the r2 append".into());
+    }
+    if !matches!(
         beta_engine.execute(request.clone()),
         Err(ConfiguredWorkbenchQueryError::Profile(error))
             if matches!(error.as_ref(), WorkbenchProfileError::View(inner)
@@ -813,6 +1134,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         );
     }
     if !matches!(
+        beta_engine.resolve_reference(&owned_entry_target),
+        Err(ConfiguredWorkbenchQueryError::Profile(error))
+            if matches!(error.as_ref(), WorkbenchProfileError::View(inner)
+                if matches!(inner.as_ref(), WorkbenchError::StaleDependencies {
+                    dependency: vlajmaji_store::WorkbenchDependency::Owned,
+                    ..
+                }))
+    ) {
+        return Err("the named beta reference Head must stale after the r2 append".into());
+    }
+    if !matches!(
         search_r1.execute(request.clone()),
         Err(WorkbenchQueryError::View(error))
             if matches!(error.as_ref(), WorkbenchError::StaleDependencies {
@@ -822,6 +1154,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     ) {
         return Err("the retained r1 Head view must become stale after the r2 commit".into());
     }
+    if !matches!(
+        search_r1.resolve_reference(&owned_entry_target),
+        Err(WorkbenchQueryError::View(error))
+            if matches!(error.as_ref(), WorkbenchError::StaleDependencies {
+                dependency: vlajmaji_store::WorkbenchDependency::Owned,
+                ..
+            })
+    ) {
+        return Err("the retained r1 reference Head must stale after the r2 commit".into());
+    }
     if historical_r1
         .binding
         .owned()
@@ -829,6 +1171,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         != Some("owned-r1")
         || serde_json::to_vec(&search_historical_r1.execute(request.clone())?.result)?
             != serde_json::to_vec(&historical_full_r1.result)?
+        || serde_json::to_vec(
+            &search_historical_r1
+                .resolve_reference(&owned_entry_target)?
+                .result,
+        )? != serde_json::to_vec(&historical_owned_reference.result)?
         || serde_json::to_vec(&historical_full_r1.result)? != serde_json::to_vec(&full_r1.result)?
     {
         return Err(
@@ -912,6 +1259,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     {
         return Err("configured beta r2 must retain the exact three emitted owned hits".into());
     }
+    let configured_beta_r2_reference = beta_r2_engine.resolve_reference(&owned_entry_target)?;
+    if configured_beta_r2_reference.result.status != ReferenceStatus::Resolved
+        || !matches!(
+            configured_beta_r2_reference
+                .result
+                .payload
+                .as_deref()
+                .and_then(|payload| payload.entity.as_ref()),
+            Some(ReferenceEntity::Entry(entry)) if entry == expected_owned_entry
+        )
+    {
+        return Err("configured beta r2 must resolve the emitted owned Entry".into());
+    }
     let history = WorkbenchProfiles::read(&profile_config)?.history(None)?;
     if default.revision != 5
         || default.default_profile.as_deref() != Some("beta")
@@ -948,6 +1308,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             "expected": expected,
             "full_r1": full_r1,
             "historical_full_r1": historical_full_r1,
+            "reference_direct_upstream": direct_upstream_reference,
+            "reference_direct_compact_upstream": direct_compact_upstream,
+            "reference_direct_detail": direct_reference_detail,
+            "reference_direct_owned_entry": direct_owned_entry,
+            "reference_direct_owned_assertion": direct_owned_assertion,
+            "reference_direct_unknown": direct_unknown,
+            "reference_direct_unresolved": direct_unresolved,
+            "reference_disabled_upstream": disabled_upstream,
+            "reference_disabled_owned": disabled_owned,
             "historical_binding_sha256": historical_r1.binding.binding_sha256(),
             "full_r2": full_r2,
             "profile_revisions": [
@@ -960,12 +1329,20 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             ],
             "profile_history": history,
             "configured_alpha_r1": configured_alpha_r1,
+            "configured_alpha_reference": configured_alpha_reference,
+            "configured_alpha_compact_reference": configured_alpha_compact_reference,
+            "named_alpha_reference": named_alpha_reference,
             "configured_beta_r1": configured_beta_r1,
+            "configured_beta_reference": configured_beta_reference,
+            "configured_beta_owned_compact": configured_beta_owned_compact,
             "configured_beta_r2": configured_beta_r2,
+            "configured_beta_r2_reference": configured_beta_r2_reference,
             "beta_noop": beta_noop,
             "configured_revision_two": configured_revision_two_result,
             "named_alpha_r1": named_alpha_r1,
             "default_beta_before_append": default_beta_before_append,
+            "default_beta_reference_before_append": default_beta_reference_before_append,
+            "historical_owned_reference": historical_owned_reference,
             "named_beta_r2": named_beta_r2,
         }))?
     );

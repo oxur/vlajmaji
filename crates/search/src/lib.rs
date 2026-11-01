@@ -69,10 +69,13 @@ pub use presentation::{
 pub use workbench::{
     ConfiguredWorkbenchCompactResponse, ConfiguredWorkbenchDetailResponse,
     ConfiguredWorkbenchFullResponse, ConfiguredWorkbenchQueryError,
+    ConfiguredWorkbenchReferenceCompactResponse, ConfiguredWorkbenchReferenceFullResponse,
     ConfiguredWorkbenchSearchEngine, WorkbenchCompactResponse, WorkbenchContextCounts,
     WorkbenchCurationCounts, WorkbenchDetailResponse, WorkbenchFullResponse, WorkbenchFullResult,
-    WorkbenchOwnedSummary, WorkbenchQueryError, WorkbenchQuerySelection, WorkbenchSearchEngine,
-    WorkbenchUpstreamSummary,
+    WorkbenchOwnedSummary, WorkbenchQueryError, WorkbenchQuerySelection,
+    WorkbenchReferenceCompactResponse, WorkbenchReferenceCompactResult,
+    WorkbenchReferenceFullResponse, WorkbenchReferenceFullResult, WorkbenchReferenceRegistration,
+    WorkbenchSearchEngine, WorkbenchUpstreamSummary,
 };
 
 /// Query policy identities included in every response.

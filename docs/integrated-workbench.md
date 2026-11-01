@@ -130,6 +130,31 @@ CLI_W2=workbench-example/cli-workbench-r2
   > workbench-example/full-r2.json
 ```
 
+The dedicated reference commands consume the typed targets emitted before the
+example's writes. The fresh r2 root is current for both upstream catalogue and
+owned references; the earlier `CLI_W1` remains a stale Head view. Full returns
+the complete reference response, Compact retains its own detail key, and
+Readable uses the existing compact renderer:
+
+```sh
+REFERENCE_INPUTS=workbench-example/artifacts/reference-inputs
+"$CLI" workbench reference "$CLI_W2" \
+  --target "$REFERENCE_INPUTS/reference-upstream.json" --format full \
+  > workbench-example/reference-upstream-full.json
+"$CLI" workbench reference "$CLI_W2" \
+  --target "$REFERENCE_INPUTS/reference-owned-assertion.json" --format compact \
+  > workbench-example/reference-owned-compact.json
+"$CLI" workbench reference "$CLI_W2" \
+  --target "$REFERENCE_INPUTS/reference-unknown.json" --format readable
+jq -e '.kind == "vlajmaji-workbench-reference" and
+       .result.status == "Resolved" and
+       (.result.payload.confirmed | length) == 1' \
+  workbench-example/reference-upstream-full.json
+jq -e '.format == "compact" and .result.status == "Resolved" and
+       (.result.payload.confirmed[0].detail_ref != null)' \
+  workbench-example/reference-owned-compact.json
+```
+
 The expected r1 result has source order `lensisku`, `owned-example`, with one
 upstream hit and two owned hits (three total). The explicit historical r1 view
 retains that same full result after r2 is appended, while the former r1 Head
@@ -200,6 +225,23 @@ jq --slurpfile expected workbench-example/inputs/profiles-expected.json -e \
   workbench-example/profile-alpha-full.json
 ```
 
+While alpha's prepared Head is current, resolve the same emitted upstream
+target through the configured route. The outer binding is the effective
+profile identity; it is distinct from the direct workbench binding and Compact
+snapshot key:
+
+```sh
+"$CLI" workbench profiles reference --config "$PROFILE_CONFIG" --profile alpha \
+  --target workbench-example/artifacts/reference-inputs/reference-upstream.json \
+  --format compact > workbench-example/profile-alpha-reference-compact.json
+"$CLI" workbench profiles reference --config "$PROFILE_CONFIG" --profile alpha \
+  --target workbench-example/artifacts/reference-inputs/reference-upstream.json \
+  --format readable
+jq -e '.format == "compact" and .result.status == "Resolved" and
+       (.result.payload.confirmed | length) == 1' \
+  workbench-example/profile-alpha-reference-compact.json
+```
+
 The compact detail reference and mandatory outer binding key come from the
 same configured response. The inner compact snapshot token remains a separate
 identity:
@@ -213,6 +255,7 @@ PROFILE_BINDING=$(jq -r '.binding_sha256' workbench-example/profile-alpha-compac
   --reference workbench-example/profile-alpha-detail-reference.json \
   --expected-binding "$PROFILE_BINDING" --format full \
   > workbench-example/profile-alpha-detail.json
+jq -e '.result.hit != null' workbench-example/profile-alpha-detail.json
 ```
 
 The exact repeated beta configuration is a semantic no-op: revision and config
@@ -261,6 +304,12 @@ jq --slurpfile expected workbench-example/inputs/profiles-expected.json -e \
   '.result.response.totals.occurrences == $expected[0].beta_r1.occurrences and
    (.result.response.groups | length) == $expected[0].beta_r1.source_groups' \
   workbench-example/profile-beta-full-r1.json
+"$CLI" workbench profiles reference --config "$PROFILE_CONFIG" --profile beta \
+  --target workbench-example/artifacts/reference-inputs/reference-owned-entry.json \
+  --format full > workbench-example/profile-beta-owned-reference.json
+jq -e '.format == "full" and .result.status == "Resolved" and
+       .result.catalogue_matches == [] and .result.registrations == []' \
+  workbench-example/profile-beta-owned-reference.json
 "$CLI" workbench profiles default --config "$PROFILE_CONFIG" --profile beta \
   --expected-revision 4 > workbench-example/profile-default-beta.json
 "$CLI" workbench profiles query --config "$PROFILE_CONFIG" \

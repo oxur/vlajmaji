@@ -1063,6 +1063,22 @@ impl WorkbenchView {
     pub fn root(&self) -> &Path {
         &self.root
     }
+
+    /// Return the already checked native catalogue root, when this binding has one.
+    ///
+    /// This accessor decodes only the persisted native-path report. It does not
+    /// open the catalogue or choose a default root.
+    ///
+    /// # Errors
+    /// Returns the existing typed workbench error if the checked path report
+    /// cannot be decoded on this platform.
+    pub fn bound_catalogue_root(&self) -> Result<Option<PathBuf>, WorkbenchError> {
+        self.binding
+            .catalogue
+            .as_ref()
+            .map(|catalogue| decode_native_path(&catalogue.root))
+            .transpose()
+    }
 }
 
 type CatalogueCapture = (

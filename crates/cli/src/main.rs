@@ -14,10 +14,10 @@ use vlajmaji_lexicon::{
     JbotciImportError, JbotciImportOptions, LA_LOJBAN_PINNED_RAW_SHA256, LA_LOJBAN_PINNED_REVISION,
     LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256, LLG_NOTICE_SHA256, LLG_RAFSI_SHA256,
     LaLojbanImportError, LaLojbanImportOptions, LlgImportError, LlgImportOptions,
-    OwnedContextInput, OwnedCurationDocument, PackId, PackPayloadKind, SUTYSISKU_PINNED_RAW_SHA256,
-    SUTYSISKU_PINNED_REVISION, SutysiskuImportError, SutysiskuImportOptions, import_jbotci_export,
-    import_la_lojban_export, import_llg_lists, import_sutysisku_export, load_owned_snapshot,
-    seal_owned_snapshot, seal_release,
+    OwnedContextInput, OwnedCurationDocument, PackId, PackPayloadKind, RelationTarget,
+    SUTYSISKU_PINNED_RAW_SHA256, SUTYSISKU_PINNED_REVISION, SutysiskuImportError,
+    SutysiskuImportOptions, import_jbotci_export, import_la_lojban_export, import_llg_lists,
+    import_sutysisku_export, load_owned_snapshot, seal_owned_snapshot, seal_release,
 };
 use vlajmaji_search::{
     CollectionCompactSearchEngine, CollectionQueryError, CollectionQueryErrorReport,
@@ -236,6 +236,14 @@ enum WorkbenchCommand {
         #[arg(long, value_enum, default_value_t = WorkbenchDetailFormat::Full)]
         format: WorkbenchDetailFormat,
     },
+    /// Resolve one typed relation target against workbench payload and metadata.
+    Reference {
+        root: PathBuf,
+        #[arg(long)]
+        target: PathBuf,
+        #[arg(long, value_enum, default_value_t = WorkbenchQueryFormat::Full)]
+        format: WorkbenchQueryFormat,
+    },
     /// Configure and inspect named profiles over explicit workbench inputs.
     Profiles {
         #[command(subcommand)]
@@ -334,6 +342,17 @@ enum WorkbenchProfilesCommand {
         expected_binding: String,
         #[arg(long, value_enum, default_value_t = WorkbenchDetailFormat::Full)]
         format: WorkbenchDetailFormat,
+    },
+    /// Resolve one typed relation target against a configured profile.
+    Reference {
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        profile: Option<String>,
+        #[arg(long)]
+        target: PathBuf,
+        #[arg(long, value_enum, default_value_t = WorkbenchQueryFormat::Full)]
+        format: WorkbenchQueryFormat,
     },
 }
 
@@ -788,6 +807,9 @@ fn workbench_query_error(error: WorkbenchQueryError) -> CliError {
         WorkbenchQueryError::View(error) => workbench_error(*error),
         WorkbenchQueryError::Query(error) => CliError::Structured(error.report()),
         WorkbenchQueryError::Projection(error) => CliError::Structured(error.report()),
+        WorkbenchQueryError::Catalogue(error) => {
+            structured_error("workbench_dependency", error.to_string())
+        }
         WorkbenchQueryError::MalformedBinding { value } => structured_error(
             "invalid_workbench_binding",
             format!("malformed binding {value:?}"),
@@ -796,6 +818,9 @@ fn workbench_query_error(error: WorkbenchQueryError) -> CliError {
             "stale_workbench_binding",
             format!("expected {expected}, observed {observed}"),
         ),
+        error @ WorkbenchQueryError::AmbiguousReference { .. } => {
+            structured_error("ambiguous_reference", error.to_string())
+        }
         other => structured_error("workbench_response", other.to_string()),
     }
 }
@@ -820,6 +845,55 @@ fn workbench_query_context(root: &Path, operation: &str) -> ManagedOutputContext
         outcome: "not_applicable".into(),
         collection_failure: None,
     }
+}
+
+fn render_workbench_reference_readable(
+    binding_sha256: &str,
+    configuration: Option<&vlajmaji_store::WorkbenchProfileIdentity>,
+    selection: &vlajmaji_search::WorkbenchQuerySelection,
+    result: &vlajmaji_search::WorkbenchReferenceCompactResult,
+) -> Result<String, CliError> {
+    macro_rules! json_text {
+        ($value:expr) => {
+            serde_json::to_string($value)
+                .map_err(|error| structured_error("workbench_response", error.to_string()))?
+        };
+    }
+    let mut lines = vec![format!(
+        "workbench_binding: {}",
+        json_text!(&binding_sha256)
+    )];
+    if let Some(configuration) = configuration {
+        lines.push(format!(
+            "workbench_configuration: {}",
+            json_text!(configuration)
+        ));
+    }
+    lines.push(format!("workbench_selection: {}", json_text!(selection)));
+    lines.push(format!("reference_target: {}", json_text!(&result.target)));
+    lines.push(format!("reference_status: {}", json_text!(&result.status)));
+    lines.push(format!(
+        "reference_operational_reason: {}",
+        json_text!(&result.operational_reason)
+    ));
+    lines.push(format!(
+        "reference_catalogue_matches: {}",
+        json_text!(&result.catalogue_matches)
+    ));
+    lines.push(format!(
+        "reference_registrations: {}",
+        json_text!(&result.registrations)
+    ));
+    lines.push(format!(
+        "reference_requested_release: {}",
+        json_text!(&result.requested_release)
+    ));
+    if let Some(payload) = &result.payload {
+        lines.push(render_dictionary_compact(
+            &DictionaryCompactQueryResult::Resolve(payload.clone()),
+        ));
+    }
+    Ok(lines.join("\n"))
 }
 
 fn workbench_profiles_output_context(
@@ -1150,6 +1224,11 @@ fn managed_output_context(command: &Command) -> Option<ManagedOutputContext> {
                 WorkbenchCommand::Detail { root, .. } => {
                     ("workbench_detail", Some(root.as_path()), "not_applicable")
                 }
+                WorkbenchCommand::Reference { root, .. } => (
+                    "workbench_reference",
+                    Some(root.as_path()),
+                    "not_applicable",
+                ),
                 WorkbenchCommand::Profiles { command } => {
                     let (operation, config, profile, root, outcome) =
                         workbench_profiles_command_context(command);
@@ -1348,6 +1427,15 @@ fn workbench_profiles_command_context(
             config, profile, ..
         } => (
             "workbench_profiles_detail",
+            config,
+            profile.as_deref(),
+            None,
+            "not_applicable",
+        ),
+        WorkbenchProfilesCommand::Reference {
+            config, profile, ..
+        } => (
+            "workbench_profiles_reference",
             config,
             profile.as_deref(),
             None,
@@ -2024,6 +2112,49 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                     }
                 }
             }
+            WorkbenchCommand::Reference {
+                root,
+                target,
+                format,
+            } => {
+                let bytes = read_workbench_file(&target)?;
+                let target: RelationTarget = serde_json::from_slice(&bytes)
+                    .map_err(|error| structured_error("request_json", error.to_string()))?;
+                let mut engine =
+                    WorkbenchSearchEngine::open(&root).map_err(workbench_query_error)?;
+                match format {
+                    WorkbenchQueryFormat::Full => {
+                        let response = engine
+                            .resolve_reference(&target)
+                            .map_err(workbench_query_error)?;
+                        serde_json::to_value(response).map_err(|error| {
+                            structured_error("workbench_response", error.to_string())
+                        })?
+                    }
+                    WorkbenchQueryFormat::Compact => {
+                        let response = engine
+                            .resolve_reference_compact(&target)
+                            .map_err(workbench_query_error)?;
+                        serde_json::to_value(response).map_err(|error| {
+                            structured_error("workbench_response", error.to_string())
+                        })?
+                    }
+                    WorkbenchQueryFormat::Readable => {
+                        let response = engine
+                            .resolve_reference_compact(&target)
+                            .map_err(workbench_query_error)?;
+                        output_context =
+                            Some(workbench_query_context(&root, "workbench_reference"));
+                        let text = render_workbench_reference_readable(
+                            &response.binding_sha256,
+                            None,
+                            &response.selection,
+                            &response.result,
+                        )?;
+                        return Ok((QueryOutput::Readable(text), output_context));
+                    }
+                }
+            }
             WorkbenchCommand::Profiles { command } => match command {
                 WorkbenchProfilesCommand::Configure {
                     config,
@@ -2258,6 +2389,56 @@ fn execute() -> Result<(QueryOutput, Option<ManagedOutputContext>), CliError> {
                                 })?,
                                 render_dictionary_detail(&response.result),
                             );
+                            return Ok((QueryOutput::Readable(text), output_context));
+                        }
+                    }
+                }
+                WorkbenchProfilesCommand::Reference {
+                    config,
+                    profile,
+                    target,
+                    format,
+                } => {
+                    let bytes = read_workbench_file(&target)?;
+                    let target: RelationTarget = serde_json::from_slice(&bytes)
+                        .map_err(|error| structured_error("request_json", error.to_string()))?;
+                    let mut engine =
+                        ConfiguredWorkbenchSearchEngine::open(&config, profile.as_deref())
+                            .map_err(configured_workbench_query_error)?;
+                    match format {
+                        WorkbenchQueryFormat::Full => {
+                            let response = engine
+                                .resolve_reference(&target)
+                                .map_err(configured_workbench_query_error)?;
+                            serde_json::to_value(response).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?
+                        }
+                        WorkbenchQueryFormat::Compact => {
+                            let response = engine
+                                .resolve_reference_compact(&target)
+                                .map_err(configured_workbench_query_error)?;
+                            serde_json::to_value(response).map_err(|error| {
+                                structured_error("workbench_response", error.to_string())
+                            })?
+                        }
+                        WorkbenchQueryFormat::Readable => {
+                            let response = engine
+                                .resolve_reference_compact(&target)
+                                .map_err(configured_workbench_query_error)?;
+                            output_context = Some(workbench_profiles_output_context(
+                                &config,
+                                profile.as_deref(),
+                                None,
+                                "workbench_profiles_reference",
+                                "not_applicable",
+                            ));
+                            let text = render_workbench_reference_readable(
+                                &response.binding_sha256,
+                                Some(&response.configuration),
+                                &response.selection,
+                                &response.result,
+                            )?;
                             return Ok((QueryOutput::Readable(text), output_context));
                         }
                     }

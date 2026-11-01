@@ -38,7 +38,8 @@ The Rust workspace already provides:
 - Explicit immutable mixed workbench views over selected installed packs and
   an optional owned-journal revision, with Full/Compact queries bound to
   captured dependency identities and an additive named-profile refresh/history
-  workflow ([integrated workbench guide](docs/integrated-workbench.md)).
+  workflow, plus explicit Local/Catalog reference admission for direct and
+  configured views ([integrated workbench guide](docs/integrated-workbench.md)).
 - Rebuildable SQLite indexes and an optional Oxigraph backend for research comparisons.
 - Exact and reverse-definition lookup, source-link traversal, spelling distance,
   and bounded phonological and prosodic filters.

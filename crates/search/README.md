@@ -77,6 +77,17 @@ before and after each query, including detail resolution. Library callers
 still pass the configuration path explicitly; only the CLI has any ambient
 configuration policy, and the workbench profile CLI requires `--config`.
 
+The current unpublished workspace also exposes dedicated Full and Compact
+reference resolution for `RelationTarget`, plus Readable CLI output. These
+routes report matching retained catalogue registrations separately from an
+admitted payload and preserve the existing lower-format detail behavior. Use
+`vlajmaji workbench reference ROOT --target FILE` for a direct view or
+`vlajmaji workbench profiles reference --config FILE [--profile NAME] --target FILE`
+for a configured view. The target file contains the existing typed
+`RelationTarget` JSON; no new query-wire variant is introduced. The
+[integrated workbench guide](../../docs/integrated-workbench.md) includes
+working Rust and CLI examples.
+
 The `topology_probe` example is a local comparison harness, not user
 configuration or an installer. `prepare --manifest FILE` strictly loads four
 explicitly pinned sealed inputs and exclusively creates one unified and four
