@@ -123,3 +123,15 @@ vlajmaji-store = "0.2.0"
 Requires Rust 1.98 or newer. Store APIs use a store directory, rather than the internal SQLite file. Corpora are not bundled.
 
 See the [API documentation](https://docs.rs/vlajmaji-store). Licensed under Apache-2.0.
+
+## Explicit mixed workbench views
+
+`WorkbenchView::build_new` prepares a new, immutable directory from explicitly
+selected installed catalogue packs and an optional owned-journal revision. It
+retains a strict binding beside the derived `DictionaryStore`; it does not
+migrate or mutate either source. `WorkbenchView::open` checks the small binding
+and current dependency identities. Full history/model verification remains an
+explicit operation on the derived store or authoritative owned journal.
+
+The workbench API and its no-default-feature behavior are documented in
+[`docs/integrated-workbench.md`](../../docs/integrated-workbench.md).

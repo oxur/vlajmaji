@@ -35,6 +35,9 @@ The Rust workspace already provides:
 - Source-grouped exact lookup with source selection, complete pre-page totals,
   occurrence-based paging, and stable local/catalogue reference resolution
   ([query guide](docs/dictionary-query.md)).
+- Explicit immutable mixed workbench views over selected installed packs and
+  an optional owned-journal revision, with Full/Compact queries bound to
+  captured dependency identities ([integrated workbench guide](docs/integrated-workbench.md)).
 - Rebuildable SQLite indexes and an optional Oxigraph backend for research comparisons.
 - Exact and reverse-definition lookup, source-link traversal, spelling distance,
   and bounded phonological and prosodic filters.
