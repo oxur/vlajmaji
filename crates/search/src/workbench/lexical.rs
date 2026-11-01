@@ -24,7 +24,7 @@ use super::{
 /// The strict lexical request shape used by direct and configured workbenches.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
-/// Versioned request for literal reverse-definition or stored-Form queries.
+/// Versioned request for literal reverse-definition, stored-Form, or bounded Links queries.
 pub struct WorkbenchLexicalRequest {
     /// Lexical request schema version; currently exactly one.
     pub version: u32,
@@ -53,6 +53,13 @@ pub enum WorkbenchLexicalQuery {
         /// Optional stored FormKind filter, required as a key even when null.
         #[serde(deserialize_with = "super::deserialize_required_option")]
         kind: Option<FormKind>,
+    },
+    /// Traverse bounded typed relations and source-clause references.
+    Links {
+        /// Exact starting Entry spelling; empty text is accepted.
+        spelling: String,
+        /// Maximum traversal depth, exactly one or two.
+        depth: u8,
     },
 }
 
@@ -261,6 +268,8 @@ pub enum WorkbenchLexicalFullResult {
     ReverseDefinition(Box<WorkbenchReverseDefinitionFull>),
     /// Actual stored Form matches.
     Form(Box<WorkbenchFormFull>),
+    /// Bounded typed-relation and source-clause traversal.
+    Links(Box<super::links::WorkbenchLinksFull>),
 }
 
 /// Compact operation-tagged lexical payload.
@@ -276,6 +285,8 @@ pub enum WorkbenchLexicalCompactResult {
     ReverseDefinition(Box<WorkbenchReverseDefinitionCompact>),
     /// Actual stored Form matches.
     Form(Box<WorkbenchFormCompact>),
+    /// Bounded typed-relation and source-clause traversal.
+    Links(Box<super::links::WorkbenchLinksCompact>),
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -601,6 +612,13 @@ pub enum WorkbenchLexicalError {
     },
     /// Form-detail key is stale for this view or stored row.
     StaleFormDetail,
+    /// Link-detail key shape or policy is invalid.
+    MalformedLinkDetail {
+        /// Description of the malformed detail key.
+        detail: String,
+    },
+    /// Link-detail key is stale for this view or stored row.
+    StaleLinkDetail,
     /// Required retained typed relationships are inconsistent.
     Integrity {
         /// Description of an inconsistent retained relationship.
@@ -619,6 +637,8 @@ impl fmt::Display for WorkbenchLexicalError {
             Self::InvalidCursorPosition => f.write_str("invalid lexical cursor position"),
             Self::MalformedFormDetail { detail } => write!(f, "malformed form detail: {detail}"),
             Self::StaleFormDetail => f.write_str("stale form detail"),
+            Self::MalformedLinkDetail { detail } => write!(f, "malformed link detail: {detail}"),
+            Self::StaleLinkDetail => f.write_str("stale link detail"),
             Self::Integrity { detail } => write!(f, "lexical integrity error: {detail}"),
             Self::Dictionary(error) => write!(f, "dictionary query: {error}"),
         }
@@ -677,6 +697,14 @@ pub(crate) enum WorkbenchLexicalPosition {
         spelling: String,
         kind: FormKind,
         form_id: EntityId,
+    },
+    Links {
+        source: SourceId,
+        depth: u8,
+        evidence_kind_rank: u8,
+        evidence: super::links::WorkbenchLinkEvidenceId,
+        orientation_rank: u8,
+        from_assertion_id: EntityId,
     },
 }
 
@@ -881,6 +909,36 @@ pub(crate) fn decode_cursor(
     if envelope.checksum != expected_checksum {
         return Err(malformed("cursor checksum does not match its typed body"));
     }
+    if let WorkbenchLexicalPosition::Links {
+        depth,
+        evidence_kind_rank,
+        evidence,
+        orientation_rank,
+        ..
+    } = &envelope.body.last
+    {
+        let identity_shape_valid = match evidence {
+            super::links::WorkbenchLinkEvidenceId::TypedRelation { relation_id } => {
+                !relation_id.as_str().is_empty() && *evidence_kind_rank == 0
+            }
+            super::links::WorkbenchLinkEvidenceId::SourceClause {
+                context_id,
+                byte_start,
+                byte_end,
+                rule_version,
+                target_spelling,
+            } => {
+                !context_id.as_str().is_empty()
+                    && byte_end.checked_sub(*byte_start) == target_spelling.len().checked_add(2)
+                    && rule_version == "see-also-braces-v2"
+                    && !target_spelling.is_empty()
+                    && *evidence_kind_rank == 1
+            }
+        };
+        if !(1..=2).contains(depth) || *orientation_rank > 1 || !identity_shape_valid {
+            return Err(malformed("Links cursor position is malformed"));
+        }
+    }
     let query_sha = query_sha256(request, resolved_sources)?;
     if envelope.body.format != format
         || envelope.body.binding_sha256 != binding_sha256
@@ -940,15 +998,22 @@ impl WorkbenchSearchEngine {
     {
         self.view.ensure_current()?;
         let binding = self.view.binding().binding_sha256().to_owned();
-        let result: Result<WorkbenchLexicalFullResult, WorkbenchLexicalError> = (|| {
-            validate_request(request)?;
-            self.full_engine()
-                .map_err(WorkbenchLexicalError::from)?
-                .lexical_full(request, &binding)
+        let result: Result<WorkbenchLexicalFullResult, WorkbenchQueryError> = (|| {
+            validate_request(request).map_err(WorkbenchQueryError::from)?;
+            if matches!(request.query, WorkbenchLexicalQuery::Links { .. }) {
+                self.lexical_links_full_inner(request, &binding)
+                    .map(|links| WorkbenchLexicalFullResult::Links(Box::new(links)))
+            } else {
+                self.full_engine()
+                    .map_err(WorkbenchLexicalError::from)
+                    .map_err(WorkbenchQueryError::from)?
+                    .lexical_full(request, &binding)
+                    .map_err(WorkbenchQueryError::from)
+            }
         })();
         after_inner();
         self.view.ensure_current()?;
-        let result = result.map_err(WorkbenchQueryError::from)?;
+        let result = result?;
         Ok(WorkbenchLexicalFullResponse {
             version: 1,
             kind: "vlajmaji-workbench-lexical".into(),
@@ -1007,15 +1072,22 @@ impl WorkbenchSearchEngine {
     {
         self.view.ensure_current()?;
         let binding = self.view.binding().binding_sha256().to_owned();
-        let result: Result<WorkbenchLexicalCompactResult, WorkbenchLexicalError> = (|| {
-            validate_request(request)?;
-            self.compact_engine()
-                .map_err(WorkbenchLexicalError::from)?
-                .lexical_compact(request, &binding)
+        let result: Result<WorkbenchLexicalCompactResult, WorkbenchQueryError> = (|| {
+            validate_request(request).map_err(WorkbenchQueryError::from)?;
+            if matches!(request.query, WorkbenchLexicalQuery::Links { .. }) {
+                self.lexical_links_compact_inner(request, &binding)
+                    .map(|links| WorkbenchLexicalCompactResult::Links(Box::new(links)))
+            } else {
+                self.compact_engine()
+                    .map_err(WorkbenchLexicalError::from)
+                    .map_err(WorkbenchQueryError::from)?
+                    .lexical_compact(request, &binding)
+                    .map_err(WorkbenchQueryError::from)
+            }
         })();
         after_inner();
         self.view.ensure_current()?;
-        let result = result.map_err(WorkbenchQueryError::from)?;
+        let result = result?;
         Ok(WorkbenchLexicalCompactResponse {
             version: 1,
             kind: "vlajmaji-workbench-lexical".into(),
@@ -1100,6 +1172,80 @@ impl WorkbenchSearchEngine {
             form,
         })
     }
+
+    /// Resolve complete retained relation or source-clause detail using the same Compact view.
+    ///
+    /// Obtain the key from a Links Compact result and keep the response binding with it. Detail
+    /// uses the current all-source view, so the original request's source filter does not narrow
+    /// its evidence or target observations.
+    ///
+    /// # Examples
+    ///
+    /// ```no_run
+    /// use vlajmaji_search::workbench::{
+    ///     WorkbenchLexicalCompactResult, WorkbenchLexicalRequest, WorkbenchQueryError,
+    ///     WorkbenchSearchEngine,
+    /// };
+    ///
+    /// # fn show_detail(
+    /// #     engine: &mut WorkbenchSearchEngine,
+    /// #     request: &WorkbenchLexicalRequest,
+    /// # ) -> Result<(), WorkbenchQueryError> {
+    /// let response = engine.execute_lexical_compact(request)?;
+    /// let binding = response.binding_sha256.clone();
+    /// if let WorkbenchLexicalCompactResult::Links(links) = response.result {
+    ///     if let Some(step) = links.groups.iter().flat_map(|group| &group.hits).next() {
+    ///         let detail = engine.link_detail(&step.detail_ref, &binding)?;
+    ///         assert_eq!(detail.reference, step.detail_ref);
+    ///     }
+    /// }
+    /// # Ok(())
+    /// # }
+    /// ```
+    ///
+    /// # Errors
+    ///
+    /// Returns freshness errors when the prepared view changes, typed query or projection errors,
+    /// and malformed or stale detail-key errors.
+    pub fn link_detail(
+        &mut self,
+        reference: &super::links::WorkbenchLinkDetailRef,
+        expected_binding: &str,
+    ) -> Result<super::links::WorkbenchLinkDetailResponse, WorkbenchQueryError> {
+        self.link_detail_with_hook(reference, expected_binding, || {})
+    }
+
+    fn link_detail_with_hook<F>(
+        &mut self,
+        reference: &super::links::WorkbenchLinkDetailRef,
+        expected_binding: &str,
+        after_inner: F,
+    ) -> Result<super::links::WorkbenchLinkDetailResponse, WorkbenchQueryError>
+    where
+        F: FnOnce(),
+    {
+        self.view.ensure_current()?;
+        let binding = self.view.binding().binding_sha256().to_owned();
+        let result: Result<_, WorkbenchQueryError> = (|| {
+            validate_outer_binding(expected_binding, &binding)?;
+            let (record, origin_resolution, target_observations) =
+                super::links::build_compact_link_detail(self, reference, &binding)?;
+            Ok((record, origin_resolution, target_observations))
+        })();
+        after_inner();
+        self.view.ensure_current()?;
+        let (record, origin_resolution, target_observations) = result?;
+        Ok(super::links::WorkbenchLinkDetailResponse {
+            version: 1,
+            kind: "vlajmaji-workbench-link-detail".into(),
+            binding_sha256: binding,
+            selection: self.selection.clone(),
+            reference: reference.clone(),
+            record,
+            origin_resolution,
+            target_observations,
+        })
+    }
 }
 
 impl ConfiguredWorkbenchSearchEngine {
@@ -1158,10 +1304,15 @@ impl ConfiguredWorkbenchSearchEngine {
         let binding = configuration.effective_binding_sha256.clone();
         let result: Result<WorkbenchLexicalFullResult, WorkbenchQueryError> = (|| {
             validate_request(request).map_err(WorkbenchQueryError::from)?;
-            self.full_engine()
-                .map_err(WorkbenchQueryError::from)?
-                .lexical_full(request, &binding)
-                .map_err(WorkbenchQueryError::from)
+            if matches!(request.query, WorkbenchLexicalQuery::Links { .. }) {
+                self.lexical_links_full_inner(request, &binding)
+                    .map(|links| WorkbenchLexicalFullResult::Links(Box::new(links)))
+            } else {
+                self.full_engine()
+                    .map_err(WorkbenchQueryError::from)?
+                    .lexical_full(request, &binding)
+                    .map_err(WorkbenchQueryError::from)
+            }
         })();
         after_inner();
         if let Err(error) = self.view.ensure_current() {
@@ -1234,10 +1385,15 @@ impl ConfiguredWorkbenchSearchEngine {
         let binding = configuration.effective_binding_sha256.clone();
         let result: Result<WorkbenchLexicalCompactResult, WorkbenchQueryError> = (|| {
             validate_request(request).map_err(WorkbenchQueryError::from)?;
-            self.compact_engine()
-                .map_err(WorkbenchQueryError::from)?
-                .lexical_compact(request, &binding)
-                .map_err(WorkbenchQueryError::from)
+            if matches!(request.query, WorkbenchLexicalQuery::Links { .. }) {
+                self.lexical_links_compact_inner(request, &binding)
+                    .map(|links| WorkbenchLexicalCompactResult::Links(Box::new(links)))
+            } else {
+                self.compact_engine()
+                    .map_err(WorkbenchQueryError::from)?
+                    .lexical_compact(request, &binding)
+                    .map_err(WorkbenchQueryError::from)
+            }
         })();
         after_inner();
         if let Err(error) = self.view.ensure_current() {
@@ -1342,6 +1498,86 @@ impl ConfiguredWorkbenchSearchEngine {
             form,
         })
     }
+
+    /// Resolve complete retained relation or source-clause detail in this configured view.
+    ///
+    /// Use a key and effective binding returned by a Compact Links query from this same configured
+    /// engine. The detail projection uses all sources in the configured view; it is not restricted
+    /// by the query's source filter.
+    ///
+    /// # Examples
+    ///
+    /// ```no_run
+    /// use vlajmaji_search::workbench::{
+    ///     ConfiguredWorkbenchSearchEngine, WorkbenchLexicalCompactResult,
+    ///     WorkbenchLexicalRequest, ConfiguredWorkbenchQueryError,
+    /// };
+    ///
+    /// # fn show_detail(
+    /// #     engine: &mut ConfiguredWorkbenchSearchEngine,
+    /// #     request: &WorkbenchLexicalRequest,
+    /// # ) -> Result<(), ConfiguredWorkbenchQueryError> {
+    /// let response = engine.execute_lexical_compact(request)?;
+    /// let effective_binding = response.binding_sha256.clone();
+    /// if let WorkbenchLexicalCompactResult::Links(links) = response.result {
+    ///     if let Some(step) = links.groups.iter().flat_map(|group| &group.hits).next() {
+    ///         let detail = engine.link_detail(&step.detail_ref, &effective_binding)?;
+    ///         assert_eq!(detail.reference, step.detail_ref);
+    ///     }
+    /// }
+    /// # Ok(())
+    /// # }
+    /// ```
+    ///
+    /// # Errors
+    ///
+    /// Returns profile freshness and query errors, including malformed or stale detail-key
+    /// errors. A configuration change during resolution is reported as a profile error.
+    pub fn link_detail(
+        &mut self,
+        reference: &super::links::WorkbenchLinkDetailRef,
+        expected_effective_binding: &str,
+    ) -> Result<super::links::ConfiguredWorkbenchLinkDetailResponse, ConfiguredWorkbenchQueryError>
+    {
+        self.link_detail_with_hook(reference, expected_effective_binding, || {})
+    }
+
+    fn link_detail_with_hook<F>(
+        &mut self,
+        reference: &super::links::WorkbenchLinkDetailRef,
+        expected_effective_binding: &str,
+        after_inner: F,
+    ) -> Result<super::links::ConfiguredWorkbenchLinkDetailResponse, ConfiguredWorkbenchQueryError>
+    where
+        F: FnOnce(),
+    {
+        self.view
+            .ensure_current()
+            .map_err(|error| ConfiguredWorkbenchQueryError::Profile(Box::new(error)))?;
+        let configuration = self.view.identity().clone();
+        let binding = configuration.effective_binding_sha256.clone();
+        let result: Result<_, WorkbenchQueryError> = (|| {
+            validate_outer_binding(expected_effective_binding, &binding)?;
+            super::links::build_compact_link_detail(self, reference, &binding)
+        })();
+        after_inner();
+        if let Err(error) = self.view.ensure_current() {
+            return Err(ConfiguredWorkbenchQueryError::Profile(Box::new(error)));
+        }
+        let (record, origin_resolution, target_observations) =
+            result.map_err(|error| ConfiguredWorkbenchQueryError::Query(Box::new(error)))?;
+        Ok(super::links::ConfiguredWorkbenchLinkDetailResponse {
+            version: 1,
+            kind: "vlajmaji-workbench-link-detail".into(),
+            binding_sha256: binding,
+            configuration,
+            selection: self.selection.clone(),
+            reference: reference.clone(),
+            record,
+            origin_resolution,
+            target_observations,
+        })
+    }
 }
 
 fn validate_request(request: &WorkbenchLexicalRequest) -> Result<(), WorkbenchLexicalError> {
@@ -1350,11 +1586,18 @@ fn validate_request(request: &WorkbenchLexicalRequest) -> Result<(), WorkbenchLe
             detail: format!("unsupported lexical request version {}", request.version),
         });
     }
-    if matches!(&request.query, WorkbenchLexicalQuery::ReverseDefinition { contains } if contains.is_empty())
-    {
-        return Err(WorkbenchLexicalError::InvalidRequest {
-            detail: "reverse-definition contains must not be empty".into(),
-        });
+    match &request.query {
+        WorkbenchLexicalQuery::ReverseDefinition { contains } if contains.is_empty() => {
+            return Err(WorkbenchLexicalError::InvalidRequest {
+                detail: "reverse-definition contains must not be empty".into(),
+            });
+        }
+        WorkbenchLexicalQuery::Links { depth, .. } if !matches!(depth, 1 | 2) => {
+            return Err(WorkbenchLexicalError::InvalidRequest {
+                detail: "Links depth must be exactly one or two".into(),
+            });
+        }
+        _ => {}
     }
     Ok(())
 }
@@ -1504,6 +1747,28 @@ mod tests {
                 offset: None,
             }),
             computation: None,
+        });
+        lexicon::Dictionary::from_document(document).unwrap()
+    }
+
+    fn links_test_dictionary() -> lexicon::Dictionary {
+        let mut document = test_dictionary().into_document();
+        let first = document.metadata.assertions[0].clone();
+        let second = document.metadata.assertions[1].clone();
+        document.metadata.relations.push(lexicon::RelationRecord {
+            id: EntityId::new("lexical-hook-relation").unwrap(),
+            origin: lexicon::LocalRef::Assertion(first.id),
+            kind: lexicon::RelationKind::SourceSeeAlso,
+            direction: lexicon::Direction::Forward,
+            scope: lexicon::RelationScope::Assertion,
+            target: lexicon::RelationTarget::Local(lexicon::LocalRef::Entry(second.entry)),
+            evidence: Some(lexicon::SourceEvidence {
+                occurrence: first.occurrence,
+                field_index: None,
+                citation: lexicon::Presence::Missing,
+                offset: None,
+            }),
+            editorial_revision: None,
         });
         lexicon::Dictionary::from_document(document).unwrap()
     }
@@ -1682,6 +1947,58 @@ mod tests {
         ));
     }
 
+    fn links_request(depth: u8) -> WorkbenchLexicalRequest {
+        WorkbenchLexicalRequest {
+            version: 1,
+            query: WorkbenchLexicalQuery::Links {
+                spelling: "farvi".into(),
+                depth,
+            },
+            options: WorkbenchLexicalOptions::default(),
+        }
+    }
+
+    fn configured_links_fixture() -> (PathBuf, PathBuf, PathBuf) {
+        let root = test_root();
+        let catalogue = root.join("catalogue");
+        let replacement_catalogue = root.join("replacement-catalogue");
+        let dictionary = links_test_dictionary();
+        install_test_catalogue(&catalogue, &dictionary);
+        install_test_catalogue(&replacement_catalogue, &dictionary);
+        let config = root.join("profiles.json");
+        let configured = vlajmaji_store::WorkbenchProfiles::configure(
+            &config,
+            vlajmaji_store::WorkbenchProfileConfigureRequest {
+                name: "alpha".into(),
+                catalogue_root: Some(catalogue),
+                owned_root: None,
+                selection: test_selection(),
+                make_default: false,
+            },
+            None,
+        )
+        .unwrap();
+        assert_eq!(configured.revision, 1);
+        let refreshed = vlajmaji_store::WorkbenchProfiles::refresh(
+            &config,
+            Some("alpha"),
+            root.join("prepared-alpha"),
+            configured.revision,
+        )
+        .unwrap();
+        assert_eq!(refreshed.publication.revision, 2);
+        let selected = vlajmaji_store::WorkbenchProfiles::set_default(
+            &config,
+            Some("alpha"),
+            refreshed.publication.revision,
+        )
+        .unwrap();
+        assert!(selected.changed);
+        assert_eq!(selected.revision, 3);
+        assert!(selected.active.is_some());
+        (root, config, replacement_catalogue)
+    }
+
     fn reverse_request() -> WorkbenchLexicalRequest {
         WorkbenchLexicalRequest {
             version: 1,
@@ -1710,6 +2027,359 @@ mod tests {
             .map(|byte| format!("{byte:02x}"))
             .collect::<String>();
         format!("{CURSOR_PREFIX}{hex}")
+    }
+
+    #[test]
+    fn test_direct_links_rechecks_after_catalogue_rebuild() {
+        let root = test_root();
+        let catalogue = root.join("catalogue");
+        let mut cursor_dictionary = links_test_dictionary().into_document();
+        let first = cursor_dictionary.metadata.assertions[0].clone();
+        let second = cursor_dictionary.metadata.assertions[1].clone();
+        let mut second_relation = cursor_dictionary.metadata.relations[0].clone();
+        second_relation.id = EntityId::new("lexical-hook-relation-second").unwrap();
+        second_relation.origin = lexicon::LocalRef::Assertion(second.id.clone());
+        second_relation.target =
+            lexicon::RelationTarget::Local(lexicon::LocalRef::Entry(first.entry.clone()));
+        second_relation.evidence.as_mut().unwrap().occurrence = second.occurrence.clone();
+        cursor_dictionary.metadata.relations.push(second_relation);
+        let cursor_dictionary = lexicon::Dictionary::from_document(cursor_dictionary).unwrap();
+        install_test_catalogue(&catalogue, &cursor_dictionary);
+        let view = root.join("view");
+        WorkbenchView::build_new(
+            &view,
+            vlajmaji_store::WorkbenchBuildRequest {
+                catalogue_root: Some(catalogue.clone()),
+                owned_root: None,
+                selection: test_selection(),
+            },
+        )
+        .unwrap();
+        let mut engine = WorkbenchSearchEngine::open(&view).unwrap();
+        let mut issued_request = links_request(2);
+        issued_request.options.page_size = Some(1);
+        let initial_compact = engine.execute_lexical_compact(&issued_request).unwrap();
+        assert!(engine.full.is_none());
+        let binding = initial_compact.binding_sha256.clone();
+        let WorkbenchLexicalCompactResult::Links(initial_links) = initial_compact.result else {
+            panic!("expected the fixed source relation in Compact Links output")
+        };
+        let resolved_sources = initial_links.resolved_sources.clone();
+        let issued_token = initial_links
+            .next_cursor
+            .clone()
+            .expect("the fixture has a second retained Links step");
+        let issued_hex = issued_token.strip_prefix(CURSOR_PREFIX).unwrap();
+        let (hex_pairs, remainder) = issued_hex.as_bytes().as_chunks::<2>();
+        assert!(
+            remainder.is_empty(),
+            "issued cursor hex has an odd byte count"
+        );
+        let issued_bytes = hex_pairs
+            .iter()
+            .map(|pair| {
+                let digit = |byte: u8| match byte {
+                    b'0'..=b'9' => byte - b'0',
+                    b'a'..=b'f' => byte - b'a' + 10,
+                    _ => unreachable!("issued cursor has validated lowercase hex"),
+                };
+                (digit(pair[0]) << 4) | digit(pair[1])
+            })
+            .collect::<Vec<_>>();
+        let issued_envelope: LexicalCursorEnvelope = serde_json::from_slice(&issued_bytes).unwrap();
+        let mut positive_continuation = issued_request.clone();
+        positive_continuation.options.page_size = Some(7);
+        positive_continuation.options.cursor = Some(issued_token.clone());
+        let WorkbenchLexicalCompactResult::Links(continued_links) = engine
+            .execute_lexical_compact(&positive_continuation)
+            .unwrap()
+            .result
+        else {
+            panic!("issued Links cursor continued into another operation")
+        };
+        assert_eq!(
+            continued_links
+                .groups
+                .iter()
+                .flat_map(|group| &group.hits)
+                .map(|step| match &step.identity.evidence {
+                    super::super::links::WorkbenchLinkEvidenceId::TypedRelation { relation_id } =>
+                        relation_id.as_str(),
+                    super::super::links::WorkbenchLinkEvidenceId::SourceClause { .. } => {
+                        "unexpected-clause"
+                    }
+                })
+                .collect::<Vec<_>>(),
+            vec!["lexical-hook-relation-second"]
+        );
+        assert!(continued_links.next_cursor.is_none());
+        let WorkbenchLexicalPosition::Links { evidence, .. } = &issued_envelope.body.last else {
+            panic!("actual Compact Links cursor has a non-Links last position")
+        };
+        let WorkbenchLexicalPosition::Links {
+            source,
+            depth,
+            evidence_kind_rank,
+            orientation_rank,
+            from_assertion_id,
+            ..
+        } = &issued_envelope.body.last
+        else {
+            unreachable!()
+        };
+        let invalid_last = WorkbenchLexicalPosition::Links {
+            source: source.clone(),
+            depth: *depth,
+            evidence_kind_rank: *evidence_kind_rank,
+            evidence: match evidence {
+                super::super::links::WorkbenchLinkEvidenceId::TypedRelation { .. } => {
+                    super::super::links::WorkbenchLinkEvidenceId::TypedRelation {
+                        relation_id: EntityId::new("lexical-hook-absent-relation").unwrap(),
+                    }
+                }
+                super::super::links::WorkbenchLinkEvidenceId::SourceClause { .. } => {
+                    unreachable!("the first page is a typed relation")
+                }
+            },
+            orientation_rank: *orientation_rank,
+            from_assertion_id: from_assertion_id.clone(),
+        };
+        let invalid_position_token = encode_cursor(
+            &issued_request,
+            &resolved_sources,
+            "compact",
+            &binding,
+            invalid_last,
+        )
+        .unwrap();
+        let mut invalid_position_request = issued_request.clone();
+        invalid_position_request.options.cursor = Some(invalid_position_token);
+        assert!(matches!(
+            engine.execute_lexical_compact(&invalid_position_request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::InvalidCursorPosition)
+        ));
+        let mut foreign_namespace_request = issued_request.clone();
+        foreign_namespace_request.options.cursor = Some("dictionary-compact-v1:00".into());
+        assert!(matches!(
+            engine.execute_lexical_compact(&foreign_namespace_request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::MalformedCursor { .. })
+        ));
+        let malformed_shape = token_for(LexicalCursorBody {
+            version: 1,
+            domain: CURSOR_DOMAIN.into(),
+            format: "compact".into(),
+            binding_sha256: binding.clone(),
+            query_sha256: query_sha256(&issued_request, &resolved_sources).unwrap(),
+            last: WorkbenchLexicalPosition::Links {
+                source: resolved_sources[0].clone(),
+                depth: 0,
+                evidence_kind_rank: 0,
+                evidence: super::super::links::WorkbenchLinkEvidenceId::TypedRelation {
+                    relation_id: EntityId::new("lexical-hook-relation").unwrap(),
+                },
+                orientation_rank: 0,
+                from_assertion_id: EntityId::new("lexical-hook-assertion").unwrap(),
+            },
+        });
+        let mut malformed_shape_request = issued_request.clone();
+        malformed_shape_request.options.cursor = Some(malformed_shape);
+        assert!(matches!(
+            engine.execute_lexical_compact(&malformed_shape_request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::MalformedCursor { .. })
+        ));
+        let malformed_rank = token_for(LexicalCursorBody {
+            version: 1,
+            domain: CURSOR_DOMAIN.into(),
+            format: "compact".into(),
+            binding_sha256: binding.clone(),
+            query_sha256: query_sha256(&issued_request, &resolved_sources).unwrap(),
+            last: WorkbenchLexicalPosition::Links {
+                source: resolved_sources[0].clone(),
+                depth: 1,
+                evidence_kind_rank: 1,
+                evidence: super::super::links::WorkbenchLinkEvidenceId::TypedRelation {
+                    relation_id: EntityId::new("lexical-hook-relation").unwrap(),
+                },
+                orientation_rank: 0,
+                from_assertion_id: EntityId::new("lexical-hook-assertion").unwrap(),
+            },
+        });
+        let mut malformed_rank_request = issued_request.clone();
+        malformed_rank_request.options.cursor = Some(malformed_rank);
+        assert!(matches!(
+            engine.execute_lexical_compact(&malformed_rank_request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::MalformedCursor { .. })
+        ));
+        let malformed_version = token_for(LexicalCursorBody {
+            version: 2,
+            domain: CURSOR_DOMAIN.into(),
+            format: "compact".into(),
+            binding_sha256: binding.clone(),
+            query_sha256: query_sha256(&issued_request, &resolved_sources).unwrap(),
+            last: issued_envelope.body.last.clone(),
+        });
+        let mut malformed_version_request = issued_request.clone();
+        malformed_version_request.options.cursor = Some(malformed_version);
+        assert!(matches!(
+            engine.execute_lexical_compact(&malformed_version_request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::MalformedCursor { .. })
+        ));
+        let detail_ref = initial_links.groups[0].hits[0].detail_ref.clone();
+        let baseline_detail = engine.link_detail(&detail_ref, &binding).unwrap();
+        assert!(engine.full.is_none());
+        let saved_document = engine
+            .compact
+            .as_mut()
+            .unwrap()
+            .test_with_unverified_link_document(|document| {
+                let saved = document.clone();
+                // Deliberately unverified cache corruption for precedence testing only.
+                let relation = document
+                    .metadata
+                    .relations
+                    .iter()
+                    .find(|row| row.id == EntityId::new("lexical-hook-relation").unwrap())
+                    .unwrap();
+                let source_evidence = relation.evidence.as_ref().unwrap();
+                let capture = document
+                    .captures
+                    .iter_mut()
+                    .find(|row| row.identity == source_evidence.occurrence.capture)
+                    .unwrap();
+                let position = capture
+                    .occurrences
+                    .iter()
+                    .position(|row| row.locator == source_evidence.occurrence.locator)
+                    .unwrap();
+                capture.occurrences.remove(position);
+                saved
+            });
+        let mut forged_secondary_key = detail_ref.clone();
+        forged_secondary_key.record_sha256 = "f".repeat(64);
+        assert!(matches!(
+            engine.link_detail(&forged_secondary_key, &binding),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::Integrity { .. })
+        ));
+        engine
+            .compact
+            .as_mut()
+            .unwrap()
+            .test_with_unverified_link_document(|document| *document = saved_document);
+        let restored_detail = engine.link_detail(&detail_ref, &binding).unwrap();
+        assert_eq!(restored_detail.record, baseline_detail.record);
+        assert!(engine.full.is_none());
+
+        let request = links_request(3);
+        assert!(matches!(
+            engine.execute_lexical(&request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::InvalidRequest { .. })
+        ));
+
+        let mut writer_revision = None;
+        let result = engine.execute_lexical_with_hook(&request, || {
+            writer_revision = Some(rebuild_catalogue(&catalogue));
+        });
+        assert_catalogue_stale(result);
+        assert_eq!(writer_revision, Some(2));
+        fs::remove_dir_all(root).unwrap();
+    }
+
+    #[test]
+    fn test_configured_compact_link_detail_rechecks_after_active_clear() {
+        let (root, config, replacement_catalogue) = configured_links_fixture();
+        let mut engine = ConfiguredWorkbenchSearchEngine::open(&config, Some("alpha")).unwrap();
+        assert!(engine.full.is_none());
+        let compact = engine.execute_lexical_compact(&links_request(1)).unwrap();
+        assert!(engine.full.is_none());
+        assert!(engine.compact.is_some());
+        let WorkbenchLexicalCompactResult::Links(links) = &compact.result else {
+            panic!("configured Links request returned another operation")
+        };
+        let step = links
+            .groups
+            .iter()
+            .flat_map(|group| &group.hits)
+            .next()
+            .expect("the retained source relation must produce a Compact link step");
+        let detail_ref = step.detail_ref.clone();
+        let binding = compact.binding_sha256.clone();
+        let baseline = engine.link_detail(&detail_ref, &binding).unwrap();
+        assert_eq!(baseline.record.identity, detail_ref.identity);
+        assert!(engine.full.is_none());
+
+        let mut writer_observation = None;
+        let result = engine.link_detail_with_hook(&detail_ref, &binding, || {
+            let report = vlajmaji_store::WorkbenchProfiles::configure(
+                &config,
+                vlajmaji_store::WorkbenchProfileConfigureRequest {
+                    name: "alpha".into(),
+                    catalogue_root: Some(replacement_catalogue.clone()),
+                    owned_root: None,
+                    selection: test_selection(),
+                    make_default: false,
+                },
+                Some(3),
+            )
+            .unwrap();
+            assert!(report.changed);
+            let profile = vlajmaji_store::WorkbenchProfiles::read(&config)
+                .unwrap()
+                .profile(Some("alpha"))
+                .unwrap()
+                .clone();
+            writer_observation = Some((
+                report.revision,
+                report.active.is_none(),
+                profile.active_generation,
+            ));
+        });
+        assert_config_changed(result);
+        assert_eq!(writer_observation, Some((4, true, None)));
+        assert!(engine.full.is_none());
+        drop(engine);
+
+        let refreshed = vlajmaji_store::WorkbenchProfiles::refresh(
+            &config,
+            Some("alpha"),
+            root.join("configured-links-after-clear"),
+            4,
+        )
+        .unwrap();
+        assert_eq!(refreshed.publication.revision, 5);
+        let mut current = ConfiguredWorkbenchSearchEngine::open(&config, Some("alpha")).unwrap();
+        let current_compact = current.execute_lexical_compact(&links_request(1)).unwrap();
+        let WorkbenchLexicalCompactResult::Links(current_links) = &current_compact.result else {
+            panic!("refreshed configured Links request returned another operation")
+        };
+        let current_ref = current_links
+            .groups
+            .iter()
+            .flat_map(|group| &group.hits)
+            .next()
+            .unwrap()
+            .detail_ref
+            .clone();
+        assert!(matches!(
+            current.link_detail(&detail_ref, &current_compact.binding_sha256),
+            Err(ConfiguredWorkbenchQueryError::Query(error))
+                if matches!(error.as_ref(), WorkbenchQueryError::Lexical(inner)
+                    if matches!(inner.as_ref(), WorkbenchLexicalError::StaleLinkDetail))
+        ));
+        assert_eq!(
+            current
+                .link_detail(&current_ref, &current_compact.binding_sha256)
+                .unwrap()
+                .reference,
+            current_ref
+        );
+        fs::remove_dir_all(root).unwrap();
     }
 
     #[test]
@@ -1810,6 +2480,103 @@ mod tests {
             expected_token
         );
         request.options.page_size = Some(7);
+        assert_eq!(
+            decode_cursor(
+                &expected_token,
+                &request,
+                &resolved,
+                "compact",
+                &"1".repeat(64)
+            )
+            .unwrap(),
+            position
+        );
+    }
+
+    #[test]
+    fn test_links_cursor_matches_fixed_typed_protocol_oracle() {
+        let mut request = WorkbenchLexicalRequest {
+            version: 1,
+            query: WorkbenchLexicalQuery::Links {
+                spelling: "seed".into(),
+                depth: 2,
+            },
+            options: WorkbenchLexicalOptions {
+                sources: vec!["KU".into(), "KO".into()],
+                ..WorkbenchLexicalOptions::default()
+            },
+        };
+        let resolved = vec![
+            SourceId::new("links-owned").unwrap(),
+            SourceId::new("links-upstream").unwrap(),
+        ];
+        let expected_query = r#"{"query":{"operation":"links","spelling":"seed","depth":2},"selectors":["KU","KO"],"resolved_sources":["links-owned","links-upstream"],"alias_scope":"ActiveOnly"}"#;
+        let binding = LexicalQueryBinding {
+            query: &request.query,
+            selectors: &request.options.sources,
+            resolved_sources: &resolved,
+            alias_scope: request.options.alias_scope,
+        };
+        assert_eq!(serde_json::to_string(&binding).unwrap(), expected_query);
+        assert_eq!(
+            query_sha256(&request, &resolved).unwrap(),
+            "fb8da7420bfbcdf9f095b22f5ed64662f988a0fc93c4c70e7f0572ceed2b2bd8"
+        );
+        request.options.sources = vec!["KO".into(), "KU".into()];
+        assert_eq!(
+            query_sha256(&request, &resolved).unwrap(),
+            "82157d8d1149057f1d403d7bd44cc7321d07ea29e5b4e64460fd1a12ba2f3e8e"
+        );
+        request.options.sources = vec!["KU".into(), "KO".into()];
+
+        let position = WorkbenchLexicalPosition::Links {
+            source: resolved[0].clone(),
+            depth: 1,
+            evidence_kind_rank: 0,
+            evidence: super::super::links::WorkbenchLinkEvidenceId::TypedRelation {
+                relation_id: EntityId::new("links-relation-03").unwrap(),
+            },
+            orientation_rank: 0,
+            from_assertion_id: EntityId::new("links-owned-a").unwrap(),
+        };
+        let body = LexicalCursorBody {
+            version: 1,
+            domain: CURSOR_DOMAIN.into(),
+            format: "compact".into(),
+            binding_sha256: "1".repeat(64),
+            query_sha256: "fb8da7420bfbcdf9f095b22f5ed64662f988a0fc93c4c70e7f0572ceed2b2bd8".into(),
+            last: position.clone(),
+        };
+        let expected_body = r#"{"version":1,"domain":"workbench-lexical-cursor-v1","format":"compact","binding_sha256":"1111111111111111111111111111111111111111111111111111111111111111","query_sha256":"fb8da7420bfbcdf9f095b22f5ed64662f988a0fc93c4c70e7f0572ceed2b2bd8","last":{"operation":"links","source":"links-owned","depth":1,"evidence_kind_rank":0,"evidence":{"kind":"typed_relation","relation_id":"links-relation-03"},"orientation_rank":0,"from_assertion_id":"links-owned-a"}}"#;
+        assert_eq!(serde_json::to_string(&body).unwrap(), expected_body);
+        let checksum = typed_sha256(&body).unwrap();
+        assert_eq!(
+            checksum,
+            "449721121f681e73942061578e74cecbd297ea120f89268660d691271341cccd"
+        );
+        let envelope = LexicalCursorEnvelope { body, checksum };
+        let expected_envelope = r#"{"body":{"version":1,"domain":"workbench-lexical-cursor-v1","format":"compact","binding_sha256":"1111111111111111111111111111111111111111111111111111111111111111","query_sha256":"fb8da7420bfbcdf9f095b22f5ed64662f988a0fc93c4c70e7f0572ceed2b2bd8","last":{"operation":"links","source":"links-owned","depth":1,"evidence_kind_rank":0,"evidence":{"kind":"typed_relation","relation_id":"links-relation-03"},"orientation_rank":0,"from_assertion_id":"links-owned-a"}},"checksum":"449721121f681e73942061578e74cecbd297ea120f89268660d691271341cccd"}"#;
+        assert_eq!(serde_json::to_string(&envelope).unwrap(), expected_envelope);
+        let expected_token = format!(
+            "{CURSOR_PREFIX}{}",
+            serde_json::to_vec(&envelope)
+                .unwrap()
+                .iter()
+                .map(|byte| format!("{byte:02x}"))
+                .collect::<String>()
+        );
+        assert_eq!(
+            encode_cursor(
+                &request,
+                &resolved,
+                "compact",
+                &"1".repeat(64),
+                position.clone()
+            )
+            .unwrap(),
+            expected_token
+        );
+        request.options.page_size = Some(5);
         assert_eq!(
             decode_cursor(
                 &expected_token,

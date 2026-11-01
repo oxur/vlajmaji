@@ -19,19 +19,21 @@ use std::{
 use sha2::{Digest, Sha256};
 use vlajmaji_lexicon::{
     AbbreviationKind, AssertionRecord, Availability, CaptureMetadata, CaptureRef, CollectionRecord,
-    ComponentRecord, ComputationRecord, ContentNotice, ContributorId, ContributorRecord,
-    Dictionary, DictionaryDocument, DictionaryMetadata, Eligibility, EntityId, EntryRecord,
-    FormKind, FormRecord, InputRef, LaLojbanImportOptions, LocalRef, NativeEncoding, NativeField,
-    OccurrenceAttribution, OccurrenceRef, OwnedHead, OwnedRevisionRecord, PackId, PackPayloadKind,
-    Presence, RawCapture, RawOccurrence, RedistributionStatus, RegistryDocument, RelationTarget,
-    ReleaseAccounting, ReleaseRecord, SnapshotAttribution, SourceEvidence, SourceId, SourceOrigin,
-    SourceRecord, SourceRegistry, TextValue, TimePrecision, import_la_lojban_export, seal_release,
+    ComponentRecord, ComputationRecord, ContentNotice, ContextKind, ContextRecord, ContributorId,
+    ContributorRecord, Dictionary, DictionaryDocument, DictionaryMetadata, Direction,
+    EditorialSenseRecord, Eligibility, EntityId, EntryRecord, FormKind, FormRecord, InputRef,
+    LaLojbanImportOptions, LocalRef, NativeEncoding, NativeField, OccurrenceAttribution,
+    OccurrenceRef, OwnedHead, OwnedRevisionRecord, PackId, PackPayloadKind, Presence, RawCapture,
+    RawOccurrence, RedistributionStatus, RegistryDocument, RelationKind, RelationRecord,
+    RelationScope, RelationTarget, ReleaseAccounting, ReleaseRecord, SnapshotAttribution,
+    SourceEvidence, SourceId, SourceOrigin, SourceRecord, SourceRegistry, TextValue, TimePrecision,
+    import_la_lojban_export, seal_release,
 };
 use vlajmaji_search::{
     ConfiguredWorkbenchQueryError, ConfiguredWorkbenchSearchEngine, DictionaryExactOptions,
     DictionaryRequest, ReferenceEntity, ReferenceStatus, WorkbenchFullResult,
     WorkbenchLexicalCompactResult, WorkbenchLexicalFullResult, WorkbenchLexicalRequest,
-    WorkbenchQueryError, WorkbenchSearchEngine,
+    WorkbenchLinksCompact, WorkbenchLinksFull, WorkbenchQueryError, WorkbenchSearchEngine,
 };
 use vlajmaji_store::{
     CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection, OwnedJournal,
@@ -1578,6 +1580,2265 @@ fn write_new(path: &Path, bytes: &[u8]) -> Result<(), Box<dyn std::error::Error>
     Ok(())
 }
 
+// Self-contained copy of the validated fixed Links typed-input constructor.
+fn links_id(value: &str) -> EntityId {
+    EntityId::new(value).unwrap()
+}
+fn links_source(value: &str) -> SourceId {
+    SourceId::new(value).unwrap()
+}
+fn links_text(value: &str) -> Presence<TextValue> {
+    Presence::Value(TextValue {
+        text: value.into(),
+        language: Presence::Missing,
+        markup: Presence::Missing,
+    })
+}
+fn links_evidence(occurrence: OccurrenceRef, field_index: Option<usize>) -> Option<SourceEvidence> {
+    Some(SourceEvidence {
+        occurrence,
+        field_index,
+        citation: Presence::Missing,
+        offset: None,
+    })
+}
+fn links_release(
+    id_value: &str,
+    component: &EntityId,
+    captures: Vec<CaptureRef>,
+    assertions: Vec<EntityId>,
+    selected: bool,
+) -> ReleaseRecord {
+    let n = assertions.len() as u64;
+    ReleaseRecord {
+        id: links_id(id_value),
+        component: component.clone(),
+        distributor: None,
+        upstream_revision: Presence::Missing,
+        distributor_revision: Presence::Missing,
+        captured_at: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        schema_version: 1,
+        normalizer: "links-fixed-v1".into(),
+        normalizer_version: "1".into(),
+        captures,
+        assertions,
+        accounting: ReleaseAccounting {
+            input_occurrences: Some(n),
+            normalized_occurrences: Some(n),
+            query_excluded_occurrences: Some(0),
+            unit: "occurrences".into(),
+        },
+        diagnostics: Vec::new(),
+        selected,
+        availability: Availability::Available,
+        content_notices: vec![ContentNotice {
+            text: Presence::Value("synthetic Links fixture".into()),
+            locator: Presence::Missing,
+            license: Presence::Missing,
+        }],
+        redistribution: RedistributionStatus::Held,
+        redistribution_evidence: Vec::new(),
+    }
+}
+fn links_capture(
+    namespace: &str,
+    source_name: &str,
+    lines: &[&str],
+    fields: Vec<Vec<NativeField>>,
+) -> RawCapture {
+    let bytes = lines.join("\n").into_bytes();
+    RawCapture::new(
+        namespace,
+        CaptureMetadata {
+            source_name: source_name.into(),
+            format_label: "synthetic-links-rows-v1".into(),
+            locator: namespace.into(),
+            revision: Presence::Missing,
+            captured_at: Presence::Missing,
+            time_precision: TimePrecision::Unknown,
+            notice_locator: Presence::Missing,
+        },
+        bytes,
+        lines
+            .iter()
+            .zip(fields)
+            .enumerate()
+            .map(|(i, (line, fields))| RawOccurrence {
+                locator: format!("/{i}"),
+                fields,
+                raw_line: Some((*line).into()),
+            })
+            .collect(),
+    )
+}
+fn links_field(name: &str, value: &str) -> NativeField {
+    NativeField {
+        name: name.into(),
+        encoding: NativeEncoding::Text,
+        raw_value: value.into(),
+    }
+}
+fn links_entry(id_value: &str, source_id: &SourceId, spelling: &str) -> EntryRecord {
+    EntryRecord {
+        id: links_id(id_value),
+        source: source_id.clone(),
+        spelling: Presence::Value(spelling.into()),
+        language: Presence::Value("jbo".into()),
+        script: Presence::Missing,
+        native_word_class: Presence::Missing,
+        selmaho: Presence::Missing,
+        mapped_pos: Presence::Missing,
+    }
+}
+fn links_assertion(
+    id_value: &str,
+    entry_id: &EntityId,
+    occurrence: OccurrenceRef,
+    definition: &str,
+) -> AssertionRecord {
+    AssertionRecord {
+        id: links_id(id_value),
+        entry: entry_id.clone(),
+        occurrence,
+        native_sense_id: Presence::Missing,
+        language: Presence::Value("en".into()),
+        definition: links_text(definition),
+        source_score: Presence::Missing,
+        timestamps: Vec::new(),
+        eligibility: Eligibility::Lexical,
+    }
+}
+fn links_source_row(id_value: &str, abbreviation: &str, origin: SourceOrigin) -> SourceRecord {
+    SourceRecord {
+        id: links_source(id_value),
+        display_name: id_value.into(),
+        abbreviation: abbreviation.into(),
+        abbreviation_kind: AbbreviationKind::ProjectAssigned,
+        abbreviation_evidence: Some("fixed Links input".into()),
+        origin,
+    }
+}
+fn links_collection_component(
+    source_id: &SourceId,
+    collection_id: &str,
+    component_id: &str,
+) -> (CollectionRecord, ComponentRecord) {
+    (
+        CollectionRecord {
+            id: links_id(collection_id),
+            source: source_id.clone(),
+            display_name: collection_id.into(),
+            description: Presence::Missing,
+        },
+        ComponentRecord {
+            id: links_id(component_id),
+            collection: links_id(collection_id),
+            native_name: component_id.into(),
+            languages: vec!["jbo".into()],
+        },
+    )
+}
+
+fn links_owned_r0() -> Dictionary {
+    let lo = links_source("links-owned");
+    let editor = ContributorId::new("links-editor").unwrap();
+    let (collection, component) =
+        links_collection_component(&lo, "links-owned-collection", "links-owned-component");
+    let registry = SourceRegistry::from_document(RegistryDocument {
+        sources: vec![links_source_row(
+            "links-owned",
+            "KO",
+            SourceOrigin::OwnedDraft,
+        )],
+        contributors: vec![ContributorRecord {
+            id: editor.clone(),
+            display_name: "Links fixture editor".into(),
+        }],
+        ..RegistryDocument::default()
+    })
+    .unwrap();
+    let revision = links_id("links-owned-r0");
+    let mut metadata = DictionaryMetadata::default();
+    metadata.collections.push(collection);
+    metadata.components.push(component.clone());
+    metadata.releases.push(links_release(
+        "links-owned-release-r0",
+        &component.id,
+        Vec::new(),
+        Vec::new(),
+        true,
+    ));
+    metadata.owned_revisions.push(OwnedRevisionRecord {
+        id: revision.clone(),
+        source: lo.clone(),
+        parent: None,
+        editor,
+        timestamp: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        assertions: Vec::new(),
+        tombstones: Vec::new(),
+        rationale: links_text("genesis"),
+    });
+    metadata.owned_heads.push(OwnedHead {
+        source: lo,
+        revision,
+    });
+    Dictionary::from_document(DictionaryDocument {
+        registry,
+        metadata,
+        ..DictionaryDocument::default()
+    })
+    .unwrap()
+}
+
+fn links_owned_r1(previous: &Dictionary) -> Dictionary {
+    let lo = links_source("links-owned");
+    let editor = ContributorId::new("links-editor").unwrap();
+    let mut doc = previous.document();
+    let lines = [
+        "seed | Links fixture a",
+        "branch | Links fixture b",
+        "leaf | Links fixture c",
+    ];
+    let capture = links_capture(
+        "links-owned-capture-r1",
+        "Links owned",
+        &lines,
+        lines
+            .iter()
+            .map(|line| {
+                let (word, definition) = line.split_once(" | ").unwrap();
+                vec![
+                    links_field("word", word),
+                    links_field("definition", definition),
+                ]
+            })
+            .collect(),
+    );
+    let cap = capture.identity.clone();
+    let occurrences = ["/0", "/1", "/2"].map(|locator| OccurrenceRef {
+        capture: cap.clone(),
+        locator: locator.into(),
+    });
+    doc.captures.push(capture);
+    let mut registry = doc.registry.document();
+    registry.snapshots.push(SnapshotAttribution {
+        snapshot: cap.to_snapshot_identity().unwrap(),
+        source: lo.clone(),
+        distributor: None,
+    });
+    for (i, occurrence) in occurrences.iter().enumerate() {
+        registry.occurrences.push(OccurrenceAttribution {
+            occurrence: occurrence.to_record_identity().unwrap(),
+            contributor: Some(editor.clone()),
+            native_entry_id: Some(
+                [
+                    "links-owned-entry-a",
+                    "links-owned-entry-b",
+                    "links-owned-entry-c",
+                ][i]
+                    .into(),
+            ),
+            native_assertion_id: Some(
+                ["links-owned-a", "links-owned-b", "links-owned-c"][i].into(),
+            ),
+        });
+    }
+    doc.registry = SourceRegistry::from_document(registry).unwrap();
+    let ea = links_id("links-owned-entry-a");
+    let eb = links_id("links-owned-entry-b");
+    let ec = links_id("links-owned-entry-c");
+    doc.metadata.entries = vec![
+        links_entry("links-owned-entry-a", &lo, "seed"),
+        links_entry("links-owned-entry-b", &lo, "branch"),
+        links_entry("links-owned-entry-c", &lo, "leaf"),
+    ];
+    doc.metadata.assertions = vec![
+        links_assertion(
+            "links-owned-a",
+            &ea,
+            occurrences[0].clone(),
+            "Links fixture a",
+        ),
+        links_assertion(
+            "links-owned-b",
+            &eb,
+            occurrences[1].clone(),
+            "Links fixture b",
+        ),
+        links_assertion(
+            "links-owned-c",
+            &ec,
+            occurrences[2].clone(),
+            "Links fixture c",
+        ),
+    ];
+    let component = links_id("links-owned-component");
+    doc.metadata.releases.push(links_release(
+        "links-owned-release-r1",
+        &component,
+        vec![cap],
+        vec![
+            links_id("links-owned-a"),
+            links_id("links-owned-b"),
+            links_id("links-owned-c"),
+        ],
+        true,
+    ));
+    let rev = links_id("links-owned-r1");
+    doc.metadata.owned_revisions.push(OwnedRevisionRecord {
+        id: rev.clone(),
+        source: lo.clone(),
+        parent: Some(links_id("links-owned-r0")),
+        editor: editor.clone(),
+        timestamp: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        assertions: vec![
+            links_id("links-owned-a"),
+            links_id("links-owned-b"),
+            links_id("links-owned-c"),
+        ],
+        tombstones: Vec::new(),
+        rationale: links_text("append a, b, c"),
+    });
+    doc.metadata.owned_heads[0].revision = rev;
+    doc.metadata.catalogue_revision = 1;
+    Dictionary::from_document(doc).unwrap()
+}
+
+fn links_owned_r2(previous: &Dictionary) -> Dictionary {
+    let mut doc = previous.document();
+    let editor = ContributorId::new("links-editor").unwrap();
+    let component = links_id("links-owned-component");
+    let cap = doc
+        .captures
+        .iter()
+        .find(|row| row.identity.namespace == "links-owned-capture-r1")
+        .unwrap()
+        .identity
+        .clone();
+    doc.metadata.releases.push(links_release(
+        "links-owned-release-r2",
+        &component,
+        vec![cap],
+        vec![
+            links_id("links-owned-a"),
+            links_id("links-owned-b"),
+            links_id("links-owned-c"),
+        ],
+        true,
+    ));
+    let rev = links_id("links-owned-r2");
+    doc.metadata.owned_revisions.push(OwnedRevisionRecord {
+        id: rev.clone(),
+        source: links_source("links-owned"),
+        parent: Some(links_id("links-owned-r1")),
+        editor,
+        timestamp: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        assertions: vec![links_id("links-owned-a"), links_id("links-owned-b")],
+        tombstones: vec![links_id("links-owned-c")],
+        rationale: links_text("retire c"),
+    });
+    doc.metadata.owned_heads[0].revision = rev;
+    doc.metadata.catalogue_revision = 2;
+    Dictionary::from_document(doc).unwrap()
+}
+
+fn links_upstream_dictionary() -> Dictionary {
+    let lu = links_source("links-upstream");
+    let contributor = ContributorId::new("links-upstream-editor").unwrap();
+    let (collection, component) =
+        links_collection_component(&lu, "links-upstream-collection", "links-upstream-component");
+    let lines = [
+        "seed | Links fixture x | See also {branch} {branch} {missing}.",
+        "branch | Links fixture y",
+        "leaf | Links fixture z",
+    ];
+    let raw = links_capture(
+        "links-upstream-capture-r1",
+        "Links upstream",
+        &lines,
+        vec![
+            vec![
+                links_field("word", "seed"),
+                links_field("definition", "Links fixture x"),
+                links_field("notes", "See also {branch} {branch} {missing}."),
+            ],
+            vec![
+                links_field("word", "branch"),
+                links_field("definition", "Links fixture y"),
+            ],
+            vec![
+                links_field("word", "leaf"),
+                links_field("definition", "Links fixture z"),
+            ],
+        ],
+    );
+    let cap = raw.identity.clone();
+    let occ = ["/0", "/1", "/2"].map(|locator| OccurrenceRef {
+        capture: cap.clone(),
+        locator: locator.into(),
+    });
+    let registry = SourceRegistry::from_document(RegistryDocument {
+        sources: vec![links_source_row(
+            "links-upstream",
+            "KU",
+            SourceOrigin::Upstream,
+        )],
+        contributors: vec![ContributorRecord {
+            id: contributor.clone(),
+            display_name: "Links upstream editor".into(),
+        }],
+        snapshots: vec![SnapshotAttribution {
+            snapshot: cap.to_snapshot_identity().unwrap(),
+            source: lu.clone(),
+            distributor: None,
+        }],
+        occurrences: occ
+            .iter()
+            .enumerate()
+            .map(|(i, occurrence)| OccurrenceAttribution {
+                occurrence: occurrence.to_record_identity().unwrap(),
+                contributor: Some(contributor.clone()),
+                native_entry_id: [Some("seed-native"), Some("N"), None][i].map(str::to_owned),
+                native_assertion_id: Some(["x-native", "y-native", "z-native"][i].into()),
+            })
+            .collect(),
+        ..RegistryDocument::default()
+    })
+    .unwrap();
+    let ex = links_id("links-upstream-entry-x");
+    let ey = links_id("links-upstream-entry-y");
+    let ez = links_id("links-upstream-entry-z");
+    let ax = links_id("links-upstream-x");
+    let ay = links_id("links-upstream-y");
+    let az = links_id("links-upstream-z");
+    let mut metadata = DictionaryMetadata::default();
+    metadata.collections.push(collection);
+    metadata.components.push(component.clone());
+    metadata.releases.push(links_release(
+        "links-upstream-release-r1",
+        &component.id,
+        vec![cap.clone()],
+        vec![ax.clone(), ay.clone(), az.clone()],
+        true,
+    ));
+    metadata.entries = vec![
+        links_entry("links-upstream-entry-x", &lu, "seed"),
+        links_entry("links-upstream-entry-y", &lu, "branch"),
+        links_entry("links-upstream-entry-z", &lu, "leaf"),
+        links_entry("links-upstream-entry-q", &lu, "branch"),
+    ];
+    metadata.assertions = vec![
+        links_assertion("links-upstream-x", &ex, occ[0].clone(), "Links fixture x"),
+        links_assertion("links-upstream-y", &ey, occ[1].clone(), "Links fixture y"),
+        links_assertion("links-upstream-z", &ez, occ[2].clone(), "Links fixture z"),
+    ];
+    metadata.forms.push(vlajmaji_lexicon::FormRecord {
+        id: links_id("links-upstream-form-z"),
+        entry: ez,
+        spelling: "leaf-form".into(),
+        language: Presence::Value("jbo".into()),
+        script: Presence::Missing,
+        pronunciation: Presence::Value(TextValue {
+            text: "leaf".into(),
+            language: Presence::Value("jbo".into()),
+            markup: Presence::Missing,
+        }),
+        kind: vlajmaji_lexicon::FormKind::SourceReportedForm,
+        standing: Presence::Missing,
+        components: Vec::new(),
+        evidence: links_evidence(occ[2].clone(), None),
+        computation: None,
+    });
+    let context_id = links_id("links-note-x");
+    metadata.contexts.push(ContextRecord {
+        id: context_id,
+        assertion: ax.clone(),
+        kind: ContextKind::Note,
+        value: links_text("See also {branch} {branch} {missing}."),
+        translated_from: None,
+        evidence: SourceEvidence {
+            occurrence: occ[0].clone(),
+            field_index: Some(2),
+            citation: Presence::Missing,
+            offset: None,
+        },
+    });
+    Dictionary::from_document(DictionaryDocument {
+        registry,
+        captures: vec![raw],
+        metadata,
+        ..DictionaryDocument::default()
+    })
+    .unwrap()
+}
+
+fn links_fixed_dictionary() -> Dictionary {
+    let owned = links_owned_r1(&links_owned_r0());
+    let upstream = links_upstream_dictionary();
+    let mut doc = owned.document();
+    let upstream_doc = upstream.document();
+    let owned_registry = doc.registry.document();
+    let upstream_registry = upstream_doc.registry.document();
+    doc.registry = SourceRegistry::from_document(RegistryDocument {
+        sources: owned_registry
+            .sources
+            .into_iter()
+            .chain(upstream_registry.sources.iter().cloned())
+            .collect(),
+        contributors: owned_registry
+            .contributors
+            .into_iter()
+            .chain(upstream_registry.contributors.iter().cloned())
+            .collect(),
+        snapshots: owned_registry
+            .snapshots
+            .into_iter()
+            .chain(upstream_registry.snapshots.iter().cloned())
+            .collect(),
+        occurrences: owned_registry
+            .occurrences
+            .into_iter()
+            .chain(upstream_registry.occurrences.iter().cloned())
+            .collect(),
+        ..RegistryDocument::default()
+    })
+    .unwrap();
+    doc.captures.extend(upstream_doc.captures);
+    doc.metadata
+        .collections
+        .extend(upstream_doc.metadata.collections);
+    doc.metadata
+        .components
+        .extend(upstream_doc.metadata.components);
+    doc.metadata.releases.extend(upstream_doc.metadata.releases);
+    doc.metadata.entries.extend(upstream_doc.metadata.entries);
+    doc.metadata
+        .assertions
+        .extend(upstream_doc.metadata.assertions);
+    doc.metadata.forms.extend(upstream_doc.metadata.forms);
+    doc.metadata.contexts.extend(upstream_doc.metadata.contexts);
+    doc.metadata
+        .relations
+        .extend(upstream_doc.metadata.relations);
+    doc.metadata.editorial_senses.push(EditorialSenseRecord {
+        id: links_id("links-owned-sense-ba"),
+        assertions: vec![links_id("links-owned-b"), links_id("links-owned-a")],
+        editor: ContributorId::new("links-editor").unwrap(),
+        revision: links_id("links-owned-r1"),
+        rationale: TextValue {
+            text: "ordered b then a".into(),
+            language: Presence::Missing,
+            markup: Presence::Missing,
+        },
+    });
+    let lu = links_source("links-upstream");
+    let cap = doc
+        .captures
+        .iter()
+        .find(|row| row.identity.namespace == "links-owned-capture-r1")
+        .unwrap()
+        .identity
+        .clone();
+    let occurrence = OccurrenceRef {
+        capture: cap,
+        locator: "/0".into(),
+    };
+    doc.metadata.relations.extend([
+        RelationRecord {
+            id: links_id("links-relation-01"),
+            origin: LocalRef::Assertion(links_id("links-upstream-x")),
+            kind: RelationKind::SourceSeeAlso,
+            direction: Direction::Forward,
+            scope: RelationScope::Assertion,
+            target: RelationTarget::Local(LocalRef::Entry(links_id("links-owned-entry-b"))),
+            evidence: links_evidence(
+                OccurrenceRef {
+                    capture: doc
+                        .captures
+                        .iter()
+                        .find(|row| row.identity.namespace == "links-upstream-capture-r1")
+                        .unwrap()
+                        .identity
+                        .clone(),
+                    locator: "/0".into(),
+                },
+                None,
+            ),
+            editorial_revision: None,
+        },
+        RelationRecord {
+            id: links_id("links-relation-02"),
+            origin: LocalRef::Form(links_id("links-upstream-form-z")),
+            kind: RelationKind::SourceEtymology,
+            direction: Direction::Reverse,
+            scope: RelationScope::Form,
+            target: RelationTarget::Local(LocalRef::Assertion(links_id("links-owned-b"))),
+            evidence: links_evidence(
+                OccurrenceRef {
+                    capture: doc
+                        .captures
+                        .iter()
+                        .find(|row| row.identity.namespace == "links-upstream-capture-r1")
+                        .unwrap()
+                        .identity
+                        .clone(),
+                    locator: "/2".into(),
+                },
+                None,
+            ),
+            editorial_revision: None,
+        },
+        RelationRecord {
+            id: links_id("links-relation-05"),
+            origin: LocalRef::Assertion(links_id("links-upstream-y")),
+            kind: RelationKind::SourceSeeAlso,
+            direction: Direction::Forward,
+            scope: RelationScope::Assertion,
+            target: RelationTarget::Unresolved("missing".into()),
+            evidence: links_evidence(
+                OccurrenceRef {
+                    capture: doc
+                        .captures
+                        .iter()
+                        .find(|row| row.identity.namespace == "links-upstream-capture-r1")
+                        .unwrap()
+                        .identity
+                        .clone(),
+                    locator: "/1".into(),
+                },
+                None,
+            ),
+            editorial_revision: None,
+        },
+        RelationRecord {
+            id: links_id("links-relation-03"),
+            origin: LocalRef::EditorialSense(links_id("links-owned-sense-ba")),
+            kind: RelationKind::EditorialLink,
+            direction: Direction::Bidirectional,
+            scope: RelationScope::Editorial,
+            target: RelationTarget::Local(LocalRef::Assertion(links_id("links-upstream-y"))),
+            evidence: None,
+            editorial_revision: Some(links_id("links-owned-r1")),
+        },
+        RelationRecord {
+            id: links_id("links-relation-04"),
+            origin: LocalRef::Entry(links_id("links-owned-entry-b")),
+            kind: RelationKind::Other("fixture-unknown".into()),
+            direction: Direction::Unspecified,
+            scope: RelationScope::Entry,
+            target: RelationTarget::Unknown,
+            evidence: None,
+            editorial_revision: None,
+        },
+        RelationRecord {
+            id: links_id("links-relation-06"),
+            origin: LocalRef::Assertion(links_id("links-upstream-y")),
+            kind: RelationKind::EditorialLink,
+            direction: Direction::Forward,
+            scope: RelationScope::Assertion,
+            target: RelationTarget::Local(LocalRef::Assertion(links_id("links-owned-c"))),
+            evidence: None,
+            editorial_revision: Some(links_id("links-owned-r1")),
+        },
+        RelationRecord {
+            id: links_id("links-relation-07"),
+            origin: LocalRef::Assertion(links_id("links-owned-a")),
+            kind: RelationKind::SourceSeeAlso,
+            direction: Direction::Forward,
+            scope: RelationScope::Assertion,
+            target: RelationTarget::Catalog(vlajmaji_lexicon::CatalogTarget {
+                source: lu.clone(),
+                release: links_id("links-upstream-release-r1"),
+                native_entry_id: Some("N".into()),
+                native_assertion_id: None,
+                occurrence: None,
+            }),
+            evidence: links_evidence(occurrence.clone(), None),
+            editorial_revision: None,
+        },
+        RelationRecord {
+            id: links_id("links-relation-08"),
+            origin: LocalRef::Assertion(links_id("links-owned-a")),
+            kind: RelationKind::SourceSeeAlso,
+            direction: Direction::Forward,
+            scope: RelationScope::Assertion,
+            target: RelationTarget::Catalog(vlajmaji_lexicon::CatalogTarget {
+                source: lu,
+                release: links_id("links-upstream-release-r1"),
+                native_entry_id: Some("absent".into()),
+                native_assertion_id: None,
+                occurrence: None,
+            }),
+            evidence: links_evidence(occurrence, None),
+            editorial_revision: None,
+        },
+    ]);
+    doc.metadata.owned_heads.clear();
+    Dictionary::from_document(doc).unwrap()
+}
+
+const LINK_DEPTH1_JSON: &[u8] = br#"{
+  "version": 1,
+  "query": {
+    "operation": "links",
+    "spelling": "seed",
+    "depth": 1
+  },
+  "options": {
+    "sources": [],
+    "alias_scope": "ActiveOnly",
+    "page_size": null,
+    "cursor": null
+  }
+}
+"#;
+const LINK_DEPTH2_JSON: &[u8] = br#"{
+  "version": 1,
+  "query": {
+    "operation": "links",
+    "spelling": "seed",
+    "depth": 2
+  },
+  "options": {
+    "sources": [],
+    "alias_scope": "ActiveOnly",
+    "page_size": null,
+    "cursor": null
+  }
+}
+"#;
+const LINK_FIXTURE_SPEC_JSON: &[u8] = br#"{
+  "scope": "PRE-INPUT constructor/semantic authority, not product JSON or a claim these Dictionary constructors have run. Actual complete typed models must validate before dependent writes; unspecified decoration follows existing typed constructors and is preserved from emitted preinputs.",
+  "sources": [
+    {
+      "id": "links-owned",
+      "origin": "OwnedDraft",
+      "abbreviation": "KO"
+    },
+    {
+      "id": "links-upstream",
+      "origin": "Upstream",
+      "abbreviation": "KU"
+    }
+  ],
+  "entries": [
+    {
+      "id": "links-owned-entry-a",
+      "source": "links-owned",
+      "spelling": "seed",
+      "assertions": [
+        "links-owned-a"
+      ]
+    },
+    {
+      "id": "links-owned-entry-b",
+      "source": "links-owned",
+      "spelling": "branch",
+      "assertions": [
+        "links-owned-b"
+      ]
+    },
+    {
+      "id": "links-owned-entry-c",
+      "source": "links-owned",
+      "spelling": "leaf",
+      "assertions": [
+        "links-owned-c"
+      ]
+    },
+    {
+      "id": "links-upstream-entry-x",
+      "source": "links-upstream",
+      "spelling": "seed",
+      "assertions": [
+        "links-upstream-x"
+      ]
+    },
+    {
+      "id": "links-upstream-entry-y",
+      "source": "links-upstream",
+      "spelling": "branch",
+      "assertions": [
+        "links-upstream-y"
+      ]
+    },
+    {
+      "id": "links-upstream-entry-z",
+      "source": "links-upstream",
+      "spelling": "leaf",
+      "assertions": [
+        "links-upstream-z"
+      ]
+    },
+    {
+      "id": "links-upstream-entry-q",
+      "source": "links-upstream",
+      "spelling": "branch",
+      "assertions": []
+    }
+  ],
+  "assertions": [
+    {
+      "id": "links-owned-a",
+      "entry": "links-owned-entry-a",
+      "eligibility": "Lexical",
+      "definition": "Links fixture a",
+      "locator": "/0"
+    },
+    {
+      "id": "links-owned-b",
+      "entry": "links-owned-entry-b",
+      "eligibility": "Lexical",
+      "definition": "Links fixture b",
+      "locator": "/1"
+    },
+    {
+      "id": "links-owned-c",
+      "entry": "links-owned-entry-c",
+      "eligibility": "Lexical",
+      "definition": "Links fixture c",
+      "locator": "/2"
+    },
+    {
+      "id": "links-upstream-x",
+      "entry": "links-upstream-entry-x",
+      "eligibility": "Lexical",
+      "definition": "Links fixture x",
+      "locator": "/0"
+    },
+    {
+      "id": "links-upstream-y",
+      "entry": "links-upstream-entry-y",
+      "eligibility": "Lexical",
+      "definition": "Links fixture y",
+      "locator": "/1"
+    },
+    {
+      "id": "links-upstream-z",
+      "entry": "links-upstream-entry-z",
+      "eligibility": "Lexical",
+      "definition": "Links fixture z",
+      "locator": "/2"
+    }
+  ],
+  "captures": [
+    {
+      "namespace": "links-owned-capture-r1",
+      "source": "links-owned",
+      "bytes_utf8": "seed | Links fixture a\nbranch | Links fixture b\nleaf | Links fixture c",
+      "sha256": "de37040263a712f73ef64d3b8449f9b84b8c7d5680120bd46e1d57724a233110",
+      "raw_locators": [
+        "/0",
+        "/1",
+        "/2"
+      ],
+      "format_label": "synthetic-links-rows-v1",
+      "raw_lines": [
+        "seed | Links fixture a",
+        "branch | Links fixture b",
+        "leaf | Links fixture c"
+      ],
+      "raw_fields": "Text word, definition; upstream /0 additionally notes with exact Context text. Preserve field order; Context evidence field_index=2, other source evidence field_index=null."
+    },
+    {
+      "namespace": "links-upstream-capture-r1",
+      "source": "links-upstream",
+      "bytes_utf8": "seed | Links fixture x | See also {branch} {branch} {missing}.\nbranch | Links fixture y\nleaf | Links fixture z",
+      "sha256": "5f6e19ad8012d9f7e83d0c12a56094d35034543dc0b9b1be64fbc742618cb273",
+      "raw_locators": [
+        "/0",
+        "/1",
+        "/2"
+      ],
+      "format_label": "synthetic-links-rows-v1",
+      "raw_lines": [
+        "seed | Links fixture x | See also {branch} {branch} {missing}.",
+        "branch | Links fixture y",
+        "leaf | Links fixture z"
+      ],
+      "raw_fields": "Text word, definition; upstream /0 additionally notes with exact Context text. Preserve field order; Context evidence field_index=2, other source evidence field_index=null."
+    }
+  ],
+  "native_attribution": {
+    "LU-x": {
+      "native_entry_id": "seed-native",
+      "native_assertion_id": "x-native"
+    },
+    "LU-y": {
+      "native_entry_id": "N",
+      "native_assertion_id": "y-native"
+    },
+    "LU-z": {
+      "native_entry_id": null,
+      "native_assertion_id": "z-native"
+    }
+  },
+  "form": {
+    "id": "links-upstream-form-z",
+    "entry": "links-upstream-entry-z",
+    "kind": "SourceReportedForm",
+    "spelling": "leaf-form",
+    "evidence_assertion": "links-upstream-z",
+    "computation": null
+  },
+  "sense": {
+    "id": "links-owned-sense-ba",
+    "revision": "links-owned-r1",
+    "assertions": [
+      "links-owned-b",
+      "links-owned-a"
+    ]
+  },
+  "context": {
+    "id": "links-note-x",
+    "assertion": "links-upstream-x",
+    "kind": "Note",
+    "text": "See also {branch} {branch} {missing}.",
+    "evidence_assertion": "links-upstream-x",
+    "tokens": [
+      {
+        "byte_start": 9,
+        "byte_end": 17,
+        "target_spelling": "branch",
+        "rule_version": "see-also-braces-v2"
+      },
+      {
+        "byte_start": 18,
+        "byte_end": 26,
+        "target_spelling": "branch",
+        "rule_version": "see-also-braces-v2"
+      },
+      {
+        "byte_start": 27,
+        "byte_end": 36,
+        "target_spelling": "missing",
+        "rule_version": "see-also-braces-v2"
+      }
+    ]
+  },
+  "relations": [
+    {
+      "id": "links-relation-01",
+      "origin": {
+        "Assertion": "links-upstream-x"
+      },
+      "kind": "SourceSeeAlso",
+      "direction": "Forward",
+      "scope": "Assertion",
+      "target": {
+        "Local": {
+          "Entry": "links-owned-entry-b"
+        }
+      },
+      "publisher": "links-upstream",
+      "evidence_assertion": "links-upstream-x",
+      "editorial_revision": null
+    },
+    {
+      "id": "links-relation-02",
+      "origin": {
+        "Form": "links-upstream-form-z"
+      },
+      "kind": "SourceEtymology",
+      "direction": "Reverse",
+      "scope": "Form",
+      "target": {
+        "Local": {
+          "Assertion": "links-owned-b"
+        }
+      },
+      "publisher": "links-upstream",
+      "evidence_assertion": "links-upstream-z",
+      "editorial_revision": null
+    },
+    {
+      "id": "links-relation-03",
+      "origin": {
+        "EditorialSense": "links-owned-sense-ba"
+      },
+      "kind": "EditorialLink",
+      "direction": "Bidirectional",
+      "scope": "Editorial",
+      "target": {
+        "Local": {
+          "Assertion": "links-upstream-y"
+        }
+      },
+      "publisher": "links-owned",
+      "evidence_assertion": null,
+      "editorial_revision": "links-owned-r1"
+    },
+    {
+      "id": "links-relation-04",
+      "origin": {
+        "Entry": "links-owned-entry-b"
+      },
+      "kind": {
+        "Other": "fixture-unknown"
+      },
+      "direction": "Unspecified",
+      "scope": "Entry",
+      "target": "Unknown",
+      "publisher": "links-owned",
+      "evidence_assertion": null,
+      "editorial_revision": null
+    },
+    {
+      "id": "links-relation-05",
+      "origin": {
+        "Assertion": "links-upstream-y"
+      },
+      "kind": "SourceSeeAlso",
+      "direction": "Forward",
+      "scope": "Assertion",
+      "target": {
+        "Unresolved": "missing"
+      },
+      "publisher": "links-upstream",
+      "evidence_assertion": "links-upstream-y",
+      "editorial_revision": null
+    },
+    {
+      "id": "links-relation-06",
+      "origin": {
+        "Assertion": "links-upstream-y"
+      },
+      "kind": "EditorialLink",
+      "direction": "Forward",
+      "scope": "Assertion",
+      "target": {
+        "Local": {
+          "Assertion": "links-owned-c"
+        }
+      },
+      "publisher": "links-owned",
+      "evidence_assertion": null,
+      "editorial_revision": "links-owned-r1"
+    },
+    {
+      "id": "links-relation-07",
+      "origin": {
+        "Assertion": "links-owned-a"
+      },
+      "kind": "SourceSeeAlso",
+      "direction": "Forward",
+      "scope": "Assertion",
+      "target": {
+        "Catalog": {
+          "source": "links-upstream",
+          "release": "links-upstream-release-r1",
+          "native_entry_id": "N",
+          "native_assertion_id": null,
+          "occurrence": null
+        }
+      },
+      "publisher": "links-owned",
+      "evidence_assertion": "links-owned-a",
+      "editorial_revision": null
+    },
+    {
+      "id": "links-relation-08",
+      "origin": {
+        "Assertion": "links-owned-a"
+      },
+      "kind": "SourceSeeAlso",
+      "direction": "Forward",
+      "scope": "Assertion",
+      "target": {
+        "Catalog": {
+          "source": "links-upstream",
+          "release": "links-upstream-release-r1",
+          "native_entry_id": "absent",
+          "native_assertion_id": null,
+          "occurrence": null
+        }
+      },
+      "publisher": "links-owned",
+      "evidence_assertion": "links-owned-a",
+      "editorial_revision": null
+    }
+  ],
+  "owned_history": [
+    {
+      "revision": "links-owned-r0",
+      "catalogue_revision": 0,
+      "parent": null,
+      "active": [],
+      "tombstones": [],
+      "release": "links-owned-release-r0",
+      "release_assertions": []
+    },
+    {
+      "revision": "links-owned-r1",
+      "catalogue_revision": 1,
+      "parent": "links-owned-r0",
+      "active": [
+        "links-owned-a",
+        "links-owned-b",
+        "links-owned-c"
+      ],
+      "tombstones": [],
+      "release": "links-owned-release-r1",
+      "release_assertions": [
+        "links-owned-a",
+        "links-owned-b",
+        "links-owned-c"
+      ]
+    },
+    {
+      "revision": "links-owned-r2",
+      "catalogue_revision": 2,
+      "parent": "links-owned-r1",
+      "active": [
+        "links-owned-a",
+        "links-owned-b"
+      ],
+      "tombstones": [
+        "links-owned-c"
+      ],
+      "release": "links-owned-release-r2",
+      "release_assertions": [
+        "links-owned-a",
+        "links-owned-b",
+        "links-owned-c"
+      ],
+      "release_accounting": {
+        "input_occurrences": 3,
+        "normalized_occurrences": 3,
+        "query_excluded_occurrences": 0,
+        "unit": "occurrences"
+      }
+    }
+  ],
+  "mixed_pack": {
+    "pack_id": "la-lojban",
+    "payload_kind": "synthetic",
+    "owned_heads": [],
+    "owned_revision_prefix": [
+      "links-owned-r0",
+      "links-owned-r1"
+    ],
+    "owned_release_prefix": [
+      "links-owned-release-r0",
+      "links-owned-release-r1"
+    ],
+    "upstream_release": "links-upstream-release-r1",
+    "upstream_release_assertions": [
+      "links-upstream-x",
+      "links-upstream-y",
+      "links-upstream-z"
+    ],
+    "all_shared_LO_rows_equal_typed_bytes": true,
+    "no_r2_control_row": true
+  },
+  "journal": {
+    "registry_sources": [
+      "links-owned"
+    ],
+    "real_genesis_then_append_r1_then_r2": true,
+    "pack_LO_shared_rows_are_exact_immutable_prefix": true,
+    "owns_sole_composed_head": true,
+    "all_retained_capture_and_raw_rows_preserved": true,
+    "r2_selected_available_release": true
+  },
+  "metadata_only_counterpart": {
+    "scope": "VALID additional variant of SAME R08; La graph remains admitted, Llg registered only/unselected, no ninth relation/no malformed descriptor",
+    "replace_R08_target": {
+      "Catalog": {
+        "source": "links-upstream",
+        "release": "links-upstream-remote-release",
+        "native_entry_id": "remote-native",
+        "native_assertion_id": null,
+        "occurrence": null
+      }
+    },
+    "La_placeholder_release": {
+      "id": "links-upstream-remote-release",
+      "source": "links-upstream",
+      "availability": "Missing",
+      "selected": false,
+      "captures": [],
+      "assertions": []
+    },
+    "Llg_registered_only_model": {
+      "sources": [
+        "links-upstream"
+      ],
+      "SourceRecord_byte_equal": true,
+      "release": "links-upstream-remote-release",
+      "availability": "Missing",
+      "selected": false,
+      "assertions": [
+        "links-upstream-remote-assertion"
+      ],
+      "entry": "links-upstream-remote-entry",
+      "spelling": "remote",
+      "native_entry_id": "remote-native",
+      "loaded_capture": "links-upstream-remote-capture",
+      "occurrence": "/0",
+      "pack_id": "llg"
+    },
+    "expected": {
+      "Full": "CatalogueOnly",
+      "Compact": "CatalogueOnly",
+      "operational_reason": "not_selected",
+      "payload": null,
+      "target_hops": [],
+      "unchanged_step_counts": true
+    }
+  }
+}
+"#;
+const LINK_EXPECTED_JSON: &[u8] = br#"{
+  "scope": "PRE-INPUT manually enumerated graph/order/count authority; body expectations come from complete emitted input rows BEFORE query; Full/Compact target lower arrays retain own format order, not these traversal-ID unions.",
+  "seed_assertion_ids": [
+    "links-owned-a",
+    "links-upstream-x"
+  ],
+  "clause_branch_entry_order": [
+    "links-owned-entry-b",
+    "links-upstream-entry-q",
+    "links-upstream-entry-y"
+  ],
+  "r1_depth2": {
+    "rows": [
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-07"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-08"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "reverse",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-owned-a"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-04"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-06"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": [
+          "links-owned-c"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-01"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 9,
+            "byte_end": 17,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "branch"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 18,
+            "byte_end": 26,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "branch"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 27,
+            "byte_end": 36,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "missing"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-02"
+          },
+          "orientation": "reverse",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": [
+          "links-upstream-z"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-05"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": []
+      }
+    ],
+    "totals": {
+      "unit": "traversal_steps",
+      "records": 13,
+      "source_groups": 2,
+      "distinct_evidence": 11,
+      "associated_assertions": 6,
+      "visited_assertions": 6
+    },
+    "source_totals": [
+      {
+        "source": "links-owned",
+        "records": 7,
+        "distinct_evidence": 5,
+        "associated_assertions": 4
+      },
+      {
+        "source": "links-upstream",
+        "records": 6,
+        "distinct_evidence": 6,
+        "associated_assertions": 4
+      }
+    ]
+  },
+  "r2_depth2": {
+    "rows": [
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-07"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-08"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-a"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": [
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-03"
+          },
+          "orientation": "reverse",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-owned-a"
+        ]
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-04"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-owned",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-06"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-01"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 9,
+            "byte_end": 17,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "branch"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 18,
+            "byte_end": 26,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "branch"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": [
+          "links-owned-b",
+          "links-upstream-y"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 1,
+        "identity": {
+          "evidence": {
+            "kind": "source_clause",
+            "context_id": "links-note-x",
+            "byte_start": 27,
+            "byte_end": 36,
+            "rule_version": "see-also-braces-v2",
+            "target_spelling": "missing"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-x"
+        },
+        "target_assertion_ids": []
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-02"
+          },
+          "orientation": "reverse",
+          "from_assertion_id": "links-owned-b"
+        },
+        "target_assertion_ids": [
+          "links-upstream-z"
+        ]
+      },
+      {
+        "publisher": "links-upstream",
+        "depth": 2,
+        "identity": {
+          "evidence": {
+            "kind": "typed_relation",
+            "relation_id": "links-relation-05"
+          },
+          "orientation": "forward",
+          "from_assertion_id": "links-upstream-y"
+        },
+        "target_assertion_ids": []
+      }
+    ],
+    "totals": {
+      "unit": "traversal_steps",
+      "records": 13,
+      "source_groups": 2,
+      "distinct_evidence": 11,
+      "associated_assertions": 5,
+      "visited_assertions": 5
+    },
+    "source_totals": [
+      {
+        "source": "links-owned",
+        "records": 7,
+        "distinct_evidence": 5,
+        "associated_assertions": 3
+      },
+      {
+        "source": "links-upstream",
+        "records": 6,
+        "distinct_evidence": 6,
+        "associated_assertions": 4
+      }
+    ]
+  },
+  "depth1": {
+    "row_indices_from_r1_depth2": [
+      0,
+      1,
+      2,
+      7,
+      8,
+      9,
+      10
+    ],
+    "totals": {
+      "unit": "traversal_steps",
+      "records": 7,
+      "source_groups": 2,
+      "distinct_evidence": 7,
+      "associated_assertions": 4,
+      "visited_assertions": 4
+    },
+    "source_totals": [
+      {
+        "source": "links-owned",
+        "records": 3,
+        "distinct_evidence": 3,
+        "associated_assertions": 2
+      },
+      {
+        "source": "links-upstream",
+        "records": 4,
+        "distinct_evidence": 4,
+        "associated_assertions": 3
+      }
+    ]
+  },
+  "only_KU_depth2": {
+    "row_indices_from_r1_depth2": [
+      7,
+      8,
+      9,
+      10,
+      12
+    ],
+    "targets_by_row": [
+      [],
+      [
+        "links-upstream-y"
+      ],
+      [
+        "links-upstream-y"
+      ],
+      [],
+      []
+    ],
+    "totals": {
+      "unit": "traversal_steps",
+      "records": 5,
+      "source_groups": 1,
+      "distinct_evidence": 5,
+      "associated_assertions": 2,
+      "visited_assertions": 2
+    },
+    "branch_observations": [
+      {
+        "entry": "links-owned-entry-b",
+        "reason": "requested_source"
+      },
+      {
+        "entry": "links-upstream-entry-q",
+        "reason": "no_current_eligible_assertion"
+      },
+      {
+        "entry": "links-upstream-entry-y",
+        "reason": null
+      }
+    ]
+  },
+  "only_KO_depth2": {
+    "row_indices_from_r1_depth2": [
+      0,
+      1,
+      2
+    ],
+    "targets_by_row": [
+      [],
+      [],
+      []
+    ],
+    "totals": {
+      "unit": "traversal_steps",
+      "records": 3,
+      "source_groups": 1,
+      "distinct_evidence": 3,
+      "associated_assertions": 1,
+      "visited_assertions": 1
+    }
+  },
+  "format_specific": {
+    "R07": {
+      "Full": {
+        "status": "Resolved",
+        "confirmed": [
+          "links-upstream-y"
+        ],
+        "unverified": [
+          "links-upstream-z"
+        ],
+        "hops": [
+          "links-upstream-y"
+        ]
+      },
+      "Compact": {
+        "status": "Unverified",
+        "confirmed": [
+          "links-upstream-y"
+        ],
+        "unverified": [
+          "links-upstream-z"
+        ],
+        "hops": [
+          "links-upstream-y"
+        ]
+      }
+    },
+    "R08": {
+      "Full": {
+        "status": "Unverified",
+        "payload": true,
+        "confirmed": [],
+        "unverified": [
+          "links-upstream-z"
+        ],
+        "hops": []
+      },
+      "Compact": {
+        "status": "NoMatch",
+        "payload": false,
+        "confirmed": [],
+        "unverified": [],
+        "hops": []
+      }
+    }
+  },
+  "pages_r1_size1_then3": {
+    "first_indices": [
+      0
+    ],
+    "second_indices": [
+      1,
+      2,
+      3
+    ],
+    "remaining_indices": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "all_totals_invariant": true,
+    "terminal_next_cursor": null
+  },
+  "empty_start": {
+    "records": 0,
+    "source_groups": 0,
+    "distinct_evidence": 0,
+    "associated_assertions": 0,
+    "visited_assertions": 0
+  },
+  "metadata_only_counterpart_R08": {
+    "status": "CatalogueOnly",
+    "operational_reason": "not_selected",
+    "payload": null,
+    "target_assertion_ids": [],
+    "same_depth2_counts_as_r1": true
+  }
+}
+"#;
+const LINK_CURSOR_PROTOCOL_JSON: &[u8] = br#"{
+  "scope": "PURE pre-input typed serde field-order oracle; artificial binding, not a live composition golden hash",
+  "query_payload_utf8": "{\"query\":{\"operation\":\"links\",\"spelling\":\"seed\",\"depth\":2},\"selectors\":[\"KU\",\"KO\"],\"resolved_sources\":[\"links-owned\",\"links-upstream\"],\"alias_scope\":\"ActiveOnly\"}",
+  "query_sha256": "fb8da7420bfbcdf9f095b22f5ed64662f988a0fc93c4c70e7f0572ceed2b2bd8",
+  "reversed_selectors_query_payload_utf8": "{\"query\":{\"operation\":\"links\",\"spelling\":\"seed\",\"depth\":2},\"selectors\":[\"KO\",\"KU\"],\"resolved_sources\":[\"links-owned\",\"links-upstream\"],\"alias_scope\":\"ActiveOnly\"}",
+  "reversed_selectors_query_sha256": "82157d8d1149057f1d403d7bd44cc7321d07ea29e5b4e64460fd1a12ba2f3e8e",
+  "body_utf8": "{\"version\":1,\"domain\":\"workbench-lexical-cursor-v1\",\"format\":\"compact\",\"binding_sha256\":\"1111111111111111111111111111111111111111111111111111111111111111\",\"query_sha256\":\"fb8da7420bfbcdf9f095b22f5ed64662f988a0fc93c4c70e7f0572ceed2b2bd8\",\"last\":{\"operation\":\"links\",\"source\":\"links-owned\",\"depth\":1,\"evidence_kind_rank\":0,\"evidence\":{\"kind\":\"typed_relation\",\"relation_id\":\"links-relation-03\"},\"orientation_rank\":0,\"from_assertion_id\":\"links-owned-a\"}}",
+  "checksum": "449721121f681e73942061578e74cecbd297ea120f89268660d691271341cccd",
+  "envelope_utf8": "{\"body\":{\"version\":1,\"domain\":\"workbench-lexical-cursor-v1\",\"format\":\"compact\",\"binding_sha256\":\"1111111111111111111111111111111111111111111111111111111111111111\",\"query_sha256\":\"fb8da7420bfbcdf9f095b22f5ed64662f988a0fc93c4c70e7f0572ceed2b2bd8\",\"last\":{\"operation\":\"links\",\"source\":\"links-owned\",\"depth\":1,\"evidence_kind_rank\":0,\"evidence\":{\"kind\":\"typed_relation\",\"relation_id\":\"links-relation-03\"},\"orientation_rank\":0,\"from_assertion_id\":\"links-owned-a\"}},\"checksum\":\"449721121f681e73942061578e74cecbd297ea120f89268660d691271341cccd\"}",
+  "token": "workbench-lexical-v1:7b22626f6479223a7b2276657273696f6e223a312c22646f6d61696e223a22776f726b62656e63682d6c65786963616c2d637572736f722d7631222c22666f726d6174223a22636f6d70616374222c2262696e64696e675f736861323536223a2231313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2271756572795f736861323536223a2266623864613734323062666263646639663039356232326635656436343636326639383861306663393363346337306537663035373263656564326232626438222c226c617374223a7b226f7065726174696f6e223a226c696e6b73222c22736f75726365223a226c696e6b732d6f776e6564222c226465707468223a312c2265766964656e63655f6b696e645f72616e6b223a302c2265766964656e6365223a7b226b696e64223a2274797065645f72656c6174696f6e222c2272656c6174696f6e5f6964223a226c696e6b732d72656c6174696f6e2d3033227d2c226f7269656e746174696f6e5f72616e6b223a302c2266726f6d5f617373657274696f6e5f6964223a226c696e6b732d6f776e65642d61227d7d2c22636865636b73756d223a2234343937323131323166363831653733393432303631353738653734636563626432393765613132306638393236383636306436393132373133343163636364227d"
+}
+"#;
+
+fn write_input(path: &Path, bytes: &[u8]) -> Result<(), Box<dyn std::error::Error>> {
+    fs::write(path, bytes)?;
+    Ok(())
+}
+
+fn links_request(depth: u8) -> WorkbenchLexicalRequest {
+    let bytes = match depth {
+        1 => LINK_DEPTH1_JSON,
+        2 => LINK_DEPTH2_JSON,
+        _ => unreachable!("the fixed example only emits depth one and two requests"),
+    };
+    serde_json::from_slice(bytes).expect("fixed Links request is a valid typed input")
+}
+
+fn links_full_rows(response: &WorkbenchLinksFull) -> Vec<serde_json::Value> {
+    response
+        .groups
+        .iter()
+        .flat_map(|group| {
+            group.hits.iter().map(move |step| {
+                serde_json::json!({
+                    "publisher": group.source.id.as_str(),
+                    "depth": step.depth,
+                    "identity": {
+                        "evidence": step.identity.evidence,
+                        "orientation": step.identity.orientation,
+                        "from_assertion_id": step.from.assertion.id.as_str(),
+                    },
+                    "target_assertion_ids": step.target_assertion_ids,
+                })
+            })
+        })
+        .collect()
+}
+
+fn links_compact_rows(response: &WorkbenchLinksCompact) -> Vec<serde_json::Value> {
+    response
+        .groups
+        .iter()
+        .flat_map(|group| {
+            group.hits.iter().map(move |step| {
+                serde_json::json!({
+                    "publisher": group.source.id.as_str(),
+                    "depth": step.depth,
+                    "identity": {
+                        "evidence": step.identity.evidence,
+                        "orientation": step.identity.orientation,
+                        "from_assertion_id": step.from.assertion.id.as_str(),
+                    },
+                    "target_assertion_ids": step.target_assertion_ids,
+                })
+            })
+        })
+        .collect()
+}
+
+fn assert_links_full_rows_match_input(
+    response: &WorkbenchLinksFull,
+    input: &Dictionary,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let document = input.document();
+    for group in &response.groups {
+        for step in &group.hits {
+            let assertion = document
+                .metadata
+                .assertions
+                .iter()
+                .find(|row| row.id == step.from.assertion.id)
+                .ok_or("Links Full returned an assertion absent from its typed input")?;
+            let entry = document
+                .metadata
+                .entries
+                .iter()
+                .find(|row| row.id == step.from.entry.id)
+                .ok_or("Links Full returned an Entry absent from its typed input")?;
+            if &step.from.assertion != assertion || &step.from.entry != entry {
+                return Err(
+                    "Links Full from-side rows differ from their complete typed inputs".into(),
+                );
+            }
+            if let Some(actual) = &step.record.relation {
+                let expected = document
+                    .metadata
+                    .relations
+                    .iter()
+                    .find(|row| row.id == actual.id)
+                    .ok_or("Links Full returned a Relation absent from its typed input")?;
+                if actual != expected {
+                    return Err("Links Full Relation differs from its complete typed input".into());
+                }
+            }
+            if let Some(actual) = &step.record.context {
+                let expected = document
+                    .metadata
+                    .contexts
+                    .iter()
+                    .find(|row| row.id == actual.id)
+                    .ok_or("Links Full returned a Context absent from its typed input")?;
+                if actual != expected {
+                    return Err("Links Full Context differs from its complete typed input".into());
+                }
+            }
+        }
+    }
+    Ok(())
+}
+
+fn run_links_journey(output_root: &Path) -> Result<serde_json::Value, Box<dyn std::error::Error>> {
+    let inputs = output_root.join("artifacts/links-inputs");
+    fs::create_dir_all(&inputs)?;
+
+    // Freeze every complete pre-query input, including the literal authorities,
+    // before creating the journal or catalogue below.
+    let owned_r0 = links_owned_r0();
+    let owned_r1 = links_owned_r1(&owned_r0);
+    let owned_r2 = links_owned_r2(&owned_r1);
+    let mixed_pack = links_fixed_dictionary();
+    let head_selection = WorkbenchSelection {
+        version: 1,
+        packs: vec![PackId::LaLojban],
+        disabled: Vec::new(),
+        owned: Some(WorkbenchOwnedRevision::Head),
+        contexts: Vec::new(),
+    };
+    let historical_selection = WorkbenchSelection {
+        owned: Some(WorkbenchOwnedRevision::Revision(links_id("links-owned-r1"))),
+        ..head_selection.clone()
+    };
+    for (name, dictionary) in [
+        ("owned-r0.json", &owned_r0),
+        ("owned-r1.json", &owned_r1),
+        ("owned-r2.json", &owned_r2),
+        ("mixed-pack-r1.json", &mixed_pack),
+    ] {
+        write_input(
+            &inputs.join(name),
+            &serde_json::to_vec_pretty(&dictionary.document())?,
+        )?;
+    }
+    write_input(
+        &inputs.join("selection-head.json"),
+        &serde_json::to_vec_pretty(&head_selection)?,
+    )?;
+    write_input(
+        &inputs.join("selection-historical-r1.json"),
+        &serde_json::to_vec_pretty(&historical_selection)?,
+    )?;
+    for (name, bytes) in [
+        ("links-depth1.json", LINK_DEPTH1_JSON),
+        ("links-depth2.json", LINK_DEPTH2_JSON),
+        ("links-fixture-spec.json", LINK_FIXTURE_SPEC_JSON),
+        ("links-expected.json", LINK_EXPECTED_JSON),
+        ("links-cursor-protocol.json", LINK_CURSOR_PROTOCOL_JSON),
+    ] {
+        write_input(&inputs.join(name), bytes)?;
+    }
+
+    let workspace = output_root.join("links-workbench");
+    fs::create_dir_all(&workspace)?;
+    let owned_root = workspace.join("owned");
+    let (mut writer, created) = OwnedJournal::create(&owned_root, &owned_r0)?;
+    let r1_publication = writer.commit(&links_id("links-owned-r0"), &owned_r1)?;
+    if created.head.sequence != 0 || r1_publication.head.sequence != 1 {
+        return Err("Links journal did not retain the fixed r0→r1 sequence".into());
+    }
+
+    let sealed = seal_release(PackId::LaLojban, PackPayloadKind::Synthetic, &mixed_pack)?;
+    let catalogue_root = workspace.join("catalogue");
+    let catalogue_request = CollectionRequest::new(
+        vec![CollectionInput::SealedBytes {
+            pack_id: PackId::LaLojban,
+            release: Cow::Borrowed(&sealed.release),
+            seal: Cow::Borrowed(&sealed.seal),
+        }],
+        CollectionSelection::Packs(vec![PackId::LaLojban]),
+        true,
+    )?;
+    CollectionCatalogue::install(&catalogue_root, catalogue_request)?;
+
+    let profile_config = workspace.join("links-workbench-profiles.json");
+    let configured = WorkbenchProfiles::configure(
+        &profile_config,
+        WorkbenchProfileConfigureRequest {
+            name: "links".into(),
+            catalogue_root: Some(catalogue_root.clone()),
+            owned_root: Some(owned_root.clone()),
+            selection: head_selection.clone(),
+            make_default: false,
+        },
+        None,
+    )?;
+    let configured_r1 = WorkbenchProfiles::refresh(
+        &profile_config,
+        Some("links"),
+        workspace.join("view-configured-r1"),
+        configured.revision,
+    )?;
+    let configured_default = WorkbenchProfiles::set_default(
+        &profile_config,
+        Some("links"),
+        configured_r1.publication.revision,
+    )?;
+
+    let historical_root = workspace.join("view-historical-r1");
+    let r1_view = WorkbenchView::build_new(
+        &historical_root,
+        WorkbenchBuildRequest {
+            catalogue_root: Some(catalogue_root.clone()),
+            owned_root: Some(owned_root.clone()),
+            selection: historical_selection,
+        },
+    )?;
+    let mut historical = WorkbenchSearchEngine::open(&historical_root)?;
+    let depth1_request = links_request(1);
+    let full_r1_depth1 = historical.execute_lexical(&depth1_request)?;
+    let compact_r1_depth1 = historical.execute_lexical_compact(&depth1_request)?;
+    let WorkbenchLexicalFullResult::Links(full_depth1) = &full_r1_depth1.result else {
+        return Err("fixed depth-one request did not produce Full Links".into());
+    };
+    let WorkbenchLexicalCompactResult::Links(compact_depth1) = &compact_r1_depth1.result else {
+        return Err("fixed depth-one request did not produce Compact Links".into());
+    };
+    if full_depth1.totals.records != 7 || compact_depth1.totals.records != 7 {
+        return Err("the fixed depth-one Links request must retain seven rows".into());
+    }
+    let request = links_request(2);
+    let expected: serde_json::Value = serde_json::from_slice(LINK_EXPECTED_JSON)?;
+    let expected_r1_rows = expected["r1_depth2"]["rows"]
+        .as_array()
+        .ok_or("fixed expected rows are missing")?;
+    let full_r1 = historical.execute_lexical(&request)?;
+    let compact_r1 = historical.execute_lexical_compact(&request)?;
+    let WorkbenchLexicalFullResult::Links(full_links) = &full_r1.result else {
+        return Err("fixed Links request did not produce a Full Links result".into());
+    };
+    let WorkbenchLexicalCompactResult::Links(compact_links) = &compact_r1.result else {
+        return Err("fixed Links request did not produce a Compact Links result".into());
+    };
+    if links_full_rows(full_links) != *expected_r1_rows
+        || links_compact_rows(compact_links) != *expected_r1_rows
+        || serde_json::to_value(&full_links.totals)? != expected["r1_depth2"]["totals"]
+        || serde_json::to_value(&compact_links.totals)? != expected["r1_depth2"]["totals"]
+    {
+        return Err("r1 Full/Compact rows or totals differ from the fixed pre-input oracle".into());
+    }
+    assert_links_full_rows_match_input(full_links, &mixed_pack)?;
+    let detail_ref = compact_links
+        .groups
+        .iter()
+        .flat_map(|group| &group.hits)
+        .find(|step| {
+            matches!(&step.identity.evidence, vlajmaji_search::WorkbenchLinkEvidenceId::TypedRelation { relation_id } if relation_id.as_str() == "links-relation-01")
+        })
+        .ok_or("fixed Links query did not retain its source-evidence detail reference")?
+        .detail_ref
+        .clone();
+    let detail = historical.link_detail(&detail_ref, &compact_r1.binding_sha256)?;
+    let mut configured_r1_engine =
+        ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("links"))?;
+    let configured_full_r1 = configured_r1_engine.execute_lexical(&request)?;
+    let configured_compact_r1 = configured_r1_engine.execute_lexical_compact(&request)?;
+    if serde_json::to_vec(&configured_full_r1.result)? != serde_json::to_vec(&full_r1.result)? {
+        return Err("configured r1 Links body differs from its direct historical result".into());
+    }
+    drop(configured_r1_engine);
+
+    // Append r2 only after the historical engine has exercised the r1 view.
+    let r2_publication = writer.commit(&links_id("links-owned-r1"), &owned_r2)?;
+    if r2_publication.head.sequence != 2 {
+        return Err("Links journal did not retain the fixed r2 sequence".into());
+    }
+    let current_root = workspace.join("view-head-r2");
+    let current_view = WorkbenchView::build_new(
+        &current_root,
+        WorkbenchBuildRequest {
+            catalogue_root: Some(catalogue_root),
+            owned_root: Some(owned_root),
+            selection: head_selection,
+        },
+    )?;
+    let mut current = WorkbenchSearchEngine::open(&current_root)?;
+    let full_r2 = current.execute_lexical(&request)?;
+    let compact_r2 = current.execute_lexical_compact(&request)?;
+    let WorkbenchLexicalFullResult::Links(full_links_r2) = &full_r2.result else {
+        return Err("current r2 request did not produce Full Links".into());
+    };
+    let WorkbenchLexicalCompactResult::Links(compact_links_r2) = &compact_r2.result else {
+        return Err("current r2 request did not produce Compact Links".into());
+    };
+    let expected_r2_rows = expected["r2_depth2"]["rows"]
+        .as_array()
+        .ok_or("fixed r2 expected rows are missing")?
+        .clone();
+    if links_full_rows(full_links_r2) != expected_r2_rows
+        || links_compact_rows(compact_links_r2) != expected_r2_rows
+        || serde_json::to_value(&full_links_r2.totals)? != expected["r2_depth2"]["totals"]
+        || serde_json::to_value(&compact_links_r2.totals)? != expected["r2_depth2"]["totals"]
+    {
+        return Err(
+            "current r2 Full/Compact rows or totals differ from the fixed pre-input oracle".into(),
+        );
+    }
+    assert_links_full_rows_match_input(full_links_r2, &mixed_pack)?;
+    let configured_r2 = WorkbenchProfiles::refresh(
+        &profile_config,
+        None,
+        workspace.join("view-configured-r2"),
+        configured_default.revision,
+    )?;
+    let mut named_r2_engine =
+        ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("links"))?;
+    let named_full_r2 = named_r2_engine.execute_lexical(&request)?;
+    let named_compact_r2 = named_r2_engine.execute_lexical_compact(&request)?;
+    let WorkbenchLexicalCompactResult::Links(named_compact_links) = &named_compact_r2.result else {
+        return Err("configured Compact r2 did not return Links".into());
+    };
+    let named_detail_ref = named_compact_links
+        .groups
+        .iter()
+        .flat_map(|group| &group.hits)
+        .find(|step| {
+            matches!(&step.identity.evidence, vlajmaji_search::WorkbenchLinkEvidenceId::TypedRelation { relation_id } if relation_id.as_str() == "links-relation-01")
+        })
+        .ok_or("configured r2 omitted the expected detail reference")?
+        .detail_ref
+        .clone();
+    let named_detail =
+        named_r2_engine.link_detail(&named_detail_ref, &named_compact_r2.binding_sha256)?;
+    drop(named_r2_engine);
+    let mut default_r2_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, None)?;
+    let default_full_r2 = default_r2_engine.execute_lexical(&request)?;
+    if serde_json::to_vec(&default_full_r2.result)? != serde_json::to_vec(&named_full_r2.result)?
+        || serde_json::to_vec(&named_full_r2.result)? != serde_json::to_vec(&full_r2.result)?
+    {
+        return Err(
+            "named/default configured r2 Links differ from the direct current result".into(),
+        );
+    }
+    let profile_history = WorkbenchProfiles::read(&profile_config)?.history(None)?;
+    if configured.revision != 1
+        || configured_r1.publication.revision != 2
+        || configured_default.revision != 3
+        || configured_r2.publication.revision != 4
+        || configured_r2
+            .publication
+            .active
+            .as_ref()
+            .map(|row| row.sequence)
+            != Some(1)
+        || profile_history
+            .prepared
+            .iter()
+            .map(|row| row.sequence)
+            .collect::<Vec<_>>()
+            != [0, 1]
+    {
+        return Err(
+            "Links profile publication history differs from the fixed r1/r2 sequence".into(),
+        );
+    }
+
+    Ok(serde_json::json!({
+        "inputs": inputs,
+        "workspace": workspace,
+        "historical_r1_binding": r1_view.binding,
+        "current_r2_binding": current_view.binding,
+        "depth1_request": depth1_request,
+        "historical_full_r1_depth1": full_r1_depth1,
+        "historical_compact_r1_depth1": compact_r1_depth1,
+        "r1_publication": r1_publication,
+        "r2_publication": r2_publication,
+        "request": request,
+        "historical_full_r1": full_r1,
+        "historical_compact_r1": compact_r1,
+        "historical_link_detail": detail,
+        "configured_r1_full": configured_full_r1,
+        "configured_r1_compact": configured_compact_r1,
+        "current_full_r2": full_r2,
+        "current_compact_r2": compact_r2,
+        "configured_r2_publication": configured_r2,
+        "configured_r2_full": named_full_r2,
+        "configured_r2_compact": named_compact_r2,
+        "configured_r2_detail": named_detail,
+        "default_r2_full": default_full_r2,
+        "profile_history": profile_history,
+    }))
+}
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut args = std::env::args_os().skip(1);
     let output_root = args
@@ -2508,6 +4769,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         return Err("named and default beta must share the r2 body but differ in identity".into());
     }
     let lexical = run_lexical_journey(&output_root)?;
+    let links = run_links_journey(&output_root)?;
     println!(
         "{}",
         serde_json::to_string_pretty(&serde_json::json!({
@@ -2558,6 +4820,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             "historical_owned_reference": historical_owned_reference,
             "named_beta_r2": named_beta_r2,
             "lexical": lexical,
+            "links": links,
         }))?
     );
     Ok(())

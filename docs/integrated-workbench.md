@@ -460,3 +460,90 @@ without rewriting the earlier r1 row. `lexical-expected.json` fixes the
 pre-input IDs, order, association unions and literal definitions;
 `cursor-protocol-oracle.json` fixes the typed cursor bytes and checksum
 independently of a live view.
+
+
+## Bounded Links traversal
+
+The integrated example writes the fixed Links inputs before creating its
+separate journal and catalogue. Inspect the authorities under
+`workbench-example/artifacts/links-inputs/`: both typed requests, the expected
+Full/Compact rows, cursor protocol, amended fixture spec, and owned, mixed-pack,
+and selection dictionaries. The live workbench is under
+`workbench-example/links-workbench/`; its explicit historical r1 view remains
+usable after the journal advances to r2, while the configured `links` profile
+is refreshed to r2.
+
+```sh
+LINK_INPUTS=workbench-example/artifacts/links-inputs
+LINK_WORKBENCH=workbench-example/links-workbench
+CLI=target/debug/vlajmaji
+"$CLI" workbench lexical \
+  "$LINK_WORKBENCH/view-historical-r1" \
+  --request "$LINK_INPUTS/links-depth2.json" --format full \
+  > workbench-example/links-direct-full.json
+"$CLI" workbench lexical \
+  "$LINK_WORKBENCH/view-historical-r1" \
+  --request "$LINK_INPUTS/links-depth2.json" --format compact \
+  > workbench-example/links-direct-compact.json
+jq '.result.response.groups[0].hits[0].detail_ref' \
+  workbench-example/links-direct-compact.json \
+  > workbench-example/links-direct-detail-ref.json
+LINK_BINDING=$(jq -r '.binding_sha256' workbench-example/links-direct-compact.json)
+"$CLI" workbench link-detail \
+  "$LINK_WORKBENCH/view-historical-r1" \
+  --reference workbench-example/links-direct-detail-ref.json \
+  --expected-binding "$LINK_BINDING" --format full \
+  > workbench-example/links-direct-detail.json
+"$CLI" workbench profiles lexical \
+  --config "$LINK_WORKBENCH/links-workbench-profiles.json" \
+  --profile links --request "$LINK_INPUTS/links-depth2.json" --format readable \
+  > workbench-example/links-configured-readable.txt
+```
+
+The fixed depth-two request returns thirteen steps across the owned and upstream
+publishers. Its three source-clause tokens share the Note’s source evidence, and each token
+retains its own exact byte span. `links-expected.json` fixes the
+Full/Compact row authority, and `links-cursor-protocol.json` pins typed cursor
+bytes independently of a live view. A Compact detail reference belongs to the
+effective binding that issued it, so use that response's `binding_sha256` for
+detail.
+
+The producer also configures the named `links` profile, refreshes it once for
+the retained r1 publication, makes it the default, appends the owned r2
+revision, and refreshes that profile again. The r1 direct view remains an
+explicit historical view; the profile's configured Head follows r2. Query the
+same r2 request through the named and default profile to compare their Full
+results, then take a Compact key and its binding from the same named response
+for detail:
+
+```sh
+"$CLI" workbench profiles lexical \
+  --config "$LINK_WORKBENCH/links-workbench-profiles.json" \
+  --profile links --request "$LINK_INPUTS/links-depth2.json" --format full \
+  > workbench-example/links-named-full-r2.json
+"$CLI" workbench profiles lexical \
+  --config "$LINK_WORKBENCH/links-workbench-profiles.json" \
+  --request "$LINK_INPUTS/links-depth2.json" --format full \
+  > workbench-example/links-default-full-r2.json
+jq -e --slurpfile named workbench-example/links-named-full-r2.json \
+  '.result == $named[0].result' workbench-example/links-default-full-r2.json
+"$CLI" workbench profiles lexical \
+  --config "$LINK_WORKBENCH/links-workbench-profiles.json" \
+  --profile links --request "$LINK_INPUTS/links-depth2.json" --format compact \
+  > workbench-example/links-named-compact-r2.json
+jq '.result.response.groups[0].hits[0].detail_ref' \
+  workbench-example/links-named-compact-r2.json \
+  > workbench-example/links-named-detail-ref-r2.json
+LINK_NAMED_BINDING=$(jq -r '.binding_sha256' \
+  workbench-example/links-named-compact-r2.json)
+"$CLI" workbench profiles link-detail \
+  --config "$LINK_WORKBENCH/links-workbench-profiles.json" \
+  --profile links --reference workbench-example/links-named-detail-ref-r2.json \
+  --expected-binding "$LINK_NAMED_BINDING" --format full \
+  > workbench-example/links-named-detail-r2.json
+```
+
+The named and default queries have matching Full result bodies for this same
+request and current preparation. Their configured identities can differ, so a
+Compact key must stay paired with the binding from the response that issued
+that key; do not transfer detail keys between named, default, or direct views.

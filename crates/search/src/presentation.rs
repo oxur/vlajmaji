@@ -13,7 +13,7 @@ use crate::{
     DictionaryCompactExactResponse, DictionaryCompactQueryResult,
     DictionaryCompactReferenceAssertion, DictionaryCompactReferenceResolution,
     DictionaryHitDetailResponse, ReferenceStatus, WorkbenchCompactFormRecord, WorkbenchFormRecord,
-    WorkbenchLexicalCompactResult, WorkbenchReverseDefinitionCompact,
+    WorkbenchLexicalCompactResult, WorkbenchLinksCompact, WorkbenchReverseDefinitionCompact,
 };
 
 /// Render a standalone compact Exact or Resolve result as readable text.
@@ -66,6 +66,25 @@ pub fn render_collection_detail(response: &CollectionHitDetailResponse) -> Strin
 #[must_use]
 pub fn render_workbench_lexical_compact(result: &WorkbenchLexicalCompactResult) -> String {
     let mut output = String::new();
+    if let WorkbenchLexicalCompactResult::Links(response) = result {
+        writeln!(output, "lexical_operation: {}", json(&"links")).unwrap();
+        writeln!(output, "lexical_policy: {}", json(&response.policy)).unwrap();
+        writeln!(output, "lexical_totals: {}", json(&response.totals)).unwrap();
+        writeln!(
+            output,
+            "lexical_source_totals: {}",
+            json(&response.source_totals)
+        )
+        .unwrap();
+        writeln!(
+            output,
+            "lexical_next_cursor: {}",
+            json(&response.next_cursor)
+        )
+        .unwrap();
+        render_links_compact(&mut output, response);
+        return output;
+    }
     let (operation, policy, totals, source_totals, next_cursor) = match result {
         WorkbenchLexicalCompactResult::ReverseDefinition(response) => (
             "reverse_definition",
@@ -81,6 +100,7 @@ pub fn render_workbench_lexical_compact(result: &WorkbenchLexicalCompactResult) 
             &response.source_totals,
             &response.next_cursor,
         ),
+        WorkbenchLexicalCompactResult::Links(_) => unreachable!("Links handled above"),
     };
     writeln!(output, "lexical_operation: {}", json(&operation)).unwrap();
     writeln!(output, "lexical_policy: {}", json(policy)).unwrap();
@@ -103,7 +123,101 @@ pub fn render_workbench_lexical_compact(result: &WorkbenchLexicalCompactResult) 
                 }
             }
         }
+        WorkbenchLexicalCompactResult::Links(_) => unreachable!("Links handled above"),
     }
+    output
+}
+
+fn render_links_compact(output: &mut String, response: &WorkbenchLinksCompact) {
+    for group in &response.groups {
+        writeln!(output, "source: {}", json(&group.source)).unwrap();
+        writeln!(output, "full_count: {}", json(&group.full_count)).unwrap();
+        writeln!(output, "returned_count: {}", json(&group.returned_count)).unwrap();
+        writeln!(output, "partial: {}", json(&group.partial)).unwrap();
+        for step in &group.hits {
+            writeln!(output, "  step: {}", json(&step.identity)).unwrap();
+            writeln!(output, "    depth: {}", json(&step.depth)).unwrap();
+            writeln!(output, "    from: {}", json(&step.from)).unwrap();
+            writeln!(output, "    evidence: {}", json(&step.record)).unwrap();
+            writeln!(
+                output,
+                "    origin_resolution: {}",
+                json(&step.origin_resolution)
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    target_observations: {}",
+                json(&step.target_observations)
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    target_assertion_ids: {}",
+                json(&step.target_assertion_ids)
+            )
+            .unwrap();
+            writeln!(
+                output,
+                "    traversal_status: {}",
+                json(&step.traversal_status)
+            )
+            .unwrap();
+            writeln!(output, "    link_detail: {}", json(&step.detail_ref)).unwrap();
+        }
+    }
+}
+
+/// Render a direct typed Links detail without opening a provider.
+#[must_use]
+pub fn render_workbench_link_detail(response: &crate::WorkbenchLinkDetailResponse) -> String {
+    render_link_detail_fields(
+        &response.binding_sha256,
+        None,
+        &response.selection,
+        &response.reference,
+        &response.record,
+        &response.origin_resolution,
+        &response.target_observations,
+    )
+}
+
+/// Render a configured typed Links detail without opening a provider.
+#[must_use]
+pub fn render_configured_workbench_link_detail(
+    response: &crate::ConfiguredWorkbenchLinkDetailResponse,
+) -> String {
+    render_link_detail_fields(
+        &response.binding_sha256,
+        Some(&response.configuration),
+        &response.selection,
+        &response.reference,
+        &response.record,
+        &response.origin_resolution,
+        &response.target_observations,
+    )
+}
+
+fn render_link_detail_fields(
+    binding: &str,
+    configuration: Option<&vlajmaji_store::WorkbenchProfileIdentity>,
+    selection: &crate::WorkbenchQuerySelection,
+    reference: &crate::WorkbenchLinkDetailRef,
+    record: &crate::WorkbenchLinkRecord,
+    origin_resolution: &crate::WorkbenchReferenceCompactResult,
+    target_observations: &[crate::WorkbenchLinkTargetCompact],
+) -> String {
+    let mut output = String::new();
+    writeln!(output, "workbench_binding: {}", json(&binding)).unwrap();
+    if let Some(configuration) = configuration {
+        writeln!(output, "workbench_configuration: {}", json(configuration)).unwrap();
+    }
+    writeln!(output, "workbench_selection: {}", json(selection)).unwrap();
+    writeln!(output, "link_reference: {}", json(reference)).unwrap();
+    writeln!(output, "record: {}", json(record)).unwrap();
+    writeln!(output, "origin_resolution: {}", json(origin_resolution)).unwrap();
+    writeln!(output, "target_observations: {}", json(target_observations)).unwrap();
+    write!(output, "link_policy: {}", json(&"bounded-links-v1")).unwrap();
     output
 }
 

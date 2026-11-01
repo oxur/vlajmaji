@@ -954,6 +954,147 @@ fn target_entity_matches(
 }
 
 impl WorkbenchSearchEngine {
+    /// Resolve one target without entering or leaving the public freshness guard.
+    pub(crate) fn resolve_reference_full_inner(
+        &mut self,
+        target: &RelationTarget,
+    ) -> Result<WorkbenchReferenceFullResult, super::WorkbenchQueryError> {
+        let has_catalogue = self.view.binding().catalogue().is_some();
+        let owned_source = self
+            .view
+            .binding()
+            .owned()
+            .map(|owned| owned.identity.source.clone());
+        let own_release = if let (RelationTarget::Catalog(catalog), Some(source)) =
+            (target, owned_source.as_ref())
+        {
+            self.full_engine()?
+                .owned_release_summary(&catalog.release, source)
+        } else {
+            None
+        };
+        let own_release = owned_release_summary(owned_source.as_ref(), target, own_release);
+        let mut observation = if is_nonmaterialized_target(target) {
+            empty_observation()
+        } else {
+            catalogue_observation(&self.view, target, false, own_release.as_ref())?
+        };
+        let resolved = if !is_nonmaterialized_target(target) {
+            let engine = self.full_engine()?;
+            let owned_target = own_release.is_some();
+            if observation.requested_release.is_none() {
+                observation.requested_release = own_release.clone();
+            }
+            let witnesses = engine.typed_reference_witnesses(target)?;
+            require_admitted_source_witness(target, &observation, &witnesses)?;
+            check_source_witnesses(&witnesses, &observation.witnesses)?;
+            if should_resolve_source(
+                target,
+                has_catalogue,
+                &observation,
+                &witnesses,
+                owned_target,
+            ) {
+                Some(engine.resolve(target)?)
+            } else {
+                None
+            }
+        } else {
+            None
+        };
+        let status = resolved.as_ref().map_or_else(
+            || status_without_payload(target, &observation.matches, false),
+            |value| value.status,
+        );
+        Ok(WorkbenchReferenceFullResult {
+            target: target.clone(),
+            status,
+            operational_reason: resolved
+                .is_none()
+                .then(|| observation.top_reason.clone())
+                .flatten(),
+            payload: resolved.map(Box::new),
+            catalogue_matches: observation.matches,
+            requested_release: observation.requested_release,
+            registrations: observation.registrations,
+        })
+    }
+
+    /// Compact counterpart to [`Self::resolve_reference_full_inner`].
+    pub(crate) fn resolve_reference_compact_inner(
+        &mut self,
+        target: &RelationTarget,
+    ) -> Result<WorkbenchReferenceCompactResult, super::WorkbenchQueryError> {
+        if matches!(target, RelationTarget::Catalog(catalog)
+            if catalog.native_entry_id.is_none()
+                && catalog.native_assertion_id.is_none()
+                && catalog.occurrence.is_none())
+        {
+            return Err(invalid_reference(
+                "catalogue target supplies no native identity or occurrence",
+            ));
+        }
+        let has_catalogue = self.view.binding().catalogue().is_some();
+        let owned_source = self
+            .view
+            .binding()
+            .owned()
+            .map(|owned| owned.identity.source.clone());
+        let own_release = if let (RelationTarget::Catalog(catalog), Some(source)) =
+            (target, owned_source.as_ref())
+        {
+            self.compact_engine()?
+                .owned_release_summary(&catalog.release, source)
+        } else {
+            None
+        };
+        let own_release = owned_release_summary(owned_source.as_ref(), target, own_release);
+        let mut observation = if is_nonmaterialized_target(target) {
+            empty_observation()
+        } else {
+            catalogue_observation(&self.view, target, true, own_release.as_ref())?
+        };
+        let resolved = if !is_nonmaterialized_target(target) {
+            let engine = self.compact_engine()?;
+            let owned_target = own_release.is_some();
+            if observation.requested_release.is_none() {
+                observation.requested_release = own_release.clone();
+            }
+            let witnesses = engine.typed_reference_witnesses(target)?;
+            require_admitted_source_witness(target, &observation, &witnesses)?;
+            check_source_witnesses(&witnesses, &observation.witnesses)?;
+            if should_resolve_source(
+                target,
+                has_catalogue,
+                &observation,
+                &witnesses,
+                owned_target,
+            ) {
+                Some(engine.resolve(target)?)
+            } else {
+                None
+            }
+        } else {
+            None
+        };
+        let status = resolved.as_ref().map_or_else(
+            || status_without_payload(target, &observation.matches, true),
+            |value| value.status,
+        );
+        Ok(WorkbenchReferenceCompactResult {
+            target: target.clone(),
+            status,
+            operational_reason: resolved
+                .is_none()
+                .then(|| observation.top_reason.clone())
+                .flatten(),
+            payload: resolved.map(Box::new),
+            catalogue_matches: observation.matches,
+            requested_release: observation.requested_release,
+            registrations: observation.registrations,
+        })
+    }
+
     /// Resolve an explicit target across this mixed view in Full format.
     ///
     /// The result keeps the caller's target and binding identity alongside the
@@ -1001,75 +1142,11 @@ impl WorkbenchSearchEngine {
         F: FnOnce(),
     {
         self.view.ensure_current()?;
-        let operation = (|| {
-            let has_catalogue = self.view.binding().catalogue().is_some();
-            let owned_source = self
-                .view
-                .binding()
-                .owned()
-                .map(|owned| owned.identity.source.clone());
-            let own_release = if let (RelationTarget::Catalog(catalog), Some(source)) =
-                (target, owned_source.as_ref())
-            {
-                self.full_engine()?
-                    .owned_release_summary(&catalog.release, source)
-            } else {
-                None
-            };
-            let own_release = owned_release_summary(owned_source.as_ref(), target, own_release);
-            let mut observation = if is_nonmaterialized_target(target) {
-                empty_observation()
-            } else {
-                catalogue_observation(&self.view, target, false, own_release.as_ref())?
-            };
-            let resolved = if !is_nonmaterialized_target(target) {
-                let engine = self.full_engine()?;
-                let owned_target = own_release.is_some();
-                if observation.requested_release.is_none() {
-                    observation.requested_release = own_release.clone();
-                }
-                let source_witnesses = engine.typed_reference_witnesses(target)?;
-                require_admitted_source_witness(target, &observation, &source_witnesses)?;
-                check_source_witnesses(&source_witnesses, &observation.witnesses)?;
-                if should_resolve_source(
-                    target,
-                    has_catalogue,
-                    &observation,
-                    &source_witnesses,
-                    owned_target,
-                ) {
-                    Some(engine.resolve(target)?)
-                } else {
-                    None
-                }
-            } else {
-                None
-            };
-            let status = resolved.as_ref().map_or_else(
-                || status_without_payload(target, &observation.matches, false),
-                |value| value.status,
-            );
-            Ok::<_, super::WorkbenchQueryError>((observation, resolved, status))
-        })();
+        let operation = self.resolve_reference_full_inner(target);
         after_inner();
         let freshness = self.view.ensure_current();
         freshness?;
-        let (observation, resolved, status) = operation?;
-        let operational_reason = if resolved.is_none() {
-            observation.top_reason.clone()
-        } else {
-            None
-        };
-        let requested_release = observation.requested_release.clone();
-        let result = WorkbenchReferenceFullResult {
-            target: target.clone(),
-            status,
-            operational_reason,
-            payload: resolved.map(Box::new),
-            catalogue_matches: observation.matches,
-            requested_release,
-            registrations: observation.registrations,
-        };
+        let result = operation?;
         Ok(WorkbenchReferenceFullResponse {
             version: 1,
             kind: "vlajmaji-workbench-reference".into(),
@@ -1115,83 +1192,10 @@ impl WorkbenchSearchEngine {
         target: &vlajmaji_lexicon::RelationTarget,
     ) -> Result<WorkbenchReferenceCompactResponse, super::WorkbenchQueryError> {
         self.view.ensure_current()?;
-        let operation = (|| {
-            if matches!(target, RelationTarget::Catalog(catalog)
-                if catalog.native_entry_id.is_none()
-                    && catalog.native_assertion_id.is_none()
-                    && catalog.occurrence.is_none())
-            {
-                return Err(invalid_reference(
-                    "catalogue target supplies no native identity or occurrence",
-                ));
-            }
-            let has_catalogue = self.view.binding().catalogue().is_some();
-            let owned_source = self
-                .view
-                .binding()
-                .owned()
-                .map(|owned| owned.identity.source.clone());
-            let own_release = if let (RelationTarget::Catalog(catalog), Some(source)) =
-                (target, owned_source.as_ref())
-            {
-                self.compact_engine()?
-                    .owned_release_summary(&catalog.release, source)
-            } else {
-                None
-            };
-            let own_release = owned_release_summary(owned_source.as_ref(), target, own_release);
-            let mut observation = if is_nonmaterialized_target(target) {
-                empty_observation()
-            } else {
-                catalogue_observation(&self.view, target, true, own_release.as_ref())?
-            };
-            let resolved = if !is_nonmaterialized_target(target) {
-                let engine = self.compact_engine()?;
-                let owned_target = own_release.is_some();
-                if observation.requested_release.is_none() {
-                    observation.requested_release = own_release.clone();
-                }
-                let source_witnesses = engine.typed_reference_witnesses(target)?;
-                require_admitted_source_witness(target, &observation, &source_witnesses)?;
-                check_source_witnesses(&source_witnesses, &observation.witnesses)?;
-                if should_resolve_source(
-                    target,
-                    has_catalogue,
-                    &observation,
-                    &source_witnesses,
-                    owned_target,
-                ) {
-                    Some(engine.resolve(target)?)
-                } else {
-                    None
-                }
-            } else {
-                None
-            };
-            let status = resolved.as_ref().map_or_else(
-                || status_without_payload(target, &observation.matches, true),
-                |value| value.status,
-            );
-            Ok::<_, super::WorkbenchQueryError>((observation, resolved, status))
-        })();
+        let operation = self.resolve_reference_compact_inner(target);
         let freshness = self.view.ensure_current();
         freshness?;
-        let (observation, resolved, status) = operation?;
-        let operational_reason = if resolved.is_none() {
-            observation.top_reason.clone()
-        } else {
-            None
-        };
-        let requested_release = observation.requested_release.clone();
-        let result = WorkbenchReferenceCompactResult {
-            target: target.clone(),
-            status,
-            operational_reason,
-            payload: resolved.map(Box::new),
-            catalogue_matches: observation.matches,
-            requested_release,
-            registrations: observation.registrations,
-        };
+        let result = operation?;
         Ok(WorkbenchReferenceCompactResponse {
             version: 1,
             kind: "vlajmaji-workbench-reference".into(),
@@ -1204,6 +1208,149 @@ impl WorkbenchSearchEngine {
 }
 
 impl ConfiguredWorkbenchSearchEngine {
+    /// Resolve one configured Full target inside the caller's outer guard.
+    pub(crate) fn resolve_configured_reference_full_inner(
+        &mut self,
+        target: &RelationTarget,
+    ) -> Result<WorkbenchReferenceFullResult, super::WorkbenchQueryError> {
+        let has_catalogue = self.view.view().binding().catalogue().is_some();
+        let owned_source = self
+            .view
+            .view()
+            .binding()
+            .owned()
+            .map(|owned| owned.identity.source.clone());
+        let own_release = if let (RelationTarget::Catalog(catalog), Some(source)) =
+            (target, owned_source.as_ref())
+        {
+            self.full_engine()?
+                .owned_release_summary(&catalog.release, source)
+        } else {
+            None
+        };
+        let own_release = owned_release_summary(owned_source.as_ref(), target, own_release);
+        let mut observation = if is_nonmaterialized_target(target) {
+            empty_observation()
+        } else {
+            catalogue_observation(self.view.view(), target, false, own_release.as_ref())?
+        };
+        let resolved = if !is_nonmaterialized_target(target) {
+            let engine = self.full_engine()?;
+            let owned_target = own_release.is_some();
+            if observation.requested_release.is_none() {
+                observation.requested_release = own_release.clone();
+            }
+            let witnesses = engine.typed_reference_witnesses(target)?;
+            require_admitted_source_witness(target, &observation, &witnesses)?;
+            check_source_witnesses(&witnesses, &observation.witnesses)?;
+            if should_resolve_source(
+                target,
+                has_catalogue,
+                &observation,
+                &witnesses,
+                owned_target,
+            ) {
+                Some(engine.resolve(target)?)
+            } else {
+                None
+            }
+        } else {
+            None
+        };
+        let status = resolved.as_ref().map_or_else(
+            || status_without_payload(target, &observation.matches, false),
+            |value| value.status,
+        );
+        Ok(WorkbenchReferenceFullResult {
+            target: target.clone(),
+            status,
+            operational_reason: resolved
+                .is_none()
+                .then(|| observation.top_reason.clone())
+                .flatten(),
+            payload: resolved.map(Box::new),
+            catalogue_matches: observation.matches,
+            requested_release: observation.requested_release,
+            registrations: observation.registrations,
+        })
+    }
+
+    /// Resolve one configured Compact target inside the caller's outer guard.
+    pub(crate) fn resolve_configured_reference_compact_inner(
+        &mut self,
+        target: &RelationTarget,
+    ) -> Result<WorkbenchReferenceCompactResult, super::WorkbenchQueryError> {
+        if matches!(target, RelationTarget::Catalog(catalog)
+            if catalog.native_entry_id.is_none()
+                && catalog.native_assertion_id.is_none()
+                && catalog.occurrence.is_none())
+        {
+            return Err(invalid_reference(
+                "catalogue target supplies no native identity or occurrence",
+            ));
+        }
+        let has_catalogue = self.view.view().binding().catalogue().is_some();
+        let owned_source = self
+            .view
+            .view()
+            .binding()
+            .owned()
+            .map(|owned| owned.identity.source.clone());
+        let own_release = if let (RelationTarget::Catalog(catalog), Some(source)) =
+            (target, owned_source.as_ref())
+        {
+            self.compact_engine()?
+                .owned_release_summary(&catalog.release, source)
+        } else {
+            None
+        };
+        let own_release = owned_release_summary(owned_source.as_ref(), target, own_release);
+        let mut observation = if is_nonmaterialized_target(target) {
+            empty_observation()
+        } else {
+            catalogue_observation(self.view.view(), target, true, own_release.as_ref())?
+        };
+        let resolved = if !is_nonmaterialized_target(target) {
+            let engine = self.compact_engine()?;
+            let owned_target = own_release.is_some();
+            if observation.requested_release.is_none() {
+                observation.requested_release = own_release.clone();
+            }
+            let witnesses = engine.typed_reference_witnesses(target)?;
+            require_admitted_source_witness(target, &observation, &witnesses)?;
+            check_source_witnesses(&witnesses, &observation.witnesses)?;
+            if should_resolve_source(
+                target,
+                has_catalogue,
+                &observation,
+                &witnesses,
+                owned_target,
+            ) {
+                Some(engine.resolve(target)?)
+            } else {
+                None
+            }
+        } else {
+            None
+        };
+        let status = resolved.as_ref().map_or_else(
+            || status_without_payload(target, &observation.matches, true),
+            |value| value.status,
+        );
+        Ok(WorkbenchReferenceCompactResult {
+            target: target.clone(),
+            status,
+            operational_reason: resolved
+                .is_none()
+                .then(|| observation.top_reason.clone())
+                .flatten(),
+            payload: resolved.map(Box::new),
+            catalogue_matches: observation.matches,
+            requested_release: observation.requested_release,
+            registrations: observation.registrations,
+        })
+    }
+
     /// Resolve a target against a configured profile in Full format.
     ///
     /// The response records the captured profile identity and effective
@@ -1252,101 +1399,15 @@ impl ConfiguredWorkbenchSearchEngine {
         self.view
             .ensure_current()
             .map_err(|error| super::ConfiguredWorkbenchQueryError::Profile(Box::new(error)))?;
-        let operation = (|| {
-            let has_catalogue = self.view.view().binding().catalogue().is_some();
-            let owned_source = self
-                .view
-                .view()
-                .binding()
-                .owned()
-                .map(|owned| owned.identity.source.clone());
-            let own_release = if let (RelationTarget::Catalog(catalog), Some(source)) =
-                (target, owned_source.as_ref())
-            {
-                self.full_engine()
-                    .map_err(|error| {
-                        super::ConfiguredWorkbenchQueryError::Query(Box::new(
-                            super::WorkbenchQueryError::Query(Box::new(error)),
-                        ))
-                    })?
-                    .owned_release_summary(&catalog.release, source)
-            } else {
-                None
-            };
-            let own_release = owned_release_summary(owned_source.as_ref(), target, own_release);
-            let mut observation = if is_nonmaterialized_target(target) {
-                empty_observation()
-            } else {
-                catalogue_observation(self.view.view(), target, false, own_release.as_ref())
-                    .map_err(|error| super::ConfiguredWorkbenchQueryError::Query(Box::new(error)))?
-            };
-            let resolved = if !is_nonmaterialized_target(target) {
-                let engine = self.full_engine().map_err(|error| {
-                    super::ConfiguredWorkbenchQueryError::Query(Box::new(
-                        super::WorkbenchQueryError::Query(Box::new(error)),
-                    ))
-                })?;
-                let owns_target = own_release.is_some();
-                if observation.requested_release.is_none() {
-                    observation.requested_release = own_release.clone();
-                }
-                let witnesses = engine.typed_reference_witnesses(target).map_err(|error| {
-                    super::ConfiguredWorkbenchQueryError::Query(Box::new(
-                        super::WorkbenchQueryError::Query(Box::new(error)),
-                    ))
-                })?;
-                require_admitted_source_witness(target, &observation, &witnesses).map_err(
-                    |error| super::ConfiguredWorkbenchQueryError::Query(Box::new(error)),
-                )?;
-                check_source_witnesses(&witnesses, &observation.witnesses).map_err(|error| {
-                    super::ConfiguredWorkbenchQueryError::Query(Box::new(error))
-                })?;
-                if should_resolve_source(
-                    target,
-                    has_catalogue,
-                    &observation,
-                    &witnesses,
-                    owns_target,
-                ) {
-                    Some(engine.resolve(target).map_err(|error| {
-                        super::ConfiguredWorkbenchQueryError::Query(Box::new(
-                            super::WorkbenchQueryError::Query(Box::new(error)),
-                        ))
-                    })?)
-                } else {
-                    None
-                }
-            } else {
-                None
-            };
-            let status = resolved.as_ref().map_or_else(
-                || status_without_payload(target, &observation.matches, false),
-                |value| value.status,
-            );
-            Ok::<_, super::ConfiguredWorkbenchQueryError>((observation, resolved, status))
-        })();
+        let operation = self.resolve_configured_reference_full_inner(target);
         after_inner();
         let freshness = self
             .view
             .ensure_current()
             .map_err(|error| super::ConfiguredWorkbenchQueryError::Profile(Box::new(error)));
         freshness?;
-        let (observation, resolved, status) = operation?;
-        let operational_reason = if resolved.is_none() {
-            observation.top_reason.clone()
-        } else {
-            None
-        };
-        let requested_release = observation.requested_release.clone();
-        let result = WorkbenchReferenceFullResult {
-            target: target.clone(),
-            status,
-            operational_reason,
-            payload: resolved.map(Box::new),
-            catalogue_matches: observation.matches,
-            requested_release,
-            registrations: observation.registrations,
-        };
+        let result = operation
+            .map_err(|error| super::ConfiguredWorkbenchQueryError::Query(Box::new(error)))?;
         Ok(ConfiguredWorkbenchReferenceFullResponse {
             version: 1,
             kind: "vlajmaji-workbench-reference".into(),
@@ -1395,109 +1456,14 @@ impl ConfiguredWorkbenchSearchEngine {
         self.view
             .ensure_current()
             .map_err(|error| super::ConfiguredWorkbenchQueryError::Profile(Box::new(error)))?;
-        let operation = (|| {
-            if matches!(target, RelationTarget::Catalog(catalog)
-                if catalog.native_entry_id.is_none()
-                    && catalog.native_assertion_id.is_none()
-                    && catalog.occurrence.is_none())
-            {
-                return Err(super::ConfiguredWorkbenchQueryError::Query(Box::new(
-                    invalid_reference("catalogue target supplies no native identity or occurrence"),
-                )));
-            }
-            let has_catalogue = self.view.view().binding().catalogue().is_some();
-            let owned_source = self
-                .view
-                .view()
-                .binding()
-                .owned()
-                .map(|owned| owned.identity.source.clone());
-            let own_release = if let (RelationTarget::Catalog(catalog), Some(source)) =
-                (target, owned_source.as_ref())
-            {
-                self.compact_engine()
-                    .map_err(|error| {
-                        super::ConfiguredWorkbenchQueryError::Query(Box::new(
-                            super::WorkbenchQueryError::Query(Box::new(error)),
-                        ))
-                    })?
-                    .owned_release_summary(&catalog.release, source)
-            } else {
-                None
-            };
-            let own_release = owned_release_summary(owned_source.as_ref(), target, own_release);
-            let mut observation = if is_nonmaterialized_target(target) {
-                empty_observation()
-            } else {
-                catalogue_observation(self.view.view(), target, true, own_release.as_ref())
-                    .map_err(|error| super::ConfiguredWorkbenchQueryError::Query(Box::new(error)))?
-            };
-            let resolved = if !is_nonmaterialized_target(target) {
-                let engine = self.compact_engine().map_err(|error| {
-                    super::ConfiguredWorkbenchQueryError::Query(Box::new(
-                        super::WorkbenchQueryError::Query(Box::new(error)),
-                    ))
-                })?;
-                let owns_target = own_release.is_some();
-                if observation.requested_release.is_none() {
-                    observation.requested_release = own_release.clone();
-                }
-                let witnesses = engine.typed_reference_witnesses(target).map_err(|error| {
-                    super::ConfiguredWorkbenchQueryError::Query(Box::new(
-                        super::WorkbenchQueryError::Query(Box::new(error)),
-                    ))
-                })?;
-                require_admitted_source_witness(target, &observation, &witnesses).map_err(
-                    |error| super::ConfiguredWorkbenchQueryError::Query(Box::new(error)),
-                )?;
-                check_source_witnesses(&witnesses, &observation.witnesses).map_err(|error| {
-                    super::ConfiguredWorkbenchQueryError::Query(Box::new(error))
-                })?;
-                if should_resolve_source(
-                    target,
-                    has_catalogue,
-                    &observation,
-                    &witnesses,
-                    owns_target,
-                ) {
-                    Some(engine.resolve(target).map_err(|error| {
-                        super::ConfiguredWorkbenchQueryError::Query(Box::new(
-                            super::WorkbenchQueryError::Query(Box::new(error)),
-                        ))
-                    })?)
-                } else {
-                    None
-                }
-            } else {
-                None
-            };
-            let status = resolved.as_ref().map_or_else(
-                || status_without_payload(target, &observation.matches, true),
-                |value| value.status,
-            );
-            Ok::<_, super::ConfiguredWorkbenchQueryError>((observation, resolved, status))
-        })();
+        let operation = self.resolve_configured_reference_compact_inner(target);
         let freshness = self
             .view
             .ensure_current()
             .map_err(|error| super::ConfiguredWorkbenchQueryError::Profile(Box::new(error)));
         freshness?;
-        let (observation, resolved, status) = operation?;
-        let operational_reason = if resolved.is_none() {
-            observation.top_reason.clone()
-        } else {
-            None
-        };
-        let requested_release = observation.requested_release.clone();
-        let result = WorkbenchReferenceCompactResult {
-            target: target.clone(),
-            status,
-            operational_reason,
-            payload: resolved.map(Box::new),
-            catalogue_matches: observation.matches,
-            requested_release,
-            registrations: observation.registrations,
-        };
+        let result = operation
+            .map_err(|error| super::ConfiguredWorkbenchQueryError::Query(Box::new(error)))?;
         Ok(ConfiguredWorkbenchReferenceCompactResponse {
             version: 1,
             kind: "vlajmaji-workbench-reference".into(),

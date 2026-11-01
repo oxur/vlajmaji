@@ -459,6 +459,108 @@ pub struct SourceCrossReference {
     targets: Vec<RecordIdentity>,
 }
 
+/// One literal target token found in a bounded `See Also` clause.
+///
+/// Byte offsets refer to the decoded UTF-8 note and include the braces.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct SeeAlsoToken {
+    /// Inclusive start byte offset of the braced token.
+    pub byte_start: usize,
+    /// Exclusive end byte offset of the braced token.
+    pub byte_end: usize,
+    /// Exact text between the braces, without normalization.
+    pub target_spelling: String,
+    /// Parser rule version used to identify this token.
+    pub rule_version: String,
+}
+
+/// Parse literal braced targets from the existing bounded `See Also` clauses.
+///
+/// This applies the same ASCII marker folding, clause boundaries, brace and
+/// math handling as the lexicon importer. It does not resolve target names or
+/// normalize the text inside a braced target.
+///
+/// # Examples
+///
+/// ```
+/// use vlajmaji_lexicon::parse_see_also_tokens;
+///
+/// let tokens = parse_see_also_tokens("See also {farvi} and {klama}.");
+/// assert_eq!(tokens.len(), 2);
+/// assert_eq!(tokens[0].target_spelling, "farvi");
+/// assert_eq!((tokens[0].byte_start, tokens[0].byte_end), (9, 16));
+/// assert_eq!(tokens[1].target_spelling, "klama");
+/// ```
+#[must_use]
+pub fn parse_see_also_tokens(notes: &str) -> Vec<SeeAlsoToken> {
+    let mut result = Vec::new();
+    let lower = notes.to_ascii_lowercase();
+    let markers: Vec<usize> = lower
+        .match_indices("see also")
+        .filter_map(|(start, marker)| {
+            let end = start + marker.len();
+            let left_boundary = notes[..start]
+                .chars()
+                .next_back()
+                .is_none_or(|ch| !ch.is_alphanumeric());
+            let right_boundary = notes[end..]
+                .chars()
+                .next()
+                .is_none_or(|ch| !ch.is_alphanumeric());
+            (left_boundary && right_boundary).then_some(start)
+        })
+        .collect();
+    for (marker_index, start) in markers.iter().copied().enumerate() {
+        let marker_end = start + "see also".len();
+        let clause_end = notes[marker_end..]
+            .find(['.', '!', '?', '\n', '\r', ';'])
+            .map_or(notes.len(), |offset| marker_end + offset);
+        let end = markers
+            .get(marker_index + 1)
+            .copied()
+            .filter(|next| *next < clause_end)
+            .unwrap_or(clause_end);
+        let clause = &notes[marker_end..end];
+        let mut cursor = 0;
+        let mut in_math = false;
+        while let Some(open) = clause[cursor..].find('{') {
+            let open_at = cursor + open;
+            let math_prefix = &clause[cursor..open_at];
+            in_math ^= math_prefix.chars().filter(|ch| *ch == '$').count() % 2 == 1;
+            if in_math {
+                cursor = open_at + 1;
+                continue;
+            }
+            let Some(close) = clause[open_at + 1..].find('}') else {
+                break;
+            };
+            let close_at = open_at + 1 + close;
+            if clause[open_at + 1..close_at].contains('$') {
+                in_math ^= clause[open_at + 1..close_at]
+                    .chars()
+                    .filter(|ch| *ch == '$')
+                    .count()
+                    % 2
+                    == 1;
+                cursor = close_at + 1;
+                continue;
+            }
+            let target = &clause[open_at + 1..close_at];
+            if !target.is_empty() {
+                result.push(SeeAlsoToken {
+                    byte_start: marker_end + open_at,
+                    byte_end: marker_end + close_at + 1,
+                    target_spelling: target.into(),
+                    rule_version: "see-also-braces-v2".into(),
+                });
+            }
+            cursor = close_at + 1;
+        }
+    }
+    result
+}
+
 impl SourceCrossReference {
     /// Returns the source record containing the clause.
     #[must_use]
@@ -1297,74 +1399,18 @@ fn parse_text_source(snapshot: &SourceSnapshot) -> Result<ParsedSource, ImportEr
 }
 
 fn extract_see_also(origin: &RecordIdentity, notes: &str) -> Vec<SourceCrossReference> {
-    let mut result = Vec::new();
-    let lower = notes.to_ascii_lowercase();
-    let markers: Vec<usize> = lower
-        .match_indices("see also")
-        .filter_map(|(start, marker)| {
-            let end = start + marker.len();
-            let left_boundary = notes[..start]
-                .chars()
-                .next_back()
-                .is_none_or(|ch| !ch.is_alphanumeric());
-            let right_boundary = notes[end..]
-                .chars()
-                .next()
-                .is_none_or(|ch| !ch.is_alphanumeric());
-            (left_boundary && right_boundary).then_some(start)
+    parse_see_also_tokens(notes)
+        .into_iter()
+        .map(|token| SourceCrossReference {
+            origin: origin.clone(),
+            field: "notes".into(),
+            byte_start: token.byte_start,
+            byte_end: token.byte_end,
+            target_spelling: token.target_spelling,
+            rule_version: token.rule_version,
+            targets: Vec::new(),
         })
-        .collect();
-    for (marker_index, start) in markers.iter().copied().enumerate() {
-        let marker_end = start + "see also".len();
-        let clause_end = notes[marker_end..]
-            .find(['.', '!', '?', '\n', '\r', ';'])
-            .map_or(notes.len(), |offset| marker_end + offset);
-        let end = markers
-            .get(marker_index + 1)
-            .copied()
-            .filter(|next| *next < clause_end)
-            .unwrap_or(clause_end);
-        let clause = &notes[marker_end..end];
-        let mut cursor = 0;
-        let mut in_math = false;
-        while let Some(open) = clause[cursor..].find('{') {
-            let open_at = cursor + open;
-            let math_prefix = &clause[cursor..open_at];
-            in_math ^= math_prefix.chars().filter(|ch| *ch == '$').count() % 2 == 1;
-            if in_math {
-                cursor = open_at + 1;
-                continue;
-            }
-            let Some(close) = clause[open_at + 1..].find('}') else {
-                break;
-            };
-            let close_at = open_at + 1 + close;
-            if clause[open_at + 1..close_at].contains('$') {
-                in_math ^= clause[open_at + 1..close_at]
-                    .chars()
-                    .filter(|ch| *ch == '$')
-                    .count()
-                    % 2
-                    == 1;
-                cursor = close_at + 1;
-                continue;
-            }
-            let target = &clause[open_at + 1..close_at];
-            if !target.is_empty() {
-                result.push(SourceCrossReference {
-                    origin: origin.clone(),
-                    field: "notes".into(),
-                    byte_start: marker_end + open_at,
-                    byte_end: marker_end + close_at + 1,
-                    target_spelling: target.into(),
-                    rule_version: "see-also-braces-v2".into(),
-                    targets: Vec::new(),
-                });
-            }
-            cursor = close_at + 1;
-        }
-    }
-    result
+        .collect()
 }
 
 fn decode_string(raw: Option<&str>) -> Option<String> {
