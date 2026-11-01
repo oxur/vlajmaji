@@ -274,3 +274,8 @@ Durableauthor-raw-index.json preserves55 available explicitly named whole author
 CDC precommit schema-aware table check caught its initial generic last-column append landing in project Notes (project has8columns; arc/S03have7). Before any proposal commit, CDC restored BOTH original Notes cells byte-exact and moved only the intended dated append into actual Evidence. Full30-row non-Evidence/raw-cell comparison then required; this is recordkeeping authoring error, no product/runtime/criterion change.
 
 Final proposal blanket staged diff-check returned2 only on byte-preserved raw-log whitespace; originals/copies were NOT stripped/normalised. Authored metadata/index path diff-check0 and every indexed original/copy SHA+length equality are the applicable checks. No runtime/source failure or replay.
+
+
+## ROOT consistency PASS and exact mechanical S03 close —2026-11-01
+
+ROOT WHOLE canonical closing/verifier/retro and parent/current-history diff review PASS at09317990/tree99752e57. Every30ledgerrow nonEvidence cell exact vsdad8; all114whole original/copy parities and170asofpins166current+4Gitdad8 independentlyPASS. Actual27/54streams+preinputwholebody/detail/protectedsource accepted at calibrated scopes. ROOT authorised ONLY8S03StatusOPEN→DONE plus datedclosuremetadata; every other raw child cell/Evidence and all8arc/14project WHOLErows retained. Source/index/ONEtarget QUIET, CCparked. S04 finalsource-grounded readiness next, unissued untilROOTreview. ROOT readonly indexchecker initially exact-headerStopIteration on arc Evidence/scope versus Evidence, corrected byactualheader; no record/product/mutation failure. Frozenmethods/bindings/prompts/raws/originalCC/acceptedS01S02 unchanged.
