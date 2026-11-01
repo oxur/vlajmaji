@@ -15,6 +15,13 @@ use crate::{
     DictionaryQueryError, DictionaryRequest, DictionarySearchEngine, ReferenceResolution,
 };
 
+pub(crate) mod reference;
+pub use reference::{
+    ConfiguredWorkbenchReferenceCompactResponse, ConfiguredWorkbenchReferenceFullResponse,
+    WorkbenchReferenceCompactResponse, WorkbenchReferenceCompactResult,
+    WorkbenchReferenceFullResponse, WorkbenchReferenceFullResult, WorkbenchReferenceRegistration,
+};
+
 /// The small cached selection summary attached to every workbench query result.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -242,6 +249,15 @@ pub enum WorkbenchQueryError {
     Query(Box<DictionaryQueryError>),
     /// Existing compact detail projection failure.
     Projection(Box<DictionaryProjectionError>),
+    /// A retained catalogue descriptor could not be read or projected.
+    Catalogue(Box<vlajmaji_store::CollectionError>),
+    /// Matching retained rows or prepared bodies disagree for one role and ID.
+    AmbiguousReference {
+        /// Entity role whose retained and prepared rows disagree.
+        role: String,
+        /// Stable entity ID with inconsistent rows.
+        id: String,
+    },
     /// Caller key names a different workbench binding.
     StaleBinding {
         /// Binding identity supplied by the caller.
@@ -262,6 +278,10 @@ impl fmt::Display for WorkbenchQueryError {
             Self::View(error) => write!(f, "workbench freshness: {error}"),
             Self::Query(error) => write!(f, "workbench query: {error}"),
             Self::Projection(error) => write!(f, "workbench detail: {error}"),
+            Self::Catalogue(error) => write!(f, "workbench catalogue: {error}"),
+            Self::AmbiguousReference { role, id } => {
+                write!(f, "ambiguous {role} reference {id}")
+            }
             Self::StaleBinding { expected, observed } => write!(
                 f,
                 "detail belongs to workbench binding {expected}, not {observed}"
@@ -279,6 +299,7 @@ impl Error for WorkbenchQueryError {
             Self::View(error) => Some(error.as_ref()),
             Self::Query(error) => Some(error.as_ref()),
             Self::Projection(error) => Some(error.as_ref()),
+            Self::Catalogue(error) => Some(error.as_ref()),
             _ => None,
         }
     }
@@ -297,6 +318,11 @@ impl From<DictionaryQueryError> for WorkbenchQueryError {
 impl From<DictionaryProjectionError> for WorkbenchQueryError {
     fn from(value: DictionaryProjectionError) -> Self {
         Self::Projection(Box::new(value))
+    }
+}
+impl From<vlajmaji_store::CollectionError> for WorkbenchQueryError {
+    fn from(value: vlajmaji_store::CollectionError) -> Self {
+        Self::Catalogue(Box::new(value))
     }
 }
 
@@ -1096,6 +1122,111 @@ mod tests {
             result,
             Err(ConfiguredWorkbenchQueryError::Profile(error))
                 if matches!(error.as_ref(), WorkbenchProfileError::ConfigChanged { .. })
+        ));
+        fs::remove_dir_all(parent).unwrap();
+    }
+
+    #[test]
+    fn test_reference_catalogue_write_after_inner_error_returns_stale_dependencies() {
+        let parent = fresh_root();
+        fs::create_dir(&parent).unwrap();
+        let catalogue = parent.join("catalogue");
+        catalogue_write(&catalogue, PackId::Llg, true);
+        let view_root = parent.join("view");
+        WorkbenchView::build_new(
+            &view_root,
+            WorkbenchBuildRequest {
+                catalogue_root: Some(catalogue.clone()),
+                owned_root: None,
+                selection: WorkbenchSelection {
+                    version: 1,
+                    packs: vec![PackId::Llg],
+                    disabled: Vec::new(),
+                    owned: None,
+                    contexts: Vec::new(),
+                },
+            },
+        )
+        .unwrap();
+        let mut engine = WorkbenchSearchEngine::open(&view_root).unwrap();
+        let invalid = vlajmaji_lexicon::RelationTarget::Unresolved(String::new());
+        let result = engine.resolve_reference_with_hook(&invalid, || {
+            let prior_revision = {
+                let reader = CollectionCatalogue::open(&catalogue).unwrap();
+                reader.local_revision().unwrap()
+            };
+            let rebuilt = CollectionCatalogue::rebuild(&catalogue, prior_revision).unwrap();
+            assert!(rebuilt.ok);
+            assert_eq!(rebuilt.local_revision, prior_revision + 1);
+        });
+        assert!(matches!(
+            result,
+            Err(WorkbenchQueryError::View(error))
+                if matches!(error.as_ref(), WorkbenchError::StaleDependencies {
+                    dependency: WorkbenchDependency::Catalogue,
+                    ..
+                })
+        ));
+        fs::remove_dir_all(parent).unwrap();
+    }
+
+    #[test]
+    fn test_configured_reference_writer_suppresses_inner_success() {
+        let parent = fresh_root();
+        fs::create_dir(&parent).unwrap();
+        let catalogue = parent.join("catalogue");
+        catalogue_write(&catalogue, PackId::Llg, true);
+        let selection = WorkbenchSelection {
+            version: 1,
+            packs: vec![PackId::Llg],
+            disabled: Vec::new(),
+            owned: None,
+            contexts: Vec::new(),
+        };
+        let config = parent.join("profiles.json");
+        WorkbenchProfiles::configure(
+            &config,
+            WorkbenchProfileConfigureRequest {
+                name: "alpha".into(),
+                catalogue_root: Some(catalogue.clone()),
+                owned_root: None,
+                selection: selection.clone(),
+                make_default: true,
+            },
+            None,
+        )
+        .unwrap();
+        WorkbenchProfiles::refresh(&config, None, parent.join("prepared-alpha"), 1).unwrap();
+        WorkbenchProfiles::configure(
+            &config,
+            WorkbenchProfileConfigureRequest {
+                name: "beta".into(),
+                catalogue_root: Some(catalogue),
+                owned_root: None,
+                selection,
+                make_default: false,
+            },
+            Some(2),
+        )
+        .unwrap();
+        let mut engine = ConfiguredWorkbenchSearchEngine::open(&config, Some("alpha")).unwrap();
+        assert_eq!(engine.identity().config_revision, 3);
+        let target = vlajmaji_lexicon::RelationTarget::Unknown;
+        assert_eq!(
+            engine.resolve_reference(&target).unwrap().result.status,
+            crate::ReferenceStatus::Unknown
+        );
+        let result = engine.resolve_reference_with_hook(&target, || {
+            let changed = WorkbenchProfiles::set_default(&config, Some("beta"), 3).unwrap();
+            assert!(changed.changed);
+            assert_eq!(changed.revision, 4);
+        });
+        assert!(matches!(
+            result,
+            Err(ConfiguredWorkbenchQueryError::Profile(error))
+                if matches!(error.as_ref(), WorkbenchProfileError::ConfigChanged {
+                    ..
+                })
         ));
         fs::remove_dir_all(parent).unwrap();
     }

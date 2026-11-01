@@ -25,8 +25,8 @@ use vlajmaji_lexicon::{
     SourceRecord,
 };
 use vlajmaji_store::{
-    DictionaryReadSnapshot, DictionaryReadTopology, DictionarySnapshotError,
-    DictionarySnapshotManifest, DictionaryStore, DictionaryStoreError,
+    CollectionReleaseSummary, DictionaryReadSnapshot, DictionaryReadTopology,
+    DictionarySnapshotError, DictionarySnapshotManifest, DictionaryStore, DictionaryStoreError,
 };
 
 mod borrowed;
@@ -582,6 +582,27 @@ impl fmt::Debug for DictionarySearchEngine {
 }
 
 impl DictionarySearchEngine {
+    pub(crate) fn owned_release_summary(
+        &self,
+        release_id: &EntityId,
+        source_id: &SourceId,
+    ) -> Option<CollectionReleaseSummary> {
+        let metadata = &self.dictionary.metadata;
+        let release = metadata
+            .releases
+            .iter()
+            .find(|release| release.id == *release_id)?;
+        let component = metadata
+            .components
+            .iter()
+            .find(|component| component.id == release.component)?;
+        let collection = metadata
+            .collections
+            .iter()
+            .find(|collection| collection.id == component.collection)?;
+        (collection.source == *source_id).then(|| CollectionReleaseSummary::from(release))
+    }
+
     /// Parse, validate, create, and reopen a fresh immutable dictionary store.
     ///
     /// # Errors
@@ -2308,4 +2329,125 @@ fn is_sha256_hex(text: &str) -> bool {
         && text
             .bytes()
             .all(|byte| byte.is_ascii_digit() || (b'a'..=b'f').contains(&byte))
+}
+
+impl DictionarySearchEngine {
+    /// Read exact typed role rows from the retained model before reference resolution.
+    pub(crate) fn typed_reference_witnesses(
+        &self,
+        target: &RelationTarget,
+    ) -> Result<Vec<crate::workbench::reference::TypedRoleWitness>, DictionaryQueryError> {
+        use crate::workbench::reference::{
+            assertion_witness, entry_witness, form_witness, sense_witness,
+        };
+        let mut result = Vec::new();
+        macro_rules! add_assertion {
+            ($id:expr) => {
+                let row = self.assertions.get(&($id).to_string()).ok_or_else(|| {
+                    DictionaryQueryError::Integrity {
+                        detail: format!("missing assertion {}", $id),
+                    }
+                })?;
+                let entry = self.entries.get(&row.entry.to_string()).ok_or_else(|| {
+                    DictionaryQueryError::Integrity {
+                        detail: format!("assertion {} references missing entry", row.id),
+                    }
+                })?;
+                result.push(assertion_witness(row, entry)?);
+                result.push(entry_witness(entry)?);
+            };
+        }
+        match target {
+            RelationTarget::Local(LocalRef::Entry(id)) => {
+                if let Some(entry) = self.entries.get(&id.to_string()) {
+                    result.push(entry_witness(entry)?);
+                }
+            }
+            RelationTarget::Local(LocalRef::Assertion(id)) => {
+                if self.assertions.contains_key(&id.to_string()) {
+                    add_assertion!(id);
+                }
+            }
+            RelationTarget::Local(LocalRef::Form(id)) => {
+                if let Some(row) = self.forms_by_id.get(&id.to_string()) {
+                    let entry = self.entries.get(&row.entry.to_string()).ok_or_else(|| {
+                        DictionaryQueryError::Integrity {
+                            detail: format!("form {} references missing entry", row.id),
+                        }
+                    })?;
+                    result.push(form_witness(row, entry)?);
+                    result.push(entry_witness(entry)?);
+                }
+            }
+            RelationTarget::Local(LocalRef::EditorialSense(id)) => {
+                if let Some(row) = self.editorial_by_id.get(&id.to_string()) {
+                    let assertions: Vec<_> = row
+                        .assertions
+                        .iter()
+                        .map(|id| {
+                            self.assertions.get(&id.to_string()).ok_or_else(|| {
+                                DictionaryQueryError::Integrity {
+                                    detail: format!(
+                                        "editorial sense {} references missing assertion {id}",
+                                        row.id
+                                    ),
+                                }
+                            })
+                        })
+                        .collect::<Result<_, _>>()?;
+                    let entries: Vec<_> = assertions
+                        .iter()
+                        .map(|assertion| {
+                            self.entries.get(&assertion.entry.to_string()).ok_or_else(|| {
+                                DictionaryQueryError::Integrity {
+                                    detail: format!("editorial sense {} references assertion with missing entry", row.id),
+                                }
+                            })
+                        })
+                        .collect::<Result<_, _>>()?;
+                    let linked: Vec<_> = assertions.into_iter().zip(entries).collect();
+                    result.push(sense_witness(row, &linked)?);
+                }
+            }
+            RelationTarget::Catalog(wanted) => {
+                let Some(release) = self
+                    .dictionary
+                    .metadata
+                    .releases
+                    .iter()
+                    .find(|release| release.id == wanted.release)
+                else {
+                    return Ok(result);
+                };
+                for assertion_id in &release.assertions {
+                    let row = self
+                        .assertions
+                        .get(&assertion_id.to_string())
+                        .ok_or_else(|| DictionaryQueryError::Integrity {
+                            detail: format!(
+                                "release {} references missing assertion {assertion_id}",
+                                wanted.release
+                            ),
+                        })?;
+                    let Some(entry) = self.entries.get(&row.entry.to_string()) else {
+                        return Err(DictionaryQueryError::Integrity {
+                            detail: format!("assertion {} references missing entry", row.id),
+                        });
+                    };
+                    if entry.source != wanted.source
+                        || wanted
+                            .occurrence
+                            .as_ref()
+                            .is_some_and(|value| value != &row.occurrence)
+                    {
+                        continue;
+                    }
+                    result.push(assertion_witness(row, entry)?);
+                    result.push(entry_witness(entry)?);
+                }
+            }
+            RelationTarget::Unknown | RelationTarget::Unresolved(_) => {}
+        }
+        Ok(result)
+    }
 }
