@@ -1,0 +1,126 @@
+--- continuation01-method.py
++++ continuation02-method.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""S05 observer CONTINUATION01 DRAFT. Total finite31 product children: one existing
++"""S05 observer CONTINUATION02 DRAFT. Total finite31 product children: one existing
+ public Rust example binary and30 native CLI,23zero/8typedone. Includes EXACT
+ eight original guide roles under captured launcher/env/terminal. No Cargo,
+ new Rust consumer, source/index edits, Full corpus, acquisition or cleanup.
+@@ -210,14 +210,14 @@
+  assert [v['assertion_id']for v in o['candidates']]==confirmed+unverified
+  for c in o['candidates']:
+   keys(c,'assertion_id source_id traversal_status reason');a=assertion(d,c['assertion_id']);sid=entry(d,a['entry'])['source'];assert c['source_id']==sid
+-  reason='unverified_identity' if a['id'] in unverified else 'requested_source' if sid not in requested else 'no_current_eligible_assertion' if a['id'] not in role_ids(d,{'Assertion':a['id']}) or a['eligibility']!='Lexical' else None
++  reason='unverified_identity' if a['id'] in unverified else 'no_current_eligible_assertion' if a['id'] not in role_ids(d,{'Assertion':a['id']}) or a['eligibility']!='Lexical' else 'requested_source' if sid not in requested else None
+   assert c['reason']==reason and c['traversal_status']==('not_traversable' if reason else 'traversable')
+  traversable=any(c['traversal_status']=='traversable'for c in o['candidates']);assert o['traversal_status']==('traversable'if traversable else'not_traversable')
+  if traversable:assert o['reason'] is None
+  elif o['resolution']['status'] in ['Unknown','Unresolved','NoMatch']:assert o['reason']=={'Unknown':'unknown','Unresolved':'unresolved','NoMatch':'no_match'}[o['resolution']['status']]
+- elif not o['resolution']['payload']:assert o['reason']=='no_payload'
++ elif not o['resolution']['payload']:assert o['reason']=='no_admitted_payload'
+  elif not confirmed and unverified:assert o['reason']=='unverified_identity'
+- elif confirmed and all(c['reason']=='requested_source' for c in o['candidates']):assert o['reason']=='requested_source'
++ elif confirmed and any(c['reason']=='requested_source' for c in o['candidates']):assert o['reason']=='requested_source'
+  else:assert o['reason']=='no_current_eligible_assertion'
+ 
+ def links_check(out,b,revision,compact,case='r1_depth2',indices=None,profile='direct',request=None,terminal=True,config_revision=4):
+@@ -399,12 +399,12 @@
+  for k,leaf in [('HOME','home'),('XDG_DATA_HOME','xdg-data'),('XDG_CONFIG_HOME','xdg-config'),('TMPDIR','tmp')]:assert selected_env[k]==str(base/leaf)and(base/leaf).is_dir()
+  env.update(selected_env)
+  assert enc(expected)==(base/'expected-before-children.json').read_bytes()and enc(PLAN)==(base/'planned-children.json').read_bytes()
+- with(base/'selected-env-continuation01.json').open('xb')as f:f.write(enc(selected_env))
++ with(base/'selected-env-continuation02.json').open('xb')as f:f.write(enc(selected_env))
+  W=base/'workbench-example';L=W/'links-workbench';I=W/'artifacts/links-inputs';hist=L/'view-historical-r1';current=L/'view-head-r2';cfg=L/'links-workbench-profiles.json'
+  requests={}
+  def req(name,value):
+   p=base/(name+' ü.json')
+-  if name in ['depth two','depth one','KU filter','KO filter','zero','first','invalid depth','old Form key']:assert p.read_bytes()==enc(value)
++  if name in ['depth two','depth one','KU filter','KO filter','zero','first','invalid depth','old Form key','source evidence detail']:assert p.read_bytes()==enc(value)
+   else:
+    with p.open('xb')as f:f.write(enc(value))
+   requests[name]={'path':str(p),**pin(p)};return p
+@@ -417,28 +417,37 @@
+  malformed=base/'malformed ü.json';assert malformed.read_bytes()==b'{'
+  oldform={'version':1,'digest_policy':'form-entry-computation-serde-json-v1','role':'form','binding_sha256':'a'*64,'source':'links-upstream','entry_id':'links-upstream-entry-z','form_id':'links-upstream-form-z','entry_sha256':'b'*64,'form_sha256':'c'*64,'computation_sha256':None};oldformfile=req('old Form key',oldform)
+  assert (base/'negative-buffers-before-children.json').read_bytes()==enc({str(p):pin(p)for p in [invalidfile,malformed,oldformfile]})
+- children=json.loads((base/'commands.json').read_bytes());assert len(children)==1
++ prefix=json.loads((base/'commands-continuation01.json').read_bytes());assert len(prefix)==17
++ for number,row in enumerate(prefix,1):
++  assert row['n']==number and row['name']==PLAN[number-1][0]and row['cwd']==str(base)and row['expected_exit']==row['actual_exit']==0 and not row['timeout']
++  for field in ['stdout','stderr']:assert pin(row[field])==row[field+'_pin']
++ children=[prefix[0]]
+  original=children[0];assert original['n']==1 and original['name']=='public-example'and original['argv']==[str(example),str(W)]and original['cwd']==str(base)and original['expected_exit']==original['actual_exit']==0 and not original['timeout']
+  for field in ['stdout','stderr']:assert pin(original[field])==original[field+'_pin']
+  assert Path(original['stderr']).read_bytes()==b''
+ 
+  def run(name,argv,code=0,readable=False):
+   n=len(children)+1;assert n<=31 and PLAN[n-1][0]==name
+-  assert not(base/f'{n:02}-{name}.stdout').exists()and not(base/f'{n:02}-{name}.stderr').exists()
+-  started=time.time()
+-  try:
+-   p=subprocess.run([str(a)for a in argv],cwd=base,env=env,capture_output=True,timeout=300);out,err,actual,timed=p.stdout,p.stderr,p.returncode,False
+-  except subprocess.TimeoutExpired as e:out,err,actual,timed=e.stdout or b'',e.stderr or b'',None,True
+-  op=base/f'{n:02}-{name}.stdout';ep=base/f'{n:02}-{name}.stderr'
+-  with op.open('xb')as f:f.write(out)
+-  with ep.open('xb')as f:f.write(err)
+-  row={'n':n,'name':name,'predicate':PLAN[n-1][1],'argv':[str(a)for a in argv],'cwd':str(base),'expected_exit':code,'actual_exit':actual,'timeout':timed,'seconds':time.time()-started,'stdout':str(op),'stderr':str(ep),'stdout_pin':pin(op),'stderr_pin':pin(ep)}
++  retained=n<=17
++  if retained:
++   row=prefix[n-1];assert row['argv']==[str(a)for a in argv]and row['cwd']==str(base)and row['expected_exit']==code
++   for field in ['stdout','stderr']:assert pin(row[field])==row[field+'_pin']
++   out=Path(row['stdout']).read_bytes();err=Path(row['stderr']).read_bytes();actual=row['actual_exit'];timed=row['timeout']
++  else:
++   assert not(base/f'{n:02}-{name}.stdout').exists()and not(base/f'{n:02}-{name}.stderr').exists()
++   started=time.time()
++   try:
++    p=subprocess.run([str(a)for a in argv],cwd=base,env=env,capture_output=True,timeout=300);out,err,actual,timed=p.stdout,p.stderr,p.returncode,False
++   except subprocess.TimeoutExpired as e:out,err,actual,timed=e.stdout or b'',e.stderr or b'',None,True
++   op=base/f'{n:02}-{name}.stdout';ep=base/f'{n:02}-{name}.stderr'
++   with op.open('xb')as f:f.write(out)
++   with ep.open('xb')as f:f.write(err)
++   row={'n':n,'name':name,'predicate':PLAN[n-1][1],'argv':[str(a)for a in argv],'cwd':str(base),'expected_exit':code,'actual_exit':actual,'timeout':timed,'seconds':time.time()-started,'stdout':str(op),'stderr':str(ep),'stdout_pin':pin(op),'stderr_pin':pin(ep)}
+   guide_files={'guide-historical-full':'links-direct-full.json','guide-historical-compact':'links-direct-compact.json','guide-historical-detail':'links-direct-detail.json','guide-configured-readable':'links-configured-readable.txt','guide-named-full':'links-named-full-r2.json','guide-default-full':'links-default-full-r2.json','guide-named-compact':'links-named-compact-r2.json','guide-named-detail':'links-named-detail-r2.json'}
+   if name in guide_files:
+-   documented=W/guide_files[name]
+-   with documented.open('xb')as f:f.write(out)
+-   row['documented_output']=str(documented);row['documented_output_pin']=pin(documented)
+-  children.append(row);(base/'commands-continuation01.json').write_bytes(enc(children))
++   documented=W/guide_files[name];assert documented.read_bytes()==out and row['documented_output']==str(documented)and row['documented_output_pin']==pin(documented)
++  children.append(row)
++  if not retained:(base/'commands-continuation02.json').write_bytes(enc(children))
+   assert not timed and actual==code,row
+   if code:
+    assert out==b''and err.endswith(b'\n')and err.count(b'\n')==1
+@@ -483,13 +492,12 @@
+  for key,compact in [('configured_r1_full',False),('configured_r1_compact',True)]:
+   links_check(pub[key],bcr1,1,compact,profile='links',config_revision=3)
+  for key,bview,rev,profile in [('historical_link_detail',b1,1,'direct'),('configured_r2_detail',b2,2,'links')]:detail_check(pub[key],bview,rev,pub[key]['reference'],profile)
+- # Original8 documented output/key files must still be absent before child2.
+- for leaf in ['links-direct-full.json','links-direct-compact.json','links-direct-detail-ref.json','links-direct-detail.json','links-configured-readable.txt','links-named-full-r2.json','links-default-full-r2.json','links-named-compact-r2.json','links-named-detail-ref-r2.json','links-named-detail-r2.json']:assert not(W/leaf).exists()
+- # EXACT guide8 native calls, each captured in its own immutable stream pair.
++ # Guide8 are retained actual prefix records, reread/asserted only below.
++ # EXACT guide8 prefix observations are rechecked without executing any child.
+  g1=lexical('guide-historical-full',hist,I/'links-depth2.json');links_check(g1,b1,1,False)
+  g2=lexical('guide-historical-compact',hist,I/'links-depth2.json','compact');r=links_check(g2,b1,1,True)
+  firstkey=r['groups'][0]['hits'][0]['detail_ref'];firstkeyfile=W/'links-direct-detail-ref.json'
+- with firstkeyfile.open('xb')as f:f.write(enc(firstkey))
++ assert firstkeyfile.read_bytes()==enc(firstkey)
+  requests['guide jq-equivalent first-key extraction']={'path':str(firstkeyfile),**pin(firstkeyfile)}
+  g3=detail('guide-historical-detail',hist,firstkeyfile,g2['binding_sha256']);detail_check(g3,b1,1,firstkey)
+  g4=lexical('guide-configured-readable',None,I/'links-depth2.json','readable','links');readable_check(g4,pub['configured_r2_compact'])
+@@ -497,7 +505,7 @@
+  g6=lexical('guide-default-full',None,I/'links-depth2.json','full',None);links_check(g6,b2,2,False,'r2_depth2',profile=None);assert g5['result']==g6['result']
+  g7=lexical('guide-named-compact',None,I/'links-depth2.json','compact','links');r=links_check(g7,b2,2,True,'r2_depth2',profile='links')
+  currentkey=r['groups'][0]['hits'][0]['detail_ref'];currentkeyfile=W/'links-named-detail-ref-r2.json'
+- with currentkeyfile.open('xb')as f:f.write(enc(currentkey))
++ assert currentkeyfile.read_bytes()==enc(currentkey)
+  requests['guide jq-equivalent named-key extraction']={'path':str(currentkeyfile),**pin(currentkeyfile)}
+  g8=detail('guide-named-detail',None,currentkeyfile,g7['binding_sha256'],'full','links');detail_check(g8,b2,2,currentkey,'links')
+  readable_check(lexical('historical-readable',hist,depth2file,'readable'),g2)
+@@ -539,4 +547,4 @@
+  for emitted,raw in inputs.items():assert(W/emitted).read_bytes()==raw
+  check_pins()
+  receipt={'status':'PASS','scope':'31 original finite children; no rebuild/new consumer/default data/real Full/extra controls','base':str(base),'binding_file':str(Path(sys.argv[1]).resolve()),'binding_pin':pin(sys.argv[1]),'children':children,'selected_env':selected_env,'requests':requests,'post_unchanged':before,'pre_input_pin_count':42,'original_frozen_pin_count':len(binding['files'])}
+- (base/'execution-continuation01.json').write_bytes(enc(receipt));print('PASS '+str(base),flush=True)
++ (base/'execution-continuation02.json').write_bytes(enc(receipt));print('PASS '+str(base),flush=True)

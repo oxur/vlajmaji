@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/independent-proof/continuation01/method.py", line 511, in <module>
+    links_check(lexical('KO-filter',hist,kofile,'compact'),b1,1,True,'only_KO_depth2',request=ko)
+  File "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/independent-proof/continuation01/method.py", line 244, in links_check
+    for o in h['target_observations']:observation_check(o,d,compact,r['state_sha256'],snapshot,requested)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice05-bounded-links/artifacts/independent-proof/continuation01/method.py", line 221, in observation_check
+    else:assert o['reason']=='no_current_eligible_assertion'
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
