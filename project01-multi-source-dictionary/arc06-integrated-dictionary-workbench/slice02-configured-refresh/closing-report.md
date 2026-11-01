@@ -1,4 +1,34 @@
-**CDC current proposal checkpoint — 2026-11-01T05:26:30.737487+00:00.** Independent S02 verification has NOT run; all eight child/eight arc/fourteen project rows remain OPEN. Source is now `8f373fa0298694b03d88f735a2ff11f1d1b9ca41`, metadata-only successor of the historical CC proposal below, with the SAME tree/parent/source bodies/binaries. The historical network/acquisition and package-count sentences are specifically superseded by the CDC errata at the end. Source/index/ONE target are ROOT QUIET pending final verification readiness.
+# S02 canonical closing proposal — configured refresh and lifecycle
+
+**CDC local technical ACCEPTED / ROOT canonical consistency pending,2026-11-01.** Proposed child close at source `8f373fa0298694b03d88f735a2ff11f1d1b9ca41`/tree`8f0d61298a061410c8a133df2107b73b4de4313e`, parent4fc937dc. CC completed INITIAL/pass1; source/index/ONEtarget are ROOT QUIET and CC parked. All8 S02/8arc/14project rows remain OPEN until their respective gates. This current synthesis supersedes the preserved author's earlier “independent pending” and inaccurate acquisition/package-count clauses below, at their historical cutoffs; it does not attribute CDC reproduction to CC.
+
+The useful increment is a distinct explicit strict profile store, latest-under-lock configuration writers, immutable new-root refresh/history, logical metadata status and reusable Full/Compact/detail requests tied to exact configuration/source identity. Old CollectionProfiles v1/four-PackId/default contracts remain. There is no joint SQLite/config atomicity; pre-visible failure can leave a new derived root, and post-visible failures have typed Indeterminate/publication context. The unchanged S01 journal/model/curation rules remain delegated at their original evidence scope.
+
+## Original row walk and acceptance boundary
+
+[CDC verification](cdc-verification.md) walks all eight original rows and A–G with runtime/source/inherited/platform grades. S02-01 strict config;02 CAS/no-op/owned cleanup;03 guarded refresh;04 reusable complete results/pages/detail;05 lifecycle/status;06 CLI/native/acknowledgements;07 exact gates;08 independent close/bubble-up are each proposed DONE, with ROOT consistency still required and no mechanical status change here. No criterion/verifier/owner is rewritten and no row is dropped.
+
+The bounded independent method ran ONCE:33 children,28 actualzero/5 expected typed-one/no timeout, consisting of one replay of the author-compiled public Rust example plus32 independently observed CLI operations. All66 streams and14 emitted authorities were verified, and ROOT independently inspected them. Current exact input-derived whole result/source/key/report checks, no-op bytes, named/default identity, actual Head append/stale/new-root recovery, status and typed errors passed. This is not a new independently authored Rust consumer; S06 retains that obligation.
+
+Author gates are Make73groups442/0/2 plus19helpers; isolated DIRECTCargo no-default12groups91/0/0; sole Synthetic archive73groups445/0/2 after five established preparation categories; package FILE45/28/25; final source-cwd package-default CLI/example builds. Exact commands/cwds/env/source scopes and preserved failures live in [execution](artifacts/execution.md). Two ignored are explicit and denominators overlap; no package verify/publish/hosted CI claim. Source/archive16 whole-body parity includes unchanged lock and was checked before/after.
+
+## Preserved records, produced paths and limitations
+
+The exact historical5365B author report remains [separately preserved](artifacts/source-commit-metadata/cc-closing-report-before-metadata-correction.md), as well as below with its dated corrections. [Author raw index](artifacts/author-raw/index.json) maps84 available explicit original/copy bodies673947B. [Independent index](artifacts/independent-proof/evidence-index.json) maps92 whole copies621683B including66 streams, receipts,14 actual emissions and five pre-run planning bodies. Frozen method/bindings retain the aefe8fae checkpoint: all45 passed pre/post runtime BEFORE legitimate canonical edits. Use that Git snapshot/bound-planning for old closing/execution hashes; never rewrite frozen bindings to conceal changed canonical prose. The task-owned functional root is held in place; no database/toolhome/target/binary archive is claimed.
+
+Source production paths are exactly the issued15 at8f373fa0; the metadata-only ab352888→8f373fa0 amendment retained SAMEtree/parent/bodies/binaries, with original raw commit/message preserved. Canonical produced records are this report, cdc-verification.md, retro.md, the eight-row ledger Evidence append and parent current metadata/partial Evidence; prompts/raws/static authorities remain unchanged.
+
+Authorised product gates were offline. Three confirmed temporary-tool-home rustup downloads/installs were unauthorised setup deviations; a fourth formatter body remains attribution-unclassified. The original report's no-acquisition sentence is false. Corrected final/independent environments use pinned homes/literalPATH and RUSTUP_AUTO_INSTALL=0; no cleanup or replay for provenance followed. Supported Unicode/space and deleted-cwd controls passed; Mac raw-name preflight EILSEQ92 is the reached branch, not Linux raw-positive or Windows evidence. Historical/curation/migration stay inherited S01 scope; owned/context configured field inclusion is source-review plus actual shared branch, not separately executed variants. Full/Compact/Readable retain distinct policies.
+
+## Bubble-up and silent-drop check
+
+1. **What S02 delivered:** the roadmap's useful configured refresh/CAS/default/status/query identity increment locally, with public example, literal guide, author controls and independent33. Parent A06-02/P01-09 receive partial Evidence only; all parent statuses stay OPEN.
+2. **What was unexpected:** environment-home acquisition, forbidden sibling include, lexical fixture classification, positive page/count completeness and reviewer/report attribution mistakes required preserved corrections. They did not require a new public model/configuration family, path expansion or another implementation assignment. See [retrospective](retro.md).
+3. **Does the structural arc plan change, and was anything silently dropped?** No new structural change; the already approved six-increment split/crosswalk remains. Every S02 row is explicitly accounted. Complete integrated reference admission stays S03; lexical/computed policies S04/S05; identified-input functional Full plus fresh assembled Rust/CLI/SAME canonical/ROOT S06; Operator project acceptance remains separate. No default/Full/external authority or acceptance is inferred.
+
+## Historical CC proposal and pre-verification corrections
+
+The following body is retained as-of the author's earlier proposal and CDC pre-verification checkpoint. Its old pending/status wording is superseded by the current synthesis above; its incorrect acquisition/count wording is explicitly corrected below. It is not an additional runtime or another current verdict.
 
 # S02 Proposed Closing Report — configured refresh
 

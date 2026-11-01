@@ -1,5 +1,9 @@
 # S02 — Configured mixed refresh and lifecycle
 
+**CURRENT S02 CANONICAL CLOSE PROPOSAL,2026-11-01.** S01 remains CLOSED at4fc937dc/ROOT consistency dda20f8a. S02 INITIAL/pass1 delivered the exact fifteen-path increment at source `8f373fa0298694b03d88f735a2ff11f1d1b9ca41`/tree`8f0d61298a061410c8a133df2107b73b4de4313e`; author current scoped gates and the bounded independent33 PASS are recorded in slice02-configured-refresh/cdc-verification.md. The independent scope is one replay of the author-compiled public Rust example plus32 independently observed CLI children,28 zero/5 expected typed-one, not a new independent Rust consumer. Source/index/ONE retained target are ROOT QUIET, CC parked. All eight S02/eight Arc06/fourteen project rows remain OPEN pending ROOT canonical consistency and any later authorised mechanical child close; A06-01 still needs the final fresh assembled oracle. S03 remains DRAFT/unissued. Authorised product gates were offline; three confirmed unauthorised temporary-tool-home auto-installs and a fourth available formatter body with unclassified attribution remain explicit deviations. Earlier dated ownership, source, HOLD and pending clauses retain their historical cutoffs and are superseded by this current metadata; frozen issued prompts, bindings, evidence and closed records are unchanged.
+
+**Historical issued metadata (2026-10-31; completed assignment):**
+
 **STATUS: ISSUED / INITIAL PASS1 OF FIVE / COMPLETE INTAKE ONLY,2026-10-31.** ROOT whole-draft readiness PASS at planning756b703fcf8a5bdc7aa4d222c37e438dc67b2d4f preserves the reviewed design/readset. Retained Luna/high CC may load the complete required contents, perform named read-only data queries and append source-cited coverage/readback ONLY to this slice artifacts/execution.md. All prior S01 write/report assignments are superseded; S01 is CLOSED. Source/index/ONE target remain ROOT QUIET until CDC accepts actual intake, checks fresh pins and explicitly transfers the fifteen source paths. All8 S02/all8arc/all14project rows OPEN. This issue metadata supersedes historical DRAFT/readiness-pending clauses below; no source/runtime authority is inferred from them.
 
 ## 1. Useful increment and preserved boundaries
@@ -234,3 +238,8 @@ Example uses NEW `configured-owned`, `workbench-profiles.json`, `configured-alph
 Current crate READMEs may retain existing published0.2 dependency snippets, but their NEW workbench/configured sections and guide must explicitly state these APIs belong to the current unpublished workspace0.3 development source; a published0.2 dependency does not expose them. Show current workspace-root example/CLI preparation or link the concrete guide, without claiming a release/publication. This is within the already allowed README paths, not a version/dependency change.
 
 - 0.6,2026-10-31: accepted S01/PASS2 source/close bound; corrected already-BEGIN readonly-helper composition before issue, compact exact public response/signature names and unprepared-metadata distinction frozen, old11 input bytes preserved with separate new profile authorities, and unpublished API documentation clarified. No S02 source/runtime/acceptance authority.
+
+
+## Version0.7 — completed INITIAL / proposed local close,2026-11-01
+
+The issued0.6 contract and prompt remain preserved. Exact15 implementation at8f373fa0/tree8f0d, current scoped author gates and independent33 now support the canonical proposal. See cdc-verification.md for the complete A–G evidence grades and remaining arc limits. All8 rows remain OPEN until ROOT consistency; no criterion or source scope changed. Source/index/ONEtarget ROOT QUIET.
