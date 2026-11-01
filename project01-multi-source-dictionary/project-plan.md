@@ -1,5 +1,7 @@
 # Project01 — Multi-source dictionary
 
+**CURRENT ARC06 / S03 INITIAL ACTIVE / SEVEN-INCREMENT CROSSWALK,2026-11-01.** Explicit de1eb1da transfer is effective: retained Luna/high CC exclusively owns issued S03 EXACT13 source paths/index/ONE target, ROOT/CDC readonly; source8f373fa0 is BASELINE, current authoring is WIP, not frozen/accepted. Early format/fmtcheck pass and compile-only lint failures are preserved; no S03 behavior/acceptance claimed. ROOT approved UNISSUED S04 ReverseDefinition+stored Form and S05 bounded Links; computed→S06/final→S07, with original lexical A06-03 requiring BOTH S04+S05. The exact current arc crosswalk supersedes earlier numeric roadmap labels at their dated cutoffs; all8arc/14project raw rows/statuses remain unchanged OPEN. S01/S02 CLOSED; five assignments/slice and THROUGH ALL Arc06/final NEW actual/SAME canonical/ROOT/separate Operator boundaries unchanged. No S03 packet/input/source scope or external/default/retainedFull/acquisition/performance authority changes.
+
 **CURRENT S03 INTAKE ACCEPTED / TRANSFER READY,2026-11-01.** CDC accepted the complete issued-c27d1f1 readback after bounded required-null, all-retained-row/admission, native-policy and data-coverage clarifications; fresh clean source8f373fa0/tree8f0d/protectedrefs/guard/env/input pins PASS. AFTER the named checkpoint commit and explicit CDC message, retained Luna/high CC exclusively owns EXACT13 issued paths/index/ONE retained target for INITIAL/pass1 of5; ROOT/CDC then source/index/target READONLY. Until that message ROOT QUIET. All8 S03/all8arc/all14project remain OPEN; S01/S02 CLOSED. The earlier current/pending/ownership paragraphs retain their dated cutoffs and are superseded only by this current metadata. Through ALL Arc06 remains active; no external/default/retainedFull/acquisition/performance authority.
 
 **CURRENT S02 CLOSED / ARC06 ACTIVE,2026-11-01.** ROOT canonical consistency PASS reviewed proposal `a831fa184dbbf62b1e5882c94e1c0aed2bfd5bd3`/tree`0dd8461a2852971480b042e6775c64ed7436855a`, source `8f373fa0298694b03d88f735a2ff11f1d1b9ca41`/tree`8f0d61298a061410c8a133df2107b73b4de4313e`. The authorised mechanical transition changes ONLY S02-01…08 Status OPEN→DONE, retaining every other raw table cell/Evidence. S01's8 child rows remain DONE; all8 Arc06/all14 project rows remain OPEN. Source/index/ONE retained target ROOT QUIET, CC parked. Actual independent33 is one author-compiled Rust example replay plus32 independently observed CLI children,28zero/5typedone; original author gates/private controls and inherited/platform limits retain their exact grades. Three confirmed unauthorised temporary-tool-home acquisitions and a fourth available attribution-unclassified formatter body remain explicit deviations. S03 is DRAFT/unissued pending complete final design/prompt/readset and ROOT readiness. Earlier proposal/pending/Evidence clauses retain their reviewed a831fa18 cutoff and are superseded ONLY as current closure metadata by this dated receipt; frozen method/bindings/raws/issued prompt/closed S01 records are unchanged. Through ALL Arc06 remains authorised; final references/query variants/functional Full/fresh assembled/SAME canonical/ROOT and separate Operator project gates remain.
@@ -11,13 +13,13 @@
 | Field | Value |
 | --- | --- |
 | project | project01-multi-source-dictionary |
-| status | Project OPEN; Arc01–05 CLOSED, Arc05 delivered PR7/main cb13d377 with main CI41239808260 SUCCESS. Arc06 ACTIVE under directive05; S01 INITIAL/pass1 implementation active after accepted complete intake c1deac39 and explicit14-path/index/ONEtarget transfer; root/CDC source/index/target readonly. ROOT readiness PASS ae0d4b31. All14 project rows remain OPEN; Operator project acceptance separate. |
+| status | Project OPEN; Arc01–05 CLOSED/delivered. Arc06 ACTIVE under directive05: S01/S02 CLOSED, S03 INITIAL/pass1 CC-exclusive EXACT13/index/ONEtarget after accepted de1eb1da intake/transfer. Current seven-increment crosswalk: S04 reverse/form, S05 Links, S06 computed, S07 final. All14 project rows OPEN; final Operator acceptance separate. |
 | depends-on | Vlajmaji PoC at `4ee3babefa13fbde41c94ab9bfcf61bb029834fe`; bounded accepted research described below |
 | blocks | Reusable source-grouped vocabulary workbench and source-backed wordcraft experiments |
 | related | Bauske; Relojban-poetics Project02; Bō Gē's “the last snow”; Open Tone Harmony |
 | source-home | `/Users/oubiwann/lab/oxur/vlajmaji` |
 | planning-home | orphan `planning` branch, `.worktrees/planning/project01-multi-source-dictionary/` |
-| version / date | 1.40 /2026-11-01 |
+| version / date | 1.41 /2026-11-01 |
 
 ## Purpose and first useful result
 
@@ -34,7 +36,7 @@ and explicit availability. Subsequent arcs make it work with full, independently
 selectable corpora and an editable dictionary of our own.
 
 The design and remaining decisions are in [design.md](design.md). Acceptance is in
-[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is CLOSED after both accepted children and separate fresh technical/finalcanonical review. Arc03 all4children and fresh assembled technical composition are accepted at7b1c565; actual canonical packet is independently accepted at proposal a5226ee. Arc04 and Arc05 are CLOSED and delivered. [directive05](cdc-directive05.md) now authorizes THROUGH ARC06 ONLY. [Arc06](arc06-integrated-dictionary-workbench/arc-plan.md) has five usable increments and S01 ISSUED complete intake after ROOT readiness PASS ae0d4b31; no implementation/runtime has begun. Earlier dated authority/status below retains its historical cutoff.
+[ledger.md](ledger.md). Arc01 has four independently accepted children and accepted separate technical/final packet composition; it is CLOSED. Arc02 is CLOSED after both accepted children and separate fresh technical/finalcanonical review. Arc03 all4children and fresh assembled technical composition are accepted at7b1c565; actual canonical packet is independently accepted at proposal a5226ee. Arc04 and Arc05 are CLOSED and delivered. [directive05](cdc-directive05.md) now authorizes THROUGH ARC06 ONLY. [Arc06](arc06-integrated-dictionary-workbench/arc-plan.md) currently has seven usable increments: accepted S01/S02, active S03 complete references, unissued S04 reverse/form, S05 Links, S06 computed and S07 identified offline/final composition. S03 authoring/compiler observations are not independent acceptance. Earlier dated authority/status below retains its historical cutoff.
 
 ## Decisions already made
 
@@ -474,3 +476,7 @@ S02 surfaced and delivered distinct explicit configured profiles, guarded new-ro
 ## Version1.40 — S02 local canonical close,2026-11-01
 
 ROOT actual a831fa18 consistency PASS permits the8 child Status-only close at8f373fa0. The reviewed proposal Evidence/remaining-gate clauses retain their cutoff; current CLOSED metadata supersedes their pending status. All8arc/all14project statuses stay OPEN, no structural roadmap change.
+
+## Arc06 lexical successor crosswalk —2026-11-01
+
+ROOT-approved source-backed split: original first-roadmap lexical S03 now requires BOTH current S04 literal ReverseDefinition+stored Form and S05 bounded Links; original computed S04→currentS06, original offline/final S05→currentS07. See current Arc06 plan/table and unissued S04/S05 plans. Prior drafts/history remain in Git at7c429165/00368855; no Links/edge stubs in S04. Original8arc/all14project raw rows unchanged OPEN; current S03 issued packet/inputs/13-path INITIAL ownership unaffected. No runtime/source change or pass reset; throughALLArc06/final fresh+SAMEcanonical/ROOT/Operator and protected-data/external boundaries unchanged.

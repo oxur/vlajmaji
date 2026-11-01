@@ -1,5 +1,7 @@
 # Arc06 — Integrated dictionary workbench
 
+**CURRENT ARC06 / S03 INITIAL ACTIVE / SEVEN-INCREMENT CROSSWALK,2026-11-01.** Explicit de1eb1da transfer is effective: retained Luna/high CC exclusively owns issued S03 EXACT13 source paths/index/ONE target, ROOT/CDC readonly; source8f373fa0 is BASELINE, current authoring is WIP, not frozen/accepted. Early format/fmtcheck pass and compile-only lint failures are preserved; no S03 behavior/acceptance claimed. ROOT approved UNISSUED S04 ReverseDefinition+stored Form and S05 bounded Links; computed→S06/final→S07, with original lexical A06-03 requiring BOTH S04+S05. The exact current arc crosswalk supersedes earlier numeric roadmap labels at their dated cutoffs; all8arc/14project raw rows/statuses remain unchanged OPEN. S01/S02 CLOSED; five assignments/slice and THROUGH ALL Arc06/final NEW actual/SAME canonical/ROOT/separate Operator boundaries unchanged. No S03 packet/input/source scope or external/default/retainedFull/acquisition/performance authority changes.
+
 **CURRENT S03 INTAKE ACCEPTED / TRANSFER READY,2026-11-01.** CDC accepted the complete issued-c27d1f1 readback after bounded required-null, all-retained-row/admission, native-policy and data-coverage clarifications; fresh clean source8f373fa0/tree8f0d/protectedrefs/guard/env/input pins PASS. AFTER the named checkpoint commit and explicit CDC message, retained Luna/high CC exclusively owns EXACT13 issued paths/index/ONE retained target for INITIAL/pass1 of5; ROOT/CDC then source/index/target READONLY. Until that message ROOT QUIET. All8 S03/all8arc/all14project remain OPEN; S01/S02 CLOSED. The earlier current/pending/ownership paragraphs retain their dated cutoffs and are superseded only by this current metadata. Through ALL Arc06 remains active; no external/default/retainedFull/acquisition/performance authority.
 
 **CURRENT S02 CLOSED / ARC06 ACTIVE,2026-11-01.** ROOT canonical consistency PASS reviewed proposal `a831fa184dbbf62b1e5882c94e1c0aed2bfd5bd3`/tree`0dd8461a2852971480b042e6775c64ed7436855a`, source `8f373fa0298694b03d88f735a2ff11f1d1b9ca41`/tree`8f0d61298a061410c8a133df2107b73b4de4313e`. The authorised mechanical transition changes ONLY S02-01…08 Status OPEN→DONE, retaining every other raw table cell/Evidence. S01's8 child rows remain DONE; all8 Arc06/all14 project rows remain OPEN. Source/index/ONE retained target ROOT QUIET, CC parked. Actual independent33 is one author-compiled Rust example replay plus32 independently observed CLI children,28zero/5typedone; original author gates/private controls and inherited/platform limits retain their exact grades. Three confirmed unauthorised temporary-tool-home acquisitions and a fourth available attribution-unclassified formatter body remain explicit deviations. S03 is DRAFT/unissued pending complete final design/prompt/readset and ROOT readiness. Earlier proposal/pending/Evidence clauses retain their reviewed a831fa18 cutoff and are superseded ONLY as current closure metadata by this dated receipt; frozen method/bindings/raws/issued prompt/closed S01 records are unchanged. Through ALL Arc06 remains authorised; final references/query variants/functional Full/fresh assembled/SAME canonical/ROOT and separate Operator project gates remain.
@@ -23,9 +25,10 @@ Baseline is merged `cb13d377aeba85c1b76a9173abb22bedd535ac69`, tree `c8a65825b49
 | [S01 bound mixed view](slice01-bound-mixed-view/slice-plan.md) | Explicit NEW mixed derived root, exact generation + same-reader owned revision/curation binding, constrained context admission, public Rust and CLI Exact/Resolve/Compact/Readable/detail with cheap pre/post freshness checks. | Merged baseline only. No configuration format change or in-place refresh. First useful upstream+owned lookup lands here. |
 | [S02 configured refresh and lifecycle](slice02-configured-refresh/slice-plan.md) | Versioned workbench profiles/default selection, explicit refresh publication and removal/reload/change semantics; immutable prior generations/history and explicit source-status reporting. | Accepted S01 APIs; distinct strict configuration, latest-under-lock CAS and truthful publication. Query/reference admission remains S01 admitted-only here; complete all-catalogue behavior is owned by the next increment. |
 | [S03 integrated reference admission](slice03-integrated-reference-admission/slice-plan.md) | Useful Full/Compact/Readable reference resolution across admitted owned authority and retained upstream catalogue metadata, including unselected/disabled/removed/registered-only sources and exact same-ID/body ambiguity. | Accepted S01/S02 APIs; on-demand target projections and narrow retained-provider witnesses, no Full hydration for Compact and no ordinary-open whole-descriptor audit. Old native/status policies remain format-specific. |
-| S04 typed lexical query families | Workbench ReverseDefinition, Form, Links with source filters, competing assertions, exact totals, bounded traversal and paging; unchanged legacy routes remain regressions. | Accepted S01–03 typed/configured/reference provider. Do not turn the owned Dictionary into a fabricated legacy archive. Typed assertion/form/relation semantics must be frozen before issue. |
-| S05 computed and proposal families | Workbench SpellingDistance, Prosody, Nuclei, Contrast, Components, Compose, ProposalExact, Generate with the existing declared policies, availability/exclusions and optional morphology behavior. | S04 typed lexical candidate route. Analyses/generated proposals stay separate from source assertions; no new linguistic model or FTS-rank fusion. |
-| S06 complete offline workbench | Identified existing pinned inputs for all four corpora, fresh disjoint functional outputs, optional owned snapshot→explicit import/live integration, clean offline caller/feature/package/documentation recipe; independent full arc composition and canonical close. | Accepted S01–05 plus ROOT approval of finite functional Full method and actual available input identity. No accepted retained Full catalogue/DB/cache leaf probe; no corpus acquisition. Missing input is an explicit blocked obligation, not permission to replace Full with Tiny. |
+| [S04 literal definitions + stored forms](slice04-typed-lexical-queries/slice-plan.md) | Useful ReverseDefinition and FIRST-CLASS stored Form, exact source/provenance/record counts/pages/Form detail; no unimplemented Links/edge variants. | Accepted S01–03 typed/configured/reference provider; exact literal/kind/association/detail policies before issue, no fabricated Archive or occurrence. |
+| [S05 bounded Links](slice05-bounded-links/slice-plan.md) | Useful typed relations PLUS unchanged parsed source clauses, four Directions, finite depth/cycle/dedup/edge pages/detail and source/target provenance. | Accepted S04 additive lexical API plus S03 reference provider; real relation/context-span identities, no fake assertions or stored parser relations. |
+| S06 computed and proposal families | Workbench SpellingDistance, Prosody, Nuclei, Contrast, Components, Compose, ProposalExact, Generate with the existing declared policies, availability/exclusions and optional morphology behavior. | Accepted S04/S05 typed candidates/links. Analyses/generated proposals stay separate from source assertions; no new linguistic model or FTS-rank fusion. |
+| S07 complete offline workbench | Identified existing pinned inputs for all four corpora, fresh disjoint functional outputs, optional owned snapshot→explicit import/live integration, clean offline caller/feature/package/documentation recipe; independent full arc composition and canonical close. | Accepted S01–06 plus ROOT approval of finite functional Full method and actual available input identity. No accepted retained Full catalogue/DB/cache leaf probe; no corpus acquisition. Missing input is an explicit blocked obligation, not permission to replace Full with Tiny. |
 
 Later slices remain roadmap-sized. Their exact APIs, finite controls and allowlists are frozen near issue, preserving every obligation below. These are not investigation-only increments. Split a later slice if concrete source reasoning cannot fit implementation and recovery in one context; do not shrink criteria to fit.
 
@@ -35,24 +38,38 @@ ROOT agreed to a source-grounded split before S02 issue. Lifecycle/CAS publicati
 
 Original Arc06 binding ledger cells remain verbatim at their first-roadmap cutoff. Their numeric owner/verifier references have this explicit successor crosswalk: original S01→current S01; original S02→current S02 configured lifecycle PLUS current S03 complete integrated references; original S03 lexical families→current S04; original S04 computed/proposal families→current S05; original S05 offline completion→current S06. A06-02 therefore needs the lifecycle evidence AND complete reference evidence before closure; A06-03/04/05 retain their exact original capabilities/verifiers under the successor numbers. All eight arc and fourteen project rows remain OPEN. The UNISSUED S02 draft's provisional reference verifier is reconciled prospectively; Git retains its original draft. No issued S01 byte, current source assignment, five-pass cap or final review/Full gate changes.
 
+## Current lexical split / exact successor crosswalk —2026-11-01
+
+ROOT approved splitting the unissued combined lexical draft after source-based sizing. First-class Form needs real form/detail/page identity; Links additionally owns parser compatibility, two evidence kinds, typed role/target/four-Direction traversal, cycles/duplicates/order/edge pages/detail. Two useful increments retain implementation/recovery headroom. Existing S04 home is refined; new S05 is roadmap-sized UNISSUED. No S03 issued byte/input/allowance/assignment or failed pass changes.
+
+| Original first-roadmap owner | CURRENT successor owner |
+| --- | --- |
+| S01 mixed view | S01 unchanged |
+| S02 lifecycle/references | S02 configured lifecycle PLUS S03 complete references |
+| S03 ReverseDefinition/Form/Links | S04 literal definitions+stored Form PLUS S05 bounded Links |
+| S04 computed/proposal eight variants | S06 computed/proposal |
+| S05 offline/final | S07 identified functional Full/clean caller/fresh assembled/SAME canonical/ROOT |
+
+A06-03 requires BOTH S04+S05; A06-04 executes atS06 and A06-05/final composition atS07. Original8arc/14project raw binding cells remain EXACT; their numeric labels retain original cutoff and this explicit crosswalk governs execution. All statuses remain OPEN. No six-slice cap is invented; five assignments applies separately to each eventual slice, not a reset of current S03. Through ALL Arc06 and separate Operator project acceptance remain unchanged. Prior dated crosswalks below/above retain their historical cutoffs.
+
 ## All twelve Query variants and policy owners
 
-The historical Q01–Q06 grouping is not a count of enum variants. Actual `search/src/lib.rs::Query` has twelve. S01 adds admitted mixed grouped Dictionary Exact/Resolve and preserves legacy Query::Exact; S03 supplies complete catalogue/owned reference admission. S04/S05 extend the typed workbench route without changing the old `SearchEngine` archive contract.
+The historical Q01–Q06 grouping is not a count of enum variants. Actual `search/src/lib.rs::Query` has twelve. S01 adds admitted mixed grouped Dictionary Exact/Resolve and preserves legacy Query::Exact; S03 supplies complete catalogue/owned reference admission. S04/S05/S06 extend the typed workbench route without changing the old `SearchEngine` archive contract.
 
 | Variant | Owning increment | Policy retained / required point of use |
 | --- | --- | --- |
 | Exact | S01 | Byte-exact spelling, all eligible assertion occurrences, source groups, totals before page, no winner. |
 | ReverseDefinition | S04 | Literal nonempty ASCII-lower substring; preserve alternatives, no FTS relevance fusion. |
 | Form | S04 | Exact retained form and optional original role; do not infer missing forms. |
-| Links | S04 | Explicit links, depth1/2, source and target provenance; no spelling-based sense inference. |
-| SpellingDistance | S05 | Existing Unicode-scalar Levenshtein policy and complete candidate accounting. |
-| Prosody | S05 | Existing Bauske/context/stress policy; unknown/ineligible distinctions retained. |
-| Nuclei | S05 | Existing kind/pattern contract and evidence, not a new sound metric. |
-| Contrast | S05 | Existing anchor/kind/mismatch rules and explicit exclusions. |
-| Components | S05 | Ordered components and optional morphology version/settings; no inferred source assertions. |
-| Compose | S05 | Existing conjunctive lexical/analysis filters with explicit totals; unrelated store ranks never compared. |
-| ProposalExact | S05 | Proposal identity remains separate from captured/owned assertions. |
-| Generate | S05 | Existing optional engine/settings and generated proposals, no journal mutation or community-authority claim. |
+| Links | S05 | Explicit links, depth1/2, source and target provenance; no spelling-based sense inference. |
+| SpellingDistance | S06 | Existing Unicode-scalar Levenshtein policy and complete candidate accounting. |
+| Prosody | S06 | Existing Bauske/context/stress policy; unknown/ineligible distinctions retained. |
+| Nuclei | S06 | Existing kind/pattern contract and evidence, not a new sound metric. |
+| Contrast | S06 | Existing anchor/kind/mismatch rules and explicit exclusions. |
+| Components | S06 | Ordered components and optional morphology version/settings; no inferred source assertions. |
+| Compose | S06 | Existing conjunctive lexical/analysis filters with explicit totals; unrelated store ranks never compared. |
+| ProposalExact | S06 | Proposal identity remains separate from captured/owned assertions. |
+| Generate | S06 | Existing optional engine/settings and generated proposals, no journal mutation or community-authority claim. |
 
 ## Fourteen unchanged project obligations: ownership and silent-drop boundary
 
@@ -60,16 +77,16 @@ The historical Q01–Q06 grouping is not a count of enum variants. Actual `searc
 | --- | --- |
 | P01-01 | S01 identities/curation/context binding, S02 configured selection, final fresh mixed provenance; all source/author/distributor/lineage/release/alias fields retained. |
 | P01-02 | S01 grouped competing results and complete page oracle; S02 default task-owned integration; final full/reference composition. |
-| P01-03 | S06 consumes identified pinned raw-jbotci normalized authority and preserves Arc02/03 full raw accounting; no freshly invented import claim. |
-| P01-04 | S06 identifies LLG component input provenance and complete component references; earlier normalization authority remains. |
-| P01-05 | S01/S02 independent selection plus S06 actual La input/replay. |
-| P01-06 | S01/S02 independent selection plus S06 actual Sut input/replay, unresolved provenance stays explicit. |
-| P01-07 | S06 bounded affected feature/no-default/all-five-optional package compatibility and pure owned load before SQLite; All still four PackIds. |
+| P01-03 | S07 consumes identified pinned raw-jbotci normalized authority and preserves Arc02/03 full raw accounting; no freshly invented import claim. |
+| P01-04 | S07 identifies LLG component input provenance and complete component references; earlier normalization authority remains. |
+| P01-05 | S01/S02 independent selection plus S07 actual La input/replay. |
+| P01-06 | S01/S02 independent selection plus S07 actual Sut input/replay, unresolved provenance stays explicit. |
+| P01-07 | S07 bounded affected feature/no-default/all-five-optional package compatibility and pure owned load before SQLite; All still four PackIds. |
 | P01-08 | S01/S02 selected Unified-derived integration; earlier comparison and accepted timing exception retained, no new topology/performance campaign. |
-| P01-09 | S01 same-reader owned head/history binding and reviewed context; S02 revision lifecycle; S06 optional snapshot import route. Arc05 remains exact authoritative history, never edit derived/upstream data. |
-| P01-10 | S01/S04/S05 all twelve variants and existing policies, final complete variant census. |
+| P01-09 | S01 same-reader owned head/history binding and reviewed context; S02 revision lifecycle; S07 optional snapshot import route. Arc05 remains exact authoritative history, never edit derived/upstream data. |
+| P01-10 | S01/S04/S05/S06 all twelve variants and existing policies, final complete variant census. |
 | P01-11 | S01 pages0/1/several/source filtering and stale tokens; S02 source/default/remove/reload identity changes; S03 complete integrated metadata/reference sets. |
-| P01-12 | Distinct normalized1, journal1/2, owned snapshot1, derived schema and new workbench manifest1; explicit verify/build/refresh/migration/clean offline recipe through S06. |
+| P01-12 | Distinct normalized1, journal1/2, owned snapshot1, derived schema and new workbench manifest1; explicit verify/build/refresh/migration/clean offline recipe through S07. |
 | P01-13 | Every increment preserves original source/content notices and publication holds separate from Apache code; no external redistribution authority. |
 | P01-14 | Independent child row walks/retrospectives, NEW actual assembled Sol/high and SAME canonical review, ROOT consistency, parent bubble-up; all14 stay OPEN pending separate project/Operator acceptance. |
 
@@ -127,3 +144,5 @@ S02 INITIAL/pass1 source8f373fa0/tree8f0d completed author gates and actual33 in
 ## Version0.9 — S02 mechanical close,2026-11-01
 
 ROOT consistency PASS on a831fa18 authorises8S02 Status-only transitions; all8arc rows remain OPEN. Original six-increment crosswalk and S03–06 owners/requirements are unchanged.
+
+- 0.10,2026-11-01: ROOT-approved pre-issue lexical split assigns S04 ReverseDefinition+first-class Form, S05 bounded Links, computedS06/finalS07. Prior unissued0.1/0.2 retained in Git; no implemented stubs, original binding row edits or S03 source/runtime/assignment change.
