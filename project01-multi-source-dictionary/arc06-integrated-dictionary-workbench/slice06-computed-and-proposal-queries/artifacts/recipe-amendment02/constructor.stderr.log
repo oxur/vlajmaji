@@ -1,0 +1,58 @@
+Vlajmaji Arc05 retained task target: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target
+   Compiling vlajmaji-search v0.3.0 (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/search)
+warning: unreachable expression
+   --> crates/search/src/workbench/computed.rs:982:5
+    |
+978 | /         return Err(WorkbenchLexicalError::Computation(Box::new(
+979 | |             crate::SearchError::FeatureDisabled("morphology"),
+980 | |         )));
+    | |___________- any code following this expression is unreachable
+981 |       };
+982 | /     Ok(WorkbenchGeneratedResult {
+983 | |         policy_ids: vec![crate::COMPONENT_POLICY.into()],
+984 | |         query: query.clone(),
+985 | |         value,
+986 | |         code_notices: Vec::new(),
+987 | |     })
+    | |______^ unreachable expression
+    |
+    = note: `#[warn(unreachable_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> crates/search/src/workbench/computed.rs:441:9
+    |
+441 |     let mut component_cache = BTreeMap::<String, Result<Vec<String>, String>>::new();
+    |         ----^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `component_cache`
+   --> crates/search/src/workbench/computed.rs:441:9
+    |
+441 |     let mut component_cache = BTreeMap::<String, Result<Vec<String>, String>>::new();
+    |         ^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_component_cache`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `components`
+   --> crates/search/src/workbench/computed.rs:653:49
+    |
+653 |             WorkbenchLexicalQuery::Components { components } => {
+    |                                                 ^^^^^^^^^^ help: try ignoring the field: `components: _`
+
+warning: unused variable: `value`
+   --> crates/search/src/workbench/computed.rs:976:9
+    |
+976 |     let value = {
+    |         ^^^^^ help: if this is intentional, prefix it with an underscore: `_value`
+
+warning: `vlajmaji-search` (lib) generated 5 warnings (run `cargo fix --lib -p vlajmaji-search` to apply 4 suggestions)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 32s
+     Running tests/workbench_computed_contract.rs (/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc01/target/debug/deps/workbench_computed_contract-26ab4686b523a24f)
+
+thread 'test_fixed_computed_candidates_and_depth_one_compose_hops' (88065107) panicked at crates/search/tests/workbench_computed_contract.rs:439:6:
+fixed CU registry, captures, and amended release accounting validate: InvalidAccounting("available release comp-upstream-release-r1 counts do not match its occurrence and assertion sets")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+error: test failed, to rerun pass `-p vlajmaji-search --test workbench_computed_contract`

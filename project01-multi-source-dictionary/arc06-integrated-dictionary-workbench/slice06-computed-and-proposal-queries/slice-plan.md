@@ -208,3 +208,12 @@ Shared CDC/ROOT pre-execution recipe error: Lexical requires Entry.spelling Valu
 Recipe history: INITIAL1/5 issued `arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt.md` remains current. Its pre-execution recipe amendment is `arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/recipe-amendment01.md` (DRAFT/readiness pending), reason validator-incompatible original fixture; not a new assignment.
 
 2026-11-01 current authority: recipe-amendment01 ROOT-ready/issued and bounded readback accepted; explicit SAME INITIAL1/5 resume follows the named custody checkpoint. Original15/index/ONEtarget only; all8 raw rows OPEN. See artifacts/execution.md dated CDC acceptance for actual pins and two readback wording errata.
+
+## 2026-11-01 — CORRECTION02/5 DRAFT / recipe-amendment02
+
+Actual first constructor test72095/101 reached one test/zero passed/one failed before mixed/journal/seal/build/query: CU release normalized_occurrences6 versus actual9 retained assertions. The original/amendment01 accounting shorthand was a shared CDC/ROOT packet/co-review error; actual Excluded3 is a SUBSET of normalized9, while Lexical6 remains operational. Original and amendment01 bytes/failure streams/tempROOT are preserved. recipe-amendment02.md plus cc-prompt-iteration01.md and compact current-WIP baseline prescribe actual input9/normalized9/excluded3, unchanged candidates/matched oracles/EXPECTEDamend01/four literals, samepublic6/new12/all54. Numbered CORRECTION02/5 DRAFT is pending ROOT readiness/intake/explicit SAME15/index/ONEtarget dispatch; all original A–G/gates/limits and eight raw rows remain OPEN. No validator/model change or automatic retry.
+
+| Assignment history addition | Prompt | Date | Disposition |
+| --- | --- | --- | --- |
+| INITIAL1/5 | arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt.md | 2026-11-01 | Executed; recipe-amendment01 within INITIAL; actual constructor failure now HELD, shared accounting authority miss. |
+| CORRECTION02/5 | arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/cc-prompt-iteration01.md | 2026-11-01 | DRAFT, readiness pending; recipe-amendment02 explicit normalized9/Lexical6, all remaining original duties retained. |

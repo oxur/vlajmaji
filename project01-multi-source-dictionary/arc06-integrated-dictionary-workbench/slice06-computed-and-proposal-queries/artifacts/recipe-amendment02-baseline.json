@@ -1,0 +1,238 @@
+{
+  "status": "DRAFT_CORRECTION02_OF_FIVE_ROOT_READINESS_PENDING",
+  "assignment": "cc-prompt-iteration01.md; implementation CORRECTION02/5 after actual constructor failure, not a third assignment; recipe-amendment02 is supporting authority",
+  "captured_utc": "2026-11-01T21:19:52.268424+00:00",
+  "source": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji",
+  "source_identity": {
+    "head": "d8bd64e248b7193f9244cbe527e7fac1f7926ce7",
+    "tree": "d5793d2dbc148558d4824afa5644d3c984284bf2",
+    "parent": "04fead62fde19cbeccb0181592197a292cac670d",
+    "branch": "codex/project01-integrated-workbench",
+    "porcelain": "M crates/search/src/dictionary.rs\n M crates/search/src/dictionary/projection.rs\n M crates/search/src/lib.rs\n M crates/search/src/presentation.rs\n M crates/search/src/workbench.rs\n M crates/search/src/workbench/lexical.rs\n M crates/search/src/workbench/links.rs\n?? crates/search/src/workbench/computed.rs\n?? crates/search/tests/workbench_computed_contract.rs",
+    "staged": ""
+  },
+  "current_exact15_wip": {
+    "crates/search/src/lib.rs": {
+      "state": "present",
+      "bytes": 60176,
+      "sha256": "4479ab1225687e3993c044a3566c4c6ff210b8661771497361db15362441af9f"
+    },
+    "crates/search/src/dictionary.rs": {
+      "state": "present",
+      "bytes": 131089,
+      "sha256": "a06e23f8be12077bbbb50942c69accf320bc3e7c3c814b03be900c9f3d698858"
+    },
+    "crates/search/src/dictionary/projection.rs": {
+      "state": "present",
+      "bytes": 153135,
+      "sha256": "5854911d2687b8c97a52d9f73e50aad73102fdefbfe7180e3c39a4438d6855c8"
+    },
+    "crates/search/src/workbench.rs": {
+      "state": "present",
+      "bytes": 47358,
+      "sha256": "dec8ffd7ad7dc63eca7a5db3908966d735e68c847b6d9b6864b1deaffa6a789b"
+    },
+    "crates/search/src/workbench/lexical.rs": {
+      "state": "present",
+      "bytes": 132477,
+      "sha256": "5b7a14fe1a0005dfbaa9780a10a5bbdfac91f80ea2f78df6214914e8cde8298b"
+    },
+    "crates/search/src/workbench/computed.rs": {
+      "state": "present",
+      "bytes": 40572,
+      "sha256": "eb31dc588a334dad416a87d36587791d8ab114e73ca948eab5a3912e718aab97"
+    },
+    "crates/search/src/workbench/links.rs": {
+      "state": "present",
+      "bytes": 97099,
+      "sha256": "da57751161b4290159495463b59709e6057afc1a113e7d381b0acb9881d75c1d"
+    },
+    "crates/search/src/presentation.rs": {
+      "state": "present",
+      "bytes": 23930,
+      "sha256": "826749419abbb304c4d68c9300d930fd7746ff055d1385e745b7a95bd775ff1f"
+    },
+    "crates/search/examples/integrated_workbench.rs": {
+      "state": "present",
+      "bytes": 186647,
+      "sha256": "d3a2659c3b37c90513dae9f6ff2c889409a27219a5b2d1d5523486896788ca86"
+    },
+    "crates/search/tests/workbench_computed_contract.rs": {
+      "state": "present",
+      "bytes": 28296,
+      "sha256": "7a3f1b7003250f3735c499d5bdf2742907ee7fd7c6ce686a0109be76af9f7920"
+    },
+    "crates/search/README.md": {
+      "state": "present",
+      "bytes": 8499,
+      "sha256": "09bc24182e1f5d63afae578350aedb822b4cdc4f3822da9543318a05fb590e3a"
+    },
+    "crates/cli/src/main.rs": {
+      "state": "present",
+      "bytes": 226226,
+      "sha256": "fabd177b07637a3782c360bf73743fe7c2aa11ca3bc6b0ae7afc901979fd39d2"
+    },
+    "crates/cli/tests/workbench_computed_contract.rs": {
+      "state": "absent"
+    },
+    "docs/integrated-workbench.md": {
+      "state": "present",
+      "bytes": 29090,
+      "sha256": "2fcc1a3b4dc2ee357f694437b386954a2bc8eea3f41024ad82195735bcbcc213"
+    },
+    "README.md": {
+      "state": "present",
+      "bytes": 15563,
+      "sha256": "4b24cd745cf54cceb88df52ab26cc8c339d86b472dc74824ae1444bcdb61eea2"
+    }
+  },
+  "protected_refs": {
+    "main": "cb13d377aeba85c1b76a9173abb22bedd535ac69",
+    "origin/main": "cb13d377aeba85c1b76a9173abb22bedd535ac69",
+    "codex/project01-owned-dictionary": "69a9f68507e23cef9b20e4bcabc86840e224689e",
+    "bauske_head": "c5801ae17caaf86d2651b5ce34570199e873ad0f",
+    "bauske_tree": "e5715eb87df84165ecba8b43cd35949ae9457695",
+    "bauske_porcelain": "?? #README.md#\n?? .#README.md"
+  },
+  "preserved_authorities_by_reference": {
+    "cc-prompt.md": {
+      "bytes": 19619,
+      "sha256": "ef3f80974d8a7e65cb19d00feb35721ff001a056b2165108f558017fa6879988"
+    },
+    "artifacts/read-manifest.json": {
+      "bytes": 52267,
+      "sha256": "2f74bf3638a6f2ba0325fc272a29273b49ae274e71f11a61d97e6b22da97099a"
+    },
+    "recipe-amendment01.md": {
+      "bytes": 4513,
+      "sha256": "e85d2f31c2620b615bdb0d1277a0ca6c725e7fd6628f83292abc6555514fe6b5"
+    },
+    "artifacts/recipe-amendment01-manifest.json": {
+      "bytes": 52890,
+      "sha256": "ee2eda2f52702553badd9564c185768314e288c8b7df51d8245422476ce94bc4"
+    },
+    "artifacts/computed-inputs/computed-fixture-spec.json": {
+      "bytes": 11314,
+      "sha256": "95808d4a2e039dda5d7fee6686298dc77f1abd28404f87a11712ab88b7fd8e06"
+    },
+    "artifacts/computed-inputs/computed-expected.json": {
+      "bytes": 13351,
+      "sha256": "69ff9a58ea37c76252382e7733dd7e687d5a96e21d2210cf1aa2795a8e632ae3"
+    },
+    "artifacts/computed-inputs/computed-fixture-spec-recipe-amendment01.json": {
+      "bytes": 11403,
+      "sha256": "9e6bedd10ffbe6a3c3bcf1d8f62c116f77c8a53a0d33b90c7b8b96020139e657"
+    },
+    "artifacts/computed-inputs/computed-expected-recipe-amendment01.json": {
+      "bytes": 13235,
+      "sha256": "49292666053c7ddc3baf3f59da33ef37d17d03d413b038062c88c275c35de01b"
+    },
+    "artifacts/computed-inputs/computed-source-request.json": {
+      "bytes": 238,
+      "sha256": "204951620d2103ab8f7668f2702c20c544486f376e10fba3bd0e2c9711c39be3"
+    },
+    "artifacts/computed-inputs/computed-proposal-request.json": {
+      "bytes": 787,
+      "sha256": "22ceee315703f15e56e18162e386834de9c44bf33c8e06dbd54e9c04db78588f"
+    },
+    "artifacts/computed-inputs/computed-generate-request.json": {
+      "bytes": 263,
+      "sha256": "1775e5457595728ad8c4506100fd32e6860e03173adcaaf3a9b8169459a3f6a8"
+    },
+    "artifacts/computed-inputs/computed-cursor-protocol.json": {
+      "bytes": 6447,
+      "sha256": "7b380721fec91e3d6a9a880b48bad55e40f49a8afb0b4687cc40663c41052cad"
+    }
+  },
+  "current_six_emission_map": {
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-cursor-protocol.json": {
+      "bytes": 6447,
+      "sha256": "7b380721fec91e3d6a9a880b48bad55e40f49a8afb0b4687cc40663c41052cad",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-cursor-protocol.json"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-expected-recipe-amendment01.json": {
+      "bytes": 13235,
+      "sha256": "49292666053c7ddc3baf3f59da33ef37d17d03d413b038062c88c275c35de01b",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-expected.json"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-fixture-spec-recipe-amendment02.json": {
+      "bytes": 11614,
+      "sha256": "f712242bb9f606ec20c12490a138c62255a0ec1b67f614cb1d8c844b0358d330",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-fixture-spec.json"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-generate-request.json": {
+      "bytes": 263,
+      "sha256": "1775e5457595728ad8c4506100fd32e6860e03173adcaaf3a9b8169459a3f6a8",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-generate-request.json"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-proposal-request.json": {
+      "bytes": 787,
+      "sha256": "22ceee315703f15e56e18162e386834de9c44bf33c8e06dbd54e9c04db78588f",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-proposal-request.json"
+    },
+    "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/computed-inputs/computed-source-request.json": {
+      "bytes": 238,
+      "sha256": "204951620d2103ab8f7668f2702c20c544486f376e10fba3bd0e2c9711c39be3",
+      "emitted_relative_path": "artifacts/computed-inputs/computed-source-request.json"
+    }
+  },
+  "environment": {
+    "/tmp/vlajmaji-p01-a05-cargo": {
+      "bytes": 330,
+      "sha256": "426d1e49863551fe37252cecb8d36f8fb58410670fc550c6deedc89ddb92f53d"
+    },
+    "/private/tmp/vlajmaji-p01-a06-s01-original-env.sh": {
+      "bytes": 2287,
+      "sha256": "ae749d0dd537499b254fd4e9fc35980345eabf5e1164c41817e62eacc58b2c86"
+    }
+  },
+  "failure": {
+    "streams": {
+      "stdout": {
+        "original": "/private/tmp/vlajmaji-s06-c02-focused-RWJSg5/stdout.log",
+        "preserved": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/recipe-amendment02/constructor.stdout.log",
+        "bytes": 274,
+        "sha256": "75c7de61fd66f2559c3097d1111b6aa9654be89a6ec02a8128035c0d48c1e6df"
+      },
+      "stderr": {
+        "original": "/private/tmp/vlajmaji-s06-c02-focused-RWJSg5/stderr.log",
+        "preserved": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/planning/project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice06-computed-and-proposal-queries/artifacts/recipe-amendment02/constructor.stderr.log",
+        "bytes": 3050,
+        "sha256": "30efb312a8248741cfaf9e82b8afd15bff4eeaf016aaabf5f42570dba3e9f491"
+      }
+    },
+    "nested_session": 72095,
+    "terminal_exit": 101,
+    "tests": {
+      "passed": 0,
+      "failed": 1,
+      "ignored": 0,
+      "filtered": 0
+    },
+    "created_root": "/private/tmp/vlajmaji-s06-c02-tmp-A17RFi/vlajmaji-computed-contract-2193-0",
+    "root_observation": "Actual task-owned directory observed by CC read-only; independently is_dir by CDC. No cleanup.",
+    "reached": "fresh_root allocated; upstream Dictionary::from_document failed InvalidAccounting; no mixed assembly/journal/seal/build/query.",
+    "stderr_other_scope": "Five feature-off compiler warnings are original source completion, not the constructor failure."
+  },
+  "authority_delta": {
+    "base": "artifacts/computed-inputs/computed-fixture-spec-recipe-amendment01.json",
+    "derived": "artifacts/computed-inputs/computed-fixture-spec-recipe-amendment02.json",
+    "added": {
+      "/transport/upstream_accounting/normalized_occurrences": 9,
+      "/transport/upstream_release_accounting": {
+        "input_occurrences": 9,
+        "normalized_occurrences": 9,
+        "query_excluded_occurrences": 3,
+        "unit": "occurrences"
+      }
+    },
+    "unchanged": "Lexical6/Excluded3, eligibility reasons, all candidates8/5→7/5, matchedIDs/order/counts, EXPECTEDamend01, four original current literals, captures/rawbytes/owned history/protocol. Samepublic6/new12/all54."
+  },
+  "validator": {
+    "path": "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/lexicon/src/dictionary.rs",
+    "scope": "Required-section384–397(accountingfields),1528–1534(LexicalPresence),1590–1646(completecapture/assertionmembership+counts). normalized counts ALL9 assertions; excluded3 is subset, not a partition subtracted from normalized.",
+    "bytes": 94483,
+    "sha256": "0af2e5e18a2698a58532d6a158d8bc31812e0a30b20ec7a1c53e4aa90a5dc677"
+  },
+  "scope": "Current uncommitted WIP ONLY, no clean/frozen/accepted-functionality claim. Original94 and amendment01 manifest remain historical reference scopes; no new giant intake/inventory. Source/index/ONEtarget held; no validator/model/normalizer/dependency/manifest changes. Same15 and all unfinished A–G/gates/freeze/independent/S07 obligations."
+}
