@@ -1,6 +1,6 @@
 # S04 — Typed literal definitions and stored forms
 
-**DRAFT0.4 / UNISSUED / FINAL READINESS IN PREPARATION,2026-11-01.** Accepted S03 source `f47697edda910e7aa3a2076be800fb046fddb983`/tree`302627a2c8f572095b81af09b340c258ba4c9cdd`; local S03 close24c8e7a0 followed ROOT consistency09317990. Source/index/ONEtarget ROOT QUIET; retained Luna/high CC parked. No source/runtime/intake authority. Exact final readmanifest/literal fixture bindings and ROOT readiness remain before issue. All8 S04/all8arc/all14project rows OPEN. Prior0.1–0.3 remain in Git. S04 only ReverseDefinition+storedForm; ALL Links duties moved to UNISSUED S05, computedS06/finalS07; no stubs or original obligation loss.
+**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final readiness/mechanical freeze PASS atfce441525a0b8e125c4a47aea04cfe0fae97fb2a. Retained Luna/high CC may read complete required material and append actual source-cited intake/readback ONLY to this slice artifacts/execution.md. ALL old assignments superseded; source/index/ONEtarget ROOT QUIET atf476. No source/runtime/build/index/target authority until CDC verifies understanding+62freshpins and explicitly transfers EXACT13paths. All8S04/8arc/14project OPEN; THROUGH ALL Arc06 active. This status-only line supersedes prior DRAFT/current-readiness language at its fce cutoff without changing any protocol/data/source contract.
 
 ## 1. Useful increment and compatibility
 

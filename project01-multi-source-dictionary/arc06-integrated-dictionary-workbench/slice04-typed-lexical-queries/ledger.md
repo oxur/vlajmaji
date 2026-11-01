@@ -1,6 +1,6 @@
 # S04 ledger — typed literal definitions and stored forms
 
-**DRAFT0.4 / UNISSUED / FINAL READINESS IN PREPARATION / all8 OPEN,2026-11-01.** ROOT-approved split of unissued0.1/0.2: prior Links criterion/control moves wholly to S05; original A06-03 requires BOTH S04+S05. Prior ledger preserved in Git7c429165/00368855. Only two implemented request/result variants and actual Form detail belong here, no edge/Links stub. S03 source/index/target ownership unchanged; no runtime or acceptance.
+**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final readiness/mechanical freeze PASS atfce441525a0b8e125c4a47aea04cfe0fae97fb2a. Retained Luna/high CC may read complete required material and append actual source-cited intake/readback ONLY to this slice artifacts/execution.md. ALL old assignments superseded; source/index/ONEtarget ROOT QUIET atf476. No source/runtime/build/index/target authority until CDC verifies understanding+62freshpins and explicitly transfers EXACT13paths. All8S04/8arc/14project OPEN; THROUGH ALL Arc06 active. This status-only line supersedes prior DRAFT/current-readiness language at its fce cutoff without changing any protocol/data/source contract.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |
 | --- | --- | --- | --- | --- | --- | --- |

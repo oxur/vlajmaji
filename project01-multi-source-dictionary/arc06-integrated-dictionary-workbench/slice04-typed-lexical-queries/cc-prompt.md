@@ -1,6 +1,6 @@
 # CC assignment — S04 literal definitions and stored forms
 
-**STATUS: DRAFT / UNISSUED / INITIAL1 OF FIVE / ROOT READINESS PENDING,2026-11-01.** Retained Luna/high CC is parked. Do not resume any S01–03 assignment. Source/index/ONEtarget ROOT QUIET. After ROOT readiness, status-only issue allows actual reading/readback ONLY in this slice artifacts/execution.md; implementation requires coherent CDC-accepted intake/fresh pins and ONE explicit transfer. No source/build/Cargo/query/target activity now. All8S04/all8arc/all14project rows OPEN; sourcef476 and S03 local close24c8e7a0 accepted. THROUGH ALL Arc06 remains endpoint; no push/PR/default/retainedFull/acquisition/performance authority.
+**STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ONLY,2026-11-01.** ROOT final readiness/mechanical freeze PASS atfce441525a0b8e125c4a47aea04cfe0fae97fb2a. Retained Luna/high CC may read complete required material and append actual source-cited intake/readback ONLY to this slice artifacts/execution.md. ALL old assignments superseded; source/index/ONEtarget ROOT QUIET atf476. No source/runtime/build/index/target authority until CDC verifies understanding+62freshpins and explicitly transfers EXACT13paths. All8S04/8arc/14project OPEN; THROUGH ALL Arc06 active. This status-only line supersedes prior DRAFT/current-readiness language at its fce cutoff without changing any protocol/data/source contract.
 
 ## Outcome, bounded authority and source
 
