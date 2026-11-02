@@ -57,3 +57,10 @@ The source/index remain QUIET; only reviewer execution custody was transferred. 
 ## Technical handback and proposal custody
 
 The SAME reviewer explicitly returned execution-only ONEtarget/scratch custody QUIET after sessions32071/64651; there are no active product commands. CDC read the actual small finisher stdout, complete six-line native Readable and profile report, and independently confirmed clean SOURCE. This proposal also preserves the already existing late CC bubble-up append in the closed S06 closing-report.md; it changes no S06 row/status or accepted evidence grade. The final canonical review must read the actual proposal, not infer acceptance from this draft or the technical handback.
+
+
+## ROOT consistency and S07 mechanical close — 2026-11-01
+
+ROOT accepted final canonical checkpoint30b9d7298c6df740c0232e6eb8330957b31ba125/tree832cbfa1b63d543e807e726cc0078442a391286f, proposal259756e8 and clean SOURCE27fc2be/tree7444b079 after the SAME reviewer accepted the actual final packet. ROOT independently checked the actual complete native JSON pairs, six-line Readable/value/policy and empty success stderr. Both failed101 observer stages, direct Generate VALUE-only limit, inherited deviations and large/expensive Full-output limits remain accepted at exactly their recorded grades.
+
+Authorized mechanical close changes ONLY S07-01…08 raw Status OPEN→DONE. Every other raw child ledger cell, including Evidence, is unchanged; Arc06's eight statuses await the next authorized mechanical checkpoint, and all fourteen Project raw statuses remain lowercase open. The earlier proposal/pending clauses retain their reviewed as-of cutoff and are superseded only as current status by this receipt. No new runtime, source mutation, proof, acquisition, default-store/retained-Full access or external action occurred.

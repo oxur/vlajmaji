@@ -131,3 +131,10 @@ A real missing/mismatched original or unexpected product failure stops dependent
 ## Current shared technical proposal — 2026-11-01
 
 S07 docs source27fc2be/tree7444b079 is clean/QUIET. The NEW reviewer’s actual original-four-pack plus self-contained owned-history proof and original three native callers completed; approved bounded observer corrections preserved both failed101 stages and every earlier successful setup/store/view/query instead of replaying them. See cdc-verification.md, closing-report.md and shared retro.md for original8child/8arc/14project row walks, precise actual/inherited grades, historical deviations and zero-silent-drop bubble-ups. SAME-reviewer final canonical verdict and ROOT consistency are pending. All eight S07/all eight Arc06/all fourteen Project statuses remain OPEN; Project acceptance stays with the Operator. No new runtime, delivery, acquisition, default-store or retained-Full access is authorized.
+
+
+## ROOT consistency and S07 mechanical close — 2026-11-01
+
+ROOT accepted final canonical checkpoint30b9d7298c6df740c0232e6eb8330957b31ba125/tree832cbfa1b63d543e807e726cc0078442a391286f, proposal259756e8 and clean SOURCE27fc2be/tree7444b079 after the SAME reviewer accepted the actual final packet. ROOT independently checked the actual complete native JSON pairs, six-line Readable/value/policy and empty success stderr. Both failed101 observer stages, direct Generate VALUE-only limit, inherited deviations and large/expensive Full-output limits remain accepted at exactly their recorded grades.
+
+Authorized mechanical close changes ONLY S07-01…08 raw Status OPEN→DONE. Every other raw child ledger cell, including Evidence, is unchanged; Arc06's eight statuses await the next authorized mechanical checkpoint, and all fourteen Project raw statuses remain lowercase open. The earlier proposal/pending clauses retain their reviewed as-of cutoff and are superseded only as current status by this receipt. No new runtime, source mutation, proof, acquisition, default-store/retained-Full access or external action occurred.
