@@ -1,5 +1,7 @@
 # S06 ledger — computed and proposal queries
 
+**CURRENT — COMPLETION03/5 ISSUED, 2026-11-01.** Operator-approved proportionate-proof replan is recorded in slice-plan.md's CURRENT completion section and cc-prompt-iteration02.md. Product criteria, Verify cells and all eight OPEN rows below are unchanged. Existing Make/no-default results are reused where source is unchanged; remaining all-features/package/build/return and independent review remain required under that simpler procedure. ROOT approved the exact completion prompt; CC resumes after the named issue checkpoint; historical issued prompts/evidence remain preserved.
+
 **STATUS: ISSUED / INITIAL1 OF FIVE / INTAKE ACCEPTED / TRANSFER READY,2026-11-01.** CDC whole-read actual intake plus bounded corrections and independently fresh-matched94pins/2,462,858B, accepted d8bd64e source/tree/branch/clean index/protected refs/Bauske/exact15allowance12existing+3absent. AFTER this named custody checkpoint and explicit retained-Luna dispatch, CC exclusively owns EXACT15/source index/ONEtarget; ROOT/CDC read-only there until actual authorQUIET. Earlier packet/intake clauses retain their as-of cutoff; all eight child/eight Arc/fourteen Project statuses OPEN and THROUGH ALL Arc06/S07/Operator duties unchanged.
 
 | ID | Criterion | Verify | Significance | Origin / owner | Status | Evidence / scope |

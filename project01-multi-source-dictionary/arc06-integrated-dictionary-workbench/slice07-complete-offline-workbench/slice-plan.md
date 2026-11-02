@@ -1,5 +1,7 @@
 # S07 — Complete offline workbench
 
+**CURRENT v0.2 — UNISSUED, Operator-approved proportionate-proof procedure, 2026-11-01.** S06 COMPLETION03/5 is issued after ROOT approval; no S07 source/input probe/runtime is issued here. All original capabilities and eight obligations remain: actual four pinned corpora plus owned/full functional composition, runnable guide, NEW independently authored public Rust consumer, SAME-context canonical review and ROOT consistency. Use one adequate assembled proof for S07 and Arc06, existing Git/Cargo/CLI tools and concise canonical verification; do not create a new runner/validator/binding manifest or replicated child campaigns, inventories, transcript reconstruction or per-command export apparatus. This supersedes agent-created support-procedure details in older §§4–5, not source provenance, actual input identification, fresh disjoint outputs, missing-input stop conditions, independent acceptance or the separate Operator project gate. Existing history/raw evidence is retained without cleanup/reorganization. ROOT still settles material product changes and the concrete full-input boundary before execution.
+
 **Status: UNISSUED prospective DRAFT0.1, 2026-11-01.** S06 CORRECTION02/5 remains active; this draft issues no source or runtime assignment. Final accepted S06 source/API identities, exact source allowance, original-input availability and bounded functional method require concrete readiness before issue. No original raw, retained Full, default-store or data-cache leaf was probed to prepare this draft.
 
 ## 1. Useful result and dependencies
@@ -65,3 +67,5 @@ S07 completes only after all eight child rows have actual dispositions, independ
 ## Version and assignment history
 
 - 0.1,2026-11-01: prospective UNISSUED draft while S06 CORRECTION02 authors. ROOT agreed guide-first delivery over existing APIs; actual S06 baseline, exact allowance/input identification and finite runtime readiness remain pending. No S07 prompt/implementation pass/source/runtime transfer exists.
+
+- 0.2,2026-11-01: Operator-approved support-procedure simplification above; original S07 full-input/owned/guide/new-consumer/canonical obligations remain UNISSUED and open.

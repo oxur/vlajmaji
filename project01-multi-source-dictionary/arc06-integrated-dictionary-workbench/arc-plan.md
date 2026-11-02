@@ -1,5 +1,7 @@
 # Arc06 — Integrated dictionary workbench
 
+**CURRENT v0.13 — Operator-approved proportionate-proof replan, 2026-11-01.** S01–S05 remain accepted; S06/S07 and all Arc/Project rows remain open. THROUGH ALL Arc06, CDC Sol6.1/high and retained CC Luna/high continue. Product/API/fixture/ledger criteria and history are unchanged; agent-created proof machinery and conflicting older procedure are superseded by S06's CURRENT completion section and `slice06-computed-and-proposal-queries/cc-prompt-iteration02.md` (COMPLETION03/5, ISSUED after ROOT approval). Reuse actual unchanged-source Make/no-default evidence, finish the genuine isolated Synthetic all-features gate and affected caller/package work, then use existing tests, a small public journey and one independent source review in canonical verification. Retain the unlaunched DRAFT23 observer as superseded; no new runner/validator/binding manifest, inventories, transcript reconstruction or per-command export apparatus. S07 still delivers actual four pinned corpora plus owned/full functional composition, guide, NEW independent public Rust consumer, SAME-context canonical review and ROOT consistency; one assembled proof may satisfy S07 and Arc06. Earlier dated status/procedure paragraphs retain their historical scope; no product requirement or external-action authority changes.
+
 **Current S05 technical proposal —2026-11-01:** source d8bd64e/tree d579 QUIET; actual31 unique independent calls (23zero/8typedone) PASS. Child8 close awaits ROOT canonical consistency; all8Arc/14project statuses remain OPEN, S06/S07 owners unchanged. Earlier dated metadata retains its as-of cutoff.
 
 **Current S04 CLOSED —2026-11-01:** ROOT consistency837c0c5c accepted source04fead62/tree7a34a1b4 and authorised8 child status-only DONE transitions. All8 Arc06/all14 project raw rows remain unchanged OPEN; source/index/ONEtarget QUIET. S05 Links/S06 computed/S07 fresh assembled/newconsumer/identifiedFull/Operator retain owners. Following dated proposal clauses retain their as-of scope.
@@ -166,3 +168,5 @@ Actual sourcef47697ed and final27 unique independent children are reconciled in 
 ## 0.12 —2026-11-01 actual S03 local closure
 
 ROOT canonical consistency PASS09317990 authorises exact8child Status-only close; every other child cell/Evidence and all8arc/all14project WHOLErows remain unchanged. The preceding verified proposal bodies remain at their reviewed cutoff. S04 final readiness is next, still UNISSUED; no source/runtime transfer or external scope.
+
+- 0.13,2026-11-01: Operator-approved proportionate-proof procedure; original seven increments/product criteria/history unchanged; S06 COMPLETION03/5 issued completion and S07 single assembled-proof ownership above govern current completion.
