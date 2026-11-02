@@ -938,7 +938,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 ```
 
 The fixed independent consumer also derives a jbotci `RelationTarget` from the
-loaded release's actual native Entry 333, and checks ReverseDefinition
+loaded release's actual native assertion 333, and checks ReverseDefinition
 `contains="grow"`, the retained LLG Form `fav`, depth-one Links, and the
 bounded computed families against those pre-query inputs. A target is bound to
 its actual pack/release identity: the repeated native value 333 in the separate
