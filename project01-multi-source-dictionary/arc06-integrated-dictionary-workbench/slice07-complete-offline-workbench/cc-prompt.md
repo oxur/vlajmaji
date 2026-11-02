@@ -1,0 +1,18 @@
+# S07 INITIAL1/5 — DRAFT pending ROOT review, 2026-11-01
+
+Own path: arc06-integrated-dictionary-workbench/slice07-complete-offline-workbench/cc-prompt.md. This is the first of five S07 implementation assignments, following accepted S06 b5da0fe3 and planning9c16cef. Same retained CC Luna/high and CDC Sol6.1/high continue THROUGH ALL Arc06. No execution before ROOT issue/release.
+
+Deliver the useful offline all-four-plus-owned guide using existing APIs and the CURRENT v0.3 scope in slice-plan.md. Read that compact section, the eight existing ledger rows, applicable current SOURCE AGENTS and relevant command/API definitions. Reuse earlier source knowledge; no historical intake reset, new runner/manifest/inventory/proof framework or per-command export apparatus.
+
+SOURCE: /Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji at accepted b5da0fe3f2967f24b26f614ced0d30fc3ba604c0, clean before your assignment. Allowed writes are exactly docs/integrated-workbench.md, README.md, crates/search/README.md; edit only where useful. No product code, manifests/dependencies/lock, embedded data, raw bytes or existing tests. Actual compatibility defect => report concrete code/required smallest path before changing allowance. Source/index/ONEtarget custody transfers explicitly after issue; CDC/ROOT then read-only there until your return.
+
+Write literal offline setup, strict version1 four-sealed-pack manifest and all-four installation, publisher owned init/edit/edit/export, pure public load_owned_snapshot BEFORE destination catalogue/journal import, explicit historical/current build and configured refresh/query recipes. Use exact existing original paths/pins and the self-contained owned inputs in the plan; no acquisition, Tiny/Synthetic replacement, retained Full/default/cache use or new input catalog. Distinguish shared Lensisku provenance, current selection from retained history, content holds from code license and seal integrity from rights. State default Search morphology-off vs CLI morphology-on. Use actual native CLI flags and public Rust paths. No new full-input public example/API abstraction.
+
+Do not execute the full replay yourself or create reviewer consumer code. The NEW independent context owns the one shared actual four-corpus/owned assembled proof and new public Rust consumer after your source freeze; its actual code/lock will be reviewed before that execution. Your guide must be executable from the exact identified inputs, with explicit fresh outputs, not a narrative capability claim. Existing S06 sample commands are separate and stay useful.
+
+For this docs-only increment, run git diff --check and inspect current CLI/API source for the commands/types you publish. Reuse actual S06 Make/no-default/all-features and affected package/default-build evidence; no code/path-set change requires those gates again. No product runtime/build expected in this assignment. Keep a concise actual execution note in artifacts/execution.md and proposed slice-root closing-report.md; no new readiness report. Name the actual altered allowed files in a git commit --only with adjacent trailers:
+
+Co-authored-by: Codex <noreply@openai.com>
+Co-authored-by: Billo AI <ai-engineering@billo.systems>
+
+Return clean SOURCE/index, commit/tree/parent, exact changed paths, known limitations, brief delivery/unexpected finding/scope-gap bubble-up and explicit SOURCE/index/ONEtarget QUIET. Do not mark any child/Arc/Project row done. CDC then commissions the NEW independently authored Rust consumer/shared full proof, SAME-context canonical review and ROOT consistency. Fourteen Project rows and separate Operator acceptance remain outside this assignment. No push/publication/default/retainedFull/acquisition/cleanup.
