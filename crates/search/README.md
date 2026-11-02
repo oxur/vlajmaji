@@ -149,3 +149,6 @@ historical and configured queries, same-view Full/Compact results, and readable
 Compact output. Its emitted authorities are synthetic fixtures, not lexical
 corpus claims; generated compounds and scores do not establish attested usage
 or semantic equivalence.
+
+For the separately pinned local four-corpus workflow and explicit sealed-owned
+history import, see the [full offline workbench guide](../../docs/integrated-workbench.md#full-offline-four-pack-and-owned-history-workflow).

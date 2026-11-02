@@ -674,3 +674,285 @@ The named and default queries have matching Full result bodies for this same
 request and current preparation. Their configured identities can differ, so a
 Compact key must stay paired with the binding from the response that issued
 that key; do not transfer detail keys between named, default, or direct views.
+
+
+## Full offline four-pack and owned-history workflow
+
+This section is for a local source checkout and the exact original inputs listed
+below. It uses the native materializers and the strict sealed-pack manifest;
+it does not fetch or replace any input, use an embedded Full package, or open a
+retained Full/default catalogue. Every output destination is fresh and explicit.
+The source files remain separate authorities even when two distributions share
+Lensisku lineage. Their seals establish byte integrity, not ownership, a
+license grant, or permission to redistribute the corpus. The LLG notice is
+retained with that import; the La-Lojban and Sutysisku content holds remain in
+effect.
+
+| Original input | Existing path below its root | Bytes | Expected SHA-256 |
+| --- | --- | ---: | --- |
+| jbotci raw export | `dictionary-en.json` | 17,163,482 | `12e826751c3e50c10dd8df1adafb5f9eb32cdf542b22c4244f284b59d3824dde` |
+| jbotci metadata | `dictionary-en.metadata.toml` | 514 | `fe101eead51e0be1b885f3ee1b4555136e333e839baa250ddbd7b84c9af5fc98` |
+| LLG gismu list | `lexical/llg-gismu.txt` | 368,403 | `f2fc4cff4f265ad02717d56733b4627ffa78c616db78dcaa44caab694e1dd5b7` |
+| LLG cmavo list | `lexical/llg-cmavo.txt` | 145,139 | `544414d61f3ff35dd2cf4e4f79f3c86bf9bb0568eb3403f57288057e16796402` |
+| LLG rafsi list | `lexical/llg-rafsi.txt` | 30,883 | `31b90a8551cb3cb9f4d0c6873867af1906e9210c398bf49f20e5c21aa02d0d24` |
+| LLG notice | `notices/llg-public-domain.txt` | 1,023 | `9fb2ae1345252ba30999523a0980e1ae69795f5940d2fd9cea8a56c67be18a55` |
+| La-Lojban English export | `lexical/la-lojban-en.json` | 7,259,156 | `861e71f66173b383298f6b1823e3ee1ed76db4b9c3fb97e7177de1fd7b667d35` |
+| Sutysisku English projection | `lexical/sutysisku-parsed-en.json` | 4,563,090 | `8e80f6626d2e68a17025d52c3f0cf5ea8c32cbfeeb0c2ff1417fcba539bd043d` |
+
+The jbotci files are in the existing Arc02 directory at revision
+`3d9fd41d9ed32de26311ee27ec86b6b165985aa1`. The remaining six are under the
+existing E02 `raw/` directory shown in the commands. La-Lojban is a second
+distribution of shared Lensisku material; jbotci and La-Lojban therefore do
+not represent two independent attestations. Sutysisku lineage remains
+unresolved, and LLG is the third authority. The four PackIds are
+`lensisku-jbotci`, `llg`, `la-lojban`, and `sutysisku`.
+
+Use the defaults supplied by the accepted importers: jbotci revision
+`3d9fd41d9ed32de26311ee27ec86b6b165985aa1`, La-Lojban revision
+`de47055c68141c283841b1035cd7425bb32bf6ca`, Sutysisku revision
+`2c71205747143ea965749ffc3ac3b48ef5c0a517`, and the four LLG component and
+notice hashes in the table. These defaults are checked against the complete
+local bytes. If an input is absent or does not match, stop that pack’s import;
+do not download, repin, substitute a Tiny/Synthetic fixture, or use an existing
+normalized store.
+
+From a shell with Rust 1.98 and the workspace's sibling `bauske` checkout:
+
+```sh
+SOURCE=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji
+JBOTCI=/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc02/data/jbotci/3d9fd41d9ed32de26311ee27ec86b6b165985aa1
+RAW='/Users/oubiwann/Library/Application Support/ChatGPT-Profiles/personal/codex-home/.chatgpt-projects/g-p-6a8c72d334048191887d4e00472f8430/relojban-poetics/experiments/E02-resource-discovery/raw'
+OWNED=/private/tmp/vlajmaji-s06-cdc.u6hg0U/workbench-example/inputs
+
+cd "$SOURCE"
+cargo +1.98.0 build --locked --offline -p vlajmaji-cli
+TARGET_DIR=${CARGO_TARGET_DIR:-$SOURCE/target}
+case "$TARGET_DIR" in
+  /*) ;;
+  *) TARGET_DIR="$SOURCE/$TARGET_DIR" ;;
+esac
+CLI="$TARGET_DIR/debug/vlajmaji"
+OUT=$(mktemp -d "${TMPDIR:-/tmp}/vlajmaji-four-pack.XXXXXX")
+export OUT
+mkdir -p "$OUT/packs"
+
+"$CLI" data-pack materialize jbotci \
+  "$JBOTCI/dictionary-en.json" "$JBOTCI/dictionary-en.metadata.toml" \
+  "$OUT/packs/jbotci"
+"$CLI" data-pack materialize llg \
+  "$RAW/lexical/llg-gismu.txt" "$RAW/lexical/llg-cmavo.txt" \
+  "$RAW/lexical/llg-rafsi.txt" "$RAW/notices/llg-public-domain.txt" \
+  "$OUT/packs/llg"
+"$CLI" data-pack materialize la-lojban \
+  "$RAW/lexical/la-lojban-en.json" "$OUT/packs/la-lojban"
+"$CLI" data-pack materialize sutysisku \
+  "$RAW/lexical/sutysisku-parsed-en.json" "$OUT/packs/sutysisku"
+
+"$CLI" owned init "$OUT/publisher-journal" --input "$OWNED/owned-seed.json"
+"$CLI" owned edit "$OUT/publisher-journal" --expected-head owned-r0 \
+  --input "$OWNED/owned-r1.json"
+"$CLI" owned edit "$OUT/publisher-journal" --expected-head owned-r1 \
+  --input "$OWNED/owned-r2.json"
+"$CLI" owned export "$OUT/publisher-journal" \
+  --output "$OUT/owned-snapshot.json" --seal "$OUT/owned-seal.json"
+```
+
+Each materializer creates a new pack directory containing `release.json`,
+`report.json`, and `seal.json`; `Full` is the materializer's pinned local input
+kind, not an embedded package or a license statement. The publisher inputs are
+the original `owned-seed.json`, `owned-r1.json`, and `owned-r2.json` paths above,
+with their previously recorded byte pins. They create the single source
+`owned-example`: r0 is empty, r1 has active assertions `a` and `b`, and r2 has
+`a`, `b`, and `c`. The history has no Context, Relation, or curation records.
+The materialized journal is an authoritative publisher journal, not a catalogue
+or workbench database.
+
+Before writing an installed catalogue or destination journal, a Rust consumer
+can validate the exported sealed history as a pure value and then explicitly
+import it. This uses the public umbrella re-exports and the same original bytes:
+
+```rust,no_run
+use std::{env, fs, path::PathBuf};
+use vlajmaji::{lexicon::load_owned_snapshot, store::OwnedJournal};
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let out = PathBuf::from(env::var_os("OUT").expect("OUT names the fresh recipe directory"));
+    let snapshot_bytes = fs::read(out.join("owned-snapshot.json"))?;
+    let seal_bytes = fs::read(out.join("owned-seal.json"))?;
+    let snapshot = load_owned_snapshot(&snapshot_bytes, &seal_bytes)?;
+
+    let destination = out.join("imported-owned-journal");
+    let (_journal, _report) = OwnedJournal::import_snapshot(destination, &snapshot)?;
+    Ok(())
+}
+```
+
+`load_owned_snapshot` checks the complete seal, canonical bytes, history, and
+reconstructed states without opening a journal. `OwnedJournal::import_snapshot`
+then creates a different journal explicitly. Do this before installing the
+catalogue or building views in a new Rust consumer. The CLI's `owned check` and
+`owned import` commands provide the same validation/import operations when
+working entirely from the terminal.
+
+The catalogue manifest is strict version 1. Its relative paths are resolved
+from the manifest's parent, and `--all` selects exactly the four records named
+here:
+
+```sh
+cat > "$OUT/packs.json" <<'JSON'
+{
+  "version": 1,
+  "inputs": [
+    {"kind":"sealed","pack_id":"lensisku-jbotci","release":"packs/jbotci/release.json","seal":"packs/jbotci/seal.json"},
+    {"kind":"sealed","pack_id":"llg","release":"packs/llg/release.json","seal":"packs/llg/seal.json"},
+    {"kind":"sealed","pack_id":"la-lojban","release":"packs/la-lojban/release.json","seal":"packs/la-lojban/seal.json"},
+    {"kind":"sealed","pack_id":"sutysisku","release":"packs/sutysisku/release.json","seal":"packs/sutysisku/seal.json"}
+  ]
+}
+JSON
+
+"$CLI" collections install "$OUT/catalogue" \
+  --manifest "$OUT/packs.json" --all
+```
+
+The four pack identifiers are selection keys, not four upstream authorities.
+Installation verifies the new derived generation and writes only to the fresh
+explicit catalogue. It does not select a global default or consult ambient
+XDG/HOME state.
+
+Build a historical r1 view and separately configure a Head profile for r2.
+The strict selection files retain the caller's pack order and explicitly bind
+all four packs with no curation contexts:
+
+```sh
+cat > "$OUT/selection-r1.json" <<'JSON'
+{"version":1,"packs":["lensisku-jbotci","llg","la-lojban","sutysisku"],"disabled":[],"owned":{"revision":"owned-r1"},"contexts":[]}
+JSON
+cat > "$OUT/selection-head.json" <<'JSON'
+{"version":1,"packs":["lensisku-jbotci","llg","la-lojban","sutysisku"],"disabled":[],"owned":"head","contexts":[]}
+JSON
+
+"$CLI" workbench build "$OUT/view-r1" \
+  --selection "$OUT/selection-r1.json" \
+  --catalogue "$OUT/catalogue" --owned "$OUT/imported-owned-journal"
+"$CLI" workbench profiles configure --config "$OUT/profiles.json" \
+  --name four-pack --selection "$OUT/selection-head.json" \
+  --catalogue "$OUT/catalogue" --owned "$OUT/imported-owned-journal" \
+  --make-default
+"$CLI" workbench profiles refresh "$OUT/view-r2" \
+  --config "$OUT/profiles.json" --profile four-pack --expected-revision 1
+```
+
+The workbench selection points at the installed four-pack catalogue and one
+explicit owned revision. It does not flatten the publisher history into the
+catalogue. `owned-r1` remains an explicit historical view; `Head` captures r2
+when the profile is refreshed. Catalogue revision, installed generation,
+profile/config revision, publication sequence, source revision, and owned
+journal revision are separate identities. Direct and configured binding
+digests should each be interpreted in their own scope; their equality or
+inequality is not a correctness condition.
+
+A finite Full exact query illustrates the historical r1 composition and the
+configured r2 profile using the native request and CLI shapes:
+
+```sh
+cat > "$OUT/exact-farvi.json" <<'JSON'
+{"operation":"exact","spelling":"farvi","options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}
+JSON
+"$CLI" workbench info "$OUT/view-r1" > "$OUT/info-r1.json"
+"$CLI" workbench query "$OUT/view-r1" \
+  --request "$OUT/exact-farvi.json" --format full > "$OUT/farvi-r1.json"
+"$CLI" workbench profiles query --config "$OUT/profiles.json" \
+  --profile four-pack --request "$OUT/exact-farvi.json" --format full \
+  > "$OUT/farvi-r2.json"
+```
+
+The fixed source/input oracle expects five upstream `farvi` occurrences from
+three source IDs, seven at owned r1 from four sources, and eight at owned r2
+from four sources. Compare complete rows and provenance to the loaded releases
+and owned revisions: jbotci contributes two occurrences from one release,
+La-Lojban and Sutysisku are separate captured distributions, LLG contributes
+its retained gismu row, and the owned journal contributes its revisioned
+assertions. Equal spellings or native numeric IDs in different source/release
+identities are not the same record.
+
+The lexical API and `workbench lexical` route expose the accepted stored-Form,
+reverse-definition, Links, and computed request families over the same views.
+For example, these strict version-one requests keep nullable fields explicit
+and distinguish a requested source from the query's output:
+
+```sh
+cat > "$OUT/form-fav.json" <<'JSON'
+{"version":1,"query":{"operation":"form","value":"fav","role":null,"kind":null},"options":{"sources":["llg"],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}
+JSON
+cat > "$OUT/links-farvi.json" <<'JSON'
+{"version":1,"query":{"operation":"links","spelling":"farvi","depth":1},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}
+JSON
+cat > "$OUT/distance-farvi.json" <<'JSON'
+{"version":1,"query":{"operation":"spelling_distance","anchor":"farvi","max_distance":0},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}
+JSON
+"$CLI" workbench lexical "$OUT/view-r1" --request "$OUT/form-fav.json" \
+  --format full > "$OUT/form-fav-r1.json"
+"$CLI" workbench lexical "$OUT/view-r1" --request "$OUT/links-farvi.json" \
+  --format compact > "$OUT/links-farvi-r1.json"
+"$CLI" workbench lexical "$OUT/view-r1" --request "$OUT/distance-farvi.json" \
+  --format readable > "$OUT/distance-farvi-r1.txt"
+```
+
+A small Rust caller uses the same explicit historical view and typed public
+requests. `OUT` is exported by the shell recipe above, so the paths below point
+at the artifacts it just created:
+
+```rust,no_run
+use std::{env, path::PathBuf};
+use vlajmaji::search::{
+    DictionaryExactOptions, DictionaryRequest, WorkbenchLexicalOptions,
+    WorkbenchLexicalQuery, WorkbenchLexicalRequest, WorkbenchSearchEngine,
+};
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let out = PathBuf::from(env::var_os("OUT").expect("OUT names the fresh recipe directory"));
+    let mut engine = WorkbenchSearchEngine::open(out.join("view-r1"))?;
+    let exact = engine.execute(DictionaryRequest::Exact {
+        spelling: "farvi".into(),
+        options: DictionaryExactOptions::default(),
+    })?;
+    let links = engine.execute_lexical(&WorkbenchLexicalRequest {
+        version: 1,
+        query: WorkbenchLexicalQuery::Links {
+            spelling: "farvi".into(),
+            depth: 1,
+        },
+        options: WorkbenchLexicalOptions::default(),
+    })?;
+    println!("{exact:?}\n{links:?}");
+    Ok(())
+}
+```
+
+The fixed independent consumer also derives a jbotci `RelationTarget` from the
+loaded release's actual native Entry 333, and checks ReverseDefinition
+`contains="grow"`, the retained LLG Form `fav`, depth-one Links, and the
+bounded computed families against those pre-query inputs. A target is bound to
+its actual pack/release identity: the repeated native value 333 in the separate
+La-Lojban release is not a substitute. The configured morphology request uses
+`Generate` with components `mlatu`, `kerlo`, setting `force_y`; run it on the
+configured profile as follows:
+
+```sh
+cat > "$OUT/generate-force-y.json" <<'JSON'
+{"version":1,"query":{"operation":"generate","components":["mlatu","kerlo"],"setting":"force_y"},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}
+JSON
+"$CLI" workbench profiles lexical --config "$OUT/profiles.json" \
+  --profile four-pack --request "$OUT/generate-force-y.json" \
+  --format readable > "$OUT/generate-force-y.txt"
+```
+
+`vlajmaji-search` keeps morphology off by default; `vlajmaji-cli` enables the
+search morphology feature in its dependency, so this CLI operation is
+available in the ordinary CLI build. The optional `data-*` embedded packages
+are a separate choice and are not needed to read these caller-supplied files.
+Keep raw exports, normalized releases, seals, owned snapshots, live journals,
+catalogue generations, workbench roots, and profile publications as distinct
+artifacts. Rebuild derived stores from retained sealed inputs; do not edit a
+seal or treat one layer's version/hash as another layer's identity.

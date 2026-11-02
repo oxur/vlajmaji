@@ -105,7 +105,10 @@ The Rust workspace already provides:
   The package is absent from default builds, and content redistribution remains
   Held pending verified terms and lexical lineage.
 - All four local packs share the normalized model and strict seal, enabling
-  pure consuming composition before a SQLite store is built.
+  pure consuming composition before a SQLite store is built. The [offline
+  four-pack and owned-history guide](docs/integrated-workbench.md#full-offline-four-pack-and-owned-history-workflow)
+  shows the pinned original inputs, fresh catalogue, pure sealed-history load,
+  and historical/current workbench commands.
 - An umbrella library, `vlajmaji`, exposing `lexicon`, `store`, and `search`, with
   optional `morphology` and `graph` features.
 
