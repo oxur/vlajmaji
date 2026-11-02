@@ -782,7 +782,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let snapshot = load_owned_snapshot(&snapshot_bytes, &seal_bytes)?;
 
     let destination = out.join("imported-owned-journal");
-    let (_journal, _report) = OwnedJournal::import_snapshot(destination, &snapshot)?;
+    let (_journal, _report) = OwnedJournal::import_snapshot(&destination, &snapshot)?;
     Ok(())
 }
 ```
