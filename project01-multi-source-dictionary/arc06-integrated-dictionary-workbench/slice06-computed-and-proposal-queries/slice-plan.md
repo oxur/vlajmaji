@@ -245,3 +245,7 @@ After return, CDC uses existing repo tests (a Search morphology package run plus
 ## 2026-11-01 — S06 CDC verified proposal
 
 Source b5da0fe3/treeac4e2fce is clean and SOURCE/index/ONEtarget returned QUIET. The proportionate independent proof passed six direct callers, then existing Search morphology tests134/0/0 and CLI computed contract1/1; cdc-verification.md/closing-report.md/retro.md in S06 contain the eight-row disposition and successor carry. Original criteria/history remain; all eight S06/eight Arc/fourteen Project statuses OPEN pending ROOT consistency. S07 remains UNISSUED and owns the original full-input/new-consumer/SAME-context canonical endpoint.
+
+## 2026-11-01 — ROOT consistency accepted / S06 closed
+
+ROOT canonical consistency accepted planning2b71101/sourceb5da0fe3, actual six callers and independent Search134/0/0+CLI1/1. Authorized mechanical close changes exactly eight child Status cells only. All Arc/Project statuses remain OPEN; S07/shared assembled NEW-consumer/SAME canonical/ROOT and separate Operator duties continue. No new runtime follows this receipt.
