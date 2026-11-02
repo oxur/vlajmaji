@@ -1,0 +1,807 @@
+Test (ubuntu-latest)	Set up job	﻿2026-11-02T03:02:32.4573450Z Current runner version: '2.338.2'
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4599246Z ##[group]Runner Image Provisioner
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4600152Z Hosted Compute Agent
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4600806Z Version: 20261021.618
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4601459Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4602169Z Build Date: 2026-10-21T00:45:21Z
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4602920Z Worker ID: {baced20e-3fad-4cb6-8b37-1bf038f15e68}
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4603665Z Region: northcentralus
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4604217Z Cloud: Azure
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4604841Z ##[endgroup]
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4606301Z ##[group]Operating System
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4607023Z Ubuntu
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4607575Z 26.04.1
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4608057Z LTS
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4609090Z ##[endgroup]
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4609665Z ##[group]Runner Image
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4610282Z Image: ubuntu-26.04
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4610889Z Version: 20261025.179.1
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4612004Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261025.179/images/ubuntu/Ubuntu2604-Readme.md
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4613839Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261025.179
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4614870Z ##[endgroup]
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4616036Z ##[group]GITHUB_TOKEN Permissions
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4617926Z Contents: read
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4618997Z Metadata: read
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4619589Z ##[endgroup]
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4621865Z Secret source: Actions
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4622796Z Cache mode: write
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.4623591Z Prepare workflow directory
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.5196555Z Prepare all required actions
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.5272501Z Getting action download info
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.7593278Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.8565761Z Download action repository 'dtolnay/rust-toolchain@1.98.0' (SHA:5059963b1731bf1580991b5f3b1eecfb5da406c0)
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:32.9932463Z Download action repository 'Swatinem/rust-cache@v2' (SHA:d1527c8f67ef9af357290475d4af4b0fab8f12e0)
+Test (ubuntu-latest)	Set up job	2026-11-02T03:02:33.4153228Z Complete job name: Test (ubuntu-latest)
+Test (ubuntu-latest)	Run actions/checkout@v4	﻿2026-11-02T03:02:33.5162441Z ##[group]Run actions/checkout@v4
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5163384Z with:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5163849Z   path: vlajmaji
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5164343Z   repository: oxur/vlajmaji
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5168759Z   token: ***
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5169259Z   ssh-strict: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5169733Z   ssh-user: git
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5170220Z   persist-credentials: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5170751Z   clean: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5171251Z   sparse-checkout-cone-mode: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5171820Z   fetch-depth: 1
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5172284Z   fetch-tags: false
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5172756Z   show-progress: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5173233Z   lfs: false
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5173670Z   submodules: false
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5174148Z   set-safe-directory: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5174688Z   allow-unsafe-pr-checkout: false
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5175537Z env:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5176006Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5176547Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:33.5177012Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0263213Z Syncing repository: oxur/vlajmaji
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0266324Z ##[group]Getting Git version info
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0267710Z Working directory is '/home/runner/work/vlajmaji/vlajmaji/vlajmaji'
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0269903Z [command]/usr/bin/git version
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0270856Z git version 2.56.0
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0273852Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0280687Z Temporarily overriding HOME='/home/runner/work/_temp/1c944b1d-1cac-4cb5-b997-7ae24f7c0f9f' before making global git config changes
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0283266Z Adding repository directory to the temporary git global config as a safe directory
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0285438Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0342104Z ##[group]Initializing the repository
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0352497Z [command]/usr/bin/git init /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0478422Z hint: Using 'master' as the name for the initial branch. This default branch name
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0480651Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0482577Z hint: to use in all of your new repositories, which will suppress this warning,
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0484207Z hint: call:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0485206Z hint:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0486343Z hint: 	git config --global init.defaultBranch <name>
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0487679Z hint:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0489240Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0491192Z hint: 'development'. The just-created branch can be renamed via this command:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0492764Z hint:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0494035Z hint: 	git branch -m <name>
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0495049Z hint:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0496319Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0499051Z Initialized empty Git repository in /home/runner/work/vlajmaji/vlajmaji/vlajmaji/.git/
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0510930Z [command]/usr/bin/git remote add origin https://github.com/oxur/vlajmaji
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0565624Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0566947Z ##[group]Disabling automatic garbage collection
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0571762Z [command]/usr/bin/git config --local gc.auto 0
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0609159Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0610244Z ##[group]Setting up auth
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0617392Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.0654978Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.1200269Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.1241525Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.1507035Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.1542792Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.1811448Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.1851638Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.1853300Z ##[group]Fetching the repository
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.1864044Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +a479ba6c5f10ad6ae768103cb5d956e0ecd730c5:refs/remotes/origin/codex/project01-integrated-workbench
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8254910Z From https://github.com/oxur/vlajmaji
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8258388Z  * [new ref]         a479ba6c5f10ad6ae768103cb5d956e0ecd730c5 -> origin/codex/project01-integrated-workbench
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8264811Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8266957Z ##[group]Determining the checkout info
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8269792Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8271292Z [command]/usr/bin/git sparse-checkout disable
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8309299Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8344500Z ##[group]Checking out the ref
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8348933Z [command]/usr/bin/git checkout --progress --force -B codex/project01-integrated-workbench refs/remotes/origin/codex/project01-integrated-workbench
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8801815Z Switched to a new branch 'codex/project01-integrated-workbench'
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8809544Z branch 'codex/project01-integrated-workbench' set up to track 'origin/codex/project01-integrated-workbench'.
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8816616Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8860212Z [command]/usr/bin/git log -1 --format=%H
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.8884980Z a479ba6c5f10ad6ae768103cb5d956e0ecd730c5
+Test (ubuntu-latest)	Run actions/checkout@v4	﻿2026-11-02T03:02:34.9325217Z ##[group]Run actions/checkout@v4
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9326382Z with:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9327281Z   repository: oxur/bauske
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9328608Z   ref: c5801ae17caaf86d2651b5ce34570199e873ad0f
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9329913Z   path: bauske
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9340452Z   token: ***
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9341356Z   ssh-strict: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9342283Z   ssh-user: git
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9343231Z   persist-credentials: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9344272Z   clean: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9345235Z   sparse-checkout-cone-mode: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9346385Z   fetch-depth: 1
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9347454Z   fetch-tags: false
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9348783Z   show-progress: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9349776Z   lfs: false
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9350670Z   submodules: false
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9351648Z   set-safe-directory: true
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9352766Z   allow-unsafe-pr-checkout: false
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9353897Z env:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9354752Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9355810Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:34.9356815Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0256868Z Syncing repository: oxur/bauske
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0264870Z ##[group]Getting Git version info
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0267258Z Working directory is '/home/runner/work/vlajmaji/vlajmaji/bauske'
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0308857Z [command]/usr/bin/git version
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0355043Z git version 2.56.0
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0381471Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0395971Z Temporarily overriding HOME='/home/runner/work/_temp/4f9de65e-a872-4d85-82a6-bc1b24fe48cf' before making global git config changes
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0400776Z Adding repository directory to the temporary git global config as a safe directory
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0404507Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/bauske
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0443560Z ##[group]Initializing the repository
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0448719Z [command]/usr/bin/git init /home/runner/work/vlajmaji/vlajmaji/bauske
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0499801Z hint: Using 'master' as the name for the initial branch. This default branch name
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0503876Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0507815Z hint: to use in all of your new repositories, which will suppress this warning,
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0511099Z hint: call:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0512887Z hint:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0515337Z hint: 	git config --global init.defaultBranch <name>
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0517979Z hint:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0520717Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0525046Z hint: 'development'. The just-created branch can be renamed via this command:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0528838Z hint:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0530812Z hint: 	git branch -m <name>
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0532842Z hint:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0535634Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0540511Z Initialized empty Git repository in /home/runner/work/vlajmaji/vlajmaji/bauske/.git/
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0547318Z [command]/usr/bin/git remote add origin https://github.com/oxur/bauske
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0559490Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0563003Z ##[group]Disabling automatic garbage collection
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0565954Z [command]/usr/bin/git config --local gc.auto 0
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0599309Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0601975Z ##[group]Setting up auth
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0606077Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0641568Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.0987688Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.1035685Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.1330070Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.1372771Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.1656801Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.1696013Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.1697676Z ##[group]Fetching the repository
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.1707078Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin c5801ae17caaf86d2651b5ce34570199e873ad0f
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.6599513Z From https://github.com/oxur/bauske
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.6601045Z  * branch            c5801ae17caaf86d2651b5ce34570199e873ad0f -> FETCH_HEAD
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.6613938Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.6614507Z ##[group]Determining the checkout info
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.6615088Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.6618996Z [command]/usr/bin/git sparse-checkout disable
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.6664013Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.6699139Z ##[group]Checking out the ref
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.6704345Z [command]/usr/bin/git checkout --progress --force c5801ae17caaf86d2651b5ce34570199e873ad0f
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7001638Z Note: switching to 'c5801ae17caaf86d2651b5ce34570199e873ad0f'.
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7002724Z 
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7003544Z You are in 'detached HEAD' state. You can look around, make experimental
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7004848Z changes and commit them, and you can discard any commits you make in this
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7006172Z state without impacting any branches by switching back to a branch.
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7006959Z 
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7007836Z If you want to create a new branch to retain commits you create, you may
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7009232Z do so (now or later) by using -c with the switch command. Example:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7009806Z 
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7010306Z   git switch -c <new-branch-name>
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7010890Z 
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7011156Z Or undo this operation with:
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7011518Z 
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7011719Z   git switch -
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7012002Z 
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7012438Z Turn off this advice by setting config variable advice.detachedHead to false
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7013043Z 
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7013383Z HEAD is now at c5801ae chore: start 0.3.0 development cycle
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7014923Z ##[endgroup]
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7046113Z [command]/usr/bin/git log -1 --format=%H
+Test (ubuntu-latest)	Run actions/checkout@v4	2026-11-02T03:02:35.7071162Z c5801ae17caaf86d2651b5ce34570199e873ad0f
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	﻿2026-11-02T03:02:35.7396500Z ##[group]Run dtolnay/rust-toolchain@1.98.0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7396921Z with:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7397166Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7397423Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7397743Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7398006Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7464389Z ##[start-action display=Parse toolchain version;id=__dtolnay_rust-toolchain.parse]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7530914Z ##[group]Run if [[ -z $toolchain ]]; then
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7531626Z [36;1mif [[ -z $toolchain ]]; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7532582Z [36;1m  # GitHub does not enforce `required: true` inputs itself. https://github.com/actions/runner/issues/1070[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7533695Z [36;1m  echo "'toolchain' is a required input" >&2[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7534305Z [36;1m  exit 1[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7534954Z [36;1melif [[ $toolchain =~ ^stable' '[0-9]+' '(year|month|week|day)s?' 'ago$ ]]; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7535746Z [36;1m  if [[ Linux == macOS ]]; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7536742Z [36;1m    echo "toolchain=1.$((($(date -v-$(sed 's/stable \([0-9]*\) \(.\).*/\1\2/' <<< $toolchain) +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7537828Z [36;1m  else[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7538945Z [36;1m    echo "toolchain=1.$((($(date --date "${toolchain#stable }" +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7539481Z [36;1m  fi[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7539848Z [36;1melif [[ $toolchain =~ ^stable' 'minus' '[0-9]+' 'releases?$ ]]; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7540469Z [36;1m  echo "toolchain=1.$((($(date +%s)/60/60/24-16569)/7/6-${toolchain//[^0-9]/}))" >> $GITHUB_OUTPUT[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7541004Z [36;1melif [[ $toolchain =~ ^1\.[0-9]+$ ]]; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7541593Z [36;1m  echo "toolchain=1.$((i=${toolchain#1.}, c=($(date +%s)/60/60/24-16569)/7/6, i+9*i*(10*i<=c)+90*i*(100*i<=c)))" >> $GITHUB_OUTPUT[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7542151Z [36;1melse[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7542407Z [36;1m  delimiter=EOF[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7542779Z [36;1m  while [[ $toolchain == *$delimiter* ]]; do delimiter+=_; done[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7543363Z [36;1m  printf 'toolchain<<%s\n%s\n%s\n' "$delimiter" "$toolchain" "$delimiter" >> $GITHUB_OUTPUT[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7543864Z [36;1mfi[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7578047Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7578822Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7579103Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7579403Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7579665Z   toolchain: 1.98.0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7579921Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7685592Z ##[end-action id=__dtolnay_rust-toolchain.parse;outcome=success;conclusion=success;duration_ms=21]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7690512Z ##[start-action display=Set $CARGO_HOME;id=__dtolnay_rust-toolchain.__run]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7730877Z ##[group]Run echo CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7731450Z [36;1mecho CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7757615Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7758040Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7758428Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7814443Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7814868Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7875952Z ##[end-action id=__dtolnay_rust-toolchain.__run;outcome=success;conclusion=success;duration_ms=18]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7878864Z ##[start-action display=Install rustup if needed;id=__dtolnay_rust-toolchain.__run_2]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7913870Z ##[group]Run if ! command -v rustup &>/dev/null; then
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7914311Z [36;1mif ! command -v rustup &>/dev/null; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7915147Z [36;1m  curl --proto '=https' --tlsv1.2 --retry 10 --retry-connrefused --location --silent --show-error --fail https://sh.rustup.rs | sh -s -- --default-toolchain none -y[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7915959Z [36;1m  echo "$CARGO_HOME/bin" >> $GITHUB_PATH[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7916302Z [36;1mfi[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7942925Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7943528Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7943797Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7944132Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7944423Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7944725Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.7997519Z ##[end-action id=__dtolnay_rust-toolchain.__run_2;outcome=success;conclusion=success;duration_ms=11]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8000493Z ##[start-action display=Install rustup if needed on windows;id=__dtolnay_rust-toolchain.__run_3]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8007168Z ##[end-action id=__dtolnay_rust-toolchain.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8022023Z ##[start-action display=rustup toolchain install 1.98.0;id=__dtolnay_rust-toolchain.__run_4]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8047975Z ##[group]Run set -f  # split targets and components on commas and whitespace, without glob expansion
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8048977Z [36;1mset -f  # split targets and components on commas and whitespace, without glob expansion[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8049501Z [36;1mflags=()[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8049836Z [36;1mfor t in ${targets//,/ }; do flags+=(--target "$t"); done[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8050493Z [36;1mfor c in ${components//,/ }; do flags+=(--component "$c"); done[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8051092Z [36;1mif [[ $toolchain == nightly && -n $components ]]; then flags+=(--allow-downgrade); fi[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8051582Z [36;1mlog=$(mktemp)[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8051880Z [36;1mtrap 'rm -f "$log"' EXIT[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8052196Z [36;1mfor attempt in 1 2 3 4 5; do[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8052825Z [36;1m  if rustup toolchain install "$toolchain" "${flags[@]}" --profile minimal --no-self-update --force-non-host 2>&1 | tee "$log"; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8053456Z [36;1m    break[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8053702Z [36;1m  else[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8053944Z [36;1m    status=$?[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8054207Z [36;1m  fi[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8054546Z [36;1m  if [[ $attempt == 5 ]] || ! grep -Fq 'checksum failed for ' "$log" \[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8055174Z [36;1m      || ! grep -Fq 'this is likely due to an ongoing update of the official release server' "$log"; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8055700Z [36;1m    exit "$status"[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8055974Z [36;1m  fi[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8056381Z [36;1m  echo "Retrying rustup toolchain install in 30 seconds (retry $attempt of 4)" >&2[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8056853Z [36;1m  sleep 30[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8057104Z [36;1mdone[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8083156Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8083562Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8083803Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8084113Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8084390Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8084684Z   toolchain: 1.98.0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8084927Z   targets: 
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8085156Z   components: 
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8085416Z   RUSTUP_PERMIT_COPY_RENAME: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8085709Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.8740146Z info: syncing channel updates for 1.98.0-x86_64-unknown-linux-gnu
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.9886337Z info: latest update on 2026-08-20 for version 1.98.0 (88d9e12ae 2026-08-18)
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:35.9889644Z info: downloading 3 components
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.5671947Z 
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.5743909Z   1.98.0-x86_64-unknown-linux-gnu installed - rustc 1.98.0 (88d9e12ae 2026-08-18)
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.5744498Z 
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6025300Z ##[end-action id=__dtolnay_rust-toolchain.__run_4;outcome=success;conclusion=success;duration_ms=7800]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6033154Z ##[start-action display=rustup default 1.98.0;id=__dtolnay_rust-toolchain.__run_5]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6051124Z ##[group]Run rustup default "$toolchain" --force-non-host
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6051524Z [36;1mrustup default "$toolchain" --force-non-host[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6081944Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6082276Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6082463Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6082880Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6083097Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6083333Z   toolchain: 1.98.0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6083537Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6174532Z info: using existing install for 1.98.0-x86_64-unknown-linux-gnu
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6185361Z info: default toolchain set to 1.98.0-x86_64-unknown-linux-gnu
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6185838Z 
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6253149Z   1.98.0-x86_64-unknown-linux-gnu unchanged - rustc 1.98.0 (88d9e12ae 2026-08-18)
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6253588Z 
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6275378Z ##[end-action id=__dtolnay_rust-toolchain.__run_5;outcome=success;conclusion=success;duration_ms=24]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6279439Z ##[start-action display=Create cachekey;id=__dtolnay_rust-toolchain.rustc-version]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6297182Z ##[group]Run DATE=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6298050Z [36;1mDATE=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6299078Z [36;1mHASH=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-hash: //p')[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6299789Z [36;1mecho "cachekey=$(echo $DATE$HASH | head -c12)" >> $GITHUB_OUTPUT[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6328902Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6329239Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6329427Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6329656Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6329872Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6330107Z   toolchain: 1.98.0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6330305Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6657204Z ##[end-action id=__dtolnay_rust-toolchain.rustc-version;outcome=success;conclusion=success;duration_ms=37]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6660289Z ##[start-action display=Disable incremental compilation;id=__dtolnay_rust-toolchain.__run_6]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6679003Z ##[group]Run if [ -z "${CARGO_INCREMENTAL+set}" ]; then
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6679392Z [36;1mif [ -z "${CARGO_INCREMENTAL+set}" ]; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6679720Z [36;1m  echo CARGO_INCREMENTAL=0 >> $GITHUB_ENV[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6680016Z [36;1mfi[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6710155Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6710493Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6710691Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6710916Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6711130Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6711378Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6764837Z ##[end-action id=__dtolnay_rust-toolchain.__run_6;outcome=success;conclusion=success;duration_ms=10]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6766856Z ##[start-action display=Enable colors in Cargo output;id=__dtolnay_rust-toolchain.__run_7]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6783610Z ##[group]Run if [ -z "${CARGO_TERM_COLOR+set}" ]; then
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6783967Z [36;1mif [ -z "${CARGO_TERM_COLOR+set}" ]; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6784310Z [36;1m  echo CARGO_TERM_COLOR=always >> $GITHUB_ENV[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6784599Z [36;1mfi[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6812678Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6813027Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6813223Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6813448Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6813664Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6813904Z   CARGO_INCREMENTAL: 0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6814106Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6865546Z ##[end-action id=__dtolnay_rust-toolchain.__run_7;outcome=success;conclusion=success;duration_ms=9]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6868889Z ##[start-action display=Enable Cargo sparse registry;id=__dtolnay_rust-toolchain.__run_8]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6886646Z ##[group]Run # implemented in 1.66, stabilized in 1.68, made default in 1.70
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6887173Z [36;1m# implemented in 1.66, stabilized in 1.68, made default in 1.70[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6887877Z [36;1mif [ -z "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL+set}" -o -f "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol ]; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6889126Z [36;1m  if rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.6[89]\.'; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6889732Z [36;1m    touch "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6890265Z [36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse >> $GITHUB_ENV[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6890792Z [36;1m  elif rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.6[67]\.'; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6891373Z [36;1m    touch "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6891885Z [36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git >> $GITHUB_ENV[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6892229Z [36;1m  fi[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6892414Z [36;1mfi[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6920834Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6921188Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6921377Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6921599Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6921819Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6922246Z   CARGO_INCREMENTAL: 0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6922481Z   toolchain: 1.98.0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.6922822Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7208623Z ##[end-action id=__dtolnay_rust-toolchain.__run_8;outcome=success;conclusion=success;duration_ms=33]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7212651Z ##[start-action display=Work around spurious network errors in curl 8.0;id=__dtolnay_rust-toolchain.__run_9]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7231177Z ##[group]Run # https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7231934Z [36;1m# https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7232574Z [36;1mif rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.7[01]\.'; then[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7233079Z [36;1m  echo CARGO_HTTP_MULTIPLEXING=false >> $GITHUB_ENV[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7233399Z [36;1mfi[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7284869Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7285227Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7285427Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7285664Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7285878Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7286133Z   CARGO_INCREMENTAL: 0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7286337Z   toolchain: 1.98.0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7286529Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7457868Z ##[end-action id=__dtolnay_rust-toolchain.__run_9;outcome=success;conclusion=success;duration_ms=24]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7463105Z ##[start-action display=rustc +1.98.0 --version --verbose;id=__dtolnay_rust-toolchain.__run_10]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7480481Z ##[group]Run rustc +"$toolchain" --version --verbose
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7480848Z [36;1mrustc +"$toolchain" --version --verbose[0m
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7510396Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7510769Z env:
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7510967Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7511203Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7511422Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7511665Z   CARGO_INCREMENTAL: 0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7511871Z   toolchain: 1.98.0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7512062Z ##[endgroup]
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7661139Z rustc 1.98.0 (88d9e12ae 2026-08-18)
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7661637Z binary: rustc
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7662073Z commit-hash: 88d9e12ae178fab0fb5cc050a94da85685d449ea
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7662612Z commit-date: 2026-08-18
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7663003Z host: x86_64-unknown-linux-gnu
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7663411Z release: 1.98.0
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7663750Z LLVM version: 22.1.8
+Test (ubuntu-latest)	Run dtolnay/rust-toolchain@1.98.0	2026-11-02T03:02:43.7677070Z ##[end-action id=__dtolnay_rust-toolchain.__run_10;outcome=success;conclusion=success;duration_ms=21]
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	﻿2026-11-02T03:02:43.7759223Z ##[group]Run Swatinem/rust-cache@v2
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7759516Z with:
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7759727Z   workspaces: vlajmaji -> target
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7759982Z   prefix-key: v0-rust
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7760201Z   add-job-id-key: true
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7760436Z   add-rust-environment-hash-key: true
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7760720Z   cache-targets: true
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7760935Z   cache-all-crates: false
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7761172Z   cache-workspace-crates: false
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7761414Z   save-if: true
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7761615Z   cache-provider: github
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7761836Z   cache-bin: true
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7762035Z   lookup-only: false
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7762238Z   cmd-format: {0}
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7762424Z env:
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7762608Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7762825Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7763034Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7763276Z   CARGO_INCREMENTAL: 0
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:43.7763479Z ##[endgroup]
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2553462Z ##[group]Cache Configuration
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2554001Z Cache Provider:
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2554434Z     github
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2554889Z Workspaces:
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2555387Z     /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2556225Z Cache Paths:
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2556692Z     /home/runner/.cargo/bin
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2557207Z     /home/runner/.cargo/.crates.toml
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2557718Z     /home/runner/.cargo/.crates2.json
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2558470Z     /home/runner/.cargo/registry
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2558991Z     /home/runner/.cargo/git
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2559562Z     /home/runner/work/vlajmaji/vlajmaji/vlajmaji/target
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2560073Z Restore Key:
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2560560Z     v0-rust-test-Linux-x64-9811efea
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2561029Z Cache Key:
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2561285Z     v0-rust-test-Linux-x64-9811efea-f039f8e5
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2561571Z .. Prefix:
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2561773Z   - v0-rust-test-Linux-x64
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2562165Z .. Environment considered:
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2562454Z   - Rust Versions:
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2562776Z     - 1.98.0 x86_64-unknown-linux-gnu 88d9e12ae178fab0fb5cc050a94da85685d449ea
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2563277Z     - 1.99.1 x86_64-unknown-linux-gnu 58cf8f9c35b355199727627d07ae34a4e2846d67
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2563656Z   - CARGO_HOME
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2563858Z   - CARGO_INCREMENTAL
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2564070Z   - CARGO_TERM_COLOR
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2564269Z   - RUST_BACKTRACE
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2564469Z .. Lockfiles considered:
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2564751Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/Cargo.lock
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2565173Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli/Cargo.toml
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2565664Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban/Cargo.toml
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2566208Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci/Cargo.toml
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2566739Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg/Cargo.toml
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2567246Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-owned/Cargo.toml
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2567746Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku/Cargo.toml
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2568575Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon/Cargo.toml
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2569104Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search/Cargo.toml
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2569567Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store/Cargo.toml
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2570061Z   - /home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji/Cargo.toml
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2570750Z ##[endgroup]
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2570877Z 
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.2570966Z ... Restoring cache ...
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:44.3581911Z Cache hit for: v0-rust-test-Linux-x64-9811efea-f039f8e5
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:45.4700375Z Received 142606336 of 787244330 (18.1%), 135.9 MBs/sec
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:46.4717056Z Received 394264576 of 787244330 (50.1%), 187.7 MBs/sec
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:47.4889247Z Received 612368384 of 787244330 (77.8%), 193.9 MBs/sec
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:48.2837078Z Received 787244330 of 787244330 (100.0%), 196.8 MBs/sec
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:48.2847701Z Cache Size: ~751 MB (787244330 B)
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:48.3060320Z [command]/usr/bin/tar -xf /home/runner/work/_temp/8c9beebb-ed22-45ff-b2c9-517ee58516ec/cache.tzst -P -C /home/runner/work/vlajmaji/vlajmaji --use-compress-program unzstd
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:55.4507102Z Cache restored successfully
+Test (ubuntu-latest)	Run Swatinem/rust-cache@v2	2026-11-02T03:02:56.2196838Z Restored from cache key "v0-rust-test-Linux-x64-9811efea-f039f8e5" full match: true.
+Test (ubuntu-latest)	Run cargo test --workspace --locked	﻿2026-11-02T03:02:56.2822373Z ##[group]Run cargo test --workspace --locked
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:56.2823092Z [36;1mcargo test --workspace --locked[0m
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:56.2862983Z shell: /usr/bin/bash -e {0}
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:56.2863356Z env:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:56.2863637Z   CARGO_TERM_COLOR: always
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:56.2863986Z   RUST_BACKTRACE: 1
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:56.2864312Z   CARGO_HOME: /home/runner/.cargo
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:56.2864702Z   CARGO_INCREMENTAL: 0
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:56.2865036Z   CACHE_ON_FAILURE: false
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:56.2865407Z ##[endgroup]
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:56.3281507Z [1m[92m    Updating[0m crates.io index
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:58.5693929Z [1m[92m   Compiling[0m vlajmaji-lexicon v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/lexicon)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:02:58.5724494Z [1m[92m   Compiling[0m bauske-phonology v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/bauske/crates/phonology)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:03:02.5312310Z [1m[92m   Compiling[0m vlajmaji-store v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/store)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:03:02.5313736Z [1m[92m   Compiling[0m vlajmaji-data-owned v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-owned)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:03:02.5314682Z [1m[92m   Compiling[0m vlajmaji-data-lensisku-jbotci v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-lensisku-jbotci)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:03:02.5627671Z [1m[92m   Compiling[0m vlajmaji-data-sutysisku v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-sutysisku)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:03:02.5713779Z [1m[92m   Compiling[0m vlajmaji-data-la-lojban v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-la-lojban)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:03:02.5992900Z [1m[92m   Compiling[0m vlajmaji-data-llg v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/data-llg)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:03:09.2410002Z [1m[92m   Compiling[0m vlajmaji-search v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/search)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:03:19.8427741Z [1m[92m   Compiling[0m vlajmaji v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/vlajmaji)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:03:34.6400078Z [1m[92m   Compiling[0m vlajmaji-cli v0.3.0 (/home/runner/work/vlajmaji/vlajmaji/vlajmaji/crates/cli)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.1817827Z [1m[92m    Finished[0m `test` profile [unoptimized + debuginfo] target(s) in 1m 11s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.2056260Z [1m[92m     Running[0m unittests src/lib.rs (target/debug/deps/vlajmaji-58bafcb4d53d6592)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.2067979Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.2070153Z running 0 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.2070721Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.2071303Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.2071972Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.2080119Z [1m[92m     Running[0m unittests src/main.rs (target/debug/deps/vlajmaji-db0a5f848a7ee9d8)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.2086132Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.2086372Z running 13 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.2096614Z test default_path_tests::test_default_path_preserves_native_non_utf8_bytes ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.2097742Z test lexical_query_error_tests::test_computed_and_proposal_errors_keep_their_cli_categories ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.3791552Z test collection_manifest_tests::test_manifest_validation_freezes_relative_paths_without_reading_them ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.3795060Z test managed_output_tests::test_emit_collection_response_io_failure_retains_committed_lifecycle_context ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.3796527Z test managed_output_tests::test_emit_dictionary_detail_io_failure_uses_structured_error_report ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.3800464Z test managed_output_tests::test_emit_managed_response_io_failure_reports_committed_context ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.3802446Z test managed_output_tests::test_emit_migrated_response_io_failure_reports_migration_context ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.3804133Z test managed_output_tests::test_emit_readable_uses_shared_writer_without_adding_a_newline ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.3808333Z test managed_output_tests::test_mutation_output_context_distinguishes_published_kept_and_cleared_generations ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.3810891Z test managed_output_tests::test_shared_json_and_readable_writer_handles_flush_errors_and_broken_pipe ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.5244474Z test default_path_tests::test_marker_exists_distinguishes_absence_and_propagates_metadata_errors ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.5696581Z test collection_manifest_tests::test_manifest_duplicate_keys_rejects_escaped_equivalents_recursively ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.7580336Z test managed_output_tests::test_actual_remove_reports_keep_subset_and_clear_output_contexts ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.7581120Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.7581621Z test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.55s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.7582560Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.7585679Z [1m[92m     Running[0m tests/cli_contract.rs (target/debug/deps/cli_contract-1f8b828fcf1fb0bd)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.7598634Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.7598820Z running 2 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.7700103Z test help_and_version_are_available ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.8336297Z test valid_json_limit_zero_and_failures_are_inspectable ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.8336914Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.8337226Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.8337673Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.8340234Z [1m[92m     Running[0m tests/collection_query_contract.rs (target/debug/deps/collection_query_contract-0d3a1fef30c5e905)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.8355083Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.8355504Z running 16 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.9199603Z test test_all_managed_commands_report_config_path_for_unusable_home_fallback ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:08.9249701Z test test_collections_help_distinguishes_explicit_root_from_config_home_resolution ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:09.3519564Z test test_absolute_config_and_root_work_without_child_cwd_but_relative_config_fails_typed ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:09.3573579Z test test_cli_configure_preserves_hand_authored_disabled_policy_and_noop_bytes ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:09.3588995Z test test_configure_failure_reports_known_file_root_profile_and_requested_packs ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:09.3659041Z test test_configure_invalid_pack_keeps_known_context_without_creating_files ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:09.3969451Z test test_configure_commits_when_stdout_reader_closes_early ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:09.5732490Z test test_all_four_fixture_packs_keep_source_attribution_in_configured_lookup ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:09.5816877Z test test_lookup_request_parse_precedes_missing_config_and_uses_managed_error_envelope ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:09.8665026Z test test_configure_relative_file_and_root_share_child_cwd ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:09.9009444Z test test_lookup_profile_and_disabled_selection_fail_with_typed_context ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:09.9379977Z test test_configure_profiles_selection_and_lookup_use_explicit_config_and_root ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.0990666Z test test_lookup_resolves_absolute_xdg_config_and_rejects_direct_override_of_request ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3216470Z test test_non_utf8_installed_root_roundtrips_through_profile_and_lookup ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3436602Z test test_managed_stdout_full_reports_read_and_committed_write_failures ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3662867Z test test_profiles_reports_not_applicable_context_when_stdout_file_limit_fails ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3663614Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3664085Z test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.53s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3664731Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3668756Z [1m[92m     Running[0m tests/collections_contract.rs (target/debug/deps/collections_contract-303c15992ebdb328)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3682871Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3683042Z running 11 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3753112Z test test_collections_cli_install_help_explains_selection_and_update_boundary ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3765645Z test test_collections_cli_list_absent_catalogue_expect_typed_error ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.3828841Z test test_collections_cli_native_missing_manifest_expect_exact_path_report ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.4031262Z test test_collections_cli_native_release_seal_and_root_paths_register_inspect_exactly ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.5200397Z test test_collections_cli_lost_install_response_expect_committed_generation_and_query ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.5578743Z test test_collections_cli_register_install_list_inspect_expect_structured_reports ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.5830987Z test test_collections_cli_runtime_validation_expect_versioned_report_and_clap_boundary ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.7240307Z test test_collections_cli_relative_paths_are_frozen_across_working_directories ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.7965356Z test test_collections_cli_tampered_repeat_expect_prior_generation_unchanged ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:10.8717733Z test test_collections_cli_all_raw_inputs_expect_four_pack_install ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.0444705Z test test_collections_cli_opposite_pack_orders_expect_same_content_and_distinct_generations ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.0445545Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.0445959Z test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.68s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.0446610Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.0449964Z [1m[92m     Running[0m tests/collections_lifecycle_contract.rs (target/debug/deps/collections_lifecycle_contract-34c05a4aef095d74)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.0465874Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.0466071Z running 3 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.3009973Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.3778851Z test test_collections_lifecycle_commands_migrate_update_rebuild_reports ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.5335014Z test test_sut_lifecycle_update_rebuild_preserves_old_store_and_stales_managed_cursor ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.5335495Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.5335769Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.49s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.5336171Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.5341899Z [1m[92m     Running[0m tests/collections_maintenance_contract.rs (target/debug/deps/collections_maintenance_contract-910fd08b76a6a1f8)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.5357591Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.5357849Z running 7 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.5367376Z test test_create_root_with_occupied_candidates_preserves_existing_contents ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.5950327Z test test_cli_policy_commands_preserve_context_and_apply_partial_changes ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:11.7770379Z test test_collections_remove_reinstall_reconcile_cli_preserves_explicit_state ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.0119627Z test test_lifecycle_linux_dev_full_reports_commit_and_idempotent_outcomes ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.1519252Z test test_managed_default_scratch_transition_preserves_legacy_default_store ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.2927434Z test test_linux_native_root_and_config_roundtrip_through_cli ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.2937053Z test test_four_pack_synthetic_update_and_rebuild_preserve_all_members ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.2937634Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.2937963Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.76s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.2939218Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.2944872Z [1m[92m     Running[0m tests/data_packs.rs (target/debug/deps/data_packs-f33e85694f71782f)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.2959719Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.2959860Z running 7 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.3199737Z test test_la_lojban_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.3359658Z test test_occupied_destination_is_preserved_and_bad_pins_create_no_output ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.3389380Z test test_llg_synthetic_fixture_uses_importer_and_refuses_occupied_output ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.3450781Z test test_la_materializer_rejects_invalid_inputs_and_preserves_occupied_outputs ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.3466853Z test test_synthetic_fixture_uses_the_importer_and_emits_a_loadable_pack ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.3522514Z test test_sutysisku_synthetic_fixture_loads_and_bad_pin_leaves_no_output ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.4541605Z test test_four_synthetic_packs_compose_for_sql_selection_pages_and_references ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.4542040Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.4542315Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.4543002Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.4546954Z [1m[92m     Running[0m tests/default_store.rs (target/debug/deps/default_store-fadda75d9ea20a7e)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.4562167Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.4562361Z running 6 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.4809640Z test test_default_info_detects_ambiguous_and_corrupt_grouped_markers_without_fallback ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.5369639Z test test_optional_store_positionals_are_visible_in_help_and_legacy_info_stays_legacy ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.8955374Z test test_default_build_input_errors_and_occupied_leaves_have_bounded_side_effects ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:12.9410984Z test test_home_fallback_explicit_override_and_missing_default_are_truthful ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.1919227Z test test_non_utf8_environment_is_preserved_and_build_fails_before_mutation ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.3032681Z test test_xdg_default_build_query_stdin_and_info_match_explicit_store ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.3033285Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.3033689Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.85s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.3034312Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.3040177Z [1m[92m     Running[0m tests/dictionary_contract.rs (target/debug/deps/dictionary_contract-f410cf6137044118)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.3052814Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.3053027Z running 1 test
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.6697147Z test dictionary_commands_work_and_structured_errors_use_the_envelope ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.6697565Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.6697833Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.36s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.6698492Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.6702085Z [1m[92m     Running[0m tests/jbotci_contract.rs (target/debug/deps/jbotci_contract-d774c2754f51ce5a)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.6712949Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.6713112Z running 1 test
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.7373817Z test import_check_are_pinned_non_destructive_and_structured_on_failure ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.7374462Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.7374891Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.7375557Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.7376617Z [1m[92m     Running[0m tests/jbotci_pipeline.rs (target/debug/deps/jbotci_pipeline-67a0136c0347ee00)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.7387159Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.7387324Z running 7 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:13.7409285Z test concurrent_scratch_allocations_are_distinct_and_joined ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:14.5713667Z test report_creation_races_preserve_caller_bytes_and_skip_importer ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:14.5789656Z test scratch_retries_occupied_candidates_without_touching_them ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:14.5791076Z test make_forwards_metacharacter_paths_and_requires_explicit_cargo_target ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:15.0299035Z test malformed_manifest_and_download_failure_leave_no_completion_marker ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:15.0485466Z test test_pin_manifest_byte_policy_counts_forbidden_bytes_and_fails_closed ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:15.6792032Z test pinned_operations_preserve_literal_paths_attempts_and_duplicate_rows ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:15.6792668Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:15.6792950Z test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.94s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:15.6793299Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:15.6795163Z [1m[92m     Running[0m tests/owned_curation_contract.rs (target/debug/deps/owned_curation_contract-c8822ee4edc63a68)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:15.6806675Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:15.6806865Z running 1 test
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.2814056Z test cli_requires_explicit_migration_and_materializes_to_a_new_file ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.2814685Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.2815126Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.60s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.2815810Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.2818827Z [1m[92m     Running[0m tests/owned_journal_contract.rs (target/debug/deps/owned_journal_contract-4e56475c3df8bf8e)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.2830430Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.2830650Z running 3 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.3287845Z test native_paths_and_deleted_working_directory_use_explicit_absolute_paths ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.3299354Z test invalid_input_is_rejected_before_creating_explicit_root ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.3990039Z test explicit_root_file_stdin_history_show_replay_and_postcommit_output_failure ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.3990762Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.3991215Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.3991833Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.3994394Z [1m[92m     Running[0m tests/owned_snapshot_contract.rs (target/debug/deps/owned_snapshot_contract-6594dec77b7ab3fb)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.4007600Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.4007788Z running 3 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.4451533Z test import_commits_before_stdout_other_or_broken_pipe ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.5343667Z test export_check_import_replay_and_historical_model_are_explicit_and_rooted ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.5347725Z test explicit_native_root_handles_unicode_space_and_raw_os_strings ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.5348514Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.5348808Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.5349207Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.5354332Z [1m[92m     Running[0m tests/query_output_contract.rs (target/debug/deps/query_output_contract-c8c20b1176393727)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.5368792Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:16.5369048Z running 8 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:17.0889847Z test test_dictionary_compact_query_reports_full_device_output_failure ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:17.1860489Z test test_lookup_compact_and_detail_preserve_managed_envelope ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:17.3389519Z test test_managed_compact_lookup_and_detail_report_full_device_envelopes ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:17.4923561Z test test_dictionary_compact_query_and_detail_keep_full_default ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:17.7604384Z test test_managed_compact_lookup_and_detail_resolve_absolute_paths_after_deleted_cwd ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:17.8643100Z test test_managed_compact_lookup_and_detail_tolerate_broken_pipe ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:17.9358854Z test test_managed_compact_routes_roundtrip_native_root_and_config ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:20.5616449Z test test_readable_cli_tiny_lifecycle_preserves_four_pack_state_and_projection ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:20.5617539Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:20.5618842Z test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.02s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:20.5619539Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:20.5624950Z [1m[92m     Running[0m tests/verify_contract.rs (target/debug/deps/verify_contract-39e82f6883fd3c9f)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:20.5644520Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:20.5645501Z running 2 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:20.8835165Z test test_verify_cli_explicit_path_overrides_invalid_default_environment ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.0537005Z test test_verify_cli_success_failure_envelope_default_help_and_no_create ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.0537759Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.0538606Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.49s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.0539227Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.0543444Z [1m[92m     Running[0m tests/workbench_computed_contract.rs (target/debug/deps/workbench_computed_contract-3632aff5aff96da5)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.0556263Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.0556508Z running 1 test
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.2739559Z test test_computed_cli_preserves_readable_values_and_decodes_before_open ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.2740358Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.2740913Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.2741539Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.2746838Z [1m[92m     Running[0m tests/workbench_contract.rs (target/debug/deps/workbench_contract-7cc556482d727d7b)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.2759886Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.2760115Z running 6 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:21.8090142Z test test_workbench_build_collision_preserves_existing_sentinel ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.1560207Z test test_workbench_build_accepts_non_utf8_root_and_selection_file_paths ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.1659214Z test test_workbench_build_rejects_strict_selection_before_creating_root ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.1725068Z test test_workbench_absolute_file_roots_survive_deleted_current_directory ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.2768792Z test test_workbench_build_info_and_query_use_explicit_native_file_roots ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.5915092Z test test_workbench_build_persists_before_other_or_broken_pipe_stdout_failure ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.5915806Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.5916241Z test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.32s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.5916879Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.5918061Z [1m[92m     Running[0m tests/workbench_lexical_contract.rs (target/debug/deps/workbench_lexical_contract-ead58f4cbddaad54)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.5933860Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.5934670Z running 3 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:22.5937077Z test test_lexical_deleted_cwd_child ... ignored, invoked as an isolated child after deleting its own working directory
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:23.0185810Z test test_lexical_absolute_paths_survive_deleted_cwd ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:23.1855009Z test test_direct_and_configured_lexical_cli_emit_full_compact_readable_and_detail ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:23.1855786Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:23.1856242Z test result: ok. 2 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.59s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:23.1856868Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:23.1860954Z [1m[92m     Running[0m tests/workbench_links_contract.rs (target/debug/deps/workbench_links_contract-158d73298fdc757f)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:23.1876122Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:23.1876408Z running 2 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:23.1877585Z test test_links_cli_deleted_cwd_child ... ignored, invoked as an isolated child after deleting its own working directory
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.6195989Z test test_direct_and_configured_links_detail_cli_full_and_readable ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.6196670Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.6197109Z test result: ok. 1 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 1.43s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.6197736Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.6202833Z [1m[92m     Running[0m tests/workbench_profiles_contract.rs (target/debug/deps/workbench_profiles_contract-cb5798c32db16fc3)
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.6220969Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.6221170Z running 7 tests
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.6237878Z test test_profiles_deleted_cwd_child ... ignored, invoked as an isolated child after deleting its own working directory
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.8220874Z test test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_it ... FAILED
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.8474332Z test test_profiles_configure_info_status_and_unprepared_query_have_explicit_contracts ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.8480737Z test test_publication_context_display_retains_full_public_native_context_and_cause ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.8645958Z test test_profiles_explicit_absolute_config_survives_deleted_cwd_and_relative_config_fails ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:24.9186650Z test test_profiles_noop_and_refresh_other_stdout_errors_report_durable_state ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0475590Z test test_profiles_refresh_default_remove_and_history_preserve_publication_rows ... ok
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0476454Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0478660Z failures:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0478863Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0479373Z ---- test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_it stdout ----
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0480003Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0480851Z thread 'test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_it' (5802) panicked at crates/cli/tests/workbench_profiles_contract.rs:239:5:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0481987Z assertion `left == right` failed
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0482399Z   left: String("unix-bytes")
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0482805Z  right: "unix_bytes"
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0491670Z stack backtrace:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0492250Z    0: __rustc::rust_begin_unwind
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0493031Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/std/src/panicking.rs:679:5
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0493808Z    1: core::panicking::panic_fmt
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0494608Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/panicking.rs:80:14
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0495423Z    2: core::panicking::assert_failed_inner
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0496516Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/panicking.rs:439:17
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0497639Z    3: core::panicking::assert_failed::<serde_json::value::Value, &str>
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0498826Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/panicking.rs:394:5
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0499991Z    4: workbench_profiles_contract::test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_it
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0500992Z              at ./tests/workbench_profiles_contract.rs:239:5
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0502048Z    5: workbench_profiles_contract::test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_it::{closure#0}
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0503239Z              at ./tests/workbench_profiles_contract.rs:181:85
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0504441Z    6: <workbench_profiles_contract::test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_it::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0505928Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/ops/function.rs:250:5
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0507019Z    7: <fn() -> core::result::Result<(), alloc::string::String> as core::ops::function::FnOnce<()>>::call_once
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0508301Z              at /rustc/88d9e12ae178fab0fb5cc050a94da85685d449ea/library/core/src/ops/function.rs:250:5
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0509250Z note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0509771Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0509779Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0509910Z failures:
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0510459Z     test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_it
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0510998Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0511425Z test result: FAILED. 5 passed; 1 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.43s
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0512011Z 
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0512785Z [1m[91merror[0m: test failed, to rerun pass `-p vlajmaji-cli --test workbench_profiles_contract`
+Test (ubuntu-latest)	Run cargo test --workspace --locked	2026-11-02T03:04:25.0580814Z ##[error]Process completed with exit code 101.
+Test (ubuntu-latest)	Post Run actions/checkout@v4	﻿2026-11-02T03:04:25.0741769Z Post job cleanup.
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.1626643Z [command]/usr/bin/git version
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.1675740Z git version 2.56.0
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.1717104Z Temporarily overriding HOME='/home/runner/work/_temp/ab9f2f20-487f-4446-8168-47f97b030013' before making global git config changes
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.1718764Z Adding repository directory to the temporary git global config as a safe directory
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.1722414Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/bauske
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.1765473Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.1802868Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.2117133Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.2143575Z http.https://github.com/.extraheader
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.2164217Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.2196822Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.2529458Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.2569098Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test (ubuntu-latest)	Post Run actions/checkout@v4	﻿2026-11-02T03:04:25.3117797Z Post job cleanup.
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4054508Z [command]/usr/bin/git version
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4105174Z git version 2.56.0
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4150939Z Temporarily overriding HOME='/home/runner/work/_temp/fef563c2-e564-4bcc-8ae2-75304bea5633' before making global git config changes
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4152348Z Adding repository directory to the temporary git global config as a safe directory
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4155957Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vlajmaji/vlajmaji/vlajmaji
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4201983Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4244037Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4571038Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4601470Z http.https://github.com/.extraheader
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4616792Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4665568Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.4987623Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test (ubuntu-latest)	Post Run actions/checkout@v4	2026-11-02T03:04:25.5029370Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test (ubuntu-latest)	Complete job	﻿2026-11-02T03:04:25.5454712Z Cleaning up orphan processes
+Test (ubuntu-latest)	Complete job	2026-11-02T03:04:25.5956240Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
