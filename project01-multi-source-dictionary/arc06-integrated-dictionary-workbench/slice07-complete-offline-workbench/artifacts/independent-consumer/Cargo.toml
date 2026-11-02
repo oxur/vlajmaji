@@ -1,0 +1,13 @@
+[package]
+name = "vlajmaji-s07-independent-composition"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.98"
+publish = false
+
+[dependencies]
+vlajmaji = { path = "/Users/oubiwann/lab/oxur/vlajmaji/.worktrees/project01-arc04/vlajmaji/crates/vlajmaji", features = ["morphology"] }
+serde_json = "1"
+serde = "1"
+
+[workspace]
