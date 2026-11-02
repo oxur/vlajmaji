@@ -190,6 +190,11 @@ fn test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_
         .iter()
         .map(|byte| format!("{byte:02x}"))
         .collect::<String>();
+    // Exercise the native wire format even where the filesystem rejects this name.
+    let native_report = serde_json::to_value(vlajmaji_store::native_path_report(&config)).unwrap();
+    assert_eq!(native_report["encoding"], "unix-bytes");
+    assert_eq!(native_report["hex"], expected_config_hex);
+    assert_eq!(native_report["utf8"], Value::Null);
     let probe = OpenOptions::new()
         .write(true)
         .create_new(true)
@@ -236,7 +241,7 @@ fn test_profiles_raw_byte_config_path_uses_native_argv_when_filesystem_supports_
         .output()
         .unwrap();
     let configured = assert_json_line(&configured);
-    assert_eq!(configured["config"]["encoding"], "unix_bytes");
+    assert_eq!(configured["config"]["encoding"], "unix-bytes");
     assert_eq!(configured["config"]["hex"], expected_config_hex);
     assert_eq!(configured["config"]["utf8"], Value::Null);
 
@@ -346,7 +351,7 @@ fn assert_keys(value: &Value, expected: &[&str]) {
 fn test_publication_context_display_retains_full_public_native_context_and_cause() {
     let context = WorkbenchPublicationContext {
         config: NativePathReport {
-            encoding: "unix_bytes".into(),
+            encoding: "unix-bytes".into(),
             hex: "ff".into(),
             utf8: None,
         },
