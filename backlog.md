@@ -89,3 +89,63 @@ Evidence: [original failed raw](project01-multi-source-dictionary/arc05-owned-di
 ### Delivery disposition — 2026-10-31
 
 The original 2026-10-29 status was “Proposed, unscheduled; no implementation authorized or shipped.” Duncan's later explicit README/main-merge request opened a delivery interval. Fresh PR macOS CI reproduced AlreadyExists in the named CLI allocator; a separate push macOS job later reproduced it in the store policy test allocator. Both scoped test-only repairs use exclusive bounded allocation and per-process sequences, with deterministic occupied-directory/file preservation controls. They are shipped through [PR7](https://github.com/oxur/vlajmaji/pull/7) at main `cb13d377`; final candidate and merged-main Linux/macOS CI passed. [Delivery record and raw failures](project01-multi-source-dictionary/artifacts/arc05-delivery/delivery.md) preserve the evidence. This resolves the named allocation weakness without claiming a causal diagnosis of the historical collision or an audit of every temporary-root helper. The original S02 failures and retrospective above remain unchanged.
+
+
+## BL-0003: Investigate excessive Full Links response expansion
+
+- **Status:** Proposed investigation; unscheduled, execution and implementation not authorized by this capture.
+- **Raised:** 2026-11-01 (America/Chicago), at Duncan's request.
+- **Origin:** Project01 / Arc06 / Slice07 complete offline workbench.
+- **Source examined:** `27fc2be6081a3efd551c22be4a77bb871bfe46c7` (tree `7444b0798efc2dd3edfb2a278555177f5f241d70`).
+- **Owner:** Unassigned until planning/approval.
+
+### Observation and evidence boundary
+
+The independent four-pack plus owned-history consumer queried Links for `farvi`
+at depth 1 in Full format. It checked 18 retained source-Note tokens against the
+original inputs. Its saved `rust-links.json` is **909,970,491 bytes** (about
+910 decimal MB); file size was rechecked on 2026-11-01 without parsing or rerunning
+the query. This is one serialized response, not a count of unique relationships
+or newly discovered dictionary content.
+
+Source inspection establishes a repeated-metadata path: each
+`WorkbenchLinkFullStep` embeds a complete from-side hit, origin reference
+resolution and target observations. `WorkbenchReferenceFullResult.payload`
+contains `ReferenceResolution`, whose `availability` contains complete catalogue
+availability and release records. `ReleaseRecord.assertions` contains full
+assertion-ID membership lists. These structures can therefore be serialized
+repeatedly inside one response. Their contribution to the observed bytes has
+**not been quantified**; construction, cloning, resolution and serialization
+costs have not been separately measured. Do not turn this structural explanation
+into an isolated timing or memory diagnosis.
+
+### Investigation scope and proposed outcomes
+
+- Attribute serialized bytes to repeated catalogue/release membership, entry and
+  assertion bodies, evidence and genuinely distinct traversal results. Record
+  distinct versus repeated identities and how size scales with result count,
+  corpus size and depth; begin with the retained output and a small fixture.
+- Separate response construction/resolution, metadata cloning, JSON serialization
+  and file writing when measuring time and peak memory. Compare Full and Compact
+  for the same query, preserving their different detail contracts.
+- Evaluate response-scoped shared metadata with stable references, summary versus
+  explicit detail retrieval, and limits/paging where appropriate. Assess broader
+  reuse of the same Full reference structures, including standalone reference
+  responses; select no design before the findings.
+- Recommend a bounded response contract and a compatibility/versioning strategy.
+  Preserve provenance, original evidence, source distinctions, order/duplicates,
+  reference statuses, traversal bounds, paging/detail behavior and error semantics;
+  do not silently discard data or redefine Full as Compact.
+- Produce a short findings/recommendation record and, if approved later, focused
+  regression checks for repeated-metadata growth and semantic equivalence. Agree
+  on practical size/time/memory targets from evidence rather than inventing them
+  here. Reuse existing consumers/tests; no new support framework or repeated
+  full-corpus installation campaign is implied.
+
+### Links
+
+- [Shared verification and retained-output location](project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice07-complete-offline-workbench/cdc-verification.md).
+- [Independent consumer, original checks, measured output size and final review](project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice07-complete-offline-workbench/artifacts/composition-review.md).
+- [Slice closing report](project01-multi-source-dictionary/arc06-integrated-dictionary-workbench/slice07-complete-offline-workbench/closing-report.md).
+- Retained large output, outside Git: `/private/tmp/vlajmaji-s07-independent-run.6QQQy5/rust-links.json`. This temporary path may disappear; the durable report above preserves the observation and consumer source. Do not copy the large response into Git.
+- Source inspection locations at the commit above: `crates/search/src/workbench/links.rs` (`WorkbenchLinkFullStep`, `WorkbenchLinkTargetFull`, `WorkbenchLinksFull`); `crates/search/src/workbench/reference.rs` (`WorkbenchReferenceFullResult`); `crates/search/src/dictionary.rs` (`ReferenceResolution`, `DictionarySourceAvailability`); `crates/lexicon/src/dictionary.rs` (`ReleaseRecord`).
