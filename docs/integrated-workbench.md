@@ -790,9 +790,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 `load_owned_snapshot` checks the complete seal, canonical bytes, history, and
 reconstructed states without opening a journal. `OwnedJournal::import_snapshot`
 then creates a different journal explicitly. Do this before installing the
-catalogue or building views in a new Rust consumer. The CLI's `owned check` and
-`owned import` commands provide the same validation/import operations when
-working entirely from the terminal.
+catalogue or building views in a new Rust consumer. For a shell-only route,
+choose these CLI commands instead of running the Rust import example; they
+validate the same snapshot and create the same fresh destination journal:
+
+```sh
+"$CLI" owned check --input "$OUT/owned-snapshot.json" \
+  --seal "$OUT/owned-seal.json"
+"$CLI" owned import "$OUT/imported-owned-journal" \
+  --input "$OUT/owned-snapshot.json" --seal "$OUT/owned-seal.json"
+```
 
 The catalogue manifest is strict version 1. Its relative paths are resolved
 from the manifest's parent, and `--all` selects exactly the four records named
