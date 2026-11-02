@@ -10,14 +10,15 @@ use clap::{Args as ClapArgs, Parser, Subcommand, ValueEnum};
 use query_output::QueryOutput;
 use vlajmaji_lexicon::EntityId;
 use vlajmaji_lexicon::{
-    Dictionary, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256, JBOTCI_PINNED_REVISION,
-    JbotciImportError, JbotciImportOptions, LA_LOJBAN_PINNED_RAW_SHA256, LA_LOJBAN_PINNED_REVISION,
-    LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256, LLG_NOTICE_SHA256, LLG_RAFSI_SHA256,
-    LaLojbanImportError, LaLojbanImportOptions, LlgImportError, LlgImportOptions,
-    OwnedContextInput, OwnedCurationDocument, PackId, PackPayloadKind, RelationTarget,
-    SUTYSISKU_PINNED_RAW_SHA256, SUTYSISKU_PINNED_REVISION, SutysiskuImportError,
-    SutysiskuImportOptions, import_jbotci_export, import_la_lojban_export, import_llg_lists,
-    import_sutysisku_export, load_owned_snapshot, seal_owned_snapshot, seal_release,
+    Dictionary, ImportError, JBOTCI_PINNED_METADATA_SHA256, JBOTCI_PINNED_RAW_SHA256,
+    JBOTCI_PINNED_REVISION, JbotciImportError, JbotciImportOptions, LA_LOJBAN_PINNED_RAW_SHA256,
+    LA_LOJBAN_PINNED_REVISION, LLG_BASE_LOCATOR, LLG_CMAVO_SHA256, LLG_GISMU_SHA256,
+    LLG_NOTICE_SHA256, LLG_RAFSI_SHA256, LaLojbanImportError, LaLojbanImportOptions,
+    LlgImportError, LlgImportOptions, OwnedContextInput, OwnedCurationDocument, PackId,
+    PackPayloadKind, RelationTarget, SUTYSISKU_PINNED_RAW_SHA256, SUTYSISKU_PINNED_REVISION,
+    SutysiskuImportError, SutysiskuImportOptions, import_jbotci_export, import_la_lojban_export,
+    import_llg_lists, import_sutysisku_export, load_owned_snapshot, seal_owned_snapshot,
+    seal_release,
 };
 use vlajmaji_search::{
     CollectionCompactSearchEngine, CollectionQueryError, CollectionQueryErrorReport,
@@ -28,9 +29,9 @@ use vlajmaji_search::{
     render_dictionary_detail, render_workbench_link_detail, validate_detail_snapshot_sha256,
 };
 use vlajmaji_search::{
-    ConfiguredWorkbenchQueryError, ConfiguredWorkbenchSearchEngine, WorkbenchFormDetailRef,
-    WorkbenchLexicalError, WorkbenchLexicalRequest, WorkbenchLinkDetailRef, WorkbenchQueryError,
-    WorkbenchSearchEngine,
+    ConfiguredWorkbenchQueryError, ConfiguredWorkbenchSearchEngine, SearchError,
+    WorkbenchFormDetailRef, WorkbenchLexicalError, WorkbenchLexicalRequest, WorkbenchLinkDetailRef,
+    WorkbenchQueryError, WorkbenchSearchEngine,
 };
 use vlajmaji_store::{
     CollectionCatalogue, CollectionError, CollectionInput, CollectionPolicySelection,
@@ -920,7 +921,100 @@ fn lexical_query_error(error: WorkbenchLexicalError) -> CliError {
         }
         WorkbenchLexicalError::Integrity { detail } => structured_error("integrity", detail),
         WorkbenchLexicalError::Dictionary(error) => CliError::Structured(error.report()),
+        WorkbenchLexicalError::Computation(error) => match *error {
+            SearchError::InvalidQuery(detail) => structured_error(
+                "invalid_lexical_request",
+                format!("invalid query: {detail}"),
+            ),
+            SearchError::FeatureDisabled(feature) => {
+                structured_error("feature_disabled", format!("feature disabled: {feature}"))
+            }
+            SearchError::Phonology(detail) => {
+                structured_error("phonology", format!("phonology analysis failed: {detail}"))
+            }
+            SearchError::Integrity(detail) => {
+                structured_error("integrity", format!("integrity error: {detail}"))
+            }
+            SearchError::Store(error) => structured_error("store", error.to_string()),
+            other => structured_error("workbench_lexical", other.to_string()),
+        },
+        WorkbenchLexicalError::Proposal(error) => match *error {
+            ImportError::InvalidProposalNamespace => structured_error(
+                "invalid_lexical_request",
+                "proposal namespace must be non-empty and must not use captured: prefix",
+            ),
+            other => structured_error("workbench_lexical", other.to_string()),
+        },
         other => structured_error("workbench_lexical", other.to_string()),
+    }
+}
+
+#[cfg(test)]
+mod lexical_query_error_tests {
+    use super::{CliError, lexical_query_error};
+    use vlajmaji_lexicon::ImportError;
+    use vlajmaji_search::{SearchError, WorkbenchLexicalError};
+
+    fn code(error: WorkbenchLexicalError) -> (String, String) {
+        match lexical_query_error(error) {
+            CliError::Structured(report) => (report.code, report.message),
+            _ => panic!("lexical errors must use the structured CLI envelope"),
+        }
+    }
+
+    #[test]
+    fn test_computed_and_proposal_errors_keep_their_cli_categories() {
+        assert_eq!(
+            code(WorkbenchLexicalError::Computation(Box::new(
+                SearchError::InvalidQuery("bad option".into()),
+            ))),
+            (
+                "invalid_lexical_request".into(),
+                "invalid query: bad option".into()
+            ),
+        );
+        assert_eq!(
+            code(WorkbenchLexicalError::Computation(Box::new(
+                SearchError::FeatureDisabled("morphology"),
+            ))),
+            (
+                "feature_disabled".into(),
+                "feature disabled: morphology".into()
+            ),
+        );
+        assert_eq!(
+            code(WorkbenchLexicalError::Computation(Box::new(
+                SearchError::Phonology("invalid vowel".into()),
+            ))),
+            (
+                "phonology".into(),
+                "phonology analysis failed: invalid vowel".into()
+            ),
+        );
+        assert_eq!(
+            code(WorkbenchLexicalError::Computation(Box::new(
+                SearchError::Integrity("missing source row".into()),
+            ))),
+            (
+                "integrity".into(),
+                "integrity error: missing source row".into()
+            ),
+        );
+        assert_eq!(
+            code(WorkbenchLexicalError::Computation(Box::new(
+                SearchError::Store(vlajmaji_store::StoreError::InvalidStore("fixture".into()),)
+            ))),
+            ("store".into(), "invalid store: fixture".into()),
+        );
+        assert_eq!(
+            code(WorkbenchLexicalError::Proposal(Box::new(
+                ImportError::InvalidProposalNamespace,
+            ))),
+            (
+                "invalid_lexical_request".into(),
+                "proposal namespace must be non-empty and must not use captured: prefix".into(),
+            ),
+        );
     }
 }
 

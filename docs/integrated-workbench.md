@@ -98,6 +98,133 @@ outer binding digest identifies this particular prepared workbench; Compact's
 own snapshot digest has a different purpose and must not be substituted for
 it.
 
+## Computed lexical and proposal queries
+
+The current unpublished 0.3 workspace adds six source-backed computed query
+families to the same Full and Compact workbench providers: spelling distance,
+prosody, nuclei, contrast, components, and composition. A returned assertion
+remains the retained source occurrence; its phonological analysis,
+decomposition, or link hops are separate derived evidence. `ProposalExact`
+constructs identities for caller-supplied proposal rows without adding them to
+the dictionary, and `Generate` reports a morphology-engine value without
+claiming that value is attested. Components and Generate require the optional
+`morphology` feature.
+
+Run the integrated producer with morphology enabled to exercise all eight
+operations:
+
+```sh
+cargo +1.98.0 run --locked -p vlajmaji-search --features morphology \
+  --example integrated_workbench -- workbench-example
+```
+
+The producer keeps the earlier `inputs/`, `artifacts/lexical-inputs`, and
+`artifacts/links-inputs` authorities and adds exactly twelve files under
+`artifacts/computed-inputs`. Six are typed source/journal/selection inputs;
+the other six are fixed query, expected-result, fixture, and cursor-protocol
+authorities. It writes these files before creating
+`computed-workbench/owned-journal`, installing the mixed synthetic catalogue,
+or building a view. The `computed` profile is configured at revision one,
+refreshed against r1 at revision two, made default at revision three, then
+refreshed against r2 at revision four. The prepared profile sequence is zero
+at r1 and one at r2; the journal's own r0/r1/r2 revision identities are a
+separate sequence.
+
+The fixed model deliberately includes source occurrences with `Missing` and
+`Null` native fields, excluded rows, an editorial Note with a retained source
+span, and an owned r2 tombstone. Those states remain typed input evidence; the
+queries do not rewrite them to make an analysis succeed. The expected file is
+the pre-input identity, ordering, and count authority, so compare complete
+returned records and totals to it rather than deriving expectations from one
+query's output.
+
+### Prepare the seven derived requests
+
+The producer emits the six authorities under `artifacts/computed-inputs`.
+These seven additional requests are guide inputs derived from those fixed
+authorities; they are not extra producer outputs. Each keeps the exact
+`ActiveOnly` alias value and null page/cursor controls:
+
+| File | Exact request JSON |
+| --- | --- |
+| `computed-prosody.json` | `{"version":1,"query":{"operation":"prosody","kind":"brivla","syllables":2,"nuclei":2,"primary_nucleus":0},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}` |
+| `computed-nuclei.json` | `{"version":1,"query":{"operation":"nuclei","kind":"brivla","pattern":["a","i"]},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}` |
+| `computed-contrast.json` | `{"version":1,"query":{"operation":"contrast","anchor":"farvi","kind":"brivla","require_mismatch":true},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}` |
+| `computed-components.json` | `{"version":1,"query":{"operation":"components","components":["mlatu"]},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}` |
+| `computed-compose.json` | `{"version":1,"query":{"operation":"compose","definition_contains":"plum","links_from":"farvi","min_nuclei":2,"kind":"brivla"},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}` |
+| `computed-generate-allow-y.json` | `{"version":1,"query":{"operation":"generate","components":["mlatu","kerlo"],"setting":"allow_y"},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}` |
+| `computed-generate-force-y.json` | `{"version":1,"query":{"operation":"generate","components":["mlatu","kerlo"],"setting":"force_y"},"options":{"sources":[],"alias_scope":"ActiveOnly","page_size":null,"cursor":null}}` |
+
+For repeatable preparation, save the following as `prepare-computed-requests.py`
+and run it from the output parent after the producer. It reads the fixed
+expected/request files and writes only those seven derived requests:
+
+```python
+import json
+from pathlib import Path
+
+root = Path("workbench-example")
+inputs = root / "artifacts/computed-inputs"
+expected = json.loads((inputs / "computed-expected.json").read_text())
+source = json.loads((inputs / "computed-source-request.json").read_text())
+generate = json.loads((inputs / "computed-generate-request.json").read_text())
+queries = {
+    "computed-prosody.json": expected["r1"]["prosody"]["query"],
+    "computed-nuclei.json": expected["r1"]["nuclei"]["query"],
+    "computed-contrast.json": expected["r1"]["contrast"]["query"],
+    "computed-components.json": expected["r1"]["components"]["query"],
+    "computed-compose.json": expected["r1"]["compose"]["query"],
+    "computed-generate-allow-y.json": {**generate["query"], "setting": "allow_y"},
+    "computed-generate-force-y.json": {**generate["query"], "setting": "force_y"},
+}
+for name, query in queries.items():
+    path = root / name
+    if path.exists():
+        raise FileExistsError(path)
+    request = {"version": 1, "query": query, "options": source["options"]}
+    path.write_text(json.dumps(request, ensure_ascii=False, separators=(",", ":")) + "\n")
+```
+
+### Run the twelve CLI queries
+
+These are the twelve query children used with the emitted example workspace.
+Run them from the directory containing `workbench-example`; `H` is the
+explicit historical r1 root, while the two profile calls use the current r2
+publication. The Full named/default comparison is about the result body; their
+effective binding identities are allowed to differ.
+
+```sh
+SOURCE=/path/to/vlajmaji
+TARGET_DIR="${CARGO_TARGET_DIR:-$SOURCE/target}"
+case "$TARGET_DIR" in
+  /*) ;;
+  *) TARGET_DIR="$SOURCE/$TARGET_DIR" ;;
+esac
+CLI="$TARGET_DIR/debug/vlajmaji"
+W=workbench-example
+C="$W/artifacts/computed-inputs"
+H="$W/computed-workbench/view-historical-r1"
+CFG="$W/computed-workbench/profiles.json"
+
+"$CLI" workbench lexical "$H" --request "$C/computed-source-request.json" --format full > "$W/computed-guide-01.json"
+"$CLI" workbench lexical "$H" --request "$W/computed-prosody.json" --format compact > "$W/computed-guide-02.json"
+"$CLI" workbench lexical "$H" --request "$W/computed-nuclei.json" --format readable > "$W/computed-guide-03.txt"
+"$CLI" workbench lexical "$H" --request "$W/computed-contrast.json" --format full > "$W/computed-guide-04.json"
+"$CLI" workbench lexical "$H" --request "$W/computed-components.json" --format compact > "$W/computed-guide-05.json"
+"$CLI" workbench lexical "$H" --request "$W/computed-compose.json" --format compact > "$W/computed-guide-06.json"
+"$CLI" workbench lexical "$H" --request "$C/computed-proposal-request.json" --format readable > "$W/computed-guide-07.txt"
+"$CLI" workbench lexical "$H" --request "$C/computed-generate-request.json" --format full > "$W/computed-guide-08.json"
+"$CLI" workbench lexical "$H" --request "$W/computed-generate-allow-y.json" --format full > "$W/computed-guide-09.json"
+"$CLI" workbench lexical "$H" --request "$W/computed-generate-force-y.json" --format readable > "$W/computed-guide-10.txt"
+"$CLI" workbench profiles lexical --config "$CFG" --profile computed --request "$W/computed-prosody.json" --format full > "$W/computed-guide-11.json"
+"$CLI" workbench profiles lexical --config "$CFG" --request "$W/computed-prosody.json" --format full > "$W/computed-guide-12.json"
+```
+
+The command sequence was exercised before this guide section was added; the
+documentation records that tested recipe and its output-parent-relative path
+convention. Stderr capture and full per-command evidence are retained in the
+slice execution record.
+
 The r1 view is Head-bound. Append the already-emitted r2 candidate, confirm the
 old view rejects a query as stale, and build both a fresh Head view and a fresh
 historical r1 view. The example checks that the historical r1 Full result stays

@@ -1,7 +1,7 @@
-//! Literal reverse-definition and stored-form queries for a mixed workbench.
+//! Literal, graph, and computed queries for a mixed workbench.
 //!
-//! These queries operate only on retained typed dictionary rows. They never
-//! synthesize forms or reinterpret source text as markup.
+//! Source-backed operations retain typed dictionary rows, while phonological
+//! analyses, morphology results, and caller proposals remain separate values.
 
 use std::{error::Error, fmt};
 
@@ -24,11 +24,11 @@ use super::{
 /// The strict lexical request shape used by direct and configured workbenches.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
-/// Versioned request for literal reverse-definition, stored-Form, or bounded Links queries.
+/// Versioned request for literal, bounded graph, computed, proposal, or morphology operations.
 pub struct WorkbenchLexicalRequest {
     /// Lexical request schema version; currently exactly one.
     pub version: u32,
-    /// One of the two supported literal operations.
+    /// One supported lexical operation.
     pub query: WorkbenchLexicalQuery,
     /// Source selection and continuation controls.
     pub options: WorkbenchLexicalOptions,
@@ -60,6 +60,79 @@ pub enum WorkbenchLexicalQuery {
         spelling: String,
         /// Maximum traversal depth, exactly one or two.
         depth: u8,
+    },
+    /// Rank selected source assertion occurrences by exact spelling distance.
+    SpellingDistance {
+        /// Exact nonempty query anchor.
+        anchor: String,
+        /// Inclusive maximum distance, or required null.
+        #[serde(deserialize_with = "super::deserialize_required_option")]
+        max_distance: Option<usize>,
+    },
+    /// Filter source occurrences by their mapped kind and optional P01 facts.
+    Prosody {
+        /// Exact mapped kind, or required null for any mapped kind.
+        #[serde(deserialize_with = "super::deserialize_required_option")]
+        kind: Option<String>,
+        /// Required resolved syllable count, or required null.
+        #[serde(deserialize_with = "super::deserialize_required_option")]
+        syllables: Option<usize>,
+        /// Required written nucleus count, or required null.
+        #[serde(deserialize_with = "super::deserialize_required_option")]
+        nuclei: Option<usize>,
+        /// Required default primary nucleus, or required null.
+        #[serde(deserialize_with = "super::deserialize_required_option")]
+        primary_nucleus: Option<usize>,
+    },
+    /// Match an exact written nucleus vector and mapped kind.
+    Nuclei {
+        /// Exact mapped kind.
+        kind: String,
+        /// Exact ordered written nucleus spellings.
+        pattern: Vec<String>,
+    },
+    /// Compare aligned single-vowel positions against an anchor.
+    Contrast {
+        /// Exact anchor spelling.
+        anchor: String,
+        /// Exact mapped kind.
+        kind: String,
+        /// Require at least one within-vowel positional mismatch.
+        require_mismatch: bool,
+    },
+    /// Match an ordered component subsequence in real morphology analyses.
+    Components {
+        /// Ordered nonempty component tokens.
+        components: Vec<String>,
+    },
+    /// Intersect exact source candidates with actual depth-one Links target hops.
+    Compose {
+        /// Literal definition substring, or required null.
+        #[serde(deserialize_with = "super::deserialize_required_option")]
+        definition_contains: Option<String>,
+        /// Exact seed Entry spelling, or required null.
+        #[serde(deserialize_with = "super::deserialize_required_option")]
+        links_from: Option<String>,
+        /// Minimum written nucleus count, or required null.
+        #[serde(deserialize_with = "super::deserialize_required_option")]
+        min_nuclei: Option<usize>,
+        /// Exact mapped kind, or required null.
+        #[serde(deserialize_with = "super::deserialize_required_option")]
+        kind: Option<String>,
+    },
+    /// Filter the caller's constructor-validated Proposal rows by exact spelling.
+    ProposalExact {
+        /// Exact proposal spelling selected for this query.
+        spelling: String,
+        /// Ordered caller proposal inputs; duplicates remain distinct rows.
+        proposals: Vec<super::computed::WorkbenchProposalInput>,
+    },
+    /// Generate one actual value with a selected optional morphology setting.
+    Generate {
+        /// Ordered actual component spellings.
+        components: Vec<String>,
+        /// Explicit y-hyphen setting.
+        setting: crate::MorphologySetting,
     },
 }
 
@@ -270,6 +343,22 @@ pub enum WorkbenchLexicalFullResult {
     Form(Box<WorkbenchFormFull>),
     /// Bounded typed-relation and source-clause traversal.
     Links(Box<super::links::WorkbenchLinksFull>),
+    /// Computed source occurrence family.
+    SpellingDistance(Box<super::computed::WorkbenchComputedFull>),
+    /// Computed source occurrence family.
+    Prosody(Box<super::computed::WorkbenchComputedFull>),
+    /// Computed source occurrence family.
+    Nuclei(Box<super::computed::WorkbenchComputedFull>),
+    /// Computed source occurrence family.
+    Contrast(Box<super::computed::WorkbenchComputedFull>),
+    /// Computed source occurrence family.
+    Components(Box<super::computed::WorkbenchComputedFull>),
+    /// Computed source occurrence family.
+    Compose(Box<super::computed::WorkbenchComputedFull>),
+    /// Caller-owned proposal rows, independent of dictionary provider setup.
+    ProposalExact(Box<super::computed::WorkbenchProposalResult>),
+    /// One generated morphology value, independent of dictionary provider setup.
+    Generate(Box<super::computed::WorkbenchGeneratedResult>),
 }
 
 /// Compact operation-tagged lexical payload.
@@ -287,6 +376,22 @@ pub enum WorkbenchLexicalCompactResult {
     Form(Box<WorkbenchFormCompact>),
     /// Bounded typed-relation and source-clause traversal.
     Links(Box<super::links::WorkbenchLinksCompact>),
+    /// Computed source occurrence family.
+    SpellingDistance(Box<super::computed::WorkbenchComputedCompact>),
+    /// Computed source occurrence family.
+    Prosody(Box<super::computed::WorkbenchComputedCompact>),
+    /// Computed source occurrence family.
+    Nuclei(Box<super::computed::WorkbenchComputedCompact>),
+    /// Computed source occurrence family.
+    Contrast(Box<super::computed::WorkbenchComputedCompact>),
+    /// Computed source occurrence family.
+    Components(Box<super::computed::WorkbenchComputedCompact>),
+    /// Computed source occurrence family.
+    Compose(Box<super::computed::WorkbenchComputedCompact>),
+    /// Caller-owned proposal rows, independent of dictionary provider setup.
+    ProposalExact(Box<super::computed::WorkbenchProposalResult>),
+    /// One generated morphology value, independent of dictionary provider setup.
+    Generate(Box<super::computed::WorkbenchGeneratedResult>),
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -626,6 +731,10 @@ pub enum WorkbenchLexicalError {
     },
     /// Existing dictionary operation failed.
     Dictionary(Box<DictionaryQueryError>),
+    /// Computed analysis failed with its actual SearchError cause.
+    Computation(Box<crate::SearchError>),
+    /// Caller proposal construction failed with its actual import cause.
+    Proposal(Box<lexicon::ImportError>),
 }
 
 impl fmt::Display for WorkbenchLexicalError {
@@ -641,6 +750,8 @@ impl fmt::Display for WorkbenchLexicalError {
             Self::StaleLinkDetail => f.write_str("stale link detail"),
             Self::Integrity { detail } => write!(f, "lexical integrity error: {detail}"),
             Self::Dictionary(error) => write!(f, "dictionary query: {error}"),
+            Self::Computation(error) => write!(f, "computed lexical query: {error}"),
+            Self::Proposal(error) => write!(f, "proposal query: {error}"),
         }
     }
 }
@@ -649,6 +760,8 @@ impl Error for WorkbenchLexicalError {
     fn source(&self) -> Option<&(dyn Error + 'static)> {
         match self {
             Self::Dictionary(error) => Some(error.as_ref()),
+            Self::Computation(error) => Some(error.as_ref()),
+            Self::Proposal(error) => Some(error.as_ref()),
             _ => None,
         }
     }
@@ -705,6 +818,19 @@ pub(crate) enum WorkbenchLexicalPosition {
         evidence: super::links::WorkbenchLinkEvidenceId,
         orientation_rank: u8,
         from_assertion_id: EntityId,
+    },
+    ProposalExact {
+        proposal_id: String,
+        input_ordinal: u64,
+    },
+    ComputedSource {
+        family: String,
+        #[serde(deserialize_with = "super::deserialize_required_option")]
+        distance: Option<usize>,
+        spelling: String,
+        source: SourceId,
+        occurrence_id: String,
+        assertion_id: EntityId,
     },
 }
 
@@ -939,6 +1065,42 @@ pub(crate) fn decode_cursor(
             return Err(malformed("Links cursor position is malformed"));
         }
     }
+    if let WorkbenchLexicalPosition::ProposalExact { proposal_id, .. } = &envelope.body.last
+        && !is_sha256(proposal_id)
+    {
+        return Err(malformed("proposal cursor ID is not lowercase SHA-256"));
+    }
+    if let WorkbenchLexicalPosition::ComputedSource {
+        family,
+        distance,
+        spelling: _,
+        source,
+        occurrence_id,
+        assertion_id,
+    } = &envelope.body.last
+    {
+        let known_family = matches!(
+            family.as_str(),
+            "spelling_distance" | "prosody" | "nuclei" | "contrast" | "components" | "compose"
+        );
+        let distance_shape = if family == "spelling_distance" {
+            distance.is_some()
+        } else {
+            distance.is_none()
+        };
+        let tuple_shape = is_occurrence_tuple_hex(occurrence_id);
+        if !known_family
+            || !distance_shape
+            || source.as_str().is_empty()
+            || assertion_id.as_str().is_empty()
+            || !tuple_shape
+        {
+            return Err(malformed("computed-source cursor position is malformed"));
+        }
+        if super::computed::family_name(&request.query) != family {
+            return Err(WorkbenchLexicalError::StaleCursor);
+        }
+    }
     let query_sha = query_sha256(request, resolved_sources)?;
     if envelope.body.format != format
         || envelope.body.binding_sha256 != binding_sha256
@@ -980,7 +1142,9 @@ impl WorkbenchSearchEngine {
     /// ```
     ///
     /// # Errors
-    /// Returns freshness, request, source-selection, cursor, or retained-row errors.
+    /// Returns freshness, request, source-selection, cursor, or retained-row errors. Computed
+    /// families preserve typed Search errors, and proposal construction preserves its import
+    /// cause.
     pub fn execute_lexical(
         &mut self,
         request: &WorkbenchLexicalRequest,
@@ -1000,15 +1164,39 @@ impl WorkbenchSearchEngine {
         let binding = self.view.binding().binding_sha256().to_owned();
         let result: Result<WorkbenchLexicalFullResult, WorkbenchQueryError> = (|| {
             validate_request(request).map_err(WorkbenchQueryError::from)?;
-            if matches!(request.query, WorkbenchLexicalQuery::Links { .. }) {
-                self.lexical_links_full_inner(request, &binding)
-                    .map(|links| WorkbenchLexicalFullResult::Links(Box::new(links)))
-            } else {
-                self.full_engine()
+            match request.query {
+                WorkbenchLexicalQuery::Links { .. } => self
+                    .lexical_links_full_inner(request, &binding)
+                    .map(|links| WorkbenchLexicalFullResult::Links(Box::new(links))),
+                WorkbenchLexicalQuery::ProposalExact { .. } => {
+                    super::computed::proposal_exact(request, "full", &binding)
+                        .map(|result| WorkbenchLexicalFullResult::ProposalExact(Box::new(result)))
+                        .map_err(WorkbenchQueryError::from)
+                }
+                WorkbenchLexicalQuery::Generate { .. } => {
+                    super::computed::generate(&request.query, request)
+                        .map(|result| WorkbenchLexicalFullResult::Generate(Box::new(result)))
+                        .map_err(WorkbenchQueryError::from)
+                }
+                WorkbenchLexicalQuery::Compose {
+                    links_from: Some(ref spelling),
+                    ..
+                } => {
+                    let link_request = compose_links_request(request, spelling);
+                    let target_ids =
+                        self.lexical_compose_target_ids_inner(&link_request, &binding)?;
+                    self.full_engine()
+                        .map_err(WorkbenchLexicalError::from)
+                        .map_err(WorkbenchQueryError::from)?
+                        .lexical_full(request, &binding, Some(&target_ids))
+                        .map_err(WorkbenchQueryError::from)
+                }
+                _ => self
+                    .full_engine()
                     .map_err(WorkbenchLexicalError::from)
                     .map_err(WorkbenchQueryError::from)?
-                    .lexical_full(request, &binding)
-                    .map_err(WorkbenchQueryError::from)
+                    .lexical_full(request, &binding, None)
+                    .map_err(WorkbenchQueryError::from),
             }
         })();
         after_inner();
@@ -1054,7 +1242,9 @@ impl WorkbenchSearchEngine {
     /// ```
     ///
     /// # Errors
-    /// Returns freshness, request, source-selection, cursor, or retained-row errors.
+    /// Returns freshness, request, source-selection, cursor, or retained-row errors. Computed
+    /// families preserve typed Search errors, and proposal construction preserves its import
+    /// cause.
     pub fn execute_lexical_compact(
         &mut self,
         request: &WorkbenchLexicalRequest,
@@ -1074,15 +1264,41 @@ impl WorkbenchSearchEngine {
         let binding = self.view.binding().binding_sha256().to_owned();
         let result: Result<WorkbenchLexicalCompactResult, WorkbenchQueryError> = (|| {
             validate_request(request).map_err(WorkbenchQueryError::from)?;
-            if matches!(request.query, WorkbenchLexicalQuery::Links { .. }) {
-                self.lexical_links_compact_inner(request, &binding)
-                    .map(|links| WorkbenchLexicalCompactResult::Links(Box::new(links)))
-            } else {
-                self.compact_engine()
+            match request.query {
+                WorkbenchLexicalQuery::Links { .. } => self
+                    .lexical_links_compact_inner(request, &binding)
+                    .map(|links| WorkbenchLexicalCompactResult::Links(Box::new(links))),
+                WorkbenchLexicalQuery::ProposalExact { .. } => {
+                    super::computed::proposal_exact(request, "compact", &binding)
+                        .map(|result| {
+                            WorkbenchLexicalCompactResult::ProposalExact(Box::new(result))
+                        })
+                        .map_err(WorkbenchQueryError::from)
+                }
+                WorkbenchLexicalQuery::Generate { .. } => {
+                    super::computed::generate(&request.query, request)
+                        .map(|result| WorkbenchLexicalCompactResult::Generate(Box::new(result)))
+                        .map_err(WorkbenchQueryError::from)
+                }
+                WorkbenchLexicalQuery::Compose {
+                    links_from: Some(ref spelling),
+                    ..
+                } => {
+                    let link_request = compose_links_request(request, spelling);
+                    let target_ids =
+                        self.lexical_compose_target_ids_compact_inner(&link_request, &binding)?;
+                    self.compact_engine()
+                        .map_err(WorkbenchLexicalError::from)
+                        .map_err(WorkbenchQueryError::from)?
+                        .lexical_compact(request, &binding, Some(&target_ids))
+                        .map_err(WorkbenchQueryError::from)
+                }
+                _ => self
+                    .compact_engine()
                     .map_err(WorkbenchLexicalError::from)
                     .map_err(WorkbenchQueryError::from)?
-                    .lexical_compact(request, &binding)
-                    .map_err(WorkbenchQueryError::from)
+                    .lexical_compact(request, &binding, None)
+                    .map_err(WorkbenchQueryError::from),
             }
         })();
         after_inner();
@@ -1281,7 +1497,9 @@ impl ConfiguredWorkbenchSearchEngine {
     /// ```
     ///
     /// # Errors
-    /// Returns profile, request, source-selection, cursor, or retained-row errors.
+    /// Returns profile, request, source-selection, cursor, or retained-row errors. Computed
+    /// families preserve typed Search errors, and proposal construction preserves its import
+    /// cause.
     pub fn execute_lexical(
         &mut self,
         request: &WorkbenchLexicalRequest,
@@ -1304,14 +1522,37 @@ impl ConfiguredWorkbenchSearchEngine {
         let binding = configuration.effective_binding_sha256.clone();
         let result: Result<WorkbenchLexicalFullResult, WorkbenchQueryError> = (|| {
             validate_request(request).map_err(WorkbenchQueryError::from)?;
-            if matches!(request.query, WorkbenchLexicalQuery::Links { .. }) {
-                self.lexical_links_full_inner(request, &binding)
-                    .map(|links| WorkbenchLexicalFullResult::Links(Box::new(links)))
-            } else {
-                self.full_engine()
+            match request.query {
+                WorkbenchLexicalQuery::Links { .. } => self
+                    .lexical_links_full_inner(request, &binding)
+                    .map(|links| WorkbenchLexicalFullResult::Links(Box::new(links))),
+                WorkbenchLexicalQuery::ProposalExact { .. } => {
+                    super::computed::proposal_exact(request, "full", &binding)
+                        .map(|result| WorkbenchLexicalFullResult::ProposalExact(Box::new(result)))
+                        .map_err(WorkbenchQueryError::from)
+                }
+                WorkbenchLexicalQuery::Generate { .. } => {
+                    super::computed::generate(&request.query, request)
+                        .map(|result| WorkbenchLexicalFullResult::Generate(Box::new(result)))
+                        .map_err(WorkbenchQueryError::from)
+                }
+                WorkbenchLexicalQuery::Compose {
+                    links_from: Some(ref spelling),
+                    ..
+                } => {
+                    let link_request = compose_links_request(request, spelling);
+                    let target_ids =
+                        self.lexical_compose_target_ids_inner(&link_request, &binding)?;
+                    self.full_engine()
+                        .map_err(WorkbenchQueryError::from)?
+                        .lexical_full(request, &binding, Some(&target_ids))
+                        .map_err(WorkbenchQueryError::from)
+                }
+                _ => self
+                    .full_engine()
                     .map_err(WorkbenchQueryError::from)?
-                    .lexical_full(request, &binding)
-                    .map_err(WorkbenchQueryError::from)
+                    .lexical_full(request, &binding, None)
+                    .map_err(WorkbenchQueryError::from),
             }
         })();
         after_inner();
@@ -1362,7 +1603,9 @@ impl ConfiguredWorkbenchSearchEngine {
     /// ```
     ///
     /// # Errors
-    /// Returns profile, request, source-selection, cursor, or retained-row errors.
+    /// Returns profile, request, source-selection, cursor, or retained-row errors. Computed
+    /// families preserve typed Search errors, and proposal construction preserves its import
+    /// cause.
     pub fn execute_lexical_compact(
         &mut self,
         request: &WorkbenchLexicalRequest,
@@ -1385,14 +1628,39 @@ impl ConfiguredWorkbenchSearchEngine {
         let binding = configuration.effective_binding_sha256.clone();
         let result: Result<WorkbenchLexicalCompactResult, WorkbenchQueryError> = (|| {
             validate_request(request).map_err(WorkbenchQueryError::from)?;
-            if matches!(request.query, WorkbenchLexicalQuery::Links { .. }) {
-                self.lexical_links_compact_inner(request, &binding)
-                    .map(|links| WorkbenchLexicalCompactResult::Links(Box::new(links)))
-            } else {
-                self.compact_engine()
+            match request.query {
+                WorkbenchLexicalQuery::Links { .. } => self
+                    .lexical_links_compact_inner(request, &binding)
+                    .map(|links| WorkbenchLexicalCompactResult::Links(Box::new(links))),
+                WorkbenchLexicalQuery::ProposalExact { .. } => {
+                    super::computed::proposal_exact(request, "compact", &binding)
+                        .map(|result| {
+                            WorkbenchLexicalCompactResult::ProposalExact(Box::new(result))
+                        })
+                        .map_err(WorkbenchQueryError::from)
+                }
+                WorkbenchLexicalQuery::Generate { .. } => {
+                    super::computed::generate(&request.query, request)
+                        .map(|result| WorkbenchLexicalCompactResult::Generate(Box::new(result)))
+                        .map_err(WorkbenchQueryError::from)
+                }
+                WorkbenchLexicalQuery::Compose {
+                    links_from: Some(ref spelling),
+                    ..
+                } => {
+                    let link_request = compose_links_request(request, spelling);
+                    let target_ids =
+                        self.lexical_compose_target_ids_compact_inner(&link_request, &binding)?;
+                    self.compact_engine()
+                        .map_err(WorkbenchQueryError::from)?
+                        .lexical_compact(request, &binding, Some(&target_ids))
+                        .map_err(WorkbenchQueryError::from)
+                }
+                _ => self
+                    .compact_engine()
                     .map_err(WorkbenchQueryError::from)?
-                    .lexical_compact(request, &binding)
-                    .map_err(WorkbenchQueryError::from)
+                    .lexical_compact(request, &binding, None)
+                    .map_err(WorkbenchQueryError::from),
             }
         })();
         after_inner();
@@ -1586,6 +1854,15 @@ fn validate_request(request: &WorkbenchLexicalRequest) -> Result<(), WorkbenchLe
             detail: format!("unsupported lexical request version {}", request.version),
         });
     }
+    #[cfg(not(feature = "morphology"))]
+    if matches!(
+        &request.query,
+        WorkbenchLexicalQuery::Components { .. } | WorkbenchLexicalQuery::Generate { .. }
+    ) {
+        return Err(WorkbenchLexicalError::Computation(Box::new(
+            crate::SearchError::FeatureDisabled("morphology"),
+        )));
+    }
     match &request.query {
         WorkbenchLexicalQuery::ReverseDefinition { contains } if contains.is_empty() => {
             return Err(WorkbenchLexicalError::InvalidRequest {
@@ -1597,9 +1874,122 @@ fn validate_request(request: &WorkbenchLexicalRequest) -> Result<(), WorkbenchLe
                 detail: "Links depth must be exactly one or two".into(),
             });
         }
+        WorkbenchLexicalQuery::SpellingDistance { anchor, .. } if anchor.is_empty() => {
+            return Err(WorkbenchLexicalError::Computation(Box::new(
+                crate::SearchError::InvalidQuery(
+                    "spelling-distance anchor must not be empty".into(),
+                ),
+            )));
+        }
+        WorkbenchLexicalQuery::Prosody {
+            kind: Some(kind), ..
+        } => {
+            crate::parse_kind(kind)
+                .map_err(|error| WorkbenchLexicalError::Computation(Box::new(error)))?;
+        }
+        WorkbenchLexicalQuery::Nuclei { kind, .. } => {
+            crate::parse_kind(kind)
+                .map_err(|error| WorkbenchLexicalError::Computation(Box::new(error)))?;
+        }
+        WorkbenchLexicalQuery::Contrast { anchor, kind, .. } => {
+            let word_kind = crate::parse_kind(kind)
+                .map_err(|error| WorkbenchLexicalError::Computation(Box::new(error)))?;
+            let analyzed = crate::analyze(anchor, word_kind).map_err(|detail| {
+                WorkbenchLexicalError::Computation(Box::new(crate::SearchError::Phonology(detail)))
+            })?;
+            if analyzed
+                .nuclei
+                .iter()
+                .any(|nucleus| nucleus.kind != "vowel")
+            {
+                return Err(WorkbenchLexicalError::Computation(Box::new(
+                    crate::SearchError::InvalidQuery(
+                        "aligned contrast requires single-vowel nuclei".into(),
+                    ),
+                )));
+            }
+        }
+        WorkbenchLexicalQuery::Components { components }
+            if components.is_empty()
+                || components
+                    .iter()
+                    .any(|part| !request_component_is_valid(part)) =>
+        {
+            return Err(WorkbenchLexicalError::Computation(Box::new(
+                crate::SearchError::InvalidQuery(
+                    "components must be a non-empty ordered list of tokens".into(),
+                ),
+            )));
+        }
+        WorkbenchLexicalQuery::Compose {
+            kind,
+            definition_contains,
+            links_from,
+            ..
+        } => {
+            if let Some(kind) = kind {
+                crate::parse_kind(kind)
+                    .map_err(|error| WorkbenchLexicalError::Computation(Box::new(error)))?;
+            }
+            if definition_contains.as_ref().is_some_and(String::is_empty) {
+                return Err(WorkbenchLexicalError::Computation(Box::new(
+                    crate::SearchError::InvalidQuery(
+                        "Compose definition filter must not be empty".into(),
+                    ),
+                )));
+            }
+            if definition_contains.is_none() && links_from.is_none() {
+                return Err(WorkbenchLexicalError::Computation(Box::new(
+                    crate::SearchError::InvalidQuery(
+                        "Compose requires a definition or Links filter".into(),
+                    ),
+                )));
+            }
+        }
+        WorkbenchLexicalQuery::Generate { .. }
+            if !request.options.sources.is_empty()
+                || request.options.alias_scope != AliasScope::ActiveOnly
+                || request.options.page_size.is_some()
+                || request.options.cursor.is_some() =>
+        {
+            return Err(WorkbenchLexicalError::InvalidRequest {
+                detail: "Generate requires neutral source, alias, page, and cursor options".into(),
+            });
+        }
         _ => {}
     }
     Ok(())
+}
+
+fn compose_links_request(
+    request: &WorkbenchLexicalRequest,
+    spelling: &str,
+) -> WorkbenchLexicalRequest {
+    WorkbenchLexicalRequest {
+        version: request.version,
+        query: WorkbenchLexicalQuery::Links {
+            spelling: spelling.to_owned(),
+            depth: 1,
+        },
+        options: WorkbenchLexicalOptions {
+            sources: request.options.sources.clone(),
+            alias_scope: request.options.alias_scope,
+            page_size: None,
+            cursor: None,
+        },
+    }
+}
+
+fn request_component_is_valid(value: &str) -> bool {
+    #[cfg(feature = "morphology")]
+    {
+        crate::valid_component(value)
+    }
+    #[cfg(not(feature = "morphology"))]
+    {
+        let _ = value;
+        false
+    }
 }
 
 fn validate_outer_binding(expected: &str, observed: &str) -> Result<(), WorkbenchQueryError> {
@@ -1649,6 +2039,54 @@ fn is_sha256(value: &str) -> bool {
             .all(|byte| byte.is_ascii_hexdigit() && !byte.is_ascii_uppercase())
 }
 
+fn is_occurrence_tuple_hex(value: &str) -> bool {
+    if value.is_empty()
+        || !value.len().is_multiple_of(2)
+        || !value
+            .bytes()
+            .all(|byte| byte.is_ascii_digit() || (b'a'..=b'f').contains(&byte))
+    {
+        return false;
+    }
+    let bytes = value
+        .as_bytes()
+        .as_chunks::<2>()
+        .0
+        .iter()
+        .map(|pair| {
+            let digit = |byte: u8| match byte {
+                b'0'..=b'9' => byte - b'0',
+                b'a'..=b'f' => byte - b'a' + 10,
+                _ => 0,
+            };
+            (digit(pair[0]) << 4) | digit(pair[1])
+        })
+        .collect::<Vec<_>>();
+    let mut offset = 0usize;
+    let mut fields = Vec::with_capacity(3);
+    for _ in 0..3 {
+        let Some(length_bytes) = bytes.get(offset..offset.saturating_add(8)) else {
+            return false;
+        };
+        let Ok(length_bytes) = <[u8; 8]>::try_from(length_bytes) else {
+            return false;
+        };
+        let Ok(length) = usize::try_from(u64::from_be_bytes(length_bytes)) else {
+            return false;
+        };
+        offset += 8;
+        let Some(field_bytes) = bytes.get(offset..offset.saturating_add(length)) else {
+            return false;
+        };
+        let Ok(field) = std::str::from_utf8(field_bytes) else {
+            return false;
+        };
+        fields.push(field);
+        offset += length;
+    }
+    offset == bytes.len() && !fields[0].is_empty() && is_sha256(fields[1]) && !fields[2].is_empty()
+}
+
 #[cfg(test)]
 mod tests {
     use std::{
@@ -1660,6 +2098,7 @@ mod tests {
 
     use super::*;
     use crate::workbench::WorkbenchView;
+    use vlajmaji_store::WorkbenchBuildRequest;
 
     static NEXT_FIXTURE: AtomicUsize = AtomicUsize::new(0);
 
@@ -2017,6 +2456,147 @@ mod tests {
             },
             options: WorkbenchLexicalOptions::default(),
         }
+    }
+
+    #[test]
+    fn test_direct_computed_invalid_request_rechecks_after_catalogue_rebuild() {
+        let root = test_root();
+        let catalogue = root.join("catalogue");
+        install_test_catalogue(&catalogue, &links_test_dictionary());
+        let view = root.join("view");
+        WorkbenchView::build_new(
+            &view,
+            vlajmaji_store::WorkbenchBuildRequest {
+                catalogue_root: Some(catalogue.clone()),
+                owned_root: None,
+                selection: test_selection(),
+            },
+        )
+        .unwrap();
+
+        let mut engine = WorkbenchSearchEngine::open(&view).unwrap();
+        assert!(engine.full.is_none());
+        assert!(engine.compact.is_none());
+        let request = WorkbenchLexicalRequest {
+            version: 1,
+            query: WorkbenchLexicalQuery::SpellingDistance {
+                anchor: String::new(),
+                max_distance: None,
+            },
+            options: WorkbenchLexicalOptions::default(),
+        };
+        assert!(matches!(
+            engine.execute_lexical(&request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::Computation(cause)
+                    if matches!(cause.as_ref(), crate::SearchError::InvalidQuery(_)))
+        ));
+        assert!(engine.full.is_none());
+        assert!(engine.compact.is_none());
+
+        let mut writer_revision = None;
+        let result = engine.execute_lexical_with_hook(&request, || {
+            writer_revision = Some(rebuild_catalogue(&catalogue));
+        });
+        assert_catalogue_stale(result);
+        assert_eq!(writer_revision, Some(2));
+        assert!(engine.full.is_none());
+        assert!(engine.compact.is_none());
+        drop(engine);
+        fs::remove_dir_all(root).unwrap();
+    }
+
+    #[test]
+    fn test_configured_proposal_rechecks_after_active_clear_without_engine_setup() {
+        let (root, config, replacement_catalogue) = configured_links_fixture();
+        let mut engine = ConfiguredWorkbenchSearchEngine::open(&config, Some("alpha")).unwrap();
+        assert!(engine.full.is_none());
+        assert!(engine.compact.is_none());
+        let request = WorkbenchLexicalRequest {
+            version: 1,
+            query: WorkbenchLexicalQuery::ProposalExact {
+                spelling: "farvi".into(),
+                proposals: vec![
+                    super::super::computed::WorkbenchProposalInput {
+                        namespace: "experiment-one".into(),
+                        spelling: "farvi".into(),
+                        text: "first reading".into(),
+                    },
+                    super::super::computed::WorkbenchProposalInput {
+                        namespace: "experiment-two".into(),
+                        spelling: "farvi".into(),
+                        text: "second reading".into(),
+                    },
+                    super::super::computed::WorkbenchProposalInput {
+                        namespace: "experiment-one".into(),
+                        spelling: "farvi".into(),
+                        text: "first reading".into(),
+                    },
+                ],
+            },
+            options: WorkbenchLexicalOptions::default(),
+        };
+        let baseline = engine.execute_lexical(&request).unwrap();
+        let WorkbenchLexicalFullResult::ProposalExact(proposals) = baseline.result else {
+            panic!("configured ProposalExact request returned another operation")
+        };
+        assert_eq!(proposals.totals.candidate_proposals, 3);
+        assert_eq!(proposals.totals.records, 3);
+        assert_eq!(
+            proposals
+                .proposals
+                .iter()
+                .map(|proposal| proposal.input_ordinal)
+                .collect::<Vec<_>>(),
+            vec![1, 0, 2]
+        );
+        assert_eq!(
+            proposals
+                .proposals
+                .iter()
+                .map(|proposal| proposal.id.as_str())
+                .collect::<Vec<_>>(),
+            vec![
+                "561410100f6a75f60b8c1d15ffaa94b110a9a05ef32f6bf22c65a6a1aea57d21",
+                "e665ac3f2e96bf14d5809d81fda5b1c9f369364d9a0ae275af20512e54d01258",
+                "e665ac3f2e96bf14d5809d81fda5b1c9f369364d9a0ae275af20512e54d01258",
+            ]
+        );
+        assert!(engine.full.is_none());
+        assert!(engine.compact.is_none());
+
+        let mut writer_observation = None;
+        let result = engine.execute_lexical_with_hook(&request, || {
+            let report = vlajmaji_store::WorkbenchProfiles::configure(
+                &config,
+                vlajmaji_store::WorkbenchProfileConfigureRequest {
+                    name: "alpha".into(),
+                    catalogue_root: Some(replacement_catalogue.clone()),
+                    owned_root: None,
+                    selection: test_selection(),
+                    make_default: false,
+                },
+                Some(3),
+            )
+            .unwrap();
+            assert!(report.changed);
+            let profile = vlajmaji_store::WorkbenchProfiles::read(&config)
+                .unwrap()
+                .profile(Some("alpha"))
+                .unwrap()
+                .clone();
+            writer_observation = Some((
+                report.revision,
+                report.active.is_none(),
+                profile.active_generation,
+            ));
+        });
+        assert_config_changed(result);
+        assert_eq!(writer_observation, Some((4, true, None)));
+        assert!(engine.full.is_none());
+        assert!(engine.compact.is_none());
+        drop(engine);
+        fs::remove_dir_all(root).unwrap();
     }
 
     fn token_for(body: LexicalCursorBody) -> String {
@@ -2656,6 +3236,328 @@ mod tests {
     }
 
     #[test]
+    fn test_computed_and_proposal_cursors_distinguish_stale_family_from_missing_position() {
+        let root = test_root();
+        let catalogue = root.join("catalogue");
+        let dictionary = test_dictionary();
+        let expected_continuation_id = dictionary
+            .metadata()
+            .assertions
+            .iter()
+            .find(|assertion| {
+                dictionary
+                    .metadata()
+                    .entries
+                    .iter()
+                    .find(|entry| entry.id == assertion.entry)
+                    .is_some_and(|entry| entry.spelling == lexicon::Presence::Value("blanu".into()))
+            })
+            .expect("fixed input contains the continuation assertion")
+            .id
+            .clone();
+        install_test_catalogue(&catalogue, &dictionary);
+        let view = root.join("view");
+        WorkbenchView::build_new(
+            &view,
+            WorkbenchBuildRequest {
+                catalogue_root: Some(catalogue),
+                owned_root: None,
+                selection: test_selection(),
+            },
+        )
+        .unwrap();
+        let mut engine = WorkbenchSearchEngine::open(&view).unwrap();
+
+        let mut computed_request = WorkbenchLexicalRequest {
+            version: 1,
+            query: WorkbenchLexicalQuery::SpellingDistance {
+                anchor: "farvi".into(),
+                max_distance: None,
+            },
+            options: WorkbenchLexicalOptions::default(),
+        };
+        computed_request.options.page_size = Some(1);
+        let first = engine.execute_lexical(&computed_request).unwrap();
+        let binding = first.binding_sha256.clone();
+        let WorkbenchLexicalFullResult::SpellingDistance(first) = first.result else {
+            panic!("expected computed cursor source page")
+        };
+        let resolved = first.resolved_sources.clone();
+        let issued = first
+            .next_cursor
+            .expect("fixed source fixture has another match");
+
+        computed_request.options.cursor = Some(issued.clone());
+        let continued = engine.execute_lexical(&computed_request).unwrap();
+        let WorkbenchLexicalFullResult::SpellingDistance(continued) = continued.result else {
+            panic!("issued computed cursor continued into another operation")
+        };
+        assert_eq!(continued.hits.len(), 1);
+        assert_eq!(continued.hits[0].hit.assertion.id, expected_continuation_id);
+        assert_eq!(continued.totals.records, first.totals.records);
+
+        let mut changed_query = computed_request.clone();
+        changed_query.query = WorkbenchLexicalQuery::SpellingDistance {
+            anchor: "blanu".into(),
+            max_distance: None,
+        };
+        changed_query.options.cursor = Some(issued.clone());
+        assert!(matches!(
+            engine.execute_lexical(&changed_query),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::StaleCursor)
+        ));
+
+        let mut changed_format = computed_request.clone();
+        changed_format.options.cursor = Some(issued.clone());
+        assert!(matches!(
+            engine.execute_lexical_compact(&changed_format),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::StaleCursor)
+        ));
+
+        let mut changed_selector = computed_request.clone();
+        changed_selector.options.sources = vec!["llg".into()];
+        changed_selector.options.cursor = Some(issued.clone());
+        assert!(matches!(
+            engine.execute_lexical(&changed_selector),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::StaleCursor)
+        ));
+
+        let mut changed_alias_scope = computed_request.clone();
+        changed_alias_scope.options.alias_scope = lexicon::AliasScope::IncludeRetired;
+        changed_alias_scope.options.cursor = Some(issued.clone());
+        assert!(matches!(
+            engine.execute_lexical(&changed_alias_scope),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::StaleCursor)
+        ));
+
+        let computed_query_hash = query_sha256(&computed_request, &resolved).unwrap();
+        let token_body = |last| LexicalCursorBody {
+            version: 1,
+            domain: CURSOR_DOMAIN.into(),
+            format: "full".into(),
+            binding_sha256: binding.clone(),
+            query_sha256: computed_query_hash.clone(),
+            last,
+        };
+        let actual_envelope = {
+            let hex = issued.strip_prefix(CURSOR_PREFIX).unwrap();
+            let bytes = hex
+                .as_bytes()
+                .as_chunks::<2>()
+                .0
+                .iter()
+                .map(|pair| {
+                    let digit = |byte: u8| match byte {
+                        b'0'..=b'9' => byte - b'0',
+                        b'a'..=b'f' => byte - b'a' + 10,
+                        _ => unreachable!("issued cursor is lowercase hex"),
+                    };
+                    (digit(pair[0]) << 4) | digit(pair[1])
+                })
+                .collect::<Vec<_>>();
+            serde_json::from_slice::<LexicalCursorEnvelope>(&bytes).unwrap()
+        };
+        let WorkbenchLexicalPosition::ComputedSource {
+            family,
+            distance,
+            spelling,
+            source,
+            occurrence_id,
+            assertion_id,
+        } = actual_envelope.body.last
+        else {
+            panic!("computed query issued a different cursor family")
+        };
+        let malformed_computed = token_for(token_body(WorkbenchLexicalPosition::ComputedSource {
+            family: family.clone(),
+            distance,
+            spelling: spelling.clone(),
+            source: source.clone(),
+            occurrence_id: "GG".into(),
+            assertion_id: assertion_id.clone(),
+        }));
+        computed_request.options.cursor = Some(malformed_computed);
+        assert!(matches!(
+            engine.execute_lexical(&computed_request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::MalformedCursor { .. })
+        ));
+
+        for (family, distance, occurrence_id) in [
+            ("unknown_family", None, occurrence_id.clone()),
+            ("prosody", Some(1), occurrence_id.clone()),
+            ("spelling_distance", Some(1), "00".into()),
+        ] {
+            let malformed_shape = token_for(LexicalCursorBody {
+                version: 1,
+                domain: CURSOR_DOMAIN.into(),
+                format: "full".into(),
+                binding_sha256: "a".repeat(64),
+                query_sha256: computed_query_hash.clone(),
+                last: WorkbenchLexicalPosition::ComputedSource {
+                    family: family.into(),
+                    distance,
+                    spelling: spelling.clone(),
+                    source: source.clone(),
+                    occurrence_id,
+                    assertion_id: assertion_id.clone(),
+                },
+            });
+            computed_request.options.cursor = Some(malformed_shape);
+            assert!(matches!(
+                engine.execute_lexical(&computed_request),
+                Err(WorkbenchQueryError::Lexical(error))
+                    if matches!(error.as_ref(), WorkbenchLexicalError::MalformedCursor { .. })
+            ));
+        }
+
+        let wrong_binding = token_for(LexicalCursorBody {
+            version: 1,
+            domain: CURSOR_DOMAIN.into(),
+            format: "full".into(),
+            binding_sha256: "a".repeat(64),
+            query_sha256: computed_query_hash.clone(),
+            last: WorkbenchLexicalPosition::ComputedSource {
+                family: family.clone(),
+                distance,
+                spelling: spelling.clone(),
+                source: source.clone(),
+                occurrence_id: occurrence_id.clone(),
+                assertion_id: assertion_id.clone(),
+            },
+        });
+        assert_ne!(binding, "a".repeat(64));
+        computed_request.options.cursor = Some(wrong_binding);
+        assert!(matches!(
+            engine.execute_lexical(&computed_request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::StaleCursor)
+        ));
+
+        let absent_position = token_body(WorkbenchLexicalPosition::ComputedSource {
+            family: family.clone(),
+            distance,
+            spelling: spelling.clone(),
+            source: source.clone(),
+            occurrence_id: occurrence_id.clone(),
+            assertion_id: EntityId::new("not-a-fixed-assertion").unwrap(),
+        });
+        computed_request.options.cursor = Some(token_for(absent_position));
+        assert!(matches!(
+            engine.execute_lexical(&computed_request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::InvalidCursorPosition)
+        ));
+
+        // A well-shaped cursor from a different known operation is stale, even
+        // when its query and current binding hashes are otherwise valid.
+        let wrong_family = token_for(token_body(WorkbenchLexicalPosition::Form {
+            source: resolved[0].clone(),
+            entry_spelling: "farvi".into(),
+            spelling: "farvi-form".into(),
+            kind: FormKind::ComputedStem,
+            form_id: EntityId::new("computed-old-family-form").unwrap(),
+        }));
+        computed_request.options.cursor = Some(wrong_family);
+        assert!(matches!(
+            engine.execute_lexical(&computed_request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::StaleCursor)
+        ));
+
+        let proposal_request = WorkbenchLexicalRequest {
+            version: 1,
+            query: WorkbenchLexicalQuery::ProposalExact {
+                spelling: "farvi".into(),
+                proposals: vec![super::super::computed::WorkbenchProposalInput {
+                    namespace: "cursor-check".into(),
+                    spelling: "farvi".into(),
+                    text: "fixed proposal".into(),
+                }],
+            },
+            options: WorkbenchLexicalOptions::default(),
+        };
+        let proposal_baseline = engine.execute_lexical(&proposal_request).unwrap();
+        let proposal_binding = proposal_baseline.binding_sha256;
+        let proposal_hash = query_sha256(&proposal_request, &[]).unwrap();
+        let proposal_token = |last| {
+            token_for(LexicalCursorBody {
+                version: 1,
+                domain: CURSOR_DOMAIN.into(),
+                format: "full".into(),
+                binding_sha256: proposal_binding.clone(),
+                query_sha256: proposal_hash.clone(),
+                last,
+            })
+        };
+        let mut absent_proposal = proposal_request.clone();
+        absent_proposal.options.cursor =
+            Some(proposal_token(WorkbenchLexicalPosition::ProposalExact {
+                proposal_id: "a".repeat(64),
+                input_ordinal: 99,
+            }));
+        assert!(matches!(
+            engine.execute_lexical(&absent_proposal),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::InvalidCursorPosition)
+        ));
+        let malformed_proposal = proposal_token(WorkbenchLexicalPosition::ProposalExact {
+            proposal_id: "G".repeat(64),
+            input_ordinal: 0,
+        });
+        let mut malformed_proposal_request = proposal_request.clone();
+        malformed_proposal_request.options.cursor = Some(malformed_proposal);
+        assert!(matches!(
+            engine.execute_lexical(&malformed_proposal_request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::MalformedCursor { .. })
+        ));
+        let proposal_wrong_family = proposal_token(WorkbenchLexicalPosition::Form {
+            source: resolved[0].clone(),
+            entry_spelling: "farvi".into(),
+            spelling: "farvi-form".into(),
+            kind: FormKind::ComputedStem,
+            form_id: EntityId::new("proposal-old-family-form").unwrap(),
+        });
+        let mut proposal_request = proposal_request;
+        proposal_request.options.cursor = Some(proposal_wrong_family);
+        assert!(matches!(
+            engine.execute_lexical(&proposal_request),
+            Err(WorkbenchQueryError::Lexical(error))
+                if matches!(error.as_ref(), WorkbenchLexicalError::StaleCursor)
+        ));
+
+        #[cfg(feature = "morphology")]
+        {
+            let mut pure_engine = WorkbenchSearchEngine::open(&view).unwrap();
+            assert!(pure_engine.full.is_none());
+            assert!(pure_engine.compact.is_none());
+            let generated = pure_engine
+                .execute_lexical(&WorkbenchLexicalRequest {
+                    version: 1,
+                    query: WorkbenchLexicalQuery::Generate {
+                        components: vec!["mlatu".into(), "kerlo".into()],
+                        setting: crate::MorphologySetting::Standard,
+                    },
+                    options: WorkbenchLexicalOptions::default(),
+                })
+                .unwrap();
+            assert!(matches!(
+                generated.result,
+                WorkbenchLexicalFullResult::Generate(_)
+            ));
+            assert!(pure_engine.full.is_none());
+            assert!(pure_engine.compact.is_none());
+        }
+
+        fs::remove_dir_all(root).unwrap();
+    }
+
+    #[test]
     fn test_form_detail_key_syntax_precedes_binding_staleness() {
         let reference = WorkbenchFormDetailRef {
             version: 1,
@@ -2824,6 +3726,57 @@ mod tests {
             current_forms.groups[0].hits[0].form_id
         );
         assert!(current.full.is_none());
+        fs::remove_dir_all(root).unwrap();
+    }
+
+    #[cfg(not(feature = "morphology"))]
+    #[test]
+    fn test_feature_off_computed_calls_fail_before_options_or_provider_setup() {
+        let root = test_root();
+        let catalogue = root.join("catalogue");
+        install_test_catalogue(&catalogue, &links_test_dictionary());
+        let view = root.join("view");
+        WorkbenchView::build_new(
+            &view,
+            vlajmaji_store::WorkbenchBuildRequest {
+                catalogue_root: Some(catalogue),
+                owned_root: None,
+                selection: test_selection(),
+            },
+        )
+        .unwrap();
+
+        let mut engine = WorkbenchSearchEngine::open(&view).unwrap();
+        assert!(engine.full.is_none());
+        assert!(engine.compact.is_none());
+        for query in [
+            WorkbenchLexicalQuery::Components {
+                components: vec![String::new()],
+            },
+            WorkbenchLexicalQuery::Generate {
+                components: vec![String::new()],
+                setting: crate::MorphologySetting::Standard,
+            },
+        ] {
+            let request = WorkbenchLexicalRequest {
+                version: 1,
+                query,
+                options: WorkbenchLexicalOptions {
+                    sources: vec!["unknown-source".into()],
+                    alias_scope: vlajmaji_lexicon::AliasScope::IncludeRetired,
+                    page_size: Some(0),
+                    cursor: Some("not-a-cursor".into()),
+                },
+            };
+            assert!(matches!(
+                engine.execute_lexical(&request),
+                Err(WorkbenchQueryError::Lexical(error))
+                    if matches!(error.as_ref(), WorkbenchLexicalError::Computation(cause)
+                        if matches!(cause.as_ref(), crate::SearchError::FeatureDisabled("morphology")))
+            ));
+            assert!(engine.full.is_none());
+            assert!(engine.compact.is_none());
+        }
         fs::remove_dir_all(root).unwrap();
     }
 }

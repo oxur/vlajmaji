@@ -2494,6 +2494,113 @@ fn build_compact_links(
     })
 }
 
+/// Collect the admitted depth-one target IDs used by Compose without hydrating
+/// link response records. It deliberately shares the same enumeration and
+/// format-local target resolver as the public Links query.
+fn collect_full_compose_target_ids(
+    runtime: &mut impl FullLinksRuntime,
+    request: &WorkbenchLexicalRequest,
+    binding: &str,
+) -> Result<BTreeSet<EntityId>, WorkbenchQueryError> {
+    let (spelling, depth) = match &request.query {
+        WorkbenchLexicalQuery::Links { spelling, depth } => (spelling.as_str(), *depth),
+        _ => {
+            return Err(WorkbenchLexicalError::InvalidRequest {
+                detail: "Links query required".into(),
+            }
+            .into());
+        }
+    };
+    let prepared = runtime.prepare_full_links(request)?;
+    let mut cached = Vec::<(
+        vlajmaji_lexicon::RelationTarget,
+        WorkbenchLinkTargetFull,
+        Vec<vlajmaji_lexicon::AssertionRecord>,
+    )>::new();
+    let (_, steps, _) = enumerate_link_steps(
+        &prepared.rows,
+        spelling,
+        depth,
+        &prepared.resolved_sources,
+        |target, entry| {
+            if let Some((index, (_, _, hits))) = cached
+                .iter()
+                .enumerate()
+                .find(|(_, (known, _, _))| known == target)
+            {
+                return Ok((index, hits.clone()));
+            }
+            let (observation, hits) = full_target_observation(
+                runtime,
+                &prepared.rows,
+                &prepared.resolved_sources,
+                target,
+                entry,
+            )?;
+            let index = cached.len();
+            cached.push((target.clone(), observation, hits.clone()));
+            Ok((index, hits))
+        },
+    )?;
+    let _ = binding; // The collector is called only within the guarded query.
+    Ok(steps
+        .into_iter()
+        .flat_map(|step| step.target_assertions)
+        .collect())
+}
+
+fn collect_compact_compose_target_ids(
+    runtime: &mut impl CompactLinksRuntime,
+    request: &WorkbenchLexicalRequest,
+    binding: &str,
+) -> Result<BTreeSet<EntityId>, WorkbenchQueryError> {
+    let (spelling, depth) = match &request.query {
+        WorkbenchLexicalQuery::Links { spelling, depth } => (spelling.as_str(), *depth),
+        _ => {
+            return Err(WorkbenchLexicalError::InvalidRequest {
+                detail: "Links query required".into(),
+            }
+            .into());
+        }
+    };
+    let prepared = runtime.prepare_compact_links(request)?;
+    let mut cached = Vec::<(
+        vlajmaji_lexicon::RelationTarget,
+        WorkbenchLinkTargetCompact,
+        Vec<vlajmaji_lexicon::AssertionRecord>,
+    )>::new();
+    let (_, steps, _) = enumerate_link_steps(
+        &prepared.rows,
+        spelling,
+        depth,
+        &prepared.resolved_sources,
+        |target, entry| {
+            if let Some((index, (_, _, hits))) = cached
+                .iter()
+                .enumerate()
+                .find(|(_, (known, _, _))| known == target)
+            {
+                return Ok((index, hits.clone()));
+            }
+            let (observation, hits) = compact_target_observation(
+                runtime,
+                &prepared.rows,
+                &prepared.resolved_sources,
+                target,
+                entry,
+            )?;
+            let index = cached.len();
+            cached.push((target.clone(), observation, hits.clone()));
+            Ok((index, hits))
+        },
+    )?;
+    let _ = binding;
+    Ok(steps
+        .into_iter()
+        .flat_map(|step| step.target_assertions)
+        .collect())
+}
+
 impl WorkbenchSearchEngine {
     pub(super) fn lexical_links_full_inner(
         &mut self,
@@ -2508,6 +2615,20 @@ impl WorkbenchSearchEngine {
         binding: &str,
     ) -> Result<WorkbenchLinksCompact, WorkbenchQueryError> {
         build_compact_links(self, request, binding)
+    }
+    pub(super) fn lexical_compose_target_ids_inner(
+        &mut self,
+        request: &WorkbenchLexicalRequest,
+        binding: &str,
+    ) -> Result<BTreeSet<EntityId>, WorkbenchQueryError> {
+        collect_full_compose_target_ids(self, request, binding)
+    }
+    pub(super) fn lexical_compose_target_ids_compact_inner(
+        &mut self,
+        request: &WorkbenchLexicalRequest,
+        binding: &str,
+    ) -> Result<BTreeSet<EntityId>, WorkbenchQueryError> {
+        collect_compact_compose_target_ids(self, request, binding)
     }
 }
 impl ConfiguredWorkbenchSearchEngine {
@@ -2524,6 +2645,20 @@ impl ConfiguredWorkbenchSearchEngine {
         binding: &str,
     ) -> Result<WorkbenchLinksCompact, WorkbenchQueryError> {
         build_compact_links(self, request, binding)
+    }
+    pub(super) fn lexical_compose_target_ids_inner(
+        &mut self,
+        request: &WorkbenchLexicalRequest,
+        binding: &str,
+    ) -> Result<BTreeSet<EntityId>, WorkbenchQueryError> {
+        collect_full_compose_target_ids(self, request, binding)
+    }
+    pub(super) fn lexical_compose_target_ids_compact_inner(
+        &mut self,
+        request: &WorkbenchLexicalRequest,
+        binding: &str,
+    ) -> Result<BTreeSet<EntityId>, WorkbenchQueryError> {
+        collect_compact_compose_target_ids(self, request, binding)
     }
 }
 
