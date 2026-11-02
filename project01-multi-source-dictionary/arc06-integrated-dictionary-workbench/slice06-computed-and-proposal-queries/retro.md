@@ -1,0 +1,9 @@
+# S06 retrospective — 2026-11-01
+
+The useful result is eight typed computed/proposal families on the mixed workbench, with honest source/analysis/proposal units, global paging, native CLI and runnable documentation. Public behavior is supported by the existing repository tests and six small independent caller checks on the committed source.
+
+The engineering process took far too long. We repeatedly expanded agent-created proof machinery and repaired observer assumptions while the underlying delivery still needed ordinary completion. That overhead obscured the distinction between a useful product requirement and our chosen support procedure. Shared CDC/ROOT fixture accounting and AliasScope-wire misses also caused avoidable corrections. The retained history records the actual failures and attribution; neither stricter wording nor a later success makes them disappear.
+
+The Operator approved a proportionate replan: preserve criteria/history, stop the unexecuted DRAFT23 runner, reuse genuine unchanged-source gates, finish the actual all-features/package/build work, then use existing tests and six direct callers. This produced adequate inspectable evidence without another protocol layer. The independent one-off Distance field-name mistake was corrected offline against the fixed input; no product call was replayed to hide it.
+
+For the remaining arc, use the smallest existing adequate proof and one assembled four-corpus/owned consumer for overlapping S07/Arc predicates. Treat new machinery as a cost requiring a concrete coverage need. Keep product errors, observer errors, setup errors and inherited limits separate; do not turn every green command into another approval checkpoint. The original S07 capability, NEW independent consumer/SAME-context canonical review/ROOT consistency and separate Operator project gate remain unchanged.

@@ -346,6 +346,7 @@ def preflight():
  assert os.environ['RUSTUP_AUTO_INSTALL']=='0'and os.environ['CARGO_NET_OFFLINE']=='true'
  assert os.environ['CARGO_TARGET_DIR']==binding['target']
  for k in ['CARGO_HOME','RUSTUP_HOME']:assert os.environ[k]==binding['toolhomes'][k]
+ assert git_at(src,'branch','--show-current')=='codex/project01-integrated-workbench'
  assert git_at(src,'rev-parse','HEAD')==binding['head']
  assert git_at(src,'rev-parse','HEAD^{tree}')==binding['tree']
  assert git_at(src,'rev-parse','HEAD^')==binding['parent']
@@ -399,6 +400,7 @@ if __name__=='__main__':
  binding=json.loads(Path(sys.argv[1]).read_bytes());assert binding['status']=='FROZEN_CDC_VERIFICATION'
  src=Path(binding['source']);cli=Path(binding['cli']);example=Path(binding['example']);env=os.environ.copy()
  preflight();assert len(binding['source_files'])==15
+ for p in [cli,example,Path(__file__),*[src/r for r in binding['source_files']]]:assert str(p) in binding['files'],p
  inputs={}
  for name,row in binding['inputs'].items():
   assert pin(row['path'])=={k:row[k]for k in ['bytes','sha256']}
@@ -427,6 +429,11 @@ if __name__=='__main__':
   'CARGO_HOME':env['CARGO_HOME'],'RUSTUP_HOME':env['RUSTUP_HOME'],'CARGO_TARGET_DIR':env['CARGO_TARGET_DIR'],
   'RUSTUP_AUTO_INSTALL':env['RUSTUP_AUTO_INSTALL'],'CARGO_NET_OFFLINE':env['CARGO_NET_OFFLINE']}))
  file_new(base/'planned-children.json',enc(PLAN))
+ invalid=copy.deepcopy(proposal_request)
+ invalid['query']['proposals']=[fixed['proposal']['nonmatching_invalid_namespace_negative']]
+ invalid['options']['page_size']=0
+ invalid_file=file_new(base/'proposal-invalid-nonmatching.json',enc(invalid)+b'\n')
+ file_new(base/'static-negative-before-children.json',enc({str(invalid_file):pin(invalid_file)}))
  file_new(base/'expected-before-children.json',enc({'models':models,'fixed':fixed,'planning_pins':planning_before}))
  W=base/'workbench-example';CW=W/'computed-workbench';cfg=CW/'profiles.json'
  H='workbench-example/computed-workbench/view-historical-r1'
@@ -490,12 +497,12 @@ if __name__=='__main__':
  pp3=copy.deepcopy(proposal_request);pp3['options']['cursor']=p2['next_cursor']
  r=cli_call('proposal-rest',rq('proposal-rest',pp3));p3=proposal_check(r,b_hist,pp3,indices=[2]);assert p3['next_cursor']is None
  wrong=copy.deepcopy(first);wrong['options']['cursor']=rows1['next_cursor']
- e=cli_call('wrong-format-cursor',rq('source-wrong-format',wrong),code=1);assert e['code']=='stale_cursor'
+ e=cli_call('wrong-format-cursor',rq('source-wrong-format',wrong),code=1);assert e=={'code':'stale_cursor','message':'stale lexical cursor','sources':[]}
  ev=decode_token(rows1['next_cursor']);ev['body']['last']['assertion_id']='not-a-fixed-assertion';ev['checksum']=sha(enc(ev['body']))
  absent=copy.deepcopy(first);absent['options']['cursor']=PREFIX+enc(ev).hex()
- e=cli_call('absent-source-position',rq('source-absent-position',absent),'compact',code=1);assert e['code']=='invalid_cursor_position'
- invalid=copy.deepcopy(proposal_request);invalid['query']['proposals']=[fixed['proposal']['nonmatching_invalid_namespace_negative']];invalid['options']['page_size']=0
- e=cli_call('invalid-nonmatching-proposal',rq('proposal-invalid-nonmatching',invalid),code=1);assert e['code']=='invalid_lexical_request'
+ e=cli_call('absent-source-position',rq('source-absent-position',absent),'compact',code=1);assert e=={'code':'invalid_cursor_position','message':'invalid lexical cursor position','sources':[]}
+ assert invalid_file.read_bytes()==enc(invalid)+b'\n'
+ e=cli_call('invalid-nonmatching-proposal',invalid_file,code=1);assert e=={'code':'invalid_lexical_request','message':'proposal namespace must be non-empty and must not use captured: prefix','sources':[]}
  assert len(children)==23
  for p,w in durable_before.items():assert pin(p)==w,p
  for p,w in planning_before.items():assert pin(p)==w,p
