@@ -15,4 +15,4 @@
 
 ## 2026-11-01 current draft
 
-S06 closed at sourceb5da0fe3; all eight originals are directly hash-matched as recorded in plan. CURRENT v0.3 and cc-prompt.md bind a minimal docs-only INITIAL1/5 and one NEW independent consumer/shared assembled proof. DRAFT pending ROOT review; no runtime/source transfer. All eight raw rows/criteria/statuses unchanged OPEN.
+S06 closed at sourceb5da0fe3; all eight originals are directly hash-matched as recorded in plan. CURRENT v0.3 and cc-prompt.md bind a minimal docs-only INITIAL1/5 and one NEW independent consumer/shared assembled proof. ROOT whole-packet approval b716cd7; INITIAL1/5 ISSUED after this status-only checkpoint. Explicit CDC dispatch transfers only the three allowed docs paths/index/ONEtarget; no product runtime. All eight raw rows/criteria/statuses unchanged OPEN.

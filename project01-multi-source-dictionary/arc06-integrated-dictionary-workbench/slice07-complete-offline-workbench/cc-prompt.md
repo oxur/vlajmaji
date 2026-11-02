@@ -1,6 +1,6 @@
-# S07 INITIAL1/5 — DRAFT pending ROOT review, 2026-11-01
+# S07 INITIAL1/5 — ISSUED after ROOT approval, 2026-11-01
 
-Own path: arc06-integrated-dictionary-workbench/slice07-complete-offline-workbench/cc-prompt.md. This is the first of five S07 implementation assignments, following accepted S06 b5da0fe3 and planning9c16cef. Same retained CC Luna/high and CDC Sol6.1/high continue THROUGH ALL Arc06. No execution before ROOT issue/release.
+Own path: arc06-integrated-dictionary-workbench/slice07-complete-offline-workbench/cc-prompt.md. This is the first of five S07 implementation assignments, following accepted S06 b5da0fe3 and planning9c16cef. Same retained CC Luna/high and CDC Sol6.1/high continue THROUGH ALL Arc06. ROOT whole-packet approval b716cd7 is effective; resume only after the named issue checkpoint and explicit CDC dispatch.
 
 Deliver the useful offline all-four-plus-owned guide using existing APIs and the CURRENT v0.3 scope in slice-plan.md. Read that compact section, the eight existing ledger rows, applicable current SOURCE AGENTS and relevant command/API definitions. Reuse earlier source knowledge; no historical intake reset, new runner/manifest/inventory/proof framework or per-command export apparatus.
 
