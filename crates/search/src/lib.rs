@@ -73,11 +73,14 @@ pub use workbench::{
     ConfiguredWorkbenchLexicalCompactResponse, ConfiguredWorkbenchLexicalFullResponse,
     ConfiguredWorkbenchLinkDetailResponse, ConfiguredWorkbenchQueryError,
     ConfiguredWorkbenchReferenceCompactResponse, ConfiguredWorkbenchReferenceFullResponse,
-    ConfiguredWorkbenchSearchEngine, WorkbenchCompactFormRecord, WorkbenchCompactLinkRecord,
-    WorkbenchCompactResponse, WorkbenchContextCounts, WorkbenchCurationCounts,
-    WorkbenchDetailResponse, WorkbenchFormCompact, WorkbenchFormCompactGroup,
-    WorkbenchFormDetailRef, WorkbenchFormDetailResponse, WorkbenchFormEvidence, WorkbenchFormFull,
-    WorkbenchFormFullGroup, WorkbenchFormRecord, WorkbenchFullResponse, WorkbenchFullResult,
+    ConfiguredWorkbenchSearchEngine, WorkbenchAnalysisClassEvidence, WorkbenchAnalysisEvidence,
+    WorkbenchCompactFormRecord, WorkbenchCompactLinkRecord, WorkbenchCompactResponse,
+    WorkbenchComputedCompact, WorkbenchComputedCompactHit, WorkbenchComputedFull,
+    WorkbenchComputedFullHit, WorkbenchComputedSourceTotal, WorkbenchComputedTotals,
+    WorkbenchContextCounts, WorkbenchCurationCounts, WorkbenchDetailResponse, WorkbenchFormCompact,
+    WorkbenchFormCompactGroup, WorkbenchFormDetailRef, WorkbenchFormDetailResponse,
+    WorkbenchFormEvidence, WorkbenchFormFull, WorkbenchFormFullGroup, WorkbenchFormRecord,
+    WorkbenchFullResponse, WorkbenchFullResult, WorkbenchGeneratedResult,
     WorkbenchLexicalCompactResponse, WorkbenchLexicalCompactResult, WorkbenchLexicalError,
     WorkbenchLexicalFullResponse, WorkbenchLexicalFullResult, WorkbenchLexicalOptions,
     WorkbenchLexicalQuery, WorkbenchLexicalRequest, WorkbenchLexicalSourceTotal,
@@ -86,7 +89,8 @@ pub use workbench::{
     WorkbenchLinkFullStep, WorkbenchLinkRecord, WorkbenchLinkStepId, WorkbenchLinkTargetCompact,
     WorkbenchLinkTargetFull, WorkbenchLinksCompact, WorkbenchLinksCompactGroup, WorkbenchLinksFull,
     WorkbenchLinksFullGroup, WorkbenchLinksSourceTotal, WorkbenchLinksTotals,
-    WorkbenchOwnedSummary, WorkbenchQueryError, WorkbenchQuerySelection,
+    WorkbenchOwnedSummary, WorkbenchProposalInput, WorkbenchProposalRecord,
+    WorkbenchProposalResult, WorkbenchProposalTotals, WorkbenchQueryError, WorkbenchQuerySelection,
     WorkbenchReferenceCompactResponse, WorkbenchReferenceCompactResult,
     WorkbenchReferenceFullResponse, WorkbenchReferenceFullResult, WorkbenchReferenceRegistration,
     WorkbenchReverseDefinitionCompact, WorkbenchReverseDefinitionCompactGroup,
@@ -1206,19 +1210,8 @@ fn link_explanation(edge: EdgeHit) -> LinkExplanation {
 
 fn source_kind(record: &CapturedRecord) -> Option<(WordKind, String, String)> {
     let raw = source_native_class(record)?;
-    let (kind, mapping) = match raw.as_str() {
-        "gismu" => (WordKind::Brivla, "gismu->brivla"),
-        "experimental gismu" => (WordKind::Brivla, "experimental-gismu->brivla"),
-        "lujvo" => (WordKind::GismuBasedLujvo, "lujvo->gismu-based-lujvo"),
-        "fu'ivla" => (WordKind::Zihevla, "fuivla->zihevla"),
-        "obsolete fu'ivla" => (WordKind::Zihevla, "obsolete-fuivla->zihevla"),
-        "cmavo" => (WordKind::Cmavo, "cmavo->cmavo"),
-        "experimental cmavo" => (WordKind::Cmavo, "experimental-cmavo->cmavo"),
-        "obsolete cmavo" => (WordKind::Cmavo, "obsolete-cmavo->cmavo"),
-        "cmevla" => (WordKind::Cmevla, "cmevla->cmevla"),
-        "obsolete cmevla" => (WordKind::Cmevla, "obsolete-cmevla->cmevla"),
-        _ => return None,
-    };
+    let (mapped, mapping) = map_native_class(&raw)?;
+    let kind = parse_kind(mapped).ok()?;
     let field_rule = match record.format() {
         SourceFormat::LaLojbanJson => "la-word_type",
         SourceFormat::LensiskuJson => "lensisku-type_name",
@@ -1228,6 +1221,22 @@ fn source_kind(record: &CapturedRecord) -> Option<(WordKind, String, String)> {
         _ => return None,
     };
     Some((kind, format!("source-class-v1/{field_rule}/{mapping}"), raw))
+}
+
+pub(crate) fn map_native_class(value: &str) -> Option<(&'static str, &'static str)> {
+    Some(match value {
+        "gismu" => ("brivla", "gismu->brivla"),
+        "experimental gismu" => ("brivla", "experimental-gismu->brivla"),
+        "lujvo" => ("gismu-lujvo", "lujvo->gismu-based-lujvo"),
+        "fu'ivla" => ("zihevla", "fuivla->zihevla"),
+        "obsolete fu'ivla" => ("zihevla", "obsolete-fuivla->zihevla"),
+        "cmavo" => ("cmavo", "cmavo->cmavo"),
+        "experimental cmavo" => ("cmavo", "experimental-cmavo->cmavo"),
+        "obsolete cmavo" => ("cmavo", "obsolete-cmavo->cmavo"),
+        "cmevla" => ("cmevla", "cmevla->cmevla"),
+        "obsolete cmevla" => ("cmevla", "obsolete-cmevla->cmevla"),
+        _ => return None,
+    })
 }
 
 fn source_native_class(record: &CapturedRecord) -> Option<String> {

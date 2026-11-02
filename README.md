@@ -42,6 +42,12 @@ The Rust workspace already provides:
   configured views. The current workspace also exposes literal
   reverse-definition and stored-Form queries with content-bound Form detail
   ([integrated workbench guide](docs/integrated-workbench.md)).
+- Six source-backed computed lexical query families—spelling distance,
+  prosody, nuclei, contrast, components, and composition—plus separate
+  caller-proposal identity and morphology-generation operations. Full and
+  Compact results retain typed source evidence separately from derived
+  analyses and generated values. The optional `morphology` feature gates
+  Components and Generate.
 - Rebuildable SQLite indexes and an optional Oxigraph backend for research comparisons.
 - Exact and reverse-definition lookup, source-link traversal, spelling distance,
   and bounded phonological and prosodic filters.

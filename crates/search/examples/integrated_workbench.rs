@@ -18,22 +18,24 @@ use std::{
 
 use sha2::{Digest, Sha256};
 use vlajmaji_lexicon::{
-    AbbreviationKind, AssertionRecord, Availability, CaptureMetadata, CaptureRef, CollectionRecord,
-    ComponentRecord, ComputationRecord, ContentNotice, ContextKind, ContextRecord, ContributorId,
-    ContributorRecord, Dictionary, DictionaryDocument, DictionaryMetadata, Direction,
-    EditorialSenseRecord, Eligibility, EntityId, EntryRecord, FormKind, FormRecord, InputRef,
-    LaLojbanImportOptions, LocalRef, NativeEncoding, NativeField, OccurrenceAttribution,
-    OccurrenceRef, OwnedHead, OwnedRevisionRecord, PackId, PackPayloadKind, Presence, RawCapture,
-    RawOccurrence, RedistributionStatus, RegistryDocument, RelationKind, RelationRecord,
-    RelationScope, RelationTarget, ReleaseAccounting, ReleaseRecord, SnapshotAttribution,
-    SourceEvidence, SourceId, SourceOrigin, SourceRecord, SourceRegistry, TextValue, TimePrecision,
-    import_la_lojban_export, seal_release,
+    AbbreviationKind, AssertionRecord, Availability, CaptureMetadata, CaptureRef, CodeNotice,
+    CollectionRecord, ComponentRecord, ComputationRecord, ContentNotice, ContextKind,
+    ContextRecord, ContributorId, ContributorRecord, Dictionary, DictionaryDocument,
+    DictionaryMetadata, Direction, EditorialSenseRecord, Eligibility, EntityId, EntryRecord,
+    FormKind, FormRecord, InputRef, LaLojbanImportOptions, LocalRef, NativeEncoding, NativeField,
+    OccurrenceAttribution, OccurrenceRef, OwnedHead, OwnedRevisionRecord, PackId, PackPayloadKind,
+    Presence, RawCapture, RawOccurrence, RedistributionStatus, RegistryDocument, RelationKind,
+    RelationRecord, RelationScope, RelationTarget, ReleaseAccounting, ReleaseRecord,
+    SnapshotAttribution, SourceEvidence, SourceId, SourceOrigin, SourceRecord, SourceRegistry,
+    TextValue, TimePrecision, import_la_lojban_export, seal_release,
 };
+use vlajmaji_search::presentation::render_workbench_lexical_compact;
 use vlajmaji_search::{
     ConfiguredWorkbenchQueryError, ConfiguredWorkbenchSearchEngine, DictionaryExactOptions,
-    DictionaryRequest, ReferenceEntity, ReferenceStatus, WorkbenchFullResult,
-    WorkbenchLexicalCompactResult, WorkbenchLexicalFullResult, WorkbenchLexicalRequest,
-    WorkbenchLinksCompact, WorkbenchLinksFull, WorkbenchQueryError, WorkbenchSearchEngine,
+    DictionaryRequest, MorphologySetting, ReferenceEntity, ReferenceStatus, WorkbenchFullResult,
+    WorkbenchLexicalCompactResult, WorkbenchLexicalError, WorkbenchLexicalFullResult,
+    WorkbenchLexicalQuery, WorkbenchLexicalRequest, WorkbenchLinksCompact, WorkbenchLinksFull,
+    WorkbenchQueryError, WorkbenchSearchEngine,
 };
 use vlajmaji_store::{
     CollectionCatalogue, CollectionInput, CollectionRequest, CollectionSelection, OwnedJournal,
@@ -73,6 +75,2006 @@ const LEXICAL_CURSOR_PROTOCOL_ORACLE_JSON: &[u8] = br##"{
   "token": "workbench-lexical-v1:7b22626f6479223a7b2276657273696f6e223a312c22646f6d61696e223a22776f726b62656e63682d6c65786963616c2d637572736f722d7631222c22666f726d6174223a22636f6d70616374222c2262696e64696e675f736861323536223a2231313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131313131222c2271756572795f736861323536223a2236373066663937356638313837383637613839303164366235343734373263656638643439333633343730666463633730353338613163633033633535306464222c226c617374223a7b226f7065726174696f6e223a22666f726d222c22736f75726365223a226c65786963616c2d6f776e6564222c22656e7472795f7370656c6c696e67223a226661727669222c227370656c6c696e67223a2266617276692d666f726d222c226b696e64223a22436f6d70757465645374656d222c22666f726d5f6964223a226c65786963616c2d6f776e65642d666f726d2d7374656d227d7d2c22636865636b73756d223a2233623366373337313863646566636636643730363364353062633166363931343031353262383635613836376531323839613537366334616439663230366632227d"
 }
 "##;
+
+const COMPUTED_FIXTURE_SPEC_JSON: &[u8] = br#"{
+  "scope": "UNISSUED S06 finite constructor recipe. Static source-derived authority, not a constructed Dictionary/runtime claim. Preserve all old42 public input bytes and stages. New literals are included in twelve new path-qualified inputs; no basename flattening.",
+  "sources": [
+    {
+      "id": "comp-owned",
+      "abbreviation": "CO",
+      "origin": "OwnedDraft",
+      "title": "Computed owned fixture"
+    },
+    {
+      "id": "comp-upstream",
+      "abbreviation": "CU",
+      "origin": "Upstream",
+      "title": "Computed upstream fixture"
+    }
+  ],
+  "transport": {
+    "pack": "La",
+    "profile": "Synthetic",
+    "mixed_pack_heads": [],
+    "owned_prefixes": [
+      "r0",
+      "r1"
+    ],
+    "source_record_overlap": "ALL byte-equal owned Source/metadata/registry/capture prefixes across mixed pack and journal; mixed pack never carries r2 rows",
+    "upstream_release": "comp-upstream-release-r1",
+    "upstream_release_assertions": [
+      "comp-upstream-farvi",
+      "comp-upstream-ba",
+      "comp-upstream-null-class",
+      "comp-upstream-unsupported",
+      "comp-upstream-missing-class",
+      "comp-upstream-missing-word",
+      "comp-upstream-null-word",
+      "comp-upstream-lujvo",
+      "comp-upstream-excluded"
+    ],
+    "upstream_accounting": {
+      "occurrences": 9,
+      "lexical": 6,
+      "excluded": 3,
+      "normalized_occurrences": 9
+    },
+    "upstream_release_accounting": {
+      "input_occurrences": 9,
+      "normalized_occurrences": 9,
+      "query_excluded_occurrences": 3,
+      "unit": "occurrences"
+    }
+  },
+  "captures": [
+    {
+      "key": "owned",
+      "namespace": "computed-owned-capture-r1",
+      "format_label": "owned-draft-json-v1",
+      "raw_utf8": "[{\"word\":\"farvi\",\"definition\":\"plum grows\",\"native_word_class\":\"gismu\",\"notes\":\"See also {snime}.\"},{\"word\":\"snime\",\"definition\":\"snow and plum\",\"native_word_class\":\"gismu\"}]",
+      "sha256": "27d8343c47613a629b295ad2ad2a79784a9d7cc158f68ba41a59ff45d5f9a868",
+      "raw_bytes": 174
+    },
+    {
+      "key": "gismu",
+      "namespace": "computed-gismu-capture-r1",
+      "format_label": "llg-gismu-fixed-columns",
+      "raw_utf8": " farvi              grow                                      object evolves                                                                                  ",
+      "sha256": "97a0baa5525c61ffe165c708932c900f95214dd660e317bf683c074dcbe074a0",
+      "raw_bytes": 158
+    },
+    {
+      "key": "cmavo",
+      "namespace": "computed-cmavo-capture-r1",
+      "format_label": "llg-cmavo-fixed-columns",
+      "raw_utf8": "ba        PU        future                                   future             ",
+      "sha256": "95cd5b3b084592abc99e1f82eeed69c04c4e97d4c6dba4470ddb575ca86f846f",
+      "raw_bytes": 80
+    },
+    {
+      "key": "generic",
+      "namespace": "computed-generic-capture-r1",
+      "format_label": "synthetic-computed-json-v1",
+      "raw_utf8": "[{\"word\":\"snime\",\"definition\":\"snow and plum\",\"native_word_class\":null},{\"word\":\"farvi\",\"definition\":\"future class\",\"native_word_class\":\"future-native-class\"},{\"word\":\"klama\",\"definition\":\"go\"},{\"definition\":\"missing word\",\"native_word_class\":\"gismu\"},{\"word\":null,\"definition\":\"null word\",\"native_word_class\":\"gismu\"},{\"word\":\"latkerlo\",\"definition\":\"cat ear\",\"native_word_class\":\"lujvo\"},{\"word\":\"farvi\",\"definition\":\"excluded control\",\"native_word_class\":\"gismu\"}]",
+      "sha256": "6a49c8eea8f3b09b3d7a87e51490b4687613e203f763e6199c797eb5c78add59",
+      "raw_bytes": 467
+    }
+  ],
+  "records": [
+    {
+      "assertion_id": "comp-owned-farvi",
+      "entry_id": "comp-owned-farvi-entry",
+      "source": "comp-owned",
+      "spelling_presence": {
+        "Value": "farvi"
+      },
+      "native_word_class_presence": {
+        "Value": "gismu"
+      },
+      "capture": "owned",
+      "locator": "/0",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-owned-snime",
+      "entry_id": "comp-owned-snime-entry",
+      "source": "comp-owned",
+      "spelling_presence": {
+        "Value": "snime"
+      },
+      "native_word_class_presence": {
+        "Value": "gismu"
+      },
+      "capture": "owned",
+      "locator": "/1",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-farvi",
+      "entry_id": "comp-upstream-farvi-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "farvi"
+      },
+      "native_word_class_presence": "Missing",
+      "capture": "gismu",
+      "locator": "line:1",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-ba",
+      "entry_id": "comp-upstream-ba-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "ba"
+      },
+      "native_word_class_presence": "Missing",
+      "capture": "cmavo",
+      "locator": "line:1",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-null-class",
+      "entry_id": "comp-upstream-null-class-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "snime"
+      },
+      "native_word_class_presence": "Null",
+      "capture": "generic",
+      "locator": "/0",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-unsupported",
+      "entry_id": "comp-upstream-unsupported-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "farvi"
+      },
+      "native_word_class_presence": {
+        "Value": "future-native-class"
+      },
+      "capture": "generic",
+      "locator": "/1",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-missing-class",
+      "entry_id": "comp-upstream-missing-class-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "klama"
+      },
+      "native_word_class_presence": "Missing",
+      "capture": "generic",
+      "locator": "/2",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-missing-word",
+      "entry_id": "comp-upstream-missing-word-entry",
+      "source": "comp-upstream",
+      "spelling_presence": "Missing",
+      "native_word_class_presence": {
+        "Value": "gismu"
+      },
+      "capture": "generic",
+      "locator": "/3",
+      "eligibility": {
+        "Excluded": {
+          "reason": "fixture-missing-headword"
+        }
+      }
+    },
+    {
+      "assertion_id": "comp-upstream-null-word",
+      "entry_id": "comp-upstream-null-word-entry",
+      "source": "comp-upstream",
+      "spelling_presence": "Null",
+      "native_word_class_presence": {
+        "Value": "gismu"
+      },
+      "capture": "generic",
+      "locator": "/4",
+      "eligibility": {
+        "Excluded": {
+          "reason": "fixture-null-headword"
+        }
+      }
+    },
+    {
+      "assertion_id": "comp-upstream-lujvo",
+      "entry_id": "comp-upstream-lujvo-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "latkerlo"
+      },
+      "native_word_class_presence": {
+        "Value": "lujvo"
+      },
+      "capture": "generic",
+      "locator": "/5",
+      "eligibility": "Lexical"
+    },
+    {
+      "assertion_id": "comp-upstream-excluded",
+      "entry_id": "comp-upstream-excluded-entry",
+      "source": "comp-upstream",
+      "spelling_presence": {
+        "Value": "farvi"
+      },
+      "native_word_class_presence": {
+        "Value": "gismu"
+      },
+      "capture": "generic",
+      "locator": "/6",
+      "eligibility": {
+        "Excluded": {
+          "reason": "fixture-control"
+        }
+      }
+    }
+  ],
+  "owned_history": {
+    "r0": {
+      "sequence": 0,
+      "active": [],
+      "entries": [],
+      "assertions": [],
+      "captures": []
+    },
+    "r1": {
+      "sequence": 1,
+      "parent": "comp-owned-r0",
+      "active": [
+        "comp-owned-farvi",
+        "comp-owned-snime"
+      ],
+      "release_assertions": [
+        "comp-owned-farvi",
+        "comp-owned-snime"
+      ],
+      "release_accounting": {
+        "occurrences": 2,
+        "lexical": 2,
+        "excluded": 0
+      }
+    },
+    "r2": {
+      "sequence": 2,
+      "parent": "comp-owned-r1",
+      "active": [
+        "comp-owned-farvi"
+      ],
+      "tombstones": [
+        "comp-owned-snime"
+      ],
+      "retained_assertions": [
+        "comp-owned-farvi",
+        "comp-owned-snime"
+      ],
+      "release_assertions": [
+        "comp-owned-farvi",
+        "comp-owned-snime"
+      ],
+      "release_accounting": {
+        "occurrences": 2,
+        "lexical": 2,
+        "excluded": 0
+      },
+      "immutable_capture": "owned",
+      "prefix_rule": "ALL metadata lists/capture/registry rows prefix unchanged except current head; append exactly one revision/release; complete capture occurrence coverage stays two even though active Head one"
+    }
+  },
+  "contexts": [
+    {
+      "id": "comp-owned-note",
+      "assertion": "comp-owned-farvi",
+      "kind": "Note",
+      "text": "See also {snime}.",
+      "evidence": {
+        "capture": "owned",
+        "locator": "/0",
+        "native_field": "notes"
+      },
+      "parser_rule": "see-also-braces-v2",
+      "tokens": [
+        {
+          "byte_start": 9,
+          "byte_end": 16,
+          "target_spelling": "snime"
+        }
+      ],
+      "retained_entry_targets": [
+        "comp-owned-snime-entry",
+        "comp-upstream-null-class-entry"
+      ]
+    }
+  ],
+  "fixed_eligible_candidate_ids_r1": [
+    "comp-owned-farvi",
+    "comp-owned-snime",
+    "comp-upstream-farvi",
+    "comp-upstream-ba",
+    "comp-upstream-null-class",
+    "comp-upstream-unsupported",
+    "comp-upstream-missing-class",
+    "comp-upstream-lujvo"
+  ],
+  "candidate_r1": {
+    "assertions": 8,
+    "distinct_value_spellings": 5
+  },
+  "candidate_r2": {
+    "assertions": 7,
+    "distinct_value_spellings": 5
+  },
+  "registry_and_evidence": "Actual SourceRecord/Collection/Component/Available selected releases, complete RawCapture/RawOccurrence/Registry snapshot+record closure and real source notice; no optional contributor/distributor IDs unless their complete actual rows are provided. Source definitions/Entry native Presence copied exactly from these fixed raw rows. Generic Missing and Null remain different. Owned editor/notice/revision membership/tombstones use validated existing template constructors, not speculative unvalidated JSON.",
+  "emission": {
+    "subworkspace": "computed-workbench",
+    "input_home": "artifacts/computed-inputs",
+    "files": [
+      "mixed-pack-r1.json",
+      "owned-r0.json",
+      "owned-r1.json",
+      "owned-r2.json",
+      "selection-head.json",
+      "selection-historical-r1.json",
+      "computed-fixture-spec.json",
+      "computed-expected.json",
+      "computed-source-request.json",
+      "computed-proposal-request.json",
+      "computed-generate-request.json",
+      "computed-cursor-protocol.json"
+    ],
+    "old_path_qualified_inputs": 42,
+    "new_path_qualified_inputs": 12,
+    "total_path_qualified_inputs": 54,
+    "write_order": "Emit all twelve before dependent seal/journal/build/query; do not rewrite any old42."
+  },
+  "configuration": {
+    "name": "computed",
+    "revision_recipe": [
+      "configure=1(make_default=false)",
+      "refresh-r1=2(seq0)",
+      "set-default=3",
+      "append-owned-r2",
+      "refresh-r2=4(seq1)"
+    ],
+    "historical": "explicit Revision r1 remains usable; Head r1 stales after actual r2 append",
+    "comparison": "named/default result body only; direct/effective keys and bindings have separate domains"
+  }
+}
+"#;
+
+const COMPUTED_EXPECTED_JSON: &[u8] = r#"{
+  "scope": "UNISSUED source-derived finite oracles; static scalar/ID calculations and existing P01/engine policies, NOT product outputs. Complete actual dictionary source/hit/notice bodies compared against constructed pre-query input. Whole ordered identities/counts independent of Full-vs-Compact parity.",
+  "r1": {
+    "spelling_distance": {
+      "request": {
+        "version": 1,
+        "query": {
+          "operation": "spelling_distance",
+          "anchor": "farvi",
+          "max_distance": null
+        },
+        "options": {
+          "sources": [],
+          "alias_scope": "ActiveOnly",
+          "page_size": null,
+          "cursor": null
+        }
+      },
+      "rows": [
+        {
+          "assertion_id": "comp-owned-farvi",
+          "spelling": "farvi",
+          "distance": 0
+        },
+        {
+          "assertion_id": "comp-upstream-farvi",
+          "spelling": "farvi",
+          "distance": 0
+        },
+        {
+          "assertion_id": "comp-upstream-unsupported",
+          "spelling": "farvi",
+          "distance": 0
+        },
+        {
+          "assertion_id": "comp-upstream-ba",
+          "spelling": "ba",
+          "distance": 4
+        },
+        {
+          "assertion_id": "comp-upstream-missing-class",
+          "spelling": "klama",
+          "distance": 5
+        },
+        {
+          "assertion_id": "comp-owned-snime",
+          "spelling": "snime",
+          "distance": 5
+        },
+        {
+          "assertion_id": "comp-upstream-null-class",
+          "spelling": "snime",
+          "distance": 5
+        },
+        {
+          "assertion_id": "comp-upstream-lujvo",
+          "spelling": "latkerlo",
+          "distance": 6
+        }
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 8,
+        "distinct_spellings": 5,
+        "source_groups": 2
+      },
+      "exclusions": {}
+    },
+    "prosody": {
+      "query": {
+        "operation": "prosody",
+        "kind": "brivla",
+        "syllables": 2,
+        "nuclei": 2,
+        "primary_nucleus": 0
+      },
+      "ids": [
+        "comp-owned-farvi",
+        "comp-upstream-farvi",
+        "comp-owned-snime"
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 3,
+        "distinct_spellings": 2,
+        "source_groups": 2
+      },
+      "exclusions": {
+        "unmapped-source-class": 3,
+        "requested-kind-filter": 2
+      }
+    },
+    "nuclei": {
+      "query": {
+        "operation": "nuclei",
+        "kind": "brivla",
+        "pattern": [
+          "a",
+          "i"
+        ]
+      },
+      "ids": [
+        "comp-owned-farvi",
+        "comp-upstream-farvi"
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 2,
+        "distinct_spellings": 1,
+        "source_groups": 2
+      },
+      "exclusions": {
+        "unmapped-source-class": 3,
+        "requested-kind-filter": 2,
+        "nucleus-pattern-mismatch": 1
+      }
+    },
+    "contrast": {
+      "query": {
+        "operation": "contrast",
+        "anchor": "farvi",
+        "kind": "brivla",
+        "require_mismatch": true
+      },
+      "ids": [
+        "comp-owned-snime"
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 1,
+        "distinct_spellings": 1,
+        "source_groups": 1
+      },
+      "position_vowels": [
+        [
+          "a",
+          "i"
+        ],
+        [
+          "i",
+          "e"
+        ]
+      ],
+      "exclusions": {
+        "unmapped-source-class": 3,
+        "requested-kind-filter": 2,
+        "no-within-vowel-mismatch": 2
+      },
+      "distance_positions": [
+        {
+          "index": 0,
+          "anchor": "a",
+          "candidate": "i",
+          "total": 1,
+          "profile_id": "representatives-v1",
+          "source_id": "P01-S20261022@0195f4b5b1f182ce8e21381210f766b326fb987f",
+          "contributions": [
+            {
+              "dimension": "height",
+              "left": "open",
+              "right": "close",
+              "cost": 1
+            },
+            {
+              "dimension": "backness",
+              "left": "front",
+              "right": "front",
+              "cost": 0
+            },
+            {
+              "dimension": "rounding",
+              "left": "unrounded",
+              "right": "unrounded",
+              "cost": 0
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "anchor": "i",
+          "candidate": "e",
+          "total": 1,
+          "profile_id": "representatives-v1",
+          "source_id": "P01-S20261022@0195f4b5b1f182ce8e21381210f766b326fb987f",
+          "contributions": [
+            {
+              "dimension": "height",
+              "left": "close",
+              "right": "open-mid",
+              "cost": 1
+            },
+            {
+              "dimension": "backness",
+              "left": "front",
+              "right": "front",
+              "cost": 0
+            },
+            {
+              "dimension": "rounding",
+              "left": "unrounded",
+              "right": "unrounded",
+              "cost": 0
+            }
+          ]
+        }
+      ]
+    },
+    "components": {
+      "query": {
+        "operation": "components",
+        "components": [
+          "mlatu"
+        ]
+      },
+      "ids": [
+        "comp-upstream-lujvo"
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 1,
+        "distinct_spellings": 1,
+        "source_groups": 1
+      },
+      "decomposition": [
+        "mlatu",
+        "kerlo"
+      ],
+      "source_authority": "Pinned dependency README gives latkerlo→mlatu kerlo; actual local cached test_diagnostics/good.txt also observed but not claimed published/package golden authority. Indices derive actual two-component no-hyphen algorithm. The one-component request rejects an erroneous whole-sequence matcher; unchanged pure helper tests cover noncontiguity/multiplicity.",
+      "negative_component_orders": [
+        [
+          "kerlo",
+          "mlatu"
+        ],
+        [
+          "mlatu",
+          "mlatu"
+        ]
+      ],
+      "full_sequence_positive": [
+        "mlatu",
+        "kerlo"
+      ]
+    },
+    "compose": {
+      "query": {
+        "operation": "compose",
+        "definition_contains": "plum",
+        "links_from": "farvi",
+        "min_nuclei": 2,
+        "kind": "brivla"
+      },
+      "ids": [
+        "comp-owned-snime"
+      ],
+      "totals": {
+        "unit": "assertion_occurrences",
+        "candidate_assertions": 8,
+        "candidate_distinct_spellings": 5,
+        "records": 1,
+        "distinct_spellings": 1,
+        "source_groups": 1
+      },
+      "all_depth1_target_hop_ids": [
+        "comp-owned-snime",
+        "comp-upstream-null-class"
+      ],
+      "forbidden_seed_ids": [
+        "comp-owned-farvi",
+        "comp-upstream-farvi",
+        "comp-upstream-unsupported"
+      ],
+      "exclusions": {
+        "candidate-filter": 6,
+        "unmapped-source-class": 1
+      }
+    }
+  },
+  "analysis_core": {
+    "farvi": {
+      "mapped_word_kind": "brivla",
+      "nuclei": [
+        {
+          "spelling": "a",
+          "kind": "vowel",
+          "stress_countable": true
+        },
+        {
+          "spelling": "i",
+          "kind": "vowel",
+          "stress_countable": true
+        }
+      ],
+      "syllable_count": 2,
+      "primary_nucleus": 0,
+      "stress_status": "assigned-primary",
+      "diagnostics": []
+    },
+    "snime": {
+      "mapped_word_kind": "brivla",
+      "nuclei": [
+        {
+          "spelling": "i",
+          "kind": "vowel",
+          "stress_countable": true
+        },
+        {
+          "spelling": "e",
+          "kind": "vowel",
+          "stress_countable": true
+        }
+      ],
+      "syllable_count": 2,
+      "primary_nucleus": 0,
+      "stress_status": "assigned-primary",
+      "diagnostics": []
+    },
+    "ba": {
+      "mapped_word_kind": "cmavo",
+      "nuclei": [
+        {
+          "spelling": "a",
+          "kind": "vowel",
+          "stress_countable": true
+        }
+      ],
+      "syllable_count": 1,
+      "primary_nucleus": null,
+      "stress_status": "known-no-primary",
+      "diagnostics": []
+    }
+  },
+  "proposal": {
+    "request": {
+      "version": 1,
+      "query": {
+        "operation": "proposal_exact",
+        "spelling": "farvi",
+        "proposals": [
+          {
+            "namespace": "experiment-one",
+            "spelling": "farvi",
+            "text": "first reading"
+          },
+          {
+            "namespace": "experiment-two",
+            "spelling": "farvi",
+            "text": "second reading"
+          },
+          {
+            "namespace": "experiment-one",
+            "spelling": "farvi",
+            "text": "first reading"
+          },
+          {
+            "namespace": "experiment-one",
+            "spelling": "snime",
+            "text": "unmatched"
+          },
+          {
+            "namespace": " ",
+            "spelling": "",
+            "text": ""
+          }
+        ]
+      },
+      "options": {
+        "sources": [],
+        "alias_scope": "ActiveOnly",
+        "page_size": null,
+        "cursor": null
+      }
+    },
+    "totals": {
+      "unit": "caller_proposals",
+      "candidate_proposals": 5,
+      "records": 3
+    },
+    "rows": [
+      {
+        "id": "561410100f6a75f60b8c1d15ffaa94b110a9a05ef32f6bf22c65a6a1aea57d21",
+        "namespace": "experiment-two",
+        "spelling": "farvi",
+        "text": "second reading",
+        "input_ordinal": 1
+      },
+      {
+        "id": "e665ac3f2e96bf14d5809d81fda5b1c9f369364d9a0ae275af20512e54d01258",
+        "namespace": "experiment-one",
+        "spelling": "farvi",
+        "text": "first reading",
+        "input_ordinal": 0
+      },
+      {
+        "id": "e665ac3f2e96bf14d5809d81fda5b1c9f369364d9a0ae275af20512e54d01258",
+        "namespace": "experiment-one",
+        "spelling": "farvi",
+        "text": "first reading",
+        "input_ordinal": 2
+      }
+    ],
+    "empty_spelling_positive": {
+      "id": "2b7206453a4ba8fa60da58e995d0e95224e55aefa653674edcfa9bd9dfc85d0b",
+      "namespace": " ",
+      "spelling": "",
+      "text": "",
+      "input_ordinal": 4
+    },
+    "nonmatching_invalid_namespace_negative": {
+      "namespace": "captured:forbidden",
+      "spelling": "different",
+      "text": "must validate before filtering"
+    },
+    "constructor_hash_recipe": "SHA256(domain bytes relojban-lexicon-proposal-v1 + NUL then each namespace,spelling,text UTF8 preceded by BE u64 byte length); lowercase64 id no prefix"
+  },
+  "generate": [
+    {
+      "components": [
+        "mlatu",
+        "kerlo"
+      ],
+      "setting": "standard",
+      "spelling": "latkerlo",
+      "engine_score": 7937,
+      "component_indices": [
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          8
+        ]
+      ],
+      "score_function": "latkerlo_jvotci::get_lujvo_with_analytics",
+      "engine_id": "latkerlo-jvotci-2.10.2601/Standard"
+    },
+    {
+      "components": [
+        "mlatu",
+        "kerlo"
+      ],
+      "setting": "allow_y",
+      "spelling": "latkerlo",
+      "engine_score": 7937,
+      "component_indices": [
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          8
+        ]
+      ],
+      "score_function": "latkerlo_jvotci::get_lujvo_with_analytics",
+      "engine_id": "latkerlo-jvotci-2.10.2601/AllowY"
+    },
+    {
+      "components": [
+        "mlatu",
+        "kerlo"
+      ],
+      "setting": "force_y",
+      "spelling": "latkerlo",
+      "engine_score": 7937,
+      "component_indices": [
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          8
+        ]
+      ],
+      "score_function": "latkerlo_jvotci::get_lujvo_with_analytics",
+      "engine_id": "latkerlo-jvotci-2.10.2601/ForceY"
+    }
+  ],
+  "r2": {
+    "candidate_assertions": 7,
+    "candidate_distinct_spellings": 5,
+    "removed_from_current": [
+      "comp-owned-snime"
+    ],
+    "historical_r1_unchanged": true,
+    "compose_records": 0,
+    "prosody_ids": [
+      "comp-owned-farvi",
+      "comp-upstream-farvi"
+    ]
+  },
+  "evidence_grade": "Generation latkerlo/7937 from pinned dependency README; score independently follows source score formula; indices[0,3],[3,8] follow two actual joined no-hyphen rafsi lat+kerlo source algorithm. Local cached test_diagnostics/good.txt was separately read for decomposition/indices, not claimed published/package source authority. Three settings retain this no-hyphen example and prove setting/engine_id, NOT differential hyphen behavior. No pre-issue engine runtime. Components exclusion breakdown uses actual direct-engine/input-candidate author counterpart, not guessed parse acceptance. Contrast complete position bodies derive actual default P01 coordinate table/profile/source."
+}
+"#.as_bytes();
+
+const COMPUTED_SOURCE_REQUEST_JSON: &[u8] = br#"{
+  "version": 1,
+  "query": {
+    "operation": "spelling_distance",
+    "anchor": "farvi",
+    "max_distance": null
+  },
+  "options": {
+    "sources": [],
+    "alias_scope": "ActiveOnly",
+    "page_size": null,
+    "cursor": null
+  }
+}
+"#;
+
+const COMPUTED_PROPOSAL_REQUEST_JSON: &[u8] = br#"{
+  "version": 1,
+  "query": {
+    "operation": "proposal_exact",
+    "spelling": "farvi",
+    "proposals": [
+      {
+        "namespace": "experiment-one",
+        "spelling": "farvi",
+        "text": "first reading"
+      },
+      {
+        "namespace": "experiment-two",
+        "spelling": "farvi",
+        "text": "second reading"
+      },
+      {
+        "namespace": "experiment-one",
+        "spelling": "farvi",
+        "text": "first reading"
+      },
+      {
+        "namespace": "experiment-one",
+        "spelling": "snime",
+        "text": "unmatched"
+      },
+      {
+        "namespace": " ",
+        "spelling": "",
+        "text": ""
+      }
+    ]
+  },
+  "options": {
+    "sources": [],
+    "alias_scope": "ActiveOnly",
+    "page_size": null,
+    "cursor": null
+  }
+}
+"#;
+
+const COMPUTED_GENERATE_REQUEST_JSON: &[u8] = br#"{
+  "version": 1,
+  "query": {
+    "operation": "generate",
+    "components": [
+      "mlatu",
+      "kerlo"
+    ],
+    "setting": "standard"
+  },
+  "options": {
+    "sources": [],
+    "alias_scope": "ActiveOnly",
+    "page_size": null,
+    "cursor": null
+  }
+}
+"#;
+
+const COMPUTED_CURSOR_PROTOCOL_JSON: &[u8] = br#"{
+  "scope": "Pure static typed-field-order oracle; artificial a64 binding, not an actual prepared view or runtime assertion. Old cursor bodies unchanged. Source/proposal variant LAST fields appended only.",
+  "computed": {
+    "query_binding_utf8": "{\"query\":{\"operation\":\"spelling_distance\",\"anchor\":\"farvi\",\"max_distance\":null},\"selectors\":[],\"resolved_sources\":[\"comp-owned\",\"comp-upstream\"],\"alias_scope\":\"ActiveOnly\"}",
+    "query_sha256": "5c11dc1ed74fbdf588b30163f466cca16dab5b48fdb2f3139cacb8518dd8f0be",
+    "body_utf8": "{\"version\":1,\"domain\":\"workbench-lexical-cursor-v1\",\"format\":\"compact\",\"binding_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"query_sha256\":\"5c11dc1ed74fbdf588b30163f466cca16dab5b48fdb2f3139cacb8518dd8f0be\",\"last\":{\"operation\":\"computed_source\",\"family\":\"spelling_distance\",\"distance\":0,\"spelling\":\"farvi\",\"source\":\"comp-owned\",\"occurrence_id\":\"0000000000000019636f6d70757465642d6f776e65642d636170747572652d723100000000000000403237643833343363343736313361363239623239356164326164326137393738346139643763633135386636386261343161353966663435643566396138363800000000000000022f30\",\"assertion_id\":\"comp-owned-farvi\"}}",
+    "checksum": "9b2198c2ad50ba4d4b3e8f22cee199038acdb5ca62bfdfef99653ccfaecf7d50",
+    "envelope_utf8": "{\"body\":{\"version\":1,\"domain\":\"workbench-lexical-cursor-v1\",\"format\":\"compact\",\"binding_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"query_sha256\":\"5c11dc1ed74fbdf588b30163f466cca16dab5b48fdb2f3139cacb8518dd8f0be\",\"last\":{\"operation\":\"computed_source\",\"family\":\"spelling_distance\",\"distance\":0,\"spelling\":\"farvi\",\"source\":\"comp-owned\",\"occurrence_id\":\"0000000000000019636f6d70757465642d6f776e65642d636170747572652d723100000000000000403237643833343363343736313361363239623239356164326164326137393738346139643763633135386636386261343161353966663435643566396138363800000000000000022f30\",\"assertion_id\":\"comp-owned-farvi\"}},\"checksum\":\"9b2198c2ad50ba4d4b3e8f22cee199038acdb5ca62bfdfef99653ccfaecf7d50\"}",
+    "token": "workbench-lexical-v1:7b22626f6479223a7b2276657273696f6e223a312c22646f6d61696e223a22776f726b62656e63682d6c65786963616c2d637572736f722d7631222c22666f726d6174223a22636f6d70616374222c2262696e64696e675f736861323536223a2261616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161222c2271756572795f736861323536223a2235633131646331656437346662646635383862333031363366343636636361313664616235623438666462326633313339636163623835313864643866306265222c226c617374223a7b226f7065726174696f6e223a22636f6d70757465645f736f75726365222c2266616d696c79223a227370656c6c696e675f64697374616e6365222c2264697374616e6365223a302c227370656c6c696e67223a226661727669222c22736f75726365223a22636f6d702d6f776e6564222c226f6363757272656e63655f6964223a223030303030303030303030303030313936333666366437303735373436353634326436663737366536353634326436333631373037343735373236353264373233313030303030303030303030303030343033323337363433383333333433333633333433373336333133333631333633323339363233323339333536313634333236313634333236313337333933373338333436313339363433373633363333313335333836363336333836323631333433313631333533393636363633343335363433353636333936313338333633383030303030303030303030303030303232663330222c22617373657274696f6e5f6964223a22636f6d702d6f776e65642d6661727669227d7d2c22636865636b73756d223a2239623231393863326164353062613464346233653866323263656531393930333861636462356361363262666466656639393635336363666165636637643530227d"
+  },
+  "proposal": {
+    "query_binding_utf8": "{\"query\":{\"operation\":\"proposal_exact\",\"spelling\":\"farvi\",\"proposals\":[{\"namespace\":\"experiment-one\",\"spelling\":\"farvi\",\"text\":\"first reading\"},{\"namespace\":\"experiment-two\",\"spelling\":\"farvi\",\"text\":\"second reading\"},{\"namespace\":\"experiment-one\",\"spelling\":\"farvi\",\"text\":\"first reading\"},{\"namespace\":\"experiment-one\",\"spelling\":\"snime\",\"text\":\"unmatched\"},{\"namespace\":\" \",\"spelling\":\"\",\"text\":\"\"}]},\"selectors\":[],\"resolved_sources\":[],\"alias_scope\":\"ActiveOnly\"}",
+    "query_sha256": "43adf5261a07ba175f472c911875d061c9f19f086da74b3124b37cdd650581a3",
+    "body_utf8": "{\"version\":1,\"domain\":\"workbench-lexical-cursor-v1\",\"format\":\"compact\",\"binding_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"query_sha256\":\"43adf5261a07ba175f472c911875d061c9f19f086da74b3124b37cdd650581a3\",\"last\":{\"operation\":\"proposal_exact\",\"proposal_id\":\"561410100f6a75f60b8c1d15ffaa94b110a9a05ef32f6bf22c65a6a1aea57d21\",\"input_ordinal\":1}}",
+    "checksum": "9376e768f281673dc7229d2bf3b2ca7976c4be1023120da4fc3f3f8bb5ba8458",
+    "envelope_utf8": "{\"body\":{\"version\":1,\"domain\":\"workbench-lexical-cursor-v1\",\"format\":\"compact\",\"binding_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"query_sha256\":\"43adf5261a07ba175f472c911875d061c9f19f086da74b3124b37cdd650581a3\",\"last\":{\"operation\":\"proposal_exact\",\"proposal_id\":\"561410100f6a75f60b8c1d15ffaa94b110a9a05ef32f6bf22c65a6a1aea57d21\",\"input_ordinal\":1}},\"checksum\":\"9376e768f281673dc7229d2bf3b2ca7976c4be1023120da4fc3f3f8bb5ba8458\"}",
+    "token": "workbench-lexical-v1:7b22626f6479223a7b2276657273696f6e223a312c22646f6d61696e223a22776f726b62656e63682d6c65786963616c2d637572736f722d7631222c22666f726d6174223a22636f6d70616374222c2262696e64696e675f736861323536223a2261616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161222c2271756572795f736861323536223a2234336164663532363161303762613137356634373263393131383735643036316339663139663038366461373462333132346233376364643635303538316133222c226c617374223a7b226f7065726174696f6e223a2270726f706f73616c5f6578616374222c2270726f706f73616c5f6964223a2235363134313031303066366137356636306238633164313566666161393462313130613961303565663332663662663232633635613661316165613537643231222c22696e7075745f6f7264696e616c223a317d7d2c22636865636b73756d223a2239333736653736386632383136373364633732323964326266336232636137393736633462653130323331323064613466633366336638626235626138343538227d"
+  },
+  "old_cursor_compatibility": "Existing S04/S05 fixed protocol bytes must stay equal; this file does not repin or replace them."
+}
+"#;
+
+fn computed_entity(value: &str) -> EntityId {
+    EntityId::new(value).unwrap()
+}
+
+fn computed_source(value: &str) -> SourceId {
+    SourceId::new(value).unwrap()
+}
+
+fn computed_text(value: &str) -> Presence<TextValue> {
+    Presence::Value(TextValue {
+        text: value.into(),
+        language: Presence::Missing,
+        markup: Presence::Missing,
+    })
+}
+
+fn computed_source_record(id: &str, abbreviation: &str, origin: SourceOrigin) -> SourceRecord {
+    SourceRecord {
+        id: computed_source(id),
+        display_name: match id {
+            "comp-owned" => "Computed owned fixture",
+            "comp-upstream" => "Computed upstream fixture",
+            _ => unreachable!("fixed fixture source"),
+        }
+        .into(),
+        abbreviation: abbreviation.into(),
+        abbreviation_kind: AbbreviationKind::ProjectAssigned,
+        abbreviation_evidence: Some("fixed S06 computed fixture".into()),
+        origin,
+    }
+}
+
+fn computed_capture(
+    namespace: &str,
+    format_label: &str,
+    raw_bytes: &[u8],
+    occurrences: Vec<RawOccurrence>,
+) -> RawCapture {
+    RawCapture::new(
+        namespace,
+        CaptureMetadata {
+            source_name: "S06 computed fixed input".into(),
+            format_label: format_label.into(),
+            locator: namespace.into(),
+            revision: Presence::Missing,
+            captured_at: Presence::Missing,
+            time_precision: TimePrecision::Unknown,
+            notice_locator: Presence::Missing,
+        },
+        raw_bytes.to_vec(),
+        occurrences,
+    )
+}
+
+fn computed_field(name: &str, value: &str, encoding: NativeEncoding) -> NativeField {
+    NativeField {
+        name: name.into(),
+        encoding,
+        raw_value: value.into(),
+    }
+}
+
+fn computed_release(
+    id: &str,
+    component: &EntityId,
+    captures: Vec<vlajmaji_lexicon::CaptureRef>,
+    assertions: Vec<EntityId>,
+    accounting: ReleaseAccounting,
+) -> ReleaseRecord {
+    ReleaseRecord {
+        id: computed_entity(id),
+        component: component.clone(),
+        distributor: None,
+        upstream_revision: Presence::Missing,
+        distributor_revision: Presence::Missing,
+        captured_at: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        schema_version: 1,
+        normalizer: "computed-fixed-input-v1".into(),
+        normalizer_version: "1".into(),
+        captures,
+        assertions,
+        accounting,
+        diagnostics: Vec::new(),
+        selected: true,
+        availability: Availability::Available,
+        content_notices: vec![ContentNotice {
+            text: Presence::Value("fixed computed source fixture".into()),
+            locator: Presence::Missing,
+            license: Presence::Missing,
+        }],
+        redistribution: RedistributionStatus::Held,
+        redistribution_evidence: Vec::new(),
+    }
+}
+
+fn computed_accounting(input: u64, normalized: u64, excluded: u64) -> ReleaseAccounting {
+    ReleaseAccounting {
+        input_occurrences: Some(input),
+        normalized_occurrences: Some(normalized),
+        query_excluded_occurrences: Some(excluded),
+        unit: "occurrences".into(),
+    }
+}
+
+fn computed_entry(
+    id: &str,
+    source_id: &SourceId,
+    spelling: Presence<String>,
+    class: Presence<String>,
+) -> EntryRecord {
+    EntryRecord {
+        id: computed_entity(id),
+        source: source_id.clone(),
+        spelling,
+        language: Presence::Value("jbo".into()),
+        script: Presence::Missing,
+        native_word_class: class,
+        selmaho: Presence::Missing,
+        mapped_pos: Presence::Missing,
+    }
+}
+
+fn computed_assertion(
+    id: &str,
+    entry: &str,
+    occurrence: OccurrenceRef,
+    definition: &str,
+    eligibility: Eligibility,
+) -> AssertionRecord {
+    AssertionRecord {
+        id: computed_entity(id),
+        entry: computed_entity(entry),
+        occurrence,
+        native_sense_id: Presence::Missing,
+        language: Presence::Value("en".into()),
+        definition: computed_text(definition),
+        source_score: Presence::Missing,
+        timestamps: Vec::new(),
+        eligibility,
+    }
+}
+
+fn computed_upstream_dictionary() -> Dictionary {
+    let source_id = computed_source("comp-upstream");
+    let contributor = ContributorId::new("comp-upstream-editor").unwrap();
+    let collection_id = computed_entity("comp-upstream-collection");
+    let component_id = computed_entity("comp-upstream-component");
+
+    let gismu_raw = b" farvi              grow                                      object evolves                                                                                  ";
+    let cmavo_raw =
+        b"ba        PU        future                                   future             ";
+    let generic_raw = br#"[{"word":"snime","definition":"snow and plum","native_word_class":null},{"word":"farvi","definition":"future class","native_word_class":"future-native-class"},{"word":"klama","definition":"go"},{"definition":"missing word","native_word_class":"gismu"},{"word":null,"definition":"null word","native_word_class":"gismu"},{"word":"latkerlo","definition":"cat ear","native_word_class":"lujvo"},{"word":"farvi","definition":"excluded control","native_word_class":"gismu"}]"#;
+    let gismu = computed_capture(
+        "computed-gismu-capture-r1",
+        "llg-gismu-fixed-columns",
+        gismu_raw,
+        vec![RawOccurrence {
+            locator: "line:1".into(),
+            fields: vec![
+                computed_field("word", "farvi", NativeEncoding::Text),
+                computed_field("definition", "object evolves", NativeEncoding::Text),
+            ],
+            raw_line: Some(String::from_utf8(gismu_raw.to_vec()).unwrap()),
+        }],
+    );
+    let cmavo = computed_capture(
+        "computed-cmavo-capture-r1",
+        "llg-cmavo-fixed-columns",
+        cmavo_raw,
+        vec![RawOccurrence {
+            locator: "line:1".into(),
+            fields: vec![
+                computed_field("word", "ba", NativeEncoding::Text),
+                computed_field("definition", "future", NativeEncoding::Text),
+            ],
+            raw_line: Some(String::from_utf8(cmavo_raw.to_vec()).unwrap()),
+        }],
+    );
+    let generic_rows: [(&str, &str, Option<&str>); 7] = [
+        ("snime", "snow and plum", None),
+        ("farvi", "future class", Some("future-native-class")),
+        ("klama", "go", None),
+        ("", "missing word", Some("gismu")),
+        ("", "null word", Some("gismu")),
+        ("latkerlo", "cat ear", Some("lujvo")),
+        ("farvi", "excluded control", Some("gismu")),
+    ];
+    let generic_occurrences = generic_rows
+        .iter()
+        .enumerate()
+        .map(|(index, (word, definition, class))| {
+            let mut fields = vec![computed_field(
+                "definition",
+                &serde_json::to_string(definition).unwrap(),
+                NativeEncoding::Json,
+            )];
+            match index {
+                3 => {}
+                4 => fields.insert(0, computed_field("word", "null", NativeEncoding::Json)),
+                _ => fields.insert(
+                    0,
+                    computed_field(
+                        "word",
+                        &serde_json::to_string(word).unwrap(),
+                        NativeEncoding::Json,
+                    ),
+                ),
+            }
+            if let Some(class) = class {
+                fields.push(computed_field(
+                    "native_word_class",
+                    &serde_json::to_string(class).unwrap(),
+                    NativeEncoding::Json,
+                ));
+            } else if index == 0 {
+                fields.push(computed_field(
+                    "native_word_class",
+                    "null",
+                    NativeEncoding::Json,
+                ));
+            }
+            RawOccurrence {
+                locator: format!("/{index}"),
+                fields,
+                raw_line: None,
+            }
+        })
+        .collect();
+    let generic = computed_capture(
+        "computed-generic-capture-r1",
+        "synthetic-computed-json-v1",
+        generic_raw,
+        generic_occurrences,
+    );
+    let captures = vec![gismu, cmavo, generic];
+    let capture_ref = |namespace: &str| {
+        captures
+            .iter()
+            .find(|capture| capture.identity.namespace == namespace)
+            .unwrap()
+            .identity
+            .clone()
+    };
+
+    let ids = [
+        "comp-upstream-farvi",
+        "comp-upstream-ba",
+        "comp-upstream-null-class",
+        "comp-upstream-unsupported",
+        "comp-upstream-missing-class",
+        "comp-upstream-missing-word",
+        "comp-upstream-null-word",
+        "comp-upstream-lujvo",
+        "comp-upstream-excluded",
+    ];
+    let occurrence = |namespace: &str, locator: &str| OccurrenceRef {
+        capture: capture_ref(namespace),
+        locator: locator.into(),
+    };
+    let source_rows = vec![computed_source_record(
+        "comp-upstream",
+        "CU",
+        SourceOrigin::Upstream,
+    )];
+    let snapshots = captures
+        .iter()
+        .map(|capture| SnapshotAttribution {
+            snapshot: capture.identity.to_snapshot_identity().unwrap(),
+            source: source_id.clone(),
+            distributor: None,
+        })
+        .collect();
+    let occurrence_refs = vec![
+        occurrence("computed-gismu-capture-r1", "line:1"),
+        occurrence("computed-cmavo-capture-r1", "line:1"),
+        occurrence("computed-generic-capture-r1", "/0"),
+        occurrence("computed-generic-capture-r1", "/1"),
+        occurrence("computed-generic-capture-r1", "/2"),
+        occurrence("computed-generic-capture-r1", "/3"),
+        occurrence("computed-generic-capture-r1", "/4"),
+        occurrence("computed-generic-capture-r1", "/5"),
+        occurrence("computed-generic-capture-r1", "/6"),
+    ];
+    let registry = SourceRegistry::from_document(RegistryDocument {
+        sources: source_rows,
+        contributors: vec![ContributorRecord {
+            id: contributor.clone(),
+            display_name: "Computed fixture editor".into(),
+        }],
+        snapshots,
+        occurrences: occurrence_refs
+            .iter()
+            .enumerate()
+            .map(|(index, occurrence)| OccurrenceAttribution {
+                occurrence: occurrence.to_record_identity().unwrap(),
+                contributor: Some(contributor.clone()),
+                native_entry_id: Some(format!("{}-entry", ids[index])),
+                native_assertion_id: Some(ids[index].into()),
+            })
+            .collect(),
+        ..RegistryDocument::default()
+    })
+    .unwrap();
+
+    let spellings = [
+        Presence::Value("farvi".into()),
+        Presence::Value("ba".into()),
+        Presence::Value("snime".into()),
+        Presence::Value("farvi".into()),
+        Presence::Value("klama".into()),
+        Presence::Missing,
+        Presence::Null,
+        Presence::Value("latkerlo".into()),
+        Presence::Value("farvi".into()),
+    ];
+    let classes = [
+        Presence::Missing,
+        Presence::Missing,
+        Presence::Null,
+        Presence::Value("future-native-class".into()),
+        Presence::Missing,
+        Presence::Value("gismu".into()),
+        Presence::Value("gismu".into()),
+        Presence::Value("lujvo".into()),
+        Presence::Value("gismu".into()),
+    ];
+    let definitions = [
+        "object evolves",
+        "future",
+        "snow and plum",
+        "future class",
+        "go",
+        "missing word",
+        "null word",
+        "cat ear",
+        "excluded control",
+    ];
+    let eligibility = [
+        Eligibility::Lexical,
+        Eligibility::Lexical,
+        Eligibility::Lexical,
+        Eligibility::Lexical,
+        Eligibility::Lexical,
+        Eligibility::Excluded {
+            reason: "fixture-missing-headword".into(),
+        },
+        Eligibility::Excluded {
+            reason: "fixture-null-headword".into(),
+        },
+        Eligibility::Lexical,
+        Eligibility::Excluded {
+            reason: "fixture-control".into(),
+        },
+    ];
+    let mut metadata = DictionaryMetadata::default();
+    metadata.collections.push(CollectionRecord {
+        id: collection_id,
+        source: source_id.clone(),
+        display_name: "Computed upstream collection".into(),
+        description: Presence::Missing,
+    });
+    metadata.components.push(ComponentRecord {
+        id: component_id.clone(),
+        collection: computed_entity("comp-upstream-collection"),
+        native_name: "computed upstream".into(),
+        languages: vec!["jbo".into()],
+    });
+    metadata.code_notices.push(CodeNotice {
+        text: "Synthetic fixed S06 test fixture; no rights grant".into(),
+        locator: Presence::Missing,
+        license: Presence::Missing,
+    });
+    for index in 0..ids.len() {
+        metadata.entries.push(computed_entry(
+            &format!("{}-entry", ids[index]),
+            &source_id,
+            spellings[index].clone(),
+            classes[index].clone(),
+        ));
+        metadata.assertions.push(computed_assertion(
+            ids[index],
+            &format!("{}-entry", ids[index]),
+            occurrence_refs[index].clone(),
+            definitions[index],
+            eligibility[index].clone(),
+        ));
+    }
+    metadata.releases.push(computed_release(
+        "comp-upstream-release-r1",
+        &component_id,
+        captures.iter().map(|row| row.identity.clone()).collect(),
+        ids.iter().map(|id| computed_entity(id)).collect(),
+        computed_accounting(9, 9, 3),
+    ));
+    Dictionary::from_document(DictionaryDocument {
+        registry,
+        captures,
+        metadata,
+        ..DictionaryDocument::default()
+    })
+    .expect("fixed CU registry, captures, and amended release accounting validate")
+}
+
+fn computed_owned_genesis() -> Dictionary {
+    let owned_source = computed_source("comp-owned");
+    let editor = ContributorId::new("comp-owned-editor").unwrap();
+    let collection_id = computed_entity("comp-owned-collection");
+    let component_id = computed_entity("comp-owned-component");
+    let revision_id = computed_entity("comp-owned-r0");
+    let registry = SourceRegistry::from_document(RegistryDocument {
+        sources: vec![computed_source_record(
+            "comp-owned",
+            "CO",
+            SourceOrigin::OwnedDraft,
+        )],
+        contributors: vec![ContributorRecord {
+            id: editor.clone(),
+            display_name: "Computed owned editor".into(),
+        }],
+        ..RegistryDocument::default()
+    })
+    .unwrap();
+    let mut metadata = DictionaryMetadata::default();
+    metadata.collections.push(CollectionRecord {
+        id: collection_id,
+        source: owned_source.clone(),
+        display_name: "Computed owned collection".into(),
+        description: Presence::Missing,
+    });
+    metadata.components.push(ComponentRecord {
+        id: component_id.clone(),
+        collection: computed_entity("comp-owned-collection"),
+        native_name: "computed owned".into(),
+        languages: vec!["jbo".into()],
+    });
+    metadata.releases.push(computed_release(
+        "comp-owned-release-r0",
+        &component_id,
+        Vec::new(),
+        Vec::new(),
+        computed_accounting(0, 0, 0),
+    ));
+    metadata.owned_revisions.push(OwnedRevisionRecord {
+        id: revision_id.clone(),
+        source: owned_source.clone(),
+        parent: None,
+        editor,
+        timestamp: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        assertions: Vec::new(),
+        tombstones: Vec::new(),
+        rationale: computed_text("empty genesis"),
+    });
+    metadata.owned_heads.push(OwnedHead {
+        source: owned_source,
+        revision: revision_id,
+    });
+    Dictionary::from_document(DictionaryDocument {
+        registry,
+        metadata,
+        ..DictionaryDocument::default()
+    })
+    .expect("owned genesis is a valid zero-row prefix")
+}
+
+fn computed_owned_r1(genesis: &Dictionary) -> Dictionary {
+    let owned_source = computed_source("comp-owned");
+    let editor = ContributorId::new("comp-owned-editor").unwrap();
+    let capture_raw = br#"[{"word":"farvi","definition":"plum grows","native_word_class":"gismu","notes":"See also {snime}."},{"word":"snime","definition":"snow and plum","native_word_class":"gismu"}]"#;
+    let capture = computed_capture(
+        "computed-owned-capture-r1",
+        "owned-draft-json-v1",
+        capture_raw,
+        vec![
+            RawOccurrence {
+                locator: "/0".into(),
+                fields: vec![
+                    computed_field("word", r#""farvi""#, NativeEncoding::Json),
+                    computed_field("definition", r#""plum grows""#, NativeEncoding::Json),
+                    computed_field("native_word_class", r#""gismu""#, NativeEncoding::Json),
+                    computed_field("notes", r#""See also {snime}.""#, NativeEncoding::Json),
+                ],
+                raw_line: None,
+            },
+            RawOccurrence {
+                locator: "/1".into(),
+                fields: vec![
+                    computed_field("word", r#""snime""#, NativeEncoding::Json),
+                    computed_field("definition", r#""snow and plum""#, NativeEncoding::Json),
+                    computed_field("native_word_class", r#""gismu""#, NativeEncoding::Json),
+                ],
+                raw_line: None,
+            },
+        ],
+    );
+    let capture_ref = capture.identity.clone();
+    let occurrences = ["/0", "/1"].map(|locator| OccurrenceRef {
+        capture: capture_ref.clone(),
+        locator: locator.into(),
+    });
+    let mut document = genesis.document();
+    document.captures.push(capture);
+    let mut registry = document.registry.document();
+    registry.snapshots.push(SnapshotAttribution {
+        snapshot: capture_ref.to_snapshot_identity().unwrap(),
+        source: owned_source.clone(),
+        distributor: None,
+    });
+    for (index, occurrence) in occurrences.iter().enumerate() {
+        registry.occurrences.push(OccurrenceAttribution {
+            occurrence: occurrence.to_record_identity().unwrap(),
+            contributor: Some(editor.clone()),
+            native_entry_id: Some(
+                ["comp-owned-farvi-entry", "comp-owned-snime-entry"][index].into(),
+            ),
+            native_assertion_id: Some(["comp-owned-farvi", "comp-owned-snime"][index].into()),
+        });
+    }
+    document.registry = SourceRegistry::from_document(registry).unwrap();
+    let farvi = computed_entity("comp-owned-farvi-entry");
+    let snime = computed_entity("comp-owned-snime-entry");
+    document.metadata.entries = vec![
+        computed_entry(
+            "comp-owned-farvi-entry",
+            &owned_source,
+            Presence::Value("farvi".into()),
+            Presence::Value("gismu".into()),
+        ),
+        computed_entry(
+            "comp-owned-snime-entry",
+            &owned_source,
+            Presence::Value("snime".into()),
+            Presence::Value("gismu".into()),
+        ),
+    ];
+    document.metadata.assertions = vec![
+        computed_assertion(
+            "comp-owned-farvi",
+            farvi.as_str(),
+            occurrences[0].clone(),
+            "plum grows",
+            Eligibility::Lexical,
+        ),
+        computed_assertion(
+            "comp-owned-snime",
+            snime.as_str(),
+            occurrences[1].clone(),
+            "snow and plum",
+            Eligibility::Lexical,
+        ),
+    ];
+    document.metadata.contexts.push(ContextRecord {
+        id: computed_entity("comp-owned-note"),
+        assertion: computed_entity("comp-owned-farvi"),
+        kind: ContextKind::Note,
+        value: computed_text("See also {snime}."),
+        translated_from: None,
+        evidence: vlajmaji_lexicon::SourceEvidence {
+            occurrence: occurrences[0].clone(),
+            field_index: Some(3),
+            citation: Presence::Missing,
+            offset: None,
+        },
+    });
+    let component_id = computed_entity("comp-owned-component");
+    document.metadata.releases.push(computed_release(
+        "comp-owned-release-r1",
+        &component_id,
+        vec![capture_ref],
+        vec![
+            computed_entity("comp-owned-farvi"),
+            computed_entity("comp-owned-snime"),
+        ],
+        computed_accounting(2, 2, 0),
+    ));
+    let revision_id = computed_entity("comp-owned-r1");
+    document.metadata.catalogue_revision = 1;
+    document.metadata.owned_revisions.push(OwnedRevisionRecord {
+        id: revision_id.clone(),
+        source: owned_source.clone(),
+        parent: Some(computed_entity("comp-owned-r0")),
+        editor,
+        timestamp: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        assertions: vec![
+            computed_entity("comp-owned-farvi"),
+            computed_entity("comp-owned-snime"),
+        ],
+        tombstones: Vec::new(),
+        rationale: computed_text("append computed a and b"),
+    });
+    document.metadata.owned_heads[0].revision = revision_id;
+    Dictionary::from_document(document).expect("amended owned r1 records validate")
+}
+
+fn computed_mixed_dictionary(upstream: &Dictionary, owned_r1: &Dictionary) -> Dictionary {
+    let mut document = upstream.document();
+    let owned_document = owned_r1.document();
+
+    document.captures.extend(owned_document.captures);
+    let mut registry = document.registry.document();
+    let owned_registry = owned_document.registry.document();
+    registry.sources.extend(owned_registry.sources);
+    registry.contributors.extend(owned_registry.contributors);
+    registry.snapshots.extend(owned_registry.snapshots);
+    registry.occurrences.extend(owned_registry.occurrences);
+    document.registry = SourceRegistry::from_document(registry)
+        .expect("fixed mixed pack registry preserves both source families");
+
+    document
+        .metadata
+        .code_notices
+        .extend(owned_document.metadata.code_notices);
+    document
+        .metadata
+        .collections
+        .extend(owned_document.metadata.collections);
+    document
+        .metadata
+        .components
+        .extend(owned_document.metadata.components);
+    document
+        .metadata
+        .releases
+        .extend(owned_document.metadata.releases);
+    document
+        .metadata
+        .entries
+        .extend(owned_document.metadata.entries);
+    document
+        .metadata
+        .assertions
+        .extend(owned_document.metadata.assertions);
+    document
+        .metadata
+        .contexts
+        .extend(owned_document.metadata.contexts);
+    document
+        .metadata
+        .computations
+        .extend(owned_document.metadata.computations);
+    document
+        .metadata
+        .owned_revisions
+        .extend(owned_document.metadata.owned_revisions);
+    document.metadata.catalogue_revision = owned_document.metadata.catalogue_revision;
+    // A retained mixed pack carries the byte-equal owned prefix, but no live head.
+    assert!(document.metadata.owned_heads.is_empty());
+    assert_eq!(owned_document.metadata.owned_heads.len(), 1);
+    Dictionary::from_document(document).expect("fixed mixed CU/owned r0-r1 pack validates")
+}
+
+fn computed_owned_r2(previous: &Dictionary) -> Dictionary {
+    let mut document = previous.document();
+    let source = computed_source("comp-owned");
+    let editor = ContributorId::new("comp-owned-editor").unwrap();
+    let component = document.metadata.components[0].id.clone();
+    let previous_revision = document.metadata.owned_revisions.last().unwrap().id.clone();
+    let retained = computed_entity("comp-owned-farvi");
+    let removed = computed_entity("comp-owned-snime");
+    let revision = computed_entity("comp-owned-r2");
+    document.metadata.catalogue_revision = 2;
+    document.metadata.releases.push(computed_release(
+        "comp-owned-release-r2",
+        &component,
+        document.metadata.releases[1].captures.clone(),
+        vec![retained.clone(), removed.clone()],
+        computed_accounting(2, 2, 0),
+    ));
+    document.metadata.owned_revisions.push(OwnedRevisionRecord {
+        id: revision.clone(),
+        source,
+        parent: Some(previous_revision),
+        editor,
+        timestamp: Presence::Missing,
+        time_precision: TimePrecision::Unknown,
+        assertions: vec![retained],
+        tombstones: vec![removed],
+        rationale: computed_text("retain farvi and tombstone snime"),
+    });
+    document.metadata.owned_heads[0].revision = revision;
+    Dictionary::from_document(document).expect("fixed owned r2 prefix and tombstone validate")
+}
+
+fn computed_request(query: WorkbenchLexicalQuery) -> WorkbenchLexicalRequest {
+    WorkbenchLexicalRequest {
+        version: 1,
+        query,
+        options: vlajmaji_search::WorkbenchLexicalOptions::default(),
+    }
+}
+
+fn computed_full_observation(
+    engine: &mut WorkbenchSearchEngine,
+    request: &WorkbenchLexicalRequest,
+    feature_disabled_is_expected: bool,
+) -> Result<serde_json::Value, Box<dyn std::error::Error>> {
+    match engine.execute_lexical(request) {
+        Ok(_) if feature_disabled_is_expected => Err(Box::new(std::io::Error::other(
+            "morphology was expected to be feature-disabled for this observation",
+        ))),
+        Ok(result) => Ok(serde_json::json!({"status": "ok", "response": result})),
+        Err(WorkbenchQueryError::Lexical(error))
+            if feature_disabled_is_expected
+                && matches!(
+                    error.as_ref(),
+                    WorkbenchLexicalError::Computation(search_error)
+                        if matches!(
+                            search_error.as_ref(),
+                            vlajmaji_search::SearchError::FeatureDisabled("morphology")
+                        )
+                ) =>
+        {
+            #[cfg(not(feature = "morphology"))]
+            {
+                Ok(serde_json::json!({"status": "feature_disabled", "feature": "morphology"}))
+            }
+            #[cfg(feature = "morphology")]
+            {
+                Err(Box::new(WorkbenchQueryError::Lexical(error)))
+            }
+        }
+        Err(error) => Err(Box::new(error)),
+    }
+}
+
+fn run_computed_journey(
+    output_root: &Path,
+) -> Result<serde_json::Value, Box<dyn std::error::Error>> {
+    let upstream = computed_upstream_dictionary();
+    let genesis = computed_owned_genesis();
+    let revision_one = computed_owned_r1(&genesis);
+    let revision_two = computed_owned_r2(&revision_one);
+    let mixed = computed_mixed_dictionary(&upstream, &revision_one);
+    let selection_head = WorkbenchSelection {
+        version: 1,
+        packs: vec![PackId::LaLojban],
+        disabled: Vec::new(),
+        owned: Some(WorkbenchOwnedRevision::Head),
+        contexts: Vec::new(),
+    };
+    let mut selection_historical_r1 = selection_head.clone();
+    selection_historical_r1.owned = Some(WorkbenchOwnedRevision::Revision(computed_entity(
+        "comp-owned-r1",
+    )));
+
+    // All twelve exact authorities are durable before catalogue sealing,
+    // journal writes, prepared views, or query execution.
+    let inputs = output_root.join("artifacts").join("computed-inputs");
+    fs::create_dir(&inputs)?;
+    for (name, dictionary) in [
+        ("mixed-pack-r1.json", &mixed),
+        ("owned-r0.json", &genesis),
+        ("owned-r1.json", &revision_one),
+        ("owned-r2.json", &revision_two),
+    ] {
+        write_new(&inputs.join(name), &dictionary.to_json_bytes()?)?;
+    }
+    write_new(
+        &inputs.join("selection-head.json"),
+        &serde_json::to_vec_pretty(&selection_head)?,
+    )?;
+    write_new(
+        &inputs.join("selection-historical-r1.json"),
+        &serde_json::to_vec_pretty(&selection_historical_r1)?,
+    )?;
+    for (name, bytes) in [
+        ("computed-fixture-spec.json", COMPUTED_FIXTURE_SPEC_JSON),
+        ("computed-expected.json", COMPUTED_EXPECTED_JSON),
+        ("computed-source-request.json", COMPUTED_SOURCE_REQUEST_JSON),
+        (
+            "computed-proposal-request.json",
+            COMPUTED_PROPOSAL_REQUEST_JSON,
+        ),
+        (
+            "computed-generate-request.json",
+            COMPUTED_GENERATE_REQUEST_JSON,
+        ),
+        (
+            "computed-cursor-protocol.json",
+            COMPUTED_CURSOR_PROTOCOL_JSON,
+        ),
+    ] {
+        write_new(&inputs.join(name), bytes)?;
+    }
+
+    let root = output_root.join("computed-workbench");
+    fs::create_dir(&root)?;
+    let owned_root = root.join("owned-journal");
+    let (mut writer, created) = OwnedJournal::create(&owned_root, &genesis)?;
+    if created.head.sequence != 0 {
+        return Err("computed owned journal did not start at r0".into());
+    }
+    let committed_r1 = writer.commit(&computed_entity("comp-owned-r0"), &revision_one)?;
+    if committed_r1.head.sequence != 1 {
+        return Err("computed owned journal did not publish r1 at sequence one".into());
+    }
+
+    let catalogue_root = root.join("catalogue");
+    let sealed = seal_release(PackId::LaLojban, PackPayloadKind::Synthetic, &mixed)?;
+    let catalogue_request = CollectionRequest::new(
+        vec![CollectionInput::SealedBytes {
+            pack_id: PackId::LaLojban,
+            release: Cow::Borrowed(&sealed.release),
+            seal: Cow::Borrowed(&sealed.seal),
+        }],
+        CollectionSelection::Packs(vec![PackId::LaLojban]),
+        true,
+    )?;
+    CollectionCatalogue::install(&catalogue_root, catalogue_request)?;
+    let historical_root = root.join("view-historical-r1");
+    WorkbenchView::build_new(
+        &historical_root,
+        WorkbenchBuildRequest {
+            catalogue_root: Some(catalogue_root.clone()),
+            owned_root: Some(owned_root.clone()),
+            selection: selection_historical_r1.clone(),
+        },
+    )?;
+    let mut historical = WorkbenchSearchEngine::open(&historical_root)?;
+
+    let source_request: WorkbenchLexicalRequest =
+        serde_json::from_slice(COMPUTED_SOURCE_REQUEST_JSON)?;
+    let proposal_request: WorkbenchLexicalRequest =
+        serde_json::from_slice(COMPUTED_PROPOSAL_REQUEST_JSON)?;
+    let generate_request: WorkbenchLexicalRequest =
+        serde_json::from_slice(COMPUTED_GENERATE_REQUEST_JSON)?;
+    let families = [
+        (
+            "spelling_distance",
+            WorkbenchLexicalQuery::SpellingDistance {
+                anchor: "farvi".into(),
+                max_distance: None,
+            },
+        ),
+        (
+            "prosody",
+            WorkbenchLexicalQuery::Prosody {
+                kind: Some("brivla".into()),
+                syllables: Some(2),
+                nuclei: Some(2),
+                primary_nucleus: Some(0),
+            },
+        ),
+        (
+            "nuclei",
+            WorkbenchLexicalQuery::Nuclei {
+                kind: "brivla".into(),
+                pattern: vec!["a".into(), "i".into()],
+            },
+        ),
+        (
+            "contrast",
+            WorkbenchLexicalQuery::Contrast {
+                anchor: "farvi".into(),
+                kind: "brivla".into(),
+                require_mismatch: true,
+            },
+        ),
+        (
+            "components",
+            WorkbenchLexicalQuery::Components {
+                components: vec!["mlatu".into()],
+            },
+        ),
+        (
+            "compose",
+            WorkbenchLexicalQuery::Compose {
+                definition_contains: Some("plum".into()),
+                links_from: Some("farvi".into()),
+                min_nuclei: Some(2),
+                kind: Some("brivla".into()),
+            },
+        ),
+    ];
+    let mut family_results = serde_json::Map::new();
+    for (name, query) in families {
+        let request = if name == "spelling_distance" {
+            source_request.clone()
+        } else {
+            computed_request(query)
+        };
+        let expected_disabled = name == "components" && !cfg!(feature = "morphology");
+        let full = computed_full_observation(&mut historical, &request, expected_disabled)?;
+        let compact = if name == "components" && !cfg!(feature = "morphology") {
+            None
+        } else {
+            Some(match historical.execute_lexical_compact(&request) {
+                Ok(result) => serde_json::json!({
+                    "status": "ok",
+                    "response": result,
+                    "readable": render_workbench_lexical_compact(&result.result),
+                }),
+                Err(error) => return Err(Box::new(error)),
+            })
+        };
+        let observation = match compact {
+            Some(compact) => serde_json::json!({"full": full, "compact": compact}),
+            None => serde_json::json!({"full": full}),
+        };
+        family_results.insert(name.into(), observation);
+    }
+    let proposal = computed_full_observation(&mut historical, &proposal_request, false)?;
+    let proposal_compact = match historical.execute_lexical_compact(&proposal_request) {
+        Ok(result) => serde_json::json!({
+            "status": "ok",
+            "response": result,
+            "readable": render_workbench_lexical_compact(&result.result),
+        }),
+        Err(error) => return Err(Box::new(error)),
+    };
+
+    let profile_config = root.join("profiles.json");
+    let configured = WorkbenchProfiles::configure(
+        &profile_config,
+        WorkbenchProfileConfigureRequest {
+            name: "computed".into(),
+            catalogue_root: Some(catalogue_root.clone()),
+            owned_root: Some(owned_root.clone()),
+            selection: selection_head.clone(),
+            make_default: false,
+        },
+        None,
+    )?;
+    let configured_r1 = WorkbenchProfiles::refresh(
+        &profile_config,
+        Some("computed"),
+        root.join("configured-r1"),
+        configured.revision,
+    )?;
+    let mut named_r1 = ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("computed"))?;
+    let named_r1_result = named_r1.execute_lexical(&source_request)?;
+    let default_change = WorkbenchProfiles::set_default(
+        &profile_config,
+        Some("computed"),
+        configured_r1.publication.revision,
+    )?;
+    if default_change.revision != 3 {
+        return Err("computed profile default publication must be revision three".into());
+    }
+    let committed_r2 = writer.commit(&committed_r1.head.revision.id, &revision_two)?;
+    if committed_r2.head.sequence != 2 {
+        return Err("computed owned journal did not publish r2 at sequence two".into());
+    }
+    drop(writer);
+    let refreshed_r2 = WorkbenchProfiles::refresh(
+        &profile_config,
+        Some("computed"),
+        root.join("configured-r2"),
+        default_change.revision,
+    )?;
+    let named_r2_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, Some("computed"))?;
+    let default_r2_engine = ConfiguredWorkbenchSearchEngine::open(&profile_config, None)?;
+    let mut named_r2_engine = named_r2_engine;
+    let mut default_r2_engine = default_r2_engine;
+    let named_r2_result = named_r2_engine.execute_lexical(&source_request)?;
+    let default_r2_result = default_r2_engine.execute_lexical(&source_request)?;
+    let named_default_body_equal = serde_json::to_vec(&named_r2_result.result)?
+        == serde_json::to_vec(&default_r2_result.result)?;
+    if !named_default_body_equal
+        || refreshed_r2
+            .publication
+            .active
+            .as_ref()
+            .map(|row| row.sequence)
+            != Some(1)
+    {
+        return Err("named/default r2 result bodies or active prepared sequence differ".into());
+    }
+
+    let mut generated = Vec::new();
+    let settings: &[MorphologySetting] = if cfg!(feature = "morphology") {
+        &[
+            MorphologySetting::Standard,
+            MorphologySetting::AllowY,
+            MorphologySetting::ForceY,
+        ]
+    } else {
+        &[MorphologySetting::Standard]
+    };
+    for setting in settings.iter().copied() {
+        let request = if setting == MorphologySetting::Standard {
+            generate_request.clone()
+        } else {
+            computed_request(WorkbenchLexicalQuery::Generate {
+                components: vec!["mlatu".into(), "kerlo".into()],
+                setting,
+            })
+        };
+        let expected_disabled =
+            setting == MorphologySetting::Standard && !cfg!(feature = "morphology");
+        generated.push(computed_full_observation(
+            &mut historical,
+            &request,
+            expected_disabled,
+        )?);
+    }
+    let named_binding = named_r2_result.binding_sha256.clone();
+    let default_binding = default_r2_result.binding_sha256.clone();
+    Ok(serde_json::json!({
+        "inputs": {
+            "directory": "artifacts/computed-inputs",
+            "model_files": ["mixed-pack-r1.json", "owned-r0.json", "owned-r1.json", "owned-r2.json", "selection-head.json", "selection-historical-r1.json"],
+            "literal_files": ["computed-fixture-spec.json", "computed-expected.json", "computed-source-request.json", "computed-proposal-request.json", "computed-generate-request.json", "computed-cursor-protocol.json"]
+        },
+        "workspace": "computed-workbench",
+        "historical_r1": family_results,
+        "proposal_exact": {"full": proposal, "compact": proposal_compact},
+        "generation_settings": generated,
+        "configured_r1": named_r1_result,
+        "configured_r2": named_r2_result,
+        "default_r2": default_r2_result,
+        "r2_comparison": {
+            "result_body_equal": named_default_body_equal,
+            "named_effective_binding_sha256": named_binding,
+            "default_effective_binding_sha256": default_binding
+        },
+        "profile_revision": refreshed_r2.publication.revision,
+        "authority": serde_json::from_slice::<serde_json::Value>(COMPUTED_EXPECTED_JSON)?
+    }))
+}
 
 fn value(text: &str) -> TextValue {
     TextValue {
@@ -4770,58 +6772,61 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     let lexical = run_lexical_journey(&output_root)?;
     let links = run_links_journey(&output_root)?;
-    println!(
-        "{}",
-        serde_json::to_string_pretty(&serde_json::json!({
-            "inputs": inputs,
-            "revision_one": revision_one_result,
-            "revision_two": revision_two_result,
-            "binding_sha256_r1": built_r1.binding.binding_sha256(),
-            "state_sha256_r1": built_r1.binding.state_sha256(),
-            "binding_sha256_r2": built_r2.binding.binding_sha256(),
-            "state_sha256_r2": built_r2.binding.state_sha256(),
-            "expected": expected,
-            "full_r1": full_r1,
-            "historical_full_r1": historical_full_r1,
-            "reference_direct_upstream": direct_upstream_reference,
-            "reference_direct_compact_upstream": direct_compact_upstream,
-            "reference_direct_detail": direct_reference_detail,
-            "reference_direct_owned_entry": direct_owned_entry,
-            "reference_direct_owned_assertion": direct_owned_assertion,
-            "reference_direct_unknown": direct_unknown,
-            "reference_direct_unresolved": direct_unresolved,
-            "reference_disabled_upstream": disabled_upstream,
-            "reference_disabled_owned": disabled_owned,
-            "historical_binding_sha256": historical_r1.binding.binding_sha256(),
-            "full_r2": full_r2,
-            "profile_revisions": [
-                alpha_configured.revision,
-                alpha_r1.publication.revision,
-                beta_configured.revision,
-                beta_r1.publication.revision,
-                default.revision,
-                beta_r2.publication.revision
-            ],
-            "profile_history": history,
-            "configured_alpha_r1": configured_alpha_r1,
-            "configured_alpha_reference": configured_alpha_reference,
-            "configured_alpha_compact_reference": configured_alpha_compact_reference,
-            "named_alpha_reference": named_alpha_reference,
-            "configured_beta_r1": configured_beta_r1,
-            "configured_beta_reference": configured_beta_reference,
-            "configured_beta_owned_compact": configured_beta_owned_compact,
-            "configured_beta_r2": configured_beta_r2,
-            "configured_beta_r2_reference": configured_beta_r2_reference,
-            "beta_noop": beta_noop,
-            "configured_revision_two": configured_revision_two_result,
-            "named_alpha_r1": named_alpha_r1,
-            "default_beta_before_append": default_beta_before_append,
-            "default_beta_reference_before_append": default_beta_reference_before_append,
-            "historical_owned_reference": historical_owned_reference,
-            "named_beta_r2": named_beta_r2,
-            "lexical": lexical,
-            "links": links,
-        }))?
-    );
+    let computed = run_computed_journey(&output_root)?;
+    let mut report = serde_json::json!({
+        "inputs": inputs,
+        "revision_one": revision_one_result,
+        "revision_two": revision_two_result,
+        "binding_sha256_r1": built_r1.binding.binding_sha256(),
+        "state_sha256_r1": built_r1.binding.state_sha256(),
+        "binding_sha256_r2": built_r2.binding.binding_sha256(),
+        "state_sha256_r2": built_r2.binding.state_sha256(),
+        "expected": expected,
+        "full_r1": full_r1,
+        "historical_full_r1": historical_full_r1,
+        "reference_direct_upstream": direct_upstream_reference,
+        "reference_direct_compact_upstream": direct_compact_upstream,
+        "reference_direct_detail": direct_reference_detail,
+        "reference_direct_owned_entry": direct_owned_entry,
+        "reference_direct_owned_assertion": direct_owned_assertion,
+        "reference_direct_unknown": direct_unknown,
+        "reference_direct_unresolved": direct_unresolved,
+        "reference_disabled_upstream": disabled_upstream,
+        "reference_disabled_owned": disabled_owned,
+        "historical_binding_sha256": historical_r1.binding.binding_sha256(),
+        "full_r2": full_r2,
+        "profile_revisions": [
+            alpha_configured.revision,
+            alpha_r1.publication.revision,
+            beta_configured.revision,
+            beta_r1.publication.revision,
+            default.revision,
+            beta_r2.publication.revision
+        ],
+        "profile_history": history,
+        "configured_alpha_r1": configured_alpha_r1,
+        "configured_alpha_reference": configured_alpha_reference,
+        "configured_alpha_compact_reference": configured_alpha_compact_reference,
+        "named_alpha_reference": named_alpha_reference,
+        "configured_beta_r1": configured_beta_r1,
+        "configured_beta_reference": configured_beta_reference,
+        "configured_beta_owned_compact": configured_beta_owned_compact,
+        "configured_beta_r2": configured_beta_r2,
+        "configured_beta_r2_reference": configured_beta_r2_reference,
+        "beta_noop": beta_noop,
+        "configured_revision_two": configured_revision_two_result,
+        "named_alpha_r1": named_alpha_r1,
+        "default_beta_before_append": default_beta_before_append,
+        "default_beta_reference_before_append": default_beta_reference_before_append,
+        "historical_owned_reference": historical_owned_reference,
+        "named_beta_r2": named_beta_r2,
+        "lexical": lexical,
+        "links": links,
+    });
+    report
+        .as_object_mut()
+        .ok_or("integrated workbench report must be a JSON object")?
+        .insert("computed".into(), serde_json::to_value(computed)?);
+    println!("{}", serde_json::to_string_pretty(&report)?);
     Ok(())
 }

@@ -15,10 +15,18 @@ use crate::{
     DictionaryQueryError, DictionaryRequest, DictionarySearchEngine, ReferenceResolution,
 };
 
-/// Literal reverse-definition and stored-Form workbench queries.
+pub(crate) mod computed;
+/// Literal, graph, computed, proposal, and morphology workbench queries.
 pub mod lexical;
 pub mod links;
 pub(crate) mod reference;
+pub use computed::{
+    WorkbenchAnalysisClassEvidence, WorkbenchAnalysisEvidence, WorkbenchComputedCompact,
+    WorkbenchComputedCompactHit, WorkbenchComputedFull, WorkbenchComputedFullHit,
+    WorkbenchComputedSourceTotal, WorkbenchComputedTotals, WorkbenchGeneratedResult,
+    WorkbenchProposalInput, WorkbenchProposalRecord, WorkbenchProposalResult,
+    WorkbenchProposalTotals,
+};
 pub use lexical::{
     ConfiguredWorkbenchFormDetailResponse, ConfiguredWorkbenchLexicalCompactResponse,
     ConfiguredWorkbenchLexicalFullResponse, WorkbenchCompactFormRecord, WorkbenchFormCompact,

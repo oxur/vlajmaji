@@ -747,6 +747,7 @@ impl DictionaryCompactSearchEngine {
         &self,
         request: &crate::workbench::lexical::WorkbenchLexicalRequest,
         binding_sha256: &str,
+        compose_target_ids: Option<&BTreeSet<EntityId>>,
     ) -> Result<
         crate::workbench::lexical::WorkbenchLexicalCompactResult,
         crate::workbench::lexical::WorkbenchLexicalError,
@@ -760,6 +761,23 @@ impl DictionaryCompactSearchEngine {
         let resolved_sources =
             lexical::resolve_sources(&self.document.registry, &request.options, &available)?;
         let selected_sources: BTreeSet<_> = resolved_sources.iter().cloned().collect();
+        if matches!(
+            &request.query,
+            lexical::WorkbenchLexicalQuery::SpellingDistance { .. }
+                | lexical::WorkbenchLexicalQuery::Prosody { .. }
+                | lexical::WorkbenchLexicalQuery::Nuclei { .. }
+                | lexical::WorkbenchLexicalQuery::Contrast { .. }
+                | lexical::WorkbenchLexicalQuery::Components { .. }
+                | lexical::WorkbenchLexicalQuery::Compose { .. }
+        ) {
+            return self.lexical_computed_compact(
+                request,
+                binding_sha256,
+                resolved_sources,
+                &selected_sources,
+                compose_target_ids,
+            );
+        }
         match &request.query {
             lexical::WorkbenchLexicalQuery::ReverseDefinition { contains } => {
                 let needle = contains.to_ascii_lowercase();
@@ -1210,7 +1228,183 @@ impl DictionaryCompactSearchEngine {
                     detail: "Links must be handled by the mixed-workbench route".into(),
                 })
             }
+            _ => Err(lexical::WorkbenchLexicalError::InvalidRequest {
+                detail: "computed query did not reach its computed route".into(),
+            }),
         }
+    }
+
+    fn lexical_computed_compact(
+        &self,
+        request: &crate::workbench::lexical::WorkbenchLexicalRequest,
+        binding_sha256: &str,
+        resolved_sources: Vec<SourceId>,
+        selected_sources: &BTreeSet<SourceId>,
+        compose_target_ids: Option<&BTreeSet<EntityId>>,
+    ) -> Result<
+        crate::workbench::lexical::WorkbenchLexicalCompactResult,
+        crate::workbench::lexical::WorkbenchLexicalError,
+    > {
+        use crate::workbench::{computed, lexical};
+        use lexical::{WorkbenchLexicalError, WorkbenchLexicalPosition, WorkbenchLexicalQuery};
+
+        let start_position = request
+            .options
+            .cursor
+            .as_deref()
+            .map(|token| {
+                lexical::decode_cursor(token, request, &resolved_sources, "compact", binding_sha256)
+            })
+            .transpose()?;
+        let metadata = &self.document.metadata;
+        let mut candidates = Vec::new();
+        for assertion in &metadata.assertions {
+            if !matches!(assertion.eligibility, lexicon::Eligibility::Lexical) {
+                continue;
+            }
+            let entry_index = *self
+                .indices
+                .entries
+                .get(assertion.entry.as_str())
+                .ok_or_else(|| WorkbenchLexicalError::Integrity {
+                    detail: format!("assertion {} references a missing Entry", assertion.id),
+                })?;
+            let entry = &metadata.entries[entry_index];
+            if !selected_sources.contains(&entry.source)
+                || !self
+                    .selected
+                    .get(&entry.source)
+                    .is_some_and(|ids| ids.contains(assertion.id.as_str()))
+            {
+                continue;
+            }
+            let capture_index = *self
+                .indices
+                .captures
+                .get(&assertion.occurrence.capture)
+                .ok_or_else(|| WorkbenchLexicalError::Integrity {
+                    detail: format!("selected assertion {} has no loaded capture", assertion.id),
+                })?;
+            candidates.push(computed::CandidateRef {
+                source: self
+                    .indices
+                    .sources
+                    .get(&entry.source)
+                    .and_then(|index| self.document.registry.sources.get(*index))
+                    .ok_or_else(|| WorkbenchLexicalError::Integrity {
+                        detail: format!("selected Entry {} names a missing source", entry.id),
+                    })?,
+                entry,
+                assertion,
+                capture: &self.document.captures[capture_index].metadata,
+            });
+        }
+        let mut scan = computed::scan_source(&request.query, candidates, compose_target_ids)?;
+        let start = if let Some(position) = start_position {
+            if !matches!(&position, WorkbenchLexicalPosition::ComputedSource { .. }) {
+                return Err(WorkbenchLexicalError::StaleCursor);
+            }
+            scan.rows
+                .iter()
+                .position(|row| match &position {
+                    WorkbenchLexicalPosition::ComputedSource {
+                        family,
+                        distance,
+                        spelling,
+                        source,
+                        occurrence_id,
+                        assertion_id,
+                    } => {
+                        family == computed::family_name(&request.query)
+                            && row.distance == *distance
+                            && row.spelling == *spelling
+                            && row.candidate.source.id == *source
+                            && row.occurrence_id == *occurrence_id
+                            && row.candidate.assertion.id == *assertion_id
+                    }
+                    _ => false,
+                })
+                .map(|index| index + 1)
+                .ok_or(WorkbenchLexicalError::InvalidCursorPosition)?
+        } else {
+            0
+        };
+        let end = request.options.page_size.map_or(scan.rows.len(), |size| {
+            start.saturating_add(size).min(scan.rows.len())
+        });
+        let next_cursor = if end < scan.rows.len() && end > start {
+            let row = &scan.rows[end - 1];
+            Some(lexical::encode_cursor(
+                request,
+                &resolved_sources,
+                "compact",
+                binding_sha256,
+                WorkbenchLexicalPosition::ComputedSource {
+                    family: computed::family_name(&request.query).to_owned(),
+                    distance: row.distance,
+                    spelling: row.spelling.clone(),
+                    source: row.candidate.source.id.clone(),
+                    occurrence_id: row.occurrence_id.clone(),
+                    assertion_id: row.candidate.assertion.id.clone(),
+                },
+            )?)
+        } else {
+            None
+        };
+        let hits = scan
+            .rows
+            .drain(start..end)
+            .map(|row| {
+                let entry = row.candidate.entry;
+                let assertion = row.candidate.assertion;
+                Ok(crate::workbench::computed::WorkbenchComputedCompactHit {
+                    hit: self.compact_hit(entry, assertion, None)?,
+                    spelling_distance: row.distance,
+                    analysis: row.analysis,
+                    distance_positions: row.distance_positions,
+                    computed_components: row.components,
+                })
+            })
+            .collect::<Result<Vec<_>, DictionaryQueryError>>()?;
+        let result = crate::workbench::computed::WorkbenchComputedCompact {
+            policy_ids: scan.policy_ids,
+            state_sha256: self.state_sha256.clone(),
+            query: request.query.clone(),
+            resolved_sources,
+            totals: scan.totals,
+            source_totals: scan.source_totals,
+            availability: self.availability.clone(),
+            hits,
+            exclusions: scan.exclusions,
+            next_cursor,
+            code_notices: metadata.code_notices.clone(),
+            snapshot_sha256: self.snapshot_sha256.clone(),
+        };
+        Ok(match &request.query {
+            WorkbenchLexicalQuery::SpellingDistance { .. } => {
+                lexical::WorkbenchLexicalCompactResult::SpellingDistance(Box::new(result))
+            }
+            WorkbenchLexicalQuery::Prosody { .. } => {
+                lexical::WorkbenchLexicalCompactResult::Prosody(Box::new(result))
+            }
+            WorkbenchLexicalQuery::Nuclei { .. } => {
+                lexical::WorkbenchLexicalCompactResult::Nuclei(Box::new(result))
+            }
+            WorkbenchLexicalQuery::Contrast { .. } => {
+                lexical::WorkbenchLexicalCompactResult::Contrast(Box::new(result))
+            }
+            WorkbenchLexicalQuery::Components { .. } => {
+                lexical::WorkbenchLexicalCompactResult::Components(Box::new(result))
+            }
+            WorkbenchLexicalQuery::Compose { .. } => {
+                lexical::WorkbenchLexicalCompactResult::Compose(Box::new(result))
+            }
+            _ => {
+                return Err(WorkbenchLexicalError::InvalidRequest {
+                    detail: "non-computed query reached computed Compact path".into(),
+                });
+            }
+        })
     }
 
     pub(crate) fn form_detail(
@@ -2847,7 +3041,7 @@ mod tests {
             options: crate::workbench::lexical::WorkbenchLexicalOptions::default(),
         };
         let crate::workbench::lexical::WorkbenchLexicalCompactResult::Form(forms) =
-            engine.lexical_compact(&request, &binding).unwrap()
+            engine.lexical_compact(&request, &binding, None).unwrap()
         else {
             panic!("computed-stem request returned another operation")
         };

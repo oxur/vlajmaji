@@ -85,6 +85,49 @@ pub fn render_workbench_lexical_compact(result: &WorkbenchLexicalCompactResult) 
         render_links_compact(&mut output, response);
         return output;
     }
+    if let Some((operation, response)) = computed_compact_result(result) {
+        writeln!(output, "lexical_operation: {}", json(&operation)).unwrap();
+        writeln!(output, "lexical_policy_ids: {}", json(&response.policy_ids)).unwrap();
+        writeln!(output, "lexical_totals: {}", json(&response.totals)).unwrap();
+        writeln!(
+            output,
+            "lexical_source_totals: {}",
+            json(&response.source_totals)
+        )
+        .unwrap();
+        writeln!(output, "lexical_exclusions: {}", json(&response.exclusions)).unwrap();
+        writeln!(
+            output,
+            "lexical_next_cursor: {}",
+            json(&response.next_cursor)
+        )
+        .unwrap();
+        for hit in &response.hits {
+            writeln!(output, "computed_hit: {}", json(hit)).unwrap();
+        }
+        return output;
+    }
+    if let WorkbenchLexicalCompactResult::ProposalExact(response) = result {
+        writeln!(output, "lexical_operation: {}", json(&"proposal_exact")).unwrap();
+        writeln!(output, "lexical_policy_ids: {}", json(&response.policy_ids)).unwrap();
+        writeln!(output, "lexical_totals: {}", json(&response.totals)).unwrap();
+        writeln!(
+            output,
+            "lexical_next_cursor: {}",
+            json(&response.next_cursor)
+        )
+        .unwrap();
+        for proposal in &response.proposals {
+            writeln!(output, "proposal: {}", json(proposal)).unwrap();
+        }
+        return output;
+    }
+    if let WorkbenchLexicalCompactResult::Generate(response) = result {
+        writeln!(output, "lexical_operation: {}", json(&"generate")).unwrap();
+        writeln!(output, "lexical_policy_ids: {}", json(&response.policy_ids)).unwrap();
+        writeln!(output, "computed_value: {}", json(&response.value)).unwrap();
+        return output;
+    }
     let (operation, policy, totals, source_totals, next_cursor) = match result {
         WorkbenchLexicalCompactResult::ReverseDefinition(response) => (
             "reverse_definition",
@@ -101,6 +144,7 @@ pub fn render_workbench_lexical_compact(result: &WorkbenchLexicalCompactResult) 
             &response.next_cursor,
         ),
         WorkbenchLexicalCompactResult::Links(_) => unreachable!("Links handled above"),
+        _ => unreachable!("computed and pure results handled above"),
     };
     writeln!(output, "lexical_operation: {}", json(&operation)).unwrap();
     writeln!(output, "lexical_policy: {}", json(policy)).unwrap();
@@ -124,8 +168,27 @@ pub fn render_workbench_lexical_compact(result: &WorkbenchLexicalCompactResult) 
             }
         }
         WorkbenchLexicalCompactResult::Links(_) => unreachable!("Links handled above"),
+        _ => unreachable!("computed and pure results handled above"),
     }
     output
+}
+
+fn computed_compact_result(
+    result: &WorkbenchLexicalCompactResult,
+) -> Option<(
+    &'static str,
+    &crate::workbench::computed::WorkbenchComputedCompact,
+)> {
+    use WorkbenchLexicalCompactResult as Result;
+    match result {
+        Result::SpellingDistance(response) => Some(("spelling_distance", response)),
+        Result::Prosody(response) => Some(("prosody", response)),
+        Result::Nuclei(response) => Some(("nuclei", response)),
+        Result::Contrast(response) => Some(("contrast", response)),
+        Result::Components(response) => Some(("components", response)),
+        Result::Compose(response) => Some(("compose", response)),
+        _ => None,
+    }
 }
 
 fn render_links_compact(output: &mut String, response: &WorkbenchLinksCompact) {

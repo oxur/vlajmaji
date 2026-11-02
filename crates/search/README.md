@@ -131,3 +131,21 @@ which is distinct from the existing compact-query snapshot digest.
 
 See [`docs/integrated-workbench.md`](../../docs/integrated-workbench.md) for
 CLI and library examples and the retained context semantics.
+
+The current development workspace also exposes six computed lexical query
+families through the same Full and Compact workbench providers: spelling
+distance, prosody, nuclei, contrast, components, and composition. These results
+keep source-backed assertion occurrences separate from phonological evidence,
+component decompositions, and generated values. `ProposalExact` returns
+constructor-identified caller proposals without treating them as dictionary
+members; `Generate` reports the selected morphology engine result separately
+from source evidence. The `morphology` Cargo feature gates the Components and
+Generate operations.
+
+The [`integrated_workbench` example](examples/integrated_workbench.rs) emits
+the fixed computed inputs under `artifacts/computed-inputs` before creating
+its `computed-workbench` journal, catalogue, or prepared views. It demonstrates
+historical and configured queries, same-view Full/Compact results, and readable
+Compact output. Its emitted authorities are synthetic fixtures, not lexical
+corpus claims; generated compounds and scores do not establish attested usage
+or semantic equivalence.
